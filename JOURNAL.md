@@ -136,3 +136,14 @@ of `classical-foundations-ann`.
   intro.md "How to work with this course" workflow; landing lab card now names the prover/inference/
   tutorials.
 - Verified: 0 warnings, 0 glitches on 9 pages, 93/93 slides with notes, 279 lab tests, live deploy.
+
+## 2026-07-23 (late) — box typography + the Lambda Lab cookbook
+
+- Typography pass: 33 dense admonition walls restructured to the house style (bulleted Run-it boxes,
+  labeled worked-example steps, statement-first theorems); link parity byte-identical; dense 33 → 0.
+- NEW book part: **The Lambda Lab cookbook** — 19,700 words across four chapters (grand calculations,
+  puzzles with dropdown solutions, curiosities & lore, feature showcase), every printed output produced
+  by the real engine. Highlights: Ackermann to A(3,2)=29, a terminating Y-combinator factorial, a
+  derived-and-fitted step law for POW predicting the budget cliff, Böhm–Berarducci trees, the growing Ω₃.
+- New quality gate `scripts/verify_book_commands.py` (also in CI): replays every ?cmd= deep link and
+  session block in the book against the engine — 162 links, all clean.
