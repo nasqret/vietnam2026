@@ -1,0 +1,61 @@
+title: Automatic Theorem Proving in Mathematics
+author: Bartosz Naskręcki
+copyright: "2026 Bartosz Naskręcki — co-developed with Claude"
+logo: ''
+only_build_toc_files: true
+
+exclude_patterns:
+  - _build
+  - Thumbs.db
+  - .DS_Store
+  - "**.ipynb_checkpoints"
+
+execute:
+  execute_notebooks: 'off'   # markdown-first for now; flip to 'auto' when notebooks land
+
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify
+    - smartquotes
+    - substitution
+
+bibtex_bibfiles:
+  - references.bib
+
+html:
+  home_page_in_navbar: true
+  use_repository_button: true
+  use_issues_button: false
+  use_edit_page_button: false
+  extra_footer: |
+    <p style="font-size:0.8rem;color:#64748b">VIASM mini-course · Hanoi 2026 ·
+    <a href="/vietnam2026">landing page</a> ·
+    <a href="/lab-lambda">Lambda Lab</a> ·
+    <a href="https://github.com/nasqret/vietnam2026">source</a></p>
+
+repository:
+  url: https://github.com/nasqret/vietnam2026
+  path_to_book: book
+  branch: main
+
+sphinx:
+  config:
+    language: en
+    mathjax3_config:
+      tex:
+        macros:
+          N: "\\mathbb{N}"
+          Z: "\\mathbb{Z}"
+          R: "\\mathbb{R}"
+          C: "\\mathbb{C}"
+          lam: "\\lambda"
+          To: "\\Rightarrow"
+          betared: "\\to_\\beta"
+          reduces: "\\twoheadrightarrow_\\beta"
+          proves: "\\vdash"

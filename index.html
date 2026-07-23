@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automatic Theorem Proving in Mathematics — VIASM Mini-Course 2026</title>
+  <meta name="description" content="A six-lecture VIASM mini-course by Bartosz Naskręcki: from the λ-calculus and type theory through Lean to the auto-formalization of research mathematics.">
+  <meta property="og:title" content="An Introduction to Automatic Theorem Proving in Mathematics">
+  <meta property="og:description" content="VIASM mini-course, Hanoi 2026 — λ-calculus · type theory · Lean · auto-formalization.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafbfc;
+      --surface: #ffffff;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --heading: #0f172a;
+      --accent: #6d28d9;          /* violet — the "Lean/type-theory" primary */
+      --accent-2: #7c3aed;
+      --accent-soft: #ede9fe;
+      --verified: #059669;        /* emerald — "the machine agrees" */
+      --verified-soft: #d1fae5;
+      --amber: #d97706;
+      --amber-soft: #fef3c7;
+      --border: #e2e8f0;
+      --code-bg: #f1f5f9;
+      --hero-1: #1e1b4b;
+      --hero-2: #312e81;
+      --hero-3: #4c1d95;
+      --card-shadow: 0 1px 2px rgba(15,23,42,0.06), 0 8px 24px rgba(15,23,42,0.06);
+      --card-hover: 0 6px 16px rgba(15,23,42,0.10), 0 18px 40px rgba(15,23,42,0.12);
+      --radius: 14px;
+      --maxw: 1120px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1120;
+        --surface: #131a2b;
+        --text: #cbd5e1;
+        --text-light: #94a3b8;
+        --heading: #f1f5f9;
+        --accent: #a78bfa;
+        --accent-2: #c4b5fd;
+        --accent-soft: #241b45;
+        --verified: #34d399;
+        --verified-soft: #0d2f26;
+        --amber: #fbbf24;
+        --amber-soft: #2b2210;
+        --border: #24304a;
+        --code-bg: #0f1728;
+        --card-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.35);
+        --card-hover: 0 6px 16px rgba(0,0,0,0.5), 0 18px 40px rgba(0,0,0,0.45);
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code, .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ===== Hero ===== */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(1200px 600px at 80% -10%, var(--hero-3) 0%, transparent 55%),
+                  linear-gradient(135deg, var(--hero-1) 0%, var(--hero-2) 55%, var(--hero-3) 100%);
+      color: #e8eaf6;
+      padding: 5.5rem 0 4.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .hero::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: radial-gradient(900px 500px at 70% 0%, #000 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(900px 500px at 70% 0%, #000 0%, transparent 70%);
+    }
+    .hero-inner { position: relative; z-index: 2; }
+    .hero-label {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em;
+      color: #c4b5fd; background: rgba(167,139,250,0.12);
+      border: 1px solid rgba(167,139,250,0.3); border-radius: 999px;
+      padding: 0.35rem 0.85rem; margin-bottom: 1.4rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.3rem); font-weight: 800; color: #fff;
+      line-height: 1.08; letter-spacing: -0.03em; max-width: 16ch;
+    }
+    .hero .subtitle {
+      font-size: clamp(1rem, 2vw, 1.18rem); color: #c7cbe8; max-width: 62ch;
+      margin-top: 1.1rem; line-height: 1.6;
+    }
+    .hero .byline { margin-top: 1.8rem; font-size: 0.95rem; color: #dfe1f3; }
+    .hero .byline strong { color: #fff; font-weight: 600; }
+    .hero .affil { font-size: 0.82rem; color: #a5a9cf; margin-top: 0.25rem; }
+    .formula-row {
+      margin-top: 1.6rem; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem;
+      color: #b6a8ee; display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; align-items: center;
+    }
+    .formula-row span { white-space: nowrap; }
+    .formula-row .arr { color: #7c74a8; }
+    .cta { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: 0.8rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.2rem; border-radius: 10px; font-weight: 600; font-size: 0.92rem;
+      transition: transform .12s ease, box-shadow .12s ease, background .15s ease; border: 1px solid transparent;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-1px); }
+    .btn-primary { background: #a78bfa; color: #1e1b4b; }
+    .btn-primary:hover { background: #c4b5fd; }
+    .btn-verified { background: #34d399; color: #04231a; }
+    .btn-verified:hover { background: #6ee7b7; }
+    .btn-ghost { background: rgba(255,255,255,0.06); color: #e8eaf6; border-color: rgba(255,255,255,0.22); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.13); }
+
+    /* ===== Sections ===== */
+    section { padding: 4rem 0; }
+    .eyebrow {
+      font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.13em;
+      color: var(--accent); margin-bottom: 0.6rem;
+    }
+    h2.section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: var(--heading); letter-spacing: -0.02em; }
+    .lede { color: var(--text-light); max-width: 70ch; margin-top: 0.7rem; font-size: 1.05rem; }
+
+    /* ===== Arc stepper ===== */
+    .arc {
+      margin-top: 2.2rem; display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.5rem;
+      counter-reset: step;
+    }
+    .arc-step {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.9rem 0.8rem; position: relative; box-shadow: var(--card-shadow);
+    }
+    .arc-step .n { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--accent); font-weight: 600; }
+    .arc-step .t { font-size: 0.82rem; font-weight: 600; color: var(--heading); margin-top: 0.25rem; line-height: 1.3; }
+    @media (max-width: 860px) { .arc { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ===== Lecture cards ===== */
+    .cards { margin-top: 2.4rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.3rem; }
+    .card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.6rem 1.6rem 1.4rem; box-shadow: var(--card-shadow);
+      transition: transform .15s ease, box-shadow .15s ease; display: flex; flex-direction: column;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: var(--card-hover); }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
+    .card-num {
+      font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.95rem;
+      color: var(--accent); background: var(--accent-soft); border-radius: 8px;
+      width: 2.4rem; height: 2.4rem; display: grid; place-items: center; flex-shrink: 0;
+    }
+    .pill { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.28rem 0.6rem; border-radius: 999px; }
+    .pill-found { background: var(--accent-soft); color: var(--accent); }
+    .pill-core { background: var(--verified-soft); color: var(--verified); }
+    .pill-cap { background: var(--amber-soft); color: var(--amber); }
+    .card h3 { font-size: 1.15rem; font-weight: 700; color: var(--heading); margin-top: 1rem; line-height: 1.25; letter-spacing: -0.01em; }
+    .card p.abstract { color: var(--text-light); font-size: 0.92rem; margin-top: 0.6rem; flex-grow: 1; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+    .chip { font-size: 0.72rem; font-weight: 500; color: var(--text-light); background: var(--code-bg); border: 1px solid var(--border); border-radius: 999px; padding: 0.22rem 0.6rem; }
+    .card-links { margin-top: 1.1rem; padding-top: 0.9rem; border-top: 1px dashed var(--border); display: flex; gap: 1rem; font-size: 0.83rem; font-weight: 600; }
+    .card-links a { display: inline-flex; align-items: center; gap: 0.3rem; }
+    .card-links .muted { color: var(--text-light); font-weight: 500; cursor: default; }
+
+    /* ===== Why now ===== */
+    .why { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .why-grid { margin-top: 2rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.1rem; }
+    .stat { border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; background: var(--bg); }
+    .stat .big { font-size: 1.7rem; font-weight: 800; color: var(--accent); letter-spacing: -0.02em; }
+    .stat .lab { font-size: 0.86rem; color: var(--text-light); margin-top: 0.3rem; }
+    .stat .src { font-size: 0.72rem; color: var(--text-light); margin-top: 0.5rem; }
+    .note-updating { font-size: 0.8rem; color: var(--amber); margin-top: 1rem; }
+
+    /* ===== Resources ===== */
+    .res-grid { margin-top: 2.2rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+    .res {
+      display: flex; gap: 1rem; align-items: flex-start; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 12px; padding: 1.3rem; box-shadow: var(--card-shadow);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .res:hover { transform: translateY(-2px); box-shadow: var(--card-hover); text-decoration: none; }
+    .res .ico { font-size: 1.5rem; line-height: 1; flex-shrink: 0; }
+    .res h4 { font-size: 1rem; font-weight: 700; color: var(--heading); }
+    .res p { font-size: 0.85rem; color: var(--text-light); margin-top: 0.25rem; }
+
+    /* ===== Footer ===== */
+    footer { padding: 3rem 0; border-top: 1px solid var(--border); color: var(--text-light); font-size: 0.86rem; }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; align-items: center; }
+    footer a { font-weight: 600; }
+
+    .kbd { font-family: 'JetBrains Mono', monospace; font-size: 0.85em; background: var(--code-bg); border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 5px; padding: 0.05rem 0.4rem; }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="wrap hero-inner">
+      <span class="hero-label">◆ VIASM Mini-Course · Hanoi 2026</span>
+      <h1>An Introduction to Automatic Theorem Proving in Mathematics</h1>
+      <p class="subtitle">
+        Six lectures that build from the ground up — the λ-calculus and type theory, then propositional
+        proofs, then <strong style="color:#c4b5fd">Lean</strong>, and finally the auto-formalization of
+        real research mathematics. Every idea appears twice: once as something you can <em>run</em>, once
+        as something a machine <em>checks</em>.
+      </p>
+      <div class="formula-row" aria-hidden="true">
+        <span>λx. x</span><span class="arr">→</span>
+        <span>Γ ⊢ t : A</span><span class="arr">→</span>
+        <span>propositions&nbsp;as&nbsp;types</span><span class="arr">→</span>
+        <span>#check</span><span class="arr">→</span>
+        <span class="mono">✓ no sorry</span>
+      </div>
+      <p class="byline">
+        <strong>dr Bartosz Naskręcki</strong>
+        <span class="affil">Faculty of Mathematics and Computer Science, Adam Mickiewicz University in Poznań · Centre for Trustworthy AI (CCAI), Warsaw University of Technology</span>
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#lectures">Explore the six lectures ↓</a>
+        <a class="btn btn-verified" href="/lab-lambda" target="_blank" rel="noopener">▷ Open the Lambda Lab</a>
+        <a class="btn btn-ghost" href="https://github.com/nasqret/vietnam2026" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost" href="https://viasm.edu.vn/en/hdkh/Mini-Course_AIATPM" target="_blank" rel="noopener">VIASM page ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== THE ARC ===================== -->
+  <section id="arc">
+    <div class="wrap">
+      <div class="eyebrow">The through-line</div>
+      <h2 class="section-title">One staircase, six steps</h2>
+      <p class="lede">
+        The course has a single spine: a <em>term</em> is a <em>proof</em>, a <em>type</em> is a
+        <em>proposition</em>, and a proof assistant is just a very careful accountant of that
+        correspondence. We start where computation itself starts — a variable-binding rule you can write
+        on a napkin — and end at a research paper checked by a kernel.
+      </p>
+      <div class="arc">
+        <a class="arc-step" href="#l1"><div class="n">01</div><div class="t">Type theory</div></a>
+        <a class="arc-step" href="#l2"><div class="n">02</div><div class="t">Church λ-calculus</div></a>
+        <a class="arc-step" href="#l3"><div class="n">03</div><div class="t">Propositional proofs</div></a>
+        <a class="arc-step" href="#l4"><div class="n">04</div><div class="t">Intro to Lean</div></a>
+        <a class="arc-step" href="#l5"><div class="n">05</div><div class="t">Advanced Lean</div></a>
+        <a class="arc-step" href="#l6"><div class="n">06</div><div class="t">Auto-formalization</div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LECTURES ===================== -->
+  <section id="lectures" style="padding-top:1rem;">
+    <div class="wrap">
+      <div class="eyebrow">The plan</div>
+      <h2 class="section-title">The six lectures</h2>
+      <p class="lede">Each lecture pairs a hands-on strand (the Lambda Lab, a Lean game, a notebook) with a
+        rigorous one (definitions, theorems, machine-checked proofs). These notes will grow as the course
+        runs — foundations first.</p>
+
+      <div class="cards">
+        <!-- L1 -->
+        <article class="card" id="l1">
+          <div class="card-top"><div class="card-num">01</div><span class="pill pill-found">Foundations</span></div>
+          <h3>A general introduction to type theory</h3>
+          <p class="abstract">What is a <em>type</em>, and why do modern proof assistants stand on type
+            theory rather than set theory? We meet judgments <span class="mono">Γ ⊢ t : A</span>, the
+            simply-typed λ-calculus, Church- vs Curry-style typing, and a first glimpse of dependent types —
+            the on-ramp to everything that follows.</p>
+          <div class="chips"><span class="chip">judgments</span><span class="chip">STLC</span><span class="chip">Church vs Curry</span><span class="chip">propositions-as-types</span><span class="chip">MLTT preview</span></div>
+          <div class="card-links"><a href="book/">Notes</a><span class="muted">Slides ·</span><a href="/lab-lambda?cmd=help" target="_blank">Lab</a></div>
+        </article>
+
+        <!-- L2 -->
+        <article class="card" id="l2">
+          <div class="card-top"><div class="card-num">02</div><span class="pill pill-found">Foundations</span></div>
+          <h3>Simple calculations with the Church λ-calculus</h3>
+          <p class="abstract">The untyped λ-calculus as a computational substrate: α-equivalence,
+            capture-avoiding substitution, β/η-reduction and normal forms. Then Church encodings — booleans,
+            numerals, the tricky predecessor, and the <span class="mono">Y</span>-combinator — each reduced by
+            hand and reproduced live in the Lambda Lab.</p>
+          <div class="chips"><span class="chip">β-reduction</span><span class="chip">Church numerals</span><span class="chip">Church–Rosser</span><span class="chip">Y-combinator</span></div>
+          <div class="card-links"><a href="book/">Notes</a><span class="muted">Slides ·</span><a href="/lab-lambda?cmd=church%20true" target="_blank">Lab</a></div>
+        </article>
+
+        <!-- L3 -->
+        <article class="card" id="l3">
+          <div class="card-top"><div class="card-num">03</div><span class="pill pill-found">Foundations</span></div>
+          <h3>Propositional logic proofs</h3>
+          <p class="abstract">Natural deduction and the BHK / Curry–Howard reading of the connectives
+            (<span class="mono">→</span> is a function, <span class="mono">∧</span> a product,
+            <span class="mono">∨</span> a sum, <span class="mono">¬</span> is <span class="mono">→⊥</span>),
+            taught through Emily Riehl's Lean game <em>A Reintroduction to Proofs</em>. Every game level maps
+            to one inference rule.</p>
+          <div class="chips"><span class="chip">natural deduction</span><span class="chip">BHK</span><span class="chip">intuitionistic</span><span class="chip">Lean tactics</span></div>
+          <div class="card-links"><a href="book/">Notes</a><span class="muted">Slides ·</span><a href="https://adam.math.hhu.de/#/g/emilyriehl/ReintroductionToProofs" target="_blank">Game ↗</a></div>
+        </article>
+
+        <!-- L4 -->
+        <article class="card" id="l4">
+          <div class="card-top"><div class="card-num">04</div><span class="pill pill-core">Core</span></div>
+          <h3>Introduction to Lean</h3>
+          <p class="abstract">From paper to kernel. Term mode vs tactic mode; propositions vs data;
+            <span class="mono">Nat</span>, induction and rewriting; the essential tactics
+            (<span class="mono">intro, apply, rw, simp, induction, omega</span>). We work through the Natural
+            Number Game and Macbeth's <em>Mechanics of Proof</em> to a first honest end-to-end theorem.</p>
+          <div class="chips"><span class="chip">Lean 4</span><span class="chip">tactic mode</span><span class="chip">Mathlib</span><span class="chip">Natural Number Game</span></div>
+          <div class="card-links"><a href="book/">Notes</a><span class="muted">Slides ·</span><a href="https://github.com/nasqret/vietnam2026/tree/main/artifacts" target="_blank" rel="noopener">Artifacts</a></div>
+        </article>
+
+        <!-- L5 -->
+        <article class="card" id="l5">
+          <div class="card-top"><div class="card-num">05</div><span class="pill pill-core">Core</span></div>
+          <h3>Advanced Lean</h3>
+          <p class="abstract">Dependent types in practice: structures and typeclasses, the architecture of
+            Mathlib and how to search it, and the heavy tactics that make formalization tractable
+            (<span class="mono">simp, ring, linarith, omega, norm_num, decide</span>), <span class="mono">calc</span>
+            blocks, and well-founded recursion — closing on a genuine analysis/algebra proof.</p>
+          <div class="chips"><span class="chip">typeclasses</span><span class="chip">simp/ring/linarith</span><span class="chip">calc</span><span class="chip">Mathlib search</span></div>
+          <div class="card-links"><a href="book/">Notes</a><span class="muted">Slides ·</span><a href="https://github.com/nasqret/vietnam2026/tree/main/artifacts" target="_blank" rel="noopener">Artifacts</a></div>
+        </article>
+
+        <!-- L6 -->
+        <article class="card" id="l6">
+          <div class="card-top"><div class="card-num">06</div><span class="pill pill-cap">Capstone</span></div>
+          <h3>Auto-formalization of mathematics with Lean</h3>
+          <p class="abstract">Where AI meets the kernel. The 2024–2026 landscape — AlphaProof, AlphaGeometry,
+            DeepSeek-Prover, LeanDojo — and what "autoformalize" really means. Then the flagship case study:
+            the <strong>EML</strong> project formalizing <span class="mono">arXiv:2603.21852</span>, every
+            elementary function from a single binary operator, checked sorry-free by Lean.</p>
+          <div class="chips"><span class="chip">AlphaProof</span><span class="chip">LLM + Lean</span><span class="chip">EML project</span><span class="chip">human+AI+kernel</span></div>
+          <div class="card-links"><a href="book/">Notes</a><a href="https://nasqret.github.io/eml-formalization/" target="_blank">EML demo ↗</a><a href="https://github.com/nasqret/eml-formalization" target="_blank">Repo ↗</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY NOW ===================== -->
+  <section class="why">
+    <div class="wrap">
+      <div class="eyebrow">Why now</div>
+      <h2 class="section-title">Formal mathematics stopped being a curiosity</h2>
+      <p class="lede">In the last two years, machine-checked proof went from a niche to a frontier: AI
+        systems reached medal territory on olympiad problems, and mathematicians began formalizing new
+        results as they proved them. This course teaches the substrate underneath that shift.</p>
+      <div class="why-grid" id="why-grid">
+        <div class="stat"><div class="big">28&nbsp;/&nbsp;42</div><div class="lab">Google DeepMind's AlphaProof + AlphaGeometry 2 scored 28/42 at the 2024 IMO — silver-medal level, one point short of gold.</div><div class="src">DeepMind, 2024</div></div>
+        <div class="stat"><div class="big">283k+</div><div class="lab">theorems in <strong>Mathlib</strong> — over 2 million lines of formalized mathematics, from 770+ contributors.</div><div class="src">leanprover-community mathlib stats, 2026</div></div>
+        <div class="stat"><div class="big">88.9%</div><div class="lab">DeepSeek-Prover-V2 on miniF2F — open LLM provers now clear most competition benchmarks.</div><div class="src">DeepSeek, 2025</div></div>
+        <div class="stat"><div class="big">36&nbsp;/&nbsp;36</div><div class="lab"><strong>EML</strong> primitives formalized sorry-free in Lean 4 (100 theorems, 8062 kernel jobs) — the course capstone.</div><div class="src">nasqret/eml-formalization</div></div>
+        <div class="stat"><div class="big">4 provers</div><div class="lab">Lean, Agda, Rocq, Mizar — one statement, four foundations, side by side in <a href="https://github.com/nasqret/vietnam2026/tree/main/artifacts" target="_blank" rel="noopener">artifacts/</a>.</div><div class="src">this course</div></div>
+      </div>
+      <p class="note-updating" style="color:var(--text-light)">Figures cross-checked against primary sources by the course's <a href="https://github.com/nasqret/vietnam2026/tree/main/research">research pass</a> (21 of 30 volatile claims confirmed; corrections logged in <span class="mono">research/fact_checks.md</span>).</p>
+    </div>
+  </section>
+
+  <!-- ===================== RESOURCES ===================== -->
+  <section id="resources">
+    <div class="wrap">
+      <div class="eyebrow">Everything in one place</div>
+      <h2 class="section-title">Materials &amp; tools</h2>
+      <div class="res-grid">
+        <a class="res" href="book/"><div class="ico">📖</div><div><h4>Knowledge book</h4><p>The full text-friendly notes — mathematics, runnable code, and links. The "learning data" of the course, built with JupyterBook.</p></div></a>
+        <a class="res" href="/lab-lambda" target="_blank"><div class="ico">🐊</div><div><h4>Lambda Lab</h4><p>The λ-calculus playground — Church encodings, reductions, tours and quizzes — running <em>directly in your browser</em>, no install.</p></div></a>
+        <a class="res" href="slides/"><div class="ico">🖥️</div><div><h4>Slides</h4><p>One reveal.js deck per lecture, to follow along live and revisit afterwards.</p></div></a>
+        <a class="res" href="https://github.com/nasqret/vietnam2026/tree/main/artifacts" target="_blank" rel="noopener"><div class="ico">✓</div><div><h4>Formal artifacts</h4><p>The same theorems proved in Lean, Agda, Rocq and Mizar — four foundations, one Rosetta stone.</p></div></a>
+        <a class="res" href="https://github.com/nasqret/vietnam2026" target="_blank"><div class="ico">⌥</div><div><h4>Source on GitHub</h4><p>Everything is open: book, lab, vault, artifacts, and a reproducible build. <span class="mono">nasqret/vietnam2026</span>.</p></div></a>
+        <a class="res" href="https://github.com/nasqret/eml-formalization" target="_blank"><div class="ico">🌳</div><div><h4>EML project</h4><p>The capstone formalization — all elementary functions from one binary operator, and its live Tree Builder demo.</p></div></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div>
+        <strong>An Introduction to Automatic Theorem Proving in Mathematics</strong> — VIASM Mini-Course, Hanoi 2026.<br>
+        © 2026 Bartosz Naskręcki · Code MIT, notes CC BY-SA 4.0 · co-developed with Claude.
+      </div>
+      <div>
+        <a href="https://bnaskrecki.faculty.wmi.amu.edu.pl/">Home</a> ·
+        <a href="https://github.com/nasqret/vietnam2026">GitHub</a> ·
+        <a href="/lab-lambda">Lambda Lab</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

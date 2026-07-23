@@ -1,0 +1,51 @@
+# ── Python ─────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.ipynb_checkpoints/
+
+# ── JupyterBook / Sphinx build ─────────────────────────
+book/_build/
+_build/
+.jupyter_cache/
+
+# ── Lean / Mathlib ─────────────────────────────────────
+artifacts/lean/**/.lake/
+artifacts/lean/**/lake-packages/
+artifacts/lean/**/build/
+*.olean
+
+# ── Agda ───────────────────────────────────────────────
+artifacts/agda/**/_build/
+*.agdai
+
+# ── Rocq / Coq ─────────────────────────────────────────
+artifacts/rocq/**/*.vo
+artifacts/rocq/**/*.vok
+artifacts/rocq/**/*.vos
+artifacts/rocq/**/*.glob
+artifacts/rocq/**/.*.aux
+
+# ── Browser lab (vendored/built assets) ────────────────
+lab-lambda/vendor/*.whl
+lab-lambda/_dist/
+
+# ── Node (only used for tooling, not committed) ────────
+node_modules/
+
+# ── OS / editor ────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# ── Local-only notes ───────────────────────────────────
+scratch/
+*.local.md
+
+# Claude Code local settings
+.claude/

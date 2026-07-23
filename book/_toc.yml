@@ -1,0 +1,15 @@
+format: jb-book
+root: intro
+
+parts:
+  - caption: "The six lectures"
+    chapters:
+      - file: lectures/l1_type_theory
+      - file: lectures/l2_lambda_calculus
+      - file: lectures/l3_propositional
+      - file: lectures/l4_lean_intro
+      - file: lectures/l5_lean_advanced
+      - file: lectures/l6_autoformalization
+  - caption: "Appendix"
+    chapters:
+      - file: appendix/references

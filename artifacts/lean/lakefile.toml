@@ -1,0 +1,10 @@
+name = "artifacts"
+version = "0.1.0"
+defaultTargets = ["Artifacts"]
+
+# Deliberately Mathlib-free: the statements below (Curry–Howard combinators
+# and Peano addition facts) are provable in Lean 4 core, so this project
+# builds in seconds with no heavy dependency to download.
+
+[[lean_lib]]
+name = "Artifacts"

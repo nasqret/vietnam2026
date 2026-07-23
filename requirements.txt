@@ -1,0 +1,10 @@
+# Knowledge-book build (JupyterBook 1.x, classic Sphinx)
+jupyter-book>=1.0.0
+sphinx-proof>=0.1.3
+sphinx-design>=0.5
+matplotlib>=3.7
+numpy>=1.24
+
+# The browser Lambda Lab needs no Python at runtime (it ships as static
+# HTML + Pyodide/xterm.js from a CDN). For local hacking on the desktop lab,
+# see nasqret/falenty-2026.

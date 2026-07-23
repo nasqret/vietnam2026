@@ -1,0 +1,50 @@
+:: ─────────────────────────────────────────────────────────────────────
+:: Course artifact — Mizar  (ILLUSTRATIVE of style; see note below)
+::
+:: VIASM mini-course "An Introduction to Automatic Theorem Proving".
+::
+:: Mizar is the odd one out among our four provers. Its foundation is
+:: *classical first-order logic over Tarski–Grothendieck set theory* — NOT
+:: type theory — so there is no "propositions-as-types". A proof is not a
+:: term; it is a *declarative*, natural-language-like argument (Jaśkowski
+:: natural deduction) checked against the Mizar Mathematical Library (MML).
+::
+:: This file is illustrative of Mizar's SYNTAX and PROOF STYLE. Mizar is not
+:: installed on the build machine, so — unlike the Lean artifact — it is not
+:: kernel-checked here. Commutativity of `+` for natural numbers already
+:: lives in the MML as `binop_1` / `NAT_1`; the shape below mirrors it.
+:: ─────────────────────────────────────────────────────────────────────
+
+environ
+
+ vocabularies NUMBERS, ARYTM_1, XCMPLX_0;
+ notations ORDINAL1, NUMBERS, XCMPLX_0;
+ constructors XCMPLX_0, ARYTM_0;
+ requirements NUMERALS, SUBSET, ARITHM;
+
+begin
+
+:: Statement 1, as a propositional argument. In Mizar, propositional
+:: variables are introduced via a scheme; the S-combinator tautology
+:: (p implies q implies r) implies (p implies q) implies p implies r
+:: is discharged by three `assume`s and a `thus`, e.g.:
+::
+::   scheme SComb { P, Q, R[] } :
+::     (P[] implies Q[] implies R[]) implies (P[] implies Q[]) implies P[] implies R[]
+::   proof
+::     assume A1: P[] implies Q[] implies R[];
+::     assume A2: P[] implies Q[];
+::     assume A3: P[];
+::     thus R[] by A1, A3, A2;
+::   end;
+::
+:: Contrast Lean/Rocq/Agda, where THE PROOF IS the term `\f g x. f x (g x)`.
+
+:: Statement 3, in Mizar's declarative style (commutativity of +):
+
+theorem
+  for x, y being Nat holds x + y = y + x
+proof
+  let x, y be Nat;
+  thus x + y = y + x;  :: justified in the MML (commutativity of addition)
+end;

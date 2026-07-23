@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lambda Lab — in-browser λ-calculus · VIASM 2026</title>
+  <meta name="description" content="The Lambda Lab: a λ-calculus playground (Church encodings, β-reduction) running entirely in your browser via Pyodide + xterm.js. VIASM mini-course on automatic theorem proving.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/css/xterm.css">
+  <style>
+    :root{
+      --bg:#0b1020; --panel:#131a2b; --border:#24304a; --violet:#a78bfa; --violet-2:#c4b5fd;
+      --emerald:#34d399; --text:#e2e8f0; --muted:#94a3b8;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',system-ui,sans-serif;background:
+        radial-gradient(1000px 500px at 85% -10%, #2a1f5a 0%, transparent 55%),
+        linear-gradient(160deg,#0b1020 0%,#0f1730 100%);
+      color:var(--text);min-height:100vh;display:flex;flex-direction:column;}
+    a{color:var(--violet);text-decoration:none;} a:hover{text-decoration:underline;}
+    .mono{font-family:'JetBrains Mono',monospace;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+      padding:1rem 1.4rem;border-bottom:1px solid var(--border);}
+    .brand{display:flex;align-items:center;gap:.7rem;}
+    .brand .glyph{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1.5rem;color:#0b1020;
+      background:var(--violet);width:2.3rem;height:2.3rem;border-radius:9px;display:grid;place-items:center;}
+    .brand h1{font-size:1.05rem;font-weight:700;letter-spacing:-.01em;}
+    .brand .sub{font-size:.75rem;color:var(--muted);}
+    header nav{display:flex;gap:1.2rem;font-size:.85rem;font-weight:600;align-items:center;}
+    .main{flex:1;display:flex;flex-direction:column;max-width:1080px;width:100%;margin:0 auto;padding:1.2rem 1.4rem 2rem;}
+    .status{font-size:.82rem;color:var(--muted);margin-bottom:.7rem;display:flex;align-items:center;gap:.6rem;min-height:1.3rem;}
+    .spinner{width:.8rem;height:.8rem;border:2px solid var(--border);border-top-color:var(--violet);
+      border-radius:50%;animation:spin .8s linear infinite;} @keyframes spin{to{transform:rotate(360deg)}}
+    .dot-ok{width:.6rem;height:.6rem;border-radius:50%;background:var(--emerald);box-shadow:0 0 8px var(--emerald);}
+    #term-wrap{background:#0a0e1a;border:1px solid var(--border);border-radius:12px;padding:.8rem;
+      box-shadow:0 10px 40px rgba(0,0,0,.45);min-height:60vh;}
+    .term-bar{display:flex;gap:.45rem;padding:.1rem .3rem .7rem;}
+    .term-bar span{width:.7rem;height:.7rem;border-radius:50%;}
+    .b-r{background:#ff5f57;} .b-y{background:#febc2e;} .b-g{background:#28c840;}
+    #terminal{width:100%;height:58vh;}
+    .quick{margin-top:1rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;}
+    .quick .lbl{font-size:.78rem;color:var(--muted);margin-right:.2rem;}
+    .qbtn{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--violet-2);
+      background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.28);border-radius:7px;
+      padding:.32rem .6rem;cursor:pointer;transition:all .12s;}
+    .qbtn:hover{background:rgba(167,139,250,.2);transform:translateY(-1px);}
+    .info{margin-top:1.4rem;font-size:.85rem;color:var(--muted);line-height:1.6;max-width:75ch;}
+    .info code{font-family:'JetBrains Mono',monospace;background:#0a0e1a;border:1px solid var(--border);
+      border-radius:5px;padding:.05rem .35rem;color:var(--violet-2);font-size:.85em;}
+    footer{border-top:1px solid var(--border);padding:1rem 1.4rem;font-size:.78rem;color:var(--muted);text-align:center;}
+    .fail{color:#fca5a5;}
+    @media(max-width:640px){#terminal{height:52vh;} .brand .sub{display:none;}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="glyph">λ</div>
+      <div><h1>Lambda Lab</h1><div class="sub">in-browser λ-calculus · no install</div></div>
+    </div>
+    <nav>
+      <a href="/vietnam2026">← Course</a>
+      <a href="/vietnam2026#l2">Lecture 2</a>
+      <a href="https://github.com/nasqret/vietnam2026" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="main">
+    <div class="status" id="status"><span class="spinner"></span><span id="status-text">starting…</span></div>
+    <div id="term-wrap">
+      <div class="term-bar"><span class="b-r"></span><span class="b-y"></span><span class="b-g"></span></div>
+      <div id="terminal"></div>
+    </div>
+
+    <div class="quick" id="quick">
+      <span class="lbl">try:</span>
+      <button class="qbtn" data-cmd="help">help</button>
+      <button class="qbtn" data-cmd="tour">tour</button>
+      <button class="qbtn" data-cmd="reduce AND TRUE FALSE">reduce AND TRUE FALSE</button>
+      <button class="qbtn" data-cmd="nf PLUS 2 3">nf PLUS 2 3</button>
+      <button class="qbtn" data-cmd="church SUCC">church SUCC</button>
+      <button class="qbtn" data-cmd="reduce (\\x. x x) (\\y. y)">reduce (\x. x x) (\y. y)</button>
+      <button class="qbtn" data-cmd="constants">constants</button>
+      <button class="qbtn" data-cmd="clear">clear</button>
+    </div>
+
+    <div class="info">
+      This is the course's real Python λ-engine — α/β/η-reduction and Church encodings — compiled to
+      WebAssembly with <a href="https://pyodide.org" target="_blank" rel="noopener">Pyodide</a> and driven
+      by <a href="https://xtermjs.org" target="_blank" rel="noopener">xterm.js</a>. Nothing runs on a
+      server; after the first load it works offline. Write terms with <code>λx. x</code> or
+      <code>\x. x</code>; bare integers become Church numerals, and names like <code>AND</code>,
+      <code>SUCC</code>, <code>PLUS</code>, <code>Y</code> expand to their λ-definitions. Use <code>↑/↓</code>
+      for history.
+    </div>
+  </div>
+
+  <footer>
+    Lambda Lab · VIASM mini-course “An Introduction to Automatic Theorem Proving in Mathematics”, Hanoi 2026 ·
+    © Bartosz Naskręcki · <a href="/vietnam2026">course home</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/lib/xterm.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10.0/lib/addon-fit.js"></script>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.28.3/full/pyodide.js"></script>
+  <script>
+  (function(){
+    "use strict";
+    const PY_FILES = [
+      "py/lambda_lab/__init__.py",
+      "py/lambda_lab/lab/__init__.py",
+      "py/lambda_lab/lab/i18n.py",
+      "py/lambda_lab/lab/lc.py",
+      "py/lambda_lab/lab/parser.py",
+      "py/lambda_lab/lab/church.py",
+      "py/driver.py",
+    ];
+    const PROMPT = "\x1b[92mλ>\x1b[0m ";
+    const statusText = document.getElementById("status-text");
+    const statusEl = document.getElementById("status");
+    function status(msg){ statusText.textContent = msg; }
+    function statusReady(){
+      statusEl.innerHTML = '<span class="dot-ok"></span><span>ready — running locally in your browser</span>';
+    }
+    function statusFail(msg){
+      statusEl.innerHTML = '<span class="fail">✗ ' + msg + '</span>';
+    }
+
+    const term = new Terminal({
+      fontFamily: "'JetBrains Mono', monospace",
+      fontSize: 14, cursorBlink: true, convertEol: false, scrollback: 4000,
+      theme: {
+        background: "#0a0e1a", foreground: "#e2e8f0", cursor: "#a78bfa",
+        selectionBackground: "#2a1f5a",
+        black:"#0a0e1a", red:"#fca5a5", green:"#6ee7b7", yellow:"#fcd34d", blue:"#93c5fd",
+        magenta:"#c4b5fd", cyan:"#67e8f9", white:"#e2e8f0",
+        brightBlack:"#64748b", brightRed:"#f87171", brightGreen:"#34d399", brightYellow:"#fbbf24",
+        brightBlue:"#60a5fa", brightMagenta:"#a78bfa", brightCyan:"#22d3ee", brightWhite:"#f8fafc"
+      }
+    });
+    term.open(document.getElementById("terminal"));
+    let fitAddon = null;
+    try { fitAddon = new FitAddon.FitAddon(); term.loadAddon(fitAddon); fitAddon.fit(); } catch(e){ /* default 80x24 */ }
+    window.addEventListener("resize", function(){ try{ fitAddon && fitAddon.fit(); }catch(e){} });
+
+    // ── line editor state ──
+    let buffer = "", cursor = 0;
+    let history = [], histIdx = 0;
+    let busy = true;          // block input until boot completes
+    let runLineFn = null;
+
+    function writeOut(s){ if(s) term.write(String(s).replace(/\r?\n/g, "\r\n")); }
+    function prompt(){ buffer=""; cursor=0; histIdx=history.length; term.write("\r\n"+PROMPT); }
+    function redraw(){
+      term.write("\r\x1b[K" + PROMPT + buffer);
+      const back = buffer.length - cursor;
+      if(back>0) term.write("\x1b["+back+"D");
+    }
+    function doClear(){ term.write("\x1b[2J\x1b[3J\x1b[H"); writeOut(banner()); prompt(); }
+
+    let banner = function(){ return ""; };
+
+    function submit(){
+      const line = buffer;
+      term.write("\r\n");
+      const trimmed = line.trim();
+      if(trimmed) history.push(line);
+      const low = trimmed.toLowerCase();
+      if(low==="clear" || low==="cls"){ doClear(); return; }
+      busy = true;
+      try {
+        const out = runLineFn(line);
+        writeOut(out);
+      } catch(e){
+        term.write("\x1b[91m"+e+"\x1b[0m");
+      }
+      busy = false;
+      prompt();
+    }
+
+    function injectCommand(cmd){
+      if(busy || !runLineFn) return;
+      buffer = cmd; cursor = cmd.length; redraw(); submit(); term.focus();
+    }
+
+    document.getElementById("quick").addEventListener("click", function(ev){
+      const b = ev.target.closest(".qbtn"); if(!b) return;
+      injectCommand(b.getAttribute("data-cmd"));
+    });
+
+    term.onData(function(d){
+      if(busy) return;
+      switch(d){
+        case "\r": submit(); return;
+        case "\x7f": case "\b": // backspace
+          if(cursor>0){ buffer = buffer.slice(0,cursor-1)+buffer.slice(cursor); cursor--; redraw(); }
+          return;
+        case "\x1b[A": // up
+          if(history.length && histIdx>0){ histIdx--; buffer=history[histIdx]; cursor=buffer.length; redraw(); }
+          return;
+        case "\x1b[B": // down
+          if(histIdx < history.length-1){ histIdx++; buffer=history[histIdx]; cursor=buffer.length; redraw(); }
+          else { histIdx=history.length; buffer=""; cursor=0; redraw(); }
+          return;
+        case "\x1b[C": // right
+          if(cursor<buffer.length){ cursor++; term.write("\x1b[C"); } return;
+        case "\x1b[D": // left
+          if(cursor>0){ cursor--; term.write("\x1b[D"); } return;
+        case "\x01": cursor=0; redraw(); return;               // ctrl-a
+        case "\x05": cursor=buffer.length; redraw(); return;   // ctrl-e
+        case "\x03": term.write("^C"); prompt(); return;       // ctrl-c
+        case "\x0c": doClear(); return;                        // ctrl-l
+        default:
+          if(d >= " " || d.length > 1){
+            const clean = d.replace(/[\r\n]+/g, " ");
+            buffer = buffer.slice(0,cursor)+clean+buffer.slice(cursor);
+            cursor += clean.length; redraw();
+          }
+      }
+    });
+
+    async function boot(){
+      try{
+        writeOut("\x1b[2m  booting the λ-engine…\x1b[0m\r\n");
+        status("loading Python (Pyodide, ~7 MB)…");
+        const pyodide = await loadPyodide();
+        status("mounting the λ-engine…");
+        for(const rel of PY_FILES){
+          const resp = await fetch(rel);
+          if(!resp.ok) throw new Error("could not load "+rel+" ("+resp.status+")");
+          const text = await resp.text();
+          const dst = "/lab/" + rel.replace(/^py\//, "");
+          const dir = dst.slice(0, dst.lastIndexOf("/"));
+          pyodide.FS.mkdirTree(dir);
+          pyodide.FS.writeFile(dst, text);
+        }
+        pyodide.runPython("import sys; sys.path.insert(0, '/lab')");
+        const driver = pyodide.pyimport("driver");
+        runLineFn = function(line){ return driver.run_line(line); };
+        banner = function(){ return driver.banner(); };
+        term.write("\x1b[2J\x1b[H");
+        writeOut(banner());
+        busy = false;
+        statusReady();
+        prompt();
+        term.focus();
+        // deep link: ?cmd=...
+        const params = new URLSearchParams(location.search);
+        const initial = params.get("cmd");
+        if(initial){ injectCommand(initial); }
+      } catch(err){
+        busy = true;
+        statusFail("failed to start: " + (err && err.message ? err.message : err));
+        writeOut("\r\n\x1b[91m  The lab could not start. Check your connection and reload.\x1b[0m\r\n");
+        writeOut("\x1b[2m  " + (err && err.message ? err.message : err) + "\x1b[0m\r\n");
+      }
+    }
+    boot();
+  })();
+  </script>
+</body>
+</html>

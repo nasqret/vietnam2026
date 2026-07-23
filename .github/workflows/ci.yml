@@ -1,0 +1,65 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  book:
+    name: Knowledge book
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install -r requirements.txt
+      - name: Build JupyterBook
+        run: jupyter-book build book/ --warningiserror --keep-going
+      - uses: actions/upload-artifact@v4
+        with:
+          name: book-html
+          path: book/_build/html
+
+  lean:
+    name: Lean artifact (sorry-free, no axioms)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan (Lean toolchain manager)
+        run: |
+          curl -sSf https://elan.lean-lang.org/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Build
+        working-directory: artifacts/lean
+        run: lake build
+      - name: Axiom check
+        working-directory: artifacts/lean
+        run: |
+          printf 'import Artifacts\nopen Artifacts\n#print axioms add_comm'"'"'\n#print axioms s_combinator\n' > /tmp/check.lean
+          lake env lean /tmp/check.lean
+
+  lab-engine:
+    name: Lambda Lab engine smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run driver commands
+        working-directory: lab-lambda/py
+        run: |
+          python3 - <<'PY'
+          import sys; sys.path.insert(0, ".")
+          import driver
+          s = driver.get_session()
+          for cmd, expect in [("nf PLUS 2 3", "5"), ("nf MULT 2 3", "6"), ("reduce AND TRUE FALSE", "")]:
+              out = s.run(cmd)
+              assert out, f"empty output for {cmd!r}"
+              print(cmd, "->", repr(out[:60]))
+          print("OK")
+          PY
