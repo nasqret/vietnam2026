@@ -1,3 +1,5 @@
+import Artifacts.Sqrt2
+
 /-
   Course artifacts — Lean 4 (Mathlib-free)
   ========================================

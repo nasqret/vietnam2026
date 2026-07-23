@@ -66,6 +66,26 @@ denotation `eval?` is `Option ℂ`-valued — but the shape is exactly this.
 Verified in Lean (`sorry`-free, no axioms); authored in Agda and Rocq. This is the artifact that most
 directly foreshadows the capstone.
 
+## Statement 5 — $\sqrt 2$ is irrational (the "real theorem")
+
+The one genuine piece of mathematics in the set, and the payoff for Lecture 5. We prove — **in Lean 4
+core, with no Mathlib** — that there is no *positive* natural solution to $p^2 = 2q^2$:
+
+```lean
+theorem no_sqrt2 : ∀ p q : Nat, p * p = 2 * (q * q) → q = 0
+theorem no_pos_sqrt2 (p q : Nat) (hq : q ≠ 0) : p * p ≠ 2 * (q * q)
+```
+
+The proof is **Fermat's infinite descent**, driven by one lemma — a square is even iff its root is
+(`even_sq_iff`) — so $p$ even $\Rightarrow$ $q$ even $\Rightarrow$ a strictly smaller solution, and
+strong induction closes it. It lives in [`lean/Artifacts/Sqrt2.lean`](lean/Artifacts/Sqrt2.lean), builds
+in the fast default `lake build`, and is `sorry`-free — `#print axioms no_sqrt2` reports only `propext`
+and `Quot.sound` (Lean's two standard kernel axioms; no `Classical`, no `sorryAx`).
+
+This is the **Lean-verified centerpiece**; the identical descent transfers to Agda and Rocq (the parity
+lemma and the strong-induction skeleton are the only prover-specific parts). We keep the machine-checked
+copy in Lean, where it is verified locally, rather than ship an unchecked transcription.
+
 ## Reproduce
 
 ```bash

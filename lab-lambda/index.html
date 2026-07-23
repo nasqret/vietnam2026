@@ -109,6 +109,7 @@
   <script>
   (function(){
     "use strict";
+    const BUILD = "2026-07-23d";   // bump on each lab deploy; shown in the status line
     const PY_FILES = [
       "py/lambda_lab/__init__.py",
       "py/lambda_lab/lab/__init__.py",
@@ -123,7 +124,7 @@
     const statusEl = document.getElementById("status");
     function status(msg){ statusText.textContent = msg; }
     function statusReady(){
-      statusEl.innerHTML = '<span class="dot-ok"></span><span>ready — running locally in your browser</span>';
+      statusEl.innerHTML = '<span class="dot-ok"></span><span>ready — running locally in your browser · build ' + BUILD + '</span>';
     }
     function statusFail(msg){
       statusEl.innerHTML = '<span class="fail">✗ ' + msg + '</span>';
@@ -229,7 +230,7 @@
         const pyodide = await loadPyodide();
         status("mounting the λ-engine…");
         for(const rel of PY_FILES){
-          const resp = await fetch(rel);
+          const resp = await fetch(rel + "?v=" + BUILD, { cache: "no-store" });
           if(!resp.ok) throw new Error("could not load "+rel+" ("+resp.status+")");
           const text = await resp.text();
           const dst = "/lab/" + rel.replace(/^py\//, "");

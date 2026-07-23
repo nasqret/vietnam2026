@@ -344,6 +344,17 @@ of the rational witness, then a parity contradiction driven by `omega` and divis
 is the two idioms side by side: *stand on Mathlib* when the lemma exists, *build it yourself* when you need
 to see the machinery.
 
+```{admonition} It's checked — the "build it yourself" version, verified
+:class: seealso
+This course ships the *Mathlib-free* descent as a machine-checked artifact:
+[`artifacts/lean/Artifacts/Sqrt2.lean`](https://github.com/nasqret/vietnam2026/blob/main/artifacts/lean/Artifacts/Sqrt2.lean)
+proves `no_sqrt2 : ∀ p q : Nat, p * p = 2 * (q * q) → q = 0` by infinite descent in Lean 4 core — no
+library — so `lake build` stays fast, and `#print axioms no_sqrt2` reports only `propext` and
+`Quot.sound`. The single engine is `even_sq_iff` (a square is even iff its root is); everything else is
+strong induction. Read it next to the one-line Mathlib proof above: the same theorem, *stood on the
+library* and *built from nothing*, side by side.
+```
+
 Euler's identity is an alternative where all the analytic depth hides inside a single library lemma:
 
 ```lean

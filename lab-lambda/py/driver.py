@@ -75,8 +75,42 @@ LEAN_SNIPPETS["s_combinator"] = LEAN_SNIPPETS["s_comb"]
 
 # Commands that exist in the full desktop lab (nasqret/falenty-2026) but are not
 # part of this static browser build (they need data files / a Lean process / network).
-DESKTOP_ONLY = {"ch", "kb", "tutorial", "quiz", "games", "eml", "prove",
+DESKTOP_ONLY = {"ch", "tutorial", "games", "eml", "prove",
                 "aristotle", "ag", "acorn", "lang"}
+
+# A small knowledge base, distilled from the course Obsidian vault (vault/concepts/*).
+KB = {
+    "beta-reduction": ("β-reduction", "The one computational rule: (λx.t) u → t[x:=u]. Repeated β-reduction is computation; a term with no redex is a normal form. See: church-rosser, normal-form."),
+    "alpha-equivalence": ("α-equivalence", "Renaming bound variables leaves a term unchanged: λx.x ≡ λy.y. Bound names carry no meaning. Try: alpha \\x.x = \\y.y"),
+    "substitution": ("Capture-avoiding substitution", "t[x:=u] replaces free x by u, renaming bound variables so no free variable of u is captured. The subtle heart of the calculus."),
+    "eta": ("η-reduction", "Extensionality: λx.(t x) → t when x is not free in t. Two functions equal on all inputs are identified."),
+    "normal-form": ("Normal form", "A term with no β-redex. By Church–Rosser it is unique up to α when it exists. Ω = (λx.xx)(λx.xx) has none."),
+    "church-rosser": ("Church–Rosser (confluence)", "If t reduces to u1 and to u2, both reduce to a common v. Hence normal forms are unique — 'the answer' is order-independent."),
+    "church-encoding": ("Church encoding", "Data as pure functions: true=λt f.t, false=λt f.f, numeral n=λf x.fⁿx, pow=λm n.n m. Try: nf PLUS 2 3"),
+    "church-numeral": ("Church numeral", "n = λf x. f(f(…(f x))) — apply f to x, n times. Arithmetic is composition. Try: church 3 or peano 3"),
+    "y-combinator": ("Y-combinator", "Y = λf.(λx.f(x x))(λx.f(x x)) satisfies Y f → f (Y f): a fixed point of any f, giving recursion in the pure calculus."),
+    "curry-howard": ("Curry–Howard correspondence", "Propositions ARE types; proofs ARE terms. → is a function, ∧ a product, ∨ a sum, ⊥ the empty type, ∀ a Π, ∃ a Σ; β-reduction is proof normalization."),
+    "type-judgment": ("Typing judgment", "Γ ⊢ t : A — in context Γ, term t has type A. Type theory is a system of rules for deriving such judgments."),
+    "stlc": ("Simply-typed λ-calculus", "Types A ::= o | A→B; three rules (var/abs/app). Every well-typed term is strongly normalizing, so the Y-combinator is untypable."),
+    "dependent-type": ("Dependent type", "A type may depend on a term: Π-types generalize → and encode ∀; Σ-types generalize × and encode ∃. The core of MLTT and Lean."),
+    "s-combinator": ("The S combinator", "S f g x = f x (g x). Its type (p→q→r)→(p→q)→p→r is a tautology whose proof IS S — the Rosetta stone proved in all four provers. Try: lean s_comb"),
+    "lean": ("Lean 4", "A proof assistant on the Calculus of Inductive Constructions. Term & tactic mode; Prop vs Type; standard library Mathlib (~283k theorems). Try: lean add_comm"),
+    "autoformalization": ("Autoformalization", "Statement autoformalization (NL → formal statement) vs proof autoformalization (find a kernel-checkable proof). LLM proposes, kernel disposes. See Lecture 6 and the EML project."),
+    "eml": ("EML project", "Lean 4 formalization of arXiv:2603.21852: 36 elementary-function primitives realized by EMLTerm witnesses whose eval? provably matches; 100 theorems, sorry-free, 8062 kernel jobs."),
+}
+
+# Self-check quiz: (question, expected-answer source). The answer is checked
+# by normalizing the learner's term and comparing up to α-equivalence.
+QUIZ_QS = [
+    ("Reduce  AND TRUE TRUE  — what Church boolean do you get?", "TRUE"),
+    ("What is  PLUS 2 2  as a Church numeral?", "4"),
+    ("Reduce  NOT FALSE .", "TRUE"),
+    ("Normal form of  (\\x. x) (\\y. y) ?", "\\y. y"),
+    ("What is  MULT 2 3 ?", "6"),
+    ("Reduce  FST (PAIR TRUE FALSE) .", "TRUE"),
+    ("What is  PRED 3 ?", "2"),
+    ("Is  OR FALSE FALSE  true or false? (answer TRUE or FALSE)", "FALSE"),
+]
 
 
 def _lines(*rows: str) -> str:
@@ -123,6 +157,8 @@ def _decode_note(t) -> Optional[str]:
 class LabSession:
     def __init__(self) -> None:
         self.history: List[str] = []
+        self.quiz: Optional[str] = None   # expected-answer source while a quiz question is open
+        self.quiz_idx: int = 0
 
     # -- dispatch ------------------------------------------------------------
     def run(self, line: str) -> str:
@@ -138,6 +174,9 @@ class LabSession:
             if handler is None:
                 if cmd in DESKTOP_ONLY:
                     return self._desktop_only(cmd)
+                # a quiz is open and this isn't a command → treat the line as the answer
+                if self.quiz is not None:
+                    return self._answer_quiz(line)
                 # bare term? try to reduce it.
                 if any(ch in line for ch in "λ\\.()") or line.isidentifier():
                     return self.cmd_reduce(line)
@@ -167,6 +206,8 @@ class LabSession:
             f"  {green('decode')} {dim('<term>')}    normalize and read off a number / boolean",
             f"  {green('alpha')} {dim('<t> = <t>')}  are two terms the same function? (α-equivalence)",
             f"  {green('lean')} {dim('[name]')}      show a course Lean snippet, read-only",
+            f"  {green('kb')} {dim('[topic]')}       look up a concept (knowledge base)",
+            f"  {green('quiz')}              a self-check question (answer with a term)",
             f"  {green('constants')}         list every named constant",
             f"  {green('tour')}              a 60-second guided tour",
             f"  {green('about')}             what this is",
@@ -371,6 +412,53 @@ class LabSession:
         return _lines(
             yellow(f"'{cmd}'") + dim(" lives in the full desktop Lambda Lab ") + blue("(github.com/nasqret/falenty-2026)") + dim(hint),
             dim("This in-browser lab covers: ") + green("reduce nf church numeral peano lam expand decode alpha lean tour") + dim(". Type ") + bold("help") + dim("."),
+        )
+
+    def cmd_kb(self, arg: str) -> str:
+        q = arg.strip().lower().replace(" ", "-")
+        if not q:
+            return _lines(
+                bold(magenta("Knowledge base")) + dim("  · kb <topic>"),
+                "  " + "  ".join(green(k) for k in KB),
+                dim("  e.g. ") + yellow("kb curry-howard") + dim("  ·  ") + yellow("kb y-combinator"),
+            )
+        key = q if q in KB else (next((k for k in KB if k.startswith(q)), None)
+                                 or next((k for k in KB if q in k), None))
+        if key is None:
+            return red(f"No entry for {arg.strip()!r}. ") + dim("Try ") + bold("kb") + dim(" for the list.")
+        title, body = KB[key]
+        return _lines(bold(magenta(title)), "  " + body)
+
+    def cmd_quiz(self, arg: str) -> str:
+        if arg.strip().lower() in ("stop", "quit", "off"):
+            self.quiz = None
+            return dim("quiz closed.")
+        q, ans = QUIZ_QS[self.quiz_idx % len(QUIZ_QS)]
+        self.quiz_idx += 1
+        self.quiz = ans
+        return _lines(
+            bold(magenta("Quiz")) + dim(f"  · question {self.quiz_idx}"),
+            "  " + q,
+            dim("  answer with a λ-term or number, then Enter   (") + yellow("quiz stop") + dim(" to end)"),
+        )
+
+    def _answer_quiz(self, line: str) -> str:
+        expected = self.quiz or ""
+        self.quiz = None
+        nxt = dim("  type ") + bold("quiz") + dim(" for the next question.")
+        if line.strip().upper() == expected.strip().upper():
+            return _lines(green("✓ correct!"), nxt)
+        try:
+            got = lc.normalize(parse(_prepare(line.strip())), max_steps=1000)
+            want = lc.normalize(parse(_prepare(expected)), max_steps=1000)
+        except Exception:
+            return _lines(red("Could not read that as a term.") + dim(" (expected ") + cyan(expected) + dim(")"), nxt)
+        if lc.alpha_eq(got, want):
+            return _lines(green("✓ correct!") + dim("  " + lc.pretty(got)), nxt)
+        return _lines(
+            red("✗ not quite.") + dim("  you gave ") + cyan(lc.pretty(got)),
+            dim("  expected ") + cyan(lc.pretty(want)),
+            nxt,
         )
 
     def cmd_tour(self, arg: str) -> str:
