@@ -61,5 +61,32 @@ jobs:
               out = s.run(cmd)
               assert out, f"empty output for {cmd!r}"
               print(cmd, "->", repr(out[:60]))
+          # kb + quiz smoke
+          assert "Curry" in s.run("kb curry-howard")
+          assert "question" in s.run("quiz")
           print("OK")
           PY
+
+  rocq:
+    name: Rocq artifacts (statements 1–5, incl. √2)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Coq/Rocq
+        run: sudo apt-get update && sudo apt-get install -y coq
+      - name: Compile
+        working-directory: artifacts/rocq
+        run: |
+          coqc Artifacts.v
+          coqc Sqrt2.v
+
+  agda:
+    name: Agda artifact (statements 1–4)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Agda
+        run: sudo apt-get update && sudo apt-get install -y agda
+      - name: Type-check
+        working-directory: artifacts/agda
+        run: agda Artifacts.agda

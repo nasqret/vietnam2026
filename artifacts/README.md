@@ -7,8 +7,8 @@ not the theorems.
 | Prover | Foundation | Proof style | Standard library | Status here |
 |--------|-----------|-------------|------------------|-------------|
 | **[Lean 4](lean/)** | Calculus of Inductive Constructions (CIC) | tactic + term | Mathlib | ✅ kernel-checked locally, `sorry`-free, **no axioms** |
-| **[Agda](agda/)** | Martin-Löf Type Theory (MLTT) | dependently-typed functional | agda-stdlib | ✍️ authored (MLTT), CI-checked |
-| **[Rocq](rocq/)** (ex-Coq) | Calculus of Inductive Constructions (CIC) | tactic (Ltac) | Rocq stdlib · MathComp | ✍️ authored (CIC), CI-checked |
+| **[Agda](agda/)** | Martin-Löf Type Theory (MLTT) | dependently-typed functional | built-ins only (here) | ✅ type-checks with **Agda 2.8.0** (statements 1–4) |
+| **[Rocq](rocq/)** (ex-Coq) | Calculus of Inductive Constructions (CIC) | tactic (Ltac) | Rocq stdlib · MathComp | ✅ compiled with **Rocq 9.2** (statements 1–5, incl. √2) |
 | **[Mizar](mizar/)** | Tarski–Grothendieck **set** theory + classical FOL | declarative (Jaśkowski) | Mizar Mathematical Library | 📝 illustrative of style (not installed here) |
 
 The three type-theoretic systems (Lean, Agda, Rocq) share **propositions-as-types**: a proof of a
@@ -82,9 +82,11 @@ strong induction closes it. It lives in [`lean/Artifacts/Sqrt2.lean`](lean/Artif
 in the fast default `lake build`, and is `sorry`-free — `#print axioms no_sqrt2` reports only `propext`
 and `Quot.sound` (Lean's two standard kernel axioms; no `Classical`, no `sorryAx`).
 
-This is the **Lean-verified centerpiece**; the identical descent transfers to Agda and Rocq (the parity
-lemma and the strong-induction skeleton are the only prover-specific parts). We keep the machine-checked
-copy in Lean, where it is verified locally, rather than ship an unchecked transcription.
+√2 is now **machine-verified in two foundations**: the Lean 4 core proof above, and a Rocq 9.2 version in
+[`rocq/Sqrt2.v`](rocq/Sqrt2.v) (`Sqrt2Descent.no_sqrt2`), where `nia` discharges the nonlinear algebra so
+the descent is tighter. Same theorem, same infinite-descent idea, CIC both times — the parity lemma and
+the strong-induction skeleton are the only prover-specific parts. An Agda (MLTT) transcription follows
+once its toolchain is in place.
 
 ## Reproduce
 
@@ -95,8 +97,8 @@ cd lean && lake build            # → Built Artifacts; #print axioms shows none
 # Agda (if installed):
 cd agda && agda Artifacts.agda
 
-# Rocq (if installed):
-cd rocq && rocq compile Artifacts.v      # or: coqc Artifacts.v
+# Rocq (verified with Rocq 9.2):
+cd rocq && coqc Artifacts.v && coqc Sqrt2.v      # or: rocq compile Artifacts.v Sqrt2.v
 
 # Mizar: see mizar/artifact.miz — illustrative; run under a Mizar install against the MML.
 ```

@@ -97,6 +97,17 @@ KB = {
     "lean": ("Lean 4", "A proof assistant on the Calculus of Inductive Constructions. Term & tactic mode; Prop vs Type; standard library Mathlib (~283k theorems). Try: lean add_comm"),
     "autoformalization": ("Autoformalization", "Statement autoformalization (NL → formal statement) vs proof autoformalization (find a kernel-checkable proof). LLM proposes, kernel disposes. See Lecture 6 and the EML project."),
     "eml": ("EML project", "Lean 4 formalization of arXiv:2603.21852: 36 elementary-function primitives realized by EMLTerm witnesses whose eval? provably matches; 100 theorems, sorry-free, 8062 kernel jobs."),
+    "free-variables": ("Free and bound variables", "An occurrence of x is bound if under a λx that binds it, else free. FV(t) collects the free ones. Substitution must not capture free variables. Try: lam \\x. y (\\y. x)"),
+    "bhk": ("BHK interpretation", "A proof is a construction: of A∧B a pair; of A∨B a tagged choice; of A→B a method; of ⊥ nothing. The semantics behind Curry–Howard."),
+    "natural-deduction": ("Natural deduction", "Each connective has introduction rules (how to prove it) and elimination rules (how to use it). Under Curry–Howard these are the term formers of the matching type."),
+    "intuitionistic": ("Intuitionistic vs classical", "Intuitionistic logic drops excluded middle A∨¬A and ¬¬A→A: a constructive proof must exhibit a witness. Mathlib is classical; the core Curry–Howard moves stay constructive."),
+    "church-vs-curry": ("Church vs Curry typing", "Church: terms carry type annotations, unique type, checking. Curry: bare terms, many types, a principal type computed by unification (Hindley–Milner)."),
+    "mltt": ("Martin-Löf Type Theory", "MLTT = dependent Π/Σ, identity types Id_A(a,b), inductive types (elimination = induction), and a universe hierarchy U0:U1:… The foundation of Agda."),
+    "four-foundations": ("Four foundations", "Lean = CIC, Rocq = CIC, Agda = MLTT, Mizar = Tarski–Grothendieck set theory. The same S-combinator statement, four idioms — see the artifacts."),
+    "mathlib": ("Mathlib", "Lean's community mathematics library: ~283k theorems, >2M lines. Search with exact?/apply?, Loogle, LeanSearch. (polyrith is retired.)"),
+    "tactic-mode": ("Term mode vs tactic mode", "A proof term and a tactic script build the SAME kernel object. Starter tactics: rfl exact intro apply rw simp induction rcases omega decide."),
+    "agda": ("Agda", "A dependently-typed functional language / proof assistant on MLTT. Note its + recurses on the first argument (the mirror of Lean's Nat)."),
+    "mizar": ("Mizar", "The set-theoretic outlier: classical FOL over Tarski–Grothendieck set theory, declarative proofs, the Mizar Mathematical Library (1493 articles). No propositions-as-types."),
 }
 
 # Self-check quiz: (question, expected-answer source). The answer is checked
@@ -110,6 +121,14 @@ QUIZ_QS = [
     ("Reduce  FST (PAIR TRUE FALSE) .", "TRUE"),
     ("What is  PRED 3 ?", "2"),
     ("Is  OR FALSE FALSE  true or false? (answer TRUE or FALSE)", "FALSE"),
+    ("What is  SUCC (SUCC 0) ?", "2"),
+    ("What is  POW 2 3 ?", "8"),
+    ("Reduce  AND FALSE TRUE .", "FALSE"),
+    ("What is  SUB 5 2 ?", "3"),
+    ("Reduce  SND (PAIR TRUE FALSE) .", "FALSE"),
+    ("Is  ISZERO 0  true or false? (TRUE or FALSE)", "TRUE"),
+    ("Is  ISZERO 2  true or false? (TRUE or FALSE)", "FALSE"),
+    ("What is  MULT 3 3 ?", "9"),
 ]
 
 
