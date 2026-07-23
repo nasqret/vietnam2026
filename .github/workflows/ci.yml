@@ -43,29 +43,16 @@ jobs:
           lake env lean /tmp/check.lean
 
   lab-engine:
-    name: Lambda Lab engine smoke test
+    name: Lambda Lab engine regression suite
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Run driver commands
+      - name: Run the semantic regression / property suite
         working-directory: lab-lambda/py
-        run: |
-          python3 - <<'PY'
-          import sys; sys.path.insert(0, ".")
-          import driver
-          s = driver.get_session()
-          for cmd, expect in [("nf PLUS 2 3", "5"), ("nf MULT 2 3", "6"), ("reduce AND TRUE FALSE", "")]:
-              out = s.run(cmd)
-              assert out, f"empty output for {cmd!r}"
-              print(cmd, "->", repr(out[:60]))
-          # kb + quiz smoke
-          assert "Curry" in s.run("kb curry-howard")
-          assert "question" in s.run("quiz")
-          print("OK")
-          PY
+        run: python -m unittest discover -s tests -v
 
   rocq:
     name: Rocq artifacts (statements 1–5, incl. √2)

@@ -58,3 +58,6 @@ artifacts/rocq/.lia.cache
 artifacts/rocq/.nia.cache
 **/.lia.cache
 **/.nia.cache
+
+# audit input bundle (report preserved in docs/lambda-lab-audit.md)
+src/*.zip

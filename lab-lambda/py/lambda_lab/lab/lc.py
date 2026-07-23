@@ -1,26 +1,12 @@
-"""Rdzeń rachunku λ: AST, α-konwersja, podstawienie, β/η-redukcja.
-
-Zaadaptowane z ``sources/lambda/book/lc_core.py`` z dodatkowym wsparciem dla:
-- ładnego pretty-printingu z minimalną liczbą nawiasów,
-- śladu redukcji z informacją o zastosowanej regule,
-- „środowiska stałych” (np. TRUE/FALSE/0/SUCC).
-"""
+"""Untyped lambda-calculus core: AST, capture-avoiding substitution and beta reduction."""
 
 from __future__ import annotations
 
 import sys
 from dataclasses import dataclass
-from typing import Dict, Iterator, List, Optional, Set, Tuple, Union
+from typing import Iterator, List, Optional, Set, Tuple, Union
 
-# Wiele redukcji Churcha tworzy głębokie drzewa aplikacji. Podnosimy limit rekurencji
-# raz dla całej aplikacji, żeby użytkownik nigdy nie trafił na RecursionError przy
-# tak „rachunkowych” termach jak `PLUS 2 3` czy `MULT 3 3`.
 sys.setrecursionlimit(max(sys.getrecursionlimit(), 10_000))
-
-
-# ---------------------------------------------------------------------------
-# AST
-# ---------------------------------------------------------------------------
 
 
 @dataclass(frozen=True)
@@ -43,21 +29,8 @@ class App:
 Term = Union[Var, Lam, App]
 
 
-# ---------------------------------------------------------------------------
-# Pretty printing — minimal parentheses
-# ---------------------------------------------------------------------------
-
-
 def _alpha_rename_unique(t: Term) -> Term:
-    """Zwraca α-równoważny term, w którym KAŻDA λ-bindowana zmienna ma
-    unikalną nazwę względem każdego nadrzędnego wiązania i każdej zmiennej
-    wolnej. Czysto wizualne — używane tylko do prettyprintu, AST przed/po
-    redukcji jest niezmienione (β-redukcja i tak działa capture-avoiding).
-
-    Polityka świeżości: do nazwy doklejamy kolejne ``'`` (prim).
-    Po trzech primach dokładamy numer (``f'''2``), żeby uniknąć ciągów
-    typu ``f'''''``.
-    """
+    """Return an alpha-equivalent term with unique printed binder names."""
     used: Set[str] = set(free_vars(t))
 
     def fresh_name(hint: str) -> str:
@@ -74,60 +47,46 @@ def _alpha_rename_unique(t: Term) -> Term:
             candidate = f"{stem}{n}"
         return candidate
 
-    def go(t: Term, env: dict[str, str]) -> Term:
-        if isinstance(t, Var):
-            return Var(env.get(t.name, t.name))
-        if isinstance(t, Lam):
-            new_param = fresh_name(t.param)
+    def go(node: Term, env: dict[str, str]) -> Term:
+        if isinstance(node, Var):
+            return Var(env.get(node.name, node.name))
+        if isinstance(node, Lam):
+            new_param = fresh_name(node.param)
             used.add(new_param)
-            new_env = {**env, t.param: new_param}
-            return Lam(new_param, go(t.body, new_env))
-        if isinstance(t, App):
-            return App(go(t.fn, env), go(t.arg, env))
-        raise TypeError(f"Unknown term: {t!r}")
+            return Lam(new_param, go(node.body, {**env, node.param: new_param}))
+        if isinstance(node, App):
+            return App(go(node.fn, env), go(node.arg, env))
+        raise TypeError(f"Unknown term: {node!r}")
 
     return go(t, {})
 
 
 def pretty(t: Term, *, lam: str = "λ", rename: bool = True) -> str:
-    """Wypisz term w notacji zwyczajowej: λx. x (y z).
-
-    ``rename=True`` (domyślnie) wykonuje czysto wizualne α-przemianowanie
-    do unikalnych nazw — dzięki czemu wynik typu ``λx f. λf'. x`` nie
-    ma mylącego shadowingu (zamiast ``λx f. λf. x``).
-    """
+    """Pretty-print with minimal parentheses."""
     if rename:
         t = _alpha_rename_unique(t)
 
-    def go(t: Term, ctx: str) -> str:
-        if isinstance(t, Var):
-            return t.name
-        if isinstance(t, Lam):
-            params = [t.param]
-            body: Term = t.body
+    def go(node: Term, ctx: str) -> str:
+        if isinstance(node, Var):
+            return node.name
+        if isinstance(node, Lam):
+            params = [node.param]
+            body: Term = node.body
             while isinstance(body, Lam):
                 params.append(body.param)
                 body = body.body
-            s = f"{lam}{' '.join(params)}. {go(body, 'lam')}"
-            return s if ctx == "top" else f"({s})"
-        if isinstance(t, App):
-            left = go(t.fn, "app-left")
-            right = go(t.arg, "app-right")
-            s = f"{left} {right}"
-            return s if ctx in ("top", "lam", "app-left") else f"({s})"
-        raise TypeError(f"Unknown term: {t!r}")
+            text = f"{lam}{' '.join(params)}. {go(body, 'lam')}"
+            return text if ctx == "top" else f"({text})"
+        if isinstance(node, App):
+            text = f"{go(node.fn, 'app-left')} {go(node.arg, 'app-right')}"
+            return text if ctx in ("top", "lam", "app-left") else f"({text})"
+        raise TypeError(f"Unknown term: {node!r}")
 
     return go(t, "top")
 
 
 def show_ascii(t: Term) -> str:
-    """Wypisz term w ASCII (z ``\\``)."""
     return pretty(t, lam="\\")
-
-
-# ---------------------------------------------------------------------------
-# Free / bound variables, α-renaming
-# ---------------------------------------------------------------------------
 
 
 def free_vars(t: Term) -> Set[str]:
@@ -148,6 +107,22 @@ def all_vars(t: Term) -> Set[str]:
     if isinstance(t, App):
         return all_vars(t.fn) | all_vars(t.arg)
     raise TypeError(f"Unknown term: {t!r}")
+
+
+def term_size(t: Term, *, stop_after: Optional[int] = None) -> int:
+    """Count AST nodes iteratively; optionally stop after a safety threshold."""
+    count = 0
+    stack = [t]
+    while stack:
+        node = stack.pop()
+        count += 1
+        if stop_after is not None and count > stop_after:
+            return count
+        if isinstance(node, Lam):
+            stack.append(node.body)
+        elif isinstance(node, App):
+            stack.extend((node.fn, node.arg))
+    return count
 
 
 def _rename_bound(body: Term, old: str, new: str) -> Term:
@@ -181,6 +156,7 @@ def alpha_rename(lam: Lam, new_param: str) -> Lam:
 
 
 def subst(t: Term, var: str, repl: Term) -> Term:
+    """Capture-avoiding substitution t[var := repl]."""
     if isinstance(t, Var):
         return repl if t.name == var else t
     if isinstance(t, App):
@@ -192,37 +168,41 @@ def subst(t: Term, var: str, repl: Term) -> Term:
             return t
         if t.param in free_vars(repl):
             used = all_vars(t.body) | all_vars(repl) | {var, t.param}
-            new_param = fresh(used, t.param)
-            renamed = alpha_rename(t, new_param)
+            renamed = alpha_rename(t, fresh(used, t.param))
             return Lam(renamed.param, subst(renamed.body, var, repl))
         return Lam(t.param, subst(t.body, var, repl))
     raise TypeError(f"Unknown term: {t!r}")
 
 
-def alpha_eq(a: Term, b: Term,
-             env_ab: Optional[Dict[str, str]] = None,
-             env_ba: Optional[Dict[str, str]] = None) -> bool:
-    env_ab = env_ab or {}
-    env_ba = env_ba or {}
-    if isinstance(a, Var) and isinstance(b, Var):
-        if a.name in env_ab:
-            return env_ab[a.name] == b.name
-        if b.name in env_ba:
-            return False
-        return a.name == b.name
-    if isinstance(a, App) and isinstance(b, App):
-        return alpha_eq(a.fn, b.fn, env_ab, env_ba) and alpha_eq(a.arg, b.arg, env_ab, env_ba)
-    if isinstance(a, Lam) and isinstance(b, Lam):
-        nab = dict(env_ab); nba = dict(env_ba)
-        nab[a.param] = b.param
-        nba[b.param] = a.param
-        return alpha_eq(a.body, b.body, nab, nba)
-    return False
+def _bound_index(name: str, binders: Tuple[str, ...]) -> Optional[int]:
+    """De Bruijn index of ``name`` relative to the nearest enclosing binder."""
+    for index, binder in enumerate(reversed(binders)):
+        if name == binder:
+            return index
+    return None
 
 
-# ---------------------------------------------------------------------------
-# β / η redukcja
-# ---------------------------------------------------------------------------
+def alpha_eq(a: Term, b: Term) -> bool:
+    """True exactly when two terms differ only by bound-variable names.
+
+    Binder stacks, rather than dictionaries keyed by variable name, are essential:
+    dictionaries lose information when a binder shadows another binder.
+    """
+
+    def go(left: Term, right: Term, env_l: Tuple[str, ...], env_r: Tuple[str, ...]) -> bool:
+        if isinstance(left, Var) and isinstance(right, Var):
+            li = _bound_index(left.name, env_l)
+            ri = _bound_index(right.name, env_r)
+            if li is None or ri is None:
+                return li is None and ri is None and left.name == right.name
+            return li == ri
+        if isinstance(left, App) and isinstance(right, App):
+            return go(left.fn, right.fn, env_l, env_r) and go(left.arg, right.arg, env_l, env_r)
+        if isinstance(left, Lam) and isinstance(right, Lam):
+            return go(left.body, right.body, env_l + (left.param,), env_r + (right.param,))
+        return False
+
+    return go(a, b, (), ())
 
 
 def is_redex(t: Term) -> bool:
@@ -231,19 +211,22 @@ def is_redex(t: Term) -> bool:
 
 @dataclass(frozen=True)
 class Step:
-    """Jeden krok redukcji: przed → po, z opisem reguły i zaznaczoną ścieżką."""
     before: Term
     after: Term
-    rule: str                 # "β", "η", "α"
+    rule: str
     redex_path: Tuple[int, ...]
     note: str = ""
 
 
-def _find_outermost_redex(t: Term, path: Tuple[int, ...] = ()) -> Optional[Tuple[Term, Tuple[int, ...]]]:
-    """Znajdź najbardziej zewnętrzny, najbardziej lewy redeks (normal-order).
+@dataclass(frozen=True)
+class ReductionResult:
+    term: Term
+    steps: int
+    complete: bool
+    reason: str = ""
 
-    Zwraca ``(redex, path)`` albo ``None``, jeżeli term jest w postaci normalnej.
-    """
+
+def _find_outermost_redex(t: Term, path: Tuple[int, ...] = ()) -> Optional[Tuple[Term, Tuple[int, ...]]]:
     if is_redex(t):
         return t, path
     if isinstance(t, App):
@@ -256,13 +239,17 @@ def _find_outermost_redex(t: Term, path: Tuple[int, ...] = ()) -> Optional[Tuple
     return None
 
 
-def beta_step(t: Term) -> Optional[Step]:
-    """Jeden krok β-redukcji w strategii normal-order.
+def _find_head_redex(t: Term, path: Tuple[int, ...] = ()) -> Optional[Tuple[Term, Tuple[int, ...]]]:
+    """Find the next normal-order redex needed for weak-head normalization."""
+    if is_redex(t):
+        return t, path
+    if isinstance(t, App):
+        return _find_head_redex(t.fn, path + (0,))
+    # WHNF does not reduce under lambdas or inside arguments.
+    return None
 
-    ``Step.after`` zawiera tylko *podstawiony* fragment (co wstawiamy w ``redex_path``).
-    Całkowite nowe drzewo otrzymuje się przez ``_apply_step(t, step.redex_path, step.after)``.
-    """
-    found = _find_outermost_redex(t)
+
+def _step_at(found: Optional[Tuple[Term, Tuple[int, ...]]]) -> Optional[Step]:
     if found is None:
         return None
     redex, path = found
@@ -277,34 +264,15 @@ def beta_step(t: Term) -> Optional[Step]:
     )
 
 
-def trace(t: Term, *, max_steps: int = 200) -> List[Term]:
-    """Śledź kolejne postacie redukcji; zwraca listę termów łącznie z wejściowym."""
-    out: List[Term] = [t]
-    current = t
-    for _ in range(max_steps):
-        step = beta_step(current)
-        if step is None:
-            break
-        current = _apply_step(current, step.redex_path, step.after)
-        out.append(current)
-    return out
+def beta_step(t: Term) -> Optional[Step]:
+    return _step_at(_find_outermost_redex(t))
 
 
-def trace_steps(t: Term, *, max_steps: int = 200) -> Iterator[Step]:
-    """Generator szczegółowych kroków — do ładnej animacji."""
-    current = t
-    for _ in range(max_steps):
-        step = beta_step(current)
-        if step is None:
-            return
-        next_term = _apply_step(current, step.redex_path, step.after)
-        yield Step(before=current, after=next_term,
-                   rule=step.rule, redex_path=step.redex_path, note=step.note)
-        current = next_term
+def whnf_step(t: Term) -> Optional[Step]:
+    return _step_at(_find_head_redex(t))
 
 
 def _apply_step(root: Term, path: Tuple[int, ...], patch: Term) -> Term:
-    """Podstaw ``patch`` w ``root`` w punkcie opisanym przez ``path``."""
     if not path:
         return patch
     head, *rest = path
@@ -319,8 +287,65 @@ def _apply_step(root: Term, path: Tuple[int, ...], patch: Term) -> Term:
     raise IndexError(f"Bad path {path} for term {root!r}")
 
 
+def trace(t: Term, *, max_steps: int = 200) -> List[Term]:
+    out: List[Term] = [t]
+    current = t
+    for _ in range(max_steps):
+        step = beta_step(current)
+        if step is None:
+            break
+        current = _apply_step(current, step.redex_path, step.after)
+        out.append(current)
+    return out
+
+
+def trace_steps(t: Term, *, max_steps: int = 200) -> Iterator[Step]:
+    current = t
+    for _ in range(max_steps):
+        step = beta_step(current)
+        if step is None:
+            return
+        next_term = _apply_step(current, step.redex_path, step.after)
+        yield Step(current, next_term, step.rule, step.redex_path, step.note)
+        current = next_term
+
+
+def _reduce_checked(
+    t: Term,
+    step_fn,
+    *,
+    max_steps: int,
+    max_nodes: Optional[int] = None,
+) -> ReductionResult:
+    current = t
+    if max_nodes is not None and term_size(current, stop_after=max_nodes) > max_nodes:
+        return ReductionResult(current, 0, False, "node-limit")
+    steps = 0
+    while steps < max_steps:
+        step = step_fn(current)
+        if step is None:
+            return ReductionResult(current, steps, True)
+        current = _apply_step(current, step.redex_path, step.after)
+        steps += 1
+        if max_nodes is not None and term_size(current, stop_after=max_nodes) > max_nodes:
+            return ReductionResult(current, steps, False, "node-limit")
+    # One non-mutating look-ahead distinguishes exact-bound completion from exhaustion.
+    complete = step_fn(current) is None
+    return ReductionResult(current, steps, complete, "" if complete else "step-limit")
+
+
+def normalize_checked(
+    t: Term, *, max_steps: int = 500, max_nodes: Optional[int] = None
+) -> ReductionResult:
+    return _reduce_checked(t, beta_step, max_steps=max_steps, max_nodes=max_nodes)
+
+
+def whnf_checked(
+    t: Term, *, max_steps: int = 500, max_nodes: Optional[int] = None
+) -> ReductionResult:
+    return _reduce_checked(t, whnf_step, max_steps=max_steps, max_nodes=max_nodes)
+
+
 def normalize(t: Term, *, max_steps: int = 500) -> Term:
-    """Zwróć postać normalną, jeżeli istnieje w zadanym limicie kroków."""
-    for term in trace(t, max_steps=max_steps):
-        last = term
-    return last  # type: ignore[possibly-unbound]
+    """Compatibility wrapper; callers needing correctness must inspect complete."""
+    return normalize_checked(t, max_steps=max_steps).term
