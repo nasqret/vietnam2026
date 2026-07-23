@@ -84,3 +84,26 @@ of `classical-foundations-ann`.
 - Deepen L1–L3 book chapters from the falenty-2026 notebooks; build the six reveal.js decks.
 - Extend the shared artifact set (√2 irrational, an EML-flavoured evaluation) across all four provers.
 - Wire more lab commands (`tour` variants, `quiz`, `kb`) into the browser build.
+
+### Day 1 (cont.) — lecture notes, slides, and second-wave artifacts (all live)
+
+- **Six full lecture notes.** Expanded every book chapter into a rigorous 3.5k–4.4k-word lecture note
+  (definitions, theorem statements + proofs/sketches, 3–4 worked examples, "run it" boxes, exercises,
+  references), grounded in the research dossiers + falenty-2026 + the EML repo — via a 12-agent
+  `atp-notes-and-slides` pipeline (0 errors). Book builds with **0 warnings**; all lab deep-links
+  absolutized; `artifacts/coq`→`rocq` fixed.
+- **Six reveal.js decks** (`slides/lecture1–6.html`, 15–16 slides each) built from each note off a
+  shared template; MathJax macros added to every deck.
+- **Artifacts, Statement 4** — a tiny EML-flavoured expression evaluator (`Tm`+`eval`, `eval_add`,
+  `eval_add_comm`) in Lean (kernel-checked, no axioms), Agda, Rocq.
+- **Lab commands** `peano`, `alpha`, `lean`, plus a graceful "desktop-only" responder (ch/kb/tutorial/…),
+  so every `?cmd=` deep-link in the notes resolves.
+- **Live:** landing cards wired to chapters + decks; slides picker clickable; site + lab redeployed;
+  all URLs 200. Repo `nasqret/vietnam2026` fully pushed and in sync.
+
+### Still open (Day 2+)
+
+- √2-irrational artifact across provers (Lean needs Mathlib — keep it out of the fast default build).
+- Deepen the browser lab (`quiz`/`kb` data), or link the desktop lab where those are referenced.
+- Visual browser QA pass of the live lab (Pyodide boot) once the Chrome extension is connected.
+- The Google Doc lecture titles (delivered as paste-ready text; no Docs write tool available).
