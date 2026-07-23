@@ -124,3 +124,15 @@ of `classical-foundations-ann`.
 - **Still desktop-only by design:** games, eml compile, aristotle, acorn, lang.
 - **Open:** promote the worker preview to stable after a browser check; service-worker offline after
   that; Playwright CI; real assistive-tech testing.
+
+## 2026-07-23 (night) — pedagogy pass: the notes learn to use their own laboratory
+
+- 13-reviewer teaching-quality fleet (102 raw → 44 confirmed findings; every proposed lab command
+  validated against the real driver) + 12 appliers. 22 new "Run it" moments weave prove/ch/eta/
+  debruijn/alligators/let/equiv into the exact teaching spots; one incorrect lab claim fixed
+  (`ch term` vs `ch lean`); intuition boxes added at the classic stall points.
+- Speaker notes on all 93 slides across the six decks (spoken lecturer script, drawn from the notes).
+- New: λ-calculus cheatsheet appendix (every definition + encoding + a runnable command per row);
+  intro.md "How to work with this course" workflow; landing lab card now names the prover/inference/
+  tutorials.
+- Verified: 0 warnings, 0 glitches on 9 pages, 93/93 slides with notes, 279 lab tests, live deploy.
