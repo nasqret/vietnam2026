@@ -50,3 +50,25 @@ Qed.
 
 (* Sanity checks *)
 Example two_plus_three : 2 + 3 = 3 + 2 := add_comm 2 3.
+
+(* ── Statement 4: a tiny expression evaluator (EML in miniature) ── *)
+
+Inductive Tm : Type :=
+  | lit  : nat -> Tm
+  | add_ : Tm -> Tm -> Tm
+  | mul_ : Tm -> Tm -> Tm.
+
+Fixpoint eval (t : Tm) : nat :=
+  match t with
+  | lit n    => n
+  | add_ a b => eval a + eval b
+  | mul_ a b => eval a * eval b
+  end.
+
+Example eval_one_plus_one : eval (add_ (lit 1) (lit 1)) = 2 := eq_refl.
+
+Theorem eval_add (a b : Tm) : eval (add_ a b) = eval a + eval b.
+Proof. reflexivity. Qed.
+
+Theorem eval_add_comm (a b : Tm) : eval (add_ a b) = eval (add_ b a).
+Proof. simpl. apply add_comm. Qed.

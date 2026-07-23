@@ -54,6 +54,18 @@ flips between them:
 Commutativity `n + m = m + n` (Statement 3) then follows by induction in each — see the source files.
 This tiny asymmetry is one of the most useful things a newcomer can internalize early.
 
+## Statement 4 — a tiny expression evaluator (EML in miniature)
+
+A first taste of Lecture 6's EML idea: a syntax tree with a denotation, plus a theorem relating syntax
+to value. The grammar is `1`/`+`/`·` over ℕ with an `eval` denotation; we prove `eval (1+1) = 2` (by
+`rfl`), that `eval` is syntax-directed on `add`, and that swapping summands preserves the value
+(transporting `add_comm` through the denotation). In the real
+[EML project](https://github.com/nasqret/eml-formalization) the leaves are complex constants and the
+denotation `eval?` is `Option ℂ`-valued — but the shape is exactly this.
+
+Verified in Lean (`sorry`-free, no axioms); authored in Agda and Rocq. This is the artifact that most
+directly foreshadows the capstone.
+
 ## Reproduce
 
 ```bash

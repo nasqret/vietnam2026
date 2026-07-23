@@ -74,4 +74,35 @@ theorem add_comm' (n m : Nat) : n + m = m + n := by
 example : (2 : Nat) + 3 = 3 + 2 := add_comm' 2 3
 example : (0 : Nat) + 7 = 7 := zero_add' 7
 
+/-! ## Statement 4 — a tiny expression evaluator (EML in miniature)
+
+A first taste of {doc}`Lecture 6 <l6_autoformalization>`'s EML idea: a syntax tree with a
+denotation, and theorems relating syntax to value. Here the grammar is `1`/`+`/`·` over `Nat` and the
+denotation is `eval`. In the real EML project the leaves are complex constants and `eval?` is an
+`Option ℂ`-valued partial denotation — but the shape is exactly this. -/
+
+/-- A little expression grammar (cf. EML's `EMLTerm`). -/
+inductive Tm where
+  | lit : Nat → Tm
+  | add : Tm → Tm → Tm
+  | mul : Tm → Tm → Tm
+
+/-- Its denotation into `Nat` (cf. EML's `eval?`). -/
+def eval : Tm → Nat
+  | .lit n   => n
+  | .add a b => eval a + eval b
+  | .mul a b => eval a * eval b
+
+/-- A concrete witness: the tree `1 + 1` evaluates to `2`, checked by the kernel. -/
+example : eval (.add (.lit 1) (.lit 1)) = 2 := rfl
+
+/-- Syntax-directed: `add` denotes `+` (definitional). -/
+theorem eval_add (a b : Tm) : eval (.add a b) = eval a + eval b := rfl
+
+/-- A structural theorem transported through the denotation: swapping the summands
+    does not change the value — because `+` on `ℕ` is commutative (`add_comm'`). -/
+theorem eval_add_comm (a b : Tm) : eval (.add a b) = eval (.add b a) := by
+  show eval a + eval b = eval b + eval a
+  exact add_comm' (eval a) (eval b)
+
 end Artifacts

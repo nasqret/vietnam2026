@@ -126,6 +126,7 @@ class LabSession:
             f"  {green('church')} {dim('<NAME|n>')}  show a Church constant or numeral",
             f"  {green('numeral')} {dim('<n>')}      the Church numeral n = λf x. fⁿ x",
             f"  {green('decode')} {dim('<term>')}    normalize and read off a number / boolean",
+            f"  {green('alpha')} {dim('<t> = <t>')}  are two terms the same function? (α-equivalence)",
             f"  {green('constants')}         list every named constant",
             f"  {green('tour')}              a 60-second guided tour",
             f"  {green('about')}             what this is",
@@ -265,6 +266,22 @@ class LabSession:
         t = parse(_prepare(arg))
         note = _decode_note(t)
         return "  " + (note if note else dim("Not a Church numeral or boolean."))
+
+    def cmd_alpha(self, arg: str) -> str:
+        if "=" not in arg:
+            return yellow("Usage: ") + "alpha <term> = <term>   e.g.  alpha AND TRUE FALSE = FALSE"
+        left, right = arg.split("=", 1)
+        t1 = lc.normalize(parse(_prepare(left.strip())), max_steps=1000)
+        t2 = lc.normalize(parse(_prepare(right.strip())), max_steps=1000)
+        same = lc.alpha_eq(t1, t2)
+        return _lines(
+            bold("α-equivalence") + dim("  (both sides normalized first)"),
+            "  left:  " + cyan(lc.pretty(t1)),
+            "  right: " + cyan(lc.pretty(t2)),
+            "  " + (green("≡  the same function (α-equivalent)") if same else red("≢  not equal")),
+        )
+
+    cmd_eq = cmd_alpha
 
     def cmd_tour(self, arg: str) -> str:
         demos = [

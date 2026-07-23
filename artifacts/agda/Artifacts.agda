@@ -67,3 +67,26 @@ add-suc (suc m) n = congS (add-suc m n)
 +-comm : (m n : Nat) → (m + n) ≡ (n + m)
 +-comm zero    n = sym (add-zero n)
 +-comm (suc m) n = trans (congS (+-comm m n)) (sym (add-suc n m))
+
+-- ── Statement 4: a tiny expression evaluator (EML in miniature) ─────────
+
+_*_ : Nat → Nat → Nat
+zero  * _ = zero
+suc m * n = n + (m * n)
+
+data Tm : Set where
+  lit : Nat → Tm
+  add : Tm → Tm → Tm
+  mul : Tm → Tm → Tm
+
+eval : Tm → Nat
+eval (lit n)   = n
+eval (add a b) = eval a + eval b
+eval (mul a b) = eval a * eval b
+
+eval-add : (a b : Tm) → eval (add a b) ≡ (eval a + eval b)
+eval-add a b = refl
+
+-- swapping summands preserves the value, via commutativity of +
+eval-add-comm : (a b : Tm) → eval (add a b) ≡ eval (add b a)
+eval-add-comm a b = +-comm (eval a) (eval b)
