@@ -465,6 +465,30 @@ The Lambda Lab's proof builder is this pipeline shrunk to the simply-typed core:
 The builder prints the *extracted λ-term* and its principal type: your tactic script was never the proof — the elaborated term is. That is the natural-deduction machinery of {doc}`l3_propositional` and this section's `Expr` story in one command.
 ```
 
+```{admonition} Why is Lean fast? Five implementation decisions
+:class: note
+**Self-hosting.** The elaborator and compiler are written *in Lean 4* (only the kernel and runtime are
+small C/C++ cores) — every optimization below exists because the developers are their own most
+demanding users.
+
+**Compile to C.** Code generation emits portable C; the system C compiler does native codegen. Run
+`lake build` in this course's `artifacts/lean` and look at `.lake/build/ir/Artifacts.c` — your Lean,
+as C.
+
+**Reference counting with reuse** ("Counting Immutable Beans", Ullrich–de Moura 2019). When a value's
+count is 1, the pure-functional runtime updates it destructively in place and *reuses* constructor
+cells across match-and-rebuild — pure code at imperative speed.
+
+**Memory-mapped imports.** A `.olean` is a *compacted region*: the module's whole object graph,
+serialized relocatably and simply `mmap`-ed on import — no per-object deserialization. That is why
+`import Mathlib` (gigabytes of checked mathematics) takes seconds.
+
+**Incremental and parallel everywhere.** Per-declaration elaboration, parallel module builds under
+`lake`, prebuilt Mathlib oleans via `lake exe cache get`, discrimination trees indexing instances and
+`simp` lemmas, and a kernel whose lazy unfolding is guided by definitional-height hints — which is
+what makes "names stay names, the kernel evaluates on demand" fast in practice, not merely principled.
+```
+
 ## Common pitfalls
 
 - **`Prop` is not `Type`.** You cannot pattern-match a proof of `∃ n, P n` to pull the witness `n` out as
