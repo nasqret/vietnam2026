@@ -107,3 +107,20 @@ of `classical-foundations-ann`.
 - Deepen the browser lab (`quiz`/`kb` data), or link the desktop lab where those are referenced.
 - Visual browser QA pass of the live lab (Pyodide boot) once the Chrome extension is connected.
 - The Google Doc lecture titles (delivered as paste-ready text; no Docs write tool available).
+
+## 2026-07-23 (evening) — the lab reaches feature-parity with the desktop (where feasible)
+
+- **Quality pass:** 55 book-rendering glitches → 0 (dollar-pairing + math-in-headings root causes);
+  40 adversarially-verified review findings applied (incl. two Lean proofs in notes/slides that never
+  compiled — fixed and compile-checked); hero artwork on the landing page; vendor bundle (Pyodide,
+  xterm, fonts — 14 MB) self-hosted for the worker preview.
+- **Desktop ports (6 agents):** `ch` (Algorithm W + Wajsberg inhabitation — Peirce demo restored),
+  `prove` (interactive Curry–Howard builder with ?ₙ holes and λ-term extraction), `tutorial` (all 12
+  chapters), `alligators`, `ag` replays, full `kb` (145 entries, search) and `quiz` (9 bundles, ~290
+  questions, 4 stray PL items translated).
+- **New commands from the improvement review:** `eta`, `debruijn`, `let`/`defs`/`undef`, redex
+  highlighting in `reduce`, `help <command>` topic pages; front-end TAB completion + localStorage
+  history. Builds 2026-07-23k / k-worker, both deployed. 279 unit tests + 18/18 e2e under real Pyodide.
+- **Still desktop-only by design:** games, eml compile, aristotle, acorn, lang.
+- **Open:** promote the worker preview to stable after a browser check; service-worker offline after
+  that; Playwright CI; real assistive-tech testing.
