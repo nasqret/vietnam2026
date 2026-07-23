@@ -1,12 +1,14 @@
 # VIASM 2026 — Automatic Theorem Proving in Mathematics
 # Build & deploy targets. See docs/BUILD.md and docs/DEPLOY.md.
 
-SERVER  := lts-faculty.wmi.amu.edu.pl
-SITE    := ~/public_html/vietnam2026
-LAB     := ~/public_html/lab-lambda
-STAGE   := _deploy/vietnam2026
+SERVER    := lts-faculty.wmi.amu.edu.pl
+SITE      := ~/public_html/vietnam2026
+LAB       := ~/public_html/lab-lambda
+LABNEXT   := ~/public_html/lab-lambda-next
+STAGE     := _deploy/vietnam2026
+STAGENEXT := _deploy/lab-lambda-next
 
-.PHONY: help book lean lab-serve stage deploy-site deploy-lab deploy clean
+.PHONY: help book lean lab-serve stage deploy-site deploy-lab deploy-lab-next deploy clean
 
 help:
 	@echo "Targets:"
@@ -16,6 +18,7 @@ help:
 	@echo "  make stage        assemble _deploy/vietnam2026 (landing + book + slides)"
 	@echo "  make deploy-site  rsync the site to $(SITE)"
 	@echo "  make deploy-lab   rsync the browser lab to $(LAB)"
+	@echo "  make deploy-lab-next  deploy the Web Worker preview to $(LABNEXT)"
 	@echo "  make deploy       stage + deploy-site + deploy-lab"
 	@echo "  make clean        remove build/stage artifacts"
 
@@ -44,7 +47,17 @@ deploy-site: stage
 	rsync -avz --delete $(STAGE)/ $(SERVER):$(SITE)/
 
 deploy-lab:
-	rsync -avz --delete --exclude '__pycache__' lab-lambda/ $(SERVER):$(LAB)/
+	rsync -avz --delete --exclude '__pycache__' --exclude 'worker' lab-lambda/ $(SERVER):$(LAB)/
+
+# Worker-based preview (Pyodide off the main thread + Stop) → /lab-lambda-next/
+deploy-lab-next:
+	rm -rf $(STAGENEXT) && mkdir -p $(STAGENEXT)
+	cp lab-lambda/worker/index.html $(STAGENEXT)/index.html
+	cp lab-lambda/worker/worker.js  $(STAGENEXT)/worker.js
+	cp lab-lambda/.htaccess         $(STAGENEXT)/.htaccess
+	rsync -a --exclude '__pycache__' --exclude 'tests' lab-lambda/py/ $(STAGENEXT)/py/
+	rsync -avz --delete $(STAGENEXT)/ $(SERVER):$(LABNEXT)/
+	@echo "Deployed worker preview → https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda-next/"
 
 deploy: deploy-site deploy-lab
 	@echo "Deployed:  https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026  +  /lab-lambda"
