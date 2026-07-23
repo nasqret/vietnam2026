@@ -51,10 +51,11 @@
   <script src="vendor/xterm/xterm.js"></script>
   <script src="vendor/xterm/addon-fit.js"></script>
   <script src="vendor/xterm/addon-web-links.js"></script>
+  <script src="vendor/xterm/addon-unicode11.js"></script>
   <script>
   (function(){
     "use strict";
-    const BUILD="2026-07-23k-worker";
+    const BUILD="2026-07-23l-worker";
     const PROMPT = "\x1b[92mλ>\x1b[0m ";
     const statusEl = document.getElementById("status");
     const quickEl = document.getElementById("quick");
@@ -76,6 +77,7 @@
     term.open(document.getElementById("terminal"));
     let fitAddon=null; try{ if(window.FitAddon){ fitAddon=new FitAddon.FitAddon(); term.loadAddon(fitAddon); fitAddon.fit(); } }catch(_e){}
     try{ if(window.WebLinksAddon) term.loadAddon(new WebLinksAddon.WebLinksAddon()); }catch(_e){}
+    try{ if(window.Unicode11Addon){ term.loadAddon(new Unicode11Addon.Unicode11Addon()); term.unicode.activeVersion = "11"; } }catch(_e){}
     window.addEventListener("resize", function(){ try{ if(fitAddon) fitAddon.fit(); }catch(_e){} });
 
     let buffer="", cursor=0, history=loadHistory(), histIdx=history.length, busy=true;

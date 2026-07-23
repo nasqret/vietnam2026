@@ -11,6 +11,7 @@ PYODIDE=0.28.3
 XTERM=5.5.0
 FIT=0.10.0
 WEBLINKS=0.11.0
+UNICODE11=0.8.0
 
 say() { printf '  %s\n' "$*"; }
 
@@ -25,6 +26,7 @@ curl -fsSL --retry 3 "https://cdn.jsdelivr.net/npm/@xterm/xterm@$XTERM/lib/xterm
 curl -fsSL --retry 3 "https://cdn.jsdelivr.net/npm/@xterm/xterm@$XTERM/css/xterm.css"  -o "$V/xterm/xterm.css"
 curl -fsSL --retry 3 "https://cdn.jsdelivr.net/npm/@xterm/addon-fit@$FIT/lib/addon-fit.js" -o "$V/xterm/addon-fit.js"
 curl -fsSL --retry 3 "https://cdn.jsdelivr.net/npm/@xterm/addon-web-links@$WEBLINKS/lib/addon-web-links.js" -o "$V/xterm/addon-web-links.js"
+curl -fsSL --retry 3 "https://cdn.jsdelivr.net/npm/@xterm/addon-unicode11@$UNICODE11/lib/addon-unicode11.js" -o "$V/xterm/addon-unicode11.js"
 say "$(ls "$V/xterm" | tr '\n' ' ')"
 
 echo "→ Fonts (Inter 400/600/700/800, JetBrains Mono 400/500/600 — latin woff2)"
