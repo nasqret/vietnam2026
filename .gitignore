@@ -52,3 +52,9 @@ scratch/
 
 # Deploy staging (make stage)
 /_deploy/
+
+# Coq/Rocq lia/nia caches
+artifacts/rocq/.lia.cache
+artifacts/rocq/.nia.cache
+**/.lia.cache
+**/.nia.cache
