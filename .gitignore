@@ -49,3 +49,6 @@ scratch/
 
 # Claude Code local settings
 .claude/
+
+# Deploy staging (make stage)
+/_deploy/
