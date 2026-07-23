@@ -1,4 +1,4 @@
-# Lecture 2 — Simple calculations with the Church $\lam$-calculus
+# Lecture 2 — Simple calculations with the Church λ-calculus
 
 ```{admonition} Abstract
 :class: tip
@@ -48,7 +48,7 @@ computation is a chain of reductions, "the answer" is a normal form, and the rea
 well-defined at all is a theorem (Church–Rosser). When Lean evaluates `#reduce` or accepts a proof by
 `rfl`, it is running a typed, terminating descendant of the machine we build today.
 
-## Syntax, binding, and $\alpha$-equivalence
+## Syntax, binding, and α-equivalence
 
 The object language has exactly three term formers:
 
@@ -135,7 +135,7 @@ bookkeeping shortcut, not a licence to ignore the phenomenon.
 otherwise occur.
 ```
 
-## $\beta$-reduction, $\eta$, and normal forms
+## β-reduction, η, and normal forms
 
 $\beta$-reduction is the **sole computation rule**. A **redex** is an application $(\lam x.\,t)\,u$, and
 
@@ -386,7 +386,7 @@ functions are $\lam$-definable*.
 [`nf EQ 2 2`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20EQ%202%202) $\to \mathtt{true}$.
 ```
 
-## Recursion via $Y$, and a taste of undecidability
+## Recursion via Y, and a taste of undecidability
 
 Names are absent from the pure calculus — there is no `def`, so a function cannot mention itself. Yet
 self-reference appears through a **fixed-point combinator**: any term $F$ such that $F\,g =_\beta g\,(F\,g)$

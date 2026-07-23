@@ -47,6 +47,8 @@ repository:
 sphinx:
   config:
     language: en
+    # Render inline $$...$$ as display math instead of corrupting `$` pairing
+    myst_dmath_double_inline: true
     mathjax3_config:
       tex:
         macros:

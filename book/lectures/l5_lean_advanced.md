@@ -323,7 +323,7 @@ The obligation is exactly $y \bmod (x+1) < x+1$, discharged by `Nat.mod_lt`. Con
 sidesteps the termination checker and the kernel entirely: it is fine for tooling but produces **no
 equation lemmas**, so you can prove *nothing* about it.
 
-## One theorem end-to-end: $\sqrt 2$ is irrational
+## One theorem end-to-end: √2 is irrational
 
 Bring the pieces together on a real theorem. Standing on the library, it is one line:
 
