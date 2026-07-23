@@ -80,6 +80,13 @@
       padding: 5.5rem 0 4.5rem;
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
+    .hero-bg {
+      position: absolute; top: 0; right: 0; width: 62%; height: 100%;
+      object-fit: cover; object-position: center; opacity: 0.5;
+      mask-image: linear-gradient(to left, rgba(0,0,0,0.95) 25%, transparent 95%);
+      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.95) 25%, transparent 95%);
+    }
+    @media (max-width: 860px) { .hero-bg { width: 100%; opacity: 0.26; } }
     .hero::after {
       content: ""; position: absolute; inset: 0; pointer-events: none;
       background-image:
@@ -209,6 +216,7 @@
 
   <!-- ===================== HERO ===================== -->
   <header class="hero">
+    <img class="hero-bg" src="assets/hero-formulas.jpg" alt="" aria-hidden="true">
     <div class="wrap hero-inner">
       <span class="hero-label">◆ VIASM Mini-Course · Hanoi 2026</span>
       <h1>An Introduction to Automatic Theorem Proving in Mathematics</h1>

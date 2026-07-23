@@ -30,7 +30,7 @@ artifacts/rocq/**/*.glob
 artifacts/rocq/**/.*.aux
 
 # ── Browser lab (vendored/built assets) ────────────────
-lab-lambda/vendor/*.whl
+lab-lambda/vendor/
 lab-lambda/_dist/
 
 # ── Node (only used for tooling, not committed) ────────
@@ -61,3 +61,6 @@ artifacts/rocq/.nia.cache
 
 # audit input bundle (report preserved in docs/lambda-lab-audit.md)
 src/*.zip
+
+# raw source assets (originals; optimized copies live in assets/)
+/src/

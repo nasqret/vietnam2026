@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lambda Lab (Worker preview) — in-browser λ-calculus · VIASM 2026</title>
   <meta name="description" content="A client-side lambda-calculus playground running Pyodide in a Web Worker with a Stop control. Preview build.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/css/xterm.css" integrity="sha384-8Xk9wy/gzEDUKrXtrmCFa2bBuK3BpjpDuL/p0SeKQX19Khl/M+lHOgD/CyYf7efP" crossorigin="anonymous">
+  <link rel="stylesheet" href="vendor/fonts/fonts.css">
+  <link rel="stylesheet" href="vendor/xterm/xterm.css">
   <style>
     :root{--bg:#0b1020;--panel:#131a2b;--border:#24304a;--violet:#a78bfa;--violet-2:#c4b5fd;--emerald:#34d399;--amber:#fbbf24;--text:#e2e8f0;--muted:#94a3b8;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -34,7 +32,7 @@
 </head>
 <body>
   <header>
-    <div class="brand"><div class="glyph" aria-hidden="true">λ</div><div><h1>Lambda Lab<span class="preview">Worker preview</span></h1><div class="sub">Pyodide off the main thread · with Stop</div></div></div>
+    <div class="brand"><div class="glyph" aria-hidden="true">λ</div><div><h1>Lambda Lab<span class="preview">Worker preview</span></h1><div class="sub">self-hosted · off the main thread · Stop</div></div></div>
     <nav aria-label="Course navigation"><a href="/vietnam2026/">← Course</a><a href="/lab-lambda/">Stable lab</a><a href="https://github.com/nasqret/vietnam2026" target="_blank" rel="noopener">GitHub</a></nav>
   </header>
   <noscript><p class="noscript">Lambda Lab needs JavaScript to load the local Python runtime.</p></noscript>
@@ -50,13 +48,13 @@
     <div class="info"><strong>Preview build.</strong> This variant runs the Python evaluator in a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API" target="_blank" rel="noopener">Web Worker</a>, so a long or divergent reduction (try <code>nf POW 24 24</code>) keeps the page responsive and can be interrupted with <strong>Stop</strong>. Semantics are identical to the <a href="/lab-lambda/">stable lab</a>. Terms are not sent to a server; a <code>?cmd=</code> deep link is part of the URL. β-reduction only; η is explained, not applied.</div>
   </main>
   <footer>Lambda Lab (Worker preview) · VIASM mini-course, Hanoi 2026 · © Bartosz Naskręcki · <a href="/lab-lambda/">stable lab</a></footer>
-  <script src="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/lib/xterm.js" integrity="sha384-M169f14mRZOXm3hD/v2Ti0ThIT/RnAQagXA9nlE15yHAtrW19gdePJh/HaTzUOe/" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10.0/lib/addon-fit.js" integrity="sha384-iF+jqbuti4XlB64clWgFWYEscb+UnSRv3VgVikGYZu+otNFnSHr7y7NcKfBnGizn" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-web-links@0.11.0/lib/addon-web-links.js" integrity="sha384-Zb/L38m4THfRbsxxv8gWAi8cQ6xcWQnv0BgR0qwbTDwtBDaPi6pkyfgfBIH6C8ZG" crossorigin="anonymous"></script>
+  <script src="vendor/xterm/xterm.js"></script>
+  <script src="vendor/xterm/addon-fit.js"></script>
+  <script src="vendor/xterm/addon-web-links.js"></script>
   <script>
   (function(){
     "use strict";
-    const BUILD = "2026-07-23g-worker";
+    const BUILD = "2026-07-23h-selfhosted";
     const PROMPT = "\x1b[92mλ>\x1b[0m ";
     const statusEl = document.getElementById("status");
     const quickEl = document.getElementById("quick");

@@ -27,10 +27,11 @@ let bannerFn = null;
 
 async function boot(build) {
   try {
-    postMessage({ type: "boot", msg: "loading Python (Pyodide)…" });
-    // Classic worker: importScripts is available; SRI is not supported here.
-    importScripts("https://cdn.jsdelivr.net/pyodide/v0.28.3/full/pyodide.js");
-    const pyodide = await loadPyodide();
+    postMessage({ type: "boot", msg: "loading Python (Pyodide, self-hosted)…" });
+    // Self-hosted Pyodide 0.28.3 (vendor/ is fetched by scripts/fetch_vendor.sh).
+    // No CDN involved: a lecture-hall demo only needs the faculty server.
+    importScripts("vendor/pyodide/pyodide.js");
+    const pyodide = await loadPyodide({ indexURL: "vendor/pyodide/" });
     postMessage({ type: "boot", msg: "mounting the λ-engine…" });
     for (const rel of PY_FILES) {
       const response = await fetch(rel + "?v=" + encodeURIComponent(build));

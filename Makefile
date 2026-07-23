@@ -39,6 +39,7 @@ stage: book
 	rm -rf $(STAGE) && mkdir -p $(STAGE)
 	cp index.html $(STAGE)/index.html
 	cp deploy/site.htaccess $(STAGE)/.htaccess
+	cp -R assets $(STAGE)/assets
 	cp -R book/_build/html $(STAGE)/book
 	cp -R slides $(STAGE)/slides
 	@echo "Staged site in $(STAGE)"
@@ -56,6 +57,7 @@ deploy-lab-next:
 	cp lab-lambda/worker/worker.js  $(STAGENEXT)/worker.js
 	cp lab-lambda/.htaccess         $(STAGENEXT)/.htaccess
 	rsync -a --exclude '__pycache__' --exclude 'tests' lab-lambda/py/ $(STAGENEXT)/py/
+	rsync -a lab-lambda/vendor/ $(STAGENEXT)/vendor/
 	rsync -avz --delete $(STAGENEXT)/ $(SERVER):$(LABNEXT)/
 	@echo "Deployed worker preview → https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda-next/"
 
