@@ -36,7 +36,23 @@ from .ch_stlc import (
     find_inhabitant,
     infer,
     pretty_type,
+    substitute,
+    unify,
 )
+
+
+def _accepts(ty: Type, target: Type) -> Optional[Dict[str, Type]]:
+    """``{}`` when the types agree verbatim; else their MGU when one exists.
+
+    Goal atoms (P, Q, …) are rigid constants while a term's principal type
+    carries fresh variables (α, β, …), so unification here is exactly the
+    check "the goal is an instance of the term's type". Without this,
+    ``exact λp q. p`` fails against ``P → Q → P`` — including the very terms
+    that ``hint`` itself suggests (mirrors proof_builder._goal_match).
+    """
+    if pretty_type(ty) == pretty_type(target):
+        return {}
+    return unify(ty, target)
 
 
 # ---------------------------------------------------------------------------
@@ -263,8 +279,8 @@ def exact(state: ProofState, term_src: str) -> ProofState:
             got="?",
             want=pretty_type(goal.target),
         )
-    # Structural type agreement (after renumbering).
-    if pretty_type(ty) != pretty_type(goal.target):
+    # Accept when the goal is an instance of the term's (principal) type.
+    if _accepts(ty, goal.target) is None:
         raise TacticError(
             "ch.build.exact_type_mismatch",
             term=pretty(term),
@@ -291,9 +307,8 @@ def assumption(state: ProofState) -> ProofState:
     goal = state.current()
     if goal is None:
         raise TacticError("ch.build.no_more_goals")
-    target_pp = pretty_type(goal.target)
     for name, ty in goal.context:
-        if pretty_type(ty) == target_pp:
+        if _accepts(ty, goal.target) is not None:
             return exact(state, name)
     raise TacticError("ch.build.assumption_no_match", target=pretty_type(goal.target))
 
@@ -322,9 +337,10 @@ def apply_(state: ProofState, term_src: str) -> ProofState:
     while isinstance(ret, Arrow):
         args.append(ret.src)
         ret = ret.dst
-    if pretty_type(ret) != pretty_type(goal.target):
-        # Mismatch — try treating it as a plain exact.
-        if pretty_type(ty) == pretty_type(goal.target):
+    theta = _accepts(ret, goal.target)
+    if theta is None:
+        # Result type doesn't match — try treating it as a plain exact.
+        if _accepts(ty, goal.target) is not None:
             return exact(state, term_src)
         raise TacticError(
             "ch.build.exact_type_mismatch",
@@ -335,6 +351,10 @@ def apply_(state: ProofState, term_src: str) -> ProofState:
     if not args:
         # Zero arity — effectively exact.
         return exact(state, term_src)
+    # Instantiate the argument types with what unification learned, so the
+    # subgoals are as concrete as the goal made them (e.g. apply λp q. p on
+    # goal P yields subgoals P and β — not α and β).
+    args = [substitute(a, theta) for a in args]
     cur_hole = _first_hole_in(state.partial.root)
     if cur_hole is None:
         raise TacticError("ch.build.no_more_goals")
