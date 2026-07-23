@@ -52,6 +52,7 @@
         <p class="muted">The toolkit that makes formalizing <em>real</em> mathematics tractable — dependent types, typeclasses, Mathlib search, and the tactic zoo.</p>
         <p class="title-affil">dr Bartosz Naskręcki · Adam Mickiewicz University in Poznań · CCAI, Warsaw Univ. of Technology</p>
         <p class="lab">▷ live lab: /lab-lambda</p>
+        <aside class="notes">Welcome back. Lecture four ended with our first honest, kernel-checked proof; today we build the toolkit that turns that party trick into a way of doing real mathematics. Everything on today's menu — dependent types, typeclasses, Mathlib search, the tactic zoo — is exactly what will carry a whole research paper in Lecture six. Ask everyone to keep the lab open in a browser tab: every calculation in this lecture is reproducible there.</aside>
       </section>
 
       <!-- ===== MOTIVATION 1 ===== -->
@@ -63,6 +64,7 @@
           <li><strong>Generality</strong> — state <code>a * b = b * a</code> <em>once</em>, at the right level of abstraction, and have it fire on $\N$, $\Z$, polynomials, matrices.</li>
           <li><strong>Automation &amp; search</strong> — no human recalls a library this size. The skill is <em>finding</em> lemmas and letting decision procedures discharge the routine algebra.</li>
         </ul>
+        <aside class="notes">Name the gap honestly: what stands between "I can prove zero plus n equals n" and "I can formalize a research paper"? Two things. Generality — nobody wants to reprove commutativity for the naturals, then the integers, then polynomials, then matrices; you want to state it once, at the right abstraction, and have it fire everywhere. Ask the room how many lemma names they think they could recall from memory — then tell them the working skill is finding lemmas, not remembering them.</aside>
       </section>
 
       <!-- ===== MOTIVATION 2 / SCALE ===== -->
@@ -75,6 +77,19 @@
         </div>
         <p>Mathlib is a single continuously-integrated monorepo — the largest formal-mathematics library in existence. You will never recall it; you <strong>decode</strong> and <strong>search</strong> it.</p>
         <p class="muted">This lecture is that toolkit — and the on-ramp to Lecture 6, where the same tools carry a whole paper.</p>
+        <aside class="notes">Let the numbers land: roughly 283 thousand theorems, 135 thousand definitions, over two million lines — the largest formal-mathematics library in existence, and it is one continuously-integrated monorepo supplying about ninety percent of declarations in the whole Lean ecosystem. Make the point out loud: you will never recall this; you decode names and you search. This lecture is that toolkit, and it is also the on-ramp to Lecture six, where exactly these tools carry an entire paper.</aside>
+      </section>
+
+      <!-- ===== RUN IT YOURSELF ===== -->
+      <section data-background-gradient="linear-gradient(135deg,#312e81,#4c1d95)">
+        <h2>Run it yourself</h2>
+        <p>Before dependent types, watch the untyped core <em>compute</em> — a logical connective reducing by β-reduction, proofs-as-programs made literal. Open the Lambda Lab and type:</p>
+        <p class="lab">reduce IMPLIES TRUE FALSE</p>
+        <p class="lab">ch term \p.\q. p</p>
+        <p class="muted">Algorithm W answers a principal type of the shape <code>α → β → α</code> — read the silent <code>∀ α β</code> in front: the principal type <em>is</em> a Π-type with implicit binders. Lean just writes the binders out.</p>
+        <p>In Lean the same idea has types attached — <code>#check (fun n : ℕ => rfl : ∀ n, n + 0 = n)</code> type-checks because <code>∀</code> <em>is</em> a Π-type.</p>
+        <p class="muted">Every calculation in this lecture is reproducible in the browser.</p>
+        <aside class="notes">Before we climb into dependent types, pull everyone back to Lecture two's untyped core: run reduce IMPLIES TRUE FALSE live and watch a logical connective literally compute by β-reduction — proofs-as-programs made concrete. Then run ch term on the K combinator and point at the answer: Algorithm W's principal type is really a Π-type with the ∀ left silent in front. That silent ∀ is the bridge to the next slide — Lean is the language that writes the binders out.</aside>
       </section>
 
       <!-- ===== DEPENDENT TYPES ===== -->
@@ -83,6 +98,7 @@
         <p>What separates Lean from a simply-typed language is the <strong>dependent function type</strong> (Π-type): given $\alpha$ and a family $\beta : \alpha \to \mathrm{Sort}\,u$,</p>
         <p>$$\prod_{x:\alpha} \beta\,x \quad\text{written}\quad (x : \alpha) \to \beta\,x \quad\text{or}\quad \forall\,x,\ \beta\,x .$$</p>
         <p>The ordinary arrow $\alpha \to \beta$ is the degenerate case where $\beta$ ignores $x$. So <strong>$\forall$ and $\to$ are the same connective</strong>: a proof of <code>∀ n, P n</code> <em>is</em> a function sending each <code>n</code> to a proof of <code>P n</code>. Types depend on values — <code>Vector α n</code> carries its length in its type.</p>
+        <aside class="notes">Slow down here — this is the one primitive that separates Lean from a simply-typed language. The ordinary arrow is just the degenerate Π-type where the family ignores its argument, which is why ∀ and → are the same connective. Say it plainly and twice: a proof of "for all n, P n" is a function that sends each n to a proof of P n. And types depend on values — Vector α n carries its length in its type, a matrix carries its shape.</aside>
       </section>
 
       <!-- ===== PROP VS TYPE ===== -->
@@ -95,6 +111,9 @@
           <li><strong>Large-elimination restriction.</strong> You cannot pattern-match a proof of <code>∃ n, P n</code> to extract the witness as data — that would leak a non-computational choice through a proof-irrelevant door.</li>
         </ul>
         <p class="muted">De Bruijn criterion: only the small kernel is trusted; <code>#print axioms thm</code> audits which axioms a proof really used.</p>
+        <p class="lab">ch type '((P -> Q) -> P) -> P'</p>
+        <p class="muted">Peirce's law comes back <strong>UNINHABITED</strong> — no λ-term proves it in intuitionistic STLC. That is exactly why classical principles enter Lean as <em>axioms</em> (<code>Classical.choice</code>), and why <code>#print axioms</code> has something to report.</p>
+        <aside class="notes">Insist that this split is not cosmetic. Proof irrelevance means a proposition carries no data beyond being inhabited — and that is exactly why you cannot pattern-match an existence proof to pull the witness out: two definitionally-equal proofs could then yield different data, a contradiction. Then run the lab command: Peirce's law comes back uninhabited, no λ-term proves it, and that is precisely why classical principles must enter Lean as axioms and why #print axioms has anything to report. In Prop, inhabited is all there is.</aside>
       </section>
 
       <!-- ===== STRUCTURES & TYPECLASSES ===== -->
@@ -104,6 +123,7 @@
         <pre><code class="language-lean" data-trim data-noescape>class Group (G : Type*) extends DivInvMonoid G where
   inv_mul_cancel : ∀ a : G, a⁻¹ * a = 1</code></pre>
         <p>State a theorem under <code>[CommMonoid M]</code> and it fires everywhere: $\texttt{mul\_comm} : a * b = b * a$ — proved once, inherited everywhere. The price is the <strong>diamond problem</strong>: two inheritance paths to a shared ancestor must give definitionally-equal instances.</p>
+        <aside class="notes">A structure is a one-constructor inductive type bundling data with the proofs of its axioms; a class is a structure whose instances Lean finds automatically — and that is the entire mechanism behind plus, zero, and less-or-equal meaning the right thing on every type at once. Show the real Mathlib Group class: a group is literally a monoid-with-inverses plus one axiom. The payoff to hammer: mul_comm is proved once under CommMonoid and inherited by naturals, integers, polynomials, and matrices alike. Then name the price — diamonds: two inheritance paths to a shared ancestor must give definitionally-equal instances, or Lean sees two different plus signs on the same type and resolution breaks.</aside>
       </section>
 
       <!-- ===== WORKED EXAMPLE 1 (code) ===== -->
@@ -124,6 +144,7 @@ theorem add_zero_zero {α : Type*} [MyAddMonoid α] (a : α) :
     add (add a zero) zero = a := by
   rw [add_zero, add_zero]</code></pre>
         <p class="muted">The proof never mentions <code>Nat</code> — it reasons from the interface, so it holds for every future instance for free.</p>
+        <aside class="notes">Walk the code top to bottom, then ask the room: where does the final proof mention Nat? It never does. It reasons purely from add_zero in the class interface, so the theorem automatically holds for every instance anyone ever registers. This is "interface over definition" — the discipline that lets Mathlib prove each lemma once and reuse it across the entire algebraic hierarchy.</aside>
       </section>
 
       <!-- ===== SEARCH MATHLIB ===== -->
@@ -138,6 +159,7 @@ theorem add_zero_zero {α : Type*} [MyAddMonoid α] (a : α) :
           <li><strong>Moogle</strong> — embedding-based, similar in spirit.</li>
         </ul>
         <p class="muted">Reflex: <code>exact?</code> first, Loogle when you can describe the shape, LeanSearch when you can only describe the idea.</p>
+        <aside class="notes">Names are not arbitrary: they read left-to-right as the shape of the conclusion, namespaced by the head symbol, so you can reconstruct a statement from its name before ever searching — practice on Finset.sum_range_succ. Then hand them the reflex to memorize: exact? first, Loogle when you can describe the shape, LeanSearch when you can only describe the idea. Say the trade-off out loud: formal engines are complete and literal, neural engines forgive vague intent. And often — as with the √2 lemma coming up — the search simply is the proof.</aside>
       </section>
 
       <!-- ===== TACTIC ZOO ===== -->
@@ -162,6 +184,7 @@ theorem add_zero_zero {α : Type*} [MyAddMonoid α] (a : α) :
           </div>
         </div>
         <p class="muted"><strong>New (Lean 4.22):</strong> <code>grind</code>, SMT-style, ships <code>cutsat</code> (supersedes <code>omega</code>) and a Gröbner solver (<code>grobner</code>). <code>polyrith</code> is <em>retired</em> — its Sage server was shut down.</p>
+        <aside class="notes">The skill here is matching each goal to the decision procedure that owns its shape, so students stop hand-rolling algebra — do not try to cover every row, just the reading of the table. Warn about the two newcomer traps explicitly: ring proves identities in the free commutative ring and therefore ignores your hypotheses — a hypothesis-driven equality needs linear_combination or nlinarith — and linarith is strictly linear, so nonlinear goals need nlinarith fed the right square hints. Close with the 2025–26 news: grind is the new SMT-style workhorse, and polyrith is retired because its external Sage server was shut down.</aside>
       </section>
 
       <!-- ===== WORKED EXAMPLE 2 (code) ===== -->
@@ -177,6 +200,7 @@ theorem amgm (a b : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) :
   nlinarith [sq_nonneg (a - b), Real.sq_sqrt (mul_nonneg ha hb),
              Real.sqrt_nonneg (a*b)]</code></pre>
         <p class="muted">Contrast a purely finite goal, closed by evaluation — Wilson at $p=7$: <code>example : Nat.factorial 6 % 7 = 6 := by decide</code>.</p>
+        <aside class="notes">The lesson of this slide: automation does the algebra, but the human supplies the insight. Cauchy–Schwarz is one nlinarith call because the gap between the two sides is exactly the perfect square (ay − bx)² — your entire contribution is handing over that hint. AM–GM is the same trick plus the defining fact that the square of √(ab) is ab. Then contrast the Wilson example: a purely finite goal needs no cleverness at all — decide closes it by kernel computation.</aside>
       </section>
 
       <!-- ===== CALC (code) ===== -->
@@ -190,6 +214,7 @@ theorem amgm (a b : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) :
   rw [h2] at hprod          -- hprod : (a - b) * 2 = 4
   linarith</code></pre>
         <p class="muted">Through the <code>Trans</code> typeclass a single <code>calc</code> may mix <code>=</code>, <code>≤</code>, <code>&lt;</code>, <code>∣</code>, <code>⊆</code>. This legibility is what convinces mathematicians the formal text is honest.</p>
+        <aside class="notes">Read the calc block aloud to the room — it is the blackboard line verbatim: (a−b)(a+b) equals a² − b² equals 4. Point out Heather Macbeth's pattern, the idiom to actually learn: alternate have for auxiliary facts with calc for the computation, and close the linear tail with linarith. Mention that through the Trans typeclass one calc chain can mix equalities, inequalities, divisibility, and inclusion. And make the meta-point: this legibility is what convinces working mathematicians that the formal text is honest mathematics, not code.</aside>
       </section>
 
       <!-- ===== RECURSION ===== -->
@@ -211,6 +236,7 @@ theorem amgm (a b : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) :
 termination_by a _ => a
 decreasing_by exact Nat.mod_lt _ (Nat.succ_pos x)</code></pre>
         <p class="muted"><code>partial def</code> escapes the kernel and produces <strong>no equation lemmas</strong> — you can prove nothing about it.</p>
+        <aside class="notes">Which of the two you must use is dictated by the recursive call, not by taste. Structural recursion — every call on a strict subterm — needs no termination proof, compiles to the recursor, and hands you equation lemmas for free; its proof-side mirror is the induction tactic. Euclid's gcd is the classic non-subterm case: it recurses on y mod (x+1), so you supply termination_by and discharge the strict decrease with Nat.mod_lt. Land the warning hard: partial def escapes the kernel and emits no equation lemmas, so you can prove literally nothing about it.</aside>
       </section>
 
       <!-- ===== END-TO-END THEOREM (code) ===== -->
@@ -222,15 +248,7 @@ decreasing_by exact Nat.mod_lt _ (Nat.succ_pos x)</code></pre>
         <p>The instructive proof reconstructs the classical argument you now own:</p>
         <p>$$2 q^2 = p^2 \Rightarrow 2 \mid p^2 \Rightarrow 2 \mid p \Rightarrow 4 \mid p^2 = 2q^2 \Rightarrow 2 \mid q,$$</p>
         <p class="muted">contradicting $\gcd(p,q)=1$. The lesson: <strong>stand on Mathlib</strong> when the lemma exists, <strong>build it yourself</strong> when you need to see the machinery.</p>
-      </section>
-
-      <!-- ===== RUN IT YOURSELF ===== -->
-      <section data-background-gradient="linear-gradient(135deg,#312e81,#4c1d95)">
-        <h2>Run it yourself</h2>
-        <p>Before dependent types, watch the untyped core <em>compute</em> — a logical connective reducing by β-reduction, proofs-as-programs made literal. Open the Lambda Lab and type:</p>
-        <p class="lab">reduce IMPLIES TRUE FALSE</p>
-        <p>In Lean the same idea has types attached — <code>#check (fun n : ℕ => rfl : ∀ n, n + 0 = n)</code> type-checks because <code>∀</code> <em>is</em> a Π-type.</p>
-        <p class="muted">Every calculation in this lecture is reproducible in the browser.</p>
+        <aside class="notes">Show the two proofs of the same theorem side by side — that contrast is the whole slide. Standing on the library it is one line: Nat.Prime.irrational_sqrt at p equals 2, with exact_mod_cast bridging the coercion from the natural 2 to the real literal. The instructive version reconstructs the classical parity descent, and every step of it — by_contra, omega, the divisibility lemmas — is a tactic the students now own. State the lesson explicitly: stand on Mathlib when the lemma exists, build it yourself when you need to see the machinery.</aside>
       </section>
 
       <!-- ===== MACROS / PIPELINE ===== -->
@@ -245,6 +263,9 @@ example (p q : Prop) (hp : p) (hq : q) : p ∧ q := by
   · exact hp
   · exact hq</code></pre>
         <p class="muted">Punchline: term mode and tactic mode, <code>simp</code> and <code>grind</code>, your macro and Mathlib's — all produce the <strong>same object</strong>, an <code>Expr</code>, and only the kernel confers theoremhood.</p>
+        <p class="lab">prove (P -> Q) -> P -> Q</p>
+        <p class="muted">Tactic it in the browser — <code>intro f</code> · <code>intro p</code> · <code>apply f</code> · <code>exact p</code> · <code>qed</code> — and <code>qed</code> extracts the λ-term with its principal type: the tactic script and the term are the <strong>same object</strong>. Then <span class="lab">lean term_proofs</span> shows the identical two-modes-one-Expr fact in Lean.</p>
+        <aside class="notes">Lean 4 is written in Lean 4, and the students' own code can run at every stage of this pipeline. Walk the macro: syntax rewrites to syntax, elaboration turns syntax into an Expr — the kernel's term datatype — and only the kernel's acceptance of that Expr makes it a theorem. Then deliver the punchline that ties the whole lecture together: term mode, tactic mode, simp, grind, your macro, Mathlib's — all of them produce the same kind of object, and the kernel alone confers theoremhood. Have them feel it in the lab: prove builds by tactics and qed extracts the λ-term — the script was never the proof, the elaborated term is; that is the de Bruijn criterion, and it is what makes Lecture six's research-scale formalization trustworthy.</aside>
       </section>
 
       <!-- ===== RECAP / REFERENCES ===== -->
@@ -256,6 +277,7 @@ example (p q : Prop) (hp : p) (hq : q) : p ∧ q := by
           <li><code>calc</code> for blackboard-legible proofs; structural vs. well-founded recursion; the de Bruijn kernel as sole arbiter.</li>
         </ul>
         <p class="muted"><em>Mathematics in Lean</em> (Avigad et al.) · <em>Theorem Proving in Lean 4</em> · Macbeth, <em>The Mechanics of Proof</em> &amp; <em>Algebraic Computations in Lean</em> · <em>Metaprogramming in Lean 4</em> · loogle.lean-lang.org · leansearch.net</p>
+        <aside class="notes">Recap by pillars, not by slide: generality through structures and typeclasses, search through exact?, Loogle, and LeanSearch, automation by matching each goal to the tactic that owns its shape, calc for blackboard legibility, and behind everything the small kernel as sole arbiter. Point them at Mathematics in Lean and Macbeth's Mechanics of Proof as the hands-on follow-ups. Close with the promise: next lecture this exact toolkit carries an entire research paper — thousands of build jobs, zero sorry, audited by #print axioms.</aside>
       </section>
 
     </div>

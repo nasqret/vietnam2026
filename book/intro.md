@@ -55,6 +55,33 @@ Lecture 2.
 6. **[Auto-formalization of mathematics with Lean](lectures/l6_autoformalization.md)** — the 2024–2026 AI
    landscape and the **EML** project as a worked case study.
 
+## How to work with this course
+
+Each lecture has four coordinated layers. Use them in this order:
+
+1. **Before the lecture — skim the note** (15 min). Read the *Abstract*, *Learning objectives* and
+   *Why this matters* of the chapter; don't fight the details yet.
+2. **During the lecture — follow the [slides](https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026/slides/)**,
+   and when a "Run it" moment appears, actually run it: keep the
+   [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda/) open in a second tab. Every
+   command in these notes is a **clickable deep link** that types itself into the lab.
+3. **After the lecture — work the note properly.** Reproduce the worked examples by hand *and* in the
+   lab, then do the exercises. Stuck? The lab's `hint` (inside `prove`/`tutorial`), `kb <topic>`, and
+   `help <command>` are there precisely for that moment.
+4. **To make it stick — one guided `tutorial`** (in the lab: `tutorial` lists twelve) and a
+   `quiz` bundle per lecture (`quiz bundles`; term answers are graded up to α-equivalence, so any
+   correct spelling wins).
+
+Keep the [λ-calculus cheatsheet](appendix/cheatsheet.md) open in a third tab — one page with every
+definition, every encoding, and a lab command for each.
+
+```{admonition} The one habit that matters
+:class: important
+Never read a reduction — **run it**. The lab shows the next redex highlighted at every step, will
+honestly tell you when a term has no normal form, and grades your answers up to α-equivalence. The
+difference between reading λ-calculus and doing it is the whole course.
+```
+
 ```{note}
 These notes are being actively written during the course. Chapters deepen as we go, and each lecture's
 current state is marked at its top.

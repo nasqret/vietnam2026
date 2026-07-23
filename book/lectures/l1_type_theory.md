@@ -87,6 +87,11 @@ The term is "apply $f$ twice" — the Church numeral $\overline{2}$ from {doc}`l
 wearing a type.
 ````
 
+```{admonition} Run it — the machine re-derives your tree
+:class: seealso
+[`ch term \f x. f (f x)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Cf%20x.%20f%20%28f%20x%29) runs type inference on the *unannotated* term and answers $(\alpha \To \alpha) \To \alpha \To \alpha$ — the derivation you just drew, with $o$ generalized to a type variable. Under the hood the algorithm applies nothing but (var), (abs) and (app); why a type *variable* appears is the Church-vs-Curry story two sections ahead.
+```
+
 ## Metatheory: what typing buys you
 
 The three rules are cheap; their consequences are the whole point. All four statements below are theorems
@@ -160,9 +165,10 @@ types" and "$\lam x.\,x$ has one principal type" are both true and not in tensio
 ```{admonition} Run it — Church and Curry side by side
 :class: seealso
 In the [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda), the Curry–Howard command shows both readings of the same term.
-Run [`ch term \p. p`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Cp.%20p): it reports the **Curry-style** principal
-type $\alpha \To \alpha$ *and* emits the **Church-style** Lean theorem `fun p => p : P → P`. Same object,
-two philosophies, related by erasure.
+Run [`ch term \p. p`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Cp.%20p) for the **Curry-style** principal
+type $\alpha \To \alpha$; then run [`ch lean \p. p`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20lean%20%5Cp.%20p) for the
+**Church-style** reading — the Lean theorem `theorem ch_proof {α : Prop} : α → α := fun p => p`, with a
+Live Lean link to check it. Same object, two philosophies, related by erasure.
 ```
 
 ## Types are not (quite) sets — and the three places it breaks
@@ -268,6 +274,11 @@ returns $\lam f\,g\,p.\,g\,(f\,p)$; and
 [`ch type '((P -> Q) -> P) -> P'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27%28%28P%20-%3E%20Q%29%20-%3E%20P%29%20-%3E%20P%27)
 reports Peirce's law **uninhabited**. Then check the emitted Lean with `ch verify`. The same theorems live
 in every prover in the [four-prover artifacts](https://github.com/nasqret/vietnam2026/tree/main/artifacts).
+```
+
+```{admonition} Run it — build the proof yourself, one rule at a time
+:class: seealso
+`ch type` *searches* for the inhabitant; the Lab's interactive proof builder makes **you** construct it. Run [`prove (P -> Q) -> (Q -> R) -> P -> R`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=prove%20%28P%20-%3E%20Q%29%20-%3E%20%28Q%20-%3E%20R%29%20-%3E%20P%20-%3E%20R) and type `intro f`, `intro g`, `intro p` (three (abs) steps), then `apply g`, `apply f`, `assumption` (the (app) nodes and the (var) leaf); `qed` extracts $\lam f\,g\,p.\,g\,(f\,p)$ *and* its principal type — you have just grown Worked example 3's derivation tree tactic by tactic. Now run [`prove ((P -> Q) -> P) -> P`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=prove%20%28%28P%20-%3E%20Q%29%20-%3E%20P%29%20-%3E%20P): after `intro k` the goal is $P$ and no sequence of tactics will ever close it — Worked example 4's dead end, experienced first-hand (`abort` to leave). This tactic loop is precisely how Lean will feel in {doc}`l4_lean_intro`.
 ```
 
 ## A first look at dependent types

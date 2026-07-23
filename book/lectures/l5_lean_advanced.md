@@ -81,6 +81,13 @@ sound, because the kernel independently re-checks the final `Expr`. The command 
 audits *which* axioms a proof actually used — typically `propext`, `Classical.choice`, `Quot.sound`, or
 none at all.
 
+```{admonition} Run it — what Classical.choice pays for
+:class: seealso
+In `Prop`, *inhabited* is all there is — and inhabitation is exactly what the lab's checker decides:
+[`ch type '((P -> Q) -> P) -> P'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27%28%28P%20-%3E%20Q%29%20-%3E%20P%29%20-%3E%20P%27)
+reports Peirce's law **uninhabited**: no pure λ-term proves it (Worked example 4 of {doc}`l1_type_theory`). Prove it in Lean with `tauto` and run `#print axioms`: `Classical.choice` appears — the axiom is precisely what buys the classically-true-but-uninhabited propositions.
+```
+
 ```{admonition} Run it — the computational core, in the browser
 :class: seealso
 Before dependent types, remember the untyped core from {doc}`l2_lambda_calculus`. In the Lambda Lab,
@@ -324,6 +331,13 @@ The obligation is exactly $y \bmod (x+1) < x+1$, discharged by `Nat.mod_lt`. Con
 sidesteps the termination checker and the kernel entirely: it is fine for tooling but produces **no
 equation lemmas**, so you can prove *nothing* about it.
 
+```{admonition} Run it — why the termination checker is not negotiable
+:class: seealso
+In the untyped λ-calculus of {doc}`l2_lambda_calculus`, general recursion is free — and so is non-termination:
+[`reduce OMEGA`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20OMEGA) never reaches a normal form. Types are what forbid it:
+[`ch term \x. x x`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Cx.%20x%20x) fails Algorithm W's occurs check — self-application, and with it the `Y` combinator, is untypeable. A Lean-typed fixpoint `fix : (α → α) → α` would specialize to `fix (id : False → False) : False` and prove everything. `termination_by` is the price of soundness; `partial def` dodges the bill by leaving the kernel's world entirely.
+```
+
 ## One theorem end-to-end: √2 is irrational
 
 Bring the pieces together on a real theorem. Standing on the library, it is one line:
@@ -390,7 +404,17 @@ parse  ──▶  macro-expand  ──▶  elaborate  ──▶  kernel type-che
 
 The `syntax` command adds grammar; `macro`/`macro_rules` rewrite syntax to syntax; `elab`/`elab_rules`
 turn syntax into an `Expr` — the kernel's term datatype (`bvar`, `const`, `app`, `lam`, `forallE`, …);
-and only the kernel's acceptance of that `Expr` makes it a theorem. A three-line macro adds a new tactic:
+and only the kernel's acceptance of that `Expr` makes it a theorem.
+
+```{admonition} Run it — bvar is a de Bruijn index
+:class: seealso
+`Expr` has no named bound variables: `bvar 0` means "the nearest enclosing binder", `bvar 1` the next one out — de Bruijn indices, which make α-equivalent terms *syntactically identical*, so the kernel never has to think about renaming. Watch the same representation in the Lambda Lab:
+
+[`debruijn \x. \y. x`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=debruijn%20%5Cx.%20%5Cy.%20x) prints `λ λ 1`, and
+[`debruijn \x. \x. x`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=debruijn%20%5Cx.%20%5Cx.%20x) resolves shadowing to `λ λ 0` — exactly what `Expr.bvar` does inside Lean.
+```
+
+A three-line macro adds a new tactic:
 
 ```lean
 macro "split_and" : tactic => `(tactic| refine ⟨?_, ?_⟩)
@@ -407,6 +431,13 @@ Mathlib's — all of them produce the *same kind of object*, an `Expr`, and the 
 that confers theoremhood. That is the de Bruijn criterion, and it is what makes
 {doc}`Lecture 6 <l6_autoformalization>`'s research-scale formalization trustworthy: 8,062 build jobs,
 zero `sorry`, audited by `#print axioms`.
+
+```{admonition} Run it — a tactic script elaborating to a term, in miniature
+:class: seealso
+The Lambda Lab's proof builder is this pipeline shrunk to the simply-typed core. Start
+[`prove (P -> Q) -> P -> Q`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=prove%20%28P%20-%3E%20Q%29%20-%3E%20P%20-%3E%20Q),
+drive it with `intro f`, `intro p`, `exact f p` (or ask `hint`), then `qed`: the builder prints the *extracted λ-term* and its principal type. Your tactic script was never the proof — the elaborated term is. That is the natural-deduction machinery of {doc}`l3_propositional` and this section's `Expr` story in one command.
+```
 
 ## Common pitfalls
 
@@ -470,4 +501,3 @@ zero `sorry`, audited by `#print axioms`.
 - Lean community, [*Searching for theorems in Mathlib*](https://leanprover-community.github.io/blog/posts/searching-for-theorems-in-mathlib/); [Loogle](https://loogle.lean-lang.org/) and [LeanSearch](https://leansearch.net/).
 - [Mathlib4 API docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Polyrith.html) (Polyrith retirement) and the [Lean release notes](https://lean-lang.org/doc/reference/latest/releases/) (`grind` in v4.22.0; current scale on the [Mathlib use-case page](https://lean-lang.org/use-cases/mathlib/)).
 - The course's [four-prover artifacts](https://github.com/nasqret/vietnam2026/tree/main/artifacts) and the [EML formalization](https://github.com/nasqret/eml-formalization) previewed in {doc}`l6_autoformalization`.
-```

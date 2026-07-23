@@ -52,6 +52,7 @@
         <p class="muted">A proof is a program — natural deduction, BHK, and Curry–Howard, played hands-on in a Lean game.</p>
         <p class="title-affil">dr Bartosz Naskręcki · Adam Mickiewicz University in Poznań · CCAI, Warsaw Univ. of Technology</p>
         <p class="lab">▷ live lab: /lab-lambda</p>
+        <aside class="notes">Welcome back. Last time we built the lambda calculus; today we learn to prove — and to see a proof as a program. Everything in this hour is hands-on: we will end inside Emily Riehl's Lean game, and along the way I will keep pointing at one line — the line where intuitionistic reasoning ends and classical logic begins. Keep the lab open in a tab; we will use it three times.</aside>
       </section>
 
       <!-- ===== MOTIVATION 1 ===== -->
@@ -60,6 +61,7 @@
         <p>A first logic course <strong>decides</strong> formulas with truth tables: a tautology is true under every valuation.</p>
         <p>A proof assistant cannot work this way. Its kernel does not evaluate a table — it checks a <em>derivation</em>, a syntactic object built from a fixed stock of inference rules.</p>
         <p class="muted">Before Lean can help us with real mathematics, we must answer the question that opens this lecture.</p>
+        <aside class="notes">Ask the room first: what did your first logic course say a proof was? Most will answer truth tables — a tautology is true under every valuation, and that is that. The point to land is that a kernel cannot evaluate a table; it checks a derivation, a syntactic object built from a fixed stock of inference rules. So the deceptively simple question "what, precisely, is a proof?" is the real content of this lecture.</aside>
       </section>
 
       <!-- ===== MOTIVATION 2 ===== -->
@@ -72,6 +74,7 @@
           <li>every Lean tactic becomes a recipe that <strong>fills a hole</strong> in a proof term.</li>
         </ul>
         <p class="muted">The same moves you learn here on toy propositions build the kernel-checked theorems of the Lecture 6 formalization.</p>
+        <aside class="notes">Here is the answer, and it is the one that makes machine-checked mathematics possible: a proof is a construction, and a construction is a typed program. We glimpsed the slogan in Lecture 2; today it becomes a working dictionary — connectives become type formers, inference rules become term formers, tactics become recipes that fill holes. Stress that these same moves, unchanged, are what build the kernel-checked research theorems of Lecture 6 — nothing here is a toy detour.</aside>
       </section>
 
       <!-- ===== OVERVIEW / ROADMAP ===== -->
@@ -94,6 +97,7 @@
           </div>
         </div>
         <p class="muted">We mark precisely where <em>intuitionistic</em> reasoning ends and <em>classical</em> logic begins.</p>
+        <aside class="notes">Walk the two columns quickly: rules first, then what a proof means, then the dictionary that turns both into programs, and finally Lean makes it tactile. The promise to make explicit is precision about the boundary — excluded middle, double-negation elimination, and Peirce's law are exactly where constructive reasoning stops, and we will meet each one by name. Reassure them there is nothing to install: Riehl's game runs entirely in the browser.</aside>
       </section>
 
       <!-- ===== ND: IMPLICATION ===== -->
@@ -102,6 +106,7 @@
         <p>Each connective gets <strong>introduction</strong> rules (how to prove it) and <strong>elimination</strong> rules (how to use it). Implication is subtle: introduction <em>discharges</em> a hypothesis $[A]$.</p>
         <p>$$ \frac{\begin{array}{c}[A]\\ \vdots\\ B\end{array}}{A\to B}\;{\to}I \qquad\qquad \frac{A\to B \qquad A}{B}\;{\to}E $$</p>
         <p class="muted">${\to}E$ is <em>modus ponens</em>. A derivation is a finite tree; the formula at the root is the conclusion.</p>
+        <aside class="notes">Gentzen's design, from 1934: each connective gets introduction rules — how to prove it — and elimination rules — how to use it. Spend your time on discharge: the bracketed [A] is an assumption that gets "used up", closed off, by the rule below it, and this is the one genuinely subtle mechanism in the whole calculus. Ask the room to hold modus ponens in mind — within twenty minutes it will literally be function application.</aside>
       </section>
 
       <!-- ===== ND: CONJUNCTION / DISJUNCTION / FALSITY ===== -->
@@ -112,6 +117,7 @@
         <p>Falsity has an elimination but <strong>no introduction</strong> — that absence is the whole point:</p>
         <p>$$ \frac{\bot}{C}\;{\bot}E \quad(\text{ex falso quodlibet}). $$</p>
         <p class="muted">${\lor}E$ is <em>case analysis</em>. Negation is derived: $\neg A := A\to\bot$.</p>
+        <aside class="notes">Conjunction is routine; give disjunction elimination a full beat — it is case analysis, you must handle both possibilities, and each case may discharge its own assumption. Then point hard at falsity: it has an elimination but no introduction, and that absence is the whole point — it is what consistency means. If there is time, mention harmony: an introduction immediately followed by its matching elimination is a detour, Prawitz showed removing detours normalizes the derivation, and under Curry–Howard detour removal is exactly β-reduction — simplifying a proof is running a program.</aside>
       </section>
 
       <!-- ===== BHK ===== -->
@@ -126,6 +132,7 @@
           <li>a proof of $\neg A = A\to\bot$ is a <strong>map</strong> you <em>apply</em>, never something you evaluate.</li>
         </ul>
         <p class="muted">The tag clause is why there is no construction witnessing $A\lor\neg A$ — you would have to decide $A$.</p>
+        <aside class="notes">This is the conceptual pivot of the lecture: "proof" becomes a first-class object, which is exactly why it can later be a Lean term. Two clauses do all the real work. The disjunction tag means asserting A or B requires knowing which side holds — so ask the room: why is there no construction witnessing A or not-A? And warn about the negation clause explicitly: not-A is a map you apply to a proof of A, never a truth value you evaluate — that misreading is the most common stumble of the whole week.</aside>
       </section>
 
       <!-- ===== CURRY-HOWARD DICTIONARY ===== -->
@@ -141,6 +148,7 @@
           <tr><td>$\top$</td><td>unit $\mathbf 1$</td><td><code>trivial</code></td><td>—</td></tr>
         </table>
         <p class="muted"><em>Provability becomes inhabitation</em>: $A$ is provable iff the type $A$ has a closed term.</p>
+        <aside class="notes">Read a few rows aloud: implication is a function type, conjunction a pair with two projections, disjunction a sum used by case analysis. The bottom line is the theorem of the lecture — provability becomes inhabitation. In Lean this is completely literal: And is a structure, Or is an inductive type with two constructors, and False is the inductive type with no constructors at all. Howard and Prawitz make it precise: normal terms correspond to normal derivations, the calculus is strongly normalizing, so no closed term of type ⊥ exists — that is consistency.</aside>
       </section>
 
       <!-- ===== CODE: CONJUNCTION COMMUTATIVE ===== -->
@@ -156,6 +164,7 @@ theorem and_comm'' {P Q : Prop} : P ∧ Q → Q ∧ P := by
   intro h            -- goal Q ∧ P, with h : P ∧ Q   (→I / λ)
   obtain ⟨p, q⟩ := h  -- destructure the pair         (∧E)
   exact ⟨q, p⟩        -- build the swapped pair        (∧I)</code></pre>
+        <aside class="notes">Walk the term first: h.2 and h.1 are the two projections, the angle brackets repackage them, and the lambda is the discharge of the hypothesis. Then run the tactic script line by line and insist on the punchline: term mode and tactic mode build the same kernel object — these are not two different logics, just two ways of writing one program. Mention that the disjunction analogue is the same shape with rcases splitting into two goals, one per injection.</aside>
       </section>
 
       <!-- ===== CODE: NEGATION CONSTRUCTIVELY ===== -->
@@ -167,6 +176,9 @@ theorem and_comm'' {P Q : Prop} : P ∧ Q → Q ∧ P := by
 theorem noncontra {P : Prop} : ¬(P ∧ ¬P)      := fun h => h.2 h.1
 theorem tne       {P : Prop} : ¬¬¬P → ¬P      := fun h p => h (fun k => k p)</code></pre>
         <p class="muted">The converse $\neg\neg A\to A$ is <em>not</em> available here — it is the classical boundary in disguise.</p>
+        <p class="lab">ch term \p k. k p</p>
+        <p class="muted">Algorithm W infers the principal type <code>α → (α → β) → β</code> — read <code>β</code> as $\bot$ and this is exactly $A\to\neg\neg A$: the program came first, the proposition is its type.</p>
+        <aside class="notes">Have them trace dni by hand: given p, we must produce something of type (P → False) → False, so take the continuation k and apply it to p — negation is something you apply, remember. All three of these are pure constructions; poll the room on which ones they assumed needed classical logic. Then run the lab line: Algorithm W on the untyped term recovers the theorem as its principal type — the Curry-style direction, where the program comes first and the proposition is read off as its most general type. The converse, double-negation elimination, is exactly what is not available — hold that thought for two slides.</aside>
       </section>
 
       <!-- ===== CODE: DE MORGAN ===== -->
@@ -178,6 +190,7 @@ theorem tne       {P : Prop} : ¬¬¬P → ¬P      := fun h p => h (fun k => k 
   ⟨fun h => ⟨fun p => h (Or.inl p), fun q => h (Or.inr q)⟩,
    fun ⟨np, nq⟩ h => h.elim np nq⟩</code></pre>
         <p class="muted">The missing direction would force you to <em>pick a tag</em> — decide which conjunct fails. BHK forbids that.</p>
+        <aside class="notes">Trace the proof term: the forward map builds each conjunct by feeding an injection into h, and the backward map takes the pair and case-splits on the alleged disjunction — only constructive moves throughout. Then dwell on the missing implication: to output not-A or not-B you would have to pick a tag, decide which conjunct fails, and BHK forbids conjuring that information out of thin air. This is the cleanest concrete example of a classically valid formula with no constructive content — it needs excluded middle.</aside>
       </section>
 
       <!-- ===== TACTICS AS TERM CONSTRUCTION ===== -->
@@ -195,6 +208,9 @@ theorem tne       {P : Prop} : ¬¬¬P → ¬P      := fun h p => h (fun k => k 
           <tr><td><code>by_contra h</code></td><td><em>classical</em> ($\neg\neg$-elim)</td><td><code>byContradiction</code></td></tr>
         </table>
         <p class="muted"><strong>Only the last row</strong> leaves the intuitionistic fragment. Don't confuse <code>exfalso</code> with <code>by_contra</code>.</p>
+        <p class="lab">prove P -> Q -> P</p>
+        <p class="muted">The Lambda Lab speaks this table: <code>intro</code>, <code>intro</code>, <code>exact p</code> closes it, and <code>qed</code> prints the extracted proof term <code>\p. \q. p</code> with its principal type — the K combinator, live. Stuck? Type <code>hint</code>.</p>
+        <aside class="notes">This table is what the entire live session runs on: every tactic transforms the goal state and appends a piece to the underlying proof term. The single crucial warning: by_contra is not a natural-deduction rule — it is double-negation elimination wearing a tactic's clothes — and do not let them confuse it with exfalso, which is ⊥-elimination and always valid. Then send them to the lab's prove builder: drive it with intro and exact, and qed extracts the λ-term they just built with its principal type — the "term action" column of this table made visible.</aside>
       </section>
 
       <!-- ===== THE CLASSICAL BOUNDARY + PEIRCE ===== -->
@@ -207,6 +223,9 @@ theorem tne       {P : Prop} : ¬¬¬P → ¬P      := fun h p => h (fun k => k 
   by_contra hnp                     -- hnp : ¬P, goal : False
   exact hnp (h (fun p => absurd p hnp))</code></pre>
         <p class="muted">Every step but <code>by_contra</code> is constructive — the classical content is isolated in exactly one move. <em>Glivenko:</em> $\vdash_c A$ iff $\vdash_i \neg\neg A$.</p>
+        <p class="lab">ch type ((P -> Q) -> P) -> P</p>
+        <p class="muted">The lab's inhabitation search answers <em>not inhabited in intuitionistic STLC</em> — a machine check that no constructive witness exists. Compare <code>ch type (P -> Q -> R) -> (P -> Q) -> P -> R</code>, which finds one instantly.</p>
+        <aside class="notes">State the equivalence first: adding any one of these three to intuitionistic logic recovers all of classical logic. Then trace the Peirce proof slowly — from hnp we can prove anything, so we manufacture the P → Q, feed it to h to get P, and feed that back to hnp for False — and emphasize that the classical content is isolated in exactly one move. The lab line is the machine verdict: inhabitation search confirms no constructive witness exists. Close with Glivenko — everything classical is a double negation away — and the pedagogical cost: a by_contra existence proof shows a counterexample cannot exist without ever handing you the object.</aside>
       </section>
 
       <!-- ===== RUN IT YOURSELF ===== -->
@@ -215,6 +234,7 @@ theorem tne       {P : Prop} : ¬¬¬P → ¬P      := fun h p => h (fun k => k 
         <p>Feel the "proof = program" identity: $\land$-elimination <em>is</em> projection. In the Lambda Lab, type:</p>
         <p class="lab">reduce FST (PAIR a b)</p>
         <p class="muted">It computes to <code>a</code>; likewise <code>reduce SND (PAIR a b)</code> gives <code>b</code>. Then clear the constructive core of Riehl's <strong>A Reintroduction to Proofs</strong> — TypeWorld → Function/Implication → Conjunction/Disjunction → Empty/Negation — <em>without touching</em> ClassicalWorld.</p>
+        <aside class="notes">Run the reduction live — this is the visceral "proof = program" moment: ∧-elimination literally computes, the projection eats the pair. Then set the homework framing for Riehl's game: it front-loads the constructive core and quarantines classical logic in a single world at the end, even teaching Empty before negation so that not-P arrives as an already-understood P → ⊥. The assignment is to clear TypeWorld through NegationWorld without touching ClassicalWorld, and after each world to come back to the tactic table and name the row you just used.</aside>
       </section>
 
       <!-- ===== RECAP / REFERENCES ===== -->
@@ -226,6 +246,7 @@ theorem tne       {P : Prop} : ¬¬¬P → ¬P      := fun h p => h (fun k => k 
           <li>Every tactic builds a piece of the term; only <code>by_contra</code> crosses into classical logic.</li>
         </ul>
         <p class="muted">Wadler, <em>Propositions as Types</em> (2015) · Sørensen–Urzyczyn, <em>Lectures on the Curry–Howard Isomorphism</em> · Howard (1969/80) · Riehl, <em>A Reintroduction to Proofs</em> · <em>Theorem Proving in Lean 4</em></p>
+        <aside class="notes">Have the room recap the three bullets in their own words: a proof is a construction, the dictionary maps every connective to a type former, and exactly one tactic — by_contra — crosses into classical logic. If one sentence should survive the week, it is that simplifying a proof is running a program: detour removal is β-reduction. Point them to Wadler's "Propositions as Types" as the best evening read, and Sørensen–Urzyczyn for the full technical story; next lecture we move from toy propositions to Lean proper.</aside>
       </section>
 
     </div>

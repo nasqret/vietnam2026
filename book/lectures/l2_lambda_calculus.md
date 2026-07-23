@@ -33,8 +33,10 @@ By the end of this lecture you can:
 ```{note}
 This lecture formalizes Lecture 1's *Alligator Eggs* metaphor — hungry alligator $=$ abstraction, two
 families side by side $=$ application, egg $=$ variable — and it is the untyped substrate on top of which
-{doc}`Lecture 1 <l1_type_theory>` layers *types*. You only need comfort with functions as first-class
-objects and with reading inductive definitions.
+{doc}`Lecture 1 <l1_type_theory>` layers *types*. The Lab draws the metaphor on demand:
+[`alligators (\x. x x) (\y. y)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=alligators%20(%5Cx.%20x%20x)%20(%5Cy.%20y))
+renders a family about to feed — the very term reduced step-by-step in Worked example 3 below. You only
+need comfort with functions as first-class objects and with reading inductive definitions.
 ```
 
 ## Why this matters
@@ -86,6 +88,10 @@ $\lam x.\,x\,(\lam x.\,x)$ the inner $\lam x$ **shadows** the outer one, and aga
 :class: seealso
 [`lam \x y. x (y z)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=lam%20%5Cx%20y.%20x%20(y%20z)) prints the AST, the pretty form,
 and the free-variable set $\{z\}$.
+
+[`alpha \x. x = \y. y`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=alpha%20%5Cx.%20x%20%3D%20%5Cy.%20y) confirms $\equiv_\alpha$ (renaming only, no $\beta$-step);
+[`alpha \x. \y. x = \x. \x. x`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=alpha%20%5Cx.%20%5Cy.%20x%20%3D%20%5Cx.%20%5Cx.%20x) comes back not $\alpha$-equivalent — shadowing makes the two terms return different binders; and
+[`debruijn \x. x (\x. x)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=debruijn%20%5Cx.%20x%20(%5Cx.%20x)) shows Worked example 1's shadowed term namelessly — two terms are $\alpha$-equivalent exactly when their De Bruijn forms are identical, which is how `alpha` (and Lean's kernel) compares binders.
 ```
 
 ## Capture-avoiding substitution
@@ -152,8 +158,16 @@ not need it here.
 $$ \lam x.\,(t\,x) \;\to_\eta\; t \qquad (x\notin\mathrm{FV}(t)). $$
 
 Adding $\eta$ keeps the calculus confluent and identifies $\lam x.\,f\,x$ with $f$. Be warned: the Lab's
-engine implements **$\beta$ only**, so it will *not* collapse $\lam x.\,f\,x$ to $f$ — those are
-$\beta\eta$-equal but not $\beta$-equal.
+`reduce`/`nf` commands implement **$\beta$ only**, so they will *not* collapse $\lam x.\,f\,x$ to $f$ —
+those are $\beta\eta$-equal but not $\beta$-equal. The separate, opt-in `eta` command traces
+$\eta$-steps on their own, so that "normal form" always means exactly $\beta$-normal form.
+
+```{admonition} Run it
+:class: seealso
+[`eta \x. f x`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=eta%20%5Cx.%20f%20x) performs the single $\eta$-step to `f`;
+[`eta \x. \y. f x y`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=eta%20%5Cx.%20%5Cy.%20f%20x%20y) collapses two nested $\eta$-redexes;
+[`eta \x. x x`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=eta%20%5Cx.%20x%20x) is already $\eta$-normal — here $x$ *is* free in the function part, so the side condition blocks the step.
+```
 
 ```{admonition} Worked example 3 — a full normal-order reduction
 :class: note
@@ -282,7 +296,11 @@ $\mathtt{fst}\,(\mathtt{pair}\,a\,b) \reduces a$ and $\mathtt{snd}\,(\mathtt{pai
 ```{admonition} Run it
 :class: seealso
 [`reduce AND TRUE FALSE`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20AND%20TRUE%20FALSE) traces Worked example 5;
-[`nf FST (PAIR TRUE FALSE)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20FST%20(PAIR%20TRUE%20FALSE)) returns `TRUE`. The same
+[`nf FST (PAIR TRUE FALSE)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20FST%20(PAIR%20TRUE%20FALSE)) returns `TRUE`.
+To *build* rather than consume: [`let SWAP = \p. PAIR (SND p) (FST p)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=let%20SWAP%20%3D%20%5Cp.%20PAIR%20(SND%20p)%20(FST%20p))
+defines a session constant; then `nf FST (SWAP (PAIR TRUE FALSE))` (→ `FALSE`) in the same session, and
+`defs` lists everything you've built. Built-in names are listed by
+[`constants`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=constants). The same
 "proof term $=$ program" idea, promoted to *propositions*, is the S-combinator Rosetta stone proved in
 all four provers — see [`artifacts/`](https://github.com/nasqret/vietnam2026/tree/main/artifacts).
 ```
@@ -337,7 +355,9 @@ versus "a numeral" is a *heuristic*, not intrinsic — the Lab even prints an am
 [`nf PLUS 2 3`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20PLUS%202%203) $\to \overline5$;
 [`nf MULT 3 4`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20MULT%203%204) $\to \overline{12}$;
 [`nf POW 2 5`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20POW%202%205) $\to \overline{32}$;
-[`church SUCC`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=church%20SUCC) prints the encoding. In **Lean 4** the same encoding is a
+[`church SUCC`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=church%20SUCC) prints the encoding.
+[`equiv PLUS 2 3 = 5`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=equiv%20PLUS%202%203%20%3D%205) checks the boxed law *as stated* — $\beta$-convertibility of two independent terms, not a one-way reduction — and
+[`equiv POW 2 0 = 1`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=equiv%20POW%202%200%20%3D%201) confirms that the $\eta$-long `POW` gets exponent zero right (the paragraph above). In **Lean 4** the same encoding is a
 polymorphic type that *computes by `rfl`*:
 
     def Church := (α : Type) → (α → α) → α → α
@@ -455,7 +475,8 @@ booleans, numerals, $Y$).
 - **The `false` $=$ `zero` coincidence.** Both are $\lam x\,y.\,y$. Decoding a normal form to "bool"
   versus "numeral" is a heuristic.
 - **The Lab does $\beta$ only.** $\lam x.\,f\,x$ will *not* collapse to $f$ — they are $\beta\eta$-equal,
-  not $\beta$-equal.
+  not $\beta$-equal. When you *want* $\eta$, use the dedicated
+  [`eta`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=eta%20%5Cx.%20f%20x) trace.
 - **Confluence does not imply termination.** Church–Rosser gives *at most one* normal form; it says
   nothing about whether reduction halts.
 

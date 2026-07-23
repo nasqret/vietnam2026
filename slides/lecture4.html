@@ -52,6 +52,7 @@
         <p class="muted">From paper to kernel: three lectures of type theory, now made executable and machine-checked.</p>
         <p class="title-affil">dr Bartosz Naskręcki · Adam Mickiewicz University in Poznań · CCAI, Warsaw Univ. of Technology</p>
         <p class="lab">▷ live lab: /lab-lambda</p>
+        <aside class="notes">Welcome everyone — today is the day three lectures of theory become software. Remind them of the arc: Lecture 1 gave us the typing judgment, Lecture 2 the pure lambda calculus, Lecture 3 the connectives as type formers, and today we type that story into a machine that talks back. Reassure the room up front: nothing conceptually new happens today, which is exactly the point. Point at the lab badge — every proof in this deck is reproducible in the browser before Lean is even installed.</aside>
       </section>
 
       <!-- ===== MOTIVATION 1 ===== -->
@@ -64,6 +65,7 @@
           <li>a <strong>proof is a term</strong> inhabiting it.</li>
         </ul>
         <p class="muted">Nothing new conceptually — but now a machine checks every step.</p>
+        <aside class="notes">Open by naming exactly what each previous lecture contributed: the judgment gamma-turnstile-t-colon-A from Lecture 1, computation with pure lambda terms from Lecture 2, connectives read as type formers from Lecture 3. Then land the one-sentence definition: Lean 4 is a dependently-typed lambda calculus in which a proposition is a type and a proof is a term inhabiting it. Ask the room: so what is actually new today? Let them sit with it, then answer — only that a machine now checks every step.</aside>
       </section>
 
       <!-- ===== MOTIVATION 2: trust ===== -->
@@ -72,6 +74,7 @@
         <p>A deliberate architectural choice: <strong>only a small type-checking kernel must be correct.</strong></p>
         <p>Whatever produced a proof, it is ultimately a term; the kernel verifies that term has the claimed type. Elaborator, tactics, pretty-printer — tens of thousands of lines — may all have bugs without endangering soundness.</p>
         <div class="box">This is the <strong>de Bruijn criterion</strong>: "the computer says the proof is correct" means something precise.</div>
+        <aside class="notes">Slow down here — a mathematician's first honest question is why they should trust a computer's word at all. The answer is architectural, not sociological: only the small type-checking kernel must be correct, because whatever the elaborator or the tactics produced, it is ultimately a term, and the kernel re-checks that term against the claimed type. Tens of thousands of lines of tooling may be buggy without endangering soundness. Name the principle — the de Bruijn criterion — and add that this is the foundation the research formalization of Lecture 6 will stand on.</aside>
       </section>
 
       <!-- ===== MOTIVATION 3: Mathlib + roadmap ===== -->
@@ -80,6 +83,7 @@
         <p>One coherent library, on the order of <em>283,000</em> theorems and <em>135,000</em> definitions (2026).</p>
         <p>Formalizing modern mathematics is feasible because you rarely start from nothing — you <strong>cite a lemma</strong>. Searching for the right name is itself a skill.</p>
         <p class="muted">Today: two modes &amp; the kernel · Prop vs data · induction · rewriting · a first honest end-to-end proof · automation &amp; tooling.</p>
+        <aside class="notes">The second reason to care is Mathlib — give the scale slowly: on the order of 283,000 theorems and 135,000 definitions in one coherent library as of 2026. The consequence is cultural: formalizing modern mathematics is feasible precisely because you rarely start from nothing — the normal move is to cite a lemma. Stress that searching for the right name is itself a skill, as much as proving. Then read the roadmap line at the bottom aloud so the room knows where the next hour goes.</aside>
       </section>
 
       <!-- ===== CORE: two modes ===== -->
@@ -93,6 +97,7 @@ theorem modus_ponens' {P Q : Prop} : (P → Q) → P → Q := by
   intro f p
   exact f p                           -- tactic mode: same kernel term</code></pre>
         <p class="muted"><code>#print modus_ponens'</code> reveals <code>fun f p =&gt; f p</code>. They differ only in how much of the term <em>you</em> write.</p>
+        <aside class="notes">Insist on the framing: these are not two kinds of proof. A by block is a metaprogram — the tactics build the very same lambda term that term mode writes by hand, and when it finishes, Lean hands the kernel a term either way. Walk modus ponens: in term mode it is literally function application, the fun f p arrow f p they met in Lecture 1. The receipt is #print — run it on the tactic proof and the same term falls out. If asked about universes, keep it small: Prop is Sort 0 for proof-irrelevant propositions, Type is Sort 1 for data.</aside>
       </section>
 
       <!-- ===== CODE: and_comm both ways ===== -->
@@ -109,6 +114,7 @@ theorem and_comm_tac {P Q : Prop} (h : P ∧ Q) : Q ∧ P := by
   constructor             -- goal Q ∧ P → two goals: Q, then P
   · exact hq
   · exact hp</code></pre>
+        <aside class="notes">Conjunction is a structure with two fields, so a proof of P and Q is honestly a pair — swapping the components is the entire proof. Walk the tactic version line by line: obtain splits the hypothesis into hp and hq, constructor splits the goal Q and P into its two fields, and the two exacts fill them in. Then deliver the receipt: #print and_comm_tac shows fun h maps to the pair of h.2 and h.1 — the anonymous constructor and the projections, the same kernel term. Term mode and tactic mode differ only in how much of the term you write yourself.</aside>
       </section>
 
       <!-- ===== CORE: Prop vs data + dictionary ===== -->
@@ -123,6 +129,9 @@ theorem and_comm_tac {P Q : Prop} (h : P ∧ Q) : Q ∧ P := by
           <li>$\exists x,\ p\,x$ — a <strong>dependent pair</strong> <code>Exists p</code></li>
           <li>$\forall x,\ p\,x$ — a dependent function <code>(x : α) → p x</code></li>
         </ul>
+        <p class="lab">▷ live lab: /lab-lambda — try <code>ch lib</code></p>
+        <p class="muted">this dictionary, live: each entry as a λ-term, its principal type, and its Lean spelling</p>
+        <aside class="notes">This is the distinction that trips up every mathematician, so say it twice: any two proofs of a proposition are equal — a proof carries no information beyond the fact that it holds — whereas 2 and 3 are genuinely different data. That is why you may not pattern-match on a proof to extract data: if you could pull the witness out of an existential, two equal proofs would map to unequal numbers, a contradiction. Then walk the dictionary and stress it is Lecture 3's table, now as concrete datatypes. Point the room at ch lib in the lab — every row is there as a lambda term with its principal type and its Lean spelling.</aside>
       </section>
 
       <!-- ===== CODE: existential is a pair ===== -->
@@ -132,6 +141,8 @@ theorem and_comm_tac {P Q : Prop} (h : P ∧ Q) : Q ∧ P := by
         <pre><code class="language-lean" data-trim data-noescape>-- the proof IS the pair (witness 2, a proof that 2^2 = 4)
 theorem exists_sq_four : ∃ n : Nat, n ^ 2 = 4 := ⟨2, rfl⟩</code></pre>
         <p><code>rfl</code> works because $2^2$ <em>computes</em> to $4$: both sides share a normal form, so they are <strong>definitionally equal</strong>. Likewise <code>2 ∣ n</code> is <em>by definition</em> <code>∃ c, n = 2 * c</code> — the same proposition.</p>
+        <p class="lab">equiv POW 2 2 = 4</p>
+        <aside class="notes">This is the punchline students remember, so give it room: the existential is not a mystical quantifier, it is a pair type — witness in one slot, proof in the other, and its eliminator is just destructuring. Ask the room why rfl proves two squared equals four before revealing it: both sides compute to the same normal form, and that is what definitional equality means. Then land the slogan they will meet constantly: two-divides-n IS exists c, n equals 2c, by definition — no lemma needed to pass between them. The equiv command in the lab is exactly this check, run in pure lambda calculus: normalize both sides and compare.</aside>
       </section>
 
       <!-- ===== CORE: Nat + induction ===== -->
@@ -140,6 +151,9 @@ theorem exists_sq_four : ∃ n : Nat, n ^ 2 = 4 := ⟨2, rfl⟩</code></pre>
         <p><code>Nat</code> is an <strong>inductive type</strong> — Peano's axioms as constructors. Addition recurses on its <em>second</em> argument:</p>
         <p>$$ m + 0 = m, \qquad m + (n+1) = (m + n) + 1. $$</p>
         <p>This asymmetry is the surprise of the day: $m + 0 = m$ is a <strong>defining equation</strong> (holds by <code>rfl</code>), but $0 + n = n$ is <strong>not</strong> — the recursion never inspects a left zero, so it must be <em>proved by induction</em>.</p>
+        <p class="lab">▷ peano 3</p>
+        <p class="muted">SUCC (SUCC (SUCC ZERO)) next to &#955;f x. f (f (f x)): Lecture 2's constructors are Lean's <code>Nat.zero</code>/<code>Nat.succ</code></p>
+        <aside class="notes">Nat is Peano's axioms turned into data constructors — exactly the zero and succ of Lecture 2, now with a real recursor; the lab's peano command puts the inductive numeral and the Church numeral side by side to make the bridge visible. Then sell the asymmetry as the single most instructive surprise of the day: addition recurses on its second argument, so m plus zero equals m is a defining equation, but zero plus n never fires the recursion. Before revealing which is which, ask the room: which of the two do you expect to hold by pure computation? The wrong guesses are the lesson.</aside>
       </section>
 
       <!-- ===== CODE: add_comm by induction ===== -->
@@ -156,6 +170,7 @@ theorem add_comm (m n : N) : add m n = add n m := by
   | zero      => rw [add_zero, zero_add]
   | succ k ih => rw [add_succ, succ_add, ih]</code></pre>
         <p class="muted">The successor case <em>assumes</em> <code>ih : add m k = add k m</code> and rewrites the goal to a syntactic identity. Exactly NNG4's Addition World star.</p>
+        <aside class="notes">Read add_comm slowly, because it is the whole method in four lines. Induction on n splits into the base case, closed by rewriting both sides down to m, and the successor case, which assumes the induction hypothesis ih and rewrites with add_succ, then succ_add, then ih, until the goal is a syntactic identity. Note we needed zero_add and succ_add proved first — each itself by induction — so lemmas stack. Tell them this is precisely the milestone the Natural Number Game's Addition World hands out a star for, and that NNG4 in the browser is the homework ramp.</aside>
       </section>
 
       <!-- ===== CORE: rewriting ===== -->
@@ -166,6 +181,7 @@ theorem add_comm (m n : N) : add m n = add n m := by
           <li><strong><code>rw [h]</code></strong> — rewrites the goal <em>left-to-right</em> by <code>h</code>. Fails if the LHS is not present syntactically. Use <code>rw [← h]</code> for the reverse; chain <code>rw [h₁, h₂]</code>.</li>
           <li><strong><code>simp</code></strong> — repeatedly rewrites with the whole <code>@[simp]</code> set until nothing applies. Powerful but opaque — prefer targeted <code>rw</code> for a known step.</li>
         </ul>
+        <aside class="notes">Three tools, three sharply different jobs — make each contrast concrete. rfl closes only definitional equalities, where both sides reduce to a common normal form: it proves m plus zero equals m and two squared equals four, but not zero plus n. rw is strictly left-to-right and fails when the left-hand side is not present syntactically — drill the reverse form rw with the back-arrow, because forgetting it is the usual beginner friction. simp is powerful but opaque: the working advice is a targeted rw when you know the exact step, and simp only with a named lemma list when you want control.</aside>
       </section>
 
       <!-- ===== CODE: Gauss ===== -->
@@ -180,6 +196,7 @@ theorem gauss (n : Nat) :
   | zero      => simp
   | succ n ih => rw [Finset.sum_range_succ, Nat.mul_add, ih]; ring</code></pre>
         <p class="muted">The step peels off the last summand, distributes, substitutes <code>ih</code>, and lets <code>ring</code> clear the polynomial dust — a complete <code>sorry</code>-free proof.</p>
+        <aside class="notes">This is the first honest end-to-end theorem of the course, so savor it — a real identity, kernel-checked. The base case is simp: it knows the empty sum reduces and zero equals zero times one. The successor step is the whole idiom in one line: Finset.sum_range_succ peels off the last summand, Nat.mul_add distributes, ih substitutes the induction hypothesis, and ring clears the polynomial dust. Emphasize there is no sorry anywhere — and that #print axioms gauss is the audit that certifies it.</aside>
       </section>
 
       <!-- ===== CODE: library-driven corollary ===== -->
@@ -190,6 +207,7 @@ theorem gauss (n : Nat) :
   obtain ⟨p, hN, hp⟩ := Nat.exists_infinite_primes (N + 1)  -- gives N+1 ≤ p
   exact ⟨p, by omega, hp⟩                                    -- omega: N+1 ≤ p ⟹ N &lt; p</code></pre>
         <p class="muted">Find the name, destructure its output, let <code>omega</code> finish. Searching (<code>exact?</code>, Loogle, LeanSearch) is a core skill, not cheating.</p>
+        <aside class="notes">Now the other mental model: the right move is usually to find the lemma, and both models must coexist. Euclid's theorem is already in Mathlib as Nat.exists_infinite_primes — we did not reprove it; we cited it at N plus one, destructured the triple it returns, and let omega promote N plus one at most p into N strictly below p. Say it explicitly to the room: searching with exact?, apply?, Loogle, and LeanSearch is a core skill, not cheating — the same idiom makes irrationality of root two a one-liner in the next lecture.</aside>
       </section>
 
       <!-- ===== CORE: automation scope ===== -->
@@ -203,6 +221,7 @@ theorem gauss (n : Nat) :
           <li><code>linarith</code> / <code>nlinarith</code> — inequalities from hypotheses; needs the right hints.</li>
         </ul>
         <p class="muted">"Just try <code>omega</code>" on a nonlinear goal is a real time sink.</p>
+        <aside class="notes">Beginners either fall in love with automation or get burned by it, and the cure for both is knowing each tactic's scope. Go down the list: decide evaluates a Decidable instance, so it needs decidability and can hang on large instances; omega is Presburger arithmetic — linear only, it will never touch a product of variables; ring proves commutative-ring identities but no inequalities; linarith wants the right hypotheses as hints. Kill the misconception by name: just-try-omega on a nonlinear goal is a real time sink. The mantra to leave them with: match the tactic to the shape of the goal.</aside>
       </section>
 
       <!-- ===== RUN IT YOURSELF ===== -->
@@ -212,6 +231,7 @@ theorem gauss (n : Nat) :
         <p>Open the Lambda Lab and take the guided tour:</p>
         <p class="lab">tour</p>
         <p class="muted">Then <code>lean add_comm</code> for the offline Addition-World trace, and <code>kb mathlib</code> for the lemma-search cheatsheet. Every proof here is reproducible in the browser.</p>
+        <aside class="notes">Close with logistics, because tooling is the unglamorous but decisive half of an introduction to Lean. elan pins the exact compiler per project through the lean-toolchain file, and lake exe cache get downloads prebuilt Mathlib — warn them that skipping it means recompiling roughly three hundred thousand theorems, hours on a laptop. Show the trust audit habit: #print axioms gauss confirms no hidden sorry. Then hand them the lab live: run the guided tour, lean add_comm for the offline Addition World trace, and kb mathlib for the lemma-search cheatsheet.</aside>
       </section>
 
       <!-- ===== RECAP / REFERENCES ===== -->
@@ -224,6 +244,7 @@ theorem gauss (n : Nat) :
           <li><strong>Build one, cite the rest:</strong> Gauss by hand, Euclid from Mathlib; match automation to the goal.</li>
         </ul>
         <p class="muted">Theorem Proving in Lean 4 · Mathematics in Lean · Natural Number Game 4 · Macbeth, Mechanics of Proof · lean-lang.org/install</p>
+        <aside class="notes">Recap by the four beats and let each one land: tactics build terms and the kernel checks them, which is the de Bruijn criterion; Prop is proof-irrelevant and the existential is a pair; the rfl-versus-induction asymmetry of addition; and the two mental models — build one proof from primitives, cite the rest from Mathlib. Assign the ramps explicitly: NNG4 and Macbeth's Mechanics of Proof are the self-study path, and Theorem Proving in Lean 4 is the canonical reading to do before next time. Close by saying where this leads: Lecture 5 goes deeper into Lean, and Lecture 6 uses all of it for research-level formalization.</aside>
       </section>
 
     </div>

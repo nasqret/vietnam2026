@@ -219,6 +219,16 @@ Trace `dni`: given `p : P` we must produce a term of `¬¬P = (P → False) → 
 $\neg\neg A\To A$ is the one that is **not** available here; it is double-negation elimination, and it is
 the classical boundary in disguise (see below).
 
+```{admonition} Run it — Algorithm W rediscovers double negation
+:class: tip
+Strip the types away and `dni` is the untyped term $\lam p\,k.\,k\,p$. Ask the lab for its principal
+type: [`ch term \p k. k p`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Cp%20k.%20k%20p)
+runs Algorithm W and reports $\alpha\To(\alpha\To\beta)\To\beta$ — read the result atom $\beta$ as
+$\bot$ and this *is* $A\To\neg\neg A$. Same game for `tne`:
+[`ch term \h p. h (\k. k p)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Ch%20p.%20h%20%28%5Ck.%20k%20p%29).
+The Curry-style moral: the *program* comes first, and the theorem it proves is its most general type.
+```
+
 ### Worked example 4 — a De Morgan law, and its classical cousin
 
 One direction-pair is fully constructive; one implication is genuinely classical.
@@ -268,6 +278,16 @@ $\neg\neg A\To A$ wearing a tactic's clothes. Everything above it in the table i
 last row leaves the intuitionistic fragment. And do not confuse it with `exfalso`: `exfalso` is
 ${\bot}E$ ("from $\bot$, anything"), always valid; `by_contra` is "assume $\neg$goal, derive $\bot$",
 which is where classical logic enters.
+
+```{admonition} Run it — drive the tactics yourself
+:class: seealso
+The [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda) has an interactive proof builder
+that speaks exactly the implication rows of this table. Open
+[`prove (P -> Q) -> P -> Q`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=prove%20%28P%20-%3E%20Q%29%20-%3E%20P%20-%3E%20Q)
+and close the goal with `intro`, `apply` and `exact` (`hint` nudges you when stuck, `undo` backtracks).
+On `qed` the lab **extracts the λ-term you just built** and infers its principal type — the "term
+action" column of the table made visible: every tactic appended exactly one node to the program.
+```
 
 ```{admonition} Run it — see a tactic fill a hole
 :class: seealso
@@ -363,9 +383,13 @@ nothing in context produces one — the search loops with no base case. Hence Pe
 intuitionistically derivable.
 ```
 
-This is what the extended Curry–Howard lab reports when you ask it to type `((P -> Q) -> P) -> P`: *not
-inhabited in intuitionistic STLC*. The classical proof and the (nonexistent) constructive one are
-different objects, and the gap is measured exactly:
+This is what the Curry–Howard lab reports:
+[`ch type '((P -> Q) -> P) -> P'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27%28%28P%20-%3E%20Q%29%20-%3E%20P%29%20-%3E%20P%27)
+answers *not inhabited in intuitionistic STLC*. Feel the sketch's dead end yourself with
+[`ch build '((P -> Q) -> P) -> P'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20build%20%27%28%28P%20-%3E%20Q%29%20-%3E%20P%29%20-%3E%20P%27):
+after `intro h`, `apply h`, `intro p` you face the goal `Q` with only proofs of `P` in scope — the
+search loops with no base case, exactly as the theorem predicts. The classical proof and the
+(nonexistent) constructive one are different objects, and the gap is measured exactly:
 
 ```{admonition} Theorem (Glivenko, 1929)
 :class: important

@@ -52,6 +52,7 @@
         <p class="muted">Three grammar rules, one reduction rule — and a Turing-complete language in which numbers, booleans and recursion are <em>derived</em>, not assumed.</p>
         <p class="title-affil">dr Bartosz Naskręcki · Adam Mickiewicz University in Poznań · CCAI, Warsaw Univ. of Technology</p>
         <p class="lab">▷ live lab: /lab-lambda</p>
+        <aside class="notes">Welcome back. Last time we played Alligator Eggs — hungry alligator equals abstraction, two families side by side equals application, egg equals variable — and today we turn that game into mathematics. Keep the Lambda Lab open in a tab: every reduction I do on a slide, you can replay in your browser as we go. Plant the headline now: numbers, booleans, and even recursion will be derived inside the calculus, not assumed.</aside>
       </section>
 
       <!-- ===== WHY THIS MATTERS ===== -->
@@ -64,6 +65,7 @@
           <li>that the answer is well-defined at all is a <em>theorem</em> (Church–Rosser).</li>
         </ul>
         <p class="muted">When Lean evaluates <code>#reduce</code> or accepts a proof by <code>rfl</code>, it runs a typed, terminating descendant of the machine we build today.</p>
+        <aside class="notes">Frame the whole course in one sentence: a proof assistant is, at bottom, a machine that checks that a term has a type — and before types and before proofs-as-programs there is the raw engine of terms that reduce. Stress the three-part instinct we are training: a computation is a chain of reductions, the answer is a normal form, and the fact that the answer is well defined at all is a theorem, not an axiom. When Lean runs #reduce or accepts a proof by rfl, it is running a typed, terminating descendant of exactly the machine we build today.</aside>
       </section>
 
       <!-- ===== ROADMAP / OBJECTIVES ===== -->
@@ -90,6 +92,7 @@
           </div>
         </div>
         <p class="muted">Every calculation is reproducible in the Lambda Lab; the capstones are cross-checked in four provers.</p>
+        <aside class="notes">Walk the two columns: the left half is grammar and metatheory — how terms are written, renamed, substituted and reduced, and why the answer is unique — and the right half is where we actually compute with it. Tell them the predecessor slide is the historical drama of the hour, and the Y-combinator slide is where computability theory walks into the room. Reassure everyone that every calculation coming up is one click away in the Lab, and the capstone statements are cross-checked in four different provers.</aside>
       </section>
 
       <!-- ===== SYNTAX & ALPHA ===== -->
@@ -103,7 +106,9 @@
           <li>$\mathrm{FV}(\lambda x.\,t) = \mathrm{FV}(t)\setminus\{x\}$; a closed term is a <em>combinator</em>.</li>
         </ul>
         <p>Bound names carry no meaning: $\lambda x.\,x \equiv_\alpha \lambda y.\,y$. From now on we compute on $\alpha$-equivalence classes.</p>
+        <p class="muted">▷ <code>alpha \x. x = \y. y</code> &nbsp;&nbsp; ▷ <code>debruijn \x. x (\x. x)</code> — strict α-check, and the nameless de Bruijn view under which shadowing in $\lambda x.\,x\,(\lambda x.\,x)$ simply disappears.</p>
         <p class="muted">Misreading the conventions silently changes the term — a leading cause of student errors.</p>
+        <aside class="notes">Slow down on the two reading conventions — misreading them silently changes the term, and it is the leading cause of student errors. Ask the room: is lambda x. x y the identity applied to y? No — the body extends as far right as possible. Then land the alpha point: bound names carry no meaning, lambda x. x and lambda y. y are the same function, and from now on we always compute on alpha-equivalence classes. The alpha and debruijn commands let them check this mechanically — the nameless De Bruijn form is literally how the Lab, and Lean's kernel, compare binders.</aside>
       </section>
 
       <!-- ===== SUBSTITUTION / CAPTURE ===== -->
@@ -115,6 +120,9 @@
           <strong>The capture trap.</strong> $(\lambda y.\,x)[x:=y]$ is <em>not</em> $\lambda y.\,y$ (identity). Rename first: $\lambda y'.\,y$ — a <strong>constant</strong> function returning the still-free $y$.
         </div>
         <p class="muted">Barendregt's variable convention lets us pick bound names distinct from all free ones — a bookkeeping shortcut, not a licence to ignore capture.</p>
+        <p class="lab">reduce (\x. \y. x) y</p>
+        <p class="muted">One $\beta$-step forces the capture-trap substitution from the box above — watch the engine rename $\lambda y$ to a fresh binder before substituting.</p>
+        <aside class="notes">Everything downstream rests on substitution done correctly, and the whole subtlety is a single clause: substituting under a binder. Run the trap live: ask the room to compute the substitution in the box naively — most will say the identity, and that is wrong, because the free y we are inserting gets captured by the binder. The correct answer is a constant function returning the still-free y, so capture would genuinely have changed the meaning. Close with Barendregt's convention: choose bound names distinct from everything free in sight and you can forget the gymnastics — but say clearly that it is a bookkeeping shortcut, not a licence to ignore the phenomenon, and let the one-line reduce command show the engine renaming for real.</aside>
       </section>
 
       <!-- ===== BETA / ETA / NORMAL FORMS ===== -->
@@ -125,7 +133,9 @@
         <p>A term with no redex is a <strong>$\beta$-normal form</strong>. $\eta$ adds extensionality: $\lambda x.\,(t\,x) \to_\eta t$ when $x\notin\mathrm{FV}(t)$.</p>
         <p>Not every term terminates. The paradigm of divergence reduces to itself:</p>
         <p>$$ \Omega = (\lambda x.\,x\,x)\,(\lambda x.\,x\,x) \;\to_\beta\; \Omega. $$</p>
-        <p class="muted">The Lab implements $\beta$ only — it will <em>not</em> collapse $\lambda x.\,f\,x$ to $f$.</p>
+        <p class="muted">By default the Lab's <code>reduce</code>/<code>nf</code> stay $\beta$-only — they will <em>not</em> collapse $\lambda x.\,f\,x$ to $f$. Opt in with <code>eta</code>:</p>
+        <p class="lab">eta \x. f x</p>
+        <aside class="notes">One rule computes everything: contract a redex by substituting the argument. Distinguish carefully between one step, many steps, and beta-convertibility — we need all three, and convertibility returns at the very end as the thing Church proved undecidable. On eta, be explicit about the tooling: reduce and nf are deliberately beta-only, so "normal form" always means beta-normal form, and the eta command is the opt-in trace for when extensionality is wanted. Then drop Omega on them: a term that reduces to itself, an infinite loop in three symbols — so no, not every term terminates.</aside>
       </section>
 
       <!-- ===== ORDER DECIDES ===== -->
@@ -145,6 +155,7 @@
           </div>
         </div>
         <p class="muted">Same term, opposite fate. This is why the Lab uses normal order.</p>
+        <aside class="notes">The point of this slide is that redex choice is not a matter of taste — it can decide whether you terminate at all. Walk the example both ways: lazy evaluation discards the poisoned argument in one step, eager evaluation insists on reducing Omega first and loops forever. Same term, opposite fate. This is why the Lab runs normal order — and foreshadow that the same eager-versus-lazy issue is why an eager host language like Python will need the Z-combinator variant of Y later in the lecture.</aside>
       </section>
 
       <!-- ===== CHURCH-ROSSER ===== -->
@@ -160,6 +171,7 @@
           <li><strong>Standardization:</strong> if a normal form exists, normal order reaches it — the complete strategy.</li>
         </ul>
         <p class="muted">Confluent yet <em>not</em> strongly normalizing: $\Omega$ diverges. The two properties are independent.</p>
+        <aside class="notes">Ask the question the last slide left hanging: we made arbitrary choices of redex, so why is "the" normal form even well defined? Confluence is the answer, and the two corollaries pay the rent — normal forms are unique, and distinct normal forms like K and I are not convertible, so the theory does not collapse into triviality. Standardization upgrades normal order from one option to the complete strategy: if a normal form exists, leftmost-outermost finds it. If time permits, sketch why the naive one-step diamond fails — contracting a redex can duplicate another — which is exactly why Tait and Martin-Löf invented parallel reduction, and warn that confluence and termination are independent properties.</aside>
       </section>
 
       <!-- ===== BOOLEANS & PAIRS ===== -->
@@ -170,6 +182,7 @@
         <p>$$ \mathtt{and} = \lambda p\,q.\,p\,q\,p, \quad \mathtt{or} = \lambda p\,q.\,p\,p\,q, \quad \mathtt{not} = \lambda p.\,p\,\mathtt{false}\,\mathtt{true}. $$</p>
         <p>Pairs reuse the trick (we need them for the predecessor):</p>
         <p>$$ \mathtt{pair} = \lambda a\,b\,f.\,f\,a\,b, \quad \mathtt{fst} = \lambda p.\,p\,\mathtt{true}, \quad \mathtt{snd} = \lambda p.\,p\,\mathtt{false}. $$</p>
+        <aside class="notes">Announce the guiding idea before any formula: a Church datum is its own eliminator — the datum is the function that uses it. A boolean is a chooser of one branch out of two, and once that clicks, the if-construct is almost embarrassingly trivial. Read the and-connective out loud as a program — "if p then q else p" — and check it against the truth table with the room. Pairs are the same trick one more time, waiting to be told which projection to apply; flag that we are not doing them for fun, because the predecessor two slides ahead needs them.</aside>
       </section>
 
       <!-- ===== NUMERALS & ARITHMETIC ===== -->
@@ -178,8 +191,9 @@
         <p>A natural number <strong>is an iterator</strong>: $\overline{n}$ realizes $f \mapsto f^{n}$.</p>
         <p>$$ \overline{n} = \lambda f\,x.\,\underbrace{f\,(f\,(\cdots(f}_{n}\,x)\cdots)), \qquad \overline{0} = \lambda f\,x.\,x. $$</p>
         <p>$$ \mathtt{succ} = \lambda n\,f\,x.\,f\,(n\,f\,x), \quad \mathtt{plus} = \lambda m\,n\,f\,x.\,m\,f\,(n\,f\,x), $$</p>
-        <p>$$ \mathtt{mult} = \lambda m\,n\,f.\,m\,(n\,f), \quad \mathtt{pow} = \lambda m\,n.\,n\,m. $$</p>
-        <p class="muted">All of it is $f^{m}\circ f^{n} = f^{m+n}$ and $(f^{n})^{m} = f^{nm}$ in disguise. Note $\mathtt{false}$ and $\overline{0}$ are the <em>same</em> term.</p>
+        <p>$$ \mathtt{mult} = \lambda m\,n\,f.\,m\,(n\,f), \quad \mathtt{pow} = \lambda m\,n\,f\,x.\,n\,m\,f\,x. $$</p>
+        <p class="muted">All of it is $f^{m}\circ f^{n} = f^{m+n}$ and $(f^{n})^{m} = f^{nm}$ in disguise. Note $\mathtt{false}$ and $\overline{0}$ are the <em>same</em> term. The $\eta$-long <code>pow</code> makes $\mathtt{pow}\,\overline m\,\overline 0 = \overline 1$ on the nose — the bare $\lambda m\,n.\,n\,m$ stops at $\lambda x.\,x$, only $\eta$-equal to $\overline 1$.</p>
+        <aside class="notes">The slogan is: a number is an iterator — the numeral n is the map sending f to its n-fold composite. Then the arithmetic stops being clever and becomes algebra: plus is composing iterations, mult and pow are the composite-power laws in disguise. Point at the eta-long pow and explain the subtlety: the bare version gets exponent zero only up to eta, and since the Lab's normal forms are beta-only, we bake in the extra abstractions so that POW m 0 hits the numeral one on the nose. End with the punchline that false and zero are literally the same term — decoding a normal form as a boolean or a numeral is a heuristic, not intrinsic.</aside>
       </section>
 
       <!-- ===== LEAN CODE SLIDE ===== -->
@@ -195,6 +209,7 @@ def toNat (n : Church) : Nat      := n Nat (· + 1) 0
 example : toNat (cplus (csucc (csucc czero))
                        (csucc (csucc (csucc czero)))) = 5 := rfl</code></pre>
         <p class="muted">The Church numeral is a polymorphic type that <em>computes by <code>rfl</code></em>. The proof <em>is</em> the program.</p>
+        <aside class="notes">This is the bridge slide: the identical encoding, now with types, in Lean 4. Church is a polymorphic type, and the kernel accepts two plus three equals five by rfl — meaning it simply runs the very reduction we have been doing by hand. Let "the proof is the program" land: there is no separate argument, the computation itself is the certificate. This is the first live sighting of the theme the whole course is built on.</aside>
       </section>
 
       <!-- ===== PREDECESSOR ===== -->
@@ -205,6 +220,7 @@ example : toNat (cplus (csucc (csucc czero))
         <p>$$ \mathtt{pred} = \lambda n.\,\mathtt{fst}\,\bigl(n\ \mathtt{step}\ (\mathtt{pair}\,\overline0\,\overline0)\bigr). $$</p>
         <p>Then $\mathtt{sub} = \lambda m\,n.\,n\ \mathtt{pred}\ m$ (monus), and comparison follows via $\mathtt{iszero}$, $\mathtt{leq}$, $\mathtt{eq}$.</p>
         <p class="muted">Definability of <code>pred</code> was the breakthrough behind "all recursive functions are $\lambda$-definable."</p>
+        <aside class="notes">Tell the story — this was historically the crux. Church himself believed the predecessor undefinable: addition and multiplication build the iterator up, but a numeral offers no handle for peeling one application off. Ask the room why going down is harder than going up before revealing Kleene's wisdom-teeth trick: iterate the pair-shift from (0,0), so after n steps you are holding (n minus one, n) and simply read off the first slot. Emphasize the payoff — with pred you get subtraction, comparison, and ultimately the theorem that all recursive functions are lambda-definable.</aside>
       </section>
 
       <!-- ===== Y & UNDECIDABILITY ===== -->
@@ -216,6 +232,7 @@ example : toNat (cplus (csucc (csucc czero))
           <strong>Meta-level payoff.</strong> $\lambda$-definable $=$ general recursive $=$ Turing-computable (Church–Turing). And $\beta$-convertibility is <em>undecidable</em> (Church 1936).
         </div>
         <p class="muted">An untyped $Y$ has no home in a total type theory — which is exactly why Lean rejects <code>def Y (f : α → α) : α := f (Y f)</code> and offers <code>Nat.rec</code> instead.</p>
+        <aside class="notes">The pure calculus has no def — a function cannot mention its own name — and yet recursion appears anyway through the fixed-point combinator. Be pedantic about one point: Y F equals F of Y F is beta-convertibility via a common reduct, not a one-way reduction; Turing's Theta combinator gives the honest reduction if anyone asks. Then step up to the meta-level payoff: lambda-definable equals Turing-computable, and beta-convertibility is undecidable — Church's 1936 answer to the Entscheidungsproblem. Close by connecting to Lean: an untyped Y has no home in a total type theory, which is exactly why Lean rejects the naive fixpoint for lack of a termination proof and hands you Nat.rec instead.</aside>
       </section>
 
       <!-- ===== RUN IT ===== -->
@@ -226,8 +243,12 @@ example : toNat (cplus (csucc (csucc czero))
         <p class="lab">nf PLUS 2 3</p>
         <p class="lab">nf PRED 3</p>
         <p class="lab">reduce OMEGA</p>
+        <p class="lab">let MYNOT = \p. p FALSE TRUE</p>
+        <p class="lab">nf MYNOT TRUE</p>
+        <p class="lab">equiv PLUS 2 3 = 5</p>
         <p class="lab">tour</p>
-        <p class="muted">Every calculation in this lecture is reproducible in the browser; <code>tour</code> runs a 60-second guided version.</p>
+        <p class="muted">Every calculation in this lecture is reproducible in the browser; <code>let</code> builds your own encodings, <code>equiv</code> decides $=_\beta$ on terms that normalize, and <code>tour</code> runs a 60-second guided version.</p>
+        <aside class="notes">Stop talking and let them type for a few minutes. Point at equiv specifically: they just heard that beta-convertibility is undecidable in general, and here they are deciding it on normalizing instances — voice that tension out loud. Encourage them to build something of their own with let rather than only consuming the built-ins; defining MYNOT and watching it work is worth ten slides. The tour command is the sixty-second guided replay for anyone who wants it as homework.</aside>
       </section>
 
       <!-- ===== RECAP / REFERENCES ===== -->
@@ -240,6 +261,7 @@ example : toNat (cplus (csucc (csucc czero))
           <li>Booleans, numerals, arithmetic, <code>pred</code> and $Y$ are all <em>derived</em>.</li>
         </ul>
         <p class="muted">Barendregt, <em>Introduction to Lambda Calculus</em> · Selinger, <em>Lecture Notes</em> · Pierce, <em>TAPL</em> ch. 5 · Church (1936) · the course book at /vietnam2026/book</p>
+        <aside class="notes">Recap the arc: three grammar rules and one reduction rule gave a Turing-complete language, and every "primitive" — booleans, numerals, pred, Y — was derived inside it. Repeat the two theorems that carried the weight: Church–Rosser for uniqueness of answers, Standardization for completeness of normal order. Barendregt and Selinger are the references actually worth reading at this level, and the course book chapter has the worked examples and exercises. Next time, types return — and the machine we built today becomes the engine underneath proofs-as-programs.</aside>
       </section>
 
     </div>

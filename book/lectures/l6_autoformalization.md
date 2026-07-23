@@ -63,6 +63,18 @@ check**, so a language model can *propose* and the kernel can *dispose* — no h
 The inverse map, **informalization** (Lean → prose), is used both to make proofs readable and as a
 round-trip faithfulness check.
 
+```{admonition} Run it — the split at STLC scale
+:class: seealso
+Both problems already exist in miniature in the typed λ-lab: *statement* autoformalization is writing the
+type, *proof* autoformalization is inhabiting it. Proof search succeeding:
+[`ch type '(P -> Q) -> (Q -> R) -> P -> R'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27%28P%20-%3E%20Q%29%20-%3E%20%28Q%20-%3E%20R%29%20-%3E%20P%20-%3E%20R%27)
+finds an inhabitant. Proof search failing honestly:
+[`ch type '((P -> Q) -> P) -> P'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27%28%28P%20-%3E%20Q%29%20-%3E%20P%29%20-%3E%20P%27)
+reports Peirce's law **UNINHABITED** — a perfectly well-formed statement that no constructive search can
+ever close. Well-formed is not provable, and provable is not faithful: that second gap is this section's
+subject.
+```
+
 Now the central caveat, worth ten minutes of any lecture. The Lean kernel guarantees only that the
 supplied proof establishes the supplied statement. It says nothing about whether the statement captures
 intent. A formalized statement can be:
@@ -104,6 +116,16 @@ the **de Bruijn criterion**: only the small kernel (in Lean, on the order of a c
 re-checks the final proof term, so the model and the search harness are *untrusted* and may be arbitrarily
 buggy without endangering soundness.
 
+```{admonition} Run it — be the language model for five minutes
+:class: seealso
+Feel the loop from the proposer's chair. Start
+[`prove (P -> Q) -> (Q -> R) -> P -> R`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=prove%20%28P%20-%3E%20Q%29%20-%3E%20%28Q%20-%3E%20R%29%20-%3E%20P%20-%3E%20R)
+and *propose* tactics (`intro`, `apply`, `exact`); the checker *disposes*, answering with the new goal
+state or an error, exactly as Lean answers a prover. `hint` plays premise selection, `undo` is the
+backtracking of best-first search, and `qed` extracts the finished λ-term and re-checks it — a two-line
+de Bruijn kernel. Every refinement below is a mechanized version of something you just did by hand.
+```
+
 Layer in the refinements that distinguish systems:
 
 - **Premise selection / retrieval augmentation** — a proof usually needs a handful of the $>280{,}000$
@@ -138,6 +160,17 @@ of this is **Mathlib**: $283{,}067$ theorems, $134{,}678$ definitions, $772$ con
 million lines (July 2026), built on a fast-moving toolchain (Lean $4.32.0$, released 2026-07-13). A
 formalization therefore *pins* an exact toolchain — the EML case study below is frozen at Lean/Mathlib
 $4.28$.
+
+```{admonition} Run it — replay the DD+AR engine
+:class: seealso
+The lab replays AlphaGeometry-style deductions move by move.
+[`ag imo_p4`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ag%20imo_p4) walks a simplified
+DD+AR sketch of an IMO P4-class geometry problem — watch the symbolic engine chain premises to
+conclusions, exactly the "closes the proof" half of the table's first row — and
+[`ag angle_bisector`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ag%20angle_bisector) is a
+two-step warm-up. Background dossier:
+[`kb alphageometry`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=kb%20alphageometry).
+```
 
 The calibration lesson is the point. **miniF2F** ($488$ olympiad/high-school statements, cross-system
 across Lean/Isabelle/Metamath/HOL Light) is essentially *saturated*. **PutnamBench** ($672$ Lean problems)
@@ -363,7 +396,9 @@ theorem e_witness : ∃ t : EMLTerm, ∀ env, EMLTerm.eval? env t = some (Real.e
   simp [EMLTerm.eval?, Real.log_one]
 ```
 
-Then explore the same trees in the browser with the live
+No local setup needed: [`lean eval`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=lean%20eval)
+in the lab shows the course's *EML-in-miniature* expression evaluator with a one-click **Live Lean** link
+that opens the code in the web editor. Then explore the same trees in the browser with the live
 [**EML Tree Builder**](https://nasqret.github.io/eml-formalization/) — type a function, watch its
 fixed-shape subtree assemble — and read the public scoreboard `PaperClaims.lean` in the
 [EML repository](https://github.com/nasqret/eml-formalization).

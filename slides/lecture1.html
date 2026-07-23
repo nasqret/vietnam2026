@@ -52,6 +52,7 @@
         <p class="muted">A proof is a term, a theorem is its type, and checking the proof is type-checking the term.</p>
         <p class="title-affil">dr Bartosz Naskręcki · Adam Mickiewicz University in Poznań · CCAI, Warsaw Univ. of Technology</p>
         <p class="lab">▷ live lab: /lab-lambda</p>
+        <aside class="notes">Welcome everyone — this lecture is the gentle-but-rigorous on-ramp to the whole mini-course. Read the subtitle aloud and promise that by the end of the hour it will be literal, not a metaphor: a proof is a term, a theorem is its type, and checking the proof is type-checking the term. Point at the lab address and tell the room that everything today can be run live in the browser, no installation needed yet.</aside>
       </section>
 
       <!-- ===== WHY THIS MATTERS ===== -->
@@ -62,6 +63,7 @@
           <p>A <strong>proof</strong> is a term · a <strong>theorem</strong> is its type · <strong>checking</strong> the proof is type-checking the term.</p>
         </div>
         <p class="muted">Everything in this course — Lean, Rocq, Agda, and the contrast with Mizar — works out that one sentence, built up from the untyped $\lambda$-calculus.</p>
+        <aside class="notes">Open with the framing question: a proof assistant has to answer, mechanically and without appeal, "is this a proof?" Stress the word decidable — no referee, no judgment call, just a terminating algorithm. Credit the four names behind the trick: Church, Curry, Howard, and de Bruijn, and emphasize how startlingly economical the idea is. By the end of the course, "the compiler accepted my proof" and "the term had the right type" should be literally the same event.</aside>
       </section>
 
       <!-- ===== ROADMAP ===== -->
@@ -75,6 +77,7 @@
           <li>Why types are <em>almost</em> sets — and the three places it breaks</li>
           <li><strong>Dependent types</strong>, Martin-Löf type theory, and the four provers</li>
         </ul>
+        <aside class="notes">Walk the arc briskly: three typing rules, the metatheorems they buy us, the Church-versus-Curry split, and then the conceptual centre of the day — Curry–Howard. Flag that the last two bullets are deliberate previews: the types-versus-sets caveats and dependent types each motivate something later in the course. A good calibration question for the room: who has seen a typing rule or a derivation tree before?</aside>
       </section>
 
       <!-- ===== JUDGMENTS & RULES ===== -->
@@ -87,6 +90,7 @@
               \frac{\Gamma, x{:}A \vdash t:B}{\Gamma\vdash \lambda x{:}A.\,t : A\to B}\,(\textsf{abs}) \quad
               \frac{\Gamma\vdash t:A\to B \quad \Gamma\vdash u:A}{\Gamma\vdash t\,u:B}\,(\textsf{app}) $$</p>
         <p class="muted"><strong>abs</strong> <em>builds</em> a function type; <strong>app</strong> <em>eliminates</em> one. A derivation is a finite tree whose leaves are (var).</p>
+        <aside class="notes">Slow down here — this notation is the language of everything that follows. Read the judgment aloud, more than once: in context Gamma, the term t has type A, where the context is just a finite list of typing assumptions about distinct variables. The punchline to repeat: abstraction builds a function type, application eliminates one. And ask the room to remember the shape — a derivation is a finite tree whose leaves are (var) — because in a few slides proofs will turn out to be trees for exactly the same reason.</aside>
       </section>
 
       <!-- ===== WORKED DERIVATION ===== -->
@@ -100,6 +104,7 @@
             }{\Gamma\vdash f\,(f\,x):o}\,(\textsf{app}) $$</p>
         <p>Discharge both assumptions with (abs), innermost first:</p>
         <p>$$ \vdash\ \lambda f{:}o{\to}o.\,\lambda x{:}o.\,f\,(f\,x)\ :\ (o\to o)\to o\to o. $$</p>
+        <aside class="notes">Build this tree live rather than just showing it — start from the inner application and work outward. Point out that at every node the term dictates the rule: there is never a choice, which is exactly why checking can be mechanical. Then discharge the two assumptions with (abs), innermost first. Close by naming the term: "apply f twice" is the Church numeral 2 from the lambda-calculus lecture, now wearing a type — and the lab's ch term command re-derives this same tree by inference.</aside>
       </section>
 
       <!-- ===== METATHEORY ===== -->
@@ -112,6 +117,9 @@
           <li><strong>Strong normalization</strong> (Tait 1967). Every well-typed term halts — no infinite $\to_\beta$ sequence.</li>
         </ul>
         <p class="muted">Consequence: $\Omega=(\lambda x.\,x\,x)(\lambda x.\,x\,x)$ and the $Y$-combinator are <em>untypable</em>. STLC trades Turing-completeness for guaranteed termination — and type-checking is <strong>decidable</strong>.</p>
+        <p class="lab">ch term \x. x x</p>
+        <p class="muted">Watch inference fail live: unifying $\alpha$ with $\alpha\to\beta$ trips the occurs check — the REPL reports “Cannot unify α with α → β”. Self-application has no simple type, so neither $\Omega$ nor $Y$ (which is built from self-application) does.</p>
+        <aside class="notes">The rules are cheap; these theorems are the whole point of having them. Uniqueness makes Church-style checking deterministic; subject reduction — whose engine is the substitution lemma — says types survive computation; and Tait's strong normalization says every well-typed term halts. Pause on the trade: Omega and the Y-combinator are untypable, so STLC gives up Turing-completeness and gains decidable checking, which is the seed of the whole enterprise. The lab chip is a ten-second demo — type inference on self-application fails on the occurs check, live, in front of the room.</aside>
       </section>
 
       <!-- ===== CHURCH VS CURRY ===== -->
@@ -128,7 +136,10 @@
           </div>
         </div>
         <p>Related by <strong>type-erasure</strong> $|\cdot|$. Organizing fact: the <strong>principal type</strong>. The identity $\lambda x.\,x$ has infinitely many types, all instances of one most-general $\alpha \to \alpha$.</p>
+        <p class="lab">ch term \p. p</p>
+        <p class="muted">Algorithm W, live: the <em>Curry</em> principal type $\alpha\to\alpha$; then <code>ch lean \p. p</code> for the <em>Church</em>-style Lean term <code>fun p => p : P → P</code> — one object, two readings, related by erasure.</p>
         <p class="muted">Principal-type theorem (Hindley 1969, Milner 1978): computable by <em>unification</em> — the heart of Hindley–Milner inference in ML, Haskell, Lean's elaborator.</p>
+        <aside class="notes">This distinction confuses everyone exactly once, so name it head-on: Church-style is checking annotated terms with at most one type; Curry-style is inference on bare terms, which may have many types. The reconciliation is the principal type — the identity has infinitely many types and one most general one, and both statements are true with no tension. Connect it to what they may already know: unification-based inference is the heart of ML, Haskell, and Lean's elaborator. Run the ch term and ch lean commands to show the two readings of one and the same term, related by erasure.</aside>
       </section>
 
       <!-- ===== CURRY-HOWARD DICTIONARY ===== -->
@@ -154,6 +165,7 @@
           </div>
         </div>
         <p><strong>Provability = inhabitation:</strong> $A$ is intuitionistically provable iff its type has a closed term. This is the engine of every prover in the course.</p>
+        <aside class="notes">This is the conceptual centre of the lecture — give it time. Tell the history in one breath: Curry noticed that the types of the K and S combinators are exactly Hilbert's implicational axioms, Howard extended the match to all of intuitionistic natural deduction, and de Bruijn arrived at it independently through Automath. Walk a few rows of the dictionary slowly, then land hard on the bottom line: provability equals inhabitation. That single equivalence is the engine of every prover in this course.</aside>
       </section>
 
       <!-- ===== CODE: TRANSITIVITY = COMPOSITION ===== -->
@@ -164,6 +176,9 @@
         <pre><code class="language-lean" data-trim data-noescape>theorem trans_imp {P Q R : Prop} : (P → Q) → (Q → R) → P → R :=
   fun f g p => g (f p)</code></pre>
         <p class="muted">“Chaining implications” and “composing functions” are one operation. The proof <em>is</em> the program.</p>
+        <p class="lab">prove (P -&gt; Q) -&gt; (Q -&gt; R) -&gt; P -&gt; R</p>
+        <p class="muted">Build it yourself with <code>intro</code>/<code>apply</code>/<code>exact</code>; <code>qed</code> prints exactly $\lambda f\,g\,p.\,g\,(f\,p)$ and its type.</p>
+        <aside class="notes">This is the first dictionary row worth reading as a term, so narrate it both ways. As a proof: given f proving P implies Q, g proving Q implies R, and a proof p of P, push p through f and then through g. Then flip the reading: that is literally function composition, the B combinator — chaining implications and composing functions are one operation. With the prove chip, students can grow this very term tactic by tactic and watch qed extract it together with its type.</aside>
       </section>
 
       <!-- ===== PEIRCE ===== -->
@@ -173,6 +188,7 @@
         <pre><code class="language-lean" data-trim data-noescape>theorem peirce {P Q : Prop} : ((P → Q) → P) → P :=
   fun h => Classical.byContradiction (fun hnp => hnp (h (fun hp => absurd hp hnp)))</code></pre>
         <p class="muted">Delete <code>Classical</code> and it fails to type-check. Curry–Howard yields <em>intuitionistic</em> proofs; excluded middle is an axiom you opt into, not a theorem.</p>
+        <aside class="notes">Now the sharp, surprising line the dictionary draws. Invite the room to try building the term: with k in hand, the only way to make a P is to apply k, which needs a function from P to Q, which needs a Q out of a bare p — and with P and Q atomic no rule makes a Q, so you are stuck. Stress that this stuckness is a theorem, not a failure of imagination: inhabitation of this fragment is decidable and exhaustive search finds nothing. If you can, delete Classical from the Lean proof live and let the type error land the point — excluded middle is an axiom you opt into.</aside>
       </section>
 
       <!-- ===== TYPES ARE NOT SETS ===== -->
@@ -185,6 +201,7 @@
           <li><strong>Constructive existence.</strong> An inhabitant of $\sum_{x:A}B(x)$ carries an actual <em>witness</em>.</li>
         </ul>
         <p class="muted">Install the caveat the same hour as the intuition — each break motivates something later.</p>
+        <aside class="notes">The theme of this slide: install the intuition and the scepticism in the same hour. Types-as-sets is honest for STLC — the calculus has sound set-theoretic models — so let them use the picture freely today. But walk the three breaks slowly: definitional versus propositional equality is the single most common MLTT stumbling block, Girard's paradox is why every real system carries a universe hierarchy instead of Type-in-Type, and constructive existence hands you an actual witness. Each break is a preview: identity types, universes, and Sigma-types are all coming later in the course.</aside>
       </section>
 
       <!-- ===== DEPENDENT TYPES ===== -->
@@ -196,6 +213,7 @@
           <li><strong>$\Sigma$-type</strong> $\;\sum_{x:A}B(x)\;$ — pair $\langle a,b\rangle$ with $b:B(a)$; realizes the witness-carrying $\exists x{:}A.\,B(x)$, with $\pi_1\langle a,b\rangle=a$.</li>
         </ul>
         <p class="muted">A theorem like $\mathsf{cons}: A\to\mathsf{Vec}\,A\,n\to\mathsf{Vec}\,A\,(n{+}1)$ becomes a <em>typing</em>. Barendregt's $\lambda$-cube organizes the design space; its apex $\lambda C$ (Calculus of Constructions) is the ancestor of Lean's and Rocq's CIC.</p>
+        <aside class="notes">One move turns a logic of implications into a logic of all of mathematics: let a type depend on a value. Use the vector type and say the punchline aloud — the type of cons is the theorem that consing raises the length by one; a theorem just became a typing. Pi realizes the universal quantifier and Sigma the witness-carrying existential, and when the dependency is constant they collapse back to the ordinary arrow and product. Mention the lambda-cube only as a map of the design space, with the Calculus of Constructions at its apex as the ancestor of the CIC that Lean and Rocq run.</aside>
       </section>
 
       <!-- ===== CODE: SIGMA WITNESS (Agda) ===== -->
@@ -205,6 +223,7 @@
         <pre><code class="language-agda" data-trim data-noescape>∃-even : Σ ℕ (λ n → n + n ≡ 4)
 ∃-even = 2 , refl</code></pre>
         <p class="muted">Its first projection returns $2$ — exactly what a classical non-emptiness proof cannot give you. In Martin-Löf type theory, $\mathbb{N}$-elimination <em>is</em> mathematical induction, now a primitive term former.</p>
+        <aside class="notes">Dwell on how concrete this is: the proof is a pair, and its first projection is the number 2. The evidence component is just refl, because both sides compute to the same numeral — computation is native, no axiom fired. Contrast this with a classical non-emptiness proof, which hands you no element at all; "there exists" means something strictly stronger here. Then the Martin-Löf punchline: the elimination rule for the naturals is mathematical induction, now a primitive term former.</aside>
       </section>
 
       <!-- ===== WHY TYPE THEORY NOT ZFC ===== -->
@@ -227,6 +246,7 @@
           </div>
         </div>
         <p class="muted">Three type theories, one set theory — an engineering choice, not a coronation. Mizar verifies deep mathematics with no proof terms at all.</p>
+        <aside class="notes">Four reasons, each one demonstrable: the de Bruijn criterion — a tiny trusted kernel, so buggy tactics cannot hurt soundness; native computation — 2 plus 2 and 4 are identified by conversion, no axiom fired; extraction — the proof is the algorithm; and theorems as types, so you prove by inhabiting. Then be honest with the room: this is an engineering choice, not a coronation. Mizar verifies deep mathematics over Tarski–Grothendieck set theory with no proof terms at all, and that contrast — three type theories, one set theory — is the through-line of the whole mini-course.</aside>
       </section>
 
       <!-- ===== RUN IT YOURSELF ===== -->
@@ -236,7 +256,10 @@
         <p class="lab">lean imp_comp</p>
         <p>prints <code>theorem imp_comp {P Q R : Prop} (f : P → Q) (g : Q → R) : P → R := fun p => g (f p)</code> — exactly $\lambda f\,g\,p.\,g\,(f\,p)$ — with a live.lean-lang.org link. For Peirce's law,</p>
         <p class="lab">kb intuitionistic</p>
-        <p>explains why it needs a classical principle. (In the full desktop lab, <code>ch type '((P -> Q) -> P) -> P'</code> reports it <strong>uninhabited</strong>, and <code>ch verify</code> checks the emitted Lean.)</p>
+        <p>explains why it needs a classical principle — then let the lab settle it live:</p>
+        <p class="lab">ch type '((P -&gt; Q) -&gt; P) -&gt; P'</p>
+        <p class="muted">reports Peirce's law <strong>uninhabited</strong>: exhaustive search finds no closed term. (Desktop lab only: <code>ch verify</code> re-checks the emitted Lean against a local Lean toolchain.)</p>
+        <aside class="notes">Close the loop: don't let them take the correspondence on faith. Demo lean imp_comp — it prints exactly the composition term from the transitivity slide, with a Live Lean link — and then run ch type on Peirce's law right in the browser, where the inhabitation search comes back uninhabited. Spell out what that verdict means: an exhaustive search over normal terms, licensed by decidability. Their homework is to click every one of these before the next lecture.</aside>
       </section>
 
       <!-- ===== RECAP / REFERENCES ===== -->
@@ -249,6 +272,7 @@
           <li>$\Pi/\Sigma$ dependent types, MLTT, and four provers on three type theories + one set theory.</li>
         </ul>
         <p class="muted">Pierce, <em>TAPL</em> · Sørensen–Urzyczyn, <em>Curry–Howard Isomorphism</em> · Girard–Lafont–Taylor, <em>Proofs and Types</em> · Wadler, <em>Propositions as Types</em> · Martin-Löf, <em>Intuitionistic Type Theory</em> · the four-prover artifacts at github.com/nasqret/vietnam2026</p>
+        <aside class="notes">Land the recap as one story: three rules give trees, trees give metatheorems, Curry–Howard reads the trees as proofs, and dependent types scale the game to real mathematics. Assign Wadler's "Propositions as Types" as tonight's reading — it is the best high-level, historically rich account of today's material. And ask them to do at least the hand derivation and the K-and-S lab exercise before the next lecture on the untyped lambda-calculus.</aside>
       </section>
 
     </div>

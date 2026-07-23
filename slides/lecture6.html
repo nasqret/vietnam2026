@@ -52,6 +52,7 @@
         <p class="muted">Where AI meets the kernel — a human sets the target, AI assists the search, and the kernel is the sole referee.</p>
         <p class="title-affil">dr Bartosz Naskręcki · Adam Mickiewicz University in Poznań · CCAI, Warsaw Univ. of Technology</p>
         <p class="lab">▷ live lab: /lab-lambda</p>
+        <aside class="notes">Welcome to the final lecture — this is where the whole course lands in 2026: everything we built, from the lambda calculus to Lean's kernel, now meets AI. Keep the subtitle as the through-line for the next ninety minutes: a human sets the target, AI assists the search, and the kernel is the sole referee. Ask everyone to open the lab in a browser tab now — we will drop into it at several points today.</aside>
       </section>
 
       <!-- ===== WHY THIS MATTERS ===== -->
@@ -64,6 +65,7 @@
           <li>A chatbot's natural-language "proof" gives <em>none</em>.</li>
         </ul>
         <p class="muted">Between those poles sits autoformalization — and that is exactly where a green checkmark can still certify the wrong theorem.</p>
+        <aside class="notes">Open by asking the room what changed in roughly two years — machines went from essentially nothing at the IMO to olympiad gold, and that single fact reframes the whole course. The Curry–Howard slogan from Lecture 2, that proofs are objects a machine can check, is now a live 2026 research programme. But stress the asymmetry: a proof assistant gives an absolute soundness guarantee relative to a tiny trusted kernel, while a chatbot's prose "proof" gives none. The transferable skill of this lecture is learning to see the gap in between — where a machine-checked green checkmark can still certify the wrong theorem.</aside>
       </section>
 
       <!-- ===== TWO PROBLEMS, ONE KERNEL ===== -->
@@ -82,6 +84,7 @@
           </div>
         </div>
         <p>The engine of the field: <strong>proofs are hard to find but easy to check</strong> — the model <em>proposes</em>, the kernel <em>disposes</em>.</p>
+        <aside class="notes">Have students say the two halves back to you before moving on: statement autoformalization is judgement-laden — the formal statement must mean what the mathematician meant, and no proof obligation is discharged — while proof autoformalization is search-heavy, because the space of tactic scripts is vast but every candidate is cheaply checkable. That asymmetry, hard to find but easy to check, is the engine of the entire field. Mention the inverse map too: informalization, Lean back to prose, is used both for readability and as a round-trip faithfulness check.</aside>
       </section>
 
       <!-- ===== THE FAITHFULNESS GAP (code) ===== -->
@@ -94,6 +97,7 @@
 theorem primes_are_odd (p : ℕ) (hp : p.Prime) (h : p = 4) : Odd p := by
   subst h; exact absurd hp (by decide)</code></pre>
         <p class="muted"><code>p = 4</code> with <code>p.Prime</code> is never satisfiable — <em>vacuously true</em>. A statement can be vacuous, over- or under-constrained, and still type-check.</p>
+        <aside class="notes">This slide is worth ten minutes of any lecture — do not rush it. Walk the code slowly: the hypothesis p = 4 together with p.Prime is never satisfiable, so the theorem is vacuously true and means nothing, yet the kernel is perfectly happy, because it checks the proof against this statement, not against the mathematician's sentence. Then scale the worry up: AlphaProof auto-formalized on the order of a million competition problems and Goedel-Prover 1.64 million NuminaMath statements, so an unfaithful-but-well-typed statement is the pipeline's core, kernel-invisible failure mode. That is exactly why ProofNet grades faithfulness, not just type-correctness.</aside>
       </section>
 
       <!-- ===== THE NEURAL–SYMBOLIC LOOP ===== -->
@@ -105,8 +109,11 @@ theorem primes_are_odd (p : ℕ) (hp : p.Prime) (h : p = 4) : Odd p := by
           <li><strong>Premise selection</strong> — retrieve a few of $283{,}067$ Mathlib lemmas (ReProver / LeanDojo).</li>
           <li><strong>Subgoal decomposition</strong> — blueprints &amp; dependency graphs (DeepSeek-Prover-V2, Massot's Blueprint).</li>
           <li><strong>Expert iteration / RL-from-verifier</strong> — the compiler's accept/reject <em>is</em> the reward.</li>
-          <li><strong>Self-correction</strong> — feed the Lean error back (Goedel-V2: $88.0\% \to 90.4\%$).</li>
+          <li><strong>Self-correction</strong> — feed the Lean error back (Goedel-V2: $88.1\% \to 90.4\%$).</li>
         </ul>
+        <p class="lab">prove p -> (p -> q) -> q</p>
+        <p class="muted">The loop in miniature: <code>hint</code> is the model's "propose", each tactic reshapes the goal, and <code>qed</code> is the kernel's "dispose" — it extracts the λ-term and re-checks its principal type.</p>
+        <aside class="notes">Every current system shares this one architecture, so teach the loop once and everything else becomes a refinement of it. The trust story is the de Bruijn criterion: only the small kernel — a couple of thousand lines in Lean — re-checks the final proof term, so the model and the search harness are untrusted and may be arbitrarily buggy without endangering soundness. Walk the four refinements as mechanized versions of what a human prover does anyway: retrieve lemmas, split into subgoals, learn from accept/reject, revise on error. Then send them into the lab's prove command to sit in the proposer's chair for five minutes — hint plays premise selection, undo is the backtracking of best-first search, and qed is the kernel's final re-check.</aside>
       </section>
 
       <!-- ===== THE 2024–2026 LANDSCAPE ===== -->
@@ -120,6 +127,7 @@ theorem primes_are_odd (p : ℕ) (hp : p.Prime) (h : p = 4) : Odd p := by
           <tr><td><strong>Seed / Aleph-Prover</strong> (2025–26)</td><td>miniF2F saturated</td><td>Aleph $668/672$ Putnam (Jan 2026)</td></tr>
         </table>
         <p class="muted">AlphaProof solved P6 — a problem only $5$ of $609$ humans cracked; AlphaGeometry 2 dispatched P4 in $19$ seconds. Substrate: <strong>Mathlib</strong> ($>2$M lines, Lean $4.32.0$).</p>
+        <aside class="notes">Pin every claim in this table to a number and a date — the numbers move monthly, and that instability is itself the lesson. Pull out two moments for the room: AlphaProof solved P6, a problem only five of 609 human contestants cracked, and AlphaGeometry 2 dispatched the geometry P4 in nineteen seconds once it was formalized. Underneath all of it sits Mathlib — over two million lines on a fast-moving toolchain — which is why a serious formalization pins an exact version; our EML case study later today is frozen at Lean/Mathlib 4.28.</aside>
       </section>
 
       <!-- ===== CALIBRATION / BENCHMARKS ===== -->
@@ -132,6 +140,7 @@ theorem primes_are_odd (p : ℕ) (hp : p.Prime) (h : p = 4) : Odd p := by
         </ul>
         <p class="box"><strong>IMO 2025 paradigm split:</strong> Gemini Deep Think &amp; an OpenAI model reached <em>gold</em> ($35/42$) in <strong>natural language, human-graded</strong>. Seed-Prover proved $5/6$ <strong>formally in Lean</strong>. Only one is checkable.</p>
         <p class="muted">"AI can do mathematics" is a category error unless you say <em>which benchmark, which $k$, which tier</em> — and date it.</p>
+        <aside class="notes">This is the calibration literacy I most want them to leave with. miniF2F is essentially saturated, PutnamBench went from single digits to about ninety-nine percent in eighteen months, but FrontierMath — original, research-level problems co-designed by Fields medalists — launched below two percent and remains far from saturated. Then push hard on the IMO 2025 split: the natural-language golds were human-graded prose with no machine verification, while Seed-Prover's five of six were kernel-certified in Lean — only one of those claims is checkable. So ask which benchmark, which k, which difficulty tier — and always date the claim, because leaderboards move monthly.</aside>
       </section>
 
       <!-- ===== HUMAN + AI + KERNEL ===== -->
@@ -148,6 +157,7 @@ theorem primes_are_odd (p : ℕ) (hp : p.Prime) (h : p = 4) : Odd p := by
           </div>
         </div>
         <p class="muted"><strong>Lean + Mathlib is a shared substrate</strong> — acceptance is decided by a program, not a referee's taste.</p>
+        <aside class="notes">These two exemplars show that machine-checked collaboration is already a working mode of research mathematics, not a demo. Tao with Dillies and Mehta formalized the full polynomial Freiman–Ruzsa argument in about three weeks, coordinated through Massot's Blueprint — a research result verified almost as fast as it was written. The Equational Theories Project resolved the entire implication graph, all twenty-two million ordered implications among the magma laws, with human insight, Vampire and SAT search contributing interchangeably. The reason it works is the punchline at the bottom: acceptance is decided by a program, not a referee's taste, so amateurs, professionals and ATP systems stand on equal footing.</aside>
       </section>
 
       <!-- ===== CASE STUDY: THE MATHEMATICS ===== -->
@@ -158,6 +168,7 @@ theorem primes_are_odd (p : ℕ) (hp : p.Prime) (h : p = 4) : Odd p := by
         <p>$\{\mathrm{eml},1\}$ generates the <em>entire</em> calculator repertoire through a three-production grammar:</p>
         <p>$$ T \;::=\; 1 \;\mid\; x_n \;\mid\; \mathrm{eml}(T,T). $$</p>
         <p class="muted">The analytic analogue of the <strong>Sheffer stroke</strong> (NAND): a single functionally complete primitive. Formalization: arXiv:2603.21852, Lean 4 + Mathlib $4.28$.</p>
+        <aside class="notes">Now the capstone — a real, completed formalization of a research paper, not a classroom toy. One binary operator, exp of x minus log of y, one distinguished constant, three grammar productions — and out of that comes the entire scientific-calculator repertoire: e, pi, arithmetic, every transcendental function. Land the analogy: this is the analytic analogue of the Sheffer stroke, NAND in Boolean logic — a single functionally complete primitive from which everything follows. Every elementary function becomes one fixed-shape binary tree over this single node.</aside>
       </section>
 
       <!-- ===== WORKED EXAMPLES ===== -->
@@ -167,6 +178,7 @@ theorem primes_are_odd (p : ℕ) (hp : p.Prime) (h : p = 4) : Odd p := by
         <p><strong>Recovering log from a subtraction</strong> (for $z>0$):</p>
         <p>$$ \log z \;=\; \mathrm{eml}\bigl(1,\ \mathrm{eml}(\mathrm{eml}(1,z),\,1)\bigr), \qquad K=7. $$</p>
         <p class="muted">The domain constraint $z>0$ is <em>forced</em> by the innermost $\log z$; outside it the term has no value. Trig follows via Euler: <code>cosTermℂ</code> $= \exp(ix)$, so $\Re = \cos x$ ($K=1273$).</p>
+        <aside class="notes">Do both computations live on the board. eml of one and one is e minus zero, so e falls out as a tree of size three — the analogue of "not p equals NAND of p with p", the first thing a single operator gives you for free. Then evaluate the log identity inside-out and let the room watch the exps and logs cancel; point out that the domain constraint z positive is forced by the innermost log, not added by hand. Trigonometry comes via Euler — the cosine witness evaluates to exp of i x and its real part is cosine — and the K-count jumps to 1273, a preview of how witness sizes explode.</aside>
       </section>
 
       <!-- ===== THE ENGINEERING (code) ===== -->
@@ -182,6 +194,7 @@ theorem primes_are_odd (p : ℕ) (hp : p.Prime) (h : p = 4) : Odd p := by
           if 0 < vb then some (Real.exp va - Real.log vb) else none
       | _, _ => none</code></pre>
         <p class="muted">A claim is stated only where the witness genuinely <em>has</em> a value — exactly as the paper does.</p>
+        <aside class="notes">Here is the engineering idea that made the whole artefact tractable. Mathlib's real functions are total — log of zero is literally zero, a junk value — and instead of fighting that, the denotation is Option-valued and returns none the moment an inner log sees a non-positive argument. Read the guard aloud from the code: "if zero less than vb" is doing all the work. The consequence is honesty by construction — a claim is stated only where the witness genuinely has a value, exactly as the paper does, and bridge theorems never assert equality at a boundary point.</aside>
       </section>
 
       <!-- ===== DIVISION OF LABOUR ===== -->
@@ -197,6 +210,7 @@ theorem primes_are_odd (p : ℕ) (hp : p.Prime) (h : p = 4) : Odd p := by
           <tr><td><strong>The Lean kernel</strong></td><td><em>the only acceptance criterion</em></td></tr>
         </table>
         <p>Build reality: <strong>$36/36$ primitives sealed</strong>, $100$ public theorems, <strong>$8062$ <code>lake</code> jobs</strong>, sorry-free, no project axioms.</p>
+        <aside class="notes">This table is the pedagogical heart of the case study: no single agent did the whole job. Aristotle won 84 of 88 proof-search chunks but never decided scope; GPT Pro recommended the architecture and the Cayley tangent route but wrote no Lean; Codex did the informalization faithfulness check; Mathematica pre-filtered candidates numerically; the human held scope, taste and commit authority. And the Lean kernel is the only acceptance criterion — everything above it in the table is untrusted. The build numbers at the bottom — 36 of 36 sealed, 8062 jobs, sorry-free — are what that division of labour actually delivered; this is human-in-charge collaboration, not human-out-of-loop automation.</aside>
       </section>
 
       <!-- ===== RUN IT YOURSELF ===== -->
@@ -210,18 +224,20 @@ theorem e_witness : ∃ t : EMLTerm, ∀ env, EMLTerm.eval? env t = some (Real.e
   refine ⟨.eml .one .one, fun env => ?_⟩
   simp [EMLTerm.eval?, Real.log_one]</code></pre>
         <p class="muted">Live demo: the <strong>EML Tree Builder</strong> at nasqret.github.io/eml-formalization</p>
+        <aside class="notes">Hands-on time — give them a few minutes here. First the Boolean shadow: functional completeness from NAND in the lambda lab — run reduce NAND TRUE FALSE, then challenge them to rebuild not, and, and or from NAND alone. Then the EML hello world: the e_witness theorem is Worked Example 1 in Lean and fits on one screen — paste it into a Lean web editor, no local setup needed. Finish by pointing at the EML Tree Builder: type a function, watch its fixed-shape witness tree assemble.</aside>
       </section>
 
       <!-- ===== READING THE FINE PRINT ===== -->
       <section>
         <h2>What "sealed" actually guarantees</h2>
         <ul>
-          <li><strong><code>#print axioms</code></strong> — EML shows only <code>Classical.choice</code>, <code>propext</code>, <code>funext</code>. "Sorry-free" is <em>not</em> "assumption-free".</li>
+          <li><strong><code>#print axioms</code></strong> — EML shows only <code>Classical.choice</code>, <code>propext</code>, <code>Quot.sound</code>. "Sorry-free" is <em>not</em> "assumption-free".</li>
           <li><strong>Seal vs conditional</strong> — corollaries gated on <code>EDLTranscendenceBarrier</code> (no instance) are sound but possibly <em>vacuous</em>. Ask if the hypotheses are ever satisfiable.</li>
           <li><strong>Witness vs completeness</strong> — $\exists\,t,\ t.\mathtt{eval?}=v$ proves representability, <em>not</em> completeness, uniqueness or minimality.</li>
         </ul>
         <p>Every EML seal has one shape: one literal tree + a kernel-checked equality, under the standard axioms — no more, no less.</p>
         <p class="muted">The human's job moves <em>upstream</em>: are these the right statements? Is the result interesting? The kernel never decides that.</p>
+        <aside class="notes">Close the loop: the skill is auditing a formalization, not trusting a checkmark. #print axioms on EML shows only the three Lean/Mathlib defaults, so "sorry-free" means "assumes classical logic and nothing project-specific" — it is not "assumption-free". The conditional corollaries gated on an unprovided typeclass instance are logically sound but possibly vacuous, and honestly labelled as such — always ask whether the hypotheses are ever satisfiable. And an existential witness proves representability only — not completeness, not uniqueness, not minimality — so the human's job moves upstream: are these the right statements, and is the result interesting? The kernel never decides that.</aside>
       </section>
 
       <!-- ===== RECAP / REFERENCES ===== -->
@@ -234,6 +250,7 @@ theorem e_witness : ∃ t : EMLTerm, ∀ env, EMLTerm.eval? env t = some (Real.e
           <li>EML: every elementary function from $\mathrm{eml}(x,y)=\exp x - \log y$, sealed across $8062$ jobs.</li>
         </ul>
         <p class="muted">Odrzywołek, arXiv:2603.21852 · AlphaProof, <em>Nature</em> (Nov 2025) · DeepSeek-Prover-V2 · Goedel-Prover-V2 · LeanDojo · miniF2F · PutnamBench · FrontierMath · Tao, Equational Theories Project · EML repo: github.com/nasqret/eml-formalization · course book at /vietnam2026/book</p>
+        <aside class="notes">Recap by asking the room to reproduce the distinctions, not the numbers: statement versus proof autoformalization, proof-against-statement versus statement-against-intent, and benchmark scores read with their k, their tier, and their date. The one misconception to break for good is "if the Lean output compiles, the mathematics is correct" — the kernel never checks intent. Point them at the references and the course book, and remind them the EML repository is public: exercise 8 has them clone it and run the axiom audit themselves.</aside>
       </section>
 
     </div>

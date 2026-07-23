@@ -73,6 +73,18 @@ $\lam$-term, exactly as term mode does. You can always see it: after a tactic pr
 reveals `fun f p => f p`. The universe bookkeeping behind this is small: every type lives in some
 `Sort u`, with `Prop = Sort 0` for proof-irrelevant propositions and `Type = Type 0 = Sort 1` for data.
 
+```{admonition} Run it
+:class: seealso
+Experience "tactics build a term" before Lean is even installed. In the lab,
+[`prove (P -> Q) -> P -> Q`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=prove%20%28P%20-%3E%20Q%29%20-%3E%20P%20-%3E%20Q)
+opens an interactive proof builder; type `intro f`, `intro p`, `apply f`, `assumption`, then `qed` —
+it prints the extracted term `λf p. f p` together with the type it proves. The tactics were a program
+that *built* the term, and `qed` is your `#print`: the de Bruijn criterion on one screen. Cross-check
+the term-mode direction with
+[`ch term \f. \p. f p`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Cf.%20%5Cp.%20f%20p),
+which infers the principal type of the hand-written λ-term.
+```
+
 **Worked example 1 (symmetry of conjunction, both ways).** Conjunction is a *structure* with two fields,
 so a proof of $P \land Q$ is a pair, and swapping is trivial:
 
@@ -112,6 +124,15 @@ Here is the distinction that trips up every mathematician. A proposition `P : Pr
 holds." Data `n : Nat` is not: `2` and `3` are different. Consequently you may **not**, in general,
 pattern-match on a proof to extract data (the *large-elimination* restriction) — a proof of $\exists n,\ 
 \dots$ does not hand you a computable witness in `Type`.
+
+```{tip}
+**Why can't I extract the witness?** Because proof irrelevance forces functions out of proofs to be
+constant. Suppose you could pattern-match `h : ∃ n, 2 ∣ n` and return the witness. The proofs
+`⟨2, _⟩` and `⟨4, _⟩` inhabit the same proposition, so they are *equal* — yet your extractor would send
+equal inputs to the unequal outputs `2` and `4`. Contradiction; hence the restriction. When you
+genuinely need the witness *as data*, use the `Type`-valued siblings — the subtype `{n // 2 ∣ n}` or a
+sigma type `Σ n, …` — whose elements really are pairs you may take apart.
+```
 
 Everything else is the dictionary you already know from {doc}`Lecture 3 <l3_propositional>`, now as
 concrete datatypes:
@@ -304,6 +325,17 @@ Two contrasts make the point. First, `⟨2, rfl⟩` and `by refine ⟨2, ?_⟩; 
 $\exists n,\ n^2 = 4$ — one by definitional computation, one by running a decision procedure. Second, the
 misconception "just try `omega`" wastes real time: `omega` will not touch $x \cdot y$, and reaching for it
 on a nonlinear goal simply fails. Match the tactic to the shape of the goal.
+
+```{admonition} Run it
+:class: seealso
+Every row of this table is a card in the lab's Lean tactic encyclopedia — summary, effect on the goal,
+when to reach for it, and a worked example:
+[`ch tactic decide`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20tactic%20decide) ·
+[`ch tactic omega`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20tactic%20omega) ·
+[`ch tactic ring`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20tactic%20ring) ·
+[`ch tactic linarith`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20tactic%20linarith).
+Exercise 7 (automation scope) is easiest after reading the `omega` and `ring` cards side by side.
+```
 
 ## Tooling: `elan`, `lake`, Mathlib, and `#check`/`#eval`
 
