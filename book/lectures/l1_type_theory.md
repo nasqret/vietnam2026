@@ -190,8 +190,9 @@ break motivates something later in the course.
 System U — equivalently any type theory admitting $\mathsf{Type} : \mathsf{Type}$ — is **inconsistent**:
 it contains a closed term of the empty type and is no longer strongly normalizing. Hurkens (1995) gave a
 strikingly short such term. **Design consequence:** consistent systems replace $\mathsf{Type}:\mathsf{Type}$
-by a cumulative **universe hierarchy** $\ \mathsf{U}_0 : \mathsf{U}_1 : \mathsf{U}_2 : \cdots$, used by
-Agda, Rocq and Lean. So "the intuition is safe for STLC but must be dropped once universes or
+by a **universe hierarchy** $\ \mathsf{U}_0 : \mathsf{U}_1 : \mathsf{U}_2 : \cdots$, used by
+Agda, Rocq and Lean (cumulative in Rocq; Lean and Agda instead lift explicitly between levels, e.g.
+via `ULift`/`Lift`). So "the intuition is safe for STLC but must be dropped once universes or
 proof-relevant equality enter" is not a slogan — it is a metatheorem.
 ```
 
@@ -252,7 +253,7 @@ terms finds none.) Constructively, to *prove* $((P{\To}Q){\To}P){\To}P$ you woul
 which is what you were trying to build. A proof appears only once you *add* a classical axiom:
 ```lean
 theorem peirce {P Q : Prop} : ((P → Q) → P) → P :=
-  Classical.byContradiction (fun h => h (fun hp => absurd hp h))
+  fun k => Classical.byContradiction (fun hnp => hnp (k (fun hp => absurd hp hnp)))
 ```
 Delete `Classical` and it fails to type-check — dramatizing that Curry–Howard yields *intuitionistic*
 proofs, and that excluded middle is an axiom you opt into, not a theorem.
@@ -356,7 +357,7 @@ three type theories and one set theory — is the through-line of the whole mini
 | Prover | Foundation | `Prop` sort | Default logic |
 |--------|-----------|-------------|---------------|
 | **Lean 4** | Calculus of Inductive Constructions (CIC) | impredicative, proof-irrelevant | classical in Mathlib (`Classical.choice`) |
-| **Rocq** (ex-Coq) | CIC (pCuIC), plus `SProp` | impredicative, proof-irrelevant | constructive core |
+| **Rocq** (ex-Coq) | CIC (pCuIC), plus `SProp` | impredicative, proof-relevant (`SProp` adds definitional proof irrelevance) | constructive core |
 | **Agda** | intensional predicative MLTT | none by default (proof-relevant) | constructive |
 | **Mizar** | Tarski–Grothendieck set theory + classical FOL | *no proof terms at all* | classical |
 

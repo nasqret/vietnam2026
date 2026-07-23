@@ -92,7 +92,7 @@
 -- faithful:  ∀ p : ℕ, p.Prime → 2 < p → Odd p
 -- but this also type-checks and is trivially provable:
 theorem primes_are_odd (p : ℕ) (hp : p.Prime) (h : p = 4) : Odd p := by
-  omega</code></pre>
+  subst h; exact absurd hp (by decide)</code></pre>
         <p class="muted"><code>p = 4</code> with <code>p.Prime</code> is never satisfiable — <em>vacuously true</em>. A statement can be vacuous, over- or under-constrained, and still type-check.</p>
       </section>
 

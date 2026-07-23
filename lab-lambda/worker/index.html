@@ -54,7 +54,7 @@
   <script>
   (function(){
     "use strict";
-    const BUILD = "2026-07-23h-selfhosted";
+    const BUILD="2026-07-23i-worker";
     const PROMPT = "\x1b[92mλ>\x1b[0m ";
     const statusEl = document.getElementById("status");
     const quickEl = document.getElementById("quick");
@@ -79,7 +79,7 @@
     window.addEventListener("resize", function(){ try{ if(fitAddon) fitAddon.fit(); }catch(_e){} });
 
     let buffer="", cursor=0, history=[], histIdx=0, busy=true;
-    let worker=null, banner="", reqId=0; const pending=new Map();
+    let worker=null, banner="", reqId=0, gen=0, initialRan=false; const pending=new Map();
 
     function writeOut(v){ if(v!==undefined && v!==null && String(v)!=="") term.write(String(v).replace(/\r?\n/g,"\r\n")); }
     function prompt(){ buffer=""; cursor=0; histIdx=history.length; term.write("\r\n"+PROMPT); }
@@ -93,8 +93,12 @@
       if(trimmed) history.push(line);
       if(trimmed.toLowerCase()==="clear" || trimmed.toLowerCase()==="cls"){ doClear(); return; }
       busy=true; setQuickEnabled(false); setStop(true);
-      try{ writeOut(await runInWorker(line)); }
-      catch(error){ term.write("\x1b[91m"+String(error)+"\x1b[0m"); }
+      const g=gen;
+      let out="";
+      try{ out=await runInWorker(line); }
+      catch(error){ if(g===gen) term.write("\x1b[91m"+String(error)+"\x1b[0m"); }
+      if(g!==gen) return; // a Stop/respawn happened while we were awaiting; onReady owns the UI state
+      writeOut(out);
       busy=false; setQuickEnabled(true); setStop(false); prompt();
     }
     function injectCommand(cmd){ if(busy||!worker) return; buffer=cmd; cursor=cmd.length; redraw(); submit(); term.focus(); }
@@ -102,8 +106,10 @@
 
     stopBtn.addEventListener("click", function(){
       if(!worker) return;
-      worker.terminate(); pending.forEach(function(r){ r("\x1b[93m(interrupted)\x1b[0m"); }); pending.clear();
+      worker.terminate();
+      pending.forEach(function(r){ r(""); }); pending.clear();
       busy=true; setQuickEnabled(false); setStop(false);
+      term.write("\r\n\x1b[93m  ^ (interrupted)\x1b[0m");
       term.write("\r\n\x1b[93m  ^ terminated. restarting the engine…\x1b[0m\r\n");
       setStatus("loading","restarting…"); startWorker();
     });
@@ -136,10 +142,11 @@
       setStatus("ready","ready — Pyodide in a Web Worker · build "+BUILD);
       prompt(); term.focus();
       const initial = new URLSearchParams(location.search).get("cmd");
-      if(initial) injectCommand(initial);
+      if(initial && !initialRan){ initialRan=true; injectCommand(initial); }
     }
 
     function startWorker(){
+      gen++;
       worker = new Worker("worker.js");
       worker.onmessage = function(event){
         const m = event.data || {};

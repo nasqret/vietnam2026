@@ -33,8 +33,8 @@ rsync -avz --delete --exclude '__pycache__' lab-lambda/ lts-faculty.wmi.amu.edu.
 
 - `book/_build/html/index.html` is an auto-generated redirect to `intro.html`, so `/vietnam2026/book/`
   resolves via Apache's directory index.
-- The lab makes **no** network calls after its CDN assets load, so it works offline once cached and is
-  safe on static hosting.
+- All computation stays in the browser after boot; offline operation is not guaranteed until assets are
+  self-hosted with a service-worker precache (audit LL-REL-001, P1).
 - Formal artifacts are browsed on GitHub (`nasqret/vietnam2026/tree/main/artifacts`), not deployed to the
   server, so the landing page's artifact links point there.
 

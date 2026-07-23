@@ -301,21 +301,24 @@ identity in disguise:
 $$ \mathtt{succ} = \lam n\,f\,x.\,f\,(n\,f\,x), \quad
    \mathtt{plus} = \lam m\,n\,f\,x.\,m\,f\,(n\,f\,x), \quad
    \mathtt{mult} = \lam m\,n\,f.\,m\,(n\,f), \quad
-   \mathtt{pow} = \lam m\,n.\,n\,m. $$
+   \mathtt{pow} = \lam m\,n\,f\,x.\,n\,m\,f\,x. $$
 
 ```{admonition} Correctness of the arithmetic
 :class: important
 $\mathtt{succ}\ \overline{n} =_\beta \overline{n{+}1}$, and for all $m,n$
 $$ \mathtt{plus}\ \overline{m}\ \overline{n} =_\beta \overline{m{+}n}, \quad
    \mathtt{mult}\ \overline{m}\ \overline{n} =_\beta \overline{m\cdot n}, \quad
-   \mathtt{pow}\ \overline{m}\ \overline{n} =_\beta \overline{m^{\,n}}. $$
+   \mathtt{pow}\ \overline{m}\ \overline{n} =_\beta \overline{m^{\,n}} \quad (\text{with } 0^0 = 1). $$
 ```
 
 *Why `plus` works.* Instantiate: $\mathtt{plus}\ \overline{m}\ \overline{n}\ f\ x \reduces
 \overline{m}\,f\,(\overline{n}\,f\,x) = f^{m}(f^{n}(x)) = f^{m+n}(x)$, so the result is
 $\lam f\,x.\,f^{m+n}x = \overline{m{+}n}$. The `succ`/`plus`/`mult` laws are then a one-line induction on
-$m$ (or $n$); `pow` uses $\overline{n}\,\overline{m} =_\beta \overline{m^{n}}$, i.e. "compose the operator
-$\overline m$ with itself $n$ times."
+$m$ (or $n$); `pow` uses $\mathtt{pow}\ \overline{m}\ \overline{n}\ f\ x \reduces
+\overline{n}\,\overline{m}\,f\,x = f^{m^{n}}x$, i.e. "compose the operator $\overline m$ with itself
+$n$ times." The $\eta$-long abstraction over $f,x$ makes the law hold even at $n=0$, where
+$\mathtt{pow}\ \overline{m}\ \overline{0} \reduces \overline{1}$ (the bare $\lam m\,n.\,n\,m$ would
+instead stop at $\lam x.\,x$, which is only $\eta$-equal to $\overline{1}$).
 
 ```{admonition} Worked example 6 — PLUS 2 3 evaluates to 5
 :class: note

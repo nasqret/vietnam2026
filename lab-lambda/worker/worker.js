@@ -59,7 +59,7 @@ onmessage = function (event) {
   if (message.type === "run") {
     let out = "";
     try {
-      out = runLine ? String(runLine(message.line)) : "";
+      out = runLine ? String(runLine(message.line)) : "\x1b[93mThe engine is still starting — try again in a moment.\x1b[0m";
     } catch (error) {
       out = "\x1b[91m" + ((error && error.message) ? error.message : String(error)) + "\x1b[0m";
     }

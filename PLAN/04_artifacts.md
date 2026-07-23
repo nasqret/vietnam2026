@@ -15,9 +15,9 @@ the lesson — same theorem, four idioms.
 ```
 artifacts/
   lean/   (lake project — VERIFIED locally: `lake build`)
-  agda/   (authored; CI-checked)
-  rocq/   (authored; CI-checked)
-  mizar/  (authored; MML-style; CI-checked)
+  agda/   (verified locally — Agda 2.8.0, statements 1-4 — + CI)
+  rocq/   (verified locally — Rocq 9.2, statements 1-5 incl. √2 — + CI)
+  mizar/  (authored, illustrative — MML-style; no CI, not installed)
   README.md  (the four-way comparison table)
 ```
 
@@ -25,7 +25,7 @@ artifacts/
 - [x] Lean lake project with statements 1–3; `lake build` green locally.
 - [x] Agda / Rocq / Mizar versions of statement 1 (the S combinator) as the Rosetta stone.
 - [ ] Extend statements 2–5 across all provers; add per-file prose linking to the book.
-- [ ] CI workflow to check Lean (and Agda/Rocq if runners allow).
+- [x] CI workflow to check Lean (and Agda/Rocq if runners allow).
 
 ## Acceptance criteria
 - Lean builds locally with zero `sorry`.

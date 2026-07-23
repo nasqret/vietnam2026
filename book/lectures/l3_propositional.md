@@ -141,9 +141,11 @@ is a structure (product), `Or` is an inductive type with two constructors `Or.in
 
 ```{admonition} Theorem (Howard 1969/1980; Prawitz)
 :class: important
-Closed $\beta$-normal terms of the simply-typed $\lam$-calculus with products, sums and the empty type
-are in bijection with normal natural-deduction derivations of intuitionistic propositional logic, and
-this bijection carries **$\beta$/detour reduction to proof normalization**. In particular the calculus
+Closed normal terms of the simply-typed $\lam$-calculus with products, sums and the empty type —
+normal for $\beta$ together with the *permutative (commuting) conversions* required for
+$\lor$-elimination and $\bot$-elimination — are in bijection with Prawitz-normal natural-deduction
+derivations of intuitionistic propositional logic, and this bijection carries **detour reduction
+($\beta$ together with permutative conversions) to proof normalization**. In particular the calculus
 is *strongly normalizing*, so there is **no** closed term of type $\bot$ — the proof system is
 consistent.
 ```

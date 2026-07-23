@@ -140,5 +140,80 @@ class ChurchPropertyTests(unittest.TestCase):
             self.assertEqual(self.decode_bool(f"ISZERO {n}"), n == 0)
 
 
+class CommandSurfaceTests(unittest.TestCase):
+    """Drive the REPL command surface end-to-end through LabSession.run."""
+
+    def test_peano_shows_succ_zero_nesting(self):
+        out = strip_ansi(driver.LabSession().run("peano 3"))
+        self.assertIn("SUCC (SUCC (SUCC (ZERO)))", out)
+        self.assertIn("Church:", out)
+
+    def test_peano_rejects_out_of_range(self):
+        session = driver.LabSession()
+        for bad in ("peano 25", "peano -1"):
+            with self.subTest(cmd=bad):
+                self.assertIn(f"Use 0..{driver.MAX_NUMERAL}.", strip_ansi(session.run(bad)))
+
+    def test_lean_snippet_and_alias_emit_code_and_live_link(self):
+        session = driver.LabSession()
+        for cmd in ("lean s_comb", "lean s-combinator"):
+            with self.subTest(cmd=cmd):
+                out = strip_ansi(session.run(cmd))
+                self.assertIn("theorem s_combinator", out)
+                self.assertIn("https://live.lean-lang.org/#code=", out)
+
+    def test_lean_unknown_name_lists_snippets(self):
+        out = strip_ansi(driver.LabSession().run("lean nosuch"))
+        self.assertIn("No baked snippet named 'nosuch'", out)
+        for key in ("add_comm", "modus_ponens", "s_comb"):
+            self.assertIn(key, out)
+
+    def test_kb_exact_entry(self):
+        self.assertIn("η-conversion", strip_ansi(driver.LabSession().run("kb eta")))
+
+    def test_kb_prefix_fallback(self):
+        out = strip_ansi(driver.LabSession().run("kb church"))
+        self.assertNotIn("No entry", out)
+        self.assertIn("Church", out)
+
+    def test_kb_unknown_topic_errors(self):
+        self.assertIn("No entry for 'nosuch'", strip_ansi(driver.LabSession().run("kb nosuch")))
+
+    def test_quiz_accepts_literal_answer(self):
+        session = driver.LabSession()
+        out = strip_ansi(session.run("quiz"))
+        self.assertIn("Quiz", out)
+        self.assertIn("question 1", out)
+        self.assertIn("correct!", strip_ansi(session.run("TRUE")))
+
+    def test_quiz_accepts_beta_equivalent_term_answer(self):
+        session = driver.LabSession()
+        session.run("quiz")  # question 1 expects TRUE
+        self.assertIn("correct!", strip_ansi(session.run(r"\t f. t")))
+
+    def test_quiz_rejects_wrong_answer_and_shows_expected_nf(self):
+        session = driver.LabSession()
+        session.run("quiz")  # question 1 expects TRUE
+        out = strip_ansi(session.run("FALSE"))
+        self.assertIn("not quite", out)
+        self.assertIn("expected", out)
+
+    def test_quiz_stop_closes(self):
+        session = driver.LabSession()
+        session.run("quiz")
+        self.assertIn("quiz closed", strip_ansi(session.run("quiz stop")))
+
+    def test_equiv_omega_is_inconclusive(self):
+        out = strip_ansi(driver.LabSession().run("equiv OMEGA = OMEGA"))
+        self.assertIn("Inconclusive", out)
+
+    def test_bare_eq_term_reduces_instead_of_hitting_equiv(self):
+        # Regression: an undocumented `cmd_eq = cmd_equiv` alias used to shadow
+        # the EQ constant, so `EQ 1 1` errored instead of reducing.
+        out = strip_ansi(driver.LabSession().run("EQ 1 1"))
+        self.assertNotIn("expected two terms separated by '='", out)
+        self.assertIn("TRUE", out)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

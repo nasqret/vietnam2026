@@ -171,7 +171,7 @@
         <h2>Peirce's law has no proof term</h2>
         <p>$\,((P\to Q)\to P)\to P\,$ is a <em>classical</em> tautology, yet <strong>no closed STLC term inhabits it</strong>. Try to build one and you get stuck: with $P,Q$ atomic, no rule makes a $Q$.</p>
         <pre><code class="language-lean" data-trim data-noescape>theorem peirce {P Q : Prop} : ((P → Q) → P) → P :=
-  Classical.byContradiction (fun h => h (fun hp => absurd hp h))</code></pre>
+  fun h => Classical.byContradiction (fun hnp => hnp (h (fun hp => absurd hp hnp)))</code></pre>
         <p class="muted">Delete <code>Classical</code> and it fails to type-check. Curry–Howard yields <em>intuitionistic</em> proofs; excluded middle is an axiom you opt into, not a theorem.</p>
       </section>
 
@@ -232,11 +232,11 @@
       <!-- ===== RUN IT YOURSELF ===== -->
       <section data-background-gradient="linear-gradient(135deg,#312e81,#4c1d95)">
         <h2>Run it yourself</h2>
-        <p>See the correspondence — don't take it on faith. In the Lambda Lab, type a proposition and get its proof term back:</p>
-        <p class="lab">ch type '(P -> Q) -> (Q -> R) -> P -> R'</p>
-        <p>returns $\lambda f\,g\,p.\,g\,(f\,p)$; while</p>
-        <p class="lab">ch type '((P -> Q) -> P) -> P'</p>
-        <p>reports Peirce's law <strong>uninhabited</strong>. Then check the emitted Lean with <code>ch verify</code>.</p>
+        <p>See the correspondence — don't take it on faith. In the browser Lambda Lab, view a proof term and open it in Live Lean:</p>
+        <p class="lab">lean imp_comp</p>
+        <p>prints <code>theorem imp_comp {P Q R : Prop} (f : P → Q) (g : Q → R) : P → R := fun p => g (f p)</code> — exactly $\lambda f\,g\,p.\,g\,(f\,p)$ — with a live.lean-lang.org link. For Peirce's law,</p>
+        <p class="lab">kb intuitionistic</p>
+        <p>explains why it needs a classical principle. (In the full desktop lab, <code>ch type '((P -> Q) -> P) -> P'</code> reports it <strong>uninhabited</strong>, and <code>ch verify</code> checks the emitted Lean.)</p>
       </section>
 
       <!-- ===== RECAP / REFERENCES ===== -->

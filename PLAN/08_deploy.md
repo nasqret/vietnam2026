@@ -11,10 +11,15 @@ server, deploying **incrementally** as pieces are ready.
 
 ## Deploy recipes
 ```bash
-# landing page + book + slides
-rsync -avz --delete deploy/vietnam2026/ lts-faculty.wmi.amu.edu.pl:~/public_html/vietnam2026/
+make deploy-site   # stages (_deploy/vietnam2026) + rsyncs landing page + book + slides
+make deploy-lab    # rsyncs browser lab
+```
+Equivalent inline commands (the Makefile is the source of truth):
+```bash
+# landing page + book + slides (after `make stage`)
+rsync -avz --delete _deploy/vietnam2026/ lts-faculty.wmi.amu.edu.pl:~/public_html/vietnam2026/
 # browser lab
-rsync -avz --delete lab-lambda/ lts-faculty.wmi.amu.edu.pl:~/public_html/lab-lambda/
+rsync -avz --delete --exclude '__pycache__' --exclude 'worker' lab-lambda/ lts-faculty.wmi.amu.edu.pl:~/public_html/lab-lambda/
 ```
 
 ## Subtasks

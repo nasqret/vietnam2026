@@ -39,8 +39,10 @@ jobs:
       - name: Axiom check
         working-directory: artifacts/lean
         run: |
-          printf 'import Artifacts\nopen Artifacts\n#print axioms add_comm'"'"'\n#print axioms s_combinator\n' > /tmp/check.lean
-          lake env lean /tmp/check.lean
+          printf 'import Artifacts\nopen Artifacts Artifacts.Sqrt2\n#print axioms add_comm'"'"'\n#print axioms s_combinator\n#print axioms no_sqrt2\n' > /tmp/check.lean
+          lake env lean /tmp/check.lean | tee /tmp/out.txt
+          if grep -q sorryAx /tmp/out.txt; then echo "FAIL: sorryAx present"; exit 1; fi
+          grep -q "does not depend on any axioms" /tmp/out.txt
 
   lab-engine:
     name: Lambda Lab engine regression suite

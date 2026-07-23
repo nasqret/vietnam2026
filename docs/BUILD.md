@@ -20,9 +20,8 @@ open book/_build/html/index.html  # index.html redirects to intro.html
 ```bash
 cd artifacts/lean
 lake build                        # builds Artifacts.lean, sorry-free
-lake env lean --run <(echo 'import Artifacts
-open Artifacts
-#print axioms add_comm')          # → "does not depend on any axioms"
+printf 'import Artifacts\nopen Artifacts\n#print axioms add_comm'"'"'\n' > /tmp/check.lean
+lake env lean /tmp/check.lean     # → "'Artifacts.add_comm'' does not depend on any axioms"
 ```
 The project pins `leanprover/lean4:v4.28.0-rc1` (the locally installed toolchain) and uses **no
 Mathlib**, so it builds in seconds. Current Lean stable is 4.32.0.

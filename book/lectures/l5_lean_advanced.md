@@ -36,7 +36,7 @@ Two things stand between "I can prove `0 + n = n`" and "I can formalize a resear
 **generality**: you do not want to reprove `a * b = b * a` for $\N$, then $\Z$, then polynomials, then
 matrices. You want to state it *once*, at the right level of abstraction, and have it apply everywhere —
 that is what typeclasses buy you. Second, **automation and search**: [Mathlib](https://lean-lang.org/use-cases/mathlib/)
-is roughly **351,000 declarations** across **over two million lines**, and no human recalls it. The
+is roughly **283,000 theorems and 135,000 definitions** across **over two million lines**, and no human recalls it. The
 working skill is not memorizing lemmas; it is *finding* them and letting decision procedures discharge the
 routine algebra. This lecture is that toolkit. It is also the on-ramp to {doc}`Lecture 6 <l6_autoformalization>`,
 where exactly these tools carry a whole paper.
@@ -179,8 +179,9 @@ import Mathlib
 example : Irrational (Real.sqrt 2) := by exact?
 ```
 
-Watch `exact?` surface `Nat.Prime.irrational_sqrt`. Or state the shape to Loogle:
-`Irrational, Real.sqrt`. Both routes land on the same lemma — the search *is* the proof.
+Watch `exact?` surface `irrational_sqrt_two` directly. For the general prime version, state the shape
+to Loogle: `Irrational, Real.sqrt` — it surfaces `Nat.Prime.irrational_sqrt`, which needs
+`exact_mod_cast` to bridge the `↑p`/`2` cast gap. Either way, the search *is* the proof.
 ````
 
 ## The tactic zoo: automation for computation
@@ -431,7 +432,7 @@ zero `sorry`, audited by `#print axioms`.
 - **Recursion traps.** Structural recursion demands a genuine subterm; anything else needs
   `termination_by`/`decreasing_by`. And `partial def` escapes the kernel, generating no equation lemmas —
   you can prove nothing about it.
-- **Don't guess lemma names from memory.** With ~351k declarations, `exact?`, Loogle, and LeanSearch are
+- **Don't guess lemma names from memory.** With ~283k theorems and ~135k definitions, `exact?`, Loogle, and LeanSearch are
   the intended workflow, not rote recall.
 
 ## Exercises
@@ -465,7 +466,7 @@ zero `sorry`, audited by `#print axioms`.
 - J. Avigad, L. de Moura, S. Kong, S. Ullrich, [*Theorem Proving in Lean 4*](https://leanprover.github.io/theorem_proving_in_lean4/) — the authoritative reference for dependent types, the `Prop`/`Type` hierarchy, proof irrelevance, structures, and typeclass resolution.
 - H. Macbeth, [*The Mechanics of Proof*](https://hrmacbeth.github.io/math2001/) — the gentlest route into `calc`, `have`, `rw`, `linarith`, `ring`, and `induction` for a mathematically mature audience.
 - H. Macbeth, [*Algebraic Computations in Lean*](https://hrmacbeth.github.io/computations_in_lean/) — the dedicated reference for the computation-tactic zoo (`field_simp`, `ring`, `nlinarith`, `linear_combination`, `positivity`).
-- A. Baanen et al., [*Metaprogramming in Lean 4*](https://leanprover-community.github.io/lean4-metaprogramming-book/) — `syntax`, `macro`, `elab`, the `Expr` datatype, and the elaboration monads.
+- A. Paulino, D. Testa, E. Ayers, E. Karunus, H. Böving, J. Limperg, S. Gadgil, S. Bhat, [*Metaprogramming in Lean 4*](https://leanprover-community.github.io/lean4-metaprogramming-book/) — `syntax`, `macro`, `elab`, the `Expr` datatype, and the elaboration monads.
 - Lean community, [*Searching for theorems in Mathlib*](https://leanprover-community.github.io/blog/posts/searching-for-theorems-in-mathlib/); [Loogle](https://loogle.lean-lang.org/) and [LeanSearch](https://leansearch.net/).
 - [Mathlib4 API docs](https://leanprover-community.github.io/mathlib4_docs/Mathlib/Tactic/Polyrith.html) (Polyrith retirement) and the [Lean release notes](https://lean-lang.org/doc/reference/latest/releases/) (`grind` in v4.22.0; current scale on the [Mathlib use-case page](https://lean-lang.org/use-cases/mathlib/)).
 - The course's [four-prover artifacts](https://github.com/nasqret/vietnam2026/tree/main/artifacts) and the [EML formalization](https://github.com/nasqret/eml-formalization) previewed in {doc}`l6_autoformalization`.

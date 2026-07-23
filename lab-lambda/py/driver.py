@@ -430,8 +430,6 @@ class LabSession:
             "  " + (green("equal β-normal forms up to α") if same else red("different β-normal forms")),
         )
 
-    cmd_eq = cmd_equiv
-
     def cmd_lean(self, arg: str) -> str:
         name = arg.strip().lower().replace("-", "_")
         if name in LEAN_SNIPPETS:

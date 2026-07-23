@@ -56,8 +56,8 @@
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
   Tarski–Grothendieck set theory. The same statements are proved in all four to *show* the foundations.
 - **Local tooling present:** Lean/`elan`/`lake` ✓ (proofs verifiable here), `jupyter-book` ✓, `gh` (as
-  `nasqret`) ✓, `pandoc` ✓. **Missing locally:** Agda, Rocq/Coq, Mizar, GHC → those artifacts are authored
-  and CI-checked, not kernel-checked on this machine.
+  `nasqret`) ✓, `pandoc` ✓, Agda 2.8.0 ✓, Rocq 9.2 ✓ (compiled artifacts present — `artifacts/rocq/*.vo`,
+  `artifacts/agda/*.agdai` — kernel-checked locally). **Missing locally:** Mizar and GHC.
 
 ## Verified tool versions (research pass, 2026-07)
 

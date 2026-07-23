@@ -80,7 +80,7 @@ Consider the informal claim "every prime $>2$ is odd". A *faithful* formalizatio
 `∀ p : ℕ, p.Prime → 2 < p → Odd p`. But the following also type-checks and is trivially provable:
 
 ```lean
-theorem primes_are_odd (p : ℕ) (hp : p.Prime) (h : p = 4) : Odd p := by omega
+theorem primes_are_odd (p : ℕ) (hp : p.Prime) (h : p = 4) : Odd p := by subst h; norm_num at hp
 ```
 
 The hypothesis `p = 4` together with `p.Prime` is *never* satisfiable, so the theorem is **vacuously
@@ -113,7 +113,7 @@ Layer in the refinements that distinguish systems:
 - **Expert iteration / RL-from-verifier** — the compiler's accept/reject *is* the reward signal
   (AlphaProof, DeepSeek-Prover-V2, Goedel-Prover-V2).
 - **Verifier-guided self-correction** — feed the Lean error message back to the model for a revised
-  attempt (Goedel-Prover-V2: $88.0\%$ standard vs $90.4\%$ in self-correction mode).
+  attempt (Goedel-Prover-V2: $88.1\%$ standard vs $90.4\%$ in self-correction mode).
 
 Two families recur. A **hosted end-to-end prover** (Harmonic's Aristotle) returns a `.lean` file *only*
 when it passes the kernel — zero tolerance for hallucination. An **open-weights research prover**
@@ -126,10 +126,10 @@ Pin every claim to a number and a date; the numbers move monthly.
 
 | Milestone | What / when | Number |
 |---|---|---|
-| **AlphaGeometry** (DeepMind+NTU, *Nature* Jan 2024) | LM proposes auxiliary constructions, a symbolic DD+AR engine closes the proof | $25/30$ recent olympiad geometry |
+| **AlphaGeometry** (DeepMind+NYU, *Nature* Jan 2024) | LM proposes auxiliary constructions, a symbolic DD+AR engine closes the proof | $25/30$ recent olympiad geometry |
 | **AlphaProof + AlphaGeometry 2** (IMO 2024) | Lean-checked; peer-reviewed *Nature*, 12 Nov 2025 | $28/42$ **silver**, $4/6$ problems |
 | **DeepSeek-Prover-V2-671B** (Apr 2025) | open-weights; subgoal decomposition + RL-from-verifier | $88.9\%$ miniF2F, $49/658$ Putnam |
-| **Goedel-Prover-V2-32B** (Aug 2025) | scaffolded data + self-correction; $8$B beats the $671$B model | $88.0\%$ ($90.4\%$ self-corr.), $86$ Putnam |
+| **Goedel-Prover-V2-32B** (Aug 2025) | scaffolded data + self-correction; $8$B beats the $671$B model | $88.1\%$ ($90.4\%$ self-corr.), $86$ Putnam |
 | **Seed-Prover / Aleph-Prover** (2025–26) | miniF2F saturated; Putnam nearly solved | Aleph $668/672$ Putnam (Jan 2026) |
 
 AlphaProof solved P1, P2 and **P6** — a problem only $5$ of $609$ human contestants cracked — while
@@ -374,7 +374,7 @@ fixed-shape subtree assemble — and read the public scoreboard `PaperClaims.lea
 Close the loop by learning to *audit* a formalization rather than trust a checkmark.
 
 **`#print axioms`.** This command enumerates exactly which axioms a theorem transitively depends on. EML's
-audit shows only Lean/Mathlib defaults — `Classical.choice`, `propext`, `funext`. So **"sorry-free" is not
+audit shows only Lean/Mathlib defaults — `Classical.choice`, `propext`, `Quot.sound`. So **"sorry-free" is not
 "assumption-free"**: it is "assumes classical logic and *nothing project-specific*". Every theorem in
 Mathlib rests on the same three.
 
@@ -432,8 +432,10 @@ result is interesting. The kernel never does that.
 3. **(Lab.)** Using the [four-prover artifacts](https://github.com/nasqret/vietnam2026/tree/main/artifacts),
    prove NAND functional completeness in Rocq: define `nand p q := negb (p && q)` and show
    `negb p = nand p p`, `andb p q = nand (nand p q) (nand p q)`, and
-   `orb p q = nand (nand p p) (nand q q)`. Then reproduce the first identity in the λ-lab with
-   [`nf NAND p p`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20NAND%20p%20p).
+   `orb p q = nand (nand p p) (nand q q)`. Then confirm the first identity on both truth values in the
+   λ-lab with
+   [`equiv NAND TRUE TRUE = NOT TRUE`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=equiv%20NAND%20TRUE%20TRUE%20%3D%20NOT%20TRUE) and
+   [`equiv NAND FALSE FALSE = NOT FALSE`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=equiv%20NAND%20FALSE%20FALSE%20%3D%20NOT%20FALSE).
 
 4. **(Lean.)** Complete the `e_witness` proof from the "Run it" box, then add and prove `log_witness`:
    $\forall z>0,\ $ `EMLTerm.eval? (fun _ => z) (…) = some (Real.log z)` for the tree of Worked Example 2.
@@ -444,7 +446,9 @@ result is interesting. The kernel never does that.
    *Grade faithfulness, not provability.*
 
 6. **(Lean — hard.)** Prove the §G collision directly: for $t=\exp(\tfrac12\log x)$ built as an `EMLTerm`,
-   show `EMLTerm.eval? (fun _ => 0) t = some 1`, hence $\neq$ `some 0`. Then prove the witness-family
+   show `EMLTerm.eval? (fun _ => 0) t = none` (the Option semantics rejects `Real.log 0` via the `0 < vb`
+   guard), hence $\neq$ `some (Real.sqrt 0)` — and contrast this with the total-function computation
+   $\exp(\tfrac12\cdot\log 0)=1$ of Worked Example 4. Then prove the witness-family
    statement $\forall x\ge 0,\ \exists t,\ $`t.eval? (fun _ => x) = some (Real.sqrt x)` by case-splitting on
    $x=0$ (constant-$0$ term) versus $x>0$.
 
@@ -457,7 +461,7 @@ result is interesting. The kernel never does that.
    denominator on this interval.)
 
 8. **(Audit — hard.)** Clone the [EML repo](https://github.com/nasqret/eml-formalization), run
-   `#print axioms paper_claim_pi`, and confirm only `Classical.choice`, `propext`, `funext` appear. Then
+   `#print axioms paper_claim_pi`, and confirm only `Classical.choice`, `propext`, `Quot.sound` appear. Then
    locate one of the `EDLTranscendenceBarrier`-gated corollaries and explain, in three sentences, why it is
    a *scaffold* rather than a *seal*.
 

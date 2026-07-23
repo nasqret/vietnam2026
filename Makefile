@@ -29,7 +29,7 @@ book:
 
 lean:
 	cd artifacts/lean && lake build
-	cd artifacts/lean && lake env lean --run /dev/stdin <<<'import Artifacts' || true
+	cd artifacts/lean && printf 'import Artifacts\nopen Artifacts Artifacts.Sqrt2\n#print axioms s_combinator\n#print axioms add_comm'"'"'\n#print axioms no_sqrt2\n' > /tmp/check.lean && lake env lean /tmp/check.lean | tee /dev/stderr | (! grep -q sorryAx)
 
 lab-serve:
 	@echo "→ http://localhost:8001/  (Ctrl-C to stop)"
