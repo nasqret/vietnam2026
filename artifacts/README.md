@@ -82,11 +82,13 @@ strong induction closes it. It lives in [`lean/Artifacts/Sqrt2.lean`](lean/Artif
 in the fast default `lake build`, and is `sorry`-free — `#print axioms no_sqrt2` reports only `propext`
 and `Quot.sound` (Lean's two standard kernel axioms; no `Classical`, no `sorryAx`).
 
-√2 is now **machine-verified in two foundations**: the Lean 4 core proof above, and a Rocq 9.2 version in
+√2 is **machine-verified in two provers**: the Lean 4 core proof above, and a Rocq 9.2 version in
 [`rocq/Sqrt2.v`](rocq/Sqrt2.v) (`Sqrt2Descent.no_sqrt2`), where `nia` discharges the nonlinear algebra so
 the descent is tighter. Same theorem, same infinite-descent idea, CIC both times — the parity lemma and
-the strong-induction skeleton are the only prover-specific parts. An Agda (MLTT) transcription follows
-once its toolchain is in place.
+the strong-induction skeleton are the only prover-specific parts. A third proof in **Agda** (MLTT) is
+left as future work: without agda-stdlib registered here, a from-scratch descent (well-founded recursion +
+parity + arithmetic, all by hand) is disproportionately long — statements 1–4 already exercise Agda's
+MLTT, and the two CIC proofs establish √2 itself.
 
 ## Reproduce
 
