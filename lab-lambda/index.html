@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/css/xterm.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/css/xterm.css" integrity="sha384-8Xk9wy/gzEDUKrXtrmCFa2bBuK3BpjpDuL/p0SeKQX19Khl/M+lHOgD/CyYf7efP" crossorigin="anonymous">
   <style>
     :root{--bg:#0b1020;--panel:#131a2b;--border:#24304a;--violet:#a78bfa;--violet-2:#c4b5fd;--emerald:#34d399;--text:#e2e8f0;--muted:#94a3b8;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -36,13 +36,14 @@
     <div class="info">The Python evaluator runs locally inside <a href="https://pyodide.org" target="_blank" rel="noopener">Pyodide</a> and is displayed with <a href="https://xtermjs.org" target="_blank" rel="noopener">xterm.js</a>. Terms typed into the terminal are not sent to a server; a <code>?cmd=</code> deep link is part of the URL and can appear in server logs. The lab implements capture-avoiding normal-order <strong>β-reduction</strong>; η-conversion is explained but not applied automatically. Write <code>λx. x</code> or <code>\x. x</code>; integers become Church numerals. Use <code>↑/↓</code> for history.</div>
   </main>
   <footer>Lambda Lab · VIASM mini-course “An Introduction to Automatic Theorem Proving in Mathematics”, Hanoi 2026 · © Bartosz Naskręcki · <a href="/vietnam2026/">course home</a></footer>
-  <script src="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/lib/xterm.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10.0/lib/addon-fit.js"></script>
-  <script src="https://cdn.jsdelivr.net/pyodide/v0.28.3/full/pyodide.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/lib/xterm.js" integrity="sha384-M169f14mRZOXm3hD/v2Ti0ThIT/RnAQagXA9nlE15yHAtrW19gdePJh/HaTzUOe/" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10.0/lib/addon-fit.js" integrity="sha384-iF+jqbuti4XlB64clWgFWYEscb+UnSRv3VgVikGYZu+otNFnSHr7y7NcKfBnGizn" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@xterm/addon-web-links@0.11.0/lib/addon-web-links.js" integrity="sha384-Zb/L38m4THfRbsxxv8gWAi8cQ6xcWQnv0BgR0qwbTDwtBDaPi6pkyfgfBIH6C8ZG" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.28.3/full/pyodide.js" integrity="sha384-4X7gSPzQ4pHfjTE5aBEPJAQcHu55sciq+NWO3OUOZ3zHSJhn4te9CBjUyRSr+nei" crossorigin="anonymous"></script>
   <script>
   (function(){
     "use strict";
-    const BUILD="2026-07-23f-audit";
+    const BUILD="2026-07-23g";
     const PY_FILES=["py/lambda_lab/__init__.py","py/lambda_lab/lab/__init__.py","py/lambda_lab/lab/i18n.py","py/lambda_lab/lab/lc.py","py/lambda_lab/lab/parser.py","py/lambda_lab/lab/church.py","py/driver.py"];
     const PROMPT="\x1b[92mλ>\x1b[0m ";
     const statusEl=document.getElementById("status"),statusText=document.getElementById("status-text"),quickEl=document.getElementById("quick");
@@ -51,6 +52,7 @@
     if(!window.Terminal||!window.loadPyodide){setStatus("fail","failed to start: a required CDN script did not load");return;}
     const term=new Terminal({fontFamily:"'JetBrains Mono', monospace",fontSize:14,cursorBlink:true,convertEol:false,scrollback:4000,screenReaderMode:true,theme:{background:"#0a0e1a",foreground:"#e2e8f0",cursor:"#a78bfa",selectionBackground:"#2a1f5a",black:"#0a0e1a",red:"#fca5a5",green:"#6ee7b7",yellow:"#fcd34d",blue:"#93c5fd",magenta:"#c4b5fd",cyan:"#67e8f9",white:"#e2e8f0",brightBlack:"#64748b",brightRed:"#f87171",brightGreen:"#34d399",brightYellow:"#fbbf24",brightBlue:"#60a5fa",brightMagenta:"#a78bfa",brightCyan:"#22d3ee",brightWhite:"#f8fafc"}});
     term.open(document.getElementById("terminal"));let fitAddon=null;try{if(window.FitAddon){fitAddon=new FitAddon.FitAddon();term.loadAddon(fitAddon);fitAddon.fit();}}catch(_error){}
+    try{if(window.WebLinksAddon)term.loadAddon(new WebLinksAddon.WebLinksAddon());}catch(_error){}
     window.addEventListener("resize",function(){try{if(fitAddon)fitAddon.fit();}catch(_error){}});
     let buffer="",cursor=0,history=[],histIdx=0,busy=true,runLineFn=null,banner=function(){return"";};
     function writeOut(value){if(value!==undefined&&value!==null&&String(value)!=="")term.write(String(value).replace(/\r?\n/g,"\r\n"));}

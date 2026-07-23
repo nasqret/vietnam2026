@@ -9,6 +9,7 @@ in the knowledge base but is not silently mixed into normalization.
 from __future__ import annotations
 
 import re
+import urllib.parse
 from typing import List, Optional
 
 from lambda_lab.lab import church, lc
@@ -175,6 +176,11 @@ def _decode_note_nf(t: lc.Term) -> Optional[str]:
     if b is not None:
         return f"{green('= ' + ('TRUE' if b else 'FALSE'))}  {dim('(Church boolean)')}"
     return None
+
+
+def _live_lean_url(code: str) -> str:
+    """A live.lean-lang.org link that opens the Lean 4 web editor with this code."""
+    return "https://live.lean-lang.org/#code=" + urllib.parse.quote(code, safe="")
 
 
 def _split_equation(arg: str) -> tuple[str, str]:
@@ -432,12 +438,15 @@ class LabSession:
             title, code = LEAN_SNIPPETS[name]
             rows = [bold(magenta("Lean 4")) + dim(" · " + title)]
             rows.extend("  " + cyan(line) for line in code.strip("\n").splitlines())
-            rows.append(dim("  Read-only source: verify it with the repository's Lean build."))
+            rows.append("")
+            rows.append(dim("  ▶ run it in Live Lean (click / open):"))
+            rows.append("  " + blue(_live_lean_url(code)))
             return _lines(*rows)
         rows = [bold(magenta("Lean 4")) + dim(" · available snippets")]
         if name:
             rows.append(red(f"No baked snippet named {name!r}."))
         rows.append("  " + "  ".join(green(k) for k in sorted(LEAN_SNIPPETS)))
+        rows.append(dim("  Each snippet includes a live.lean-lang.org link you can open and run."))
         return _lines(*rows)
 
     def cmd_peano(self, arg: str) -> str:

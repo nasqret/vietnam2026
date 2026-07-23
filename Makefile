@@ -35,6 +35,7 @@ lab-serve:
 stage: book
 	rm -rf $(STAGE) && mkdir -p $(STAGE)
 	cp index.html $(STAGE)/index.html
+	cp deploy/site.htaccess $(STAGE)/.htaccess
 	cp -R book/_build/html $(STAGE)/book
 	cp -R slides $(STAGE)/slides
 	@echo "Staged site in $(STAGE)"
