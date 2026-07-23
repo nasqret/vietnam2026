@@ -75,14 +75,15 @@ reveals `fun f p => f p`. The universe bookkeeping behind this is small: every t
 
 ```{admonition} Run it
 :class: seealso
-Experience "tactics build a term" before Lean is even installed. In the lab,
-[`prove (P -> Q) -> P -> Q`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=prove%20%28P%20-%3E%20Q%29%20-%3E%20P%20-%3E%20Q)
-opens an interactive proof builder; type `intro f`, `intro p`, `apply f`, `assumption`, then `qed` —
-it prints the extracted term `λf p. f p` together with the type it proves. The tactics were a program
-that *built* the term, and `qed` is your `#print`: the de Bruijn criterion on one screen. Cross-check
-the term-mode direction with
-[`ch term \f. \p. f p`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Cf.%20%5Cp.%20f%20p),
-which infers the principal type of the hand-written λ-term.
+Experience "tactics build a term" before Lean is even installed — each direction is one lab command:
+
+- [`prove (P -> Q) -> P -> Q`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=prove%20%28P%20-%3E%20Q%29%20-%3E%20P%20-%3E%20Q)
+  — an interactive proof builder: type `intro f`, `intro p`, `apply f`, `assumption`, then `qed`.
+- [`ch term \f. \p. f p`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Cf.%20%5Cp.%20f%20p)
+  — infers the principal type of the hand-written λ-term.
+
+`qed` prints the extracted term `λf p. f p` with the type it proves: the tactics were a program that
+*built* the term, and `qed` is your `#print` — the de Bruijn criterion on one screen.
 ```
 
 **Worked example 1 (symmetry of conjunction, both ways).** Conjunction is a *structure* with two fields,

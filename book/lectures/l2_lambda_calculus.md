@@ -5,9 +5,11 @@
 The untyped $\lam$-calculus is a complete model of computation built from one binding rule and one
 reduction rule. We nail down **$\alpha$-equivalence**, **capture-avoiding substitution**, and
 **$\beta/\eta$-reduction**, state **Church–Rosser**, and then *compute*: Church **booleans**,
-**numerals**, arithmetic, the notorious **predecessor**, and the **$Y$-combinator**. Every calculation
-here is reproducible in the [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda), and the
-capstone statements are cross-checked in the four-prover
+**numerals**, arithmetic, the notorious **predecessor**, and the **$Y$-combinator**.
+
+Every calculation here is reproducible in the
+[Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda), and the capstone statements are
+cross-checked in the four-prover
 [artifacts](https://github.com/nasqret/vietnam2026/tree/main/artifacts).
 ```
 
@@ -33,7 +35,9 @@ By the end of this lecture you can:
 ```{note}
 This lecture formalizes Lecture 1's *Alligator Eggs* metaphor — hungry alligator $=$ abstraction, two
 families side by side $=$ application, egg $=$ variable — and it is the untyped substrate on top of which
-{doc}`Lecture 1 <l1_type_theory>` layers *types*. The Lab draws the metaphor on demand:
+{doc}`Lecture 1 <l1_type_theory>` layers *types*.
+
+The Lab draws the metaphor on demand:
 [`alligators (\x. x x) (\y. y)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=alligators%20(%5Cx.%20x%20x)%20(%5Cy.%20y))
 renders a family about to feed — the very term reduced step-by-step in Worked example 3 below. You only
 need comfort with functions as first-class objects and with reading inductive definitions.
@@ -86,12 +90,15 @@ $\lam x.\,x\,(\lam x.\,x)$ the inner $\lam x$ **shadows** the outer one, and aga
 
 ```{admonition} Run it
 :class: seealso
-[`lam \x y. x (y z)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=lam%20%5Cx%20y.%20x%20(y%20z)) prints the AST, the pretty form,
-and the free-variable set $\{z\}$.
+Each of these is one click:
 
-[`alpha \x. x = \y. y`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=alpha%20%5Cx.%20x%20%3D%20%5Cy.%20y) confirms $\equiv_\alpha$ (renaming only, no $\beta$-step);
-[`alpha \x. \y. x = \x. \x. x`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=alpha%20%5Cx.%20%5Cy.%20x%20%3D%20%5Cx.%20%5Cx.%20x) comes back not $\alpha$-equivalent — shadowing makes the two terms return different binders; and
-[`debruijn \x. x (\x. x)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=debruijn%20%5Cx.%20x%20(%5Cx.%20x)) shows Worked example 1's shadowed term namelessly — two terms are $\alpha$-equivalent exactly when their De Bruijn forms are identical, which is how `alpha` (and Lean's kernel) compares binders.
+- [`lam \x y. x (y z)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=lam%20%5Cx%20y.%20x%20(y%20z)) — prints the AST, the pretty form, and the free-variable set $\{z\}$.
+- [`alpha \x. x = \y. y`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=alpha%20%5Cx.%20x%20%3D%20%5Cy.%20y) — confirms $\equiv_\alpha$: renaming only, no $\beta$-step.
+- [`alpha \x. \y. x = \x. \x. x`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=alpha%20%5Cx.%20%5Cy.%20x%20%3D%20%5Cx.%20%5Cx.%20x) — not $\alpha$-equivalent: shadowing makes the binders differ.
+- [`debruijn \x. x (\x. x)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=debruijn%20%5Cx.%20x%20(%5Cx.%20x)) — Worked example 1's shadowed term, rendered namelessly.
+
+Two terms are $\alpha$-equivalent exactly when their De Bruijn forms are identical — which is how
+`alpha` (and Lean's kernel) compares binders.
 ```
 
 ## Capture-avoiding substitution
@@ -295,14 +302,17 @@ $\mathtt{fst}\,(\mathtt{pair}\,a\,b) \reduces a$ and $\mathtt{snd}\,(\mathtt{pai
 
 ```{admonition} Run it
 :class: seealso
-[`reduce AND TRUE FALSE`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20AND%20TRUE%20FALSE) traces Worked example 5;
-[`nf FST (PAIR TRUE FALSE)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20FST%20(PAIR%20TRUE%20FALSE)) returns `TRUE`.
-To *build* rather than consume: [`let SWAP = \p. PAIR (SND p) (FST p)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=let%20SWAP%20%3D%20%5Cp.%20PAIR%20(SND%20p)%20(FST%20p))
-defines a session constant; then `nf FST (SWAP (PAIR TRUE FALSE))` (→ `FALSE`) in the same session, and
-`defs` lists everything you've built. Built-in names are listed by
-[`constants`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=constants). The same
-"proof term $=$ program" idea, promoted to *propositions*, is the S-combinator Rosetta stone proved in
-all four provers — see [`artifacts/`](https://github.com/nasqret/vietnam2026/tree/main/artifacts).
+Each of these is one click:
+
+- [`reduce AND TRUE FALSE`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20AND%20TRUE%20FALSE) — traces Worked example 5 step by step.
+- [`nf FST (PAIR TRUE FALSE)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20FST%20(PAIR%20TRUE%20FALSE)) — returns `TRUE`.
+- [`let SWAP = \p. PAIR (SND p) (FST p)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=let%20SWAP%20%3D%20%5Cp.%20PAIR%20(SND%20p)%20(FST%20p)) — defines a session constant: *build* rather than consume.
+- [`constants`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=constants) — lists the built-in names.
+
+In the same session, `nf FST (SWAP (PAIR TRUE FALSE))` returns `FALSE`, and `defs` lists everything
+you've built. The same "proof term $=$ program" idea, promoted to *propositions*, is the S-combinator
+Rosetta stone proved in all four provers — see
+[`artifacts/`](https://github.com/nasqret/vietnam2026/tree/main/artifacts).
 ```
 
 ## Church numerals and arithmetic
@@ -352,13 +362,16 @@ versus "a numeral" is a *heuristic*, not intrinsic — the Lab even prints an am
 
 ```{admonition} Run it
 :class: seealso
-[`nf PLUS 2 3`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20PLUS%202%203) $\to \overline5$;
-[`nf MULT 3 4`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20MULT%203%204) $\to \overline{12}$;
-[`nf POW 2 5`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20POW%202%205) $\to \overline{32}$;
-[`church SUCC`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=church%20SUCC) prints the encoding.
-[`equiv PLUS 2 3 = 5`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=equiv%20PLUS%202%203%20%3D%205) checks the boxed law *as stated* — $\beta$-convertibility of two independent terms, not a one-way reduction — and
-[`equiv POW 2 0 = 1`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=equiv%20POW%202%200%20%3D%201) confirms that the $\eta$-long `POW` gets exponent zero right (the paragraph above). In **Lean 4** the same encoding is a
-polymorphic type that *computes by `rfl`*:
+Each of these is one click:
+
+- [`nf PLUS 2 3`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20PLUS%202%203) — $\to \overline5$.
+- [`nf MULT 3 4`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20MULT%203%204) — $\to \overline{12}$.
+- [`nf POW 2 5`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20POW%202%205) — $\to \overline{32}$.
+- [`church SUCC`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=church%20SUCC) — prints the encoding.
+- [`equiv PLUS 2 3 = 5`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=equiv%20PLUS%202%203%20%3D%205) — checks the boxed law *as stated*: $\beta$-convertibility of independent terms, not one-way reduction.
+- [`equiv POW 2 0 = 1`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=equiv%20POW%202%200%20%3D%201) — the $\eta$-long `POW` gets exponent zero right (the paragraph above).
+
+In **Lean 4** the same encoding is a polymorphic type that *computes by `rfl`*:
 
     def Church := (α : Type) → (α → α) → α → α
     def czero : Church             := fun _ _ x => x

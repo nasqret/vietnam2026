@@ -99,9 +99,11 @@ about STLC (proofs in Pierce, *TAPL*, ch. 9, or Sørensen–Urzyczyn, ch. 3).
 
 ```{admonition} Theorem (uniqueness of types, Church style)
 :class: important
-If $\Gamma \proves t : A$ and $\Gamma \proves t : B$, then $A = B$. *Sketch:* structural induction on
-$t$; each term former is the conclusion of exactly one rule, and the annotation on $\lam x{:}A$ pins the
-domain. So in the Church world a well-typed term has **one** type, and type-checking is deterministic.
+If $\Gamma \proves t : A$ and $\Gamma \proves t : B$, then $A = B$.
+
+*Sketch:* structural induction on $t$; each term former is the conclusion of exactly one rule, and the
+annotation on $\lam x{:}A$ pins the domain. So in the Church world a well-typed term has **one** type,
+and type-checking is deterministic.
 ```
 
 The next theorem is what makes types a *safety* discipline and not mere decoration.
@@ -123,7 +125,9 @@ Congruence cases (redex inside a subterm) follow by the induction hypothesis. $\
 :class: important
 Every well-typed STLC term is **strongly normalizing**: *no* infinite $\betared$ sequence starts from it.
 Proved by Tait's *reducibility* (computability) method — not by a naive induction on term size, which
-fails. **Consequences:** the diverging term $\Omega = (\lam x.\,x\,x)(\lam x.\,x\,x)$ and the
+fails.
+
+**Consequences:** the diverging term $\Omega = (\lam x.\,x\,x)(\lam x.\,x\,x)$ and the
 $Y$-combinator of {doc}`l2_lambda_calculus` **have no STLC type at all** (a typed term must halt; these do
 not), so STLC is *not* Turing-complete. That is the price — and the payoff — of type safety: you trade
 universal computation for guaranteed termination.
@@ -151,24 +155,31 @@ type $A$ iff *some* Church term whose erasure is $M$ has type $A$. What organize
 
 ````{admonition} Worked example 2 — many types, one principal type
 :class: note
-The identity $\lam x.\,x$ is Curry-typable at $A \To A$ for **every** type $A$: $o\To o$,
-$(o\To o)\To(o\To o)$, and so on. All of these are *substitution instances* of a single most-general
-type,
+**Many types.** The identity $\lam x.\,x$ is Curry-typable at $A \To A$ for **every** type $A$: $o\To o$,
+$(o\To o)\To(o\To o)$, and so on.
+
+**One most-general type.** All of these are *substitution instances* of a single most-general type,
+
 $$ \alpha \To \alpha \qquad (\alpha \text{ a type variable}), $$
+
 its **principal type**. The K combinator $\lam x.\,\lam y.\,x$ has principal type
-$\alpha \To \beta \To \alpha$. The **principal type theorem** (Hindley 1969, Milner 1978) says every
-Curry-typable term has such a most-general type, *computable by unification* — the algorithm at the heart
-of Hindley–Milner inference in ML, Haskell and Lean's elaborator. So "$\lam x.\,x$ has infinitely many
-types" and "$\lam x.\,x$ has one principal type" are both true and not in tension.
+$\alpha \To \beta \To \alpha$.
+
+**The theorem.** The **principal type theorem** (Hindley 1969, Milner 1978) says every Curry-typable term
+has such a most-general type, *computable by unification* — the algorithm at the heart of Hindley–Milner
+inference in ML, Haskell and Lean's elaborator. So "$\lam x.\,x$ has infinitely many types" and
+"$\lam x.\,x$ has one principal type" are both true and not in tension.
 ````
 
 ```{admonition} Run it — Church and Curry side by side
 :class: seealso
-In the [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda), the Curry–Howard command shows both readings of the same term.
-Run [`ch term \p. p`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Cp.%20p) for the **Curry-style** principal
-type $\alpha \To \alpha$; then run [`ch lean \p. p`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20lean%20%5Cp.%20p) for the
-**Church-style** reading — the Lean theorem `theorem ch_proof {α : Prop} : α → α := fun p => p`, with a
-Live Lean link to check it. Same object, two philosophies, related by erasure.
+In the [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda), the Curry–Howard command shows both readings of the same term:
+
+- [`ch term \p. p`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Cp.%20p) — the **Curry-style** principal type $\alpha \To \alpha$.
+- [`ch lean \p. p`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20lean%20%5Cp.%20p) — the **Church-style** reading: the Lean theorem
+  `theorem ch_proof {α : Prop} : α → α := fun p => p`, with a Live Lean link to check it.
+
+Same object, two philosophies, related by erasure.
 ```
 
 ## Types are not (quite) sets — and the three places it breaks
@@ -195,11 +206,13 @@ break motivates something later in the course.
 :class: warning
 System U — equivalently any type theory admitting $\mathsf{Type} : \mathsf{Type}$ — is **inconsistent**:
 it contains a closed term of the empty type and is no longer strongly normalizing. Hurkens (1995) gave a
-strikingly short such term. **Design consequence:** consistent systems replace $\mathsf{Type}:\mathsf{Type}$
-by a **universe hierarchy** $\ \mathsf{U}_0 : \mathsf{U}_1 : \mathsf{U}_2 : \cdots$, used by
-Agda, Rocq and Lean (cumulative in Rocq; Lean and Agda instead lift explicitly between levels, e.g.
-via `ULift`/`Lift`). So "the intuition is safe for STLC but must be dropped once universes or
-proof-relevant equality enter" is not a slogan — it is a metatheorem.
+strikingly short such term.
+
+**Design consequence:** consistent systems replace $\mathsf{Type}:\mathsf{Type}$ by a **universe
+hierarchy** $\ \mathsf{U}_0 : \mathsf{U}_1 : \mathsf{U}_2 : \cdots$, used by Agda, Rocq and Lean
+(cumulative in Rocq; Lean and Agda instead lift explicitly between levels, e.g. via `ULift`/`Lift`). So
+"the intuition is safe for STLC but must be dropped once universes or proof-relevant equality enter" is
+not a slogan — it is a metatheorem.
 ```
 
 ## The Curry–Howard correspondence
@@ -250,35 +263,53 @@ The dictionary also draws a sharp, surprising line between intuitionistic and cl
 
 ````{admonition} Worked example 4 — Peirce's law has no proof term
 :class: warning
-Peirce's law $\ ((P \To Q) \To P) \To P\ $ is a *classical* tautology, yet **no closed STLC term inhabits
-it**. Try to build one: a term must be $\lam k.\,(?)$ with $k : (P{\To}Q){\To}P$ and $? : P$. The only
-way to produce a $P$ is $k\,m$ for some $m : P \To Q$; and $m = \lam p.\,(?)$ needs a $Q$ from a $p : P$.
-With $P, Q$ atomic and distinct there is *no rule* that makes a $Q$ — you are stuck. (A rigorous proof
-notes that inhabitation of the implicational fragment is decidable and an exhaustive search of normal
-terms finds none.) Constructively, to *prove* $((P{\To}Q){\To}P){\To}P$ you would already need a $P$,
-which is what you were trying to build. A proof appears only once you *add* a classical axiom:
+**Claim.** Peirce's law $\ ((P \To Q) \To P) \To P\ $ is a *classical* tautology, yet **no closed STLC
+term inhabits it**.
+
+**Try to build one.** A term must be $\lam k.\,(?)$ with $k : (P{\To}Q){\To}P$ and $? : P$. The only way
+to produce a $P$ is $k\,m$ for some $m : P \To Q$; and $m = \lam p.\,(?)$ needs a $Q$ from a $p : P$.
+
+**The dead end.** With $P, Q$ atomic and distinct there is *no rule* that makes a $Q$ — you are stuck.
+(A rigorous proof notes that inhabitation of the implicational fragment is decidable and an exhaustive
+search of normal terms finds none.)
+
+**Why, constructively.** To *prove* $((P{\To}Q){\To}P){\To}P$ you would already need a $P$, which is what
+you were trying to build.
+
+**The classical escape.** A proof appears only once you *add* a classical axiom:
+
 ```lean
 theorem peirce {P Q : Prop} : ((P → Q) → P) → P :=
   fun k => Classical.byContradiction (fun hnp => hnp (k (fun hp => absurd hp hnp)))
 ```
+
 Delete `Classical` and it fails to type-check — dramatizing that Curry–Howard yields *intuitionistic*
 proofs, and that excluded middle is an axiom you opt into, not a theorem.
 ````
 
 ```{admonition} Run it — see the correspondence, don't take it on faith
 :class: seealso
-In the [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda): [`ch type 'P -> P'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27P%20-%3E%20P%27)
-returns the identity $\lam p.\,p$; the composition demo
-[`ch type '(P -> Q) -> (Q -> R) -> P -> R'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27%28P%20-%3E%20Q%29%20-%3E%20%28Q%20-%3E%20R%29%20-%3E%20P%20-%3E%20R%27)
-returns $\lam f\,g\,p.\,g\,(f\,p)$; and
-[`ch type '((P -> Q) -> P) -> P'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27%28%28P%20-%3E%20Q%29%20-%3E%20P%29%20-%3E%20P%27)
-reports Peirce's law **uninhabited**. Then check the emitted Lean with `ch verify`. The same theorems live
-in every prover in the [four-prover artifacts](https://github.com/nasqret/vietnam2026/tree/main/artifacts).
+In the [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda), each of these is one click:
+
+- [`ch type 'P -> P'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27P%20-%3E%20P%27) — returns the identity $\lam p.\,p$.
+- [`ch type '(P -> Q) -> (Q -> R) -> P -> R'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27%28P%20-%3E%20Q%29%20-%3E%20%28Q%20-%3E%20R%29%20-%3E%20P%20-%3E%20R%27) — the composition demo returns $\lam f\,g\,p.\,g\,(f\,p)$.
+- [`ch type '((P -> Q) -> P) -> P'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27%28%28P%20-%3E%20Q%29%20-%3E%20P%29%20-%3E%20P%27) — reports Peirce's law **uninhabited**.
+
+Then check the emitted Lean with `ch verify`. The same theorems live in every prover in the
+[four-prover artifacts](https://github.com/nasqret/vietnam2026/tree/main/artifacts).
 ```
 
 ```{admonition} Run it — build the proof yourself, one rule at a time
 :class: seealso
-`ch type` *searches* for the inhabitant; the Lab's interactive proof builder makes **you** construct it. Run [`prove (P -> Q) -> (Q -> R) -> P -> R`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=prove%20%28P%20-%3E%20Q%29%20-%3E%20%28Q%20-%3E%20R%29%20-%3E%20P%20-%3E%20R) and type `intro f`, `intro g`, `intro p` (three (abs) steps), then `apply g`, `apply f`, `assumption` (the (app) nodes and the (var) leaf); `qed` extracts $\lam f\,g\,p.\,g\,(f\,p)$ *and* its principal type — you have just grown Worked example 3's derivation tree tactic by tactic. Now run [`prove ((P -> Q) -> P) -> P`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=prove%20%28%28P%20-%3E%20Q%29%20-%3E%20P%29%20-%3E%20P): after `intro k` the goal is $P$ and no sequence of tactics will ever close it — Worked example 4's dead end, experienced first-hand (`abort` to leave). This tactic loop is precisely how Lean will feel in {doc}`l4_lean_intro`.
+`ch type` *searches* for the inhabitant; the Lab's interactive proof builder makes **you** construct it:
+
+- [`prove (P -> Q) -> (Q -> R) -> P -> R`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=prove%20%28P%20-%3E%20Q%29%20-%3E%20%28Q%20-%3E%20R%29%20-%3E%20P%20-%3E%20R) — grow Worked example 3's derivation tree tactic by tactic:
+  `intro f`, `intro g`, `intro p` (three (abs) steps), then `apply g`, `apply f`, `assumption` (the (app)
+  nodes and the (var) leaf); `qed` extracts $\lam f\,g\,p.\,g\,(f\,p)$ *and* its principal type.
+- [`prove ((P -> Q) -> P) -> P`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=prove%20%28%28P%20-%3E%20Q%29%20-%3E%20P%29%20-%3E%20P) — Worked example 4's dead end, experienced first-hand: after `intro k` the goal
+  is $P$ and no sequence of tactics will ever close it (`abort` to leave).
+
+This tactic loop is precisely how Lean will feel in {doc}`l4_lean_intro`.
 ```
 
 ## A first look at dependent types

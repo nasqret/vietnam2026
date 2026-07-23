@@ -84,15 +84,18 @@ none at all.
 ```{admonition} Run it — what Classical.choice pays for
 :class: seealso
 In `Prop`, *inhabited* is all there is — and inhabitation is exactly what the lab's checker decides:
-[`ch type '((P -> Q) -> P) -> P'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27%28%28P%20-%3E%20Q%29%20-%3E%20P%29%20-%3E%20P%27)
-reports Peirce's law **uninhabited**: no pure λ-term proves it (Worked example 4 of {doc}`l1_type_theory`). Prove it in Lean with `tauto` and run `#print axioms`: `Classical.choice` appears — the axiom is precisely what buys the classically-true-but-uninhabited propositions.
+
+- [`ch type '((P -> Q) -> P) -> P'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27%28%28P%20-%3E%20Q%29%20-%3E%20P%29%20-%3E%20P%27) — Peirce's law reported **uninhabited**: no pure λ-term proves it.
+
+That is Worked example 4 of {doc}`l1_type_theory`. Prove it in Lean with `tauto` and run `#print axioms`: `Classical.choice` appears — the axiom is precisely what buys the classically-true-but-uninhabited propositions.
 ```
 
 ```{admonition} Run it — the computational core, in the browser
 :class: seealso
-Before dependent types, remember the untyped core from {doc}`l2_lambda_calculus`. In the Lambda Lab,
-watch a logical connective *compute* by β-reduction — proofs-as-programs made literal:
-[`reduce IMPLIES TRUE FALSE`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20IMPLIES%20TRUE%20FALSE).
+Before dependent types, remember the untyped core from {doc}`l2_lambda_calculus` — in the Lambda Lab, one command:
+
+- [`reduce IMPLIES TRUE FALSE`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20IMPLIES%20TRUE%20FALSE) — watch a logical connective *compute* by β-reduction, proofs-as-programs made literal.
+
 In Lean the same idea has types attached: `#check (fun n : ℕ => rfl : ∀ n : ℕ, n + 0 = n)` type-checks
 because `∀` *is* a Π-type.
 ```
@@ -122,8 +125,8 @@ and overriding them with `where` clauses so the paths coincide by definition.
 
 ````{admonition} Worked example 1 — a class you can prove against its interface
 :class: important
-Define a minimal additive monoid, register `Nat` as an instance, then prove a lemma *stated only from the
-class interface* — it will hold for every future instance for free.
+**Setup.** Define a minimal additive monoid, register `Nat` as an instance, then prove a lemma *stated
+only from the class interface* — it will hold for every future instance for free.
 
 ```lean
 class MyAddMonoid (α : Type*) where
@@ -144,9 +147,11 @@ theorem add_zero_zero {α : Type*} [MyAddMonoid α] (a : α) :
   rw [add_zero, add_zero]
 ```
 
-The proof never mentions `Nat`. It reasons purely from `add_zero`, so it applies to *any* `MyAddMonoid`.
-This is "interface over definition" — the discipline that lets Mathlib reuse each lemma across the entire
-hierarchy.
+**Why.** The proof never mentions `Nat`. It reasons purely from `add_zero`, so it applies to *any*
+`MyAddMonoid`.
+
+**Payoff.** This is "interface over definition" — the discipline that lets Mathlib reuse each lemma
+across the entire hierarchy.
 ````
 
 ## The shape of Mathlib, and how to search it
@@ -222,8 +227,12 @@ external Sage certificate server was shut down — so the modern polynomial tool
 
 ````{admonition} Worked example 2 — Cauchy–Schwarz and AM–GM in one line each
 :class: important
-The two-variable Cauchy–Schwarz inequality is a single `nlinarith`, because the gap is a perfect square,
-$(a^2+b^2)(x^2+y^2) - (ax+by)^2 = (ay - bx)^2 \ge 0$ — you just hand `nlinarith` that square:
+**Cauchy–Schwarz.** The two-variable inequality is a single `nlinarith`, because the gap is a perfect
+square:
+
+$$(a^2+b^2)(x^2+y^2) - (ax+by)^2 = (ay - bx)^2 \ge 0$$
+
+You just hand `nlinarith` that square:
 
 ```lean
 theorem cauchy_schwarz (a b x y : ℝ) :
@@ -231,7 +240,7 @@ theorem cauchy_schwarz (a b x y : ℝ) :
   nlinarith [sq_nonneg (a*y - b*x)]
 ```
 
-The AM–GM inequality for two nonnegative reals is the same trick, plus the defining fact
+**AM–GM.** For two nonnegative reals it is the same trick, plus the defining fact
 $(\sqrt{ab})^2 = ab$:
 
 ```lean
@@ -241,9 +250,11 @@ theorem amgm (a b : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) :
              Real.sqrt_nonneg (a*b)]
 ```
 
-Here `nlinarith` uses $(a-b)^2 \ge 0$, i.e. $(a+b)^2 \ge 4ab = (2\sqrt{ab})^2$, and the nonnegativity of
-both sides to conclude $a+b \ge 2\sqrt{ab}$. Contrast a purely finite goal, closed by evaluation —
-Wilson's theorem at $p = 7$: `example : Nat.factorial 6 % 7 = 6 := by decide`.
+**Why.** Here `nlinarith` uses $(a-b)^2 \ge 0$, i.e. $(a+b)^2 \ge 4ab = (2\sqrt{ab})^2$, and the
+nonnegativity of both sides to conclude $a+b \ge 2\sqrt{ab}$.
+
+**Contrast.** A purely finite goal is closed by evaluation — Wilson's theorem at $p = 7$:
+`example : Nat.factorial 6 % 7 = 6 := by decide`.
 ````
 
 ## `calc` — proofs that read like the blackboard
@@ -256,8 +267,10 @@ linear tail with `linarith`.
 
 ````{admonition} Worked example 3 — the Macbeth have/calc pattern
 :class: important
-Given $a^2 = b^2 + 4$ and $a + b = 2$, show $a - b = 2$. On paper: $(a-b)(a+b) = a^2 - b^2 = 4$, and since
-$a+b = 2$ this gives $2(a-b) = 4$. Formalized, the prose survives intact:
+**Setup.** Given $a^2 = b^2 + 4$ and $a + b = 2$, show $a - b = 2$.
+
+**On paper.** $(a-b)(a+b) = a^2 - b^2 = 4$, and since $a+b = 2$ this gives $2(a-b) = 4$. Formalized, the
+prose survives intact:
 
 ```lean
 example (a b : ℝ) (h1 : a^2 = b^2 + 4) (h2 : a + b = 2) : a - b = 2 := by
@@ -268,9 +281,11 @@ example (a b : ℝ) (h1 : a^2 = b^2 + 4) (h2 : a + b = 2) : a - b = 2 := by
   linarith
 ```
 
-Read the `calc` block aloud and it *is* the blackboard line. `ring` does the algebra; `rw` substitutes the
-hypothesis; `linarith` finishes the linear tail. This legibility is what convinces working mathematicians
-the formal text is honest mathematics, not code.
+**Read it.** Read the `calc` block aloud and it *is* the blackboard line. `ring` does the algebra; `rw`
+substitutes the hypothesis; `linarith` finishes the linear tail.
+
+**Payoff.** This legibility is what convinces working mathematicians the formal text is honest
+mathematics, not code.
 ````
 
 ## Recursion: structural vs. well-founded
@@ -299,9 +314,13 @@ theorem Tree.size_pos : ∀ t : Tree, 1 ≤ t.size
   | .node l r => by simp only [Tree.size]; omega
 ```
 
-`size` recurses on the subtrees `l` and `r`, so no termination proof is needed; `size_pos` is closed
-case-by-case, `omega` handling `1 ≤ 1 + l.size + r.size` once `simp only` has unfolded the definition.
-This is exactly the shape of the EML project's `EMLTerm.size` you will meet in {doc}`l6_autoformalization`.
+**Why it compiles.** `size` recurses on the subtrees `l` and `r`, so no termination proof is needed.
+
+**The proof.** `size_pos` is closed case-by-case, `omega` handling `1 ≤ 1 + l.size + r.size` once
+`simp only` has unfolded the definition.
+
+**Where next.** This is exactly the shape of the EML project's `EMLTerm.size` you will meet in
+{doc}`l6_autoformalization`.
 ````
 
 The `induction` tactic surfaces the same recursor. Gauss's summation formula falls to it directly:
@@ -333,9 +352,12 @@ equation lemmas**, so you can prove *nothing* about it.
 
 ```{admonition} Run it — why the termination checker is not negotiable
 :class: seealso
-In the untyped λ-calculus of {doc}`l2_lambda_calculus`, general recursion is free — and so is non-termination:
-[`reduce OMEGA`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20OMEGA) never reaches a normal form. Types are what forbid it:
-[`ch term \x. x x`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Cx.%20x%20x) fails Algorithm W's occurs check — self-application, and with it the `Y` combinator, is untypeable. A Lean-typed fixpoint `fix : (α → α) → α` would specialize to `fix (id : False → False) : False` and prove everything. `termination_by` is the price of soundness; `partial def` dodges the bill by leaving the kernel's world entirely.
+In the untyped λ-calculus of {doc}`l2_lambda_calculus`, general recursion is free — and so is non-termination; types are what forbid it:
+
+- [`reduce OMEGA`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20OMEGA) — never reaches a normal form.
+- [`ch term \x. x x`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Cx.%20x%20x) — fails Algorithm W's occurs check: self-application is untypeable.
+
+With self-application goes the `Y` combinator: a Lean-typed fixpoint `fix : (α → α) → α` would specialize to `fix (id : False → False) : False` and prove everything. `termination_by` is the price of soundness; `partial def` dodges the bill by leaving the kernel's world entirely.
 ```
 
 ## One theorem end-to-end: √2 is irrational
@@ -410,8 +432,10 @@ and only the kernel's acceptance of that `Expr` makes it a theorem.
 :class: seealso
 `Expr` has no named bound variables: `bvar 0` means "the nearest enclosing binder", `bvar 1` the next one out — de Bruijn indices, which make α-equivalent terms *syntactically identical*, so the kernel never has to think about renaming. Watch the same representation in the Lambda Lab:
 
-[`debruijn \x. \y. x`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=debruijn%20%5Cx.%20%5Cy.%20x) prints `λ λ 1`, and
-[`debruijn \x. \x. x`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=debruijn%20%5Cx.%20%5Cx.%20x) resolves shadowing to `λ λ 0` — exactly what `Expr.bvar` does inside Lean.
+- [`debruijn \x. \y. x`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=debruijn%20%5Cx.%20%5Cy.%20x) — prints `λ λ 1`.
+- [`debruijn \x. \x. x`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=debruijn%20%5Cx.%20%5Cx.%20x) — resolves shadowing to `λ λ 0`.
+
+Exactly what `Expr.bvar` does inside Lean.
 ```
 
 A three-line macro adds a new tactic:
@@ -434,9 +458,11 @@ zero `sorry`, audited by `#print axioms`.
 
 ```{admonition} Run it — a tactic script elaborating to a term, in miniature
 :class: seealso
-The Lambda Lab's proof builder is this pipeline shrunk to the simply-typed core. Start
-[`prove (P -> Q) -> P -> Q`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=prove%20%28P%20-%3E%20Q%29%20-%3E%20P%20-%3E%20Q),
-drive it with `intro f`, `intro p`, `exact f p` (or ask `hint`), then `qed`: the builder prints the *extracted λ-term* and its principal type. Your tactic script was never the proof — the elaborated term is. That is the natural-deduction machinery of {doc}`l3_propositional` and this section's `Expr` story in one command.
+The Lambda Lab's proof builder is this pipeline shrunk to the simply-typed core:
+
+- [`prove (P -> Q) -> P -> Q`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=prove%20%28P%20-%3E%20Q%29%20-%3E%20P%20-%3E%20Q) — drive it with `intro f`, `intro p`, `exact f p` (or ask `hint`), then `qed`.
+
+The builder prints the *extracted λ-term* and its principal type: your tactic script was never the proof — the elaborated term is. That is the natural-deduction machinery of {doc}`l3_propositional` and this section's `Expr` story in one command.
 ```
 
 ## Common pitfalls

@@ -145,9 +145,10 @@ Closed normal terms of the simply-typed $\lam$-calculus with products, sums and 
 normal for $\beta$ together with the *permutative (commuting) conversions* required for
 $\lor$-elimination and $\bot$-elimination — are in bijection with Prawitz-normal natural-deduction
 derivations of intuitionistic propositional logic, and this bijection carries **detour reduction
-($\beta$ together with permutative conversions) to proof normalization**. In particular the calculus
-is *strongly normalizing*, so there is **no** closed term of type $\bot$ — the proof system is
-consistent.
+($\beta$ together with permutative conversions) to proof normalization**.
+
+In particular the calculus is *strongly normalizing*, so there is **no** closed term of type $\bot$ —
+the proof system is consistent.
 ```
 
 ### Worked example 1 — conjunction is commutative
@@ -221,11 +222,14 @@ the classical boundary in disguise (see below).
 
 ```{admonition} Run it — Algorithm W rediscovers double negation
 :class: tip
-Strip the types away and `dni` is the untyped term $\lam p\,k.\,k\,p$. Ask the lab for its principal
-type: [`ch term \p k. k p`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Cp%20k.%20k%20p)
-runs Algorithm W and reports $\alpha\To(\alpha\To\beta)\To\beta$ — read the result atom $\beta$ as
-$\bot$ and this *is* $A\To\neg\neg A$. Same game for `tne`:
-[`ch term \h p. h (\k. k p)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Ch%20p.%20h%20%28%5Ck.%20k%20p%29).
+Strip the types away and `dni` is the untyped term $\lam p\,k.\,k\,p$; ask the lab for its principal type:
+
+- [`ch term \p k. k p`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Cp%20k.%20k%20p) —
+  runs Algorithm W and reports $\alpha\To(\alpha\To\beta)\To\beta$; read the result atom $\beta$ as
+  $\bot$ and this *is* $A\To\neg\neg A$.
+- [`ch term \h p. h (\k. k p)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20term%20%5Ch%20p.%20h%20%28%5Ck.%20k%20p%29) —
+  the same game for `tne`.
+
 The Curry-style moral: the *program* comes first, and the theorem it proves is its most general type.
 ```
 
@@ -282,9 +286,11 @@ which is where classical logic enters.
 ```{admonition} Run it — drive the tactics yourself
 :class: seealso
 The [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda) has an interactive proof builder
-that speaks exactly the implication rows of this table. Open
-[`prove (P -> Q) -> P -> Q`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=prove%20%28P%20-%3E%20Q%29%20-%3E%20P%20-%3E%20Q)
-and close the goal with `intro`, `apply` and `exact` (`hint` nudges you when stuck, `undo` backtracks).
+that speaks exactly the implication rows of this table:
+
+- [`prove (P -> Q) -> P -> Q`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=prove%20%28P%20-%3E%20Q%29%20-%3E%20P%20-%3E%20Q) —
+  close the goal with `intro`, `apply` and `exact` (`hint` nudges you when stuck, `undo` backtracks).
+
 On `qed` the lab **extracts the λ-term you just built** and infers its principal type — the "term
 action" column of the table made visible: every tactic appended exactly one node to the program.
 ```
@@ -293,12 +299,14 @@ action" column of the table made visible: every tactic appended exactly one node
 :class: seealso
 Copy the four worked theorems above into the game's editor or any Lean playground and watch the goal
 state change line by line. Or feel the "proof = program" identity in the untyped world of the
-[Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda): the $\land$-elimination rule *is*
-projection —
-[`reduce FST (PAIR a b)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20FST%20%28PAIR%20a%20b%29)
-computes to `a` — and modus ponens *is* application, which you can watch by reducing the S-combinator
-proof term $\lam f\,g\,x.\,f\,x\,(g\,x)$ on concrete "proofs". The same statement is proved in all four
-provers in the [artifacts directory](https://github.com/nasqret/vietnam2026/tree/main/artifacts)
+[Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda):
+
+- [`reduce FST (PAIR a b)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20FST%20%28PAIR%20a%20b%29) —
+  computes to `a`: the $\land$-elimination rule *is* projection.
+
+And modus ponens *is* application, which you can watch by reducing the S-combinator proof term
+$\lam f\,g\,x.\,f\,x\,(g\,x)$ on concrete "proofs". The same statement is proved in all four provers in
+the [artifacts directory](https://github.com/nasqret/vietnam2026/tree/main/artifacts)
 ([Lean](https://github.com/nasqret/vietnam2026/blob/main/artifacts/lean/Artifacts.lean),
 [Agda](https://github.com/nasqret/vietnam2026/blob/main/artifacts/agda/Artifacts.agda),
 [Rocq](https://github.com/nasqret/vietnam2026/blob/main/artifacts/rocq/Artifacts.v),
@@ -330,11 +338,14 @@ equality worlds to later lectures):
 
 ```{admonition} Run it — play the constructive core
 :class: seealso
-Open [A Reintroduction to Proofs](https://adam.math.hhu.de/#/g/emilyriehl/ReintroductionToProofs) and
-clear TypeWorld → FunctionWorld → ImplicationWorld, then Conjunction/DisjunctionWorld, then
-Empty/NegationWorld — *without touching* ClassicalWorld. After each world, return to the tactic table
-above and name the row you just used. Nothing to install; it runs in the browser on the same engine as
-the {doc}`Natural Number Game <l4_lean_intro>`.
+The game is one click, nothing to install:
+
+- [A Reintroduction to Proofs](https://adam.math.hhu.de/#/g/emilyriehl/ReintroductionToProofs) —
+  clear TypeWorld → FunctionWorld → ImplicationWorld, then Conjunction/DisjunctionWorld, then
+  Empty/NegationWorld — *without touching* ClassicalWorld.
+
+After each world, return to the tactic table above and name the row you just used. It runs in the
+browser on the same engine as the {doc}`Natural Number Game <l4_lean_intro>`.
 ```
 
 ## The classical boundary
@@ -375,11 +386,12 @@ Contrast this with the honest fact that no tactic-free, `fun`-only term of that 
 
 ```{admonition} Theorem (no intuitionistic witness)
 :class: warning
-There is no closed simply-typed $\lam$-term of type $((A\To B)\To A)\To A$ for atomic $A\neq B$. *Sketch:*
-by strong normalization it suffices to inspect $\beta$-normal, $\eta$-long inhabitants. Such a term must
-begin $\lam h.\,t$ with $h:(A\To B)\To A$ and $t:A$; the only way to reach an $A$ is $h\,u$ with
-$u:A\To B$, i.e. $u=\lam a.\,s$ with $a:A,\ s:B$; but $B$ is a fresh atom with no closed inhabitant and
-nothing in context produces one — the search loops with no base case. Hence Peirce's law is not
+There is no closed simply-typed $\lam$-term of type $((A\To B)\To A)\To A$ for atomic $A\neq B$.
+
+*Sketch:* by strong normalization it suffices to inspect $\beta$-normal, $\eta$-long inhabitants. Such a
+term must begin $\lam h.\,t$ with $h:(A\To B)\To A$ and $t:A$; the only way to reach an $A$ is $h\,u$
+with $u:A\To B$, i.e. $u=\lam a.\,s$ with $a:A,\ s:B$; but $B$ is a fresh atom with no closed inhabitant
+and nothing in context produces one — the search loops with no base case. Hence Peirce's law is not
 intuitionistically derivable.
 ```
 

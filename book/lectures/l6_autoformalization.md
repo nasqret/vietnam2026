@@ -5,12 +5,14 @@
 Where AI meets the kernel. We separate **statement autoformalization** (natural language → a formal
 theorem statement) from **proof autoformalization** (finding a machine-checkable proof), and we make
 precise the one thing a proof assistant *cannot* guarantee: that the statement means what the
-mathematician meant. We then survey the **2024–2026 landscape** (AlphaProof, AlphaGeometry, the open
-prover race, LeanDojo, and the benchmarks that grade them), and work through the course's flagship
-**case study** — the **EML** project, which formalized a whole research paper, *every elementary
-function from a single binary operator*, in Lean 4, sorry-free, across 8062 kernel jobs. The moral is
-not "AI proved a theorem" but a division of labour: a human sets the target, AI assists with search
-and scaffolding, and **the kernel is the sole referee**.
+mathematician meant.
+
+We survey the **2024–2026 landscape** (AlphaProof, AlphaGeometry, the open prover race, LeanDojo, and
+the benchmarks that grade them), and work through the course's flagship **case study** — the **EML**
+project, which formalized a whole research paper, *every elementary function from a single binary
+operator*, in Lean 4, sorry-free, across 8062 kernel jobs. The moral is not "AI proved a theorem" but a
+division of labour: a human sets the target, AI assists with search and scaffolding, and **the kernel is
+the sole referee**.
 ```
 
 ## Learning objectives
@@ -65,14 +67,14 @@ round-trip faithfulness check.
 
 ```{admonition} Run it — the split at STLC scale
 :class: seealso
-Both problems already exist in miniature in the typed λ-lab: *statement* autoformalization is writing the
-type, *proof* autoformalization is inhabiting it. Proof search succeeding:
-[`ch type '(P -> Q) -> (Q -> R) -> P -> R'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27%28P%20-%3E%20Q%29%20-%3E%20%28Q%20-%3E%20R%29%20-%3E%20P%20-%3E%20R%27)
-finds an inhabitant. Proof search failing honestly:
-[`ch type '((P -> Q) -> P) -> P'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27%28%28P%20-%3E%20Q%29%20-%3E%20P%29%20-%3E%20P%27)
-reports Peirce's law **UNINHABITED** — a perfectly well-formed statement that no constructive search can
-ever close. Well-formed is not provable, and provable is not faithful: that second gap is this section's
-subject.
+Both problems already exist in miniature in the typed λ-lab: *statement* autoformalization is writing
+the type, *proof* autoformalization is inhabiting it.
+
+- [`ch type '(P -> Q) -> (Q -> R) -> P -> R'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27%28P%20-%3E%20Q%29%20-%3E%20%28Q%20-%3E%20R%29%20-%3E%20P%20-%3E%20R%27) — proof search succeeding: an inhabitant is found.
+- [`ch type '((P -> Q) -> P) -> P'`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ch%20type%20%27%28%28P%20-%3E%20Q%29%20-%3E%20P%29%20-%3E%20P%27) — proof search failing honestly: Peirce's law reported **UNINHABITED**.
+
+The second is a perfectly well-formed statement that no constructive search can ever close. Well-formed
+is not provable, and provable is not faithful: that second gap is this section's subject.
 ```
 
 Now the central caveat, worth ten minutes of any lecture. The Lean kernel guarantees only that the
@@ -86,19 +88,23 @@ intent. A formalized statement can be:
 and still type-check and still be "proved". So the trust chain has one soft link, precisely where the
 LLM operates.
 
-:::{admonition} Worked example — a compiling lie
+````{admonition} Worked example — a compiling lie
 :class: note
-Consider the informal claim "every prime $>2$ is odd". A *faithful* formalization is
-`∀ p : ℕ, p.Prime → 2 < p → Odd p`. But the following also type-checks and is trivially provable:
+**Setup.** Consider the informal claim "every prime $>2$ is odd". A *faithful* formalization is
+`∀ p : ℕ, p.Prime → 2 < p → Odd p`.
+
+**The lie.** But the following also type-checks and is trivially provable:
 
 ```lean
 theorem primes_are_odd (p : ℕ) (hp : p.Prime) (h : p = 4) : Odd p := by subst h; norm_num at hp
 ```
 
-The hypothesis `p = 4` together with `p.Prime` is *never* satisfiable, so the theorem is **vacuously
-true** — the kernel is perfectly happy, and it means nothing. The bug is invisible to the kernel because
-the kernel is checking the proof against *this* statement, not against the mathematician's sentence.
-:::
+**Why.** The hypothesis `p = 4` together with `p.Prime` is *never* satisfiable, so the theorem is
+**vacuously true** — the kernel is perfectly happy, and it means nothing.
+
+**Moral.** The bug is invisible to the kernel because the kernel is checking the proof against *this*
+statement, not against the mathematician's sentence.
+````
 
 This is not a toy worry. AlphaProof auto-formalized on the order of a million competition problems (and
 generated tens of millions of proof variants at test time) to build its training curriculum; Goedel-Prover
@@ -163,13 +169,14 @@ $4.28$.
 
 ```{admonition} Run it — replay the DD+AR engine
 :class: seealso
-The lab replays AlphaGeometry-style deductions move by move.
-[`ag imo_p4`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ag%20imo_p4) walks a simplified
-DD+AR sketch of an IMO P4-class geometry problem — watch the symbolic engine chain premises to
-conclusions, exactly the "closes the proof" half of the table's first row — and
-[`ag angle_bisector`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ag%20angle_bisector) is a
-two-step warm-up. Background dossier:
-[`kb alphageometry`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=kb%20alphageometry).
+The lab replays AlphaGeometry-style deductions move by move:
+
+- [`ag imo_p4`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ag%20imo_p4) — a simplified DD+AR sketch of an IMO P4-class geometry problem.
+- [`ag angle_bisector`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=ag%20angle_bisector) — a two-step warm-up.
+- [`kb alphageometry`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=kb%20alphageometry) — the background dossier.
+
+Watch the symbolic engine chain premises to conclusions — exactly the "closes the proof" half of the
+table's first row.
 ```
 
 The calibration lesson is the point. **miniF2F** ($488$ olympiad/high-school statements, cross-system
@@ -194,9 +201,11 @@ checkable.
 The Boolean shadow of everything below is **functional completeness**: from the single NAND connective
 you can rebuild $\lnot$, $\land$, $\lor$. Watch a language model's "propose" step made concrete in the
 λ-calculus playground:
-[`reduce NAND TRUE FALSE`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20NAND%20TRUE%20FALSE) ·
-[`church NAND`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=church%20NAND) ·
-[`nf AND (NAND p q) r`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20AND%20%28NAND%20p%20q%29%20r).
+
+- [`reduce NAND TRUE FALSE`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20NAND%20TRUE%20FALSE) — one NAND application, reduced step by step.
+- [`church NAND`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=church%20NAND) — the NAND combinator as a raw λ-term.
+- [`nf AND (NAND p q) r`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20AND%20%28NAND%20p%20q%29%20r) — connectives rebuilt from NAND, normalized in one go.
+
 Then compare the *proof* side across four foundations in the course's
 [four-prover artifacts](https://github.com/nasqret/vietnam2026/tree/main/artifacts): the same statements
 in [Lean](https://github.com/nasqret/vietnam2026/tree/main/artifacts/lean),
@@ -295,22 +304,26 @@ it, the term has no value.
 
 ```{admonition} Worked example 3 — trigonometry through Euler
 :class: note
-Trigonometry is where the construction gets pretty. The cosine witness `cosTermℂ` evaluates to
-$\exp(i\,x)$, so by Euler's formula $\exp(i x)=\cos x + i\sin x$ its **real part** is $\cos x$. This is the
-smallest trig witness, $K=1273$, precisely because it stays close to Euler without algebraic detours.
+**Cosine.** The cosine witness `cosTermℂ` evaluates to $\exp(i\,x)$, so by Euler's formula
+$\exp(i x)=\cos x + i\sin x$ its **real part** is $\cos x$. This is the smallest trig witness, $K=1273$,
+precisely because it stays close to Euler without algebraic detours.
 
-The tangent uses a Cayley/Möbius quotient (recommended by an independent GPT Pro review). Writing
-$w=e^{2ix}$ and multiplying numerator and denominator of $\tfrac{e^{ix}-e^{-ix}}{e^{ix}+e^{-ix}}$ by
-$e^{ix}$:
+**Tangent.** The tangent uses a Cayley/Möbius quotient (recommended by an independent GPT Pro review).
+Writing $w=e^{2ix}$ and multiplying numerator and denominator of $\tfrac{e^{ix}-e^{-ix}}{e^{ix}+e^{-ix}}$
+by $e^{ix}$:
+
 $$
 \frac{e^{2ix}-1}{1+e^{2ix}}
 =\frac{e^{ix}-e^{-ix}}{e^{ix}+e^{-ix}}
 =\frac{2i\sin x}{2\cos x}
 = i\,\tan x .
 $$
-So the imaginary part of the witness *is* $\tan x$. This compresses the tan tree to $K=2817$,
-side-stepping an $e^{ix}+e^{-ix}$ constraint explosion that had stalled progress for days. The harder
-inverse functions then follow by identities such as $\arcsin x = \tfrac{\pi}{2}-\arccos x$.
+
+**Payoff.** So the imaginary part of the witness *is* $\tan x$. This compresses the tan tree to
+$K=2817$, side-stepping an $e^{ix}+e^{-ix}$ constraint explosion that had stalled progress for days.
+
+**Inverses.** The harder inverse functions then follow by identities such as
+$\arcsin x = \tfrac{\pi}{2}-\arccos x$.
 ```
 
 ### The engineering
@@ -338,21 +351,30 @@ asserting equality at a boundary point.
 
 ```{admonition} Worked example 4 — why total ≠ defined-everywhere (the §G collision)
 :class: note
-The natural square-root witness is $t=\exp(\tfrac12\log x)$, since $\exp(\tfrac12\log x)=\sqrt x$ for
-$x>0$. But at $x=0$, using Mathlib's junk value $\log 0 = 0$,
+**Setup.** The natural square-root witness is $t=\exp(\tfrac12\log x)$, since
+$\exp(\tfrac12\log x)=\sqrt x$ for $x>0$.
+
+**Collision.** But at $x=0$, using Mathlib's junk value $\log 0 = 0$,
+
 $$
 \exp\!\bigl(\tfrac12\cdot\log 0\bigr)=\exp\!\bigl(\tfrac12\cdot 0\bigr)=\exp(0)=1 \;\neq\; 0=\sqrt 0 .
 $$
+
 So **no single environment-independent term** can witness $\sqrt{\cdot}$ at the boundary — this is the
-paper's own §G caveat (line 342), now a concrete Lean fact. The fix is a **quantifier flip**: prove the
-*witness-family* statement
+paper's own §G caveat (line 342), now a concrete Lean fact.
+
+**Fix.** It is a **quantifier flip**: prove the *witness-family* statement
+
 $$
 \forall x\ge 0,\ \exists\,t:\mathsf{EMLTerm},\ \ t.\mathtt{eval?}\,(\lambda\_.\,x)=\mathrm{some}\,(\sqrt x),
 $$
+
 where $t$ may *depend on* $x$: at $x=0$ pick the constant-$0$ term `mkZero`; for $x>0$ pick
-$\exp(\tfrac12\log x)$. The same $\forall\exists$ pattern (in `GFullFix.lean`) seals all three §G points
-$\sqrt 0$, $\operatorname{arcosh}1$, $\mathrm{hypot}(0,0)$, and — as *Path C′* — widens the narrow trig
-witnesses to full domain by substituting a real-valued shift so the $\arg=\pi$ branch cut is never crossed.
+$\exp(\tfrac12\log x)$.
+
+**Reach.** The same $\forall\exists$ pattern (in `GFullFix.lean`) seals all three §G points $\sqrt 0$,
+$\operatorname{arcosh}1$, $\mathrm{hypot}(0,0)$, and — as *Path C′* — widens the narrow trig witnesses to
+full domain by substituting a real-valued shift so the $\arg=\pi$ branch cut is never crossed.
 ```
 
 **2. K-counts.** Each witness carries an `rfl`-checked node count $K$ — a machine-checked measure of
@@ -376,9 +398,9 @@ figures are *actual sizes* of mechanically uniform trees.
 Build reality: $36/36$ primitives sealed, $100$ public theorems, $8062$ `lake` jobs, sorry-free, no
 project-specific axioms.
 
-:::{admonition} Run it — the "hello world" of EML
+````{admonition} Run it — the "hello world" of EML
 :class: seealso
-Reproduce Worked Example 1 yourself. Open a Lean web editor and paste:
+Reproduce Worked Example 1 yourself — open a Lean web editor and paste:
 
 ```lean
 inductive EMLTerm | one | var (n : ℕ) | eml (a b : EMLTerm)
@@ -396,13 +418,14 @@ theorem e_witness : ∃ t : EMLTerm, ∀ env, EMLTerm.eval? env t = some (Real.e
   simp [EMLTerm.eval?, Real.log_one]
 ```
 
-No local setup needed: [`lean eval`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=lean%20eval)
-in the lab shows the course's *EML-in-miniature* expression evaluator with a one-click **Live Lean** link
-that opens the code in the web editor. Then explore the same trees in the browser with the live
-[**EML Tree Builder**](https://nasqret.github.io/eml-formalization/) — type a function, watch its
-fixed-shape subtree assemble — and read the public scoreboard `PaperClaims.lean` in the
-[EML repository](https://github.com/nasqret/eml-formalization).
-:::
+No local setup needed — each of these is one click:
+
+- [`lean eval`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=lean%20eval) — the course's *EML-in-miniature* expression evaluator in the lab.
+- [**EML Tree Builder**](https://nasqret.github.io/eml-formalization/) — type a function, watch its fixed-shape subtree assemble live in the browser.
+- [EML repository](https://github.com/nasqret/eml-formalization) — read the public scoreboard `PaperClaims.lean`.
+
+The `lean eval` view carries a one-click **Live Lean** link that opens the code above in the web editor.
+````
 
 ## Reading the fine print: what "sealed" guarantees
 
