@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lecture 4 — Introduction to Lean · VIASM 2026</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{ --violet:#a78bfa; --violet-2:#c4b5fd; --emerald:#34d399; --ink:#e8eaf6; }
+    .reveal{ font-family:'Inter',system-ui,sans-serif; font-size:30px; color:var(--ink); }
+    .reveal .slides{ text-align:left; }
+    .reveal h1,.reveal h2,.reveal h3{ font-family:'Inter',sans-serif; font-weight:800; letter-spacing:-.02em; text-transform:none; color:#fff; }
+    .reveal h1{ font-size:1.9em; } .reveal h2{ font-size:1.35em; color:var(--violet-2); } .reveal h3{ font-size:1.1em; color:var(--violet-2); }
+    .reveal .backgrounds{ background:
+        radial-gradient(1000px 600px at 80% -10%, #4c1d95 0%, transparent 55%),
+        linear-gradient(135deg,#1e1b4b 0%,#312e81 60%,#4c1d95 100%); }
+    .reveal section{ box-shadow:none; }
+    .reveal a{ color:var(--violet); }
+    .reveal strong{ color:var(--violet-2); }
+    .reveal em{ color:#fcd34d; font-style:normal; }
+    .reveal .eyebrow{ font-family:'JetBrains Mono',monospace; font-size:.5em; letter-spacing:.15em; text-transform:uppercase; color:var(--violet); }
+    .reveal pre{ box-shadow:0 8px 30px rgba(0,0,0,.4); width:100%; font-size:.62em; }
+    .reveal pre code{ border-radius:10px; padding:1em 1.2em; max-height:520px; }
+    .reveal code:not(pre code){ font-family:'JetBrains Mono',monospace; color:var(--violet-2); background:rgba(167,139,250,.12); border-radius:5px; padding:.05em .35em; font-size:.9em; }
+    .reveal .lab{ display:inline-block; font-family:'JetBrains Mono',monospace; font-size:.7em; color:#04231a; background:var(--emerald); border-radius:8px; padding:.35em .7em; margin:.2em 0; }
+    .reveal .muted{ color:#a5a9cf; font-size:.8em; }
+    .reveal ul,.reveal ol{ margin-left:1em; } .reveal li{ margin:.35em 0; }
+    .reveal .title-affil{ color:#a5a9cf; font-size:.6em; }
+    .reveal .box{ background:rgba(167,139,250,.1); border:1px solid rgba(167,139,250,.3); border-radius:12px; padding:.7em 1em; }
+    .reveal .cols{ display:flex; gap:1.2em; } .reveal .cols>div{ flex:1; }
+    .reveal .footer{ position:fixed; bottom:8px; left:16px; font-size:14px; color:#7c74a8; font-family:'JetBrains Mono',monospace; }
+  </style>
+  <script>
+    window.MathJax = { tex:{ inlineMath:[['\\(','\\)'],['$','$']], displayMath:[['$$','$$'],['\\[','\\]']],
+        macros:{ N:'\\mathbb{N}', Z:'\\mathbb{Z}', R:'\\mathbb{R}', C:'\\mathbb{C}', lam:'\\lambda', To:'\\Rightarrow', betared:'\\to_\\beta', reduces:'\\twoheadrightarrow_\\beta', proves:'\\vdash' } },
+      options:{ skipHtmlTags:['script','noscript','style','textarea','pre','code'] } };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <div class="footer">VIASM 2026 · Automatic Theorem Proving · Lecture 4</div>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ===== TITLE ===== -->
+      <section data-background-gradient="linear-gradient(135deg,#1e1b4b,#4c1d95)">
+        <p class="eyebrow">VIASM Mini-Course · Hanoi 2026 · Lecture 4</p>
+        <h1>Introduction to Lean</h1>
+        <p class="muted">From paper to kernel: three lectures of type theory, now made executable and machine-checked.</p>
+        <p class="title-affil">dr Bartosz Naskręcki · Adam Mickiewicz University in Poznań · CCAI, Warsaw Univ. of Technology</p>
+        <p class="lab">▷ live lab: /lab-lambda</p>
+      </section>
+
+      <!-- ===== MOTIVATION 1 ===== -->
+      <section>
+        <h2>Why this matters</h2>
+        <p>Lecture 1 gave us the judgment $\Gamma \vdash t : A$. Lecture 2 computed with pure $\lambda$-terms. Lecture 3 read the connectives as type formers.</p>
+        <p><strong>Lean 4 is that story made executable</strong> — a dependently-typed $\lambda$-calculus where:</p>
+        <ul>
+          <li>a <strong>proposition is a type</strong>, and</li>
+          <li>a <strong>proof is a term</strong> inhabiting it.</li>
+        </ul>
+        <p class="muted">Nothing new conceptually — but now a machine checks every step.</p>
+      </section>
+
+      <!-- ===== MOTIVATION 2: trust ===== -->
+      <section>
+        <h2>Why trust a machine?</h2>
+        <p>A deliberate architectural choice: <strong>only a small type-checking kernel must be correct.</strong></p>
+        <p>Whatever produced a proof, it is ultimately a term; the kernel verifies that term has the claimed type. Elaborator, tactics, pretty-printer — tens of thousands of lines — may all have bugs without endangering soundness.</p>
+        <div class="box">This is the <strong>de Bruijn criterion</strong>: "the computer says the proof is correct" means something precise.</div>
+      </section>
+
+      <!-- ===== MOTIVATION 3: Mathlib + roadmap ===== -->
+      <section>
+        <h2>The second reason: Mathlib</h2>
+        <p>One coherent library, on the order of <em>283,000</em> theorems and <em>135,000</em> definitions (2026).</p>
+        <p>Formalizing modern mathematics is feasible because you rarely start from nothing — you <strong>cite a lemma</strong>. Searching for the right name is itself a skill.</p>
+        <p class="muted">Today: two modes &amp; the kernel · Prop vs data · induction · rewriting · a first honest end-to-end proof · automation &amp; tooling.</p>
+      </section>
+
+      <!-- ===== CORE: two modes ===== -->
+      <section>
+        <h2>Two modes, one term</h2>
+        <p>Every proof is a term — you can write it two ways. <strong>Term mode</strong>: write the inhabitant directly. <strong>Tactic mode</strong>: a <code>by</code> block whose tactics <em>build</em> the term.</p>
+        <pre><code class="language-lean" data-trim data-noescape>theorem modus_ponens {P Q : Prop} : (P → Q) → P → Q :=
+  fun f p => f p                       -- term mode: modus ponens IS application
+
+theorem modus_ponens' {P Q : Prop} : (P → Q) → P → Q := by
+  intro f p
+  exact f p                           -- tactic mode: same kernel term</code></pre>
+        <p class="muted"><code>#print modus_ponens'</code> reveals <code>fun f p =&gt; f p</code>. They differ only in how much of the term <em>you</em> write.</p>
+      </section>
+
+      <!-- ===== CODE: and_comm both ways ===== -->
+      <section>
+        <h2>Symmetry of ∧, both ways</h2>
+        <p>Conjunction is a <strong>structure</strong> with two fields — a proof of $P \land Q$ is a pair, and swapping is trivial.</p>
+        <pre><code class="language-lean" data-trim data-noescape>-- term mode: destructure the pair, rebuild it swapped
+theorem and_comm_term {P Q : Prop} : P ∧ Q → Q ∧ P :=
+  fun ⟨hp, hq⟩ => ⟨hq, hp⟩
+
+-- tactic mode: the SAME term, built step by step
+theorem and_comm_tac {P Q : Prop} (h : P ∧ Q) : Q ∧ P := by
+  obtain ⟨hp, hq⟩ := h    -- split into hp : P, hq : Q
+  constructor             -- goal Q ∧ P → two goals: Q, then P
+  · exact hq
+  · exact hp</code></pre>
+      </section>
+
+      <!-- ===== CORE: Prop vs data + dictionary ===== -->
+      <section>
+        <h2>Propositions vs data</h2>
+        <p>A <code>P : Prop</code> is <strong>proof-irrelevant</strong>: any two proofs of <code>P</code> are equal. Data <code>n : Nat</code> is not — <code>2</code> and <code>3</code> differ. So you may not pattern-match a proof to extract data (<em>large elimination</em>).</p>
+        <p>The Curry–Howard dictionary as concrete datatypes:</p>
+        <ul>
+          <li>$P \Rightarrow Q$ — a function <code>P → Q</code></li>
+          <li>$P \land Q$ — a pair / structure <code>And P Q</code></li>
+          <li>$P \lor Q$ — a sum <code>Or P Q</code></li>
+          <li>$\exists x,\ p\,x$ — a <strong>dependent pair</strong> <code>Exists p</code></li>
+          <li>$\forall x,\ p\,x$ — a dependent function <code>(x : α) → p x</code></li>
+        </ul>
+      </section>
+
+      <!-- ===== CODE: existential is a pair ===== -->
+      <section>
+        <h2>An existential is a pair</h2>
+        <p>The punchline students remember: $\exists$ is not a mystical quantifier — its constructor is $\langle \text{witness},\ \text{proof} \rangle$.</p>
+        <pre><code class="language-lean" data-trim data-noescape>-- the proof IS the pair (witness 2, a proof that 2^2 = 4)
+theorem exists_sq_four : ∃ n : Nat, n ^ 2 = 4 := ⟨2, rfl⟩</code></pre>
+        <p><code>rfl</code> works because $2^2$ <em>computes</em> to $4$: both sides share a normal form, so they are <strong>definitionally equal</strong>. Likewise <code>2 ∣ n</code> is <em>by definition</em> <code>∃ c, n = 2 * c</code> — the same proposition.</p>
+      </section>
+
+      <!-- ===== CORE: Nat + induction ===== -->
+      <section>
+        <h2>The naturals and induction</h2>
+        <p><code>Nat</code> is an <strong>inductive type</strong> — Peano's axioms as constructors. Addition recurses on its <em>second</em> argument:</p>
+        <p>$$ m + 0 = m, \qquad m + (n+1) = (m + n) + 1. $$</p>
+        <p>This asymmetry is the surprise of the day: $m + 0 = m$ is a <strong>defining equation</strong> (holds by <code>rfl</code>), but $0 + n = n$ is <strong>not</strong> — the recursion never inspects a left zero, so it must be <em>proved by induction</em>.</p>
+      </section>
+
+      <!-- ===== CODE: add_comm by induction ===== -->
+      <section>
+        <h2>Commutativity, in four lines</h2>
+        <p>On a private copy of the naturals, rebuild it from the two defining equations (as in NNG4):</p>
+        <pre><code class="language-lean" data-trim data-noescape>theorem zero_add (n : N) : add .zero n = n := by
+  induction n with
+  | zero      => rfl
+  | succ k ih => rw [add_succ, ih]
+
+theorem add_comm (m n : N) : add m n = add n m := by
+  induction n with
+  | zero      => rw [add_zero, zero_add]
+  | succ k ih => rw [add_succ, succ_add, ih]</code></pre>
+        <p class="muted">The successor case <em>assumes</em> <code>ih : add m k = add k m</code> and rewrites the goal to a syntactic identity. Exactly NNG4's Addition World star.</p>
+      </section>
+
+      <!-- ===== CORE: rewriting ===== -->
+      <section>
+        <h2>Rewriting: rfl, rw, simp</h2>
+        <ul>
+          <li><strong><code>rfl</code></strong> — closes <code>a = a</code> when both sides are <em>definitionally</em> equal. Proves $m+0=m$ and $2^2=4$; <strong>not</strong> $0+n=n$.</li>
+          <li><strong><code>rw [h]</code></strong> — rewrites the goal <em>left-to-right</em> by <code>h</code>. Fails if the LHS is not present syntactically. Use <code>rw [← h]</code> for the reverse; chain <code>rw [h₁, h₂]</code>.</li>
+          <li><strong><code>simp</code></strong> — repeatedly rewrites with the whole <code>@[simp]</code> set until nothing applies. Powerful but opaque — prefer targeted <code>rw</code> for a known step.</li>
+        </ul>
+      </section>
+
+      <!-- ===== CODE: Gauss ===== -->
+      <section>
+        <h2>A first honest end-to-end proof</h2>
+        <p>Gauss's sum, kernel-checked: $$ 2\sum_{k=0}^{n} k = n(n+1). $$</p>
+        <pre><code class="language-lean" data-trim data-noescape>import Mathlib
+
+theorem gauss (n : Nat) :
+    2 * (∑ k ∈ Finset.range (n + 1), k) = n * (n + 1) := by
+  induction n with
+  | zero      => simp
+  | succ n ih => rw [Finset.sum_range_succ, Nat.mul_add, ih]; ring</code></pre>
+        <p class="muted">The step peels off the last summand, distributes, substitutes <code>ih</code>, and lets <code>ring</code> clear the polynomial dust — a complete <code>sorry</code>-free proof.</p>
+      </section>
+
+      <!-- ===== CODE: library-driven corollary ===== -->
+      <section>
+        <h2>…and cite the library</h2>
+        <p>The other mental model: <strong>the right move is usually to find the lemma.</strong> Euclid's theorem is already <code>Nat.exists_infinite_primes</code>.</p>
+        <pre><code class="language-lean" data-trim data-noescape>theorem prime_above (N : Nat) : ∃ p, N &lt; p ∧ p.Prime := by
+  obtain ⟨p, hN, hp⟩ := Nat.exists_infinite_primes (N + 1)  -- gives N+1 ≤ p
+  exact ⟨p, by omega, hp⟩                                    -- omega: N+1 ≤ p ⟹ N &lt; p</code></pre>
+        <p class="muted">Find the name, destructure its output, let <code>omega</code> finish. Searching (<code>exact?</code>, Loogle, LeanSearch) is a core skill, not cheating.</p>
+      </section>
+
+      <!-- ===== CORE: automation scope ===== -->
+      <section>
+        <h2>Automation: match the shape</h2>
+        <p>The cure for love/burn with automation is knowing each tactic's <strong>scope</strong>.</p>
+        <ul>
+          <li><code>decide</code> — a <strong>decidable</strong> prop, by evaluating its instance. Fails if undecidable or too large.</li>
+          <li><code>omega</code> — <strong>linear</strong> integer/nat arithmetic (Presburger). Will <em>not</em> touch any product of variables $x \cdot y$.</li>
+          <li><code>ring</code> — identities in a commutative (semi)ring. Not inequalities.</li>
+          <li><code>linarith</code> / <code>nlinarith</code> — inequalities from hypotheses; needs the right hints.</li>
+        </ul>
+        <p class="muted">"Just try <code>omega</code>" on a nonlinear goal is a real time sink.</p>
+      </section>
+
+      <!-- ===== RUN IT YOURSELF ===== -->
+      <section data-background-gradient="linear-gradient(135deg,#312e81,#4c1d95)">
+        <h2>Run it yourself</h2>
+        <p>Set up a real Lean 4 + Mathlib project — <code>elan</code> pins the compiler, <code>lake exe cache get</code> downloads prebuilt Mathlib (never skip it), and <code>#print axioms gauss</code> audits for a hidden <code>sorry</code>.</p>
+        <p>Open the Lambda Lab and walk the guided Gauss tutorial:</p>
+        <p class="lab">tutorial 1</p>
+        <p class="muted">Then <code>lean nng</code> for the offline Addition-World trace, and <code>kb topic mathlib</code> for the lemma-search cheatsheet. Every proof here is reproducible in the browser.</p>
+      </section>
+
+      <!-- ===== RECAP / REFERENCES ===== -->
+      <section>
+        <h2>Recap &amp; references</h2>
+        <ul>
+          <li><strong>Term = tactic:</strong> a <code>by</code> block builds a $\lambda$-term the kernel checks (de Bruijn criterion).</li>
+          <li><strong>Prop vs data:</strong> proof-irrelevance; $\exists$ is a pair.</li>
+          <li><strong>Induction &amp; rewriting:</strong> $m+0=m$ by <code>rfl</code>, $0+n=n$ by induction; <code>rfl</code>/<code>rw</code>/<code>simp</code>.</li>
+          <li><strong>Build one, cite the rest:</strong> Gauss by hand, Euclid from Mathlib; match automation to the goal.</li>
+        </ul>
+        <p class="muted">Theorem Proving in Lean 4 · Mathematics in Lean · Natural Number Game 4 · Macbeth, Mechanics of Proof · lean-lang.org/install</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash:true, slideNumber:'c/t', transition:'slide', width:1200, height:720,
+      margin:0.06, controlsTutorial:false,
+      plugins:[ RevealHighlight, RevealNotes ]
+    });
+  </script>
+</body>
+</html>

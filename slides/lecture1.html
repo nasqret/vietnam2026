@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lecture 1 — A general introduction to type theory · VIASM 2026</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{ --violet:#a78bfa; --violet-2:#c4b5fd; --emerald:#34d399; --ink:#e8eaf6; }
+    .reveal{ font-family:'Inter',system-ui,sans-serif; font-size:30px; color:var(--ink); }
+    .reveal .slides{ text-align:left; }
+    .reveal h1,.reveal h2,.reveal h3{ font-family:'Inter',sans-serif; font-weight:800; letter-spacing:-.02em; text-transform:none; color:#fff; }
+    .reveal h1{ font-size:1.9em; } .reveal h2{ font-size:1.35em; color:var(--violet-2); } .reveal h3{ font-size:1.1em; color:var(--violet-2); }
+    .reveal .backgrounds{ background:
+        radial-gradient(1000px 600px at 80% -10%, #4c1d95 0%, transparent 55%),
+        linear-gradient(135deg,#1e1b4b 0%,#312e81 60%,#4c1d95 100%); }
+    .reveal section{ box-shadow:none; }
+    .reveal a{ color:var(--violet); }
+    .reveal strong{ color:var(--violet-2); }
+    .reveal em{ color:#fcd34d; font-style:normal; }
+    .reveal .eyebrow{ font-family:'JetBrains Mono',monospace; font-size:.5em; letter-spacing:.15em; text-transform:uppercase; color:var(--violet); }
+    .reveal pre{ box-shadow:0 8px 30px rgba(0,0,0,.4); width:100%; font-size:.62em; }
+    .reveal pre code{ border-radius:10px; padding:1em 1.2em; max-height:520px; }
+    .reveal code:not(pre code){ font-family:'JetBrains Mono',monospace; color:var(--violet-2); background:rgba(167,139,250,.12); border-radius:5px; padding:.05em .35em; font-size:.9em; }
+    .reveal .lab{ display:inline-block; font-family:'JetBrains Mono',monospace; font-size:.7em; color:#04231a; background:var(--emerald); border-radius:8px; padding:.35em .7em; margin:.2em 0; }
+    .reveal .muted{ color:#a5a9cf; font-size:.8em; }
+    .reveal ul,.reveal ol{ margin-left:1em; } .reveal li{ margin:.35em 0; }
+    .reveal .title-affil{ color:#a5a9cf; font-size:.6em; }
+    .reveal .box{ background:rgba(167,139,250,.1); border:1px solid rgba(167,139,250,.3); border-radius:12px; padding:.7em 1em; }
+    .reveal .cols{ display:flex; gap:1.2em; } .reveal .cols>div{ flex:1; }
+    .reveal .footer{ position:fixed; bottom:8px; left:16px; font-size:14px; color:#7c74a8; font-family:'JetBrains Mono',monospace; }
+  </style>
+  <script>
+    window.MathJax = { tex:{ inlineMath:[['\\(','\\)'],['$','$']], displayMath:[['$$','$$'],['\\[','\\]']],
+        macros:{ N:'\\mathbb{N}', Z:'\\mathbb{Z}', R:'\\mathbb{R}', C:'\\mathbb{C}', lam:'\\lambda', To:'\\Rightarrow', betared:'\\to_\\beta', reduces:'\\twoheadrightarrow_\\beta', proves:'\\vdash' } },
+      options:{ skipHtmlTags:['script','noscript','style','textarea','pre','code'] } };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <div class="footer">VIASM 2026 · Automatic Theorem Proving · Lecture 1</div>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ===== TITLE ===== -->
+      <section data-background-gradient="linear-gradient(135deg,#1e1b4b,#4c1d95)">
+        <p class="eyebrow">VIASM Mini-Course · Hanoi 2026 · Lecture 1</p>
+        <h1>A general introduction to type theory</h1>
+        <p class="muted">A proof is a term, a theorem is its type, and checking the proof is type-checking the term.</p>
+        <p class="title-affil">dr Bartosz Naskręcki · Adam Mickiewicz University in Poznań · CCAI, Warsaw Univ. of Technology</p>
+        <p class="lab">▷ live lab: /lab-lambda</p>
+      </section>
+
+      <!-- ===== WHY THIS MATTERS ===== -->
+      <section>
+        <h2>Why this matters</h2>
+        <p>A proof assistant must answer one question mechanically: <em>is this a proof?</em> The trick that makes it <strong>decidable</strong> is startlingly economical.</p>
+        <div class="box">
+          <p>A <strong>proof</strong> is a term · a <strong>theorem</strong> is its type · <strong>checking</strong> the proof is type-checking the term.</p>
+        </div>
+        <p class="muted">Everything in this course — Lean, Rocq, Agda, and the contrast with Mizar — works out that one sentence, built up from the untyped $\lambda$-calculus.</p>
+      </section>
+
+      <!-- ===== ROADMAP ===== -->
+      <section>
+        <h2>Where we are going</h2>
+        <ul>
+          <li>Judgments $\Gamma \vdash t : A$ and the three <strong>STLC</strong> typing rules</li>
+          <li>Metatheory: <strong>subject reduction</strong> and <strong>strong normalization</strong></li>
+          <li><strong>Church</strong> vs <strong>Curry</strong> style; principal types</li>
+          <li>The <strong>Curry–Howard</strong> correspondence: proofs = programs</li>
+          <li>Why types are <em>almost</em> sets — and the three places it breaks</li>
+          <li><strong>Dependent types</strong>, Martin-Löf type theory, and the four provers</li>
+        </ul>
+      </section>
+
+      <!-- ===== JUDGMENTS & RULES ===== -->
+      <section>
+        <h2>Judgments, contexts, typing rules</h2>
+        <p>Type theory is a game of <strong>judgments</strong>. The central one:</p>
+        <p>$$ \Gamma \vdash t : A \qquad\text{“in context } \Gamma\text{, term } t \text{ has type } A\text{.”} $$</p>
+        <p>Types: $\;A, B ::= o \mid A \to B\;$ (arrow right-associative). Three rules generate every derivable judgment:</p>
+        <p>$$ \frac{(x:A)\in\Gamma}{\Gamma\vdash x:A}\,(\textsf{var}) \quad
+              \frac{\Gamma, x{:}A \vdash t:B}{\Gamma\vdash \lambda x{:}A.\,t : A\to B}\,(\textsf{abs}) \quad
+              \frac{\Gamma\vdash t:A\to B \quad \Gamma\vdash u:A}{\Gamma\vdash t\,u:B}\,(\textsf{app}) $$</p>
+        <p class="muted"><strong>abs</strong> <em>builds</em> a function type; <strong>app</strong> <em>eliminates</em> one. A derivation is a finite tree whose leaves are (var).</p>
+      </section>
+
+      <!-- ===== WORKED DERIVATION ===== -->
+      <section>
+        <h2>A derivation by hand</h2>
+        <p>Type “apply $f$ twice” — the Church numeral $\overline{2}$ — writing $\Gamma = f{:}o{\to}o,\ x{:}o$:</p>
+        <p>$$ \frac{
+              \dfrac{}{\Gamma\vdash f : o\to o}\,(\textsf{var})
+              \qquad
+              \dfrac{\dfrac{}{\Gamma\vdash f:o\to o}\ \dfrac{}{\Gamma\vdash x:o}}{\Gamma\vdash f\,x:o}\,(\textsf{app})
+            }{\Gamma\vdash f\,(f\,x):o}\,(\textsf{app}) $$</p>
+        <p>Discharge both assumptions with (abs), innermost first:</p>
+        <p>$$ \vdash\ \lambda f{:}o{\to}o.\,\lambda x{:}o.\,f\,(f\,x)\ :\ (o\to o)\to o\to o. $$</p>
+      </section>
+
+      <!-- ===== METATHEORY ===== -->
+      <section>
+        <h2>Metatheory: what typing buys you</h2>
+        <p>The rules are cheap; their consequences are the whole point.</p>
+        <ul>
+          <li><strong>Uniqueness (Church).</strong> If $\Gamma\vdash t:A$ and $\Gamma\vdash t:B$ then $A=B$ — checking is deterministic.</li>
+          <li><strong>Subject reduction.</strong> If $\Gamma\vdash t:A$ and $t\to_\beta t'$ then $\Gamma\vdash t':A$ — types survive computation. Engine: the <em>substitution lemma</em>.</li>
+          <li><strong>Strong normalization</strong> (Tait 1967). Every well-typed term halts — no infinite $\to_\beta$ sequence.</li>
+        </ul>
+        <p class="muted">Consequence: $\Omega=(\lambda x.\,x\,x)(\lambda x.\,x\,x)$ and the $Y$-combinator are <em>untypable</em>. STLC trades Turing-completeness for guaranteed termination — and type-checking is <strong>decidable</strong>.</p>
+      </section>
+
+      <!-- ===== CHURCH VS CURRY ===== -->
+      <section>
+        <h2>Church vs Curry: two readings, one system</h2>
+        <div class="cols">
+          <div class="box">
+            <h3>Church style</h3>
+            <p>Variables carry their type: $\lambda x{:}A.\,t$. Every term has <strong>at most one</strong> type. Typing is <em>checking</em>. — modern kernels.</p>
+          </div>
+          <div class="box">
+            <h3>Curry style</h3>
+            <p>Bare untyped terms; a type is <em>assigned</em> after the fact. A term may have <strong>many</strong> types. Typing is <em>inference</em>.</p>
+          </div>
+        </div>
+        <p>Related by <strong>type-erasure</strong> $|\cdot|$. Organizing fact: the <strong>principal type</strong>. The identity $\lambda x.\,x$ has infinitely many types, all instances of one most-general $\alpha \to \alpha$.</p>
+        <p class="muted">Principal-type theorem (Hindley 1969, Milner 1978): computable by <em>unification</em> — the heart of Hindley–Milner inference in ML, Haskell, Lean's elaborator.</p>
+      </section>
+
+      <!-- ===== CURRY-HOWARD DICTIONARY ===== -->
+      <section>
+        <h2>The Curry–Howard correspondence</h2>
+        <p>The conceptual centre: a dictionary between logic and computation.</p>
+        <div class="cols">
+          <div>
+            <ul class="muted">
+              <li>proposition $P$ &nbsp;$\leftrightarrow$&nbsp; type $P$</li>
+              <li>proof of $P$ &nbsp;$\leftrightarrow$&nbsp; term $t:P$</li>
+              <li>$P \to Q$ &nbsp;$\leftrightarrow$&nbsp; function $P\to Q$</li>
+              <li>$P \land Q$ &nbsp;$\leftrightarrow$&nbsp; product $P\times Q$</li>
+            </ul>
+          </div>
+          <div>
+            <ul class="muted">
+              <li>$P \lor Q$ &nbsp;$\leftrightarrow$&nbsp; sum $P + Q$</li>
+              <li>$\forall x{:}A.\,P$ &nbsp;$\leftrightarrow$&nbsp; $\textstyle\prod_{x:A} P$</li>
+              <li>$\exists x{:}A.\,P$ &nbsp;$\leftrightarrow$&nbsp; $\textstyle\sum_{x:A} P$</li>
+              <li>normalization &nbsp;$\leftrightarrow$&nbsp; $\beta$-reduction</li>
+            </ul>
+          </div>
+        </div>
+        <p><strong>Provability = inhabitation:</strong> $A$ is intuitionistically provable iff its type has a closed term. This is the engine of every prover in the course.</p>
+      </section>
+
+      <!-- ===== CODE: TRANSITIVITY = COMPOSITION ===== -->
+      <section>
+        <h2>Transitivity of implication <em>is</em> composition</h2>
+        <p>The tautology $(P\to Q)\to(Q\to R)\to P\to R$ is inhabited — its proof term is function composition (the $B$ combinator):</p>
+        <p>$$ \lambda f.\,\lambda g.\,\lambda p.\,g\,(f\,p). $$</p>
+        <pre><code class="language-lean" data-trim data-noescape>theorem trans_imp {P Q R : Prop} : (P → Q) → (Q → R) → P → R :=
+  fun f g p => g (f p)</code></pre>
+        <p class="muted">“Chaining implications” and “composing functions” are one operation. The proof <em>is</em> the program.</p>
+      </section>
+
+      <!-- ===== PEIRCE ===== -->
+      <section>
+        <h2>Peirce's law has no proof term</h2>
+        <p>$\,((P\to Q)\to P)\to P\,$ is a <em>classical</em> tautology, yet <strong>no closed STLC term inhabits it</strong>. Try to build one and you get stuck: with $P,Q$ atomic, no rule makes a $Q$.</p>
+        <pre><code class="language-lean" data-trim data-noescape>theorem peirce {P Q : Prop} : ((P → Q) → P) → P :=
+  Classical.byContradiction (fun h => h (fun hp => absurd hp h))</code></pre>
+        <p class="muted">Delete <code>Classical</code> and it fails to type-check. Curry–Howard yields <em>intuitionistic</em> proofs; excluded middle is an axiom you opt into, not a theorem.</p>
+      </section>
+
+      <!-- ===== TYPES ARE NOT SETS ===== -->
+      <section>
+        <h2>Types are not (quite) sets</h2>
+        <p>Read a type as the set of its closed normal terms: $[\![A\times B]\!]$ a product, $[\![A+B]\!]$ a disjoint union, $\bot=\varnothing$. For STLC this is <strong>honest</strong>. But it breaks three ways:</p>
+        <ul>
+          <li><strong>Proof relevance.</strong> Elements are proofs; $a\equiv b$ (computes to) $\ne$ $a=b$ (a theorem, an inhabitant of an identity type).</li>
+          <li><strong>No set of all sets.</strong> $\mathsf{Type}:\mathsf{Type}$ is inconsistent — <em>Girard's paradox</em> (Hurkens 1995). Fix: universe hierarchy $\mathsf{U}_0:\mathsf{U}_1:\cdots$.</li>
+          <li><strong>Constructive existence.</strong> An inhabitant of $\sum_{x:A}B(x)$ carries an actual <em>witness</em>.</li>
+        </ul>
+        <p class="muted">Install the caveat the same hour as the intuition — each break motivates something later.</p>
+      </section>
+
+      <!-- ===== DEPENDENT TYPES ===== -->
+      <section>
+        <h2>A first look at dependent types</h2>
+        <p>Let a type <strong>depend on a value</strong> — e.g. length-indexed vectors $\mathsf{Vec}\,A\,n$. Two constructors:</p>
+        <ul>
+          <li><strong>$\Pi$-type</strong> $\;\prod_{x:A}B(x)\;$ — result type varies with input; realizes $\forall x{:}A.\,B(x)$. Constant $B$ = ordinary $A\to B$.</li>
+          <li><strong>$\Sigma$-type</strong> $\;\sum_{x:A}B(x)\;$ — pair $\langle a,b\rangle$ with $b:B(a)$; realizes the witness-carrying $\exists x{:}A.\,B(x)$, with $\pi_1\langle a,b\rangle=a$.</li>
+        </ul>
+        <p class="muted">A theorem like $\mathsf{cons}: A\to\mathsf{Vec}\,A\,n\to\mathsf{Vec}\,A\,(n{+}1)$ becomes a <em>typing</em>. Barendregt's $\lambda$-cube organizes the design space; its apex $\lambda C$ (Calculus of Constructions) is the ancestor of Lean's and Rocq's CIC.</p>
+      </section>
+
+      <!-- ===== CODE: SIGMA WITNESS (Agda) ===== -->
+      <section>
+        <h2>$\exists$ as a $\Sigma$ with a real witness</h2>
+        <p>A constructive proof of “there is an $n$ with $n+n=4$” is a <strong>pair</strong>: the witness $2$, and evidence that $2+2=4$ — which is <code>refl</code>, since both sides compute to the same numeral.</p>
+        <pre><code class="language-agda" data-trim data-noescape>∃-even : Σ ℕ (λ n → n + n ≡ 4)
+∃-even = 2 , refl</code></pre>
+        <p class="muted">Its first projection returns $2$ — exactly what a classical non-emptiness proof cannot give you. In Martin-Löf type theory, $\mathbb{N}$-elimination <em>is</em> mathematical induction, now a primitive term former.</p>
+      </section>
+
+      <!-- ===== WHY TYPE THEORY NOT ZFC ===== -->
+      <section>
+        <h2>Why type theory underlies modern provers</h2>
+        <div class="cols">
+          <div>
+            <ul>
+              <li><strong>Small trusted kernel</strong> (de Bruijn criterion) — proofs sound even if tactics are buggy.</li>
+              <li><strong>Computation is native</strong> — $2+2$ and $4$ are the <em>same</em> type by conversion.</li>
+              <li><strong>Extraction</strong> — the proof <em>is</em> the algorithm.</li>
+              <li><strong>Theorems are types</strong> — you prove by inhabiting.</li>
+            </ul>
+          </div>
+          <div class="box muted">
+            <p><strong>Lean 4</strong> · CIC · classical (Mathlib)</p>
+            <p><strong>Rocq</strong> · CIC + SProp · constructive core</p>
+            <p><strong>Agda</strong> · predicative MLTT · constructive</p>
+            <p><strong>Mizar</strong> · Tarski–Grothendieck set theory · <em>no proof terms</em></p>
+          </div>
+        </div>
+        <p class="muted">Three type theories, one set theory — an engineering choice, not a coronation. Mizar verifies deep mathematics with no proof terms at all.</p>
+      </section>
+
+      <!-- ===== RUN IT YOURSELF ===== -->
+      <section data-background-gradient="linear-gradient(135deg,#312e81,#4c1d95)">
+        <h2>Run it yourself</h2>
+        <p>See the correspondence — don't take it on faith. In the Lambda Lab, type a proposition and get its proof term back:</p>
+        <p class="lab">ch type '(P -> Q) -> (Q -> R) -> P -> R'</p>
+        <p>returns $\lambda f\,g\,p.\,g\,(f\,p)$; while</p>
+        <p class="lab">ch type '((P -> Q) -> P) -> P'</p>
+        <p>reports Peirce's law <strong>uninhabited</strong>. Then check the emitted Lean with <code>ch verify</code>.</p>
+      </section>
+
+      <!-- ===== RECAP / REFERENCES ===== -->
+      <section>
+        <h2>Recap &amp; references</h2>
+        <ul>
+          <li>Judgment $\Gamma\vdash t:A$, three STLC rules; subject reduction + strong normalization.</li>
+          <li>Church vs Curry, principal types; <strong>Curry–Howard</strong>: provability = inhabitation.</li>
+          <li>Types $\approx$ sets, until proof-relevance, Girard's paradox, constructive $\exists$.</li>
+          <li>$\Pi/\Sigma$ dependent types, MLTT, and four provers on three type theories + one set theory.</li>
+        </ul>
+        <p class="muted">Pierce, <em>TAPL</em> · Sørensen–Urzyczyn, <em>Curry–Howard Isomorphism</em> · Girard–Lafont–Taylor, <em>Proofs and Types</em> · Wadler, <em>Propositions as Types</em> · Martin-Löf, <em>Intuitionistic Type Theory</em> · the four-prover artifacts at github.com/nasqret/vietnam2026</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash:true, slideNumber:'c/t', transition:'slide', width:1200, height:720,
+      margin:0.06, controlsTutorial:false,
+      plugins:[ RevealHighlight, RevealNotes ]
+    });
+  </script>
+</body>
+</html>

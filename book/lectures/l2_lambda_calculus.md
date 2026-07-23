@@ -6,82 +6,507 @@ The untyped $\lam$-calculus is a complete model of computation built from one bi
 reduction rule. We nail down **$\alpha$-equivalence**, **capture-avoiding substitution**, and
 **$\beta/\eta$-reduction**, state **Church–Rosser**, and then *compute*: Church **booleans**,
 **numerals**, arithmetic, the notorious **predecessor**, and the **$Y$-combinator**. Every calculation
-here is reproducible in the [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda).
+here is reproducible in the [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda), and the
+capstone statements are cross-checked in the four-prover
+[artifacts](https://github.com/nasqret/vietnam2026/tree/main/artifacts).
 ```
 
 ## Learning objectives
 
-- Reduce a $\lam$-term by hand in normal order and recognize a normal form.
-- Explain $\alpha$-equivalence and why substitution must avoid variable capture.
-- Encode `true`, `false`, `if`, numerals and `+`, `×` as pure $\lam$-terms.
-- Explain how the $Y$-combinator produces recursion from nothing.
+By the end of this lecture you can:
 
-## Syntax
+- read untyped $\lam$-terms fluently — apply the left-associativity/scope-extends-right conventions,
+  compute $\mathrm{FV}(t)$, and use $\alpha$-equivalence to rename bound variables;
+- perform **capture-avoiding substitution** by hand and explain, on the canonical example, why blind
+  textual replacement is wrong;
+- reduce a term in **normal order**, recognize a $\beta$-normal form, contrast $\beta$ with $\eta$, and
+  exhibit a term ($\Omega$) with *no* normal form;
+- state the **Church–Rosser** theorem, derive the uniqueness of normal forms, and say why normal-order
+  reduction is complete (Standardization);
+- build the Church encodings — `TRUE`/`FALSE`/`IF`, `AND`/`OR`/`NOT`, `PAIR`/`FST`/`SND`, the numerals,
+  and `SUCC`/`PLUS`/`MULT`/`POW` — and verify each in the Lab;
+- reconstruct **Kleene's predecessor** via the pair-shifting trick and derive `SUB`, `ISZERO`, `LEQ`,
+  `EQ`;
+- explain how the **$Y$-combinator** manufactures recursion without names, and state the meta-level
+  payoff: $\lam$-definable $=$ Turing-computable, and $\beta$-convertibility is **undecidable**.
 
-$$ t, u ::= x \mid \lam x.\,t \mid t\,u. $$
-Application binds tighter than abstraction and associates to the left: $f\,x\,y = (f\,x)\,y$, and
-$\lam x.\,x\,y = \lam x.\,(x\,y)$. A variable occurrence is **bound** if it lies under a $\lam$ that binds
-it, else **free**; $\mathrm{FV}(t)$ collects the free ones.
-
-## $\alpha$, substitution, $\beta$, $\eta$
-
-- **$\alpha$-equivalence** — bound names don't matter: $\lam x.\,x \equiv_\alpha \lam y.\,y$.
-- **Substitution** $t[x := u]$ replaces free $x$ by $u$, **renaming** bound variables when needed so no
-  free variable of $u$ is captured. (Getting this right is the whole subtlety; the Lab's engine does it
-  for you.)
-- **$\beta$-reduction** — the one computational step:
-  $$ (\lam x.\,t)\,u \betared t[x := u]. $$
-- **$\eta$** — extensionality: $\lam x.\,(t\,x) \to_\eta t$ when $x \notin \mathrm{FV}(t)$.
-
-A term with no $\beta$-redex is in **normal form**. **Normal-order** (leftmost-outermost) reduction
-finds a normal form if one exists.
-
-```{admonition} Church–Rosser (confluence)
-:class: important
-If $t \reduces u_1$ and $t \reduces u_2$, then there is a $v$ with $u_1 \reduces v$ and
-$u_2 \reduces v$. **Consequence:** normal forms are unique up to $\alpha$. "The answer" is
-well-defined, independent of the order you reduce in.
+```{note}
+This lecture formalizes Lecture 1's *Alligator Eggs* metaphor — hungry alligator $=$ abstraction, two
+families side by side $=$ application, egg $=$ variable — and it is the untyped substrate on top of which
+{doc}`Lecture 1 <l1_type_theory>` layers *types*. You only need comfort with functions as first-class
+objects and with reading inductive definitions.
 ```
 
-## Church booleans
+## Why this matters
 
-$$ \mathtt{true} = \lam t\,f.\,t, \qquad \mathtt{false} = \lam t\,f.\,f, \qquad
-   \mathtt{if} = \lam b\,t\,f.\,b\,t\,f. $$
-Then $\mathtt{and} = \lam p\,q.\,p\,q\,p$, $\mathtt{or} = \lam p\,q.\,p\,p\,q$,
-$\mathtt{not} = \lam p.\,p\,\mathtt{false}\,\mathtt{true}$.
+A proof assistant is, at bottom, a machine that **checks that a term has a type**. Before types (Lecture
+1) and before proofs-as-programs (Lecture 3), there is the raw computational engine: terms that *reduce*.
+The untyped $\lam$-calculus is that engine in its purest form — three grammar rules, one reduction rule,
+and yet a Turing-complete programming language in which numbers, booleans, data structures and recursion
+are *derived*, not assumed. Learning to compute here trains the exact instinct you need later: a
+computation is a chain of reductions, "the answer" is a normal form, and the reason a normal form is
+well-defined at all is a theorem (Church–Rosser). When Lean evaluates `#reduce` or accepts a proof by
+`rfl`, it is running a typed, terminating descendant of the machine we build today.
 
-## Church numerals
+## Syntax, binding, and $\alpha$-equivalence
 
-The numeral $\overline{n}$ is "apply $f$ to $x$, $n$ times":
-$$ \overline{n} = \lam f\,x.\,\underbrace{f\,(f\,(\cdots(f}_{n}\,x)\cdots)). $$
-$$ \mathtt{succ} = \lam n\,f\,x.\,f\,(n\,f\,x), \quad
-   \mathtt{plus} = \lam m\,n\,f\,x.\,m\,f\,(n\,f\,x), \quad
-   \mathtt{mult} = \lam m\,n\,f.\,m\,(n\,f). $$
-Exponentiation is the tiny miracle $\mathtt{pow} = \lam m\,n.\,n\,m$.
+The object language has exactly three term formers:
 
-The **predecessor** is famously awkward — Kleene's trick threads a pair "$(n, n{-}1)$" through:
-$$ \mathtt{pred} = \lam n\,f\,x.\,n\,(\lam g\,h.\,h\,(g\,f))\,(\lam u.\,x)\,(\lam u.\,u). $$
+$$ t, u ::= x \mid \lam x.\,t \mid t\,u. $$
 
-## Recursion from nothing: the $Y$-combinator
+Two reading conventions make terms compact. **Application** associates to the left, so
+$f\,x\,y = (f\,x)\,y$; **abstraction** extends its body as far right as possible, so
+$\lam x.\,x\,y = \lam x.\,(x\,y)$, *not* $(\lam x.\,x)\,y$. Misreading these silently changes the term —
+a leading cause of student errors.
 
-There are no named self-references in the pure calculus, yet
-$$ Y = \lam f.\,(\lam x.\,f\,(x\,x))\,(\lam x.\,f\,(x\,x)) $$
-satisfies $Y\,f \reduces f\,(Y\,f)$ — a fixed point of *any* $f$. That single line is enough to define
-factorial, and it is why the untyped calculus is Turing-complete (and why $\Omega = (\lam x.\,x\,x)(\lam
-x.\,x\,x)$ has **no** normal form).
+An occurrence of $x$ is **bound** if it lies under a $\lam x$ that binds it, and **free** otherwise. The
+free variables are defined by structural recursion:
+
+$$ \mathrm{FV}(x) = \{x\}, \qquad \mathrm{FV}(\lam x.\,t) = \mathrm{FV}(t)\setminus\{x\}, \qquad
+   \mathrm{FV}(t\,u) = \mathrm{FV}(t)\cup\mathrm{FV}(u). $$
+
+A term with $\mathrm{FV}(t) = \varnothing$ is **closed**, a.k.a. a **combinator**.
+
+Bound names carry no meaning: $\lam x.\,x$ and $\lam y.\,y$ are "the same function." We make this precise
+with **$\alpha$-equivalence** $\equiv_\alpha$, generated by the renaming rule
+$\lam x.\,t \equiv_\alpha \lam y.\,t[x:=y]$ whenever $y \notin \mathrm{FV}(t)$, closed under the term
+formers. One checks that $\equiv_\alpha$ is an *equivalence relation* and a *congruence* (compatible with
+abstraction and application); from now on **we compute on $\alpha$-equivalence classes**, and "$=$"
+between terms means "$\equiv_\alpha$" unless we are mid-reduction.
+
+```{admonition} Worked example 1 — free vs. bound
+:class: note
+In $\lam x.\,x\,(\lam y.\,y\,x)$ every occurrence is bound, so $\mathrm{FV} = \varnothing$. In
+$(\lam x.\,x\,z)\,(\lam y.\,y)$ the variable $z$ is free: $\mathrm{FV} = \{z\}$. In
+$\lam x.\,x\,(\lam x.\,x)$ the inner $\lam x$ **shadows** the outer one, and again $\mathrm{FV} =
+\varnothing$.
+```
 
 ```{admonition} Run it
 :class: seealso
-In the [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda):
-`reduce AND TRUE FALSE`, `nf PLUS 2 3`, `nf MULT 2 3`, `church SUCC`, and
-`reduce (\x. x x) (\y. y)`. Type `tour` for a 60-second guided version.
+[`lam \x y. x (y z)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=lam%20%5Cx%20y.%20x%20(y%20z)) prints the AST, the pretty form,
+and the free-variable set $\{z\}$.
 ```
+
+## Capture-avoiding substitution
+
+Everything downstream rests on **substitution** $t[x:=u]$ — "replace every free $x$ in $t$ by $u$" —
+done correctly. The naive structural clauses are right *except* under a binder:
+
+$$
+\begin{aligned}
+x[x:=u] &= u, & y[x:=u] &= y \ (y\neq x),\\
+(t_1\,t_2)[x:=u] &= (t_1[x:=u])\,(t_2[x:=u]),\\
+(\lam x.\,t)[x:=u] &= \lam x.\,t &&\text{(}x\text{ is re-bound: stop),}\\
+(\lam y.\,t)[x:=u] &= \lam y.\,(t[x:=u]) &&\text{if } y\neq x \text{ and } y\notin\mathrm{FV}(u),\\
+(\lam y.\,t)[x:=u] &= \lam y'.\,(t[y:=y'][x:=u]) &&\text{if } y\in\mathrm{FV}(u),\ y'\ \text{fresh.}
+\end{aligned}
+$$
+
+The last clause is the whole subtlety. If $y$ occurs free in $u$, substituting under $\lam y$ would
+**capture** that free $y$ — turning a free variable into a bound one and corrupting the meaning. We must
+first $\alpha$-rename the binder to a fresh $y'$.
+
+```{admonition} Worked example 2 — the capture trap
+:class: warning
+Compute $(\lam y.\,x)[x:=y]$. Naively one writes $\lam y.\,y$ — the identity. **Wrong.** The free $y$
+we are substituting in would be captured by the binder $\lam y$. Correct: rename the binder first,
+$\lam y.\,x \equiv_\alpha \lam y'.\,x$, then substitute to get $\lam y'.\,y$ — a *constant* function
+returning the (still free) $y$. Constant function, not identity: capture would have changed the answer.
+```
+
+Two facts let us mostly forget these gymnastics in practice.
+
+```{admonition} Substitution Lemma (Barendregt 2.1.16)
+:class: important
+If $x\neq y$ and $x\notin\mathrm{FV}(L)$, then
+$$ M[x:=N][y:=L] \;\equiv_\alpha\; M[y:=L]\bigl[x:=N[y:=L]\bigr]. $$
+```
+
+**Barendregt's Variable Convention.** When manipulating a finite set of terms we may always choose bound
+variables to be *distinct from all free variables in sight*. On such well-named representatives the naive
+substitution clause is already correct, and we never think about capture again — but the convention is a
+bookkeeping shortcut, not a licence to ignore the phenomenon.
+
+```{admonition} Run it
+:class: seealso
+[`reduce (\y. x)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20(%5Cy.%20x)) is already normal; the Lab's engine
+(`lc.py`, function `subst`) performs exactly the renaming of Worked example 2 whenever a capture would
+otherwise occur.
+```
+
+## $\beta$-reduction, $\eta$, and normal forms
+
+$\beta$-reduction is the **sole computation rule**. A **redex** is an application $(\lam x.\,t)\,u$, and
+
+$$ (\lam x.\,t)\,u \;\betared\; t[x:=u]. $$
+
+Write $\betared$ for contracting *one* redex anywhere inside a term (a congruence: you may reduce under
+applications and abstractions), $\reduces$ for its reflexive–transitive closure (many steps), and $=_\beta$
+for the symmetric–transitive closure (**$\beta$-convertibility**). A term with **no** redex is a
+**$\beta$-normal form**. A weaker milestone, **head normal form**, matters for lazy evaluation but we will
+not need it here.
+
+**$\eta$-reduction** expresses function *extensionality*:
+
+$$ \lam x.\,(t\,x) \;\to_\eta\; t \qquad (x\notin\mathrm{FV}(t)). $$
+
+Adding $\eta$ keeps the calculus confluent and identifies $\lam x.\,f\,x$ with $f$. Be warned: the Lab's
+engine implements **$\beta$ only**, so it will *not* collapse $\lam x.\,f\,x$ to $f$ — those are
+$\beta\eta$-equal but not $\beta$-equal.
+
+```{admonition} Worked example 3 — a full normal-order reduction
+:class: note
+Reduce $(\lam x.\,x\,x)\,(\lam y.\,y)$. Substitute the argument $I \equiv \lam y.\,y$ for $x$ in $x\,x$:
+$$ (\lam x.\,x\,x)\,(\lam y.\,y) \;\betared\; (\lam y.\,y)\,(\lam y.\,y) \;\betared\; \lam y.\,y. $$
+Two steps; the normal form is the identity $I$.
+```
+
+Not every term has a normal form. The paradigm of divergence is
+
+$$ \Omega = (\lam x.\,x\,x)\,(\lam x.\,x\,x), \qquad \Omega \;\betared\; \Omega, $$
+
+which reduces *to itself* in one step: an infinite loop that never reaches a normal form.
+
+**Strategy is not cosmetic.** With more than one redex, the choice of which to contract can decide
+*termination*.
+
+- **Normal order** = leftmost-outermost redex first (lazy; do not evaluate an argument until forced).
+- **Applicative order** = leftmost-innermost first (eager; evaluate arguments before calling).
+
+```{admonition} Worked example 4 — order decides termination
+:class: warning
+Consider $(\lam x.\,y)\,\Omega$. Under **normal order** we contract the outer redex immediately,
+discarding the unused argument: $(\lam x.\,y)\,\Omega \betared y$, done in one step. Under
+**applicative order** we insist on reducing $\Omega$ first — and loop forever. Same term, opposite fate.
+```
+
+This is exactly why the Lab uses normal order (it is the *complete* strategy — see below), and why an
+eager host language such as Python needs the $Z$-combinator variant instead of the plain $Y$.
+
+```{admonition} Run it
+:class: seealso
+[`reduce (\x. x x)(\y. y)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20(%5Cx.%20x%20x)(%5Cy.%20y)) traces Worked
+example 3, and [`reduce OMEGA`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20OMEGA) shows $\Omega$ regenerating itself
+(the engine gives up after a fixed step budget).
+```
+
+## Confluence and the Church–Rosser theorem
+
+Why is "*the* normal form" even well-defined, when we made arbitrary choices about which redex to
+contract? Because reduction is **confluent**.
+
+**Confluence (the Church–Rosser property).** A reduction relation is confluent when any two divergent
+reduction paths can be brought back together:
+
+```{admonition} Church–Rosser theorem (Church & Rosser, 1936)
+:class: important
+If $M \reduces P$ and $M \reduces Q$, then there exists $S$ with $P \reduces S$ and $Q \reduces S$.
+```
+
+Two corollaries pay the rent.
+
+- **Uniqueness of normal forms.** Every term has *at most one* $\beta$-normal form, up to $\alpha$. (If
+  $M$ reduced to two normal forms $P,Q$, confluence gives a common reduct $S$; but $P,Q$ have no redexes,
+  so $P \equiv_\alpha S \equiv_\alpha Q$.)
+- **Consistency / non-triviality of $=_\beta$.** Distinct normal forms are *not* convertible. In
+  particular $K = \lam x\,y.\,x$ and $I = \lam x.\,x$ are different normal forms, hence $K \neq_\beta I$:
+  the theory does not collapse.
+
+```{admonition} Standardization / Leftmost-reduction theorem (Curry & Feys, 1958)
+:class: important
+If $M$ has a normal form, then the **leftmost-outermost** (normal-order) reduction of $M$ reaches it.
+```
+
+So normal order is not merely one option: it is **complete**, which is precisely why the Lab needs only a
+single strategy.
+
+**Proof sketch of Church–Rosser.** The obvious "diamond" — one step from $M$ to each of $P,Q$ can be
+closed in one step — is *false* for $\betared$, because contracting a redex can duplicate another redex
+(the argument is copied to several occurrences of the bound variable). The standard repair (Tait and
+Martin-Löf) introduces **parallel reduction** $\Rightarrow$, which contracts a whole set of
+simultaneously-present redexes in one go. One proves that $\Rightarrow$ *does* satisfy the diamond
+property, and that $\reduces$ is exactly the reflexive–transitive closure of $\Rightarrow$; confluence of
+$\reduces$ follows by a routine tiling argument. (See Barendregt, or Selinger's notes, for the full
+development.) $\qquad\blacksquare$
+
+```{admonition} Confluence does not imply termination
+:class: warning
+These are *independent* properties. The untyped calculus is confluent yet **not** strongly normalizing:
+$\Omega$ diverges. Newman's Lemma (local confluence $+$ strong normalization $\Rightarrow$ confluence)
+does *not* apply here precisely because we lack termination — which is why the parallel-reduction proof
+is needed.
+```
+
+## Church booleans, conditionals, and pairs
+
+Now we compute. The guiding idea of a **Church encoding** is *data as its own eliminator*: a datum is the
+function that uses it. A boolean **is a chooser**:
+
+$$ \mathtt{true} = \lam t\,f.\,t, \qquad \mathtt{false} = \lam t\,f.\,f, \qquad
+   \mathtt{if} = \lam b\,t\,f.\,b\,t\,f. $$
+
+Then $\mathtt{if}\ \mathtt{true}\ a\ b \reduces a$ and $\mathtt{if}\ \mathtt{false}\ a\ b \reduces b$: the
+boolean selects a branch. The connectives fall out with a pleasant algebra,
+
+$$ \mathtt{and} = \lam p\,q.\,p\,q\,p, \qquad \mathtt{or} = \lam p\,q.\,p\,p\,q, \qquad
+   \mathtt{not} = \lam p.\,p\,\mathtt{false}\,\mathtt{true}. $$
+
+Read $\mathtt{and}$ operationally: *if $p$ then $q$ else $p$* — if $p$ is true the answer is $q$, else it
+is $p$ ($=\mathtt{false}$). Exactly the truth table.
+
+```{admonition} Worked example 5 — reducing AND TRUE FALSE
+:class: note
+$$
+\begin{aligned}
+\mathtt{and}\ \mathtt{true}\ \mathtt{false}
+&= (\lam p\,q.\,p\,q\,p)\ \mathtt{true}\ \mathtt{false}
+   \betared (\lam q.\,\mathtt{true}\,q\,\mathtt{true})\ \mathtt{false}\\
+&\betared \mathtt{true}\ \mathtt{false}\ \mathtt{true}
+   = (\lam t\,f.\,t)\ \mathtt{false}\ \mathtt{true}
+   \betared (\lam f.\,\mathtt{false})\ \mathtt{true}
+   \betared \mathtt{false}.
+\end{aligned}
+$$
+Four $\beta$-steps to the normal form $\mathtt{false} = \lam t\,f.\,f$. Correct.
+```
+
+**Pairs** reuse the same trick (and we will need them for the predecessor):
+
+$$ \mathtt{pair} = \lam a\,b.\,\lam f.\,f\,a\,b, \qquad \mathtt{fst} = \lam p.\,p\,\mathtt{true},
+   \qquad \mathtt{snd} = \lam p.\,p\,\mathtt{false}. $$
+
+A pair is "a thing waiting to be told which projection to apply," so
+$\mathtt{fst}\,(\mathtt{pair}\,a\,b) \reduces a$ and $\mathtt{snd}\,(\mathtt{pair}\,a\,b) \reduces b$.
+
+```{admonition} Run it
+:class: seealso
+[`reduce AND TRUE FALSE`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20AND%20TRUE%20FALSE) traces Worked example 5;
+[`nf FST (PAIR TRUE FALSE)`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20FST%20(PAIR%20TRUE%20FALSE)) returns `TRUE`. The same
+"proof term $=$ program" idea, promoted to *propositions*, is the S-combinator Rosetta stone proved in
+all four provers — see [`artifacts/`](https://github.com/nasqret/vietnam2026/tree/main/artifacts).
+```
+
+## Church numerals and arithmetic
+
+A natural number **is an iterator**: $\overline{n}$ applies $f$ to $x$ exactly $n$ times.
+
+$$ \overline{n} = \lam f\,x.\,\underbrace{f\,(f\,(\cdots(f}_{n}\,x)\cdots)),
+   \qquad \overline{0} = \lam f\,x.\,x, \quad \overline{1} = \lam f\,x.\,f\,x. $$
+
+The semantic heart is that $\overline{n}$ realizes the map $f \mapsto f^{n}$ (the $n$-fold composite), and
+composites satisfy $f^{m}\circ f^{n} = f^{m+n}$ and $(f^{n})^{m} = f^{nm}$. Everything below is that
+identity in disguise:
+
+$$ \mathtt{succ} = \lam n\,f\,x.\,f\,(n\,f\,x), \quad
+   \mathtt{plus} = \lam m\,n\,f\,x.\,m\,f\,(n\,f\,x), \quad
+   \mathtt{mult} = \lam m\,n\,f.\,m\,(n\,f), \quad
+   \mathtt{pow} = \lam m\,n.\,n\,m. $$
+
+```{admonition} Correctness of the arithmetic
+:class: important
+$\mathtt{succ}\ \overline{n} =_\beta \overline{n{+}1}$, and for all $m,n$
+$$ \mathtt{plus}\ \overline{m}\ \overline{n} =_\beta \overline{m{+}n}, \quad
+   \mathtt{mult}\ \overline{m}\ \overline{n} =_\beta \overline{m\cdot n}, \quad
+   \mathtt{pow}\ \overline{m}\ \overline{n} =_\beta \overline{m^{\,n}}. $$
+```
+
+*Why `plus` works.* Instantiate: $\mathtt{plus}\ \overline{m}\ \overline{n}\ f\ x \reduces
+\overline{m}\,f\,(\overline{n}\,f\,x) = f^{m}(f^{n}(x)) = f^{m+n}(x)$, so the result is
+$\lam f\,x.\,f^{m+n}x = \overline{m{+}n}$. The `succ`/`plus`/`mult` laws are then a one-line induction on
+$m$ (or $n$); `pow` uses $\overline{n}\,\overline{m} =_\beta \overline{m^{n}}$, i.e. "compose the operator
+$\overline m$ with itself $n$ times."
+
+```{admonition} Worked example 6 — PLUS 2 3 evaluates to 5
+:class: note
+With $\overline{2} = \lam f\,x.\,f(f\,x)$ and $\overline{3} = \lam f\,x.\,f(f(f\,x))$,
+$$ \mathtt{plus}\ \overline{2}\ \overline{3} \reduces \lam f\,x.\,\overline{2}\,f\,(\overline{3}\,f\,x)
+   = \lam f\,x.\,f\bigl(f(\,\underbrace{f(f(f\,x))}_{\overline{3}\,f\,x}\,)\bigr)
+   = \lam f\,x.\,f^{5}x = \overline{5}. $$
+```
+
+Note the *structural coincidence*: $\mathtt{false}$ and $\overline{0}$ are the **same** term
+$\lam x\,y.\,y$, and $\mathtt{true} = \mathtt{fst}$ as selectors. Decoding a normal form as "a boolean"
+versus "a numeral" is a *heuristic*, not intrinsic — the Lab even prints an ambiguity note.
+
+```{admonition} Run it
+:class: seealso
+[`nf PLUS 2 3`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20PLUS%202%203) $\to \overline5$;
+[`nf MULT 3 4`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20MULT%203%204) $\to \overline{12}$;
+[`nf POW 2 5`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20POW%202%205) $\to \overline{32}$;
+[`church SUCC`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=church%20SUCC) prints the encoding. In **Lean 4** the same encoding is a
+polymorphic type that *computes by `rfl`*:
+
+    def Church := (α : Type) → (α → α) → α → α
+    def czero : Church             := fun _ _ x => x
+    def csucc (n : Church) : Church := fun α f x => f (n α f x)
+    def cplus (m n : Church) : Church := fun α f x => m α f (n α f x)
+    def toNat (n : Church) : Nat   := n Nat (· + 1) 0
+    -- 2 + 3 = 5, checked by the kernel:
+    example : toNat (cplus (csucc (csucc czero))
+                           (csucc (csucc (csucc czero)))) = 5 := rfl
+```
+
+## The predecessor and subtraction — the hard case
+
+Historically this was the crux. Church believed the **predecessor** was undefinable — until his student
+Kleene found it (the "wisdom-teeth trick"). Addition and multiplication *build up* the iterator; the
+predecessor must *peel one off*, and a Church numeral offers no direct handle on "one fewer application."
+
+**Kleene's idea: carry a shifting pair.** Iterate the map $(a,b)\mapsto(b,\,b{+}1)$ starting from
+$(0,0)$. After $n$ iterations the pair is $(n{-}1,\,n)$; reading off the *first* component gives $n{-}1$,
+and for $n=0$ we never step, so we read $0$. In encoded form:
+
+$$ \mathtt{step} = \lam p.\,\mathtt{pair}\,(\mathtt{snd}\,p)\,(\mathtt{succ}\,(\mathtt{snd}\,p)),
+   \qquad \mathtt{pred} = \lam n.\,\mathtt{fst}\,(n\ \mathtt{step}\ (\mathtt{pair}\,\overline0\,\overline0)). $$
+
+The Lab stores an inlined, closed equivalent — this is the exact constant in `church.py`:
+
+$$ \mathtt{pred} = \lam n\,f\,x.\,n\,(\lam g\,h.\,h\,(g\,f))\,(\lam u.\,x)\,(\lam u.\,u), $$
+
+where $(\lam g\,h.\,h\,(g\,f))$ is the pair-shift written directly on Church-encoded pairs. Either form
+satisfies $\mathtt{pred}\ \overline0 =_\beta \overline0$ and $\mathtt{pred}\ \overline{n{+}1} =_\beta
+\overline n$. Subtraction is then repeated predecessor (truncated at zero — "monus"), and comparison
+follows:
+
+$$ \mathtt{sub} = \lam m\,n.\,n\ \mathtt{pred}\ m, \quad
+   \mathtt{iszero} = \lam n.\,n\,(\lam u.\,\mathtt{false})\,\mathtt{true}, \quad
+   \mathtt{leq} = \lam m\,n.\,\mathtt{iszero}\,(\mathtt{sub}\,m\,n), $$
+$$ \mathtt{eq} = \lam m\,n.\,\mathtt{and}\,(\mathtt{leq}\,m\,n)\,(\mathtt{leq}\,n\,m). $$
+
+Here $\mathtt{sub}\ \overline m\ \overline n =_\beta \overline{m\dot- n}$ (natural-number monus: $0$ when
+$n\ge m$). The definability of `pred` was the technical breakthrough behind the statement *all recursive
+functions are $\lam$-definable*.
+
+```{admonition} Run it
+:class: seealso
+[`nf PRED 3`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20PRED%203) $\to \overline2$;
+[`nf SUB 5 2`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20SUB%205%202) $\to \overline3$;
+[`nf ISZERO 0`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20ISZERO%200) $\to \mathtt{true}$;
+[`nf EQ 2 2`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20EQ%202%202) $\to \mathtt{true}$.
+```
+
+## Recursion via $Y$, and a taste of undecidability
+
+Names are absent from the pure calculus — there is no `def`, so a function cannot mention itself. Yet
+self-reference appears through a **fixed-point combinator**: any term $F$ such that $F\,g =_\beta g\,(F\,g)$
+for all $g$. Curry's *paradoxical combinator* is one:
+
+$$ Y = \lam f.\,(\lam x.\,f\,(x\,x))\,(\lam x.\,f\,(x\,x)). $$
+
+```{admonition} Fixed-Point Theorem
+:class: important
+For every term $F$ there is a term $X$ with $F\,X =_\beta X$. Indeed take $X = Y\,F$.
+```
+
+*Why.* Writing $W = (\lam x.\,F\,(x\,x))\,(\lam x.\,F\,(x\,x))$, we have
+$$ Y\,F \;\betared\; W \;\betared\; F\,W, \qquad\text{and}\qquad F\,(Y\,F)\;\betared\;F\,W, $$
+so $Y\,F$ and $F\,(Y\,F)$ share the common reduct $F\,W$, whence $Y\,F =_\beta F\,(Y\,F)$. (A pedantic but
+worthwhile point: for Curry's $Y$ this is $\beta$-*convertibility*, not a one-directional reduction — you
+cannot reach the literal term $F\,(Y\,F)$ from $Y\,F$ by reducing. Turing's combinator
+$\Theta = (\lam x\,y.\,y\,(x\,x\,y))\,(\lam x\,y.\,y\,(x\,x\,y))$ does give the stronger
+$\Theta\,F \reduces F\,(\Theta\,F)$ as an actual reduction.)
+
+To define factorial, feed $Y$ the "one-step" body
+$G = \lam r\,n.\ \mathtt{if}\,(\mathtt{iszero}\,n)\,\overline1\,(\mathtt{mult}\,n\,(r\,(\mathtt{pred}\,n)))$;
+then $\mathtt{fact} = Y\,G$ computes $n!$, the guard $\mathtt{iszero}$ eventually selecting the
+non-recursive branch. Under an **eager** strategy the plain $Y$ diverges (it evaluates the recursive call
+before the guard); the $\eta$-expanded $Z = \lam f.\,(\lam x.\,f\,(\lam v.\,x\,x\,v))\,(\lam x.\,f\,(\lam
+v.\,x\,x\,v))$ "delays" the call and is what an eager host needs.
+
+```{admonition} The meta-level payoff
+:class: important
+The class of $\lam$-**definable** functions on $\N$ equals the **general recursive** functions equals the
+**Turing-computable** functions (Church–Turing; Turing 1937). And $\beta$-convertibility is
+**undecidable** (Church 1936): no algorithm decides whether two terms are $=_\beta$, equivalently whether
+an arbitrary term has a normal form. More strongly, *every* non-trivial set of terms closed under $=_\beta$
+is undecidable — the $\lam$-calculus form of Rice's theorem (Scott).
+```
+
+Three grammar rules give a Turing-complete language. This same "compute by reducing" engine reappears in
+{doc}`Lecture 6 <l6_autoformalization>` as "prove by type-checking" — recursion, however, must there be
+*tamed*: an untyped $Y$ has no home in a total type theory, which is exactly why Lean rejects
+`def Y (f : α → α) : α := f (Y f)` (no termination proof) and offers `Nat.rec` instead.
+
+```{admonition} Run it
+:class: seealso
+[`reduce Y g`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20Y%20g) unfolds a couple of steps until the recursive occurrence
+`g (…)` appears; [`tour`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=tour) runs a 60-second guided version (identity, $\Omega$,
+booleans, numerals, $Y$).
+```
+
+## Common pitfalls
+
+- **Substitution is not blind text replacement.** $(\lam y.\,x)[x:=y]$ is $\lam y'.\,y$, *not*
+  $\lam y.\,y$ — the bound $y$ must be renamed first (Worked example 2).
+- **$\alpha$-equivalence $\neq$ $\beta$-equality.** $\lam x.\,x$ and $\lam y.\,y$ are $\alpha$-equal
+  (renaming); they are not "reduced" into one another. Renaming is bookkeeping, reduction is computation.
+- **Not every term terminates.** $\Omega$ has no normal form. The calculus is confluent but *not*
+  strongly normalizing.
+- **Evaluation order can matter.** Applicative order loops on $(\lam x.\,y)\,\Omega$ and breaks the plain
+  $Y$; normal order succeeds. This is why the Lab uses normal order.
+- **Bracketing.** $\lam x.\,M\,N$ parses as $\lam x.\,(M\,N)$, and $a\,b\,c$ as $(a\,b)\,c$. Wrong
+  bracketing silently changes the term.
+- **$\overline3$ is not "the number 3."** It is the iterator $f \mapsto f^{3}$; arithmetic here is
+  composition of iterations.
+- **The `false` $=$ `zero` coincidence.** Both are $\lam x\,y.\,y$. Decoding a normal form to "bool"
+  versus "numeral" is a heuristic.
+- **The Lab does $\beta$ only.** $\lam x.\,f\,x$ will *not* collapse to $f$ — they are $\beta\eta$-equal,
+  not $\beta$-equal.
+- **Confluence does not imply termination.** Church–Rosser gives *at most one* normal form; it says
+  nothing about whether reduction halts.
+
+## Exercises
+
+1. **(FV & $\alpha$.)** Compute $\mathrm{FV}(t)$ for $t = \lam x.\,y\,(\lam y.\,x\,y)\,z$, and give an
+   $\alpha$-equivalent term whose bound variables are all distinct from its free variables. Check with
+   [`lam`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=lam%20%5Cx.%20y%20(%5Cy.%20x%20y)%20z).
+
+2. **(Capture.)** Carefully compute $(\lam x.\,\lam y.\,x)[x := y]$ and $(\lam x.\,\lam y.\,x\,z)[z := y]$,
+   renaming where needed. Explain in one sentence which substitution required an $\alpha$-step and why.
+
+3. **(Reductions by hand.)** Reduce to normal form, showing every step: (a) $(\lam x\,y.\,x)\,a\,b$;
+   (b) $(\lam f.\,f\,(f\,a))\,(\lam x.\,x)$; (c) $\mathtt{not}\,(\mathtt{and}\,\mathtt{true}\,\mathtt{true})$.
+   Verify each in the Lab with [`reduce`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=reduce%20NOT%20(AND%20TRUE%20TRUE)).
+
+4. **(Order matters.)** Exhibit the two reduction sequences of $(\lam x.\,\overline0)\,\Omega$ under normal
+   and applicative order, and say which reaches a normal form. Relate your answer to the Standardization
+   theorem.
+
+5. **(Arithmetic laws.)** Prove $\mathtt{plus}\ \overline m\ \overline n =_\beta \overline{m+n}$ by
+   induction on $m$, using only the definitions of $\overline{\cdot}$, $\mathtt{succ}$ and $\mathtt{plus}$.
+   Then verify $\mathtt{pow}\ \overline2\ \overline4 =_\beta \overline{16}$ with
+   [`nf POW 2 4`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20POW%202%204).
+
+6. **(Predecessor. Hard.)** Using the pair-shift definition, compute $\mathtt{pred}\ \overline2$ by hand
+   as a sequence of pairs $(0,0)\to(0,1)\to(1,2)$, and read off the answer. Then confirm that the closed
+   form $\lam n\,f\,x.\,n\,(\lam g\,h.\,h\,(g\,f))\,(\lam u.\,x)\,(\lam u.\,u)$ agrees on
+   $\overline0,\overline1,\overline2$ using [`nf PRED 2`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda?cmd=nf%20PRED%202).
+
+7. **(Fixed points. Hard.)** Prove that $Y\,F =_\beta F\,(Y\,F)$ for every $F$ by exhibiting the common
+   reduct, exactly as in the Fixed-Point Theorem. Then explain, in two or three sentences, why an eager
+   evaluator diverges on $Y\,F$ but not on $Z\,F$.
+
+8. **(Lean bridge. Hard.)** In Lean 4, define `Church`, `czero`, `csucc`, `cplus`, `cmult` and `toNat` as
+   in the "Run it" box, and prove `toNat (cmult (csucc (csucc czero)) (csucc (csucc (csucc czero)))) = 6`
+   by `rfl`. Then attempt `def Y (f : α → α) : α := f (Y f)`, observe Lean's termination error, and write
+   one sentence connecting this to the fact that the untyped calculus is not strongly normalizing.
+   Compare with the four-prover
+   [artifacts](https://github.com/nasqret/vietnam2026/tree/main/artifacts).
 
 ## References
 
-Barendregt, *The Lambda Calculus* (Ch. 2–3, 6); Sørensen–Urzyczyn (Ch. 1); the course's own
-[falenty-2026 λ-calculus book](https://github.com/nasqret/falenty-2026/tree/main/book/en).
+- H. P. Barendregt & E. Barendsen, [*Introduction to Lambda Calculus*](https://www.cse.chalmers.se/research/group/logic/TypesSS05/Extra/geuvers.pdf) (revised 2000) — the best free, self-contained source at exactly this level.
+- P. Selinger, [*Lecture Notes on the Lambda Calculus*](https://arxiv.org/abs/0804.3434) (arXiv:0804.3434) — rigorous and free; source of the Kleene predecessor history.
+- E. Barendsen et al., [*The Lambda Calculus*](https://plato.stanford.edu/entries/lambda-calculus/), Stanford Encyclopedia of Philosophy — citable statements of Church–Rosser and its corollaries.
+- H. P. Barendregt, [*The Lambda Calculus: Its Syntax and Semantics*](https://philpapers.org/rec/BARTLC) (rev. ed., North-Holland 1984) — the definitive reference for the Substitution Lemma, the variable convention and confluence.
+- R. Rojas, [*A Tutorial Introduction to the Lambda Calculus*](https://arxiv.org/abs/1503.09060) (arXiv:1503.09060) — a short concrete walk-through of exactly these encodings.
+- A. Church, [*An Unsolvable Problem of Elementary Number Theory*](https://ics.uci.edu/~lopes/teaching/inf212W12/readings/church.pdf), Amer. J. Math. 58 (1936) — primary source for the undecidability finale.
+- B. C. Pierce, [*Types and Programming Languages*](https://www.cis.upenn.edu/~bcpierce/tapl/) (MIT Press 2002, ch. 5) — rigorous operational semantics and the on-ramp to the typed calculus of later lectures.
+- J.-Y. Girard, Y. Lafont, P. Taylor, [*Proofs and Types*](http://www.paultaylor.eu/stable/prot.pdf) (Cambridge 1989) — the proofs-as-programs foundation this lecture seeds and {doc}`Lecture 6 <l6_autoformalization>` cashes out.
+
 ```{note}
-Deeper worked reductions, the Kleene predecessor in slow motion, and $\eta$ vs $\beta$ examples land as
-the chapter grows.
+Every calculation above is reproducible offline in the [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda)
+(`reduce`, `nf`, `lam`, `church`, `tour`), and the capstone statements are kernel-checked in the
+[four-prover artifacts](https://github.com/nasqret/vietnam2026/tree/main/artifacts).
 ```

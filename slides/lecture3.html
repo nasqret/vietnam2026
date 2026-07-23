@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lecture 3 — Propositional logic proofs · VIASM 2026</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{ --violet:#a78bfa; --violet-2:#c4b5fd; --emerald:#34d399; --ink:#e8eaf6; }
+    .reveal{ font-family:'Inter',system-ui,sans-serif; font-size:30px; color:var(--ink); }
+    .reveal .slides{ text-align:left; }
+    .reveal h1,.reveal h2,.reveal h3{ font-family:'Inter',sans-serif; font-weight:800; letter-spacing:-.02em; text-transform:none; color:#fff; }
+    .reveal h1{ font-size:1.9em; } .reveal h2{ font-size:1.35em; color:var(--violet-2); } .reveal h3{ font-size:1.1em; color:var(--violet-2); }
+    .reveal .backgrounds{ background:
+        radial-gradient(1000px 600px at 80% -10%, #4c1d95 0%, transparent 55%),
+        linear-gradient(135deg,#1e1b4b 0%,#312e81 60%,#4c1d95 100%); }
+    .reveal section{ box-shadow:none; }
+    .reveal a{ color:var(--violet); }
+    .reveal strong{ color:var(--violet-2); }
+    .reveal em{ color:#fcd34d; font-style:normal; }
+    .reveal .eyebrow{ font-family:'JetBrains Mono',monospace; font-size:.5em; letter-spacing:.15em; text-transform:uppercase; color:var(--violet); }
+    .reveal pre{ box-shadow:0 8px 30px rgba(0,0,0,.4); width:100%; font-size:.62em; }
+    .reveal pre code{ border-radius:10px; padding:1em 1.2em; max-height:520px; }
+    .reveal code:not(pre code){ font-family:'JetBrains Mono',monospace; color:var(--violet-2); background:rgba(167,139,250,.12); border-radius:5px; padding:.05em .35em; font-size:.9em; }
+    .reveal .lab{ display:inline-block; font-family:'JetBrains Mono',monospace; font-size:.7em; color:#04231a; background:var(--emerald); border-radius:8px; padding:.35em .7em; margin:.2em 0; }
+    .reveal .muted{ color:#a5a9cf; font-size:.8em; }
+    .reveal ul,.reveal ol{ margin-left:1em; } .reveal li{ margin:.35em 0; }
+    .reveal .title-affil{ color:#a5a9cf; font-size:.6em; }
+    .reveal .box{ background:rgba(167,139,250,.1); border:1px solid rgba(167,139,250,.3); border-radius:12px; padding:.7em 1em; }
+    .reveal .cols{ display:flex; gap:1.2em; } .reveal .cols>div{ flex:1; }
+    .reveal .footer{ position:fixed; bottom:8px; left:16px; font-size:14px; color:#7c74a8; font-family:'JetBrains Mono',monospace; }
+  </style>
+  <script>
+    window.MathJax = { tex:{ inlineMath:[['\\(','\\)'],['$','$']], displayMath:[['$$','$$'],['\\[','\\]']],
+        macros:{ N:'\\mathbb{N}', Z:'\\mathbb{Z}', R:'\\mathbb{R}', C:'\\mathbb{C}', lam:'\\lambda', To:'\\Rightarrow', betared:'\\to_\\beta', reduces:'\\twoheadrightarrow_\\beta', proves:'\\vdash' } },
+      options:{ skipHtmlTags:['script','noscript','style','textarea','pre','code'] } };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <div class="footer">VIASM 2026 · Automatic Theorem Proving · Lecture 3</div>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ===== TITLE ===== -->
+      <section data-background-gradient="linear-gradient(135deg,#1e1b4b,#4c1d95)">
+        <p class="eyebrow">VIASM Mini-Course · Hanoi 2026 · Lecture 3</p>
+        <h1>Propositional logic proofs</h1>
+        <p class="muted">A proof is a program — natural deduction, BHK, and Curry–Howard, played hands-on in a Lean game.</p>
+        <p class="title-affil">dr Bartosz Naskręcki · Adam Mickiewicz University in Poznań · CCAI, Warsaw Univ. of Technology</p>
+        <p class="lab">▷ live lab: /lab-lambda</p>
+      </section>
+
+      <!-- ===== MOTIVATION 1 ===== -->
+      <section>
+        <h2>What, precisely, is a proof?</h2>
+        <p>A first logic course <strong>decides</strong> formulas with truth tables: a tautology is true under every valuation.</p>
+        <p>A proof assistant cannot work this way. Its kernel does not evaluate a table — it checks a <em>derivation</em>, a syntactic object built from a fixed stock of inference rules.</p>
+        <p class="muted">Before Lean can help us with real mathematics, we must answer the question that opens this lecture.</p>
+      </section>
+
+      <!-- ===== MOTIVATION 2 ===== -->
+      <section>
+        <h2>Proofs = programs</h2>
+        <p>The answer that makes machine-checked mathematics possible: a proof is a <strong>construction</strong>, and a construction is a <strong>typed program</strong>. This is the <em>Curry–Howard correspondence</em>.</p>
+        <ul>
+          <li>every connective becomes a <strong>type former</strong>,</li>
+          <li>every inference rule becomes a <strong>term former</strong>,</li>
+          <li>every Lean tactic becomes a recipe that <strong>fills a hole</strong> in a proof term.</li>
+        </ul>
+        <p class="muted">The same moves you learn here on toy propositions build the kernel-checked theorems of the Lecture 6 formalization.</p>
+      </section>
+
+      <!-- ===== OVERVIEW / ROADMAP ===== -->
+      <section>
+        <h2>Roadmap</h2>
+        <div class="cols">
+          <div>
+            <ul>
+              <li>Gentzen's <strong>natural deduction</strong> — intro / elim rules</li>
+              <li>The <strong>BHK</strong> meaning of each connective</li>
+              <li>The <strong>Curry–Howard</strong> dictionary</li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <li>Lean <strong>tactics</strong> as term construction</li>
+              <li>The <em>classical boundary</em>: $A\lor\neg A$, $\neg\neg A\to A$, Peirce</li>
+              <li>Play it live in Emily Riehl's Lean game</li>
+            </ul>
+          </div>
+        </div>
+        <p class="muted">We mark precisely where <em>intuitionistic</em> reasoning ends and <em>classical</em> logic begins.</p>
+      </section>
+
+      <!-- ===== ND: IMPLICATION ===== -->
+      <section>
+        <h2>Natural deduction — implication</h2>
+        <p>Each connective gets <strong>introduction</strong> rules (how to prove it) and <strong>elimination</strong> rules (how to use it). Implication is subtle: introduction <em>discharges</em> a hypothesis $[A]$.</p>
+        <p>$$ \frac{\begin{array}{c}[A]\\ \vdots\\ B\end{array}}{A\to B}\;{\to}I \qquad\qquad \frac{A\to B \qquad A}{B}\;{\to}E $$</p>
+        <p class="muted">${\to}E$ is <em>modus ponens</em>. A derivation is a finite tree; the formula at the root is the conclusion.</p>
+      </section>
+
+      <!-- ===== ND: CONJUNCTION / DISJUNCTION / FALSITY ===== -->
+      <section>
+        <h2>Conjunction, disjunction, falsity</h2>
+        <p>$$ \frac{A \quad B}{A\land B}\;{\land}I \qquad \frac{A\land B}{A}\;{\land}E_1 \qquad \frac{A\land B}{B}\;{\land}E_2 $$</p>
+        <p>$$ \frac{A}{A\lor B}\;{\lor}I_1 \qquad \frac{B}{A\lor B}\;{\lor}I_2 \qquad \frac{A\lor B \quad [A]\Rightarrow C \quad [B]\Rightarrow C}{C}\;{\lor}E $$</p>
+        <p>Falsity has an elimination but <strong>no introduction</strong> — that absence is the whole point:</p>
+        <p>$$ \frac{\bot}{C}\;{\bot}E \quad(\text{ex falso quodlibet}). $$</p>
+        <p class="muted">${\lor}E$ is <em>case analysis</em>. Negation is derived: $\neg A := A\to\bot$.</p>
+      </section>
+
+      <!-- ===== BHK ===== -->
+      <section>
+        <h2>BHK — what a proof <em>is</em></h2>
+        <p>Read each connective as a <strong>recipe for constructions</strong>, not as a truth value.</p>
+        <ul>
+          <li>a proof of $A\land B$ is a <strong>pair</strong> $\langle a,b\rangle$;</li>
+          <li>a proof of $A\lor B$ is a <strong>tagged</strong> proof $(i,p)$ — you must know <em>which side</em> holds;</li>
+          <li>a proof of $A\to B$ is a <strong>function</strong> turning proofs of $A$ into proofs of $B$;</li>
+          <li>there is <strong>no</strong> proof of $\bot$;</li>
+          <li>a proof of $\neg A = A\to\bot$ is a <strong>map</strong> you <em>apply</em>, never something you evaluate.</li>
+        </ul>
+        <p class="muted">The tag clause is why there is no construction witnessing $A\lor\neg A$ — you would have to decide $A$.</p>
+      </section>
+
+      <!-- ===== CURRY-HOWARD DICTIONARY ===== -->
+      <section>
+        <h2>Curry–Howard for the connectives</h2>
+        <table style="font-size:.72em">
+          <tr><th>Logic</th><th>Type</th><th>Introduce</th><th>Eliminate</th></tr>
+          <tr><td>$A \to B$</td><td>function $A\to B$</td><td>$\lambda$ <code>fun a =&gt; …</code></td><td>application $f\,a$</td></tr>
+          <tr><td>$A \land B$</td><td>product $A\times B$</td><td>$\langle a,b\rangle$</td><td>$\pi_1,\pi_2$</td></tr>
+          <tr><td>$A \lor B$</td><td>sum $A+B$</td><td>$\mathsf{inl},\mathsf{inr}$</td><td>case analysis</td></tr>
+          <tr><td>$\bot$</td><td>empty $\varnothing$</td><td>— (no intro)</td><td><code>False.elim</code></td></tr>
+          <tr><td>$\neg A$</td><td>$A\to\varnothing$</td><td>assume $A$, derive $\bot$</td><td>apply to a proof of $A$</td></tr>
+          <tr><td>$\top$</td><td>unit $\mathbf 1$</td><td><code>trivial</code></td><td>—</td></tr>
+        </table>
+        <p class="muted"><em>Provability becomes inhabitation</em>: $A$ is provable iff the type $A$ has a closed term.</p>
+      </section>
+
+      <!-- ===== CODE: CONJUNCTION COMMUTATIVE ===== -->
+      <section>
+        <h2>Worked example — $A\land B\to B\land A$</h2>
+        <p>The proof term is $\lambda h.\,\langle h.2,\,h.1\rangle$. Term mode and tactic mode build the <em>same</em> kernel object:</p>
+        <pre><code class="language-lean" data-trim data-noescape>-- term mode: the proof IS the program
+theorem and_comm' {P Q : Prop} : P ∧ Q → Q ∧ P :=
+  fun h => ⟨h.2, h.1⟩
+
+-- tactic mode: a recipe that fills the same hole
+theorem and_comm'' {P Q : Prop} : P ∧ Q → Q ∧ P := by
+  intro h            -- goal Q ∧ P, with h : P ∧ Q   (→I / λ)
+  obtain ⟨p, q⟩ := h  -- destructure the pair         (∧E)
+  exact ⟨q, p⟩        -- build the swapped pair        (∧I)</code></pre>
+      </section>
+
+      <!-- ===== CODE: NEGATION CONSTRUCTIVELY ===== -->
+      <section>
+        <h2>Negation, constructively</h2>
+        <p>Three theorems people wrongly assume need classical logic. All are pure constructions ($\neg\neg A = (A\to\bot)\to\bot$):</p>
+        <p>$$ A\to\neg\neg A,\qquad \neg(A\land\neg A),\qquad \neg\neg\neg A\to\neg A. $$</p>
+        <pre><code class="language-lean" data-trim data-noescape>theorem dni       {P : Prop} : P → ¬¬P        := fun p k => k p
+theorem noncontra {P : Prop} : ¬(P ∧ ¬P)      := fun h => h.2 h.1
+theorem tne       {P : Prop} : ¬¬¬P → ¬P      := fun h p => h (fun k => k p)</code></pre>
+        <p class="muted">The converse $\neg\neg A\to A$ is <em>not</em> available here — it is the classical boundary in disguise.</p>
+      </section>
+
+      <!-- ===== CODE: DE MORGAN ===== -->
+      <section>
+        <h2>De Morgan — and its classical cousin</h2>
+        <p>One equivalence is fully constructive; one implication is genuinely classical:</p>
+        <p>$$ \neg(A\lor B)\Leftrightarrow(\neg A\land\neg B)\ \text{(intuitionistic)},\qquad \neg(A\land B)\to(\neg A\lor\neg B)\ \text{(classical)}. $$</p>
+        <pre><code class="language-lean" data-trim data-noescape>theorem deMorgan_or {P Q : Prop} : ¬(P ∨ Q) ↔ (¬P ∧ ¬Q) :=
+  ⟨fun h => ⟨fun p => h (Or.inl p), fun q => h (Or.inr q)⟩,
+   fun ⟨np, nq⟩ h => h.elim np nq⟩</code></pre>
+        <p class="muted">The missing direction would force you to <em>pick a tag</em> — decide which conjunct fails. BHK forbids that.</p>
+      </section>
+
+      <!-- ===== TACTICS AS TERM CONSTRUCTION ===== -->
+      <section>
+        <h2>Tactics = proof-term construction</h2>
+        <table style="font-size:.68em">
+          <tr><th>Tactic</th><th>Rule</th><th>Term action</th></tr>
+          <tr><td><code>intro h</code></td><td>${\to}I$ (discharge)</td><td>$\lambda h.\,?$</td></tr>
+          <tr><td><code>exact e</code></td><td>close</td><td>plug in $e$</td></tr>
+          <tr><td><code>apply f</code></td><td>${\to}E$ backward</td><td>build $f\,?$</td></tr>
+          <tr><td><code>constructor</code> / <code>⟨a,b⟩</code></td><td>${\land}I$</td><td>pair</td></tr>
+          <tr><td><code>rcases</code> / <code>obtain</code></td><td>${\land}E,{\lor}E,{\bot}E$</td><td>project / match</td></tr>
+          <tr><td><code>left</code> / <code>right</code></td><td>${\lor}I_1$ / ${\lor}I_2$</td><td>$\mathsf{inl}$ / $\mathsf{inr}$</td></tr>
+          <tr><td><code>exfalso</code></td><td>${\bot}E$ (always valid)</td><td><code>False.elim ?</code></td></tr>
+          <tr><td><code>by_contra h</code></td><td><em>classical</em> ($\neg\neg$-elim)</td><td><code>byContradiction</code></td></tr>
+        </table>
+        <p class="muted"><strong>Only the last row</strong> leaves the intuitionistic fragment. Don't confuse <code>exfalso</code> with <code>by_contra</code>.</p>
+      </section>
+
+      <!-- ===== THE CLASSICAL BOUNDARY + PEIRCE ===== -->
+      <section>
+        <h2>The classical boundary</h2>
+        <p>Equivalent over intuitionistic logic — adding any one recovers full classical logic:</p>
+        <p>$$ A\lor\neg A,\qquad \neg\neg A\to A,\qquad ((A\to B)\to A)\to A. $$</p>
+        <pre><code class="language-lean" data-trim data-noescape>theorem peirce {P Q : Prop} : ((P → Q) → P) → P := by
+  intro h
+  by_contra hnp                     -- hnp : ¬P, goal : False
+  exact hnp (h (fun p => absurd p hnp))</code></pre>
+        <p class="muted">Every step but <code>by_contra</code> is constructive — the classical content is isolated in exactly one move. <em>Glivenko:</em> $\vdash_c A$ iff $\vdash_i \neg\neg A$.</p>
+      </section>
+
+      <!-- ===== RUN IT YOURSELF ===== -->
+      <section data-background-gradient="linear-gradient(135deg,#312e81,#4c1d95)">
+        <h2>Run it yourself</h2>
+        <p>Feel the "proof = program" identity: $\land$-elimination <em>is</em> projection. In the Lambda Lab, type:</p>
+        <p class="lab">reduce FST (PAIR a b)</p>
+        <p class="muted">It computes to <code>a</code>; likewise <code>reduce SND (PAIR a b)</code> gives <code>b</code>. Then clear the constructive core of Riehl's <strong>A Reintroduction to Proofs</strong> — TypeWorld → Function/Implication → Conjunction/Disjunction → Empty/Negation — <em>without touching</em> ClassicalWorld.</p>
+      </section>
+
+      <!-- ===== RECAP / REFERENCES ===== -->
+      <section>
+        <h2>Recap &amp; references</h2>
+        <ul>
+          <li>A proof is a <strong>construction</strong>; Curry–Howard makes it a typed term, and detour removal <em>is</em> $\beta$-reduction.</li>
+          <li>$\to$ a function, $\land$ a product, $\lor$ a sum, $\bot$ the empty type, $\neg A = A\to\bot$.</li>
+          <li>Every tactic builds a piece of the term; only <code>by_contra</code> crosses into classical logic.</li>
+        </ul>
+        <p class="muted">Wadler, <em>Propositions as Types</em> (2015) · Sørensen–Urzyczyn, <em>Lectures on the Curry–Howard Isomorphism</em> · Howard (1969/80) · Riehl, <em>A Reintroduction to Proofs</em> · <em>Theorem Proving in Lean 4</em></p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash:true, slideNumber:'c/t', transition:'slide', width:1200, height:720,
+      margin:0.06, controlsTutorial:false,
+      plugins:[ RevealHighlight, RevealNotes ]
+    });
+  </script>
+</body>
+</html>

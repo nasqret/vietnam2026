@@ -42,6 +42,42 @@ NL = "\r\n"
 MAX_NUMERAL = 24
 MAX_TRACE = 60
 
+# A few of the course's REAL Lean snippets, shown read-only in the browser
+# (the Lean kernel itself can't run in Pyodide). Mirrors artifacts/lean/.
+LEAN_SNIPPETS = {
+    "s_comb": ("the S combinator (Curry–Howard)",
+               "theorem s_combinator {p q r : Prop}\n"
+               "    (f : p → q → r) (g : p → q) (x : p) : r :=\n  f x (g x)"),
+    "modus_ponens": ("modus ponens is function application",
+                     "theorem modus_ponens {P Q : Prop} : (P → Q) → P → Q :=\n  fun f p => f p"),
+    "and_comm": ("conjunction is a swappable pair",
+                 "theorem and_comm {P Q : Prop} : P ∧ Q → Q ∧ P :=\n  fun ⟨hp, hq⟩ => ⟨hq, hp⟩"),
+    "imp_comp": ("implication composes",
+                 "theorem imp_comp {P Q R : Prop} (f : P → Q) (g : Q → R) : P → R :=\n  fun p => g (f p)"),
+    "add_comm": ("commutativity of + by induction",
+                 "theorem add_comm' (n m : Nat) : n + m = m + n := by\n"
+                 "  induction m with\n"
+                 "  | zero      => rw [Nat.add_zero, Nat.zero_add]\n"
+                 "  | succ m ih => rw [Nat.add_succ, Nat.succ_add, ih]"),
+    "zero_add": ("0 + n = n needs induction (n + 0 = n is rfl)",
+                 "theorem zero_add' : ∀ n : Nat, 0 + n = n\n"
+                 "  | 0     => rfl\n"
+                 "  | n + 1 => congrArg (· + 1) (zero_add' n)"),
+    "eval": ("a tiny expression evaluator (EML in miniature)",
+             "inductive Tm | lit : Nat → Tm | add : Tm → Tm → Tm\n\n"
+             "def eval : Tm → Nat\n  | .lit n   => n\n  | .add a b => eval a + eval b\n\n"
+             "example : eval (.add (.lit 1) (.lit 1)) = 2 := rfl"),
+    "term_proofs": ("term mode vs tactic mode — the SAME term",
+                    "theorem tm {P Q : Prop} : (P → Q) → P → Q := fun f p => f p\n"
+                    "theorem tc {P Q : Prop} : (P → Q) → P → Q := by\n  intro f p; exact f p"),
+}
+LEAN_SNIPPETS["s_combinator"] = LEAN_SNIPPETS["s_comb"]
+
+# Commands that exist in the full desktop lab (nasqret/falenty-2026) but are not
+# part of this static browser build (they need data files / a Lean process / network).
+DESKTOP_ONLY = {"ch", "kb", "tutorial", "quiz", "games", "eml", "prove",
+                "aristotle", "ag", "acorn", "lang"}
+
 
 def _lines(*rows: str) -> str:
     return NL.join(rows)
@@ -100,6 +136,8 @@ class LabSession:
         try:
             handler = getattr(self, f"cmd_{cmd}", None)
             if handler is None:
+                if cmd in DESKTOP_ONLY:
+                    return self._desktop_only(cmd)
                 # bare term? try to reduce it.
                 if any(ch in line for ch in "λ\\.()") or line.isidentifier():
                     return self.cmd_reduce(line)
@@ -125,8 +163,10 @@ class LabSession:
             f"  {green('expand')} {dim('<term>')}    expand named constants to raw λ-terms",
             f"  {green('church')} {dim('<NAME|n>')}  show a Church constant or numeral",
             f"  {green('numeral')} {dim('<n>')}      the Church numeral n = λf x. fⁿ x",
+            f"  {green('peano')} {dim('<n>')}        Peano SUCC/ZERO ↔ Church numeral",
             f"  {green('decode')} {dim('<term>')}    normalize and read off a number / boolean",
             f"  {green('alpha')} {dim('<t> = <t>')}  are two terms the same function? (α-equivalence)",
+            f"  {green('lean')} {dim('[name]')}      show a course Lean snippet, read-only",
             f"  {green('constants')}         list every named constant",
             f"  {green('tour')}              a 60-second guided tour",
             f"  {green('about')}             what this is",
@@ -282,6 +322,56 @@ class LabSession:
         )
 
     cmd_eq = cmd_alpha
+
+    def cmd_lean(self, arg: str) -> str:
+        name = arg.strip().lower().replace("-", "_")
+        if name in LEAN_SNIPPETS:
+            title, code = LEAN_SNIPPETS[name]
+            rows = [bold(magenta("Lean 4")) + dim("  · " + title)]
+            for ln in code.strip("\n").splitlines():
+                rows.append("  " + cyan(ln))
+            rows.append(dim("  (the browser can't run the Lean kernel — this is the real source; "
+                            "build it with ") + bold("lake build") + dim(" in artifacts/lean)"))
+            return _lines(*rows)
+        rows = [bold(magenta("Lean 4")) + dim("  · the course's verified snippets")]
+        if name:
+            rows.append(red(f"no baked snippet named {name!r}. ") + dim("Available:"))
+        else:
+            rows.append(dim("Available snippets — try ") + yellow("lean s_comb") + dim(", ") + yellow("lean add_comm") + dim(":"))
+        rows.append("  " + "  ".join(green(k) for k in sorted(LEAN_SNIPPETS)))
+        rows.append(dim("  Full artifact (Lean/Agda/Rocq/Mizar): ") + blue("github.com/nasqret/vietnam2026/tree/main/artifacts"))
+        rows.append(dim("  Run Lean live in a browser editor: ") + blue("live.lean-lang.org"))
+        return _lines(*rows)
+
+    def cmd_peano(self, arg: str) -> str:
+        a = arg.strip()
+        if not a.lstrip("-").isdigit():
+            return yellow("Usage: ") + "peano <n>   e.g.  peano 3   (Peano SUCC/ZERO ↔ Church numeral)"
+        n = int(a)
+        if n < 0 or n > MAX_NUMERAL:
+            return red(f"Use 0..{MAX_NUMERAL}.")
+        peano_expr = "ZERO" if n == 0 else ("SUCC (" * n) + "ZERO" + (")" * n)
+        t = church.church(n)
+        return _lines(
+            bold(f"Peano ↔ Church for {n}"),
+            "  Peano:  " + yellow(peano_expr),
+            "  Church: " + cyan(lc.pretty(t)),
+            dim("  SUCC = λn f x. f (n f x)   ·   ZERO = λf x. x"),
+        )
+
+    def _desktop_only(self, cmd: str) -> str:
+        hint = {
+            "ch": " — Curry-style type inference; see Lecture 1 for the theory.",
+            "kb": " — the knowledge base; browse the book at /vietnam2026/book instead.",
+            "tutorial": " — guided tutorials; try the book chapters.",
+            "quiz": " — quizzes; ", "games": " — proof games; ",
+            "eml": " — the EML explorer; see nasqret.github.io/eml-formalization.",
+            "aristotle": " — the Aristotle AI prover; needs a network model.",
+        }.get(cmd, ".")
+        return _lines(
+            yellow(f"'{cmd}'") + dim(" lives in the full desktop Lambda Lab ") + blue("(github.com/nasqret/falenty-2026)") + dim(hint),
+            dim("This in-browser lab covers: ") + green("reduce nf church numeral peano lam expand decode alpha lean tour") + dim(". Type ") + bold("help") + dim("."),
+        )
 
     def cmd_tour(self, arg: str) -> str:
         demos = [

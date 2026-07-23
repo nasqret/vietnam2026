@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lecture 2 — Simple calculations with the Church λ-calculus · VIASM 2026</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{ --violet:#a78bfa; --violet-2:#c4b5fd; --emerald:#34d399; --ink:#e8eaf6; }
+    .reveal{ font-family:'Inter',system-ui,sans-serif; font-size:30px; color:var(--ink); }
+    .reveal .slides{ text-align:left; }
+    .reveal h1,.reveal h2,.reveal h3{ font-family:'Inter',sans-serif; font-weight:800; letter-spacing:-.02em; text-transform:none; color:#fff; }
+    .reveal h1{ font-size:1.9em; } .reveal h2{ font-size:1.35em; color:var(--violet-2); } .reveal h3{ font-size:1.1em; color:var(--violet-2); }
+    .reveal .backgrounds{ background:
+        radial-gradient(1000px 600px at 80% -10%, #4c1d95 0%, transparent 55%),
+        linear-gradient(135deg,#1e1b4b 0%,#312e81 60%,#4c1d95 100%); }
+    .reveal section{ box-shadow:none; }
+    .reveal a{ color:var(--violet); }
+    .reveal strong{ color:var(--violet-2); }
+    .reveal em{ color:#fcd34d; font-style:normal; }
+    .reveal .eyebrow{ font-family:'JetBrains Mono',monospace; font-size:.5em; letter-spacing:.15em; text-transform:uppercase; color:var(--violet); }
+    .reveal pre{ box-shadow:0 8px 30px rgba(0,0,0,.4); width:100%; font-size:.62em; }
+    .reveal pre code{ border-radius:10px; padding:1em 1.2em; max-height:520px; }
+    .reveal code:not(pre code){ font-family:'JetBrains Mono',monospace; color:var(--violet-2); background:rgba(167,139,250,.12); border-radius:5px; padding:.05em .35em; font-size:.9em; }
+    .reveal .lab{ display:inline-block; font-family:'JetBrains Mono',monospace; font-size:.7em; color:#04231a; background:var(--emerald); border-radius:8px; padding:.35em .7em; margin:.2em 0; }
+    .reveal .muted{ color:#a5a9cf; font-size:.8em; }
+    .reveal ul,.reveal ol{ margin-left:1em; } .reveal li{ margin:.35em 0; }
+    .reveal .title-affil{ color:#a5a9cf; font-size:.6em; }
+    .reveal .box{ background:rgba(167,139,250,.1); border:1px solid rgba(167,139,250,.3); border-radius:12px; padding:.7em 1em; }
+    .reveal .cols{ display:flex; gap:1.2em; } .reveal .cols>div{ flex:1; }
+    .reveal .footer{ position:fixed; bottom:8px; left:16px; font-size:14px; color:#7c74a8; font-family:'JetBrains Mono',monospace; }
+  </style>
+  <script>
+    window.MathJax = { tex:{ inlineMath:[['\\(','\\)'],['$','$']], displayMath:[['$$','$$'],['\\[','\\]']],
+        macros:{ N:'\\mathbb{N}', Z:'\\mathbb{Z}', R:'\\mathbb{R}', C:'\\mathbb{C}', lam:'\\lambda', To:'\\Rightarrow', betared:'\\to_\\beta', reduces:'\\twoheadrightarrow_\\beta', proves:'\\vdash' } },
+      options:{ skipHtmlTags:['script','noscript','style','textarea','pre','code'] } };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <div class="footer">VIASM 2026 · Automatic Theorem Proving · Lecture 2</div>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ===== TITLE ===== -->
+      <section data-background-gradient="linear-gradient(135deg,#1e1b4b,#4c1d95)">
+        <p class="eyebrow">VIASM Mini-Course · Hanoi 2026 · Lecture 2</p>
+        <h1>Simple calculations with the Church $\lambda$-calculus</h1>
+        <p class="muted">Three grammar rules, one reduction rule — and a Turing-complete language in which numbers, booleans and recursion are <em>derived</em>, not assumed.</p>
+        <p class="title-affil">dr Bartosz Naskręcki · Adam Mickiewicz University in Poznań · CCAI, Warsaw Univ. of Technology</p>
+        <p class="lab">▷ live lab: /lab-lambda</p>
+      </section>
+
+      <!-- ===== WHY THIS MATTERS ===== -->
+      <section>
+        <h2>Why this matters</h2>
+        <p>A proof assistant is, at bottom, a machine that <strong>checks that a term has a type</strong>. Before types and before proofs-as-programs there is the raw <em>computational engine</em>: terms that reduce.</p>
+        <ul>
+          <li>a computation is a <strong>chain of reductions</strong>;</li>
+          <li>"the answer" is a <strong>normal form</strong>;</li>
+          <li>that the answer is well-defined at all is a <em>theorem</em> (Church–Rosser).</li>
+        </ul>
+        <p class="muted">When Lean evaluates <code>#reduce</code> or accepts a proof by <code>rfl</code>, it runs a typed, terminating descendant of the machine we build today.</p>
+      </section>
+
+      <!-- ===== ROADMAP / OBJECTIVES ===== -->
+      <section>
+        <h2>Where we are going</h2>
+        <div class="cols">
+          <div>
+            <h3>Foundations</h3>
+            <ul>
+              <li>syntax, binding, $\alpha$-equivalence</li>
+              <li>capture-avoiding substitution</li>
+              <li>$\beta$ / $\eta$ and normal forms</li>
+              <li>Church–Rosser confluence</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Computing</h3>
+            <ul>
+              <li>booleans, conditionals, pairs</li>
+              <li>numerals and arithmetic</li>
+              <li>the notorious predecessor</li>
+              <li>the $Y$-combinator &amp; undecidability</li>
+            </ul>
+          </div>
+        </div>
+        <p class="muted">Every calculation is reproducible in the Lambda Lab; the capstones are cross-checked in four provers.</p>
+      </section>
+
+      <!-- ===== SYNTAX & ALPHA ===== -->
+      <section>
+        <h2>Syntax, binding, $\alpha$-equivalence</h2>
+        <p>Exactly three term formers:</p>
+        <p>$$ t, u ::= x \mid \lambda x.\,t \mid t\,u. $$</p>
+        <ul>
+          <li><strong>Application</strong> associates left: $f\,x\,y = (f\,x)\,y$.</li>
+          <li><strong>Abstraction</strong> extends right: $\lambda x.\,x\,y = \lambda x.\,(x\,y)$.</li>
+          <li>$\mathrm{FV}(\lambda x.\,t) = \mathrm{FV}(t)\setminus\{x\}$; a closed term is a <em>combinator</em>.</li>
+        </ul>
+        <p>Bound names carry no meaning: $\lambda x.\,x \equiv_\alpha \lambda y.\,y$. From now on we compute on $\alpha$-equivalence classes.</p>
+        <p class="muted">Misreading the conventions silently changes the term — a leading cause of student errors.</p>
+      </section>
+
+      <!-- ===== SUBSTITUTION / CAPTURE ===== -->
+      <section>
+        <h2>Capture-avoiding substitution</h2>
+        <p>Naive clauses are right <em>except</em> under a binder:</p>
+        <p>$$ (\lambda y.\,t)[x:=u] = \lambda y'.\,(t[y:=y'][x:=u]) \quad\text{if } y\in\mathrm{FV}(u),\ y'\ \text{fresh.} $$</p>
+        <div class="box">
+          <strong>The capture trap.</strong> $(\lambda y.\,x)[x:=y]$ is <em>not</em> $\lambda y.\,y$ (identity). Rename first: $\lambda y'.\,y$ — a <strong>constant</strong> function returning the still-free $y$.
+        </div>
+        <p class="muted">Barendregt's variable convention lets us pick bound names distinct from all free ones — a bookkeeping shortcut, not a licence to ignore capture.</p>
+      </section>
+
+      <!-- ===== BETA / ETA / NORMAL FORMS ===== -->
+      <section>
+        <h2>$\beta$-reduction, $\eta$, normal forms</h2>
+        <p>The sole computation rule contracts a <strong>redex</strong> $(\lambda x.\,t)\,u$:</p>
+        <p>$$ (\lambda x.\,t)\,u \;\to_\beta\; t[x := u]. $$</p>
+        <p>A term with no redex is a <strong>$\beta$-normal form</strong>. $\eta$ adds extensionality: $\lambda x.\,(t\,x) \to_\eta t$ when $x\notin\mathrm{FV}(t)$.</p>
+        <p>Not every term terminates. The paradigm of divergence reduces to itself:</p>
+        <p>$$ \Omega = (\lambda x.\,x\,x)\,(\lambda x.\,x\,x) \;\to_\beta\; \Omega. $$</p>
+        <p class="muted">The Lab implements $\beta$ only — it will <em>not</em> collapse $\lambda x.\,f\,x$ to $f$.</p>
+      </section>
+
+      <!-- ===== ORDER DECIDES ===== -->
+      <section>
+        <h2>Strategy is not cosmetic</h2>
+        <p>With more than one redex, the choice can decide <em>termination</em>. Consider $(\lambda x.\,y)\,\Omega$:</p>
+        <div class="cols">
+          <div class="box">
+            <h3>Normal order</h3>
+            <p class="muted">leftmost-<strong>outermost</strong> (lazy)</p>
+            <p>$(\lambda x.\,y)\,\Omega \to_\beta y$ — done in one step, the argument discarded.</p>
+          </div>
+          <div class="box">
+            <h3>Applicative order</h3>
+            <p class="muted">leftmost-<strong>innermost</strong> (eager)</p>
+            <p>insist on reducing $\Omega$ first — and <em>loop forever</em>.</p>
+          </div>
+        </div>
+        <p class="muted">Same term, opposite fate. This is why the Lab uses normal order.</p>
+      </section>
+
+      <!-- ===== CHURCH-ROSSER ===== -->
+      <section>
+        <h2>Confluence &amp; Church–Rosser</h2>
+        <p>Why is "<em>the</em> normal form" well-defined despite arbitrary choices? Because reduction is <strong>confluent</strong>.</p>
+        <div class="box">
+          <strong>Church–Rosser (1936).</strong> If $M \twoheadrightarrow P$ and $M \twoheadrightarrow Q$, then some $S$ has $P \twoheadrightarrow S$ and $Q \twoheadrightarrow S$.
+        </div>
+        <ul>
+          <li><strong>Uniqueness:</strong> every term has at most one $\beta$-normal form (up to $\alpha$).</li>
+          <li><strong>Consistency:</strong> $K = \lambda x\,y.\,x$ and $I = \lambda x.\,x$ are distinct normal forms, so $K \neq_\beta I$.</li>
+          <li><strong>Standardization:</strong> if a normal form exists, normal order reaches it — the complete strategy.</li>
+        </ul>
+        <p class="muted">Confluent yet <em>not</em> strongly normalizing: $\Omega$ diverges. The two properties are independent.</p>
+      </section>
+
+      <!-- ===== BOOLEANS & PAIRS ===== -->
+      <section>
+        <h2>Church booleans &amp; pairs</h2>
+        <p>Guiding idea: <em>data as its own eliminator</em>. A boolean <strong>is a chooser</strong>:</p>
+        <p>$$ \mathtt{true} = \lambda t\,f.\,t, \quad \mathtt{false} = \lambda t\,f.\,f, \quad \mathtt{if} = \lambda b\,t\,f.\,b\,t\,f. $$</p>
+        <p>$$ \mathtt{and} = \lambda p\,q.\,p\,q\,p, \quad \mathtt{or} = \lambda p\,q.\,p\,p\,q, \quad \mathtt{not} = \lambda p.\,p\,\mathtt{false}\,\mathtt{true}. $$</p>
+        <p>Pairs reuse the trick (we need them for the predecessor):</p>
+        <p>$$ \mathtt{pair} = \lambda a\,b\,f.\,f\,a\,b, \quad \mathtt{fst} = \lambda p.\,p\,\mathtt{true}, \quad \mathtt{snd} = \lambda p.\,p\,\mathtt{false}. $$</p>
+      </section>
+
+      <!-- ===== NUMERALS & ARITHMETIC ===== -->
+      <section>
+        <h2>Church numerals &amp; arithmetic</h2>
+        <p>A natural number <strong>is an iterator</strong>: $\overline{n}$ realizes $f \mapsto f^{n}$.</p>
+        <p>$$ \overline{n} = \lambda f\,x.\,\underbrace{f\,(f\,(\cdots(f}_{n}\,x)\cdots)), \qquad \overline{0} = \lambda f\,x.\,x. $$</p>
+        <p>$$ \mathtt{succ} = \lambda n\,f\,x.\,f\,(n\,f\,x), \quad \mathtt{plus} = \lambda m\,n\,f\,x.\,m\,f\,(n\,f\,x), $$</p>
+        <p>$$ \mathtt{mult} = \lambda m\,n\,f.\,m\,(n\,f), \quad \mathtt{pow} = \lambda m\,n.\,n\,m. $$</p>
+        <p class="muted">All of it is $f^{m}\circ f^{n} = f^{m+n}$ and $(f^{n})^{m} = f^{nm}$ in disguise. Note $\mathtt{false}$ and $\overline{0}$ are the <em>same</em> term.</p>
+      </section>
+
+      <!-- ===== LEAN CODE SLIDE ===== -->
+      <section>
+        <h2>The same encoding, checked by Lean's kernel</h2>
+        <pre><code class="language-lean" data-trim data-noescape>def Church := (α : Type) → (α → α) → α → α
+def czero : Church                := fun _ _ x => x
+def csucc (n : Church) : Church   := fun α f x => f (n α f x)
+def cplus (m n : Church) : Church := fun α f x => m α f (n α f x)
+def toNat (n : Church) : Nat      := n Nat (· + 1) 0
+
+-- 2 + 3 = 5, verified by the kernel:
+example : toNat (cplus (csucc (csucc czero))
+                       (csucc (csucc (csucc czero)))) = 5 := rfl</code></pre>
+        <p class="muted">The Church numeral is a polymorphic type that <em>computes by <code>rfl</code></em>. The proof <em>is</em> the program.</p>
+      </section>
+
+      <!-- ===== PREDECESSOR ===== -->
+      <section>
+        <h2>The predecessor — the hard case</h2>
+        <p>Church believed it undefinable, until Kleene's "wisdom-teeth trick." Iterate the map $(a,b)\mapsto(b,\,b{+}1)$ from $(0,0)$: after $n$ steps the pair is $(n{-}1,\,n)$, read off the first component.</p>
+        <p>$$ \mathtt{step} = \lambda p.\,\mathtt{pair}\,(\mathtt{snd}\,p)\,(\mathtt{succ}\,(\mathtt{snd}\,p)), $$</p>
+        <p>$$ \mathtt{pred} = \lambda n.\,\mathtt{fst}\,\bigl(n\ \mathtt{step}\ (\mathtt{pair}\,\overline0\,\overline0)\bigr). $$</p>
+        <p>Then $\mathtt{sub} = \lambda m\,n.\,n\ \mathtt{pred}\ m$ (monus), and comparison follows via $\mathtt{iszero}$, $\mathtt{leq}$, $\mathtt{eq}$.</p>
+        <p class="muted">Definability of <code>pred</code> was the breakthrough behind "all recursive functions are $\lambda$-definable."</p>
+      </section>
+
+      <!-- ===== Y & UNDECIDABILITY ===== -->
+      <section>
+        <h2>Recursion via $Y$, and undecidability</h2>
+        <p>The pure calculus has no <code>def</code> — yet self-reference appears through a <strong>fixed-point combinator</strong>:</p>
+        <p>$$ Y = \lambda f.\,(\lambda x.\,f\,(x\,x))\,(\lambda x.\,f\,(x\,x)), \qquad Y\,F =_\beta F\,(Y\,F). $$</p>
+        <div class="box">
+          <strong>Meta-level payoff.</strong> $\lambda$-definable $=$ general recursive $=$ Turing-computable (Church–Turing). And $\beta$-convertibility is <em>undecidable</em> (Church 1936).
+        </div>
+        <p class="muted">An untyped $Y$ has no home in a total type theory — which is exactly why Lean rejects <code>def Y (f : α → α) : α := f (Y f)</code> and offers <code>Nat.rec</code> instead.</p>
+      </section>
+
+      <!-- ===== RUN IT ===== -->
+      <section data-background-gradient="linear-gradient(135deg,#312e81,#4c1d95)">
+        <h2>Run it yourself</h2>
+        <p>Open the Lambda Lab and type:</p>
+        <p class="lab">reduce AND TRUE FALSE</p>
+        <p class="lab">nf PLUS 2 3</p>
+        <p class="lab">nf PRED 3</p>
+        <p class="lab">reduce OMEGA</p>
+        <p class="lab">tour</p>
+        <p class="muted">Every calculation in this lecture is reproducible in the browser; <code>tour</code> runs a 60-second guided version.</p>
+      </section>
+
+      <!-- ===== RECAP / REFERENCES ===== -->
+      <section>
+        <h2>Recap &amp; references</h2>
+        <ul>
+          <li>Three formers, one $\beta$-rule — a Turing-complete engine.</li>
+          <li>Substitution avoids capture; $\alpha$ $\neq$ $\beta$; not everything terminates ($\Omega$).</li>
+          <li>Church–Rosser makes normal forms unique; normal order is complete.</li>
+          <li>Booleans, numerals, arithmetic, <code>pred</code> and $Y$ are all <em>derived</em>.</li>
+        </ul>
+        <p class="muted">Barendregt, <em>Introduction to Lambda Calculus</em> · Selinger, <em>Lecture Notes</em> · Pierce, <em>TAPL</em> ch. 5 · Church (1936) · the course book at /vietnam2026/book</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash:true, slideNumber:'c/t', transition:'slide', width:1200, height:720,
+      margin:0.06, controlsTutorial:false,
+      plugins:[ RevealHighlight, RevealNotes ]
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lecture 5 — Advanced Lean · VIASM 2026</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{ --violet:#a78bfa; --violet-2:#c4b5fd; --emerald:#34d399; --ink:#e8eaf6; }
+    .reveal{ font-family:'Inter',system-ui,sans-serif; font-size:30px; color:var(--ink); }
+    .reveal .slides{ text-align:left; }
+    .reveal h1,.reveal h2,.reveal h3{ font-family:'Inter',sans-serif; font-weight:800; letter-spacing:-.02em; text-transform:none; color:#fff; }
+    .reveal h1{ font-size:1.9em; } .reveal h2{ font-size:1.35em; color:var(--violet-2); } .reveal h3{ font-size:1.1em; color:var(--violet-2); }
+    .reveal .backgrounds{ background:
+        radial-gradient(1000px 600px at 80% -10%, #4c1d95 0%, transparent 55%),
+        linear-gradient(135deg,#1e1b4b 0%,#312e81 60%,#4c1d95 100%); }
+    .reveal section{ box-shadow:none; }
+    .reveal a{ color:var(--violet); }
+    .reveal strong{ color:var(--violet-2); }
+    .reveal em{ color:#fcd34d; font-style:normal; }
+    .reveal .eyebrow{ font-family:'JetBrains Mono',monospace; font-size:.5em; letter-spacing:.15em; text-transform:uppercase; color:var(--violet); }
+    .reveal pre{ box-shadow:0 8px 30px rgba(0,0,0,.4); width:100%; font-size:.62em; }
+    .reveal pre code{ border-radius:10px; padding:1em 1.2em; max-height:520px; }
+    .reveal code:not(pre code){ font-family:'JetBrains Mono',monospace; color:var(--violet-2); background:rgba(167,139,250,.12); border-radius:5px; padding:.05em .35em; font-size:.9em; }
+    .reveal .lab{ display:inline-block; font-family:'JetBrains Mono',monospace; font-size:.7em; color:#04231a; background:var(--emerald); border-radius:8px; padding:.35em .7em; margin:.2em 0; }
+    .reveal .muted{ color:#a5a9cf; font-size:.8em; }
+    .reveal ul,.reveal ol{ margin-left:1em; } .reveal li{ margin:.35em 0; }
+    .reveal .title-affil{ color:#a5a9cf; font-size:.6em; }
+    .reveal .box{ background:rgba(167,139,250,.1); border:1px solid rgba(167,139,250,.3); border-radius:12px; padding:.7em 1em; }
+    .reveal .cols{ display:flex; gap:1.2em; } .reveal .cols>div{ flex:1; }
+    .reveal .footer{ position:fixed; bottom:8px; left:16px; font-size:14px; color:#7c74a8; font-family:'JetBrains Mono',monospace; }
+  </style>
+  <script>
+    window.MathJax = { tex:{ inlineMath:[['\\(','\\)'],['$','$']], displayMath:[['$$','$$'],['\\[','\\]']],
+        macros:{ N:'\\mathbb{N}', Z:'\\mathbb{Z}', R:'\\mathbb{R}', C:'\\mathbb{C}', lam:'\\lambda', To:'\\Rightarrow', betared:'\\to_\\beta', reduces:'\\twoheadrightarrow_\\beta', proves:'\\vdash' } },
+      options:{ skipHtmlTags:['script','noscript','style','textarea','pre','code'] } };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <div class="footer">VIASM 2026 · Automatic Theorem Proving · Lecture 5</div>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ===== TITLE ===== -->
+      <section data-background-gradient="linear-gradient(135deg,#1e1b4b,#4c1d95)">
+        <p class="eyebrow">VIASM Mini-Course · Hanoi 2026 · Lecture 5</p>
+        <h1>Advanced Lean</h1>
+        <p class="muted">The toolkit that makes formalizing <em>real</em> mathematics tractable — dependent types, typeclasses, Mathlib search, and the tactic zoo.</p>
+        <p class="title-affil">dr Bartosz Naskręcki · Adam Mickiewicz University in Poznań · CCAI, Warsaw Univ. of Technology</p>
+        <p class="lab">▷ live lab: /lab-lambda</p>
+      </section>
+
+      <!-- ===== MOTIVATION 1 ===== -->
+      <section>
+        <h2>From one honest proof to a research paper</h2>
+        <p>Lecture 4 got us a first kernel-checked proof: <code>Nat</code>, induction, a starter kit of tactics. Enough to reprove undergraduate lemmas one keystroke at a time — <strong>not</strong> enough to do mathematics at scale.</p>
+        <p>Two things stand in the way:</p>
+        <ul>
+          <li><strong>Generality</strong> — state <code>a * b = b * a</code> <em>once</em>, at the right level of abstraction, and have it fire on $\N$, $\Z$, polynomials, matrices.</li>
+          <li><strong>Automation &amp; search</strong> — no human recalls a library this size. The skill is <em>finding</em> lemmas and letting decision procedures discharge the routine algebra.</li>
+        </ul>
+      </section>
+
+      <!-- ===== MOTIVATION 2 / SCALE ===== -->
+      <section data-background-gradient="linear-gradient(135deg,#312e81,#4c1d95)">
+        <h2>The scale of the problem</h2>
+        <div class="cols">
+          <div class="box"><h3>~351,000</h3><p class="muted">declarations in Mathlib</p></div>
+          <div class="box"><h3>2,000,000+</h3><p class="muted">lines of formal mathematics</p></div>
+          <div class="box"><h3>~90%</h3><p class="muted">of the Lean ecosystem's declarations</p></div>
+        </div>
+        <p>Mathlib is a single continuously-integrated monorepo — the largest formal-mathematics library in existence. You will never recall it; you <strong>decode</strong> and <strong>search</strong> it.</p>
+        <p class="muted">This lecture is that toolkit — and the on-ramp to Lecture 6, where the same tools carry a whole paper.</p>
+      </section>
+
+      <!-- ===== DEPENDENT TYPES ===== -->
+      <section>
+        <h2>Dependent types: the one primitive</h2>
+        <p>What separates Lean from a simply-typed language is the <strong>dependent function type</strong> (Π-type): given $\alpha$ and a family $\beta : \alpha \to \mathrm{Sort}\,u$,</p>
+        <p>$$\prod_{x:\alpha} \beta\,x \quad\text{written}\quad (x : \alpha) \to \beta\,x \quad\text{or}\quad \forall\,x,\ \beta\,x .$$</p>
+        <p>The ordinary arrow $\alpha \to \beta$ is the degenerate case where $\beta$ ignores $x$. So <strong>$\forall$ and $\to$ are the same connective</strong>: a proof of <code>∀ n, P n</code> <em>is</em> a function sending each <code>n</code> to a proof of <code>P n</code>. Types depend on values — <code>Vector α n</code> carries its length in its type.</p>
+      </section>
+
+      <!-- ===== PROP VS TYPE ===== -->
+      <section>
+        <h2><code>Prop</code> vs <code>Type</code> — and why it matters</h2>
+        <p>Everything lives in the universe hierarchy:</p>
+        <p>$$\mathrm{Prop} = \mathrm{Sort}\,0, \qquad \mathrm{Type}\,u = \mathrm{Sort}\,(u+1).$$</p>
+        <ul>
+          <li><strong>Proof irrelevance.</strong> For <code>p : Prop</code> and proofs <code>h₁ h₂ : p</code>, they are <em>definitionally equal</em>: $h_1 \equiv h_2$. A proposition carries no data beyond being inhabited.</li>
+          <li><strong>Large-elimination restriction.</strong> You cannot pattern-match a proof of <code>∃ n, P n</code> to extract the witness as data — that would leak a non-computational choice through a proof-irrelevant door.</li>
+        </ul>
+        <p class="muted">De Bruijn criterion: only the small kernel is trusted; <code>#print axioms thm</code> audits which axioms a proof really used.</p>
+      </section>
+
+      <!-- ===== STRUCTURES & TYPECLASSES ===== -->
+      <section>
+        <h2>Structures &amp; typeclasses: the algebraic hierarchy</h2>
+        <p>A <code>structure</code> bundles data with the proofs of its axioms. A <code>class</code> is a structure whose instances Lean <strong>finds automatically</strong> — the mechanism behind <code>+</code>, <code>0</code>, <code>≤</code> meaning the right thing on every type at once.</p>
+        <pre><code class="language-lean" data-trim data-noescape>class Group (G : Type*) extends DivInvMonoid G where
+  inv_mul_cancel : ∀ a : G, a⁻¹ * a = 1</code></pre>
+        <p>State a theorem under <code>[CommMonoid M]</code> and it fires everywhere: $\texttt{mul\_comm} : a * b = b * a$ — proved once, inherited everywhere. The price is the <strong>diamond problem</strong>: two inheritance paths to a shared ancestor must give definitionally-equal instances.</p>
+      </section>
+
+      <!-- ===== WORKED EXAMPLE 1 (code) ===== -->
+      <section>
+        <h2>Interface over definition</h2>
+        <pre><code class="language-lean" data-trim data-noescape>class MyAddMonoid (α : Type*) where
+  zero    : α
+  add     : α → α → α
+  add_zero : ∀ a, add a zero = a
+  zero_add : ∀ a, add zero a = a
+
+instance : MyAddMonoid Nat where
+  zero := 0 ; add := Nat.add
+  add_zero := Nat.add_zero ; zero_add := Nat.zero_add
+
+open MyAddMonoid in
+theorem add_zero_zero {α : Type*} [MyAddMonoid α] (a : α) :
+    add (add a zero) zero = a := by
+  rw [add_zero, add_zero]</code></pre>
+        <p class="muted">The proof never mentions <code>Nat</code> — it reasons from the interface, so it holds for every future instance for free.</p>
+      </section>
+
+      <!-- ===== SEARCH MATHLIB ===== -->
+      <section>
+        <h2>How to search Mathlib</h2>
+        <p><strong>Decode</strong> names left-to-right: <code>Finset.sum_range_succ</code> = a sum over <code>range (n+1)</code>, split at the last term.</p>
+        <p><strong>Search</strong> in four modalities:</p>
+        <ul>
+          <li><strong>In-editor:</strong> <code>exact?</code>, <code>apply?</code>, <code>rw?</code>, <code>simp?</code> (pins a robust <code>simp only [...]</code>).</li>
+          <li><strong>Loogle</strong> — <em>syntactic</em>: search by shape, e.g. <code>"(_ * _) ^ _"</code>. Complete and predictable.</li>
+          <li><strong>LeanSearch</strong> — <em>neural/semantic</em>: query in natural language when you don't know the shape.</li>
+          <li><strong>Moogle</strong> — embedding-based, similar in spirit.</li>
+        </ul>
+        <p class="muted">Reflex: <code>exact?</code> first, Loogle when you can describe the shape, LeanSearch when you can only describe the idea.</p>
+      </section>
+
+      <!-- ===== TACTIC ZOO ===== -->
+      <section>
+        <h2>The tactic zoo — match the goal's <em>shape</em></h2>
+        <div class="cols">
+          <div>
+            <ul>
+              <li><code>ring</code> — commutative-(semi)ring identities; <strong>ignores hypotheses</strong></li>
+              <li><code>linear_combination e</code> — equality as a certificate of hypotheses</li>
+              <li><code>linarith</code> / <code>nlinarith</code> — linear / nonlinear ordered arithmetic</li>
+              <li><code>omega</code> — linear integer/nat arithmetic, complete</li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <li><code>norm_num</code> — closed numeric goals</li>
+              <li><code>field_simp</code> — clear denominators, hand off to <code>ring</code></li>
+              <li><code>positivity</code> — prove $0 &lt; e$, $0 \le e$, $e \neq 0$</li>
+              <li><code>decide</code> — a <code>Decidable</code> prop, by kernel computation</li>
+            </ul>
+          </div>
+        </div>
+        <p class="muted"><strong>New (Lean 4.22):</strong> <code>grind</code>, SMT-style, ships <code>cutsat</code> (supersedes <code>omega</code>) and a Gröbner solver (<code>grobner</code>). <code>polyrith</code> is <em>retired</em> — its Sage server was shut down.</p>
+      </section>
+
+      <!-- ===== WORKED EXAMPLE 2 (code) ===== -->
+      <section>
+        <h2>Inequalities in one line: hand <code>nlinarith</code> the square</h2>
+        <p>Cauchy–Schwarz, because the gap is a perfect square $(ay-bx)^2 \ge 0$:</p>
+        <pre><code class="language-lean" data-trim data-noescape>theorem cauchy_schwarz (a b x y : ℝ) :
+    (a*x + b*y)^2 ≤ (a^2 + b^2) * (x^2 + y^2) := by
+  nlinarith [sq_nonneg (a*y - b*x)]
+
+theorem amgm (a b : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) :
+    2 * Real.sqrt (a*b) ≤ a + b := by
+  nlinarith [sq_nonneg (a - b), Real.sq_sqrt (mul_nonneg ha hb),
+             Real.sqrt_nonneg (a*b)]</code></pre>
+        <p class="muted">Contrast a purely finite goal, closed by evaluation — Wilson at $p=7$: <code>example : Nat.factorial 6 % 7 = 6 := by decide</code>.</p>
+      </section>
+
+      <!-- ===== CALC (code) ===== -->
+      <section>
+        <h2><code>calc</code> — proofs that read like the blackboard</h2>
+        <p>Given $a^2 = b^2 + 4$ and $a + b = 2$, show $a - b = 2$. The prose survives intact:</p>
+        <pre><code class="language-lean" data-trim data-noescape>example (a b : ℝ) (h1 : a^2 = b^2 + 4) (h2 : a + b = 2) : a - b = 2 := by
+  have hprod : (a - b) * (a + b) = 4 := by
+    calc (a - b) * (a + b) = a^2 - b^2 := by ring
+      _ = 4 := by rw [h1]; ring
+  rw [h2] at hprod          -- hprod : (a - b) * 2 = 4
+  linarith</code></pre>
+        <p class="muted">Through the <code>Trans</code> typeclass a single <code>calc</code> may mix <code>=</code>, <code>≤</code>, <code>&lt;</code>, <code>∣</code>, <code>⊆</code>. This legibility is what convinces mathematicians the formal text is honest.</p>
+      </section>
+
+      <!-- ===== RECURSION ===== -->
+      <section>
+        <h2>Recursion: structural vs. well-founded</h2>
+        <div class="cols">
+          <div class="box">
+            <h3>Structural</h3>
+            <p class="muted">Every recursive call on a <em>strict subterm</em>. No termination proof; compiles to the recursor, emits equation lemmas. Mirror: the <code>induction</code> tactic.</p>
+          </div>
+          <div class="box">
+            <h3>Well-founded</h3>
+            <p class="muted">Decreasing argument not a literal subterm (e.g. <code>gcd</code> on <code>y % (x+1)</code>). Supply <code>termination_by</code> + <code>decreasing_by</code>.</p>
+          </div>
+        </div>
+        <pre><code class="language-lean" data-trim data-noescape>def mygcd : Nat → Nat → Nat
+  | 0,     y => y
+  | x + 1, y => mygcd (y % (x + 1)) (x + 1)
+termination_by a _ => a
+decreasing_by exact Nat.mod_lt _ (Nat.succ_pos x)</code></pre>
+        <p class="muted"><code>partial def</code> escapes the kernel and produces <strong>no equation lemmas</strong> — you can prove nothing about it.</p>
+      </section>
+
+      <!-- ===== END-TO-END THEOREM (code) ===== -->
+      <section>
+        <h2>One theorem end-to-end: $\sqrt 2$ is irrational</h2>
+        <p>Standing on the library, it is one line:</p>
+        <pre><code class="language-lean" data-trim data-noescape>theorem sqrt2_irrational : Irrational (Real.sqrt 2) := by
+  exact_mod_cast Nat.Prime.irrational_sqrt (p := 2) Nat.prime_two</code></pre>
+        <p>The instructive proof reconstructs the classical argument you now own:</p>
+        <p>$$2 q^2 = p^2 \Rightarrow 2 \mid p^2 \Rightarrow 2 \mid p \Rightarrow 4 \mid p^2 = 2q^2 \Rightarrow 2 \mid q,$$</p>
+        <p class="muted">contradicting $\gcd(p,q)=1$. The lesson: <strong>stand on Mathlib</strong> when the lemma exists, <strong>build it yourself</strong> when you need to see the machinery.</p>
+      </section>
+
+      <!-- ===== RUN IT YOURSELF ===== -->
+      <section data-background-gradient="linear-gradient(135deg,#312e81,#4c1d95)">
+        <h2>Run it yourself</h2>
+        <p>Before dependent types, watch the untyped core <em>compute</em> — a logical connective reducing by β-reduction, proofs-as-programs made literal. Open the Lambda Lab and type:</p>
+        <p class="lab">reduce IMPLIES TRUE FALSE</p>
+        <p>In Lean the same idea has types attached — <code>#check (fun n : ℕ => rfl : ∀ n, n + 0 = n)</code> type-checks because <code>∀</code> <em>is</em> a Π-type.</p>
+        <p class="muted">Every calculation in this lecture is reproducible in the browser.</p>
+      </section>
+
+      <!-- ===== MACROS / PIPELINE ===== -->
+      <section>
+        <h2>Under the hood: the elaboration pipeline</h2>
+        <p>Lean 4 is written in Lean 4, and <em>your</em> code can run at every stage:</p>
+        <p class="box" style="text-align:center; font-family:'JetBrains Mono',monospace; font-size:.75em;">parse ▶ macro-expand ▶ elaborate ▶ kernel type-check</p>
+        <pre><code class="language-lean" data-trim data-noescape>macro "split_and" : tactic => `(tactic| refine ⟨?_, ?_⟩)
+
+example (p q : Prop) (hp : p) (hq : q) : p ∧ q := by
+  split_and
+  · exact hp
+  · exact hq</code></pre>
+        <p class="muted">Punchline: term mode and tactic mode, <code>simp</code> and <code>grind</code>, your macro and Mathlib's — all produce the <strong>same object</strong>, an <code>Expr</code>, and only the kernel confers theoremhood.</p>
+      </section>
+
+      <!-- ===== RECAP / REFERENCES ===== -->
+      <section>
+        <h2>Recap &amp; references</h2>
+        <ul>
+          <li><strong>Generality</strong> via structures &amp; typeclasses; <strong>search</strong> via <code>exact?</code>, Loogle, LeanSearch.</li>
+          <li><strong>Automation</strong>: match each goal to the tactic that owns its shape — <code>ring</code>, <code>nlinarith</code>, <code>omega</code>, <code>decide</code>, <code>grind</code>.</li>
+          <li><code>calc</code> for blackboard-legible proofs; structural vs. well-founded recursion; the de Bruijn kernel as sole arbiter.</li>
+        </ul>
+        <p class="muted"><em>Mathematics in Lean</em> (Avigad et al.) · <em>Theorem Proving in Lean 4</em> · Macbeth, <em>The Mechanics of Proof</em> &amp; <em>Algebraic Computations in Lean</em> · <em>Metaprogramming in Lean 4</em> · loogle.lean-lang.org · leansearch.net</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash:true, slideNumber:'c/t', transition:'slide', width:1200, height:720,
+      margin:0.06, controlsTutorial:false,
+      plugins:[ RevealHighlight, RevealNotes ]
+    });
+  </script>
+</body>
+</html>

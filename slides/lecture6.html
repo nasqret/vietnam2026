@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lecture 6 — Auto-formalization of mathematics with Lean · VIASM 2026</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{ --violet:#a78bfa; --violet-2:#c4b5fd; --emerald:#34d399; --ink:#e8eaf6; }
+    .reveal{ font-family:'Inter',system-ui,sans-serif; font-size:30px; color:var(--ink); }
+    .reveal .slides{ text-align:left; }
+    .reveal h1,.reveal h2,.reveal h3{ font-family:'Inter',sans-serif; font-weight:800; letter-spacing:-.02em; text-transform:none; color:#fff; }
+    .reveal h1{ font-size:1.9em; } .reveal h2{ font-size:1.35em; color:var(--violet-2); } .reveal h3{ font-size:1.1em; color:var(--violet-2); }
+    .reveal .backgrounds{ background:
+        radial-gradient(1000px 600px at 80% -10%, #4c1d95 0%, transparent 55%),
+        linear-gradient(135deg,#1e1b4b 0%,#312e81 60%,#4c1d95 100%); }
+    .reveal section{ box-shadow:none; }
+    .reveal a{ color:var(--violet); }
+    .reveal strong{ color:var(--violet-2); }
+    .reveal em{ color:#fcd34d; font-style:normal; }
+    .reveal .eyebrow{ font-family:'JetBrains Mono',monospace; font-size:.5em; letter-spacing:.15em; text-transform:uppercase; color:var(--violet); }
+    .reveal pre{ box-shadow:0 8px 30px rgba(0,0,0,.4); width:100%; font-size:.62em; }
+    .reveal pre code{ border-radius:10px; padding:1em 1.2em; max-height:520px; }
+    .reveal code:not(pre code){ font-family:'JetBrains Mono',monospace; color:var(--violet-2); background:rgba(167,139,250,.12); border-radius:5px; padding:.05em .35em; font-size:.9em; }
+    .reveal .lab{ display:inline-block; font-family:'JetBrains Mono',monospace; font-size:.7em; color:#04231a; background:var(--emerald); border-radius:8px; padding:.35em .7em; margin:.2em 0; }
+    .reveal .muted{ color:#a5a9cf; font-size:.8em; }
+    .reveal ul,.reveal ol{ margin-left:1em; } .reveal li{ margin:.35em 0; }
+    .reveal .title-affil{ color:#a5a9cf; font-size:.6em; }
+    .reveal .box{ background:rgba(167,139,250,.1); border:1px solid rgba(167,139,250,.3); border-radius:12px; padding:.7em 1em; }
+    .reveal .cols{ display:flex; gap:1.2em; } .reveal .cols>div{ flex:1; }
+    .reveal .footer{ position:fixed; bottom:8px; left:16px; font-size:14px; color:#7c74a8; font-family:'JetBrains Mono',monospace; }
+  </style>
+  <script>
+    window.MathJax = { tex:{ inlineMath:[['\\(','\\)'],['$','$']], displayMath:[['$$','$$'],['\\[','\\]']],
+        macros:{ N:'\\mathbb{N}', Z:'\\mathbb{Z}', R:'\\mathbb{R}', C:'\\mathbb{C}', lam:'\\lambda', To:'\\Rightarrow', betared:'\\to_\\beta', reduces:'\\twoheadrightarrow_\\beta', proves:'\\vdash' } },
+      options:{ skipHtmlTags:['script','noscript','style','textarea','pre','code'] } };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+</head>
+<body>
+  <div class="footer">VIASM 2026 · Automatic Theorem Proving · Lecture 6</div>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ===== TITLE ===== -->
+      <section data-background-gradient="linear-gradient(135deg,#1e1b4b,#4c1d95)">
+        <p class="eyebrow">VIASM Mini-Course · Hanoi 2026 · Lecture 6</p>
+        <h1>Auto-formalization of mathematics with Lean</h1>
+        <p class="muted">Where AI meets the kernel — a human sets the target, AI assists the search, and the kernel is the sole referee.</p>
+        <p class="title-affil">dr Bartosz Naskręcki · Adam Mickiewicz University in Poznań · CCAI, Warsaw Univ. of Technology</p>
+        <p class="lab">▷ live lab: /lab-lambda</p>
+      </section>
+
+      <!-- ===== WHY THIS MATTERS ===== -->
+      <section>
+        <h2>Why this matters</h2>
+        <p>In about <strong>two years</strong>, machines went from solving essentially nothing at the IMO to <em>olympiad gold</em>.</p>
+        <ul>
+          <li>Curry–Howard, live in 2026: <strong>proofs are objects a machine can check</strong>.</li>
+          <li>A proof assistant gives an <em>absolute</em> soundness guarantee relative to a tiny kernel.</li>
+          <li>A chatbot's natural-language "proof" gives <em>none</em>.</li>
+        </ul>
+        <p class="muted">Between those poles sits autoformalization — and that is exactly where a green checkmark can still certify the wrong theorem.</p>
+      </section>
+
+      <!-- ===== TWO PROBLEMS, ONE KERNEL ===== -->
+      <section>
+        <h2>Two problems, one kernel</h2>
+        <div class="cols">
+          <div class="box">
+            <h3>Statement autoformalization</h3>
+            <p>"$\sqrt 2$ is irrational" $\rightsquigarrow$ a precise Lean <code>theorem …</code>.</p>
+            <p class="muted">Hard part: <em>faithfulness</em>. No proof obligation discharged.</p>
+          </div>
+          <div class="box">
+            <h3>Proof autoformalization</h3>
+            <p>Given a fixed statement, <em>find a proof the kernel accepts</em>.</p>
+            <p class="muted">Hard part: <em>search</em>. Every candidate is cheaply checkable.</p>
+          </div>
+        </div>
+        <p>The engine of the field: <strong>proofs are hard to find but easy to check</strong> — the model <em>proposes</em>, the kernel <em>disposes</em>.</p>
+      </section>
+
+      <!-- ===== THE FAITHFULNESS GAP (code) ===== -->
+      <section>
+        <h2>The faithfulness gap: a compiling lie</h2>
+        <p>The kernel certifies $\text{proof} \vdash \text{statement}$, never $\text{statement} \models \text{intent}$.</p>
+        <pre><code class="language-lean" data-trim data-noescape>-- claim: "every prime > 2 is odd"
+-- faithful:  ∀ p : ℕ, p.Prime → 2 < p → Odd p
+-- but this also type-checks and is trivially provable:
+theorem primes_are_odd (p : ℕ) (hp : p.Prime) (h : p = 4) : Odd p := by
+  omega</code></pre>
+        <p class="muted"><code>p = 4</code> with <code>p.Prime</code> is never satisfiable — <em>vacuously true</em>. A statement can be vacuous, over- or under-constrained, and still type-check.</p>
+      </section>
+
+      <!-- ===== THE NEURAL–SYMBOLIC LOOP ===== -->
+      <section>
+        <h2>The neural–symbolic loop</h2>
+        <p>Model proposes a tactic $\to$ assistant returns the new goal or an error $\to$ search chooses what to try next.</p>
+        <p class="box"><strong>de Bruijn criterion:</strong> only the small kernel re-checks the final proof term. The model and search harness are <em>untrusted</em> — no hallucinated proof survives.</p>
+        <ul>
+          <li><strong>Premise selection</strong> — retrieve a few of $283{,}067$ Mathlib lemmas (ReProver / LeanDojo).</li>
+          <li><strong>Subgoal decomposition</strong> — blueprints &amp; dependency graphs (DeepSeek-Prover-V2, Massot's Blueprint).</li>
+          <li><strong>Expert iteration / RL-from-verifier</strong> — the compiler's accept/reject <em>is</em> the reward.</li>
+          <li><strong>Self-correction</strong> — feed the Lean error back (Goedel-V2: $88.0\% \to 90.4\%$).</li>
+        </ul>
+      </section>
+
+      <!-- ===== THE 2024–2026 LANDSCAPE ===== -->
+      <section>
+        <h2>The 2024–2026 landscape, by the numbers</h2>
+        <table class="muted" style="font-size:.72em">
+          <tr><td><strong>AlphaGeometry</strong> (Nature, Jan 2024)</td><td>LM + symbolic DD+AR engine</td><td>$25/30$ olympiad geometry</td></tr>
+          <tr><td><strong>AlphaProof + AlphaGeometry 2</strong> (IMO 2024)</td><td>Lean-checked, <em>Nature</em> Nov 2025</td><td>$28/42$ <em>silver</em>, $4/6$</td></tr>
+          <tr><td><strong>DeepSeek-Prover-V2-671B</strong> (Apr 2025)</td><td>open-weights, subgoal + RL</td><td>$88.9\%$ miniF2F, $49/658$ Putnam</td></tr>
+          <tr><td><strong>Goedel-Prover-V2-32B</strong> (Aug 2025)</td><td>scaffolded data + self-correction</td><td>$90.4\%$ miniF2F, $86$ Putnam</td></tr>
+          <tr><td><strong>Seed / Aleph-Prover</strong> (2025–26)</td><td>miniF2F saturated</td><td>Aleph $668/672$ Putnam (Jan 2026)</td></tr>
+        </table>
+        <p class="muted">AlphaProof solved P6 — a problem only $5$ of $609$ humans cracked; AlphaGeometry 2 dispatched P4 in $19$ seconds. Substrate: <strong>Mathlib</strong> ($>2$M lines, Lean $4.32.0$).</p>
+      </section>
+
+      <!-- ===== CALIBRATION / BENCHMARKS ===== -->
+      <section>
+        <h2>Read the number with its benchmark</h2>
+        <ul>
+          <li><strong>miniF2F</strong> — $488$ olympiad/high-school statements — essentially <em>saturated</em> ($\sim 90\%$).</li>
+          <li><strong>PutnamBench</strong> — $672$ Lean problems — single digits (early 2025) $\to \sim 99\%$ in 18 months.</li>
+          <li><strong>FrontierMath</strong> — original, research-level, Fields-medalist-designed — below $2\%$ at launch, still far from saturated.</li>
+        </ul>
+        <p class="box"><strong>IMO 2025 paradigm split:</strong> Gemini Deep Think &amp; an OpenAI model reached <em>gold</em> ($35/42$) in <strong>natural language, human-graded</strong>. Seed-Prover proved $5/6$ <strong>formally in Lean</strong>. Only one is checkable.</p>
+        <p class="muted">"AI can do mathematics" is a category error unless you say <em>which benchmark, which $k$, which tier</em> — and date it.</p>
+      </section>
+
+      <!-- ===== HUMAN + AI + KERNEL ===== -->
+      <section>
+        <h2>Human + AI + kernel: a working research mode</h2>
+        <div class="cols">
+          <div>
+            <h3>Polynomial Freiman–Ruzsa</h3>
+            <p>Tao, Dillies &amp; Mehta formalized the full argument in Lean 4 in about <strong>three weeks</strong>, via Blueprint. If $|A+A| \le K|A|$ then $A$ lies in $\le 2K^{12}$ cosets of $H$, $|H|\le|A|$.</p>
+          </div>
+          <div>
+            <h3>Equational Theories Project</h3>
+            <p>All $22{,}028{,}942$ implications among $4{,}694$ magma laws proved or refuted, every result Lean-verified (14 Apr 2025). Humans, Vampire and SAT contribute <em>interchangeably</em>.</p>
+          </div>
+        </div>
+        <p class="muted"><strong>Lean + Mathlib is a shared substrate</strong> — acceptance is decided by a program, not a referee's taste.</p>
+      </section>
+
+      <!-- ===== CASE STUDY: THE MATHEMATICS ===== -->
+      <section>
+        <h2>Case study — EML: the mathematics</h2>
+        <p>One binary operator with the sole constant $1$:</p>
+        <p>$$ \mathrm{eml}(x,y) \;:=\; \exp(x) - \log(y). $$</p>
+        <p>$\{\mathrm{eml},1\}$ generates the <em>entire</em> calculator repertoire through a three-production grammar:</p>
+        <p>$$ T \;::=\; 1 \;\mid\; x_n \;\mid\; \mathrm{eml}(T,T). $$</p>
+        <p class="muted">The analytic analogue of the <strong>Sheffer stroke</strong> (NAND): a single functionally complete primitive. Formalization: arXiv:2603.21852, Lean 4 + Mathlib $4.28$.</p>
+      </section>
+
+      <!-- ===== WORKED EXAMPLES ===== -->
+      <section>
+        <h2>Two witnesses by hand</h2>
+        <p><strong>The simplest constant.</strong> $\mathrm{eml}(1,1) = \exp 1 - \log 1 = e - 0 = e$ — a tree of size $K=3$. The EML analogue of $\lnot p = \mathrm{NAND}(p,p)$.</p>
+        <p><strong>Recovering log from a subtraction</strong> (for $z>0$):</p>
+        <p>$$ \log z \;=\; \mathrm{eml}\bigl(1,\ \mathrm{eml}(\mathrm{eml}(1,z),\,1)\bigr), \qquad K=7. $$</p>
+        <p class="muted">The domain constraint $z>0$ is <em>forced</em> by the innermost $\log z$; outside it the term has no value. Trig follows via Euler: <code>cosTermℂ</code> $= \exp(ix)$, so $\Re = \cos x$ ($K=1273$).</p>
+      </section>
+
+      <!-- ===== THE ENGINEERING (code) ===== -->
+      <section>
+        <h2>Engineering: partial evaluation</h2>
+        <p>Mathlib functions are <em>total</em> (<code>Real.log 0 = 0</code>). Instead of fighting junk values, denote into <code>Option</code>:</p>
+        <pre><code class="language-lean" data-trim data-noescape>noncomputable def EMLTerm.eval? (env : Nat → ℝ) : EMLTerm → Option ℝ
+  | .one     => some 1
+  | .var n   => some (env n)
+  | .eml a b =>
+      match EMLTerm.eval? env a, EMLTerm.eval? env b with
+      | some va, some vb =>
+          if 0 < vb then some (Real.exp va - Real.log vb) else none
+      | _, _ => none</code></pre>
+        <p class="muted">A claim is stated only where the witness genuinely <em>has</em> a value — exactly as the paper does.</p>
+      </section>
+
+      <!-- ===== DIVISION OF LABOUR ===== -->
+      <section>
+        <h2>The division of labour</h2>
+        <table class="muted" style="font-size:.74em">
+          <tr><td><strong>Aristotle</strong> (Harmonic)</td><td>per-chunk Lean proof search ($84/88$ won)</td></tr>
+          <tr><td><strong>GPT Pro</strong></td><td>structural-compiler architecture, Cayley tan route, Path C′</td></tr>
+          <tr><td><strong>Claude</strong> (Anthropic)</td><td>orchestration, scaffolding, trig widenings</td></tr>
+          <tr><td><strong>Codex</strong> (OpenAI)</td><td>informalization — Lean → prose faithfulness check</td></tr>
+          <tr><td><strong>Mathematica</strong></td><td>enumerate + numerically pre-filter candidates</td></tr>
+          <tr><td><strong>The human</strong></td><td>scope, taste, commit authority</td></tr>
+          <tr><td><strong>The Lean kernel</strong></td><td><em>the only acceptance criterion</em></td></tr>
+        </table>
+        <p>Build reality: <strong>$36/36$ primitives sealed</strong>, $100$ public theorems, <strong>$8062$ <code>lake</code> jobs</strong>, sorry-free, no project axioms.</p>
+      </section>
+
+      <!-- ===== RUN IT YOURSELF ===== -->
+      <section data-background-gradient="linear-gradient(135deg,#312e81,#4c1d95)">
+        <h2>Run it yourself</h2>
+        <p>Feel the "propose" step via functional completeness — rebuild $\lnot,\land,\lor$ from NAND. Open the Lambda Lab and type:</p>
+        <p class="lab">reduce NAND TRUE FALSE</p>
+        <p>Then reproduce the EML "hello world" in a Lean web editor:</p>
+        <pre><code class="language-lean" data-trim data-noescape>-- e = eml(1,1):  exp 1 − log 1 = e − 0 = e
+theorem e_witness : ∃ t : EMLTerm, ∀ env, EMLTerm.eval? env t = some (Real.exp 1) := by
+  refine ⟨.eml .one .one, fun env => ?_⟩
+  simp [EMLTerm.eval?, Real.log_one]</code></pre>
+        <p class="muted">Live demo: the <strong>EML Tree Builder</strong> at nasqret.github.io/eml-formalization</p>
+      </section>
+
+      <!-- ===== READING THE FINE PRINT ===== -->
+      <section>
+        <h2>What "sealed" actually guarantees</h2>
+        <ul>
+          <li><strong><code>#print axioms</code></strong> — EML shows only <code>Classical.choice</code>, <code>propext</code>, <code>funext</code>. "Sorry-free" is <em>not</em> "assumption-free".</li>
+          <li><strong>Seal vs conditional</strong> — corollaries gated on <code>EDLTranscendenceBarrier</code> (no instance) are sound but possibly <em>vacuous</em>. Ask if the hypotheses are ever satisfiable.</li>
+          <li><strong>Witness vs completeness</strong> — $\exists\,t,\ t.\mathtt{eval?}=v$ proves representability, <em>not</em> completeness, uniqueness or minimality.</li>
+        </ul>
+        <p>Every EML seal has one shape: one literal tree + a kernel-checked equality, under the standard axioms — no more, no less.</p>
+        <p class="muted">The human's job moves <em>upstream</em>: are these the right statements? Is the result interesting? The kernel never decides that.</p>
+      </section>
+
+      <!-- ===== RECAP / REFERENCES ===== -->
+      <section>
+        <h2>Recap &amp; references</h2>
+        <ul>
+          <li><strong>Statement</strong> (faithfulness) $\ne$ <strong>proof</strong> (search) autoformalization.</li>
+          <li>The kernel certifies proof-against-statement, never statement-against-intent.</li>
+          <li>Benchmarks calibrate: miniF2F saturated, FrontierMath far from it — always say which $k$, which tier.</li>
+          <li>EML: every elementary function from $\mathrm{eml}(x,y)=\exp x - \log y$, sealed across $8062$ jobs.</li>
+        </ul>
+        <p class="muted">Odrzywołek, arXiv:2603.21852 · AlphaProof, <em>Nature</em> (Nov 2025) · DeepSeek-Prover-V2 · Goedel-Prover-V2 · LeanDojo · miniF2F · PutnamBench · FrontierMath · Tao, Equational Theories Project · EML repo: github.com/nasqret/eml-formalization · course book at /vietnam2026/book</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash:true, slideNumber:'c/t', transition:'slide', width:1200, height:720,
+      margin:0.06, controlsTutorial:false,
+      plugins:[ RevealHighlight, RevealNotes ]
+    });
+  </script>
+</body>
+</html>

@@ -18,6 +18,9 @@
     li{counter-increment:l;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.3rem;margin-bottom:.8rem;display:flex;gap:1rem;align-items:center}
     li::before{content:counter(l,decimal-leading-zero);font-family:'JetBrains Mono',monospace;color:var(--violet);font-weight:700}
     .t{font-weight:600}.pending{color:var(--muted);font-size:.85rem;margin-left:auto}
+    li{cursor:pointer;transition:transform .12s,box-shadow .12s} li:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+    li a.card-link{position:absolute;inset:0} .open{margin-left:auto;color:var(--violet);font-weight:700}
+    li{position:relative}
   </style>
 </head>
 <body>
@@ -25,14 +28,14 @@
     <h1>Lecture slides</h1>
     <p class="sub">One reveal.js deck per lecture — to follow the talk live. <a href="/vietnam2026">← back to the course</a></p>
     <ol>
-      <li><span class="t">A general introduction to type theory</span><span class="pending">deck in preparation</span></li>
-      <li><span class="t">Simple calculations with the Church λ-calculus</span><span class="pending">deck in preparation</span></li>
-      <li><span class="t">Propositional logic proofs</span><span class="pending">deck in preparation</span></li>
-      <li><span class="t">Introduction to Lean</span><span class="pending">deck in preparation</span></li>
-      <li><span class="t">Advanced Lean</span><span class="pending">deck in preparation</span></li>
-      <li><span class="t">Auto-formalization of mathematics with Lean</span><span class="pending">deck in preparation</span></li>
+      <li><a class="card-link" href="lecture1.html"></a><span class="t">A general introduction to type theory</span><span class="open">open →</span></li>
+      <li><a class="card-link" href="lecture2.html"></a><span class="t">Simple calculations with the Church λ-calculus</span><span class="open">open →</span></li>
+      <li><a class="card-link" href="lecture3.html"></a><span class="t">Propositional logic proofs</span><span class="open">open →</span></li>
+      <li><a class="card-link" href="lecture4.html"></a><span class="t">Introduction to Lean</span><span class="open">open →</span></li>
+      <li><a class="card-link" href="lecture5.html"></a><span class="t">Advanced Lean</span><span class="open">open →</span></li>
+      <li><a class="card-link" href="lecture6.html"></a><span class="t">Auto-formalization of mathematics with Lean</span><span class="open">open →</span></li>
     </ol>
-    <p class="sub">In the meantime, the full notes are in the <a href="/vietnam2026/book/">knowledge book</a> and the interactive material in the <a href="/lab-lambda">Lambda Lab</a>.</p>
+    <p class="sub">The full notes are in the <a href="/vietnam2026/book/">knowledge book</a> and the interactive material in the <a href="/lab-lambda">Lambda Lab</a>.</p>
   </div>
 </body>
 </html>
