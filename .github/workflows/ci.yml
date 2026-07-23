@@ -19,6 +19,8 @@ jobs:
         run: pip install -r requirements.txt
       - name: Build JupyterBook
         run: jupyter-book build book/ --warningiserror --keep-going
+      - name: Replay every lab command referenced in the book
+        run: python3 scripts/verify_book_commands.py
       - uses: actions/upload-artifact@v4
         with:
           name: book-html

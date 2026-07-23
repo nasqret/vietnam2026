@@ -10,6 +10,13 @@ parts:
       - file: lectures/l4_lean_intro
       - file: lectures/l5_lean_advanced
       - file: lectures/l6_autoformalization
+  - caption: "The Lambda Lab cookbook"
+    chapters:
+      - file: cookbook/index
+      - file: cookbook/grand_calculations
+      - file: cookbook/puzzles
+      - file: cookbook/curiosities
+      - file: cookbook/showcase
   - caption: "Appendix"
     chapters:
       - file: appendix/cheatsheet
