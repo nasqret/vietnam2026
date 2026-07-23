@@ -521,6 +521,29 @@ class LabSession:
     def _parse(self, src: str) -> lc.Term:
         return _parse_term(src, self.defs)
 
+    _CONSTANT_SHAPED = re.compile(r"^[A-Z][A-Z0-9_']*$")
+
+    def _undefined_names(self, *terms) -> list:
+        """Constant-shaped free names that are neither built-ins nor session
+        defs — i.e. typos, or `let` definitions lost to a page reload."""
+        found = set()
+        for t in terms:
+            for name in lc.free_vars(t):
+                if (self._CONSTANT_SHAPED.match(name)
+                        and name not in church.CONSTANTS and name not in self.defs):
+                    found.add(name)
+        return sorted(found)
+
+    def _undefined_hint(self, *terms) -> str:
+        names = self._undefined_names(*terms)
+        if not names:
+            return ""
+        shown = ", ".join(names)
+        return (yellow(f"  ⚠ {shown}: not defined here — treated as a free variable.")
+                + NL + dim("    A `let` from an earlier session? Reloading clears definitions — "
+                           "define it again (`help let`; `defs` lists what survives).")
+                + NL + dim("    A misspelled constant? `constants` shows the built-ins."))
+
     def run(self, line: str) -> str:
         line = (line or "").strip()
         if not line:
@@ -747,6 +770,9 @@ class LabSession:
             note = _decode_note_nf(last)
             if note:
                 rows.append("  " + note)
+        hint = self._undefined_hint(last)
+        if hint:
+            rows.append(hint)
         return _lines(*rows)
 
     cmd_red = cmd_reduce
@@ -766,6 +792,9 @@ class LabSession:
         note = _decode_note_nf(result.term)
         if note:
             rows.append("  " + note)
+        hint = self._undefined_hint(result.term)
+        if hint:
+            rows.append(hint)
         return _lines(*rows)
 
     def cmd_whnf(self, arg: str) -> str:
@@ -773,7 +802,11 @@ class LabSession:
             return yellow("Usage: ") + "whnf <term>"
         result = lc.whnf_checked(self._parse(arg), max_steps=MAX_NORMALIZE, max_nodes=MAX_REDUCTION_NODES)
         title = "Weak-head normal form" if result.complete else "WHNF reduction limit reached"
-        return _lines(bold(title) + dim(f" · {result.steps} step(s)"), "  " + _term(result.term))
+        rows = [bold(title) + dim(f" · {result.steps} step(s)"), "  " + _term(result.term)]
+        hint = self._undefined_hint(result.term)
+        if hint:
+            rows.append(hint)
+        return _lines(*rows)
 
     def cmd_eta(self, arg: str) -> str:
         if not arg:
@@ -869,7 +902,9 @@ class LabSession:
         if not result.complete:
             return yellow("Inconclusive: the β-normalization limit was reached.")
         note = _decode_note_nf(result.term)
-        return "  " + (note if note else dim("Not a canonical Church numeral or boolean."))
+        out = "  " + (note if note else dim("Not a canonical Church numeral or boolean."))
+        hint = self._undefined_hint(result.term)
+        return out + (NL + hint if hint else "")
 
     def cmd_alpha(self, arg: str) -> str:
         left, right = _split_equation(arg)
@@ -889,12 +924,16 @@ class LabSession:
         if not r1.complete or not r2.complete:
             return yellow("Inconclusive: at least one side did not reach β-normal form within the limit.")
         same = lc.alpha_eq(r1.term, r2.term)
-        return _lines(
+        rows = [
             bold("β-convertibility by normal forms") + dim(" (η is not used)"),
             "  left NF:  " + cyan(_render(r1.term)),
             "  right NF: " + cyan(_render(r2.term)),
             "  " + (green("equal β-normal forms up to α") if same else red("different β-normal forms")),
-        )
+        ]
+        hint = self._undefined_hint(r1.term, r2.term)
+        if hint:
+            rows.append(hint)
+        return _lines(*rows)
 
     def cmd_lean(self, arg: str) -> str:
         name = arg.strip().lower().replace("-", "_")
