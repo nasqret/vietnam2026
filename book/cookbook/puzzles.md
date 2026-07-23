@@ -276,7 +276,23 @@ Where do 76 steps go for such a tiny computation? Measured piece by piece: branc
 Meanwhile the *discarded* branch of every `IF` vanishes unevaluated — normal order is lazy; the
 whole price is in deciding, never in the road not taken.
 
-Rules of thumb: `reduce` to watch mechanics on small inputs (`reduce MIN 2 1` fits at 25 steps);
+And `reduce MIN 4 2` **on its own** fits comfortably — 35 steps — with a finale worth watching:
+around step 32 the whole `LEQ` computation collapses into a literal selector, and the last four
+lines read
+
+```text
+  →β      (λt. (λf. f)) (λf'. (λx. f' (f' (f' (f' x))))) (λf''. (λx'. f'' (f'' x')))
+  →β      (λf. f) (λf'. (λx. f' (f' x)))
+  →β      λf x. f (f x)
+  β-normal form reached in 35 step(s).   = 2  (Church numeral)
+```
+
+— `FALSE` appears *as a term*, swallows the numeral `4` without ever evaluating it, and hands back
+`2`. The endpoint `λf x. f (f x)` **is** the numeral `2` — `church 2` prints the identical term.
+(Meanwhile `alpha MIN 4 2 = 2` says ≢α — strict α never computes — while `equiv` agrees they are
+β-equal: the two judgments in one example.)
+
+Rules of thumb: `reduce` to watch mechanics whenever the count fits the 60-line window;
 `nf`/`decode`/`equiv` for answers (1,000-step budget). And if `MIN` ever comes back as a stuck free
 variable in `nf MIN 4 2 → MIN … (0 steps)`, your page was reloaded — `let` definitions live only in
 the session; run the `let` lines again (`defs` shows what survived).
