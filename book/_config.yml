@@ -56,6 +56,7 @@ sphinx:
           Z: "\\mathbb{Z}"
           R: "\\mathbb{R}"
           C: "\\mathbb{C}"
+          Q: "\\mathbb{Q}"
           lam: "\\lambda"
           To: "\\Rightarrow"
           betared: "\\to_\\beta"
