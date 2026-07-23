@@ -272,6 +272,42 @@ def whnf_step(t: Term) -> Optional[Step]:
     return _step_at(_find_head_redex(t))
 
 
+def _find_eta_redex(t: Term, path: Tuple[int, ...] = ()) -> Optional[Tuple[Term, Tuple[int, ...]]]:
+    """Leftmost-outermost η-redex: λx. f x with x not free in f."""
+    if (isinstance(t, Lam) and isinstance(t.body, App)
+            and isinstance(t.body.arg, Var) and t.body.arg.name == t.param
+            and t.param not in free_vars(t.body.fn)):
+        return t, path
+    if isinstance(t, App):
+        found = _find_eta_redex(t.fn, path + (0,))
+        if found is not None:
+            return found
+        return _find_eta_redex(t.arg, path + (1,))
+    if isinstance(t, Lam):
+        return _find_eta_redex(t.body, path + (0,))
+    return None
+
+
+def eta_step(t: Term) -> Optional[Step]:
+    """One η-contraction, or None if the term is η-normal.
+
+    Kept SEPARATE from beta_step on purpose: the lab's reduction commands are
+    β-only; η is an explicit, opt-in operation (see the audit, LL-MATH-007).
+    """
+    found = _find_eta_redex(t)
+    if found is None:
+        return None
+    redex, path = found
+    assert isinstance(redex, Lam) and isinstance(redex.body, App)
+    return Step(
+        before=redex,
+        after=redex.body.fn,
+        rule="η",
+        redex_path=path,
+        note="λx. f x  →η  f   (x ∉ FV(f))",
+    )
+
+
 def _apply_step(root: Term, path: Tuple[int, ...], patch: Term) -> Term:
     if not path:
         return patch
@@ -344,6 +380,14 @@ def whnf_checked(
     t: Term, *, max_steps: int = 500, max_nodes: Optional[int] = None
 ) -> ReductionResult:
     return _reduce_checked(t, whnf_step, max_steps=max_steps, max_nodes=max_nodes)
+
+
+def eta_normalize_checked(
+    t: Term, *, max_steps: int = 500, max_nodes: Optional[int] = None
+) -> ReductionResult:
+    """η-normal form (η only — no β steps). η strictly shrinks the term, so
+    this terminates long before any sane step budget."""
+    return _reduce_checked(t, eta_step, max_steps=max_steps, max_nodes=max_nodes)
 
 
 def normalize(t: Term, *, max_steps: int = 500) -> Term:

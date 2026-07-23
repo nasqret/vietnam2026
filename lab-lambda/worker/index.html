@@ -43,7 +43,7 @@
     </div>
     <div id="term-wrap"><div class="term-bar" aria-hidden="true"><span class="b-r"></span><span class="b-y"></span><span class="b-g"></span></div><div id="terminal" role="application" aria-label="Lambda Lab terminal"></div></div>
     <div class="quick" id="quick" aria-label="Example commands"><span class="lbl">try:</span>
-      <button class="qbtn" type="button" data-cmd="help" disabled>help</button><button class="qbtn" type="button" data-cmd="tour" disabled>tour</button><button class="qbtn" type="button" data-cmd="reduce AND TRUE FALSE" disabled>reduce AND TRUE FALSE</button><button class="qbtn" type="button" data-cmd="nf PLUS 2 3" disabled>nf PLUS 2 3</button><button class="qbtn" type="button" data-cmd="lean s_comb" disabled>lean s_comb</button><button class="qbtn" type="button" data-cmd="equiv SUCC 2 = 3" disabled>equiv SUCC 2 = 3</button><button class="qbtn" type="button" data-cmd="nf POW 24 24" disabled>nf POW 24 24</button><button class="qbtn" type="button" data-cmd="constants" disabled>constants</button><button class="qbtn" type="button" data-cmd="clear" disabled>clear</button>
+      <button class="qbtn" type="button" data-cmd="help" disabled>help</button><button class="qbtn" type="button" data-cmd="tour" disabled>tour</button><button class="qbtn" type="button" data-cmd="reduce AND TRUE FALSE" disabled>reduce AND TRUE FALSE</button><button class="qbtn" type="button" data-cmd="nf PLUS 2 3" disabled>nf PLUS 2 3</button><button class="qbtn" type="button" data-cmd="lean s_comb" disabled>lean s_comb</button><button class="qbtn" type="button" data-cmd="equiv SUCC 2 = 3" disabled>equiv SUCC 2 = 3</button><button class="qbtn" type="button" data-cmd="prove P -> Q -> P" disabled>prove P -&gt; Q -&gt; P</button><button class="qbtn" type="button" data-cmd="ch type ((P -> Q) -> P) -> P" disabled>ch type (Peirce)</button><button class="qbtn" type="button" data-cmd="alligators (\x. x x) (\y. y)" disabled>alligators</button><button class="qbtn" type="button" data-cmd="tutorial" disabled>tutorial</button><button class="qbtn" type="button" data-cmd="nf POW 24 24" disabled>nf POW 24 24</button><button class="qbtn" type="button" data-cmd="constants" disabled>constants</button><button class="qbtn" type="button" data-cmd="clear" disabled>clear</button>
     </div>
     <div class="info"><strong>Preview build.</strong> This variant runs the Python evaluator in a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API" target="_blank" rel="noopener">Web Worker</a>, so a long or divergent reduction (try <code>nf POW 24 24</code>) keeps the page responsive and can be interrupted with <strong>Stop</strong>. Semantics are identical to the <a href="/lab-lambda/">stable lab</a>. Terms are not sent to a server; a <code>?cmd=</code> deep link is part of the URL. β-reduction only; η is explained, not applied.</div>
   </main>
@@ -54,7 +54,7 @@
   <script>
   (function(){
     "use strict";
-    const BUILD="2026-07-23i-worker";
+    const BUILD="2026-07-23k-worker";
     const PROMPT = "\x1b[92mλ>\x1b[0m ";
     const statusEl = document.getElementById("status");
     const quickEl = document.getElementById("quick");
@@ -78,7 +78,30 @@
     try{ if(window.WebLinksAddon) term.loadAddon(new WebLinksAddon.WebLinksAddon()); }catch(_e){}
     window.addEventListener("resize", function(){ try{ if(fitAddon) fitAddon.fit(); }catch(_e){} });
 
-    let buffer="", cursor=0, history=[], histIdx=0, busy=true;
+    let buffer="", cursor=0, history=loadHistory(), histIdx=history.length, busy=true;
+
+    const COMMANDS=["about","ag","alligators","alpha","ch","church","clear","constants","debruijn","decode","defs","equiv","eta","expand","help","kb","lam","lean","let","nf","numeral","peano","prove","quiz","reduce","tour","tutorial","undef","whnf"];
+    const CONSTS=["TRUE","FALSE","IF","AND","OR","NOT","NAND","NOR","XOR","XNOR","IFF","IMPLIES","PAIR","FST","SND","ZERO","SUCC","PRED","PLUS","SUB","MULT","POW","ISZERO","LEQ","EQ","Y","Z","OMEGA"];
+    const HKEY="lambdaLabHistory";
+    function loadHistory(){try{const h=JSON.parse(localStorage.getItem(HKEY)||"[]");if(Array.isArray(h))return h.filter(function(x){return typeof x==="string";}).slice(-200);}catch(_e){}return [];}
+    function saveHistory(){try{localStorage.setItem(HKEY,JSON.stringify(history.slice(-200)));}catch(_e){}}
+    function doComplete(){
+      const upto=buffer.slice(0,cursor);
+      const tok=(upto.match(/[^\s()\\.]*$/)||[""])[0];
+      if(!tok)return;
+      const firstWord=upto.trimStart().indexOf(" ")===-1;
+      const lead=upto.trimStart().split(/\s+/)[0];
+      const source=firstWord?COMMANDS:(lead==="help"?COMMANDS:CONSTS);
+      const key=(source===CONSTS)?tok.toUpperCase():tok.toLowerCase();
+      const hits=source.filter(function(w){return w.indexOf(key)===0;});
+      if(hits.length===0)return;
+      let suffix;
+      if(hits.length===1){suffix=hits[0].slice(key.length)+" ";}
+      else{const lcp=hits.reduce(function(a,b){let i=0;while(i<a.length&&a[i]===b[i])i++;return a.slice(0,i);});suffix=lcp.slice(key.length);}
+      if(suffix){buffer=buffer.slice(0,cursor-tok.length)+ (source===CONSTS?key:tok.toLowerCase())+suffix+buffer.slice(cursor);cursor+=suffix.length+((source===CONSTS?key:tok).length-tok.length);redraw();}
+      else{term.write("\r\n\x1b[2m  "+hits.join("  ")+"\x1b[0m\r\n");redraw();}
+    }
+
     let worker=null, banner="", reqId=0, gen=0, initialRan=false; const pending=new Map();
 
     function writeOut(v){ if(v!==undefined && v!==null && String(v)!=="") term.write(String(v).replace(/\r?\n/g,"\r\n")); }
@@ -90,7 +113,7 @@
 
     async function submit(){
       const line=buffer; term.write("\r\n"); const trimmed=line.trim();
-      if(trimmed) history.push(line);
+      if(trimmed) history.push(line);saveHistory();
       if(trimmed.toLowerCase()==="clear" || trimmed.toLowerCase()==="cls"){ doClear(); return; }
       busy=true; setQuickEnabled(false); setStop(true);
       const g=gen;
@@ -126,7 +149,7 @@
         case "\x1b[H": case "\x1b[1~": case "\x01": cursor=0; redraw(); return;
         case "\x1b[F": case "\x1b[4~": case "\x05": cursor=buffer.length; redraw(); return;
         case "\x1b[3~": if(cursor<buffer.length){ buffer=buffer.slice(0,cursor)+buffer.slice(cursor+1); redraw(); } return;
-        case "\x03": term.write("^C"); prompt(); return;
+        case"\t":doComplete();return;case "\x03": term.write("^C"); prompt(); return;
         case "\x0c": doClear(); return;
         default:
           if(data.startsWith("\x1b")) return;

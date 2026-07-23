@@ -14,6 +14,13 @@ from typing import List, Optional
 
 from lambda_lab.lab import church, lc
 from lambda_lab.lab.parser import ParseError, parse
+from lambda_lab.lab.webport import ag as web_ag
+from lambda_lab.lab.webport import ch as web_ch
+from lambda_lab.lab.webport import alligators as web_alligators
+from lambda_lab.lab.webport import kb as web_kb
+from lambda_lab.lab.webport import prove as web_prove
+from lambda_lab.lab.webport import quiz as web_quiz
+from lambda_lab.lab.webport import tutorial as web_tutorial
 
 RESET = "\x1b[0m"
 
@@ -74,58 +81,324 @@ LEAN_SNIPPETS = {
 }
 LEAN_SNIPPETS["s_combinator"] = LEAN_SNIPPETS["s_comb"]
 
-DESKTOP_ONLY = {"ch", "tutorial", "games", "eml", "prove",
-                "aristotle", "ag", "acorn", "lang"}
+DESKTOP_ONLY = {"games", "eml", "aristotle", "acorn", "lang"}
 
-KB = {
-    "beta-reduction": ("β-reduction", "The computational rule: (λx.t) u → t[x:=u]. Repeated β-reduction is computation; a term with no β-redex is a β-normal form."),
-    "alpha-equivalence": ("α-equivalence", "Renaming bound variables leaves a term unchanged: λx.x ≡α λy.y. Bound names carry no meaning. The alpha command checks only this relation."),
-    "substitution": ("Capture-avoiding substitution", "t[x:=u] replaces free x by u, renaming bound variables so no free variable of u is captured."),
-    "eta": ("η-conversion", "Extensionality: λx.(t x) ≡η t when x is not free in t. This browser reducer is β-only; η is explained but not applied automatically."),
-    "normal-form": ("Normal form", "A β-normal form has no β-redex. By Church–Rosser it is unique up to α when it exists. Ω has no β-normal form."),
-    "church-rosser": ("Church–Rosser (confluence)", "If t reduces to u1 and u2, both reduce to a common term. Consequently, any β-normal form is unique up to α."),
-    "church-encoding": ("Church encoding", "Data as pure functions: true=λt f.t, false=λt f.f, numeral n=λf x.fⁿx. In the untyped calculus FALSE and numeral 0 are the same term."),
-    "church-numeral": ("Church numeral", "n = λf x. fⁿx — apply f to x exactly n times. Try: church 3 or peano 3."),
-    "y-combinator": ("Y-combinator", "Y f →β f (Y f), providing fixed points and recursion in the untyped calculus."),
-    "curry-howard": ("Curry–Howard correspondence", "Propositions correspond to types and proofs to terms; β-reduction corresponds to proof normalization."),
-    "type-judgment": ("Typing judgment", "Γ ⊢ t : A means that term t has type A in context Γ."),
-    "stlc": ("Simply-typed λ-calculus", "Types A ::= o | A→B. Every well-typed term is strongly normalizing, so Y is untypable in STLC."),
-    "dependent-type": ("Dependent type", "A type may depend on a term: Π generalizes functions/universal quantification and Σ generalizes pairs/existential quantification."),
-    "s-combinator": ("The S combinator", "S f g x = f x (g x). Its Curry–Howard type is a tautology whose proof term is S."),
-    "lean": ("Lean 4", "A proof assistant based on the Calculus of Inductive Constructions. Lean's kernel is constructive; classical principles are available explicitly and are widely used in Mathlib."),
-    "autoformalization": ("Autoformalization", "Natural-language statements or proofs are translated into formal syntax; the kernel, not the model, decides whether the result checks."),
-    "eml": ("EML project", "A Lean 4 formalization used as the course capstone. See the linked repository for the machine-checked source and current counts."),
-    "free-variables": ("Free and bound variables", "An occurrence is bound by its nearest enclosing binder of the same name; otherwise it is free. Shadowing therefore matters."),
-    "bhk": ("BHK interpretation", "A proof of A∧B is a pair, of A∨B a tagged choice, of A→B a construction transforming proofs, and of ⊥ no construction."),
-    "natural-deduction": ("Natural deduction", "Connectives have introduction rules for constructing proofs and elimination rules for using them."),
-    "intuitionistic": ("Intuitionistic vs classical", "Intuitionistic logic does not accept excluded middle or double-negation elimination without an additional principle."),
-    "church-vs-curry": ("Church vs Curry typing", "Church-style terms carry type annotations. Curry-style systems infer types for unannotated terms; principal typing in STLC is related to, but not identical with, Hindley–Milner let-polymorphism."),
-    "mltt": ("Martin-Löf Type Theory", "MLTT uses dependent Π/Σ types, identity types, inductive types and a hierarchy of universes."),
-    "four-foundations": ("Four foundations", "Lean and Rocq use CIC, Agda is based on MLTT, and Mizar uses set-theoretic foundations."),
-    "mathlib": ("Mathlib", "Lean's community mathematics library. Counts change rapidly; consult Mathlib's own statistics for current figures."),
-    "tactic-mode": ("Term mode vs tactic mode", "A term and a tactic script ultimately construct kernel-checkable proof terms."),
-    "agda": ("Agda", "A dependently typed programming language and proof assistant based on Martin-Löf type theory."),
-    "mizar": ("Mizar", "A declarative proof system based on classical first-order set theory rather than propositions-as-types."),
+# Per-command help: syntax, what it does, worked examples, fine print.
+# Rendered by `help <command>`.
+HELP_TOPICS = {
+    "reduce": {
+        "syntax": "reduce <term>     (aliases: red, r — or just type the term)",
+        "what": "Step-by-step β-reduction in normal order (leftmost-outermost), one line per step, "
+                "with an honest status: normal form reached, or stopped at the step/size limit.",
+        "examples": [
+            ("reduce (\\x. x x) (\\y. y)", "self-application collapses to the identity in 2 steps"),
+            ("reduce AND TRUE FALSE", "watch a Church-boolean circuit evaluate"),
+            ("reduce IF TRUE a b", "the conditional selects its first branch"),
+            ("PLUS 1 1", "no command needed — a bare term is reduced automatically"),
+            ("reduce OMEGA", "(λx. x x)(λx. x x) loops forever; the trace stops at the limit"),
+        ],
+        "notes": f"Shows at most {MAX_TRACE} steps; intermediate terms are capped at "
+                 f"{MAX_REDUCTION_NODES:,} AST nodes. A cut-off trace is labelled partial — "
+                 "never presented as a normal form. Use nf for the result only.",
+    },
+    "nf": {
+        "syntax": "nf <term>",
+        "what": "β-normal form only (no trace), computed with a bigger fuel budget, then decoded "
+                "as a Church numeral/boolean when possible.",
+        "examples": [
+            ("nf PLUS 2 3", "→ λf x. f (f (f (f (f x))))  = 5"),
+            ("nf POW 2 5", "exponentiation by numeral application = 32"),
+            ("nf PRED 3", "Kleene's predecessor trick in action = 2"),
+            ("nf FST (PAIR TRUE FALSE)", "pairs are functions too → TRUE"),
+            ("nf OMEGA", "honestly reports the step limit — Ω has no normal form"),
+        ],
+        "notes": f"Budget: {MAX_NORMALIZE:,} β-steps / {MAX_REDUCTION_NODES:,} nodes. "
+                 "If the limit is hit you get 'reduction limit reached', not a fake answer.",
+    },
+    "whnf": {
+        "syntax": "whnf <term>",
+        "what": "Weak-head normal form: reduce only the head redex chain — never under a λ, never "
+                "inside arguments. This is what lazy languages actually compute.",
+        "examples": [
+            ("whnf \\x. (\\y. y) z", "already in WHNF (the redex is under the λ) — nf would reduce it"),
+            ("whnf (\\x. \\y. x) a b", "head reduction gives a without touching anything else"),
+        ],
+        "notes": "Contrast with nf on the same terms — the difference IS the definition.",
+    },
+    "lam": {
+        "syntax": "lam <term>",
+        "what": "Parse a term and print it in λ- and ASCII notation plus its free variables — "
+                "without reducing anything.",
+        "examples": [
+            ("lam \\x y. x (y z)", "free variables: z"),
+            ("lam \\TRUE. TRUE", "TRUE is a legal *bound* name — constants only expand when free"),
+            ("lam x'2", "x'2 is one identifier, not x' applied to 2"),
+        ],
+        "notes": "Good first stop when a term misbehaves: check what the parser actually read.",
+    },
+    "expand": {
+        "syntax": "expand <term>",
+        "what": "Replace every *free* occurrence of a named constant (TRUE, PLUS, Y, …) by its "
+                "λ-definition, scope-aware, without reducing.",
+        "examples": [
+            ("expand NOT p", "see the raw λ-term you would have to write by hand"),
+            ("expand NAND p q", "nested definitions unfold recursively (NOT of AND)"),
+            ("expand \\TRUE. TRUE", "a bound TRUE is left alone — scope matters"),
+        ],
+        "notes": "This is exactly the preprocessing reduce/nf apply before working.",
+    },
+    "church": {
+        "syntax": "church <NAME|n>",
+        "what": "Show a named Church constant (conceptual form + fully expanded λ-term) or the "
+                "Church numeral for n, with a decoded value when it is already a normal form.",
+        "examples": [
+            ("church SUCC", "the successor: λn f x. f (n f x)"),
+            ("church 3", "λf x. f (f (f x)) — apply f three times"),
+            ("church PRED", "the famous 'hard one' (Kleene's pair trick)"),
+            ("church Y", "the fixed-point combinator — shown, not normalized (it has no NF)"),
+        ],
+        "notes": "See `constants` for the full list. Reducible constants (Y, Z, OMEGA) are "
+                 "displayed without hidden normalization, so this is always instant.",
+    },
+    "numeral": {
+        "syntax": "numeral <n>",
+        "what": "The Church numeral for n — shorthand for church <n>.",
+        "examples": [("numeral 4", "λf x. f (f (f (f x)))")],
+        "notes": f"n ranges 0..{MAX_NUMERAL} in the browser.",
+    },
+    "peano": {
+        "syntax": "peano <n>",
+        "what": "The same number two ways: Peano-style SUCC (SUCC (… ZERO)) and the Church numeral "
+                "— the bridge between Lecture 2 and Lean's Nat in Lecture 4.",
+        "examples": [("peano 3", "SUCC (SUCC (SUCC (ZERO)))  vs  λf x. f (f (f x))")],
+        "notes": "Both ZERO and 0 are usable constants and expand to λf x. x.",
+    },
+    "decode": {
+        "syntax": "decode <term>",
+        "what": "Normalize the term, then read the normal form back as a Church numeral or boolean "
+                "(binder-aware, so variable shadowing cannot fool it).",
+        "examples": [
+            ("decode SUCC (SUCC 0)", "= 2"),
+            ("decode FALSE", "= 0 / FALSE — in the untyped calculus they are the SAME term"),
+            ("decode \\f. \\f. f f", "not a canonical numeral: the shadowed binder is rejected"),
+        ],
+        "notes": "If normalization hits the limit the decode is 'inconclusive', never a guess.",
+    },
+    "alpha": {
+        "syntax": "alpha <term> = <term>",
+        "what": "STRICT α-equivalence: are the two terms identical up to renaming bound variables? "
+                "No β (and no η) steps are taken.",
+        "examples": [
+            ("alpha \\x. x = \\y. y", "≡α — bound names carry no meaning"),
+            ("alpha \\x. \\y. x = \\x. \\x. x", "NOT α-equivalent: one returns the outer, one the inner binder"),
+            ("alpha SUCC 2 = 3", "NOT α-equivalent as raw terms — that's a β question; use equiv"),
+        ],
+        "notes": "The classic exam trap is the middle example. For 'same value after computing', "
+                 "you want equiv.",
+    },
+    "equiv": {
+        "syntax": "equiv <term> = <term>",
+        "what": "β-convertibility via normal forms: normalize both sides (bounded), then compare "
+                "up to α. Reports 'inconclusive' if either side hits the fuel limit.",
+        "examples": [
+            ("equiv SUCC 2 = 3", "equal β-normal forms — the arithmetic checks out"),
+            ("equiv NAND TRUE TRUE = NOT TRUE", "verify a Boolean identity on actual values"),
+            ("equiv POW 2 0 = 1", "the η-long POW makes exponent zero come out right"),
+            ("equiv OMEGA = OMEGA", "inconclusive — neither side has a normal form"),
+        ],
+        "notes": "η is NOT used: λx. f x and f are not identified. Strict renaming-only "
+                 "comparison is alpha.",
+    },
+    "lean": {
+        "syntax": "lean [name]",
+        "what": "Show one of the course's Lean 4 snippets (read-only) with a live.lean-lang.org "
+                "link that opens the exact code in the Lean web editor, where you can RUN it.",
+        "examples": [
+            ("lean", "list the available snippets"),
+            ("lean s_comb", "the S combinator — the proof term IS the program"),
+            ("lean add_comm", "commutativity of + by induction, NNG-style"),
+            ("lean eval", "the EML-in-miniature expression evaluator from the artifacts"),
+        ],
+        "notes": "The Lean kernel itself cannot run inside this page; the Live Lean link is the "
+                 "one-click way to actually check the snippet.",
+    },
+    "kb": {
+        "syntax": "kb [topic]  ·  kb search <text>  ·  kb show <id>",
+        "what": "The knowledge base, ported from the desktop lab: concept explanations plus a "
+                "searchable registry of books, courses and papers with readings per topic.",
+        "examples": [
+            ("kb", "list topics by category"),
+            ("kb curry-howard", "propositions-as-types in one breath, with readings"),
+            ("kb search induction", "full-text search across the registry"),
+            ("kb show macbeth-mechanics-of-proof", "one entry in detail"),
+        ],
+        "notes": "Topics use kebab-case; prefix/substring match is accepted.",
+    },
+    "quiz": {
+        "syntax": "quiz [bundle]  ·  quiz bundles · skip · hint · score · stop",
+        "what": "The desktop quiz engine (9 bundles, ~290 questions): multiple-choice, true/false "
+                "and open questions. Term answers are graded up to α-equivalence after "
+                "normalization; score is kept for the session.",
+        "examples": [
+            ("quiz", "next question from the current bundle"),
+            ("quiz bundles", "list all bundles — from intro_lambda to final_exam"),
+            ("quiz church_essentials", "switch bundle"),
+            ("quiz score", "how you are doing"),
+        ],
+        "notes": "The desktop's LLM judge is not available in the browser; grading is exact/α-β "
+                 "equivalence. Commands still work mid-question.",
+    },
+    "ch": {
+        "syntax": "ch term <λ-term>  ·  ch type <TYPE>  ·  ch build <TYPE>  ·  ch lib · tactic · lean · explore",
+        "what": "Curry-style types (the Lecture 1 engine): principal-type inference (Algorithm W) "
+                "for untyped terms, and inhabitation search for implicational propositions — "
+                "provability in intuitionistic logic, live.",
+        "examples": [
+            ("ch term \\p. p", "principal type α → α"),
+            ("ch term \\x. x x", "untypable — self-application has no simple type"),
+            ("ch type (P -> Q) -> P -> P", "inhabited; the witness term is printed"),
+            ("ch type ((P -> Q) -> P) -> P", "Peirce's law: UNINHABITED constructively"),
+            ("ch build P -> Q -> P", "interactive: build the inhabitant tactic by tactic"),
+        ],
+        "notes": "The kb/`prove` cross-references apply; `ch verify` (Lean check) is desktop-only "
+                 "but every result links to Live Lean.",
+    },
+    "prove": {
+        "syntax": "prove <prop>  ·  then tactics: intro/intros/exact/apply/refine/assumption · hint · undo · qed · abort",
+        "what": "The interactive Curry–Howard proof builder: state a proposition, prove it tactic "
+                "by tactic, watch the λ-term grow hole by hole (?₀, ?₁, …), and extract the "
+                "finished proof term — the program your proof IS.",
+        "examples": [
+            ("prove (P -> Q) -> P -> Q", "then: intro f · intro p · apply f · exact p · qed"),
+            ("prove P -> Q -> P", "the K combinator, discovered interactively"),
+            ("hint", "mid-proof: ask the Wajsberg proof search for the next move"),
+        ],
+        "notes": "Implicational fragment (→), like the desktop builder. qed prints the λ-term, "
+                 "the proposition, and its principal type.",
+    },
+    "tutorial": {
+        "syntax": "tutorial  ·  tutorial <n|name>  ·  then: answers · hint · skip · quit",
+        "what": "Twelve guided walkthroughs from the desktop lab — Gauss's sum, √2 irrational, "
+                "pigeonhole, Euclid's primes, AM-GM, Bézout, Cauchy–Schwarz, Fibonacci, Wilson, "
+                "Euler's identity — each a stepwise dialogue with checked answers.",
+        "examples": [
+            ("tutorial", "list chapters with your progress"),
+            ("tutorial 2", "√2 is irrational, step by step"),
+            ("hint", "stuck mid-step? ask"),
+        ],
+        "notes": "Progress lasts for this browser session.",
+    },
+    "alligators": {
+        "syntax": "alligators <term>",
+        "what": "Bret Victor's Alligator Eggs: render a term as nested alligator families — a "
+                "hungry alligator per λ, an egg per variable — the visual λ-calculus.",
+        "examples": [
+            ("alligators \\x. x", "one hungry alligator guarding one egg"),
+            ("alligators (\\x. x x) (\\y. y)", "a family about to feed"),
+        ],
+        "notes": "Pure visualization; feeding (β-reduction) is what `reduce` shows textually.",
+    },
+    "ag": {
+        "syntax": "ag  ·  ag <name>",
+        "what": "Replay a pre-baked AlphaGeometry-style DD+AR proof step by step (Lecture 6): "
+                "deductive-database steps + algebraic reasoning, as the system found them.",
+        "examples": [
+            ("ag", "list the available replays"),
+            ("ag angle_bisector", "isosceles triangle: bisector = altitude"),
+        ],
+        "notes": "A replay of a recorded proof — the full AlphaGeometry stack is not (and could "
+                 "not be) running in the browser.",
+    },
+    "constants": {
+        "syntax": "constants",
+        "what": "List every named constant the parser knows: booleans, pairs, numerals & "
+                "arithmetic, and the fixed-point/divergence combinators.",
+        "examples": [("constants", "the full table, grouped")],
+        "notes": "Any of these names can appear in any term; free occurrences expand to their "
+                 "λ-definitions.",
+    },
+    "tour": {
+        "syntax": "tour",
+        "what": "A guided one-minute tour: a curated sequence of reductions with commentary, "
+                "each of which you can re-run yourself.",
+        "examples": [("tour", "identity, AND, SUCC, PLUS, MULT, POW 2 0 — with decoded values")],
+        "notes": "The best first command if you are new here.",
+    },
+    "about": {
+        "syntax": "about",
+        "what": "What this page is: architecture (Pyodide + xterm.js), privacy of typed terms, "
+                "the β-only reduction contract, and links to the course.",
+        "examples": [("about", "")],
+        "notes": "",
+    },
+    "clear": {
+        "syntax": "clear    (alias: cls, or Ctrl-L)",
+        "what": "Clear the terminal and reprint the banner.",
+        "examples": [("clear", "")],
+        "notes": "",
+    },
+    "eta": {
+        "syntax": "eta <term>",
+        "what": "Opt-in η-reduction: contract λx. f x → f (when x is not free in f), step by step, "
+                "to the η-normal form. No β steps are taken — reduce/nf remain β-only by design.",
+        "examples": [
+            ("eta \\x. f x", "one η-step to f — extensionality in action"),
+            ("eta \\x. \\y. f x y", "two nested η-redexes collapse to f"),
+            ("eta \\x. x x", "already η-normal: x IS free in the function part"),
+            ("eta POW 2 0", "constants expand first; the η-story behind exponent zero"),
+        ],
+        "notes": "η identifies functions that agree on all arguments. The lab keeps it separate "
+                 "from β so that 'normal form' always means exactly β-normal form.",
+    },
+    "debruijn": {
+        "syntax": "debruijn <term>",
+        "what": "The nameless De Bruijn view: each bound variable becomes the number of binders "
+                "between it and its own λ. Free variables keep their names.",
+        "examples": [
+            ("debruijn \\x. x", "λ 0"),
+            ("debruijn \\x. \\y. x", "λ λ 1 — the outer binder, one λ away"),
+            ("debruijn \\x. \\x. x", "λ λ 0 — shadowing resolved: the INNER x wins"),
+            ("debruijn \\f x. f (f x)", "the Church numeral 2, namelessly"),
+        ],
+        "notes": "α-equivalence = identical nameless forms; this is literally how the `alpha` "
+                 "command (and Lean's kernel) compare binders.",
+    },
+    "let": {
+        "syntax": "let NAME = <term>     ·  see also: defs, undef",
+        "what": "Define your own session constant (UPPERCASE name). The right-hand side is expanded "
+                "and stored; afterwards NAME can appear in any term, exactly like TRUE or PLUS.",
+        "examples": [
+            ("let COMPOSE = \\f g x. f (g x)", "then: nf COMPOSE SUCC SUCC 1  → 3"),
+            ("let TWICE = \\f x. f (f x)", "TWICE is Church 2 in disguise — decode TWICE"),
+            ("let W = \\x. x x", "then reduce W W — your own Ω"),
+        ],
+        "notes": "Definitions are expanded at let-time, so they can use earlier definitions but "
+                 "never form cycles. They live only in this browser session. Built-in constant "
+                 "names are protected.",
+    },
+    "defs": {
+        "syntax": "defs",
+        "what": "List your session `let` definitions with their expanded λ-terms.",
+        "examples": [("defs", "")],
+        "notes": "",
+    },
+    "undef": {
+        "syntax": "undef NAME",
+        "what": "Remove a session definition.",
+        "examples": [("undef COMPOSE", "")],
+        "notes": "",
+    },
+    "help": {
+        "syntax": "help [command]     (alias: commands)",
+        "what": "Without an argument: the command overview. With a command name: this kind of "
+                "detailed page — syntax, semantics, worked examples, limits.",
+        "examples": [("help alpha", "why α-equivalence is stricter than you think"),
+                      ("help equiv", "what 'inconclusive' means")],
+        "notes": "",
+    },
 }
-
-QUIZ_QS = [
-    ("Reduce AND TRUE TRUE — what Church boolean do you get?", "TRUE"),
-    ("What is PLUS 2 2 as a Church numeral?", "4"),
-    ("Reduce NOT FALSE.", "TRUE"),
-    ("Normal form of (\\x. x) (\\y. y)?", "\\y. y"),
-    ("What is MULT 2 3?", "6"),
-    ("Reduce FST (PAIR TRUE FALSE).", "TRUE"),
-    ("What is PRED 3?", "2"),
-    ("Is OR FALSE FALSE true or false?", "FALSE"),
-    ("What is SUCC (SUCC 0)?", "2"),
-    ("What is POW 2 3?", "8"),
-    ("Reduce AND FALSE TRUE.", "FALSE"),
-    ("What is SUB 5 2?", "3"),
-    ("Reduce SND (PAIR TRUE FALSE).", "FALSE"),
-    ("Is ISZERO 0 TRUE or FALSE?", "TRUE"),
-    ("Is ISZERO 2 TRUE or FALSE?", "FALSE"),
-    ("What is MULT 3 3?", "9"),
-]
+HELP_ALIASES = {"red": "reduce", "r": "reduce", "eq": "equiv", "cls": "clear",
+                "commands": "help", "num": "numeral"}
 
 
 def _lines(*rows: str) -> str:
@@ -157,13 +430,60 @@ def _expand_numbers(src: str) -> str:
     return _POSITIVE_LITERAL.sub(repl, src)
 
 
-def _parse_term(src: str) -> lc.Term:
+def _expand_user(term: lc.Term, defs, bound=frozenset()) -> lc.Term:
+    """Expand free occurrences of session `let`-definitions, scope-aware —
+    the same shape as church.expand_term. Stored definitions are already fully
+    expanded at definition time, so one pass suffices and cycles cannot occur."""
+    if isinstance(term, lc.Var):
+        if term.name in defs and term.name not in bound:
+            return defs[term.name]
+        return term
+    if isinstance(term, lc.Lam):
+        return lc.Lam(term.param, _expand_user(term.body, defs, bound | {term.param}))
+    if isinstance(term, lc.App):
+        return lc.App(_expand_user(term.fn, defs, bound), _expand_user(term.arg, defs, bound))
+    raise TypeError(f"Unknown term: {term!r}")
+
+
+def _parse_term(src: str, defs=None) -> lc.Term:
     if len(src) > MAX_INPUT:
         raise ValueError(f"input is too long for the browser (max {MAX_INPUT} characters)")
-    term = church.expand_term(parse(_expand_numbers(src)))
+    term = parse(_expand_numbers(src))
+    if defs:
+        term = _expand_user(term, defs)
+    term = church.expand_term(term)
     if lc.term_size(term, stop_after=MAX_NODES) > MAX_NODES:
         raise ValueError(f"expanded term is too large for the browser (max {MAX_NODES} AST nodes)")
     return term
+
+
+_HL_OPEN, _HL_CLOSE = "\x00[", "\x00]"
+
+
+def _pretty_hl(t: lc.Term, path) -> str:
+    """Pretty-print with the subtree at `path` highlighted (the next redex).
+    α-renames first for display (pure renaming, so the path stays valid);
+    unlike lc.pretty it keeps each λ separate, which keeps paths simple."""
+    t = lc._alpha_rename_unique(t)
+
+    def walk(node, ctx, p):
+        mark = (p == path)
+        if isinstance(node, lc.Var):
+            s = node.name
+        elif isinstance(node, lc.Lam):
+            s = "λ" + node.param + ". " + walk(node.body, "lam", p + (0,))
+            if ctx != "top":
+                s = "(" + s + ")"
+        elif isinstance(node, lc.App):
+            s = walk(node.fn, "app-left", p + (0,)) + " " + walk(node.arg, "app-right", p + (1,))
+            s = s if ctx in ("top", "lam", "app-left") else "(" + s + ")"
+        else:
+            raise TypeError(f"Unknown term: {node!r}")
+        return (_HL_OPEN + s + _HL_CLOSE) if mark else s
+
+    text = walk(t, "top", ())
+    # markers → ANSI: leave cyan, paint the redex, resume cyan
+    return text.replace(_HL_OPEN, RESET + "\x1b[1;93m").replace(_HL_CLOSE, RESET + "\x1b[96m")
 
 
 def _decode_note_nf(t: lc.Term) -> Optional[str]:
@@ -195,8 +515,11 @@ def _split_equation(arg: str) -> tuple[str, str]:
 class LabSession:
     def __init__(self) -> None:
         self.history: List[str] = []
-        self.quiz: Optional[str] = None
-        self.quiz_idx = 0
+        self.defs: dict = {}          # session `let` definitions: NAME -> expanded Term
+        self.webstate: dict = {}      # shared state for the ported feature modules
+
+    def _parse(self, src: str) -> lc.Term:
+        return _parse_term(src, self.defs)
 
     def run(self, line: str) -> str:
         line = (line or "").strip()
@@ -213,8 +536,15 @@ class LabSession:
             if handler is None:
                 if cmd in DESKTOP_ONLY:
                     return self._desktop_only(cmd)
-                if self.quiz is not None:
-                    return self._answer_quiz(line)
+                # Interactive sessions consume raw lines (tactics, answers, …).
+                if self.webstate.get("ch.interactive"):
+                    return web_ch.handle(line, self.webstate)
+                if web_prove.is_active(self.webstate):
+                    return web_prove.handle(line, self.webstate)
+                if web_tutorial.is_active(self.webstate):
+                    return web_tutorial.handle(line, self.webstate)
+                if web_quiz.pending(self.webstate):
+                    return web_quiz.handle(line, self.webstate)
                 # A bare lambda term may be an application such as `x y`.
                 return self.cmd_reduce(line)
             return handler(arg)
@@ -228,12 +558,38 @@ class LabSession:
             return red(f"{type(exc).__name__}: {exc}")
 
     def cmd_help(self, arg: str) -> str:
-        del arg
+        topic = arg.strip().lower()
+        if topic:
+            key = HELP_ALIASES.get(topic, topic)
+            entry = HELP_TOPICS.get(key)
+            if entry is None:
+                near = [k for k in HELP_TOPICS if k.startswith(topic)] or \
+                       [k for k in HELP_TOPICS if topic in k]
+                if len(near) == 1:
+                    key, entry = near[0], HELP_TOPICS[near[0]]
+                else:
+                    hint = ("  did you mean: " + "  ".join(green(k) for k in near)) if near else \
+                           dim("  type ") + bold("help") + dim(" for the command list.")
+                    return _lines(red(f"No help topic {arg.strip()!r}."), hint)
+            rows = [bold(magenta(key)) + dim("  —  " + entry["syntax"]), ""]
+            rows.append("  " + entry["what"])
+            if entry.get("examples"):
+                rows.append("")
+                rows.append("  " + bold("Examples"))
+                for cmd, why in entry["examples"]:
+                    rows.append("    " + yellow(cmd) + (("   " + dim("— " + why)) if why else ""))
+            if entry.get("notes"):
+                rows.append("")
+                rows.append("  " + dim(entry["notes"]))
+            return _lines(*rows)
         return _lines(
             bold(magenta("Lambda Lab") + " — commands"), "",
             f"  {green('reduce')} {dim('<term>')}    step-by-step β-reduction (or type a bare term)",
             f"  {green('nf')} {dim('<term>')}        β-normal form, with an explicit fuel status",
             f"  {green('whnf')} {dim('<term>')}      weak-head normal form (does not reduce under λ)",
+            f"  {green('eta')} {dim('<term>')}       opt-in η-reduction to η-normal form",
+            f"  {green('debruijn')} {dim('<term>')}  the nameless De Bruijn view of a term",
+            f"  {green('let')} {dim('NAME = <t>')}   define a session constant (defs · undef)",
             f"  {green('lam')} {dim('<term>')}       parse, pretty-print and list free variables",
             f"  {green('expand')} {dim('<term>')}    scope-safely expand free named constants",
             f"  {green('church')} {dim('<NAME|n>')}  show a Church constant or numeral",
@@ -243,6 +599,11 @@ class LabSession:
             f"  {green('alpha')} {dim('<t> = <u>')}  strict α-equivalence (renaming only)",
             f"  {green('equiv')} {dim('<t> = <u>')}  compare β-normal forms up to α",
             f"  {green('lean')} {dim('[name]')}      show a course Lean snippet, read-only",
+            f"  {green('ch')} {dim('term|type <x>')} principal types & inhabitation (Curry-style)",
+            f"  {green('prove')} {dim('<prop>')}     interactive Curry–Howard proof builder",
+            f"  {green('tutorial')} {dim('[n]')}     guided step-by-step tutorials",
+            f"  {green('alligators')} {dim('<t>')}   Alligator Eggs view of a term",
+            f"  {green('ag')} {dim('[name]')}        replay an AlphaGeometry proof",
             f"  {green('kb')} {dim('[topic]')}       look up a concept",
             f"  {green('quiz')}              self-check question",
             f"  {green('constants')}         list named constants",
@@ -251,6 +612,7 @@ class LabSession:
             f"  {green('clear')}             clear the terminal", "",
             dim("Terms use ") + cyan("λx. x") + dim(" or ") + cyan("\\x. x") + dim("; integers become Church numerals."),
             dim("Try: ") + yellow("reduce AND TRUE FALSE") + dim(" · ") + yellow("nf PLUS 2 3") + dim(" · ") + yellow("equiv SUCC 2 = 3"),
+            dim("Details per command: ") + bold(green("help <command>")) + dim("  e.g. ") + yellow("help alpha"),
         )
 
     cmd_commands = cmd_help
@@ -316,12 +678,12 @@ class LabSession:
     def cmd_expand(self, arg: str) -> str:
         if not arg:
             return yellow("Usage: ") + "expand <term>"
-        return _lines(bold("Expanded free constants to raw λ-terms:"), "  " + _term(_parse_term(arg)))
+        return _lines(bold("Expanded free constants to raw λ-terms:"), "  " + _term(self._parse(arg)))
 
     def cmd_lam(self, arg: str) -> str:
         if not arg:
             return yellow("Usage: ") + "lam <term>"
-        t = _parse_term(arg)
+        t = self._parse(arg)
         fv = sorted(lc.free_vars(t))
         return _lines(
             bold("Parsed term"),
@@ -333,21 +695,38 @@ class LabSession:
     def cmd_reduce(self, arg: str) -> str:
         if not arg:
             return yellow("Usage: ") + "reduce <term>"
-        t = _parse_term(arg)
-        rows = [bold("β-reduction") + dim(" (normal order)"), "  " + dim("start: ") + _term(t)]
+        t = self._parse(arg)
+
+        def shown(term):
+            """Render `term` with its next β-redex highlighted (if any)."""
+            nxt = lc.beta_step(term)
+            if nxt is None:
+                return cyan(_render(term))
+            text = _pretty_hl(term, nxt.redex_path)
+            if len(text) > MAX_RENDER_CHARS + 32:  # allow for markers
+                return cyan(_render(term))         # too big to highlight usefully
+            return cyan(text)
+
+        rows = [bold("β-reduction") + dim(" (normal order · ") + "\x1b[1;93m" + "highlight" + RESET + dim(" = next redex)"),
+                "  " + dim("start:  ") + shown(t)]
         rendered = sum(len(row) for row in rows)
         output_truncated = False
         last = t
         steps = 0
-        for step in lc.trace_steps(t, max_steps=MAX_TRACE):
+        current = t
+        while steps < MAX_TRACE:
+            step = lc.beta_step(current)
+            if step is None:
+                break
+            current = lc._apply_step(current, step.redex_path, step.after)
             steps += 1
-            last = step.after
+            last = current
             if lc.term_size(last, stop_after=MAX_REDUCTION_NODES) > MAX_REDUCTION_NODES:
                 rows.append("  " + yellow(f"… stopped at {steps} steps: intermediate term exceeded {MAX_REDUCTION_NODES:,} AST nodes."))
                 output_truncated = True
                 break
             if not output_truncated:
-                row = f"  {dim('→β')}      " + cyan(_render(last))
+                row = f"  {dim('→β')}      " + shown(last)
                 if rendered + len(row) <= MAX_TRACE_OUTPUT_CHARS:
                     rows.append(row)
                     rendered += len(row)
@@ -376,7 +755,7 @@ class LabSession:
     def cmd_nf(self, arg: str) -> str:
         if not arg:
             return yellow("Usage: ") + "nf <term>"
-        result = lc.normalize_checked(_parse_term(arg), max_steps=MAX_NORMALIZE, max_nodes=MAX_REDUCTION_NODES)
+        result = lc.normalize_checked(self._parse(arg), max_steps=MAX_NORMALIZE, max_nodes=MAX_REDUCTION_NODES)
         if not result.complete:
             return _lines(
                 bold("Reduction limit reached") + dim(f" after {result.steps} β-step(s)"),
@@ -392,14 +771,101 @@ class LabSession:
     def cmd_whnf(self, arg: str) -> str:
         if not arg:
             return yellow("Usage: ") + "whnf <term>"
-        result = lc.whnf_checked(_parse_term(arg), max_steps=MAX_NORMALIZE, max_nodes=MAX_REDUCTION_NODES)
+        result = lc.whnf_checked(self._parse(arg), max_steps=MAX_NORMALIZE, max_nodes=MAX_REDUCTION_NODES)
         title = "Weak-head normal form" if result.complete else "WHNF reduction limit reached"
         return _lines(bold(title) + dim(f" · {result.steps} step(s)"), "  " + _term(result.term))
+
+    def cmd_eta(self, arg: str) -> str:
+        if not arg:
+            return yellow("Usage: ") + "eta <term>   (opt-in η-reduction; reduce/nf stay β-only)"
+        t = self._parse(arg)
+        rows = [bold("η-reduction") + dim("  (λx. f x → f when x ∉ FV(f); no β steps taken)"),
+                "  " + dim("start:  ") + _term(t)]
+        current = t
+        steps = 0
+        while steps < 100:
+            step = lc.eta_step(current)
+            if step is None:
+                break
+            current = lc._apply_step(current, step.redex_path, step.after)
+            steps += 1
+            rows.append(f"  {dim('→η')}      " + cyan(_render(current)))
+        if steps == 0:
+            rows.append("  " + dim("already η-normal — no subterm has the shape λx. f x with x ∉ FV(f)."))
+        else:
+            rows.append("  " + green(f"η-normal form reached in {steps} step(s)."))
+            hint = lc.beta_step(current)
+            if hint is not None:
+                rows.append("  " + dim("(the result still has β-redexes — run nf on it if you want the β-normal form)"))
+        return _lines(*rows)
+
+    def cmd_debruijn(self, arg: str) -> str:
+        if not arg:
+            return yellow("Usage: ") + "debruijn <term>   e.g.  debruijn \\x. \\y. x"
+        t = self._parse(arg)
+
+        def go(node, binders, ctx):
+            if isinstance(node, lc.Var):
+                idx = lc._bound_index(node.name, binders)
+                return str(idx) if idx is not None else node.name
+            if isinstance(node, lc.Lam):
+                s = "λ " + go(node.body, binders + (node.param,), "lam")
+                return s if ctx in ("top", "lam") else "(" + s + ")"
+            if isinstance(node, lc.App):
+                s = go(node.fn, binders, "app-left") + " " + go(node.arg, binders, "app-right")
+                return s if ctx in ("top", "lam", "app-left") else "(" + s + ")"
+            raise TypeError(f"Unknown term: {node!r}")
+
+        return _lines(
+            bold("De Bruijn view") + dim("  (indices count binders outward, from 0)"),
+            "  named:    " + _term(t),
+            "  nameless: " + cyan(go(t, (), "top")),
+            dim("  free variables keep their names. Two terms are α-equivalent exactly when"),
+            dim("  their nameless forms are identical — this is how `alpha` decides."),
+        )
+
+    _DEF_NAME = re.compile(r"^[A-Z][A-Z0-9_']*$")
+
+    def cmd_let(self, arg: str) -> str:
+        if "=" not in arg:
+            return yellow("Usage: ") + "let NAME = <term>   e.g.  let COMPOSE = \\f g x. f (g x)"
+        name, rhs = arg.split("=", 1)
+        name, rhs = name.strip(), rhs.strip()
+        if not self._DEF_NAME.match(name):
+            return red(f"Bad name {name!r}: ") + dim("use UPPERCASE letters/digits/_ starting with a letter.")
+        if name in church.CONSTANTS:
+            return red(f"{name} is a built-in constant — pick another name. ") + dim("See `constants`.")
+        if not rhs:
+            return red("Missing right-hand side.")
+        value = self._parse(rhs)   # fully expanded now → later lookup is one substitution, no cycles
+        self.defs[name] = value
+        rows = [green(f"defined {name}") + dim(" (this session only)"), "  " + _term(value)]
+        note = _decode_note_nf(value) if lc.beta_step(value) is None else None
+        if note:
+            rows.append("  " + note)
+        rows.append(dim("  use it in any term; `defs` lists, `undef " + name + "` removes."))
+        return _lines(*rows)
+
+    def cmd_defs(self, arg: str) -> str:
+        del arg
+        if not self.defs:
+            return dim("No session definitions yet. Create one: ") + yellow("let ID = \\x. x")
+        rows = [bold(magenta("Session definitions")), ""]
+        for name, term in self.defs.items():
+            rows.append("  " + green(name) + dim(" = ") + cyan(_render(term)))
+        return _lines(*rows)
+
+    def cmd_undef(self, arg: str) -> str:
+        name = arg.strip()
+        if name in self.defs:
+            del self.defs[name]
+            return dim(f"removed {name}.")
+        return red(f"No session definition named {name!r}. ") + dim("See `defs`.")
 
     def cmd_decode(self, arg: str) -> str:
         if not arg:
             return yellow("Usage: ") + "decode <term>"
-        result = lc.normalize_checked(_parse_term(arg), max_steps=MAX_NORMALIZE, max_nodes=MAX_REDUCTION_NODES)
+        result = lc.normalize_checked(self._parse(arg), max_steps=MAX_NORMALIZE, max_nodes=MAX_REDUCTION_NODES)
         if not result.complete:
             return yellow("Inconclusive: the β-normalization limit was reached.")
         note = _decode_note_nf(result.term)
@@ -407,7 +873,7 @@ class LabSession:
 
     def cmd_alpha(self, arg: str) -> str:
         left, right = _split_equation(arg)
-        t1, t2 = _parse_term(left), _parse_term(right)
+        t1, t2 = self._parse(left), self._parse(right)
         same = lc.alpha_eq(t1, t2)
         return _lines(
             bold("Strict α-equivalence") + dim(" (no β or η reduction)"),
@@ -418,8 +884,8 @@ class LabSession:
 
     def cmd_equiv(self, arg: str) -> str:
         left, right = _split_equation(arg)
-        r1 = lc.normalize_checked(_parse_term(left), max_steps=MAX_NORMALIZE, max_nodes=MAX_REDUCTION_NODES)
-        r2 = lc.normalize_checked(_parse_term(right), max_steps=MAX_NORMALIZE, max_nodes=MAX_REDUCTION_NODES)
+        r1 = lc.normalize_checked(self._parse(left), max_steps=MAX_NORMALIZE, max_nodes=MAX_REDUCTION_NODES)
+        r2 = lc.normalize_checked(self._parse(right), max_steps=MAX_NORMALIZE, max_nodes=MAX_REDUCTION_NODES)
         if not r1.complete or not r2.complete:
             return yellow("Inconclusive: at least one side did not reach β-normal form within the limit.")
         same = lc.alpha_eq(r1.term, r2.term)
@@ -469,52 +935,25 @@ class LabSession:
         )
 
     def cmd_kb(self, arg: str) -> str:
-        q = arg.strip().lower().replace(" ", "-")
-        if not q:
-            return _lines(
-                bold(magenta("Knowledge base")) + dim(" · kb <topic>"),
-                "  " + "  ".join(green(k) for k in KB),
-            )
-        key = q if q in KB else (next((k for k in KB if k.startswith(q)), None)
-                                 or next((k for k in KB if q in k), None))
-        if key is None:
-            return red(f"No entry for {arg.strip()!r}. ") + dim("Try ") + bold("kb") + dim(".")
-        title, body = KB[key]
-        return _lines(bold(magenta(title)), "  " + body)
+        return web_kb.handle(arg, self.webstate)
 
     def cmd_quiz(self, arg: str) -> str:
-        if arg.strip().lower() in ("stop", "quit", "off"):
-            self.quiz = None
-            return dim("quiz closed.")
-        q, answer = QUIZ_QS[self.quiz_idx % len(QUIZ_QS)]
-        self.quiz_idx += 1
-        self.quiz = answer
-        return _lines(
-            bold(magenta("Quiz")) + dim(f" · question {self.quiz_idx}"),
-            "  " + q,
-            dim("  answer with a λ-term or number; use ") + yellow("quiz stop") + dim(" to end"),
-        )
+        return web_quiz.handle(arg, self.webstate)
 
-    def _answer_quiz(self, line: str) -> str:
-        expected = self.quiz or ""
-        self.quiz = None
-        nxt = dim("  type ") + bold("quiz") + dim(" for the next question.")
-        if line.strip().upper() == expected.strip().upper():
-            return _lines(green("✓ correct!"), nxt)
-        try:
-            got = lc.normalize_checked(_parse_term(line.strip()), max_steps=MAX_NORMALIZE, max_nodes=MAX_REDUCTION_NODES)
-            want = lc.normalize_checked(_parse_term(expected), max_steps=MAX_NORMALIZE, max_nodes=MAX_REDUCTION_NODES)
-        except Exception:
-            return _lines(red("Could not read that as a term.") + dim(" Expected ") + cyan(expected) + dim("."), nxt)
-        if not got.complete or not want.complete:
-            return _lines(yellow("Inconclusive: normalization reached the browser limit."), nxt)
-        if lc.alpha_eq(got.term, want.term):
-            return _lines(green("✓ correct!") + dim(" " + _render(got.term)), nxt)
-        return _lines(
-            red("✗ not quite.") + dim(" You gave ") + cyan(_render(got.term)),
-            dim("  expected ") + cyan(_render(want.term)),
-            nxt,
-        )
+    def cmd_tutorial(self, arg: str) -> str:
+        return web_tutorial.handle(arg, self.webstate)
+
+    def cmd_prove(self, arg: str) -> str:
+        return web_prove.handle(arg, self.webstate)
+
+    def cmd_alligators(self, arg: str) -> str:
+        return web_alligators.handle(arg, self.webstate)
+
+    def cmd_ag(self, arg: str) -> str:
+        return web_ag.handle(arg, self.webstate)
+
+    def cmd_ch(self, arg: str) -> str:
+        return web_ch.handle(arg, self.webstate)
 
     def cmd_tour(self, arg: str) -> str:
         del arg
@@ -528,7 +967,7 @@ class LabSession:
         ]
         rows = [bold(magenta("A guided tour")), dim("Each expression is normalized with an explicit limit:"), ""]
         for title, expr in demos:
-            result = lc.normalize_checked(_parse_term(expr), max_steps=MAX_NORMALIZE, max_nodes=MAX_REDUCTION_NODES)
+            result = lc.normalize_checked(self._parse(expr), max_steps=MAX_NORMALIZE, max_nodes=MAX_REDUCTION_NODES)
             if result.complete:
                 note = _decode_note_nf(result.term)
                 suffix = "   " + note if note else ""

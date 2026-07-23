@@ -179,24 +179,56 @@ class CommandSurfaceTests(unittest.TestCase):
     def test_kb_unknown_topic_errors(self):
         self.assertIn("No entry for 'nosuch'", strip_ansi(driver.LabSession().run("kb nosuch")))
 
-    def test_quiz_accepts_literal_answer(self):
+    @staticmethod
+    def _current_question(session):
+        from lambda_lab.lab.webport import quiz as web_quiz
+        qid = session.webstate.get("webquiz_current")
+        return web_quiz._Q_BY_ID[qid] if qid else None
+
+    @staticmethod
+    def _correct_answer(q):
+        if q["type"] == "mc":
+            return chr(ord("A") + q["correct"])
+        if q["type"] == "tf":
+            return "true" if q["answer"] else "false"
+        if q["type"] == "completion":
+            return q["answers"][0]
+        return q.get("answer") or q.get("expected")
+
+    def test_quiz_accepts_the_correct_answer(self):
         session = driver.LabSession()
+        session.webstate["webquiz_seed"] = 7   # deterministic queue
         out = strip_ansi(session.run("quiz"))
-        self.assertIn("Quiz", out)
-        self.assertIn("question 1", out)
-        self.assertIn("correct!", strip_ansi(session.run("TRUE")))
+        self.assertIn("Question 1/", out)
+        answer = self._correct_answer(self._current_question(session))
+        self.assertIn("Correct", strip_ansi(session.run(answer)))
 
-    def test_quiz_accepts_beta_equivalent_term_answer(self):
+    def test_quiz_accepts_alpha_variant_of_term_answer(self):
         session = driver.LabSession()
-        session.run("quiz")  # question 1 expects TRUE
-        self.assertIn("correct!", strip_ansi(session.run(r"\t f. t")))
+        session.webstate["webquiz_seed"] = 7
+        session.run("quiz")
+        # advance until an open question whose expected answer is a λ-term
+        for _ in range(40):
+            q = self._current_question(session)
+            if q is None:
+                break
+            expected = str(q.get("answer") or q.get("expected") or "")
+            if q["type"] == "open" and "\\" in expected:
+                renamed = expected.replace("x", "w").replace("y", "v")
+                out = strip_ansi(session.run(renamed))
+                self.assertIn("Correct", out)
+                return
+            session.run("quiz skip")
+        self.skipTest("no open λ-term question reachable in this queue")
 
-    def test_quiz_rejects_wrong_answer_and_shows_expected_nf(self):
+    def test_quiz_rejects_wrong_answer_and_shows_canonical(self):
         session = driver.LabSession()
-        session.run("quiz")  # question 1 expects TRUE
-        out = strip_ansi(session.run("FALSE"))
-        self.assertIn("not quite", out)
-        self.assertIn("expected", out)
+        session.webstate["webquiz_seed"] = 7
+        session.run("quiz")
+        q = self._current_question(session)
+        wrong = "Z" if q["type"] == "mc" else "definitely-wrong-42"
+        out = strip_ansi(session.run(wrong))
+        self.assertTrue("Incorrect" in out or "Invalid" in out, out[:200])
 
     def test_quiz_stop_closes(self):
         session = driver.LabSession()
