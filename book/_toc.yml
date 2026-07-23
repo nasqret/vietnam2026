@@ -12,4 +12,5 @@ parts:
       - file: lectures/l6_autoformalization
   - caption: "Appendix"
     chapters:
+      - file: appendix/cheatsheet
       - file: appendix/references
