@@ -23,6 +23,7 @@ help:
 	@echo "  make clean        remove build/stage artifacts"
 
 book:
+	rm -rf book/_build   # full rebuild: incremental Sphinx leaves stale sidebars after TOC changes
 	jupyter-book build book/
 	@# ensure a directory index exists (external-toc usually writes one)
 	@[ -f book/_build/html/index.html ] || cp book/_build/html/intro.html book/_build/html/index.html
