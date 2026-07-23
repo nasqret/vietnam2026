@@ -104,6 +104,11 @@ class _TypeParser:
         node = self._arrow()
         self._skip_ws()
         if self.i != len(self.src):
+            rest = self.src[self.i:].lstrip()
+            if rest.startswith("."):
+                raise ValueError(
+                    "types do not use dots — the dot belongs to lambda-terms (\\\\q. q). "
+                "Write the proposition with arrows: P -> Q.")
             raise ValueError(f"Unexpected trailing input at pos {self.i}: {self.src[self.i:]!r}")
         return node
 
@@ -137,11 +142,24 @@ class _TypeParser:
             else:
                 break
         if start == self.i:
+            if ch in ("\\", "λ"):
+                raise ValueError(
+                    "that is lambda-TERM syntax, but this command expects a TYPE/proposition "
+                    "(e.g. P -> Q). To infer a term's type instead, use `ch term \\q. q`.")
+            if ch == ".":
+                raise ValueError(
+                    "types do not use dots — the dot belongs to lambda-terms (\\q. q). "
+                    "Write the proposition with arrows: P -> Q.")
             raise ValueError(f"Expected identifier at pos {self.i}, got {ch!r}")
         return TVar(self.src[start:self.i])
 
 
 def parse_type(s: str) -> Type:
+    head = s.lstrip()[:1]
+    if head in ("\\", "λ"):
+        raise ValueError(
+            "that is lambda-TERM syntax, but this command expects a TYPE/proposition "
+            "(e.g. P -> Q). To infer a term's type instead, use `ch term \\\\q. q`.")
     """Parse ``"P -> Q -> R"`` (equivalently ``"P → Q → R"``).
 
     The arrow is right-associative; parentheses work as usual.

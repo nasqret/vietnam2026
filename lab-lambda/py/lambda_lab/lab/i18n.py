@@ -17,6 +17,13 @@ _LANG = "en"
 _MESSAGES = {
     # parser.py
     "parser.unexpected_char": "Unexpected character {ch!r} at position {pos}.",
+    "parser.arrow_in_term": (
+        "'->' is TYPE syntax, but this command expects a lambda-TERM. "
+        "A lambda ends with a dot: \\q. q  (not \\q -> q). "
+        "If you meant the proposition, use `prove P -> Q` or `ch type P -> Q`."),
+    "parser.fat_arrow_in_term": (
+        "'=>' is Lean syntax (fun q => q). This lab's terms use a dot: \\q. q. "
+        "To move a term to Lean, see `ch lean <term>`."),
     "parser.expected_kind": "Expected {expected}, but got {got_kind} '{got_text}'.",
     "parser.unexpected_token": "Unexpected token {kind} '{text}'.",
     "parser.lambda_needs_var": "A lambda needs at least one variable name before '.'.",

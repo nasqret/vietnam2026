@@ -81,6 +81,12 @@ def tokenize(src: str) -> List[Tok]:
             toks.append(Tok("IDENT", src[i:j], i))
             i = j
             continue
+        if ch == "-" and i + 1 < n and src[i + 1] == ">":
+            raise ParseError(_t("parser.arrow_in_term"))
+        if ch == "=" and i + 1 < n and src[i + 1] == ">":
+            raise ParseError(_t("parser.fat_arrow_in_term"))
+        if ch == "→":
+            raise ParseError(_t("parser.arrow_in_term"))
         raise ParseError(_t("parser.unexpected_char", ch=ch, pos=i))
     toks.append(Tok("EOF", "", n))
     return toks
