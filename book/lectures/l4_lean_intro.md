@@ -73,6 +73,27 @@ $\lam$-term, exactly as term mode does. You can always see it: after a tactic pr
 reveals `fun f p => f p`. The universe bookkeeping behind this is small: every type lives in some
 `Sort u`, with `Prop = Sort 0` for proof-irrelevant propositions and `Type = Type 0 = Sort 1` for data.
 
+```{admonition} So does every proof "fully expand" into one giant λ-term? No — three precisions
+:class: note
+**Names stay names.** The elaborated term references the lemmas it uses as *constants* — `#print` on
+this course's `add_comm'` shows `Nat.recAux`, `Eq.mpr`, and the names `zero_add'`/`succ_add'`, not
+their inlined proofs. Proofs form a shared DAG; the kernel unfolds a definition lazily only when a
+definitional-equality check demands it, and never β-normalizes your proof. This sharing is what makes
+a 283 000-theorem library feasible. (Our lab's `let` expands *eagerly* at definition time — the
+miniature version; Lean keeps a persistent name table instead.)
+
+**Some terms are small because the kernel computes.** `theorem four : 2 + 2 = 4 := by decide`
+elaborates to just `of_decide_eq_true (id (Eq.refl true))` — the work happens when the kernel
+*evaluates* `decide (2 + 2 = 4)` to `true` during checking. Term size and checking effort are
+decoupled in both directions: `simp` builds long explicit `Eq.mpr` chains, `decide` builds two nodes.
+
+**The compiler erases proofs entirely.** Elaborated terms have two consumers: the kernel certifies
+everything (including all of `Prop`), while the code generator erases `Prop` as computationally
+irrelevant — a proof is checked once, stored as a compressed expression in the `.olean`, and never
+becomes runtime code. Even `sorry` is a term (`sorryAx …`), which is exactly why `#print axioms` can
+audit for it.
+```
+
 ```{admonition} Run it
 :class: seealso
 Experience "tactics build a term" before Lean is even installed — each direction is one lab command:
