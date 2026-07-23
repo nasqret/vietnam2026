@@ -262,6 +262,26 @@ equiv PLUS (MIN 4 2) (MAX 4 2) = PLUS 4 2
 ```
 ````
 
+```{admonition} Why does reduce stop "before the end" on this one?
+:class: note
+If you watch the conservation check with `reduce PLUS (MIN 4 2) (MAX 4 2)`, the trace halts after
+60 steps saying *"the displayed term is partial"*. Nothing is stuck — the term reaches its normal
+form in **76 β-steps** (`nf` confirms: `= 6`); `reduce` simply caps its *step-by-step display* at 60
+lines, because it is a chalkboard, not a calculator.
+
+Where do 76 steps go for such a tiny computation? Measured piece by piece: branch selection is cheap
+(`IF TRUE 4 2` — 5 steps), but the *boolean* is not: each Kleene predecessor rebuilds its numeral
+(`PRED 4` — 13 steps), `SUB 4 2` applies it twice (28), so one `LEQ` costs 28 and each of
+`MIN 4 2`/`MAX 4 2` costs 35 — and the conservation law runs **both** before `PLUS` even starts.
+Meanwhile the *discarded* branch of every `IF` vanishes unevaluated — normal order is lazy; the
+whole price is in deciding, never in the road not taken.
+
+Rules of thumb: `reduce` to watch mechanics on small inputs (`reduce MIN 2 1` fits at 25 steps);
+`nf`/`decode`/`equiv` for answers (1,000-step budget). And if `MIN` ever comes back as a stuck free
+variable in `nf MIN 4 2 → MIN … (0 steps)`, your page was reloaded — `let` definitions live only in
+the session; run the `let` lines again (`defs` shows what survived).
+```
+
 ### E2. NOR from NOT and OR — and a lucky strike
 
 Define `MYNOR p q = NOT (OR p q)`, verify all four rows of its truth table, and then try
