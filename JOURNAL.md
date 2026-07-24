@@ -147,3 +147,10 @@ of `classical-foundations-ann`.
   derived-and-fitted step law for POW predicting the budget cliff, Böhm–Berarducci trees, the growing Ω₃.
 - New quality gate `scripts/verify_book_commands.py` (also in CI): replays every ?cmd= deep link and
   session block in the book against the engine — 162 links, all clean.
+
+## 2026-07-24 — release-readiness audit
+
+Full battery green: repo clean/in-sync; GitHub Actions green 5/5 runs (book+gate, lean, lab 304
+tests, rocq, agda); 11/11 live URLs 200; book command gate 162 links clean; artifacts compile in
+all three installed provers. Tagged v1.0.0-rc1. Open by choice: worker-preview promotion (awaits a
+browser check), service-worker offline, assistive-tech testing, Mizar kernel-check.

@@ -23,11 +23,12 @@ rsync -avz --delete --exclude '__pycache__' --exclude 'worker' lab-lambda/ lts-f
 ```
 
 ## Subtasks
-- [ ] Create public GitHub repo; first push.
-- [ ] Deploy landing page (v1).
-- [ ] Deploy browser lab (v1).
-- [ ] Deploy book build once it's clean.
-- [ ] Link check across live URLs; add a `.github/workflows` build+link-check CI.
+- [x] Create public GitHub repo; first push.
+- [x] Deploy landing page (v1).
+- [x] Deploy browser lab (v1).
+- [x] Deploy book build once it's clean.
+- [x] Link check across live URLs; CI runs build + the book-command replay gate,
+      Lean/Rocq/Agda artifact checks, and the 304-test lab suite on every push.
 
 ## Acceptance criteria
 - Both live URLs return 200 and render; GitHub shows the repo with README.
