@@ -25,16 +25,19 @@ make stage
 # 2. Push the site
 rsync -avz --delete _deploy/vietnam2026/ lts-faculty.wmi.amu.edu.pl:~/public_html/vietnam2026/
 
-# 3. Push the browser lab
-rsync -avz --delete --exclude '__pycache__' lab-lambda/ lts-faculty.wmi.amu.edu.pl:~/public_html/lab-lambda/
+# 3. Push the browser lab (worker + fully self-hosted; assembles index.html,
+#    worker.js, .htaccess, py/, vendor/ — see the Makefile target)
+make deploy-lab
 ```
 
 ## Notes
 
 - `book/_build/html/index.html` is an auto-generated redirect to `intro.html`, so `/vietnam2026/book/`
   resolves via Apache's directory index.
-- All computation stays in the browser after boot; offline operation is not guaranteed until assets are
-  self-hosted with a service-worker precache (audit LL-REL-001, P1).
+- The lab is the worker build (promoted 2026-07-24): Pyodide runs in a Web Worker (Stop button, no UI
+  freezes) and every asset — Pyodide core, xterm+addons, fonts — is served from this site (vendor/,
+  fetched by scripts/fetch_vendor.sh). `/lab-lambda-next/` is the staging channel. A service-worker
+  precache for guaranteed offline remains future work.
 - Formal artifacts are browsed on GitHub (`nasqret/vietnam2026/tree/main/artifacts`), not deployed to the
   server, so the landing page's artifact links point there.
 

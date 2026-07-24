@@ -32,3 +32,8 @@ lab-lambda/
 ## Acceptance criteria
 - Page loads Pyodide, prints a banner, and `help` + `church true` + `reduce (\x.x) y` all work.
 - No network calls after asset load; runs offline once cached.
+
+## Promotion (2026-07-24)
+
+- [x] Worker + self-hosted build promoted to `/lab-lambda/` (build 2026-07-24a); `-next` = staging.
+- [ ] Service-worker precache for guaranteed offline (next).

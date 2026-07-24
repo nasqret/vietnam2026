@@ -49,10 +49,11 @@
 
 ## Key architecture decisions
 
-- **Browser lab = Pyodide + xterm.js** (static, client-side). The lab's `prompt_toolkit` input loop is
-  replaced by an xterm.js-driven driver; command dispatch + Rich (ANSI) output are reused. Features that
-  need a subprocess (`lake`/`lean` verification) or network (`openai` LLM-judge, Aristotle) degrade
-  gracefully / are stubbed in the web build.
+- **Browser lab = Pyodide-in-a-Web-Worker + xterm.js, fully self-hosted** (promoted 2026-07-24):
+  evaluation off the main thread with a Stop control; all assets (Pyodide core, xterm+addons, fonts)
+  served from the faculty server via `lab-lambda/vendor/` (`scripts/fetch_vendor.sh`), zero CDN.
+  `/lab-lambda-next/` = staging. Desktop-only features (lake/lean verify, openai judge) degrade to
+  notices; `lean` links out to Live Lean.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
   Tarski–Grothendieck set theory. The same statements are proved in all four to *show* the foundations.
 - **Local tooling present:** Lean/`elan`/`lake` ✓ (proofs verifiable here), `jupyter-book` ✓, `gh` (as

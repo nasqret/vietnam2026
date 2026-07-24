@@ -48,19 +48,27 @@ stage: book
 deploy-site: stage
 	rsync -avz --delete $(STAGE)/ $(SERVER):$(SITE)/
 
+# The lab IS the worker+self-hosted build (promoted 2026-07-24).
 deploy-lab:
-	rsync -avz --delete --exclude '__pycache__' --exclude 'worker' lab-lambda/ $(SERVER):$(LAB)/
+	rm -rf $(STAGENEXT) && mkdir -p $(STAGENEXT)
+	cp lab-lambda/index.html $(STAGENEXT)/index.html
+	cp lab-lambda/worker.js  $(STAGENEXT)/worker.js
+	cp lab-lambda/.htaccess  $(STAGENEXT)/.htaccess
+	rsync -a --exclude '__pycache__' --exclude 'tests' lab-lambda/py/ $(STAGENEXT)/py/
+	rsync -a lab-lambda/vendor/ $(STAGENEXT)/vendor/
+	rsync -avz --delete $(STAGENEXT)/ $(SERVER):$(LAB)/
+	@echo "Deployed lab → https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda/"
 
-# Worker-based preview (Pyodide off the main thread + Stop) → /lab-lambda-next/
+# Staging channel: identical assembly, deployed to /lab-lambda-next/
 deploy-lab-next:
 	rm -rf $(STAGENEXT) && mkdir -p $(STAGENEXT)
-	cp lab-lambda/worker/index.html $(STAGENEXT)/index.html
-	cp lab-lambda/worker/worker.js  $(STAGENEXT)/worker.js
-	cp lab-lambda/.htaccess         $(STAGENEXT)/.htaccess
+	cp lab-lambda/index.html $(STAGENEXT)/index.html
+	cp lab-lambda/worker.js  $(STAGENEXT)/worker.js
+	cp lab-lambda/.htaccess  $(STAGENEXT)/.htaccess
 	rsync -a --exclude '__pycache__' --exclude 'tests' lab-lambda/py/ $(STAGENEXT)/py/
 	rsync -a lab-lambda/vendor/ $(STAGENEXT)/vendor/
 	rsync -avz --delete $(STAGENEXT)/ $(SERVER):$(LABNEXT)/
-	@echo "Deployed worker preview → https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda-next/"
+	@echo "Deployed staging → https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda-next/"
 
 deploy: deploy-site deploy-lab
 	@echo "Deployed:  https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026  +  /lab-lambda"
