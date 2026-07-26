@@ -28,3 +28,8 @@ The first executable chapter is live: {doc}`Checked tutorials <tutorials>` repla
 hand proof of addition commutativity and a source-level `symm_all` tactical walkthrough. Every
 `pa>` block on that page is checked against the browser driver's real command grammar during the
 book build gate.
+
+The full M7 library is executable too. {doc}`The checked theorem ladder <ladder>` follows twenty
+scripted entries through order totality and the zero-product capstone, explains how theorem reuse
+is cut-eliminated outside the trusted kernel, and links each statement to the browser and Lean 4
+cross-checking surface.

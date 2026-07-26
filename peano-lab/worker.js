@@ -35,11 +35,14 @@ const PY_FILES = [
   "py/peano_lab/ui/__init__.py",
   "py/peano_lab/ui/data_tactics.py",
   "py/peano_lab/ui/data_kb.py",
+  "py/peano_lab/ui/data_library.py",
   "py/peano_lab/ui/data_tutorials.py",
   "py/peano_lab/ui/tutorial.py",
   "py/peano_lab/ui/panels.py",
   "py/peano_lab/ui/prove.py",
   "py/peano_lab/library/__init__.py",
+  "py/peano_lab/library/lean.py",
+  "py/peano_lab/library/theorems.py",
   "py/driver.py",
 ];
 

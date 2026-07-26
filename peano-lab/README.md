@@ -51,11 +51,21 @@ The teaching surfaces are executable too:
 pa tactic induction
 kb de-bruijn-criterion
 pa tutorial add_comm
+pa lib mul_eq_zero
+pa lean add_comm
 ```
 
 The first command opens a tactic card whose worked script is replayed in CI;
-the last starts an ENTER-driven lesson that cannot complete until its generated
+the tutorial command starts an ENTER-driven lesson that cannot complete until its generated
 certificate passes the same independent QED path.
+
+The M7 theorem library contains twenty named, scripted entries: the fifteen binding
+arithmetic/order rungs plus five explicit helper lemmas, ending at
+`forall n m. n * m = 0 -> n = 0 \/ m = 0`. Dependencies are introduced as ordinary hypotheses,
+then compiled away by untrusted, capture-avoiding proof-term cut elimination. The resulting closed
+certificate is independently checked against the original theorem. `pa lib <name>` shows that exact
+replay script; `pa lean <name>` exports the exact statement as a Lean 4 theorem over `Nat`, with one
+intentional proof stub and a Live Lean link for cross-checking.
 
 Back at the repository root, run both regression suites:
 

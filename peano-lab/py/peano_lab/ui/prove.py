@@ -565,7 +565,7 @@ def handle(arg: str, shared: dict) -> str:
             return (
                 "Use `pa tactic [name]` for the executable M6 encyclopedia."
                 if sub == "tactic"
-                else "The named theorem library arrives in M7."
+                else "Use `pa lib [name]` for the checked theorem ladder."
             )
         if arg in _SESSION_ONLY_WORDS:
             return _lines(

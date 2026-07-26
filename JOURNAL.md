@@ -372,3 +372,30 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   (168 Lambda links and 5 Lambda commands; 4 Peano links and 28 Peano commands); all replayed clean.
   Jupyter Book built all 17 source pages successfully. Verification after final audit: Peano
   `373 passed`; Lambda Lab `360 passed, 36 subtests passed`; checker unchanged at `234` lines.
+
+## 2026-07-27 (branch peano-lab) — Peano Lab M7: checked theorem library
+
+- Added a deterministic 20-entry theorem library: all 15 binding arithmetic/order rungs plus five
+  named helper lemmas, ending at `forall n m. n * m = 0 -> n = 0 \/ m = 0`. Every entry stores a
+  closed statement, only earlier dependencies, and an exact tactic script replayed in CI.
+- Kept theorem reuse outside the trusted base. Replay first checks a dependency-curried theorem,
+  then simultaneously substitutes the earlier closed certificates, contracts capture-safe
+  universal/implication beta redexes, and independently checks the resulting certificate from the
+  empty context against the original dependency-free statement. An arithmetic-only draft exposed
+  both sequential-substitution capture and introduction-form synthesis hazards; permanent tests now
+  cover proposition and term shifting, existential binders, multiple dependencies, and mutated
+  capstone leaves.
+- Added `pa lib`: the card distinguishes the original statement, temporary curried replay target,
+  generated dependency prelude, authored body, and final kernel result. Added `pa lean`: exact
+  de Bruijn-to-Lean translation over `Nat`, explicit dependency metadata, one intentional `sorry`,
+  and an exact URL-encoded Live Lean link. All 20 emitted stubs elaborate under local Lean 4.28;
+  associativity regressions ensure Lean's right-associative `∧`/`∨` cannot alter the formula tree.
+- Added a theorem-ladder Jupyter Book page and five connected Obsidian notes/MOC entries. The book
+  gate now checks 18 files, 175 links, and 6 blocks/33 commands; the vault has 43 notes with zero
+  unresolved wiki-links. Warning-as-error Jupyter Book build succeeds.
+- Three independent audits checked public semantics, code quality, and cut-elimination soundness.
+  All 20 certificates are closed and independently valid; poisoned proof leaves and rotated goals
+  are rejected. The exact staged 28-file worker payload loaded in pinned Pyodide and rendered the
+  capstone library card plus Lean export. Verification: Peano `433 passed`; Lambda Lab `360 passed,
+  36 subtests passed`; checker unchanged at `234` lines. Visual DOM interaction remains the same
+  explicit manual release check because the in-app browser runtime is unavailable. No SSH deploy.

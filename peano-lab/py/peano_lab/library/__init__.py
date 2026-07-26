@@ -1,3 +1,5 @@
-"""The theorem ladder as scripted, named, CI-replayed proofs (M7).
-Ladder: design §6 — 0+n=n ... through n·m=0 -> n=0 ∨ m=0.
+"""Checked theorem-ladder data and deterministic Lean 4 cross-check exports.
+
+The library is untrusted: :mod:`theorems` replays scripts, compiles dependency
+cuts away, and submits every closed result to :mod:`peano_lab.kernel.checker`.
 """

@@ -10,7 +10,7 @@
   **VIASM** (Vietnam Institute for Advanced Study in Mathematics, Hanoi), 2026.
 - **Author:** dr Bartosz Naskręcki — Faculty of Mathematics and Computer Science, Adam Mickiewicz
   University in Poznań (WMI UAM); also Centre for Trustworthy AI (CCAI), Warsaw University of Technology.
-- **Local repo root:** `/Users/bnaskrecki/claude/hanoi` (git `main`).
+- **Active local repo root:** `/Users/bnaskrecki/codex/peano` (git `peano-lab`).
 - **Public GitHub repo:** `nasqret/vietnam2026`.
 - **VIASM course page:** <https://viasm.edu.vn/en/hdkh/Mini-Course_AIATPM>
 - **Lecture-title doc (Google Docs):** `1w08zKuLrq3XLFEWS_jNN4ZZv6lkXJWHKgVUSBWYSI7A`.
@@ -79,7 +79,11 @@
   adds 28 replay-tested tactic/tactical cards, 13 immutable PA/kernel knowledge cards, and two
   ENTER-driven tutorials whose frozen proof commands run in isolated nested proof sessions and may
   complete only after checked QED. The book gate now routes `/peano-lab/?cmd=` links and `pa>`
-  blocks to the Peano driver while retaining the Lambda gate unchanged.
+  blocks to the Peano driver while retaining the Lambda gate unchanged. M7 adds a 20-entry scripted
+  theorem library through the zero-product capstone. Earlier certificates are substituted by
+  untrusted capture-safe cut elimination, then every resulting closed certificate is checked again
+  against its original statement. `pa lib` exposes the dependency graph and authored script;
+  `pa lean` emits an exact Lean 4 `Nat` statement, intentional proof stub, and Live Lean link.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -115,4 +119,4 @@
 - Build/deploy strategy chosen: **go live incrementally** (public GitHub + faculty URLs as pieces land).
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
-- Peano Lab milestones M0–M6 are green on `peano-lab`; M7's checked theorem library is next.
+- Peano Lab milestones M0–M7 are green on `peano-lab`; M8's six-chapter book part is next.

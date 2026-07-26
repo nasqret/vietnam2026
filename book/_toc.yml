@@ -21,6 +21,7 @@ parts:
     chapters:
       - file: peano/index
       - file: peano/tutorials
+      - file: peano/ladder
       - file: peano/diary
   - caption: "Appendix"
     chapters:

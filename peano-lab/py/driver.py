@@ -22,7 +22,7 @@ from peano_lab.kernel.terms import (
     parse_term_with_names,
     pretty_term,
 )
-from peano_lab.ui import data_kb, data_tactics, tutorial
+from peano_lab.ui import data_kb, data_library, data_tactics, tutorial
 from peano_lab.ui import prove as web_prove
 
 
@@ -73,7 +73,8 @@ def _usage() -> str:
         "  pa tactic [name]     executable tactic-language encyclopedia",
         "  pa kb [topic]        PA/kernel knowledge cards (`kb` is an alias)",
         "  pa tutorial [name]   guided, ENTER-driven lessons",
-        "  pa lib [name]        theorem-library entry point (library in M7)",
+        "  pa lib [name]        checked theorem statements + replay scripts",
+        "  pa lean <name>       Lean 4 statement/stub + exact Live Lean link",
         "  pa axioms            the six PA rule constants",
         "  pa eval <term>       evaluate a closed arithmetic term",
         "  pa simp <term>       normalize with the ordered PA3–PA6 simp set",
@@ -151,6 +152,10 @@ class LabSession:
             return self.pa_kb("help")
         if topic == "tutorial":
             return tutorial.handle("help", self.webstate)
+        if topic == "lib":
+            return data_library.render_request("help")
+        if topic == "lean":
+            return "Usage: pa lean <theorem>; list names with `pa lib`."
         if topic:
             return f"No help topic {args.strip()!r}. Type `help` or `pa help`."
         return _usage()
@@ -221,10 +226,10 @@ class LabSession:
         return tutorial.handle(args, self.webstate)
 
     def pa_lib(self, args: str) -> str:
-        name = args.strip()
-        if name:
-            return f"No published library entry {name!r} yet; the checked ladder ships in M7."
-        return "The checked named-theorem library ships in M7; interactive proving is live now."
+        return data_library.render_request(args)
+
+    def pa_lean(self, args: str) -> str:
+        return data_library.render_lean(args)
 
     def pa_axioms(self, args: str) -> str:
         if args:

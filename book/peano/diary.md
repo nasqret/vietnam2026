@@ -286,3 +286,39 @@ with a classical toggle) recorded in `docs/PEANO_LAB_DESIGN.md` §0.
   under pinned Pyodide; it rendered both registries and completed the ENTER-only `add_comm` tutorial
   through checked QED. M6 closes at 373 Peano tests, 360 Lambda tests plus 36 subtests, a warning-free
   17-page Jupyter Book build, and an unchanged 234-line trusted checker.
+
+## 2026-07-27 — M7: theorem reuse without a trusted theorem oracle
+
+- The M4 objection about reusable introduction-form certificates is real: the binding kernel can
+  check a `ForallIntro` proof at a known formula but cannot always synthesize that formula when the
+  same proof is placed under `ForallElim`. I am not adding an ascription constructor or a trusted
+  theorem environment. Each library script instead proves a curried goal whose earlier rungs are
+  ordinary local hypotheses. The untrusted library layer then performs explicit proof-term cut
+  elimination, replacing those hypothesis references with the earlier closed certificates and
+  adjusting de Bruijn hypothesis indices beneath implication, disjunction, and existential
+  binders. The independent kernel finally checks the composed certificate against the original,
+  dependency-free theorem statement. A composition bug can therefore only be rejected.
+- Library entries remain replayable data: one closed statement, an acyclic list of earlier rungs,
+  and a sequence of primitive tactic commands. Generated dependency introductions are displayed
+  separately from the authored body so the browser can explain both what theorem was claimed and
+  how theorem reuse was compiled away. This keeps the kernel fixed at the binding rule set while
+  making the proof dependency graph visible to students.
+- The first cut eliminator passed arithmetic but failed at the two-dependency antisymmetry helper.
+  Two distinct scope hazards were exposed. Sequential dependency passes could revisit hypotheses
+  internal to an already inserted certificate, so dependency slots are now substituted
+  simultaneously. The substitution also exposes `ForallElim(ForallIntro(...), t)` and
+  `ImpElim(ImpIntro(...), p)` redexes; both must be contracted capture-safely because the
+  bidirectional checker rightly refuses to synthesize arbitrary introduction forms. The complete
+  helper chain now checks from the empty context, and a permanent regression targets the original
+  multi-dependency failure.
+- A named `mul_succ_left` helper is intentionally included even though it is not one of the binding
+  headline rungs. It turns multiplication commutativity from a 21-command, 266-node nested proof
+  into a six-command proof whose algebraic idea is visible. The same rule applies to the order
+  helpers: naming the genuine mathematical obstruction is clearer than hiding it inside a giant
+  tactic script, and every helper remains an ordinary kernel-checked theorem.
+- M7 closes with all twenty entries checked from the empty context, 1,300 certificate nodes across
+  the library, and all twenty generated Lean statements accepted by Lean 4.28 (the only warning is
+  the deliberately visible proof stub). Three audits mutated every certificate, shifted goals,
+  attacked proposition/term capture, and checked the browser/Lean presentation. The final suites
+  report 433 Peano tests and 360 Lambda tests plus 36 subtests; the trusted checker remains 234
+  lines. The exact staged 28-file payload also replayed the whole ladder in pinned Pyodide.

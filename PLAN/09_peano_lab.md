@@ -112,12 +112,15 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
 - **Acceptance:** book gate green over the new content; tutorials walk ENTER-only to completion.
 
 ### M7 — The theorem library + ladder regression
-- [ ] `library/theorems.py`: the full ladder (design §6) as named, scripted proofs replayed in
+- [x] `library/theorems.py`: the full ladder (design §6) as named, scripted proofs replayed in
       CI (`tests/test_ladder.py`); `pa lib` browses them with statements + tactic scripts.
-- [ ] `pa lean <thm>`: export statement (+ proof stub) as Lean 4 `theorem` over `Nat` with a
+- [x] `pa lean <thm>`: export statement (+ proof stub) as Lean 4 `theorem` over `Nat` with a
       Live Lean link, for cross-checking.
 - **Acceptance:** ladder complete through the `n·m = 0 → n = 0 ∨ m = 0` capstone, all
   kernel-checked in CI.
+- **Verified:** 20 closed scripted entries (15 binding rungs + 5 named helpers) replay and check
+  against their original statements; all 20 Lean stubs elaborate under Lean 4.28 with only the
+  intentional `sorry` warning. Peano `433 passed`; Lambda `360 passed, 36 subtests passed`.
 
 ### M8 — Book part: "Building Peano Lab"
 - [ ] New book part (chapters under `book/peano/`): 1. why PA and the staged logic; 2. the
