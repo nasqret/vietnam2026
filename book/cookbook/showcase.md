@@ -211,7 +211,7 @@ Goal 1/1
 
 λ> exact p
 All goals closed.
-Type qed to extract the proof term, or undo to step back.
+Type qed to check and extract the proof term, or undo to step back.
 
 λ> qed
 All goals closed.  QED.

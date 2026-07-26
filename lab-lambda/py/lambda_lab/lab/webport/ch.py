@@ -43,12 +43,14 @@ from . import data_ch_tactics
 from .ch_stlc import (
     LeanParseError,
     STLCTypeError,
-    find_inhabitant,
+    apply_subst,
     infer,
+    inhabitation_status,
     lambda_to_lean,
     lean_to_lambda,
     parse_type,
     pretty_type,
+    pretty_types,
 )
 
 MAX_INPUT = 4_000
@@ -84,12 +86,13 @@ MSG = {
     "ch.from_lean.parse_error": "Cannot parse Lean expression: {error}",
     "ch.from_lean.untypable": "Parsed, but type does not exist in STLC: {error}",
     "ch.tactic.unknown": "Unknown tactic `{name}`. Run `ch tactic` to see the list.",
-    "ch.tactic.list_title": "Encyclopedia of 22 Lean 4 tactics",
+    "ch.tactic.list_title": ("Encyclopedia of Lean 4 tactics (reference; the browser "
+                             "builder operates only intro/intros/exact/apply/refine/assumption)"),
     "ch.build.usage": "Usage: ch build <type>, e.g. `ch build P -> P`.",
     "ch.build.parse_error": "Cannot parse type: {error}",
     "ch.build.tactics_hint": (
         "Tactics: intro [name], exact <term>, apply <term>, assumption, "
-        "refine <term>, hint, undo, done, quit. Type `t` for a cheat sheet."
+        "refine <term>, hint, undo, qed, abort. Type `t` for a cheat sheet."
     ),
     "ch.build.no_more_goals": "All goals closed.",
     "ch.build.undo_done": "Last step undone.",
@@ -130,7 +133,7 @@ _HELP_BODY = (
     "  ch lib [name]            - catalogue of combinators (id, K, S, B, C, Y, ...)\n"
     "  ch lean <lambda>         - generate a Lean 4 theorem for lambda\n"
     "  ch from-lean <expr>      - parse a Lean term -> lambda + type\n"
-    "  ch tactic [name]         - encyclopedia of 22 Lean tactics\n"
+    "  ch tactic [name]         - encyclopedia of Lean tactics (reference)\n"
     "  ch build <T>             - interactive proof builder (step by step)\n"
     "  ch verify <theorem>      - check a theorem in Lean (LSP / inline)\n"
     "  ch explore [slug]        - interactive walker over the theorem catalogue\n"
@@ -381,15 +384,22 @@ def _cmd_type(args: List[str]) -> str:
         return A.yellow(_t("ch.type.usage"))
     src = pos[0]
     try:
-        depth = int(flags.get("depth", "8"))
+        depth = int(flags.get("depth", "12"))
     except ValueError:
         return A.red("Error: --depth must be an integer.")
     try:
         ty = parse_type(src)
     except ValueError as e:
         return A.red(_t("ch.type.parse_error", error=e))
-    term = find_inhabitant(ty, depth=depth)
-    if term is None:
+    status, term = inhabitation_status(ty, max_depth=depth)
+    if status == "limit":
+        return A.lines(
+            A.yellow(f"Search limit reached at depth {depth} — no verdict for "
+                     f"{pretty_type(ty)}."),
+            A.dim("The type may or may not be inhabited; retry with a larger "
+                  "--depth, e.g. `--depth 16`."),
+        )
+    if status == "none" or term is None:
         return A.yellow(_t("ch.type.not_inhabited", type=pretty_type(ty)))
     lean_code = lambda_to_lean(term, ty)
     rows = _kv_rows([
@@ -491,13 +501,27 @@ def _build_show_state(build_state: "ch_builder.ProofState") -> List[str]:
         return []
     out: List[str] = []
     total = len(build_state.goals)
+    # One shared metavariable naming (α, β, …) across every goal and context,
+    # so a constraint linking two goals is visible.
+    all_types = []
+    for goal in build_state.goals:
+        for _, ty in goal.context:
+            all_types.append(apply_subst(ty, build_state.subst))
+        all_types.append(apply_subst(goal.target, build_state.subst))
+    pretty_list = pretty_types(all_types)
+    pos = 0
     for idx, goal in enumerate(build_state.goals, start=1):
-        ctx = ", ".join(f"{n} : {pretty_type(ty)}" for n, ty in goal.context)
+        names = [n for n, _ in goal.context]
+        ctx_strs = pretty_list[pos:pos + len(names)]
+        pos += len(names)
+        target_str = pretty_list[pos]
+        pos += 1
+        ctx = ", ".join(f"{n} : {t}" for n, t in zip(names, ctx_strs))
         if not ctx:
             ctx = "(empty)"
         pairs = [
             ("Context", ctx),
-            ("Target", A.yellow(pretty_type(goal.target))),
+            ("Target", A.yellow(target_str)),
         ]
         if idx == 1:
             pairs.append(("Term", A.cyan(build_state.partial_str())))
@@ -511,10 +535,11 @@ def _build_show_tactics_reference() -> str:
     meta = [
         ("hint", "Suggests the next step (proof search)."),
         ("undo", "Undo the last tactic."),
-        ("done", "Finish (when all goals are closed)."),
-        ("quit / q", "Leave the builder."),
+        ("qed / done", "Finish: check and extract the proof term."),
+        ("abort / quit / q", "Leave the builder."),
         ("?", "Show the current proof state."),
         ("t / tactics", "Show this cheat sheet."),
+        ("help", "This cheat sheet (works mid-proof)."),
     ]
     table_rows: List[List[str]] = []
     for name in available:
@@ -539,39 +564,88 @@ def _build_show_tactics_reference() -> str:
 
 
 def _build_finish(build_state: "ch_builder.ProofState", state: dict) -> str:
+    """The trusted QED path (audit P0.1): the completed term is re-checked
+    against the ORIGINAL declared target; on failure the session survives."""
+    try:
+        final_term, principal = ch_builder.checked_final(build_state)
+    except ch_builder.InvalidProof as e:
+        return A.lines(
+            A.red(f"QED check failed: {e}"),
+            A.dim("The builder session is still active — `?` shows the state, "
+                  "`undo` steps back, `abort` leaves."),
+        )
     target = state.pop(_BUILD_TARGET_KEY, None)
     state.pop(_BUILD_KEY, None)
     state.pop(_INTERACTIVE_KEY, None)
     rows = [A.green(_t("ch.build.no_more_goals"))]
     rows.append(A.dim("Related KB: `kb curry-howard`"))
-    final_term = build_state.final_term()
-    if final_term is not None:
-        try:
-            ty = infer(final_term)
-        except STLCTypeError:
-            ty = target
-        lean_code = lambda_to_lean(final_term, ty)
-        rows.extend(_panel(
-            _kv_rows([("Final lambda-term", A.cyan(pretty(final_term)))]),
-            "Proof builder",
-        ))
-        rows.extend(_panel(_code_rows(lean_code), "Lean theorem", border_fn=A.dim))
-        rows.append(A.blue(_live_lean_url(lean_code)))
+    # Emit the Lean theorem at the DECLARED target (the proposition the user
+    # asked to prove), falling back to the principal type.
+    lean_code = lambda_to_lean(final_term, target)
+    pairs = [("Final lambda-term", A.cyan(pretty(final_term)))]
+    if target is not None:
+        pairs.append(("Proves", A.yellow(pretty_type(target))))
+    pairs.append(("Principal type", principal))
+    rows.extend(_panel(_kv_rows(pairs), "Proof builder"))
+    rows.extend(_panel(_code_rows(lean_code), "Lean theorem", border_fn=A.dim))
+    rows.append(A.blue(_live_lean_url(lean_code)))
     return A.lines(*rows)
 
 
+_BUILD_QED_WORDS = ("qed", "done", "finish")
+_BUILD_ABORT_WORDS = ("abort", "quit", "exit", "q")
+
+
+def _build_hint_text(build_state: "ch_builder.ProofState") -> str:
+    status, suggestion = ch_builder.hint(build_state)
+    if status == "done":
+        return A.lines(A.green(_t("ch.build.no_more_goals")),
+                       A.dim("Type `qed` to check and extract the proof term."))
+    if status == "assumption":
+        return A.green(f"Hypothesis `{suggestion}` matches the goal — try "
+                       f"`exact {suggestion}` (or `assumption`).")
+    if status == "exact":
+        return A.green(_t("ch.build.hint_suggest", term=suggestion))
+    if status == "intro":
+        return A.lines(
+            A.yellow("No direct inhabitant found yet, but the goal is an implication."),
+            A.dim("Try `intro` and then ask for a `hint` again."),
+        )
+    if status == "limit":
+        return A.lines(
+            A.yellow("The proof search hit its depth limit — no verdict."),
+            A.dim("The goal may still be provable: try `intro` / "
+                  "`apply <hypothesis>` by hand."),
+        )
+    if status == "meta":
+        return A.lines(
+            A.yellow("This goal still contains undetermined types (α, β, …)."),
+            A.dim("Close another goal first to pin them down, or use `exact` "
+                  "with a full term."),
+        )
+    # status == "none"
+    return A.lines(
+        A.yellow("No proof of this goal exists in the implicational fragment (→ only)."),
+        A.dim("If you believe the original proposition, check an earlier step "
+              "with `undo`."),
+    )
+
+
 def _build_input(line: str, state: dict) -> str:
-    """One line of builder interaction (the desktop's nested prompt loop)."""
+    """One line of builder interaction (the desktop's nested prompt loop).
+
+    ``qed``/``done``/``finish`` and ``abort``/``quit``/``exit``/``q`` match
+    only as the COMPLETE line, case-sensitively (audit P1.2)."""
     build_state: "ch_builder.ProofState" = state[_BUILD_KEY]
     line = (line or "").strip()
     if not line:
         return ""
-    if line in ("quit", "exit", "q"):
+    if line in _BUILD_ABORT_WORDS:
         state.pop(_BUILD_KEY, None)
         state.pop(_BUILD_TARGET_KEY, None)
         state.pop(_INTERACTIVE_KEY, None)
         return A.dim(_t("ch.build.bye"))
-    if line in ("done", "finish"):
+    if line in _BUILD_QED_WORDS:
         if not build_state.is_done():
             return A.yellow(_t("ch.build.done_without_close"))
         return _build_finish(build_state, state)
@@ -579,17 +653,14 @@ def _build_input(line: str, state: dict) -> str:
         try:
             build_state = ch_builder.undo(build_state)
         except ch_builder.TacticError as e:
-            return A.yellow(_t(e.message_key, **e.format_args))
+            return A.yellow(str(e))
         state[_BUILD_KEY] = build_state
         rows = [A.dim(_t("ch.build.undo_done"))]
         rows.extend(_build_show_state(build_state))
         return A.lines(*rows)
     if line == "hint":
-        hint = ch_builder.hint(build_state)
-        if hint is None:
-            return A.dim(_t("ch.build.hint_none"))
-        return A.green(_t("ch.build.hint_suggest", term=hint))
-    if line in ("t", "tactics", ":t"):
+        return _build_hint_text(build_state)
+    if line in ("t", "tactics", ":t", "help"):
         return _build_show_tactics_reference()
     if line == "?":
         return A.lines(*_build_show_state(build_state))
@@ -597,11 +668,21 @@ def _build_input(line: str, state: dict) -> str:
     parts = line.split(maxsplit=1)
     tac = parts[0]
     rest = parts[1] if len(parts) > 1 else ""
+    # Starting another interactive mode mid-proof is refused without touching
+    # the current session (audit P1.2).
+    if tac in ("ch", "prove"):
+        return A.lines(
+            A.yellow("A builder session is already in progress."),
+            A.dim("Finish it with `qed` or leave with `abort` before running "
+                  "other commands."),
+        )
+    if tac in _BUILD_QED_WORDS or tac in _BUILD_ABORT_WORDS:
+        return A.yellow(f"`{tac}` acts only when typed alone on the line "
+                        f"(got extra input {rest!r}).")
     try:
         build_state = ch_builder.apply_tactic(build_state, tac, rest)
     except ch_builder.TacticError as e:
-        msg = _t(e.message_key, **e.format_args)
-        return A.yellow(_t("ch.build.tactic_error", error=msg))
+        return A.yellow(_t("ch.build.tactic_error", error=str(e)))
     state[_BUILD_KEY] = build_state
     if build_state.is_done():
         return _build_finish(build_state, state)

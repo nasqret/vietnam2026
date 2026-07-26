@@ -80,10 +80,13 @@ class TestSessionFlow(ProveBase):
         self.assertIn("Target:  Q → P", out)
         self.assertIn("λp. ?₁", out)
 
-    def test_intro_collision_picks_fresh_name(self):
+    def test_intro_collision_is_an_error(self):
         self.start("P -> Q -> P")
         self.run_line("intro p")
         out = self.run_line("intro p")
+        self.assertIn("already used in this context", out)
+        # the state is unchanged - a fresh name still works
+        out = self.run_line("intro q")
         self.assertIn("Context: p : P, q : Q", out)
 
     def test_intros_with_names(self):
@@ -98,7 +101,7 @@ class TestSessionFlow(ProveBase):
         self.run_line("intro q")
         out = self.run_line("exact p")
         self.assertIn("All goals closed.", out)
-        self.assertIn("Type qed to extract the proof term", out)
+        self.assertIn("Type qed to check and extract the proof term", out)
         out = self.run_line("qed")
         self.assertIn("QED.", out)
         self.assertIn("Final lambda-term: λp q. p", out)
@@ -191,7 +194,7 @@ class TestSessionFlow(ProveBase):
         self.assertIn("Last step undone.", out)
         self.assertIn("Target:  P → P", out)
         out = self.run_line("undo")
-        self.assertIn("History is empty - nothing to undo.", out)
+        self.assertIn("nothing to undo.", out)
 
 
 class TestSessionErrors(ProveBase):
@@ -200,40 +203,40 @@ class TestSessionErrors(ProveBase):
         self.run_line("intro")
         out = self.run_line("intro")
         self.assertIn("Tactic error:", out)
-        self.assertIn("Goal `P` is not an implication - `intro` does not apply here.", out)
+        self.assertIn("the goal is `P` — not an implication", out)
 
     def test_exact_unknown_term(self):
         self.start("P -> P")
         self.run_line("intro")
         out = self.run_line("exact z")
-        self.assertIn("I do not know term `z` in the current context.", out)
+        self.assertIn("unknown term variable(s): z", out)
 
     def test_exact_type_mismatch(self):
         self.start("P -> Q -> P")
         self.run_line("intros")
         out = self.run_line("exact q")
-        self.assertIn("Term `q` has type `Q` but the goal is `P`.", out)
+        self.assertIn("term `q` has type `Q` but the goal is `P`.", out)
 
     def test_exact_needs_arg(self):
         self.start("P -> P")
         out = self.run_line("exact")
-        self.assertIn("Tactic `exact` needs an argument, e.g. `exact p`.", out)
+        self.assertIn("`exact` needs a term", out)
 
     def test_assumption_no_match(self):
         self.start("P -> Q")
         self.run_line("intro")
         out = self.run_line("assumption")
-        self.assertIn("No hypothesis matches the goal `Q`.", out)
+        self.assertIn("no hypothesis matches the goal `Q`", out)
 
     def test_unknown_tactic(self):
         self.start("P -> P")
         out = self.run_line("frobnicate")
-        self.assertIn("Unknown tactic `frobnicate`.", out)
+        self.assertIn("unknown tactic 'frobnicate'", out)
 
     def test_encyclopedia_tactic_not_operational(self):
         self.start("P -> P")
         out = self.run_line("cases")
-        self.assertIn("Unknown tactic `cases`.", out)
+        self.assertIn("unknown tactic 'cases'", out)
         self.assertIn("implicational fragment", out)
         self.assertIn("prove tactic cases", out)
 
@@ -242,13 +245,14 @@ class TestSessionErrors(ProveBase):
         self.start("((P -> Q) -> P) -> P")
         self.run_line("intro")
         out = self.run_line("hint")
-        self.assertIn("No automatic hint for the current goal.", out)
+        self.assertIn("No proof of this goal exists in the implicational fragment", out)
 
     def test_hint_prefers_assumption(self):
         self.start("P -> P")
         self.run_line("intro h")
         out = self.run_line("hint")
-        self.assertIn("Hint: try `exact h`.", out)
+        self.assertIn("Hypothesis `h` matches the goal", out)
+        self.assertIn("exact h", out)
 
 
 class TestReference(ProveBase):

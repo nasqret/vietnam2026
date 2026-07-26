@@ -265,7 +265,7 @@ def _body_command(step: dict) -> List[str]:
         out.extend(_wrap(step["label"]))
     out.append(dim("  Running command:"))
     out.append("    " + yellow(step.get("command", "")))
-    out.append("  " + yellow(f"Desktop-only step: `{step.get('command', '')}` runs in the full desktop Lambda Lab — shown here, not executed."))
+    out.append("  " + yellow(f"Shown, not auto-executed — if `{step.get('command', '')}` exists in this browser build, you can type it right here after the tutorial."))
     return out
 
 

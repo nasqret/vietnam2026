@@ -1,91 +1,217 @@
-"""Typed STLC for the browser build: simple types + algorithm W (Hindley-Milner-lite).
+"""The trusted STLC kernel: types, unification, Algorithm W, inhabitation.
 
-Faithful port of the desktop ``lambda_lab.lab.curry_howard.types`` (pure stdlib).
+Rewritten per the 2026-07-24 `prove` audit (P0.2/P0.4, P1.3). The crucial
+design decision: **parsed proposition atoms and inference metavariables are
+different node types.**
 
-Types are modelled as:
+* :class:`Atom` — a rigid proposition letter (``P``, ``q``, ``α``, ``foo``);
+  produced ONLY by :func:`parse_type`; never substituted by unification.
+* :class:`MetaVar` — a flexible unification variable with a globally unique
+  integer id; produced ONLY by inference; the only thing ``unify`` may bind.
 
-* ``TVar(name)``     - a type variable or atom (e.g. ``α``, ``P``).
-* ``Arrow(src, dst)`` - the function type ``A → B``.
+Rigidity therefore never depends on spelling: lowercase, Greek and uppercase
+atoms are all equally rigid, exactly as the course requires.
 
-Exports:
-
-* ``parse_type(s)``   - parser for ``"P -> Q -> R"`` (right-assoc), ``→`` or ``->``.
-* ``pretty_type(t)``  - pretty printer with minimal parentheses.
-* ``free_type_vars(t)`` - set of type-variable names.
-* ``substitute(t, s)`` - applies a substitution ``{name: Type}``.
-* ``unify(a, b)``     - most general unifier or ``None``.
-* ``infer(term)``     - types a λ-term; raises ``STLCTypeError`` for terms
-  untypable in STLC (e.g. ``\\x. x x``).
-
-Naming convention: Greek letters (``α, β, γ, …``) are *unifiable* variables;
-uppercase Latin atoms (``P, Q, R``) are constants that unify only with themselves.
+This module is the single kernel shared by ``prove`` and ``ch`` (their old
+private copies delegate here).
 """
 
 from __future__ import annotations
 
+import itertools
 from dataclasses import dataclass
-from typing import Dict, Optional, Set
+from typing import Dict, List, Optional, Tuple
 
 from lambda_lab.lab.lc import App, Lam, Term, Var
 
-
 # ---------------------------------------------------------------------------
-# Type AST
+# Types
 # ---------------------------------------------------------------------------
 
 
 class Type:
-    """Common base for type-tree nodes."""
-
-    def __str__(self) -> str:  # pragma: no cover - thin wrapper
-        return pretty_type(self)
+    """Base class for simple types."""
 
 
 @dataclass(frozen=True)
-class TVar(Type):
-    """Type variable or atom."""
-
+class Atom(Type):
+    """A rigid proposition atom, exactly as the user wrote it."""
     name: str
 
 
 @dataclass(frozen=True)
+class MetaVar(Type):
+    """A flexible inference variable. Identity is the globally unique id."""
+    id: int
+
+
+@dataclass(frozen=True)
 class Arrow(Type):
-    """Function type ``src → dst``."""
-
-    src: Type
-    dst: Type
+    src: "Type"
+    dst: "Type"
 
 
-# ---------------------------------------------------------------------------
-# Pretty-printing
-# ---------------------------------------------------------------------------
+_meta_counter = itertools.count()
 
 
-def pretty_type(t: Type, *, arrow: str = "→") -> str:
-    """Pretty-print ``t`` with minimal parentheses (right-associative)."""
+def fresh_meta() -> MetaVar:
+    """A globally unique metavariable (audit P0.3: ids never collide)."""
+    return MetaVar(next(_meta_counter))
 
-    def go(t: Type, ctx: str) -> str:
-        if isinstance(t, TVar):
-            return t.name
-        if isinstance(t, Arrow):
-            left = go(t.src, "left")
-            right = go(t.dst, "right")
-            s = f"{left} {arrow} {right}"
-            return s if ctx == "right" else f"({s})"
-        raise TypeError(f"Unknown type: {t!r}")
 
-    return go(t, "right")
+# Substitutions are keyed by MetaVar id — never by display strings.
+Subst = Dict[int, Type]
+
+
+class STLCTypeError(Exception):
+    """Raised when a term has no simple type (or inference fails)."""
 
 
 # ---------------------------------------------------------------------------
-# Type parser
+# Substitution machinery
 # ---------------------------------------------------------------------------
+
+
+def walk(t: Type, subst: Subst) -> Type:
+    """Resolve a top-level MetaVar through the substitution to a fixpoint."""
+    while isinstance(t, MetaVar) and t.id in subst:
+        t = subst[t.id]
+    return t
+
+
+def apply_subst(t: Type, subst: Subst) -> Type:
+    t = walk(t, subst)
+    if isinstance(t, Arrow):
+        return Arrow(apply_subst(t.src, subst), apply_subst(t.dst, subst))
+    return t
+
+
+def _occurs(mid: int, t: Type, subst: Subst) -> bool:
+    t = walk(t, subst)
+    if isinstance(t, MetaVar):
+        return t.id == mid
+    if isinstance(t, Arrow):
+        return _occurs(mid, t.src, subst) or _occurs(mid, t.dst, subst)
+    return False
+
+
+def unify(a: Type, b: Type, subst: Optional[Subst] = None) -> Optional[Subst]:
+    """Most general unifier extending ``subst``; only MetaVars are bindable.
+
+    Returns the extended substitution, or ``None`` when the types clash.
+    Atoms unify only with themselves — capitalization plays no role.
+    """
+    s: Subst = dict(subst) if subst else {}
+
+    def go(x: Type, y: Type) -> bool:
+        x, y = walk(x, s), walk(y, s)
+        if x == y:
+            return True
+        if isinstance(x, MetaVar):
+            if _occurs(x.id, y, s):
+                return False
+            s[x.id] = y
+            return True
+        if isinstance(y, MetaVar):
+            if _occurs(y.id, x, s):
+                return False
+            s[y.id] = x
+            return True
+        if isinstance(x, Arrow) and isinstance(y, Arrow):
+            return go(x.src, y.src) and go(x.dst, y.dst)
+        return False  # Atom mismatch, or Atom vs Arrow
+
+    return s if go(a, b) else None
+
+
+def metas_in(t: Type, subst: Optional[Subst] = None) -> List[int]:
+    """MetaVar ids occurring in ``t`` (after resolving through ``subst``)."""
+    out: List[int] = []
+
+    def go(x: Type) -> None:
+        x = walk(x, subst or {})
+        if isinstance(x, MetaVar):
+            if x.id not in out:
+                out.append(x.id)
+        elif isinstance(x, Arrow):
+            go(x.src)
+            go(x.dst)
+
+    go(t)
+    return out
+
+
+def target_is_instance_of(principal: Type, target: Type) -> bool:
+    """One-way check: can ``target`` be obtained by instantiating ONLY the
+    metavariables of ``principal``? ``target`` must be ground (atoms/arrows).
+    Since ``unify`` can bind only MetaVars and a ground target contains none,
+    plain unification is exactly this one-way instance check."""
+    if metas_in(target):
+        return False
+    return unify(principal, target) is not None
+
+
+# ---------------------------------------------------------------------------
+# Pretty printing
+# ---------------------------------------------------------------------------
+
+_GREEK = ["α", "β", "γ", "δ", "ε", "ζ", "θ", "ι", "κ", "μ"]
+
+
+def _meta_names(types: List[Type]) -> Dict[int, str]:
+    """Stable display names (α, β, …) for metavariables, in first-appearance
+    order across the given types. Display only — identity is the id."""
+    order: List[int] = []
+    for t in types:
+        for mid in metas_in(t):
+            if mid not in order:
+                order.append(mid)
+    names: Dict[int, str] = {}
+    for i, mid in enumerate(order):
+        names[mid] = _GREEK[i] if i < len(_GREEK) else f"τ{i - len(_GREEK) + 1}"
+    return names
+
+
+def pretty_type(t: Type, *, arrow: str = "→",
+                names: Optional[Dict[int, str]] = None) -> str:
+    names = names if names is not None else _meta_names([t])
+
+    def go(x: Type, left_of_arrow: bool) -> str:
+        if isinstance(x, Atom):
+            return x.name
+        if isinstance(x, MetaVar):
+            return names.get(x.id, f"?m{x.id}")
+        if isinstance(x, Arrow):
+            s = f"{go(x.src, True)} {arrow} {go(x.dst, False)}"
+            return f"({s})" if left_of_arrow else s
+        raise TypeError(f"Unknown type node: {x!r}")
+
+    return go(t, False)
+
+
+def pretty_types(ts, *, arrow: str = "→") -> List[str]:
+    """Pretty-print several types with ONE shared metavariable naming, so a
+    metavar shows as the same Greek letter everywhere it occurs."""
+    ts = list(ts)
+    names = _meta_names(ts)
+    return [pretty_type(t, arrow=arrow, names=names) for t in ts]
+
+
+# ---------------------------------------------------------------------------
+# Type parsing (produces Atoms only)
+# ---------------------------------------------------------------------------
+
+
+def is_type_ident_start(ch: str) -> bool:
+    return ch.isalpha() or ch == "_"
+
+
+def is_type_ident_cont(ch: str) -> bool:
+    return ch.isalnum() or ch in ("_", "'")
 
 
 class _TypeParser:
-    """Recursive descent for ``T := atom ('->' T)?``."""
-
-    def __init__(self, src: str) -> None:
+    def __init__(self, src: str):
         self.src = src
         self.i = 0
 
@@ -93,65 +219,58 @@ class _TypeParser:
         while self.i < len(self.src) and self.src[self.i].isspace():
             self.i += 1
 
-    def _consume(self, prefix: str) -> bool:
-        self._skip_ws()
-        if self.src.startswith(prefix, self.i):
-            self.i += len(prefix)
-            return True
-        return False
+    def _peek(self) -> str:
+        return self.src[self.i] if self.i < len(self.src) else ""
 
     def parse(self) -> Type:
-        node = self._arrow()
+        t = self._arrow()
         self._skip_ws()
-        if self.i != len(self.src):
+        if self.i < len(self.src):
             rest = self.src[self.i:].lstrip()
             if rest.startswith("."):
                 raise ValueError(
-                    "types do not use dots — the dot belongs to lambda-terms (\\\\q. q). "
-                "Write the proposition with arrows: P -> Q.")
-            raise ValueError(f"Unexpected trailing input at pos {self.i}: {self.src[self.i:]!r}")
-        return node
+                    "types do not use dots — the dot belongs to lambda-terms (\\q. q). "
+                    "Write the proposition with arrows: P -> Q.")
+            raise ValueError(
+                f"Unexpected trailing input at pos {self.i}: {self.src[self.i:]!r}")
+        return t
 
     def _arrow(self) -> Type:
         left = self._atom()
-        # Right-associative.
-        if self._consume("->") or self._consume("→"):
-            right = self._arrow()
-            return Arrow(left, right)
+        self._skip_ws()
+        if self.src.startswith("->", self.i):
+            self.i += 2
+            return Arrow(left, self._arrow())
+        if self._peek() == "→":
+            self.i += 1
+            return Arrow(left, self._arrow())
         return left
 
     def _atom(self) -> Type:
         self._skip_ws()
-        if self.i >= len(self.src):
-            raise ValueError("Unexpected end of type expression")
-        ch = self.src[self.i]
+        ch = self._peek()
         if ch == "(":
             self.i += 1
             inner = self._arrow()
             self._skip_ws()
-            if self.i >= len(self.src) or self.src[self.i] != ")":
-                raise ValueError("Missing closing paren in type")
+            if self._peek() != ")":
+                raise ValueError(f"Missing ')' at pos {self.i}")
             self.i += 1
             return inner
-        # Identifier (ASCII or Greek letter).
-        start = self.i
-        while self.i < len(self.src):
-            c = self.src[self.i]
-            if c.isalnum() or c == "_" or c in "αβγδεζηθικλμνξοπρστυφχψω":
-                self.i += 1
-            else:
-                break
-        if start == self.i:
-            if ch in ("\\", "λ"):
-                raise ValueError(
-                    "that is lambda-TERM syntax, but this command expects a TYPE/proposition "
-                    "(e.g. P -> Q). To infer a term's type instead, use `ch term \\q. q`.")
-            if ch == ".":
-                raise ValueError(
-                    "types do not use dots — the dot belongs to lambda-terms (\\q. q). "
-                    "Write the proposition with arrows: P -> Q.")
+        if not ch:
+            raise ValueError("Unexpected end of type — expected an atom or '('")
+        if ch in ("\\", "λ"):
+            raise ValueError(
+                "that is lambda-TERM syntax, but this command expects a TYPE/proposition "
+                "(e.g. P -> Q). To infer a term's type instead, use `ch term \\q. q`.")
+        if not is_type_ident_start(ch):
             raise ValueError(f"Expected identifier at pos {self.i}, got {ch!r}")
-        return TVar(self.src[start:self.i])
+        j = self.i + 1
+        while j < len(self.src) and is_type_ident_cont(self.src[j]):
+            j += 1
+        name = self.src[self.i:j]
+        self.i = j
+        return Atom(name)
 
 
 def parse_type(s: str) -> Type:
@@ -159,211 +278,158 @@ def parse_type(s: str) -> Type:
     if head in ("\\", "λ"):
         raise ValueError(
             "that is lambda-TERM syntax, but this command expects a TYPE/proposition "
-            "(e.g. P -> Q). To infer a term's type instead, use `ch term \\\\q. q`.")
-    """Parse ``"P -> Q -> R"`` (equivalently ``"P → Q → R"``).
-
-    The arrow is right-associative; parentheses work as usual.
-    """
+            "(e.g. P -> Q). To infer a term's type instead, use `ch term \\q. q`.")
+    if not s.strip():
+        raise ValueError("Empty type.")
     return _TypeParser(s).parse()
 
 
 # ---------------------------------------------------------------------------
-# Operations on types
+# Algorithm W
 # ---------------------------------------------------------------------------
 
 
-def free_type_vars(t: Type) -> Set[str]:
-    if isinstance(t, TVar):
-        return {t.name}
-    if isinstance(t, Arrow):
-        return free_type_vars(t.src) | free_type_vars(t.dst)
-    raise TypeError(f"Unknown type: {t!r}")
+def infer_with_subst(
+    term: Term,
+    env: Dict[str, Type],
+    subst: Subst,
+    free_table: Optional[Dict[str, MetaVar]] = None,
+) -> Tuple[Type, Subst]:
+    """Algorithm W extending an existing substitution.
 
-
-def substitute(t: Type, subst: Dict[str, Type]) -> Type:
-    """Apply the substitution ``{name: Type}`` recursively."""
-    if isinstance(t, TVar):
-        return subst.get(t.name, t)
-    if isinstance(t, Arrow):
-        return Arrow(substitute(t.src, subst), substitute(t.dst, subst))
-    raise TypeError(f"Unknown type: {t!r}")
-
-
-def _compose(s2: Dict[str, Type], s1: Dict[str, Type]) -> Dict[str, Type]:
-    """Composition of substitutions (``s2 ∘ s1``)."""
-    out = {k: substitute(v, s2) for k, v in s1.items()}
-    for k, v in s2.items():
-        if k not in out:
-            out[k] = v
-    return out
-
-
-# Greek letters used for fresh type variables.
-_FRESH_LETTERS = "αβγδεζηθικλμνξοπρστυφχψω"
-
-
-class _FreshTVarFactory:
-    """Factory of fresh variables α, β, ... (with a numeric cycle suffix)."""
-
-    def __init__(self) -> None:
-        self.idx = 0
-
-    def fresh(self, used: Set[str]) -> TVar:
-        while True:
-            base = _FRESH_LETTERS[self.idx % len(_FRESH_LETTERS)]
-            cycle = self.idx // len(_FRESH_LETTERS)
-            name = base if cycle == 0 else f"{base}{cycle}"
-            self.idx += 1
-            if name not in used:
-                return TVar(name)
-
-
-def fresh_tvar_name(used: Set[str]) -> str:
-    """Find a fresh type-variable name (α, β, …)."""
-    return _FreshTVarFactory().fresh(used).name
-
-
-def _occurs_in(name: str, t: Type) -> bool:
-    return name in free_type_vars(t)
-
-
-def unify(a: Type, b: Type) -> Optional[Dict[str, Type]]:
-    """MGU (most general unifier) for STLC types.
-
-    Returns a dict ``{name: Type}`` or ``None`` when the types do not unify.
-    Atoms ``P, Q, R`` (uppercase first letter) are constants - they unify only
-    with themselves. Greek letters and lowercase names are variables.
+    ``env`` maps term variables to types (atoms and/or metavariables).
+    Free term variables NOT in ``env`` receive ONE shared metavariable per
+    name for the whole run (``free_table``); callers that require closed
+    terms must check ``lc.free_vars`` themselves before calling.
     """
-    if isinstance(a, TVar) and isinstance(b, TVar) and a.name == b.name:
-        return {}
-    if isinstance(a, TVar) and _is_unifiable(a.name):
-        if _occurs_in(a.name, b) and not (isinstance(b, TVar) and b.name == a.name):
-            return None
-        return {a.name: b}
-    if isinstance(b, TVar) and _is_unifiable(b.name):
-        if _occurs_in(b.name, a) and not (isinstance(a, TVar) and a.name == b.name):
-            return None
-        return {b.name: a}
-    if isinstance(a, TVar) and isinstance(b, TVar):
-        # Two distinct constants - no unifier.
-        return None
-    if isinstance(a, TVar) or isinstance(b, TVar):
-        # Constant vs. arrow.
-        return None
-    if isinstance(a, Arrow) and isinstance(b, Arrow):
-        s1 = unify(a.src, b.src)
-        if s1 is None:
-            return None
-        s2 = unify(substitute(a.dst, s1), substitute(b.dst, s1))
-        if s2 is None:
-            return None
-        return _compose(s2, s1)
-    return None
+    ft: Dict[str, MetaVar] = free_table if free_table is not None else {}
+    s: Subst = dict(subst)
 
+    def go(t: Term, e: Dict[str, Type]) -> Type:
+        nonlocal s
+        if isinstance(t, Var):
+            if t.name in e:
+                return e[t.name]
+            return ft.setdefault(t.name, fresh_meta())
+        if isinstance(t, Lam):
+            m = fresh_meta()
+            body_ty = go(t.body, {**e, t.param: m})
+            return Arrow(m, body_ty)
+        if isinstance(t, App):
+            fn_ty = go(t.fn, e)
+            arg_ty = go(t.arg, e)
+            res = fresh_meta()
+            s2 = unify(fn_ty, Arrow(arg_ty, res), s)
+            if s2 is None:
+                a, b = pretty_types(
+                    [apply_subst(fn_ty, s), apply_subst(Arrow(arg_ty, res), s)])
+                raise STLCTypeError(f"cannot unify {a} with {b}")
+            s = s2
+            return res
+        raise TypeError(f"Unknown term node: {t!r}")
 
-def _is_unifiable(name: str) -> bool:
-    """Is the name a *variable* (unifiable) or an atomic *constant*?
-
-    Heuristic: Greek letters (α, β, …) and names not starting with A-Z are
-    variables. Uppercase Latin atoms ``P, Q, R, A, B, …`` are constants.
-    """
-    if not name:
-        return False
-    first = name[0]
-    if first in _FRESH_LETTERS:
-        return True
-    return not first.isupper()
-
-
-# ---------------------------------------------------------------------------
-# Type inference (algorithm W)
-# ---------------------------------------------------------------------------
-
-
-class STLCTypeError(Exception):
-    """The term is not typable in STLC (e.g. self-application ``\\x. x x``)."""
+    ty = go(term, dict(env))
+    return apply_subst(ty, s), s
 
 
 def infer(term: Term, env: Optional[Dict[str, Type]] = None) -> Type:
-    """Infer the type of ``term`` in the environment ``env``.
+    """Principal type of ``term`` (display-oriented convenience wrapper)."""
+    ty, _ = infer_with_subst(term, env or {}, {})
+    return ty
 
-    Returns a *type* (no generalization - this is not full H-M). For closed
-    terms the result uses fresh Greek variables.
 
-    Raises ``STLCTypeError`` when the term is not typable.
+def infer_closed(term: Term) -> Type:
+    """Principal type of a CLOSED term; raises if any variable is free."""
+    from lambda_lab.lab.lc import free_vars
+    fv = free_vars(term)
+    if fv:
+        raise STLCTypeError(
+            f"term is open — free variable(s): {', '.join(sorted(fv))}")
+    return infer(term)
+
+
+# ---------------------------------------------------------------------------
+# Inhabitation search (implicational intuitionistic logic), context-aware
+# ---------------------------------------------------------------------------
+
+
+def peel_arrows(t: Type) -> Tuple[List[Type], Type]:
+    args: List[Type] = []
+    while isinstance(t, Arrow):
+        args.append(t.src)
+        t = t.dst
+    return args, t
+
+
+def find_inhabitant_ctx(
+    target: Type,
+    context: Tuple[Tuple[str, Type], ...] = (),
+    max_depth: int = 10,
+) -> Tuple[str, Optional[Term]]:
+    """Search for an inhabitant of a GROUND target, using the hypotheses in
+    ``context`` (audit P1.3).
+
+    Returns ``(status, term)`` with status one of ``"found"``, ``"none"``
+    (search space exhausted below the depth limit) or ``"limit"`` (the depth
+    limit was hit somewhere, so absence of a proof is NOT established).
     """
-    factory = _FreshTVarFactory()
+    if metas_in(target) or any(metas_in(t) for _, t in context):
+        return ("limit", None)  # undetermined types: refuse to guess
 
-    used: Set[str] = set()
-    if env:
-        for v in env.values():
-            used |= free_type_vars(v)
+    limit_hit = [False]
+    fresh_i = [0]
 
-    def fresh() -> TVar:
-        nonlocal used
-        v = factory.fresh(used)
-        used = used | {v.name}
-        return v
+    def fresh_name(used: set) -> str:
+        for base in "pqrstuvwxyz":
+            if base not in used:
+                return base
+        fresh_i[0] += 1
+        return f"h{fresh_i[0]}"
 
-    def w(env: Dict[str, Type], term: Term):
-        """Algorithm W: returns (subst, type)."""
-        if isinstance(term, Var):
-            if term.name not in env:
-                # Free variable - assign it a fresh atomic type.
-                tv = fresh()
-                return {}, tv
-            return {}, env[term.name]
-        if isinstance(term, Lam):
-            tv = fresh()
-            new_env = dict(env)
-            new_env[term.param] = tv
-            s_body, t_body = w(new_env, term.body)
-            param_t = substitute(tv, s_body)
-            return s_body, Arrow(param_t, t_body)
-        if isinstance(term, App):
-            s1, t1 = w(env, term.fn)
-            env2 = {k: substitute(v, s1) for k, v in env.items()}
-            s2, t2 = w(env2, term.arg)
-            tv = fresh()
-            t1_subst = substitute(t1, s2)
-            mgu = unify(t1_subst, Arrow(t2, tv))
-            if mgu is None:
-                raise STLCTypeError(
-                    f"Cannot unify {pretty_type(t1_subst)} with "
-                    f"{pretty_type(Arrow(t2, tv))}"
-                )
-            s = _compose(mgu, _compose(s2, s1))
-            return s, substitute(tv, mgu)
-        raise TypeError(f"Unknown term: {term!r}")
+    def prove(ctx: Tuple[Tuple[str, Type], ...], goal: Type, depth: int,
+              seen: frozenset) -> Optional[Term]:
+        if depth <= 0:
+            limit_hit[0] = True
+            return None
+        key = (goal, tuple(sorted(((n, repr(t)) for n, t in ctx))))
+        if key in seen:
+            return None
+        seen = seen | {key}
+        if isinstance(goal, Arrow):
+            used = {n for n, _ in ctx}
+            x = fresh_name(used)
+            body = prove(ctx + ((x, goal.src),), goal.dst, depth - 1, seen)
+            return Lam(x, body) if body is not None else None
+        # goal is an Atom: try every hypothesis whose result is the goal
+        for name, hyp in ctx:
+            args, ret = peel_arrows(hyp)
+            if ret != goal:
+                continue
+            term: Term = Var(name)
+            ok = True
+            for a in args:
+                sub = prove(ctx, a, depth - 1, seen)
+                if sub is None:
+                    ok = False
+                    break
+                term = App(term, sub)
+            if ok:
+                return term
+        return None
 
-    env_in: Dict[str, Type] = dict(env or {})
-    s, ty = w(env_in, term)
-    return _renumber(substitute(ty, s))
+    term = prove(tuple(context), target, max_depth, frozenset())
+    if term is not None:
+        return ("found", term)
+    return ("limit", None) if limit_hit[0] else ("none", None)
 
 
-def _renumber(t: Type) -> Type:
-    """After inference, renumber type variables to α, β, γ, … (left-to-right)."""
-    mapping: Dict[str, str] = {}
-    counter = [0]
+def find_inhabitant(target: Type, max_depth: int = 10) -> Optional[Term]:
+    """Back-compat empty-context search."""
+    status, term = find_inhabitant_ctx(target, (), max_depth)
+    return term if status == "found" else None
 
-    def alloc(name: str) -> str:
-        if name in mapping:
-            return mapping[name]
-        if not _is_unifiable(name):
-            return name
-        i = counter[0]
-        base = _FRESH_LETTERS[i % len(_FRESH_LETTERS)]
-        cycle = i // len(_FRESH_LETTERS)
-        new_name = base if cycle == 0 else f"{base}{cycle}"
-        mapping[name] = new_name
-        counter[0] += 1
-        return new_name
 
-    def go(t: Type) -> Type:
-        if isinstance(t, TVar):
-            return TVar(alloc(t.name))
-        if isinstance(t, Arrow):
-            return Arrow(go(t.src), go(t.dst))
-        raise TypeError(f"Unknown type: {t!r}")
-
-    return go(t)
+def inhabitation_status(target: Type, max_depth: int = 12) -> Tuple[str, Optional[Term]]:
+    """(status, witness) so UIs can distinguish 'uninhabited' from
+    'search limit reached'."""
+    return find_inhabitant_ctx(target, (), max_depth)

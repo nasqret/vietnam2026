@@ -114,7 +114,7 @@ class TestChapterFlow(unittest.TestCase):
         out = run("", state)  # ENTER through the gate
         self.assertIn("Running command:", out)
         self.assertIn("tour church", out)
-        self.assertIn("Desktop-only step:", out)
+        self.assertIn("Shown, not auto-executed", out)
         self.assertIn("[tutorial 2/7", out)
 
     def test_gate_skip_moves_to_next_step(self):

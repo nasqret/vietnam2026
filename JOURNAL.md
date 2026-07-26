@@ -154,3 +154,26 @@ Full battery green: repo clean/in-sync; GitHub Actions green 5/5 runs (book+gate
 tests, rocq, agda); 11/11 live URLs 200; book command gate 162 links clean; artifacts compile in
 all three installed provers. Tagged v1.0.0-rc1. Open by choice: worker-preview promotion (awaits a
 browser check), service-worker offline, assistive-tech testing, Mizar kernel-check.
+
+## 2026-07-26 — prove/ch-build soundness overhaul (external audit implemented)
+
+An external audit proved the interactive builders UNSOUND (Peirce's law received a false QED via
+four cooperating defects). Full fix, all P0/P1/P2 items:
+
+- **New trusted kernel** `stlc_types.py`: rigid `Atom` vs inference `MetaVar` (globally unique ids),
+  one-way instance check, context-aware inhabitation search with found/none/limit verdicts.
+- **One sound engine** `proof_builder.py` shared by `prove` AND `ch build` (`ch_builder` is now a
+  facade; `ch_stlc` keeps only the Lean bridge): checked finalization (`qed` re-checks the term
+  against the original goal and the session survives failure), proof-wide substitution propagated
+  to sibling goals, free-variable rejection, validated binders, transactional `intros`.
+- **Command grammar** (P1): arguments containing `->` are always propositions (`prove Q -> Q` no
+  longer hits the `q` quit alias); meta commands match the complete line case-sensitively; in-proof
+  `help`; nested `prove`/`ch build` refused without touching the session; the driver now routes
+  every line to the single interactive owner before ordinary handlers.
+- **Honesty fixes**: contextual `hint` validated through `exact`, depth-limit vs uninhabited
+  distinguished (also in `ch type`); `refine` documented as an `exact` alias; KB "SAT prover" claim
+  corrected; broken `prove demorgan1` tutorial step replaced; encyclopedia marked reference-only.
+- **New suite** `test_prove_soundness.py`: the audit's soundness oracle + its 21 regression groups,
+  parameterized over both front ends (55 tests). Full lab suite 359 green; book gate clean; the
+  cookbook prove ladder R1–R5 and showcase transcript replay byte-identically.
+- Deployed as build 2026-07-26a to /lab-lambda/ and /lab-lambda-next/; book re-staged.

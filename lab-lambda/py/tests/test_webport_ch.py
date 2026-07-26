@@ -11,7 +11,8 @@ from lambda_lab.lab.webport import ch
 from lambda_lab.lab.webport import data_ch_explore, data_ch_library, data_ch_tactics
 from lambda_lab.lab.webport.ch_stlc import (
     Arrow,
-    TVar,
+    Atom,
+    MetaVar,
     find_inhabitant,
     infer,
     parse_type,
@@ -193,10 +194,11 @@ class TestLibrary(unittest.TestCase):
             mapping = {}
 
             def go(t):
-                if isinstance(t, TVar):
-                    if t.name not in mapping:
-                        mapping[t.name] = f"v{len(mapping)}"
-                    return mapping[t.name]
+                if isinstance(t, (Atom, MetaVar)):
+                    key = t.name if isinstance(t, Atom) else ("m", t.id)
+                    if key not in mapping:
+                        mapping[key] = f"v{len(mapping)}"
+                    return mapping[key]
                 assert isinstance(t, Arrow)
                 return "(" + go(t.src) + "->" + go(t.dst) + ")"
 
@@ -214,7 +216,7 @@ class TestLibrary(unittest.TestCase):
 class TestTactics(unittest.TestCase):
     def test_catalogue(self):
         out = run("tactic")
-        self.assertIn("Encyclopedia of 22 Lean 4 tactics", out)
+        self.assertIn("Encyclopedia of Lean 4 tactics", out)
         for name in ("intro", "exact", "apply", "rw", "omega", "trivial"):
             self.assertIn(name, out)
 
@@ -275,7 +277,7 @@ class TestBuilder(unittest.TestCase):
         run("build P -> P", st)
         run("intro p", st)
         out = run("hint", st)
-        self.assertIn("Hint: try `exact p`", out)
+        self.assertIn("try `exact p`", out)
         run("q", st)
 
     def test_type_mismatch_reported(self):
@@ -292,7 +294,7 @@ class TestBuilder(unittest.TestCase):
         st = {}
         run("build P -> P", st)
         out = run("exact zz", st)
-        self.assertIn("I do not know term `zz`", out)
+        self.assertIn("unknown term variable(s): zz", out)
         run("q", st)
 
     def test_intro_on_atom_fails(self):
@@ -311,7 +313,7 @@ class TestBuilder(unittest.TestCase):
         self.assertIn("Last step undone.", out)
         self.assertIn("P → P", out)
         out = run("undo", st)
-        self.assertIn("History is empty", out)
+        self.assertIn("nothing to undo", out)
         run("q", st)
 
     def test_done_with_open_goals(self):
@@ -348,7 +350,7 @@ class TestBuilder(unittest.TestCase):
         st = {}
         run("build P -> P", st)
         out = run("frobnicate", st)
-        self.assertIn("Unknown tactic `frobnicate`", out)
+        self.assertIn("unknown tactic 'frobnicate'", out)
         run("q", st)
 
     def test_state_keys_use_ch_prefix(self):

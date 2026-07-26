@@ -84,8 +84,9 @@ CHAPTERS = [{'slug': 'gauss_sum',
                      'contradiction: assume it is, and follow the consequences to the '
                      'absurd.'},
             {'kind': 'command',
-             'label': 'A short logical warm-up - de Morgan in our playground.',
-             'command': 'prove demorgan1'},
+             'label': 'A short logical warm-up - chaining implications, with the '
+                      'lambda-term witness found automatically.',
+             'command': 'ch type (P -> Q) -> (Q -> R) -> P -> R'},
             {'kind': 'lean_walk',
              'label': 'A tiny lemma: 2 divides n iff n = 2k',
              'narrative': "Looks like a tautology, and in Lean's library it almost is: "

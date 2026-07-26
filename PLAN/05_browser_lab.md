@@ -37,3 +37,12 @@ lab-lambda/
 
 - [x] Worker + self-hosted build promoted to `/lab-lambda/` (build 2026-07-24a); `-next` = staging.
 - [ ] Service-worker precache for guaranteed offline (next).
+
+## Soundness overhaul (2026-07-26, build 2026-07-26a)
+
+- [x] External audit implemented in full: rigid Atom/MetaVar kernel (`stlc_types`), one shared
+      sound engine (`proof_builder`) behind both `prove` and `ch build`, checked `qed`,
+      proof-wide substitution, free-variable rejection, exact command grammar, single
+      interactive-owner routing in the driver, honest hints/`ch type` verdicts.
+- [x] `tests/test_prove_soundness.py`: audit oracle + 21 regression groups × both front ends;
+      lab suite 359 green; book gate + cookbook transcripts replay byte-identically.

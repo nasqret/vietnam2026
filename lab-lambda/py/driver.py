@@ -544,6 +544,35 @@ class LabSession:
                            "define it again (`help let`; `defs` lists what survives).")
                 + NL + dim("    A misspelled constant? `constants` shows the built-ins."))
 
+    def _session_owner(self):
+        """The ONE interactive mode that owns raw input right now (audit
+        P1.2), or None. Proof sessions own every line; tutorial/quiz own
+        only lines that are not ordinary commands (by design — a tutorial
+        step may ask you to run `church 3`)."""
+        if self.webstate.get("ch.interactive"):
+            return "ch"
+        if web_prove.is_active(self.webstate):
+            return "prove"
+        if web_tutorial.is_active(self.webstate):
+            return "tutorial"
+        if web_quiz.pending(self.webstate):
+            return "quiz"
+        return None
+
+    def _refuse_session_start(self, owner: str, wanted: str) -> str:
+        leave = {
+            "ch": "finish the builder with `qed` or leave with `abort`",
+            "prove": "finish the proof with `qed` or leave with `abort`",
+            "tutorial": "leave the tutorial with `quit`",
+            "quiz": "answer the pending question or type `stop`",
+        }[owner]
+        names = {"ch": "a `ch build` session", "prove": "a `prove` session",
+                 "tutorial": "a tutorial", "quiz": "a quiz question"}
+        return _lines(
+            yellow(f"Cannot start {wanted}: {names[owner]} is in progress."),
+            dim(f"First {leave}."),
+        )
+
     def run(self, line: str) -> str:
         line = (line or "").strip()
         if not line:
@@ -555,18 +584,21 @@ class LabSession:
         cmd = parts[0].lower()
         arg = parts[1].strip() if len(parts) > 1 else ""
         try:
+            owner = self._session_owner()
+            # A proof session owns the COMPLETE input line — tactics are
+            # routed before ordinary command handlers (audit P1.2).
+            if owner == "ch":
+                return web_ch.handle(line, self.webstate)
+            if owner == "prove":
+                return web_prove.handle(line, self.webstate)
             handler = getattr(self, f"cmd_{cmd}", None)
             if handler is None:
                 if cmd in DESKTOP_ONLY:
                     return self._desktop_only(cmd)
-                # Interactive sessions consume raw lines (tactics, answers, …).
-                if self.webstate.get("ch.interactive"):
-                    return web_ch.handle(line, self.webstate)
-                if web_prove.is_active(self.webstate):
-                    return web_prove.handle(line, self.webstate)
-                if web_tutorial.is_active(self.webstate):
+                # Tutorial/quiz consume raw lines that are not commands.
+                if owner == "tutorial":
                     return web_tutorial.handle(line, self.webstate)
-                if web_quiz.pending(self.webstate):
+                if owner == "quiz":
                     return web_quiz.handle(line, self.webstate)
                 # A bare lambda term may be an application such as `x y`.
                 return self.cmd_reduce(line)
@@ -977,12 +1009,26 @@ class LabSession:
         return web_kb.handle(arg, self.webstate)
 
     def cmd_quiz(self, arg: str) -> str:
+        owner = self._session_owner()
+        if owner in ("tutorial",):
+            return self._refuse_session_start(owner, "a quiz")
         return web_quiz.handle(arg, self.webstate)
 
     def cmd_tutorial(self, arg: str) -> str:
+        owner = self._session_owner()
+        if owner in ("quiz",):
+            return self._refuse_session_start(owner, "a tutorial")
         return web_tutorial.handle(arg, self.webstate)
 
     def cmd_prove(self, arg: str) -> str:
+        owner = self._session_owner()
+        if owner in ("tutorial", "quiz"):
+            # Informational subcommands are fine; starting a proof is not.
+            stripped = (arg or "").strip()
+            is_info = (not stripped or stripped == "help"
+                       or stripped.split()[0] in ("tactic", "lib", "tactics", "t"))
+            if not is_info:
+                return self._refuse_session_start(owner, "a proof")
         return web_prove.handle(arg, self.webstate)
 
     def cmd_alligators(self, arg: str) -> str:
@@ -992,6 +1038,9 @@ class LabSession:
         return web_ag.handle(arg, self.webstate)
 
     def cmd_ch(self, arg: str) -> str:
+        owner = self._session_owner()
+        if owner in ("tutorial", "quiz") and (arg or "").strip().startswith("build"):
+            return self._refuse_session_start(owner, "a builder session")
         return web_ch.handle(arg, self.webstate)
 
     def cmd_tour(self, arg: str) -> str:

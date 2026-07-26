@@ -1,52 +1,49 @@
-"""Interactive Curry-Howard proof builder engine (browser port).
+"""The sound interactive proof engine shared by ``prove`` and ``ch build``.
 
-Faithful port of the desktop ``lambda_lab.lab.curry_howard.builder`` plus the
-Wajsberg-style proof search from ``curry_howard.proof_search``. Pure stdlib.
+Rewritten per the 2026-07-24 audit. The four soundness pillars:
 
-Models the proof state as:
+* P0.1 — :func:`checked_final` is the ONLY way to finish: the completed term
+  must be hole-free, closed, typable, and its principal type must instantiate
+  (one-way) to the ORIGINAL rigid target. No QED without it.
+* P0.2 — types come from the :mod:`stlc_types` kernel: parsed atoms are rigid
+  ``Atom`` nodes; only inference ``MetaVar``\\ s unify.
+* P0.3 — :class:`ProofState` carries a proof-wide substitution. Every
+  successful ``exact``/``apply``/``assumption`` composes its unifier into it
+  and the composed substitution is applied to EVERY remaining goal and
+  context, so sibling goals share constraints visibly.
+* P0.4 — every tactic term is rejected if it mentions a variable not bound by
+  the goal's context (no smuggled free variables).
 
-* :class:`Goal`        - a context of named hypotheses + an STLC target type,
-* :class:`PartialTerm` - a partial λ-term with holes ``?n``,
-* :class:`ProofState`  - list of goals + current term + history (for undo).
-
-Operational tactics (the same set as the desktop builder):
-
-* ``intro [name]``  - introduce the assumption of an implication,
-* ``intros [names]``- greedily introduce a chain of assumptions,
-* ``exact <term>``  - close the goal by giving a term,
-* ``apply <term>``  - apply a function, opening subgoals for its arguments,
-* ``assumption``    - close the goal with a hypothesis from the context,
-* ``refine <term>`` - alias for ``exact`` (holes not supported),
-* ``undo``          - revert the last step.
-
-All operations are *pure* - they return a new ``ProofState`` or raise
-:class:`TacticError` (carrying a message key + parameters, resolved against
-``data_prove.STRINGS``).
-
-One deliberate improvement over the desktop: ``exact``/``apply`` accept a
-*closed* term whose principal type unifies with the goal (e.g. ``exact \\x. x``
-for goal ``P → P``). The desktop compared pretty-printed types strictly, which
-made its own ``hint`` suggestions fail when pasted back.
+Plus P1.5: binder names are validated with the λ-parser's own identifier
+rule, surplus arguments are errors, one user-level ``intros`` is one history
+transaction, and history records the tactic the user actually typed.
 """
 
 from __future__ import annotations
 
-import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Dict, List, Optional, Tuple
 
-from lambda_lab.lab.lc import App, Lam, Term, Var, pretty
+from lambda_lab.lab.lc import App, Lam, Term, Var, free_vars, pretty
 from lambda_lab.lab.parser import ParseError, parse
-from lambda_lab.lab.webport.stlc_types import (
-    Arrow,
-    STLCTypeError,
-    Type,
-    infer,
-    pretty_type,
-    substitute,
-    unify,
-)
 
+from .stlc_types import (
+    Arrow,
+    MetaVar,
+    STLCTypeError,
+    Subst,
+    Type,
+    apply_subst,
+    find_inhabitant_ctx,
+    infer_with_subst,
+    metas_in,
+    peel_arrows,
+    pretty_type,
+    pretty_types,
+    target_is_instance_of,
+    unify,
+    walk,
+)
 
 # ---------------------------------------------------------------------------
 # Errors
@@ -54,23 +51,34 @@ from lambda_lab.lab.webport.stlc_types import (
 
 
 class TacticError(Exception):
-    """Tactic application failed - carries a message key + parameters."""
+    """A tactic could not be applied; the message is final English text.
+    The proof state is guaranteed unchanged when this is raised."""
 
-    def __init__(self, message_key: str, **format_args: object) -> None:
-        super().__init__(message_key)
-        self.message_key = message_key
-        self.format_args = format_args
+
+class InvalidProof(Exception):
+    """checked_final refused the completed proof; the session must survive."""
 
 
 # ---------------------------------------------------------------------------
-# Models
+# Identifier rule — shared with the λ-term parser (audit P1.5)
+# ---------------------------------------------------------------------------
+
+
+def is_valid_binder(name: str) -> bool:
+    if not name or name.startswith("?"):
+        return False
+    if not (name[0].isalpha() or name[0] == "_"):
+        return False
+    return all(c.isalnum() or c in ("_", "'") for c in name[1:])
+
+
+# ---------------------------------------------------------------------------
+# Proof-state data structures
 # ---------------------------------------------------------------------------
 
 
 @dataclass(frozen=True)
 class Goal:
-    """A single goal: context of named hypotheses + target type."""
-
     context: Tuple[Tuple[str, Type], ...]
     target: Type
 
@@ -78,27 +86,16 @@ class Goal:
     def context_dict(self) -> Dict[str, Type]:
         return dict(self.context)
 
-    def add(self, name: str, ty: Type) -> "Goal":
-        return Goal(context=self.context + ((name, ty),), target=self.target)
-
-    def with_target(self, ty: Type) -> "Goal":
-        return Goal(context=self.context, target=ty)
-
 
 @dataclass(frozen=True)
 class PartialTerm:
-    """A partial term with holes ``?n`` (represented as Vars named ``?n``)."""
-
     root: Term
     holes: Tuple[int, ...]
     next_hole: int
 
-    @classmethod
-    def initial(cls) -> "PartialTerm":
-        return cls(root=Var("?0"), holes=(0,), next_hole=1)
-
-    def pretty(self) -> str:
-        return _pretty_with_subscripts(self.root)
+    @staticmethod
+    def initial() -> "PartialTerm":
+        return PartialTerm(root=_hole_var(0), holes=(0,), next_hole=1)
 
 
 def _hole_var(idx: int) -> Var:
@@ -115,12 +112,9 @@ def _is_hole(t: Term) -> Optional[int]:
 
 
 def _replace_hole(t: Term, idx: int, new: Term) -> Term:
-    """Replace the occurrence of ``?idx`` in ``t`` by ``new`` (recursively)."""
     h = _is_hole(t)
     if h == idx:
         return new
-    if isinstance(t, Var):
-        return t
     if isinstance(t, Lam):
         return Lam(t.param, _replace_hole(t.body, idx, new))
     if isinstance(t, App):
@@ -128,25 +122,41 @@ def _replace_hole(t: Term, idx: int, new: Term) -> Term:
     return t
 
 
-_SUB = "₀₁₂₃₄₅₆₇₈₉"
+def holes_in(t: Term) -> Tuple[int, ...]:
+    out: List[int] = []
+
+    def go(x: Term) -> None:
+        h = _is_hole(x)
+        if h is not None:
+            out.append(h)
+        elif isinstance(x, Lam):
+            go(x.body)
+        elif isinstance(x, App):
+            go(x.fn)
+            go(x.arg)
+
+    go(t)
+    return tuple(out)
+
+
+_SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
 
 
 def _to_subscript(n: int) -> str:
-    return "".join(_SUB[int(d)] for d in str(n))
+    return str(n).translate(_SUB)
 
 
 def _pretty_with_subscripts(t: Term) -> str:
     """Pretty-print with holes shown as ``?₀, ?₁, …``."""
-    rendered = pretty(t)
-    return re.sub(r"\?(\d+)", lambda m: f"?{_to_subscript(int(m.group(1)))}", rendered)
+    import re
+    s = pretty(t, rename=False)
+    return re.sub(r"\?(\d+)", lambda m: "?" + _to_subscript(int(m.group(1))), s)
 
 
 @dataclass(frozen=True)
 class Step:
-    """History entry - enables undo."""
-
-    tactic: str
-    args: str
+    tactic: str          # exactly what the user typed (audit P1.5)
+    arg: str
     state_before: "ProofState"
 
 
@@ -154,7 +164,9 @@ class Step:
 class ProofState:
     goals: Tuple[Goal, ...]
     partial: PartialTerm
-    history: Tuple[Step, ...] = field(default_factory=tuple)
+    history: Tuple[Step, ...]
+    target: Type                      # the ORIGINAL parsed (rigid) target
+    subst: Dict[int, Type] = field(default_factory=dict)
 
     def is_done(self) -> bool:
         return not self.goals
@@ -162,406 +174,387 @@ class ProofState:
     def current(self) -> Optional[Goal]:
         return self.goals[0] if self.goals else None
 
-    def partial_str(self) -> str:
-        return self.partial.pretty()
-
     def final_term(self) -> Optional[Term]:
-        """When every goal is closed, the term without holes; else ``None``."""
-        if self.goals:
-            return None
-        if _has_hole(self.partial.root):
+        if self.goals or holes_in(self.partial.root):
             return None
         return self.partial.root
 
-
-def _has_hole(t: Term) -> bool:
-    if _is_hole(t) is not None:
-        return True
-    if isinstance(t, Var):
-        return False
-    if isinstance(t, Lam):
-        return _has_hole(t.body)
-    if isinstance(t, App):
-        return _has_hole(t.fn) or _has_hole(t.arg)
-    return False
-
-
-# ---------------------------------------------------------------------------
-# Initial state
-# ---------------------------------------------------------------------------
+    def partial_str(self) -> str:
+        return _pretty_with_subscripts(self.partial.root)
 
 
 def start(target: Type) -> ProofState:
-    goal = Goal(context=(), target=target)
-    return ProofState(goals=(goal,), partial=PartialTerm.initial(), history=())
+    return ProofState(
+        goals=(Goal(context=(), target=target),),
+        partial=PartialTerm.initial(),
+        history=(),
+        target=target,
+    )
 
 
 # ---------------------------------------------------------------------------
-# Helper: variable names
+# Internals
 # ---------------------------------------------------------------------------
 
 
 def _suggest_name(used: set) -> str:
-    for n in ("p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"):
-        if n not in used:
-            return n
+    # The teaching convention (slides, book, cookbook): p, q, r, … for
+    # hypotheses; h0, h1, … once the preferred letters run out.
+    for c in "pqrstuvwxyz":
+        if c not in used:
+            return c
     i = 0
     while f"h{i}" in used:
         i += 1
     return f"h{i}"
 
 
-# ---------------------------------------------------------------------------
-# Goal matching (strict, then unification for closed terms)
-# ---------------------------------------------------------------------------
-
-
-def _free_term_vars(t: Term) -> set:
-    if isinstance(t, Var):
-        return {t.name}
-    if isinstance(t, Lam):
-        return _free_term_vars(t.body) - {t.param}
-    if isinstance(t, App):
-        return _free_term_vars(t.fn) | _free_term_vars(t.arg)
-    return set()
-
-
-def _goal_match(ty: Type, target: Type, *, allow_unify: bool) -> Optional[Dict[str, Type]]:
-    """``{}`` when the types agree verbatim; else an MGU when allowed."""
-    if pretty_type(ty) == pretty_type(target):
-        return {}
-    if allow_unify:
-        return unify(ty, target)
-    return None
-
-
-# ---------------------------------------------------------------------------
-# Atomic tactics
-# ---------------------------------------------------------------------------
-
-
-def intro(state: ProofState, name: Optional[str] = None) -> ProofState:
-    goal = state.current()
-    if goal is None:
-        raise TacticError("ch.build.no_more_goals")
-    if not isinstance(goal.target, Arrow):
-        raise TacticError("ch.build.goal_not_implication", target=pretty_type(goal.target))
-    used = set(n for n, _ in goal.context)
-    name = name or _suggest_name(used)
-    if name in used:
-        # The user picked a colliding name - generate a fresh one.
-        name = _suggest_name(used | {name})
-    new_goal = Goal(
-        context=goal.context + ((name, goal.target.src),),
-        target=goal.target.dst,
+def _apply_everywhere(state: ProofState, s: Subst) -> ProofState:
+    """Apply a composed substitution to every goal target and context type —
+    the P0.3 propagation that keeps sibling goals consistent AND visible."""
+    goals = tuple(
+        Goal(
+            context=tuple((n, apply_subst(t, s)) for n, t in g.context),
+            target=apply_subst(g.target, s),
+        )
+        for g in state.goals
     )
-    # Replace the current hole by `fun name => ?new`.
-    cur_hole = _first_hole_in(state.partial.root)
-    if cur_hole is None:
-        raise TacticError("ch.build.no_more_goals")
-    new_idx = state.partial.next_hole
-    body = Lam(name, _hole_var(new_idx))
-    new_root = _replace_hole(state.partial.root, cur_hole, body)
-    new_partial = PartialTerm(
-        root=new_root,
-        holes=tuple(h for h in state.partial.holes if h != cur_hole) + (new_idx,),
-        next_hole=new_idx + 1,
-    )
-    return ProofState(
-        goals=(new_goal,) + state.goals[1:],
-        partial=new_partial,
-        history=state.history + (Step("intro", name, state),),
-    )
+    return replace(state, goals=goals, subst=dict(s))
 
 
-def exact(state: ProofState, term_src: str) -> ProofState:
-    if not term_src.strip():
-        raise TacticError("ch.build.exact_needs_arg")
-    goal = state.current()
-    if goal is None:
-        raise TacticError("ch.build.no_more_goals")
+def _parse_tactic_term(src: str) -> Term:
     try:
-        term = parse(term_src)
+        return parse(src)
     except ParseError as e:
-        raise TacticError("ch.build.tactic_error", error=str(e))
-    env = goal.context_dict
-    # Early catch: a single variable outside the context = unknown_term.
-    if isinstance(term, Var) and term.name not in env:
-        raise TacticError("ch.build.unknown_term", term=term.name)
-    try:
-        ty = infer(term, env=env)
-    except STLCTypeError:
+        raise TacticError(f"cannot parse the term: {e}")
+
+
+def _reject_unknown_free(term: Term, goal: Goal) -> None:
+    """P0.4: every free variable of a tactic term must be a hypothesis."""
+    unknown = free_vars(term) - set(goal.context_dict)
+    if unknown:
+        names = ", ".join(sorted(unknown))
         raise TacticError(
-            "ch.build.exact_type_mismatch",
-            term=pretty(term),
-            got="?",
-            want=pretty_type(goal.target),
-        )
-    closed_in_ctx = _free_term_vars(term) <= set(env)
-    if _goal_match(ty, goal.target, allow_unify=closed_in_ctx) is None:
-        raise TacticError(
-            "ch.build.exact_type_mismatch",
-            term=pretty(term),
-            got=pretty_type(ty),
-            want=pretty_type(goal.target),
-        )
-    cur_hole = _first_hole_in(state.partial.root)
-    if cur_hole is None:
-        raise TacticError("ch.build.no_more_goals")
-    new_root = _replace_hole(state.partial.root, cur_hole, term)
+            f"unknown term variable(s): {names} — a proof may only use the "
+            f"hypotheses in the current context (see the Context line).")
+
+
+def _no_args(tac: str, args: str) -> None:
+    if args.strip():
+        raise TacticError(f"`{tac}` takes no arguments (got {args.strip()!r}).")
+
+
+def _close_goal_with(state: ProofState, term: Term, s2: Subst,
+                     tactic: str, arg: str) -> ProofState:
+    """Replace the current hole by ``term``, drop the goal, propagate ``s2``."""
+    if not state.partial.holes:
+        raise TacticError("no open goal.")
+    hole = state.partial.holes[0]
     new_partial = PartialTerm(
-        root=new_root,
-        holes=tuple(h for h in state.partial.holes if h != cur_hole),
+        root=_replace_hole(state.partial.root, hole, term),
+        holes=state.partial.holes[1:],
         next_hole=state.partial.next_hole,
     )
-    return ProofState(
+    new_state = replace(
+        state,
         goals=state.goals[1:],
         partial=new_partial,
-        history=state.history + (Step("exact", term_src, state),),
+        history=state.history + (Step(tactic, arg, state),),
     )
+    return _apply_everywhere(new_state, s2)
 
 
-def assumption(state: ProofState) -> ProofState:
+# ---------------------------------------------------------------------------
+# Tactics
+# ---------------------------------------------------------------------------
+
+
+def _intro_once(state: ProofState, name: Optional[str]) -> ProofState:
     goal = state.current()
     if goal is None:
-        raise TacticError("ch.build.no_more_goals")
-    target_pp = pretty_type(goal.target)
-    for name, ty in goal.context:
-        if pretty_type(ty) == target_pp:
-            return exact(state, name)
-    raise TacticError("ch.build.assumption_no_match", target=pretty_type(goal.target))
-
-
-def apply_(state: ProofState, term_src: str) -> ProofState:
-    """``apply f`` for ``f : A1 -> ... -> An -> goal`` -> n new subgoals."""
-    if not term_src.strip():
-        raise TacticError("ch.build.apply_needs_arg")
-    goal = state.current()
-    if goal is None:
-        raise TacticError("ch.build.no_more_goals")
-    try:
-        term = parse(term_src)
-    except ParseError as e:
-        raise TacticError("ch.build.tactic_error", error=str(e))
-    env = goal.context_dict
-    try:
-        ty = infer(term, env=env)
-    except STLCTypeError:
-        if isinstance(term, Var) and term.name not in env:
-            raise TacticError("ch.build.unknown_term", term=term.name)
-        raise TacticError("ch.build.tactic_error", error="cannot infer type")
-    if isinstance(term, Var) and term.name not in env:
-        raise TacticError("ch.build.unknown_term", term=term.name)
-    closed_in_ctx = _free_term_vars(term) <= set(env)
-    # Decompose ty into a chain of arrows.
-    args: List[Type] = []
-    ret = ty
-    while isinstance(ret, Arrow):
-        args.append(ret.src)
-        ret = ret.dst
-    s = _goal_match(ret, goal.target, allow_unify=closed_in_ctx)
-    if s is None:
-        # Mismatch - fall back to treating the whole term as `exact`.
-        if _goal_match(ty, goal.target, allow_unify=closed_in_ctx) is not None:
-            return exact(state, term_src)
+        raise TacticError("no open goal.")
+    target = apply_subst(goal.target, state.subst)
+    if not isinstance(target, Arrow):
         raise TacticError(
-            "ch.build.exact_type_mismatch",
-            term=pretty(term),
-            got=pretty_type(ty),
-            want=pretty_type(goal.target),
-        )
-    if s:
-        args = [substitute(a, s) for a in args]
-    if not args:
-        # Zero arity - effectively exact.
-        return exact(state, term_src)
-    cur_hole = _first_hole_in(state.partial.root)
-    if cur_hole is None:
-        raise TacticError("ch.build.no_more_goals")
-    # Build the application chain f ?h1 ?h2 ...
+            f"the goal is `{pretty_type(target)}` — not an implication, "
+            f"so there is nothing to intro.")
+    used = {n for n, _ in goal.context}
+    if name is not None:
+        if not is_valid_binder(name):
+            raise TacticError(
+                f"invalid hypothesis name {name!r} — use a λ-identifier "
+                f"(letter or _, then letters/digits/_/'), not starting with '?'.")
+        if name in used:
+            raise TacticError(
+                f"the name {name!r} is already used in this context — pick another.")
+    else:
+        name = _suggest_name(used)
+    new_goal = Goal(context=goal.context + ((name, target.src),), target=target.dst)
+    hole = state.partial.holes[0]
+    new_idx = state.partial.next_hole
+    new_partial = PartialTerm(
+        root=_replace_hole(state.partial.root, hole, Lam(name, _hole_var(new_idx))),
+        holes=(new_idx,) + state.partial.holes[1:],
+        next_hole=new_idx + 1,
+    )
+    return replace(state, goals=(new_goal,) + state.goals[1:], partial=new_partial)
+
+
+def intro(state: ProofState, args: str = "") -> ProofState:
+    names = args.split()
+    if len(names) > 1:
+        raise TacticError(
+            f"`intro` takes at most one name (got {len(names)}); "
+            f"use `intros {' '.join(names)}` to introduce several.")
+    new_state = _intro_once(state, names[0] if names else None)
+    return replace(new_state, history=state.history + (Step("intro", args, state),))
+
+
+def intros(state: ProofState, args: str = "") -> ProofState:
+    names = args.split()
+    scratch = state
+    if names:
+        for n in names:
+            scratch = _intro_once(scratch, n)
+    else:
+        progressed = False
+        while True:
+            goal = scratch.current()
+            if goal is None:
+                break
+            if not isinstance(apply_subst(goal.target, scratch.subst), Arrow):
+                break
+            scratch = _intro_once(scratch, None)
+            progressed = True
+        if not progressed:
+            raise TacticError(
+                "`intros` made no progress — the goal is not an implication.")
+    # ONE history transaction for the whole intros (audit P1.5)
+    return replace(scratch, history=state.history + (Step("intros", args, state),))
+
+
+def _infer_in_goal(state: ProofState, term: Term, goal: Goal) -> Tuple[Type, Subst]:
+    env = {n: apply_subst(t, state.subst) for n, t in goal.context}
+    try:
+        return infer_with_subst(term, env, state.subst)
+    except STLCTypeError as e:
+        raise TacticError(f"the term has no simple type here: {e}")
+
+
+def exact(state: ProofState, args: str, *, tactic: str = "exact") -> ProofState:
+    if not args.strip():
+        raise TacticError(f"`{tactic}` needs a term, e.g. `{tactic} h` or "
+                          f"`{tactic} \\p. p`.")
+    goal = state.current()
+    if goal is None:
+        raise TacticError("no open goal.")
+    term = _parse_tactic_term(args)
+    _reject_unknown_free(term, goal)
+    ty, s1 = _infer_in_goal(state, term, goal)
+    target = apply_subst(goal.target, s1)
+    s2 = unify(ty, target, s1)
+    if s2 is None:
+        got, want = pretty_types([apply_subst(ty, s1), target])
+        raise TacticError(f"term `{pretty(term)}` has type `{got}` but the "
+                          f"goal is `{want}`.")
+    return _close_goal_with(state, term, s2, tactic, args)
+
+
+def assumption(state: ProofState, args: str = "") -> ProofState:
+    _no_args("assumption", args)
+    goal = state.current()
+    if goal is None:
+        raise TacticError("no open goal.")
+    target = apply_subst(goal.target, state.subst)
+    for name, hyp in goal.context:
+        s2 = unify(apply_subst(hyp, state.subst), target, state.subst)
+        if s2 is not None:
+            return _close_goal_with(state, Var(name), s2, "assumption", "")
+    raise TacticError(
+        f"no hypothesis matches the goal `{pretty_type(target)}` — "
+        f"see the Context line.")
+
+
+def apply_(state: ProofState, args: str) -> ProofState:
+    if not args.strip():
+        raise TacticError("`apply` needs a term, e.g. `apply f`.")
+    goal = state.current()
+    if goal is None:
+        raise TacticError("no open goal.")
+    term = _parse_tactic_term(args)
+    _reject_unknown_free(term, goal)
+    ty, s1 = _infer_in_goal(state, term, goal)
+    ty = apply_subst(ty, s1)
+    if isinstance(walk(ty, s1), MetaVar):
+        raise TacticError(
+            "the type of that term is not determined yet — close another goal "
+            "first, or use `exact` with a full term.")
+    arrow_args, ret = peel_arrows(ty)
+    target = apply_subst(goal.target, s1)
+    s2 = unify(ret, target, s1)
+    if s2 is None:
+        # maybe the whole type matches the goal — plain exact
+        s3 = unify(ty, target, s1)
+        if s3 is not None:
+            return _close_goal_with(state, term, s3, "apply", args)
+        got, want = pretty_types([ty, target])
+        raise TacticError(f"term `{pretty(term)}` has type `{got}`; neither it "
+                          f"nor its result matches the goal `{want}`.")
+    if not arrow_args:
+        return _close_goal_with(state, term, s2, "apply", args)
+    hole = state.partial.holes[0]
     next_idx = state.partial.next_hole
     new_holes: List[int] = []
     new_term: Term = term
-    for _ in args:
+    for _ in arrow_args:
         new_term = App(new_term, _hole_var(next_idx))
         new_holes.append(next_idx)
         next_idx += 1
-    new_root = _replace_hole(state.partial.root, cur_hole, new_term)
-    # New goals (one per argument), left to right.
-    new_goals = tuple(Goal(context=goal.context, target=a) for a in args)
     new_partial = PartialTerm(
-        root=new_root,
-        holes=tuple(h for h in state.partial.holes if h != cur_hole) + tuple(new_holes),
+        root=_replace_hole(state.partial.root, hole, new_term),
+        holes=tuple(new_holes) + state.partial.holes[1:],
         next_hole=next_idx,
     )
-    return ProofState(
+    # sibling goals keep the SAME MetaVar ids — s2 propagation links them
+    new_goals = tuple(Goal(context=goal.context, target=a) for a in arrow_args)
+    new_state = replace(
+        state,
         goals=new_goals + state.goals[1:],
         partial=new_partial,
-        history=state.history + (Step("apply", term_src, state),),
+        history=state.history + (Step("apply", args, state),),
     )
+    return _apply_everywhere(new_state, s2)
 
 
-def refine(state: ProofState, term_src: str) -> ProofState:
-    """Simplified ``refine`` - an alias for ``exact`` (as on the desktop)."""
-    if not term_src.strip():
-        raise TacticError("ch.build.refine_needs_arg")
-    if "?" in term_src:
-        raise TacticError("ch.build.tactic_error",
-                          error="refine with explicit holes is not supported in the builder yet")
-    return exact(state, term_src)
+def refine(state: ProofState, args: str) -> ProofState:
+    """An honest alias for ``exact`` (audit P1.4): explicit ``?_`` holes are
+    not supported in this builder; the help text says exactly that."""
+    if "?" in args:
+        raise TacticError(
+            "`refine` here is an alias for `exact` and does not support "
+            "explicit `?_` holes — use `apply` to open argument subgoals.")
+    return exact(state, args, tactic="refine")
 
 
-def undo(state: ProofState) -> ProofState:
+def undo(state: ProofState, args: str = "") -> ProofState:
+    _no_args("undo", args)
     if not state.history:
-        raise TacticError("ch.build.history_empty")
+        raise TacticError("nothing to undo.")
     return state.history[-1].state_before
 
 
 # ---------------------------------------------------------------------------
-# Proof search (Wajsberg-style, implicational intuitionistic fragment)
+# Hint (audit P1.3): context-aware, honest about limits
 # ---------------------------------------------------------------------------
 
 
-def _flatten_arrow(t: Type) -> Tuple[List[Type], Type]:
-    """``A → B → C → D`` -> ``([A,B,C], D)``."""
-    args: List[Type] = []
-    while isinstance(t, Arrow):
-        args.append(t.src)
-        t = t.dst
-    return args, t
+def hint(state: ProofState) -> Tuple[str, Optional[str]]:
+    """Returns ``(status, suggestion)``:
 
-
-def find_inhabitant(typ: Type, depth: int = 8) -> Optional[Term]:
-    """Find a λ-term inhabiting ``typ`` (intuitionistic, ``->`` only).
-
-    Returns the term, or ``None`` when nothing is found within ``depth`` levels
-    (e.g. Peirce's law ``((P→Q)→P)→P`` is not intuitionistically provable).
-    """
-
-    def go(env: Dict[str, Type], goal: Type, fuel: int) -> Optional[Term]:
-        if fuel <= 0:
-            return None
-        # Introduction rule: if the goal is a function, introduce a variable.
-        if isinstance(goal, Arrow):
-            name = _suggest_var_name(env)
-            new_env = dict(env)
-            new_env[name] = goal.src
-            body = go(new_env, goal.dst, fuel - 1)
-            if body is None:
-                return None
-            return Lam(name, body)
-
-        # Elimination rule: find h: A1 → ... → An → goal in the environment.
-        for hname, htype in env.items():
-            args, ret = _flatten_arrow(htype)
-            if ret != goal:
-                continue
-            arg_terms: List[Term] = []
-            ok = True
-            for a in args:
-                sub = go(env, a, fuel - 1)
-                if sub is None:
-                    ok = False
-                    break
-                arg_terms.append(sub)
-            if not ok:
-                continue
-            term: Term = Var(hname)
-            for at in arg_terms:
-                term = App(term, at)
-            return term
-        return None
-
-    return go({}, typ, depth)
-
-
-def _suggest_var_name(env: Dict[str, Type]) -> str:
-    """Suggest p, q, r, … or h0, h1, …; collision-free."""
-    preferred = ["p", "q", "r", "s", "x", "y", "z", "u", "v", "w"]
-    used = set(env.keys())
-    for n in preferred:
-        if n not in used:
-            return n
-    i = 0
-    while f"h{i}" in used:
-        i += 1
-    return f"h{i}"
-
-
-def hint(state: ProofState) -> Optional[str]:
-    """Suggest the next move by searching for an inhabitant of the goal.
-
-    Returns a term string usable as ``exact <term>``, or ``None``.
+    * ``("done", None)`` — all goals closed;
+    * ``("assumption", name)`` — a hypothesis closes the goal;
+    * ``("intro", None)`` — no inhabitant found yet but the goal is an
+      implication: introduce and look again;
+    * ``("exact", term_text)`` — a found inhabitant using the context;
+    * ``("limit", None)`` — search hit its depth limit: no verdict;
+    * ``("none", None)`` — no proof exists in the implicational fragment;
+    * ``("meta", None)`` — the goal still contains undetermined types.
     """
     goal = state.current()
     if goal is None:
-        return None
-    # First the trivial `assumption`.
-    target_pp = pretty_type(goal.target)
-    for name, ty in goal.context:
-        if pretty_type(ty) == target_pp:
-            return name
-    # Then proof search in the empty context.
-    term = find_inhabitant(goal.target)
-    if term is None:
-        return None
-    return pretty(term)
+        return ("done", None)
+    target = apply_subst(goal.target, state.subst)
+    ctx = tuple((n, apply_subst(t, state.subst)) for n, t in goal.context)
+    if metas_in(target) or any(metas_in(t) for _, t in ctx):
+        return ("meta", None)
+    # 1. a hypothesis that closes the goal outright
+    for name, hyp in ctx:
+        if hyp == target:
+            return ("assumption", name)
+    # 2. full search WITH the context
+    status, term = find_inhabitant_ctx(target, ctx, max_depth=10)
+    if status == "found" and term is not None:
+        # sanity: the suggestion must pass the same checker exact uses
+        try:
+            exact(state, pretty(term))
+        except TacticError:
+            return ("limit", None)
+        return ("exact", pretty(term))
+    if status == "limit":
+        return ("limit", None)
+    if isinstance(target, Arrow):
+        return ("intro", None)
+    return ("none", None)
+
+
+# ---------------------------------------------------------------------------
+# The trusted finish (audit P0.1)
+# ---------------------------------------------------------------------------
+
+
+def checked_final(state: ProofState) -> Tuple[Term, str]:
+    """Validate the completed proof; returns ``(term, principal_pretty)``.
+
+    Raises :class:`InvalidProof` (leaving the session intact) when the term
+    has holes, is open, is untypable, or does not prove the ORIGINAL target.
+    """
+    if state.goals:
+        raise InvalidProof(f"{len(state.goals)} goal(s) still open.")
+    final = state.final_term()
+    if final is None:
+        raise InvalidProof("internal error: goals are closed but the proof "
+                           "term still contains holes.")
+    fv = free_vars(final)
+    if fv:
+        raise InvalidProof(
+            f"the proof term is open — free variable(s): {', '.join(sorted(fv))}.")
+    try:
+        principal, _ = infer_with_subst(final, {}, {})
+    except STLCTypeError as e:
+        raise InvalidProof(f"the completed term is not typable: {e}")
+    if not target_is_instance_of(principal, state.target):
+        got, want = pretty_types([principal, state.target])
+        raise InvalidProof(
+            f"the completed term proves `{got}`, which does not instantiate "
+            f"to the stated goal `{want}`.")
+    return final, pretty_type(principal)
 
 
 # ---------------------------------------------------------------------------
 # Dispatch
 # ---------------------------------------------------------------------------
 
+_TACTICS = {
+    "intro": intro,
+    "intros": intros,
+    "exact": exact,
+    "apply": apply_,
+    "assumption": assumption,
+    "refine": refine,
+    "undo": undo,
+}
 
-TACTIC_NAMES = ("intro", "intros", "exact", "apply", "assumption", "refine")
+TACTIC_NAMES = tuple(_TACTICS)
 
 
 def apply_tactic(state: ProofState, tactic: str, args: str) -> ProofState:
-    """Main textual dispatcher."""
-    args = (args or "").strip()
-    if tactic == "intro":
-        name = args.split()[0] if args else None
-        return intro(state, name)
-    if tactic == "intros":
-        # Greedily bind while the goal is an implication.
-        new_state = state
-        names = args.split() if args else []
-        idx = 0
-        while True:
-            current_goal = new_state.current()
-            if current_goal is None or not isinstance(current_goal.target, Arrow):
-                break
-            n = names[idx] if idx < len(names) else None
-            new_state = intro(new_state, n)
-            idx += 1
-        return new_state
-    if tactic == "exact":
-        return exact(state, args)
-    if tactic == "apply":
-        return apply_(state, args)
-    if tactic == "assumption":
-        return assumption(state)
-    if tactic == "refine":
-        return refine(state, args)
-    raise TacticError("ch.build.unknown_tactic", name=tactic)
+    fn = _TACTICS.get(tactic)
+    if fn is None:
+        raise TacticError(
+            f"unknown tactic {tactic!r} — available: {', '.join(TACTIC_NAMES)}; "
+            f"`hint` suggests a move, `?` shows the state, `qed` finishes, "
+            f"`abort` leaves.")
+    return fn(state, args)
 
 
 # ---------------------------------------------------------------------------
-# Helpers
+# Test-oracle helpers (audit "mandatory soundness oracle")
 # ---------------------------------------------------------------------------
 
 
-def _first_hole_in(t: Term) -> Optional[int]:
-    h = _is_hole(t)
-    if h is not None:
-        return h
-    if isinstance(t, Var):
-        return None
-    if isinstance(t, Lam):
-        return _first_hole_in(t.body)
-    if isinstance(t, App):
-        f = _first_hole_in(t.fn)
-        if f is not None:
-            return f
-        return _first_hole_in(t.arg)
-    return None
+def invariants_ok(state: ProofState) -> bool:
+    """len(goals) == len(holes) and the recorded holes are exactly the holes
+    occurring in the partial term."""
+    if len(state.goals) != len(state.partial.holes):
+        return False
+    return set(state.partial.holes) == set(holes_in(state.partial.root))

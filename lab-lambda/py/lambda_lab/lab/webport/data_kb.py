@@ -131,7 +131,7 @@ TOPICS = {
     "propositional-logic": {
         "title": "Propositional logic and tautologies",
         "summary": "Reading: Mendelson 'Introduction to Mathematical Logic' (chapters 1-2), Enderton 'A Mathematical Introduction to Logic' (chapter 1), Hodges 'Logic' (popular account). In the CH context: Sorensen-Urzyczyn part I.",
-        "intro": "Propositional logic is the fragment of classical logic with the connectives AND, OR, NOT, IMPLIES -- without quantifiers. Key theorems: De Morgan (1847), law of excluded middle (Aristotle), Hilbert's tautologies. Lambda Lab implements an SAT prover for propositional logic (`prove` command) -- for every tautology it can generate a Curry-Howard lambda-calculus proof.",
+        "intro": "Propositional logic is the fragment of classical logic with the connectives AND, OR, NOT, IMPLIES -- without quantifiers. Key theorems: De Morgan (1847), law of excluded middle (Aristotle), Hilbert's tautologies. Lambda Lab's `prove` command is an interactive Curry-Howard proof builder for the implicational fragment of intuitionistic logic: you prove `->`-propositions tactic by tactic and extract the lambda-term witness. Classical-only tautologies (Peirce's law, excluded middle) have no such witness -- the builder honestly cannot close them.",
         "canonical": ["mendelson-intro-mathematical-logic", "enderton-mathematical-intro-logic", "sorensen-urzyczyn-curry-howard", "hodges-logic-popular"],
         "related_topics": ["proof-theory", "curry-howard"],
         "related_commands": ["prove", "ch term"],
