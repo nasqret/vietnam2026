@@ -146,6 +146,13 @@ def _check(ctx: Context, proof: object, target: Formula) -> bool:
     inferred = _infer(ctx, proof)
     if inferred is not None:
         return inferred == target
+    if type(proof) is ImpElim:
+        # A local cut may put an introduction directly in function position.
+        # Its domain can be recovered when the argument itself synthesizes.
+        argument = _infer(ctx, proof.argument)
+        return argument is not None and _check(
+            ctx, proof.function, Imp(argument, target)
+        ) and _check(ctx, proof.argument, argument)
     if type(proof) is ImpIntro and type(target) is Imp:
         return _check((target.left,) + ctx, proof.body, target.right)
     if type(proof) is AndIntro and type(target) is And:

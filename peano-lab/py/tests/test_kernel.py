@@ -26,6 +26,7 @@ from peano_lab.kernel.proofs import (
     ForallElim,
     ForallIntro,
     Hyp,
+    ImpElim,
     ImpIntro,
     Ind,
     OrElim,
@@ -116,6 +117,9 @@ def test_intuitionistic_connective_rules() -> None:
     cases = OrElim(Hyp(0), OrIntroR(Hyp(0)), OrIntroL(Hyp(0)))
     assert check((Or(p, q),), cases, Or(q, p))
     assert check((Bot(),), BotElim(Hyp(0)), p)
+
+    # A local cut is a target-directed application whose function is an intro.
+    assert check((), ImpElim(ImpIntro(Hyp(0)), EqRefl(ZERO)), p)
 
 
 def test_quantifier_rules_and_eigenvariable_scoping() -> None:

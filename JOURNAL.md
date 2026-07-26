@@ -242,3 +242,21 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - Adversarial review found and closed a Python subclass/equality forgery: the trusted checker now
   accepts exact kernel constructors only. Verification: Peano `42 passed`; existing Lambda Lab
   `360 passed, 36 subtests passed`; import hygiene, byte-compilation, and diff checks clean.
+
+## 2026-07-27 (branch peano-lab) — Peano Lab M1: equational engine
+
+- Added frozen goal/hole proof states, exact history snapshots, engine-only term metavariables,
+  rigid/flexible copy-on-write unification with occurs check, and proof-wide substitution through
+  sibling goals, contexts, and partial certificates. Substitutions are read-only mapping proxies;
+  `undo` returns the exact saved state.
+- Added `refl`, `symm`, `trans`, `congr`, `exact`, `assumption`, directed first-occurrence `rewrite`
+  (including reverse and hypothesis forms), deterministic PA3–PA6 instantiation, and central tactic
+  dispatch. `S 0 + S 0 = S (S 0)` closes as `rewrite PA4; rewrite PA3; refl` and its explicit
+  certificate passes the kernel.
+- `checked_final` requires the session owner's original formula separately from the untrusted state;
+  replacing a state's cached target cannot forge QED. The v1 logger records successes and failures,
+  keeps metavariable aliases stable across transitions, scrubs ANSI everywhere, and emits its footer
+  only after kernel acceptance.
+- Three adversarial reviews found and closed mutable history aliases, target-replacement QED, and
+  transition trace-identity defects. Verification: Peano `95 passed`; the M1 attack suite rejects
+  `0 = S 0`, non-equation rewrites, unknown hypotheses, unresolved metas, and forged targets.

@@ -35,3 +35,39 @@ with a classical toggle) recorded in `docs/PEANO_LAB_DESIGN.md` §0.
   constructor classes at every boundary.  The concrete forged-`Zero`, forged-formula, and
   forged-proof attacks are permanent regression tests; this is a useful Python-specific extension
   of the De Bruijn criterion.
+
+## 2026-07-27 — M1: holes, shared metavariables, and rewrite certificates
+
+- `Hole` and `MetaVar` live in the untrusted engine as distinct subclasses of kernel `Proof` and
+  `Term`.  The kernel's exact-constructor boundary therefore rejects either if finalization ever
+  leaks one.  Globally unique IDs and copy-on-write substitutions follow the audited Lambda Lab
+  pattern; each successful unifier is applied to every goal, context formula, and embedded term in
+  the partial certificate, never to the original target or history snapshots.
+- A partial certificate is one tree whose left-to-right holes correspond exactly to the goal tuple.
+  Tactics replace only the focused hole.  `Step.state_before` stores the exact immutable transaction,
+  so `undo` returns that object and a raised `TacticError` has nothing to roll back.
+- M1 rewrites the first eligible occurrence in formula-left-to-right, term-preorder order.  The
+  motive reserves de Bruijn index zero and capture-safely shifts every untouched variable.  Bodies
+  of `forall`/`exists` are recognized but rejected until M3.  Forward rewriting of a goal inserts
+  the *reverse* equality transport because the new subgoal must reconstruct the old target.
+- Rewriting a hypothesis needs a sound local cut.  The engine derives the rewritten proposition,
+  wraps the new hole in implication-introduction/elimination, and retains the old hypothesis under
+  a fresh `_before` name so kernel hypothesis indices stay literal.  This exposed a completeness
+  gap in M0's bidirectional checker: application of an introduction did not synthesize.  A small
+  target-directed `ImpElim` case now validates this ordinary cut without trusting the engine.
+- The M1 plan did not spell out how a context-free session could use PA3–PA6 before `specialize`
+  arrives in M2.  `rewrite PA3` ... `rewrite PA6` therefore performs deterministic first-order
+  pattern matching, emits explicit nested `ForallElim(Axiom(...), term)` certificates, and checks
+  each instantiation.  This makes the required `S 0 + S 0` proof possible without a hidden evaluator.
+- Trace records use one shared `?t1`, `?t2`, ... display map across sibling goals, stable v1 key
+  order, canonical Unicode, no ANSI, and include failures.  Tracing remains an untrusted side effect;
+  successful QED emits the specified footer only after the independent checker accepts.
+- A second adversarial pass sharpened “original” into an API boundary.  A frozen state can still be
+  replaced wholesale by buggy tactic code, including its cached `target`.  `checked_final` therefore
+  requires the session owner's original formula as a separate argument, rejects a mismatching cache,
+  and passes only the external original to the kernel.  M5's single-owner router must keep that value
+  outside every tactic result.  The exact forged-target exploit is now in `test_soundness.py`.
+- “Frozen” also has to be deep enough: a plain `dict` inside a frozen dataclass let callers mutate an
+  undo snapshot through an alias.  States now copy substitutions into read-only mapping proxies and
+  normalize all state collections to tuples.  Trace review similarly made metavariable aliases
+  session-stable across before/after transitions and scrubbed ANSI from tactic/error fields too.

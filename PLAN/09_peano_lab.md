@@ -41,16 +41,16 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   mutated variants of it all fail.
 
 ### M1 — Engine core + equational tactics (Stage A)
-- [ ] `engine/state.py`: Goal, ProofState (goals, partial certificate with holes, history,
+- [x] `engine/state.py`: Goal, ProofState (goals, partial certificate with holes, history,
       original target, metavar substitution), invariants helper.
-- [ ] Term metavariables with rigid/flexible unification (port the `stlc_types` discipline);
+- [x] Term metavariables with rigid/flexible unification (port the `stlc_types` discipline);
       proof-wide substitution propagation.
-- [ ] Tactics: `refl`, `symm`, `trans <t>`, `congr`, `exact <hyp>`, `assumption`,
+- [x] Tactics: `refl`, `symm`, `trans <t>`, `congr`, `exact <hyp>`, `assumption`,
       `rewrite h`, `rewrite <- h`, `rewrite h at h'` (equation orientation, occurrence choice
       documented; rewriting under binders deferred to M3 and *rejected* until then).
-- [ ] `checked_final` through the kernel checker; failed check keeps the session.
-- [ ] Trace logger `engine/trace.py` (design §4) wired into tactic application.
-- [ ] `tests/test_soundness.py` (attack suite, grows every milestone) + `tests/test_tactics.py`.
+- [x] `checked_final` through the kernel checker; failed check keeps the session.
+- [x] Trace logger `engine/trace.py` (design §4) wired into tactic application.
+- [x] `tests/test_soundness.py` (attack suite, grows every milestone) + `tests/test_tactics.py`.
 - **Acceptance:** interactive `S 0 + S 0 = S (S 0)`-style proofs work end-to-end with QED
   checked by the kernel; the attack suite (prove `0 = S 0`, rewrite with a non-equation,
   smuggle an unknown hypothesis) fails entirely.
