@@ -55,7 +55,7 @@
   <script>
   (function(){
     "use strict";
-    const BUILD="2026-07-26b";
+    const BUILD="2026-07-26c";
     const PROMPT = "\x1b[92mλ>\x1b[0m ";
     const statusEl = document.getElementById("status");
     const quickEl = document.getElementById("quick");
@@ -82,7 +82,7 @@
 
     let buffer="", cursor=0, history=loadHistory(), histIdx=history.length, busy=true;
 
-    const COMMANDS=["about","ag","alligators","alpha","ch","church","clear","constants","debruijn","decode","defs","equiv","eta","expand","help","kb","lam","lean","let","nf","numeral","peano","prove","quiz","reduce","tour","tutorial","undef","whnf"];
+    const COMMANDS=["about","ag","alligators","alpha","ch","church","clear","commands","constants","debruijn","decode","defs","equiv","eta","expand","help","kb","lam","lean","let","nf","numeral","peano","prove","quiz","reduce","tour","tutorial","undef","whnf"];
     const CONSTS=["TRUE","FALSE","IF","AND","OR","NOT","NAND","NOR","XOR","XNOR","IFF","IMPLIES","PAIR","FST","SND","ZERO","SUCC","PRED","PLUS","SUB","MULT","POW","ISZERO","LEQ","EQ","Y","Z","OMEGA"];
     const HKEY="lambdaLabHistory";
     function loadHistory(){try{const h=JSON.parse(localStorage.getItem(HKEY)||"[]");if(Array.isArray(h))return h.filter(function(x){return typeof x==="string";}).slice(-200);}catch(_e){}return [];}

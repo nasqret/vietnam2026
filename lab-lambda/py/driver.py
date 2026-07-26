@@ -604,6 +604,15 @@ class LabSession:
                     return web_tutorial.handle(line, self.webstate)
                 if owner == "quiz":
                     return web_quiz.handle(line, self.webstate)
+                if line == "?":
+                    # `?` shows the proof state inside prove/ch build; at the
+                    # main prompt point at help instead of a parse error.
+                    return _lines(
+                        dim("`?` shows the proof state inside an interactive "
+                            "proof (prove / ch build)."),
+                        dim("Here, type ") + bold("help")
+                        + dim(" for the command list."),
+                    )
                 # A bare lambda term may be an application such as `x y`.
                 return self.cmd_reduce(line)
             return handler(arg)

@@ -205,3 +205,15 @@ four cooperating defects). Full fix, all P0/P1/P2 items:
   full ENTER-only walk of chapter 1 through every step kind (command, Lean walk, quiz checkpoint,
   exercise, reading, narrative) to "Chapter complete", plus mid-tutorial `?`/`s`/`q` and ordinary
   lab commands. Regression test added (suite: 360). Deployed as build 2026-07-26b to both channels.
+
+## 2026-07-26 (late night) — full-lab glitch sweep
+
+Systematic pass over the whole lab surface: all 31 commands + their help topics; all 6 tutorial
+chapters walked ENTER-only to "Chapter complete"; quiz full flow (bundles, wrong/skip/score/stop);
+both games; every kb card (17 topics, 28 concepts, 7 bundles, 121 resources); all ch explore (16),
+tactic (27+27) and library (12+12) cards; the 12 quick buttons; tab-completion list; edge inputs
+(Ω, 50-deep nesting, zero-width space, 60-antecedent proposition). Found and fixed four things:
+a Polish-language quiz question (mc_lambda_05) and the owl combinator's Polish Lean comment
+(translated); `commands` missing from tab-completion (added); bare `?` at the main prompt gave a
+parse error (now a pointer to help — placed after owner routing so in-proof/tutorial `?` behavior
+is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-07-26c.

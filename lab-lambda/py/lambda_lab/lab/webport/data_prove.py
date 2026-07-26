@@ -377,7 +377,7 @@ LIBRARY = [{'name': 'id',
   'aliases': ['owl'],
   'lambda': '\\f g. g (f g)',
   'type': None,
-  'lean': "-- 'owl' nie typuje się w STLC bez polimorfizmu",
+  'lean': "-- 'owl' does not type in STLC without polymorphism",
   'desc': 'Owl - `\\f g. g (f g)`; not typeable in STLC without polymorphism.'}]
 
 LIBRARY_INDEX = {}
