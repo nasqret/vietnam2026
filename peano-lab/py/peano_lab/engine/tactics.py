@@ -22,12 +22,15 @@ from ..kernel.proofs import (
     EqSym,
     EqTrans,
     ForallElim,
+    ForallIntro,
     Hyp,
     ImpElim,
     ImpIntro,
     Proof,
 )
+from ..kernel.subst import shift_formula, subst_formula
 from ..kernel.terms import Add, Mul, ParseError, Succ, Term, Var, Zero, parse_term_in_context
+from .induction import InductionError, build_induction
 from .rewrite import NoRewriteOccurrence, RewriteError, RewriteUnderBinder, rewrite_formula
 from .state import (
     Goal,
@@ -42,6 +45,7 @@ from .state import (
     fresh_meta,
     invariants_ok,
     metas_in_formula,
+    metas_in_term,
     proof_size,
     record_step,
     replace_current_hole,
@@ -61,6 +65,8 @@ class InvalidProof(Exception):
 
 
 Tactic = Callable[[ProofState, str], ProofState]
+
+_RESERVED_TERM_NAMES = {"S", "forall", "exists", "bot", "false"}
 
 
 def _current(state: ProofState) -> Goal:
@@ -101,6 +107,85 @@ def _engine_term(goal: Goal, source: str, tactic: str) -> Term:
         return parse_term_in_context(text, list(goal.variables))
     except (ParseError, ValueError) as exc:
         raise TacticError(f"cannot parse the term: {exc}") from None
+
+
+def _surface_name(source: str, tactic: str) -> str:
+    """Parse the one identifier accepted by binder-oriented tactics."""
+
+    name = source.strip()
+    if (
+        not name
+        or name in _RESERVED_TERM_NAMES
+        or name.startswith("?")
+        or not (name[0].isalpha() or name[0] == "_")
+        or not all(char.isalnum() or char in "_'" for char in name[1:])
+    ):
+        raise TacticError(f"`{tactic}` needs one variable name, e.g. `{tactic} n`.")
+    return name
+
+
+def intro(state: ProofState, args: str) -> ProofState:
+    """Introduce the outer binder of a universal goal."""
+
+    goal = _current(state)
+    name = _surface_name(args, "intro")
+    target = apply_formula_subst(goal.target, state.subst)
+    if type(target) is not Forall:
+        raise TacticError("`intro x` applies only to a universally quantified goal in Stage B.")
+    used = set(goal.variables) | {hyp_name for hyp_name, _ in goal.context}
+    if name in used:
+        raise TacticError(f"the name {name!r} is already in use; choose a fresh name.")
+
+    hole = fresh_hole()
+    shifted_context = tuple(
+        (hyp_name, shift_formula(formula, 1))
+        for hyp_name, formula in goal.context
+    )
+    new_goal = Goal(shifted_context, target.body, (name,) + goal.variables)
+    after = replace_current_hole(state, ForallIntro(hole), (new_goal,))
+    return _commit(state, after, "intro", args)
+
+
+def specialize(state: ProofState, args: str) -> ProofState:
+    """Add one explicitly instantiated copy of a universal hypothesis."""
+
+    parts = args.strip().split(maxsplit=1)
+    if len(parts) != 2:
+        raise TacticError("syntax: `specialize h t`.")
+    hypothesis_name, term_source = parts
+    goal = _current(state)
+    index, formula = _hypothesis(goal, hypothesis_name)
+    formula = apply_formula_subst(formula, state.subst)
+    if type(formula) is not Forall:
+        raise TacticError(f"hypothesis {hypothesis_name!r} is not universally quantified.")
+    term = _engine_term(goal, term_source, "specialize")
+    if metas_in_term(term, state.subst):
+        raise TacticError("`specialize` needs a concrete term, not a metavariable.")
+
+    instance = subst_formula(formula.body, 0, term)
+    derived = ForallElim(Hyp(index), term)
+    hole = fresh_hole()
+    renamed = list(goal.context)
+    renamed[index] = (
+        _fresh_old_name(hypothesis_name, goal.context, goal.variables),
+        renamed[index][1],
+    )
+    new_context = ((hypothesis_name, instance),) + tuple(renamed)
+    replacement = ImpElim(ImpIntro(hole), derived)
+    new_goal = Goal(new_context, goal.target, goal.variables)
+    after = replace_current_hole(state, replacement, (new_goal,))
+    return _commit(state, after, "specialize", args)
+
+
+def induction(state: ProofState, args: str) -> ProofState:
+    """Open the base and successor obligations for structural induction."""
+
+    name = _surface_name(args, "induction")
+    try:
+        after = build_induction(state, name)
+    except InductionError as exc:
+        raise TacticError(str(exc)) from None
+    return _commit(state, after, "induction", args)
 
 
 def refl(state: ProofState, args: str = "") -> ProofState:
@@ -343,8 +428,12 @@ def _rewrite_failure(exc: RewriteError) -> TacticError:
     return TacticError(str(exc))
 
 
-def _fresh_old_name(name: str, context: tuple[tuple[str, Formula], ...]) -> str:
-    used = {candidate for candidate, _ in context}
+def _fresh_old_name(
+    name: str,
+    context: tuple[tuple[str, Formula], ...],
+    variables: tuple[str, ...] = (),
+) -> str:
+    used = {candidate for candidate, _ in context} | set(variables)
     base = f"{name}_before"
     candidate, counter = base, 2
     while candidate in used:
@@ -389,7 +478,7 @@ def rewrite(state: ProofState, args: str) -> ProofState:
         derived = EqSubst(motive, transport, Hyp(target_index))
         replacement = ImpElim(ImpIntro(hole), derived)
         renamed = list(goal.context)
-        old_name = _fresh_old_name(at_name, goal.context)
+        old_name = _fresh_old_name(at_name, goal.context, goal.variables)
         renamed[target_index] = (old_name, renamed[target_index][1])
         new_context = ((at_name, rewritten),) + tuple(renamed)
         new_goal = Goal(new_context, goal.target, goal.variables)
@@ -438,6 +527,9 @@ def checked_final(
 
 
 _TACTICS: dict[str, Tactic] = {
+    "intro": intro,
+    "specialize": specialize,
+    "induction": induction,
     "refl": refl,
     "symm": symm,
     "trans": trans,
@@ -489,6 +581,9 @@ __all__ = [
     "InvalidProof",
     "Tactic",
     "TACTIC_NAMES",
+    "intro",
+    "specialize",
+    "induction",
     "refl",
     "symm",
     "trans",

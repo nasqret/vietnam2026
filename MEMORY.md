@@ -60,7 +60,10 @@
   checker, de Bruijn syntax/substitution, all ND/equality/PA/IND certificate forms, and adversarial
   mutation tests. M1 adds immutable goal/hole states, rigid/flexible term unification, proof-wide
   substitutions, equational tactics, checked finalization with an external session-owned original,
-  and stable v1 JSONL traces. The active checkout is `/Users/bnaskrecki/codex/peano`.
+  and stable v1 JSONL traces. M2 adds capture-safe universal introduction/specialization and two
+  induction entry paths (fresh `forall` binder or named rigid context variable), both constructing
+  explicit `Ind` certificates with scoped IHs. The active checkout is
+  `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
   Tarski–Grothendieck set theory. The same statements are proved in all four to *show* the foundations.
 - **Local tooling present:** Lean/`elan`/`lake` ✓ (proofs verifiable here), `jupyter-book` ✓, `gh` (as
@@ -94,5 +97,6 @@
 - Build/deploy strategy chosen: **go live incrementally** (public GitHub + faculty URLs as pieces land).
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
-- Peano Lab milestones M0–M1 are green on `peano-lab`; M2 (universal introduction,
-  specialization, induction, and the first ladder theorems) is next.
+- Peano Lab milestones M0–M2 are green on `peano-lab`; M3 (full intuitionistic connectives,
+  quantifiers, binder-safe rewriting, hints, and the explicitly reviewed classical-mode boundary)
+  is next.

@@ -71,3 +71,29 @@ with a classical toggle) recorded in `docs/PEANO_LAB_DESIGN.md` §0.
   undo snapshot through an alias.  States now copy substitutions into read-only mapping proxies and
   normalize all state collections to tuples.  Trace review similarly made metavariable aliases
   session-stable across before/after transitions and scrubbed ANSI from tactic/error fields too.
+
+## 2026-07-27 — M2: induction is certificate construction
+
+- `induction n` has two honest readings.  On an outer `forall`, `n` is a fresh surface name for
+  that binder and the focused hole becomes `Ind(motive, base, step)`.  After `intro n`, the name is
+  instead a rigid context variable: the engine abstracts precisely that de Bruijn slot into the
+  motive, builds the same `Ind`, and explicitly specializes the resulting universal certificate at
+  the original variable.  Neither path adds an induction oracle to the tactic layer.
+- The step goal is displayed with a fresh `IH` as its newest hypothesis.  Its older hypotheses are
+  shifted under the new natural-number binder, exactly matching the kernel context beneath
+  `ForallIntro(ImpIntro(...))`.  The base goal retains the original context.  Tests exercise both
+  entry paths so a display-name shortcut cannot accidentally stand in for binder arithmetic.
+- Universal `intro` likewise shifts every hypothesis when it descends under a term binder.
+  `specialize h t` derives `h[t]` with `ForallElim` and installs it through the same explicit local
+  cut used by hypothesis rewriting; the original universal remains under a deterministic
+  `_before` name.  Specialization requires a concrete term in M2—metavariable witnesses remain the
+  explicitly scoped M3 existential feature.
+- The first genuinely inductive ladder theorem, `forall n. 0 + n = n`, now closes in six primitive
+  tactics: induction, the PA3 base rewrite, reflexivity, the PA4 step rewrite, successor congruence,
+  and the named induction hypothesis.  The contrast with PA3's immediate `n + 0 = n` is visible in
+  the proof state rather than hidden in an evaluator.
+- Audit added a small but important UI invariant: term-variable and hypothesis names share one
+  visible namespace.  Reserved parser words (`S`, `forall`, `exists`, `bot`, `false`) cannot be
+  binders, and generated `IH`, `_before`, and `_parameter` names avoid both kinds of declaration.
+  These collisions were not logical unsoundness—the kernel uses indices—but ambiguous or
+  non-round-trippable proof states would violate the canonical-display law.

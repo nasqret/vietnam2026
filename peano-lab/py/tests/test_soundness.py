@@ -12,11 +12,12 @@ from peano_lab.engine.tactics import (
     TacticError,
     checked_final,
     exact,
+    induction,
     refl,
     rewrite,
 )
 from peano_lab.kernel.checker import check
-from peano_lab.kernel.formulas import Eq, Imp
+from peano_lab.kernel.formulas import Eq, Imp, parse_formula
 from peano_lab.kernel.proofs import EqRefl, Hyp
 from peano_lab.kernel.terms import Succ, Zero
 
@@ -124,3 +125,18 @@ def test_mutating_visible_goal_does_not_mutate_original_statement() -> None:
     assert completed.target == FALSE
     with pytest.raises(InvalidProof):
         checked_final(completed, FALSE)
+
+
+def test_induction_hypothesis_is_scoped_only_to_the_step_and_cannot_be_misused() -> None:
+    target = parse_formula("forall n. 0 + n = n")
+    state = induction(start(target), "n")
+
+    assert state.current().context == ()
+    _assert_transactional_failure(state, exact, "IH", "unknown hypothesis")
+
+    state = rewrite(state, "PA3")
+    state = refl(state)
+    assert state.current().context[0][0] == "IH"
+    _assert_transactional_failure(state, exact, "IH", "does not match")
+    with pytest.raises(InvalidProof, match="open"):
+        checked_final(state, target)

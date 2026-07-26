@@ -56,11 +56,11 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   smuggle an unknown hypothesis) fails entirely.
 
 ### M2 — Induction (Stage B)
-- [ ] `engine/induction.py`: `induction n` (n a context variable of the current ∀-goal or a
+- [x] `engine/induction.py`: `induction n` (n a context variable of the current ∀-goal or a
       fresh surface variable) → base + step subgoals with named IH; certificate uses the IND
       schema instance.
-- [ ] `intro x` for ∀-goals (needed to state induction targets), `specialize h t`.
-- [ ] First ladder theorems interactively provable: `0 + n = n` (the one that NEEDS induction —
+- [x] `intro x` for ∀-goals (needed to state induction targets), `specialize h t`.
+- [x] First ladder theorems interactively provable: `0 + n = n` (the one that NEEDS induction —
       book moment: contrast with `n + 0 = n` being PA3), `add_succ_left`.
 - **Acceptance:** `∀n. 0 + n = n` proved interactively in ≤ 8 tactics, QED kernel-checked;
   `induction` on a non-variable and induction-hypothesis misuse both fail cleanly.

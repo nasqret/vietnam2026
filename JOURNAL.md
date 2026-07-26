@@ -260,3 +260,19 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - Three adversarial reviews found and closed mutable history aliases, target-replacement QED, and
   transition trace-identity defects. Verification: Peano `95 passed`; the M1 attack suite rejects
   `0 = S 0`, non-equation rewrites, unknown hypotheses, unresolved metas, and forged targets.
+
+## 2026-07-27 (branch peano-lab) — Peano Lab M2: induction
+
+- Added `intro x`, `specialize h t`, and `induction n`. Universal introduction shifts the entire
+  hypothesis context beneath its eigenvariable; specialization uses capture-proof opening and an
+  explicit kernel-checkable local cut. Induction supports both a fresh binder on a `forall` goal
+  and abstraction of an already named rigid context variable, including beneath inner quantifiers.
+- `forall n. 0 + n = n` closes interactively in six tactics and `add_succ_left` closes in nine;
+  both generated certificates pass the independent checker against their original statements.
+  The attack suite confirms that the IH is absent from the base, cannot close a mismatched step,
+  and cannot turn an unfinished induction into QED.
+- Three independent reviews exercised multiple de Bruijn indices, nested binders, shifted
+  hypotheses, outer-variable capture attempts, transactionality, and random reflexive motives.
+  Review found only display-namespace collisions; reserved parser words and generated binder/IH/
+  `_before`/`_parameter` names are now collision-free across term variables and hypotheses.
+  Verification: Peano `118 passed`; existing Lambda Lab `360 passed, 36 subtests passed`.
