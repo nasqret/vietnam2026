@@ -123,12 +123,16 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   intentional `sorry` warning. Peano `433 passed`; Lambda `360 passed, 36 subtests passed`.
 
 ### M8 — Book part: "Building Peano Lab"
-- [ ] New book part (chapters under `book/peano/`): 1. why PA and the staged logic; 2. the
+- [x] New book part (chapters under `book/peano/`): 1. why PA and the staged logic; 2. the
       kernel and the De Bruijn criterion (with the audit story as motivation); 3. anatomy of a
       tactic; 4. tacticals — the tactic language; 5. induction and the ladder; 6. limits
       (Gödel, what Lean has that we don't). Built from the `diary.md` kept since M0.
-- [ ] Landing page card flips from "in development" to live; announcement paragraph.
+- [x] Landing page card flips from "in development" to live; announcement paragraph.
 - **Acceptance:** book builds clean; every command in the chapters replays via the gate.
+- **Verified:** warning-as-error Jupyter Book build succeeds for all 24 pages; the full gate checks
+  190 deep links and 17 session blocks/78 commands, including 15 links and 45 commands in the six
+  new chapters. Peano `436 passed`; Lambda `360 passed, 36 subtests passed`; vault 49 notes with
+  zero unresolved wiki-links; trusted checker unchanged at 234 lines.
 
 ### M9 — LLM corpus (prep for post-training; design only executes after M7)
 - [ ] `scripts/export_traces.py`: collate JSONL sessions → deduplicated train/val split;

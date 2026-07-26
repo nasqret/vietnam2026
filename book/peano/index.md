@@ -1,35 +1,40 @@
-# Building Peano Lab (in progress)
+# Building Peano Lab
 
 *A little Lean for Peano arithmetic — and a guided tour of how such systems are built.*
 
-This part of the book is being written **alongside the implementation** on the `peano-lab`
-branch. The plan: a lightweight, readable theorem prover for Peano arithmetic running in the
-browser next to the [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda/) —
-with a small trusted kernel, an untrusted tactic engine, a genuine tactic *language*
-(tacticals), an induction tactic, a `simp`, and, eventually, a machine-readable proof-trace
-corpus for training a small language-model prover.
+Peano Lab is a lightweight, readable theorem prover for Peano arithmetic. It runs entirely in the
+browser next to the [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda/), but its
+central lesson is not a flashy tactic: **every QED is checked again by an independent kernel against
+the original theorem**. Tactics may search, guess and fail. The kernel sees only an explicit proof
+certificate.
 
-Planned chapters:
+This part tells the construction story from the implementation diary. Read it in order:
 
-1. **Why Peano arithmetic** — the staged logic: equations → induction → quantifiers.
-2. **The kernel and the De Bruijn criterion** — proof terms, an independent checker, and why
-   we never again trust the tactic layer (a war story from the Lambda Lab audit).
-3. **Anatomy of a tactic** — goals, metavariables, and the contract every tactic obeys.
-4. **Tacticals** — the moment tactics become a language.
-5. **Induction and the theorem ladder** — from `0 + n = n` to `n·m = 0 → n = 0 ∨ m = 0`.
-6. **Limits** — Gödel, and what Lean has that we deliberately don't.
+1. {doc}`Why Peano arithmetic <why-pa>` develops the staged path from computation to induction and
+   first-order logic.
+2. {doc}`The kernel and the De Bruijn criterion <kernel>` explains the trusted boundary, proof terms,
+   capture-safe substitution and the audit that made independent checking non-negotiable.
+3. {doc}`Anatomy of a tactic <tactics>` follows one tactic from a goal transformation to a certificate
+   with proof-wide metavariable substitution and transactional failure.
+4. {doc}`Tacticals: when tactics become a language <tacticals>` builds sequencing, choice, repetition,
+   focusing and their rollback laws.
+5. {doc}`Induction and the theorem ladder <induction-ladder>` climbs from the defining equations to a
+   checked zero-product proof.
+6. {doc}`The deliberate limits <limits>` draws the line around PA, Gödel's theorems, bounded search,
+   and the facilities that a production prover such as Lean adds.
 
 The working design lives in
 [`docs/PEANO_LAB_DESIGN.md`](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_LAB_DESIGN.md),
 the task board in
 [`PLAN/09_peano_lab.md`](https://github.com/nasqret/vietnam2026/blob/peano-lab/PLAN/09_peano_lab.md).
 
-The first executable chapter is live: {doc}`Checked tutorials <tutorials>` replays a premise-free
-hand proof of addition commutativity and a source-level `symm_all` tactical walkthrough. Every
-`pa>` block on that page is checked against the browser driver's real command grammar during the
-book build gate.
+Then use {doc}`Checked tutorials <tutorials>` to replay a premise-free hand proof of addition
+commutativity and a source-level `symm_all` tactical walkthrough. Every `pa>` block and browser deep
+link in this part is replayed through the real driver during the book gate; prose examples do not
+get a private, easier semantics.
 
 The full M7 library is executable too. {doc}`The checked theorem ladder <ladder>` follows twenty
-scripted entries through order totality and the zero-product capstone, explains how theorem reuse
-is cut-eliminated outside the trusted kernel, and links each statement to the browser and Lean 4
-cross-checking surface.
+scripted entries through order totality and the zero-product capstone, explains how theorem reuse is
+cut-eliminated outside the trusted kernel, and links each statement to the browser and Lean 4
+cross-checking surface. The dated {doc}`implementation diary <diary>` preserves the design choices,
+bugs and objections behind the polished account.

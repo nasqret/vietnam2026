@@ -20,6 +20,12 @@ parts:
   - caption: "Building Peano Lab"
     chapters:
       - file: peano/index
+      - file: peano/why-pa
+      - file: peano/kernel
+      - file: peano/tactics
+      - file: peano/tacticals
+      - file: peano/induction-ladder
+      - file: peano/limits
       - file: peano/tutorials
       - file: peano/ladder
       - file: peano/diary

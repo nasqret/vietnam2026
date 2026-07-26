@@ -322,3 +322,28 @@ with a classical toggle) recorded in `docs/PEANO_LAB_DESIGN.md` §0.
   attacked proposition/term capture, and checked the browser/Lean presentation. The final suites
   report 433 Peano tests and 360 Lambda tests plus 36 subtests; the trusted checker remains 234
   lines. The exact staged 28-file payload also replayed the whole ladder in pinned Pyodide.
+
+## 2026-07-27 — M8: turn the implementation record into a course
+
+- The binding outline becomes six narrative chapters rather than one long retrospective: motivation
+  and staging; the kernel boundary; a tactic's anatomy; tacticals as a language; induction and the
+  ladder; and deliberate limits. The executable tutorials and theorem reference stay as companion
+  pages. This keeps the main argument readable while preserving the exact commands and full scripts
+  where students need them.
+- The chapters are built from this diary, but diary claims are not treated as evidence. Commands and
+  browser links use the production grammar and pass through the dual-driver book gate; source claims
+  link to the implementation or tests that enforce them. A polished explanation may compress an
+  incident, but it must not invent a proof or silently improve the running system.
+- The landing page now says “live” and makes the trust story the announcement: tactics construct,
+  the independent 234-line kernel checks. It links both the browser surface and this construction
+  account, and names the twenty-entry checked ladder rather than promising an unspecified future
+  prover.
+- Three independent prose audits compared the chapters line by line with the implementation. They
+  caught eight small but meaningful overstatements: `auto` preserves primitive undo entries, a trace
+  row's rendered goals are not a full replay snapshot, permutative `simp` rules are ordered at each
+  instance, traced programmatic calls require a logger, and the capstone base proof ignores its PA5
+  premise. After correction, the six chapters contain 15 live links and 45 replayed commands.
+- M8 closes with a warning-as-error 24-page book build and a full gate over 190 links plus 78 session
+  commands. The vault has 49 notes with no unresolved wiki-links; the suites report 436 Peano tests
+  and 360 Lambda tests plus 36 subtests; the trusted checker remains 234 lines. The in-app browser
+  runtime is still unavailable, so the visible landing panel remains an explicit manual DOM check.

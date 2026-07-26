@@ -83,7 +83,12 @@
   theorem library through the zero-product capstone. Earlier certificates are substituted by
   untrusted capture-safe cut elimination, then every resulting closed certificate is checked again
   against its original statement. `pa lib` exposes the dependency graph and authored script;
-  `pa lean` emits an exact Lean 4 `Nat` statement, intentional proof stub, and Live Lean link.
+  `pa lean` emits an exact Lean 4 `Nat` statement, intentional proof stub, and Live Lean link. M8
+  turns the dated implementation diary into a six-chapter Jupyter Book part covering staged PA,
+  the De Bruijn trust boundary, tactic transactions, tacticals, induction/the ladder, and honest
+  limits. Its 45 chapter commands and 15 live links replay through the real driver; the landing
+  page now announces the checked browser lab as live. Six connected Obsidian concepts extend the
+  vault without unresolved links.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -119,4 +124,4 @@
 - Build/deploy strategy chosen: **go live incrementally** (public GitHub + faculty URLs as pieces land).
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
-- Peano Lab milestones M0–M7 are green on `peano-lab`; M8's six-chapter book part is next.
+- Peano Lab milestones M0–M8 are green on `peano-lab`; M9 corpus export and evaluation are next.

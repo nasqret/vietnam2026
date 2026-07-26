@@ -10,11 +10,17 @@ tags: [moc, peano-lab, theorem-proving]
 - [[peano-lab]]
 - [[trusted-kernel]]
 - [[proof-certificate]]
+- [[de-bruijn-criterion]]
 - [[theorem-ladder]]
+- [[induction-schema]]
 - [[substitution]]
 - [[natural-deduction]]
 - [[intuitionistic-logic]]
+- [[heyting-arithmetic]]
 - [[tactic-mode]]
+- [[tactical]]
+- [[simp-termination]]
+- [[godel-incompleteness]]
 
 ## Executable surfaces
 

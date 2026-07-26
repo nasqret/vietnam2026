@@ -399,3 +399,22 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   capstone library card plus Lean export. Verification: Peano `433 passed`; Lambda Lab `360 passed,
   36 subtests passed`; checker unchanged at `234` lines. Visual DOM interaction remains the same
   explicit manual release check because the in-app browser runtime is unavailable. No SSH deploy.
+
+## 2026-07-27 (branch peano-lab) — Peano Lab M8: the construction book
+
+- Published the binding six-chapter “Building Peano Lab” part: why staged PA; the kernel and De
+  Bruijn criterion; tactic anatomy; tacticals as a language; induction and the checked ladder; and
+  Gödel/engineering limits. The 7,881-word narrative is built from the implementation diary and
+  links architectural claims to the actual source and tests.
+- Added replay fixtures directly to the prose. The six new chapters contain 15 browser deep links
+  and 11 real sessions/45 commands; the production Peano driver replays all of them. Three
+  independent audits corrected eight precision errors, including the `auto` undo/trace exception,
+  ordered-permutative `simp`, trace snapshot sufficiency, and the capstone's unused base premise.
+- Replaced the landing-page “in development” card with a live card, an accessible release panel,
+  and direct lab/book actions. Added six Peano-specific Obsidian concept notes and connected them
+  from the Peano Lab MOC.
+- Acceptance is green: warning-as-error Jupyter Book built 24/24 pages; the full book gate replayed
+  190 deep links plus 17 blocks/78 commands (22 Peano links and 73 Peano commands); the vault has 49
+  notes and zero unresolved wiki-links. Verification: Peano `436 passed`; Lambda `360 passed, 36
+  subtests passed`; checker unchanged at `234` lines. Visual DOM interaction remains the explicit
+  manual release check because the in-app browser runtime is unavailable. No SSH deployment.

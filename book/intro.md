@@ -6,7 +6,16 @@
 Poznań · Centre for Trustworthy AI (CCAI), Warsaw University of Technology.
 [Landing page](https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026) ·
 [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda) ·
+[Peano Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/) ·
 [Source](https://github.com/nasqret/vietnam2026)
+```
+
+```{admonition} New: Peano Lab is live
+:class: important
+[Peano Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/) is a little Lean for Peano
+arithmetic: real tactics generate explicit certificates and a separate kernel checks every QED.
+The six-part {doc}`construction story <peano/index>` explains how the kernel, tactics, tacticals,
+induction and checked theorem ladder fit together.
 ```
 
 This is the **knowledge book** of the course — the text-friendly notes, with the mathematics, the code,
