@@ -177,3 +177,13 @@ four cooperating defects). Full fix, all P0/P1/P2 items:
   parameterized over both front ends (55 tests). Full lab suite 359 green; book gate clean; the
   cookbook prove ladder R1–R5 and showcase transcript replay byte-identically.
 - Deployed as build 2026-07-26a to /lab-lambda/ and /lab-lambda-next/; book re-staged.
+
+## 2026-07-26 (later) — cookbook: the connective workshop
+
+- New puzzles section "The connective workshop ★→★★★ — ∧ and ∨ without ∧ and ∨": seven `prove`
+  rungs building conjunction, disjunction and negation from arrows alone (R-relative Church
+  encodings) — pairing, projections-via-observer, ∧/∨ commutativity, P → ¬¬P, and modus ponens
+  from an encoded pair. Every transcript captured from the real engine; principal-type gaps used
+  as teaching beats (inl visible in the type; ∨-comm's proof term is C/flip; W7's continuation is
+  W6's term). Honest footnotes: weak vs impredicative encodings (System F), handoff to Lean's
+  real And/Or. Book gate now 168 deep links, all clean; site redeployed.

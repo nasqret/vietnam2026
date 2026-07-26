@@ -762,6 +762,206 @@ intuitionistic logic cannot prove Peirce, but it *can* prove that Peirce is unde
 Glivenko's theorem in miniature, and you just built its witness by hand.
 ````
 
+## The connective workshop ★→★★★ — ∧ and ∨ without ∧ and ∨
+
+The builder speaks only arrows — `prove P ∧ Q` is a parse error by design. That sounds like a
+limitation; it is actually a secret. Relative to an *observer* atom `R`, both missing connectives
+(and negation) have faithful arrow-only encodings:
+
+```text
+P ∧ Q   ≈   (P -> Q -> R) -> R          "give me both and I will conclude R"
+P ∨ Q   ≈   (P -> R) -> (Q -> R) -> R   "give me a handler for each case"
+¬P      ≈   P -> F                      "a proof of P would be absurd"
+```
+
+These are old friends wearing logical clothing: the proof of the ∧-encoding *is* the Church pair
+from the encoding puzzles, the ∨-encoding *is* the tagged union behind TRUE/FALSE, and the handler
+pair you must always supply is exactly why constructive disjunction never tells you which side
+holds. Seven rungs, grouped by theme rather than strictly increasing:
+
+- **W1** ★ — [`prove P -> Q -> (P -> Q -> R) -> R`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda/?cmd=prove%20P%20-%3E%20Q%20-%3E%20%28P%20-%3E%20Q%20-%3E%20R%29%20-%3E%20R) — ∧-introduction: build the pair
+- **W2** ★★ — [`prove ((P -> Q -> P) -> P) -> P`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda/?cmd=prove%20%28%28P%20-%3E%20Q%20-%3E%20P%29%20-%3E%20P%29%20-%3E%20P) — first projection; stare at the statement until you see *where the observer went*
+- **W3** ★★ — [`prove ((P -> Q -> R) -> R) -> (Q -> P -> R) -> R`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda/?cmd=prove%20%28%28P%20-%3E%20Q%20-%3E%20R%29%20-%3E%20R%29%20-%3E%20%28Q%20-%3E%20P%20-%3E%20R%29%20-%3E%20R) — commutativity of ∧: swap a pair you cannot open
+- **W4** ★ — [`prove P -> (P -> R) -> (Q -> R) -> R`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda/?cmd=prove%20P%20-%3E%20%28P%20-%3E%20R%29%20-%3E%20%28Q%20-%3E%20R%29%20-%3E%20R) — ∨-introduction (left): commit to a side
+- **W5** ★★ — [`prove ((P -> R) -> (Q -> R) -> R) -> (Q -> R) -> (P -> R) -> R`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda/?cmd=prove%20%28%28P%20-%3E%20R%29%20-%3E%20%28Q%20-%3E%20R%29%20-%3E%20R%29%20-%3E%20%28Q%20-%3E%20R%29%20-%3E%20%28P%20-%3E%20R%29%20-%3E%20R) — commutativity of ∨: swap the handlers
+- **W6** ★ — [`prove P -> (P -> F) -> F`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda/?cmd=prove%20P%20-%3E%20%28P%20-%3E%20F%29%20-%3E%20F) — `P → ¬¬P`: the constructive half of double negation
+- **W7** ★★★ — [`prove ((P -> (P -> Q) -> Q) -> Q) -> Q`](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda/?cmd=prove%20%28%28P%20-%3E%20%28P%20-%3E%20Q%29%20-%3E%20Q%29%20-%3E%20Q%29%20-%3E%20Q) — modus ponens smuggled inside a pair: read it, then prove it
+
+````{admonition} Solution — W1 and W2 (pairs and projections)
+:class: dropdown
+W1: introduce everything, then let the consumer `f` do the work:
+
+```text
+prove P -> Q -> (P -> Q -> R) -> R
+intros p q f
+apply f
+exact p
+exact q
+qed
+```
+
+```text
+All goals closed.  QED.
+  Final lambda-term: λp q f. f p q
+  Proves:            P → Q → (P → Q → R) → R
+  Principal type:    α → β → (α → β → γ) → γ
+```
+
+`λp q f. f p q` is byte-for-byte the Church pair `PAIR p q` from the untyped chapters — the same
+term is a data structure there and a proof of conjunction here.
+
+W2: the trick is in the *statement*. A projection cannot work for an arbitrary observer `R` — to
+extract a `P` you must ask the pair to *conclude* `P`, i.e. instantiate the observer at `P`:
+
+```text
+prove ((P -> Q -> P) -> P) -> P
+intro h
+apply h
+intros p q
+exact p
+qed
+```
+
+```text
+All goals closed.  QED.
+  Final lambda-term: λh. h (λp q. p)
+  Proves:            ((P → Q → P) → P) → P
+  Principal type:    ((α → β → α) → γ) → γ
+```
+
+The extractor you passed, `λp q. p`, is the K combinator — `fst` and K are the same term. For
+`snd`, instantiate the observer at `Q` instead and pass `λp q. q`. And note the principal type is
+*more general* than the proposition: the proof never used the fact that the observer equals `P`.
+````
+
+````{admonition} Solution — W3 (commutativity of ∧)
+:class: dropdown
+You hold a pair you cannot open (`h`) and a consumer with its arguments in the wrong order (`g`).
+Ask `h` to conclude, then reorder inside:
+
+```text
+prove ((P -> Q -> R) -> R) -> (Q -> P -> R) -> R
+intros h g
+apply h
+intros p q
+apply g
+exact q
+exact p
+qed
+```
+
+```text
+All goals closed.  QED.
+  Final lambda-term: λh g. h (λp q. g q p)
+  Proves:            ((P → Q → R) → R) → (Q → P → R) → R
+  Principal type:    ((α → β → γ) → δ) → (β → α → γ) → δ
+```
+
+Swapping a pair without ever opening it: you never held a `p` or a `q` at the top level — only
+inside the continuation.
+````
+
+````{admonition} Solution — W4 and W5 (disjunction)
+:class: dropdown
+W4, injecting on the left — commit to the first handler and ignore the second:
+
+```text
+prove P -> (P -> R) -> (Q -> R) -> R
+intros p f g
+apply f
+exact p
+qed
+```
+
+```text
+All goals closed.  QED.
+  Final lambda-term: λp f g. f p
+  Proves:            P → (P → R) → (Q → R) → R
+  Principal type:    α → (α → β) → γ → β
+```
+
+Read that principal type closely: the third argument is a bare `γ` — the type checker just told
+you the right-branch handler is **never consulted**. That is `inl`, visible in the type alone.
+
+W5, commutativity of ∨ — the two handlers arrive in the wrong order, so hand them over swapped:
+
+```text
+prove ((P -> R) -> (Q -> R) -> R) -> (Q -> R) -> (P -> R) -> R
+intros h f g
+apply h
+exact g
+exact f
+qed
+```
+
+```text
+All goals closed.  QED.
+  Final lambda-term: λh f g. h g f
+  Proves:            ((P → R) → (Q → R) → R) → (Q → R) → (P → R) → R
+  Principal type:    (α → β → γ) → β → α → γ
+```
+
+The proof term is the C combinator (`flip`) from `prove lib C`, and its principal type is C's
+full generality. Commutativity of disjunction *is* argument swapping — nothing more.
+````
+
+````{admonition} Solution — W6 and W7 (negation and the finale)
+:class: dropdown
+W6: with `¬P` spelled `P -> F`, the goal `P -> ¬¬P` becomes `P -> (P -> F) -> F` — and the proof
+writes itself:
+
+```text
+prove P -> (P -> F) -> F
+intros p f
+apply f
+exact p
+qed
+```
+
+```text
+All goals closed.  QED.
+  Final lambda-term: λp f. f p
+  Proves:            P → (P → F) → F
+  Principal type:    α → (α → β) → β
+```
+
+`λp f. f p` is *reverse application* — a proof of `P` becomes the thing that feeds `P`-refuters.
+This is the constructive half of double negation; the other half, `¬¬P → P`, is exactly what T3
+and the prove ladder's R5 showed you cannot have.
+
+W7: decode the statement first. `(P -> (P -> Q) -> Q) -> Q` is "a pair of `P` and `P → Q`,
+observed at `Q`" — so the whole proposition says: *from `P ∧ (P → Q)`, conclude `Q`*. Modus
+ponens, hidden in plain sight:
+
+```text
+prove ((P -> (P -> Q) -> Q) -> Q) -> Q
+intro h
+apply h
+intros p f
+apply f
+exact p
+qed
+```
+
+```text
+All goals closed.  QED.
+  Final lambda-term: λh. h (λp f. f p)
+  Proves:            ((P → (P → Q) → Q) → Q) → Q
+  Principal type:    ((α → (α → β) → β) → γ) → γ
+```
+
+The continuation you passed is W6's term. That is the quiet punchline of the whole workshop:
+`uncurrying is application` — a pair applied to a curried consumer just *runs* it, so the proof
+of "modus ponens from a pair" is the proof of `P → ¬¬P` handed to the pair.
+````
+
+Two honest footnotes. First, these `R`-relative encodings are *weak*: projections needed the
+observer instantiated (W2), and that is not an accident — the full impredicative encodings
+(`P ∧ Q = ∀R. (P → Q → R) → R`) need quantification over propositions, which is System F's
+territory, not STLC's. Second, this is precisely where real Lean takes over: `And`/`Or` are
+inductive types with genuine `constructor`/`cases` tactics (`prove tactic cases` has the
+reference card), and every `ch type` witness ships a Live Lean link where they run for real.
+
 ## Research-grade finale ★★★ — trees that fold themselves
 
 Church numerals encode "iterate n times". The same idea — *a data structure is its own
