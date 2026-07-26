@@ -546,6 +546,17 @@ class DriverOwnership(unittest.TestCase):
         out = self.run_line("exact h")   # ch build auto-finishes
         self.assertIn("Final lambda-term", out)
 
+    def test_enter_advances_tutorial_gates(self):
+        # Regression: the driver's empty-line shortcut must route ENTER to an
+        # active tutorial — its gated steps advance on it.
+        self.run_line("tutorial 1")
+        out = self.run_line("")
+        self.assertIn("Step 2/7", out)
+        out = self.run_line("")          # through the gate: body is shown
+        self.assertIn("Running command", out)
+        self.run_line("q")
+        self.assertEqual("", self.run_line(""))  # no session: ENTER is a no-op
+
     def test_quiz_blocks_new_proof(self):
         self.run_line("quiz")
         out = self.run_line("prove P -> P")

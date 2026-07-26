@@ -194,3 +194,14 @@ four cooperating defects). Full fix, all P0/P1/P2 items:
   vault MOCs, research files each checked before ticking. Two items remain open by choice:
   service-worker offline precache for the lab, and a decktape PDF export of the slides as a
   travel backup. The 中文/Tiếng-Việt landing toggle is recorded as dropped (EN authoritative).
+
+## 2026-07-26 (night) — tutorials: ENTER was dead in the browser
+
+- Root cause: the driver's empty-line shortcut (`if not line: return ""`) predates the session-owner
+  routing and swallowed ENTER before an active tutorial could see it — but ENTER is the tutorial's
+  primary control ("ENTER = next", and gated steps run on it). The browser terminal always sent the
+  empty line; the driver dropped it.
+- Fix: empty input now routes to an active tutorial; everywhere else it stays a no-op. Verified a
+  full ENTER-only walk of chapter 1 through every step kind (command, Lean walk, quiz checkpoint,
+  exercise, reading, narrative) to "Chapter complete", plus mid-tutorial `?`/`s`/`q` and ordinary
+  lab commands. Regression test added (suite: 360). Deployed as build 2026-07-26b to both channels.

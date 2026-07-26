@@ -576,6 +576,10 @@ class LabSession:
     def run(self, line: str) -> str:
         line = (line or "").strip()
         if not line:
+            # ENTER is meaningful input inside an interactive session — the
+            # tutorial's gated steps advance on it. Outside one it is a no-op.
+            if self._session_owner() == "tutorial":
+                return web_tutorial.handle("", self.webstate)
             return ""
         if len(line) > MAX_INPUT:
             return red(f"Input is too long (max {MAX_INPUT} characters).")
