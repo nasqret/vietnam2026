@@ -66,6 +66,9 @@
   tactic layer, scope-indexed witness metavariables, capture-safe rewriting beneath quantifiers,
   defined `≤` sugar, honest hints, and an explicit session-owned classical boundary: ordinary
   `check` remains intuitionistic, while visible `DNE` certificates require `check_classical`.
+  M4 adds atomic hole-safe tactic combinators, proof-producing ordered simplification with an LPO
+  termination gate, certified closed arithmetic separate from explicitly bounded semantic reports,
+  and depth/node-bounded backtracking that replays only kernel-valid winning plans into traces.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -101,5 +104,5 @@
 - Build/deploy strategy chosen: **go live incrementally** (public GitHub + faculty URLs as pieces land).
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
-- Peano Lab milestones M0–M3 are green on `peano-lab`; M4 (transactional tacticals, terminating
-  simplification, decision procedures, and bounded proof search) is next.
+- Peano Lab milestones M0–M4 are green on `peano-lab`; M5 (the browser page, single-owner driver,
+  proof panels, and staging/deploy targets) is next.

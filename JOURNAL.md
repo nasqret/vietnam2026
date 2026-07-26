@@ -296,3 +296,30 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   vacuous universal/existential instantiation. Three independent adversarial reviews found no
   remaining soundness defect after those fixes. Verification: Peano `187 passed`; existing Lambda
   Lab `360 passed, 36 subtests passed`; checker `234` lines; compile and diff checks clean.
+
+## 2026-07-27 (branch peano-lab) — Peano Lab M4: tacticals and checked automation
+
+- Added pure `then`, `orelse`, `repeat`, `first`, `all_goals`, and one-based `focus` combinators.
+  Focused execution splices the exact certificate hole, keeps proof-wide metavariables shared, and
+  collapses a compound command into one exact undo transaction. `repeat` stops on failure,
+  no-progress, logical cycles, or an explicit resource guard.
+- Grew rewriting into deterministic `simp`: PA3–PA6 plus explicit checked/context rules, ordered by
+  LPO so even size-growing PA6 terminates. Every step retains its instantiated equality proof and
+  `EqSubst` motive; congruence finishing constructs only kernel-visible `CongS`/`CongAdd`/`CongMul`.
+  With the two prior ladder lemmas in scope, `induction n; simp` proves `add_comm` through the
+  tactical layer.
+- Separated computation from theoremhood in `decide.py`. Closed equations can receive generated
+  PA normalization certificates only after an independent check; finite quantifier enumeration is
+  an explicitly labeled, non-proof bounded verdict. Malformed, open, subclassed, and engine-meta
+  inputs are rejected at the public boundary.
+- Added depth- and node-bounded `auto`. Search enumerates sibling alternatives (including shared
+  metavariable assignments), rejects kernel-invalid complete leaves, and replays only the winning
+  primitive plan into a linear v1 trace. Exact external classical authority adds DNE after
+  constructive choices; limit exhaustion is always a non-verdict. Cold `auto 5` closes and
+  kernel-checks `zero_add`, `add_succ_left`, `add_comm`, and `add_assoc`.
+- Independent audits exercised 1,500 random search formulas, 500 simp transports, 4,845 arithmetic
+  certificate checks, 10,000 bounded formulas, and 164 tactical/adversarial properties. Found and
+  fixed invalid search leaves, sibling-backtracking incompleteness, node/depth mislabeling,
+  focus-local metavariable defaulting, and malformed state boundaries. Verification: Peano
+  `277 passed`; Lambda Lab `360 passed, 36 subtests passed`; checker `234` lines; compile and diff
+  checks clean.

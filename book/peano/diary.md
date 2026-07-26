@@ -154,3 +154,62 @@ with a classical toggle) recorded in `docs/PEANO_LAB_DESIGN.md` §0.
   commands were not logged. After repair the full Peano suite has 187 passing tests, the Lambda
   Lab regression suite remains 360 passing with 36 subtests, and the independent checker is 234
   lines.
+
+## 2026-07-27 — M4: automation must remain untrusted and replayable
+
+- Tacticals will be ordinary functions from tactics to tactics, but a compound invocation is one
+  user transaction: if any required branch fails, the caller still holds the exact input state;
+  on success one `undo` restores that input. `then` and `all_goals` snapshot the goals they mean to
+  visit so a tactic cannot accidentally iterate forever over subgoals it just created.
+- Closed computation has two deliberately separate products. A semantic evaluator may report that
+  a closed equation is true or that a bounded quantifier search found no counterexample; only a
+  proof-producing path may close a goal, and its output is still checked by the kernel. A bounded
+  check is labeled with its finite range and is never promoted into a universal certificate.
+- Backtracking search will explore immutable states without logging speculative successes. Once it
+  finds a complete plan, it replays only that winning primitive sequence through the normal tactic
+  dispatcher and v1 logger. This keeps traces sequentially replayable while search remains free to
+  be wrong; final QED still uses the externally owned original theorem and independent checker.
+- **Objection for M7 review:** the pinned proof language is bidirectional but has no formula
+  ascription/cut node. The kernel can *check* an arbitrary closed proof of `∀x. φ`, yet
+  `ForallElim` can reuse it only when that proof also synthesizes its universal formula. M4 `simp`
+  therefore accepts PA constants, inferable checked rule certificates, and explicitly selected
+  context hypotheses, but rejects a tagged closed certificate it cannot transport. Adding a small
+  checked ascription node would be logically conservative, but doing so silently would violate the
+  binding constructor list; revisit explicitly when M7's theorem-library reuse makes the tradeoff
+  concrete.
+
+## 2026-07-27 — M4: termination orders, backtracking, and audit lessons
+
+- Tree size cannot justify simp termination because PA6 turns `x · S y` into the larger
+  `x · y + x`. The rule gate therefore uses lexicographic path ordering with
+  `· > + > S > 0`; PA3/PA5 descend to a subterm, while PA4/PA6 decrease a recursive argument under
+  a lower-precedence head. Pure permutations use a deterministic total extension and fire only in
+  its decreasing direction. An optional step cap is labeled as a resource limit, never presented
+  as the termination proof.
+- A simp result is a normal formula plus an ordered list of equation proofs and motives. Closing a
+  normal form uses only reflexivity, an exact hypothesis, or structural congruence; transport back
+  nests explicit `EqSubst` nodes. This separation made 500 randomized generated transports easy to
+  submit directly to the independent checker.
+- Search depth measures one proof-tree branch, so sibling goals reuse the same allowance. The first
+  implementation nevertheless chose only the first solution of each sibling: if a later sibling
+  contradicted a shared metavariable assignment, it never resumed the earlier choice. Turning
+  child solving into a generator restored genuine backtracking. Complete leaves receive an
+  advisory kernel check so a locally plausible but non-synthesizing certificate becomes another
+  failed branch, not a misleading goals-closed result; external-original finalization remains the
+  actual QED authority.
+- Focused tacticals exposed a second proof-wide metavariable lesson. A child run on one isolated
+  goal made `_commit` think an older shared meta was proof-only and default it to zero, hiding the
+  sibling that would later infer one. Canonical grounding is now restricted to metas freshly
+  introduced by the current tactic. Older metas remain flexible across `focus`, `then`, and
+  `all_goals`; the exact counterexample is a permanent kernel-checked regression.
+- The plan's “~100 lines” for tacticals proved incompatible with simultaneously making arbitrary
+  goal focus certificate-hole-safe, validating child contracts, propagating substitutions, and
+  collapsing compound history into one undo transaction. The file is intentionally about 270
+  comment-rich physical lines rather than hiding that machinery or deleting the pedagogical
+  invariants. This is a deliberate clarity/soundness objection to the estimate, not a change to the
+  tactical API.
+- Final adversarial passes covered 1,500 random search formulas (401 successful plans, all checked),
+  4,845 generated arithmetic decisions/certificates, 10,000 bounded formulas, certificate
+  mutations, malformed states, nonzero focus under every binder/eliminator family, and huge search
+  depths. The milestone closes at 277 Peano tests, 360 Lambda tests plus 36 subtests, and an
+  unchanged 234-line trusted checker.

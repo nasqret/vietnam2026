@@ -38,9 +38,21 @@ from ..kernel.proofs import (
     OrIntroR,
     Proof,
 )
+from ..kernel.subst import shift_formula
 from ..kernel.terms import Add, Mul, ParseError, Succ, Term, Var, Zero, parse_term_in_context
 from .induction import InductionError, build_induction
-from .rewrite import NoRewriteOccurrence, RewriteError, RewriteUnderBinder, rewrite_formula
+from .rewrite import (
+    PA_SIMP_SET,
+    InvalidSimpRule,
+    NoRewriteOccurrence,
+    RewriteError,
+    RewriteUnderBinder,
+    SimpError,
+    SimpRule,
+    SimpSet,
+    rewrite_formula,
+    simplify_formula,
+)
 from .state import (
     Goal,
     ProofState,
@@ -101,18 +113,26 @@ def _commit(
 ) -> ProofState:
     if subst is not None:
         after = apply_subst_everywhere(after, subst)
-    # A universal instantiation may contain an implicit term that no remaining
-    # goal can constrain (for example applying ``forall x. 0 = 0``).  Choose
-    # the canonical closed term 0 exactly when that meta has disappeared from
-    # every open obligation.  Metas shared with any goal remain genuinely
-    # flexible and proof-wide.
+    # A universal instantiation may introduce an implicit term that no goal can
+    # constrain (for example applying ``forall x. 0 = 0``).  Choose canonical
+    # 0 only for such a *freshly introduced* proof-only meta.  An older meta may
+    # still be constrained by a sibling hidden behind ``focus``; defaulting it
+    # in an isolated child state would break proof-wide sharing.
+    preexisting_meta_ids = set(before.subst)
+    preexisting_meta_ids.update(metas_in_proof(before.partial))
+    for term in before.subst.values():
+        preexisting_meta_ids.update(metas_in_term(term))
+    for old_goal in before.goals:
+        preexisting_meta_ids.update(metas_in_formula(old_goal.target))
+        for _, formula in old_goal.context:
+            preexisting_meta_ids.update(metas_in_formula(formula))
     open_meta_ids: set[int] = set()
     for goal in after.goals:
         open_meta_ids.update(metas_in_formula(goal.target, after.subst))
         for _, formula in goal.context:
             open_meta_ids.update(metas_in_formula(formula, after.subst))
     proof_meta_ids = set(metas_in_proof(after.partial, after.subst))
-    unconstrained = proof_meta_ids - open_meta_ids
+    unconstrained = proof_meta_ids - open_meta_ids - preexisting_meta_ids
     if unconstrained:
         completed_subst = dict(after.subst)
         completed_subst.update(
@@ -795,6 +815,196 @@ def rewrite(state: ProofState, args: str) -> ProofState:
     return _commit(state, after, "rewrite", args)
 
 
+def _simp_args(args: str) -> tuple[tuple[bool, str], ...]:
+    """Parse the deliberately small explicit-set syntax ``simp [h, <- k]``."""
+
+    text = args.strip()
+    if not text:
+        return ()
+    if not (text.startswith("[") and text.endswith("]")):
+        raise TacticError("syntax: `simp` or `simp [h, <- k]`.")
+    body = text[1:-1].strip()
+    if not body:
+        return ()
+    result: list[tuple[bool, str]] = []
+    for item in body.split(","):
+        words = item.strip().split()
+        reverse = bool(words and words[0] in {"<-", "←"})
+        if reverse:
+            words = words[1:]
+        if len(words) != 1:
+            raise TacticError("syntax: `simp` or `simp [h, <- k]`.")
+        name = words[0]
+        if any(char.isspace() for char in name):
+            raise TacticError("each simp lemma must be one hypothesis name.")
+        result.append((reverse, name))
+    shown = [("<- " if reverse else "") + name for reverse, name in result]
+    if len(shown) != len(set(shown)):
+        raise TacticError("each explicit simp lemma may be listed only once.")
+    return tuple(result)
+
+
+def _shift_simp_set(simp_set: SimpSet) -> SimpSet:
+    """Move context-dependent rules below one freshly introduced binder."""
+
+    return SimpSet(
+        tuple(
+            SimpRule(
+                rule.name,
+                shift_formula(rule.theorem, 1),
+                rule.proof,
+                rule.reverse,
+            )
+            for rule in simp_set.rules
+        )
+    )
+
+
+def _solve_simp_normal(
+    context: tuple[tuple[str, Formula], ...], formula: Formula
+) -> Proof | None:
+    """Close a normal form by exactness, reflexivity, or congruence only.
+
+    This is deliberately not search: it follows the two equality terms in
+    lockstep and stops at the first unsupported leaf.  Every successful branch
+    returns an ordinary kernel certificate.
+    """
+
+    if type(formula) is Eq and formula.left == formula.right:
+        return EqRefl(formula.left)
+    for index, (_, hypothesis) in enumerate(context):
+        if hypothesis == formula:
+            return Hyp(index)
+    if type(formula) is not Eq:
+        return None
+
+    left, right = formula.left, formula.right
+    if type(left) is Succ and type(right) is Succ:
+        child = _solve_simp_normal(context, Eq(left.term, right.term))
+        return None if child is None else CongS(child)
+    if type(left) is Add and type(right) is Add:
+        left_proof = _solve_simp_normal(context, Eq(left.left, right.left))
+        right_proof = _solve_simp_normal(context, Eq(left.right, right.right))
+        if left_proof is not None and right_proof is not None:
+            return CongAdd(left_proof, right_proof)
+    if type(left) is Mul and type(right) is Mul:
+        left_proof = _solve_simp_normal(context, Eq(left.left, right.left))
+        right_proof = _solve_simp_normal(context, Eq(left.right, right.right))
+        if left_proof is not None and right_proof is not None:
+            return CongMul(left_proof, right_proof)
+    return None
+
+
+def simp(
+    state: ProofState,
+    args: str = "",
+    *,
+    tagged: SimpSet | None = None,
+) -> ProofState:
+    """Simplify the focused goal by certified, terminating rewrites.
+
+    PA3--PA6 are always first in the ordered set.  ``tagged`` carries explicit
+    library lemmas (a theorem formula paired with its proof certificate), and
+    ``[h, <- k]`` appends selected context equations.  Every visible rewrite
+    becomes an ``EqSubst`` node; a final reflexive equality or exact hypothesis
+    is closed, otherwise the simplified normal form remains as one goal.
+    """
+
+    goal = _current(state)
+    selected = _simp_args(args)
+    if tagged is not None and type(tagged) is not SimpSet:
+        raise TacticError("tagged simp lemmas must be supplied as a SimpSet.")
+
+    resolved_context = tuple(
+        apply_formula_subst(formula, state.subst)
+        for _, formula in goal.context
+    )
+    if tagged is not None:
+        for rule in tagged.rules:
+            if not check(resolved_context, rule.proof, rule.theorem):
+                raise TacticError(
+                    f"tagged simp lemma {rule.name!r} is not checked in the current context."
+                )
+            # The current bidirectional kernel can check an introduction form
+            # at a known forall target but cannot synthesize that target when
+            # the proof is later placed under ForallElim.  Probe a canonical
+            # instance now and reject such non-reusable certificates instead
+            # of constructing a state that can only fail at QED.
+            reusable_formula = rule.theorem
+            reusable_proof = rule.proof
+            while type(reusable_formula) is Forall:
+                reusable_formula = instantiate_formula(
+                    reusable_formula.body, Zero()
+                )
+                reusable_proof = ForallElim(reusable_proof, Zero())
+            if not check(resolved_context, reusable_proof, reusable_formula):
+                raise TacticError(
+                    f"tagged simp lemma {rule.name!r} cannot be synthesized by the kernel."
+                )
+
+    extra_rules = list(tagged.rules if tagged is not None else ())
+    for reverse, name in selected:
+        index, raw_formula = _hypothesis(goal, name)
+        formula = apply_formula_subst(raw_formula, state.subst)
+        if metas_in_formula(formula, state.subst):
+            raise TacticError(
+                f"resolve term metavariables in simp lemma {name!r} first."
+            )
+        rule_name = f"<- {name}" if reverse else name
+        extra_rules.append(SimpRule(rule_name, formula, Hyp(index), reverse))
+    try:
+        simp_set = PA_SIMP_SET.extend(*extra_rules)
+    except InvalidSimpRule as exc:
+        raise TacticError(f"invalid simp set: {exc}.") from None
+
+    target = apply_formula_subst(goal.target, state.subst)
+    if metas_in_formula(target, state.subst):
+        raise TacticError("resolve term metavariables before simplification.")
+    context = tuple(
+        (name, formula)
+        for (name, _), formula in zip(goal.context, resolved_context)
+    )
+    variables = goal.variables
+    forall_count = 0
+
+    # A PA axiom instantiated with a quantifier-local variable is not a proof
+    # in the surrounding context.  Open leading quantifiers honestly, shift
+    # context-dependent rules with them, then wrap the result in ForallIntro.
+    while type(target) is Forall:
+        temporary = Goal(context, target, variables)
+        binder = _fresh_visible_name("x", temporary)
+        context = tuple(
+            (name, shift_engine_formula(formula, 1))
+            for name, formula in context
+        )
+        variables = (binder,) + variables
+        target = target.body
+        simp_set = _shift_simp_set(simp_set)
+        forall_count += 1
+
+    try:
+        result = simplify_formula(target, simp_set)
+    except (SimpError, TypeError, ValueError) as exc:
+        raise TacticError(f"simp failed: {exc}.") from None
+
+    normal_proof = _solve_simp_normal(context, result.formula)
+
+    if normal_proof is None:
+        if not result.steps:
+            raise TacticError("`simp` made no progress on the current goal.")
+        hole = fresh_hole()
+        replacement = result.transport_back(hole)
+        new_goals = (Goal(context, result.formula, variables),)
+    else:
+        replacement = result.transport_back(normal_proof)
+        new_goals = ()
+    for _ in range(forall_count):
+        replacement = ForallIntro(replacement)
+
+    after = replace_current_hole(state, replacement, new_goals)
+    return _commit(state, after, "simp", args)
+
+
 def undo(state: ProofState, args: str = "") -> ProofState:
     _no_args("undo", args)
     try:
@@ -975,6 +1185,7 @@ _TACTICS: dict[str, Tactic] = {
     "exact": exact,
     "assumption": assumption,
     "rewrite": rewrite,
+    "simp": simp,
     "undo": undo,
 }
 TACTIC_NAMES = tuple(_TACTICS)
@@ -1047,6 +1258,7 @@ __all__ = [
     "exact",
     "assumption",
     "rewrite",
+    "simp",
     "undo",
     "set_classical_mode",
     "logic_banner",

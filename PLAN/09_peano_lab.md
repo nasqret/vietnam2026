@@ -79,13 +79,13 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   through binders stays fully red.
 
 ### M4 — Tacticals + automation (Stage D)
-- [ ] `engine/tacticals.py`: `;`(then), `<|>`(orelse), `repeat`, `first`, `all_goals`,
+- [x] `engine/tacticals.py`: `;`(then), `<|>`(orelse), `repeat`, `first`, `all_goals`,
       `focus n` — combinators over the Tactic type, ~100 lines, heavily commented (book source).
-- [ ] `engine/rewrite.py` grows into `simp`: ordered rewriting with an explicit simp-set
+- [x] `engine/rewrite.py` grows into `simp`: ordered rewriting with an explicit simp-set
       (PA3–PA6 + user-tagged lemmas), termination measure documented.
-- [ ] `engine/decide.py`: closed-term evaluation, closed-equation decision, bounded quantifier
+- [x] `engine/decide.py`: closed-term evaluation, closed-equation decision, bounded quantifier
       check with an honest label.
-- [ ] `engine/search.py`: `auto [depth]` — backtracking over primitives + simp; every run
+- [x] `engine/search.py`: `auto [depth]` — backtracking over primitives + simp; every run
       emits traces.
 - **Acceptance:** `add_comm` provable as `induction n; simp` (or comparably short); `auto 5`
   closes at least the first four ladder theorems from cold; tactical laws tested
