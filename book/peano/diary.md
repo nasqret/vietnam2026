@@ -347,3 +347,51 @@ with a classical toggle) recorded in `docs/PEANO_LAB_DESIGN.md` §0.
   commands. The vault has 49 notes with no unresolved wiki-links; the suites report 436 Peano tests
   and 360 Lambda tests plus 36 subtests; the trusted checker remains 234 lines. The in-app browser
   runtime is still unavailable, so the visible landing panel remains an explicit manual DOM check.
+
+## 2026-07-27 — M9: data without a second meaning of proof
+
+- The logger's binding v1 rows remain immutable. Exported `train.jsonl` and `val.jsonl` contain the
+  same nine ordered transition fields; theorem text and QED metadata belong to footers and aggregate
+  statistics, not an invented v2 training row. Deduplication ignores only session identity and step
+  number, while keeping every field that changes the learning problem—including failure text.
+- Input continuity and output use are different contracts. The exporter must validate each complete
+  contiguous session, sequential steps, transactional errors, and exactly one adjacent footer. After
+  validation, train/validation files are independent transition examples, so removing duplicate rows
+  is allowed to leave gaps in their original step numbers. The theorem/session group is nevertheless
+  the split unit, and a semantic duplicate may never leak into both sides.
+- Synthetic generation is not permission to fabricate JSON. Every row must come from the production
+  `TraceLogger` while the real engine attempts a real tactic. Successful sessions finish only through
+  `checked_final` against their owner-held original goal; honest failed ladder sweeps and deliberately
+  inapplicable tactics remain useful negative records.
+- The evaluator follows the same rule. A policy may stop, exhaust its budget, or produce an apparently
+  closed state; an attempt counts only when the independent checker accepts the final certificate for
+  the original theorem. A deterministic random policy is therefore a plumbing baseline for the whole
+  proposal-to-kernel path, not a miniature theorem-proving result.
+- A seed is not a run identity. Two batches can share a seed while differing in configuration,
+  theorem fixtures, source, checker, or Python runtime. The generator now hashes all of those inputs
+  into a run fingerprint and prefixes every session ID with it, so honest multi-file collation does
+  not turn distinct traces into apparent duplicate sessions.
+- The exporter must bind metadata back to state, not merely validate its shape. A footer claiming a
+  different theorem could evade exclusions and poison theorem-group splits even though every JSON
+  field looked valid. The strict importer therefore requires exactly one initial goal and equality
+  between its canonical post-turnstile target and the footer theorem. It also recognizes
+  case-insensitive/hard-link input aliases and publishes all three output files with rollback.
+- “The policy does not see the theorem name” includes indirect channels. The first evaluator seeded
+  its policy-visible RNG from that hidden name, and it recreated metavariable aliases each turn;
+  both made evaluation differ from the promised trace input. Seeds now derive from the visible
+  canonical goal, aliases live for the full rollout, and the four literal held-out statements carry
+  a fixed SHA-256 checked against the theorem library.
+- Error categories are control flow, not prose. Ordinary `TacticError` remains recoverable inside
+  tacticals, malformed surface input is a non-recoverable `TacticSyntaxError`, and resource exhaustion
+  is `TacticLimit`: `repeat` propagates it while `first`/`orelse` retain it when no alternative
+  succeeds. That distinction now survives bounded `auto`, bounded `simp`, planning, and replay, so
+  hostile tactic arguments cannot spoof evaluation status through English substrings. The final audit
+  also reproduced absent case-only and Unicode-normalization output aliases on this Mac, plus an
+  ancestor/child output topology; all are rejected before either artifact path is created.
+- M9 closes with a 13,152-row committed release (12,540 train / 612 validation), produced by 1,596
+  independently finalized synthetic sessions with all ladder sources disabled. The separate
+  all-ladder smoke generated 13,417 raw and 13,412 unique exported transitions, including 20 honest
+  bounded-auto attempts and 20 checked authored replays. The random baseline ran 32 pinned held-out
+  attempts through the production grammar and kernel judge; its 0.0 pass@8 is an honest plumbing
+  result, not a theorem-proving claim. Focused M9 reports 62 tests, the full Peano suite 498, Lambda
+  360 plus 36 subtests, the book/gate and 52-note vault are clean, and the checker remains 234 lines.

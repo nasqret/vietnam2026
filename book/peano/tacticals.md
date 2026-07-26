@@ -34,8 +34,8 @@ The surface grammar is small enough to state completely.
 | Form | Meaning |
 |---|---|
 | `t1; t2` | Run `t1` on the focus, then `t2` on every goal newly made by `t1`. |
-| `t1 <|> t2` | Try `t1`; only if it raises `TacticError`, run `t2` on the exact input. |
-| `repeat t` | Keep applying `t` until expected failure, no progress, or a detected cycle. |
+| `t1 <|> t2` | Try `t1`; malformed input aborts, otherwise failure runs `t2` on the exact input. |
+| `repeat t` | Keep applying `t` until ordinary failure, no progress, or a detected cycle. |
 | `first [t1 | t2 | ...]` | Try choices left-to-right on the same snapshot; publish the first success. |
 | `all_goals t` | Apply `t` once to each goal present when the command starts. |
 | `focus n t` | Apply `t` to one one-based goal and splice its certificate back in place. |
@@ -56,8 +56,9 @@ pa> all_goals (first [assumption | refl])
 pa> qed
 ```
 
-`repeat` treats a child's failure as its normal stopping condition. The compound command succeeds
-with the last good state, as in this introduction spine:
+`repeat` treats a child's ordinary tactic failure as its normal stopping condition. A malformed
+command or exhausted resource bound propagates instead of masquerading as successful termination.
+The compound command succeeds with the last good state, as in this introduction spine:
 
 ```text
 pa> pa prove (0 = 0 -> 0 = 0) -> 0 = 0 -> 0 = 0
@@ -93,9 +94,10 @@ alongside its
 ## One tactical expression is one transaction
 
 A child tactical can take several successful internal steps before a later child fails. Those
-intermediate values never become the caller's state. `orelse` catches `TacticError` and hands its
-right branch the original immutable value; `first` does the same for each candidate. If all choices
-fail, the caller still owns the exact input.
+intermediate values never become the caller's state. `orelse` hands its right branch the original
+immutable value after an ordinary failure; `first` does the same for each candidate. Surface-syntax
+errors abort immediately. If all choices fail, the caller still owns the exact input, and any
+resource exhaustion remains a structured limit rather than being rewritten as ordinary failure.
 
 On success, child history entries are hidden and the outer combinator records one `Step`. Thus one
 explicit tactical expression is one `undo`, including `induction n; simp` or `all_goals t`. This is

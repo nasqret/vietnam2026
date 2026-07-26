@@ -356,7 +356,7 @@ TACTIC_CARDS = (
         "<|>",
         "tactical",
         "<tactic-1> <|> <tactic-2>",
-        "Try the left tactic, falling back to the right only on TacticError.",
+        "Try the left tactic, falling back on ordinary failure while malformed input aborts.",
         "Publishes the left result when it succeeds; otherwise runs the right tactic on "
         "the exact original snapshot.",
         "Keeps only the successful branch certificate and records one outer undo transaction.",
@@ -371,7 +371,7 @@ TACTIC_CARDS = (
         "repeat",
         "tactical",
         "repeat <tactic>",
-        "Run a tactic until it fails, makes no logical progress, or revisits a state.",
+        "Run a tactic until ordinary failure, no logical progress, or a revisited state.",
         "Applies the child repeatedly to the focused evolving state; the expected final "
         "failure is the stopping condition, not a failure of repeat.",
         "Combines all successful child certificate edits into one transaction. A 256-step "
@@ -380,6 +380,7 @@ TACTIC_CARDS = (
         ("repeat intro", "assumption"),
         (
             "The child tactic is missing.",
+            "Syntax and resource-limit errors propagate instead of pretending repeat succeeded.",
             "A child that evades cycle detection for 256 steps triggers the termination guard.",
         ),
     ),

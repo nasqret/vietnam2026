@@ -7,6 +7,7 @@ from dataclasses import fields
 
 import pytest
 
+import peano_lab.engine.tactics as tactics_module
 from peano_lab.engine.rewrite import (
     PA_SIMP_SET,
     InvalidSimpRule,
@@ -19,6 +20,7 @@ from peano_lab.engine.rewrite import (
 from peano_lab.engine.state import ProofState, start
 from peano_lab.engine.tactics import (
     TacticError,
+    TacticLimit,
     apply_tactic,
     checked_final,
     simp,
@@ -119,10 +121,24 @@ def test_invalid_late_rule_is_rejected_before_any_simplification() -> None:
         simplify_formula(Eq(Add(ONE, ZERO), ONE), simp_set)
 
 
-def test_optional_resource_limit_is_honest_and_not_a_termination_claim() -> None:
+def test_optional_resource_limit_is_honest_and_not_a_termination_claim(
+    monkeypatch,
+) -> None:
     target = Eq(Add(Add(ONE, ZERO), ZERO), ONE)
     with pytest.raises(SimpLimitExceeded, match="1-step resource limit"):
         simplify_formula(target, PA_SIMP_SET, max_steps=1)
+
+    real_simplify = tactics_module.simplify_formula
+
+    def one_step(formula, simp_set):
+        return real_simplify(formula, simp_set, max_steps=1)
+
+    monkeypatch.setattr(tactics_module, "simplify_formula", one_step)
+    initial = start(target)
+    before = _snapshot(initial)
+    with pytest.raises(TacticLimit, match="1-step resource limit"):
+        simp(initial)
+    assert _snapshot(initial) == before
 
 
 def test_rule_priority_then_term_preorder_is_deterministic() -> None:

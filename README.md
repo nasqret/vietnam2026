@@ -7,6 +7,7 @@
 **Course page (VIASM):** <https://viasm.edu.vn/en/hdkh/Mini-Course_AIATPM>
 **Landing page (notes hub):** <https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026>
 **Live Lambda Lab (runs in your browser):** <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda>
+**Live Peano Lab (kernel-checked PA proofs):** <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/>
 **Author:** dr Bartosz Naskręcki — Faculty of Mathematics and Computer Science, Adam Mickiewicz University in Poznań · Centre for Trustworthy AI (CCAI), Warsaw University of Technology
 
 ---
@@ -37,7 +38,9 @@ The exact abstracts, session plans and reading lists live on the [landing page](
 | `vault/` | The **Obsidian vault** — the atomic, wiki-linked knowledge base behind the book. |
 | `artifacts/` | **Formal proofs** of the same statements in four systems: `lean/`, `agda/`, `rocq/`, `mizar/`. |
 | `lab-lambda/` | The **Lambda Lab**, repackaged to run **directly in the browser** (Pyodide + xterm.js). Deployed to `/lab-lambda`. |
+| `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, checked theorem ladder, and reproducible proof-trace corpus. |
 | `research/` | The **research dossier** — the depth/citation groundwork behind every lecture. |
+| `scripts/` | Book replay gate plus the deterministic Peano trace generation, export, and kernel-judged evaluation pipeline. |
 | `docs/` | Lecturer-facing docs: how to build, deploy, and run each piece. |
 | `MEMORY.md` · `JOURNAL.md` · `PLAN.md` + `PLAN/` | Project **memory**, dated **journal**, and the multi-level **plan**. |
 
@@ -72,7 +75,8 @@ See [`docs/BUILD.md`](docs/BUILD.md) and [`docs/DEPLOY.md`](docs/DEPLOY.md) for 
 
 ## License
 
-Code is released under the MIT License; prose and lecture notes under
+Code and associated documentation are released under the MIT License; prose in `book/`, `vault/`,
+and `research/` is additionally available under
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). See [`LICENSE`](LICENSE).
 
 *Course notes co-developed with Claude (Anthropic) as a writing and formalization assistant.*

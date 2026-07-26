@@ -2,11 +2,19 @@
 
 from __future__ import annotations
 
+import importlib
+
 import pytest
 
-from peano_lab.engine.search import auto, search
+import peano_lab.engine.tactics as tactics_module
+from peano_lab.engine.search import Command, SearchResult, auto, search
 from peano_lab.engine.state import ProofState, start
-from peano_lab.engine.tactics import TacticError, apply_tactic, checked_final
+from peano_lab.engine.tactics import (
+    TacticError,
+    TacticLimit,
+    apply_tactic,
+    checked_final,
+)
 from peano_lab.engine.trace import TraceLogger
 from peano_lab.kernel.checker import check, check_classical
 from peano_lab.kernel.formulas import Eq, parse_formula
@@ -97,7 +105,7 @@ def test_later_sibling_can_backtrack_an_earlier_shared_meta_choice() -> None:
     assert check((), certificate, target)
 
 
-def test_depth_and_node_exhaustion_are_honest_limits() -> None:
+def test_depth_and_node_exhaustion_are_honest_limits(monkeypatch) -> None:
     inductive = start(parse_formula("forall n. 0 + n = n"))
     assert search(inductive, 1).status == "limit"
 
@@ -114,8 +122,18 @@ def test_depth_and_node_exhaustion_are_honest_limits() -> None:
     assert impossible.status == "limit"
     assert impossible.commands == ()
 
+    def limited_candidate(*_args, **_kwargs):
+        raise TacticLimit("planned primitive budget exhaustion")
 
-def test_failed_auto_is_transactional_and_has_one_unchanged_goal_trace() -> None:
+    monkeypatch.setattr(tactics_module, "apply_tactic", limited_candidate)
+    bounded_primitive = search(start(Eq(ZERO, ONE)), 5)
+    assert bounded_primitive.status == "limit"
+    assert bounded_primitive.commands == ()
+
+
+def test_failed_auto_is_transactional_and_has_one_unchanged_goal_trace(
+    monkeypatch,
+) -> None:
     initial = start(Eq(ZERO, ONE))
     before = _snapshot(initial)
     logger = TraceLogger(session_id="auto-failure")
@@ -129,6 +147,25 @@ def test_failed_auto_is_transactional_and_has_one_unchanged_goal_trace() -> None
     assert record["tactic"] == "auto 5"
     assert record["status"] == "error"
     assert record["goals_after"] == record["goals_before"]
+
+    search_module = importlib.import_module("peano_lab.engine.search")
+    monkeypatch.setattr(
+        search_module,
+        "search",
+        lambda *_args, **_kwargs: SearchResult(
+            "found",
+            (Command("refl"),),
+            1,
+        ),
+    )
+
+    def limited_replay(*_args, **_kwargs):
+        raise TacticLimit("planned replay budget exhaustion")
+
+    monkeypatch.setattr(tactics_module, "apply_tactic", limited_replay)
+    with pytest.raises(TacticLimit, match="winning plan did not replay"):
+        auto(initial, "5")
+    assert _snapshot(initial) == before
 
 
 @pytest.mark.parametrize("args", ["0", "-1", "1 2", "five", 5])

@@ -48,6 +48,7 @@ from .rewrite import (
     RewriteError,
     RewriteUnderBinder,
     SimpError,
+    SimpLimitExceeded,
     SimpRule,
     SimpSet,
     rewrite_formula,
@@ -81,6 +82,14 @@ from .trace import TraceLogger
 
 class TacticError(Exception):
     """A tactic failed; its message is final English and state is unchanged."""
+
+
+class TacticSyntaxError(TacticError):
+    """A proposed tactic line is not a command in the surface language."""
+
+
+class TacticLimit(TacticError):
+    """A tactic failed specifically because an honest resource bound was hit."""
 
 
 class InvalidProof(Exception):
@@ -233,7 +242,7 @@ def _specialize(state: ProofState, args: str, tactic: str) -> ProofState:
 
     parts = args.strip().split(maxsplit=1)
     if len(parts) != 2:
-        raise TacticError(f"syntax: `{tactic} h t`.")
+        raise TacticSyntaxError(f"syntax: `{tactic} h t`.")
     hypothesis_name, term_source = parts
     goal = _current(state)
     index, formula = _hypothesis(goal, hypothesis_name)
@@ -746,7 +755,9 @@ def _rewrite_args(args: str) -> tuple[bool, str, str | None]:
         return reverse, parts[0], None
     if len(parts) == 3 and parts[1] == "at":
         return reverse, parts[0], parts[2]
-    raise TacticError("syntax: `rewrite h`, `rewrite <- h`, or add `at h'`.")
+    raise TacticSyntaxError(
+        "syntax: `rewrite h`, `rewrite <- h`, or add `at h'`."
+    )
 
 
 def _rewrite_failure(exc: RewriteError) -> TacticError:
@@ -822,7 +833,7 @@ def _simp_args(args: str) -> tuple[tuple[bool, str], ...]:
     if not text:
         return ()
     if not (text.startswith("[") and text.endswith("]")):
-        raise TacticError("syntax: `simp` or `simp [h, <- k]`.")
+        raise TacticSyntaxError("syntax: `simp` or `simp [h, <- k]`.")
     body = text[1:-1].strip()
     if not body:
         return ()
@@ -833,7 +844,7 @@ def _simp_args(args: str) -> tuple[tuple[bool, str], ...]:
         if reverse:
             words = words[1:]
         if len(words) != 1:
-            raise TacticError("syntax: `simp` or `simp [h, <- k]`.")
+            raise TacticSyntaxError("syntax: `simp` or `simp [h, <- k]`.")
         name = words[0]
         if any(char.isspace() for char in name):
             raise TacticError("each simp lemma must be one hypothesis name.")
@@ -984,6 +995,8 @@ def simp(
 
     try:
         result = simplify_formula(target, simp_set)
+    except SimpLimitExceeded as exc:
+        raise TacticLimit(f"simp failed: {exc}.") from None
     except (SimpError, TypeError, ValueError) as exc:
         raise TacticError(f"simp failed: {exc}.") from None
 
@@ -1029,8 +1042,11 @@ def set_classical_mode(
 
     typed = f"classical {args}".strip()
 
-    def fail(message: str) -> None:
-        error = TacticError(message)
+    def fail(
+        message: str,
+        error_type: type[TacticError] = TacticError,
+    ) -> None:
+        error = error_type(message)
         if trace is not None and state is not None:
             trace.failure(state, 0, typed, error)
         raise error
@@ -1039,7 +1055,7 @@ def set_classical_mode(
         fail("the current classical mode must be a Boolean.")
     word = args.strip()
     if word not in {"on", "off"}:
-        fail("syntax: `classical on` or `classical off`.")
+        fail("syntax: `classical on` or `classical off`.", TacticSyntaxError)
     enabled = word == "on"
     if trace is not None:
         if state is None:
@@ -1204,7 +1220,7 @@ def apply_tactic(
     typed = f"{tactic} {args}".strip()
     function = _TACTICS.get(tactic)
     if function is None:
-        error = TacticError(
+        error = TacticSyntaxError(
             f"unknown tactic {tactic!r}; available: {', '.join(TACTIC_NAMES)}."
         )
         if trace is not None:
@@ -1237,6 +1253,8 @@ def final_proof_size(
 
 __all__ = [
     "TacticError",
+    "TacticSyntaxError",
+    "TacticLimit",
     "InvalidProof",
     "Tactic",
     "TACTIC_NAMES",

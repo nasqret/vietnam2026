@@ -6,9 +6,9 @@ and sharing its shell (xterm + Pyodide worker, fully self-hosted).
 
 **Start here, in this order:**
 
-1. `docs/PEANO_LAB_DESIGN.md` — the architecture. It is binding.
-2. `PLAN/09_peano_lab.md` — milestones M0–M9 with tasks and acceptance criteria.
-3. `py/peano_lab/` — docstring stubs pinning the module APIs.
+1. [`../docs/PEANO_LAB_DESIGN.md`](../docs/PEANO_LAB_DESIGN.md) — the architecture. It is binding.
+2. [`../PLAN/09_peano_lab.md`](../PLAN/09_peano_lab.md) — milestones M0–M9 with tasks and acceptance criteria.
+3. [`py/peano_lab/`](py/peano_lab/) — the readable implementation behind the pinned APIs.
 
 **The three laws** (from the 2026-07-24 lambda-lab audit, paid for in full):
 
@@ -73,3 +73,23 @@ Back at the repository root, run both regression suites:
 (cd peano-lab/py && python3 -m pytest tests/ -q)
 (cd lab-lambda/py && python3 -m pytest tests/ -q)
 ```
+
+## Proof-trace corpus and kernel-judged evaluation
+
+M9 ships a deterministic data pipeline, a committed 13,152-transition release, and an evaluation
+harness—not a trained model. The release omits all theorem-ladder sessions, so the four fixed tail
+theorems used by the evaluator stay held out. Exact version-1 records, hashes, provenance, and the
+reproduction command are documented in [`corpus/README.md`](corpus/README.md); the model and
+leakage protocol is [`docs/PEANO_LLM.md`](../docs/PEANO_LLM.md).
+
+From the repository root:
+
+```console
+make peano-corpus        # reproduce train.jsonl, val.jsonl, stats, and manifest
+make peano-corpus-smoke  # all-ladder auto/script acceptance superset, under /tmp
+make peano-eval          # deterministic random-policy plumbing baseline
+```
+
+The exported rows are tactic transitions, not proof certificates. Generation labels a successful
+session only after `checked_final` validates its certificate against the original theorem, and the
+evaluation harness independently repeats that check for every candidate counted as a proof.

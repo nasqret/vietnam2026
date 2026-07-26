@@ -215,7 +215,12 @@ class _Planner:
         self.checked += 1
         # Lazy import avoids making the tactic dispatcher and search module a
         # circular import when the UI later exposes `auto` as a command.
-        from .tactics import TacticError, apply_tactic
+        from .tactics import (
+            TacticError,
+            TacticLimit,
+            TacticSyntaxError,
+            apply_tactic,
+        )
 
         try:
             result = apply_tactic(
@@ -224,6 +229,11 @@ class _Planner:
                 command.args,
                 classical=self.classical,
             )
+        except TacticSyntaxError:
+            raise
+        except TacticLimit:
+            self.hit_limit = True
+            return None
         except TacticError:
             return None
         if result.goals == state.goals and dict(result.subst) == dict(state.subst):
@@ -332,16 +342,16 @@ def search(
 
 def _parse_depth(args: str) -> int:
     if type(args) is not str:
-        from .tactics import TacticError
+        from .tactics import TacticSyntaxError
 
-        raise TacticError("syntax: `auto [positive-depth]`.")
+        raise TacticSyntaxError("syntax: `auto [positive-depth]`.")
     pieces = args.split()
     if not pieces:
         return 5
     if len(pieces) != 1 or not pieces[0].isdigit() or int(pieces[0]) < 1:
-        from .tactics import TacticError
+        from .tactics import TacticSyntaxError
 
-        raise TacticError("syntax: `auto [positive-depth]`.")
+        raise TacticSyntaxError("syntax: `auto [positive-depth]`.")
     return int(pieces[0])
 
 
@@ -360,7 +370,7 @@ def auto(
     theorem statement or the classical-mode authority.
     """
 
-    from .tactics import TacticError, apply_tactic
+    from .tactics import TacticError, TacticLimit, TacticSyntaxError, apply_tactic
 
     typed_input = f"auto {args}".strip()
     try:
@@ -383,7 +393,11 @@ def auto(
             if result.status == "limit"
             else f"auto found no proof after {result.checked} checks."
         )
-        error = TacticError(message)
+        error = (
+            TacticLimit(message)
+            if result.status == "limit"
+            else TacticError(message)
+        )
         if trace is not None:
             trace.failure(state, 0, typed, error)
         raise error
@@ -402,6 +416,10 @@ def auto(
                 trace=trace,
                 classical=classical,
             )
+    except TacticSyntaxError as exc:  # pragma: no cover - defensive guard
+        raise TacticSyntaxError(f"auto's winning plan did not replay: {exc}") from None
+    except TacticLimit as exc:  # pragma: no cover - defensive determinism guard
+        raise TacticLimit(f"auto's winning plan did not replay: {exc}") from None
     except TacticError as exc:  # pragma: no cover - defensive determinism guard
         raise TacticError(f"auto's winning plan did not replay: {exc}") from None
     return replayed

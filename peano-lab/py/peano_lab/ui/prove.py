@@ -26,6 +26,7 @@ from ..engine.tactics import (
     InvalidProof,
     Tactic,
     TacticError,
+    TacticSyntaxError,
     apply_tactic,
     checked_final,
     hint,
@@ -263,7 +264,7 @@ def _scan_split(source: str, separator: str) -> list[str]:
         elif char == "]":
             square_depth -= 1
         if round_depth < 0 or square_depth < 0:
-            raise TacticError("unbalanced grouping in tactical command.")
+            raise TacticSyntaxError("unbalanced grouping in tactical command.")
         if round_depth == square_depth == 0 and source.startswith(separator, index):
             parts.append(source[start_at:index].strip())
             index += len(separator)
@@ -271,10 +272,10 @@ def _scan_split(source: str, separator: str) -> list[str]:
             continue
         index += 1
     if round_depth or square_depth:
-        raise TacticError("unbalanced grouping in tactical command.")
+        raise TacticSyntaxError("unbalanced grouping in tactical command.")
     parts.append(source[start_at:].strip())
     if any(not part for part in parts):
-        raise TacticError(f"`{separator}` needs a tactic on both sides.")
+        raise TacticSyntaxError(f"`{separator}` needs a tactic on both sides.")
     return parts
 
 
@@ -292,9 +293,9 @@ def _strip_group(source: str) -> str:
             if depth == 0 and index != len(source) - 1:
                 return source
         if depth < 0:
-            raise TacticError("unbalanced grouping in tactical command.")
+            raise TacticSyntaxError("unbalanced grouping in tactical command.")
     if depth:
-        raise TacticError("unbalanced grouping in tactical command.")
+        raise TacticSyntaxError("unbalanced grouping in tactical command.")
     return _strip_group(source[1:-1].strip())
 
 
@@ -317,7 +318,7 @@ def _first_items(source: str) -> list[str]:
         elif char == "]":
             square_depth -= 1
         if round_depth < 0 or square_depth < 0:
-            raise TacticError("unbalanced grouping in `first`.")
+            raise TacticSyntaxError("unbalanced grouping in `first`.")
         separator_length = 0
         if round_depth == square_depth == 0:
             if source.startswith("<|>", index):
@@ -331,18 +332,26 @@ def _first_items(source: str) -> list[str]:
             continue
         index += 1
     if round_depth or square_depth:
-        raise TacticError("unbalanced grouping in `first`.")
+        raise TacticSyntaxError("unbalanced grouping in `first`.")
     items.append(source[start_at:].strip())
     if any(not item for item in items):
-        raise TacticError("`first` needs non-empty tactic choices.")
+        raise TacticSyntaxError("`first` needs non-empty tactic choices.")
     return items
 
 
 def _primitive(name: str, args: str, classical: bool) -> Tactic:
     if name == "undo":
-        raise TacticError("`undo` is a session command and cannot be nested in a tactical.")
+        raise TacticSyntaxError(
+            "`undo` is a session command and cannot be nested in a tactical."
+        )
     if name == "classical":
-        raise TacticError("`classical` is a session command and cannot be nested in a tactical.")
+        raise TacticSyntaxError(
+            "`classical` is a session command and cannot be nested in a tactical."
+        )
+    if name not in TACTIC_NAMES and name != "auto":
+        raise TacticSyntaxError(
+            f"unknown tactic {name!r}; available: {', '.join(TACTIC_NAMES)}, auto."
+        )
 
     def run(state: ProofState, extra: str = "") -> ProofState:
         if extra.strip():
@@ -359,7 +368,7 @@ def _compile(source: str, classical: bool) -> tuple[Tactic, bool]:
 
     source = _strip_group(source.strip())
     if not source:
-        raise TacticError("expected a tactic.")
+        raise TacticSyntaxError("expected a tactic.")
 
     alternatives = _scan_split(source, "<|>")
     if len(alternatives) > 1:
@@ -380,25 +389,29 @@ def _compile(source: str, classical: bool) -> tuple[Tactic, bool]:
     if re.match(r"^repeat(?:\s|$)", source):
         child = source[len("repeat") :].strip()
         if not child:
-            raise TacticError("syntax: `repeat <tactic>`.")
+            raise TacticSyntaxError("syntax: `repeat <tactic>`.")
         return repeat(_compile(child, classical)[0]), True
 
     if re.match(r"^all_goals(?:\s|$)", source):
         child = source[len("all_goals") :].strip()
         if not child:
-            raise TacticError("syntax: `all_goals <tactic>`.")
+            raise TacticSyntaxError("syntax: `all_goals <tactic>`.")
         return all_goals(_compile(child, classical)[0]), True
 
     if re.match(r"^focus(?:\s|$)", source):
         match = re.fullmatch(r"focus\s+(\d+)\s+(.+)", source, re.DOTALL)
         if match is None or int(match.group(1)) < 1:
-            raise TacticError("syntax: `focus <positive-goal-number> <tactic>`.")
+            raise TacticSyntaxError(
+                "syntax: `focus <positive-goal-number> <tactic>`."
+            )
         return focus(int(match.group(1)), _compile(match.group(2), classical)[0]), True
 
     if re.match(r"^first(?:\s|$)", source):
         match = re.fullmatch(r"first\s*\[(.*)\]", source, re.DOTALL)
         if match is None:
-            raise TacticError("syntax: `first [tactic | tactic | ...]`.")
+            raise TacticSyntaxError(
+                "syntax: `first [tactic | tactic | ...]`."
+            )
         choices = [_compile(item, classical)[0] for item in _first_items(match.group(1))]
         return first(choices), True
 

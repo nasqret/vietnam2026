@@ -11,18 +11,23 @@ override PEANO     := ~/public_html/peano-lab
 override PEANONEXT := ~/public_html/peano-lab-next
 STAGE     := _deploy/vietnam2026
 STAGENEXT := _deploy/lab-lambda-next
+PEANO_CORPUS_PYTHON ?= python3
 # This path is a deletion target in `stage-peano`; command-line assignments
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
 
-.PHONY: help book lean lab-serve stage stage-peano deploy-site deploy-lab deploy-lab-next \
-	deploy-peano deploy-peano-next deploy clean
+.PHONY: help book lean lab-serve peano-corpus peano-corpus-smoke peano-eval stage \
+	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
+	deploy clean
 
 help:
 	@echo "Targets:"
 	@echo "  make book         build the JupyterBook (book/_build/html)"
 	@echo "  make lean         build & axiom-check the Lean artifact"
 	@echo "  make lab-serve    serve lab-lambda locally on :8001"
+	@echo "  make peano-corpus reproduce the leakage-safe Peano train/val release"
+	@echo "  make peano-corpus-smoke  run the all-ladder M9 generation/export smoke"
+	@echo "  make peano-eval   run the deterministic kernel-judged random baseline"
 	@echo "  make stage        assemble _deploy/vietnam2026 (landing + book + slides)"
 	@echo "  make deploy-site  rsync the site to $(SITE)"
 	@echo "  make deploy-lab   rsync the browser lab to $(LAB)"
@@ -45,6 +50,32 @@ lean:
 lab-serve:
 	@echo "→ http://localhost:8001/  (Ctrl-C to stop)"
 	cd lab-lambda && python3 -m http.server 8001
+
+# The committed learning release deliberately omits every ladder session.  Raw
+# session JSONL remains a reproducible intermediate in /tmp; the manifest keeps
+# its exact byte hash and the released transitions live under peano-lab/corpus/.
+peano-corpus:
+	@$(PEANO_CORPUS_PYTHON) -c 'import platform, sys; actual = f"{platform.python_implementation()} {platform.python_version()}"; expected = "CPython 3.10.0"; sys.exit(0 if actual == expected else f"byte-identical Peano corpus reproduction needs {expected}, got {actual}; override PEANO_CORPUS_PYTHON with that interpreter")'
+	$(PEANO_CORPUS_PYTHON) scripts/generate_peano_traces.py \
+		--output /tmp/peano-lab-release-raw.jsonl \
+		--manifest peano-lab/corpus/generation-manifest.json \
+		--seed 0 --renamed 1500 --commuted 96 \
+		--auto-depth 5 --auto-max-nodes 5000 \
+		--no-ladder-auto --no-ladder-scripts
+	$(PEANO_CORPUS_PYTHON) scripts/export_traces.py /tmp/peano-lab-release-raw.jsonl \
+		--output-dir peano-lab/corpus --val-fraction 0.1 --seed peano-lab-v1
+
+# The acceptance superset includes honest bounded-auto attempts and checked
+# authored replays for every theorem-ladder entry.  It is not training input.
+peano-corpus-smoke:
+	$(PEANO_CORPUS_PYTHON) scripts/generate_peano_traces.py \
+		--output /tmp/peano-lab-acceptance-raw.jsonl \
+		--manifest /tmp/peano-lab-acceptance-manifest.json
+	$(PEANO_CORPUS_PYTHON) scripts/export_traces.py /tmp/peano-lab-acceptance-raw.jsonl \
+		--output-dir /tmp/peano-lab-acceptance-export
+
+peano-eval:
+	$(PEANO_CORPUS_PYTHON) scripts/eval_peano_policy.py --k 8 --max-steps 16 --seed 20260727
 
 stage: book
 	rm -rf $(STAGE) && mkdir -p $(STAGE)

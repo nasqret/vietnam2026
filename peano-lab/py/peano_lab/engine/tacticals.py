@@ -29,7 +29,7 @@ from .state import (
     record_step,
     replace_hole,
 )
-from .tactics import Tactic, TacticError
+from .tactics import Tactic, TacticError, TacticLimit, TacticSyntaxError
 
 
 _REPEAT_LIMIT = 256
@@ -178,8 +178,27 @@ def orelse(left: Tactic, right: Tactic) -> Tactic:
         _no_args("orelse", args)
         try:
             result = _run(left, state)
-        except TacticError:
-            result = _run(right, state)
+        except TacticSyntaxError:
+            raise
+        except TacticError as left_error:
+            try:
+                result = _run(right, state)
+            except TacticSyntaxError:
+                raise
+            except TacticError as right_error:
+                limit = next(
+                    (
+                        error
+                        for error in (left_error, right_error)
+                        if isinstance(error, TacticLimit)
+                    ),
+                    None,
+                )
+                if limit is not None:
+                    raise TacticLimit(
+                        f"every tactic in `orelse` failed; {limit}"
+                    ) from None
+                raise
         return _finish(state, result, "orelse")
 
     return combined
@@ -199,6 +218,8 @@ def repeat(tactic: Tactic) -> Tactic:
         for _ in range(_REPEAT_LIMIT):
             try:
                 next_state = _run(tactic, work)
+            except (TacticLimit, TacticSyntaxError):
+                raise
             except TacticError:
                 break
             key = (next_state.goals, tuple(sorted(next_state.subst.items())))
@@ -207,7 +228,7 @@ def repeat(tactic: Tactic) -> Tactic:
                 break
             seen.append(key)
         else:
-            raise TacticError("`repeat` exceeded its 256-step termination guard.")
+            raise TacticLimit("`repeat` exceeded its 256-step termination guard.")
         return _finish(state, work, "repeat")
 
     return combined
@@ -227,12 +248,21 @@ def first(tactics: Iterable[Tactic]) -> Tactic:
     def combined(state: ProofState, args: str = "") -> ProofState:
         _no_args("first", args)
         last_error: TacticError | None = None
+        limit_error: TacticLimit | None = None
         for choice in choices:
             try:
                 return _finish(state, _run(choice, state), "first")
+            except TacticSyntaxError:
+                raise
             except TacticError as error:
                 last_error = error
+                if isinstance(error, TacticLimit) and limit_error is None:
+                    limit_error = error
         assert last_error is not None
+        if limit_error is not None:
+            raise TacticLimit(
+                f"every tactic in `first` failed; {limit_error}"
+            ) from None
         raise TacticError(f"every tactic in `first` failed; {last_error}") from None
 
     return combined

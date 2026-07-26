@@ -17,6 +17,7 @@ from peano_lab.engine.state import (
 from peano_lab.engine.tacticals import all_goals, first, focus, orelse, repeat, then
 from peano_lab.engine.tactics import (
     TacticError,
+    TacticLimit,
     apply_tactic,
     checked_final,
     induction,
@@ -161,8 +162,15 @@ def test_repeat_has_a_finite_guard_even_for_strictly_growing_bad_tactic() -> Non
         deeper = Eq(Succ(goal.target.left), goal.target.right)
         return replace(state, goals=(Goal(goal.context, deeper, goal.variables),))
 
-    with pytest.raises(TacticError, match="termination guard"):
+    with pytest.raises(TacticLimit, match="termination guard"):
         repeat(grow)(initial, "")
+    assert _snapshot(initial) == before
+
+    def limited(_state, _args: str = ""):
+        raise TacticLimit("planned child budget exhaustion")
+
+    with pytest.raises(TacticLimit, match="planned child budget exhaustion"):
+        repeat(limited)(initial, "")
     assert _snapshot(initial) == before
 
 

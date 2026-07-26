@@ -36,5 +36,9 @@ get a private, easier semantics.
 The full M7 library is executable too. {doc}`The checked theorem ladder <ladder>` follows twenty
 scripted entries through order totality and the zero-product capstone, explains how theorem reuse is
 cut-eliminated outside the trusted kernel, and links each statement to the browser and Lean 4
-cross-checking surface. The dated {doc}`implementation diary <diary>` preserves the design choices,
-bugs and objections behind the polished account.
+cross-checking surface. M9 then turns the same checked interactions into a reproducible
+[proof-trace corpus](https://github.com/nasqret/vietnam2026/tree/peano-lab/peano-lab/corpus) and fixes
+a [kernel-judged evaluation protocol](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_LLM.md)
+for later small-model experiments; no model is trained in this repository. The dated
+{doc}`implementation diary <diary>` preserves the design choices, bugs and objections behind the
+polished account.

@@ -88,7 +88,12 @@
   the De Bruijn trust boundary, tactic transactions, tacticals, induction/the ladder, and honest
   limits. Its 45 chapter commands and 15 live links replay through the real driver; the landing
   page now announces the checked browser lab as live. Six connected Obsidian concepts extend the
-  vault without unresolved links.
+  vault without unresolved links. M9 adds deterministic checked trace generation, a strict v1
+  session importer and theorem-group exporter, a committed 13,152-transition leakage-separated
+  corpus, and a pinned four-family pass@k harness whose only success label comes from independent
+  finalization. Generator/checker sources and complete run inputs are fingerprinted; policy-visible
+  goals retain session-stable metavariable aliases and expose neither theorem labels nor logic-mode
+  authority. The repository deliberately contains data and protocol, not model training.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -124,4 +129,5 @@
 - Build/deploy strategy chosen: **go live incrementally** (public GitHub + faculty URLs as pieces land).
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
-- Peano Lab milestones M0–M8 are green on `peano-lab`; M9 corpus export and evaluation are next.
+- Peano Lab milestones M0–M9 are green on `peano-lab`; the complete implementation, checked corpus,
+  construction book, Obsidian knowledge base, and kernel-judged evaluation protocol are present.

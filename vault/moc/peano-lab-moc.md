@@ -22,10 +22,18 @@ tags: [moc, peano-lab, theorem-proving]
 - [[simp-termination]]
 - [[godel-incompleteness]]
 
+## Learning from traces
+
+- [[proof-trace-corpus]]
+- [[kernel-judged-evaluation]]
+- [[pass-at-k]]
+
 ## Executable surfaces
 
 - Browser: `/peano-lab/`
 - Book: `book/peano/`
+- Trace release: `peano-lab/corpus/`
+- Data/evaluation protocol: `docs/PEANO_LLM.md`
 - Binding design: `docs/PEANO_LAB_DESIGN.md`
 - Milestones: `PLAN/09_peano_lab.md`
 

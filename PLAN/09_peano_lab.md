@@ -135,15 +135,25 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   zero unresolved wiki-links; trusted checker unchanged at 234 lines.
 
 ### M9 — LLM corpus (prep for post-training; design only executes after M7)
-- [ ] `scripts/export_traces.py`: collate JSONL sessions → deduplicated train/val split;
+- [x] `scripts/export_traces.py`: collate JSONL sessions → deduplicated train/val split;
       stats report (theorems covered, tactic distribution, failure ratio).
-- [ ] Batch generation: `auto` sweeps over the ladder + randomized provable variants
+- [x] Batch generation: `auto` sweeps over the ladder + randomized provable variants
       (commuted/renamed instances) to grow the corpus; document generation provenance.
-- [ ] A short `docs/PEANO_LLM.md`: target model size, tokenization notes (canonical printer =
+- [x] A short `docs/PEANO_LLM.md`: target model size, tokenization notes (canonical printer =
       the tokenizer's friend), eval protocol (held-out ladder theorems, pass@k with the kernel
       as judge). **No training in this repo** — data + protocol only.
 - **Acceptance:** ≥ 10k clean trace records exportable; eval harness runs against a dummy
   policy (random tactic) end-to-end with the kernel as judge.
+- **Verified:** the all-ladder acceptance superset generated 13,417 transitions in 1,636 sessions
+  (20 honest bounded-auto attempts, 20 checked authored replays, and 1,596 randomized variants),
+  with 1,624 kernel-checked QEDs and 12 honest search failures; strict export retained 13,412
+  unique rows. The committed leakage-separated release contains 13,152 unique v1 rows (12,540
+  train / 612 validation), 1,596 labeled transactional failures, source/checker fingerprints, and
+  no ladder sessions. The deterministic random policy completed 32 attempts over four pinned
+  held-out families through the production grammar and kernel judge. Peano `498 passed`; focused
+  M9 `62 passed`; Lambda `360 passed, 36 subtests passed`; the warning-as-error book build and all
+  190 links/17 blocks/78 commands are green; vault 52 notes/228 links/0 unresolved; checker 234
+  lines.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, performance tuning beyond

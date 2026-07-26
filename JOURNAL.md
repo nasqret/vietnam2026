@@ -418,3 +418,34 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   notes and zero unresolved wiki-links. Verification: Peano `436 passed`; Lambda `360 passed, 36
   subtests passed`; checker unchanged at `234` lines. Visual DOM interaction remains the explicit
   manual release check because the in-app browser runtime is unavailable. No SSH deployment.
+
+## 2026-07-27 (branch peano-lab) — Peano Lab M9: checked data, untrusted policy
+
+- Added deterministic batch generation through the real proof engine and production `TraceLogger`.
+  Every session contains a controlled transactional failure; successful sessions receive a footer
+  only after `checked_final` validates the certificate against the owner-held original theorem.
+  Full run fingerprints cover configuration, theorem fixtures, generator/checker sources, and the
+  Python runtime, preventing seed-only session-ID collisions across collated runs.
+- Added a strict standard-library exporter. It validates exact ordered v1 fields, JSON types,
+  complete sequential sessions, goal continuity, transactional errors, adjacent footer counts, and
+  equality between the footer theorem and the initial rendered goal. It globally deduplicates while
+  ignoring only session/step identity, keeps theorem groups together, rejects input/output aliases,
+  and stages/rolls back the train, validation, and statistics artifacts as one publication set.
+- Published a reproducible learning release with all ladder sessions disabled: 13,152 unique
+  transitions from 1,596 kernel-checked QED sessions, split into 12,540 train and 612 validation
+  rows, including 1,596 honestly labeled failures. The manifest retains per-session family/template
+  provenance, run/source/checker hashes, and the omitted raw stream's exact size and SHA-256.
+- Added the fixed evaluation-v1 protocol for `le_trans`, `le_antisymm`, `le_total`, and
+  `mul_eq_zero`. Policies see only canonical goals with rollout-stable metavariable aliases plus a
+  visible-goal-derived local RNG; a literal goal-set digest prevents silent benchmark drift. The
+  deterministic random baseline ran 32 attempts end to end and scored 0.0 honestly; positive and
+  adversarial tests confirm that only independent finalization can produce `proof`.
+- Three independent audits exposed and closed case-insensitive input overwrite, footer/split
+  misbinding, partial output publication, symlink-loop diagnostics, run-ID collisions,
+  metavariable-display drift, hidden-label RNG leakage, nested-auto status drift through every
+  tactical (including `repeat`), absent case-only output aliasing, and dynamic benchmark drift.
+  Final verification: focused M9 `62 passed`; Peano `498 passed`; Lambda `360
+  passed, 36 subtests passed`; all-ladder generation/export 13,417/13,412 rows; warning-as-error
+  Jupyter Book green; 190 links and 17 blocks/78 commands replay; vault 52 notes/228 links/0
+  unresolved; trusted checker unchanged at 234 lines. No model was trained and no SSH deployment
+  was performed.
