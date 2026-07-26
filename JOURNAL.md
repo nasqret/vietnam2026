@@ -217,3 +217,14 @@ a Polish-language quiz question (mc_lambda_05) and the owl combinator's Polish L
 (translated); `commands` missing from tab-completion (added); bare `?` at the main prompt gave a
 parse error (now a pointer to help — placed after owner routing so in-proof/tutorial `?` behavior
 is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-07-26c.
+
+## 2026-07-26 (branch peano-lab) — Phase 2 designed: the Peano Lab
+
+- Reviewed and sharpened the plan for a PA theorem prover ("a little Lean for Peano"): staged
+  logic (equations → induction → quantifiers → automation), proof terms + an independent ≤300-line
+  kernel checker (De Bruijn criterion — the audit lesson made law), intuitionistic core with a
+  classical toggle, and the LLM trace format designed up front so every session generates corpus.
+- Authored `docs/PEANO_LAB_DESIGN.md` (binding architecture), `PLAN/09_peano_lab.md` (M0–M9 with
+  acceptance criteria, house rules for the implementing model), 18 API-pinning module stubs under
+  `peano-lab/py/peano_lab/`, the "Building Peano Lab" book part stub + implementation diary, and
+  the landing-page card (in development). Handing implementation to Codex from M0.

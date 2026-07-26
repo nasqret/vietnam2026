@@ -17,6 +17,10 @@ parts:
       - file: cookbook/puzzles
       - file: cookbook/curiosities
       - file: cookbook/showcase
+  - caption: "Building Peano Lab"
+    chapters:
+      - file: peano/index
+      - file: peano/diary
   - caption: "Appendix"
     chapters:
       - file: appendix/cheatsheet
