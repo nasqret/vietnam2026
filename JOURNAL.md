@@ -323,3 +323,30 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   focus-local metavariable defaulting, and malformed state boundaries. Verification: Peano
   `277 passed`; Lambda Lab `360 passed, 36 subtests passed`; checker `234` lines; compile and diff
   checks clean.
+
+## 2026-07-27 (branch peano-lab) — Peano Lab M5: browser proof lab
+
+- Added a self-hosted xterm/Pyodide worker page with its own BUILD key, exact 21-module Python
+  manifest, cancellable/restartable worker, persistent command history, deep links, PA quick actions,
+  accessible status reporting, and a `4,000`-character input boundary. The browser driver rejects
+  decimal sugar above `256` before successor expansion; that is an interface resource limit, not a
+  statement in PA.
+- Added the `pa` command family and the audited single-session-owner grammar. The owner keeps the
+  original formula, name table, exact classical Boolean, trace logger, and stable display aliases
+  outside `ProofState`. Every successful `qed` invokes `checked_final` against those retained values;
+  failed tactics and failed finalization preserve the live session exactly.
+- Added deterministic goals/context/partial-certificate panels, complete-line aliases, in-proof
+  help, and all primitive/tactical/simp/auto routes. Browser output and v1 JSONL records visibly
+  escape terminal controls, bidi/format marks, surrogates, and Unicode line/paragraph separators;
+  adversarial trace tests preserve exactly one physical line per record.
+- Added version-pinned shared-vendor fetching, hash verification, an exact staged artifact, and safe
+  `stage-peano`, `deploy-peano`, and `deploy-peano-next` targets. No SSH deployment was performed.
+  All 26 served paths returned HTTP 200 locally, source/stage comparison was exact, and the exact
+  staged 21-file worker payload loaded under pinned Pyodide 0.28.3 and proved `add_comm` with
+  `auto 5; qed`.
+- Independent UI, shell, deployment, and tactic fuzz audits closed control injection, cache,
+  cancellation, pending-request, trace-focus, footer-authority, alias-stability, numeral-expansion,
+  and JSONL framing defects. Verification: Peano `312 passed`; Lambda Lab `360 passed, 36 subtests
+  passed`; checker `234` lines; byte-compilation, shell syntax, deploy dry runs, hashes, and diff
+  checks clean. The in-app visual browser was unavailable, so DOM/keyboard visual interaction is
+  recorded as a manual release check rather than claimed as completed.

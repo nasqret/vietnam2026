@@ -5,10 +5,18 @@ SERVER    := lts-faculty.wmi.amu.edu.pl
 SITE      := ~/public_html/vietnam2026
 LAB       := ~/public_html/lab-lambda
 LABNEXT   := ~/public_html/lab-lambda-next
+# These are `rsync --delete` destinations.  Keep command-line Make variable
+# overrides from widening either one to an unrelated remote directory.
+override PEANO     := ~/public_html/peano-lab
+override PEANONEXT := ~/public_html/peano-lab-next
 STAGE     := _deploy/vietnam2026
 STAGENEXT := _deploy/lab-lambda-next
+# This path is a deletion target in `stage-peano`; command-line assignments
+# must not be able to widen it beyond the repository's dedicated stage tree.
+override STAGEPEANO := _deploy/peano-lab
 
-.PHONY: help book lean lab-serve stage deploy-site deploy-lab deploy-lab-next deploy clean
+.PHONY: help book lean lab-serve stage stage-peano deploy-site deploy-lab deploy-lab-next \
+	deploy-peano deploy-peano-next deploy clean
 
 help:
 	@echo "Targets:"
@@ -19,6 +27,8 @@ help:
 	@echo "  make deploy-site  rsync the site to $(SITE)"
 	@echo "  make deploy-lab   rsync the browser lab to $(LAB)"
 	@echo "  make deploy-lab-next  deploy the Web Worker preview to $(LABNEXT)"
+	@echo "  make deploy-peano  rsync Peano Lab to $(PEANO)"
+	@echo "  make deploy-peano-next  deploy Peano Lab staging to $(PEANONEXT)"
 	@echo "  make deploy       stage + deploy-site + deploy-lab"
 	@echo "  make clean        remove build/stage artifacts"
 
@@ -69,6 +79,31 @@ deploy-lab-next:
 	rsync -a lab-lambda/vendor/ $(STAGENEXT)/vendor/
 	rsync -avz --delete $(STAGENEXT)/ $(SERVER):$(LABNEXT)/
 	@echo "Deployed staging → https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda-next/"
+
+# Peano Lab uses its own local vendor mirror so `python -m http.server` works
+# from peano-lab/.  scripts/fetch_vendor.sh creates both pinned mirrors.
+stage-peano:
+	@test -f peano-lab/vendor/MANIFEST.sha256 || \
+		{ echo "Missing peano-lab/vendor; run: bash scripts/fetch_vendor.sh" >&2; exit 1; }
+	@(cd peano-lab/vendor && shasum -a 256 -c MANIFEST.sha256 >/dev/null) || \
+		{ echo "Peano Lab vendor verification failed; rerun: bash scripts/fetch_vendor.sh" >&2; exit 1; }
+	rm -rf "$(STAGEPEANO)" && mkdir -p "$(STAGEPEANO)"
+	cp peano-lab/index.html "$(STAGEPEANO)/index.html"
+	cp peano-lab/worker.js  "$(STAGEPEANO)/worker.js"
+	cp peano-lab/.htaccess  "$(STAGEPEANO)/.htaccess"
+	rsync -a --delete --exclude '__pycache__' --exclude '.pytest_cache' --exclude 'tests' peano-lab/py/ "$(STAGEPEANO)/py/"
+	rsync -a --delete peano-lab/vendor/ "$(STAGEPEANO)/vendor/"
+	@echo "Staged Peano Lab in $(STAGEPEANO)"
+
+# Production channel.  Promotion policy is documented in PLAN/09_peano_lab.md.
+deploy-peano: stage-peano
+	rsync -avz --delete "$(STAGEPEANO)/" $(SERVER):$(PEANO)/
+	@echo "Deployed Peano Lab → https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/"
+
+# Staging channel: byte-for-byte the same assembled tree, under /peano-lab-next/.
+deploy-peano-next: stage-peano
+	rsync -avz --delete "$(STAGEPEANO)/" $(SERVER):$(PEANONEXT)/
+	@echo "Deployed Peano Lab staging → https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/"
 
 deploy: deploy-site deploy-lab
 	@echo "Deployed:  https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026  +  /lab-lambda"

@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import json
 import re
+import unicodedata
 import uuid
 from collections.abc import Callable, Iterable, Sequence
 from typing import Any, TextIO
@@ -35,7 +36,17 @@ _ANSI_ESCAPE = re.compile(
 
 
 def _without_ansi(text: str) -> str:
-    return _ANSI_ESCAPE.sub("", text).replace("\x1b", "")
+    text = _ANSI_ESCAPE.sub("", text).replace("\x1b", "")
+    # JSON accepts several invisible control/format characters that are not
+    # ANSI escapes (C1 CSI, bidi overrides, zero-width marks, ...).  Preserve
+    # their identity as visible ASCII escapes so corpus records remain
+    # deterministic, single-line, and safe to inspect in terminals/editors.
+    return "".join(
+        char
+        if unicodedata.category(char) not in {"Cc", "Cf", "Cs", "Zl", "Zp"}
+        else (f"\\u{ord(char):04x}" if ord(char) <= 0xFFFF else f"\\U{ord(char):08x}")
+        for char in text
+    )
 
 
 def _meta_aliases(

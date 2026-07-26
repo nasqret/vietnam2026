@@ -32,6 +32,8 @@ artifacts/rocq/**/.*.aux
 # ── Browser lab (vendored/built assets) ────────────────
 lab-lambda/vendor/
 lab-lambda/_dist/
+peano-lab/vendor/
+peano-lab/_dist/
 
 # ── Node (only used for tooling, not committed) ────────
 node_modules/

@@ -92,12 +92,12 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   (`repeat` terminates, `orelse` restores state on first-branch failure).
 
 ### M5 — The `/peano-lab/` page
-- [ ] Clone the shell: `peano-lab/index.html` + `worker.js` + `.htaccess` + own BUILD tag,
+- [x] Clone the shell: `peano-lab/index.html` + `worker.js` + `.htaccess` + own BUILD tag,
       shared vendor via `scripts/fetch_vendor.sh`; quick buttons for the PA world.
-- [ ] `peano-lab/py/driver.py`: `pa` command family (design §3), session-owner routing,
+- [x] `peano-lab/py/driver.py`: `pa` command family (design §3), session-owner routing,
       complete-line aliases, in-proof `help` — the audit UI rules verbatim.
-- [ ] `pa prove` panels: goals/context/partial-certificate display in the prove style.
-- [ ] `make deploy-peano` + `deploy-peano-next` staging channel targets in the Makefile.
+- [x] `pa prove` panels: goals/context/partial-certificate display in the prove style.
+- [x] `make deploy-peano` + `deploy-peano-next` staging channel targets in the Makefile.
 - **Acceptance:** the ladder through `add_comm` provable in the browser; existing lab-lambda
   tests still green (zero regressions in the shared repo).
 

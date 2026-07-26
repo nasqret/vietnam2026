@@ -213,3 +213,42 @@ with a classical toggle) recorded in `docs/PEANO_LAB_DESIGN.md` §0.
   mutations, malformed states, nonzero focus under every binder/eliminator family, and huge search
   depths. The milestone closes at 277 Peano tests, 360 Lambda tests plus 36 subtests, and an
   unchanged 234-line trusted checker.
+
+## 2026-07-27 — M5: the browser is a session owner, never a proof authority
+
+- The UI copies Lambda Lab's audited routing law: once `pa prove` starts, that proof session owns
+  each complete input line before ordinary command dispatch. Thus `qed`, `abort`, `help`, `?`, and
+  tactic lines have one unambiguous interpreter, while a nested `pa prove ...` can be refused
+  without touching the active state. Aliases are exact, case-sensitive whole-line matches; a token
+  appearing inside a proposition or an argument cannot become a control command by accident.
+- The owner retains the originally parsed formula, its free-variable name table, the trace logger,
+  and the classical-mode Boolean outside the untrusted `ProofState`. QED supplies those retained
+  values to `checked_final`; it never accepts a theorem or mode back from a tactic result. A failed
+  kernel finalization leaves the owner and state live so the learner can inspect, undo, or abort.
+- The static page remains a worker shell: Pyodide and every Python source run off the main thread,
+  Stop terminates that worker, and restart creates a fresh proof owner. The Peano and Lambda pages
+  use one version-pinned vendor payload but keep distinct BUILD tags and browser-history keys, so
+  cache invalidation and sessions cannot bleed across the sibling labs.
+- A browser-shell audit found that worker isolation alone is not enough. Deep-link and stored-history
+  text must be stripped of C0/C1 controls before xterm echoes it; the worker URL needs the BUILD key
+  just like its Python fetches; fatal worker errors must settle pending promises; and Stop needs an
+  Escape/Ctrl-C path while xterm owns keyboard focus. Those are now static contracts, alongside an
+  exact equality check between the worker manifest and every Python module on disk.
+- Corpus integrity is also an owner responsibility. Compound `focus 2 ...` steps now record focus
+  index one, JSONL renders C1/bidirectional controls as visible escapes, panel metavariable aliases
+  persist for the whole session, and QED/abort footers use the owner's original name table. The
+  independent checker was already sound; these repairs ensure the pedagogical display and training
+  records cannot tell a different story from the theorem that was checked.
+- Decimal sugar is capped at `256` by the browser driver before parsing. Without this UI boundary,
+  the nine-character input `100000000` asks the surface parser to allocate one hundred million
+  successors. This is a recoverability limit for an interactive page, not a new axiom or a bound in
+  the PA object language; explicit symbolic terms remain governed by the ordinary input-size guard.
+- The final local artifact mounted the exact 21-file worker payload in pinned Pyodide and proved
+  `add_comm` via `auto 5` followed by `qed`; every staged HTTP path and vendor hash also passed. The
+  session's in-app visual browser surface was unavailable, so DOM interaction is recorded as an
+  outstanding manual release check rather than silently claimed. No staging or production SSH
+  deployment was performed in M5.
+- Final audit also treated U+2028 and U+2029 as record delimiters, not merely printable Unicode.
+  Escaping the `Zl`/`Zp` categories in both the trace and browser boundaries preserves the v1 law
+  that one JSON object is one physical line. M5 closes at 312 Peano tests, 360 Lambda tests plus 36
+  subtests, and an unchanged 234-line trusted checker.

@@ -20,6 +20,9 @@
 - **Host / SSH:** `bnaskrecki@lts-faculty.wmi.amu.edu.pl` (key `~/.ssh/id_ed25519`, already in agent).
 - **Landing page + book + slides:** `~/public_html/vietnam2026/` → <https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026>
 - **Browser Lambda Lab:** `~/public_html/lab-lambda/` → <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda>
+- **Browser Peano Lab targets:** `~/public_html/peano-lab/` (production) and
+  `~/public_html/peano-lab-next/` (staging). The M5 targets and local staging pipeline are verified;
+  neither target was deployed during M5.
 - **Server tooling:** Apache static hosting + PHP; Python 3.8, Node present. **No persistent daemons** →
   the lab must be **fully client-side** (this is why the browser lab uses Pyodide, not a server kernel).
 - **Deploy verb:** `rsync -avz --delete <local>/ lts-faculty.wmi.amu.edu.pl:~/public_html/<target>/`.
@@ -68,7 +71,11 @@
   `check` remains intuitionistic, while visible `DNE` certificates require `check_classical`.
   M4 adds atomic hole-safe tactic combinators, proof-producing ordered simplification with an LPO
   termination gate, certified closed arithmetic separate from explicitly bounded semantic reports,
-  and depth/node-bounded backtracking that replays only kernel-valid winning plans into traces.
+  and depth/node-bounded backtracking that replays only kernel-valid winning plans into traces. M5
+  adds the self-hosted worker page, single-owner command router, deterministic goal/context/partial-
+  certificate panels, and safe production/staging build targets. The owner retains the original
+  theorem and classical authority outside `ProofState`; QED still passes only through independent
+  finalization. Browser and JSONL text escape invisible controls and Unicode line separators.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -104,5 +111,4 @@
 - Build/deploy strategy chosen: **go live incrementally** (public GitHub + faculty URLs as pieces land).
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
-- Peano Lab milestones M0–M4 are green on `peano-lab`; M5 (the browser page, single-owner driver,
-  proof panels, and staging/deploy targets) is next.
+- Peano Lab milestones M0–M5 are green on `peano-lab`; M6 curriculum content is next.

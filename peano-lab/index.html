@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peano Lab — sound arithmetic proofs in the browser · VIASM 2026</title>
+  <meta name="description" content="A lightweight, readable theorem prover for Peano arithmetic: a small trusted kernel, interactive tactics, induction, automation, and kernel-checked QEDs, all running locally in your browser.">
+  <link rel="stylesheet" href="vendor/fonts/fonts.css">
+  <link rel="stylesheet" href="vendor/xterm/xterm.css">
+  <style>
+    :root{--bg:#07131b;--panel:#0e202b;--terminal:#061016;--border:#214052;--cyan:#38bdf8;--cyan-2:#7dd3fc;--emerald:#34d399;--amber:#fbbf24;--text:#e6f1f5;--muted:#94aebd;--danger:#fca5a5;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',system-ui,sans-serif;background:radial-gradient(1000px 520px at 85% -10%,#123f4f 0%,transparent 58%),linear-gradient(160deg,#07131b 0%,#0b1d29 100%);color:var(--text);min-height:100vh;display:flex;flex-direction:column;}
+    a{color:var(--cyan);text-decoration:none;}a:hover{text-decoration:underline;}a:focus-visible,.qbtn:focus-visible,.stopbtn:focus-visible{outline:3px solid var(--cyan-2);outline-offset:3px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1rem 1.4rem;border-bottom:1px solid var(--border);}
+    .brand{display:flex;align-items:center;gap:.7rem}.brand .glyph{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1.25rem;color:#06202a;background:var(--cyan);width:2.45rem;height:2.45rem;border-radius:9px;display:grid;place-items:center}.brand h1{font-size:1.05rem;font-weight:700}.brand .sub{font-size:.75rem;color:var(--muted)}
+    header nav{display:flex;gap:1.2rem;font-size:.85rem;font-weight:600;align-items:center}.main{flex:1;display:flex;flex-direction:column;max-width:1180px;width:100%;margin:0 auto;padding:1.2rem 1.4rem 2rem;}
+    .statusrow{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.7rem}.status{font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:.6rem;min-height:1.3rem}.spinner{width:.8rem;height:.8rem;border:2px solid var(--border);border-top-color:var(--cyan);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.dot-ok{width:.6rem;height:.6rem;border-radius:50%;background:var(--emerald);box-shadow:0 0 8px var(--emerald)}.fail{color:var(--danger)}
+    .stopbtn{font-family:'Inter',sans-serif;font-size:.8rem;font-weight:700;color:#2a0d0d;background:var(--amber);border:none;border-radius:7px;padding:.35rem .8rem;cursor:pointer;transition:opacity .12s}.stopbtn:disabled{opacity:.35;cursor:not-allowed}.stopbtn:hover:not(:disabled){filter:brightness(1.08)}
+    #term-wrap{background:var(--terminal);border:1px solid var(--border);border-radius:12px;padding:.8rem;box-shadow:0 10px 40px rgba(0,0,0,.45);min-height:63vh}.term-bar{display:flex;gap:.45rem;padding:.1rem .3rem .7rem}.term-bar span{width:.7rem;height:.7rem;border-radius:50%}.b-r{background:#ff5f57}.b-y{background:#febc2e}.b-g{background:#28c840}#terminal{width:100%;height:61vh;}
+    .proof-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin-top:.85rem}.proof-card{background:rgba(14,32,43,.72);border:1px solid var(--border);border-radius:9px;padding:.65rem .75rem;min-height:4rem}.proof-card strong{display:block;font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.04em;color:var(--cyan-2);margin-bottom:.25rem}.proof-card span{display:block;font-size:.76rem;color:var(--muted);line-height:1.4}
+    .quick{margin-top:1rem;display:flex;flex-direction:column;gap:.55rem}.quick-row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}.quick .lbl{font-size:.76rem;color:var(--muted);width:4.7rem;flex:0 0 auto}.qbtn{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--cyan-2);background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.3);border-radius:7px;padding:.34rem .62rem;cursor:pointer;transition:background .12s,transform .12s}.qbtn:hover:not(:disabled){background:rgba(56,189,248,.18);transform:translateY(-1px)}.qbtn:disabled{cursor:not-allowed;opacity:.48}
+    .info{margin-top:1.35rem;font-size:.84rem;color:var(--muted);line-height:1.65;max-width:88ch}.info code{font-family:'JetBrains Mono',monospace;background:var(--terminal);border:1px solid var(--border);border-radius:5px;padding:.05rem .35rem;color:var(--cyan-2);font-size:.85em}.law{color:var(--text);font-weight:700}
+    footer{border-top:1px solid var(--border);padding:1rem 1.4rem;font-size:.78rem;color:var(--muted);text-align:center}.noscript{padding:1rem;color:var(--danger);text-align:center}
+    @media(max-width:760px){#terminal{height:55vh}.proof-map{grid-template-columns:1fr}.quick .lbl{width:100%}.brand .sub{display:none}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand"><div class="glyph" aria-hidden="true">ℕ</div><div><h1>Peano Lab</h1><div class="sub">sound arithmetic proofs · no install · self-hosted</div></div></div>
+    <nav aria-label="Course navigation"><a href="/vietnam2026/">← Course</a><a href="/vietnam2026/book/peano/index.html">Read the chapter</a><a href="https://github.com/nasqret/vietnam2026/tree/peano-lab/peano-lab" target="_blank" rel="noopener">Source</a></nav>
+  </header>
+  <noscript><p class="noscript">Peano Lab needs JavaScript to load the local Python runtime.</p></noscript>
+  <main class="main">
+    <div class="statusrow">
+      <div class="status" id="status" role="status" aria-live="polite"><span class="spinner" aria-hidden="true"></span><span>starting…</span></div>
+      <button class="stopbtn" id="stop" type="button" disabled aria-label="Stop the running proof command" aria-keyshortcuts="Escape Control+C">■ Stop</button>
+    </div>
+    <div id="term-wrap">
+      <div class="term-bar" aria-hidden="true"><span class="b-r"></span><span class="b-y"></span><span class="b-g"></span></div>
+      <div id="terminal" role="application" aria-label="Peano Lab proof terminal" aria-describedby="terminal-help"></div>
+    </div>
+    <section class="proof-map" aria-label="How to read an interactive proof state">
+      <div class="proof-card"><strong>GOALS</strong><span>The focused obligation comes first; every remaining goal must also be closed.</span></div>
+      <div class="proof-card"><strong>CONTEXT</strong><span>Variables and hypotheses available to the focused goal, newest first.</span></div>
+      <div class="proof-card"><strong>CERTIFICATE</strong><span>Tactics fill a proof term; <code>qed</code> asks the independent kernel to check it.</span></div>
+    </section>
+    <div class="quick" id="quick" aria-label="Example Peano Lab commands">
+      <div class="quick-row"><span class="lbl">start:</span>
+        <button class="qbtn" type="button" data-cmd="pa help" disabled>pa help</button>
+        <button class="qbtn" type="button" data-cmd="pa axioms" disabled>pa axioms</button>
+        <button class="qbtn" type="button" data-cmd="pa tactic induction" disabled>tactic induction</button>
+        <button class="qbtn" type="button" data-cmd="pa eval 2 + 3" disabled>eval 2 + 3</button>
+        <button class="qbtn" type="button" data-cmd="pa simp S(S(0)) + 0" disabled>simp 2 + 0</button>
+      </div>
+      <div class="quick-row"><span class="lbl">prove:</span>
+        <button class="qbtn" type="button" data-cmd="pa prove forall n. 0 + n = n" disabled>0 + n = n</button>
+        <button class="qbtn" type="button" data-cmd="pa prove forall n m. S(n) + m = S(n + m)" disabled>add_succ_left</button>
+        <button class="qbtn" type="button" data-cmd="pa prove forall n m. n + m = m + n" disabled>add_comm</button>
+        <button class="qbtn" type="button" data-cmd="pa prove forall n. n &lt;= n" disabled>le_refl</button>
+        <button class="qbtn" type="button" data-cmd="clear" disabled>clear</button>
+      </div>
+    </div>
+    <p class="info" id="terminal-help">The complete prover runs locally in a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API" target="_blank" rel="noopener">Web Worker</a>, using a self-hosted Python runtime, so a long search never freezes this page and <strong>Stop</strong> can terminate it. Every executable asset is served from this site (no CDN), and commands are not sent elsewhere; a <code>?cmd=</code> deep link is part of the URL and can appear in server logs. The <span class="law">tactic layer is never trusted</span>: every <code>qed</code> checks the finished certificate against the original theorem in the small kernel. <code>↑/↓</code> history · <code>TAB</code> completion.</p>
+  </main>
+  <footer>Peano Lab · VIASM mini-course “An Introduction to Automatic Theorem Proving in Mathematics”, Hanoi 2026 · © Bartosz Naskręcki · <a href="/vietnam2026/">course home</a></footer>
+  <script src="vendor/xterm/xterm.js"></script>
+  <script src="vendor/xterm/addon-fit.js"></script>
+  <script src="vendor/xterm/addon-web-links.js"></script>
+  <script src="vendor/xterm/addon-unicode11.js"></script>
+  <script>
+  (function(){
+    "use strict";
+    const BUILD="2026-07-27a";
+    const MAX_INPUT=4000;
+    const PROMPT="\x1b[96mpa>\x1b[0m ";
+    const HISTORY_KEY="peanoLabHistory";
+    const statusEl=document.getElementById("status");
+    const quickEl=document.getElementById("quick");
+    const stopBtn=document.getElementById("stop");
+
+    function setQuickEnabled(on){quickEl.querySelectorAll("button").forEach(function(button){button.disabled=!on;});}
+    function setStop(on){stopBtn.disabled=!on;}
+    function setStatus(kind,message){
+      statusEl.replaceChildren();
+      const marker=document.createElement("span");marker.setAttribute("aria-hidden","true");
+      if(kind==="loading")marker.className="spinner";
+      else if(kind==="ready")marker.className="dot-ok";
+      else{marker.className="fail";marker.textContent="✗";}
+      const label=document.createElement("span");if(kind==="fail")label.className="fail";label.textContent=message;
+      statusEl.append(marker,label);
+    }
+    if(!window.Terminal||!window.Worker){setStatus("fail","failed to start: this browser lacks Web Worker or terminal support");return;}
+
+    const term=new Terminal({fontFamily:"'JetBrains Mono', monospace",fontSize:14,lineHeight:1.08,cursorBlink:true,convertEol:false,scrollback:5000,screenReaderMode:true,theme:{background:"#061016",foreground:"#e6f1f5",cursor:"#38bdf8",selectionBackground:"#16465a",black:"#061016",red:"#fca5a5",green:"#6ee7b7",yellow:"#fcd34d",blue:"#7dd3fc",magenta:"#c4b5fd",cyan:"#67e8f9",white:"#e6f1f5",brightBlack:"#668393",brightRed:"#f87171",brightGreen:"#34d399",brightYellow:"#fbbf24",brightBlue:"#38bdf8",brightMagenta:"#a78bfa",brightCyan:"#22d3ee",brightWhite:"#f8fafc"}});
+    term.open(document.getElementById("terminal"));
+    let fitAddon=null;try{if(window.FitAddon){fitAddon=new FitAddon.FitAddon();term.loadAddon(fitAddon);fitAddon.fit();}}catch(_error){}
+    try{if(window.WebLinksAddon)term.loadAddon(new WebLinksAddon.WebLinksAddon());}catch(_error){}
+    try{if(window.Unicode11Addon){term.loadAddon(new Unicode11Addon.Unicode11Addon());term.unicode.activeVersion="11";}}catch(_error){}
+    window.addEventListener("resize",function(){try{if(fitAddon)fitAddon.fit();}catch(_error){}});
+
+    function loadHistory(){try{const value=JSON.parse(localStorage.getItem(HISTORY_KEY)||"[]");if(Array.isArray(value))return value.filter(function(item){return typeof item==="string";}).map(sanitizeCommand).slice(-200);}catch(_error){}return [];}
+    function saveHistory(){try{localStorage.setItem(HISTORY_KEY,JSON.stringify(history.slice(-200)));}catch(_error){}}
+
+    let buffer="",cursor=0,history=loadHistory(),historyIndex=history.length,busy=true;
+    const COMMANDS=["abort","about","axioms","classical","clear","cls","eval","help","hint","kb","lib","pa","prove","qed","simp","tactic","tutorial","undo"];
+    const PA_SUBCOMMANDS=["axioms","eval","help","kb","lean","lib","prove","simp","tactic","tutorial"];
+    const TACTICS=["all_goals","apply","assumption","auto","cases","congr","exact","exfalso","exists","first","focus","forall_elim","induction","intro","left","refl","repeat","rewrite","right","simp","specialize","split","symm","trans"];
+    function completionCandidates(prefix){
+      const words=prefix.trimStart().split(/\s+/);
+      if(words.length<=1)return COMMANDS;
+      if(words[0].toLowerCase()==="pa"&&words.length===2)return PA_SUBCOMMANDS;
+      if((words[0].toLowerCase()==="tactic")||(words[0].toLowerCase()==="pa"&&words[1]&&words[1].toLowerCase()==="tactic"))return TACTICS;
+      return [];
+    }
+    function complete(){
+      const upto=buffer.slice(0,cursor);const token=(upto.match(/[^\s()]*$/)||[""])[0];if(!token)return;
+      const candidates=completionCandidates(upto);const key=token.toLowerCase();const hits=candidates.filter(function(word){return word.indexOf(key)===0;});if(hits.length===0)return;
+      let suffix="";
+      if(hits.length===1)suffix=hits[0].slice(key.length)+" ";
+      else{const common=hits.reduce(function(a,b){let index=0;while(index<a.length&&a[index]===b[index])index++;return a.slice(0,index);});suffix=common.slice(key.length);}
+      if(suffix){buffer=buffer.slice(0,cursor-token.length)+token.toLowerCase()+suffix+buffer.slice(cursor);cursor+=suffix.length;redraw();}
+      else{term.write("\r\n\x1b[2m  "+hits.join("  ")+"\x1b[0m\r\n");redraw();}
+    }
+
+    let worker=null,banner="",requestId=0,generation=0,initialRan=false;const pending=new Map();
+    function writeOutput(value){if(value!==undefined&&value!==null&&String(value)!=="")term.write(String(value).replace(/\r?\n/g,"\r\n"));}
+    function prompt(){buffer="";cursor=0;historyIndex=history.length;term.write("\r\n"+PROMPT);}
+    function redraw(){term.write("\r\x1b[K"+PROMPT+buffer);const back=buffer.length-cursor;if(back>0)term.write("\x1b["+back+"D");}
+    function clearTerminal(){term.write("\x1b[2J\x1b[3J\x1b[H");writeOutput(banner);prompt();}
+    function runInWorker(line){return new Promise(function(resolve){const id=++requestId;pending.set(id,resolve);worker.postMessage({type:"run",id:id,line:line});});}
+
+    async function submit(){
+      const line=buffer;term.write("\r\n");const trimmed=line.trim();
+      if(trimmed){history.push(line);saveHistory();}
+      if(trimmed.toLowerCase()==="clear"||trimmed.toLowerCase()==="cls"){clearTerminal();return;}
+      busy=true;setQuickEnabled(false);setStop(true);const activeGeneration=generation;
+      let output="";
+      try{output=await runInWorker(line);}catch(error){if(activeGeneration===generation)term.write("\x1b[91m"+String(error)+"\x1b[0m");}
+      if(activeGeneration!==generation)return;
+      writeOutput(output);busy=false;setQuickEnabled(true);setStop(false);prompt();
+    }
+    function sanitizeCommand(command){
+      return String(command||"")
+        .replace(/[\x00-\x1f\x7f-\x9f]/g," ")
+        .slice(0,MAX_INPUT);
+    }
+    function injectCommand(command){if(busy||!worker)return;buffer=sanitizeCommand(command);cursor=buffer.length;redraw();submit();term.focus();}
+    quickEl.addEventListener("click",function(event){const button=event.target.closest(".qbtn");if(button)injectCommand(button.getAttribute("data-cmd"));});
+
+    function stopWorker(){
+      if(!worker)return;
+      worker.terminate();pending.forEach(function(resolve){resolve("");});pending.clear();
+      busy=true;setQuickEnabled(false);setStop(false);
+      term.write("\r\n\x1b[93m  ^ interrupted — restarting the proof engine…\x1b[0m\r\n");
+      setStatus("loading","restarting…");startWorker();
+    }
+    stopBtn.addEventListener("click",stopWorker);
+    if(term.attachCustomKeyEventHandler){
+      term.attachCustomKeyEventHandler(function(event){
+        const cancel=event.key==="Escape"||(event.ctrlKey&&event.key.toLowerCase()==="c");
+        if(busy&&cancel){stopWorker();return false;}
+        return true;
+      });
+    }
+
+    term.onData(function(data){
+      if(busy)return;
+      switch(data){
+        case "\r":submit();return;
+        case "\x7f":case "\b":if(cursor>0){buffer=buffer.slice(0,cursor-1)+buffer.slice(cursor);cursor--;redraw();}return;
+        case "\x1b[A":if(history.length&&historyIndex>0){historyIndex--;buffer=history[historyIndex];cursor=buffer.length;redraw();}return;
+        case "\x1b[B":if(historyIndex<history.length-1){historyIndex++;buffer=history[historyIndex];cursor=buffer.length;redraw();}else{historyIndex=history.length;buffer="";cursor=0;redraw();}return;
+        case "\x1b[C":if(cursor<buffer.length){cursor++;term.write("\x1b[C");}return;
+        case "\x1b[D":if(cursor>0){cursor--;term.write("\x1b[D");}return;
+        case "\x1b[H":case "\x1b[1~":case "\x01":cursor=0;redraw();return;
+        case "\x1b[F":case "\x1b[4~":case "\x05":cursor=buffer.length;redraw();return;
+        case "\x1b[3~":if(cursor<buffer.length){buffer=buffer.slice(0,cursor)+buffer.slice(cursor+1);redraw();}return;
+        case "\t":complete();return;
+        case "\x03":term.write("^C");prompt();return;
+        case "\x0c":clearTerminal();return;
+        default:
+          if(data.startsWith("\x1b"))return;
+          const clean=data.replace(/[\r\n]+/g," ").replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]/g,"");
+          const accepted=clean.slice(0,Math.max(0,MAX_INPUT-buffer.length));
+          if(accepted){buffer=buffer.slice(0,cursor)+accepted+buffer.slice(cursor);cursor+=accepted.length;redraw();}
+      }
+    });
+
+    function onReady(bannerText){
+      banner=bannerText||"";term.write("\x1b[2J\x1b[H");writeOutput(banner);
+      busy=false;setQuickEnabled(true);setStop(false);setStatus("ready","ready — kernel-checked PA · Web Worker · build "+BUILD);
+      prompt();term.focus();
+      const initial=new URLSearchParams(location.search).get("cmd");if(initial&&!initialRan){initialRan=true;injectCommand(initial);}
+    }
+    function startWorker(){
+      generation++;worker=new Worker("worker.js?v="+encodeURIComponent(BUILD));
+      function failWorker(message){
+        generation++;
+        if(worker){worker.terminate();worker=null;}
+        pending.forEach(function(resolve){resolve("");});pending.clear();
+        busy=true;setQuickEnabled(false);setStop(false);
+        setStatus("fail",message);
+        writeOutput("\r\n\x1b[91m  The lab stopped unexpectedly. Reload to retry.\x1b[0m\r\n");
+      }
+      worker.onmessage=function(event){
+        const message=event.data||{};
+        if(message.type==="boot"){setStatus("loading",message.msg);return;}
+        if(message.type==="ready"){onReady(message.banner);return;}
+        if(message.type==="error"){failWorker("failed to start: "+message.msg);return;}
+        if(message.type==="result"){const resolve=pending.get(message.id);if(resolve){pending.delete(message.id);resolve(message.out);}return;}
+      };
+      worker.onerror=function(error){failWorker("worker error: "+((error&&error.message)?error.message:"unknown"));};
+      worker.postMessage({type:"init",build:BUILD});
+    }
+
+    writeOutput("\x1b[2m  booting the Peano kernel (worker)…\x1b[0m\r\n");setStatus("loading","starting worker…");startWorker();
+  })();
+  </script>
+</body>
+</html>

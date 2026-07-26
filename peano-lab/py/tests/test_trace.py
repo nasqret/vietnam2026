@@ -41,6 +41,27 @@ def test_goal_rendering_is_canonical_context_first_and_has_no_ansi() -> None:
     assert "\x1b" not in rendered
 
 
+def test_trace_text_makes_controls_and_unicode_line_separators_visible() -> None:
+    goal = [ExampleGoal((), Eq(Zero(), Zero()))]
+    logger = TraceLogger(session_id="controls")
+
+    record = logger.failure(
+        goal,
+        0,
+        "refl\x9b\u202eevil\u2028next",
+        "bad\x00\u2066message\u2029next",
+    )
+
+    assert record["tactic"] == r"refl\u009b\u202eevil\u2028next"
+    assert record["error"] == r"bad\u0000\u2066message\u2029next"
+    assert len(logger.jsonl().splitlines()) == 1
+    assert not any(
+        ord(char) < 32 or 127 <= ord(char) <= 159
+        for char in logger.jsonl()
+        if char not in "\n"
+    )
+
+
 def test_defined_order_sugar_is_identical_in_goals_and_footer() -> None:
     target, names = parse_formula_with_names("a <= b")
     state = start(target, names)

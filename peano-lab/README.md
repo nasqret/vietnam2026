@@ -20,3 +20,34 @@ and sharing its shell (xterm + Pyodide worker, fully self-hosted).
 Reference implementations to copy patterns from (same repo):
 `lab-lambda/py/lambda_lab/lab/webport/{stlc_types,proof_builder,prove}.py` and
 `lab-lambda/py/driver.py`.
+
+## Run locally
+
+From the repository root, fetch the version-pinned browser runtime once and
+serve the static lab:
+
+```console
+bash scripts/fetch_vendor.sh
+cd peano-lab
+python3 -m http.server 8002
+```
+
+Then open <http://127.0.0.1:8002/> and try:
+
+```text
+pa prove forall n m. n + m = m + n
+auto 5
+qed
+```
+
+The final line independently checks the generated certificate against the
+original formula. The browser driver limits numeral literals to `0..256` so a
+short decimal input cannot expand into an unbounded successor tree; this is a
+UI resource bound, not a restriction on the PA object language.
+
+Back at the repository root, run both regression suites:
+
+```console
+(cd peano-lab/py && python3 -m pytest tests/ -q)
+(cd lab-lambda/py && python3 -m pytest tests/ -q)
+```
