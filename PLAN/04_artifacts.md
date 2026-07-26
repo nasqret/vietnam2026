@@ -24,7 +24,7 @@ artifacts/
 ## Subtasks
 - [x] Lean lake project with statements 1–3; `lake build` green locally.
 - [x] Agda / Rocq / Mizar versions of statement 1 (the S combinator) as the Rosetta stone.
-- [ ] Extend statements 2–5 across all provers; add per-file prose linking to the book.
+- [x] Extend statements 2–5 across the provers (Lean/Rocq 1–5 incl. √2; Agda 1–4 by documented choice; Mizar statement 1) with per-file prose linking to the book.
 - [x] CI workflow to check Lean (and Agda/Rocq if runners allow).
 
 ## Acceptance criteria

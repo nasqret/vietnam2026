@@ -24,10 +24,10 @@ lab-lambda/
 ## Subtasks
 - [x] Static shell: xterm.js terminal + Pyodide boot with a progress line.
 - [x] `driver.py` dispatching a first command set (`help church reduce lam`).
-- [ ] Vendor the pure-Python subset of `lambda_lab`; audit imports for Pyodide-safety.
-- [ ] Wire `tour`, `quiz`, `kb`, `peano`, `curry_howard`; graceful stubs for the rest.
-- [ ] Persist history in `localStorage`; deep-link `?cmd=church%20true`.
-- [ ] Deploy to `~/public_html/lab-lambda/`; embed via iframe in the book + landing page.
+- [x] Vendor the pure-Python subset of `lambda_lab`; audit imports for Pyodide-safety.
+- [x] Wire `tour`, `quiz`, `kb`, `peano`, `curry_howard` (+ `prove`, `ch`, tutorials, games); graceful stubs for the rest.
+- [x] Persist history in `localStorage` (+ tab completion); `?cmd=` deep links wired book-wide.
+- [x] Deploy to `~/public_html/lab-lambda/`; linked from the book + landing page (deep links, no iframe).
 
 ## Acceptance criteria
 - Page loads Pyodide, prints a banner, and `help` + `church true` + `reduce (\x.x) y` all work.

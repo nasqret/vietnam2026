@@ -187,3 +187,10 @@ four cooperating defects). Full fix, all P0/P1/P2 items:
   as teaching beats (inl visible in the type; ∨-comm's proof term is C/flip; W7's continuation is
   W6's term). Honest footnotes: weak vs impredicative encodings (System F), handoff to Lean's
   real And/Or. Book gate now 168 deep links, all clean; site redeployed.
+
+## 2026-07-26 (evening) — PLAN reconciliation
+
+- All module checklists (00–07) reconciled against verified reality: live URLs, CI, artifacts,
+  vault MOCs, research files each checked before ticking. Two items remain open by choice:
+  service-worker offline precache for the lab, and a decktape PDF export of the slides as a
+  travel backup. The 中文/Tiếng-Việt landing toggle is recorded as dropped (EN authoritative).

@@ -17,8 +17,8 @@ vault/
 ## Subtasks
 - [x] `.obsidian` config + top-level MOC + 6 lecture MOCs.
 - [x] Seed concept notes for Lectures 1–3 with wikilinks and a "see also" tail.
-- [ ] Grow concept notes for Lectures 4–6 (tactics, typeclasses, autoformalization, EML).
-- [ ] Backlink concepts to the book chapters and artifacts.
+- [x] Grow concept notes for Lectures 4–6 (30 concepts incl. tactic-mode, mathlib, autoformalization, EML).
+- [x] Backlink concepts to the book chapters and artifacts (per-lecture MOCs link vault ↔ book).
 
 ## Acceptance criteria
 - Vault opens in Obsidian with a connected graph (no orphan MOCs).

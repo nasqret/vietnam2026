@@ -16,11 +16,11 @@ book/
 ## Subtasks
 - [x] `_config.yml` (MathJax macros, myst extensions, bibtex), `_toc.yml` (6 parts), `intro.md`.
 - [x] One index chapter per lecture with abstract, objectives, "run it" box, references.
-- [ ] Port/adapt λ-calculus chapters from `falenty-2026/book/en/notebooks/*` (L1–L3).
-- [ ] Author L4/L5 Lean chapters (term/tactic mode, Mathlib, worked proofs).
-- [ ] Author L6 chapter around the EML case study + landscape.
-- [ ] Embed the Lambda Lab (iframe) and links to artifacts.
-- [ ] `jupyter-book build book/` clean; deploy `book/_build/html` under `/vietnam2026/book`.
+- [x] λ-calculus chapters L1–L3 authored (adapted from `falenty-2026` material).
+- [x] Author L4/L5 Lean chapters (term/tactic mode, Mathlib, worked proofs).
+- [x] Author L6 chapter around the EML case study + landscape.
+- [x] Lambda Lab integrated via 168 gate-verified `?cmd=` deep links (chosen over an iframe) + artifact links.
+- [x] `jupyter-book build book/` clean; deployed under `/vietnam2026/book` (rebuild-from-clean in `make book`).
 
 ## Acceptance criteria
 - Book builds without errors; TOC has all 6 lectures.

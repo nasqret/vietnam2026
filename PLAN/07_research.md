@@ -15,8 +15,8 @@ fact-checked, then synthesized into a master plan.
 
 ## Subtasks
 - [x] Launch the research workflow (background).
-- [ ] Materialize workflow output into `research/*` files.
-- [ ] Propagate corrections into `MEMORY.md` (versions), the book, and the landing page.
+- [x] Materialize workflow output into `research/*` (dossiers, fact_checks.md, RESEARCH_REPORT.md).
+- [x] Propagate corrections into `MEMORY.md` (versions), the book, and the landing page.
 
 ## Acceptance criteria
 - Every "current fact" on the landing page / L6 traces to a fact-check verdict with a URL.
