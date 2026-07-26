@@ -25,9 +25,22 @@ class StateError(ValueError):
 
 @dataclass(frozen=True, slots=True)
 class MetaVar(Term):
-    """A flexible engine term; kernel terms never use this constructor."""
+    """A flexible engine term protected from ``depth`` newer binders.
+
+    The ID identifies one proof-wide unknown.  ``depth`` is an occurrence
+    annotation: ``?t`` below one later eigenvariable is ``MetaVar(id, 1)``.
+    A solution is stored at depth zero and lifted at each protected occurrence.
+    The kernel rejects this engine-only constructor at finalization.
+    """
 
     id: int
+    depth: int = 0
+
+    def __post_init__(self) -> None:
+        if type(self.id) is not int or self.id < 0:
+            raise ValueError("metavariable ID must be a non-negative integer")
+        if type(self.depth) is not int or self.depth < 0:
+            raise ValueError("metavariable depth must be a non-negative integer")
 
 
 @dataclass(frozen=True, slots=True)
@@ -127,16 +140,133 @@ def current(state: ProofState) -> Goal | None:
     return state.current()
 
 
-def walk_term(term: Term, subst: Mapping[int, Term]) -> Term:
-    """Resolve a top-level metavariable through ``subst`` to a fixed point."""
+def shift_engine_term(term: Term, by: int, cutoff: int = 0) -> Term:
+    """Shift rigid variables and scoped metavariables together.
 
-    seen: set[int] = set()
-    while type(term) is MetaVar and term.id in subst:
-        if term.id in seen:
+    Kernel shifting deliberately knows nothing about ``MetaVar``.  The engine
+    companion increments an occurrence's protection depth when a newer binder
+    is inserted at or below that depth.
+    """
+
+    if type(by) is not int or type(cutoff) is not int or cutoff < 0:
+        raise ValueError("engine shift needs an integer amount and non-negative cutoff")
+    if type(term) is MetaVar:
+        depth = term.depth + by if term.depth >= cutoff else term.depth
+        if depth < 0:
+            raise ValueError("shift would create a negative metavariable depth")
+        return MetaVar(term.id, depth)
+    if type(term) is Var:
+        index = term.index + by if term.index >= cutoff else term.index
+        if index < 0:
+            raise ValueError("shift would create a negative de Bruijn index")
+        return Var(index)
+    if type(term) is Zero:
+        return term
+    if type(term) is Succ:
+        return Succ(shift_engine_term(term.term, by, cutoff))
+    if type(term) is Add:
+        return Add(
+            shift_engine_term(term.left, by, cutoff),
+            shift_engine_term(term.right, by, cutoff),
+        )
+    if type(term) is Mul:
+        return Mul(
+            shift_engine_term(term.left, by, cutoff),
+            shift_engine_term(term.right, by, cutoff),
+        )
+    raise TypeError("expected a rigid kernel term or engine MetaVar")
+
+
+def shift_engine_formula(formula: Formula, by: int, cutoff: int = 0) -> Formula:
+    """Capture-safe formula shift that also scopes engine metavariables."""
+
+    if type(formula) is Eq:
+        return Eq(
+            shift_engine_term(formula.left, by, cutoff),
+            shift_engine_term(formula.right, by, cutoff),
+        )
+    if type(formula) is Bot:
+        return formula
+    if type(formula) in (Imp, And, Or):
+        return type(formula)(
+            shift_engine_formula(formula.left, by, cutoff),
+            shift_engine_formula(formula.right, by, cutoff),
+        )
+    if type(formula) in (Forall, Exists):
+        return type(formula)(
+            shift_engine_formula(formula.body, by, cutoff + 1)
+        )
+    raise TypeError("expected a PA formula")
+
+
+def _instantiate_term(term: Term, replacement: Term, depth: int) -> Term:
+    if type(term) is MetaVar:
+        # Opening removes one slot at ``depth``.  A meta created outside that
+        # slot loses one layer of protection; a meta local to the body does not.
+        return MetaVar(term.id, term.depth - 1) if term.depth > depth else term
+    if type(term) is Var:
+        if term.index == depth:
+            return shift_engine_term(replacement, depth)
+        if term.index > depth:
+            return Var(term.index - 1)
+        return term
+    if type(term) is Zero:
+        return term
+    if type(term) is Succ:
+        return Succ(_instantiate_term(term.term, replacement, depth))
+    if type(term) is Add:
+        return Add(
+            _instantiate_term(term.left, replacement, depth),
+            _instantiate_term(term.right, replacement, depth),
+        )
+    if type(term) is Mul:
+        return Mul(
+            _instantiate_term(term.left, replacement, depth),
+            _instantiate_term(term.right, replacement, depth),
+        )
+    raise TypeError("expected a rigid kernel term or engine MetaVar")
+
+
+def _instantiate_formula(formula: Formula, replacement: Term, depth: int) -> Formula:
+    if type(formula) is Eq:
+        return Eq(
+            _instantiate_term(formula.left, replacement, depth),
+            _instantiate_term(formula.right, replacement, depth),
+        )
+    if type(formula) is Bot:
+        return formula
+    if type(formula) in (Imp, And, Or):
+        return type(formula)(
+            _instantiate_formula(formula.left, replacement, depth),
+            _instantiate_formula(formula.right, replacement, depth),
+        )
+    if type(formula) in (Forall, Exists):
+        return type(formula)(
+            _instantiate_formula(formula.body, replacement, depth + 1)
+        )
+    raise TypeError("expected a PA formula")
+
+
+def instantiate_formula(formula: Formula, replacement: Term) -> Formula:
+    """Open formula slot zero, retaining scope information for engine metas."""
+
+    if not isinstance(replacement, Term):
+        raise TypeError("replacement must be a PA term or engine MetaVar")
+    return _instantiate_formula(formula, replacement, 0)
+
+
+def walk_term(term: Term, subst: Mapping[int, Term]) -> Term:
+    """Resolve a top-level meta and lift its depth-zero solution in place."""
+
+    def resolve(value: Term, seen: set[int]) -> Term:
+        if type(value) is not MetaVar or value.id not in subst:
+            return value
+        if value.id in seen:
             raise StateError("cyclic metavariable substitution")
-        seen.add(term.id)
-        term = subst[term.id]
-    return term
+        solution = resolve(subst[value.id], seen | {value.id})
+        return shift_engine_term(solution, value.depth)
+
+    return resolve(term, set())
 
 
 def apply_term_subst(term: Term, subst: Mapping[int, Term]) -> Term:
@@ -197,6 +327,26 @@ def _occurs(meta_id: int, term: Term, subst: Mapping[int, Term]) -> bool:
     return False
 
 
+def _lower_term(term: Term, by: int) -> Term | None:
+    """Undo ``by`` protected binders, or reject eigenvariable dependence."""
+
+    if type(term) is MetaVar:
+        return MetaVar(term.id, term.depth - by) if term.depth >= by else None
+    if type(term) is Var:
+        return Var(term.index - by) if term.index >= by else None
+    if type(term) is Zero:
+        return term
+    if type(term) is Succ:
+        child = _lower_term(term.term, by)
+        return None if child is None else Succ(child)
+    if type(term) in (Add, Mul):
+        left, right = _lower_term(term.left, by), _lower_term(term.right, by)
+        if left is None or right is None:
+            return None
+        return type(term)(left, right)
+    raise TypeError("expected a rigid kernel term or engine MetaVar")
+
+
 def unify_terms(
     left: Term, right: Term, subst: Mapping[int, Term] | None = None
 ) -> Subst | None:
@@ -204,20 +354,23 @@ def unify_terms(
 
     result: Subst = dict(subst or {})
 
+    def bind(meta: MetaVar, value: Term) -> bool:
+        lowered = _lower_term(value, meta.depth)
+        if lowered is None or _occurs(meta.id, lowered, result):
+            return False
+        result[meta.id] = lowered
+        return True
+
     def go(a: Term, b: Term) -> bool:
         a, b = walk_term(a, result), walk_term(b, result)
         if a == b:
             return True
         if type(a) is MetaVar:
-            if _occurs(a.id, b, result):
-                return False
-            result[a.id] = b
-            return True
+            if bind(a, b):
+                return True
+            return type(b) is MetaVar and bind(b, a)
         if type(b) is MetaVar:
-            if _occurs(b.id, a, result):
-                return False
-            result[b.id] = a
-            return True
+            return bind(b, a)
         if type(a) is not type(b):
             return False
         if type(a) is Succ:
@@ -441,6 +594,9 @@ __all__ = [
     "fresh_hole",
     "start",
     "current",
+    "shift_engine_term",
+    "shift_engine_formula",
+    "instantiate_formula",
     "walk_term",
     "apply_term_subst",
     "apply_formula_subst",

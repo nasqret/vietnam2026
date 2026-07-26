@@ -66,13 +66,13 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   `induction` on a non-variable and induction-hypothesis misuse both fail cleanly.
 
 ### M3 — Full connectives and quantifiers (Stage C)
-- [ ] Propositional layer: `intro`, `apply`, `split`, `left`, `right`, `cases h`, `exfalso`
+- [x] Propositional layer: `intro`, `apply`, `split`, `left`, `right`, `cases h`, `exfalso`
       (port the prove engine's shapes; certificates per design §1).
-- [ ] `exists <t>` (with `?` metavariable witness allowed, resolved by unification),
+- [x] `exists <t>` (with `?` metavariable witness allowed, resolved by unification),
       `forall_elim`/`specialize`, α-safe rewriting under binders (now, with tests from M1's
       deferred cases).
-- [ ] `classical on|off` toggle adding ¬¬φ → φ; OFF by default; session banner shows the mode.
-- [ ] `hint` for the PA setting: assumption/refl/available-rewrite/induction suggestions —
+- [x] `classical on|off` toggle adding ¬¬φ → φ; OFF by default; session banner shows the mode.
+- [x] `hint` for the PA setting: assumption/refl/available-rewrite/induction suggestions —
       honest statuses as in prove (`found/none/limit`).
 - **Acceptance:** `S n ≠ 0` (i.e. `S n = 0 → ⊥` via PA1), `le_refl` with `≤` as defined sugar,
   and an ∃-witness proof all pass; the soundness attack suite extended with capture attacks

@@ -10,8 +10,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from .terms import (
+    Add,
+    Mul,
     ParseError,
+    Succ,
     Term,
+    Var,
+    Zero,
     _TokenStream,
     _is_identifier,
     _parse_term_from,
@@ -151,10 +156,20 @@ class _FormulaParser:
         free_count = len(self.free)
         try:
             left = _parse_term_from(self.stream, self.bound, self.free)
-            if self.stream.accept("=") is None:
+            relation = self.stream.accept("=", "<=", "≤")
+            if relation is None:
                 raise ParseError("an atomic formula must be an equation")
             right = _parse_term_from(self.stream, self.bound, self.free)
-            return Eq(left, right)
+            if relation == "=":
+                return Eq(left, right)
+            # Defined surface sugar only: a ≤ b means ∃k. k + a = b.
+            # Inserting that binder shifts every variable already parsed.
+            return Exists(
+                Eq(
+                    Add(Var(0), _lift_for_new_binder(left)),
+                    _lift_for_new_binder(right),
+                )
+            )
         except ParseError:
             self.stream.position = position
             del self.free[free_count:]
@@ -205,6 +220,56 @@ def parse_formula(src: str) -> Formula:
 _BINDER_NAMES = ("x", "y", "z", "n", "m", "k", "i", "j", "u", "v", "w")
 
 
+def _lift_for_new_binder(term: Term) -> Term:
+    if type(term) is Var:
+        return Var(term.index + 1)
+    if type(term) is Zero:
+        return term
+    if type(term) is Succ:
+        return Succ(_lift_for_new_binder(term.term))
+    if type(term) is Add:
+        return Add(
+            _lift_for_new_binder(term.left),
+            _lift_for_new_binder(term.right),
+        )
+    if type(term) is Mul:
+        return Mul(
+            _lift_for_new_binder(term.left),
+            _lift_for_new_binder(term.right),
+        )
+    raise TypeError("expected a PA term")
+
+
+def _drop_le_binder(term: Term) -> Term | None:
+    """Remove the witness slot, rejecting terms that depend on it."""
+
+    if type(term) is Var:
+        return None if term.index == 0 else Var(term.index - 1)
+    if type(term) is Zero:
+        return term
+    if type(term) is Succ:
+        child = _drop_le_binder(term.term)
+        return None if child is None else Succ(child)
+    if type(term) in (Add, Mul):
+        left = _drop_le_binder(term.left)
+        right = _drop_le_binder(term.right)
+        if left is None or right is None:
+            return None
+        return type(term)(left, right)
+    return None
+
+
+def _as_le(formula: Formula) -> tuple[Term, Term] | None:
+    if type(formula) is not Exists or type(formula.body) is not Eq:
+        return None
+    equation = formula.body
+    if type(equation.left) is not Add or equation.left.left != Var(0):
+        return None
+    lower = _drop_le_binder(equation.left.right)
+    upper = _drop_le_binder(equation.right)
+    return None if lower is None or upper is None else (lower, upper)
+
+
 def _fresh_binder(names: list[str]) -> str:
     used = set(names)
     for candidate in _BINDER_NAMES:
@@ -217,7 +282,12 @@ def _fresh_binder(names: list[str]) -> str:
 
 
 def _pretty_formula(formula: Formula, names: list[str], parent_precedence: int) -> str:
-    if isinstance(formula, Eq):
+    le_terms = _as_le(formula)
+    if le_terms is not None:
+        lower, upper = le_terms
+        text = f"{_pretty_term(lower, names, 0)} ≤ {_pretty_term(upper, names, 0)}"
+        level = 5
+    elif isinstance(formula, Eq):
         text = f"{_pretty_term(formula.left, names, 0)} = {_pretty_term(formula.right, names, 0)}"
         level = 5
     elif isinstance(formula, Bot):

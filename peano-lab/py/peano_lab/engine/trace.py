@@ -162,6 +162,13 @@ def render_goal(goal: Any, *, meta_names: dict[int, str] | None = None) -> str:
     formulas = [formula for _, formula in context] + [target]
     meta_names = _meta_aliases(formulas, meta_names)
 
+    def rendered(formula: Formula) -> str:
+        # Rigid formulas use the one kernel canonicalizer—including defined
+        # sugar such as ≤.  The engine renderer is needed only for MetaVar.
+        if not metas_in_formula(formula):
+            return pretty_formula(formula, names)
+        return _pretty_engine_formula(formula, names, meta_names)
+
     declarations = [f"{name} : ℕ" for name in reversed(variables)]
     for entry in reversed(context):
         if not isinstance(entry, tuple) or len(entry) != 2:
@@ -169,9 +176,9 @@ def render_goal(goal: Any, *, meta_names: dict[int, str] | None = None) -> str:
         name, formula = entry
         if not isinstance(name, str) or not isinstance(formula, Formula):
             raise TypeError("goal context entries must be (name, Formula) pairs")
-        declarations.append(f"{name} : {_pretty_engine_formula(formula, names, meta_names)}")
+        declarations.append(f"{name} : {rendered(formula)}")
 
-    target_text = _pretty_engine_formula(target, names, meta_names)
+    target_text = rendered(target)
     prefix = f"{', '.join(declarations)} " if declarations else ""
     return _without_ansi(f"{prefix}⊢ {target_text}")
 

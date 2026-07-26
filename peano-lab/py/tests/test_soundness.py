@@ -13,13 +13,15 @@ from peano_lab.engine.tactics import (
     checked_final,
     exact,
     induction,
+    intro,
     refl,
     rewrite,
+    exists_,
 )
-from peano_lab.kernel.checker import check
-from peano_lab.kernel.formulas import Eq, Imp, parse_formula
-from peano_lab.kernel.proofs import EqRefl, Hyp
-from peano_lab.kernel.terms import Succ, Zero
+from peano_lab.kernel.checker import check, check_classical
+from peano_lab.kernel.formulas import Bot, Eq, Forall, Imp, parse_formula
+from peano_lab.kernel.proofs import DNE, EqRefl, EqSubst, Hyp
+from peano_lab.kernel.terms import Succ, Var, Zero
 
 
 ZERO = Zero()
@@ -140,3 +142,40 @@ def test_induction_hypothesis_is_scoped_only_to_the_step_and_cannot_be_misused()
     _assert_transactional_failure(state, exact, "IH", "does not match")
     with pytest.raises(InvalidProof, match="open"):
         checked_final(state, target)
+
+
+def test_forged_dne_certificate_cannot_cross_the_default_off_boundary() -> None:
+    proposition = FALSE
+    theorem = Imp(Imp(Imp(proposition, Bot()), Bot()), proposition)
+    forged = replace(
+        start(theorem),
+        goals=(),
+        partial_certificate_with_holes=DNE(proposition),
+    )
+    assert check_classical((), forged.partial, theorem)
+    assert not check((), forged.partial, theorem)
+    with pytest.raises(InvalidProof, match="independent kernel"):
+        checked_final(forged, theorem)
+
+
+def test_existential_meta_cannot_unify_with_a_later_eigenvariable() -> None:
+    target = parse_formula("exists x. forall y. x = y")
+    state = exists_(start(target), "?")
+    state = intro(state, "y")
+    _assert_transactional_failure(state, refl, "", "not identical")
+    with pytest.raises(InvalidProof, match="open"):
+        checked_final(state, target)
+
+
+def test_naive_bound_variable_rewrite_certificate_is_rejected() -> None:
+    equation = Eq(Var(0), ZERO)  # an outer parameter n = 0
+    reflexive_binder = Forall(Eq(Var(0), Var(0)))
+    captured_target = Forall(Eq(ZERO, Var(0)))
+    naive_motive = Forall(Eq(Var(0), Var(0)))
+    forged = EqSubst(naive_motive, Hyp(0), Hyp(1))
+
+    assert not check(
+        (equation, reflexive_binder),
+        forged,
+        captured_target,
+    )

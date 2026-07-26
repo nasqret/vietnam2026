@@ -276,3 +276,23 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   Review found only display-namespace collisions; reserved parser words and generated binder/IH/
   `_before`/`_parameter` names are now collision-free across term variables and hypotheses.
   Verification: Peano `118 passed`; existing Lambda Lab `360 passed, 36 subtests passed`.
+
+## 2026-07-27 (branch peano-lab) — Peano Lab M3: full first-order tactics
+
+- Added kernel-checkable tactics for implication, conjunction, disjunction, bottom, universal and
+  existential quantification: `apply`, `split`, `left`, `right`, `cases`, `exfalso`, `exists`, and
+  the `forall_elim` alias. `S n = 0 -> false` closes through PA1; defined order expands `a <= b`
+  to `exists k. k + a = b`, and `forall n. n <= n` closes in eight primitive tactics.
+- Witness metavariables now carry binder-protection depth. This preserves proof-wide inference but
+  rejects eigenvariable escape, including the false `exists x. forall y. x = y` route. Rewriting
+  descends through quantifiers with shifted sources, replacements, and motives; every generated
+  equality transport is independently checked.
+- Resolved the design's classical-mode tension explicitly: `DNE` is a visible certificate node,
+  ordinary `check` remains intuitionistic, and only the session owner's exact Boolean selects
+  `check_classical` at finalization. Mode commands and banners are labeled, OFF by default, and
+  mode changes use unchanged-goal v1 trace events rather than silently changing the trace schema.
+- Added pure bounded hints with `found/none/limit/done`, deterministic defined-sugar printing, and
+  permanent regressions for capture, non-Boolean classical authority, failed mode traces, and
+  vacuous universal/existential instantiation. Three independent adversarial reviews found no
+  remaining soundness defect after those fixes. Verification: Peano `187 passed`; existing Lambda
+  Lab `360 passed, 36 subtests passed`; checker `234` lines; compile and diff checks clean.

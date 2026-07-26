@@ -192,6 +192,13 @@ class EqSubst(Proof):
 
 
 @dataclass(frozen=True, slots=True)
+class DNE(Proof):
+    """Labeled double-negation elimination for the classical checker only."""
+
+    proposition: Formula
+
+
+@dataclass(frozen=True, slots=True)
 class Axiom(Proof):
     """One of the six fixed arithmetic axiom constants, ``PA1`` ... ``PA6``."""
 
@@ -235,6 +242,7 @@ __all__ = [
     "CongAdd",
     "CongMul",
     "EqSubst",
+    "DNE",
     "Axiom",
     "Ind",
 ]

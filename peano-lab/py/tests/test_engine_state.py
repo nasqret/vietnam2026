@@ -15,15 +15,17 @@ from peano_lab.engine.state import (
     fresh_hole,
     fresh_meta,
     holes_in,
+    instantiate_formula,
     invariants_ok,
     record_step,
     replace_current_hole,
     start,
+    shift_engine_formula,
     undo,
     unify_formulas,
     unify_terms,
 )
-from peano_lab.kernel.formulas import Eq
+from peano_lab.kernel.formulas import Eq, Forall
 from peano_lab.kernel.proofs import EqRefl, EqTrans
 from peano_lab.kernel.terms import Add, Succ, Var, Zero
 
@@ -152,3 +154,62 @@ def test_engine_nodes_are_distinct_from_rigid_kernel_nodes() -> None:
     assert isinstance(fresh_meta(), MetaVar)
     assert isinstance(fresh_hole(), Hole)
     assert type(fresh_meta()) is not Var
+
+
+def test_scoped_meta_rejects_eigenvariable_escape_but_accepts_outer_terms() -> None:
+    meta = fresh_meta()
+    protected = MetaVar(meta.id, 1)
+
+    assert unify_terms(protected, Var(0)) is None
+    subst = unify_terms(protected, Var(1))
+    assert subst == {meta.id: Var(0)}
+    assert apply_formula_subst(Eq(protected, Var(0)), subst) == Eq(
+        Var(1), Var(0)
+    )
+
+
+def test_formula_instantiation_tracks_meta_depth_through_nested_binders() -> None:
+    first, second = fresh_meta(), fresh_meta()
+    after_first = instantiate_formula(
+        Forall(Eq(Var(1), Var(0))), first
+    )
+    assert after_first == Forall(Eq(MetaVar(first.id, 1), Var(0)))
+
+    after_second = instantiate_formula(after_first.body, second)
+    assert after_second == Eq(first, second)
+
+
+def test_engine_shift_protects_meta_from_a_new_eigenvariable() -> None:
+    meta = fresh_meta()
+    shifted = shift_engine_formula(Eq(meta, Var(0)), 1)
+    assert shifted == Eq(MetaVar(meta.id, 1), Var(1))
+
+
+def test_meta_aliasing_cannot_indirectly_smuggle_an_eigenvariable() -> None:
+    outer, inner = fresh_meta(), fresh_meta()
+    linked = unify_terms(MetaVar(outer.id, 1), inner)
+    assert linked == {inner.id: MetaVar(outer.id, 1)}
+
+    assert unify_terms(inner, Var(0), linked) is None
+    resolved = unify_terms(inner, Var(1), linked)
+    assert resolved == {
+        inner.id: MetaVar(outer.id, 1),
+        outer.id: Var(0),
+    }
+
+
+@pytest.mark.parametrize("depth", range(4))
+@pytest.mark.parametrize("candidate_index", range(6))
+def test_scoped_meta_lowering_matches_exact_de_bruijn_levels(
+    depth: int,
+    candidate_index: int,
+) -> None:
+    meta = MetaVar(20_000_000 + depth, depth)
+    subst = unify_terms(meta, Var(candidate_index))
+    if candidate_index < depth:
+        assert subst is None
+    else:
+        assert subst == {meta.id: Var(candidate_index - depth)}
+        assert apply_formula_subst(Eq(meta, ZERO), subst) == Eq(
+            Var(candidate_index), ZERO
+        )

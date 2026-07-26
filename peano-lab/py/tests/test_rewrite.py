@@ -4,7 +4,6 @@ import pytest
 
 from peano_lab.engine.rewrite import (
     NoRewriteOccurrence,
-    RewriteUnderBinder,
     rewrite_first,
     rewrite_formula,
 )
@@ -93,12 +92,16 @@ def test_returned_motive_builds_a_kernel_checked_eqsubst_certificate() -> None:
     assert check((equation, old_formula), certificate, new_formula)
 
 
-def test_occurrence_only_below_quantifier_has_a_distinct_failure() -> None:
+def test_outer_term_rewrites_capture_safely_below_a_quantifier() -> None:
     source = Add(Var(0), ZERO)
     formula = Forall(Eq(Add(Var(1), ZERO), Var(1)))
+    replacement = Succ(Var(0))
 
-    with pytest.raises(RewriteUnderBinder, match="under quantifiers"):
-        rewrite_first(formula, source, Succ(Var(0)))
+    rewritten, motive = rewrite_first(formula, source, replacement)
+    assert rewritten == Forall(Eq(Succ(Var(1)), Var(1)))
+    assert motive == Forall(Eq(Var(1), Var(2)))
+    assert subst_formula(motive, 0, source) == formula
+    assert subst_formula(motive, 0, replacement) == rewritten
 
 
 def test_bound_variable_is_not_mistaken_for_free_source() -> None:
@@ -106,14 +109,49 @@ def test_bound_variable_is_not_mistaken_for_free_source() -> None:
         rewrite_first(Forall(Eq(Var(0), Var(0))), Var(0), ZERO)
 
 
-def test_blocked_occurrence_does_not_hide_a_later_eligible_occurrence() -> None:
+def test_occurrence_order_now_enters_an_earlier_quantifier() -> None:
     formula = And(Forall(Eq(ZERO, ZERO)), Eq(ZERO, ZERO))
 
     rewritten, motive = rewrite_first(formula, ZERO, Succ(ZERO))
 
-    assert rewritten == And(Forall(Eq(ZERO, ZERO)), Eq(Succ(ZERO), ZERO))
+    assert rewritten == And(
+        Forall(Eq(Succ(ZERO), ZERO)),
+        Eq(ZERO, ZERO),
+    )
     assert subst_formula(motive, 0, ZERO) == formula
     assert subst_formula(motive, 0, Succ(ZERO)) == rewritten
+
+
+def test_replacement_with_an_outer_variable_is_not_captured() -> None:
+    formula = Forall(Eq(ZERO, Var(0)))
+    rewritten, motive = rewrite_first(formula, ZERO, Var(0))
+
+    assert rewritten == Forall(Eq(Var(1), Var(0)))
+    assert motive == Forall(Eq(Var(1), Var(0)))
+    assert subst_formula(motive, 0, ZERO) == formula
+    assert subst_formula(motive, 0, Var(0)) == rewritten
+
+
+def test_nested_quantifiers_use_depth_two_without_moving_bound_indices() -> None:
+    formula = Forall(Forall(Eq(Add(Var(2), Var(1)), Var(0))))
+    rewritten, motive = rewrite_first(formula, Var(0), Succ(Var(0)))
+
+    assert rewritten == Forall(
+        Forall(Eq(Add(Succ(Var(2)), Var(1)), Var(0)))
+    )
+    assert subst_formula(motive, 0, Var(0)) == formula
+    assert subst_formula(motive, 0, Succ(Var(0))) == rewritten
+
+
+def test_under_binder_motive_builds_a_kernel_checked_transport() -> None:
+    source, replacement = Var(0), Succ(Var(0))
+    equation = Eq(source, replacement)
+    old_formula = Forall(Eq(Var(1), Var(0)))
+    new_formula, motive = rewrite_formula(old_formula, equation)
+    certificate = EqSubst(motive, Hyp(0), Hyp(1))
+
+    assert new_formula == Forall(Eq(Succ(Var(1)), Var(0)))
+    assert check((equation, old_formula), certificate, new_formula)
 
 
 def test_rewrite_rejects_non_rigid_sources_and_non_exact_equations() -> None:

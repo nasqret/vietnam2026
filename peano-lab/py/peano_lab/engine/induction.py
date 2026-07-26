@@ -17,6 +17,7 @@ from .state import (
     fresh_hole,
     metas_in_formula,
     replace_current_hole,
+    shift_engine_formula,
 )
 
 
@@ -159,7 +160,8 @@ def build_induction(state: ProofState, variable_name: str) -> ProofState:
 
     base_hole, step_hole = fresh_hole(), fresh_hole()
     shifted_context = tuple(
-        (name, shift_formula(formula, 1)) for name, formula in goal.context
+        (name, shift_engine_formula(formula, 1))
+        for name, formula in goal.context
     )
     base_goal = Goal(goal.context, base_target, goal.variables)
     step_goal = Goal(

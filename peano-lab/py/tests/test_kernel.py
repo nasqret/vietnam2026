@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from peano_lab.kernel.checker import axiom_formula, check
+from peano_lab.kernel.checker import axiom_formula, check, check_classical
 from peano_lab.kernel.formulas import And, Bot, Eq, Exists, Forall, Imp, Or
 from peano_lab.kernel.proofs import (
     AndElimL,
@@ -17,6 +17,7 @@ from peano_lab.kernel.proofs import (
     CongAdd,
     CongMul,
     CongS,
+    DNE,
     EqRefl,
     EqSubst,
     EqSym,
@@ -120,6 +121,33 @@ def test_intuitionistic_connective_rules() -> None:
 
     # A local cut is a target-directed application whose function is an intro.
     assert check((), ImpElim(ImpIntro(Hyp(0)), EqRefl(ZERO)), p)
+
+
+def test_dne_is_explicit_and_available_only_to_the_classical_checker() -> None:
+    proposition = Eq(ZERO, ONE)
+    negation = Imp(proposition, Bot())
+    double_negation = Imp(negation, Bot())
+    theorem = Imp(double_negation, proposition)
+    nested_use = ImpIntro(ImpElim(DNE(proposition), Hyp(0)))
+
+    assert not check((), DNE(proposition), theorem)
+    assert not check((), nested_use, theorem)
+    assert check_classical((), DNE(proposition), theorem)
+    assert check_classical((), nested_use, theorem)
+    assert check_classical((), EqRefl(ZERO), Eq(ZERO, ZERO))
+
+
+def test_classical_checker_rejects_malformed_or_subclassed_dne_nodes() -> None:
+    class EvilEq(Eq):
+        pass
+
+    class EvilDNE(DNE):
+        pass
+
+    proposition = Eq(ZERO, ONE)
+    theorem = Imp(Imp(Imp(proposition, Bot()), Bot()), proposition)
+    assert not check_classical((), DNE(EvilEq(ZERO, ONE)), theorem)
+    assert not check_classical((), EvilDNE(proposition), theorem)
 
 
 def test_quantifier_rules_and_eigenvariable_scoping() -> None:

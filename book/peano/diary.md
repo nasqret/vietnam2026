@@ -97,3 +97,60 @@ with a classical toggle) recorded in `docs/PEANO_LAB_DESIGN.md` §0.
   binders, and generated `IH`, `_before`, and `_parameter` names avoid both kinds of declaration.
   These collisions were not logical unsoundness—the kernel uses indices—but ambiguous or
   non-round-trippable proof states would violate the canonical-display law.
+
+## 2026-07-27 — M3: resolving the classical boundary before coding it
+
+- The M0 objection is real: the binding design simultaneously pinned an intuitionistic
+  `check(ctx, proof, formula)` API with no DNE certificate and required an OFF-by-default DNE
+  toggle.  An engine-only flag cannot authorize a certificate, while accepting an unlabelled or
+  unconditional classical step would make “off” unenforceable at the trusted boundary.
+- The smallest explicit amendment keeps `check` exactly intuitionistic and adds one inert
+  `DNE(proposition)` certificate plus a sibling `check_classical` entry point over the same
+  structural recursion.  `checked_final(..., classical=False)` receives that Boolean from the
+  session owner, not from tactic-controlled proof state.  Thus an injected DNE node is rejected in
+  HA mode, accepted only in the labeled PA+DNE extension, and remains visible in the artifact.
+  This is an implementation of design decision D4, not a silent change to the object logic.
+- The v1 trace record has no mode field and its field set is already binding.  Mode changes will be
+  recorded as ordinary successful `classical on`/`classical off` events with unchanged goals; a
+  replay reconstructs mode sequentially.  Adding a field would require an explicit v2 format, so
+  M3 does not mutate v1 under the table.  The future session banner reads the same owner-held mode.
+- M3 is also the first point where a witness metavariable can meet a later eigenvariable.  A plain
+  global `?t` would allow the bogus route `exists ?; intro y; refl` for formulas such as
+  `exists x. forall y. x = y`.  Engine metas therefore carry a de Bruijn protection depth: lifting
+  under a binder increments it, and unification may lower a candidate only when that candidate
+  contains no locally bound variable.  This keeps proof-wide inference useful without allowing
+  witness escape or teaching a knowingly restricted fake version of `exists ?`.
+- Rewriting below a quantifier is sound for an equation already available outside that quantifier:
+  at depth `d` it matches `shift(source, d)`, inserts `shift(replacement, d)`, and puts the motive
+  placeholder at `Var(d)`.  A PA axiom cannot be naively instantiated with the target's locally
+  bound `Var(0)` outside the binder; users must `intro x; rewrite PA3` unless a future dedicated
+  binder-local transformer is added.  Treating that local variable as outer would be capture, not
+  convenience.
+
+## 2026-07-27 — M3: connective certificates and adversarial closure
+
+- `apply` peels leading universal binders into scoped metavariables and implication binders into
+  ordinary premise goals; it never treats a successful unification as a proof. Every branch still
+  installs an explicit `ForallElim`/`ImpElim` certificate. If a vacuous universal leaves an
+  implicit term only in the certificate and in no open obligation, the engine chooses the
+  canonical closed witness `0`. This is deterministic elaboration, not a logical rule, and the
+  resulting certificate must still pass the kernel.
+- `cases` mirrors each eliminator rather than destructively editing the context. Disjunction and
+  existential elimination create branch/eigenvariable obligations directly; conjunction
+  projections and rewritten hypotheses enter through explicit local cuts. Thus context names are
+  UI conveniences while kernel hypothesis indices and eigenvariable conditions remain literal.
+- `<=`/`≤` is parser and printer sugar only: `a ≤ b` is exactly `∃k. k + a = b`; there is no trusted
+  `Le` node. The same canonical recognizer is used by rigid trace goals and theorem footers so
+  training data cannot alternate between sugared and expanded spellings.
+- The PA hint routine is deliberately observational. It has a caller-supplied check budget,
+  allocates no holes or metavariables, and suggests only a primitive command that can be replayed.
+  Failed mode changes likewise emit transactional error records; neither tracing nor hints can
+  change proof authority.
+- Adversarial review exercised 5,625 generated scoped unifications, nested binder shifting,
+  witness/case ordering, 30,000 rewrite cases, 1,000 complete rewrite certificates, 20,000 printer
+  round trips, and 10,000 hint states. It found four contract gaps, all made permanent tests:
+  proof-only vacuous instantiations needed deterministic grounding, truthy non-Booleans could
+  impersonate classical authority, rigid `≤` traces used the expanded spelling, and rejected mode
+  commands were not logged. After repair the full Peano suite has 187 passing tests, the Lambda
+  Lab regression suite remains 360 passing with 36 subtests, and the independent checker is 234
+  lines.

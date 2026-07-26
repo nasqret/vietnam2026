@@ -10,31 +10,39 @@ from __future__ import annotations
 
 from typing import Callable, Iterator
 
-from ..kernel.checker import axiom_formula, check
+from ..kernel.checker import axiom_formula, check, check_classical
 from ..kernel.formulas import And, Bot, Eq, Exists, Forall, Formula, Imp, Or
 from ..kernel.proofs import (
+    AndElimL,
+    AndElimR,
+    AndIntro,
     Axiom,
+    BotElim,
     CongAdd,
     CongMul,
     CongS,
+    DNE,
     EqRefl,
     EqSubst,
     EqSym,
     EqTrans,
+    ExistsElim,
+    ExistsIntro,
     ForallElim,
     ForallIntro,
     Hyp,
     ImpElim,
     ImpIntro,
+    OrElim,
+    OrIntroL,
+    OrIntroR,
     Proof,
 )
-from ..kernel.subst import shift_formula, subst_formula
 from ..kernel.terms import Add, Mul, ParseError, Succ, Term, Var, Zero, parse_term_in_context
 from .induction import InductionError, build_induction
 from .rewrite import NoRewriteOccurrence, RewriteError, RewriteUnderBinder, rewrite_formula
 from .state import (
     Goal,
-    Hole,
     ProofState,
     StateError,
     apply_formula_subst,
@@ -43,12 +51,15 @@ from .state import (
     final_certificate,
     fresh_hole,
     fresh_meta,
+    instantiate_formula,
     invariants_ok,
     metas_in_formula,
+    metas_in_proof,
     metas_in_term,
     proof_size,
     record_step,
     replace_current_hole,
+    shift_engine_formula,
     undo as undo_state,
     unify_formulas,
     unify_terms,
@@ -90,6 +101,24 @@ def _commit(
 ) -> ProofState:
     if subst is not None:
         after = apply_subst_everywhere(after, subst)
+    # A universal instantiation may contain an implicit term that no remaining
+    # goal can constrain (for example applying ``forall x. 0 = 0``).  Choose
+    # the canonical closed term 0 exactly when that meta has disappeared from
+    # every open obligation.  Metas shared with any goal remain genuinely
+    # flexible and proof-wide.
+    open_meta_ids: set[int] = set()
+    for goal in after.goals:
+        open_meta_ids.update(metas_in_formula(goal.target, after.subst))
+        for _, formula in goal.context:
+            open_meta_ids.update(metas_in_formula(formula, after.subst))
+    proof_meta_ids = set(metas_in_proof(after.partial, after.subst))
+    unconstrained = proof_meta_ids - open_meta_ids
+    if unconstrained:
+        completed_subst = dict(after.subst)
+        completed_subst.update(
+            {meta_id: Zero() for meta_id in sorted(unconstrained)}
+        )
+        after = apply_subst_everywhere(after, completed_subst)
     if not invariants_ok(after):
         raise TacticError("internal error: goals and certificate holes are out of sync.")
     return record_step(before, after, tactic, args)
@@ -124,45 +153,78 @@ def _surface_name(source: str, tactic: str) -> str:
     return name
 
 
-def intro(state: ProofState, args: str) -> ProofState:
-    """Introduce the outer binder of a universal goal."""
+def _used_names(goal: Goal) -> set[str]:
+    return set(goal.variables) | {name for name, _ in goal.context}
+
+
+def _fresh_visible_name(base: str, goal: Goal, *extra: str) -> str:
+    used = _used_names(goal) | set(extra)
+    if base not in used and base not in _RESERVED_TERM_NAMES:
+        return base
+    counter = 1
+    while f"{base}{counter}" in used:
+        counter += 1
+    return f"{base}{counter}"
+
+
+def intro(state: ProofState, args: str = "") -> ProofState:
+    """Introduce one implication hypothesis or universal eigenvariable."""
 
     goal = _current(state)
-    name = _surface_name(args, "intro")
+    pieces = args.split()
+    if len(pieces) > 1:
+        raise TacticError("`intro` takes at most one name.")
+    supplied_name = _surface_name(pieces[0], "intro") if pieces else None
     target = apply_formula_subst(goal.target, state.subst)
-    if type(target) is not Forall:
-        raise TacticError("`intro x` applies only to a universally quantified goal in Stage B.")
-    used = set(goal.variables) | {hyp_name for hyp_name, _ in goal.context}
-    if name in used:
+    if type(target) not in (Imp, Forall):
+        raise TacticError("`intro` needs an implication or universally quantified goal.")
+
+    name = supplied_name or _fresh_visible_name(
+        "h" if type(target) is Imp else "n", goal
+    )
+    if name in _used_names(goal):
         raise TacticError(f"the name {name!r} is already in use; choose a fresh name.")
 
     hole = fresh_hole()
-    shifted_context = tuple(
-        (hyp_name, shift_formula(formula, 1))
-        for hyp_name, formula in goal.context
-    )
-    new_goal = Goal(shifted_context, target.body, (name,) + goal.variables)
-    after = replace_current_hole(state, ForallIntro(hole), (new_goal,))
+    if type(target) is Imp:
+        replacement: Proof = ImpIntro(hole)
+        new_goal = Goal(
+            ((name, target.left),) + goal.context,
+            target.right,
+            goal.variables,
+        )
+    else:
+        replacement = ForallIntro(hole)
+        shifted_context = tuple(
+            (hyp_name, shift_engine_formula(formula, 1))
+            for hyp_name, formula in goal.context
+        )
+        new_goal = Goal(
+            shifted_context,
+            target.body,
+            (name,) + goal.variables,
+        )
+    after = replace_current_hole(state, replacement, (new_goal,))
     return _commit(state, after, "intro", args)
 
 
-def specialize(state: ProofState, args: str) -> ProofState:
+def _specialize(state: ProofState, args: str, tactic: str) -> ProofState:
     """Add one explicitly instantiated copy of a universal hypothesis."""
 
     parts = args.strip().split(maxsplit=1)
     if len(parts) != 2:
-        raise TacticError("syntax: `specialize h t`.")
+        raise TacticError(f"syntax: `{tactic} h t`.")
     hypothesis_name, term_source = parts
     goal = _current(state)
     index, formula = _hypothesis(goal, hypothesis_name)
     formula = apply_formula_subst(formula, state.subst)
     if type(formula) is not Forall:
         raise TacticError(f"hypothesis {hypothesis_name!r} is not universally quantified.")
-    term = _engine_term(goal, term_source, "specialize")
+    term = _engine_term(goal, term_source, tactic)
     if metas_in_term(term, state.subst):
-        raise TacticError("`specialize` needs a concrete term, not a metavariable.")
+        raise TacticError(f"`{tactic}` needs a concrete term, not a metavariable.")
 
-    instance = subst_formula(formula.body, 0, term)
+    instance = instantiate_formula(formula.body, term)
     derived = ForallElim(Hyp(index), term)
     hole = fresh_hole()
     renamed = list(goal.context)
@@ -174,7 +236,15 @@ def specialize(state: ProofState, args: str) -> ProofState:
     replacement = ImpElim(ImpIntro(hole), derived)
     new_goal = Goal(new_context, goal.target, goal.variables)
     after = replace_current_hole(state, replacement, (new_goal,))
-    return _commit(state, after, "specialize", args)
+    return _commit(state, after, tactic, args)
+
+
+def specialize(state: ProofState, args: str) -> ProofState:
+    return _specialize(state, args, "specialize")
+
+
+def forall_elim(state: ProofState, args: str) -> ProofState:
+    return _specialize(state, args, "forall_elim")
 
 
 def induction(state: ProofState, args: str) -> ProofState:
@@ -291,6 +361,243 @@ def assumption(state: ProofState, args: str = "") -> ProofState:
     raise TacticError("no hypothesis matches the current goal.")
 
 
+def _dne_formula(proposition: Formula) -> Formula:
+    negation = Imp(proposition, Bot())
+    return Imp(Imp(negation, Bot()), proposition)
+
+
+def _proof_source(
+    goal: Goal,
+    name: str,
+    target: Formula,
+    subst: dict[int, Term],
+    *,
+    classical: bool,
+) -> tuple[Formula, Proof]:
+    for index, (candidate, formula) in enumerate(goal.context):
+        if candidate == name:
+            return apply_formula_subst(formula, subst), Hyp(index)
+    axiom = axiom_formula(name)
+    if axiom is not None:
+        return axiom, Axiom(name)
+    if name == "DNE":
+        if not classical:
+            raise TacticError("DNE is unavailable while classical mode is off.")
+        return _dne_formula(target), DNE(target)
+    raise TacticError(f"unknown hypothesis or proof constant {name!r}.")
+
+
+def apply_(
+    state: ProofState,
+    args: str,
+    *,
+    classical: bool = False,
+) -> ProofState:
+    """Apply a hypothesis, PA axiom, or explicitly enabled DNE certificate."""
+
+    if type(classical) is not bool:
+        raise TacticError("classical mode must be a Boolean.")
+    name = args.strip()
+    if not name or any(char.isspace() for char in name):
+        raise TacticError("`apply` needs one hypothesis or proof constant.")
+    goal = _current(state)
+    target = apply_formula_subst(goal.target, state.subst)
+    formula, proof = _proof_source(
+        goal,
+        name,
+        target,
+        dict(state.subst),
+        classical=classical,
+    )
+
+    exact_subst = unify_formulas(formula, target, state.subst)
+    if exact_subst is not None:
+        after = replace_current_hole(state, proof, ())
+        return _commit(state, after, "apply", args, exact_subst)
+
+    while type(formula) is Forall:
+        term = fresh_meta()
+        formula = instantiate_formula(formula.body, term)
+        proof = ForallElim(proof, term)
+
+    premises: list[Formula] = []
+    while type(formula) is Imp:
+        premises.append(formula.left)
+        formula = formula.right
+    unified = unify_formulas(formula, target, state.subst)
+    if unified is None:
+        raise TacticError(
+            f"the result of {name!r} does not match the current goal."
+        )
+
+    holes = tuple(fresh_hole() for _ in premises)
+    replacement = proof
+    for hole in holes:
+        replacement = ImpElim(replacement, hole)
+    new_goals = tuple(
+        Goal(goal.context, premise, goal.variables) for premise in premises
+    )
+    after = replace_current_hole(state, replacement, new_goals)
+    return _commit(state, after, "apply", args, unified)
+
+
+def split(state: ProofState, args: str = "") -> ProofState:
+    _no_args("split", args)
+    goal = _current(state)
+    target = apply_formula_subst(goal.target, state.subst)
+    if type(target) is not And:
+        raise TacticError("`split` applies only to a conjunction goal.")
+    left_hole, right_hole = fresh_hole(), fresh_hole()
+    goals = (
+        Goal(goal.context, target.left, goal.variables),
+        Goal(goal.context, target.right, goal.variables),
+    )
+    after = replace_current_hole(
+        state,
+        AndIntro(left_hole, right_hole),
+        goals,
+    )
+    return _commit(state, after, "split", args)
+
+
+def left(state: ProofState, args: str = "") -> ProofState:
+    _no_args("left", args)
+    goal = _current(state)
+    target = apply_formula_subst(goal.target, state.subst)
+    if type(target) is not Or:
+        raise TacticError("`left` applies only to a disjunction goal.")
+    hole = fresh_hole()
+    after = replace_current_hole(
+        state,
+        OrIntroL(hole),
+        (Goal(goal.context, target.left, goal.variables),),
+    )
+    return _commit(state, after, "left", args)
+
+
+def right(state: ProofState, args: str = "") -> ProofState:
+    _no_args("right", args)
+    goal = _current(state)
+    target = apply_formula_subst(goal.target, state.subst)
+    if type(target) is not Or:
+        raise TacticError("`right` applies only to a disjunction goal.")
+    hole = fresh_hole()
+    after = replace_current_hole(
+        state,
+        OrIntroR(hole),
+        (Goal(goal.context, target.right, goal.variables),),
+    )
+    return _commit(state, after, "right", args)
+
+
+def cases(state: ProofState, args: str) -> ProofState:
+    name = args.strip()
+    if not name or any(char.isspace() for char in name):
+        raise TacticError("`cases` needs one hypothesis name, e.g. `cases h`.")
+    goal = _current(state)
+    index, source = _hypothesis(goal, name)
+    source = apply_formula_subst(source, state.subst)
+
+    if type(source) is Or:
+        left_name = _fresh_visible_name(f"{name}_left", goal)
+        right_name = _fresh_visible_name(f"{name}_right", goal, left_name)
+        left_hole, right_hole = fresh_hole(), fresh_hole()
+        replacement: Proof = OrElim(Hyp(index), left_hole, right_hole)
+        goals = (
+            Goal(
+                ((left_name, source.left),) + goal.context,
+                goal.target,
+                goal.variables,
+            ),
+            Goal(
+                ((right_name, source.right),) + goal.context,
+                goal.target,
+                goal.variables,
+            ),
+        )
+    elif type(source) is And:
+        left_name = _fresh_visible_name(f"{name}_left", goal)
+        right_name = _fresh_visible_name(f"{name}_right", goal, left_name)
+        hole = fresh_hole()
+        right_cut = ImpElim(
+            ImpIntro(hole),
+            AndElimR(Hyp(index + 1)),
+        )
+        replacement = ImpElim(
+            ImpIntro(right_cut),
+            AndElimL(Hyp(index)),
+        )
+        goals = (
+            Goal(
+                (
+                    (right_name, source.right),
+                    (left_name, source.left),
+                )
+                + goal.context,
+                goal.target,
+                goal.variables,
+            ),
+        )
+    elif type(source) is Exists:
+        witness_name = _fresh_visible_name("x", goal)
+        proof_name = _fresh_visible_name(
+            f"{name}_witness", goal, witness_name
+        )
+        shifted_context = tuple(
+            (hyp_name, shift_engine_formula(formula, 1))
+            for hyp_name, formula in goal.context
+        )
+        hole = fresh_hole()
+        replacement = ExistsElim(Hyp(index), hole)
+        goals = (
+            Goal(
+                ((proof_name, source.body),) + shifted_context,
+                shift_engine_formula(goal.target, 1),
+                (witness_name,) + goal.variables,
+            ),
+        )
+    elif type(source) is Bot:
+        replacement = BotElim(Hyp(index))
+        goals = ()
+    else:
+        raise TacticError(
+            f"hypothesis {name!r} is not a conjunction, disjunction, existential, or bottom."
+        )
+
+    after = replace_current_hole(state, replacement, goals)
+    return _commit(state, after, "cases", args)
+
+
+def exfalso(state: ProofState, args: str = "") -> ProofState:
+    _no_args("exfalso", args)
+    goal = _current(state)
+    if type(apply_formula_subst(goal.target, state.subst)) is Bot:
+        raise TacticError("the current goal is already bottom; `exfalso` made no progress.")
+    hole = fresh_hole()
+    after = replace_current_hole(
+        state,
+        BotElim(hole),
+        (Goal(goal.context, Bot(), goal.variables),),
+    )
+    return _commit(state, after, "exfalso", args)
+
+
+def exists_(state: ProofState, args: str) -> ProofState:
+    goal = _current(state)
+    target = apply_formula_subst(goal.target, state.subst)
+    if type(target) is not Exists:
+        raise TacticError("`exists` applies only to an existential goal.")
+    witness = _engine_term(goal, args, "exists")
+    hole = fresh_hole()
+    instance = instantiate_formula(target.body, witness)
+    after = replace_current_hole(
+        state,
+        ExistsIntro(witness, hole),
+        (Goal(goal.context, instance, goal.variables),),
+    )
+    return _commit(state, after, "exists", args)
+
+
 def _term_occurrences(term: Term) -> Iterator[Term]:
     yield term
     if type(term) is Succ:
@@ -308,7 +615,9 @@ def _formula_terms(formula: Formula) -> Iterator[Term]:
         yield from _formula_terms(formula.left)
         yield from _formula_terms(formula.right)
     elif type(formula) in (Forall, Exists):
-        return  # M1 explicitly refuses to rewrite below a term binder
+        # A proof instantiated outside this binder cannot borrow its local
+        # variable.  Users may ``intro x`` and instantiate the axiom there.
+        return
 
 
 def _match_axiom_pattern(
@@ -422,7 +731,7 @@ def _rewrite_args(args: str) -> tuple[bool, str, str | None]:
 
 def _rewrite_failure(exc: RewriteError) -> TacticError:
     if isinstance(exc, RewriteUnderBinder):
-        return TacticError("rewriting under quantifiers is deferred until M3.")
+        return TacticError("rewriting could not cross that quantifier safely.")
     if isinstance(exc, NoRewriteOccurrence):
         return TacticError("the selected side of the equation does not occur.")
     return TacticError(str(exc))
@@ -494,10 +803,128 @@ def undo(state: ProofState, args: str = "") -> ProofState:
         raise TacticError(f"{exc}.") from None
 
 
+def set_classical_mode(
+    current: bool,
+    args: str,
+    *,
+    state: ProofState | None = None,
+    trace: TraceLogger | None = None,
+) -> bool:
+    """Return the session owner's new mode and optionally trace the event.
+
+    Mode deliberately does not live in ``ProofState``: a tactic-controlled
+    state must not be able to authorize DNE at finalization.  The future UI
+    owns this Boolean beside the original theorem statement.
+    """
+
+    typed = f"classical {args}".strip()
+
+    def fail(message: str) -> None:
+        error = TacticError(message)
+        if trace is not None and state is not None:
+            trace.failure(state, 0, typed, error)
+        raise error
+
+    if type(current) is not bool:
+        fail("the current classical mode must be a Boolean.")
+    word = args.strip()
+    if word not in {"on", "off"}:
+        fail("syntax: `classical on` or `classical off`.")
+    enabled = word == "on"
+    if trace is not None:
+        if state is None:
+            fail("tracing a mode change needs the current proof state.")
+        trace.success(state, 0, typed, state)
+    return enabled
+
+
+def logic_banner(classical: bool) -> str:
+    if type(classical) is not bool:
+        raise TypeError("classical mode must be a Boolean")
+    return (
+        "Logic: PA + DNE (classical on)"
+        if classical
+        else "Logic: intuitionistic PA (classical off)"
+    )
+
+
+def hint(
+    state: ProofState,
+    *,
+    max_checks: int = 64,
+) -> tuple[str, str | None]:
+    """Suggest one deterministic, supported move without mutating the state.
+
+    ``found`` means the command is applicable, not that it completes the
+    theorem. ``none`` means no immediate primitive was found. ``limit`` is an
+    honest non-verdict when unresolved metas or the explicit scan budget stop
+    inspection.
+    """
+
+    if type(max_checks) is not int or max_checks < 1:
+        raise ValueError("hint max_checks must be a positive integer")
+    goal = state.current()
+    if goal is None:
+        return "done", None
+    target = apply_formula_subst(goal.target, state.subst)
+    formulas = [target] + [
+        apply_formula_subst(formula, state.subst)
+        for _, formula in goal.context
+    ]
+    if any(metas_in_formula(formula, state.subst) for formula in formulas):
+        return "limit", None
+
+    for name, formula in goal.context:
+        if formula == target:
+            return "found", f"exact {name}"
+    if type(target) is Eq and target.left == target.right:
+        return "found", "refl"
+    if type(target) is Imp:
+        return "found", f"intro {_fresh_visible_name('h', goal)}"
+    if type(target) is And:
+        return "found", "split"
+    if type(target) is Or:
+        return "found", "left"
+    if type(target) is Exists:
+        zero_instance = instantiate_formula(target.body, Zero())
+        if type(zero_instance) is Eq and zero_instance.left == zero_instance.right:
+            return "found", "exists 0"
+
+    checked = 0
+    for name, raw_formula in goal.context:
+        formula = apply_formula_subst(raw_formula, state.subst)
+        if type(formula) is not Eq:
+            continue
+        for reverse in (False, True):
+            checked += 1
+            if checked > max_checks:
+                return "limit", None
+            try:
+                rewrite_formula(target, formula, reverse=reverse)
+            except (RewriteError, TypeError):
+                continue
+            arrow = "<- " if reverse else ""
+            return "found", f"rewrite {arrow}{name}"
+    for name in ("PA3", "PA4", "PA5", "PA6"):
+        checked += 1
+        if checked > max_checks:
+            return "limit", None
+        try:
+            equation, _ = _axiom_equation(name, target, False)
+            rewrite_formula(target, equation)
+        except (TacticError, RewriteError, TypeError):
+            continue
+        return "found", f"rewrite {name}"
+    if type(target) is Forall:
+        return "found", f"induction {_fresh_visible_name('n', goal)}"
+    return "none", None
+
+
 def checked_final(
     state: ProofState,
     original_target: Formula,
     *,
+    classical: bool = False,
     trace: TraceLogger | None = None,
 ) -> Proof:
     """Check QED against the session owner's original target.
@@ -514,7 +941,10 @@ def checked_final(
         raise InvalidProof("the partial certificate still contains a hole or term metavariable.")
     if state.target != original_target:
         raise InvalidProof("the proof state no longer carries the session's original goal.")
-    if not check((), certificate, original_target):
+    if type(classical) is not bool:
+        raise InvalidProof("the session's classical mode is not a Boolean.")
+    checker = check_classical if classical else check
+    if not checker((), certificate, original_target):
         raise InvalidProof("the independent kernel rejected the certificate for the stated goal.")
     if trace is not None:
         trace.footer(
@@ -529,7 +959,15 @@ def checked_final(
 _TACTICS: dict[str, Tactic] = {
     "intro": intro,
     "specialize": specialize,
+    "forall_elim": forall_elim,
     "induction": induction,
+    "apply": apply_,
+    "split": split,
+    "left": left,
+    "right": right,
+    "cases": cases,
+    "exfalso": exfalso,
+    "exists": exists_,
     "refl": refl,
     "symm": symm,
     "trans": trans,
@@ -548,6 +986,7 @@ def apply_tactic(
     args: str = "",
     *,
     trace: TraceLogger | None = None,
+    classical: bool = False,
 ) -> ProofState:
     """Dispatch one tactic and wire both success and failure trace records."""
 
@@ -561,7 +1000,11 @@ def apply_tactic(
             trace.failure(state, 0, typed, error)
         raise error
     try:
-        result = function(state, args)
+        result = (
+            apply_(state, args, classical=classical)
+            if tactic == "apply"
+            else function(state, args)
+        )
     except TacticError as error:
         if trace is not None:
             trace.failure(state, 0, typed, error)
@@ -571,8 +1014,13 @@ def apply_tactic(
     return result
 
 
-def final_proof_size(state: ProofState, original_target: Formula) -> int:
-    certificate = checked_final(state, original_target)
+def final_proof_size(
+    state: ProofState,
+    original_target: Formula,
+    *,
+    classical: bool = False,
+) -> int:
+    certificate = checked_final(state, original_target, classical=classical)
     return proof_size(certificate)
 
 
@@ -583,7 +1031,15 @@ __all__ = [
     "TACTIC_NAMES",
     "intro",
     "specialize",
+    "forall_elim",
     "induction",
+    "apply_",
+    "split",
+    "left",
+    "right",
+    "cases",
+    "exfalso",
+    "exists_",
     "refl",
     "symm",
     "trans",
@@ -592,6 +1048,9 @@ __all__ = [
     "assumption",
     "rewrite",
     "undo",
+    "set_classical_mode",
+    "logic_banner",
+    "hint",
     "apply_tactic",
     "checked_final",
     "final_proof_size",

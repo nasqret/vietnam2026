@@ -78,6 +78,21 @@ def test_ascii_and_unicode_formula_aliases_parse_identically() -> None:
     assert parse_formula(ascii_formula) == parse_formula(unicode_formula)
 
 
+def test_order_is_defined_existential_sugar_not_a_kernel_constructor() -> None:
+    expected = Exists(Eq(Add(Var(0), Var(1)), Var(1)))
+    assert parse_formula("forall n. n <= n") == Forall(expected)
+    assert parse_formula("forall n. n ≤ n") == Forall(expected)
+    assert pretty_formula(Forall(expected), []) == "∀ x. x ≤ x"
+
+    open_order, names = parse_formula_with_names("a <= b")
+    assert names == ("a", "b")
+    assert open_order == Exists(Eq(Add(Var(0), Var(1)), Var(2)))
+    assert parse_formula_with_names(pretty_formula(open_order, list(names))) == (
+        open_order,
+        names,
+    )
+
+
 def test_quantifiers_resolve_bound_and_free_names_without_capture() -> None:
     formula, names = parse_formula_with_names(
         "forall x. x = y -> exists z. z = y"

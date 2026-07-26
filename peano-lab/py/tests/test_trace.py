@@ -9,8 +9,8 @@ from dataclasses import dataclass
 import pytest
 
 from peano_lab.engine.trace import TRACE_VERSION, TraceLogger, render_goal
-from peano_lab.engine.state import Goal, MetaVar
-from peano_lab.kernel.formulas import Eq, Forall
+from peano_lab.engine.state import Goal, MetaVar, start
+from peano_lab.kernel.formulas import Eq, Forall, parse_formula_with_names
 from peano_lab.kernel.terms import Add, Succ, Var, Zero
 
 
@@ -39,6 +39,26 @@ def test_goal_rendering_is_canonical_context_first_and_has_no_ansi() -> None:
     rendered = render_goal(goal)
     assert rendered == "n : ℕ, new : n = 0 ⊢ n + 0 = n"
     assert "\x1b" not in rendered
+
+
+def test_defined_order_sugar_is_identical_in_goals_and_footer() -> None:
+    target, names = parse_formula_with_names("a <= b")
+    state = start(target, names)
+    logger = TraceLogger(session_id="defined-order")
+
+    record = logger.success(state, 0, "classical off", state)
+    footer = logger.footer(
+        qed=False,
+        theorem=target,
+        proof_size=0,
+        names=state.variables,
+    )
+
+    # Free names are an index-to-name de Bruijn context, so declarations are
+    # displayed outermost first even though the formula first mentions a.
+    assert record["goals_before"] == ["b : ℕ, a : ℕ ⊢ a ≤ b"]
+    assert record["goals_after"] == record["goals_before"]
+    assert footer["theorem"] == "a ≤ b"
 
 
 def test_success_record_has_exact_v1_field_order_and_canonical_unicode() -> None:

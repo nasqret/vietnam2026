@@ -1,4 +1,4 @@
-"""One-step, directed rewriting for the M1 tactic engine.
+"""One-step, directed and capture-safe rewriting.
 
 The kernel's :class:`~peano_lab.kernel.proofs.EqSubst` rule does not store an
 occurrence path.  Instead it stores a *motive*: a formula with a distinguished
@@ -12,15 +12,17 @@ children), so the result is deterministic.  The extra motive variable is made
 room for by shifting every other free variable; ``shift_formula`` performs this
 capture-safely through any untouched quantifiers.
 
-M1 deliberately does not enter ``Forall`` or ``Exists``.  If an occurrence is
-found only below a quantifier, a distinct exception says so.  M3 can extend the
-traversal without changing the public result or its EqSubst invariant.
+Below ``d`` quantifiers an outer source is represented by ``shift(source, d)``.
+The replacement is lifted by the same amount, the motive placeholder becomes
+``Var(d)``, and untouched free variables shift at cutoff ``d``.  Bound indices
+below that cutoff never move.  This is the entire alpha-safety argument, and
+``rewrite_first`` checks both substitution identities before returning.
 """
 
 from __future__ import annotations
 
 from ..kernel.formulas import And, Bot, Eq, Exists, Forall, Formula, Imp, Or
-from ..kernel.subst import shift_formula, shift_term
+from ..kernel.subst import shift_formula, shift_term, subst_formula
 from ..kernel.terms import Add, Mul, Succ, Term, Var, Zero
 
 
@@ -33,7 +35,7 @@ class NoRewriteOccurrence(RewriteError):
 
 
 class RewriteUnderBinder(RewriteError):
-    """Every matching occurrence is below a quantifier (deferred to M3)."""
+    """Compatibility name retained from M1; M3 enters binders safely."""
 
 
 def _is_rigid_term(term: object) -> bool:
@@ -62,133 +64,110 @@ def _is_formula(formula: object) -> bool:
     return False
 
 
-def _term_contains(term: Term, sought: Term) -> bool:
-    """Search a term in the same pre-order used by rewriting."""
-
-    if term == sought:
-        return True
-    if type(term) is Succ:
-        return _term_contains(term.term, sought)
-    if type(term) in (Add, Mul):
-        return _term_contains(term.left, sought) or _term_contains(term.right, sought)
-    return False
-
-
-def _occurs_below_binder(formula: Formula, source: Term, depth: int) -> bool:
-    """Detect a free occurrence of ``source`` below ``depth`` quantifiers.
-
-    A free ``Var(0)`` from outside one binder is represented by ``Var(1)`` in
-    its body.  Comparing with ``shift_term(source, depth)`` avoids mistaking a
-    bound variable for the requested outer term.
-    """
-
-    if type(formula) is Eq:
-        sought = shift_term(source, depth)
-        return _term_contains(formula.left, sought) or _term_contains(formula.right, sought)
-    if type(formula) is Bot:
-        return False
-    if type(formula) in (Imp, And, Or):
-        return _occurs_below_binder(
-            formula.left, source, depth
-        ) or _occurs_below_binder(formula.right, source, depth)
-    if type(formula) in (Forall, Exists):
-        return _occurs_below_binder(formula.body, source, depth + 1)
-    raise TypeError("expected a rigid PA formula")
-
-
 def _rewrite_term(
-    term: Term, source: Term, replacement: Term
+    term: Term, source: Term, replacement: Term, depth: int
 ) -> tuple[Term, Term, bool]:
     """Return ``(new_term, motive_term, found)`` for one pre-order step."""
 
-    if term == source:
-        return replacement, Var(0), True
+    if term == shift_term(source, depth):
+        return shift_term(replacement, depth), Var(depth), True
 
     if type(term) is Succ:
-        new_child, motive_child, found = _rewrite_term(term.term, source, replacement)
+        new_child, motive_child, found = _rewrite_term(
+            term.term, source, replacement, depth
+        )
         if found:
             return Succ(new_child), Succ(motive_child), True
     elif type(term) in (Add, Mul):
         constructor = type(term)
-        new_left, motive_left, found = _rewrite_term(term.left, source, replacement)
+        new_left, motive_left, found = _rewrite_term(
+            term.left, source, replacement, depth
+        )
         if found:
             return (
                 constructor(new_left, term.right),
-                constructor(motive_left, shift_term(term.right, 1)),
+                constructor(motive_left, shift_term(term.right, 1, cutoff=depth)),
                 True,
             )
-        new_right, motive_right, found = _rewrite_term(term.right, source, replacement)
+        new_right, motive_right, found = _rewrite_term(
+            term.right, source, replacement, depth
+        )
         if found:
             return (
                 constructor(term.left, new_right),
-                constructor(shift_term(term.left, 1), motive_right),
+                constructor(shift_term(term.left, 1, cutoff=depth), motive_right),
                 True,
             )
 
     # This entire subtree is untouched.  Its free variables still need to move
     # past the motive's fresh index zero.
-    return term, shift_term(term, 1), False
+    return term, shift_term(term, 1, cutoff=depth), False
 
 
 def _rewrite_in_formula(
-    formula: Formula, source: Term, replacement: Term
-) -> tuple[Formula, Formula, bool, bool]:
-    """Return ``(new, motive, found, blocked_below_binder)``."""
+    formula: Formula, source: Term, replacement: Term, depth: int
+) -> tuple[Formula, Formula, bool]:
+    """Return ``(new, motive, found)`` at the current binder depth."""
 
     if type(formula) is Eq:
-        new_left, motive_left, found = _rewrite_term(formula.left, source, replacement)
+        new_left, motive_left, found = _rewrite_term(
+            formula.left, source, replacement, depth
+        )
         if found:
             return (
                 Eq(new_left, formula.right),
-                Eq(motive_left, shift_term(formula.right, 1)),
+                Eq(motive_left, shift_term(formula.right, 1, cutoff=depth)),
                 True,
-                False,
             )
-        new_right, motive_right, found = _rewrite_term(formula.right, source, replacement)
+        new_right, motive_right, found = _rewrite_term(
+            formula.right, source, replacement, depth
+        )
         if found:
             return (
                 Eq(formula.left, new_right),
-                Eq(shift_term(formula.left, 1), motive_right),
+                Eq(shift_term(formula.left, 1, cutoff=depth), motive_right),
                 True,
-                False,
             )
-        return formula, shift_formula(formula, 1), False, False
+        return formula, shift_formula(formula, 1, cutoff=depth), False
 
     if type(formula) is Bot:
-        return formula, formula, False, False
+        return formula, formula, False
 
     if type(formula) in (Imp, And, Or):
         constructor = type(formula)
-        new_left, motive_left, found, blocked_left = _rewrite_in_formula(
-            formula.left, source, replacement
+        new_left, motive_left, found = _rewrite_in_formula(
+            formula.left, source, replacement, depth
         )
         if found:
             return (
                 constructor(new_left, formula.right),
-                constructor(motive_left, shift_formula(formula.right, 1)),
+                constructor(
+                    motive_left,
+                    shift_formula(formula.right, 1, cutoff=depth),
+                ),
                 True,
-                False,
             )
-        new_right, motive_right, found, blocked_right = _rewrite_in_formula(
-            formula.right, source, replacement
+        new_right, motive_right, found = _rewrite_in_formula(
+            formula.right, source, replacement, depth
         )
         if found:
             return (
                 constructor(formula.left, new_right),
-                constructor(shift_formula(formula.left, 1), motive_right),
+                constructor(
+                    shift_formula(formula.left, 1, cutoff=depth),
+                    motive_right,
+                ),
                 True,
-                False,
             )
-        return (
-            formula,
-            shift_formula(formula, 1),
-            False,
-            blocked_left or blocked_right,
-        )
+        return formula, shift_formula(formula, 1, cutoff=depth), False
 
     if type(formula) in (Forall, Exists):
-        blocked = _occurs_below_binder(formula.body, source, 1)
-        return formula, shift_formula(formula, 1), False, blocked
+        new_body, motive_body, found = _rewrite_in_formula(
+            formula.body, source, replacement, depth + 1
+        )
+        if found:
+            return type(formula)(new_body), type(formula)(motive_body), True
+        return formula, shift_formula(formula, 1, cutoff=depth), False
 
     raise TypeError("expected a rigid PA formula")
 
@@ -203,8 +182,9 @@ def rewrite_first(
         subst_formula(motive, 0, source) == formula
         subst_formula(motive, 0, replacement) == new_formula
 
-    Both terms must be rigid kernel terms.  Quantifier bodies are intentionally
-    opaque in M1.
+    Both terms must be rigid kernel terms.  Quantifier bodies are traversed,
+    but a bound variable is never mistaken for an outer variable of the same
+    numerical index.
     """
 
     if not _is_formula(formula):
@@ -214,13 +194,15 @@ def rewrite_first(
     if not _is_rigid_term(replacement):
         raise TypeError("rewrite replacement must be a rigid PA term")
 
-    rewritten, motive, found, blocked = _rewrite_in_formula(
-        formula, source, replacement
+    rewritten, motive, found = _rewrite_in_formula(
+        formula, source, replacement, 0
     )
     if found:
+        if subst_formula(motive, 0, source) != formula:
+            raise RewriteError("internal error: rewrite motive does not recover the source.")
+        if subst_formula(motive, 0, replacement) != rewritten:
+            raise RewriteError("internal error: rewrite motive does not recover the result.")
         return rewritten, motive
-    if blocked:
-        raise RewriteUnderBinder("rewriting under quantifiers is not supported yet")
     raise NoRewriteOccurrence("rewrite source does not occur in the target formula")
 
 
