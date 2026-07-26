@@ -45,6 +45,18 @@ original formula. The browser driver limits numeral literals to `0..256` so a
 short decimal input cannot expand into an unbounded successor tree; this is a
 UI resource bound, not a restriction on the PA object language.
 
+The teaching surfaces are executable too:
+
+```text
+pa tactic induction
+kb de-bruijn-criterion
+pa tutorial add_comm
+```
+
+The first command opens a tactic card whose worked script is replayed in CI;
+the last starts an ENTER-driven lesson that cannot complete until its generated
+certificate passes the same independent QED path.
+
 Back at the repository root, run both regression suites:
 
 ```console

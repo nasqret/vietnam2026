@@ -20,6 +20,7 @@ parts:
   - caption: "Building Peano Lab"
     chapters:
       - file: peano/index
+      - file: peano/tutorials
       - file: peano/diary
   - caption: "Appendix"
     chapters:

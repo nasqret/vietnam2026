@@ -563,7 +563,7 @@ def handle(arg: str, shared: dict) -> str:
             return tactic_help()
         if sub in {"tactic", "lib"}:
             return (
-                "Tactic details arrive in the M6 encyclopedia."
+                "Use `pa tactic [name]` for the executable M6 encyclopedia."
                 if sub == "tactic"
                 else "The named theorem library arrives in M7."
             )

@@ -23,3 +23,8 @@ The working design lives in
 [`docs/PEANO_LAB_DESIGN.md`](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_LAB_DESIGN.md),
 the task board in
 [`PLAN/09_peano_lab.md`](https://github.com/nasqret/vietnam2026/blob/peano-lab/PLAN/09_peano_lab.md).
+
+The first executable chapter is live: {doc}`Checked tutorials <tutorials>` replays a premise-free
+hand proof of addition commutativity and a source-level `symm_all` tactical walkthrough. Every
+`pa>` block on that page is checked against the browser driver's real command grammar during the
+book build gate.

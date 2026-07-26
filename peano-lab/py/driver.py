@@ -1,9 +1,10 @@
 """Browser REPL driver for Peano Lab.
 
 The driver is intentionally thin.  It dispatches the ``pa`` command family,
-but a live proof session owns raw input *before* ordinary command handlers are
-considered.  Proof construction and final checking live in ``peano_lab``;
-this module only provides the browser-shaped ``run_line`` / ``banner`` API.
+but a live proof or tutorial session owns raw input *before* ordinary command
+handlers are considered.  Proof construction and final checking live in
+``peano_lab``; this module only provides the browser-shaped ``run_line`` /
+``banner`` API.
 """
 
 from __future__ import annotations
@@ -14,7 +15,6 @@ from typing import Optional
 
 from peano_lab.engine.decide import DecisionError, evaluate_closed_term
 from peano_lab.engine.rewrite import PA_SIMP_SET, SimpError, simplify_formula
-from peano_lab.engine.tactics import TACTIC_NAMES
 from peano_lab.kernel.checker import axiom_formula
 from peano_lab.kernel.formulas import Eq, pretty_formula
 from peano_lab.kernel.terms import (
@@ -22,6 +22,7 @@ from peano_lab.kernel.terms import (
     parse_term_with_names,
     pretty_term,
 )
+from peano_lab.ui import data_kb, data_tactics, tutorial
 from peano_lab.ui import prove as web_prove
 
 
@@ -69,7 +70,9 @@ def _usage() -> str:
         "Peano Lab — commands",
         "",
         "  pa prove <formula>   interactive kernel-checked proof",
-        "  pa tactic [name]     tactic-language index (full cards in M6)",
+        "  pa tactic [name]     executable tactic-language encyclopedia",
+        "  pa kb [topic]        PA/kernel knowledge cards (`kb` is an alias)",
+        "  pa tutorial [name]   guided, ENTER-driven lessons",
         "  pa lib [name]        theorem-library entry point (library in M7)",
         "  pa axioms            the six PA rule constants",
         "  pa eval <term>       evaluate a closed arithmetic term",
@@ -81,39 +84,19 @@ def _usage() -> str:
     )
 
 
-_TACTIC_SUMMARY = {
-    "intro": "introduce an implication hypothesis or universal variable",
-    "apply": "match a hypothesis, PA axiom, or enabled DNE against the goal",
-    "exact": "close with a named hypothesis",
-    "assumption": "close with the first matching hypothesis",
-    "split": "turn a conjunction into its two component goals",
-    "left": "prove the left side of a disjunction",
-    "right": "prove the right side of a disjunction",
-    "cases": "eliminate a structured hypothesis",
-    "exfalso": "replace the target by false",
-    "exists": "supply a witness (or `?` for a scoped metavariable)",
-    "specialize": "instantiate a universal hypothesis",
-    "forall_elim": "alias of specialize",
-    "induction": "make base and successor-step goals",
-    "refl": "close a reflexive equation",
-    "symm": "reverse an equality goal",
-    "trans": "insert an equality midpoint",
-    "congr": "reduce equality of constructors to their arguments",
-    "rewrite": "transport through one equality occurrence",
-    "simp": "ordered certified rewriting with PA3–PA6",
-    "undo": "restore the exact previous proof state",
-}
-
-
 class LabSession:
-    """One browser tab's command history and one possible proof owner."""
+    """One browser tab's command history and one possible interactive owner."""
 
     def __init__(self) -> None:
         self.history: list[str] = []
         self.webstate: dict = {}
 
     def _session_owner(self) -> str | None:
-        return "prove" if web_prove.is_active(self.webstate) else None
+        if web_prove.is_active(self.webstate):
+            return "prove"
+        if tutorial.is_active(self.webstate):
+            return "tutorial"
+        return None
 
     def run(self, line: str) -> str:
         if not isinstance(line, str):
@@ -122,6 +105,8 @@ class LabSession:
         if not line:
             if self._session_owner() == "prove":
                 return _browser_safe(web_prove.handle("", self.webstate))
+            if self._session_owner() == "tutorial":
+                return _browser_safe(tutorial.handle("", self.webstate))
             return ""
         if len(line) > MAX_INPUT:
             return f"Input is too long (max {MAX_INPUT} characters)."
@@ -137,6 +122,8 @@ class LabSession:
             # driver lowercases or dispatches any ordinary command name.
             if self._session_owner() == "prove":
                 return _browser_safe(web_prove.handle(line, self.webstate))
+            if self._session_owner() == "tutorial":
+                return _browser_safe(tutorial.handle(line, self.webstate))
 
             pieces = line.split(maxsplit=1)
             command = pieces[0].lower()
@@ -158,11 +145,23 @@ class LabSession:
         topic = args.strip().lower()
         if topic in {"pa", "prove"}:
             return web_prove.usage() if topic == "prove" else _usage()
+        if topic == "tactic":
+            return data_tactics.render_index()
+        if topic == "kb":
+            return self.pa_kb("help")
+        if topic == "tutorial":
+            return tutorial.handle("help", self.webstate)
         if topic:
             return f"No help topic {args.strip()!r}. Type `help` or `pa help`."
         return _usage()
 
     cmd_commands = cmd_help
+
+    def cmd_kb(self, args: str) -> str:
+        return self.pa_kb(args)
+
+    def cmd_tutorial(self, args: str) -> str:
+        return self.pa_tutorial(args)
 
     def cmd_about(self, args: str) -> str:
         del args
@@ -176,7 +175,7 @@ class LabSession:
 
     def cmd_pa(self, args: str) -> str:
         args = args.strip()
-        if not args or args == "help":
+        if not args or args.lower() == "help":
             return _usage()
         pieces = args.split(maxsplit=1)
         subcommand = pieces[0].lower()
@@ -192,18 +191,34 @@ class LabSession:
     def pa_tactic(self, args: str) -> str:
         name = args.strip()
         if not name:
-            operational = ", ".join(TACTIC_NAMES)
+            return data_tactics.render_index()
+        return data_tactics.render_card(name)
+
+    def pa_kb(self, args: str) -> str:
+        request = args.strip()
+        folded = request.casefold()
+        if not request or folded in {"list", "ls"}:
+            return data_kb.render_index()
+        if folded in {"help", "?"}:
             return _lines(
-                "Operational tactics",
-                f"  {operational}",
-                "Tacticals: ;, <|>, repeat, first [...], all_goals, focus.",
-                "Automation: auto [depth]. Full teaching cards arrive in M6.",
+                "Peano Lab knowledge base",
+                "  kb                       list cards",
+                "  kb <slug>                open one card",
+                "  kb search <words>         deterministic full-text search",
+                "  kb list                  list cards (`pa kb ...` also works)",
             )
-        if name in _TACTIC_SUMMARY:
-            return _lines(name, f"  {_TACTIC_SUMMARY[name]}")
-        if name in {"auto", "repeat", "first", "all_goals", "focus", ";", "<|>"}:
-            return _lines(name, "  an M4 automation/tactical command; type `pa prove tactics` for syntax.")
-        return f"No tactic named {name!r}. Type `pa tactic`."
+        pieces = request.split(maxsplit=1)
+        if pieces[0].casefold() == "search":
+            if len(pieces) == 1:
+                return "Usage: kb search <words>"
+            return data_kb.render_index(data_kb.search_cards(pieces[1]))
+        card = data_kb.get_card(request)
+        if card is None:
+            return f"No knowledge-base card {request!r}. Type `kb` or `kb search <words>`."
+        return data_kb.render_card(card)
+
+    def pa_tutorial(self, args: str) -> str:
+        return tutorial.handle(args, self.webstate)
 
     def pa_lib(self, args: str) -> str:
         name = args.strip()

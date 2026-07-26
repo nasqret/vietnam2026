@@ -102,13 +102,13 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   tests still green (zero regressions in the shared repo).
 
 ### M6 — Content: KB, tactic encyclopedia, tutorials
-- [ ] `ui/data_tactics.py`: a card per tactic AND per tactical — syntax, what it does to the
+- [x] `ui/data_tactics.py`: a card per tactic AND per tactical — syntax, what it does to the
       goal, what it does to the certificate, worked example, common errors.
-- [ ] `ui/data_kb.py`: PA axioms, induction-as-schema, de Bruijn & capture, LCF vs proof terms,
+- [x] `ui/data_kb.py`: PA axioms, induction-as-schema, de Bruijn & capture, LCF vs proof terms,
       De Bruijn criterion, simp termination, Gödel/limits card, Heyting vs classical PA.
-- [ ] Two tutorials min.: "prove add_comm by hand" (gated, ENTER-driven) and "build your own
+- [x] Two tutorials min.: "prove add_comm by hand" (gated, ENTER-driven) and "build your own
       tactic" (walks through adding a toy `symm_all` tactical to the source).
-- [ ] Extend `scripts/verify_book_commands.py` to replay `pa` deep links + session blocks.
+- [x] Extend `scripts/verify_book_commands.py` to replay `pa` deep links + session blocks.
 - **Acceptance:** book gate green over the new content; tutorials walk ENTER-only to completion.
 
 ### M7 — The theorem library + ladder regression

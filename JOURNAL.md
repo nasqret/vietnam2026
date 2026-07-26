@@ -350,3 +350,25 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   passed`; checker `234` lines; byte-compilation, shell syntax, deploy dry runs, hashes, and diff
   checks clean. The in-app visual browser was unavailable, so DOM/keyboard visual interaction is
   recorded as a manual release check rather than claimed as completed.
+
+## 2026-07-27 (branch peano-lab) — Peano Lab M6: executable curriculum
+
+- Added 28 immutable tactic cards: every 20 operational primitives, all six tacticals, `auto`, and
+  read-only `hint`. Each card separates goal-state effect from certificate effect and includes a
+  worked script plus common failures. CI replays all 28 scripts from a fresh session through checked
+  QED, so the encyclopedia cannot drift into plausible but invalid prose.
+- Added 13 deterministic KB cards: PA1–PA6, induction as a schema, de Bruijn indices/capture, LCF
+  versus explicit proof terms, the De Bruijn criterion, simplifier termination, Gödel limits, and
+  HA versus classical PA. `kb`, `pa kb`, lookup, accent-insensitive search, and terminal-safe
+  rendering share the same frozen registry.
+- Added two ENTER-driven tutorials. `add_comm` runs a genuine premise-free 12-command nested-
+  induction proof with no `auto` or imported lemma; `symm_all` follows a toy tactical through
+  semantic composition, grammar, and tests, then executes the equivalent `all_goals symm` specimen.
+  Tutorial proof commands use a private nested proof owner, avoiding router deadlock, and completion
+  requires the production QED path to close after independent kernel checking.
+- Extended the book gate with collision-free dual driver loading, URL/path-aware Peano deep-link
+  routing, and `pa>` session blocks while retaining `λ>` behavior. Broken tactics and failed QEDs
+  are negative fixtures. The built-book gate checked 17 files, 172 links, and 6 blocks/33 commands
+  (168 Lambda links and 5 Lambda commands; 4 Peano links and 28 Peano commands); all replayed clean.
+  Jupyter Book built all 17 source pages successfully. Verification after final audit: Peano
+  `373 passed`; Lambda Lab `360 passed, 36 subtests passed`; checker unchanged at `234` lines.

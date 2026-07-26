@@ -75,7 +75,11 @@
   adds the self-hosted worker page, single-owner command router, deterministic goal/context/partial-
   certificate panels, and safe production/staging build targets. The owner retains the original
   theorem and classical authority outside `ProofState`; QED still passes only through independent
-  finalization. Browser and JSONL text escape invisible controls and Unicode line separators.
+  finalization. Browser and JSONL text escape invisible controls and Unicode line separators. M6
+  adds 28 replay-tested tactic/tactical cards, 13 immutable PA/kernel knowledge cards, and two
+  ENTER-driven tutorials whose frozen proof commands run in isolated nested proof sessions and may
+  complete only after checked QED. The book gate now routes `/peano-lab/?cmd=` links and `pa>`
+  blocks to the Peano driver while retaining the Lambda gate unchanged.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -111,4 +115,4 @@
 - Build/deploy strategy chosen: **go live incrementally** (public GitHub + faculty URLs as pieces land).
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
-- Peano Lab milestones M0–M5 are green on `peano-lab`; M6 curriculum content is next.
+- Peano Lab milestones M0–M6 are green on `peano-lab`; M7's checked theorem library is next.

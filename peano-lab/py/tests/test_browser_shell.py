@@ -46,7 +46,7 @@ def test_all_runtime_assets_are_self_hosted() -> None:
     assert "unpkg.com" not in INDEX + WORKER
 
 
-def test_worker_mounts_the_complete_m5_python_surface() -> None:
+def test_worker_mounts_the_complete_python_surface() -> None:
     listed = set(re.findall(r'"(py/[^"]+\.py)"', WORKER))
     package_files = {
         path.relative_to(LAB).as_posix()
@@ -68,6 +68,8 @@ def test_shell_exposes_accessible_proof_controls_and_ladder_shortcuts() -> None:
     for command in (
         "pa axioms",
         "pa tactic induction",
+        "pa kb de-bruijn-criterion",
+        "pa tutorial add_comm",
         "pa prove forall n. 0 + n = n",
         "pa prove forall n m. S(n) + m = S(n + m)",
         "pa prove forall n m. n + m = m + n",

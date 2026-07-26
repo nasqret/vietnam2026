@@ -50,6 +50,8 @@
         <button class="qbtn" type="button" data-cmd="pa help" disabled>pa help</button>
         <button class="qbtn" type="button" data-cmd="pa axioms" disabled>pa axioms</button>
         <button class="qbtn" type="button" data-cmd="pa tactic induction" disabled>tactic induction</button>
+        <button class="qbtn" type="button" data-cmd="pa kb de-bruijn-criterion" disabled>KB: trusted kernel</button>
+        <button class="qbtn" type="button" data-cmd="pa tutorial add_comm" disabled>tutorial add_comm</button>
         <button class="qbtn" type="button" data-cmd="pa eval 2 + 3" disabled>eval 2 + 3</button>
         <button class="qbtn" type="button" data-cmd="pa simp S(S(0)) + 0" disabled>simp 2 + 0</button>
       </div>
@@ -71,7 +73,7 @@
   <script>
   (function(){
     "use strict";
-    const BUILD="2026-07-27a";
+    const BUILD="2026-07-27b";
     const MAX_INPUT=4000;
     const PROMPT="\x1b[96mpa>\x1b[0m ";
     const HISTORY_KEY="peanoLabHistory";

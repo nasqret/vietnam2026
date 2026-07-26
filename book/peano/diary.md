@@ -252,3 +252,37 @@ with a classical toggle) recorded in `docs/PEANO_LAB_DESIGN.md` §0.
   Escaping the `Zl`/`Zp` categories in both the trace and browser boundaries preserves the v1 law
   that one JSON object is one physical line. M5 closes at 312 Peano tests, 360 Lambda tests plus 36
   subtests, and an unchanged 234-line trusted checker.
+
+## 2026-07-27 — M6: prose that must execute
+
+- A tactic encyclopedia is dangerous if its examples merely look convincing. The registry therefore
+  has one card for every real primitive and tactical, and every example is a complete script replayed
+  in a fresh `LabSession` through checked QED. Goal effect and certificate effect are separate fields:
+  `simp`, for example, may finish a normal equality with explicit `CongS`/`CongAdd`/`CongMul`, not
+  only `Refl` or a hypothesis. An independent content audit caught and corrected that distinction.
+- KB cards are immutable UI data with no route into the kernel. They state the six rule constants
+  exactly, distinguish de Bruijn indices from the De Bruijn criterion, and say what checking cannot
+  establish: bounded-search failure is no verdict, derivability is not standard-model truth, and a
+  small checker is not a proof of its own correctness or of PA's consistency.
+- The tutorial state machine owns raw lines, but its frozen proof commands must not be sent back
+  through that same owner. Each chapter therefore keeps a private nested proof-session dictionary
+  and calls the production `ui.prove` path directly. ENTER advances only after a command succeeds;
+  failed commands remain on the exact step, and a QED-gated chapter cannot complete until the nested
+  session has closed through `checked_final`.
+- The first draft of the `add_comm` lesson proved an implication from two earlier ladder rungs. That
+  was honest but did not meet “prove add_comm by hand.” Replaying `auto`'s winning trace exposed a
+  clearer premise-free nested-induction script; the tutorial now executes those primitive/simp steps
+  without calling `auto` and checks the actual theorem `∀n m. n + m = m + n` from an empty context.
+- The existing book gate had two top-level modules both named `driver`. They are loaded under distinct
+  aliases, then links route by `/peano-lab/` path or `pa` command and fenced blocks route by their
+  `λ>`/`pa>` prompt. Failure detection is line-oriented so explanatory cards may discuss errors while
+  actual tactic errors and rejected QEDs still fail the build. Both source-fallback and built-HTML
+  extraction are tested. The page BUILD tag moved to `2026-07-27b` so cached M5 workers cannot omit
+  the four new UI modules.
+- Browser drivers deliberately catch unexpected Python exceptions and print a one-line class name,
+  so searching only for a traceback let a crashed command pass the first dual-driver gate. The gate
+  now recognizes line-anchored `*Error:`/`*Exception:` results for both labs while a card may still
+  discuss `ValueError:` inside a sentence. The exact staged 25-file worker payload was finally loaded
+  under pinned Pyodide; it rendered both registries and completed the ENTER-only `add_comm` tutorial
+  through checked QED. M6 closes at 373 Peano tests, 360 Lambda tests plus 36 subtests, a warning-free
+  17-page Jupyter Book build, and an unchanged 234-line trusted checker.
