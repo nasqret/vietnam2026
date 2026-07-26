@@ -24,19 +24,19 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
 ## Milestones
 
 ### M0 — Kernel: terms, formulas, substitution, checker
-- [ ] `kernel/terms.py` + `kernel/formulas.py`: AST (de Bruijn in kernel, named surface),
+- [x] `kernel/terms.py` + `kernel/formulas.py`: AST (de Bruijn in kernel, named surface),
       canonical printer, parser for the surface syntax (`0, S, +, ·/*, =, ->, /\, \/, ~, forall,
       exists`, numerals as sugar; ASCII + Unicode aliases).
-- [ ] `kernel/subst.py`: shift/substitute for terms and formulas, capture-proof, with the
+- [x] `kernel/subst.py`: shift/substitute for terms and formulas, capture-proof, with the
       counterexamples that break naive substitution as tests.
-- [ ] `kernel/proofs.py`: proof-term constructors — one per ND rule + PA axioms + IND schema +
+- [x] `kernel/proofs.py`: proof-term constructors — one per ND rule + PA axioms + IND schema +
       equality rules (design §1).
-- [ ] `kernel/checker.py`: `check(ctx, proof, formula) -> bool`, structural recursion, ≤ ~300
+- [x] `kernel/checker.py`: `check(ctx, proof, formula) -> bool`, structural recursion, ≤ ~300
       lines, zero imports outside `kernel/`.
-- [ ] `tests/test_kernel.py`: round-trip parse/print, substitution/capture suite, hand-built
+- [x] `tests/test_kernel.py`: round-trip parse/print, substitution/capture suite, hand-built
       certificates for tiny theorems (`0 = 0`, `S 0 + 0 = S 0` via PA3) checked GREEN, and
       hand-built *wrong* certificates checked RED.
-- [ ] Import-hygiene test: kernel imports nothing from engine/ui.
+- [x] Import-hygiene test: kernel imports nothing from engine/ui.
 - **Acceptance:** a hand-written certificate for `∀x. x + 0 = x` (one IND instance) validates;
   mutated variants of it all fail.
 

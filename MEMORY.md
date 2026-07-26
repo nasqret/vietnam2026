@@ -54,6 +54,11 @@
   served from the faculty server via `lab-lambda/vendor/` (`scripts/fetch_vendor.sh`), zero CDN.
   `/lab-lambda-next/` = staging. Desktop-only features (lake/lean verify, openai judge) degrade to
   notices; `lean` links out to Live Lean.
+- **Peano Lab = proof certificates + an independent kernel checker** on branch `peano-lab`:
+  tactics are untrusted, every QED is rechecked against the original goal, tactic failures are
+  transactional, and the kernel may not import the engine/UI. M0 landed a 196-line structural
+  checker, de Bruijn syntax/substitution, all ND/equality/PA/IND certificate forms, and adversarial
+  mutation tests. The active implementation checkout is `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
   Tarski–Grothendieck set theory. The same statements are proved in all four to *show* the foundations.
 - **Local tooling present:** Lean/`elan`/`lake` ✓ (proofs verifiable here), `jupyter-book` ✓, `gh` (as
@@ -87,3 +92,5 @@
 - Build/deploy strategy chosen: **go live incrementally** (public GitHub + faculty URLs as pieces land).
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
+- Peano Lab milestone M0 is green on `peano-lab`; M1 (immutable engine state, equational tactics,
+  checked finalization, and v1 JSONL traces) is next.

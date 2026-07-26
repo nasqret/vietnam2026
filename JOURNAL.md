@@ -228,3 +228,17 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   acceptance criteria, house rules for the implementing model), 18 API-pinning module stubs under
   `peano-lab/py/peano_lab/`, the "Building Peano Lab" book part stub + implementation diary, and
   the landing-page card (in development). Handing implementation to Codex from M0.
+
+## 2026-07-27 (branch peano-lab) — Peano Lab M0: the trusted kernel
+
+- Implemented frozen de Bruijn term/formula ASTs, ASCII+Unicode surface parsing, numeral sugar,
+  deterministic canonical printing, capture-proof shift/substitution, inert proof certificates for
+  the intuitionistic ND/equality/PA/IND rules, and a 196-line independent structural checker with no
+  engine/UI imports.
+- The acceptance certificate intentionally proves `forall x. x + 0 = x` through an IND instance;
+  mutated motive/base/step/target/axiom/hypothesis variants are rejected. Further tests cover every
+  rule family, eigenvariable escape, capture under quantifiers, malformed certificates, and all six
+  exact PA axiom types.
+- Adversarial review found and closed a Python subclass/equality forgery: the trusted checker now
+  accepts exact kernel constructors only. Verification: Peano `42 passed`; existing Lambda Lab
+  `360 passed, 36 subtests passed`; import hygiene, byte-compilation, and diff checks clean.
