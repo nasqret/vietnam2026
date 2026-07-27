@@ -282,7 +282,7 @@ def test_abort_emits_a_false_footer_before_discarding_the_owner() -> None:
 
 def test_inactive_tactics_and_nested_proof_whitespace_follow_audit_grammar() -> None:
     session = driver.LabSession()
-    for word in ("intro", "refl", "simp", "undo"):
+    for word in ("intro", "refl", "simp", "norm_num", "undo"):
         assert "No proof is in progress" in session.run(f"pa prove {word}")
 
     session.run("pa prove 0 = 0")

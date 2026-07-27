@@ -15,4 +15,5 @@ double-negation elimination is explicit and checked only in the labeled classica
 
 ## Related
 
-[[peano-lab-moc|Peano Lab MOC]] · [[natural-deduction]] · [[tactic-mode]] · [[substitution]]
+[[peano-lab-moc|Peano Lab MOC]] · [[natural-deduction]] · [[tactic-mode]] ·
+[[checked-numerical-normalization]] · [[substitution]]

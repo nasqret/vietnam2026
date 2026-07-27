@@ -1,4 +1,4 @@
-"""Integrity and leakage boundary for the committed M9 corpus release."""
+"""Integrity and leakage boundary for the M13-refreshed corpus release."""
 
 from __future__ import annotations
 
@@ -56,6 +56,7 @@ def test_release_metadata_counts_hashes_and_source_provenance() -> None:
 
     assert manifest["format"] == "peano-lab-trace-generation-manifest"
     assert manifest["version"] == manifest["trace_version"] == 1
+    assert manifest["generator_version"] == 2
     assert len(manifest["run_fingerprint"]) == 64
     assert manifest["config"] == {
         "auto_depth": 5,
@@ -63,6 +64,7 @@ def test_release_metadata_counts_hashes_and_source_provenance() -> None:
         "commuted": 96,
         "ladder_auto": False,
         "ladder_scripts": False,
+        "numeric": 96,
         "renamed": 1500,
         "seed": 0,
     }
@@ -71,17 +73,18 @@ def test_release_metadata_counts_hashes_and_source_provenance() -> None:
         "version": "3.10.0",
     }
     assert manifest["counts"] == {
-        "controlled_failure_records": 1596,
-        "failure_records": 1596,
-        "footer_records": 1596,
-        "kernel_checked_sessions": 1596,
-        "sessions": 1596,
+        "controlled_failure_records": 1692,
+        "failure_records": 1692,
+        "footer_records": 1692,
+        "kernel_checked_sessions": 1692,
+        "sessions": 1692,
         "sessions_by_kind": {
             "variant_commuted": 96,
+            "variant_numeric": 96,
             "variant_renamed": 1500,
         },
-        "sessions_by_result": {"qed": 1596},
-        "transition_records": 13152,
+        "sessions_by_result": {"qed": 1692},
+        "transition_records": 13344,
     }
     assert all(
         session["kernel_checked"] is True and session["result"] == "qed"
@@ -95,6 +98,7 @@ def test_release_metadata_counts_hashes_and_source_provenance() -> None:
     )
     assert {session["kind"] for session in manifest["sessions"]} == {
         "variant_commuted",
+        "variant_numeric",
         "variant_renamed",
     }
 
@@ -108,15 +112,36 @@ def test_release_metadata_counts_hashes_and_source_provenance() -> None:
         "sha256": tree_sha256,
     }
 
-    assert stats["source"]["sessions"] == 1596
-    assert stats["source"]["transitions"] == 13152
-    assert stats["deduplication"]["unique_transitions"] == 13152
+    assert stats["source"]["sessions"] == 1692
+    assert stats["source"]["transitions"] == 13344
+    assert stats["deduplication"]["unique_transitions"] == 13344
     assert stats["deduplication"]["duplicates_removed"] == 0
-    assert stats["splits"]["train"]["records"] == 12540
-    assert stats["splits"]["val"]["records"] == 612
+    assert stats["splits"]["train"] == {
+        "sessions": 1683,
+        "records": 13326,
+        "sha256": "2aab16c23d5795989df63ee51575eda8b089fd14bd28a81bb78b554c4b92f694",
+    }
+    assert stats["splits"]["val"] == {
+        "sessions": 9,
+        "records": 18,
+        "sha256": "c7cb5ec6720c666367b5573d11972465105d0f58867c8216729b421bde515a26",
+    }
+    assert stats["theorem_coverage"]["source_count"] == 99
+    assert stats["theorem_coverage"]["train_count"] == 90
+    assert stats["theorem_coverage"]["val_count"] == 9
+    assert all(
+        formula.startswith("∀ x. (")
+        for formula in stats["theorem_coverage"]["val"]
+    )
     assert stats["outcomes"]["total"] >= 10_000
-    assert stats["outcomes"]["error"] == 1596
-    assert stats["outcomes"]["ok"] == 11556
+    assert stats["outcomes"] == {
+        "ok": 11652,
+        "error": 1692,
+        "total": 13344,
+        "failure_ratio": 0.12679856115107913,
+    }
+    assert stats["tactic_distribution"]["norm_num now"] == 96
+    assert stats["tactic_distribution"]["norm_num"] == 96
     for split in ("train", "val"):
         assert _sha256(CORPUS / f"{split}.jsonl") == stats["splits"][split]["sha256"]
     for artifact in (
@@ -137,6 +162,7 @@ def test_release_rows_keep_v1_schema_are_unique_and_omit_heldout_goals() -> None
     }
     semantic: set[str] = set()
     counts = {"train": 0, "val": 0}
+    numerical = {"norm_num now": 0, "norm_num": 0}
 
     for split in ("train", "val"):
         with (CORPUS / f"{split}.jsonl").open(encoding="utf-8") as stream:
@@ -153,6 +179,13 @@ def test_release_rows_keep_v1_schema_are_unique_and_omit_heldout_goals() -> None
                     assert row["error"] is None
                 assert heldout.isdisjoint(row["goals_before"])
                 assert heldout.isdisjoint(row["goals_after"])
+                if row["tactic"] in numerical:
+                    numerical[row["tactic"]] += 1
+                if row["tactic"] == "norm_num now":
+                    assert row["status"] == "error"
+                    assert row["error"] == "`norm_num` takes no arguments."
+                if row["tactic"] == "norm_num":
+                    assert row["status"] == "ok"
 
                 identity = json.dumps(
                     [row[field] for field in STEP_FIELDS if field not in {"session", "step"}],
@@ -162,5 +195,6 @@ def test_release_rows_keep_v1_schema_are_unique_and_omit_heldout_goals() -> None
                 assert identity not in semantic
                 semantic.add(identity)
 
-    assert counts == {"train": 12540, "val": 612}
-    assert len(semantic) == 13152
+    assert counts == {"train": 13326, "val": 18}
+    assert numerical == {"norm_num now": 96, "norm_num": 96}
+    assert len(semantic) == 13344

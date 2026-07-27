@@ -448,6 +448,26 @@ TACTIC_CARDS = (
         ),
     ),
     TacticCard(
+        "norm_num",
+        "automation",
+        "norm_num",
+        "Normalize closed arithmetic inside an equality with checked certificates.",
+        "Replaces maximal variable-free subterms by canonical numerals in a fixed "
+        "left-to-right order. It closes the goal when the normalized sides coincide; "
+        "otherwise one normalized equality goal remains.",
+        "Checks a PA3-PA6 proof for every calculation and lifts those proofs through "
+        "term congruence. The equality bridge is checked from either the empty context "
+        "or exactly one normalized residual assumption.",
+        "forall n. n + (2 * 3) = n + 6",
+        ("intro n", "norm_num"),
+        (
+            "After optional leading forall binders, the goal is not an equality or contains an unresolved term metavariable.",
+            "Norm_num takes no arguments and never mines hypotheses for arithmetic facts.",
+            "A false closed equation, non-closing no-progress request, or an explicit input, value, "
+            "work, proof, or time limit stops transactionally.",
+        ),
+    ),
+    TacticCard(
         "ring",
         "automation",
         "ring",

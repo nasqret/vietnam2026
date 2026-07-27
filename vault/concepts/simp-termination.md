@@ -19,5 +19,6 @@ procedure for every theorem of Peano arithmetic.
 ## Related
 
 - [[theorem-ladder]]
+- [[checked-numerical-normalization]]
 - [[tactical]]
 - [[peano-lab]]

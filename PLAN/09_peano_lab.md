@@ -213,14 +213,26 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   lines. Direct Pyodide timing remains a deployment check because no in-app browser was available.
 
 ### M13 — Basic arithmetic teaching surface
-- [ ] Add bounded, certificate-producing `norm_num` for closed numerical subterms and equations.
-- [ ] Add arithmetic-aware hints, tactic cards, tutorial, book chapter, vault concepts, deterministic
+- [x] Add bounded, certificate-producing `norm_num` for closed numerical subterms and equations.
+- [x] Add arithmetic-aware hints, tactic cards, tutorial, book chapter, vault concepts, deterministic
       traces, and corpus/evaluator coverage.
-- [ ] Document the boundary: polynomial identities and bounded numerals are supported; general PA
+- [x] Document the boundary: polynomial identities and bounded numerals are supported; general PA
       and nonlinear hypothesis solving are not decided. A Presburger `omega` belongs to a later plan.
 - **Acceptance:** browser examples remain responsive under explicit limits; all documentation
   commands replay; corpus provenance is regenerated; Peano, Lambda, book, vault, and staging gates
   are green.
+- **Verified:** closed equations and maximal closed numerical islands under open terms or at most 64
+  leading universals produce checked PA3--PA6/congruence certificates; false equations, malformed
+  states, unresolved metas, no-progress requests, forged proof leaves, and all structural/work/time/
+  live-proof limits fail transactionally. Pure `hint` mirrors the tactic's exact projected commit
+  without allocating a hole. Peano `641 passed`; Lambda `360 passed, 36 subtests passed`; the
+  warning-as-error 25-page book and all 193 links/23 blocks/125 commands are green; vault 56
+  notes/271 links/0 unresolved; the generator-v2 release reproducibly contains 13,344 unique v1
+  transitions from 1,692 checked sessions (13,326 train / 18 pipeline-validation); the all-ladder
+  smoke exported 13,631 unique rows; evaluator v2 ran 32 kernel-judged attempts; local staging and
+  vendor hashes are green; checker unchanged at 234 lines. Browser-shell tests and staged assets pin
+  the worker/Stop path and explicit limits. No in-app browser instance was available for a direct
+  Pyodide interaction, so that limitation is recorded rather than reported as a measured run.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, performance tuning beyond
@@ -228,5 +240,6 @@ Dependent types, definitional reduction, elaboration, typeclasses, performance t
 
 ## Working agreement
 Work happens on this branch (`peano-lab`); merge to `main` at milestone boundaries only, with
-the full existing suite green. Deploy `/peano-lab-next/` (staging) freely from M5 on; promote
-to `/peano-lab/` only after M6. Journal entries in `JOURNAL.md` at each milestone.
+the full existing suite green. Deploy `/peano-lab-next/` only from a green current milestone;
+promote to `/peano-lab/` only with the same gates and the milestone owner's authority. Journal
+entries belong in `JOURNAL.md` at each milestone; merging to `main` remains the owner's decision.

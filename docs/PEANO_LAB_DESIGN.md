@@ -26,7 +26,7 @@ drown. Instead the logic grows in fragments, each unlocking a new *kind* of tact
 | A | Quantifier-free equations over 0, S, +, · | `refl`/`symm`/`trans`/`cong`, `rewrite` |
 | B | + structural induction (schema over open formulas) | `induction n` — the star of the show |
 | C | + ∀/∃, →, ∧, ∨, ⊥, ¬ (:= → ⊥) | `intro`/`apply` (from prove), `exists_intro`, `forall_elim` |
-| D | + automation | tacticals, `simp`-lite, `decide` for closed formulas, `auto` |
+| D | + automation | tacticals, `simp`-lite, bounded `norm_num`/`decide`, `auto` |
 
 **D2 — Proof terms + an independent checker, not LCF theorem values.** There are two classic
 architectures: LCF-style (a `Theorem` abstract type only the kernel can construct — Isabelle/HOL)
@@ -113,6 +113,9 @@ chapter narrates it (LCF's great idea, surviving into Lean's `<;>` and `try`).
 **Automation (Stage D):**
 - `simp` — an ordered rewrite engine driven by a small, explicit simp-set (PA3–PA6 oriented
   left→right + proved lemmas the user tags). Termination by a measure, documented.
+- `norm_num` — bounded, certificate-producing normalization of closed numerical subterms in an
+  equality, optionally beneath leading universal binders. Computed values choose PA3–PA6 proofs;
+  they are never accepted as evidence.
 - `decide` — closed-formula evaluation (compute both sides of a closed equation; decide closed
   quantified statements only up to a bound with an honest "bounded check" label).
 - `auto [depth]` — backtracking search over the primitive tactics + assumption + simp. This is
@@ -134,8 +137,29 @@ Imported and live partial certificates have explicit node/depth budgets. Exceedi
 an honest transactional `TacticLimit`; QED also translates host recursion exhaustion into a typed
 rejection while preserving the session.
 
-Arithmetic automation follows the same certificate discipline. The argument-free `ring` tactic
-applies only to a focused equality whose rigid terms use `0`, successor, `+`, and `·`. It reifies
+Arithmetic automation follows the same certificate discipline. The argument-free `norm_num`
+tactic applies to an equality, optionally beneath leading universal binders, without unresolved
+term metavariables. It visits maximal variable-free, non-canonical-numeral subterms in deterministic left-to-right order, computes a
+candidate numeral, and constructs a checked PA3--PA6 proof that the subterm equals that numeral.
+`CongS`, `CongAdd`, and `CongMul` lift those proofs through open parents. Identical normalized sides
+close with a checked equality certificate; useful normalization that leaves different open sides
+publishes one transported residual goal. A wholly closed unequal equation, unsupported goal shape,
+or non-closing no-progress request fails transactionally; a reflexive equality may close without a
+numerical computation.
+
+`norm_num` takes no arguments, mines no hypotheses, and does not decide inequalities, disequalities,
+or arbitrary quantified formulas. It may structurally open leading universal binders when their body
+is an equality, then wrap the result in ordinary `ForallIntro` certificates. One attempt is bounded
+by 256 equality-term AST nodes at depth 64, at most 64 such leading binders, 32 closed computations,
+intermediate values at most 128, 25,000 work units, a 50,000-node/256-level generated numerical
+bridge, and five seconds. The complete live partial certificate is separately capped at 100,000
+nodes and depth 512. Multiplication tests the value bound before forming the product. Resource or
+host-recursion exhaustion raises `TacticLimit` and preserves the exact proof state and history.
+Arithmetic-aware `hint` uses the same pure bounded preflight; it never runs a speculative state
+tactic or allocates proof holes.
+
+The argument-free `ring` tactic applies only to a focused equality whose rigid terms use `0`,
+successor, `+`, and `·`. It reifies
 both sides as sparse polynomials over the visible de Bruijn variables and sorts monomials by the
 fixed key `(total degree, variable/exponent tuple)`. This computation chooses a proof path; it is
 not evidence. Every successor-to-plus-one step, identity, permutation, reassociation,
@@ -152,7 +176,7 @@ for example `trans <middle>` followed by `rewrite h`; each resulting identity is
 `ring` call. This keeps the tactic's claim auditable: equal sparse normal forms certify an identity,
 while different normal forms produce a transactional `TacticError`.
 
-One browser attempt is bounded by 256 input AST nodes, depth 64, 16 variables, degree 16, 64
+One `ring` attempt is bounded by 256 input AST nodes, depth 64, 16 variables, degree 16, 64
 monomials, natural coefficients at most 128, 25,000 work units, a 100,000-node/256-level generated
 proof, and a five-second wall-clock budget. That conservative browser margin was chosen after the
 largest required normalization used about 1.4 seconds under native CPython; it must still be
@@ -173,9 +197,10 @@ links + localStorage history + Stop button). New Python package `peano_lab`, new
   complete-line `qed`/`abort`, in-proof `help`, `hint`)
 - `pa tactic [name]`, `pa lib [name]` — tactic encyclopedia + proved-theorem library
 - `pa axioms`, `pa eval <term>`, `pa simp <term>`
+- proof-producing arithmetic tactics `norm_num` and `ring`, each with an executable tactic card
 - `kb`-style knowledge base entries for PA, induction, De Bruijn, LCF vs proof terms, Gödel
   (a "limits" card — honest about what this prover can never do)
-- tutorials: at minimum "prove add_comm by hand" and "build your own tactic"
+- tutorials: "prove add_comm by hand", "build your own tactic", and checked numerical normalization
 
 **Single-owner routing, complete-line aliases, arrow-args-are-propositions** — all the audit's
 UI rules apply from day one (they are already implemented patterns; copy them, don't rediscover).
@@ -231,7 +256,7 @@ peano-lab/
     peano_lab/
       kernel/     terms.py formulas.py subst.py proofs.py checker.py   ← TRUSTED, small
       engine/     state.py tactics.py tacticals.py rewrite.py
-                  induction.py decide.py proof_reduction.py ring.py
+                  induction.py decide.py norm_num.py proof_reduction.py ring.py
                   search.py trace.py                                  ← untrusted
       ui/         prove.py panels.py data_tactics.py data_kb.py
                   data_tutorials.py data_library.py
@@ -251,3 +276,9 @@ No dependent types, no definitional equality/reduction engine, no term elaborato
 resolution, no proof irrelevance puzzles. PA over a fixed signature keeps every one of those
 out of scope — that is *why* it is the right testing ground. When the book chapter compares us
 to Lean, these absences are the comparison.
+
+The arithmetic tactics are not a decision procedure for PA. `norm_num` covers bounded closed
+numerical islands in equalities; `ring` covers unconditional polynomial identities. Neither solves
+nonlinear consequences of hypotheses. There is no Presburger `omega` in this plan: adding one later
+would require a separate certificate-producing design and would still decide only that fragment,
+not general Peano arithmetic.

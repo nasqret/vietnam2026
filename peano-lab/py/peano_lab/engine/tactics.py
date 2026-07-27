@@ -9,6 +9,8 @@ kernel to validate the finished certificate against the original target.
 from __future__ import annotations
 
 from dataclasses import fields
+from math import isfinite
+from time import monotonic
 from typing import Callable, Iterator
 
 from ..kernel.checker import axiom_formula, check, check_classical
@@ -42,6 +44,13 @@ from ..kernel.proofs import (
 from ..kernel.subst import shift_formula
 from ..kernel.terms import Add, Mul, ParseError, Succ, Term, Var, Zero, parse_term_in_context
 from .induction import InductionError, build_induction
+from .norm_num import (
+    DEFAULT_NORM_NUM_LIMITS,
+    NormNumError,
+    NormNumLimit,
+    NormNumLimits,
+    normalize_equality,
+)
 from .rewrite import (
     PA_SIMP_SET,
     InvalidSimpRule,
@@ -57,8 +66,10 @@ from .rewrite import (
 )
 from .state import (
     Goal,
+    Hole,
     ProofState,
     StateError,
+    Step,
     apply_formula_subst,
     apply_subst_everywhere,
     apply_term_subst,
@@ -109,6 +120,13 @@ _RESERVED_TERM_NAMES = {"S", "forall", "exists", "bot", "false"}
 MAX_USE_CERTIFICATE_NODES = 4_096
 MAX_USE_PARTIAL_NODES = 32_768
 MAX_USE_PROOF_DEPTH = 128
+
+# ``norm_num`` can install a checked transport around one new residual hole.
+# Bound the whole live certificate on both sides of that operation so a small
+# numerical calculation cannot be appended to an already hostile proof tree.
+MAX_NORM_NUM_PARTIAL_NODES = 100_000
+MAX_NORM_NUM_PARTIAL_DEPTH = 512
+MAX_NORM_NUM_FORALLS = 64
 
 
 def _current(state: ProofState) -> Goal:
@@ -211,14 +229,159 @@ def _enforce_use_proof_budget(
                     f"`use` exceeded its {max_nodes}-node / "
                     f"{MAX_USE_PROOF_DEPTH}-level {label} limit."
                 )
-            for item in fields(current):
-                child = getattr(current, item.name)
-                if isinstance(child, Proof):
-                    pending.append((child, depth + 1))
+            children = [
+                getattr(current, item.name)
+                for item in fields(current)
+                if isinstance(getattr(current, item.name), Proof)
+            ]
+            pending.extend(
+                (child, depth + 1) for child in reversed(children)
+            )
     except TacticLimit:
         raise
     except (AttributeError, TypeError, ValueError):
         raise TacticError("`use` needs an exact checked theorem certificate.") from None
+
+
+class _NormNumDeadline:
+    """One wall-clock budget shared by preprocessing, generation, and commit."""
+
+    def __init__(
+        self,
+        limits: NormNumLimits,
+        clock: Callable[[], float],
+    ) -> None:
+        if not callable(clock):
+            raise TacticError("`norm_num` needs a clock for its time limit.")
+        self.limits = limits
+        self.clock = clock
+        self.started = self._read()
+
+    def _read(self) -> float:
+        try:
+            value = self.clock()
+            finite = isfinite(value)
+        except (OverflowError, TypeError, ValueError):
+            raise TacticError(
+                "`norm_num` clock returned a non-finite number."
+            ) from None
+        if type(value) not in (int, float) or not finite:
+            raise TacticError("`norm_num` clock returned a non-finite number.")
+        return value
+
+    def check(self) -> None:
+        if self._read() - self.started > self.limits.max_seconds:
+            raise TacticLimit(
+                "`norm_num` exceeded its "
+                f"{self.limits.max_seconds:g}-second time limit."
+            )
+
+    def normalizer_clock(self) -> Callable[[], float]:
+        """Give the low-level budget this attempt's original start reading."""
+
+        first = True
+
+        def shared() -> float:
+            nonlocal first
+            if first:
+                first = False
+                return self.started
+            return self._read()
+
+        return shared
+
+
+def _enforce_norm_num_partial_budget(
+    proof: Proof,
+    *,
+    deadline: _NormNumDeadline | None = None,
+) -> tuple[int, ...]:
+    """Measure a live certificate iteratively and return its hole IDs."""
+
+    pending = [(proof, 1)]
+    nodes = 0
+    holes: list[int] = []
+    try:
+        while pending:
+            current, depth = pending.pop()
+            nodes += 1
+            if nodes > MAX_NORM_NUM_PARTIAL_NODES:
+                raise TacticLimit(
+                    "`norm_num` exceeded its "
+                    f"{MAX_NORM_NUM_PARTIAL_NODES}-live-proof-node limit."
+                )
+            if depth > MAX_NORM_NUM_PARTIAL_DEPTH:
+                raise TacticLimit(
+                    "`norm_num` exceeded its "
+                    f"{MAX_NORM_NUM_PARTIAL_DEPTH}-live-proof-depth limit."
+                )
+            if type(current) is Hole:
+                holes.append(current.id)
+            if deadline is not None and nodes % 128 == 0:
+                deadline.check()
+            children = [
+                getattr(current, item.name)
+                for item in fields(current)
+                if isinstance(getattr(current, item.name), Proof)
+            ]
+            pending.extend(
+                (child, depth + 1) for child in reversed(children)
+            )
+    except TacticLimit:
+        raise
+    except (AttributeError, TypeError, ValueError):
+        raise TacticError("`norm_num` needs a well-formed live certificate.") from None
+    if deadline is not None:
+        deadline.check()
+    return tuple(holes)
+
+
+def _validate_norm_num_state(
+    state: ProofState,
+    holes: tuple[int, ...],
+) -> None:
+    """Enforce the exact immutable-state contract shared by tactic and hint."""
+
+    if (
+        not isinstance(state.partial, Proof)
+        or not isinstance(state.target, Formula)
+        or any(type(item) is not Goal for item in state.goals)
+        or any(type(item) is not Step for item in state.history)
+        or any(type(name) is not str for name in state.variables)
+        or any(
+            type(meta_id) is not int
+            or meta_id < 0
+            or not isinstance(term, Term)
+            for meta_id, term in state.subst.items()
+        )
+        or len(state.goals) != len(holes)
+        or len(holes) != len(set(holes))
+    ):
+        raise TacticError("`norm_num` needs a valid exact proof state.")
+
+    # Validate every formula-bearing branch and substitution, not just the
+    # focused target.  ``_commit`` scans the whole state for proof-wide metas;
+    # doing the same preflight keeps ``hint`` from promising a command that a
+    # cyclic substitution or malformed sibling goal would later reject.
+    metas_in_proof(state.partial, state.subst)
+    for term in state.subst.values():
+        metas_in_term(term, state.subst)
+    for goal in state.goals:
+        if (
+            not isinstance(goal.target, Formula)
+            or any(type(name) is not str for name in goal.variables)
+            or any(
+                type(entry) is not tuple
+                or len(entry) != 2
+                or type(entry[0]) is not str
+                or not isinstance(entry[1], Formula)
+                for entry in goal.context
+            )
+        ):
+            raise TacticError("`norm_num` needs a valid exact proof state.")
+        metas_in_formula(goal.target, state.subst)
+        for _, formula in goal.context:
+            metas_in_formula(formula, state.subst)
 
 
 def _used_names(goal: Goal) -> set[str]:
@@ -1109,6 +1272,143 @@ def simp(
     return _commit(state, after, "simp", args)
 
 
+def _norm_num_message(error: NormNumError) -> str:
+    message = str(error).rstrip(".")
+    if message.startswith("norm_num "):
+        return f"`norm_num` {message[len('norm_num '):]}."
+    return f"`norm_num` failed: {message}."
+
+
+def norm_num(
+    state: ProofState,
+    args: str = "",
+    *,
+    limits: NormNumLimits = DEFAULT_NORM_NUM_LIMITS,
+    clock: Callable[[], float] = monotonic,
+) -> ProofState:
+    """Normalize bounded closed numerical islands with checked PA proofs.
+
+    The tactic acts only on equality goals, optionally below leading universal
+    binders.  A reflexive normal form closes immediately.  A changed open
+    equation remains as one explicit residual goal; a false closed equation is
+    rejected.  Context hypotheses are never consulted as arithmetic evidence.
+    """
+
+    if type(args) is not str or args.strip():
+        raise TacticSyntaxError("`norm_num` takes no arguments.")
+    if type(state) is not ProofState:
+        raise TacticError("`norm_num` needs an exact proof state.")
+    if type(limits) is not NormNumLimits:
+        raise TacticError("`norm_num` needs exact NormNumLimits.")
+    deadline = _NormNumDeadline(limits, clock)
+    try:
+        holes = _enforce_norm_num_partial_budget(
+            state.partial,
+            deadline=deadline,
+        )
+        _validate_norm_num_state(state, holes)
+        goal = _current(state)
+        deadline.check()
+        focused_target = apply_formula_subst(goal.target, state.subst)
+        deadline.check()
+        if metas_in_formula(focused_target, state.subst):
+            raise TacticError(
+                "`norm_num` cannot guess unresolved term metavariables."
+            )
+
+        target = focused_target
+        variables = goal.variables
+        forall_count = 0
+        while type(target) is Forall:
+            if forall_count >= MAX_NORM_NUM_FORALLS:
+                raise TacticLimit(
+                    "`norm_num` exceeded its "
+                    f"{MAX_NORM_NUM_FORALLS}-leading-universal limit."
+                )
+            temporary = Goal(goal.context, target, variables)
+            binder = _fresh_visible_name("x", temporary)
+            variables = (binder,) + variables
+            target = target.body
+            forall_count += 1
+            deadline.check()
+    except TacticError:
+        raise
+    except RecursionError:
+        raise TacticLimit("`norm_num` exceeded the host recursion limit.") from None
+    except (AttributeError, TypeError, ValueError):
+        raise TacticError("`norm_num` received a malformed proof state.") from None
+
+    if type(target) is not Eq:
+        raise TacticError("`norm_num` needs an equality goal.")
+    try:
+        result = normalize_equality(
+            target,
+            limits=limits,
+            clock=deadline.normalizer_clock(),
+        )
+        deadline.check()
+    except NormNumLimit as exc:
+        raise TacticLimit(_norm_num_message(exc)) from None
+    except NormNumError as exc:
+        raise TacticError(_norm_num_message(exc)) from None
+
+    if result.equation != target:
+        raise TacticError("internal norm_num result changed the focused equation.")
+    if not result.closes and result.fully_closed:
+        raise TacticError(
+            "`norm_num` evaluated the closed sides to different numerals."
+        )
+    if not result.closes and not result.made_progress:
+        raise TacticError("`norm_num` made no progress on the current goal.")
+
+    try:
+        if result.certificate is not None:
+            replacement: Proof = result.certificate
+            new_goals: tuple[Goal, ...] = ()
+        else:
+            shifted_context: list[tuple[str, Formula]] = []
+            for name, formula in goal.context:
+                deadline.check()
+                resolved = apply_formula_subst(formula, state.subst)
+                if forall_count:
+                    resolved = shift_engine_formula(resolved, forall_count)
+                shifted_context.append((name, resolved))
+                deadline.check()
+            context = tuple(shifted_context)
+            hole = fresh_hole()
+            replacement = result.transport_back(hole)
+            new_goals = (Goal(context, result.normal_form, variables),)
+        for _ in range(forall_count):
+            replacement = ForallIntro(replacement)
+
+        # Direct closure is checked here against the exact focused target,
+        # without local hypotheses.  QED will independently check the entire
+        # finished certificate against the session owner's original theorem.
+        if not new_goals and not check((), replacement, focused_target):
+            raise TacticError(
+                "the independent kernel rejected the generated norm_num certificate."
+            )
+        deadline.check()
+        after = replace_current_hole(state, replacement, new_goals)
+        _enforce_norm_num_partial_budget(after.partial, deadline=deadline)
+        committed = _commit(state, after, "norm_num", "")
+        deadline.check()
+    except TacticError:
+        raise
+    except StateError as exc:
+        raise TacticError(f"`norm_num` could not update the proof state: {exc}.") from None
+    except NormNumLimit as exc:
+        raise TacticLimit(_norm_num_message(exc)) from None
+    except NormNumError as exc:
+        raise TacticError(_norm_num_message(exc)) from None
+    except RecursionError:
+        raise TacticLimit("`norm_num` exceeded the host recursion limit.") from None
+    except (AttributeError, TypeError, ValueError):
+        raise TacticError("`norm_num` received a malformed proof state.") from None
+
+    return committed
+
+
 def undo(state: ProofState, args: str = "") -> ProofState:
     _no_args("undo", args)
     try:
@@ -1165,24 +1465,27 @@ def logic_banner(classical: bool) -> str:
     )
 
 
-def hint(
+def _hint_impl(
     state: ProofState,
     *,
+    holes: tuple[int, ...],
     max_checks: int = 64,
 ) -> tuple[str, str | None]:
-    """Suggest one deterministic, supported move without mutating the state.
-
-    ``found`` means the command is applicable, not that it completes the
-    theorem. ``none`` means no immediate primitive was found. ``limit`` is an
-    honest non-verdict when unresolved metas or the explicit scan budget stop
-    inspection.
-    """
-
-    if type(max_checks) is not int or max_checks < 1:
-        raise ValueError("hint max_checks must be a positive integer")
     goal = state.current()
     if goal is None:
         return "done", None
+
+    # Inspect this iterative outer spine before recursive substitution.  The
+    # same cap protects ``norm_num`` itself, so a huge quantified target cannot
+    # make the supposedly bounded hint preflight hit Python's recursion limit.
+    raw_arithmetic_target = goal.target
+    raw_arithmetic_binders = 0
+    while type(raw_arithmetic_target) is Forall:
+        if raw_arithmetic_binders >= MAX_NORM_NUM_FORALLS:
+            return "limit", None
+        raw_arithmetic_target = raw_arithmetic_target.body
+        raw_arithmetic_binders += 1
+
     target = apply_formula_subst(goal.target, state.subst)
     formulas = [target] + [
         apply_formula_subst(formula, state.subst)
@@ -1208,6 +1511,81 @@ def hint(
             return "found", "exists 0"
 
     checked = 0
+    arithmetic_target = target
+    arithmetic_binders = 0
+    arithmetic_variables = goal.variables
+    while type(arithmetic_target) is Forall:
+        if arithmetic_binders >= MAX_NORM_NUM_FORALLS:
+            return "limit", None
+        temporary = Goal(goal.context, arithmetic_target, arithmetic_variables)
+        binder = _fresh_visible_name("x", temporary)
+        arithmetic_variables = (binder,) + arithmetic_variables
+        arithmetic_target = arithmetic_target.body
+        arithmetic_binders += 1
+    if type(arithmetic_target) is Eq:
+        checked += 1
+        if checked > max_checks:
+            return "limit", None
+        try:
+            numerical = normalize_equality(arithmetic_target)
+        except NormNumLimit:
+            return "limit", None
+        except NormNumError:
+            numerical = None
+        if (
+            numerical is not None
+            and numerical.equation == arithmetic_target
+            and not (numerical.fully_closed and not numerical.closes)
+            and numerical.applicable
+        ):
+            # ``found`` promises that the command is applicable.  Account for
+            # both the existing live proof and the exact checked replacement,
+            # without consuming a global hole ID or mutating the state.
+            if not holes:
+                return "limit", None
+            if numerical.certificate is not None:
+                replacement = numerical.certificate
+                projected_goals: tuple[Goal, ...] = ()
+            else:
+                projected_context: list[tuple[str, Formula]] = []
+                for name, formula in goal.context:
+                    resolved = apply_formula_subst(formula, state.subst)
+                    if arithmetic_binders:
+                        resolved = shift_engine_formula(
+                            resolved,
+                            arithmetic_binders,
+                        )
+                    projected_context.append((name, resolved))
+                # Negative IDs are outside the production allocator.  Pick one
+                # absent from even an adversarial exact state, without changing
+                # global allocator state during this pure preflight.
+                virtual_id = -1
+                while virtual_id in holes:
+                    virtual_id -= 1
+                replacement = numerical.transport_back(Hole(virtual_id))
+                projected_goals = (
+                    Goal(
+                        tuple(projected_context),
+                        numerical.normal_form,
+                        arithmetic_variables,
+                    ),
+                )
+            for _ in range(arithmetic_binders):
+                replacement = ForallIntro(replacement)
+            if (
+                numerical.certificate is not None
+                and not check((), replacement, target)
+            ):
+                return "limit", None
+            projected = replace_current_hole(
+                state,
+                replacement,
+                projected_goals,
+            )
+            _enforce_norm_num_partial_budget(projected.partial)
+            _commit(state, projected, "norm_num", "")
+            return "found", "norm_num"
+
     for name, raw_formula in goal.context:
         formula = apply_formula_subst(raw_formula, state.subst)
         if type(formula) is not Eq:
@@ -1235,6 +1613,39 @@ def hint(
     if type(target) is Forall:
         return "found", f"induction {_fresh_visible_name('n', goal)}"
     return "none", None
+
+
+def hint(
+    state: ProofState,
+    *,
+    max_checks: int = 64,
+) -> tuple[str, str | None]:
+    """Suggest one deterministic, supported move without mutating the state.
+
+    ``found`` means the command is applicable, not that it completes the
+    theorem. ``none`` means no immediate primitive was found. ``limit`` is an
+    honest non-verdict when unresolved metas, malformed state, host recursion,
+    or an explicit resource budget stops inspection.
+    """
+
+    if type(max_checks) is not int or max_checks < 1:
+        raise ValueError("hint max_checks must be a positive integer")
+    if type(state) is not ProofState:
+        return "limit", None
+    try:
+        holes = _enforce_norm_num_partial_budget(state.partial)
+        _validate_norm_num_state(state, holes)
+        return _hint_impl(state, holes=holes, max_checks=max_checks)
+    except (
+        AttributeError,
+        NormNumLimit,
+        RecursionError,
+        StateError,
+        TacticError,
+        TypeError,
+        ValueError,
+    ):
+        return "limit", None
 
 
 def checked_final(
@@ -1304,6 +1715,7 @@ _TACTICS: dict[str, Tactic] = {
     "assumption": assumption,
     "rewrite": rewrite,
     "simp": simp,
+    "norm_num": norm_num,
     "undo": undo,
 }
 TACTIC_NAMES = tuple(_TACTICS)
@@ -1363,6 +1775,9 @@ __all__ = [
     "MAX_USE_CERTIFICATE_NODES",
     "MAX_USE_PARTIAL_NODES",
     "MAX_USE_PROOF_DEPTH",
+    "MAX_NORM_NUM_PARTIAL_NODES",
+    "MAX_NORM_NUM_PARTIAL_DEPTH",
+    "MAX_NORM_NUM_FORALLS",
     "intro",
     "specialize",
     "forall_elim",
@@ -1382,6 +1797,7 @@ __all__ = [
     "assumption",
     "rewrite",
     "simp",
+    "norm_num",
     "undo",
     "set_classical_mode",
     "logic_banner",

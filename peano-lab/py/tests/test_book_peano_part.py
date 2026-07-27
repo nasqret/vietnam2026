@@ -1,4 +1,4 @@
-"""Release contracts for the six-chapter “Building Peano Lab” book part."""
+"""Release contracts for the narrative “Building Peano Lab” book part."""
 
 from __future__ import annotations
 
@@ -16,6 +16,7 @@ CHAPTERS = (
     "tactics",
     "tacticals",
     "induction-ladder",
+    "arithmetic-automation",
     "limits",
 )
 

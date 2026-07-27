@@ -100,6 +100,21 @@ The tactic's executable card is at
 [`pa tactic auto`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20tactic%20auto).
 No negative search status is a proof of falsity or unprovability.
 
+## Normalization is not a decision procedure for PA
+
+The proof-producing arithmetic tactics have the same honest stopping rule. `norm_num` calculates
+only closed numerical islands in an equality, optionally beneath leading universal binders. Every accepted value is accompanied by a
+PA3--PA6 certificate, and a false closed equality is rejected transactionally. `ring` handles
+unconditional polynomial identities by constructing a certificate from the checked
+commutative-semiring basis. Equal computed normal forms choose those proofs; the normal forms are
+not themselves kernel evidence.
+
+Neither tactic decides quantified arithmetic, mines local hypotheses for nonlinear consequences, or
+turns resource exhaustion into a mathematical result. Peano Lab does not contain a hidden `omega`
+tactic: a certificate-producing Presburger procedure belongs to a later design, and would still
+decide only that fragment. {doc}`Checked arithmetic automation <arithmetic-automation>` compares the
+exact `simp`, `norm_num`, `ring`, and `auto` contracts and records their browser limits.
+
 ## HA first; classicality must leave a trace
 
 Peano Lab's default is Heyting arithmetic: the arithmetic axioms and induction schema interpreted in
@@ -163,10 +178,10 @@ by untrusted proof-term substitution and checked again from the empty context.  
 listed explicitly in
 [`design §8`](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_LAB_DESIGN.md#8-what-we-are-explicitly-not-building).
 
-The narrowness is the teaching instrument.  A student can follow PA4 from parser, through `simp`, into
-an equality-transport certificate, and finally through a checker that fits in one sitting.  Lean's
-scale makes serious formal mathematics possible; Peano Lab's scale makes the soundness boundary
-visible.
+The narrowness is the teaching instrument.  A student can follow PA4 from parser, through `simp` or
+`norm_num`, into an equality-transport certificate, and finally through a checker that fits in one
+sitting.  Lean's scale makes serious formal mathematics possible; Peano Lab's scale makes the
+soundness boundary visible.
 
 The bridge is intentionally one-way and non-authoritative.  [`pa lean mul_eq_zero`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lean%20mul_eq_zero)
 translates the exact Peano formula to a Lean theorem over `Nat`, comments the source tactic script, and

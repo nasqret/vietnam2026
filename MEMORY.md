@@ -21,8 +21,8 @@
 - **Landing page + book + slides:** `~/public_html/vietnam2026/` → <https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026>
 - **Browser Lambda Lab:** `~/public_html/lab-lambda/` → <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda>
 - **Browser Peano Lab targets:** `~/public_html/peano-lab/` (production) and
-  `~/public_html/peano-lab-next/` (staging). The M5 targets and local staging pipeline are verified;
-  neither target was deployed during M5.
+  `~/public_html/peano-lab-next/` (staging). The M13 local staging pipeline and pinned vendor hashes
+  are verified; remote publication status is recorded in the current journal entry.
 - **Server tooling:** Apache static hosting + PHP; Python 3.8, Node present. **No persistent daemons** →
   the lab must be **fully client-side** (this is why the browser lab uses Pyodide, not a server kernel).
 - **Deploy verb:** `rsync -avz --delete <local>/ lts-faculty.wmi.amu.edu.pl:~/public_html/<target>/`.
@@ -107,7 +107,16 @@
   rigid polynomial equality goals. It reifies sparse natural-coefficient polynomials but constructs
   every successful equality certificate from PA3--PA6 and rechecked M11 laws; the generated proof
   is checked before the tactic commits and again at QED. `ring` ignores local hypotheses by design,
-  so conditional algebra remains explicit through `trans` and `rewrite`.
+  so conditional algebra remains explicit through `trans` and `rewrite`. M13 adds argument-free,
+  bounded `norm_num` for equality goals, optionally under at most 64 leading universal binders. It
+  computes only maximal closed numerical islands, constructs PA3--PA6/congruence certificates, and
+  either closes by a checked bridge or transports one explicit residual goal. Its pure hint
+  preflight simulates the exact immutable commit without consuming allocator state. Computation,
+  generated proof, live partial proof, and wall-clock bounds fail transactionally; neither
+  `norm_num` nor `ring` decides general PA or nonlinear consequences of hypotheses, and a future
+  Presburger `omega` requires a separate certificate-producing design. The refreshed generator-v2
+  corpus retains the v1 row schema: 13,344 unique transitions from 1,692 checked QED sessions, with
+  a deliberately small 18-row same-family validation split used only as a pipeline check.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -143,9 +152,9 @@
 - Build/deploy strategy chosen: **go live incrementally** (public GitHub + faculty URLs as pieces land).
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
-- Peano Lab milestones M0–M12 are green on `peano-lab`; the complete implementation, checked corpus,
-  construction book, Obsidian knowledge base, kernel-judged evaluation protocol, and live checked-
-  theorem reuse, and 23-entry checked ladder with a complete semiring basis are present. M12's
-  bounded, certificate-producing `ring` closes the odd-square induction through explicit
-  `trans`/`rewrite` structure and independent final checking. M13 extends that base with the basic
-  arithmetic teaching surface.
+- Peano Lab milestones M0–M13 are green on `peano-lab`; the implementation, checked corpus,
+  construction book, Obsidian knowledge base, kernel-judged evaluation protocol, live checked-
+  theorem reuse, 23-entry semiring ladder, certificate-producing `ring`, and bounded checked
+  `norm_num` teaching surface are present. The odd-square induction closes through explicit
+  `trans`/`rewrite` structure, while concrete coefficients can now be certified without obscuring
+  the independent final check.

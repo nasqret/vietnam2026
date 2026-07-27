@@ -59,7 +59,7 @@ peano-corpus:
 	$(PEANO_CORPUS_PYTHON) scripts/generate_peano_traces.py \
 		--output /tmp/peano-lab-release-raw.jsonl \
 		--manifest peano-lab/corpus/generation-manifest.json \
-		--seed 0 --renamed 1500 --commuted 96 \
+		--seed 0 --renamed 1500 --commuted 96 --numeric 96 \
 		--auto-depth 5 --auto-max-nodes 5000 \
 		--no-ladder-auto --no-ladder-scripts
 	$(PEANO_CORPUS_PYTHON) scripts/export_traces.py /tmp/peano-lab-release-raw.jsonl \

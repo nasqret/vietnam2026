@@ -195,6 +195,77 @@ CHAPTERS = (
             },
         ),
     },
+    {
+        "order": 3,
+        "slug": "norm_num",
+        "title": "Turn numerical computation into a proof",
+        "summary": (
+            "Compare a closed calculation with the same calculation inside an "
+            "open equality.  In both cases hint recommends one bounded tactic, "
+            "and norm_num constructs PA3-PA6 evidence rather than trusting Python."
+        ),
+        "requires_qed": True,
+        "steps": (
+            {
+                "kind": "narrative",
+                "title": "Computation chooses; the kernel checks",
+                "body": (
+                    "Norm_num evaluates only closed numerical islands in a focused "
+                    "equality.  It records each result as an ordinary PA proof and "
+                    "lifts that proof through surrounding addition or multiplication.  "
+                    "It does not use hypotheses or decide general arithmetic."
+                ),
+            },
+            {
+                "kind": "command",
+                "title": "State one closed and one open calculation",
+                "command": "pa prove (2 * 3 = 6) /\\ (forall n. n + (2 * 3) = n + 6)",
+                "note": "The conjunction lets us compare the two supported shapes in one QED.",
+            },
+            {
+                "kind": "command",
+                "title": "Expose both equality goals",
+                "command": "split",
+                "note": "The closed numerical equation is focused first.",
+            },
+            {
+                "kind": "command",
+                "title": "Ask for bounded advice",
+                "command": "hint",
+                "note": "Hint inspects the goal without changing proof state or history.",
+            },
+            {
+                "kind": "command",
+                "title": "Certify the closed equation",
+                "command": "norm_num",
+                "note": "The calculation closes only after its generated proof checks.",
+            },
+            {
+                "kind": "command",
+                "title": "Make the second equality visible",
+                "command": "intro n",
+                "note": "The variable stays rigid while 2 * 3 remains a closed island.",
+            },
+            {
+                "kind": "command",
+                "title": "Ask again on an open equality",
+                "command": "hint",
+                "note": "The same suggestion is applicable without guessing a value for n.",
+            },
+            {
+                "kind": "command",
+                "title": "Normalize below the open context",
+                "command": "norm_num",
+                "note": "Congruence lifts the checked 2 * 3 = 6 calculation under n + [].",
+            },
+            {
+                "kind": "command",
+                "title": "Recheck the original conjunction",
+                "command": "qed",
+                "note": "QED ignores tactic claims and checks the complete original theorem.",
+            },
+        ),
+    },
 )
 
 

@@ -52,12 +52,14 @@
         <button class="qbtn" type="button" data-cmd="pa tactic induction" disabled>tactic induction</button>
         <button class="qbtn" type="button" data-cmd="pa kb de-bruijn-criterion" disabled>KB: trusted kernel</button>
         <button class="qbtn" type="button" data-cmd="pa tutorial add_comm" disabled>tutorial add_comm</button>
+        <button class="qbtn" type="button" data-cmd="pa tutorial norm_num" disabled>tutorial norm_num</button>
         <button class="qbtn" type="button" data-cmd="pa lib mul_eq_zero" disabled>library capstone</button>
         <button class="qbtn" type="button" data-cmd="pa lean add_comm" disabled>Lean: add_comm</button>
         <button class="qbtn" type="button" data-cmd="pa eval 2 + 3" disabled>eval 2 + 3</button>
         <button class="qbtn" type="button" data-cmd="pa simp S(S(0)) + 0" disabled>simp 2 + 0</button>
       </div>
       <div class="quick-row"><span class="lbl">prove:</span>
+        <button class="qbtn" type="button" data-cmd="pa prove 2 * 3 = 6" disabled>2 · 3 = 6</button>
         <button class="qbtn" type="button" data-cmd="pa prove forall n. 0 + n = n" disabled>0 + n = n</button>
         <button class="qbtn" type="button" data-cmd="pa prove forall n m. S(n) + m = S(n + m)" disabled>add_succ_left</button>
         <button class="qbtn" type="button" data-cmd="pa prove forall n m. n + m = m + n" disabled>add_comm</button>
@@ -75,7 +77,7 @@
   <script>
   (function(){
     "use strict";
-    const BUILD="2026-07-27g";
+    const BUILD="2026-07-27h";
     const MAX_INPUT=4000;
     const PROMPT="\x1b[96mpa>\x1b[0m ";
     const HISTORY_KEY="peanoLabHistory";
@@ -109,10 +111,11 @@
     let buffer="",cursor=0,history=loadHistory(),historyIndex=history.length,busy=true;
     const COMMANDS=["abort","about","axioms","classical","clear","cls","eval","help","hint","kb","lib","pa","prove","qed","simp","tactic","tutorial","undo"];
     const PA_SUBCOMMANDS=["axioms","eval","help","kb","lean","lib","prove","simp","tactic","tutorial"];
-    const TACTICS=["all_goals","apply","assumption","auto","cases","congr","exact","exfalso","exists","first","focus","forall_elim","induction","intro","left","refl","repeat","rewrite","right","ring","simp","specialize","split","symm","trans","use"];
+    const TACTICS=["all_goals","apply","assumption","auto","cases","congr","exact","exfalso","exists","first","focus","forall_elim","induction","intro","left","norm_num","refl","repeat","rewrite","right","ring","simp","specialize","split","symm","trans","use"];
+    const ROOT_COMPLETIONS=Array.from(new Set(COMMANDS.concat(TACTICS)));
     function completionCandidates(prefix){
       const words=prefix.trimStart().split(/\s+/);
-      if(words.length<=1)return COMMANDS;
+      if(words.length<=1)return ROOT_COMPLETIONS;
       if(words[0].toLowerCase()==="pa"&&words.length===2)return PA_SUBCOMMANDS;
       if((words[0].toLowerCase()==="tactic")||(words[0].toLowerCase()==="pa"&&words[1]&&words[1].toLowerCase()==="tactic"))return TACTICS;
       return [];

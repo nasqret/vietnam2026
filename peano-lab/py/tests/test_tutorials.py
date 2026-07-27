@@ -19,18 +19,23 @@ def _finish(state: dict, slug: str, limit: int = 40) -> str:
     raise AssertionError(f"tutorial {slug!r} did not finish within {limit} ENTERs")
 
 
-def test_catalog_contains_the_two_binding_tutorials_in_stable_order() -> None:
-    assert [chapter["order"] for chapter in CHAPTERS] == [1, 2]
-    assert [chapter["slug"] for chapter in CHAPTERS] == ["add_comm", "symm_all"]
+def test_catalog_contains_the_three_binding_tutorials_in_stable_order() -> None:
+    assert [chapter["order"] for chapter in CHAPTERS] == [1, 2, 3]
+    assert [chapter["slug"] for chapter in CHAPTERS] == [
+        "add_comm",
+        "symm_all",
+        "norm_num",
+    ]
     assert all(chapter["requires_qed"] for chapter in CHAPTERS)
     assert all(chapter["steps"][-1]["command"] == "qed" for chapter in CHAPTERS)
 
     output = tutorial.handle("", {})
     assert "Prove add_comm by hand" in output
     assert "Build a toy symm_all tactical" in output
+    assert "Turn numerical computation into a proof" in output
 
 
-@pytest.mark.parametrize("slug", ["add_comm", "symm_all"])
+@pytest.mark.parametrize("slug", ["add_comm", "symm_all", "norm_num"])
 def test_enter_only_runs_real_commands_to_checked_completion(slug: str) -> None:
     state: dict = {}
     output = _finish(state, slug)
@@ -80,6 +85,23 @@ def test_symm_all_walk_shows_source_changes_and_executes_equivalent_surface() ->
 
     _finish_from_active(state)
     assert "all_goals symm" in state[tutorial.K_LAST_RUN]["commands"]
+
+
+def test_norm_num_tutorial_pins_hints_and_both_supported_shapes() -> None:
+    state: dict = {}
+    output = _finish(state, "norm_num")
+
+    assert "Tutorial complete" in output
+    assert state[tutorial.K_LAST_RUN]["commands"] == (
+        "pa prove (2 * 3 = 6) /\\ (forall n. n + (2 * 3) = n + 6)",
+        "split",
+        "hint",
+        "norm_num",
+        "intro n",
+        "hint",
+        "norm_num",
+        "qed",
+    )
 
 
 def _finish_from_active(state: dict, limit: int = 40) -> str:

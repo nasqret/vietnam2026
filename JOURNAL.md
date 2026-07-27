@@ -522,3 +522,40 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   source-bound corpus remains 13,152 rows from 1,596 checked sessions, local staging assembly is
   green, and the checker remains 234 lines. The in-app browser was unavailable, so direct Pyodide
   timing remains a deployment check. No deployment was performed during this verification pass.
+
+## 2026-07-27 (branch peano-lab) — Peano Lab M13: checked basic arithmetic
+
+- Added `norm_num` as a bounded, argument-free certificate constructor for equality goals,
+  optionally below leading universal binders. It finds maximal closed non-numeral islands,
+  computes a candidate unary numeral, and constructs PA3--PA6 plus congruence evidence. The low-
+  level engine checks every island, both term transports, and the equality bridge; direct tactic
+  closure is checked again before commit, and QED still checks the owner-held original theorem.
+- Kept the boundary narrow and visible. A true reflexive normal form closes; useful open
+  normalization installs one transported residual hole; false closed equations, non-closing
+  no-progress requests, unresolved metas, and unsupported goals fail transactionally. Local
+  hypotheses are not arithmetic oracles. `simp` rewrites, `norm_num` certifies concrete arithmetic,
+  `ring` proves unconditional polynomial identities, and `auto` performs bounded search; general PA,
+  nonlinear hypothesis solving, and a future Presburger `omega` remain outside this tactic.
+- Hardened both command and pure `hint` preflight against malformed exact states, cyclic
+  substitutions, hostile partial certificates, deep universal spines, wrong focused-hole order,
+  forged generator metadata/certificates, and pre/post-splice size limits. Hint projects the same
+  immutable replacement and commit without allocating a global hole or changing history. The
+  public limits are 256 equality-term nodes/depth 64, 64 leading universals, 32 computations,
+  value 128, 25,000 work units, a 50,000-node/256-level numerical bridge, a 100,000-node/512-level
+  live proof, and five seconds; the Web Worker Stop control remains the hard abort.
+- Added the browser card/completion/quick proof, an ENTER-driven checked tutorial, executable book
+  chapter, connected Obsidian note, deterministic `norm_num` traces, and evaluator-v2 regressions.
+  Generator v2 adds 96 checked closed-coefficient sessions while preserving the v1 row schema. The
+  byte-reproduced release has 13,344 unique transitions from 1,692 checked QED sessions (13,326
+  train / 18 validation), 1,692 labeled transactional failures, zero duplicates, and exact source,
+  runtime, raw-stream, and artifact hashes. The nine validation formula groups are intentionally
+  documented as a same-family pipeline check, never a cross-family research claim.
+- Local acceptance is green: Peano `641 passed`; Lambda `360 passed, 36 subtests passed`; the
+  warning-as-error 25-page book builds and 193 deep links/23 blocks/125 commands replay; vault 56
+  notes/271 links/0 unresolved with no orphan concepts; the all-ladder smoke generated 13,636 raw
+  and 13,631 unique rows; evaluator v2 ran 32 kernel-judged attempts with the honest random baseline
+  at pass@8 `0.0`; local staging and all vendor hashes pass; the trusted checker remains exactly 234
+  lines. The in-app browser had no available instance, so direct Pyodide interaction was not
+  claimed; browser-shell tests and staged static inspection cover the worker, Stop path, build tag,
+  completion, tutorial, packaged module, and displayed bounds. Remote deployment is recorded after
+  publication rather than predicted here.

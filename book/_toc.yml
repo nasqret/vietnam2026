@@ -25,6 +25,7 @@ parts:
       - file: peano/tactics
       - file: peano/tacticals
       - file: peano/induction-ladder
+      - file: peano/arithmetic-automation
       - file: peano/limits
       - file: peano/tutorials
       - file: peano/ladder

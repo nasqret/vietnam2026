@@ -89,6 +89,69 @@ def test_policy_surface_can_reuse_a_checked_library_theorem() -> None:
     assert attempt.proof_nodes is not None and attempt.proof_nodes > 0
 
 
+def test_policy_surface_can_use_norm_num_for_closed_arithmetic() -> None:
+    goal = eval_policy.EvalGoal(
+        "closed_arithmetic",
+        "(2 * 3 + 1) * 4 = 28",
+    )
+
+    attempt = _only_attempt(
+        eval_policy.evaluate(ScriptPolicy(("norm_num",)), (goal,), k=1)
+    )
+
+    assert attempt.status == "proof"
+    assert attempt.commands == ("norm_num",)
+    assert attempt.proof_nodes is not None and attempt.proof_nodes > 0
+
+
+def test_non_held_out_policy_unit_can_normalize_a_closed_coefficient() -> None:
+    goal = eval_policy.EvalGoal(
+        "closed_coefficient",
+        "forall n. (2 * 6 + 1) * n = 13 * n",
+    )
+
+    attempt = _only_attempt(
+        eval_policy.evaluate(
+            ScriptPolicy(("intro n", "norm_num")),
+            (goal,),
+            k=1,
+            max_steps=2,
+        )
+    )
+
+    assert attempt.status == "proof"
+    assert attempt.commands == ("intro n", "norm_num")
+
+
+def test_policy_arithmetic_boundary_sends_polynomial_identities_to_ring() -> None:
+    goal = eval_policy.EvalGoal(
+        "polynomial_identity",
+        "forall n. (n + 1) * (n + 1) = n * n + 2 * n + 1",
+    )
+
+    numeric = _only_attempt(
+        eval_policy.evaluate(
+            ScriptPolicy(("intro n", "norm_num")),
+            (goal,),
+            k=1,
+            max_steps=2,
+        )
+    )
+    polynomial = _only_attempt(
+        eval_policy.evaluate(
+            ScriptPolicy(("intro n", "ring")),
+            (goal,),
+            k=1,
+            max_steps=2,
+        )
+    )
+
+    assert numeric.status == "failing"
+    assert numeric.error is not None and "made no progress" in numeric.error
+    assert polynomial.status == "proof"
+    assert polynomial.commands == ("intro n", "ring")
+
+
 @pytest.mark.parametrize(
     ("command", "status"),
     [
@@ -390,7 +453,7 @@ def test_random_dummy_policy_is_repeatable_end_to_end() -> None:
     assert all(attempt.commands for attempt in first.goals[0].attempts)
 
 
-def test_heldout_v1_goal_set_is_literal_and_fingerprinted() -> None:
+def test_heldout_v2_goal_set_is_literal_and_fingerprinted() -> None:
     assert eval_policy.HELD_OUT_LADDER_NAMES == (
         "le_trans",
         "le_antisymm",
@@ -398,7 +461,7 @@ def test_heldout_v1_goal_set_is_literal_and_fingerprinted() -> None:
         "mul_eq_zero",
     )
     assert eval_policy.HELD_OUT_GOAL_SET_SHA256 == (
-        "ea1b3039340033bac9d3bf4835cc8f09f5b0da6bc017b179793daab04faa4731"
+        "f99b62e86e142c2b99221360b05e2d85969d4dda1d61d13c187c7ac6e80049db"
     )
 
 
@@ -422,7 +485,7 @@ def test_cli_emits_stable_machine_readable_stats(capsys) -> None:
 
     assert first == second
     payload = json.loads(first)
-    assert payload["v"] == 1
+    assert payload["v"] == 2
     assert payload["goal_count"] == 1
     assert payload["attempt_count"] == 2
     assert payload["judge"] == "checked_final(original_target, exact_mode)"

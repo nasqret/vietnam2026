@@ -70,6 +70,8 @@ def test_shell_exposes_accessible_proof_controls_and_ladder_shortcuts() -> None:
         "pa tactic induction",
         "pa kb de-bruijn-criterion",
         "pa tutorial add_comm",
+        "pa tutorial norm_num",
+        "pa prove 2 * 3 = 6",
         "pa prove forall n. 0 + n = n",
         "pa prove forall n m. S(n) + m = S(n + m)",
         "pa prove forall n m. n + m = m + n",
@@ -81,7 +83,10 @@ def test_tactic_completion_discovers_surface_checked_arithmetic() -> None:
     match = re.search(r"const TACTICS=\[(.*?)\];", INDEX)
     assert match is not None
     assert '"use"' in match.group(1).split(",")
+    assert '"norm_num"' in match.group(1).split(",")
     assert '"ring"' in match.group(1).split(",")
+    assert "const ROOT_COMPLETIONS=Array.from(new Set(COMMANDS.concat(TACTICS)))" in INDEX
+    assert "if(words.length<=1)return ROOT_COMPLETIONS" in INDEX
 
 
 def test_quick_button_examples_use_real_surface_syntax() -> None:

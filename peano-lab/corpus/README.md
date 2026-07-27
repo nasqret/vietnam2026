@@ -1,34 +1,38 @@
-# Peano Lab proof-trace release v1
+# Peano Lab proof-trace release v1 (M13 refresh)
 
-This directory is the deterministic M9 learning-data release. It contains **13,152** clean,
-deduplicated version-1 tactic transitions from **1,596** generated proof sessions:
+This directory is the deterministic learning-data release refreshed for M13. It contains
+**13,344** clean, deduplicated version-1 tactic transitions from **1,692** generated proof
+sessions:
 
 | Artifact | Role | Records | SHA-256 |
 |---|---|---:|---|
-| `train.jsonl` | learning split | 12,540 | `34b0abb503870c0936777d46de5b5b032f7dfcfcaa66885e720f8477712ff2a8` |
-| `val.jsonl` | exact-theorem-group validation split | 612 | `324b5e9bbd455a4b3fabbb24b8aced69fbfac561662dea1e3fad9cde92b8a1f7` |
-| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `8f3b08e3b046d0d9bfb102d767214816e2712b88b80c122bc5abd7b11041fa97` |
-| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `65f3be38569527da969353367c9361fc6cec0ba58118c21ba0411fafbec2dbcc` |
+| `train.jsonl` | learning split | 13,326 | `2aab16c23d5795989df63ee51575eda8b089fd14bd28a81bb78b554c4b92f694` |
+| `val.jsonl` | exact-theorem-group validation split | 18 | `c7cb5ec6720c666367b5573d11972465105d0f58867c8216729b421bde515a26` |
+| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `4afce3f0ecf25e39d339a41b6cc561831690c124bead29c358170f4e84a0d27b` |
+| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `5e4a9d9e9bd5c0793433878ade59fa024e6058db470bb721b1c09ff6fd39ee1f` |
 
-The source stream contained 11,556 successful and 1,596 deliberately failing, transactional
-applications, for a labeled failure ratio of `0.12135036496350365`. Every one of the 1,596 sessions
+The source stream contained 11,652 successful and 1,692 deliberately failing, transactional
+applications, for a labeled failure ratio of `0.12679856115107913`. Every one of the 1,692 sessions
 reached QED through the production proof engine and was independently finalized against its
 owner-held original theorem. The released rows themselves are transitions—not certificates—and
 their `status` or manifest metadata is never proof authority.
 
 ## Leakage boundary
 
-The release contains 1,500 seeded alpha-renamed reflexive-arithmetic conjunctions and 96 seeded
-addition-commutativity variants. Both `ladder_auto` and `ladder_scripts` are disabled in the
-manifest. Consequently none of the four fixed evaluation families (`le_trans`, `le_antisymm`,
-`le_total`, `mul_eq_zero`) or their authored ladder scripts enters these files. The exact-theorem
-split is deterministic and semantic duplicates cannot cross it; logically equivalent near
-duplicates still require the family-level manifest audit described in
+The release contains 1,500 seeded alpha-renamed reflexive-arithmetic conjunctions, 96 seeded
+addition-commutativity variants, and 96 bounded closed-coefficient `norm_num` sessions. Both
+`ladder_auto` and `ladder_scripts` are disabled in the manifest. Consequently none of the four
+fixed evaluation families (`le_trans`, `le_antisymm`, `le_total`, `mul_eq_zero`) or their authored
+ladder scripts enters these files. The exact-theorem split is deterministic and semantic
+duplicates cannot cross it; logically equivalent near duplicates still require the family-level
+manifest audit described in
 [`docs/PEANO_LLM.md`](../../docs/PEANO_LLM.md).
 
-Validation is intentionally a small pipeline check, not the final research claim: its one exact
-formula group is an addition-commutativity orientation related to a training group. Report model
-quality only on the fixed, separately kernel-judged held-out ladder families.
+Validation is intentionally a small pipeline check, not the final research claim: deterministic
+hash ranking selected nine closed-coefficient formula groups, each with its controlled syntax
+failure and successful `norm_num` transition, for 18 rows total. It is entirely one generated
+family and is not a cross-family generalization split. Report model quality only on the fixed,
+separately kernel-judged held-out ladder families.
 
 ## Reproduce
 
@@ -38,15 +42,16 @@ From the repository root, using the exact checked-out generator and kernel:
 make peano-corpus
 ```
 
-The byte-identical release above used CPython 3.10.0, recorded in the manifest;
+The byte-identical release above used generator v2 and CPython 3.10.0, recorded in the manifest;
+transition and manifest schemas remain v1. The
 the Make target checks this and accepts `PEANO_CORPUS_PYTHON=/path/to/python3.10`
 when that interpreter is not the ambient `python3`.
 
 That target first writes the replayable raw session stream to
 `/tmp/peano-lab-release-raw.jsonl`, then strictly validates, globally deduplicates, and exports it.
 The raw intermediate is not committed because it duplicates the split payload, but the manifest
-records its exact size (`6,157,395` UTF-8 bytes) and SHA-256
-`18b5fce098925a728b1130478ba01d9717b9fa62e76fc9f0e64e4d6052bd6717`.
+records its exact size (`6,215,711` UTF-8 bytes) and SHA-256
+`b2d1e95228ee24b2f8d98eb8c1feced28829b357fc18a89cddbd6fff4d8130f0`.
 It also fingerprints `scripts/generate_peano_traces.py`, the trusted checker, and the complete
 Peano Lab Python source tree. Because the Python runtime participates in the run fingerprint and
 session IDs, changing that runtime changes the raw byte hash even when every session-agnostic

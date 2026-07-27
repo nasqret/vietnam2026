@@ -7,7 +7,8 @@ and sharing its shell (xterm + Pyodide worker, fully self-hosted).
 **Start here, in this order:**
 
 1. [`../docs/PEANO_LAB_DESIGN.md`](../docs/PEANO_LAB_DESIGN.md) — the architecture. It is binding.
-2. [`../PLAN/09_peano_lab.md`](../PLAN/09_peano_lab.md) — milestones M0–M9 with tasks and acceptance criteria.
+2. [`../PLAN/09_peano_lab.md`](../PLAN/09_peano_lab.md) — milestones M0–M13 with tasks and
+   acceptance criteria.
 3. [`py/peano_lab/`](py/peano_lab/) — the readable implementation behind the pinned APIs.
 
 **The three laws** (from the 2026-07-24 lambda-lab audit, paid for in full):
@@ -49,8 +50,10 @@ The teaching surfaces are executable too:
 
 ```text
 pa tactic induction
+pa tactic norm_num
 kb de-bruijn-criterion
 pa tutorial add_comm
+pa tutorial norm_num
 pa lib mul_eq_zero
 pa lean add_comm
 ```
@@ -74,6 +77,39 @@ closed proof against the original stated goal.
 `pa tactic induction` opens a tactic card whose worked script is replayed in CI;
 the tutorial command starts an ENTER-driven lesson that cannot complete until its generated
 certificate passes the same independent QED path.
+
+## Basic arithmetic with checked certificates
+
+`norm_num` normalizes maximal closed numerical islands in an equality, optionally beneath leading
+universal binders, in deterministic left-to-right order. Python computation chooses a canonical numeral, but ordinary PA3--PA6 and
+congruence proof terms justify every result. A closed equation is accepted only when the generated
+certificate checks; an open equality may instead be reduced to one transported residual goal. QED
+still checks the complete certificate against the original theorem.
+
+```text
+pa prove (2 * 3 = 6) /\ (forall n. n + (2 * 3) = n + 6)
+split
+hint
+norm_num
+intro n
+hint
+norm_num
+qed
+```
+
+The tactic takes no arguments and never treats local hypotheses as arithmetic rewrite rules. A
+single call allows at most 256 equality-term AST nodes at depth 64, at most 64 leading universal
+binders, 32 closed computations, intermediate values up to 128, 25,000 work units, a
+50,000-node/256-level generated numerical bridge, and five seconds. The complete live partial proof
+is separately capped at 100,000 nodes and depth 512. False closed equations, unsupported goals,
+non-closing no-progress calls, and every limit fail transactionally; reflexive equality can close
+without performing a numerical computation.
+
+The arithmetic toolbox keeps four separate jobs visible: `simp` performs ordered rewriting;
+`norm_num` certifies concrete arithmetic; `ring` proves unconditional polynomial identities; and
+`auto` explores a bounded tactic tree. Neither normalizer decides general PA or solves nonlinear
+consequences of hypotheses. A certificate-producing Presburger `omega` belongs to a later plan and
+is not hidden in these tactics.
 
 The M7 theorem-library core contains twenty named, scripted entries: the fifteen binding
 arithmetic/order rungs plus five explicit helper lemmas, ending at
@@ -126,9 +162,10 @@ Back at the repository root, run both regression suites:
 
 ## Proof-trace corpus and kernel-judged evaluation
 
-M9 ships a deterministic data pipeline, a committed 13,152-transition release, and an evaluation
-harness—not a trained model. The release omits all theorem-ladder sessions, so the four fixed tail
-theorems used by the evaluator stay held out. Exact version-1 records, hashes, provenance, and the
+The deterministic data pipeline now ships a committed 13,344-transition M13 refresh and an
+evaluation harness—not a trained model. Its 1,692 checked sessions include a bounded numerical
+normalization tranche while omitting all theorem-ladder sessions, so the four fixed tail theorems
+used by the evaluator stay held out. Exact version-1 records, hashes, provenance, and the
 reproduction command are documented in [`corpus/README.md`](corpus/README.md); the model and
 leakage protocol is [`docs/PEANO_LLM.md`](../docs/PEANO_LLM.md).
 

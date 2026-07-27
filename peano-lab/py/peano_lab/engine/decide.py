@@ -39,6 +39,16 @@ class DecisionError(ValueError):
 
 
 @dataclass(frozen=True, slots=True)
+class NumeralCertificate:
+    """A checked proof that one closed term equals its canonical numeral."""
+
+    source: Term
+    value: int
+    normal_form: Term
+    certificate: Proof
+
+
+@dataclass(frozen=True, slots=True)
 class EquationVerdict:
     """A computational verdict, deliberately separate from a proof term."""
 
@@ -219,6 +229,99 @@ def _normalization_proof(term: Term) -> tuple[int, Term, Proof]:
     raise DecisionError("internal normalization failed")
 
 
+def _value_limit(max_value: int) -> DecisionError:
+    return DecisionError(
+        f"cannot prove term: value exceeds the explicit {max_value} limit"
+    )
+
+
+def _bounded_normalization_proof(
+    term: Term,
+    max_value: int,
+) -> tuple[int, Term, Proof]:
+    """Normalize a closed term without first constructing an oversized value.
+
+    Every recursive result is already at most ``max_value``.  Addition and
+    multiplication therefore test their bounds *before* performing the Python
+    operation or allocating its unary numeral.
+    """
+
+    if type(term) is Zero:
+        return 0, term, EqRefl(term)
+    if type(term) is Succ:
+        value, numeral, child_proof = _bounded_normalization_proof(
+            term.term, max_value
+        )
+        if value >= max_value:
+            raise _value_limit(max_value)
+        return value + 1, Succ(numeral), CongS(child_proof)
+    if type(term) is Add:
+        left_value, left_numeral, left_proof = _bounded_normalization_proof(
+            term.left, max_value
+        )
+        right_value, right_numeral, right_proof = _bounded_normalization_proof(
+            term.right, max_value
+        )
+        if left_value > max_value - right_value:
+            raise _value_limit(max_value)
+        value = left_value + right_value
+        rewrite_arguments = CongAdd(left_proof, right_proof)
+        calculate = _prove_numeral_add(left_numeral, right_numeral)
+        return value, _numeral(value), EqTrans(rewrite_arguments, calculate)
+    if type(term) is Mul:
+        left_value, left_numeral, left_proof = _bounded_normalization_proof(
+            term.left, max_value
+        )
+        right_value, right_numeral, right_proof = _bounded_normalization_proof(
+            term.right, max_value
+        )
+        if left_value != 0 and right_value > max_value // left_value:
+            raise _value_limit(max_value)
+        value = left_value * right_value
+        rewrite_arguments = CongMul(left_proof, right_proof)
+        calculate = _prove_numeral_mul(left_numeral, right_numeral)
+        return value, _numeral(value), EqTrans(rewrite_arguments, calculate)
+    # Reuse the evaluator's exact messages for variables and malformed nodes.
+    _evaluate_term(term, ())
+    raise DecisionError("internal bounded normalization failed")
+
+
+def prove_closed_term(
+    term: Term,
+    *,
+    max_value: int = 128,
+) -> NumeralCertificate:
+    """Return checked evidence ``term = numeral(value)`` within a value bound.
+
+    ``max_value`` bounds every intermediate value, not merely the final one.
+    Consequently a compact repeated-multiplication term is rejected before a
+    giant Python integer, unary numeral, or proof tree can be constructed.
+    Computation only selects the claimed numeral: the independent kernel must
+    still validate the exact equality before this function returns it.
+    """
+
+    if type(max_value) is not int or max_value < 0:
+        raise DecisionError("closed-term value limit must be a non-negative integer")
+    try:
+        value, normal_form, certificate = _bounded_normalization_proof(
+            term, max_value
+        )
+        equation = Eq(term, normal_form)
+        if not check((), certificate, equation):
+            raise DecisionError(
+                "kernel rejected the generated closed-term certificate"
+            )
+        return NumeralCertificate(term, value, normal_form, certificate)
+    except DecisionError:
+        raise
+    except RecursionError:
+        raise DecisionError(
+            "cannot prove term: expression is too deeply nested"
+        ) from None
+    except (AttributeError, TypeError, ValueError):
+        raise DecisionError("cannot prove term: malformed PA term") from None
+
+
 def prove_closed_equation(equation: Eq) -> Proof | None:
     """Return checked evidence for a true closed equation, otherwise ``None``.
 
@@ -229,21 +332,29 @@ def prove_closed_equation(equation: Eq) -> Proof | None:
     invalid certificate for a tactic to install.
     """
 
-    equation = _require_equation(equation)
-    verdict = decide_closed_equation(equation)
-    if not verdict.holds:
-        return None
     try:
+        equation = _require_equation(equation)
+        verdict = decide_closed_equation(equation)
+        if not verdict.holds:
+            return None
         left_value, left_numeral, left_proof = _normalization_proof(equation.left)
         right_value, right_numeral, right_proof = _normalization_proof(equation.right)
-    except RecursionError as exc:
-        raise DecisionError("cannot prove equation: expression is too deeply nested") from exc
-    if left_value != right_value or left_numeral != right_numeral:
-        raise DecisionError("internal equation normalization disagreed with evaluation")
-    certificate = EqTrans(left_proof, EqSym(right_proof))
-    if not check((), certificate, equation):
-        raise DecisionError("kernel rejected the generated equation certificate")
-    return certificate
+        if left_value != right_value or left_numeral != right_numeral:
+            raise DecisionError(
+                "internal equation normalization disagreed with evaluation"
+            )
+        certificate = EqTrans(left_proof, EqSym(right_proof))
+        if not check((), certificate, equation):
+            raise DecisionError("kernel rejected the generated equation certificate")
+        return certificate
+    except DecisionError:
+        raise
+    except RecursionError:
+        raise DecisionError(
+            "cannot prove equation: expression is too deeply nested"
+        ) from None
+    except (AttributeError, TypeError, ValueError):
+        raise DecisionError("cannot prove equation: malformed PA equation") from None
 
 
 def _evaluate_formula(formula: object, environment: tuple[int, ...], bound: int) -> bool:
@@ -356,10 +467,12 @@ def bounded_check(formula: Formula, bound: int) -> BoundedVerdict:
 
 __all__ = [
     "DecisionError",
+    "NumeralCertificate",
     "EquationVerdict",
     "BoundedVerdict",
     "evaluate_closed_term",
     "decide_closed_equation",
+    "prove_closed_term",
     "prove_closed_equation",
     "bounded_check",
 ]

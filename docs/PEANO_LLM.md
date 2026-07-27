@@ -103,7 +103,10 @@ session records `session`, `kind`, `family`, `theorem`,
 - `ladder_script`: replay of authored ladder scripts, independently finalized;
 - `variant_renamed`: alpha-renamed instances in the
   `generated_reflexive_arithmetic` family; and
-- `variant_commuted`: provable instances in the `add_comm` family. Variant
+- `variant_commuted`: provable instances in the `add_comm` family; and
+- `variant_numeric`: bounded `norm_num` examples in the
+  `generated_closed_coefficients` family. Each theorem reduces a closed
+  coefficient inside an otherwise open term. Variant
   sessions also include deliberate, transactionally checked failed attempts.
 
 The `run_fingerprint` hashes the complete semantic configuration, theorem
@@ -114,16 +117,17 @@ collisions.
 
 The generation CLI requires `--output`; `--manifest` defaults to
 `OUTPUT.manifest.json`. Defaults are seed 0, 1,500 renamed variants, 96 commuted
-variants, `auto` depth 5, and 5,000 search nodes. Ladder auto and script sessions
-are enabled for the acceptance/smoke corpus. Named raw and manifest outputs are
-durably staged and the previous pair is restored on an ordinary publication
-failure; the CLI rejects path collisions and non-file destinations. A typical
-command is:
+variants, up to 96 numeric variants (default 96), `auto` depth 5, and 5,000 search nodes. Ladder
+auto and script sessions are enabled for the acceptance/smoke corpus. Named raw
+and manifest outputs are durably staged and the previous pair is restored on an
+ordinary publication failure; the CLI rejects path collisions and non-file
+destinations. Generator semantics are version 2 after adding numeric variants;
+the binding trace and manifest formats remain version 1. A typical command is:
 
 ```bash
 python3 scripts/generate_peano_traces.py \
   --output /tmp/peano-raw.jsonl \
-  --seed 0 --renamed 1500 --commuted 96 \
+  --seed 0 --renamed 1500 --commuted 96 --numeric 96 \
   --auto-depth 5 --auto-max-nodes 5000
 ```
 
@@ -188,9 +192,10 @@ still belong upstream in the generation-manifest selection because an exact
 formula flag cannot recognize every transformed relative.
 
 Splitting by exact footer formula is necessary but not sufficient for a public
-generalization claim. Renamed or commuted instances can be mathematically the
-same family while having a different formula string. The released learning
-corpus therefore omits every session whose manifest kind is `ladder_auto` or
+generalization claim. Renamed, commuted, or closed-coefficient numeric instances
+can be mathematically the same family while having a different formula string.
+The released learning corpus therefore omits every session whose manifest kind
+is `ladder_auto` or
 `ladder_script`, not merely the four test formulas. The remaining synthetic
 families must also be checked against the held-out templates below before
 export. Confirm that none of their canonical footer formulas occurs in train
@@ -200,7 +205,7 @@ smoke test; training on that raw superset and calling the following score
 
 ## Fixed held-out evaluation
 
-The version-1 test families are fixed in `scripts/eval_peano_policy.py`:
+The version-2 test families are fixed in `scripts/eval_peano_policy.py`:
 
 | Family | Closed goal |
 |---|---|
@@ -209,13 +214,14 @@ The version-1 test families are fixed in `scripts/eval_peano_policy.py`:
 | `le_total` | `forall n m. n <= m \/ m <= n` |
 | `mul_eq_zero` | `forall n m. n * m = 0 -> n = 0 \/ m = 0` |
 
-These four literal statements define evaluation protocol v1; the evaluator
+These four literal statements define evaluation protocol v2; the evaluator
 checks their parsed formulas against the library at import time rather than
 silently inheriting later library edits. Their canonical goal-set fingerprint
-is `ea1b3039340033bac9d3bf4835cc8f09f5b0da6bc017b179793daab04faa4731`
+is `f99b62e86e142c2b99221360b05e2d85969d4dda1d61d13c187c7ac6e80049db`
 and appears in every report. They are outside the generator's
-renamed-reflexive and commuted-addition template families; they also cannot be
-closed by the known cold-`auto` smoke set. Freeze the list, grammar,
+renamed-reflexive, commuted-addition, and closed-coefficient template families;
+they also cannot be closed by the known cold-`auto` smoke set. Freeze the list,
+grammar,
 pretty-printer, kernel, logic mode, `k`, step budget, and seed before comparing
 policies. Any change creates a new protocol version.
 
@@ -267,7 +273,7 @@ attempt-status counts, commands, deterministic per-attempt seeds, the
 canonical goal-set SHA-256, and proof node counts. Report the whole JSON, not
 only the headline float. If a later
 experiment samples `n > k` candidates and estimates pass@k combinatorially,
-label that estimator separately; it is not the version-1 metric.
+label that estimator separately; it is not the version-2 metric.
 
 Run the in-repository random baseline end to end with:
 
@@ -279,7 +285,13 @@ python3 scripts/eval_peano_policy.py --k 8 --max-steps 16 --seed 20260727
 tacticals. Its menu deliberately excludes `auto`: a random plumbing baseline
 must not delegate to the strong built-in search procedure. It is not a
 meaningful theorem-proving baseline. Identical inputs produce byte-identical
-JSON. To integrate a future local model, implement the importable
+JSON. The evaluator's checked scripted regressions separately pin the arithmetic
+surface: `norm_num` proves closed arithmetic and reduces closed coefficients in
+open terms (using a coefficient shape deliberately outside the generated numeric grid), while a genuinely polynomial identity fails under `norm_num` and
+succeeds under `ring`. M13 bumps the evaluator protocol to version 2 because
+`norm_num` expands the production grammar, even though the deliberately weak
+`random-tactic-v1` menu itself is unchanged. To integrate a future local model,
+implement the importable
 `Policy.propose(goals_before, *, sample, step, rng)` interface and call
 `evaluate(policy, goals, k=..., max_steps=..., seed=...)`; the judge and report
 stay unchanged.
@@ -290,8 +302,10 @@ The kernel prevents a false certificate from scoring, but it cannot make an
 evaluation scientifically valid. Check all of the following:
 
 - **Exact and structural leakage:** remove held-out authored scripts, `auto`
-  traces, renamed binders, commuted equations, dependencies whose transcript
-  contains the same target, and hand-written examples copied into prompts.
+  traces, renamed binders, commuted equations, or generated numeric variants
+  derived from or structurally overlapping a held-out family; also remove
+  dependencies whose transcript contains the same target and hand-written examples copied into
+  prompts.
 - **Deduplication scope:** identical transitions are removed, but near
   duplicates and logically equivalent formulas require family provenance from
   the manifest, not string hashing alone.
@@ -303,8 +317,8 @@ evaluation scientifically valid. Check all of the following:
   The exact Boolean mode is fixed by the benchmark and passed independently to
   final checking.
 - **Kernel/version drift:** record the Git commit. A printer, parser, tactic,
-  axiom, or checker change invalidates direct comparison even if JSON schema
-  version remains 1.
+  axiom, or checker change invalidates direct comparison even when the report
+  schema number itself is unchanged.
 - **Sampling independence:** seed each family/sample independently as the
   harness does. Batch order, worker count, and an earlier model failure must not
   perturb later samples.

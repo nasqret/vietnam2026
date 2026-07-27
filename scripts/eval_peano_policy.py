@@ -51,7 +51,7 @@ from peano_lab.ui.prove import (  # noqa: E402
 )
 
 
-EVAL_VERSION = 1
+EVAL_VERSION = 2
 MAX_COMMAND_CHARS = 4_000
 AttemptStatus = Literal["proof", "invalid", "failing", "limit"]
 ATTEMPT_STATUSES: tuple[AttemptStatus, ...] = (

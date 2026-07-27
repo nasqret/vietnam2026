@@ -151,7 +151,8 @@ def usage() -> str:
         "",
         "  Tactics: intro · apply · exact · assumption · split · left · right",
         "           cases · exfalso · exists · specialize · forall_elim",
-        "           refl · symm · trans · congr · rewrite · induction · simp · ring",
+        "           refl · symm · trans · congr · rewrite · induction · simp",
+        "           norm_num · ring",
         "           use <library-theorem> [as <alias>]",
         "  Language: t1; t2 · t1 <|> t2 · repeat t · first [t1 | t2]",
         "            all_goals t · focus n t · auto [depth]",
@@ -172,6 +173,7 @@ def tactic_help() -> str:
         "  rewrite <- h at h2",
         "  focus 2 simp",
         "  use add_comm; exact add_comm",
+        "  intro n; norm_num",
         "  intro n; intro m; ring",
         "",
         "Logic starts intuitionistic. `classical on` explicitly authorizes DNE",
@@ -304,7 +306,10 @@ def _hint_text(owner: ProofSession) -> str:
     if status == "found":
         return f"Hint (found): try `{suggestion}`."
     if status == "limit":
-        return "Hint (limit): unresolved terms or the inspection budget prevent a verdict."
+        return (
+            "Hint (limit): unresolved terms or a bounded inspection/resource "
+            "limit prevents a verdict."
+        )
     return "Hint (none): no supported immediate move was found; this is not an unprovability claim."
 
 

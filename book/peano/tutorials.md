@@ -11,6 +11,7 @@ Useful fresh-session links:
 - [`pa prove forall n m. n + m = m + n`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20prove%20forall%20n%20m.%20n%20%2B%20m%20%3D%20m%20%2B%20n)
 - [`pa tutorial add_comm`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20tutorial%20add_comm)
 - [`pa tutorial symm_all`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20tutorial%20symm_all)
+- [`pa tutorial norm_num`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20tutorial%20norm_num)
 
 ## Prove `add_comm` by hand
 
@@ -60,6 +61,42 @@ pa>
 pa>
 pa>
 pa>
+```
+
+## Turn numerical computation into a proof
+
+The third tutorial puts a closed calculation beside the same calculation inside an open equality.
+On each focused goal, `hint` recommends `norm_num` without changing the proof state.  The tactic then
+constructs PA3--PA6 certificates for the closed numerical islands; it never asks the kernel to trust
+the evaluated Python integer.
+
+The ENTER-only lesson has one narrative step followed by the exact eight-command proof below:
+
+```text
+pa> pa tutorial norm_num
+pa>
+pa>
+pa>
+pa>
+pa>
+pa>
+pa>
+pa>
+pa>
+```
+
+Here is the frozen proof sequence without the tutorial wrapper.  Its first branch is wholly closed;
+the second keeps `n` rigid while normalizing only `2 * 3`.
+
+```text
+pa> pa prove (2 * 3 = 6) /\ (forall n. n + (2 * 3) = n + 6)
+pa> split
+pa> hint
+pa> norm_num
+pa> intro n
+pa> hint
+pa> norm_num
+pa> qed
 ```
 
 For comparison, ordinary Peano proof blocks use the same `pa>` prefix and keep one proof session for

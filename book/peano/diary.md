@@ -470,3 +470,30 @@ with a classical toggle) recorded in `docs/PEANO_LAB_DESIGN.md` §0.
   190 links/19 blocks/96 commands; the vault has 55 notes/258 links/0 unresolved. The regenerated
   source-bound corpus keeps 13,152 rows from 1,596 checked sessions, local staging is green, and the
   trusted checker is still 234 lines.
+
+## 2026-07-27 — M13: calculate narrowly, justify completely
+
+- `norm_num` deliberately computes less than Python could. It sees only closed numerical islands in
+  an equality (optionally below a bounded leading universal spine), chooses a unary numeral, and
+  builds the PA3--PA6 and congruence proof that the kernel expects. A computed Boolean or integer is
+  never proof authority; the bridge is checked before commit and the original theorem is checked at
+  QED.
+- Open normalization remains honest. If the two normalized terms are not identical, the tactic
+  transports one explicit residual goal back to the original equality. It does not read hypotheses
+  as rewrite rules. This keeps the teaching distinction sharp: `simp` rewrites, `norm_num` certifies
+  concrete arithmetic, `ring` certifies unconditional polynomial identities, and `auto` searches.
+  General PA and nonlinear consequences of assumptions are outside all four; a future `omega`
+  requires its own certificate language and limits.
+- Browser safety is part of the semantics exposed to students: term shape, leading binders,
+  computations, values, work, generated bridge, complete live proof, and wall time are all bounded.
+  Every ordinary failure or exhausted limit is transactional. The pure hint path uses the same
+  focused hole and projected immutable commit, but consumes no hole ID and publishes no history.
+- The teaching surface now includes a tactic card, checked tutorial, this executable chapter, a
+  connected vault concept, controlled failure/success traces, and a generator-v2 numerical corpus
+  tranche. The reproduced v1 release has 13,344 unique rows from 1,692 checked QED sessions; its
+  18-row validation split is explicitly only a same-family pipeline check.
+- M13 closes locally with 641 Peano tests, 360 Lambda tests plus 36 subtests, a warning-free 25-page
+  book whose 193 links and 125 commands replay, 56 vault notes/271 links/0 unresolved, green corpus
+  smoke and evaluator-v2 plumbing, green staging/vendor hashes, and the unchanged 234-line kernel.
+  No in-app browser instance was available, so direct Pyodide interaction is left as an explicit
+  publication limitation rather than an invented measurement.

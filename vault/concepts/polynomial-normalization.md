@@ -22,4 +22,5 @@ proof-depth, and wall-clock limits. Exceeding one is an honest tactic limit and 
 
 ## Related
 
-[[normal-form]] · [[simp-termination]] · [[theorem-ladder]] · [[de-bruijn-criterion]]
+[[normal-form]] · [[checked-numerical-normalization]] · [[simp-termination]] · [[theorem-ladder]] ·
+[[de-bruijn-criterion]]

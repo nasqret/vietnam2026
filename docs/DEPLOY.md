@@ -1,6 +1,6 @@
 # Deploying
 
-Two live targets on the faculty server (`bnaskrecki@lts-faculty.wmi.amu.edu.pl`, static Apache + PHP,
+Four static targets on the faculty server (`bnaskrecki@lts-faculty.wmi.amu.edu.pl`, static Apache + PHP,
 **no persistent daemons** — which is why the lab is fully client-side):
 
 | URL | Server path | Contents |
@@ -12,11 +12,14 @@ Two live targets on the faculty server (`bnaskrecki@lts-faculty.wmi.amu.edu.pl`,
 
 The SSH key (`~/.ssh/id_ed25519`) is already configured for the `lts-faculty` host.
 
-## One command
+## Core site and Lambda Lab
 
 ```bash
 make deploy        # = stage + deploy-site + deploy-lab
 ```
+
+Peano Lab is deliberately promoted through its own staging and production
+targets; `make deploy` does not publish either Peano channel.
 
 ## Step by step
 
@@ -52,5 +55,6 @@ make deploy-peano
 
 ## GitHub
 
-The repository `nasqret/vietnam2026` is the source of record. Push `main`; optionally enable GitHub Pages
-as a mirror of the built book.
+The repository `nasqret/vietnam2026` is the source of record. Push the current
+milestone branch; merging it to `main` is a milestone-owner decision. GitHub
+Pages may optionally mirror the built book.

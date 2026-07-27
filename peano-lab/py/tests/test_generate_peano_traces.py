@@ -6,6 +6,7 @@ import hashlib
 import importlib.util
 import io
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -72,6 +73,7 @@ def test_generation_is_seed_deterministic_and_preserves_exact_v1_records() -> No
         seed=17,
         renamed=3,
         commuted=0,
+        numeric=0,
         auto_depth=5,
         auto_max_nodes=100,
     )
@@ -82,6 +84,7 @@ def test_generation_is_seed_deterministic_and_preserves_exact_v1_records() -> No
     assert manifest == repeated_manifest
     assert manifest["format"] == generator.MANIFEST_FORMAT
     assert manifest["version"] == 1
+    assert manifest["generator_version"] == 2
     assert manifest["trace_version"] == 1
     assert manifest["provenance"]["sources"] == {
         "generator": {
@@ -170,6 +173,7 @@ def test_seed_changes_names_order_session_ids_and_raw_digest() -> None:
     base = dict(
         renamed=4,
         commuted=1,
+        numeric=0,
         auto_depth=5,
         auto_max_nodes=5_000,
         ladder_auto=False,
@@ -185,6 +189,7 @@ def test_seed_changes_names_order_session_ids_and_raw_digest() -> None:
 
 def test_session_ids_include_the_full_run_identity_not_only_the_seed() -> None:
     common = dict(
+        numeric=0,
         auto_depth=5,
         auto_max_nodes=5_000,
         ladder_auto=False,
@@ -220,6 +225,7 @@ def test_ladder_families_can_be_disabled_for_a_leakage_safe_release() -> None:
         seed=9,
         renamed=2,
         commuted=1,
+        numeric=0,
         auto_depth=5,
         auto_max_nodes=5_000,
         ladder_auto=False,
@@ -240,11 +246,82 @@ def test_ladder_families_can_be_disabled_for_a_leakage_safe_release() -> None:
     assert commuted["template"] in {"add_comm_forward", "add_comm_reversed"}
 
 
+def test_numeric_family_is_bounded_deterministic_and_kernel_checked() -> None:
+    config = generator.GenerationConfig(
+        seed=23,
+        renamed=0,
+        commuted=0,
+        numeric=3,
+        ladder_auto=False,
+        ladder_scripts=False,
+    )
+    raw, manifest = _run(config)
+    repeated_raw, repeated_manifest = _run(config)
+
+    assert (raw, manifest) == (repeated_raw, repeated_manifest)
+    assert manifest["generator_version"] == 2
+    assert manifest["trace_version"] == 1
+    assert manifest["counts"]["sessions_by_kind"] == {"variant_numeric": 3}
+    by_variant = {entry["variant"]: entry for entry in manifest["sessions"]}
+    first_name = by_variant[0]["surface_names"][0]
+    assert by_variant[0]["source"] == (
+        f"forall {first_name}. (2 * 2 + 0) * {first_name} = 4 * {first_name}"
+    )
+    assert all(
+        entry["family"] == "generated_closed_coefficients"
+        and entry["template"] == "closed_coefficient_normalization"
+        and entry["kernel_checked"] is True
+        and entry["proof_nodes"] > 0
+        for entry in manifest["sessions"]
+    )
+    for session in _sessions(raw):
+        assert [record.get("tactic") for record in session] == [
+            "norm_num now",
+            "norm_num",
+            None,
+        ]
+        assert [record.get("status") for record in session[:-1]] == ["error", "ok"]
+        assert session[0]["goals_after"] == session[0]["goals_before"]
+        assert session[0]["error"] == "`norm_num` takes no arguments."
+        assert session[-1]["qed"] is True
+
+
+def test_full_numeric_tranche_stays_inside_the_public_depth_and_value_bounds() -> None:
+    config = generator.GenerationConfig(
+        seed=23,
+        renamed=0,
+        commuted=0,
+        numeric=generator.DEFAULT_NUMERIC,
+        ladder_auto=False,
+        ladder_scripts=False,
+    )
+
+    _raw, manifest = _run(config)
+
+    assert manifest["counts"]["sessions_by_kind"] == {
+        "variant_numeric": generator.DEFAULT_NUMERIC
+    }
+    assert len({entry["source"] for entry in manifest["sessions"]}) == 96
+    assert all(
+        entry["kernel_checked"] is True and entry["result"] == "qed"
+        for entry in manifest["sessions"]
+    )
+    assert any("(9 * 5 + 2)" in entry["source"] for entry in manifest["sessions"])
+    values = [
+        int(match.group(1))
+        for entry in manifest["sessions"]
+        if (match := re.search(r" = (\d+) \* ", entry["source"])) is not None
+    ]
+    assert len(values) == generator.DEFAULT_NUMERIC
+    assert max(values) == 47
+
+
 def test_honest_auto_sweep_covers_every_ladder_statement_and_keeps_failures() -> None:
     config = generator.GenerationConfig(
         seed=3,
         renamed=0,
         commuted=0,
+        numeric=0,
         auto_depth=1,
         auto_max_nodes=1,
         ladder_auto=True,
@@ -275,6 +352,7 @@ def test_default_renamed_scale_exceeds_ten_thousand_deduplicated_transitions() -
         seed=101,
         renamed=sample_size,
         commuted=0,
+        numeric=0,
         auto_depth=5,
         auto_max_nodes=5_000,
         ladder_auto=False,
@@ -308,6 +386,7 @@ def test_kernel_rejection_can_never_emit_a_success_footer(monkeypatch) -> None:
         seed=5,
         renamed=1,
         commuted=0,
+        numeric=0,
         ladder_auto=False,
         ladder_scripts=False,
     )
@@ -334,9 +413,11 @@ def test_cli_writes_raw_and_separate_manifest(tmp_path: Path, capsys) -> None:
             "--seed",
             "12",
             "--renamed",
-            "1",
+            "0",
             "--commuted",
             "0",
+            "--numeric",
+            "1",
             "--no-ladder-auto",
             "--no-ladder-scripts",
         ]
@@ -347,6 +428,7 @@ def test_cli_writes_raw_and_separate_manifest(tmp_path: Path, capsys) -> None:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     assert raw_path.read_text(encoding="utf-8").startswith('{"v": 1,')
     assert manifest["counts"]["sessions"] == 1
+    assert manifest["counts"]["sessions_by_kind"] == {"variant_numeric": 1}
     assert "generated" in capsys.readouterr().err
 
 
@@ -484,6 +566,8 @@ def test_cli_preflights_and_transactionally_publishes_named_pair(
         "1",
         "--commuted",
         "0",
+        "--numeric",
+        "0",
         "--no-ladder-auto",
         "--no-ladder-scripts",
     ]
@@ -536,6 +620,8 @@ def test_cli_rolls_back_interrupts_after_completed_filesystem_moves(
         "--renamed",
         "1",
         "--commuted",
+        "0",
+        "--numeric",
         "0",
         "--no-ladder-auto",
         "--no-ladder-scripts",
@@ -606,6 +692,8 @@ def test_cli_rolls_back_interrupts_after_completed_filesystem_moves(
     [
         ({"renamed": -1}, "renamed"),
         ({"commuted": -1}, "commuted"),
+        ({"numeric": -1}, "numeric"),
+        ({"numeric": generator.MAX_NUMERIC + 1}, "numeric"),
         ({"auto_depth": 0}, "auto_depth"),
         ({"auto_max_nodes": 0}, "auto_max_nodes"),
         ({"ladder_auto": 1}, "switches"),

@@ -20,7 +20,9 @@ This part tells the construction story from the implementation diary. Read it in
    focusing and their rollback laws.
 5. {doc}`Induction and the theorem ladder <induction-ladder>` climbs from the defining equations to a
    checked zero-product proof.
-6. {doc}`The deliberate limits <limits>` draws the line around PA, Gödel's theorems, bounded search,
+6. {doc}`Checked arithmetic automation <arithmetic-automation>` separates numerical computation,
+   polynomial normalization, and bounded search from the certificates that justify their results.
+7. {doc}`The deliberate limits <limits>` draws the line around PA, Gödel's theorems, bounded search,
    and the facilities that a production prover such as Lean adds.
 
 The working design lives in
@@ -29,9 +31,9 @@ the task board in
 [`PLAN/09_peano_lab.md`](https://github.com/nasqret/vietnam2026/blob/peano-lab/PLAN/09_peano_lab.md).
 
 Then use {doc}`Checked tutorials <tutorials>` to replay a premise-free hand proof of addition
-commutativity and a source-level `symm_all` tactical walkthrough. Every `pa>` block and browser deep
-link in this part is replayed through the real driver during the book gate; prose examples do not
-get a private, easier semantics.
+commutativity, a source-level `symm_all` tactical walkthrough, and a numerical-normalization proof.
+Every `pa>` block and browser deep link in this part is replayed through the real driver during the
+book gate; prose examples do not get a private, easier semantics.
 
 The full M7 library is executable too. {doc}`The checked theorem ladder <ladder>` follows twenty
 scripted entries through order totality and the zero-product capstone, explains how theorem reuse is
@@ -47,3 +49,6 @@ M11 extends that core with three ordinary checked entries—`one_mul`, `mul_one`
 complete the commutative-semiring basis for certificate-producing arithmetic normalization. M12's
 argument-free `ring` turns that basis into checked polynomial identities; the ladder chapter gives
 the complete odd-square induction proof and makes its explicit `trans`/`rewrite` boundary visible.
+M13 adds bounded `norm_num` for closed numerical islands and arithmetic-aware hints. The new
+arithmetic-automation chapter contrasts its exact equality contract with `simp`, `ring`, and `auto`,
+and records why general PA, nonlinear hypothesis solving, and Presburger `omega` remain outside it.

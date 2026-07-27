@@ -5,14 +5,14 @@ The raw output is deliberately *only* the binding version-1 stream: tactic
 records followed immediately by their four-field session footer.  Batch-only
 provenance belongs in the separate JSON manifest, never in those records.
 
-Three families are generated:
+Five families are generated:
 
 * one honest ``auto`` attempt for every theorem-ladder statement;
 * one checked replay of every authored theorem-ladder script (dependencies are
   explicit implication hypotheses, exactly as in the library replay); and
-* many seed-named, provable arithmetic variants.  These include a cheap
-  reflexive template for scale and a smaller addition-commutativity tranche
-  for more interesting search trajectories.
+* many seed-named reflexive arithmetic variants for scale;
+* a smaller addition-commutativity tranche for richer search trajectories; and
+* bounded closed-coefficient normalization examples for ``norm_num``.
 
 Every generated proof is owned by :class:`ProofSession`.  Successful sessions
 receive a ``qed: true`` footer only after ``checked_final`` has asked the
@@ -68,10 +68,12 @@ from peano_lab.ui.prove import ProofSession  # noqa: E402
 
 MANIFEST_FORMAT = "peano-lab-trace-generation-manifest"
 MANIFEST_VERSION = 1
-GENERATOR_VERSION = 1
+GENERATOR_VERSION = 2
 DEFAULT_SEED = 0
 DEFAULT_RENAMED = 1_500
 DEFAULT_COMMUTED = 96
+DEFAULT_NUMERIC = 96
+MAX_NUMERIC = 96
 DEFAULT_AUTO_DEPTH = 5
 DEFAULT_AUTO_MAX_NODES = 5_000
 
@@ -87,21 +89,26 @@ class GenerationConfig:
     The defaults deliberately clear ten thousand distinct transition records.
     ``renamed`` is the inexpensive bulk family; ``commuted`` is smaller because
     proving addition commutativity from cold explores a larger search tree.
+    ``numeric`` exercises bounded certificate-producing normalization of closed
+    coefficients beneath a leading universal binder.
     """
 
     seed: int = DEFAULT_SEED
     renamed: int = DEFAULT_RENAMED
     commuted: int = DEFAULT_COMMUTED
+    numeric: int = DEFAULT_NUMERIC
     auto_depth: int = DEFAULT_AUTO_DEPTH
     auto_max_nodes: int = DEFAULT_AUTO_MAX_NODES
     ladder_auto: bool = True
     ladder_scripts: bool = True
 
     def __post_init__(self) -> None:
-        for field in ("renamed", "commuted"):
+        for field in ("renamed", "commuted", "numeric"):
             value = getattr(self, field)
             if type(value) is not int or value < 0:
                 raise ValueError(f"{field} must be a non-negative integer")
+        if self.numeric > MAX_NUMERIC:
+            raise ValueError(f"numeric must be at most {MAX_NUMERIC}")
         for field in ("auto_depth", "auto_max_nodes"):
             value = getattr(self, field)
             if type(value) is not int or value < 1:
@@ -538,6 +545,53 @@ class _Batch:
             )
         )
 
+    def numeric_variant(self, variant: int) -> None:
+        """Trace checked normalization of one bounded closed coefficient."""
+
+        name = self._token("n", variant)
+        left = 2 + variant % 8
+        right = 2 + (variant // 8) % 4
+        # The complete 8 x 4 x 3 grid gives the 96 distinct allowed shapes.
+        # Its maximum value 9 * 5 + 2 = 47 leaves room for the unary numeral
+        # beneath the surrounding multiplication inside the depth-64 limit.
+        offset = (variant // 32) % 3
+        value = left * right + offset
+        source = (
+            f"forall {name}. ({left} * {right} + {offset}) * {name} = "
+            f"{value} * {name}"
+        )
+        target, free_names = parse_formula_with_names(source)
+        if free_names:
+            raise GenerationError(
+                "a numeric generated theorem unexpectedly has free names"
+            )
+        owner = _new_session(target, source, self._trace())
+        # Pin both the zero-argument grammar and transactional failure record.
+        owner, _ = _controlled_failure(owner, "norm_num", "now")
+        try:
+            owner = _apply(owner, "norm_num")
+        except TacticError as exc:
+            raise GenerationError(
+                f"numeric variant {variant} failed norm_num: {exc}"
+            ) from exc
+        nodes = _qed(owner)
+        self.sessions.append(
+            _record_summary(
+                owner,
+                kind="variant_numeric",
+                family="generated_closed_coefficients",
+                template="closed_coefficient_normalization",
+                variant=variant,
+                source=source,
+                target_mode="generated_statement",
+                result="qed",
+                kernel_checked=True,
+                controlled_failures=1,
+                proof_nodes=nodes,
+                names=(name,),
+            )
+        )
+
     def run(self) -> dict[str, Any]:
         if self.config.ladder_auto:
             for spec in self.theorems:
@@ -549,13 +603,18 @@ class _Batch:
         schedule = [
             *(("renamed", index) for index in range(self.config.renamed)),
             *(("commuted", index) for index in range(self.config.commuted)),
+            *(("numeric", index) for index in range(self.config.numeric)),
         ]
         self.rng.shuffle(schedule)
         for kind, variant in schedule:
             if kind == "renamed":
                 self.renamed_variant(variant)
-            else:
+            elif kind == "commuted":
                 self.commuted_variant(variant)
+            elif kind == "numeric":
+                self.numeric_variant(variant)
+            else:  # pragma: no cover - schedule construction is local and exact
+                raise GenerationError(f"unknown generated family {kind!r}")
 
         kinds = Counter(str(session["kind"]) for session in self.sessions)
         results = Counter(str(session["result"]) for session in self.sessions)
@@ -620,6 +679,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
     parser.add_argument("--renamed", type=int, default=DEFAULT_RENAMED)
     parser.add_argument("--commuted", type=int, default=DEFAULT_COMMUTED)
+    parser.add_argument("--numeric", type=int, default=DEFAULT_NUMERIC)
     parser.add_argument("--auto-depth", type=int, default=DEFAULT_AUTO_DEPTH)
     parser.add_argument(
         "--auto-max-nodes", type=int, default=DEFAULT_AUTO_MAX_NODES
@@ -809,6 +869,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             seed=args.seed,
             renamed=args.renamed,
             commuted=args.commuted,
+            numeric=args.numeric,
             auto_depth=args.auto_depth,
             auto_max_nodes=args.auto_max_nodes,
             ladder_auto=args.ladder_auto,

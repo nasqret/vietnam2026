@@ -399,8 +399,9 @@
           <h2 id="peano-release-title">Peano Lab: build proofs, then distrust them</h2>
           <p>A little Lean for Peano arithmetic is now live. Its untrusted tactics produce explicit
             certificates; a separate 234-line kernel rechecks every QED against the theorem you
-            originally stated. Explore real induction, rewriting, tacticals and automation, then
-            climb a twenty-entry checked theorem library through the zero-product theorem.</p>
+            originally stated. Explore real induction, rewriting, checked <span class="mono">ring</span>
+            and <span class="mono">norm_num</span> automation, then climb a twenty-three-entry
+            theorem library through the zero-product theorem.</p>
         </div>
         <div class="peano-release-links">
           <a class="btn btn-verified" href="/peano-lab/" target="_blank" rel="noopener">Open the lab ↗</a>
@@ -419,7 +420,7 @@
         <a class="res" href="book/"><div class="ico">📖</div><div><h4>Knowledge book</h4><p>The full text-friendly notes — mathematics, runnable code, and links. The "learning data" of the course, built with JupyterBook.</p></div></a>
         <a class="res" href="/lab-lambda/" target="_blank"><div class="ico">🐊</div><div><h4>Lambda Lab</h4><p>A full λ-calculus laboratory <em>in your browser</em>: step-highlighted reductions, an <strong>interactive Curry–Howard prover</strong>, type inference &amp; inhabitation, twelve guided tutorials, quizzes, Alligator Eggs — no install.</p></div></a>
         <a class="res" href="book/cookbook/index.html"><div class="ico">🍳</div><div><h4>The Lambda Lab cookbook</h4><p><strong>New:</strong> a 19,000-word verified playground — Fibonacci without recursion, Ackermann in one line, a terminating Y-combinator factorial, the Ω that grows, puzzle ladders with hidden solutions. Every output produced by the real engine.</p></div></a>
-        <a class="res" href="/peano-lab/" target="_blank" rel="noopener"><div class="ico">🔢</div><div><h4>Peano Lab <em>— live</em></h4><p>A little Lean for <strong>Peano arithmetic</strong>: an independent kernel, real tactics (<span class="mono">rewrite</span>, <span class="mono">induction</span>, <span class="mono">simp</span>), tacticals, checked tutorials, and a twenty-entry theorem ladder — all in the browser.</p></div></a>
+        <a class="res" href="/peano-lab/" target="_blank" rel="noopener"><div class="ico">🔢</div><div><h4>Peano Lab <em>— live</em></h4><p>A little Lean for <strong>Peano arithmetic</strong>: an independent kernel, real tactics (<span class="mono">rewrite</span>, <span class="mono">induction</span>, <span class="mono">simp</span>, <span class="mono">ring</span>, <span class="mono">norm_num</span>), checked tutorials, and a twenty-three-entry theorem ladder — all in the browser.</p></div></a>
         <a class="res" href="slides/"><div class="ico">🖥️</div><div><h4>Slides</h4><p>One reveal.js deck per lecture, to follow along live and revisit afterwards.</p></div></a>
         <a class="res" href="https://github.com/nasqret/vietnam2026/tree/main/artifacts" target="_blank" rel="noopener"><div class="ico">✓</div><div><h4>Formal artifacts</h4><p>The same theorems proved in Lean, Agda, Rocq and Mizar — four foundations, one Rosetta stone.</p></div></a>
         <a class="res" href="https://github.com/nasqret/vietnam2026" target="_blank"><div class="ico">⌥</div><div><h4>Source on GitHub</h4><p>Everything is open: book, lab, vault, artifacts, and a reproducible build. <span class="mono">nasqret/vietnam2026</span>.</p></div></a>
