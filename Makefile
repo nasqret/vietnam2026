@@ -15,7 +15,7 @@ PEANO_CORPUS_PYTHON ?= python3
 # This path is a deletion target in `stage-peano`; command-line assignments
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
-override PEANOAPPID := a-f6c33c7840ad
+override PEANOAPPID := a-404fdbdb55e4
 
 .PHONY: help book lean lab-serve peano-serve peano-corpus peano-corpus-smoke peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \

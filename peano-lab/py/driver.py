@@ -9,6 +9,7 @@ handlers are considered.  Proof construction and final checking live in
 
 from __future__ import annotations
 
+import json
 import re
 import unicodedata
 from typing import Optional
@@ -30,6 +31,33 @@ NL = "\r\n"
 MAX_INPUT = 4_000
 MAX_NUMERAL = 256
 _NUMERAL_LITERAL = re.compile(r"(?<![\w'#])\d+(?![\w'])", re.UNICODE)
+_PYTHON_ERROR_LINE = re.compile(r"^[A-Za-z][A-Za-z0-9_]*Error:")
+
+
+def _failed_output(output: str) -> bool:
+    """Classify the driver's pinned first-line failure protocol.
+
+    Multiline replay needs a structured stop signal.  Existing public command
+    text remains unchanged; Python, rather than browser JavaScript, examines
+    the first rendered line where each driver/proof failure contract places
+    its final English label.
+    """
+
+    first = output.splitlines()[0] if output.splitlines() else ""
+    return (
+        _PYTHON_ERROR_LINE.match(first) is not None
+        or first.startswith("Error:")
+        or first.startswith("Parse error:")
+        or first.startswith("Tactic error:")
+        or first.startswith("QED check failed:")
+        or first.startswith("Unknown command ")
+        or first.startswith("Unknown `pa` command ")
+        or first.startswith("Usage:")
+        or first.startswith("Input is too long ")
+        or first == "A proof is already in progress."
+        or first == "Proof aborted. No theorem was claimed."
+        or (first.startswith("`") and "acts only when typed alone" in first)
+    )
 
 
 def _lines(*rows: str) -> str:
@@ -145,6 +173,38 @@ class LabSession:
             return "Error: the expression is too deeply nested for the browser."
         except Exception as exc:  # keep the browser REPL alive, but surface bugs
             return _browser_safe(f"{type(exc).__name__}: {exc}")
+
+    def run_result(self, line: str) -> dict[str, object]:
+        """Run one line and return the worker's structured replay status.
+
+        The ordinary ``run`` API and its exact output stay pinned.  ``failed``
+        is advisory browser control flow only: it can stop a pasted batch, but
+        it never grants QED or bypasses the independent checker.
+        """
+
+        owner_before = self._session_owner()
+        output = self.run(line)
+        owner_after = self._session_owner()
+        source = line.strip() if isinstance(line, str) else ""
+        failed = _failed_output(output)
+
+        opens_proof = re.match(
+            r"^pa\s+prove(?:\s|$)", source, re.IGNORECASE
+        ) is not None
+        if opens_proof:
+            # A statement line succeeds only if it really created a proof
+            # owner from an idle session.  An active tutorial owns raw input
+            # just as strictly as an active proof, so it must also stop here.
+            failed = failed or owner_before is not None or owner_after != "prove"
+        elif owner_before == "prove":
+            if source in {"qed", "done", "finish"}:
+                failed = failed or owner_after is not None or "No open goals. QED." not in output
+            elif owner_after != "prove":
+                # ``abort`` and any unexpected owner loss stop the batch.  A
+                # successful QED is handled by the exact branch above.
+                failed = True
+
+        return {"out": output, "failed": bool(failed)}
 
     def cmd_help(self, args: str) -> str:
         topic = args.strip().lower()
@@ -301,6 +361,16 @@ def run_line(line: str) -> str:
     return get_session().run(line)
 
 
+def run_line_result(line: str) -> str:
+    """Return one JSON command envelope for the browser worker."""
+
+    return json.dumps(
+        get_session().run_result(line),
+        ensure_ascii=True,
+        separators=(",", ":"),
+    )
+
+
 def take_download() -> str:
     return get_session().take_download()
 
@@ -315,4 +385,11 @@ def banner() -> str:
     )
 
 
-__all__ = ["LabSession", "get_session", "run_line", "take_download", "banner"]
+__all__ = [
+    "LabSession",
+    "get_session",
+    "run_line",
+    "run_line_result",
+    "take_download",
+    "banner",
+]

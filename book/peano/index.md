@@ -57,4 +57,6 @@ compression, and concurrent source transfer reduce cold network cost without cha
 The limits chapter distinguishes that runtime boot from theorem proving. M15 adds a replayable
 current-branch artifact: active text remains unchecked, while only a successful kernel QED may
 produce the retained script's final `qed`. The tactics and ladder chapters explain why downloading
-that program is still separate from checking a certificate or admitting a library theorem.
+that program is still separate from checking a certificate or admitting a library theorem. M17
+applies the same distinction to multiline paste: a bounded complete script runs sequentially
+through the ordinary session owner, and its final `qed` gains no new authority.

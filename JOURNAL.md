@@ -666,3 +666,29 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   release `v-85fb3352e49c`; the kernel has no diff and its checker remains 234 lines. No in-app
   browser was attached, so direct clicking is not claimed. Nothing was deployed: production and
   staging remain untouched, and the independent M14 cache-header stop still governs promotion.
+
+## 2026-07-28 (branch peano-lab) — Peano Lab M17: multiline proof paste
+
+- Specified one bounded replay path for both an accessible **Paste multiline proof** dialog and a
+  direct multiline paste into the terminal. Ignoring blanks, input must begin with `pa prove ` and
+  end with the exact line `qed`; the batch limit is 100,000 characters, 256 nonblank lines, and the
+  existing `MAX_INPUT` on every line.
+- Chose sequential rather than batch-atomic execution. Each line goes through the existing session
+  driver, the first failure stops the suffix, successful prefix commands remain, and ordinary undo
+  granularity stays one successful proof command at a time.
+- Kept browser authority narrow: pasted `script download` can never initiate a download. A pasted
+  final `qed`, however, follows precisely the normal owner-held path to the unchanged independent
+  checker and original theorem.
+- Implemented one preflight/parser and sequential executor for both routes, plus a Python-to-worker
+  structured failure bit so JavaScript does not guess from terminal prose. Unsafe controls,
+  malformed envelopes, duplicate/early proof boundaries, resource excess, inspection/rollback,
+  stale worker generations, and download payloads are all rejected or rendered powerless.
+- Verified synthetic terminal-paste events, dialog bounds and focus restoration, worker status,
+  strict one-at-a-time scheduling, failure-stop behavior, repeated undo, and the readable parity
+  replay's independently checked QED. Focused coverage reports 23 passed; Peano reports 698; Lambda
+  reports 360 plus 36 subtests. The warning-as-error 25-source book, 193 links/34 blocks/170
+  commands, and 60-note/335-link vault are green. The 13,344-transition/1,692-session corpus and
+  kernel are unchanged; `checker.py` remains 234 lines.
+- Refreshed exact local staging to build `2026-07-28b`, application `a-404fdbdb55e4`, vendor
+  `v-85fb3352e49c`. No in-app browser was attached, so a visual click-through is not claimed. No
+  remote deployment was attempted; production and staging remain untouched.

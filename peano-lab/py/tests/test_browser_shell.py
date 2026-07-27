@@ -82,6 +82,8 @@ def test_worker_mounts_the_complete_python_surface() -> None:
     assert listed == package_files | {"py/driver.py"}
     assert all((LAB / relative_path).is_file() for relative_path in listed)
     assert "driver.run_line(line)" in WORKER
+    assert "driver.run_line_result(line)" in WORKER
+    assert 'failed = result.failed === true' in WORKER
     assert "driver.banner()" in WORKER
 
 
@@ -104,6 +106,23 @@ def test_shell_exposes_accessible_proof_controls_and_ladder_shortcuts() -> None:
         "pa prove forall n m. n + m = m + n",
     ):
         assert f'data-cmd="{command}"' in INDEX
+
+
+def test_shell_exposes_accessible_bounded_multiline_proof_paste() -> None:
+    assert 'id="paste-proof"' in INDEX
+    assert 'id="paste-proof-dialog"' in INDEX
+    assert 'aria-labelledby="paste-proof-title"' in INDEX
+    assert '<label for="paste-proof-input">Complete proof script</label>' in INDEX
+    assert 'id="paste-proof-input"' in INDEX
+    assert 'maxlength="100000"' in INDEX
+    assert 'id="paste-proof-error" role="alert" aria-live="polite"' in INDEX
+    assert 'id="run-pasted-proof"' in INDEX
+    assert "const MAX_PASTE_CHARS=100000" in INDEX
+    assert "const MAX_PASTE_LINES=256" in INDEX
+    assert "beginning with <code>pa prove …</code> and ending with <code>qed</code>" in INDEX
+    assert 'pasteDialog.addEventListener("close",restorePasteFocus)' in INDEX
+    assert "pasteInput.focus()" in INDEX
+    assert 'pasteInput.addEventListener("paste",handlePasteInput)' in INDEX
 
 
 def test_tactic_completion_discovers_surface_checked_arithmetic() -> None:
@@ -174,6 +193,32 @@ def test_worker_fetches_sources_concurrently_but_mounts_deterministically() -> N
     assert result.returncode == 0, result.stderr
 
 
+def test_multiline_paste_is_validated_sequential_and_stop_safe() -> None:
+    harness = Path(__file__).with_name("multiline_paste_harness.js")
+    result = subprocess.run(
+        ["node", str(harness), str(LAB / "index.html")],
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0, result.stderr
+
+    assert 'term.element.addEventListener("paste",handleTerminalPaste,true)' in INDEX
+    assert "event.clipboardData.getData(\"text/plain\")" in INDEX
+    assert "event.preventDefault();event.stopImmediatePropagation()" in INDEX
+    assert "if(looksLikeMultilinePaste(data)){beginPastedProof(data,false);return;}" in INDEX
+    assert "activeGeneration===generation" in INDEX
+    assert "typeof result.failed!==\"boolean\"" in INDEX
+
+    paste_runner = INDEX[
+        INDEX.index("async function runPreparedPaste") :
+        INDEX.index("function sanitizeCommand")
+    ]
+    assert "downloadProofScript" not in paste_runner
+    assert "history.push(command.text)" in paste_runner
+    assert "saveHistory()" in paste_runner
+    assert "term.focus()" in paste_runner
+
+
 def test_script_download_is_validated_local_and_requires_direct_keyboard_intent() -> None:
     harness = Path(__file__).with_name("script_download_harness.js")
     result = subprocess.run(
@@ -207,7 +252,7 @@ def test_browser_javascript_is_syntactically_valid() -> None:
 
 def test_fatal_worker_errors_settle_pending_commands_and_require_reload() -> None:
     assert (
-        'pending.forEach(function(resolve){resolve({out:"",download:null});});pending.clear();'
+        'pending.forEach(function(resolve){resolve({out:"",failed:true,download:null});});pending.clear();'
         in INDEX
     )
     assert 'if(worker){worker.terminate();worker=null;}' in INDEX

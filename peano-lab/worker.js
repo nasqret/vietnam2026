@@ -12,7 +12,7 @@
  *   worker -> main : {type: "boot", msg}
  *                    {type: "ready", banner}
  *                    {type: "error", msg}
- *                    {type: "result", id, out, download: null|string}
+ *                    {type: "result", id, out, failed, download: null|string}
  */
 
 const PY_FILES = [
@@ -55,6 +55,7 @@ const PY_FILES = [
 const VENDOR_ROOT = "../../vendor/v-85fb3352e49c/";
 
 let runLine = null;
+let runLineResult = null;
 let banner = null;
 let takeDownload = null;
 
@@ -109,6 +110,9 @@ async function boot(build) {
     pyodide.runPython("import sys; sys.path.insert(0, '/lab')");
     const driver = pyodide.pyimport("driver");
     runLine = function (line) { return driver.run_line(line); };
+    runLineResult = function (line) {
+      return JSON.parse(String(driver.run_line_result(line)));
+    };
     banner = function () { return driver.banner(); };
     takeDownload = function () { return driver.take_download(); };
     postMessage({ type: "ready", banner: String(banner()) });
@@ -125,18 +129,27 @@ onmessage = function (event) {
   }
   if (message.type === "run") {
     let output = "";
+    let failed = false;
     let download = null;
     try {
-      output = runLine
-        ? String(runLine(message.line))
-        : "\x1b[93mThe engine is still starting — try again in a moment.\x1b[0m";
+      if (runLineResult) {
+        const result = runLineResult(message.line);
+        output = String(result.out === undefined ? "" : result.out);
+        failed = result.failed === true;
+      } else {
+        output = runLine
+          ? String(runLine(message.line))
+          : "\x1b[93mThe engine is still starting — try again in a moment.\x1b[0m";
+        failed = true;
+      }
       if (takeDownload) {
         const body = String(takeDownload());
         download = body || null;
       }
     } catch (error) {
       output = "\x1b[91m" + ((error && error.message) ? error.message : String(error)) + "\x1b[0m";
+      failed = true;
     }
-    postMessage({ type: "result", id: message.id, out: output, download: download });
+    postMessage({ type: "result", id: message.id, out: output, failed: failed, download: download });
   }
 };

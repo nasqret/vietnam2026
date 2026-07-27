@@ -7,7 +7,7 @@ and sharing its shell (xterm + Pyodide worker, fully self-hosted).
 **Start here, in this order:**
 
 1. [`../docs/PEANO_LAB_DESIGN.md`](../docs/PEANO_LAB_DESIGN.md) — the architecture. It is binding.
-2. [`../PLAN/09_peano_lab.md`](../PLAN/09_peano_lab.md) — milestones M0–M16 with tasks and
+2. [`../PLAN/09_peano_lab.md`](../PLAN/09_peano_lab.md) — milestones M0–M17 with tasks and
    acceptance criteria.
 3. [`py/peano_lab/`](py/peano_lab/) — the readable implementation behind the pinned APIs.
 
@@ -171,6 +171,36 @@ undoable primitive plan.
 `peano-lab-proof.pa`. The download is triggered only by typing that exact command directly, not by a
 deep link. A replay file is an untrusted program, not a proof certificate or a library declaration.
 Replaying it reconstructs a candidate certificate; only `qed` checks the original theorem.
+
+### Paste a complete proof
+
+M17 adds an explicit accessible **Paste multiline proof** dialog and recognizes direct multiline
+paste into the terminal. Both entry points accept the same complete replay format. The first
+nonblank line must begin exactly `pa prove `, the last nonblank line must be exactly `qed`, and blank
+lines are ignored. For example:
+
+```text
+pa prove forall n. n + 0 = n
+intro n
+rewrite PA3
+refl
+qed
+```
+
+The browser first enforces the whole-input bounds: at most 100,000 characters, at most 256
+nonblank lines, and at most the existing `MAX_INPUT` characters on any one line. An invalid or
+oversized batch does not begin. Once admitted, its nonblank lines run in order through the ordinary
+session driver. Execution stops at the first failed line; every earlier successful command remains,
+with its normal per-line undo behavior. The batch is deliberately not an all-or-nothing tactic.
+By contrast, **Stop**, Escape, or Control-C terminates and restarts the worker, so that explicit
+interruption discards the in-memory proof session.
+
+Pasting is not extra authority. In particular, preflight rejects `script` commands and the batch
+executor cannot start a browser download, even if a worker response carries download bytes. The
+final pasted `qed` still invokes the independent checker against the session owner's original
+theorem. The text remains an untrusted replay program, not a proof certificate or a route into the
+theorem library. M17 is locally verified as build `2026-07-28b`, application release
+`a-404fdbdb55e4`; it has not been deployed.
 
 The static browser cannot write to Git or admit a theorem to `library/theorems.py`. Library
 admission remains a reviewed source change: bind every free variable, declare earlier checked

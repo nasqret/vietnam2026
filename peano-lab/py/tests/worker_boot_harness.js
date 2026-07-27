@@ -37,6 +37,9 @@ function makePyodide(writes) {
       assert.strictEqual(name, "driver");
       return {
         run_line(line) { return line; },
+        run_line_result(line) {
+          return JSON.stringify({ out: line, failed: line === "fail" });
+        },
         banner() { return "ready banner"; },
         take_download() {
           const body = pendingDownload;
@@ -103,6 +106,7 @@ async function successfulBootIsConcurrentAndOrdered() {
 
   context.onmessage({ data: { type: "run", id: 41, line: "script download" } });
   context.onmessage({ data: { type: "run", id: 42, line: "help" } });
+  context.onmessage({ data: { type: "run", id: 43, line: "fail" } });
   const results = messages.filter((message) => message.type === "result");
   assert.deepStrictEqual(
     JSON.parse(JSON.stringify(results)),
@@ -111,9 +115,11 @@ async function successfulBootIsConcurrentAndOrdered() {
         type: "result",
         id: 41,
         out: "script download",
+        failed: false,
         download: "pa prove 0 = 0\nrefl\nqed\n",
       },
-      { type: "result", id: 42, out: "help", download: null },
+      { type: "result", id: 42, out: "help", failed: false, download: null },
+      { type: "result", id: 43, out: "fail", failed: true, download: null },
     ],
   );
 }

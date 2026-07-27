@@ -661,3 +661,39 @@ without changing its 13,344-transition/1,692-session semantics. The warning-as-e
 stage are green. The local immutable identity is `a-f6c33c7840ad`, build `2026-07-28a`; no in-app
 browser was attached and no remote deployment was attempted. Production remains untouched behind
 the separate M14 cache-header stop.
+
+## 2026-07-28 — M17: a paste is a sequence, not a super-transaction
+
+A saved proof is already a line-oriented replay program, but requiring a learner to paste every
+line separately adds friction without teaching anything about proof. The browser surface therefore
+has two routes into one operation: a visibly labeled, keyboard-operable multiline dialog
+and detection of a multiline terminal paste. Neither route bypasses the existing driver or creates
+a second proof-session owner.
+
+The important design decision is failure semantics. Treating the whole paste as one atomic tactic
+would make a late typo erase useful progress and would give `undo` a different meaning depending on
+how commands were entered. M17 instead preflights only the script envelope and resource bounds,
+then executes nonblank lines sequentially. A failure stops the suffix but retains each successful
+prefix command as its ordinary undo transaction. This makes pasted and manually typed proofs meet
+at the same state transition boundary.
+
+The envelope is intentionally narrow: ignoring blank lines, a replay begins exactly with a
+`pa prove ` line and ends with the exact line `qed`. It contains at most 256 nonblank lines and
+100,000 characters, and no line may exceed the existing `MAX_INPUT`. Those checks happen before
+execution, so a structurally incomplete or oversized paste cannot leave a half-created session.
+
+Browser side effects need a separate rule from proof-state effects. The batch route never honors a
+download request from `script download`; otherwise pasted text could cause a file write merely by
+being inserted. QED is deliberately less special: it still travels through the normal session
+owner to the unchanged independent checker and the original theorem.
+
+The implementation follows that contract through one bounded parser and a structured worker result
+that distinguishes success from final English output. Dependency-free event tests exercise direct
+paste, dialog bounds and focus, sequential scheduling, interruption races, and download isolation;
+the readable parity artifact reaches a normal independently checked QED through the same status
+path. The complete gates report 698 Peano tests, 360 Lambda tests plus 36 subtests, a warning-as-error
+25-source book, 193 deep links and 170 replayed commands, and a 60-note/335-link vault without an
+unresolved or disconnected concept. Exact local staging is build `2026-07-28b`, application
+`a-404fdbdb55e4`, vendor `v-85fb3352e49c`. The kernel is unchanged and its checker remains 234
+lines. No in-app browser was attached, so a visual click-through is not claimed, and neither
+production nor staging was deployed.

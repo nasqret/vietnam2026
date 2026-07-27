@@ -19,7 +19,11 @@ the tactic layer to reconstruct a candidate certificate; QED must check the orig
 Library admission remains a source-reviewed declaration with a closed statement, earlier
 dependencies, compatible script, tests, commit, and deployment.
 
+The [[multiline-proof-paste]] surface feeds a bounded complete replay back through the same
+line-oriented session owner. It does not make the file atomic or trusted: execution stops at
+the first failed line, while its successful prefix retains ordinary per-command undo behavior.
+
 ## Related
 
 [[peano-lab]] · [[proof-certificate]] · [[theorem-ladder]] · [[trusted-kernel]] ·
-[[tactic-mode]] · [[checked-theorem-reuse]]
+[[tactic-mode]] · [[checked-theorem-reuse]] · [[multiline-proof-paste]]

@@ -283,3 +283,43 @@ A replay file is an untrusted program, not a [proof certificate](kernel.md) or a
 declaration. Replaying it reconstructs a candidate certificate; only `qed` checks the original
 theorem. That is why saving a transcript does not add a theorem rule to the kernel or a declaration
 to the checked ladder.
+
+## Multiline paste is sequential replay
+
+Entering a saved proof one line at a time is transparent but unnecessarily awkward. M17 therefore
+provides two equivalent browser entry points: an accessible **Paste multiline proof** dialog and a
+direct multiline paste into the terminal. Both require a complete replay. Ignoring blank lines, its
+first line must begin exactly `pa prove ` and its last line must be exactly `qed`:
+
+```text
+pa prove forall n. n + 0 = n
+
+intro n
+rewrite PA3
+refl
+qed
+```
+
+This is not a new tactic and it is not one giant transaction. After structural and resource
+preflight, the browser submits each nonblank line to the existing driver in order. If line $i$
+fails, no later line runs, but the successful prefix $1,\ldots,i-1$ remains in the ordinary proof
+session. Each successful proof command is still a separate undo step. That choice preserves the
+most useful property of interactive failure: the learner can inspect the exact state where the
+script stopped, repair it, and continue.
+
+An explicit interruption is different from a failed line. **Stop**, Escape, or Control-C terminates
+the worker so that a long command cannot keep the page busy; restarting the worker necessarily
+discards that in-memory proof session.
+
+The whole batch is bounded before execution: 100,000 characters, 256 nonblank lines, and the
+existing `MAX_INPUT` bound on every individual line. Thus a malformed boundary or an oversized
+paste cannot partially start. CRLF and LF input share the same line semantics, and blank lines do
+not create history entries.
+
+The paste boundary also removes ambient browser authority. Preflight rejects `script` commands,
+and the batch executor ignores download payloads; only an explicitly typed single-line command may
+request that side effect.
+Most importantly, the final `qed` follows the same owner-held finalization path as manual entry and
+asks the unchanged independent kernel to check the original theorem. Multiline paste is only an
+input convenience. The bounded event/worker tests and readable replay exercise this contract; a
+visual browser click-through is deliberately not claimed when no in-app browser is attached.

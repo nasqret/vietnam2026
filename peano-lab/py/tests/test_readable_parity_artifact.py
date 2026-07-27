@@ -28,10 +28,8 @@ def test_readable_parity_script_replays_and_checks_its_original_goal() -> None:
 
     session = driver.LabSession()
     for command in commands[:-1]:
-        output = session.run(command)
-        assert "Parse error:" not in output, (command, output)
-        assert "Tactic error:" not in output, (command, output)
-        assert "QED check failed:" not in output, (command, output)
+        result = session.run_result(command)
+        assert result["failed"] is False, (command, result["out"])
 
     owner = get_owner(session.webstate)
     assert owner is not None and not owner.state.goals
@@ -44,3 +42,7 @@ def test_readable_parity_script_replays_and_checks_its_original_goal() -> None:
     assert check((), certificate, owner.original_target)
     mutated = parse_formula("forall n. exists x. n * (n + 1) = 2 * x + 1")
     assert not check((), certificate, mutated)
+
+    finished = session.run_result(commands[-1])
+    assert finished["failed"] is False
+    assert "No open goals. QED." in str(finished["out"])

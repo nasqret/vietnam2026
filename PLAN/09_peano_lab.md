@@ -341,6 +341,56 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   shell/session harnesses and exact staged-byte assembly are green. Production and staging were not
   deployed, preserving the independent M14 cache-header stop.
 
+### M17 — Browser multiline proof paste
+
+- [x] Add an explicit, keyboard-operable **Paste multiline proof** dialog with proper dialog
+      semantics, a programmatically named multiline input, deliberate Run/Cancel actions, and
+      predictable focus entry and restoration.
+- [x] Recognize a direct multiline paste into the terminal and route it through the same bounded
+      replay path; preserve all existing behavior for ordinary one-line input.
+- [x] Accept only a complete replay whose first nonblank line begins exactly `pa prove ` and whose
+      last nonblank line is exactly `qed`; ignore blank lines without turning them into commands.
+- [x] Reject a batch before execution when it exceeds 100,000 characters, 256 nonblank lines, or
+      the existing `MAX_INPUT` limit on any individual line.
+- [x] Execute accepted lines sequentially through the existing single-session-owner driver, stop
+      at the first failed line, preserve the successful prefix, and retain one ordinary undo step
+      per successful proof command.
+- [x] Suppress browser-download side effects during batch replay: preflight rejects pasted
+      `script` commands, and the batch executor has no file-download authority even if a worker
+      response contains a download payload.
+- [x] Document that multiline input is an untrusted convenience for replay, not a certificate,
+      transaction wrapper, library-admission path, or new kernel rule.
+
+**Acceptance checklist:**
+
+- [x] Dialog submission and direct terminal paste replay the same complete script, including CRLF
+      input and ignored blank lines, and reach the same independently checked QED as manual entry.
+- [x] Missing/incorrect `pa prove ` opening, a non-`qed` final nonblank line, excessive total
+      characters, excessive nonblank lines, and an overlong individual line are rejected before
+      the first command changes browser or proof-session state.
+- [x] A tactic, parser, session-routing, or QED failure stops later lines; the successful prefix
+      remains visible and usable, and repeated `undo` restores it one successful command at a time.
+- [x] A batch containing `script download` triggers no browser download, including when it arrives
+      through the dialog, terminal paste, synthetic input event, or replay immediately after QED.
+- [x] Accessibility checks cover dialog naming, textarea labeling, keyboard operation, initial
+      focus, cancellation, and focus restoration; terminal-only users retain direct paste.
+- [x] QED still reaches the unchanged independent checker against the owner-retained original goal;
+      browser, worker-protocol, resource-boundary, replay, Peano, Lambda, book, vault, manifest, and
+      exact local-staging gates are green before any publication claim.
+
+- **Verified locally (2026-07-28):** the focused browser/driver/readable-replay gate reports 23
+  passed, including synthetic paste events, CRLF and blank-line normalization, all resource bounds,
+  unsafe controls, strict scheduling, worker failure propagation, interruption races, download
+  isolation, owner routing, repeated undo, and an independently checked readable parity QED. Peano
+  reports 698 passed; Lambda reports 360 passed plus 36 subtests. The warning-as-error 25-source
+  book builds; 193 deep links and 170 commands in 34 session blocks replay; all 335 vault links
+  across 60 notes resolve with no disconnected concept. The unchanged corpus remains 13,344
+  transitions from 1,692 checked sessions. Application/vendor manifests and exact local staging
+  are green at `a-404fdbdb55e4`/`v-85fb3352e49c`, build `2026-07-28b`; the kernel has no diff and
+  `checker.py` remains 234 lines. No in-app browser was attached, so a visual click-through is not
+  claimed; the event/worker harnesses test the interaction contract. Production and staging were
+  not deployed.
+
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search
 performance work beyond the explicit tactic limits remain outside this plan. M14 is the
