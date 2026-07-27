@@ -10,7 +10,7 @@
     "files": 1,
     "sessions": 1596,
     "transitions": 13152,
-    "canonical_sessions_sha256": "0ccd9687ba37cd5f9d7ebc88dfae9f7ae5e030ea57c3a035b79b7f8180cd7149"
+    "canonical_sessions_sha256": "d4d18d2d5bc547b2e01dbf38a5439ea878b92c24f692c45dafc1a9ed4ae4d66d"
   },
   "exclusions": {
     "requested_theorems": [],
@@ -51,12 +51,12 @@
     "train": {
       "sessions": 1545,
       "records": 12540,
-      "sha256": "f63921b6d9209cdfe16517e23b57bdd633c9a256751a999f0dbb6a40ab10d4e4"
+      "sha256": "6f7aaf54c08a54d7c057052532e24e5977990943ac4b255a145841d7ab419dca"
     },
     "val": {
       "sessions": 51,
       "records": 612,
-      "sha256": "aa378bf63a2d4b16908fc6114396bf655c50b7a3699ee27b3cdad65bf5e3592d"
+      "sha256": "306dcb76e82a04281806bebbff697db5a2a19cbdf58ecf69c0b0b77baacccc49"
     }
   },
   "outcomes": {

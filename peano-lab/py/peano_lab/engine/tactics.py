@@ -8,6 +8,7 @@ kernel to validate the finished certificate against the original target.
 
 from __future__ import annotations
 
+from dataclasses import fields
 from typing import Callable, Iterator
 
 from ..kernel.checker import axiom_formula, check, check_classical
@@ -100,6 +101,15 @@ Tactic = Callable[[ProofState, str], ProofState]
 
 _RESERVED_TERM_NAMES = {"S", "forall", "exists", "bot", "false"}
 
+# ``use`` embeds a checked theorem certificate in the live partial proof until
+# surface finalization contracts the cut.  Honest bounds keep repeated aliases
+# from turning that temporary tree into a host-recursion or browser-memory
+# failure.  The current checked ladder's largest certificate is far smaller
+# (222 nodes, depth 38), leaving ample room for later arithmetic lemmas.
+MAX_USE_CERTIFICATE_NODES = 4_096
+MAX_USE_PARTIAL_NODES = 32_768
+MAX_USE_PROOF_DEPTH = 128
+
 
 def _current(state: ProofState) -> Goal:
     goal = state.current()
@@ -180,6 +190,35 @@ def _surface_name(source: str, tactic: str) -> str:
     ):
         raise TacticError(f"`{tactic}` needs one variable name, e.g. `{tactic} n`.")
     return name
+
+
+def _enforce_use_proof_budget(
+    proof: Proof,
+    *,
+    max_nodes: int,
+    label: str,
+) -> None:
+    """Measure a proof iteratively before ``use`` invokes recursive code."""
+
+    pending = [(proof, 1)]
+    node_count = 0
+    try:
+        while pending:
+            current, depth = pending.pop()
+            node_count += 1
+            if node_count > max_nodes or depth > MAX_USE_PROOF_DEPTH:
+                raise TacticLimit(
+                    f"`use` exceeded its {max_nodes}-node / "
+                    f"{MAX_USE_PROOF_DEPTH}-level {label} limit."
+                )
+            for item in fields(current):
+                child = getattr(current, item.name)
+                if isinstance(child, Proof):
+                    pending.append((child, depth + 1))
+    except TacticLimit:
+        raise
+    except (AttributeError, TypeError, ValueError):
+        raise TacticError("`use` needs an exact checked theorem certificate.") from None
 
 
 def _used_names(goal: Goal) -> set[str]:
@@ -782,6 +821,58 @@ def _fresh_old_name(
     return candidate
 
 
+def use_checked(
+    state: ProofState,
+    name: str,
+    formula: Formula,
+    certificate: Proof,
+) -> ProofState:
+    """Expose one independently checked closed theorem as a local hypothesis.
+
+    The engine deliberately receives the theorem data rather than importing the
+    library by name.  It first asks the independent kernel to check the supplied
+    closed certificate, then inserts an ordinary local cut.  The untrusted
+    library/UI layer may later contract that cut before the final QED check; no
+    theorem-name rule is added to the kernel.
+    """
+
+    goal = _current(state)
+    visible_name = _surface_name(name, "use")
+    if visible_name in _used_names(goal):
+        raise TacticError(f"the name {visible_name!r} is already in use.")
+    if not isinstance(formula, Formula) or not isinstance(certificate, Proof):
+        raise TacticError("`use` needs an exact checked theorem certificate.")
+    _enforce_use_proof_budget(
+        certificate,
+        max_nodes=MAX_USE_CERTIFICATE_NODES,
+        label="import-certificate",
+    )
+    _enforce_use_proof_budget(
+        state.partial,
+        max_nodes=MAX_USE_PARTIAL_NODES,
+        label="live-certificate",
+    )
+    if not check((), certificate, formula):
+        raise TacticError(
+            "the independent kernel rejected the library theorem certificate."
+        )
+
+    hole = fresh_hole()
+    replacement = ImpElim(ImpIntro(hole), certificate)
+    new_goal = Goal(
+        ((visible_name, formula),) + goal.context,
+        goal.target,
+        goal.variables,
+    )
+    after = replace_current_hole(state, replacement, (new_goal,))
+    _enforce_use_proof_budget(
+        after.partial,
+        max_nodes=MAX_USE_PARTIAL_NODES,
+        label="live-certificate",
+    )
+    return _commit(state, after, "use", visible_name)
+
+
 def rewrite(state: ProofState, args: str) -> ProofState:
     reverse, equation_name, at_name = _rewrite_args(args)
     goal = _current(state)
@@ -1162,7 +1253,12 @@ def checked_final(
 
     if state.goals:
         raise InvalidProof(f"{len(state.goals)} goal(s) are still open.")
-    certificate = final_certificate(state)
+    try:
+        certificate = final_certificate(state)
+    except RecursionError:
+        raise InvalidProof(
+            "certificate finalization exceeded the host recursion limit."
+        ) from None
     if certificate is None:
         raise InvalidProof("the partial certificate still contains a hole or term metavariable.")
     if state.target != original_target:
@@ -1173,10 +1269,16 @@ def checked_final(
     if not checker((), certificate, original_target):
         raise InvalidProof("the independent kernel rejected the certificate for the stated goal.")
     if trace is not None:
+        try:
+            certificate_size = proof_size(certificate)
+        except RecursionError:
+            raise InvalidProof(
+                "certificate finalization exceeded the host recursion limit."
+            ) from None
         trace.footer(
             qed=True,
             theorem=original_target,
-            proof_size=proof_size(certificate),
+            proof_size=certificate_size,
             names=state.variables,
         )
     return certificate
@@ -1258,6 +1360,9 @@ __all__ = [
     "InvalidProof",
     "Tactic",
     "TACTIC_NAMES",
+    "MAX_USE_CERTIFICATE_NODES",
+    "MAX_USE_PARTIAL_NODES",
+    "MAX_USE_PROOF_DEPTH",
     "intro",
     "specialize",
     "forall_elim",
@@ -1281,6 +1386,7 @@ __all__ = [
     "set_classical_mode",
     "logic_banner",
     "hint",
+    "use_checked",
     "apply_tactic",
     "checked_final",
     "final_proof_size",

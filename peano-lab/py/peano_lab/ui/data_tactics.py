@@ -337,6 +337,24 @@ TACTIC_CARDS = (
         ),
     ),
     TacticCard(
+        "use",
+        "primitive",
+        "use <library-theorem> [as <alias>]",
+        "Bring one independently checked library theorem into the focused context.",
+        "Adds the closed theorem under its canonical name or a fresh chosen alias; "
+        "ordinary specialize, apply, rewrite, exact, and simp commands can then use it.",
+        "Inserts a local implication cut backed by the theorem's closed certificate. "
+        "QED contracts exposed cuts and checks the resulting closed proof against the "
+        "original goal; the kernel never trusts theorem names.",
+        "forall n m. n + m = m + n",
+        ("use add_comm", "exact add_comm"),
+        (
+            "The library theorem is unknown or its replay certificate fails checking.",
+            "The alias is malformed or already names a variable or hypothesis.",
+            "The imported or live certificate exceeds its explicit node/depth budget.",
+        ),
+    ),
+    TacticCard(
         ";",
         "tactical",
         "<tactic-1> ; <tactic-2>",

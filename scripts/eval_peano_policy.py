@@ -36,7 +36,6 @@ from peano_lab.engine.tactics import (  # noqa: E402
     TacticError,
     TacticLimit,
     TacticSyntaxError,
-    checked_final,
 )
 from peano_lab.engine.trace import TraceLogger, render_goals  # noqa: E402
 from peano_lab.kernel.formulas import (  # noqa: E402
@@ -45,7 +44,11 @@ from peano_lab.kernel.formulas import (  # noqa: E402
     pretty_formula,
 )
 from peano_lab.library.theorems import THEOREMS  # noqa: E402
-from peano_lab.ui.prove import ProofSession, _run_surface  # noqa: E402
+from peano_lab.ui.prove import (  # noqa: E402
+    ProofSession,
+    _run_surface,
+    checked_surface_final,
+)
 
 
 EVAL_VERSION = 1
@@ -461,7 +464,7 @@ def _rollout(
         if owner.state.is_done():
             try:
                 # The externally retained target and exact mode are explicit.
-                certificate = checked_final(
+                certificate = checked_surface_final(
                     owner.state,
                     target,
                     classical=goal.classical,

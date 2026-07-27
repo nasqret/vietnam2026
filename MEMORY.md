@@ -93,7 +93,13 @@
   corpus, and a pinned four-family pass@k harness whose only success label comes from independent
   finalization. Generator/checker sources and complete run inputs are fingerprinted; policy-visible
   goals retain session-stable metavariable aliases and expose neither theorem labels nor logic-mode
-  authority. The repository deliberately contains data and protocol, not model training.
+  authority. The repository deliberately contains data and protocol, not model training. M10 adds
+  live `use <library-theorem> [as <alias>]`: UI/library code resolves a cached replay, the engine
+  rechecks its closed certificate and inserts a bounded local cut, and untrusted surface
+  finalization contracts cuts before the unchanged independent checker sees the owner-held original
+  theorem. Imports are ordinary hypotheses for `specialize`, `apply`, `rewrite`, `exact`, and
+  `simp`; aliases share the Unicode identifier rules of binder tactics. Explicit proof node/depth
+  budgets fail transactionally, and exact undo retains the raw pre-compilation state.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -129,5 +135,7 @@
 - Build/deploy strategy chosen: **go live incrementally** (public GitHub + faculty URLs as pieces land).
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
-- Peano Lab milestones M0–M9 are green on `peano-lab`; the complete implementation, checked corpus,
-  construction book, Obsidian knowledge base, and kernel-judged evaluation protocol are present.
+- Peano Lab milestones M0–M10 are green on `peano-lab`; the complete implementation, checked corpus,
+  construction book, Obsidian knowledge base, kernel-judged evaluation protocol, and live checked-
+  theorem reuse are present. M11–M13 extend this base with a checked semiring basis and bounded,
+  certificate-producing arithmetic automation.

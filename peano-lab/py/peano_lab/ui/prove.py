@@ -19,7 +19,7 @@ import re
 from dataclasses import dataclass, replace
 
 from ..engine.search import auto
-from ..engine.state import ProofState, proof_size, start
+from ..engine.state import ProofState, final_certificate, proof_size, start
 from ..engine.tacticals import all_goals, first, focus, orelse, repeat, then
 from ..engine.tactics import (
     TACTIC_NAMES,
@@ -32,9 +32,12 @@ from ..engine.tactics import (
     hint,
     logic_banner,
     set_classical_mode,
+    use_checked,
 )
 from ..engine.trace import TraceLogger
 from ..kernel.formulas import ParseError, Formula, parse_formula_with_names, pretty_formula
+from ..kernel.proofs import Proof
+from ..library.theorems import LibraryError, get as get_theorem, normalise_cuts, replay
 from .panels import NL, collect_meta_ids, render_certificate, render_state
 
 
@@ -57,6 +60,7 @@ _SESSION_ONLY_WORDS = set(_QED_WORDS) | set(_ABORT_WORDS) | set(TACTIC_NAMES) | 
     "t",
     "tactics",
     "undo",
+    "use",
 }
 
 
@@ -139,6 +143,7 @@ def usage() -> str:
         "  Tactics: intro · apply · exact · assumption · split · left · right",
         "           cases · exfalso · exists · specialize · forall_elim",
         "           refl · symm · trans · congr · rewrite · induction · simp",
+        "           use <library-theorem> [as <alias>]",
         "  Language: t1; t2 · t1 <|> t2 · repeat t · first [t1 | t2]",
         "            all_goals t · focus n t · auto [depth]",
         "  Session: hint · undo · ? · classical on|off · qed · abort",
@@ -157,6 +162,7 @@ def tactic_help() -> str:
         "  first [assumption | refl]",
         "  rewrite <- h at h2",
         "  focus 2 simp",
+        "  use add_comm; exact add_comm",
         "",
         "Logic starts intuitionistic. `classical on` explicitly authorizes DNE",
         "for later `apply DNE` / `auto` steps and for the final kernel check.",
@@ -201,11 +207,58 @@ def _closed_panel(owner: ProofSession) -> str:
     )
 
 
+def checked_surface_final(
+    state: ProofState,
+    original_target: Formula,
+    *,
+    classical: bool = False,
+    trace: TraceLogger | None = None,
+) -> Proof:
+    """Finalize a live-surface certificate, compiling checked-theorem cuts.
+
+    A completed certificate gets one untrusted cut-normalization pass and is
+    then submitted to ``checked_final`` with the independently retained
+    original target and exact logic mode.  Partial or target-forged states go
+    directly to ``checked_final`` so its existing final English errors remain
+    authoritative.
+    """
+
+    try:
+        raw = final_certificate(state)
+    except RecursionError:
+        raise InvalidProof(
+            "certificate finalization exceeded the host recursion limit."
+        ) from None
+    if raw is None or state.target != original_target:
+        return checked_final(
+            state,
+            original_target,
+            classical=classical,
+            trace=trace,
+        )
+    try:
+        compiled = normalise_cuts(raw)
+    except LibraryError as exc:
+        raise InvalidProof(
+            f"theorem-reuse cut normalization failed: {exc}."
+        ) from None
+    transient = replace(
+        state,
+        partial_certificate_with_holes=compiled,
+    )
+    return checked_final(
+        transient,
+        original_target,
+        classical=classical,
+        trace=trace,
+    )
+
+
 def _finish_session(shared: dict, owner: ProofSession) -> str:
     """Attempt QED unconditionally; only a checked success ends the session."""
 
     try:
-        certificate = checked_final(
+        certificate = checked_surface_final(
             owner.state,
             owner.original_target,
             classical=owner.classical,
@@ -348,9 +401,9 @@ def _primitive(name: str, args: str, classical: bool) -> Tactic:
         raise TacticSyntaxError(
             "`classical` is a session command and cannot be nested in a tactical."
         )
-    if name not in TACTIC_NAMES and name != "auto":
+    if name not in TACTIC_NAMES and name not in {"auto", "use"}:
         raise TacticSyntaxError(
-            f"unknown tactic {name!r}; available: {', '.join(TACTIC_NAMES)}, auto."
+            f"unknown tactic {name!r}; available: {', '.join(TACTIC_NAMES)}, auto, use."
         )
 
     def run(state: ProofState, extra: str = "") -> ProofState:
@@ -358,9 +411,37 @@ def _primitive(name: str, args: str, classical: bool) -> Tactic:
             raise TacticError("an assembled surface tactic takes no extra arguments.")
         if name == "auto":
             return auto(state, args, classical=classical)
+        if name == "use":
+            return _use_theorem(state, args)
         return apply_tactic(state, name, args, classical=classical)
 
     return run
+
+
+def _use_args(args: str) -> tuple[str, str | None]:
+    pieces = args.strip().split()
+    if len(pieces) == 1:
+        return pieces[0], None
+    if len(pieces) == 3 and pieces[1] == "as":
+        # Alias validity belongs to ``use_checked``'s shared Unicode-aware
+        # surface-name parser, just like binder names accepted by ``intro``.
+        return pieces[0], pieces[2]
+    raise TacticSyntaxError("syntax: `use <library-theorem> [as <alias>]`.")
+
+
+def _use_theorem(state: ProofState, args: str) -> ProofState:
+    theorem_name, requested_alias = _use_args(args)
+    spec = get_theorem(theorem_name)
+    if spec is None:
+        raise TacticError(
+            f"no checked library theorem {theorem_name!r}; list names with `pa lib`."
+        )
+    try:
+        theorem = replay(spec.name)
+    except LibraryError as exc:
+        raise TacticError(f"library theorem replay failed: {exc}.") from None
+    alias = requested_alias or spec.name
+    return use_checked(state, alias, theorem.formula, theorem.certificate)
 
 
 def _compile(source: str, classical: bool) -> tuple[Tactic, bool]:
@@ -597,5 +678,6 @@ __all__ = [
     "is_active",
     "usage",
     "tactic_help",
+    "checked_surface_final",
     "handle",
 ]

@@ -64,6 +64,29 @@ That final call is the important line.  The tactic script, dependency graph, sub
 pretty-printer, browser card, and Lean exporter may all be wrong without turning a false formula
 into a theorem.
 
+## Reusing a checked theorem live
+
+The same compilation idea is available in an interactive proof.  `use` adds a checked library
+formula to the focused context under its canonical name or a fresh alias:
+
+```text
+pa> pa prove forall a b. S a + b = S (b + a)
+pa> use add_succ_left
+pa> use add_comm
+pa> intro a
+pa> intro b
+pa> simp [add_succ_left, add_comm]
+pa> qed
+```
+
+The partial certificate visibly contains local cuts while the proof is open. At QED, Peano Lab
+contracts the exposed implication and universal redexes in an untrusted pass and then invokes the
+same independent checker with the original target. This gives the convenience of a theorem
+environment without adding a trusted `Theorem(name)` constructor to the kernel. `undo` restores
+the exact state before an import, and an unknown theorem or colliding alias changes nothing.
+Explicit import and live-certificate node/depth budgets turn excessive reuse into a transactional
+resource limit rather than a host recursion failure.
+
 ## A script you can inspect
 
 The capstone card shows this authored body after its generated dependency introduction:

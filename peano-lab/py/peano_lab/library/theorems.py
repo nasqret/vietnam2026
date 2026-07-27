@@ -477,6 +477,23 @@ def _normalise_forall_cuts(proof: Proof) -> Proof:
     raise LibraryError(f"unsupported proof node during normalization: {type(proof).__name__}")
 
 
+def normalise_cuts(proof: Proof) -> Proof:
+    """Contract theorem-reuse cuts in an untrusted proof certificate.
+
+    This public wrapper is shared by scripted library replay and live proof
+    sessions.  Its output never receives special authority: callers must still
+    submit the resulting certificate to the independent kernel checker against
+    the original theorem.
+    """
+
+    if not isinstance(proof, Proof):
+        raise LibraryError("cut normalization needs an exact proof certificate")
+    try:
+        return _normalise_forall_cuts(proof)
+    except RecursionError:
+        raise LibraryError("cut normalization exceeded the host recursion limit") from None
+
+
 def _primitive(command: str) -> tuple[str, str]:
     pieces = command.strip().split(maxsplit=1)
     if not pieces:
@@ -856,7 +873,7 @@ def replay(name: str) -> CheckedTheorem:
             )
         closed = closed.body
     if dependency_proofs:
-        closed = _normalise_forall_cuts(
+        closed = normalise_cuts(
             _replace_removed_hypothesis(closed, dependency_proofs)
         )
 
@@ -884,4 +901,5 @@ __all__ = [
     "replay_target",
     "replay",
     "replay_all",
+    "normalise_cuts",
 ]

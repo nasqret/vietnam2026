@@ -449,3 +449,29 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   Jupyter Book green; 190 links and 17 blocks/78 commands replay; vault 52 notes/228 links/0
   unresolved; trusted checker unchanged at 234 lines. No model was trained and no SSH deployment
   was performed.
+
+## 2026-07-27 (branch peano-lab) — Peano Lab M10: live checked-theorem reuse
+
+- Added `use <library-theorem> [as <alias>]` to the live surface without adding a theorem-name rule
+  to the kernel. Library/UI code resolves and replays the named rung; the engine independently
+  rechecks the exact closed formula/certificate pair and exposes it through an ordinary implication
+  cut. Existing `specialize`, `apply`, `rewrite`, `exact`, and `simp` tactics consume the resulting
+  local hypothesis unchanged.
+- Added one shared browser/evaluator finalization path. It contracts the exposed implication and
+  universal cuts in a transient certificate, then calls the existing independent checker with the
+  session owner's original target and exact classical authority. The live immutable proof remains
+  untouched, so one `undo` restores the exact state even when a tactical collapsed several imports
+  into one transaction.
+- Hardened the temporary theorem environment with iterative 4,096-node import, 32,768-node live-
+  certificate, and 128-level budgets. Exhaustion is a traced transactional `TacticLimit`; remaining
+  host recursion exhaustion at QED becomes `InvalidProof` and retains the owner. Unicode aliases
+  now follow the same identifier rules as `intro`, and the browser completion list exposes `use`.
+- Documented the boundary in the binding design, README, construction book/diary, tactic card, and
+  connected Obsidian concept. M10 deliberately does not claim to solve the odd-square induction
+  step: checked theorem availability is now present, while proof-producing polynomial
+  normalization remains M11–M12 work.
+- Acceptance is green: the two-import composition reaches checked QED; focused M10 reports 17
+  tests; Peano `520 passed`; Lambda `360 passed, 36 subtests passed`; the warning-as-error book and
+  all 190 links/18 blocks/85 commands pass; vault 53 notes/238 links/0 unresolved. The regenerated
+  source-bound corpus retains 13,152 transitions from 1,596 checked sessions, and the kernel checker
+  remains untouched at 234 lines. No deployment was performed.

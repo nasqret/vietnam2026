@@ -395,3 +395,29 @@ with a classical toggle) recorded in `docs/PEANO_LAB_DESIGN.md` §0.
   attempts through the production grammar and kernel judge; its 0.0 pass@8 is an honest plumbing
   result, not a theorem-proving claim. Focused M9 reports 62 tests, the full Peano suite 498, Lambda
   360 plus 36 subtests, the book/gate and 52-note vault are clean, and the checker remains 234 lines.
+
+## 2026-07-27 — M10: a theorem environment compiled away
+
+- The odd-square induction exercise exposed a precise usability gap: the witness and induction
+  hypothesis were correct, but live proofs could browse checked associativity, commutativity, and
+  distributivity without being able to use them. Re-running those lemmas by nested induction inside
+  every theorem would be sound but pedagogically perverse.
+- `use <library-theorem> [as <alias>]` is intentionally a surface bridge, not a new kernel proof source.
+  The UI resolves a replayed theorem; the engine rechecks the closed formula/certificate pair and
+  inserts `ImpElim(ImpIntro(hole), certificate)`. Existing tactics then see an ordinary hypothesis.
+- Tactical history cannot identify imports: `use add_comm; exact add_comm` becomes one outer `then`
+  transaction. Surface finalization therefore examines a completed certificate, contracts its
+  exposed implication/forall cuts in a transient state, and calls `checked_final` again with the
+  owner's original target and logic mode. The raw immutable state remains available to exact undo.
+- A final resource audit found that distinct aliases could otherwise grow this temporary cut tree
+  until Python recursion failed outside the tactic error path. `use` now measures theorem and live
+  certificates iteratively, applies explicit node/depth limits transactionally, and QED maps any
+  remaining host recursion exhaustion to an `InvalidProof` while retaining the session.
+- `use` solves availability, not symbolic polynomial normalization. A two-lemma additive example
+  now closes in milliseconds, while bounded trials of the odd-square step still make `simp` expand
+  impractically. That evidence fixes the next boundary: M11 supplies a checked semiring basis and
+  M12 builds a certificate-producing `ring`; the kernel remains unchanged.
+- M10 closes with the two-import theorem independently checked, 520 Peano tests and all 360 Lambda
+  tests plus 36 subtests green, 190 links/18 blocks/85 commands replayed, the warning-as-error book
+  green, and 53 vault notes/238 links/0 unresolved. The source-bound 13,152-row corpus was
+  regenerated from 1,596 checked sessions; the trusted checker is still exactly 234 lines.

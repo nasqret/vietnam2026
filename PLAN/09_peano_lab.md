@@ -155,6 +155,56 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   190 links/17 blocks/78 commands are green; vault 52 notes/228 links/0 unresolved; checker 234
   lines.
 
+### M10 — Live checked-theorem reuse
+- [x] Add `use <library-theorem> [as <alias>]` as a surface-level atomic tactic; library lookup
+      stays outside the engine and kernel.
+- [x] Recheck every supplied closed theorem certificate before publishing a local-cut state;
+      collisions, malformed syntax, unknown names, and bad certificates fail transactionally.
+- [x] Compile exposed implication/forall cuts in a transient final state, then run the existing
+      independent checker against the owner-held original target and exact classical mode.
+- [x] Route browser sessions and the M9 policy evaluator through the same surface finalization;
+      support tacticals, tracing, exact undo, aliases, specialization, rewriting, and `simp`.
+- [x] Add executable tactic-card, book, vault, README, diary, journal, and memory documentation.
+- **Acceptance:** two imported library facts compose into a new theorem in a live session; raw
+  introduction-form cuts require compilation, the compiled certificate checks from the empty
+  context, forged imports and false original goals remain rejected, and both full regression suites
+  stay green without any kernel change.
+- **Verified:** `add_succ_left` and `add_comm` compose interactively into
+  `forall a b. S a + b = S (b + a)` and reach checked QED. Tests pin raw-cut rejection, compiled
+  empty-context checking, forged/false-goal rejection, Unicode aliases, exact rollback/undo, and
+  typed node/depth exhaustion. Peano `520 passed`; Lambda `360 passed, 36 subtests passed`; the
+  warning-as-error 24-page book and all 190 links/18 blocks/85 commands are green; vault 53
+  notes/238 links/0 unresolved; the deterministic release remains 13,152 rows from 1,596 checked
+  sessions; trusted checker unchanged at 234 lines.
+
+### M11 — Checked commutative-semiring basis
+- [ ] Audit the current ladder against the exact lemma basis needed by proof-producing polynomial
+      normalization; add only missing identity/distributivity/numeral lemmas as ordinary entries.
+- [ ] Keep dependencies acyclic, scripts readable, generated Lean stubs valid, and every final
+      certificate checked from the empty context.
+- **Acceptance:** the complete semiring basis replays deterministically and its certificates can be
+  instantiated below proposition and term binders without capture.
+
+### M12 — Certificate-producing `ring`
+- [ ] Reify `0`, numerals, variables, `+`, and `·` into a deterministic sparse polynomial form.
+- [ ] Normalize both equality sides with a fixed monomial order while constructing a proof from the
+      M11 certificates; add explicit AST/coefficient/proof-size/browser-time limits.
+- [ ] Support selected equality hypotheses (`ring [h, ...]`) or an equivalently explicit
+      `trans`/`rewrite` workflow; never treat computation alone as a certificate.
+- **Acceptance:** the odd-square induction theorem
+  `forall n. exists x. (2*n+1)*(2*n+1)=8*x+1` closes interactively and QED checks against the
+  original goal; mutated coefficients and unsupported conditional goals fail transactionally.
+
+### M13 — Basic arithmetic teaching surface
+- [ ] Add bounded, certificate-producing `norm_num` for closed numerical subterms and equations.
+- [ ] Add arithmetic-aware hints, tactic cards, tutorial, book chapter, vault concepts, deterministic
+      traces, and corpus/evaluator coverage.
+- [ ] Document the boundary: polynomial identities and bounded numerals are supported; general PA
+      and nonlinear hypothesis solving are not decided. A Presburger `omega` belongs to a later plan.
+- **Acceptance:** browser examples remain responsive under explicit limits; all documentation
+  commands replay; corpus provenance is regenerated; Peano, Lambda, book, vault, and staging gates
+  are green.
+
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, performance tuning beyond
 "the browser doesn't freeze". See design §8.

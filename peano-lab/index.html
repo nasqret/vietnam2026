@@ -75,7 +75,7 @@
   <script>
   (function(){
     "use strict";
-    const BUILD="2026-07-27c";
+    const BUILD="2026-07-27e";
     const MAX_INPUT=4000;
     const PROMPT="\x1b[96mpa>\x1b[0m ";
     const HISTORY_KEY="peanoLabHistory";
@@ -109,7 +109,7 @@
     let buffer="",cursor=0,history=loadHistory(),historyIndex=history.length,busy=true;
     const COMMANDS=["abort","about","axioms","classical","clear","cls","eval","help","hint","kb","lib","pa","prove","qed","simp","tactic","tutorial","undo"];
     const PA_SUBCOMMANDS=["axioms","eval","help","kb","lean","lib","prove","simp","tactic","tutorial"];
-    const TACTICS=["all_goals","apply","assumption","auto","cases","congr","exact","exfalso","exists","first","focus","forall_elim","induction","intro","left","refl","repeat","rewrite","right","simp","specialize","split","symm","trans"];
+    const TACTICS=["all_goals","apply","assumption","auto","cases","congr","exact","exfalso","exists","first","focus","forall_elim","induction","intro","left","refl","repeat","rewrite","right","simp","specialize","split","symm","trans","use"];
     function completionCandidates(prefix){
       const words=prefix.trimStart().split(/\s+/);
       if(words.length<=1)return COMMANDS;

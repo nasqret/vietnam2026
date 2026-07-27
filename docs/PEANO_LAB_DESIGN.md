@@ -118,6 +118,27 @@ chapter narrates it (LCF's great idea, surviving into Lean's `<;>` and `try`).
 - `auto [depth]` — backtracking search over the primitive tactics + assumption + simp. This is
   also the **corpus generator** for the LLM stage.
 
+### Checked theorem reuse and arithmetic automation (post-M9)
+
+Live proofs may reuse a named theorem only by importing its already closed certificate as an
+ordinary local cut. The surface command is `use <library-theorem> [as <alias>]`. Name resolution belongs
+to `library/` and `ui/`; the engine receives an exact formula and proof, rechecks
+`check((), certificate, formula)`, and adds that formula to the focused context. The kernel never
+learns theorem names and gains no trusted declaration environment.
+
+At surface finalization, exposed implication/forall cuts are contracted by an untrusted,
+capture-avoiding proof transformation. Its output is placed in a transient proof state and passed
+to the ordinary `checked_final` path with the session owner's **original** target and exact logic
+mode. A faulty import, cut compiler, or library entry can therefore cause only rejection.
+Imported and live partial certificates have explicit node/depth budgets. Exceeding either raises
+an honest transactional `TacticLimit`; QED also translates host recursion exhaustion into a typed
+rejection while preserving the session.
+
+Arithmetic automation follows the same certificate discipline. A future `ring` tactic may compute
+a canonical commutative-semiring normal form in the engine, but it must also construct an equality
+certificate from checked arithmetic lemmas. No normalization oracle or new kernel proof rule is
+permitted. Resource exhaustion is an honest `TacticLimit` and is transactional.
+
 ## 3. UI: the `peano-lab` page
 
 Clone the lambda-lab shell (xterm + Pyodide worker + fully self-hosted vendor + `?cmd=` deep

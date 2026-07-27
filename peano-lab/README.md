@@ -55,7 +55,23 @@ pa lib mul_eq_zero
 pa lean add_comm
 ```
 
-The first command opens a tactic card whose worked script is replayed in CI;
+Checked library facts can also be composed inside an ordinary live proof:
+
+```text
+pa prove forall a b. S a + b = S (b + a)
+use add_succ_left
+use add_comm
+intro a
+intro b
+simp [add_succ_left, add_comm]
+qed
+```
+
+`use` does not ask the kernel to trust a theorem name. It inserts the theorem's closed certificate
+as a local cut; surface finalization contracts that cut and independently checks the resulting
+closed proof against the original stated goal.
+
+`pa tactic induction` opens a tactic card whose worked script is replayed in CI;
 the tutorial command starts an ENTER-driven lesson that cannot complete until its generated
 certificate passes the same independent QED path.
 

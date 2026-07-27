@@ -9,6 +9,8 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
+import pytest
+
 import peano_lab.engine.tactics as engine_tactics
 from peano_lab.kernel.formulas import parse_formula
 
@@ -47,7 +49,7 @@ def _only_attempt(report):
 def test_checked_proof_uses_external_original_target_and_exact_mode(monkeypatch) -> None:
     goal = eval_policy.EvalGoal("refl", "0 = 0", classical=False)
     calls: list[tuple[object, object]] = []
-    real_checked_final = eval_policy.checked_final
+    real_checked_final = eval_policy.checked_surface_final
 
     def spy(state, original_target, *, classical=False, trace=None):
         calls.append((original_target, classical))
@@ -58,7 +60,7 @@ def test_checked_proof_uses_external_original_target_and_exact_mode(monkeypatch)
             trace=trace,
         )
 
-    monkeypatch.setattr(eval_policy, "checked_final", spy)
+    monkeypatch.setattr(eval_policy, "checked_surface_final", spy)
     report = eval_policy.evaluate(ScriptPolicy(("refl",)), (goal,), k=1)
     attempt = _only_attempt(report)
 
@@ -66,6 +68,40 @@ def test_checked_proof_uses_external_original_target_and_exact_mode(monkeypatch)
     assert attempt.proof_nodes == 1
     assert calls == [(parse_formula("0 = 0"), False)]
     assert report.to_dict()["judge"] == "checked_final(original_target, exact_mode)"
+
+
+def test_policy_surface_can_reuse_a_checked_library_theorem() -> None:
+    goal = eval_policy.EvalGoal(
+        "library_reuse",
+        "forall n m. n + m = m + n",
+        classical=False,
+    )
+
+    report = eval_policy.evaluate(
+        ScriptPolicy(("use add_comm", "exact add_comm")),
+        (goal,),
+        k=1,
+    )
+
+    attempt = _only_attempt(report)
+    assert attempt.status == "proof"
+    assert attempt.commands == ("use add_comm", "exact add_comm")
+    assert attempt.proof_nodes is not None and attempt.proof_nodes > 0
+
+
+@pytest.mark.parametrize(
+    ("command", "status"),
+    [
+        ("use missing", "failing"),
+        ("use add_comm under alias", "invalid"),
+    ],
+)
+def test_policy_classifies_library_reuse_failures(command: str, status: str) -> None:
+    goal = eval_policy.EvalGoal("library_reuse_failure", "0 = 0")
+
+    report = eval_policy.evaluate(ScriptPolicy((command,)), (goal,), k=1)
+
+    assert _only_attempt(report).status == status
 
 
 def test_policy_observes_only_canonical_trace_goals() -> None:

@@ -17,7 +17,8 @@ replays the script and submits the dependency-free result to the [[trusted-kerne
 are first-class checked entries, not hidden rewrite axioms.
 
 The browser commands `pa lib <name>` and `pa lean <name>` expose the script and an exact Lean 4
-statement stub respectively.
+statement stub respectively. Inside a live proof, `use <name>` performs [[checked-theorem-reuse]]
+by compiling the closed certificate into an ordinary local cut.
 
 ## Related
 
