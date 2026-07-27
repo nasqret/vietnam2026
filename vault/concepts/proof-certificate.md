@@ -18,7 +18,11 @@ Named intermediate claims use the same authority boundary: a [[local-reasoning-c
 engine-only schedule that must be compiled away before this ordinary certificate reaches the
 kernel.
 
+Certificate size is likewise untrusted metadata. [[compact-arithmetic-certificate|Compact
+arithmetic]] may choose a smaller ordinary tree, but only the kernel check supplies authority; a
+best-found node count is not a theorem of global minimality.
+
 ## Related
 
 [[peano-lab]] · [[trusted-kernel]] · [[tactic-mode]] · [[curry-howard]] ·
-[[local-reasoning-cut]]
+[[local-reasoning-cut]] · [[compact-arithmetic-certificate]]

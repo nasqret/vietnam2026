@@ -705,3 +705,81 @@ delivery verifier then stopped at its first HTTP policy check: the LOL-ng respon
 `Cache-Control: no-store` for HTML, and the immutable worker response likewise has no
 `Cache-Control`. Production was therefore not promoted and remains build `2026-07-27h`. This is the
 same administrator-managed M14 header boundary, not a proof or paste implementation failure.
+
+## 2026-07-28 — M18 design: compact arithmetic without compact trust
+
+Replaying the recurrence-normal parity proof after `have` and `suffices` made the size problem
+concrete. The source has only eighteen proof tactics, but its finalized ordinary certificate has
+30,030 structural nodes. The partial tree grows from 35 to 18,651 at the first `ring` and from
+18,654 to 30,016 at the second. Both certificates are sound; generic semiring normalization simply
+pays for far more algebraic structure than this PA recurrence needs.
+
+The earlier hand-authored experiment remains the useful counterexample. It proves
+`exists x. n*n+n=2*x`, uses successor witness `x+S n`, substitutes the induction equality in the
+recurrence-normal step, and transports the entire existential proposition to `n*(n+1)` only once.
+Its 180-node, depth-34, cut-normal certificate is checked for the original theorem and rejected for
+a nearby odd mutation. That number is a current checked upper bound, not a lower-bound theorem.
+
+The M18 surface therefore stays narrower than the mathematical discovery. `compact_arith` closes
+one rigid equality; `compact_arith [h, <- k]` makes exactly the listed equality hypotheses available
+in exactly those orientations, while the selected proof may use a subset. It neither scans the rest of the context nor chooses an
+outer induction invariant, witness, or logical proof structure. In the teaching replay the learner
+must still write `have strong`, perform induction and existential elimination, choose `0` and
+`x + S n`, list `IH_witness`, and prove the final bridge.
+
+The phase-1 planner memoizes a finite seeded grammar rather than pretending to be a general shortest-
+path solver. Its recurrence templates follow PA3--PA6's right-recursive definitions and are ordinary
+induction certificates. Exact endpoint-bearing fragments compose by symmetry, transitivity,
+congruence, and equality substitution. Fully quantified templates and parameter-specialized
+induction instances are checked with an empty proof context before final use; the cut-normal
+selected tree is checked in the focused context before publication; QED then checks the whole
+original theorem again. The kernel gains no constructor or theorem environment.
+
+Cost language needs the same discipline as proof language. The existing `proof_size` counts expanded
+`Proof` occurrences but not term or motive annotations, and shared Python objects are still counted
+at every tree occurrence. M18 may report the cheapest candidate in its explicitly finite grammar
+and limits. It may not say “absolute minimum.” A genuine claim of that strength would require a fixed
+finite costed language and an exhaustive or formally verified lower-bound argument.
+
+Implementation verification is intentionally not recorded in this entry yet. Focused/full test
+counts, the final readable-replay metric, browser observation, release identities, and publication
+status belong here only after the engine and all project gates are green.
+
+## 2026-07-28 — M18 implementation and adversarial review
+
+The first implementation reproduced the 180-node certificate, but review found several places
+where passing the kernel was not enough to satisfy the stronger engineering contract. Planner
+candidates initially carried only proofs and costs; the binding design required exact endpoints.
+The engine now represents each equality fragment with its left term, right term, and ordinary proof.
+Typed constructors reject non-composing transitivity, mismatched congruence endpoints, and an
+equality-substitution motive whose source does not match its body before a candidate reaches the
+kernel. The final focused check and original-target QED check remain the actual soundness boundary.
+
+Resource review found the same distinction between safety and a truthful user contract. The
+256-node input limit had accidentally reset on each side of each equation; it now counts the goal
+and all selected assumptions in one aggregate budget. One outer deadline now starts before live-
+proof preflight, is shared with synthesis, and is checked again through hole replacement and
+publication. Malformed proof nodes, terms, contexts, substitutions, clocks, and deliberately forged
+states now produce final-English `TacticError` or `TacticLimit` results without publishing state.
+These bugs could not create a false theorem because the kernel still rejected bad evidence, but
+they mattered for determinism, transactionality, and the honesty of documented limits.
+
+The public preview was refined at the same time. It says which explicitly permitted equations the
+winning candidate actually used and reports expanded proof nodes, proof depth, annotation nodes,
+and synthesis work. The real tactic reconstructs the candidate instead of reusing preview
+authority. Tests pin that neither successful nor failed preview consumes a hole or metavariable ID.
+
+The final focused suite reports 46 passes, including typed-composer attacks, empty-context template
+checks, capture beneath implication/existential/universal binders, focus and `all_goals`, exact undo
+and trace counts, malformed values, every resource path, and the exact readable replay. That replay
+has 180 nodes, depth 34, and byte-identical canonical text. The complete Peano suite reports 744
+passes; Lambda remains green at 360 tests plus 36 subtests. The warning-as-error book has 26 source
+files, while its executable gate checks 193 deep links and 170 commands in 34 blocks. The connected
+Obsidian vault has 61 notes and 356 resolved links. Corpus reproduction retains 13,344 unique
+transitions from 1,692 checked sessions and now fingerprints all 31 semantic Python sources.
+
+The exact local browser assembly is build `2026-07-28c`, application `a-953fa3777cd4`, with vendor
+release `v-85fb3352e49c`. Static browser tests, worker concurrency, multiline paste, manifests, and
+every staged application hash are green. No in-app browser was attached, so no live Pyodide click-
+through is claimed. Nothing from M18 was deployed: staging remains M17 and production remains build
+`2026-07-27h` until the administrator-managed M14 cache-header problem is resolved.

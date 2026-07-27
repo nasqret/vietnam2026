@@ -90,8 +90,8 @@
   <script>
   (function(){
     "use strict";
-    const BUILD="2026-07-28b";
-    const APP_ROOT="releases/a-404fdbdb55e4/";
+    const BUILD="2026-07-28c";
+    const APP_ROOT="releases/a-953fa3777cd4/";
     const MAX_INPUT=4000;
     const MAX_PASTE_CHARS=100000;
     const MAX_PASTE_LINES=256;
@@ -134,9 +134,9 @@
     function saveHistory(){try{localStorage.setItem(HISTORY_KEY,JSON.stringify(history.slice(-200)));}catch(_error){}}
 
     let buffer="",cursor=0,history=loadHistory(),historyIndex=history.length,busy=true;
-    const COMMANDS=["abort","about","axioms","classical","clear","cls","eval","help","hint","kb","lib","pa","prove","qed","script","simp","tactic","tutorial","undo"];
+    const COMMANDS=["abort","about","axioms","classical","clear","cls","compact_arith?","eval","help","hint","kb","lib","pa","prove","qed","script","simp","tactic","tutorial","undo"];
     const PA_SUBCOMMANDS=["axioms","eval","help","kb","lean","lib","prove","simp","tactic","tutorial"];
-    const TACTICS=["all_goals","apply","assumption","auto","cases","congr","exact","exfalso","exists","first","focus","forall_elim","have","induction","intro","left","norm_num","refl","repeat","rewrite","right","ring","simp","specialize","split","suffices","symm","trans","use"];
+    const TACTICS=["all_goals","apply","assumption","auto","cases","compact_arith","congr","exact","exfalso","exists","first","focus","forall_elim","have","induction","intro","left","norm_num","refl","repeat","rewrite","right","ring","simp","specialize","split","suffices","symm","trans","use"];
     const ROOT_COMPLETIONS=Array.from(new Set(COMMANDS.concat(TACTICS)));
     function completionCandidates(prefix){
       const words=prefix.trimStart().split(/\s+/);

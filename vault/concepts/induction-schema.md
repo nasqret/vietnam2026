@@ -20,8 +20,12 @@ only a convenient way to construct that certificate.
 This distinction explains the first important rung of the [[theorem-ladder]]: $n+0=n$ is a defining
 equation, while $0+n=n$ needs induction because recursion is on the second argument.
 
+The [[compact-arithmetic-certificate]] planner exploits the same orientation through a fixed set of
+checked recurrence templates. It does not infer a theorem's outer induction invariant.
+
 ## Related
 
 - [[peano-lab]]
 - [[proof-certificate]]
 - [[theorem-ladder]]
+- [[compact-arithmetic-certificate]]

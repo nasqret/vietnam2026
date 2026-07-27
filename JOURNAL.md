@@ -703,3 +703,33 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   despite the deployed `.htaccess`. This confirms the still-open administrator/proxy M14 blocker.
 - Did not promote the red delivery to production. `/peano-lab/` remains build `2026-07-27h`; the
   new feature can be tried on staging while the host configuration is corrected.
+
+## 2026-07-28 (branch peano-lab) — Peano Lab M18: compact arithmetic locally complete
+
+- Measured the exact recurrence-normal parity replay after local-cut compilation: its eighteen
+  proof tactics produce a 30,030-node ordinary certificate. The first generic `ring` grows the
+  partial tree from 35 to 18,651 nodes and the second from 18,654 to 30,016. This is valid evidence,
+  but unnecessarily general evidence for the particular PA recurrence.
+- Fixed the new surface at `compact_arith` and `compact_arith [h, <- k]`. Version 1 closes only a
+  rigid equality and uses only the explicitly listed local equalities, in order and orientation. It
+  does not infer the outer parity invariant, induction variable, or witnesses.
+- Kept the kernel contract unchanged. The phase-1 engine design memoizes a finite grammar of
+  PA3--PA6 equality paths and seeded, independently checked induction templates, measures the
+  expanded cut-normal tree, checks the exact focused judgment before commit, and leaves the
+  original-target QED check in place.
+- Added the construction chapter and connected design/plan/README/vault/memory surfaces. They
+  contrast the generic 30,030-node elaboration with the existing checked 180-node/depth-34 artifact
+  and state the honest result: 180 is a best-known upper bound, not a global-minimality proof.
+- Implemented endpoint-bearing equality fragments and locally checked composition for symmetry,
+  transitivity, congruence, and equality substitution. The review pass also made the 256-node input
+  cap aggregate, extended the five-second deadline across state preflight/publication, and converted
+  malformed state, proof, term, clock, and host-recursion paths into typed transactional failures.
+- Local acceptance is green: focused M18 `46 passed`; Peano `744 passed`; Lambda `360 passed, 36
+  subtests passed`; exact parity QED at 180 nodes/depth 34 and byte identity; warning-as-error
+  26-source book; 193 links/170 replayed commands in 34 blocks; 61-note/356-link connected vault;
+  and a reproducible 13,344-transition corpus from 1,692 checked sessions fingerprinting 31 sources.
+  Application/vendor manifests and exact local staging are green at `a-953fa3777cd4`/
+  `v-85fb3352e49c`, build `2026-07-28c`; the kernel is unchanged at 234 checker lines. Worker and
+  multiline-paste behavioral harnesses pass. No in-app browser was attached, so live Pyodide
+  behavior is not claimed. M18 was not deployed; staging remains M17 and production remains
+  `2026-07-27h` behind the M14 cache-header blocker.

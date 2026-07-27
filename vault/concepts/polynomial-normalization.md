@@ -16,6 +16,11 @@ visible: introduce an equality with `trans`, prove the first identity, `rewrite`
 hypothesis, and prove the remaining identity. Different polynomials fail transactionally rather
 than inviting heuristic search.
 
+The narrower [[compact-arithmetic-certificate|compact arithmetic]] planner makes a different
+tradeoff: it follows a fixed family of PA-oriented recurrences and may use an explicit ordered list
+of equality hypotheses to seek a smaller expanded tree. It is not a replacement for `ring`'s broad
+polynomial identity contract.
+
 The normalizer also has explicit AST, variable, degree, monomial, coefficient, work, proof-size,
 proof-depth, and wall-clock limits. Exceeding one is an honest tactic limit and leaves the
 [[tactic-mode]] state unchanged.
@@ -23,4 +28,4 @@ proof-depth, and wall-clock limits. Exceeding one is an honest tactic limit and 
 ## Related
 
 [[normal-form]] · [[checked-numerical-normalization]] · [[simp-termination]] · [[theorem-ladder]] ·
-[[de-bruijn-criterion]]
+[[de-bruijn-criterion]] · [[compact-arithmetic-certificate]]

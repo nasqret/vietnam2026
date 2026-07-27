@@ -2,19 +2,14 @@ pa prove forall n. exists x. n * (n + 1) = 2 * x
 have strong : forall n. exists x. n * n + n = 2 * x
 induction n
 exists 0
-norm_num
+compact_arith
 cases IH
 exists x + S n
-trans ((n * n + n) + S n) + S n
-ring
-rewrite IH_witness
-ring
+compact_arith [IH_witness]
 intro n
 specialize strong n
 suffices normalize : n * (n + 1) = n * n + n
 rewrite normalize
 exact strong
-rewrite PA4
-rewrite PA3
-apply PA6
+compact_arith
 qed

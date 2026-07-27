@@ -7,7 +7,7 @@ and sharing its shell (xterm + Pyodide worker, fully self-hosted).
 **Start here, in this order:**
 
 1. [`../docs/PEANO_LAB_DESIGN.md`](../docs/PEANO_LAB_DESIGN.md) — the architecture. It is binding.
-2. [`../PLAN/09_peano_lab.md`](../PLAN/09_peano_lab.md) — milestones M0–M17 with tasks and
+2. [`../PLAN/09_peano_lab.md`](../PLAN/09_peano_lab.md) — milestones M0–M18 with tasks and
    acceptance criteria.
 3. [`py/peano_lab/`](py/peano_lab/) — the readable implementation behind the pinned APIs.
 
@@ -288,6 +288,84 @@ unresolved witness metavariables, and its AST, variable, degree, monomial, coeff
 certificate-size, and wall-clock limits fail transactionally. The wall-clock default is five
 seconds: the required large step used about 1.4 seconds under native CPython, while a real Pyodide
 measurement remains part of deployment verification.
+
+## Smaller PA-oriented equality certificates
+
+`compact_arith` has a narrower contract than `ring`: it searches a finite, memoized grammar of
+PA3--PA6-oriented equality paths and seeded induction-recurrence templates, preferring the smallest
+expanded proof tree it finds. Its exact forms are:
+
+```text
+compact_arith
+compact_arith [h, <- k]
+```
+
+The bracketed form makes exactly the named equality hypotheses available, in the written order and
+direction; the winning candidate may use a subset. There is no implicit context mining. Version 1
+accepts only a focused rigid equality with no
+unresolved term metavariables. It does not introduce a binder, invent an induction invariant or an
+existential witness, solve a logical connective, or act as a decision procedure for PA.
+
+That restriction keeps the mathematics visible in the consecutive-product example. The learner
+states the stronger invariant, chooses both witnesses, and explicitly permits the induction
+hypothesis; compact arithmetic handles only the resulting equalities:
+
+```text
+pa prove forall n. exists x. n * (n + 1) = 2 * x
+have strong : forall n. exists x. n * n + n = 2 * x
+induction n
+exists 0
+compact_arith
+cases IH
+exists x + S n
+compact_arith [IH_witness]
+intro n
+specialize strong n
+suffices normalize : n * (n + 1) = n * n + n
+rewrite normalize
+exact strong
+compact_arith
+qed
+```
+
+After local-cut compilation this thirteen-tactic replay produces the same 180-node, depth-34
+canonical certificate as the retained hand-authored artifact.
+
+There is no trusted `compact_arith` proof constructor. Seeded recurrence instances are ordinary
+induction certificates built from existing kernel rules and checked with an empty proof context
+before final use; the fully quantified addition-successor template is checked once before any
+specialization. The selected
+cut-normal candidate is measured at its expanded tree cost, independently checked against the exact
+focused context and target before commit, and checked again as part of the complete original theorem
+at QED. A planner or cost bug cannot produce a false QED; explicit-input, determinism, resource,
+and cost-reporting contracts remain independently tested engine obligations.
+
+The motivating generic readable replay elaborates to 30,030 structural proof-tree nodes, mostly in
+its two `ring` calls. A separate hand-authored construction demonstrates a checked 180-node,
+depth-34 certificate; see
+[`../artifacts/triangular-even-180.certificate.txt`](../artifacts/triangular-even-180.certificate.txt)
+and the full [book chapter](../book/peano/compact-arith.md).
+That 180 is a best-known checked upper bound, not a proven global minimum. The current metric counts
+expanded `Proof` occurrences but not term or induction-motive size, and DAG sharing would be a
+different representation and cost model. `compact_arith` may report the cheapest candidate in its
+fixed bounded grammar; it cannot turn bounded search into an absolute minimality theorem.
+
+`compact_arith?` is a pure preview of the selected path, equations actually used, expanded nodes,
+depth, annotation nodes, and work. It changes no
+goal, history, hole, metavariable allocation, replay journal, or trace. Running the real tactic still
+reconstructs and checks the candidate. Unsupported input and every AST, hypothesis, annotation,
+work, time, proof-size, proof-depth, or complete-partial-proof limit fail transactionally.
+
+The default bounds are 256 aggregate input-term nodes at depth 64, 16 selected equations, 64
+seed/template instances, 512 memo/search states, 512 generated candidates, 100,000 annotation nodes at
+depth 256, 20,000 work units, a 10,000-node/256-level generated fragment, a 100,000-node/512-level
+complete partial certificate, and five seconds.
+
+M18 is locally verified as build `2026-07-28c`, application release `a-953fa3777cd4`: the focused
+suite reports 46 passes and the complete Peano suite 744. Exact local staging, manifests, worker and
+multiline-paste harnesses are green. No in-app browser was attached, so a live Pyodide click-through
+is not claimed, and M18 was not deployed. Public staging remains M17; production remains build
+`2026-07-27h` behind the administrator-managed cache-header blocker.
 
 Back at the repository root, run both regression suites:
 

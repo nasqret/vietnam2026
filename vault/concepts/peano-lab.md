@@ -29,8 +29,13 @@ Intermediate propositions can be organized with [[local-reasoning-cut|local reas
 `have` proves the named fact first, while `suffices` proves first that the fact would finish the old
 goal. Both schedules are compiled away before kernel checking.
 
+The PA-specific `compact_arith` tactic searches for a [[compact-arithmetic-certificate]] for one
+rigid equality. It may use only an explicit ordered list of named equalities, while the learner must
+still choose any surrounding invariant, induction, and existential witness.
+
 ## Related
 
 [[peano-lab-moc|Peano Lab MOC]] · [[natural-deduction]] · [[tactic-mode]] ·
 [[checked-numerical-normalization]] · [[browser-proof-runtime]] · [[substitution]]
-· [[replayable-proof-script]] · [[multiline-proof-paste]] · [[local-reasoning-cut]]
+· [[replayable-proof-script]] · [[multiline-proof-paste]] · [[local-reasoning-cut]] ·
+[[compact-arithmetic-certificate]]

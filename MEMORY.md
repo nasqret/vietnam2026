@@ -22,8 +22,8 @@
 - **Browser Lambda Lab:** `~/public_html/lab-lambda/` → <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda>
 - **Browser Peano Lab targets:** `~/public_html/peano-lab/` (production) and
   `~/public_html/peano-lab-next/` (staging). Production remains on verified M13 build
-  `2026-07-27h`; staging serves M15 build `2026-07-27j` from commit `f40b2ad` and application release
-  `a-f2054080fdc5`. Its gzip and exact bytes are live, but production promotion is stopped because
+  `2026-07-27h`; staging serves M17 build `2026-07-28b` from commit `ca82b70` and application release
+  `a-404fdbdb55e4`. Its gzip and exact bytes are live, but production promotion is stopped because
   account-level `.htaccess` did not emit the required cache policy; administrator-managed host/proxy
   headers or an explicit PHP-relay design exception is needed. The probe did not establish the
   central server's loaded-module inventory.
@@ -147,6 +147,16 @@
   is unchanged. Build `2026-07-28b`, application `a-404fdbdb55e4`, is deployed to staging with
   exact HTML/manifest/worker/driver bytes. Production remains `2026-07-27h`: the host still omits
   the required cache headers, so the delivery verifier blocks promotion.
+  M18 is the locally green compact-certificate milestone. Its exact arithmetic surface is
+  `compact_arith` or `compact_arith [h, <- k]` on one rigid equality. The optional list is the
+  complete ordered set of local equalities the tactic may use; there is no hidden context mining.
+  The phase-1 planner memoizes a finite grammar of PA3--PA6-oriented paths and checked recurrence
+  templates. It does not invent an outer induction invariant or existential witness, and it adds no
+  kernel constructor. The motivating readable `ring` replay expands to 30,030 proof-tree nodes;
+  the existing hand-authored 180-node/depth-34 certificate is the current checked upper bound, not
+  a proven absolute minimum. Focused/full acceptance, corpus provenance, documentation, manifests,
+  and exact local staging are green at build `2026-07-28c`, application `a-953fa3777cd4`; M18 is not
+  deployed. No in-app browser was attached, so a live Pyodide click-through is not claimed.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -182,12 +192,12 @@
 - Build/deploy strategy chosen: **go live incrementally** (public GitHub + faculty URLs as pieces land).
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
-- Peano Lab milestones M0–M17 are locally green on `peano-lab`. M16 adds named local reasoning and
+- Peano Lab milestones M0–M18 are locally green on `peano-lab`. M16 adds named local reasoning and
   a readable checked parity replay; M17 adds bounded sequential multiline proof paste and is on
-  staging. M14 production
-  delivery remains blocked on administrator-managed cache headers, while M15 is pushed and
-  published to staging;
-  the implementation, checked corpus,
+  staging. M18 adds checked PA-specific compact
+  equality certificates while leaving invariant and witness choice visible. M14 production
+  delivery remains blocked on administrator-managed cache headers, while M17 is published to
+  staging. The implementation, checked corpus,
   construction book, Obsidian knowledge base, kernel-judged evaluation protocol, live checked-
   theorem reuse, 23-entry semiring ladder, certificate-producing `ring`, and bounded checked
   `norm_num` teaching surface are present. The odd-square induction closes through explicit

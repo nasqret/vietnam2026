@@ -2,17 +2,36 @@
 
 from __future__ import annotations
 
+from dataclasses import fields
 from pathlib import Path
 
 import driver
 
+from peano_lab.engine.state import proof_size
 from peano_lab.kernel.checker import check
 from peano_lab.kernel.formulas import parse_formula
+from peano_lab.kernel.proofs import Proof
+from peano_lab.ui.panels import render_certificate
 from peano_lab.ui.prove import checked_surface_final, get_owner
 
 
 REPO = Path(__file__).resolve().parents[3]
 SCRIPT = REPO / "artifacts" / "triangular-even-readable.pa"
+CANONICAL_CERTIFICATE = REPO / "artifacts" / "triangular-even-180.certificate.txt"
+
+
+def _proof_depth(proof: Proof) -> int:
+    maximum = 0
+    pending = [(proof, 1)]
+    while pending:
+        current, depth = pending.pop()
+        maximum = max(maximum, depth)
+        pending.extend(
+            (getattr(current, item.name), depth + 1)
+            for item in fields(current)
+            if isinstance(getattr(current, item.name), Proof)
+        )
+    return maximum
 
 
 def test_readable_parity_script_replays_and_checks_its_original_goal() -> None:
@@ -25,6 +44,9 @@ def test_readable_parity_script_replays_and_checks_its_original_goal() -> None:
     assert commands[-1] == "qed"
     assert any(command.startswith("have strong :") for command in commands)
     assert any(command.startswith("suffices normalize :") for command in commands)
+    assert commands.count("compact_arith") == 2
+    assert commands.count("compact_arith [IH_witness]") == 1
+    assert "ring" not in commands
 
     session = driver.LabSession()
     for command in commands[:-1]:
@@ -40,6 +62,12 @@ def test_readable_parity_script_replays_and_checks_its_original_goal() -> None:
     )
 
     assert check((), certificate, owner.original_target)
+    assert proof_size(certificate) == 180
+    assert _proof_depth(certificate) == 34
+    rendered = (render_certificate(certificate, owner.original_names) + "\n").encode(
+        "utf-8"
+    )
+    assert rendered == CANONICAL_CERTIFICATE.read_bytes()
     mutated = parse_formula("forall n. exists x. n * (n + 1) = 2 * x + 1")
     assert not check((), certificate, mutated)
 

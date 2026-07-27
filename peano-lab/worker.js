@@ -33,6 +33,7 @@ const PY_FILES = [
   "py/peano_lab/engine/decide.py",
   "py/peano_lab/engine/norm_num.py",
   "py/peano_lab/engine/ring.py",
+  "py/peano_lab/engine/compact_arith.py",
   "py/peano_lab/engine/search.py",
   "py/peano_lab/engine/trace.py",
   "py/peano_lab/ui/__init__.py",

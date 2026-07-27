@@ -143,8 +143,11 @@ times. Read the administrative nodes and capture-safe compiler in
 For a longer example, the
 [`triangular-even-readable.pa`](https://github.com/nasqret/vietnam2026/blob/peano-lab/artifacts/triangular-even-readable.pa)
 replay proves that every consecutive product $n(n+1)$ is even. It uses `have` for the stronger
-induction invariant and `suffices` for the final normalization step; every QED still comes from the
-ordinary compiled certificate.
+induction invariant, `suffices` for the final normalization step, and `compact_arith` only for its
+rigid equality leaves. The thirteen-tactic replay compiles to the retained 180-node certificate;
+every QED still comes from the ordinary compiled tree. The size experiment and its honest
+minimality boundary are developed in {doc}`compact_arith: searching for a small PA certificate
+<compact-arith>`.
 
 ## Immutability makes failure transactional
 

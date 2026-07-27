@@ -133,6 +133,8 @@ def test_tactic_completion_discovers_surface_checked_arithmetic() -> None:
     assert '"suffices"' in match.group(1).split(",")
     assert '"norm_num"' in match.group(1).split(",")
     assert '"ring"' in match.group(1).split(",")
+    assert '"compact_arith"' in match.group(1).split(",")
+    assert '"compact_arith?"' in INDEX
     assert '"script"' in INDEX
     assert "const ROOT_COMPLETIONS=Array.from(new Set(COMMANDS.concat(TACTICS)))" in INDEX
     assert "if(words.length<=1)return ROOT_COMPLETIONS" in INDEX

@@ -225,6 +225,84 @@ after synchronous replay, cut reduction, and kernel validation; those synchronou
 preempted mid-call. The browser's Stop control remains the hard abort because all Python runs in a
 disposable worker.
 
+### Compact PA recurrence certificates (M18)
+
+`compact_arith` is a second, deliberately narrower arithmetic tactic. Its exact surface forms are
+`compact_arith` and `compact_arith [h, <- k]`; the bracketed list contains an ordered, explicit set
+of named equality hypotheses, with `<-` selecting right-to-left orientation. It applies only to the
+focused **rigid equality**. It does not introduce binders, select an induction variable, invent an
+induction invariant or existential witness, solve a logical connective, or mine unlisted context
+hypotheses. Malformed lists, missing or non-equality names, unresolved term metavariables, and
+unsupported goals fail transactionally.
+
+The purpose is certificate size, not a broader theorem set. `ring` obtains predictable breadth by
+reducing all supported polynomials to one commutative-semiring normal form. `compact_arith` instead
+searches a small, fixed family of PA-oriented equality paths and recurrence templates whose shapes
+follow PA3--PA6's recursion on the second argument. Initial templates may include checked
+derivations of `S a + b = S (a + b)`, `S a * b = a * b + b`, the exact successor-addition swap
+needed by the parity experiment, and the zero-offset doubling recurrence
+`(2 * w + j) + j = 2 * (w + j)`. Direct seeds include the 6-node `a+1=S a`, 10-node
+`a+2=S(S a)`, and 11-node `a*(b+1)=a*b+a` bridges. Template names and computed costs are untrusted
+planner data.
+Every recurrence template instance is an ordinary `ForallIntro`/`ImpIntro`/`Ind` certificate over
+PA3--PA6, checked with an empty proof context before final use and capture-safely eliminated. A
+fully quantified addition-successor template is checked once before specialization; other
+recurrence instances may already contain the rigid parameter terms selected from the goal.
+
+The engine carries every candidate as an exact `(left, right, proof)` triple. Smart constructors
+may create PA instances, symmetry, transitivity, congruence, and equality-motive `EqSubst`
+transports only when their recorded endpoints compose syntactically. A bounded deterministic search
+compares orientations and paths, retaining one winner for each exact endpoint pair and assumption-
+permission mode. Its deterministic key is expanded proof nodes, proof depth, annotation nodes, then
+generation ordinal. Its primary cost is measured
+on the expanded, cut-normal **proof tree** that the current kernel will inspect, not on the number of
+high-level template calls. Reusing one Python object does not make two tree occurrences count once.
+Annotation-node count is the third tie-breaker; annotation depth, work, and wall time are resource
+bounds rather than optimization objectives.
+Candidate generation carries a deterministic ordinal, so equal-cost selected hypotheses preserve
+the explicit surface-list order rather than depending on set, mapping, or host traversal order.
+
+`compact_arith` must never add a kernel constructor, arithmetic oracle, trusted theorem reference,
+or declaration environment. Before publishing success it normalizes administrative cuts, checks the
+candidate in the focused goal's exact context with the independent kernel, enforces the complete
+partial-certificate budget, and only then replaces the hole and records one transaction. Ordinary
+QED independently checks the final compiled certificate against the session owner's original target
+and exact classical mode. A planner, template, cost, specialization, or reduction bug cannot
+produce a false QED; non-soundness contracts such as explicit-hypothesis use, determinism, bounds,
+and cost reporting remain obligations enforced by engine tests.
+
+The intended parity lesson deliberately keeps the mathematics outside the tactic. The surface proof
+must state the stronger invariant `exists x. n*n+n = 2*x`, choose the base and successor witnesses,
+perform induction and existential elimination, explicitly list the induction equality when it may be
+used, and prove the final `n*(n+1)=n*n+n` bridge. `compact_arith` may close the resulting equality
+subgoals compactly; it may not synthesize the whole theorem in one opaque command. The retained
+hand-authored 180-node certificate is the current checked record and an implementation target, not
+a new axiom and not evidence of a global lower bound.
+
+The golden replay therefore uses bare `compact_arith` for the closed base equality,
+`compact_arith [IH_witness]` for the successor equality, and bare `compact_arith` for the explicitly
+stated final normalization bridge. After capture-safe local-cut compilation, its canonical
+180-node/depth-34 certificate is byte-identical to the retained hand-authored artifact. This exact
+regression is a success criterion, not permission to describe 180 as globally minimal.
+
+A pure `compact_arith?` inspection command previews the deterministic selected route, explicitly
+used hypotheses, and cost. Preview must not run a state tactic speculatively,
+allocate holes or metavariables, append history or JSONL trace transitions, or cache authority for a
+later run. The real tactic rebuilds and checks its candidate. Both preview and execution have pinned
+AST, selected-hypothesis, annotation, work, proof-node/depth, complete-partial-proof, and wall-clock
+limits. The M18 defaults are 256 aggregate input-term nodes at depth 64, 16 selected equations, 64
+seed/template instances, 512 memo/search states, 512 generated candidates, 100,000 term/formula
+annotation nodes at depth 256, 20,000 work units, a 10,000-node/256-level generated fragment, a
+100,000-node/512-level complete partial certificate, and five seconds. Exhaustion means only that
+this bounded search stopped.
+
+The public metric must be named honestly. `proof_size` counts structural `Proof` occurrences while
+ignoring the sizes of `Term` and `Formula` annotations stored by nodes such as `EqSubst` and `Ind`.
+The implementation may claim “smallest among the finite candidates generated by template set T
+under limits B” only if it exhausts that set and charges post-expansion cost. It may call the
+180-node artifact a best-known checked upper bound. It may not claim an absolute minimum without a
+fixed finite candidate language and an exhaustive or formally verified lower-bound argument.
+
 ## 3. UI: the `peano-lab` page
 
 Clone the lambda-lab shell (xterm + Pyodide worker + fully self-hosted vendor + `?cmd=` deep
@@ -235,7 +313,8 @@ links + localStorage history + Stop button). New Python package `peano_lab`, new
   complete-line `qed`/`abort`, in-proof `help`, `hint`)
 - `pa tactic [name]`, `pa lib [name]` — tactic encyclopedia + proved-theorem library
 - `pa axioms`, `pa eval <term>`, `pa simp <term>`
-- proof-producing arithmetic tactics `norm_num` and `ring`, each with an executable tactic card
+- proof-producing arithmetic tactics `norm_num`, `ring`, and the narrower `compact_arith`, each
+  with an executable tactic card; `compact_arith?` is a pure preview
 - `kb`-style knowledge base entries for PA, induction, De Bruijn, LCF vs proof terms, Gödel
   (a "limits" card — honest about what this prover can never do)
 - tutorials: "prove add_comm by hand", "build your own tactic", and checked numerical normalization
@@ -309,6 +388,9 @@ Success metric for later: a small fine-tuned model, given `goals_before`, propos
    `len(goals) == holes(partial)` after every step.
    Local-reasoning tests additionally pin the two opposite goal orders, exact undo, and
    capture-avoiding compilation beneath both proposition and term binders.
+   Compact-arithmetic tests additionally check exact hypothesis order/orientation, template
+   soundness and capture, preview purity, deterministic post-expansion costs, adversarial mutations,
+   and transactional exhaustion of every search/certificate bound.
 3. **The theorem ladder as regression** (§6): every library theorem's script replays in CI.
 4. **Book gate**: extend `verify_book_commands.py` to replay `pa`-family deep links and session
    blocks against the peano-lab driver.
@@ -335,7 +417,7 @@ peano-lab/
     peano_lab/
       kernel/     terms.py formulas.py subst.py proofs.py checker.py   ← TRUSTED, small
       engine/     state.py tactics.py tacticals.py rewrite.py
-                  induction.py decide.py norm_num.py proof_reduction.py ring.py
+                  induction.py decide.py norm_num.py proof_reduction.py ring.py compact_arith.py
                   search.py trace.py                                  ← untrusted
       ui/         prove.py panels.py data_tactics.py data_kb.py
                   data_tutorials.py data_library.py
@@ -360,4 +442,6 @@ The arithmetic tactics are not a decision procedure for PA. `norm_num` covers bo
 numerical islands in equalities; `ring` covers unconditional polynomial identities. Neither solves
 nonlinear consequences of hypotheses. There is no Presburger `omega` in this plan: adding one later
 would require a separate certificate-producing design and would still decide only that fragment,
-not general Peano arithmetic.
+not general Peano arithmetic. `compact_arith` does not change this boundary: its finite seeded
+recurrence grammar is intentionally incomplete, and “cheapest candidate found” is not an absolute
+proof-minimality result.

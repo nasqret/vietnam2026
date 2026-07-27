@@ -115,4 +115,6 @@ a procedure would cover only a decidable fragment, not general Peano arithmetic.
 logical boundary continues in {doc}`The deliberate limits <limits>`, while
 {doc}`Induction and the theorem ladder <induction-ladder>` and
 {doc}`The checked theorem ladder <ladder>` show how symbolic theorems are built when calculation is
-not enough.
+not enough.  The next chapter, {doc}`compact_arith: searching for a small PA certificate
+<compact-arith>`, asks a different question: after an equality is provable, how can a PA-specific
+planner construct substantially smaller evidence without becoming a trusted oracle?

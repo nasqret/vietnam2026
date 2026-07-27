@@ -21,6 +21,11 @@ import re
 from time import monotonic
 import unicodedata
 
+from ..engine.compact_arith import (
+    CompactArithAssumption,
+    compact_arith_checked,
+    prove_compact_equation,
+)
 from ..engine.ring import (
     DEFAULT_RING_LIMITS,
     RING_LAW_NAMES,
@@ -28,7 +33,13 @@ from ..engine.ring import (
     ring_checked,
 )
 from ..engine.search import auto
-from ..engine.state import ProofState, final_certificate, proof_size, start
+from ..engine.state import (
+    ProofState,
+    apply_formula_subst,
+    final_certificate,
+    proof_size,
+    start,
+)
 from ..engine.tacticals import all_goals, first, focus, orelse, repeat, then
 from ..engine.tactics import (
     TACTIC_NAMES,
@@ -45,8 +56,14 @@ from ..engine.tactics import (
     use_checked,
 )
 from ..engine.trace import TraceLogger
-from ..kernel.formulas import ParseError, Formula, parse_formula_with_names, pretty_formula
-from ..kernel.proofs import Proof
+from ..kernel.formulas import (
+    Eq,
+    Formula,
+    ParseError,
+    parse_formula_with_names,
+    pretty_formula,
+)
+from ..kernel.proofs import EqSym, Hyp, Proof
 from ..library.theorems import LibraryError, get as get_theorem, normalise_cuts, replay
 from .panels import NL, collect_meta_ids, render_certificate, render_state
 
@@ -66,6 +83,8 @@ _SESSION_ONLY_WORDS = set(_QED_WORDS) | set(_ABORT_WORDS) | set(TACTIC_NAMES) | 
     "all_goals",
     "auto",
     "classical",
+    "compact_arith",
+    "compact_arith?",
     "focus",
     "first",
     "help",
@@ -371,11 +390,12 @@ def usage() -> str:
         "           split · left · right · cases · exfalso · exists",
         "           specialize · forall_elim",
         "           refl · symm · trans · congr · rewrite · induction · simp",
-        "           norm_num · ring",
+        "           norm_num · ring · compact_arith [h, <- k]",
         "           use <library-theorem> [as <alias>]",
         "  Language: t1; t2 · t1 <|> t2 · repeat t · first [t1 | t2]",
         "            all_goals t · focus n t · auto [depth]",
-        "  Session: hint · undo · ? · script [download] · classical on|off · qed · abort",
+        "  Session: hint · compact_arith? [h, <- k] · undo · ? · script [download]",
+        "           classical on|off · qed · abort",
         "",
         "qed / abort and their aliases act only when typed alone on the line.",
         "Try: pa prove forall n. 0 + n = n",
@@ -396,6 +416,7 @@ def tactic_help() -> str:
         "  use add_comm; exact add_comm",
         "  intro n; norm_num",
         "  intro n; intro m; ring",
+        "  intro n; compact_arith",
         "",
         "Logic starts intuitionistic. `classical on` explicitly authorizes DNE",
         "for later `apply DNE` / `auto` steps and for the final kernel check.",
@@ -658,10 +679,15 @@ def _primitive(name: str, args: str, classical: bool) -> Tactic:
         raise TacticSyntaxError(
             "`classical` is a session command and cannot be nested in a tactical."
         )
-    if name not in TACTIC_NAMES and name not in {"auto", "ring", "use"}:
+    if name not in TACTIC_NAMES and name not in {
+        "auto",
+        "compact_arith",
+        "ring",
+        "use",
+    }:
         raise TacticSyntaxError(
             f"unknown tactic {name!r}; available: "
-            f"{', '.join(TACTIC_NAMES)}, auto, ring, use."
+            f"{', '.join(TACTIC_NAMES)}, auto, compact_arith, ring, use."
         )
 
     def run(state: ProofState, extra: str = "") -> ProofState:
@@ -669,6 +695,8 @@ def _primitive(name: str, args: str, classical: bool) -> Tactic:
             raise TacticError("an assembled surface tactic takes no extra arguments.")
         if name == "auto":
             return auto(state, args, classical=classical)
+        if name == "compact_arith":
+            return _compact_arith_theorem(state, args)
         if name == "ring":
             return _ring_theorem(state, args)
         if name == "use":
@@ -745,6 +773,121 @@ def _ring_theorem(state: ProofState, args: str) -> ProofState:
         return monotonic()
 
     return ring_checked(state, tuple(laws), clock=attempt_clock)
+
+
+def _compact_arith_args(args: str) -> tuple[tuple[bool, str], ...]:
+    """Parse the explicit equation set shared by execution and pure preview."""
+
+    text = args.strip()
+    if not text:
+        return ()
+    if not (text.startswith("[") and text.endswith("]")):
+        raise TacticSyntaxError(
+            "syntax: `compact_arith` or `compact_arith [h, <- k]`."
+        )
+    body = text[1:-1].strip()
+    if not body:
+        return ()
+
+    result: list[tuple[bool, str]] = []
+    used: set[str] = set()
+    for item in body.split(","):
+        words = item.strip().split()
+        reverse = bool(words and words[0] in {"<-", "←"})
+        if reverse:
+            words = words[1:]
+        if len(words) != 1:
+            raise TacticSyntaxError(
+                "syntax: `compact_arith` or `compact_arith [h, <- k]`."
+            )
+        name = words[0]
+        if name in used:
+            raise TacticError(
+                f"equation {name!r} may appear only once in `compact_arith`."
+            )
+        used.add(name)
+        result.append((reverse, name))
+    return tuple(result)
+
+
+def _compact_arith_assumptions(
+    state: ProofState,
+    args: str,
+) -> tuple[CompactArithAssumption, ...]:
+    """Resolve explicitly named context equations into ordinary proof evidence."""
+
+    goal = state.current()
+    if goal is None:
+        raise TacticError("there is no focused goal.")
+    context = tuple(
+        (name, apply_formula_subst(formula, state.subst))
+        for name, formula in goal.context
+    )
+    assumptions: list[CompactArithAssumption] = []
+    for reverse, requested in _compact_arith_args(args):
+        found = next(
+            (
+                (index, formula)
+                for index, (name, formula) in enumerate(context)
+                if name == requested
+            ),
+            None,
+        )
+        if found is None:
+            raise TacticError(f"unknown hypothesis {requested!r}.")
+        index, formula = found
+        if type(formula) is not Eq:
+            raise TacticError(
+                f"hypothesis {requested!r} is not an equation; "
+                "specialize or rewrite it explicitly."
+            )
+        equation = Eq(formula.right, formula.left) if reverse else formula
+        evidence: Proof = EqSym(Hyp(index)) if reverse else Hyp(index)
+        visible_name = f"<- {requested}" if reverse else requested
+        assumptions.append(
+            CompactArithAssumption(visible_name, equation, evidence)
+        )
+    return tuple(assumptions)
+
+
+def _compact_arith_theorem(state: ProofState, args: str) -> ProofState:
+    assumptions = _compact_arith_assumptions(state, args)
+    return compact_arith_checked(state, assumptions, clock=monotonic)
+
+
+def _compact_arith_preview(owner: ProofSession, args: str) -> str:
+    """Plan and check one candidate without publishing a proof transaction."""
+
+    state = owner.state
+    goal = state.current()
+    if goal is None:
+        raise TacticError("there is no focused goal.")
+    assumptions = _compact_arith_assumptions(state, args)
+    target = apply_formula_subst(goal.target, state.subst)
+    context = tuple(
+        apply_formula_subst(formula, state.subst)
+        for _, formula in goal.context
+    )
+    result = prove_compact_equation(
+        target,
+        context=context,
+        assumptions=assumptions,
+        clock=monotonic,
+    )
+    typed = "compact_arith" + (f" {args.strip()}" if args.strip() else "")
+    used = ", ".join(result.used_assumptions) or "(none)"
+    return _lines(
+        "Compact arithmetic preview — untrusted; proof state unchanged",
+        f"Strategy: {result.strategy}",
+        f"Used equations: {used}",
+        (
+            f"Candidate fragment: {result.proof_nodes} nodes · "
+            f"depth {result.proof_depth} · "
+            f"{result.annotation_nodes} annotation nodes · "
+            f"{result.work_units} work units"
+        ),
+        f"Type `{typed}` to commit it; only `qed` checks the whole theorem.",
+    )
 
 
 def _compile(source: str, classical: bool) -> tuple[Tactic, bool]:
@@ -909,6 +1052,14 @@ def _session_line(line: str, shared: dict, owner: ProofSession) -> str:
         return _finish_session(shared, owner)
     if line == "hint":
         return _hint_text(owner)
+    if line == "compact_arith?" or line.startswith("compact_arith? "):
+        try:
+            return _compact_arith_preview(
+                owner,
+                line[len("compact_arith?") :].strip(),
+            )
+        except TacticError as exc:
+            return f"Tactic error: {exc}"
     if line == "?":
         return _closed_panel(owner) if owner.state.is_done() else _panel(owner)
     if line == "script" or line.startswith("script "):

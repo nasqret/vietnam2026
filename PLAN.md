@@ -31,3 +31,12 @@ mathematics — with every idea presented **informally (runnable) and formally (
 Each `PLAN/*.md` file spells out **objectives**, **subtasks**, and **acceptance criteria**. Tasks are
 checkboxes; keep them current as work lands. The through-line and prerequisite graph from the research
 synthesis are the backbone the book and vault follow.
+
+## Latest completed Peano Lab milestone
+
+M18 implements `compact_arith` for small, kernel-checked PA equality certificates. Its
+version-1 surface is `compact_arith` or an explicit ordered hypothesis list such as
+`compact_arith [h, <- k]`. It must not mine other context, invent an induction invariant or witness,
+or add a trusted kernel shortcut. All local acceptance gates are green and recorded in
+[`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). Build `2026-07-28c` / application
+`a-953fa3777cd4` is an exact local stage only; no M18 deployment was requested.

@@ -114,8 +114,11 @@ here as the course proceeds.
 [`triangular-even-readable.pa`](triangular-even-readable.pa) is an executable Peano Lab
 surface proof of `forall n. exists x. n * (n + 1) = 2 * x`. It uses `suffices` to state
 the final normalization step and `have` to prove the stronger induction invariant
-`n * n + n = 2 * x` first, so the mathematical structure stays visible even though the two
-`ring` calls elaborate to a much larger checked certificate.
+`n * n + n = 2 * x` first. Three equality leaves use `compact_arith`, with the induction
+hypothesis named explicitly at the successor leaf. The invariant, induction, witnesses, hypothesis
+use, and final bridge remain visible while the finalized replay is byte-identical to the retained
+180-node certificate. The historical version with two generic `ring` calls finalized to 30,030
+proof-tree nodes.
 
 [`triangular-even-180.certificate.txt`](triangular-even-180.certificate.txt) is the canonical
 cut-normal certificate for the current best-found proof of
@@ -129,9 +132,10 @@ Rebuild and check the 180-node result with:
 ```bash
 cd ..
 python3 scripts/minimize_parity_certificate.py
-cd peano-lab/py && python3 -m pytest tests/test_parity_superoptimization.py -q
+cd peano-lab/py && python3 -m pytest \
+  tests/test_parity_superoptimization.py tests/test_readable_parity_artifact.py -q
 ```
 
-The result is a verified upper bound, not a claimed proof of global minimality. Its constructor is a
-pedagogical kernel-certificate experiment; the shipped browser tactic elaborator does not yet
-compile the readable tactic script to this exact certificate.
+The result is a verified upper bound, not a claimed proof of global minimality. The hand constructor
+and the independently replayed browser-tactic script now reach the same canonical ordinary proof;
+neither adds a trusted arithmetic shortcut.

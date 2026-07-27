@@ -22,7 +22,10 @@ This part tells the construction story from the implementation diary. Read it in
    checked zero-product proof.
 6. {doc}`Checked arithmetic automation <arithmetic-automation>` separates numerical computation,
    polynomial normalization, and bounded search from the certificates that justify their results.
-7. {doc}`The deliberate limits <limits>` draws the line around PA, Gödel's theorems, bounded search,
+7. {doc}`compact_arith: searching for a small PA certificate <compact-arith>` follows one theorem
+   from a 30,030-node generic elaboration to a 180-node checked record, then designs a bounded
+   equality tactic without confusing a best-found certificate with a proven minimum.
+8. {doc}`The deliberate limits <limits>` draws the line around PA, Gödel's theorems, bounded search,
    and the facilities that a production prover such as Lean adds.
 
 The working design lives in
@@ -60,3 +63,7 @@ produce the retained script's final `qed`. The tactics and ladder chapters expla
 that program is still separate from checking a certificate or admitting a library theorem. M17
 applies the same distinction to multiline paste: a bounded complete script runs sequentially
 through the ordinary session owner, and its final `qed` gains no new authority.
+M18 applies it once more to certificate size. The `compact_arith` tactic searches a fixed
+PA recurrence-template space for a small proof of one rigid equality, optionally using an explicit
+ordered list of equality hypotheses. It neither chooses an outer induction invariant nor invents an
+existential witness, and its cost report is never a substitute for independent checking.

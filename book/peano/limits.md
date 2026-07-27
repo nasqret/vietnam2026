@@ -109,7 +109,14 @@ unconditional polynomial identities by constructing a certificate from the check
 commutative-semiring basis. Equal computed normal forms choose those proofs; the normal forms are
 not themselves kernel evidence.
 
-Neither tactic decides quantified arithmetic, mines local hypotheses for nonlinear consequences, or
+`compact_arith` searches a smaller, fixed family of PA recurrence certificates for one rigid
+equality and may use only explicitly listed equality hypotheses. Its cheapest generated candidate
+is still just a candidate until checked. A 180-node certificate is an upper bound on the size needed
+for one theorem, not a proof that no smaller certificate exists; the current node metric does not
+even charge the term and induction-motive annotations. {doc}`compact_arith: searching for a small PA
+certificate <compact-arith>` develops that cost boundary in detail.
+
+None of these tactics decides quantified arithmetic, mines unlisted hypotheses for nonlinear consequences, or
 turns resource exhaustion into a mathematical result. Peano Lab does not contain a hidden `omega`
 tactic: a certificate-producing Presburger procedure belongs to a later design, and would still
 decide only that fragment. {doc}`Checked arithmetic automation <arithmetic-automation>` compares the

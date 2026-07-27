@@ -393,6 +393,70 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   delivery gate stopped production promotion because the LOL-ng host still omits `Cache-Control`
   from HTML and immutable assets. Production therefore remains build `2026-07-27h`.
 
+### M18 — Small PA recurrence certificates with `compact_arith`
+
+- [x] Add the exact equality-tactic forms `compact_arith` and
+      `compact_arith [h, <- k]`. Parse an ordered explicit list of named equality hypotheses and
+      orientations; never mine an unlisted hypothesis.
+- [x] Restrict version 1 to focused rigid equality goals with no unresolved term metavariables.
+      Do not introduce binders, choose induction variables or invariants, invent existential
+      witnesses, solve logical connectives, or present the tactic as a PA decision procedure.
+- [x] Build only ordinary kernel certificates from PA3--PA6, equality rules, and independently
+      checked/capture-safely specialized induction templates. Add no kernel constructor, theorem
+      environment, arithmetic oracle, or trusted cost claim.
+- [x] Search a fixed deterministic set of PA-oriented recurrence paths, carrying exact equality
+      endpoints with every candidate and comparing expanded cut-normal proof-tree costs rather than
+      high-level template-call counts.
+- [x] Check the selected certificate against the focused context and exact target before publishing
+      one immutable tactic transaction. Keep the final QED check against the owner-held original
+      theorem unchanged.
+- [x] Expose `compact_arith?` as a pure inspection command: no goal, history,
+      hole, metavariable-allocation, replay-journal, trace, or authority change, and no reuse of an
+      unchecked preview result by the real tactic.
+- [x] Pin the version-1 defaults: 256 aggregate input-term nodes/depth 64, 16 selected equalities,
+      64 seed/template instances, 512 memo/search states, 512 generated candidates, 100,000
+      annotation nodes/depth 256, 20,000 work units, 10,000 generated proof nodes/depth 256,
+      100,000 complete partial-proof nodes/depth 512, and five seconds. Every malformed request,
+      unsupported shape, exhausted search, host recursion failure, and kernel rejection must be a
+      final-English transactional failure.
+- [x] Add the substantial Jupyter Book chapter, binding design, README, diary, memory/journal/plan,
+      and connected Obsidian explanation of the 30,030-node readable elaboration, the 180-node
+      checked record, the tree cost model, and the limits of every minimality claim.
+
+**Acceptance checklist:**
+
+- [x] The readable consecutive-product proof states the stronger invariant, induction variable,
+      base and successor witnesses, explicit induction-hypothesis use, and final normalization
+      bridge itself; `compact_arith` closes only its rigid arithmetic equality subgoals.
+- [x] The complete replay reaches ordinary checked QED for
+      `forall n. exists x. n * (n + 1) = 2 * x`, and its finalized expanded certificate meets the
+      180-node/depth-34 bound with canonical bytes identical to the retained hand-authored artifact.
+      The result is described as a checked upper bound, not an absolute minimum.
+- [x] Empty-list and explicitly oriented hypothesis cases are deterministic; order and direction
+      are pinned, omitted hypotheses are not consulted, and unknown/non-equality/duplicate or
+      malformed entries fail without changing the input state.
+- [x] Every recurrence template checks from the empty context; specialization is capture-safe below
+      extra universal, existential, and implication binders; the selected focused certificate checks
+      in its exact context; nearby mutated goals and mutated certificates fail.
+- [x] Preview purity, exact undo, one trace transition for real success/failure, replay export,
+      tactical/focus behavior, state invariants, and all resource-failure paths are tested.
+- [x] The trusted kernel has no semantic diff and keeps its engine/UI import boundary and checker
+      size. Peano, Lambda, warning-as-error book, executable prose, vault, corpus/provenance,
+      manifest, and exact local-staging gates are green before publication.
+
+- **Verified locally (2026-07-28):** focused M18 coverage reports 46 passed; the complete Peano suite
+  reports 744 passed, and Lambda reports 360 passed plus 36 subtests. The readable thirteen-tactic
+  replay reaches checked QED at exactly 180 nodes/depth 34 with canonical bytes identical to the
+  retained certificate and rejection of nearby mutations. The warning-as-error 26-source book and
+  all 193 deep links/170 commands in 34 session blocks are green; the vault has 61 notes/356 links,
+  no unresolved edge, and no disconnected concept. The CPython-3.10 corpus reproducibly retains
+  13,344 unique transitions from 1,692 checked sessions with a 31-file semantic-source fingerprint.
+  Application/vendor manifests and exact local staging are green at `a-953fa3777cd4`/
+  `v-85fb3352e49c`, build `2026-07-28c`; the kernel has no diff and `checker.py` remains 234 lines.
+  Worker and multiline-paste behavioral harnesses pass. No in-app browser was attached, so a real
+  Pyodide click-through is not claimed. M18 was not deployed; staging remains M17 and production
+  remains `2026-07-27h` behind the administrator-managed M14 cache-header blocker.
+
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search
 performance work beyond the explicit tactic limits remain outside this plan. M14 is the
