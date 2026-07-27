@@ -75,6 +75,7 @@ def _usage() -> str:
         "  pa tutorial [name]   guided, ENTER-driven lessons",
         "  pa lib [name]        checked theorem statements + replay scripts",
         "  pa lean <name>       Lean 4 statement/stub + exact Live Lean link",
+        "  script [download]    inspect/save the active or last checked replay",
         "  pa axioms            the six PA rule constants",
         "  pa eval <term>       evaluate a closed arithmetic term",
         "  pa simp <term>       normalize with the ordered PA3–PA6 simp set",
@@ -102,6 +103,9 @@ class LabSession:
     def run(self, line: str) -> str:
         if not isinstance(line, str):
             return "Error: input must be text."
+        # A browser download is a one-shot response to this exact command.  A
+        # later, unrelated command must never consume a stale payload.
+        self.webstate.pop(web_prove.KEY_PENDING_DOWNLOAD, None)
         line = line.strip()
         if not line:
             if self._session_owner() == "prove":
@@ -167,6 +171,9 @@ class LabSession:
 
     def cmd_tutorial(self, args: str) -> str:
         return self.pa_tutorial(args)
+
+    def cmd_script(self, args: str) -> str:
+        return web_prove.script_request(args, self.webstate)
 
     def cmd_about(self, args: str) -> str:
         del args
@@ -274,6 +281,11 @@ class LabSession:
             f"  {suffix}",
         )
 
+    def take_download(self) -> str:
+        """Consume the current command's validated replay-download bytes."""
+
+        return web_prove.take_pending_download(self.webstate)
+
 
 _SESSION: Optional[LabSession] = None
 
@@ -289,6 +301,10 @@ def run_line(line: str) -> str:
     return get_session().run(line)
 
 
+def take_download() -> str:
+    return get_session().take_download()
+
+
 def banner() -> str:
     return _lines(
         "  Peano Lab · kernel-checked arithmetic proofs · VIASM 2026",
@@ -299,4 +315,4 @@ def banner() -> str:
     )
 
 
-__all__ = ["LabSession", "get_session", "run_line", "banner"]
+__all__ = ["LabSession", "get_session", "run_line", "take_download", "banner"]

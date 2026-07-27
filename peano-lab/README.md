@@ -95,6 +95,35 @@ qed
 as a local cut; surface finalization contracts that cut and independently checks the resulting
 closed proof against the original stated goal.
 
+## Inspecting and keeping a proof
+
+During a proof, `script` displays the replay program for the current undo branch. After a successful
+QED, the same command displays the last retained checked replay:
+
+```text
+script
+script download
+```
+
+An active artifact is labeled `ACTIVE (not kernel-checked)` and never contains `qed`, even after all
+goals close. Only the independent checker can produce `CHECKED QED` and append the final canonical
+`qed` line. Failed tactics, failed QED attempts, inspection commands, and `undo` itself are omitted;
+undo removes exactly the proof transaction it restored. Explicit tactical and theorem-import lines
+retain their replayable surface syntax, while top-level `auto` is exported as its independently
+undoable primitive plan.
+
+`script download` saves the exact unindented, LF-only, newline-terminated UTF-8 body as
+`peano-lab-proof.pa`. The download is triggered only by typing that exact command directly, not by a
+deep link. A replay file is an untrusted program, not a proof certificate or a library declaration.
+Replaying it reconstructs a candidate certificate; only `qed` checks the original theorem.
+
+The static browser cannot write to Git or admit a theorem to `library/theorems.py`. Library
+admission remains a reviewed source change: bind every free variable, declare earlier checked
+dependencies, lower the body to the library's supported script language, replay it, independently
+check the closed certificate, add tests, and commit. A downloaded live script—especially one using
+`use`, tacticals, `auto`, `ring`, or classical mode—is a handoff artifact, not a paste-ready
+`TheoremSpec`.
+
 `pa tactic induction` opens a tactic card whose worked script is replayed in CI;
 the tutorial command starts an ENTER-driven lesson that cannot complete until its generated
 certificate passes the same independent QED path.
@@ -183,7 +212,7 @@ Back at the repository root, run both regression suites:
 
 ## Proof-trace corpus and kernel-judged evaluation
 
-The deterministic data pipeline now ships a committed 13,344-transition M13 refresh and an
+The deterministic data pipeline now ships a committed 13,344-transition M15 provenance refresh and an
 evaluation harness—not a trained model. Its 1,692 checked sessions include a bounded numerical
 normalization tranche while omitting all theorem-ladder sessions, so the four fixed tail theorems
 used by the evaluator stay held out. Exact version-1 records, hashes, provenance, and the

@@ -26,6 +26,7 @@ function tick() {
 }
 
 function makePyodide(writes) {
+  let pendingDownload = "pa prove 0 = 0\nrefl\nqed\n";
   return {
     FS: {
       mkdirTree() {},
@@ -37,6 +38,11 @@ function makePyodide(writes) {
       return {
         run_line(line) { return line; },
         banner() { return "ready banner"; },
+        take_download() {
+          const body = pendingDownload;
+          pendingDownload = "";
+          return body;
+        },
       };
     },
   };
@@ -94,6 +100,22 @@ async function successfulBootIsConcurrentAndOrdered() {
   );
   assert.strictEqual(messages.filter((message) => message.type === "ready").length, 1);
   assert.strictEqual(messages.some((message) => message.type === "error"), false);
+
+  context.onmessage({ data: { type: "run", id: 41, line: "script download" } });
+  context.onmessage({ data: { type: "run", id: 42, line: "help" } });
+  const results = messages.filter((message) => message.type === "result");
+  assert.deepStrictEqual(
+    JSON.parse(JSON.stringify(results)),
+    [
+      {
+        type: "result",
+        id: 41,
+        out: "script download",
+        download: "pa prove 0 = 0\nrefl\nqed\n",
+      },
+      { type: "result", id: 42, out: "help", download: null },
+    ],
+  );
 }
 
 async function failureChoiceIsDeterministicAndAtomic() {

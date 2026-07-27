@@ -1,15 +1,16 @@
-# Peano Lab proof-trace release v1 (M13 refresh)
+# Peano Lab proof-trace release v1 (M15 provenance refresh)
 
-This directory is the deterministic learning-data release refreshed for M13. It contains
+This directory is the deterministic learning-data release whose provenance was refreshed for M15
+after the proof-owner API changed. Its semantic families remain the M13 set. It contains
 **13,344** clean, deduplicated version-1 tactic transitions from **1,692** generated proof
 sessions:
 
 | Artifact | Role | Records | SHA-256 |
 |---|---|---:|---|
-| `train.jsonl` | learning split | 13,326 | `2aab16c23d5795989df63ee51575eda8b089fd14bd28a81bb78b554c4b92f694` |
-| `val.jsonl` | exact-theorem-group validation split | 18 | `c7cb5ec6720c666367b5573d11972465105d0f58867c8216729b421bde515a26` |
-| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `4afce3f0ecf25e39d339a41b6cc561831690c124bead29c358170f4e84a0d27b` |
-| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `5e4a9d9e9bd5c0793433878ade59fa024e6058db470bb721b1c09ff6fd39ee1f` |
+| `train.jsonl` | learning split | 13,326 | `2ffcb61bde1debf1c3b12ac69e7fafa419340f6818bebc5a5155c3501d5b950a` |
+| `val.jsonl` | exact-theorem-group validation split | 18 | `c6f0ca5e3c31a559e4a7f886f06cdf291c0267e566c6fdd8236e458df4cd244b` |
+| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `7bdd211de0f2f618c10d329fb9331fe1a9dd2e19f04aea59ad040721bb740991` |
+| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `47fe87023e9c7e7a56402aba4e76a7f7cf549fa32948fbbd981f3c7d690777b2` |
 
 The source stream contained 11,652 successful and 1,692 deliberately failing, transactional
 applications, for a labeled failure ratio of `0.12679856115107913`. Every one of the 1,692 sessions
@@ -43,15 +44,15 @@ make peano-corpus
 ```
 
 The byte-identical release above used generator v2 and CPython 3.10.0, recorded in the manifest;
-transition and manifest schemas remain v1. The
-the Make target checks this and accepts `PEANO_CORPUS_PYTHON=/path/to/python3.10`
+transition and manifest schemas remain v1. The Make target checks this and accepts
+`PEANO_CORPUS_PYTHON=/path/to/python3.10`
 when that interpreter is not the ambient `python3`.
 
 That target first writes the replayable raw session stream to
 `/tmp/peano-lab-release-raw.jsonl`, then strictly validates, globally deduplicates, and exports it.
 The raw intermediate is not committed because it duplicates the split payload, but the manifest
 records its exact size (`6,215,711` UTF-8 bytes) and SHA-256
-`b2d1e95228ee24b2f8d98eb8c1feced28829b357fc18a89cddbd6fff4d8130f0`.
+`18172333190fbdf56438bc5eb4973a3ba7daa491d515c4c54346441a49defe2e`.
 It also fingerprints `scripts/generate_peano_traces.py`, the trusted checker, and the complete
 Peano Lab Python source tree. Because the Python runtime participates in the run fingerprint and
 session IDs, changing that runtime changes the raw byte hash even when every session-agnostic

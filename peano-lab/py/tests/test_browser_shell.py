@@ -112,6 +112,7 @@ def test_tactic_completion_discovers_surface_checked_arithmetic() -> None:
     assert '"use"' in match.group(1).split(",")
     assert '"norm_num"' in match.group(1).split(",")
     assert '"ring"' in match.group(1).split(",")
+    assert '"script"' in INDEX
     assert "const ROOT_COMPLETIONS=Array.from(new Set(COMMANDS.concat(TACTICS)))" in INDEX
     assert "if(words.length<=1)return ROOT_COMPLETIONS" in INDEX
 
@@ -171,6 +172,24 @@ def test_worker_fetches_sources_concurrently_but_mounts_deterministically() -> N
     assert result.returncode == 0, result.stderr
 
 
+def test_script_download_is_validated_local_and_requires_direct_keyboard_intent() -> None:
+    harness = Path(__file__).with_name("script_download_harness.js")
+    result = subprocess.run(
+        ["node", str(harness), str(LAB / "index.html")],
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0, result.stderr
+    assert 'trimmed==="script download"' in INDEX
+    assert "allowDownload===true" in INDEX
+    assert "submit(false)" in INDEX  # quick buttons and ?cmd= deep links
+    assert 'case "\\r":submit(true)' in INDEX
+    assert 'link.download="peano-lab-proof.pa"' in INDEX
+    assert 'type:"text/plain;charset=utf-8"' in INDEX
+    assert "URL.revokeObjectURL(url)" in INDEX
+    assert ".innerHTML" not in INDEX
+
+
 def test_browser_javascript_is_syntactically_valid() -> None:
     inline_scripts = re.findall(r"<script>(.*?)</script>", INDEX, re.DOTALL)
     assert len(inline_scripts) == 1
@@ -185,7 +204,10 @@ def test_browser_javascript_is_syntactically_valid() -> None:
 
 
 def test_fatal_worker_errors_settle_pending_commands_and_require_reload() -> None:
-    assert 'pending.forEach(function(resolve){resolve("");});pending.clear();' in INDEX
+    assert (
+        'pending.forEach(function(resolve){resolve({out:"",download:null});});pending.clear();'
+        in INDEX
+    )
     assert 'if(worker){worker.terminate();worker=null;}' in INDEX
     assert "Reload to retry" in INDEX
 

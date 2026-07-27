@@ -598,9 +598,41 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   57-note/281-link vault with no unresolved links or disconnected concept notes. Both exact
   manifests pass, the trusted kernel is unchanged, and `checker.py` remains 234 lines.
 - Published candidate commit `a099596` to `peano-lab` and staging. Live gzip succeeds, but the cache
-  gate stopped because the host exposes neither `mod_headers` nor `mod_expires`: an unguarded
-  `Header` probe returned 500 and the guarded expiry fallback emitted no header. A PHP header probe
-  succeeded, but a body relay would amend the binding static-site architecture and may contend for
-  PHP workers during 31 source requests plus WASM. All probe/relay files were removed, staging was
-  restored to the pushed static commit, and production remains untouched pending the owner's choice
-  between host/proxy configuration and an explicit PHP-relay design exception.
+  gate stopped because guarded account-level directives emitted no cache header and an unguarded
+  `Header` probe returned 500. This establishes an account-level configuration boundary, not the
+  central server's loaded-module inventory. A PHP header probe succeeded, but a body relay would
+  amend the binding static-site architecture and may contend for PHP workers during 31 source
+  requests plus WASM. All probe/relay files were removed, staging was restored to the pushed static
+  commit, and production remains untouched pending administrator-managed host/proxy headers or an
+  explicit PHP-relay design exception.
+
+## 2026-07-27 (branch peano-lab) — Peano Lab M15: replayable proof artifacts
+
+- Added a session-owner replay journal aligned one-for-one with the surviving engine history.
+  Successful explicit tacticals and `use` commands retain their complete accepted surface line;
+  top-level `auto` records the primitive steps that undo actually exposes; required classical-mode
+  transitions are reconstructed explicitly. Failed tactics, inspection, export requests, and undo
+  itself never become proof steps, while undo removes the exact corresponding replay transaction.
+- Added root command `script [download]`. During a proof it labels the replay `ACTIVE (not
+  kernel-checked)` and never appends `qed`, even when all goals are closed. Only after the existing
+  independent checker validates the certificate against the owner-held original theorem does the
+  session retain a `CHECKED QED` artifact with a canonical final `qed`. Export failure is deliberately
+  unable to invalidate a successful QED or leave an older artifact misattributed to the new theorem.
+- Extended the worker response with a one-shot optional text payload. The page downloads only an
+  exact, directly typed `script download`; quick/deep-link injection cannot trigger it. It validates
+  LF-only structure, Unicode controls, size, the initial `pa prove`, and final-`qed` placement before
+  creating fixed-name `peano-lab-proof.pa`, then removes the anchor and revokes the Blob URL. The
+  static browser exports an inert replay program and has no path that mutates the checked library.
+- Documented the artifact/library boundary across the binding design, README, construction book,
+  vault, plan, diary, memory, and this journal. A replay is neither a certificate nor a library
+  declaration: checked reuse still requires a closed reviewed statement, explicit earlier
+  dependencies, an authored library script, cut elimination, tests, and independent rechecking.
+- Local acceptance is green: Peano `657 passed`; Lambda `360 passed, 36 subtests passed`; the
+  acceptance corpus generated 13,636 raw transitions and exported 13,631 unique rows; evaluator v2
+  ran 32 kernel-judged attempts with baseline pass@8 `0.0`; release `a-f2054080fdc5` stages with
+  exact manifests. The vault has 58 notes/298 resolved links and no disconnected concept notes.
+  Browser-shell harnesses cover one-shot routing, direct intent, malformed payload rejection, exact
+  bytes, fixed filename, and cleanup. No in-app browser was attached, so no direct click observation
+  is claimed. The warning-free full book build covers all 25 sources, and its executable gate
+  replays 193 deep links plus 160 commands in 32 session blocks. Publication status is recorded only
+  after the staging gate.

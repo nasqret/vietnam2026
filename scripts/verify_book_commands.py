@@ -83,6 +83,10 @@ STANDALONE_OK = re.compile(
 PEANO_STANDALONE_OK = re.compile(
     r"^(?:pa|kb|tutorial|help|about|commands)(?:\s|$)"
 )
+FENCED_BLOCK = re.compile(
+    r"^```[^\n]*\n(.*?)^```[ \t]*(?:\n|$)",
+    re.MULTILINE | re.DOTALL,
+)
 
 
 def strip(s: str) -> str:
@@ -267,7 +271,7 @@ def main(argv: list[str]) -> int:
             if err:
                 failures.append(f"{f.name}: [{lab}] {cmd!r} → {err}")
         # 2. λ> and pa> session blocks.  A bare `pa>` is meaningful ENTER.
-        for block in re.findall(r"```(?:text[^\n]*)?\n(.*?)```", text, re.S):
+        for block in FENCED_BLOCK.findall(text):
             prefixed = {
                 "lambda": [
                     line.strip()[2:].strip()

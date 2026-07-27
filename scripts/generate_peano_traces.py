@@ -45,7 +45,7 @@ if str(PYTHON_ROOT) not in sys.path:
     sys.path.insert(0, str(PYTHON_ROOT))
 
 from peano_lab.engine.search import auto  # noqa: E402
-from peano_lab.engine.state import proof_size, start  # noqa: E402
+from peano_lab.engine.state import ProofState, proof_size, start  # noqa: E402
 from peano_lab.engine.tactics import (  # noqa: E402
     InvalidProof,
     TacticError,
@@ -63,7 +63,7 @@ from peano_lab.library.theorems import (  # noqa: E402
     TheoremSpec,
     replay_target,
 )
-from peano_lab.ui.prove import ProofSession  # noqa: E402
+from peano_lab.ui.prove import ProofSession, ReplayStep  # noqa: E402
 
 
 MANIFEST_FORMAT = "peano-lab-trace-generation-manifest"
@@ -163,7 +163,24 @@ def _apply(owner: ProofSession, tactic: str, args: str = "") -> ProofSession:
         trace=owner.trace,
         classical=owner.classical,
     )
-    return replace(owner, state=state)
+    return _replace_state(owner, state)
+
+
+def _replace_state(owner: ProofSession, state: ProofState) -> ProofSession:
+    """Keep the UI owner's replay journal aligned in programmatic batches."""
+
+    old_count = len(owner.state.history)
+    if state.history[:old_count] != owner.state.history:
+        raise GenerationError("a generated tactic changed earlier proof history")
+    additions = tuple(
+        ReplayStep(f"{step.tactic} {step.args}".strip(), owner.classical)
+        for step in state.history[old_count:]
+    )
+    return replace(
+        owner,
+        state=state,
+        replay_steps=owner.replay_steps + additions,
+    )
 
 
 def _controlled_failure(
@@ -398,7 +415,7 @@ class _Batch:
                 )
             )
             return
-        owner = replace(owner, state=state)
+        owner = _replace_state(owner, state)
         nodes = _qed(owner)
         self.sessions.append(
             _record_summary(
@@ -477,7 +494,7 @@ class _Batch:
             )
         except TacticError as exc:
             raise GenerationError(f"renamed variant {variant} failed auto: {exc}") from exc
-        owner = replace(owner, state=state)
+        owner = _replace_state(owner, state)
         nodes = _qed(owner)
         self.sessions.append(
             _record_summary(
@@ -526,7 +543,7 @@ class _Batch:
             )
         except TacticError as exc:
             raise GenerationError(f"commuted variant {variant} failed auto: {exc}") from exc
-        owner = replace(owner, state=state)
+        owner = _replace_state(owner, state)
         nodes = _qed(owner)
         self.sessions.append(
             _record_summary(

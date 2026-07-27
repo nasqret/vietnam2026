@@ -171,3 +171,38 @@ and the small
 That gives the anatomy in one sentence: a tactic transaction replaces one certificate hole with
 explicit evidence, propagates only legitimate flexible-term solutions, and hands the result back
 to an owner that still trusts none of it until the kernel checks the original theorem.
+
+## A replayable script is not evidence
+
+The owner can also render the surviving proof branch as a small surface program:
+
+```text
+pa> pa prove forall n. n + 0 = n
+pa> intro n
+pa> rewrite PA3
+pa> refl
+pa> script
+pa> qed
+pa> script
+```
+
+The first `script` response is labeled `ACTIVE (not kernel-checked)` and omits `qed`, although no
+engine goals remain. The second is retained only after the independent checker accepts the original
+universal statement; it is labeled `CHECKED QED` and ends with canonical `qed`. This distinction is
+the same owner/kernel boundary seen above, now applied to saved text.
+
+The replay follows the current undo branch. Failed tactics, failed QED attempts, `hint`, `?`,
+`script`, and `undo` itself are absent; undo removes the transaction it restored. Complete
+tacticals and `use` imports retain enough surface information to replay. A top-level `auto` expands
+to its winning primitive commands because those commands are separately undoable in the live
+session. Necessary `classical on`/`off` transitions come from the owner-held authority, never from a
+tactic-controlled target.
+
+Typing `script download` directly in the browser saves exactly the unindented replay body as
+LF-only, newline-terminated UTF-8. A deep link cannot initiate that download. The body contains no
+status comments: it is meant to be fed back to Peano Lab one line at a time.
+
+A replay file is an untrusted program, not a [proof certificate](kernel.md) or a library
+declaration. Replaying it reconstructs a candidate certificate; only `qed` checks the original
+theorem. That is why saving a transcript does not add a theorem rule to the kernel or a declaration
+to the checked ladder.

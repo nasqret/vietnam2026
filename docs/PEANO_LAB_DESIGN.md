@@ -100,6 +100,14 @@ Everything mirrors the post-audit `proof_builder` design, generalized:
   the original goal. A tactic-layer bug can never produce a false QED. The session survives a
   failed check.
 
+The browser owner also keeps a replay journal, separate from both `ProofState.history` and the v1
+trace. It is untrusted presentation data: each surviving proof transaction is paired with enough
+accepted surface syntax and classical-mode authority to replay the current undo branch. Failed
+tactics and inspection commands never enter it; `undo` removes precisely the transaction it
+restores. Explicit tacticals retain their complete surface line, while top-level `auto` records its
+winning primitive steps because those are independently undoable. This journal never enters the
+kernel or changes a certificate.
+
 **Primitive tactics (Stage A–C):** `intro`, `apply`, `exact`, `assumption`, `split`, `left`,
 `right`, `cases`, `exfalso`, `refl`, `symm`, `trans t`, `congr`, `rewrite h [at h']`,
 `rewrite <- h`, `induction n [with base step]`, `exists t`, `intro x` (∀), `specialize h t`.
@@ -223,6 +231,26 @@ the same Python runtime on every visit.” The transport layer therefore has fou
 Concurrent delivery changes no proof rule and introduces no proof authority. The same Python
 modules are mounted byte-for-byte; the independent kernel still checks every QED against the
 session owner's original goal. Terminating the disposable worker remains the hard Stop operation.
+
+### Replayable proof artifact contract (M15 owner-authorized extension)
+
+`script` renders the active journal as a canonical program beginning with `pa prove`.
+`script download` saves exactly the same LF-only, newline-terminated UTF-8 command body. A live
+artifact is always labeled **ACTIVE (not kernel-checked)** and omits `qed`, even if every engine
+goal is closed. Only after `checked_final` accepts the owner-held original theorem and exact logic
+mode may the UI retain a **CHECKED QED** artifact with a final canonical `qed` line. A failed QED or
+abort cannot create or overwrite that retained artifact.
+
+The main thread accepts download bytes only for an exact command entered directly at the terminal,
+never from a deep link or quick-command injection. It validates the fixed-size plain-text payload,
+uses a fixed filename, and releases its temporary object URL. Downloading is an observation, not a
+tactic, trace step, certificate constructor, or server write.
+
+A replay file is an untrusted program, not a proof certificate or a library declaration. Replaying
+it reconstructs a candidate certificate; only `qed` checks the original theorem. Admission to the
+checked theorem ladder remains a source-reviewed `TheoremSpec` change with a closed statement,
+explicit earlier dependencies, compatible authored script, fresh replay, tests, and commit. The
+static browser never mutates that library.
 
 ## 4. The trace format (LLM stage, designed now)
 

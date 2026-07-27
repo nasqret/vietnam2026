@@ -17,7 +17,12 @@ The static delivery boundary is recorded separately as [[browser-proof-runtime]]
 versioned bytes may arrive concurrently, but they add no proof authority and do not alter the
 certificate checked at QED.
 
+The current undo branch can be inspected or downloaded as a [[replayable-proof-script]]. Active
+text remains explicitly unchecked; a final `qed` appears only in the retained artifact produced
+after the independent checker succeeds.
+
 ## Related
 
 [[peano-lab-moc|Peano Lab MOC]] · [[natural-deduction]] · [[tactic-mode]] ·
 [[checked-numerical-normalization]] · [[browser-proof-runtime]] · [[substitution]]
+· [[replayable-proof-script]]

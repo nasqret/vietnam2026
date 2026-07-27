@@ -535,11 +535,12 @@ instead pinned by the deterministic worker harness and the live HTTP delivery ga
 The first staging gate stopped before production exactly where it should. Gzip worked for static
 WASM and source, but neither HTML nor content-addressed assets received `Cache-Control`. A guarded
 `mod_expires` fallback likewise emitted nothing, while an unguarded `Header` probe returned HTTP
-500; the origin exposes neither module to this account. A tiny PHP probe proved that PHP headers
-would survive the front proxy, but routing thirty-one sources and the 8.6 MB WASM through PHP would
-amend the binding “static site” contract and could add shared-host contention. That is not a choice
-to hide inside a transport patch. The probe and experimental relays were removed, staging was
-restored to commit `a099596`, and production was left on M13 pending owner review: enable cache
+500. This proves only that the account's static `.htaccess` cannot provide the policy; it does not
+identify which modules are loaded in the central Apache/proxy tier. A tiny PHP probe proved that PHP
+headers would survive the front proxy, but routing thirty-one sources and the 8.6 MB WASM through
+PHP would amend the binding “static site” contract and could add shared-host contention. That is not
+a choice to hide inside a transport patch. The probe and experimental relays were removed, staging
+was restored to commit `a099596`, and production was left on M13 pending owner review: enable cache
 headers at the host/proxy (preferred), or explicitly authorize and document a narrow PHP relay.
 
 The concurrency rule mirrors the proof-state rule: observable outcomes must not depend on a race.
@@ -548,3 +549,39 @@ envelope. Only after all finish do we choose the earliest declared failure or mo
 the original list order. A network race may change elapsed time; it cannot change the displayed
 error, installed module set, or proof semantics. Compression and caching similarly sit outside the
 trusted base. The kernel sees the same imported Python and the same final certificate.
+
+## 2026-07-27 — M15: saved text is not a theorem environment
+
+The browser already had three histories, and none meant “the proof I can replay.” The terminal's
+localStorage includes failed commands and unrelated sessions. The v1 trace intentionally preserves
+failures and later-undone attempts for learning. `ProofState.history` is the exact rollback stack,
+but it collapses a tactical to an internal combinator name, remembers only the visible alias of a
+`use`, and expands top-level `auto` because each winning primitive is separately undoable. Classical
+authority lives outside that state altogether. Treating any one of these as an export would produce
+plausible-looking scripts that fail to reproduce the current branch.
+
+M15 therefore gives the session owner a parallel, untrusted replay journal aligned with surviving
+history steps. A successful explicit tactical keeps its accepted complete line; top-level `auto`
+keeps the primitive sequence that `undo` actually sees; theorem imports retain lookup and alias
+syntax; necessary classical-mode transitions are reconstructed from owner-held authority. Failure,
+inspection, download, and undo commands do not become proof steps. Preview and download are pure
+observers, and an active script omits `qed` even after the final goal closes.
+
+The strongest label is deliberately delayed. Only after the existing independent checker accepts
+the original theorem may the owner retain a `CHECKED QED` replay with a canonical final `qed`. The
+download contains only that LF-terminated surface program. It is not a certificate, and it is not a
+`TheoremSpec`: the checked library additionally needs a closed statement, reviewed earlier
+dependencies, a compatible authored body, cut elimination, tests, and a source commit. Keeping this
+boundary visible avoids quietly inventing a mutable theorem environment or a new trusted rule.
+
+The frozen local M15 candidate passes 657 Peano tests and the sibling Lambda regression of 360
+tests plus 36 subtests. The acceptance corpus produces 13,636 raw transitions and exports 13,631
+unique rows; the deterministic evaluator runs all 32 kernel-judged attempts with the intentionally
+weak random baseline at pass@8 `0.0`. The warning-free full book rebuild covers 25 sources, and its
+executable gate replays 193 deep links plus 160 commands in 32 session blocks. The vault audit
+resolves all 298 links across 58 notes and finds no concept without both an inbound and an outbound
+edge. The application manifest stages as
+`a-f2054080fdc5`, the checker remains 234 lines, and the trusted kernel directory is byte-unchanged.
+No in-app browser was attached, so direct clicking and download observation are not claimed; the
+worker protocol, direct-keyboard intent, payload validation, exact Blob bytes, and URL cleanup are
+instead exercised by dependency-free browser-shell harnesses.

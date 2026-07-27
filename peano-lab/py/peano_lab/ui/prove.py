@@ -15,9 +15,11 @@ QED passes those owner-held values explicitly to ``checked_final``.
 
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass, replace
+from hashlib import sha256
+import re
 from time import monotonic
+import unicodedata
 
 from ..engine.ring import (
     DEFAULT_RING_LIMITS,
@@ -50,7 +52,11 @@ from .panels import NL, collect_meta_ids, render_certificate, render_state
 
 
 MAX_INPUT = 4_000
+MAX_SCRIPT_STEPS = 10_000
+MAX_SCRIPT_BYTES = 500_000
 KEY_SESSION = "pa.prove.session"
+KEY_LAST_SCRIPT = "pa.prove.last-script"
+KEY_PENDING_DOWNLOAD = "pa.prove.pending-download"
 
 _QED_WORDS = ("qed", "done", "finish")
 _ABORT_WORDS = ("abort", "quit", "exit", "q")
@@ -66,11 +72,72 @@ _SESSION_ONLY_WORDS = set(_QED_WORDS) | set(_ABORT_WORDS) | set(TACTIC_NAMES) | 
     "hint",
     "repeat",
     "ring",
+    "script",
     "t",
     "tactics",
     "undo",
     "use",
 }
+
+
+class ScriptExportError(ValueError):
+    """A live session cannot be represented as one safe replay file."""
+
+
+@dataclass(frozen=True, slots=True)
+class ReplayStep:
+    """One surviving proof transaction and the authority used to run it."""
+
+    command: str
+    classical: bool
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.command, str) or not self.command:
+            raise TypeError("a replay step needs one non-empty command")
+        if type(self.classical) is not bool:
+            raise TypeError("a replay step's classical mode must be a Boolean")
+
+
+@dataclass(frozen=True, slots=True)
+class ProofScript:
+    """An inert surface program; only ``checked`` records a successful QED."""
+
+    theorem: str
+    commands: tuple[str, ...]
+    checked: bool
+    proof_nodes: int | None = None
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "commands", tuple(self.commands))
+        if not isinstance(self.theorem, str) or not self.theorem:
+            raise TypeError("a proof script needs a canonical theorem")
+        if not self.commands or not all(
+            isinstance(command, str) and command for command in self.commands
+        ):
+            raise TypeError("a proof script needs non-empty command lines")
+        if type(self.checked) is not bool:
+            raise TypeError("a proof script's checked flag must be a Boolean")
+        if self.checked:
+            if (
+                type(self.proof_nodes) is not int
+                or isinstance(self.proof_nodes, bool)
+                or self.proof_nodes < 0
+            ):
+                raise TypeError("a checked proof script needs its proof-node count")
+            if self.commands[-1] != "qed":
+                raise ValueError("a checked proof script must end in `qed`")
+        elif self.proof_nodes is not None or self.commands[-1] == "qed":
+            raise ValueError("an active proof script cannot claim QED")
+
+    @property
+    def text(self) -> str:
+        """Return the exact LF-only, newline-terminated replay body."""
+
+        return "\n".join(self.commands) + "\n"
+
+    @property
+    def digest(self) -> str:
+        return sha256(self.text.encode("utf-8")).hexdigest()[:12]
 
 
 @dataclass(frozen=True, slots=True)
@@ -84,6 +151,7 @@ class ProofSession:
     classical: bool
     trace: TraceLogger
     meta_names: tuple[tuple[int, str], ...] = ()
+    replay_steps: tuple[ReplayStep, ...] = ()
 
     def __post_init__(self) -> None:
         if type(self.state) is not ProofState:
@@ -94,6 +162,14 @@ class ProofSession:
             raise TypeError("a proof session's classical mode must be a Boolean")
         if type(self.trace) is not TraceLogger:
             raise TypeError("a proof session needs a TraceLogger")
+        object.__setattr__(self, "replay_steps", tuple(self.replay_steps))
+        if (
+            not all(type(step) is ReplayStep for step in self.replay_steps)
+            or len(self.replay_steps) != len(self.state.history)
+        ):
+            raise TypeError(
+                "proof-session replay steps must align with surviving history"
+            )
         if not all(
             type(meta_id) is int and isinstance(name, str)
             for meta_id, name in self.meta_names
@@ -122,6 +198,148 @@ def _put_owner(shared: dict, owner: ProofSession) -> None:
 
 def _clear(shared: dict) -> None:
     shared.pop(KEY_SESSION, None)
+
+
+def _canonical_script_line(source: str) -> str:
+    """Return one deterministic physical command line or reject it."""
+
+    if not isinstance(source, str):
+        raise ScriptExportError("a replay command is not text")
+    line = " ".join(source.split())
+    if not line:
+        raise ScriptExportError("a replay command is empty")
+    unsafe = {"Cc", "Cf", "Cs", "Zl", "Zp"}
+    if any(unicodedata.category(char) in unsafe for char in line):
+        raise ScriptExportError(
+            "a replay command contains an unsafe control or format character"
+        )
+    return line
+
+
+def _history_command(step: object) -> str:
+    """Render one engine history step used by top-level ``auto`` replay."""
+
+    try:
+        tactic = step.tactic
+        args = step.args
+    except AttributeError as exc:  # pragma: no cover - owner invariant guard
+        raise ScriptExportError("proof history contains a malformed step") from exc
+    if not isinstance(tactic, str) or not isinstance(args, str):
+        raise ScriptExportError("proof history contains a malformed command")
+    return _canonical_script_line(f"{tactic} {args}".strip())
+
+
+def _script_from_owner(
+    owner: ProofSession,
+    *,
+    checked: bool,
+    proof_nodes: int | None = None,
+) -> ProofScript:
+    """Build the canonical current-branch program from owner-held authority."""
+
+    if len(owner.replay_steps) != len(owner.state.history):
+        raise ScriptExportError(
+            "the replay journal does not match the surviving proof history"
+        )
+    theorem = pretty_formula(owner.original_target, list(owner.original_names))
+    commands = [_canonical_script_line(f"pa prove {theorem}")]
+    mode = False
+    for step in owner.replay_steps:
+        if step.classical != mode:
+            commands.append("classical on" if step.classical else "classical off")
+            mode = step.classical
+        commands.append(_canonical_script_line(step.command))
+    if owner.classical != mode:
+        commands.append("classical on" if owner.classical else "classical off")
+    if checked:
+        commands.append("qed")
+    if len(commands) > MAX_SCRIPT_STEPS:
+        raise ScriptExportError(
+            f"the replay script exceeds the {MAX_SCRIPT_STEPS}-command export limit"
+        )
+    artifact = ProofScript(
+        theorem=theorem,
+        commands=tuple(commands),
+        checked=checked,
+        proof_nodes=proof_nodes,
+    )
+    if len(artifact.text.encode("utf-8")) > MAX_SCRIPT_BYTES:
+        raise ScriptExportError(
+            f"the replay script exceeds the {MAX_SCRIPT_BYTES}-byte export limit"
+        )
+    return artifact
+
+
+def get_script(shared: dict) -> ProofScript | None:
+    """Return the active branch, otherwise the most recent checked artifact."""
+
+    owner = get_owner(shared)
+    if owner is not None:
+        return _script_from_owner(owner, checked=False)
+    artifact = shared.get(KEY_LAST_SCRIPT)
+    return artifact if type(artifact) is ProofScript and artifact.checked else None
+
+
+def _render_script(artifact: ProofScript) -> str:
+    status = "CHECKED QED" if artifact.checked else "ACTIVE (not kernel-checked)"
+    rows = [
+        f"Peano Lab replay script — {status}",
+        f"Theorem: {artifact.theorem}",
+    ]
+    if artifact.checked:
+        rows.append(
+            f"Independent kernel check: PASS ({artifact.proof_nodes} certificate nodes)."
+        )
+    else:
+        rows.append(
+            "No theorem is claimed; even closed goals remain active until `qed`."
+        )
+    rows.extend(("", "Replay (copy these lines):"))
+    rows.extend(f"  {command}" for command in artifact.commands)
+    rows.extend(
+        (
+            "",
+            "This current-branch replay omits failures, inspection commands, and undo itself.",
+            "A replay file is an untrusted program, not a proof certificate or library declaration.",
+            "Replaying it builds a candidate certificate; only `qed` checks the original theorem.",
+            f"Artifact digest: {artifact.digest}. Type `script download` to save the exact body.",
+        )
+    )
+    return _lines(*rows)
+
+
+def script_request(args: str, shared: dict) -> str:
+    """Render or queue a one-shot browser download without changing a proof."""
+
+    request = args.strip()
+    if request not in {"", "download"}:
+        return "Usage: script [download]"
+    try:
+        artifact = get_script(shared)
+    except ScriptExportError as exc:
+        return f"Script export failed: {exc}."
+    if artifact is None:
+        return _lines(
+            "No replay script is available.",
+            "Start a proof with `pa prove <formula>` or complete one with `qed`.",
+        )
+    if request == "download":
+        shared[KEY_PENDING_DOWNLOAD] = artifact
+    output = _render_script(artifact)
+    if request == "download":
+        output = _lines(
+            output,
+            "",
+            "Browser download prepared as `peano-lab-proof.pa`.",
+        )
+    return output
+
+
+def take_pending_download(shared: dict) -> str:
+    """Consume exactly one validated download body for the worker protocol."""
+
+    artifact = shared.pop(KEY_PENDING_DOWNLOAD, None)
+    return artifact.text if type(artifact) is ProofScript else ""
 
 
 def _sync_meta_names(owner: ProofSession) -> ProofSession:
@@ -156,7 +374,7 @@ def usage() -> str:
         "           use <library-theorem> [as <alias>]",
         "  Language: t1; t2 · t1 <|> t2 · repeat t · first [t1 | t2]",
         "            all_goals t · focus n t · auto [depth]",
-        "  Session: hint · undo · ? · classical on|off · qed · abort",
+        "  Session: hint · undo · ? · script [download] · classical on|off · qed · abort",
         "",
         "qed / abort and their aliases act only when typed alone on the line.",
         "Try: pa prove forall n. 0 + n = n",
@@ -290,13 +508,33 @@ def _finish_session(shared: dict, owner: ProofSession) -> str:
     theorem = pretty_formula(owner.original_target, list(owner.original_names))
     certificate_text = render_certificate(certificate, owner.original_names)
     mode = logic_banner(owner.classical)
+    script_warning = ""
+    retained_script = False
+    try:
+        shared[KEY_LAST_SCRIPT] = _script_from_owner(
+            owner,
+            checked=True,
+            proof_nodes=proof_size(certificate),
+        )
+        retained_script = True
+    except ScriptExportError as exc:
+        # Export is an untrusted convenience.  It must never turn a valid
+        # independently checked certificate into a failed or false QED.  Nor
+        # may an older artifact be mistaken for this newly checked theorem.
+        shared.pop(KEY_LAST_SCRIPT, None)
+        script_warning = f"Replay export unavailable: {exc}."
     _clear(shared)
-    return _lines(
+    rows = [
         "No open goals. QED.",
         f"Theorem: {theorem}",
         f"Certificate: {certificate_text}",
         f"Checked under: {mode}",
-    )
+    ]
+    if retained_script:
+        rows.append("Type `script` to inspect the retained checked replay.")
+    if script_warning:
+        rows.append(script_warning)
+    return _lines(*rows)
 
 
 def _hint_text(owner: ProofSession) -> str:
@@ -577,6 +815,26 @@ def _trace_focus(line: str, state: ProofState) -> int:
     return selected if 0 <= selected < len(state.goals) else 0
 
 
+def _publish_replay_steps(
+    owner: ProofSession,
+    new_state: ProofState,
+    commands: tuple[str, ...],
+) -> ProofSession:
+    """Align accepted surface syntax with the exact surviving undo branch."""
+
+    old_count = len(owner.state.history)
+    if new_state.history[:old_count] != owner.state.history:
+        raise RuntimeError("a successful tactic changed earlier replay history")
+    added = len(new_state.history) - old_count
+    if added != len(commands):
+        raise RuntimeError("a successful tactic produced mismatched replay steps")
+    replay_steps = owner.replay_steps + tuple(
+        ReplayStep(" ".join(command.split()), owner.classical)
+        for command in commands
+    )
+    return replace(owner, state=new_state, replay_steps=replay_steps)
+
+
 def _run_surface(owner: ProofSession, line: str) -> ProofSession:
     """Run one primitive, tactical, simp, or auto with one public trace path."""
 
@@ -596,7 +854,7 @@ def _run_surface(owner: ProofSession, line: str) -> ProofSession:
             trace=owner.trace,
             classical=owner.classical,
         )
-        return replace(owner, state=new_state)
+        return _publish_replay_steps(owner, new_state, (line,))
 
     # Auto replays its winning primitive plan through the public dispatcher;
     # those linear primitive records are the useful training transcript.
@@ -607,7 +865,11 @@ def _run_surface(owner: ProofSession, line: str) -> ProofSession:
             trace=owner.trace,
             classical=owner.classical,
         )
-        return replace(owner, state=new_state)
+        old_count = len(owner.state.history)
+        commands = tuple(
+            _history_command(step) for step in new_state.history[old_count:]
+        )
+        return _publish_replay_steps(owner, new_state, commands)
 
     before = owner.state
     trace_focus = _trace_focus(line, before)
@@ -618,7 +880,7 @@ def _run_surface(owner: ProofSession, line: str) -> ProofSession:
         owner.trace.failure(before, trace_focus, line, exc)
         raise
     owner.trace.success(before, trace_focus, line, after)
-    return replace(owner, state=after)
+    return _publish_replay_steps(owner, after, (line,))
 
 
 def _session_line(line: str, shared: dict, owner: ProofSession) -> str:
@@ -645,6 +907,8 @@ def _session_line(line: str, shared: dict, owner: ProofSession) -> str:
         return _hint_text(owner)
     if line == "?":
         return _closed_panel(owner) if owner.state.is_done() else _panel(owner)
+    if line == "script" or line.startswith("script "):
+        return script_request(line[len("script") :], shared)
     if line in {"t", "tactics", ":t", "help"}:
         return tactic_help()
 
@@ -685,7 +949,13 @@ def _session_line(line: str, shared: dict, owner: ProofSession) -> str:
             )
         except TacticError as exc:
             return f"Tactic error: {exc}"
-        owner = _sync_meta_names(replace(owner, state=new_state))
+        owner = _sync_meta_names(
+            replace(
+                owner,
+                state=new_state,
+                replay_steps=owner.replay_steps[: len(new_state.history)],
+            )
+        )
         _put_owner(shared, owner)
         return _panel(owner)
 
@@ -733,10 +1003,19 @@ def handle(arg: str, shared: dict) -> str:
 
 __all__ = [
     "KEY_SESSION",
+    "KEY_LAST_SCRIPT",
+    "KEY_PENDING_DOWNLOAD",
     "MAX_INPUT",
+    "MAX_SCRIPT_STEPS",
+    "MAX_SCRIPT_BYTES",
+    "ReplayStep",
+    "ProofScript",
     "ProofSession",
     "get_owner",
+    "get_script",
     "is_active",
+    "script_request",
+    "take_pending_download",
     "usage",
     "tactic_help",
     "checked_surface_final",

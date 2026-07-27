@@ -67,7 +67,7 @@
         <button class="qbtn" type="button" data-cmd="clear" disabled>clear</button>
       </div>
     </div>
-    <p class="info" id="terminal-help">The complete prover runs locally in a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API" target="_blank" rel="noopener">Web Worker</a>, using a self-hosted Python runtime, so a long search never freezes this page and <strong>Stop</strong> can terminate it. Every executable asset is served from this site (no CDN), and commands are not sent elsewhere; a <code>?cmd=</code> deep link is part of the URL and can appear in server logs. The <span class="law">tactic layer is never trusted</span>: every <code>qed</code> checks the finished certificate against the original theorem in the small kernel. <code>↑/↓</code> history · <code>TAB</code> completion.</p>
+    <p class="info" id="terminal-help">The complete prover runs locally in a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API" target="_blank" rel="noopener">Web Worker</a>, using a self-hosted Python runtime, so a long search never freezes this page and <strong>Stop</strong> can terminate it. Every executable asset is served from this site (no CDN), and commands are not sent elsewhere; a <code>?cmd=</code> deep link is part of the URL and can appear in server logs. The <span class="law">tactic layer is never trusted</span>: every <code>qed</code> checks the finished certificate against the original theorem in the small kernel. <code>script</code> previews the current replay; type <code>script download</code> directly to save it. <code>↑/↓</code> history · <code>TAB</code> completion.</p>
   </main>
   <footer>Peano Lab · VIASM mini-course “An Introduction to Automatic Theorem Proving in Mathematics”, Hanoi 2026 · © Bartosz Naskręcki · <a href="/vietnam2026/">course home</a></footer>
   <script src="vendor/v-85fb3352e49c/xterm/xterm.js"></script>
@@ -77,9 +77,10 @@
   <script>
   (function(){
     "use strict";
-    const BUILD="2026-07-27i";
-    const APP_ROOT="releases/a-573bb5060d7b/";
+    const BUILD="2026-07-27j";
+    const APP_ROOT="releases/a-f2054080fdc5/";
     const MAX_INPUT=4000;
+    const MAX_SCRIPT_DOWNLOAD=500000;
     const PROMPT="\x1b[96mpa>\x1b[0m ";
     const HISTORY_KEY="peanoLabHistory";
     const statusEl=document.getElementById("status");
@@ -110,7 +111,7 @@
     function saveHistory(){try{localStorage.setItem(HISTORY_KEY,JSON.stringify(history.slice(-200)));}catch(_error){}}
 
     let buffer="",cursor=0,history=loadHistory(),historyIndex=history.length,busy=true;
-    const COMMANDS=["abort","about","axioms","classical","clear","cls","eval","help","hint","kb","lib","pa","prove","qed","simp","tactic","tutorial","undo"];
+    const COMMANDS=["abort","about","axioms","classical","clear","cls","eval","help","hint","kb","lib","pa","prove","qed","script","simp","tactic","tutorial","undo"];
     const PA_SUBCOMMANDS=["axioms","eval","help","kb","lean","lib","prove","simp","tactic","tutorial"];
     const TACTICS=["all_goals","apply","assumption","auto","cases","congr","exact","exfalso","exists","first","focus","forall_elim","induction","intro","left","norm_num","refl","repeat","rewrite","right","ring","simp","specialize","split","symm","trans","use"];
     const ROOT_COMPLETIONS=Array.from(new Set(COMMANDS.concat(TACTICS)));
@@ -138,14 +139,37 @@
     function clearTerminal(){term.write("\x1b[2J\x1b[3J\x1b[H");writeOutput(banner);prompt();}
     function runInWorker(line){return new Promise(function(resolve){const id=++requestId;pending.set(id,resolve);worker.postMessage({type:"run",id:id,line:line});});}
 
-    async function submit(){
+    function validateProofDownload(text){
+      if(typeof text!=="string"||!text.endsWith("\n"))return "missing newline-terminated proof text";
+      if(text.length>MAX_SCRIPT_DOWNLOAD)return "proof text exceeds the browser download limit";
+      const body=text.slice(0,-1);if(!body||body.includes("\r"))return "proof text is not LF-only";
+      const lines=body.split("\n");if(lines.some(function(line){return !line;}))return "proof text contains a blank command";
+      if(!lines[0].startsWith("pa prove "))return "proof text does not start with `pa prove`";
+      const controls=/[\p{Cc}\p{Cf}\p{Cs}\p{Zl}\p{Zp}]/u;
+      if(lines.some(function(line){return controls.test(line);}))return "proof text contains an unsafe control or format character";
+      const qed=lines.reduce(function(found,line,index){if(line==="qed")found.push(index);return found;},[]);
+      if(qed.length>1||(qed.length===1&&qed[0]!==lines.length-1))return "`qed` must occur at most once, as the final command";
+      return "";
+    }
+    function downloadProofScript(text){
+      const invalid=validateProofDownload(text);if(invalid)return invalid;
+      const blob=new Blob([text],{type:"text/plain;charset=utf-8"});
+      if(blob.size>MAX_SCRIPT_DOWNLOAD)return "proof bytes exceed the browser download limit";
+      const url=URL.createObjectURL(blob);const link=document.createElement("a");
+      try{link.href=url;link.download="peano-lab-proof.pa";link.hidden=true;document.body.appendChild(link);link.click();}
+      finally{link.remove();setTimeout(function(){URL.revokeObjectURL(url);},0);}
+      return "";
+    }
+
+    async function submit(allowDownload){
       const line=buffer;term.write("\r\n");const trimmed=line.trim();
       if(trimmed){history.push(line);saveHistory();}
       if(trimmed.toLowerCase()==="clear"||trimmed.toLowerCase()==="cls"){clearTerminal();return;}
       busy=true;setQuickEnabled(false);setStop(true);const activeGeneration=generation;
-      let output="";
-      try{output=await runInWorker(line);}catch(error){if(activeGeneration===generation)term.write("\x1b[91m"+String(error)+"\x1b[0m");}
+      let output="";let result=null;
+      try{result=await runInWorker(line);output=result&&result.out!==undefined?result.out:"";}catch(error){if(activeGeneration===generation)term.write("\x1b[91m"+String(error)+"\x1b[0m");}
       if(activeGeneration!==generation)return;
+      if(allowDownload===true&&trimmed==="script download"&&result&&result.download!==null&&result.download!==undefined){const error=downloadProofScript(result.download);if(error)output+=(output?"\n":"")+"Download rejected: "+error+".";}
       writeOutput(output);busy=false;setQuickEnabled(true);setStop(false);prompt();
     }
     function sanitizeCommand(command){
@@ -153,12 +177,12 @@
         .replace(/[\x00-\x1f\x7f-\x9f]/g," ")
         .slice(0,MAX_INPUT);
     }
-    function injectCommand(command){if(busy||!worker)return;buffer=sanitizeCommand(command);cursor=buffer.length;redraw();submit();term.focus();}
+    function injectCommand(command){if(busy||!worker)return;buffer=sanitizeCommand(command);cursor=buffer.length;redraw();submit(false);term.focus();}
     quickEl.addEventListener("click",function(event){const button=event.target.closest(".qbtn");if(button)injectCommand(button.getAttribute("data-cmd"));});
 
     function stopWorker(){
       if(!worker)return;
-      worker.terminate();pending.forEach(function(resolve){resolve("");});pending.clear();
+      worker.terminate();pending.forEach(function(resolve){resolve({out:"",download:null});});pending.clear();
       busy=true;setQuickEnabled(false);setStop(false);
       term.write("\r\n\x1b[93m  ^ interrupted — restarting the proof engine…\x1b[0m\r\n");
       setStatus("loading","restarting…");startWorker();
@@ -175,7 +199,7 @@
     term.onData(function(data){
       if(busy)return;
       switch(data){
-        case "\r":submit();return;
+        case "\r":submit(true);return;
         case "\x7f":case "\b":if(cursor>0){buffer=buffer.slice(0,cursor-1)+buffer.slice(cursor);cursor--;redraw();}return;
         case "\x1b[A":if(history.length&&historyIndex>0){historyIndex--;buffer=history[historyIndex];cursor=buffer.length;redraw();}return;
         case "\x1b[B":if(historyIndex<history.length-1){historyIndex++;buffer=history[historyIndex];cursor=buffer.length;redraw();}else{historyIndex=history.length;buffer="";cursor=0;redraw();}return;
@@ -206,7 +230,7 @@
       function failWorker(message){
         generation++;
         if(worker){worker.terminate();worker=null;}
-        pending.forEach(function(resolve){resolve("");});pending.clear();
+        pending.forEach(function(resolve){resolve({out:"",download:null});});pending.clear();
         busy=true;setQuickEnabled(false);setStop(false);
         setStatus("fail",message);
         writeOutput("\r\n\x1b[91m  The lab stopped unexpectedly. Reload to retry.\x1b[0m\r\n");
@@ -216,7 +240,7 @@
         if(message.type==="boot"){setStatus("loading",message.msg);return;}
         if(message.type==="ready"){onReady(message.banner);return;}
         if(message.type==="error"){failWorker("failed to start: "+message.msg);return;}
-        if(message.type==="result"){const resolve=pending.get(message.id);if(resolve){pending.delete(message.id);resolve(message.out);}return;}
+        if(message.type==="result"){const resolve=pending.get(message.id);if(resolve){pending.delete(message.id);resolve(message);}return;}
       };
       worker.onerror=function(error){failWorker("worker error: "+((error&&error.message)?error.message:"unknown"));};
       worker.postMessage({type:"init",build:BUILD});

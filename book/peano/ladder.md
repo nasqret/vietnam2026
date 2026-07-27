@@ -130,6 +130,35 @@ $(8x+1)+8(n+1)=8(x+n+1)+1$. Different normal forms are an ordinary transactional
 request for the tactic to infer a missing hypothesis. Explicit AST, polynomial, coefficient, work,
 proof-size, and wall-clock limits keep the browser attempt finite.
 
+## From a replay file to a library entry
+
+The browser command `script download` is a useful handoff from an exploratory proof, but it does
+not modify this ladder. Its file is a full live surface program beginning with `pa prove`; the
+library stores a narrower reviewed record:
+
+```python
+TheoremSpec(
+    name="my_theorem",
+    statement="forall n. ...",
+    dependencies=("earlier_fact",),
+    script=("intro n", "..."),
+    summary="...",
+)
+```
+
+The statement must be closed, so visible free variables have to be bound explicitly. Every
+dependency must name an earlier checked entry. The replay layer generates those dependency
+introductions itself, so a live `use earlier_fact` line becomes the `dependencies` entry and is not
+copied into the authored body. The current library runner accepts its deliberately small primitive
+script language; a downloaded proof containing tacticals, top-level `auto`, `ring`, `use`, or
+classical-mode changes must be reviewed and lowered rather than pasted blindly.
+
+Admission then replays the dependency-curried goal, substitutes the earlier closed certificates
+capture-safely, eliminates the cuts, and asks the independent kernel to check the resulting closed
+certificate against the original statement. Tests, a source commit, and deployment are part of the
+change. Thus a replay file can preserve the discovery without becoming either trusted evidence or a
+mutable theorem environment.
+
 ## A script you can inspect
 
 The capstone card shows this authored body after its generated dependency introduction:

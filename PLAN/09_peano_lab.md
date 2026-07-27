@@ -254,10 +254,42 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   mounting and atomic failure; cold and warm starts reach ready; checked QED and Stop/restart still
   work; all Peano, Lambda, book, vault, vendor, and staging gates are green before production.
 - **Staging gate (2026-07-27):** candidate `a099596` serves build `2026-07-27i` and gzip works, but
-  promotion is stopped: the host exposes neither `mod_headers` nor `mod_expires`, so it cannot emit
-  the required cache policy from the static `.htaccess`. Experimental PHP probes were removed and
-  production remains on M13 pending owner choice of host configuration or a documented design
-  exception for a narrow PHP relay.
+  promotion is stopped: guarded account-level directives emitted no cache headers, while an
+  unguarded `Header` probe returned HTTP 500. That establishes that this account cannot supply the
+  required policy from static `.htaccess`; it does not establish which modules are loaded in the
+  central Apache/proxy tier. Experimental PHP probes were removed and production remains on M13
+  pending administrator-managed cache headers or a documented design exception for a narrow PHP
+  relay.
+
+### M15 — Replayable proof artifacts
+
+- [x] Add a proof-owner replay journal that follows the surviving undo branch without changing
+      `ProofState`, the v1 trace, tactic transactions, or kernel authority.
+- [x] Add `script` for active and last-checked previews. Active scripts remain explicitly
+      unchecked and omit `qed`; only a successful independent-kernel QED retains a checked script.
+- [x] Add `script download` with exact LF/UTF-8 replay bytes, one-shot worker routing, a fixed safe
+      filename, payload validation, direct-terminal intent, and object-URL cleanup.
+- [x] Document the replay/library boundary in the binding design, README, Jupyter Book, vault,
+      memory, journal, and diary; update the browser application release identity.
+- [ ] Run the focused contracts, complete Peano and Lambda suites, warning-as-error book build,
+      executable book/deep-link gate, vault-link audit, manifest/staging checks, then publish the
+      milestone commit to `peano-lab`.
+- **Acceptance:** failed tactics, inspection, failed QED, and `undo` itself never enter the replay;
+  undo removes its exact surviving transaction; tactical syntax, theorem imports, classical
+  authority, and top-level `auto` primitives replay deterministically; a goals-closed active proof
+  is never labeled checked; downloaded bytes reproduce a kernel-accepted QED; malformed or
+  unsolicited payloads cannot download; the static browser cannot mutate the theorem library; the
+  trusted kernel is byte-unchanged and every project gate is green. M14 production promotion
+  remains independently blocked until WMI enables the requested cache headers.
+- **Verified locally (2026-07-27):** focused replay/corpus/browser/book contracts report 32 passed;
+  Peano reports 657 passed; Lambda reports 360 passed plus 36 subtests; the source-bound release
+  reproduces 13,344 transitions from 1,692 checked sessions and the acceptance superset exports
+  13,631 unique rows; evaluator v2 completes 32 kernel-judged baseline attempts; the warning-free
+  25-source book and all 193 deep links/32 blocks/160 commands are green; all 298 vault links across
+  58 notes resolve with no disconnected concept; application/vendor manifests and local staging
+  are exact at `a-f2054080fdc5`/`v-85fb3352e49c`; the kernel has no diff and `checker.py` remains
+  234 lines. No in-app browser was attached, so direct clicking is not claimed; the dependency-free
+  worker/download harnesses cover those protocol and DOM lifecycle contracts.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

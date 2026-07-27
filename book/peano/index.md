@@ -54,4 +54,7 @@ arithmetic-automation chapter contrasts its exact equality contract with `simp`,
 and records why general PA, nonlinear hypothesis solving, and Presburger `omega` remain outside it.
 M14 then treats browser delivery as another explicit boundary: versioned caching, negotiated WASM
 compression, and concurrent source transfer reduce cold network cost without changing one proof rule.
-The limits chapter distinguishes that runtime boot from theorem proving.
+The limits chapter distinguishes that runtime boot from theorem proving. M15 adds a replayable
+current-branch artifact: active text remains unchecked, while only a successful kernel QED may
+produce the retained script's final `qed`. The tactics and ladder chapters explain why downloading
+that program is still separate from checking a certificate or admitting a library theorem.

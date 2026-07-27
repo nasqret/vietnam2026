@@ -85,6 +85,31 @@ pa> qed
     assert "peano: 0 links, 1 blocks (4 commands)" in result.stdout
 
 
+def test_gate_does_not_confuse_a_python_fence_with_the_next_session(tmp_path: Path) -> None:
+    page = tmp_path / "mixed-fences.md"
+    page.write_text(
+        """```python
+print("not a lab session")
+```
+
+```text
+pa> pa prove 0 = 0
+pa> refl
+pa> script
+pa> qed
+pa> script
+```
+""",
+        encoding="utf-8",
+    )
+
+    result = _run(page)
+
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "1 session blocks (5 commands)" in result.stdout
+    assert "peano: 0 links, 1 blocks (5 commands)" in result.stdout
+
+
 def test_gate_reports_bad_peano_commands_with_the_lab_label(tmp_path: Path) -> None:
     page = tmp_path / "bad.md"
     page.write_text(

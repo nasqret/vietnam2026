@@ -22,9 +22,11 @@
 - **Browser Lambda Lab:** `~/public_html/lab-lambda/` → <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda>
 - **Browser Peano Lab targets:** `~/public_html/peano-lab/` (production) and
   `~/public_html/peano-lab-next/` (staging). Production remains on verified M13 build
-  `2026-07-27h`; staging serves M14 candidate `2026-07-27i` from commit `a099596`. Its gzip and
-  bytes are live, but production promotion is stopped because the account lacks `mod_headers` and
-  `mod_expires`; host/proxy cache configuration or an explicit PHP-relay design exception is needed.
+  `2026-07-27h`; staging serves M14 candidate `2026-07-27i` from commit `a099596`, while local M15
+  build `2026-07-27j` is prepared for the next staging publication. Its gzip and bytes are live, but
+  production promotion is stopped because account-level `.htaccess` did not emit the required cache
+  policy; administrator-managed host/proxy headers or an explicit PHP-relay design exception is
+  needed. The probe did not establish the central server's loaded-module inventory.
 - **Server tooling:** Apache static hosting + PHP; Python 3.8, Node present. **No persistent daemons** →
   the lab must be **fully client-side** (this is why the browser lab uses Pyodide, not a server kernel).
 - **Site/Lambda deploy verb:** `rsync -avz --delete <local>/ lts-faculty.wmi.amu.edu.pl:~/public_html/<target>/`.
@@ -124,7 +126,13 @@
   a transport-only browser boundary: content-addressed immutable application and vendor URLs,
   non-stored HTML published after its release assets, negotiated Brotli/gzip for WASM/source media, and
   concurrent source transfer with deterministic failure and mount order. It changes no proof rule,
-  kernel dependency, certificate, corpus row, or server-side execution model.
+  kernel dependency, certificate, corpus row, or server-side execution model. M15 adds an untrusted,
+  undo-aligned proof-owner replay journal plus `script [download]`: active artifacts are explicitly
+  unchecked and omit `qed`; only successful independent finalization retains a checked replay. The
+  browser accepts a one-shot download only for the exact directly typed command and validates a
+  fixed-name LF/UTF-8 payload. Exported text is neither certificate authority nor a mutable library;
+  library inclusion retains the existing closed-statement, dependency, cut-elimination, test, and
+  independent-check workflow.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -160,7 +168,8 @@
 - Build/deploy strategy chosen: **go live incrementally** (public GitHub + faculty URLs as pieces land).
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
-- Peano Lab milestones M0–M13 are green and M14 delivery work is in verification on `peano-lab`;
+- Peano Lab milestones M0–M15 are locally green on `peano-lab`; M14 production delivery remains
+  blocked on administrator-managed cache headers, and M15 staging publication is pending;
   the implementation, checked corpus,
   construction book, Obsidian knowledge base, kernel-judged evaluation protocol, live checked-
   theorem reuse, 23-entry semiring ladder, certificate-producing `ring`, and bounded checked
