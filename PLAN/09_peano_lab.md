@@ -193,14 +193,24 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   checker unchanged at 234 lines.
 
 ### M12 — Certificate-producing `ring`
-- [ ] Reify `0`, numerals, variables, `+`, and `·` into a deterministic sparse polynomial form.
-- [ ] Normalize both equality sides with a fixed monomial order while constructing a proof from the
+- [x] Reify `0`, numerals, variables, `+`, and `·` into a deterministic sparse polynomial form.
+- [x] Normalize both equality sides with a fixed monomial order while constructing a proof from the
       M11 certificates; add explicit AST/coefficient/proof-size/browser-time limits.
-- [ ] Support selected equality hypotheses (`ring [h, ...]`) or an equivalently explicit
-      `trans`/`rewrite` workflow; never treat computation alone as a certificate.
-- **Acceptance:** the odd-square induction theorem
-  `forall n. exists x. (2*n+1)*(2*n+1)=8*x+1` closes interactively and QED checks against the
-  original goal; mutated coefficients and unsupported conditional goals fail transactionally.
+- [x] Keep `ring` argument-free and identity-only: conditional algebra uses an explicit
+      `trans`/`rewrite` workflow, and computation alone is never treated as a certificate.
+- **Acceptance:** the odd-square induction theorem closes interactively with witness `x + S n`,
+  middle term `((2*n+1)*(2*n+1)) + 8*S n`, and an explicit forward rewrite by `IH_witness`; QED
+  checks the resulting certificate against the original goal. Mutated coefficients, constants,
+  witnesses, and middle terms fail transactionally, as do non-equality goals, unresolved
+  metavariables, unsupported conditional uses, and every explicit resource limit.
+- **Verified:** the exact 11-command odd-square session reaches independently checked QED; its two
+  large step certificates are 36,004 nodes/depth 61 and 13,156/depth 55. Tests pin coefficient
+  `7`, constant `+2`, witness `x+n`, a bad middle term, post-intro hypothesis misuse, proof
+  mutation, malformed/forged laws, exact undo/traces, and every structural/work/proof/time limit.
+  Peano `581 passed`; Lambda `360 passed, 36 subtests passed`; the warning-as-error 24-page book and
+  all 190 links/19 blocks/96 commands are green; vault 55 notes/258 links/0 unresolved; regenerated
+  corpus 13,152 rows/1,596 checked sessions; local staging assembly green; checker unchanged at 234
+  lines. Direct Pyodide timing remains a deployment check because no in-app browser was available.
 
 ### M13 — Basic arithmetic teaching surface
 - [ ] Add bounded, certificate-producing `norm_num` for closed numerical subterms and equations.

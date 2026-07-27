@@ -44,4 +44,6 @@ for later small-model experiments; no model is trained in this repository. The d
 polished account.
 
 M11 extends that core with three ordinary checked entries—`one_mul`, `mul_one`, and `add_mul`—to
-complete the commutative-semiring basis for certificate-producing arithmetic normalization.
+complete the commutative-semiring basis for certificate-producing arithmetic normalization. M12's
+argument-free `ring` turns that basis into checked polynomial identities; the ladder chapter gives
+the complete odd-square induction proof and makes its explicit `trans`/`rewrite` boundary visible.

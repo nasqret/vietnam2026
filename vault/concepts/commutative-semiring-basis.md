@@ -13,8 +13,10 @@ successors, and closed coefficient arithmetic constructs PA3–PA6 certificates.
 
 All three additions are ordinary library scripts. They replay from the empty context and remain
 capture-safe when [[checked-theorem-reuse]] imports and specializes them below term and proposition
-binders. The [[trusted-kernel]] knows none of their names.
+binders. M12's [[polynomial-normalization]] rechecks the same closed certificates before using them
+to construct an equality proof. The [[trusted-kernel]] knows none of their names.
 
 ## Related
 
-[[theorem-ladder]] · [[proof-certificate]] · [[normal-form]] · [[tactic-mode]]
+[[theorem-ladder]] · [[proof-certificate]] · [[polynomial-normalization]] · [[normal-form]] ·
+[[tactic-mode]]

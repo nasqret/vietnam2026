@@ -448,6 +448,26 @@ TACTIC_CARDS = (
         ),
     ),
     TacticCard(
+        "ring",
+        "automation",
+        "ring",
+        "Close an unconditional polynomial identity with a checked certificate.",
+        "Reifies 0, successors, variables, addition, and multiplication into one "
+        "deterministic sparse polynomial form and closes the goal only when both "
+        "sides have the same form.",
+        "Builds an equality proof from independently checked commutative-semiring "
+        "lemmas, reduces their proof-level beta redexes, and asks the kernel to check "
+        "the generated certificate before changing the state.",
+        "forall n m. n + m = m + n",
+        ("intro n", "intro m", "ring"),
+        (
+            "The focused goal is not an equality or still contains a term metavariable.",
+            "Ring takes no arguments; use trans and rewrite explicitly when a hypothesis matters.",
+            "Different normal forms or an explicit size, work, depth, or time limit "
+            "stop transactionally.",
+        ),
+    ),
+    TacticCard(
         "auto",
         "automation",
         "auto [positive-depth]",

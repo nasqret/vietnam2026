@@ -17,7 +17,14 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, replace
+from time import monotonic
 
+from ..engine.ring import (
+    DEFAULT_RING_LIMITS,
+    RING_LAW_NAMES,
+    RingLaw,
+    ring_checked,
+)
 from ..engine.search import auto
 from ..engine.state import ProofState, final_certificate, proof_size, start
 from ..engine.tacticals import all_goals, first, focus, orelse, repeat, then
@@ -26,6 +33,7 @@ from ..engine.tactics import (
     InvalidProof,
     Tactic,
     TacticError,
+    TacticLimit,
     TacticSyntaxError,
     apply_tactic,
     checked_final,
@@ -57,6 +65,7 @@ _SESSION_ONLY_WORDS = set(_QED_WORDS) | set(_ABORT_WORDS) | set(TACTIC_NAMES) | 
     "help",
     "hint",
     "repeat",
+    "ring",
     "t",
     "tactics",
     "undo",
@@ -142,7 +151,7 @@ def usage() -> str:
         "",
         "  Tactics: intro · apply · exact · assumption · split · left · right",
         "           cases · exfalso · exists · specialize · forall_elim",
-        "           refl · symm · trans · congr · rewrite · induction · simp",
+        "           refl · symm · trans · congr · rewrite · induction · simp · ring",
         "           use <library-theorem> [as <alias>]",
         "  Language: t1; t2 · t1 <|> t2 · repeat t · first [t1 | t2]",
         "            all_goals t · focus n t · auto [depth]",
@@ -163,6 +172,7 @@ def tactic_help() -> str:
         "  rewrite <- h at h2",
         "  focus 2 simp",
         "  use add_comm; exact add_comm",
+        "  intro n; intro m; ring",
         "",
         "Logic starts intuitionistic. `classical on` explicitly authorizes DNE",
         "for later `apply DNE` / `auto` steps and for the final kernel check.",
@@ -401,9 +411,10 @@ def _primitive(name: str, args: str, classical: bool) -> Tactic:
         raise TacticSyntaxError(
             "`classical` is a session command and cannot be nested in a tactical."
         )
-    if name not in TACTIC_NAMES and name not in {"auto", "use"}:
+    if name not in TACTIC_NAMES and name not in {"auto", "ring", "use"}:
         raise TacticSyntaxError(
-            f"unknown tactic {name!r}; available: {', '.join(TACTIC_NAMES)}, auto, use."
+            f"unknown tactic {name!r}; available: "
+            f"{', '.join(TACTIC_NAMES)}, auto, ring, use."
         )
 
     def run(state: ProofState, extra: str = "") -> ProofState:
@@ -411,6 +422,8 @@ def _primitive(name: str, args: str, classical: bool) -> Tactic:
             raise TacticError("an assembled surface tactic takes no extra arguments.")
         if name == "auto":
             return auto(state, args, classical=classical)
+        if name == "ring":
+            return _ring_theorem(state, args)
         if name == "use":
             return _use_theorem(state, args)
         return apply_tactic(state, name, args, classical=classical)
@@ -442,6 +455,49 @@ def _use_theorem(state: ProofState, args: str) -> ProofState:
         raise TacticError(f"library theorem replay failed: {exc}.") from None
     alias = requested_alias or spec.name
     return use_checked(state, alias, theorem.formula, theorem.certificate)
+
+
+def _ring_theorem(state: ProofState, args: str) -> ProofState:
+    """Supply the engine with exact checked laws, never trusted theorem names."""
+
+    if args.strip():
+        raise TacticSyntaxError("`ring` takes no arguments.")
+    started = monotonic()
+
+    def enforce_deadline() -> None:
+        if monotonic() - started > DEFAULT_RING_LIMITS.max_seconds:
+            raise TacticLimit(
+                f"`ring` exceeded its {DEFAULT_RING_LIMITS.max_seconds:g}-second "
+                "time limit."
+            )
+
+    laws: list[RingLaw] = []
+    for name in RING_LAW_NAMES:
+        try:
+            theorem = replay(name)
+        except LibraryError as exc:
+            enforce_deadline()
+            raise TacticError(
+                f"ring basis replay failed for {name!r}: {exc}."
+            ) from None
+        enforce_deadline()
+        try:
+            laws.append(RingLaw(name, theorem.formula, theorem.certificate))
+        except (TypeError, ValueError) as exc:
+            raise TacticError(
+                f"ring basis theorem {name!r} is malformed: {exc}."
+            ) from None
+
+    first_reading = True
+
+    def attempt_clock() -> float:
+        nonlocal first_reading
+        if first_reading:
+            first_reading = False
+            return started
+        return monotonic()
+
+    return ring_checked(state, tuple(laws), clock=attempt_clock)
 
 
 def _compile(source: str, classical: bool) -> tuple[Tactic, bool]:

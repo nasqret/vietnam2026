@@ -440,3 +440,33 @@ with a classical toggle) recorded in `docs/PEANO_LAB_DESIGN.md` §0.
   the three Lean 4.28 stubs elaborated, and all 190 links/18 blocks/85 commands replayed. The
   warning-as-error book and 54-note/247-link vault are clean; the regenerated 13,152-row corpus
   records all 23 rungs; the checker remains exactly 234 lines.
+
+## 2026-07-27 — M12: computation chooses, certificates justify
+
+- The odd-square exercise fixed the user-facing boundary. The witness is `x + S n`, but asking
+  `simp` to discover and replay the polynomial rearrangement is both opaque and impractical.
+  `ring` instead has one narrow job: close a focused equality when its two sparse
+  commutative-semiring normal forms are identical.
+- The sparse calculation is not trusted. Successor is certified as addition by one from PA3/PA4;
+  identities, AC permutations, and distribution use the closed M11 law certificates; coefficient
+  arithmetic produces PA3--PA6 proof terms. Supplied laws, instantiated laws, and the finished
+  certificate are checked before the state is published, and ordinary QED checks the original
+  theorem once more.
+- `ring` takes no arguments and never mines the local context. The readable induction step uses
+  `trans ((2*n+1)*(2*n+1)) + 8*S n`, proves that identity with `ring`, rewrites forward by
+  `IH_witness`, and calls `ring` again. This explicit proof structure was preferable to a
+  hypothesis-aware mini-solver hidden behind `ring [IH_witness]`.
+- Browser predictability is part of the contract: 256 AST nodes/depth 64, 16 variables, degree 16,
+  64 monomials, coefficient 128, 25,000 work units, 100,000 proof nodes/depth 256, and a five-second
+  wall-clock budget. The required large normalization measured about 1.4 seconds under native
+  CPython; the in-app browser was unavailable, so a direct Pyodide timing remains a deployment
+  check. Metavariables and non-equality goals are rejected;
+  differing normal forms are a transactional `TacticError`, while exhausted budgets are a
+  transactional `TacticLimit`.
+- The integrated gates are green. The exact odd-square transcript reaches checked QED; mutations of
+  its coefficient, constant, witness, middle expression, proof leaves, or context discipline are
+  rejected transactionally, as are forged basis laws and every explicit resource limit. Peano has
+  581 passing tests; Lambda has 360 tests plus 36 subtests; the warning-as-error 24-page book replays
+  190 links/19 blocks/96 commands; the vault has 55 notes/258 links/0 unresolved. The regenerated
+  source-bound corpus keeps 13,152 rows from 1,596 checked sessions, local staging is green, and the
+  trusted checker is still 234 lines.

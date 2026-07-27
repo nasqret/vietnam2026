@@ -77,10 +77,11 @@ def test_shell_exposes_accessible_proof_controls_and_ladder_shortcuts() -> None:
         assert f'data-cmd="{command}"' in INDEX
 
 
-def test_tactic_completion_discovers_live_checked_theorem_reuse() -> None:
+def test_tactic_completion_discovers_surface_checked_arithmetic() -> None:
     match = re.search(r"const TACTICS=\[(.*?)\];", INDEX)
     assert match is not None
     assert '"use"' in match.group(1).split(",")
+    assert '"ring"' in match.group(1).split(",")
 
 
 def test_quick_button_examples_use_real_surface_syntax() -> None:

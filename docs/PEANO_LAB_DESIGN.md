@@ -134,10 +134,34 @@ Imported and live partial certificates have explicit node/depth budgets. Exceedi
 an honest transactional `TacticLimit`; QED also translates host recursion exhaustion into a typed
 rejection while preserving the session.
 
-Arithmetic automation follows the same certificate discipline. A future `ring` tactic may compute
-a canonical commutative-semiring normal form in the engine, but it must also construct an equality
-certificate from checked arithmetic lemmas. No normalization oracle or new kernel proof rule is
-permitted. Resource exhaustion is an honest `TacticLimit` and is transactional.
+Arithmetic automation follows the same certificate discipline. The argument-free `ring` tactic
+applies only to a focused equality whose rigid terms use `0`, successor, `+`, and `·`. It reifies
+both sides as sparse polynomials over the visible de Bruijn variables and sorts monomials by the
+fixed key `(total degree, variable/exponent tuple)`. This computation chooses a proof path; it is
+not evidence. Every successor-to-plus-one step, identity, permutation, reassociation,
+distribution, coefficient collection, and closed coefficient calculation contributes an ordinary
+proof fragment built from PA3--PA6 and the checked M11 semiring certificates. The engine rechecks
+the supplied closed laws, their instantiated forms, and the finished equality certificate before
+publishing a closed goal. QED independently checks the whole theorem again against the session
+owner's original target. No normalization oracle or new kernel proof rule is permitted.
+
+`ring` deliberately has **no hypothesis magic**. It neither rewrites with local equations nor
+solves implications, existentials, inequalities, or arbitrary consequences of the context. A
+conditional calculation must first expose polynomial identities with ordinary proof structure,
+for example `trans <middle>` followed by `rewrite h`; each resulting identity is then a separate
+`ring` call. This keeps the tactic's claim auditable: equal sparse normal forms certify an identity,
+while different normal forms produce a transactional `TacticError`.
+
+One browser attempt is bounded by 256 input AST nodes, depth 64, 16 variables, degree 16, 64
+monomials, natural coefficients at most 128, 25,000 work units, a 100,000-node/256-level generated
+proof, and a five-second wall-clock budget. That conservative browser margin was chosen after the
+largest required normalization used about 1.4 seconds under native CPython; it must still be
+measured under Pyodide when an in-app browser is available. Unresolved term metavariables are
+rejected rather than guessed. Any resource or host-recursion exhaustion is an honest transactional
+`TacticLimit`. The deadline is checked before normalization, throughout proof construction, and
+after synchronous replay, cut reduction, and kernel validation; those synchronous calls are not
+preempted mid-call. The browser's Stop control remains the hard abort because all Python runs in a
+disposable worker.
 
 ## 3. UI: the `peano-lab` page
 
@@ -207,7 +231,8 @@ peano-lab/
     peano_lab/
       kernel/     terms.py formulas.py subst.py proofs.py checker.py   ← TRUSTED, small
       engine/     state.py tactics.py tacticals.py rewrite.py
-                  induction.py decide.py search.py trace.py            ← untrusted
+                  induction.py decide.py proof_reduction.py ring.py
+                  search.py trace.py                                  ← untrusted
       ui/         prove.py panels.py data_tactics.py data_kb.py
                   data_tutorials.py data_library.py
       library/    theorems.py                (scripted ladder proofs)

@@ -54,6 +54,7 @@ from ..kernel.terms import Add, Mul, Succ, Term, Var, Zero, pretty_term
 NL = "\r\n"
 MAX_CERTIFICATE_CHARS = 8_000
 MAX_CERTIFICATE_DEPTH = 128
+MAX_CERTIFICATE_RENDER_NODES = 2_048
 
 
 def _formula_text(
@@ -117,6 +118,7 @@ def render_certificate(
 
     aliases = dict(meta_names or {})
     holes: dict[int, str] = {}
+    rendered_nodes = 0
 
     def fresh_name(base: str, local_names: tuple[str, ...]) -> str:
         if base not in local_names:
@@ -130,6 +132,10 @@ def render_certificate(
         return _formula_text(value, local_names, aliases)
 
     def go(value: Proof, depth: int, local_names: tuple[str, ...]) -> str:
+        nonlocal rendered_nodes
+        rendered_nodes += 1
+        if rendered_nodes > MAX_CERTIFICATE_RENDER_NODES:
+            return "…"
         if depth > MAX_CERTIFICATE_DEPTH:
             return "…"
         if type(value) is Hole:

@@ -493,3 +493,32 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   the warning-as-error book and 190 links/18 blocks/85 commands pass; vault 54 notes/247 links/0
   unresolved. The regenerated 13,152-row corpus manifest records all 23 rungs and 1,596 checked
   sessions; the trusted checker remains untouched at 234 lines. No deployment was performed.
+
+## 2026-07-27 (branch peano-lab) — Peano Lab M12: certificate-producing `ring`
+
+- Added a deterministic sparse-polynomial normalizer for rigid PA terms built from zero,
+  successor, addition, multiplication, numerals, and visible variables. Monomials use a fixed
+  total-degree/de-Bruijn order and natural coefficients; equal computed forms merely select the
+  proof construction path.
+- Every successful normalization constructs a kernel proof from PA3--PA6 and the rechecked M11
+  semiring certificates. The engine checks supplied and instantiated laws and checks the generated
+  equality certificate before closing the goal; the normal surface QED then checks the complete
+  proof against the owner-held original theorem.
+- Kept `ring` argument-free and identity-only. It does not search or normalize hypotheses. The
+  odd-square induction uses witness `x + S n`, middle term `((2*n+1)*(2*n+1)) + 8*S n`, a first
+  `ring`, explicit `rewrite IH_witness`, and a final `ring`. This exposes exactly where induction,
+  substitution, and polynomial identity checking meet.
+- Added explicit bounds for AST size/depth, variables, degree, monomials, coefficients, work,
+  generated proof size/depth, and wall-clock time. The required large normalization used about
+  1.4 seconds under native CPython, so the default is five seconds to leave a conservative browser
+  margin. The in-app browser was unavailable for a direct Pyodide measurement; that remains a
+  deployment check. False identities and unsupported targets are transactional `TacticError`s;
+  resource exhaustion is a transactional `TacticLimit`.
+- Acceptance is green: the exact odd-square session reaches checked QED against its original goal;
+  adversarial tests cover mutated coefficients/constants/witness/middle, conditional misuse,
+  forged laws/proof leaves, exact undo/traces, malformed reduction input, and every explicit limit.
+  Peano reports `581 passed`; Lambda `360 passed, 36 subtests passed`; the warning-as-error 24-page
+  book and 190 links/19 blocks/96 commands pass; vault 55 notes/258 links/0 unresolved. The final
+  source-bound corpus remains 13,152 rows from 1,596 checked sessions, local staging assembly is
+  green, and the checker remains 234 lines. The in-app browser was unavailable, so direct Pyodide
+  timing remains a deployment check. No deployment was performed during this verification pass.

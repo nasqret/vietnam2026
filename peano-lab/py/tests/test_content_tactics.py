@@ -12,7 +12,7 @@ from peano_lab.ui import data_tactics
 
 
 EXPECTED_TACTICALS = (";", "<|>", "repeat", "first", "all_goals", "focus")
-EXPECTED_AUTOMATION = ("auto", "hint")
+EXPECTED_AUTOMATION = ("ring", "auto", "hint")
 EXPECTED_SURFACE_PRIMITIVES = TACTIC_NAMES + ("use",)
 
 
@@ -23,7 +23,7 @@ def test_every_operational_surface_has_exactly_one_card() -> None:
 
     expected = EXPECTED_SURFACE_PRIMITIVES + EXPECTED_TACTICALS + EXPECTED_AUTOMATION
     assert data_tactics.names() == expected
-    assert len(data_tactics.TACTIC_CARDS) == len(expected) == 29
+    assert len(data_tactics.TACTIC_CARDS) == len(expected) == 30
     assert len(data_tactics.TACTIC_MAP) == len(expected)
 
 

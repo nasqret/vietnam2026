@@ -7,6 +7,8 @@ Two live targets on the faculty server (`bnaskrecki@lts-faculty.wmi.amu.edu.pl`,
 |-----|-------------|----------|
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026> | `~/public_html/vietnam2026/` | landing page + built book + slides |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda> | `~/public_html/lab-lambda/` | the browser Lambda Lab |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/> | `~/public_html/peano-lab/` | production Peano Lab |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | Peano Lab staging channel |
 
 The SSH key (`~/.ssh/id_ed25519`) is already configured for the `lts-faculty` host.
 
@@ -28,6 +30,10 @@ rsync -avz --delete _deploy/vietnam2026/ lts-faculty.wmi.amu.edu.pl:~/public_htm
 # 3. Push the browser lab (worker + fully self-hosted; assembles index.html,
 #    worker.js, .htaccess, py/, vendor/ — see the Makefile target)
 make deploy-lab
+
+# 4. Push Peano Lab to staging; promote only a fully green milestone.
+make deploy-peano-next
+make deploy-peano
 ```
 
 ## Notes
@@ -38,6 +44,9 @@ make deploy-lab
   freezes) and every asset — Pyodide core, xterm+addons, fonts — is served from this site (vendor/,
   fetched by scripts/fetch_vendor.sh). `/lab-lambda-next/` is the staging channel. A service-worker
   precache for guaranteed offline remains future work.
+- Peano Lab uses the same worker/self-hosted layout. `/peano-lab-next/` is its staging channel;
+  `/peano-lab/` is promoted only after the milestone tests, book, vault, corpus, and staging gates
+  are green.
 - Formal artifacts are browsed on GitHub (`nasqret/vietnam2026/tree/main/artifacts`), not deployed to the
   server, so the landing page's artifact links point there.
 

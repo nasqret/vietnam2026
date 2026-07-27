@@ -5,10 +5,10 @@ deduplicated version-1 tactic transitions from **1,596** generated proof session
 
 | Artifact | Role | Records | SHA-256 |
 |---|---|---:|---|
-| `train.jsonl` | learning split | 12,540 | `c9bfee8ce7b2bceb23aa52ff44f6729806bcba32d4a88713aae443b411905d62` |
-| `val.jsonl` | exact-theorem-group validation split | 612 | `53dd87adb20a9905816febfc201ae97b1de74586946ac4542a18940aeb5b5ef7` |
-| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `d386ec77bdffe673f5b5feaadb429b3aa703c911f2eea23744125d9ff2abc324` |
-| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `cf5fc3efd7cb999ff1179c2c980de12dfede32333b15ebb0b1c6d8141b9b3965` |
+| `train.jsonl` | learning split | 12,540 | `34b0abb503870c0936777d46de5b5b032f7dfcfcaa66885e720f8477712ff2a8` |
+| `val.jsonl` | exact-theorem-group validation split | 612 | `324b5e9bbd455a4b3fabbb24b8aced69fbfac561662dea1e3fad9cde92b8a1f7` |
+| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `8f3b08e3b046d0d9bfb102d767214816e2712b88b80c122bc5abd7b11041fa97` |
+| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `65f3be38569527da969353367c9361fc6cec0ba58118c21ba0411fafbec2dbcc` |
 
 The source stream contained 11,556 successful and 1,596 deliberately failing, transactional
 applications, for a labeled failure ratio of `0.12135036496350365`. Every one of the 1,596 sessions
@@ -46,7 +46,7 @@ That target first writes the replayable raw session stream to
 `/tmp/peano-lab-release-raw.jsonl`, then strictly validates, globally deduplicates, and exports it.
 The raw intermediate is not committed because it duplicates the split payload, but the manifest
 records its exact size (`6,157,395` UTF-8 bytes) and SHA-256
-`783ab6596faf8dfa960dc0a44e8c12171a4319a42409e8a93a7e9813e4e0d6c4`.
+`18b5fce098925a728b1130478ba01d9717b9fa62e76fc9f0e64e4d6052bd6717`.
 It also fingerprints `scripts/generate_peano_traces.py`, the trusted checker, and the complete
 Peano Lab Python source tree. Because the Python runtime participates in the run fingerprint and
 session IDs, changing that runtime changes the raw byte hash even when every session-agnostic

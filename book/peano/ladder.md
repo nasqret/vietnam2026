@@ -92,6 +92,44 @@ the exact state before an import, and an unknown theorem or colliding alias chan
 Explicit import and live-certificate node/depth budgets turn excessive reuse into a transactional
 resource limit rather than a host recursion failure.
 
+## From the checked basis to `ring`
+
+M12's `ring` is a proof-producing normalizer, not a trusted arithmetic oracle. It reifies a focused
+equality as two sparse polynomials, chooses one deterministic monomial order, and constructs every
+normalization step from PA3--PA6 and the checked M11 basis. The generated equality certificate is
+checked before the tactic closes the goal; QED later checks the complete induction certificate
+against its original statement.
+
+The odd-square theorem also illustrates what `ring` does **not** do. It never searches the context
+for useful equations. The proof author supplies a middle expression, proves the first polynomial
+identity, rewrites the second goal with the induction hypothesis, and proves the remaining identity:
+
+```text
+pa> pa prove forall n. exists x. (2 * n + 1) * (2 * n + 1) = 8 * x + 1
+pa> induction n
+pa> exists 0
+pa> ring
+pa> cases IH
+pa> exists x + S n
+pa> trans ((2 * n + 1) * (2 * n + 1)) + (8 * S n)
+pa> ring
+pa> rewrite IH_witness
+pa> ring
+pa> qed
+```
+
+The middle term is
+
+$$
+  (2n+1)^2+8(n+1).
+$$
+
+Thus the first `ring` in the step certifies
+$(2(n+1)+1)^2=(2n+1)^2+8(n+1)$. After the explicit rewrite, the last one certifies
+$(8x+1)+8(n+1)=8(x+n+1)+1$. Different normal forms are an ordinary transactional failure, not a
+request for the tactic to infer a missing hypothesis. Explicit AST, polynomial, coefficient, work,
+proof-size, and wall-clock limits keep the browser attempt finite.
+
 ## A script you can inspect
 
 The capstone card shows this authored body after its generated dependency introduction:
