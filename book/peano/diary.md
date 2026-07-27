@@ -783,3 +783,18 @@ release `v-85fb3352e49c`. Static browser tests, worker concurrency, multiline pa
 every staged application hash are green. No in-app browser was attached, so no live Pyodide click-
 through is claimed. Nothing from M18 was deployed: staging remains M17 and production remains build
 `2026-07-27h` until the administrator-managed M14 cache-header problem is resolved.
+
+## 2026-07-28 — M18 staging publication
+
+After explicit owner authorization, I published the same committed M18 assembly to
+`/peano-lab-next/`. The release protocol first retained and uploaded the immutable application and
+vendor namespaces, then changed the HTML pointer. Staging now identifies build `2026-07-28c`,
+application `a-953fa3777cd4`, from commit `98ee0dd`. The fetched HTML has the same SHA-256 digest as
+the local stage, and a checksum comparison found no changed byte among the 41 application files.
+The worker-boot and multiline-paste behavioral harnesses also remain green.
+
+The independent delivery verifier still stops on the known host configuration defect: HTML lacks
+the required `Cache-Control: no-store` response header. That failure is evidence against promotion,
+not evidence against the proof engine. No in-app browser was attached to this session, so I do not
+claim a direct Pyodide click-through. Production was deliberately left untouched at build
+`2026-07-27h`.

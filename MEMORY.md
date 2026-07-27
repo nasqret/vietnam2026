@@ -22,8 +22,9 @@
 - **Browser Lambda Lab:** `~/public_html/lab-lambda/` → <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda>
 - **Browser Peano Lab targets:** `~/public_html/peano-lab/` (production) and
   `~/public_html/peano-lab-next/` (staging). Production remains on verified M13 build
-  `2026-07-27h`; staging serves M17 build `2026-07-28b` from commit `ca82b70` and application release
-  `a-404fdbdb55e4`. Its gzip and exact bytes are live, but production promotion is stopped because
+  `2026-07-27h`; staging serves M18 build `2026-07-28c` from commit `98ee0dd` and application release
+  `a-953fa3777cd4`. Its exact HTML and all 41 application files match the staged bytes, but production
+  promotion is stopped because
   account-level `.htaccess` did not emit the required cache policy; administrator-managed host/proxy
   headers or an explicit PHP-relay design exception is needed. The probe did not establish the
   central server's loaded-module inventory.
@@ -155,8 +156,10 @@
   kernel constructor. The motivating readable `ring` replay expands to 30,030 proof-tree nodes;
   the existing hand-authored 180-node/depth-34 certificate is the current checked upper bound, not
   a proven absolute minimum. Focused/full acceptance, corpus provenance, documentation, manifests,
-  and exact local staging are green at build `2026-07-28c`, application `a-953fa3777cd4`; M18 is not
-  deployed. No in-app browser was attached, so a live Pyodide click-through is not claimed.
+  and exact local staging are green at build `2026-07-28c`, application `a-953fa3777cd4`; the same
+  bytes are deployed to staging. No in-app browser was attached, so a live Pyodide click-through is
+  not claimed. The delivery verifier reaches the known missing-cache-header stop, so production is
+  unchanged.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =

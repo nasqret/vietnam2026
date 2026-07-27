@@ -497,9 +497,10 @@ At the M18 close, the focused suite has 46 passing tests and the full Peano suit
 sibling Lambda suite remains green at 360 tests plus 36 subtests.  The warning-as-error book build,
 193-link/170-command executable-prose gate, 61-note/356-link connected vault, 1,692-session source-
 bound corpus, application and vendor manifests, Node interaction harnesses, and exact local stage
-are also green.  The local assembly is build `2026-07-28c`, application `a-953fa3777cd4`.  No in-app
-browser was attached, so this report does not claim a live Pyodide click-through; M18 was not
-deployed.
+are also green.  Build `2026-07-28c`, application `a-953fa3777cd4`, is deployed to the staging
+channel from commit `98ee0dd`; the public HTML and all 41 application files match the local staged
+checksums.  No in-app browser was attached, so this report does not claim a live Pyodide
+click-through.  Production remains on M13 because the host still omits the required cache headers.
 
 ## What students should take away
 

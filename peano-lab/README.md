@@ -361,10 +361,11 @@ seed/template instances, 512 memo/search states, 512 generated candidates, 100,0
 depth 256, 20,000 work units, a 10,000-node/256-level generated fragment, a 100,000-node/512-level
 complete partial certificate, and five seconds.
 
-M18 is locally verified as build `2026-07-28c`, application release `a-953fa3777cd4`: the focused
+M18 is verified as build `2026-07-28c`, application release `a-953fa3777cd4`: the focused
 suite reports 46 passes and the complete Peano suite 744. Exact local staging, manifests, worker and
-multiline-paste harnesses are green. No in-app browser was attached, so a live Pyodide click-through
-is not claimed, and M18 was not deployed. Public staging remains M17; production remains build
+multiline-paste harnesses are green. The same commit `98ee0dd` is deployed at
+`/peano-lab-next/`; its HTML and all 41 application files match the staged checksums. No in-app
+browser was attached, so a live Pyodide click-through is not claimed. Production remains build
 `2026-07-27h` behind the administrator-managed cache-header blocker.
 
 Back at the repository root, run both regression suites:

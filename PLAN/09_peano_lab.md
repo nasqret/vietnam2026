@@ -453,9 +453,11 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   13,344 unique transitions from 1,692 checked sessions with a 31-file semantic-source fingerprint.
   Application/vendor manifests and exact local staging are green at `a-953fa3777cd4`/
   `v-85fb3352e49c`, build `2026-07-28c`; the kernel has no diff and `checker.py` remains 234 lines.
-  Worker and multiline-paste behavioral harnesses pass. No in-app browser was attached, so a real
-  Pyodide click-through is not claimed. M18 was not deployed; staging remains M17 and production
-  remains `2026-07-27h` behind the administrator-managed M14 cache-header blocker.
+  Worker and multiline-paste behavioral harnesses pass. On owner authorization, commit `98ee0dd`
+  was deployed to staging as the identical build `2026-07-28c`/application `a-953fa3777cd4`:
+  the public HTML hash and all 41 application checksums match the staged tree. No in-app browser was
+  attached, so a real Pyodide click-through is not claimed. The delivery verifier still stops at
+  the administrator-managed M14 cache-header blocker; production remains `2026-07-27h`.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

@@ -733,3 +733,14 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   multiline-paste behavioral harnesses pass. No in-app browser was attached, so live Pyodide
   behavior is not claimed. M18 was not deployed; staging remains M17 and production remains
   `2026-07-27h` behind the M14 cache-header blocker.
+
+## 2026-07-28 (branch peano-lab) — M18 staging published
+
+- On owner authorization, published the unchanged, pushed M18 candidate `98ee0dd` to
+  `/peano-lab-next/`. The live pointer now reports build `2026-07-28c`, application
+  `a-953fa3777cd4`; its HTML SHA-256 is byte-identical to local staging and an rsync checksum audit
+  found no difference across all 41 application files. Worker-boot and multiline-paste behavioral
+  harnesses remain green after publication.
+- The full delivery verifier stopped at the pre-existing M14 policy failure: the host returned no
+  `Cache-Control: no-store` header for HTML. No in-app browser was attached, so no live Pyodide
+  click-through is claimed. Production was not touched and remains build `2026-07-27h`.
