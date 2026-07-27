@@ -636,3 +636,10 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   is claimed. The warning-free full book build covers all 25 sources, and its executable gate
   replays 193 deep links plus 160 commands in 32 session blocks. Publication status is recorded only
   after the staging gate.
+- Published milestone commit `f40b2ad` to the public `peano-lab` branch and deployed the identical
+  static assembly to `/peano-lab-next/`. Staging returns build `2026-07-27j` with application release
+  `a-f2054080fdc5`; the live page (`2d0640fa970e…`), application manifest (`f2054080fdc5…`), worker
+  (`bdd011c29ffe…`), and proof UI (`183647c91883…`) match local files byte-for-byte, and WASM
+  negotiates gzip. The full delivery gate stops at the inherited M14 condition: HTML still lacks
+  `Cache-Control: no-store`, and the versioned manifest still lacks an immutable policy. Production
+  was not touched and remains build `2026-07-27h`.

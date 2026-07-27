@@ -585,3 +585,11 @@ edge. The application manifest stages as
 No in-app browser was attached, so direct clicking and download observation are not claimed; the
 worker protocol, direct-keyboard intent, payload validation, exact Blob bytes, and URL cleanup are
 instead exercised by dependency-free browser-shell harnesses.
+
+Commit `f40b2ad` was then pushed and the same content-addressed assembly published to staging as
+build `2026-07-27j`. The live page, application manifest, worker, and proof UI match their local
+bytes; WASM negotiates gzip. The delivery gate nevertheless stops at the inherited M14 boundary:
+HTML still has no `Cache-Control: no-store`, and versioned responses still have no immutable cache
+policy. That transport failure does not weaken a proof result, but it prevents production promotion.
+Production was left untouched on build `2026-07-27h`; the new `script` surface is available only on
+the staging channel until administrators supply the required headers.

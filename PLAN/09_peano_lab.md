@@ -271,7 +271,7 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       filename, payload validation, direct-terminal intent, and object-URL cleanup.
 - [x] Document the replay/library boundary in the binding design, README, Jupyter Book, vault,
       memory, journal, and diary; update the browser application release identity.
-- [ ] Run the focused contracts, complete Peano and Lambda suites, warning-as-error book build,
+- [x] Run the focused contracts, complete Peano and Lambda suites, warning-as-error book build,
       executable book/deep-link gate, vault-link audit, manifest/staging checks, then publish the
       milestone commit to `peano-lab`.
 - **Acceptance:** failed tactics, inspection, failed QED, and `undo` itself never enter the replay;
@@ -290,6 +290,12 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   are exact at `a-f2054080fdc5`/`v-85fb3352e49c`; the kernel has no diff and `checker.py` remains
   234 lines. No in-app browser was attached, so direct clicking is not claimed; the dependency-free
   worker/download harnesses cover those protocol and DOM lifecycle contracts.
+- **Published to staging (2026-07-27):** commit `f40b2ad` is pushed to `peano-lab`; staging serves
+  build `2026-07-27j` from `releases/a-f2054080fdc5/`. The live page, application manifest,
+  worker, and proof UI are byte-identical to local staging, and WASM negotiates gzip. The full M14
+  delivery gate still stops at the known host boundary because HTML has no `Cache-Control: no-store`
+  and versioned assets have no immutable policy. Production remains untouched on build
+  `2026-07-27h`; M15 functionality is therefore available on staging but is not promoted.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

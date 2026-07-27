@@ -22,11 +22,11 @@
 - **Browser Lambda Lab:** `~/public_html/lab-lambda/` → <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda>
 - **Browser Peano Lab targets:** `~/public_html/peano-lab/` (production) and
   `~/public_html/peano-lab-next/` (staging). Production remains on verified M13 build
-  `2026-07-27h`; staging serves M14 candidate `2026-07-27i` from commit `a099596`, while local M15
-  build `2026-07-27j` is prepared for the next staging publication. Its gzip and bytes are live, but
-  production promotion is stopped because account-level `.htaccess` did not emit the required cache
-  policy; administrator-managed host/proxy headers or an explicit PHP-relay design exception is
-  needed. The probe did not establish the central server's loaded-module inventory.
+  `2026-07-27h`; staging serves M15 build `2026-07-27j` from commit `f40b2ad` and application release
+  `a-f2054080fdc5`. Its gzip and exact bytes are live, but production promotion is stopped because
+  account-level `.htaccess` did not emit the required cache policy; administrator-managed host/proxy
+  headers or an explicit PHP-relay design exception is needed. The probe did not establish the
+  central server's loaded-module inventory.
 - **Server tooling:** Apache static hosting + PHP; Python 3.8, Node present. **No persistent daemons** →
   the lab must be **fully client-side** (this is why the browser lab uses Pyodide, not a server kernel).
 - **Site/Lambda deploy verb:** `rsync -avz --delete <local>/ lts-faculty.wmi.amu.edu.pl:~/public_html/<target>/`.
@@ -169,7 +169,7 @@
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
 - Peano Lab milestones M0–M15 are locally green on `peano-lab`; M14 production delivery remains
-  blocked on administrator-managed cache headers, and M15 staging publication is pending;
+  blocked on administrator-managed cache headers, while M15 is pushed and published to staging;
   the implementation, checked corpus,
   construction book, Obsidian knowledge base, kernel-judged evaluation protocol, live checked-
   theorem reuse, 23-entry semiring ladder, certificate-producing `ring`, and bounded checked
