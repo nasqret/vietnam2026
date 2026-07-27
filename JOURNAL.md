@@ -475,3 +475,21 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   all 190 links/18 blocks/85 commands pass; vault 53 notes/238 links/0 unresolved. The regenerated
   source-bound corpus retains 13,152 transitions from 1,596 checked sessions, and the kernel checker
   remains untouched at 234 lines. No deployment was performed.
+
+## 2026-07-27 (branch peano-lab) — Peano Lab M11: checked semiring basis
+
+- Audited the existing ladder against the exact oriented equations a proof-producing polynomial
+  normalizer needs. Only `one_mul`, `mul_one`, and `add_mul` were absent; zero laws, both
+  associativity/commutativity pairs, and the opposite distributive orientation were already present.
+- Added those three as ordinary scripted entries after `mul_assoc`. Every dependency points to an
+  earlier rung, each final certificate checks from the empty context, and generated Lean stubs retain
+  the exact statements. No numeral oracle or kernel rule was introduced: numerals remain successor
+  terms, with closed coefficient proofs built from PA3–PA6.
+- Added deterministic replay and binder-capture regressions. Each new certificate is imported below
+  both proposition and term binders and specialized with an outer-variable term before transient
+  cut compilation and independent QED checking.
+- Acceptance is green: focused M11 `84 passed`; Peano `527 passed`; Lambda `360 passed, 36 subtests
+  passed`; all three exact stubs elaborate under Lean 4.28 with only intentional `sorry` warnings;
+  the warning-as-error book and 190 links/18 blocks/85 commands pass; vault 54 notes/247 links/0
+  unresolved. The regenerated 13,152-row corpus manifest records all 23 rungs and 1,596 checked
+  sessions; the trusted checker remains untouched at 234 lines. No deployment was performed.

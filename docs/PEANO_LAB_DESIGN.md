@@ -190,7 +190,8 @@ Success metric for later: a small fine-tuned model, given `goals_before`, propos
 ## 6. The theorem ladder (acceptance ladder for the whole project)
 
 `0 + n = n` → `add_succ_left` → **`add_comm`** → `add_assoc` → `mul_zero_left` → `mul_comm` →
-`mul_add` (distributivity) → `mul_assoc` → `S n ≠ 0`, injectivity as lemmas → order: `n ≤ m :=
+`mul_add` (distributivity) → `mul_assoc` → `one_mul`, `mul_one`, `add_mul` (the M11 semiring
+basis) → `S n ≠ 0`, injectivity as lemmas → order: `n ≤ m :=
 ∃k. k + n = m`, `le_refl`, `le_trans`, `le_antisymm` → `n ≤ m ∨ m ≤ n` (totality — needs ∨ and
 induction working together) → capstone: `∀n m. n·m = 0 → n = 0 ∨ m = 0`.
 Each proved **interactively first** (the tutorial), then scripted into the library, then

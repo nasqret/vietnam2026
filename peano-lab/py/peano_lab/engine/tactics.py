@@ -105,7 +105,7 @@ _RESERVED_TERM_NAMES = {"S", "forall", "exists", "bot", "false"}
 # surface finalization contracts the cut.  Honest bounds keep repeated aliases
 # from turning that temporary tree into a host-recursion or browser-memory
 # failure.  The current checked ladder's largest certificate is far smaller
-# (222 nodes, depth 38), leaving ample room for later arithmetic lemmas.
+# (748 nodes, depth 45), leaving ample room for later arithmetic lemmas.
 MAX_USE_CERTIFICATE_NODES = 4_096
 MAX_USE_PARTIAL_NODES = 32_768
 MAX_USE_PROOF_DEPTH = 128

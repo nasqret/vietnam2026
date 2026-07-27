@@ -75,9 +75,11 @@ closed proof against the original stated goal.
 the tutorial command starts an ENTER-driven lesson that cannot complete until its generated
 certificate passes the same independent QED path.
 
-The M7 theorem library contains twenty named, scripted entries: the fifteen binding
+The M7 theorem-library core contains twenty named, scripted entries: the fifteen binding
 arithmetic/order rungs plus five explicit helper lemmas, ending at
-`forall n m. n * m = 0 -> n = 0 \/ m = 0`. Dependencies are introduced as ordinary hypotheses,
+`forall n m. n * m = 0 -> n = 0 \/ m = 0`. M11 extends the current index to twenty-three with
+`one_mul`, `mul_one`, and `add_mul`, the only missing orientations needed by certificate-producing
+commutative-semiring normalization. Dependencies are introduced as ordinary hypotheses,
 then compiled away by untrusted, capture-avoiding proof-term cut elimination. The resulting closed
 certificate is independently checked against the original theorem. `pa lib <name>` shows that exact
 replay script; `pa lean <name>` exports the exact statement as a Lean 4 theorem over `Nat`, with one

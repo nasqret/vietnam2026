@@ -100,7 +100,7 @@ This is a useful proof-planning heuristic beyond this lab.  Before trying tactic
 the defining equations inspect.  Inducting on that argument tends to expose computation; inducting on
 the other one tends to demand a mirror lemma first.
 
-## Twenty rungs, not twenty new axioms
+## Twenty core rungs, plus a checked semiring basis
 
 The theorem library is an ordered regression suite.  Its complete data is in
 [`library/theorems.py`](https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py),
@@ -119,6 +119,9 @@ immediately above it:
 | `mul_comm` | $n\cdot m=m\cdot n$ | the two multiplication-side lemmas |
 | `mul_add` | $n\cdot(m+k)=n\cdot m+n\cdot k$ | `add_assoc` |
 | `mul_assoc` | $(n\cdot m)\cdot k=n\cdot(m\cdot k)$ | `mul_add` |
+| `one_mul` | $1\cdot n=n$ | none |
+| `mul_one` | $n\cdot1=n$ | `zero_add` |
+| `add_mul` | $(n+m)\cdot k=n\cdot k+m\cdot k$ | `mul_comm`, `mul_add` |
 | `succ_ne_zero` | $S(n)\ne0$ | PA1 |
 | `succ_injective` | $S(n)=S(m)\to n=m$ | PA2 |
 | `le_refl` | $n\le n$ | `zero_add` |
@@ -139,8 +142,14 @@ $$
 
 Consequently, `le_refl` supplies witness $0$; `le_trans` composes two witnesses by addition; and
 antisymmetry must do real arithmetic to show that opposing witnesses cannot contain a positive
-successor.  The five helper rows name those genuine proof obligations rather than hiding them inside
-opaque automation.
+successor.  The five M7 helper rows name those genuine proof obligations rather than hiding them
+inside opaque automation.
+
+M11 appends exactly the three multiplication rows shown after `mul_assoc`. Together with PA3/PA5,
+`zero_add`, `mul_zero_left`, and the existing associativity, commutativity, and distributivity
+certificates, they form the complete oriented basis used by the later `ring` tactic. No separate
+numeral lemma is needed: a numeral is an iterated successor of zero, and closed coefficient
+arithmetic already builds PA3–PA6 proof terms.
 
 Browse the executable index at [`pa lib`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib).
 Each card displays the closed statement, earlier dependencies, generated prelude, authored tactic body,
@@ -191,7 +200,7 @@ $$
 
 The checked helper `add_eq_zero_right` extracts $n=0$, giving the left disjunct.  Its own proof is an
 induction on the right addend: a successor sum rewrites to a successor, which PA1 says cannot equal
-zero.  Notice that no excluded middle is needed.  The entire twenty-entry library replays in the
+zero.  Notice that no excluded middle is needed.  The entire twenty-entry M7 core replays in the
 intuitionistic checker.
 
 Finally, [`pa lean mul_eq_zero`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lean%20mul_eq_zero)

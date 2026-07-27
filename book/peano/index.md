@@ -42,3 +42,6 @@ a [kernel-judged evaluation protocol](https://github.com/nasqret/vietnam2026/blo
 for later small-model experiments; no model is trained in this repository. The dated
 {doc}`implementation diary <diary>` preserves the design choices, bugs and objections behind the
 polished account.
+
+M11 extends that core with three ordinary checked entries—`one_mul`, `mul_one`, and `add_mul`—to
+complete the commutative-semiring basis for certificate-producing arithmetic normalization.

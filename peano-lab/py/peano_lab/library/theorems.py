@@ -597,6 +597,27 @@ THEOREMS: tuple[TheoremSpec, ...] = (
         "Multiplication is associative.",
     ),
     TheoremSpec(
+        "one_mul",
+        "forall n. 1 * n = n",
+        (),
+        ("induction n", "simp", "simp [IH]"),
+        "One is a left identity for multiplication.",
+    ),
+    TheoremSpec(
+        "mul_one",
+        "forall n. n * 1 = n",
+        ("zero_add",),
+        ("intro n", "simp [zero_add]"),
+        "One is a right identity for multiplication.",
+    ),
+    TheoremSpec(
+        "add_mul",
+        "forall n m k. (n + m) * k = n * k + m * k",
+        ("mul_comm", "mul_add"),
+        ("intro n", "intro m", "intro k", "simp [mul_comm, mul_add]"),
+        "Multiplication distributes over addition on the left.",
+    ),
+    TheoremSpec(
         "succ_ne_zero",
         "forall n. ~(S n = 0)",
         (),

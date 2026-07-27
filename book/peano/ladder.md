@@ -2,7 +2,7 @@
 
 Peano Lab's library is not a bag of trusted facts.  Each entry contains a closed PA statement,
 an ordered list of earlier rungs, and the exact tactic script used to rebuild it.  CI
-replays all twenty entries, removes dependency assumptions from their proof terms, and asks the
+replays all current entries, removes dependency assumptions from their proof terms, and asks the
 independent kernel to check the resulting closed certificate against the original statement.
 
 Open the live index or the capstone card:
@@ -24,11 +24,16 @@ $$
 &\Longrightarrow 0\cdot n=0
 \Longrightarrow \operatorname{mul\_comm}
 \Longrightarrow \operatorname{mul\_add}
-\Longrightarrow \operatorname{mul\_assoc},
+\Longrightarrow \operatorname{mul\_assoc}
+\Longrightarrow \{\operatorname{one\_mul},\operatorname{mul\_one},\operatorname{add\_mul}\},
 \end{aligned}
 $$
 
-followed by the successor lemmas, the witness definition
+The final three are the M11 extension. They complete the oriented commutative-semiring basis needed
+by proof-producing polynomial normalization; numerals need no extra axiom or theorem scheme because
+they are successor terms and closed coefficient arithmetic already produces PA3–PA6 certificates.
+
+After them come the successor lemmas and the witness definition
 
 $$
 n \le m \;:\!\!\Longleftrightarrow\; \exists k.\;k+n=m,

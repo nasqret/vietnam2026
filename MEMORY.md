@@ -99,7 +99,11 @@
   finalization contracts cuts before the unchanged independent checker sees the owner-held original
   theorem. Imports are ordinary hypotheses for `specialize`, `apply`, `rewrite`, `exact`, and
   `simp`; aliases share the Unicode identifier rules of binder tactics. Explicit proof node/depth
-  budgets fail transactionally, and exact undo retains the raw pre-compilation state.
+  budgets fail transactionally, and exact undo retains the raw pre-compilation state. M11 extends
+  the twenty-entry core with exactly three checked semiring orientations: `one_mul`, `mul_one`, and
+  `add_mul`. Their ordinary scripts replay from the empty context, their Lean stubs preserve the
+  exact statements, and binder-capture tests validate the import/specialization path required by
+  later certificate-producing normalization.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -135,7 +139,7 @@
 - Build/deploy strategy chosen: **go live incrementally** (public GitHub + faculty URLs as pieces land).
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
-- Peano Lab milestones M0–M10 are green on `peano-lab`; the complete implementation, checked corpus,
+- Peano Lab milestones M0–M11 are green on `peano-lab`; the complete implementation, checked corpus,
   construction book, Obsidian knowledge base, kernel-judged evaluation protocol, and live checked-
-  theorem reuse are present. M11–M13 extend this base with a checked semiring basis and bounded,
-  certificate-producing arithmetic automation.
+  theorem reuse, and 23-entry checked ladder with a complete semiring basis are present. M12–M13
+  extend this base with bounded, certificate-producing arithmetic automation.

@@ -20,6 +20,9 @@ The browser commands `pa lib <name>` and `pa lean <name>` expose the script and 
 statement stub respectively. Inside a live proof, `use <name>` performs [[checked-theorem-reuse]]
 by compiling the closed certificate into an ordinary local cut.
 
+M11 extends the twenty-rung core with `one_mul`, `mul_one`, and `add_mul`, completing the oriented
+[[commutative-semiring-basis]] needed by proof-producing polynomial normalization.
+
 ## Related
 
 [[peano-lab]] · [[proof-certificate]] · [[substitution]] · [[intuitionistic-logic]]

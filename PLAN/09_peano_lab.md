@@ -178,12 +178,19 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   sessions; trusted checker unchanged at 234 lines.
 
 ### M11 — Checked commutative-semiring basis
-- [ ] Audit the current ladder against the exact lemma basis needed by proof-producing polynomial
+- [x] Audit the current ladder against the exact lemma basis needed by proof-producing polynomial
       normalization; add only missing identity/distributivity/numeral lemmas as ordinary entries.
-- [ ] Keep dependencies acyclic, scripts readable, generated Lean stubs valid, and every final
+- [x] Keep dependencies acyclic, scripts readable, generated Lean stubs valid, and every final
       certificate checked from the empty context.
 - **Acceptance:** the complete semiring basis replays deterministically and its certificates can be
   instantiated below proposition and term binders without capture.
+- **Verified:** the only missing orientations are `one_mul` (26 nodes/depth 9), `mul_one` (31/14),
+  and `add_mul` (748/45); all replay twice identically, check from the empty context, elaborate as
+  exact Lean 4.28 stubs, and import/specialize below nested `forall`/implication binders before
+  checked QED. Focused M11 `84 passed`; Peano `527 passed`; Lambda `360 passed, 36 subtests passed`;
+  warning-as-error book and 190 links/18 blocks/85 commands green; vault 54 notes/247 links/0
+  unresolved; regenerated corpus 13,152 rows/1,596 checked sessions with all 23 rungs recorded;
+  checker unchanged at 234 lines.
 
 ### M12 — Certificate-producing `ring`
 - [ ] Reify `0`, numerals, variables, `+`, and `·` into a deterministic sparse polynomial form.

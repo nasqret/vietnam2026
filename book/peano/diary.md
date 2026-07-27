@@ -421,3 +421,22 @@ with a classical toggle) recorded in `docs/PEANO_LAB_DESIGN.md` §0.
   tests plus 36 subtests green, 190 links/18 blocks/85 commands replayed, the warning-as-error book
   green, and 53 vault notes/238 links/0 unresolved. The source-bound 13,152-row corpus was
   regenerated from 1,596 checked sessions; the trusted checker is still exactly 234 lines.
+
+## 2026-07-27 — M11: only the missing algebraic orientations
+
+- The semiring audit began from the normalizer's proof obligations rather than a wish list of
+  familiar lemma names. PA3 and PA5 already give the right zero laws; `zero_add`, `mul_zero_left`,
+  both commutativity and associativity laws, and `mul_add` were already checked rungs. Adding
+  `add_zero`, `mul_zero`, successor-as-plus-one, or numeral-specific laws would duplicate that base.
+- Exactly three entries were missing: `one_mul`, `mul_one`, and left distributivity `add_mul`.
+  Their authored scripts use the existing induction and simplifier surface; dependencies remain
+  earlier and acyclic. Their final certificates have 26, 31, and 748 nodes and all check from the
+  empty context. The largest has depth 45, well below M10's 128-level import limit.
+- Capture tests import each certificate below both a universal binder and an implication binder,
+  then specialize it with terms containing the outer variable (`x`, `S x`, and `x + 1`). QED cut
+  compilation and the independent checker accept the exact wrapped statements. This tests the
+  representation boundary that M12 will rely on, not merely three top-level equations.
+- M11 closes with 84 focused and 527 full Peano tests green, all 360 Lambda tests plus 36 subtests,
+  the three Lean 4.28 stubs elaborated, and all 190 links/18 blocks/85 commands replayed. The
+  warning-as-error book and 54-note/247-link vault are clean; the regenerated 13,152-row corpus
+  records all 23 rungs; the checker remains exactly 234 lines.
