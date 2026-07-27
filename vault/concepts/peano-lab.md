@@ -13,7 +13,11 @@ than trusting a goal returned by the tactic engine.
 The public learning path is the [[theorem-ladder]]. The lab is intuitionistic by default; use of
 double-negation elimination is explicit and checked only in the labeled classical mode.
 
+The static delivery boundary is recorded separately as [[browser-proof-runtime]]: compressed and
+versioned bytes may arrive concurrently, but they add no proof authority and do not alter the
+certificate checked at QED.
+
 ## Related
 
 [[peano-lab-moc|Peano Lab MOC]] · [[natural-deduction]] · [[tactic-mode]] ·
-[[checked-numerical-normalization]] · [[substitution]]
+[[checked-numerical-normalization]] · [[browser-proof-runtime]] · [[substitution]]

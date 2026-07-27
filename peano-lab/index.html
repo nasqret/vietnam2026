@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Peano Lab — sound arithmetic proofs in the browser · VIASM 2026</title>
   <meta name="description" content="A lightweight, readable theorem prover for Peano arithmetic: a small trusted kernel, interactive tactics, induction, automation, and kernel-checked QEDs, all running locally in your browser.">
-  <link rel="stylesheet" href="vendor/fonts/fonts.css">
-  <link rel="stylesheet" href="vendor/xterm/xterm.css">
+  <link rel="stylesheet" href="vendor/v-85fb3352e49c/fonts/fonts.css">
+  <link rel="stylesheet" href="vendor/v-85fb3352e49c/xterm/xterm.css">
   <style>
     :root{--bg:#07131b;--panel:#0e202b;--terminal:#061016;--border:#214052;--cyan:#38bdf8;--cyan-2:#7dd3fc;--emerald:#34d399;--amber:#fbbf24;--text:#e6f1f5;--muted:#94aebd;--danger:#fca5a5;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -70,14 +70,15 @@
     <p class="info" id="terminal-help">The complete prover runs locally in a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API" target="_blank" rel="noopener">Web Worker</a>, using a self-hosted Python runtime, so a long search never freezes this page and <strong>Stop</strong> can terminate it. Every executable asset is served from this site (no CDN), and commands are not sent elsewhere; a <code>?cmd=</code> deep link is part of the URL and can appear in server logs. The <span class="law">tactic layer is never trusted</span>: every <code>qed</code> checks the finished certificate against the original theorem in the small kernel. <code>↑/↓</code> history · <code>TAB</code> completion.</p>
   </main>
   <footer>Peano Lab · VIASM mini-course “An Introduction to Automatic Theorem Proving in Mathematics”, Hanoi 2026 · © Bartosz Naskręcki · <a href="/vietnam2026/">course home</a></footer>
-  <script src="vendor/xterm/xterm.js"></script>
-  <script src="vendor/xterm/addon-fit.js"></script>
-  <script src="vendor/xterm/addon-web-links.js"></script>
-  <script src="vendor/xterm/addon-unicode11.js"></script>
+  <script src="vendor/v-85fb3352e49c/xterm/xterm.js"></script>
+  <script src="vendor/v-85fb3352e49c/xterm/addon-fit.js"></script>
+  <script src="vendor/v-85fb3352e49c/xterm/addon-web-links.js"></script>
+  <script src="vendor/v-85fb3352e49c/xterm/addon-unicode11.js"></script>
   <script>
   (function(){
     "use strict";
-    const BUILD="2026-07-27h";
+    const BUILD="2026-07-27i";
+    const APP_ROOT="releases/a-573bb5060d7b/";
     const MAX_INPUT=4000;
     const PROMPT="\x1b[96mpa>\x1b[0m ";
     const HISTORY_KEY="peanoLabHistory";
@@ -201,7 +202,7 @@
       const initial=new URLSearchParams(location.search).get("cmd");if(initial&&!initialRan){initialRan=true;injectCommand(initial);}
     }
     function startWorker(){
-      generation++;worker=new Worker("worker.js?v="+encodeURIComponent(BUILD));
+      generation++;worker=new Worker(APP_ROOT+"worker.js");
       function failWorker(message){
         generation++;
         if(worker){worker.terminate();worker=null;}

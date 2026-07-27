@@ -7,7 +7,7 @@ and sharing its shell (xterm + Pyodide worker, fully self-hosted).
 **Start here, in this order:**
 
 1. [`../docs/PEANO_LAB_DESIGN.md`](../docs/PEANO_LAB_DESIGN.md) — the architecture. It is binding.
-2. [`../PLAN/09_peano_lab.md`](../PLAN/09_peano_lab.md) — milestones M0–M13 with tasks and
+2. [`../PLAN/09_peano_lab.md`](../PLAN/09_peano_lab.md) — milestones M0–M14 with tasks and
    acceptance criteria.
 3. [`py/peano_lab/`](py/peano_lab/) — the readable implementation behind the pinned APIs.
 
@@ -24,13 +24,12 @@ Reference implementations to copy patterns from (same repo):
 
 ## Run locally
 
-From the repository root, fetch the version-pinned browser runtime once and
-serve the static lab:
+From the repository root, fetch the version-pinned browser runtime once, stage
+the content-addressed release, and serve that exact static assembly:
 
 ```console
 bash scripts/fetch_vendor.sh
-cd peano-lab
-python3 -m http.server 8002
+make peano-serve
 ```
 
 Then open <http://127.0.0.1:8002/> and try:
@@ -45,6 +44,28 @@ The final line independently checks the generated certificate against the
 original formula. The browser driver limits numeral literals to `0..256` so a
 short decimal input cannot expand into an unbounded successor tree; this is a
 UI resource bound, not a restriction on the PA object language.
+
+## Browser startup and caching
+
+The prover is small, but its CPython/Pyodide runtime is not: the pinned cold-start payload includes
+an 8.6 MB WebAssembly file and a 2.4 MB standard-library archive. M14 keeps the privacy and deployment
+control of self-hosting while avoiding repeated network transfer for a cached version:
+
+- the vendor URL contains a digest of the canonical source manifest and is cached immutably;
+- `worker.js` and every application source live below a separate application-manifest release path;
+- `index.html` itself is never stored, so a new `BUILD` is discovered immediately;
+- Apache serves compressible WASM/source responses with Brotli or gzip, but leaves ZIP and WOFF2
+  alone; and
+- all Python sources transfer concurrently while Pyodide initializes, then mount in a fixed order.
+
+These are delivery optimizations, not shortcuts in checking. All execution still occurs in the
+disposable Web Worker, and every QED still reaches the same independent kernel. A Stop/restart may
+repeat runtime initialization, browser caches may evict data, and guaranteed offline use would need
+a future precache/service-worker design. Versioned bytes should normally avoid another transfer.
+Every promoted application/page release must use a new human-facing `BUILD` value; worker or served
+Python changes must also produce a new application-manifest release path.
+Deployment retains old immutable directories, uploads the complete new release first, and publishes
+the non-stored HTML pointer last, so an open older page cannot be stranded mid-promotion.
 
 The teaching surfaces are executable too:
 

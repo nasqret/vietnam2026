@@ -6,6 +6,7 @@ deployment properties that are easy to lose during an otherwise cosmetic edit.
 
 from __future__ import annotations
 
+import hashlib
 from html import unescape
 import re
 from pathlib import Path
@@ -19,13 +20,15 @@ LAB = Path(__file__).resolve().parents[2]
 INDEX = (LAB / "index.html").read_text(encoding="utf-8")
 WORKER = (LAB / "worker.js").read_text(encoding="utf-8")
 HTACCESS = (LAB / ".htaccess").read_text(encoding="utf-8")
+APP_MANIFEST = LAB / "APP_MANIFEST.sha256"
 
 
 def test_shell_has_its_own_build_history_and_deep_link_contracts() -> None:
     assert re.search(r'const BUILD="[^"\n]+"', INDEX)
     assert 'const HISTORY_KEY="peanoLabHistory"' in INDEX
     assert 'new URLSearchParams(location.search).get("cmd")' in INDEX
-    assert 'new Worker("worker.js?v="+encodeURIComponent(BUILD))' in INDEX
+    assert 'const APP_ROOT="releases/a-' in INDEX
+    assert 'new Worker(APP_ROOT+"worker.js")' in INDEX
     assert "worker.terminate()" in INDEX
     assert "function sanitizeCommand(command)" in INDEX
     assert '.replace(/[\\x00-\\x1f\\x7f-\\x9f]/g," ")' in INDEX
@@ -39,11 +42,35 @@ def test_all_runtime_assets_are_self_hosted() -> None:
         INDEX,
     )
     assert asset_urls
-    assert all(url.startswith("vendor/") for url in asset_urls)
-    assert 'importScripts("vendor/pyodide/pyodide.js")' in WORKER
-    assert 'indexURL: "vendor/pyodide/"' in WORKER
+    assert all(re.match(r"vendor/v-[0-9a-f]{12,64}/", url) for url in asset_urls)
+    vendor_ids = set(re.findall(r"vendor/(v-[0-9a-f]{12,64})/", INDEX + WORKER))
+    assert vendor_ids == {"v-85fb3352e49c"}
+    assert 'const VENDOR_ROOT = "../../vendor/v-85fb3352e49c/"' in WORKER
+    assert 'importScripts(VENDOR_ROOT + "pyodide/pyodide.js")' in WORKER
+    assert 'indexURL: VENDOR_ROOT + "pyodide/"' in WORKER
     assert "cdn.jsdelivr" not in INDEX + WORKER
     assert "unpkg.com" not in INDEX + WORKER
+
+
+def test_application_release_is_content_addressed_and_complete() -> None:
+    lines = APP_MANIFEST.read_text(encoding="utf-8").splitlines()
+    entries = {}
+    for line in lines:
+        digest, relative_path = line.split(maxsplit=1)
+        entries[relative_path] = digest
+
+    package_files = {
+        path.relative_to(LAB).as_posix()
+        for path in (LAB / "py").rglob("*.py")
+        if "tests" not in path.relative_to(LAB / "py").parts
+    }
+    assert set(entries) == package_files | {"worker.js"}
+    for relative_path, expected in entries.items():
+        actual = hashlib.sha256((LAB / relative_path).read_bytes()).hexdigest()
+        assert actual == expected
+
+    release = "a-" + hashlib.sha256(APP_MANIFEST.read_bytes()).hexdigest()[:12]
+    assert f'const APP_ROOT="releases/{release}/"' in INDEX
 
 
 def test_worker_mounts_the_complete_python_surface() -> None:
@@ -105,6 +132,43 @@ def test_apache_contract_serves_wasm_and_redirects_proxy_http() -> None:
     assert "AddType application/wasm .wasm" in HTACCESS
     assert "AddType font/woff2 .woff2" in HTACCESS
     assert "%{HTTP:X-Forwarded-Proto} =http" in HTACCESS
+
+
+def test_apache_contract_negotiates_compression_without_recompressing_archives() -> None:
+    assert "BROTLI_COMPRESS" in HTACCESS
+    assert "DEFLATE" in HTACCESS
+    assert "application/wasm" in HTACCESS
+    assert "text/x-python" in HTACCESS
+    assert "Accept-Encoding" in HTACCESS
+    assert "(?!0(\\.0*)?" in HTACCESS
+    assert "application/zip" not in HTACCESS
+    assert "font/woff2" not in "\n".join(
+        line for line in HTACCESS.splitlines() if "AddOutputFilterByType" in line
+    )
+
+
+def test_apache_contract_caches_only_versioned_assets_and_never_the_page() -> None:
+    assert 'Header set Cache-Control "no-cache"' in HTACCESS
+    assert "max-age=31536000, immutable" in HTACCESS
+    assert "/releases/a-[0-9a-f]{12,64}/" in HTACCESS
+    assert "/vendor/v-[0-9a-f]{12,64}/" in HTACCESS
+    assert "QUERY_STRING" not in HTACCESS
+    assert 'Header always set Cache-Control "no-store"' in HTACCESS
+    assert "%{REQUEST_STATUS} >= 400" in HTACCESS
+    assert "%{REQUEST_STATUS} >= 200 && %{REQUEST_STATUS} <= 299" in HTACCESS
+    assert "%{REQUEST_STATUS} == 304" in HTACCESS
+    assert '<Files "index.html">' in HTACCESS
+    assert "no-store, no-cache, must-revalidate, max-age=0" in HTACCESS
+
+
+def test_worker_fetches_sources_concurrently_but_mounts_deterministically() -> None:
+    harness = Path(__file__).with_name("worker_boot_harness.js")
+    result = subprocess.run(
+        ["node", str(harness), str(LAB / "worker.js")],
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0, result.stderr
 
 
 def test_browser_javascript_is_syntactically_valid() -> None:

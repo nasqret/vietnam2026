@@ -564,3 +564,36 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   and the fetched worker, `norm_num` source, and Pyodide loader each matched local staging exactly.
   The updated `/vietnam2026/` landing page and `book/peano/arithmetic-automation.html` also returned
   HTTP 200 and matched their built files byte for byte. `main` was not touched.
+
+## 2026-07-27 (branch peano-lab) — Peano Lab M14: browser cold-start delivery
+
+- Investigated the reported slow load as a transport problem rather than a proof-engine problem.
+  The live page itself was small, but a cold start pulled an uncompressed 8,645,967-byte WASM file,
+  a 2,416,866-byte standard-library ZIP, and then 31 application sources one request at a time. Live
+  responses had no explicit cache policy; no server-side Python process was involved.
+- Made vendor URLs genuinely immutable by placing the pinned mirror below
+  `vendor/v-85fb3352e49c/`, where the identifier is the leading digest of the canonical vendor
+  manifest under `LC_ALL=C`; this avoids machine-locale-dependent release IDs. The fetch script
+  refuses changed bytes under the old identifier. Review then caught that
+  query strings alone did not make overwritten application paths immutable, so worker/Python bytes
+  also moved below `releases/a-573bb5060d7b/`, derived from `APP_MANIFEST.sha256`. Deployment retains
+  old namespaces and uploads complete assets before publishing `index.html`. Versioned responses
+  receive a one-year immutable policy, unversioned files revalidate, errors are non-storable, and
+  the page is explicitly non-storable so release `2026-07-27i` is discovered.
+- Added guarded Apache Brotli/gzip negotiation for WASM and source-like media while excluding ZIP
+  and WOFF2. The fallback works when Brotli is unavailable and never stacks encodings. The policy is
+  staged before production because `.htaccess` permissions and loaded modules belong to the host.
+- Replaced the serial source loop with concurrent non-rejecting fetch envelopes overlapped with
+  Pyodide startup. Failures are selected in declared order and no file is mounted if any fetch
+  fails; successful sources mount deterministically in the same order as before. A Node VM test
+  resolves requests backwards and injects multiple failures to pin both properties.
+- Added a Peano pytest GitHub Actions job and updated design, deployment, plan, README, book, vault,
+  memory, and diary surfaces. Exact inventory checks cover the 32 worker/Python entries and retained
+  vendor namespaces; the live gate checks compression negotiation, 200/206/304/error caching, every
+  application hash, decoded WASM integrity, and encoded size. The current focused browser/deploy
+  gate reports `21 passed`; full and live acceptance is recorded after the sequential release gates
+  and staging promotion.
+- The frozen local candidate passed Peano `647 passed`; Lambda `360 passed, 36 subtests passed`; a
+  clean 25-source warning-as-error book build; 193 deep links and 125 replayed commands; and a
+  57-note/281-link vault with no unresolved links or disconnected concept notes. Both exact
+  manifests pass, the trusted kernel is unchanged, and `checker.py` remains 234 lines.

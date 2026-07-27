@@ -237,9 +237,28 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   `norm_num`, and Pyodide hashes matching local staging; the landing page and arithmetic book
   chapter were likewise published and byte-verified.
 
+### M14 — Browser cold-start delivery
+
+- [x] Put the pinned vendor tree below a manifest-derived URL namespace and give only genuinely
+      versioned application/vendor responses a one-year immutable cache policy.
+- [x] Keep `index.html` non-storable, require unversioned responses to revalidate, and negotiate
+      Brotli or gzip for WASM/source media types without recompressing ZIP or WOFF2.
+- [x] Start all Python source requests concurrently while Pyodide initializes, then select failures
+      and mount files deterministically in the worker's declared `PY_FILES` order.
+- [x] Add behavioral worker tests, static Apache/cache contracts, CI coverage, deployment recipes,
+      book/vault explanation, and a new build identifier.
+- **Acceptance:** staging serves build `2026-07-27i`; HTML is `no-store`; versioned worker, Python,
+  and vendor URLs are immutable; WASM is delivered with Brotli or gzip and decodes to the pinned
+  local hash, with an encoded transfer below 3.0 MB rather than the 8.6 MB identity baseline;
+  concurrent/reverse-completion and multiple-failure tests preserve deterministic
+  mounting and atomic failure; cold and warm starts reach ready; checked QED and Stop/restart still
+  work; all Peano, Lambda, book, vault, vendor, and staging gates are green before production.
+
 ## Explicitly out of scope
-Dependent types, definitional reduction, elaboration, typeclasses, performance tuning beyond
-"the browser doesn't freeze". See design §8.
+Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search
+performance work beyond the explicit tactic limits remain outside this plan. M14 is the
+owner-authorized static-delivery exception: it changes how identical browser bytes arrive, not the
+kernel, engine semantics, or proof language. See design §8.
 
 ## Working agreement
 Work happens on this branch (`peano-lab`); merge to `main` at milestone boundaries only, with

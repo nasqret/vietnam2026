@@ -8,6 +8,7 @@ tags: [moc, peano-lab, theorem-proving]
 ## Architecture
 
 - [[peano-lab]]
+- [[browser-proof-runtime]]
 - [[trusted-kernel]]
 - [[proof-certificate]]
 - [[de-bruijn-criterion]]

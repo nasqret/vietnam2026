@@ -1,0 +1,149 @@
+"use strict";
+
+// Dynamic contract for worker.js.  The browser shell tests invoke this small
+// Node VM so concurrency, deterministic failure selection, and mount order are
+// tested as behavior rather than fragile source-text patterns.
+
+const assert = require("assert");
+const fs = require("fs");
+const vm = require("vm");
+
+const workerPath = process.argv[2];
+const workerSource = fs.readFileSync(workerPath, "utf8");
+const listedFiles = Array.from(
+  workerSource.matchAll(/"(py\/[^"\n]+\.py)"/g),
+  (match) => match[1],
+);
+
+function deferred() {
+  let resolve;
+  const promise = new Promise((done) => { resolve = done; });
+  return { promise, resolve };
+}
+
+function tick() {
+  return new Promise((resolve) => setImmediate(resolve));
+}
+
+function makePyodide(writes) {
+  return {
+    FS: {
+      mkdirTree() {},
+      writeFile(path, source) { writes.push([path, source]); },
+    },
+    runPython() {},
+    pyimport(name) {
+      assert.strictEqual(name, "driver");
+      return {
+        run_line(line) { return line; },
+        banner() { return "ready banner"; },
+      };
+    },
+  };
+}
+
+async function successfulBootIsConcurrentAndOrdered() {
+  const events = [];
+  const messages = [];
+  const writes = [];
+  const runtime = deferred();
+  const requests = new Map();
+
+  const context = {
+    encodeURIComponent,
+    importScripts(url) { events.push(["importScripts", url]); },
+    loadPyodide(options) {
+      events.push(["loadPyodide", options.indexURL]);
+      return runtime.promise;
+    },
+    fetch(url) {
+      events.push(["fetch", url]);
+      const request = deferred();
+      requests.set(url, request);
+      return request.promise;
+    },
+    postMessage(message) { messages.push(message); },
+    setTimeout,
+    clearTimeout,
+  };
+  vm.createContext(context);
+  vm.runInContext(workerSource, context, { filename: workerPath });
+  context.onmessage({ data: { type: "init", build: "test-build" } });
+
+  assert.strictEqual(requests.size, listedFiles.length);
+  assert.strictEqual(events[1][0], "loadPyodide");
+  assert.ok(events.slice(2).every((event) => event[0] === "fetch"));
+
+  runtime.resolve(makePyodide(writes));
+  for (const relativePath of [...listedFiles].reverse()) {
+    requests.get(relativePath).resolve({
+      ok: true,
+      status: 200,
+      text: async () => "source:" + relativePath,
+    });
+  }
+  for (let attempt = 0; attempt < 5; attempt += 1) await tick();
+
+  assert.deepStrictEqual(
+    writes.map(([path]) => path),
+    listedFiles.map((path) => "/lab/" + path.replace(/^py\//, "")),
+  );
+  assert.deepStrictEqual(
+    writes.map(([, source]) => source),
+    listedFiles.map((path) => "source:" + path),
+  );
+  assert.strictEqual(messages.filter((message) => message.type === "ready").length, 1);
+  assert.strictEqual(messages.some((message) => message.type === "error"), false);
+}
+
+async function failureChoiceIsDeterministicAndAtomic() {
+  const messages = [];
+  const writes = [];
+  const requests = new Map();
+  const context = {
+    encodeURIComponent,
+    importScripts() {},
+    loadPyodide() { return Promise.resolve(makePyodide(writes)); },
+    fetch(url) {
+      const request = deferred();
+      requests.set(url, request);
+      return request.promise;
+    },
+    postMessage(message) { messages.push(message); },
+    setTimeout,
+    clearTimeout,
+  };
+  vm.createContext(context);
+  vm.runInContext(workerSource, context, { filename: workerPath });
+  context.onmessage({ data: { type: "init", build: "failure-build" } });
+
+  const firstFailure = listedFiles[2];
+  const laterFailure = listedFiles[listedFiles.length - 2];
+  for (const relativePath of [...listedFiles].reverse()) {
+    const failed = relativePath === firstFailure || relativePath === laterFailure;
+    requests.get(relativePath).resolve({
+      ok: !failed,
+      status: failed ? 503 : 200,
+      text: async () => "source:" + relativePath,
+    });
+  }
+  for (let attempt = 0; attempt < 5; attempt += 1) await tick();
+
+  const errors = messages.filter((message) => message.type === "error");
+  assert.strictEqual(errors.length, 1);
+  assert.strictEqual(
+    errors[0].msg,
+    "could not load " + firstFailure + " (503)",
+  );
+  assert.strictEqual(messages.some((message) => message.type === "ready"), false);
+  assert.deepStrictEqual(writes, []);
+}
+
+(async () => {
+  assert.ok(listedFiles.length > 20);
+  await successfulBootIsConcurrentAndOrdered();
+  await failureChoiceIsDeterministicAndAtomic();
+})().catch((error) => {
+  console.error(error.stack || String(error));
+  process.exitCode = 1;
+});

@@ -52,3 +52,6 @@ the complete odd-square induction proof and makes its explicit `trans`/`rewrite`
 M13 adds bounded `norm_num` for closed numerical islands and arithmetic-aware hints. The new
 arithmetic-automation chapter contrasts its exact equality contract with `simp`, `ring`, and `auto`,
 and records why general PA, nonlinear hypothesis solving, and Presburger `omega` remain outside it.
+M14 then treats browser delivery as another explicit boundary: versioned caching, negotiated WASM
+compression, and concurrent source transfer reduce cold network cost without changing one proof rule.
+The limits chapter distinguishes that runtime boot from theorem proving.

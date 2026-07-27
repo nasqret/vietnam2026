@@ -205,6 +205,25 @@ links + localStorage history + Stop button). New Python package `peano_lab`, new
 **Single-owner routing, complete-line aliases, arrow-args-are-propositions** — all the audit's
 UI rules apply from day one (they are already implemented patterns; copy them, don't rediscover).
 
+### Runtime delivery contract (M14 owner-authorized extension)
+
+The browser runtime remains static and fully self-hosted, but “client-side” must not mean “download
+the same Python runtime on every visit.” The transport layer therefore has four explicit rules:
+
+1. `index.html` is never reused without contacting the server, so a promoted `BUILD` is visible.
+2. Worker/Python files live below a release path derived from their application manifest; vendor
+   files live below a namespace derived from the canonical source-vendor manifest. Those paths are
+   immutable, retained after later deployments, and uploaded before `index.html` points at them.
+   Neither identifier is reused; the human-facing `BUILD` also changes for every application release.
+3. Apache negotiates Brotli when available and gzip otherwise for WASM, JavaScript, Python source,
+   JSON, HTML, CSS, and plain text. It does not recompress ZIP or WOFF2 data.
+4. The worker starts Pyodide first, fetches all application sources concurrently while the runtime
+   initializes, then checks failures and mounts sources in one deterministic declared order.
+
+Concurrent delivery changes no proof rule and introduces no proof authority. The same Python
+modules are mounted byte-for-byte; the independent kernel still checks every QED against the
+session owner's original goal. Terminating the disposable worker remains the hard Stop operation.
+
 ## 4. The trace format (LLM stage, designed now)
 
 One JSONL record per tactic application, appended by the engine (behind a flag in the browser,

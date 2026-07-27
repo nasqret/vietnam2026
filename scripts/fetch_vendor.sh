@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # Fetch the pinned third-party assets both browser labs need, for self-hosting.
 # Everything is version-pinned; run from the repo root:  bash scripts/fetch_vendor.sh
-# Output: matching lab-lambda/vendor/ and peano-lab/vendor/ trees
+# Output: a conventional Lambda mirror and a version-namespaced Peano mirror.
 # (~13 MB each, gitignored — deploy artifacts, not source)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 V=lab-lambda/vendor
 PEANO_V=peano-lab/vendor
+PEANO_VENDOR_ID=v-85fb3352e49c
 mkdir -p "$V/pyodide" "$V/xterm" "$V/fonts"
 
 PYODIDE=0.28.3
@@ -69,8 +70,16 @@ print(f"  fonts.css ({len(rules)} faces)")
 PY
 
 echo "→ manifest (sha256)"
-( cd "$V" && find . -type f ! -name MANIFEST.sha256 -exec shasum -a 256 {} + | sort -k2 > MANIFEST.sha256 )
-echo "→ Peano Lab mirror"
-mkdir -p "$PEANO_V"
-rsync -a --delete "$V/" "$PEANO_V/"
+( cd "$V" && find . -type f ! -name MANIFEST.sha256 -exec shasum -a 256 {} + | LC_ALL=C sort -k2 > MANIFEST.sha256 )
+VENDOR_DIGEST="$(shasum -a 256 "$V/MANIFEST.sha256" | awk '{print substr($1, 1, 12)}')"
+if [[ "v-$VENDOR_DIGEST" != "$PEANO_VENDOR_ID" ]]; then
+  echo "Peano vendor content changed: expected $PEANO_VENDOR_ID, got v-$VENDOR_DIGEST" >&2
+  echo "Bump PEANO_VENDOR_ID and the browser URLs deliberately." >&2
+  exit 1
+fi
+
+echo "→ Peano Lab immutable mirror ($PEANO_VENDOR_ID)"
+mkdir -p "$PEANO_V/$PEANO_VENDOR_ID"
+rsync -a --delete --exclude MANIFEST.sha256 "$V/" "$PEANO_V/$PEANO_VENDOR_ID/"
+( cd "$PEANO_V" && find . -type f ! -name MANIFEST.sha256 -exec shasum -a 256 {} + | LC_ALL=C sort -k2 > MANIFEST.sha256 )
 echo "→ total per lab: $(du -sh "$V" | cut -f1)"

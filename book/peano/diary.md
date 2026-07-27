@@ -497,3 +497,44 @@ with a classical toggle) recorded in `docs/PEANO_LAB_DESIGN.md` §0.
   smoke and evaluator-v2 plumbing, green staging/vendor hashes, and the unchanged 234-line kernel.
   No in-app browser instance was available, so direct Pyodide interaction is left as an explicit
   publication limitation rather than an invented measurement.
+
+## 2026-07-27 — M14: bytes may race; proof meaning may not
+
+The word “lightweight” had hidden two different quantities. Peano Lab's checker and tactic code are
+small enough to read, but the browser must still acquire and instantiate CPython through Pyodide.
+The live audit made the distinction concrete: the largest 8.6 MB WASM response was uncompressed,
+and the worker awaited thirty-one source fetches in series. That latency was delivery overhead, not
+the cost of checking a proof and not a Python service running on the host.
+
+Caching required more care than adding a long `max-age`. Pyodide constructs the URLs of its own WASM
+and standard-library files from `indexURL`; their old vendor paths could be overwritten by a later
+dependency refresh. An early M14 draft fixed that namespace but still treated `worker.js?v=BUILD`
+as immutable while deployment overwrote `worker.js`. Review caught the mixed-release race before
+staging. The final topology places vendor bytes below a digest of the canonical source manifest and
+worker/Python bytes below a digest of their own application manifest. Old release directories stay
+available, complete new directories upload first, and non-stored HTML is published last as the small
+release pointer. The fetch script refuses to reuse a vendor namespace if its canonical manifest
+changes; tests similarly bind every application file to its release ID.
+
+Review found that “canonical” also has to specify a locale: a bare `sort` gave identical vendor
+bytes different manifest IDs on macOS and Linux. Both manifest builders now use `LC_ALL=C`; the
+current vendor namespace is `v-85fb3352e49c` and the worker/Python namespace is
+`a-573bb5060d7b`. Staging regenerates and compares the complete inventories, copies only the 31
+non-test Python files named by the application manifest, and rejects an extra or missing byte. A
+repeatable delivery gate then compares all 32 worker/Python hashes, exercises normal, partial, and
+conditional cache responses, checks source and WASM compression negotiation, decodes the pinned
+WASM, and enforces the three-megabyte encoded bound before production promotion.
+
+The local candidate closes with 647 Peano tests, 360 Lambda tests plus 36 subtests, a clean
+warning-as-error 25-source book, 193 checked links, 125 replayed commands, and a 57-note/281-link
+vault with no unresolved edges. The kernel directory is byte-unchanged and its checker remains 234
+lines. The in-app browser was not attached in this session, so interactive cold/warm-ready, QED,
+and Stop/restart observations remain an explicit publication limitation; transport behavior is
+instead pinned by the deterministic worker harness and the live HTTP delivery gate.
+
+The concurrency rule mirrors the proof-state rule: observable outcomes must not depend on a race.
+Every source request starts together while Pyodide initializes, but each returns a success/failure
+envelope. Only after all finish do we choose the earliest declared failure or mount every source in
+the original list order. A network race may change elapsed time; it cannot change the displayed
+error, installed module set, or proof semantics. Compression and caching similarly sit outside the
+trusted base. The kernel sees the same imported Python and the same final certificate.

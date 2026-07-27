@@ -25,7 +25,9 @@
   verified HTTP 200 with page, worker, `norm_num`, and Pyodide bytes matching the local assembly.
 - **Server tooling:** Apache static hosting + PHP; Python 3.8, Node present. **No persistent daemons** →
   the lab must be **fully client-side** (this is why the browser lab uses Pyodide, not a server kernel).
-- **Deploy verb:** `rsync -avz --delete <local>/ lts-faculty.wmi.amu.edu.pl:~/public_html/<target>/`.
+- **Site/Lambda deploy verb:** `rsync -avz --delete <local>/ lts-faculty.wmi.amu.edu.pl:~/public_html/<target>/`.
+- **Peano deploy rule:** retain old content-addressed `releases/a-*` and `vendor/v-*` paths; upload
+  assets first without remote `--delete`, then publish the non-stored `index.html` pointer.
 
 ## The six lectures (working titles)
 
@@ -116,7 +118,11 @@
   `norm_num` nor `ring` decides general PA or nonlinear consequences of hypotheses, and a future
   Presburger `omega` requires a separate certificate-producing design. The refreshed generator-v2
   corpus retains the v1 row schema: 13,344 unique transitions from 1,692 checked QED sessions, with
-  a deliberately small 18-row same-family validation split used only as a pipeline check.
+  a deliberately small 18-row same-family validation split used only as a pipeline check. M14 adds
+  a transport-only browser boundary: content-addressed immutable application and vendor URLs,
+  non-stored HTML published after its release assets, negotiated Brotli/gzip for WASM/source media, and
+  concurrent source transfer with deterministic failure and mount order. It changes no proof rule,
+  kernel dependency, certificate, corpus row, or server-side execution model.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -152,7 +158,8 @@
 - Build/deploy strategy chosen: **go live incrementally** (public GitHub + faculty URLs as pieces land).
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
-- Peano Lab milestones M0–M13 are green on `peano-lab`; the implementation, checked corpus,
+- Peano Lab milestones M0–M13 are green and M14 delivery work is in verification on `peano-lab`;
+  the implementation, checked corpus,
   construction book, Obsidian knowledge base, kernel-judged evaluation protocol, live checked-
   theorem reuse, 23-entry semiring ladder, certificate-producing `ring`, and bounded checked
   `norm_num` teaching surface are present. The odd-square induction closes through explicit

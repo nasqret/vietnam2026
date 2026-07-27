@@ -15,8 +15,9 @@ PEANO_CORPUS_PYTHON ?= python3
 # This path is a deletion target in `stage-peano`; command-line assignments
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
+override PEANOAPPID := a-573bb5060d7b
 
-.PHONY: help book lean lab-serve peano-corpus peano-corpus-smoke peano-eval stage \
+.PHONY: help book lean lab-serve peano-serve peano-corpus peano-corpus-smoke peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
 	deploy clean
 
@@ -25,6 +26,7 @@ help:
 	@echo "  make book         build the JupyterBook (book/_build/html)"
 	@echo "  make lean         build & axiom-check the Lean artifact"
 	@echo "  make lab-serve    serve lab-lambda locally on :8001"
+	@echo "  make peano-serve serve the staged Peano Lab locally on :8002"
 	@echo "  make peano-corpus reproduce the leakage-safe Peano train/val release"
 	@echo "  make peano-corpus-smoke  run the all-ladder M9 generation/export smoke"
 	@echo "  make peano-eval   run the deterministic kernel-judged random baseline"
@@ -50,6 +52,10 @@ lean:
 lab-serve:
 	@echo "→ http://localhost:8001/  (Ctrl-C to stop)"
 	cd lab-lambda && python3 -m http.server 8001
+
+peano-serve: stage-peano
+	@echo "→ http://localhost:8002/  (Ctrl-C to stop)"
+	cd "$(STAGEPEANO)" && python3 -m http.server 8002
 
 # The committed learning release deliberately omits every ladder session.  Raw
 # session JSONL remains a reproducible intermediate in /tmp; the manifest keeps
@@ -111,29 +117,38 @@ deploy-lab-next:
 	rsync -avz --delete $(STAGENEXT)/ $(SERVER):$(LABNEXT)/
 	@echo "Deployed staging → https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda-next/"
 
-# Peano Lab uses its own local vendor mirror so `python -m http.server` works
-# from peano-lab/.  scripts/fetch_vendor.sh creates both pinned mirrors.
+# Peano Lab uses its own local vendor mirror.  Its staged release namespaces
+# are served by `make peano-serve`; scripts/fetch_vendor.sh creates both mirrors.
 stage-peano:
-	@test -f peano-lab/vendor/MANIFEST.sha256 || \
-		{ echo "Missing peano-lab/vendor; run: bash scripts/fetch_vendor.sh" >&2; exit 1; }
-	@(cd peano-lab/vendor && shasum -a 256 -c MANIFEST.sha256 >/dev/null) || \
+	@bash scripts/verify_peano_vendor_manifest.sh >/dev/null || \
 		{ echo "Peano Lab vendor verification failed; rerun: bash scripts/fetch_vendor.sh" >&2; exit 1; }
-	rm -rf "$(STAGEPEANO)" && mkdir -p "$(STAGEPEANO)"
+	@bash scripts/update_peano_app_manifest.sh --check >/dev/null || \
+		{ echo "Peano Lab application manifest is stale; run scripts/update_peano_app_manifest.sh" >&2; exit 1; }
+	@test "$$(shasum -a 256 peano-lab/APP_MANIFEST.sha256 | cut -c1-12)" = "$(patsubst a-%,%,$(PEANOAPPID))" || \
+		{ echo "PEANOAPPID does not match APP_MANIFEST.sha256" >&2; exit 1; }
+	@grep -Fq 'const APP_ROOT="releases/$(PEANOAPPID)/";' peano-lab/index.html || \
+		{ echo "index.html APP_ROOT does not match PEANOAPPID" >&2; exit 1; }
+	@grep -Eq 'const BUILD="[^"]+";' peano-lab/index.html || \
+		{ echo "index.html has no human-facing BUILD" >&2; exit 1; }
+	rm -rf "$(STAGEPEANO)" && mkdir -p "$(STAGEPEANO)/releases/$(PEANOAPPID)"
 	cp peano-lab/index.html "$(STAGEPEANO)/index.html"
-	cp peano-lab/worker.js  "$(STAGEPEANO)/worker.js"
 	cp peano-lab/.htaccess  "$(STAGEPEANO)/.htaccess"
-	rsync -a --delete --exclude '__pycache__' --exclude '.pytest_cache' --exclude 'tests' peano-lab/py/ "$(STAGEPEANO)/py/"
+	cp peano-lab/worker.js "$(STAGEPEANO)/releases/$(PEANOAPPID)/worker.js"
+	cp peano-lab/APP_MANIFEST.sha256 "$(STAGEPEANO)/releases/$(PEANOAPPID)/APP_MANIFEST.sha256"
+	rsync -a --delete --exclude '/tests/***' --exclude '__pycache__/' --exclude '.pytest_cache/' --include '*/' --include '*.py' --exclude '*' peano-lab/py/ "$(STAGEPEANO)/releases/$(PEANOAPPID)/py/"
 	rsync -a --delete peano-lab/vendor/ "$(STAGEPEANO)/vendor/"
 	@echo "Staged Peano Lab in $(STAGEPEANO)"
 
 # Production channel.  Promotion policy is documented in PLAN/09_peano_lab.md.
 deploy-peano: stage-peano
-	rsync -avz --delete "$(STAGEPEANO)/" $(SERVER):$(PEANO)/
+	rsync -avz "$(STAGEPEANO)/.htaccess" "$(STAGEPEANO)/vendor" "$(STAGEPEANO)/releases" $(SERVER):$(PEANO)/
+	rsync -avz "$(STAGEPEANO)/index.html" $(SERVER):$(PEANO)/index.html
 	@echo "Deployed Peano Lab → https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/"
 
 # Staging channel: byte-for-byte the same assembled tree, under /peano-lab-next/.
 deploy-peano-next: stage-peano
-	rsync -avz --delete "$(STAGEPEANO)/" $(SERVER):$(PEANONEXT)/
+	rsync -avz "$(STAGEPEANO)/.htaccess" "$(STAGEPEANO)/vendor" "$(STAGEPEANO)/releases" $(SERVER):$(PEANONEXT)/
+	rsync -avz "$(STAGEPEANO)/index.html" $(SERVER):$(PEANONEXT)/index.html
 	@echo "Deployed Peano Lab staging → https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/"
 
 deploy: deploy-site deploy-lab

@@ -49,26 +49,60 @@ const PY_FILES = [
   "py/driver.py",
 ];
 
+// This namespace is derived from the pinned vendor manifest.  It is part of
+// the URL, rather than only a query string, because Pyodide constructs the
+// URLs for its own .wasm and standard-library files from indexURL.
+const VENDOR_ROOT = "../../vendor/v-85fb3352e49c/";
+
 let runLine = null;
 let banner = null;
 
+async function fetchPythonSources() {
+  return Promise.all(PY_FILES.map(async (relativePath) => {
+    try {
+      const response = await fetch(relativePath);
+      if (!response.ok) {
+        return {
+          relativePath,
+          ok: false,
+          message: "could not load " + relativePath + " (" + response.status + ")",
+        };
+      }
+      return { relativePath, ok: true, source: await response.text() };
+    } catch (_error) {
+      return {
+        relativePath,
+        ok: false,
+        message: "could not load " + relativePath + " (network error)",
+      };
+    }
+  }));
+}
+
 async function boot(build) {
   try {
-    postMessage({ type: "boot", msg: "loading Python (Pyodide, self-hosted)…" });
+    postMessage({ type: "boot", msg: "loading Python and prover sources (self-hosted)…" });
     // scripts/fetch_vendor.sh pins and fetches this local runtime. No CDN is
     // consulted by the browser, so the lab also works on an isolated network.
-    importScripts("vendor/pyodide/pyodide.js");
-    const pyodide = await loadPyodide({ indexURL: "vendor/pyodide/" });
+    importScripts(VENDOR_ROOT + "pyodide/pyodide.js");
+
+    // Start the large runtime first, then overlap it with all small source
+    // transfers. Promise.all retains PY_FILES order; each task returns an
+    // envelope instead of rejecting, so the first reported failure is also
+    // deterministic in PY_FILES order rather than network-completion order.
+    const pyodidePromise = loadPyodide({ indexURL: VENDOR_ROOT + "pyodide/" });
+    const sourcesPromise = fetchPythonSources();
+    const pyodide = await pyodidePromise;
+    const sources = await sourcesPromise;
+    const failure = sources.find((entry) => !entry.ok);
+    if (failure) throw new Error(failure.message);
 
     postMessage({ type: "boot", msg: "mounting the Peano kernel and tactic engine…" });
-    for (const relativePath of PY_FILES) {
-      const response = await fetch(relativePath + "?v=" + encodeURIComponent(build));
-      if (!response.ok) {
-        throw new Error("could not load " + relativePath + " (" + response.status + ")");
-      }
+    for (const entry of sources) {
+      const relativePath = entry.relativePath;
       const destination = "/lab/" + relativePath.replace(/^py\//, "");
       pyodide.FS.mkdirTree(destination.slice(0, destination.lastIndexOf("/")));
-      pyodide.FS.writeFile(destination, await response.text());
+      pyodide.FS.writeFile(destination, entry.source);
     }
 
     pyodide.runPython("import sys; sys.path.insert(0, '/lab')");

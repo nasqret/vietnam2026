@@ -115,6 +115,35 @@ tactic: a certificate-producing Presburger procedure belongs to a later design, 
 decide only that fragment. {doc}`Checked arithmetic automation <arithmetic-automation>` compares the
 exact `simp`, `norm_num`, `ring`, and `auto` contracts and records their browser limits.
 
+## Loading the runtime is not theorem proving
+
+Peano Lab is a static site. Opening it does not start a Python proof service on the faculty server;
+the browser downloads Pyodide, creates a disposable Web Worker, and runs both the tactic engine and
+kernel locally. This distinction explains an initially surprising observation: the prover source is
+small, but a cold browser still needs an 8.6 MB WebAssembly runtime and a 2.4 MB Python standard
+library before the prompt can appear.
+
+M14 treats that delivery path as an explicit engineering boundary. The HTML page is never stored,
+so it always discovers the current build. Pinned vendor bytes live below a URL containing a digest
+of the canonical source manifest; worker and application bytes live below a separate path derived
+from their own manifest. Those content-versioned responses may therefore be cached for a year
+without making an upgrade stale. Apache compresses
+WASM and source-like media with Brotli or gzip, but does not waste time recompressing ZIP and WOFF2.
+The worker starts every small Python-source transfer together while Pyodide initializes, then checks
+all results and mounts them in the original declared order.
+
+Concurrency here is not concurrency in the logic. It changes arrival time only: source bytes are
+validated by HTTP status, mounted deterministically, and imported exactly as before. A source
+failure mounts nothing and reports the earliest file in declaration order, independent of which
+network request happened to finish first. Once ready, QED still submits the complete certificate and
+the original theorem to the same independent checker. Compression, caching, and parallel transfer
+add no axiom and no trusted proof-producing component.
+
+A **cold start** pays for network transfer plus WebAssembly/Python initialization. A **warm start**
+reuses the immutable bytes but must still instantiate a fresh worker; Stop deliberately terminates
+that worker so an unresponsive proof cannot survive. This is why transport timing, tactic timing,
+and kernel-checking time should be measured and reported separately.
+
 ## HA first; classicality must leave a trace
 
 Peano Lab's default is Heyting arithmetic: the arithmetic axioms and induction schema interpreted in
