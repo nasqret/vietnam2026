@@ -532,6 +532,16 @@ lines. The in-app browser was not attached in this session, so interactive cold/
 and Stop/restart observations remain an explicit publication limitation; transport behavior is
 instead pinned by the deterministic worker harness and the live HTTP delivery gate.
 
+The first staging gate stopped before production exactly where it should. Gzip worked for static
+WASM and source, but neither HTML nor content-addressed assets received `Cache-Control`. A guarded
+`mod_expires` fallback likewise emitted nothing, while an unguarded `Header` probe returned HTTP
+500; the origin exposes neither module to this account. A tiny PHP probe proved that PHP headers
+would survive the front proxy, but routing thirty-one sources and the 8.6 MB WASM through PHP would
+amend the binding “static site” contract and could add shared-host contention. That is not a choice
+to hide inside a transport patch. The probe and experimental relays were removed, staging was
+restored to commit `a099596`, and production was left on M13 pending owner review: enable cache
+headers at the host/proxy (preferred), or explicitly authorize and document a narrow PHP relay.
+
 The concurrency rule mirrors the proof-state rule: observable outcomes must not depend on a race.
 Every source request starts together while Pyodide initializes, but each returns a success/failure
 envelope. Only after all finish do we choose the earliest declared failure or mount every source in

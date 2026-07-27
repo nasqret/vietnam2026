@@ -253,6 +253,11 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   concurrent/reverse-completion and multiple-failure tests preserve deterministic
   mounting and atomic failure; cold and warm starts reach ready; checked QED and Stop/restart still
   work; all Peano, Lambda, book, vault, vendor, and staging gates are green before production.
+- **Staging gate (2026-07-27):** candidate `a099596` serves build `2026-07-27i` and gzip works, but
+  promotion is stopped: the host exposes neither `mod_headers` nor `mod_expires`, so it cannot emit
+  the required cache policy from the static `.htaccess`. Experimental PHP probes were removed and
+  production remains on M13 pending owner choice of host configuration or a documented design
+  exception for a narrow PHP relay.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

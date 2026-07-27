@@ -597,3 +597,10 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   clean 25-source warning-as-error book build; 193 deep links and 125 replayed commands; and a
   57-note/281-link vault with no unresolved links or disconnected concept notes. Both exact
   manifests pass, the trusted kernel is unchanged, and `checker.py` remains 234 lines.
+- Published candidate commit `a099596` to `peano-lab` and staging. Live gzip succeeds, but the cache
+  gate stopped because the host exposes neither `mod_headers` nor `mod_expires`: an unguarded
+  `Header` probe returned 500 and the guarded expiry fallback emitted no header. A PHP header probe
+  succeeded, but a body relay would amend the binding static-site architecture and may contend for
+  PHP workers during 31 source requests plus WASM. All probe/relay files were removed, staging was
+  restored to the pushed static commit, and production remains untouched pending the owner's choice
+  between host/proxy configuration and an explicit PHP-relay design exception.
