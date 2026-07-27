@@ -108,3 +108,24 @@ cd rocq && coqc Artifacts.v && coqc Sqrt2.v      # or: rocq compile Artifacts.v 
 Each artifact maps back to a lecture: Statement 1 → Lectures 1 & 3 (Curry–Howard); Statements 2–3 →
 Lectures 2 & 4 (Peano, induction). More statements (√2 irrational, an EML-flavoured evaluation) grow
 here as the course proceeds.
+
+## Peano Lab certificate-size experiment
+
+[`triangular-even-180.certificate.txt`](triangular-even-180.certificate.txt) is the canonical
+cut-normal certificate for the current best-found proof of
+`forall n. exists x. n * (n + 1) = 2 * x`. It has 180 proof-tree nodes and is independently checked
+against that original statement. The deliberately retained
+[`triangular-even-373.certificate.txt`](triangular-even-373.certificate.txt) records an earlier proof
+shape for comparison; smaller here means less certificate scaffolding, not a stronger theorem.
+
+Rebuild and check the 180-node result with:
+
+```bash
+cd ..
+python3 scripts/minimize_parity_certificate.py
+cd peano-lab/py && python3 -m pytest tests/test_parity_superoptimization.py -q
+```
+
+The result is a verified upper bound, not a claimed proof of global minimality. Its constructor is a
+pedagogical kernel-certificate experiment; the shipped browser tactic elaborator does not yet
+compile the readable tactic script to this exact certificate.

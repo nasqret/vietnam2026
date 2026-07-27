@@ -593,3 +593,35 @@ HTML still has no `Cache-Control: no-store`, and versioned responses still have 
 policy. That transport failure does not weaken a proof result, but it prevents production promotion.
 Production was left untouched on build `2026-07-27h`; the new `script` surface is available only on
 the staging channel until administrators supply the required headers.
+
+## 2026-07-27 — Consecutive-product parity: proof size is not proof truth
+
+For `forall n. exists x. n * (n + 1) = 2 * x`, the submitted `ring` proof produced a checked
+963-node certificate. A copy-pasteable proof in the current tactic surface reached 343 nodes by
+choosing the successor witness `S (x + n)`, orienting the base toward PA3--PA6, and doing the
+remaining arithmetic by a nested induction. Replaying that route with experimental 23-, 50-, and
+87-node certificates for its additive and multiplicative helper lemmas reached 252 nodes. That is a
+checked library-optimization counterfactual, not the certificate currently produced by the shipped
+browser tactics.
+
+The more interesting improvement came from changing the mathematics. Instead of inducting directly
+on the displayed product, a hand-authored experiment proves the recurrence-normal statement
+`exists x. n * n + n = 2 * x`. Its induction hypothesis can be substituted into the step without
+normalizing `n * (n + 1)` on every iteration. One final whole-proposition `EqSubst` converts the
+existential theorem back to the original statement without opening and rebuilding its witness. The
+result is a 180-node, depth-34, cut-normal certificate whose canonical rendering has 2,946
+characters. The independent kernel accepts it against the original goal and rejects the same
+certificate against a nearby mutated goal.
+
+Two attractive alternatives explain why the final shape is less obvious than it looks. Keeping the
+successor witness as `S (x + n)` makes the arithmetic finish 69 nodes instead of 65. Replacing
+`2 * x` by `x + x` gives a clean additive invariant, but its checked conversion back to multiplication
+depends on the existential witness and cannot be hoisted outside witness elimination; the complete
+variant is 245 nodes. Failed proof shapes are useful data here, not failed mathematics.
+
+Every number here is a structural `Proof`-tree count, not a measure of truth or readability. The
+180-node result is the best checked upper bound found in this experiment, not a proof of global
+minimality: terms and induction motives are annotations outside this node count, so a genuine lower
+bound needs a precisely fixed search language and an exhaustive or formally verified argument. The
+experiment supports optimizing checked library certificates and adding an untrusted post-tactic
+compiler; it does not support a trusted arithmetic shortcut or any change to the kernel.
