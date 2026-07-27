@@ -16,8 +16,8 @@ nor an alternate session authority.
 Preflight rejects `script` commands and batch replay has no authority to initiate a browser
 download. Its final `qed` still asks the unchanged [[trusted-kernel]] to check a reconstructed
 [[proof-certificate]] against the owner-retained original theorem. The surface is input ergonomics,
-not evidence or [[theorem-ladder|library admission]]. It is locally verified in build
-`2026-07-28b`; no deployment is implied.
+not evidence or [[theorem-ladder|library admission]]. Build `2026-07-28b` is locally verified and
+deployed to staging; production remains blocked on the host's missing cache headers.
 
 ## Related
 

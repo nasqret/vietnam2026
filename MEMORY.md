@@ -144,7 +144,9 @@
   characters, 256 nonblank lines, and `MAX_INPUT` per line. A failed line stops the suffix while
   preserving the successful prefix and per-command undo; preflight rejects `script` and the batch
   executor has no download authority. This is an untrusted input convenience, and independent QED
-  is unchanged. The local build is `2026-07-28b`, application `a-404fdbdb55e4`; it is not deployed.
+  is unchanged. Build `2026-07-28b`, application `a-404fdbdb55e4`, is deployed to staging with
+  exact HTML/manifest/worker/driver bytes. Production remains `2026-07-27h`: the host still omits
+  the required cache headers, so the delivery verifier blocks promotion.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -181,8 +183,8 @@
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
 - Peano Lab milestones M0–M17 are locally green on `peano-lab`. M16 adds named local reasoning and
-  a readable checked parity replay; M17 adds bounded sequential multiline proof paste. Neither is
-  deployed. M14 production
+  a readable checked parity replay; M17 adds bounded sequential multiline proof paste and is on
+  staging. M14 production
   delivery remains blocked on administrator-managed cache headers, while M15 is pushed and
   published to staging;
   the implementation, checked corpus,

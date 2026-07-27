@@ -692,3 +692,14 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - Refreshed exact local staging to build `2026-07-28b`, application `a-404fdbdb55e4`, vendor
   `v-85fb3352e49c`. No in-app browser was attached, so a visual click-through is not claimed. No
   remote deployment was attempted; production and staging remain untouched.
+
+## 2026-07-28 (branch peano-lab) — M17 staging published; production gate held
+
+- On owner authorization, deployed the exact green M17 assembly to `/peano-lab-next/`. The remote
+  HTML reports build `2026-07-28b` and application `a-404fdbdb55e4`; fetched application manifest,
+  worker, and driver bytes match the local stage exactly, and the multiline-paste control is present.
+- The mandatory delivery verifier failed at the first HTTP policy assertion. LOL-ng returns neither
+  `Cache-Control: no-store` on HTML nor the required immutable cache header on the versioned worker,
+  despite the deployed `.htaccess`. This confirms the still-open administrator/proxy M14 blocker.
+- Did not promote the red delivery to production. `/peano-lab/` remains build `2026-07-27h`; the
+  new feature can be tried on staging while the host configuration is corrected.

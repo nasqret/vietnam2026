@@ -697,3 +697,11 @@ unresolved or disconnected concept. Exact local staging is build `2026-07-28b`, 
 `a-404fdbdb55e4`, vendor `v-85fb3352e49c`. The kernel is unchanged and its checker remains 234
 lines. No in-app browser was attached, so a visual click-through is not claimed, and neither
 production nor staging was deployed.
+
+After the owner requested publication, the same exact staged tree was uploaded to
+`/peano-lab-next/`. Its HTML identifies build `2026-07-28b` and application `a-404fdbdb55e4`; the
+remote manifest, worker, and driver are byte-identical to the green local assembly. The mandatory
+delivery verifier then stopped at its first HTTP policy check: the LOL-ng response contains no
+`Cache-Control: no-store` for HTML, and the immutable worker response likewise has no
+`Cache-Control`. Production was therefore not promoted and remains build `2026-07-27h`. This is the
+same administrator-managed M14 header boundary, not a proof or paste implementation failure.

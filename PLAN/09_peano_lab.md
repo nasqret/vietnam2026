@@ -388,8 +388,10 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   transitions from 1,692 checked sessions. Application/vendor manifests and exact local staging
   are green at `a-404fdbdb55e4`/`v-85fb3352e49c`, build `2026-07-28b`; the kernel has no diff and
   `checker.py` remains 234 lines. No in-app browser was attached, so a visual click-through is not
-  claimed; the event/worker harnesses test the interaction contract. Production and staging were
-  not deployed.
+  claimed; the event/worker harnesses test the interaction contract. After owner authorization,
+  exact M17 HTML/manifest/worker/driver bytes were deployed to `/peano-lab-next/`. The remote
+  delivery gate stopped production promotion because the LOL-ng host still omits `Cache-Control`
+  from HTML and immutable assets. Production therefore remains build `2026-07-27h`.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

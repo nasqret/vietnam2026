@@ -200,7 +200,8 @@ executor cannot start a browser download, even if a worker response carries down
 final pasted `qed` still invokes the independent checker against the session owner's original
 theorem. The text remains an untrusted replay program, not a proof certificate or a route into the
 theorem library. M17 is locally verified as build `2026-07-28b`, application release
-`a-404fdbdb55e4`; it has not been deployed.
+`a-404fdbdb55e4`, and is available on `/peano-lab-next/`. Production promotion remains blocked
+because the host does not yet emit the required cache headers.
 
 The static browser cannot write to Git or admit a theorem to `library/theorems.py`. Library
 admission remains a reviewed source change: bind every free variable, declare earlier checked
