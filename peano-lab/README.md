@@ -7,7 +7,7 @@ and sharing its shell (xterm + Pyodide worker, fully self-hosted).
 **Start here, in this order:**
 
 1. [`../docs/PEANO_LAB_DESIGN.md`](../docs/PEANO_LAB_DESIGN.md) — the architecture. It is binding.
-2. [`../PLAN/09_peano_lab.md`](../PLAN/09_peano_lab.md) — milestones M0–M14 with tasks and
+2. [`../PLAN/09_peano_lab.md`](../PLAN/09_peano_lab.md) — milestones M0–M16 with tasks and
    acceptance criteria.
 3. [`py/peano_lab/`](py/peano_lab/) — the readable implementation behind the pinned APIs.
 
@@ -94,6 +94,61 @@ qed
 `use` does not ask the kernel to trust a theorem name. It inserts the theorem's closed certificate
 as a local cut; surface finalization contracts that cut and independently checks the resulting
 closed proof against the original stated goal.
+
+## Local reasoning with `have` and `suffices`
+
+Two commands let a longer proof name an intermediate proposition. Their exact syntax is
+`have h : P` and `suffices h : P`; the colon and a fresh hypothesis name are required. The
+proposition may mention rigid arithmetic variables already visible in the focused goal, but it
+cannot silently introduce a new free variable.
+
+`have` asks for the intermediate fact first and then returns to the old target with that fact in
+the context:
+
+```text
+pa prove 0 = 0
+have h : 0 = 0
+refl
+exact h
+qed
+```
+
+Immediately after `have h : P`, the ordered goals are
+
+```text
+Goal 1:  Γ ⊢ P
+Goal 2:  h : P, Γ ⊢ previous focused target
+```
+
+`suffices` reverses that working order. It first asks how `P` would finish the old goal, and only
+then asks for `P` itself:
+
+```text
+pa prove 0 = 0
+suffices h : 0 = 0
+exact h
+refl
+qed
+```
+
+Its ordered goals are
+
+```text
+Goal 1:  h : P, Γ ⊢ previous focused target
+Goal 2:  Γ ⊢ P
+```
+
+The two commands have the same logical meaning; only their teaching order differs. The partial
+certificate records that order with engine-only `LocalHave` or `LocalSuffices` nodes. Before QED,
+an untrusted capture-avoiding compiler substitutes the proof of `P` for the local hypothesis and
+removes every such node. The independent kernel is unchanged and sees only its ordinary proof
+constructors. It still checks the compiled certificate from scratch against the **original stated
+goal**, not against either intermediate goal. Local names therefore improve proof organization but
+grant no theorem authority or proof sharing: if a compiled body uses `h` repeatedly, the proof of
+`P` may be copied repeatedly into the final proof tree.
+
+The complete checked consecutive-product parity example uses both commands and is ready to paste
+into the browser: [`../artifacts/triangular-even-readable.pa`](../artifacts/triangular-even-readable.pa).
 
 ## Inspecting and keeping a proof
 

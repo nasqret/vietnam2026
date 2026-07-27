@@ -21,6 +21,7 @@ from typing import Iterator, Literal
 from ..kernel.checker import check, check_classical
 from ..kernel.formulas import And, Bot, Eq, Exists, Forall, Formula, Imp, Or
 from ..kernel.terms import Add, Mul, Succ, Term, Var
+from .proof_reduction import ProofReductionError, compile_local_cuts
 from .state import ProofState, final_certificate, holes_in, invariants_ok
 from .trace import TraceLogger
 
@@ -205,6 +206,10 @@ class _Planner:
 
         certificate = final_certificate(state)
         if certificate is None:
+            return False
+        try:
+            certificate = compile_local_cuts(certificate)
+        except ProofReductionError:
             return False
         checker = check_classical if self.classical else check
         return checker((), certificate, state.target)

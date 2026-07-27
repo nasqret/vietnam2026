@@ -367,8 +367,9 @@ def usage() -> str:
         "Each following line is a tactic. The partial kernel certificate grows",
         "hole by hole, but QED trusts only the independent checker.",
         "",
-        "  Tactics: intro · apply · exact · assumption · split · left · right",
-        "           cases · exfalso · exists · specialize · forall_elim",
+        "  Tactics: intro · have · suffices · apply · exact · assumption",
+        "           split · left · right · cases · exfalso · exists",
+        "           specialize · forall_elim",
         "           refl · symm · trans · congr · rewrite · induction · simp",
         "           norm_num · ring",
         "           use <library-theorem> [as <alias>]",
@@ -387,6 +388,8 @@ def tactic_help() -> str:
         "",
         "Examples",
         "  induction n; simp",
+        "  have h : 0 = 0",
+        "  suffices h : 0 = 0",
         "  first [assumption | refl]",
         "  rewrite <- h at h2",
         "  focus 2 simp",
@@ -444,13 +447,14 @@ def checked_surface_final(
     classical: bool = False,
     trace: TraceLogger | None = None,
 ) -> Proof:
-    """Finalize a live-surface certificate, compiling checked-theorem cuts.
+    """Finalize a live-surface certificate, compiling all untrusted cuts.
 
-    A completed certificate gets one untrusted cut-normalization pass and is
-    then submitted to ``checked_final`` with the independently retained
-    original target and exact logic mode.  Partial or target-forged states go
-    directly to ``checked_final`` so its existing final English errors remain
-    authoritative.
+    A completed certificate gets one capture-avoiding normalization pass for
+    checked-theorem reuse and local ``have``/``suffices`` scheduling.  Its
+    result is then submitted to ``checked_final`` with the independently
+    retained original target and exact logic mode. Partial or target-forged
+    states go directly to ``checked_final`` so its existing final English
+    errors remain authoritative.
     """
 
     try:
@@ -470,7 +474,7 @@ def checked_surface_final(
         compiled = normalise_cuts(raw)
     except LibraryError as exc:
         raise InvalidProof(
-            f"theorem-reuse cut normalization failed: {exc}."
+            f"proof cut normalization failed: {exc}."
         ) from None
     transient = replace(
         state,

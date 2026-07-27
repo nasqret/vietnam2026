@@ -108,9 +108,39 @@ restores. Explicit tacticals retain their complete surface line, while top-level
 winning primitive steps because those are independently undoable. This journal never enters the
 kernel or changes a certificate.
 
+### Local reasoning is an engine schedule, not a kernel rule (M16)
+
+The live surface admits exactly two named local-reasoning forms:
+
+- `have h : P` first opens `Γ ⊢ P`, then opens the previous focused target under `h : P`;
+- `suffices h : P` first opens the previous focused target under `h : P`, then opens `Γ ⊢ P`.
+
+The name must be fresh, and `P` is parsed in the focused goal's existing rigid term-variable
+scope. An undeclared free term variable is an error rather than an implicitly generalized name.
+Both commands therefore express the same natural-deduction cut—prove `P`, then use it—but choose
+opposite pedagogical schedules for its two obligations.
+
+That scheduling distinction does **not** justify a trusted `Cut` constructor. The untrusted engine
+may temporarily place `LocalHave(P, proof-hole, body-hole)` or
+`LocalSuffices(P, body-hole, proof-hole)` in a partial certificate. Their child order is deliberate:
+left-to-right proof holes remain in exactly the order of the displayed goals. These two classes are
+engine-only administrative nodes; they are absent from `kernel/proofs.py`, and the kernel checker
+has no case for either one.
+
+Before the unchanged checker is called, untrusted finalization compiles every such node by
+capture-avoiding proof-hypothesis substitution. Informally, both become
+`(λh. body) proof` and then beta-reduce to `body[proof/h]`. The compiler shifts proposition
+hypothesis indices and term variables beneath implication, disjunction, existential, and universal
+binders, so a local proof cannot be captured while it is inserted. Its result, containing only
+ordinary kernel proof constructors, is checked from the empty context against the session owner's
+**original stated goal** and exact logic mode. A faulty scheduler or compiler can therefore cause
+only rejection. Failure while parsing or constructing either tactic is transactional, and one
+successful command remains one exact `undo` step.
+
 **Primitive tactics (Stage A–C):** `intro`, `apply`, `exact`, `assumption`, `split`, `left`,
 `right`, `cases`, `exfalso`, `refl`, `symm`, `trans t`, `congr`, `rewrite h [at h']`,
-`rewrite <- h`, `induction n [with base step]`, `exists t`, `intro x` (∀), `specialize h t`.
+`rewrite <- h`, `induction n [with base step]`, `exists t`, `intro x` (∀), `specialize h t`,
+`have h : P`, and `suffices h : P`.
 
 **Tacticals (Stage D — the "how tactic languages work" lesson):**
 `t1; t2` (then), `t1 <|> t2` (orelse), `repeat t`, `first [..]`, `all_goals t`, `focus n t`.
@@ -277,6 +307,8 @@ Success metric for later: a small fine-tuned model, given `goals_before`, propos
    rewrite-under-binder) that must all fail.
 2. **Tactic contract tests**: failure leaves state unchanged; invariants
    `len(goals) == holes(partial)` after every step.
+   Local-reasoning tests additionally pin the two opposite goal orders, exact undo, and
+   capture-avoiding compilation beneath both proposition and term binders.
 3. **The theorem ladder as regression** (§6): every library theorem's script replays in CI.
 4. **Book gate**: extend `verify_book_commands.py` to replay `pa`-family deep links and session
    blocks against the peano-lab driver.

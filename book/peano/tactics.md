@@ -69,6 +69,83 @@ solutions. A tactic card therefore reports **goal effect** and **certificate eff
 The display explains the work requested from the learner; the proof constructor explains what the
 kernel will eventually inspect. Neither description substitutes for the other.
 
+## Local lemmas schedule one cut in two useful orders
+
+Mathematical proofs rarely proceed in one uninterrupted line. We prove an intermediate proposition
+$P$, give it a name, and use it while proving the old target $B$. In natural-deduction notation the
+underlying operation is a cut:
+
+$$
+\frac{\Gamma\vdash P \qquad h:P,\Gamma\vdash B}{\Gamma\vdash B}.
+$$
+
+Peano Lab exposes two surface forms with the same logical meaning and deliberately different goal
+orders. The exact syntax is `have h : P` or `suffices h : P`. The name must be fresh, and the
+proposition is parsed using only the rigid arithmetic variables already visible in the focused
+goal.
+
+`have` follows the forward rhythm “establish the lemma, then use it”:
+
+```text
+pa> pa prove 0 = 0
+pa> have h : 0 = 0
+pa> refl
+pa> exact h
+pa> qed
+```
+
+If the old sequent was $\Gamma\vdash B$, the two new goals are ordered
+
+$$
+\Gamma\vdash P
+\quad\text{then}\quad
+h:P,\Gamma\vdash B.
+$$
+
+`suffices` follows the backward rhythm “show why this would be enough, then establish it”:
+
+```text
+pa> pa prove 0 = 0
+pa> suffices h : 0 = 0
+pa> exact h
+pa> refl
+pa> qed
+```
+
+Its order is
+
+$$
+h:P,\Gamma\vdash B
+\quad\text{then}\quad
+\Gamma\vdash P.
+$$
+
+This is not mere UI sorting. Goal order must equal left-to-right certificate-hole order, including
+under `focus` and tacticals. The untrusted engine therefore has two administrative proof shapes:
+`LocalHave(P, proof-hole, body-hole)` and
+`LocalSuffices(P, body-hole, proof-hole)`. Their field order schedules exactly the obligations shown
+above. They are **not kernel proof constructors**.
+
+Once every hole is filled, untrusted finalization compiles either shape to the same mathematical
+operation: substitute the proof of $P$ for hypothesis zero in the body. The substitution shifts
+proposition indices and term variables beneath every binder, just as theorem-reuse cut elimination
+must, so inserting an outer proof cannot capture an inner name. Only the compiled tree of ordinary
+natural-deduction constructors reaches the unchanged checker, which checks it from the empty
+context against the session owner's original $B$.
+
+This separation makes the feature pedagogically useful without making it trusted. A parsing,
+scheduling, or capture bug can produce a rejected certificate, never a false QED. It also explains
+a performance subtlety: local names organize the script, but the final certificate is a tree rather
+than a shared graph. If the body mentions `h` several times, compilation may copy its proof several
+times. Read the administrative nodes and capture-safe compiler in
+[`proof_reduction.py`](https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/engine/proof_reduction.py).
+
+For a longer example, the
+[`triangular-even-readable.pa`](https://github.com/nasqret/vietnam2026/blob/peano-lab/artifacts/triangular-even-readable.pa)
+replay proves that every consecutive product $n(n+1)$ is even. It uses `have` for the stronger
+induction invariant and `suffices` for the final normalization step; every QED still comes from the
+ordinary compiled certificate.
+
 ## Immutability makes failure transactional
 
 The public tactic type is deliberately ordinary Python:

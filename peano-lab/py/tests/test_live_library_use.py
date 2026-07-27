@@ -304,7 +304,7 @@ def test_cut_normalization_failure_keeps_the_exact_live_owner(monkeypatch) -> No
     monkeypatch.setattr(prove, "normalise_cuts", fail)
     output = session.run("qed")
 
-    assert "theorem-reuse cut normalization failed" in output
+    assert "proof cut normalization failed" in output
     assert _owner(session) is owner
     assert not any(record.get("qed") is True for record in owner.trace.records)
 

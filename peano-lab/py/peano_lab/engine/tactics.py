@@ -14,7 +14,17 @@ from time import monotonic
 from typing import Callable, Iterator
 
 from ..kernel.checker import axiom_formula, check, check_classical
-from ..kernel.formulas import And, Bot, Eq, Exists, Forall, Formula, Imp, Or
+from ..kernel.formulas import (
+    And,
+    Bot,
+    Eq,
+    Exists,
+    Forall,
+    Formula,
+    Imp,
+    Or,
+    parse_formula_in_context,
+)
 from ..kernel.proofs import (
     AndElimL,
     AndElimR,
@@ -63,6 +73,12 @@ from .rewrite import (
     SimpSet,
     rewrite_formula,
     simplify_formula,
+)
+from .proof_reduction import (
+    LocalHave,
+    LocalSuffices,
+    ProofReductionError,
+    compile_local_cuts,
 )
 from .state import (
     Goal,
@@ -437,6 +453,57 @@ def intro(state: ProofState, args: str = "") -> ProofState:
         )
     after = replace_current_hole(state, replacement, (new_goal,))
     return _commit(state, after, "intro", args)
+
+
+def _local_statement(goal: Goal, args: str, tactic: str) -> tuple[str, Formula]:
+    """Parse ``name : proposition`` against the focused term-variable scope."""
+
+    name_source, separator, formula_source = args.partition(":")
+    if not separator or not name_source.strip() or not formula_source.strip():
+        raise TacticSyntaxError(
+            f"syntax: `{tactic} <fresh-name> : <proposition>`."
+        )
+    name = _surface_name(name_source.strip(), tactic)
+    if name in _used_names(goal):
+        raise TacticError(f"the name {name!r} is already in use; choose a fresh name.")
+    try:
+        proposition = parse_formula_in_context(
+            formula_source.strip(),
+            list(goal.variables),
+        )
+    except (ParseError, ValueError) as exc:
+        raise TacticError(f"cannot parse the proposition: {exc}") from None
+    return name, proposition
+
+
+def have(state: ProofState, args: str) -> ProofState:
+    """Prove a local proposition first, then continue with it as a hypothesis."""
+
+    goal = _current(state)
+    name, proposition = _local_statement(goal, args, "have")
+    lemma_hole, body_hole = fresh_hole(), fresh_hole()
+    replacement = LocalHave(proposition, lemma_hole, body_hole)
+    goals = (
+        Goal(goal.context, proposition, goal.variables),
+        Goal(((name, proposition),) + goal.context, goal.target, goal.variables),
+    )
+    after = replace_current_hole(state, replacement, goals)
+    return _commit(state, after, "have", args)
+
+
+def suffices(state: ProofState, args: str) -> ProofState:
+    """Show a proposition implies the old goal, then prove that proposition."""
+
+    goal = _current(state)
+    name, proposition = _local_statement(goal, args, "suffices")
+    body_hole, lemma_hole = fresh_hole(), fresh_hole()
+    replacement = LocalSuffices(proposition, body_hole, lemma_hole)
+    goals = (
+        Goal(((name, proposition),) + goal.context, goal.target, goal.variables),
+        Goal(goal.context, proposition, goal.variables),
+    )
+    after = replace_current_hole(state, replacement, goals)
+    return _commit(state, after, "suffices", args)
 
 
 def _specialize(state: ProofState, args: str, tactic: str) -> ProofState:
@@ -1676,6 +1743,10 @@ def checked_final(
         raise InvalidProof("the proof state no longer carries the session's original goal.")
     if type(classical) is not bool:
         raise InvalidProof("the session's classical mode is not a Boolean.")
+    try:
+        certificate = compile_local_cuts(certificate)
+    except ProofReductionError as exc:
+        raise InvalidProof(f"local-reasoning cut compilation failed: {exc}.") from None
     checker = check_classical if classical else check
     if not checker((), certificate, original_target):
         raise InvalidProof("the independent kernel rejected the certificate for the stated goal.")
@@ -1697,6 +1768,8 @@ def checked_final(
 
 _TACTICS: dict[str, Tactic] = {
     "intro": intro,
+    "have": have,
+    "suffices": suffices,
     "specialize": specialize,
     "forall_elim": forall_elim,
     "induction": induction,
@@ -1779,6 +1852,8 @@ __all__ = [
     "MAX_NORM_NUM_PARTIAL_DEPTH",
     "MAX_NORM_NUM_FORALLS",
     "intro",
+    "have",
+    "suffices",
     "specialize",
     "forall_elim",
     "induction",

@@ -297,6 +297,50 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   and versioned assets have no immutable policy. Production remains untouched on build
   `2026-07-27h`; M15 functionality is therefore available on staging but is not promoted.
 
+### M16 — Named local reasoning with `have` and `suffices`
+
+- [x] Add exact surface forms `have h : P` and `suffices h : P`, parsing `P` only in the focused
+      goal's existing rigid term-variable scope and requiring a fresh hypothesis name.
+- [x] Preserve the positional goal/hole law with engine-only `LocalHave` and `LocalSuffices`
+      schedulers: `have` exposes the proof of `P` first, while `suffices` exposes the old target
+      under `h : P` first.
+- [x] Compile both schedulers away by capture-avoiding proof-hypothesis substitution before the
+      unchanged kernel runs; do not add a kernel cut, annotation, theorem-name, or local-lemma rule.
+- [x] Keep failures transactional, one successful command equal to one undo step and one trace
+      transition, and preserve exact behavior under `focus`, `all_goals`, `;`, and `<|>`.
+- [x] Add executable tactic cards, browser completion/help, replay coverage, construction-book and
+      vault explanations, and deterministic release artifacts without changing the v1 trace schema.
+
+**Acceptance checklist:**
+
+- [x] `have h : P` produces, in order, `Γ ⊢ P` and `h : P, Γ ⊢ B`; `suffices h : P` produces,
+      in order, `h : P, Γ ⊢ B` and `Γ ⊢ P`, with left-to-right holes in the same order.
+- [x] Completed examples for both commands compile to ordinary proof terms and pass the independent
+      checker from the empty context against the session owner's original target.
+- [x] Malformed syntax, malformed propositions, undeclared free variables, reused names, compiler
+      failure, and nearby false or mutated certificates all fail without changing the input state.
+- [x] Capture regressions pass below nested proposition, universal, and existential binders; exact
+      undo, focus, tactical rollback, JSONL trace, replay export, and resource-failure behavior are
+      pinned.
+- [x] The trusted kernel has no diff and retains its engine/UI import boundary; Peano and Lambda
+      suites, warning-as-error Jupyter Book build, executable prose/deep-link gate, vault audit,
+      manifest, and local staging gates are green.
+- [x] Publication, if authorized, uses a new immutable application release and human-facing build;
+      production remains untouched until all preceding checks and the independent M14 host-cache
+      requirement pass.
+
+- **Verified locally (2026-07-28):** focused local-reasoning coverage reports 29 passed, including
+  scheduling, capture, tactical, replay, compiler-failure, and kernel-boundary attacks; the readable
+  parity artifact replays to a checked QED and fails a mutated target. Peano reports 691 passed;
+  Lambda reports 360 passed plus 36 subtests. The deterministic corpus remains 13,344 transitions
+  from 1,692 checked sessions with refreshed source provenance. The warning-as-error 25-source book
+  builds; 193 deep links and 170 commands in 34 session blocks replay; all 318 vault links across
+  59 notes resolve with no disconnected concept. Application/vendor manifests and local staging
+  are exact at `a-f6c33c7840ad`/`v-85fb3352e49c`; the kernel has no diff and `checker.py` remains
+  234 lines. No in-app browser was attached, so a visual click-through is not claimed; the browser
+  shell/session harnesses and exact staged-byte assembly are green. Production and staging were not
+  deployed, preserving the independent M14 cache-header stop.
+
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search
 performance work beyond the explicit tactic limits remain outside this plan. M14 is the

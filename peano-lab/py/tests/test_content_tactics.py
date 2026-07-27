@@ -25,7 +25,7 @@ def test_every_operational_surface_has_exactly_one_card() -> None:
 
     expected = EXPECTED_SURFACE_PRIMITIVES + EXPECTED_TACTICALS + EXPECTED_AUTOMATION
     assert data_tactics.names() == expected
-    assert len(data_tactics.TACTIC_CARDS) == len(expected) == 31
+    assert len(data_tactics.TACTIC_CARDS) == len(expected) == 33
     assert len(data_tactics.TACTIC_MAP) == len(expected)
 
 

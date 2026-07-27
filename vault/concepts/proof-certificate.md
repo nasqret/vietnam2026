@@ -14,6 +14,11 @@ untrusted programs that fill holes in a partial certificate.
 The [[theorem-ladder]] composes earlier closed certificates by capture-avoiding cut elimination,
 then checks the composed certificate again from the empty context.
 
+Named intermediate claims use the same authority boundary: a [[local-reasoning-cut]] is an
+engine-only schedule that must be compiled away before this ordinary certificate reaches the
+kernel.
+
 ## Related
 
-[[peano-lab]] · [[trusted-kernel]] · [[tactic-mode]] · [[curry-howard]]
+[[peano-lab]] · [[trusted-kernel]] · [[tactic-mode]] · [[curry-howard]] ·
+[[local-reasoning-cut]]

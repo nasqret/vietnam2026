@@ -643,3 +643,26 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   negotiates gzip. The full delivery gate stops at the inherited M14 condition: HTML still lacks
   `Cache-Control: no-store`, and the versioned manifest still lacks an immutable policy. Production
   was not touched and remains build `2026-07-27h`.
+
+## 2026-07-28 (branch peano-lab) — Peano Lab M16: named local reasoning
+
+- Fixed the user-facing contract at the exact line-oriented forms `have h : P` and
+  `suffices h : P`. `have` schedules `Γ ⊢ P` before the old target under `h : P`; `suffices`
+  schedules those two obligations in the opposite order. Names must be fresh, and propositions
+  may use only rigid term variables already visible in the focused goal.
+- Kept the trusted language unchanged. The partial engine certificate may carry
+  `LocalHave(P, proof, body)` or `LocalSuffices(P, body, proof)` solely to keep visible goal order
+  identical to left-to-right hole order. Before kernel validation, an untrusted capture-avoiding
+  pass substitutes the local proof into its body and removes these administrative nodes.
+- Recorded the soundness boundary in the binding design, milestone plan, README, construction
+  chapter, implementation diary, project memory, journal, and connected Obsidian vault. QED still
+  checks an ordinary compiled certificate from the empty context against the independently retained
+  original theorem; a compiler defect can only make that check fail.
+- M16 is locally green: 29 focused local-reasoning tests; the independently checked readable parity
+  replay and mutated-target rejection; Peano 691; Lambda 360 plus 36 subtests; 13,344 regenerated
+  corpus transitions from 1,692 checked sessions; a warning-free 25-source book; 193 deep links and
+  170 commands in 34 blocks; and 59 vault notes/318 resolved links/0 disconnected concepts. The
+  exact local stage is build `2026-07-28a`, application `a-f6c33c7840ad`, with the unchanged vendor
+  release `v-85fb3352e49c`; the kernel has no diff and its checker remains 234 lines. No in-app
+  browser was attached, so direct clicking is not claimed. Nothing was deployed: production and
+  staging remain untouched, and the independent M14 cache-header stop still governs promotion.

@@ -111,6 +111,12 @@ here as the course proceeds.
 
 ## Peano Lab certificate-size experiment
 
+[`triangular-even-readable.pa`](triangular-even-readable.pa) is an executable Peano Lab
+surface proof of `forall n. exists x. n * (n + 1) = 2 * x`. It uses `suffices` to state
+the final normalization step and `have` to prove the stronger induction invariant
+`n * n + n = 2 * x` first, so the mathematical structure stays visible even though the two
+`ring` calls elaborate to a much larger checked certificate.
+
 [`triangular-even-180.certificate.txt`](triangular-even-180.certificate.txt) is the canonical
 cut-normal certificate for the current best-found proof of
 `forall n. exists x. n * (n + 1) = 2 * x`. It has 180 proof-tree nodes and is independently checked

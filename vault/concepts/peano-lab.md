@@ -21,8 +21,12 @@ The current undo branch can be inspected or downloaded as a [[replayable-proof-s
 text remains explicitly unchecked; a final `qed` appears only in the retained artifact produced
 after the independent checker succeeds.
 
+Intermediate propositions can be organized with [[local-reasoning-cut|local reasoning cuts]]:
+`have` proves the named fact first, while `suffices` proves first that the fact would finish the old
+goal. Both schedules are compiled away before kernel checking.
+
 ## Related
 
 [[peano-lab-moc|Peano Lab MOC]] · [[natural-deduction]] · [[tactic-mode]] ·
 [[checked-numerical-normalization]] · [[browser-proof-runtime]] · [[substitution]]
-· [[replayable-proof-script]]
+· [[replayable-proof-script]] · [[local-reasoning-cut]]

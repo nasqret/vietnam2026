@@ -13,7 +13,7 @@ the independent kernel checker against the intended formula.
 
 from __future__ import annotations
 
-from dataclasses import fields, replace
+from dataclasses import dataclass, fields, replace
 
 from ..kernel.formulas import Formula
 from ..kernel.proofs import (
@@ -51,6 +51,34 @@ class ProofReductionError(ValueError):
     """An input cannot be reduced as an exact Peano Lab proof certificate."""
 
 
+@dataclass(frozen=True, slots=True)
+class LocalHave(Proof):
+    """Engine-only proof-first scheduling for ``have h : proposition``.
+
+    ``proof`` is checked in the ambient context. ``body`` is checked with the
+    proposition at hypothesis index zero. Cut elimination substitutes the
+    former into the latter before the independent kernel sees the result.
+    """
+
+    proposition: Formula
+    proof: Proof
+    body: Proof
+
+
+@dataclass(frozen=True, slots=True)
+class LocalSuffices(Proof):
+    """Engine-only continuation-first scheduling for ``suffices``.
+
+    The field order deliberately mirrors the displayed goal order: first prove
+    the old target assuming ``proposition``, then prove the proposition itself.
+    The node has exactly the same cut-eliminated meaning as :class:`LocalHave`.
+    """
+
+    proposition: Formula
+    body: Proof
+    proof: Proof
+
+
 def _open_term_slot(proof: Proof, replacement: object, depth: int = 0) -> Proof:
     """Open one surrounding de Bruijn term slot throughout a certificate.
 
@@ -83,6 +111,18 @@ def _open_term_slot(proof: Proof, replacement: object, depth: int = 0) -> Proof:
         return ImpElim(
             _open_term_slot(proof.function, replacement, depth),
             _open_term_slot(proof.argument, replacement, depth),
+        )
+    if type(proof) is LocalHave:
+        return LocalHave(
+            formula(proof.proposition),
+            _open_term_slot(proof.proof, replacement, depth),
+            _open_term_slot(proof.body, replacement, depth),
+        )
+    if type(proof) is LocalSuffices:
+        return LocalSuffices(
+            formula(proof.proposition),
+            _open_term_slot(proof.body, replacement, depth),
+            _open_term_slot(proof.proof, replacement, depth),
         )
     if type(proof) is AndIntro:
         return AndIntro(
@@ -177,6 +217,8 @@ def _shift_hypotheses(proof: Proof, by: int, cutoff: int = 0) -> Proof:
         child_cutoff = cutoff
         if type(proof) is ImpIntro and item.name == "body":
             child_cutoff += 1
+        elif type(proof) in (LocalHave, LocalSuffices) and item.name == "body":
+            child_cutoff += 1
         elif type(proof) is OrElim and item.name in {"left_case", "right_case"}:
             child_cutoff += 1
         elif type(proof) is ExistsElim and item.name == "body":
@@ -232,6 +274,8 @@ def _open_hypothesis(
         child_term_depth = term_depth
         if type(proof) is ImpIntro and item.name == "body":
             child_cutoff += 1
+        elif type(proof) in (LocalHave, LocalSuffices) and item.name == "body":
+            child_cutoff += 1
         elif type(proof) is OrElim and item.name in {"left_case", "right_case"}:
             child_cutoff += 1
         elif type(proof) is ExistsElim and item.name == "body":
@@ -261,6 +305,18 @@ def _normalise_forall_cuts(proof: Proof) -> Proof:
         if type(function) is ImpIntro:
             return _normalise_forall_cuts(_open_hypothesis(function.body, argument))
         return ImpElim(function, argument)
+    if type(proof) is LocalHave:
+        if not isinstance(proof.proposition, Formula):
+            raise ProofReductionError("local `have` needs a PA proposition")
+        lemma = _normalise_forall_cuts(proof.proof)
+        body = _normalise_forall_cuts(proof.body)
+        return _normalise_forall_cuts(_open_hypothesis(body, lemma))
+    if type(proof) is LocalSuffices:
+        if not isinstance(proof.proposition, Formula):
+            raise ProofReductionError("local `suffices` needs a PA proposition")
+        body = _normalise_forall_cuts(proof.body)
+        lemma = _normalise_forall_cuts(proof.proof)
+        return _normalise_forall_cuts(_open_hypothesis(body, lemma))
     if type(proof) is AndIntro:
         return AndIntro(
             _normalise_forall_cuts(proof.left),
@@ -355,4 +411,52 @@ def normalise_cuts(proof: Proof) -> Proof:
         ) from None
 
 
-__all__ = ["ProofReductionError", "normalise_cuts"]
+def compile_local_cuts(proof: Proof) -> Proof:
+    """Eliminate local-reasoning schedulers, leaving ordinary proofs untouched.
+
+    Proofs that contain ``have``/``suffices`` nodes receive the existing full
+    capture-avoiding normalization pass. Proofs without those engine-only
+    nodes are returned by identity, so adding local reasoning does not silently
+    change certificates produced by older scripts.
+    """
+
+    if not isinstance(proof, Proof):
+        raise ProofReductionError("local-cut compilation needs an exact proof certificate")
+
+    def contains(value: Proof) -> bool:
+        if type(value) in (LocalHave, LocalSuffices):
+            return True
+        for item in fields(value):
+            child = getattr(value, item.name)
+            if isinstance(child, Proof) and contains(child):
+                return True
+        return False
+
+    try:
+        if not contains(proof):
+            return proof
+        compiled = normalise_cuts(proof)
+        if contains(compiled):
+            raise ProofReductionError(
+                "local-cut compilation left an engine-only scheduling node"
+            )
+        return compiled
+    except ProofReductionError:
+        raise
+    except RecursionError:
+        raise ProofReductionError(
+            "local-cut compilation exceeded the host recursion limit"
+        ) from None
+    except (AttributeError, TypeError, ValueError):
+        raise ProofReductionError(
+            "malformed proof certificate during local-cut compilation"
+        ) from None
+
+
+__all__ = [
+    "ProofReductionError",
+    "LocalHave",
+    "LocalSuffices",
+    "compile_local_cuts",
+    "normalise_cuts",
+]

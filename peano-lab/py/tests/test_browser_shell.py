@@ -110,6 +110,8 @@ def test_tactic_completion_discovers_surface_checked_arithmetic() -> None:
     match = re.search(r"const TACTICS=\[(.*?)\];", INDEX)
     assert match is not None
     assert '"use"' in match.group(1).split(",")
+    assert '"have"' in match.group(1).split(",")
+    assert '"suffices"' in match.group(1).split(",")
     assert '"norm_num"' in match.group(1).split(",")
     assert '"ring"' in match.group(1).split(",")
     assert '"script"' in INDEX

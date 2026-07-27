@@ -54,6 +54,40 @@ TACTIC_CARDS = (
         ),
     ),
     TacticCard(
+        "have",
+        "primitive",
+        "have h : P",
+        "Prove a named local fact, then continue with that fact available.",
+        "Creates two ordered goals: first P in the current context, then the old "
+        "target with the fresh hypothesis h : P.",
+        "Installs an engine-only proof-first cut. Before QED, capture-avoiding cut "
+        "elimination compiles it to ordinary proof terms for the independent kernel.",
+        "0 = 0",
+        ("have h : 0 = 0", "refl", "exact h"),
+        (
+            "The command must have the exact shape `have h : P`.",
+            "The name is malformed or already names a variable or hypothesis.",
+            "The proposition is malformed or mentions a term variable outside the current scope.",
+        ),
+    ),
+    TacticCard(
+        "suffices",
+        "primitive",
+        "suffices h : P",
+        "Reduce the old target to a named fact, then prove that fact.",
+        "Creates two ordered goals: first the old target with h : P available, "
+        "then P in the original context.",
+        "Installs an engine-only continuation-first cut. Before QED, capture-avoiding "
+        "cut elimination compiles it to ordinary proof terms for the independent kernel.",
+        "0 = 0",
+        ("suffices h : 0 = 0", "exact h", "refl"),
+        (
+            "The command must have the exact shape `suffices h : P`.",
+            "The name is malformed or already names a variable or hypothesis.",
+            "The proposition is malformed or mentions a term variable outside the current scope.",
+        ),
+    ),
+    TacticCard(
         "specialize",
         "primitive",
         "specialize <hypothesis> <term>",

@@ -625,3 +625,39 @@ minimality: terms and induction motives are annotations outside this node count,
 bound needs a precisely fixed search language and an exhaustive or formally verified argument. The
 experiment supports optimizing checked library certificates and adding an untrusted post-tactic
 compiler; it does not support a trusted arithmetic shortcut or any change to the kernel.
+
+## 2026-07-28 — M16: a local lemma is scheduling, not authority
+
+Adding `have h : P` exposed a constraint that a goal-list-only prover could easily hide. The
+obvious natural-deduction term `(λh. body) proof` stores the body hole before the proof hole, while
+the familiar `have` interaction asks the learner to prove `P` first. Peano Lab's goals are ordered
+by the left-to-right holes in one partial certificate, so swapping only the visible list would make
+`focus`, tacticals, and certificate splicing act on different obligations.
+
+The design therefore records the two teaching schedules explicitly outside the trusted language.
+`LocalHave(P, proof, body)` places the lemma goal first;
+`LocalSuffices(P, body, proof)` places the continuation goal first. Both mean the same cut. They are
+engine-only nodes, not additions to `kernel/proofs.py`, and their proposition field is not accepted
+as a theorem annotation by the checker.
+
+Finalization removes the scheduler by the existing capture-avoiding proof-hypothesis substitution.
+That detail matters below nested implication, universal, and existential binders: inserting a
+proof must shift both hypothesis indices and term variables instead of capturing whichever binder
+happens to be nearest. Only the compiled ordinary certificate reaches the unchanged kernel, which
+still receives the session owner's original theorem. Thus `have` and `suffices` can make an
+arithmetic argument readable without making a local claim trusted.
+
+The surface contract is intentionally small: the exact forms are `have h : P` and
+`suffices h : P`; `h` must be fresh, and free term names in `P` must already belong to the focused
+goal. Parsing and construction remain one immutable transaction, and undo restores the exact state
+before either two-goal schedule.
+
+The completed local candidate has 29 focused scheduling, capture, tactical, replay, failure, and
+kernel-boundary tests. The full Peano suite reports 691 passed and the sibling Lambda suite reports
+360 passed plus 36 subtests. A readable parity script using both commands reaches independently
+checked QED and its certificate fails a mutated odd target. The source-bound corpus was regenerated
+without changing its 13,344-transition/1,692-session semantics. The warning-as-error 25-source book,
+193 deep links, 170 replayed commands, 318 links across 59 vault notes, manifests, and exact local
+stage are green. The local immutable identity is `a-f6c33c7840ad`, build `2026-07-28a`; no in-app
+browser was attached and no remote deployment was attempted. Production remains untouched behind
+the separate M14 cache-header stop.

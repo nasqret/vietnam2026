@@ -132,7 +132,12 @@
   browser accepts a one-shot download only for the exact directly typed command and validates a
   fixed-name LF/UTF-8 payload. Exported text is neither certificate authority nor a mutable library;
   library inclusion retains the existing closed-statement, dependency, cut-elimination, test, and
-  independent-check workflow.
+  independent-check workflow. M16 introduces named local reasoning with the exact surface forms
+  `have h : P` and `suffices h : P`. Engine-only `LocalHave` and `LocalSuffices` nodes preserve the
+  two opposite visible goal orders, then a capture-avoiding untrusted compiler removes them before
+  the unchanged kernel checks the session owner's original target. They add scheduling and naming,
+  not a trusted cut rule, theorem environment, or proof-sharing guarantee. M16 is locally green as
+  application release `a-f6c33c7840ad`, build `2026-07-28a`; it is not deployed.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -168,8 +173,10 @@
 - Build/deploy strategy chosen: **go live incrementally** (public GitHub + faculty URLs as pieces land).
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
-- Peano Lab milestones M0–M15 are locally green on `peano-lab`; M14 production delivery remains
-  blocked on administrator-managed cache headers, while M15 is pushed and published to staging;
+- Peano Lab milestones M0–M16 are locally green on `peano-lab`. M16 adds named local reasoning and
+  a readable checked parity replay but is not deployed. M14 production
+  delivery remains blocked on administrator-managed cache headers, while M15 is pushed and
+  published to staging;
   the implementation, checked corpus,
   construction book, Obsidian knowledge base, kernel-judged evaluation protocol, live checked-
   theorem reuse, 23-entry semiring ladder, certificate-producing `ring`, and bounded checked

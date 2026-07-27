@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 
+from ..engine.proof_reduction import LocalHave, LocalSuffices
 from ..engine.state import (
     Hole,
     MetaVar,
@@ -150,6 +151,18 @@ def render_certificate(
             return (
                 f"apply({go(value.function, depth + 1, local_names)}, "
                 f"{go(value.argument, depth + 1, local_names)})"
+            )
+        if type(value) is LocalHave:
+            return (
+                f"have[{formula(value.proposition, local_names)}]("
+                f"{go(value.proof, depth + 1, local_names)}, "
+                f"λh. {go(value.body, depth + 1, local_names)})"
+            )
+        if type(value) is LocalSuffices:
+            return (
+                f"suffices[{formula(value.proposition, local_names)}]("
+                f"λh. {go(value.body, depth + 1, local_names)}, "
+                f"{go(value.proof, depth + 1, local_names)})"
             )
         if type(value) is AndIntro:
             return (
