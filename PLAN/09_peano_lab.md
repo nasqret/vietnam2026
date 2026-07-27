@@ -232,7 +232,10 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   smoke exported 13,631 unique rows; evaluator v2 ran 32 kernel-judged attempts; local staging and
   vendor hashes are green; checker unchanged at 234 lines. Browser-shell tests and staged assets pin
   the worker/Stop path and explicit limits. No in-app browser instance was available for a direct
-  Pyodide interaction, so that limitation is recorded rather than reported as a measured run.
+  Pyodide interaction, so that limitation is recorded rather than reported as a measured run. Both
+  staging and production build `2026-07-27h` subsequently returned HTTP 200 with page, worker,
+  `norm_num`, and Pyodide hashes matching local staging; the landing page and arithmetic book
+  chapter were likewise published and byte-verified.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, performance tuning beyond

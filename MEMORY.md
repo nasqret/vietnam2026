@@ -21,8 +21,8 @@
 - **Landing page + book + slides:** `~/public_html/vietnam2026/` → <https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026>
 - **Browser Lambda Lab:** `~/public_html/lab-lambda/` → <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda>
 - **Browser Peano Lab targets:** `~/public_html/peano-lab/` (production) and
-  `~/public_html/peano-lab-next/` (staging). The M13 local staging pipeline and pinned vendor hashes
-  are verified; remote publication status is recorded in the current journal entry.
+  `~/public_html/peano-lab-next/` (staging). M13 build `2026-07-27h` is deployed to both and was
+  verified HTTP 200 with page, worker, `norm_num`, and Pyodide bytes matching the local assembly.
 - **Server tooling:** Apache static hosting + PHP; Python 3.8, Node present. **No persistent daemons** →
   the lab must be **fully client-side** (this is why the browser lab uses Pyodide, not a server kernel).
 - **Deploy verb:** `rsync -avz --delete <local>/ lts-faculty.wmi.amu.edu.pl:~/public_html/<target>/`.

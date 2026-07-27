@@ -557,5 +557,10 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   at pass@8 `0.0`; local staging and all vendor hashes pass; the trusted checker remains exactly 234
   lines. The in-app browser had no available instance, so direct Pyodide interaction was not
   claimed; browser-shell tests and staged static inspection cover the worker, Stop path, build tag,
-  completion, tutorial, packaged module, and displayed bounds. Remote deployment is recorded after
-  publication rather than predicted here.
+  completion, tutorial, packaged module, and displayed bounds.
+- Published commit `5166bd2` first to `/peano-lab-next/`, then promoted the same assembly to
+  `/peano-lab/`; both returned HTTP 200 as build `2026-07-27h`. The production and staging pages
+  share SHA-256 `4ade3a594ee248690919351ea44d4eec2c5960a76100e5197eac42de39e0c7b7`,
+  and the fetched worker, `norm_num` source, and Pyodide loader each matched local staging exactly.
+  The updated `/vietnam2026/` landing page and `book/peano/arithmetic-automation.html` also returned
+  HTTP 200 and matched their built files byte for byte. `main` was not touched.
