@@ -50,6 +50,7 @@ from peano_lab.ui.prove import (  # noqa: E402
 
 MAX_JSONL_LINE_BYTES = 1_000_000
 MAX_JSON_INTEGER_DIGITS = 128
+MAX_JSON_NESTING = 256
 DEFAULT_MAX_INPUT_BYTES = 256 * 1024 * 1024
 DEFAULT_MAX_REQUESTS = 10_000
 DEFAULT_MAX_RESULT_BYTES = 128 * 1024 * 1024
@@ -242,9 +243,27 @@ def _reject_float(value: str):
     raise BatchRequestError(f"JSON floating-point numbers are not allowed: {value}")
 
 
+def _validate_json_nesting(value: object) -> None:
+    """Enforce one runtime-independent container-depth limit iteratively."""
+
+    pending: list[tuple[object, int]] = [(value, 0)]
+    while pending:
+        current, parent_depth = pending.pop()
+        if type(current) not in {dict, list, tuple}:
+            continue
+        depth = parent_depth + 1
+        if depth > MAX_JSON_NESTING:
+            raise BatchRequestError(
+                "JSON nesting exceeds the "
+                f"{MAX_JSON_NESTING}-level transport limit"
+            )
+        children = current.values() if type(current) is dict else current
+        pending.extend((child, depth) for child in children)
+
+
 def _decode(raw: str) -> object:
     try:
-        return json.loads(
+        decoded = json.loads(
             raw,
             object_pairs_hook=_strict_object,
             parse_int=_parse_int,
@@ -253,6 +272,8 @@ def _decode(raw: str) -> object:
         )
     except RecursionError:
         raise BatchRequestError("JSON nesting exceeds the decoder limit") from None
+    _validate_json_nesting(decoded)
+    return decoded
 
 
 def _session_id(
@@ -262,6 +283,7 @@ def _session_id(
     environment_sha256: str,
 ) -> str:
     try:
+        _validate_json_nesting(request)
         payload = json.dumps(
             [BATCH_VERSION, environment_sha256, ordinal, request],
             ensure_ascii=True,

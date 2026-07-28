@@ -1000,10 +1000,14 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   part, an arithmetic Obsidian MOC and concept graph, and 51 generated per-lemma notes carrying exact
   dependencies, dependents, and proof metrics. Memory, plan, root maps, and reproduction commands
   now point to the same canonical theorem names.
-- After integrating upstream result-recording commit `5576f99`, the combined gate passed 1,044
-  Peano tests, a warning-as-error Jupyter Book build over 34
+- After integrating upstream result-recording commit `5576f99`, the combined gate passed 1,045
+  Peano tests under both Python 3.10 and Python 3.12, a warning-as-error Jupyter Book build over 34
   sources, 197 deep links, 43 documentation blocks with 253 replayed commands, and the
   128-note/874-link vault check. Draft pull request
   [#1](https://github.com/nasqret/vietnam2026/pull/1) targets `peano-lab`; nothing was merged or
   deployed. FTA remains honestly `blocked_by_language` until a finite-factorization representation
   is reviewed and checked.
+- Closed an inherited Python-version gap in the batch CLI by replacing recursion-limit-dependent
+  JSON behavior with an explicit iterative 256-container nesting check shared by decoding and
+  deterministic session hashing. The exact boundary and first rejected depth have regression
+  coverage; the complete 1,045-test suite passes on both locally available runtimes.

@@ -307,7 +307,9 @@
   `artifacts/peano-library/`. The generated snapshot binds exact source bytes, statements, scripts,
   dependencies, certificate hashes, proof metrics, and an ordered root digest; hashes are
   provenance, never theorem authority.
-- The final combined M20 validation record is 1,044 passing Peano tests, a warning-as-error Jupyter
-  Book build over 34 sources, 197 checked deep links, 43 documentation blocks with 253 replayed
+- The final combined M20 validation record is 1,045 passing Peano tests on both Python 3.10 and
+  Python 3.12, a warning-as-error Jupyter Book build over 34 sources, 197 checked deep links, 43
+  documentation blocks with 253 replayed
   commands, and a clean 128-note/874-link Obsidian vault after integrating the latest `peano-lab`
-  result-recording commit.
+  result-recording commit. The batch transport now enforces an explicit iterative 256-container
+  JSON nesting limit, so malformed-depth behavior and session hashing are runtime-independent.

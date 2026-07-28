@@ -834,7 +834,8 @@ def test_jsonl_cli_contains_malformed_unicode_and_unhashable_options(
 
 
 def test_jsonl_cli_rejects_excessive_nesting_without_a_traceback() -> None:
-    deeply_nested = "[" * 2_000 + "0" + "]" * 2_000
+    depth = batch_cli.MAX_JSON_NESTING + 1
+    deeply_nested = "[" * depth + "0" + "]" * depth
     completed = subprocess.run(
         [sys.executable, str(CLI), "--verify-only"],
         cwd=ROOT,
@@ -848,6 +849,16 @@ def test_jsonl_cli_rejects_excessive_nesting_without_a_traceback() -> None:
     response = json.loads(completed.stdout)
     assert response["status"] == "request_error"
     assert "nesting" in response["error"]
+
+
+def test_json_decoder_accepts_the_explicit_nesting_boundary() -> None:
+    depth = batch_cli.MAX_JSON_NESTING
+    decoded = batch_cli._decode("[" * depth + "0" + "]" * depth)
+
+    for _ in range(depth):
+        assert type(decoded) is list and len(decoded) == 1
+        decoded = decoded[0]
+    assert decoded == 0
 
 
 @pytest.mark.parametrize(
@@ -919,7 +930,7 @@ def test_jsonl_cli_is_utf8_portable_under_an_ascii_process_locale() -> None:
 
 def test_session_hash_recursion_is_a_request_error_not_a_fatal_crash() -> None:
     nested: object = 0
-    for _ in range(2_000):
+    for _ in range(batch_cli.MAX_JSON_NESTING + 1):
         nested = [nested]
     with pytest.raises(BatchRequestError, match="deterministically hashed"):
         batch_cli._session_id(nested, ordinal=1, environment_sha256="0" * 64)
