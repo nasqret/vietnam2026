@@ -31,6 +31,9 @@ forall n m. n * m = m * n
 - [[beta_at_unique]]
 - [[square_decomp]]
 - [[binary_crt]]
+- [[beta_modulus_coprime_base]]
+- [[beta_moduli_coprime_of_gap_dvd]]
+- [[bounded_common_multiple_step]]
 
 ## Verification record
 

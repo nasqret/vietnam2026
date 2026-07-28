@@ -84,7 +84,9 @@ principle: its concrete motive is proved by ordinary induction on $B$, and a
 nontrivial factor is shown smaller before the induction hypothesis is used.
 All twelve certificates check in the default intuitionistic kernel and contain
 no DNE node. Primes above every bound remain a planned expressible theorem;
-prime-divisor existence no longer does.
+prime-divisor existence no longer does. The supporting finite-bound
+common-multiple construction is now checked separately, so the remaining
+prime-unbounded work is its successor/prime-divisor contradiction client.
 
 ## GCD without a gcd function
 
@@ -242,7 +244,7 @@ $$
 This establishes single-position decoding as a bounded congruence interface.
 It does not construct one code realizing an arbitrary finite prefix.
 
-## Constructive binary CRT and a two-position β code
+## Constructive binary CRT and a conditional two-position β code
 
 The next checked tranche proves binary CRT without subtraction or classical
 choice. In readable notation, `binary_crt` states
@@ -269,6 +271,10 @@ first-order PA.
 | `binary_crt` | combine arbitrary residues for nonzero coprime natural moduli | 5,044 / 51 | 144 |
 | `binary_crt_remainders` | expose bounded solutions as two directed remainder equations | 6,890 / 66 | 196 |
 | `binary_crt_beta_pair` | realize two bounded β values in one code | 6,941 / 69 | 201 |
+| `beta_modulus_coprime_base` | prove $M(c,i)$ coprime to the shared base $c$ | 874 / 30 | 24 |
+| `common_divisor_beta_moduli_divides_gap_times_c` | force a common modulus divisor into $\mathit{gap}\,c$ | 855 / 30 | 24 |
+| `beta_moduli_coprime_of_gap_dvd` | discharge pairwise coprimality from $j=i+\mathit{gap}$ and $\mathit{gap}\mid c$ | 6,007 / 56 | 175 |
+| `binary_crt_beta_pair_of_gap_dvd` | realize the two beta values under that gap condition | 12,980 / 71 | 378 |
 
 The bounded client strengthens the readable conclusion to
 
@@ -288,11 +294,40 @@ $$
 \operatorname{At}(\mathit{code},c,j,b).
 $$
 
-The coprimality hypothesis in this last formula is essential to the current
-interface. `binary_crt_beta_pair` does not prove that two moduli generated from
-one shared $c$ are coprime, nor does it iterate the binary theorem over a
-bounded prefix. Those are the next representation lemmas, so this checkpoint
-is a genuine binary/two-position result rather than a hidden bounded CRT.
+The coprimality hypothesis in this formula cannot be discharged
+unconditionally. For example, $c=1$ gives
+
+$$
+M(1,1)=3,\qquad M(1,4)=6,
+$$
+
+so the beta-modulus family is not pairwise coprime for an arbitrary shared
+$c$. The checked replacement carries the honest sufficient conditions
+
+$$
+j=i+\mathit{gap},\qquad \mathit{gap}\mid c.
+$$
+
+A common divisor of the two moduli divides $\mathit{gap}\,c$; each modulus is
+coprime to $c$; Gauss cancellation therefore makes that common divisor divide
+the gap. Since the gap divides $c$, it must be one. The wrapper
+`binary_crt_beta_pair_of_gap_dvd` feeds this result to the original binary
+client.
+
+The same checkpoint adds the finite common-multiple surrogate needed to make
+many gap hypotheses available from one parameter:
+
+| Checked theorem | Role | Nodes/depth | Cuts |
+|---|---|---:|---:|
+| `bounded_common_multiple_step` | extend a nonzero common multiple across the next positive endpoint | 483 / 29 | 15 |
+| `bounded_common_multiple_exists` | construct a nonzero $c$ divisible by every positive natural at most $B$ | 640 / 30 | 22 |
+
+These results still do not iterate CRT over a bounded prefix. The missing
+links are the index-bound algebra that exposes each required gap, a
+product-modulus CRT invariant that preserves positions already encoded, and
+finite-prefix extension itself. This checkpoint is therefore a conditional
+binary/two-position theorem plus the common-multiple resource for the next
+induction, not a hidden bounded CRT.
 
 A second code stores the prefix products, beginning at one and multiplying by
 the decoded factor at each step. `AllPrime` expands the factor-pair prime
@@ -339,10 +374,11 @@ This release keeps two deliberately separate FTA tracks:
 The gcd/Bézout/Gauss/Euclid chain, constructive prime-divisor existence,
 single-position Gödel-β decoded-value existence and uniqueness, its
 bidirectional bounded-congruence characterization, constructive binary CRT,
-and a two-position β-code construction are now checked in native PA. The
-next critical gates are greatest-prime descent, the selected β-modulus
-coprimality theorem, bounded CRT iteration, finite-prefix
-extension/restriction, and prefix-product traces.
+conditional gap-based beta-modulus coprimality, its two-position client, and
+bounded common-multiple existence are now checked in native PA. The next
+critical gates are greatest-prime descent, index-bound finite-prefix glue,
+product-modulus CRT iteration, finite-prefix extension/restriction, and
+prefix-product traces.
 Only after those interfaces have checked native certificates can factorization
 existence, uniqueness, and FTA enter `pa lib`. FTA therefore remains unproved
 in the native library.

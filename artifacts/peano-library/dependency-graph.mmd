@@ -158,6 +158,12 @@ flowchart TD
   binary_crt[binary_crt]
   binary_crt_remainders[binary_crt_remainders]
   binary_crt_beta_pair[binary_crt_beta_pair]
+  beta_modulus_coprime_base[beta_modulus_coprime_base]
+  common_divisor_beta_moduli_divides_gap_times_c[common_divisor_beta_moduli_divides_gap_times_c]
+  beta_moduli_coprime_of_gap_dvd[beta_moduli_coprime_of_gap_dvd]
+  binary_crt_beta_pair_of_gap_dvd[binary_crt_beta_pair_of_gap_dvd]
+  bounded_common_multiple_step[bounded_common_multiple_step]
+  bounded_common_multiple_exists[bounded_common_multiple_exists]
   fourth_power_regroup[fourth_power_regroup]
   mod5_residue_complete[mod5_residue_complete]
   mod5_nonzero_residue_cases[mod5_nonzero_residue_cases]
@@ -453,6 +459,29 @@ flowchart TD
   beta_modulus_nonzero --> binary_crt_beta_pair
   binary_crt --> binary_crt_beta_pair
   beta_at_of_mod_eq_bound --> binary_crt_beta_pair
+  divides_remainder --> beta_modulus_coprime_base
+  divisor_one --> beta_modulus_coprime_base
+  mul_comm --> beta_modulus_coprime_base
+  divides_remainder --> common_divisor_beta_moduli_divides_gap_times_c
+  add_succ_left --> common_divisor_beta_moduli_divides_gap_times_c
+  add_mul --> common_divisor_beta_moduli_divides_gap_times_c
+  zero_add --> common_divisor_beta_moduli_divides_gap_times_c
+  beta_modulus_coprime_base --> beta_moduli_coprime_of_gap_dvd
+  common_divisor_beta_moduli_divides_gap_times_c --> beta_moduli_coprime_of_gap_dvd
+  multiple_trans --> beta_moduli_coprime_of_gap_dvd
+  multiple_refl --> beta_moduli_coprime_of_gap_dvd
+  gauss_coprime_cancel --> beta_moduli_coprime_of_gap_dvd
+  mul_comm --> beta_moduli_coprime_of_gap_dvd
+  beta_moduli_coprime_of_gap_dvd --> binary_crt_beta_pair_of_gap_dvd
+  binary_crt_beta_pair --> binary_crt_beta_pair_of_gap_dvd
+  mul_eq_zero --> bounded_common_multiple_step
+  succ_ne_zero --> bounded_common_multiple_step
+  zero_or_succ --> bounded_common_multiple_step
+  multiple_mul_right --> bounded_common_multiple_step
+  mul_comm --> bounded_common_multiple_step
+  bounded_common_multiple_step --> bounded_common_multiple_exists
+  succ_ne_zero --> bounded_common_multiple_exists
+  add_eq_zero_left --> bounded_common_multiple_exists
   mul_assoc --> fourth_power_regroup
   mod5_residue_complete --> mod5_nonzero_residue_cases
   add_assoc --> mod5_square_residue_one

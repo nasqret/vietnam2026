@@ -1541,6 +1541,52 @@
       "blocker": null
     },
     {
+      "id": "bounded_common_multiple_step",
+      "title": "A bounded common multiple extends by one",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_eq_zero",
+        "succ_ne_zero",
+        "zero_or_succ",
+        "multiple_mul_right",
+        "mul_comm"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Multiplying a nonzero common multiple through a bound by the new positive endpoint extends its divisibility property to the successor bound.",
+      "peano": {
+        "statement": "forall B c. ~(c = 0) -> (forall t. (exists h. S t + S h = S B) -> exists k. c = S t * k) -> exists c2. (~(c2 = 0) /\\ forall t. (exists h. S t + S h = S (S B)) -> exists k. c2 = S t * k)",
+        "existing_name": "bounded_common_multiple_step"
+      },
+      "blocker": null
+    },
+    {
+      "id": "bounded_common_multiple_exists",
+      "title": "Every finite initial interval has a nonzero common multiple",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [
+        "bounded_common_multiple_step",
+        "succ_ne_zero",
+        "add_eq_zero_left"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Ordinary induction constructs a nonzero natural divisible by every positive natural in the encoded finite initial interval.",
+      "peano": {
+        "statement": "forall B. exists c. (~(c = 0) /\\ forall t. (exists h. S t + S h = S B) -> exists k. c = S t * k)",
+        "existing_name": "bounded_common_multiple_exists"
+      },
+      "blocker": null
+    },
+    {
       "id": "divisor_le_nonzero",
       "title": "A divisor of a nonzero natural is bounded",
       "domain": "divisibility",
@@ -3473,14 +3519,15 @@
       "domain": "primes",
       "status": "planned_expressible",
       "dependencies": [
-        "prime_divisor_exists"
+        "prime_divisor_exists",
+        "bounded_common_multiple_exists"
       ],
       "sources": [
         "weissman_illustrated_programming",
         "weissman_python_number_theory",
         "open_logic"
       ],
-      "summary": "The theorem itself is first-order expressible; its proof should construct a nonzero common multiple up to the bound by induction before applying prime-divisor existence.",
+      "summary": "The bounded nonzero common-multiple surrogate is now checked; the remaining proof must apply prime-divisor existence to its successor and show the resulting prime exceeds the bound.",
       "peano": {
         "statement": "forall n. exists p. (exists k. k + S n = p) /\\ (~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1)",
         "existing_name": null
@@ -3673,12 +3720,105 @@
       "blocker": null
     },
     {
+      "id": "beta_modulus_coprime_base",
+      "title": "A Gödel-beta modulus is coprime to its base",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "divides_remainder",
+        "divisor_one",
+        "mul_comm"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "A common divisor of c and the successor modulus 1 + kc divides the remainder one and is therefore one.",
+      "peano": {
+        "statement": "forall c k d. (exists u. S (k * c) = d * u) -> (exists v. c = d * v) -> d = 1",
+        "existing_name": "beta_modulus_coprime_base"
+      },
+      "blocker": null
+    },
+    {
+      "id": "common_divisor_beta_moduli_divides_gap_times_c",
+      "title": "A common beta-modulus divisor divides the scaled index gap",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "divides_remainder",
+        "add_succ_left",
+        "add_mul",
+        "zero_add"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "When j is i plus an explicit gap, every common divisor of their beta moduli divides gap times c.",
+      "peano": {
+        "statement": "forall c i j gap d. j = i + gap -> (exists u. S ((S i) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> exists w. gap * c = d * w",
+        "existing_name": "common_divisor_beta_moduli_divides_gap_times_c"
+      },
+      "blocker": null
+    },
+    {
+      "id": "beta_moduli_coprime_of_gap_dvd",
+      "title": "Divisible index gaps give coprime Gödel-beta moduli",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "beta_modulus_coprime_base",
+        "common_divisor_beta_moduli_divides_gap_times_c",
+        "multiple_trans",
+        "multiple_refl",
+        "gauss_coprime_cancel",
+        "mul_comm"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "If the additive index gap divides c, Gauss cancellation turns the scaled-gap divisibility result into pairwise coprimality of the beta moduli.",
+      "peano": {
+        "statement": "forall c i j gap. j = i + gap -> (exists k. c = gap * k) -> forall d. (exists u. S ((S i) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1",
+        "existing_name": "beta_moduli_coprime_of_gap_dvd"
+      },
+      "blocker": null
+    },
+    {
+      "id": "binary_crt_beta_pair_of_gap_dvd",
+      "title": "A divisible index gap supplies a two-position Gödel-beta code",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "beta_moduli_coprime_of_gap_dvd",
+        "binary_crt_beta_pair"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Discharges the beta-pair CRT coprimality premise from an explicit additive gap that divides c, yielding one code for both bounded values.",
+      "peano": {
+        "statement": "forall c i j gap a b. j = i + gap -> (exists k. c = gap * k) -> (exists ha. ha + S a = S ((S i) * c)) -> (exists hb. hb + S b = S ((S j) * c)) -> exists code. (((exists ha. ha + S a = S ((S i) * c)) /\\ exists q. code = q * S ((S i) * c) + a) /\\ ((exists hb. hb + S b = S ((S j) * c)) /\\ exists r. code = r * S ((S j) * c) + b))",
+        "existing_name": "binary_crt_beta_pair_of_gap_dvd"
+      },
+      "blocker": null
+    },
+    {
       "id": "prime_factorization_existence",
       "title": "Existence of a finite prime factorization",
       "domain": "factorization",
       "status": "blocked_by_language",
       "dependencies": [
-        "prime_divisor_exists"
+        "prime_divisor_exists",
+        "bounded_common_multiple_exists",
+        "binary_crt_beta_pair_of_gap_dvd"
       ],
       "sources": [
         "macbeth_math2001_repo",
@@ -3686,13 +3826,13 @@
         "weissman_python_number_theory",
         "open_logic"
       ],
-      "summary": "Single-position Gödel-β decoding and the binary CRT composition step are checked, but bounded finite-prefix extension and prefix-product relations do not yet have checked Peano infrastructure.",
+      "summary": "Single-position Gödel-β decoding, a bounded common-multiple surrogate, gap-based modulus coprimality, and two-position CRT composition are checked; bounded finite-prefix extension and prefix-product relations remain unavailable.",
       "peano": null,
       "blocker": {
         "code": "variable_length_factorization_unrepresented",
-        "detail": "Peano Lab's fixed signature has no primitive finite collection. Division, single-position Gödel-β value totality/functionality, and binary CRT are checked, but bounded CRT iteration, finite-prefix extension, prefix-product traces, and the fully expanded factorization certificate are not implemented.",
+        "detail": "Peano Lab's fixed signature has no primitive finite collection. Division, single-position Gödel-β value totality/functionality, bounded common multiples, gap-based beta-modulus coprimality, and the two-position CRT step are checked, but the bounded induction that extends an arbitrary finite prefix, prefix-product traces, and the fully expanded factorization certificate are not implemented.",
         "unblocks_with": [
-          "checked bounded CRT iteration plus Gödel-β finite-prefix extension lemmas",
+          "checked bounded CRT iteration and the induction glue from common-multiple bounds to Gödel-β finite-prefix extension",
           "a checked β-coded prefix-product relation",
           "and checked links between encoded elements, primality, and the folded product"
         ]
@@ -3713,11 +3853,11 @@
         "weissman_illustrated_programming",
         "weissman_python_number_theory"
       ],
-      "summary": "Single decoded values are functional, and the selected sorted encoding reduces permutation uniqueness to length and pointwise equality; whole-prefix and finite-product reasoning remain unchecked in Peano.",
+      "summary": "Single decoded values are functional and the checked gap criterion supplies pairwise beta-modulus coprimality; extensional whole-prefix comparison and finite-product reasoning remain unchecked in Peano.",
       "peano": null,
       "blocker": {
         "code": "factorization_equivalence_unrepresented",
-        "detail": "The current surface has no primitive finite collections. Single-position β decoding is checked and functional, but extensional finite-prefix comparison and finite-product Euclid/cancellation lemmas are not yet available as checked Peano entries.",
+        "detail": "The current surface has no primitive finite collections. Single-position β decoding is checked and functional, and pairwise moduli can be shown coprime from explicit divisible gaps, but extensional finite-prefix comparison and finite-product Euclid/cancellation lemmas are not yet available as checked Peano entries.",
         "unblocks_with": [
           "the factorization representation required by prime_factorization_existence",
           "checked extensional equality for sorted β-decoded prefixes",

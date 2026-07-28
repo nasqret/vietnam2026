@@ -168,6 +168,60 @@ EXPECTED = {
         "script": (47, "c922363bdbcc3cc43560fbbb358d5f408fcdd77e17092fa73a70e1549e612d71"),
         "certificate": ((6_941, 69), 201, "d0c6658e1cbb304cd57f39f2a60f1695aeac5bd52587d87d8d22ecdf29067776"),
     },
+    "beta_modulus_coprime_base": {
+        "dependencies": ("divides_remainder", "divisor_one", "mul_comm"),
+        "statement": "e3888d0932249958689f3ec9e8d191cf866212c101dabfe5b62c198c39c4d373",
+        "script": (20, "5a184438ec47cbcaefa77c2cfec764f5fab1c64509eb9ec832609392037fa545"),
+        "certificate": ((874, 30), 24, "f7e3c800ecbe062e709ee0d115860418d316389e361f5b26c5e460340ed6ce42"),
+    },
+    "common_divisor_beta_moduli_divides_gap_times_c": {
+        "dependencies": (
+            "divides_remainder",
+            "add_succ_left",
+            "add_mul",
+            "zero_add",
+        ),
+        "statement": "5e42d3c08bd8cc965eac53bfd7e6abfdf30d1a27ee43f0d38ab3febc24389b0f",
+        "script": (27, "bf289ffe19464b806b973dc2271b0ea7218eaa5724d8f42bd0e0fea69b70ed29"),
+        "certificate": ((855, 30), 24, "42a60bc7d8feda4822b114ce9a25a29d27d03a2ab6b9cb2e8a078f4942a8862a"),
+    },
+    "beta_moduli_coprime_of_gap_dvd": {
+        "dependencies": (
+            "beta_modulus_coprime_base",
+            "common_divisor_beta_moduli_divides_gap_times_c",
+            "multiple_trans",
+            "multiple_refl",
+            "gauss_coprime_cancel",
+            "mul_comm",
+        ),
+        "statement": "df6c3daf567bc06a5ca361d2b1cfc976d2ec1bca03f3b8dd5e24dba8b0070602",
+        "script": (59, "bee06c03429b6c7f54a1d21e3676efe6002f870c848181331d89c38c90945f97"),
+        "certificate": ((6_007, 56), 175, "e31f87a1af34325c3566489d1e3ffe0220e721312a89d0f9a62ea1ea88cf3fe8"),
+    },
+    "binary_crt_beta_pair_of_gap_dvd": {
+        "dependencies": ("beta_moduli_coprime_of_gap_dvd", "binary_crt_beta_pair"),
+        "statement": "ca85aea2052028f5d185d8c782cf933f0d06c2c7c40d86f3657aad907f3131e5",
+        "script": (27, "beef18023d324c09cc87fa9619a743277d018baa55dea765bc220d51e40aa054"),
+        "certificate": ((12_980, 71), 378, "79ec20e402f2b19088c6fb04d4e63229715dbf4e5565e648b4b0f38842fa2a47"),
+    },
+    "bounded_common_multiple_step": {
+        "dependencies": (
+            "mul_eq_zero",
+            "succ_ne_zero",
+            "zero_or_succ",
+            "multiple_mul_right",
+            "mul_comm",
+        ),
+        "statement": "7a8fdf6f5a7e1d28efecf7a58005eb7f45d21dccd7aee4cb2cd8acbe7ca792ec",
+        "script": (52, "144ec3170f18ec447363382768190823f628a9c5871656c202525ef7d650cc39"),
+        "certificate": ((483, 29), 15, "aa455c44508fbe46578348227387b413695af701093b7b5daf55c1a284c9ccd0"),
+    },
+    "bounded_common_multiple_exists": {
+        "dependencies": ("bounded_common_multiple_step", "succ_ne_zero", "add_eq_zero_left"),
+        "statement": "ad3921906117ef267f82ff3e9be6d228c7872b98fccb582228c9d4a86866019f",
+        "script": (29, "b8222e577fbfc91069929b6a67c9805960a397085ce99fe75c0bfedda4843953"),
+        "certificate": ((640, 30), 22, "ccb71e803625625f870e7768b2428a556b41ee1700e549c7f2ddb728865729bd"),
+    },
 }
 
 ZERO = Zero()
@@ -317,6 +371,12 @@ def test_public_live_use_closes_congruence_and_beta_endpoints() -> None:
         "binary_crt",
         "binary_crt_remainders",
         "binary_crt_beta_pair",
+        "beta_modulus_coprime_base",
+        "common_divisor_beta_moduli_divides_gap_times_c",
+        "beta_moduli_coprime_of_gap_dvd",
+        "binary_crt_beta_pair_of_gap_dvd",
+        "bounded_common_multiple_step",
+        "bounded_common_multiple_exists",
     ):
         theorem = get(name)
         assert theorem is not None

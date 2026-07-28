@@ -17,8 +17,8 @@ $$
 \to \text{factorization}.
 $$
 
-The current candidate snapshot contains **170 replayed, closed, independently
-kernel-checked Peano theorems**. One hundred and thirty-five form the post-baseline
+The current candidate snapshot contains **176 replayed, closed, independently
+kernel-checked Peano theorems**. One hundred and forty-one form the post-baseline
 foundational layer: named equality congruences, additive cancellation, discrete order,
 multiplication cancellation and monotonicity, zero-sum and nonzero-product
 facts, divisibility closure, constructive non-divisibility, generic residue
@@ -36,7 +36,7 @@ decoded-value existence, uniqueness, their combined
 existence-and-uniqueness interface, and both directions between a decoded
 value and a bounded balanced-congruence witness. Bounded congruent
 representatives are now unique, and a bounded congruence can be reconstructed
-as a directed quotient-remainder decomposition. The newest six-theorem tranche
+as a directed quotient-remainder decomposition. The preceding six-theorem tranche
 extracts the two modular consequences of balanced Bézout, proves the
 successor-modulus predecessor cancellation used by the constructive witness, checks
 binary CRT for arbitrary nonzero coprime natural moduli, exposes bounded
@@ -46,39 +46,50 @@ given coprime. This layer
 includes `prime_two`, the first checked instance of the fully expanded prime
 predicate, `prime_divisor_eq_one_or_self`, its general divisor
 characterization, and `euclid_prime_dvd_product`.
+The latest six entries close the next conditional encoding checkpoint:
+`beta_modulus_coprime_base`,
+`common_divisor_beta_moduli_divides_gap_times_c`,
+`beta_moduli_coprime_of_gap_dvd`,
+`binary_crt_beta_pair_of_gap_dvd`,
+`bounded_common_multiple_step`, and
+`bounded_common_multiple_exists`. They prove pairwise beta-modulus
+coprimality when $j=i+\mathit{gap}$ and $\mathit{gap}\mid c$, then construct a
+nonzero $c$ divisible by every positive natural up to a given bound.
 The reconciled upstream modular catalog contributes twelve
 more unique residue and fourth-power theorems; fourteen of its other records
 are identical to foundational entries and are exposed only once.
 
 Every current theorem fits the browser's ordinary `use` limit. The largest
-shared certificate, `binary_crt_beta_pair`, has 6,941 structural proof nodes,
-depth 69, and 201 self-contained Cuts; `prime_divisor_exists` still sets the
-snapshot-wide maximum depth at 80. Across all 170 entries, the snapshot
-contains 99,137 structural nodes, including 2,693 Cuts, and 130 certificates
+shared certificate, `binary_crt_beta_pair_of_gap_dvd`, has 12,980 structural
+proof nodes, depth 71, and 378 self-contained Cuts; `prime_divisor_exists`
+still sets the snapshot-wide maximum depth at 80. Across all 176 entries, the
+snapshot contains 120,976 structural nodes, including 3,331 Cuts, and 136 certificates
 contain at least one Cut. The
 immutable upstream
 report still records the capstone's former fully expanded 21,515-node/depth-66
 representation; it remains provenance, not the current runtime metric.
 
-That number is deliberately narrower than the 177-node research catalog: 23
-nodes are `checked_existing`, 147 are `checked_m20`, three are
+That number is deliberately narrower than the 183-node research catalog: 23
+nodes are `checked_existing`, 153 are `checked_m20`, three are
 `planned_expressible`, and four are `blocked_by_language`. Beyond
 `prime_two`, the catalog now includes checked relational gcd existence,
 balanced Bézout, Gauss cancellation, Euclid's lemma, constructive primality
 decisions, prime-divisor existence, additive and multiplicative
 modular-congruence compatibility, the decomposition-to-congruence bridge, and
 Gödel-β decoded-value totality, functionality, its bidirectional bounded
-congruence characterization, constructive binary CRT, and the two-position
-β-code client under an explicit coprimality premise. The remaining
+congruence characterization, constructive binary CRT, the conditional
+gap-divisibility coprimality theorem, its two-position beta-code client, and
+bounded common-multiple existence. The remaining
 expressible targets are `prime_three`, primes above every bound, and a
-two-prime-product uniqueness client. Greatest-prime descent, pairwise
-coprimality for the selected β moduli, bounded CRT iteration, finite-prefix
-extension, and the selected encoded-product infrastructure are the next
+two-prime-product uniqueness client. Greatest-prime descent, index-bound glue
+from the common-multiple invariant, product-modulus CRT
+iteration, finite-prefix extension, and the selected prefix-product
+infrastructure are the next
 critical native
 factorization gates. A separate
 Lean 4 companion now checks full finite-list FTA
 existence and uniqueness up to permutation. It is cataloged as a companion,
-not counted among the 170 Peano theorems; those entries are not presented as
+not counted among the 176 Peano theorems; those entries are not presented as
 Peano-proved until a script and closed certificate pass the same kernel gate.
 
 ## How to read the status labels
@@ -134,7 +145,7 @@ One stable theorem name is intended to identify the same object in four views:
 The generated artifact binds the exact statement, dependency list, tactic
 script, certificate representation hash, node count, depth, and ordered root
 digest
-`51fbc86c80feb458dd6adcf1e08ee378e62f2f55e82fb8c6c5c9e9e0ab41a227`.
+`874779f25de06cebc9d111e76bd183e4a8c514bd0d9da0c52f71c99f887cc3a7`.
 These hashes make drift visible; they do not grant authority.
 Authority still comes only from checking the closed proof term against the
 closed formula.

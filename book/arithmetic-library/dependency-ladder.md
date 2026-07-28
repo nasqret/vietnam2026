@@ -13,13 +13,13 @@ needs.
 | Addition | identities, associativity, commutativity, cancellation, zero-sum rigidity | checked core; more orientations planned |
 | Multiplication | identities, annihilation, distributivity, associativity, commutativity, zero product | checked core |
 | Order | reflexivity, transitivity, trichotomy, incompatibility, addition monotonicity and cancellation | checked |
-| Divisibility | units, zero, reflexivity, transitivity, addition/product closure, constructive decision | checked |
+| Divisibility | units, zero, reflexivity, transitivity, addition/product closure, constructive decision, bounded nonzero common multiples | checked |
 | Modular congruence | balanced equivalence laws and additive/multiplicative compatibility | reflexivity, symmetry, transitivity, addition, multiplication, both decomposition bridges, and bounded uniqueness checked; fixed mod-five residue ladder checked |
 | Parity | even/odd dichotomy and arithmetic tables | planned and expressible |
 | Division | quotient-remainder existence, uniqueness, block separation, and zero-remainder/divisibility bridges | checked |
 | GCD/coprime | relational symmetry/projections/constructors, uniqueness, zero-right base, Euclidean invariance, existence, balanced Bézout, Gauss cancellation | checked through `gauss_coprime_cancel` |
 | Primes | bounded factor search, primality decision, proper-factor descent, prime divisors, Euclid's lemma, infinitely many primes | checked through `prime_divisor_exists` and `euclid_prime_dvd_product`; primes above every bound remain planned |
-| Factorization | existence and uniqueness up to permutation | single-position β decoding, binary CRT, and two-position β construction under a coprimality premise checked; greatest-prime descent, β-modulus coprimality, bounded CRT iteration, prefix extension, and product infrastructure pending; Lean companion checked |
+| Factorization | existence and uniqueness up to permutation | single-position β decoding, binary CRT, conditional gap-based β-modulus coprimality, and its two-position client checked; greatest-prime descent, index-bound finite-prefix glue, product-modulus CRT iteration, prefix extension, and product infrastructure pending; Lean companion checked |
 
 The generated `dependency-graph.mmd` is the exact graph for checked entries.
 The research catalog is the larger design graph and gives every unproved node
@@ -121,7 +121,11 @@ does not supply it.
 Infinitely many primes can be reached before a general factorial function.
 It is enough to construct, for each bound, a common multiple of every number
 from two to that bound and then take a prime divisor of one more than that
-multiple. This remains a first-order existence argument.
+multiple. The constructive infrastructure for the first half is now checked:
+`bounded_common_multiple_step` extends the invariant by one endpoint, and
+`bounded_common_multiple_exists` constructs a nonzero common multiple of
+every positive natural at most the supplied bound. The prime-above-bound
+client remains planned.
 
 For FTA, the next arithmetic gate is a greatest-prime-divisor descent suited
 to constructing a sorted factor sequence. Single-position β-value existence,
@@ -137,11 +141,21 @@ are now checked through fully expanded PA formulas. The checked representation
 layer now also includes constructive binary CRT for arbitrary nonzero coprime
 moduli. `binary_crt_remainders` recovers the two directed remainder equations,
 and `binary_crt_beta_pair` constructs one code realizing two bounded decoded
-values. The last theorem assumes the two expanded β moduli are coprime; it
-does not prove that premise from the shared β parameter. The representation
-gates that remain are that modulus-coprimality theorem, bounded CRT iteration,
-finite-prefix extension and restriction, and prefix-product trace existence
-and functionality. FTA itself is not yet a native `pa lib` theorem.
+values. The last theorem assumes the two expanded β moduli are coprime.
+The new conditional bridge proves that premise when
+
+$$
+j=i+g\qquad\text{and}\qquad g\mid c,
+$$
+
+and `binary_crt_beta_pair_of_gap_dvd` applies it directly. The condition is
+not cosmetic: $c=1$ produces moduli $M(1,1)=3$ and $M(1,4)=6$, so arbitrary
+members of the family are not pairwise coprime. Bounded common-multiple
+existence supplies a future $c$ divisible by every positive gap through a
+bound. The representation gates that remain are the index-bound glue exposing
+those gaps, product-modulus CRT iteration, finite-prefix extension and
+restriction, and prefix-product trace existence and functionality. FTA itself
+is not yet a native `pa lib` theorem.
 
 ## Admission invariants
 

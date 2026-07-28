@@ -297,6 +297,17 @@ middle or double-negation elimination is hidden in the search.
 | `prime_divisor_eq_one_or_self` | 57 / 12 |
 | `euclid_prime_dvd_product` | 5,382 / 55 |
 
+The β-coprimality/common-multiple clients of this gcd and Gauss layer are:
+
+| Checked theorem | Nodes/depth |
+|---|---:|
+| `beta_modulus_coprime_base` | 874 / 30 |
+| `common_divisor_beta_moduli_divides_gap_times_c` | 855 / 30 |
+| `beta_moduli_coprime_of_gap_dvd` | 6,007 / 56 |
+| `binary_crt_beta_pair_of_gap_dvd` | 12,980 / 71 |
+| `bounded_common_multiple_step` | 483 / 29 |
+| `bounded_common_multiple_exists` | 640 / 30 |
+
 ## Admission gates
 
 1. **Complete:** admit and mutation-test the Euclidean invariance ladder.
@@ -321,9 +332,12 @@ middle or double-negation elimination is hidden in the search.
     equations, prove constructive binary CRT and its bounded-residue wrapper,
     and construct two β positions under an explicit modulus-coprimality
     premise.
-11. Develop greatest-prime-divisor descent for sorted factorization, then
-    prove β-modulus coprimality and cross bounded CRT iteration,
-    prefix-extension, and the product gate.
+11. **Complete:** prove conditional β-modulus coprimality when the ordered
+    index gap divides `c`, discharge the two-position CRT premise, and
+    construct nonzero bounded common multiples.
+12. Develop greatest-prime-divisor descent for sorted factorization, then
+    prove the index-bound finite-prefix glue and product-modulus CRT iteration
+    needed for prefix extension and the product gate.
 
 Prime-divisor existence does not follow automatically from gcd or Bézout, and
 Euclid's lemma does not construct a prime divisor; both sides are now checked

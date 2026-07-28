@@ -38,18 +38,38 @@ to the bound on `x` plus congruence of `b` and `x` modulo `M(c,i)`.
 
 The first composition step is now checked. [[binary_crt]] constructs a
 solution for two nonzero coprime moduli, and [[binary_crt_beta_pair]]
-specializes it to a single code realizing two bounded β values. The latter
-does **not** prove that its two β moduli are coprime: pairwise coprimality is an
-explicit theorem premise. It also does not iterate over a bounded family, so
-it is not yet finite-prefix extension.
+specializes it to a single code realizing two bounded β values under an
+explicit coprimality premise.
+
+Unconditional pairwise coprimality of β moduli is false. With `c=1`,
+indices 1 and 4 produce
+
+$$
+M(1,1)=3,\qquad M(1,4)=6,
+$$
+
+which have common divisor 3. The correct checked theorem is conditional:
+[[common_divisor_beta_moduli_divides_gap_times_c]] controls a common divisor
+when `j=i+\mathit{gap}`, and [[beta_moduli_coprime_of_gap_dvd]]
+proves coprimality when additionally `\mathit{gap}\mid c`.
+[[binary_crt_beta_pair_of_gap_dvd]] therefore constructs the two-position code
+with no separate coprimality premise.
+
+The other half of the finite-bound strategy is also checked.
+[[bounded_common_multiple_step]] and [[bounded_common_multiple_exists]]
+construct a nonzero `c` divisible by every positive natural up to a
+chosen bound. What is not yet proved is the glue that bounds and orients every
+pairwise index gap in a finite prefix, nor the product-modulus CRT iteration
+that folds the binary constructor over that prefix.
 
 The remaining spine begins with greatest-prime-divisor descent for the sorted
-factor order. The encoding layer then needs pairwise β-modulus coprimality,
-bounded CRT iteration, finite-prefix extension/restriction, prefix-product trace
-existence/functionality/composition, preservation of bounded primality and
-sorting, and finite-product Euclid/cancellation. None of those relations is a
-trusted primitive, and the checked two-position constructor does not by itself
-constitute [[fundamental-theorem-of-arithmetic|FTA]].
+factor order. The encoding layer then needs the index-bound glue just
+described, product-modulus CRT iteration, finite-prefix
+extension/restriction, prefix-product trace existence/functionality/composition,
+preservation of bounded primality and sorting, and finite-product
+Euclid/cancellation. None of those relations is a trusted primitive, and the
+checked conditional two-position constructor does not by itself constitute
+[[fundamental-theorem-of-arithmetic|FTA]].
 
 ## Related
 

@@ -209,6 +209,12 @@ def build_payloads() -> dict[str, str]:
         "binary_crt",
         "binary_crt_remainders",
         "binary_crt_beta_pair",
+        "beta_modulus_coprime_base",
+        "common_divisor_beta_moduli_divides_gap_times_c",
+        "beta_moduli_coprime_of_gap_dvd",
+        "binary_crt_beta_pair_of_gap_dvd",
+        "bounded_common_multiple_step",
+        "bounded_common_multiple_exists",
     }
     published_mod5_unique_names = {
         spec.name for spec in MOD5_THEOREMS

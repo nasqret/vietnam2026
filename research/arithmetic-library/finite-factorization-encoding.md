@@ -22,11 +22,14 @@ decoded value. Bounded balanced-congruent representatives are equal, and the
 directed remainder/congruence bridge now works both ways. Consequently β
 decoding is equivalent to the value bound plus balanced congruence between the
 code and value at the β modulus. Constructive binary CRT is now checked, as is
-a constructor for one code realizing two bounded β values. The latter retains
-coprimality of the two β moduli as an explicit premise. This does **not** prove
-FTA. The remaining critical path starts with greatest-prime-divisor descent
-and then crosses β-modulus coprimality, bounded CRT iteration, finite-prefix,
-prefix-product, and finite-product layers.
+a constructor for one code realizing two bounded β values under an explicit
+coprimality premise. The new conditional layer proves that premise when the
+ordered index gap divides `c`, applies the constructor, and produces a
+nonzero `c` divisible by every positive gap through a chosen bound.
+This does **not** prove FTA. The remaining critical path starts with
+greatest-prime-divisor descent and then crosses index-bound finite-prefix glue,
+product-modulus CRT iteration, finite-prefix, prefix-product, and
+finite-product layers.
 
 ## Sequence values
 
@@ -81,10 +84,27 @@ remainder equations for bounded residues. `binary_crt_beta_pair` then
 constructs one code for two bounded β values.
 
 These theorems do not yet construct one code satisfying an arbitrary finite
-family of prescribed residues. In particular,
-`binary_crt_beta_pair` assumes pairwise coprimality of its two β moduli;
-β-modulus coprimality, bounded CRT iteration, and finite-prefix extension
-remain necessary.
+family of prescribed residues. In particular, `binary_crt_beta_pair`
+assumes coprimality of its two β moduli.
+
+Unconditional pairwise coprimality is false: when `c=1`, positions
+`i=1` and `j=4` have moduli 3 and 6. The checked replacement has
+four parts:
+
+- `beta_modulus_coprime_base` proves each successor β modulus coprime
+  to `c`;
+- `common_divisor_beta_moduli_divides_gap_times_c` shows a common
+  divisor of the moduli at `j=i+gap` divides `gap*c`;
+- `beta_moduli_coprime_of_gap_dvd` combines those facts with Gauss to
+  prove the moduli coprime when `gap | c`; and
+- `binary_crt_beta_pair_of_gap_dvd` discharges the original pair
+  constructor's premise.
+
+Separately, `bounded_common_multiple_step` and
+`bounded_common_multiple_exists` construct a nonzero `c`
+divisible by every positive natural at most a specified bound. Still required
+are the lemmas orienting and bounding all finite-prefix index gaps and an
+iteration that accumulates a product modulus while applying binary CRT.
 
 A code pair is deliberately not treated as a canonical sequence identity.
 Different pairs can decode the same finite prefix, so all later equality is
@@ -205,24 +225,28 @@ make the proof small. The admission route and its current status are:
    successor-predecessor cancellation in congruence, prove binary CRT and its
    bounded-remainder form, and construct two β positions under an explicit
    modulus-coprimality premise.
-7. **Next arithmetic gate:** construct a greatest prime divisor with a strict
+7. **Checked conditional β-coprimality gate:** prove the base-coprimality and
+   common-divisor/gap lemmas, discharge binary β-pair CRT when the gap divides
+   `c`, and construct nonzero bounded common multiples.
+8. **Next arithmetic gate:** construct a greatest prime divisor with a strict
    quotient descent suitable for appending to an already sorted
    factorization.
-8. **Encoding gate:** prove β-modulus coprimality, bounded CRT iteration, and
-   finite-prefix extension and restriction.
-9. **Product gate:** prove prefix-product trace extension/functionality and
+9. **Encoding gate:** prove the ordered-index and gap-bound glue needed to
+   apply conditional coprimality throughout a prefix, product-modulus CRT
+   iteration, and finite-prefix extension and restriction.
+10. **Product gate:** prove prefix-product trace extension/functionality and
    preservation of `AllPrime`/`Sorted`.
-10. **Existence gate:** perform the strengthened natural-number descent using
+11. **Existence gate:** perform the strengthened natural-number descent using
    the greatest prime divisor and the encoded prefix/product extension laws.
-11. **Uniqueness gate:** prove finite-product Euclid, prime matching,
+12. **Uniqueness gate:** prove finite-product Euclid, prime matching,
    cancellation, and extensional equality of the two sorted decoded prefixes.
 
 The reviewed self-contained `Cut` rule now supplies lexical proof sharing while
 keeping every dependency proof inside the checked certificate. This removes
 the former fully expanded proof-tree bottleneck, but it does not establish that
 the much larger β/CRT/product spine will fit the live 32,768-node/depth-128
-import budget. The current runtime maximum is 6,941 nodes at
-`binary_crt_beta_pair`, while
+import budget. The current runtime maximum is 12,980 nodes at
+`binary_crt_beta_pair_of_gap_dvd`, while
 `prime_divisor_exists` reaches depth 80; those observations are evidence for
 the arithmetic layer only, not a resource proof for encoded FTA. The
 proof-sharing trust review is recorded separately and must not be disguised as

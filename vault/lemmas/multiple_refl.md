@@ -24,6 +24,7 @@ forall a. exists q. a = a * q
 - [[gcd_exists_up_to]]
 - [[gauss_coprime_cancel]]
 - [[prime_divisor_exists_up_to]]
+- [[beta_moduli_coprime_of_gap_dvd]]
 
 ## Verification record
 

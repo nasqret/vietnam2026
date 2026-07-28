@@ -20,6 +20,7 @@ forall a b n. (exists q. n = a * q) -> (exists r. a = b * r) -> exists s. n = b 
 ## Checked dependents
 
 - [[prime_divisor_exists_up_to]]
+- [[beta_moduli_coprime_of_gap_dvd]]
 
 ## Verification record
 

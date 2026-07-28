@@ -14,10 +14,10 @@ The M9 corpus exporter validates complete sessions, removes duplicate learning t
 splits theorem/session groups deterministically. Failed attempts are retained because learning
 which actions do not apply is part of learning the tactic language.
 
-The corpus rebuilt against the 170-theorem runtime has run fingerprint
-`53305cfb39ddbd6fb6e02280caf594b1937f95790539a2df6b713244f975445c`.
-Its focused library smoke contains 340 sessions, 4,474 raw transitions, 4,471
-unique transitions, and 170 kernel-checked QED endpoints.
+The corpus rebuilt against the 176-theorem runtime has run fingerprint
+`f44b6eb716116063bd24b849d737345f0c9c23240fa8536d1ed25fdc1ae05d56`.
+Its focused library smoke contains 352 sessions, 4,729 raw transitions, 4,726
+unique transitions, and 176 kernel-checked QED endpoints.
 
 A trace row is not a complete [[proof-certificate]] or standalone proof-state snapshot. It is a
 supervised transition example. The source session and the independent [[trusted-kernel]] remain

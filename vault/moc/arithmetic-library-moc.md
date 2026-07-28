@@ -6,18 +6,19 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-The current runtime has 170 unique checked nodes: 23 from the original ladder
-and 147 in the reconciled post-baseline extension. Of the latter, 135 form the
+The current runtime has 176 unique checked nodes: 23 from the original ladder
+and 153 in the reconciled post-baseline extension. Of the latter, 141 form the
 general foundational layer and twelve form the fixed modular capstone. The
-broader 177-node catalog contains three `planned_expressible` and four
+broader 183-node catalog contains three `planned_expressible` and four
 `blocked_by_language` nodes in addition to those checked layers. One
 separately cataloged Lean companion checks full list-based FTA existence and
 uniqueness; it is not counted as a Peano theorem.
 
-The shared snapshot contains 99,137 proof nodes and 2,693 self-contained Cuts;
-130 certificates contain at least one Cut. [[binary_crt_beta_pair]] is largest
-at 6,941 nodes and 201 Cuts, while [[prime_divisor_exists]] sets the maximum
-depth at 80. These are representation metrics, not additional axioms.
+The shared snapshot contains 120,976 proof nodes and 3,331 self-contained Cuts;
+136 certificates contain at least one Cut.
+[[binary_crt_beta_pair_of_gap_dvd]] is largest at 12,980 nodes and 378 Cuts,
+while [[prime_divisor_exists]] sets the maximum depth at 80. These are
+representation metrics, not additional axioms.
 
 ## Design and trust
 
@@ -110,11 +111,21 @@ depth at 80. These are representation metrics, not additional axioms.
 - [[beta_modulus_nonzero]] · [[beta_at_self_of_bound]]
 - [[beta_at_exists]] · [[beta_at_unique]] · [[beta_at_exists_unique]]
 - [[binary_crt]] · [[binary_crt_remainders]] · [[binary_crt_beta_pair]]
+- [[beta_modulus_coprime_base]]
+- [[common_divisor_beta_moduli_divides_gap_times_c]]
+- [[beta_moduli_coprime_of_gap_dvd]] · [[binary_crt_beta_pair_of_gap_dvd]]
+- [[bounded_common_multiple_step]] · [[bounded_common_multiple_exists]]
 
-The last node constructs one code for two bounded β values only under an
-explicit coprimality premise for their two β moduli. It does not prove that
-premise for arbitrary indices and does not iterate the construction over a
-bounded prefix.
+The original β-pair node constructs one code for two bounded values under an
+explicit coprimality premise. The new conditional chain discharges that premise
+when `j = i + gap` and `gap | c`. The bounded common-multiple theorem
+constructs a nonzero `c` divisible by every positive natural at most a
+given bound.
+
+This is deliberately not a claim that arbitrary β moduli are pairwise
+coprime: that statement is false (for `c = 1`, indices 1 and 4 give
+moduli 3 and 6). Index-bound finite-prefix glue and product-modulus CRT
+iteration are still missing.
 
 ## Checked prime nodes
 
@@ -132,7 +143,8 @@ bounded prefix.
 - [[prime_divisor_exists_up_to]] · [[prime_divisor_exists]] — bounded and public prime-divisor existence
 
 The remaining FTA path is not hidden by these admissions: it still requires
-greatest-prime descent, pairwise β-modulus coprimality, bounded CRT iteration,
+greatest-prime descent, index-bound glue applying conditional β-modulus
+coprimality throughout a finite prefix, product-modulus CRT iteration,
 [[godel-beta-sequence|β finite-prefix extension]], prefix-product traces, and
 finite-product existence and uniqueness.
 

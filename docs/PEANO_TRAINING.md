@@ -623,22 +623,29 @@ entries are appended to the public theorem ladder at source commit
 All replay deterministically and pass the empty-context kernel check. The largest certificate has
 21,515 nodes at depth 66 in the immutable upstream, fully expanded validation report. The current
 snapshot-v2 representation packages dependency proofs in self-contained kernel Cuts and records a
-maximum node count of 6,941 (`binary_crt_beta_pair`) and a maximum depth of 80
-(`prime_divisor_exists`) across the current 170-theorem ladder. It contains
-99,137 structural nodes and 2,693 self-contained Cuts across 130 Cut-bearing
+maximum node count of 12,980 (`binary_crt_beta_pair_of_gap_dvd`) and a
+maximum depth of 80 (`prime_divisor_exists`) across the current
+176-theorem ladder. It contains 120,976 structural nodes and 3,331
+self-contained Cuts across 136 Cut-bearing
 entries. The new premise surface includes the full `mod_eq_add`/`mod_eq_mul`
 compatibility layer, `mod_eq_bounded_unique`, both directed
 remainder/congruence bridges, and all expanded β-value theorems through
 `beta_at_of_mod_eq_bound`. Thus expanded β decoding is equivalent to a bound
 plus balanced congruence. Constructive `binary_crt`, its bounded-residue
-wrapper, and the conditional two-position `binary_crt_beta_pair` are now
-checked. The library still does not include a proof of β-modulus coprimality,
-bounded CRT iteration, finite products, greatest-prime descent, or native FTA.
+wrapper, and the premise-bearing two-position `binary_crt_beta_pair` are
+checked. The newer `beta_moduli_coprime_of_gap_dvd` proves the
+coprimality premise when an ordered index gap divides `c`,
+`binary_crt_beta_pair_of_gap_dvd` applies it, and
+`bounded_common_multiple_exists` supplies a nonzero common multiple for
+all positive gaps through a bound. The library still does not include
+index-bound finite-prefix glue, product-modulus CRT iteration, finite products,
+greatest-prime descent, or native FTA. Unconditional pairwise β-modulus
+coprimality is false.
 Model provenance must bind the representation version as
 well as the certificate hashes and metrics.
-The corresponding 170-entry deterministic corpus refresh retains 13,344 transitions
+The corresponding 176-entry deterministic corpus refresh retains 13,344 transitions
 from 1,692 sessions and has run fingerprint
-`53305cfb39ddbd6fb6e02280caf594b1937f95790539a2df6b713244f975445c`.
+`f44b6eb716116063bd24b849d737345f0c9c23240fa8536d1ed25fdc1ae05d56`.
 
 The pack must nevertheless enter through a new scientific contract. A
 content-addressed library snapshot must bind each name, canonical statement,

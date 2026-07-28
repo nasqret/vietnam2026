@@ -1500,3 +1500,45 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   generated vault has 249 notes and 2,194 resolved links, including all 170
   lemma notes. Local browser build `2026-07-29e` has immutable application
   identity `a-ac494e524f2f`; it is not staged, deployed, or promoted.
+
+## 2026-07-29 — Conditional β-modulus coprimality and bounded common multiples
+
+- Corrected the finite-prefix strategy: arbitrary Gödel-β moduli are not
+  pairwise coprime. For `c=1`, indices 1 and 4 yield moduli 3 and 6,
+  sharing divisor 3. No theorem or roadmap now treats that false statement as
+  an open goal.
+- Added six closed native theorems.
+  `beta_modulus_coprime_base` proves every β-shaped successor modulus
+  coprime to `c`.
+  `common_divisor_beta_moduli_divides_gap_times_c` controls a common
+  divisor at ordered indices `j=i+gap`.
+  `beta_moduli_coprime_of_gap_dvd` derives coprimality when
+  `gap | c`, and `binary_crt_beta_pair_of_gap_dvd` discharges
+  the existing two-position CRT premise.
+  `bounded_common_multiple_step` and
+  `bounded_common_multiple_exists` construct a nonzero `c`
+  divisible by every positive natural through a fixed bound.
+- The six shared certificates have respectively 874/24/depth 30,
+  855/24/depth 30, 6,007/175/depth 56, 12,980/378/depth 71,
+  483/15/depth 29, and 640/22/depth 30 nodes/Cuts/depth.
+  Deterministic replay, empty-context checking, PA1–PA6-only axiom audits,
+  dependency necessity, mutation rejection, and live/edge checks are green.
+- The runtime now contains 176 unique checked theorems: 23 baseline, 141
+  general foundational, and twelve fixed modular capstones. The synchronized
+  183-node catalog contains 23 `checked_existing`, 153
+  `checked_m20`, three planned, and four language-blocked entries.
+  Shared certificates total 120,976 structural nodes and 3,331 Cuts across 136
+  Cut-bearing entries. `binary_crt_beta_pair_of_gap_dvd` is largest at
+  12,980 nodes/378 Cuts; `prime_divisor_exists` retains maximum depth
+  80. The ordered root is
+  `874779f25de06cebc9d111e76bd183e4a8c514bd0d9da0c52f71c99f887cc3a7`.
+- Regenerated the 13,344-transition/1,692-session corpus under run fingerprint
+  `f44b6eb716116063bd24b849d737345f0c9c23240fa8536d1ed25fdc1ae05d56`.
+  The isolated smoke has 352 sessions, 4,729 raw and 4,726 unique transitions,
+  and all 176 authored-script QEDs. The complete Peano suite passes 1,098 tests
+  on CPython 3.10.
+- Local browser build `2026-07-29f` has immutable application identity
+  `a-72e034c621a7`. It is not staged, deployed, or promoted.
+  The remaining native FTA path requires greatest-prime descent, index-bound
+  finite-prefix glue, product-modulus CRT iteration, prefix products,
+  factorization existence/uniqueness, and the final native FTA theorem.

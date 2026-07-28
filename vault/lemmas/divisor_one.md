@@ -22,6 +22,7 @@ forall d. (exists y. 1 = d * y) -> d = 1
 - [[coprime_one_right]]
 - [[coprime_one_left]]
 - [[is_gcd_one_to_coprime]]
+- [[beta_modulus_coprime_base]]
 
 ## Verification record
 

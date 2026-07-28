@@ -165,7 +165,8 @@ course merely because that course uses a powerful congruence tactic.
 - checked relational `IsGCD` existence and uniqueness;
 - checked Euclidean-step invariance;
 - checked subtraction-free four-natural balanced Bézout relation;
-- checked coprimality and Gauss cancellation; modular inverses remain planned.
+- checked coprimality, Gauss cancellation, and the balanced-natural modular
+  inverse projections used by binary CRT.
 
 ### L7: Primes
 
@@ -216,16 +217,18 @@ This boundary should be explicit in the plan:
   decoding equivalent to bound plus congruence; constructive binary CRT; and
   a conditional two-position β-code constructor.
 - **Current-language feasible next target:** greatest-prime-divisor descent and
-  infinitude of primes, plus β-modulus coprimality and parity clients not
-  already in the fixed-modulus layer.
+  infinitude of primes, plus the index-bound glue and product-modulus CRT
+  iteration needed to use checked conditional β-modulus coprimality over a
+  finite prefix, and parity clients not already in the fixed-modulus layer.
 - **Feasible with relational encodings but potentially unwieldy:** generic
   algorithms, signed-coefficient APIs beyond the checked four-natural balanced
   Bézout relation, and recursive arithmetic-function graphs.
 - **Encoding milestone:** decoded β values are checked and equivalent to bound
-  plus balanced congruence, while binary CRT and a conditional two-position
-  constructor are checked. β-modulus coprimality, bounded CRT iteration,
-  finite-prefix construction, prefix products, extensional sequence equality,
-  and finite counting remain; generic exponentiation and an optional
+  plus balanced congruence, while binary CRT, conditional gap-divisibility
+  coprimality, its two-position constructor, and bounded nonzero common
+  multiples are checked. Index-bound finite-prefix glue, product-modulus CRT
+  iteration, finite-prefix construction, prefix products, extensional
+  sequence equality, and finite counting remain; generic exponentiation and an optional
   user-facing list/multiset layer are separate language-design choices.
 - **Blocked as a natural single theorem until that encoding milestone:** the
   full Fundamental Theorem of Arithmetic and its uniqueness clause,
@@ -235,9 +238,10 @@ Gödel coding represents sequences inside first-order arithmetic at the cost of
 a less direct pedagogical API and potentially very large certificates. The
 representation review nevertheless selected a conservative Gödel-β authoring
 facade because it expands into the unchanged Peano language. With constructive
-prime-divisor existence, the equivalent bound/congruence β-value API, and
-binary CRT now checked, the remaining critical path is greatest-prime descent
-followed by β-modulus coprimality, bounded CRT iteration, finite-prefix
+prime-divisor existence, the equivalent bound/congruence β-value API, binary
+CRT, conditional β-modulus coprimality, and bounded common multiples now
+checked, the remaining critical path is greatest-prime descent followed by
+index-bound finite-prefix glue, product-modulus CRT iteration, finite-prefix
 extension, prefix-product traces, and finite-product
 existence/uniqueness certificates.
 

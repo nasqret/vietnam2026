@@ -150,10 +150,25 @@ checked balanced-congruence API. `mod_eq_bounded_unique` and
 theorem names do not add a predicate symbol. Constructive `binary_crt` now
 combines any two bounded residues for nonzero coprime moduli, and
 `binary_crt_beta_pair` turns that result into two expanded `At` facts. The
-latter keeps coprimality of the two β moduli as an explicit premise: no theorem
-yet establishes the required family-wide coprimality condition. Bounded CRT
-iteration and finite-prefix extension are therefore still required before
-arbitrary finite data can be encoded.
+latter keeps coprimality of the two β moduli as an explicit premise.
+`beta_modulus_coprime_base` proves each modulus coprime to $c$, while
+`common_divisor_beta_moduli_divides_gap_times_c` and Gauss cancellation yield
+the checked conditional theorem
+
+$$
+j=i+g\;\land\;g\mid c
+\quad\Longrightarrow\quad
+\operatorname{Coprime}(M(c,i),M(c,j)).
+$$
+
+The condition matters. Unconditional pairwise coprimality is false: for
+$c=1$, $M(1,1)=3$ and $M(1,4)=6$. The checked
+`binary_crt_beta_pair_of_gap_dvd` applies precisely the conditional theorem.
+`bounded_common_multiple_exists` separately constructs a nonzero $c$
+divisible by every positive natural at most a supplied bound. What remains is
+the index-bound glue that turns that invariant into all gaps required by a
+finite prefix, product-modulus CRT iteration that preserves earlier
+positions, and the prefix-product relation.
 
 The native route is therefore explicit:
 
@@ -164,9 +179,10 @@ The native route is therefore explicit:
    prime-divisor-existence clients;
 3. prove greatest-prime descent for the selected sorted factorization route;
 4. reuse the checked equivalence between single-position β decoding and
-   bounded congruence together with checked binary CRT; prove the selected
-   β-modulus coprimality condition, bounded CRT iteration, finite-prefix
-   extension, and prefix-product relations;
+   bounded congruence together with checked binary CRT, conditional
+   gap-divisibility coprimality, and bounded common-multiple existence; prove
+   index-bound finite-prefix glue, product-modulus CRT iteration,
+   finite-prefix extension, and prefix-product relations;
 5. state and check factorization existence and extensional uniqueness.
 
 A separate Lean companion already checks the conventional finite-list FTA,

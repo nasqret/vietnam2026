@@ -22,6 +22,8 @@ forall c a b q r. (exists u. a = c * u) -> (exists v. b = c * v) -> a = b * q + 
 
 - [[is_gcd_euclid_forward]]
 - [[is_gcd_euclid_backward]]
+- [[beta_modulus_coprime_base]]
+- [[common_divisor_beta_moduli_divides_gap_times_c]]
 
 ## Verification record
 

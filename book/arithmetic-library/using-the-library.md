@@ -10,9 +10,16 @@ Existing production entries may already open there; candidate-only entries,
 including the division, gcd, Bézout, Gauss, Euclid, and constructive
 prime-search layers, balanced modular congruence, single-position Gödel-β
 decoding as bounded congruence, and constructive binary CRT become available
-only after this build is promoted. The 170-entry local candidate is assembled
-as build `2026-07-29e`, application `a-ac494e524f2f`; it has not been deployed
+only after this build is promoted. The 176-entry local candidate is assembled
+as build `2026-07-29f`, application `a-72e034c621a7`; it has not been deployed
 by this documentation change.
+
+The synchronized source-bound corpus has run fingerprint
+`f44b6eb716116063bd24b849d737345f0c9c23240fa8536d1ed25fdc1ae05d56`.
+Its isolated all-ladder smoke has 352 sessions, 4,729 raw transitions, 4,726
+unique transitions, and all 176 authored-script kernel QEDs. The current full
+Peano suite passes 1,098 tests; Lambda remains green at 360 tests plus 36
+subtests. These are local-candidate facts, not a deployment claim.
 
 - [`pa lib`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib)
 - [`pa lib add_congr`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20add_congr)
@@ -32,6 +39,12 @@ by this documentation change.
 - [`pa lib binary_crt`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20binary_crt)
 - [`pa lib binary_crt_remainders`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20binary_crt_remainders)
 - [`pa lib binary_crt_beta_pair`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20binary_crt_beta_pair)
+- [`pa lib beta_modulus_coprime_base`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_modulus_coprime_base)
+- [`pa lib common_divisor_beta_moduli_divides_gap_times_c`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20common_divisor_beta_moduli_divides_gap_times_c)
+- [`pa lib beta_moduli_coprime_of_gap_dvd`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_moduli_coprime_of_gap_dvd)
+- [`pa lib binary_crt_beta_pair_of_gap_dvd`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20binary_crt_beta_pair_of_gap_dvd)
+- [`pa lib bounded_common_multiple_step`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20bounded_common_multiple_step)
+- [`pa lib bounded_common_multiple_exists`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20bounded_common_multiple_exists)
 - [`pa lib square_residue_witness`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20square_residue_witness)
 - [`pa lib mod5_fourth_power_one`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod5_fourth_power_one)
 
@@ -128,9 +141,13 @@ now has constructive prime-divisor existence, the balanced additive and
 multiplicative congruence API, functional single-position β decoding with its
 bidirectional bounded-congruence characterization, constructive binary CRT,
 and a two-position β-code client. That client assumes the two expanded β
-moduli are coprime; the library does not yet prove the required family-wide
-coprimality condition. It also does not yet have greatest-prime descent,
-bounded CRT iteration, finite-prefix extension, prefix-product traces, or FTA.
+moduli are coprime. The new conditional wrapper discharges the premise when
+$j=i+\mathit{gap}$ and $\mathit{gap}\mid c$, while
+`bounded_common_multiple_exists` supplies a nonzero $c$ divisible by all
+positive values through a bound. Unconditional beta-modulus coprimality is
+false: $c=1$ gives moduli $3$ and $6$. The library does not yet have
+greatest-prime descent, index-bound finite-prefix glue, product-modulus CRT
+iteration, finite-prefix extension, prefix-product traces, or FTA.
 
 ## Reproducing the artifact
 
@@ -143,7 +160,7 @@ cd peano-lab/py
 python3 -m pytest tests/test_foundational_arithmetic_library.py -q
 ```
 
-The first command verifies exact metadata for the 170 checked certificates
-and ordered root digest `51fbc86c…ab41a227`, the second validates the 177-node
+The first command verifies exact metadata for the 176 checked certificates
+and ordered root digest `874779f25de0…887cc3a7`, the second validates the 183-node
 research DAG and source register, and the last exercises the checked
 foundational layer directly.

@@ -20,6 +20,7 @@ forall a n m. (exists q. n = a * q) -> exists s. n * m = a * s
 ## Checked dependents
 
 - [[multiple_mul_left]]
+- [[bounded_common_multiple_step]]
 
 ## Verification record
 

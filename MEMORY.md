@@ -256,7 +256,7 @@
   delivery remains blocked on administrator-managed cache headers, while M17 is published to
   staging. The implementation, checked corpus,
   construction book, Obsidian knowledge base, kernel-judged evaluation protocol, live checked-
-  theorem reuse, and the current 170-entry checked ladder (whose initial public-catalog/M20
+  theorem reuse, and the current 176-entry checked ladder (whose initial public-catalog/M20
   reconciliation produced a historical 63-entry release),
   certificate-producing `ring`, and bounded checked
   `norm_num` teaching surface are present. The odd-square induction closes through explicit
@@ -329,8 +329,8 @@
   170 commands, and 414/414 vault wikilinks pass. Local browser candidate `2026-07-28g` has
   application identity `a-3ea7b7142aa0`; automated worker boot passes, direct in-app Pyodide
   latency remains unmeasured, and production is untouched.
-- The current native arithmetic runtime has 170 unique checked theorems: 23
-  baseline entries, 135 general foundational entries, and twelve unique
+- The current native arithmetic runtime has 176 unique checked theorems: 23
+  baseline entries, 141 general foundational entries, and twelve unique
   modular capstones. It now includes discrete order, multiplication
   cancellation/monotonicity, constructive quotient-remainder existence, full
   quotient-remainder uniqueness, zero-remainder/divisibility bridges,
@@ -354,32 +354,41 @@
   congruence. Consequently expanded β decoding is equivalent to a bound plus
   balanced congruence. The new subtraction-free CRT layer projects balanced
   Bézout identities, proves constructive binary CRT and its bounded-residue
-  form, and constructs one code for two bounded β values. Pairwise
-  coprimality of those two β moduli remains an explicit premise. Under
-  self-contained dependency sharing, the complete ladder contains 99,137
-  structural proof nodes and 2,693 Cuts across 130 Cut-bearing entries.
-  `binary_crt_beta_pair` is largest by nodes and Cuts at 6,941/201;
+  form, and constructs one code for two bounded β values under an explicit
+  coprimality premise. The latest six admissions prove that two ordered β
+  moduli are coprime when their index gap divides `c`, discharge the
+  β-pair CRT premise under that condition, and construct a nonzero `c`
+  divisible by every positive natural through a chosen bound. Unconditional
+  pairwise coprimality is false: `c=1` at indices 1 and 4 gives moduli
+  3 and 6. Under self-contained dependency sharing, the complete ladder
+  contains 120,976 structural proof nodes and 3,331 Cuts across 136
+  Cut-bearing entries. `binary_crt_beta_pair_of_gap_dvd` is largest by
+  nodes and Cuts at 12,980/378;
   `prime_divisor_exists` sets the maximum depth at 80. The synchronized
-  research catalog has 177 nodes (23 baseline checked, 147 post-baseline
+  research catalog has 183 nodes (23 baseline checked, 153 post-baseline
   checked, three planned, four language-blocked) plus the separate Lean FTA
-  companion. The generated vault has 249 notes and 2,194 resolved links,
-  including 170 lemma notes. The
+  companion. The generated vault has 255 notes, including 176 lemma notes. The
   object language, PA axioms,
   induction schema, and intuitionistic default are unchanged. The trusted
   proof grammar/checker now contains the reviewed self-contained
   `Cut(A,B,lemma,body)` rule: both formulas and both proof branches are embedded,
   with no theorem-name/hash authority. The checker is 247 lines. Its untrusted
   erasure utility is diagnostic and cannot round-trip every introduction-headed
-  or induction-bearing certificate. The local browser candidate is
-  `2026-07-29e` / `a-ac494e524f2f` and exposes all 170 entries. Its 1,098
+  or induction-bearing certificate. The ordered snapshot root is
+  `874779f25de06cebc9d111e76bd183e4a8c514bd0d9da0c52f71c99f887cc3a7`.
+  The local browser candidate is `2026-07-29f` / `a-72e034c621a7`
+  and exposes all 176 entries. Its 1,098
   Peano tests pass on CPython 3.10.
-  Lambda's 360 tests plus 36 subtests, the warning-free 36-source book, 213
-  deep links, 45 session blocks with 264 documented commands, and
-  application-manifest drift pass.
+  The preceding checkpoint's Lambda regression was 360 tests plus 36 subtests;
+  its 36-source book, 213 deep links, and 45 session blocks with 264 documented
+  commands were also green. Those documentary counts have not been reused as
+  a current 176-theorem book claim.
   The source-bound corpus retains 13,344 transitions/1,692 sessions under run
-  fingerprint `53305cfb…`; the isolated smoke has 340 sessions, 4,474
-  raw and 4,471 unique transitions, and all 170 authored QEDs. Peano FTA
-  remains absent pending greatest-prime descent, β-modulus coprimality,
-  bounded CRT iteration, finite-prefix extension, and the prefix-product
-  representation spine.
+  fingerprint
+  `f44b6eb716116063bd24b849d737345f0c9c23240fa8536d1ed25fdc1ae05d56`;
+  the isolated smoke has 352 sessions, 4,729 raw and 4,726 unique transitions,
+  and all 176 authored QEDs. Peano FTA remains absent pending
+  greatest-prime descent, index-bound finite-prefix glue for conditional
+  β-modulus coprimality, product-modulus CRT iteration, finite-prefix
+  extension, and the prefix-product representation spine.
   Production is untouched.

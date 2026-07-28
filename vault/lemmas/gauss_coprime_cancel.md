@@ -24,6 +24,7 @@ forall a b z. (forall d. (exists x. a = d * x) -> (exists y. b = d * y) -> d = 1
 ## Checked dependents
 
 - [[euclid_prime_dvd_product]]
+- [[beta_moduli_coprime_of_gap_dvd]]
 
 ## Verification record
 

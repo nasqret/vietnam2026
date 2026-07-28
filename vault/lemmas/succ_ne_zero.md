@@ -23,6 +23,8 @@ forall n. ~(S n = 0)
 - [[factor_search_up_to]]
 - [[prime_nonzero]]
 - [[beta_modulus_nonzero]]
+- [[bounded_common_multiple_step]]
+- [[bounded_common_multiple_exists]]
 
 ## Verification record
 

@@ -8,11 +8,11 @@ The **foundational arithmetic library** is a versioned dependency graph for
 [[arithmetic-congruence]], [[quotient-and-remainder]], gcd, primes, and
 factorization.
 
-Its current snapshot has 170 closed, independently checked theorems: the
-original 23-node [[theorem-ladder]] and 147 unique post-baseline additions.
-The latter combine 135 general arithmetic facts with twelve additional modular
-capstones. The 177-node research catalog separates 23 `checked_existing`,
-147 `checked_m20`, three
+Its current snapshot has 176 closed, independently checked theorems: the
+original 23-node [[theorem-ladder]] and 153 unique post-baseline additions.
+The latter combine 141 general arithmetic facts with twelve additional modular
+capstones. The 183-node research catalog separates 23 `checked_existing`,
+153 `checked_m20`, three
 `planned_expressible`, and four `blocked_by_language` nodes, but only replayed
 certificates appear in `pa lib`. The M20 additions now include [[prime_two]],
 the first checked instance of the fully expanded prime predicate, and native
@@ -50,13 +50,25 @@ The newest six-node layer projects balanced Bézout identities through
 successor-modulus cancellation with [[mod_eq_predecessor_cancel]], and checks
 [[binary_crt]], [[binary_crt_remainders]], and [[binary_crt_beta_pair]]. The
 last theorem constructs one code for two bounded β values under an explicit
-coprimality premise; it is not bounded CRT or finite-prefix extension.
+coprimality premise.
 
-The generated snapshot contains 99,137 structural proof nodes and 2,693
-self-contained Cuts; 130 of the 170 certificates contain a Cut. Its maximum
-certificate is [[binary_crt_beta_pair]] at 6,941 nodes and 201 Cuts, and its
+The new six-node β arithmetic layer proves
+[[beta_modulus_coprime_base]], shows with
+[[common_divisor_beta_moduli_divides_gap_times_c]] that every common divisor
+of two ordered β moduli divides the index gap times `c`, and derives
+[[beta_moduli_coprime_of_gap_dvd]]. Thus
+[[binary_crt_beta_pair_of_gap_dvd]] discharges the earlier CRT premise when
+`j = i + gap` and `gap | c`. Independently,
+[[bounded_common_multiple_step]] and [[bounded_common_multiple_exists]]
+construct a nonzero `c` divisible by all positive naturals through a
+chosen bound. Arbitrary β moduli are not pairwise coprime; `c = 1` at
+indices 1 and 4 gives the counterexample 3 and 6.
+
+The generated snapshot contains 120,976 structural proof nodes and 3,331
+self-contained Cuts; 136 of the 176 certificates contain a Cut. Its maximum
+certificate is [[binary_crt_beta_pair_of_gap_dvd]] at 12,980 nodes and 378 Cuts, and its
 maximum depth is 80 at [[prime_divisor_exists]]. The ordered snapshot root is
-`51fbc86c80feb458dd6adcf1e08ee378e62f2f55e82fb8c6c5c9e9e0ab41a227`.
+`874779f25de06cebc9d111e76bd183e4a8c514bd0d9da0c52f71c99f887cc3a7`.
 These are representation metrics, not proof authority.
 
 The checkpoint passed all 1,098 Peano tests. The independent Lambda Lab
@@ -73,8 +85,8 @@ than granting names or hashes kernel authority.
 The [[fundamental-theorem-of-arithmetic]] is a destination, not a primitive.
 A conservative [[godel-beta-sequence]] representation is selected and a Lean
 companion checks the full list theorem, while Peano admission still requires
-greatest-prime descent, pairwise β-modulus coprimality, bounded CRT iteration,
-finite-prefix,
+greatest-prime descent, index-bound finite-prefix glue for the checked
+conditional coprimality theorem, product-modulus CRT iteration, finite-prefix,
 prefix-product, and finite-product certificates.
 
 ## Related

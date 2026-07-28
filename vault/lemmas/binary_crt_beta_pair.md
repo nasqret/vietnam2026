@@ -21,7 +21,7 @@ forall c i j a b. (forall d. (exists u. S ((S i) * c) = d * u) -> (exists v. S (
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[binary_crt_beta_pair_of_gap_dvd]]
 
 ## Verification record
 

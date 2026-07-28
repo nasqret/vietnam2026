@@ -6,8 +6,8 @@ replays all current entries, discharges dependency assumptions through embedded 
 Cuts, and asks the independent kernel to check the resulting closed certificate against the
 original statement.
 
-The current local candidate runtime contains 170 unique checked entries: the
-original 23-entry base, 135 post-baseline foundational entries, and twelve
+The current local candidate runtime contains 176 unique checked entries: the
+original 23-entry base, 141 post-baseline foundational entries, and twelve
 further unique records from the upstream modular catalog. The upstream
 26-record catalog ends at the fourth-power modulo-five capstone. Its first
 reconciliation with the 51-entry M20 branch exposed fourteen coincident
@@ -33,10 +33,16 @@ those twenty-seven certificates uses DNE. The next six entries,
 constructive binary CRT and its bounded-remainder and two-position β clients.
 The β client keeps pairwise coprimality of its two expanded moduli as an
 explicit premise. None of these thirty-three congruence/β/CRT certificates
-uses DNE. Across the snapshot, 99,137 structural nodes include 2,693
-self-contained Cuts; 130 certificates contain a Cut. `binary_crt_beta_pair`
-is the largest certificate at 6,941 nodes and sets the per-certificate Cut
-maximum at 201, while `prime_divisor_exists` retains the depth maximum at 80.
+uses DNE. Six further entries add beta/base coprimality, the scaled index-gap
+divisibility lemma, conditional pairwise beta-modulus coprimality, its
+two-position CRT wrapper, and bounded common-multiple step and existence
+theorems. The condition is explicit: $j=i+\mathit{gap}$ and
+$\mathit{gap}\mid c$. It cannot be dropped, since $c=1$ yields beta moduli
+$3$ and $6$. Across the snapshot, 120,976 structural nodes include 3,331
+self-contained Cuts; 136 certificates contain a Cut.
+`binary_crt_beta_pair_of_gap_dvd` is the largest certificate at 12,980 nodes
+and sets the per-certificate Cut maximum at 378, while
+`prime_divisor_exists` retains the depth maximum at 80.
 The complete layered design continues
 in {doc}`The foundational arithmetic library <../arithmetic-library/index>`;
 this chapter retains the construction story of the original core and the public modular route.

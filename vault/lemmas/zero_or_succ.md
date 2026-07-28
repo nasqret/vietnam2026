@@ -25,6 +25,7 @@ forall n. n = 0 \/ exists k. n = S k
 - [[division_remainder_unique]]
 - [[multiple_has_zero_remainder]]
 - [[multiple_antisymm]]
+- [[bounded_common_multiple_step]]
 
 ## Verification record
 

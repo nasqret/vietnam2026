@@ -55,7 +55,7 @@ does not determine the architecture.
 - [x] Add both constructive normal forms for non-divisibility.
 - [x] Add modulus-independent quotient-and-remainder transport through
       addition and squaring.
-- [x] Replay and independently check all 170 unique library entries and enforce
+- [x] Replay and independently check all 176 unique library entries and enforce
       the live 32,768-node/depth-128 import bound.
 - [x] Generate a deterministic versioned JSON snapshot, exact metrics,
       certificate hashes, structural Cut counts, and Mermaid dependency graph.
@@ -134,11 +134,22 @@ does not determine the architecture.
       `binary_crt_remainders`, and `binary_crt_beta_pair`.
       The β-pair theorem retains pairwise modulus coprimality as an explicit
       premise.
-- [ ] Prove β-modulus coprimality and bounded CRT iteration, then
-      finite-prefix extension/restriction, prefix products, all-prime, sorted
+- [x] Prove the correct conditional β-modulus coprimality interface:
+      `beta_modulus_coprime_base`,
+      `common_divisor_beta_moduli_divides_gap_times_c`, and
+      `beta_moduli_coprime_of_gap_dvd`; discharge the β-pair CRT premise
+      with `binary_crt_beta_pair_of_gap_dvd`.
+- [x] Construct a nonzero multiple of every positive natural through a bound
+      with `bounded_common_multiple_step` and
+      `bounded_common_multiple_exists`.
+- [ ] Combine the bounded common multiple with ordered-index/gap bounds, then
+      prove product-modulus CRT iteration, finite-prefix
+      extension/restriction, prefix products, all-prime, sorted
       canonical form, and extensional equality without adding kernel atoms.
       Add hygienic round-tripping surface expanders separately. The
       mathematical schemas and representation choice are documented.
+      Unconditional pairwise β-modulus coprimality is not a target: it is
+      false, as `c=1` at indices 1 and 4 gives moduli 3 and 6.
 - [x] Add a pinned Lean 4/Mathlib companion proving existence and uniqueness
       up to permutation, with `sorryAx` rejection and an exact standard-axiom
       audit, without treating it as Peano theorem authority.
@@ -163,14 +174,14 @@ does not determine the architecture.
 
 ## Current acceptance record
 
-- Checked runtime: 170 unique theorems — 23 baseline and 147 post-baseline.
-  The latter are the 135-entry general foundational layer plus twelve unique upstream
+- Checked runtime: 176 unique theorems — 23 baseline and 153 post-baseline.
+  The latter are the 141-entry general foundational layer plus twelve unique upstream
   modular capstones.
-- Research catalog: 177 nodes — 23 `checked_existing`, 147 `checked_m20`, three
+- Research catalog: 183 nodes — 23 `checked_existing`, 153 `checked_m20`, three
   `planned_expressible`, and four `blocked_by_language`.
-- Shared-certificate metrics: 99,137 total structural proof nodes and 2,693
-  Cuts across 130 Cut-bearing entries. The largest by nodes and Cuts is
-  `binary_crt_beta_pair` at 6,941/201.
+- Shared-certificate metrics: 120,976 total structural proof nodes and 3,331
+  Cuts across 136 Cut-bearing entries. The largest by nodes and Cuts is
+  `binary_crt_beta_pair_of_gap_dvd` at 12,980/378.
   `prime_divisor_exists` supplies the ladder's maximum depth of 80. The
   immutable upstream report retains the
   former fully expanded capstone metric of 21,515/depth 66.
@@ -180,18 +191,20 @@ does not determine the architecture.
   not a complete or authoritative admission route.
 - Full FTA companion status: checked in Lean for every nonzero natural, with
   finite-list existence and permutation uniqueness and no `sorryAx`.
-- Full Peano FTA status: absent from `pa lib` pending greatest-prime descent
-  and the still-open β-modulus coprimality, bounded CRT iteration,
-  finite-prefix, and prefix-product representation spine;
+- Full Peano FTA status: absent from `pa lib` pending greatest-prime
+  descent, index-bound finite-prefix glue for conditional coprimality,
+  product-modulus CRT iteration, finite-prefix, and prefix-product
+  representation spine;
   no admitted theorem or hidden primitive.
 - Validation record: all 1,098 Peano tests pass on CPython 3.10, including the
-  constructive CRT admission gate. Lambda's 360 tests plus 36 subtests, the
-  36-source warning-as-error Jupyter Book, 213 deep links, and 45
-  sessions/264 replayed commands, the
-  249-note/2,194-link Obsidian graph with 170 generated lemma
-  notes, and exact snapshot/catalog/corpus/application/Lean-FTA audits are
-  current. The corpus retains 13,344 transitions/1,692 sessions under run
-  fingerprint `53305cfb…`; the isolated smoke has 340 sessions, 4,474 raw
-  and 4,471 unique transitions, and all 170 authored QEDs. Local browser build
-  `2026-07-29e` has content identity `a-ac494e524f2f`; it is not
+  conditional β-coprimality/common-multiple admission gate. Exact
+  snapshot/catalog/corpus/application audits are current. The corpus retains
+  13,344 transitions/1,692 sessions under run fingerprint
+  `f44b6eb716116063bd24b849d737345f0c9c23240fa8536d1ed25fdc1ae05d56`;
+  the isolated smoke has 352 sessions, 4,729 raw and 4,726 unique transitions,
+  and all 176 authored QEDs. Local browser build `2026-07-29f` has
+  content identity `a-72e034c621a7`; it is not
   staged, deployed, or promoted.
+- The preceding checkpoint's independent Lambda result (360 tests plus 36
+  subtests) and strict 36-source book/213-link/264-command record are retained
+  as prior evidence, not relabeled as a current 176-theorem documentary gate.

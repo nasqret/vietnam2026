@@ -32,6 +32,7 @@ forall n. 0 + n = n
 - [[beta_at_self_of_bound]]
 - [[dvd_to_mod_zero]]
 - [[binary_crt]]
+- [[common_divisor_beta_moduli_divides_gap_times_c]]
 
 ## Verification record
 

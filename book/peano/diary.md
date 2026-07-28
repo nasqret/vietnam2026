@@ -1287,3 +1287,49 @@ stopped that optional `/tmp` run rather than confuse search cost with theorem ad
 now isolates the ladder: one-node/depth-one `auto` plumbing attempts plus every complete authored
 script, while the release corpus separately covers generated variants. It finishes with 803 unique
 transitions in 98 sessions and 49 kernel-checked QEDs.
+
+## 2026-07-29 — Conditional beta coprimality reaches a checked finite-bound checkpoint
+
+The native runtime now has 176 unique checked theorems: 23 baseline entries,
+141 post-baseline foundational entries, and twelve unique modular capstones.
+The 183-node research catalog classifies the same authority as 23
+`checked_existing`, 153 `checked_m20`, three `planned_expressible`, and four
+`blocked_by_language` records. Its ordered snapshot root is
+`874779f25de06cebc9d111e76bd183e4a8c514bd0d9da0c52f71c99f887cc3a7`.
+
+Six new certificates make the beta-modulus claim precise instead of stronger
+than the arithmetic permits:
+
+| Checked theorem | Nodes/depth | Cuts |
+|---|---:|---:|
+| `beta_modulus_coprime_base` | 874 / 30 | 24 |
+| `common_divisor_beta_moduli_divides_gap_times_c` | 855 / 30 | 24 |
+| `beta_moduli_coprime_of_gap_dvd` | 6,007 / 56 | 175 |
+| `binary_crt_beta_pair_of_gap_dvd` | 12,980 / 71 | 378 |
+| `bounded_common_multiple_step` | 483 / 29 | 15 |
+| `bounded_common_multiple_exists` | 640 / 30 | 22 |
+
+Unconditional pairwise coprimality is false: with $c=1$, the beta family
+contains $M(1,1)=3$ and $M(1,4)=6$. The checked theorem instead assumes
+$j=i+\mathit{gap}$ and $\mathit{gap}\mid c$. A common divisor of the two
+moduli divides $\mathit{gap}\,c$; coprimality with the base and Gauss
+cancellation reduce it to the gap, and the gap's divisibility into $c$ forces
+the divisor to one. The CRT wrapper then realizes two bounded beta values in
+one code. Separately, bounded-common-multiple induction constructs a nonzero
+$c$ divisible by every positive natural at most $B$.
+
+The complete snapshot has 120,976 structural nodes, 3,331 self-contained
+Cuts, and 136 Cut-bearing certificates. The largest certificate is
+`binary_crt_beta_pair_of_gap_dvd` at 12,980 nodes, 378 Cuts, and depth 71;
+the overall depth maximum remains 80. What is not proved is equally explicit:
+index-bound finite-prefix glue, product-modulus CRT iteration, prefix-product
+traces, factorization existence and uniqueness, and native FTA remain open.
+
+The synchronized local browser candidate keeps build `2026-07-29e` and now
+has application identity `a-72e034c621a7`; it has not been deployed. The
+source-bound corpus fingerprint is
+`f44b6eb716116063bd24b849d737345f0c9c23240fa8536d1ed25fdc1ae05d56`.
+Its isolated smoke records 352 sessions, 4,729 raw transitions, 4,726 unique
+transitions, and all 176 authored QEDs. The full Peano suite passes 1,098
+tests in 114.26 seconds, and Lambda remains green at 360 tests plus 36
+subtests.

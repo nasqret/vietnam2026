@@ -34,10 +34,14 @@ balanced congruences for nonzero coprime moduli, and
 [[binary_crt_remainders]] converts bounded requested residues back to directed
 quotient/remainder equations.
 
-This is binary CRT, not bounded CRT iteration. In the β specialization
+This is binary CRT, not bounded CRT iteration. In the original β specialization
 [[binary_crt_beta_pair]], coprimality of the two β moduli remains an explicit
-premise; no theorem currently discharges that premise for arbitrary positions
-or folds the binary construction across a finite prefix.
+premise. [[beta_moduli_coprime_of_gap_dvd]] now proves that premise when
+`j = i + gap` and `gap | c`, and
+[[binary_crt_beta_pair_of_gap_dvd]] applies it directly. The companion
+[[bounded_common_multiple_exists]] constructs a nonzero `c` divisible
+by every positive gap through a chosen bound. What remains is the index-bound
+glue and product-modulus CRT fold needed for a whole finite prefix.
 
 The checked [[add_residue]], [[add_residue_lift]], [[square_decomp]],
 [[square_residue_lift]], and [[square_residue_witness]] already manipulate

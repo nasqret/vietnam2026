@@ -14,8 +14,8 @@ and fetches application sources concurrently while Pyodide starts. Complete vers
 are uploaded before the HTML pointer and retained after promotion; an unversioned response must
 revalidate.
 
-The current local static artifact is labeled `2026-07-29e` and binds the
-manifest-derived application identity `a-ac494e524f2f`. Those labels identify
+The current local static artifact is labeled `2026-07-29f` and binds the
+manifest-derived application identity `a-72e034c621a7`. Those labels identify
 the built bytes; they do not assert that this checkpoint has been staged or
 deployed.
 

@@ -270,7 +270,7 @@ arithmetic/order rungs plus five explicit helper lemmas, ending at
 `forall n m. n * m = 0 -> n = 0 \/ m = 0`. M11 extends the current index to twenty-three with
 `one_mul`, `mul_one`, and `add_mul`, the only missing orientations needed by certificate-producing
 commutative-semiring normalization. The current local runtime extends that
-reconciled foundation to 170 unique checked entries: 23 baseline theorems, 135
+reconciled foundation to 176 unique checked entries: 23 baseline theorems, 141
 general foundational theorems, and twelve unique modular capstones. The
 complete 26-record modular provenance catalog ends at
 `mod5_fourth_power_one`; fourteen of those records coincide exactly with
@@ -307,13 +307,20 @@ decoding is equivalent to the bound plus balanced congruence.
 algebra for `binary_crt`. `binary_crt_remainders` exposes directed
 remainder equations for bounded residues, and `binary_crt_beta_pair`
 constructs one code for two bounded β values under an explicit coprimality
-premise. β-modulus coprimality itself, bounded CRT iteration, finite-prefix
-extension, and prefix-product traces remain future checked layers, as do
-greatest-prime descent and native FTA.
+premise. `beta_moduli_coprime_of_gap_dvd` now proves that premise when
+the ordered index gap divides `c`, and
+`binary_crt_beta_pair_of_gap_dvd` applies it.
+`bounded_common_multiple_exists` constructs a nonzero `c` divisible by
+every positive natural through a chosen bound. Unconditional pairwise
+β-modulus coprimality is false (`c=1` at indices 1 and 4 gives moduli
+3 and 6). Index-bound finite-prefix glue, product-modulus CRT iteration,
+prefix-product traces, greatest-prime descent, and native FTA remain future
+checked layers.
 
-The shared ladder totals 99,137 structural nodes and 2,693 Cuts across 130
-Cut-bearing entries. `binary_crt_beta_pair` is largest at 6,941 nodes
-and 201 Cuts; `prime_divisor_exists` reaches the maximum depth of 80.
+The shared ladder totals 120,976 structural nodes and 3,331 Cuts across 136
+Cut-bearing entries. `binary_crt_beta_pair_of_gap_dvd` is largest at
+12,980 nodes and 378 Cuts; `prime_divisor_exists` reaches the maximum
+depth of 80.
 
 ## Polynomial identities with checked certificates
 
@@ -458,17 +465,17 @@ passes 1,090 tests on Python 3.10; the 36-source warning-as-error book and all
 264 documented commands are green. It has not been deployed or promoted;
 production remains untouched.
 
-The current local browser candidate is build `2026-07-29e`, immutable
-application release `a-ac494e524f2f`. It exposes all 170 checked theorems,
-including constructive binary CRT and the conditional two-position β-code
-constructor. Its complete suite passes 1,098 tests on CPython 3.10. Lambda's 360
-tests plus 36 subtests and the warning-as-error
-36-source book, 213 checked deep links, 45 session blocks with 264 commands,
-the 249-note/2,194-link vault, and application-manifest drift are green. The
+The current local browser candidate is build `2026-07-29f`, immutable
+application release `a-72e034c621a7`. It exposes all 176 checked theorems,
+including conditional β-modulus coprimality, its two-position CRT client, and
+bounded nonzero common multiples. Its complete suite passes 1,098 tests on
+CPython 3.10. The preceding checkpoint's Lambda result (360 tests plus 36
+subtests) and warning-as-error 36-source book/213-link/264-command record remain
+prior evidence rather than a relabeled current documentary gate. The
 source-bound corpus remains 13,344 transitions/1,692 sessions; the isolated
-acceptance smoke has 340 sessions, 4,474 raw and 4,471 unique transitions,
-and all 170 authored QEDs. The corpus run fingerprint is
-`53305cfb39ddbd6fb6e02280caf594b1937f95790539a2df6b713244f975445c`.
+acceptance smoke has 352 sessions, 4,729 raw and 4,726 unique transitions,
+and all 176 authored QEDs. The corpus run fingerprint is
+`f44b6eb716116063bd24b849d737345f0c9c23240fa8536d1ed25fdc1ae05d56`.
 This candidate has not been staged, deployed, or promoted; production remains
 untouched.
 

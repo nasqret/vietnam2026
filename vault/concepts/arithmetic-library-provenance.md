@@ -17,11 +17,11 @@ The generated artifact binds each checked statement, script, dependency list,
 certificate hash, and certificate metrics. Hashes expose drift but are not
 proof authority.
 
-The current 170-theorem artifact has ordered root
-`51fbc86c80feb458dd6adcf1e08ee378e62f2f55e82fb8c6c5c9e9e0ab41a227`.
-Its six-node binary-CRT tranche is independently authored in the native tactic
-language; external CRT and Gödel-β sources provide mathematical orientation,
-not imported proof code.
+The current 176-theorem artifact has ordered root
+`874779f25de06cebc9d111e76bd183e4a8c514bd0d9da0c52f71c99f887cc3a7`.
+Its binary-CRT and conditional β-coprimality/common-multiple tranches are
+independently authored in the native tactic language; external CRT and
+Gödel-β sources provide mathematical orientation, not imported proof code.
 
 ## Related
 
