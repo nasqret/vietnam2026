@@ -1123,3 +1123,35 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   artifact drift, corpus provenance, application identity, and all 1,281 vault
   links are current. Cross-runtime and wider repository gates remain before
   publication.
+
+## 2026-07-28 — Relational gcd and coprimality foundation
+
+- Extended the unchanged-kernel runtime from 104 to 119 checked theorems. The
+  fifteen new entries prove factor-one rigidity, divisors of one, divisor
+  bounds, mutual-divisibility antisymmetry, the relational `IsGCD` symmetry and
+  projection API, a constructor for the one-input-divides-the-other case,
+  coprimality/unit bridges, and `is_gcd_unique`.
+- Made the left-associated `IsGCD` representation explicit as
+  `(g|a /\ g|b) /\ forall c ...` in every checked statement and catalog
+  endpoint. This preserves the parsed formulas while removing an ambiguity
+  for readers and proof-generating models.
+- Fresh-process replay, empty-context checking, dependency-removal trials, and
+  PA6-to-PA5 mutation tests all pass. Every new theorem is constructive. The
+  largest is `is_gcd_unique` at 600 nodes/depth 51; the overall maximum remains
+  `mod5_fourth_power_one` at 21,515/depth 66.
+- Expanded the research catalog to 132 nodes: 23 baseline checked, 96
+  post-baseline checked, nine planned expressible, and four interface-blocked.
+  Regenerated 119 certificate records and 119 theorem notes; the Obsidian graph
+  now has 197 notes and 1,409 resolved links.
+- Recorded the next clean-room arithmetic construction in
+  `research/arithmetic-library/gcd-bezout-roadmap.md`. Prototype certificates
+  already validate subtraction-free remainder divisibility, both directions
+  of Euclidean gcd invariance, and the balanced-combination maximality bridge.
+  The bounded gcd-existence script checks in dependency-curried form (90
+  nodes), but the current capture-sensitive dependency inliner corrupts the
+  closed tree; gcd existence is therefore not admitted.
+- The full Peano suite remains green at 1,054 tests on Python 3.10. The
+  35-source Jupyter Book and 264 documented commands remain green. The
+  deterministic 13,344-transition/1,692-session corpus was provenance-refreshed,
+  and local browser candidate `2026-07-28k` has immutable application identity
+  `a-c62e02aa4600`. Nothing was deployed.

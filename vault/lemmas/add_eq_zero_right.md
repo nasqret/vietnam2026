@@ -23,6 +23,7 @@ forall a b. a + b = 0 -> b = 0
 - [[le_zero]]
 - [[add_eq_zero_left]]
 - [[add_eq_zero_components]]
+- [[mul_eq_one_components]]
 
 ## Verification record
 

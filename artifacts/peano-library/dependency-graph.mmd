@@ -70,6 +70,7 @@ flowchart TD
   multiple_has_zero_remainder[multiple_has_zero_remainder]
   add_eq_zero_left[add_eq_zero_left]
   add_eq_zero_components[add_eq_zero_components]
+  mul_eq_one_components[mul_eq_one_components]
   mul_ne_zero[mul_ne_zero]
   mul_left_cancel_nonzero[mul_left_cancel_nonzero]
   mul_right_cancel_nonzero[mul_right_cancel_nonzero]
@@ -82,8 +83,22 @@ flowchart TD
   multiple_mul_right[multiple_mul_right]
   multiple_mul_left[multiple_mul_left]
   multiple_trans[multiple_trans]
+  divisor_le_nonzero[divisor_le_nonzero]
+  divisor_one[divisor_one]
+  multiple_antisymm[multiple_antisymm]
   not_multiple_pointwise[not_multiple_pointwise]
   not_multiple_from_pointwise[not_multiple_from_pointwise]
+  is_gcd_symm[is_gcd_symm]
+  is_gcd_dvd_left[is_gcd_dvd_left]
+  is_gcd_dvd_right[is_gcd_dvd_right]
+  is_gcd_greatest[is_gcd_greatest]
+  is_gcd_of_dvd[is_gcd_of_dvd]
+  is_gcd_unique[is_gcd_unique]
+  coprime_symm[coprime_symm]
+  coprime_one_right[coprime_one_right]
+  coprime_one_left[coprime_one_left]
+  coprime_to_is_gcd_one[coprime_to_is_gcd_one]
+  is_gcd_one_to_coprime[is_gcd_one_to_coprime]
   mod_eq_refl[mod_eq_refl]
   mod_eq_symm[mod_eq_symm]
   dvd_to_mod_zero[dvd_to_mod_zero]
@@ -175,6 +190,9 @@ flowchart TD
   add_eq_zero_right --> add_eq_zero_left
   add_eq_zero_left --> add_eq_zero_components
   add_eq_zero_right --> add_eq_zero_components
+  mul_zero_left --> mul_eq_one_components
+  add_eq_zero_right --> mul_eq_one_components
+  one_mul --> mul_eq_one_components
   mul_eq_zero --> mul_ne_zero
   mul_eq_zero --> mul_left_cancel_nonzero
   mul_ne_zero --> mul_left_cancel_nonzero
@@ -194,6 +212,22 @@ flowchart TD
   mul_comm --> multiple_mul_left
   multiple_mul_right --> multiple_mul_left
   mul_assoc --> multiple_trans
+  one_le_of_ne_zero --> divisor_le_nonzero
+  mul_eq_one_components --> divisor_one
+  zero_or_succ --> multiple_antisymm
+  mul_zero_left --> multiple_antisymm
+  mul_assoc --> multiple_antisymm
+  mul_one --> multiple_antisymm
+  mul_left_cancel_nonzero --> multiple_antisymm
+  mul_eq_one_components --> multiple_antisymm
+  multiple_refl --> is_gcd_of_dvd
+  multiple_antisymm --> is_gcd_unique
+  divisor_one --> coprime_one_right
+  divisor_one --> coprime_one_left
+  one_multiple --> coprime_to_is_gcd_one
+  one_mul --> coprime_to_is_gcd_one
+  mul_one --> coprime_to_is_gcd_one
+  divisor_one --> is_gcd_one_to_coprime
   zero_add --> dvd_to_mod_zero
   add_assoc --> add_residue
   mul_add --> add_residue

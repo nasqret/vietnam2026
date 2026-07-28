@@ -19,7 +19,7 @@ forall n. exists q. n = 1 * q
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[coprime_to_is_gcd_one]]
 
 ## Verification record
 

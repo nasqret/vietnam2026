@@ -1,16 +1,16 @@
 ---
-title: "Lemma: mul_zero_left"
+title: "Lemma: coprime_symm"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `mul_zero_left`
+# `coprime_symm`
 
-Zero annihilates multiplication on the left.
+Coprimality in its expanded common-divisor form is symmetric.
 
 ## Closed Peano statement
 
 ```text
-forall n. 0 * n = 0
+forall a b. (forall d. (exists x. a = d * x) -> (exists y. b = d * y) -> d = 1) -> forall c. (exists u. b = c * u) -> (exists v. a = c * v) -> c = 1
 ```
 
 ## Dependencies
@@ -19,17 +19,14 @@ forall n. 0 * n = 0
 
 ## Checked dependents
 
-- [[mul_comm]]
-- [[mul_eq_one_components]]
-- [[prime_two]]
-- [[multiple_antisymm]]
+- No checked theorem currently depends on this node.
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **21 nodes**, depth **8**.
-- Authored script length: **3 commands**.
-- Runtime card: `pa lib mul_zero_left`.
+- Certificate: **15 nodes**, depth **11**.
+- Authored script length: **10 commands**.
+- Runtime card: `pa lib coprime_symm`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

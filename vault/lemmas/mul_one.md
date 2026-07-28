@@ -20,6 +20,8 @@ forall n. n * 1 = n
 ## Checked dependents
 
 - [[multiple_refl]]
+- [[multiple_antisymm]]
+- [[coprime_to_is_gcd_one]]
 
 ## Verification record
 

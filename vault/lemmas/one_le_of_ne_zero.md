@@ -19,7 +19,7 @@ forall n. ~(n = 0) -> 1 <= n
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[divisor_le_nonzero]]
 
 ## Verification record
 

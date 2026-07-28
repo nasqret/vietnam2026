@@ -54,7 +54,7 @@ does not determine the architecture.
 - [x] Add both constructive normal forms for non-divisibility.
 - [x] Add modulus-independent quotient-and-remainder transport through
       addition and squaring.
-- [x] Replay and independently check all 104 unique library entries and enforce
+- [x] Replay and independently check all 119 unique library entries and enforce
       the live 32,768-node/depth-128 import bound.
 - [x] Generate a deterministic JSON snapshot, exact metrics, certificate hashes,
       and Mermaid dependency graph.
@@ -80,7 +80,9 @@ does not determine the architecture.
       divisor descent.
 - [x] Prove quotient-remainder existence and uniqueness for positive divisors,
       plus zero-remainder equivalence bridges for divisibility.
-- [ ] Prove relational gcd existence/uniqueness and Euclidean-step invariance.
+- [x] Prove the relational gcd projection, symmetry, constructor, and uniqueness
+      API, including mutual-divisibility antisymmetry.
+- [ ] Prove relational gcd existence and Euclidean-step invariance.
 - [ ] Prove subtraction-free signed-pair Bézout and Gauss cancellation.
 - [x] Check `prime_two` as a completely expanded first-order formula, without
       adding a primitive `Prime` predicate.
@@ -122,19 +124,19 @@ does not determine the architecture.
 
 ## Current acceptance record
 
-- Checked runtime: 104 unique theorems — 23 baseline and 81 post-baseline.
-  The latter are the 69-node foundational layer plus twelve unique upstream
+- Checked runtime: 119 unique theorems — 23 baseline and 96 post-baseline.
+  The latter are the 84-node foundational layer plus twelve unique upstream
   modular capstones.
-- Research catalog: 120 nodes — 23 `checked_existing`, 81 `checked_m20`, 12
+- Research catalog: 132 nodes — 23 `checked_existing`, 96 `checked_m20`, nine
   `planned_expressible`, and four `blocked_by_language`.
 - Largest closed certificate: 21,515 nodes, depth 66.
 - Trusted-kernel changes: none.
 - Full FTA companion status: checked in Lean for every nonzero natural, with
   finite-list existence and permutation uniqueness and no `sorryAx`.
 - Full Peano FTA status: absent from `pa lib` pending closed certificates for
-  the selected β-sequence/product encoding and its gcd/prime/Euclid
+  the selected β-sequence/product encoding and its gcd-existence/prime/Euclid
   dependency spine; no admitted theorem or hidden primitive.
-- Current validation: 1,054 Peano tests on Python 3.10; 34-source
+- Current validation: 1,054 Peano tests on Python 3.10; 35-source
   warning-as-error Jupyter Book; 199 deep links and 45 sessions/264 replayed
-  commands; 182-note/1,281-link Obsidian graph; exact
+  commands; 197-note/1,409-link Obsidian graph; exact
   snapshot, catalog, corpus, application-manifest, and Lean FTA audits.

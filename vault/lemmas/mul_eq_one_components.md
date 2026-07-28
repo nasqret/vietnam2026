@@ -1,35 +1,35 @@
 ---
-title: "Lemma: mul_zero_left"
+title: "Lemma: mul_eq_one_components"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `mul_zero_left`
+# `mul_eq_one_components`
 
-Zero annihilates multiplication on the left.
+A product is one only when both natural factors are one.
 
 ## Closed Peano statement
 
 ```text
-forall n. 0 * n = 0
+forall a b. a * b = 1 -> a = 1 /\ b = 1
 ```
 
 ## Dependencies
 
-- None; the script closes directly from PA rules.
+- [[mul_zero_left]]
+- [[add_eq_zero_right]]
+- [[one_mul]]
 
 ## Checked dependents
 
-- [[mul_comm]]
-- [[mul_eq_one_components]]
-- [[prime_two]]
+- [[divisor_one]]
 - [[multiple_antisymm]]
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **21 nodes**, depth **8**.
-- Authored script length: **3 commands**.
-- Runtime card: `pa lib mul_zero_left`.
+- Certificate: **191 nodes**, depth **29**.
+- Authored script length: **39 commands**.
+- Runtime card: `pa lib mul_eq_one_components`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

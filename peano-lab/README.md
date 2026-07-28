@@ -268,7 +268,7 @@ arithmetic/order rungs plus five explicit helper lemmas, ending at
 `forall n m. n * m = 0 -> n = 0 \/ m = 0`. M11 extends the current index to twenty-three with
 `one_mul`, `mul_one`, and `add_mul`, the only missing orientations needed by certificate-producing
 commutative-semiring normalization. The current local runtime extends that
-reconciled foundation to 104 unique checked entries: 23 baseline theorems, 69
+reconciled foundation to 119 unique checked entries: 23 baseline theorems, 84
 post-baseline foundational theorems, and twelve unique modular capstones. The
 complete 26-record modular provenance catalog ends at
 `mod5_fourth_power_one`; fourteen of those records coincide exactly with
@@ -412,11 +412,11 @@ session commands replay. Automated worker boot is green. A direct in-app Pyodide
 still pending because no browser was attached to this session. This candidate is staged locally
 only; production is untouched.
 
-The current local candidate is build `2026-07-28j`, immutable application
-release `a-aec4ce3e1671`. It exposes 104 unique checked theorems, preserves both
+The current local candidate is build `2026-07-28k`, immutable application
+release `a-c62e02aa4600`. It exposes 119 unique checked theorems, preserves both
 parent snapshots as provenance, and binds a freshly regenerated proof-trace
 corpus and application manifest. Its complete suite passes 1,054 tests on
-Python 3.10; the 34-source warning-as-error book and all 264
+Python 3.10; the 35-source warning-as-error book and all 264
 documented commands are green. It has not been deployed or promoted;
 production remains untouched.
 

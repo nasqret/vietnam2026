@@ -6,9 +6,9 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-The current runtime has 104 unique checked nodes: 23 from the original ladder
-and 81 in the reconciled post-baseline extension. The broader 120-node catalog
-contains 12 `planned_expressible` and four `blocked_by_language` nodes in
+The current runtime has 119 unique checked nodes: 23 from the original ladder
+and 96 in the reconciled post-baseline extension. The broader 132-node catalog
+contains nine `planned_expressible` and four `blocked_by_language` nodes in
 addition to those checked layers. One
 separately cataloged Lean companion checks full list-based FTA existence and
 uniqueness; it is not counted as a Peano theorem.
@@ -46,6 +46,7 @@ uniqueness; it is not counted as a Peano theorem.
 - [[mul_zero_left]] · [[mul_succ_left]] · [[mul_comm]] · [[mul_add]]
 - [[mul_assoc]] · [[one_mul]] · [[mul_one]] · [[add_mul]] · [[mul_congr]]
 - [[mul_eq_zero]] · [[mul_ne_zero]] · [[two_large_factors_impossible]]
+- [[mul_eq_one_components]]
 - [[mul_left_cancel_nonzero]] · [[mul_right_cancel_nonzero]]
 - [[mul_le_mul_left]] · [[mul_le_mul_right]] · [[mul_lt_mul_succ_left_nonzero]]
 
@@ -60,8 +61,16 @@ uniqueness; it is not counted as a Peano theorem.
 
 - [[multiple_zero]] · [[one_multiple]] · [[multiple_refl]]
 - [[multiple_add]] · [[multiple_mul_right]] · [[multiple_mul_left]]
-- [[multiple_trans]]
+- [[multiple_trans]] · [[multiple_antisymm]]
+- [[divisor_le_nonzero]] · [[divisor_one]]
 - [[not_multiple_pointwise]] · [[not_multiple_from_pointwise]]
+
+## Checked gcd and coprimality API
+
+- [[is_gcd_symm]] · [[is_gcd_dvd_left]] · [[is_gcd_dvd_right]]
+- [[is_gcd_greatest]] · [[is_gcd_of_dvd]] · [[is_gcd_unique]]
+- [[coprime_symm]] · [[coprime_one_left]] · [[coprime_one_right]]
+- [[coprime_to_is_gcd_one]] · [[is_gcd_one_to_coprime]]
 
 ## Checked quotient-and-remainder algebra
 

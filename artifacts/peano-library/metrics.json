@@ -5,13 +5,13 @@
   },
   "maximum_proof_depth": 66,
   "maximum_proof_nodes": 21515,
-  "ordered_root_sha256": "4af1c6069308e21d8c49f2d65e02ff39feea75b168696f6632551cc13187de73",
+  "ordered_root_sha256": "7bad3babfb53ac2719f8cd6dad1427cd63ccf74dfcae111acf18e60c956ffd1b",
   "schema": "peano-library-metrics-v1",
-  "theorem_count": 104,
+  "theorem_count": 119,
   "theorems_by_layer": {
-    "foundational_extension": 69,
+    "foundational_extension": 84,
     "legacy_core": 23,
     "published_mod5_unique": 12
   },
-  "total_proof_nodes": 57179
+  "total_proof_nodes": 59685
 }

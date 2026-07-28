@@ -1,35 +1,32 @@
 ---
-title: "Lemma: mul_zero_left"
+title: "Lemma: divisor_le_nonzero"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `mul_zero_left`
+# `divisor_le_nonzero`
 
-Zero annihilates multiplication on the left.
+A divisor of a nonzero natural is bounded by that natural.
 
 ## Closed Peano statement
 
 ```text
-forall n. 0 * n = 0
+forall d n. ~(n = 0) -> (exists q. n = d * q) -> exists k. k + d = n
 ```
 
 ## Dependencies
 
-- None; the script closes directly from PA rules.
+- [[one_le_of_ne_zero]]
 
 ## Checked dependents
 
-- [[mul_comm]]
-- [[mul_eq_one_components]]
-- [[prime_two]]
-- [[multiple_antisymm]]
+- No checked theorem currently depends on this node.
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **21 nodes**, depth **8**.
-- Authored script length: **3 commands**.
-- Runtime card: `pa lib mul_zero_left`.
+- Certificate: **62 nodes**, depth **18**.
+- Authored script length: **31 commands**.
+- Runtime card: `pa lib divisor_le_nonzero`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

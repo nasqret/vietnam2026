@@ -19,7 +19,9 @@ forall n. 1 * n = n
 
 ## Checked dependents
 
+- [[mul_eq_one_components]]
 - [[one_multiple]]
+- [[coprime_to_is_gcd_one]]
 
 ## Verification record
 

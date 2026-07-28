@@ -1,35 +1,34 @@
 ---
-title: "Lemma: mul_zero_left"
+title: "Lemma: divisor_one"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `mul_zero_left`
+# `divisor_one`
 
-Zero annihilates multiplication on the left.
+Every natural divisor of one equals one.
 
 ## Closed Peano statement
 
 ```text
-forall n. 0 * n = 0
+forall d. (exists y. 1 = d * y) -> d = 1
 ```
 
 ## Dependencies
 
-- None; the script closes directly from PA rules.
+- [[mul_eq_one_components]]
 
 ## Checked dependents
 
-- [[mul_comm]]
-- [[mul_eq_one_components]]
-- [[prime_two]]
-- [[multiple_antisymm]]
+- [[coprime_one_right]]
+- [[coprime_one_left]]
+- [[is_gcd_one_to_coprime]]
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **21 nodes**, depth **8**.
-- Authored script length: **3 commands**.
-- Runtime card: `pa lib mul_zero_left`.
+- Certificate: **199 nodes**, depth **34**.
+- Authored script length: **11 commands**.
+- Runtime card: `pa lib divisor_one`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

@@ -243,7 +243,7 @@ $$
 All 69 entries in the current post-baseline foundational layer replay to
 closed kernel-accepted certificates and fit the live `use` limits of 32,768
 nodes and depth 128. The quotient-remainder uniqueness certificate uses 1,442
-nodes and depth 47. The reconciled 104-entry snapshot still reaches its maximum
+nodes and depth 47. The reconciled 119-entry snapshot still reaches its maximum
 at the older modular capstone: 21,515 nodes and depth 66. These numbers are
 build artifacts, not new soundness assumptions.
 

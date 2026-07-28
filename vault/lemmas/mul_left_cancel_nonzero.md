@@ -23,6 +23,7 @@ forall a b c. ~(a = 0) -> a * b = a * c -> b = c
 ## Checked dependents
 
 - [[mul_right_cancel_nonzero]]
+- [[multiple_antisymm]]
 
 ## Verification record
 

@@ -1,35 +1,32 @@
 ---
-title: "Lemma: mul_zero_left"
+title: "Lemma: coprime_one_right"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `mul_zero_left`
+# `coprime_one_right`
 
-Zero annihilates multiplication on the left.
+Every natural is coprime to one in the expanded common-divisor relation.
 
 ## Closed Peano statement
 
 ```text
-forall n. 0 * n = 0
+forall a d. (exists x. a = d * x) -> (exists y. 1 = d * y) -> d = 1
 ```
 
 ## Dependencies
 
-- None; the script closes directly from PA rules.
+- [[divisor_one]]
 
 ## Checked dependents
 
-- [[mul_comm]]
-- [[mul_eq_one_components]]
-- [[prime_two]]
-- [[multiple_antisymm]]
+- No checked theorem currently depends on this node.
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **21 nodes**, depth **8**.
-- Authored script length: **3 commands**.
-- Runtime card: `pa lib mul_zero_left`.
+- Certificate: **201 nodes**, depth **36**.
+- Authored script length: **7 commands**.
+- Runtime card: `pa lib coprime_one_right`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

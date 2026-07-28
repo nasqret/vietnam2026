@@ -328,16 +328,19 @@
   170 commands, and 414/414 vault wikilinks pass. Local browser candidate `2026-07-28g` has
   application identity `a-3ea7b7142aa0`; automated worker boot passes, direct in-app Pyodide
   latency remains unmeasured, and production is untouched.
-- The current native arithmetic runtime has 104 unique checked theorems: 23
-  baseline entries, 69 foundational post-baseline entries, and twelve unique
+- The current native arithmetic runtime has 119 unique checked theorems: 23
+  baseline entries, 84 foundational post-baseline entries, and twelve unique
   modular capstones. It now includes discrete order, multiplication
   cancellation/monotonicity, constructive quotient-remainder existence, full
-  quotient-remainder uniqueness, and zero-remainder/divisibility bridges. The
+  quotient-remainder uniqueness, zero-remainder/divisibility bridges,
+  unit-factor/coprimality bridges, mutual-divisibility antisymmetry, and
+  relational gcd uniqueness. The
   uniqueness certificate is 1,442 nodes/depth 47; the overall maximum remains
   `mod5_fourth_power_one` at 21,515/depth 66. The synchronized research catalog
-  has 120 nodes (23 baseline checked, 81 post-baseline checked, 12 planned,
+  has 132 nodes (23 baseline checked, 96 post-baseline checked, nine planned,
   four language-blocked) plus the separate Lean FTA companion. The generated
-  vault has 182 notes and 1,281 resolved links. The kernel and object language
-  are unchanged. The local browser candidate is `2026-07-28j` /
-  `a-aec4ce3e1671`; 1,054 Peano tests, the warning-free 34-source book, and 264
+  vault has 197 notes and 1,409 resolved links. The kernel and object language
+  are unchanged. The local
+  browser candidate is `2026-07-28k` / `a-c62e02aa4600`; 1,054 Peano tests,
+  the warning-free 35-source book, and 264
   documented commands pass. Production is untouched.

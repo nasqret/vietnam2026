@@ -19,7 +19,7 @@ forall a. exists q. a = a * q
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[is_gcd_of_dvd]]
 
 ## Verification record
 

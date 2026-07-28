@@ -49,9 +49,21 @@ $$
 $$
 
 to say that $g$ divides $a$ and $b$, and every common divisor divides $g$.
-The now-checked division algorithm supports existence; divisibility antisymmetry supports
-uniqueness. A signed-pair Bézout equation then connects gcd to coprimality
-without importing integers into the kernel language.
+The checked API now provides symmetry, both divisibility projections, the
+greatest-common-divisor projection, a constructor when one input divides the
+other, and `is_gcd_unique`. Its uniqueness proof uses the checked
+`multiple_antisymm`; gcd existence remains a separate Euclidean-descent
+milestone. The unit bridge proves `mul_eq_one_components`, divisors of one,
+coprimality with one on both sides, and both directions between expanded
+coprimality and `IsGCD(1,a,b)`.
+
+A balanced four-natural Bézout equation will connect the eventual gcd
+existence proof to Gauss cancellation without importing integers into the
+kernel language.
+
+The exact next statements, prototype certificate metrics, bounded-induction
+construction, and balanced coefficient transport are developed in
+{doc}`GCD and balanced Bézout construction <gcd-and-bezout>`.
 
 The key route is
 
