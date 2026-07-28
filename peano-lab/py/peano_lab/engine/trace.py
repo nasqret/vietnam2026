@@ -16,6 +16,7 @@ import json
 import re
 import unicodedata
 import uuid
+from copy import deepcopy
 from collections.abc import Callable, Iterable, Sequence
 from typing import Any, TextIO
 
@@ -47,6 +48,14 @@ def _without_ansi(text: str) -> str:
         else (f"\\u{ord(char):04x}" if ord(char) <= 0xFFFF else f"\\U{ord(char):08x}")
         for char in text
     )
+
+
+def sanitize_trace_text(text: str) -> str:
+    """Return the exact safe text representation stored in a trace field."""
+
+    if type(text) is not str:
+        raise TypeError("trace text must be a string")
+    return _without_ansi(text)
 
 
 def _meta_aliases(
@@ -217,6 +226,10 @@ def render_goals(
         raise TypeError("goals must be a state or an iterable of goals") from exc
 
 
+class TraceLimitError(RuntimeError):
+    """A configured trace byte budget was exhausted before publication."""
+
+
 class TraceLogger:
     """Collect and optionally stream one version-1 JSON object per line.
 
@@ -230,6 +243,7 @@ class TraceLogger:
         sink: TextIO | Callable[[str], object] | None = None,
         *,
         session_id: str | None = None,
+        max_bytes: int | None = None,
     ) -> None:
         if session_id is None:
             session_id = str(uuid.uuid4())
@@ -237,6 +251,10 @@ class TraceLogger:
             raise ValueError("session_id must be non-empty text")
         if sink is not None and not callable(sink) and not callable(getattr(sink, "write", None)):
             raise TypeError("sink must have write(text), be callable, or be None")
+        if max_bytes is not None and (
+            type(max_bytes) is not int or max_bytes <= 0
+        ):
+            raise ValueError("max_bytes must be a positive integer or None")
 
         self.session_id = session_id
         self._sink = sink
@@ -246,12 +264,43 @@ class TraceLogger:
         self._tactic_count = 0
         self._finished = False
         self._meta_names: dict[int, str] = {}
+        self._max_bytes = max_bytes
+        self._byte_count = 0
 
     @property
     def records(self) -> tuple[dict[str, object], ...]:
-        """The emitted records, in emission order."""
+        """Detached copies of emitted records, in emission order.
 
-        return tuple(self._records)
+        The logger is an append-only audit owner.  Returning copies prevents a
+        caller that merely consumes a trace from rewriting an earlier record.
+        """
+
+        return deepcopy(tuple(self._records))
+
+    @property
+    def record_count(self) -> int:
+        """Number of records emitted, including a footer when present."""
+
+        return len(self._records)
+
+    @property
+    def byte_count(self) -> int:
+        """UTF-8 bytes in the complete emitted JSONL stream."""
+
+        return self._byte_count
+
+    @property
+    def last_record(self) -> dict[str, object] | None:
+        """Return a detached copy of the newest record without copying history."""
+
+        return None if not self._records else deepcopy(self._records[-1])
+
+    def records_since(self, index: int) -> tuple[dict[str, object], ...]:
+        """Return detached records from an O(1) append-only checkpoint."""
+
+        if type(index) is not int or not 0 <= index <= len(self._records):
+            raise ValueError("trace checkpoint is outside the emitted record range")
+        return deepcopy(tuple(self._records[index:]))
 
     @property
     def tactic_count(self) -> int:
@@ -266,15 +315,24 @@ class TraceLogger:
 
     def _emit(self, record: dict[str, object]) -> dict[str, object]:
         line = json.dumps(record, ensure_ascii=False)
+        line_bytes = len(line.encode("utf-8")) + 1
+        if (
+            self._max_bytes is not None
+            and self._byte_count + line_bytes > self._max_bytes
+        ):
+            raise TraceLimitError(
+                f"trace exceeded its {self._max_bytes}-byte session limit"
+            )
         self._records.append(record)
         self._lines.append(line)
+        self._byte_count += line_bytes
         if self._sink is not None:
             writer = getattr(self._sink, "write", None)
             if callable(writer):
                 writer(line + "\n")
             else:
                 self._sink(line + "\n")  # type: ignore[operator]
-        return record
+        return deepcopy(record)
 
     def record_tactic(
         self,
@@ -310,7 +368,7 @@ class TraceLogger:
             status = "ok"
             error_text: str | None = None
         else:
-            error_text = _without_ansi(str(error))
+            error_text = sanitize_trace_text(str(error))
             if not error_text:
                 raise ValueError("a failed tactic needs non-empty error text")
             after_text = (
@@ -329,7 +387,7 @@ class TraceLogger:
             "step": self._next_step,
             "goals_before": before_text,
             "focus": focus,
-            "tactic": _without_ansi(tactic),
+            "tactic": sanitize_trace_text(tactic),
             "goals_after": after_text,
             "status": status,
             "error": error_text,
@@ -409,7 +467,9 @@ class TraceLogger:
 
 __all__ = [
     "TRACE_VERSION",
+    "TraceLimitError",
     "TraceLogger",
+    "sanitize_trace_text",
     "render_goal",
     "render_goals",
 ]

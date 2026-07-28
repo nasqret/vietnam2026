@@ -12,6 +12,7 @@ from pathlib import Path
 import pytest
 
 import peano_lab.engine.tactics as engine_tactics
+from peano_lab.batch import MODEL_V1_THEOREMS
 from peano_lab.kernel.formulas import parse_formula
 
 
@@ -41,6 +42,22 @@ class ScriptPolicy:
         return self.commands[step] if step < len(self.commands) else None
 
 
+class IdentifiedPolicy:
+    name = "identified"
+
+    def __init__(self, environment: dict[str, object], artifact: str) -> None:
+        self.policy_environment = environment
+        self.evaluation_identity = {
+            "name": self.name,
+            "kind": "test-adapter",
+            "artifact_sha256": artifact,
+        }
+
+    def propose(self, goals_before, *, sample, step, rng):
+        del goals_before, sample, step, rng
+        return "refl"
+
+
 def _only_attempt(report):
     assert len(report.goals) == len(report.goals[0].attempts) == 1
     return report.goals[0].attempts[0]
@@ -68,6 +85,48 @@ def test_checked_proof_uses_external_original_target_and_exact_mode(monkeypatch)
     assert attempt.proof_nodes == 1
     assert calls == [(parse_formula("0 = 0"), False)]
     assert report.to_dict()["judge"] == "checked_final(original_target, exact_mode)"
+
+
+def test_environment_bound_policy_must_match_the_execution_authority() -> None:
+    goal = eval_policy.EvalGoal("refl", "0 = 0")
+    expected = eval_policy._goal_environment(goal)
+    accepted = eval_policy.evaluate(
+        IdentifiedPolicy(expected, "a" * 64), (goal,), k=1
+    )
+    assert accepted.proved_goals == 1
+
+    forged = dict(expected)
+    forged["environment_sha256"] = "0" * 64
+    with pytest.raises(ValueError, match="policy environment does not match"):
+        eval_policy.evaluate(IdentifiedPolicy(forged, "a" * 64), (goal,), k=1)
+
+
+def test_report_identity_distinguishes_adapter_artifacts() -> None:
+    goal = eval_policy.EvalGoal("refl", "0 = 0")
+    environment = eval_policy._goal_environment(goal)
+    first = eval_policy.evaluate(
+        IdentifiedPolicy(environment, "a" * 64), (goal,), k=1
+    )
+    second = eval_policy.evaluate(
+        IdentifiedPolicy(environment, "b" * 64), (goal,), k=1
+    )
+
+    assert first.policy == second.policy == "identified"
+    assert first.policy_identity != second.policy_identity
+    assert first.to_dict()["evaluator"]["source_sha256"] == (
+        eval_policy.EVALUATOR_SOURCE_SHA256
+    )
+    assert first.to_dict()["evaluator"]["semantic_sources"] == (
+        eval_policy.EVALUATOR_SEMANTIC_SOURCES
+    )
+    semantic_files = first.to_dict()["evaluator"]["semantic_sources"]["files"]
+    assert "peano-lab/py/peano_lab/kernel/checker.py" in semantic_files
+    assert "training/peano_policy/contract.py" in semantic_files
+    assert "training/peano_policy/prompt.py" in semantic_files
+    assert first.to_dict()["evaluator"]["runtime"] == eval_policy.EVALUATOR_RUNTIME
+    assert first.to_dict()["goals"][0]["environment_sha256"] == (
+        environment["environment_sha256"]
+    )
 
 
 def test_policy_surface_can_reuse_a_checked_library_theorem() -> None:
@@ -453,7 +512,8 @@ def test_random_dummy_policy_is_repeatable_end_to_end() -> None:
     assert all(attempt.commands for attempt in first.goals[0].attempts)
 
 
-def test_heldout_v2_goal_set_is_literal_and_fingerprinted() -> None:
+def test_heldout_v3_goal_set_is_literal_capability_scoped_and_fingerprinted() -> None:
+    assert eval_policy.BENCHMARK_V3_THEOREMS == MODEL_V1_THEOREMS
     assert eval_policy.HELD_OUT_LADDER_NAMES == (
         "le_trans",
         "le_antisymm",
@@ -461,8 +521,70 @@ def test_heldout_v2_goal_set_is_literal_and_fingerprinted() -> None:
         "mul_eq_zero",
     )
     assert eval_policy.HELD_OUT_GOAL_SET_SHA256 == (
-        "f99b62e86e142c2b99221360b05e2d85969d4dda1d61d13c187c7ac6e80049db"
+        "7099c0a4df7e6f9a8a011124207967c5676871819a42e78e2787c62cd3bc4194"
     )
+    for goal in eval_policy.DEFAULT_HELD_OUT_GOALS:
+        assert goal.surface_profile == "model-v1"
+        assert goal.allowed_theorems == eval_policy.BENCHMARK_V3_THEOREMS
+        assert goal.name not in goal.allowed_theorems
+
+
+@pytest.mark.parametrize("goal", eval_policy.DEFAULT_HELD_OUT_GOALS)
+def test_heldout_target_cannot_import_itself_even_inside_a_tactical(goal) -> None:
+    direct = _only_attempt(
+        eval_policy.evaluate(
+            ScriptPolicy((f"use {goal.name}", f"exact {goal.name}")),
+            (goal,),
+            k=1,
+            max_steps=2,
+        )
+    )
+    nested = _only_attempt(
+        eval_policy.evaluate(
+            ScriptPolicy((f"first [use {goal.name} | refl]",)),
+            (goal,),
+            k=1,
+            max_steps=1,
+        )
+    )
+
+    assert direct.status == nested.status == "failing"
+    assert direct.error is not None
+    assert "not available in the 'model-v1' proof environment" in direct.error
+    # `first` deliberately reports its aggregate terminal failure; the key
+    # security property is that the forbidden leaf did not close the target.
+    assert nested.proof_nodes is None
+
+
+def test_model_profile_forbids_auto_but_keeps_explicit_foundation_imports() -> None:
+    heldout = eval_policy.DEFAULT_HELD_OUT_GOALS[0]
+    for command in ("auto", "first [auto | refl]"):
+        attempt = _only_attempt(
+            eval_policy.evaluate(
+                ScriptPolicy((command,)),
+                (heldout,),
+                k=1,
+                max_steps=1,
+            )
+        )
+        assert attempt.status == "failing"
+        assert attempt.error is not None and "tactic 'auto' is not available" in attempt.error
+
+    allowed = eval_policy.EvalGoal(
+        "allowed_foundation",
+        "forall n m k. (n + m) + k = n + (m + k)",
+        surface_profile="model-v1",
+        allowed_theorems=("add_assoc",),
+    )
+    attempt = _only_attempt(
+        eval_policy.evaluate(
+            ScriptPolicy(("use add_assoc", "exact add_assoc")),
+            (allowed,),
+            k=1,
+            max_steps=2,
+        )
+    )
+    assert attempt.status == "proof"
 
 
 def test_cli_emits_stable_machine_readable_stats(capsys) -> None:
@@ -485,11 +607,15 @@ def test_cli_emits_stable_machine_readable_stats(capsys) -> None:
 
     assert first == second
     payload = json.loads(first)
-    assert payload["v"] == 2
+    assert payload["v"] == 4
     assert payload["goal_count"] == 1
     assert payload["attempt_count"] == 2
     assert payload["judge"] == "checked_final(original_target, exact_mode)"
     assert payload["goal_set_sha256"]
+    assert payload["goals"][0]["surface_profile"] == "model-v1"
+    assert payload["goals"][0]["allowed_theorems"] == list(
+        eval_policy.BENCHMARK_V3_THEOREMS
+    )
     assert set(payload["status_counts"]) == {"proof", "invalid", "failing", "limit"}
 
 

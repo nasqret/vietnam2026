@@ -450,7 +450,7 @@ The version-1 defaults admit at most 256 aggregate input-term nodes at depth 64,
 selected equalities, 64 seed/template instances, 512 memo/search states, 512 generated candidates,
 100,000 term/formula annotation nodes at depth 256, 20,000 work units, a generated fragment of
 10,000 proof nodes at depth 256, a complete partial certificate of 100,000 proof nodes at depth
-512, and five seconds.  Annotation accounting matters because the primary `proof_size` metric
+256, and five seconds.  Annotation accounting matters because the primary `proof_size` metric
 deliberately omits the terms and motives stored inside proof nodes.
 
 Limits are checked before expensive construction and throughout the search.  Crossing one raises a

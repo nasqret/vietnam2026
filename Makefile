@@ -12,12 +12,15 @@ override PEANONEXT := ~/public_html/peano-lab-next
 STAGE     := _deploy/vietnam2026
 STAGENEXT := _deploy/lab-lambda-next
 PEANO_CORPUS_PYTHON ?= python3
+PEANO_POLICY_DIR ?= data/peano-policy-v1
+PEANO_POLICY_PILOT_DIR ?= data/peano-policy-pilot-v1
+PEANO_POLICY_ROWS ?= 10000
 # This path is a deletion target in `stage-peano`; command-line assignments
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
-override PEANOAPPID := a-953fa3777cd4
+override PEANOAPPID := a-69aa3b753965
 
-.PHONY: help book lean lab-serve peano-serve peano-corpus peano-corpus-smoke peano-eval stage \
+.PHONY: help book lean lab-serve peano-serve peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
 	deploy clean
 
@@ -29,6 +32,8 @@ help:
 	@echo "  make peano-serve serve the staged Peano Lab locally on :8002"
 	@echo "  make peano-corpus reproduce the leakage-safe Peano train/val release"
 	@echo "  make peano-corpus-smoke  run the all-ladder M9 generation/export smoke"
+	@echo "  make peano-policy-pilot  build the checked M19 pilot policy dataset"
+	@echo "  make peano-policy-data   build+attest $(PEANO_POLICY_ROWS) proof-first policy rows"
 	@echo "  make peano-eval   run the deterministic kernel-judged random baseline"
 	@echo "  make stage        assemble _deploy/vietnam2026 (landing + book + slides)"
 	@echo "  make deploy-site  rsync the site to $(SITE)"
@@ -79,6 +84,35 @@ peano-corpus-smoke:
 		--manifest /tmp/peano-lab-acceptance-manifest.json
 	$(PEANO_CORPUS_PYTHON) scripts/export_traces.py /tmp/peano-lab-acceptance-raw.jsonl \
 		--output-dir /tmp/peano-lab-acceptance-export
+
+# Small M19 end-to-end artifact: proof-first public-surface generation followed
+# by exact replay compilation into completion-only train/val/test examples.
+peano-policy-pilot:
+	mkdir -p "$(PEANO_POLICY_PILOT_DIR)"
+	$(PEANO_CORPUS_PYTHON) scripts/generate_peano_policy_corpus.py \
+		--trace-output "$(PEANO_POLICY_PILOT_DIR)/raw-traces.jsonl" \
+		--metadata-output "$(PEANO_POLICY_PILOT_DIR)/session-metadata.jsonl" \
+		--manifest "$(PEANO_POLICY_PILOT_DIR)/source-manifest.json"
+	$(PEANO_CORPUS_PYTHON) scripts/build_peano_policy_dataset.py \
+		"$(PEANO_POLICY_PILOT_DIR)/raw-traces.jsonl" \
+		--metadata "$(PEANO_POLICY_PILOT_DIR)/session-metadata.jsonl" \
+		--output-dir "$(PEANO_POLICY_PILOT_DIR)"
+
+peano-policy-data:
+	mkdir -p "$(PEANO_POLICY_DIR)"
+	$(PEANO_CORPUS_PYTHON) scripts/generate_peano_synthetic_corpus.py \
+		--trace-output "$(PEANO_POLICY_DIR)/raw-traces.jsonl" \
+		--metadata-output "$(PEANO_POLICY_DIR)/session-metadata.jsonl" \
+		--manifest "$(PEANO_POLICY_DIR)/source-manifest.json" \
+		--row-budget "$(PEANO_POLICY_ROWS)"
+	$(PEANO_CORPUS_PYTHON) scripts/build_peano_policy_dataset.py \
+		"$(PEANO_POLICY_DIR)/raw-traces.jsonl" \
+		--metadata "$(PEANO_POLICY_DIR)/session-metadata.jsonl" \
+		--output-dir "$(PEANO_POLICY_DIR)"
+	$(PEANO_CORPUS_PYTHON) -m training.peano_policy.attest \
+		--train "$(PEANO_POLICY_DIR)/train.jsonl" \
+		--eval "$(PEANO_POLICY_DIR)/val.jsonl" \
+		--output "$(PEANO_POLICY_DIR)/attestation.json"
 
 peano-eval:
 	$(PEANO_CORPUS_PYTHON) scripts/eval_peano_policy.py --k 8 --max-steps 16 --seed 20260727

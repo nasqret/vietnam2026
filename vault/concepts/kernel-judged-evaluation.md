@@ -21,5 +21,6 @@ family; otherwise memorized transitions can masquerade as proof search.
 
 - [[de-bruijn-criterion]]
 - [[pass-at-k]]
+- [[verifier-guided-policy-evaluation-and-search]]
 - [[theorem-ladder]]
 - [[peano-lab]]

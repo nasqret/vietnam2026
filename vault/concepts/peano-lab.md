@@ -33,9 +33,13 @@ The PA-specific `compact_arith` tactic searches for a [[compact-arithmetic-certi
 rigid equality. It may use only an explicit ordered list of named equalities, while the learner must
 still choose any surrounding invariant, induction, and existential witness.
 
+For corpus generation and model evaluation, the [[compact-headless-proof-runner]] reuses this same
+proof surface and kernel boundary without starting the browser runtime.
+
 ## Related
 
 [[peano-lab-moc|Peano Lab MOC]] · [[natural-deduction]] · [[tactic-mode]] ·
 [[checked-numerical-normalization]] · [[browser-proof-runtime]] · [[substitution]]
 · [[replayable-proof-script]] · [[multiline-proof-paste]] · [[local-reasoning-cut]] ·
-[[compact-arithmetic-certificate]]
+[[compact-arithmetic-certificate]] · [[compact-headless-proof-runner]] ·
+[[kernel-guided-policy-training]]

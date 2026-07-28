@@ -160,6 +160,30 @@
   bytes are deployed to staging. No in-app browser was attached, so a live Pyodide click-through is
   not claimed. The delivery verifier reaches the known missing-cache-header stop, so production is
   unchanged.
+  M19 is the active, not-yet-complete post-training milestone. Its compact headless adapter is not
+  a second prover: one warm JSONL/Python process reuses the production parser, public surface,
+  proof engine, theorem library, binding v1 trace logger, checked finalizer, and unchanged kernel.
+  Its CLI is a bounded finite transaction (not a duplex service), with strict JSON numbers,
+  all-or-nothing trace/result publication, propagated cancellation, and optional
+  `--require-proved` CI semantics. Generation is traced; quiet verification is a separately named
+  non-training path. A fixed
+  capability-scoped `model-v1` environment excludes `auto`, `undo`, session commands, and held-out
+  targets. Positive policy rows come only from complete QED sessions whose exact authored actions,
+  states, proof size, original theorem, logic mode, and capability preimage replay to another
+  kernel-checked QED. The first frozen training-scale release has 2,522 kernel-checked independent
+  roots and unique canonical statements, exactly 10,000 positive rows across 29 schemas/five
+  domains, and train/validation/test counts 8,149/926/925. Its aggregate SHA-256 is
+  `1fa98caa2e0528d39c1b9003c4ee153dfbe633cb1ee4505e8f5b28eb837465dd`.
+  Family/lineage/canonical-formula/exact-policy-prompt connected components prevent identical
+  theorems or policy inputs crossing splits; the independent attestor rejects both formula and
+  prompt overlap, recompiles the three byte-identical splits from raw source sessions under the
+  current compiler and fixed environment, and reports zero frozen-target contamination.
+  Training code pins Qwen3 1.7B and controlled 4B/Pythagoras comparisons, uses completion-only BF16
+  LoRA, immutable model revisions, streaming hash validation, checkpoint-resume identity, and
+  complete closed-directory hashes for every loader-visible adapter/tokenizer file. Evaluation
+  derives its exact surface authority from the embedded dataset attestation. No model has yet been
+  downloaded or trained and no Slurm job has been submitted; the model never enters the trusted
+  computing base.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -195,7 +219,7 @@
 - Build/deploy strategy chosen: **go live incrementally** (public GitHub + faculty URLs as pieces land).
 - Session-1 scope chosen: **maximum parallel build** across all workstreams.
 - See [`JOURNAL.md`](JOURNAL.md) for the current day's state and [`PLAN.md`](PLAN.md) for what's next.
-- Peano Lab milestones M0–M18 are locally green on `peano-lab`. M16 adds named local reasoning and
+- Peano Lab milestones M0–M18 are locally green on `peano-lab`; M19 is active. M16 adds named local reasoning and
   a readable checked parity replay; M17 adds bounded sequential multiline proof paste and is on
   staging. M18 adds checked PA-specific compact
   equality certificates while leaving invariant and witness choice visible. M14 production
@@ -205,4 +229,9 @@
   theorem reuse, 23-entry semiring ladder, certificate-producing `ring`, and bounded checked
   `norm_num` teaching surface are present. The odd-square induction closes through explicit
   `trans`/`rewrite` structure, while concrete coefficients can now be certified without obscuring
-  the independent final check.
+  the independent final check. M19's headless runner, first 10,000-row checked corpus, and policy
+  infrastructure have focused green coverage, but the real Helios smoke, model comparison, and
+  milestone-wide release gates are not yet complete.
+- M19 pre-training infrastructure gate on 2026-07-28: 363 focused tests, 912 full Peano tests,
+  Lambda 360 tests plus 36 subtests, clean book build/command replay, and green local staging as
+  build `2026-07-28f`, application `a-69aa3b753965`. This is not deployed and is not a model result.

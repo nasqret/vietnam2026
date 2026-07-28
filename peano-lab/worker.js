@@ -17,6 +17,7 @@
 
 const PY_FILES = [
   "py/peano_lab/__init__.py",
+  "py/peano_lab/batch.py",
   "py/peano_lab/kernel/__init__.py",
   "py/peano_lab/kernel/terms.py",
   "py/peano_lab/kernel/formulas.py",

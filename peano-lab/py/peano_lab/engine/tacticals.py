@@ -29,7 +29,13 @@ from .state import (
     record_step,
     replace_hole,
 )
-from .tactics import Tactic, TacticError, TacticLimit, TacticSyntaxError
+from .tactics import (
+    Tactic,
+    TacticError,
+    TacticLimit,
+    TacticSyntaxError,
+    enforce_live_proof_bounds,
+)
 
 
 _REPEAT_LIMIT = 256
@@ -104,6 +110,12 @@ def _finish(before: ProofState, after: ProofState, name: str, args: str = "") ->
 
     before = _state(before)
     try:
+        enforce_live_proof_bounds(after.partial)
+    except TacticLimit:
+        raise
+    except (AttributeError, TypeError, ValueError):
+        raise TacticError("a tactical produced an invalid proof state.") from None
+    try:
         after = _state(after)
     except TacticError:
         raise TacticError("a tactical produced an invalid proof state.") from None
@@ -140,7 +152,9 @@ def _focus_once(state: ProofState, index: int, child: Tactic) -> ProofState:
         ),
         subst=result.subst,
     )
+    enforce_live_proof_bounds(merged.partial)
     merged = apply_subst_everywhere(merged, result.subst)
+    enforce_live_proof_bounds(merged.partial)
     if not invariants_ok(merged):
         raise TacticError("a focused tactic returned mismatched goals and holes.")
     return merged

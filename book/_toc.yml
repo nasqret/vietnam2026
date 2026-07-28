@@ -28,6 +28,7 @@ parts:
       - file: peano/arithmetic-automation
       - file: peano/compact-arith
       - file: peano/limits
+      - file: peano/training-a-peano-policy
       - file: peano/tutorials
       - file: peano/ladder
       - file: peano/diary

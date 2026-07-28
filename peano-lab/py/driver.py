@@ -29,8 +29,8 @@ from peano_lab.ui import prove as web_prove
 
 NL = "\r\n"
 MAX_INPUT = 4_000
-MAX_NUMERAL = 256
-_NUMERAL_LITERAL = re.compile(r"(?<![\w'#])\d+(?![\w'])", re.UNICODE)
+MAX_NUMERAL = web_prove.MAX_NUMERAL
+_oversized_numeral = web_prove.oversized_numeral
 _PYTHON_ERROR_LINE = re.compile(r"^[A-Za-z][A-Za-z0-9_]*Error:")
 
 
@@ -82,15 +82,6 @@ def _browser_safe(text: object) -> str:
         else:
             result.append(f"\\u{code:04x}" if code > 0xFF else f"\\x{code:02x}")
     return "".join(result)
-
-
-def _oversized_numeral(source: str) -> str | None:
-    """Find a browser-dangerous numeral without matching digits in names."""
-
-    for match in _NUMERAL_LITERAL.finditer(source):
-        if int(match.group()) > MAX_NUMERAL:
-            return match.group()
-    return None
 
 
 def _usage() -> str:

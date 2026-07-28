@@ -27,9 +27,15 @@ from typing import Literal, Protocol, Sequence, runtime_checkable
 # should need neither installation nor PYTHONPATH surgery by the caller.
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 PEANO_PYTHON = REPOSITORY_ROOT / "peano-lab" / "py"
-if str(PEANO_PYTHON) not in sys.path:
-    sys.path.insert(0, str(PEANO_PYTHON))
+for import_root in (REPOSITORY_ROOT, PEANO_PYTHON):
+    if str(import_root) not in sys.path:
+        sys.path.insert(0, str(import_root))
 
+from peano_lab.batch import (  # noqa: E402
+    MODEL_V1_COMMANDS,
+    MODEL_V1_THEOREMS,
+    capability_sha256,
+)
 from peano_lab.engine.state import proof_size, start  # noqa: E402
 from peano_lab.engine.tactics import (  # noqa: E402
     InvalidProof,
@@ -45,14 +51,35 @@ from peano_lab.kernel.formulas import (  # noqa: E402
 )
 from peano_lab.library.theorems import THEOREMS  # noqa: E402
 from peano_lab.ui.prove import (  # noqa: E402
+    FULL_SURFACE_CAPABILITIES,
     ProofSession,
-    _run_surface,
+    SurfaceCapabilities,
     checked_surface_final,
+    oversized_numeral,
+    run_surface,
+)
+from training.peano_policy.contract import HELD_OUT_POLICY_GOALS  # noqa: E402
+from training.peano_policy.runtime import (  # noqa: E402
+    runtime_identity,
+    source_files_identity,
 )
 
 
-EVAL_VERSION = 2
+EVAL_VERSION = 4
 MAX_COMMAND_CHARS = 4_000
+EVALUATOR_SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+EVALUATOR_SEMANTIC_SOURCES = source_files_identity(
+    (
+        Path(__file__),
+        REPOSITORY_ROOT / "training" / "peano_policy" / "contract.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "prompt.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "runtime.py",
+        *sorted((PEANO_PYTHON / "peano_lab").rglob("*.py")),
+    )
+)
+EVALUATOR_RUNTIME = runtime_identity()
+LIBRARY_NAMES = frozenset(spec.name for spec in THEOREMS)
+BENCHMARK_V3_THEOREMS: tuple[str, ...] = MODEL_V1_THEOREMS
 AttemptStatus = Literal["proof", "invalid", "failing", "limit"]
 ATTEMPT_STATUSES: tuple[AttemptStatus, ...] = (
     "proof",
@@ -69,6 +96,8 @@ class EvalGoal:
     name: str
     statement: str
     classical: bool = False
+    surface_profile: Literal["full", "model-v1"] = "full"
+    allowed_theorems: tuple[str, ...] | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.name, str) or not self.name.strip():
@@ -81,6 +110,36 @@ class EvalGoal:
             raise ValueError("an evaluation goal needs a non-empty statement")
         if type(self.classical) is not bool:
             raise TypeError("an evaluation goal's classical mode must be a Boolean")
+        if self.surface_profile not in {"full", "model-v1"}:
+            raise ValueError("surface_profile must be exactly 'full' or 'model-v1'")
+        if self.allowed_theorems is not None:
+            if type(self.allowed_theorems) is not tuple or not all(
+                type(name) is str and name in LIBRARY_NAMES
+                for name in self.allowed_theorems
+            ):
+                raise ValueError(
+                    "allowed_theorems must be a tuple of checked library names"
+                )
+            if len(set(self.allowed_theorems)) != len(self.allowed_theorems):
+                raise ValueError("allowed_theorems may not contain duplicates")
+
+    @property
+    def capabilities(self) -> SurfaceCapabilities:
+        """Return the exact untrusted tactic authority for this goal."""
+
+        if self.surface_profile == "full" and self.allowed_theorems is None:
+            return FULL_SURFACE_CAPABILITIES
+        commands = None if self.surface_profile == "full" else MODEL_V1_COMMANDS
+        theorems = (
+            None
+            if self.allowed_theorems is None
+            else frozenset(self.allowed_theorems)
+        )
+        return SurfaceCapabilities(
+            label=self.surface_profile,
+            allowed_commands=commands,
+            allowed_theorems=theorems,
+        )
 
 
 def _parse_closed_goal(goal: EvalGoal) -> tuple[Formula, tuple[str, ...], str]:
@@ -167,10 +226,30 @@ class RandomPolicy:
 # synthetic variant derived from one of these families.  Statements are
 # literal protocol data, not dynamically inherited from a mutable library.
 DEFAULT_HELD_OUT_GOALS: tuple[EvalGoal, ...] = (
-    EvalGoal("le_trans", "forall n m k. n <= m -> m <= k -> n <= k"),
-    EvalGoal("le_antisymm", "forall n m. n <= m -> m <= n -> n = m"),
-    EvalGoal("le_total", "forall n m. n <= m \\/ m <= n"),
-    EvalGoal("mul_eq_zero", "forall n m. n * m = 0 -> n = 0 \\/ m = 0"),
+    EvalGoal(
+        HELD_OUT_POLICY_GOALS[0][0],
+        HELD_OUT_POLICY_GOALS[0][1],
+        surface_profile="model-v1",
+        allowed_theorems=BENCHMARK_V3_THEOREMS,
+    ),
+    EvalGoal(
+        HELD_OUT_POLICY_GOALS[1][0],
+        HELD_OUT_POLICY_GOALS[1][1],
+        surface_profile="model-v1",
+        allowed_theorems=BENCHMARK_V3_THEOREMS,
+    ),
+    EvalGoal(
+        HELD_OUT_POLICY_GOALS[2][0],
+        HELD_OUT_POLICY_GOALS[2][1],
+        surface_profile="model-v1",
+        allowed_theorems=BENCHMARK_V3_THEOREMS,
+    ),
+    EvalGoal(
+        HELD_OUT_POLICY_GOALS[3][0],
+        HELD_OUT_POLICY_GOALS[3][1],
+        surface_profile="model-v1",
+        allowed_theorems=BENCHMARK_V3_THEOREMS,
+    ),
 )
 HELD_OUT_LADDER_NAMES: tuple[str, ...] = tuple(
     goal.name for goal in DEFAULT_HELD_OUT_GOALS
@@ -183,6 +262,12 @@ def _goal_set_sha256(goals: Sequence[EvalGoal]) -> str:
             "name": goal.name,
             "statement": _parse_closed_goal(goal)[2],
             "classical": goal.classical,
+            "surface_profile": goal.surface_profile,
+            "allowed_theorems": (
+                None
+                if goal.allowed_theorems is None
+                else list(goal.allowed_theorems)
+            ),
         }
         for goal in goals
     ]
@@ -261,6 +346,13 @@ class GoalResult:
             "name": self.goal.name,
             "statement": self.canonical_statement,
             "classical": self.goal.classical,
+            "surface_profile": self.goal.surface_profile,
+            "environment_sha256": capability_sha256(self.goal.capabilities),
+            "allowed_theorems": (
+                None
+                if self.goal.allowed_theorems is None
+                else list(self.goal.allowed_theorems)
+            ),
             "passed": self.passed,
             "status_counts": self.status_counts,
             "attempts": [attempt.to_dict() for attempt in self.attempts],
@@ -272,6 +364,7 @@ class EvaluationReport:
     """Deterministic pass@k report returned by :func:`evaluate`."""
 
     policy: str
+    policy_identity: dict[str, object]
     seed: int
     k: int
     max_steps: int
@@ -303,6 +396,12 @@ class EvaluationReport:
         return {
             "v": EVAL_VERSION,
             "policy": self.policy,
+            "policy_identity": self.policy_identity,
+            "evaluator": {
+                "source_sha256": EVALUATOR_SOURCE_SHA256,
+                "semantic_sources": EVALUATOR_SEMANTIC_SOURCES,
+                "runtime": EVALUATOR_RUNTIME,
+            },
             "judge": "checked_final(original_target, exact_mode)",
             "goal_set_sha256": self.goal_set_sha256,
             "seed": self.seed,
@@ -337,6 +436,70 @@ def _stable_attempt_seed(seed: int, canonical_statement: str, sample: int) -> in
     return int.from_bytes(hashlib.sha256(payload).digest()[:8], "big")
 
 
+def _capability_record(capabilities: SurfaceCapabilities) -> dict[str, object]:
+    return {
+        "label": capabilities.label,
+        "allowed_commands": (
+            None
+            if capabilities.allowed_commands is None
+            else sorted(capabilities.allowed_commands)
+        ),
+        "allowed_theorems": (
+            None
+            if capabilities.allowed_theorems is None
+            else sorted(capabilities.allowed_theorems)
+        ),
+    }
+
+
+def _goal_environment(goal: EvalGoal) -> dict[str, object]:
+    capabilities = goal.capabilities
+    return {
+        "classical": goal.classical,
+        "surface": capabilities.label,
+        "environment_sha256": capability_sha256(capabilities),
+        "capabilities": _capability_record(capabilities),
+    }
+
+
+def _policy_identity(policy: Policy) -> dict[str, object]:
+    declared = getattr(policy, "evaluation_identity", None)
+    if declared is None:
+        identity: object = {
+            "name": policy.name,
+            "kind": "environment-agnostic-policy",
+        }
+    else:
+        identity = declared() if callable(declared) else declared
+    if type(identity) is not dict or identity.get("name") != policy.name:
+        raise ValueError(
+            "policy evaluation_identity must be an object containing its exact name"
+        )
+    try:
+        encoded = json.dumps(
+            identity,
+            ensure_ascii=False,
+            allow_nan=False,
+            sort_keys=True,
+            separators=(",", ":"),
+        )
+        detached = json.loads(encoded)
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"policy evaluation_identity is not canonical JSON: {exc}") from None
+    return detached
+
+
+def _check_policy_environment(policy: Policy, goal: EvalGoal) -> None:
+    declared = getattr(policy, "policy_environment", None)
+    if declared is None:
+        return
+    value = declared() if callable(declared) else declared
+    if value != _goal_environment(goal):
+        raise ValueError(
+            f"policy environment does not match evaluation goal {goal.name!r}"
+        )
+
+
 def _one_line_error(prefix: str, error: BaseException | str) -> str:
     text = " ".join(str(error).split()) or type(error).__name__
     return f"{prefix}: {text}"[:1_000]
@@ -354,6 +517,9 @@ def _valid_command(command: object) -> tuple[str | None, str | None]:
     stripped = command.strip()
     if not stripped:
         return None, "policy output is blank"
+    oversized = oversized_numeral(stripped)
+    if oversized is not None:
+        return None, f"policy output contains resource-dangerous numeral {oversized}"
     return stripped, None
 
 
@@ -431,8 +597,14 @@ def _rollout(
 
         try:
             # This is the production surface grammar: primitives, tacticals,
-            # simp, and auto.  The evaluator has no private tactic operations.
-            owner = _run_surface(owner, command)
+            # and arithmetic automation.  The per-goal capability object is
+            # part of the public benchmark: held-out targets cannot import
+            # themselves, and nested tacticals cannot bypass that restriction.
+            owner = run_surface(
+                owner,
+                command,
+                capabilities=goal.capabilities,
+            )
         except TacticError as exc:
             if _is_resource_limit(command, exc):
                 status: AttemptStatus = "limit"
@@ -468,6 +640,7 @@ def _rollout(
                     owner.state,
                     target,
                     classical=goal.classical,
+                    trace=owner.trace,
                 )
             except InvalidProof as exc:
                 return AttemptResult(
@@ -532,7 +705,9 @@ def evaluate(
         raise ValueError("evaluation goal names must be unique")
 
     results: list[GoalResult] = []
+    identity = _policy_identity(policy)
     for goal in goal_tuple:
+        _check_policy_environment(policy, goal)
         target, names, canonical = _parse_closed_goal(goal)
         attempts = tuple(
             _rollout(
@@ -548,10 +723,17 @@ def evaluate(
             for sample in range(k)
         )
         results.append(GoalResult(goal, canonical, attempts))
-    return EvaluationReport(policy.name, seed, k, max_steps, tuple(results))
+    return EvaluationReport(
+        policy.name,
+        identity,
+        seed,
+        k,
+        max_steps,
+        tuple(results),
+    )
 
 
-def _selected_goals(names: Sequence[str]) -> tuple[EvalGoal, ...]:
+def selected_goals(names: Sequence[str]) -> tuple[EvalGoal, ...]:
     if not names:
         return DEFAULT_HELD_OUT_GOALS
     table = {goal.name: goal for goal in DEFAULT_HELD_OUT_GOALS}
@@ -608,7 +790,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             print(name)
         return 0
     try:
-        goals = _selected_goals(args.goal)
+        goals = selected_goals(args.goal)
         report = evaluate(
             RandomPolicy(),
             goals,
@@ -624,10 +806,14 @@ def main(argv: Sequence[str] | None = None) -> int:
 
 __all__ = [
     "EVAL_VERSION",
+    "EVALUATOR_SOURCE_SHA256",
+    "EVALUATOR_SEMANTIC_SOURCES",
+    "EVALUATOR_RUNTIME",
     "AttemptStatus",
     "EvalGoal",
     "Policy",
     "RandomPolicy",
+    "BENCHMARK_V3_THEOREMS",
     "HELD_OUT_LADDER_NAMES",
     "DEFAULT_HELD_OUT_GOALS",
     "HELD_OUT_GOAL_SET_SHA256",
@@ -635,6 +821,7 @@ __all__ = [
     "GoalResult",
     "EvaluationReport",
     "evaluate",
+    "selected_goals",
     "build_parser",
     "main",
 ]

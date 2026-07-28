@@ -744,3 +744,71 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - The full delivery verifier stopped at the pre-existing M14 policy failure: the host returned no
   `Cache-Control: no-store` header for HTML. No in-app browser was attached, so no live Pyodide
   click-through is claimed. Production was not touched and remains build `2026-07-27h`.
+
+## 2026-07-28 (branch peano-lab) — Peano Lab M19: compact checked runner and training groundwork
+
+- Chose a compact adapter rather than a compact replacement prover. `peano_lab.batch` starts fresh
+  proof owners in one warm Python process but reuses the browser formula parser, public tactic
+  compiler, immutable proof state, theorem replay, binding trace logger, checked finalizer, and
+  independent kernel. The finite transactional JSONL wrapper separates raw trace bytes from compact
+  result envelopes and withholds them until EOF and complete trace commit; it has explicit
+  aggregate input, request, result, and trace ceilings and is not a duplex service.
+- Added runner-owned capability profiles. The first model environment has one fixed command/theorem
+  preimage, rejects `auto`, `undo`, session commands, and held-out target imports, and fingerprints
+  the complete authority in data and evaluation. Capability checking compiles every tactical leaf,
+  including dead alternatives, so a nested tactic cannot smuggle a forbidden theorem or command.
+- Added strict resource and transaction boundaries: bounded UTF-8/JSONL requests, formula numerals,
+  tactical compilation, live certificates, and a 16 MB per-proof encoded trace ceiling. Traced and
+  quiet modes retain identical kernel acceptance and proof size; quiet verification is explicitly
+  barred from producing training data.
+- Built the first proof-first policy pipeline. Eighteen authored public-surface scripts produce 58
+  positive transitions across 11 pedagogical families. The compiler retains only complete QED
+  sessions, replays every exact action/state under its declared environment, assigns genealogy
+  components before row expansion, renders input focus zero to avoid action leakage, and binds the
+  complete semantic Python source tree and runtime.
+- Added repository-owned prompt/training/evaluation code for pinned Qwen3 1.7B and controlled 4B
+  comparisons, completion-only BF16 LoRA, streaming hash-checked samples, immutable run/resume
+  identity, trained-adapter provenance, and authority-preflighted kernel evaluation. Guarded Helios
+  sync/probe/prepare/train/evaluate wrappers default to scheduler test-only; a real submission needs
+  an explicit confirmation token.
+- At this groundwork checkpoint the focused headless/trace/surface/dataset/evaluator/training/Helios
+  suite reported 316 passes. This was infrastructure evidence only: no checkpoint had been
+  downloaded or trained, no Slurm job had been submitted, and the scaled curriculum recorded in
+  the next entry had not yet landed. M19 was not complete or deployed.
+
+## 2026-07-28 (branch peano-lab) — Peano Lab M19: first attested 10,000-row release
+
+- Expanded the proof-first corpus from the 18-session fixture to 2,522 independently
+  kernel-checked sessions, roots, and unique canonical statements. Twenty-nine schemas cover five
+  domains—logic, equality, PA recurrence, witnesses, and arithmetic—and stop on exactly 10,000
+  positive next-tactic rows.
+- Froze deterministic train/validation/test splits of 8,149/926/925 rows. The aggregate dataset
+  SHA-256 is
+  `1fa98caa2e0528d39c1b9003c4ee153dfbe633cb1ee4505e8f5b28eb837465dd`, and the frozen held-out
+  contamination scan reports zero target occurrences.
+- Hardened splitting against dishonest or accidentally incomplete genealogy. Sessions sharing a
+  family, lineage, exact canonical theorem formula, or exact rendered policy prompt now occupy one
+  connected component before transitions become rows. The prompt edge prevents two different
+  theorems that reach the same model input from crossing the boundary; the independent attestor
+  rejects both formula and prompt intersections across splits.
+- Added an independent pre-training rebuild gate. It verifies raw trace/metadata hashes, the current
+  compiler and semantic source inventory, the fixed `model-v1` environment, split hashes, and the
+  held-out contract, then recompiles in a fresh directory. The released train, validation, and test
+  files reproduce byte-for-byte.
+- Closed the model-loader provenance boundary. Adapter and tokenizer outputs use separate closed
+  directories whose manifests cover every loader-visible regular file; loading rejects symlinks,
+  additions, omissions, or mutations. Trained evaluation derives the exact policy environment from
+  the embedded dataset attestation instead of substituting a hard-coded capability set.
+- A second adapter/transport audit found no false-QED route but did find false-row and operational
+  ambiguities. Success is now bound to replay and engine-history transactions, failure diagnostics
+  must match the raised error, and result goals reuse trace metavariable aliases. JSON integers and
+  total batch storage are bounded, floats are rejected, the CLI is explicitly finite rather than
+  duplex, cancellation propagates, directory entries are synced, and `--require-proved` supplies
+  strict CI exit semantics.
+- This completes the first scaled data/provenance gate only. No model has been trained or evaluated,
+  no learned pass rate is available, and no Helios result is claimed.
+- Final pre-training infrastructure gates after the final audit: 363 focused tests, 912 complete
+  Peano tests, 360 Lambda tests plus 36 subtests, a clean Jupyter Book build, and successful replay
+  of 193 documented links / 34 command sessions. Local browser staging is
+  `2026-07-28f` / `a-69aa3b753965`; it is not deployed. Refreshing the historical M9 corpus source
+  fingerprint regenerated the same 13,344-transition/1,692-QED shape under the current source.

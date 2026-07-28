@@ -1,0 +1,589 @@
+# Training a Peano policy without trusting it
+
+Can a small language model learn to help with Peano Lab proofs?  Yes—but the interesting part is
+not merely fine-tuning a decoder on tactic strings.  The interesting part is arranging the
+experiment so that a useful model can never become a source of mathematical authority, and so
+that a high score cannot be manufactured by data leakage, an accidentally stronger tactic
+environment, or a stale checkpoint.
+
+M19 turns that problem into an explicit research pipeline.  It adds a compact headless runner,
+a replay-validating dataset compiler, a repository-owned next-tactic prompt, a BF16 LoRA training
+runtime, a kernel-judged evaluator, and guarded Helios job controls.  These pieces are deliberately
+outside the kernel.  They can make proof search faster; they cannot make an invalid certificate
+valid.
+
+```{admonition} Experiment status, 2026-07-28
+:class: important
+The local execution, prompt, training-runtime, evaluation, provenance, and Helios control paths are
+implemented, and the first attested training-scale data release is complete: 2,522 independently
+kernel-checked roots compile to exactly 10,000 positive rows.  The **model experiment is still
+pending**: no Helios training result, learned pass rate, model comparison, or expert-iteration gain
+is claimed in this chapter.  Empty result cells are a feature of the protocol, not an invitation to
+invent numbers.
+```
+
+The binding research protocol is
+[`docs/PEANO_TRAINING.md`](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_TRAINING.md).
+This chapter explains why that protocol has its present shape.
+
+## The useful interpretation of “a compact Peano Lab”
+
+Starting a browser, loading Pyodide, importing thirty-odd Python modules, and rendering terminal
+panels for every generated proof would be a poor data-generation loop.  A long-lived Python process
+can import the prover once and execute many JSONL requests much faster.
+
+There are two ways to obtain such a process:
+
+1. write a second, reduced parser, tactic interpreter, and checker; or
+2. remove the browser while retaining the production parser, tactic surface, proof engine, and
+   checker.
+
+Only the second is Peano Lab.  The first would create a *shadow prover*.  A generated proof could
+succeed under the shadow semantics and fail on the website; worse, a bug in the shadow checker
+could label false training examples as proved.  Testing two implementations against one another
+would reduce the risk, but it would not remove the duplicated source of truth.
+
+The implemented runner is therefore an **adapter**, not a miniature prover:
+
+```text
+JSONL request
+    │
+    ▼
+strict request validation
+    │
+    ▼
+production formula parser ── original target and logic mode retained by owner
+    │
+    ▼
+production run_surface grammar ── immutable ProofState transactions
+    │
+    ├── raw version-1 transition trace
+    │
+    ▼
+checked_surface_final
+    │
+    ▼
+independent kernel checker(original target, exact logic mode)
+    │
+    └── only here may the result say kernel_checked=true
+```
+
+The browser and the batch runner differ in transport and presentation.  They do not differ in
+proof rules.  The headless path omits the DOM, terminal panels, Pyodide routing, and routine
+certificate rendering.  It reuses `parse_formula_with_names`, `ProofSession`, `run_surface`, the
+checked theorem library, certificate finalization, and the independent checker.
+
+This gives a useful engineering principle:
+
+> Optimize around the trusted boundary before optimizing through it.
+
+Keeping one Python interpreter warm removes avoidable startup work.  Omitting display rendering
+removes avoidable formatting work.  Omitting the final kernel call would change the meaning of the
+result, so it is never a performance option.
+
+## Two modes, only one data mode
+
+The Python API makes the distinction visible in its names:
+
+- `run_proof(...)` executes a proof with binding version-1 transition tracing;
+- `verify_proof(...)` checks an already-authored script without retaining transition data.
+
+Both build the certificate and perform the same final kernel check.  The quiet path is useful for
+filtering known scripts and regression checks.  Synthetic generation and policy search use the
+traced path, because the desired training object is not just a Boolean QED.  It is an auditable
+sequence
+
+$$
+  (s_0,a_0,s_1), (s_1,a_1,s_2),\ldots,(s_{r-1},a_{r-1},s_r)
+$$
+
+whose last state is closed and whose complete certificate checks for the original theorem.
+
+The command-line process reads one strict request per physical line.  For example, a request file
+may contain:
+
+```json
+{"v":1,"id":"add-zero","theorem":"forall n. n + 0 = n","tactics":["intro n","rewrite PA3","refl"]}
+```
+
+The generation form is:
+
+```bash
+python3 scripts/peano_batch.py --environment model-v1 \
+  --trace-output run.trace.jsonl < requests.jsonl > results.jsonl
+```
+
+This is a finite transactional file interface, not an interactive duplex protocol.  Results are
+withheld until EOF and, in trace mode, until the trace name has committed.  The default transaction
+ceilings are 10,000 requests, 256 MiB input, 128 MiB result envelopes, and 512 MiB raw trace;
+larger corpora are sharded or use an explicitly reviewed limit.  Exit zero means the transport
+completed, while each row carries its proof status.  Verification jobs add `--require-proved` when
+every executed request must close.
+
+`run.trace.jsonl` contains only the binding raw trace stream.  `results.jsonl` contains compact
+per-request outcomes.  They are separate on purpose: the trace exporter must never have to guess
+whether a JSON object is a transition, a footer, or a convenience response.
+
+The command owns the execution mode and tactic environment.  A request cannot ask for a more
+powerful surface.  Inputs have bounded physical lines, strict UTF-8, strict JSON with no duplicate
+keys, bounded integers, or floating-point values, closed one-line theorems, and complete one-line
+tactics.  Output is
+staged before publication.  An empty, all-invalid, fail-fast, or unexpectedly interrupted batch
+before the hard-link commit does not leave a final trace at the requested path.  The hard link is
+the explicit commit point: an interruption after it may leave the complete, already-fsynced trace
+while stdout is absent or incomplete.  That trace is valid; discard the result redirection and
+reconstruct or rerun it.  A caller that needs an atomic result file redirects stdout to its own
+temporary name and renames it only after a successful process exit.
+
+The status vocabulary also refuses to blur distinct events:
+
+| Status | Meaning | A proved theorem? |
+|---|---|---:|
+| `proved` | all goals closed and the final kernel check accepted | yes |
+| `open` | the supplied tactics ended with goals remaining | no |
+| `tactic_error` | a legal execution attempt failed transactionally | no |
+| `tactic_limit` | an explicit resource bound stopped the attempt | no |
+| `kernel_rejection` | final evidence failed independent checking | no; fail stop |
+| `request_error` | the JSON request never entered a proof session | no |
+
+A failing tactic must emit one error transition with identical before and after goals and the same
+diagnostic as the raised tactic error, and must
+leave the entire immutable state unchanged.  A successful command must produce the transition or
+transitions, replay journal, and engine transaction that its real execution produced.  In
+particular, top-level `auto` is not allowed to
+claim one opaque transition after secretly replaying a different primitive history.  The finite
+model surface currently excludes `auto` until that replay can itself be capability-scoped.
+
+## Where soundness lives
+
+It is tempting to call the whole pipeline “verified” because it ends in a checker.  That is too
+coarse.  Different components justify different claims.
+
+| Component | May choose | May certify |
+|---|---|---|
+| generator | theorem templates, proof scripts, mutations | nothing |
+| language model | one candidate tactic line | nothing |
+| tactic engine | proof-state transformation and certificate candidate | nothing globally |
+| dataset compiler | whether a trace satisfies the data contract | replay integrity, not PA truth by itself |
+| independent kernel | whether a certificate derives a formula in the selected logic | the exact PA judgment it checks |
+
+For every QED the session owner retains four pieces of authority independently of the tactic layer:
+the parsed original theorem, its display-name table, the exact intuitionistic/classical mode, and
+the trace owner.  The adapter rejects a returned session that replaces any of them.  Finalization
+submits the finished certificate against that retained theorem—not against the tactic layer's last
+rendered goal.
+
+The model does not emit certificate constructors, Python, theorem declarations, mode changes, or
+`qed`.  It emits text in the same public tactic language a student uses.  This is not enough by
+itself to guarantee a proof: a buggy tactic could still build malformed evidence.  It is enough to
+keep model inference outside the trusted computing base because malformed evidence still reaches
+the independent checker.
+
+There is also a narrower scientific boundary.  The checker establishes
+
+$$
+  \Gamma \vdash_{\mathrm{PA}} p : P.
+$$
+
+It does not establish that an English sentence was faithfully translated as $P$, that the dataset
+split was fair, or that a benchmark environment matched training.  Those are separate contracts
+with separate evidence.
+
+## A trace is not positive data until it survives replay
+
+The raw trace is retained unchanged.  A sidecar supplies research metadata such as theorem family,
+lineage, logic mode, and the exact tactic capabilities.  The dataset compiler then accepts positive
+cross-entropy rows only from sessions satisfying all of these conditions:
+
+1. the raw footer says `qed: true`;
+2. the ordered successful tactic sequence replays through the current public surface;
+3. the replay closes and the independent kernel accepts the rebuilt certificate;
+4. each canonical before state, focus, tactic, after state, status, and error agrees with the raw
+   transition;
+5. the replayed proof-tree size agrees with the raw footer; and
+6. family and lineage metadata permit a split assignment before transition expansion; and
+7. sessions with the same canonical theorem formula belong to the same connected split component,
+   even if their genealogy labels disagree; and
+8. sessions sharing any exact rendered policy prompt belong to the same component, even when their
+   original theorems and genealogy differ.
+
+This is stricter than checking each transition locally.  A prefix can contain many correct steps
+without proving its theorem.  Such a prefix is useful search telemetry, but training it as if QED
+were guaranteed would teach survival rather than proving.  Similarly, failed tactics are useful
+future ranking data; they are not positive completion targets.
+
+The compiler publishes `train.jsonl`, `val.jsonl`, `test.jsonl`, and one manifest as a coherent
+artifact set.  The trainer refuses raw trace files and accepts only rows whose byte digest, row
+count, prompt contract, environment preimage, and replay counts agree with that adjacent manifest.
+This deliberately duplicates some fields.  Redundancy is useful when disagreement is treated as an
+error rather than silently resolved in favor of whichever copy is convenient.
+
+### Attestation recompiles the data instead of trusting the manifest
+
+A self-description is not independent evidence.  A malicious or stale builder could write matching
+hash fields for the wrong bytes, or a later code change could make an old split impossible to
+reproduce.  Before model import or output-directory creation, the training attestor therefore starts
+again from the committed raw trace and metadata artifacts.
+
+It checks their hashes, requires the recorded compiler inventory to match the current compiler and
+Peano source tree, reconstructs the fixed `model-v1` capability preimage, scans every split for the
+four frozen held-out formulas, and confirms that canonical theorem formulas and exact rendered
+policy prompts are both disjoint across train, validation, and test.  It then invokes the current
+replay compiler in a fresh temporary directory.  The rebuilt `train.jsonl`, `val.jsonl`, and
+`test.jsonl` must have exactly the same sizes and SHA-256 digests as the release files.  For the
+first M19 release this independent rebuild is byte-identical and the held-out contamination count
+is zero.
+
+This attestation is stronger than loading and rehashing the final rows: it demonstrates that the raw
+kernel-checked sessions, current code, fixed environment, split algorithm, and prompt compiler lead
+back to those exact bytes.  It is still not a proof of broad mathematical coverage or good model
+performance.  It certifies the identity and replay contract of one dataset.
+
+## Three prompt-design bugs that looked harmless
+
+The final prompt is short:
+
+```text
+<task>next_tactic</task>
+<env>peano-lab-v1;surface=model-v1;logic=intuitionistic;capability_sha256=…</env>
+<state>{"focus":0,"goals":["⊢ ∀ n. n + 0 = n"]}</state>
+<tactic>
+```
+
+The completion is one tactic line.  The stored dataset envelope adds the terminal delimiter
+`</tactic>` so malformed records are easy to reject.  The loader strips that delimiter and
+supervises exactly the tactic tokens followed by the tokenizer's EOS token; every prompt token is
+masked from the causal loss.  At inference time the adapter returns the bare tactic, not XML and
+not an explanation.
+
+Arriving at this small format exposed three surprisingly general lessons.
+
+### 1. A surface label is not an authority description
+
+Suppose both training and evaluation say `surface=model-v1`.  One process might allow theorem
+`add_comm`; another might accidentally allow the held-out target itself.  The strings match, but
+the proof problems do not.
+
+Peano Lab therefore canonically serializes the capability preimage
+
+$$
+  C=(\text{label},\text{allowed commands},\text{allowed theorems})
+$$
+
+and computes $h=\operatorname{SHA256}(C)$.  The prompt carries $h$; the row and manifest retain the
+complete $C$; the trainer recomputes the digest; and evaluation checks that the adapter's preimage
+equals the goal's actual execution environment.  The logic mode is displayed separately in the
+prompt and is also owner-held.  Thus the full authority is the pair of exact logic mode and exact
+capability object, not the friendly label and not the hash alone.
+
+This fixed a real class of *authority-hash mismatch*: it is not sufficient to hash a name for an
+environment, nor to record a digest without retaining and validating its preimage.  The same rule
+applies recursively to tacticals.  A forbidden theorem inside an unselected `first [...]` or
+`orelse` branch is still forbidden; syntax hidden in a dead branch must not smuggle capabilities.
+
+### 2. Raw trace focus can leak the action
+
+Version-1 `ProofState` has no persistent cursor.  A raw trace's `focus` is computed from the
+submitted command.  If the action is
+
+```text
+focus 2 refl
+```
+
+then the trace records zero-based focus `1`.  Feeding that `1` into the policy input while asking
+the model to predict `focus 2 refl` reveals part of the answer.  The feature looks like state, but
+it was produced by the label.
+
+Policy rows therefore render the runner-owned default focus `0` and preserve all goals in their
+canonical order.  Goal selection remains part of the tactic action.  A future prover with a genuine
+persistent user cursor may expose that cursor, but it must come from the pre-action state rather
+than from parsing the target completion.
+
+This is a useful causal test for every proposed feature:
+
+> Could this field be known before the action was chosen?
+
+If not, it belongs in the label, the successor state, or evaluation metadata—not in the input.
+
+### 3. Kernel alpha-equivalence does not erase surface trajectories
+
+The kernel represents bound variables by De Bruijn index, so renaming a binder changes no kernel
+formula.  The interactive language, however, lets later tactics mention visible names:
+
+```text
+intro n
+induction n
+```
+
+Changing the first line to `intro k` while retaining the second line does not preserve an
+executable script.  Likewise, generated names such as `IH`, `h_witness`, and renamed collision
+variants influence later tactic text even when the underlying certificate is alpha-equivalent.
+
+The version-1 dataset consequently declares an **exact authored binder trajectory**.  It preserves
+the visible names in each state and the exact successful tactic line that reaches the stored next
+state.  Replay verifies the whole trajectory.  Synthetic generators must choose their binder names
+deterministically within a lineage; they may not independently alpha-rename states and actions.
+
+This choice solves executability, not every statistical problem.  Two independently generated
+proofs can still present the same mathematical state with different arbitrary naming actions.  A
+later prompt version may canonicalize binder-introducing actions or expose an explicit name-binding
+map, but such a change must be versioned and replayed.  “Names do not matter to the kernel” is not a
+license to make the policy's input/output pairs inconsistent.
+
+## Synthetic data needs a family tree
+
+Randomly splitting transition rows is almost guaranteed to leak.  Adjacent rows from one proof
+would appear on both sides of the split.  Renamed copies, commuted equations, altered numerals, and
+alternative proofs of the same generated theorem can be only marginally less obvious duplicates.
+
+The compiler therefore splits *before* expanding sessions into rows.  It connects family, lineage,
+canonical theorem-formula, and exact rendered policy-prompt nodes:
+
+```text
+family ── lineage
+   ├── canonical theorem formula
+   └── exact rendered policy prompt(s)
+```
+
+Sessions sharing a family or lineage belong to one connected component.  The canonical-formula
+edge provides an independent defense against false genealogy metadata: two sessions proving the
+same printed kernel formula cannot cross splits merely because a producer assigned different
+labels.  The policy-prompt edge handles a different leak: proofs of different original theorems can
+reach the same model input, which must not appear in both training and evaluation.  Components are
+ranked by a SHA-256 value derived from a declared split seed, then assigned deterministically to
+train, validation, or test while reserving a training component.  Every transition from every
+member of a component follows that assignment.
+
+The consequence can look inconvenient: a small, highly connected corpus may yield a tiny or empty
+validation split.  That is more honest than manufacturing validation rows by cutting a proof family
+in half.  Scaling the generator should create genuinely distinct components, not weaken the split.
+
+The initial 18-session catalog remains a useful end-to-end smoke fixture.  The first frozen
+training-scale release is now larger and exact:
+
+| Property | Released value |
+|---|---:|
+| kernel-checked sessions / independent roots | 2,522 |
+| unique canonical statements | 2,522 |
+| positive next-tactic rows | 10,000 |
+| train / validation / test rows | 8,149 / 926 / 925 |
+| proof-first schemas | 29 |
+| domains | 5 |
+| frozen held-out target occurrences | 0 |
+
+The five domains are logic, equality, PA recurrence, witnesses, and arithmetic.  The combined split
+digest is
+`1fa98caa2e0528d39c1b9003c4ee153dfbe633cb1ee4505e8f5b28eb837465dd`.
+All 2,522 source statements are distinct canonical formulas, and every session reaches QED through
+the ordinary headless surface and independent kernel before contributing rows.
+The raw traces, sidecar, source manifest, compiled splits, attestation, and concise reproduction
+instructions live together in
+[`data/peano-policy-v1/`](https://github.com/nasqret/vietnam2026/tree/peano-lab/data/peano-policy-v1).
+
+This is a supervised-policy baseline, not unrestricted PA conjecture generation.  Its 29 schemas
+do not yet include induction or planner-generated invariants, negative preference examples, or
+natural-language formalization pairs.  Schema similarity also remains across IID roots; a genuine
+family-OOD evaluation must withhold whole templates.  Larger generation should attach stable
+family, template, lineage, generator version, and explicit parentage before applying
+transformations.  Descendants must remain with their seed even when two transformation paths meet.
+
+A useful curriculum measures more than source length.  Relevant coordinates include formula AST
+size and depth, tactic steps, certificate nodes and depth, verifier calls, automation used, branch
+factor, and whether a witness, induction invariant, or local lemma had to be invented.  These
+measurements let us ask whether a model learned a new proof pattern rather than memorized another
+spelling of an easy one.
+
+## Supervised learning: one decision at a time
+
+The primary artifact is a next-tactic policy, not a whole-script chatbot.  Given canonical open
+goals and a fixed environment, it predicts one complete public tactic line.  Peano Lab executes the
+line and supplies the next real state.  This choice has several advantages:
+
+- every decision can be checked immediately and transactionally;
+- search can branch at a proof state without regenerating a long common prefix;
+- deterministic tactics can handle routine arithmetic leaves;
+- failures have a precise state/action interpretation; and
+- token cost can be attributed to individual search choices.
+
+The first smoke configuration uses `Qwen/Qwen3-1.7B-Base` with BF16 rank-8 LoRA for 100 optimizer
+steps.  The controlled four-billion-parameter comparison is configured for
+`Qwen/Qwen3-4B-Base` and `Pythagoras-LM/Pythagoras-Prover-4B` under the same Peano data and adapter
+budget.  These are experiment candidates, not reported winners.
+
+The runtime uses a repository-owned non-chat prompt, right padding, completion-only loss, PyTorch
+SDPA, deterministic seeds, and no tokenizer vocabulary modification in the first run.  It rejects
+an over-length example rather than truncating the environment header or the start of a proof state.
+`PYTHONHASHSEED` must be set before interpreter startup; Python, NumPy when present, PyTorch, CUDA,
+Transformers, and dataset shuffle seeds are recorded or derived deterministically.
+
+Training loss is useful for debugging optimization.  It is not the primary model-selection
+metric.  A policy that predicts common easy tactics can have a pleasant loss and still solve no new
+theorem.  Checkpoint selection must ultimately be based on kernel-judged validation under frozen
+budgets.
+
+## Evaluation now, verifier-guided search next
+
+The implemented evaluator performs independent bounded rollouts.  At each step it renders the
+canonical goals, asks the policy for one line, validates the text, executes it under the goal's
+capability object, and classifies the outcome as proof, invalid output, failing tactic, or resource
+limit.  A rollout counts only when `checked_surface_final` accepts the full certificate for the
+externally retained theorem and logic mode.
+
+The small protocol regression set contains `le_trans`, `le_antisymm`, `le_total`, and
+`mul_eq_zero`.  All four run under one reported foundation theorem set; their own target names and
+canonical formulas are absent from the attested 10,000-row release, their theorem names are not
+importable, and `auto` is unavailable.  Four problems are not a credible final benchmark.  Before
+any broad generalization claim, M19 must additionally freeze a larger set covering held-out
+lineages, held-out whole templates, larger depths, unseen lemma/witness compositions, and a small
+human-authored set.
+
+Verifier-guided best-first search is the next planned layer, not a completed result.  Its basic
+shape is:
+
+1. place the initial real proof session in a frontier;
+2. ask the policy for several complete tactic lines;
+3. execute each line transactionally through the production surface;
+4. discard invalid or failing actions, and retain successful successor sessions;
+5. prioritize a path by accumulated negative log probability plus a declared depth penalty;
+6. deduplicate only with a documented, implementation-owned proof-state identity;
+7. stop at fixed proposal, token, state, kernel-call, certificate, and wall-clock budgets; and
+8. count success only after the final independent kernel check.
+
+Pretty-printed goals alone need not be a sufficient semantic deduplication key: hidden
+metavariable substitutions and partial-certificate structure can matter.  A search implementation
+must either include the necessary engine-owned state in its identity or conservatively retain both
+paths.  Unsound deduplication still cannot fool the final kernel, but it can silently remove valid
+paths and make an efficiency comparison scientifically misleading.
+
+Once search finds new checked proofs, expert iteration may add their trajectories to the positive
+set.  Failed actions and dominated successful successors can support a separate ranking objective.
+They should not be mixed into SFT labels merely because they were produced by the same run.  Any
+later reward optimization receives terminal proof reward only from independent QED; a certificate
+size bonus is conditional on QED and cannot compensate for an invalid theorem.
+
+## What to measure
+
+One scalar cannot describe this experiment.  At minimum every model/search condition should report:
+
+| Question | Measurement |
+|---|---|
+| Does it solve problems? | independently checked pass@1, pass@4, and pass@16 |
+| Is it cheap? | solved goals per generated token, kernel call, and second |
+| Is search wasteful? | proposals, unique states, duplicate states, frontier peak |
+| Are proofs compact? | certificate nodes and depth, conditional on QED |
+| How does it fail? | invalid text, tactic failure, explicit limit, kernel rejection |
+| Does it generalize? | per-family and per-difficulty outcomes on frozen splits |
+| Is the estimate stable? | exact counts and bootstrap confidence intervals |
+
+The budgets are part of the metric.  “Pass@16” is ambiguous unless sampling temperature, maximum
+tactic steps, maximum generated tokens, theorem capabilities, deterministic closers, and verifier
+calls are all fixed.  Wall time should be reported alongside hardware and batching because it is
+not portable by itself.
+
+Mandatory baselines include deterministic Peano tactics, the untrained base model, SFT greedy
+decoding, SFT sampled pass@$k$, and—when implemented—SFT plus best-first search.  Comparisons between
+1.7B and 4B models must use the same data and verifier/token budgets.  A formal-prover prior and a
+general base model of similar size should be compared as model families, not under selectively
+tuned settings.
+
+Formalization remains a separate experiment.  The kernel can decide whether a proof derives the
+formula a model emitted.  It cannot decide whether that formula faithfully expresses an English
+sentence.  Exact AST checks work for templated synthetic pairs; human language requires semantic
+review and must never be folded invisibly into the proof success rate.
+
+## Helios: guarded operations, not a magic benchmark
+
+The cluster workflow selectively adapts operational patterns from the SAIR Helios repository, but
+Peano Lab owns its prompt and experiment contract.  The current target is the
+`plgccaiautore2026` grant, the `plgrid-gpu-gh200` partition, one GH200 GPU job at a time during the
+pilot, and the `ML-bundle/25.10` module baseline.  The fixed project root is
+`$SCRATCH/codex-control/projects/peano-lab-training`.
+
+The intended progression is deliberately staged:
+
+1. verify the committed 10,000-row release from its raw traces with the independent attestor;
+2. inspect the source, dataset, and attestation manifests;
+3. run the read-only Helios probe;
+4. synchronize source while preserving remote checkpoints, results, caches, and the submission
+   ledger;
+5. test each Slurm script with `sbatch --test-only`;
+6. run CPU and GH200 environment smoke jobs;
+7. prepare the pinned lightweight Python environment above the cluster PyTorch module;
+8. run the 1.7B, 100-step adapter smoke;
+9. reload/resume it and run kernel-judged evaluation; and
+10. only after the smoke gates pass, schedule controlled 4B comparisons.
+
+The wrappers default to test-only.  A real submission requires both `--submit` and the explicit
+confirmation token `PEANO-LAB-TRAINING`.  Every accepted submission appends timestamp, job ID,
+script path, work directory, git commit, and script SHA-256 to `logs/submissions.tsv`.  Scheduler
+logs are evidence that a job ran; they are not a substitute for the dataset, training, and
+evaluation manifests.
+
+The GH200 is an ARM machine.  The existing short job checks `aarch64`, CUDA visibility, the loaded
+PyTorch build, and Peano kernel execution.  Before a longer job is trusted, the full smoke sequence
+must also demonstrate BF16 forward/backward execution, the relevant Python packages, adapter
+save/reload, tokenizer round trips, and evaluation through the Peano kernel.  FlashAttention, vLLM,
+DeepSpeed, bitsandbytes, and QLoRA may later be measured optimizations; none is a prerequisite for
+the first correctness run.
+
+## Reproduction and honest resume
+
+A checkpoint name such as `checkpoint-100` is not an identity.  M19 binds a run to:
+
+- the resolved TOML configuration and its digest;
+- train and validation bytes plus their replay manifests;
+- prompt version and prompt-contract digest;
+- training source-tree digest;
+- base model ID and requested revision;
+- LoRA and optimizer settings; and
+- the declared seed.
+
+That identity is written before training.  Automatic resume locates the newest Transformers
+checkpoint only inside the output directory and accepts it only when its adjacent run identity has
+the expected digest.  It records the checkpoint artifact hash and global step.  This prevents
+“resume” from quietly becoming warm-starting different code, data, or hyperparameters.
+
+After training, `training-manifest.json` records the resolved model and tokenizer snapshots, base
+configuration digest, replay attestation, source and input manifests, package versions,
+attention/dtype choices, resume decision, example counts, and optimization metrics.  Adapter and
+tokenizer outputs live in separate **closed directories**: the manifest lists and hashes every
+regular loader-visible file, and loading rejects symlinks, missing files, mutations, or an extra
+unattested file.  Hashing only a familiar weight filename would not be sufficient because model
+loaders also interpret configuration and tokenizer files.
+
+Trained evaluation derives its exact `PromptEnvironment` from the dataset attestation embedded in
+that training manifest.  It checks the frozen held-out contract, zero-contamination statement,
+train/validation hashes, capability preimage, and fixed `model-v1` authority before loading or
+executing the adapter; it does not replace those facts with a convenient hard-coded environment.
+The evaluation report then embeds the training-manifest identity, exact decode policy, evaluator
+source hash, goal-set hash, seed, budgets, complete attempted tactic sequences, and per-attempt
+outcomes.
+
+Reproducible does not necessarily mean bit-identical floating-point training on every platform.
+It means that any remaining nondeterminism is bounded and visible, and that nobody can mistake a
+different model, environment, dataset, or checkpoint for the same experiment.
+
+## Limitations and the next honest claims
+
+The current work establishes an auditable path to an experiment.  It does not yet establish that a
+small model is useful.  Important limitations remain:
+
+- the attested 10,000-row release is schema-generated and still too narrow for a broad PA claim;
+- the four-goal protocol set is a regression fixture, not a statistically useful final test;
+- induction/invariant schemas, hard whole-template OOD sets, and human-authored problems remain to
+  be added or frozen;
+- verifier-guided best-first search and expert iteration remain protocol designs;
+- no preference-training or reinforcement-learning result exists;
+- no English-to-PA formalizer has been trained or semantically evaluated;
+- tokenization fertility and throughput must be measured on the actual resolved tokenizers; and
+- Helios job accounting and end-to-end resume evidence remain to be collected from real jobs.
+
+The next valid statement is therefore not “Peano Lab has a theorem-proving model.”  It is narrower:
+after the smoke runs, we may report whether one exact adapter, trained from one replay-validated
+dataset under one manifest, produced independently checked proofs for one frozen benchmark under
+one fixed budget.  Larger conclusions must be earned by the family splits, baselines, ablations,
+and repeated measurements described above.
+
+That restraint is the main pedagogical result.  A learned explorer can be cheap, fast, and
+surprisingly inventive.  Its suggestions remain suggestions.  Peano Lab's kernel decides theorems,
+and the experiment's manifests decide what scientific comparison was actually made.

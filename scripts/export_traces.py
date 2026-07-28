@@ -521,7 +521,7 @@ def _reserved_backup_path(path: Path) -> Path:
     return reserved
 
 
-def _publish_artifact_set(artifacts: Sequence[tuple[Path, str]]) -> None:
+def publish_text_artifact_set(artifacts: Sequence[tuple[Path, str]]) -> None:
     """Stage all artifacts, then publish them with ordinary-failure rollback.
 
     A filesystem cannot atomically replace three unrelated names in one call.
@@ -778,7 +778,7 @@ def export_traces(
             raise ValueError(
                 f"refusing to overwrite input trace file with export artifact {artifact}"
             )
-    _publish_artifact_set(
+    publish_text_artifact_set(
         (
             (train_path, train_text),
             (val_path, val_text),
@@ -870,4 +870,10 @@ __all__ = [
     "load_sessions",
     "load_trace_file",
     "main",
+    "publish_text_artifact_set",
 ]
+
+
+# Backward-compatible private spelling for older tests/tools.  New producers
+# use the public name so the rollback contract is shared rather than copied.
+_publish_artifact_set = publish_text_artifact_set

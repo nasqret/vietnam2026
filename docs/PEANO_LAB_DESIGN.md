@@ -15,7 +15,7 @@ milestones and acceptance criteria lives in `PLAN/09_peano_lab.md`.
 
 The original idea: "build tactics for something harder than propositional logic, test on Peano
 arithmetic, expandable, teach how tactics are made, lambda-lab-style UI, book chapter, later
-post-train a small LLM on the solver's traces." All adopted. Four sharpening decisions:
+post-train a small LLM on the solver's traces." All adopted. Five sharpening decisions:
 
 **D1 — The logic is staged, not swallowed whole.** Full first-order PA at once would force
 quantifiers, equality, substitution, *and* induction into milestone 1 — exactly how projects
@@ -51,6 +51,16 @@ natural-deduction core is intuitionistic — matching Lecture 3's constructive s
 the BHK reading of every rule. A single axiom toggle (`classical on` adds ¬¬φ → φ as a rule)
 lets the book demonstrate *exactly* what classicality buys, mirroring the Peirce discussion.
 For arithmetic Π₁ statements this loses nothing (Friedman translation — book material, not code).
+
+**D5 — Headless training is an adapter, never a second prover.** Data preparation and
+verifier-guided search need not pay the browser/DOM startup cost, but speed does not justify a
+second interpretation of Peano Lab. The compact runner imports the production formula parser,
+proof-state owner, public tactic grammar, theorem replay, trace logger, finalizer, and independent
+kernel. It starts a fresh owner for every request and retains the original closed target and exact
+logic mode outside all model-controlled data. Generation always records the binding v1 trace;
+quiet verification is a separately named mode for already-authored scripts. A model supplies only
+tactic lines. It cannot choose its execution mode, capability set, theorem allow-list, session
+identity, QED meaning, or checker.
 
 ---
 
@@ -191,7 +201,7 @@ is an equality, then wrap the result in ordinary `ForallIntro` certificates. One
 by 256 equality-term AST nodes at depth 64, at most 64 such leading binders, 32 closed computations,
 intermediate values at most 128, 25,000 work units, a 50,000-node/256-level generated numerical
 bridge, and five seconds. The complete live partial certificate is separately capped at 100,000
-nodes and depth 512. Multiplication tests the value bound before forming the product. Resource or
+nodes and depth 256. Multiplication tests the value bound before forming the product. Resource or
 host-recursion exhaustion raises `TacticLimit` and preserves the exact proof state and history.
 Arithmetic-aware `hint` uses the same pure bounded preflight; it never runs a speculative state
 tactic or allocates proof holes.
@@ -293,7 +303,7 @@ AST, selected-hypothesis, annotation, work, proof-node/depth, complete-partial-p
 limits. The M18 defaults are 256 aggregate input-term nodes at depth 64, 16 selected equations, 64
 seed/template instances, 512 memo/search states, 512 generated candidates, 100,000 term/formula
 annotation nodes at depth 256, 20,000 work units, a 10,000-node/256-level generated fragment, a
-100,000-node/512-level complete partial certificate, and five seconds. Exhaustion means only that
+100,000-node/256-level complete partial certificate, and five seconds. Exhaustion means only that
 this bounded search stopped.
 
 The public metric must be named honestly. `proof_size` counts structural `Proof` occurrences while
@@ -379,6 +389,63 @@ Rules: canonical printing only; no ANSI; stable field order; failures are record
 must learn what *doesn't* work). A `scripts/export_traces.py` collates sessions into a train file.
 Success metric for later: a small fine-tuned model, given `goals_before`, proposes `tactic`.
 
+### Headless execution and post-training envelopes (M19)
+
+`peano_lab.batch` is the one warm-process execution boundary for corpus generation, model search,
+and fast replay checks. `scripts/peano_batch.py` provides a finite transactional JSONL transport
+around it. It is deliberately not a duplex service: result rows are withheld until EOF and, in
+trace mode, until the matching trace artifact commits.
+Neither module defines a term, formula, proof constructor, tactic, theorem, or checking rule. Every
+`proved` result is issued only after `checked_surface_final` submits the completed ordinary
+certificate to the unchanged kernel against the adapter-owned original target and exact classical
+mode.
+
+The request schema contains only a version, caller label, closed theorem, tactic lines, classical
+Boolean, and stop/continue-on-tactic-error policy. Execution mode and `SurfaceCapabilities` are
+runner-owned arguments. A capability fingerprint hashes its label, complete primitive-command
+allow-list, and complete checked-theorem allow-list; the result records that digest and logic mode.
+The same capability object compiles every tactical leaf, including dead alternatives. A finite
+capability profile cannot expose `auto` until search and winning-plan replay themselves become
+capability-aware.
+
+Trace mode is mandatory for generation and search. The adapter checks that each submitted command
+adds the exact expected replay and engine-history transaction(s), preserves step and goal
+continuity, binds non-`auto` trace text and focus to the submitted line, binds `auto` transitions to
+its surviving primitive history, and gives every failed command exactly one unchanged-state error
+transition whose diagnostic matches the raised `TacticError`. Trace records are
+append-only and returned as detached copies. One request is bounded to 1,024 tactic lines, 500,000
+tactic characters, the ordinary formula/line/numeral/live-certificate limits, and 16 MB of encoded
+trace records; a bound is checked before the offending record is appended or sent to a sink. The
+CLI additionally defaults to at most 10,000 requests, 256 MiB input, 128 MiB result envelopes, and
+512 MiB raw trace per finite transaction; larger workloads must use explicit reviewed limits or
+shards.
+Raw v1 records and compact result envelopes are
+separate streams; the raw artifact is written to a same-directory staging file and appears at its
+requested final name only after a complete, durable batch. Empty, all-invalid, fail-fast, or
+unexpectedly interrupted runs never publish a plausible final trace. Compact success rows are also
+staged and withheld until that trace publishes, so a downstream pipeline cannot observe a claimed
+success paired with a missing final trace artifact.
+
+Quiet `verify_proof` omits transition rendering only for high-throughput checks of scripts that
+already exist. It retains the same parser, tactics, state transactions, certificate construction,
+original-target ownership, and independent final kernel check. It cannot accept a trace sink, and
+its output is not training data.
+
+Raw traces remain the binding v1 artifact. Research metadata lives in a strict sidecar: exact
+logic, capability object and digest, family, lineage, generator version, and provenance. The
+dataset compiler accepts positive next-tactic labels only from `qed: true` sessions whose
+successful sequence exactly replays under that declared environment to a second kernel-checked
+QED with identical states and proof size. It preserves the exact executable authored tactic; the
+policy input focus is always zero because trace focus is derived from the action and would leak the
+label. Connected genealogy, canonical-formula, and exact-rendered-prompt components are assigned to
+train/validation/test before tactic rows are expanded; an independent attestor rejects both formula
+and prompt overlap across splits.
+The manifest fingerprints the compiler, runtime, and complete `peano_lab/**/*.py` semantic source
+tree. Training and held-out evaluation use one fixed `model-v1` command/theorem preimage, and every
+checkpoint/report binds its model revision, data and source digests, capability digest, decoding
+settings, evaluator source, and resume parent identity. Model text is never evidence; evaluation
+reports a success only after the same owner-and-kernel path closes a frozen held-out statement.
+
 ## 5. Testing (non-negotiable, learned from the audit)
 
 1. **Soundness oracle**: every QED in every test re-runs the independent checker; a fuzz suite
@@ -415,6 +482,7 @@ peano-lab/
   py/
     driver.py                                (dispatch, session-owner routing)
     peano_lab/
+      batch.py                               (headless adapter; no new proof semantics)
       kernel/     terms.py formulas.py subst.py proofs.py checker.py   ← TRUSTED, small
       engine/     state.py tactics.py tacticals.py rewrite.py
                   induction.py decide.py norm_num.py proof_reduction.py ring.py compact_arith.py
@@ -426,6 +494,8 @@ peano-lab/
                   test_tacticals.py test_ladder.py test_ui.py
   vendor/                                    (shared fetch via scripts/fetch_vendor.sh)
 scripts/export_traces.py
+scripts/peano_batch.py                       (finite transactional JSONL transport)
+scripts/build_peano_policy_dataset.py        (QED-only replay compiler)
 book/peano/*.md                              (the new book part)
 ```
 
@@ -444,4 +514,6 @@ nonlinear consequences of hypotheses. There is no Presburger `omega` in this pla
 would require a separate certificate-producing design and would still decide only that fragment,
 not general Peano arithmetic. `compact_arith` does not change this boundary: its finite seeded
 recurrence grammar is intentionally incomplete, and “cheapest candidate found” is not an absolute
-proof-minimality result.
+proof-minimality result. A post-trained policy does not change this boundary either: the model is
+an untrusted tactic proposer, not a theorem oracle, semantic judge, kernel extension, or source of
+axioms.

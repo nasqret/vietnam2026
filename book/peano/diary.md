@@ -798,3 +798,155 @@ the required `Cache-Control: no-store` response header. That failure is evidence
 not evidence against the proof engine. No in-app browser was attached to this session, so I do not
 claim a direct Pyodide click-through. Production was deliberately left untouched at build
 `2026-07-27h`.
+
+## 2026-07-28 — M19 design: make data quickly without making a second prover
+
+The owner proposed a compact Peano Lab script for large-scale preparation and synthetic proof
+generation. That is the right performance idea, with one dangerous interpretation: a compact
+*implementation* of PA would create a second parser, tactic semantics, or checker and let training
+success drift away from the browser theorem prover. I therefore made the new component a headless
+adapter around the existing implementation. It imports Python once, starts one fresh
+`ProofSession` per JSONL request, runs the public `run_surface` grammar, and calls the same
+`checked_surface_final` path with an independently retained original theorem and logic mode.
+
+Generation and verification are deliberately different names. `run_proof` keeps the binding v1
+transition stream because search data without exact failures and state changes is not auditable.
+`verify_proof` is the faster path for scripts that already exist; it omits transition rendering but
+does not omit certificate construction or the final independent-kernel check. Raw trace records and
+compact result envelopes are separate artifacts so the existing strict exporter never has to guess
+which JSON object it is reading.
+
+The first adversarial review found several ways a logically sound result could still become a
+scientifically false record. A returned session could try to replace its theorem, logic mode, name
+table, trace owner, or proof state. A forbidden theorem could hide in an unused tactical branch. A
+mocked surface could execute `refl` while the request said `exact missing`, suppress a transition,
+or append unrelated transitions. A finite profile containing `auto` could authorize the search
+command without authorizing the primitive plan it replayed. None of these forged a theorem—the
+kernel still checked the actual certificate—but each could poison action labels or benchmark
+environment claims.
+
+The adapter now keeps all authority in local owner values, checks every returned owner, compiles
+command and theorem capabilities at every tactical leaf, fingerprints the complete command/theorem
+environment, and binds every trace delta to the submitted command, focus, returned state, and
+surviving history. Finite capability profiles exclude `auto` until its replay becomes
+capability-aware. Trace records are append-only and exposed as detached copies. File output is
+staged and published without overwrite only after a complete durable batch, so an empty, malformed,
+fail-fast, or pre-commit interrupted run cannot leave a plausible final corpus.
+
+This review also caught an efficiency mistake in the guard itself. Deep-copying the whole trace
+before every tactic made a long session quadratic. Moving append-only ownership into `TraceLogger`
+and checkpointing only its record count reduced a 1,000-command continued-failure example from
+seconds to about 0.065 seconds with tracing (about 0.008 seconds in quiet verification) on this
+machine. The exact numbers are a local microbenchmark, not a Helios throughput claim. An iterative
+proof-node counter likewise prevents a long open certificate from crashing while writing its false
+QED footer.
+
+The training protocol keeps the model outside the trusted base. The primary artifact predicts one
+next tactic from canonical goals and an exact capability hash. QED-only sessions must replay under
+that declared environment before becoming positive labels, and connected genealogy,
+canonical-formula, and exact-policy-prompt components split before transition rows. The first smoke
+model is Qwen3-1.7B-Base; a controlled 4B comparison uses Qwen3-4B-Base and
+Pythagoras-Prover-4B under the same data and LoRA budget. No model download, training job, or remote
+mutation had been launched at the time of this entry; the headless boundary and its hostile tests
+come first.
+
+## 2026-07-28 — M19 documentation: write the threat model before the learning curve
+
+The new policy-training chapter records the implemented headless, replay, prompt, dataset,
+training-runtime, evaluator, provenance, and Helios contracts before any learned result exists.  In
+particular, it preserves three design discoveries that would otherwise look like minor data-cleaning
+details: an environment label is not its command/theorem authority, raw trace focus can leak a
+goal-selection action, and alpha-equivalent kernel formulas still require an exact executable
+surface binder trajectory.  Best-first search, expert iteration, Helios training, model comparisons,
+and solve-rate claims remain explicitly pending until their own artifacts exist.
+
+## 2026-07-28 — M19 data release: 10,000 rows must still prove where they came from
+
+The proof-first generator now freezes the first training-scale policy artifact. Its 29 schemas span
+logic, equality, PA recurrence, witnesses, and arithmetic. They produced 2,522 independent roots,
+2,522 distinct canonical statements, and exactly 10,000 positive tactic transitions; all 2,522
+sessions reached the original-target kernel check. The deterministic split is 8,149 train, 926
+validation, and 925 test rows. The combined dataset SHA-256 is
+`1fa98caa2e0528d39c1b9003c4ee153dfbe633cb1ee4505e8f5b28eb837465dd`.
+
+Adversarial review showed that honest producer genealogy was not a sufficient split boundary.
+Two records could claim unrelated families while proving the same formula; two different theorems
+could also reach the same rendered model input. The compiler now joins family, lineage, exact
+canonical theorem, and exact policy-prompt nodes into connected components before row expansion.
+The attestor independently rejects any canonical formula or exact policy prompt shared by two
+splits. The released data contain zero occurrences of the four frozen held-out targets.
+
+The attestor does not accept the builder manifest as its own evidence. It verifies the raw trace,
+metadata, compiler/source, environment, and held-out contracts, invokes the current compiler in a
+fresh directory, and requires all three reconstructed split files to be byte-identical. Model
+artifacts receive the same closed-world treatment: every loader-visible file beneath the separate
+adapter and tokenizer directories must appear in the hash manifest, with no symlink, extra file, or
+silent mutation. Trained evaluation reconstructs its authority from the dataset attestation in the
+training manifest instead of selecting a hard-coded lookalike environment.
+
+This closes the first scaled data and provenance gate, not the learning experiment. The catalog
+still lacks induction/invariant schemas, negative preference rows, and natural-language pairs, and
+the four-goal held-out set is a regression boundary rather than a statistically useful benchmark.
+No model training or learned evaluation result is claimed yet.
+
+## 2026-07-28 — M19 second audit: a true theorem can still make a false training row
+
+The next hostile review found no route to a false QED, but it exposed an important distinction:
+kernel soundness alone does not prove that a recorded action caused the recorded transition. A
+forged surface could execute `refl`, label the trace `symm`, and still return a certificate for a
+true reflexive goal. The adapter now binds each success simultaneously to the submitted line, the
+returned replay journal, the engine's outer transaction, proof-history prefix, goal transition, and
+trace label. A failure record must carry the exact sanitized diagnostic raised by the tactic.
+Open-result goals reuse the trace's proof-wide metavariable aliases rather than starting a fresh
+printer namespace.
+
+The transport audit found a different class of honesty bugs. Python's default JSON decoder would
+construct a huge integer before request-schema validation and would turn `1e9999` into infinity.
+The decoder now bounds integer spelling and rejects every JSON float. The CLI is described and
+implemented as a finite transaction, not a streaming duplex service: it has aggregate input,
+request, result, and trace ceilings; withholds rows until EOF and trace commit; exposes
+`--require-proved` for CI; preserves `KeyboardInterrupt`/`SystemExit`; and treats a successful hard
+link as the trace commit point. Directory entries are synced and staging cleanup happens after
+matching results may be published. These are not new proof rules, but they make the scientific and
+operational record say exactly what happened.
+
+## 2026-07-28 — M19 final preflight: make the fast path boring at its boundaries
+
+A final parity audit concentrated on syntax that a normal proof author would rarely type but a
+model eventually will. Redundant grouping around top-level `auto` originally took a different
+dispatcher path from `auto`, so its trace/history invariant rejected a browser-valid command.
+Malformed grouping could also raise while the classifier was deciding whether a command was
+`auto`, before the traced dispatcher had emitted its transactional error. The classifier now
+removes redundant outer groups, treats grouped `auto` as the same primitive-plan replay, and is
+total on malformed input. A small exhaustive probe over 72 grouped variants found identical traced
+and quiet statuses, errors, and engine histories.
+
+Two string-boundary bugs carried the same lesson. Python's `str.isdigit()` recognizes characters
+such as superscript and circled digits that `int()` does not parse, so trace canonicalization now
+guards conversion and preserves an ordinary tactic error. Capability labels are restricted to a
+small ASCII token alphabet because an unescaped label is embedded in the repository-owned prompt
+environment; punctuation such as `</env>` must never be able to manufacture prompt structure.
+Neither issue could make the kernel accept a false theorem, but both could make training and quiet
+verification disagree.
+
+The transport contract now names the hard link as its exact commit point. Cancellation before it
+removes the hidden stage and publishes no final trace. Cancellation after it may leave the complete,
+data-fsynced trace while redirected stdout is absent or partial; callers that require an atomic
+result filename use their own temporary output and rename after process success. A regression
+injects interruption immediately after the link and verifies that only a complete QED trace remains,
+with no hidden staging alias.
+
+The Helios preflight was tightened before any GPU job was allowed. Training manifests now join the
+source-sync record, exact Slurm script, scheduler job and submission-ledger row, dependency, module
+stack, package inventory, requirements hash, and accelerator identity. Evaluation hashes its model
+decoder, evaluator, public surface, library, and kernel sources. The preparation job performs an
+actual BF16 LoRA forward/backward/AdamW update, saves and hashes adapter/tokenizer artifacts, reloads
+them, and runs another forward pass. Training and evaluation submissions require explicit
+`afterok` dependencies, and sampled `k=4` really uses four seeded samples. These gates cost a little
+setup time and save much more expensive ambiguity after a cluster result exists.
+
+The frozen local gate now reports 363 focused M19 tests and 912 complete Peano tests; Lambda Lab
+reports 360 tests plus 36 subtests, and the book/command replay gates are clean. The scaled dataset
+attestor independently rebuilt 8,149/926/925 rows with aggregate SHA-256
+`1fa98caa2e0528d39c1b9003c4ee153dfbe633cb1ee4505e8f5b28eb837465dd`. These are pre-training
+facts only: at this point no model result or Helios job outcome is claimed.

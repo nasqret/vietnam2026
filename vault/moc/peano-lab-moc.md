@@ -37,12 +37,20 @@ tags: [moc, peano-lab, theorem-proving]
 - [[kernel-judged-evaluation]]
 - [[pass-at-k]]
 
+## Training a tactic policy
+
+- [[compact-headless-proof-runner]]
+- [[kernel-guided-policy-training]]
+- [[genealogy-safe-proof-data-split]]
+- [[verifier-guided-policy-evaluation-and-search]]
+
 ## Executable surfaces
 
 - Browser: `/peano-lab/`
 - Book: `book/peano/`
 - Trace release: `peano-lab/corpus/`
 - Data/evaluation protocol: `docs/PEANO_LLM.md`
+- Post-training protocol: `docs/PEANO_TRAINING.md`
 - Binding design: `docs/PEANO_LAB_DESIGN.md`
 - Milestones: `PLAN/09_peano_lab.md`
 

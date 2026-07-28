@@ -77,7 +77,7 @@ class CompactArithLimits:
     max_proof_nodes: int = 10_000
     max_proof_depth: int = 256
     max_partial_nodes: int = 100_000
-    max_partial_depth: int = 512
+    max_partial_depth: int = 256
     max_seconds: float = 5.0
 
     def __post_init__(self) -> None:

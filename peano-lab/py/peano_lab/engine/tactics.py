@@ -97,6 +97,7 @@ from .state import (
     metas_in_formula,
     metas_in_proof,
     metas_in_term,
+    proof_metrics,
     proof_size,
     record_step,
     replace_current_hole,
@@ -141,8 +142,30 @@ MAX_USE_PROOF_DEPTH = 128
 # Bound the whole live certificate on both sides of that operation so a small
 # numerical calculation cannot be appended to an already hostile proof tree.
 MAX_NORM_NUM_PARTIAL_NODES = 100_000
-MAX_NORM_NUM_PARTIAL_DEPTH = 512
+MAX_NORM_NUM_PARTIAL_DEPTH = 256
 MAX_NORM_NUM_FORALLS = 64
+
+# Every ordinary tactic shares a conservative live-certificate boundary.
+# Specialized automation may enforce still smaller limits, but no generic
+# sequence may build a tree deep enough to exhaust the recursive finalizer or
+# kernel before QED can return an honest result.
+MAX_LIVE_PROOF_NODES = 100_000
+MAX_LIVE_PROOF_DEPTH = 256
+
+
+def enforce_live_proof_bounds(proof: Proof) -> tuple[int, int]:
+    """Check the global certificate bound shared by primitives and tacticals."""
+
+    nodes, depth = proof_metrics(proof)
+    if nodes > MAX_LIVE_PROOF_NODES:
+        raise TacticLimit(
+            f"tactic exceeded the {MAX_LIVE_PROOF_NODES}-live-proof-node limit."
+        )
+    if depth > MAX_LIVE_PROOF_DEPTH:
+        raise TacticLimit(
+            f"tactic exceeded the {MAX_LIVE_PROOF_DEPTH}-live-proof-depth limit."
+        )
+    return nodes, depth
 
 
 def _current(state: ProofState) -> Goal:
@@ -166,6 +189,7 @@ def _commit(
 ) -> ProofState:
     if subst is not None:
         after = apply_subst_everywhere(after, subst)
+    enforce_live_proof_bounds(after.partial)
     # A universal instantiation may introduce an implicit term that no goal can
     # constrain (for example applying ``forall x. 0 = 0``).  Choose canonical
     # 0 only for such a *freshly introduced* proof-only meta.  An older meta may
@@ -1851,6 +1875,9 @@ __all__ = [
     "MAX_NORM_NUM_PARTIAL_NODES",
     "MAX_NORM_NUM_PARTIAL_DEPTH",
     "MAX_NORM_NUM_FORALLS",
+    "MAX_LIVE_PROOF_NODES",
+    "MAX_LIVE_PROOF_DEPTH",
+    "enforce_live_proof_bounds",
     "intro",
     "have",
     "suffices",

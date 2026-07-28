@@ -20,7 +20,7 @@ tags: [moc, index]
 - [[lambda-lab]] · [[peano-lab]] · [[lean]] · [[mathlib]] · [[agda]] · [[mizar]]
 
 ## Building Peano Lab
-- [[peano-lab-moc|Peano Lab MOC]] · [[trusted-kernel]] · [[proof-certificate]] · [[theorem-ladder]]
+- [[peano-lab-moc|Peano Lab MOC]] · [[trusted-kernel]] · [[proof-certificate]] · [[theorem-ladder]] · [[kernel-guided-policy-training]]
 
 ---
 Book: https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026/book  ·  Lab: /lab-lambda  ·  Repo: github.com/nasqret/vietnam2026

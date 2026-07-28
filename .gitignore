@@ -6,6 +6,15 @@ venv/
 env/
 *.egg-info/
 .ipynb_checkpoints/
+.venv-helios/
+.cache/huggingface/
+
+# Peano policy runs keep manifests/reports selectively; never stage weights,
+# optimizer checkpoints, or scheduler streams by accident.
+results/peano-policy/
+checkpoints/
+logs/*.out
+logs/*.err
 
 # ── JupyterBook / Sphinx build ─────────────────────────
 book/_build/

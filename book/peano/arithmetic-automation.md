@@ -92,7 +92,7 @@ A compact multiplication can denote a very large unary numeral and an even large
 at most 256 equality-term AST nodes at depth 64, at most 64 leading universal binders, 32 closed
 computations, intermediate values up to 128, 25,000 work units, and a generated numerical bridge of
 50,000 nodes at depth 256.  The complete live partial proof is separately capped at 100,000 nodes
-and depth 512.  Its wall-clock budget is five seconds.  Multiplication checks the value bound before
+and depth 256.  Its wall-clock budget is five seconds.  Multiplication checks the value bound before
 multiplying, so a small source term cannot first allocate an enormous Python integer or successor
 chain.
 

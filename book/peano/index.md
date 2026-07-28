@@ -27,6 +27,10 @@ This part tells the construction story from the implementation diary. Read it in
    equality tactic without confusing a best-found certificate with a proven minimum.
 8. {doc}`The deliberate limits <limits>` draws the line around PA, Gödel's theorems, bounded search,
    and the facilities that a production prover such as Lean adds.
+9. {doc}`Training a Peano policy without trusting it <training-a-peano-policy>` turns the prover
+   into a warm headless data and evaluation service, then develops replay-validated synthetic data,
+   leakage-safe prompts and splits, completion-only SFT, kernel-judged search, and a reproducible
+   Helios protocol without placing a learned model inside the trusted base.
 
 The working design lives in
 [`docs/PEANO_LAB_DESIGN.md`](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_LAB_DESIGN.md),
@@ -47,6 +51,14 @@ a [kernel-judged evaluation protocol](https://github.com/nasqret/vietnam2026/blo
 for later small-model experiments; no model is trained in this repository. The dated
 {doc}`implementation diary <diary>` preserves the design choices, bugs and objections behind the
 polished account.
+
+M19 is the authorized continuation of that deliberately frozen M9 protocol.  The
+{doc}`policy-training chapter <training-a-peano-policy>` explains the compact headless adapter and
+the planned small-model experiment.  Its first attested release contains 2,522 independently
+kernel-checked roots and exactly 10,000 next-tactic rows, split by genealogy, canonical formula,
+and exact policy prompt and reproduced byte-for-byte from raw traces.  Model training and learned
+evaluation results remain pending until their manifests, scheduler logs, checkpoints, and
+kernel-judged reports actually exist.
 
 M11 extends that core with three ordinary checked entries—`one_mul`, `mul_one`, and `add_mul`—to
 complete the commutative-semiring basis for certificate-producing arithmetic normalization. M12's

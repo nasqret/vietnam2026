@@ -416,7 +416,7 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
 - [x] Pin the version-1 defaults: 256 aggregate input-term nodes/depth 64, 16 selected equalities,
       64 seed/template instances, 512 memo/search states, 512 generated candidates, 100,000
       annotation nodes/depth 256, 20,000 work units, 10,000 generated proof nodes/depth 256,
-      100,000 complete partial-proof nodes/depth 512, and five seconds. Every malformed request,
+      100,000 complete partial-proof nodes/depth 256, and five seconds. Every malformed request,
       unsupported shape, exhausted search, host recursion failure, and kernel rejection must be a
       final-English transactional failure.
 - [x] Add the substantial Jupyter Book chapter, binding design, README, diary, memory/journal/plan,
@@ -458,6 +458,76 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   the public HTML hash and all 41 application checksums match the staged tree. No in-app browser was
   attached, so a real Pyodide click-through is not claimed. The delivery verifier still stops at
   the administrator-managed M14 cache-header blocker; production remains `2026-07-27h`.
+
+### M19 — Compact headless prover and kernel-guided policy training
+
+- [x] Add a browser-free adapter over the production formula parser, `ProofSession`, public tactic
+      grammar, theorem library, trace logger, checked surface finalizer, and unchanged independent
+      kernel. It must define no second proof language or trusted shortcut.
+- [x] Add a warm finite-transaction JSONL CLI with runner-owned capabilities, strict per-request
+      and aggregate bounds, deterministic
+      session identities, a 16 MB per-proof trace ceiling, separate raw/result streams, durable
+      trace staging, and suppression of successful result rows unless the trace publishes.
+- [x] Compile positive next-tactic rows only from complete `qed:true` sessions that replay under
+      their exact declared logic/capability preimage to another kernel-checked QED. Preserve exact
+      authored binder actions, use input focus 0 rather than action-derived trace focus, and split
+      connected family/lineage/canonical-formula/exact-policy-prompt components before row
+      expansion.
+- [x] Freeze one common `model-v1` command/theorem authority for generation and held-out evaluation.
+      Exclude `auto`, `undo`, session commands, and held-out target theorems; bind the full preimage
+      by SHA-256 in every row and report.
+- [x] Add a small deterministic pilot generator covering logic, equality, quantifiers, induction,
+      addition, multiplication, witnesses, local reasoning, checked theorem reuse, `norm_num`,
+      `ring`, and `compact_arith`; bind IDs to the complete Peano Python source tree and runtime.
+- [x] Add BF16 LoRA training/inference code for pinned Qwen3 1.7B and controlled 4B/Pythagoras
+      comparisons. Mask prompt tokens, supervise one tactic plus EOS, stream and hash-validate
+      capped dataset samples, and bind resume checkpoints to a pre-run identity and exact hash.
+- [x] Add evaluator-side authority preflight and cryptographic policy/decode provenance. Only the
+      ordinary public surface followed by original-target kernel finalization can score a proof.
+- [x] Add guarded Helios sync, environment, training, evaluation, queue, and submission controls;
+      test-only is the default and real submission requires the explicit confirmation token.
+- [x] Expand the checked synthetic curriculum beyond the 18-session pilot, keeping genealogy and
+      capability metadata complete, and freeze the first training/validation/test release.
+- [ ] Run the Qwen3-1.7B smoke on Helios, verify resume identity, publish the complete training and
+      held-out evaluator manifests, and compare against pretrained/random/deterministic baselines.
+- [ ] If the smoke gates pass, run the pre-registered Qwen3-4B versus Pythagoras-Prover-4B
+      comparison at identical data, LoRA, decode, token, step, and kernel-call budgets.
+- [ ] Finish the full Peano/Lambda/book/vault/release gates, record measured results without
+      extrapolation, commit and push M19 on `peano-lab`; do not merge or promote production.
+
+**Acceptance checklist:**
+
+- [x] Traced and quiet execution agree on status, independent kernel acceptance, proof nodes, and
+      engine steps across the pilot; quiet mode is explicitly ineligible as training data.
+- [x] Adversarial tests cover forged owners, capability smuggling through tacticals, trace mutation,
+      broken/short sinks, invalid UTF-8/JSON, oversized numerals, host recursion, live proof depth,
+      trace bytes, session collisions, action-focus leakage, unreachable binder trajectories,
+      mismatched policy authority, training-environment laundering, exact-formula and exact-prompt
+      split leakage, held-out data contamination, incomplete loader artifact hashes, forged
+      replay/history labels, mismatched failure diagnostics, unbounded JSON integers/floats and
+      batch totals, interrupted transports, post-commit cleanup failures, and partial multi-file
+      publication.
+- [x] The pilot currently yields 18 independently checked sessions and 58 positive transitions in
+      11 families; replay compilation produces genealogy-separated train/validation/test files.
+- [x] The first scaled release yields 2,522 kernel-checked roots and exactly 10,000 positive rows
+      across 29 proof-first schemas/five domains. It splits 8,149/926/925, independently rebuilds
+      byte-identical outputs from raw traces, and reports zero frozen-target contamination.
+- [ ] The model smoke reaches a reproducible terminal report on the frozen held-out set; a report
+      without model/data/source/decode/environment/checkpoint hashes is not an accepted result.
+- [ ] All milestone-wide tests and documentation gates are green, the kernel has no semantic diff,
+      and no heavy local or remote job remains running before the milestone is called complete.
+
+- **Current verification (2026-07-28, in progress):** the focused headless, trace, dataset,
+  evaluator, runtime, and Helios-control set reports 363 passes; the complete Peano suite reports
+  912 passes, Lambda Lab reports 360 tests plus 36 subtests, the book builds, all 193 documented
+  links and 34 command sessions replay, and local application staging is green as
+  `2026-07-28f` / `a-69aa3b753965`. A lightweight arm64 audit measured approximately
+  12,538 quiet and 5,537 traced trivial proofs/second before the latest trace-copy optimization;
+  all 18 pilot scripts had traced/quiet parity. The fixed scaled dataset digest is
+  `1fa98caa2e0528d39c1b9003c4ee153dfbe633cb1ee4505e8f5b28eb837465dd`.
+  The historical 13,344-transition release was provenance-refreshed under the same current source;
+  all 1,692 sessions again reached kernel-checked QED. No model has been downloaded or trained, no Slurm
+  job has been submitted, and no M19 completion or performance result is claimed yet.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

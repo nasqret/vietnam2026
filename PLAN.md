@@ -32,11 +32,13 @@ Each `PLAN/*.md` file spells out **objectives**, **subtasks**, and **acceptance 
 checkboxes; keep them current as work lands. The through-line and prerequisite graph from the research
 synthesis are the backbone the book and vault follow.
 
-## Latest completed Peano Lab milestone
+## Active Peano Lab milestone
 
-M18 implements `compact_arith` for small, kernel-checked PA equality certificates. Its
-version-1 surface is `compact_arith` or an explicit ordered hypothesis list such as
-`compact_arith [h, <- k]`. It must not mine other context, invent an induction invariant or witness,
-or add a trusted kernel shortcut. All local acceptance gates are green and recorded in
-[`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). Build `2026-07-28c` / application
-`a-953fa3777cd4` is an exact local stage only; no M18 deployment was requested.
+M19 adds a compact headless adapter and a kernel-guided post-training experiment without changing
+the prover's trust boundary. The JSONL runner reuses the production parser, surface tactics,
+theorem library, proof engine, traces, and independent original-target finalizer. The pilot data,
+replay compiler, fixed capability profile, BF16 LoRA runtime, evaluator provenance, guarded
+Helios controls, and the first independently replay-attested 10,000-row synthetic release are
+implemented. Real model training and evaluation remain open; no model result is claimed yet. See
+[`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest completed and staged
+milestone; production remains untouched behind the M14 cache-header blocker.

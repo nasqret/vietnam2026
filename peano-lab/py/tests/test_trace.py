@@ -8,7 +8,12 @@ from dataclasses import dataclass
 
 import pytest
 
-from peano_lab.engine.trace import TRACE_VERSION, TraceLogger, render_goal
+from peano_lab.engine.trace import (
+    TRACE_VERSION,
+    TraceLimitError,
+    TraceLogger,
+    render_goal,
+)
 from peano_lab.engine.state import Goal, MetaVar, start
 from peano_lab.kernel.formulas import Eq, Forall, parse_formula_with_names
 from peano_lab.kernel.terms import Add, Succ, Var, Zero
@@ -198,3 +203,60 @@ def test_tactic_and_error_fields_are_ansi_free() -> None:
     assert record["tactic"] == "refl"
     assert record["error"] == "bad tactic"
     assert "\x1b" not in logger.jsonl()
+
+
+def test_emitted_records_are_append_only_detached_copies() -> None:
+    logger = TraceLogger(session_id="append-only")
+    goal = [ExampleGoal((), Eq(Zero(), Zero()))]
+    returned = logger.success(goal, 0, "refl", [])
+    baseline_records = logger.records
+    baseline_jsonl = logger.jsonl()
+
+    returned["tactic"] = "forged"
+    returned["goals_before"].append("⊢ 0 = 1")
+    all_records = logger.records
+    all_records[0]["status"] = "error"
+    all_records[0]["goals_after"].append("⊢ 0 = 1")
+    suffix = logger.records_since(0)
+    suffix[0]["session"] = "replaced"
+    newest = logger.last_record
+    assert newest is not None
+    newest["tactic"] = "replaced-again"
+
+    assert logger.records == baseline_records
+    assert logger.jsonl() == baseline_jsonl
+    assert logger.record_count == 1
+    assert logger.tactic_count == 1
+
+
+def test_trace_byte_limit_is_exact_and_fails_before_append_or_sink_write() -> None:
+    goal = [ExampleGoal((), Eq(Zero(), Zero()))]
+    probe = TraceLogger(session_id="byte-budget")
+    probe.success(goal, 0, "refl", [])
+    budget = probe.byte_count
+    assert budget == len(probe.jsonl().encode("utf-8"))
+
+    exact_sink = io.StringIO()
+    exact = TraceLogger(
+        exact_sink, session_id="byte-budget", max_bytes=budget
+    )
+    exact.success(goal, 0, "refl", [])
+    assert exact.byte_count == budget
+
+    blocked_sink = io.StringIO()
+    blocked = TraceLogger(
+        blocked_sink, session_id="byte-budget", max_bytes=budget - 1
+    )
+    with pytest.raises(TraceLimitError, match="byte session limit"):
+        blocked.success(goal, 0, "refl", [])
+    assert blocked.record_count == blocked.byte_count == 0
+    assert blocked_sink.getvalue() == ""
+
+
+@pytest.mark.parametrize("checkpoint", (True, -1, 2))
+def test_trace_checkpoint_must_be_an_in_range_exact_integer(checkpoint: object) -> None:
+    logger = TraceLogger(session_id="checkpoint")
+    goal = [ExampleGoal((), Eq(Zero(), Zero()))]
+    logger.success(goal, 0, "refl", [])
+    with pytest.raises(ValueError, match="outside"):
+        logger.records_since(checkpoint)  # type: ignore[arg-type]

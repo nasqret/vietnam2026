@@ -1,0 +1,10 @@
+# Exact overlay installed with --no-deps above Helios ML-bundle/25.10.
+# PyTorch and low-level transitive dependencies come from that pinned aarch64
+# module; the run manifest records their resolved versions and accelerator.
+transformers==4.53.3
+peft==0.16.0
+accelerate==1.8.1
+safetensors==0.5.3
+huggingface-hub==0.33.4
+tokenizers==0.21.2
+tomli==2.2.1; python_version < "3.11"

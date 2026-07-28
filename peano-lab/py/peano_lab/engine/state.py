@@ -572,14 +572,30 @@ def invariants_ok(state: ProofState) -> bool:
     return len(state.goals) == len(holes) and len(holes) == len(set(holes))
 
 
+def proof_metrics(proof: Proof) -> tuple[int, int]:
+    """Return exact node count and depth without consuming Python recursion."""
+
+    if not isinstance(proof, Proof):
+        raise TypeError("proof_metrics expects a proof certificate")
+    total = 0
+    maximum_depth = 0
+    pending = [(proof, 1)]
+    while pending:
+        node, depth = pending.pop()
+        total += 1
+        maximum_depth = max(maximum_depth, depth)
+        pending.extend(
+            (child, depth + 1)
+            for item in fields(node)
+            if isinstance((child := getattr(node, item.name)), Proof)
+        )
+    return total, maximum_depth
+
+
 def proof_size(proof: Proof) -> int:
     """Count certificate nodes (holes included while a proof is partial)."""
 
-    return 1 + sum(
-        proof_size(getattr(proof, item.name))
-        for item in fields(proof)
-        if isinstance(getattr(proof, item.name), Proof)
-    )
+    return proof_metrics(proof)[0]
 
 
 __all__ = [
@@ -614,5 +630,6 @@ __all__ = [
     "undo",
     "final_certificate",
     "invariants_ok",
+    "proof_metrics",
     "proof_size",
 ]

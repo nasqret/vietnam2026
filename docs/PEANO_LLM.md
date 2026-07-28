@@ -1,9 +1,17 @@
-# Peano Lab data and evaluation protocol
+# Peano Lab M9 data and evaluation protocol
 
-Peano Lab M9 prepares data and a reproducible evaluation boundary for a later
-small tactic model. It does **not** train, download, serve, or call a model. That
-separation is intentional: the repository can audit the data and the judge
-without adding a machine-learning stack to the prover or its browser release.
+> **Historical M9 contract.** This document describes the original trace
+> release and evaluator that intentionally stopped before model training.  The
+> active M19 headless runner, replay-compiled policy rows, fixed `model-v1`
+> authority, pinned sub-10B training experiment, and evaluator v4 are specified
+> in [`PEANO_TRAINING.md`](PEANO_TRAINING.md).  Where the two differ, the M19
+> protocol is current; the raw binding trace format remains version 1.
+
+Peano Lab M9 prepared data and a reproducible evaluation boundary for a later
+small tactic model. It did **not** train, download, serve, or call a model. That
+separation was intentional at M9; M19 later added an explicitly authorized,
+separate post-training experiment without putting a model in the prover's
+trusted computing base or browser release.
 
 The intended first experiment is a decoder-only model in the roughly
 **100–300 million parameter** range, with a 125M-class model as the baseline.

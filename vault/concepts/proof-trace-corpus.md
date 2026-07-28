@@ -22,5 +22,7 @@ the authority for whether the complete trajectory proves its original theorem.
 
 - [[kernel-judged-evaluation]]
 - [[pass-at-k]]
+- [[genealogy-safe-proof-data-split]]
+- [[kernel-guided-policy-training]]
 - [[tactical]]
 - [[peano-lab]]

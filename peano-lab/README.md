@@ -237,7 +237,7 @@ The tactic takes no arguments and never treats local hypotheses as arithmetic re
 single call allows at most 256 equality-term AST nodes at depth 64, at most 64 leading universal
 binders, 32 closed computations, intermediate values up to 128, 25,000 work units, a
 50,000-node/256-level generated numerical bridge, and five seconds. The complete live partial proof
-is separately capped at 100,000 nodes and depth 512. False closed equations, unsupported goals,
+is separately capped at 100,000 nodes and depth 256. False closed equations, unsupported goals,
 non-closing no-progress calls, and every limit fail transactionally; reflexive equality can close
 without performing a numerical computation.
 
@@ -358,7 +358,7 @@ work, time, proof-size, proof-depth, or complete-partial-proof limit fail transa
 
 The default bounds are 256 aggregate input-term nodes at depth 64, 16 selected equations, 64
 seed/template instances, 512 memo/search states, 512 generated candidates, 100,000 annotation nodes at
-depth 256, 20,000 work units, a 10,000-node/256-level generated fragment, a 100,000-node/512-level
+depth 256, 20,000 work units, a 10,000-node/256-level generated fragment, a 100,000-node/256-level
 complete partial certificate, and five seconds.
 
 M18 is verified as build `2026-07-28c`, application release `a-953fa3777cd4`: the focused
@@ -367,6 +367,13 @@ multiline-paste harnesses are green. The same commit `98ee0dd` is deployed at
 `/peano-lab-next/`; its HTML and all 41 application files match the staged checksums. No in-app
 browser was attached, so a live Pyodide click-through is not claimed. Production remains build
 `2026-07-27h` behind the administrator-managed cache-header blocker.
+
+The locally staged M19 candidate is build `2026-07-28f`, immutable application release
+`a-69aa3b753965`. Its compact runner, transport, dataset, training-runtime, evaluator, and Helios
+controls are covered by a 363-test focused set; the complete Peano suite reports 912 passes. The
+existing Lambda Lab suite reports 360 tests plus 36 subtests, and the Jupyter Book plus documented
+command replay gates are green. This candidate has not been deployed or promoted, and no learned
+model result is claimed.
 
 Back at the repository root, run both regression suites:
 
@@ -377,18 +384,44 @@ Back at the repository root, run both regression suites:
 
 ## Proof-trace corpus and kernel-judged evaluation
 
-The deterministic data pipeline now ships a committed 13,344-transition M15 provenance refresh and an
-evaluation harness—not a trained model. Its 1,692 checked sessions include a bounded numerical
+The compact M19 runner uses the production parser, public tactic grammar, proof engine, theorem
+library, and independent final kernel without loading Pyodide or the browser UI. Feed it one finite
+strict-JSONL batch to keep a warm Python process alive across many independent proofs:
+
+```console
+python3 scripts/peano_batch.py --environment model-v1 \
+  --trace-output /tmp/peano-run.trace.jsonl \
+  < requests.jsonl > results.jsonl
+```
+
+Each request contains `v`, `id`, one closed `theorem`, and an array of complete `tactics`; optional
+`classical` and `on_error` fields are runner-validated. Generation mode always writes the binding
+version-1 trace and reports `proved` only after original-target kernel checking. `--verify-only` is
+the faster, trace-free regression path and is deliberately ineligible as training data. Results
+are withheld until EOF (and trace commit), so this is not a duplex service. Aggregate defaults cap
+the batch at 10,000 requests, 256 MiB input, 128 MiB results, and 512 MiB trace; shard larger work.
+The hard link is the trace commit point; after it, cancellation can leave a complete trace even if
+redirected stdout is incomplete, so use a caller-owned temporary result file when both names must
+publish atomically.
+Exit zero means the protocol completed; add `--require-proved` when CI must reject any open or
+failed proof. See the
+[M19 training protocol](../docs/PEANO_TRAINING.md) for the exact request, prompt, capability,
+provenance, and replay contracts.
+
+The deterministic M9/M15 data pipeline also ships a committed 13,344-transition provenance refresh and an
+evaluation harness. Its 1,692 checked sessions include a bounded numerical
 normalization tranche while omitting all theorem-ladder sessions, so the four fixed tail theorems
 used by the evaluator stay held out. Exact version-1 records, hashes, provenance, and the
 reproduction command are documented in [`corpus/README.md`](corpus/README.md); the model and
-leakage protocol is [`docs/PEANO_LLM.md`](../docs/PEANO_LLM.md).
+historical leakage protocol is [`docs/PEANO_LLM.md`](../docs/PEANO_LLM.md).
 
 From the repository root:
 
 ```console
 make peano-corpus        # reproduce train.jsonl, val.jsonl, stats, and manifest
 make peano-corpus-smoke  # all-ladder auto/script acceptance superset, under /tmp
+make peano-policy-pilot  # 18 checked sessions -> replay-validated M19 policy rows
+make peano-policy-data   # 10k proof-first rows -> splits + independent attestation
 make peano-eval          # deterministic random-policy plumbing baseline
 ```
 

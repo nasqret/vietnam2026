@@ -50,6 +50,7 @@ from ..engine.tactics import (
     TacticSyntaxError,
     apply_tactic,
     checked_final,
+    enforce_live_proof_bounds,
     hint,
     logic_banner,
     set_classical_mode,
@@ -64,13 +65,23 @@ from ..kernel.formulas import (
     pretty_formula,
 )
 from ..kernel.proofs import EqSym, Hyp, Proof
-from ..library.theorems import LibraryError, get as get_theorem, normalise_cuts, replay
+from ..library.theorems import (
+    THEOREMS,
+    LibraryError,
+    get as get_theorem,
+    normalise_cuts,
+    replay,
+)
 from .panels import NL, collect_meta_ids, render_certificate, render_state
 
 
 MAX_INPUT = 4_000
+MAX_NUMERAL = 256
 MAX_SCRIPT_STEPS = 10_000
 MAX_SCRIPT_BYTES = 500_000
+MAX_SURFACE_TACTICAL_NODES = 128
+_NUMERAL_LITERAL = re.compile(r"(?<![\w'#])\d+", re.UNICODE)
+_SURFACE_LABEL_TOKEN = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*\Z", re.ASCII)
 KEY_SESSION = "pa.prove.session"
 KEY_LAST_SCRIPT = "pa.prove.last-script"
 KEY_PENDING_DOWNLOAD = "pa.prove.pending-download"
@@ -97,10 +108,99 @@ _SESSION_ONLY_WORDS = set(_QED_WORDS) | set(_ABORT_WORDS) | set(TACTIC_NAMES) | 
     "undo",
     "use",
 }
+SURFACE_COMMAND_NAMES = frozenset(TACTIC_NAMES) | {
+    "auto",
+    "compact_arith",
+    "ring",
+    "use",
+}
+SURFACE_THEOREM_NAMES = frozenset(spec.name for spec in THEOREMS)
 
 
 class ScriptExportError(ValueError):
     """A live session cannot be represented as one safe replay file."""
+
+
+@dataclass(frozen=True, slots=True)
+class SurfaceCapabilities:
+    """Immutable authority for one execution of the public tactic language.
+
+    ``None`` means unrestricted.  A finite set is a complete allow-list, so an
+    empty theorem set disables ``use`` without changing the browser's default
+    surface.  Capability checks happen while compiling every primitive leaf;
+    tacticals therefore cannot smuggle a forbidden command or theorem into an
+    otherwise permitted line.
+    """
+
+    label: str = "full"
+    allowed_commands: frozenset[str] | None = None
+    allowed_theorems: frozenset[str] | None = None
+
+    def __post_init__(self) -> None:
+        unsafe = {"Cc", "Cf", "Cs", "Zl", "Zp"}
+        if type(self.label) is not str or not self.label.strip():
+            raise TypeError("surface capabilities need a non-empty label")
+        if (
+            self.label != self.label.strip()
+            or _SURFACE_LABEL_TOKEN.fullmatch(self.label) is None
+        ):
+            raise ValueError(
+                "a surface-capability label must be one safe non-space token "
+                "using ASCII letters, digits, '.', '_', or '-'"
+            )
+        for field in ("allowed_commands", "allowed_theorems"):
+            value = getattr(self, field)
+            if value is None:
+                continue
+            if isinstance(value, (str, bytes)):
+                raise TypeError(f"{field} must be a collection of names, not text")
+            try:
+                names = frozenset(value)
+            except TypeError as exc:
+                raise TypeError(f"{field} must be a finite collection of names") from exc
+            if not all(
+                type(name) is str
+                and bool(name)
+                and name == name.strip()
+                and not any(char.isspace() for char in name)
+                and not any(unicodedata.category(char) in unsafe for char in name)
+                for name in names
+            ):
+                raise ValueError(
+                    f"{field} must contain only safe non-space name tokens"
+                )
+            object.__setattr__(self, field, names)
+            known = (
+                SURFACE_COMMAND_NAMES
+                if field == "allowed_commands"
+                else SURFACE_THEOREM_NAMES
+            )
+            unknown = sorted(names - known)
+            if unknown:
+                raise ValueError(
+                    f"{field} contains unknown name(s): {', '.join(unknown)}"
+                )
+        if self.allowed_commands is not None and "auto" in self.allowed_commands:
+            raise ValueError(
+                "a finite command allow-list cannot authorize `auto`; its search "
+                "replay is not capability-aware"
+            )
+
+    def require_command(self, name: str) -> None:
+        if self.allowed_commands is not None and name not in self.allowed_commands:
+            raise TacticError(
+                f"tactic {name!r} is not available in the {self.label!r} proof environment."
+            )
+
+    def require_theorem(self, name: str) -> None:
+        if self.allowed_theorems is not None and name not in self.allowed_theorems:
+            raise TacticError(
+                f"library theorem {name!r} is not available in the "
+                f"{self.label!r} proof environment."
+            )
+
+
+FULL_SURFACE_CAPABILITIES = SurfaceCapabilities()
 
 
 @dataclass(frozen=True, slots=True)
@@ -198,6 +298,17 @@ class ProofSession:
 
 def _lines(*rows: str) -> str:
     return NL.join(rows)
+
+
+def oversized_numeral(source: str) -> str | None:
+    """Find a resource-dangerous numeral without matching digits in names."""
+
+    if type(source) is not str:
+        raise TypeError("numeral preflight expects text")
+    for match in _NUMERAL_LITERAL.finditer(source):
+        if int(match.group()) > MAX_NUMERAL:
+            return match.group()
+    return None
 
 
 def get_owner(shared: dict) -> ProofSession | None:
@@ -613,21 +724,25 @@ def _scan_split(source: str, separator: str) -> list[str]:
 def _strip_group(source: str) -> str:
     """Remove redundant outer parentheses that enclose the whole tactic."""
 
-    if not (source.startswith("(") and source.endswith(")")):
-        return source
-    depth = 0
-    for index, char in enumerate(source):
-        if char == "(":
-            depth += 1
-        elif char == ")":
-            depth -= 1
-            if depth == 0 and index != len(source) - 1:
-                return source
-        if depth < 0:
+    while source.startswith("(") and source.endswith(")"):
+        depth = 0
+        encloses_whole_source = True
+        for index, char in enumerate(source):
+            if char == "(":
+                depth += 1
+            elif char == ")":
+                depth -= 1
+                if depth == 0 and index != len(source) - 1:
+                    encloses_whole_source = False
+                    break
+            if depth < 0:
+                raise TacticSyntaxError("unbalanced grouping in tactical command.")
+        if not encloses_whole_source:
+            return source
+        if depth:
             raise TacticSyntaxError("unbalanced grouping in tactical command.")
-    if depth:
-        raise TacticSyntaxError("unbalanced grouping in tactical command.")
-    return _strip_group(source[1:-1].strip())
+        source = source[1:-1].strip()
+    return source
 
 
 def _first_items(source: str) -> list[str]:
@@ -670,7 +785,15 @@ def _first_items(source: str) -> list[str]:
     return items
 
 
-def _primitive(name: str, args: str, classical: bool) -> Tactic:
+def _primitive(
+    name: str,
+    args: str,
+    classical: bool,
+    capabilities: SurfaceCapabilities = FULL_SURFACE_CAPABILITIES,
+) -> Tactic:
+    if type(capabilities) is not SurfaceCapabilities:
+        raise TypeError("surface capabilities must be a SurfaceCapabilities value")
+    capabilities.require_command(name)
     if name == "undo":
         raise TacticSyntaxError(
             "`undo` is a session command and cannot be nested in a tactical."
@@ -689,6 +812,13 @@ def _primitive(name: str, args: str, classical: bool) -> Tactic:
             f"unknown tactic {name!r}; available: "
             f"{', '.join(TACTIC_NAMES)}, auto, compact_arith, ring, use."
         )
+    if name == "use":
+        # The theorem authority is a property of the complete submitted line,
+        # not merely of the branch a tactical happens to execute.  Check it
+        # while compiling every leaf so ``first``, ``orelse``, and ``repeat``
+        # cannot hide a forbidden theorem in a dead or recovered branch.
+        theorem_name, _ = _use_args(args)
+        capabilities.require_theorem(theorem_name)
 
     def run(state: ProofState, extra: str = "") -> ProofState:
         if extra.strip():
@@ -700,7 +830,7 @@ def _primitive(name: str, args: str, classical: bool) -> Tactic:
         if name == "ring":
             return _ring_theorem(state, args)
         if name == "use":
-            return _use_theorem(state, args)
+            return _use_theorem(state, args, capabilities)
         return apply_tactic(state, name, args, classical=classical)
 
     return run
@@ -717,8 +847,13 @@ def _use_args(args: str) -> tuple[str, str | None]:
     raise TacticSyntaxError("syntax: `use <library-theorem> [as <alias>]`.")
 
 
-def _use_theorem(state: ProofState, args: str) -> ProofState:
+def _use_theorem(
+    state: ProofState,
+    args: str,
+    capabilities: SurfaceCapabilities = FULL_SURFACE_CAPABILITIES,
+) -> ProofState:
     theorem_name, requested_alias = _use_args(args)
+    capabilities.require_theorem(theorem_name)
     spec = get_theorem(theorem_name)
     if spec is None:
         raise TacticError(
@@ -890,8 +1025,24 @@ def _compact_arith_preview(owner: ProofSession, args: str) -> str:
     )
 
 
-def _compile(source: str, classical: bool) -> tuple[Tactic, bool]:
+def _compile(
+    source: str,
+    classical: bool,
+    capabilities: SurfaceCapabilities = FULL_SURFACE_CAPABILITIES,
+    _budget: list[int] | None = None,
+) -> tuple[Tactic, str]:
     """Compile the deliberately small surface grammar into M4 combinators."""
+
+    if type(capabilities) is not SurfaceCapabilities:
+        raise TypeError("surface capabilities must be a SurfaceCapabilities value")
+    if _budget is None:
+        _budget = [0]
+    _budget[0] += 1
+    if _budget[0] > MAX_SURFACE_TACTICAL_NODES:
+        raise TacticLimit(
+            f"surface tactic exceeded its {MAX_SURFACE_TACTICAL_NODES}-node "
+            "compilation limit."
+        )
 
     source = _strip_group(source.strip())
     if not source:
@@ -899,31 +1050,40 @@ def _compile(source: str, classical: bool) -> tuple[Tactic, bool]:
 
     alternatives = _scan_split(source, "<|>")
     if len(alternatives) > 1:
-        compiled = [_compile(item, classical)[0] for item in alternatives]
+        compiled = [
+            _compile(item, classical, capabilities, _budget)[0]
+            for item in alternatives
+        ]
         result = compiled[0]
         for choice in compiled[1:]:
             result = orelse(result, choice)
-        return result, True
+        return result, "orelse"
 
     sequence = _scan_split(source, ";")
     if len(sequence) > 1:
-        compiled = [_compile(item, classical)[0] for item in sequence]
+        compiled = [
+            _compile(item, classical, capabilities, _budget)[0]
+            for item in sequence
+        ]
         result = compiled[0]
         for following in compiled[1:]:
             result = then(result, following)
-        return result, True
+        return result, "then"
 
     if re.match(r"^repeat(?:\s|$)", source):
         child = source[len("repeat") :].strip()
         if not child:
             raise TacticSyntaxError("syntax: `repeat <tactic>`.")
-        return repeat(_compile(child, classical)[0]), True
+        return repeat(_compile(child, classical, capabilities, _budget)[0]), "repeat"
 
     if re.match(r"^all_goals(?:\s|$)", source):
         child = source[len("all_goals") :].strip()
         if not child:
             raise TacticSyntaxError("syntax: `all_goals <tactic>`.")
-        return all_goals(_compile(child, classical)[0]), True
+        return (
+            all_goals(_compile(child, classical, capabilities, _budget)[0]),
+            "all_goals",
+        )
 
     if re.match(r"^focus(?:\s|$)", source):
         match = re.fullmatch(r"focus\s+(\d+)\s+(.+)", source, re.DOTALL)
@@ -931,7 +1091,10 @@ def _compile(source: str, classical: bool) -> tuple[Tactic, bool]:
             raise TacticSyntaxError(
                 "syntax: `focus <positive-goal-number> <tactic>`."
             )
-        return focus(int(match.group(1)), _compile(match.group(2), classical)[0]), True
+        return focus(
+            int(match.group(1)),
+            _compile(match.group(2), classical, capabilities, _budget)[0],
+        ), "focus"
 
     if re.match(r"^first(?:\s|$)", source):
         match = re.fullmatch(r"first\s*\[(.*)\]", source, re.DOTALL)
@@ -939,16 +1102,37 @@ def _compile(source: str, classical: bool) -> tuple[Tactic, bool]:
             raise TacticSyntaxError(
                 "syntax: `first [tactic | tactic | ...]`."
             )
-        choices = [_compile(item, classical)[0] for item in _first_items(match.group(1))]
-        return first(choices), True
+        choices = [
+            _compile(item, classical, capabilities, _budget)[0]
+            for item in _first_items(match.group(1))
+        ]
+        return first(choices), "first"
 
     pieces = source.split(maxsplit=1)
     name = pieces[0]
     args = pieces[1].strip() if len(pieces) > 1 else ""
-    return _primitive(name, args, classical), False
+    return _primitive(name, args, classical, capabilities), name
 
 
-def _trace_focus(line: str, state: ProofState) -> int:
+def surface_transaction_name(
+    line: str,
+    classical: bool,
+    capabilities: SurfaceCapabilities = FULL_SURFACE_CAPABILITIES,
+) -> str | None:
+    """Return the engine transaction name compiled from one surface command.
+
+    A top-level ``auto`` publishes its winning primitive plan and therefore has
+    no single outer transaction. Every other successful line has exactly one.
+    """
+
+    direct_auto = _direct_top_level_auto(line)
+    if direct_auto is not None:
+        capabilities.require_command("auto")
+        return None
+    return _compile(line, classical, capabilities)[1]
+
+
+def surface_trace_focus(line: str, state: ProofState) -> int:
     """Return the initial one-based ``focus`` selection as a trace index."""
 
     try:
@@ -960,6 +1144,70 @@ def _trace_focus(line: str, state: ProofState) -> int:
         return 0
     selected = int(match.group(1)) - 1
     return selected if 0 <= selected < len(state.goals) else 0
+
+
+def surface_success_trace_tactic(line: str) -> str | None:
+    """Return the one submitted-line label, or ``None`` for auto-plan replay."""
+
+    if _direct_top_level_auto(line) is not None:
+        return None
+    pieces = line.split(maxsplit=1)
+    name = pieces[0]
+    args = pieces[1].strip() if len(pieces) > 1 else ""
+    if (
+        name in TACTIC_NAMES
+        and name != "undo"
+        and not any(marker in line for marker in (";", "<|>"))
+    ):
+        return f"{name} {args}".strip()
+    return line
+
+
+def surface_failure_trace_tactics(line: str) -> frozenset[str]:
+    """Return every exact label the public dispatcher may use on failure."""
+
+    pieces = line.split(maxsplit=1)
+    name = pieces[0]
+    args = pieces[1].strip() if len(pieces) > 1 else ""
+    normalized = f"{name} {args}".strip()
+    labels = {line, normalized}
+    direct_auto = _direct_top_level_auto(line)
+    if direct_auto is not None:
+        source, auto_args = direct_auto
+        labels.add(source)
+        words = auto_args.split()
+        if not words:
+            labels.add("auto 5")
+        elif len(words) == 1 and words[0].isdigit():
+            try:
+                depth = int(words[0])
+            except ValueError:
+                # ``str.isdigit`` includes superscripts and circled numbers
+                # that Python's decimal parser rejects. The surface reports
+                # those as ordinary tactic errors, so trace validation must
+                # retain the exact typed label rather than raising itself.
+                pass
+            else:
+                if depth >= 1:
+                    labels.add(f"auto {depth}")
+    return frozenset(labels)
+
+
+def _direct_top_level_auto(line: str) -> tuple[str, str] | None:
+    """Recognize ``auto`` after removing only redundant outer grouping."""
+
+    try:
+        source = _strip_group(line.strip())
+    except TacticError:
+        # Classification must be total: the compiler below owns the final
+        # syntax diagnostic and the traced dispatcher must still emit it.
+        return None
+    pieces = source.split(maxsplit=1)
+    name = pieces[0] if pieces else ""
+    args = pieces[1].strip() if len(pieces) > 1 else ""
+    if name == "auto" and not any(marker in source for marker in (";", "<|>")):
+        return source, args
+    return None
 
 
 def _publish_replay_steps(
@@ -982,8 +1230,25 @@ def _publish_replay_steps(
     return replace(owner, state=new_state, replay_steps=replay_steps)
 
 
-def _run_surface(owner: ProofSession, line: str) -> ProofSession:
-    """Run one primitive, tactical, simp, or auto with one public trace path."""
+def _run_surface_impl(
+    owner: ProofSession,
+    line: str,
+    *,
+    capabilities: SurfaceCapabilities = FULL_SURFACE_CAPABILITIES,
+    record_trace: bool = True,
+) -> ProofSession:
+    """Run one primitive, tactical, simp, or auto through the public grammar.
+
+    The browser keeps ``record_trace=True``.  Headless verifier workers may
+    disable transition rendering while retaining identical tactic semantics,
+    replay history, certificate construction, and final kernel checking.
+    """
+
+    if type(capabilities) is not SurfaceCapabilities:
+        raise TypeError("surface capabilities must be a SurfaceCapabilities value")
+    if type(record_trace) is not bool:
+        raise TypeError("record_trace must be a Boolean")
+    trace = owner.trace if record_trace else None
 
     pieces = line.split(maxsplit=1)
     name = pieces[0]
@@ -994,22 +1259,38 @@ def _run_surface(owner: ProofSession, line: str) -> ProofSession:
     if name in TACTIC_NAMES and name != "undo" and not any(
         marker in line for marker in (";", "<|>")
     ):
+        try:
+            capabilities.require_command(name)
+        except TacticError as exc:
+            if record_trace:
+                owner.trace.failure(owner.state, 0, line, exc)
+            raise
         new_state = apply_tactic(
             owner.state,
             name,
             args,
-            trace=owner.trace,
+            trace=trace,
             classical=owner.classical,
         )
         return _publish_replay_steps(owner, new_state, (line,))
 
     # Auto replays its winning primitive plan through the public dispatcher;
     # those linear primitive records are the useful training transcript.
-    if name == "auto" and not any(marker in line for marker in (";", "<|>")):
+    # Redundant outer grouping is grammar, not a request to collapse the plan
+    # into one opaque tactical transaction.
+    direct_auto = _direct_top_level_auto(line)
+    if direct_auto is not None:
+        _, auto_args = direct_auto
+        try:
+            capabilities.require_command("auto")
+        except TacticError as exc:
+            if record_trace:
+                owner.trace.failure(owner.state, 0, line, exc)
+            raise
         new_state = auto(
             owner.state,
-            args,
-            trace=owner.trace,
+            auto_args,
+            trace=trace,
             classical=owner.classical,
         )
         old_count = len(owner.state.history)
@@ -1019,15 +1300,61 @@ def _run_surface(owner: ProofSession, line: str) -> ProofSession:
         return _publish_replay_steps(owner, new_state, commands)
 
     before = owner.state
-    trace_focus = _trace_focus(line, before)
+    trace_focus = surface_trace_focus(line, before)
     try:
-        tactical, _ = _compile(line, owner.classical)
+        tactical, _ = _compile(line, owner.classical, capabilities)
         after = tactical(before, "")
+        enforce_live_proof_bounds(after.partial)
     except TacticError as exc:
-        owner.trace.failure(before, trace_focus, line, exc)
+        if record_trace:
+            owner.trace.failure(before, trace_focus, line, exc)
         raise
-    owner.trace.success(before, trace_focus, line, after)
+    if record_trace:
+        owner.trace.success(before, trace_focus, line, after)
     return _publish_replay_steps(owner, after, (line,))
+
+
+def run_surface(
+    owner: ProofSession,
+    line: str,
+    *,
+    capabilities: SurfaceCapabilities = FULL_SURFACE_CAPABILITIES,
+    record_trace: bool = True,
+) -> ProofSession:
+    """Run the public grammar with an honest host-recursion boundary."""
+
+    checkpoint = (
+        owner.trace.record_count
+        if type(owner) is ProofSession and record_trace is True
+        else None
+    )
+    try:
+        return _run_surface_impl(
+            owner,
+            line,
+            capabilities=capabilities,
+            record_trace=record_trace,
+        )
+    except RecursionError:
+        error = TacticLimit("surface tactic exceeded the host recursion limit.")
+        if checkpoint is not None:
+            if owner.trace.record_count != checkpoint:
+                raise RuntimeError(
+                    "surface recursion occurred after publishing a partial trace"
+                ) from None
+            owner.trace.failure(
+                owner.state,
+                surface_trace_focus(line, owner.state),
+                line,
+                error,
+            )
+        raise error from None
+
+
+def _run_surface(owner: ProofSession, line: str) -> ProofSession:
+    """Compatibility wrapper for the unrestricted interactive surface."""
+
+    return run_surface(owner, line)
 
 
 def _session_line(line: str, shared: dict, owner: ProofSession) -> str:
@@ -1161,11 +1488,21 @@ __all__ = [
     "KEY_LAST_SCRIPT",
     "KEY_PENDING_DOWNLOAD",
     "MAX_INPUT",
+    "MAX_NUMERAL",
     "MAX_SCRIPT_STEPS",
     "MAX_SCRIPT_BYTES",
     "ReplayStep",
     "ProofScript",
     "ProofSession",
+    "SurfaceCapabilities",
+    "SURFACE_COMMAND_NAMES",
+    "SURFACE_THEOREM_NAMES",
+    "surface_trace_focus",
+    "surface_success_trace_tactic",
+    "surface_failure_trace_tactics",
+    "surface_transaction_name",
+    "oversized_numeral",
+    "FULL_SURFACE_CAPABILITIES",
     "get_owner",
     "get_script",
     "is_active",
@@ -1174,5 +1511,6 @@ __all__ = [
     "usage",
     "tactic_help",
     "checked_surface_final",
+    "run_surface",
     "handle",
 ]
