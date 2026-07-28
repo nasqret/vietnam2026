@@ -87,8 +87,10 @@ external proof text or code is needed for the certificate.
    dependency graph.
 5. **Reconstruct.** Write a new tactic script from the PA axioms and checked
    local lemmas. Do not transliterate Lean, Python, TeX, or prose proofs.
-6. **Check.** Replay the script, eliminate dependency cuts, and submit the
-   closed certificate to the independent kernel.
+6. **Check.** Replay the script, retain each dependency as a self-contained
+   `Cut(A,B,lemma,body)`, and submit the resulting closed certificate to the
+   independent kernel. Every Cut embeds both formulas and both proof branches;
+   no theorem name or hash supplies authority.
 7. **Measure.** Record proof nodes, depth, replay determinism, and live-`use`
    compatibility.
 8. **Document.** Link theorem, dependency graph, source record, certificate,
@@ -155,18 +157,19 @@ course merely because that course uses a powerful congruence tactic.
 
 ### L6: Division, gcd, and coprimality
 
-- natural division algorithm and uniqueness;
-- relational `IsGCD` existence and uniqueness;
-- Euclidean-step invariance;
-- subtraction-free Bézout relation;
-- coprimality, Gauss cancellation, and modular inverses.
+- checked natural division algorithm and uniqueness;
+- checked relational `IsGCD` existence and uniqueness;
+- checked Euclidean-step invariance;
+- checked subtraction-free four-natural balanced Bézout relation;
+- checked coprimality and Gauss cancellation; modular inverses remain planned.
 
 ### L7: Primes
 
 - prime and composite definitions;
 - the checked expanded instance `prime_two` and its small-factor prerequisites;
-- proper factors and prime-divisor existence;
-- Euclid's lemma and finite-product consequences;
+- the checked general divisor-of-a-prime one-or-self API;
+- checked Euclid's lemma, with finite-product consequences still planned;
+- proper factors and constructive prime-divisor existence;
 - infinitude of primes;
 - bounded primality-test specifications after the mathematical layer is
   complete.
@@ -202,8 +205,8 @@ This boundary should be explicit in the plan:
   existence; relational gcd; prime definition; prime-divisor existence;
   Euclid's lemma; infinitude of primes.
 - **Feasible with relational encodings but potentially unwieldy:** generic
-  algorithms, signed Bézout coefficients, and recursive arithmetic-function
-  graphs.
+  algorithms, signed-coefficient APIs beyond the checked four-natural balanced
+  Bézout relation, and recursive arithmetic-function graphs.
 - **Language-design milestone:** generic exponentiation, finite sequences or
   multisets, finite-support exponent maps, and finite counting.
 - **Blocked as a natural single theorem until that milestone:** the full

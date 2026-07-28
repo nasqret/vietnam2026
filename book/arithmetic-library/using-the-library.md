@@ -7,8 +7,9 @@ certificate size, and independent-kernel result.
 
 The URLs below are promotion targets for the public browser application.
 Existing production entries may already open there; candidate-only entries,
-including the new division layer, become available only after this build is
-promoted. The candidate has not been deployed by this documentation change.
+including the division, gcd, Bézout, Gauss, and Euclid layers, become available
+only after this build is promoted. The 137-entry local candidate has not been
+deployed by this documentation change.
 
 - [`pa lib`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib)
 - [`pa lib add_congr`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20add_congr)
@@ -95,7 +96,8 @@ The admission workflow is:
 2. write a closed formula in the current Peano language;
 3. list only earlier dependencies;
 4. replay the primitive tactic body;
-5. eliminate all dependency cuts;
+5. package each checked dependency as a self-contained Cut, embedding both
+   proof branches without external theorem-name or hash authority;
 6. check the closed certificate independently;
 7. measure live-import bounds;
 8. update source, book, vault, catalog, graph, and snapshot links;
@@ -117,6 +119,6 @@ cd peano-lab/py
 python3 -m pytest tests/test_foundational_arithmetic_library.py -q
 ```
 
-The first command verifies exact certificate metadata, the second validates
-the larger research DAG and source register, and the last exercises the
-checked foundational layer directly.
+The first command verifies exact metadata for the 137 checked certificates,
+the second validates the 148-node research DAG and source register, and the
+last exercises the checked foundational layer directly.

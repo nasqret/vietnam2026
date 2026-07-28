@@ -137,8 +137,9 @@ m\ne0 \;\Longrightarrow\;
 \exists q\,r,\; n=mq+r\;\land\; r<m.
 \]
 
-Add existence first, then uniqueness, canonical residue existence, exact
-divisibility iff remainder zero, and fixed-modulus residue exhaustions. The
+The current Peano snapshot checks natural existence and uniqueness, exact
+divisibility/remainder-zero bridges, and the fixed modulus-five exhaustion.
+Additional generated fixed-modulus clients remain broader library work. The
 integer version is outside the present term language.
 
 ### GCD, coprimality, and Bézout
@@ -154,11 +155,17 @@ g\mid a\land g\mid b\land
 \forall d,\;(d\mid a\land d\mid b)\to d\mid g.
 \]
 
-Existence, uniqueness, symmetry, zero/one cases, and the Euclidean-step law
-can be developed around this relation. Bézout can be expressed without
-negative coefficients by saying that suitable natural multiples differ by
-`g`, using a disjunction for the two orientations. This is a clean-room
-Peano formulation, not a translation of the integer Lean implementation.
+The current Peano snapshot checks existence, uniqueness, symmetry, zero/one
+cases, and both directions of the Euclidean-step law around this relation. It
+also checks four-natural balanced Bézout witnesses in the subtraction-free
+form
+
+\[
+a x_+ + b y_+ = g + (a x_- + b y_-),
+\]
+
+then derives coprime Bézout and Gauss cancellation. This is a clean-room Peano
+formulation, not a translation of the integer Lean implementation.
 
 ### Primes
 
@@ -174,9 +181,12 @@ The source's reusable spine is:
 8. existence of a prime above every bound.
 
 The current Peano snapshot independently checks the first concrete instance,
-`prime_two`, through `two_large_factors_impossible`. Macbeth remains a
-reference-only statement and dependency source; no Lean proof or prose was
-copied into the Peano certificate.
+`prime_two`, through `two_large_factors_impossible`, the general
+divisor-of-a-prime one-or-self API, Gauss cancellation, and Euclid's lemma.
+Constructive prime-divisor existence, proper-factor search, and primes above
+every bound remain open. Macbeth remains a reference-only statement and
+dependency source; no Lean proof or prose was copied into the Peano
+certificate.
 
 All except generic power notation can be expressed by inlining first-order
 definitions. Infinitude need not wait for a factorial term: independently
@@ -228,6 +238,7 @@ A Macbeth-inspired catalog entry is acceptable only when:
 3. its dependency list refers only to earlier checked Peano results;
 4. its tactic script was written without copying or translating the Lean
    proof;
-5. replay eliminates theorem cuts and the independent kernel accepts the
-   resulting closed certificate;
+5. replay retains dependency applications as self-contained
+   `Cut(A,B,lemma,body)` nodes, and the independent kernel accepts the resulting
+   closed certificate without theorem-name or hash authority;
 6. certificate node and depth limits are recorded.

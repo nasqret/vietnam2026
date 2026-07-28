@@ -240,14 +240,18 @@ $$
 \end{array}
 $$
 
-All 90 entries in the current post-baseline general foundational layer replay to
+All 102 entries in the current post-baseline general foundational layer replay to
 closed kernel-accepted certificates and fit the live `use` limits of 32,768
 nodes and depth 128. Under self-contained dependency sharing,
-`division_remainder_unique` uses 854 structural nodes and reaches the runtime's
-maximum depth of 57. The reconciled 127-entry snapshot reaches its node maximum
-at the modular capstone: 2,675 nodes and depth 38. These numbers are build
-artifacts, not new soundness assumptions; the immutable upstream report retains
-the older fully expanded capstone metric of 21,515 nodes/depth 66.
+`division_remainder_unique` uses 854 structural nodes and reaches the snapshot-wide
+maximum depth of 57. The current 137-entry local candidate reaches its node
+maximum at `euclid_prime_dvd_product`, with 5,382 nodes and depth 55. The modular
+capstone itself remains 2,675 nodes and depth 38. These numbers are build artifacts,
+not new soundness assumptions; the immutable upstream report retains the older
+fully expanded capstone metric of 21,515 nodes/depth 66. The broader research
+catalog has 148 nodes: the 137 checked entries, seven planned expressible targets,
+and four language-interface targets covering conventional signed Bézout and the
+three finite-factorization endpoints.
 
 ## The division algorithm is now native
 

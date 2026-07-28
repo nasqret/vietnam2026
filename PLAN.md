@@ -77,7 +77,7 @@ milestone; production remains untouched behind the M14 cache-header blocker.
 ## Parallel foundational arithmetic milestone
 
 M20 generalizes the theorem ladder into a structured arithmetic corpus. Its
-checked layers now add 90 reusable equality, cancellation, order,
+checked layers now add 102 reusable equality, cancellation, order,
 multiplication, divisibility, residue, division, and small-prime lemmas, including the
 first checked fully expanded prime instance `prime_two`. The catalog maps the
 exact route to division, gcd, the general prime spine, and factorization. A

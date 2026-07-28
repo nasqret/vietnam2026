@@ -219,5 +219,7 @@ certificates twice, reject a mutated capstone target, and exercise the short liv
 
 The reconciled runtime keeps all 26 source records for provenance. Fourteen are
 identical to independently developed M20 records, so a guarded union exposes
-those once and adds the twelve genuinely new modular capstones. The result is
-63 unique checked Peano theorems; incompatible same-name records fail closed.
+those once and adds the twelve genuinely new modular capstones. That initial
+reconciliation produced a historical 63-theorem release; the current generated
+snapshot is its 137-theorem successor. Incompatible same-name records fail
+closed.

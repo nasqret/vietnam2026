@@ -134,10 +134,11 @@ The planned route is therefore explicit:
 
 1. add untrusted named-predicate expansion for the formulas already
    expressible;
-2. build on the now-checked division theorem to prove concrete strong
-   induction clients, gcd, prime-divisor existence, and Euclid's lemma in
-   expanded first-order form;
-3. implement and prove the selected β-sequence and prefix-product relations;
+2. reuse the now-checked division, relational gcd, balanced Bézout, Gauss, and
+   Euclid spine while proving the remaining proper-factor search and
+   prime-divisor-existence clients in expanded first-order form;
+3. implement and prove CRT extension plus the selected β-sequence and
+   prefix-product relations;
 4. state and check factorization existence and extensional uniqueness.
 
 A separate Lean companion already checks the conventional finite-list FTA,

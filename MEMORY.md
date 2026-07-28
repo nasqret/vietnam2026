@@ -256,8 +256,8 @@
   delivery remains blocked on administrator-managed cache headers, while M17 is published to
   staging. The implementation, checked corpus,
   construction book, Obsidian knowledge base, kernel-judged evaluation protocol, live checked-
-  theorem reuse, 63-entry reconciled checked ladder (23-entry core plus 40 unique post-baseline
-  theorems),
+  theorem reuse, and the current 137-entry checked ladder (whose initial public-catalog/M20
+  reconciliation produced a historical 63-entry release),
   certificate-producing `ring`, and bounded checked
   `norm_num` teaching surface are present. The odd-square induction closes through explicit
   `trans`/`rewrite` structure, while concrete coefficients can now be certified without obscuring

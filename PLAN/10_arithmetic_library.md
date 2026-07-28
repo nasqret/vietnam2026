@@ -77,8 +77,8 @@ does not determine the architecture.
 
 - [x] Add the discrete-order, additive/multiplicative monotonicity, cancellation,
       and strict-block contradiction interface needed by division uniqueness.
-- [ ] Add strong induction and least-counterexample interfaces suited to
-      divisor descent.
+- [ ] Add strong-induction, least-counterexample, and bounded-search interfaces
+      suited to divisor descent and constructive factor extraction.
 - [x] Prove quotient-remainder existence and uniqueness for positive divisors,
       plus zero-remainder equivalence bridges for divisibility.
 - [x] Prove the relational gcd projection, symmetry, constructor, and uniqueness
@@ -93,12 +93,13 @@ does not determine the architecture.
       scaling bridges, and Gauss cancellation.
 - [x] Check `prime_two` as a completely expanded first-order formula, without
       adding a primitive `Prime` predicate.
-- [ ] Add round-tripping prime surface syntax and capture tests, and prove zero
-      and one non-prime before admitting a broader prime API.
+- [ ] Add round-tripping prime surface syntax and capture tests, prove zero and
+      one non-prime, and complete the remaining composite/prime decision and
+      bounded divisor-search API.
 - [x] Prove Euclid's lemma constructively from relational gcd existence, Gauss,
       and the expanded prime factor-pair disjunction.
-- [ ] Prove proper-factor descent, prime-divisor existence, and primes above
-      every bound.
+- [ ] Prove proper-factor descent, constructive prime-divisor existence, and
+      primes above every bound.
 
 ## M20E — Finite factorization representation and FTA
 

@@ -2,18 +2,21 @@
 
 Peano Lab's library is not a bag of trusted facts.  Each entry contains a closed PA statement,
 an ordered list of earlier rungs, and the exact tactic script used to rebuild it.  CI
-replays all current entries, removes dependency assumptions from their proof terms, and asks the
-independent kernel to check the resulting closed certificate against the original statement.
+replays all current entries, discharges dependency assumptions through embedded self-contained
+Cuts, and asks the independent kernel to check the resulting closed certificate against the
+original statement.
 
-The current runtime contains 63 unique checked entries. It reconciles an
-upstream 26-record modular catalog, ending at the fourth-power modulo-five
-capstone, with the M20 foundational branch snapshot. Fourteen post-core
-records coincide exactly and are exposed once. M20's additional nodes name
-equality congruence, additive cancellation, basic
-order endpoints, zero/nonzero-product and small-factor reasoning, divisibility
-closure, constructive non-divisibility, and generic quotient-and-remainder
-algebra. They include `prime_two`, the first checked fully expanded prime
-instance. The complete layered design continues
+The current local candidate runtime contains 137 unique checked entries: the
+original 23-entry base, 102 post-baseline foundational entries, and twelve
+further unique records from the upstream modular catalog. The upstream
+26-record catalog ends at the fourth-power modulo-five capstone. Its first
+reconciliation with the 51-entry M20 branch exposed fourteen coincident
+post-core records once and produced the historical 63-entry snapshot.
+Subsequent foundational passes add discrete order and cancellation, generic
+quotient-and-remainder existence and uniqueness, relational gcd, balanced
+Bézout, Gauss cancellation, `prime_divisor_eq_one_or_self`, and
+`euclid_prime_dvd_product`. They retain `prime_two`, the first checked fully
+expanded prime instance. The complete layered design continues
 in {doc}`The foundational arithmetic library <../arithmetic-library/index>`;
 this chapter retains the construction story of the original core and the public modular route.
 

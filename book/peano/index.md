@@ -46,8 +46,9 @@ The full library is executable too. {doc}`The checked theorem ladder <ladder>` f
 23 scripted entries through order totality and the zero-product core capstone, then a public
 26-entry modular-arithmetic extension to the fourth-power modulo-five capstone. It also links to
 the separately validated M20 foundational snapshot. The chapter explains how theorem reuse is
-cut-eliminated outside the trusted kernel, and links each statement to the browser and Lean 4
-cross-checking surface. M9 then turns the same checked interactions into a reproducible
+packaged as self-contained Cuts whose complete branches are checked by the reviewed kernel rule,
+without granting theorem names or hashes any authority. It also links each statement to the browser
+and Lean 4 cross-checking surface. M9 then turns the same checked interactions into a reproducible
 [proof-trace corpus](https://github.com/nasqret/vietnam2026/tree/peano-lab/peano-lab/corpus) and fixes
 a [kernel-judged evaluation protocol](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_LLM.md)
 for later small-model experiments; at that milestone no model was trained. The dated
@@ -83,13 +84,15 @@ ordered list of equality hypotheses. It neither chooses an outer induction invar
 existential witness, and its cost report is never a substitute for independent checking.
 
 M20 begins a general {doc}`foundational arithmetic library
-<../arithmetic-library/index>`. Its independently validated branch snapshot extends the original
-23-entry base to 51 checked entries with
-named equality congruences, cancellation and order facts, zero/nonzero-product and small-factor
-reasoning, divisibility closure, modulus-independent residue algebra, and the first checked fully
-expanded prime instance `prime_two`. Its larger research DAG continues through division, gcd, the
-general prime spine, and factorization while labeling every unproved or currently inexpressible
-target. The 49-entry public-catalog snapshot and 51-entry M20 snapshot are
-retained as provenance. Their fourteen identical post-core records are
-deduplicated, so the reconciled runtime contains 63 unique checked entries,
-not the arithmetic sum of the two snapshots.
+<../arithmetic-library/index>`. Its first independently validated branch snapshot extended the
+original 23-entry base to 51 checked entries. That snapshot and the 49-entry public-catalog source
+remain provenance: fourteen post-core records coincide, so their initial reconciliation contained
+63 unique entries rather than their arithmetic sum. Subsequent native passes extend the current
+local candidate to **137 checked theorems**: the 23-entry base, 102 post-baseline foundational
+entries, and twelve further unique modular capstones. The checked route now includes division and
+remainder, relational gcd, balanced-natural Bézout, Gauss cancellation, the general prime-divisor
+characterization, and Euclid's lemma. The associated 148-node research catalog records those 137
+checked entries alongside seven planned expressible targets and four language-interface targets:
+conventional signed Bézout and the three finite-factorization endpoints. This is local candidate
+authority; it does not claim that every new theorem card has already been promoted to the
+production browser.

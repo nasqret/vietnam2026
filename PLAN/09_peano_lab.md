@@ -535,9 +535,10 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
 - [x] Choose the explicit external-library visibility boundary. The owner authorized publication;
       26 dependency-ordered entries are integrated with exact source commit/catalog-hash/license
       provenance, deterministic cold replay, empty-context kernel checks, and a bounded live-use
-      capstone regression. That source snapshot has 49 entries; reconciliation
-      with M20 deduplicates fourteen exact overlaps and gives the current runtime
-      63 unique checked theorems.
+      capstone regression. That source snapshot has 49 entries; the initial
+      reconciliation with M20 deduplicated fourteen exact overlaps and yielded
+      63 unique checked theorems. Subsequent native arithmetic work extends
+      that historical release to the current 137-entry successor.
 - [ ] Register model-v2 with a library snapshot hash over names, canonical statements,
       dependencies, source/script/certificate hashes, nodes, and depth; bind it through prompt,
       rows, attestation, training manifest, evaluator, and WMI requests. Freeze sealed targets
