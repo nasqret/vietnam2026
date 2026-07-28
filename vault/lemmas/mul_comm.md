@@ -28,7 +28,7 @@ forall n m. n * m = m * n
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **222 nodes**, depth **38**.
+- Certificate: **222 nodes**, depth **24**.
 - Authored script length: **4 commands**.
 - Runtime card: `pa lib mul_comm`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

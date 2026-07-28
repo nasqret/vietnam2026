@@ -35,7 +35,7 @@ forall n m. n + m = m + n
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **67 nodes**, depth **17**.
+- Certificate: **73 nodes**, depth **12**.
 - Authored script length: **4 commands**.
 - Runtime card: `pa lib add_comm`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 import subprocess
 import sys
@@ -157,3 +158,31 @@ def test_generated_library_artifacts_and_vault_notes_are_current() -> None:
             text=True,
         )
         assert completed.returncode == 0, completed.stdout + completed.stderr
+
+
+def test_library_snapshot_records_self_contained_cut_representation() -> None:
+    artifact_root = ROOT / "artifacts" / "peano-library"
+    catalog = json.loads((artifact_root / "catalog-v1.json").read_text())
+    metrics = json.loads((artifact_root / "metrics.json").read_text())
+    rows = catalog["theorems"]
+
+    assert catalog["schema"] == "peano-library-snapshot-v2"
+    assert metrics["schema"] == "peano-library-metrics-v2"
+    assert catalog["certificate_representation"] == (
+        "python-dataclass-repr-with-cut-v2"
+    )
+    assert metrics["certificate_representation"] == (
+        catalog["certificate_representation"]
+    )
+    assert all(
+        row["certificate_representation"] == catalog["certificate_representation"]
+        for row in rows
+    )
+    assert metrics["total_cut_nodes"] == sum(row["cut_nodes"] for row in rows)
+    assert metrics["maximum_cut_nodes"] == max(row["cut_nodes"] for row in rows)
+    assert metrics["theorems_with_cut_nodes"] == sum(
+        row["cut_nodes"] > 0 for row in rows
+    )
+    assert metrics["ordered_root_sha256"] == catalog["ordered_root_sha256"]
+    assert "self-contained checked Cut node" in catalog["certificate_policy"]
+    assert "external theorem environment" in catalog["certificate_policy"]

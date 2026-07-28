@@ -24,7 +24,7 @@ forall a b c. (exists k. k + a = b) -> (exists k. k + S b = c) -> exists k. k + 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **52 nodes**, depth **20**.
+- Certificate: **58 nodes**, depth **15**.
 - Authored script length: **13 commands**.
 - Runtime card: `pa lib lt_of_le_of_lt`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

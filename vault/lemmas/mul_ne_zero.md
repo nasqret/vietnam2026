@@ -24,7 +24,7 @@ forall a b. ~(a = 0) -> ~(b = 0) -> ~(a * b = 0)
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **45 nodes**, depth **25**.
+- Certificate: **65 nodes**, depth **18**.
 - Authored script length: **15 commands**.
 - Runtime card: `pa lib mul_ne_zero`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

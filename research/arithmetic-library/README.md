@@ -15,6 +15,9 @@ arithmetic library. Start with:
 - [`gcd-bezout-roadmap.md`](gcd-bezout-roadmap.md): the checked relational API,
   checked Euclidean-invariance ladder, bounded-induction construction, and
   balanced-natural Bézout gate;
+- [`proof-sharing-design.md`](proof-sharing-design.md): the reviewed
+  self-contained Cut rule, trust boundary, structural integration, and honest
+  erasure limitation;
 - [`foundational-sources.md`](foundational-sources.md): clean-room workflow and
   the cross-source dependency architecture;
 - [`nng4-map.md`](nng4-map.md): complete Natural Number Game 4 coverage and
@@ -31,8 +34,10 @@ and exact checked-runtime coverage with:
 python3 scripts/verify_arithmetic_knowledge_base.py
 ```
 
-The catalog is not theorem authority. Only entries whose replayed, cut-free
-certificates pass Peano Lab's independent kernel appear as checked. Planned and
+The catalog is not theorem authority. Only entries whose replayed,
+self-contained certificates pass Peano Lab's independent kernel from the empty
+context appear as checked. Dependency Cuts embed complete proof branches and
+never grant names or hashes authority. Planned and
 language-blocked nodes make the roadmap precise without overstating the
 current implementation. The catalog separately binds one checked Lean FTA
 companion; companion status never counts as Peano runtime coverage.

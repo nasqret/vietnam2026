@@ -31,8 +31,11 @@ more unique residue and fourth-power theorems; fourteen of its other records
 are identical to foundational entries and are exposed only once.
 
 Every current theorem fits the browser's ordinary `use` limit. The largest
-certificate, `mod5_fourth_power_one`, has 21,515 nodes and depth 66, below
-the 32,768-node/depth-128 import bound.
+shared certificate, `mod5_fourth_power_one`, has 2,675 structural proof nodes
+and depth 38. Across all 125 entries the snapshot contains 31,479 structural
+nodes, including 741 self-contained Cuts. The immutable upstream report still
+records the capstone's former fully expanded 21,515-node/depth-66
+representation; it remains provenance, not the current runtime metric.
 
 That number is deliberately narrower than the 138-node research catalog: 23
 nodes are `checked_existing`, 102 are `checked_m20`, nine are
@@ -66,18 +69,21 @@ checked theorem are different repository objects.
 1. {doc}`Language, notation, and trust <language-and-trust>` explains why
    divisibility and primality are expanded formulas rather than new kernel
    predicates.
-2. {doc}`The dependency ladder <dependency-ladder>` gives the complete
+2. {doc}`Self-contained proof sharing <proof-sharing>` explains the reviewed
+   Cut certificate rule, its trust cost, and why erasure remains an untrusted
+   compatibility audit.
+3. {doc}`The dependency ladder <dependency-ladder>` gives the complete
    architecture from equality through factorization.
-3. {doc}`Divisibility and congruence <divisibility-and-congruence>` develops
+4. {doc}`Divisibility and congruence <divisibility-and-congruence>` develops
    the checked first layer and the balanced natural-number encoding of modular
    congruence.
-4. {doc}`Primes and unique factorization <primes-and-factorization>` separates
+5. {doc}`Primes and unique factorization <primes-and-factorization>` separates
    what can be formalized now from the finite-sequence milestone needed for a
    clean Fundamental Theorem of Arithmetic.
-5. {doc}`Sources and clean-room provenance <source-audit>` maps the Natural
+6. {doc}`Sources and clean-room provenance <source-audit>` maps the Natural
    Number Game, *The Mechanics of Proof*, and *An Illustrated Theory of
    Numbers* into the corpus without silently copying material.
-6. {doc}`Using and extending the library <using-the-library>` shows the live
+7. {doc}`Using and extending the library <using-the-library>` shows the live
    workflow and the admission contract.
 
 ## Four synchronized views

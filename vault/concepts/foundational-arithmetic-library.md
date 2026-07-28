@@ -23,7 +23,9 @@ and Euclidean-step invariance; gcd existence and Bézout remain planned.
 One theorem name identifies its executable entry, generated artifact node,
 Obsidian lemma page, and book discussion. [[lemma-dependency-dag]] records the
 ordering; [[arithmetic-library-provenance]] records why facts were selected and
-how external material may be reused.
+how external material may be reused. Replay discharges dependency edges with
+[[self-contained-proof-sharing]], embedding full checked certificates rather
+than granting names or hashes kernel authority.
 
 The [[fundamental-theorem-of-arithmetic]] is a destination, not a primitive.
 A conservative [[godel-beta-sequence]] representation is selected and a Lean
@@ -33,4 +35,4 @@ the encoded sequence/product and arithmetic certificates.
 ## Related
 
 [[arithmetic-library-moc]] · [[proof-certificate]] · [[checked-theorem-reuse]] ·
-[[trusted-kernel]]
+[[self-contained-proof-sharing]] · [[trusted-kernel]]

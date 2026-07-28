@@ -26,7 +26,7 @@ forall d. (exists y. 1 = d * y) -> d = 1
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **199 nodes**, depth **34**.
+- Certificate: **188 nodes**, depth **28**.
 - Authored script length: **11 commands**.
 - Runtime card: `pa lib divisor_one`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

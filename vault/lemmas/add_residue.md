@@ -25,7 +25,7 @@ forall a u c r s. r = a * c + s -> a * u + r = a * (u + c) + s
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **117 nodes**, depth **31**.
+- Certificate: **135 nodes**, depth **18**.
 - Authored script length: **17 commands**.
 - Runtime card: `pa lib add_residue`.
 - Book route: *Divisibility and congruence* in the foundational arithmetic part.

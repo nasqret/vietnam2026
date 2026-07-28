@@ -24,7 +24,7 @@ forall n. ~(exists q. n = 5 * q) -> exists q. n = 5 * q + 1 \/ n = 5 * q + 2 \/ 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **282 nodes**, depth **32**.
+- Certificate: **287 nodes**, depth **29**.
 - Authored script length: **29 commands**.
 - Runtime card: `pa lib mod5_nonzero_residue_cases`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

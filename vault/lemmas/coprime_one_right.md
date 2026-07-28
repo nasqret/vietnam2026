@@ -24,7 +24,7 @@ forall a d. (exists x. a = d * x) -> (exists y. 1 = d * y) -> d = 1
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **201 nodes**, depth **36**.
+- Certificate: **200 nodes**, depth **29**.
 - Authored script length: **7 commands**.
 - Runtime card: `pa lib coprime_one_right`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

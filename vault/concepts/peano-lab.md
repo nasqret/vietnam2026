@@ -29,6 +29,11 @@ Intermediate propositions can be organized with [[local-reasoning-cut|local reas
 `have` proves the named fact first, while `suffices` proves first that the fact would finish the old
 goal. Both schedules are compiled away before kernel checking.
 
+Checked library dependencies use the distinct [[self-contained-proof-sharing]] rule. Its complete
+lemma and body branches are embedded in the certificate and checked directly; theorem names and
+hashes never become proof authority. This enlarges the trusted checker without changing Peano Lab's
+first-order arithmetic language or its default intuitionistic logic.
+
 The PA-specific `compact_arith` tactic searches for a [[compact-arithmetic-certificate]] for one
 rigid equality. It may use only an explicit ordered list of named equalities, while the learner must
 still choose any surrounding invariant, induction, and existential witness.
@@ -41,5 +46,6 @@ proof surface and kernel boundary without starting the browser runtime.
 [[peano-lab-moc|Peano Lab MOC]] · [[natural-deduction]] · [[tactic-mode]] ·
 [[checked-numerical-normalization]] · [[browser-proof-runtime]] · [[substitution]]
 · [[replayable-proof-script]] · [[multiline-proof-paste]] · [[local-reasoning-cut]] ·
-[[compact-arithmetic-certificate]] · [[compact-headless-proof-runner]] ·
+[[self-contained-proof-sharing]] · [[compact-arithmetic-certificate]] ·
+[[compact-headless-proof-runner]] ·
 [[kernel-guided-policy-training]]

@@ -26,7 +26,7 @@ forall c b q r. (exists u. b = c * u) -> (exists v. r = c * v) -> exists w. b * 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **194 nodes**, depth **43**.
+- Certificate: **224 nodes**, depth **19**.
 - Authored script length: **17 commands**.
 - Runtime card: `pa lib divides_linear_step`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

@@ -24,7 +24,7 @@ forall r m a b. (exists k. k + S r = m) -> ~(r = (a + m) + b)
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **115 nodes**, depth **32**.
+- Certificate: **95 nodes**, depth **28**.
 - Authored script length: **44 commands**.
 - Runtime card: `pa lib lt_not_eq_add_middle`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

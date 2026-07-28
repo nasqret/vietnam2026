@@ -61,8 +61,11 @@ subsequent native arithmetic passes extend that same runtime to 125 checked
 theorems, including discrete order, multiplication cancellation and
 monotonicity, constructive quotient-remainder existence, and full
 quotient-remainder uniqueness, mutual-divisibility antisymmetry, and relational
-gcd uniqueness plus both directions of Euclidean gcd invariance. The earlier
-public-catalog full-surface audit yields 474
+gcd uniqueness plus both directions of Euclidean gcd invariance. The runtime
+now also has audited self-contained dependency sharing: a Cut embeds
+the full lemma and body proofs and is checked without external theorem names or
+hashes. This enlarges the trusted certificate checker but leaves the PA object
+language and logic unchanged. The earlier public-catalog full-surface audit yields 474
 prospective model-v2 transitions. They are valuable curriculum seeds, but only one is an
 `induction` label, so balanced generation and
 sampling remain necessary. See
@@ -80,6 +83,7 @@ sorted Gödel-β sequence/product encoding is now selected, and a pinned Lean
 companion checks full list-based FTA existence and uniqueness up to
 permutation. The reconciled runtime also includes twelve unique upstream
 mod-five capstones for 125 checked Peano theorems in total. Division,
-relational gcd uniqueness, and Euclidean-step invariance are now native; Peano admission of FTA still awaits
+relational gcd uniqueness, Euclidean-step invariance, and self-contained proof
+sharing are now native; Peano admission of FTA still awaits
 gcd existence, Bézout, Euclid, and the encoded finite-product spine. See
 [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md).

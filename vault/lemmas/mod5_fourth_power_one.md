@@ -26,7 +26,7 @@ forall n. ~(exists x. n = 5 * x) -> exists x. n * n * n * n = 5 * x + 1
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **21515 nodes**, depth **66**.
+- Certificate: **2675 nodes**, depth **38**.
 - Authored script length: **52 commands**.
 - Runtime card: `pa lib mod5_fourth_power_one`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

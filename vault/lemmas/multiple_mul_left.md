@@ -25,7 +25,7 @@ forall a n m. (exists q. n = a * q) -> exists s. m * n = a * s
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **337 nodes**, depth **44**.
+- Certificate: **370 nodes**, depth **25**.
 - Authored script length: **9 commands**.
 - Runtime card: `pa lib multiple_mul_left`.
 - Book route: *Divisibility and congruence* in the foundational arithmetic part.

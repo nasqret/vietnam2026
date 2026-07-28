@@ -13,12 +13,14 @@ $$
 $$
 
 Each named entry stores a closed statement, earlier dependencies, and an exact tactic script. CI
-replays the script and submits the dependency-free result to the [[trusted-kernel]]. Helper lemmas
-are first-class checked entries, not hidden rewrite axioms.
+replays the script, packages earlier checked certificates in nested
+[[self-contained-proof-sharing|self-contained Cuts]], and submits the closed result to the
+[[trusted-kernel]]. Helper lemmas are first-class checked entries, not hidden rewrite axioms or
+trusted names.
 
 The browser commands `pa lib <name>` and `pa lean <name>` expose the script and an exact Lean 4
 statement stub respectively. Inside a live proof, `use <name>` performs [[checked-theorem-reuse]]
-by compiling the closed certificate into an ordinary local cut.
+by embedding the rechecked closed certificate in a self-contained Cut.
 
 A [[replayable-proof-script]] may preserve how a live theorem was discovered, but it does not add a
 library entry. Admission still requires a reviewed closed statement, earlier dependencies, replay,
@@ -54,4 +56,5 @@ uniqueness and Euclidean-step invariance.
 ## Related
 
 [[peano-lab]] · [[proof-certificate]] · [[replayable-proof-script]] · [[substitution]] ·
-[[intuitionistic-logic]] · [[foundational-arithmetic-library]]
+[[self-contained-proof-sharing]] · [[intuitionistic-logic]] ·
+[[foundational-arithmetic-library]]

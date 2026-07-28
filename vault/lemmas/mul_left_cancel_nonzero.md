@@ -28,7 +28,7 @@ forall a b c. ~(a = 0) -> a * b = a * c -> b = c
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **149 nodes**, depth **30**.
+- Certificate: **224 nodes**, depth **23**.
 - Authored script length: **42 commands**.
 - Runtime card: `pa lib mul_left_cancel_nonzero`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

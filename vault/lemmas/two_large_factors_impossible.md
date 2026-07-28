@@ -26,7 +26,7 @@ forall a b. ~(2 = S (S a) * S (S b))
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **326 nodes**, depth **43**.
+- Certificate: **376 nodes**, depth **23**.
 - Authored script length: **28 commands**.
 - Runtime card: `pa lib two_large_factors_impossible`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

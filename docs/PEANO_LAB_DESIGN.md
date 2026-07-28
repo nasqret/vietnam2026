@@ -90,9 +90,12 @@ and write the chapter section about why capture is the enemy).
 
 **Proof terms** — one constructor per natural-deduction rule (λ for →-intro, application for
 →-elim, pairing for ∧, injections for ∨, `(t, p)` for ∃-intro, `λx.` for ∀-intro, plus the axiom
-constants above). The checker is a single structural recursion `check(ctx, proof, formula) -> bool`
-of target size **≤ ~300 lines** — that number is a design constraint, not an aspiration: if the
-checker grows past it, the rule set is wrong.
+constants above), together with the reviewed self-contained `Cut` sharing node described below.
+`Cut` changes the certificate grammar and enlarges the trusted checker; it does **not** add a term,
+formula, axiom, theorem constant, or classical principle to the object logic. The checker remains a
+single structural recursion `check(ctx, proof, formula) -> bool` of target size **≤ ~300 lines** —
+that number is a design constraint, not an aspiration: if the checker grows past it, the rule set
+is wrong.
 
 ## 2. The engine (untrusted, where all the fun lives)
 
@@ -130,22 +133,63 @@ scope. An undeclared free term variable is an error rather than an implicitly ge
 Both commands therefore express the same natural-deduction cut—prove `P`, then use it—but choose
 opposite pedagogical schedules for its two obligations.
 
-That scheduling distinction does **not** justify a trusted `Cut` constructor. The untrusted engine
-may temporarily place `LocalHave(P, proof-hole, body-hole)` or
+The untrusted engine may temporarily place `LocalHave(P, proof-hole, body-hole)` or
 `LocalSuffices(P, body-hole, proof-hole)` in a partial certificate. Their child order is deliberate:
 left-to-right proof holes remain in exactly the order of the displayed goals. These two classes are
 engine-only administrative nodes; they are absent from `kernel/proofs.py`, and the kernel checker
 has no case for either one.
 
-Before the unchanged checker is called, untrusted finalization compiles every such node by
+Before the checker is called, untrusted finalization compiles every such node by
 capture-avoiding proof-hypothesis substitution. Informally, both become
 `(λh. body) proof` and then beta-reduce to `body[proof/h]`. The compiler shifts proposition
 hypothesis indices and term variables beneath implication, disjunction, existential, and universal
-binders, so a local proof cannot be captured while it is inserted. Its result, containing only
-ordinary kernel proof constructors, is checked from the empty context against the session owner's
+binders, so a local proof cannot be captured while it is inserted. Its result, which contains
+neither `LocalHave` nor `LocalSuffices`, is checked from the empty context against the session owner's
 **original stated goal** and exact logic mode. A faulty scheduler or compiler can therefore cause
 only rejection. Failure while parsing or constructing either tactic is transactional, and one
 successful command remains one exact `undo` step.
+
+This administrative compilation is deliberately distinct from trusted proof sharing. `have` and
+`suffices` still compile away; neither surface command grants a user direct way to manufacture a
+kernel `Cut` node.
+
+### Self-contained proof sharing (post-M20)
+
+The arithmetic dependency ladder exposed a different problem: substituting a large closed proof at
+every use duplicates it, and the capture-sensitive reducer was not reliable enough around all
+induction shapes. Peano Lab therefore admits one reviewed proof-certificate constructor:
+
+```text
+Cut(A, B, lemma, body)
+```
+
+Its exact checking rule is
+
+$$
+\frac{\Gamma\vdash\mathit{lemma}:A\qquad
+      A,\Gamma\vdash\mathit{body}:B}
+     {\Gamma\vdash\operatorname{Cut}(A,B,\mathit{lemma},\mathit{body}):B}.
+$$
+
+The checker validates the embedded `lemma` branch once in the ambient context, then validates the
+embedded `body` branch with `A` as hypothesis zero. Both branches use the same intuitionistic or
+explicitly classical mode. The conclusion annotation `B` lets the bidirectional checker validate a
+body beginning with an introduction form; it is checked, not trusted.
+
+This is lexical proof sharing, not a theorem oracle. A `Cut` contains both formulas and both proof
+branches. It contains no theorem name, content hash, declaration identifier, callback, or external
+environment lookup. Library names and artifact hashes remain untrusted metadata resolved before
+checking. The trusted base has nevertheless grown: `Cut` is an inert constructor in
+`kernel/proofs.py`, and its rule is a new case in `kernel/checker.py`. The object language, PA
+axioms, induction schema, and default intuitionistic logic are unchanged.
+
+Mathematically the rule is the ordinary derivation `(λh. body) lemma`. The untrusted
+`erase_trusted_cuts` utility expands a checked node to that implication form, without normalizing it,
+for compatibility and audits. This utility is not proof authority and is not a completeness
+theorem. The current bidirectional checker cannot synthesize every introduction-shaped erased
+argument, and the capture-sensitive reducer cannot normalize every large induction-bearing
+expansion reliably. An erased or reduced result counts only if the kernel separately accepts it.
+Normal replay and QED therefore check the self-contained `Cut` certificate directly.
 
 **Primitive tactics (Stage A–C):** `intro`, `apply`, `exact`, `assumption`, `split`, `left`,
 `right`, `cases`, `exfalso`, `refl`, `symm`, `trans t`, `congr`, `rewrite h [at h']`,
@@ -171,16 +215,17 @@ chapter narrates it (LCF's great idea, surviving into Lean's `<;>` and `try`).
 
 ### Checked theorem reuse and arithmetic automation (post-M9)
 
-Live proofs may reuse a named theorem only by importing its already closed certificate as an
-ordinary local cut. The surface command is `use <library-theorem> [as <alias>]`. Name resolution belongs
-to `library/` and `ui/`; the engine receives an exact formula and proof, rechecks
-`check((), certificate, formula)`, and adds that formula to the focused context. The kernel never
-learns theorem names and gains no trusted declaration environment.
+Live proofs may reuse a named theorem only by importing its already closed certificate. The surface
+command is `use <library-theorem> [as <alias>]`. Name resolution belongs to `library/` and `ui/`;
+the engine receives an exact formula and proof, rechecks `check((), certificate, formula)`, and
+places them in a self-contained `Cut(formula, target, certificate, body)` around the focused goal.
+The kernel never learns the theorem name and has no trusted declaration environment.
 
-At surface finalization, exposed implication/forall cuts are contracted by an untrusted,
-capture-avoiding proof transformation. Its output is placed in a transient proof state and passed
-to the ordinary `checked_final` path with the session owner's **original** target and exact logic
-mode. A faulty import, cut compiler, or library entry can therefore cause only rejection.
+At surface finalization, the untrusted reducer still compiles `LocalHave`/`LocalSuffices` and
+contracts exposed implication and universal beta redexes. It preserves trusted `Cut` nodes. The
+result is passed to `checked_final` with the session owner's **original** target and exact logic
+mode, so the kernel checks every embedded lemma and body itself. A faulty import, scheduler,
+reducer, or library entry can therefore cause only rejection.
 Imported and live partial certificates have explicit node/depth budgets. Exceeding either raises
 an honest transactional `TacticLimit`; QED also translates host recursion exhaustion into a typed
 rejection while preserving the session.
@@ -263,17 +308,19 @@ The engine carries every candidate as an exact `(left, right, proof)` triple. Sm
 may create PA instances, symmetry, transitivity, congruence, and equality-motive `EqSubst`
 transports only when their recorded endpoints compose syntactically. A bounded deterministic search
 compares orientations and paths, retaining one winner for each exact endpoint pair and assumption-
-permission mode. Its deterministic key is expanded proof nodes, proof depth, annotation nodes, then
-generation ordinal. Its primary cost is measured
-on the expanded, cut-normal **proof tree** that the current kernel will inspect, not on the number of
-high-level template calls. Reusing one Python object does not make two tree occurrences count once.
+permission mode. Its deterministic key is certificate nodes, proof depth, annotation nodes, then
+generation ordinal. Its primary cost is measured on the exact administratively normalized
+certificate that the current kernel will inspect. A self-contained `Cut` counts once together with
+its two stored branches; reusing one Python object at two separate certificate positions still
+counts twice.
 Annotation-node count is the third tie-breaker; annotation depth, work, and wall time are resource
 bounds rather than optimization objectives.
 Candidate generation carries a deterministic ordinal, so equal-cost selected hypotheses preserve
 the explicit surface-list order rather than depending on set, mapping, or host traversal order.
 
-`compact_arith` must never add a kernel constructor, arithmetic oracle, trusted theorem reference,
-or declaration environment. Before publishing success it normalizes administrative cuts, checks the
+`compact_arith` must never add another kernel constructor, arithmetic oracle, trusted theorem
+reference, or declaration environment. Before publishing success it normalizes administrative
+cuts while preserving self-contained sharing, checks the
 candidate in the focused goal's exact context with the independent kernel, enforces the complete
 partial-certificate budget, and only then replaces the hole and records one transaction. Ordinary
 QED independently checks the final compiled certificate against the session owner's original target
@@ -307,7 +354,8 @@ annotation nodes at depth 256, 20,000 work units, a 10,000-node/256-level genera
 this bounded search stopped.
 
 The public metric must be named honestly. `proof_size` counts structural `Proof` occurrences while
-ignoring the sizes of `Term` and `Formula` annotations stored by nodes such as `EqSubst` and `Ind`.
+ignoring the sizes of `Term` and `Formula` annotations stored by nodes such as `EqSubst`, `Ind`, and
+`Cut`.
 The implementation may claim “smallest among the finite candidates generated by template set T
 under limits B” only if it exhausts that set and charges post-expansion cost. It may call the
 180-node artifact a best-known checked upper bound. It may not claim an absolute minimum without a
@@ -396,9 +444,8 @@ and fast replay checks. `scripts/peano_batch.py` provides a finite transactional
 around it. It is deliberately not a duplex service: result rows are withheld until EOF and, in
 trace mode, until the matching trace artifact commits.
 Neither module defines a term, formula, proof constructor, tactic, theorem, or checking rule. Every
-`proved` result is issued only after `checked_surface_final` submits the completed ordinary
-certificate to the unchanged kernel against the adapter-owned original target and exact classical
-mode.
+`proved` result is issued only after `checked_surface_final` submits the completed certificate to
+the same reviewed kernel against the adapter-owned original target and exact classical mode.
 
 The request schema contains only a version, caller label, closed theorem, tactic lines, classical
 Boolean, and stop/continue-on-tactic-error policy. Execution mode and `SurfaceCapabilities` are
@@ -455,6 +502,10 @@ reports a success only after the same owner-and-kernel path closes a frozen held
    `len(goals) == holes(partial)` after every step.
    Local-reasoning tests additionally pin the two opposite goal orders, exact undo, and
    capture-avoiding compilation beneath both proposition and term binders.
+   Self-contained-sharing tests mutate both annotations and both proof branches, distinguish the
+   ambient context from the body-only hypothesis, preserve classical-mode authority, reject
+   subclasses and malformed nodes, and exercise capture beneath implication, disjunction,
+   existential, and universal binders.
    Compact-arithmetic tests additionally check exact hypothesis order/orientation, template
    soundness and capture, preview purity, deterministic post-expansion costs, adversarial mutations,
    and transactional exhaustion of every search/certificate bound.

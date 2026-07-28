@@ -24,7 +24,7 @@ forall n m. n <= m -> m <= n -> n = m
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **137 nodes**, depth **29**.
+- Certificate: **218 nodes**, depth **29**.
 - Authored script length: **9 commands**.
 - Runtime card: `pa lib le_antisymm`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

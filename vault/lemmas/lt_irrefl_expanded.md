@@ -25,7 +25,7 @@ forall n. ~(exists k. k + S n = n)
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **63 nodes**, depth **16**.
+- Certificate: **83 nodes**, depth **16**.
 - Authored script length: **12 commands**.
 - Runtime card: `pa lib lt_irrefl_expanded`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

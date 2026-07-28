@@ -2,10 +2,10 @@
 
 The kernel deliberately has no theorem environment and no reduction rule for
 proof terms.  Library replay and arithmetic automation may nevertheless expose
-ordinary implication and universal beta redexes while inserting already
-checked certificates.  This module contracts those redexes outside the
-trusted kernel, preserving both proposition-hypothesis and term-variable De
-Bruijn scopes.
+ordinary implication and universal beta redexes while constructing
+certificates. This module contracts those redexes outside the trusted kernel,
+preserving both proposition-hypothesis and term-variable De Bruijn scopes.
+It deliberately preserves the kernel's self-contained ``Cut`` sharing nodes.
 
 Reduction never grants authority: every caller must still submit the result to
 the independent kernel checker against the intended formula.
@@ -25,6 +25,7 @@ from ..kernel.proofs import (
     CongAdd,
     CongMul,
     CongS,
+    Cut,
     DNE,
     EqRefl,
     EqSubst,
@@ -56,7 +57,7 @@ class LocalHave(Proof):
     """Engine-only proof-first scheduling for ``have h : proposition``.
 
     ``proof`` is checked in the ambient context. ``body`` is checked with the
-    proposition at hypothesis index zero. Cut elimination substitutes the
+    proposition at hypothesis index zero. Local compilation substitutes the
     former into the latter before the independent kernel sees the result.
     """
 
@@ -123,6 +124,13 @@ def _open_term_slot(proof: Proof, replacement: object, depth: int = 0) -> Proof:
             formula(proof.proposition),
             _open_term_slot(proof.body, replacement, depth),
             _open_term_slot(proof.proof, replacement, depth),
+        )
+    if type(proof) is Cut:
+        return Cut(
+            formula(proof.proposition),
+            formula(proof.conclusion),
+            _open_term_slot(proof.lemma, replacement, depth),
+            _open_term_slot(proof.body, replacement, depth),
         )
     if type(proof) is AndIntro:
         return AndIntro(
@@ -219,6 +227,8 @@ def _shift_hypotheses(proof: Proof, by: int, cutoff: int = 0) -> Proof:
             child_cutoff += 1
         elif type(proof) in (LocalHave, LocalSuffices) and item.name == "body":
             child_cutoff += 1
+        elif type(proof) is Cut and item.name == "body":
+            child_cutoff += 1
         elif type(proof) is OrElim and item.name in {"left_case", "right_case"}:
             child_cutoff += 1
         elif type(proof) is ExistsElim and item.name == "body":
@@ -276,6 +286,8 @@ def _open_hypothesis(
             child_cutoff += 1
         elif type(proof) in (LocalHave, LocalSuffices) and item.name == "body":
             child_cutoff += 1
+        elif type(proof) is Cut and item.name == "body":
+            child_cutoff += 1
         elif type(proof) is OrElim and item.name in {"left_case", "right_case"}:
             child_cutoff += 1
         elif type(proof) is ExistsElim and item.name == "body":
@@ -317,6 +329,13 @@ def _normalise_forall_cuts(proof: Proof) -> Proof:
         body = _normalise_forall_cuts(proof.body)
         lemma = _normalise_forall_cuts(proof.proof)
         return _normalise_forall_cuts(_open_hypothesis(body, lemma))
+    if type(proof) is Cut:
+        return Cut(
+            proof.proposition,
+            proof.conclusion,
+            _normalise_forall_cuts(proof.lemma),
+            _normalise_forall_cuts(proof.body),
+        )
     if type(proof) is AndIntro:
         return AndIntro(
             _normalise_forall_cuts(proof.left),
@@ -392,8 +411,145 @@ def _normalise_forall_cuts(proof: Proof) -> Proof:
     )
 
 
+def _erase_trusted_cuts(proof: Proof) -> Proof:
+    """Expand every trusted :class:`Cut` without reducing the result."""
+
+    if type(proof) is Hyp:
+        return proof
+    if type(proof) is ImpIntro:
+        return ImpIntro(_erase_trusted_cuts(proof.body))
+    if type(proof) is ImpElim:
+        return ImpElim(
+            _erase_trusted_cuts(proof.function),
+            _erase_trusted_cuts(proof.argument),
+        )
+    if type(proof) is Cut:
+        if not isinstance(proof.proposition, Formula) or not isinstance(
+            proof.conclusion, Formula
+        ):
+            raise ProofReductionError(
+                "trusted cut needs PA proposition and conclusion annotations"
+            )
+        return ImpElim(
+            ImpIntro(_erase_trusted_cuts(proof.body)),
+            _erase_trusted_cuts(proof.lemma),
+        )
+    if type(proof) is LocalHave:
+        return LocalHave(
+            proof.proposition,
+            _erase_trusted_cuts(proof.proof),
+            _erase_trusted_cuts(proof.body),
+        )
+    if type(proof) is LocalSuffices:
+        return LocalSuffices(
+            proof.proposition,
+            _erase_trusted_cuts(proof.body),
+            _erase_trusted_cuts(proof.proof),
+        )
+    if type(proof) is AndIntro:
+        return AndIntro(
+            _erase_trusted_cuts(proof.left),
+            _erase_trusted_cuts(proof.right),
+        )
+    if type(proof) is AndElimL:
+        return AndElimL(_erase_trusted_cuts(proof.pair))
+    if type(proof) is AndElimR:
+        return AndElimR(_erase_trusted_cuts(proof.pair))
+    if type(proof) is OrIntroL:
+        return OrIntroL(_erase_trusted_cuts(proof.proof))
+    if type(proof) is OrIntroR:
+        return OrIntroR(_erase_trusted_cuts(proof.proof))
+    if type(proof) is OrElim:
+        return OrElim(
+            _erase_trusted_cuts(proof.disjunction),
+            _erase_trusted_cuts(proof.left_case),
+            _erase_trusted_cuts(proof.right_case),
+        )
+    if type(proof) is BotElim:
+        return BotElim(_erase_trusted_cuts(proof.absurdity))
+    if type(proof) is ForallIntro:
+        return ForallIntro(_erase_trusted_cuts(proof.body))
+    if type(proof) is ForallElim:
+        return ForallElim(
+            _erase_trusted_cuts(proof.universal),
+            proof.term,
+        )
+    if type(proof) is ExistsIntro:
+        return ExistsIntro(proof.term, _erase_trusted_cuts(proof.proof))
+    if type(proof) is ExistsElim:
+        return ExistsElim(
+            _erase_trusted_cuts(proof.existential),
+            _erase_trusted_cuts(proof.body),
+        )
+    if type(proof) is EqSym:
+        return EqSym(_erase_trusted_cuts(proof.proof))
+    if type(proof) is EqTrans:
+        return EqTrans(
+            _erase_trusted_cuts(proof.first),
+            _erase_trusted_cuts(proof.second),
+        )
+    if type(proof) is CongS:
+        return CongS(_erase_trusted_cuts(proof.proof))
+    if type(proof) is CongAdd:
+        return CongAdd(
+            _erase_trusted_cuts(proof.left),
+            _erase_trusted_cuts(proof.right),
+        )
+    if type(proof) is CongMul:
+        return CongMul(
+            _erase_trusted_cuts(proof.left),
+            _erase_trusted_cuts(proof.right),
+        )
+    if type(proof) is EqSubst:
+        return EqSubst(
+            proof.motive,
+            _erase_trusted_cuts(proof.equation),
+            _erase_trusted_cuts(proof.body),
+        )
+    if type(proof) is Ind:
+        return Ind(
+            proof.motive,
+            _erase_trusted_cuts(proof.base),
+            _erase_trusted_cuts(proof.step),
+        )
+    if type(proof) in (EqRefl, DNE, Axiom):
+        return proof
+    raise ProofReductionError(
+        f"unsupported proof node during trusted-cut erasure: {type(proof).__name__}"
+    )
+
+
+def erase_trusted_cuts(proof: Proof) -> Proof:
+    """Expand trusted sharing nodes to ordinary implication proof terms.
+
+    This compatibility transform accepts complete certificates, not live
+    engine states containing holes.  It deliberately leaves the implication
+    beta redexes it creates intact; callers may normalize them in a separate
+    step and must still submit the result to the kernel. Logical admissibility
+    does not imply that the current bidirectional reducer can round-trip every
+    accepted Cut certificate, so this diagnostic has no admission authority.
+    """
+
+    if not isinstance(proof, Proof):
+        raise ProofReductionError(
+            "trusted-cut erasure needs an exact proof certificate"
+        )
+    try:
+        return _erase_trusted_cuts(proof)
+    except ProofReductionError:
+        raise
+    except RecursionError:
+        raise ProofReductionError(
+            "trusted-cut erasure exceeded the host recursion limit"
+        ) from None
+    except (AttributeError, TypeError, ValueError):
+        raise ProofReductionError(
+            "malformed proof certificate during trusted-cut erasure"
+        ) from None
+
+
 def normalise_cuts(proof: Proof) -> Proof:
-    """Contract cuts, returning only an untrusted transformed certificate."""
+    """Contract beta/admin cuts while preserving trusted sharing nodes."""
 
     if not isinstance(proof, Proof):
         raise ProofReductionError("cut normalization needs an exact proof certificate")
@@ -458,5 +614,6 @@ __all__ = [
     "LocalHave",
     "LocalSuffices",
     "compile_local_cuts",
+    "erase_trusted_cuts",
     "normalise_cuts",
 ]

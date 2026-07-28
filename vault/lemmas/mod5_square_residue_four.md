@@ -26,7 +26,7 @@ forall z q. z = 5 * q + 4 -> z * z = 5 * ((q * z + 4 * q) + 3) + 1
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **1855 nodes**, depth **53**.
+- Certificate: **1283 nodes**, depth **31**.
 - Authored script length: **6 commands**.
 - Runtime card: `pa lib mod5_square_residue_four`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

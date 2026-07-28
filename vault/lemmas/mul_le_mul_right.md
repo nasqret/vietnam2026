@@ -24,7 +24,7 @@ forall a b c. (exists k. k + a = b) -> exists r. r + a * c = b * c
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **757 nodes**, depth **50**.
+- Certificate: **343 nodes**, depth **26**.
 - Authored script length: **12 commands**.
 - Runtime card: `pa lib mul_le_mul_right`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

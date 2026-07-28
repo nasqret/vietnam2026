@@ -26,7 +26,7 @@ forall a b. a + b = 0 -> a = 0
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **89 nodes**, depth **22**.
+- Certificate: **112 nodes**, depth **14**.
 - Authored script length: **9 commands**.
 - Runtime card: `pa lib add_eq_zero_left`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

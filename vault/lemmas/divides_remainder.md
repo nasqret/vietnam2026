@@ -26,7 +26,7 @@ forall c a b q r. (exists u. a = c * u) -> (exists v. b = c * v) -> a = b * q + 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **378 nodes**, depth **47**.
+- Certificate: **427 nodes**, depth **29**.
 - Authored script length: **24 commands**.
 - Runtime card: `pa lib divides_remainder`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

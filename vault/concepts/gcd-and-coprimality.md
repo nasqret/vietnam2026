@@ -35,10 +35,12 @@ expanded common-divisor definition of coprimality and `IsGCD(1,a,b)`.
 
 The [native gcd/Bézout roadmap](../../research/arithmetic-library/gcd-bezout-roadmap.md)
 records the checked Euclidean-invariance certificates, the bounded
-formula-specific induction route to existence, and the current proof-sharing
-gate.
+formula-specific induction route to existence, and the original
+proof-composition failure. The reviewed [[self-contained-proof-sharing]] rule
+now removes that architectural gate; gcd existence still requires admission
+of the arithmetic script and a fresh empty-context kernel check.
 
 ## Related
 
 [[arithmetic-library-moc]] · [[divisibility]] · [[quotient-and-remainder]] ·
-[[prime-number]]
+[[prime-number]] · [[self-contained-proof-sharing]]

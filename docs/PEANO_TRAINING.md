@@ -621,7 +621,11 @@ entries are appended to the public theorem ladder at source commit
 `d2ba05dca952e2e33479923433f8d2fcd3409493`, catalog SHA-256
 `91c88c1f3311cc0dc540671b169c270758ff6211e77716ed07bd3dd4f55c8380`.
 All replay deterministically and pass the empty-context kernel check. The largest certificate has
-21,515 nodes at depth 66; only the untrusted `use` import ceiling changes from 4,096 to 32,768.
+21,515 nodes at depth 66 in the immutable upstream, fully expanded validation report. The current
+snapshot-v2 representation packages dependency proofs in self-contained kernel Cuts and records a
+maximum node count of 2,675 and a maximum depth of 57 across the ladder. Model provenance must bind
+the representation version as
+well as the certificate hashes and metrics.
 
 The pack must nevertheless enter through a new scientific contract. A
 content-addressed library snapshot must bind each name, canonical statement,

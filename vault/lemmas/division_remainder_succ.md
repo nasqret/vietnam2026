@@ -26,7 +26,7 @@ forall d n. exists q r. n = S d * q + r /\ S r <= S d
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **171 nodes**, depth **30**.
+- Certificate: **179 nodes**, depth **26**.
 - Authored script length: **38 commands**.
 - Runtime card: `pa lib division_remainder_succ`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

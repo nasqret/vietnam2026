@@ -26,7 +26,7 @@ forall q. exists w. (5 * q + 4) * (5 * q + 4) * (5 * q + 4) * (5 * q + 4) = 5 * 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **4221 nodes**, depth **59**.
+- Certificate: **1868 nodes**, depth **32**.
 - Authored script length: **7 commands**.
 - Runtime card: `pa lib mod5_fourth_power_residue_four`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

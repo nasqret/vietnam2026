@@ -25,7 +25,7 @@ Two is prime in the expanded first-order prime predicate.
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **395 nodes**, depth **59**.
+- Certificate: **456 nodes**, depth **25**.
 - Authored script length: **35 commands**.
 - Runtime card: `pa lib prime_two`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

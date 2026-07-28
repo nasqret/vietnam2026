@@ -26,7 +26,7 @@ forall a b. (exists k. k + a = b) -> a = b \/ exists k. k + S a = b
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **78 nodes**, depth **21**.
+- Certificate: **98 nodes**, depth **19**.
 - Authored script length: **21 commands**.
 - Runtime card: `pa lib le_eq_or_lt`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

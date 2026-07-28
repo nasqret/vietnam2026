@@ -92,13 +92,14 @@ simp [add_succ_left, add_comm]
 qed
 ```
 
-`use` does not ask the kernel to trust a theorem name. It inserts the theorem's closed certificate
-as a local cut; surface finalization contracts that cut and independently checks the resulting
-closed proof against the original stated goal.
+`use` does not ask the kernel to trust a theorem name. It embeds the theorem's closed certificate
+in a self-contained `Cut` carrying both formulas and both proof branches. Finalization submits that
+closed shared certificate to the kernel against the original stated goal.
 
 The upstream public-catalog candidate contains 49 dependency-ordered entries: the 23-entry core and
-a 26-entry extension through `mod5_fourth_power_one`. The extension's largest certificate has 21,515 nodes at
-depth 66, so the untrusted import ceiling is 32,768 nodes; the kernel is unchanged. A short reuse of
+a 26-entry extension through `mod5_fourth_power_one`. Its immutable source report records the former
+fully expanded capstone at 21,515 nodes/depth 66. The current self-contained shared certificate is
+2,675 nodes/depth 38 and remains below the 32,768-node/depth-128 import ceiling. A short reuse of
 the capstone is:
 
 ```text
@@ -157,8 +158,9 @@ Goal 2:  Γ ⊢ P
 The two commands have the same logical meaning; only their teaching order differs. The partial
 certificate records that order with engine-only `LocalHave` or `LocalSuffices` nodes. Before QED,
 an untrusted capture-avoiding compiler substitutes the proof of `P` for the local hypothesis and
-removes every such node. The independent kernel is unchanged and sees only its ordinary proof
-constructors. It still checks the compiled certificate from scratch against the **original stated
+removes every such node. The kernel never accepts either administrative constructor; the compiled
+result may contain ordinary constructors and separately introduced self-contained Cuts. It still
+checks the certificate from scratch against the **original stated
 goal**, not against either intermediate goal. Local names therefore improve proof organization but
 grant no theorem authority or proof sharing: if a compiled body uses `h` repeatedly, the proof of
 `P` may be copied repeatedly into the final proof tree.
@@ -273,9 +275,9 @@ post-baseline foundational theorems, and twelve unique modular capstones. The
 complete 26-record modular provenance catalog ends at
 `mod5_fourth_power_one`; fourteen of those records coincide exactly with
 foundational entries and are exposed once.
-Dependencies are introduced as ordinary hypotheses,
-then compiled away by untrusted, capture-avoiding proof-term cut elimination. The resulting closed
-certificate is independently checked against the original theorem. `pa lib <name>` shows that exact
+Dependencies are introduced as ordinary hypotheses, then packaged in nested self-contained Cuts.
+Each Cut embeds and checks its dependency proof once; it carries no theorem name or hash. The
+resulting closed certificate is independently checked from the empty context against the original theorem. `pa lib <name>` shows that exact
 replay script; `pa lean <name>` exports the exact statement as a Lean 4 theorem over `Nat`, with one
 intentional proof stub and a Live Lean link for cross-checking.
 
@@ -412,13 +414,13 @@ session commands replay. Automated worker boot is green. A direct in-app Pyodide
 still pending because no browser was attached to this session. This candidate is staged locally
 only; production is untouched.
 
-The current local candidate is build `2026-07-28l`, immutable application
-release `a-baf4cc52dad6`. It exposes 125 unique checked theorems, preserves both
-parent snapshots as provenance, and binds a freshly regenerated proof-trace
-corpus and application manifest. Its complete suite passes 1,054 tests on
-Python 3.10; the 35-source warning-as-error book and all 264
-documented commands are green. It has not been deployed or promoted;
-production remains untouched.
+The current local candidate is build `2026-07-28m`, immutable application
+release `a-396c35f357b4`. It exposes 125 unique checked theorems and the
+reviewed self-contained Cut rule, preserves both parent snapshots as
+provenance, and binds a freshly regenerated proof-trace corpus and application
+manifest. Its complete suite passes 1,081 tests on Python 3.10; the 36-source
+warning-as-error book and all 264 documented commands are green. It has not
+been deployed or promoted; production remains untouched.
 
 Back at the repository root, run both regression suites:
 

@@ -24,7 +24,7 @@ forall a b n. (exists q. n = a * q) -> (exists r. a = b * r) -> exists s. n = b 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **119 nodes**, depth **40**.
+- Certificate: **137 nodes**, depth **18**.
 - Authored script length: **11 commands**.
 - Runtime card: `pa lib multiple_trans`.
 - Book route: *Divisibility and congruence* in the foundational arithmetic part.

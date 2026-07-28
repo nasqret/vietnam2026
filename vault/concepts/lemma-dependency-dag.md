@@ -5,8 +5,10 @@ tags: [library, dependency-graph, peano-arithmetic]
 
 A **lemma dependency DAG** makes prerequisite structure executable. Every
 checked theorem depends only on earlier nodes, so replay can construct a
-temporary curried target, substitute closed dependency certificates, eliminate
-cuts, and ask the [[trusted-kernel]] to check the original formula.
+temporary curried target, package closed dependency certificates in nested
+[[self-contained-proof-sharing|self-contained Cuts]], and ask the
+[[trusted-kernel]] to check the original formula from the empty context. Each
+Cut embeds its full formula and proof rather than a dependency name or hash.
 
 The exact checked graph is generated as
 `artifacts/peano-library/dependency-graph.mmd`. The research graph is larger:
@@ -25,4 +27,4 @@ $$
 ## Related
 
 [[arithmetic-library-moc]] · [[foundational-arithmetic-library]] ·
-[[theorem-ladder]] · [[proof-certificate]]
+[[theorem-ladder]] · [[proof-certificate]] · [[self-contained-proof-sharing]]

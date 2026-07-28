@@ -32,8 +32,8 @@ The checked gcd layer includes a complete relational API through uniqueness:
   coprimality and $\operatorname{IsGCD}(1,a,b)$.
 
 All twenty-one gcd/coprimality and Euclidean-step certificates are
-constructive. The largest,
-`is_gcd_unique`, has 600 proof nodes and depth 51.
+constructive. In the shared representation, the largest is
+`is_gcd_euclid_forward` at 741 proof nodes/depth 38.
 
 Gcd **existence** is a different theorem and is not yet in `pa lib`.
 
@@ -56,14 +56,14 @@ forall c u v r.
 The checked native theorem `factor_difference` proves this by induction on the
 two multipliers. It supports the following admitted ladder:
 
-| Checked theorem | Meaning | Expanded proof nodes |
+| Checked theorem | Meaning | Shared nodes/depth |
 |---|---|---:|
-| `is_gcd_zero_right` | base case $\operatorname{IsGCD}(a,a,0)$ | 45 |
-| `factor_difference` | remove a common multiple prefix | 250 |
-| `divides_remainder` | $c\mid a$ and $c\mid b$ imply $c\mid r$ | 378 |
-| `divides_linear_step` | $c\mid b$ and $c\mid r$ imply $c\mid bq+r$ | 194 |
-| `is_gcd_euclid_forward` | $\operatorname{IsGCD}(d,b,r)\to\operatorname{IsGCD}(d,a,b)$ | 586 |
-| `is_gcd_euclid_backward` | the converse direction | 586 |
+| `is_gcd_zero_right` | base case $\operatorname{IsGCD}(a,a,0)$ | 65 / 11 |
+| `factor_difference` | remove a common multiple prefix | 265 / 26 |
+| `divides_remainder` | $c\mid a$ and $c\mid b$ imply $c\mid r$ | 427 / 29 |
+| `divides_linear_step` | $c\mid b$ and $c\mid r$ imply $c\mid bq+r$ | 224 / 19 |
+| `is_gcd_euclid_forward` | $\operatorname{IsGCD}(d,b,r)\to\operatorname{IsGCD}(d,a,b)$ | 741 / 38 |
+| `is_gcd_euclid_backward` | the converse direction | 741 / 37 |
 
 Each entry replays from its declared earlier dependencies and its expanded
 certificate checks from the empty context. Gcd existence is still gated by
@@ -88,12 +88,14 @@ smaller pair $(b,r)$ and Euclidean invariance transports its gcd back to
 $(a,b)$.
 
 The authored bounded proof closes against its dependency-curried goal in 90
-nodes. Current dependency substitution corrupts the resulting closed tree
-(1,024 nodes before and 971 after reduction), which the independent kernel
-rejects. This is a proof-composition defect, not a mathematical or PA
-expressibility failure, so gcd existence remains unadmitted.
+nodes. The former dependency inliner corrupted the closed induction tree,
+which the independent kernel correctly rejected. With reviewed self-contained
+sharing, the same bounded theorem now checks from the empty context at 1,232
+nodes/depth 44, and the unrestricted wrapper checks at 1,268/depth 46. Gcd
+existence remains unadmitted only until those prototypes enter the synchronized
+runtime/catalog/artifact gate.
 
-The reviewed remedy is a self-contained derived proof node
+The reviewed remedy is the now-implemented self-contained derived proof node
 
 ```text
 Cut(A, B, lemma, body)
@@ -102,7 +104,10 @@ Cut(A, B, lemma, body)
 whose checker rule verifies `lemma : A` in the ambient context and verifies
 `body : B` with `A` as a new hypothesis. It contains no theorem names, hashes,
 or external theorem authority. Because this changes the trusted checker, it
-must land as its own audited milestone.
+landed as its own audited milestone. It changes neither the arithmetic object
+language nor the logic; {doc}`Self-contained proof sharing <proof-sharing>`
+records the exact trust and erasure boundary. Gcd existence remains unadmitted
+until its arithmetic script itself replays and checks.
 
 ## Bézout with four natural coefficients
 
@@ -124,7 +129,7 @@ x'_-=y_-,qquad
 y'_-=x_- + qy_+.
 $$
 
-An independently checked 918-node prototype proves the maximality bridge:
+An independently checked 626-node shared prototype proves the maximality bridge:
 if $c$ divides $a$ and $b$, then a balanced combination equal to $d$ implies
 $c\mid d$. The efficient recursive theorem should therefore construct the two
 divisibility witnesses and the four coefficients simultaneously; maximality

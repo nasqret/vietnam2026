@@ -65,9 +65,9 @@ def render_theorem(spec: TheoremSpec) -> str:
     rows.extend(("", "Authored tactic body:"))
     rows.extend(f"  {line}" for line in spec.script)
     composition = (
-        "Composition: dependency hypotheses are cut-eliminated from the proof term."
+        "Composition: self-contained Cut nodes carry and kernel-check each dependency proof."
         if spec.dependencies
-        else "Composition: direct closed certificate; no library dependency cuts."
+        else "Composition: direct closed certificate; no dependency-sharing Cut nodes."
     )
     rows.extend(
         (

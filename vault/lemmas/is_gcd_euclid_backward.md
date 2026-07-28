@@ -25,7 +25,7 @@ forall d a b q r. a = b * q + r -> (((exists x. a = d * x) /\ (exists y. b = d *
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **586 nodes**, depth **51**.
+- Certificate: **741 nodes**, depth **37**.
 - Authored script length: **35 commands**.
 - Runtime card: `pa lib is_gcd_euclid_backward`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

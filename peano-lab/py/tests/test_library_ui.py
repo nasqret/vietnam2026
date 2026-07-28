@@ -31,7 +31,7 @@ def test_pa_lib_lists_every_rung_and_opens_exact_replay_script() -> None:
     assert "Independent kernel check: PASS" in card
 
     direct = session.run("pa lib zero_add")
-    assert "direct closed certificate; no library dependency cuts" in direct
+    assert "direct closed certificate; no dependency-sharing Cut nodes" in direct
 
 
 def test_pa_lib_help_usage_and_unknown_name_are_final_text() -> None:

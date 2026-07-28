@@ -250,11 +250,23 @@ def test_generated_certificate_has_its_own_node_and_depth_limits(
         )
 
     square, _ = _equation("(x + 1) * (x + 1) = x * x + 2 * x + 1")
-    with pytest.raises(TacticLimit, match="50-proof-depth limit"):
+    baseline = prove_ring_equation(
+        square,
+        ring_laws,
+        clock=lambda: 0.0,
+    )
+    adversarial_depth = baseline.proof_depth - 1
+    with pytest.raises(
+        TacticLimit,
+        match=rf"{adversarial_depth}-proof-depth limit",
+    ):
         prove_ring_equation(
             square,
             ring_laws,
-            limits=replace(DEFAULT_RING_LIMITS, max_proof_depth=50),
+            limits=replace(
+                DEFAULT_RING_LIMITS,
+                max_proof_depth=adversarial_depth,
+            ),
             clock=lambda: 0.0,
         )
 

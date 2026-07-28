@@ -72,9 +72,11 @@ $$
 $$
 
 It is not a new axiom or an opaque solver result. Its source script replays through the same public
-tactic surface to a 21,515-node, depth-66 closed certificate, and the independent kernel checks that
-certificate in the empty context. The source revision, catalog hash, license notice, and unaltered
-pre-integration validation report are retained under `artifacts/peano-library/`.
+tactic surface. The immutable upstream report records the former fully expanded certificate at
+21,515 nodes/depth 66. Current replay packages dependencies with self-contained sharing and yields
+2,675 structural nodes/depth 38; the independent kernel checks the complete certificate in the
+empty context. The source revision, catalog hash, license notice, and unaltered pre-integration
+validation report are retained under `artifacts/peano-library/`.
 
 Once imported, the long derivation can be reused in an ordinary short proof:
 
@@ -88,29 +90,35 @@ exact h
 qed
 ```
 
-The open proof temporarily reaches 21,523 nodes at depth 69. QED contracts the local cut and checks
-the original 21,515-node certificate again. The import ceiling is therefore 32,768 nodes, while two
-simultaneous capstone imports still exceed the separate live-partial bound and fail transactionally.
+The open proof reaches 2,682 structural nodes at depth 41, and finalization checks a
+2,670-node/depth-41 certificate. The import ceiling remains 32,768 nodes; repeated capstone imports
+eventually reach the separate live-partial bound and fail transactionally without changing state.
 
 Five named helper lemmas keep the scripts readable.  They are not shortcuts around checking: each
 helper is itself an ordinary scripted theorem with a closed certificate.  For example,
 `mul_succ_left` makes the multiplication-commutativity proof six commands long, while
 `antisymm_from_witnesses` exposes the real additive argument behind order antisymmetry.
 
-## Compiling theorem reuse away
+## Self-contained theorem sharing
 
-The kernel deliberately has neither a mutable theorem environment nor a proof-ascription rule.
+The kernel deliberately has no mutable theorem environment or trusted theorem-name rule.
 Library replay therefore proves a temporary curried statement
 
 $$
 D_1 \to D_2 \to \cdots \to D_r \to T,
 $$
 
-where each $D_i$ is an earlier checked theorem.  The library layer then performs simultaneous,
-capture-avoiding substitution of the closed certificates for those hypothesis slots.  It contracts
-the implication and universal introduction/elimination redexes exposed by substitution.  This is
-ordinary cut elimination in an **untrusted** layer: even if that transformation is buggy, its output
-still has to pass `check((), certificate, T)`.
+where each $D_i$ is an earlier checked theorem. The library layer peels those introductions and
+wraps the remaining body in nested nodes
+
+```text
+Cut(A, B, lemma, body).
+```
+
+The kernel checks `lemma : A` in the ambient context and `body : B` with `A` as its newest
+hypothesis. The node contains both formulas and both proofs—never a theorem name, hash, or external
+lookup. This is a reviewed enlargement of the certificate grammar and checker, while the arithmetic
+term/formula language, PA axioms, induction, and intuitionistic default remain unchanged.
 
 That final call is the important line.  The tactic script, dependency graph, substitution code,
 pretty-printer, browser card, and Lean exporter may all be wrong without turning a false formula
@@ -131,10 +139,10 @@ pa> simp [add_succ_left, add_comm]
 pa> qed
 ```
 
-The partial certificate visibly contains local cuts while the proof is open. At QED, Peano Lab
-contracts the exposed implication and universal redexes in an untrusted pass and then invokes the
-same independent checker with the original target. This gives the convenience of a theorem
-environment without adding a trusted `Theorem(name)` constructor to the kernel. `undo` restores
+The partial certificate visibly contains self-contained Cuts while the proof is open. At QED,
+Peano Lab removes only engine-administrative local schedulers and then invokes the independent
+checker with the original target. This gives the convenience of a theorem environment without
+adding a trusted `Theorem(name)` constructor or external declaration table. `undo` restores
 the exact state before an import, and an unknown theorem or colliding alias changes nothing.
 Explicit import and live-certificate node/depth budgets turn excessive reuse into a transactional
 resource limit rather than a host recursion failure.

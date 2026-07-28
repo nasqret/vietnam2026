@@ -27,7 +27,7 @@ forall a b c. a + b = a + c -> b = c
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **170 nodes**, depth **24**.
+- Certificate: **143 nodes**, depth **18**.
 - Authored script length: **13 commands**.
 - Runtime card: `pa lib add_left_cancel`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

@@ -25,7 +25,7 @@ forall a b n m. a + n = m -> b + m = n -> n = m
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **135 nodes**, depth **29**.
+- Certificate: **200 nodes**, depth **28**.
 - Authored script length: **19 commands**.
 - Runtime card: `pa lib antisymm_from_witnesses`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

@@ -24,7 +24,7 @@ forall g h a b. (((exists x. a = g * x) /\ (exists y. b = g * y)) /\ forall c. (
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **600 nodes**, depth **51**.
+- Certificate: **680 nodes**, depth **34**.
 - Authored script length: **25 commands**.
 - Runtime card: `pa lib is_gcd_unique`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

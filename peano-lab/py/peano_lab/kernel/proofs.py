@@ -52,6 +52,22 @@ class ImpElim(Proof):
 
 
 @dataclass(frozen=True, slots=True)
+class Cut(Proof):
+    """A checked, self-contained proof-sharing node.
+
+    ``lemma`` proves ``proposition`` in the surrounding context.  ``body``
+    proves ``conclusion`` with that proposition added as its newest
+    hypothesis.  The node is the shared form of the ordinary derivation
+    ``ImpElim(ImpIntro(body), lemma)``.
+    """
+
+    proposition: Formula
+    conclusion: Formula
+    lemma: Proof
+    body: Proof
+
+
+@dataclass(frozen=True, slots=True)
 class AndIntro(Proof):
     left: Proof
     right: Proof
@@ -224,6 +240,7 @@ __all__ = [
     "Hyp",
     "ImpIntro",
     "ImpElim",
+    "Cut",
     "AndIntro",
     "AndElimL",
     "AndElimR",

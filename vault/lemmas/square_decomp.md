@@ -28,7 +28,7 @@ forall a z q r. z = a * q + r -> z * z = a * (q * z + r * q) + r * r
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **1485 nodes**, depth **54**.
+- Certificate: **847 nodes**, depth **29**.
 - Authored script length: **45 commands**.
 - Runtime card: `pa lib square_decomp`.
 - Book route: *Divisibility and congruence* in the foundational arithmetic part.

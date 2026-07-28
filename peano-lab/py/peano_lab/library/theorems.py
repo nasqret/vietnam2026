@@ -1,16 +1,18 @@
 """The checked Peano Lab theorem ladder.
 
 Library entries are data: a closed statement, earlier dependencies, and a
-tactic script.  Replaying an entry first proves the dependencies as
-ordinary implication hypotheses.  The untrusted library layer then performs
-the corresponding proof-term substitutions (cut elimination) and submits the
-resulting *closed* certificate to the independent kernel against the entry's
-original statement.
+tactic script. Replaying an entry first proves the dependencies as ordinary
+implication hypotheses. The untrusted library layer then packages each
+already checked dependency in a self-contained :class:`Cut` node. The kernel
+checks the dependency branch and the body branch in one invocation against
+the entry's original closed statement.
 
-This indirection is deliberate.  The binding kernel has no trusted theorem
-environment and no proof-ascription constructor; adding either merely for
-library reuse would enlarge the soundness boundary.  A bug in replay or cut
-elimination can therefore cause only rejection, never a false theorem.
+The kernel still has no theorem names, hashes, or declaration environment.
+`Cut(A, B, lemma, body)` is the annotated shared form of the ordinary
+derivation `(lambda h. body) lemma`. This establishes logical admissibility;
+the untrusted reducer is not an admission authority and cannot mechanically
+round-trip every introduction-headed certificate. A replay or packaging bug
+can therefore cause only rejection, never a false theorem.
 """
 
 from __future__ import annotations
@@ -36,6 +38,7 @@ from ..kernel.proofs import (
     CongAdd,
     CongMul,
     CongS,
+    Cut,
     DNE,
     EqRefl,
     EqSubst,
@@ -96,13 +99,15 @@ def _replace_removed_hypothesis(
     replacement: Proof | tuple[Proof, ...],
     depth: int = 0,
 ) -> Proof:
-    """Remove dependency slots and inline closed proofs simultaneously.
+    """Legacy diagnostic: remove dependency slots and inline closed proofs.
 
     ``depth`` counts newer proposition hypotheses introduced below the slot.
     Replacements are in declaration order, while the newest dependency is
     de Bruijn hypothesis zero.  Doing this in one traversal is essential:
     sequential passes would revisit hypotheses internal to an already-inserted
-    certificate.  Every replacement is closed and already kernel-checked.
+    certificate. Every replacement is closed and already kernel-checked.
+    Current replay does not call this compatibility helper; it packages
+    dependencies in self-contained Cuts instead.
     """
 
     replacements = replacement if type(replacement) is tuple else (replacement,)
@@ -120,6 +125,13 @@ def _replace_removed_hypothesis(
         return ImpElim(
             _replace_removed_hypothesis(proof.function, replacements, depth),
             _replace_removed_hypothesis(proof.argument, replacements, depth),
+        )
+    if type(proof) is Cut:
+        return Cut(
+            proof.proposition,
+            proof.conclusion,
+            _replace_removed_hypothesis(proof.lemma, replacements, depth),
+            _replace_removed_hypothesis(proof.body, replacements, depth + 1),
         )
     if type(proof) is AndIntro:
         return AndIntro(
@@ -192,7 +204,10 @@ def _replace_removed_hypothesis(
         )
     if type(proof) in (EqRefl, DNE, Axiom):
         return proof
-    raise LibraryError(f"unsupported proof node during cut elimination: {type(proof).__name__}")
+    raise LibraryError(
+        "unsupported proof node during legacy dependency substitution: "
+        f"{type(proof).__name__}"
+    )
 
 
 def _normalise_forall_cuts(proof: Proof) -> Proof:
@@ -205,7 +220,7 @@ def _normalise_forall_cuts(proof: Proof) -> Proof:
 
 
 def normalise_cuts(proof: Proof) -> Proof:
-    """Contract theorem-reuse cuts in an untrusted proof certificate.
+    """Contract beta/admin redexes while preserving trusted sharing nodes.
 
     The implementation is shared from :mod:`peano_lab.engine.proof_reduction`.
     This compatibility facade preserves ``LibraryError`` for existing library
@@ -3492,10 +3507,10 @@ def replay(name: str) -> CheckedTheorem:
         state = apply_tactic(state, tactic, args)
     certificate = checked_final(state, target)
 
-    # Peel every generated dependency introduction, then substitute all
-    # dependency slots in one pass.  Inserted certificates are consequently
-    # opaque to the traversal and their own local hypotheses cannot be
-    # mistaken for another ambient dependency.
+    # Peel every generated dependency introduction. Then package the body in
+    # nested, self-contained Cut nodes from the newest dependency outward.
+    # Each dependency certificate is checked once at its Cut node; body uses
+    # remain ordinary hypotheses and are never capture-sensitive substitutions.
     closed = certificate
     dependency_proofs = tuple(replay(item).certificate for item in spec.dependencies)
     for dependency in spec.dependencies:
@@ -3504,12 +3519,16 @@ def replay(name: str) -> CheckedTheorem:
                 f"replay for {spec.name!r} did not expose dependency {dependency!r}"
             )
         closed = closed.body
-    if dependency_proofs:
-        closed = normalise_cuts(
-            _replace_removed_hypothesis(closed, dependency_proofs)
-        )
-
     formula = _closed_formula(spec.statement)
+    dependency_formulas = tuple(
+        _closed_formula(_specs_by_name()[item].statement)
+        for item in spec.dependencies
+    )
+    for dependency_formula, dependency_proof in reversed(
+        tuple(zip(dependency_formulas, dependency_proofs, strict=True))
+    ):
+        closed = Cut(dependency_formula, formula, dependency_proof, closed)
+
     if not check((), closed, formula):
         raise LibraryError(
             f"the independent kernel rejected library theorem {spec.name!r}"

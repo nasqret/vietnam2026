@@ -24,7 +24,7 @@ forall n. n * n * n * n = (n * n) * (n * n)
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **104 nodes**, depth **31**.
+- Certificate: **122 nodes**, depth **18**.
 - Authored script length: **2 commands**.
 - Runtime card: `pa lib fourth_power_regroup`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

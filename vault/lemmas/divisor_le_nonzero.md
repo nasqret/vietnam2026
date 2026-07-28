@@ -24,7 +24,7 @@ forall d n. ~(n = 0) -> (exists q. n = d * q) -> exists k. k + d = n
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **62 nodes**, depth **18**.
+- Certificate: **64 nodes**, depth **17**.
 - Authored script length: **31 commands**.
 - Runtime card: `pa lib divisor_le_nonzero`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

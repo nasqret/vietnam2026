@@ -2,12 +2,14 @@
 
 from __future__ import annotations
 
+from dataclasses import fields
 import hashlib
 import json
 from pathlib import Path
 
 import driver
 
+from peano_lab.engine.proof_reduction import erase_trusted_cuts, normalise_cuts
 from peano_lab.engine.state import proof_metrics
 from peano_lab.engine.tactics import (
     MAX_LIVE_PROOF_DEPTH,
@@ -18,6 +20,7 @@ from peano_lab.engine.tactics import (
 )
 from peano_lab.kernel.checker import check
 from peano_lab.kernel.formulas import parse_formula
+from peano_lab.kernel.proofs import Cut, Proof
 from peano_lab.library.theorems import (
     MOD5_LIBRARY_CATALOG_SHA256,
     MOD5_LIBRARY_SOURCE_COMMIT,
@@ -38,16 +41,30 @@ def _certificate_sha256(certificate: object) -> str:
     return hashlib.sha256(repr(certificate).encode("utf-8")).hexdigest()
 
 
-def _cold_replay_rows() -> tuple[tuple[str, int, int, str], ...]:
+def _contains_cut(proof: Proof) -> bool:
+    if type(proof) is Cut:
+        return True
+    return any(
+        isinstance((child := getattr(proof, item.name)), Proof)
+        and _contains_cut(child)
+        for item in fields(proof)
+    )
+
+
+def _cold_replay_rows(*, legacy_expanded: bool) -> tuple[tuple[str, int, int, str], ...]:
     replay.cache_clear()
     _specs_by_name.cache_clear()
     rows = []
     for spec in MOD5_THEOREMS:
         theorem = replay(spec.name)
-        nodes, depth = proof_metrics(theorem.certificate)
-        assert check((), theorem.certificate, theorem.formula)
+        certificate = theorem.certificate
+        assert check((), certificate, theorem.formula)
+        if legacy_expanded and _contains_cut(certificate):
+            certificate = normalise_cuts(erase_trusted_cuts(certificate))
+            assert check((), certificate, theorem.formula)
+        nodes, depth = proof_metrics(certificate)
         rows.append(
-            (spec.name, nodes, depth, _certificate_sha256(theorem.certificate))
+            (spec.name, nodes, depth, _certificate_sha256(certificate))
         )
     return tuple(rows)
 
@@ -107,14 +124,24 @@ def test_public_mod5_catalog_matches_its_source_validation_artifact() -> None:
         )
         for row in report["lemmas"]
     )
-    first = _cold_replay_rows()
-    second = _cold_replay_rows()
+    # Preserve the immutable upstream evidence for the former fully expanded
+    # certificates. Dependency-free entries were never normalized by legacy
+    # replay, so only certificates that actually contain sharing are expanded.
+    first = _cold_replay_rows(legacy_expanded=True)
+    second = _cold_replay_rows(legacy_expanded=True)
 
     assert first == expected
     assert second == first
     assert sum(row[1] for row in first) == report["total_proof_nodes"] == 48_121
     assert max(row[1] for row in first) == report["max_proof_nodes"] == 21_515
     assert max(row[2] for row in first) == report["max_proof_depth"] == 66
+
+    shared_first = _cold_replay_rows(legacy_expanded=False)
+    shared_second = _cold_replay_rows(legacy_expanded=False)
+    assert shared_second == shared_first
+    assert sum(row[1] for row in shared_first) == 18_120
+    assert max(row[1] for row in shared_first) == 2_675
+    assert max(row[2] for row in shared_first) == 43
 
 
 def test_capstone_can_be_used_to_close_the_original_problem() -> None:
@@ -134,13 +161,13 @@ def test_capstone_can_be_used_to_close_the_original_problem() -> None:
 
     owner = get_owner(session.webstate)
     assert owner is not None and not owner.state.goals
-    assert proof_metrics(owner.state.partial) == (21_523, 69)
+    assert proof_metrics(owner.state.partial) == (2_682, 41)
     certificate = checked_surface_final(
         owner.state,
         owner.original_target,
         classical=owner.classical,
     )
-    assert proof_metrics(certificate) == (21_515, 66)
+    assert proof_metrics(certificate) == (2_670, 41)
     assert check((), certificate, owner.original_target)
 
     mutation = parse_formula(
@@ -151,17 +178,26 @@ def test_capstone_can_be_used_to_close_the_original_problem() -> None:
     assert "QED." in session.run("qed")
 
 
-def test_two_capstone_imports_still_fail_at_the_partial_certificate_limit() -> None:
+def test_repeated_capstone_imports_reach_the_same_transactional_partial_limit() -> None:
     session = driver.LabSession()
     session.run("pa prove 0 = 0")
-    first = session.run_result("use mod5_fourth_power_one")
-    assert first["failed"] is False
+    failure = None
+    accepted = 0
+    before = None
+    for index in range(32):
+        owner = get_owner(session.webstate)
+        assert owner is not None
+        before = owner.state
+        result = session.run_result(
+            f"use mod5_fourth_power_one as capstone{index}"
+        )
+        if result["failed"]:
+            failure = result
+            break
+        accepted += 1
+
+    assert accepted > 2
+    assert failure is not None
+    assert "live-certificate limit" in str(failure["out"])
     owner = get_owner(session.webstate)
-    assert owner is not None
-    before = owner.state
-
-    second = session.run_result("use mod5_fourth_power_one as capstone2")
-
-    assert second["failed"] is True
-    assert "live-certificate limit" in str(second["out"])
-    assert get_owner(session.webstate).state is before
+    assert owner is not None and owner.state is before

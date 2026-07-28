@@ -25,7 +25,7 @@ forall a. exists q. a = a * q
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **33 nodes**, depth **16**.
+- Certificate: **39 nodes**, depth **10**.
 - Authored script length: **4 commands**.
 - Runtime card: `pa lib multiple_refl`.
 - Book route: *Divisibility and congruence* in the foundational arithmetic part.

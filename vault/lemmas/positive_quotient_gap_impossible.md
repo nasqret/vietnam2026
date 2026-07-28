@@ -28,7 +28,7 @@ forall m q q2 r s k. (exists z. z + S r = m) -> S k + q = q2 -> ~(m * q + r = m 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **464 nodes**, depth **41**.
+- Certificate: **517 nodes**, depth **52**.
 - Authored script length: **34 commands**.
 - Runtime card: `pa lib positive_quotient_gap_impossible`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

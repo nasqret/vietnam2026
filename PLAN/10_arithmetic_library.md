@@ -13,8 +13,9 @@ does not determine the architecture.
 
 ## Non-negotiable contracts
 
-- A theorem is `checked` only after deterministic script replay, dependency-cut
-  elimination, and independent empty-context kernel acceptance.
+- A theorem is `checked` only after deterministic script replay, packaging of
+  complete dependency proofs in self-contained Cuts, and independent
+  empty-context kernel acceptance. Names and hashes never confer authority.
 - Divisibility, congruence, gcd, coprimality, and primality begin as conservative
   formula expansions or relations; no new trusted predicate is introduced for
   convenience.
@@ -56,8 +57,8 @@ does not determine the architecture.
       addition and squaring.
 - [x] Replay and independently check all 125 unique library entries and enforce
       the live 32,768-node/depth-128 import bound.
-- [x] Generate a deterministic JSON snapshot, exact metrics, certificate hashes,
-      and Mermaid dependency graph.
+- [x] Generate a deterministic versioned JSON snapshot, exact metrics,
+      certificate hashes, structural Cut counts, and Mermaid dependency graph.
 
 ## M20C — Conservative notation and modular congruence
 
@@ -83,6 +84,9 @@ does not determine the architecture.
 - [x] Prove the relational gcd projection, symmetry, constructor, and uniqueness
       API, including mutual-divisibility antisymmetry.
 - [x] Prove both directions of relational gcd Euclidean-step invariance.
+- [x] Add and audit the conservative self-contained `Cut(A,B,lemma,body)`
+      proof-sharing rule without changing the PA term/formula language, axioms,
+      induction schema, or intuitionistic default.
 - [ ] Prove relational gcd existence.
 - [ ] Prove subtraction-free signed-pair Bézout and Gauss cancellation.
 - [x] Check `prime_two` as a completely expanded first-order formula, without
@@ -130,14 +134,20 @@ does not determine the architecture.
   modular capstones.
 - Research catalog: 138 nodes — 23 `checked_existing`, 102 `checked_m20`, nine
   `planned_expressible`, and four `blocked_by_language`.
-- Largest closed certificate: 21,515 nodes, depth 66.
-- Trusted-kernel changes: none.
+- Shared-certificate metrics: 31,479 total structural proof nodes and 741 Cuts;
+  the largest by nodes is `mod5_fourth_power_one` at 2,675/depth 38, while the
+  ladder's maximum depth is 57. The immutable upstream report retains the
+  former fully expanded capstone metric of 21,515/depth 66.
+- Trusted-kernel change: one self-contained Cut constructor and checker rule.
+  The checker is 247 lines (formerly 234). The object language and logical
+  strength are unchanged; the untrusted erasure utility is diagnostic and is
+  not a complete or authoritative admission route.
 - Full FTA companion status: checked in Lean for every nonzero natural, with
   finite-list existence and permutation uniqueness and no `sorryAx`.
 - Full Peano FTA status: absent from `pa lib` pending closed certificates for
   the selected β-sequence/product encoding and its gcd-existence/prime/Euclid
   dependency spine; no admitted theorem or hidden primitive.
-- Current validation: 1,054 Peano tests on Python 3.10; 35-source
+- Current validation: 1,081 Peano tests on Python 3.10; 36-source
   warning-as-error Jupyter Book; 199 deep links and 45 sessions/264 replayed
-  commands; 203-note/1,475-link Obsidian graph; exact
+  commands; 204-note/1,511-link Obsidian graph; exact
   snapshot, catalog, corpus, application-manifest, and Lean FTA audits.

@@ -142,9 +142,12 @@ make the proof small. The proposed admission route is:
 7. finite-product Euclid, prime matching, cancellation, and extensional
    uniqueness.
 
-The current cut-eliminated proof-tree representation may exceed the live
-32,768-node/depth-128 import budget. Any future proof-sharing mechanism needs
-its own trust review; it must not be disguised as part of this notation.
+The reviewed self-contained `Cut` rule now supplies lexical proof sharing while
+keeping every dependency proof inside the checked certificate. This removes
+the former fully expanded proof-tree bottleneck, but it does not establish that
+the much larger β/CRT/product spine will fit the live 32,768-node/depth-128
+import budget. The proof-sharing trust review is recorded separately and must
+not be disguised as part of this notation.
 
 ## Independently checked companion
 

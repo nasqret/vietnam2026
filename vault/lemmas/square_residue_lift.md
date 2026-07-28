@@ -28,7 +28,7 @@ forall a z q r c s. z = a * q + r -> r * r = a * c + s -> z * z = a * ((q * z + 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **1600 nodes**, depth **58**.
+- Certificate: **1008 nodes**, depth **30**.
 - Authored script length: **13 commands**.
 - Runtime card: `pa lib square_residue_lift`.
 - Book route: *Divisibility and congruence* in the foundational arithmetic part.

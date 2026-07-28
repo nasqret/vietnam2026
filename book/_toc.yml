@@ -36,6 +36,7 @@ parts:
     chapters:
       - file: arithmetic-library/index
       - file: arithmetic-library/language-and-trust
+      - file: arithmetic-library/proof-sharing
       - file: arithmetic-library/dependency-ladder
       - file: arithmetic-library/divisibility-and-congruence
       - file: arithmetic-library/primes-and-factorization

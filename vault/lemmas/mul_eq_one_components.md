@@ -27,7 +27,7 @@ forall a b. a * b = 1 -> a = 1 /\ b = 1
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **191 nodes**, depth **29**.
+- Certificate: **176 nodes**, depth **27**.
 - Authored script length: **39 commands**.
 - Runtime card: `pa lib mul_eq_one_components`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

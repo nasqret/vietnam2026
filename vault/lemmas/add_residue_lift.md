@@ -26,7 +26,7 @@ forall a x u r q t c s. x = a * q + t -> r + t = a * c + s -> (a * u + r) + x = 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **409 nodes**, depth **42**.
+- Certificate: **259 nodes**, depth **28**.
 - Authored script length: **50 commands**.
 - Runtime card: `pa lib add_residue_lift`.
 - Book route: *Divisibility and congruence* in the foundational arithmetic part.

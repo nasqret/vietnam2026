@@ -29,7 +29,7 @@ forall a b. (exists x. b = a * x) -> (exists y. a = b * y) -> a = b
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **578 nodes**, depth **49**.
+- Certificate: **646 nodes**, depth **33**.
 - Authored script length: **50 commands**.
 - Runtime card: `pa lib multiple_antisymm`.
 - Book route: *Divisibility and congruence* in the foundational arithmetic part.

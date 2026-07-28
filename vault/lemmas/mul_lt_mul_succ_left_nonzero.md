@@ -24,7 +24,7 @@ forall c a. ~(c = 0) -> exists r. r + S (c * a) = c * S a
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **94 nodes**, depth **26**.
+- Certificate: **104 nodes**, depth **14**.
 - Authored script length: **19 commands**.
 - Runtime card: `pa lib mul_lt_mul_succ_left_nonzero`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

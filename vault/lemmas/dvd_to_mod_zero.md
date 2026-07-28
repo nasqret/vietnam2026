@@ -24,7 +24,7 @@ forall m a. (exists k. a = m * k) -> exists u v. a + m * u = 0 + m * v
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **39 nodes**, depth **20**.
+- Certificate: **41 nodes**, depth **14**.
 - Authored script length: **8 commands**.
 - Runtime card: `pa lib dvd_to_mod_zero`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

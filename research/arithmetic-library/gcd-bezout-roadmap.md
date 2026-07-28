@@ -31,8 +31,9 @@ The current checked layer contains:
 - `is_gcd_zero_right`, `is_gcd_euclid_forward`, and
   `is_gcd_euclid_backward`.
 
-The largest new certificate is `is_gcd_unique` at 600 proof nodes and depth
-51. Every entry replays constructively and checks from the empty context.
+In the current shared representation, the largest certificate in this layer is
+`is_gcd_euclid_forward` at 741 proof nodes/depth 38. Every entry replays
+constructively and checks from the empty context.
 
 ## Checked Euclidean invariance
 
@@ -41,14 +42,14 @@ for the subtraction-free Euclidean ladder. Their authored scripts, catalog
 records, generated artifacts, and regression tests are admitted together as
 ordinary native library entries.
 
-| Checked theorem | Role | Expanded nodes |
+| Checked theorem | Role | Shared nodes/depth |
 |---|---|---:|
-| `is_gcd_zero_right` | base case `IsGCD(a,a,0)` | 45 |
-| `factor_difference` | from `c*u = c*v + r`, construct `c | r` | 250 |
-| `divides_remainder` | common divisors of `a,b` divide `r` when `a=b*q+r` | 378 |
-| `divides_linear_step` | divisors of `b,r` divide `b*q+r` | 194 |
-| `is_gcd_euclid_forward` | `IsGCD(d,b,r) -> IsGCD(d,a,b)` | 586 |
-| `is_gcd_euclid_backward` | `IsGCD(d,a,b) -> IsGCD(d,b,r)` | 586 |
+| `is_gcd_zero_right` | base case `IsGCD(a,a,0)` | 65 / 11 |
+| `factor_difference` | from `c*u = c*v + r`, construct `c | r` | 265 / 26 |
+| `divides_remainder` | common divisors of `a,b` divide `r` when `a=b*q+r` | 427 / 29 |
+| `divides_linear_step` | divisors of `b,r` divide `b*q+r` | 224 / 19 |
+| `is_gcd_euclid_forward` | `IsGCD(d,b,r) -> IsGCD(d,a,b)` | 741 / 38 |
+| `is_gcd_euclid_backward` | `IsGCD(d,a,b) -> IsGCD(d,b,r)` | 741 / 37 |
 
 The key subtraction-free lemma is
 
@@ -89,19 +90,21 @@ The public `gcd_exists_relational` theorem is then the instance `B=b`, using
 reflexivity of `<=`.
 
 This bounded script closes against its dependency-curried target in 90 nodes.
-The current dependency inliner, however, produces a 1,024-node substituted
-tree (971 after reduction) which the independent kernel correctly rejects.
-This is an implementation defect in capture-sensitive dependency substitution
-around induction—not a mathematical, expressibility, or resource-limit
-failure. Consequently no gcd-existence theorem is admitted yet.
+The former dependency inliner produced a 1,024-node substituted tree (971
+after reduction) which the independent kernel correctly rejected because of a
+capture-sensitive induction defect. That failure motivated the sharing gate.
+With nested self-contained Cuts, the same bounded theorem now checks from the
+empty context at 1,232 nodes/depth 44; its general wrapper checks at
+1,268/depth 46. They remain prototypes until admitted with the synchronized
+catalog, artifacts, mutation tests, and documentation.
 
-Two sound remedies are under review:
-
-- repair and exhaustively regression-test the existing substitution reducer;
-  or
-- add the self-contained derived rule
-  `Cut(A,B,lemma,body)`, whose two branches are both checked by the kernel and
-  which contains no theorem names, hashes, or external authority.
+The reviewed remedy is now the self-contained derived rule
+`Cut(A,B,lemma,body)`. The kernel checks its lemma once and its body under the
+new hypothesis; the node contains no theorem names, hashes, or external
+authority. This enlarges the trusted checker without changing the object
+language or logic. See [the proof-sharing design](proof-sharing-design.md).
+The bounded gcd theorem still requires fresh replay and admission; landing the
+composition mechanism is not itself a proof of gcd existence.
 
 ## Balanced-natural Bézout
 
@@ -137,15 +140,15 @@ a * yp + b * (xp + q * yn)
 ```
 
 The maximality bridge is already prototype-checked: if `c` divides both `a`
-and `b`, any balanced combination equal to `d` gives `c | d`. Its expanded
-certificate has 918 nodes. Thus the most efficient recursive theorem should
+and `b`, any balanced combination equal to `d` gives `c | d`. Its current
+shared certificate has 626 nodes. Thus the most efficient recursive theorem should
 construct divisibility witnesses and balanced coefficients simultaneously;
 the bridge then supplies the greatest-common-divisor clause.
 
 ## Admission gates
 
 1. **Complete:** admit and mutation-test the Euclidean invariance ladder.
-2. Land reviewed proof sharing or a fully verified reducer repair.
+2. **Complete:** land and audit self-contained proof sharing.
 3. Admit bounded gcd existence and its public wrapper.
 4. Prove the coefficient-update identity with an ordinary checked semiring
    certificate; library replay cannot treat `ring` as an oracle.

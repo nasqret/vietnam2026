@@ -24,7 +24,7 @@ forall n. exists q. n = 1 * q
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **30 nodes**, depth **13**.
+- Certificate: **32 nodes**, depth **10**.
 - Authored script length: **4 commands**.
 - Runtime card: `pa lib one_multiple`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

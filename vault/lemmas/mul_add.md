@@ -34,7 +34,7 @@ forall n m k. n * (m + k) = n * m + n * k
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **71 nodes**, depth **22**.
+- Certificate: **77 nodes**, depth **16**.
 - Authored script length: **5 commands**.
 - Runtime card: `pa lib mul_add`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

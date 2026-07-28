@@ -86,6 +86,36 @@ $$
 This is less convenient than integer notation, but it remains honest about
 the underlying language.
 
+## Proof sharing is not a new arithmetic language
+
+The object language and the proof-certificate language are different layers.
+Peano Lab now has a reviewed certificate node
+
+```text
+Cut(A, B, lemma, body)
+```
+
+with the rule
+
+$$
+\frac{\Gamma\vdash\mathit{lemma}:A\qquad
+      A,\Gamma\vdash\mathit{body}:B}
+     {\Gamma\vdash\operatorname{Cut}(A,B,\mathit{lemma},\mathit{body}):B}.
+$$
+
+The checker verifies the embedded lemma once, then checks the body with its
+formula as the newest hypothesis. This enlarges the trusted checker and must
+be audited as such. It does not add a natural-number operation, predicate,
+axiom, theorem constant, or classical principle. In particular, it cannot
+make gcd, primality, β decoding, or factorization expressible unless the
+corresponding first-order formula was already expressible.
+
+The node is self-contained: it stores both formulas and both proof branches.
+It stores no theorem name, content hash, declaration key, or external lookup.
+Names and hashes remain useful provenance data, but the checker never accepts
+them as evidence. See {doc}`Self-contained proof sharing <proof-sharing>` for
+the full trust and erasure contract.
+
 ## Where conservative expansion stops
 
 The Fundamental Theorem of Arithmetic quantifies over an arbitrary finite
@@ -94,8 +124,8 @@ multiplicity. Today's Peano surface has no primitive finite-sequence,
 multiset, finite-map, generic power, or recursive factorization relation.
 
 The representation review selected a Gödel-β encoding because it elaborates
-entirely to existing PA formulas and therefore leaves the trusted kernel
-unchanged. A factor sequence uses natural codes `(b,c,l)`; a second code stores
+entirely to existing PA formulas and therefore needs no further object-language
+or kernel rule. A factor sequence uses natural codes `(b,c,l)`; a second code stores
 prefix products; bounded formulas express decoded values, primality, and
 sortedness. This is intentionally an untrusted authoring facade rather than a
 new kernel atom.
@@ -123,7 +153,7 @@ For a checked entry the path is always
 $$
 \text{statement + dependencies + script}
 \longrightarrow \text{replayed proof}
-\longrightarrow \text{cut elimination}
+\longrightarrow \text{self-contained Cut packaging}
 \longrightarrow \operatorname{check}(\varnothing,p,T).
 $$
 
@@ -131,3 +161,14 @@ Notation expansion, tactic execution, catalog generation, dependency graphs,
 and hash generation are all untrusted. Any of them may cause a true proof to
 be rejected or an artifact to become stale. None may make the independent
 kernel accept a false closed formula.
+
+There is an untrusted `erase_trusted_cuts` compatibility utility implementing
+the formal expansion `(λh. body) lemma`. It deliberately does not normalize
+the implication redex it creates. Erasure is not an alternative source of
+authority and is operationally incomplete: the bidirectional checker cannot
+synthesize every introduction-shaped erased argument, while the existing
+capture-sensitive reducer does not reliably normalize every large
+induction-bearing expansion. Only a separate successful kernel check licenses
+an erased result. Ordinary replay instead checks the self-contained Cut tree
+directly. Engine-only `LocalHave` and `LocalSuffices` remain a different
+mechanism and are still compiled away before QED.

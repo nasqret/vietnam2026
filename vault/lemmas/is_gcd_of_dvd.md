@@ -24,7 +24,7 @@ forall a b. (exists y. b = a * y) -> (((exists x. a = a * x) /\ (exists y. b = a
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **42 nodes**, depth **20**.
+- Certificate: **55 nodes**, depth **11**.
 - Authored script length: **12 commands**.
 - Runtime card: `pa lib is_gcd_of_dvd`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

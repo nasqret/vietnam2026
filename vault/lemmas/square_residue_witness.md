@@ -24,7 +24,7 @@ forall a z q r c s. z = a * q + r -> r * r = a * c + s -> exists w. z * z = a * 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **1601 nodes**, depth **59**.
+- Certificate: **1029 nodes**, depth **31**.
 - Authored script length: **12 commands**.
 - Runtime card: `pa lib square_residue_witness`.
 - Book route: *Divisibility and congruence* in the foundational arithmetic part.

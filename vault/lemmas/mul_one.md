@@ -26,7 +26,7 @@ forall n. n * 1 = n
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **31 nodes**, depth **14**.
+- Certificate: **33 nodes**, depth **9**.
 - Authored script length: **2 commands**.
 - Runtime card: `pa lib mul_one`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

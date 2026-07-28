@@ -26,7 +26,7 @@ forall a b n. (b + a) + n = n -> a + n = n
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **83 nodes**, depth **19**.
+- Certificate: **120 nodes**, depth **22**.
 - Authored script length: **17 commands**.
 - Runtime card: `pa lib drop_add_prefix_from_fixed`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

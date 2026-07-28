@@ -24,7 +24,7 @@ forall a b. (((exists x. a = 1 * x) /\ (exists y. b = 1 * y)) /\ forall d. (exis
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **209 nodes**, depth **38**.
+- Certificate: **205 nodes**, depth **29**.
 - Authored script length: **15 commands**.
 - Runtime card: `pa lib is_gcd_one_to_coprime`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

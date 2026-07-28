@@ -31,6 +31,7 @@ from ..kernel.proofs import (
     CongAdd,
     CongMul,
     CongS,
+    Cut,
     DNE,
     EqRefl,
     EqSubst,
@@ -151,6 +152,13 @@ def render_certificate(
             return (
                 f"apply({go(value.function, depth + 1, local_names)}, "
                 f"{go(value.argument, depth + 1, local_names)})"
+            )
+        if type(value) is Cut:
+            return (
+                f"cut[{formula(value.proposition, local_names)} ⊢ "
+                f"{formula(value.conclusion, local_names)}]("
+                f"{go(value.lemma, depth + 1, local_names)}, "
+                f"λh. {go(value.body, depth + 1, local_names)})"
             )
         if type(value) is LocalHave:
             return (

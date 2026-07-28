@@ -242,10 +242,12 @@ $$
 
 All 90 entries in the current post-baseline general foundational layer replay to
 closed kernel-accepted certificates and fit the live `use` limits of 32,768
-nodes and depth 128. The quotient-remainder uniqueness certificate uses 1,442
-nodes and depth 47. The reconciled 125-entry snapshot still reaches its maximum
-at the older modular capstone: 21,515 nodes and depth 66. These numbers are
-build artifacts, not new soundness assumptions.
+nodes and depth 128. Under self-contained dependency sharing,
+`division_remainder_unique` uses 854 structural nodes and reaches the runtime's
+maximum depth of 57. The reconciled 125-entry snapshot reaches its node maximum
+at the modular capstone: 2,675 nodes and depth 38. These numbers are build
+artifacts, not new soundness assumptions; the immutable upstream report retains
+the older fully expanded capstone metric of 21,515 nodes/depth 66.
 
 ## The division algorithm is now native
 
@@ -517,10 +519,11 @@ n\not\equiv0\pmod5\Longrightarrow n^4\equiv1\pmod5.
 $$
 
 Every rung in this route is now admitted and independently checked, culminating
-in `mod5_fourth_power_one`. The full expanded transcript is omitted here
-because its closed certificate has 21,515 nodes; the short `use` transcript in
-{doc}`Using and extending the library <using-the-library>` imports that same
-certificate and does not bypass kernel checking.
+in `mod5_fourth_power_one`. Its current closed certificate uses 2,675
+structural nodes because dependency proofs are embedded once per lexical Cut
+rather than copied at every use. The short transcript in {doc}`Using and
+extending the library <using-the-library>` still imports the complete
+self-contained evidence and does not bypass kernel checking.
 
 ## Admission checklist for the next congruence lemmas
 
@@ -531,8 +534,10 @@ Before a planned modular theorem becomes part of the library:
    congruence.
 3. List only earlier checked dependencies.
 4. Replay the authored primitive tactic script.
-5. Eliminate dependency cuts outside the trusted kernel.
-6. Check the resulting closed certificate against the original formula.
+5. Package each checked dependency in a self-contained Cut with no external
+   name or hash authority.
+6. Check the resulting closed certificate from the empty context against the
+   original formula.
 7. Record node count, depth, script hash, statement hash, and dependency edges.
 8. Verify that `use` accepts the certificate under the live resource limits.
 9. Add positive, symmetric, zero-modulus, and deliberately malformed tests.

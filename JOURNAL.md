@@ -1185,3 +1185,44 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   links plus 45 session blocks containing 264 commands replay successfully.
   Snapshot, catalog, corpus, vault, and application-manifest drift checks are
   all green.
+
+## 2026-07-28 — Self-contained proof sharing removes the gcd composition gate
+
+- Added the reviewed certificate constructor `Cut(A,B,lemma,body)`. The
+  independent checker verifies `lemma : A` in the ambient context and verifies
+  `body : B` with `A` as hypothesis zero, using the same intuitionistic or
+  explicitly classical mode in both branches. The node contains both formulas
+  and both proof branches; it contains no theorem name, hash, declaration
+  environment, or callback.
+- This is an explicit enlargement of the trusted proof grammar and checker,
+  from 234 to 247 lines. It does not add a term former, predicate, axiom,
+  induction principle, or classical rule. Exact-constructor, malformed-node,
+  annotation, branch-mutation, context-order, binder-capture, metavariable,
+  focused-goal, and transactional-limit tests cover the new boundary.
+- Library replay now wraps dependency-curried bodies in nested Cuts, and live
+  `use` embeds the rechecked closed certificate in a Cut around the focused
+  goal. Engine-only `LocalHave` and `LocalSuffices` still compile away. The
+  untrusted `erase_trusted_cuts` diagnostic expands the mathematical
+  `(lambda h. body) lemma` form, but is deliberately non-authoritative and
+  cannot operationally round-trip every introduction-headed or
+  induction-bearing certificate through the current bidirectional
+  checker/reducer.
+- All 125 theorems replay deterministically and check from the empty context.
+  The shared snapshot has 31,479 structural proof nodes and 741 Cuts across 86
+  entries. `mod5_fourth_power_one` is largest by nodes at 2,675/depth 38;
+  `division_remainder_unique` supplies the ladder's maximum depth of 57. The
+  immutable upstream modulo-five report remains unchanged at the former fully
+  expanded 21,515-node/depth-66 capstone.
+- The previously rejected bounded gcd-existence prototype now passes at 1,232
+  nodes/depth 44, and its general `forall a b` wrapper passes at 1,268/depth
+  46. Neither is admitted in this trust-boundary commit; they are the next
+  separately reviewed arithmetic milestone.
+- Acceptance is green at 1,081 Peano tests, 360 Lambda tests plus 36 subtests,
+  a warning-as-error 36-source Jupyter Book, 199 deep links and 45 sessions/264
+  replayed commands, and a 204-note/1,511-link Obsidian graph. Snapshot-v2,
+  the 138-node research catalog, the refreshed 13,344-transition/1,692-session
+  corpus, the 2,446-transition/250-session all-ladder smoke with 125 checked
+  authored QEDs, the Lean FTA audit, and application manifest
+  `2026-07-28m`/`a-396c35f357b4` are current. The clean clone lacks the large
+  untracked vendor mirror, so a full static stage assembly was not claimed.
+  Nothing was deployed.

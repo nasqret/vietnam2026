@@ -22,6 +22,7 @@ uniqueness; it is not counted as a Peano theorem.
 - [[theorem-ladder]]
 - [[trusted-kernel]]
 - [[proof-certificate]]
+- [[self-contained-proof-sharing]]
 
 ## Mathematical concepts
 

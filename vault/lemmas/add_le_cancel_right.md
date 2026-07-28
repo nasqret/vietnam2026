@@ -25,7 +25,7 @@ forall a b c. (exists k. k + (a + c) = b + c) -> exists r. r + a = b
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **70 nodes**, depth **19**.
+- Certificate: **103 nodes**, depth **20**.
 - Authored script length: **13 commands**.
 - Runtime card: `pa lib add_le_cancel_right`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

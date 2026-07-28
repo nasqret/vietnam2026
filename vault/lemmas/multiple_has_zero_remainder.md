@@ -24,7 +24,7 @@ forall m n. ~(m = 0) -> (exists q. n = m * q) -> exists q r. (n = m * q + r /\ r
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **49 nodes**, depth **17**.
+- Certificate: **54 nodes**, depth **20**.
 - Authored script length: **21 commands**.
 - Runtime card: `pa lib multiple_has_zero_remainder`.
 - Book route: *Divisibility and congruence* in the foundational arithmetic part.

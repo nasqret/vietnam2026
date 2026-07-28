@@ -24,7 +24,7 @@ forall d q r s. d * q + r = d * q + s -> r = s
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **171 nodes**, depth **25**.
+- Certificate: **164 nodes**, depth **19**.
 - Authored script length: **10 commands**.
 - Runtime card: `pa lib remainder_unique_same_quotient`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

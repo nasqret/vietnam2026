@@ -25,6 +25,23 @@ The generated `dependency-graph.mmd` is the exact graph for checked entries.
 The research catalog is the larger design graph and gives every unproved node
 a status and blocker.
 
+## How an edge becomes a checked certificate
+
+A dependency edge is no longer implemented by copying the dependency proof at
+every hypothesis use. Replay first checks the dependency as a closed
+certificate, then embeds it in a self-contained
+`Cut(A, B, lemma, body)`. The kernel checks `lemma : A` once and checks
+`body : B` under a new hypothesis `A`. Nested dependency edges become nested
+Cuts, so the mathematical DAG remains visible as lexical sharing inside one
+closed certificate.
+
+This is not a trusted theorem environment. The Cut contains the complete
+lemma proof and body proof; it contains no library name, hash, declaration
+identifier, or callback. The object formula at each ladder node is unchanged,
+and every final theorem is still checked from the empty context. The trusted
+checker is larger by exactly this reviewed rule. The detailed boundary is in
+{doc}`Self-contained proof sharing <proof-sharing>`.
+
 ## Why congruence comes first
 
 The proof engine already has primitive equality rules such as congruence under
@@ -90,11 +107,18 @@ Every checked node must satisfy all of these conditions:
 - every dependency names an earlier node;
 - the authored script uses the reviewed library-replay surface;
 - replay is deterministic;
-- dependency assumptions are eliminated;
+- every dependency assumption is discharged by a self-contained Cut whose
+  formula and certificate are embedded in the final proof;
 - the final certificate checks from the empty context;
 - its exact node count and depth fit the live import bound;
 - its source and documentation links resolve;
 - generated artifacts reproduce byte for byte.
+
+Literal Cut erasure is an optional, untrusted audit, not an admission
+invariant. Although the formal expansion is `(λh. body) lemma`, the current
+bidirectional checker and capture-sensitive beta reducer do not provide a
+complete operational erasure path for every large certificate. An erased
+artifact has authority only if it independently passes the kernel.
 
 These invariants turn the dependency organization into an executable contract,
 not merely a diagram in the documentation.

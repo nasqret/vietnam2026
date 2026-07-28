@@ -24,7 +24,7 @@ forall n. n <= n
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **23 nodes**, depth **13**.
+- Certificate: **25 nodes**, depth **9**.
 - Authored script length: **3 commands**.
 - Runtime card: `pa lib le_refl`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

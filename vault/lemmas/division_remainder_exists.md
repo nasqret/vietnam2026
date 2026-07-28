@@ -25,7 +25,7 @@ forall m n. ~(m = 0) -> exists q r. n = m * q + r /\ S r <= m
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **196 nodes**, depth **37**.
+- Certificate: **219 nodes**, depth **28**.
 - Authored script length: **14 commands**.
 - Runtime card: `pa lib division_remainder_exists`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

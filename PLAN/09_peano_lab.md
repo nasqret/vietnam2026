@@ -608,22 +608,26 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   27 book sources under warning-as-error; 193 deep links and 170 documented commands; and 414/414
   vault wikilinks. The kernel checker has no diff and remains 234 lines. Direct in-app Pyodide
   latency could not be measured because no browser was attached; automated worker boot remains
-  green. The isolated all-ladder acceptance smoke reports 803 unique transitions in 98 sessions
-  with 49 authored-script kernel QEDs. M19 stays open for the model-v2 curriculum, search,
+  green. The current isolated all-ladder acceptance smoke exports 2,446 unique
+  transitions from 250 sessions, including 125 authored-script kernel QEDs.
+  M19 stays open for the model-v2 curriculum, search,
   baselines, and registered comparison.
 
 ### M20 — General foundational arithmetic library
 
 The theorem-ladder extension is tracked independently in
 [`PLAN/10_arithmetic_library.md`](10_arithmetic_library.md). Its first release
-keeps the kernel and object language fixed, expands divisibility and residue
-notions into ordinary formulas, and labels prime/factorization targets by
+kept the kernel and object language fixed, expanded divisibility and residue
+notions into ordinary formulas, and labeled prime/factorization targets by
 their real dependencies. The reconciled runtime contains 125 unique checked
 theorems, including quotient-remainder existence/uniqueness and relational gcd
 uniqueness plus Euclidean-step invariance, and a
 conservative Gödel-β factorization design; a separate Lean companion checks
-full FTA, while Peano admission still requires gcd existence, Bézout, Euclid,
-and the encoded sequence/product proof spine.
+full FTA. The later proof-sharing milestone adds one reviewed self-contained
+Cut rule to the trusted certificate checker—without changing the PA object
+language, axioms, induction, or intuitionistic default—and reduces the current
+ladder to 31,479 structural nodes. Peano admission still requires gcd
+existence, Bézout, Euclid, and the encoded sequence/product proof spine.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

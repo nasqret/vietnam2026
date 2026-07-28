@@ -132,8 +132,9 @@
   unchecked and omit `qed`; only successful independent finalization retains a checked replay. The
   browser accepts a one-shot download only for the exact directly typed command and validates a
   fixed-name LF/UTF-8 payload. Exported text is neither certificate authority nor a mutable library;
-  library inclusion retains the existing closed-statement, dependency, cut-elimination, test, and
-  independent-check workflow. M16 introduces named local reasoning with the exact surface forms
+  library inclusion retains the existing closed-statement, dependency, test, and independent-check
+  workflow; the later reviewed self-contained Cut milestone replaces full dependency inlining.
+  M16 introduces named local reasoning with the exact surface forms
   `have h : P` and `suffices h : P`. Engine-only `LocalHave` and `LocalSuffices` nodes preserve the
   two opposite visible goal orders, then a capture-avoiding untrusted compiler removes them before
   the unchanged kernel checks the session owner's original target. They add scheduling and naming,
@@ -335,13 +336,18 @@
   quotient-remainder uniqueness, zero-remainder/divisibility bridges,
   unit-factor/coprimality bridges, mutual-divisibility antisymmetry, and
   relational gcd uniqueness, constructive remainder-divisibility transport,
-  and both directions of Euclidean gcd invariance. The
-  uniqueness certificate is 1,442 nodes/depth 47; the overall maximum remains
-  `mod5_fourth_power_one` at 21,515/depth 66. The synchronized research catalog
+  and both directions of Euclidean gcd invariance. Under self-contained
+  dependency sharing, the complete ladder contains 31,479 structural proof
+  nodes and 741 Cuts; `mod5_fourth_power_one` is largest by nodes at
+  2,675/depth 38, and the maximum depth is 57. The synchronized research catalog
   has 138 nodes (23 baseline checked, 102 post-baseline checked, nine planned,
   four language-blocked) plus the separate Lean FTA companion. The generated
-  vault has 203 notes and 1,475 resolved links. The kernel and object language
-  are unchanged. The local
-  browser candidate is `2026-07-28l` / `a-baf4cc52dad6`; 1,054 Peano tests,
-  the warning-free 35-source book, and 264
-  documented commands pass. Production is untouched.
+  vault has 204 notes and 1,511 resolved links. The object language, PA axioms,
+  induction schema, and intuitionistic default are unchanged. The trusted
+  proof grammar/checker now contains the reviewed self-contained
+  `Cut(A,B,lemma,body)` rule: both formulas and both proof branches are embedded,
+  with no theorem-name/hash authority. The checker is 247 lines. Its untrusted
+  erasure utility is diagnostic and cannot round-trip every introduction-headed
+  or induction-bearing certificate. The local browser candidate is
+  `2026-07-28m` / `a-396c35f357b4`; 1,081 Peano tests, the warning-free 36-source
+  book, and 264 documented commands pass. Production is untouched.

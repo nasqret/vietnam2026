@@ -28,7 +28,7 @@ forall m n q r q2 r2. n = m * q + r -> (exists k. k + S r = m) -> n = m * q2 + r
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **1442 nodes**, depth **47**.
+- Certificate: **854 nodes**, depth **57**.
 - Authored script length: **74 commands**.
 - Runtime card: `pa lib division_remainder_unique`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

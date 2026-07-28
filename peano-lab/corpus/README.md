@@ -8,10 +8,10 @@ sessions:
 
 | Artifact | Role | Records | SHA-256 |
 |---|---|---:|---|
-| `train.jsonl` | learning split | 13,326 | `12d03c6de141f3566d2aa96b6fe0467c9461b7ec9395c07fd5c9499588488f4a` |
-| `val.jsonl` | exact-theorem-group validation split | 18 | `af43d3b9198d7b89b81c93d0c699821f8824f4a14c27f7cb4dfd37fcfc7731e2` |
-| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `9d6e418687bf321ff947ba67e5d0f0cbee055451801fea8dad18536d613e61f2` |
-| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `df5bf9efeb4a1b6eacf0c9fed12d961cd72b498a2092ed950ef8c9dd006df34e` |
+| `train.jsonl` | learning split | 13,326 | `d2c790bf7a4fc1d458d5d95e0eb7067526725bb55a99d6b169f11670c1548345` |
+| `val.jsonl` | exact-theorem-group validation split | 18 | `95d51ecc07a04df1d7ba0f44f4d1bb3fb22dd1599447c87e3997b4be6f2a82f0` |
+| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `e3cf919c6909f8552366232e59728136f36bf6ebc07247d8488fd94472370bd0` |
+| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `5e872fa5d25856801d5670e92c125beb78b796a4f641bb3e28bed49ff64ddfdc` |
 
 The source stream contained 11,652 successful and 1,692 deliberately failing, transactional
 applications, for a labeled failure ratio of `0.12679856115107913`. Every one of the 1,692 sessions
@@ -53,7 +53,7 @@ That target first writes the replayable raw session stream to
 `/tmp/peano-lab-release-raw.jsonl`, then strictly validates, globally deduplicates, and exports it.
 The raw intermediate is not committed because it duplicates the split payload, but the manifest
 records its exact UTF-8 size (6,215,711 bytes) and SHA-256
-`a98db92be1e70368bfbdab5a6e03acd711229292ca8ad166e195d4f3a92d6277`.
+`7ea465aafa9228b9915ab1e9dc39d23aad63c3a5a4b7453477a650af9aa87688`.
 It also fingerprints `scripts/generate_peano_traces.py`, the trusted checker, and the complete
 Peano Lab Python source tree. Because the Python runtime participates in the run fingerprint and
 session IDs, changing that runtime changes the raw byte hash even when every session-agnostic

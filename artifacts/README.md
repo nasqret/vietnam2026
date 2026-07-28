@@ -166,10 +166,11 @@ fine-tuning awaits the pretrained-base baseline.
 
 ## Peano foundational arithmetic snapshot
 
-[`peano-library/`](peano-library/) is the deterministic snapshot of all 63
-checked Peano library entries. It contains statement/script/certificate hashes,
-exact node/depth metrics, an ordered root digest, and the dependency DAG in
-Mermaid form. Rebuild or verify it with
+[`peano-library/`](peano-library/) is the deterministic snapshot of all 125
+checked Peano library entries. Its internal snapshot-v2 schema contains
+statement/script/certificate hashes, exact node/depth and structural Cut
+metrics, an ordered root digest, and the dependency DAG in Mermaid form.
+Rebuild or verify it with
 `python3 scripts/build_peano_library_snapshot.py [--check]`.
 
 The snapshot is evidence about replayed certificates, not a theorem database
@@ -209,10 +210,12 @@ empty-context kernel acceptance, certificate hashes, and a 21,515-node/depth-66 
 revision and exact MIT notice are preserved in [`peano-library/NOTICE.md`](peano-library/NOTICE.md).
 
 The report predates the public integration and therefore marks three certificates as exceeding the
-then-current 4,096-node `use` ceiling. The public catalog raises only that untrusted import resource
-limit to 32,768; no kernel rule changes. Repository regressions cold-replay all 26 certificates
-twice, match every retained hash and metric, reject a mutated capstone target, and exercise the
-short live `use`/`apply`/`exact` route.
+then-current 4,096-node `use` ceiling. The public-catalog integration raised only that untrusted
+resource limit to 32,768 and changed no kernel rule. A later separately reviewed milestone added
+self-contained Cut sharing; the source report remains immutable legacy provenance. Repository
+regressions reproduce its cut-free hashes where supported, separately replay the current shared
+certificates twice, reject a mutated capstone target, and exercise the short live
+`use`/`apply`/`exact` route.
 
 The reconciled runtime keeps all 26 source records for provenance. Fourteen are
 identical to independently developed M20 records, so a guarded union exposes

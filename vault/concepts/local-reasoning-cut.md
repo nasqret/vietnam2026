@@ -14,16 +14,18 @@ goal-to-hole invariant of [[tactic-mode]].
 
 Neither node belongs to the [[trusted-kernel]]. Before QED, an untrusted capture-avoiding compiler
 uses [[substitution]] to replace the local hypothesis with its proof and removes the administrative
-node. The resulting ordinary [[proof-certificate]] is checked from the empty context against the
+node. The resulting [[proof-certificate]] may contain separately introduced trusted sharing nodes,
+but contains no `LocalHave` or `LocalSuffices`. It is checked from the empty context against the
 session owner's original theorem. A bad schedule or compiler can therefore cause rejection, not a
 false QED.
 
 This resembles [[checked-theorem-reuse]], but the source of evidence differs: `use` imports an
 already closed, rechecked library certificate, whereas `have` and `suffices` create new open goals
-inside the current proof. Neither mechanism gives certificate-tree sharing; repeated uses may copy
-the inserted proof during cut elimination.
+inside the current proof. Checked library reuse now uses
+[[self-contained-proof-sharing|self-contained Cut]], while local scheduling deliberately retains
+capture-avoiding compilation and gives no direct surface access to that trusted constructor.
 
 ## Related
 
 [[peano-lab]] · [[tactic-mode]] · [[proof-certificate]] · [[substitution]] ·
-[[checked-theorem-reuse]] · [[natural-deduction]]
+[[checked-theorem-reuse]] · [[self-contained-proof-sharing]] · [[natural-deduction]]

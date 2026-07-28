@@ -28,7 +28,7 @@ forall n m. S n * m = n * m + m
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **178 nodes**, depth **30**.
+- Certificate: **172 nodes**, depth **22**.
 - Authored script length: **6 commands**.
 - Runtime card: `pa lib mul_succ_left`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

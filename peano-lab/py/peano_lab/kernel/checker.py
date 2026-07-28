@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from .formulas import And, Bot, Eq, Exists, Forall, Formula, Imp, Or
 from .proofs import (
-    AndElimL, AndElimR, AndIntro, Axiom, BotElim, CongAdd, CongMul, CongS,
+    AndElimL, AndElimR, AndIntro, Axiom, BotElim, CongAdd, CongMul, CongS, Cut,
     DNE, EqRefl, EqSubst, EqSym, EqTrans, ExistsElim, ExistsIntro, ForallElim,
     ForallIntro, Hyp, ImpElim, ImpIntro, Ind, OrElim, OrIntroL, OrIntroR, Proof,
 )
@@ -99,6 +99,19 @@ def _infer(ctx: Context, proof: object, classical: bool) -> Formula | None:
     if type(proof) is DNE and classical and _valid_formula(proof.proposition):
         negation = Imp(proof.proposition, Bot())
         return Imp(Imp(negation, Bot()), proof.proposition)
+    if (
+        type(proof) is Cut
+        and _valid_formula(proof.proposition)
+        and _valid_formula(proof.conclusion)
+    ):
+        if _check(ctx, proof.lemma, proof.proposition, classical) and _check(
+            (proof.proposition,) + ctx,
+            proof.body,
+            proof.conclusion,
+            classical,
+        ):
+            return proof.conclusion
+        return None
     if type(proof) is ImpElim:
         function = _infer(ctx, proof.function, classical)
         if type(function) is Imp and _check(ctx, proof.argument, function.left, classical):
@@ -154,7 +167,7 @@ def _check(ctx: Context, proof: object, target: Formula, classical: bool) -> boo
     if inferred is not None:
         return inferred == target
     if type(proof) is ImpElim:
-        # A local cut may put an introduction directly in function position.
+        # An implication redex may put an introduction directly in function position.
         # Its domain can be recovered when the argument itself synthesizes.
         argument = _infer(ctx, proof.argument, classical)
         return argument is not None and _check(

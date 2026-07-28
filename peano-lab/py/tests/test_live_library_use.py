@@ -20,7 +20,7 @@ from peano_lab.engine.tactics import (
 )
 from peano_lab.kernel.checker import check
 from peano_lab.kernel.formulas import Eq
-from peano_lab.kernel.proofs import EqRefl, EqSym
+from peano_lab.kernel.proofs import Cut, EqRefl, EqSym
 from peano_lab.kernel.terms import Zero
 from peano_lab.library.theorems import LibraryError, normalise_cuts, replay
 from peano_lab.ui import prove
@@ -35,7 +35,7 @@ def _owner(session: driver.LabSession) -> prove.ProofSession:
     return owner
 
 
-def test_engine_use_checked_builds_a_local_cut_then_normalises_to_closed_qed() -> None:
+def test_engine_use_checked_builds_a_self_contained_cut_that_checks_directly() -> None:
     theorem = replay("add_comm")
     initial = start(theorem.formula)
 
@@ -49,14 +49,12 @@ def test_engine_use_checked_builds_a_local_cut_then_normalises_to_closed_qed() -
     assert imported.current().context[0] == ("comm", theorem.formula)
     assert imported.history[-1].tactic == "use"
     completed = exact(imported, "comm")
-    with pytest.raises(InvalidProof, match="independent kernel"):
-        checked_final(completed, theorem.formula)
+    certificate = checked_final(completed, theorem.formula)
 
     raw = final_certificate(completed)
-    assert raw is not None
-    compiled = normalise_cuts(raw)
-    transient = replace(completed, partial_certificate_with_holes=compiled)
-    certificate = checked_final(transient, theorem.formula)
+    assert type(raw) is Cut
+    assert certificate == raw
+    assert normalise_cuts(raw) == raw
     assert check((), certificate, theorem.formula)
 
 

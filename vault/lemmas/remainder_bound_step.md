@@ -24,7 +24,7 @@ forall r d. (exists k. k + S r = d) -> S r = d \/ exists k. k + S (S r) = d
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **78 nodes**, depth **21**.
+- Certificate: **113 nodes**, depth **20**.
 - Authored script length: **7 commands**.
 - Runtime card: `pa lib remainder_bound_step`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

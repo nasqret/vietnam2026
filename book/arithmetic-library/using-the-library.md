@@ -38,10 +38,10 @@ pa> exact multiple_mul_right
 pa> qed
 ```
 
-The context import is a temporary cut. At QED the untrusted compiler replaces
-it with the theorem's closed certificate, normalizes the exposed cuts, and
-asks the independent kernel to check the original target from the empty
-context.
+The context import is backed by a self-contained Cut. It embeds the theorem's
+closed certificate, the focused conclusion, and the body that may use the new
+hypothesis. At QED the independent kernel checks both branches and the original
+target from the empty context; no theorem name or hash reaches the checker.
 
 The original modulus-five exercise now has the same short route:
 
@@ -55,8 +55,8 @@ pa> exact h
 pa> qed
 ```
 
-This imports an ordinary 21,515-node closed certificate; it does not add a
-modular-arithmetic oracle to the kernel.
+This imports the complete current 2,675-node shared certificate; it does not
+add a modular-arithmetic oracle or external theorem lookup to the kernel.
 
 ## Turning a hypothesis into pointwise facts
 

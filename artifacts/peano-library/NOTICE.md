@@ -7,8 +7,10 @@ imported from `nasqret/peano-private-mathlib` at commit
 The adjacent `mod5-source-validation-report.json` is the source repository's
 unaltered pre-integration validation report. Its `current_live_use` fields
 describe the old 4,096-node import limit. Peano Lab raises that untrusted
-resource limit to 32,768 nodes, so all 26 public entries can now be imported;
-the kernel and its rules are unchanged.
+resource limit to 32,768 nodes, so all 26 public entries can now be imported.
+The imported statements add no axioms. The current runtime snapshot may package
+their dependency proofs in self-contained, kernel-checked `Cut` nodes; that
+later representation does not rewrite this immutable source report.
 
 Source license, preserved verbatim:
 

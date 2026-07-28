@@ -26,7 +26,7 @@ forall n m. n * m = 0 -> n = 0 \/ m = 0
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **31 nodes**, depth **18**.
+- Certificate: **47 nodes**, depth **17**.
 - Authored script length: **12 commands**.
 - Runtime card: `pa lib mul_eq_zero`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

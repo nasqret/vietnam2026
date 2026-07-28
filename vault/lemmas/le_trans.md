@@ -24,7 +24,7 @@ forall n m k. n <= m -> m <= k -> n <= k
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **51 nodes**, depth **21**.
+- Certificate: **57 nodes**, depth **15**.
 - Authored script length: **9 commands**.
 - Runtime card: `pa lib le_trans`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

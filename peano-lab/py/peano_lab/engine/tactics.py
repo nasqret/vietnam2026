@@ -34,6 +34,7 @@ from ..kernel.proofs import (
     CongAdd,
     CongMul,
     CongS,
+    Cut,
     DNE,
     EqRefl,
     EqSubst,
@@ -129,11 +130,10 @@ Tactic = Callable[[ProofState, str], ProofState]
 
 _RESERVED_TERM_NAMES = {"S", "forall", "exists", "bot", "false"}
 
-# ``use`` embeds a checked theorem certificate in the live partial proof until
-# surface finalization contracts the cut.  Honest bounds keep repeated aliases
-# from turning that temporary tree into a host-recursion or browser-memory
-# failure.  The public checked ladder currently peaks at 21,515 nodes and
-# depth 66; the ceiling is explicit headroom, not additional proof authority.
+# ``use`` embeds a checked theorem certificate in a self-contained Cut node.
+# Honest bounds keep repeated aliases from turning the live tree into a
+# host-recursion or browser-memory failure. The ceiling is explicit headroom,
+# not additional proof authority.
 MAX_USE_CERTIFICATE_NODES = 32_768
 MAX_USE_PARTIAL_NODES = 32_768
 MAX_USE_PROOF_DEPTH = 128
@@ -1085,9 +1085,9 @@ def use_checked(
 
     The engine deliberately receives the theorem data rather than importing the
     library by name.  It first asks the independent kernel to check the supplied
-    closed certificate, then inserts an ordinary local cut.  The untrusted
-    library/UI layer may later contract that cut before the final QED check; no
-    theorem-name rule is added to the kernel.
+    closed certificate, then inserts a self-contained Cut node. The node
+    carries formulas and proof branches, never a theorem name or external
+    lookup key; final QED checks the entire result in one kernel invocation.
     """
 
     goal = _current(state)
@@ -1112,7 +1112,7 @@ def use_checked(
         )
 
     hole = fresh_hole()
-    replacement = ImpElim(ImpIntro(hole), certificate)
+    replacement = Cut(formula, goal.target, certificate, hole)
     new_goal = Goal(
         ((visible_name, formula),) + goal.context,
         goal.target,

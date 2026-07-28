@@ -28,7 +28,7 @@ forall c u v r. c * u = c * v + r -> exists w. r = c * w
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **250 nodes**, depth **34**.
+- Certificate: **265 nodes**, depth **26**.
 - Authored script length: **47 commands**.
 - Runtime card: `pa lib factor_difference`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.

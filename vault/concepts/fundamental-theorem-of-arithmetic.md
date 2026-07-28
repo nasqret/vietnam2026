@@ -15,7 +15,8 @@ primitive finite lists, multisets, exponent maps, or products.
 The representation review selected a conservative [[godel-beta-sequence]]:
 natural codes represent factors and a second code represents prefix products.
 Sorted decoded entries make uniqueness extensional without equating
-non-unique codes. This leaves the Peano kernel unchanged. Division existence
+non-unique codes. The encoding itself adds no kernel rule: every relation must
+expand into the existing PA object language. Division existence
 and uniqueness are now checked, but CRT, prime-divisor, Euclid, and sequence-law
 certificates are still missing, so no Peano FTA is exposed through `pa lib`
 yet.
