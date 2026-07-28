@@ -20,9 +20,10 @@ The owner authorized the compatibility-checked 26-record candidate for
 publication. The retained source commit, catalog hash, MIT notice, proof
 hashes, node counts, and depths make the import auditable. After reconciliation
 with the M20 [[theorem-ladder]], fourteen records overlap exactly and twelve
-are new, yielding a 63-theorem content-addressed runtime snapshot. Model-v1
-remains frozen; model-v2 must bind this exact combined snapshot rather than
-silently inheriting a mutable catalog.
+were new, yielding the earlier 63-theorem content-addressed runtime snapshot.
+The subsequent native division/order extension yields a new 104-theorem root;
+it must receive a distinct registered policy-library identity. Model-v1
+remains frozen, and no model may silently inherit either mutable catalog.
 
 Library visibility and benchmark visibility are different. If a theorem is importable, closing its
 exact statement with `use`, `apply`, and `exact` measures retrieval and application, not discovery.

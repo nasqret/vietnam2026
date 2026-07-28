@@ -240,11 +240,69 @@ $$
 \end{array}
 $$
 
-All 28 entries in the original M20 foundational subset replay to
+All 69 entries in the current post-baseline foundational layer replay to
 closed kernel-accepted certificates and fit the live `use` limits of 32,768
-nodes and depth 128.  That subset's maximum is 1,601 nodes and depth 59; the
-reconciled 63-entry snapshot reaches 21,515 nodes and depth 66 at the modular
-capstone.  These numbers are build artifacts, not new soundness assumptions.
+nodes and depth 128. The quotient-remainder uniqueness certificate uses 1,442
+nodes and depth 47. The reconciled 104-entry snapshot still reaches its maximum
+at the older modular capstone: 21,515 nodes and depth 66. These numbers are
+build artifacts, not new soundness assumptions.
+
+## The division algorithm is now native
+
+For a nonzero divisor $m$, the checked theorem `division_remainder_exists`
+constructs $q$ and $r$ satisfying
+
+$$
+n=mq+r,\qquad r<m.
+$$
+
+The strict bound is not a primitive relation. Its stored expansion is
+
+```text
+exists k. k + S r = m
+```
+
+so the complete theorem is still a formula over zero, successor, addition,
+multiplication, equality, quantifiers, and connectives. Existence is proved by
+ordinary induction on the dividend. At each successor step, the checked proof
+performs the zero-or-successor gap split inline: either the current remainder
+reaches the divisor, or its successor remains strictly bounded.
+
+Uniqueness is a separate checked theorem:
+
+```text
+division_remainder_unique :
+  forall m n q r q2 r2.
+    n = m * q + r -> S r <= m ->
+    n = m * q2 + r2 -> S r2 <= m ->
+    q = q2 /\ r = r2
+```
+
+It compares the two quotients with `le_total`. A zero additive gap gives equal
+quotients, after which `add_left_cancel` gives equal remainders. A successor
+gap would place one bounded remainder beyond the next divisor block; the
+checked `positive_quotient_gap_impossible` lemma rules that out. No classical
+logic, subtraction, `/`, or `%` is used. The explicit nonzero premise is not
+needed in the uniqueness statement: either strict remainder bound already
+excludes a zero divisor.
+
+The live library can reuse existence directly:
+
+```text
+pa> pa prove forall m n. ~(m = 0) -> exists q r. n = m * q + r /\ S r <= m
+pa> use division_remainder_exists
+pa> exact division_remainder_exists
+pa> qed
+```
+
+Two checked bridges connect the theorem to divisibility:
+
+- `zero_remainder_implies_multiple` turns $n=mq+0$ into $m\mid n$;
+- `multiple_has_zero_remainder` packages a multiple of a nonzero divisor as a
+  bounded division result with remainder zero.
+
+These results are the foundation required by bounded divisor search and the
+Euclidean gcd layer; they are not a primitive computation service.
 
 ## Why ordinary one-sided congruence is wrong over naturals
 
@@ -291,8 +349,8 @@ This definition also gives sensible edge cases:
 - for $m=1$, every pair of naturals is congruent;
 - no positivity assumption on $m$ is required merely to define the relation.
 
-The relation's reflexivity already has a short Peano proof, although it is not
-yet a named library entry:
+The relation's reflexivity and symmetry are now named checked entries,
+`mod_eq_refl` and `mod_eq_symm`. Reflexivity has the short proof:
 
 ```text
 pa> pa prove forall m a. exists u v. a + m * u = a + m * v
@@ -313,7 +371,7 @@ formula above is **modular congruence**.  The latter will use the former in its
 compatibility proofs, but the two notions should not share ambiguous names.
 :::
 
-## A checked prototype bridge, but not yet a catalog theorem
+## Exact divisibility already gives congruence to zero
 
 An exact decomposition immediately gives a balanced congruence:
 
@@ -323,11 +381,10 @@ $$
   a\equiv_m r.
 $$
 
-Choose $u=0$ and $v=q$; after zero simplification the remaining equality is
-$mq+r=r+mq$, which is addition commutativity.  The following proof replays
-today, but the result has not yet been admitted as a named checked library
-entry.  It is therefore a prototype for review, not a fact available through
-`use`.
+For the zero residue, `dvd_to_mod_zero` is already a checked library theorem.
+It chooses balanced witnesses directly from the divisibility witness. A more
+general decomposition-to-residue wrapper remains a useful planned endpoint;
+the following transcript demonstrates its exact target shape:
 
 ```text
 pa> pa prove forall m a q r. a = m * q + r -> exists u v. a + m * u = r + m * v
@@ -346,27 +403,23 @@ pa> apply add_comm
 pa> qed
 ```
 
-That status distinction matters:
+The current status distinction is:
 
 | Checked now | Planned modular API |
 |---|---|
-| Exact divisibility witnesses | `balanced_congr_refl` |
-| Closure of multiples under addition and multiplication | `balanced_congr_symm` |
-| Transitivity of the multiple relation | `balanced_congr_trans` |
-| Exact quotient-and-residue addition | `balanced_congr_add` |
-| Exact square decomposition and square residue lifting | `balanced_congr_mul` and square compatibility |
-| Pointwise forms of non-divisibility | decomposition implies congruence |
-| No `%` or primitive congruence predicate | shared residue implies congruence |
-| No congruence-zero theorem | divisibility iff congruent to zero |
+| `mod_eq_refl` | `mod_eq_trans` |
+| `mod_eq_symm` | `mod_eq_add` |
+| `dvd_to_mod_zero` | multiplicative compatibility |
+| Closure of multiples under addition and multiplication | congruence compatibility with multiplication |
+| Exact quotient-and-residue addition | general decomposition implies congruence |
+| Exact square decomposition and square residue lifting | shared residue implies congruence |
+| Pointwise forms of non-divisibility | reverse congruence-zero-to-divisibility |
+| No `%` or primitive congruence predicate | canonical-remainder congruence API |
 
 The planned entries remain ordinary expanded formulas.  Representative target
 shapes are:
 
 ```text
-forall m a b.
-  (exists u v. a + m * u = b + m * v) ->
-  exists u v. b + m * u = a + m * v
-
 forall m a b c.
   (exists u v. a + m * u = b + m * v) ->
   (exists x y. b + m * x = c + m * y) ->
@@ -378,8 +431,8 @@ forall m a b c d.
   exists p q. (a + c) + m * p = (b + d) + m * q
 ```
 
-These are proposed statements, not replay transcripts and not current theorem
-names.  Before admission they need small authored scripts, explicit earlier
+These remaining shapes are proposed statements, not replay transcripts and
+not current theorem names. Before admission they need small authored scripts, explicit earlier
 dependencies, certificate metrics, live-`use` checks, and independent kernel
 replay.  Multiplicative compatibility and the reverse direction of
 "congruent to zero iff divisible" deserve particular care; the balanced
@@ -408,7 +461,7 @@ forall n.
 This should not drive the foundational API.  Once the general layers exist,
 it becomes a small downstream application with five finite residue branches.
 
-The missing finite completeness lemma has the shape
+The checked `mod5_residue_complete` theorem has the shape
 
 $$
 \forall n\;\exists q,\quad
@@ -418,11 +471,10 @@ n={}&5q\;\lor\;n=5q+1\;\lor\;n=5q+2\\
 \end{aligned}
 $$
 
-That theorem is not currently in the checked foundational catalog.  It should
-be proved either as a fixed-modulus induction lemma or as a corollary of a
-later constructive division algorithm.  The hypothesis and
-`not_multiple_pointwise` eliminate the $r=0$ branch.  The remaining arithmetic
-is the small table
+The existing certificate proves it as a fixed-modulus induction lemma. The new
+general division theorem now supplies the reusable route for future moduli.
+The hypothesis and `not_multiple_pointwise` eliminate the $r=0$ branch. The
+remaining arithmetic is the small table
 
 | $r$ | First square $r^2=5c+s$ | Second square $s^2=5d+1$ |
 |---:|---:|---:|
@@ -440,7 +492,7 @@ $$
   = n\cdot n\cdot n\cdot n.
 $$
 
-Thus the eventual dependency route is
+Thus the checked dependency route is
 
 $$
 \begin{array}{c}
@@ -456,11 +508,11 @@ n\not\equiv0\pmod5\Longrightarrow n^4\equiv1\pmod5.
 \end{array}
 $$
 
-The full modulo-five proof is intentionally not presented as a current `pa>`
-transcript: its residue-completeness and fourth-power bridge entries have not
-yet been admitted to this checked catalog.  Showing imaginary `use` commands
-would erase exactly the checked-versus-planned boundary this library is meant
-to preserve.
+Every rung in this route is now admitted and independently checked, culminating
+in `mod5_fourth_power_one`. The full expanded transcript is omitted here
+because its closed certificate has 21,515 nodes; the short `use` transcript in
+{doc}`Using and extending the library <using-the-library>` imports that same
+certificate and does not bypass kernel checking.
 
 ## Admission checklist for the next congruence lemmas
 

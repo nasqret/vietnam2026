@@ -22,6 +22,11 @@ forall n m. n + m = m + n
 
 - [[mul_succ_left]]
 - [[add_left_cancel]]
+- [[le_add_right]]
+- [[add_le_add_left]]
+- [[mul_lt_mul_succ_left_nonzero]]
+- [[division_block_upper]]
+- [[positive_quotient_gap_impossible]]
 - [[add_eq_zero_left]]
 - [[add_residue_lift]]
 - [[mod5_square_residue_two]]

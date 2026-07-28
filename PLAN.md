@@ -56,7 +56,11 @@ no positive rows for nine tactic heads, including `induction`, `simp`, and `spec
 the next registered iteration is a library-snapshot-bound `model-v2`, not a 4B scale-up on the same
 curriculum. The owner authorized the compatibility-validated 26-record modular extension for the
 public catalog. After reconciliation with M20, fourteen records overlap exactly and twelve are
-new, giving 63 unique checked runtime theorems without changing the kernel. The earlier
+new, giving 63 unique checked runtime theorems without changing the kernel. A
+subsequent native arithmetic pass extends that same runtime to 104 checked
+theorems, including discrete order, multiplication cancellation and
+monotonicity, constructive quotient-remainder existence, and full
+quotient-remainder uniqueness. The earlier
 public-catalog full-surface audit yields 474
 prospective model-v2 transitions. They are valuable curriculum seeds, but only one is an
 `induction` label, so balanced generation and
@@ -67,13 +71,14 @@ milestone; production remains untouched behind the M14 cache-header blocker.
 ## Parallel foundational arithmetic milestone
 
 M20 generalizes the theorem ladder into a structured arithmetic corpus. Its
-first checked layer adds 28 reusable equality, cancellation, order,
-multiplication, divisibility, residue, and small-prime lemmas, including the
+checked layers now add 69 reusable equality, cancellation, order,
+multiplication, divisibility, residue, division, and small-prime lemmas, including the
 first checked fully expanded prime instance `prime_two`. The catalog maps the
 exact route to division, gcd, the general prime spine, and factorization. A
 sorted Gödel-β sequence/product encoding is now selected, and a pinned Lean
 companion checks full list-based FTA existence and uniqueness up to
 permutation. The reconciled runtime also includes twelve unique upstream
-mod-five capstones for 63 checked Peano theorems in total. Peano admission of
-FTA still awaits the encoding and arithmetic proof spine. See
+mod-five capstones for 104 checked Peano theorems in total. Division existence
+and uniqueness are now native; Peano admission of FTA still awaits gcd,
+Bézout, Euclid, and the encoded finite-product spine. See
 [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md).

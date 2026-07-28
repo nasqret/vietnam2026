@@ -20,6 +20,8 @@ forall a b c. a + c = b + c -> a = b
 ## Checked dependents
 
 - [[add_left_cancel]]
+- [[add_le_cancel_right]]
+- [[mul_left_cancel_nonzero]]
 
 ## Verification record
 

@@ -19,7 +19,7 @@ forall a b. ~(a = 0) -> ~(b = 0) -> ~(a * b = 0)
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[mul_left_cancel_nonzero]]
 
 ## Verification record
 

@@ -54,7 +54,7 @@ does not determine the architecture.
 - [x] Add both constructive normal forms for non-divisibility.
 - [x] Add modulus-independent quotient-and-remainder transport through
       addition and squaring.
-- [x] Replay and independently check all 63 unique library entries and enforce
+- [x] Replay and independently check all 104 unique library entries and enforce
       the live 32,768-node/depth-128 import bound.
 - [x] Generate a deterministic JSON snapshot, exact metrics, certificate hashes,
       and Mermaid dependency graph.
@@ -63,7 +63,8 @@ does not determine the architecture.
 
 - [ ] Specify untrusted, round-tripping expansions for `a | b`, balanced
       natural congruence, relational gcd/coprimality, and primality.
-- [ ] Prove balanced congruence reflexive, symmetric, and transitive.
+- [x] Prove balanced congruence reflexive and symmetric.
+- [ ] Prove balanced congruence transitive.
 - [ ] Prove congruence compatibility with addition and multiplication, plus
       equality/divisibility transport.
 - [ ] Add even/odd definitions, dichotomy, exclusivity, arithmetic tables, and
@@ -73,9 +74,12 @@ does not determine the architecture.
 
 ## M20D — Division, gcd, and prime spine
 
+- [x] Add the discrete-order, additive/multiplicative monotonicity, cancellation,
+      and strict-block contradiction interface needed by division uniqueness.
 - [ ] Add strong induction and least-counterexample interfaces suited to
       divisor descent.
-- [ ] Prove quotient-remainder existence and uniqueness for positive divisors.
+- [x] Prove quotient-remainder existence and uniqueness for positive divisors,
+      plus zero-remainder equivalence bridges for divisibility.
 - [ ] Prove relational gcd existence/uniqueness and Euclidean-step invariance.
 - [ ] Prove subtraction-free signed-pair Bézout and Gauss cancellation.
 - [x] Check `prime_two` as a completely expanded first-order formula, without
@@ -118,19 +122,19 @@ does not determine the architecture.
 
 ## Current acceptance record
 
-- Checked runtime: 63 unique theorems — 23 baseline and 40 post-baseline.
-  The latter are the 28-node M20 layer plus twelve unique upstream modular
-  capstones; fourteen compatible records overlap exactly.
-- Research catalog: 87 nodes — 23 `checked_existing`, 40 `checked_m20`, 20
+- Checked runtime: 104 unique theorems — 23 baseline and 81 post-baseline.
+  The latter are the 69-node foundational layer plus twelve unique upstream
+  modular capstones.
+- Research catalog: 120 nodes — 23 `checked_existing`, 81 `checked_m20`, 12
   `planned_expressible`, and four `blocked_by_language`.
 - Largest closed certificate: 21,515 nodes, depth 66.
 - Trusted-kernel changes: none.
 - Full FTA companion status: checked in Lean for every nonzero natural, with
   finite-list existence and permutation uniqueness and no `sorryAx`.
 - Full Peano FTA status: absent from `pa lib` pending closed certificates for
-  the selected β-sequence/product encoding and its division/prime/Euclid
+  the selected β-sequence/product encoding and its gcd/prime/Euclid
   dependency spine; no admitted theorem or hidden primitive.
-- Combined validation: 1,054 Peano tests on Python 3.10 and 3.12; 360 Lambda
-  tests; 34-source warning-as-error Jupyter Book; 198 deep links and 44
-  sessions/260 replayed commands; 141-note/988-link Obsidian graph; exact
+- Current validation: 1,054 Peano tests on Python 3.10; 34-source
+  warning-as-error Jupyter Book; 199 deep links and 45 sessions/264 replayed
+  commands; 182-note/1,281-link Obsidian graph; exact
   snapshot, catalog, corpus, application-manifest, and Lean FTA audits.

@@ -18,7 +18,7 @@ The main spine is
 
 $$
 \text{equality}\to\text{semiring}\to\text{order}\to
-\text{divisibility}\to\text{congruence}\to\gcd\to
+\text{divisibility}\to\text{congruence}\to\text{division}\to\gcd\to
 \text{primes}\to\text{factorization}.
 $$
 

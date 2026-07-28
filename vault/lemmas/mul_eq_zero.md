@@ -20,6 +20,7 @@ forall n m. n * m = 0 -> n = 0 \/ m = 0
 ## Checked dependents
 
 - [[mul_ne_zero]]
+- [[mul_left_cancel_nonzero]]
 - [[two_large_factors_impossible]]
 
 ## Verification record

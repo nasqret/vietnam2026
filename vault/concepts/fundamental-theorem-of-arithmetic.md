@@ -15,9 +15,10 @@ primitive finite lists, multisets, exponent maps, or products.
 The representation review selected a conservative [[godel-beta-sequence]]:
 natural codes represent factors and a second code represents prefix products.
 Sorted decoded entries make uniqueness extensional without equating
-non-unique codes. This leaves the Peano kernel unchanged, but the division,
-CRT, prime-divisor, Euclid, and sequence-law certificates are still missing,
-so no Peano FTA is exposed through `pa lib` yet.
+non-unique codes. This leaves the Peano kernel unchanged. Division existence
+and uniqueness are now checked, but CRT, prime-divisor, Euclid, and sequence-law
+certificates are still missing, so no Peano FTA is exposed through `pa lib`
+yet.
 
 The repository now also contains an independently checked Lean 4 companion.
 It proves that every nonzero natural has a finite list of prime factors and

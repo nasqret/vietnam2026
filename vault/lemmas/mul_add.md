@@ -21,6 +21,8 @@ forall n m k. n * (m + k) = n * m + n * k
 
 - [[mul_assoc]]
 - [[add_mul]]
+- [[mul_le_mul_left]]
+- [[positive_quotient_gap_impossible]]
 - [[multiple_add]]
 - [[add_residue]]
 - [[add_residue_lift]]

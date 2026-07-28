@@ -104,8 +104,9 @@ The planned route is therefore explicit:
 
 1. add untrusted named-predicate expansion for the formulas already
    expressible;
-2. prove strong induction, division, gcd, prime-divisor existence, and
-   Euclid's lemma in expanded first-order form;
+2. build on the now-checked division theorem to prove concrete strong
+   induction clients, gcd, prime-divisor existence, and Euclid's lemma in
+   expanded first-order form;
 3. implement and prove the selected β-sequence and prefix-product relations;
 4. state and check factorization existence and extensional uniqueness.
 

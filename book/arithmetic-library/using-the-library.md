@@ -1,14 +1,19 @@
 # Using and extending the library
 
-The live index is available through `pa lib`. A theorem card shows the closed
-statement, earlier dependencies, generated replay prelude, authored tactic
-body, exact certificate size, and independent-kernel result.
+In a checkout containing this candidate, the theorem index is available
+through `pa lib`. A theorem card shows the closed statement, earlier
+dependencies, generated replay prelude, authored tactic body, exact
+certificate size, and independent-kernel result.
 
-Useful entry points include:
+The URLs below are promotion targets for the public browser application.
+Existing production entries may already open there; candidate-only entries,
+including the new division layer, become available only after this build is
+promoted. The candidate has not been deployed by this documentation change.
 
 - [`pa lib`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib)
 - [`pa lib add_congr`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20add_congr)
 - [`pa lib multiple_trans`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20multiple_trans)
+- [`pa lib division_remainder_unique`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20division_remainder_unique)
 - [`pa lib square_residue_witness`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20square_residue_witness)
 - [`pa lib mod5_fourth_power_one`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod5_fourth_power_one)
 

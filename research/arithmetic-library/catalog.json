@@ -41,6 +41,7 @@
   "expanded_predicate_conventions": {
     "divides(a,b)": "exists k. b = a * k",
     "congruent_mod(m,a,b)": "exists u v. a + m * u = b + m * v",
+    "div_rem(n,m,q,r)": "n = m * q + r /\\ exists k. k + S r = m",
     "is_gcd(d,a,b)": "divides(d,a) /\\ divides(d,b) /\\ forall c. divides(c,a) -> divides(c,b) -> divides(c,d)",
     "coprime(a,b)": "forall d. divides(d,a) -> divides(d,b) -> d = 1",
     "prime(p)": "~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1"
@@ -79,6 +80,7 @@
     "order",
     "divisibility",
     "congruence",
+    "division",
     "gcd_coprime",
     "primes",
     "factorization"
@@ -115,6 +117,40 @@
       "peano": {
         "statement": "forall n m. S n = S m -> n = m",
         "existing_name": "succ_injective"
+      },
+      "blocker": null
+    },
+    {
+      "id": "zero_or_succ",
+      "title": "Every natural is zero or a successor",
+      "domain": "equality",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Constructive case decomposition for naturals, derived by ordinary induction.",
+      "peano": {
+        "statement": "forall n. n = 0 \\/ exists k. n = S k",
+        "existing_name": "zero_or_succ"
+      },
+      "blocker": null
+    },
+    {
+      "id": "nonzero_is_succ",
+      "title": "Every nonzero natural has a predecessor",
+      "domain": "equality",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Extracts a predecessor constructively without double-negation elimination.",
+      "peano": {
+        "statement": "forall n. ~(n = 0) -> exists k. n = S k",
+        "existing_name": "nonzero_is_succ"
       },
       "blocker": null
     },
@@ -396,18 +432,19 @@
       "id": "add_eq_zero_components",
       "title": "Both summands of a zero sum are zero",
       "domain": "addition",
-      "status": "planned_expressible",
+      "status": "checked_m20",
       "dependencies": [
-        "add_eq_zero_right",
-        "add_eq_zero_left"
+        "add_eq_zero_left",
+        "add_eq_zero_right"
       ],
       "sources": [
+        "peano_lab_library",
         "nng4"
       ],
       "summary": "Combines both useful projections into one conjunction.",
       "peano": {
         "statement": "forall a b. a + b = 0 -> a = 0 /\\ b = 0",
-        "existing_name": null
+        "existing_name": "add_eq_zero_components"
       },
       "blocker": null
     },
@@ -648,19 +685,103 @@
       "id": "mul_left_cancel_nonzero",
       "title": "A nonzero factor cancels on the left",
       "domain": "multiplication",
-      "status": "planned_expressible",
+      "status": "checked_m20",
       "dependencies": [
         "mul_eq_zero",
-        "add_left_cancel"
+        "mul_ne_zero",
+        "add_right_cancel",
+        "succ_ne_zero"
       ],
       "sources": [
+        "peano_lab_library",
         "nng4",
         "macbeth_mechanics_site"
       ],
       "summary": "Cancellation with the natural-number nonzero side condition made explicit.",
       "peano": {
         "statement": "forall a b c. ~(a = 0) -> a * b = a * c -> b = c",
-        "existing_name": null
+        "existing_name": "mul_left_cancel_nonzero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mul_right_cancel_nonzero",
+      "title": "A nonzero factor cancels on the right",
+      "domain": "multiplication",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_comm",
+        "mul_left_cancel_nonzero"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Reduces right cancellation to the checked left-cancellation theorem by commutativity.",
+      "peano": {
+        "statement": "forall a b c. ~(c = 0) -> a * c = b * c -> a = b",
+        "existing_name": "mul_right_cancel_nonzero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mul_le_mul_left",
+      "title": "Left multiplication preserves order",
+      "domain": "multiplication",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_add"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Multiplies the explicit order witness and distributes the common left factor.",
+      "peano": {
+        "statement": "forall a b c. (exists k. k + a = b) -> exists r. r + c * a = c * b",
+        "existing_name": "mul_le_mul_left"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mul_le_mul_right",
+      "title": "Right multiplication preserves order",
+      "domain": "multiplication",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_mul"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Multiplies the explicit order witness and distributes the common right factor.",
+      "peano": {
+        "statement": "forall a b c. (exists k. k + a = b) -> exists r. r + a * c = b * c",
+        "existing_name": "mul_le_mul_right"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mul_lt_mul_succ_left_nonzero",
+      "title": "A nonzero left factor strictly separates successor products",
+      "domain": "multiplication",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_comm"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Constructs the strict-order witness for c*a below c*(a+1) when c is nonzero.",
+      "peano": {
+        "statement": "forall c a. ~(c = 0) -> exists r. r + S (c * a) = c * S a",
+        "existing_name": "mul_lt_mul_succ_left_nonzero"
       },
       "blocker": null
     },
@@ -814,20 +935,72 @@
       "blocker": null
     },
     {
+      "id": "one_le_of_ne_zero",
+      "title": "Every nonzero natural is at least one",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Ordinary induction supplies the predecessor as the additive order witness.",
+      "peano": {
+        "statement": "forall n. ~(n = 0) -> exists k. k + 1 = n",
+        "existing_name": "one_le_of_ne_zero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "ne_zero_of_one_le",
+      "title": "A natural at least one is nonzero",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "A hypothetical equality with zero would force the successor one to equal zero.",
+      "peano": {
+        "statement": "forall n. (exists k. k + 1 = n) -> ~(n = 0)",
+        "existing_name": "ne_zero_of_one_le"
+      },
+      "blocker": null
+    },
+    {
+      "id": "le_add_left",
+      "title": "A number is below a left-added summand",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "The added term itself is already the expanded order witness.",
+      "peano": {
+        "statement": "forall a b. exists k. k + a = b + a",
+        "existing_name": "le_add_left"
+      },
+      "blocker": null
+    },
+    {
       "id": "le_add_right",
       "title": "A number is below itself plus a right summand",
       "domain": "order",
-      "status": "planned_expressible",
+      "status": "checked_m20",
       "dependencies": [
         "add_comm"
       ],
       "sources": [
+        "peano_lab_library",
         "nng4"
       ],
       "summary": "The right summand becomes the additive order witness after commutation.",
       "peano": {
         "statement": "forall a b. exists k. k + a = a + b",
-        "existing_name": null
+        "existing_name": "le_add_right"
       },
       "blocker": null
     },
@@ -835,18 +1008,133 @@
       "id": "add_le_add_right",
       "title": "Adding the same right summand preserves order",
       "domain": "order",
-      "status": "planned_expressible",
+      "status": "checked_m20",
       "dependencies": [
         "add_assoc"
       ],
       "sources": [
+        "peano_lab_library",
         "nng4",
         "macbeth_mechanics_site"
       ],
       "summary": "Transports an explicit additive witness through right addition.",
       "peano": {
         "statement": "forall a b c. (exists k. k + a = b) -> exists r. r + (a + c) = b + c",
-        "existing_name": null
+        "existing_name": "add_le_add_right"
+      },
+      "blocker": null
+    },
+    {
+      "id": "add_le_add_left",
+      "title": "Adding the same left summand preserves order",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_assoc",
+        "add_comm"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Reassociates and commutes an explicit order witness through left addition.",
+      "peano": {
+        "statement": "forall a b c. (exists k. k + a = b) -> exists r. r + (c + a) = c + b",
+        "existing_name": "add_le_add_left"
+      },
+      "blocker": null
+    },
+    {
+      "id": "succ_le_succ",
+      "title": "Successor preserves order",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Transports an additive order witness through successor using PA4.",
+      "peano": {
+        "statement": "forall a b. (exists k. k + a = b) -> exists r. r + S a = S b",
+        "existing_name": "succ_le_succ"
+      },
+      "blocker": null
+    },
+    {
+      "id": "le_of_succ_le_succ",
+      "title": "Successor reflects order",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Cancels successor from both sides of an explicit additive order witness.",
+      "peano": {
+        "statement": "forall a b. (exists k. k + S a = S b) -> exists r. r + a = b",
+        "existing_name": "le_of_succ_le_succ"
+      },
+      "blocker": null
+    },
+    {
+      "id": "le_succ",
+      "title": "Order is preserved by raising the upper bound",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_succ_left"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Turns the witness k into S k when the upper bound is replaced by its successor.",
+      "peano": {
+        "statement": "forall a b. (exists k. k + a = b) -> exists r. r + a = S b",
+        "existing_name": "le_succ"
+      },
+      "blocker": null
+    },
+    {
+      "id": "lt_to_le",
+      "title": "Strict order entails weak order",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_succ_left"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Absorbs the successor from the lower term into the additive witness.",
+      "peano": {
+        "statement": "forall a b. (exists k. k + S a = b) -> exists r. r + a = b",
+        "existing_name": "lt_to_le"
+      },
+      "blocker": null
+    },
+    {
+      "id": "add_le_cancel_right",
+      "title": "Cancel a common right summand from order",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_assoc",
+        "add_right_cancel"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Reassociates the witness equation and applies equality cancellation.",
+      "peano": {
+        "statement": "forall a b c. (exists k. k + (a + c) = b + c) -> exists r. r + a = b",
+        "existing_name": "add_le_cancel_right"
       },
       "blocker": null
     },
@@ -854,17 +1142,194 @@
       "id": "lt_irrefl_expanded",
       "title": "Strict order is irreflexive",
       "domain": "order",
-      "status": "planned_expressible",
+      "status": "checked_m20",
       "dependencies": [
+        "add_succ_left",
         "no_succ_add_fixed"
       ],
       "sources": [
+        "peano_lab_library",
         "nng4"
       ],
       "summary": "Uses S n <= n as the fixed-language expansion of n < n.",
       "peano": {
         "statement": "forall n. ~ (exists k. k + S n = n)",
-        "existing_name": null
+        "existing_name": "lt_irrefl_expanded"
+      },
+      "blocker": null
+    },
+    {
+      "id": "le_eq_or_lt",
+      "title": "A weak inequality is equality or strict inequality",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [
+        "zero_or_succ",
+        "zero_add",
+        "add_succ_left"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Decomposes the additive order witness constructively into zero and successor cases.",
+      "peano": {
+        "statement": "forall a b. (exists k. k + a = b) -> a = b \\/ exists k. k + S a = b",
+        "existing_name": "le_eq_or_lt"
+      },
+      "blocker": null
+    },
+    {
+      "id": "lt_of_lt_of_le",
+      "title": "Strict order followed by weak order",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [
+        "le_trans"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Applies weak-order transitivity with the successor lower endpoint.",
+      "peano": {
+        "statement": "forall a b c. (exists k. k + S a = b) -> (exists k. k + b = c) -> exists k. k + S a = c",
+        "existing_name": "lt_of_lt_of_le"
+      },
+      "blocker": null
+    },
+    {
+      "id": "lt_of_le_of_lt",
+      "title": "Weak order followed by strict order",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_assoc"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Composes the two additive witnesses directly to avoid proof-tree duplication.",
+      "peano": {
+        "statement": "forall a b c. (exists k. k + a = b) -> (exists k. k + S b = c) -> exists k. k + S a = c",
+        "existing_name": "lt_of_le_of_lt"
+      },
+      "blocker": null
+    },
+    {
+      "id": "lt_trans",
+      "title": "Strict order is transitive",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_assoc",
+        "add_succ_left"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Combines strict additive witnesses and transports their successor explicitly.",
+      "peano": {
+        "statement": "forall a b c. (exists k. k + S a = b) -> (exists k. k + S b = c) -> exists k. k + S a = c",
+        "existing_name": "lt_trans"
+      },
+      "blocker": null
+    },
+    {
+      "id": "le_or_lt",
+      "title": "Weak-or-reverse-strict comparison",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Decomposes the reverse total-order witness into zero and successor cases.",
+      "peano": {
+        "statement": "forall a b. (exists k. k + a = b) \\/ exists k. k + S b = a",
+        "existing_name": "le_or_lt"
+      },
+      "blocker": null
+    },
+    {
+      "id": "lt_trichotomy",
+      "title": "Natural strict-order trichotomy",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Splits the total-order witness constructively into equality or one of two strict directions.",
+      "peano": {
+        "statement": "forall a b. a = b \\/ ((exists k. k + S a = b) \\/ exists k. k + S b = a)",
+        "existing_name": "lt_trichotomy"
+      },
+      "blocker": null
+    },
+    {
+      "id": "lt_not_le",
+      "title": "Strict order excludes reverse weak order",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "A direct descent argument rejects opposing additive witnesses constructively.",
+      "peano": {
+        "statement": "forall a b. (exists k. k + S a = b) -> ~(exists k. k + b = a)",
+        "existing_name": "lt_not_le"
+      },
+      "blocker": null
+    },
+    {
+      "id": "le_not_lt",
+      "title": "Weak order excludes reverse strict order",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [
+        "lt_not_le"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Applies strict-versus-weak incompatibility in the reverse orientation.",
+      "peano": {
+        "statement": "forall a b. (exists k. k + a = b) -> ~(exists k. k + S b = a)",
+        "existing_name": "le_not_lt"
+      },
+      "blocker": null
+    },
+    {
+      "id": "lt_not_eq_add_middle",
+      "title": "A strict bound cannot occur inside an additive decomposition of the lower term",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_succ_left"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "The strengthened direct descent shape is the compact contradiction bridge used by division uniqueness.",
+      "peano": {
+        "statement": "forall r m a b. (exists k. k + S r = m) -> ~(r = (a + m) + b)",
+        "existing_name": "lt_not_eq_add_middle"
       },
       "blocker": null
     },
@@ -1050,16 +1515,17 @@
       "id": "mod_eq_refl",
       "title": "Balanced natural congruence is reflexive",
       "domain": "congruence",
-      "status": "planned_expressible",
+      "status": "checked_m20",
       "dependencies": [],
       "sources": [
+        "peano_lab_library",
         "macbeth_math2001_repo",
         "weissman_illustrated_programming"
       ],
       "summary": "Uses the balanced existential definition that avoids integer subtraction.",
       "peano": {
         "statement": "forall m a. exists u v. a + m * u = a + m * v",
-        "existing_name": null
+        "existing_name": "mod_eq_refl"
       },
       "blocker": null
     },
@@ -1067,18 +1533,17 @@
       "id": "mod_eq_symm",
       "title": "Balanced natural congruence is symmetric",
       "domain": "congruence",
-      "status": "planned_expressible",
-      "dependencies": [
-        "eq_symm"
-      ],
+      "status": "checked_m20",
+      "dependencies": [],
       "sources": [
+        "peano_lab_library",
         "macbeth_math2001_repo",
         "weissman_illustrated_programming"
       ],
       "summary": "Swaps both existential witnesses and reverses the equality.",
       "peano": {
         "statement": "forall m a b. (exists u v. a + m * u = b + m * v) -> exists r s. b + m * r = a + m * s",
-        "existing_name": null
+        "existing_name": "mod_eq_symm"
       },
       "blocker": null
     },
@@ -1129,18 +1594,19 @@
       "id": "dvd_to_mod_zero",
       "title": "A multiple is congruent to zero",
       "domain": "congruence",
-      "status": "planned_expressible",
+      "status": "checked_m20",
       "dependencies": [
         "zero_add"
       ],
       "sources": [
+        "peano_lab_library",
         "macbeth_math2001_repo",
         "weissman_illustrated_programming"
       ],
       "summary": "Connects expanded divisibility with the balanced modular relation.",
       "peano": {
         "statement": "forall m a. (exists k. a = m * k) -> exists u v. a + m * u = 0 + m * v",
-        "existing_name": null
+        "existing_name": "dvd_to_mod_zero"
       },
       "blocker": null
     },
@@ -1491,6 +1957,205 @@
       "peano": {
         "statement": "forall n. ~(exists x. n = 5 * x) -> exists x. n * n * n * n = 5 * x + 1",
         "existing_name": "mod5_fourth_power_one"
+      },
+      "blocker": null
+    },
+    {
+      "id": "division_remainder_succ",
+      "title": "Division with remainder for successor divisors",
+      "domain": "division",
+      "status": "checked_m20",
+      "dependencies": [
+        "zero_add",
+        "add_succ_left",
+        "zero_or_succ"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Constructive induction on the dividend, splitting the remainder-gap witness into zero and successor cases.",
+      "peano": {
+        "statement": "forall d n. exists q r. n = S d * q + r /\\ exists k. k + S r = S d",
+        "existing_name": "division_remainder_succ"
+      },
+      "blocker": null
+    },
+    {
+      "id": "division_remainder_exists",
+      "title": "Division with remainder for every nonzero divisor",
+      "domain": "division",
+      "status": "checked_m20",
+      "dependencies": [
+        "zero_or_succ",
+        "division_remainder_succ"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Extracts a predecessor from the nonzero divisor and applies the successor-divisor construction.",
+      "peano": {
+        "statement": "forall m n. ~(m = 0) -> exists q r. n = m * q + r /\\ exists k. k + S r = m",
+        "existing_name": "division_remainder_exists"
+      },
+      "blocker": null
+    },
+    {
+      "id": "remainder_bound_step",
+      "title": "Advance a strict remainder bound by one step",
+      "domain": "division",
+      "status": "checked_m20",
+      "dependencies": [
+        "le_eq_or_lt"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Specializes the checked equality-or-strict decomposition to the successor of a remainder.",
+      "peano": {
+        "statement": "forall r d. (exists k. k + S r = d) -> S r = d \\/ exists k. k + S (S r) = d",
+        "existing_name": "remainder_bound_step"
+      },
+      "blocker": null
+    },
+    {
+      "id": "division_block_upper",
+      "title": "A bounded remainder lies below the next divisor block",
+      "domain": "division",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_assoc",
+        "add_comm"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Rearranges the explicit remainder-bound witness into a strict upper block bound without subtraction.",
+      "peano": {
+        "statement": "forall d q r. (exists k. k + S r = d) -> exists k. k + S (d * q + r) = d * S q",
+        "existing_name": "division_block_upper"
+      },
+      "blocker": null
+    },
+    {
+      "id": "positive_quotient_gap_impossible",
+      "title": "A positive quotient gap contradicts bounded remainders",
+      "domain": "division",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_comm",
+        "add_assoc",
+        "mul_add",
+        "add_left_cancel",
+        "lt_not_eq_add_middle"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Expands the larger quotient, cancels the common block, and contradicts the smaller remainder bound.",
+      "peano": {
+        "statement": "forall m q q2 r s k. (exists z. z + S r = m) -> S k + q = q2 -> ~(m * q + r = m * q2 + s)",
+        "existing_name": "positive_quotient_gap_impossible"
+      },
+      "blocker": null
+    },
+    {
+      "id": "remainder_unique_same_quotient",
+      "title": "Remainders are unique at a fixed quotient",
+      "domain": "division",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_left_cancel"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Cancels the common divisor-times-quotient prefix.",
+      "peano": {
+        "statement": "forall d q r s. d * q + r = d * q + s -> r = s",
+        "existing_name": "remainder_unique_same_quotient"
+      },
+      "blocker": null
+    },
+    {
+      "id": "division_remainder_unique",
+      "title": "Quotient and remainder are unique",
+      "domain": "division",
+      "status": "checked_m20",
+      "dependencies": [
+        "zero_add",
+        "le_total",
+        "zero_or_succ",
+        "add_left_cancel",
+        "positive_quotient_gap_impossible"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "Totality splits the quotient gap; zero gives equality and cancellation, while a positive gap contradicts one strict remainder bound.",
+      "peano": {
+        "statement": "forall m n q r q2 r2. n = m * q + r -> (exists k. k + S r = m) -> n = m * q2 + r2 -> (exists k. k + S r2 = m) -> q = q2 /\\ r = r2",
+        "existing_name": "division_remainder_unique"
+      },
+      "blocker": null
+    },
+    {
+      "id": "zero_remainder_implies_multiple",
+      "title": "Zero remainder implies divisibility",
+      "domain": "division",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Erases the definitional zero addend and returns the quotient as a divisibility witness.",
+      "peano": {
+        "statement": "forall m n q. n = m * q + 0 -> exists k. n = m * k",
+        "existing_name": "zero_remainder_implies_multiple"
+      },
+      "blocker": null
+    },
+    {
+      "id": "multiple_has_zero_remainder",
+      "title": "A multiple has a bounded zero remainder",
+      "domain": "division",
+      "status": "checked_m20",
+      "dependencies": [
+        "zero_or_succ"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "For a nonzero divisor, packages its divisibility witness as a quotient-remainder decomposition with remainder zero.",
+      "peano": {
+        "statement": "forall m n. ~(m = 0) -> (exists q. n = m * q) -> exists q r. (n = m * q + r /\\ r = 0) /\\ exists k. k + S r = m",
+        "existing_name": "multiple_has_zero_remainder"
       },
       "blocker": null
     },

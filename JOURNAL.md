@@ -1090,3 +1090,36 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   Book, 198 deep links and 44 sessions/260 replayed commands, the exact
   87-node catalog/runtime contract, all artifact and vault drift checks, and
   the Lean FTA theorem-type/axiom audit.
+
+## 2026-07-28 — Native order and division milestone
+
+- Extended the runtime from 63 to 104 independently checked theorems without
+  changing the term language, formula language, kernel, or logic mode. The 41
+  new entries fill discrete order, additive and multiplicative monotonicity,
+  nonzero multiplication cancellation, and the constructive division layer.
+- Proved `division_remainder_exists` by ordinary induction on the dividend.
+  Its checked certificate has 196 nodes/depth 37 and constructs explicit
+  quotient, remainder, equality, and strict-bound witnesses for every nonzero
+  divisor.
+- Proved the separate `division_remainder_unique` theorem. Totality splits the
+  quotient gap into zero/successor cases; the zero case cancels the common
+  block and the successor case contradicts the smaller strict remainder bound.
+  The certificate has 1,442 nodes/depth 47 and needs no redundant nonzero
+  premise because a strict bound already excludes a zero divisor.
+- Added zero-remainder/divisibility bridges and reusable block-bound helpers.
+  The accepted uniqueness proof directly uses `add_left_cancel` and
+  `positive_quotient_gap_impossible`; the latter transitively uses
+  `lt_not_eq_add_middle`. `remainder_bound_step`, `division_block_upper`, and
+  `remainder_unique_same_quotient` remain checked leaf helpers for later APIs.
+  This route avoided a roughly 30,000-node algebraic prototype.
+- Expanded the research DAG to 120 nodes: 23 baseline checked, 81
+  post-baseline checked, 12 planned expressible, and four language-blocked.
+  Regenerated the 104-certificate snapshot and 104 lemma pages; the Obsidian
+  graph now has 182 notes and 1,281 resolved links. The largest certificate
+  remains the prior modulo-five capstone at 21,515 nodes/depth 66.
+- The complete Peano suite passes 1,054 tests on Python 3.10. The 34-source
+  Jupyter Book builds without warnings; 199 deep links and 45 session blocks
+  containing 264 commands replay cleanly. Catalog/runtime equality, generated
+  artifact drift, corpus provenance, application identity, and all 1,281 vault
+  links are current. Cross-runtime and wider repository gates remain before
+  publication.

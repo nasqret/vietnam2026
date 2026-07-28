@@ -19,7 +19,7 @@ forall n m. n <= m \/ m <= n
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[division_remainder_unique]]
 
 ## Verification record
 

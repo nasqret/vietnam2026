@@ -12,11 +12,11 @@ needs.
 | Equality | symmetry, transitivity, successor/add/multiply congruence | checked |
 | Addition | identities, associativity, commutativity, cancellation, zero-sum rigidity | checked core; more orientations planned |
 | Multiplication | identities, annihilation, distributivity, associativity, commutativity, zero product | checked core |
-| Order | reflexivity, transitivity, antisymmetry, totality, zero least, successor bound | checked core; monotonicity planned |
+| Order | reflexivity, transitivity, trichotomy, incompatibility, addition monotonicity and cancellation | checked |
 | Divisibility | units, zero, reflexivity, transitivity, addition and product closure | checked |
-| Modular congruence | equivalence relation, additive and multiplicative compatibility | generic relation planned; fixed mod-five residue ladder checked |
+| Modular congruence | balanced reflexivity and symmetry; additive and multiplicative compatibility | first two checked; transitivity/compatibility planned; fixed mod-five residue ladder checked |
 | Parity | even/odd dichotomy and arithmetic tables | planned and expressible |
-| Division | quotient-remainder existence and uniqueness | planned and expressible |
+| Division | quotient-remainder existence, uniqueness, block separation, and zero-remainder/divisibility bridges | checked |
 | GCD/coprime | relational gcd, uniqueness, Bézout, Gauss cancellation | planned; signed-pair encoding required |
 | Primes | characterization, prime divisors, Euclid's lemma, infinitely many primes | `prime_two` checked; general spine planned and expressible |
 | Factorization | existence and uniqueness up to permutation | β representation selected; Peano proof spine pending; Lean companion checked |

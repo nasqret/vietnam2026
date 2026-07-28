@@ -20,6 +20,7 @@ forall a b. a + b = 0 -> a = 0
 
 ## Checked dependents
 
+- [[add_eq_zero_components]]
 - [[two_large_factors_impossible]]
 
 ## Verification record

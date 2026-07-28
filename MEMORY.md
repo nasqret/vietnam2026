@@ -287,8 +287,8 @@
 
 - M20 is a parallel library milestone on top of `peano-lab`, not a replacement for the active M19
   policy experiment. It organizes reusable facts as equality → semiring → order → divisibility →
-  congruence → gcd → primes → factorization. The modulus-five fourth-power theorem is a downstream
-  example rather than the organizing principle.
+  congruence → division → gcd → primes → factorization. The modulus-five fourth-power theorem is a
+  downstream example rather than the organizing principle.
 - The independently validated M20 branch snapshot grows its 23-entry base to 51 closed theorems:
   28 new equality congruence, additive cancellation and zero-sum, order-endpoint,
   zero-product/nonzero-product,
@@ -328,14 +328,16 @@
   170 commands, and 414/414 vault wikilinks pass. Local browser candidate `2026-07-28g` has
   application identity `a-3ea7b7142aa0`; automated worker boot passes, direct in-app Pyodide
   latency remains unmeasured, and production is untouched.
-- The reconciled runtime has 63 unique checked theorems. Of the 26 published
-  modular records, fourteen coincide exactly with M20 entries and twelve are
-  additional capstones; a guarded union rejects incompatible duplicates. The
-  synchronized research catalog now has 87 nodes (23 baseline checked, 40
-  post-baseline checked, 20 planned, four language-blocked) plus the separate
-  Lean FTA companion. The regenerated snapshot has 63 certificates, the vault
-  has 141 notes/988 resolved links, and local browser build `2026-07-28i`
-  has application identity `a-8bbb61d1e7ba`. The combined gate passes 1,054
-  Peano tests on Python 3.10 and 3.12, all 360 Lambda tests, the 34-source
-  warning-as-error book, and 198 deep links/44 sessions/260 commands;
-  production is untouched.
+- The current native arithmetic runtime has 104 unique checked theorems: 23
+  baseline entries, 69 foundational post-baseline entries, and twelve unique
+  modular capstones. It now includes discrete order, multiplication
+  cancellation/monotonicity, constructive quotient-remainder existence, full
+  quotient-remainder uniqueness, and zero-remainder/divisibility bridges. The
+  uniqueness certificate is 1,442 nodes/depth 47; the overall maximum remains
+  `mod5_fourth_power_one` at 21,515/depth 66. The synchronized research catalog
+  has 120 nodes (23 baseline checked, 81 post-baseline checked, 12 planned,
+  four language-blocked) plus the separate Lean FTA companion. The generated
+  vault has 182 notes and 1,281 resolved links. The kernel and object language
+  are unchanged. The local browser candidate is `2026-07-28j` /
+  `a-aec4ce3e1671`; 1,054 Peano tests, the warning-free 34-source book, and 264
+  documented commands pass. Production is untouched.

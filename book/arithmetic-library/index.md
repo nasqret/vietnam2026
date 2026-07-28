@@ -11,34 +11,35 @@ $$
 \to \text{order}
 \to \text{divisibility}
 \to \text{congruence}
+\to \text{division}
 \to \gcd
 \to \text{primes}
 \to \text{factorization}.
 $$
 
-The current public snapshot contains **63 replayed, closed, independently
-kernel-checked Peano theorems**. Twenty-eight form the M20 foundational layer:
-named equality congruences, additive cancellation and order facts,
-zero-sum and nonzero-product facts, a small-factor obstruction, divisibility
-closure, constructive non-divisibility normal forms, and generic
-quotient-and-remainder algebra. This layer includes `prime_two`, the first
-checked instance of the fully expanded prime predicate. The reconciled
-upstream modular catalog contributes twelve more unique residue and
-fourth-power theorems; fourteen of its other records are identical to M20
-entries and are exposed only once.
+The current public snapshot contains **104 replayed, closed, independently
+kernel-checked Peano theorems**. Sixty-nine form the post-baseline foundational
+layer: named equality congruences, additive cancellation, discrete order,
+multiplication cancellation and monotonicity, zero-sum and nonzero-product
+facts, divisibility closure, constructive non-divisibility, generic residue
+algebra, and constructive quotient-remainder existence and uniqueness. This
+layer includes `prime_two`, the first checked instance of the fully expanded
+prime predicate. The reconciled upstream modular catalog contributes twelve
+more unique residue and fourth-power theorems; fourteen of its other records
+are identical to foundational entries and are exposed only once.
 
 Every current theorem fits the browser's ordinary `use` limit. The largest
 certificate, `mod5_fourth_power_one`, has 21,515 nodes and depth 66, below
 the 32,768-node/depth-128 import bound.
 
-That number is deliberately narrower than the 87-node research catalog: 23
-nodes are `checked_existing`, 40 are `checked_m20`, 20 are
+That number is deliberately narrower than the 120-node research catalog: 23
+nodes are `checked_existing`, 81 are `checked_m20`, 12 are
 `planned_expressible`, and four are `blocked_by_language`. Beyond
 `prime_two`, the catalog records candidate lemmas on modular congruence,
-division, gcd, coprimality, the general prime spine, Euclid's lemma, and prime
+gcd, coprimality, the general prime spine, Euclid's lemma, and prime
 factorization. A separate Lean 4 companion now checks full finite-list FTA
 existence and uniqueness up to permutation. It is cataloged as a companion,
-not counted among the 63 Peano theorems; those entries are not presented as
+not counted among the 104 Peano theorems; those entries are not presented as
 Peano-proved until a script and closed certificate pass the same kernel gate.
 
 ## How to read the status labels
@@ -49,6 +50,11 @@ Peano-proved until a script and closed certificate pass the same kernel gate.
 | `checked_m20` | Checked post-baseline extension, including compatible upstream modular entries. |
 | `planned_expressible` | Stateable in today's first-order Peano language, but not yet admitted. |
 | `blocked_by_language` | Needs a representation/interface not yet implemented as an expanded, checked Peano target. |
+
+For the β-coded factorization entries, `blocked_by_language` describes the
+missing expanded authoring interface, not a limitation of first-order PA. The
+selected β relations are expressible with natural-number codes; their hygienic
+expanders and proof infrastructure have not yet been admitted.
 
 There is no status called “obvious.” A familiar mathematical fact and a
 checked theorem are different repository objects.

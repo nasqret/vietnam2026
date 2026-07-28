@@ -19,7 +19,7 @@ forall n. ~(S n = 0)
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[mul_left_cancel_nonzero]]
 
 ## Verification record
 

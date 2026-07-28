@@ -22,6 +22,13 @@ forall n m. S n + m = S (n + m)
 - [[add_comm]]
 - [[drop_add_prefix_from_fixed]]
 - [[le_succ_self]]
+- [[le_succ]]
+- [[lt_to_le]]
+- [[lt_irrefl_expanded]]
+- [[le_eq_or_lt]]
+- [[lt_trans]]
+- [[lt_not_eq_add_middle]]
+- [[division_remainder_succ]]
 
 ## Verification record
 

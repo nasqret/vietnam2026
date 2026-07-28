@@ -21,6 +21,7 @@ forall n m. n * m = m * n
 ## Checked dependents
 
 - [[add_mul]]
+- [[mul_right_cancel_nonzero]]
 - [[multiple_mul_left]]
 - [[square_decomp]]
 

@@ -26,6 +26,8 @@ flowchart TD
   eq_symm[eq_symm]
   eq_trans[eq_trans]
   succ_congr[succ_congr]
+  zero_or_succ[zero_or_succ]
+  nonzero_is_succ[nonzero_is_succ]
   add_congr[add_congr]
   mul_congr[mul_congr]
   add_right_cancel[add_right_cancel]
@@ -33,8 +35,44 @@ flowchart TD
   zero_le[zero_le]
   le_succ_self[le_succ_self]
   le_zero[le_zero]
+  one_le_of_ne_zero[one_le_of_ne_zero]
+  ne_zero_of_one_le[ne_zero_of_one_le]
+  le_add_left[le_add_left]
+  le_add_right[le_add_right]
+  add_le_add_right[add_le_add_right]
+  add_le_add_left[add_le_add_left]
+  succ_le_succ[succ_le_succ]
+  le_of_succ_le_succ[le_of_succ_le_succ]
+  le_succ[le_succ]
+  lt_to_le[lt_to_le]
+  add_le_cancel_right[add_le_cancel_right]
+  lt_irrefl_expanded[lt_irrefl_expanded]
+  le_eq_or_lt[le_eq_or_lt]
+  lt_of_lt_of_le[lt_of_lt_of_le]
+  lt_of_le_of_lt[lt_of_le_of_lt]
+  lt_trans[lt_trans]
+  le_or_lt[le_or_lt]
+  lt_trichotomy[lt_trichotomy]
+  lt_not_le[lt_not_le]
+  le_not_lt[le_not_lt]
+  lt_not_eq_add_middle[lt_not_eq_add_middle]
+  mul_le_mul_left[mul_le_mul_left]
+  mul_le_mul_right[mul_le_mul_right]
+  mul_lt_mul_succ_left_nonzero[mul_lt_mul_succ_left_nonzero]
+  division_remainder_succ[division_remainder_succ]
+  division_remainder_exists[division_remainder_exists]
+  remainder_bound_step[remainder_bound_step]
+  division_block_upper[division_block_upper]
+  positive_quotient_gap_impossible[positive_quotient_gap_impossible]
+  remainder_unique_same_quotient[remainder_unique_same_quotient]
+  division_remainder_unique[division_remainder_unique]
+  zero_remainder_implies_multiple[zero_remainder_implies_multiple]
+  multiple_has_zero_remainder[multiple_has_zero_remainder]
   add_eq_zero_left[add_eq_zero_left]
+  add_eq_zero_components[add_eq_zero_components]
   mul_ne_zero[mul_ne_zero]
+  mul_left_cancel_nonzero[mul_left_cancel_nonzero]
+  mul_right_cancel_nonzero[mul_right_cancel_nonzero]
   two_large_factors_impossible[two_large_factors_impossible]
   prime_two[prime_two]
   multiple_zero[multiple_zero]
@@ -46,6 +84,9 @@ flowchart TD
   multiple_trans[multiple_trans]
   not_multiple_pointwise[not_multiple_pointwise]
   not_multiple_from_pointwise[not_multiple_from_pointwise]
+  mod_eq_refl[mod_eq_refl]
+  mod_eq_symm[mod_eq_symm]
+  dvd_to_mod_zero[dvd_to_mod_zero]
   add_residue[add_residue]
   add_residue_lift[add_residue_lift]
   square_decomp[square_decomp]
@@ -88,9 +129,59 @@ flowchart TD
   zero_add --> le_succ_self
   add_succ_left --> le_succ_self
   add_eq_zero_right --> le_zero
+  add_comm --> le_add_right
+  add_assoc --> add_le_add_right
+  add_assoc --> add_le_add_left
+  add_comm --> add_le_add_left
+  add_succ_left --> le_succ
+  add_succ_left --> lt_to_le
+  add_assoc --> add_le_cancel_right
+  add_right_cancel --> add_le_cancel_right
+  add_succ_left --> lt_irrefl_expanded
+  no_succ_add_fixed --> lt_irrefl_expanded
+  zero_or_succ --> le_eq_or_lt
+  zero_add --> le_eq_or_lt
+  add_succ_left --> le_eq_or_lt
+  le_trans --> lt_of_lt_of_le
+  add_assoc --> lt_of_le_of_lt
+  add_assoc --> lt_trans
+  add_succ_left --> lt_trans
+  lt_not_le --> le_not_lt
+  add_succ_left --> lt_not_eq_add_middle
+  mul_add --> mul_le_mul_left
+  add_mul --> mul_le_mul_right
+  add_comm --> mul_lt_mul_succ_left_nonzero
+  zero_add --> division_remainder_succ
+  add_succ_left --> division_remainder_succ
+  zero_or_succ --> division_remainder_succ
+  zero_or_succ --> division_remainder_exists
+  division_remainder_succ --> division_remainder_exists
+  le_eq_or_lt --> remainder_bound_step
+  add_assoc --> division_block_upper
+  add_comm --> division_block_upper
+  add_comm --> positive_quotient_gap_impossible
+  add_assoc --> positive_quotient_gap_impossible
+  mul_add --> positive_quotient_gap_impossible
+  add_left_cancel --> positive_quotient_gap_impossible
+  lt_not_eq_add_middle --> positive_quotient_gap_impossible
+  add_left_cancel --> remainder_unique_same_quotient
+  zero_add --> division_remainder_unique
+  le_total --> division_remainder_unique
+  zero_or_succ --> division_remainder_unique
+  add_left_cancel --> division_remainder_unique
+  positive_quotient_gap_impossible --> division_remainder_unique
+  zero_or_succ --> multiple_has_zero_remainder
   add_comm --> add_eq_zero_left
   add_eq_zero_right --> add_eq_zero_left
+  add_eq_zero_left --> add_eq_zero_components
+  add_eq_zero_right --> add_eq_zero_components
   mul_eq_zero --> mul_ne_zero
+  mul_eq_zero --> mul_left_cancel_nonzero
+  mul_ne_zero --> mul_left_cancel_nonzero
+  add_right_cancel --> mul_left_cancel_nonzero
+  succ_ne_zero --> mul_left_cancel_nonzero
+  mul_comm --> mul_right_cancel_nonzero
+  mul_left_cancel_nonzero --> mul_right_cancel_nonzero
   mul_succ_left --> two_large_factors_impossible
   add_eq_zero_left --> two_large_factors_impossible
   mul_eq_zero --> two_large_factors_impossible
@@ -103,6 +194,7 @@ flowchart TD
   mul_comm --> multiple_mul_left
   multiple_mul_right --> multiple_mul_left
   mul_assoc --> multiple_trans
+  zero_add --> dvd_to_mod_zero
   add_assoc --> add_residue
   mul_add --> add_residue
   add_comm --> add_residue_lift

@@ -20,7 +20,9 @@ forall a b c. a + b = a + c -> b = c
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[positive_quotient_gap_impossible]]
+- [[remainder_unique_same_quotient]]
+- [[division_remainder_unique]]
 
 ## Verification record
 

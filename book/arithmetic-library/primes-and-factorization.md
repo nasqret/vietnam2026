@@ -28,7 +28,8 @@ prime_two : ~(2 = 1) /\ forall a b. 2 = a * b -> a = 1 \/ b = 1
 Its proof depends on `two_large_factors_impossible`; neither theorem adds a
 trusted primality oracle or a primitive `Prime` atom.
 
-The remaining prime layer should establish:
+The checked division layer now supplies constructive quotient-remainder
+existence and uniqueness. The remaining prime layer should establish:
 
 1. zero and one are not prime;
 2. a non-prime number at least two has a proper nontrivial divisor;
@@ -48,7 +49,7 @@ $$
 $$
 
 to say that $g$ divides $a$ and $b$, and every common divisor divides $g$.
-The division algorithm supports existence; divisibility antisymmetry supports
+The now-checked division algorithm supports existence; divisibility antisymmetry supports
 uniqueness. A signed-pair Bézout equation then connects gcd to coprimality
 without importing integers into the kernel language.
 
@@ -155,4 +156,5 @@ This release contains two deliberately separate FTA forms:
 
 The remaining Peano work starts by freezing and implementing the hygienic
 macro expansions with round-trip tests. It then discharges the
-division/Euclid/β-coding lemmas and produces the two closed PA certificates.
+gcd/Bézout/Euclid and β-coding lemmas and produces the two closed PA
+certificates.

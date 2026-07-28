@@ -20,6 +20,7 @@ forall n m k. (n + m) * k = n * k + m * k
 
 ## Checked dependents
 
+- [[mul_le_mul_right]]
 - [[square_decomp]]
 
 ## Verification record

@@ -20,6 +20,7 @@ forall p n. S p + n = n -> false
 ## Checked dependents
 
 - [[drop_add_prefix_from_fixed]]
+- [[lt_irrefl_expanded]]
 
 ## Verification record
 

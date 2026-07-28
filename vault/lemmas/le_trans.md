@@ -19,7 +19,7 @@ forall n m k. n <= m -> m <= k -> n <= k
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[lt_of_lt_of_le]]
 
 ## Verification record
 
