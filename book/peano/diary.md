@@ -1081,8 +1081,24 @@ ledger. The compute job repeats runtime, request, adapter, evaluator, and kernel
 digest-named report, optional proof, and terminal summary. `No proof found` is an honest completed
 search result; missing provenance is a failed job.
 
-The new path has 138 focused policy/request/WMI/runtime tests, and the complete Peano suite reports
-1,028 passes. It makes a future trained adapter usable; it does not claim that the pending adapter
+The new path has 139 focused policy/request/WMI/runtime tests, and the complete Peano suite reports
+1,029 passes. It makes a future trained adapter usable; it does not claim that the pending adapter
 has learned to solve anything. That distinction is exactly the lesson: language models suggest
 tactics, execution constructs certificates, the kernel proves the theorem, and provenance tells us
 which model actually made the suggestion.
+
+## 2026-07-28 — The first full WMI preparation found a shell boundary, not a model result
+
+Clean commit `0ad12bc` reached WMI as a reconstructed and hash-checked Git tree. Preparation job
+`171391` acquired the requested A100, but stopped after twelve seconds—before installing the
+overlay, loading Qwen, or training. A constant naming the administrator-owned central Conda prefix
+was deliberately readonly. Two Python verifier calls also used that same name for a temporary
+command environment assignment. Bash rejects assignments to readonly variables even when the new
+value is identical, so the first verifier received no exported prefix and failed closed.
+
+The repair keeps the authoritative constant readonly and exports its value under a distinct,
+purpose-specific child name. Both Python verifiers consume the child name; neither can alter the
+shell constant. A regression executes both call shapes under `set -euo pipefail`, rather than only
+searching their source text. The focused gate now reports 139 passes and the complete Peano suite
+1,029. This is exactly why preparation is a separate milestone: it turns cluster-specific shell
+semantics into a small reproducible failure before any expensive or scientifically meaningful run.

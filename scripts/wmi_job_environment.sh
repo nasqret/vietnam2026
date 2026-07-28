@@ -48,7 +48,7 @@ peano_wmi_activate_base() {
 peano_wmi_verify_base_manifest() {
   PEANO_WMI_EXPECTED_MODULE="$PEANO_WMI_CONDA_MODULE" \
     PEANO_WMI_EXPECTED_ENV="$PEANO_WMI_BASE_ENV" \
-    PEANO_WMI_CENTRAL_PREFIX="$PEANO_WMI_CENTRAL_PREFIX" \
+    PEANO_WMI_EXPECTED_CENTRAL_PREFIX="$PEANO_WMI_CENTRAL_PREFIX" \
     python - "$PEANO_WMI_BASE_MANIFEST" <<'PY'
 import importlib.metadata
 import ensurepip
@@ -79,7 +79,7 @@ if set(manifest) != {
     "v",
 }:
     raise ValueError("WMI base manifest has unexpected fields")
-central = Path(os.environ["PEANO_WMI_CENTRAL_PREFIX"]).resolve()
+central = Path(os.environ["PEANO_WMI_EXPECTED_CENTRAL_PREFIX"]).resolve()
 expected_scalars = {
     "base_environment": os.environ["PEANO_WMI_EXPECTED_ENV"],
     "central_prefix": str(central),
@@ -160,7 +160,7 @@ peano_wmi_current_python() {
 peano_wmi_assert_runtime() {
   local python_path="${1:?WMI Python path required}"
   PEANO_WMI_EXPECTED_PREFIX="$(dirname "$(dirname "$python_path")")" \
-    PEANO_WMI_CENTRAL_PREFIX="$PEANO_WMI_CENTRAL_PREFIX" \
+    PEANO_WMI_EXPECTED_CENTRAL_PREFIX="$PEANO_WMI_CENTRAL_PREFIX" \
     "$python_path" - <<'PY'
 import importlib.metadata
 import math
@@ -184,7 +184,7 @@ def require(condition, message):
 
 
 release = Path(os.environ["PEANO_WMI_EXPECTED_PREFIX"]).resolve()
-central = Path(os.environ["PEANO_WMI_CENTRAL_PREFIX"]).resolve()
+central = Path(os.environ["PEANO_WMI_EXPECTED_CENTRAL_PREFIX"]).resolve()
 require(platform.machine() == "x86_64", platform.machine())
 require(platform.python_version() == "3.12.12", platform.python_version())
 require(Path(sys.prefix).resolve() == release, sys.prefix)

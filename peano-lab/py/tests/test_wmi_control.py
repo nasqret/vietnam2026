@@ -337,6 +337,42 @@ fi
     subprocess.run(["bash", "-c", program], check=True)
 
 
+def test_wmi_readonly_constants_are_exported_under_distinct_child_names(
+    tmp_path: Path,
+) -> None:
+    helper = SCRIPTS / "wmi_job_environment.sh"
+    release = tmp_path / "release"
+    fake_python = release / "bin" / "python"
+    fake_python.parent.mkdir(parents=True)
+    fake_python.write_text(
+        """#!/usr/bin/env bash
+set -euo pipefail
+test "${PEANO_WMI_EXPECTED_CENTRAL_PREFIX:-}" = \
+  /projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu
+if [ -n "${PEANO_WMI_EXPECTED_PREFIX:-}" ]; then
+  expected_release="$(cd "$(dirname "$0")/.." && pwd -P)"
+  test "$PEANO_WMI_EXPECTED_PREFIX" = "$expected_release"
+fi
+""",
+        encoding="utf-8",
+    )
+    fake_python.chmod(0o755)
+    program = r'''
+set -euo pipefail
+helper="$1"
+fake_python="$2"
+release="$3"
+source "$helper"
+python() { "$fake_python"; }
+peano_wmi_verify_base_manifest
+peano_wmi_assert_runtime "$fake_python"
+'''
+    subprocess.run(
+        ["bash", "-c", program, "wmi-prefix-test", str(helper), str(fake_python), str(release)],
+        check=True,
+    )
+
+
 def test_wmi_structured_runtime_records_driver_and_full_gpu_identity() -> None:
     source = (TRAINING / "runtime.py").read_text(encoding="utf-8")
     assert '"--query-gpu=driver_version"' in source

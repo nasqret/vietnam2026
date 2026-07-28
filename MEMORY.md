@@ -249,9 +249,11 @@
 - M19 pre-training infrastructure gate on 2026-07-28: 363 focused tests, 912 full Peano tests,
   Lambda 360 tests plus 36 subtests, clean book build/command replay, and green local staging as
   build `2026-07-28f`, application `a-69aa3b753965`. This is not deployed and is not a model result.
-- M19 current local gate on 2026-07-28: 138 focused trained-policy/WMI/arbitrary-proof tests and
-  1,028 complete Peano tests. A trained adapter is usable on any bounded closed PA formula through
+- M19 current local gate on 2026-07-28: 139 focused trained-policy/WMI/arbitrary-proof tests and
+  1,029 complete Peano tests. A trained adapter is usable on any bounded closed PA formula through
   an exact `model-v1` CLI that exports `.pa` only after a second kernel replay. WMI use goes through
   an immutable canonical request, SHA-256-only Slurm transport, durable request/job ledger, and
-  allowlisted typed-A100 proof job. The adapter remains untrusted; the real WMI LoRA prepare,
-  100-step training, and learned evaluation results are still pending.
+  allowlisted typed-A100 proof job. WMI preparation `171391` failed safely before installation
+  because a readonly shell constant was reused as a child-process assignment; the corrected
+  distinct child variable is regression-tested. The adapter remains untrusted; the real WMI LoRA
+  prepare, 100-step training, and learned evaluation results are still pending.

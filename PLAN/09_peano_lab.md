@@ -531,8 +531,8 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       and no heavy local or remote job remains running before the milestone is called complete.
 
 - **Current verification (2026-07-28, in progress):** the current focused trained-policy,
-  arbitrary-proof, WMI request/control, and runtime set reports 138 passes; the complete Peano
-  suite reports 1,028 passes, Lambda Lab reports 360 tests plus 36 subtests, the book builds, all 193 documented
+  arbitrary-proof, WMI request/control, and runtime set reports 139 passes; the complete Peano
+  suite reports 1,029 passes, Lambda Lab reports 360 tests plus 36 subtests, the book builds, all 193 documented
   links and 34 command sessions replay, and local application staging is green as
   `2026-07-28f` / `a-69aa3b753965`. A lightweight arm64 audit measured approximately
   12,538 quiet and 5,537 traced trivial proofs/second before the latest trace-copy optimization;
@@ -552,7 +552,10 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   x86-64 base/overlay, deployment, serialization, and one-shot guards now pass 96 focused local
   tests. The arbitrary-theorem path adds immutable request transport, a request/job ledger, a
   typed-A100 proof job, exact adapter/source rechecks, and second kernel replay before `.pa`
-  publication. The real WMI LoRA save/reload smoke is still required before training.
+  publication. WMI preparation `171391` failed safely before installation because the readonly
+  central-prefix shell constant was also used as a child environment assignment. The corrected
+  handoff uses a distinct child name and has an executable regression. The real WMI LoRA
+  save/reload smoke is still required before training.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

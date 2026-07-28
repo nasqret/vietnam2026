@@ -893,6 +893,18 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   validates the request and durably joins request/job hashes before releasing an allowlisted A100
   job. Digest-named report, optional proof, and terminal summary distinguish `no-proof` from an
   infrastructure failure.
-- Current gates: 138 focused policy/request/WMI/runtime tests and 1,028 complete Peano tests pass;
+- Current gates: 139 focused policy/request/WMI/runtime tests and 1,029 complete Peano tests pass;
   Lambda Lab remains 360 tests plus 36 subtests. No WMI model preparation/training/evaluation or
   arbitrary theorem inference has yet run from this source, so no learned result is claimed.
+
+## 2026-07-28 (branch peano-lab) — WMI preparation fails closed on a readonly export collision
+
+- Clean commit `0ad12bc` was published to WMI with its reconstructed Git tree. Preparation job
+  `171391` acquired the intended A100 and failed in 12 seconds before dependency installation,
+  model loading, or training.
+- The fixed central-prefix constant was readonly in Bash, but two child-process invocations tried
+  to assign that same shell name in their temporary environment. Bash rejected the assignment;
+  the Python verifier consequently saw no exported value and aborted.
+- The child processes now receive `PEANO_WMI_EXPECTED_CENTRAL_PREFIX`, derived only from the same
+  readonly constant. An executable shell regression covers both manifest and overlay-runtime
+  verifier invocations. The corrected gate reports 139 focused and 1,029 complete Peano tests.
