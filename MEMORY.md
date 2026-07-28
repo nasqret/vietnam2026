@@ -187,9 +187,12 @@
   canceled. The corrected isolated recipe pins `torch==2.9.1+cu129`, its transitive closure, binary
   wheels, and `pip check`. Replacement preparation job `20029964` passed on a GH200 from exact
   commit `41683e2`: the pinned Qwen3-1.7B revision downloaded, one BF16 LoRA step and adapter
-  save/reload produced finite losses, and closed artifact hashes were recorded. The registered
-  100-step training and kernel-judged evaluation remain pending; the model never enters the trusted
-  computing base. WMI access is available through `hw_csi`; typed-A100 probe `171369` passed on an
+  save/reload produced finite losses, and closed artifact hashes were recorded. Training job
+  `20029970` then completed 100 steps in 9m51s (train loss 0.78446, final validation loss 0.13518),
+  but evaluator `20029980` failed before generation because sorted manifest JSON conflicted with a
+  construction-order parser. The corrected parser preserves exact fields, values, authority hash,
+  and strict row-order checks; no kernel-judged solve rate exists yet. The model never enters the
+  trusted computing base. WMI access is available through `hw_csi`; typed-A100 probe `171369` passed on an
   A100-SXM4-80GB. Its distinct x86-64/PyTorch-2.5.1/CUDA-12.4 route now has a reviewed central-base
   manifest, a 12-wheel hash-locked overlay, transactional deployment locks, and a one-shot
   safetensors model-weight contract. Full WMI preparation `171395` passed in 8m39s, including exact
@@ -259,4 +262,6 @@
   allowlisted typed-A100 proof job. WMI preparation `171395` passed the real LoRA save/reload gate;
   the subsequent training submission failed closed before `sbatch` on empty-field TSV parsing. Its
   strict parser is regression-tested. The adapter remains untrusted; a new same-source prepare,
-  100-step training, and learned evaluation results are still pending.
+  100-step training, and learned evaluation results are still pending. WMI preparation `171404`
+  was explicitly canceled after 1m56s once the manifest-loader bug was known, avoiding an
+  unevaluable run.

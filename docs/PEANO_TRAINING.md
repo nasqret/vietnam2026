@@ -435,7 +435,15 @@ Preparation job `20029964` passed that full gate on 2026-07-28 from clean commit
 Qwen3-1.7B model/tokenizer revision resolved to the requested commit, both the
 training and reloaded losses were finite, and the closed adapter/tokenizer
 artifact hashes were recorded. This is an environment and one-step LoRA smoke,
-not a trained-policy result; the 100-step training job remains scheduler work.
+not a trained-policy result. Training job `20029970` later completed all 100
+steps in 9m51s with train loss `0.78446` and final teacher-forced validation
+loss `0.13518`. Evaluator `20029980` failed after three seconds, before model
+generation: canonical manifest JSON sorts nested mapping keys, while the loader
+incorrectly reused the construction-order check intended for dataset rows. The
+loader now reconstructs the exact three capability fields from the sorted
+manifest representation before checking their values, environment preimage
+hash, and fixed `model-v1` authority. No kernel-judged theorem solve rate is
+available from that run.
 
 ### 10.1 WMI A100 replication path
 
@@ -480,7 +488,10 @@ training submission was refused before `sbatch` because Bash whitespace
 splitting collapsed the empty dependency column in the TSV ledger. The
 controller now delegates that boundary to a bounded strict UTF-8 nine-field
 parser. The fix changes source identity, so a fresh preparation job is required
-before training; no WMI learned result is claimed yet.
+before training; no WMI learned result is claimed yet. Preparation `171404`
+was canceled after 1m56s when the manifest-loader defect was discovered, rather
+than spending A100 time on a chain whose evaluator would necessarily reject its
+manifest.
 
 ### 10.2 Proving a new theorem with a trained adapter
 

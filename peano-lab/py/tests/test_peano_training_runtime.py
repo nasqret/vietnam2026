@@ -230,6 +230,17 @@ def test_prompt_completion_and_capability_boundaries_reject_injection() -> None:
     with pytest.raises(PromptError, match="sorted"):
         CapabilityIdentity.from_record(reordered)
 
+    lexical = {
+        key: CAPABILITIES.to_record()[key]
+        for key in sorted(CAPABILITIES.to_record())
+    }
+    with pytest.raises(PromptError, match="canonical order"):
+        CapabilityIdentity.from_record(lexical)
+    row = _builder_row()
+    row["capabilities"] = lexical
+    with pytest.raises(PromptError, match="canonical order"):
+        example_from_record(row, 1)
+
 
 def test_real_builder_style_row_trains_on_tactic_plus_eos_only() -> None:
     row = _builder_row(tactic="refl")
@@ -491,6 +502,24 @@ def test_training_attestation_cannot_launder_a_different_policy_environment() ->
     valid = {"inputs": _valid_training_inputs()}
     assert attested_training_environment(valid) == model_v1_environment()
 
+    canonical_manifest = json.loads(json.dumps(valid, sort_keys=True))
+    serialized_capabilities = canonical_manifest["inputs"]["dataset_attestation"][
+        "environment"
+    ]["capabilities"]
+    assert tuple(serialized_capabilities) == (
+        "allowed_commands",
+        "allowed_theorems",
+        "label",
+    )
+    assert attested_training_environment(canonical_manifest) == model_v1_environment()
+
+    malformed = json.loads(json.dumps(canonical_manifest))
+    malformed["inputs"]["dataset_attestation"]["environment"]["capabilities"][
+        "extra"
+    ] = True
+    with pytest.raises(ValueError, match="capabilities are malformed"):
+        attested_training_environment(malformed)
+
     forged = json.loads(json.dumps(valid))
     forged["inputs"]["dataset_attestation"]["environment"]["surface"] = "full"
     with pytest.raises(ValueError, match="hash/preimage mismatch"):
@@ -564,15 +593,15 @@ def test_adapter_loader_rejects_peft_pickle_fallback_artifacts() -> None:
         require_safetensors_adapter(
             {"files": {"adapter/adapter_config.json": "a" * 64}}
         )
-    with pytest.raises(ValueError, match="pickle-compatible"):
-        require_safetensors_adapter(
-            {
-                "files": {
-                    **safe["files"],
-                    "adapter/adapter_model.bin": "c" * 64,
-                }
-            }
-        )
+    for unsafe_name in (
+        "adapter/adapter_model.bin",
+        "adapter/training_args.bin",
+        "adapter/optimizer.pt",
+    ):
+        with pytest.raises(ValueError, match="pickle-compatible"):
+            require_safetensors_adapter(
+                {"files": {**safe["files"], unsafe_name: "c" * 64}}
+            )
 
 
 def test_run_identity_gates_and_hashes_checkpoint_resume(tmp_path: Path) -> None:

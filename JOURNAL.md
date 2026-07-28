@@ -921,3 +921,18 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   preserves empty data and rejects duplicate, malformed, or differently sourced predecessors.
   Because this changes the source commit, `171395` cannot be reused under the fix: a new prepare
   must establish the next chain. Current gates are 140 focused and 1,030 complete Peano tests.
+
+## 2026-07-28 (branch peano-lab) — Helios trained; proof quality still unmeasured
+
+- Accounting showed that queued Helios training `20029970` completed all 100 steps in 9m51s on a
+  GH200. The immutable manifest records train loss 0.78446 and final teacher-forced validation loss
+  0.13518 over 2,048/256 examples. This is evidence of distribution fitting, not theorem solving.
+- Evaluator `20029980` failed after three seconds before generation. `write_manifest(sort_keys=True)`
+  correctly serialized nested capability keys lexically, but `attested_training_environment`
+  incorrectly reused the construction-order parser required for raw policy rows.
+- The manifest boundary now validates the exact three-key set, reconstructs its semantic record,
+  and retains all value sorting, uniqueness, environment-preimage/hash, fixed-authority, and raw-row
+  order checks. WMI preparation `171404` was canceled after 1m56s once this universal evaluator
+  defect was known. Independent CPython-3.10 replay preserved every dataset/split/source-artifact
+  hash and changed only the attestor source identity; the refreshed attestation is
+  `e4b319a0…`. A fresh safe chain is required; no kernel-judged solve rate is claimed.

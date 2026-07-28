@@ -143,9 +143,27 @@ def attested_training_environment(
     classical = record.get("classical")
     if type(classical) is not bool:
         raise ValueError("attested policy logic mode must be Boolean")
+    capability_record = record.get("capabilities")
+    if type(capability_record) is not dict or set(capability_record) != {
+        "label",
+        "allowed_commands",
+        "allowed_theorems",
+    }:
+        raise ValueError("attested policy capabilities are malformed")
+    # Dataset rows have a deliberately fixed construction order, which
+    # CapabilityIdentity.from_record checks.  Training manifests are canonical
+    # JSON written with sort_keys=True, so their nested mapping is necessarily
+    # read back in lexical key order.  Reconstruct the semantic record here;
+    # exact fields and the environment preimage/hash comparison below remain
+    # mandatory.
+    canonical_capabilities = {
+        "label": capability_record["label"],
+        "allowed_commands": capability_record["allowed_commands"],
+        "allowed_theorems": capability_record["allowed_theorems"],
+    }
     environment = PromptEnvironment(
         classical,
-        CapabilityIdentity.from_record(record.get("capabilities")),
+        CapabilityIdentity.from_record(canonical_capabilities),
     )
     if environment_record(environment) != record:
         raise ValueError("attested policy environment hash/preimage mismatch")

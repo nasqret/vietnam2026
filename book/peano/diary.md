@@ -1129,3 +1129,40 @@ commit and sync timestamp, so the passed `171395` report cannot become the prede
 submitted from the fix. Weakening that comparison would erase the provenance guarantee precisely
 when it became useful. We instead run a fresh preparation and preserve `171395` as honest evidence
 for the earlier source.
+
+## 2026-07-28 — A low validation loss is not a proved theorem
+
+While the WMI controller work was underway, the older Helios dependency chain left the queue.
+Training job `20029970` completed 100 steps in 9m51s on a GH200. Its immutable manifest records
+2,048 training examples, 256 validation examples, train loss 0.78446, and final teacher-forced
+validation loss 0.13518. The step logs fell from losses near 4.9 to roughly 0.1–0.16. This is
+encouraging evidence that a 1.7B model can fit our next-tactic language cheaply. It is not evidence
+that it can finish a previously unseen proof: teacher forcing scores the next token while a proof
+requires a long sequence of valid state-dependent choices.
+
+The dependent evaluator `20029980` failed after three seconds, before loading the adapter or
+generating a tactic. The reason was a representation mismatch hiding in plain sight. Policy dataset
+rows deliberately preserve construction order, and their parser rejects reordered capability
+fields. Training manifests are canonical JSON written with `sort_keys=True`, so the same nested
+mapping is necessarily read back in lexical order. Reusing the row parser for the manifest made
+every honestly written adapter unevaluable.
+
+The fix does not make capabilities order-insensitive everywhere. At the manifest boundary it first
+requires exactly `label`, `allowed_commands`, and `allowed_theorems`, reconstructs that semantic
+record in the row parser's expected order, and then performs the existing sorted-value,
+no-duplicates, environment-preimage/hash, and exact `model-v1` checks. Raw dataset rows remain
+strictly ordered. A regression round-trips the environment through the actual sorted JSON shape
+that failed on Helios.
+
+The old Helios adapter also predates the present safetensors-only closed-directory rule and contains
+Trainer's `training_args.bin`; we will not weaken the current loader or silently delete that file to
+manufacture a result. WMI preparation `171404` was canceled after 1m56s when the manifest bug was
+found. The honest next step is a fresh same-source run that produces the current safe artifact and
+then reaches kernel-judged evaluation. Until then the answer to “does it prove PA well?” is: we have
+promising imitation loss, but no measured proof success.
+
+Because `contract.py` belongs to the attestor's recorded source set, even this representation-only
+fix invalidated the old attestor digest. A fresh CPython-3.10 independent replay reproduced the
+same 10,000 rows, 8,149/926/925 split hashes, raw source artifacts, environment, holdout contract,
+and dataset digest. Only the `contract.py` hash and aggregate attestor-source hash changed; the new
+canonical attestation file has SHA-256 `e4b319a0be94b4f0ec6584ddbcc1e9386104b249d660bc8d033d757ab11c66f8`.

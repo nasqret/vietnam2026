@@ -14,12 +14,13 @@ valid.
 
 ```{admonition} Experiment status, 2026-07-28
 :class: important
-The local execution, prompt, training-runtime, evaluation, provenance, and Helios control paths are
+The local execution, prompt, training-runtime, evaluation, provenance, and cluster control paths are
 implemented, and the first attested training-scale data release is complete: 2,522 independently
-kernel-checked roots compile to exactly 10,000 positive rows.  The **model experiment is still
-pending**: no Helios training result, learned pass rate, model comparison, or expert-iteration gain
-is claimed in this chapter.  Empty result cells are a feature of the protocol, not an invitation to
-invent numbers.
+kernel-checked roots compile to exactly 10,000 positive rows. Helios completed one registered
+100-step training run, but its evaluator failed before generation on a manifest representation
+bug. The **proof-quality experiment is still pending**: no learned pass rate, model comparison, or
+expert-iteration gain is claimed in this chapter. Empty result cells are a feature of the protocol,
+not an invitation to invent numbers.
 ```
 
 The binding research protocol is
@@ -538,8 +539,16 @@ The corrected preparation job `20029964` subsequently passed this entire gate fr
 `41683e2`. It resolved the pinned Qwen3-1.7B model and tokenizer revision, performed a finite BF16
 LoRA optimizer step on a GH200, saved and hashed the adapter and tokenizer, reloaded them, and
 obtained another finite loss. That is evidence for the runtime boundary, not evidence that a useful
-policy has been trained. The registered 100-step run and kernel-judged held-out evaluation remain
-pending.
+policy has been trained. Job `20029970` then completed the registered 100 steps in 9m51s. Its
+teacher-forced train loss was 0.78446 and final validation loss 0.13518. Those figures show that the
+adapter fit the next-tactic distribution; they do not measure complete proof success.
+
+Evaluator `20029980` stopped after three seconds, before generation. Canonical manifest JSON uses
+`sort_keys=True`, whereas the loader accidentally applied the construction-order rule designed for
+raw dataset rows to the nested capability mapping. The repair reconstructs the exact three semantic
+fields from sorted JSON and still checks their values, the environment preimage/hash, and equality
+with the fixed `model-v1` authority. A fresh safe training/evaluation chain is required before any
+kernel-judged solve-rate claim.
 
 ## WMI A100: reproduce the gate, do not rename the environment
 

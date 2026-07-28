@@ -539,16 +539,19 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   all 18 pilot scripts had traced/quiet parity. The fixed scaled dataset digest is
   `1fa98caa2e0528d39c1b9003c4ee153dfbe633cb1ee4505e8f5b28eb837465dd`.
   The historical 13,344-transition release was provenance-refreshed under the same current source;
-  all 1,692 sessions again reached kernel-checked QED. No policy training run or learned model
-  result exists yet.
+  all 1,692 sessions again reached kernel-checked QED. A policy training artifact now exists, but
+  no kernel-judged theorem-solving result exists yet.
   Slurm preparation job `20029189` was submitted but failed safely before model loading because the
   first environment recipe incorrectly assumed the ML module made Torch importable. Its dependent
   train/evaluation jobs were canceled without running. The corrected recipe pins Helios's
   `torch==2.9.1+cu129` ARM wheel, isolates the venv, enumerates transitive dependencies, and runs
   `pip check`. Replacement preparation job `20029964` completed in 1m31s: exact commit/model
   revisions matched, GH200 BF16 was active, train/reload losses were finite, and closed adapter and
-  tokenizer hashes were emitted. Training job `20029970` remains queued, so no learned-policy
-  performance result is claimed. Typed-A100 WMI probe `171369` passed in 13 seconds. Its distinct
+  tokenizer hashes were emitted. Training job `20029970` completed 100 steps in 9m51s with train
+  loss 0.78446 and final teacher-forced validation loss 0.13518. Evaluator `20029980` failed in
+  three seconds before generation because canonical `sort_keys=True` JSON reordered the nested
+  capability keys while a row-oriented parser required construction order; no learned-policy
+  solve rate is claimed. Typed-A100 WMI probe `171369` passed in 13 seconds. Its distinct
   x86-64 base/overlay, deployment, serialization, and one-shot guards now pass 96 focused local
   tests. The arbitrary-theorem path adds immutable request transport, a request/job ledger, a
   typed-A100 proof job, exact adapter/source rechecks, and second kernel replay before `.pa`
@@ -557,7 +560,10 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   safetensors reload. The first dependent training submission failed closed before `sbatch`:
   Bash's whitespace `IFS` collapsed the predecessor row's deliberately empty dependency column.
   A strict bounded UTF-8 nine-field parser now owns that boundary. Because source identity changed,
-  a fresh preparation job must precede training; no chain is silently relabeled.
+  a fresh preparation job must precede training; no chain is silently relabeled. Preparation
+  `171404` was canceled after 1m56s when the manifest-loader defect was discovered. The fixed
+  loader reconstructs the exact three semantic fields from sorted manifest JSON, then retains the
+  same capability-value, environment-hash, fixed-authority, and strict dataset-row checks.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

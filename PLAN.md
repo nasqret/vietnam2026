@@ -39,8 +39,9 @@ the prover's trust boundary. The JSONL runner reuses the production parser, surf
 theorem library, proof engine, traces, and independent original-target finalizer. The pilot data,
 replay compiler, fixed capability profile, BF16 LoRA runtime, evaluator provenance, guarded
 Helios controls, and the first independently replay-attested 10,000-row synthetic release are
-implemented. The corrected Helios environment/LoRA save-reload smoke passed as job `20029964`; its
-training dependency remains queued. WMI typed-A100 probe `171369` also passed, and its independent
+implemented. Helios training `20029970` completed 100 steps, but evaluator `20029980` failed before
+generation on a manifest key-order bug, so there is no theorem solve rate yet. WMI typed-A100 probe
+`171369` also passed, and its independent
 x86-64 base manifest, hash-locked overlay, transactional source controls, and one-shot safetensors
 model-weight path are locally green. A trained adapter can now be used on an arbitrary bounded
 closed PA formula through a second-kernel-replayed CLI and a ledgered immutable-request WMI A100
@@ -48,6 +49,7 @@ job; this is an execution path, not a learned solve-rate claim. Replacement WMI 
 `171395` passed the full dataset replay and LoRA save/reload gate. The first training submission
 was refused before `sbatch` because Bash field splitting collapsed its predecessor's empty TSV
 dependency column; a strict parser now preserves and validates all nine fields. A fresh same-source
-prepare/train chain is still required, and no learned model result is claimed. See
+prepare/train chain will also use a manifest loader that separates sorted JSON representation from
+semantic capability identity. No learned theorem-solving result is claimed. See
 [`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest completed and staged
 milestone; production remains untouched behind the M14 cache-header blocker.
