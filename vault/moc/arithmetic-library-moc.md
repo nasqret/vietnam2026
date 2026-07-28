@@ -6,10 +6,10 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-The current runtime has 125 unique checked nodes: 23 from the original ladder
-and 102 in the reconciled post-baseline extension. Of the latter, 90 form the
+The current runtime has 127 unique checked nodes: 23 from the original ladder
+and 104 in the reconciled post-baseline extension. Of the latter, 92 form the
 general foundational layer and twelve form the fixed modular capstone. The
-broader 138-node catalog contains nine `planned_expressible` and four
+broader 139-node catalog contains eight `planned_expressible` and four
 `blocked_by_language` nodes in addition to those checked layers. One
 separately cataloged Lean companion checks full list-based FTA existence and
 uniqueness; it is not counted as a Peano theorem.
@@ -73,6 +73,7 @@ uniqueness; it is not counted as a Peano theorem.
 - [[is_gcd_symm]] · [[is_gcd_dvd_left]] · [[is_gcd_dvd_right]]
 - [[is_gcd_greatest]] · [[is_gcd_of_dvd]] · [[is_gcd_unique]]
 - [[is_gcd_zero_right]] · [[is_gcd_euclid_forward]] · [[is_gcd_euclid_backward]]
+- [[gcd_exists_up_to]] · [[gcd_exists_relational]]
 - [[coprime_symm]] · [[coprime_one_left]] · [[coprime_one_right]]
 - [[coprime_to_is_gcd_one]] · [[is_gcd_one_to_coprime]]
 

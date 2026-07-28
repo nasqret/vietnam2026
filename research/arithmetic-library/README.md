@@ -3,8 +3,14 @@
 This directory is the planning and provenance source for Peano Lab's general
 arithmetic library. Start with:
 
-- [`catalog.json`](catalog.json): 138 dependency-ordered facts — 23
-  `checked_existing`, 102 `checked_m20`, nine `planned_expressible`, and four
+The current runtime/catalog boundary is 127 checked Peano entries (23
+baseline, 92 general foundational, and twelve fixed modular) inside a 139-node
+catalog. Its shared snapshot has 33,979 proof nodes, 814 Cuts, and 88
+Cut-bearing certificates; the maximum certificate size remains 2,675 and the
+maximum depth remains 57.
+
+- [`catalog.json`](catalog.json): 139 dependency-ordered facts — 23
+  `checked_existing`, 104 `checked_m20`, eight `planned_expressible`, and four
   `blocked_by_language` — with exact source IDs, Peano statements where
   expressible, and blockers where not;
 - [`source-register.json`](source-register.json): pinned revisions, licenses,
@@ -13,7 +19,7 @@ arithmetic library. Start with:
   selected conservative Gödel-β factor-sequence and prefix-product design,
   its exact FTA endpoints, and its Peano proof dependency spine;
 - [`gcd-bezout-roadmap.md`](gcd-bezout-roadmap.md): the checked relational API,
-  checked Euclidean-invariance ladder, bounded-induction construction, and
+  checked Euclidean-invariance ladder, checked bounded/general gcd existence, and
   balanced-natural Bézout gate;
 - [`proof-sharing-design.md`](proof-sharing-design.md): the reviewed
   self-contained Cut rule, trust boundary, structural integration, and honest

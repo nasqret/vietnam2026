@@ -22,6 +22,7 @@ forall a b. (exists k. k + a = b) -> a = b \/ exists k. k + S a = b
 ## Checked dependents
 
 - [[remainder_bound_step]]
+- [[gcd_exists_up_to]]
 
 ## Verification record
 

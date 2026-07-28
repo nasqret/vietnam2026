@@ -329,25 +329,27 @@
   170 commands, and 414/414 vault wikilinks pass. Local browser candidate `2026-07-28g` has
   application identity `a-3ea7b7142aa0`; automated worker boot passes, direct in-app Pyodide
   latency remains unmeasured, and production is untouched.
-- The current native arithmetic runtime has 125 unique checked theorems: 23
-  baseline entries, 90 foundational post-baseline entries, and twelve unique
+- The current native arithmetic runtime has 127 unique checked theorems: 23
+  baseline entries, 92 foundational post-baseline entries, and twelve unique
   modular capstones. It now includes discrete order, multiplication
   cancellation/monotonicity, constructive quotient-remainder existence, full
   quotient-remainder uniqueness, zero-remainder/divisibility bridges,
   unit-factor/coprimality bridges, mutual-divisibility antisymmetry, and
   relational gcd uniqueness, constructive remainder-divisibility transport,
-  and both directions of Euclidean gcd invariance. Under self-contained
-  dependency sharing, the complete ladder contains 31,479 structural proof
-  nodes and 741 Cuts; `mod5_fourth_power_one` is largest by nodes at
+  both directions of Euclidean gcd invariance, and constructive relational gcd
+  existence by bounded induction. Under self-contained dependency sharing,
+  the complete ladder contains 33,979 structural proof nodes and 814 Cuts;
+  `mod5_fourth_power_one` is largest by nodes at
   2,675/depth 38, and the maximum depth is 57. The synchronized research catalog
-  has 138 nodes (23 baseline checked, 102 post-baseline checked, nine planned,
+  has 139 nodes (23 baseline checked, 104 post-baseline checked, eight planned,
   four language-blocked) plus the separate Lean FTA companion. The generated
-  vault has 204 notes and 1,511 resolved links. The object language, PA axioms,
+  vault has 206 notes and 1,547 resolved links. The object language, PA axioms,
   induction schema, and intuitionistic default are unchanged. The trusted
   proof grammar/checker now contains the reviewed self-contained
   `Cut(A,B,lemma,body)` rule: both formulas and both proof branches are embedded,
   with no theorem-name/hash authority. The checker is 247 lines. Its untrusted
   erasure utility is diagnostic and cannot round-trip every introduction-headed
   or induction-bearing certificate. The local browser candidate is
-  `2026-07-28m` / `a-396c35f357b4`; 1,081 Peano tests, the warning-free 36-source
-  book, and 264 documented commands pass. Production is untouched.
+  `2026-07-28n` / `a-2099b556a7d3`; 1,086 Peano tests, Lambda's 360 tests plus
+  36 subtests, the warning-free 36-source book, and 264 documented commands
+  pass. Production is untouched.

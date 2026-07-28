@@ -20,7 +20,7 @@ forall d a b q r. a = b * q + r -> (((exists x. b = d * x) /\ (exists y. r = d *
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[gcd_exists_up_to]]
 
 ## Verification record
 

@@ -1,17 +1,17 @@
 # Peano Lab proof-trace release v1
 
 This directory is the deterministic learning-data release whose provenance follows the checked
-theorem catalog. Its semantic families remain the M13 set. The current 125-theorem source tree
+theorem catalog. Its semantic families remain the M13 set. The current 127-theorem source tree
 has its own fresh fingerprints rather than reusing either parent branch's hashes. The release contains
 **13,344** clean, deduplicated version-1 tactic transitions from **1,692** generated proof
 sessions:
 
 | Artifact | Role | Records | SHA-256 |
 |---|---|---:|---|
-| `train.jsonl` | learning split | 13,326 | `d2c790bf7a4fc1d458d5d95e0eb7067526725bb55a99d6b169f11670c1548345` |
-| `val.jsonl` | exact-theorem-group validation split | 18 | `95d51ecc07a04df1d7ba0f44f4d1bb3fb22dd1599447c87e3997b4be6f2a82f0` |
-| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `e3cf919c6909f8552366232e59728136f36bf6ebc07247d8488fd94472370bd0` |
-| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `5e872fa5d25856801d5670e92c125beb78b796a4f641bb3e28bed49ff64ddfdc` |
+| `train.jsonl` | learning split | 13,326 | `6331ab11966713720a1182e35826a402615b3c38742361d200038272a41ab629` |
+| `val.jsonl` | exact-theorem-group validation split | 18 | `6e80b33ae99f4cbf789dac4be104e73e3b76f96d7470be17f115cc1665fa4867` |
+| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `60427ecc919ec7e614ca29b211eba0ac4c88ed73fb8e3aa0244a7d6ef587d1a6` |
+| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `65841aef726ab770e52b609a0c8dbf36cee13565acd5ede209cb62ef73fe8138` |
 
 The source stream contained 11,652 successful and 1,692 deliberately failing, transactional
 applications, for a labeled failure ratio of `0.12679856115107913`. Every one of the 1,692 sessions
@@ -53,7 +53,7 @@ That target first writes the replayable raw session stream to
 `/tmp/peano-lab-release-raw.jsonl`, then strictly validates, globally deduplicates, and exports it.
 The raw intermediate is not committed because it duplicates the split payload, but the manifest
 records its exact UTF-8 size (6,215,711 bytes) and SHA-256
-`7ea465aafa9228b9915ab1e9dc39d23aad63c3a5a4b7453477a650af9aa87688`.
+`f729193ad72d5a8b8754fabc99de2463594127aa2ed86770956d126b9b4d516e`.
 It also fingerprints `scripts/generate_peano_traces.py`, the trusted checker, and the complete
 Peano Lab Python source tree. Because the Python runtime participates in the run fingerprint and
 session IDs, changing that runtime changes the raw byte hash even when every session-agnostic

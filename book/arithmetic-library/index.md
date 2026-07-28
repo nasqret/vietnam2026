@@ -17,14 +17,15 @@ $$
 \to \text{factorization}.
 $$
 
-The current candidate snapshot contains **125 replayed, closed, independently
-kernel-checked Peano theorems**. Ninety form the post-baseline foundational
+The current candidate snapshot contains **127 replayed, closed, independently
+kernel-checked Peano theorems**. Ninety-two form the post-baseline foundational
 layer: named equality congruences, additive cancellation, discrete order,
 multiplication cancellation and monotonicity, zero-sum and nonzero-product
 facts, divisibility closure, constructive non-divisibility, generic residue
 algebra, constructive quotient-remainder existence and uniqueness, and the
-relational gcd/coprimality API through gcd uniqueness, and both directions of
-Euclidean gcd invariance. This layer includes
+relational gcd/coprimality API through gcd uniqueness and both directions of
+Euclidean gcd invariance, plus constructive bounded and general gcd existence.
+This layer includes
 `prime_two`, the first checked instance of the fully expanded prime predicate.
 The reconciled upstream modular catalog contributes twelve
 more unique residue and fourth-power theorems; fourteen of its other records
@@ -32,19 +33,21 @@ are identical to foundational entries and are exposed only once.
 
 Every current theorem fits the browser's ordinary `use` limit. The largest
 shared certificate, `mod5_fourth_power_one`, has 2,675 structural proof nodes
-and depth 38. Across all 125 entries the snapshot contains 31,479 structural
-nodes, including 741 self-contained Cuts. The immutable upstream report still
-records the capstone's former fully expanded 21,515-node/depth-66
+and depth 38; the snapshot-wide maximum depth is 57. Across all 127 entries,
+the snapshot contains 33,979 structural nodes, including 814 self-contained
+Cuts, and 88 certificates contain at least one Cut. The immutable upstream
+report still records the capstone's former fully expanded 21,515-node/depth-66
 representation; it remains provenance, not the current runtime metric.
 
-That number is deliberately narrower than the 138-node research catalog: 23
-nodes are `checked_existing`, 102 are `checked_m20`, nine are
+That number is deliberately narrower than the 139-node research catalog: 23
+nodes are `checked_existing`, 104 are `checked_m20`, eight are
 `planned_expressible`, and four are `blocked_by_language`. Beyond
-`prime_two`, the catalog records candidate lemmas on modular congruence,
-gcd, coprimality, the general prime spine, Euclid's lemma, and prime
-factorization. A separate Lean 4 companion now checks full finite-list FTA
+`prime_two`, the catalog now includes checked relational gcd existence and
+records further candidate lemmas on modular congruence, Bézout/coprimality,
+the general prime spine, Euclid's lemma, and prime factorization. A separate
+Lean 4 companion now checks full finite-list FTA
 existence and uniqueness up to permutation. It is cataloged as a companion,
-not counted among the 125 Peano theorems; those entries are not presented as
+not counted among the 127 Peano theorems; those entries are not presented as
 Peano-proved until a script and closed certificate pass the same kernel gate.
 
 ## How to read the status labels

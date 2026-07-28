@@ -46,12 +46,13 @@ expanded certificate is checked in the empty context. This extension is also a u
 [[verifier-guided-policy-evaluation-and-search|model-v2 curriculum]], but the capstone itself is now
 a library-retrieval test rather than a sealed theorem-discovery benchmark.
 
-The reconciled runtime now has 125 unique checked entries: the 23-entry core,
-90 post-baseline foundational entries, and twelve genuinely new modular
+The reconciled runtime now has 127 unique checked entries: the 23-entry core,
+92 post-baseline foundational entries, and twelve genuinely new modular
 capstones. The newer foundation includes discrete order, multiplication
 cancellation and monotonicity, and native [[quotient-and-remainder]] existence
 and uniqueness, plus the relational [[gcd-and-coprimality]] API through gcd
-uniqueness and Euclidean-step invariance.
+uniqueness, Euclidean-step invariance, and constructive bounded/general gcd
+existence.
 
 ## Related
 

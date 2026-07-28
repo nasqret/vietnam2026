@@ -4,8 +4,9 @@
 
 The checked runtime currently exposes the relational gcd/coprimality API
 through uniqueness, the zero-right gcd base case, and both directions of
-Euclidean-step invariance. It does **not** yet expose gcd existence, Bézout,
-Gauss cancellation, or Euclid's lemma.
+Euclidean-step invariance, together with bounded and unrestricted relational
+gcd existence. It does **not** yet expose Bézout, Gauss cancellation, or
+Euclid's lemma.
 
 All relations below are authoring notation only. In particular,
 
@@ -29,10 +30,11 @@ The current checked layer contains:
 - `multiple_antisymm` and `is_gcd_unique`;
 - `factor_difference`, `divides_remainder`, and `divides_linear_step`; and
 - `is_gcd_zero_right`, `is_gcd_euclid_forward`, and
-  `is_gcd_euclid_backward`.
+  `is_gcd_euclid_backward`; and
+- `gcd_exists_up_to` and `gcd_exists_relational`.
 
 In the current shared representation, the largest certificate in this layer is
-`is_gcd_euclid_forward` at 741 proof nodes/depth 38. Every entry replays
+`gcd_exists_relational` at 1,268 proof nodes/depth 46. Every entry replays
 constructively and checks from the empty context.
 
 ## Checked Euclidean invariance
@@ -63,7 +65,7 @@ Its proof inducts simultaneously through the two multiples rather than
 forming a natural-number subtraction. With it, both directions of Euclidean
 invariance are ordinary divisibility algebra.
 
-## Formula-specific strong induction for gcd existence
+## Checked formula-specific strong induction for gcd existence
 
 The object language has no predicate variables, so a polymorphic strong-
 induction theorem is not a possible library entry. For this concrete motive,
@@ -89,22 +91,24 @@ with `IsGCD` expanded as above. The construction is:
 The public `gcd_exists_relational` theorem is then the instance `B=b`, using
 reflexivity of `<=`.
 
-This bounded script closes against its dependency-curried target in 90 nodes.
+The admitted `gcd_exists_up_to` script closes against its
+dependency-curried target in 90 nodes.
 The former dependency inliner produced a 1,024-node substituted tree (971
 after reduction) which the independent kernel correctly rejected because of a
 capture-sensitive induction defect. That failure motivated the sharing gate.
-With nested self-contained Cuts, the same bounded theorem now checks from the
-empty context at 1,232 nodes/depth 44; its general wrapper checks at
-1,268/depth 46. They remain prototypes until admitted with the synchronized
-catalog, artifacts, mutation tests, and documentation.
+With nested self-contained Cuts, the same bounded theorem now checks
+constructively from the empty context at 1,232 nodes/depth 44.
+`gcd_exists_relational` takes the instance $B=b$, obtains $b\le b$ from
+`le_refl`, and checks from the empty context at 1,268 nodes/depth 46. Both are
+now synchronized runtime and catalog entries.
 
 The reviewed remedy is now the self-contained derived rule
 `Cut(A,B,lemma,body)`. The kernel checks its lemma once and its body under the
 new hypothesis; the node contains no theorem names, hashes, or external
 authority. This enlarges the trusted checker without changing the object
 language or logic. See [the proof-sharing design](proof-sharing-design.md).
-The bounded gcd theorem still requires fresh replay and admission; landing the
-composition mechanism is not itself a proof of gcd existence.
+The two admitted theorems provide the fresh replay and arithmetic proof that
+the composition mechanism alone could not supply.
 
 ## Balanced-natural Bézout
 
@@ -149,7 +153,7 @@ the bridge then supplies the greatest-common-divisor clause.
 
 1. **Complete:** admit and mutation-test the Euclidean invariance ladder.
 2. **Complete:** land and audit self-contained proof sharing.
-3. Admit bounded gcd existence and its public wrapper.
+3. **Complete:** admit bounded gcd existence and its public wrapper.
 4. Prove the coefficient-update identity with an ordinary checked semiring
    certificate; library replay cannot treat `ring` as an oracle.
 5. Admit balanced gcd/Bézout existence, derive maximality, then prove Gauss

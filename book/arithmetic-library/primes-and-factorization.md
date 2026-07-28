@@ -51,14 +51,16 @@ $$
 to say that $g$ divides $a$ and $b$, and every common divisor divides $g$.
 The checked API now provides symmetry, both divisibility projections, the
 greatest-common-divisor projection, a constructor when one input divides the
-other, and `is_gcd_unique`. Its uniqueness proof uses the checked
-`multiple_antisymm`; gcd existence remains a separate Euclidean-descent
-milestone. The unit bridge proves `mul_eq_one_components`, divisors of one,
+other, `is_gcd_unique`, and constructive existence for every pair. The
+bounded `gcd_exists_up_to` proof performs formula-specific Euclidean descent;
+`gcd_exists_relational` specializes its bound to the second input. Both check
+from the empty context. The uniqueness proof uses the checked
+`multiple_antisymm`. The unit bridge proves `mul_eq_one_components`, divisors of one,
 coprimality with one on both sides, and both directions between expanded
 coprimality and `IsGCD(1,a,b)`.
 
-A balanced four-natural Bézout equation will connect the eventual gcd
-existence proof to Gauss cancellation without importing integers into the
+A balanced four-natural Bézout equation is now the missing bridge from checked
+gcd existence to Gauss cancellation; it requires no integer extension to the
 kernel language.
 
 The exact next statements, prototype certificate metrics, bounded-induction

@@ -14,6 +14,11 @@ that every number at least two has a prime divisor, [[euclids-lemma]], and
 primes above every bound. Those remaining claims are expressible in the
 current first-order language but are not yet checked library entries.
 
+Their gcd prerequisite has advanced: [[gcd_exists_up_to]] and
+[[gcd_exists_relational]] construct a relational gcd for every pair. Balanced
+Bézout, Gauss cancellation, and bounded prime-divisor search remain the next
+bridges; gcd existence alone does not imply Euclid's lemma.
+
 ## Related
 
 [[arithmetic-library-moc]] · [[gcd-and-coprimality]] ·

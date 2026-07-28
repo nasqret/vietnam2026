@@ -601,15 +601,15 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   known held-out routes need 10/10/23/13 steps, so the 16-step cap also underspecifies
   `le_total`'s known route. Scaling the same curriculum to 4B would not test the intended
   hypothesis, so the conditional 4B comparison remains unlaunched. The next data contract must freeze the user's
-  current 125-entry library as a content-addressed successor authority and add induction, invariant, witness,
+  current 127-entry library as a content-addressed successor authority and add induction, invariant, witness,
   and lemma-composition curricula while retaining a sealed test set.
 
   The public-catalog local gate is green: 1,036 Peano tests; Lambda 360 tests plus 36 subtests; all
   27 book sources under warning-as-error; 193 deep links and 170 documented commands; and 414/414
   vault wikilinks. The kernel checker has no diff and remains 234 lines. Direct in-app Pyodide
   latency could not be measured because no browser was attached; automated worker boot remains
-  green. The current isolated all-ladder acceptance smoke exports 2,446 unique
-  transitions from 250 sessions, including 125 authored-script kernel QEDs.
+  green. The current isolated all-ladder acceptance smoke exports 2,545 unique
+  transitions from 254 sessions, including 127 authored-script kernel QEDs.
   M19 stays open for the model-v2 curriculum, search,
   baselines, and registered comparison.
 
@@ -619,15 +619,15 @@ The theorem-ladder extension is tracked independently in
 [`PLAN/10_arithmetic_library.md`](10_arithmetic_library.md). Its first release
 kept the kernel and object language fixed, expanded divisibility and residue
 notions into ordinary formulas, and labeled prime/factorization targets by
-their real dependencies. The reconciled runtime contains 125 unique checked
-theorems, including quotient-remainder existence/uniqueness and relational gcd
-uniqueness plus Euclidean-step invariance, and a
+their real dependencies. The reconciled runtime contains 127 unique checked
+theorems, including quotient-remainder existence/uniqueness, relational gcd
+existence/uniqueness, and Euclidean-step invariance, plus a
 conservative Gödel-β factorization design; a separate Lean companion checks
 full FTA. The later proof-sharing milestone adds one reviewed self-contained
 Cut rule to the trusted certificate checker—without changing the PA object
 language, axioms, induction, or intuitionistic default—and reduces the current
-ladder to 31,479 structural nodes. Peano admission still requires gcd
-existence, Bézout, Euclid, and the encoded sequence/product proof spine.
+ladder to 33,979 structural nodes. Peano admission still requires Bézout,
+Euclid, and the encoded sequence/product proof spine.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

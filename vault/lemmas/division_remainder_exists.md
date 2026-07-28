@@ -20,7 +20,7 @@ forall m n. ~(m = 0) -> exists q r. n = m * q + r /\ S r <= m
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[gcd_exists_up_to]]
 
 ## Verification record
 

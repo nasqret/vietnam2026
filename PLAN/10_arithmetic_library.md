@@ -55,7 +55,7 @@ does not determine the architecture.
 - [x] Add both constructive normal forms for non-divisibility.
 - [x] Add modulus-independent quotient-and-remainder transport through
       addition and squaring.
-- [x] Replay and independently check all 125 unique library entries and enforce
+- [x] Replay and independently check all 127 unique library entries and enforce
       the live 32,768-node/depth-128 import bound.
 - [x] Generate a deterministic versioned JSON snapshot, exact metrics,
       certificate hashes, structural Cut counts, and Mermaid dependency graph.
@@ -87,7 +87,8 @@ does not determine the architecture.
 - [x] Add and audit the conservative self-contained `Cut(A,B,lemma,body)`
       proof-sharing rule without changing the PA term/formula language, axioms,
       induction schema, or intuitionistic default.
-- [ ] Prove relational gcd existence.
+- [x] Prove relational gcd existence by bounded induction and derive the
+      unrestricted theorem from reflexivity of the order relation.
 - [ ] Prove subtraction-free signed-pair Bézout and Gauss cancellation.
 - [x] Check `prime_two` as a completely expanded first-order formula, without
       adding a primitive `Prime` predicate.
@@ -129,12 +130,12 @@ does not determine the architecture.
 
 ## Current acceptance record
 
-- Checked runtime: 125 unique theorems — 23 baseline and 102 post-baseline.
-  The latter are the 90-node foundational layer plus twelve unique upstream
+- Checked runtime: 127 unique theorems — 23 baseline and 104 post-baseline.
+  The latter are the 92-node foundational layer plus twelve unique upstream
   modular capstones.
-- Research catalog: 138 nodes — 23 `checked_existing`, 102 `checked_m20`, nine
+- Research catalog: 139 nodes — 23 `checked_existing`, 104 `checked_m20`, eight
   `planned_expressible`, and four `blocked_by_language`.
-- Shared-certificate metrics: 31,479 total structural proof nodes and 741 Cuts;
+- Shared-certificate metrics: 33,979 total structural proof nodes and 814 Cuts;
   the largest by nodes is `mod5_fourth_power_one` at 2,675/depth 38, while the
   ladder's maximum depth is 57. The immutable upstream report retains the
   former fully expanded capstone metric of 21,515/depth 66.
@@ -145,9 +146,9 @@ does not determine the architecture.
 - Full FTA companion status: checked in Lean for every nonzero natural, with
   finite-list existence and permutation uniqueness and no `sorryAx`.
 - Full Peano FTA status: absent from `pa lib` pending closed certificates for
-  the selected β-sequence/product encoding and its gcd-existence/prime/Euclid
+  the selected β-sequence/product encoding and its Bézout/prime/Euclid
   dependency spine; no admitted theorem or hidden primitive.
-- Current validation: 1,081 Peano tests on Python 3.10; 36-source
+- Current validation: 1,086 Peano tests on Python 3.10; 36-source
   warning-as-error Jupyter Book; 199 deep links and 45 sessions/264 replayed
-  commands; 204-note/1,511-link Obsidian graph; exact
+  commands; 206-note/1,547-link Obsidian graph; exact
   snapshot, catalog, corpus, application-manifest, and Lean FTA audits.

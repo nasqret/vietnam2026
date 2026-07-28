@@ -19,7 +19,7 @@ forall n. n <= n
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[gcd_exists_relational]]
 
 ## Verification record
 

@@ -1226,3 +1226,37 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   `2026-07-28m`/`a-396c35f357b4` are current. The clean clone lacks the large
   untracked vendor mirror, so a full static stage assembly was not claimed.
   Nothing was deployed.
+
+## 2026-07-28 — Constructive relational gcd existence
+
+- Admitted `gcd_exists_up_to` by ordinary induction on an explicit bound for
+  the second input. The zero branch constructs `IsGCD(a,a,0)` directly; the
+  equality branch obtains `a = b*q+r` from checked division, recursively finds
+  a gcd of `(b,r)`, and transports it through `is_gcd_euclid_forward`; the
+  strictly smaller branch reuses the induction hypothesis unchanged.
+- Derived `gcd_exists_relational` by specializing the bounded theorem at
+  `B=b` and discharging `b <= b` with `le_refl`. Both statements are ordinary
+  expanded first-order PA formulas. They add no gcd function, choice
+  principle, classical `DNE`, new axiom, or new induction rule.
+- Independent admission tests fix the exact formulas and ordered dependencies,
+  replay twice from a cold cache, check the closed certificates from the empty
+  context, reject PA-axiom and hypothesis-index mutations, remove each of the
+  eight dependency slots in turn, and complete a public live `use` session.
+  The bounded theorem is 1,232 nodes/depth 44; the unrestricted theorem is
+  1,268/depth 46.
+- The runtime now has 127 theorems: 23 baseline, 92 general foundational, and
+  twelve unique modular capstones. Its shared certificates total 33,979 nodes
+  and 814 Cuts across 88 entries. The largest and deepest entries remain
+  unchanged (`mod5_fourth_power_one`, 2,675 nodes; maximum depth 57).
+- Synchronized the research DAG at 139 nodes: 23 baseline checked, 104 M20
+  checked, eight planned expressible, and four language-blocked. Regenerated
+  the 127-record snapshot, 127 generated lemma notes, 206-note/1,547-link
+  Obsidian graph, source-bound 13,344-transition corpus, and browser candidate
+  `2026-07-28n` / `a-2099b556a7d3`. The all-ladder smoke exported 2,545 unique
+  transitions from 254 sessions and obtained all 127 authored kernel QEDs.
+- Acceptance passes 1,086 Peano tests on CPython 3.10, Lambda's 360 tests plus
+  36 subtests, the warning-as-error 36-source book, 199 deep links and 45
+  sessions/264 commands, generated-artifact and application-manifest drift,
+  corpus provenance, and the pinned Lean FTA exact-axiom audit. Nothing was
+  merged or deployed. The next mathematical gate is subtraction-free balanced
+  Bézout, followed by Gauss cancellation and the general prime spine.

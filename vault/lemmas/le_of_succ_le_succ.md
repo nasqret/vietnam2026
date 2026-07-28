@@ -19,7 +19,7 @@ forall a b. (exists k. k + S a = S b) -> exists r. r + a = b
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[gcd_exists_up_to]]
 
 ## Verification record
 

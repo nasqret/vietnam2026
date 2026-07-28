@@ -43,13 +43,13 @@ def _validate(catalog: Path = CATALOG) -> dict[str, int]:
 
 def test_arithmetic_knowledge_catalog_validates_against_production_peano() -> None:
     assert _validate() == {
-        "lemmas": 138,
+        "lemmas": 139,
         "domains": 10,
         "companion_artifacts": 1,
         "blocked_by_language": 4,
         "checked_existing": 23,
-        "checked_m20": 102,
-        "planned_expressible": 9,
+        "checked_m20": 104,
+        "planned_expressible": 8,
     }
 
 

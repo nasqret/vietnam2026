@@ -244,7 +244,7 @@ All 90 entries in the current post-baseline general foundational layer replay to
 closed kernel-accepted certificates and fit the live `use` limits of 32,768
 nodes and depth 128. Under self-contained dependency sharing,
 `division_remainder_unique` uses 854 structural nodes and reaches the runtime's
-maximum depth of 57. The reconciled 125-entry snapshot reaches its node maximum
+maximum depth of 57. The reconciled 127-entry snapshot reaches its node maximum
 at the modular capstone: 2,675 nodes and depth 38. These numbers are build
 artifacts, not new soundness assumptions; the immutable upstream report retains
 the older fully expanded capstone metric of 21,515 nodes/depth 66.

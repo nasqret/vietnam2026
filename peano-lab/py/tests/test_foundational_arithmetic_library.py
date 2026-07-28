@@ -94,6 +94,8 @@ FOUNDATIONAL_NAMES = (
     "is_gcd_unique",
     "is_gcd_euclid_forward",
     "is_gcd_euclid_backward",
+    "gcd_exists_up_to",
+    "gcd_exists_relational",
     "coprime_symm",
     "coprime_one_right",
     "coprime_one_left",

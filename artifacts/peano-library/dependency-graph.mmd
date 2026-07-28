@@ -100,6 +100,8 @@ flowchart TD
   is_gcd_unique[is_gcd_unique]
   is_gcd_euclid_forward[is_gcd_euclid_forward]
   is_gcd_euclid_backward[is_gcd_euclid_backward]
+  gcd_exists_up_to[gcd_exists_up_to]
+  gcd_exists_relational[gcd_exists_relational]
   coprime_symm[coprime_symm]
   coprime_one_right[coprime_one_right]
   coprime_one_left[coprime_one_left]
@@ -243,6 +245,14 @@ flowchart TD
   divides_linear_step --> is_gcd_euclid_forward
   divides_remainder --> is_gcd_euclid_backward
   divides_linear_step --> is_gcd_euclid_backward
+  multiple_refl --> gcd_exists_up_to
+  le_zero --> gcd_exists_up_to
+  le_eq_or_lt --> gcd_exists_up_to
+  le_of_succ_le_succ --> gcd_exists_up_to
+  division_remainder_exists --> gcd_exists_up_to
+  is_gcd_euclid_forward --> gcd_exists_up_to
+  le_refl --> gcd_exists_relational
+  gcd_exists_up_to --> gcd_exists_relational
   divisor_one --> coprime_one_right
   divisor_one --> coprime_one_left
   one_multiple --> coprime_to_is_gcd_one
