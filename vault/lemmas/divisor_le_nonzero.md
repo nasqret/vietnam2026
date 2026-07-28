@@ -19,7 +19,8 @@ forall d n. ~(n = 0) -> (exists q. n = d * q) -> exists k. k + d = n
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[prime_or_composite]]
+- [[proper_factor_lt]]
 
 ## Verification record
 

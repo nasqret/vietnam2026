@@ -62,6 +62,14 @@ checker to trust `Prime` as a new atom. In particular, the checked theorem
 
 and introduces no primitive predicate.
 
+The same expansion is now used by general checked theorems:
+`prime_or_composite` constructs either the expanded prime formula or an
+explicit nontrivial factor pair, `prime_decidable` returns that formula or its
+negation for every natural, and `prime_divisor_exists` constructs an expanded
+prime together with a divisibility witness for every nonzero nonunit natural.
+Their bounded search and descent certificates contain no DNE node; decidability
+is proved rather than imported from the host language.
+
 ## Relational definitions before functions
 
 The current term grammar cannot add a gcd function without changing the
@@ -130,22 +138,24 @@ prefix products; bounded formulas express decoded values, primality, and
 sortedness. This is intentionally an untrusted authoring facade rather than a
 new kernel atom.
 
-The planned route is therefore explicit:
+The native route is therefore explicit:
 
 1. add untrusted named-predicate expansion for the formulas already
    expressible;
-2. reuse the now-checked division, relational gcd, balanced Bézout, Gauss, and
-   Euclid spine while proving the remaining proper-factor search and
-   prime-divisor-existence clients in expanded first-order form;
-3. implement and prove CRT extension plus the selected β-sequence and
-   prefix-product relations;
-4. state and check factorization existence and extensional uniqueness.
+2. reuse the checked division, relational gcd, balanced Bézout, Gauss, and
+   Euclid spine together with the now-checked proper-factor search and
+   prime-divisor-existence clients;
+3. prove greatest-prime descent for the selected sorted factorization route;
+4. implement and prove binary/bounded CRT extension plus the selected
+   β-sequence and prefix-product relations;
+5. state and check factorization existence and extensional uniqueness.
 
 A separate Lean companion already checks the conventional finite-list FTA,
 including uniqueness up to permutation and an exact axiom audit. It fixes the
-target statement but grants no Peano authority. Until steps 3–4 produce closed
+target statement but grants no Peano authority. Until steps 3–5 produce closed
 PA certificates, FTA remains absent from `pa lib` rather than becoming a
-pretend `TheoremSpec`.
+pretend `TheoremSpec`. Prime-divisor existence closes an arithmetic milestone;
+it does not supply finite products or factor-sequence comparison by itself.
 
 ## The trust path
 

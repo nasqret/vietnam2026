@@ -20,6 +20,8 @@ forall n. ~(S n = 0)
 ## Checked dependents
 
 - [[mul_left_cancel_nonzero]]
+- [[factor_search_up_to]]
+- [[prime_nonzero]]
 
 ## Verification record
 

@@ -30,8 +30,10 @@ The subsequent native division/order extension yields a new 104-theorem root;
 the gcd/coprimality API yields a further 119-theorem root, and checked
 Euclidean gcd invariance yields the 125-theorem root, and constructive gcd
 existence yields the 127-theorem root. Each must receive a distinct registered
-policy-library identity; the balanced Bézout, Gauss, prime-divisor API, and
-Euclid tranche yields the current 137-theorem root. Model-v1
+policy-library identity; the balanced Bézout, Gauss, divisor-characterization,
+and Euclid tranche yields the 137-theorem root. The subsequent constructive
+equality, bounded-factor, primality-decision, and prime-divisor-search tranche
+yields the current 149-theorem root. Model-v1
 remains frozen, and no model may silently inherit either mutable catalog.
 
 Library visibility and benchmark visibility are different. If a theorem is importable, closing its

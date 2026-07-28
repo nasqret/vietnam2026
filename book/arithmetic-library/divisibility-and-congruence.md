@@ -240,16 +240,18 @@ $$
 \end{array}
 $$
 
-All 102 entries in the current post-baseline general foundational layer replay to
+All 114 entries in the current post-baseline general foundational layer replay to
 closed kernel-accepted certificates and fit the live `use` limits of 32,768
-nodes and depth 128. Under self-contained dependency sharing,
-`division_remainder_unique` uses 854 structural nodes and reaches the snapshot-wide
-maximum depth of 57. The current 137-entry local candidate reaches its node
-maximum at `euclid_prime_dvd_product`, with 5,382 nodes and depth 55. The modular
-capstone itself remains 2,675 nodes and depth 38. These numbers are build artifacts,
+nodes and depth 128. The current 149-entry local candidate reaches its node
+maximum at `euclid_prime_dvd_product`, with 5,382 nodes and depth 55, while
+`prime_divisor_exists` reaches the snapshot-wide maximum depth of 80. Across
+the snapshot there are 67,844 structural nodes and 1,800 self-contained Cuts;
+109 certificates contain a Cut, and the largest per-certificate Cut count is
+159. The modular capstone itself remains 2,675 nodes and depth 38. These
+numbers are build artifacts,
 not new soundness assumptions; the immutable upstream report retains the older
 fully expanded capstone metric of 21,515 nodes/depth 66. The broader research
-catalog has 148 nodes: the 137 checked entries, seven planned expressible targets,
+catalog has 158 nodes: the 149 checked entries, five planned expressible targets,
 and four language-interface targets covering conventional signed Bézout and the
 three finite-factorization endpoints.
 
@@ -307,16 +309,27 @@ Two checked bridges connect the theorem to divisibility:
 - `multiple_has_zero_remainder` packages a multiple of a nonzero divisor as a
   bounded division result with remainder zero.
 
+The new decision layer closes the constructive loop. `eq_decidable` first
+decides whether the unique remainder is zero. For a nonzero divisor,
+`multiple_decidable_nonzero` combines that test with division existence,
+zero-remainder existence for known multiples, and remainder uniqueness to
+produce either a quotient witness or a refutation of every quotient witness.
+`multiple_decidable` then handles a zero divisor by deciding whether the
+dividend itself is zero. These are disjunction-producing certificates, not a
+host-language divisibility oracle, and neither contains DNE.
+
 The checked Euclidean bridge is also subtraction-free. `factor_difference`
 removes a common multiple prefix, `divides_remainder` carries common divisors
 from $(a,b)$ to a remainder $r$ in $a=bq+r$, and `divides_linear_step` carries
 them back. Together with the base theorem `is_gcd_zero_right`, these yield the
 checked pair `is_gcd_euclid_forward` and `is_gcd_euclid_backward`. They prove
-gcd invariance for one division step; relational gcd existence and Bézout
-coefficients remain later milestones.
+gcd invariance for one division step. Downstream checked constructions now
+provide relational gcd existence, balanced Bézout coefficients, Gauss
+cancellation, Euclid's lemma, bounded factor search, and prime-divisor
+existence.
 
-These results are the foundation required by bounded divisor search and the
-Euclidean gcd layer; they are not a primitive computation service.
+These results are the foundation used by the now-checked bounded factor search
+and Euclidean gcd layers; they are not a primitive computation service.
 
 ## Why ordinary one-sided congruence is wrong over naturals
 

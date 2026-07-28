@@ -244,6 +244,24 @@
       "blocker": null
     },
     {
+      "id": "eq_decidable",
+      "title": "Equality of naturals is decidable",
+      "domain": "equality",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Nested induction constructs either an equality proof or a refutation for every pair of naturals.",
+      "peano": {
+        "statement": "forall a b. a = b \\/ ~(a = b)",
+        "existing_name": "eq_decidable"
+      },
+      "blocker": null
+    },
+    {
       "id": "zero_add",
       "title": "Zero is a left identity for addition",
       "domain": "addition",
@@ -659,6 +677,26 @@
       "peano": {
         "statement": "forall a b. ~(a = 0) -> ~(b = 0) -> ~(a * b = 0)",
         "existing_name": "mul_ne_zero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "factor_nonzero_left",
+      "title": "A left factor of a nonzero product is nonzero",
+      "domain": "multiplication",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_zero_left"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo"
+      ],
+      "summary": "Substitution of a hypothetical zero factor contradicts the product's nonzero hypothesis.",
+      "peano": {
+        "statement": "forall n c d. ~(n = 0) -> n = c * d -> ~(c = 0)",
+        "existing_name": "factor_nonzero_left"
       },
       "blocker": null
     },
@@ -2325,6 +2363,52 @@
       "blocker": null
     },
     {
+      "id": "multiple_decidable_nonzero",
+      "title": "Divisibility by a nonzero natural is decidable",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [
+        "eq_decidable",
+        "division_remainder_exists",
+        "multiple_has_zero_remainder",
+        "division_remainder_unique"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "A checked quotient-remainder decomposition decides divisibility by testing whether its unique remainder is zero.",
+      "peano": {
+        "statement": "forall d n. ~(d = 0) -> (exists q. n = d * q) \\/ ~(exists q. n = d * q)",
+        "existing_name": "multiple_decidable_nonzero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "multiple_decidable",
+      "title": "Divisibility of naturals is decidable",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_zero_left",
+        "eq_decidable",
+        "multiple_decidable_nonzero"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "The nonzero-divisor decision extends constructively across the explicit zero-divisor case.",
+      "peano": {
+        "statement": "forall d n. (exists q. n = d * q) \\/ ~(exists q. n = d * q)",
+        "existing_name": "multiple_decidable"
+      },
+      "blocker": null
+    },
+    {
       "id": "is_gcd_zero_right",
       "title": "Every natural is the gcd of itself and zero",
       "domain": "gcd_coprime",
@@ -2904,22 +2988,169 @@
       "blocker": null
     },
     {
-      "id": "prime_or_composite",
-      "title": "Every nontrivial natural is prime or composite",
+      "id": "factor_property_succ",
+      "title": "A bounded factor property extends across one boundary",
       "domain": "primes",
-      "status": "planned_expressible",
+      "status": "checked_m20",
       "dependencies": [
-        "le_total",
-        "mul_left_cancel_nonzero"
+        "le_eq_or_lt",
+        "le_of_succ_le_succ"
       ],
       "sources": [
+        "peano_lab_library",
         "macbeth_math2001_repo",
         "weissman_illustrated_programming"
       ],
-      "summary": "Makes the prime predicate and a nontrivial factor witness explicit.",
+      "summary": "Splits a factor bounded by a successor into the old bounded range or the newly added endpoint.",
       "peano": {
-        "statement": "forall n. ~(n = 0) -> ~(n = 1) -> ((~(n = 1) /\\ forall a b. n = a * b -> a = 1 \\/ b = 1) \\/ exists c d. ~(c = 1) /\\ ~(d = 1) /\\ n = c * d)",
-        "existing_name": null
+        "statement": "forall B n. (forall c d. (exists k. k + c = B) -> n = c * d -> c = 1 \\/ d = 1) -> (forall d. n = S B * d -> S B = 1 \\/ d = 1) -> forall c d. (exists k. k + c = S B) -> n = c * d -> c = 1 \\/ d = 1",
+        "existing_name": "factor_property_succ"
+      },
+      "blocker": null
+    },
+    {
+      "id": "factor_search_up_to",
+      "title": "Bounded nontrivial factor search",
+      "domain": "primes",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_zero_left",
+        "succ_ne_zero",
+        "le_zero",
+        "le_refl",
+        "le_succ",
+        "mul_left_cancel_nonzero",
+        "eq_decidable",
+        "multiple_decidable_nonzero",
+        "factor_property_succ"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "Induction on the bound either verifies every bounded factor pair has a unit or returns an explicit nontrivial pair.",
+      "peano": {
+        "statement": "forall B n. ~(n = 0) -> ((forall c d. (exists k. k + c = B) -> n = c * d -> c = 1 \\/ d = 1) \\/ exists c d. ((((exists k. k + c = B) /\\ ~(c = 1)) /\\ ~(d = 1)) /\\ n = c * d))",
+        "existing_name": "factor_search_up_to"
+      },
+      "blocker": null
+    },
+    {
+      "id": "prime_or_composite",
+      "title": "Every nontrivial natural is prime or composite",
+      "domain": "primes",
+      "status": "checked_m20",
+      "dependencies": [
+        "divisor_le_nonzero",
+        "factor_search_up_to"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Checked bounded search either verifies the expanded prime predicate or constructs a nontrivial factor pair.",
+      "peano": {
+        "statement": "forall n. ~(n = 0) -> ~(n = 1) -> ((~(n = 1) /\\ forall a b. n = a * b -> a = 1 \\/ b = 1) \\/ exists c d. ((~(c = 1) /\\ ~(d = 1)) /\\ n = c * d))",
+        "existing_name": "prime_or_composite"
+      },
+      "blocker": null
+    },
+    {
+      "id": "prime_nonzero",
+      "title": "Every prime natural is nonzero",
+      "domain": "primes",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_zero_left",
+        "succ_ne_zero"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "The factorization of zero as zero times zero contradicts its expanded prime factor-pair property.",
+      "peano": {
+        "statement": "forall p. (~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1) -> ~(p = 0)",
+        "existing_name": "prime_nonzero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "prime_decidable",
+      "title": "Primality of naturals is decidable",
+      "domain": "primes",
+      "status": "checked_m20",
+      "dependencies": [
+        "eq_decidable",
+        "prime_or_composite",
+        "prime_nonzero"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "Equality tests isolate zero and one; constructive prime-or-composite search decides every remaining natural.",
+      "peano": {
+        "statement": "forall n. ((~(n = 1) /\\ forall a b. n = a * b -> a = 1 \\/ b = 1) \\/ ~((~(n = 1) /\\ forall a b. n = a * b -> a = 1 \\/ b = 1)))",
+        "existing_name": "prime_decidable"
+      },
+      "blocker": null
+    },
+    {
+      "id": "proper_factor_lt",
+      "title": "A proper factor is strictly smaller than its product",
+      "domain": "primes",
+      "status": "checked_m20",
+      "dependencies": [
+        "divisor_le_nonzero",
+        "le_eq_or_lt",
+        "mul_left_cancel_nonzero",
+        "mul_one"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "A bounded factor is either strict or equal to the product; equality and cancellation would force the cofactor to be one.",
+      "peano": {
+        "statement": "forall n c d. ~(n = 0) -> n = c * d -> ~(d = 1) -> exists k. k + S c = n",
+        "existing_name": "proper_factor_lt"
+      },
+      "blocker": null
+    },
+    {
+      "id": "prime_divisor_exists_up_to",
+      "title": "Bounded prime-divisor existence",
+      "domain": "primes",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_zero_left",
+        "le_zero",
+        "lt_of_lt_of_le",
+        "le_of_succ_le_succ",
+        "multiple_refl",
+        "multiple_trans",
+        "prime_or_composite",
+        "proper_factor_lt"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Ordinary induction on an explicit upper bound implements constructive strong descent through a proper factor.",
+      "peano": {
+        "statement": "forall B n. (exists t. t + n = B) -> ~(n = 0) -> ~(n = 1) -> exists p. ((~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1) /\\ exists k. n = p * k)",
+        "existing_name": "prime_divisor_exists_up_to"
       },
       "blocker": null
     },
@@ -2927,21 +3158,22 @@
       "id": "prime_divisor_exists",
       "title": "Every nontrivial natural has a prime divisor",
       "domain": "primes",
-      "status": "planned_expressible",
+      "status": "checked_m20",
       "dependencies": [
-        "prime_or_composite",
-        "multiple_trans"
+        "le_refl",
+        "prime_divisor_exists_up_to"
       ],
       "sources": [
+        "peano_lab_library",
         "macbeth_math2001_repo",
         "weissman_illustrated_programming",
         "open_logic",
         "stein_ent_tex"
       ],
-      "summary": "An induction/minimal-counterexample milestone stated without a primitive Prime predicate.",
+      "summary": "Instantiating bounded prime search at the number itself constructs an expanded prime predicate and an explicit divisibility witness.",
       "peano": {
-        "statement": "forall n. ~(n = 0) -> ~(n = 1) -> exists p. (~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1) /\\ exists k. n = p * k",
-        "existing_name": null
+        "statement": "forall n. ~(n = 0) -> ~(n = 1) -> exists p. ((~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1) /\\ exists k. n = p * k)",
+        "existing_name": "prime_divisor_exists"
       },
       "blocker": null
     },

@@ -166,16 +166,22 @@ fine-tuning awaits the pretrained-base baseline.
 
 ## Peano foundational arithmetic snapshot
 
-[`peano-library/`](peano-library/) is the deterministic snapshot of all 137
+[`peano-library/`](peano-library/) is the deterministic snapshot of all 149
 checked Peano library entries. Its internal snapshot-v2 schema contains
 statement/script/certificate hashes, exact node/depth and structural Cut
 metrics, an ordered root digest, and the dependency DAG in Mermaid form.
+The current snapshot totals 67,844 structural nodes and 1,800 Cuts across 109
+Cut-bearing entries. `euclid_prime_dvd_product` remains largest at 5,382 nodes
+and has the maximum 159 Cuts; `prime_divisor_exists` reaches the maximum depth
+of 80.
 Rebuild or verify it with
 `python3 scripts/build_peano_library_snapshot.py [--check]`.
 
 The snapshot is evidence about replayed certificates, not a theorem database
 trusted by the kernel. The broader checked/planned/blocked research graph lives
-in `research/arithmetic-library/catalog.json`.
+in `research/arithmetic-library/catalog.json`; it currently has 158 nodes: 23
+`checked_existing`, 126 `checked_m20`, five planned, and four
+language-blocked.
 
 ## Fundamental theorem of arithmetic companion
 
@@ -221,5 +227,5 @@ The reconciled runtime keeps all 26 source records for provenance. Fourteen are
 identical to independently developed M20 records, so a guarded union exposes
 those once and adds the twelve genuinely new modular capstones. That initial
 reconciliation produced a historical 63-theorem release; the current generated
-snapshot is its 137-theorem successor. Incompatible same-name records fail
+snapshot is its 149-theorem successor. Incompatible same-name records fail
 closed.

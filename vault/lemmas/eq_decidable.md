@@ -1,35 +1,35 @@
 ---
-title: "Lemma: le_refl"
+title: "Lemma: eq_decidable"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `le_refl`
+# `eq_decidable`
 
-The defined order is reflexive; zero is its witness.
+Equality of natural numbers is constructively decidable.
 
 ## Closed Peano statement
 
 ```text
-forall n. n <= n
+forall a b. a = b \/ ~(a = b)
 ```
 
 ## Dependencies
 
-- [[zero_add]]
+- None; the script closes directly from PA rules.
 
 ## Checked dependents
 
-- [[gcd_exists_relational]]
-- [[gcd_balanced_bezout_exists]]
+- [[multiple_decidable_nonzero]]
+- [[multiple_decidable]]
 - [[factor_search_up_to]]
-- [[prime_divisor_exists]]
+- [[prime_decidable]]
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **25 nodes**, depth **9**.
-- Authored script length: **3 commands**.
-- Runtime card: `pa lib le_refl`.
+- Certificate: **48 nodes**, depth **20**.
+- Authored script length: **27 commands**.
+- Runtime card: `pa lib eq_decidable`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

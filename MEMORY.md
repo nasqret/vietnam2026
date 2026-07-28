@@ -256,7 +256,7 @@
   delivery remains blocked on administrator-managed cache headers, while M17 is published to
   staging. The implementation, checked corpus,
   construction book, Obsidian knowledge base, kernel-judged evaluation protocol, live checked-
-  theorem reuse, and the current 137-entry checked ladder (whose initial public-catalog/M20
+  theorem reuse, and the current 149-entry checked ladder (whose initial public-catalog/M20
   reconciliation produced a historical 63-entry release),
   certificate-producing `ring`, and bounded checked
   `norm_num` teaching surface are present. The odd-square induction closes through explicit
@@ -329,8 +329,8 @@
   170 commands, and 414/414 vault wikilinks pass. Local browser candidate `2026-07-28g` has
   application identity `a-3ea7b7142aa0`; automated worker boot passes, direct in-app Pyodide
   latency remains unmeasured, and production is untouched.
-- The current native arithmetic runtime has 137 unique checked theorems: 23
-  baseline entries, 102 foundational post-baseline entries, and twelve unique
+- The current native arithmetic runtime has 149 unique checked theorems: 23
+  baseline entries, 114 general foundational entries, and twelve unique
   modular capstones. It now includes discrete order, multiplication
   cancellation/monotonicity, constructive quotient-remainder existence, full
   quotient-remainder uniqueness, zero-remainder/divisibility bridges,
@@ -339,20 +339,25 @@
   both directions of Euclidean gcd invariance, constructive relational gcd
   existence by bounded induction, simultaneous balanced-natural Bézout
   witnesses, Gauss cancellation, the prime-divisor one-or-self API, and
-  Euclid's lemma. Under self-contained dependency sharing, the complete ladder
-  contains 52,433 structural proof nodes and 1,345 Cuts across 98 entries;
-  `euclid_prime_dvd_product` is largest by nodes at 5,382/depth 55, and the
-  maximum depth is 57. The synchronized research catalog has 148 nodes (23
-  baseline checked, 114 post-baseline checked, seven planned,
-  four language-blocked) plus the separate Lean FTA companion. The generated
-  vault has 216 notes and 1,696 resolved links. The object language, PA axioms,
+  Euclid's lemma. The constructive prime-search layer adds equality and
+  divisibility decisions, bounded factor search, prime/composite and prime
+  decisions, nonzero/proper-factor interfaces, and bounded plus unrestricted
+  prime-divisor existence. Under self-contained dependency sharing, the
+  complete ladder contains 67,844 structural proof nodes and 1,800 Cuts across
+  109 entries. `euclid_prime_dvd_product` remains largest by nodes at 5,382 and
+  has the maximum 159 Cuts; `prime_divisor_exists` sets the maximum depth at
+  80. The synchronized research catalog has 158 nodes (23
+  baseline checked, 126 post-baseline checked, five planned,
+  four language-blocked) plus the separate Lean FTA companion. The last
+  generated vault has 228 notes and 1,890 resolved links. The object language, PA axioms,
   induction schema, and intuitionistic default are unchanged. The trusted
   proof grammar/checker now contains the reviewed self-contained
   `Cut(A,B,lemma,body)` rule: both formulas and both proof branches are embedded,
   with no theorem-name/hash authority. The checker is 247 lines. Its untrusted
   erasure utility is diagnostic and cannot round-trip every introduction-headed
   or induction-bearing certificate. The local browser candidate is
-  `2026-07-28p` / `a-48059fcca9d3`; 1,090 Peano tests, Lambda's 360 tests plus
-  36 subtests, the warning-free 36-source book, and 264 documented commands
-  pass. Peano FTA remains absent pending constructive prime-divisor existence
-  and the selected β-sequence/product proof spine. Production is untouched.
+  `2026-07-29a` / `a-d0758315633d`; 1,094 Peano tests, Lambda's 360 tests plus
+  36 subtests, the warning-free 36-source book, 201 deep links, 45 session
+  blocks with 264 documented commands, and application-manifest drift pass.
+  Peano FTA remains absent pending greatest-prime descent and the selected
+  β/CRT/finite-product representation spine. Production is untouched.

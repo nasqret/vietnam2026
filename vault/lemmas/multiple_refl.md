@@ -23,6 +23,7 @@ forall a. exists q. a = a * q
 - [[is_gcd_of_dvd]]
 - [[gcd_exists_up_to]]
 - [[gauss_coprime_cancel]]
+- [[prime_divisor_exists_up_to]]
 
 ## Verification record
 

@@ -21,10 +21,17 @@ canonical finite prime factorization.
 Codes are not sequence identities: two code pairs may decode the same finite
 prefix. Extensional equality therefore compares length and every decoded
 bounded entry. Natural [[quotient-and-remainder]] and [[euclids-lemma]] are now
-checked. The remaining spine includes constructive prime-divisor existence,
-binary and bounded CRT, β-value and finite-prefix extension/restriction
-laws, prefix-product trace existence and composition, and finite-product
-Euclid/cancellation results.
+checked. Constructive [[prime_divisor_exists|prime-divisor existence]] is now
+checked as well, through [[prime_or_composite]], [[proper_factor_lt]], and
+formula-specific bounded descent.
+
+The remaining spine begins with greatest-prime-divisor descent for the sorted
+factor order. The encoding layer then needs binary and bounded CRT, β-value
+existence/functionality, finite-prefix extension/restriction, prefix-product
+trace existence/functionality/composition, preservation of bounded primality
+and sorting, and finite-product Euclid/cancellation. None of those relations is
+a trusted primitive, and the checked arithmetic prefix does not by itself
+constitute [[fundamental-theorem-of-arithmetic|FTA]].
 
 ## Related
 

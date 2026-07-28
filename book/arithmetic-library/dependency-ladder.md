@@ -9,17 +9,17 @@ needs.
 
 | Layer | Core interfaces | Current state |
 |---|---|---|
-| Equality | symmetry, transitivity, successor/add/multiply congruence | checked |
+| Equality | symmetry, transitivity, successor/add/multiply congruence, constructive equality decision | checked |
 | Addition | identities, associativity, commutativity, cancellation, zero-sum rigidity | checked core; more orientations planned |
 | Multiplication | identities, annihilation, distributivity, associativity, commutativity, zero product | checked core |
 | Order | reflexivity, transitivity, trichotomy, incompatibility, addition monotonicity and cancellation | checked |
-| Divisibility | units, zero, reflexivity, transitivity, addition and product closure | checked |
+| Divisibility | units, zero, reflexivity, transitivity, addition/product closure, constructive decision | checked |
 | Modular congruence | balanced reflexivity and symmetry; additive and multiplicative compatibility | first two checked; transitivity/compatibility planned; fixed mod-five residue ladder checked |
 | Parity | even/odd dichotomy and arithmetic tables | planned and expressible |
 | Division | quotient-remainder existence, uniqueness, block separation, and zero-remainder/divisibility bridges | checked |
 | GCD/coprime | relational symmetry/projections/constructors, uniqueness, zero-right base, Euclidean invariance, existence, balanced Bézout, Gauss cancellation | checked through `gauss_coprime_cancel` |
-| Primes | characterization, prime divisors, Euclid's lemma, infinitely many primes | `prime_two`, `prime_divisor_eq_one_or_self`, and `euclid_prime_dvd_product` checked; prime-divisor existence and the remaining spine planned |
-| Factorization | existence and uniqueness up to permutation | β representation selected; Peano proof spine pending; Lean companion checked |
+| Primes | bounded factor search, primality decision, proper-factor descent, prime divisors, Euclid's lemma, infinitely many primes | checked through `prime_divisor_exists` and `euclid_prime_dvd_product`; primes above every bound remain planned |
+| Factorization | existence and uniqueness up to permutation | greatest-prime descent and β/CRT/product infrastructure pending; Lean companion checked |
 
 The generated `dependency-graph.mmd` is the exact graph for checked entries.
 The research catalog is the larger design graph and gives every unproved node
@@ -93,20 +93,40 @@ $$
 \end{aligned}
 $$
 
-The middle line is now a checked native chain. The bounded theorem
-`gcd_balanced_bezout_exists_up_to` carries both the full relational gcd proof
-and four balanced coefficients through Euclidean descent. Its unrestricted
-wrapper gives `coprime_balanced_bezout`; coefficient scaling and the
-common-divisor bridge then give `gauss_coprime_cancel`. Finally,
+Both arithmetic lines are now checked native chains. Constructive equality
+decision feeds quotient-remainder-based divisibility decision. Induction on a
+concrete bound then gives `factor_search_up_to`, which either verifies the
+prime factor-pair condition throughout that bound or returns an explicit
+nontrivial factor pair. `prime_or_composite` applies the divisor bound at
+$B=n$; `prime_decidable` also handles zero and one explicitly.
+
+Proper-factor descent is separate from that search decision:
+`proper_factor_lt` proves that $n=cd$, $n\ne0$, and $d\ne1$ imply $c<n$.
+`prime_divisor_exists_up_to` uses ordinary induction on an explicit upper
+bound to recurse through such a factor, and `prime_divisor_exists` specializes
+the bound to $n$. This implements formula-specific strong descent without a
+predicate variable, a least-factor oracle, or classical DNE. All twelve new
+certificates are intuitionistic.
+
+The Euclid line uses the bounded theorem
+`gcd_balanced_bezout_exists_up_to`, which carries both the full relational gcd
+proof and four balanced coefficients through Euclidean descent. Its
+unrestricted wrapper gives `coprime_balanced_bezout`; coefficient scaling and
+the common-divisor bridge then give `gauss_coprime_cancel`. Finally,
 `prime_divisor_eq_one_or_self` applies the prime factor dichotomy to a
 relational gcd divisor of $p$, and `euclid_prime_dvd_product` uses its two
-branches. Prime-divisor existence remains an
-independent bounded-search milestone; Euclid's lemma does not supply it.
+branches. Prime-divisor existence was proved independently; Euclid's lemma
+does not supply it.
 
 Infinitely many primes can be reached before a general factorial function.
 It is enough to construct, for each bound, a common multiple of every number
 from two to that bound and then take a prime divisor of one more than that
 multiple. This remains a first-order existence argument.
+
+For FTA, the next arithmetic gate is a greatest-prime-divisor descent suited
+to constructing a sorted factor sequence. The representation gates remain
+binary and bounded CRT, β-value functionality and extension, and checked
+prefix-product traces. FTA itself is not yet a native `pa lib` theorem.
 
 ## Admission invariants
 

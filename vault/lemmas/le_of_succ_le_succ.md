@@ -21,6 +21,8 @@ forall a b. (exists k. k + S a = S b) -> exists r. r + a = b
 
 - [[gcd_exists_up_to]]
 - [[gcd_balanced_bezout_exists_up_to]]
+- [[factor_property_succ]]
+- [[prime_divisor_exists_up_to]]
 
 ## Verification record
 

@@ -107,6 +107,7 @@ the chapter order of any one source.
 - implication, conjunction, disjunction, negation, and quantifier helpers;
 - equality reflexivity, symmetry, transitivity, and substitution;
 - congruence for successor, addition, and multiplication;
+- checked constructive equality decision for naturals;
 - named left/right and nested-context congruence wrappers.
 
 These are Peano-native facts and should not be attributed to an external
@@ -138,6 +139,8 @@ course merely because that course uses a powerful congruence tactic.
 - closure under addition, multiplication, and repeated products;
 - positive-divisor bounds, common divisors, common multiples, and exclusion
   between consecutive multiples.
+- checked constructive divisibility decisions, including the zero-divisor
+  case.
 
 ### L4: Congruence and residues
 
@@ -167,9 +170,11 @@ course merely because that course uses a powerful congruence tactic.
 
 - prime and composite definitions;
 - the checked expanded instance `prime_two` and its small-factor prerequisites;
+- checked prime nonzeroness, bounded factor search, proper-factor descent,
+  prime-or-composite, and general primality decision;
 - the checked general divisor-of-a-prime one-or-self API;
+- checked constructive bounded and unrestricted prime-divisor existence;
 - checked Euclid's lemma, with finite-product consequences still planned;
-- proper factors and constructive prime-divisor existence;
 - infinitude of primes;
 - bounded primality-test specifications after the mathematical layer is
   complete.
@@ -200,10 +205,14 @@ quantification.
 
 This boundary should be explicit in the plan:
 
-- **Current-language feasible:** semiring and order facts; existential
-  divisibility; balanced natural congruence; parity; natural quotient/remainder
-  existence; relational gcd; prime definition; prime-divisor existence;
-  Euclid's lemma; infinitude of primes.
+- **Checked in the current language through the prime spine:** semiring and
+  order facts; existential divisibility; natural quotient/remainder existence;
+  relational gcd and balanced Bézout; constructive equality, divisibility,
+  prime/composite, and primality decisions; proper-factor descent;
+  prime-divisor existence; Gauss cancellation; and Euclid's lemma.
+- **Current-language feasible next target:** greatest-prime-divisor descent and
+  infinitude of primes, plus balanced congruence/parity clients not already in
+  the fixed-modulus layer.
 - **Feasible with relational encodings but potentially unwieldy:** generic
   algorithms, signed-coefficient APIs beyond the checked four-natural balanced
   Bézout relation, and recursive arithmetic-function graphs.
@@ -216,9 +225,11 @@ This boundary should be explicit in the plan:
 Gödel coding represents sequences inside first-order arithmetic at the cost of
 a less direct pedagogical API and potentially very large certificates. The
 representation review nevertheless selected a conservative Gödel-β authoring
-facade because it expands into the unchanged Peano language; the relations and
-their proof spine still require implementation and ordinary kernel-checked
-certificates.
+facade because it expands into the unchanged Peano language. With constructive
+prime-divisor existence now checked, the remaining critical path is
+greatest-prime descent followed by β-value functionality, binary/bounded CRT,
+finite-prefix extension, prefix-product traces, and finite-product
+existence/uniqueness certificates.
 
 ## Source and artifact invariants
 

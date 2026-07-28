@@ -12,6 +12,14 @@ the existing first-order language before the theorem target reaches the
 independent kernel. The kernel continues to know only `0`, `S`, `+`, `*`,
 equality, logical connectives, quantifiers, PA1–PA6, and induction.
 
+The arithmetic entrance gate is now checked: the runtime has constructive
+equality and divisibility decisions, bounded factor search,
+prime-or-composite and primality decisions, proper-factor descent,
+prime-divisor existence, relational gcd/Bézout, Gauss cancellation, and
+Euclid's lemma. This does **not** prove FTA. The remaining critical path starts
+with greatest-prime-divisor descent and then crosses the still-unimplemented
+β-value, CRT, finite-prefix, prefix-product, and finite-product layers.
+
 ## Sequence values
 
 For natural codes $b,c$, index $i$, and value $x$, put
@@ -46,9 +54,12 @@ p\ne1\land
 \forall a\,d.\;p=ad\to(a=1\lor d=1).
 $$
 
-The first checked instance of this formula is `prime_two`; a reusable general
-`Prime` macro and its hygiene tests are still planned. The selected schemas
-for the factor conditions are
+The first checked instance of this formula is `prime_two`. General
+`prime_or_composite`, `prime_decidable`, and `prime_divisor_exists` theorems
+now use the same formula fully expanded; a reusable surface `Prime` macro and
+its hygiene tests remain an authoring convenience, not a mathematical
+prerequisite or kernel extension. The selected schemas for the factor
+conditions are
 
 $$
 \begin{aligned}
@@ -129,25 +140,36 @@ expanded targets and closed certificates pass the ordinary kernel gate.
 ## Proof dependency spine
 
 The selected encoding fixes the intended first-order endpoint; it does not
-make the proof small. The proposed admission route is:
+make the proof small. The admission route and its current status are:
 
-1. discrete order, nonzero multiplication cancellation, and divisor bounds;
-2. division with unique remainder and bounded divisibility search;
-3. least divisor, prime-divisor existence, gcd, balanced-natural Bézout, and
-   Euclid's lemma;
-4. β-value existence/functionality, finite-prefix extension, and the required
-   CRT/common-multiple coding theorem;
-5. prefix-product extension and preservation of `AllPrime`/`Sorted`;
-6. factorization existence by strengthened natural-number induction;
-7. finite-product Euclid, prime matching, cancellation, and extensional
-   uniqueness.
+1. **Checked:** discrete order, nonzero multiplication cancellation, and
+   divisor bounds.
+2. **Checked:** division with unique remainder and constructive divisibility
+   and bounded factor search.
+3. **Checked:** prime/composite decision, proper-factor descent,
+   prime-divisor existence, relational gcd, balanced-natural Bézout, Gauss,
+   and Euclid's lemma.
+4. **Next arithmetic gate:** construct a greatest prime divisor with a strict
+   quotient descent suitable for appending to an already sorted
+   factorization.
+5. **Encoding gate:** prove β-value existence/functionality,
+   binary and bounded CRT, and finite-prefix extension and restriction.
+6. **Product gate:** prove prefix-product trace extension/functionality and
+   preservation of `AllPrime`/`Sorted`.
+7. **Existence gate:** perform the strengthened natural-number descent using
+   the greatest prime divisor and the encoded prefix/product extension laws.
+8. **Uniqueness gate:** prove finite-product Euclid, prime matching,
+   cancellation, and extensional equality of the two sorted decoded prefixes.
 
 The reviewed self-contained `Cut` rule now supplies lexical proof sharing while
 keeping every dependency proof inside the checked certificate. This removes
 the former fully expanded proof-tree bottleneck, but it does not establish that
 the much larger β/CRT/product spine will fit the live 32,768-node/depth-128
-import budget. The proof-sharing trust review is recorded separately and must
-not be disguised as part of this notation.
+import budget. The current runtime maximum is 5,382 nodes, while
+`prime_divisor_exists` reaches depth 80; those observations are evidence for
+the arithmetic layer only, not a resource proof for encoded FTA. The
+proof-sharing trust review is recorded separately and must not be disguised as
+part of this notation.
 
 ## Independently checked companion
 

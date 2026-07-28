@@ -7,8 +7,10 @@ through uniqueness, the zero-right gcd base case, and both directions of
 Euclidean-step invariance, together with bounded and unrestricted relational
 gcd existence. It now also exposes simultaneous relational-gcd/balanced-Bézout
 existence, result-one witnesses for coprime inputs, Gauss cancellation, and
-Euclid's lemma. Prime-divisor existence and the encoded finite-product layer
-remain separate milestones.
+Euclid's lemma. A separate constructive search spine now decides equality,
+divisibility, bounded factor pairs, and primality, and constructs a prime
+divisor of every nonzero nonunit natural. Greatest-prime descent and the
+encoded finite-product layer remain separate milestones.
 
 All relations below are authoring notation only. In particular,
 
@@ -39,12 +41,17 @@ The current checked layer contains:
   `balanced_combination_scale_right`,
   `common_divisor_divides_balanced_result`, `coprime_balanced_bezout`,
   `gauss_coprime_cancel`, `prime_divisor_eq_one_or_self`, and
-  `euclid_prime_dvd_product`.
+  `euclid_prime_dvd_product`; and
+- `eq_decidable`, `multiple_decidable_nonzero`, `multiple_decidable`,
+  `factor_nonzero_left`, `factor_property_succ`, `factor_search_up_to`,
+  `prime_nonzero`, `prime_or_composite`, `prime_decidable`,
+  `proper_factor_lt`, `prime_divisor_exists_up_to`, and
+  `prime_divisor_exists`.
 
 In the current shared representation, the largest certificate in this layer is
 `euclid_prime_dvd_product` at 5,382 proof nodes/depth 55. Every entry replays
 constructively and checks from the empty context. The snapshot-wide maximum
-depth is 57.
+depth is now 80, set by `prime_divisor_exists`.
 
 ## Checked Euclidean invariance
 
@@ -234,6 +241,47 @@ Prime(p) -> p | a*b -> p | a \/ p | b
 
 with every displayed relation expanded in its actual first-order statement.
 
+## Checked constructive prime search
+
+The prime-divisor theorem is independent of Euclid's lemma: it has to produce
+a prime rather than reason about a supplied one. The admitted route is fully
+constructive and never turns a bare negation of primality into a witness.
+
+1. `eq_decidable` proves natural equality decidable by induction.
+2. Unique quotient/remainder makes divisibility by a nonzero divisor
+   decidable; `multiple_decidable` discharges the zero-divisor branch.
+3. `factor_search_up_to` inducts over an explicit factor bound. At each new
+   boundary it decides whether the boundary divides the number and either
+   returns a nontrivial factor pair or extends the universal factor property.
+4. `prime_or_composite` instantiates the bound at the number itself, using the
+   positive-divisor bound to cover every possible factor.
+5. `proper_factor_lt` shows that a factor paired with a nonunit cofactor is
+   strictly smaller than the nonzero product.
+6. `prime_divisor_exists_up_to` performs formula-specific bounded strong
+   induction: return the number if prime; otherwise recurse into the smaller
+   proper factor and transport its prime divisor by divisibility transitivity.
+7. `prime_divisor_exists` instantiates the explicit bound reflexively.
+
+The companion nodes `factor_nonzero_left`, `prime_nonzero`, and
+`prime_decidable` expose reusable boundary facts and the final total decision
+API. The whole route is accepted by the intuitionistic kernel; no excluded
+middle or double-negation elimination is hidden in the search.
+
+| Checked theorem | Nodes/depth |
+|---|---:|
+| `eq_decidable` | 48 / 20 |
+| `multiple_decidable_nonzero` | 1,242 / 61 |
+| `multiple_decidable` | 1,352 / 64 |
+| `factor_nonzero_left` | 37 / 12 |
+| `factor_property_succ` | 150 / 20 |
+| `factor_search_up_to` | 1,925 / 69 |
+| `prime_nonzero` | 49 / 11 |
+| `prime_or_composite` | 2,038 / 71 |
+| `prime_decidable` | 2,194 / 73 |
+| `proper_factor_lt` | 468 / 26 |
+| `prime_divisor_exists_up_to` | 2,931 / 78 |
+| `prime_divisor_exists` | 2,977 / 80 |
+
 ## Shared-certificate metrics
 
 | Checked theorem | Nodes/depth |
@@ -260,9 +308,13 @@ with every displayed relation expanded in its actual first-order statement.
    coprime Bézout and Gauss cancellation.
 6. **Complete:** combine relational gcd, primality, and Gauss to prove Euclid's
    lemma.
-7. Develop prime-divisor existence separately by bounded search/strong
-   induction.
+7. **Complete:** develop constructive factor search, prime/composite and
+   primality decisions, proper-factor descent, and bounded/public
+   prime-divisor existence.
+8. Develop greatest-prime-divisor descent for sorted factorization, then cross
+   the separate β-value/CRT/prefix-extension/product gate.
 
 Prime-divisor existence does not follow automatically from gcd or Bézout, and
-Euclid's lemma does not construct a prime divisor. None of these steps yet
-supplies finite sequences or products for FTA.
+Euclid's lemma does not construct a prime divisor; both sides are now checked
+independently. None of these steps yet supplies finite sequences or products
+for FTA.

@@ -55,7 +55,7 @@ does not determine the architecture.
 - [x] Add both constructive normal forms for non-divisibility.
 - [x] Add modulus-independent quotient-and-remainder transport through
       addition and squaring.
-- [x] Replay and independently check all 137 unique library entries and enforce
+- [x] Replay and independently check all 149 unique library entries and enforce
       the live 32,768-node/depth-128 import bound.
 - [x] Generate a deterministic versioned JSON snapshot, exact metrics,
       certificate hashes, structural Cut counts, and Mermaid dependency graph.
@@ -77,8 +77,10 @@ does not determine the architecture.
 
 - [x] Add the discrete-order, additive/multiplicative monotonicity, cancellation,
       and strict-block contradiction interface needed by division uniqueness.
-- [ ] Add strong-induction, least-counterexample, and bounded-search interfaces
-      suited to divisor descent and constructive factor extraction.
+- [x] Add the concrete bounded-search interface needed for constructive factor
+      extraction.
+- [ ] Add reusable strong-induction and least-counterexample proof-producing
+      interfaces for later greatest-prime and factorization descent.
 - [x] Prove quotient-remainder existence and uniqueness for positive divisors,
       plus zero-remainder equivalence bridges for divisibility.
 - [x] Prove the relational gcd projection, symmetry, constructor, and uniqueness
@@ -93,13 +95,20 @@ does not determine the architecture.
       scaling bridges, and Gauss cancellation.
 - [x] Check `prime_two` as a completely expanded first-order formula, without
       adding a primitive `Prime` predicate.
-- [ ] Add round-tripping prime surface syntax and capture tests, prove zero and
-      one non-prime, and complete the remaining composite/prime decision and
-      bounded divisor-search API.
+- [ ] Add round-tripping prime surface syntax and capture tests; the checked
+      theorem layer deliberately continues to use fully expanded formulas.
+- [x] Prove constructive prime/composite and prime decisions, prime nonzero,
+      equality/divisibility decisions, and the bounded factor-search API:
+      `eq_decidable`, `multiple_decidable_nonzero`, `multiple_decidable`,
+      `factor_property_succ`, `factor_search_up_to`, `prime_or_composite`,
+      `prime_nonzero`, and `prime_decidable`.
 - [x] Prove Euclid's lemma constructively from relational gcd existence, Gauss,
       and the expanded prime factor-pair disjunction.
-- [ ] Prove proper-factor descent, constructive prime-divisor existence, and
-      primes above every bound.
+- [x] Prove proper-factor descent and constructive prime-divisor existence via
+      `factor_nonzero_left`, `proper_factor_lt`,
+      `prime_divisor_exists_up_to`, and `prime_divisor_exists`.
+- [ ] Prove primes above every bound and the greatest-prime descent interface
+      needed by canonical factorization.
 
 ## M20E — Finite factorization representation and FTA
 
@@ -134,15 +143,16 @@ does not determine the architecture.
 
 ## Current acceptance record
 
-- Checked runtime: 137 unique theorems — 23 baseline and 114 post-baseline.
-  The latter are the 102-node foundational layer plus twelve unique upstream
+- Checked runtime: 149 unique theorems — 23 baseline and 126 post-baseline.
+  The latter are the 114-entry general foundational layer plus twelve unique upstream
   modular capstones.
-- Research catalog: 148 nodes — 23 `checked_existing`, 114 `checked_m20`, seven
+- Research catalog: 158 nodes — 23 `checked_existing`, 126 `checked_m20`, five
   `planned_expressible`, and four `blocked_by_language`.
-- Shared-certificate metrics: 52,433 total structural proof nodes and 1,345
-  Cuts across 98 entries. The largest by nodes is
-  `euclid_prime_dvd_product` at 5,382/depth 55, while the ladder's maximum
-  depth remains 57. The immutable upstream report retains the
+- Shared-certificate metrics: 67,844 total structural proof nodes and 1,800
+  Cuts across 109 entries. The largest by nodes is
+  `euclid_prime_dvd_product` at 5,382; it also has the maximum 159 Cuts.
+  `prime_divisor_exists` supplies the ladder's maximum depth of 80. The
+  immutable upstream report retains the
   former fully expanded capstone metric of 21,515/depth 66.
 - Trusted-kernel change: one self-contained Cut constructor and checker rule.
   The checker is 247 lines (formerly 234). The object language and logical
@@ -150,10 +160,12 @@ does not determine the architecture.
   not a complete or authoritative admission route.
 - Full FTA companion status: checked in Lean for every nonzero natural, with
   finite-list existence and permutation uniqueness and no `sorryAx`.
-- Full Peano FTA status: absent from `pa lib` pending closed certificates for
-  prime-divisor existence and the selected β-sequence/product encoding;
+- Full Peano FTA status: absent from `pa lib` pending greatest-prime descent
+  and the selected β/CRT/finite-product representation spine;
   no admitted theorem or hidden primitive.
-- Current validation: 1,090 Peano tests on Python 3.10; 36-source
-  warning-as-error Jupyter Book; 199 deep links and 45 sessions/264 replayed
-  commands; 216-note/1,696-link Obsidian graph; exact
-  snapshot, catalog, corpus, application-manifest, and Lean FTA audits.
+- Validation record: 1,094 Peano tests on Python 3.10; Lambda's 360 tests plus
+  36 subtests; 36-source warning-as-error Jupyter Book; 201 deep links and 45
+  sessions/264 replayed commands; 228-note/1,890-link Obsidian graph; exact
+  snapshot, catalog, corpus, application-manifest, and Lean FTA audits. Local
+  browser build `2026-07-29a` has content identity `a-d0758315633d`; it is not
+  deployed or promoted.

@@ -84,6 +84,14 @@ Separate mathematical facts from algorithm claims:
   data artifacts rather than the theorem ladder unless a precise theorem is
   selected.
 
+The first foundational and decision layer is now substantially native:
+`eq_decidable`, `multiple_decidable_nonzero`, and `multiple_decidable` support
+`factor_search_up_to`; that bounded search feeds `prime_or_composite`,
+`prime_decidable`, `proper_factor_lt`, and bounded/public prime-divisor
+existence. All are independently reconstructed Peano certificates, not
+translations of notebook code. Infinitude, sieve correctness, and executable
+trial-division implementations remain future milestones.
+
 ### Prime factorization and arithmetic functions
 
 The dictionary representation in Part 4 suggests a useful documentation API:
@@ -143,8 +151,11 @@ remainder, gcd, factorial, prime-factor list, finite set, or counting term.
 
 Therefore:
 
-- quotient/remainder existence, divisibility, relational gcd, primality,
-  prime-divisor existence, and Euclid's lemma can be developed now;
+- quotient/remainder existence, divisibility, relational gcd, constructive
+  primality decision, prime-divisor existence, and Euclid's lemma are now
+  checked native layers;
+- greatest-prime descent and infinitude of primes remain expressible without
+  changing the object language;
 - algorithms may be specified relationally, but executable functions require
   an explicit project architecture decision;
 - prime-decomposition dictionaries require a finite-map or multiset layer;

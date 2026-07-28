@@ -1303,3 +1303,50 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   corpus/application drift checks, and the arithmetic knowledge-base audit.
   Native Peano FTA remains unclaimed: the next arithmetic gate is constructive
   prime-divisor existence, followed by β-coded finite prefixes and products.
+
+## 2026-07-29 — Constructive prime search and prime-divisor existence
+
+- Added twelve closed native rungs: `eq_decidable`,
+  `multiple_decidable_nonzero`, `multiple_decidable`,
+  `factor_property_succ`, `factor_search_up_to`, `prime_or_composite`,
+  `prime_nonzero`, `prime_decidable`, `factor_nonzero_left`,
+  `proper_factor_lt`, `prime_divisor_exists_up_to`, and
+  `prime_divisor_exists`. All statements remain fully expanded formulas over
+  the existing PA term language; no primitive divisibility or prime predicate,
+  choice rule, or hidden theorem authority was introduced.
+- The constructive route decides equality first, decides nonzero-divisor
+  divisibility through quotient/remainder existence and uniqueness, and then
+  performs ordinary induction on an explicit factor bound. The bounded search
+  either proves every factorization below the bound has a unit factor or
+  returns a nonunit factor pair. This yields prime/composite and prime
+  decisions without converting double negation into a witness.
+- `proper_factor_lt` turns a nontrivial factorization into strict descent.
+  `prime_divisor_exists_up_to` inducts on an explicit upper bound: a prime
+  input is its own divisor; a composite input descends to a proper factor,
+  recursively obtains its prime divisor, and lifts divisibility by
+  transitivity. `prime_divisor_exists` specializes that theorem at the
+  reflexive bound. Constructive prime search and prime-divisor existence are
+  therefore complete native milestones.
+- The runtime now contains 149 unique checked theorems: 23 baseline, 114
+  general foundational, and twelve unique modulo-five capstones. The
+  synchronized catalog has 158 nodes: 23 `checked_existing`, 126
+  `checked_m20`, five planned, and four language-blocked. Shared certificates
+  total 67,844 structural nodes and 1,800 Cuts across 109 Cut-bearing entries.
+  `euclid_prime_dvd_product` remains largest at 5,382 nodes and has the maximum
+  159 Cuts; `prime_divisor_exists` reaches the maximum depth of 80.
+- Regenerated the leakage-safe corpus with unchanged semantic counts: 13,344
+  transitions from 1,692 sessions, split 13,326/18 train/validation. Its new
+  source-bound run fingerprint is
+  `a470b1b751a1d291462da9249713713bd7430922c1002a77dfd64ae8e3072d0e`.
+  The isolated ladder smoke has 298 sessions, 3,549 raw and 3,546 unique
+  transitions, and all 149 authored-script kernel QEDs.
+- The full Peano suite passes 1,094 tests on CPython 3.10; Lambda passes 360
+  tests plus 36 subtests; all 36 book sources build with warnings as errors;
+  201 deep links and 45 session blocks containing 264 commands verify. The
+  arithmetic knowledge base, 228-note/1,890-link vault, snapshot, corpus,
+  application-manifest, and pinned Lean FTA exact-axiom gates are green.
+  Local browser build `2026-07-29a` has immutable content identity
+  `a-d0758315633d`; it is not staged, deployed, or promoted.
+- Native Peano FTA remains absent: the next mathematical and representation
+  gates are greatest-prime descent and the β/CRT/finite-product spine needed
+  for canonical encoded factorizations.

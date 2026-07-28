@@ -1,35 +1,32 @@
 ---
-title: "Lemma: le_refl"
+title: "Lemma: factor_nonzero_left"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `le_refl`
+# `factor_nonzero_left`
 
-The defined order is reflexive; zero is its witness.
+The left factor of a nonzero product is nonzero.
 
 ## Closed Peano statement
 
 ```text
-forall n. n <= n
+forall n c d. ~(n = 0) -> n = c * d -> ~(c = 0)
 ```
 
 ## Dependencies
 
-- [[zero_add]]
+- [[mul_zero_left]]
 
 ## Checked dependents
 
-- [[gcd_exists_relational]]
-- [[gcd_balanced_bezout_exists]]
-- [[factor_search_up_to]]
-- [[prime_divisor_exists]]
+- No checked theorem currently depends on this node.
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **25 nodes**, depth **9**.
-- Authored script length: **3 commands**.
-- Runtime card: `pa lib le_refl`.
+- Certificate: **37 nodes**, depth **12**.
+- Authored script length: **11 commands**.
+- Runtime card: `pa lib factor_nonzero_left`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

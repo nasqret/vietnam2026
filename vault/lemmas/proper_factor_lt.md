@@ -1,35 +1,35 @@
 ---
-title: "Lemma: le_zero"
+title: "Lemma: proper_factor_lt"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `le_zero`
+# `proper_factor_lt`
 
-Only zero is less than or equal to zero.
+A factor with a nonunit cofactor is strictly smaller than a nonzero product.
 
 ## Closed Peano statement
 
 ```text
-forall n. n <= 0 -> n = 0
+forall n c d. ~(n = 0) -> n = c * d -> ~(d = 1) -> exists k. k + S c = n
 ```
 
 ## Dependencies
 
-- [[add_eq_zero_right]]
+- [[divisor_le_nonzero]]
+- [[le_eq_or_lt]]
+- [[mul_left_cancel_nonzero]]
+- [[mul_one]]
 
 ## Checked dependents
 
-- [[gcd_exists_up_to]]
-- [[gcd_balanced_bezout_exists_up_to]]
-- [[factor_search_up_to]]
 - [[prime_divisor_exists_up_to]]
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **29 nodes**, depth **13**.
-- Authored script length: **5 commands**.
-- Runtime card: `pa lib le_zero`.
+- Certificate: **468 nodes**, depth **26**.
+- Authored script length: **43 commands**.
+- Runtime card: `pa lib proper_factor_lt`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

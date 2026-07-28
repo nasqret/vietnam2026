@@ -22,8 +22,14 @@ The proof chooses a relational gcd $g$ of $(p,a)$.
 [[prime_divisor_eq_one_or_self]] turns $g\mid p$ into $g=1$ or $p=g$. In the
 first branch,
 [[is_gcd_one_to_coprime]] and [[gauss_coprime_cancel]] yield $p\mid b$; in the
-second, $p=g$ and the gcd's divisibility witness yields $p\mid a$. Constructive
-prime-divisor existence is still a separate theorem.
+second, $p=g$ and the gcd's divisibility witness yields $p\mid a$.
+
+Constructive prime production is a separate proof problem, now solved by
+[[prime_divisor_exists]] through [[factor_search_up_to]],
+[[prime_or_composite]], [[proper_factor_lt]], and the bounded descent theorem
+[[prime_divisor_exists_up_to]]. Euclid's lemma remains the uniqueness-side
+tool; prime-divisor existence is the arithmetic entrance to factorization
+existence.
 
 ## Related
 

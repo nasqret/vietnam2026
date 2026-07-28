@@ -46,15 +46,27 @@ expanded certificate is checked in the empty context. This extension is also a u
 [[verifier-guided-policy-evaluation-and-search|model-v2 curriculum]], but the capstone itself is now
 a library-retrieval test rather than a sealed theorem-discovery benchmark.
 
-The reconciled runtime now has 137 unique checked entries: the 23-entry core,
-102 post-baseline foundational entries, and twelve genuinely new modular
+The reconciled runtime now has 149 unique checked entries: the 23-entry core,
+114 post-baseline foundational entries, and twelve genuinely new modular
 capstones. The newer foundation includes discrete order, multiplication
 cancellation and monotonicity, and native [[quotient-and-remainder]] existence
 and uniqueness, plus the relational [[gcd-and-coprimality]] API through gcd
 uniqueness, Euclidean-step invariance, and constructive bounded/general gcd
-existence. Its newest ten-node tranche adds simultaneous balanced Bézout,
+existence. The next ten-node tranche adds simultaneous balanced Bézout,
 [[gauss_coprime_cancel]], [[prime_divisor_eq_one_or_self]], and
-[[euclid_prime_dvd_product]].
+[[euclid_prime_dvd_product]]. The newest twelve-node tranche adds constructive
+[[eq_decidable|equality]] and [[multiple_decidable|divisibility]] decisions,
+bounded [[factor_search_up_to|factor search]], [[prime_or_composite]] and
+[[prime_decidable|primality decision]], [[proper_factor_lt|proper-factor
+descent]], and [[prime_divisor_exists|prime-divisor existence]].
+
+The shared snapshot now totals 67,844 proof nodes and 1,800 self-contained
+Cuts across 149 certificates; 109 certificates contain a Cut. Euclid's lemma
+remains largest at 5,382 nodes, while prime-divisor existence sets the maximum
+depth at 80. The next mathematical/representation gate is greatest-prime
+descent followed by [[godel-beta-sequence|β-value]], CRT, finite-prefix, and
+prefix-product infrastructure; [[fundamental-theorem-of-arithmetic|FTA]] is
+not yet a native checked theorem.
 
 ## Related
 

@@ -23,6 +23,11 @@ forall n. 0 * n = 0
 - [[mul_eq_one_components]]
 - [[prime_two]]
 - [[multiple_antisymm]]
+- [[multiple_decidable]]
+- [[factor_search_up_to]]
+- [[prime_nonzero]]
+- [[factor_nonzero_left]]
+- [[prime_divisor_exists_up_to]]
 
 ## Verification record
 

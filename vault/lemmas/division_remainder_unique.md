@@ -23,7 +23,7 @@ forall m n q r q2 r2. n = m * q + r -> (exists k. k + S r = m) -> n = m * q2 + r
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[multiple_decidable_nonzero]]
 
 ## Verification record
 

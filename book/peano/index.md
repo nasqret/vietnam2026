@@ -88,11 +88,14 @@ M20 begins a general {doc}`foundational arithmetic library
 original 23-entry base to 51 checked entries. That snapshot and the 49-entry public-catalog source
 remain provenance: fourteen post-core records coincide, so their initial reconciliation contained
 63 unique entries rather than their arithmetic sum. Subsequent native passes extend the current
-local candidate to **137 checked theorems**: the 23-entry base, 102 post-baseline foundational
+local candidate to **149 checked theorems**: the 23-entry base, 114 post-baseline foundational
 entries, and twelve further unique modular capstones. The checked route now includes division and
 remainder, relational gcd, balanced-natural Bézout, Gauss cancellation, the general prime-divisor
-characterization, and Euclid's lemma. The associated 148-node research catalog records those 137
-checked entries alongside seven planned expressible targets and four language-interface targets:
+characterization, Euclid's lemma, constructive equality/divisibility/primality decisions, bounded
+nontrivial-factor search, proper-factor descent, and prime-divisor existence. The associated
+158-node research catalog records those 149 checked entries alongside five planned expressible
+targets and four language-interface targets:
 conventional signed Bézout and the three finite-factorization endpoints. This is local candidate
 authority; it does not claim that every new theorem card has already been promoted to the
-production browser.
+production browser. Native FTA remains unproved; greatest-prime descent and the selected
+β/CRT/prefix-product infrastructure are the next critical gates.

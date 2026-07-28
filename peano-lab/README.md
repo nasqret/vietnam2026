@@ -270,8 +270,8 @@ arithmetic/order rungs plus five explicit helper lemmas, ending at
 `forall n m. n * m = 0 -> n = 0 \/ m = 0`. M11 extends the current index to twenty-three with
 `one_mul`, `mul_one`, and `add_mul`, the only missing orientations needed by certificate-producing
 commutative-semiring normalization. The current local runtime extends that
-reconciled foundation to 137 unique checked entries: 23 baseline theorems, 102
-post-baseline foundational theorems, and twelve unique modular capstones. The
+reconciled foundation to 149 unique checked entries: 23 baseline theorems, 114
+general foundational theorems, and twelve unique modular capstones. The
 complete 26-record modular provenance catalog ends at
 `mod5_fourth_power_one`; fourteen of those records coincide exactly with
 foundational entries and are exposed once.
@@ -280,6 +280,18 @@ Each Cut embeds and checks its dependency proof once; it carries no theorem name
 resulting closed certificate is independently checked from the empty context against the original theorem. `pa lib <name>` shows that exact
 replay script; `pa lean <name>` exports the exact statement as a Lean 4 theorem over `Nat`, with one
 intentional proof stub and a Live Lean link for cross-checking.
+
+The constructive prime-search layer contributes twelve checked rungs:
+`eq_decidable`, `multiple_decidable_nonzero`, `multiple_decidable`,
+`factor_property_succ`, `factor_search_up_to`, `prime_or_composite`,
+`prime_nonzero`, `prime_decidable`, `factor_nonzero_left`, `proper_factor_lt`,
+`prime_divisor_exists_up_to`, and `prime_divisor_exists`. Thus equality and
+divisibility decisions, bounded factor search, primality decision, proper-factor
+descent, and prime-divisor existence are native expanded PA theorems rather
+than hidden predicates or axioms. The shared ladder totals 67,844 structural
+nodes and 1,800 Cuts across 109 Cut-bearing entries. Euclid remains largest at
+5,382 nodes and has the maximum 159 Cuts; `prime_divisor_exists` reaches the
+maximum depth of 80.
 
 ## Polynomial identities with checked certificates
 
@@ -414,7 +426,7 @@ session commands replay. Automated worker boot is green. A direct in-app Pyodide
 still pending because no browser was attached to this session. This candidate is staged locally
 only; production is untouched.
 
-The current local candidate is build `2026-07-28p`, immutable application
+The last fully synchronized local browser candidate is build `2026-07-28p`, immutable application
 release `a-48059fcca9d3`. It exposes 137 unique checked theorems, including
 constructive relational gcd existence, balanced-natural Bézout, Gauss
 cancellation, and Euclid's lemma, together with the reviewed self-contained
@@ -423,6 +435,16 @@ regenerated proof-trace corpus and application manifest. Its complete suite
 passes 1,090 tests on Python 3.10; the 36-source warning-as-error book and all
 264 documented commands are green. It has not been deployed or promoted;
 production remains untouched.
+
+The current fully synchronized local browser candidate is build `2026-07-29a`,
+immutable application release `a-d0758315633d`. It exposes all 149 checked
+theorems, including constructive equality and divisibility decisions,
+prime/composite decision, primality decision, proper-factor descent, and
+prime-divisor existence. Its complete Peano suite passes 1,094 tests on
+CPython 3.10; Lambda's 360 tests plus 36 subtests, the warning-as-error
+36-source book, 201 checked deep links, 45 session blocks with 264 commands,
+and application-manifest drift are green. It has not been staged, deployed, or
+promoted; production remains untouched.
 
 Back at the repository root, run both regression suites:
 

@@ -6,13 +6,18 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-The current runtime has 137 unique checked nodes: 23 from the original ladder
-and 114 in the reconciled post-baseline extension. Of the latter, 102 form the
+The current runtime has 149 unique checked nodes: 23 from the original ladder
+and 126 in the reconciled post-baseline extension. Of the latter, 114 form the
 general foundational layer and twelve form the fixed modular capstone. The
-broader 148-node catalog contains seven `planned_expressible` and four
+broader 158-node catalog contains five `planned_expressible` and four
 `blocked_by_language` nodes in addition to those checked layers. One
 separately cataloged Lean companion checks full list-based FTA existence and
 uniqueness; it is not counted as a Peano theorem.
+
+The shared snapshot contains 67,844 proof nodes and 1,800 self-contained Cuts;
+109 certificates contain at least one Cut. [[euclid_prime_dvd_product]]
+remains largest at 5,382 nodes, while [[prime_divisor_exists]] sets the maximum
+depth at 80. These are representation metrics, not additional axioms.
 
 ## Design and trust
 
@@ -98,6 +103,20 @@ uniqueness; it is not counted as a Peano theorem.
 - [[prime_two]] — the fully expanded factor-pair predicate for the numeral two
 - [[prime_divisor_eq_one_or_self]] — every divisor of a prime is one or that prime
 - [[euclid_prime_dvd_product]] — Euclid's lemma with primality and divisibility expanded
+
+## Checked constructive decisions and prime search
+
+- [[eq_decidable]] — constructive equality decision
+- [[multiple_decidable_nonzero]] · [[multiple_decidable]] — constructive divisibility decisions
+- [[factor_nonzero_left]] · [[proper_factor_lt]] — nonzero and strict-descent factor facts
+- [[factor_property_succ]] · [[factor_search_up_to]] — bounded factor-pair search
+- [[prime_nonzero]] · [[prime_or_composite]] · [[prime_decidable]]
+- [[prime_divisor_exists_up_to]] · [[prime_divisor_exists]] — bounded and public prime-divisor existence
+
+The remaining FTA path is not hidden by these admissions: it still requires
+greatest-prime descent, [[godel-beta-sequence|β-value]] functionality,
+binary/bounded CRT, finite-prefix extension, prefix-product traces, and
+finite-product existence and uniqueness.
 
 ## Executable and documentary views
 

@@ -17,15 +17,18 @@ $$
 \to \text{factorization}.
 $$
 
-The current candidate snapshot contains **137 replayed, closed, independently
-kernel-checked Peano theorems**. One hundred and two form the post-baseline
+The current candidate snapshot contains **149 replayed, closed, independently
+kernel-checked Peano theorems**. One hundred and fourteen form the post-baseline
 foundational layer: named equality congruences, additive cancellation, discrete order,
 multiplication cancellation and monotonicity, zero-sum and nonzero-product
 facts, divisibility closure, constructive non-divisibility, generic residue
 algebra, constructive quotient-remainder existence and uniqueness, and the
 relational gcd/coprimality API through gcd uniqueness and both directions of
 Euclidean gcd invariance, plus constructive bounded and general gcd existence,
-balanced-natural Bézout, Gauss cancellation, and Euclid's lemma. This layer
+balanced-natural Bézout, Gauss cancellation, and Euclid's lemma. It now also
+contains constructive equality and divisibility decisions, bounded factor-pair
+search, the prime-or-composite decision, proper-factor descent, and prime-divisor
+existence. This layer
 includes `prime_two`, the first checked instance of the fully expanded prime
 predicate, `prime_divisor_eq_one_or_self`, its general divisor
 characterization, and `euclid_prime_dvd_product`.
@@ -35,23 +38,27 @@ are identical to foundational entries and are exposed only once.
 
 Every current theorem fits the browser's ordinary `use` limit. The largest
 shared certificate, `euclid_prime_dvd_product`, has 5,382 structural proof
-nodes and depth 55; the snapshot-wide maximum depth is 57. Across all 137
-entries, the snapshot contains 52,433 structural nodes, including 1,345
-self-contained Cuts, and 98 certificates contain at least one Cut. The
+nodes and depth 55; `prime_divisor_exists` sets the snapshot-wide maximum
+depth at 80. Across all 149 entries, the snapshot contains 67,844 structural
+nodes, including 1,800 self-contained Cuts, and 109 certificates contain at
+least one Cut. The largest per-certificate Cut count is 159, again at
+`euclid_prime_dvd_product`. The
 immutable upstream
 report still records the capstone's former fully expanded 21,515-node/depth-66
 representation; it remains provenance, not the current runtime metric.
 
-That number is deliberately narrower than the 148-node research catalog: 23
-nodes are `checked_existing`, 114 are `checked_m20`, seven are
+That number is deliberately narrower than the 158-node research catalog: 23
+nodes are `checked_existing`, 126 are `checked_m20`, five are
 `planned_expressible`, and four are `blocked_by_language`. Beyond
 `prime_two`, the catalog now includes checked relational gcd existence,
-balanced Bézout, Gauss cancellation, and Euclid's lemma, while recording
-further candidate lemmas on modular congruence, prime-divisor existence, the
-remaining general prime spine, and prime factorization. A separate
+balanced Bézout, Gauss cancellation, Euclid's lemma, constructive primality
+decisions, and prime-divisor existence. The remaining expressible targets
+include modular congruence, primes above every bound, and a two-prime-product
+uniqueness client. Greatest-prime descent and the selected β/CRT/product
+infrastructure are the next critical native factorization gates. A separate
 Lean 4 companion now checks full finite-list FTA
 existence and uniqueness up to permutation. It is cataloged as a companion,
-not counted among the 137 Peano theorems; those entries are not presented as
+not counted among the 149 Peano theorems; those entries are not presented as
 Peano-proved until a script and closed certificate pass the same kernel gate.
 
 ## How to read the status labels

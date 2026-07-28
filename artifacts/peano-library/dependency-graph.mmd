@@ -115,6 +115,18 @@ flowchart TD
   common_divisor_divides_balanced_result[common_divisor_divides_balanced_result]
   coprime_balanced_bezout[coprime_balanced_bezout]
   gauss_coprime_cancel[gauss_coprime_cancel]
+  eq_decidable[eq_decidable]
+  multiple_decidable_nonzero[multiple_decidable_nonzero]
+  multiple_decidable[multiple_decidable]
+  factor_property_succ[factor_property_succ]
+  factor_search_up_to[factor_search_up_to]
+  prime_or_composite[prime_or_composite]
+  prime_nonzero[prime_nonzero]
+  prime_decidable[prime_decidable]
+  factor_nonzero_left[factor_nonzero_left]
+  proper_factor_lt[proper_factor_lt]
+  prime_divisor_exists_up_to[prime_divisor_exists_up_to]
+  prime_divisor_exists[prime_divisor_exists]
   prime_divisor_eq_one_or_self[prime_divisor_eq_one_or_self]
   euclid_prime_dvd_product[euclid_prime_dvd_product]
   mod_eq_refl[mod_eq_refl]
@@ -300,6 +312,46 @@ flowchart TD
   coprime_balanced_bezout --> gauss_coprime_cancel
   balanced_combination_scale_right --> gauss_coprime_cancel
   common_divisor_divides_balanced_result --> gauss_coprime_cancel
+  eq_decidable --> multiple_decidable_nonzero
+  division_remainder_exists --> multiple_decidable_nonzero
+  multiple_has_zero_remainder --> multiple_decidable_nonzero
+  division_remainder_unique --> multiple_decidable_nonzero
+  mul_zero_left --> multiple_decidable
+  eq_decidable --> multiple_decidable
+  multiple_decidable_nonzero --> multiple_decidable
+  le_eq_or_lt --> factor_property_succ
+  le_of_succ_le_succ --> factor_property_succ
+  mul_zero_left --> factor_search_up_to
+  succ_ne_zero --> factor_search_up_to
+  le_zero --> factor_search_up_to
+  le_refl --> factor_search_up_to
+  le_succ --> factor_search_up_to
+  mul_left_cancel_nonzero --> factor_search_up_to
+  eq_decidable --> factor_search_up_to
+  multiple_decidable_nonzero --> factor_search_up_to
+  factor_property_succ --> factor_search_up_to
+  divisor_le_nonzero --> prime_or_composite
+  factor_search_up_to --> prime_or_composite
+  mul_zero_left --> prime_nonzero
+  succ_ne_zero --> prime_nonzero
+  eq_decidable --> prime_decidable
+  prime_or_composite --> prime_decidable
+  prime_nonzero --> prime_decidable
+  mul_zero_left --> factor_nonzero_left
+  divisor_le_nonzero --> proper_factor_lt
+  le_eq_or_lt --> proper_factor_lt
+  mul_left_cancel_nonzero --> proper_factor_lt
+  mul_one --> proper_factor_lt
+  mul_zero_left --> prime_divisor_exists_up_to
+  le_zero --> prime_divisor_exists_up_to
+  lt_of_lt_of_le --> prime_divisor_exists_up_to
+  le_of_succ_le_succ --> prime_divisor_exists_up_to
+  multiple_refl --> prime_divisor_exists_up_to
+  multiple_trans --> prime_divisor_exists_up_to
+  prime_or_composite --> prime_divisor_exists_up_to
+  proper_factor_lt --> prime_divisor_exists_up_to
+  le_refl --> prime_divisor_exists
+  prime_divisor_exists_up_to --> prime_divisor_exists
   mul_one --> prime_divisor_eq_one_or_self
   prime_divisor_eq_one_or_self --> euclid_prime_dvd_product
   gcd_exists_relational --> euclid_prime_dvd_product

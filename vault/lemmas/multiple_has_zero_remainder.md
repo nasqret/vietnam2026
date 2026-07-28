@@ -19,7 +19,7 @@ forall m n. ~(m = 0) -> (exists q. n = m * q) -> exists q r. (n = m * q + r /\ r
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[multiple_decidable_nonzero]]
 
 ## Verification record
 

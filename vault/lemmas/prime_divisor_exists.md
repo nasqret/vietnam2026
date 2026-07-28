@@ -1,32 +1,33 @@
 ---
-title: "Lemma: le_succ"
+title: "Lemma: prime_divisor_exists"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `le_succ`
+# `prime_divisor_exists`
 
-A weak inequality remains true after raising its upper bound by one.
+Every nonzero nonunit natural has a prime divisor.
 
 ## Closed Peano statement
 
 ```text
-forall a b. (exists k. k + a = b) -> exists r. r + a = S b
+forall n. ~(n = 0) -> ~(n = 1) -> exists p. ((~(p = 1) /\ forall a b. p = a * b -> a = 1 \/ b = 1) /\ exists k. n = p * k)
 ```
 
 ## Dependencies
 
-- [[add_succ_left]]
+- [[le_refl]]
+- [[prime_divisor_exists_up_to]]
 
 ## Checked dependents
 
-- [[factor_search_up_to]]
+- No checked theorem currently depends on this node.
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **40 nodes**, depth **11**.
+- Certificate: **2977 nodes**, depth **80**.
 - Authored script length: **9 commands**.
-- Runtime card: `pa lib le_succ`.
+- Runtime card: `pa lib prime_divisor_exists`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

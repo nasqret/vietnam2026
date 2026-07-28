@@ -7,14 +7,17 @@ certificate size, and independent-kernel result.
 
 The URLs below are promotion targets for the public browser application.
 Existing production entries may already open there; candidate-only entries,
-including the division, gcd, Bézout, Gauss, and Euclid layers, become available
-only after this build is promoted. The 137-entry local candidate has not been
+including the division, gcd, Bézout, Gauss, Euclid, and constructive
+prime-search layers, become available only after this build is promoted. The
+149-entry local candidate has not been
 deployed by this documentation change.
 
 - [`pa lib`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib)
 - [`pa lib add_congr`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20add_congr)
 - [`pa lib multiple_trans`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20multiple_trans)
 - [`pa lib division_remainder_unique`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20division_remainder_unique)
+- [`pa lib prime_decidable`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20prime_decidable)
+- [`pa lib prime_divisor_exists`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20prime_divisor_exists)
 - [`pa lib square_residue_witness`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20square_residue_witness)
 - [`pa lib mod5_fourth_power_one`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod5_fourth_power_one)
 
@@ -106,7 +109,10 @@ The admission workflow is:
 Do not add a trusted predicate merely for notation. Do not mark a curriculum
 target Peano-checked because Lean or a textbook proves an analogous theorem.
 Do not hide missing checked β-sequence/product laws behind a factorization
-name; keep separately checked companion authority explicit.
+name; keep separately checked companion authority explicit. The native library
+now has constructive prime-divisor existence, but it does not yet have
+greatest-prime descent, CRT/β finite-prefix extension, prefix-product traces,
+or FTA.
 
 ## Reproducing the artifact
 
@@ -119,6 +125,6 @@ cd peano-lab/py
 python3 -m pytest tests/test_foundational_arithmetic_library.py -q
 ```
 
-The first command verifies exact metadata for the 137 checked certificates,
-the second validates the 148-node research DAG and source register, and the
+The first command verifies exact metadata for the 149 checked certificates,
+the second validates the 158-node research DAG and source register, and the
 last exercises the checked foundational layer directly.

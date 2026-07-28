@@ -15,10 +15,10 @@ divisibility witnesses before the greatest-common-divisor clause.
 
 ## What is checked now
 
-The 137-theorem runtime contains 23 baseline entries and 114 checked
-post-baseline entries. One hundred and two of the latter form the general
+The 149-theorem runtime contains 23 baseline entries and 126 checked
+post-baseline entries. One hundred and fourteen of the latter form the general
 foundational layer; the other twelve are the fixed modular capstone. The
-broader catalog has 148 nodes: those 137 checked entries, seven planned
+broader catalog has 158 nodes: those 149 checked entries, five planned
 entries, and four blocked-by-language entries.
 
 The checked gcd layer includes the relational API through uniqueness and
@@ -212,6 +212,8 @@ has the following shared-certificate metrics:
 
 Every certificate checks from the empty context in the intuitionistic kernel.
 Euclid's lemma is developed in {doc}`Primes and unique factorization
-<primes-and-factorization>`. Prime-divisor existence remains a separate
-bounded-search milestone, and finite factorization still requires the selected
-β-coded sequence/product layer.
+<primes-and-factorization>`. The independent constructive search branch now
+also checks bounded nontrivial-factor search, proper-factor descent, and
+`prime_divisor_exists`. Finite factorization still requires greatest-prime
+descent plus the selected β/CRT/prefix-product layer; native FTA is not yet
+proved.

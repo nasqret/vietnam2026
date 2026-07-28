@@ -19,9 +19,20 @@ non-unique codes. The encoding itself adds no kernel rule: every relation must
 expand into the existing PA object language. Division existence
 and uniqueness and constructive [[gcd_exists_relational|relational gcd
 existence]] are now checked. Balanced Bézout, [[gauss_coprime_cancel]], and
-[[euclids-lemma]] are checked as well. CRT, prime-divisor existence, and the
-β-sequence/product laws are still missing, so no Peano FTA is exposed through
-`pa lib` yet.
+[[euclids-lemma]] are checked as well. The existence-side arithmetic entrance
+is now checked too: [[prime_or_composite]], [[proper_factor_lt]], and
+[[prime_divisor_exists]] give a constructive prime divisor of every nonzero
+nonunit natural.
+
+FTA itself is **not** proved in native Peano Lab. The direct list-oriented
+existence, uniqueness, and combined catalog endpoints remain
+`blocked_by_language`; the selected conservative route must first replace that
+surface representation with fully expanded β-coded formulas. Its remaining
+critical path is greatest-prime-divisor descent, β-value functionality,
+binary and bounded CRT, finite-prefix extension/restriction, prefix-product
+trace existence and composition, finite-product Euclid/cancellation, and the
+final existence and extensional-uniqueness descents. Accordingly no Peano FTA
+is exposed through `pa lib`.
 
 The repository now also contains an independently checked Lean 4 companion.
 It proves that every nonzero natural has a finite list of prime factors and
@@ -33,4 +44,5 @@ axiom.
 ## Related
 
 [[arithmetic-library-moc]] · [[prime-number]] · [[lemma-dependency-dag]] ·
-[[trusted-kernel]] · [[godel-beta-sequence]]
+[[trusted-kernel]] · [[godel-beta-sequence]] · [[prime_divisor_exists]] ·
+[[euclid_prime_dvd_product]]

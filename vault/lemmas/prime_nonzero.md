@@ -1,35 +1,33 @@
 ---
-title: "Lemma: le_refl"
+title: "Lemma: prime_nonzero"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `le_refl`
+# `prime_nonzero`
 
-The defined order is reflexive; zero is its witness.
+Every prime natural is nonzero.
 
 ## Closed Peano statement
 
 ```text
-forall n. n <= n
+forall p. (~(p = 1) /\ forall a b. p = a * b -> a = 1 \/ b = 1) -> ~(p = 0)
 ```
 
 ## Dependencies
 
-- [[zero_add]]
+- [[mul_zero_left]]
+- [[succ_ne_zero]]
 
 ## Checked dependents
 
-- [[gcd_exists_relational]]
-- [[gcd_balanced_bezout_exists]]
-- [[factor_search_up_to]]
-- [[prime_divisor_exists]]
+- [[prime_decidable]]
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **25 nodes**, depth **9**.
-- Authored script length: **3 commands**.
-- Runtime card: `pa lib le_refl`.
+- Certificate: **49 nodes**, depth **11**.
+- Authored script length: **20 commands**.
+- Runtime card: `pa lib prime_nonzero`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

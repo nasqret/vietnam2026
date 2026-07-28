@@ -19,7 +19,7 @@ forall a b n. (exists q. n = a * q) -> (exists r. a = b * r) -> exists s. n = b 
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[prime_divisor_exists_up_to]]
 
 ## Verification record
 

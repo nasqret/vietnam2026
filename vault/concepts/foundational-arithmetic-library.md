@@ -8,11 +8,11 @@ The **foundational arithmetic library** is a versioned dependency graph for
 [[arithmetic-congruence]], [[quotient-and-remainder]], gcd, primes, and
 factorization.
 
-Its current snapshot has 137 closed, independently checked theorems: the
-original 23-node [[theorem-ladder]] and 114 unique post-baseline additions.
-The latter combine 102 general arithmetic facts with twelve additional modular
-capstones. The 148-node research catalog separates 23 `checked_existing`,
-114 `checked_m20`, seven
+Its current snapshot has 149 closed, independently checked theorems: the
+original 23-node [[theorem-ladder]] and 126 unique post-baseline additions.
+The latter combine 114 general arithmetic facts with twelve additional modular
+capstones. The 158-node research catalog separates 23 `checked_existing`,
+126 `checked_m20`, five
 `planned_expressible`, and four `blocked_by_language` nodes, but only replayed
 certificates appear in `pa lib`. The M20 additions now include [[prime_two]],
 the first checked instance of the fully expanded prime predicate, and native
@@ -25,10 +25,20 @@ and Euclidean-step invariance, plus [[gcd_exists_up_to|bounded]] and
 [[prime_divisor_eq_one_or_self]], and
 [[euclid_prime_dvd_product|Euclid's lemma]].
 
-The generated snapshot contains 52,433 structural proof nodes and 1,345
-trusted Cuts; 98 of the 137 certificates contain a Cut. Its maximum
+The newest constructive search chain starts with [[eq_decidable]],
+[[multiple_decidable_nonzero]], and [[multiple_decidable]]. It extends bounded
+factor properties via [[factor_property_succ]] and [[factor_search_up_to]],
+uses [[factor_nonzero_left]] and [[proper_factor_lt]] for descent, and exposes
+[[prime_nonzero]], [[prime_or_composite]], [[prime_decidable]],
+[[prime_divisor_exists_up_to]], and [[prime_divisor_exists]]. Thus both
+primality decision and prime-divisor existence are native checked results, not
+classical witness extraction.
+
+The generated snapshot contains 67,844 structural proof nodes and 1,800
+self-contained Cuts; 109 of the 149 certificates contain a Cut. Its maximum
 certificate is [[euclid_prime_dvd_product]] at 5,382 nodes, and its maximum
-depth is 57. These are representation metrics, not proof authority.
+depth is 80 at [[prime_divisor_exists]]. These are representation metrics, not
+proof authority.
 
 One theorem name identifies its executable entry, generated artifact node,
 Obsidian lemma page, and book discussion. [[lemma-dependency-dag]] records the
@@ -40,7 +50,8 @@ than granting names or hashes kernel authority.
 The [[fundamental-theorem-of-arithmetic]] is a destination, not a primitive.
 A conservative [[godel-beta-sequence]] representation is selected and a Lean
 companion checks the full list theorem, while Peano admission still requires
-the encoded sequence/product and arithmetic certificates.
+greatest-prime descent and the encoded β-value/CRT, finite-prefix,
+prefix-product, and finite-product certificates.
 
 ## Related
 

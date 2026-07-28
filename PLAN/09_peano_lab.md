@@ -538,7 +538,7 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       capstone regression. That source snapshot has 49 entries; the initial
       reconciliation with M20 deduplicated fourteen exact overlaps and yielded
       63 unique checked theorems. Subsequent native arithmetic work extends
-      that historical release to the current 137-entry successor.
+      that historical release to the current 149-entry successor.
 - [ ] Register model-v2 with a library snapshot hash over names, canonical statements,
       dependencies, source/script/certificate hashes, nodes, and depth; bind it through prompt,
       rows, attestation, training manifest, evaluator, and WMI requests. Freeze sealed targets
@@ -602,15 +602,15 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   known held-out routes need 10/10/23/13 steps, so the 16-step cap also underspecifies
   `le_total`'s known route. Scaling the same curriculum to 4B would not test the intended
   hypothesis, so the conditional 4B comparison remains unlaunched. The next data contract must freeze the user's
-  current 137-entry library as a content-addressed successor authority and add induction, invariant, witness,
+  current 149-entry library as a content-addressed successor authority and add induction, invariant, witness,
   and lemma-composition curricula while retaining a sealed test set.
 
   The public-catalog local gate is green: 1,036 Peano tests; Lambda 360 tests plus 36 subtests; all
   27 book sources under warning-as-error; 193 deep links and 170 documented commands; and 414/414
   vault wikilinks. The kernel checker has no diff and remains 234 lines. Direct in-app Pyodide
   latency could not be measured because no browser was attached; automated worker boot remains
-  green. The current isolated all-ladder acceptance smoke exports 3,007 unique
-  transitions from 274 sessions, including 137 authored-script kernel QEDs.
+  green. The current isolated all-ladder acceptance smoke exports 3,546 unique
+  transitions from 298 sessions, including 149 authored-script kernel QEDs.
   M19 stays open for the model-v2 curriculum, search,
   baselines, and registered comparison.
 
@@ -620,16 +620,19 @@ The theorem-ladder extension is tracked independently in
 [`PLAN/10_arithmetic_library.md`](10_arithmetic_library.md). Its first release
 kept the kernel and object language fixed, expanded divisibility and residue
 notions into ordinary formulas, and labeled prime/factorization targets by
-their real dependencies. The reconciled runtime contains 137 unique checked
+their real dependencies. The reconciled runtime contains 149 unique checked
 theorems, including quotient-remainder existence/uniqueness, relational gcd
 existence/uniqueness, balanced-natural Bézout, Gauss cancellation, and Euclid's
-lemma, plus a
-conservative Gödel-β factorization design; a separate Lean companion checks
+lemma. It now also has constructive equality and divisibility decisions,
+bounded factor search, prime/composite and prime decisions, proper-factor
+descent, and prime-divisor existence, plus a conservative Gödel-β
+factorization design; a separate Lean companion checks
 full FTA. The later proof-sharing milestone adds one reviewed self-contained
 Cut rule to the trusted certificate checker—without changing the PA object
-language, axioms, induction, or intuitionistic default—and reduces the current
-ladder to 52,433 structural nodes. Peano admission of FTA still requires
-prime-divisor existence and the encoded sequence/product proof spine.
+language, axioms, induction, or intuitionistic default. The current shared
+ladder has 67,844 structural nodes and 1,800 Cuts across 109 entries; its
+maximum depth is 80. Peano admission of FTA still requires greatest-prime
+descent and the β/CRT/encoded sequence-product proof spine.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

@@ -19,7 +19,7 @@ forall a b c. (exists k. k + S a = b) -> (exists k. k + b = c) -> exists k. k + 
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[prime_divisor_exists_up_to]]
 
 ## Verification record
 

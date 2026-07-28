@@ -24,6 +24,8 @@ forall a b c. ~(a = 0) -> a * b = a * c -> b = c
 
 - [[mul_right_cancel_nonzero]]
 - [[multiple_antisymm]]
+- [[factor_search_up_to]]
+- [[proper_factor_lt]]
 
 ## Verification record
 

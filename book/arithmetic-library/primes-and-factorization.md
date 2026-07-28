@@ -32,16 +32,59 @@ The checked division layer now supplies constructive quotient-remainder
 existence and uniqueness. The checked `prime_divisor_eq_one_or_self` theorem
 says every divisor of a prime is one or the prime itself. The runtime also
 contains `euclid_prime_dvd_product`: a prime dividing $a b$ divides $a$ or
-$b$.
-The remaining prime layer should establish:
+$b$. The complementary constructive search branch is now checked as well.
 
-1. zero and one are not prime;
-2. a non-prime number at least two has a proper nontrivial divisor;
-3. every number at least two has a prime divisor, by strong induction;
-4. there are primes above every bound.
+## The checked constructive prime-search DAG
 
-These remaining claims are expressible today, but they are catalog targets
-rather than checked entries in the current snapshot.
+The new milestone contains twelve entries. It is a dependency DAG rather than
+one linear proof:
+
+$$
+\begin{aligned}
+\texttt{eq\_decidable}
+&\to \texttt{multiple\_decidable\_nonzero}
+\to \texttt{multiple\_decidable},\\
+\texttt{eq\_decidable}+\texttt{multiple\_decidable\_nonzero}
+  +\texttt{factor\_property\_succ}
+&\to \texttt{factor\_search\_up\_to}
+\to \texttt{prime\_or\_composite},\\
+\texttt{eq\_decidable}+\texttt{prime\_or\_composite}
+  +\texttt{prime\_nonzero}
+&\to \texttt{prime\_decidable},\\
+\texttt{prime\_or\_composite}+\texttt{proper\_factor\_lt}
+&\to \texttt{prime\_divisor\_exists\_up\_to}
+\to \texttt{prime\_divisor\_exists}.
+\end{aligned}
+$$
+
+`factor_nonzero_left` is an independently reusable product boundary lemma;
+the current optimized `proper_factor_lt` certificate proves the needed
+nonzero-factor subclaim locally instead of importing that whole certificate.
+The exact admitted metrics are:
+
+| Checked theorem | Constructive role | Nodes/depth | Cuts |
+|---|---|---:|---:|
+| `eq_decidable` | decide equality by nested induction | 48 / 20 | 0 |
+| `multiple_decidable_nonzero` | decide whether a nonzero divisor divides a number by testing the unique remainder | 1,242 / 61 | 32 |
+| `multiple_decidable` | add the explicit zero-divisor case | 1,352 / 64 | 35 |
+| `factor_property_succ` | extend a bounded factor property across one new endpoint | 150 / 20 | 5 |
+| `factor_search_up_to` | verify all bounded factor pairs or return a nontrivial pair | 1,925 / 69 | 56 |
+| `prime_or_composite` | instantiate bounded search at the number itself | 2,038 / 71 | 59 |
+| `prime_nonzero` | derive nonzeroness from the expanded prime formula | 49 / 11 | 2 |
+| `prime_decidable` | decide the expanded prime formula, including zero and one | 2,194 / 73 | 64 |
+| `factor_nonzero_left` | refute a zero left factor of a nonzero product | 37 / 12 | 1 |
+| `proper_factor_lt` | turn a nonunit cofactor into strict factor descent | 468 / 26 | 16 |
+| `prime_divisor_exists_up_to` | perform strong descent by ordinary induction on an explicit bound | 2,931 / 78 | 91 |
+| `prime_divisor_exists` | specialize that bound to the number itself | 2,977 / 80 | 94 |
+
+In particular, the public endpoint proves, in fully expanded syntax, that
+every $n\ne0,1$ has a prime $p$ and a witness $k$ with $n=pk$.
+`prime_divisor_exists_up_to` does not invoke a polymorphic strong-induction
+principle: its concrete motive is proved by ordinary induction on $B$, and a
+nontrivial factor is shown smaller before the induction hypothesis is used.
+All twelve certificates check in the default intuitionistic kernel and contain
+no DNE node. Primes above every bound remain a planned expressible theorem;
+prime-divisor existence no longer does.
 
 ## GCD without a gcd function
 
@@ -94,10 +137,13 @@ certificate has 5,382 nodes and depth 55.
 
 ## Existence and uniqueness are different theorems
 
-Factorization existence will follow by strong induction: a number at least two
-is prime, or it splits into smaller nontrivial factors which factor
-recursively. Uniqueness can now use the checked Euclid lemma to match one prime
-from one factorization with a prime in the other, cancel it, and continue.
+The checked `prime_or_composite`, `proper_factor_lt`, and
+`prime_divisor_exists` theorems now supply the basic arithmetic descent needed
+for factorization existence. For the selected sorted encoding, the next
+critical arithmetic gate is greatest-prime-divisor descent: recursively factor
+the complementary quotient and append a greatest prime factor while preserving
+sortedness. Uniqueness can use the checked Euclid lemma to match one prime from
+one factorization with a prime in the other, cancel it, and continue.
 
 That familiar paper proof quietly quantifies over finite products. An honest
 formal statement needs a representation and theorems for:
@@ -173,7 +219,7 @@ calling a library import “axiom-free.”
 
 ## What “include FTA” means in this release
 
-This release contains two deliberately separate FTA forms:
+This release keeps two deliberately separate FTA tracks:
 
 - the Lean companion is a checked existence-and-uniqueness proof up to
   permutation, with no admission;
@@ -182,8 +228,9 @@ This release contains two deliberately separate FTA forms:
 - source curricula are mapped to the missing lemmas;
 - no external theorem is smuggled into `pa lib` as a Peano certificate.
 
-The remaining Peano work starts by freezing and implementing the hygienic
-macro expansions with round-trip tests. The gcd/Bézout/Gauss/Euclid chain is
-now checked; the remaining arithmetic gate is constructive prime-divisor
-existence. After that come the β-value, CRT, finite-prefix, product-trace, and
-factorization certificates.
+The gcd/Bézout/Gauss/Euclid chain and constructive prime-divisor existence are
+now checked in native PA. The next critical gates are greatest-prime descent,
+binary and bounded CRT, β-value existence/functionality and finite-prefix
+extension, and prefix-product traces. Only after those interfaces have checked
+native certificates can factorization existence, uniqueness, and FTA enter
+`pa lib`. FTA therefore remains unproved in the native library.

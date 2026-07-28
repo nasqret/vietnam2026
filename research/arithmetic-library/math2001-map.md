@@ -182,11 +182,17 @@ The source's reusable spine is:
 
 The current Peano snapshot independently checks the first concrete instance,
 `prime_two`, through `two_large_factors_impossible`, the general
-divisor-of-a-prime one-or-self API, Gauss cancellation, and Euclid's lemma.
-Constructive prime-divisor existence, proper-factor search, and primes above
-every bound remain open. Macbeth remains a reference-only statement and
-dependency source; no Lean proof or prose was copied into the Peano
-certificate.
+divisor-of-a-prime one-or-self API, Gauss cancellation, and Euclid's lemma. It
+also checks constructive equality and divisibility decisions, bounded factor
+search, a prime-or-nontrivial-factor-pair split, proper-factor descent, general
+primality decidability, and bounded/unrestricted prime-divisor existence. In
+runtime terms this is the linked spine from `eq_decidable` and
+`multiple_decidable_nonzero` through `factor_search_up_to`,
+`prime_or_composite`, `proper_factor_lt`, and `prime_divisor_exists`.
+Primes above every bound and the greatest-prime-divisor descent needed by the
+selected sorted factorization construction remain open. Macbeth remains a
+reference-only statement and dependency source; no Lean proof or prose was
+copied into the Peano certificate.
 
 All except generic power notation can be expressed by inlining first-order
 definitions. Infinitude need not wait for a factorial term: independently
@@ -217,8 +223,10 @@ quantifiers; and induction. They do not provide:
 Consequently:
 
 - parity, divisibility, balanced natural congruence, the natural division
-  algorithm, relational gcd, prime-factor existence, Euclid's lemma, and
-  infinitude of primes are current-language targets;
+  algorithm, relational gcd, prime-factor existence, and Euclid's lemma are
+  current-language targets already represented by checked native
+  certificates; infinitude of primes and greatest-prime descent remain
+  expressible next targets;
 - integer modular arithmetic should remain a documented future layer;
 - generic powers need a graph relation or a conservative term-language
   extension;
