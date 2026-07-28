@@ -14,6 +14,11 @@ and fetches application sources concurrently while Pyodide starts. Complete vers
 are uploaded before the HTML pointer and retained after promotion; an unversioned response must
 revalidate.
 
+The current local static artifact is labeled `2026-07-29e` and binds the
+manifest-derived application identity `a-ac494e524f2f`. Those labels identify
+the built bytes; they do not assert that this checkpoint has been staged or
+deployed.
+
 This optimization does not weaken the [[trusted-kernel]] boundary. Network completion order never
 chooses a logical result: failed files are selected and successful files are mounted in a fixed
 declaration order. After startup, every QED still checks the complete [[proof-certificate]] against

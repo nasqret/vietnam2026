@@ -1461,3 +1461,42 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   blocks whose 264 commands replay cleanly. Local browser build
   `2026-07-29d` has immutable application identity `a-5cef5a9c3b7d`; it is not
   staged, deployed, or promoted.
+
+## 2026-07-29 — Constructive binary CRT and the two-position β bridge
+
+- Added six closed native theorems. `bezout_mod_left` and
+  `bezout_mod_right` project the checked balanced-natural Bézout identity
+  into its two modular inverse equations.
+  `mod_eq_predecessor_cancel` implements subtraction of one modulo a
+  successor using only natural addition and multiplication.
+- `binary_crt` constructively produces one natural satisfying two
+  balanced congruences for nonzero coprime moduli.
+  `binary_crt_remainders` converts bounded requested residues to directed
+  quotient/remainder equations. `binary_crt_beta_pair` specializes the
+  result to one code realizing two bounded β values. The last theorem assumes
+  pairwise coprimality of its two β moduli; it does not prove that premise or
+  iterate over a finite prefix.
+- The runtime now contains 170 unique checked theorems: 23 baseline, 135
+  general foundational, and twelve unique modulo-five capstones. The
+  synchronized 177-node catalog contains 23 `checked_existing`, 147
+  `checked_m20`, three planned, and four language-blocked entries.
+  Shared certificates total 99,137 structural nodes and 2,693 Cuts across 130
+  Cut-bearing entries. `binary_crt_beta_pair` is largest at 6,941 nodes
+  and 201 Cuts; `prime_divisor_exists` retains the maximum depth of 80.
+  The ordered snapshot root is
+  `51fbc86c80feb458dd6adcf1e08ee378e62f2f55e82fb8c6c5c9e9e0ab41a227`.
+- This closes binary CRT and the two-position construction, not bounded CRT
+  iteration or finite sequences. Greatest-prime descent, β-modulus
+  coprimality, bounded CRT iteration, finite-prefix extension, prefix-product
+  traces, finite-product laws, and native Peano FTA remain open.
+- Regenerated the source-bound corpus without changing its semantic shape:
+  13,344 transitions from 1,692 sessions under run fingerprint
+  `53305cfb39ddbd6fb6e02280caf594b1937f95790539a2df6b713244f975445c`.
+  The isolated smoke has 340 sessions, 4,474 raw and 4,471 unique transitions,
+  and all 170 authored-script kernel QEDs.
+- The complete Peano suite passes 1,098 tests on CPython 3.10; Lambda passes
+  360 tests plus 36 subtests. The strict 36-source Jupyter Book has 213 checked
+  deep links and 45 session blocks whose 264 commands replay cleanly. The
+  generated vault has 249 notes and 2,194 resolved links, including all 170
+  lemma notes. Local browser build `2026-07-29e` has immutable application
+  identity `a-ac494e524f2f`; it is not staged, deployed, or promoted.

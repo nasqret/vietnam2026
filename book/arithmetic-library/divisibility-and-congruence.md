@@ -18,8 +18,9 @@ This chapter separates three things that are easy to conflate:
 All three layers now have checked library entries. The balanced modular API is
 checked through transitivity and additive and multiplicative compatibility;
 both directions of the bounded decomposition/congruence bridge and uniqueness
-of bounded congruent representatives are checked too. Binary and bounded CRT
-remain open. Every checked entry mentioned below
+of bounded congruent representatives are checked too. Constructive binary CRT,
+its bounded-remainder client, and a two-position β-code client are checked as
+well; bounded CRT iteration remains open. Every checked entry mentioned below
 is an ordinary closed formula with a replayed certificate accepted by the
 independent Peano kernel; none is a new kernel rule. The general checking
 architecture is described in
@@ -244,18 +245,18 @@ $$
 \end{array}
 $$
 
-All 129 entries in the current post-baseline general foundational layer replay to
+All 135 entries in the current post-baseline general foundational layer replay to
 closed kernel-accepted certificates and fit the live `use` limits of 32,768
-nodes and depth 128. The current 164-entry local candidate reaches its node
-maximum at `euclid_prime_dvd_product`, with 5,382 nodes and depth 55, while
-`prime_divisor_exists` reaches the snapshot-wide maximum depth of 80. Across
-the snapshot there are 79,763 structural nodes and 2,138 self-contained Cuts;
-124 certificates contain a Cut, and the largest per-certificate Cut count is
-159. The modular capstone itself remains 2,675 nodes and depth 38. These
+nodes and depth 128. The current 170-entry local candidate reaches its node
+maximum at `binary_crt_beta_pair`, with 6,941 nodes, depth 69, and 201 Cuts,
+while `prime_divisor_exists` reaches the snapshot-wide maximum depth of 80.
+Across the snapshot there are 99,137 structural nodes and 2,693
+self-contained Cuts; 130 certificates contain a Cut. The modular capstone
+itself remains 2,675 nodes and depth 38. These
 numbers are build artifacts,
 not new soundness assumptions; the immutable upstream report retains the older
 fully expanded capstone metric of 21,515 nodes/depth 66. The broader research
-catalog has 171 nodes: the 164 checked entries, three planned expressible targets,
+catalog has 177 nodes: the 170 checked entries, three planned expressible targets,
 and four language-interface targets covering conventional signed Bézout and the
 three finite-factorization endpoints.
 
@@ -442,11 +443,13 @@ The current status distinction is:
 
 | Checked now | Still-open modular API |
 |---|---|
-| `mod_eq_refl`, `mod_eq_symm`, `mod_eq_trans` | binary and bounded CRT |
+| `mod_eq_refl`, `mod_eq_symm`, `mod_eq_trans` | equality transport into balanced congruence |
 | `mod_eq_add`, `mod_eq_mul_right`, `mod_eq_mul_left`, `mod_eq_mul` | equality transport into balanced congruence |
 | `remainder_decomposition_to_mod_eq`, `mod_eq_to_remainder_decomposition` | shared residue implies congruence |
-| `mod_eq_bounded_unique` | multi-position congruence assembly |
+| `mod_eq_bounded_unique` | finite-prefix restriction and functionality |
 | `dvd_to_mod_zero` | reverse congruence-zero-to-divisibility |
+| `binary_crt`, `binary_crt_remainders` | bounded CRT iteration |
+| `binary_crt_beta_pair` | β-modulus coprimality and arbitrary finite-prefix assembly |
 | Closure of multiples under addition and multiplication | shared residue implies congruence |
 | Exact quotient-and-residue addition | finite-product congruence clients |
 | Exact square decomposition and square residue lifting | generated fixed-modulus clients |
@@ -529,8 +532,49 @@ forall m b x.
 
 Both certificates are intuitionistic and contain no DNE. Together with
 `remainder_decomposition_to_mod_eq`, they give both directions between a
-bounded directed remainder and balanced congruence. Binary and bounded CRT
-remain later clients, not consequences silently admitted with this bridge.
+bounded directed remainder and balanced congruence.
+
+## Constructive binary CRT
+
+For nonzero coprime moduli, the checked `binary_crt` theorem now constructs a
+single balanced-congruence witness for two arbitrary residues:
+
+$$
+m\ne0\land n\ne0\land\operatorname{Coprime}(m,n)
+\Longrightarrow
+\forall a\,b\;\exists x,\quad
+x\equiv_m a\land x\equiv_n b.
+$$
+
+The exact stored statement expands coprimality and both congruences into
+quantifiers over natural-number witnesses. Its construction starts from the
+four-natural balanced Bézout equation. Two projection lemmas select the
+appropriate coefficient modulo each modulus, and
+`mod_eq_predecessor_cancel` represents the negative contribution modulo a
+successor. No subtraction, signed coefficient, `/`, `%`, or CRT primitive is
+added to the term language.
+
+| Checked theorem | Role | Nodes/depth | Cuts |
+|---|---|---:|---:|
+| `bezout_mod_left` | Bézout projection modulo the left modulus | 134 / 19 | 4 |
+| `bezout_mod_right` | Bézout projection modulo the right modulus | 50 / 16 | 1 |
+| `mod_eq_predecessor_cancel` | predecessor cancellation modulo a successor | 315 / 25 | 9 |
+| `binary_crt` | balanced binary CRT | 5,044 / 51 | 144 |
+| `binary_crt_remainders` | two bounded directed remainder equations | 6,890 / 66 | 196 |
+| `binary_crt_beta_pair` | one code with two expanded `At` facts | 6,941 / 69 | 201 |
+
+If $a<m$ and $b<n$, `binary_crt_remainders` feeds the result through
+`mod_eq_to_remainder_decomposition` twice and obtains
+
+$$
+\exists x\,q\,r,\quad x=qm+a\land x=rn+b.
+$$
+
+`binary_crt_beta_pair` specializes the two moduli to $M(c,i)$ and $M(c,j)$
+and uses `beta_at_of_mod_eq_bound` twice. It assumes, rather than proves, that
+those two expanded β moduli are coprime. Thus two-position decoding is
+checked, while a family-wide β-modulus coprimality lemma, bounded CRT
+iteration, and finite-prefix extension remain explicit later gates.
 
 ## From a general library to the old modulo-five exercise
 

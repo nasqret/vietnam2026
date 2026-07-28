@@ -21,7 +21,7 @@ forall m a b c d. (exists u v. a + m * u = b + m * v) -> (exists r s. c + m * r 
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[binary_crt]]
 
 ## Verification record
 

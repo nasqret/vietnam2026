@@ -19,7 +19,7 @@ forall m a. (exists k. a = m * k) -> exists u v. a + m * u = 0 + m * v
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[binary_crt]]
 
 ## Verification record
 

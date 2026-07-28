@@ -38,6 +38,8 @@ forall n m. n + m = m + n
 - [[mod_eq_bounded_unique]]
 - [[mod_eq_to_remainder_decomposition]]
 - [[add_residue_lift]]
+- [[bezout_mod_left]]
+- [[mod_eq_predecessor_cancel]]
 - [[mod5_square_residue_two]]
 
 ## Verification record

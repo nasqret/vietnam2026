@@ -46,8 +46,8 @@ expanded certificate is checked in the empty context. This extension is also a u
 [[verifier-guided-policy-evaluation-and-search|model-v2 curriculum]], but the capstone itself is now
 a library-retrieval test rather than a sealed theorem-discovery benchmark.
 
-The reconciled runtime now has 164 unique checked entries: the 23-entry core,
-129 post-baseline foundational entries, and twelve genuinely new modular
+The reconciled runtime now has 170 unique checked entries: the 23-entry core,
+135 post-baseline foundational entries, and twelve genuinely new modular
 capstones. The newer foundation includes discrete order, multiplication
 cancellation and monotonicity, and native [[quotient-and-remainder]] existence
 and uniqueness, plus the relational [[gcd-and-coprimality]] API through gcd
@@ -70,14 +70,21 @@ The following three-node reverse tranche proves bounded representative
 uniqueness, reconstructs directed remainders with
 [[mod_eq_to_remainder_decomposition]], and closes the bounded reverse β bridge
 as [[beta_at_of_mod_eq_bound]].
+The newest six-node tranche adds [[bezout_mod_left]] and
+[[bezout_mod_right]], the subtraction-free
+[[mod_eq_predecessor_cancel]], constructive [[binary_crt]], its bounded-residue
+form [[binary_crt_remainders]], and the two-position β constructor
+[[binary_crt_beta_pair]]. The final theorem retains pairwise β-modulus
+coprimality as an explicit premise.
 
-The shared snapshot now totals 79,763 proof nodes and 2,138 self-contained
-Cuts across 164 certificates; 124 certificates contain a Cut. Euclid's lemma
-remains largest at 5,382 nodes, while prime-divisor existence sets the maximum
-depth at 80. The next mathematical/representation gate is greatest-prime
-descent followed by CRT, [[godel-beta-sequence|β finite-prefix]], and
-prefix-product infrastructure; [[fundamental-theorem-of-arithmetic|FTA]] is
-not yet a native checked theorem.
+The shared snapshot now totals 99,137 proof nodes and 2,693 self-contained
+Cuts across 170 certificates; 130 certificates contain a Cut.
+[[binary_crt_beta_pair]] is largest at 6,941 nodes and 201 Cuts, while
+prime-divisor existence sets the maximum depth at 80. The next
+mathematical/representation gate is greatest-prime descent plus pairwise
+β-modulus coprimality, bounded CRT iteration,
+[[godel-beta-sequence|β finite-prefix]], and prefix-product infrastructure;
+[[fundamental-theorem-of-arithmetic|FTA]] is not yet a native checked theorem.
 
 ## Related
 

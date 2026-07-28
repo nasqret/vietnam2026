@@ -6,8 +6,8 @@ replays all current entries, discharges dependency assumptions through embedded 
 Cuts, and asks the independent kernel to check the resulting closed certificate against the
 original statement.
 
-The current local candidate runtime contains 164 unique checked entries: the
-original 23-entry base, 129 post-baseline foundational entries, and twelve
+The current local candidate runtime contains 170 unique checked entries: the
+original 23-entry base, 135 post-baseline foundational entries, and twelve
 further unique records from the upstream modular catalog. The upstream
 26-record catalog ends at the fourth-power modulo-five capstone. Its first
 reconciliation with the 51-entry M20 branch exposed fourteen coincident
@@ -27,12 +27,17 @@ adds `mod_eq_trans`, `mod_eq_add`, `beta_modulus_nonzero`,
 `remainder_decomposition_to_mod_eq`, and `beta_at_to_mod_eq`. Three reverse
 bridges then add `mod_eq_bounded_unique`,
 `mod_eq_to_remainder_decomposition`, and `beta_at_of_mod_eq_bound`. None of
-those twenty-seven certificates uses DNE. Across the snapshot, 79,763
-structural nodes include 2,138 self-contained Cuts; 124
-certificates contain a Cut. `euclid_prime_dvd_product` remains the
-largest certificate at 5,382 nodes and also sets the per-certificate Cut
-maximum at 159, while `prime_divisor_exists` sets the depth maximum at 80. The
-complete layered design continues
+those twenty-seven certificates uses DNE. The next six entries,
+`bezout_mod_left`, `bezout_mod_right`, `mod_eq_predecessor_cancel`,
+`binary_crt`, `binary_crt_remainders`, and `binary_crt_beta_pair`, check
+constructive binary CRT and its bounded-remainder and two-position β clients.
+The β client keeps pairwise coprimality of its two expanded moduli as an
+explicit premise. None of these thirty-three congruence/β/CRT certificates
+uses DNE. Across the snapshot, 99,137 structural nodes include 2,693
+self-contained Cuts; 130 certificates contain a Cut. `binary_crt_beta_pair`
+is the largest certificate at 6,941 nodes and sets the per-certificate Cut
+maximum at 201, while `prime_divisor_exists` retains the depth maximum at 80.
+The complete layered design continues
 in {doc}`The foundational arithmetic library <../arithmetic-library/index>`;
 this chapter retains the construction story of the original core and the public modular route.
 

@@ -21,6 +21,7 @@ forall c i. ~(S ((S i) * c) = 0)
 
 - [[beta_at_exists]]
 - [[beta_at_of_mod_eq_bound]]
+- [[binary_crt_beta_pair]]
 
 ## Verification record
 

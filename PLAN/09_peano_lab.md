@@ -538,7 +538,7 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       capstone regression. That source snapshot has 49 entries; the initial
       reconciliation with M20 deduplicated fourteen exact overlaps and yielded
       63 unique checked theorems. Subsequent native arithmetic work extends
-      that historical release to the current 164-entry successor.
+      that historical release to the current 170-entry successor.
 - [ ] Register model-v2 with a library snapshot hash over names, canonical statements,
       dependencies, source/script/certificate hashes, nodes, and depth; bind it through prompt,
       rows, attestation, training manifest, evaluator, and WMI requests. Freeze sealed targets
@@ -602,16 +602,16 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   known held-out routes need 10/10/23/13 steps, so the 16-step cap also underspecifies
   `le_total`'s known route. Scaling the same curriculum to 4B would not test the intended
   hypothesis, so the conditional 4B comparison remains unlaunched. The next data contract must freeze the user's
-  current 164-entry library as a content-addressed successor authority and add induction, invariant, witness,
+  current 170-entry library as a content-addressed successor authority and add induction, invariant, witness,
   and lemma-composition curricula while retaining a sealed test set.
 
   The public-catalog local gate is green: 1,036 Peano tests; Lambda 360 tests plus 36 subtests; all
   27 book sources under warning-as-error; 193 deep links and 170 documented commands; and 414/414
   vault wikilinks. The kernel checker has no diff and remains 234 lines. Direct in-app Pyodide
   latency could not be measured because no browser was attached; automated worker boot remains
-  green. The current 164-entry isolated all-ladder acceptance smoke exports
-  4,013 unique transitions from 328 sessions, including 164 authored-script
-  kernel QEDs.
+  green. The current 170-entry isolated all-ladder acceptance smoke exports
+  4,474 raw and 4,471 unique transitions from 340 sessions, including 170
+  authored-script kernel QEDs.
   M19 stays open for the model-v2 curriculum, search,
   baselines, and registered comparison.
 
@@ -621,7 +621,7 @@ The theorem-ladder extension is tracked independently in
 [`PLAN/10_arithmetic_library.md`](10_arithmetic_library.md). Its first release
 kept the kernel and object language fixed, expanded divisibility and residue
 notions into ordinary formulas, and labeled prime/factorization targets by
-their real dependencies. The reconciled runtime contains 164 unique checked
+their real dependencies. The reconciled runtime contains 170 unique checked
 theorems, including quotient-remainder existence/uniqueness, relational gcd
 existence/uniqueness, balanced-natural Bézout, Gauss cancellation, and Euclid's
 lemma. It now also has constructive equality and divisibility decisions,
@@ -630,14 +630,18 @@ descent, prime-divisor existence, full additive/multiplicative balanced
 congruence compatibility, bounded representative uniqueness, bidirectional
 remainder/congruence bridges, and total functional expanded Gödel-β decoding
 equivalent to bound plus congruence, plus a conservative Gödel-β
-factorization design; a separate Lean companion checks
+factorization design. Constructive binary CRT, bounded-residue CRT equations,
+and a conditional two-position β-code constructor are checked; pairwise
+β-modulus coprimality remains an explicit premise. A separate Lean companion checks
 full FTA. The later proof-sharing milestone adds one reviewed self-contained
 Cut rule to the trusted certificate checker—without changing the PA object
 language, axioms, induction, or intuitionistic default. The current shared
-ladder has 79,763 structural nodes and 2,138 Cuts across 124 Cut-bearing entries; its
-maximum depth is 80. Peano admission of FTA still requires greatest-prime
-descent and the still-open β-modulus coprimality, binary/bounded CRT,
-finite-prefix, and encoded-product proof spine.
+ladder has 99,137 structural nodes and 2,693 Cuts across 130 Cut-bearing
+entries; `binary_crt_beta_pair` is largest at 6,941 nodes/201 Cuts and
+the maximum depth remains 80 at `prime_divisor_exists`. Peano admission
+of FTA still requires greatest-prime descent and the still-open β-modulus
+coprimality, bounded CRT iteration, finite-prefix, and encoded-product proof
+spine.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

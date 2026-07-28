@@ -1,21 +1,23 @@
 ---
-title: "Lemma: mod_eq_refl"
+title: "Lemma: mod_eq_predecessor_cancel"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `mod_eq_refl`
+# `mod_eq_predecessor_cancel`
 
-Balanced natural congruence is reflexive.
+The predecessor of a successor acts as minus one in balanced congruence.
 
 ## Closed Peano statement
 
 ```text
-forall m a. exists u v. a + m * u = a + m * v
+forall k a z. exists u v. ((a + z) + k * z) + S k * u = a + S k * v
 ```
 
 ## Dependencies
 
-- None; the script closes directly from PA rules.
+- [[add_assoc]]
+- [[add_comm]]
+- [[mul_succ_left]]
 
 ## Checked dependents
 
@@ -24,9 +26,9 @@ forall m a. exists u v. a + m * u = a + m * v
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **5 nodes**, depth **5**.
-- Authored script length: **5 commands**.
-- Runtime card: `pa lib mod_eq_refl`.
+- Certificate: **315 nodes**, depth **25**.
+- Authored script length: **15 commands**.
+- Runtime card: `pa lib mod_eq_predecessor_cancel`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

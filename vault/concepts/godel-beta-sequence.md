@@ -29,21 +29,26 @@ The single-position decoding API is also checked. [[beta_modulus_nonzero]]
 records that every modulus is a successor, [[beta_at_self_of_bound]] supplies
 the quotient-zero base constructor, and [[beta_at_exists]], [[beta_at_unique]],
 and [[beta_at_exists_unique]] prove totality and functionality of the fully
-expanded `At` relation. These facts decode one position; they do not yet build
-a code satisfying a prescribed finite family of positions.
+expanded `At` relation. These facts decode one position.
 [[beta_at_to_mod_eq]] now connects each directed decoding witness to the
 balanced [[arithmetic-congruence]] API. [[mod_eq_bounded_unique]] and
 [[mod_eq_to_remainder_decomposition]] prove the reverse direction, exposed for
 β values as [[beta_at_of_mod_eq_bound]]. Thus `At(b,c,i,x)` is now equivalent
-to the bound on `x` plus congruence of `b` and `x` modulo `M(c,i)`. The CRT
-construction needed to extend a prescribed prefix remains open.
+to the bound on `x` plus congruence of `b` and `x` modulo `M(c,i)`.
+
+The first composition step is now checked. [[binary_crt]] constructs a
+solution for two nonzero coprime moduli, and [[binary_crt_beta_pair]]
+specializes it to a single code realizing two bounded β values. The latter
+does **not** prove that its two β moduli are coprime: pairwise coprimality is an
+explicit theorem premise. It also does not iterate over a bounded family, so
+it is not yet finite-prefix extension.
 
 The remaining spine begins with greatest-prime-divisor descent for the sorted
-factor order. The encoding layer then needs binary and bounded CRT,
-finite-prefix extension/restriction, prefix-product trace
+factor order. The encoding layer then needs pairwise β-modulus coprimality,
+bounded CRT iteration, finite-prefix extension/restriction, prefix-product trace
 existence/functionality/composition, preservation of bounded primality and
 sorting, and finite-product Euclid/cancellation. None of those relations is a
-trusted primitive, and the checked single-position API does not by itself
+trusted primitive, and the checked two-position constructor does not by itself
 constitute [[fundamental-theorem-of-arithmetic|FTA]].
 
 ## Related

@@ -38,17 +38,19 @@ The exact abstracts, session plans and reading lists live on the [landing page](
 | `vault/` | The **Obsidian vault** — the atomic, wiki-linked knowledge base behind the book. |
 | `artifacts/` | **Formal proofs** in four systems, plus `lean-fta/`: a pinned, sorry-free Lean proof of prime-factorization existence and uniqueness up to permutation. |
 | `lab-lambda/` | The **Lambda Lab**, repackaged to run **directly in the browser** (Pyodide + xterm.js). Deployed to `/lab-lambda`. |
-| `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, 164-entry checked arithmetic ladder, and reproducible proof-trace corpus. |
-| `research/` | The **research dossier** — including the 171-node foundational arithmetic catalog (23 baseline checked, 141 post-baseline checked, three planned expressible, four language-blocked), one checked FTA companion, and source/license maps. |
+| `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, 170-entry checked arithmetic ladder, and reproducible proof-trace corpus. |
+| `research/` | The **research dossier** — including the 177-node foundational arithmetic catalog (23 baseline checked, 147 post-baseline checked, three planned expressible, four language-blocked), one checked FTA companion, and source/license maps. |
 | `scripts/` | Book replay gate plus the deterministic Peano trace generation, export, and kernel-judged evaluation pipeline. |
 | `docs/` | Lecturer-facing docs: how to build, deploy, and run each piece. |
 | `MEMORY.md` · `JOURNAL.md` · `PLAN.md` + `PLAN/` | Project **memory**, dated **journal**, and the multi-level **plan**. |
 
-The 164-entry native ladder now checks full addition/multiplication
+The 170-entry native ladder now checks full addition/multiplication
 compatibility for balanced congruence and proves that expanded Gödel-β
-decoding is equivalent to a bound plus balanced congruence. β-modulus
-coprimality, binary/bounded CRT, finite prefixes/products, greatest-prime
-descent, and native FTA remain open.
+decoding is equivalent to a bound plus balanced congruence. Constructive binary
+CRT and a two-position β-code constructor are checked; the latter retains
+pairwise β-modulus coprimality as an explicit premise. Proving that premise,
+bounded CRT iteration, finite prefixes/products, greatest-prime descent, and
+native FTA remain open.
 
 ---
 

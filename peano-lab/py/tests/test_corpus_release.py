@@ -119,12 +119,12 @@ def test_release_metadata_counts_hashes_and_source_provenance() -> None:
     assert stats["splits"]["train"] == {
         "sessions": 1683,
         "records": 13326,
-        "sha256": "9efec3701d374e6251a64093d466f0cfb6b6dbf845ac20e9e656632d399a484c",
+        "sha256": "a3639b16e109b667e9ee8284e0c28528e3131842b737fa7d8c140ed828e43edc",
     }
     assert stats["splits"]["val"] == {
         "sessions": 9,
         "records": 18,
-        "sha256": "f6c54708b1df575b49f92d37b337b6291303c8db04295fead87e1c581b2f1d21",
+        "sha256": "67778e5d36b695de91ed0609c7dd3375e7aaa0397e735f9e70eb1b6e254ef591",
     }
     assert stats["theorem_coverage"]["source_count"] == 99
     assert stats["theorem_coverage"]["train_count"] == 90

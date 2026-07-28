@@ -1,21 +1,21 @@
 ---
-title: "Lemma: mod_eq_refl"
+title: "Lemma: bezout_mod_right"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `mod_eq_refl`
+# `bezout_mod_right`
 
-Balanced natural congruence is reflexive.
+A balanced Bezout identity selects the left coefficient modulo the right modulus.
 
 ## Closed Peano statement
 
 ```text
-forall m a. exists u v. a + m * u = a + m * v
+forall m n xp yp xn yn. m * xp + n * yp = 1 + (m * xn + n * yn) -> exists u v. m * xp + n * u = (1 + m * xn) + n * v
 ```
 
 ## Dependencies
 
-- None; the script closes directly from PA rules.
+- [[add_assoc]]
 
 ## Checked dependents
 
@@ -24,9 +24,9 @@ forall m a. exists u v. a + m * u = a + m * v
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **5 nodes**, depth **5**.
-- Authored script length: **5 commands**.
-- Runtime card: `pa lib mod_eq_refl`.
+- Certificate: **50 nodes**, depth **16**.
+- Authored script length: **13 commands**.
+- Runtime card: `pa lib bezout_mod_right`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

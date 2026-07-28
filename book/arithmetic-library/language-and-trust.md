@@ -147,9 +147,13 @@ checked balanced-congruence API. `mod_eq_bounded_unique` and
 `mod_eq_to_remainder_decomposition` justify the reverse direction, which
 `beta_at_of_mod_eq_bound` specializes back to the β modulus. Consequently,
 `At` is now checked equivalent to its bound plus balanced congruence. These
-theorem names do not add a predicate symbol. Binary/bounded CRT and
-finite-prefix extension are still required before arbitrary finite data can
-be encoded.
+theorem names do not add a predicate symbol. Constructive `binary_crt` now
+combines any two bounded residues for nonzero coprime moduli, and
+`binary_crt_beta_pair` turns that result into two expanded `At` facts. The
+latter keeps coprimality of the two β moduli as an explicit premise: no theorem
+yet establishes the required family-wide coprimality condition. Bounded CRT
+iteration and finite-prefix extension are therefore still required before
+arbitrary finite data can be encoded.
 
 The native route is therefore explicit:
 
@@ -160,8 +164,9 @@ The native route is therefore explicit:
    prime-divisor-existence clients;
 3. prove greatest-prime descent for the selected sorted factorization route;
 4. reuse the checked equivalence between single-position β decoding and
-   bounded congruence while implementing and proving binary/bounded CRT,
-   finite-prefix extension, and prefix-product relations;
+   bounded congruence together with checked binary CRT; prove the selected
+   β-modulus coprimality condition, bounded CRT iteration, finite-prefix
+   extension, and prefix-product relations;
 5. state and check factorization existence and extensional uniqueness.
 
 A separate Lean companion already checks the conventional finite-list FTA,

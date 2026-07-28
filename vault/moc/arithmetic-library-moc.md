@@ -6,17 +6,17 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-The current runtime has 164 unique checked nodes: 23 from the original ladder
-and 141 in the reconciled post-baseline extension. Of the latter, 129 form the
+The current runtime has 170 unique checked nodes: 23 from the original ladder
+and 147 in the reconciled post-baseline extension. Of the latter, 135 form the
 general foundational layer and twelve form the fixed modular capstone. The
-broader 171-node catalog contains three `planned_expressible` and four
+broader 177-node catalog contains three `planned_expressible` and four
 `blocked_by_language` nodes in addition to those checked layers. One
 separately cataloged Lean companion checks full list-based FTA existence and
 uniqueness; it is not counted as a Peano theorem.
 
-The shared snapshot contains 79,763 proof nodes and 2,138 self-contained Cuts;
-124 certificates contain at least one Cut. [[euclid_prime_dvd_product]]
-remains largest at 5,382 nodes, while [[prime_divisor_exists]] sets the maximum
+The shared snapshot contains 99,137 proof nodes and 2,693 self-contained Cuts;
+130 certificates contain at least one Cut. [[binary_crt_beta_pair]] is largest
+at 6,941 nodes and 201 Cuts, while [[prime_divisor_exists]] sets the maximum
 depth at 80. These are representation metrics, not additional axioms.
 
 ## Design and trust
@@ -89,6 +89,7 @@ depth at 80. These are representation metrics, not additional axioms.
 - [[gcd_balanced_bezout_exists_up_to]] · [[gcd_balanced_bezout_exists]]
 - [[balanced_combination_scale_right]] · [[common_divisor_divides_balanced_result]]
 - [[coprime_balanced_bezout]] · [[gauss_coprime_cancel]]
+- [[bezout_mod_left]] · [[bezout_mod_right]]
 
 ## Checked quotient-and-remainder algebra
 
@@ -98,15 +99,22 @@ depth at 80. These are representation metrics, not additional axioms.
 - [[add_residue]] · [[add_residue_lift]]
 - [[square_decomp]] · [[square_residue_lift]] · [[square_residue_witness]]
 
-## Checked congruence and single-position β decoding
+## Checked congruence, binary CRT, and β decoding
 
 - [[mod_eq_refl]] · [[mod_eq_symm]] · [[mod_eq_trans]] · [[mod_eq_add]]
 - [[mod_eq_mul_right]] · [[mod_eq_mul_left]] · [[mod_eq_mul]]
+- [[mod_eq_predecessor_cancel]]
 - [[remainder_decomposition_to_mod_eq]] · [[beta_at_to_mod_eq]]
 - [[mod_eq_bounded_unique]] · [[mod_eq_to_remainder_decomposition]]
 - [[beta_at_of_mod_eq_bound]]
 - [[beta_modulus_nonzero]] · [[beta_at_self_of_bound]]
 - [[beta_at_exists]] · [[beta_at_unique]] · [[beta_at_exists_unique]]
+- [[binary_crt]] · [[binary_crt_remainders]] · [[binary_crt_beta_pair]]
+
+The last node constructs one code for two bounded β values only under an
+explicit coprimality premise for their two β moduli. It does not prove that
+premise for arbitrary indices and does not iterate the construction over a
+bounded prefix.
 
 ## Checked prime nodes
 
@@ -124,7 +132,7 @@ depth at 80. These are representation metrics, not additional axioms.
 - [[prime_divisor_exists_up_to]] · [[prime_divisor_exists]] — bounded and public prime-divisor existence
 
 The remaining FTA path is not hidden by these admissions: it still requires
-greatest-prime descent, binary/bounded CRT,
+greatest-prime descent, pairwise β-modulus coprimality, bounded CRT iteration,
 [[godel-beta-sequence|β finite-prefix extension]], prefix-product traces, and
 finite-product existence and uniqueness.
 

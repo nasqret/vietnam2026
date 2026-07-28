@@ -8,11 +8,11 @@ The **foundational arithmetic library** is a versioned dependency graph for
 [[arithmetic-congruence]], [[quotient-and-remainder]], gcd, primes, and
 factorization.
 
-Its current snapshot has 164 closed, independently checked theorems: the
-original 23-node [[theorem-ladder]] and 141 unique post-baseline additions.
-The latter combine 129 general arithmetic facts with twelve additional modular
-capstones. The 171-node research catalog separates 23 `checked_existing`,
-141 `checked_m20`, three
+Its current snapshot has 170 closed, independently checked theorems: the
+original 23-node [[theorem-ladder]] and 147 unique post-baseline additions.
+The latter combine 135 general arithmetic facts with twelve additional modular
+capstones. The 177-node research catalog separates 23 `checked_existing`,
+147 `checked_m20`, three
 `planned_expressible`, and four `blocked_by_language` nodes, but only replayed
 certificates appear in `pa lib`. The M20 additions now include [[prime_two]],
 the first checked instance of the fully expanded prime predicate, and native
@@ -45,12 +45,23 @@ The next pre-CRT layer closes multiplication compatibility through
 The reverse bridge is now checked too: [[mod_eq_bounded_unique]],
 [[mod_eq_to_remainder_decomposition]], and [[beta_at_of_mod_eq_bound]] recover
 directed remainder and β witnesses from bounded congruence.
+The newest six-node layer projects balanced Bézout identities through
+[[bezout_mod_left]] and [[bezout_mod_right]], implements subtraction-free
+successor-modulus cancellation with [[mod_eq_predecessor_cancel]], and checks
+[[binary_crt]], [[binary_crt_remainders]], and [[binary_crt_beta_pair]]. The
+last theorem constructs one code for two bounded β values under an explicit
+coprimality premise; it is not bounded CRT or finite-prefix extension.
 
-The generated snapshot contains 79,763 structural proof nodes and 2,138
-self-contained Cuts; 124 of the 164 certificates contain a Cut. Its maximum
-certificate is [[euclid_prime_dvd_product]] at 5,382 nodes, and its maximum
-depth is 80 at [[prime_divisor_exists]]. These are representation metrics, not
-proof authority.
+The generated snapshot contains 99,137 structural proof nodes and 2,693
+self-contained Cuts; 130 of the 170 certificates contain a Cut. Its maximum
+certificate is [[binary_crt_beta_pair]] at 6,941 nodes and 201 Cuts, and its
+maximum depth is 80 at [[prime_divisor_exists]]. The ordered snapshot root is
+`51fbc86c80feb458dd6adcf1e08ee378e62f2f55e82fb8c6c5c9e9e0ab41a227`.
+These are representation metrics, not proof authority.
+
+The checkpoint passed all 1,098 Peano tests. The independent Lambda Lab
+regression remains green at 360 tests plus 36 subtests; the arithmetic changes
+do not alter that calculus or its kernel.
 
 One theorem name identifies its executable entry, generated artifact node,
 Obsidian lemma page, and book discussion. [[lemma-dependency-dag]] records the
@@ -62,7 +73,8 @@ than granting names or hashes kernel authority.
 The [[fundamental-theorem-of-arithmetic]] is a destination, not a primitive.
 A conservative [[godel-beta-sequence]] representation is selected and a Lean
 companion checks the full list theorem, while Peano admission still requires
-greatest-prime descent and the encoded CRT, finite-prefix,
+greatest-prime descent, pairwise β-modulus coprimality, bounded CRT iteration,
+finite-prefix,
 prefix-product, and finite-product certificates.
 
 ## Related

@@ -36,8 +36,12 @@ equality, bounded-factor, primality-decision, and prime-divisor-search tranche
 yields the 149-theorem root. The congruence and single-position Gödel-β tranche
 yields the 156-theorem root. The multiplicative-congruence and remainder/β
 bridge tranche yields the 161-theorem root. The bounded-uniqueness and reverse
-remainder/β bridge tranche yields the current 164-theorem root. Model-v1
-remains frozen, and no model may silently inherit either mutable catalog.
+remainder/β bridge tranche yields the 164-theorem root. The constructive binary
+CRT and two-position β tranche yields the current 170-theorem root
+`51fbc86c80feb458dd6adcf1e08ee378e62f2f55e82fb8c6c5c9e9e0ab41a227`.
+Its local browser artifact is labeled `2026-07-29e` with identity
+`a-ac494e524f2f`. Model-v1 remains frozen, and no model may silently
+inherit either mutable catalog.
 
 Library visibility and benchmark visibility are different. If a theorem is importable, closing its
 exact statement with `use`, `apply`, and `exact` measures retrieval and application, not discovery.

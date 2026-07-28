@@ -20,6 +20,7 @@ forall a b. (forall d. (exists x. a = d * x) -> (exists y. b = d * y) -> d = 1) 
 ## Checked dependents
 
 - [[gauss_coprime_cancel]]
+- [[binary_crt]]
 
 ## Verification record
 

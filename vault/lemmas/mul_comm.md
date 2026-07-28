@@ -30,6 +30,7 @@ forall n m. n * m = m * n
 - [[beta_at_exists]]
 - [[beta_at_unique]]
 - [[square_decomp]]
+- [[binary_crt]]
 
 ## Verification record
 

@@ -3,21 +3,22 @@
 This directory is the planning and provenance source for Peano Lab's general
 arithmetic library. Start with:
 
-The current runtime/catalog boundary is 164 checked Peano entries (23
-baseline, 129 general foundational, and twelve fixed modular) inside a
-171-node catalog. Exact shared-certificate totals are reproduced in the
-generated snapshot: 79,763 proof nodes, 2,138 self-contained Cuts, and 124
-Cut-bearing certificates. `euclid_prime_dvd_product` remains largest at 5,382
-nodes and 159 Cuts; `prime_divisor_exists` sets the snapshot-wide maximum
-depth at 80.
+The current runtime/catalog boundary is 170 checked Peano entries (23
+baseline, 135 general foundational, and twelve fixed modular) inside a
+177-node catalog. Exact shared-certificate totals are reproduced in the
+generated snapshot: 99,137 proof nodes, 2,693 self-contained Cuts, and 130
+Cut-bearing certificates. `binary_crt_beta_pair` is largest at 6,941
+nodes and 201 Cuts; `prime_divisor_exists` sets the snapshot-wide
+maximum depth at 80.
 The latest tranches establish full additive/multiplicative balanced-congruence
 compatibility, bounded representative uniqueness, both remainder/congruence
-directions, and expanded β decoding equivalent to bound plus congruence.
-β-modulus coprimality, binary/bounded CRT, finite-prefix extension and
+directions, expanded β decoding equivalent to bound plus congruence,
+constructive binary CRT, and a conditional two-position β-code constructor.
+β-modulus coprimality, bounded CRT iteration, finite-prefix extension and
 products, greatest-prime descent, and native FTA remain open.
 
-- [`catalog.json`](catalog.json): 171 dependency-ordered facts — 23
-  `checked_existing`, 141 `checked_m20`, three `planned_expressible`, and four
+- [`catalog.json`](catalog.json): 177 dependency-ordered facts — 23
+  `checked_existing`, 147 `checked_m20`, three `planned_expressible`, and four
   `blocked_by_language` — with exact source IDs, Peano statements where
   expressible, and blockers where not;
 - [`source-register.json`](source-register.json): pinned revisions, licenses,

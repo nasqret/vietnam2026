@@ -21,6 +21,7 @@ forall m a b c. (exists u v. a + m * u = b + m * v) -> exists r s. (c * a) + m *
 ## Checked dependents
 
 - [[mod_eq_mul]]
+- [[binary_crt]]
 
 ## Verification record
 

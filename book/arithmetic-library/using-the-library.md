@@ -8,11 +8,11 @@ certificate size, and independent-kernel result.
 The URLs below are promotion targets for the public browser application.
 Existing production entries may already open there; candidate-only entries,
 including the division, gcd, Bézout, Gauss, Euclid, and constructive
-prime-search layers, balanced modular congruence, and single-position Gödel-β
-decoding as bounded congruence, become available only after this build is
-promoted. The 164-entry
-local candidate has not been
-deployed by this documentation change.
+prime-search layers, balanced modular congruence, single-position Gödel-β
+decoding as bounded congruence, and constructive binary CRT become available
+only after this build is promoted. The 170-entry local candidate is assembled
+as build `2026-07-29e`, application `a-ac494e524f2f`; it has not been deployed
+by this documentation change.
 
 - [`pa lib`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib)
 - [`pa lib add_congr`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20add_congr)
@@ -26,6 +26,12 @@ deployed by this documentation change.
 - [`pa lib beta_at_exists_unique`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_at_exists_unique)
 - [`pa lib beta_at_to_mod_eq`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_at_to_mod_eq)
 - [`pa lib beta_at_of_mod_eq_bound`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_at_of_mod_eq_bound)
+- [`pa lib bezout_mod_left`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20bezout_mod_left)
+- [`pa lib bezout_mod_right`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20bezout_mod_right)
+- [`pa lib mod_eq_predecessor_cancel`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod_eq_predecessor_cancel)
+- [`pa lib binary_crt`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20binary_crt)
+- [`pa lib binary_crt_remainders`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20binary_crt_remainders)
+- [`pa lib binary_crt_beta_pair`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20binary_crt_beta_pair)
 - [`pa lib square_residue_witness`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20square_residue_witness)
 - [`pa lib mod5_fourth_power_one`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod5_fourth_power_one)
 
@@ -119,10 +125,12 @@ target Peano-checked because Lean or a textbook proves an analogous theorem.
 Do not hide missing checked β-sequence/product laws behind a factorization
 name; keep separately checked companion authority explicit. The native library
 now has constructive prime-divisor existence, the balanced additive and
-multiplicative congruence API, and functional single-position β decoding with
-its bidirectional bounded-congruence characterization. It does not yet have
-greatest-prime descent, binary or bounded CRT, finite-prefix extension,
-prefix-product traces, or FTA.
+multiplicative congruence API, functional single-position β decoding with its
+bidirectional bounded-congruence characterization, constructive binary CRT,
+and a two-position β-code client. That client assumes the two expanded β
+moduli are coprime; the library does not yet prove the required family-wide
+coprimality condition. It also does not yet have greatest-prime descent,
+bounded CRT iteration, finite-prefix extension, prefix-product traces, or FTA.
 
 ## Reproducing the artifact
 
@@ -135,6 +143,7 @@ cd peano-lab/py
 python3 -m pytest tests/test_foundational_arithmetic_library.py -q
 ```
 
-The first command verifies exact metadata for the 164 checked certificates,
-the second validates the 171-node research DAG and source register, and the
-last exercises the checked foundational layer directly.
+The first command verifies exact metadata for the 170 checked certificates
+and ordered root digest `51fbc86c…ab41a227`, the second validates the 177-node
+research DAG and source register, and the last exercises the checked
+foundational layer directly.

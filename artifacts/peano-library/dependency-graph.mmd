@@ -152,6 +152,12 @@ flowchart TD
   square_decomp[square_decomp]
   square_residue_lift[square_residue_lift]
   square_residue_witness[square_residue_witness]
+  bezout_mod_left[bezout_mod_left]
+  bezout_mod_right[bezout_mod_right]
+  mod_eq_predecessor_cancel[mod_eq_predecessor_cancel]
+  binary_crt[binary_crt]
+  binary_crt_remainders[binary_crt_remainders]
+  binary_crt_beta_pair[binary_crt_beta_pair]
   fourth_power_regroup[fourth_power_regroup]
   mod5_residue_complete[mod5_residue_complete]
   mod5_nonzero_residue_cases[mod5_nonzero_residue_cases]
@@ -421,6 +427,32 @@ flowchart TD
   square_decomp --> square_residue_lift
   add_residue --> square_residue_lift
   square_residue_lift --> square_residue_witness
+  add_assoc --> bezout_mod_left
+  add_comm --> bezout_mod_left
+  add_assoc --> bezout_mod_right
+  add_assoc --> mod_eq_predecessor_cancel
+  add_comm --> mod_eq_predecessor_cancel
+  mul_succ_left --> mod_eq_predecessor_cancel
+  nonzero_is_succ --> binary_crt
+  coprime_balanced_bezout --> binary_crt
+  bezout_mod_left --> binary_crt
+  bezout_mod_right --> binary_crt
+  mod_eq_mul_left --> binary_crt
+  mul_add --> binary_crt
+  mul_one --> binary_crt
+  dvd_to_mod_zero --> binary_crt
+  mul_assoc --> binary_crt
+  mul_comm --> binary_crt
+  mod_eq_add --> binary_crt
+  mod_eq_refl --> binary_crt
+  mod_eq_trans --> binary_crt
+  mod_eq_predecessor_cancel --> binary_crt
+  zero_add --> binary_crt
+  binary_crt --> binary_crt_remainders
+  mod_eq_to_remainder_decomposition --> binary_crt_remainders
+  beta_modulus_nonzero --> binary_crt_beta_pair
+  binary_crt --> binary_crt_beta_pair
+  beta_at_of_mod_eq_bound --> binary_crt_beta_pair
   mul_assoc --> fourth_power_regroup
   mod5_residue_complete --> mod5_nonzero_residue_cases
   add_assoc --> mod5_square_residue_one

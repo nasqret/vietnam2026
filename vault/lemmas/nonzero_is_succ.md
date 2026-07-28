@@ -19,7 +19,7 @@ forall n. ~(n = 0) -> exists k. n = S k
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[binary_crt]]
 
 ## Verification record
 

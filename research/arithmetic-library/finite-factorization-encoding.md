@@ -21,9 +21,11 @@ nonzero, bounded values self-decode, and every position has exactly one
 decoded value. Bounded balanced-congruent representatives are equal, and the
 directed remainder/congruence bridge now works both ways. Consequently β
 decoding is equivalent to the value bound plus balanced congruence between the
-code and value at the β modulus. This does **not** prove FTA. The remaining
-critical path starts with greatest-prime-divisor descent and then crosses the
-still-unimplemented β-modulus coprimality, binary/bounded CRT, finite-prefix,
+code and value at the β modulus. Constructive binary CRT is now checked, as is
+a constructor for one code realizing two bounded β values. The latter retains
+coprimality of the two β moduli as an explicit premise. This does **not** prove
+FTA. The remaining critical path starts with greatest-prime-divisor descent
+and then crosses β-modulus coprimality, bounded CRT iteration, finite-prefix,
 prefix-product, and finite-product layers.
 
 ## Sequence values
@@ -70,10 +72,19 @@ $$
 
 when congruence is read as the subtraction-free balanced relation.
 
-These theorems decode an existing pair `(b,c)`. They do not yet construct one
-code satisfying an arbitrary finite family of prescribed residues;
-β-modulus coprimality, binary/bounded CRT, and finite-prefix extension remain
-necessary.
+The next checked layer composes two positions. `bezout_mod_left` and
+`bezout_mod_right` expose the modular inverse equations from balanced
+natural Bézout witnesses; `mod_eq_predecessor_cancel` implements
+minus-one behavior modulo a successor; `binary_crt` constructs the
+balanced-congruence solution; and `binary_crt_remainders` exposes directed
+remainder equations for bounded residues. `binary_crt_beta_pair` then
+constructs one code for two bounded β values.
+
+These theorems do not yet construct one code satisfying an arbitrary finite
+family of prescribed residues. In particular,
+`binary_crt_beta_pair` assumes pairwise coprimality of its two β moduli;
+β-modulus coprimality, bounded CRT iteration, and finite-prefix extension
+remain necessary.
 
 A code pair is deliberately not treated as a canonical sequence identity.
 Different pairs can decode the same finite prefix, so all later equality is
@@ -190,23 +201,28 @@ make the proof small. The admission route and its current status are:
 5. **Checked congruence gate:** prove bounded representative uniqueness, the
    reverse remainder bridge, and reconstruction of β decoding from bound plus
    balanced congruence.
-6. **Next arithmetic gate:** construct a greatest prime divisor with a strict
+6. **Checked binary CRT gate:** project balanced Bézout coefficients, prove
+   successor-predecessor cancellation in congruence, prove binary CRT and its
+   bounded-remainder form, and construct two β positions under an explicit
+   modulus-coprimality premise.
+7. **Next arithmetic gate:** construct a greatest prime divisor with a strict
    quotient descent suitable for appending to an already sorted
    factorization.
-7. **Encoding gate:** prove β-modulus coprimality, binary and bounded CRT, and
+8. **Encoding gate:** prove β-modulus coprimality, bounded CRT iteration, and
    finite-prefix extension and restriction.
-8. **Product gate:** prove prefix-product trace extension/functionality and
+9. **Product gate:** prove prefix-product trace extension/functionality and
    preservation of `AllPrime`/`Sorted`.
-9. **Existence gate:** perform the strengthened natural-number descent using
+10. **Existence gate:** perform the strengthened natural-number descent using
    the greatest prime divisor and the encoded prefix/product extension laws.
-10. **Uniqueness gate:** prove finite-product Euclid, prime matching,
+11. **Uniqueness gate:** prove finite-product Euclid, prime matching,
    cancellation, and extensional equality of the two sorted decoded prefixes.
 
 The reviewed self-contained `Cut` rule now supplies lexical proof sharing while
 keeping every dependency proof inside the checked certificate. This removes
 the former fully expanded proof-tree bottleneck, but it does not establish that
 the much larger β/CRT/product spine will fit the live 32,768-node/depth-128
-import budget. The current runtime maximum is 5,382 nodes, while
+import budget. The current runtime maximum is 6,941 nodes at
+`binary_crt_beta_pair`, while
 `prime_divisor_exists` reaches depth 80; those observations are evidence for
 the arithmetic layer only, not a resource proof for encoded FTA. The
 proof-sharing trust review is recorded separately and must not be disguised as

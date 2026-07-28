@@ -32,6 +32,7 @@ forall n m k. n * (m + k) = n * m + n * k
 - [[add_residue]]
 - [[add_residue_lift]]
 - [[square_decomp]]
+- [[binary_crt]]
 - [[mod5_square_residue_one]]
 - [[mod5_square_residue_two]]
 

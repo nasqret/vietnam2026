@@ -2459,6 +2459,63 @@
       "blocker": null
     },
     {
+      "id": "bezout_mod_left",
+      "title": "Balanced Bézout identity projected modulo the left modulus",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_assoc",
+        "add_comm"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Reorders a balanced Bézout identity to expose the coefficient of the right modulus as a modular inverse modulo the left modulus.",
+      "peano": {
+        "statement": "forall m n xp yp xn yn. m * xp + n * yp = 1 + (m * xn + n * yn) -> exists u v. n * yp + m * u = (1 + n * yn) + m * v",
+        "existing_name": "bezout_mod_left"
+      },
+      "blocker": null
+    },
+    {
+      "id": "bezout_mod_right",
+      "title": "Balanced Bézout identity projected modulo the right modulus",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_assoc"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Reassociates a balanced Bézout identity to expose the coefficient of the left modulus as a modular inverse modulo the right modulus.",
+      "peano": {
+        "statement": "forall m n xp yp xn yn. m * xp + n * yp = 1 + (m * xn + n * yn) -> exists u v. m * xp + n * u = (1 + m * xn) + n * v",
+        "existing_name": "bezout_mod_right"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod_eq_predecessor_cancel",
+      "title": "Successor-predecessor cancellation in balanced congruence",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_assoc",
+        "add_comm",
+        "mul_succ_left"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Implements subtraction of one modulo a successor using only natural addition and multiplication.",
+      "peano": {
+        "statement": "forall k a z. exists u v. ((a + z) + k * z) + S k * u = a + S k * v",
+        "existing_name": "mod_eq_predecessor_cancel"
+      },
+      "blocker": null
+    },
+    {
       "id": "zero_remainder_implies_multiple",
       "title": "Zero remainder implies divisibility",
       "domain": "division",
@@ -3060,6 +3117,59 @@
       "blocker": null
     },
     {
+      "id": "binary_crt",
+      "title": "Constructive binary Chinese remainder theorem",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "nonzero_is_succ",
+        "coprime_balanced_bezout",
+        "bezout_mod_left",
+        "bezout_mod_right",
+        "mod_eq_mul_left",
+        "mul_add",
+        "mul_one",
+        "dvd_to_mod_zero",
+        "mul_assoc",
+        "mul_comm",
+        "mod_eq_add",
+        "mod_eq_refl",
+        "mod_eq_trans",
+        "mod_eq_predecessor_cancel",
+        "zero_add"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "stein_ent_tex"
+      ],
+      "summary": "Constructs one natural satisfying two balanced congruences for arbitrary residues and positive coprime moduli, using balanced natural Bézout witnesses and predecessor cancellation instead of integer subtraction.",
+      "peano": {
+        "statement": "forall m n a b. ~(m = 0) -> ~(n = 0) -> (forall d. (exists u. m = d * u) -> (exists v. n = d * v) -> d = 1) -> exists x. (exists u v. x + m * u = a + m * v) /\\ (exists r s. x + n * r = b + n * s)",
+        "existing_name": "binary_crt"
+      },
+      "blocker": null
+    },
+    {
+      "id": "binary_crt_remainders",
+      "title": "Binary CRT with directed remainder witnesses",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "binary_crt",
+        "mod_eq_to_remainder_decomposition"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "stein_ent_tex"
+      ],
+      "summary": "Converts the two balanced congruences from binary CRT into quotient-and-remainder equations when both requested residues are bounded.",
+      "peano": {
+        "statement": "forall m n a b. ~(m = 0) -> ~(n = 0) -> (forall d. (exists u. m = d * u) -> (exists v. n = d * v) -> d = 1) -> (exists ha. ha + S a = m) -> (exists hb. hb + S b = n) -> exists x q r. (x = q * m + a /\\ x = r * n + b)",
+        "existing_name": "binary_crt_remainders"
+      },
+      "blocker": null
+    },
+    {
       "id": "bezout_integer_coefficients",
       "title": "Bézout identity with integer coefficients",
       "domain": "gcd_coprime",
@@ -3541,6 +3651,28 @@
       "blocker": null
     },
     {
+      "id": "binary_crt_beta_pair",
+      "title": "A single Gödel-beta code realizes two bounded values",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "beta_modulus_nonzero",
+        "binary_crt",
+        "beta_at_of_mod_eq_bound"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Specializes constructive binary CRT to two pairwise coprime beta moduli and reconstructs both expanded BetaAt witnesses from their bounds and congruences.",
+      "peano": {
+        "statement": "forall c i j a b. (forall d. (exists u. S ((S i) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1) -> (exists ha. ha + S a = S ((S i) * c)) -> (exists hb. hb + S b = S ((S j) * c)) -> exists code. (((exists ha. ha + S a = S ((S i) * c)) /\\ exists q. code = q * S ((S i) * c) + a) /\\ ((exists hb. hb + S b = S ((S j) * c)) /\\ exists r. code = r * S ((S j) * c) + b))",
+        "existing_name": "binary_crt_beta_pair"
+      },
+      "blocker": null
+    },
+    {
       "id": "prime_factorization_existence",
       "title": "Existence of a finite prime factorization",
       "domain": "factorization",
@@ -3554,13 +3686,13 @@
         "weissman_python_number_theory",
         "open_logic"
       ],
-      "summary": "Single-position Gödel-β decoding is now total and functional, but finite-prefix extension and prefix-product relations do not yet have checked Peano infrastructure.",
+      "summary": "Single-position Gödel-β decoding and the binary CRT composition step are checked, but bounded finite-prefix extension and prefix-product relations do not yet have checked Peano infrastructure.",
       "peano": null,
       "blocker": {
         "code": "variable_length_factorization_unrepresented",
-        "detail": "Peano Lab's fixed signature has no primitive finite collection. Division and single-position Gödel-β value totality/functionality are checked, but binary/bounded CRT, finite-prefix extension, prefix-product traces, and the fully expanded factorization certificate are not implemented.",
+        "detail": "Peano Lab's fixed signature has no primitive finite collection. Division, single-position Gödel-β value totality/functionality, and binary CRT are checked, but bounded CRT iteration, finite-prefix extension, prefix-product traces, and the fully expanded factorization certificate are not implemented.",
         "unblocks_with": [
-          "checked binary and bounded CRT plus Gödel-β finite-prefix extension lemmas",
+          "checked bounded CRT iteration plus Gödel-β finite-prefix extension lemmas",
           "a checked β-coded prefix-product relation",
           "and checked links between encoded elements, primality, and the folded product"
         ]

@@ -270,7 +270,7 @@ arithmetic/order rungs plus five explicit helper lemmas, ending at
 `forall n m. n * m = 0 -> n = 0 \/ m = 0`. M11 extends the current index to twenty-three with
 `one_mul`, `mul_one`, and `add_mul`, the only missing orientations needed by certificate-producing
 commutative-semiring normalization. The current local runtime extends that
-reconciled foundation to 164 unique checked entries: 23 baseline theorems, 129
+reconciled foundation to 170 unique checked entries: 23 baseline theorems, 135
 general foundational theorems, and twelve unique modular capstones. The
 complete 26-record modular provenance catalog ends at
 `mod5_fourth_power_one`; fourteen of those records coincide exactly with
@@ -301,14 +301,19 @@ exposes no new term or predicate: `beta_modulus_nonzero`,
 `beta_at_self_of_bound`, `beta_at_exists`, `beta_at_unique`, and
 `beta_at_exists_unique` expand decoding as the unique bounded remainder modulo
 `1 + (i + 1)c`; `beta_at_to_mod_eq` and `beta_at_of_mod_eq_bound` prove that
-decoding is equivalent to the bound plus balanced congruence. β-modulus
-coprimality, binary/bounded CRT, finite-prefix extension, and prefix-product
-traces remain future checked layers, as do greatest-prime descent and native
-FTA.
+decoding is equivalent to the bound plus balanced congruence.
+`bezout_mod_left`, `bezout_mod_right`, and
+`mod_eq_predecessor_cancel` supply the subtraction-free coefficient
+algebra for `binary_crt`. `binary_crt_remainders` exposes directed
+remainder equations for bounded residues, and `binary_crt_beta_pair`
+constructs one code for two bounded β values under an explicit coprimality
+premise. β-modulus coprimality itself, bounded CRT iteration, finite-prefix
+extension, and prefix-product traces remain future checked layers, as do
+greatest-prime descent and native FTA.
 
-The shared ladder totals 79,763 structural nodes and 2,138 Cuts across 124
-Cut-bearing entries. Euclid remains largest at 5,382 nodes and has the maximum
-159 Cuts; `prime_divisor_exists` reaches the maximum depth of 80.
+The shared ladder totals 99,137 structural nodes and 2,693 Cuts across 130
+Cut-bearing entries. `binary_crt_beta_pair` is largest at 6,941 nodes
+and 201 Cuts; `prime_divisor_exists` reaches the maximum depth of 80.
 
 ## Polynomial identities with checked certificates
 
@@ -453,18 +458,19 @@ passes 1,090 tests on Python 3.10; the 36-source warning-as-error book and all
 264 documented commands are green. It has not been deployed or promoted;
 production remains untouched.
 
-The current local browser candidate is build `2026-07-29d`, immutable
-application release `a-5cef5a9c3b7d`. It exposes all 164 checked theorems,
-including bounded-congruence uniqueness and both remainder/β bridge
-directions. Its complete suite passes 1,098 tests on CPython 3.10, including
-the 28-test focused pre-CRT gate. Lambda's 360
+The current local browser candidate is build `2026-07-29e`, immutable
+application release `a-ac494e524f2f`. It exposes all 170 checked theorems,
+including constructive binary CRT and the conditional two-position β-code
+constructor. Its complete suite passes 1,098 tests on CPython 3.10. Lambda's 360
 tests plus 36 subtests and the warning-as-error
-36-source book, 207 checked deep links, 45 session blocks with 264 commands,
-the 243-note/2,082-link vault, and application-manifest drift are green. The
+36-source book, 213 checked deep links, 45 session blocks with 264 commands,
+the 249-note/2,194-link vault, and application-manifest drift are green. The
 source-bound corpus remains 13,344 transitions/1,692 sessions; the isolated
-acceptance smoke has 4,013 unique transitions from 328 sessions and all 164
-authored QEDs. This candidate has not been staged, deployed, or promoted;
-production remains untouched.
+acceptance smoke has 340 sessions, 4,474 raw and 4,471 unique transitions,
+and all 170 authored QEDs. The corpus run fingerprint is
+`53305cfb39ddbd6fb6e02280caf594b1937f95790539a2df6b713244f975445c`.
+This candidate has not been staged, deployed, or promoted; production remains
+untouched.
 
 Back at the repository root, run both regression suites:
 

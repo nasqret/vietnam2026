@@ -24,6 +24,7 @@ forall n. n * 1 = n
 - [[coprime_to_is_gcd_one]]
 - [[proper_factor_lt]]
 - [[prime_divisor_eq_one_or_self]]
+- [[binary_crt]]
 
 ## Verification record
 

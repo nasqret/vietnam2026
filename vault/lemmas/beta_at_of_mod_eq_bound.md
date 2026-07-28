@@ -20,7 +20,7 @@ forall b c i x. (exists h. h + S x = S ((S i) * c)) -> (exists u v. b + S ((S i)
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[binary_crt_beta_pair]]
 
 ## Verification record
 

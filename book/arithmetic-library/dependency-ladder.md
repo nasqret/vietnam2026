@@ -19,7 +19,7 @@ needs.
 | Division | quotient-remainder existence, uniqueness, block separation, and zero-remainder/divisibility bridges | checked |
 | GCD/coprime | relational symmetry/projections/constructors, uniqueness, zero-right base, Euclidean invariance, existence, balanced Bézout, Gauss cancellation | checked through `gauss_coprime_cancel` |
 | Primes | bounded factor search, primality decision, proper-factor descent, prime divisors, Euclid's lemma, infinitely many primes | checked through `prime_divisor_exists` and `euclid_prime_dvd_product`; primes above every bound remain planned |
-| Factorization | existence and uniqueness up to permutation | single-position β decoding equivalent to bounded balanced congruence; greatest-prime descent, binary/bounded CRT, prefix extension, and product infrastructure pending; Lean companion checked |
+| Factorization | existence and uniqueness up to permutation | single-position β decoding, binary CRT, and two-position β construction under a coprimality premise checked; greatest-prime descent, β-modulus coprimality, bounded CRT iteration, prefix extension, and product infrastructure pending; Lean companion checked |
 
 The generated `dependency-graph.mmd` is the exact graph for checked entries.
 The research catalog is the larger design graph and gives every unproved node
@@ -133,10 +133,15 @@ $$
 x<M(c,i)\;\land\;b\equiv x\pmod{M(c,i)}
 $$
 
-are now checked through fully expanded PA formulas. The representation gates
-that remain are binary and bounded CRT, finite-prefix extension and
-restriction, and prefix-product trace existence and functionality. FTA itself
-is not yet a native `pa lib` theorem.
+are now checked through fully expanded PA formulas. The checked representation
+layer now also includes constructive binary CRT for arbitrary nonzero coprime
+moduli. `binary_crt_remainders` recovers the two directed remainder equations,
+and `binary_crt_beta_pair` constructs one code realizing two bounded decoded
+values. The last theorem assumes the two expanded β moduli are coprime; it
+does not prove that premise from the shared β parameter. The representation
+gates that remain are that modulus-coprimality theorem, bounded CRT iteration,
+finite-prefix extension and restriction, and prefix-product trace existence
+and functionality. FTA itself is not yet a native `pa lib` theorem.
 
 ## Admission invariants
 

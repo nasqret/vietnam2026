@@ -213,7 +213,8 @@ This boundary should be explicit in the plan:
   prime-divisor existence; Gauss cancellation; Euclid's lemma; full balanced
   congruence addition/multiplication compatibility; bounded representative
   uniqueness; both remainder/congruence directions; and expanded β-value
-  decoding equivalent to bound plus congruence.
+  decoding equivalent to bound plus congruence; constructive binary CRT; and
+  a conditional two-position β-code constructor.
 - **Current-language feasible next target:** greatest-prime-divisor descent and
   infinitude of primes, plus β-modulus coprimality and parity clients not
   already in the fixed-modulus layer.
@@ -221,7 +222,8 @@ This boundary should be explicit in the plan:
   algorithms, signed-coefficient APIs beyond the checked four-natural balanced
   Bézout relation, and recursive arithmetic-function graphs.
 - **Encoding milestone:** decoded β values are checked and equivalent to bound
-  plus balanced congruence, while β-modulus coprimality, binary/bounded CRT,
+  plus balanced congruence, while binary CRT and a conditional two-position
+  constructor are checked. β-modulus coprimality, bounded CRT iteration,
   finite-prefix construction, prefix products, extensional sequence equality,
   and finite counting remain; generic exponentiation and an optional
   user-facing list/multiset layer are separate language-design choices.
@@ -233,10 +235,11 @@ Gödel coding represents sequences inside first-order arithmetic at the cost of
 a less direct pedagogical API and potentially very large certificates. The
 representation review nevertheless selected a conservative Gödel-β authoring
 facade because it expands into the unchanged Peano language. With constructive
-prime-divisor existence and the equivalent bound/congruence β-value API now
-checked, the remaining critical path is greatest-prime descent followed by
-β-modulus coprimality, binary/bounded CRT, finite-prefix extension,
-prefix-product traces, and finite-product existence/uniqueness certificates.
+prime-divisor existence, the equivalent bound/congruence β-value API, and
+binary CRT now checked, the remaining critical path is greatest-prime descent
+followed by β-modulus coprimality, bounded CRT iteration, finite-prefix
+extension, prefix-product traces, and finite-product
+existence/uniqueness certificates.
 
 ## Source and artifact invariants
 

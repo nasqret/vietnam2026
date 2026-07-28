@@ -40,6 +40,8 @@ proof and the four coefficients simultaneously: [[is_gcd_euclid_forward]]
 transports `IsGCD`, while the coefficient theorem transports the balanced
 equation. [[gcd_balanced_bezout_exists]] removes the bound, and
 [[coprime_balanced_bezout]] specializes the balanced result to one.
+The projections [[bezout_mod_left]] and [[bezout_mod_right]] expose the two
+modular inverse equations needed by the checked [[binary_crt]] construction.
 
 [[balanced_combination_scale_right]] scales
 `BalancedBezout(d,a,b)` to `BalancedBezout(d*z,a,b*z)`.

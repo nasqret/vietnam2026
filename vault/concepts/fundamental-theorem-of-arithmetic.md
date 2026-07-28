@@ -26,13 +26,18 @@ nonunit natural. Single-position β decoding is now checked as well:
 [[beta_at_exists]] and [[beta_at_unique]] establish totality and functionality
 of the expanded `At` relation, while [[beta_at_to_mod_eq]] connects it to the
 checked congruence API and [[beta_at_of_mod_eq_bound]] supplies the bounded
-reverse direction.
+reverse direction. [[binary_crt]] now proves constructive binary CRT for
+arbitrary residues and positive coprime natural moduli, and
+[[binary_crt_beta_pair]] constructs one code realizing two bounded β values.
+That specialization assumes, rather than proves, coprimality of its two β
+moduli.
 
 FTA itself is **not** proved in native Peano Lab. The direct list-oriented
 existence, uniqueness, and combined catalog endpoints remain
 `blocked_by_language`; the selected conservative route must first replace that
 surface representation with fully expanded β-coded formulas. Its remaining
-critical path is greatest-prime-divisor descent, binary and bounded CRT,
+critical path is greatest-prime-divisor descent, pairwise β-modulus
+coprimality, bounded CRT iteration,
 finite-prefix extension/restriction, prefix-product
 trace existence and composition, finite-product Euclid/cancellation, and the
 final existence and extensional-uniqueness descents. Accordingly no Peano FTA
@@ -49,4 +54,4 @@ axiom.
 
 [[arithmetic-library-moc]] · [[prime-number]] · [[lemma-dependency-dag]] ·
 [[trusted-kernel]] · [[godel-beta-sequence]] · [[prime_divisor_exists]] ·
-[[euclid_prime_dvd_product]]
+[[euclid_prime_dvd_product]] · [[binary_crt]]

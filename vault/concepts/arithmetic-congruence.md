@@ -25,6 +25,20 @@ needed before a constructive CRT proof. In the reverse direction,
 [[mod_eq_to_remainder_decomposition]] reconstructs the directed quotient.
 [[beta_at_of_mod_eq_bound]] packages the corresponding reverse β bridge.
 
+The checked CRT layer stays inside the same subtraction-free interface.
+[[bezout_mod_left]] and [[bezout_mod_right]] project balanced natural Bézout
+coefficients into the two modular inverse equations, while
+[[mod_eq_predecessor_cancel]] implements the required minus-one behavior
+modulo a successor. [[binary_crt]] then constructs one solution to two
+balanced congruences for nonzero coprime moduli, and
+[[binary_crt_remainders]] converts bounded requested residues back to directed
+quotient/remainder equations.
+
+This is binary CRT, not bounded CRT iteration. In the β specialization
+[[binary_crt_beta_pair]], coprimality of the two β moduli remains an explicit
+premise; no theorem currently discharges that premise for arbitrary positions
+or folds the binary construction across a finite prefix.
+
 The checked [[add_residue]], [[add_residue_lift]], [[square_decomp]],
 [[square_residue_lift]], and [[square_residue_witness]] already manipulate
 explicit quotient-and-remainder equations generically. Fixed-modulus residue
@@ -33,4 +47,5 @@ foundations.
 
 ## Related
 
-[[arithmetic-library-moc]] · [[divisibility]] · [[prime-number]]
+[[arithmetic-library-moc]] · [[divisibility]] · [[prime-number]] ·
+[[godel-beta-sequence]]

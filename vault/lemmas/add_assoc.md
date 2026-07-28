@@ -37,6 +37,9 @@ forall n m k. (n + m) + k = n + (m + k)
 - [[add_residue]]
 - [[add_residue_lift]]
 - [[square_decomp]]
+- [[bezout_mod_left]]
+- [[bezout_mod_right]]
+- [[mod_eq_predecessor_cancel]]
 - [[mod5_square_residue_one]]
 - [[mod5_square_residue_two]]
 

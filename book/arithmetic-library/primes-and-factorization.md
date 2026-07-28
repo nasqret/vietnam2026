@@ -242,6 +242,58 @@ $$
 This establishes single-position decoding as a bounded congruence interface.
 It does not construct one code realizing an arbitrary finite prefix.
 
+## Constructive binary CRT and a two-position β code
+
+The next checked tranche proves binary CRT without subtraction or classical
+choice. In readable notation, `binary_crt` states
+
+$$
+m\ne0\land n\ne0\land\operatorname{Coprime}(m,n)
+\Longrightarrow
+\forall a,b\;\exists x,
+x\equiv a\pmod m\land x\equiv b\pmod n.
+$$
+
+Balanced Bézout supplies four natural coefficients. `bezout_mod_left` and
+`bezout_mod_right` extract the two modular coefficient identities, while
+`mod_eq_predecessor_cancel` implements the needed negative contribution modulo
+a successor without introducing subtraction. The resulting witness is an
+ordinary natural-number term, and every final target remains fully expanded
+first-order PA.
+
+| Checked theorem | Role | Nodes/depth | Cuts |
+|---|---|---:|---:|
+| `bezout_mod_left` | select the right Bézout coefficient modulo the left modulus | 134 / 19 | 4 |
+| `bezout_mod_right` | select the left Bézout coefficient modulo the right modulus | 50 / 16 | 1 |
+| `mod_eq_predecessor_cancel` | realize predecessor cancellation modulo a successor | 315 / 25 | 9 |
+| `binary_crt` | combine arbitrary residues for nonzero coprime natural moduli | 5,044 / 51 | 144 |
+| `binary_crt_remainders` | expose bounded solutions as two directed remainder equations | 6,890 / 66 | 196 |
+| `binary_crt_beta_pair` | realize two bounded β values in one code | 6,941 / 69 | 201 |
+
+The bounded client strengthens the readable conclusion to
+
+$$
+a<m\land b<n
+\Longrightarrow
+\exists x\,q\,r,\quad x=qm+a\land x=rn+b.
+$$
+
+Specializing the moduli to $M(c,i)$ and $M(c,j)$ then gives
+
+$$
+\operatorname{Coprime}(M(c,i),M(c,j))\land a<M(c,i)\land b<M(c,j)
+\Longrightarrow
+\exists\mathit{code},
+\operatorname{At}(\mathit{code},c,i,a)\land
+\operatorname{At}(\mathit{code},c,j,b).
+$$
+
+The coprimality hypothesis in this last formula is essential to the current
+interface. `binary_crt_beta_pair` does not prove that two moduli generated from
+one shared $c$ are coprime, nor does it iterate the binary theorem over a
+bounded prefix. Those are the next representation lemmas, so this checkpoint
+is a genuine binary/two-position result rather than a hidden bounded CRT.
+
 A second code stores the prefix products, beginning at one and multiplying by
 the decoded factor at each step. `AllPrime` expands the factor-pair prime
 formula at every bounded index, and `Sorted` makes the representation
@@ -284,11 +336,13 @@ This release keeps two deliberately separate FTA tracks:
 - source curricula are mapped to the missing lemmas;
 - no external theorem is smuggled into `pa lib` as a Peano certificate.
 
-The gcd/Bézout/Gauss/Euclid chain, constructive prime-divisor existence, and
-single-position Gödel-β decoded-value existence, uniqueness, and its
-bidirectional bounded-congruence characterization are now checked in native
-PA. The next critical gates are greatest-prime descent, binary and bounded
-CRT, finite-prefix extension/restriction, and prefix-product traces.
+The gcd/Bézout/Gauss/Euclid chain, constructive prime-divisor existence,
+single-position Gödel-β decoded-value existence and uniqueness, its
+bidirectional bounded-congruence characterization, constructive binary CRT,
+and a two-position β-code construction are now checked in native PA. The
+next critical gates are greatest-prime descent, the selected β-modulus
+coprimality theorem, bounded CRT iteration, finite-prefix
+extension/restriction, and prefix-product traces.
 Only after those interfaces have checked native certificates can factorization
 existence, uniqueness, and FTA enter `pa lib`. FTA therefore remains unproved
 in the native library.

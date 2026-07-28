@@ -146,6 +146,12 @@ FOUNDATIONAL_NAMES = (
     "square_decomp",
     "square_residue_lift",
     "square_residue_witness",
+    "bezout_mod_left",
+    "bezout_mod_right",
+    "mod_eq_predecessor_cancel",
+    "binary_crt",
+    "binary_crt_remainders",
+    "binary_crt_beta_pair",
 )
 
 

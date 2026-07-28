@@ -317,9 +317,13 @@ middle or double-negation elimination is hidden in the search.
    compatibility, bounded representative uniqueness, both remainder/
    congruence directions, and equivalence of β decoding with bound plus
    congruence.
-10. Develop greatest-prime-divisor descent for sorted factorization, then
-   prove β-modulus coprimality and cross the separate binary/bounded CRT,
-   prefix-extension, and product gate.
+10. **Complete:** project balanced Bézout coefficients into modular inverse
+    equations, prove constructive binary CRT and its bounded-residue wrapper,
+    and construct two β positions under an explicit modulus-coprimality
+    premise.
+11. Develop greatest-prime-divisor descent for sorted factorization, then
+    prove β-modulus coprimality and cross bounded CRT iteration,
+    prefix-extension, and the product gate.
 
 Prime-divisor existence does not follow automatically from gcd or Bézout, and
 Euclid's lemma does not construct a prime divisor; both sides are now checked

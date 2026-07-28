@@ -229,9 +229,10 @@ Consequently:
   certificates; balanced congruence is checked through full addition and
   multiplication compatibility and bounded representative uniqueness, the
   directed remainder bridge works both ways, and expanded Gödel-β decoding is
-  equivalent to bound plus congruence; infinitude of primes and
-  greatest-prime descent remain
-  expressible next targets;
+  equivalent to bound plus congruence. Constructive binary CRT and a
+  conditional two-position β-code constructor are checked as well; infinitude
+  of primes, β-modulus coprimality, bounded CRT iteration, and
+  greatest-prime descent remain expressible next targets;
 - integer modular arithmetic should remain a documented future layer;
 - generic powers need a graph relation or a conservative term-language
   extension;
@@ -241,7 +242,8 @@ Consequently:
 Gödel coding of sequences is possible in first-order arithmetic and is the
 selected conservative internal authoring route, but it is not a primitive
 user-facing list interface. The decoded-value API is checked and equivalent to
-bound plus balanced congruence; β-modulus coprimality, binary/bounded CRT,
+bound plus balanced congruence; binary CRT and a conditional two-position
+constructor are checked as well. β-modulus coprimality, bounded CRT iteration,
 finite-prefix construction, and encoded products remain open.
 
 ## Clean-room acceptance rule

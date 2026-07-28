@@ -116,6 +116,58 @@ EXPECTED = {
         "script": (17, "9793a6989e45a6b331c687f4a0f7e057fcc20a966e269f5dc646a9770da8ac14"),
         "certificate": ((1_839, 66), 53, "e4a2ead06ca651304be645d679f5e7e81da4ede0afd9997f2f59864f7b01074f"),
     },
+    "bezout_mod_left": {
+        "dependencies": ("add_assoc", "add_comm"),
+        "statement": "7c933e89b5e783e0fe57654937ee8202b8b0a917184b23463fccbda85de308b0",
+        "script": (19, "f3828f2a187f21e71e99b16eac7dd26300a29c468da8cc40071fad3fb12a97dd"),
+        "certificate": ((134, 19), 4, "0ba24c738b192b0a35c82006181468cc99f2d1cea106cfdaf43d38e80d5b20e2"),
+    },
+    "bezout_mod_right": {
+        "dependencies": ("add_assoc",),
+        "statement": "2b9829ff7d6d6582927a7b85c058b531717e3d91259f9bcc574a76f687eec068",
+        "script": (13, "b536b76554c8b03ff31194d28bc162a51636713784307c2d659b3ee5552cb2c0"),
+        "certificate": ((50, 16), 1, "2b31fb490cc73a830a30434cc534a5a880ed1d52921a4ec97c3e6cdbd932beb2"),
+    },
+    "mod_eq_predecessor_cancel": {
+        "dependencies": ("add_assoc", "add_comm", "mul_succ_left"),
+        "statement": "ff9e6397219fcf402e7a0e46e5d1ce0cee284f43b12ebdd124e21082c0170db4",
+        "script": (15, "bb918309a373e8829e44b53205816842834e936c6e644241c3c8f9b4c2339244"),
+        "certificate": ((315, 25), 9, "35e5bcc4216481e35319981c1f0536cda87b5ec2a6c2215b49d5b686cea7686f"),
+    },
+    "binary_crt": {
+        "dependencies": (
+            "nonzero_is_succ",
+            "coprime_balanced_bezout",
+            "bezout_mod_left",
+            "bezout_mod_right",
+            "mod_eq_mul_left",
+            "mul_add",
+            "mul_one",
+            "dvd_to_mod_zero",
+            "mul_assoc",
+            "mul_comm",
+            "mod_eq_add",
+            "mod_eq_refl",
+            "mod_eq_trans",
+            "mod_eq_predecessor_cancel",
+            "zero_add",
+        ),
+        "statement": "25e1f5213a9a5b04f3a20077b936ba8814f6ae8951f4f72e5f5e2135d7c9148f",
+        "script": (276, "16a1f89d08a1f88ddffa41e9f5b0c81e2bcf8d8b056cd239ae82d01e80de673e"),
+        "certificate": ((5_044, 51), 144, "fd5384ba933f194fe0229c01f97f3261d12dfe8586196f1fdd390349aefad2df"),
+    },
+    "binary_crt_remainders": {
+        "dependencies": ("binary_crt", "mod_eq_to_remainder_decomposition"),
+        "statement": "ddcf02df0ca3aa652ebe043c1fd2cf099ff83c77a550d263fb143dcff3147a56",
+        "script": (44, "af70451e2aa8c622fb07d64f2990919364781717c493adebb465164a946363af"),
+        "certificate": ((6_890, 66), 196, "f3432e4bdae49a7b4c832eb34d5c1550436a146e36a4321130d2045f4637bd2f"),
+    },
+    "binary_crt_beta_pair": {
+        "dependencies": ("beta_modulus_nonzero", "binary_crt", "beta_at_of_mod_eq_bound"),
+        "statement": "38fc1d7a370130b0342285a0d06f441aea33cfe4881d6215a86f86fdbb3ecb7e",
+        "script": (47, "c922363bdbcc3cc43560fbbb358d5f408fcdd77e17092fa73a70e1549e612d71"),
+        "certificate": ((6_941, 69), 201, "d0c6658e1cbb304cd57f39f2a60f1695aeac5bd52587d87d8d22ecdf29067776"),
+    },
 }
 
 ZERO = Zero()
@@ -262,6 +314,9 @@ def test_public_live_use_closes_congruence_and_beta_endpoints() -> None:
         "beta_at_exists_unique",
         "beta_at_to_mod_eq",
         "beta_at_of_mod_eq_bound",
+        "binary_crt",
+        "binary_crt_remainders",
+        "binary_crt_beta_pair",
     ):
         theorem = get(name)
         assert theorem is not None
