@@ -42,7 +42,7 @@ from pathlib import Path
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS_ROOT = Path(__file__).resolve().parent
 PEANO_PYTHON = REPOSITORY_ROOT / "peano-lab" / "py"
-for import_root in (SCRIPTS_ROOT, PEANO_PYTHON):
+for import_root in (REPOSITORY_ROOT, SCRIPTS_ROOT, PEANO_PYTHON):
     if str(import_root) not in sys.path:
         sys.path.insert(0, str(import_root))
 
@@ -61,6 +61,15 @@ from peano_lab.batch import (  # noqa: E402
 from peano_lab.ui.prove import (  # noqa: E402
     SURFACE_THEOREM_NAMES,
     SurfaceCapabilities,
+)
+from training.peano_policy.contract import prompt_environment  # noqa: E402
+from training.peano_policy.library_identity import (  # noqa: E402
+    MOD5_SOURCE_REPORT,
+)
+from training.peano_policy.prompt import (  # noqa: E402
+    CapabilityIdentity,
+    prompt_manifest_record,
+    render_prompt,
 )
 
 
@@ -91,6 +100,7 @@ REQUIRED_TEXT_METADATA_FIELDS = (
     "environment_sha256",
 )
 CAPABILITY_FIELDS = ("label", "allowed_commands", "allowed_theorems")
+LIBRARY_IDENTITY_METADATA_FIELD = "library_identity_sha256"
 ROW_FIELDS = (
     "v",
     "task",
@@ -251,6 +261,37 @@ def _capabilities_from_metadata(
     return capabilities
 
 
+def _validate_library_identity_metadata(
+    record: Mapping[str, object],
+    capabilities: SurfaceCapabilities,
+    *,
+    location: str,
+) -> None:
+    try:
+        identity = CapabilityIdentity.from_record(
+            _capability_identity(capabilities)
+        )
+        environment = prompt_environment(record["classical"], identity)
+    except (KeyError, TypeError, ValueError) as exc:
+        raise DatasetBuildError(
+            f"{location}: cannot resolve checked library identity: {exc}"
+        ) from None
+    expected = environment.library_sha256
+    present = LIBRARY_IDENTITY_METADATA_FIELD in record
+    actual = record.get(LIBRARY_IDENTITY_METADATA_FIELD)
+    if expected is None:
+        if present:
+            raise DatasetBuildError(
+                f"{location}: model-v1 metadata must not claim a library identity"
+            )
+        return
+    if not present or actual != expected:
+        raise DatasetBuildError(
+            f"{location}: {LIBRARY_IDENTITY_METADATA_FIELD} {actual!r} "
+            f"does not match checked model-v2 authority {expected!r}"
+        )
+
+
 def load_metadata(path: str | os.PathLike[str]) -> dict[str, dict[str, object]]:
     """Load the strict separate JSONL map keyed by raw trace session id."""
 
@@ -305,7 +346,14 @@ def load_metadata(path: str | os.PathLike[str]) -> dict[str, dict[str, object]]:
                 f"{source}:{line_number}: classical must be a Boolean"
             )
         _validate_json_value(record, location=f"{source}:{line_number}")
-        _capabilities_from_metadata(record, location=f"{source}:{line_number}")
+        capabilities = _capabilities_from_metadata(
+            record, location=f"{source}:{line_number}"
+        )
+        _validate_library_identity_metadata(
+            record,
+            capabilities,
+            location=f"{source}:{line_number}",
+        )
         session_id = record["session"]
         if session_id in result:
             raise DatasetBuildError(
@@ -332,6 +380,10 @@ def _compiler_manifest() -> dict[str, object]:
     paths = (
         Path(__file__).resolve(),
         SCRIPTS_ROOT / "export_traces.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "contract.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "prompt.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "library_identity.py",
+        MOD5_SOURCE_REPORT,
         *sorted((PEANO_PYTHON / "peano_lab").rglob("*.py")),
     )
     return {
@@ -363,20 +415,26 @@ def _prompt(
     classical: bool,
     capabilities: SurfaceCapabilities,
     environment_sha256: str,
+    library_identity_sha256: object = None,
 ) -> tuple[str, str]:
-    logic = "classical" if classical else "intuitionistic"
-    environment = (
-        f"{ENVIRONMENT};surface={capabilities.label};logic={logic};"
-        f"capability_sha256={environment_sha256}"
+    try:
+        identity = CapabilityIdentity.from_record(
+            _capability_identity(capabilities)
+        )
+        environment = prompt_environment(classical, identity)
+    except (TypeError, ValueError) as exc:
+        raise DatasetBuildError(f"cannot resolve prompt environment: {exc}") from None
+    if environment.sha256 != environment_sha256:
+        raise DatasetBuildError("prompt environment hash differs from trace metadata")
+    if environment.library_sha256 != library_identity_sha256:
+        raise DatasetBuildError(
+            "prompt checked-library identity differs from trace metadata"
+        )
+    return environment.text, render_prompt(
+        goals=goals,
+        focus=focus,
+        environment=environment,
     )
-    state = _compact_json({"focus": focus, "goals": list(goals)})
-    prompt = (
-        f"<task>{TASK}</task>\n"
-        f"<env>{environment}</env>\n"
-        f"<state>{state}</state>\n"
-        "<tactic>"
-    )
-    return environment, prompt
 
 
 def _successful_steps(session: TraceSession) -> tuple[dict[str, object], ...]:
@@ -530,6 +588,9 @@ def _split_components(
                 classical=session_metadata["classical"],  # type: ignore[arg-type]
                 capabilities=capabilities[session.session_id],
                 environment_sha256=session_metadata["environment_sha256"],  # type: ignore[arg-type]
+                library_identity_sha256=session_metadata.get(
+                    LIBRARY_IDENTITY_METADATA_FIELD
+                ),
             )
             # Validation/test loss must not see a policy input that training
             # already saw, even when producers assign unrelated genealogy and
@@ -624,6 +685,9 @@ def _make_row(
         classical=classical,  # type: ignore[arg-type]
         capabilities=capabilities,
         environment_sha256=environment_sha256,  # type: ignore[arg-type]
+        library_identity_sha256=metadata.get(
+            LIBRARY_IDENTITY_METADATA_FIELD
+        ),
     )
     tactic = str(step["tactic"])
     row = {
@@ -815,41 +879,45 @@ def build_dataset(
         )
         environment_sessions.setdefault(key, set()).add(session.session_id)
     environments = []
+    prompt_versions: set[int] = set()
     for (surface, environment_sha256, classical), ids in sorted(
         environment_sessions.items()
     ):
         exemplar = min(ids)
-        environments.append(
-            {
-                "surface": surface,
-                "environment_sha256": environment_sha256,
-                "classical": classical,
-                "capabilities": _capability_identity(
-                    session_capabilities[exemplar]
-                ),
-                "sessions": len(ids),
-            }
+        capability_record = _capability_identity(session_capabilities[exemplar])
+        try:
+            resolved_prompt_environment = prompt_environment(
+                classical,
+                CapabilityIdentity.from_record(capability_record),
+            )
+        except (TypeError, ValueError) as exc:
+            raise DatasetBuildError(
+                f"cannot resolve dataset prompt environment: {exc}"
+            ) from None
+        prompt_versions.add(resolved_prompt_environment.prompt_version)
+        environment_entry: dict[str, object] = {
+            "surface": surface,
+            "environment_sha256": environment_sha256,
+            "classical": classical,
+            "capabilities": capability_record,
+        }
+        if resolved_prompt_environment.library_sha256 is not None:
+            environment_entry[LIBRARY_IDENTITY_METADATA_FIELD] = (
+                resolved_prompt_environment.library_sha256
+            )
+        environment_entry["sessions"] = len(ids)
+        environments.append(environment_entry)
+    if len(prompt_versions) != 1:
+        raise DatasetBuildError(
+            "one dataset may use exactly one repository prompt contract"
         )
+    prompt_version = next(iter(prompt_versions))
 
     manifest: dict[str, object] = {
         "format": DATASET_FORMAT,
         "version": DATASET_VERSION,
         "trace_version": TRACE_VERSION,
-        "prompt": {
-            "task": TASK,
-            "environment_base": ENVIRONMENT,
-            "environment_template": (
-                "peano-lab-v1;surface=LABEL;logic=MODE;"
-                "capability_sha256=SHA256"
-            ),
-            "template": "<task>...</task>\\n<env>...</env>\\n<state>...</state>\\n<tactic>",
-            "completion_suffix": "</tactic>",
-            "binder_policy": "exact-authored-binders-v1",
-            "binder_policy_detail": (
-                "preserve exact visible state names and exact successful tactic "
-                "lines so every emitted transition is executable"
-            ),
-        },
+        "prompt": prompt_manifest_record(prompt_version),
         "split": {
             "method": "sha256-ranked-genealogy-formula-prompt-components-v2",
             "seed": seed,

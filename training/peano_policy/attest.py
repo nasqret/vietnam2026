@@ -19,6 +19,7 @@ from .contract import (
     held_out_contract_record,
     held_out_contract_sha256,
     model_v1_environment,
+    model_v2_environment,
 )
 from .data import (
     MAX_DATASET_LINE_BYTES,
@@ -29,6 +30,15 @@ from .data import (
     load_dataset_manifest,
 )
 from .manifest import sha256_file, sha256_json, write_manifest
+from .library_identity import MOD5_SOURCE_REPORT
+from .prompt import (
+    PEANO_PROMPT_V1,
+    PEANO_PROMPT_V2,
+    PromptEnvironment,
+    prompt_contract_sha256,
+    prompt_manifest_record,
+    prompt_version_from_manifest,
+)
 
 
 ATTESTATION_VERSION = 1
@@ -73,6 +83,10 @@ def _compiler_paths() -> tuple[Path, ...]:
     return (
         BUILDER,
         EXPORTER,
+        REPOSITORY_ROOT / "training" / "peano_policy" / "contract.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "prompt.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "library_identity.py",
+        MOD5_SOURCE_REPORT,
         *sorted((PEANO_PYTHON / "peano_lab").rglob("*.py")),
     )
 
@@ -181,13 +195,24 @@ def _verify_source_artifacts(
     }
 
 
-def _expected_environment_record() -> dict[str, object]:
-    return environment_record(model_v1_environment())
+def _expected_environment(prompt_version: int) -> PromptEnvironment:
+    if prompt_version == PEANO_PROMPT_V1:
+        return model_v1_environment()
+    if prompt_version == PEANO_PROMPT_V2:
+        return model_v2_environment()
+    raise DatasetAttestationError("dataset uses an unsupported prompt version")
 
 
-def _verify_environment(manifest: Mapping[str, object]) -> dict[str, object]:
+def _verify_environment(
+    manifest: Mapping[str, object],
+) -> tuple[dict[str, object], PromptEnvironment]:
     environments = manifest.get("environments")
-    expected = _expected_environment_record()
+    try:
+        prompt_version = prompt_version_from_manifest(manifest.get("prompt"))
+    except ValueError as exc:
+        raise DatasetAttestationError(str(exc)) from None
+    prompt_environment = _expected_environment(prompt_version)
+    expected = environment_record(prompt_environment)
     if type(environments) is not list or len(environments) != 1:
         raise DatasetAttestationError(
             "training data must contain exactly one fixed policy environment"
@@ -195,12 +220,14 @@ def _verify_environment(manifest: Mapping[str, object]) -> dict[str, object]:
     record = environments[0]
     if type(record) is not dict or type(record.get("sessions")) is not int:
         raise DatasetAttestationError("dataset environment record is malformed")
+    if set(record) != {*expected, "sessions"}:
+        raise DatasetAttestationError("dataset environment fields are not canonical")
     visible = {key: record.get(key) for key in expected}
     if visible != expected or record["sessions"] < 1:
         raise DatasetAttestationError(
-            "dataset environment differs from the fixed model-v1 authority"
+            f"dataset environment differs from the fixed model-v{prompt_version} authority"
         )
-    return expected
+    return expected, prompt_environment
 
 
 def _stream_split(
@@ -250,6 +277,11 @@ def _stream_split(
                 "environment_sha256": record["environment_sha256"],
                 "capabilities": record["capabilities"],
             }
+            if "library_identity_sha256" in expected_environment:
+                metadata = record["metadata"]
+                environment["library_identity_sha256"] = metadata.get(
+                    "library_identity_sha256"
+                )
             if environment != expected_environment:
                 raise DatasetAttestationError(
                     f"{path}:{line_number}: row uses another policy environment"
@@ -353,7 +385,7 @@ def attest_dataset(train_path: Path, eval_path: Path) -> dict[str, object]:
     manifest = load_dataset_manifest(manifest_path)
     compiler = _verify_compiler(manifest)
     traces, metadata, source_hashes = _verify_source_artifacts(manifest)
-    expected_environment = _verify_environment(manifest)
+    expected_environment, prompt_environment = _verify_environment(manifest)
     split_table = manifest.get("splits")
     if type(split_table) is not dict or tuple(split_table) != SPLITS:
         raise DatasetAttestationError("dataset split table is not canonical")
@@ -411,6 +443,14 @@ def attest_dataset(train_path: Path, eval_path: Path) -> dict[str, object]:
         "compiler": compiler,
         "source_artifacts": source_hashes,
         "environment": expected_environment,
+        "prompt_version": prompt_environment.prompt_version,
+        "prompt_contract": prompt_manifest_record(
+            prompt_environment.prompt_version
+        ),
+        "prompt_contract_sha256": prompt_contract_sha256(
+            prompt_environment.prompt_version
+        ),
+        "library_snapshot_sha256": prompt_environment.library_sha256,
         "held_out_contract": held_out,
         "held_out_contract_sha256": held_out_contract_sha256(),
         "held_out_contamination": 0,

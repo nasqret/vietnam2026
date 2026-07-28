@@ -22,9 +22,11 @@ from .prompt import (
     ProofExample,
     parse_prompt,
     prompt_manifest_record,
+    prompt_version_from_manifest,
     render_prompt,
     validate_completion,
 )
+from .contract import environment_record, prompt_environment
 
 
 IGNORE_INDEX = -100
@@ -129,8 +131,10 @@ def _load_manifest(path: Path) -> dict[str, object]:
         raise PromptError(f"{path}: unsupported source trace version")
 
     prompt = value.get("prompt")
-    if prompt != prompt_manifest_record():
-        raise PromptError(f"{path}: prompt contract differs from version 1")
+    try:
+        prompt_version_from_manifest(prompt)
+    except PromptError as exc:
+        raise PromptError(f"{path}: {exc}") from exc
 
     source = value.get("source")
     replay = value.get("replay")
@@ -162,6 +166,10 @@ def load_dataset_manifest(path: Path) -> dict[str, object]:
 
 def _manifest_environments(manifest: Mapping[str, object]) -> set[tuple[str, str, bool, str]]:
     records = manifest.get("environments")
+    try:
+        expected_prompt_version = prompt_version_from_manifest(manifest.get("prompt"))
+    except PromptError as exc:
+        raise PromptError(f"manifest prompt: {exc}") from exc
     if type(records) is not list or not records:
         raise PromptError("dataset manifest has no verified environments")
     result: set[tuple[str, str, bool, str]] = set()
@@ -175,11 +183,25 @@ def _manifest_environments(manifest: Mapping[str, object]) -> set[tuple[str, str
         classical = record.get("classical")
         if type(classical) is not bool:
             raise PromptError(f"manifest environment {index}: classical must be Boolean")
-        environment = PromptEnvironment(classical, capabilities)
+        try:
+            environment = prompt_environment(classical, capabilities)
+        except (TypeError, ValueError) as exc:
+            raise PromptError(f"manifest environment {index}: {exc}") from None
+        if environment.prompt_version != expected_prompt_version:
+            raise PromptError(
+                f"manifest environment {index}: prompt version mismatch"
+            )
         if record.get("surface") != capabilities.label:
             raise PromptError(f"manifest environment {index}: surface mismatch")
         if record.get("environment_sha256") != environment.sha256:
             raise PromptError(f"manifest environment {index}: capability hash mismatch")
+        expected_record = environment_record(environment)
+        if set(record) != {*expected_record, "sessions"} or any(
+            record.get(key) != value for key, value in expected_record.items()
+        ):
+            raise PromptError(
+                f"manifest environment {index}: checked authority mismatch"
+            )
         _integer(
             f"manifest environment {index} sessions",
             record.get("sessions"),
@@ -228,13 +250,28 @@ def example_from_record(record: Mapping[str, Any], line_number: int) -> ProofExa
     classical = record["classical"]
     if type(classical) is not bool:
         raise PromptError(f"{location}: classical must be a Boolean")
-    environment = PromptEnvironment(classical, capabilities)
+    try:
+        environment = prompt_environment(classical, capabilities)
+    except (TypeError, ValueError) as exc:
+        raise PromptError(f"{location}: {exc}") from None
     if record["surface"] != capabilities.label:
         raise PromptError(f"{location}: surface/capability label mismatch")
     if record["environment_sha256"] != environment.sha256:
         raise PromptError(f"{location}: environment capability hash mismatch")
     if record["env"] != environment.text:
         raise PromptError(f"{location}: environment text mismatch")
+    identity_field = "library_identity_sha256"
+    identity_present = identity_field in record["metadata"]
+    row_identity = record["metadata"].get(identity_field)
+    if environment.library_sha256 is None:
+        if identity_present:
+            raise PromptError(
+                f"{location}: model-v1 row must not claim a library identity"
+            )
+    elif not identity_present or row_identity != environment.library_sha256:
+        raise PromptError(
+            f"{location}: row checked-library identity mismatch"
+        )
 
     state = record["state"]
     focus = record["focus"]

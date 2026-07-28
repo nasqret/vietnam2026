@@ -1287,3 +1287,66 @@ stopped that optional `/tmp` run rather than confuse search cost with theorem ad
 now isolates the ladder: one-node/depth-one `auto` plumbing attempts plus every complete authored
 script, while the release corpus separately covers generated variants. It finishes with 803 unique
 transitions in 98 sessions and 49 kernel-checked QEDs.
+
+## 2026-07-28 — Model-v2 is an overnight systems experiment, not a longer smoke run
+
+The first temptation was simply to turn 100 optimizer steps into several thousand. The failure
+audit rules that out: repeating the old 29 shallow schemas would make the loss curve prettier while
+leaving induction, library selection, and recovery outside the training distribution. The new run
+therefore gets a new authority and artifact identity. Its 49-theorem public snapshot seals the four
+evaluation targets, shows an explicit complete-line tactic grammar, and retrieves at most eight
+permitted `name : statement` records deterministically. Model-v1 remains loadable as the negative
+baseline.
+
+The curriculum target is 100,000 independently replayed positive transitions in three explicit
+lanes: 50% foundational state/action work, 25% induction/IH work, and 25% checked-library retrieval
+and composition. The proportions are properties of transition rows, not merely theorem counts.
+Previously unseen heads such as `assumption`, `exfalso`, `forall_elim`, `have`, `specialize`,
+`suffices`, and `use` must occur in actual successful public-surface traces. Every session still
+ends at the original formula through the independent kernel; generated volume grants no new trust.
+
+The overnight optimizer is deliberately conservative: pinned Qwen3-1.7B-Base, BF16 SDPA, rank-16
+LoRA on attention and MLP projections, three epochs, effective batch 32, cosine decay, and a 2,048
+token refusal boundary. WMI's measured A100 run suggests roughly 9--13 hours, while Helios offers a
+larger currently available GH200 pool. Separate guarded prepare/train/evaluate chains reserve 20
+hours on either system. Preparation regenerates and attests all 100,000 rows before the GPU smoke;
+the training job cannot silently consume the old v1 dataset.
+
+The second systems correction is decoding. A theorem prover should not discard the whole attempt
+because one sampled line fails transactionally. The intended interface keeps the model untrusted,
+executes several candidate lines through the real surface, deduplicates surviving proof states,
+and explores a bounded frontier to depth 32. Only an independently replayed QED is publishable.
+This turns Peano Lab's transactional states and cheap kernel from passive safeguards into the
+search algorithm's verifier.
+
+Before this work began, the public branch's Python-3.12.13 CI failure was also closed. A lexical
+JSON scanner now bounds container nesting at 256 while respecting quoted brackets and escapes; an
+iterative structural check enforces the same bound before request hashing. The complete local Peano
+suite passed with 1,038 tests, Lambda passed 360 tests plus 36 subtests, and GitHub Actions run 62
+completed successfully. The public catalog and its soundness tests are therefore green before any
+new training artifact is introduced.
+
+## 2026-07-28 — A prompt hash and a training-authority hash answer different questions
+
+The first model-v2 draft hashed the 45 displayed theorem names and statements. That was enough to
+make prompt retrieval deterministic, but not enough to identify the experiment: a proof script,
+dependency edge, or expanded certificate could change while the visible prompt stayed identical.
+The replacement identity replays every permitted theorem, checks its closed certificate again, and
+hashes its canonical statement, dependencies, source-spec and script digests, certificate digest,
+node count, and depth. Its current digest is
+`a6c13cdc36115f8407d4932b22f022d0c3c012d8a64cbe41c1f0a158006ced5c`.
+
+A second audit found that merely putting this digest in the generated source manifest was still
+insufficient. The dataset compiler consumes raw traces plus per-session metadata, not that source
+manifest, so a later library with the same names could have laundered the origin of otherwise valid
+rows. Model-v2 metadata and every compiled row now carry the full identity; builder, loader, and
+independent attestor all reject a missing or different value. Their source inventories include the
+prompt contract, identity implementation, and retained modular-library validation report. Sealing
+also rejects a renamed copy of a held-out formula or any permitted theorem whose dependency escapes
+the allowed authority.
+
+This does not add a proof rule. A stale row would still fail or prove a true theorem under the
+current kernel. The correction protects the scientific statement “which library trained this
+policy?” The smaller name/statement projection remains useful model input; the full checked identity
+is the authority. Keeping those roles separate makes the prompt compact without making provenance
+vague.

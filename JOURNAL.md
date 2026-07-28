@@ -1005,3 +1005,30 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   plumbing attempt to depth/node one. The former shared depth-five/5,000-node configuration was
   impractical on the new long statements and was stopped. The corrected target finishes in about
   three seconds: 803 unique transitions, 98 sessions, and 49 kernel-checked authored-script QEDs.
+
+## 2026-07-28 (branch peano-lab) — M19: model-v2 is ready for the heavy run
+
+- Registered a distinct model-v2 authority: 45 permitted public theorems and four sealed benchmark
+  targets. The full digest `a6c13cdc…ced5c` is built only after deterministic theorem replay and
+  independent empty-context kernel checking, and binds statements, dependencies, source/script/
+  certificate hashes, nodes, and depth. A smaller deterministic eight-lemma projection supplies
+  prompt context without replacing that authority.
+- Closed a preflight provenance gap: the strong identity now travels through generator session
+  metadata, compiled rows, environment records, independent attestation, training manifests,
+  evaluator reports, and cluster inference. Builder/loader/attestor reject missing or stale values;
+  source inventories include the prompt, identity implementation, and retained modular validation
+  report. Renamed held-out formulas and dependencies outside the permitted authority are rejected.
+- Added an exactly bounded 100,000-row proof-first curriculum with a 2:1:1 row target for foundation,
+  induction/IH, and library retrieval/composition. Capacity is 22,706 roots and exact row counts
+  50,002/25,000/24,998; the 10,000-row publication gate covers all 25 tactic heads and all 45
+  imports. Every selected example must pass the pinned 2,048-token no-truncation audit.
+- Added depth-32 kernel-guided beam search. Candidate siblings are tried transactionally, each edge
+  is replayed from a fresh original state, canonical successors are deduplicated, and only
+  independent original-target kernel QED is accepted. The four sealed reference routes replay in
+  10/10/23/13 steps. Persistent local, WMI A100, and Helios GH200 REPL launchers perform another
+  fresh replay before exposing a proof script.
+- Final local preflight: a fresh 228-session/1,000-row source→build→attestation pipeline split
+  820/83/97 with lanes 502/248/250 and zero contamination; 1,103 Peano tests and Lambda's 360 tests
+  plus 36 subtests pass. All 27 book sources build from clean state with warnings as errors, and 193
+  links/170 commands replay. The kernel is unchanged at 234 checker lines. No model-v2 checkpoint
+  or solve-rate claim exists yet; the guarded Helios chain is the next action.

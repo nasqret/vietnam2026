@@ -12,20 +12,19 @@ independent rollouts, fixed step budgets, pass@k reports, policy and goal-set id
 capability-scoped held-out environment. The target theorem is not importable, and `auto` is not an
 unreported escape hatch.
 
-The next planned layer is verifier-guided best-first search. A policy would propose several tactic
-lines at each state; the ordinary public surface would either reject each action without changing
-the parent or return a successor. Search would hash canonical successor states to deduplicate the
-frontier and rank candidates initially by accumulated negative log probability plus a documented
-depth penalty. Hard budgets would bound tokens, proposals, unique states, verifier calls, wall
-time, and certificate size. Deterministic arithmetic closers may be reported as an explicit
-ablation, while the policy handles branching choices such as induction, witnesses, rewrite
-direction, and local lemmas.
+The implemented model-v2 layer is bounded verifier-guided beam search. A policy proposes up to a
+fixed number of complete tactic lines at each state; the ordinary public surface either rejects an
+action without changing its parent or returns a successor. Every edge is reconstructed from the
+root in a fresh session, so siblings cannot share mutable proof state. Complete canonical goal
+renderings deduplicate successors, and a documented deterministic priority prefers fewer and
+smaller obligations before policy rank. Hard depth, beam, model-call, candidate, and unique-state
+budgets bound the run. The registered benchmark uses depth 32 because all four sealed reference
+routes replay within 23 actions under exactly the model-v2 authority.
 
 Only final kernel-checked trajectories may feed [[kernel-guided-policy-training|expert iteration]].
-The first trained-model measurement is now available: independent single-path rollouts scored 0/4
-at pass@4, while one fresh shallow goal scored pass@8 = 1.0 with one successful rollout out of eight.
-The current driver stops at its first failing tactic, so **best-first search and expert-iteration
-results remain pending**.
+The first model-v1 measurement remains 0/4 at pass@4, while one fresh shallow goal had one successful
+rollout out of eight. Model-v2 search and its persistent REPL are implemented, but **their learned
+solve rate and any expert-iteration result remain pending** until the heavy adapter exists.
 
 ## Related
 

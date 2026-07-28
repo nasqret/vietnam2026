@@ -47,6 +47,17 @@ grep -F -- \
   "--submit --confirm PEANO-LAB-WMI-TRAINING --afterok 12345 slurm/peano_wmi_train_qwen3_1_7b.sbatch" \
   "$ssh_log" >/dev/null
 
+scripts/wmi_submit_job.sh --test-only \
+  slurm/peano_wmi_prepare_v2_training.sbatch >/dev/null
+grep -F -- \
+  "--test-only slurm/peano_wmi_prepare_v2_training.sbatch" "$ssh_log" >/dev/null
+
+scripts/wmi_submit_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  --afterok 23456 slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch >/dev/null
+grep -F -- \
+  "--submit --confirm PEANO-LAB-WMI-TRAINING --afterok 23456 slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch" \
+  "$ssh_log" >/dev/null
+
 scripts/wmi_prove_theorem.sh --test-only \
   --theorem 'forall n. n = n' --sample --k 2 >/dev/null
 grep -E -- \

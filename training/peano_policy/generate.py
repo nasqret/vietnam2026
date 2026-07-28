@@ -4,13 +4,14 @@
 from __future__ import annotations
 
 import argparse
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+import hashlib
 import json
 from pathlib import Path
 import random
 from typing import Any
 
-from .contract import attested_training_environment
+from .contract import attested_training_environment, prompt_environment
 from .manifest import (
     ADAPTER_SUBDIR,
     MANIFEST_VERSION,
@@ -22,13 +23,15 @@ from .manifest import (
 )
 from .prompt import (
     CapabilityIdentity,
-    PEANO_PROMPT_VERSION,
     PromptEnvironment,
     extract_one_tactic,
     parse_prompt,
-    prompt_manifest_record,
+    prompt_contract_sha256,
     render_prompt,
 )
+
+
+MAX_CANDIDATES_PER_MODEL_CALL = 64
 
 
 def _newline_stopper(tokenizer: Any, prompt_length: int) -> Any:
@@ -74,6 +77,12 @@ def generate_one_tactic(
         raise ValueError("environment must be a PromptEnvironment")
     if parsed.environment != environment.text:
         raise ValueError("prompt environment does not match its capability preimage")
+    if prompt != render_prompt(
+        goals=parsed.goals,
+        focus=parsed.focus,
+        environment=environment,
+    ):
+        raise ValueError("prompt is not the canonical rendering for state/environment")
     encoded = tokenizer(prompt, add_special_tokens=False, return_tensors="pt")
     encoded = {name: tensor.to(model.device) for name, tensor in encoded.items()}
     prompt_length = encoded["input_ids"].shape[1]
@@ -96,6 +105,96 @@ def generate_one_tactic(
         clean_up_tokenization_spaces=False,
     )
     return extract_one_tactic(generated)
+
+
+def generate_tactic_candidates(
+    *,
+    model: Any,
+    tokenizer: Any,
+    prompt: str,
+    environment: PromptEnvironment,
+    max_candidates: int,
+    seed: int,
+    max_new_tokens: int = 64,
+    do_sample: bool = False,
+    temperature: float = 1.0,
+    top_p: float = 1.0,
+) -> tuple[str, ...]:
+    """Generate a ranked candidate batch with exactly one model call.
+
+    The decoded strings remain untrusted.  In particular, this function does
+    not trim, split, or silently repair malformed multi-line output: the
+    verifier-guided search boundary validates every candidate independently.
+    Sampling uses one host-derived seed for the whole batch.  Deterministic
+    decoding uses beam search when more than one candidate is requested.
+    """
+
+    import torch
+
+    if type(max_candidates) is not int or not (
+        1 <= max_candidates <= MAX_CANDIDATES_PER_MODEL_CALL
+    ):
+        raise ValueError(
+            "max_candidates must lie between 1 and "
+            f"{MAX_CANDIDATES_PER_MODEL_CALL}"
+        )
+    if type(seed) is not int or not 0 <= seed < 2**63:
+        raise ValueError("seed must be an integer in [0, 2^63)")
+    if type(do_sample) is not bool:
+        raise ValueError("do_sample must be a Boolean")
+    if max_new_tokens <= 0:
+        raise ValueError("max_new_tokens must be positive")
+    if temperature <= 0 or not 0 < top_p <= 1:
+        raise ValueError("temperature and top_p must be positive")
+
+    parsed = parse_prompt(prompt)
+    if type(environment) is not PromptEnvironment:
+        raise ValueError("environment must be a PromptEnvironment")
+    if parsed.environment != environment.text:
+        raise ValueError("prompt environment does not match its capability preimage")
+    if prompt != render_prompt(
+        goals=parsed.goals,
+        focus=parsed.focus,
+        environment=environment,
+    ):
+        raise ValueError("prompt is not the canonical rendering for state/environment")
+
+    encoded = tokenizer(prompt, add_special_tokens=False, return_tensors="pt")
+    encoded = {name: tensor.to(model.device) for name, tensor in encoded.items()}
+    prompt_length = encoded["input_ids"].shape[1]
+    options: dict[str, Any] = {
+        "max_new_tokens": max_new_tokens,
+        "do_sample": do_sample,
+        "eos_token_id": tokenizer.eos_token_id,
+        "pad_token_id": tokenizer.pad_token_id,
+        "num_return_sequences": max_candidates,
+    }
+    if do_sample:
+        options.update(temperature=temperature, top_p=top_p)
+    elif max_candidates > 1:
+        options.update(num_beams=max_candidates, early_stopping=True)
+
+    # The seed schedule is repository-owned and recorded by the wrapper below.
+    # One call returns the whole ranked batch, so the search engine's model-call
+    # limit is also the physical ``model.generate`` call limit.
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    with torch.inference_mode():
+        output = model.generate(**encoded, **options)
+    if len(output) != max_candidates:
+        raise RuntimeError(
+            "model returned an unexpected candidate batch size: "
+            f"{len(output)} != {max_candidates}"
+        )
+    return tuple(
+        tokenizer.decode(
+            output[index, prompt_length:],
+            skip_special_tokens=True,
+            clean_up_tokenization_spaces=False,
+        )
+        for index in range(max_candidates)
+    )
 
 
 @dataclass(slots=True)
@@ -154,6 +253,10 @@ class PeanoPolicyAdapter:
         return {
             "name": self.name,
             "kind": "peano-policy-adapter-v1",
+            "prompt_version": self.environment.prompt_version,
+            "prompt_contract_sha256": prompt_contract_sha256(
+                self.environment.prompt_version
+            ),
             "environment": self.policy_environment,
             "decoding": {
                 "max_new_tokens": self.max_new_tokens,
@@ -205,6 +308,125 @@ class PeanoPolicyAdapter:
         )
 
 
+@dataclass(slots=True)
+class PeanoPolicyCandidateAdapter:
+    """Bounded multi-candidate view of a loaded next-tactic adapter.
+
+    This is an untrusted policy for :mod:`training.peano_policy.search`.  It
+    performs exactly one batched decoder call per canonical proof state and
+    exposes counters that evaluation records after search.  The search engine,
+    not this class, executes tactics and independently checks any final proof.
+    """
+
+    adapter: PeanoPolicyAdapter
+    seed: int
+    name: str = "qwen3-peano-candidate-policy-v1"
+    generation_calls: int = field(default=0, init=False)
+    candidate_sequences_requested: int = field(default=0, init=False)
+    candidate_sequences_returned: int = field(default=0, init=False)
+    candidate_lines_returned: int = field(default=0, init=False)
+    malformed_sequences_rejected: int = field(default=0, init=False)
+
+    def __post_init__(self) -> None:
+        if type(self.adapter) is not PeanoPolicyAdapter:
+            raise ValueError("adapter must be an exact PeanoPolicyAdapter")
+        if type(self.seed) is not int or not 0 <= self.seed < 2**63:
+            raise ValueError("seed must be an integer in [0, 2^63)")
+        if type(self.name) is not str or not self.name.strip():
+            raise ValueError("candidate policy name must be non-empty text")
+        # Python 3.10.0 does not initialize ``init=False`` defaults on slotted
+        # dataclasses (fixed by later patch releases), so set these explicitly.
+        self.generation_calls = 0
+        self.candidate_sequences_requested = 0
+        self.candidate_sequences_returned = 0
+        self.candidate_lines_returned = 0
+        self.malformed_sequences_rejected = 0
+
+    @property
+    def policy_environment(self) -> dict[str, object]:
+        return self.adapter.policy_environment
+
+    @property
+    def evaluation_identity(self) -> dict[str, object]:
+        return {
+            "name": self.name,
+            "kind": "peano-kernel-guided-candidate-policy-v1",
+            "base_policy": self.adapter.evaluation_identity,
+            "seed": self.seed,
+            "seed_schedule": "sha256-json-v1(seed,call_index,canonical_goals)",
+            "batching": "one-model-generate-call-per-search-state",
+        }
+
+    @property
+    def generation_provenance(self) -> dict[str, object]:
+        return {
+            "model_generate_calls": self.generation_calls,
+            "candidate_sequences_requested": self.candidate_sequences_requested,
+            "candidate_sequences_returned": self.candidate_sequences_returned,
+            "candidate_lines_returned": self.candidate_lines_returned,
+            "malformed_sequences_rejected": self.malformed_sequences_rejected,
+            "one_batched_call_per_search_state": True,
+        }
+
+    def propose(
+        self,
+        goals_before: tuple[str, ...],
+        *,
+        max_candidates: int,
+    ) -> tuple[str, ...]:
+        if not goals_before or not all(
+            type(goal) is str and goal.strip() for goal in goals_before
+        ):
+            raise ValueError("goals_before must contain canonical non-empty goals")
+        if type(max_candidates) is not int or not (
+            1 <= max_candidates <= MAX_CANDIDATES_PER_MODEL_CALL
+        ):
+            raise ValueError(
+                "max_candidates must lie between 1 and "
+                f"{MAX_CANDIDATES_PER_MODEL_CALL}"
+            )
+        call_index = self.generation_calls
+        seed_payload = json.dumps(
+            [1, self.seed, call_index, list(goals_before)],
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ).encode("utf-8")
+        call_seed = int.from_bytes(hashlib.sha256(seed_payload).digest()[:8], "big")
+        call_seed &= 2**63 - 1
+        prompt = render_prompt(
+            goals=goals_before,
+            focus=0,
+            environment=self.adapter.environment,
+        )
+        self.generation_calls += 1
+        self.candidate_sequences_requested += max_candidates
+        candidates = generate_tactic_candidates(
+            model=self.adapter.model,
+            tokenizer=self.adapter.tokenizer,
+            prompt=prompt,
+            environment=self.adapter.environment,
+            max_candidates=max_candidates,
+            seed=call_seed,
+            max_new_tokens=self.adapter.max_new_tokens,
+            do_sample=self.adapter.do_sample,
+            temperature=self.adapter.temperature,
+            top_p=self.adapter.top_p,
+        )
+        if type(candidates) is not tuple or len(candidates) > max_candidates:
+            raise RuntimeError(
+                "candidate generator did not return one bounded exact tuple"
+            )
+        self.candidate_sequences_returned += len(candidates)
+        complete: list[str] = []
+        for candidate in candidates:
+            try:
+                complete.append(extract_one_tactic(candidate))
+            except (TypeError, ValueError):
+                self.malformed_sequences_rejected += 1
+        self.candidate_lines_returned += len(complete)
+        return tuple(complete)
+
+
 def load_adapter(adapter_dir: Path, *, seed: int) -> tuple[Any, Any, dict[str, Any]]:
     """Load base+adapter according to its immutable training manifest."""
 
@@ -212,11 +434,13 @@ def load_adapter(adapter_dir: Path, *, seed: int) -> tuple[Any, Any, dict[str, A
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if manifest.get("v") != MANIFEST_VERSION:
         raise ValueError("unsupported training manifest version")
-    if manifest.get("prompt_version") != PEANO_PROMPT_VERSION:
+    environment = attested_training_environment(manifest)
+    if manifest.get("prompt_version") != environment.prompt_version:
         raise ValueError("adapter uses a different Peano prompt version")
-    if manifest.get("prompt_contract_sha256") != sha256_json(prompt_manifest_record()):
+    if manifest.get("prompt_contract_sha256") != prompt_contract_sha256(
+        environment.prompt_version
+    ):
         raise ValueError("adapter uses a different Peano prompt contract")
-    attested_training_environment(manifest)
     base = manifest.get("base_model")
     tokenizer_record = manifest.get("tokenizer")
     if not isinstance(base, dict) or not isinstance(tokenizer_record, dict):
@@ -299,6 +523,8 @@ def adapter_provenance(
     environment = attestation.get("environment")
     return {
         "training_manifest_sha256": sha256_file(manifest_path),
+        "prompt_version": manifest.get("prompt_version"),
+        "prompt_contract_sha256": manifest.get("prompt_contract_sha256"),
         "base_model_id": base.get("id"),
         "base_model_revision": base.get("resolved_snapshot_hash"),
         "adapter_sha256": adapter.get("sha256"),
@@ -311,6 +537,9 @@ def adapter_provenance(
         ),
         "held_out_contract_sha256": attestation.get(
             "held_out_contract_sha256"
+        ),
+        "library_snapshot_sha256": attestation.get(
+            "library_snapshot_sha256"
         ),
     }
 
@@ -349,7 +578,7 @@ def _read_environment(path: Path) -> PromptEnvironment:
         )
     if type(value["classical"]) is not bool:
         raise ValueError("environment classical mode must be a Boolean")
-    return PromptEnvironment(
+    return prompt_environment(
         value["classical"],
         CapabilityIdentity.from_record(value["capabilities"]),
     )

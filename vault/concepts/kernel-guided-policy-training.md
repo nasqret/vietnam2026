@@ -11,11 +11,13 @@ a proof authority: its command is executed through the public surface, and a tra
 positive proof only after the [[trusted-kernel]] checks the final [[proof-certificate]] against the
 original goal.
 
-The repository-owned prompt exposes the ordered goals, focus, logic mode, surface name, and a hash
-of the exact command-and-theorem capability set. It does not expose a hidden theorem-family label,
-certificate, or privileged solver. The supervised runtime masks prompt tokens and trains on the
-bare tactic followed by EOS; a delimiter stored in the dataset envelope is validated and removed
-before computing loss.
+The repository-owned model-v2 prompt exposes the ordered goals, focus, logic mode, complete-line
+grammar, and at most eight deterministically retrieved `name : statement` records. Its authority
+digest identifies all 45 permitted theorems by canonical statement, dependencies, source/script
+hashes, independently checked certificate hash, node count, and depth. The prompt shows only the
+small retrieval projection; manifests retain the complete checked identity. It exposes no hidden
+theorem-family label, certificate, or privileged solver. The supervised runtime masks prompt tokens
+and trains on the bare tactic followed by EOS.
 
 The implemented pipeline includes checked synthetic trace generation, replay compilation, strict
 manifests, a Qwen3 BF16 LoRA training runtime, guarded cluster controls, arbitrary-theorem requests,
@@ -44,10 +46,17 @@ replayed to another kernel-checked QED. A missing proof exits nonzero and create
 the model cannot widen its logic mode, tactic set, or importable theorem list.
 
 Training data enters through the [[compact-headless-proof-runner]] and is separated with a
-[[genealogy-safe-proof-data-split]]. The planned second stage uses
-[[verifier-guided-policy-evaluation-and-search]] to collect only newly kernel-checked trajectories
-for expert iteration. A new [[content-addressed-lemma-library]] must bind the external foundation
-used by model-v2; simply adding theorem names to model-v1 would invalidate the experiment.
+[[genealogy-safe-proof-data-split]]. Model-v2's deterministic 100,000-row schedule targets a 2:1:1
+mixture of foundational, induction/IH, and checked-library retrieval/composition transitions; a
+10,000-row gate requires all 25 tactic heads and all 45 allowed imports. Every selected row must
+also fit the pinned tokenizer without truncation before training starts.
+
+The implemented [[verifier-guided-policy-evaluation-and-search]] asks for several complete lines at
+one immutable state, rejects failures transactionally, deduplicates canonical successor states, and
+keeps a bounded depth-32 beam. `scripts/peano_policy_repl.py` keeps the adapter resident and exposes
+a proof only after a second fresh kernel replay. The guarded WMI and Helios launchers provide the
+same interface on an A100 or GH200. No model-v2 quality result exists until the registered heavy run
+and kernel-judged evaluation finish.
 
 ## Related
 

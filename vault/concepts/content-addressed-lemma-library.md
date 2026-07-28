@@ -18,8 +18,10 @@ creates `model-v3`, never a silent widening of `model-v2`.
 
 The owner authorized the compatibility-checked candidate for publication. Its 26 entries now extend
 Peano Lab's public [[theorem-ladder]] from 23 to 49 items. The retained source commit, catalog hash,
-MIT notice, proof hashes, node counts, and depths make the import auditable. Model-v1 remains frozen;
-model-v2 must bind this new exact snapshot rather than silently inheriting a mutable catalog.
+MIT notice, proof hashes, node counts, and depths make the import auditable. Model-v1 remains frozen.
+Model-v2 now permits 45 entries and seals four benchmark theorems; its complete independently
+replayed identity is `a6c13cdc…ced5c` (SHA-256), distinct from the smaller name/statement projection
+shown to the policy.
 
 Library visibility and benchmark visibility are different. If a theorem is importable, closing its
 exact statement with `use`, `apply`, and `exact` measures retrieval and application, not discovery.

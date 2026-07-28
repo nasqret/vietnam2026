@@ -12,7 +12,7 @@ override PEANONEXT := ~/public_html/peano-lab-next
 STAGE     := _deploy/vietnam2026
 STAGENEXT := _deploy/lab-lambda-next
 PEANO_CORPUS_PYTHON ?= python3
-PEANO_POLICY_DIR ?= data/peano-policy-v1
+PEANO_POLICY_DIR ?= data/peano-policy-v2
 PEANO_POLICY_PILOT_DIR ?= data/peano-policy-pilot-v1
 PEANO_POLICY_ROWS ?= 10000
 # This path is a deletion target in `stage-peano`; command-line assignments
@@ -20,7 +20,7 @@ PEANO_POLICY_ROWS ?= 10000
 override STAGEPEANO := _deploy/peano-lab
 override PEANOAPPID := a-3ea7b7142aa0
 
-.PHONY: help book lean lab-serve peano-serve peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
+.PHONY: help book lean lab-serve peano-serve peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-policy-v2-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
 	deploy clean
 
@@ -33,7 +33,8 @@ help:
 	@echo "  make peano-corpus reproduce the leakage-safe Peano train/val release"
 	@echo "  make peano-corpus-smoke  run the all-ladder M9 generation/export smoke"
 	@echo "  make peano-policy-pilot  build the checked M19 pilot policy dataset"
-	@echo "  make peano-policy-data   build+attest $(PEANO_POLICY_ROWS) proof-first policy rows"
+	@echo "  make peano-policy-v2-data  build+attest $(PEANO_POLICY_ROWS) model-v2 policy rows"
+	@echo "  make peano-policy-data   compatibility alias for peano-policy-v2-data"
 	@echo "  make peano-eval   run the deterministic kernel-judged random baseline"
 	@echo "  make stage        assemble _deploy/vietnam2026 (landing + book + slides)"
 	@echo "  make deploy-site  rsync the site to $(SITE)"
@@ -100,9 +101,12 @@ peano-policy-pilot:
 		--metadata "$(PEANO_POLICY_PILOT_DIR)/session-metadata.jsonl" \
 		--output-dir "$(PEANO_POLICY_PILOT_DIR)"
 
-peano-policy-data:
+peano-policy-data: peano-policy-v2-data
+
+peano-policy-v2-data:
 	mkdir -p "$(PEANO_POLICY_DIR)"
 	$(PEANO_CORPUS_PYTHON) scripts/generate_peano_synthetic_corpus.py \
+		--profile model-v2 \
 		--trace-output "$(PEANO_POLICY_DIR)/raw-traces.jsonl" \
 		--metadata-output "$(PEANO_POLICY_DIR)/session-metadata.jsonl" \
 		--manifest "$(PEANO_POLICY_DIR)/source-manifest.json" \

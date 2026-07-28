@@ -34,13 +34,38 @@ from .manifest import (
     source_hash,
     write_manifest,
 )
-from .prompt import PEANO_PROMPT_VERSION, prompt_manifest_record
+from .prompt import (
+    prompt_contract_sha256,
+    prompt_manifest_record,
+    prompt_version_from_manifest,
+)
 from .runtime import deployment_identity, runtime_identity, slurm_job_identity
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 SOURCE_ROOT = Path(__file__).resolve().parent
 RUN_IDENTITY_VERSION = 1
+
+
+def _dataset_prompt_identity(
+    attestation: dict[str, object],
+) -> tuple[int, str]:
+    """Recover the exact prompt contract independently bound by attestation."""
+
+    version = attestation.get("prompt_version")
+    contract = attestation.get("prompt_contract")
+    digest = attestation.get("prompt_contract_sha256")
+    try:
+        recognized = prompt_version_from_manifest(contract)
+    except ValueError as exc:
+        raise ValueError(f"dataset prompt attestation is invalid: {exc}") from None
+    if (
+        version != recognized
+        or digest != prompt_contract_sha256(recognized)
+        or contract != prompt_manifest_record(recognized)
+    ):
+        raise ValueError("dataset prompt attestation hash/version mismatch")
+    return recognized, str(digest)
 
 
 def _repo_path(value: str) -> Path:
@@ -83,6 +108,7 @@ def _run_identity(
 
     train_manifest = dataset_manifest_path(train_path)
     eval_manifest = dataset_manifest_path(eval_path)
+    prompt_version, prompt_digest = _dataset_prompt_identity(dataset_attestation)
     return {
         "v": RUN_IDENTITY_VERSION,
         "config": {
@@ -101,8 +127,8 @@ def _run_identity(
             "id": config.model.model_id,
             "revision": config.model.revision,
         },
-        "prompt_version": PEANO_PROMPT_VERSION,
-        "prompt_contract_sha256": sha256_json(prompt_manifest_record()),
+        "prompt_version": prompt_version,
+        "prompt_contract_sha256": prompt_digest,
         "inputs": {
             "train": sha256_file(train_path),
             "eval": sha256_file(eval_path),
@@ -437,10 +463,11 @@ def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Pa
     adapter_artifacts = artifact_directory_hash(output_dir, ADAPTER_SUBDIR)
     tokenizer_artifacts = artifact_directory_hash(output_dir, TOKENIZER_SUBDIR)
     require_safetensors_adapter(adapter_artifacts)
+    prompt_version, prompt_digest = _dataset_prompt_identity(dataset_attestation)
     manifest = {
         "v": MANIFEST_VERSION,
-        "prompt_version": PEANO_PROMPT_VERSION,
-        "prompt_contract_sha256": sha256_json(prompt_manifest_record()),
+        "prompt_version": prompt_version,
+        "prompt_contract_sha256": prompt_digest,
         "run": asdict(config.run),
         "generation": asdict(config.generation),
         "base_model": {

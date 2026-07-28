@@ -1,8 +1,10 @@
 # Peano Lab post-training experiment — M19 research protocol
 
-**Status:** binding experiment protocol with the first accepted WMI result recorded, 2026-07-28.
-Result fields are filled only after the corresponding artifacts exist and successful scripts have
-passed the independent kernel. This document extends M9; it does not weaken any Peano Lab trust rule.
+**Status:** binding experiment protocol with the first accepted WMI model-v1 result and the
+implemented model-v2 launch stack recorded, 2026-07-28.  Model-v2 has not yet produced a trained
+checkpoint or theorem-proving result; its proof quality is unknown.  Result fields are filled only
+after the corresponding artifacts exist and successful scripts have passed the independent kernel.
+This document extends M9; it does not weaken any Peano Lab trust rule.
 
 ## 1. What changed after M9
 
@@ -36,19 +38,22 @@ The experiment asks four separate questions:
 4. Can a still smaller policy retain most of the solve rate and become a cheap,
    token-efficient explorer?
 
-The first pilot is not allowed to drift into a ten-billion-parameter run merely
-because a smaller run disappoints.  It starts with `Qwen/Qwen3-1.7B-Base`, then
-compares two four-billion-parameter models under the same data and LoRA budget:
+The experiment is not allowed to drift into a ten-billion-parameter run merely
+because a smaller run disappoints.  Model-v2 starts with the pinned
+`Qwen/Qwen3-1.7B-Base` heavy configuration.  Two four-billion-parameter
+candidates remain defined for a later controlled comparison:
 
 - `Qwen/Qwen3-4B-Base` for a clean Peano-specific baseline;
 - `Pythagoras-LM/Pythagoras-Prover-4B` for a same-family formal-proving prior.
 
 Both model cards identify Apache-2.0 weights.  Pythagoras is a June 2026
 preprint/checkpoint, so its reported Lean numbers are treated as authors'
-claims, not as established Peano results.  An eight-billion model is a later
-ceiling experiment, not a pilot default.  DeepSeek-Prover-V2-7B remains a
-scientific reference but its custom model license must be reviewed before it
-becomes a released artifact.
+claims, not as established Peano results.  The 4B comparison is explicitly
+deferred until the 1.7B model-v2 corpus, training run, and kernel-judged
+evaluation establish a baseline.  An eight-billion model is a later ceiling
+experiment, not a pilot default.  DeepSeek-Prover-V2-7B remains a scientific
+reference but its custom model license must be reviewed before it becomes a
+released artifact.
 
 Stop or redesign if any of these occurs:
 
@@ -100,7 +105,7 @@ learned auxiliary constructions explicit.
 
 ## 4. Our prompt, not a vendor prompt
 
-The base-model completion format is deliberately small and project-owned:
+The frozen model-v1 completion format is deliberately small and project-owned:
 
 ```text
 <task>next_tactic</task>
@@ -119,10 +124,32 @@ the trace focus is derived from the submitted action, so feeding it back would
 leak part of the label.  The theorem's hidden family name, source spelling,
 certificate, and held-out label never enter the policy prompt.
 
-The tokenizer vocabulary is not modified in the first run.  Before training,
-each candidate tokenizer is audited on exact UTF-8 round trips and token
-fertility for Peano states, theorem formulas, and tactics.  ASCII aliases may
-be studied as an ablation, but one run never silently mixes two printers.
+Model-v2 keeps the same one-line completion boundary but adds two observation
+channels before `<state>`: the exact compact tactic grammar and a deterministic
+retrieval block.  Its library has two deliberately different identities:
+
+- the **full checked identity** is the authority record for all 45 permitted
+  theorems.  For each theorem it binds the canonical statement, dependencies,
+  source-spec hash, authored-script hash, independently checked expanded
+  certificate hash, proof nodes, and proof depth;
+- the **prompt projection** is the sorted name/canonical-statement view used for
+  retrieval.  It has its own statement-projection hash, while each prompt
+  contains only eight deterministically retrieved `name : statement` records
+  plus the full checked-identity hash.
+
+The prompt projection is useful model context, never an attestation substitute.
+Dataset, adapter, evaluator, and interactive inference authority is derived
+from the full 45-theorem checked identity.  The four sealed benchmark theorems
+are absent from both identities and cannot be retrieved or imported.
+
+The tokenizer vocabulary is not modified.  The implemented token-audit gate
+loads the exact pinned tokenizer revision and checks every selected train and
+validation example with the configured 2,048-token budget.  It rejects rather
+than truncates, requires an EOS token and exact resolved revision, hashes the
+tokenizer/config/input files, and reports minimum, median, p95, p99, maximum,
+mean, and remaining headroom.  Both Helios and WMI preparation paths run this
+gate offline before a training job may consume GPU time.  ASCII aliases may be
+studied as an ablation, but one run never silently mixes two printers.
 
 ## 5. The headless verifier boundary
 
@@ -282,8 +309,14 @@ Generation is schema-driven.  Every seed theorem receives a stable
 renaming, commutation, substitution, paraphrase, or alternative proof is made.
 All descendants stay in the seed's split.
 
-A later 100k–300k positive state/action release should expand coverage, rather
-than merely repeat the first 10,000-row checkpoint:
+The implemented model-v2 generator raises the checked positive ceiling to
+exactly 100,000 transition rows.  It schedules complete proof sessions in
+three deficit-balanced lanes with a row ratio of
+**foundation : induction : library = 2 : 1 : 1**.  A session is accepted
+atomically only after the ordinary public surface reaches independently
+kernel-checked QED; no proof is cut merely to hit a lane quota.  The generated
+curriculum expands coverage rather than merely repeating the first 10,000-row
+checkpoint:
 
 - logic and context management: `intro`, `exact`, `apply`, conjunction,
   disjunction, cases, quantifiers, and explicit witnesses;
@@ -296,7 +329,18 @@ than merely repeat the first 10,000-row checkpoint:
 - polynomial and closed-numeral leaves for `ring`, `norm_num`, and
   `compact_arith`;
 - explicit theorem reuse, specialization, `have`, and `suffices`; and
-- deliberately failed nearby actions for preference/ranking data.
+- explicit coverage of every one of the 25 permitted tactic heads and every
+  one of the 45 allowed theorem imports.
+
+For any run of at least 10,000 rows, publication fails if even one tactic head
+or theorem import is absent.  The four held-out theorem names and canonical
+statements are excluded before generation and retrieval.  A deterministic
+100,000-row capacity exercise filled the budget with 50,002 foundation,
+25,000 induction, and 24,998 library rows from 22,706 distinct checked roots.
+That demonstrates that the implemented schedule can fill the heavy-run budget;
+it is not a claim that a final model-v2 dataset has been published or trained.
+Actually executed failures remain a separate future ranking/value corpus and
+are never relabelled as positive SFT examples.
 
 Difficulty is a vector, not proof length alone: accepted tactic count, search
 expansions, verifier calls, certificate nodes/depth, automation used, formula
@@ -353,21 +397,33 @@ success rather than training loss.  On a 96GB GH200, ordinary BF16 adapters are
 preferred to QLoRA so the initial run does not depend on quantization-specific
 ARM wheels.  Full fine-tuning is reserved for the 1.7B scaling check.
 
-### Stage 2 — verifier-guided expert iteration
+### Stage 2 — bounded verifier-guided search; expert iteration later
 
-The policy proposes complete tactic lines.  Peano Lab executes each line
-transactionally, hashes the canonical successor state, and deduplicates the
-frontier.  The initial best-first priority is accumulated negative log
-probability plus a documented depth penalty.  Every run has hard caps on model
-tokens, tactic proposals, unique states, kernel calls, wall time, and generated
-certificate size.
+The search layer is implemented.  At each immutable canonical state the policy
+returns a bounded ranked tuple of complete tactic lines.  Each candidate edge
+is replayed from the original theorem in a fresh `ProofSession`; a rejected
+sibling therefore cannot mutate the parent or another branch.  Successful
+successors are rendered canonically, hashed from their ordered goal tuple, and
+deduplicated before a bounded beam is retained.  The deterministic initial
+priority prefers fewer and smaller remaining obligations, then policy rank and
+stable path order.
+
+Depth has a hard host-owned maximum of 32.  Beam width, candidates per state,
+model calls, discovered states, and generated text are independently bounded;
+the trained-policy adapter can generate several sibling candidates in one
+physical model call.  Multiline, malformed, session-command, and failing
+outputs are rejected without repair.  A search result becomes a proof only
+after `checked_surface_final` checks the certificate against the separately
+retained original target.  The persistent client then performs a second fresh
+kernel replay before displaying or saving the script.
 
 Deterministic closers may run at compatible arithmetic leaves.  The model
 spends probability on branching choices such as induction variables,
 invariants, witnesses, rewrite direction, theorem specialization, and local
 lemmas.  This division of labour is the transferable AlphaGeometry lesson.
 
-Only final-kernel-checked trajectories enter the next positive round.  Prefer
+Only final-kernel-checked trajectories may enter a future expert-iteration
+round.  Prefer
 smaller certificates while retaining a bounded number of structurally diverse
 proofs.  Rebuild a clean adapter from the accumulated verified set as an
 ablation against continual training.
@@ -572,6 +628,44 @@ It writes digest-named report, optional `.pa`, and terminal run-summary files un
 rather than masquerading as an infrastructure crash. The wrapper prints the request ID used in
 those filenames.
 
+That command remains the historical model-v1 one-shot interface.  Model-v2
+adds a persistent terminal client so an interactive WMI allocation pays model
+loading cost once and can try many theorems in one session.  Local inference,
+when the machine can load the adapter, uses:
+
+```console
+python3 scripts/peano_policy_repl.py \
+  --adapter results/peano-policy/qwen3-1.7b-lora-v2-heavy
+```
+
+The prompt accepts either a bare closed formula or `pa prove FORMULA`.  Default
+search bounds are depth 32, beam width 4, four candidates per state, 128 model
+calls, and 2,048 states.  A successful path is replayed independently before
+the ordinary `.pa` proof and structured JSON report are written under
+`results/peano-policy/interactive/`; existing artifacts are never overwritten.
+On WMI, the guarded interactive allocation is:
+
+```console
+scripts/wmi_peano_policy_repl.sh \
+  --connect --confirm PEANO-LAB-WMI-TRAINING
+```
+
+The WMI wrapper requests one typed A100, validates the fixed deployment and
+runtime, and keeps the policy resident while theorem lines arrive on standard
+input.  A Helios-trained adapter is immediately available through the matching
+GH200 launcher, without first copying its closed artifact tree to WMI:
+
+```console
+scripts/helios_peano_policy_repl.sh \
+  --connect --confirm PEANO-LAB-TRAINING
+```
+
+Both cluster wrappers are dry-run by default, allocate one fixed GPU, keep
+theorem text out of shell arguments, and deliberately refuse a model-v1 or
+unattested adapter. They are implemented and model-free tested, but the
+expected model-v2 adapter path does not yet contain a completed heavy-run
+result.
+
 ### 10.3 What the first adapter can and cannot do
 
 Two registered arbitrary-theorem requests make the boundary concrete. Job
@@ -623,14 +717,14 @@ entries are appended to the public theorem ladder at source commit
 All replay deterministically and pass the empty-context kernel check. The largest certificate has
 21,515 nodes at depth 66; only the untrusted `use` import ceiling changes from 4,096 to 32,768.
 
-The pack must nevertheless enter through a new scientific contract. A
-content-addressed library snapshot must bind each name, canonical statement,
-dependencies, authored-script hash, checked certificate hash, nodes, and depth
-into prompt, dataset, training, evaluator, and request provenance. The current
-capability digest binds theorem names but not their statements or certificates.
-The model also needs checked downstream traces that actually `use` and
-`specialize` those lemmas, or a deterministic retriever that exposes selected
-name/statement pairs; an opaque environment hash cannot teach lemma semantics.
+The pack now enters model-v2 through a distinct scientific contract. Its
+content-addressed checked identity binds each name, canonical statement,
+dependencies, authored-script hash, checked expanded-certificate hash, nodes,
+and depth into dataset, training, evaluator, search, and request provenance.
+The model sees the compact grammar and eight deterministic retrieved
+name/statement records rather than only an opaque capability hash. Balanced
+checked generation supplies downstream theorem-import and composition traces;
+the full identity, not the retrieval excerpt, remains the authority.
 
 Importing an exact capstone theorem can make its motivating goal a three-line
 library application. That is excellent usability evidence, but it is no longer
@@ -640,7 +734,7 @@ enter training or development. The exact public capstone is therefore excluded f
 claims unless its library entry is masked. It remains useful as a retrieval/application and
 end-to-end kernel-replay regression.
 
-### 10.4 Model-v2 correction plan
+### 10.4 Model-v2 correction stack: implemented, training pending
 
 The first run consumed 1,600 examples—19.6% of the full train split and less than one epoch of its
 selected subset. The full split covers only 16/25 tactic heads, contains no induction-hypothesis or
@@ -653,24 +747,35 @@ In a reproducible local full-surface audit, the public catalog contributes 474 p
 transitions when each dependency becomes an explicit `use`: 427 authored commands plus 47 imports.
 This seed has longer proofs and richer contexts, but only one `induction` label. Naive concatenation under the old sampler would expose the
 optimizer to about 88 catalog rows in expectation and gives the singleton induction row only about
-an 18.6% chance of being seen. Model-v2 must therefore use family/head-aware generation and
-sampling, not just a larger file.
+an 18.6% chance of being seen. The implemented model-v2 stack therefore uses a balanced generator,
+not merely a larger concatenated file.
 
-Before another GPU run:
+The correction stack now present in the repository is:
 
-1. freeze an oracle-replayable, family-disjoint benchmark and raise the action budget to at least 32;
-2. run pretrained-base and deterministic baselines under the same budgets;
-3. bind the complete name/statement/dependency/certificate snapshot and expose retrieved
-   `name : statement` records plus compact PA grammar in the prompt;
-4. generate 100k--150k balanced checked transitions with substantial induction/IH, recursive
-   witnesses, lemma retrieval/composition, and 8--32-step proofs;
-5. collect actually executed failures in a separate ranking corpus;
-6. train Qwen3-1.7B for two to three full epochs; and
-7. compare single rollouts with same-state candidate rejection and canonical-state best-first
-   search at identical model-token and kernel-call budgets.
+1. a 45-theorem checked identity that independently replays every permitted public theorem and
+   binds statement, dependency, source, script, expanded certificate, node, and depth data;
+2. a separate prompt projection with compact grammar and eight deterministic retrieved
+   name/statement records, while the full checked identity remains the authority hash;
+3. a proof-first 100,000-row generator balanced by emitted rows at 2:1:1 across foundation,
+   induction, and library lanes, with hard coverage gates for all 25 tactic heads and all 45
+   imports;
+4. a no-truncation tokenizer audit over every example selected by the exact training config;
+5. depth-32 transactional canonical-state beam search with bounded sibling generation and an
+   independent publication replay;
+6. one shared heavy configuration for Helios and WMI: pinned Qwen3-1.7B Base, BF16 SDPA,
+   rank-16/alpha-32 LoRA, effective batch 32, learning rate $10^{-4}$, 2,048-token inputs, and three
+   full epochs over the model-v2 data; and
+7. a persistent local/WMI/Helios REPL that loads that attested adapter once and publishes only
+   twice-kernel-checked ordinary Peano Lab scripts.
 
-Only after these corrections should LoRA rank or a 4B base be varied. The current evidence does not
-identify parameter count as the limiting factor.
+Implementation does not turn these items into an experimental result.  A final model-v2 corpus
+still has to be generated and attested under the current checked identity, the tokenizer gate must
+pass on those exact selected rows, and the heavy 1.7B job must train and undergo frozen
+kernel-judged evaluation.  No model-v2 checkpoint has yet established pass rate, search gain, or
+induction/lemma-use quality.  Pretrained and deterministic baselines, a separate executed-failure
+ranking corpus, and expert iteration also remain to be run.  The 4B comparison is deferred until
+this 1.7B baseline exists; current evidence does not identify parameter count as the limiting
+factor.
 
 The immutable training manifest, held-out report, two arbitrary-request reports, compact index, and
 checked positive script are published under [`artifacts/peano-policy/`](../artifacts/peano-policy/).

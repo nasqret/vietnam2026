@@ -80,10 +80,12 @@ fi
 sbatch_args=()
 [ -z "$afterok" ] || sbatch_args+=("--dependency=afterok:$afterok")
 case "$job_script" in
-  slurm/peano_wmi_train_qwen3_1_7b.sbatch)
+  slurm/peano_wmi_train_qwen3_1_7b.sbatch|\
+  slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch)
     sbatch_args+=("--export=ALL,PEANO_PREPARE_JOB_ID=$afterok")
     ;;
-  slurm/peano_wmi_eval_qwen3_1_7b.sbatch)
+  slurm/peano_wmi_eval_qwen3_1_7b.sbatch|\
+  slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch)
     sbatch_args+=("--export=ALL,PEANO_TRAIN_JOB_ID=$afterok")
     ;;
   slurm/peano_wmi_prove_theorem.sbatch)
@@ -174,11 +176,17 @@ if [ -n "$afterok" ]; then
   predecessor_state="${predecessor_state%%+*}"
   case "$job_script:$predecessor_state" in
     slurm/peano_wmi_train_qwen3_1_7b.sbatch:COMPLETED|\
+    slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch:COMPLETED|\
     slurm/peano_wmi_eval_qwen3_1_7b.sbatch:PENDING|\
     slurm/peano_wmi_eval_qwen3_1_7b.sbatch:CONFIGURING|\
     slurm/peano_wmi_eval_qwen3_1_7b.sbatch:RUNNING|\
     slurm/peano_wmi_eval_qwen3_1_7b.sbatch:COMPLETING|\
-    slurm/peano_wmi_eval_qwen3_1_7b.sbatch:COMPLETED)
+    slurm/peano_wmi_eval_qwen3_1_7b.sbatch:COMPLETED|\
+    slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch:PENDING|\
+    slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch:CONFIGURING|\
+    slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch:RUNNING|\
+    slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch:COMPLETING|\
+    slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch:COMPLETED)
       ;;
     *)
       printf 'WMI predecessor %s is not in an acceptable state: %s\n' \
@@ -186,23 +194,31 @@ if [ -n "$afterok" ]; then
       exit 1
       ;;
   esac
-  if [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b.sbatch ]; then
-    smoke_report="logs/peano-wmi-prepare-runtime-$afterok.json"
-    data_report="logs/peano-wmi-dataset-attestation-$afterok.json"
+  if [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b.sbatch ] || \
+     [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch ]; then
+    if [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch ]; then
+      smoke_report="logs/peano-wmi-v2-prepare-runtime-$afterok.json"
+      data_report="logs/peano-wmi-v2-dataset-attestation-$afterok.json"
+      smoke_format=peano-policy-wmi-a100-v2-smoke
+    else
+      smoke_report="logs/peano-wmi-prepare-runtime-$afterok.json"
+      data_report="logs/peano-wmi-dataset-attestation-$afterok.json"
+      smoke_format=peano-policy-wmi-a100-smoke
+    fi
     for report in "$smoke_report" "$data_report"; do
       [ -f "$report" ] && [ ! -L "$report" ] || {
         printf 'missing regular WMI preparation report: %s\n' "$report" >&2
         exit 1
       }
     done
-    python3 - "$smoke_report" "$afterok" <<'PY'
+    python3 - "$smoke_report" "$afterok" "$smoke_format" <<'PY'
 import json
 from pathlib import Path
 import sys
 
 report = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
 if (
-    report.get("format") != "peano-policy-wmi-a100-smoke"
+    report.get("format") != sys.argv[3]
     or report.get("status") != "passed"
     or report.get("job", {}).get("job_id") != sys.argv[2]
 ):
@@ -217,7 +233,9 @@ if ! queue="$(squeue -h --me -o '%A|%j|%T')"; then
 fi
 while IFS='|' read -r active_job_id active_name active_state; do
   case "$active_name" in
-    peano-wmi-prepare|peano-wmi-qwen17|peano-wmi-qwen17-eval|peano-wmi-prove|peano-wmi-probe)
+    peano-wmi-prepare|peano-wmi-qwen17|peano-wmi-qwen17-eval|\
+    peano-wmi-v2-prepare|peano-wmi-qwen17-v2|peano-wmi-qwen17-v2-eval|\
+    peano-wmi-prove|peano-wmi-probe)
       if [ -z "$afterok" ] || [ "$active_job_id" != "$afterok" ]; then
         printf 'another WMI Peano job is active: %s %s %s\n' \
           "$active_job_id" "$active_name" "$active_state" >&2

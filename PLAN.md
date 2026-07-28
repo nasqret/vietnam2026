@@ -50,13 +50,15 @@ job. The corrected same-source WMI chain then passed preparation (`171414`), 100
 failed at pass@16 (`171428`), while one fresh direct-witness theorem succeeded once in eight samples
 and replayed to a seven-node kernel-checked proof (`171430`). This is a real within-template success,
 but attribution to LoRA training awaits the pretrained-base baseline; the adapter is not yet a
-dependable induction/order prover. The current dataset has
-no positive rows for nine tactic heads, including `induction`, `simp`, and `specialize`;
-the next registered iteration is a library-snapshot-bound `model-v2`, not a 4B scale-up on the same
-curriculum. The owner authorized the compatibility-validated 26-lemma extension for the public
-catalog, bringing it to 49 entries without changing the kernel. A full-surface audit yields 474
-prospective model-v2 transitions. They are valuable curriculum seeds, but only one is an
-`induction` label, so balanced generation and
-sampling remain necessary. See
+dependable induction/order prover. The replacement experiment is now implemented as a distinct
+`model-v2`: 45 permitted public theorems are bound by a full independently checked content identity,
+while four benchmark theorems are sealed from imports and generated targets. Its proof-first
+100,000-row schedule balances foundational, induction/IH, and library composition transitions at
+2:1:1, covers all 25 tactic heads, and passes every selected row through a pinned-tokenizer
+no-truncation gate. A bounded depth-32 search retries failed candidates at the same immutable state,
+deduplicates canonical successors, and publishes only an original-target kernel QED. A persistent
+cluster REPL uses that same search and then performs a second fresh replay before exposing a `.pa`
+script. The final local/source gates and guarded Helios prepare→train→evaluate submission are in
+progress; no model-v2 solve-rate claim exists until those jobs finish. See
 [`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest completed and staged
 milestone; production remains untouched behind the M14 cache-header blocker.

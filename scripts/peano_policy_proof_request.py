@@ -346,7 +346,7 @@ def run_request(request_id: str, adapter: Path) -> dict[str, object]:
         or type(goal) is not dict
         or goal.get("statement") != canonical_statement
         or goal.get("classical") is not False
-        or goal.get("surface_profile") != "model-v1"
+        or goal.get("surface_profile") not in {"model-v1", "model-v2"}
         or goal.get("passed") is not (status == 0)
     ):
         raise RuntimeError("proof request, status, and evaluation report disagree")

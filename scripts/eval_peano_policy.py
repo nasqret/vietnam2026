@@ -96,7 +96,7 @@ class EvalGoal:
     name: str
     statement: str
     classical: bool = False
-    surface_profile: Literal["full", "model-v1"] = "full"
+    surface_profile: Literal["full", "model-v1", "model-v2"] = "full"
     allowed_theorems: tuple[str, ...] | None = None
 
     def __post_init__(self) -> None:
@@ -110,8 +110,10 @@ class EvalGoal:
             raise ValueError("an evaluation goal needs a non-empty statement")
         if type(self.classical) is not bool:
             raise TypeError("an evaluation goal's classical mode must be a Boolean")
-        if self.surface_profile not in {"full", "model-v1"}:
-            raise ValueError("surface_profile must be exactly 'full' or 'model-v1'")
+        if self.surface_profile not in {"full", "model-v1", "model-v2"}:
+            raise ValueError(
+                "surface_profile must be exactly 'full', 'model-v1', or 'model-v2'"
+            )
         if self.allowed_theorems is not None:
             if type(self.allowed_theorems) is not tuple or not all(
                 type(name) is str and name in LIBRARY_NAMES

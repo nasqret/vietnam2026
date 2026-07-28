@@ -39,6 +39,12 @@ before release. The compute job produces digest-named report, optional `.pa`, an
 artifacts; ad-hoc login-node or interactive inference is rejected because it lacks this runtime and
 submission provenance.
 
+Model-v2 additionally has `scripts/wmi_peano_policy_repl.sh`, a guarded four-hour interactive A100
+allocation that loads the attested adapter once and sends theorem text only to the validated Python
+input loop. A matching Helios GH200 launcher permits immediate use of a Helios-trained adapter;
+moving the closed adapter/tokenizer/manifest tree to WMI remains a separately integrity-checked
+deployment step.
+
 ## Related
 
 [[kernel-guided-policy-training]] · [[kernel-judged-evaluation]] ·

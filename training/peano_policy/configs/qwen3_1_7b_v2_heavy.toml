@@ -1,0 +1,51 @@
+[run]
+name = "qwen3-1.7b-peano-lora-v2-heavy"
+seed = 20260728
+output_dir = "results/peano-policy/qwen3-1.7b-lora-v2-heavy"
+# The replay compiler normally assigns about 80% of the 100,000 positive
+# transitions to train.  These are ceilings, not a request to duplicate rows.
+max_train_samples = 100000
+max_eval_samples = 4000
+resume = "auto"
+
+[model]
+model_id = "Qwen/Qwen3-1.7B-Base"
+revision = "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+dtype = "bfloat16"
+attn_implementation = "sdpa"
+trust_remote_code = false
+
+[data]
+train_path = "data/peano-policy-v2/train.jsonl"
+eval_path = "data/peano-policy-v2/val.jsonl"
+max_length = 2048
+
+[lora]
+rank = 16
+alpha = 32
+dropout = 0.05
+target_modules = [
+  "q_proj", "k_proj", "v_proj", "o_proj",
+  "gate_proj", "up_proj", "down_proj",
+]
+
+[trainer]
+epochs = 3.0
+max_steps = -1
+per_device_train_batch_size = 8
+per_device_eval_batch_size = 8
+gradient_accumulation_steps = 4
+learning_rate = 0.0001
+weight_decay = 0.01
+warmup_ratio = 0.05
+logging_steps = 10
+eval_steps = 250
+save_steps = 250
+save_total_limit = 3
+gradient_checkpointing = false
+
+[generation]
+max_new_tokens = 96
+do_sample = false
+temperature = 1.0
+top_p = 1.0

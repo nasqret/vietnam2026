@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from functools import lru_cache
 import hashlib
 import json
 from pathlib import Path
@@ -18,17 +19,28 @@ from peano_lab.kernel.formulas import (  # noqa: E402
     parse_formula_with_names,
     pretty_formula,
 )
+from peano_lab.library.theorems import THEOREMS  # noqa: E402
 
-from .prompt import CapabilityIdentity, PromptEnvironment
+from .prompt import (
+    PEANO_PROMPT_V1,
+    PEANO_PROMPT_V2,
+    CapabilityIdentity,
+    LibraryRecord,
+    PromptEnvironment,
+    prompt_contract_sha256,
+    prompt_manifest_record,
+)
+from .library_identity import (
+    SEALED_LIBRARY_GOALS,
+    SEALED_LIBRARY_NAMES,
+    model_v2_library_identity,
+    model_v2_library_identity_sha256,
+)
 
 
 CONTRACT_VERSION = 1
-HELD_OUT_POLICY_GOALS: tuple[tuple[str, str], ...] = (
-    ("le_trans", "forall n m k. n <= m -> m <= k -> n <= k"),
-    ("le_antisymm", "forall n m. n <= m -> m <= n -> n = m"),
-    ("le_total", "forall n m. n <= m \\/ m <= n"),
-    ("mul_eq_zero", "forall n m. n * m = 0 -> n = 0 \\/ m = 0"),
-)
+HELD_OUT_POLICY_GOALS = SEALED_LIBRARY_GOALS
+HELD_OUT_POLICY_NAMES = frozenset(name for name, _ in HELD_OUT_POLICY_GOALS)
 
 
 def model_v1_environment() -> PromptEnvironment:
@@ -44,17 +56,118 @@ def model_v1_environment() -> PromptEnvironment:
     )
 
 
+@lru_cache(maxsize=1)
+def model_v2_library() -> tuple[LibraryRecord, ...]:
+    """Return the canonical public catalog visible to model-v2.
+
+    The four benchmark targets are absent by name and statement.  Statements
+    are parser/printer canonicalized so whitespace edits in source records do
+    not silently create a new prompt library snapshot.
+    """
+
+    sealed_formulas: set[str] = set()
+    for name, source in HELD_OUT_POLICY_GOALS:
+        target, free_names = parse_formula_with_names(source)
+        if free_names:
+            raise RuntimeError(f"held-out policy goal {name!r} is not closed")
+        sealed_formulas.add(pretty_formula(target, list(free_names)))
+    allowed_names = frozenset(
+        spec.name for spec in THEOREMS if spec.name not in HELD_OUT_POLICY_NAMES
+    )
+    records: list[LibraryRecord] = []
+    for spec in THEOREMS:
+        if spec.name in HELD_OUT_POLICY_NAMES:
+            continue
+        formula, free_names = parse_formula_with_names(spec.statement)
+        if free_names:
+            raise RuntimeError(f"public theorem {spec.name!r} is not closed")
+        statement = pretty_formula(formula, list(free_names))
+        if statement in sealed_formulas:
+            raise RuntimeError(
+                f"public theorem {spec.name!r} aliases a held-out target"
+            )
+        unavailable = set(spec.dependencies).difference(allowed_names)
+        if unavailable:
+            raise RuntimeError(
+                f"public theorem {spec.name!r} depends outside model-v2: "
+                + ", ".join(sorted(unavailable))
+            )
+        records.append(LibraryRecord(spec.name, statement))
+    return tuple(sorted(records, key=lambda record: record.name))
+
+
+MODEL_V2_THEOREMS: tuple[str, ...] = tuple(
+    record.name for record in model_v2_library()
+)
+
+
+@lru_cache(maxsize=1)
+def model_v2_environment() -> PromptEnvironment:
+    """Return full public intuitionistic authority minus frozen targets."""
+
+    if HELD_OUT_POLICY_NAMES != SEALED_LIBRARY_NAMES:
+        raise RuntimeError("model-v2 identity and held-out contract disagree")
+    library = model_v2_library()
+    identity = model_v2_library_identity()
+    if tuple((item.name, item.statement) for item in identity) != tuple(
+        (item.name, item.statement) for item in library
+    ):
+        raise RuntimeError(
+            "model-v2 checked identity differs from its prompt projection"
+        )
+    return PromptEnvironment(
+        False,
+        CapabilityIdentity(
+            label="model-v2",
+            allowed_commands=tuple(sorted(MODEL_V1_COMMANDS)),
+            allowed_theorems=MODEL_V2_THEOREMS,
+        ),
+        prompt_version=PEANO_PROMPT_V2,
+        library=library,
+        library_identity_sha256=model_v2_library_identity_sha256(),
+    )
+
+
+def prompt_environment(
+    classical: bool,
+    capabilities: CapabilityIdentity,
+) -> PromptEnvironment:
+    """Resolve capabilities to the unique repository-owned prompt contract.
+
+    Existing/custom surfaces remain version 1.  The label ``model-v2`` is
+    reserved: it is accepted only with the exact current command/theorem
+    preimage, preventing a partial or contaminated catalog from masquerading
+    under the v2 prompt contract.
+    """
+
+    if type(classical) is not bool:
+        raise TypeError("classical must be a Boolean")
+    if type(capabilities) is not CapabilityIdentity:
+        raise TypeError("capabilities must be a CapabilityIdentity")
+    if capabilities.label != "model-v2":
+        return PromptEnvironment(classical, capabilities)
+    expected = model_v2_environment()
+    if classical or capabilities != expected.capabilities:
+        raise ValueError(
+            "model-v2 requires its exact fixed intuitionistic authority"
+        )
+    return expected
+
+
 def environment_record(environment: PromptEnvironment) -> dict[str, object]:
     """Canonical manifest/report form of a policy environment."""
 
     if type(environment) is not PromptEnvironment:
         raise TypeError("environment must be a PromptEnvironment")
-    return {
+    record: dict[str, object] = {
         "classical": environment.classical,
         "surface": environment.capabilities.label,
         "environment_sha256": environment.sha256,
         "capabilities": environment.capabilities.to_record(),
     }
+    if environment.prompt_version == PEANO_PROMPT_V2:
+        record["library_identity_sha256"] = environment.library_sha256
+    return record
 
 
 def canonical_held_out_formulas() -> tuple[str, ...]:
@@ -133,12 +246,17 @@ def attested_training_environment(
             "training input hashes are not bound to the dataset attestation"
         )
     record = attestation.get("environment")
-    if type(record) is not dict or set(record) != {
+    if type(record) is not dict:
+        raise ValueError("training dataset environment attestation is malformed")
+    expected_environment_fields = {
         "classical",
         "surface",
         "environment_sha256",
         "capabilities",
-    }:
+    }
+    if record.get("surface") == "model-v2":
+        expected_environment_fields.add("library_identity_sha256")
+    if set(record) != expected_environment_fields:
         raise ValueError("training dataset environment attestation is malformed")
     classical = record.get("classical")
     if type(classical) is not bool:
@@ -161,24 +279,70 @@ def attested_training_environment(
         "allowed_commands": capability_record["allowed_commands"],
         "allowed_theorems": capability_record["allowed_theorems"],
     }
-    environment = PromptEnvironment(
-        classical,
-        CapabilityIdentity.from_record(canonical_capabilities),
-    )
+    capabilities = CapabilityIdentity.from_record(canonical_capabilities)
+    try:
+        environment = prompt_environment(classical, capabilities)
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"attested policy environment is unsupported: {exc}") from None
     if environment_record(environment) != record:
         raise ValueError("attested policy environment hash/preimage mismatch")
-    if environment != model_v1_environment():
+    if (
+        environment.prompt_version == PEANO_PROMPT_V1
+        and environment != model_v1_environment()
+    ):
         raise ValueError("adapter was not trained under the fixed model-v1 authority")
+
+    expected_version = environment.prompt_version
+    expected_contract = prompt_manifest_record(expected_version)
+    expected_contract_sha256 = prompt_contract_sha256(expected_version)
+    attested_version = attestation.get("prompt_version")
+    attested_contract = attestation.get("prompt_contract")
+    attested_contract_sha256 = attestation.get("prompt_contract_sha256")
+    attested_library_sha256 = attestation.get("library_snapshot_sha256")
+    if expected_version == PEANO_PROMPT_V1 and all(
+        value is None
+        for value in (
+            attested_version,
+            attested_contract,
+            attested_contract_sha256,
+            attested_library_sha256,
+        )
+    ):
+        # Compatibility for already published v1 adapter manifests.
+        pass
+    elif (
+        attested_version != expected_version
+        or attested_contract != expected_contract
+        or attested_contract_sha256 != expected_contract_sha256
+        or attested_library_sha256 != environment.library_sha256
+    ):
+        raise ValueError("training dataset prompt attestation is invalid")
+
+    manifest_version = training_manifest.get("prompt_version")
+    manifest_contract_sha256 = training_manifest.get("prompt_contract_sha256")
+    if manifest_version is None and manifest_contract_sha256 is None:
+        if expected_version != PEANO_PROMPT_V1:
+            raise ValueError("model-v2 adapter lacks a bound prompt contract")
+    elif (
+        manifest_version != expected_version
+        or manifest_contract_sha256 != expected_contract_sha256
+    ):
+        raise ValueError("adapter prompt identity differs from its dataset")
     return environment
 
 
 __all__ = [
     "CONTRACT_VERSION",
     "HELD_OUT_POLICY_GOALS",
+    "HELD_OUT_POLICY_NAMES",
+    "MODEL_V2_THEOREMS",
     "canonical_held_out_formulas",
     "attested_training_environment",
     "environment_record",
     "held_out_contract_record",
     "held_out_contract_sha256",
     "model_v1_environment",
+    "model_v2_environment",
+    "model_v2_library",
+    "prompt_environment",
 ]

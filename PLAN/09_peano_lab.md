@@ -536,11 +536,11 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       26 dependency-ordered entries are integrated with exact source commit/catalog-hash/license
       provenance, deterministic cold replay, empty-context kernel checks, and a bounded live-use
       capstone regression. The public catalog now has 49 entries.
-- [ ] Register model-v2 with a library snapshot hash over names, canonical statements,
+- [x] Register model-v2 with a library snapshot hash over names, canonical statements,
       dependencies, source/script/certificate hashes, nodes, and depth; bind it through prompt,
       rows, attestation, training manifest, evaluator, and WMI requests. Freeze sealed targets
       before generating induction, invariant, lemma-use, and composition curricula.
-- [ ] Add oracle-budget validation (at least 24 held-out steps), bounded same-state candidate
+- [x] Add oracle-budget validation (at least 24 held-out steps), bounded same-state candidate
       rejection, and then canonical-state-deduplicated best-first search before the next GPU run.
 - [ ] All milestone-wide tests and documentation gates are green, the kernel has no semantic diff,
       and no heavy local or remote job remains running before the milestone is called complete.
@@ -609,6 +609,23 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   green. The isolated all-ladder acceptance smoke reports 803 unique transitions in 98 sessions
   with 49 authored-script kernel QEDs. M19 stays open for the model-v2 curriculum, search,
   baselines, and registered comparison.
+
+  Model-v2 preflight is now green. Its 45 permitted theorems replay independently into the full
+  checked identity `a6c13cdc…ced5c`; four canonical targets are sealed by name, statement, and
+  dependency closure. The identity is carried through source/session metadata, rows, prompt,
+  attestation, training manifests, evaluation provenance, and the guarded cluster inference paths.
+  A fresh 1,000-row end-to-end audit produced 228 kernel QEDs, split 820/83/97, with row lanes
+  502/248/250 and zero held-out contamination. The capacity-checked heavy schedule fills exactly
+  100,000 rows as 50,002/25,000/24,998 across foundation/induction/library, covers all 25 tactic
+  heads and 45 imports at the 10,000-row gate, and refuses tokenizer truncation before training.
+  All four known held-out routes replay in 10/10/23/13 lines under the exact model-v2 authority,
+  inside the search depth of 32. Search retries same-state siblings transactionally, deduplicates
+  canonical successor goals, and performs independent original-target finalization; the persistent
+  local, WMI A100, and Helios GH200 interfaces add another fresh replay before publication. Current
+  local gates are 1,103 Peano tests, Lambda 360 tests plus 36 subtests, a clean warning-as-error
+  build of all 27 book sources, and replay of 193 deep links/170 commands. The kernel has no diff
+  and `checker.py` remains 234 lines. No model-v2 checkpoint or quality result is claimed yet;
+  training, baselines, artifact transfer, and result recording keep M19 open.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

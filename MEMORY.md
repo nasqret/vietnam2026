@@ -286,3 +286,13 @@
   170 commands, and 414/414 vault wikilinks pass. Local browser candidate `2026-07-28g` has
   application identity `a-3ea7b7142aa0`; automated worker boot passes, direct in-app Pyodide
   latency remains unmeasured, and production is untouched.
+- M19 model-v2 preflight on 2026-07-28: the independently replayed 45-theorem authority is
+  `a6c13cdc36115f8407d4932b22f022d0c3c012d8a64cbe41c1f0a158006ced5c`; four held-out targets are
+  sealed. The checked identity is carried through generator metadata, rows, prompt, attestation,
+  training manifest, evaluation, and guarded cluster inference. The deterministic 100,000-row
+  capacity is 50,002 foundation / 25,000 induction / 24,998 library transitions over 22,706 roots,
+  with all 25 tactic heads and 45 imports covered. Depth-32 transactional canonical-state search,
+  pinned-tokenizer no-truncation audit, rank-16 Qwen3-1.7B heavy config, and persistent local/WMI/
+  Helios REPL are implemented. A fresh 1,000-row end-to-end audit passed with zero contamination;
+  the complete gate is 1,103 Peano tests, Lambda 360 plus 36 subtests, 27 warning-clean book
+  sources, and 193 links/170 commands. No model-v2 trained result exists yet.

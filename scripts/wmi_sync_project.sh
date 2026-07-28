@@ -69,8 +69,9 @@ fi
 active="$(
   printf '%s\n' "$queue" | awk -F'|' \
     '$2 == "peano-wmi-prepare" || $2 == "peano-wmi-qwen17" || \
-     $2 == "peano-wmi-qwen17-eval" || $2 == "peano-wmi-prove" || \
-     $2 == "peano-wmi-probe"'
+     $2 == "peano-wmi-qwen17-eval" || $2 == "peano-wmi-v2-prepare" || \
+     $2 == "peano-wmi-qwen17-v2" || $2 == "peano-wmi-qwen17-v2-eval" || \
+     $2 == "peano-wmi-prove" || $2 == "peano-wmi-probe"'
 )"
 if [ -n "$active" ]; then
   printf '%s\n' 'refusing WMI sync while a Peano job is queued:' >&2

@@ -12,16 +12,29 @@ from pathlib import Path
 import pytest
 
 from peano_lab.batch import MODEL_V1_COMMANDS, verify_proof
+from peano_lab.library.theorems import THEOREMS
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
 SCRIPTS_ROOT = REPOSITORY_ROOT / "scripts"
 GENERATOR_SOURCE = SCRIPTS_ROOT / "generate_peano_synthetic_corpus.py"
-for import_root in (SCRIPTS_ROOT, REPOSITORY_ROOT / "peano-lab" / "py"):
+for import_root in (
+    REPOSITORY_ROOT,
+    SCRIPTS_ROOT,
+    REPOSITORY_ROOT / "peano-lab" / "py",
+):
     if str(import_root) not in sys.path:
         sys.path.insert(0, str(import_root))
 
 from export_traces import load_trace_file  # noqa: E402
+from training.peano_policy.contract import (  # noqa: E402
+    HELD_OUT_POLICY_GOALS,
+    canonical_held_out_formulas,
+)
+from training.peano_policy.library_identity import (  # noqa: E402
+    MOD5_SOURCE_REPORT,
+    model_v2_library_identity_sha256,
+)
 
 
 def _load_script(name: str, path: Path):
@@ -52,13 +65,38 @@ def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def test_catalog_is_diverse_model_v1_surface_data_not_a_second_prover() -> None:
+def test_catalog_is_diverse_model_v2_surface_data_not_a_second_prover() -> None:
     assert {schema.domain for schema in generator.SCHEMAS} == set(generator.DOMAINS)
+    assert {schema.lane for schema in generator.SCHEMAS} == set(generator.LANES)
     assert len(generator.SCHEMAS) == len({schema.name for schema in generator.SCHEMAS})
     assert len(generator.SCHEMAS) >= 25
+    assert generator.CATALOG_VERSION == 3
+    assert generator.GENERATOR == "proof-first-synthetic-v2"
+    assert generator.POLICY_CAPABILITIES.label == "model-v2"
+    assert len(THEOREMS) == 49
+    assert len(generator.MODEL_V2_THEOREMS) == 45
+    assert generator.HELD_OUT_NAMES == frozenset(
+        name for name, _ in HELD_OUT_POLICY_GOALS
+    )
+    assert not generator.MODEL_V2_THEOREMS & generator.HELD_OUT_NAMES
+    assert generator.HELD_OUT_FORMULAS == frozenset(canonical_held_out_formulas())
+    assert dict(generator.LANE_WEIGHTS) == {
+        "foundation": 2,
+        "induction": 1,
+        "library": 1,
+    }
 
     source = GENERATOR_SOURCE.read_text(encoding="utf-8")
     assert "run_proof(" in source
+
+    semantic_sources = generator._source_manifest()
+    required = {
+        "training/peano_policy/contract.py",
+        "training/peano_policy/prompt.py",
+        "training/peano_policy/library_identity.py",
+        MOD5_SOURCE_REPORT.relative_to(REPOSITORY_ROOT).as_posix(),
+    }
+    assert required <= set(semantic_sources)
     assert "ProofSession" not in source
     assert "apply_tactic" not in source
     assert "checked_final" not in source
@@ -106,7 +144,8 @@ def test_streams_exact_budget_with_checked_roots_and_builder_replay(
     assert manifest["counts"]["positive_tactic_rows"] == 30
     assert manifest["counts"]["kernel_checked_qed"] == len(sessions)
     assert manifest["counts"]["independent_roots"] == len(sessions)
-    assert set(manifest["counts"]["sessions_by_domain"]) == set(generator.DOMAINS)
+    assert set(manifest["counts"]["sessions_by_domain"]) <= set(generator.DOMAINS)
+    assert sum(manifest["counts"]["sessions_by_domain"].values()) == len(sessions)
 
     roots = {record["root"] for record in metadata}
     assert len(roots) == len(metadata)
@@ -116,7 +155,14 @@ def test_streams_exact_budget_with_checked_roots_and_builder_replay(
     )
     assert all(record["parents"] == [] for record in metadata)
     assert all(record["classical"] is False for record in metadata)
-    assert all(record["surface"] == "model-v1" for record in metadata)
+    assert all(record["surface"] == "model-v2" for record in metadata)
+    assert all(
+        record["library_identity_sha256"]
+        == model_v2_library_identity_sha256()
+        for record in metadata
+    )
+    assert all(record["lane"] in generator.LANES for record in metadata)
+    assert all(record["schema_weight"] >= 1 for record in metadata)
     assert all(record["statement"] for record in metadata)
     assert len({record["statement"] for record in metadata}) == len(metadata)
 
@@ -152,6 +198,71 @@ def test_streams_exact_budget_with_checked_roots_and_builder_replay(
         "positive_rows": 30,
         "transactional_error_steps_ignored": 0,
     }
+
+
+def test_thousand_row_curriculum_is_balanced_complete_and_holdout_safe(
+    tmp_path: Path,
+) -> None:
+    trace, metadata_path, manifest_path = _paths(tmp_path / "balanced")
+    generated = generator.generate_corpus(
+        trace,
+        metadata_path,
+        manifest_path,
+        seed="v2-audit",
+        row_budget=1_000,
+    )
+
+    manifest = generated.manifest
+    counts = manifest["counts"]
+    assert counts["positive_tactic_rows"] == 1_000
+    assert counts["kernel_checked_qed"] == counts["sessions"]
+    assert sum(counts["rows_by_lane"].values()) == 1_000
+    for lane in ("induction", "library"):
+        assert 200 <= counts["rows_by_lane"][lane] <= 300
+    assert counts["rows_by_length_band"]["short"] > 0
+    assert counts["rows_by_length_band"]["medium"] > 0
+    assert counts["rows_by_length_band"]["long"] > 0
+    assert counts["transitions_with_induction_hypothesis"] > 0
+    assert set(MODEL_V1_COMMANDS) == set(counts["tactic_heads"])
+    assert counts["tactic_heads"]["induction"] > 0
+    assert counts["tactic_heads"]["use"] > 0
+    assert counts["tactic_heads"]["assumption"] > 0
+    assert counts["tactic_heads"]["exfalso"] > 0
+    assert counts["tactic_heads"]["forall_elim"] > 0
+    assert counts["tactic_heads"]["have"] > 0
+    assert counts["tactic_heads"]["specialize"] > 0
+    assert counts["tactic_heads"]["suffices"] > 0
+
+    snapshot = manifest["library_snapshot"]
+    assert snapshot["catalog_entries"] == 49
+    assert snapshot["allowed_import_count"] == 45
+    assert set(snapshot["allowed_imports"]) == generator.MODEL_V2_THEOREMS
+    assert snapshot["checked_authority"]["format"] == (
+        "peano-model-v2-library-identity"
+    )
+    assert len(snapshot["checked_authority"]["theorems"]) == 45
+    assert snapshot["checked_authority_sha256"] == (
+        snapshot["prompt_library_identity_sha256"]
+    )
+    canonical_authority = json.dumps(
+        snapshot["checked_authority"],
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    assert hashlib.sha256(canonical_authority).hexdigest() == (
+        snapshot["checked_authority_sha256"]
+    )
+    assert manifest["environment"]["library_identity_sha256"] == (
+        snapshot["checked_authority_sha256"]
+    )
+    assert {
+        item["name"] for item in snapshot["sealed_evaluation_targets"]
+    } == generator.HELD_OUT_NAMES
+    assert not set(counts["library_use"]) & generator.HELD_OUT_NAMES
+    assert not {
+        record["statement"] for record in _jsonl(metadata_path)
+    } & generator.HELD_OUT_FORMULAS
 
 
 def test_byte_determinism_and_row_budget_are_bound_to_run_identity(
@@ -205,3 +316,26 @@ def test_invalid_budget_and_aliased_outputs_fail_before_generation(
     with pytest.raises(generator.GenerationError, match="must be distinct"):
         generator.generate_corpus(paths[0], paths[0], paths[2], row_budget=1)
     assert not any(path.exists() for path in paths)
+
+
+def test_cli_requires_explicit_model_v2_profile_before_opening_outputs(
+    tmp_path: Path,
+) -> None:
+    paths = _paths(tmp_path)
+    arguments = [
+        "--trace-output",
+        str(paths[0]),
+        "--metadata-output",
+        str(paths[1]),
+        "--manifest",
+        str(paths[2]),
+        "--row-budget",
+        "1",
+    ]
+    with pytest.raises(SystemExit) as missing:
+        generator._parser().parse_args(arguments)
+    assert missing.value.code == 2
+    assert not any(path.exists() for path in paths)
+
+    parsed = generator._parser().parse_args(["--profile", "model-v2", *arguments])
+    assert parsed.profile == generator.PROFILE
