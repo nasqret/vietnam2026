@@ -484,16 +484,22 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       capped dataset samples, and bind resume checkpoints to a pre-run identity and exact hash.
 - [x] Add evaluator-side authority preflight and cryptographic policy/decode provenance. Only the
       ordinary public surface followed by original-target kernel finalization can score a proof.
+- [x] Expose a trained adapter on arbitrary bounded closed PA formulas without widening its
+      attested authority. Publish pasteable `.pa` only after a second exact-capability kernel
+      replay; provide an immutable request-file, ledgered typed-A100 WMI job for actual use.
 - [x] Add guarded Helios sync, environment, training, evaluation, queue, and submission controls;
       test-only is the default and real submission requires the explicit confirmation token.
 - [x] Pass the corrected isolated Helios environment and one-step BF16 LoRA save/reload smoke on
       job `20029964`, with exact source/model/runtime/artifact provenance.
-- [ ] Pass the tracked five-minute WMI A100 runtime probe, build a separate pinned x86-64 overlay,
-      and repeat the LoRA save/reload gate before submitting WMI training.
+- [x] Pass the tracked WMI A100 runtime probe and build a separate reviewed central-base manifest,
+      pinned x86-64 overlay, and transactional deployment path. Probe `171369` passed on one
+      A100-SXM4-80GB; the 96-test local WMI/runtime/training gate is green.
+- [ ] Repeat the complete LoRA save/reload gate on WMI before submitting WMI training.
 - [x] Expand the checked synthetic curriculum beyond the 18-session pilot, keeping genealogy and
       capability metadata complete, and freeze the first training/validation/test release.
-- [ ] Run the Qwen3-1.7B smoke on Helios, verify resume identity, publish the complete training and
-      held-out evaluator manifests, and compare against pretrained/random/deterministic baselines.
+- [ ] Run the registered Qwen3-1.7B 100-step pilot on an accepted site, publish the complete
+      training and held-out evaluator manifests, and compare against pretrained/random/deterministic
+      baselines. Helios supports checked resume; WMI's first pilot is explicitly one-shot.
 - [ ] If the smoke gates pass, run the pre-registered Qwen3-4B versus Pythagoras-Prover-4B
       comparison at identical data, LoRA, decode, token, step, and kernel-call budgets.
 - [ ] Finish the full Peano/Lambda/book/vault/release gates, record measured results without
@@ -509,8 +515,11 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       mismatched policy authority, training-environment laundering, exact-formula and exact-prompt
       split leakage, held-out data contamination, incomplete loader artifact hashes, forged
       replay/history labels, mismatched failure diagnostics, unbounded JSON integers/floats and
-      batch totals, interrupted transports, post-commit cleanup failures, and partial multi-file
-      publication.
+      batch totals, interrupted transports, post-commit cleanup failures, partial multi-file
+      publication, stale one-shot output, PEFT pickle fallback, Python optimization bypass, and
+      command-substitution failure swallowing, unsafe/open arbitrary theorem input, composed model
+      call/token budgets, forged proof publication, adapter/source mutation, nested/aliased output
+      paths, closed-artifact corruption, and request/job ledger mismatch.
 - [x] The pilot currently yields 18 independently checked sessions and 58 positive transitions in
       11 families; replay compilation produces genealogy-separated train/validation/test files.
 - [x] The first scaled release yields 2,522 kernel-checked roots and exactly 10,000 positive rows
@@ -521,16 +530,17 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
 - [ ] All milestone-wide tests and documentation gates are green, the kernel has no semantic diff,
       and no heavy local or remote job remains running before the milestone is called complete.
 
-- **Current verification (2026-07-28, in progress):** the focused headless, trace, dataset,
-  evaluator, runtime, and Helios-control set reports 363 passes; the complete Peano suite reports
-  912 passes, Lambda Lab reports 360 tests plus 36 subtests, the book builds, all 193 documented
+- **Current verification (2026-07-28, in progress):** the current focused trained-policy,
+  arbitrary-proof, WMI request/control, and runtime set reports 138 passes; the complete Peano
+  suite reports 1,028 passes, Lambda Lab reports 360 tests plus 36 subtests, the book builds, all 193 documented
   links and 34 command sessions replay, and local application staging is green as
   `2026-07-28f` / `a-69aa3b753965`. A lightweight arm64 audit measured approximately
   12,538 quiet and 5,537 traced trivial proofs/second before the latest trace-copy optimization;
   all 18 pilot scripts had traced/quiet parity. The fixed scaled dataset digest is
   `1fa98caa2e0528d39c1b9003c4ee153dfbe633cb1ee4505e8f5b28eb837465dd`.
   The historical 13,344-transition release was provenance-refreshed under the same current source;
-  all 1,692 sessions again reached kernel-checked QED. No model has been downloaded or trained.
+  all 1,692 sessions again reached kernel-checked QED. No policy training run or learned model
+  result exists yet.
   Slurm preparation job `20029189` was submitted but failed safely before model loading because the
   first environment recipe incorrectly assumed the ML module made Torch importable. Its dependent
   train/evaluation jobs were canceled without running. The corrected recipe pins Helios's
@@ -538,8 +548,11 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   `pip check`. Replacement preparation job `20029964` completed in 1m31s: exact commit/model
   revisions matched, GH200 BF16 was active, train/reload losses were finite, and closed adapter and
   tokenizer hashes were emitted. Training job `20029970` remains queued, so no learned-policy
-  performance result is claimed. A separate typed-A100 WMI probe is now tracked; WMI may be used
-  only after its distinct x86-64 runtime passes the same gates.
+  performance result is claimed. Typed-A100 WMI probe `171369` passed in 13 seconds. Its distinct
+  x86-64 base/overlay, deployment, serialization, and one-shot guards now pass 96 focused local
+  tests. The arbitrary-theorem path adds immutable request transport, a request/job ledger, a
+  typed-A100 proof job, exact adapter/source rechecks, and second kernel replay before `.pa`
+  publication. The real WMI LoRA save/reload smoke is still required before training.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

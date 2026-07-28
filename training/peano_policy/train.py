@@ -28,6 +28,7 @@ from .manifest import (
     MANIFEST_VERSION,
     TOKENIZER_SUBDIR,
     artifact_directory_hash,
+    require_safetensors_adapter,
     sha256_file,
     sha256_json,
     source_hash,
@@ -53,6 +54,21 @@ class ResumeDecision:
     checkpoint: str | None
     checkpoint_sha256: str | None
     global_step: int | None
+
+
+def _require_fresh_one_shot_output(output_dir: Path, requested: str) -> None:
+    """Reject a one-shot retry before attestation or any filesystem mutation."""
+
+    if requested != "never" or not output_dir.exists():
+        return
+    if not output_dir.is_dir() or output_dir.is_symlink():
+        raise ValueError("resume='never' requires a fresh output directory")
+    existing = sorted(entry.name for entry in output_dir.iterdir())
+    if existing:
+        raise ValueError(
+            "resume='never' requires a fresh output directory; found: "
+            + ", ".join(existing)
+        )
 
 
 def _run_identity(
@@ -135,6 +151,20 @@ def _resume_decision(
     run_identity_sha256: str,
 ) -> ResumeDecision:
     if requested == "never":
+        unexpected = (
+            sorted(
+                entry.name
+                for entry in output_dir.iterdir()
+                if entry.name != "run-identity.json"
+            )
+            if output_dir.is_dir()
+            else []
+        )
+        if unexpected:
+            raise ValueError(
+                "resume='never' requires a fresh output directory; found: "
+                + ", ".join(unexpected)
+            )
         return ResumeDecision(False, None, None, None)
     candidate = (
         get_last_checkpoint(str(output_dir))
@@ -217,6 +247,8 @@ def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Pa
     output_dir = _repo_path(config.run.output_dir)
     train_path = _repo_path(config.data.train_path)
     eval_path = _repo_path(config.data.eval_path)
+    resume_requested = resume_override or config.run.resume
+    _require_fresh_one_shot_output(output_dir, resume_requested)
     deployment = deployment_identity()
     dataset_attestation = attest_dataset(train_path, eval_path)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -229,6 +261,16 @@ def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Pa
     )
     run_identity_path, run_identity_sha256 = _ensure_run_identity(
         output_dir, run_identity
+    )
+    early_resume = (
+        _resume_decision(
+            output_dir,
+            "never",
+            lambda _: None,
+            run_identity_sha256=run_identity_sha256,
+        )
+        if resume_requested == "never"
+        else None
     )
 
     # Kept lazy so static/data tooling never initializes CUDA or imports torch.
@@ -270,6 +312,7 @@ def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Pa
         torch_dtype=torch.bfloat16,
         attn_implementation=config.model.attn_implementation,
         trust_remote_code=config.model.trust_remote_code,
+        use_safetensors=True,
     )
     model_commit = getattr(model.config, "_commit_hash", None) or config.model.revision
     if model_commit != config.model.revision:
@@ -339,6 +382,7 @@ def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Pa
         save_strategy="steps",
         save_steps=config.trainer.save_steps,
         save_total_limit=config.trainer.save_total_limit,
+        save_safetensors=True,
         report_to=[],
         seed=config.run.seed,
         data_seed=config.run.seed,
@@ -352,8 +396,7 @@ def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Pa
         eval_dataset=eval_dataset or None,
         data_collator=_CompletionCollator(torch, tokenizer.pad_token_id),
     )
-    resume_requested = resume_override or config.run.resume
-    resume = _resume_decision(
+    resume = early_resume or _resume_decision(
         output_dir,
         resume_requested,
         get_last_checkpoint,
@@ -363,7 +406,7 @@ def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Pa
     eval_metrics = trainer.evaluate() if eval_examples else {}
     adapter_output = output_dir / ADAPTER_SUBDIR
     tokenizer_output = output_dir / TOKENIZER_SUBDIR
-    trainer.save_model(str(adapter_output))
+    model.save_pretrained(adapter_output, safe_serialization=True)
     tokenizer.save_pretrained(str(tokenizer_output))
 
     # A sync while a job is running must not let imported old code masquerade as
@@ -393,6 +436,7 @@ def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Pa
     }
     adapter_artifacts = artifact_directory_hash(output_dir, ADAPTER_SUBDIR)
     tokenizer_artifacts = artifact_directory_hash(output_dir, TOKENIZER_SUBDIR)
+    require_safetensors_adapter(adapter_artifacts)
     manifest = {
         "v": MANIFEST_VERSION,
         "prompt_version": PEANO_PROMPT_VERSION,

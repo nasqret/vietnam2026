@@ -189,9 +189,11 @@
   commit `41683e2`: the pinned Qwen3-1.7B revision downloaded, one BF16 LoRA step and adapter
   save/reload produced finite losses, and closed artifact hashes were recorded. The registered
   100-step training and kernel-judged evaluation remain pending; the model never enters the trusted
-  computing base. WMI access is available through `hw_csi`; its distinct x86-64/PyTorch-2.5.1/
-  CUDA-12.4 A100 path must pass its own probe and save/reload smoke rather than reuse the Helios ARM
-  lock.
+  computing base. WMI access is available through `hw_csi`; typed-A100 probe `171369` passed on an
+  A100-SXM4-80GB. Its distinct x86-64/PyTorch-2.5.1/CUDA-12.4 route now has a reviewed central-base
+  manifest, a 12-wheel hash-locked overlay, transactional deployment locks, and a one-shot
+  safetensors model-weight contract. The full WMI LoRA save/reload smoke is still required before training; the
+  Helios ARM lock is never reused.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -239,8 +241,17 @@
   `trans`/`rewrite` structure, while concrete coefficients can now be certified without obscuring
   the independent final check. M19's headless runner, first 10,000-row checked corpus, and policy
   infrastructure have focused green coverage. The real Helios environment/one-step LoRA smoke has
-  passed, while 100-step training, WMI replication, model comparison, and milestone-wide release
+  passed. WMI typed-A100 probe `171369` also passed on an A100-SXM4-80GB; its independent
+  x86-64/PyTorch-2.5.1/CUDA-12.4 route now has a reviewed central-base manifest, a 12-wheel
+  hash-locked overlay, transactional deployment locks, and a one-shot safetensors model-weight contract. The
+  full WMI LoRA save/reload smoke, 100-step training, model comparison, and milestone-wide release
   gates are not yet complete.
 - M19 pre-training infrastructure gate on 2026-07-28: 363 focused tests, 912 full Peano tests,
   Lambda 360 tests plus 36 subtests, clean book build/command replay, and green local staging as
   build `2026-07-28f`, application `a-69aa3b753965`. This is not deployed and is not a model result.
+- M19 current local gate on 2026-07-28: 138 focused trained-policy/WMI/arbitrary-proof tests and
+  1,028 complete Peano tests. A trained adapter is usable on any bounded closed PA formula through
+  an exact `model-v1` CLI that exports `.pa` only after a second kernel replay. WMI use goes through
+  an immutable canonical request, SHA-256-only Slurm transport, durable request/job ledger, and
+  allowlisted typed-A100 proof job. The adapter remains untrusted; the real WMI LoRA prepare,
+  100-step training, and learned evaluation results are still pending.

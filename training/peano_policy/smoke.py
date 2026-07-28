@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""One real GH200 forward/backward and LoRA save/reload preflight."""
+"""One real accelerator forward/backward and LoRA save/reload preflight."""
 
 from __future__ import annotations
 
 import argparse
+from dataclasses import dataclass
 import gc
 import json
 import math
@@ -11,6 +12,7 @@ import os
 from pathlib import Path
 import platform
 import random
+import re
 import tempfile
 from typing import Any
 
@@ -20,6 +22,7 @@ from .manifest import (
     ADAPTER_SUBDIR,
     TOKENIZER_SUBDIR,
     artifact_directory_hash,
+    require_safetensors_adapter,
     verify_artifact_directory,
     write_manifest,
 )
@@ -27,6 +30,81 @@ from .runtime import runtime_identity, slurm_job_identity
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+_SAFE_TOKEN_RE = re.compile(r"[A-Za-z0-9._-]{1,64}")
+
+
+@dataclass(frozen=True, slots=True)
+class SmokePlatformContract:
+    """Small site contract checked before an expensive model smoke."""
+
+    expected_machine: str = "aarch64"
+    minimum_cuda_capability: tuple[int, int] | None = None
+    report_format: str = "peano-policy-gh200-smoke"
+
+    def __post_init__(self) -> None:
+        if _SAFE_TOKEN_RE.fullmatch(self.expected_machine) is None:
+            raise ValueError("expected machine must be one safe token")
+        if _SAFE_TOKEN_RE.fullmatch(self.report_format) is None:
+            raise ValueError("report format must be one safe token")
+        capability = self.minimum_cuda_capability
+        if capability is not None and (
+            type(capability) is not tuple
+            or len(capability) != 2
+            or any(type(value) is not int or value < 0 or value > 99 for value in capability)
+        ):
+            raise ValueError("minimum CUDA capability must be a nonnegative pair")
+
+
+DEFAULT_PLATFORM_CONTRACT = SmokePlatformContract()
+
+
+def _parse_cuda_capability(value: str) -> tuple[int, int]:
+    match = re.fullmatch(r"([0-9]{1,2})\.([0-9]{1,2})", value)
+    if match is None:
+        raise argparse.ArgumentTypeError("expected CUDA capability MAJOR.MINOR")
+    return int(match.group(1)), int(match.group(2))
+
+
+def _safe_token(value: str) -> str:
+    if _SAFE_TOKEN_RE.fullmatch(value) is None:
+        raise argparse.ArgumentTypeError("expected one safe ASCII token")
+    return value
+
+
+def _verify_machine(contract: SmokePlatformContract) -> None:
+    machine = platform.machine()
+    if machine != contract.expected_machine:
+        raise RuntimeError(
+            f"preflight requires machine {contract.expected_machine}, got {machine}"
+        )
+
+
+def _verify_accelerator(torch: Any, contract: SmokePlatformContract) -> None:
+    if not torch.cuda.is_available() or not torch.cuda.is_bf16_supported():
+        raise RuntimeError("the allocated accelerator does not support CUDA BF16")
+    minimum = contract.minimum_cuda_capability
+    if minimum is not None:
+        actual = tuple(torch.cuda.get_device_capability(0))
+        if actual < minimum:
+            raise RuntimeError(
+                f"preflight requires CUDA capability {minimum[0]}.{minimum[1]}, "
+                f"got {actual[0]}.{actual[1]}"
+            )
+
+
+def _platform_contract_record(
+    contract: SmokePlatformContract,
+) -> dict[str, object] | None:
+    if contract == DEFAULT_PLATFORM_CONTRACT:
+        return None
+    minimum = contract.minimum_cuda_capability
+    return {
+        "expected_machine": contract.expected_machine,
+        "minimum_cuda_capability": (
+            None if minimum is None else [minimum[0], minimum[1]]
+        ),
+        "report_format": contract.report_format,
+    }
 
 
 def _repo_path(value: str) -> Path:
@@ -49,11 +127,14 @@ def _one_batch(example: Any, tokenizer: Any, torch: Any, max_length: int) -> dic
     }
 
 
-def run_smoke(config: ExperimentConfig) -> dict[str, object]:
+def run_smoke(
+    config: ExperimentConfig,
+    *,
+    platform_contract: SmokePlatformContract = DEFAULT_PLATFORM_CONTRACT,
+) -> dict[str, object]:
     """Exercise the exact tokenizer, model, LoRA, optimizer, and reload stack."""
 
-    if platform.machine() != "aarch64":
-        raise RuntimeError("the GH200 preflight must run on an aarch64 compute node")
+    _verify_machine(platform_contract)
     expected_hash_seed = str(config.run.seed)
     if os.environ.get("PYTHONHASHSEED") != expected_hash_seed:
         raise RuntimeError(f"launch the smoke with PYTHONHASHSEED={expected_hash_seed}")
@@ -62,8 +143,7 @@ def run_smoke(config: ExperimentConfig) -> dict[str, object]:
     from peft import LoraConfig as PeftLoraConfig, PeftModel, get_peft_model
     from transformers import AutoModelForCausalLM, AutoTokenizer, set_seed
 
-    if not torch.cuda.is_available() or not torch.cuda.is_bf16_supported():
-        raise RuntimeError("the allocated accelerator does not support CUDA BF16")
+    _verify_accelerator(torch, platform_contract)
     random.seed(config.run.seed)
     torch.manual_seed(config.run.seed)
     torch.cuda.manual_seed_all(config.run.seed)
@@ -101,6 +181,7 @@ def run_smoke(config: ExperimentConfig) -> dict[str, object]:
         torch_dtype=torch.bfloat16,
         attn_implementation=config.model.attn_implementation,
         trust_remote_code=False,
+        use_safetensors=True,
     )
     model_commit = _resolved_commit(
         getattr(model.config, "_commit_hash", None),
@@ -147,6 +228,7 @@ def run_smoke(config: ExperimentConfig) -> dict[str, object]:
         tokenizer.save_pretrained(tokenizer_dir)
         adapter_artifacts = artifact_directory_hash(root, ADAPTER_SUBDIR)
         tokenizer_artifacts = artifact_directory_hash(root, TOKENIZER_SUBDIR)
+        require_safetensors_adapter(adapter_artifacts)
         verify_artifact_directory(root, adapter_artifacts, ADAPTER_SUBDIR)
         verify_artifact_directory(root, tokenizer_artifacts, TOKENIZER_SUBDIR)
 
@@ -166,6 +248,7 @@ def run_smoke(config: ExperimentConfig) -> dict[str, object]:
             torch_dtype=torch.bfloat16,
             attn_implementation=config.model.attn_implementation,
             trust_remote_code=False,
+            use_safetensors=True,
         )
         reloaded = PeftModel.from_pretrained(base, adapter_dir).to("cuda")
         reloaded.eval()
@@ -177,8 +260,8 @@ def run_smoke(config: ExperimentConfig) -> dict[str, object]:
             raise RuntimeError("reloaded LoRA adapter produced a non-finite loss")
         reloaded_loss = float(reload_loss.detach().float().cpu())
 
-    return {
-        "format": "peano-policy-gh200-smoke",
+    report: dict[str, object] = {
+        "format": platform_contract.report_format,
         "v": 1,
         "status": "passed",
         "model": {
@@ -202,14 +285,34 @@ def run_smoke(config: ExperimentConfig) -> dict[str, object]:
         "runtime": runtime_identity(torch),
         "job": slurm_job_identity(),
     }
+    contract_record = _platform_contract_record(platform_contract)
+    if contract_record is not None:
+        report["platform_contract"] = contract_record
+    return report
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--output", type=Path)
+    parser.add_argument(
+        "--expected-machine",
+        type=_safe_token,
+        default=DEFAULT_PLATFORM_CONTRACT.expected_machine,
+    )
+    parser.add_argument("--minimum-cuda-capability", type=_parse_cuda_capability)
+    parser.add_argument(
+        "--report-format",
+        type=_safe_token,
+        default=DEFAULT_PLATFORM_CONTRACT.report_format,
+    )
     args = parser.parse_args(argv)
-    report = run_smoke(load_config(args.config))
+    contract = SmokePlatformContract(
+        expected_machine=args.expected_machine,
+        minimum_cuda_capability=args.minimum_cuda_capability,
+        report_format=args.report_format,
+    )
+    report = run_smoke(load_config(args.config), platform_contract=contract)
     if args.output is None:
         print(json.dumps(report, ensure_ascii=False, sort_keys=True))
     else:
@@ -218,6 +321,15 @@ def main(argv: list[str] | None = None) -> int:
         write_manifest(args.output, report)
         print(json.dumps({"report": str(args.output)}, sort_keys=True))
     return 0
+
+
+__all__ = [
+    "DEFAULT_PLATFORM_CONTRACT",
+    "SmokePlatformContract",
+    "_platform_contract_record",
+    "main",
+    "run_smoke",
+]
 
 
 if __name__ == "__main__":

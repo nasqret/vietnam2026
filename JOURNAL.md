@@ -852,3 +852,47 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   Bash `nounset` enabled. The probe now suspends `nounset` only while sourcing and activating the
   administrator-owned Conda hooks, then immediately restores strict mode. No package or model was
   installed by the failed diagnostic.
+
+## 2026-07-28 (branch peano-lab) — M19: WMI A100 probe passed and training boundary closed
+
+- Corrected WMI probe `171369` completed in 13 seconds on one A100-SXM4-80GB. It verified Python
+  3.12.12, Torch 2.5.1/CUDA 12.4, driver 610.43.02, 80GB VRAM, BF16, one visible device, finite
+  forward/backward work, outbound model/package access, and 18 TB free storage.
+- Added a canonical central-base manifest (including `ensurepip==25.0.1` and 23 package versions)
+  plus a separate 12-wheel SHA-256 overlay. Content-addressed WMI releases verify all central and
+  overlay install roots and refuse a stale current pointer.
+- Reworked sync/submission as one fail-closed deployment protocol: clean tracked Git archives,
+  remote Git-tree reconstruction, shared/exclusive source locks, provenance invalidation before
+  mutation, chain-wide scheduler checks, predecessor/report validation, helper+job composite
+  hashes, held submission until ledger durability, and pointer publication only after the full
+  model smoke.
+- WMI's Torch 2.5.1 path is one-shot. Base and adapter loading and Trainer weight saving are
+  safetensors-only; PEFT pickle fallbacks are rejected; any earlier run output prevents a retry
+  before data attestation. Python optimization cannot erase runtime checks, and failures inside
+  environment-ID command substitutions propagate explicitly.
+- The combined WMI/runtime/training focused gate reports 96 passes. No WMI LoRA preparation,
+  training, or evaluation job has yet been submitted from this code, and no learned solve-rate
+  claim is made.
+
+## 2026-07-28 (branch peano-lab) — M19: a trained policy can attempt a new theorem without becoming an oracle
+
+- Extended the trained evaluator from four frozen goal names to one caller-supplied bounded closed
+  PA formula. The formula is rejected before model loading if it is open, malformed, multiline,
+  control-bearing, numerically excessive, or structurally too deep. Its original parsed meaning is
+  retained; canonical printer output must round-trip to the same AST.
+- A rollout still reaches `proof` only through original-target kernel finalization. Publication
+  then selects the smallest checked attempt and replays its exact tactics from a fresh state under
+  the attested intuitionistic `model-v1` authority. Only matching theorem, environment, command
+  count, proof nodes, and a second kernel QED can emit pasteable `.pa`.
+- Closed the operational boundaries exposed by arbitrary input: finite decode values, composed
+  call/token budgets, manifest-byte and closed adapter/tokenizer rechecks before publication,
+  source/job identity rechecks, exclusive non-overwriting outputs below `results/`, and no writes
+  into source or model artifact trees.
+- Added the actual WMI user route. A local wrapper creates nonce-bearing canonical request JSON,
+  streams it under the deployment lock, and submits only its SHA-256 ID. The guarded controller
+  validates the request and durably joins request/job hashes before releasing an allowlisted A100
+  job. Digest-named report, optional proof, and terminal summary distinguish `no-proof` from an
+  infrastructure failure.
+- Current gates: 138 focused policy/request/WMI/runtime tests and 1,028 complete Peano tests pass;
+  Lambda Lab remains 360 tests plus 36 subtests. No WMI model preparation/training/evaluation or
+  arbitrary theorem inference has yet run from this source, so no learned result is claimed.

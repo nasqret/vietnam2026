@@ -13,6 +13,7 @@ from typing import Any, Iterable, Mapping
 MANIFEST_VERSION = 1
 ADAPTER_SUBDIR = "adapter"
 TOKENIZER_SUBDIR = "tokenizer"
+_UNSAFE_MODEL_SUFFIXES = {".bin", ".pkl", ".pickle", ".pt", ".pth"}
 
 
 def sha256_file(path: Path, *, chunk_size: int = 1024 * 1024) -> str:
@@ -134,6 +135,36 @@ def verify_artifact_directory(
         )
     verify_hash_group(root, expected)
     return directory
+
+
+def require_safetensors_adapter(
+    expected: Mapping[str, Any],
+    relative: str = ADAPTER_SUBDIR,
+) -> None:
+    """Reject PEFT's pickle fallback before any adapter loader is invoked."""
+
+    files = expected.get("files")
+    if type(files) is not dict:
+        raise ValueError("malformed adapter artifact hash group")
+    canonical = Path(relative).as_posix()
+    required = f"{canonical}/adapter_model.safetensors"
+    unsafe = sorted(
+        name
+        for name in files
+        if type(name) is not str
+        or Path(name).suffix.lower() in _UNSAFE_MODEL_SUFFIXES
+    )
+    safetensors = sorted(
+        name
+        for name in files
+        if type(name) is str and Path(name).suffix.lower() == ".safetensors"
+    )
+    if unsafe or safetensors != [required]:
+        detail = unsafe or safetensors
+        raise ValueError(
+            "adapter must contain exactly adapter_model.safetensors and no "
+            f"pickle-compatible weights: {detail}"
+        )
 
 
 def write_manifest(path: Path, manifest: Mapping[str, Any]) -> None:

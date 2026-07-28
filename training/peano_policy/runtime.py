@@ -9,6 +9,7 @@ sync or job script before a result can be published.
 from __future__ import annotations
 
 import csv
+import hashlib
 import importlib.metadata
 import json
 import os
@@ -16,6 +17,7 @@ from pathlib import Path
 import platform
 import re
 import socket
+import subprocess
 from typing import Any, Iterable
 
 from .manifest import hash_files, sha256_file, sha256_json
@@ -73,6 +75,14 @@ RUNTIME_DISTRIBUTIONS = (
 _COMMIT_RE = re.compile(r"[0-9a-f]{40}")
 _JOB_ID_RE = re.compile(r"[0-9]+")
 _TIMESTAMP_RE = re.compile(r"[0-9TZ:+-]+")
+_REQUIREMENTS_OVERRIDE_RE = re.compile(
+    r"training/peano_policy/requirements-[A-Za-z0-9._-]{1,80}\.lock"
+)
+_BASE_MANIFEST_RE = re.compile(
+    r"training/peano_policy/wmi-base-v[0-9]{1,3}\.json"
+)
+_SAFE_DECLARATION_RE = re.compile(r"[A-Za-z0-9._/-]{1,128}")
+_NVIDIA_DRIVER_RE = re.compile(r"[0-9]+(?:\.[0-9]+){1,2}")
 
 
 def _one_line(label: str, value: object, pattern: re.Pattern[str]) -> str:
@@ -82,24 +92,24 @@ def _one_line(label: str, value: object, pattern: re.Pattern[str]) -> str:
 
 
 def source_sync_identity(*, required: bool) -> dict[str, object]:
-    """Read the small source record written by ``helios_sync_project.sh``."""
+    """Read the small source record written by a cluster sync tool."""
 
     path = SOURCE_PROVENANCE_PATH
     if not path.is_file():
         if required:
-            raise FileNotFoundError(f"missing Helios source provenance: {path}")
+            raise FileNotFoundError(f"missing source provenance: {path}")
         return {"status": "not-synced"}
     if path.is_symlink() or path.stat().st_size > 1_024:
-        raise ValueError("Helios source provenance is not one small regular file")
+        raise ValueError("source provenance is not one small regular file")
     try:
         text = path.read_text(encoding="utf-8")
     except UnicodeError as exc:
-        raise ValueError("Helios source provenance is not UTF-8") from exc
+        raise ValueError("source provenance is not UTF-8") from exc
     if text.count("\n") != 1 or not text.endswith("\n"):
-        raise ValueError("Helios source provenance must contain exactly one row")
+        raise ValueError("source provenance must contain exactly one row")
     fields = text[:-1].split("\t")
     if len(fields) != 3:
-        raise ValueError("Helios source provenance must contain three TSV fields")
+        raise ValueError("source provenance must contain three TSV fields")
     commit = _one_line("source commit", fields[0], _COMMIT_RE)
     dirty = fields[1]
     if dirty not in {"true", "false"}:
@@ -130,24 +140,47 @@ def job_script_identity(*, required: bool) -> dict[str, object]:
         or re.fullmatch(r"[A-Za-z0-9._/-]+", value) is None
     ):
         raise ValueError("PEANO_JOB_SCRIPT must be one safe relative slurm path")
-    path = (REPOSITORY_ROOT / value).resolve()
+    candidate = REPOSITORY_ROOT / value
     slurm_root = (REPOSITORY_ROOT / "slurm").resolve()
-    if path.parent != slurm_root or not path.is_file() or path.is_symlink():
+    if candidate.is_symlink() or not candidate.is_file():
         raise ValueError("PEANO_JOB_SCRIPT does not name a regular repository job")
-    return {"status": "declared", "path": value, "sha256": sha256_file(path)}
+    path = candidate.resolve()
+    if path.parent != slurm_root:
+        raise ValueError("PEANO_JOB_SCRIPT does not name a regular repository job")
+    file_sha256 = sha256_file(path)
+    result: dict[str, object] = {
+        "status": "declared",
+        "path": value,
+        "sha256": file_sha256,
+    }
+    if os.environ.get("PEANO_CLUSTER_BACKEND") == "wmi":
+        support = support_script_identity(required=True)
+        support_sha256 = support.get("sha256")
+        if type(support_sha256) is not str:
+            raise RuntimeError("WMI support script identity is malformed")
+        result["file_sha256"] = file_sha256
+        result["support_script"] = support
+        result["sha256"] = hashlib.sha256(
+            f"{file_sha256}\n{support_sha256}\n".encode("ascii")
+        ).hexdigest()
+    return result
 
 
 def module_identity(*, required: bool) -> dict[str, object]:
     """Record the pinned module request and Lmod's resolved module stack."""
 
-    requested = os.environ.get("PEANO_HELIOS_ML_MODULE")
+    generic = os.environ.get("PEANO_ML_MODULE")
+    legacy = os.environ.get("PEANO_HELIOS_ML_MODULE")
+    if generic is not None and legacy is not None and generic != legacy:
+        raise ValueError("generic and Helios module declarations disagree")
+    requested = generic if generic is not None else legacy
     loaded = os.environ.get("LOADEDMODULES")
     if requested is None and loaded is None:
         if required:
             raise ValueError("the scheduled job did not record its module stack")
         return {"status": "not-loaded"}
     for label, value in (
-        ("PEANO_HELIOS_ML_MODULE", requested),
+        ("requested ML module", requested),
         ("LOADEDMODULES", loaded),
     ):
         if value is not None and (not value or len(value) > 4_000 or any(
@@ -165,16 +198,165 @@ def module_identity(*, required: bool) -> dict[str, object]:
     }
 
 
+def _requirements_path() -> Path:
+    """Resolve one declared repository lock, preserving the Helios default."""
+
+    value = os.environ.get("PEANO_REQUIREMENTS_LOCK")
+    if value is None:
+        path = REQUIREMENTS_PATH
+    else:
+        candidate = Path(value)
+        if (
+            not value
+            or candidate.is_absolute()
+            or ".." in candidate.parts
+            or _REQUIREMENTS_OVERRIDE_RE.fullmatch(value) is None
+        ):
+            raise ValueError("requirements lock must be one safe relative path")
+        path = REPOSITORY_ROOT / candidate
+    if path.is_symlink() or not path.is_file():
+        raise ValueError("requirements lock must be one repository regular file")
+    resolved = path.resolve()
+    root = REPOSITORY_ROOT.resolve()
+    if root not in resolved.parents:
+        raise ValueError("requirements lock resolves outside the repository")
+    return resolved
+
+
+def requirements_identity() -> dict[str, str]:
+    """Hash the exact runtime lock selected by the scheduled wrapper."""
+
+    path = _requirements_path()
+    return {
+        "path": path.relative_to(REPOSITORY_ROOT.resolve()).as_posix(),
+        "sha256": sha256_file(path),
+    }
+
+
+def _base_manifest_path() -> Path:
+    """Resolve the reviewed WMI central-environment contract."""
+
+    value = os.environ.get("PEANO_BASE_MANIFEST")
+    if value is None:
+        raise ValueError("PEANO_BASE_MANIFEST is required for this runtime")
+    candidate = Path(value)
+    if (
+        candidate.is_absolute()
+        or ".." in candidate.parts
+        or _BASE_MANIFEST_RE.fullmatch(value) is None
+    ):
+        raise ValueError("base manifest must be one safe relative path")
+    path = REPOSITORY_ROOT / candidate
+    if path.is_symlink() or not path.is_file():
+        raise ValueError("base manifest must be one repository regular file")
+    resolved = path.resolve()
+    root = REPOSITORY_ROOT.resolve()
+    if root not in resolved.parents:
+        raise ValueError("base manifest resolves outside the repository")
+    return resolved
+
+
+def base_manifest_identity() -> dict[str, str]:
+    """Hash the reviewed central package inventory selected by WMI."""
+
+    path = _base_manifest_path()
+    return {
+        "path": path.relative_to(REPOSITORY_ROOT.resolve()).as_posix(),
+        "sha256": sha256_file(path),
+    }
+
+
+def support_script_identity(*, required: bool) -> dict[str, object]:
+    """Hash a fixed scheduled-job helper sourced outside the Slurm spool."""
+
+    value = os.environ.get("PEANO_JOB_ENV_SCRIPT")
+    if value is None:
+        if required:
+            raise ValueError("PEANO_JOB_ENV_SCRIPT is required for this runtime")
+        return {"status": "not-declared"}
+    candidate = Path(value)
+    if (
+        not value.startswith("scripts/")
+        or candidate.is_absolute()
+        or ".." in candidate.parts
+        or re.fullmatch(r"[A-Za-z0-9._/-]+", value) is None
+    ):
+        raise ValueError("PEANO_JOB_ENV_SCRIPT must be one safe scripts path")
+    path = REPOSITORY_ROOT / candidate
+    scripts_root = (REPOSITORY_ROOT / "scripts").resolve()
+    if (
+        path.is_symlink()
+        or not path.is_file()
+        or path.resolve().parent != scripts_root
+    ):
+        raise ValueError(
+            "PEANO_JOB_ENV_SCRIPT does not name one regular repository helper"
+        )
+    file_sha256 = sha256_file(path)
+    declared_sha256 = os.environ.get("PEANO_JOB_ENV_SHA256")
+    if required and declared_sha256 is None:
+        raise ValueError("PEANO_JOB_ENV_SHA256 is required for this runtime")
+    if declared_sha256 is not None and (
+        re.fullmatch(r"[0-9a-f]{64}", declared_sha256) is None
+        or declared_sha256 != file_sha256
+    ):
+        raise ValueError("sourced WMI helper hash does not match its current file")
+    result: dict[str, object] = {
+        "status": "declared",
+        "path": value,
+        "sha256": file_sha256,
+    }
+    if declared_sha256 is not None:
+        result["sourced_sha256"] = declared_sha256
+    return result
+
+
+def _runtime_declaration() -> dict[str, object] | None:
+    """Bind non-default cluster runtime choices into pre-run identity."""
+
+    backend = os.environ.get("PEANO_CLUSTER_BACKEND")
+    base_environment = os.environ.get("PEANO_BASE_ENV")
+    lock = os.environ.get("PEANO_REQUIREMENTS_LOCK")
+    base_manifest = os.environ.get("PEANO_BASE_MANIFEST")
+    values = (backend, base_environment, lock, base_manifest)
+    if values == (None, None, None, None):
+        return None
+    if any(value is None for value in values):
+        raise ValueError("cluster runtime declaration is incomplete")
+    assert backend is not None and base_environment is not None
+    for label, value in (
+        ("PEANO_CLUSTER_BACKEND", backend),
+        ("PEANO_BASE_ENV", base_environment),
+    ):
+        if _SAFE_DECLARATION_RE.fullmatch(value) is None:
+            raise ValueError(f"{label} is malformed")
+    return {
+        "backend": backend,
+        "base_environment": base_environment,
+        "base_manifest": base_manifest_identity(),
+        "requirements": requirements_identity(),
+    }
+
+
 def deployment_identity() -> dict[str, object]:
     """Stable source identity suitable for a resumable run identity."""
 
     scheduled = os.environ.get("SLURM_JOB_ID") is not None
-    return {
+    result: dict[str, object] = {
         "mode": "slurm" if scheduled else "local",
         "source_sync": source_sync_identity(required=scheduled),
         "job_script": job_script_identity(required=scheduled),
         "modules": module_identity(required=scheduled),
     }
+    declaration = _runtime_declaration()
+    if declaration is not None:
+        result["runtime_declaration"] = declaration
+    support_required = scheduled and os.environ.get("PEANO_CLUSTER_BACKEND") == "wmi"
+    if support_required or os.environ.get("PEANO_JOB_ENV_SCRIPT") is not None:
+        result["support_script"] = support_script_identity(
+            required=support_required
+        )
+    return result
 
 
 def _submission_row(job_id: str) -> dict[str, str]:
@@ -229,16 +411,18 @@ def slurm_job_identity() -> dict[str, object]:
     if dependency and _JOB_ID_RE.fullmatch(dependency) is None:
         raise ValueError("Slurm ledger dependency job id is malformed")
 
+    environment_names = (
+        "SLURM_JOB_NAME",
+        "SLURM_JOB_ACCOUNT",
+        "SLURM_JOB_PARTITION",
+        "SLURM_CLUSTER_NAME",
+        "SLURM_JOB_NODELIST",
+        "SLURM_SUBMIT_DIR",
+    )
+    if os.environ.get("PEANO_CLUSTER_BACKEND") == "wmi":
+        environment_names += ("SLURM_JOB_CONSTRAINTS", "SLURM_JOB_GRES")
     environment_fields = {
-        name: os.environ.get(name)
-        for name in (
-            "SLURM_JOB_NAME",
-            "SLURM_JOB_ACCOUNT",
-            "SLURM_JOB_PARTITION",
-            "SLURM_CLUSTER_NAME",
-            "SLURM_JOB_NODELIST",
-            "SLURM_SUBMIT_DIR",
-        )
+        name: os.environ.get(name) for name in environment_names
     }
     for name, value in environment_fields.items():
         if value is not None and (
@@ -266,8 +450,11 @@ def slurm_job_identity() -> dict[str, object]:
 def runtime_identity(torch_module: Any | None = None) -> dict[str, object]:
     """Record behavior-relevant Python distributions and accelerator details."""
 
+    distributions = RUNTIME_DISTRIBUTIONS
+    if os.environ.get("PEANO_CLUSTER_BACKEND") == "wmi":
+        distributions += ("torchaudio", "torchvision", "triton")
     packages: dict[str, str | None] = {}
-    for distribution in RUNTIME_DISTRIBUTIONS:
+    for distribution in distributions:
         try:
             packages[distribution] = importlib.metadata.version(distribution)
         except importlib.metadata.PackageNotFoundError:
@@ -280,11 +467,10 @@ def runtime_identity(torch_module: Any | None = None) -> dict[str, object]:
         "hostname": socket.gethostname(),
         "packages": packages,
         "packages_sha256": sha256_json(packages),
-        "requirements": {
-            "path": REQUIREMENTS_PATH.relative_to(REPOSITORY_ROOT).as_posix(),
-            "sha256": sha256_file(REQUIREMENTS_PATH),
-        },
+        "requirements": requirements_identity(),
     }
+    if os.environ.get("PEANO_BASE_MANIFEST") is not None:
+        result["base_manifest"] = base_manifest_identity()
     if torch_module is not None:
         cuda_available = bool(torch_module.cuda.is_available())
         accelerator: dict[str, object] = {
@@ -301,8 +487,40 @@ def runtime_identity(torch_module: Any | None = None) -> dict[str, object]:
                 device_capability=list(torch_module.cuda.get_device_capability(0)),
                 bf16_supported=bool(torch_module.cuda.is_bf16_supported()),
             )
+            if os.environ.get("PEANO_CLUSTER_BACKEND") == "wmi":
+                accelerator["total_memory"] = int(
+                    torch_module.cuda.get_device_properties(0).total_memory
+                )
+                accelerator["nvidia_driver"] = _nvidia_driver_version()
         result["accelerator"] = accelerator
     return result
+
+
+def _nvidia_driver_version() -> str:
+    """Return one canonical driver version even on a multi-GPU WMI node."""
+
+    completed = subprocess.run(
+        [
+            "nvidia-smi",
+            "--query-gpu=driver_version",
+            "--format=csv,noheader",
+        ],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=10,
+    )
+    driver_versions = {
+        line.strip()
+        for line in completed.stdout.splitlines()
+        if line.strip()
+    }
+    if (
+        len(driver_versions) != 1
+        or _NVIDIA_DRIVER_RE.fullmatch(next(iter(driver_versions), "")) is None
+    ):
+        raise RuntimeError("WMI nodes must report one canonical NVIDIA driver")
+    return driver_versions.pop()
 
 
 def source_files_identity(paths: Iterable[Path]) -> dict[str, object]:
@@ -334,12 +552,15 @@ def detached_json(value: object) -> object:
 __all__ = [
     "RUNTIME_DISTRIBUTIONS",
     "SUBMISSION_FIELDS",
+    "base_manifest_identity",
     "deployment_identity",
     "detached_json",
     "job_script_identity",
     "module_identity",
+    "requirements_identity",
     "runtime_identity",
     "slurm_job_identity",
     "source_files_identity",
     "source_sync_identity",
+    "support_script_identity",
 ]

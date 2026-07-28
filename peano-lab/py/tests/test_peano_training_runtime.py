@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import ast
 import hashlib
 import json
 import os
@@ -36,6 +37,7 @@ from training.peano_policy.data import (
 from training.peano_policy.manifest import (
     artifact_directory_hash,
     hash_files,
+    require_safetensors_adapter,
     sha256_file,
     verify_hash_group,
     verify_artifact_directory,
@@ -549,6 +551,30 @@ def test_loader_artifact_manifest_must_cover_its_complete_closed_directory(
         verify_artifact_directory(tmp_path, complete, "adapter")
 
 
+def test_adapter_loader_rejects_peft_pickle_fallback_artifacts() -> None:
+    safe = {
+        "files": {
+            "adapter/adapter_config.json": "a" * 64,
+            "adapter/adapter_model.safetensors": "b" * 64,
+        }
+    }
+    require_safetensors_adapter(safe)
+
+    with pytest.raises(ValueError, match="exactly adapter_model.safetensors"):
+        require_safetensors_adapter(
+            {"files": {"adapter/adapter_config.json": "a" * 64}}
+        )
+    with pytest.raises(ValueError, match="pickle-compatible"):
+        require_safetensors_adapter(
+            {
+                "files": {
+                    **safe["files"],
+                    "adapter/adapter_model.bin": "c" * 64,
+                }
+            }
+        )
+
+
 def test_run_identity_gates_and_hashes_checkpoint_resume(tmp_path: Path) -> None:
     output = tmp_path / "run"
     output.mkdir()
@@ -589,6 +615,116 @@ def test_run_identity_gates_and_hashes_checkpoint_resume(tmp_path: Path) -> None
             lambda _: None,
             run_identity_sha256=digest,
         )
+
+
+def test_resume_never_requires_a_fresh_output_directory(tmp_path: Path) -> None:
+    output = tmp_path / "one-shot"
+    output.mkdir()
+    (output / "run-identity.json").write_text("{}\n", encoding="utf-8")
+
+    decision = training_run._resume_decision(
+        output,
+        "never",
+        lambda _: pytest.fail("resume=never must not inspect checkpoints"),
+        run_identity_sha256="0" * 64,
+    )
+    assert decision == training_run.ResumeDecision(False, None, None, None)
+
+    (output / "checkpoint-1").mkdir()
+    with pytest.raises(ValueError, match="requires a fresh output directory"):
+        training_run._resume_decision(
+            output,
+            "never",
+            lambda _: None,
+            run_identity_sha256="0" * 64,
+        )
+
+
+def test_one_shot_freshness_guard_runs_before_identity_mutation(tmp_path: Path) -> None:
+    output = tmp_path / "one-shot"
+    training_run._require_fresh_one_shot_output(output, "never")
+    output.mkdir()
+    training_run._require_fresh_one_shot_output(output, "never")
+    (output / "run-identity.json").write_text("{}\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="requires a fresh output directory"):
+        training_run._require_fresh_one_shot_output(output, "never")
+    training_run._require_fresh_one_shot_output(output, "auto")
+
+
+def test_hf_model_loading_and_training_checkpoints_are_safetensors_only() -> None:
+    def calls(path: Path, owner: str, method: str) -> list[ast.Call]:
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        return [
+            node
+            for node in ast.walk(tree)
+            if isinstance(node, ast.Call)
+            and isinstance(node.func, ast.Attribute)
+            and node.func.attr == method
+            and isinstance(node.func.value, ast.Name)
+            and node.func.value.id == owner
+        ]
+
+    expected_model_loads = {
+        "train.py": 1,
+        "smoke.py": 2,
+        "generate.py": 1,
+    }
+    for name, expected_count in expected_model_loads.items():
+        model_loads = calls(
+            TRAINING_ROOT / name,
+            "AutoModelForCausalLM",
+            "from_pretrained",
+        )
+        assert len(model_loads) == expected_count
+        for model_load in model_loads:
+            keyword = next(
+                (
+                    item
+                    for item in model_load.keywords
+                    if item.arg == "use_safetensors"
+                ),
+                None,
+            )
+            assert keyword is not None
+            assert isinstance(keyword.value, ast.Constant)
+            assert keyword.value.value is True
+
+    training_arguments = [
+        node
+        for node in ast.walk(
+            ast.parse(
+                (TRAINING_ROOT / "train.py").read_text(encoding="utf-8"),
+                filename=str(TRAINING_ROOT / "train.py"),
+            )
+        )
+        if isinstance(node, ast.Call)
+        and isinstance(node.func, ast.Name)
+        and node.func.id == "TrainingArguments"
+    ]
+    assert len(training_arguments) == 1
+    save_keyword = next(
+        (
+            item
+            for item in training_arguments[0].keywords
+            if item.arg == "save_safetensors"
+        ),
+        None,
+    )
+    assert save_keyword is not None
+    assert isinstance(save_keyword.value, ast.Constant)
+    assert save_keyword.value.value is True
+
+    train_source = (TRAINING_ROOT / "train.py").read_text(encoding="utf-8")
+    assert "trainer.save_model" not in train_source
+    peft_saves = calls(TRAINING_ROOT / "train.py", "model", "save_pretrained")
+    assert len(peft_saves) == 1
+    safe_keyword = next(
+        (item for item in peft_saves[0].keywords if item.arg == "safe_serialization"),
+        None,
+    )
+    assert safe_keyword is not None
+    assert isinstance(safe_keyword.value, ast.Constant)
+    assert safe_keyword.value.value is True
 
 
 def test_slurm_runtime_identity_joins_exact_submission_and_source(

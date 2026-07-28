@@ -447,19 +447,98 @@ confirmed node `g3n1`, partition `gpu_csi`, feature `vram80g`, and the owner's
 and `gpu_idle` are not used for the initial run because the current trainer does
 not yet implement the site's requeue/checkpoint signal contract.
 
-WMI is x86-64 and its documented runtime differs from Helios. The initial
-read-only probe therefore requests exactly one typed `nvidia_a100` GPU for five
-minutes, loads `anaconda/2025.12-1`, activates the central `pytorch-gpu`
-environment, and requires Python 3.12, PyTorch 2.5.1, CUDA 12.4, one visible
-A100, at least 75 GiB VRAM, BF16 support, and a finite BF16 matrix
-forward/backward pass. It also records module, driver, storage, PyPI, and model
-repository reachability without installing anything.
+WMI is x86-64 and its documented runtime differs from Helios. The read-only
+probe requested exactly one typed `nvidia_a100` GPU for five minutes, loaded
+`anaconda/2025.12-1`, activated the central `pytorch-gpu` environment, and
+required Python 3.12, PyTorch 2.5.1, CUDA 12.4, one visible A100, at least 75
+GiB VRAM, BF16 support, and a finite BF16 matrix forward/backward pass. Job
+`171369` passed in 13 seconds on an A100-SXM4-80GB with driver `610.43.02` and
+reported 18 TB free under `/work`. The diagnostic installed nothing.
 
-After that probe passes, WMI receives its own version-pinned Transformers/PEFT
-overlay, source-sync record, job scripts, submission ledger, and runtime
-manifest. The ARM Helios lock and `.venv-helios` must never be reused or
-relabeled on WMI. Training may move to WMI only after the same real
-forward/backward/save/reload smoke and independent data attestation pass there.
+The follow-on runtime is site-specific and closed in two layers. A reviewed
+central-base manifest pins Python, `ensurepip`, Torch/CUDA, NumPy, Triton,
+vision/audio, and their exact dependency versions. A separate 12-distribution
+overlay pins every accepted CPython-3.12 x86-64 wheel by SHA-256 without
+replacing central Torch, NumPy, Triton, CUDA, torchvision, or torchaudio. The
+environment identity hashes both contracts, every overlay distribution must
+resolve under the immutable release, and the active pointer must match the
+currently revalidated base.
+
+WMI source publication is transactional. `git archive` excludes ignored and
+uncommitted files; the receiver reconstructs and compares the exact Git tree
+before publishing. Source-dependent preparation, training, and evaluation jobs
+hold a shared deployment lock; sync holds the exclusive lock, and provenance is
+invalidated before any live-tree change.
+Preparation publishes the environment pointer only after package checks,
+independent data attestation, a real BF16 LoRA step, safetensors save/reload,
+and finite losses all pass. The ARM Helios lock and `.venv-helios` are never
+reused or relabeled. As of this checkpoint the code and local tests for that
+gate are ready, but the full WMI save/reload job has not yet been accepted, so
+no WMI training result is claimed.
+
+### 10.2 Proving a new theorem with a trained adapter
+
+After a training manifest and final adapter have passed their artifact checks, the same evaluator
+can search one user-supplied closed PA formula:
+
+```console
+python3 scripts/eval_trained_peano_policy.py \
+  --adapter results/peano-policy/qwen3-1.7b-lora-wmi-smoke \
+  --theorem 'forall n. exists x. n * (n + 1) = 2 * x' \
+  --sample --k 16 --max-steps 24 \
+  --output results/peano-policy/manual-proofs/even-product.json \
+  --proof-output results/peano-policy/manual-proofs/even-product.pa
+```
+
+Custom-theorem mode is intentionally narrower than the browser's complete teaching surface. It
+reconstructs the exact intuitionistic `model-v1` command and seven-theorem authority from the
+adapter's independently replayed dataset attestation. The caller cannot enable `auto`, classical
+logic, another theorem library, or a wider command set. The formula must be one closed,
+control-free line within the same parser and numeral bounds as the headless prover; this preflight
+happens before the model is loaded. More than one rollout requires `--sample`, so `--k 16` cannot
+silently repeat the same greedy trajectory sixteen times.
+
+The generated model remains untrusted twice over. Each rollout reaches `proof` only after the
+evaluator checks its certificate against the externally retained original formula. The smallest
+successful rollout is then replayed from scratch under the same capability object through the
+headless verifier. Only a second `status=proved`, `kernel_checked=true` result may create
+`result.pa`. The script is ordinary pasteable Peano Lab input, not a privileged certificate:
+
+```text
+pa prove <canonical closed formula>
+<generated tactic 1>
+...
+qed
+```
+
+The JSON report retains every attempt, adapter/decode/source/job provenance, the chosen sample,
+proof-node count, exact commands, replay environment hash, script text, and script SHA-256. Neither
+output path is overwritten. Repository-local outputs are confined to `results/`, outside source
+and the adapter's closed weight/tokenizer trees. No checked proof means exit status 1, a report with
+`proof_publication.status = "no-proof"`, and no `.pa` file. At present this command runs where the
+adapter and PyTorch GPU environment live; it is not yet a browser inference service or an
+English-to-PA formalizer.
+
+On WMI, do not paste the bare Python command into the login node or an ad-hoc `srun`: accepted
+runtime and submission-ledger provenance exist only inside an allowlisted job. From the local clean
+checkout, create and submit a request with:
+
+```console
+scripts/wmi_prove_theorem.sh \
+  --submit --confirm PEANO-LAB-WMI-TRAINING \
+  --theorem 'forall n. exists x. n * (n + 1) = 2 * x' \
+  --sample --k 16 --max-steps 24
+```
+
+The wrapper validates the formula and total call budget locally, creates a nonce-bearing canonical
+JSON request, streams it under the WMI deployment lock, and exports only its 64-hex SHA-256 ID to
+Slurm. The guarded submitter revalidates and hashes the request, appends both the ordinary job row
+and an immutable request/job ledger row before releasing one typed-A100 job. The compute job
+rechecks the central base, overlay, source, scheduler row, request bytes, adapter, and kernel path.
+It writes digest-named report, optional `.pa`, and terminal run-summary files under
+`results/peano-policy/user-proofs/`; a sound but unsolved request finishes with `status=no-proof`
+rather than masquerading as an infrastructure crash. The wrapper prints the request ID used in
+those filenames.
 
 ## 11. Provenance and result ledger
 

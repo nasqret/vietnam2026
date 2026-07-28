@@ -16,6 +16,7 @@ set -euo pipefail
 
 cd "${SLURM_SUBMIT_DIR:?SLURM_SUBMIT_DIR is not defined}"
 export PYTHONNOUSERSITE=1
+unset PYTHONOPTIMIZE
 
 printf '%s\n' '== scheduler =='
 date -Is

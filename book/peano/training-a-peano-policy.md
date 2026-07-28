@@ -555,13 +555,27 @@ CUDA-12.9 wheel lock described above. WMI is x86-64 and exposes an official
 `anaconda/2025.12-1` module whose `pytorch-gpu` environment contains Python 3.12, PyTorch 2.5.1,
 and CUDA 12.4. Reusing the Helios lock would be both technically wrong and provenance laundering.
 
-The tracked WMI probe therefore requests one *typed* A100 for five minutes and installs nothing.
-It asserts exactly one visible device, at least 75 GiB VRAM, BF16 support, and a finite BF16 matrix
-forward/backward pass, while recording driver, module, storage, and outbound-access facts. Only
-after it passes may a dedicated Peano overlay add pinned Transformers and PEFT packages. WMI must
-then repeat the real LoRA save/reload smoke and independent dataset attestation before accepting a
-training job. Moving the computation does not move the trust boundary: every generated proof is
-still replayed by Peano Lab and every QED is still checked against its original theorem.
+The corrected WMI probe `171369` requested one *typed* A100 and installed nothing. In thirteen
+seconds it verified exactly one visible A100-SXM4-80GB, BF16, a finite backward pass, Python
+3.12.12, Torch 2.5.1/CUDA 12.4, driver 610.43.02, outbound access, and 18 TB free storage.
+
+The resulting environment is a two-layer contract. A canonical manifest names the central Python,
+`ensurepip`, Torch/CUDA, numeric stack, and delegated dependency versions; live preparation proves
+each distribution still resolves below the fixed central prefix. A twelve-wheel overlay then pins
+Transformers, PEFT, Accelerate, safetensors, and their missing or incompatible dependencies by
+exact x86-64 wheel SHA-256. The content-addressed environment ID hashes both records. Every overlay
+distribution must resolve below that release, and a `current` pointer is rejected when its ID no
+longer matches the freshly revalidated base.
+
+Source deployment follows the same idea. A clean `git archive` excludes ignored and uncommitted
+files. WMI reconstructs its Git tree, then publishes under an exclusive deployment lock only after
+the tree matches; source-dependent preparation, training, and evaluation jobs hold the shared lock,
+and sync removes valid provenance before it touches the live tree. Preparation moves the
+environment pointer last, after package checks,
+independent dataset attestation, a real LoRA optimizer step, adapter/tokenizer save and reload, and
+finite losses. The 96-test local control/runtime gate passes, but that real A100 model smoke is
+still pending. Moving the computation does not move the trust boundary: every generated proof is
+still replayed by Peano Lab and every QED is checked against its original theorem.
 
 ## Reproduction and honest resume
 
@@ -580,6 +594,15 @@ checkpoint only inside the output directory and accepts it only when its adjacen
 the expected digest.  It records the checkpoint artifact hash and global step.  This prevents
 “resume” from quietly becoming warm-starting different code, data, or hyperparameters.
 
+WMI's managed Torch 2.5.1 cannot safely load the Trainer optimizer pickle under the selected
+Transformers release, so its first pilot is deliberately one-shot. It rejects a nonempty output
+directory before dataset attestation, forces safetensors for base and model-weight files, and
+refuses checkpoint resume entirely. Trainer checkpoints may still contain optimizer/scheduler
+`.pt` state, but WMI never loads it. The final PEFT adapter is saved directly as
+`adapter_model.safetensors`; loader-visible `.bin`, `.pt`, or pickle files in that final adapter are
+rejected before PEFT is imported. A failed attempt is archived or given a new run identity; it is
+never silently restarted into the same directory.
+
 After training, `training-manifest.json` records the resolved model and tokenizer snapshots, base
 configuration digest, replay attestation, source and input manifests, package versions,
 attention/dtype choices, resume decision, example counts, and optimization metrics.  Adapter and
@@ -595,6 +618,78 @@ executing the adapter; it does not replace those facts with a convenient hard-co
 The evaluation report then embeds the training-manifest identity, exact decode policy, evaluator
 source hash, goal-set hash, seed, budgets, complete attempted tactic sequences, and per-attempt
 outcomes.
+
+### From an adapter to a new checked theorem
+
+A benchmark-only evaluator would leave the most interesting classroom question unanswered: after
+post-training, can we ask the policy to try a theorem that was not named in the frozen four-goal
+report? The underlying evaluator could already accept any closed `EvalGoal`; what was missing was a
+careful command-line publication boundary. The new arbitrary-theorem mode is:
+
+```console
+python3 scripts/eval_trained_peano_policy.py \
+  --adapter results/peano-policy/qwen3-1.7b-lora-wmi-smoke \
+  --theorem 'forall n. exists x. n * (n + 1) = 2 * x' \
+  --sample --k 16 --max-steps 24 \
+  --output results/peano-policy/manual-proofs/even-product.json \
+  --proof-output results/peano-policy/manual-proofs/even-product.pa
+```
+
+This interface was designed by following the authority backwards. The theorem comes from the user,
+but the logic mode and tactic/library capabilities come only from the adapter's attested training
+environment. Version 1 therefore remains intuitionistic `model-v1`; a caller cannot make a weak
+policy look stronger by enabling the full surface, importing the target, or adding `auto`. Before
+loading a billion-parameter model, the command also applies the ordinary one-line, control-character,
+length, numeral, parser-depth, and closed-formula checks. A default custom run makes one greedy
+attempt. Asking for `k > 1` requires sampling explicitly, because repeated deterministic decoding
+would consume tokens without exploring anything new.
+
+The publication path deliberately checks more than the in-memory success flag:
+
+1. each rollout executes one generated tactic at a time through the production surface;
+2. a rollout is labelled `proof` only after the independent kernel checks its certificate against
+   the owner-retained original formula;
+3. among checked rollouts, the exporter deterministically chooses the least proof nodes, then the
+   fewest tactic lines, then the lowest sample index;
+4. those commands are replayed from a fresh state under the same exact capabilities; and
+5. only matching theorem, environment, command count, proof size, and a second kernel-checked QED
+   permit creation of the `.pa` file.
+
+The result is ordinary Peano Lab source beginning with `pa prove` and ending with `qed`. Pasting it
+into the lab does not trust the previous run; it reconstructs and checks the proof once again. The
+JSON sidecar records the adapter, decoder, sources, scheduler identity, every failed and successful
+attempt, selected sample, proof nodes, exact replay authority, and SHA-256 of the emitted script.
+Existing output paths are never replaced, and repository-local output must stay under `results/`
+rather than source or a closed adapter/tokenizer directory. If search finds nothing, the command
+exits one and emits no proof file. Dedicated model-free regressions exercise successful replay,
+forged-success rejection,
+unsafe/open formula preflight, capability widening, resource bounds, source mutation, no-proof
+semantics, and output non-overwrite.
+
+WMI adds one more boundary. An ad-hoc interactive allocation would not have the required immutable
+source and submission-ledger identity, while a login-node Python lacks the accepted GPU runtime.
+The repository therefore transports a theorem as data, never as shell code:
+
+```console
+scripts/wmi_prove_theorem.sh \
+  --submit --confirm PEANO-LAB-WMI-TRAINING \
+  --theorem 'forall n. exists x. n * (n + 1) = 2 * x' \
+  --sample --k 16 --max-steps 24
+```
+
+This creates a bounded canonical JSON request with a fresh nonce, hashes its complete bytes, and
+streams it under the deployment lock. Only the 64-hex request ID enters `sbatch --export`. Before
+the held job is released, the controller has durably joined that ID and request hash to its Slurm
+job in a second ledger. The A100 job then repeats request, runtime, adapter, evaluator, and kernel
+checks. Digest-named evaluation, optional proof, and terminal summary artifacts live under
+`results/peano-policy/user-proofs/`. No-proof is a valid checked search outcome; malformed
+provenance remains a failed job.
+
+This first interface is useful but intentionally simple. It abandons a rollout after its first
+failing tactic and does not preserve a best-first frontier. It cannot translate English into PA,
+change to classical logic, or use commands outside the training authority. Those limitations point
+directly to the next experiment: verifier-guided branching can reuse good prefixes instead of
+asking an independent sample to rediscover them.
 
 Reproducible does not necessarily mean bit-identical floating-point training on every platform.
 It means that any remaining nondeterminism is bounded and visible, and that nobody can mistake a

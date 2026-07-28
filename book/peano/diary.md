@@ -1004,3 +1004,85 @@ the intended A100, then the central Conda environment's MKL activation hook read
 error. The fix does not weaken the probe body: it disables `nounset` only while executing the
 administrator-owned Conda activation hooks and restores it before any Peano assertion. The job
 failed after nine seconds and installed nothing.
+
+## 2026-07-28 — M19 WMI preflight: reproducibility starts before `Trainer`
+
+Corrected probe job `171369` passed in thirteen seconds on one A100-SXM4-80GB. It saw Python
+3.12.12, PyTorch 2.5.1 with CUDA 12.4, driver 610.43.02, BF16 support, one CUDA-visible device,
+and a finite backward pass. That licensed construction of the WMI environment; it did not license
+training.
+
+The central Conda environment is read-only but not ours, so naming it is not enough provenance. We
+recorded a canonical base manifest covering Python, `ensurepip`, the numeric stack, and every
+central package delegated by the overlay. Live preparation must reproduce all versions and prove
+their metadata resolves under the fixed central prefix. The overlay then adds exactly twelve
+hash-pinned x86-64 wheels under a content-addressed virtual-environment release. Its identity is the
+hash of both contracts. A pointer whose identity no longer matches the live reviewed base is an
+error, not an invitation to reuse yesterday's environment.
+
+Two audits changed the control design before submission. First, direct `rsync` into a live root
+could leave mixed source with stale provenance after interruption. Sync now streams only a clean
+`git archive`, reconstructs its Git tree remotely, takes an exclusive deployment lock, invalidates
+provenance, and publishes only after verification. Every source-dependent WMI model job holds the
+matching shared lock.
+Second, preparation used to move the environment pointer before the expensive LoRA smoke. The
+pointer now moves last; a newly created release is removed if package, data, accelerator,
+save/reload, or loss validation fails.
+
+Torch 2.5.1 also sharpens the serialization boundary. Transformers 4.53.3 refuses unsafe optimizer
+state loading below Torch 2.6, so the pilot is deliberately one-shot and cannot resume. It refuses
+any pre-existing output before data attestation, forces safetensors for base loading and Trainer
+weights, and rejects PEFT's `adapter_model.bin` pickle fallback even when file hashes match. The
+final adapter bypasses `Trainer.save_model`, because that method unconditionally writes a
+`training_args.bin` pickle beside otherwise safe weights. This is stricter than merely “do not
+resume”: a failed attempt must be archived or assigned a new run identity before another launch.
+The local WMI/runtime/training gate reports 96 passes; the full A100 LoRA save/reload gate is still
+pending and no learned result is claimed.
+
+## 2026-07-28 — M19 usability: proving a new theorem is another authority boundary
+
+The evaluator originally knew how to run any `EvalGoal`, but its trained-model command exposed only
+four frozen benchmark names. That was scientifically adequate and pedagogically frustrating: a
+student could train a policy yet could not simply ask it to try a new theorem. The small-looking
+`--theorem` flag forced us to decide which parts of a proof request belong to the caller and which
+belong to the experiment.
+
+The caller owns only the formula and a bounded search budget. Logic mode, tactic grammar, and
+importable theorems come from the adapter's independently replayed training attestation. Version 1
+therefore cannot be widened beyond intuitionistic `model-v1`, even by a command-line option. The
+formula is checked before loading model weights: one control-free line, at most 4,000 characters,
+bounded numerals and structural recursion markers, successful parse, and no free names. We retain
+the raw original statement for evaluator ownership. The printer's canonical rendering is parsed
+again and required to produce the same AST before it can become downloadable source. This makes the
+original-goal law explicit instead of assuming that parser/printer round trips are harmless.
+
+A model success flag is still not a proof artifact. Every rollout first closes through the ordinary
+surface and independent original-target kernel check. The publisher chooses the least proof nodes,
+then tactic lines, then sample index, and replays those tactics from a fresh state with exactly the
+same capability object. It compares canonical theorem, environment hash, applied command count,
+failure count, and proof nodes. Only the second kernel-checked QED produces a `.pa` script. The JSON
+report contains that complete script and its SHA-256, so the optional file is a convenience copy,
+not an unrecorded authority.
+
+Arbitrary input also turns vague resource settings into a denial-of-service interface. Separate
+maxima for samples, steps, and generated tokens multiplied into hundreds of millions of tokens, so
+the command now bounds both total model calls and their token product. It rejects non-finite decode
+floats, validates explicit mistakes and unknown benchmark names before model loading, rechecks the
+exact manifest bytes plus closed adapter/tokenizer trees after evaluation and replay, and confines
+repository-local output to `results/`. Nested aliases cannot turn an output filename into another
+output's directory or corrupt source/model inputs.
+
+Finally, a bare Python example was not enough on WMI. Login Python is not the accepted GPU runtime,
+and an ad-hoc allocation has no submission-ledger identity. The supported wrapper therefore sends
+the theorem as canonical JSON data under the deployment lock. A fresh nonce makes the request
+unique; its complete SHA-256 ID is the only value exported through Slurm. Before releasing the held
+A100 job, the controller records the job/request/hash association alongside the ordinary source
+ledger. The compute job repeats runtime, request, adapter, evaluator, and kernel checks, then writes
+digest-named report, optional proof, and terminal summary. `No proof found` is an honest completed
+search result; missing provenance is a failed job.
+
+The new path has 138 focused policy/request/WMI/runtime tests, and the complete Peano suite reports
+1,028 passes. It makes a future trained adapter usable; it does not claim that the pending adapter
+has learned to solve anything. That distinction is exactly the lesson: language models suggest
+tactics, execution constructs certificates, the kernel proves the theorem, and provenance tells us
+which model actually made the suggestion.

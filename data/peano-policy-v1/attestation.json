@@ -21,25 +21,25 @@
         "sha256": "22917b556b3be64ea8eccf806ad20150fb0cb6d1ba0b37b9127bd16279b83f3f"
       },
       "training/peano_policy/generate.py": {
-        "sha256": "ba82f2ece0aee60f83d714981e816285adc8a70f46ea1d0c9a33e8ddf5c32391"
+        "sha256": "a77be93649a2840dbefbe88a56105c9fb253f4a4ce0ab60ffa7be1a3b12d4fcc"
       },
       "training/peano_policy/manifest.py": {
-        "sha256": "fdbb215815998507b3fd9b9acf748367fdec343172c4d6b1e0da9035973b6d75"
+        "sha256": "9d0ccd0d82302a6e6476cb496f1861cf53f4f66504f33f708f89cfc6ad64fbcf"
       },
       "training/peano_policy/prompt.py": {
         "sha256": "f9057f7a085b52a30bcc771f729c20c8b6ff73b1285b425365f9d0b108c22eb9"
       },
       "training/peano_policy/runtime.py": {
-        "sha256": "7599f9090106705dc2663bb1cf5c44ebc5d5ebbcc4838db8f1be7e744f17f23c"
+        "sha256": "db7294f34234fbb78723ebd10d92536c14cd90606c0131367023b8459e44cbcc"
       },
       "training/peano_policy/smoke.py": {
-        "sha256": "4c45ac96cf271a13a6733fa77b5123f5af137a9426ede55aef051a5f04104f88"
+        "sha256": "8e5764d1cf250a63d10b6261a0818c12049d79e967de66cc94aad7d38ef371be"
       },
       "training/peano_policy/train.py": {
-        "sha256": "346f7698e33021a0e176050cc8d00e416453bede826870cca6743174850e27c6"
+        "sha256": "418d3aeb250dfe1a30b5d423a54b47b2b4daa806fea0d9f0036763f924d64e15"
       }
     },
-    "sources_sha256": "e6a2c43bd5cd0b4659a1986a1f641e84ba105e5421069e1aa779dca2e51f9589"
+    "sources_sha256": "e0126e034e6901838313bccf2354175d05531c42ee8c8ebffbfeed11c753323d"
   },
   "compiler": {
     "runtime": {

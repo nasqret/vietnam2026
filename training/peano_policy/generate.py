@@ -17,6 +17,7 @@ from .manifest import (
     TOKENIZER_SUBDIR,
     sha256_file,
     sha256_json,
+    require_safetensors_adapter,
     verify_artifact_directory,
 )
 from .prompt import (
@@ -236,8 +237,10 @@ def load_adapter(adapter_dir: Path, *, seed: int) -> tuple[Any, Any, dict[str, A
         raise ValueError(
             "training manifest model/tokenizer snapshots are not one pinned commit"
         )
+    adapter_record = manifest.get("adapter", {})
+    require_safetensors_adapter(adapter_record)
     adapter_output = verify_artifact_directory(
-        adapter_dir, manifest.get("adapter", {}), ADAPTER_SUBDIR
+        adapter_dir, adapter_record, ADAPTER_SUBDIR
     )
     tokenizer_output = verify_artifact_directory(
         adapter_dir, tokenizer_record.get("artifacts", {}), TOKENIZER_SUBDIR
@@ -259,6 +262,7 @@ def load_adapter(adapter_dir: Path, *, seed: int) -> tuple[Any, Any, dict[str, A
         torch_dtype=torch.bfloat16,
         attn_implementation="sdpa",
         trust_remote_code=False,
+        use_safetensors=True,
     )
     model = PeftModel.from_pretrained(model, adapter_output)
     model.eval()
