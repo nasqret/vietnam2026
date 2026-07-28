@@ -8,11 +8,11 @@ The **foundational arithmetic library** is a versioned dependency graph for
 [[arithmetic-congruence]], [[quotient-and-remainder]], gcd, primes, and
 factorization.
 
-Its current snapshot has 156 closed, independently checked theorems: the
-original 23-node [[theorem-ladder]] and 133 unique post-baseline additions.
-The latter combine 121 general arithmetic facts with twelve additional modular
-capstones. The 163-node research catalog separates 23 `checked_existing`,
-133 `checked_m20`, three
+Its current snapshot has 161 closed, independently checked theorems: the
+original 23-node [[theorem-ladder]] and 138 unique post-baseline additions.
+The latter combine 126 general arithmetic facts with twelve additional modular
+capstones. The 168-node research catalog separates 23 `checked_existing`,
+138 `checked_m20`, three
 `planned_expressible`, and four `blocked_by_language` nodes, but only replayed
 certificates appear in `pa lib`. The M20 additions now include [[prime_two]],
 the first checked instance of the fully expanded prime predicate, and native
@@ -39,9 +39,12 @@ conservative sequence layer includes [[beta_modulus_nonzero]],
 [[beta_at_self_of_bound]], [[beta_at_exists]], [[beta_at_unique]], and
 [[beta_at_exists_unique]], proving total and functional decoding at one
 Gödel-β position without adding a sequence primitive.
+The next pre-CRT layer closes multiplication compatibility through
+[[mod_eq_mul]] and links directed remainders and decoded β values via
+[[remainder_decomposition_to_mod_eq]] and [[beta_at_to_mod_eq]].
 
-The generated snapshot contains 71,762 structural proof nodes and 1,911
-self-contained Cuts; 116 of the 156 certificates contain a Cut. Its maximum
+The generated snapshot contains 75,170 structural proof nodes and 2,009
+self-contained Cuts; 121 of the 161 certificates contain a Cut. Its maximum
 certificate is [[euclid_prime_dvd_product]] at 5,382 nodes, and its maximum
 depth is 80 at [[prime_divisor_exists]]. These are representation metrics, not
 proof authority.

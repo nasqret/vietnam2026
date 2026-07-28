@@ -1797,6 +1797,92 @@
       "blocker": null
     },
     {
+      "id": "mod_eq_mul_right",
+      "title": "Balanced congruence is stable under right multiplication",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_mul",
+        "mul_assoc"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Multiplies a balanced witness equation and reassociates its modulus factors.",
+      "peano": {
+        "statement": "forall m a b c. (exists u v. a + m * u = b + m * v) -> exists r s. (a * c) + m * r = (b * c) + m * s",
+        "existing_name": "mod_eq_mul_right"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod_eq_mul_left",
+      "title": "Balanced congruence is stable under left multiplication",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "mod_eq_mul_right",
+        "mul_comm"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Derives left scaling from right scaling and multiplication commutativity.",
+      "peano": {
+        "statement": "forall m a b c. (exists u v. a + m * u = b + m * v) -> exists r s. (c * a) + m * r = (c * b) + m * s",
+        "existing_name": "mod_eq_mul_left"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod_eq_mul",
+      "title": "Balanced congruence respects multiplication",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "mod_eq_mul_right",
+        "mod_eq_mul_left",
+        "mod_eq_trans"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "Scales the two input congruences on opposite sides and composes them transitively.",
+      "peano": {
+        "statement": "forall m a b c d. (exists u v. a + m * u = b + m * v) -> (exists r s. c + m * r = d + m * s) -> exists x y. (a * c) + m * x = (b * d) + m * y",
+        "existing_name": "mod_eq_mul"
+      },
+      "blocker": null
+    },
+    {
+      "id": "remainder_decomposition_to_mod_eq",
+      "title": "A quotient-remainder decomposition gives congruence",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_comm",
+        "mul_comm"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Turns a directed equation b = qm + x into the balanced relation b congruent to x modulo m.",
+      "peano": {
+        "statement": "forall m b q x. b = q * m + x -> exists u v. b + m * u = x + m * v",
+        "existing_name": "remainder_decomposition_to_mod_eq"
+      },
+      "blocker": null
+    },
+    {
       "id": "dvd_to_mod_zero",
       "title": "A multiple is congruent to zero",
       "domain": "congruence",
@@ -3363,6 +3449,26 @@
       "peano": {
         "statement": "forall b c i. exists x. (((exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + x) /\\ forall y. ((exists h. h + S y = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + y) -> x = y)",
         "existing_name": "beta_at_exists_unique"
+      },
+      "blocker": null
+    },
+    {
+      "id": "beta_at_to_mod_eq",
+      "title": "A Gödel-beta value is congruent to its code",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "remainder_decomposition_to_mod_eq"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Projects the directed quotient witness from an expanded beta value and exposes it through the balanced congruence API.",
+      "peano": {
+        "statement": "forall b c i x. ((exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + x) -> exists u v. b + S ((S i) * c) * u = x + S ((S i) * c) * v",
+        "existing_name": "beta_at_to_mod_eq"
       },
       "blocker": null
     },

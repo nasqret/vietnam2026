@@ -1,23 +1,22 @@
 ---
-title: "Lemma: mod_eq_trans"
+title: "Lemma: mod_eq_mul_left"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `mod_eq_trans`
+# `mod_eq_mul_left`
 
-Balanced natural congruence is transitive.
+Balanced congruence is preserved by multiplication on the left.
 
 ## Closed Peano statement
 
 ```text
-forall m a b c. (exists u v. a + m * u = b + m * v) -> (exists r s. b + m * r = c + m * s) -> exists x y. a + m * x = c + m * y
+forall m a b c. (exists u v. a + m * u = b + m * v) -> exists r s. (c * a) + m * r = (c * b) + m * s
 ```
 
 ## Dependencies
 
-- [[add_assoc]]
-- [[add_comm]]
-- [[mul_add]]
+- [[mod_eq_mul_right]]
+- [[mul_comm]]
 
 ## Checked dependents
 
@@ -26,9 +25,9 @@ forall m a b c. (exists u v. a + m * u = b + m * v) -> (exists r s. b + m * r = 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **252 nodes**, depth **29**.
-- Authored script length: **42 commands**.
-- Runtime card: `pa lib mod_eq_trans`.
+- Certificate: **738 nodes**, depth **27**.
+- Authored script length: **25 commands**.
+- Runtime card: `pa lib mod_eq_mul_left`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

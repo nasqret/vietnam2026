@@ -16,8 +16,9 @@ This chapter separates three things that are easy to conflate:
    existential equation.
 
 All three layers now have checked library entries. The balanced modular API is
-checked through transitivity and additive compatibility; multiplicative and
-canonical-remainder clients remain open. Every checked entry mentioned below
+checked through transitivity and additive and multiplicative compatibility;
+the decomposition-to-congruence bridge is checked too, while bounded
+canonical-remainder uniqueness remains open. Every checked entry mentioned below
 is an ordinary closed formula with a replayed certificate accepted by the
 independent Peano kernel; none is a new kernel rule. The general checking
 architecture is described in
@@ -242,18 +243,18 @@ $$
 \end{array}
 $$
 
-All 121 entries in the current post-baseline general foundational layer replay to
+All 126 entries in the current post-baseline general foundational layer replay to
 closed kernel-accepted certificates and fit the live `use` limits of 32,768
-nodes and depth 128. The current 156-entry local candidate reaches its node
+nodes and depth 128. The current 161-entry local candidate reaches its node
 maximum at `euclid_prime_dvd_product`, with 5,382 nodes and depth 55, while
 `prime_divisor_exists` reaches the snapshot-wide maximum depth of 80. Across
-the snapshot there are 71,762 structural nodes and 1,911 self-contained Cuts;
-116 certificates contain a Cut, and the largest per-certificate Cut count is
+the snapshot there are 75,170 structural nodes and 2,009 self-contained Cuts;
+121 certificates contain a Cut, and the largest per-certificate Cut count is
 159. The modular capstone itself remains 2,675 nodes and depth 38. These
 numbers are build artifacts,
 not new soundness assumptions; the immutable upstream report retains the older
 fully expanded capstone metric of 21,515 nodes/depth 66. The broader research
-catalog has 163 nodes: the 156 checked entries, three planned expressible targets,
+catalog has 168 nodes: the 161 checked entries, three planned expressible targets,
 and four language-interface targets covering conventional signed Bézout and the
 three finite-factorization endpoints.
 
@@ -379,8 +380,10 @@ This definition also gives sensible edge cases:
 - no positivity assumption on $m$ is required merely to define the relation.
 
 The relation's reflexivity, symmetry, and transitivity and its compatibility
-with addition are now named checked entries: `mod_eq_refl`, `mod_eq_symm`,
-`mod_eq_trans`, and `mod_eq_add`. Reflexivity has the short proof:
+with addition and multiplication are now named checked entries:
+`mod_eq_refl`, `mod_eq_symm`, `mod_eq_trans`, `mod_eq_add`,
+`mod_eq_mul_right`, `mod_eq_mul_left`, and `mod_eq_mul`. Reflexivity has the
+short proof:
 
 ```text
 pa> pa prove forall m a. exists u v. a + m * u = a + m * v
@@ -401,7 +404,7 @@ formula above is **modular congruence**.  The latter will use the former in its
 compatibility proofs, but the two notions should not share ambiguous names.
 :::
 
-## Exact divisibility already gives congruence to zero
+## Exact decompositions give congruence
 
 An exact decomposition immediately gives a balanced congruence:
 
@@ -411,10 +414,11 @@ $$
   a\equiv_m r.
 $$
 
-For the zero residue, `dvd_to_mod_zero` is already a checked library theorem.
-It chooses balanced witnesses directly from the divisibility witness. A more
-general decomposition-to-residue wrapper remains a useful planned endpoint;
-the following transcript demonstrates its exact target shape:
+For the zero residue, `dvd_to_mod_zero` is a checked library theorem. It
+chooses balanced witnesses directly from the divisibility witness. The general
+wrapper `remainder_decomposition_to_mod_eq` is now checked as well. Its stored
+orientation is $b=qm+x\to b\equiv_m x$; the following replay proves the same
+interface with the multiplication factors written in the opposite order:
 
 ```text
 pa> pa prove forall m a q r. a = m * q + r -> exists u v. a + m * u = r + m * v
@@ -437,16 +441,17 @@ The current status distinction is:
 
 | Checked now | Still-open modular API |
 |---|---|
-| `mod_eq_refl`, `mod_eq_symm`, `mod_eq_trans` | multiplicative compatibility |
-| `mod_eq_add` | equality transport into balanced congruence |
-| `dvd_to_mod_zero` | general decomposition implies congruence |
+| `mod_eq_refl`, `mod_eq_symm`, `mod_eq_trans` | bounded congruence uniqueness |
+| `mod_eq_add`, `mod_eq_mul_right`, `mod_eq_mul_left`, `mod_eq_mul` | equality transport into balanced congruence |
+| `dvd_to_mod_zero`, `remainder_decomposition_to_mod_eq` | shared residue implies congruence |
 | Closure of multiples under addition and multiplication | shared residue implies congruence |
 | Exact quotient-and-residue addition | reverse congruence-zero-to-divisibility |
 | Exact square decomposition and square residue lifting | canonical-remainder congruence API |
 | Pointwise forms of non-divisibility | parity-as-congruence clients |
 | No `%` or primitive congruence predicate | generated fixed-modulus clients |
 
-The two newly checked statements remain ordinary expanded formulas:
+The transitivity and addition statements from the preceding tranche remain
+ordinary expanded formulas:
 
 ```text
 forall m a b c.
@@ -462,10 +467,43 @@ forall m a b c d.
 
 Their shared certificates have 252 nodes/depth 29 with six Cuts and 370
 nodes/depth 30 with ten Cuts, respectively. Both check constructively and
-contain no DNE. Multiplicative compatibility and the reverse direction of
-"congruent to zero iff divisible" deserve particular care; the balanced
-witnesses must be rearranged constructively rather than cancelled by an
-unavailable subtraction operation.
+contain no DNE.
+
+The next four checked formulas close multiplication compatibility and the
+direct decomposition bridge:
+
+```text
+forall m a b c.
+  (exists u v. a + m * u = b + m * v) ->
+  exists r s. (a * c) + m * r = (b * c) + m * s
+
+forall m a b c.
+  (exists u v. a + m * u = b + m * v) ->
+  exists r s. (c * a) + m * r = (c * b) + m * s
+
+forall m a b c d.
+  (exists u v. a + m * u = b + m * v) ->
+  (exists r s. c + m * r = d + m * s) ->
+  exists x y. (a * c) + m * x = (b * d) + m * y
+
+forall m b q x.
+  b = q * m + x ->
+  exists u v. b + m * u = x + m * v
+```
+
+| Checked theorem | Role | Nodes/depth | Cuts |
+|---|---|---:|---:|
+| `mod_eq_mul_right` | scale a balanced congruence on the right | 484 / 26 | 13 |
+| `mod_eq_mul_left` | derive left scaling using commutativity | 738 / 27 | 21 |
+| `mod_eq_mul` | multiply two balanced congruences | 1,505 / 32 | 43 |
+| `remainder_decomposition_to_mod_eq` | turn $b=qm+x$ into $b\equiv_m x$ | 323 / 26 | 10 |
+
+All four certificates are intuitionistic and contain no DNE. The reverse
+direction of "congruent to zero iff divisible" and bounded congruence
+uniqueness still deserve particular care; the balanced witnesses must be
+rearranged constructively rather than cancelled by an unavailable subtraction
+operation. Binary and bounded CRT remain later clients, not consequences that
+have silently been admitted with this multiplication API.
 
 ## From a general library to the old modulo-five exercise
 

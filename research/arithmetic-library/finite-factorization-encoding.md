@@ -18,8 +18,10 @@ prime-or-composite and primality decisions, proper-factor descent,
 prime-divisor existence, relational gcd/Bézout, Gauss cancellation, and
 Euclid's lemma. The decoded-value foundation is also checked: the β modulus is
 nonzero, bounded values self-decode, and every position has exactly one
-decoded value. This does **not** prove FTA. The remaining critical path starts
-with greatest-prime-divisor descent and then crosses the still-unimplemented
+decoded value. Every such directed decoding now also yields balanced
+congruence between the code and value at its β modulus. This does **not** prove
+FTA. The remaining critical path starts with greatest-prime-divisor descent
+and then crosses the still-unimplemented bounded representative uniqueness,
 CRT, finite-prefix, prefix-product, and finite-product layers.
 
 ## Sequence values
@@ -42,17 +44,20 @@ In Peano surface syntax the modulus is `S ((S i) * c)`, strict inequality is
 `S x <= S ((S i) * c)`, and `<=` itself expands to an existential addition
 equation. Thus `At` introduces no new object-language constructor.
 
-Five checked theorems establish the relation's basic API:
+Six checked theorems establish the relation's basic API:
 
 - `beta_modulus_nonzero` proves constructively that $M(c,i)$ is a successor;
 - `beta_at_self_of_bound` gives a quotient-zero code for any bounded value;
 - `beta_at_exists` obtains a decoded residue from division with remainder;
-- `beta_at_unique` reduces two decodings to remainder uniqueness; and
-- `beta_at_exists_unique` packages totality and functionality.
+- `beta_at_unique` reduces two decodings to remainder uniqueness;
+- `beta_at_exists_unique` packages totality and functionality; and
+- `beta_at_to_mod_eq` exposes each decoding through the balanced congruence
+  API after `remainder_decomposition_to_mod_eq` converts its quotient witness.
 
 These theorems decode an existing pair `(b,c)`. They do not yet construct one
-code satisfying an arbitrary finite family of prescribed residues; that is
-the role of binary/bounded CRT and finite-prefix extension.
+code satisfying an arbitrary finite family of prescribed residues; bounded
+representative uniqueness, binary/bounded CRT, and finite-prefix extension
+remain necessary.
 
 A code pair is deliberately not treated as a canonical sequence identity.
 Different pairs can decode the same finite prefix, so all later equality is
@@ -164,12 +169,13 @@ make the proof small. The admission route and its current status are:
    prime-divisor existence, relational gcd, balanced-natural Bézout, Gauss,
    and Euclid's lemma.
 4. **Checked decoding gate:** prove β-value modulus nonzeroness, bounded
-   self-decoding, existence, uniqueness, and unique existence.
+   self-decoding, existence, uniqueness, unique existence, and conversion to
+   balanced congruence.
 5. **Next arithmetic gate:** construct a greatest prime divisor with a strict
    quotient descent suitable for appending to an already sorted
    factorization.
-6. **Encoding gate:** prove binary and bounded CRT and finite-prefix extension
-   and restriction.
+6. **Encoding gate:** prove bounded representative uniqueness, binary and
+   bounded CRT, and finite-prefix extension and restriction.
 7. **Product gate:** prove prefix-product trace extension/functionality and
    preservation of `AllPrime`/`Sorted`.
 8. **Existence gate:** perform the strengthened natural-number descent using

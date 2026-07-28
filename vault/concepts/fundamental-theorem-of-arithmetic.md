@@ -24,7 +24,8 @@ is now checked too: [[prime_or_composite]], [[proper_factor_lt]], and
 [[prime_divisor_exists]] give a constructive prime divisor of every nonzero
 nonunit natural. Single-position β decoding is now checked as well:
 [[beta_at_exists]] and [[beta_at_unique]] establish totality and functionality
-of the expanded `At` relation.
+of the expanded `At` relation, while [[beta_at_to_mod_eq]] connects it to the
+checked congruence API.
 
 FTA itself is **not** proved in native Peano Lab. The direct list-oriented
 existence, uniqueness, and combined catalog endpoints remain

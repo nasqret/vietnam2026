@@ -27,6 +27,7 @@ forall n m k. (n * m) * k = n * (m * k)
 - [[balanced_bezout_euclid_step]]
 - [[balanced_combination_scale_right]]
 - [[common_divisor_divides_balanced_result]]
+- [[mod_eq_mul_right]]
 - [[square_decomp]]
 - [[fourth_power_regroup]]
 - [[mod5_square_residue_one]]

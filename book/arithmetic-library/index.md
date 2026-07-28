@@ -17,8 +17,8 @@ $$
 \to \text{factorization}.
 $$
 
-The current candidate snapshot contains **156 replayed, closed, independently
-kernel-checked Peano theorems**. One hundred and twenty-one form the post-baseline
+The current candidate snapshot contains **161 replayed, closed, independently
+kernel-checked Peano theorems**. One hundred and twenty-six form the post-baseline
 foundational layer: named equality congruences, additive cancellation, discrete order,
 multiplication cancellation and monotonicity, zero-sum and nonzero-product
 facts, divisibility closure, constructive non-divisibility, generic residue
@@ -28,10 +28,13 @@ Euclidean gcd invariance, plus constructive bounded and general gcd existence,
 balanced-natural Bézout, Gauss cancellation, and Euclid's lemma. It now also
 contains constructive equality and divisibility decisions, bounded factor-pair
 search, the prime-or-composite decision, proper-factor descent, and prime-divisor
-existence. The newest tranche proves balanced modular-congruence transitivity
-and additive compatibility, then checks single-position Gödel-β decoding
-moduli, self-decoding below the bound, decoded-value existence, uniqueness, and
-their combined existence-and-uniqueness interface. This layer
+existence. The latest congruence and encoding tranches prove balanced
+modular-congruence transitivity and compatibility with addition and
+multiplication, turn quotient-remainder decompositions into congruences, then
+check single-position Gödel-β decoding moduli, self-decoding below the bound,
+decoded-value existence, uniqueness, their combined
+existence-and-uniqueness interface, and the bridge from a decoded value to
+balanced congruence. This layer
 includes `prime_two`, the first checked instance of the fully expanded prime
 predicate, `prime_divisor_eq_one_or_self`, its general divisor
 characterization, and `euclid_prime_dvd_product`.
@@ -42,28 +45,30 @@ are identical to foundational entries and are exposed only once.
 Every current theorem fits the browser's ordinary `use` limit. The largest
 shared certificate, `euclid_prime_dvd_product`, has 5,382 structural proof
 nodes and depth 55; `prime_divisor_exists` sets the snapshot-wide maximum
-depth at 80. Across all 156 entries, the snapshot contains 71,762 structural
-nodes, including 1,911 self-contained Cuts, and 116 certificates contain at
+depth at 80. Across all 161 entries, the snapshot contains 75,170 structural
+nodes, including 2,009 self-contained Cuts, and 121 certificates contain at
 least one Cut. The largest per-certificate Cut count is 159, again at
 `euclid_prime_dvd_product`. The
 immutable upstream
 report still records the capstone's former fully expanded 21,515-node/depth-66
 representation; it remains provenance, not the current runtime metric.
 
-That number is deliberately narrower than the 163-node research catalog: 23
-nodes are `checked_existing`, 133 are `checked_m20`, three are
+That number is deliberately narrower than the 168-node research catalog: 23
+nodes are `checked_existing`, 138 are `checked_m20`, three are
 `planned_expressible`, and four are `blocked_by_language`. Beyond
 `prime_two`, the catalog now includes checked relational gcd existence,
 balanced Bézout, Gauss cancellation, Euclid's lemma, constructive primality
-decisions, prime-divisor existence, additive modular-congruence compatibility,
-and Gödel-β decoded-value totality and functionality. The remaining
+decisions, prime-divisor existence, additive and multiplicative
+modular-congruence compatibility, the decomposition-to-congruence bridge, and
+Gödel-β decoded-value totality, functionality, and congruence projection. The remaining
 expressible targets are `prime_three`, primes above every bound, and a
-two-prime-product uniqueness client. Greatest-prime descent, CRT and
-finite-prefix extension, and the selected encoded-product infrastructure are
-the next critical native factorization gates. A separate
+two-prime-product uniqueness client. Greatest-prime descent, binary and
+bounded CRT, bounded congruence uniqueness, finite-prefix extension, and the
+selected encoded-product infrastructure are the next critical native
+factorization gates. A separate
 Lean 4 companion now checks full finite-list FTA
 existence and uniqueness up to permutation. It is cataloged as a companion,
-not counted among the 156 Peano theorems; those entries are not presented as
+not counted among the 161 Peano theorems; those entries are not presented as
 Peano-proved until a script and closed certificate pass the same kernel gate.
 
 ## How to read the status labels

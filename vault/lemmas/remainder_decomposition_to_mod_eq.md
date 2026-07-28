@@ -1,34 +1,33 @@
 ---
-title: "Lemma: mod_eq_trans"
+title: "Lemma: remainder_decomposition_to_mod_eq"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `mod_eq_trans`
+# `remainder_decomposition_to_mod_eq`
 
-Balanced natural congruence is transitive.
+A directed quotient/remainder equation gives balanced congruence to its remainder.
 
 ## Closed Peano statement
 
 ```text
-forall m a b c. (exists u v. a + m * u = b + m * v) -> (exists r s. b + m * r = c + m * s) -> exists x y. a + m * x = c + m * y
+forall m b q x. b = q * m + x -> exists u v. b + m * u = x + m * v
 ```
 
 ## Dependencies
 
-- [[add_assoc]]
 - [[add_comm]]
-- [[mul_add]]
+- [[mul_comm]]
 
 ## Checked dependents
 
-- [[mod_eq_mul]]
+- [[beta_at_to_mod_eq]]
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **252 nodes**, depth **29**.
-- Authored script length: **42 commands**.
-- Runtime card: `pa lib mod_eq_trans`.
+- Certificate: **323 nodes**, depth **26**.
+- Authored script length: **16 commands**.
+- Runtime card: `pa lib remainder_decomposition_to_mod_eq`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

@@ -6,8 +6,8 @@ replays all current entries, discharges dependency assumptions through embedded 
 Cuts, and asks the independent kernel to check the resulting closed certificate against the
 original statement.
 
-The current local candidate runtime contains 156 unique checked entries: the
-original 23-entry base, 121 post-baseline foundational entries, and twelve
+The current local candidate runtime contains 161 unique checked entries: the
+original 23-entry base, 126 post-baseline foundational entries, and twelve
 further unique records from the upstream modular catalog. The upstream
 26-record catalog ends at the fourth-power modulo-five capstone. Its first
 reconciliation with the 51-entry M20 branch exposed fourteen coincident
@@ -22,8 +22,11 @@ search, `prime_or_composite`, `prime_decidable`, proper-factor descent, and
 bounded plus general prime-divisor existence. The newest seven-rung tranche
 adds `mod_eq_trans`, `mod_eq_add`, `beta_modulus_nonzero`,
 `beta_at_self_of_bound`, `beta_at_exists`, `beta_at_unique`, and
-`beta_at_exists_unique`. None of those nineteen certificates uses DNE. Across
-the snapshot, 71,762 structural nodes include 1,911 self-contained Cuts; 116
+`beta_at_exists_unique`. The following five-rung pre-CRT tranche adds
+`mod_eq_mul_right`, `mod_eq_mul_left`, `mod_eq_mul`,
+`remainder_decomposition_to_mod_eq`, and `beta_at_to_mod_eq`. None of those
+twenty-four certificates uses DNE. Across the snapshot, 75,170 structural
+nodes include 2,009 self-contained Cuts; 121
 certificates contain a Cut. `euclid_prime_dvd_product` remains the
 largest certificate at 5,382 nodes and also sets the per-certificate Cut
 maximum at 159, while `prime_divisor_exists` sets the depth maximum at 80. The

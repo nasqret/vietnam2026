@@ -3,19 +3,20 @@
 This directory is the planning and provenance source for Peano Lab's general
 arithmetic library. Start with:
 
-The current runtime/catalog boundary is 156 checked Peano entries (23
-baseline, 121 general foundational, and twelve fixed modular) inside a
-163-node catalog. Exact shared-certificate totals are reproduced in the
-generated snapshot: 71,762 proof nodes, 1,911 self-contained Cuts, and 116
+The current runtime/catalog boundary is 161 checked Peano entries (23
+baseline, 126 general foundational, and twelve fixed modular) inside a
+168-node catalog. Exact shared-certificate totals are reproduced in the
+generated snapshot: 75,170 proof nodes, 2,009 self-contained Cuts, and 121
 Cut-bearing certificates. `euclid_prime_dvd_product` remains largest at 5,382
 nodes and 159 Cuts; `prime_divisor_exists` sets the snapshot-wide maximum
 depth at 80.
-The latest seven checked entries are balanced-congruence transitivity and
-addition plus the five expanded β-value theorems establishing modulus
-nonzeroness, bounded self-decoding, totality, and functionality.
+The two latest tranches establish full additive/multiplicative balanced
+congruence compatibility, the five expanded β-value theorems, and the
+directed-remainder/β-to-congruence bridge. Bounded representative uniqueness
+and CRT remain open.
 
-- [`catalog.json`](catalog.json): 163 dependency-ordered facts — 23
-  `checked_existing`, 133 `checked_m20`, three `planned_expressible`, and four
+- [`catalog.json`](catalog.json): 168 dependency-ordered facts — 23
+  `checked_existing`, 138 `checked_m20`, three `planned_expressible`, and four
   `blocked_by_language` — with exact source IDs, Peano statements where
   expressible, and blockers where not;
 - [`source-register.json`](source-register.json): pinned revisions, licenses,

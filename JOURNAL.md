@@ -1386,3 +1386,39 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   blocks whose 264 commands replay cleanly.
   Local browser build `2026-07-29b` has immutable application identity
   `a-e2678d4819b0`; it is not staged, deployed, or promoted.
+
+## 2026-07-29 — Multiplicative congruence and the pre-CRT bridge
+
+- Added five closed native theorems. `mod_eq_mul_right` and
+  `mod_eq_mul_left` preserve balanced natural congruence under one-sided
+  scaling; `mod_eq_mul` combines two congruences into a product congruence.
+  Together with the preceding transitivity and addition theorems, the balanced
+  relation now has its full additive/multiplicative compatibility layer.
+- `remainder_decomposition_to_mod_eq` converts a directed equation
+  `b = q*m + x` into the subtraction-free balanced relation between `b` and
+  `x` modulo `m`. `beta_at_to_mod_eq` projects the quotient witness from the
+  fully expanded β-decoding relation and applies that bridge. No primitive
+  modulus, quotient, remainder, congruence, or β function was introduced.
+- The runtime now contains 161 unique checked theorems: 23 baseline, 126
+  general foundational, and twelve unique modulo-five capstones. The
+  synchronized catalog has 168 nodes: 23 `checked_existing`, 138
+  `checked_m20`, three planned, and four language-blocked. Shared certificates
+  total 75,170 structural nodes and 2,009 Cuts across 121 Cut-bearing entries.
+  The maxima remain 5,382 nodes and 159 Cuts at
+  `euclid_prime_dvd_product`, and depth 80 at `prime_divisor_exists`.
+- This is a pre-CRT interface, not CRT itself. Bounded representative
+  uniqueness, binary/bounded CRT, finite-prefix extension, prefix-product
+  traces, greatest-prime descent, and native FTA remain open.
+- Regenerated the source-bound corpus with the same 13,344-transition/
+  1,692-session semantic shape under run fingerprint
+  `4e864236c001f37cc93c3e12208afd9072829a4e0a4b7fa008908e48f1e23e5c`.
+  The isolated smoke has 322 sessions, 3,902 raw and 3,899 unique transitions,
+  and all 161 authored-script kernel QEDs. The generated vault has 240 notes
+  and 2,037 resolved links, including all 161 lemma notes.
+- The complete Peano suite passes 1,098 tests on CPython 3.10, including the
+  28-test focused pre-CRT gate; Lambda passes 360 tests plus 36 subtests. The
+  warning-as-error 36-source book
+  has 205 checked deep links and 45 session blocks whose 264 commands replay
+  cleanly. Local browser build `2026-07-29c`
+  has immutable application identity `a-b71812244ce0`; it is not staged,
+  deployed, or promoted.

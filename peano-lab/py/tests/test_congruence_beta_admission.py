@@ -28,6 +28,30 @@ EXPECTED = {
         "script": (42, "7789df1fd37be5a3be0d6d6cbf4e6c0867bf135e3508ca852e99ec0386c5394f"),
         "certificate": ((370, 30), 10, "49e4d310fb281152161969987650ed529899ec2db8d310000cbe9c0aebb8b986"),
     },
+    "mod_eq_mul_right": {
+        "dependencies": ("add_mul", "mul_assoc"),
+        "statement": "8733e14f0e281c8da5e450d12fe21b7d5929d4b5e9953d867333be510677d636",
+        "script": (26, "cf7e391dc56ca71ba86f22be7ecc663e8af5872ccb0a7e21f88fb32496540a2e"),
+        "certificate": ((484, 26), 13, "4994212781f9a86bb60622ca1fe8ad409d0bb500791af6a24b5a825098729e27"),
+    },
+    "mod_eq_mul_left": {
+        "dependencies": ("mod_eq_mul_right", "mul_comm"),
+        "statement": "dbadf46b1b0bf5a186fbdd59491a88885e0649b62e28e8465f6dee8bdb9e21fe",
+        "script": (25, "950e4ebdc52eae84f677b237f20983484305d5af68f3da71457c99287a889dcf"),
+        "certificate": ((738, 27), 21, "84e29f574f4ebbcb3993c2746183e370648a84346c8cf4e46f50a28581bf9dc6"),
+    },
+    "mod_eq_mul": {
+        "dependencies": ("mod_eq_mul_right", "mod_eq_mul_left", "mod_eq_trans"),
+        "statement": "a3983a74ea581e76450a400c1ed5b4e06e6feac6ff9a6ebb90d8f82f3c316d2b",
+        "script": (28, "7e6cb0f149bca7982d666e9b5365ca4dda9449c28943be656d98ff4a94fdc87e"),
+        "certificate": ((1_505, 32), 43, "660f19930d52443997b878d9fbc824d96e6070e8e7304d08159dcb591af5cc56"),
+    },
+    "remainder_decomposition_to_mod_eq": {
+        "dependencies": ("add_comm", "mul_comm"),
+        "statement": "5329024af13cfcbc0e4662ef24110fcbe2ece3d384ffca5c07cf3f6b7a49b55b",
+        "script": (16, "2992d90f135d6b779fc3d926e9fce7e53496c3301dedcc2a55b10eef23b55ad2"),
+        "certificate": ((323, 26), 10, "acea3f60f7fa7dfcd1745c5cb1dd1d20436c173affa5518ebcb4f981b6893b19"),
+    },
     "beta_modulus_nonzero": {
         "dependencies": ("succ_ne_zero",),
         "statement": "6701007cb46c44334c05d9bd894078b9b002f9624b4057b9203dd83087294526",
@@ -61,6 +85,12 @@ EXPECTED = {
         "statement": "e113675254fcdd4275f8c427c704dc1eb9816fb5cc2e251d0995ece07f983228",
         "script": (22, "2bc0efab1270e45491a7d3e22ee0a4002c200f646c78152645b925c48d45fd62"),
         "certificate": ((1_625, 61), 47, "37ae2a410d200b75cd68831454765e500dc8dafcc77b8a51ed60f9a79f971d8c"),
+    },
+    "beta_at_to_mod_eq": {
+        "dependencies": ("remainder_decomposition_to_mod_eq",),
+        "statement": "c748a4a17fd48703d134abcd46e96aa5ef082fc1f9aa69ce089d1421446d565d",
+        "script": (13, "ab6a199f73fef6b1309d2690f5f9546a534bbc7b37f6e007b271d5fbab2d7b12"),
+        "certificate": ((358, 27), 11, "dd174002d4701711239c5958acc580ca4ff11c1788aff4936b9a8d9ad65562e6"),
     },
 }
 
@@ -198,7 +228,14 @@ def test_every_certificate_rejects_pa_and_authored_hypothesis_mutations() -> Non
 
 
 def test_public_live_use_closes_congruence_and_beta_endpoints() -> None:
-    for name in ("mod_eq_trans", "mod_eq_add", "beta_at_exists_unique"):
+    for name in (
+        "mod_eq_trans",
+        "mod_eq_add",
+        "mod_eq_mul",
+        "remainder_decomposition_to_mod_eq",
+        "beta_at_exists_unique",
+        "beta_at_to_mod_eq",
+    ):
         theorem = get(name)
         assert theorem is not None
         session = driver.LabSession()

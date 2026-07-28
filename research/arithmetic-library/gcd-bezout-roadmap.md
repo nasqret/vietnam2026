@@ -313,8 +313,11 @@ middle or double-negation elimination is hidden in the search.
    prime-divisor existence.
 8. **Complete:** establish β modulus nonzeroness, bounded self-decoding, and
    decoded-value existence/uniqueness.
-9. Develop greatest-prime-divisor descent for sorted factorization, then cross
-   the separate CRT/prefix-extension/product gate.
+9. **Complete:** establish full additive/multiplicative balanced-congruence
+   compatibility and the directed-remainder/β-to-congruence bridge.
+10. Develop greatest-prime-divisor descent for sorted factorization, then
+   prove bounded representative uniqueness and cross the separate
+   CRT/prefix-extension/product gate.
 
 Prime-divisor existence does not follow automatically from gcd or Bézout, and
 Euclid's lemma does not construct a prime divisor; both sides are now checked

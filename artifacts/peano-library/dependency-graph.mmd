@@ -133,11 +133,16 @@ flowchart TD
   mod_eq_symm[mod_eq_symm]
   mod_eq_trans[mod_eq_trans]
   mod_eq_add[mod_eq_add]
+  mod_eq_mul_right[mod_eq_mul_right]
+  mod_eq_mul_left[mod_eq_mul_left]
+  mod_eq_mul[mod_eq_mul]
+  remainder_decomposition_to_mod_eq[remainder_decomposition_to_mod_eq]
   beta_modulus_nonzero[beta_modulus_nonzero]
   beta_at_self_of_bound[beta_at_self_of_bound]
   beta_at_exists[beta_at_exists]
   beta_at_unique[beta_at_unique]
   beta_at_exists_unique[beta_at_exists_unique]
+  beta_at_to_mod_eq[beta_at_to_mod_eq]
   dvd_to_mod_zero[dvd_to_mod_zero]
   add_residue[add_residue]
   add_residue_lift[add_residue_lift]
@@ -370,6 +375,15 @@ flowchart TD
   mul_add --> mod_eq_add
   add_comm --> mod_eq_add
   add_permute_outer --> mod_eq_add
+  add_mul --> mod_eq_mul_right
+  mul_assoc --> mod_eq_mul_right
+  mod_eq_mul_right --> mod_eq_mul_left
+  mul_comm --> mod_eq_mul_left
+  mod_eq_mul_right --> mod_eq_mul
+  mod_eq_mul_left --> mod_eq_mul
+  mod_eq_trans --> mod_eq_mul
+  add_comm --> remainder_decomposition_to_mod_eq
+  mul_comm --> remainder_decomposition_to_mod_eq
   succ_ne_zero --> beta_modulus_nonzero
   mul_zero_left --> beta_at_self_of_bound
   zero_add --> beta_at_self_of_bound
@@ -380,6 +394,7 @@ flowchart TD
   division_remainder_unique --> beta_at_unique
   beta_at_exists --> beta_at_exists_unique
   beta_at_unique --> beta_at_exists_unique
+  remainder_decomposition_to_mod_eq --> beta_at_to_mod_eq
   zero_add --> dvd_to_mod_zero
   add_assoc --> add_residue
   mul_add --> add_residue

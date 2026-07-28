@@ -270,7 +270,7 @@ arithmetic/order rungs plus five explicit helper lemmas, ending at
 `forall n m. n * m = 0 -> n = 0 \/ m = 0`. M11 extends the current index to twenty-three with
 `one_mul`, `mul_one`, and `add_mul`, the only missing orientations needed by certificate-producing
 commutative-semiring normalization. The current local runtime extends that
-reconciled foundation to 156 unique checked entries: 23 baseline theorems, 121
+reconciled foundation to 161 unique checked entries: 23 baseline theorems, 126
 general foundational theorems, and twelve unique modular capstones. The
 complete 26-record modular provenance catalog ends at
 `mod5_fourth_power_one`; fourteen of those records coincide exactly with
@@ -290,15 +290,19 @@ divisibility decisions, bounded factor search, primality decision, proper-factor
 descent, and prime-divisor existence are native expanded PA theorems rather
 than hidden predicates or axioms.
 
-Balanced natural congruence is now a checked transitive relation and respects
-addition through `mod_eq_trans` and `mod_eq_add`. The first conservative
-Gödel-β layer exposes no new term or predicate: `beta_modulus_nonzero`,
+Balanced natural congruence is now a checked transitive relation compatible
+with addition and multiplication through `mod_eq_trans`, `mod_eq_add`,
+`mod_eq_mul_right`, `mod_eq_mul_left`, and `mod_eq_mul`. The checked
+`remainder_decomposition_to_mod_eq` bridge converts a directed remainder
+equation to this relation. The conservative Gödel-β layer exposes no new term
+or predicate: `beta_modulus_nonzero`,
 `beta_at_self_of_bound`, `beta_at_exists`, `beta_at_unique`, and
 `beta_at_exists_unique` expand decoding as the unique bounded remainder modulo
-`1 + (i + 1)c`. CRT, finite-prefix extension, and prefix-product traces remain
-future checked layers.
+`1 + (i + 1)c`; `beta_at_to_mod_eq` connects that decoding to balanced
+congruence. Bounded representative uniqueness, CRT, finite-prefix extension,
+and prefix-product traces remain future checked layers.
 
-The shared ladder totals 71,762 structural nodes and 1,911 Cuts across 116
+The shared ladder totals 75,170 structural nodes and 2,009 Cuts across 121
 Cut-bearing entries. Euclid remains largest at 5,382 nodes and has the maximum
 159 Cuts; `prime_divisor_exists` reaches the maximum depth of 80.
 
@@ -445,16 +449,16 @@ passes 1,090 tests on Python 3.10; the 36-source warning-as-error book and all
 264 documented commands are green. It has not been deployed or promoted;
 production remains untouched.
 
-The current fully synchronized local browser candidate is build `2026-07-29b`,
-immutable application release `a-e2678d4819b0`. It exposes all 156 checked
-theorems, including constructive prime search and divisor existence,
-balanced-congruence transitivity/addition, and total functional expanded
-Gödel-β decoding. Its complete Peano suite passes 1,098 tests on
-CPython 3.10; Lambda's 360 tests plus 36 subtests, the warning-as-error
-36-source book, 203 checked deep links, 45 session blocks with 264 commands,
-the 235-note/1,979-link vault, and application-manifest drift are green. The
+The current local browser candidate is build `2026-07-29c`, immutable
+application release `a-b71812244ce0`. It exposes all 161 checked theorems,
+including full balanced-congruence multiplication compatibility and the
+directed-remainder/β-to-congruence bridges. Its complete suite passes 1,098
+tests on CPython 3.10, including the 28-test focused pre-CRT gate. Lambda's 360
+tests plus 36 subtests and the warning-as-error
+36-source book, 205 checked deep links, 45 session blocks with 264 commands,
+the 240-note/2,037-link vault, and application-manifest drift are green. The
 source-bound corpus remains 13,344 transitions/1,692 sessions; the isolated
-acceptance smoke has 3,766 unique transitions from 312 sessions and all 156
+acceptance smoke has 3,899 unique transitions from 322 sessions and all 161
 authored QEDs. This candidate has not been staged, deployed, or promoted;
 production remains untouched.
 

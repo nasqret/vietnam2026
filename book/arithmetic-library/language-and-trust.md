@@ -141,9 +141,11 @@ new kernel atom.
 The expanded single-position relation now has checked totality and
 functionality through `beta_at_exists`, `beta_at_unique`, and
 `beta_at_exists_unique`; `beta_modulus_nonzero` and
-`beta_at_self_of_bound` supply its first boundary helpers. These theorem names
-do not add a predicate symbol. Binary/bounded CRT and finite-prefix extension
-are still required before arbitrary finite data can be encoded.
+`beta_at_self_of_bound` supply its first boundary helpers, and
+`beta_at_to_mod_eq` projects the decoded quotient-remainder witness into the
+checked balanced-congruence API. These theorem names do not add a predicate
+symbol. Binary/bounded CRT, bounded congruence uniqueness, and finite-prefix
+extension are still required before arbitrary finite data can be encoded.
 
 The native route is therefore explicit:
 
@@ -153,8 +155,9 @@ The native route is therefore explicit:
    Euclid spine together with the now-checked proper-factor search and
    prime-divisor-existence clients;
 3. prove greatest-prime descent for the selected sorted factorization route;
-4. reuse checked single-position β decoding while implementing and proving
-   binary/bounded CRT, finite-prefix extension, and prefix-product relations;
+4. reuse checked single-position β decoding and its congruence bridge while
+   implementing and proving binary/bounded CRT, bounded congruence uniqueness,
+   finite-prefix extension, and prefix-product relations;
 5. state and check factorization existence and extensional uniqueness.
 
 A separate Lean companion already checks the conventional finite-list FTA,

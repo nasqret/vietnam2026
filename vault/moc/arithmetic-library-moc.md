@@ -6,16 +6,16 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-The current runtime has 156 unique checked nodes: 23 from the original ladder
-and 133 in the reconciled post-baseline extension. Of the latter, 121 form the
+The current runtime has 161 unique checked nodes: 23 from the original ladder
+and 138 in the reconciled post-baseline extension. Of the latter, 126 form the
 general foundational layer and twelve form the fixed modular capstone. The
-broader 163-node catalog contains three `planned_expressible` and four
+broader 168-node catalog contains three `planned_expressible` and four
 `blocked_by_language` nodes in addition to those checked layers. One
 separately cataloged Lean companion checks full list-based FTA existence and
 uniqueness; it is not counted as a Peano theorem.
 
-The shared snapshot contains 71,762 proof nodes and 1,911 self-contained Cuts;
-116 certificates contain at least one Cut. [[euclid_prime_dvd_product]]
+The shared snapshot contains 75,170 proof nodes and 2,009 self-contained Cuts;
+121 certificates contain at least one Cut. [[euclid_prime_dvd_product]]
 remains largest at 5,382 nodes, while [[prime_divisor_exists]] sets the maximum
 depth at 80. These are representation metrics, not additional axioms.
 
@@ -101,6 +101,8 @@ depth at 80. These are representation metrics, not additional axioms.
 ## Checked congruence and single-position β decoding
 
 - [[mod_eq_refl]] · [[mod_eq_symm]] · [[mod_eq_trans]] · [[mod_eq_add]]
+- [[mod_eq_mul_right]] · [[mod_eq_mul_left]] · [[mod_eq_mul]]
+- [[remainder_decomposition_to_mod_eq]] · [[beta_at_to_mod_eq]]
 - [[beta_modulus_nonzero]] · [[beta_at_self_of_bound]]
 - [[beta_at_exists]] · [[beta_at_unique]] · [[beta_at_exists_unique]]
 

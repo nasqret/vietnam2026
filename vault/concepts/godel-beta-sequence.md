@@ -31,6 +31,9 @@ the quotient-zero base constructor, and [[beta_at_exists]], [[beta_at_unique]],
 and [[beta_at_exists_unique]] prove totality and functionality of the fully
 expanded `At` relation. These facts decode one position; they do not yet build
 a code satisfying a prescribed finite family of positions.
+[[beta_at_to_mod_eq]] now connects each directed decoding witness to the
+balanced [[arithmetic-congruence]] API. The reverse bounded bridge and the CRT
+construction needed to extend a prescribed prefix remain open.
 
 The remaining spine begins with greatest-prime-divisor descent for the sorted
 factor order. The encoding layer then needs binary and bounded CRT,

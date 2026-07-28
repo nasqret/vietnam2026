@@ -38,11 +38,16 @@ The exact abstracts, session plans and reading lists live on the [landing page](
 | `vault/` | The **Obsidian vault** — the atomic, wiki-linked knowledge base behind the book. |
 | `artifacts/` | **Formal proofs** in four systems, plus `lean-fta/`: a pinned, sorry-free Lean proof of prime-factorization existence and uniqueness up to permutation. |
 | `lab-lambda/` | The **Lambda Lab**, repackaged to run **directly in the browser** (Pyodide + xterm.js). Deployed to `/lab-lambda`. |
-| `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, 156-entry checked arithmetic ladder, and reproducible proof-trace corpus. |
-| `research/` | The **research dossier** — including the 163-node foundational arithmetic catalog (23 baseline checked, 133 post-baseline checked, three planned expressible, four language-blocked), one checked FTA companion, and source/license maps. |
+| `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, 161-entry checked arithmetic ladder, and reproducible proof-trace corpus. |
+| `research/` | The **research dossier** — including the 168-node foundational arithmetic catalog (23 baseline checked, 138 post-baseline checked, three planned expressible, four language-blocked), one checked FTA companion, and source/license maps. |
 | `scripts/` | Book replay gate plus the deterministic Peano trace generation, export, and kernel-judged evaluation pipeline. |
 | `docs/` | Lecturer-facing docs: how to build, deploy, and run each piece. |
 | `MEMORY.md` · `JOURNAL.md` · `PLAN.md` + `PLAN/` | Project **memory**, dated **journal**, and the multi-level **plan**. |
+
+The 161-entry native ladder now checks full addition/multiplication
+compatibility for balanced congruence and the expanded Gödel-β
+value-to-congruence bridge. Bounded representative uniqueness, CRT, finite
+prefixes/products, greatest-prime descent, and native FTA remain open.
 
 ---
 

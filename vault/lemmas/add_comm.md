@@ -34,6 +34,7 @@ forall n m. n + m = m + n
 - [[common_divisor_divides_balanced_result]]
 - [[mod_eq_trans]]
 - [[mod_eq_add]]
+- [[remainder_decomposition_to_mod_eq]]
 - [[add_residue_lift]]
 - [[mod5_square_residue_two]]
 

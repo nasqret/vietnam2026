@@ -1,11 +1,11 @@
 {
   "certificate_policy": "Each closed certificate was reconstructed from its script, packages each declared dependency as a self-contained checked Cut node, and passed the independent kernel from the empty context. Cut nodes contain their proposition and both proof branches; they do not refer to an external theorem environment, theorem name, or certificate hash.",
   "certificate_representation": "python-dataclass-repr-with-cut-v2",
-  "ordered_root_sha256": "ff441221dbd88a669cf3d178496f2230781ca773a2562befb17b74b38d2ab748",
+  "ordered_root_sha256": "16c9a41170cc4cd073f41e99bc533b03b8abf885e6480f79fc30ebdd05feeca1",
   "schema": "peano-library-snapshot-v2",
-  "theorem_count": 156,
+  "theorem_count": 161,
   "theorem_source": "peano-lab/py/peano_lab/library/theorems.py",
-  "theorem_source_sha256": "5289d74a2177cd94eb7655ba477ecb9945264ae8ac02e073352df46a9786858b",
+  "theorem_source_sha256": "75681da915839e076eeec95bca8621f5d88758307a58a30d8de88e42a6ff54e9",
   "theorems": [
     {
       "certificate_representation": "python-dataclass-repr-with-cut-v2",
@@ -5148,12 +5148,188 @@
     },
     {
       "certificate_representation": "python-dataclass-repr-with-cut-v2",
+      "certificate_sha256": "4994212781f9a86bb60622ca1fe8ad409d0bb500791af6a24b5a825098729e27",
+      "cut_nodes": 13,
+      "dependencies": [
+        "add_mul",
+        "mul_assoc"
+      ],
+      "index": 133,
+      "layer": "foundational_extension",
+      "name": "mod_eq_mul_right",
+      "proof_depth": 26,
+      "proof_nodes": 484,
+      "script": [
+        "intro m",
+        "intro a",
+        "intro b",
+        "intro c",
+        "intro h",
+        "cases h",
+        "cases h_witness",
+        "exists x * c",
+        "exists x1 * c",
+        "trans a * c + (m * x) * c",
+        "congr",
+        "refl",
+        "symm",
+        "apply mul_assoc",
+        "trans (a + m * x) * c",
+        "symm",
+        "apply add_mul",
+        "trans (b + m * x1) * c",
+        "congr",
+        "exact h_witness_witness",
+        "refl",
+        "trans b * c + (m * x1) * c",
+        "apply add_mul",
+        "congr",
+        "refl",
+        "apply mul_assoc"
+      ],
+      "script_sha256": "3d3ed4666dcf001003983b4033bceea85ecb33ce65ebb2f2ac10374494eb8e78",
+      "statement": "forall m a b c. (exists u v. a + m * u = b + m * v) -> exists r s. (a * c) + m * r = (b * c) + m * s",
+      "statement_sha256": "8733e14f0e281c8da5e450d12fe21b7d5929d4b5e9953d867333be510677d636",
+      "summary": "Balanced congruence is preserved by multiplication on the right."
+    },
+    {
+      "certificate_representation": "python-dataclass-repr-with-cut-v2",
+      "certificate_sha256": "84e29f574f4ebbcb3993c2746183e370648a84346c8cf4e46f50a28581bf9dc6",
+      "cut_nodes": 21,
+      "dependencies": [
+        "mod_eq_mul_right",
+        "mul_comm"
+      ],
+      "index": 134,
+      "layer": "foundational_extension",
+      "name": "mod_eq_mul_left",
+      "proof_depth": 27,
+      "proof_nodes": 738,
+      "script": [
+        "intro m",
+        "intro a",
+        "intro b",
+        "intro c",
+        "intro h",
+        "specialize mod_eq_mul_right m",
+        "specialize mod_eq_mul_right a",
+        "specialize mod_eq_mul_right b",
+        "specialize mod_eq_mul_right c",
+        "have hr : exists r s. (a * c) + m * r = (b * c) + m * s",
+        "apply mod_eq_mul_right",
+        "exact h",
+        "cases hr",
+        "cases hr_witness",
+        "exists x",
+        "exists x1",
+        "trans a * c + m * x",
+        "congr",
+        "apply mul_comm",
+        "refl",
+        "trans b * c + m * x1",
+        "exact hr_witness_witness",
+        "congr",
+        "apply mul_comm",
+        "refl"
+      ],
+      "script_sha256": "29796731cd43ad3e26c44f3bf8bfd7f7791c732f7cb2875d67dc7d6697a0be58",
+      "statement": "forall m a b c. (exists u v. a + m * u = b + m * v) -> exists r s. (c * a) + m * r = (c * b) + m * s",
+      "statement_sha256": "dbadf46b1b0bf5a186fbdd59491a88885e0649b62e28e8465f6dee8bdb9e21fe",
+      "summary": "Balanced congruence is preserved by multiplication on the left."
+    },
+    {
+      "certificate_representation": "python-dataclass-repr-with-cut-v2",
+      "certificate_sha256": "660f19930d52443997b878d9fbc824d96e6070e8e7304d08159dcb591af5cc56",
+      "cut_nodes": 43,
+      "dependencies": [
+        "mod_eq_mul_right",
+        "mod_eq_mul_left",
+        "mod_eq_trans"
+      ],
+      "index": 135,
+      "layer": "foundational_extension",
+      "name": "mod_eq_mul",
+      "proof_depth": 32,
+      "proof_nodes": 1505,
+      "script": [
+        "intro m",
+        "intro a",
+        "intro b",
+        "intro c",
+        "intro d",
+        "intro hab",
+        "intro hcd",
+        "have hacbc : exists r s. (a * c) + m * r = (b * c) + m * s",
+        "specialize mod_eq_mul_right m",
+        "specialize mod_eq_mul_right a",
+        "specialize mod_eq_mul_right b",
+        "specialize mod_eq_mul_right c",
+        "apply mod_eq_mul_right",
+        "exact hab",
+        "have hbcbd : exists r s. (b * c) + m * r = (b * d) + m * s",
+        "specialize mod_eq_mul_left m",
+        "specialize mod_eq_mul_left c",
+        "specialize mod_eq_mul_left d",
+        "specialize mod_eq_mul_left b",
+        "apply mod_eq_mul_left",
+        "exact hcd",
+        "specialize mod_eq_trans m",
+        "specialize mod_eq_trans (a * c)",
+        "specialize mod_eq_trans (b * c)",
+        "specialize mod_eq_trans (b * d)",
+        "apply mod_eq_trans",
+        "exact hacbc",
+        "exact hbcbd"
+      ],
+      "script_sha256": "05ddd10a7c7db178db01a86b1cfdb0ba204c0b2ca30ad7d41e58aeef927f89f3",
+      "statement": "forall m a b c d. (exists u v. a + m * u = b + m * v) -> (exists r s. c + m * r = d + m * s) -> exists x y. (a * c) + m * x = (b * d) + m * y",
+      "statement_sha256": "a3983a74ea581e76450a400c1ed5b4e06e6feac6ff9a6ebb90d8f82f3c316d2b",
+      "summary": "Balanced natural congruence respects multiplication."
+    },
+    {
+      "certificate_representation": "python-dataclass-repr-with-cut-v2",
+      "certificate_sha256": "acea3f60f7fa7dfcd1745c5cb1dd1d20436c173affa5518ebcb4f981b6893b19",
+      "cut_nodes": 10,
+      "dependencies": [
+        "add_comm",
+        "mul_comm"
+      ],
+      "index": 136,
+      "layer": "foundational_extension",
+      "name": "remainder_decomposition_to_mod_eq",
+      "proof_depth": 26,
+      "proof_nodes": 323,
+      "script": [
+        "intro m",
+        "intro b",
+        "intro q",
+        "intro x",
+        "intro h",
+        "exists 0",
+        "exists q",
+        "rewrite PA5",
+        "rewrite PA3",
+        "trans q * m + x",
+        "exact h",
+        "trans x + q * m",
+        "apply add_comm",
+        "congr",
+        "refl",
+        "apply mul_comm"
+      ],
+      "script_sha256": "d1c3253ad23f292c76d3f8d57541893c45c816212263d472823016789c91ae4d",
+      "statement": "forall m b q x. b = q * m + x -> exists u v. b + m * u = x + m * v",
+      "statement_sha256": "5329024af13cfcbc0e4662ef24110fcbe2ece3d384ffca5c07cf3f6b7a49b55b",
+      "summary": "A directed quotient/remainder equation gives balanced congruence to its remainder."
+    },
+    {
+      "certificate_representation": "python-dataclass-repr-with-cut-v2",
       "certificate_sha256": "e8ce620074f6ed37285a3dc034e72bc8f267c4442673ed7dc77c9db067d2f314",
       "cut_nodes": 1,
       "dependencies": [
         "succ_ne_zero"
       ],
-      "index": 133,
+      "index": 137,
       "layer": "foundational_extension",
       "name": "beta_modulus_nonzero",
       "proof_depth": 6,
@@ -5177,7 +5353,7 @@
         "mul_zero_left",
         "zero_add"
       ],
-      "index": 134,
+      "index": 138,
       "layer": "foundational_extension",
       "name": "beta_at_self_of_bound",
       "proof_depth": 16,
@@ -5210,7 +5386,7 @@
         "mul_comm",
         "division_remainder_exists"
       ],
-      "index": 135,
+      "index": 139,
       "layer": "foundational_extension",
       "name": "beta_at_exists",
       "proof_depth": 31,
@@ -5254,7 +5430,7 @@
         "mul_comm",
         "division_remainder_unique"
       ],
-      "index": 136,
+      "index": 140,
       "layer": "foundational_extension",
       "name": "beta_at_unique",
       "proof_depth": 59,
@@ -5311,7 +5487,7 @@
         "beta_at_exists",
         "beta_at_unique"
       ],
-      "index": 137,
+      "index": 141,
       "layer": "foundational_extension",
       "name": "beta_at_exists_unique",
       "proof_depth": 61,
@@ -5347,12 +5523,44 @@
     },
     {
       "certificate_representation": "python-dataclass-repr-with-cut-v2",
+      "certificate_sha256": "dd174002d4701711239c5958acc580ca4ff11c1788aff4936b9a8d9ad65562e6",
+      "cut_nodes": 11,
+      "dependencies": [
+        "remainder_decomposition_to_mod_eq"
+      ],
+      "index": 142,
+      "layer": "foundational_extension",
+      "name": "beta_at_to_mod_eq",
+      "proof_depth": 27,
+      "proof_nodes": 358,
+      "script": [
+        "intro b",
+        "intro c",
+        "intro i",
+        "intro x",
+        "intro hat",
+        "cases hat",
+        "cases hat_right",
+        "specialize remainder_decomposition_to_mod_eq (S ((S i) * c))",
+        "specialize remainder_decomposition_to_mod_eq b",
+        "specialize remainder_decomposition_to_mod_eq x1",
+        "specialize remainder_decomposition_to_mod_eq x",
+        "apply remainder_decomposition_to_mod_eq",
+        "exact hat_right_witness"
+      ],
+      "script_sha256": "1f6e5311a6d85d8451bd5a9b9081ce190f2fed714c8f03bcb82dac60c49bff7d",
+      "statement": "forall b c i x. ((exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + x) -> exists u v. b + S ((S i) * c) * u = x + S ((S i) * c) * v",
+      "statement_sha256": "c748a4a17fd48703d134abcd46e96aa5ef082fc1f9aa69ce089d1421446d565d",
+      "summary": "Every expanded Gödel-beta value is balanced-congruent to its code."
+    },
+    {
+      "certificate_representation": "python-dataclass-repr-with-cut-v2",
       "certificate_sha256": "fa1d8f3ac2a809b22e7f1e8e10bc5246042d0ad636555ebd6506c20d91cfc45b",
       "cut_nodes": 1,
       "dependencies": [
         "zero_add"
       ],
-      "index": 138,
+      "index": 143,
       "layer": "foundational_extension",
       "name": "dvd_to_mod_zero",
       "proof_depth": 14,
@@ -5380,7 +5588,7 @@
         "add_assoc",
         "mul_add"
       ],
-      "index": 139,
+      "index": 144,
       "layer": "foundational_extension",
       "name": "add_residue",
       "proof_depth": 18,
@@ -5418,7 +5626,7 @@
         "add_assoc",
         "mul_add"
       ],
-      "index": 140,
+      "index": 145,
       "layer": "foundational_extension",
       "name": "add_residue_lift",
       "proof_depth": 28,
@@ -5491,7 +5699,7 @@
         "add_mul",
         "mul_assoc"
       ],
-      "index": 141,
+      "index": 146,
       "layer": "foundational_extension",
       "name": "square_decomp",
       "proof_depth": 29,
@@ -5556,7 +5764,7 @@
         "square_decomp",
         "add_residue"
       ],
-      "index": 142,
+      "index": 147,
       "layer": "foundational_extension",
       "name": "square_residue_lift",
       "proof_depth": 30,
@@ -5588,7 +5796,7 @@
       "dependencies": [
         "square_residue_lift"
       ],
-      "index": 143,
+      "index": 148,
       "layer": "foundational_extension",
       "name": "square_residue_witness",
       "proof_depth": 31,
@@ -5619,7 +5827,7 @@
       "dependencies": [
         "mul_assoc"
       ],
-      "index": 144,
+      "index": 149,
       "layer": "published_mod5_unique",
       "name": "fourth_power_regroup",
       "proof_depth": 18,
@@ -5638,7 +5846,7 @@
       "certificate_sha256": "f89dfde45b608505e6692fab7dda1f6c0254337ba790ad400b3125c45f0ab276",
       "cut_nodes": 0,
       "dependencies": [],
-      "index": 145,
+      "index": 150,
       "layer": "published_mod5_unique",
       "name": "mod5_residue_complete",
       "proof_depth": 28,
@@ -5698,7 +5906,7 @@
       "dependencies": [
         "mod5_residue_complete"
       ],
-      "index": 146,
+      "index": 151,
       "layer": "published_mod5_unique",
       "name": "mod5_nonzero_residue_cases",
       "proof_depth": 29,
@@ -5749,7 +5957,7 @@
         "mul_assoc",
         "mul_succ_left"
       ],
-      "index": 147,
+      "index": 152,
       "layer": "published_mod5_unique",
       "name": "mod5_square_residue_one",
       "proof_depth": 26,
@@ -5800,7 +6008,7 @@
         "mul_assoc",
         "mul_succ_left"
       ],
-      "index": 148,
+      "index": 153,
       "layer": "published_mod5_unique",
       "name": "mod5_square_residue_two",
       "proof_depth": 42,
@@ -5849,7 +6057,7 @@
       "dependencies": [
         "square_residue_lift"
       ],
-      "index": 149,
+      "index": 154,
       "layer": "published_mod5_unique",
       "name": "mod5_square_residue_three",
       "proof_depth": 31,
@@ -5874,7 +6082,7 @@
       "dependencies": [
         "square_residue_lift"
       ],
-      "index": 150,
+      "index": 155,
       "layer": "published_mod5_unique",
       "name": "mod5_square_residue_four",
       "proof_depth": 31,
@@ -5900,7 +6108,7 @@
         "mod5_square_residue_one",
         "mul_assoc"
       ],
-      "index": 151,
+      "index": 156,
       "layer": "published_mod5_unique",
       "name": "mod5_fourth_power_residue_one",
       "proof_depth": 27,
@@ -5928,7 +6136,7 @@
         "mod5_square_residue_four",
         "mul_assoc"
       ],
-      "index": 152,
+      "index": 157,
       "layer": "published_mod5_unique",
       "name": "mod5_fourth_power_residue_two",
       "proof_depth": 43,
@@ -5956,7 +6164,7 @@
         "mod5_square_residue_four",
         "mul_assoc"
       ],
-      "index": 153,
+      "index": 158,
       "layer": "published_mod5_unique",
       "name": "mod5_fourth_power_residue_three",
       "proof_depth": 33,
@@ -5984,7 +6192,7 @@
         "mod5_square_residue_one",
         "mul_assoc"
       ],
-      "index": 154,
+      "index": 159,
       "layer": "published_mod5_unique",
       "name": "mod5_fourth_power_residue_four",
       "proof_depth": 32,
@@ -6012,7 +6220,7 @@
         "square_residue_lift",
         "mul_assoc"
       ],
-      "index": 155,
+      "index": 160,
       "layer": "published_mod5_unique",
       "name": "mod5_fourth_power_one",
       "proof_depth": 38,

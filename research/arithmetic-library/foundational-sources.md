@@ -146,8 +146,9 @@ course merely because that course uses a powerful congruence tactic.
 
 - subtraction-free balanced congruence on naturals;
 - checked reflexivity, symmetry, and transitivity;
-- checked compatibility with addition; multiplication compatibility remains;
-- quotient/residue bridge lemmas;
+- checked compatibility with addition and multiplication;
+- checked directed quotient/remainder-to-congruence bridge; bounded
+  representative uniqueness and broader transport remain;
 - generic decomposition arithmetic and fixed-modulus residue exhaustions.
 
 ### L5: Parity and small moduli
@@ -210,17 +211,19 @@ This boundary should be explicit in the plan:
   relational gcd and balanced Bézout; constructive equality, divisibility,
   prime/composite, and primality decisions; proper-factor descent;
   prime-divisor existence; Gauss cancellation; Euclid's lemma; balanced
-  congruence transitivity/addition; and expanded β-value totality and
+  full congruence addition/multiplication compatibility; the directed
+  remainder/β-to-congruence bridge; and expanded β-value totality and
   functionality.
 - **Current-language feasible next target:** greatest-prime-divisor descent and
-  infinitude of primes, plus congruence multiplication/transport and parity
-  clients not already in the fixed-modulus layer.
+  infinitude of primes, plus bounded congruence uniqueness, remaining
+  transport, and parity clients not already in the fixed-modulus layer.
 - **Feasible with relational encodings but potentially unwieldy:** generic
   algorithms, signed-coefficient APIs beyond the checked four-natural balanced
   Bézout relation, and recursive arithmetic-function graphs.
 - **Encoding milestone:** decoded β values are checked, while binary/bounded
-  CRT, finite-prefix construction, prefix products, extensional sequence
-  equality, and finite counting remain; generic exponentiation and an optional
+  bounded congruence uniqueness, CRT, finite-prefix construction, prefix
+  products, extensional sequence equality, and finite counting remain;
+  generic exponentiation and an optional
   user-facing list/multiset layer are separate language-design choices.
 - **Blocked as a natural single theorem until that encoding milestone:** the
   full Fundamental Theorem of Arithmetic and its uniqueness clause,
@@ -231,9 +234,9 @@ a less direct pedagogical API and potentially very large certificates. The
 representation review nevertheless selected a conservative Gödel-β authoring
 facade because it expands into the unchanged Peano language. With constructive
 prime-divisor existence and β-value functionality now checked, the remaining
-critical path is greatest-prime descent followed by binary/bounded CRT,
-finite-prefix extension, prefix-product traces, and finite-product existence/
-uniqueness certificates.
+critical path is greatest-prime descent followed by bounded representative
+uniqueness, binary/bounded CRT, finite-prefix extension, prefix-product traces,
+and finite-product existence/uniqueness certificates.
 
 ## Source and artifact invariants
 

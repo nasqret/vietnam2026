@@ -166,25 +166,26 @@ fine-tuning awaits the pretrained-base baseline.
 
 ## Peano foundational arithmetic snapshot
 
-[`peano-library/`](peano-library/) is the deterministic snapshot of all 156
+[`peano-library/`](peano-library/) is the deterministic snapshot of all 161
 checked Peano library entries. Its internal snapshot-v2 schema contains
 statement/script/certificate hashes, exact node/depth and structural Cut
 metrics, an ordered root digest, and the dependency DAG in Mermaid form.
-The current snapshot totals 71,762 structural nodes and 1,911 Cuts across 116
+The current snapshot totals 75,170 structural nodes and 2,009 Cuts across 121
 Cut-bearing entries. `euclid_prime_dvd_product` remains largest at 5,382 nodes
 and has the maximum 159 Cuts; `prime_divisor_exists` reaches the maximum depth
 of 80.
-The latest checked tranche adds `mod_eq_trans`, `mod_eq_add`, and the five
-expanded decoded-value theorems from `beta_modulus_nonzero` through
-`beta_at_exists_unique`. It does not claim CRT, finite prefixes, encoded
-products, or native FTA.
+The latest checked tranches add the full additive/multiplicative compatibility
+layer for balanced congruence, the five expanded decoded-value theorems from
+`beta_modulus_nonzero` through `beta_at_exists_unique`, and the directed
+remainder/β-to-congruence bridges. They do not claim bounded representative
+uniqueness, CRT, finite prefixes, encoded products, or native FTA.
 Rebuild or verify it with
 `python3 scripts/build_peano_library_snapshot.py [--check]`.
 
 The snapshot is evidence about replayed certificates, not a theorem database
 trusted by the kernel. The broader checked/planned/blocked research graph lives
-in `research/arithmetic-library/catalog.json`; it currently has 163 nodes: 23
-`checked_existing`, 133 `checked_m20`, three planned, and four
+in `research/arithmetic-library/catalog.json`; it currently has 168 nodes: 23
+`checked_existing`, 138 `checked_m20`, three planned, and four
 language-blocked.
 
 ## Fundamental theorem of arithmetic companion
@@ -231,5 +232,5 @@ The reconciled runtime keeps all 26 source records for provenance. Fourteen are
 identical to independently developed M20 records, so a guarded union exposes
 those once and adds the twelve genuinely new modular capstones. That initial
 reconciliation produced a historical 63-theorem release; the current generated
-snapshot is its 156-theorem successor. Incompatible same-name records fail
+snapshot is its 161-theorem successor. Incompatible same-name records fail
 closed.

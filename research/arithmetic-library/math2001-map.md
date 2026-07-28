@@ -117,10 +117,11 @@ a \equiv b \pmod n
 \exists u\,v,\; a+n u=b+n v.
 \]
 
-Reflexivity, symmetry, transitivity, and compatibility with addition are now
-checked in the balanced encoding. Multiplication compatibility and the general
-bridges remain. Keep the existing quotient and residue form `a = n*q + r` as
-a separate relation, connected to balanced congruence by bridge lemmas. The
+Reflexivity, symmetry, transitivity, and compatibility with addition and
+multiplication are now checked in the balanced encoding. The directed quotient
+and residue form `a = n*q + r` remains a separate relation, but its conversion
+to balanced congruence is checked. Bounded representative uniqueness and the
+remaining general bridges are still open. The
 source's `add`, `sub`, `neg`, `mul`, `pow`, factor-zero, multiple-insertion,
 and unique-representative results become a coverage checklist. Subtraction and
 negation variants are deferred until an integer representation exists.
@@ -225,9 +226,10 @@ Consequently:
 - parity, divisibility, balanced natural congruence, the natural division
   algorithm, relational gcd, prime-factor existence, and Euclid's lemma are
   current-language targets already represented by checked native
-  certificates; balanced congruence is checked through transitivity and
-  addition, and expanded Gödel-β decoding is checked for totality and
-  functionality; infinitude of primes and greatest-prime descent remain
+  certificates; balanced congruence is checked through full addition and
+  multiplication compatibility, directed remainders and β values map into it,
+  and expanded Gödel-β decoding is checked for totality and functionality;
+  infinitude of primes and greatest-prime descent remain
   expressible next targets;
 - integer modular arithmetic should remain a documented future layer;
 - generic powers need a graph relation or a conservative term-language
@@ -237,8 +239,9 @@ Consequently:
 
 Gödel coding of sequences is possible in first-order arithmetic and is the
 selected conservative internal authoring route, but it is not a primitive
-user-facing list interface. The decoded-value API is checked; CRT,
-finite-prefix construction, and encoded products remain open.
+user-facing list interface. The decoded-value and congruence-bridge API is
+checked; bounded representative uniqueness, CRT, finite-prefix construction,
+and encoded products remain open.
 
 ## Clean-room acceptance rule
 

@@ -23,6 +23,7 @@ forall n m k. (n + m) * k = n * k + m * k
 - [[mul_le_mul_right]]
 - [[balanced_bezout_euclid_step]]
 - [[balanced_combination_scale_right]]
+- [[mod_eq_mul_right]]
 - [[square_decomp]]
 
 ## Verification record
