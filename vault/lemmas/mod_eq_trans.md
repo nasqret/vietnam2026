@@ -1,34 +1,34 @@
 ---
-title: "Lemma: add_permute_outer"
+title: "Lemma: mod_eq_trans"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `add_permute_outer`
+# `mod_eq_trans`
 
-Permute the outer entries of two additive pairs.
+Balanced natural congruence is transitive.
 
 ## Closed Peano statement
 
 ```text
-forall a b c d. (a + b) + (c + d) = (c + b) + (a + d)
+forall m a b c. (exists u v. a + m * u = b + m * v) -> (exists r s. b + m * r = c + m * s) -> exists x y. a + m * x = c + m * y
 ```
 
 ## Dependencies
 
 - [[add_assoc]]
 - [[add_comm]]
+- [[mul_add]]
 
 ## Checked dependents
 
-- [[balanced_bezout_euclid_step]]
-- [[mod_eq_add]]
+- No checked theorem currently depends on this node.
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **149 nodes**, depth **15**.
-- Authored script length: **25 commands**.
-- Runtime card: `pa lib add_permute_outer`.
+- Certificate: **252 nodes**, depth **29**.
+- Authored script length: **42 commands**.
+- Runtime card: `pa lib mod_eq_trans`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

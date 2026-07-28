@@ -117,13 +117,13 @@ a \equiv b \pmod n
 \exists u\,v,\; a+n u=b+n v.
 \]
 
-Build reflexivity, symmetry, transitivity, and compatibility with addition
-and multiplication before fixed-modulus results. Keep the existing quotient
-and residue form `a = n*q + r` as a separate relation, connected to balanced
-congruence by bridge lemmas. The source's `add`, `sub`, `neg`, `mul`, `pow`,
-factor-zero, multiple-insertion, and unique-representative results become a
-coverage checklist. Subtraction and negation variants are deferred until an
-integer representation exists.
+Reflexivity, symmetry, transitivity, and compatibility with addition are now
+checked in the balanced encoding. Multiplication compatibility and the general
+bridges remain. Keep the existing quotient and residue form `a = n*q + r` as
+a separate relation, connected to balanced congruence by bridge lemmas. The
+source's `add`, `sub`, `neg`, `mul`, `pow`, factor-zero, multiple-insertion,
+and unique-representative results become a coverage checklist. Subtraction and
+negation variants are deferred until an integer representation exists.
 
 ### Division algorithm
 
@@ -225,7 +225,9 @@ Consequently:
 - parity, divisibility, balanced natural congruence, the natural division
   algorithm, relational gcd, prime-factor existence, and Euclid's lemma are
   current-language targets already represented by checked native
-  certificates; infinitude of primes and greatest-prime descent remain
+  certificates; balanced congruence is checked through transitivity and
+  addition, and expanded Gödel-β decoding is checked for totality and
+  functionality; infinitude of primes and greatest-prime descent remain
   expressible next targets;
 - integer modular arithmetic should remain a documented future layer;
 - generic powers need a graph relation or a conservative term-language
@@ -233,8 +235,10 @@ Consequently:
 - the Fundamental Theorem of Arithmetic needs a checked finite-sequence or
   multiset representation before it can be stated naturally as one theorem.
 
-Gödel coding of sequences is theoretically possible in first-order
-arithmetic, but it is not an appropriate user-facing library interface.
+Gödel coding of sequences is possible in first-order arithmetic and is the
+selected conservative internal authoring route, but it is not a primitive
+user-facing list interface. The decoded-value API is checked; CRT,
+finite-prefix construction, and encoded products remain open.
 
 ## Clean-room acceptance rule
 

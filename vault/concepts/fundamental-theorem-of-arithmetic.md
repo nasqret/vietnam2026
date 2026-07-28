@@ -22,14 +22,16 @@ existence]] are now checked. Balanced Bézout, [[gauss_coprime_cancel]], and
 [[euclids-lemma]] are checked as well. The existence-side arithmetic entrance
 is now checked too: [[prime_or_composite]], [[proper_factor_lt]], and
 [[prime_divisor_exists]] give a constructive prime divisor of every nonzero
-nonunit natural.
+nonunit natural. Single-position β decoding is now checked as well:
+[[beta_at_exists]] and [[beta_at_unique]] establish totality and functionality
+of the expanded `At` relation.
 
 FTA itself is **not** proved in native Peano Lab. The direct list-oriented
 existence, uniqueness, and combined catalog endpoints remain
 `blocked_by_language`; the selected conservative route must first replace that
 surface representation with fully expanded β-coded formulas. Its remaining
-critical path is greatest-prime-divisor descent, β-value functionality,
-binary and bounded CRT, finite-prefix extension/restriction, prefix-product
+critical path is greatest-prime-divisor descent, binary and bounded CRT,
+finite-prefix extension/restriction, prefix-product
 trace existence and composition, finite-product Euclid/cancellation, and the
 final existence and extensional-uniqueness descents. Accordingly no Peano FTA
 is exposed through `pa lib`.

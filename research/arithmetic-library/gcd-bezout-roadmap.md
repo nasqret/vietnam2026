@@ -311,8 +311,10 @@ middle or double-negation elimination is hidden in the search.
 7. **Complete:** develop constructive factor search, prime/composite and
    primality decisions, proper-factor descent, and bounded/public
    prime-divisor existence.
-8. Develop greatest-prime-divisor descent for sorted factorization, then cross
-   the separate β-value/CRT/prefix-extension/product gate.
+8. **Complete:** establish β modulus nonzeroness, bounded self-decoding, and
+   decoded-value existence/uniqueness.
+9. Develop greatest-prime-divisor descent for sorted factorization, then cross
+   the separate CRT/prefix-extension/product gate.
 
 Prime-divisor existence does not follow automatically from gcd or Bézout, and
 Euclid's lemma does not construct a prime divisor; both sides are now checked

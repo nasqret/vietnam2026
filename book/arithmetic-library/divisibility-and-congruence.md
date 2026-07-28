@@ -15,10 +15,12 @@ This chapter separates three things that are easy to conflate:
 3. **modular congruence**, represented without subtraction by a balanced
    existential equation.
 
-The first two layers already have checked library entries.  The third is the
-next API to build.  Every checked entry mentioned below is an ordinary closed
-formula with a replayed certificate accepted by the independent Peano kernel;
-none is a new kernel rule.  The general checking architecture is described in
+All three layers now have checked library entries. The balanced modular API is
+checked through transitivity and additive compatibility; multiplicative and
+canonical-remainder clients remain open. Every checked entry mentioned below
+is an ordinary closed formula with a replayed certificate accepted by the
+independent Peano kernel; none is a new kernel rule. The general checking
+architecture is described in
 [the checked theorem ladder](../peano/ladder.md).
 
 ## Divisibility is an existential equation
@@ -240,18 +242,18 @@ $$
 \end{array}
 $$
 
-All 114 entries in the current post-baseline general foundational layer replay to
+All 121 entries in the current post-baseline general foundational layer replay to
 closed kernel-accepted certificates and fit the live `use` limits of 32,768
-nodes and depth 128. The current 149-entry local candidate reaches its node
+nodes and depth 128. The current 156-entry local candidate reaches its node
 maximum at `euclid_prime_dvd_product`, with 5,382 nodes and depth 55, while
 `prime_divisor_exists` reaches the snapshot-wide maximum depth of 80. Across
-the snapshot there are 67,844 structural nodes and 1,800 self-contained Cuts;
-109 certificates contain a Cut, and the largest per-certificate Cut count is
+the snapshot there are 71,762 structural nodes and 1,911 self-contained Cuts;
+116 certificates contain a Cut, and the largest per-certificate Cut count is
 159. The modular capstone itself remains 2,675 nodes and depth 38. These
 numbers are build artifacts,
 not new soundness assumptions; the immutable upstream report retains the older
 fully expanded capstone metric of 21,515 nodes/depth 66. The broader research
-catalog has 158 nodes: the 149 checked entries, five planned expressible targets,
+catalog has 163 nodes: the 156 checked entries, three planned expressible targets,
 and four language-interface targets covering conventional signed Bézout and the
 three finite-factorization endpoints.
 
@@ -376,8 +378,9 @@ This definition also gives sensible edge cases:
 - for $m=1$, every pair of naturals is congruent;
 - no positivity assumption on $m$ is required merely to define the relation.
 
-The relation's reflexivity and symmetry are now named checked entries,
-`mod_eq_refl` and `mod_eq_symm`. Reflexivity has the short proof:
+The relation's reflexivity, symmetry, and transitivity and its compatibility
+with addition are now named checked entries: `mod_eq_refl`, `mod_eq_symm`,
+`mod_eq_trans`, and `mod_eq_add`. Reflexivity has the short proof:
 
 ```text
 pa> pa prove forall m a. exists u v. a + m * u = a + m * v
@@ -432,36 +435,34 @@ pa> qed
 
 The current status distinction is:
 
-| Checked now | Planned modular API |
+| Checked now | Still-open modular API |
 |---|---|
-| `mod_eq_refl` | `mod_eq_trans` |
-| `mod_eq_symm` | `mod_eq_add` |
-| `dvd_to_mod_zero` | multiplicative compatibility |
-| Closure of multiples under addition and multiplication | congruence compatibility with multiplication |
-| Exact quotient-and-residue addition | general decomposition implies congruence |
-| Exact square decomposition and square residue lifting | shared residue implies congruence |
-| Pointwise forms of non-divisibility | reverse congruence-zero-to-divisibility |
-| No `%` or primitive congruence predicate | canonical-remainder congruence API |
+| `mod_eq_refl`, `mod_eq_symm`, `mod_eq_trans` | multiplicative compatibility |
+| `mod_eq_add` | equality transport into balanced congruence |
+| `dvd_to_mod_zero` | general decomposition implies congruence |
+| Closure of multiples under addition and multiplication | shared residue implies congruence |
+| Exact quotient-and-residue addition | reverse congruence-zero-to-divisibility |
+| Exact square decomposition and square residue lifting | canonical-remainder congruence API |
+| Pointwise forms of non-divisibility | parity-as-congruence clients |
+| No `%` or primitive congruence predicate | generated fixed-modulus clients |
 
-The planned entries remain ordinary expanded formulas.  Representative target
-shapes are:
+The two newly checked statements remain ordinary expanded formulas:
 
 ```text
 forall m a b c.
   (exists u v. a + m * u = b + m * v) ->
-  (exists x y. b + m * x = c + m * y) ->
-  exists p q. a + m * p = c + m * q
+  (exists r s. b + m * r = c + m * s) ->
+  exists x y. a + m * x = c + m * y
 
 forall m a b c d.
   (exists u v. a + m * u = b + m * v) ->
-  (exists x y. c + m * x = d + m * y) ->
-  exists p q. (a + c) + m * p = (b + d) + m * q
+  (exists r s. c + m * r = d + m * s) ->
+  exists x y. (a + c) + m * x = (b + d) + m * y
 ```
 
-These remaining shapes are proposed statements, not replay transcripts and
-not current theorem names. Before admission they need small authored scripts, explicit earlier
-dependencies, certificate metrics, live-`use` checks, and independent kernel
-replay.  Multiplicative compatibility and the reverse direction of
+Their shared certificates have 252 nodes/depth 29 with six Cuts and 370
+nodes/depth 30 with ten Cuts, respectively. Both check constructively and
+contain no DNE. Multiplicative compatibility and the reverse direction of
 "congruent to zero iff divisible" deserve particular care; the balanced
 witnesses must be rearranged constructively rather than cancelled by an
 unavailable subtraction operation.

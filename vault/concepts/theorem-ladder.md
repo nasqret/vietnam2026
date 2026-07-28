@@ -46,8 +46,8 @@ expanded certificate is checked in the empty context. This extension is also a u
 [[verifier-guided-policy-evaluation-and-search|model-v2 curriculum]], but the capstone itself is now
 a library-retrieval test rather than a sealed theorem-discovery benchmark.
 
-The reconciled runtime now has 149 unique checked entries: the 23-entry core,
-114 post-baseline foundational entries, and twelve genuinely new modular
+The reconciled runtime now has 156 unique checked entries: the 23-entry core,
+121 post-baseline foundational entries, and twelve genuinely new modular
 capstones. The newer foundation includes discrete order, multiplication
 cancellation and monotonicity, and native [[quotient-and-remainder]] existence
 and uniqueness, plus the relational [[gcd-and-coprimality]] API through gcd
@@ -59,12 +59,15 @@ existence. The next ten-node tranche adds simultaneous balanced Bézout,
 bounded [[factor_search_up_to|factor search]], [[prime_or_composite]] and
 [[prime_decidable|primality decision]], [[proper_factor_lt|proper-factor
 descent]], and [[prime_divisor_exists|prime-divisor existence]].
+The newest seven-node tranche closes [[mod_eq_trans|congruence transitivity]],
+[[mod_eq_add|addition compatibility]], and the single-position
+[[godel-beta-sequence|Gödel-β]] API through [[beta_at_exists_unique]].
 
-The shared snapshot now totals 67,844 proof nodes and 1,800 self-contained
-Cuts across 149 certificates; 109 certificates contain a Cut. Euclid's lemma
+The shared snapshot now totals 71,762 proof nodes and 1,911 self-contained
+Cuts across 156 certificates; 116 certificates contain a Cut. Euclid's lemma
 remains largest at 5,382 nodes, while prime-divisor existence sets the maximum
 depth at 80. The next mathematical/representation gate is greatest-prime
-descent followed by [[godel-beta-sequence|β-value]], CRT, finite-prefix, and
+descent followed by CRT, [[godel-beta-sequence|β finite-prefix]], and
 prefix-product infrastructure; [[fundamental-theorem-of-arithmetic|FTA]] is
 not yet a native checked theorem.
 

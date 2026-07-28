@@ -22,6 +22,7 @@ forall n. ~(S n = 0)
 - [[mul_left_cancel_nonzero]]
 - [[factor_search_up_to]]
 - [[prime_nonzero]]
+- [[beta_modulus_nonzero]]
 
 ## Verification record
 

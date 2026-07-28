@@ -623,9 +623,17 @@ entries are appended to the public theorem ladder at source commit
 All replay deterministically and pass the empty-context kernel check. The largest certificate has
 21,515 nodes at depth 66 in the immutable upstream, fully expanded validation report. The current
 snapshot-v2 representation packages dependency proofs in self-contained kernel Cuts and records a
-maximum node count of 2,675 and a maximum depth of 57 across the ladder. Model provenance must bind
-the representation version as
+maximum node count of 5,382 (`euclid_prime_dvd_product`) and a maximum depth of 80
+(`prime_divisor_exists`) across the current 156-theorem ladder. It contains
+71,762 structural nodes and 1,911 self-contained Cuts across 116 Cut-bearing
+entries. The new premise surface includes `mod_eq_trans`, `mod_eq_add`, and
+the five expanded β-value theorems through `beta_at_exists_unique`; it still
+does not include CRT or finite products. Model provenance must bind the
+representation version as
 well as the certificate hashes and metrics.
+The corresponding deterministic corpus refresh retains 13,344 transitions
+from 1,692 sessions and has run fingerprint
+`40f8380b27d38f93b8f965ea13ebe22d89dcd16cdf18f364f162b806f1fb5f38`.
 
 The pack must nevertheless enter through a new scientific contract. A
 content-addressed library snapshot must bind each name, canonical statement,

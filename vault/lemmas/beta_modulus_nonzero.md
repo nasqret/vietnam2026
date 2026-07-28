@@ -1,39 +1,32 @@
 ---
-title: "Lemma: mul_comm"
+title: "Lemma: beta_modulus_nonzero"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `mul_comm`
+# `beta_modulus_nonzero`
 
-Multiplication is commutative.
+Every Gödel-beta decoding modulus is nonzero.
 
 ## Closed Peano statement
 
 ```text
-forall n m. n * m = m * n
+forall c i. ~(S ((S i) * c) = 0)
 ```
 
 ## Dependencies
 
-- [[mul_zero_left]]
-- [[mul_succ_left]]
+- [[succ_ne_zero]]
 
 ## Checked dependents
 
-- [[add_mul]]
-- [[mul_right_cancel_nonzero]]
-- [[multiple_mul_left]]
-- [[balanced_combination_scale_right]]
 - [[beta_at_exists]]
-- [[beta_at_unique]]
-- [[square_decomp]]
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **222 nodes**, depth **24**.
+- Certificate: **9 nodes**, depth **6**.
 - Authored script length: **4 commands**.
-- Runtime card: `pa lib mul_comm`.
+- Runtime card: `pa lib beta_modulus_nonzero`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

@@ -44,7 +44,8 @@
     "div_rem(n,m,q,r)": "n = m * q + r /\\ exists k. k + S r = m",
     "is_gcd(d,a,b)": "divides(d,a) /\\ divides(d,b) /\\ forall c. divides(c,a) -> divides(c,b) -> divides(c,d)",
     "coprime(a,b)": "forall d. divides(d,a) -> divides(d,b) -> d = 1",
-    "prime(p)": "~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1"
+    "prime(p)": "~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1",
+    "beta_at(b,c,i,x)": "(exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + x"
   },
   "statuses": {
     "checked_existing": "Already present in Peano Lab's theorem ladder and independently kernel-checked.",
@@ -1754,13 +1755,14 @@
       "id": "mod_eq_trans",
       "title": "Balanced natural congruence is transitive",
       "domain": "congruence",
-      "status": "planned_expressible",
+      "status": "checked_m20",
       "dependencies": [
         "add_assoc",
         "add_comm",
         "mul_add"
       ],
       "sources": [
+        "peano_lab_library",
         "macbeth_math2001_repo",
         "weissman_illustrated_programming",
         "stein_ent_tex"
@@ -1768,7 +1770,7 @@
       "summary": "Combines balanced witnesses without introducing subtraction.",
       "peano": {
         "statement": "forall m a b c. (exists u v. a + m * u = b + m * v) -> (exists r s. b + m * r = c + m * s) -> exists x y. a + m * x = c + m * y",
-        "existing_name": null
+        "existing_name": "mod_eq_trans"
       },
       "blocker": null
     },
@@ -1776,20 +1778,21 @@
       "id": "mod_eq_add",
       "title": "Balanced congruence respects addition",
       "domain": "congruence",
-      "status": "planned_expressible",
+      "status": "checked_m20",
       "dependencies": [
-        "mod_eq_trans",
-        "add_assoc",
-        "add_comm"
+        "mul_add",
+        "add_comm",
+        "add_permute_outer"
       ],
       "sources": [
+        "peano_lab_library",
         "macbeth_math2001_repo",
         "weissman_illustrated_programming"
       ],
       "summary": "Adds two congruences using combined balanced witnesses.",
       "peano": {
         "statement": "forall m a b c d. (exists u v. a + m * u = b + m * v) -> (exists r s. c + m * r = d + m * s) -> exists x y. (a + c) + m * x = (b + d) + m * y",
-        "existing_name": null
+        "existing_name": "mod_eq_add"
       },
       "blocker": null
     },
@@ -3262,6 +3265,108 @@
       "blocker": null
     },
     {
+      "id": "beta_modulus_nonzero",
+      "title": "Every Gödel-beta modulus is nonzero",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "succ_ne_zero"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic"
+      ],
+      "summary": "Records constructively that the decoding modulus 1 + (i + 1)c is a successor.",
+      "peano": {
+        "statement": "forall c i. ~(S ((S i) * c) = 0)",
+        "existing_name": "beta_modulus_nonzero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "beta_at_self_of_bound",
+      "title": "A bounded value is its own Gödel-beta residue",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_zero_left",
+        "zero_add"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic"
+      ],
+      "summary": "Constructs a one-position decoding witness with quotient zero whenever the proposed value is below the modulus.",
+      "peano": {
+        "statement": "forall c i x. (exists h. h + S x = S ((S i) * c)) -> ((exists h. h + S x = S ((S i) * c)) /\\ exists q. x = q * S ((S i) * c) + x)",
+        "existing_name": "beta_at_self_of_bound"
+      },
+      "blocker": null
+    },
+    {
+      "id": "beta_at_exists",
+      "title": "Every Gödel-beta position has a decoded value",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "beta_modulus_nonzero",
+        "mul_comm",
+        "division_remainder_exists"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Uses quotient-remainder existence at modulus 1 + (i + 1)c and retains both the bound and quotient witnesses.",
+      "peano": {
+        "statement": "forall b c i. exists x. ((exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + x)",
+        "existing_name": "beta_at_exists"
+      },
+      "blocker": null
+    },
+    {
+      "id": "beta_at_unique",
+      "title": "A Gödel-beta decoded value is unique",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_comm",
+        "division_remainder_unique"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Reduces two expanded beta-value witnesses at the same code and position to uniqueness of quotient and remainder.",
+      "peano": {
+        "statement": "forall b c i x y. ((exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + x) -> ((exists h. h + S y = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + y) -> x = y",
+        "existing_name": "beta_at_unique"
+      },
+      "blocker": null
+    },
+    {
+      "id": "beta_at_exists_unique",
+      "title": "Every Gödel-beta position has exactly one decoded value",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "beta_at_exists",
+        "beta_at_unique"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic"
+      ],
+      "summary": "Packages beta-value totality and functionality into a single expanded first-order theorem.",
+      "peano": {
+        "statement": "forall b c i. exists x. (((exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + x) /\\ forall y. ((exists h. h + S y = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + y) -> x = y)",
+        "existing_name": "beta_at_exists_unique"
+      },
+      "blocker": null
+    },
+    {
       "id": "prime_factorization_existence",
       "title": "Existence of a finite prime factorization",
       "domain": "factorization",
@@ -3275,13 +3380,13 @@
         "weissman_python_number_theory",
         "open_logic"
       ],
-      "summary": "The selected sorted Gödel-β encoding is conservative, but its sequence and prefix-product relations do not yet have checked Peano infrastructure.",
+      "summary": "Single-position Gödel-β decoding is now total and functional, but finite-prefix extension and prefix-product relations do not yet have checked Peano infrastructure.",
       "peano": null,
       "blocker": {
         "code": "variable_length_factorization_unrepresented",
-        "detail": "Peano Lab's fixed signature has no primitive finite collection. A sorted Gödel-β factor code and β-coded prefix-product trace are now specified, but their division/CRT/extension lemmas and fully expanded theorem certificate are not implemented.",
+        "detail": "Peano Lab's fixed signature has no primitive finite collection. Division and single-position Gödel-β value totality/functionality are checked, but binary/bounded CRT, finite-prefix extension, prefix-product traces, and the fully expanded factorization certificate are not implemented.",
         "unblocks_with": [
-          "checked Gödel-β value and finite-prefix extension lemmas",
+          "checked binary and bounded CRT plus Gödel-β finite-prefix extension lemmas",
           "a checked β-coded prefix-product relation",
           "and checked links between encoded elements, primality, and the folded product"
         ]
@@ -3302,11 +3407,11 @@
         "weissman_illustrated_programming",
         "weissman_python_number_theory"
       ],
-      "summary": "The selected sorted encoding reduces permutation uniqueness to length and pointwise decoded-value equality, but the Euclid/cancellation proof spine remains unchecked in Peano.",
+      "summary": "Single decoded values are functional, and the selected sorted encoding reduces permutation uniqueness to length and pointwise equality; whole-prefix and finite-product reasoning remain unchecked in Peano.",
       "peano": null,
       "blocker": {
         "code": "factorization_equivalence_unrepresented",
-        "detail": "The current surface has no primitive finite collections. The selected β-code comparison is expressible extensionally, but its expanded relation and finite-product Euclid/cancellation lemmas are not yet available as checked Peano entries.",
+        "detail": "The current surface has no primitive finite collections. Single-position β decoding is checked and functional, but extensional finite-prefix comparison and finite-product Euclid/cancellation lemmas are not yet available as checked Peano entries.",
         "unblocks_with": [
           "the factorization representation required by prime_factorization_existence",
           "checked extensional equality for sorted β-decoded prefixes",

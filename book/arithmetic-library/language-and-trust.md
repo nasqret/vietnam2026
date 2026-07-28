@@ -138,6 +138,13 @@ prefix products; bounded formulas express decoded values, primality, and
 sortedness. This is intentionally an untrusted authoring facade rather than a
 new kernel atom.
 
+The expanded single-position relation now has checked totality and
+functionality through `beta_at_exists`, `beta_at_unique`, and
+`beta_at_exists_unique`; `beta_modulus_nonzero` and
+`beta_at_self_of_bound` supply its first boundary helpers. These theorem names
+do not add a predicate symbol. Binary/bounded CRT and finite-prefix extension
+are still required before arbitrary finite data can be encoded.
+
 The native route is therefore explicit:
 
 1. add untrusted named-predicate expansion for the formulas already
@@ -146,8 +153,8 @@ The native route is therefore explicit:
    Euclid spine together with the now-checked proper-factor search and
    prime-divisor-existence clients;
 3. prove greatest-prime descent for the selected sorted factorization route;
-4. implement and prove binary/bounded CRT extension plus the selected
-   β-sequence and prefix-product relations;
+4. reuse checked single-position β decoding while implementing and proving
+   binary/bounded CRT, finite-prefix extension, and prefix-product relations;
 5. state and check factorization existence and extensional uniqueness.
 
 A separate Lean companion already checks the conventional finite-list FTA,

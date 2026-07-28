@@ -1350,3 +1350,39 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - Native Peano FTA remains absent: the next mathematical and representation
   gates are greatest-prime descent and the β/CRT/finite-product spine needed
   for canonical encoded factorizations.
+
+## 2026-07-29 — Balanced congruence and functional Gödel-β decoding
+
+- Added seven closed native theorems. `mod_eq_trans` composes the balanced
+  witness relation `a + m*u = b + m*v`; `mod_eq_add` combines two such
+  relations under addition. Neither theorem introduces subtraction, integers,
+  or a primitive congruence predicate.
+- Added the first five checked Gödel-β rungs:
+  `beta_modulus_nonzero`, `beta_at_self_of_bound`, `beta_at_exists`,
+  `beta_at_unique`, and `beta_at_exists_unique`. The decoding relation remains
+  fully expanded as a bound plus quotient witness for the remainder of `b`
+  modulo `S ((S i) * c)`, namely `1 + (i + 1)c`. Its modulus is
+  constructively nonzero because it is a successor; checked division supplies
+  a decoded value and quotient/remainder uniqueness supplies functionality.
+- The runtime now contains 156 unique checked theorems: 23 baseline, 121
+  general foundational, and twelve unique modulo-five capstones. The
+  synchronized catalog has 163 nodes: 23 `checked_existing`, 133
+  `checked_m20`, three planned, and four language-blocked. Shared certificates
+  total 71,762 structural nodes and 1,911 Cuts across 116 Cut-bearing entries.
+  `euclid_prime_dvd_product` remains largest at 5,382 nodes and has the maximum
+  159 Cuts; `prime_divisor_exists` retains the maximum depth of 80.
+- This closes β-value totality and functionality, not finite-sequence coding.
+  Binary and bounded CRT, finite-prefix extension/restriction, prefix-product
+  traces, and finite-product laws remain open, as does greatest-prime descent.
+  Native Peano FTA therefore remains absent.
+- Regenerated the source-bound corpus without changing its semantic shape:
+  13,344 transitions from 1,692 sessions under run fingerprint
+  `40f8380b27d38f93b8f965ea13ebe22d89dcd16cdf18f364f162b806f1fb5f38`.
+  The isolated acceptance smoke has 312 sessions, 3,769 raw and 3,766 unique
+  transitions, and all 156 authored-script kernel QEDs.
+- The complete Peano suite passes 1,098 tests on CPython 3.10. The generated
+  vault has 235 notes and 1,979 resolved links, including all 156 lemma notes.
+  The warning-as-error 36-source book has 203 checked deep links and 45 session
+  blocks whose 264 commands replay cleanly.
+  Local browser build `2026-07-29b` has immutable application identity
+  `a-e2678d4819b0`; it is not staged, deployed, or promoted.

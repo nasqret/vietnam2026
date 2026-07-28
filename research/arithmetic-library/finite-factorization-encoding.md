@@ -16,9 +16,11 @@ The arithmetic entrance gate is now checked: the runtime has constructive
 equality and divisibility decisions, bounded factor search,
 prime-or-composite and primality decisions, proper-factor descent,
 prime-divisor existence, relational gcd/Bézout, Gauss cancellation, and
-Euclid's lemma. This does **not** prove FTA. The remaining critical path starts
+Euclid's lemma. The decoded-value foundation is also checked: the β modulus is
+nonzero, bounded values self-decode, and every position has exactly one
+decoded value. This does **not** prove FTA. The remaining critical path starts
 with greatest-prime-divisor descent and then crosses the still-unimplemented
-β-value, CRT, finite-prefix, prefix-product, and finite-product layers.
+CRT, finite-prefix, prefix-product, and finite-product layers.
 
 ## Sequence values
 
@@ -39,6 +41,18 @@ $$
 In Peano surface syntax the modulus is `S ((S i) * c)`, strict inequality is
 `S x <= S ((S i) * c)`, and `<=` itself expands to an existential addition
 equation. Thus `At` introduces no new object-language constructor.
+
+Five checked theorems establish the relation's basic API:
+
+- `beta_modulus_nonzero` proves constructively that $M(c,i)$ is a successor;
+- `beta_at_self_of_bound` gives a quotient-zero code for any bounded value;
+- `beta_at_exists` obtains a decoded residue from division with remainder;
+- `beta_at_unique` reduces two decodings to remainder uniqueness; and
+- `beta_at_exists_unique` packages totality and functionality.
+
+These theorems decode an existing pair `(b,c)`. They do not yet construct one
+code satisfying an arbitrary finite family of prescribed residues; that is
+the role of binary/bounded CRT and finite-prefix extension.
 
 A code pair is deliberately not treated as a canonical sequence identity.
 Different pairs can decode the same finite prefix, so all later equality is
@@ -149,16 +163,18 @@ make the proof small. The admission route and its current status are:
 3. **Checked:** prime/composite decision, proper-factor descent,
    prime-divisor existence, relational gcd, balanced-natural Bézout, Gauss,
    and Euclid's lemma.
-4. **Next arithmetic gate:** construct a greatest prime divisor with a strict
+4. **Checked decoding gate:** prove β-value modulus nonzeroness, bounded
+   self-decoding, existence, uniqueness, and unique existence.
+5. **Next arithmetic gate:** construct a greatest prime divisor with a strict
    quotient descent suitable for appending to an already sorted
    factorization.
-5. **Encoding gate:** prove β-value existence/functionality,
-   binary and bounded CRT, and finite-prefix extension and restriction.
-6. **Product gate:** prove prefix-product trace extension/functionality and
+6. **Encoding gate:** prove binary and bounded CRT and finite-prefix extension
+   and restriction.
+7. **Product gate:** prove prefix-product trace extension/functionality and
    preservation of `AllPrime`/`Sorted`.
-7. **Existence gate:** perform the strengthened natural-number descent using
+8. **Existence gate:** perform the strengthened natural-number descent using
    the greatest prime divisor and the encoded prefix/product extension laws.
-8. **Uniqueness gate:** prove finite-product Euclid, prime matching,
+9. **Uniqueness gate:** prove finite-product Euclid, prime matching,
    cancellation, and extensional equality of the two sorted decoded prefixes.
 
 The reviewed self-contained `Cut` rule now supplies lexical proof sharing while

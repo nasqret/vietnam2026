@@ -256,7 +256,7 @@
   delivery remains blocked on administrator-managed cache headers, while M17 is published to
   staging. The implementation, checked corpus,
   construction book, Obsidian knowledge base, kernel-judged evaluation protocol, live checked-
-  theorem reuse, and the current 149-entry checked ladder (whose initial public-catalog/M20
+  theorem reuse, and the current 156-entry checked ladder (whose initial public-catalog/M20
   reconciliation produced a historical 63-entry release),
   certificate-producing `ring`, and bounded checked
   `norm_num` teaching surface are present. The odd-square induction closes through explicit
@@ -329,8 +329,8 @@
   170 commands, and 414/414 vault wikilinks pass. Local browser candidate `2026-07-28g` has
   application identity `a-3ea7b7142aa0`; automated worker boot passes, direct in-app Pyodide
   latency remains unmeasured, and production is untouched.
-- The current native arithmetic runtime has 149 unique checked theorems: 23
-  baseline entries, 114 general foundational entries, and twelve unique
+- The current native arithmetic runtime has 156 unique checked theorems: 23
+  baseline entries, 121 general foundational entries, and twelve unique
   modular capstones. It now includes discrete order, multiplication
   cancellation/monotonicity, constructive quotient-remainder existence, full
   quotient-remainder uniqueness, zero-remainder/divisibility bridges,
@@ -342,22 +342,31 @@
   Euclid's lemma. The constructive prime-search layer adds equality and
   divisibility decisions, bounded factor search, prime/composite and prime
   decisions, nonzero/proper-factor interfaces, and bounded plus unrestricted
-  prime-divisor existence. Under self-contained dependency sharing, the
-  complete ladder contains 67,844 structural proof nodes and 1,800 Cuts across
-  109 entries. `euclid_prime_dvd_product` remains largest by nodes at 5,382 and
-  has the maximum 159 Cuts; `prime_divisor_exists` sets the maximum depth at
-  80. The synchronized research catalog has 158 nodes (23
-  baseline checked, 126 post-baseline checked, five planned,
-  four language-blocked) plus the separate Lean FTA companion. The last
-  generated vault has 228 notes and 1,890 resolved links. The object language, PA axioms,
+  prime-divisor existence. Balanced natural congruence is now transitive and
+  additive, and the expanded Gödel-β decoding layer proves its successor
+  modulus nonzero, constructs a bounded self-code, and proves decoded-value
+  existence, uniqueness, and unique existence. Under self-contained dependency
+  sharing, the complete ladder contains 71,762 structural proof nodes and
+  1,911 Cuts across 116 entries. `euclid_prime_dvd_product` remains largest by
+  nodes at 5,382 and has the maximum 159 Cuts; `prime_divisor_exists` sets the
+  maximum depth at 80. The synchronized research catalog has 163 nodes (23
+  baseline checked, 133 post-baseline checked, three planned,
+  four language-blocked) plus the separate Lean FTA companion. The generated
+  vault has 235 notes and 1,979 resolved links, including 156 generated lemma
+  notes. The object language,
+  PA axioms,
   induction schema, and intuitionistic default are unchanged. The trusted
   proof grammar/checker now contains the reviewed self-contained
   `Cut(A,B,lemma,body)` rule: both formulas and both proof branches are embedded,
   with no theorem-name/hash authority. The checker is 247 lines. Its untrusted
   erasure utility is diagnostic and cannot round-trip every introduction-headed
   or induction-bearing certificate. The local browser candidate is
-  `2026-07-29a` / `a-d0758315633d`; 1,094 Peano tests, Lambda's 360 tests plus
-  36 subtests, the warning-free 36-source book, 201 deep links, 45 session
+  `2026-07-29b` / `a-e2678d4819b0` and exposes all 156 entries. Its 1,098
+  Peano tests, Lambda's 360 tests plus
+  36 subtests, the warning-free 36-source book, 203 deep links, 45 session
   blocks with 264 documented commands, and application-manifest drift pass.
-  Peano FTA remains absent pending greatest-prime descent and the selected
-  β/CRT/finite-product representation spine. Production is untouched.
+  The source-bound corpus retains 13,344 transitions/1,692 sessions under run
+  fingerprint `40f8380b…`; the isolated smoke has 3,766 unique transitions
+  from 312 sessions and all 156 authored QEDs.
+  Peano FTA remains absent pending greatest-prime descent and the still-open
+  CRT/finite-prefix/prefix-product representation spine. Production is untouched.

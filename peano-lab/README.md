@@ -270,7 +270,7 @@ arithmetic/order rungs plus five explicit helper lemmas, ending at
 `forall n m. n * m = 0 -> n = 0 \/ m = 0`. M11 extends the current index to twenty-three with
 `one_mul`, `mul_one`, and `add_mul`, the only missing orientations needed by certificate-producing
 commutative-semiring normalization. The current local runtime extends that
-reconciled foundation to 149 unique checked entries: 23 baseline theorems, 114
+reconciled foundation to 156 unique checked entries: 23 baseline theorems, 121
 general foundational theorems, and twelve unique modular capstones. The
 complete 26-record modular provenance catalog ends at
 `mod5_fourth_power_one`; fourteen of those records coincide exactly with
@@ -288,10 +288,19 @@ The constructive prime-search layer contributes twelve checked rungs:
 `prime_divisor_exists_up_to`, and `prime_divisor_exists`. Thus equality and
 divisibility decisions, bounded factor search, primality decision, proper-factor
 descent, and prime-divisor existence are native expanded PA theorems rather
-than hidden predicates or axioms. The shared ladder totals 67,844 structural
-nodes and 1,800 Cuts across 109 Cut-bearing entries. Euclid remains largest at
-5,382 nodes and has the maximum 159 Cuts; `prime_divisor_exists` reaches the
-maximum depth of 80.
+than hidden predicates or axioms.
+
+Balanced natural congruence is now a checked transitive relation and respects
+addition through `mod_eq_trans` and `mod_eq_add`. The first conservative
+Gödel-β layer exposes no new term or predicate: `beta_modulus_nonzero`,
+`beta_at_self_of_bound`, `beta_at_exists`, `beta_at_unique`, and
+`beta_at_exists_unique` expand decoding as the unique bounded remainder modulo
+`1 + (i + 1)c`. CRT, finite-prefix extension, and prefix-product traces remain
+future checked layers.
+
+The shared ladder totals 71,762 structural nodes and 1,911 Cuts across 116
+Cut-bearing entries. Euclid remains largest at 5,382 nodes and has the maximum
+159 Cuts; `prime_divisor_exists` reaches the maximum depth of 80.
 
 ## Polynomial identities with checked certificates
 
@@ -436,15 +445,18 @@ passes 1,090 tests on Python 3.10; the 36-source warning-as-error book and all
 264 documented commands are green. It has not been deployed or promoted;
 production remains untouched.
 
-The current fully synchronized local browser candidate is build `2026-07-29a`,
-immutable application release `a-d0758315633d`. It exposes all 149 checked
-theorems, including constructive equality and divisibility decisions,
-prime/composite decision, primality decision, proper-factor descent, and
-prime-divisor existence. Its complete Peano suite passes 1,094 tests on
+The current fully synchronized local browser candidate is build `2026-07-29b`,
+immutable application release `a-e2678d4819b0`. It exposes all 156 checked
+theorems, including constructive prime search and divisor existence,
+balanced-congruence transitivity/addition, and total functional expanded
+Gödel-β decoding. Its complete Peano suite passes 1,098 tests on
 CPython 3.10; Lambda's 360 tests plus 36 subtests, the warning-as-error
-36-source book, 201 checked deep links, 45 session blocks with 264 commands,
-and application-manifest drift are green. It has not been staged, deployed, or
-promoted; production remains untouched.
+36-source book, 203 checked deep links, 45 session blocks with 264 commands,
+the 235-note/1,979-link vault, and application-manifest drift are green. The
+source-bound corpus remains 13,344 transitions/1,692 sessions; the isolated
+acceptance smoke has 3,766 unique transitions from 312 sessions and all 156
+authored QEDs. This candidate has not been staged, deployed, or promoted;
+production remains untouched.
 
 Back at the repository root, run both regression suites:
 

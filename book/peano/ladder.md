@@ -6,8 +6,8 @@ replays all current entries, discharges dependency assumptions through embedded 
 Cuts, and asks the independent kernel to check the resulting closed certificate against the
 original statement.
 
-The current local candidate runtime contains 149 unique checked entries: the
-original 23-entry base, 114 post-baseline foundational entries, and twelve
+The current local candidate runtime contains 156 unique checked entries: the
+original 23-entry base, 121 post-baseline foundational entries, and twelve
 further unique records from the upstream modular catalog. The upstream
 26-record catalog ends at the fourth-power modulo-five capstone. Its first
 reconciliation with the 51-entry M20 branch exposed fourteen coincident
@@ -16,12 +16,15 @@ Subsequent foundational passes add discrete order and cancellation, generic
 quotient-and-remainder existence and uniqueness, relational gcd, balanced
 Bézout, Gauss cancellation, `prime_divisor_eq_one_or_self`, and
 `euclid_prime_dvd_product`. They retain `prime_two`, the first checked fully
-expanded prime instance. The latest twelve-rung native milestone adds
+expanded prime instance. A twelve-rung native milestone adds
 `eq_decidable`, constructive divisibility decisions, bounded factor-pair
 search, `prime_or_composite`, `prime_decidable`, proper-factor descent, and
-bounded plus general prime-divisor existence. None of those certificates uses
-DNE. Across the snapshot, 67,844 structural nodes include 1,800 self-contained
-Cuts; 109 certificates contain a Cut. `euclid_prime_dvd_product` remains the
+bounded plus general prime-divisor existence. The newest seven-rung tranche
+adds `mod_eq_trans`, `mod_eq_add`, `beta_modulus_nonzero`,
+`beta_at_self_of_bound`, `beta_at_exists`, `beta_at_unique`, and
+`beta_at_exists_unique`. None of those nineteen certificates uses DNE. Across
+the snapshot, 71,762 structural nodes include 1,911 self-contained Cuts; 116
+certificates contain a Cut. `euclid_prime_dvd_product` remains the
 largest certificate at 5,382 nodes and also sets the per-certificate Cut
 maximum at 159, while `prime_divisor_exists` sets the depth maximum at 80. The
 complete layered design continues
@@ -34,8 +37,7 @@ Open the currently deployed index or the core zero-product card:
 - [`pa lib mul_eq_zero`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mul_eq_zero)
 - [`pa lean add_comm`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lean%20add_comm)
 
-Local candidate build `2026-07-29a`, immutable application release
-`a-d0758315633d`, also exposes `pa lib mod5_fourth_power_one`. Its production deep link
+The local candidate also exposes `pa lib mod5_fourth_power_one`. Its production deep link
 will be added only after the candidate is actually deployed; documentation does not pretend that a
 local theorem is already live.
 

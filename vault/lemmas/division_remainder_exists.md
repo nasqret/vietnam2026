@@ -23,6 +23,7 @@ forall m n. ~(m = 0) -> exists q r. n = m * q + r /\ S r <= m
 - [[gcd_exists_up_to]]
 - [[gcd_balanced_bezout_exists_up_to]]
 - [[multiple_decidable_nonzero]]
+- [[beta_at_exists]]
 
 ## Verification record
 

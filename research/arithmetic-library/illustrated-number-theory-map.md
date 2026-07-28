@@ -153,12 +153,16 @@ Therefore:
 
 - quotient/remainder existence, divisibility, relational gcd, constructive
   primality decision, prime-divisor existence, and Euclid's lemma are now
-  checked native layers;
+  checked native layers; balanced congruence is checked through transitivity
+  and addition, and expanded Gödel-β values are total and functional;
 - greatest-prime descent and infinitude of primes remain expressible without
   changing the object language;
 - algorithms may be specified relationally, but executable functions require
   an explicit project architecture decision;
 - prime-decomposition dictionaries require a finite-map or multiset layer;
+- the selected β route still requires CRT, finite-prefix extension, and
+  encoded prefix-product traces before it can replace that external data
+  structure inside native PA;
 - Fermat, Euler, Miller--Rabin, primitive-root, and RSA layers require generic
   powers and additional finite algebra/counting infrastructure.
 

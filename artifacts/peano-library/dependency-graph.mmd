@@ -131,6 +131,13 @@ flowchart TD
   euclid_prime_dvd_product[euclid_prime_dvd_product]
   mod_eq_refl[mod_eq_refl]
   mod_eq_symm[mod_eq_symm]
+  mod_eq_trans[mod_eq_trans]
+  mod_eq_add[mod_eq_add]
+  beta_modulus_nonzero[beta_modulus_nonzero]
+  beta_at_self_of_bound[beta_at_self_of_bound]
+  beta_at_exists[beta_at_exists]
+  beta_at_unique[beta_at_unique]
+  beta_at_exists_unique[beta_at_exists_unique]
   dvd_to_mod_zero[dvd_to_mod_zero]
   add_residue[add_residue]
   add_residue_lift[add_residue_lift]
@@ -357,6 +364,22 @@ flowchart TD
   gcd_exists_relational --> euclid_prime_dvd_product
   is_gcd_one_to_coprime --> euclid_prime_dvd_product
   gauss_coprime_cancel --> euclid_prime_dvd_product
+  add_assoc --> mod_eq_trans
+  add_comm --> mod_eq_trans
+  mul_add --> mod_eq_trans
+  mul_add --> mod_eq_add
+  add_comm --> mod_eq_add
+  add_permute_outer --> mod_eq_add
+  succ_ne_zero --> beta_modulus_nonzero
+  mul_zero_left --> beta_at_self_of_bound
+  zero_add --> beta_at_self_of_bound
+  beta_modulus_nonzero --> beta_at_exists
+  mul_comm --> beta_at_exists
+  division_remainder_exists --> beta_at_exists
+  mul_comm --> beta_at_unique
+  division_remainder_unique --> beta_at_unique
+  beta_at_exists --> beta_at_exists_unique
+  beta_at_unique --> beta_at_exists_unique
   zero_add --> dvd_to_mod_zero
   add_assoc --> add_residue
   mul_add --> add_residue

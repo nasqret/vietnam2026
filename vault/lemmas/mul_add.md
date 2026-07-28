@@ -27,6 +27,8 @@ forall n m k. n * (m + k) = n * m + n * k
 - [[divides_linear_step]]
 - [[balanced_bezout_euclid_step]]
 - [[common_divisor_divides_balanced_result]]
+- [[mod_eq_trans]]
+- [[mod_eq_add]]
 - [[add_residue]]
 - [[add_residue_lift]]
 - [[square_decomp]]

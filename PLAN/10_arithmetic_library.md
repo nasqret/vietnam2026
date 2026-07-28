@@ -55,7 +55,7 @@ does not determine the architecture.
 - [x] Add both constructive normal forms for non-divisibility.
 - [x] Add modulus-independent quotient-and-remainder transport through
       addition and squaring.
-- [x] Replay and independently check all 149 unique library entries and enforce
+- [x] Replay and independently check all 156 unique library entries and enforce
       the live 32,768-node/depth-128 import bound.
 - [x] Generate a deterministic versioned JSON snapshot, exact metrics,
       certificate hashes, structural Cut counts, and Mermaid dependency graph.
@@ -65,9 +65,10 @@ does not determine the architecture.
 - [ ] Specify untrusted, round-tripping expansions for `a | b`, balanced
       natural congruence, relational gcd/coprimality, and primality.
 - [x] Prove balanced congruence reflexive and symmetric.
-- [ ] Prove balanced congruence transitive.
-- [ ] Prove congruence compatibility with addition and multiplication, plus
-      equality/divisibility transport.
+- [x] Prove balanced congruence transitive as `mod_eq_trans`.
+- [x] Prove congruence compatibility with addition as `mod_eq_add`.
+- [ ] Prove congruence compatibility with multiplication, plus equality and
+      divisibility transport.
 - [ ] Add even/odd definitions, dichotomy, exclusivity, arithmetic tables, and
       parity-as-congruence-modulo-two.
 - [ ] Add fixed-modulus residue exhaustions only as generated downstream
@@ -115,10 +116,13 @@ does not determine the architecture.
 - [x] Compare Gödel-coded sequences with a reviewed finite-list/multiset layer;
       select sorted β-coded factors plus a β-coded prefix-product trace, and
       document the trust and browser-cost implications.
-- [ ] Freeze and implement decoded-value, finite-product, all-prime, sorted
-      canonical-form, and extensional-equality expanders with hygiene and
-      round-trip tests, without adding kernel atoms. The mathematical schemas
-      and representation choice are documented.
+- [x] Prove the expanded β-value foundation: `beta_modulus_nonzero`,
+      `beta_at_self_of_bound`, `beta_at_exists`, `beta_at_unique`, and
+      `beta_at_exists_unique`.
+- [ ] Add hygienic round-tripping surface expanders and prove binary/bounded
+      CRT, finite-prefix extension/restriction, prefix products, all-prime,
+      sorted canonical form, and extensional equality without adding kernel
+      atoms. The mathematical schemas and representation choice are documented.
 - [x] Add a pinned Lean 4/Mathlib companion proving existence and uniqueness
       up to permutation, with `sorryAx` rejection and an exact standard-axiom
       audit, without treating it as Peano theorem authority.
@@ -143,13 +147,13 @@ does not determine the architecture.
 
 ## Current acceptance record
 
-- Checked runtime: 149 unique theorems — 23 baseline and 126 post-baseline.
-  The latter are the 114-entry general foundational layer plus twelve unique upstream
+- Checked runtime: 156 unique theorems — 23 baseline and 133 post-baseline.
+  The latter are the 121-entry general foundational layer plus twelve unique upstream
   modular capstones.
-- Research catalog: 158 nodes — 23 `checked_existing`, 126 `checked_m20`, five
+- Research catalog: 163 nodes — 23 `checked_existing`, 133 `checked_m20`, three
   `planned_expressible`, and four `blocked_by_language`.
-- Shared-certificate metrics: 67,844 total structural proof nodes and 1,800
-  Cuts across 109 entries. The largest by nodes is
+- Shared-certificate metrics: 71,762 total structural proof nodes and 1,911
+  Cuts across 116 entries. The largest by nodes is
   `euclid_prime_dvd_product` at 5,382; it also has the maximum 159 Cuts.
   `prime_divisor_exists` supplies the ladder's maximum depth of 80. The
   immutable upstream report retains the
@@ -161,11 +165,14 @@ does not determine the architecture.
 - Full FTA companion status: checked in Lean for every nonzero natural, with
   finite-list existence and permutation uniqueness and no `sorryAx`.
 - Full Peano FTA status: absent from `pa lib` pending greatest-prime descent
-  and the selected β/CRT/finite-product representation spine;
+  and the still-open CRT/finite-prefix/prefix-product representation spine;
   no admitted theorem or hidden primitive.
-- Validation record: 1,094 Peano tests on Python 3.10; Lambda's 360 tests plus
-  36 subtests; 36-source warning-as-error Jupyter Book; 201 deep links and 45
-  sessions/264 replayed commands; 228-note/1,890-link Obsidian graph; exact
-  snapshot, catalog, corpus, application-manifest, and Lean FTA audits. Local
-  browser build `2026-07-29a` has content identity `a-d0758315633d`; it is not
-  deployed or promoted.
+- Validation record: 1,098 Peano tests on Python 3.10; Lambda's 360 tests plus
+  36 subtests; 36-source warning-as-error Jupyter Book; 203 deep links and 45
+  sessions/264 replayed commands; 235-note/1,979-link Obsidian graph with 156
+  generated lemma notes; exact snapshot, catalog, corpus, application-manifest,
+  and Lean FTA audits. The corpus retains 13,344 transitions/1,692 sessions
+  under run fingerprint `40f8380b…`; the isolated smoke has 3,766 unique
+  transitions from 312 sessions and all 156 authored QEDs. Local browser build
+  `2026-07-29b` has content identity `a-e2678d4819b0`; it is not deployed or
+  promoted.

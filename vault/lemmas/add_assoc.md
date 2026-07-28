@@ -33,6 +33,7 @@ forall n m k. (n + m) + k = n + (m + k)
 - [[factor_difference]]
 - [[add_permute_outer]]
 - [[balanced_bezout_euclid_step]]
+- [[mod_eq_trans]]
 - [[add_residue]]
 - [[add_residue_lift]]
 - [[square_decomp]]

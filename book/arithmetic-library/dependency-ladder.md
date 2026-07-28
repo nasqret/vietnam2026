@@ -14,12 +14,12 @@ needs.
 | Multiplication | identities, annihilation, distributivity, associativity, commutativity, zero product | checked core |
 | Order | reflexivity, transitivity, trichotomy, incompatibility, addition monotonicity and cancellation | checked |
 | Divisibility | units, zero, reflexivity, transitivity, addition/product closure, constructive decision | checked |
-| Modular congruence | balanced reflexivity and symmetry; additive and multiplicative compatibility | first two checked; transitivity/compatibility planned; fixed mod-five residue ladder checked |
+| Modular congruence | balanced equivalence laws and additive/multiplicative compatibility | reflexivity, symmetry, transitivity, and addition checked; multiplication compatibility remains open; fixed mod-five residue ladder checked |
 | Parity | even/odd dichotomy and arithmetic tables | planned and expressible |
 | Division | quotient-remainder existence, uniqueness, block separation, and zero-remainder/divisibility bridges | checked |
 | GCD/coprime | relational symmetry/projections/constructors, uniqueness, zero-right base, Euclidean invariance, existence, balanced Bézout, Gauss cancellation | checked through `gauss_coprime_cancel` |
 | Primes | bounded factor search, primality decision, proper-factor descent, prime divisors, Euclid's lemma, infinitely many primes | checked through `prime_divisor_exists` and `euclid_prime_dvd_product`; primes above every bound remain planned |
-| Factorization | existence and uniqueness up to permutation | greatest-prime descent and β/CRT/product infrastructure pending; Lean companion checked |
+| Factorization | existence and uniqueness up to permutation | single-position β decoding checked; greatest-prime descent, CRT/prefix extension, and product infrastructure pending; Lean companion checked |
 
 The generated `dependency-graph.mmd` is the exact graph for checked entries.
 The research catalog is the larger design graph and gives every unproved node
@@ -124,9 +124,11 @@ from two to that bound and then take a prime divisor of one more than that
 multiple. This remains a first-order existence argument.
 
 For FTA, the next arithmetic gate is a greatest-prime-divisor descent suited
-to constructing a sorted factor sequence. The representation gates remain
-binary and bounded CRT, β-value functionality and extension, and checked
-prefix-product traces. FTA itself is not yet a native `pa lib` theorem.
+to constructing a sorted factor sequence. Single-position β-value existence
+and functionality are now checked. The representation gates that remain are
+binary and bounded CRT, finite-prefix extension and restriction, and
+prefix-product trace existence and functionality. FTA itself is not yet a
+native `pa lib` theorem.
 
 ## Admission invariants
 

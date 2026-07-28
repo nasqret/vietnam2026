@@ -186,6 +186,21 @@ M(c,i)=1+(i+1)c,
 x<M(c,i)\land\exists q.\;b=qM(c,i)+x.
 $$
 
+The stored theorems keep this relation fully expanded and use the prefix
+`beta_at`. The first checked decoding chain is:
+
+| Checked theorem | Role | Nodes/depth | Cuts |
+|---|---|---:|---:|
+| `beta_modulus_nonzero` | the modulus $M(c,i)$ is a successor | 9 / 6 | 1 |
+| `beta_at_self_of_bound` | a value below $M(c,i)$ decodes from itself with quotient zero | 62 / 16 | 2 |
+| `beta_at_exists` | every code and index has a bounded decoded residue | 479 / 31 | 15 |
+| `beta_at_unique` | two decoded residues at one code and index are equal | 1,121 / 59 | 30 |
+| `beta_at_exists_unique` | package decoded-value totality and functionality | 1,625 / 61 | 47 |
+
+All five certificates are intuitionistic and contain no DNE. They establish
+single-position decoding; they do not construct a code realizing an arbitrary
+finite prefix.
+
 A second code stores the prefix products, beginning at one and multiplying by
 the decoded factor at each step. `AllPrime` expands the factor-pair prime
 formula at every bounded index, and `Sorted` makes the representation
@@ -228,9 +243,10 @@ This release keeps two deliberately separate FTA tracks:
 - source curricula are mapped to the missing lemmas;
 - no external theorem is smuggled into `pa lib` as a Peano certificate.
 
-The gcd/Bézout/Gauss/Euclid chain and constructive prime-divisor existence are
-now checked in native PA. The next critical gates are greatest-prime descent,
-binary and bounded CRT, β-value existence/functionality and finite-prefix
-extension, and prefix-product traces. Only after those interfaces have checked
-native certificates can factorization existence, uniqueness, and FTA enter
-`pa lib`. FTA therefore remains unproved in the native library.
+The gcd/Bézout/Gauss/Euclid chain, constructive prime-divisor existence, and
+single-position Gödel-β decoded-value existence and uniqueness are now checked
+in native PA. The next critical gates are greatest-prime descent, binary and
+bounded CRT, finite-prefix extension/restriction, and prefix-product traces.
+Only after those interfaces have checked native certificates can factorization
+existence, uniqueness, and FTA enter `pa lib`. FTA therefore remains unproved
+in the native library.

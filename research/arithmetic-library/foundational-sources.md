@@ -145,8 +145,8 @@ course merely because that course uses a powerful congruence tactic.
 ### L4: Congruence and residues
 
 - subtraction-free balanced congruence on naturals;
-- equivalence-relation laws;
-- compatibility with addition and multiplication;
+- checked reflexivity, symmetry, and transitivity;
+- checked compatibility with addition; multiplication compatibility remains;
 - quotient/residue bridge lemmas;
 - generic decomposition arithmetic and fixed-modulus residue exhaustions.
 
@@ -209,27 +209,31 @@ This boundary should be explicit in the plan:
   order facts; existential divisibility; natural quotient/remainder existence;
   relational gcd and balanced Bézout; constructive equality, divisibility,
   prime/composite, and primality decisions; proper-factor descent;
-  prime-divisor existence; Gauss cancellation; and Euclid's lemma.
+  prime-divisor existence; Gauss cancellation; Euclid's lemma; balanced
+  congruence transitivity/addition; and expanded β-value totality and
+  functionality.
 - **Current-language feasible next target:** greatest-prime-divisor descent and
-  infinitude of primes, plus balanced congruence/parity clients not already in
-  the fixed-modulus layer.
+  infinitude of primes, plus congruence multiplication/transport and parity
+  clients not already in the fixed-modulus layer.
 - **Feasible with relational encodings but potentially unwieldy:** generic
   algorithms, signed-coefficient APIs beyond the checked four-natural balanced
   Bézout relation, and recursive arithmetic-function graphs.
-- **Language-design milestone:** generic exponentiation, finite sequences or
-  multisets, finite-support exponent maps, and finite counting.
-- **Blocked as a natural single theorem until that milestone:** the full
-  Fundamental Theorem of Arithmetic and its uniqueness clause, totient-based
-  results, and generic finite-product theorems.
+- **Encoding milestone:** decoded β values are checked, while binary/bounded
+  CRT, finite-prefix construction, prefix products, extensional sequence
+  equality, and finite counting remain; generic exponentiation and an optional
+  user-facing list/multiset layer are separate language-design choices.
+- **Blocked as a natural single theorem until that encoding milestone:** the
+  full Fundamental Theorem of Arithmetic and its uniqueness clause,
+  totient-based results, and generic finite-product theorems.
 
 Gödel coding represents sequences inside first-order arithmetic at the cost of
 a less direct pedagogical API and potentially very large certificates. The
 representation review nevertheless selected a conservative Gödel-β authoring
 facade because it expands into the unchanged Peano language. With constructive
-prime-divisor existence now checked, the remaining critical path is
-greatest-prime descent followed by β-value functionality, binary/bounded CRT,
-finite-prefix extension, prefix-product traces, and finite-product
-existence/uniqueness certificates.
+prime-divisor existence and β-value functionality now checked, the remaining
+critical path is greatest-prime descent followed by binary/bounded CRT,
+finite-prefix extension, prefix-product traces, and finite-product existence/
+uniqueness certificates.
 
 ## Source and artifact invariants
 

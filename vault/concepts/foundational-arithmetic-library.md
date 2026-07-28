@@ -8,11 +8,11 @@ The **foundational arithmetic library** is a versioned dependency graph for
 [[arithmetic-congruence]], [[quotient-and-remainder]], gcd, primes, and
 factorization.
 
-Its current snapshot has 149 closed, independently checked theorems: the
-original 23-node [[theorem-ladder]] and 126 unique post-baseline additions.
-The latter combine 114 general arithmetic facts with twelve additional modular
-capstones. The 158-node research catalog separates 23 `checked_existing`,
-126 `checked_m20`, five
+Its current snapshot has 156 closed, independently checked theorems: the
+original 23-node [[theorem-ladder]] and 133 unique post-baseline additions.
+The latter combine 121 general arithmetic facts with twelve additional modular
+capstones. The 163-node research catalog separates 23 `checked_existing`,
+133 `checked_m20`, three
 `planned_expressible`, and four `blocked_by_language` nodes, but only replayed
 certificates appear in `pa lib`. The M20 additions now include [[prime_two]],
 the first checked instance of the fully expanded prime predicate, and native
@@ -34,8 +34,14 @@ uses [[factor_nonzero_left]] and [[proper_factor_lt]] for descent, and exposes
 primality decision and prime-divisor existence are native checked results, not
 classical witness extraction.
 
-The generated snapshot contains 67,844 structural proof nodes and 1,800
-self-contained Cuts; 109 of the 149 certificates contain a Cut. Its maximum
+The congruence API now includes [[mod_eq_trans]] and [[mod_eq_add]]. The first
+conservative sequence layer includes [[beta_modulus_nonzero]],
+[[beta_at_self_of_bound]], [[beta_at_exists]], [[beta_at_unique]], and
+[[beta_at_exists_unique]], proving total and functional decoding at one
+Gödel-β position without adding a sequence primitive.
+
+The generated snapshot contains 71,762 structural proof nodes and 1,911
+self-contained Cuts; 116 of the 156 certificates contain a Cut. Its maximum
 certificate is [[euclid_prime_dvd_product]] at 5,382 nodes, and its maximum
 depth is 80 at [[prime_divisor_exists]]. These are representation metrics, not
 proof authority.
@@ -50,7 +56,7 @@ than granting names or hashes kernel authority.
 The [[fundamental-theorem-of-arithmetic]] is a destination, not a primitive.
 A conservative [[godel-beta-sequence]] representation is selected and a Lean
 companion checks the full list theorem, while Peano admission still requires
-greatest-prime descent and the encoded β-value/CRT, finite-prefix,
+greatest-prime descent and the encoded CRT, finite-prefix,
 prefix-product, and finite-product certificates.
 
 ## Related
