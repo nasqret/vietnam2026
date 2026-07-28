@@ -15,10 +15,10 @@ divisibility witnesses before the greatest-common-divisor clause.
 
 ## What is checked now
 
-The 161-theorem runtime contains 23 baseline entries and 138 checked
-post-baseline entries. One hundred and twenty-six of the latter form the general
+The 164-theorem runtime contains 23 baseline entries and 141 checked
+post-baseline entries. One hundred and twenty-nine of the latter form the general
 foundational layer; the other twelve are the fixed modular capstone. The
-broader catalog has 168 nodes: those 161 checked entries, three planned
+broader catalog has 171 nodes: those 164 checked entries, three planned
 entries, and four blocked-by-language entries.
 
 The checked gcd layer includes the relational API through uniqueness and
@@ -215,7 +215,7 @@ Euclid's lemma is developed in {doc}`Primes and unique factorization
 <primes-and-factorization>`. The independent constructive search branch now
 also checks bounded nontrivial-factor search, proper-factor descent, and
 `prime_divisor_exists`. Single-position Gödel-β decoding existence,
-uniqueness, and its bridge to balanced congruence are checked too. Finite
-factorization still requires greatest-prime descent, binary and bounded CRT,
-bounded congruence uniqueness, finite-prefix extension, and the selected
-prefix-product layer; native FTA is not yet proved.
+uniqueness, and its equivalence to bounded balanced congruence are checked too.
+Finite factorization still requires greatest-prime descent, binary and bounded
+CRT, finite-prefix extension, and the selected prefix-product layer; native
+FTA is not yet proved.

@@ -32,8 +32,11 @@ and [[beta_at_exists_unique]] prove totality and functionality of the fully
 expanded `At` relation. These facts decode one position; they do not yet build
 a code satisfying a prescribed finite family of positions.
 [[beta_at_to_mod_eq]] now connects each directed decoding witness to the
-balanced [[arithmetic-congruence]] API. The reverse bounded bridge and the CRT
-construction needed to extend a prescribed prefix remain open.
+balanced [[arithmetic-congruence]] API. [[mod_eq_bounded_unique]] and
+[[mod_eq_to_remainder_decomposition]] prove the reverse direction, exposed for
+β values as [[beta_at_of_mod_eq_bound]]. Thus `At(b,c,i,x)` is now equivalent
+to the bound on `x` plus congruence of `b` and `x` modulo `M(c,i)`. The CRT
+construction needed to extend a prescribed prefix remains open.
 
 The remaining spine begins with greatest-prime-divisor descent for the sorted
 factor order. The encoding layer then needs binary and bounded CRT,

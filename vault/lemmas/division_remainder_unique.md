@@ -24,6 +24,7 @@ forall m n q r q2 r2. n = m * q + r -> (exists k. k + S r = m) -> n = m * q2 + r
 ## Checked dependents
 
 - [[multiple_decidable_nonzero]]
+- [[mod_eq_bounded_unique]]
 - [[beta_at_unique]]
 
 ## Verification record

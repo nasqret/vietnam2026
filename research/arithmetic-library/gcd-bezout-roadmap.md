@@ -314,10 +314,12 @@ middle or double-negation elimination is hidden in the search.
 8. **Complete:** establish β modulus nonzeroness, bounded self-decoding, and
    decoded-value existence/uniqueness.
 9. **Complete:** establish full additive/multiplicative balanced-congruence
-   compatibility and the directed-remainder/β-to-congruence bridge.
+   compatibility, bounded representative uniqueness, both remainder/
+   congruence directions, and equivalence of β decoding with bound plus
+   congruence.
 10. Develop greatest-prime-divisor descent for sorted factorization, then
-   prove bounded representative uniqueness and cross the separate
-   CRT/prefix-extension/product gate.
+   prove β-modulus coprimality and cross the separate binary/bounded CRT,
+   prefix-extension, and product gate.
 
 Prime-divisor existence does not follow automatically from gcd or Bézout, and
 Euclid's lemma does not construct a prime divisor; both sides are now checked

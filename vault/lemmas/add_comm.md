@@ -35,6 +35,8 @@ forall n m. n + m = m + n
 - [[mod_eq_trans]]
 - [[mod_eq_add]]
 - [[remainder_decomposition_to_mod_eq]]
+- [[mod_eq_bounded_unique]]
+- [[mod_eq_to_remainder_decomposition]]
 - [[add_residue_lift]]
 - [[mod5_square_residue_two]]
 

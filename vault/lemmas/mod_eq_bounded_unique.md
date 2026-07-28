@@ -1,35 +1,33 @@
 ---
-title: "Lemma: mod_eq_trans"
+title: "Lemma: mod_eq_bounded_unique"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `mod_eq_trans`
+# `mod_eq_bounded_unique`
 
-Balanced natural congruence is transitive.
+Two balanced-congruent values below the same modulus are equal.
 
 ## Closed Peano statement
 
 ```text
-forall m a b c. (exists u v. a + m * u = b + m * v) -> (exists r s. b + m * r = c + m * s) -> exists x y. a + m * x = c + m * y
+forall m a b. (exists ha. ha + S a = m) -> (exists hb. hb + S b = m) -> (exists u v. a + m * u = b + m * v) -> a = b
 ```
 
 ## Dependencies
 
-- [[add_assoc]]
 - [[add_comm]]
-- [[mul_add]]
+- [[division_remainder_unique]]
 
 ## Checked dependents
 
-- [[mod_eq_mul]]
 - [[mod_eq_to_remainder_decomposition]]
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **252 nodes**, depth **29**.
-- Authored script length: **42 commands**.
-- Runtime card: `pa lib mod_eq_trans`.
+- Certificate: **961 nodes**, depth **59**.
+- Authored script length: **28 commands**.
+- Runtime card: `pa lib mod_eq_bounded_unique`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

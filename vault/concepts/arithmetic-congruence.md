@@ -20,7 +20,10 @@ multiplication compatibility is checked through [[mod_eq_mul_right]],
 [[remainder_decomposition_to_mod_eq]] turns a directed quotient/remainder
 equation into this balanced relation. [[beta_at_to_mod_eq]] specializes that
 bridge to the fully expanded Gödel-β decoding formula, providing the interface
-needed before a constructive CRT proof.
+needed before a constructive CRT proof. In the reverse direction,
+[[mod_eq_bounded_unique]] identifies bounded representatives and
+[[mod_eq_to_remainder_decomposition]] reconstructs the directed quotient.
+[[beta_at_of_mod_eq_bound]] packages the corresponding reverse β bridge.
 
 The checked [[add_residue]], [[add_residue_lift]], [[square_decomp]],
 [[square_residue_lift]], and [[square_residue_witness]] already manipulate

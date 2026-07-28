@@ -46,8 +46,8 @@ expanded certificate is checked in the empty context. This extension is also a u
 [[verifier-guided-policy-evaluation-and-search|model-v2 curriculum]], but the capstone itself is now
 a library-retrieval test rather than a sealed theorem-discovery benchmark.
 
-The reconciled runtime now has 161 unique checked entries: the 23-entry core,
-126 post-baseline foundational entries, and twelve genuinely new modular
+The reconciled runtime now has 164 unique checked entries: the 23-entry core,
+129 post-baseline foundational entries, and twelve genuinely new modular
 capstones. The newer foundation includes discrete order, multiplication
 cancellation and monotonicity, and native [[quotient-and-remainder]] existence
 and uniqueness, plus the relational [[gcd-and-coprimality]] API through gcd
@@ -66,9 +66,13 @@ The next five-node tranche proves right, left, and two-input multiplication
 compatibility through [[mod_eq_mul]], then connects directed decompositions and
 β values to congruence with [[remainder_decomposition_to_mod_eq]] and
 [[beta_at_to_mod_eq]].
+The following three-node reverse tranche proves bounded representative
+uniqueness, reconstructs directed remainders with
+[[mod_eq_to_remainder_decomposition]], and closes the bounded reverse β bridge
+as [[beta_at_of_mod_eq_bound]].
 
-The shared snapshot now totals 75,170 proof nodes and 2,009 self-contained
-Cuts across 161 certificates; 121 certificates contain a Cut. Euclid's lemma
+The shared snapshot now totals 79,763 proof nodes and 2,138 self-contained
+Cuts across 164 certificates; 124 certificates contain a Cut. Euclid's lemma
 remains largest at 5,382 nodes, while prime-divisor existence sets the maximum
 depth at 80. The next mathematical/representation gate is greatest-prime
 descent followed by CRT, [[godel-beta-sequence|β finite-prefix]], and

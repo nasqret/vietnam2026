@@ -1422,3 +1422,42 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   cleanly. Local browser build `2026-07-29c`
   has immutable application identity `a-b71812244ce0`; it is not staged,
   deployed, or promoted.
+
+## 2026-07-29 — Bounded congruence uniqueness and the reverse β bridge
+
+- Added three closed native theorems. `mod_eq_bounded_unique` proves that two
+  balanced-congruent representatives below the same modulus are equal.
+  `mod_eq_to_remainder_decomposition` uses nonzeroness, the proposed value's
+  bound, division, and that uniqueness result to reconstruct a directed
+  equation `b = q*m + x`. This is the converse of the preceding
+  `remainder_decomposition_to_mod_eq` bridge under exactly the conditions
+  required of a remainder.
+- `beta_at_of_mod_eq_bound` specializes the reverse bridge to the successor β
+  modulus. Together with `beta_at_to_mod_eq`, it proves that the fully expanded
+  `BetaAt(b,c,i,x)` relation is equivalent to the bound
+  `x < 1 + (i+1)c` plus balanced congruence between `b` and `x` at that
+  modulus. No quotient, remainder, modulus, congruence, or β primitive was
+  added to the PA object language.
+- The runtime now contains 164 unique checked theorems: 23 baseline, 129
+  general foundational, and twelve unique modulo-five capstones. The
+  synchronized catalog has 171 nodes: 23 `checked_existing`, 141
+  `checked_m20`, three planned, and four language-blocked. Shared certificates
+  total 79,763 structural nodes and 2,138 Cuts across 124 Cut-bearing entries.
+  The maxima remain 5,382 nodes and 159 Cuts at
+  `euclid_prime_dvd_product`, and depth 80 at `prime_divisor_exists`.
+- This closes bounded representative uniqueness and the two-way decoding
+  interface, not CRT or finite sequences. β-modulus coprimality,
+  binary/bounded CRT, finite-prefix extension, prefix-product traces,
+  greatest-prime descent, and native FTA remain open.
+- Regenerated the source-bound corpus with the same 13,344-transition/
+  1,692-session semantic shape under run fingerprint
+  `6393629a4b2b1a6c51457d606e4cc73c8245d368f62ccfe1e8387291be9503d1`.
+  The isolated smoke has 328 sessions, 4,016 raw and 4,013 unique transitions,
+  and all 164 authored-script kernel QEDs. The generated vault has 243 notes
+  and 2,082 resolved links, including all 164 lemma notes.
+- The complete Peano suite passes 1,098 tests on CPython 3.10, including the
+  28-test focused pre-CRT gate; Lambda passes 360 tests plus 36 subtests. The
+  warning-as-error 36-source book has 207 checked deep links and 45 session
+  blocks whose 264 commands replay cleanly. Local browser build
+  `2026-07-29d` has immutable application identity `a-5cef5a9c3b7d`; it is not
+  staged, deployed, or promoted.

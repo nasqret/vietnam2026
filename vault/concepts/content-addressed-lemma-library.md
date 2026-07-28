@@ -35,7 +35,8 @@ and Euclid tranche yields the 137-theorem root. The subsequent constructive
 equality, bounded-factor, primality-decision, and prime-divisor-search tranche
 yields the 149-theorem root. The congruence and single-position Gödel-β tranche
 yields the 156-theorem root. The multiplicative-congruence and remainder/β
-bridge tranche yields the current 161-theorem root. Model-v1
+bridge tranche yields the 161-theorem root. The bounded-uniqueness and reverse
+remainder/β bridge tranche yields the current 164-theorem root. Model-v1
 remains frozen, and no model may silently inherit either mutable catalog.
 
 Library visibility and benchmark visibility are different. If a theorem is importable, closing its

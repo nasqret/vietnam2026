@@ -25,7 +25,8 @@ is now checked too: [[prime_or_composite]], [[proper_factor_lt]], and
 nonunit natural. Single-position β decoding is now checked as well:
 [[beta_at_exists]] and [[beta_at_unique]] establish totality and functionality
 of the expanded `At` relation, while [[beta_at_to_mod_eq]] connects it to the
-checked congruence API.
+checked congruence API and [[beta_at_of_mod_eq_bound]] supplies the bounded
+reverse direction.
 
 FTA itself is **not** proved in native Peano Lab. The direct list-oriented
 existence, uniqueness, and combined catalog endpoints remain

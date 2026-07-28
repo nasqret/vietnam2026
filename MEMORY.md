@@ -256,7 +256,7 @@
   delivery remains blocked on administrator-managed cache headers, while M17 is published to
   staging. The implementation, checked corpus,
   construction book, Obsidian knowledge base, kernel-judged evaluation protocol, live checked-
-  theorem reuse, and the current 161-entry checked ladder (whose initial public-catalog/M20
+  theorem reuse, and the current 164-entry checked ladder (whose initial public-catalog/M20
   reconciliation produced a historical 63-entry release),
   certificate-producing `ring`, and bounded checked
   `norm_num` teaching surface are present. The odd-square induction closes through explicit
@@ -329,8 +329,8 @@
   170 commands, and 414/414 vault wikilinks pass. Local browser candidate `2026-07-28g` has
   application identity `a-3ea7b7142aa0`; automated worker boot passes, direct in-app Pyodide
   latency remains unmeasured, and production is untouched.
-- The current native arithmetic runtime has 161 unique checked theorems: 23
-  baseline entries, 126 general foundational entries, and twelve unique
+- The current native arithmetic runtime has 164 unique checked theorems: 23
+  baseline entries, 129 general foundational entries, and twelve unique
   modular capstones. It now includes discrete order, multiplication
   cancellation/monotonicity, constructive quotient-remainder existence, full
   quotient-remainder uniqueness, zero-remainder/divisibility bridges,
@@ -348,30 +348,34 @@
   existence, uniqueness, and unique existence. The pre-CRT bridge now proves
   balanced congruence compatible with right, left, and paired multiplication,
   maps a directed remainder decomposition into balanced congruence, and maps
-  every expanded β value to that congruence relation. Under self-contained
-  dependency sharing, the complete ladder contains 75,170 structural proof
-  nodes and 2,009 Cuts across 121 Cut-bearing entries.
+  every expanded β value to that congruence relation. Bounded congruent
+  representatives are now equal, and the reverse bridge reconstructs a
+  directed remainder decomposition from a nonzero modulus, bound, and balanced
+  congruence. Consequently expanded β decoding is equivalent to a bound plus
+  balanced congruence. Under self-contained dependency sharing, the complete
+  ladder contains 79,763 structural proof nodes and 2,138 Cuts across 124
+  Cut-bearing entries.
   `euclid_prime_dvd_product` remains largest by
   nodes at 5,382 and has the maximum 159 Cuts; `prime_divisor_exists` sets the
-  maximum depth at 80. The synchronized research catalog has 168 nodes (23
-  baseline checked, 138 post-baseline checked, three planned,
+  maximum depth at 80. The synchronized research catalog has 171 nodes (23
+  baseline checked, 141 post-baseline checked, three planned,
   four language-blocked) plus the separate Lean FTA companion. The generated
-  vault has 240 notes and 2,037 resolved links, including 161 lemma notes. The object language,
-  PA axioms,
+  vault has 243 notes and 2,082 resolved links, including 164 lemma notes. The
+  object language, PA axioms,
   induction schema, and intuitionistic default are unchanged. The trusted
   proof grammar/checker now contains the reviewed self-contained
   `Cut(A,B,lemma,body)` rule: both formulas and both proof branches are embedded,
   with no theorem-name/hash authority. The checker is 247 lines. Its untrusted
   erasure utility is diagnostic and cannot round-trip every introduction-headed
   or induction-bearing certificate. The local browser candidate is
-  `2026-07-29c` / `a-b71812244ce0` and exposes all 161 entries. Its 1,098
+  `2026-07-29d` / `a-5cef5a9c3b7d` and exposes all 164 entries. Its 1,098
   Peano tests pass on CPython 3.10; the focused pre-CRT gate passes 28 tests.
-  Lambda's 360 tests plus 36 subtests, the warning-free 36-source book, 205
-  deep links, 45 session
-  blocks with 264 documented commands, and application-manifest drift pass.
+  Lambda's 360 tests plus 36 subtests, the warning-free 36-source book, 207
+  deep links, 45 session blocks with 264 documented commands, and
+  application-manifest drift pass.
   The source-bound corpus retains 13,344 transitions/1,692 sessions under run
-  fingerprint `4e864236…`; the isolated smoke has 3,899 unique transitions
-  from 322 sessions and all 161 authored QEDs. Peano FTA remains absent
-  pending greatest-prime descent, bounded-congruence uniqueness, CRT,
+  fingerprint `6393629a…`; the isolated smoke has 4,013 unique transitions
+  from 328 sessions and all 164 authored QEDs. Peano FTA remains absent
+  pending greatest-prime descent, β-modulus coprimality, binary/bounded CRT,
   finite-prefix extension, and the prefix-product representation spine.
   Production is untouched.

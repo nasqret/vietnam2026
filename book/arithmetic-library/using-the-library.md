@@ -9,8 +9,8 @@ The URLs below are promotion targets for the public browser application.
 Existing production entries may already open there; candidate-only entries,
 including the division, gcd, Bézout, Gauss, Euclid, and constructive
 prime-search layers, balanced modular congruence, and single-position Gödel-β
-decoding and congruence projection, become available only after this build is
-promoted. The 161-entry
+decoding as bounded congruence, become available only after this build is
+promoted. The 164-entry
 local candidate has not been
 deployed by this documentation change.
 
@@ -22,8 +22,10 @@ deployed by this documentation change.
 - [`pa lib prime_divisor_exists`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20prime_divisor_exists)
 - [`pa lib mod_eq_add`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod_eq_add)
 - [`pa lib mod_eq_mul`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod_eq_mul)
+- [`pa lib mod_eq_bounded_unique`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod_eq_bounded_unique)
 - [`pa lib beta_at_exists_unique`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_at_exists_unique)
 - [`pa lib beta_at_to_mod_eq`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_at_to_mod_eq)
+- [`pa lib beta_at_of_mod_eq_bound`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_at_of_mod_eq_bound)
 - [`pa lib square_residue_witness`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20square_residue_witness)
 - [`pa lib mod5_fourth_power_one`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod5_fourth_power_one)
 
@@ -118,8 +120,8 @@ Do not hide missing checked β-sequence/product laws behind a factorization
 name; keep separately checked companion authority explicit. The native library
 now has constructive prime-divisor existence, the balanced additive and
 multiplicative congruence API, and functional single-position β decoding with
-its congruence bridge. It does not yet have greatest-prime descent, binary or
-bounded CRT, bounded congruence uniqueness, finite-prefix extension,
+its bidirectional bounded-congruence characterization. It does not yet have
+greatest-prime descent, binary or bounded CRT, finite-prefix extension,
 prefix-product traces, or FTA.
 
 ## Reproducing the artifact
@@ -133,6 +135,6 @@ cd peano-lab/py
 python3 -m pytest tests/test_foundational_arithmetic_library.py -q
 ```
 
-The first command verifies exact metadata for the 161 checked certificates,
-the second validates the 168-node research DAG and source register, and the
+The first command verifies exact metadata for the 164 checked certificates,
+the second validates the 171-node research DAG and source register, and the
 last exercises the checked foundational layer directly.

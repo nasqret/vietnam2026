@@ -26,6 +26,7 @@ forall n m. n * m = m * n
 - [[balanced_combination_scale_right]]
 - [[mod_eq_mul_left]]
 - [[remainder_decomposition_to_mod_eq]]
+- [[mod_eq_to_remainder_decomposition]]
 - [[beta_at_exists]]
 - [[beta_at_unique]]
 - [[square_decomp]]

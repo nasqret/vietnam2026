@@ -197,8 +197,9 @@ The stored theorems keep this relation fully expanded and use the prefix
 | `beta_at_unique` | two decoded residues at one code and index are equal | 1,121 / 59 | 30 |
 | `beta_at_exists_unique` | package decoded-value totality and functionality | 1,625 / 61 | 47 |
 | `beta_at_to_mod_eq` | project an `At` witness into balanced congruence | 358 / 27 | 11 |
+| `beta_at_of_mod_eq_bound` | recover `At` from a bound and balanced congruence | 1,839 / 66 | 53 |
 
-All six certificates are intuitionistic and contain no DNE. The final bridge
+All seven certificates are intuitionistic and contain no DNE. The forward bridge
 forgets the bound component of `At` and feeds its quotient-remainder equation
 to `remainder_decomposition_to_mod_eq`, proving the readable relation
 
@@ -217,9 +218,29 @@ forall b c i x.
     b + S ((S i) * c) * u = x + S ((S i) * c) * v
 ```
 
-These entries establish single-position decoding and its congruence
-projection. They do not construct a code realizing an arbitrary finite
-prefix.
+Conversely, `beta_at_of_mod_eq_bound` supplies the same strict bound and a
+balanced-congruence witness to the checked reverse remainder bridge. Its exact
+expanded statement is:
+
+```text
+forall b c i x.
+  (exists h. h + S x = S ((S i) * c)) ->
+  (exists u v.
+    b + S ((S i) * c) * u = x + S ((S i) * c) * v) ->
+  ((exists h. h + S x = S ((S i) * c)) /\
+   exists q. b = q * S ((S i) * c) + x)
+```
+
+Thus the native library now checks the bidirectional characterization
+
+$$
+\operatorname{At}(b,c,i,x)
+\quad\Longleftrightarrow\quad
+x<M(c,i)\;\land\;b\equiv x\pmod{M(c,i)}.
+$$
+
+This establishes single-position decoding as a bounded congruence interface.
+It does not construct one code realizing an arbitrary finite prefix.
 
 A second code stores the prefix products, beginning at one and multiplying by
 the decoded factor at each step. `AllPrime` expands the factor-pair prime
@@ -264,10 +285,10 @@ This release keeps two deliberately separate FTA tracks:
 - no external theorem is smuggled into `pa lib` as a Peano certificate.
 
 The gcd/Bézout/Gauss/Euclid chain, constructive prime-divisor existence, and
-single-position Gödel-β decoded-value existence, uniqueness, and congruence
-projection are now checked in native PA. The next critical gates are
-greatest-prime descent, binary and bounded CRT, bounded congruence uniqueness,
-finite-prefix extension/restriction, and prefix-product traces.
+single-position Gödel-β decoded-value existence, uniqueness, and its
+bidirectional bounded-congruence characterization are now checked in native
+PA. The next critical gates are greatest-prime descent, binary and bounded
+CRT, finite-prefix extension/restriction, and prefix-product traces.
 Only after those interfaces have checked native certificates can factorization
 existence, uniqueness, and FTA enter `pa lib`. FTA therefore remains unproved
 in the native library.

@@ -52,6 +52,24 @@ EXPECTED = {
         "script": (16, "2992d90f135d6b779fc3d926e9fce7e53496c3301dedcc2a55b10eef23b55ad2"),
         "certificate": ((323, 26), 10, "acea3f60f7fa7dfcd1745c5cb1dd1d20436c173affa5518ebcb4f981b6893b19"),
     },
+    "mod_eq_bounded_unique": {
+        "dependencies": ("add_comm", "division_remainder_unique"),
+        "statement": "8e73abc172b556b5fb557c527977e6f07c1e366080b207163dd58b7931643c0d",
+        "script": (28, "5a41e200eef2c09137f70c22f1e0bfb69ac5559741c198834c63d8495fa2917c"),
+        "certificate": ((961, 59), 26, "9bdbf756db7d40a03088e05e9f311290d4ce31c6304913bcc5a3a12d5a0c2f89"),
+    },
+    "mod_eq_to_remainder_decomposition": {
+        "dependencies": (
+            "division_remainder_exists",
+            "add_comm",
+            "mul_comm",
+            "mod_eq_trans",
+            "mod_eq_bounded_unique",
+        ),
+        "statement": "03d36e6993b3691311ccb9e9e75006895f186ff659f1042d9b69fe4811db2360",
+        "script": (51, "142583f023f91df0300654d0b53de0ff14549d484ad3e927a1e548758ba20862"),
+        "certificate": ((1_793, 64), 50, "a92fbaccbecc0472384e7c424f6b72dda864ce0922174b87828afea85ba5320a"),
+    },
     "beta_modulus_nonzero": {
         "dependencies": ("succ_ne_zero",),
         "statement": "6701007cb46c44334c05d9bd894078b9b002f9624b4057b9203dd83087294526",
@@ -91,6 +109,12 @@ EXPECTED = {
         "statement": "c748a4a17fd48703d134abcd46e96aa5ef082fc1f9aa69ce089d1421446d565d",
         "script": (13, "ab6a199f73fef6b1309d2690f5f9546a534bbc7b37f6e007b271d5fbab2d7b12"),
         "certificate": ((358, 27), 11, "dd174002d4701711239c5958acc580ca4ff11c1788aff4936b9a8d9ad65562e6"),
+    },
+    "beta_at_of_mod_eq_bound": {
+        "dependencies": ("beta_modulus_nonzero", "mod_eq_to_remainder_decomposition"),
+        "statement": "9934b7b533260bf9c2c53f4a06d653873048b3ccb1b78fba0bd897fe6a604536",
+        "script": (17, "9793a6989e45a6b331c687f4a0f7e057fcc20a966e269f5dc646a9770da8ac14"),
+        "certificate": ((1_839, 66), 53, "e4a2ead06ca651304be645d679f5e7e81da4ede0afd9997f2f59864f7b01074f"),
     },
 }
 
@@ -233,8 +257,11 @@ def test_public_live_use_closes_congruence_and_beta_endpoints() -> None:
         "mod_eq_add",
         "mod_eq_mul",
         "remainder_decomposition_to_mod_eq",
+        "mod_eq_bounded_unique",
+        "mod_eq_to_remainder_decomposition",
         "beta_at_exists_unique",
         "beta_at_to_mod_eq",
+        "beta_at_of_mod_eq_bound",
     ):
         theorem = get(name)
         assert theorem is not None

@@ -17,8 +17,9 @@ This chapter separates three things that are easy to conflate:
 
 All three layers now have checked library entries. The balanced modular API is
 checked through transitivity and additive and multiplicative compatibility;
-the decomposition-to-congruence bridge is checked too, while bounded
-canonical-remainder uniqueness remains open. Every checked entry mentioned below
+both directions of the bounded decomposition/congruence bridge and uniqueness
+of bounded congruent representatives are checked too. Binary and bounded CRT
+remain open. Every checked entry mentioned below
 is an ordinary closed formula with a replayed certificate accepted by the
 independent Peano kernel; none is a new kernel rule. The general checking
 architecture is described in
@@ -243,18 +244,18 @@ $$
 \end{array}
 $$
 
-All 126 entries in the current post-baseline general foundational layer replay to
+All 129 entries in the current post-baseline general foundational layer replay to
 closed kernel-accepted certificates and fit the live `use` limits of 32,768
-nodes and depth 128. The current 161-entry local candidate reaches its node
+nodes and depth 128. The current 164-entry local candidate reaches its node
 maximum at `euclid_prime_dvd_product`, with 5,382 nodes and depth 55, while
 `prime_divisor_exists` reaches the snapshot-wide maximum depth of 80. Across
-the snapshot there are 75,170 structural nodes and 2,009 self-contained Cuts;
-121 certificates contain a Cut, and the largest per-certificate Cut count is
+the snapshot there are 79,763 structural nodes and 2,138 self-contained Cuts;
+124 certificates contain a Cut, and the largest per-certificate Cut count is
 159. The modular capstone itself remains 2,675 nodes and depth 38. These
 numbers are build artifacts,
 not new soundness assumptions; the immutable upstream report retains the older
 fully expanded capstone metric of 21,515 nodes/depth 66. The broader research
-catalog has 168 nodes: the 161 checked entries, three planned expressible targets,
+catalog has 171 nodes: the 164 checked entries, three planned expressible targets,
 and four language-interface targets covering conventional signed Bézout and the
 three finite-factorization endpoints.
 
@@ -441,14 +442,16 @@ The current status distinction is:
 
 | Checked now | Still-open modular API |
 |---|---|
-| `mod_eq_refl`, `mod_eq_symm`, `mod_eq_trans` | bounded congruence uniqueness |
+| `mod_eq_refl`, `mod_eq_symm`, `mod_eq_trans` | binary and bounded CRT |
 | `mod_eq_add`, `mod_eq_mul_right`, `mod_eq_mul_left`, `mod_eq_mul` | equality transport into balanced congruence |
-| `dvd_to_mod_zero`, `remainder_decomposition_to_mod_eq` | shared residue implies congruence |
+| `remainder_decomposition_to_mod_eq`, `mod_eq_to_remainder_decomposition` | shared residue implies congruence |
+| `mod_eq_bounded_unique` | multi-position congruence assembly |
+| `dvd_to_mod_zero` | reverse congruence-zero-to-divisibility |
 | Closure of multiples under addition and multiplication | shared residue implies congruence |
-| Exact quotient-and-residue addition | reverse congruence-zero-to-divisibility |
-| Exact square decomposition and square residue lifting | canonical-remainder congruence API |
+| Exact quotient-and-residue addition | finite-product congruence clients |
+| Exact square decomposition and square residue lifting | generated fixed-modulus clients |
 | Pointwise forms of non-divisibility | parity-as-congruence clients |
-| No `%` or primitive congruence predicate | generated fixed-modulus clients |
+| No `%` or primitive congruence predicate | finite-prefix β-code clients |
 
 The transitivity and addition statements from the preceding tranche remain
 ordinary expanded formulas:
@@ -498,12 +501,36 @@ forall m b q x.
 | `mod_eq_mul` | multiply two balanced congruences | 1,505 / 32 | 43 |
 | `remainder_decomposition_to_mod_eq` | turn $b=qm+x$ into $b\equiv_m x$ | 323 / 26 | 10 |
 
-All four certificates are intuitionistic and contain no DNE. The reverse
-direction of "congruent to zero iff divisible" and bounded congruence
-uniqueness still deserve particular care; the balanced witnesses must be
-rearranged constructively rather than cancelled by an unavailable subtraction
-operation. Binary and bounded CRT remain later clients, not consequences that
-have silently been admitted with this multiplication API.
+All four certificates are intuitionistic and contain no DNE.
+
+The reverse bridge first proves that two balanced-congruent values below the
+same modulus are equal, then obtains the canonical remainder of $b$ from the
+division theorem and identifies it with the proposed bounded representative.
+The exact statements are:
+
+```text
+forall m a b.
+  (exists ha. ha + S a = m) ->
+  (exists hb. hb + S b = m) ->
+  (exists u v. a + m * u = b + m * v) ->
+  a = b
+
+forall m b x.
+  ~(m = 0) ->
+  (exists h. h + S x = m) ->
+  (exists u v. b + m * u = x + m * v) ->
+  exists q. b = q * m + x
+```
+
+| Checked theorem | Role | Nodes/depth | Cuts |
+|---|---|---:|---:|
+| `mod_eq_bounded_unique` | identify bounded congruent representatives | 961 / 59 | 26 |
+| `mod_eq_to_remainder_decomposition` | reconstruct a directed remainder witness | 1,793 / 64 | 50 |
+
+Both certificates are intuitionistic and contain no DNE. Together with
+`remainder_decomposition_to_mod_eq`, they give both directions between a
+bounded directed remainder and balanced congruence. Binary and bounded CRT
+remain later clients, not consequences silently admitted with this bridge.
 
 ## From a general library to the old modulo-five exercise
 

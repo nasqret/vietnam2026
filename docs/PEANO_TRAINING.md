@@ -624,18 +624,19 @@ All replay deterministically and pass the empty-context kernel check. The larges
 21,515 nodes at depth 66 in the immutable upstream, fully expanded validation report. The current
 snapshot-v2 representation packages dependency proofs in self-contained kernel Cuts and records a
 maximum node count of 5,382 (`euclid_prime_dvd_product`) and a maximum depth of 80
-(`prime_divisor_exists`) across the current 161-theorem ladder. It contains
-75,170 structural nodes and 2,009 self-contained Cuts across 121 Cut-bearing
+(`prime_divisor_exists`) across the current 164-theorem ladder. It contains
+79,763 structural nodes and 2,138 self-contained Cuts across 124 Cut-bearing
 entries. The new premise surface includes the full `mod_eq_add`/`mod_eq_mul`
-compatibility layer, `remainder_decomposition_to_mod_eq`, the five expanded
-β-value theorems through `beta_at_exists_unique`, and `beta_at_to_mod_eq`; it
-still does not include bounded representative uniqueness, CRT, or finite
-products. Model provenance must bind the
-representation version as
+compatibility layer, `mod_eq_bounded_unique`, both directed
+remainder/congruence bridges, and all expanded β-value theorems through
+`beta_at_of_mod_eq_bound`. Thus expanded β decoding is equivalent to a bound
+plus balanced congruence. The library still does not include β-modulus
+coprimality, binary/bounded CRT, finite products, greatest-prime descent, or
+native FTA. Model provenance must bind the representation version as
 well as the certificate hashes and metrics.
-The corresponding 161-entry deterministic corpus refresh retains 13,344 transitions
+The corresponding 164-entry deterministic corpus refresh retains 13,344 transitions
 from 1,692 sessions and has run fingerprint
-`4e864236c001f37cc93c3e12208afd9072829a4e0a4b7fa008908e48f1e23e5c`.
+`6393629a4b2b1a6c51457d606e4cc73c8245d368f62ccfe1e8387291be9503d1`.
 
 The pack must nevertheless enter through a new scientific contract. A
 content-addressed library snapshot must bind each name, canonical statement,

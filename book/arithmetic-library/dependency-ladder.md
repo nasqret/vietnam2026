@@ -14,12 +14,12 @@ needs.
 | Multiplication | identities, annihilation, distributivity, associativity, commutativity, zero product | checked core |
 | Order | reflexivity, transitivity, trichotomy, incompatibility, addition monotonicity and cancellation | checked |
 | Divisibility | units, zero, reflexivity, transitivity, addition/product closure, constructive decision | checked |
-| Modular congruence | balanced equivalence laws and additive/multiplicative compatibility | reflexivity, symmetry, transitivity, addition, multiplication, and decomposition-to-congruence checked; bounded congruence uniqueness remains open; fixed mod-five residue ladder checked |
+| Modular congruence | balanced equivalence laws and additive/multiplicative compatibility | reflexivity, symmetry, transitivity, addition, multiplication, both decomposition bridges, and bounded uniqueness checked; fixed mod-five residue ladder checked |
 | Parity | even/odd dichotomy and arithmetic tables | planned and expressible |
 | Division | quotient-remainder existence, uniqueness, block separation, and zero-remainder/divisibility bridges | checked |
 | GCD/coprime | relational symmetry/projections/constructors, uniqueness, zero-right base, Euclidean invariance, existence, balanced Bézout, Gauss cancellation | checked through `gauss_coprime_cancel` |
 | Primes | bounded factor search, primality decision, proper-factor descent, prime divisors, Euclid's lemma, infinitely many primes | checked through `prime_divisor_exists` and `euclid_prime_dvd_product`; primes above every bound remain planned |
-| Factorization | existence and uniqueness up to permutation | single-position β decoding and its congruence bridge checked; greatest-prime descent, CRT/bounded congruence uniqueness, prefix extension, and product infrastructure pending; Lean companion checked |
+| Factorization | existence and uniqueness up to permutation | single-position β decoding equivalent to bounded balanced congruence; greatest-prime descent, binary/bounded CRT, prefix extension, and product infrastructure pending; Lean companion checked |
 
 The generated `dependency-graph.mmd` is the exact graph for checked entries.
 The research catalog is the larger design graph and gives every unproved node
@@ -125,11 +125,18 @@ multiple. This remains a first-order existence argument.
 
 For FTA, the next arithmetic gate is a greatest-prime-divisor descent suited
 to constructing a sorted factor sequence. Single-position β-value existence,
-functionality, and its projection into balanced congruence are now checked.
-The representation gates that remain are binary and bounded CRT, bounded
-congruence uniqueness, finite-prefix extension and restriction, and
-prefix-product trace existence and functionality. FTA itself is not yet a
-native `pa lib` theorem.
+functionality, and the equivalence
+
+$$
+\operatorname{At}(b,c,i,x)
+\quad\Longleftrightarrow\quad
+x<M(c,i)\;\land\;b\equiv x\pmod{M(c,i)}
+$$
+
+are now checked through fully expanded PA formulas. The representation gates
+that remain are binary and bounded CRT, finite-prefix extension and
+restriction, and prefix-product trace existence and functionality. FTA itself
+is not yet a native `pa lib` theorem.
 
 ## Admission invariants
 

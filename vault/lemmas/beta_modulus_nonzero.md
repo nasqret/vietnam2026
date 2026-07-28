@@ -20,6 +20,7 @@ forall c i. ~(S ((S i) * c) = 0)
 ## Checked dependents
 
 - [[beta_at_exists]]
+- [[beta_at_of_mod_eq_bound]]
 
 ## Verification record
 

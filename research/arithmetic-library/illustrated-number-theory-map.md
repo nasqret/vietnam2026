@@ -154,16 +154,17 @@ Therefore:
 - quotient/remainder existence, divisibility, relational gcd, constructive
   primality decision, prime-divisor existence, and Euclid's lemma are now
   checked native layers; balanced congruence is checked through full addition
-  and multiplication compatibility, directed remainders and β values map into
-  it, and expanded Gödel-β values are total and functional;
+  and multiplication compatibility plus bounded representative uniqueness;
+  the directed remainder bridge works both ways, and expanded Gödel-β
+  decoding is equivalent to bound plus congruence;
 - greatest-prime descent and infinitude of primes remain expressible without
   changing the object language;
 - algorithms may be specified relationally, but executable functions require
   an explicit project architecture decision;
 - prime-decomposition dictionaries require a finite-map or multiset layer;
-- the selected β route still requires bounded representative uniqueness, CRT,
-  finite-prefix extension, and encoded prefix-product traces before it can
-  replace that external data structure inside native PA;
+- the selected β route still requires β-modulus coprimality, binary/bounded
+  CRT, finite-prefix extension, and encoded prefix-product traces before it
+  can replace that external data structure inside native PA;
 - Fermat, Euler, Miller--Rabin, primitive-root, and RSA layers require generic
   powers and additional finite algebra/counting infrastructure.
 
