@@ -217,17 +217,17 @@ This boundary should be explicit in the plan:
   decoding equivalent to bound plus congruence; constructive binary CRT; and
   a conditional two-position β-code constructor.
 - **Current-language feasible next target:** greatest-prime-divisor descent and
-  infinitude of primes, plus the index-bound glue and product-modulus CRT
-  iteration needed to use checked conditional β-modulus coprimality over a
-  finite prefix, and parity clients not already in the fixed-modulus layer.
+  infinitude of primes, plus the actual bounded CRT fold carrying an encoded
+  accumulated-product invariant, and parity clients not already in the
+  fixed-modulus layer.
 - **Feasible with relational encodings but potentially unwieldy:** generic
   algorithms, signed-coefficient APIs beyond the checked four-natural balanced
   Bézout relation, and recursive arithmetic-function graphs.
 - **Encoding milestone:** decoded β values are checked and equivalent to bound
   plus balanced congruence, while binary CRT, conditional gap-divisibility
-  coprimality, its two-position constructor, and bounded nonzero common
-  multiples are checked. Index-bound finite-prefix glue, product-modulus CRT
-  iteration, finite-prefix construction, prefix products, extensional
+  coprimality, its two-position constructor, bounded-prefix pairwise
+  coprimality, product closure, modulus descent, and one CRT fold step are
+  checked. The actual bounded fold, β finite-prefix recoding, prefix products, extensional
   sequence equality, and finite counting remain; generic exponentiation and an optional
   user-facing list/multiset layer are separate language-design choices.
 - **Blocked as a natural single theorem until that encoding milestone:** the
@@ -239,10 +239,10 @@ a less direct pedagogical API and potentially very large certificates. The
 representation review nevertheless selected a conservative Gödel-β authoring
 facade because it expands into the unchanged Peano language. With constructive
 prime-divisor existence, the equivalent bound/congruence β-value API, binary
-CRT, conditional β-modulus coprimality, and bounded common multiples now
-checked, the remaining critical path is greatest-prime descent followed by
-index-bound finite-prefix glue, product-modulus CRT iteration, finite-prefix
-extension, prefix-product traces, and finite-product
+CRT, bounded-prefix pairwise coprimality, and fold algebra now checked, the
+remaining critical path is greatest-prime descent followed by the actual
+bounded fold with its encoded-product invariant, β finite-prefix recoding,
+prefix-product traces, and finite-product
 existence/uniqueness certificates.
 
 ## Source and artifact invariants

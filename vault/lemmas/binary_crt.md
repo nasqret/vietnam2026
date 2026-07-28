@@ -35,6 +35,7 @@ forall m n a b. ~(m = 0) -> ~(n = 0) -> (forall d. (exists u. m = d * u) -> (exi
 
 - [[binary_crt_remainders]]
 - [[binary_crt_beta_pair]]
+- [[binary_crt_fold_step]]
 
 ## Verification record
 

@@ -12,9 +12,10 @@ than trusting a goal returned by the tactic engine.
 
 The public learning path is the [[theorem-ladder]]. The lab is intuitionistic by default; use of
 double-negation elimination is explicit and checked only in the labeled classical mode.
-The current native library exposes 176 closed checked theorems, including
-constructive [[binary_crt]] and the conditional two-position constructor
-[[binary_crt_beta_pair_of_gap_dvd]].
+The current native library exposes 183 closed checked theorems, including
+constructive [[binary_crt]], bounded-prefix
+[[beta_moduli_pairwise_coprime_bounded|β-modulus coprimality]], and the
+invariant-preserving [[binary_crt_fold_step]].
 
 The static delivery boundary is recorded separately as [[browser-proof-runtime]]: compressed and
 versioned bytes may arrive concurrently, but they add no proof authority and do not alter the

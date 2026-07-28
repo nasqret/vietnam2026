@@ -20,7 +20,10 @@ checked through transitivity and additive and multiplicative compatibility;
 both directions of the bounded decomposition/congruence bridge and uniqueness
 of bounded congruent representatives are checked too. Constructive binary CRT,
 its bounded-remainder client, and a two-position β-code client are checked as
-well; bounded CRT iteration remains open. Every checked entry mentioned below
+well. Bounded-prefix pairwise β-modulus coprimality, product coprimality,
+modulus descent, and a generic CRT fold-preservation step are checked too;
+actual bounded iteration over an encoded accumulated product remains open.
+Every checked entry mentioned below
 is an ordinary closed formula with a replayed certificate accepted by the
 independent Peano kernel; none is a new kernel rule. The general checking
 architecture is described in
@@ -245,18 +248,18 @@ $$
 \end{array}
 $$
 
-All 141 entries in the current post-baseline general foundational layer replay to
+All 148 entries in the current post-baseline general foundational layer replay to
 closed kernel-accepted certificates and fit the live `use` limits of 32,768
-nodes and depth 128. The current 176-entry local candidate reaches its node
+nodes and depth 128. The current 183-entry local candidate reaches its node
 maximum at `binary_crt_beta_pair_of_gap_dvd`, with 12,980 nodes, depth 71, and 378 Cuts,
 while `prime_divisor_exists` reaches the snapshot-wide maximum depth of 80.
-Across the snapshot there are 120,976 structural nodes and 3,331
-self-contained Cuts; 136 certificates contain a Cut. The modular capstone
+Across the snapshot there are 154,220 structural nodes and 4,293
+self-contained Cuts; 143 certificates contain a Cut. The modular capstone
 itself remains 2,675 nodes and depth 38. These
 numbers are build artifacts,
 not new soundness assumptions; the immutable upstream report retains the older
 fully expanded capstone metric of 21,515 nodes/depth 66. The broader research
-catalog has 183 nodes: the 176 checked entries, three planned expressible targets,
+catalog has 190 nodes: the 183 checked entries, three planned expressible targets,
 and four language-interface targets covering conventional signed Bézout and the
 three finite-factorization endpoints.
 
@@ -448,9 +451,10 @@ The current status distinction is:
 | `remainder_decomposition_to_mod_eq`, `mod_eq_to_remainder_decomposition` | shared residue implies congruence |
 | `mod_eq_bounded_unique` | finite-prefix restriction and functionality |
 | `dvd_to_mod_zero` | reverse congruence-zero-to-divisibility |
-| `binary_crt`, `binary_crt_remainders` | bounded CRT iteration |
-| `binary_crt_beta_pair`, `beta_moduli_coprime_of_gap_dvd`, `binary_crt_beta_pair_of_gap_dvd` | index-bound gap glue, product-modulus CRT iteration, and arbitrary finite-prefix assembly |
-| `bounded_common_multiple_step`, `bounded_common_multiple_exists` | prime-above-bound client and finite-prefix use of the common-multiple invariant |
+| `binary_crt`, `binary_crt_remainders`, `binary_crt_fold_step` | actual bounded iteration over an encoded accumulated-product invariant |
+| `binary_crt_beta_pair`, `beta_moduli_coprime_of_gap_dvd`, `binary_crt_beta_pair_of_gap_dvd` | arbitrary finite-prefix recoding and assembly |
+| `bounded_common_multiple_step`, `bounded_common_multiple_exists`, `beta_moduli_pairwise_coprime_bounded` | prime-above-bound client and encoded finite-prefix use |
+| `coprime_mul_left`, `coprime_mul_right`, `mod_eq_of_mod_eq_multiple` | prefix-product trace and bounded fold carrying divisibility/nonzero invariants |
 | Closure of multiples under addition and multiplication | shared residue implies congruence |
 | Exact quotient-and-residue addition | finite-product congruence clients |
 | Exact square decomposition and square residue lifting | generated fixed-modulus clients |
@@ -567,6 +571,13 @@ added to the term language.
 | `common_divisor_beta_moduli_divides_gap_times_c` | a common divisor divides $\mathit{gap}\,c$ | 855 / 30 | 24 |
 | `beta_moduli_coprime_of_gap_dvd` | gap divisibility implies pairwise beta-modulus coprimality | 6,007 / 56 | 175 |
 | `binary_crt_beta_pair_of_gap_dvd` | apply two-position CRT under the gap hypothesis | 12,980 / 71 | 378 |
+| `beta_moduli_coprime_of_lt_bounded_common_multiple` | ordered bounded indices inherit gap divisibility | 6,227 / 57 | 181 |
+| `beta_moduli_pairwise_coprime_bounded` | all distinct bounded beta moduli are pairwise coprime | 6,348 / 59 | 183 |
+| `bounded_beta_moduli_pairwise_coprime_exists` | choose one nonzero base for a pairwise-coprime bounded family | 7,019 / 61 | 207 |
+| `coprime_mul_left` | preserve coprimality under an accumulated product | 3,975 / 53 | 115 |
+| `coprime_mul_right` | symmetric accumulated-product closure | 4,017 / 54 | 117 |
+| `mod_eq_of_mod_eq_multiple` | descend congruence from a multiple modulus | 157 / 23 | 3 |
+| `binary_crt_fold_step` | preserve all old divisor-modulus congruences and add one new congruence | 5,501 / 52 | 156 |
 
 If $a<m$ and $b<n$, `binary_crt_remainders` feeds the result through
 `mod_eq_to_remainder_decomposition` twice and obtains
@@ -588,6 +599,22 @@ and `binary_crt_beta_pair_of_gap_dvd` applies it. The conditions cannot be
 erased: $c=1$ gives beta moduli $M(1,1)=3$ and $M(1,4)=6$, which are not
 coprime.
 
+For a bounded common-multiple base, the new ordered theorem extracts the
+positive gap between $i<j$ and proves that it lies within the common-multiple
+bound. Trichotomy then yields pairwise coprimality for all distinct positions.
+The product lemmas fold those pairwise facts into coprimality of an accumulated
+product with the next modulus. If $m\mid P$, `mod_eq_of_mod_eq_multiple`
+turns $z\equiv x\pmod P$ into $z\equiv x\pmod m$.
+`binary_crt_fold_step` combines these facts into the preservation invariant
+
+$$
+\forall m\mid P,\quad x\equiv a\pmod m\Longrightarrow z\equiv a\pmod m,
+$$
+
+while also proving $z\equiv b\pmod n$ for the new modulus. This theorem does
+not itself quantify over an encoded finite product trace or perform the
+bounded induction; those are the remaining fold infrastructure.
+
 The companion divisibility pair constructs the shared resource needed for a
 finite bound:
 
@@ -596,10 +623,10 @@ finite bound:
 | `bounded_common_multiple_step` | extend a nonzero common multiple across one endpoint | 483 / 29 | 15 |
 | `bounded_common_multiple_exists` | obtain nonzero $c$ divisible by every positive natural at most $B$ | 640 / 30 | 22 |
 
-What remains is to turn index bounds into the required additive-gap witnesses,
-iterate CRT with a product-modulus invariant that preserves earlier residues,
-and prove finite-prefix extension. Thus two-position decoding and its honest
-conditional coprimality discharge are checked, while arbitrary finite-prefix
+What remains is to encode the accumulated products and their divisor/nonzero
+invariants, iterate the checked fold step over that trace, and prove beta
+finite-prefix recoding and extension. Thus bounded pairwise coprimality and
+the algebraic preservation step are checked, while arbitrary finite-prefix
 assembly remains an explicit later gate.
 
 ## From a general library to the old modulo-five exercise

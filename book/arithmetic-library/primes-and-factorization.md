@@ -275,6 +275,13 @@ first-order PA.
 | `common_divisor_beta_moduli_divides_gap_times_c` | force a common modulus divisor into $\mathit{gap}\,c$ | 855 / 30 | 24 |
 | `beta_moduli_coprime_of_gap_dvd` | discharge pairwise coprimality from $j=i+\mathit{gap}$ and $\mathit{gap}\mid c$ | 6,007 / 56 | 175 |
 | `binary_crt_beta_pair_of_gap_dvd` | realize the two beta values under that gap condition | 12,980 / 71 | 378 |
+| `beta_moduli_coprime_of_lt_bounded_common_multiple` | derive ordered bounded-modulus coprimality from one common-multiple invariant | 6,227 / 57 | 181 |
+| `beta_moduli_pairwise_coprime_bounded` | orient every distinct bounded pair and prove its moduli coprime | 6,348 / 59 | 183 |
+| `bounded_beta_moduli_pairwise_coprime_exists` | choose one nonzero base for a pairwise-coprime bounded family | 7,019 / 61 | 207 |
+| `coprime_mul_left` | fold pairwise coprimality into an accumulated product | 3,975 / 53 | 115 |
+| `coprime_mul_right` | symmetric product-coprimality closure | 4,017 / 54 | 117 |
+| `mod_eq_of_mod_eq_multiple` | descend an accumulated-modulus congruence to a divisor modulus | 157 / 23 | 3 |
+| `binary_crt_fold_step` | preserve every old divisor-modulus congruence and add one new congruence | 5,501 / 52 | 156 |
 
 The bounded client strengthens the readable conclusion to
 
@@ -322,12 +329,15 @@ many gap hypotheses available from one parameter:
 | `bounded_common_multiple_step` | extend a nonzero common multiple across the next positive endpoint | 483 / 29 | 15 |
 | `bounded_common_multiple_exists` | construct a nonzero $c$ divisible by every positive natural at most $B$ | 640 / 30 | 22 |
 
-These results still do not iterate CRT over a bounded prefix. The missing
-links are the index-bound algebra that exposes each required gap, a
-product-modulus CRT invariant that preserves positions already encoded, and
-finite-prefix extension itself. This checkpoint is therefore a conditional
-binary/two-position theorem plus the common-multiple resource for the next
-induction, not a hidden bounded CRT.
+The next three checked theorems now expose every required bounded gap and
+prove that all distinct moduli in the prefix are pairwise coprime. Product
+coprimality, modulus descent, and `binary_crt_fold_step` then check the
+algebraic extension invariant: one new CRT solution preserves every old
+congruence whose modulus divides the accumulated product. These results still
+do not encode that accumulated product or iterate the step over a bounded
+prefix. The missing links are the β-coded product trace with its
+nonzero/divisor-membership invariants, the actual bounded fold, and
+finite-prefix recoding and extension itself.
 
 A second code stores the prefix products, beginning at one and multiplying by
 the decoded factor at each step. `AllPrime` expands the factor-pair prime
@@ -374,11 +384,11 @@ This release keeps two deliberately separate FTA tracks:
 The gcd/Bézout/Gauss/Euclid chain, constructive prime-divisor existence,
 single-position Gödel-β decoded-value existence and uniqueness, its
 bidirectional bounded-congruence characterization, constructive binary CRT,
-conditional gap-based beta-modulus coprimality, its two-position client, and
-bounded common-multiple existence are now checked in native PA. The next
-critical gates are greatest-prime descent, index-bound finite-prefix glue,
-product-modulus CRT iteration, finite-prefix extension/restriction, and
-prefix-product traces.
+bounded-prefix beta-modulus coprimality, product coprimality, modulus descent,
+and the generic CRT fold-preservation step are now checked in native PA. The
+next critical gates are greatest-prime descent, an encoded
+accumulated-product trace, the actual bounded fold, beta finite-prefix
+recoding and extension/restriction, and prefix-product traces.
 Only after those interfaces have checked native certificates can factorization
 existence, uniqueness, and FTA enter `pa lib`. FTA therefore remains unproved
 in the native library.

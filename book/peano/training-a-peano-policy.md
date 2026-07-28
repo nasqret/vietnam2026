@@ -620,7 +620,7 @@ deterministically; the immutable pre-integration report records a largest fully 
 certificate of 21,515 nodes at depth 66. Reconciliation with the first M20 branch then yielded the
 historical 63-entry local snapshot because fourteen post-core records overlapped exactly. Later
 native arithmetic passes and self-contained Cut packaging extend the current local candidate to
-176 unique checked theorems: 23 baseline entries, 141 general foundational entries, and twelve
+183 unique checked theorems: 23 baseline entries, 148 general foundational entries, and twelve
 unique modular capstones. A twelve-rung tranche adds constructive equality, divisibility,
 and primality decisions, bounded factor-pair search, proper-factor descent, and prime-divisor
 existence. The next seven add modular-congruence transitivity and addition plus
@@ -638,19 +638,22 @@ coprime to its base, reduce a common divisor of two beta moduli to the scaled
 index gap, derive pairwise coprimality when $j=i+\mathit{gap}$ and
 $\mathit{gap}\mid c$, apply that theorem to the two-position CRT client, and
 construct bounded nonzero common multiples. The condition is essential:
-$c=1$ gives moduli $3$ and $6$. None of those local snapshot counts claims that
+$c=1$ gives moduli $3$ and $6$. Seven further entries convert the bounded
+common-multiple invariant into bounded-prefix pairwise coprimality, close
+coprimality under accumulated products, descend congruence from a product
+modulus, and check the universal preservation step for a future bounded CRT
+fold. None of those local snapshot counts claims that
 production has already
 been promoted.
 
-The corresponding deterministic corpus release keeps 13,344 transitions from
-1,692 checked sessions and has run fingerprint
-`f44b6eb716116063bd24b849d737345f0c9c23240fa8536d1ed25fdc1ae05d56`.
-Its full-library smoke covers 352 sessions, 4,729 raw and 4,726 unique
-transitions, and all 176 authored-script kernel QEDs. The local browser
-assembly is build `2026-07-29f`, application `a-72e034c621a7`; these identities
+The corresponding deterministic corpus release has run fingerprint
+`d0649a05ab1a88396d2d3046bc10a814e374cb3cf5ad8df225c9e15e91ff0df6`.
+Its full-library smoke covers 366 sessions, 4,992 raw and 4,989 unique
+transitions, and all 183 authored-script kernel QEDs. The local browser
+assembly is build `g`, application `a-6b72d4fe4ca4`; these identities
 record the candidate and do not claim production deployment.
 
-For training, that current 176-theorem catalog must become the new content-addressed
+For training, that current 183-theorem catalog must become the new content-addressed
 `model-v2` successor authority, not a silent
 extension of model-v1. The prompt must expose retrieved lemma names and canonical statements, and
 the data must include downstream `use`/`specialize` trajectories. Once the exact capstone theorem
@@ -739,7 +742,7 @@ The next run should change one scientific variable at a time in this order:
    composition, and human-authored problems. Replay every reference within a 32-step oracle budget.
 2. Run the pretrained Qwen3-1.7B base, current adapter, deterministic tactics, and a simple
    state-shape baseline under identical token, model-call, and kernel-call budgets.
-3. Bind the content-addressed 176-theorem successor snapshot into model-v2. Show compact PA syntax
+3. Bind the content-addressed 183-theorem successor snapshot into model-v2. Show compact PA syntax
    and retrieved lemma names with canonical statements instead of only an opaque hash.
 4. Generate 100,000--150,000 positive transitions from at least 10,000 checked roots, with every
    tactic head represented, 20--30% induction/IH trajectories, 20--30% lemma retrieval and

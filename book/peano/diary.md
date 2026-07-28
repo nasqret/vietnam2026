@@ -1333,3 +1333,51 @@ Its isolated smoke records 352 sessions, 4,729 raw transitions, 4,726 unique
 transitions, and all 176 authored QEDs. The full Peano suite passes 1,098
 tests in 114.26 seconds, and Lambda remains green at 360 tests plus 36
 subtests.
+
+## 2026-07-29 — Bounded-prefix coprimality and CRT fold algebra are checked
+
+The next native checkpoint contains 183 unique checked theorems: 23 baseline
+entries, 148 post-baseline foundational entries, and twelve modular capstones.
+The 190-node research catalog classifies them as 23 `checked_existing`, 160
+`checked_m20`, three `planned_expressible`, and four `blocked_by_language`
+records. Its ordered snapshot root is
+`09359430226349a7d5fdd1fd67376d345bc1bb5f707e746e8b58c2799086f2d6`.
+
+Seven new certificates close the algebra surrounding a future bounded CRT
+fold:
+
+| Checked theorem | Nodes/depth | Cuts |
+|---|---:|---:|
+| `beta_moduli_coprime_of_lt_bounded_common_multiple` | 6,227 / 57 | 181 |
+| `beta_moduli_pairwise_coprime_bounded` | 6,348 / 59 | 183 |
+| `bounded_beta_moduli_pairwise_coprime_exists` | 7,019 / 61 | 207 |
+| `coprime_mul_left` | 3,975 / 53 | 115 |
+| `coprime_mul_right` | 4,017 / 54 | 117 |
+| `mod_eq_of_mod_eq_multiple` | 157 / 23 | 3 |
+| `binary_crt_fold_step` | 5,501 / 52 | 156 |
+
+The first three turn the bounded common-multiple resource into pairwise
+coprimality for every two distinct beta moduli in the bounded prefix. The next
+two show that coprimality with a fixed modulus is preserved by accumulated
+products. `mod_eq_of_mod_eq_multiple` descends balanced congruence from an
+accumulated product modulus to each divisor modulus. Finally,
+`binary_crt_fold_step` constructs the next CRT value and proves a universal
+preservation invariant: every congruence already held modulo a divisor of the
+old product is retained, while the requested congruence at the new modulus is
+added.
+
+This is fold algebra, not the bounded fold itself. The library still lacks an
+encoded accumulated-product trace and the induction that carries its
+nonzero, divisor-membership, and coprimality invariants through a finite
+prefix. Beta finite-prefix recoding, prefix-product traces, factorization
+existence and uniqueness, and native FTA therefore remain open.
+
+The complete snapshot has 154,220 structural nodes, 4,293 self-contained
+Cuts, and 143 Cut-bearing certificates. The maximum remains
+`binary_crt_beta_pair_of_gap_dvd` at 12,980 nodes and 378 Cuts; the overall
+depth maximum remains 80. The synchronized, undeployed local browser candidate
+is build `g`, application `a-6b72d4fe4ca4`. Its source-bound corpus fingerprint
+is `d0649a05ab1a88396d2d3046bc10a814e374cb3cf5ad8df225c9e15e91ff0df6`;
+the isolated smoke records 366 sessions, 4,992 raw transitions, 4,989 unique
+transitions, and all 183 authored QEDs. The full Peano suite passes 1,098 tests
+in 127.22 seconds, and Lambda remains green at 360 tests plus 36 subtests.

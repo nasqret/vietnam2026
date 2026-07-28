@@ -538,7 +538,7 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       capstone regression. That source snapshot has 49 entries; the initial
       reconciliation with M20 deduplicated fourteen exact overlaps and yielded
       63 unique checked theorems. Subsequent native arithmetic work extends
-      that historical release to the current 176-entry successor.
+      that historical release to the current 183-entry successor.
 - [ ] Register model-v2 with a library snapshot hash over names, canonical statements,
       dependencies, source/script/certificate hashes, nodes, and depth; bind it through prompt,
       rows, attestation, training manifest, evaluator, and WMI requests. Freeze sealed targets
@@ -602,7 +602,7 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   known held-out routes need 10/10/23/13 steps, so the 16-step cap also underspecifies
   `le_total`'s known route. Scaling the same curriculum to 4B would not test the intended
   hypothesis, so the conditional 4B comparison remains unlaunched. The next data contract must freeze the user's
-  current 176-entry library as a content-addressed successor authority and add induction, invariant, witness,
+  current 183-entry library as a content-addressed successor authority and add induction, invariant, witness,
   and lemma-composition curricula while retaining a sealed test set.
 
   The public-catalog local gate is green: 1,036 Peano tests; Lambda 360 tests plus 36 subtests; all
@@ -621,7 +621,7 @@ The theorem-ladder extension is tracked independently in
 [`PLAN/10_arithmetic_library.md`](10_arithmetic_library.md). Its first release
 kept the kernel and object language fixed, expanded divisibility and residue
 notions into ordinary formulas, and labeled prime/factorization targets by
-their real dependencies. The reconciled runtime contains 176 unique checked
+their real dependencies. The reconciled runtime contains 183 unique checked
 theorems, including quotient-remainder existence/uniqueness, relational gcd
 existence/uniqueness, balanced-natural Bézout, Gauss cancellation, and Euclid's
 lemma. It now also has constructive equality and divisibility decisions,
@@ -634,19 +634,22 @@ factorization design. Constructive binary CRT, bounded-residue CRT equations,
 and a two-position β-code constructor are checked. The latest layer proves its
 coprimality premise when the ordered index gap divides `c`, applies the
 constructor under that condition, and constructs nonzero bounded common
-multiples. Unconditional pairwise β-modulus coprimality is false. A separate
+multiples. The latest layer proves bounded-prefix pairwise coprimality,
+coprime-product closure, modulus descent, and one invariant-preserving binary
+CRT fold step. Unconditional pairwise β-modulus coprimality is false. A separate
 Lean companion checks full FTA. The later proof-sharing milestone adds one
 reviewed self-contained
 Cut rule to the trusted certificate checker—without changing the PA object
 language, axioms, induction, or intuitionistic default. The current shared
-ladder has 120,976 structural nodes and 3,331 Cuts across 136 Cut-bearing
+ladder has 154,220 structural nodes and 4,293 Cuts across 143 Cut-bearing
 entries; `binary_crt_beta_pair_of_gap_dvd` is largest at 12,980
 nodes/378 Cuts and
 the maximum depth remains 80 at `prime_divisor_exists`. Peano admission
-of FTA still requires greatest-prime descent, index-bound finite-prefix glue,
-product-modulus CRT iteration, finite-prefix construction, and the
+of FTA still requires greatest-prime descent, the actual bounded fold with its
+encoded accumulated-product invariant, β finite-prefix recoding, and the
 encoded-product proof spine. The complete current Peano suite passes 1,098
-tests on CPython 3.10.
+tests on CPython 3.10 in 127.22 seconds; Lambda passes 360 tests plus 36
+subtests.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

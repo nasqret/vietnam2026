@@ -625,8 +625,8 @@ All replay deterministically and pass the empty-context kernel check. The larges
 snapshot-v2 representation packages dependency proofs in self-contained kernel Cuts and records a
 maximum node count of 12,980 (`binary_crt_beta_pair_of_gap_dvd`) and a
 maximum depth of 80 (`prime_divisor_exists`) across the current
-176-theorem ladder. It contains 120,976 structural nodes and 3,331
-self-contained Cuts across 136 Cut-bearing
+183-theorem ladder. It contains 154,220 structural nodes and 4,293
+self-contained Cuts across 143 Cut-bearing
 entries. The new premise surface includes the full `mod_eq_add`/`mod_eq_mul`
 compatibility layer, `mod_eq_bounded_unique`, both directed
 remainder/congruence bridges, and all expanded β-value theorems through
@@ -637,15 +637,17 @@ checked. The newer `beta_moduli_coprime_of_gap_dvd` proves the
 coprimality premise when an ordered index gap divides `c`,
 `binary_crt_beta_pair_of_gap_dvd` applies it, and
 `bounded_common_multiple_exists` supplies a nonzero common multiple for
-all positive gaps through a bound. The library still does not include
-index-bound finite-prefix glue, product-modulus CRT iteration, finite products,
-greatest-prime descent, or native FTA. Unconditional pairwise β-modulus
-coprimality is false.
+all positive gaps through a bound. The new bounded-prefix layer proves all
+distinct selected β moduli pairwise coprime, closes coprimality under products,
+descends congruence from product moduli, and checks one CRT fold step. The
+library still does not include the actual bounded fold with an encoded-product
+invariant, β finite-prefix recoding, finite products, greatest-prime descent,
+or native FTA. Unconditional pairwise β-modulus coprimality is false.
 Model provenance must bind the representation version as
 well as the certificate hashes and metrics.
-The corresponding 176-entry deterministic corpus refresh retains 13,344 transitions
+The corresponding 183-entry deterministic corpus refresh retains 13,344 transitions
 from 1,692 sessions and has run fingerprint
-`f44b6eb716116063bd24b849d737345f0c9c23240fa8536d1ed25fdc1ae05d56`.
+`d0649a05ab1a88396d2d3046bc10a814e374cb3cf5ad8df225c9e15e91ff0df6`.
 
 The pack must nevertheless enter through a new scientific contract. A
 content-addressed library snapshot must bind each name, canonical statement,

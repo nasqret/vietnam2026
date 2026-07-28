@@ -7,15 +7,15 @@
   "maximum_cut_nodes": 378,
   "maximum_proof_depth": 80,
   "maximum_proof_nodes": 12980,
-  "ordered_root_sha256": "874779f25de06cebc9d111e76bd183e4a8c514bd0d9da0c52f71c99f887cc3a7",
+  "ordered_root_sha256": "09359430226349a7d5fdd1fd67376d345bc1bb5f707e746e8b58c2799086f2d6",
   "schema": "peano-library-metrics-v2",
-  "theorem_count": 176,
+  "theorem_count": 183,
   "theorems_by_layer": {
-    "foundational_extension": 141,
+    "foundational_extension": 148,
     "legacy_core": 23,
     "published_mod5_unique": 12
   },
-  "theorems_with_cut_nodes": 136,
-  "total_cut_nodes": 3331,
-  "total_proof_nodes": 120976
+  "theorems_with_cut_nodes": 143,
+  "total_cut_nodes": 4293,
+  "total_proof_nodes": 154220
 }

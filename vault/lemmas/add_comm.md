@@ -40,6 +40,7 @@ forall n m. n + m = m + n
 - [[add_residue_lift]]
 - [[bezout_mod_left]]
 - [[mod_eq_predecessor_cancel]]
+- [[beta_moduli_coprime_of_lt_bounded_common_multiple]]
 - [[mod5_square_residue_two]]
 
 ## Verification record

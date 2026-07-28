@@ -20,6 +20,7 @@ forall n m k. n <= m -> m <= k -> n <= k
 ## Checked dependents
 
 - [[lt_of_lt_of_le]]
+- [[beta_moduli_coprime_of_lt_bounded_common_multiple]]
 
 ## Verification record
 

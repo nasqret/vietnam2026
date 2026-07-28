@@ -24,6 +24,7 @@ forall m a b c. (exists u v. a + m * u = b + m * v) -> (exists r s. b + m * r = 
 - [[mod_eq_mul]]
 - [[mod_eq_to_remainder_decomposition]]
 - [[binary_crt]]
+- [[binary_crt_fold_step]]
 
 ## Verification record
 

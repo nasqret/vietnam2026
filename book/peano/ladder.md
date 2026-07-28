@@ -6,8 +6,8 @@ replays all current entries, discharges dependency assumptions through embedded 
 Cuts, and asks the independent kernel to check the resulting closed certificate against the
 original statement.
 
-The current local candidate runtime contains 176 unique checked entries: the
-original 23-entry base, 141 post-baseline foundational entries, and twelve
+The current local candidate runtime contains 183 unique checked entries: the
+original 23-entry base, 148 post-baseline foundational entries, and twelve
 further unique records from the upstream modular catalog. The upstream
 26-record catalog ends at the fourth-power modulo-five capstone. Its first
 reconciliation with the 51-entry M20 branch exposed fourteen coincident
@@ -38,11 +38,18 @@ divisibility lemma, conditional pairwise beta-modulus coprimality, its
 two-position CRT wrapper, and bounded common-multiple step and existence
 theorems. The condition is explicit: $j=i+\mathit{gap}$ and
 $\mathit{gap}\mid c$. It cannot be dropped, since $c=1$ yields beta moduli
-$3$ and $6$. Across the snapshot, 120,976 structural nodes include 3,331
-self-contained Cuts; 136 certificates contain a Cut.
+$3$ and $6$. Seven more entries derive pairwise coprimality for every two
+distinct beta moduli in a bounded prefix, close coprimality under products on
+both sides, descend congruence from an accumulated product modulus to a
+divisor, and prove `binary_crt_fold_step`, whose universal clause preserves
+all old divisor-modulus congruences while adding one new congruence. Across
+the snapshot, 154,220 structural nodes include 4,293 self-contained Cuts; 143
+certificates contain a Cut.
 `binary_crt_beta_pair_of_gap_dvd` is the largest certificate at 12,980 nodes
 and sets the per-certificate Cut maximum at 378, while
 `prime_divisor_exists` retains the depth maximum at 80.
+The actual bounded fold, its encoded accumulated-product invariant, beta
+finite-prefix recoding, and prefix-product traces remain open.
 The complete layered design continues
 in {doc}`The foundational arithmetic library <../arithmetic-library/index>`;
 this chapter retains the construction story of the original core and the public modular route.

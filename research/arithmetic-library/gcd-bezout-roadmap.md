@@ -308,6 +308,19 @@ The β-coprimality/common-multiple clients of this gcd and Gauss layer are:
 | `bounded_common_multiple_step` | 483 / 29 |
 | `bounded_common_multiple_exists` | 640 / 30 |
 
+The bounded-prefix and CRT fold-algebra tranche has independently audited
+shared metrics:
+
+| Checked theorem | Nodes/depth/Cuts |
+|---|---:|
+| `beta_moduli_coprime_of_lt_bounded_common_multiple` | 6,227 / 57 / 181 |
+| `beta_moduli_pairwise_coprime_bounded` | 6,348 / 59 / 183 |
+| `bounded_beta_moduli_pairwise_coprime_exists` | 7,019 / 61 / 207 |
+| `coprime_mul_left` | 3,975 / 53 / 115 |
+| `coprime_mul_right` | 4,017 / 54 / 117 |
+| `mod_eq_of_mod_eq_multiple` | 157 / 23 / 3 |
+| `binary_crt_fold_step` | 5,501 / 52 / 156 |
+
 ## Admission gates
 
 1. **Complete:** admit and mutation-test the Euclidean invariance ladder.
@@ -335,9 +348,12 @@ The β-coprimality/common-multiple clients of this gcd and Gauss layer are:
 11. **Complete:** prove conditional β-modulus coprimality when the ordered
     index gap divides `c`, discharge the two-position CRT premise, and
     construct nonzero bounded common multiples.
-12. Develop greatest-prime-divisor descent for sorted factorization, then
-    prove the index-bound finite-prefix glue and product-modulus CRT iteration
-    needed for prefix extension and the product gate.
+12. **Complete:** prove bounded-prefix pairwise coprimality, coprime-product
+    closure, modulus descent, and one invariant-preserving binary CRT fold
+    step.
+13. Develop greatest-prime-divisor descent for sorted factorization, then
+    prove the actual bounded fold with its encoded-product invariant, β
+    finite-prefix recoding, and the product gate.
 
 Prime-divisor existence does not follow automatically from gcd or Bézout, and
 Euclid's lemma does not construct a prime divisor; both sides are now checked

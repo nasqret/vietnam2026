@@ -8,11 +8,11 @@ The **foundational arithmetic library** is a versioned dependency graph for
 [[arithmetic-congruence]], [[quotient-and-remainder]], gcd, primes, and
 factorization.
 
-Its current snapshot has 176 closed, independently checked theorems: the
-original 23-node [[theorem-ladder]] and 153 unique post-baseline additions.
-The latter combine 141 general arithmetic facts with twelve additional modular
-capstones. The 183-node research catalog separates 23 `checked_existing`,
-153 `checked_m20`, three
+Its current snapshot has 183 closed, independently checked theorems: the
+original 23-node [[theorem-ladder]] and 160 unique post-baseline additions.
+The latter combine 148 general arithmetic facts with twelve additional modular
+capstones. The 190-node research catalog separates 23 `checked_existing`,
+160 `checked_m20`, three
 `planned_expressible`, and four `blocked_by_language` nodes, but only replayed
 certificates appear in `pa lib`. The M20 additions now include [[prime_two]],
 the first checked instance of the fully expanded prime predicate, and native
@@ -64,11 +64,22 @@ construct a nonzero `c` divisible by all positive naturals through a
 chosen bound. Arbitrary β moduli are not pairwise coprime; `c = 1` at
 indices 1 and 4 gives the counterexample 3 and 6.
 
-The generated snapshot contains 120,976 structural proof nodes and 3,331
-self-contained Cuts; 136 of the 176 certificates contain a Cut. Its maximum
+The next seven-node layer closes the finite-bound glue:
+[[beta_moduli_coprime_of_lt_bounded_common_multiple]],
+[[beta_moduli_pairwise_coprime_bounded]], and
+[[bounded_beta_moduli_pairwise_coprime_exists]] construct one nonzero base
+whose distinct β moduli through a chosen bound are pairwise coprime.
+[[coprime_mul_left]] and [[coprime_mul_right]] lift that invariant to
+accumulated products; [[mod_eq_of_mod_eq_multiple]] descends congruence from a
+product modulus to its factors; and [[binary_crt_fold_step]] performs one CRT
+extension while preserving every earlier congruence whose modulus divides the
+accumulated product.
+
+The generated snapshot contains 154,220 structural proof nodes and 4,293
+self-contained Cuts; 143 of the 183 certificates contain a Cut. Its maximum
 certificate is [[binary_crt_beta_pair_of_gap_dvd]] at 12,980 nodes and 378 Cuts, and its
 maximum depth is 80 at [[prime_divisor_exists]]. The ordered snapshot root is
-`874779f25de06cebc9d111e76bd183e4a8c514bd0d9da0c52f71c99f887cc3a7`.
+`09359430226349a7d5fdd1fd67376d345bc1bb5f707e746e8b58c2799086f2d6`.
 These are representation metrics, not proof authority.
 
 The checkpoint passed all 1,098 Peano tests. The independent Lambda Lab
@@ -85,9 +96,9 @@ than granting names or hashes kernel authority.
 The [[fundamental-theorem-of-arithmetic]] is a destination, not a primitive.
 A conservative [[godel-beta-sequence]] representation is selected and a Lean
 companion checks the full list theorem, while Peano admission still requires
-greatest-prime descent, index-bound finite-prefix glue for the checked
-conditional coprimality theorem, product-modulus CRT iteration, finite-prefix,
-prefix-product, and finite-product certificates.
+greatest-prime descent, the actual bounded CRT fold and its encoded-product
+invariant, β finite-prefix recoding, prefix-product, and finite-product
+certificates.
 
 ## Related
 

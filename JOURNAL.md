@@ -1542,3 +1542,52 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   The remaining native FTA path requires greatest-prime descent, index-bound
   finite-prefix glue, product-modulus CRT iteration, prefix products,
   factorization existence/uniqueness, and the final native FTA theorem.
+
+## 2026-07-29 — Bounded-prefix β coprimality and CRT fold algebra
+
+- Added seven closed native theorems.
+  `beta_moduli_coprime_of_lt_bounded_common_multiple` handles ordered
+  bounded indices; `beta_moduli_pairwise_coprime_bounded` handles both
+  orders; and `bounded_beta_moduli_pairwise_coprime_exists` packages a
+  nonzero base whose distinct β moduli through a chosen bound are pairwise
+  coprime.
+  `coprime_mul_left` and `coprime_mul_right` preserve that
+  invariant under products. `mod_eq_of_mod_eq_multiple` descends
+  congruence from an accumulated product modulus, and
+  `binary_crt_fold_step` proves one binary CRT extension preserves all
+  old congruences whose moduli divide that product.
+- Their audited nodes/depth/Cuts are respectively 6,227/57/181,
+  6,348/59/183, 7,019/61/207, 3,975/53/115, 4,017/54/117,
+  157/23/3, and 5,501/52/156. Cold replay is deterministic and checks from the
+  empty context; all fifteen dependency-slot mutations, PA-leaf mutations,
+  and authored-hypothesis mutations fail closed. No DNE occurs, only PA1–PA6
+  are used, and the runtime records exactly match both temporary prototypes
+  after erasing `_proto`.
+- The runtime now contains 183 unique checked theorems: 23 baseline, 148
+  general foundational, and twelve fixed modular capstones. The synchronized
+  190-node catalog contains 23 `checked_existing`, 160
+  `checked_m20`, three planned, and four language-blocked entries.
+  Shared certificates total 154,220 structural nodes and 4,293 Cuts across 143
+  Cut-bearing entries. `binary_crt_beta_pair_of_gap_dvd` remains
+  largest at 12,980 nodes/378 Cuts; `prime_divisor_exists` retains
+  maximum depth 80. The ordered root is
+  `09359430226349a7d5fdd1fd67376d345bc1bb5f707e746e8b58c2799086f2d6`.
+- Regenerated the 13,344-transition/1,692-session corpus under run fingerprint
+  `d0649a05ab1a88396d2d3046bc10a814e374cb3cf5ad8df225c9e15e91ff0df6`.
+  Train, validation, statistics, manifest, and raw-stream SHA-256 values are
+  respectively
+  `d39720bfeeeb159d0f8ca9f331294b6c6135ea36f0585b46efa0768945f953bb`,
+  `d8986e2b260907c909ed1c2b0926fd02a9aa0df748a37656bcdf820c591299fd`,
+  `2bfd4d68ed205d67e0aedf6acb349cfdc7880adcc3b0cf2f41be557b2cee6c58`,
+  `5c50e4afd0e41272ed8781e7d43bf6d4c985a2eee11b1c33953f016b8f808211`,
+  and `ee804b6a6ff0b497df192806a99bc6d975d775a84879189aa1251178aa865556`.
+  The isolated smoke has 366 sessions, 4,992 raw and 4,989 unique transitions,
+  and all 183 authored-script QEDs. The complete Peano suite passes 1,098 tests
+  on CPython 3.10 in 127.22 seconds; Lambda passes 360 tests plus 36 subtests.
+- The generated Obsidian graph verifies at 262 notes and 2,397 resolved links,
+  including all 183 lemma notes.
+- Local browser build `2026-07-29g` has immutable application identity
+  `a-6b72d4fe4ca4`. It is not staged, deployed, or promoted.
+  The next representation gate is the actual bounded fold with an encoded
+  accumulated-product/solution invariant, followed by β finite-prefix
+  recoding, prefix products, factorization, and native FTA.

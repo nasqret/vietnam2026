@@ -158,6 +158,13 @@ FOUNDATIONAL_NAMES = (
     "binary_crt_beta_pair_of_gap_dvd",
     "bounded_common_multiple_step",
     "bounded_common_multiple_exists",
+    "beta_moduli_coprime_of_lt_bounded_common_multiple",
+    "beta_moduli_pairwise_coprime_bounded",
+    "bounded_beta_moduli_pairwise_coprime_exists",
+    "coprime_mul_left",
+    "coprime_mul_right",
+    "mod_eq_of_mod_eq_multiple",
+    "binary_crt_fold_step",
 )
 
 

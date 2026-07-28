@@ -165,10 +165,13 @@ The condition matters. Unconditional pairwise coprimality is false: for
 $c=1$, $M(1,1)=3$ and $M(1,4)=6$. The checked
 `binary_crt_beta_pair_of_gap_dvd` applies precisely the conditional theorem.
 `bounded_common_multiple_exists` separately constructs a nonzero $c$
-divisible by every positive natural at most a supplied bound. What remains is
-the index-bound glue that turns that invariant into all gaps required by a
-finite prefix, product-modulus CRT iteration that preserves earlier
-positions, and the prefix-product relation.
+divisible by every positive natural at most a supplied bound. The checked
+bounded-prefix bridge now turns that invariant into pairwise coprimality for
+all distinct bounded positions. Product coprimality, modulus descent, and
+`binary_crt_fold_step` also check the algebraic preservation step. What
+remains is the encoded accumulated-product invariant and bounded induction
+that iterate the step, beta finite-prefix recoding, and the prefix-product
+relation.
 
 The native route is therefore explicit:
 
@@ -180,9 +183,10 @@ The native route is therefore explicit:
 3. prove greatest-prime descent for the selected sorted factorization route;
 4. reuse the checked equivalence between single-position β decoding and
    bounded congruence together with checked binary CRT, conditional
-   gap-divisibility coprimality, and bounded common-multiple existence; prove
-   index-bound finite-prefix glue, product-modulus CRT iteration,
-   finite-prefix extension, and prefix-product relations;
+   bounded-prefix pairwise coprimality, product coprimality, modulus descent,
+   and the generic CRT fold step; prove the encoded accumulated-product trace,
+   actual bounded fold, finite-prefix recoding and extension, and
+   prefix-product relations;
 5. state and check factorization existence and extensional uniqueness.
 
 A separate Lean companion already checks the conventional finite-list FTA,

@@ -19,7 +19,7 @@ forall a b. a = b \/ ((exists k. k + S a = b) \/ exists k. k + S b = a)
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[beta_moduli_pairwise_coprime_bounded]]
 
 ## Verification record
 

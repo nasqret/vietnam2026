@@ -3163,6 +3163,69 @@
       "blocker": null
     },
     {
+      "id": "coprime_mul_left",
+      "title": "Coprimality is closed under multiplication on the left",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "multiple_trans",
+        "gauss_coprime_cancel"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "A common divisor of a product and the fixed right operand inherits coprimality with the first factor; Gauss cancellation then makes it divide the second factor.",
+      "peano": {
+        "statement": "forall a b n. (forall d. (exists x. a = d * x) -> (exists y. n = d * y) -> d = 1) -> (forall d. (exists x. b = d * x) -> (exists y. n = d * y) -> d = 1) -> forall d. (exists x. a * b = d * x) -> (exists y. n = d * y) -> d = 1",
+        "existing_name": "coprime_mul_left"
+      },
+      "blocker": null
+    },
+    {
+      "id": "coprime_mul_right",
+      "title": "Coprimality is closed under multiplication on the right",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "coprime_mul_left",
+        "coprime_symm"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "The symmetric fixed-left form follows from product coprimality and symmetry of the expanded common-divisor relation.",
+      "peano": {
+        "statement": "forall n a b. (forall d. (exists x. n = d * x) -> (exists y. a = d * y) -> d = 1) -> (forall d. (exists x. n = d * x) -> (exists y. b = d * y) -> d = 1) -> forall d. (exists x. n = d * x) -> (exists y. a * b = d * y) -> d = 1",
+        "existing_name": "coprime_mul_right"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod_eq_of_mod_eq_multiple",
+      "title": "Congruence descends along modulus divisibility",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_assoc"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "stein_ent_tex"
+      ],
+      "summary": "If m divides P, balanced congruence modulo P supplies balanced congruence modulo m by multiplying both witnesses by the quotient.",
+      "peano": {
+        "statement": "forall m P x a. (exists k. P = m * k) -> (exists u v. x + P * u = a + P * v) -> exists r s. x + m * r = a + m * s",
+        "existing_name": "mod_eq_of_mod_eq_multiple"
+      },
+      "blocker": null
+    },
+    {
       "id": "binary_crt",
       "title": "Constructive binary Chinese remainder theorem",
       "domain": "congruence",
@@ -3212,6 +3275,28 @@
       "peano": {
         "statement": "forall m n a b. ~(m = 0) -> ~(n = 0) -> (forall d. (exists u. m = d * u) -> (exists v. n = d * v) -> d = 1) -> (exists ha. ha + S a = m) -> (exists hb. hb + S b = n) -> exists x q r. (x = q * m + a /\\ x = r * n + b)",
         "existing_name": "binary_crt_remainders"
+      },
+      "blocker": null
+    },
+    {
+      "id": "binary_crt_fold_step",
+      "title": "One CRT fold step preserves all accumulated congruences",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "binary_crt",
+        "mod_eq_of_mod_eq_multiple",
+        "mod_eq_trans"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Extending an accumulated product modulus by one coprime nonzero modulus preserves every old congruence whose modulus divides the product and adds the requested new congruence.",
+      "peano": {
+        "statement": "forall P n x b. ~(P = 0) -> ~(n = 0) -> (forall d. (exists u. P = d * u) -> (exists v. n = d * v) -> d = 1) -> exists z. ((forall m a. (exists k. P = m * k) -> (exists u v. x + m * u = a + m * v) -> exists r s. z + m * r = a + m * s) /\\ exists q r. z + n * q = b + n * r)",
+        "existing_name": "binary_crt_fold_step"
       },
       "blocker": null
     },
@@ -3811,14 +3896,78 @@
       "blocker": null
     },
     {
+      "id": "beta_moduli_coprime_of_lt_bounded_common_multiple",
+      "title": "Ordered bounded Gödel-beta moduli are coprime",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "beta_moduli_coprime_of_gap_dvd",
+        "add_comm",
+        "le_trans"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "For ordered indices within a common-multiple bound, the positive index gap divides c and therefore supplies coprime beta moduli.",
+      "peano": {
+        "statement": "forall B c i j. (forall t. (exists h. S t + S h = S B) -> exists k. c = S t * k) -> (exists g. g + S i = j) -> (exists h. h + j = B) -> forall d. (exists u. S ((S i) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1",
+        "existing_name": "beta_moduli_coprime_of_lt_bounded_common_multiple"
+      },
+      "blocker": null
+    },
+    {
+      "id": "beta_moduli_pairwise_coprime_bounded",
+      "title": "A bounded Gödel-beta prefix has pairwise coprime moduli",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "lt_trichotomy",
+        "beta_moduli_coprime_of_lt_bounded_common_multiple"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Trichotomy orients any two distinct bounded indices and reduces their modulus coprimality to the ordered-gap theorem.",
+      "peano": {
+        "statement": "forall B c. (forall t. (exists h. S t + S h = S B) -> exists k. c = S t * k) -> forall i j. ~(i = j) -> (exists hi. hi + i = B) -> (exists hj. hj + j = B) -> forall d. (exists u. S ((S i) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1",
+        "existing_name": "beta_moduli_pairwise_coprime_bounded"
+      },
+      "blocker": null
+    },
+    {
+      "id": "bounded_beta_moduli_pairwise_coprime_exists",
+      "title": "Every finite Gödel-beta prefix admits a pairwise-coprime base",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "bounded_common_multiple_exists",
+        "beta_moduli_pairwise_coprime_bounded"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "The bounded common-multiple construction supplies a nonzero c for which every two distinct beta moduli in the requested finite prefix are coprime.",
+      "peano": {
+        "statement": "forall B. exists c. (~(c = 0) /\\ forall i j. ~(i = j) -> (exists hi. hi + i = B) -> (exists hj. hj + j = B) -> forall d. (exists u. S ((S i) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1)",
+        "existing_name": "bounded_beta_moduli_pairwise_coprime_exists"
+      },
+      "blocker": null
+    },
+    {
       "id": "prime_factorization_existence",
       "title": "Existence of a finite prime factorization",
       "domain": "factorization",
       "status": "blocked_by_language",
       "dependencies": [
         "prime_divisor_exists",
-        "bounded_common_multiple_exists",
-        "binary_crt_beta_pair_of_gap_dvd"
+        "bounded_beta_moduli_pairwise_coprime_exists",
+        "binary_crt_fold_step"
       ],
       "sources": [
         "macbeth_math2001_repo",
@@ -3826,14 +3975,14 @@
         "weissman_python_number_theory",
         "open_logic"
       ],
-      "summary": "Single-position Gödel-β decoding, a bounded common-multiple surrogate, gap-based modulus coprimality, and two-position CRT composition are checked; bounded finite-prefix extension and prefix-product relations remain unavailable.",
+      "summary": "Single-position Gödel-β decoding, bounded pairwise modulus coprimality, multiplicative coprimality, modulus reduction, and the generic CRT fold step are checked; encoded prefix-product traces and their bounded iteration remain unavailable.",
       "peano": null,
       "blocker": {
         "code": "variable_length_factorization_unrepresented",
-        "detail": "Peano Lab's fixed signature has no primitive finite collection. Division, single-position Gödel-β value totality/functionality, bounded common multiples, gap-based beta-modulus coprimality, and the two-position CRT step are checked, but the bounded induction that extends an arbitrary finite prefix, prefix-product traces, and the fully expanded factorization certificate are not implemented.",
+        "detail": "Peano Lab's fixed signature has no primitive finite collection. Division, single-position Gödel-β value totality/functionality, a nonzero pairwise-coprime bounded modulus family, product coprimality, modulus reduction, and a generic CRT fold step are checked. The encoded prefix-product trace and the bounded induction that iterates that step over an arbitrary finite prefix are not implemented.",
         "unblocks_with": [
-          "checked bounded CRT iteration and the induction glue from common-multiple bounds to Gödel-β finite-prefix extension",
-          "a checked β-coded prefix-product relation",
+          "a checked β-coded prefix-product relation with nonzero and divisor-membership invariants",
+          "checked bounded iteration of binary_crt_fold_step over that trace",
           "and checked links between encoded elements, primality, and the folded product"
         ]
       }
@@ -3853,11 +4002,11 @@
         "weissman_illustrated_programming",
         "weissman_python_number_theory"
       ],
-      "summary": "Single decoded values are functional and the checked gap criterion supplies pairwise beta-modulus coprimality; extensional whole-prefix comparison and finite-product reasoning remain unchecked in Peano.",
+      "summary": "Single decoded values are functional and bounded beta-modulus families are pairwise coprime; extensional whole-prefix comparison and finite-product Euclid/cancellation remain unchecked in Peano.",
       "peano": null,
       "blocker": {
         "code": "factorization_equivalence_unrepresented",
-        "detail": "The current surface has no primitive finite collections. Single-position β decoding is checked and functional, and pairwise moduli can be shown coprime from explicit divisible gaps, but extensional finite-prefix comparison and finite-product Euclid/cancellation lemmas are not yet available as checked Peano entries.",
+        "detail": "The current surface has no primitive finite collections. Single-position β decoding is checked and functional, bounded beta-modulus families are pairwise coprime, and multiplicative coprimality supports an eventual product fold. Extensional finite-prefix comparison and finite-product Euclid/cancellation lemmas are not yet available as checked Peano entries.",
         "unblocks_with": [
           "the factorization representation required by prime_factorization_existence",
           "checked extensional equality for sorted β-decoded prefixes",

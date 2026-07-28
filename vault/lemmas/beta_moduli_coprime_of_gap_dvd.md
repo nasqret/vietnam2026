@@ -25,6 +25,7 @@ forall c i j gap. j = i + gap -> (exists k. c = gap * k) -> forall d. (exists u.
 ## Checked dependents
 
 - [[binary_crt_beta_pair_of_gap_dvd]]
+- [[beta_moduli_coprime_of_lt_bounded_common_multiple]]
 
 ## Verification record
 

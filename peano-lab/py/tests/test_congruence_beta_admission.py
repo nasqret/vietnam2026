@@ -222,6 +222,54 @@ EXPECTED = {
         "script": (29, "b8222e577fbfc91069929b6a67c9805960a397085ce99fe75c0bfedda4843953"),
         "certificate": ((640, 30), 22, "ccb71e803625625f870e7768b2428a556b41ee1700e549c7f2ddb728865729bd"),
     },
+    "beta_moduli_coprime_of_lt_bounded_common_multiple": {
+        "dependencies": ("beta_moduli_coprime_of_gap_dvd", "add_comm", "le_trans"),
+        "statement": "d63d720fac911184a5163168382a134d76d511a2c6708360a83516556f3568df",
+        "script": (49, "2dc67e9f19028d34659f947cbebe999b178d084b2241e0a4b95acdddb08b0869"),
+        "certificate": ((6_227, 57), 181, "9d97203f21642818bc2e1d67faa7c2966de4009a0c2f54aacedce2859e59f32b"),
+    },
+    "beta_moduli_pairwise_coprime_bounded": {
+        "dependencies": (
+            "lt_trichotomy",
+            "beta_moduli_coprime_of_lt_bounded_common_multiple",
+        ),
+        "statement": "eb5bc880e1349d365cef2c73bd1b3412bac10615d2c14180fddbbb2f54dbcc2c",
+        "script": (44, "f8cef8ba6ceb42f302f6764105332adde40c12cf7c2b6b300a20f37bf8df813a"),
+        "certificate": ((6_348, 59), 183, "67f94b6555418915f7bddeb843f5a7fd534561870f47f2bbf34d46e198321e50"),
+    },
+    "bounded_beta_moduli_pairwise_coprime_exists": {
+        "dependencies": (
+            "bounded_common_multiple_exists",
+            "beta_moduli_pairwise_coprime_bounded",
+        ),
+        "statement": "f499fb8acd42b42caded26f6014a5b4a3ee3ddebe58d1880d2889572a2c82624",
+        "script": (11, "b0cab17e9a9125d5c9c19da173d9612e36566ce3e4be7ab8271c7b9d4e21630d"),
+        "certificate": ((7_019, 61), 207, "6d8ad65d4fb5f26e141244738ab53b71c3e02eb6fde9cc0f4b4960929099b2b4"),
+    },
+    "coprime_mul_left": {
+        "dependencies": ("multiple_trans", "gauss_coprime_cancel"),
+        "statement": "1060b24a0e43b4388c2ac9ecac0e76f60914ccf6cd449d37592e4b4d22461735",
+        "script": (34, "5b32c98008b843275b4874f36b3a4499fe6aab9a19f8454923de6e4695149ed8"),
+        "certificate": ((3_975, 53), 115, "51b298808927c2b05a997c183519cd9f611b49d94b9e8e067b70cccf4ef65891"),
+    },
+    "coprime_mul_right": {
+        "dependencies": ("coprime_mul_left", "coprime_symm"),
+        "statement": "8f9f43f8c2176f47aee5d0fb6063be7cf3a2f75d0116e04f396c4af9315e85f6",
+        "script": (26, "de42848f8338801def489375de61afec839f916dfbd2ab188c5108b4c917cf40"),
+        "certificate": ((4_017, 54), 117, "8a3a38d99c52a152ee05e9848a8c207d5ad54494e24915ed01edc34d0e575c57"),
+    },
+    "mod_eq_of_mod_eq_multiple": {
+        "dependencies": ("mul_assoc",),
+        "statement": "246654070ff9a4577e17991d9189766a93fe7c11629ec2303a8ad111c86451e3",
+        "script": (23, "8106127a4ddfb8a0eddfa7aff9714c1445f1a7ef8c5563c2a19ad9a55086119d"),
+        "certificate": ((157, 23), 3, "f3d6047561573ffeeeb14c5985c18ababcc42f38cc2784a6f4f5275e68d6bf76"),
+    },
+    "binary_crt_fold_step": {
+        "dependencies": ("binary_crt", "mod_eq_of_mod_eq_multiple", "mod_eq_trans"),
+        "statement": "41595b681a738bcfa873935a4aed93b2a865da235cc68d0910aba631cfd4e432",
+        "script": (40, "e7b70f504e72e6f465846f1f10ac0ba5d4e3d252cce005281abbc03020784a17"),
+        "certificate": ((5_501, 52), 156, "f65c05b0db8af551e664f3194314657c999a9e6528c3dcf71a0ad0f02161f820"),
+    },
 }
 
 ZERO = Zero()
@@ -377,6 +425,13 @@ def test_public_live_use_closes_congruence_and_beta_endpoints() -> None:
         "binary_crt_beta_pair_of_gap_dvd",
         "bounded_common_multiple_step",
         "bounded_common_multiple_exists",
+        "beta_moduli_coprime_of_lt_bounded_common_multiple",
+        "beta_moduli_pairwise_coprime_bounded",
+        "bounded_beta_moduli_pairwise_coprime_exists",
+        "coprime_mul_left",
+        "coprime_mul_right",
+        "mod_eq_of_mod_eq_multiple",
+        "binary_crt_fold_step",
     ):
         theorem = get(name)
         assert theorem is not None

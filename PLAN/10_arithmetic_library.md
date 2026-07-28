@@ -55,7 +55,7 @@ does not determine the architecture.
 - [x] Add both constructive normal forms for non-divisibility.
 - [x] Add modulus-independent quotient-and-remainder transport through
       addition and squaring.
-- [x] Replay and independently check all 176 unique library entries and enforce
+- [x] Replay and independently check all 183 unique library entries and enforce
       the live 32,768-node/depth-128 import bound.
 - [x] Generate a deterministic versioned JSON snapshot, exact metrics,
       certificate hashes, structural Cut counts, and Mermaid dependency graph.
@@ -142,8 +142,15 @@ does not determine the architecture.
 - [x] Construct a nonzero multiple of every positive natural through a bound
       with `bounded_common_multiple_step` and
       `bounded_common_multiple_exists`.
-- [ ] Combine the bounded common multiple with ordered-index/gap bounds, then
-      prove product-modulus CRT iteration, finite-prefix
+- [x] Combine the bounded common multiple with ordered-index/gap bounds through
+      `beta_moduli_coprime_of_lt_bounded_common_multiple`,
+      `beta_moduli_pairwise_coprime_bounded`, and
+      `bounded_beta_moduli_pairwise_coprime_exists`.
+- [x] Prove the fold algebra: `coprime_mul_left`,
+      `coprime_mul_right`, `mod_eq_of_mod_eq_multiple`, and
+      the invariant-preserving one-step constructor `binary_crt_fold_step`.
+- [ ] Prove the actual bounded CRT fold with an encoded accumulated-product
+      invariant, then β finite-prefix
       extension/restriction, prefix products, all-prime, sorted
       canonical form, and extensional equality without adding kernel atoms.
       Add hygienic round-tripping surface expanders separately. The
@@ -174,13 +181,13 @@ does not determine the architecture.
 
 ## Current acceptance record
 
-- Checked runtime: 176 unique theorems — 23 baseline and 153 post-baseline.
-  The latter are the 141-entry general foundational layer plus twelve unique upstream
+- Checked runtime: 183 unique theorems — 23 baseline and 160 post-baseline.
+  The latter are the 148-entry general foundational layer plus twelve unique upstream
   modular capstones.
-- Research catalog: 183 nodes — 23 `checked_existing`, 153 `checked_m20`, three
+- Research catalog: 190 nodes — 23 `checked_existing`, 160 `checked_m20`, three
   `planned_expressible`, and four `blocked_by_language`.
-- Shared-certificate metrics: 120,976 total structural proof nodes and 3,331
-  Cuts across 136 Cut-bearing entries. The largest by nodes and Cuts is
+- Shared-certificate metrics: 154,220 total structural proof nodes and 4,293
+  Cuts across 143 Cut-bearing entries. The largest by nodes and Cuts remains
   `binary_crt_beta_pair_of_gap_dvd` at 12,980/378.
   `prime_divisor_exists` supplies the ladder's maximum depth of 80. The
   immutable upstream report retains the
@@ -192,19 +199,22 @@ does not determine the architecture.
 - Full FTA companion status: checked in Lean for every nonzero natural, with
   finite-list existence and permutation uniqueness and no `sorryAx`.
 - Full Peano FTA status: absent from `pa lib` pending greatest-prime
-  descent, index-bound finite-prefix glue for conditional coprimality,
-  product-modulus CRT iteration, finite-prefix, and prefix-product
+  descent, the actual bounded CRT fold and its encoded-product invariant,
+  β finite-prefix recoding, and prefix-product
   representation spine;
   no admitted theorem or hidden primitive.
-- Validation record: all 1,098 Peano tests pass on CPython 3.10, including the
-  conditional β-coprimality/common-multiple admission gate. Exact
+- Validation record: all 1,098 Peano tests pass on CPython 3.10 in 127.22
+  seconds, including the bounded-prefix coprimality/fold-algebra admission
+  gate. Lambda passes 360 tests plus 36 subtests. Exact
   snapshot/catalog/corpus/application audits are current. The corpus retains
   13,344 transitions/1,692 sessions under run fingerprint
-  `f44b6eb716116063bd24b849d737345f0c9c23240fa8536d1ed25fdc1ae05d56`;
-  the isolated smoke has 352 sessions, 4,729 raw and 4,726 unique transitions,
-  and all 176 authored QEDs. Local browser build `2026-07-29f` has
-  content identity `a-72e034c621a7`; it is not
+  `d0649a05ab1a88396d2d3046bc10a814e374cb3cf5ad8df225c9e15e91ff0df6`;
+  the isolated smoke has 366 sessions, 4,992 raw and 4,989 unique transitions,
+  and all 183 authored QEDs. Local browser build `2026-07-29g` has
+  content identity `a-6b72d4fe4ca4`; it is not
   staged, deployed, or promoted.
+- The generated Obsidian graph has 262 notes and 2,397 resolved links,
+  including all 183 checked lemma notes.
 - The preceding checkpoint's independent Lambda result (360 tests plus 36
   subtests) and strict 36-source book/213-link/264-command record are retained
-  as prior evidence, not relabeled as a current 176-theorem documentary gate.
+  as prior evidence, not relabeled as a current 183-theorem documentary gate.

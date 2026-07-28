@@ -56,6 +56,12 @@ The checked unit bridge consists of [[mul_eq_one_components]], [[divisor_one]],
 [[is_gcd_one_to_coprime]]. It establishes the exact equivalence between the
 expanded common-divisor definition of coprimality and `IsGCD(1,a,b)`.
 
+The product API now includes [[coprime_mul_left]] and
+[[coprime_mul_right]]. Together they show that two factors individually
+coprime to a fixed modulus have a product coprime to it, in both argument
+orientations. This is the invariant needed when CRT accumulates a product of
+earlier β moduli.
+
 The [native gcd/Bézout roadmap](../../research/arithmetic-library/gcd-bezout-roadmap.md)
 records the checked Euclidean-invariance certificates, the bounded
 formula-specific induction route to simultaneous gcd/Bézout existence, and

@@ -30,6 +30,7 @@ forall n m k. (n * m) * k = n * (m * k)
 - [[mod_eq_mul_right]]
 - [[square_decomp]]
 - [[binary_crt]]
+- [[mod_eq_of_mod_eq_multiple]]
 - [[fourth_power_regroup]]
 - [[mod5_square_residue_one]]
 - [[mod5_square_residue_two]]

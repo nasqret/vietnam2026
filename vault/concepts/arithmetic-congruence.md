@@ -40,8 +40,15 @@ premise. [[beta_moduli_coprime_of_gap_dvd]] now proves that premise when
 `j = i + gap` and `gap | c`, and
 [[binary_crt_beta_pair_of_gap_dvd]] applies it directly. The companion
 [[bounded_common_multiple_exists]] constructs a nonzero `c` divisible
-by every positive gap through a chosen bound. What remains is the index-bound
-glue and product-modulus CRT fold needed for a whole finite prefix.
+by every positive gap through a chosen bound.
+[[beta_moduli_pairwise_coprime_bounded]] and
+[[bounded_beta_moduli_pairwise_coprime_exists]] now close the bounded-prefix
+pairwise-coprimality theorem. [[coprime_mul_left]] and
+[[coprime_mul_right]] support accumulated product moduli,
+[[mod_eq_of_mod_eq_multiple]] recovers every earlier congruence from the
+product congruence, and [[binary_crt_fold_step]] checks one preservation step.
+What remains is an actual bounded fold carrying the encoded accumulated
+product and solution invariant.
 
 The checked [[add_residue]], [[add_residue_lift]], [[square_decomp]],
 [[square_residue_lift]], and [[square_residue_witness]] already manipulate

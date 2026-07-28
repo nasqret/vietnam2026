@@ -162,12 +162,11 @@ Therefore:
 - algorithms may be specified relationally, but executable functions require
   an explicit project architecture decision;
 - prime-decomposition dictionaries require a finite-map or multiset layer;
-- the selected β route now has checked binary CRT, conditional
-  gap-divisibility coprimality, its two-position code constructor, and bounded
-  common multiples, but still requires index-bound finite-prefix glue,
-  product-modulus CRT iteration, finite-prefix extension, and encoded
-  prefix-product traces before it can replace that external data structure
-  inside native PA;
+- the selected β route now has checked binary CRT, bounded-prefix pairwise
+  coprimality, coprime-product closure, modulus descent, and one fold step, but
+  still requires the actual bounded fold with an encoded-product invariant,
+  β finite-prefix recoding, and encoded prefix-product traces before it can
+  replace that external data structure inside native PA;
 - Fermat, Euler, Miller--Rabin, primitive-root, and RSA layers require generic
   powers and additional finite algebra/counting infrastructure.
 

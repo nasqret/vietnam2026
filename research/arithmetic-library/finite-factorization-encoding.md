@@ -26,10 +26,11 @@ a constructor for one code realizing two bounded β values under an explicit
 coprimality premise. The new conditional layer proves that premise when the
 ordered index gap divides `c`, applies the constructor, and produces a
 nonzero `c` divisible by every positive gap through a chosen bound.
-This does **not** prove FTA. The remaining critical path starts with
-greatest-prime-divisor descent and then crosses index-bound finite-prefix glue,
-product-modulus CRT iteration, finite-prefix, prefix-product, and
-finite-product layers.
+The bounded-prefix pairwise-coprimality theorem and the product/modulus/CRT
+fold algebra are now checked too. This does **not** prove FTA. The remaining
+critical path starts with greatest-prime-divisor descent and then crosses the
+actual bounded fold with an encoded accumulated-product invariant, β
+finite-prefix recoding, prefix-product, and finite-product layers.
 
 ## Sequence values
 
@@ -102,9 +103,19 @@ four parts:
 
 Separately, `bounded_common_multiple_step` and
 `bounded_common_multiple_exists` construct a nonzero `c`
-divisible by every positive natural at most a specified bound. Still required
-are the lemmas orienting and bounding all finite-prefix index gaps and an
-iteration that accumulates a product modulus while applying binary CRT.
+divisible by every positive natural at most a specified bound.
+`beta_moduli_coprime_of_lt_bounded_common_multiple`,
+`beta_moduli_pairwise_coprime_bounded`, and
+`bounded_beta_moduli_pairwise_coprime_exists` now orient the indices
+and package pairwise coprimality across the whole chosen prefix.
+
+The next four checked facts supply fold algebra:
+`coprime_mul_left` and `coprime_mul_right` preserve
+coprimality for an accumulated product,
+`mod_eq_of_mod_eq_multiple` descends a product-modulus congruence to
+each factor, and `binary_crt_fold_step` performs one extension while
+preserving every earlier congruence. Still required is the bounded induction
+that carries an encoded product and solution invariant through all positions.
 
 A code pair is deliberately not treated as a canonical sequence identity.
 Different pairs can decode the same finite prefix, so all later equality is
@@ -231,14 +242,17 @@ make the proof small. The admission route and its current status are:
 8. **Next arithmetic gate:** construct a greatest prime divisor with a strict
    quotient descent suitable for appending to an already sorted
    factorization.
-9. **Encoding gate:** prove the ordered-index and gap-bound glue needed to
-   apply conditional coprimality throughout a prefix, product-modulus CRT
-   iteration, and finite-prefix extension and restriction.
-10. **Product gate:** prove prefix-product trace extension/functionality and
+9. **Checked bounded-prefix/fold-algebra gate:** orient and bound all index
+   gaps, package pairwise coprimality for the chosen prefix, close coprimality
+   under products, descend congruence from product moduli, and prove one
+   invariant-preserving CRT fold step.
+10. **Encoding gate:** prove the actual bounded fold with an encoded
+   accumulated-product invariant and β finite-prefix recoding.
+11. **Product gate:** prove prefix-product trace extension/functionality and
    preservation of `AllPrime`/`Sorted`.
-11. **Existence gate:** perform the strengthened natural-number descent using
+12. **Existence gate:** perform the strengthened natural-number descent using
    the greatest prime divisor and the encoded prefix/product extension laws.
-12. **Uniqueness gate:** prove finite-product Euclid, prime matching,
+13. **Uniqueness gate:** prove finite-product Euclid, prime matching,
    cancellation, and extensional equality of the two sorted decoded prefixes.
 
 The reviewed self-contained `Cut` rule now supplies lexical proof sharing while

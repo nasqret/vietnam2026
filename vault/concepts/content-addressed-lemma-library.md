@@ -39,10 +39,11 @@ bridge tranche yields the 161-theorem root. The bounded-uniqueness and reverse
 remainder/β bridge tranche yields the 164-theorem root. The constructive binary
 CRT and two-position β tranche yields the 170-theorem root. Conditional
 β-modulus coprimality, its CRT client, and bounded common multiples yield the
-current 176-theorem root
-`874779f25de06cebc9d111e76bd183e4a8c514bd0d9da0c52f71c99f887cc3a7`.
-Its local browser artifact is labeled `2026-07-29f` with identity
-`a-72e034c621a7`. Model-v1 remains frozen, and no model may silently
+176-theorem root. Bounded-prefix pairwise coprimality and CRT fold algebra
+yield the current 183-theorem root
+`09359430226349a7d5fdd1fd67376d345bc1bb5f707e746e8b58c2799086f2d6`.
+Its local browser artifact is labeled `2026-07-29g` with identity
+`a-6b72d4fe4ca4`. Model-v1 remains frozen, and no model may silently
 inherit either mutable catalog.
 
 Library visibility and benchmark visibility are different. If a theorem is importable, closing its

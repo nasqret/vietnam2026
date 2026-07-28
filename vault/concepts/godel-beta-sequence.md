@@ -58,14 +58,22 @@ with no separate coprimality premise.
 The other half of the finite-bound strategy is also checked.
 [[bounded_common_multiple_step]] and [[bounded_common_multiple_exists]]
 construct a nonzero `c` divisible by every positive natural up to a
-chosen bound. What is not yet proved is the glue that bounds and orients every
-pairwise index gap in a finite prefix, nor the product-modulus CRT iteration
-that folds the binary constructor over that prefix.
+chosen bound. [[beta_moduli_coprime_of_lt_bounded_common_multiple]] turns this
+into ordered coprimality, [[beta_moduli_pairwise_coprime_bounded]] handles both
+index orders, and [[bounded_beta_moduli_pairwise_coprime_exists]] packages a
+nonzero base for the whole bounded prefix.
+
+The fold algebra is checked as well. [[coprime_mul_left]] and
+[[coprime_mul_right]] preserve coprimality under accumulated products,
+[[mod_eq_of_mod_eq_multiple]] descends a product-modulus congruence to each
+factor, and [[binary_crt_fold_step]] adds one residue while preserving all old
+congruences. This is one step, not yet a bounded iteration or a β code for the
+product/solution trace.
 
 The remaining spine begins with greatest-prime-divisor descent for the sorted
-factor order. The encoding layer then needs the index-bound glue just
-described, product-modulus CRT iteration, finite-prefix
-extension/restriction, prefix-product trace existence/functionality/composition,
+factor order. The encoding layer then needs the actual bounded fold with an
+encoded accumulated-product invariant, β finite-prefix recoding,
+prefix-product trace existence/functionality/composition,
 preservation of bounded primality and sorting, and finite-product
 Euclid/cancellation. None of those relations is a trusted primitive, and the
 checked conditional two-position constructor does not by itself constitute

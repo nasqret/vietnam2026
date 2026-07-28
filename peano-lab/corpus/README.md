@@ -1,20 +1,20 @@
 # Peano Lab proof-trace release v1
 
 This directory is the deterministic learning-data release whose provenance follows the checked
-theorem catalog. Its semantic families remain the M13 set. The current 176-theorem source tree
+theorem catalog. Its semantic families remain the M13 set. The current 183-theorem source tree
 has its own fresh fingerprints rather than reusing either parent branch's hashes. The release contains
 **13,344** clean, deduplicated version-1 tactic transitions from **1,692** generated proof
 sessions:
 
 | Artifact | Role | Records | SHA-256 |
 |---|---|---:|---|
-| `train.jsonl` | learning split | 13,326 | `ae177cbdedc07b381849365c7dd693230eec75035d546e3fc310ec4f06459244` |
-| `val.jsonl` | exact-theorem-group validation split | 18 | `a120488e10cb60d5ff2fdf384e62358e0cff0c525ad4d6c39d925f3cbb23dfcb` |
-| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `03fad89ea9277958a8924cdbbade9717302aa1581262ab47155da2c43538c0c5` |
-| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `625df58af54da31333023f6cbf41c57a7aa95fee6618f7c6b6863ffc7b7b8e0a` |
+| `train.jsonl` | learning split | 13,326 | `d39720bfeeeb159d0f8ca9f331294b6c6135ea36f0585b46efa0768945f953bb` |
+| `val.jsonl` | exact-theorem-group validation split | 18 | `d8986e2b260907c909ed1c2b0926fd02a9aa0df748a37656bcdf820c591299fd` |
+| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `2bfd4d68ed205d67e0aedf6acb349cfdc7880adcc3b0cf2f41be557b2cee6c58` |
+| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `5c50e4afd0e41272ed8781e7d43bf6d4c985a2eee11b1c33953f016b8f808211` |
 
 The deterministic run fingerprint is
-`f44b6eb716116063bd24b849d737345f0c9c23240fa8536d1ed25fdc1ae05d56`.
+`d0649a05ab1a88396d2d3046bc10a814e374cb3cf5ad8df225c9e15e91ff0df6`.
 
 The source stream contained 11,652 successful and 1,692 deliberately failing, transactional
 applications, for a labeled failure ratio of `0.12679856115107913`. Every one of the 1,692 sessions
@@ -56,7 +56,7 @@ That target first writes the replayable raw session stream to
 `/tmp/peano-lab-release-raw.jsonl`, then strictly validates, globally deduplicates, and exports it.
 The raw intermediate is not committed because it duplicates the split payload, but the manifest
 records its exact UTF-8 size (6,215,711 bytes) and SHA-256
-`040d922943233bb59b6829cb2c192b34e06adc8b9f719d5dc573aeb5867b08b5`.
+`ee804b6a6ff0b497df192806a99bc6d975d775a84879189aa1251178aa865556`.
 It also fingerprints `scripts/generate_peano_traces.py`, the trusted checker, and the complete
 Peano Lab Python source tree. Because the Python runtime participates in the run fingerprint and
 session IDs, changing that runtime changes the raw byte hash even when every session-agnostic
@@ -69,8 +69,8 @@ every entry in the resolved ladder without contaminating the release, run:
 make peano-corpus-smoke
 ```
 
-The current 176-entry smoke has 352 sessions, 4,729 raw transitions, 4,726
-unique transitions, and all 176 authored-script kernel QEDs.
+The current 183-entry smoke has 366 sessions, 4,992 raw transitions, 4,989
+unique transitions, and all 183 authored-script kernel QEDs.
 
 Those acceptance artifacts stay under `/tmp`. The data pipeline, corpus, and this README are
 released under the repository's MIT License.

@@ -270,7 +270,7 @@ arithmetic/order rungs plus five explicit helper lemmas, ending at
 `forall n m. n * m = 0 -> n = 0 \/ m = 0`. M11 extends the current index to twenty-three with
 `one_mul`, `mul_one`, and `add_mul`, the only missing orientations needed by certificate-producing
 commutative-semiring normalization. The current local runtime extends that
-reconciled foundation to 176 unique checked entries: 23 baseline theorems, 141
+reconciled foundation to 183 unique checked entries: 23 baseline theorems, 148
 general foundational theorems, and twelve unique modular capstones. The
 complete 26-record modular provenance catalog ends at
 `mod5_fourth_power_one`; fourteen of those records coincide exactly with
@@ -313,11 +313,14 @@ the ordered index gap divides `c`, and
 `bounded_common_multiple_exists` constructs a nonzero `c` divisible by
 every positive natural through a chosen bound. Unconditional pairwise
 β-modulus coprimality is false (`c=1` at indices 1 and 4 gives moduli
-3 and 6). Index-bound finite-prefix glue, product-modulus CRT iteration,
-prefix-product traces, greatest-prime descent, and native FTA remain future
-checked layers.
+3 and 6). The bounded-prefix theorems now construct a suitable base and prove
+all distinct moduli through the bound pairwise coprime. Product-coprimality
+closure, modulus descent, and one invariant-preserving binary CRT extension
+are checked too. The actual bounded fold with an encoded accumulated-product
+invariant, β finite-prefix recoding, prefix-product traces,
+greatest-prime descent, and native FTA remain future checked layers.
 
-The shared ladder totals 120,976 structural nodes and 3,331 Cuts across 136
+The shared ladder totals 154,220 structural nodes and 4,293 Cuts across 143
 Cut-bearing entries. `binary_crt_beta_pair_of_gap_dvd` is largest at
 12,980 nodes and 378 Cuts; `prime_divisor_exists` reaches the maximum
 depth of 80.
@@ -465,17 +468,18 @@ passes 1,090 tests on Python 3.10; the 36-source warning-as-error book and all
 264 documented commands are green. It has not been deployed or promoted;
 production remains untouched.
 
-The current local browser candidate is build `2026-07-29f`, immutable
-application release `a-72e034c621a7`. It exposes all 176 checked theorems,
-including conditional β-modulus coprimality, its two-position CRT client, and
-bounded nonzero common multiples. Its complete suite passes 1,098 tests on
-CPython 3.10. The preceding checkpoint's Lambda result (360 tests plus 36
-subtests) and warning-as-error 36-source book/213-link/264-command record remain
+The current local browser candidate is build `2026-07-29g`, immutable
+application release `a-6b72d4fe4ca4`. It exposes all 183 checked
+theorems, including bounded-prefix pairwise β-modulus coprimality and the CRT
+fold-algebra layer. Its complete suite passes 1,098 tests on CPython 3.10 in
+127.22 seconds; Lambda passes 360 tests plus 36 subtests. The preceding
+checkpoint's warning-as-error 36-source book/213-link/264-command record remains
 prior evidence rather than a relabeled current documentary gate. The
+generated Obsidian graph has 262 notes and 2,397 resolved links. The
 source-bound corpus remains 13,344 transitions/1,692 sessions; the isolated
-acceptance smoke has 352 sessions, 4,729 raw and 4,726 unique transitions,
-and all 176 authored QEDs. The corpus run fingerprint is
-`f44b6eb716116063bd24b849d737345f0c9c23240fa8536d1ed25fdc1ae05d56`.
+acceptance smoke has 366 sessions, 4,992 raw and 4,989 unique transitions,
+and all 183 authored QEDs. The corpus run fingerprint is
+`d0649a05ab1a88396d2d3046bc10a814e374cb3cf5ad8df225c9e15e91ff0df6`.
 This candidate has not been staged, deployed, or promoted; production remains
 untouched.
 

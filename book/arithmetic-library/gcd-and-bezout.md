@@ -15,10 +15,10 @@ divisibility witnesses before the greatest-common-divisor clause.
 
 ## What is checked now
 
-The 176-theorem runtime contains 23 baseline entries and 153 checked
-post-baseline entries. One hundred and forty-one of the latter form the general
+The 183-theorem runtime contains 23 baseline entries and 160 checked
+post-baseline entries. One hundred and forty-eight of the latter form the general
 foundational layer; the other twelve are the fixed modular capstone. The
-broader catalog has 183 nodes: those 176 checked entries, three planned
+broader catalog has 190 nodes: those 183 checked entries, three planned
 entries, and four blocked-by-language entries.
 
 The checked gcd layer includes the relational API through uniqueness and
@@ -223,6 +223,12 @@ coprimality premise for the two β moduli. The follow-up
 $j=i+\mathit{gap}$ and $\mathit{gap}\mid c$; unconditional coprimality is
 false, as $c=1$ yields moduli $3$ and $6$. A checked bounded common-multiple
 construction supplies a nonzero $c$ divisible by every positive number up to
-an explicit bound. Finite factorization still requires greatest-prime descent,
-the index-bound finite-prefix glue, product-modulus CRT iteration, and the
-selected prefix-product layer; native FTA is not yet proved.
+an explicit bound. The checked successors
+`beta_moduli_pairwise_coprime_bounded` and
+`bounded_beta_moduli_pairwise_coprime_exists` now discharge pairwise
+coprimality across an entire bounded prefix. `coprime_mul_left` and
+`coprime_mul_right` preserve coprimality under accumulated products. Finite
+factorization still requires greatest-prime descent, an encoded
+accumulated-product trace, the actual bounded CRT fold over that trace, beta
+finite-prefix recoding, and the selected prefix-product layer; native FTA is
+not yet proved.

@@ -3,10 +3,10 @@
 This directory is the planning and provenance source for Peano Lab's general
 arithmetic library. Start with:
 
-The current runtime/catalog boundary is 176 checked Peano entries (23
-baseline, 141 general foundational, and twelve fixed modular) inside a
-183-node catalog. Exact shared-certificate totals are reproduced in the
-generated snapshot: 120,976 proof nodes, 3,331 self-contained Cuts, and 136
+The current runtime/catalog boundary is 183 checked Peano entries (23
+baseline, 148 general foundational, and twelve fixed modular) inside a
+190-node catalog. Exact shared-certificate totals are reproduced in the
+generated snapshot: 154,220 proof nodes, 4,293 self-contained Cuts, and 143
 Cut-bearing certificates. `binary_crt_beta_pair_of_gap_dvd` is largest
 at 12,980 nodes and 378 Cuts; `prime_divisor_exists` sets the snapshot-wide
 maximum depth at 80.
@@ -15,12 +15,14 @@ compatibility, bounded representative uniqueness, both remainder/congruence
 directions, expanded β decoding equivalent to bound plus congruence,
 constructive binary CRT, conditional β-modulus coprimality when an ordered
 index gap divides `c`, its two-position β-code client, and bounded
-nonzero common multiples. Unconditional pairwise coprimality is false.
-Index-bound finite-prefix glue, product-modulus CRT iteration, finite-prefix
-extension and products, greatest-prime descent, and native FTA remain open.
+nonzero common multiples. Unconditional pairwise coprimality is false. The
+bounded-prefix form, coprime-product closure, modulus descent, and one binary
+CRT fold step are now checked. The actual bounded fold with an encoded-product
+invariant, β finite-prefix recoding and products, greatest-prime descent, and
+native FTA remain open.
 
-- [`catalog.json`](catalog.json): 183 dependency-ordered facts — 23
-  `checked_existing`, 153 `checked_m20`, three `planned_expressible`, and four
+- [`catalog.json`](catalog.json): 190 dependency-ordered facts — 23
+  `checked_existing`, 160 `checked_m20`, three `planned_expressible`, and four
   `blocked_by_language` — with exact source IDs, Peano statements where
   expressible, and blockers where not;
 - [`source-register.json`](source-register.json): pinned revisions, licenses,

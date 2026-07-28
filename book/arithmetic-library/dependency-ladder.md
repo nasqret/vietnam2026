@@ -17,9 +17,9 @@ needs.
 | Modular congruence | balanced equivalence laws and additive/multiplicative compatibility | reflexivity, symmetry, transitivity, addition, multiplication, both decomposition bridges, and bounded uniqueness checked; fixed mod-five residue ladder checked |
 | Parity | even/odd dichotomy and arithmetic tables | planned and expressible |
 | Division | quotient-remainder existence, uniqueness, block separation, and zero-remainder/divisibility bridges | checked |
-| GCD/coprime | relational symmetry/projections/constructors, uniqueness, zero-right base, Euclidean invariance, existence, balanced Bézout, Gauss cancellation | checked through `gauss_coprime_cancel` |
+| GCD/coprime | relational symmetry/projections/constructors, uniqueness, zero-right base, Euclidean invariance, existence, balanced Bézout, Gauss cancellation, product closure | checked through `coprime_mul_left` and `coprime_mul_right` |
 | Primes | bounded factor search, primality decision, proper-factor descent, prime divisors, Euclid's lemma, infinitely many primes | checked through `prime_divisor_exists` and `euclid_prime_dvd_product`; primes above every bound remain planned |
-| Factorization | existence and uniqueness up to permutation | single-position β decoding, binary CRT, conditional gap-based β-modulus coprimality, and its two-position client checked; greatest-prime descent, index-bound finite-prefix glue, product-modulus CRT iteration, prefix extension, and product infrastructure pending; Lean companion checked |
+| Factorization | existence and uniqueness up to permutation | single-position β decoding, bounded-prefix pairwise β-modulus coprimality, product coprimality, modulus descent, and generic CRT fold preservation checked; greatest-prime descent, actual bounded folding over an encoded accumulated product, prefix recoding, and product traces pending; Lean companion checked |
 
 The generated `dependency-graph.mmd` is the exact graph for checked entries.
 The research catalog is the larger design graph and gives every unproved node
@@ -151,11 +151,15 @@ $$
 and `binary_crt_beta_pair_of_gap_dvd` applies it directly. The condition is
 not cosmetic: $c=1$ produces moduli $M(1,1)=3$ and $M(1,4)=6$, so arbitrary
 members of the family are not pairwise coprime. Bounded common-multiple
-existence supplies a future $c$ divisible by every positive gap through a
-bound. The representation gates that remain are the index-bound glue exposing
-those gaps, product-modulus CRT iteration, finite-prefix extension and
-restriction, and prefix-product trace existence and functionality. FTA itself
-is not yet a native `pa lib` theorem.
+existence supplies a $c$ divisible by every positive gap through a bound. The
+checked bounded-prefix theorems now prove that the whole bounded modulus
+family is pairwise coprime. Product coprimality and modulus descent support
+`binary_crt_fold_step`, whose universal clause preserves every old congruence
+modulo a divisor of the accumulated product while adding one new congruence.
+The representation gates that remain are an encoded accumulated-product
+trace, the bounded induction that iterates this step, finite-prefix recoding
+and restriction, and prefix-product trace existence and functionality. FTA
+itself is not yet a native `pa lib` theorem.
 
 ## Admission invariants
 

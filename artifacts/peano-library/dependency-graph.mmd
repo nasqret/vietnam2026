@@ -164,6 +164,13 @@ flowchart TD
   binary_crt_beta_pair_of_gap_dvd[binary_crt_beta_pair_of_gap_dvd]
   bounded_common_multiple_step[bounded_common_multiple_step]
   bounded_common_multiple_exists[bounded_common_multiple_exists]
+  beta_moduli_coprime_of_lt_bounded_common_multiple[beta_moduli_coprime_of_lt_bounded_common_multiple]
+  beta_moduli_pairwise_coprime_bounded[beta_moduli_pairwise_coprime_bounded]
+  bounded_beta_moduli_pairwise_coprime_exists[bounded_beta_moduli_pairwise_coprime_exists]
+  coprime_mul_left[coprime_mul_left]
+  coprime_mul_right[coprime_mul_right]
+  mod_eq_of_mod_eq_multiple[mod_eq_of_mod_eq_multiple]
+  binary_crt_fold_step[binary_crt_fold_step]
   fourth_power_regroup[fourth_power_regroup]
   mod5_residue_complete[mod5_residue_complete]
   mod5_nonzero_residue_cases[mod5_nonzero_residue_cases]
@@ -482,6 +489,21 @@ flowchart TD
   bounded_common_multiple_step --> bounded_common_multiple_exists
   succ_ne_zero --> bounded_common_multiple_exists
   add_eq_zero_left --> bounded_common_multiple_exists
+  beta_moduli_coprime_of_gap_dvd --> beta_moduli_coprime_of_lt_bounded_common_multiple
+  add_comm --> beta_moduli_coprime_of_lt_bounded_common_multiple
+  le_trans --> beta_moduli_coprime_of_lt_bounded_common_multiple
+  lt_trichotomy --> beta_moduli_pairwise_coprime_bounded
+  beta_moduli_coprime_of_lt_bounded_common_multiple --> beta_moduli_pairwise_coprime_bounded
+  bounded_common_multiple_exists --> bounded_beta_moduli_pairwise_coprime_exists
+  beta_moduli_pairwise_coprime_bounded --> bounded_beta_moduli_pairwise_coprime_exists
+  multiple_trans --> coprime_mul_left
+  gauss_coprime_cancel --> coprime_mul_left
+  coprime_mul_left --> coprime_mul_right
+  coprime_symm --> coprime_mul_right
+  mul_assoc --> mod_eq_of_mod_eq_multiple
+  binary_crt --> binary_crt_fold_step
+  mod_eq_of_mod_eq_multiple --> binary_crt_fold_step
+  mod_eq_trans --> binary_crt_fold_step
   mul_assoc --> fourth_power_regroup
   mod5_residue_complete --> mod5_nonzero_residue_cases
   add_assoc --> mod5_square_residue_one

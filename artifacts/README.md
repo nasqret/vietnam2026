@@ -166,11 +166,11 @@ fine-tuning awaits the pretrained-base baseline.
 
 ## Peano foundational arithmetic snapshot
 
-[`peano-library/`](peano-library/) is the deterministic snapshot of all 176
+[`peano-library/`](peano-library/) is the deterministic snapshot of all 183
 checked Peano library entries. Its internal snapshot-v2 schema contains
 statement/script/certificate hashes, exact node/depth and structural Cut
 metrics, an ordered root digest, and the dependency DAG in Mermaid form.
-The current snapshot totals 120,976 structural nodes and 3,331 Cuts across 136
+The current snapshot totals 154,220 structural nodes and 4,293 Cuts across 143
 Cut-bearing entries. `binary_crt_beta_pair_of_gap_dvd` is largest at
 12,980 nodes and 378 Cuts; `prime_divisor_exists` reaches the maximum
 depth of 80.
@@ -185,16 +185,19 @@ binary CRT, its bounded-residue form, and a conditional two-position β-code
 constructor. The newest tranche proves β-modulus coprimality when the ordered
 index gap divides `c`, applies that fact to the β-pair constructor, and
 constructs a nonzero `c` divisible by every positive natural through a
-fixed bound. It does not claim false unconditional pairwise coprimality,
-index-bound finite-prefix glue, product-modulus CRT iteration, finite prefixes,
-encoded products, greatest-prime descent, or native FTA.
+fixed bound. The newest seven records prove bounded-prefix pairwise
+coprimality, coprime-product closure, congruence descent from an accumulated
+product modulus, and one invariant-preserving binary CRT extension. The
+snapshot does not claim false unconditional pairwise coprimality, the actual
+bounded fold or its encoded-product invariant, β finite-prefix recoding,
+encoded prefix products, greatest-prime descent, or native FTA.
 Rebuild or verify it with
 `python3 scripts/build_peano_library_snapshot.py [--check]`.
 
 The snapshot is evidence about replayed certificates, not a theorem database
 trusted by the kernel. The broader checked/planned/blocked research graph lives
-in `research/arithmetic-library/catalog.json`; it currently has 183 nodes: 23
-`checked_existing`, 153 `checked_m20`, three planned, and four
+in `research/arithmetic-library/catalog.json`; it currently has 190 nodes: 23
+`checked_existing`, 160 `checked_m20`, three planned, and four
 language-blocked.
 
 ## Fundamental theorem of arithmetic companion
@@ -241,5 +244,5 @@ The reconciled runtime keeps all 26 source records for provenance. Fourteen are
 identical to independently developed M20 records, so a guarded union exposes
 those once and adds the twelve genuinely new modular capstones. That initial
 reconciliation produced a historical 63-theorem release; the current generated
-snapshot is its 176-theorem successor. Incompatible same-name records fail
+snapshot is its 183-theorem successor. Incompatible same-name records fail
 closed.

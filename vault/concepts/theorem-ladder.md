@@ -46,8 +46,8 @@ expanded certificate is checked in the empty context. This extension is also a u
 [[verifier-guided-policy-evaluation-and-search|model-v2 curriculum]], but the capstone itself is now
 a library-retrieval test rather than a sealed theorem-discovery benchmark.
 
-The reconciled runtime now has 176 unique checked entries: the 23-entry core,
-141 post-baseline foundational entries, and twelve genuinely new modular
+The reconciled runtime now has 183 unique checked entries: the 23-entry core,
+148 post-baseline foundational entries, and twelve genuinely new modular
 capstones. The newer foundation includes discrete order, multiplication
 cancellation and monotonicity, and native [[quotient-and-remainder]] existence
 and uniqueness, plus the relational [[gcd-and-coprimality]] API through gcd
@@ -86,13 +86,23 @@ multiples through [[bounded_common_multiple_step]] and
 conditional on `j = i + gap` and `gap | c`; unconditional
 pairwise coprimality is false.
 
-The shared snapshot now totals 120,976 proof nodes and 3,331 self-contained
-Cuts across 176 certificates; 136 certificates contain a Cut.
+The newest seven-node tranche proves ordered and pairwise bounded-prefix
+coprimality through
+[[beta_moduli_coprime_of_lt_bounded_common_multiple]],
+[[beta_moduli_pairwise_coprime_bounded]], and
+[[bounded_beta_moduli_pairwise_coprime_exists]]. It then adds product
+coprimality via [[coprime_mul_left]] and [[coprime_mul_right]], modulus descent
+via [[mod_eq_of_mod_eq_multiple]], and one invariant-preserving CRT extension
+via [[binary_crt_fold_step]].
+
+The shared snapshot now totals 154,220 proof nodes and 4,293 self-contained
+Cuts across 183 certificates; 143 certificates contain a Cut.
 [[binary_crt_beta_pair_of_gap_dvd]] is largest at 12,980 nodes and 378 Cuts,
 while prime-divisor existence sets the maximum depth at 80. The next
-mathematical/representation gate is greatest-prime descent plus index-bound
-finite-prefix glue for conditional β-modulus coprimality, product-modulus CRT iteration,
-[[godel-beta-sequence|β finite-prefix]], and prefix-product infrastructure;
+mathematical/representation gate is greatest-prime descent plus the actual
+bounded CRT fold with its encoded-product invariant,
+[[godel-beta-sequence|β finite-prefix recoding]], and prefix-product
+infrastructure;
 [[fundamental-theorem-of-arithmetic|FTA]] is not yet a native checked theorem.
 
 ## Related
