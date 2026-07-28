@@ -5,7 +5,7 @@ tags: [peano-arithmetic, checked-lemma, dependency-dag]
 
 # `mul_eq_zero`
 
-Zero products have a zero factor: the theorem-ladder capstone.
+Zero products have a zero factor: the 23-entry core capstone.
 
 ## Closed Peano statement
 

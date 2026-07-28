@@ -616,10 +616,12 @@ agrees exactly. The evaluator is closed-loop at the state level, but each
 rollout is one path: it stops at its first transactional tactic failure and has
 no retry, sibling frontier, or backtracking.
 
-A separately maintained candidate lemma library is a strong input for model-v2. Its private
-compatibility gate passed against this checkout, but this public protocol intentionally records no
-identifiers or detailed validation profile until the owner chooses a visibility boundary. The
-kernel and proof rules do not change.
+The separately maintained candidate lemma library has now been authorized for publication. Its 26
+entries are appended to the public theorem ladder at source commit
+`d2ba05dca952e2e33479923433f8d2fcd3409493`, catalog SHA-256
+`91c88c1f3311cc0dc540671b169c270758ff6211e77716ed07bd3dd4f55c8380`.
+All replay deterministically and pass the empty-context kernel check. The largest certificate has
+21,515 nodes at depth 66; only the untrusted `use` import ceiling changes from 4,096 to 32,768.
 
 The pack must nevertheless enter through a new scientific contract. A
 content-addressed library snapshot must bind each name, canonical statement,
@@ -634,9 +636,41 @@ Importing an exact capstone theorem can make its motivating goal a three-line
 library application. That is excellent usability evidence, but it is no longer
 a held-out proving benchmark. Model-v2 must retain separate sealed theorem
 families whose statements, proofs, descendants, and retrieval entries never
-enter training or development. The private catalog is not copied into the
-public Peano repository by this result-recording change; publishing or vendoring
-it is a separate explicit integration decision.
+enter training or development. The exact public capstone is therefore excluded from discovery
+claims unless its library entry is masked. It remains useful as a retrieval/application and
+end-to-end kernel-replay regression.
+
+### 10.4 Model-v2 correction plan
+
+The first run consumed 1,600 examples—19.6% of the full train split and less than one epoch of its
+selected subset. The full split covers only 16/25 tactic heads, contains no induction-hypothesis or
+order states, and has no foundation-lemma uses. All 27 validation schemas also occur in the
+29-schema train corpus. The low validation loss therefore measures short-template imitation, while
+held-out reference routes require 10--23 actions and induction/lemma-use decisions unseen in
+training.
+
+In a reproducible local full-surface audit, the public catalog contributes 474 prospective model-v2
+transitions when each dependency becomes an explicit `use`: 427 authored commands plus 47 imports.
+This seed has longer proofs and richer contexts, but only one `induction` label. Naive concatenation under the old sampler would expose the
+optimizer to about 88 catalog rows in expectation and gives the singleton induction row only about
+an 18.6% chance of being seen. Model-v2 must therefore use family/head-aware generation and
+sampling, not just a larger file.
+
+Before another GPU run:
+
+1. freeze an oracle-replayable, family-disjoint benchmark and raise the action budget to at least 32;
+2. run pretrained-base and deterministic baselines under the same budgets;
+3. bind the complete name/statement/dependency/certificate snapshot and expose retrieved
+   `name : statement` records plus compact PA grammar in the prompt;
+4. generate 100k--150k balanced checked transitions with substantial induction/IH, recursive
+   witnesses, lemma retrieval/composition, and 8--32-step proofs;
+5. collect actually executed failures in a separate ranking corpus;
+6. train Qwen3-1.7B for two to three full epochs; and
+7. compare single rollouts with same-state candidate rejection and canonical-state best-first
+   search at identical model-token and kernel-call budgets.
+
+Only after these corrections should LoRA rank or a 4B base be varied. The current evidence does not
+identify parameter count as the limiting factor.
 
 The immutable training manifest, held-out report, two arbitrary-request reports, compact index, and
 checked positive script are published under [`artifacts/peano-policy/`](../artifacts/peano-policy/).

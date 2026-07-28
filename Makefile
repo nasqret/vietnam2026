@@ -18,7 +18,7 @@ PEANO_POLICY_ROWS ?= 10000
 # This path is a deletion target in `stage-peano`; command-line assignments
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
-override PEANOAPPID := a-265ffb1c28af
+override PEANOAPPID := a-8bbb61d1e7ba
 
 .PHONY: help book lean lean-fta lab-serve peano-serve peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
@@ -88,7 +88,9 @@ peano-corpus:
 peano-corpus-smoke:
 	$(PEANO_CORPUS_PYTHON) scripts/generate_peano_traces.py \
 		--output /tmp/peano-lab-acceptance-raw.jsonl \
-		--manifest /tmp/peano-lab-acceptance-manifest.json
+		--manifest /tmp/peano-lab-acceptance-manifest.json \
+		--renamed 0 --commuted 0 --numeric 0 \
+		--auto-depth 1 --auto-max-nodes 1
 	$(PEANO_CORPUS_PYTHON) scripts/export_traces.py /tmp/peano-lab-acceptance-raw.jsonl \
 		--output-dir /tmp/peano-lab-acceptance-export
 

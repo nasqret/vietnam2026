@@ -240,11 +240,11 @@ $$
 \end{array}
 $$
 
-All 28 entries in the current foundational-arithmetic extension replay to
-closed kernel-accepted certificates and fit the live `use` limits of 4,096
-nodes and depth 128.  The generated library snapshot records a current maximum
-of 1,601 nodes and depth 59.  These numbers are build artifacts, not new
-soundness assumptions.
+All 28 entries in the original M20 foundational subset replay to
+closed kernel-accepted certificates and fit the live `use` limits of 32,768
+nodes and depth 128.  That subset's maximum is 1,601 nodes and depth 59; the
+reconciled 63-entry snapshot reaches 21,515 nodes and depth 66 at the modular
+capstone.  These numbers are build artifacts, not new soundness assumptions.
 
 ## Why ordinary one-sided congruence is wrong over naturals
 

@@ -71,6 +71,45 @@ def test_json_integer_boundary_is_lexical_and_every_float_is_rejected() -> None:
             batch_cli._decode(floating)
 
 
+def test_json_container_nesting_limit_is_exact_before_decode_and_hash() -> None:
+    limit = batch_cli.MAX_JSON_NESTING
+    exact_raw = "[" * limit + "0" + "]" * limit
+    decoded = batch_cli._decode(exact_raw)
+    leaf = decoded
+    for _ in range(limit):
+        assert isinstance(leaf, list) and len(leaf) == 1
+        leaf = leaf[0]
+    assert leaf == 0
+    assert batch_cli._session_id(
+        decoded,
+        ordinal=1,
+        environment_sha256="0" * 64,
+    ).startswith("peano-batch-")
+
+    with pytest.raises(BatchRequestError, match=f"{limit}-container"):
+        batch_cli._decode("[" * (limit + 1) + "0" + "]" * (limit + 1))
+
+    excessive: object = 0
+    for _ in range(limit + 1):
+        excessive = [excessive]
+    with pytest.raises(
+        BatchRequestError,
+        match=rf"deterministically hashed: JSON nesting exceeds the {limit}-container",
+    ):
+        batch_cli._session_id(
+            excessive,
+            ordinal=1,
+            environment_sha256="0" * 64,
+        )
+
+
+def test_json_nesting_scanner_ignores_delimiters_and_escapes_inside_strings() -> None:
+    text = ('[{]} "quoted" \\ ' * (batch_cli.MAX_JSON_NESTING + 1)).rstrip()
+    raw = json.dumps({"text": text}, separators=(",", ":"))
+
+    assert batch_cli._decode(raw) == {"text": text}
+
+
 @pytest.mark.parametrize(
     "bad_version",
     (

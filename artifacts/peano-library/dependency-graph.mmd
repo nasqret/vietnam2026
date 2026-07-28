@@ -51,6 +51,18 @@ flowchart TD
   square_decomp[square_decomp]
   square_residue_lift[square_residue_lift]
   square_residue_witness[square_residue_witness]
+  fourth_power_regroup[fourth_power_regroup]
+  mod5_residue_complete[mod5_residue_complete]
+  mod5_nonzero_residue_cases[mod5_nonzero_residue_cases]
+  mod5_square_residue_one[mod5_square_residue_one]
+  mod5_square_residue_two[mod5_square_residue_two]
+  mod5_square_residue_three[mod5_square_residue_three]
+  mod5_square_residue_four[mod5_square_residue_four]
+  mod5_fourth_power_residue_one[mod5_fourth_power_residue_one]
+  mod5_fourth_power_residue_two[mod5_fourth_power_residue_two]
+  mod5_fourth_power_residue_three[mod5_fourth_power_residue_three]
+  mod5_fourth_power_residue_four[mod5_fourth_power_residue_four]
+  mod5_fourth_power_one[mod5_fourth_power_one]
   zero_add --> add_comm
   add_succ_left --> add_comm
   add_comm --> mul_succ_left
@@ -104,3 +116,30 @@ flowchart TD
   square_decomp --> square_residue_lift
   add_residue --> square_residue_lift
   square_residue_lift --> square_residue_witness
+  mul_assoc --> fourth_power_regroup
+  mod5_residue_complete --> mod5_nonzero_residue_cases
+  add_assoc --> mod5_square_residue_one
+  mul_add --> mod5_square_residue_one
+  mul_assoc --> mod5_square_residue_one
+  mul_succ_left --> mod5_square_residue_one
+  add_comm --> mod5_square_residue_two
+  add_assoc --> mod5_square_residue_two
+  mul_add --> mod5_square_residue_two
+  mul_assoc --> mod5_square_residue_two
+  mul_succ_left --> mod5_square_residue_two
+  square_residue_lift --> mod5_square_residue_three
+  square_residue_lift --> mod5_square_residue_four
+  mod5_square_residue_one --> mod5_fourth_power_residue_one
+  mul_assoc --> mod5_fourth_power_residue_one
+  mod5_square_residue_two --> mod5_fourth_power_residue_two
+  mod5_square_residue_four --> mod5_fourth_power_residue_two
+  mul_assoc --> mod5_fourth_power_residue_two
+  mod5_square_residue_three --> mod5_fourth_power_residue_three
+  mod5_square_residue_four --> mod5_fourth_power_residue_three
+  mul_assoc --> mod5_fourth_power_residue_three
+  mod5_square_residue_four --> mod5_fourth_power_residue_four
+  mod5_square_residue_one --> mod5_fourth_power_residue_four
+  mul_assoc --> mod5_fourth_power_residue_four
+  mod5_residue_complete --> mod5_fourth_power_one
+  square_residue_lift --> mod5_fourth_power_one
+  mul_assoc --> mod5_fourth_power_one

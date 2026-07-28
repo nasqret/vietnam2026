@@ -54,9 +54,13 @@ but attribution to LoRA training awaits the pretrained-base baseline; the adapte
 dependable induction/order prover. The current dataset has
 no positive rows for nine tactic heads, including `induction`, `simp`, and `specialize`;
 the next registered iteration is a library-snapshot-bound `model-v2`, not a 4B scale-up on the same
-curriculum. A separately maintained candidate library has been compatibility-validated locally,
-but neither its source nor identifying metadata will enter the public branch without an explicit
-visibility decision. See
+curriculum. The owner authorized the compatibility-validated 26-record modular extension for the
+public catalog. After reconciliation with M20, fourteen records overlap exactly and twelve are
+new, giving 63 unique checked runtime theorems without changing the kernel. The earlier
+public-catalog full-surface audit yields 474
+prospective model-v2 transitions. They are valuable curriculum seeds, but only one is an
+`induction` label, so balanced generation and
+sampling remain necessary. See
 [`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest completed and staged
 milestone; production remains untouched behind the M14 cache-header blocker.
 
@@ -69,6 +73,7 @@ first checked fully expanded prime instance `prime_two`. The catalog maps the
 exact route to division, gcd, the general prime spine, and factorization. A
 sorted Gödel-β sequence/product encoding is now selected, and a pinned Lean
 companion checks full list-based FTA existence and uniqueness up to
-permutation. Peano admission still awaits the encoding and arithmetic proof
-spine. See
+permutation. The reconciled runtime also includes twelve unique upstream
+mod-five capstones for 63 checked Peano theorems in total. Peano admission of
+FTA still awaits the encoding and arithmetic proof spine. See
 [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md).

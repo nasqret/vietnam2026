@@ -1027,3 +1027,66 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   the warning-as-error 34-source Jupyter Book, 197 deep links and 253 replayed commands, the
   75-node catalog plus one companion artifact, all 51 generated Peano snapshots, the exact Lean FTA
   theorem-type and axiom audit, and the 129-note/884-link Obsidian graph.
+
+  These totals describe the M20 branch snapshot, not a post-merge catalog count.
+
+## 2026-07-28 (branch peano-lab) — public modular catalog and model-v1 failure diagnosis
+
+- The owner authorized publication of the previously external catalog. Integrated its 26 exact
+  dependency-ordered `TheoremSpec` records after the existing 23 entries, with source commit
+  `d2ba05dca952e2e33479923433f8d2fcd3409493`, catalog SHA-256 `91c88c1f…`, retained source
+  validation report, and exact MIT notice.
+- All 26 entries replay to deterministic closed certificates and pass the independent kernel in the
+  empty context. The maximum is `mod5_fourth_power_one` at 21,515 nodes/depth 66. Raised only the
+  untrusted import-certificate ceiling from 4,096 to 32,768; kernel code and proof rules are
+  unchanged, and two capstone imports still exceed the separate live-partial bound.
+- The exact short live route `intro n; intro h; use ...; apply ...; exact h; qed` passes. Its open
+  cut reaches 21,523 nodes/depth 69 and normalizes back to the 21,515-node certificate; a mutated
+  `+ 2` target is rejected.
+- Audited why model-v1 scored 0/4 despite low validation loss. It consumed only 1,600/8,149 rows,
+  has no induction/IH/order/lemma-use support, learns from 1--7-step scripts while reference routes
+  need 10--23, sees every validation schema in train, and receives no grammar or lemma statements.
+  Sixty percent of 40 attempts died on surface-incompatible text, and the evaluator has no retry or
+  frontier.
+- An explicit-import full-surface audit yields 474 prospective model-v2 checked transitions but
+  only one induction label. Naive append-and-rerun would expose that label with only about 18.6%
+  probability under the old sampler.
+  Model-v2 therefore requires balanced 100k--150k checked transitions, content-bound retrieval,
+  sealed family splits, 32-step oracle coverage, pretrained baselines, and bounded best-first
+  search before any larger-model comparison.
+- Local integration gates: 1,036 Peano tests; Lambda 360 tests plus 36 subtests; 27/27 book sources
+  under warning-as-error; 193 deep links and 170 commands replayed; 414/414 wikilinks across 67
+  vault notes; immutable browser candidate `2026-07-28g`/`a-3ea7b7142aa0`. Automated worker boot
+  passes, but no in-app browser was attached, so direct Pyodide capstone latency is not claimed.
+  `checker.py` has no diff and remains 234 lines.
+- Split the optional all-ladder corpus smoke from generated variants and bound each ladder `auto`
+  plumbing attempt to depth/node one. The former shared depth-five/5,000-node configuration was
+  impractical on the new long statements and was stopped. The corrected target finishes in about
+  three seconds: 803 unique transitions, 98 sessions, and 49 kernel-checked authored-script QEDs.
+
+  These totals describe the upstream public-catalog snapshot; the resolved catalog and refreshed
+  gates own any later combined count.
+
+## 2026-07-28 — M20 and public modular catalog reconciled
+
+- Merged the advanced `peano-lab` base at `567d9ae` into draft PR #1.
+  Exact structural comparison found fourteen post-core `TheoremSpec` records
+  common to both branches; every statement, dependency list, tactic script,
+  and summary matched. A guarded union preserves all 26 imported records for
+  provenance, exposes 63 unique runtime theorems, and rejects incompatible
+  same-name definitions.
+- Extended the arithmetic research DAG to 87 nodes: 23 baseline checked, 40
+  post-baseline checked, 20 planned expressible, and four language-blocked.
+  The published modular catalog now has its own immutable MIT source-register
+  entry, while the Lean FTA companion remains separately checked and grants no
+  Peano theorem authority.
+- Regenerated the 63-certificate snapshot, 63 generated lemma notes,
+  deterministic 13,344-transition proof corpus, and application manifest from
+  the reconciled source tree. The vault now has 141 notes and 988 resolved
+  links; local browser build `2026-07-28i` has content identity
+  `a-8bbb61d1e7ba`. Nothing was deployed.
+- The combined validation passes 1,054 Peano tests on both Python 3.10 and
+  Python 3.12, all 360 Lambda tests, the warning-as-error 34-source Jupyter
+  Book, 198 deep links and 44 sessions/260 replayed commands, the exact
+  87-node catalog/runtime contract, all artifact and vault drift checks, and
+  the Lean FTA theorem-type/axiom audit.

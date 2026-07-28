@@ -614,16 +614,120 @@ commands; the old 16-step evaluation cap does not even fit the known `le_total` 
 parameters alone do not address absent actions and proof shapes; scaling now would confound the
 intended curriculum experiment.
 
-A separately maintained candidate lemma library supplies a promising next curriculum. Its private
-compatibility gate passed against this checkout, but this public chapter intentionally records no
-identifiers or detailed validation profile until the owner chooses a visibility boundary. The
-kernel and proof rules remain unchanged.
+A separately maintained candidate lemma library has now been authorized for publication. Its 26
+dependency-ordered entries extend the public catalog from 23 to 49 theorems. All replay
+deterministically, their expanded certificates pass the empty-context kernel check, and the largest
+has 21,515 nodes at depth 66. Publication changes theorem data and one untrusted import ceiling; the
+kernel and proof rules remain unchanged. Reconciliation with M20 later yields
+63 unique runtime theorems because fourteen post-core records overlap exactly.
 
-For training, this becomes a new content-addressed `model-v2` library snapshot, not a silent
+For training, the reconciled 63-theorem catalog becomes a new content-addressed
+`model-v2` library snapshot, not a silent
 extension of model-v1. The prompt must expose retrieved lemma names and canonical statements, and
 the data must include downstream `use`/`specialize` trajectories. Once the exact capstone theorem
 is importable, its three-line application is a usability test rather than an unseen proving test;
 different theorem families must remain sealed.
+
+## Why the first run failed
+
+The 0/4 result initially looks surprising beside validation loss 0.13615. It stops being surprising
+once the two measurements are aligned. Validation asked, roughly, “can the model continue a tactic
+line from another instantiation of a familiar short template?” The benchmark asked, “can it plan a
+10--23-step proof using induction and named lemmas, sustain one error-free trajectory, and remain inside
+Peano Lab's language?” Those are different tasks.
+
+The exact audit is:
+
+| Quantity | First model-v1 run | Evaluation contrast |
+|---|---:|---|
+| Train rows available | 8,149 | diverse proof states |
+| Rows actually consumed | 1,600 (19.6%) | multiple full balanced epochs |
+| Permitted tactic heads represented | 16/25 | all relevant heads |
+| `induction`, `simp`, `have`, `specialize`, `use` labels | 0 | required by reference routes |
+| IH states / order states / foundation-lemma uses | 0 / 0 / 0 | each occurs somewhere in the suite or its reference routes |
+| Authored proof length | 1--7, mean 3.97 | known checked routes use 10, 10, 23, and 13 actions |
+| Distinct generator schemas | 29 | whole-family OOD diversity |
+| Validation schemas also present in train | 27/27 | held-out theorem families |
+
+The labels are sharply imbalanced too. `intro` accounts for 40.52% of training rows; `intro`,
+`exact`, and `refl` together account for 66.76%. Every one of 513 comparable context-free
+existential states says to choose a witness immediately. The parity model's repeated attempt to use
+the mathematically suggestive but syntactically unavailable witness `n * (n + 1) / 2` is therefore
+not mysterious: the corpus taught “introduce, then witness”, but never taught the induction that
+constructs a legal recursive witness.
+
+The raw action interface compounds the curriculum problem. The prompt contains a capability hash,
+not the PA grammar or the statements of the available lemmas. Of the 40 recorded evaluation
+attempts, 24 stopped on language-interface mistakes: division or subtraction in a PA term,
+unavailable commands or tactics, or malformed tactic arity. Only 84 of 123 proposed prefix actions were accepted
+by the surface at all, and acceptance still does not mean progress.
+
+Finally, each rollout is a brittle path. It dies on its first rejected action even though Peano Lab
+already guarantees transactional failure. If the right action probability were 90% at every step,
+a 23-step route would survive with probability only $0.9^{23}\approx0.089$; at 80% it falls below
+0.006. The 16-step cap made the known 23-step `le_total` route impossible regardless of model
+quality. These facts strongly explain the failure. They do **not** yet prove that 1.7B parameters or
+rank-8 LoRA are sufficient; those are later controlled ablations, as is causal attribution of the
+one shallow success to fine-tuning rather than the pretrained base.
+
+## What the public catalog contributes—and what it does not
+
+A reproducible local audit replayed the new 26 entries over the full tactic surface with each
+dependency made into an explicit `use`. It produced 474 distinct checked state-to-tactic rows: 427
+authored commands plus 47 imports. The authored bodies average 16.4 commands and reach 52. In
+442/474 transitions (93.3%) the focused goal has a nonempty context; the replay also exposes IH
+states, witness contexts, multiple goals, and lemma composition. These are candidate model-v2 rows,
+not data available to the frozen seven-theorem model-v1 environment.
+
+It is not a complete curriculum. The 474 labels contain only one `induction`, one `suffices`, four
+`have`, eight `simp`, and 47 `use` decisions; `assumption` and `forall_elim` are still absent. If we
+simply appended these rows and kept the old 2,048-row/100-step sampler, only about 113 catalog rows
+would enter the selected subset and about 88 would actually be consumed. The lone induction row
+would have only about an 18.6% chance of being seen. A larger theorem catalog without a balanced
+sampler is not a learning algorithm.
+
+The catalog also changes the leakage boundary. A training replay for a rung may see only the 23
+core facts and earlier extension entries, never its own theorem or a later one. Its 47 dependency
+edges are positive retrieval examples. Other earlier lemmas are not automatically negatives:
+transitive ancestors and alternative proofs may still be useful. Negative ranking data must come
+from actual transactional attempts whose failure is recorded separately. Since
+`mod5_fourth_power_one` is now public, applying it to its exact statement measures retrieval and
+application, not discovery of the fourth-power theorem.
+
+Some audited full states are also substantially longer than model-v1 data: median 323 characters
+and maximum 4,869. Much of the excess repeats context across sibling goals. Model-v2 should ablate
+the full canonical state against an observation containing the exact focused goal, a compact
+description of siblings, the grammar, and a small retrieved list of `name : statement` records.
+Search can retain the complete state internally, but policy sufficiency of the compact observation
+must be measured rather than assumed.
+
+## Model-v2: the experiment that tests the intended hypothesis
+
+The next run should change one scientific variable at a time in this order:
+
+1. Freeze 50--100 or more sealed roots across induction, order, divisibility, residues, lemma
+   composition, and human-authored problems. Replay every reference within a 32-step oracle budget.
+2. Run the pretrained Qwen3-1.7B base, current adapter, deterministic tactics, and a simple
+   state-shape baseline under identical token, model-call, and kernel-call budgets.
+3. Bind a content-addressed 63-theorem snapshot into model-v2. Show compact PA syntax and retrieved
+   lemma names with canonical statements instead of only an opaque hash.
+4. Generate 100,000--150,000 positive transitions from at least 10,000 checked roots, with every
+   tactic head represented, 20--30% induction/IH trajectories, 20--30% lemma retrieval and
+   composition, and proof-length strata 1--7, 8--15, and 16--32.
+5. Store two to four actually executed rejected candidates per positive state in a separate
+   ranking/value corpus. Never relabel them as successful SFT examples.
+6. Train the 1.7B model for two or three complete balanced epochs and select checkpoints by
+   kernel-judged development QED, not token loss alone.
+7. At each immutable state, sample 8--16 candidates, execute them transactionally, discard failures,
+   deduplicate canonical successor states, and retain siblings in a bounded best-first frontier.
+8. Only then compare LoRA ranks or a 4B model under fixed data, seeds, update counts, and search
+   budgets.
+
+The highest-leverage interface ablation is raw free-form tactic generation versus a hierarchical
+legal-action policy: first choose one of the 25 heads, then point to an in-scope hypothesis,
+variable, or retrieved lemma, and generate free PA terms only where a witness or intermediate
+formula genuinely requires it. That design should reduce `/`, `lia`, and arity hallucinations while
+remaining a tactic policy whose final product is an ordinary portable Peano Lab script.
 
 ## Reproduction and honest resume
 

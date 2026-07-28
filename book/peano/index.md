@@ -43,7 +43,9 @@ Every `pa>` block and browser deep link in this part is replayed through the rea
 book gate; prose examples do not get a private, easier semantics.
 
 The full library is executable too. {doc}`The checked theorem ladder <ladder>` follows the original
-23 scripted entries through order totality and the zero-product capstone, explains how theorem reuse is
+23 scripted entries through order totality and the zero-product core capstone, then a public
+26-entry modular-arithmetic extension to the fourth-power modulo-five capstone. It also links to
+the separately validated M20 foundational snapshot. The chapter explains how theorem reuse is
 cut-eliminated outside the trusted kernel, and links each statement to the browser and Lean 4
 cross-checking surface. M9 then turns the same checked interactions into a reproducible
 [proof-trace corpus](https://github.com/nasqret/vietnam2026/tree/peano-lab/peano-lab/corpus) and fixes
@@ -54,11 +56,11 @@ polished account.
 
 M19 is the authorized continuation of that deliberately frozen M9 protocol.  The
 {doc}`policy-training chapter <training-a-peano-policy>` explains the compact headless adapter and
-the planned small-model experiment.  Its first attested release contains 2,522 independently
+the small-model experiment. Its first attested release contains 2,522 independently
 kernel-checked roots and exactly 10,000 next-tactic rows, split by genealogy, canonical formula,
-and exact policy prompt and reproduced byte-for-byte from raw traces.  Model training and learned
-evaluation results remain pending until their manifests, scheduler logs, checkpoints, and
-kernel-judged reports actually exist.
+and exact policy prompt and reproduced byte-for-byte from raw traces. The first WMI Qwen3-1.7B
+pilot completed, scoring 0/4 at pass@4 on the frozen induction/order benchmark and 1/8 on one fresh
+direct-witness probe. The chapter treats this as a curriculum diagnosis, not broad proving ability.
 
 M11 extends that core with three ordinary checked entries—`one_mul`, `mul_one`, and `add_mul`—to
 complete the commutative-semiring basis for certificate-producing arithmetic normalization. M12's
@@ -81,9 +83,13 @@ ordered list of equality hypotheses. It neither chooses an outer induction invar
 existential witness, and its cost report is never a substitute for independent checking.
 
 M20 begins a general {doc}`foundational arithmetic library
-<../arithmetic-library/index>`. It extends the live ladder to 51 independently checked entries with
+<../arithmetic-library/index>`. Its independently validated branch snapshot extends the original
+23-entry base to 51 checked entries with
 named equality congruences, cancellation and order facts, zero/nonzero-product and small-factor
 reasoning, divisibility closure, modulus-independent residue algebra, and the first checked fully
 expanded prime instance `prime_two`. Its larger research DAG continues through division, gcd, the
 general prime spine, and factorization while labeling every unproved or currently inexpressible
-target.
+target. The 49-entry public-catalog snapshot and 51-entry M20 snapshot are
+retained as provenance. Their fourteen identical post-core records are
+deduplicated, so the reconciled runtime contains 63 unique checked entries,
+not the arithmetic sum of the two snapshots.

@@ -207,10 +207,12 @@
   uses, and only 16/25 tactic heads, so model-v1 is an easy-schema baseline rather than a useful
   induction prover. The Helios ARM lock is never reused.
 
-  A separately maintained candidate lemma library was compatibility-tested against this checkout.
-  Its source and identifying metadata remain outside the public repository. It can become a
-  content-addressed model-v2 foundation only after an explicit visibility decision; any theorem
-  imported from it becomes a retrieval/application target rather than a sealed benchmark.
+  The owner authorized the compatibility-tested 26-lemma candidate for publication. It now extends
+  the checked catalog to 49 entries with source commit, catalog hash, exact MIT notice, deterministic
+  cold replay, empty-context kernel checks, and a 21,515-node/depth-66 capstone. The kernel is
+  unchanged; only the untrusted `use` import ceiling rises to 32,768. Model-v1 stays frozen. The
+  public snapshot becomes model-v2's retrieval foundation, while every imported exact theorem is a
+  retrieval/application target rather than a sealed benchmark.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -253,7 +255,9 @@
   delivery remains blocked on administrator-managed cache headers, while M17 is published to
   staging. The implementation, checked corpus,
   construction book, Obsidian knowledge base, kernel-judged evaluation protocol, live checked-
-  theorem reuse, 23-entry semiring ladder, certificate-producing `ring`, and bounded checked
+  theorem reuse, 63-entry reconciled checked ladder (23-entry core plus 40 unique post-baseline
+  theorems),
+  certificate-producing `ring`, and bounded checked
   `norm_num` teaching surface are present. The odd-square induction closes through explicit
   `trans`/`rewrite` structure, while concrete coefficients can now be certified without obscuring
   the independent final check. M19's headless runner, first 10,000-row checked corpus, and policy
@@ -285,8 +289,9 @@
   policy experiment. It organizes reusable facts as equality → semiring → order → divisibility →
   congruence → gcd → primes → factorization. The modulus-five fourth-power theorem is a downstream
   example rather than the organizing principle.
-- The first checked extension grows `pa lib` from 23 to 51 closed theorems: 28 new equality
-  congruence, additive cancellation and zero-sum, order-endpoint, zero-product/nonzero-product,
+- The independently validated M20 branch snapshot grows its 23-entry base to 51 closed theorems:
+  28 new equality congruence, additive cancellation and zero-sum, order-endpoint,
+  zero-product/nonzero-product,
   small-factor, divisibility, non-divisibility, and generic quotient/remainder lemmas. It now
   includes `prime_two`, the first checked instance of the fully expanded prime predicate. Every
   script replays, every cut-free certificate passes the unchanged independent kernel, and the
@@ -312,9 +317,25 @@
   `artifacts/peano-library/`. The generated snapshot binds exact source bytes, statements, scripts,
   dependencies, certificate hashes, proof metrics, and an ordered root digest; hashes are
   provenance, never theorem authority.
-- The final combined M20 validation record is 1,049 passing Peano tests on both Python 3.10 and
+- The M20 branch validation record is 1,049 passing Peano tests on both Python 3.10 and
   Python 3.12, a warning-as-error Jupyter Book build over 34 sources, 197 checked deep links, 43
   documentation blocks with 253 replayed
   commands, and a clean 129-note/884-link Obsidian vault after integrating the latest `peano-lab`
   result-recording commit. The batch transport now enforces an explicit iterative 256-container
   JSON nesting limit, so malformed-depth behavior and session hashing are runtime-independent.
+- M19 public-catalog local gate on 2026-07-28: 26 source-exact modular lemmas extend the ladder to
+  49 entries; 1,036 Peano tests, Lambda 360 plus 36 subtests, all 27 book sources, 193 deep links,
+  170 commands, and 414/414 vault wikilinks pass. Local browser candidate `2026-07-28g` has
+  application identity `a-3ea7b7142aa0`; automated worker boot passes, direct in-app Pyodide
+  latency remains unmeasured, and production is untouched.
+- The reconciled runtime has 63 unique checked theorems. Of the 26 published
+  modular records, fourteen coincide exactly with M20 entries and twelve are
+  additional capstones; a guarded union rejects incompatible duplicates. The
+  synchronized research catalog now has 87 nodes (23 baseline checked, 40
+  post-baseline checked, 20 planned, four language-blocked) plus the separate
+  Lean FTA companion. The regenerated snapshot has 63 certificates, the vault
+  has 141 notes/988 resolved links, and local browser build `2026-07-28i`
+  has application identity `a-8bbb61d1e7ba`. The combined gate passes 1,054
+  Peano tests on Python 3.10 and 3.12, all 360 Lambda tests, the 34-source
+  warning-as-error book, and 198 deep links/44 sessions/260 commands;
+  production is untouched.

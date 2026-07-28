@@ -3,8 +3,8 @@
 This directory is the planning and provenance source for Peano Lab's general
 arithmetic library. Start with:
 
-- [`catalog.json`](catalog.json): 75 dependency-ordered facts — 23
-  `checked_existing`, 28 `checked_m20`, 20 `planned_expressible`, and four
+- [`catalog.json`](catalog.json): 87 dependency-ordered facts — 23
+  `checked_existing`, 40 `checked_m20`, 20 `planned_expressible`, and four
   `blocked_by_language` — with exact source IDs, Peano statements where
   expressible, and blockers where not;
 - [`source-register.json`](source-register.json): pinned revisions, licenses,

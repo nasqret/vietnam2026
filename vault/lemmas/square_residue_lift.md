@@ -21,6 +21,9 @@ forall a z q r c s. z = a * q + r -> r * r = a * c + s -> z * z = a * ((q * z + 
 ## Checked dependents
 
 - [[square_residue_witness]]
+- [[mod5_square_residue_three]]
+- [[mod5_square_residue_four]]
+- [[mod5_fourth_power_one]]
 
 ## Verification record
 

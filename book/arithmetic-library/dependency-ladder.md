@@ -14,7 +14,7 @@ needs.
 | Multiplication | identities, annihilation, distributivity, associativity, commutativity, zero product | checked core |
 | Order | reflexivity, transitivity, antisymmetry, totality, zero least, successor bound | checked core; monotonicity planned |
 | Divisibility | units, zero, reflexivity, transitivity, addition and product closure | checked |
-| Modular congruence | equivalence relation, additive and multiplicative compatibility | definition and proof plan recorded |
+| Modular congruence | equivalence relation, additive and multiplicative compatibility | generic relation planned; fixed mod-five residue ladder checked |
 | Parity | even/odd dichotomy and arithmetic tables | planned and expressible |
 | Division | quotient-remainder existence and uniqueness | planned and expressible |
 | GCD/coprime | relational gcd, uniqueness, Bézout, Gauss cancellation | planned; signed-pair encoding required |

@@ -7,9 +7,12 @@ The **foundational arithmetic library** is a versioned dependency graph for
 [[peano-lab]], organized from equality and semiring laws through [[divisibility]],
 [[arithmetic-congruence]], gcd, primes, and factorization.
 
-Its first snapshot has 51 closed, independently checked theorems: the original
-23-node [[theorem-ladder]] and 28 general additions. The 75-node research
-catalog separates 23 `checked_existing`, 28 `checked_m20`, 20
+Its current snapshot has 63 closed, independently checked theorems: the
+original 23-node [[theorem-ladder]] and 40 unique post-baseline additions.
+The latter combine 28 general M20 facts with twelve additional modular
+capstones; fourteen records shared by both source branches are identical and
+deduplicated. The 87-node research catalog separates 23 `checked_existing`,
+40 `checked_m20`, 20
 `planned_expressible`, and four `blocked_by_language` nodes, but only replayed
 certificates appear in `pa lib`. The M20 additions now include [[prime_two]],
 the first checked instance of the fully expanded prime predicate.

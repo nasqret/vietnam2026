@@ -143,7 +143,7 @@ make the proof small. The proposed admission route is:
    uniqueness.
 
 The current cut-eliminated proof-tree representation may exceed the live
-4,096-node/depth-128 import budget. Any future proof-sharing mechanism needs
+32,768-node/depth-128 import budget. Any future proof-sharing mechanism needs
 its own trust review; it must not be disguised as part of this notation.
 
 ## Independently checked companion

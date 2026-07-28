@@ -132,9 +132,9 @@ _RESERVED_TERM_NAMES = {"S", "forall", "exists", "bot", "false"}
 # ``use`` embeds a checked theorem certificate in the live partial proof until
 # surface finalization contracts the cut.  Honest bounds keep repeated aliases
 # from turning that temporary tree into a host-recursion or browser-memory
-# failure.  The current checked ladder's largest certificate is far smaller
-# (748 nodes, depth 45), leaving ample room for later arithmetic lemmas.
-MAX_USE_CERTIFICATE_NODES = 4_096
+# failure.  The public checked ladder currently peaks at 21,515 nodes and
+# depth 66; the ceiling is explicit headroom, not additional proof authority.
+MAX_USE_CERTIFICATE_NODES = 32_768
 MAX_USE_PARTIAL_NODES = 32_768
 MAX_USE_PROOF_DEPTH = 128
 

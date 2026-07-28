@@ -47,7 +47,7 @@
   },
   "statuses": {
     "checked_existing": "Already present in Peano Lab's theorem ladder and independently kernel-checked.",
-    "checked_m20": "Added by the foundational-arithmetic M20 expansion and independently kernel-checked.",
+    "checked_m20": "Present in the post-baseline arithmetic extension, including compatible upstream modular entries, and independently kernel-checked.",
     "planned_expressible": "Closed formula expressible in today's fixed Peano language, but not yet admitted to the checked runtime library.",
     "blocked_by_language": "A natural reusable statement needs a representation or interface not yet implemented as an expanded Peano target."
   },
@@ -1249,6 +1249,248 @@
       "peano": {
         "statement": "forall a z q r c s. z = a * q + r -> r * r = a * c + s -> exists w. z * z = a * w + s",
         "existing_name": "square_residue_witness"
+      },
+      "blocker": null
+    },
+    {
+      "id": "fourth_power_regroup",
+      "title": "Regroup a fourth power as a square of a square",
+      "domain": "multiplication",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_assoc"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "peano_mod5_catalog"
+      ],
+      "summary": "Associativity exposes the square-of-a-square form used by residue proofs.",
+      "peano": {
+        "statement": "forall n. n * n * n * n = (n * n) * (n * n)",
+        "existing_name": "fourth_power_regroup"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod5_residue_complete",
+      "title": "Every natural has one of five residues modulo five",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "peano_mod5_catalog"
+      ],
+      "summary": "A checked induction partitions every natural into the five explicit quotient-and-remainder cases.",
+      "peano": {
+        "statement": "forall n. exists q. n = 5 * q \\/ n = 5 * q + 1 \\/ n = 5 * q + 2 \\/ n = 5 * q + 3 \\/ n = 5 * q + 4",
+        "existing_name": "mod5_residue_complete"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod5_nonzero_residue_cases",
+      "title": "A nonmultiple of five has a nonzero residue",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "mod5_residue_complete"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "peano_mod5_catalog"
+      ],
+      "summary": "The zero-residue branch contradicts the nonmultiple hypothesis, leaving four cases.",
+      "peano": {
+        "statement": "forall n. ~(exists q. n = 5 * q) -> exists q. n = 5 * q + 1 \\/ n = 5 * q + 2 \\/ n = 5 * q + 3 \\/ n = 5 * q + 4",
+        "existing_name": "mod5_nonzero_residue_cases"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod5_square_residue_one",
+      "title": "Squaring residue one modulo five preserves residue one",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_assoc",
+        "mul_add",
+        "mul_assoc",
+        "mul_succ_left"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "peano_mod5_catalog"
+      ],
+      "summary": "An explicit quotient witnesses that the square of 5q+1 again has remainder one.",
+      "peano": {
+        "statement": "forall z q. z = 5 * q + 1 -> z * z = 5 * (q * z + q) + 1",
+        "existing_name": "mod5_square_residue_one"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod5_square_residue_two",
+      "title": "Squaring residue two modulo five gives residue four",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_comm",
+        "add_assoc",
+        "mul_add",
+        "mul_assoc",
+        "mul_succ_left"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "peano_mod5_catalog"
+      ],
+      "summary": "An explicit quotient witnesses that the square of 5q+2 has remainder four.",
+      "peano": {
+        "statement": "forall z q. z = 5 * q + 2 -> z * z = 5 * ((q * z + q) + q) + 4",
+        "existing_name": "mod5_square_residue_two"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod5_square_residue_three",
+      "title": "Squaring residue three modulo five gives residue four",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "square_residue_lift"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "peano_mod5_catalog"
+      ],
+      "summary": "The generic square-residue lift computes the residue-three case.",
+      "peano": {
+        "statement": "forall z q. z = 5 * q + 3 -> z * z = 5 * ((q * z + 3 * q) + 1) + 4",
+        "existing_name": "mod5_square_residue_three"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod5_square_residue_four",
+      "title": "Squaring residue four modulo five gives residue one",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "square_residue_lift"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "peano_mod5_catalog"
+      ],
+      "summary": "The generic square-residue lift computes the residue-four case.",
+      "peano": {
+        "statement": "forall z q. z = 5 * q + 4 -> z * z = 5 * ((q * z + 4 * q) + 3) + 1",
+        "existing_name": "mod5_square_residue_four"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod5_fourth_power_residue_one",
+      "title": "Fourth powers preserve residue one modulo five",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "mod5_square_residue_one",
+        "mul_assoc"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "peano_mod5_catalog"
+      ],
+      "summary": "Squaring the residue-one square yields an explicit fourth-power witness.",
+      "peano": {
+        "statement": "forall q. exists w. (5 * q + 1) * (5 * q + 1) * (5 * q + 1) * (5 * q + 1) = 5 * w + 1",
+        "existing_name": "mod5_fourth_power_residue_one"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod5_fourth_power_residue_two",
+      "title": "Fourth powers of residue two are one modulo five",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "mod5_square_residue_two",
+        "mod5_square_residue_four",
+        "mul_assoc"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "peano_mod5_catalog"
+      ],
+      "summary": "The residue-two square has residue four, whose square has residue one.",
+      "peano": {
+        "statement": "forall q. exists w. (5 * q + 2) * (5 * q + 2) * (5 * q + 2) * (5 * q + 2) = 5 * w + 1",
+        "existing_name": "mod5_fourth_power_residue_two"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod5_fourth_power_residue_three",
+      "title": "Fourth powers of residue three are one modulo five",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "mod5_square_residue_three",
+        "mod5_square_residue_four",
+        "mul_assoc"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "peano_mod5_catalog"
+      ],
+      "summary": "The residue-three square has residue four, whose square has residue one.",
+      "peano": {
+        "statement": "forall q. exists w. (5 * q + 3) * (5 * q + 3) * (5 * q + 3) * (5 * q + 3) = 5 * w + 1",
+        "existing_name": "mod5_fourth_power_residue_three"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod5_fourth_power_residue_four",
+      "title": "Fourth powers of residue four are one modulo five",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "mod5_square_residue_four",
+        "mod5_square_residue_one",
+        "mul_assoc"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "peano_mod5_catalog"
+      ],
+      "summary": "The residue-four square has residue one, whose square stays residue one.",
+      "peano": {
+        "statement": "forall q. exists w. (5 * q + 4) * (5 * q + 4) * (5 * q + 4) * (5 * q + 4) = 5 * w + 1",
+        "existing_name": "mod5_fourth_power_residue_four"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod5_fourth_power_one",
+      "title": "A nonmultiple of five has fourth power one modulo five",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "mod5_residue_complete",
+        "square_residue_lift",
+        "mul_assoc"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "peano_mod5_catalog"
+      ],
+      "summary": "The original residue theorem is now an ordinary imported, replayed, empty-context kernel theorem.",
+      "peano": {
+        "statement": "forall n. ~(exists x. n = 5 * x) -> exists x. n * n * n * n = 5 * x + 1",
+        "existing_name": "mod5_fourth_power_one"
       },
       "blocker": null
     },

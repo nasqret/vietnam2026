@@ -12,6 +12,7 @@ it does not make an external proof part of Peano's trusted base.
 | Source | Immutable reference | License status | Allowed role |
 |---|---|---|---|
 | Peano Lab checked ladder | Project-pinned source and validation report | MIT/project-internal | Binding source for existing checked theorems |
+| Published Peano modular catalog | [`923f6816c8c5f17a9a276b9e767145f89aff2e09`](https://github.com/nasqret/vietnam2026/tree/923f6816c8c5f17a9a276b9e767145f89aff2e09/artifacts/peano-library) | MIT with retained notice | Binding provenance for 26 source records; fourteen identical overlaps are deduplicated |
 | Mathlib natural factorization | [`37df177aaa770670452312393d4e84aaad56e7b6`](https://github.com/leanprover-community/mathlib4/tree/37df177aaa770670452312393d4e84aaad56e7b6) | [Apache-2.0](https://github.com/leanprover-community/mathlib4/blob/37df177aaa770670452312393d4e84aaad56e7b6/LICENSE) | Pinned Lean FTA companion only; no Peano theorem authority |
 | Natural Number Game 4 | [`727e4d219838eeb7f3945d2e9a0539f244d50540`](https://github.com/leanprover-community/NNG4/tree/727e4d219838eeb7f3945d2e9a0539f244d50540) | [Apache-2.0](https://github.com/leanprover-community/NNG4/blob/727e4d219838eeb7f3945d2e9a0539f244d50540/LICENSE) | Statement and coverage map; Peano proofs reconstructed |
 | Heather Macbeth, *The Mechanics of Proof* | [`e660f42b13ddcb6d12b52ba036d6bd071a0cfb9b`](https://github.com/hrmacbeth/math2001/tree/e660f42b13ddcb6d12b52ba036d6bd071a0cfb9b) | No repository license; arithmetic files say `All rights reserved` | Reference-only clean-room taxonomy |
@@ -46,6 +47,12 @@ The Mathlib dependency is different: it is imported by the explicitly
 separate `artifacts/lean-fta` formal companion under Apache-2.0. The companion
 is kernel-checked in Lean, rejects `sorryAx`, and records its standard axioms;
 it is never converted into a trusted Peano theorem constant.
+
+The published modular catalog is repository code under MIT, not clean-room
+reference material. Its exact 26-record source report, original source commit,
+catalog hash, and notice are retained. Fourteen records match independently
+developed M20 specifications exactly; the runtime guard accepts those once,
+adds twelve unique capstones, and rejects any nonidentical same-name record.
 
 - The audited Macbeth project supplies Lean and generated RST/HTML but no
   explicitly licensed TeX source. Its absence of a reuse license makes the
@@ -203,9 +210,12 @@ This boundary should be explicit in the plan:
   Fundamental Theorem of Arithmetic and its uniqueness clause, totient-based
   results, and generic finite-product theorems.
 
-Gödel coding can represent sequences inside first-order arithmetic, but it
-would create a poor pedagogical API and very large certificates. A small,
-audited sequence/multiset design is preferable if FTA is a project goal.
+Gödel coding represents sequences inside first-order arithmetic at the cost of
+a less direct pedagogical API and potentially very large certificates. The
+representation review nevertheless selected a conservative Gödel-β authoring
+facade because it expands into the unchanged Peano language; the relations and
+their proof spine still require implementation and ordinary kernel-checked
+certificates.
 
 ## Source and artifact invariants
 

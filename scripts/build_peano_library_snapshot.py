@@ -30,7 +30,7 @@ from peano_lab.engine.tactics import (  # noqa: E402
     MAX_USE_PROOF_DEPTH,
 )
 from peano_lab.kernel.checker import check  # noqa: E402
-from peano_lab.library.theorems import THEOREMS, replay  # noqa: E402
+from peano_lab.library.theorems import MOD5_THEOREMS, THEOREMS, replay  # noqa: E402
 
 
 def _digest(payload: bytes | str) -> str:
@@ -50,6 +50,7 @@ def build_payloads() -> dict[str, str]:
     layer_counts = {
         "legacy_core": 0,
         "foundational_extension": 0,
+        "published_mod5_unique": 0,
     }
     foundational_names = {
         "eq_symm",
@@ -81,6 +82,9 @@ def build_payloads() -> dict[str, str]:
         "square_residue_lift",
         "square_residue_witness",
     }
+    published_mod5_unique_names = {
+        spec.name for spec in MOD5_THEOREMS
+    } - foundational_names
 
     for index, spec in enumerate(THEOREMS):
         checked = replay(spec.name)
@@ -91,11 +95,12 @@ def build_payloads() -> dict[str, str]:
             raise RuntimeError(
                 f"{spec.name!r} exceeds live-use bounds: {nodes} nodes, depth {depth}"
             )
-        layer = (
-            "foundational_extension"
-            if spec.name in foundational_names
-            else "legacy_core"
-        )
+        if spec.name in foundational_names:
+            layer = "foundational_extension"
+        elif spec.name in published_mod5_unique_names:
+            layer = "published_mod5_unique"
+        else:
+            layer = "legacy_core"
         layer_counts[layer] += 1
         script_text = "\n".join(spec.script) + "\n"
         certificate_repr = repr(checked.certificate)

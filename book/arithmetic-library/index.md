@@ -16,24 +16,29 @@ $$
 \to \text{factorization}.
 $$
 
-The first public snapshot contains **51 replayed, closed, independently
-kernel-checked Peano theorems**. Twenty-eight are the new foundational layer:
+The current public snapshot contains **63 replayed, closed, independently
+kernel-checked Peano theorems**. Twenty-eight form the M20 foundational layer:
 named equality congruences, additive cancellation and order facts,
 zero-sum and nonzero-product facts, a small-factor obstruction, divisibility
 closure, constructive non-divisibility normal forms, and generic
 quotient-and-remainder algebra. This layer includes `prime_two`, the first
-checked instance of the fully expanded prime predicate. Every theorem fits the
-browser's ordinary `use` limit; the largest new certificate has 1,601 nodes
-and depth 59, below the 4,096-node/depth-128 bound.
+checked instance of the fully expanded prime predicate. The reconciled
+upstream modular catalog contributes twelve more unique residue and
+fourth-power theorems; fourteen of its other records are identical to M20
+entries and are exposed only once.
 
-That number is deliberately narrower than the 75-node research catalog: 23
-nodes are `checked_existing`, 28 are `checked_m20`, 20 are
+Every current theorem fits the browser's ordinary `use` limit. The largest
+certificate, `mod5_fourth_power_one`, has 21,515 nodes and depth 66, below
+the 32,768-node/depth-128 import bound.
+
+That number is deliberately narrower than the 87-node research catalog: 23
+nodes are `checked_existing`, 40 are `checked_m20`, 20 are
 `planned_expressible`, and four are `blocked_by_language`. Beyond
 `prime_two`, the catalog records candidate lemmas on modular congruence,
 division, gcd, coprimality, the general prime spine, Euclid's lemma, and prime
 factorization. A separate Lean 4 companion now checks full finite-list FTA
 existence and uniqueness up to permutation. It is cataloged as a companion,
-not counted among the 51 Peano theorems; those entries are not presented as
+not counted among the 63 Peano theorems; those entries are not presented as
 Peano-proved until a script and closed certificate pass the same kernel gate.
 
 ## How to read the status labels
@@ -41,7 +46,7 @@ Peano-proved until a script and closed certificate pass the same kernel gate.
 | Label | Meaning |
 |---|---|
 | `checked_existing` | Already in the original 23-theorem Peano ladder. |
-| `checked_m20` | Added in this foundational release and independently checked. |
+| `checked_m20` | Checked post-baseline extension, including compatible upstream modular entries. |
 | `planned_expressible` | Stateable in today's first-order Peano language, but not yet admitted. |
 | `blocked_by_language` | Needs a representation/interface not yet implemented as an expanded, checked Peano target. |
 

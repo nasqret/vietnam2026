@@ -6,7 +6,7 @@ tags: [peano-arithmetic, induction, regression, library]
 The **theorem ladder** is both curriculum and regression suite for [[peano-lab]]. It begins with
 $0+n=n$, develops commutativity and associativity of addition and multiplication, proves the
 successor lemmas, defines $n\le m$ by an additive witness, establishes the partial-order laws and
-totality, and ends at
+totality, and reaches the 23-entry core capstone
 
 $$
 \forall n\,m.\;n\cdot m=0\to n=0\lor m=0.
@@ -28,12 +28,25 @@ M11 extends the twenty-rung core with `one_mul`, `mul_one`, and `add_mul`, compl
 23-entry oriented
 [[commutative-semiring-basis]] needed by proof-producing polynomial normalization.
 
-M20 adds 28 general nodes for a total of 51: equality congruence, additive cancellation and
+The M20 branch snapshot adds 28 general nodes to its 23-entry base for a total of 51: equality
+congruence, additive cancellation and
 zero-sum, order endpoints, nonzero-product and small-factor reasoning, [[divisibility]],
 constructive non-divisibility, generic residue algebra, and [[prime_two]] as the first checked
 fully expanded prime instance. The checked DAG and its planned route through the general
 [[prime-number]] spine and [[fundamental-theorem-of-arithmetic]] live in the
 [[arithmetic-library-moc]].
+
+The upstream public-catalog snapshot adds a 26-entry extension to the same original core, for 49
+entries in that snapshot. It develops multiples,
+residue transport, the five residue cases, square residues, and the capstone
+$\neg(5\mid n)\to\exists q.\;n^4=5q+1$. Its source commit and catalog hash are retained, and every
+expanded certificate is checked in the empty context. This extension is also a useful seed for a
+[[verifier-guided-policy-evaluation-and-search|model-v2 curriculum]], but the capstone itself is now
+a library-retrieval test rather than a sealed theorem-discovery benchmark.
+
+The reconciled runtime has 63 unique checked entries: fourteen post-core
+records coincide exactly across the two snapshots, while the upstream catalog
+adds twelve genuinely new modular capstones.
 
 ## Related
 

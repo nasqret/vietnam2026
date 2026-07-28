@@ -1,37 +1,32 @@
 ---
-title: "Lemma: add_comm"
+title: "Lemma: fourth_power_regroup"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `add_comm`
+# `fourth_power_regroup`
 
-Addition is commutative.
+Regroup a fourth power as the square of a square.
 
 ## Closed Peano statement
 
 ```text
-forall n m. n + m = m + n
+forall n. n * n * n * n = (n * n) * (n * n)
 ```
 
 ## Dependencies
 
-- [[zero_add]]
-- [[add_succ_left]]
+- [[mul_assoc]]
 
 ## Checked dependents
 
-- [[mul_succ_left]]
-- [[add_left_cancel]]
-- [[add_eq_zero_left]]
-- [[add_residue_lift]]
-- [[mod5_square_residue_two]]
+- No checked theorem currently depends on this node.
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **67 nodes**, depth **17**.
-- Authored script length: **4 commands**.
-- Runtime card: `pa lib add_comm`.
+- Certificate: **104 nodes**, depth **31**.
+- Authored script length: **2 commands**.
+- Runtime card: `pa lib fourth_power_regroup`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

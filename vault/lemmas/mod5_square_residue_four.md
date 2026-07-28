@@ -1,42 +1,34 @@
 ---
-title: "Lemma: mul_assoc"
+title: "Lemma: mod5_square_residue_four"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `mul_assoc`
+# `mod5_square_residue_four`
 
-Multiplication is associative.
+Squaring residue four modulo five gives residue one.
 
 ## Closed Peano statement
 
 ```text
-forall n m k. (n * m) * k = n * (m * k)
+forall z q. z = 5 * q + 4 -> z * z = 5 * ((q * z + 4 * q) + 3) + 1
 ```
 
 ## Dependencies
 
-- [[mul_add]]
+- [[square_residue_lift]]
 
 ## Checked dependents
 
-- [[multiple_mul_right]]
-- [[multiple_trans]]
-- [[square_decomp]]
-- [[fourth_power_regroup]]
-- [[mod5_square_residue_one]]
-- [[mod5_square_residue_two]]
-- [[mod5_fourth_power_residue_one]]
 - [[mod5_fourth_power_residue_two]]
 - [[mod5_fourth_power_residue_three]]
 - [[mod5_fourth_power_residue_four]]
-- [[mod5_fourth_power_one]]
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **104 nodes**, depth **31**.
-- Authored script length: **5 commands**.
-- Runtime card: `pa lib mul_assoc`.
+- Certificate: **1855 nodes**, depth **53**.
+- Authored script length: **6 commands**.
+- Runtime card: `pa lib mod5_square_residue_four`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

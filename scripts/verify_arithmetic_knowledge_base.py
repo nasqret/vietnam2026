@@ -601,7 +601,7 @@ def main(argv: list[str] | None = None) -> int:
         "validated arithmetic knowledge base: "
         f"{counts['lemmas']} lemmas across {counts['domains']} domains "
         f"({counts['checked_existing']} baseline checked, "
-        f"{counts['checked_m20']} M20 checked, "
+        f"{counts['checked_m20']} post-baseline checked, "
         f"{counts['planned_expressible']} planned, "
         f"{counts['blocked_by_language']} language-blocked; "
         f"{counts['companion_artifacts']} checked companion artifact)"

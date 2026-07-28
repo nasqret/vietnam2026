@@ -243,25 +243,63 @@ def _reject_float(value: str):
     raise BatchRequestError(f"JSON floating-point numbers are not allowed: {value}")
 
 
-def _validate_json_nesting(value: object) -> None:
-    """Enforce one runtime-independent container-depth limit iteratively."""
+def _check_lexical_json_nesting(raw: str) -> None:
+    """Bound container nesting without mistaking string contents for syntax."""
 
-    pending: list[tuple[object, int]] = [(value, 0)]
-    while pending:
-        current, parent_depth = pending.pop()
-        if type(current) not in {dict, list, tuple}:
+    depth = 0
+    in_string = False
+    escaped = False
+    for character in raw:
+        if in_string:
+            if escaped:
+                escaped = False
+            elif character == "\\":
+                escaped = True
+            elif character == '"':
+                in_string = False
+            continue
+        if character == '"':
+            in_string = True
+        elif character in "[{":
+            depth += 1
+            if depth > MAX_JSON_NESTING:
+                raise BatchRequestError(
+                    "JSON nesting exceeds the "
+                    f"{MAX_JSON_NESTING}-container transport limit"
+                )
+        elif character in "]}" and depth:
+            depth -= 1
+
+
+def _check_json_value_nesting(value: object) -> None:
+    """Iteratively enforce the same limit on an already decoded JSON value."""
+
+    stack: list[tuple[object, int, bool]] = [(value, 0, False)]
+    active_containers: set[int] = set()
+    while stack:
+        current, parent_depth, leaving = stack.pop()
+        if leaving:
+            active_containers.remove(id(current))
+            continue
+        if not isinstance(current, (dict, list, tuple)):
             continue
         depth = parent_depth + 1
         if depth > MAX_JSON_NESTING:
             raise BatchRequestError(
                 "JSON nesting exceeds the "
-                f"{MAX_JSON_NESTING}-level transport limit"
+                f"{MAX_JSON_NESTING}-container transport limit"
             )
-        children = current.values() if type(current) is dict else current
-        pending.extend((child, depth) for child in children)
+        identity = id(current)
+        if identity in active_containers:
+            raise BatchRequestError("JSON value contains a circular container")
+        active_containers.add(identity)
+        stack.append((current, depth, True))
+        children = current.values() if isinstance(current, dict) else current
+        stack.extend((child, depth, False) for child in children)
 
 
 def _decode(raw: str) -> object:
+    _check_lexical_json_nesting(raw)
     try:
         decoded = json.loads(
             raw,
@@ -272,7 +310,7 @@ def _decode(raw: str) -> object:
         )
     except RecursionError:
         raise BatchRequestError("JSON nesting exceeds the decoder limit") from None
-    _validate_json_nesting(decoded)
+    _check_json_value_nesting(decoded)
     return decoded
 
 
@@ -283,16 +321,17 @@ def _session_id(
     environment_sha256: str,
 ) -> str:
     try:
-        _validate_json_nesting(request)
+        _check_json_value_nesting(request)
         payload = json.dumps(
             [BATCH_VERSION, environment_sha256, ordinal, request],
             ensure_ascii=True,
             sort_keys=True,
             separators=(",", ":"),
         ).encode("ascii")
-    except (RecursionError, TypeError, ValueError) as exc:
+    except (BatchRequestError, RecursionError, TypeError, ValueError) as exc:
         raise BatchRequestError(
-            f"request cannot be deterministically hashed: {type(exc).__name__}"
+            "request cannot be deterministically hashed: "
+            + (str(exc) if isinstance(exc, BatchRequestError) else type(exc).__name__)
         ) from None
     return "peano-batch-" + hashlib.sha256(payload).hexdigest()[:24]
 

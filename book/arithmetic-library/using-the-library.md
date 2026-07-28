@@ -10,6 +10,7 @@ Useful entry points include:
 - [`pa lib add_congr`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20add_congr)
 - [`pa lib multiple_trans`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20multiple_trans)
 - [`pa lib square_residue_witness`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20square_residue_witness)
+- [`pa lib mod5_fourth_power_one`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod5_fourth_power_one)
 
 ## Importing a checked theorem
 
@@ -36,6 +37,21 @@ The context import is a temporary cut. At QED the untrusted compiler replaces
 it with the theorem's closed certificate, normalizes the exposed cuts, and
 asks the independent kernel to check the original target from the empty
 context.
+
+The original modulus-five exercise now has the same short route:
+
+```text
+pa> pa prove forall n. ~(exists x. n = 5 * x) -> exists x. n * n * n * n = 5 * x + 1
+pa> intro n
+pa> intro h
+pa> use mod5_fourth_power_one
+pa> apply mod5_fourth_power_one
+pa> exact h
+pa> qed
+```
+
+This imports an ordinary 21,515-node closed certificate; it does not add a
+modular-arithmetic oracle to the kernel.
 
 ## Turning a hypothesis into pointwise facts
 

@@ -76,6 +76,18 @@ This is formal evidence, not curricular source material and not Peano theorem
 authority. Its dedicated verifier rejects `sorryAx` and requires the exact
 reported standard axioms `propext`, `Classical.choice`, and `Quot.sound`.
 
+## Published modular catalog
+
+The 26-record Peano modular catalog is pinned to integration commit
+`923f6816c8c5f17a9a276b9e767145f89aff2e09` under its retained MIT notice.
+Its unaltered validation report binds the original source commit, catalog
+hash, scripts, certificate hashes, and proof metrics.
+
+Fourteen records coincide exactly with independently developed M20 entries.
+The reconciled runtime keeps the full source catalog for provenance but
+exposes each compatible theorem once, adding twelve unique residue and
+fourth-power capstones. A mismatched same-name record is an import error.
+
 ## Reuse modes
 
 The source register uses explicit modes:

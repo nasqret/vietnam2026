@@ -1,16 +1,16 @@
 ---
-title: "Lemma: add_assoc"
+title: "Lemma: mod5_residue_complete"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `add_assoc`
+# `mod5_residue_complete`
 
-Addition is associative.
+Every natural number has one of the five canonical residues modulo five.
 
 ## Closed Peano statement
 
 ```text
-forall n m k. (n + m) + k = n + (m + k)
+forall n. exists q. n = 5 * q \/ n = 5 * q + 1 \/ n = 5 * q + 2 \/ n = 5 * q + 3 \/ n = 5 * q + 4
 ```
 
 ## Dependencies
@@ -19,22 +19,15 @@ forall n m k. (n + m) + k = n + (m + k)
 
 ## Checked dependents
 
-- [[mul_succ_left]]
-- [[mul_add]]
-- [[le_trans]]
-- [[antisymm_from_witnesses]]
-- [[add_residue]]
-- [[add_residue_lift]]
-- [[square_decomp]]
-- [[mod5_square_residue_one]]
-- [[mod5_square_residue_two]]
+- [[mod5_nonzero_residue_cases]]
+- [[mod5_fourth_power_one]]
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **33 nodes**, depth **12**.
-- Authored script length: **5 commands**.
-- Runtime card: `pa lib add_assoc`.
+- Certificate: **248 nodes**, depth **28**.
+- Authored script length: **41 commands**.
+- Runtime card: `pa lib mod5_residue_complete`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

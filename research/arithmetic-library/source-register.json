@@ -22,6 +22,23 @@
       "notes": "Binding source for all checked entries. Every listed theorem is replayed and independently checked from the empty context; the exact source bytes are bound by artifacts/peano-library/catalog-v1.json rather than a circular self-referential Git commit."
     },
     {
+      "id": "peano_mod5_catalog",
+      "title": "Published Peano Lab modular-arithmetic catalog",
+      "kind": "formal_library_source",
+      "url": "https://github.com/nasqret/vietnam2026/blob/923f6816c8c5f17a9a276b9e767145f89aff2e09/peano-lab/py/peano_lab/library/theorems.py",
+      "revision": "923f6816c8c5f17a9a276b9e767145f89aff2e09",
+      "license": "MIT",
+      "license_url": "https://github.com/nasqret/vietnam2026/blob/923f6816c8c5f17a9a276b9e767145f89aff2e09/artifacts/peano-library/NOTICE.md",
+      "reuse_mode": "project_internal",
+      "resources": [
+        {
+          "label": "Source validation report",
+          "url": "https://github.com/nasqret/vietnam2026/blob/923f6816c8c5f17a9a276b9e767145f89aff2e09/artifacts/peano-library/mod5-source-validation-report.json"
+        }
+      ],
+      "notes": "The published 26-entry catalog retains its original source commit and catalog hash. Fourteen entries exactly coincide with independently developed M20 specifications; the guarded runtime union deduplicates those identical records and adds twelve new checked theorems."
+    },
+    {
       "id": "mathlib_nat_factorization",
       "title": "Mathlib natural-number prime factorization",
       "kind": "formal_library_source",

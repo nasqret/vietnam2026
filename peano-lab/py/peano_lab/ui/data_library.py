@@ -1,4 +1,4 @@
-"""Deterministic terminal views of the checked M7 theorem ladder."""
+"""Deterministic terminal views of the checked public theorem ladder."""
 
 from __future__ import annotations
 

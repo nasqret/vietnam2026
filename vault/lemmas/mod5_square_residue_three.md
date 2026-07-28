@@ -1,37 +1,32 @@
 ---
-title: "Lemma: add_comm"
+title: "Lemma: mod5_square_residue_three"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `add_comm`
+# `mod5_square_residue_three`
 
-Addition is commutative.
+Squaring residue three modulo five gives residue four.
 
 ## Closed Peano statement
 
 ```text
-forall n m. n + m = m + n
+forall z q. z = 5 * q + 3 -> z * z = 5 * ((q * z + 3 * q) + 1) + 4
 ```
 
 ## Dependencies
 
-- [[zero_add]]
-- [[add_succ_left]]
+- [[square_residue_lift]]
 
 ## Checked dependents
 
-- [[mul_succ_left]]
-- [[add_left_cancel]]
-- [[add_eq_zero_left]]
-- [[add_residue_lift]]
-- [[mod5_square_residue_two]]
+- [[mod5_fourth_power_residue_three]]
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **67 nodes**, depth **17**.
-- Authored script length: **4 commands**.
-- Runtime card: `pa lib add_comm`.
+- Certificate: **1757 nodes**, depth **53**.
+- Authored script length: **6 commands**.
+- Runtime card: `pa lib mod5_square_residue_three`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

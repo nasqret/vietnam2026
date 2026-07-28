@@ -164,9 +164,9 @@ ordinary exported proof. It is not trusted model output: repository tests replay
 therefore records a limited in-distribution success, not a broad PA prover; attribution to
 fine-tuning awaits the pretrained-base baseline.
 
-## Peano foundational arithmetic library
+## Peano foundational arithmetic snapshot
 
-[`peano-library/`](peano-library/) is the deterministic snapshot of all 51
+[`peano-library/`](peano-library/) is the deterministic snapshot of all 63
 checked Peano library entries. It contains statement/script/certificate hashes,
 exact node/depth metrics, an ordered root digest, and the dependency DAG in
 Mermaid form. Rebuild or verify it with
@@ -198,3 +198,23 @@ lake build
 cd ../..
 python3 scripts/verify_lean_fta.py
 ```
+
+## Public modular-arithmetic catalog
+
+[`peano-library/mod5-source-validation-report.json`](peano-library/mod5-source-validation-report.json)
+is the unaltered validation report for the 26 theorem specifications imported into Peano Lab's
+public checked catalog. It records source catalog hash
+`91c88c1f3311cc0dc540671b169c270758ff6211e77716ed07bd3dd4f55c8380`, deterministic replay,
+empty-context kernel acceptance, certificate hashes, and a 21,515-node/depth-66 maximum. The source
+revision and exact MIT notice are preserved in [`peano-library/NOTICE.md`](peano-library/NOTICE.md).
+
+The report predates the public integration and therefore marks three certificates as exceeding the
+then-current 4,096-node `use` ceiling. The public catalog raises only that untrusted import resource
+limit to 32,768; no kernel rule changes. Repository regressions cold-replay all 26 certificates
+twice, match every retained hash and metric, reject a mutated capstone target, and exercise the
+short live `use`/`apply`/`exact` route.
+
+The reconciled runtime keeps all 26 source records for provenance. Fourteen are
+identical to independently developed M20 records, so a guarded union exposes
+those once and adds the twelve genuinely new modular capstones. The result is
+63 unique checked Peano theorems; incompatible same-name records fail closed.

@@ -54,8 +54,8 @@ does not determine the architecture.
 - [x] Add both constructive normal forms for non-divisibility.
 - [x] Add modulus-independent quotient-and-remainder transport through
       addition and squaring.
-- [x] Replay and independently check all 51 total library entries and enforce
-      the live 4,096-node/depth-128 import bound.
+- [x] Replay and independently check all 63 unique library entries and enforce
+      the live 32,768-node/depth-128 import bound.
 - [x] Generate a deterministic JSON snapshot, exact metrics, certificate hashes,
       and Mermaid dependency graph.
 
@@ -118,13 +118,19 @@ does not determine the architecture.
 
 ## Current acceptance record
 
-- Checked runtime: 51 theorems, of which 28 are the M20 extension.
-- Research catalog: 75 nodes — 23 `checked_existing`, 28 `checked_m20`, 20
+- Checked runtime: 63 unique theorems — 23 baseline and 40 post-baseline.
+  The latter are the 28-node M20 layer plus twelve unique upstream modular
+  capstones; fourteen compatible records overlap exactly.
+- Research catalog: 87 nodes — 23 `checked_existing`, 40 `checked_m20`, 20
   `planned_expressible`, and four `blocked_by_language`.
-- Largest new closed certificate: 1,601 nodes, depth 59.
+- Largest closed certificate: 21,515 nodes, depth 66.
 - Trusted-kernel changes: none.
 - Full FTA companion status: checked in Lean for every nonzero natural, with
   finite-list existence and permutation uniqueness and no `sorryAx`.
 - Full Peano FTA status: absent from `pa lib` pending closed certificates for
   the selected β-sequence/product encoding and its division/prime/Euclid
   dependency spine; no admitted theorem or hidden primitive.
+- Combined validation: 1,054 Peano tests on Python 3.10 and 3.12; 360 Lambda
+  tests; 34-source warning-as-error Jupyter Book; 198 deep links and 44
+  sessions/260 replayed commands; 141-note/988-link Obsidian graph; exact
+  snapshot, catalog, corpus, application-manifest, and Lean FTA audits.
