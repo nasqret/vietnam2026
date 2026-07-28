@@ -319,6 +319,7 @@ def test_wmi_proof_request_is_file_backed_allowlisted_and_ledgered() -> None:
     common = (SCRIPTS / "wmi_common.sh").read_text(encoding="utf-8")
     local = (SCRIPTS / "wmi_prove_theorem.sh").read_text(encoding="utf-8")
     submit = (SCRIPTS / "submit_wmi_slurm_job.sh").read_text(encoding="utf-8")
+    job = (SLURM / "peano_wmi_prove_theorem.sbatch").read_text(encoding="utf-8")
     assert "slurm/peano_wmi_prove_theorem.sbatch" in common
     assert "peano_wmi_validate_request_id" in common
     assert "peano_policy_proof_request.py receive" in local
@@ -327,6 +328,8 @@ def test_wmi_proof_request_is_file_backed_allowlisted_and_ledgered() -> None:
     assert 'proof_manifest=logs/proof-requests.tsv' in submit
     assert 'request_path="results/peano-policy/requests/$request_id.json"' in submit
     assert "peano_policy_proof_request.py verify" in submit
+    assert "max_steps=32" in local
+    assert "qwen3-1.7b-lora-v2-heavy" in job
     assert submit.index("sbatch --hold --parsable") < submit.index(
         '"$request_id" "$request_sha256" >> "$proof_manifest"'
     ) < submit.index("scontrol release \"$held_job\"")

@@ -25,6 +25,9 @@ a useful induction/order prover. Since that model-v1 result, the model-v2 librar
 retrieval prompt, balanced 100,000-row generator, tokenizer gate, depth-32 verifier-guided search,
 heavy 1.7B configuration, and persistent local/WMI/Helios REPL have been implemented. No model-v2 heavy
 checkpoint has yet been trained or evaluated, so its proof quality and search gain remain unknown.
+The reconciled authority is now 63 public entries, seven dependency-closed import exclusions, and
+56 permitted records; pre-reconciliation datasets and capacity reports must be regenerated and
+re-attested before training.
 The 4B comparison and expert iteration are still deferred.
 ```
 
@@ -393,11 +396,14 @@ family-OOD evaluation must withhold whole templates.
 
 The implemented model-v2 generator addresses the most damaging coverage failure without weakening
 genealogy.  It schedules complete, checked roots by *emitted transition rows* in three lanes:
-foundation, induction, and library, with weights $2:1:1$.  It can fill exactly 100,000 rows, and a
-capacity exercise produced 50,002 foundation, 25,000 induction, and 24,998 library rows from
-22,706 distinct roots.  At 10,000 rows or more it refuses publication unless all 25 public tactic
-heads and all 45 permitted theorem imports occur.  The four sealed targets are excluded by both
-name and canonical formula.  Every accepted root still reaches independent kernel-checked QED
+foundation, induction, and library, with weights $2:1:1$.  A pre-reconciliation capacity exercise
+under the former 45-import authority produced 50,002 foundation, 25,000 induction, and 24,998
+library rows from 22,706 distinct roots.  That historical result establishes the scheduler's
+100,000-row mechanics, not the current authority's capacity.  At 10,000 rows or more the current
+publication contract refuses a corpus unless all 25 public tactic heads and all 56 permitted
+theorem imports occur.  The four benchmark roots are excluded by name and canonical formula from
+generated targets, while their seven-name reverse-dependency closure is excluded from imports and
+retrieval.  Every accepted root still reaches independent kernel-checked QED
 before it contributes even one row, and a session is never cut to repair a quota.  This is an
 implemented generation capability, not yet an attested final model-v2 release or a training
 result.  Executed failures will remain a separate ranking/value corpus.
@@ -650,6 +656,10 @@ deterministically, their expanded certificates pass the empty-context kernel che
 has 21,515 nodes at depth 66. Publication changes theorem data and one untrusted import ceiling; the
 kernel and proof rules remain unchanged.
 
+A later reconciliation with the public general-arithmetic work brings that ordered catalog to 63
+entries. Its public ordered root is
+`d0f9070a2677a03eeca8ce2d1b83bcee04df3c907ef8cec2f797ab5ef99e5db0`.
+
 For training, this is now a new content-addressed `model-v2` library authority, not a silent
 extension of model-v1. The prompt exposes retrieved lemma names and canonical statements, and the
 balanced data generator creates downstream `use` and composition trajectories. Once the exact
@@ -733,15 +743,25 @@ sufficiency of that representation must be measured rather than assumed.
 The design correction is now code, although the heavy experiment has not run.  Its most important
 idea is that **what identifies the theorem authority is not what must fit in every prompt**.
 
-The complete checked identity contains exactly 45 theorem records: the public catalog of 49 minus
-the four sealed evaluation targets. Constructing it replays every theorem, independently checks
-the resulting closed certificate, and binds the canonical statement, dependency tuple,
-source-spec hash, exact tactic-script hash, expanded-certificate hash, and proof node/depth metrics.
-That versioned document's digest is the library authority consumed by dataset attestation,
-training manifests, evaluation, search, and the REPL.
+The public catalog contains exactly 63 ordered theorem records and has root
+`d0f9070a2677a03eeca8ce2d1b83bcee04df3c907ef8cec2f797ab5ef99e5db0`.
+The four benchmark goals are `le_trans`, `le_antisymm`, `le_total`, and
+`mul_eq_zero`. Merely subtracting those names would be unsound experimental
+bookkeeping: `mul_ne_zero` and `two_large_factors_impossible` depend directly on
+`mul_eq_zero`, while `prime_two` depends on it transitively through
+`two_large_factors_impossible`. Model-v2 therefore excludes that complete
+seven-name reverse-dependency closure from imports and retains exactly 56 records.
+
+Constructing the complete checked identity replays every permitted theorem,
+independently checks the resulting closed certificate, and binds the canonical
+statement, dependency tuple, source-spec hash, exact tactic-script hash,
+expanded-certificate hash, and proof node/depth metrics. That versioned document's
+SHA-256 is `3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439`;
+it is the library authority consumed by dataset attestation, training manifests,
+evaluation, search, and the REPL.
 
 The model does not need certificate hashes and node counts to choose `use add_assoc`. Its prompt
-view is therefore a separate sorted projection of the same 45 names and canonical statements, with
+view is therefore a separate sorted projection of the same 56 names and canonical statements, with
 its own statement-projection digest. For each proof state, a small deterministic weighted
 token/ngram retriever selects eight records. The prompt contains those records, the repository-owned
 25-head complete-line grammar, and the full checked-identity hash. This separation gives the model
@@ -813,7 +833,7 @@ that training manifest.  It checks the frozen held-out contract, zero-contaminat
 train/validation hashes, capability preimage, and versioned prompt authority before loading or
 executing the adapter; it does not replace those facts with a convenient hard-coded environment.
 For the historical run that means the fixed `model-v1` authority. For model-v2 it additionally
-means the full checked 45-theorem identity and the separate prompt-visible statement projection;
+means the full checked 56-theorem identity and the separate prompt-visible statement projection;
 neither may be reconstructed from an adapter label. The evaluation report then embeds the
 training-manifest identity, exact decode policy, evaluator source hash, goal-set hash, seed,
 budgets, complete attempted tactic sequences, and per-attempt outcomes.
@@ -886,9 +906,9 @@ provenance remains a failed job.
 
 #### Keeping model-v2 loaded for an interactive session
 
-The one-shot command above is the historical model-v1 path: it abandons a rollout after its first
-failing tactic. Model-v2 has a separate persistent client that loads one adapter once and reuses it
-across theorem queries:
+The guarded one-shot command now targets the attested model-v2 heavy adapter and uses bounded
+kernel-guided search; it fails closed until that adapter exists. Model-v2 also has a persistent
+client that loads one adapter once and reuses it across theorem queries:
 
 ```console
 python3 scripts/peano_policy_repl.py \
@@ -941,7 +961,8 @@ limitations remain:
   or quality measurement exists;
 - the 100,000-row balanced generator is implemented and capacity-tested, but its final corpus must
   be generated, split, replay-attested, and passed through the tokenizer gate under the current
-  45-theorem identity;
+  56-theorem identity
+  (`3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439`);
 - the four-goal protocol set is a regression fixture, not a statistically useful final test, and
   hard whole-template OOD sets plus human-authored problems still need to be sealed;
 - depth-32 verifier-guided beam search is implemented, but its gain with a trained model-v2 policy

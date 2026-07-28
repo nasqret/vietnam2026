@@ -627,6 +627,14 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   and `checker.py` remains 234 lines. No model-v2 checkpoint or quality result is claimed yet;
   training, baselines, artifact transfer, and result recording keep M19 open.
 
+  The 63-theorem reconciliation supersedes that 45-record preflight for the heavy run. Four fixed
+  evaluation goals now induce seven excluded imports after reverse-dependency closure, leaving 56
+  permitted checked theorems under identity `3ce83721…96439`. The generated public catalog has
+  ordered root `d0f9070a…e5db0`. A fresh 10,000-row gate produced 2,274 kernel QEDs, lanes
+  4,999/2,500/2,501, all 25 tactic heads, all 56 imports, split 7,838/1,021/1,141, and passed
+  independent re-attestation with zero held-out contamination. The older `a6c13cdc…` authority is
+  retained only as historical pre-reconciliation evidence and must not train the current model.
+
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search
 performance work beyond the explicit tactic limits remain outside this plan. M14 is the

@@ -126,21 +126,30 @@ certificate, and held-out label never enter the policy prompt.
 
 Model-v2 keeps the same one-line completion boundary but adds two observation
 channels before `<state>`: the exact compact tactic grammar and a deterministic
-retrieval block.  Its library has two deliberately different identities:
+retrieval block.  Its public source catalog contains 63 ordered entries and has
+root `d0f9070a2677a03eeca8ce2d1b83bcee04df3c907ef8cec2f797ab5ef99e5db0`.
+The model-v2 library has two deliberately different identities:
 
-- the **full checked identity** is the authority record for all 45 permitted
+- the **full checked identity** is the authority record for all 56 permitted
   theorems.  For each theorem it binds the canonical statement, dependencies,
   source-spec hash, authored-script hash, independently checked expanded
-  certificate hash, proof nodes, and proof depth;
+  certificate hash, proof nodes, and proof depth.  Its SHA-256 is
+  `3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439`;
 - the **prompt projection** is the sorted name/canonical-statement view used for
-  retrieval.  It has its own statement-projection hash, while each prompt
+  retrieval over those same 56 records.  It has its own statement-projection hash, while each prompt
   contains only eight deterministically retrieved `name : statement` records
   plus the full checked-identity hash.
 
 The prompt projection is useful model context, never an attestation substitute.
 Dataset, adapter, evaluator, and interactive inference authority is derived
-from the full 45-theorem checked identity.  The four sealed benchmark theorems
-are absent from both identities and cannot be retrieved or imported.
+from the full 56-theorem checked identity.  The four benchmark goals are
+`le_trans`, `le_antisymm`, `le_total`, and `mul_eq_zero`.  All four are excluded
+from generated targets.  Import sealing additionally follows reverse dependency
+edges: `mul_ne_zero` and `two_large_factors_impossible` depend directly on
+`mul_eq_zero`, and `prime_two` depends on it transitively through
+`two_large_factors_impossible`.  Those seven names are absent from both library
+identities and cannot be retrieved or imported.  The evaluation set therefore
+still has four goals; the import-exclusion closure has seven entries.
 
 The tokenizer vocabulary is not modified.  The implemented token-audit gate
 loads the exact pinned tokenizer revision and checks every selected train and
@@ -330,15 +339,19 @@ checkpoint:
   `compact_arith`;
 - explicit theorem reuse, specialization, `have`, and `suffices`; and
 - explicit coverage of every one of the 25 permitted tactic heads and every
-  one of the 45 allowed theorem imports.
+  one of the 56 allowed theorem imports.
 
 For any run of at least 10,000 rows, publication fails if even one tactic head
-or theorem import is absent.  The four held-out theorem names and canonical
-statements are excluded before generation and retrieval.  A deterministic
-100,000-row capacity exercise filled the budget with 50,002 foundation,
-25,000 induction, and 24,998 library rows from 22,706 distinct checked roots.
-That demonstrates that the implemented schedule can fill the heavy-run budget;
-it is not a claim that a final model-v2 dataset has been published or trained.
+or permitted theorem import is absent.  The four held-out theorem names and
+canonical statements are excluded before target generation; the complete
+seven-name reverse-dependency closure is excluded from retrieval and imports.
+A deterministic pre-reconciliation capacity exercise under the former
+45-import authority filled 100,000 rows with 50,002 foundation, 25,000 induction,
+and 24,998 library rows from 22,706 distinct checked roots.  That historical
+exercise demonstrates the scheduler mechanics, not capacity under the current
+63-entry catalog and 56-import identity.  The current corpus must be regenerated
+and re-attested before the heavy run, and its exact lane/root counts must come
+from that new attestation.
 Actually executed failures remain a separate future ranking/value corpus and
 are never relabelled as positive SFT examples.
 
@@ -628,10 +641,11 @@ It writes digest-named report, optional `.pa`, and terminal run-summary files un
 rather than masquerading as an infrastructure crash. The wrapper prints the request ID used in
 those filenames.
 
-That command remains the historical model-v1 one-shot interface.  Model-v2
-adds a persistent terminal client so an interactive WMI allocation pays model
-loading cost once and can try many theorems in one session.  Local inference,
-when the machine can load the adapter, uses:
+The guarded one-shot job now targets the attested model-v2 heavy adapter and
+defaults to the same depth-32 search budget; before that adapter exists it
+fails closed. Model-v2 also adds a persistent terminal client so an interactive
+WMI allocation pays model loading cost once and can try many theorems in one
+session. Local inference, when the machine can load the adapter, uses:
 
 ```console
 python3 scripts/peano_policy_repl.py \
@@ -734,6 +748,14 @@ enter training or development. The exact public capstone is therefore excluded f
 claims unless its library entry is masked. It remains useful as a retrieval/application and
 end-to-end kernel-replay regression.
 
+A later reconciliation with the public general-arithmetic work brings the
+ordered catalog to 63 entries, with public root
+`d0f9070a2677a03eeca8ce2d1b83bcee04df3c907ef8cec2f797ab5ef99e5db0`.
+Model-v2 does not obtain 59 imports by subtracting only the four goal names.
+It excludes their complete seven-name reverse-dependency closure and binds the
+remaining 56 records under full identity
+`3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439`.
+
 ### 10.4 Model-v2 correction stack: implemented, training pending
 
 The first run consumed 1,600 examples—19.6% of the full train split and less than one epoch of its
@@ -743,21 +765,25 @@ order states, and has no foundation-lemma uses. All 27 validation schemas also o
 held-out reference routes require 10--23 actions and induction/lemma-use decisions unseen in
 training.
 
-In a reproducible local full-surface audit, the public catalog contributes 474 prospective model-v2
+In the pre-reconciliation full-surface audit, the 49-entry public catalog contributed 474 prospective model-v2
 transitions when each dependency becomes an explicit `use`: 427 authored commands plus 47 imports.
 This seed has longer proofs and richer contexts, but only one `induction` label. Naive concatenation under the old sampler would expose the
 optimizer to about 88 catalog rows in expectation and gives the singleton induction row only about
 an 18.6% chance of being seen. The implemented model-v2 stack therefore uses a balanced generator,
-not merely a larger concatenated file.
+not merely a larger concatenated file. That audit remains useful historical
+evidence for the sampler diagnosis, but its transition count is not the current
+63-entry authority's capacity result.
 
 The correction stack now present in the repository is:
 
-1. a 45-theorem checked identity that independently replays every permitted public theorem and
-   binds statement, dependency, source, script, expanded certificate, node, and depth data;
+1. a 56-theorem checked identity, SHA-256
+   `3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439`, that independently
+   replays every permitted public theorem and binds statement, dependency, source, script,
+   expanded certificate, node, and depth data;
 2. a separate prompt projection with compact grammar and eight deterministic retrieved
    name/statement records, while the full checked identity remains the authority hash;
 3. a proof-first 100,000-row generator balanced by emitted rows at 2:1:1 across foundation,
-   induction, and library lanes, with hard coverage gates for all 25 tactic heads and all 45
+   induction, and library lanes, with hard coverage gates for all 25 tactic heads and all 56
    imports;
 4. a no-truncation tokenizer audit over every example selected by the exact training config;
 5. depth-32 transactional canonical-state beam search with bounded sibling generation and an

@@ -23,9 +23,12 @@ from peano_lab.kernel.formulas import parse_formula_with_names, pretty_formula
 import peano_lab.library.theorems as theorem_library
 from peano_lab.library.theorems import MOD5_THEOREMS, THEOREMS, get, replay
 from training.peano_policy.library_identity import (
+    EXPECTED_MODEL_V2_LIBRARY_COUNT,
+    EXPECTED_PUBLIC_LIBRARY_COUNT,
     LIBRARY_IDENTITY_FORMAT,
     LIBRARY_IDENTITY_VERSION,
     MOD5_SOURCE_REPORT,
+    PUBLIC_LIBRARY_CATALOG,
     SEALED_LIBRARY_GOALS,
     SEALED_LIBRARY_NAMES,
     LibraryIdentityError,
@@ -33,11 +36,12 @@ from training.peano_policy.library_identity import (
     model_v2_library_identity,
     model_v2_library_identity_record,
     model_v2_library_identity_sha256,
+    sealed_library_closure,
 )
 
 
 EXPECTED_IDENTITY_SHA256 = (
-    "a6c13cdc36115f8407d4932b22f022d0c3c012d8a64cbe41c1f0a158006ced5c"
+    "3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439"
 )
 
 
@@ -80,18 +84,25 @@ def test_identity_import_is_light_and_does_not_load_the_prover() -> None:
     assert completed.returncode == 0, completed.stderr
 
 
-def test_full_identity_replays_exactly_45_closed_kernel_certificates() -> None:
+def test_full_identity_replays_exactly_56_closed_kernel_certificates() -> None:
     clear_model_v2_library_identity_cache()
     replay.cache_clear()
 
     records = model_v2_library_identity()
+    excluded_names = sealed_library_closure(THEOREMS)
     expected_names = sorted(
-        spec.name for spec in THEOREMS if spec.name not in SEALED_LIBRARY_NAMES
+        spec.name for spec in THEOREMS if spec.name not in excluded_names
     )
 
-    assert len(records) == 45
+    assert len(THEOREMS) == EXPECTED_PUBLIC_LIBRARY_COUNT == 63
+    assert len(records) == EXPECTED_MODEL_V2_LIBRARY_COUNT == 56
     assert [record.name for record in records] == expected_names
-    assert {record.name for record in records}.isdisjoint(SEALED_LIBRARY_NAMES)
+    assert {record.name for record in records}.isdisjoint(excluded_names)
+    assert excluded_names == SEALED_LIBRARY_NAMES | {
+        "mul_ne_zero",
+        "two_large_factors_impossible",
+        "prime_two",
+    }
     assert model_v2_library_identity_sha256() == EXPECTED_IDENTITY_SHA256
     sealed_statements = {
         _canonical_statement(statement) for _, statement in SEALED_LIBRARY_GOALS
@@ -131,7 +142,7 @@ def test_identity_rejects_a_renamed_alias_of_a_sealed_target(
     clear_model_v2_library_identity_cache()
 
 
-def test_identity_rejects_an_allowed_dependency_on_a_sealed_theorem(
+def test_identity_rejects_an_authority_change_that_adds_a_sealed_descendant(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     replacement = tuple(
@@ -142,7 +153,7 @@ def test_identity_rejects_an_allowed_dependency_on_a_sealed_theorem(
     )
     monkeypatch.setattr(theorem_library, "THEOREMS", replacement)
     clear_model_v2_library_identity_cache()
-    with pytest.raises(LibraryIdentityError, match="depends outside model-v2: le_total"):
+    with pytest.raises(LibraryIdentityError, match="public catalog source mismatch"):
         model_v2_library_identity()
     clear_model_v2_library_identity_cache()
 
@@ -182,6 +193,18 @@ def test_all_26_imported_records_match_the_public_source_report() -> None:
         assert record.certificate_sha256 == row["certificate_sha256"]
         assert record.proof_nodes == row["proof_nodes"]
         assert record.proof_depth == row["proof_depth"]
+
+
+def test_all_63_source_rows_match_the_public_checked_catalog() -> None:
+    catalog = json.loads(PUBLIC_LIBRARY_CATALOG.read_text(encoding="utf-8"))
+    rows = catalog["theorems"]
+
+    assert catalog["schema"] == "peano-library-snapshot-v1"
+    assert catalog["theorem_count"] == len(rows) == len(THEOREMS) == 63
+    assert [row["name"] for row in rows] == [spec.name for spec in THEOREMS]
+    assert catalog["ordered_root_sha256"] == (
+        "d0f9070a2677a03eeca8ce2d1b83bcee04df3c907ef8cec2f797ab5ef99e5db0"
+    )
 
 
 def test_identity_document_is_canonical_and_cached_state_cannot_be_poisoned() -> None:

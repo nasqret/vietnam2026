@@ -51,8 +51,12 @@ failed at pass@16 (`171428`), while one fresh direct-witness theorem succeeded o
 and replayed to a seven-node kernel-checked proof (`171430`). This is a real within-template success,
 but attribution to LoRA training awaits the pretrained-base baseline; the adapter is not yet a
 dependable induction/order prover. The replacement experiment is now implemented as a distinct
-`model-v2`: 45 permitted public theorems are bound by a full independently checked content identity,
-while four benchmark theorems are sealed from imports and generated targets. Its proof-first
+`model-v2`: the public catalog has 63 ordered entries (root
+`d0f9070a2677a03eeca8ce2d1b83bcee04df3c907ef8cec2f797ab5ef99e5db0`). The four benchmark
+goals remain `le_trans`, `le_antisymm`, `le_total`, and `mul_eq_zero`; reverse-dependency sealing
+excludes those roots plus `mul_ne_zero`, `two_large_factors_impossible`, and `prime_two` from
+imports. The remaining 56 public theorems are bound by full independently checked identity
+`3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439`. Its proof-first
 100,000-row schedule balances foundational, induction/IH, and library composition transitions at
 2:1:1, covers all 25 tactic heads, and passes every selected row through a pinned-tokenizer
 no-truncation gate. A bounded depth-32 search retries failed candidates at the same immutable state,

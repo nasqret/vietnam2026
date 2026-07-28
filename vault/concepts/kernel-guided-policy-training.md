@@ -13,9 +13,12 @@ original goal.
 
 The repository-owned model-v2 prompt exposes the ordered goals, focus, logic mode, complete-line
 grammar, and at most eight deterministically retrieved `name : statement` records. Its authority
-digest identifies all 45 permitted theorems by canonical statement, dependencies, source/script
-hashes, independently checked certificate hash, node count, and depth. The prompt shows only the
-small retrieval projection; manifests retain the complete checked identity. It exposes no hidden
+digest identifies all 56 permitted theorems by canonical statement, dependencies, source/script
+hashes, independently checked certificate hash, node count, and depth. That full identity is
+`3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439`.
+The public catalog has 63 ordered entries and root
+`d0f9070a2677a03eeca8ce2d1b83bcee04df3c907ef8cec2f797ab5ef99e5db0`.
+The prompt shows only the small retrieval projection; manifests retain the complete checked identity. It exposes no hidden
 theorem-family label, certificate, or privileged solver. The supervised runtime masks prompt tokens
 and trains on the bare tactic followed by EOS.
 
@@ -48,7 +51,10 @@ the model cannot widen its logic mode, tactic set, or importable theorem list.
 Training data enters through the [[compact-headless-proof-runner]] and is separated with a
 [[genealogy-safe-proof-data-split]]. Model-v2's deterministic 100,000-row schedule targets a 2:1:1
 mixture of foundational, induction/IH, and checked-library retrieval/composition transitions; a
-10,000-row gate requires all 25 tactic heads and all 45 allowed imports. Every selected row must
+10,000-row gate requires all 25 tactic heads and all 56 allowed imports. The four evaluation goals
+are `le_trans`, `le_antisymm`, `le_total`, and `mul_eq_zero`; import sealing additionally excludes
+their three public descendants, `mul_ne_zero`, `two_large_factors_impossible`, and `prime_two`.
+Every selected row must
 also fit the pinned tokenizer without truncation before training starts.
 
 The implemented [[verifier-guided-policy-evaluation-and-search]] asks for several complete lines at

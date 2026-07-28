@@ -3,8 +3,9 @@
 This module deliberately has no eager Peano Lab imports.  Reading constants or
 importing training helpers must not replay forty-five theorem certificates.
 The first call to :func:`model_v2_library_identity` loads the public library,
-replays every permitted theorem, asks the independent kernel to check the
-resulting *closed* certificate again, and freezes the resulting records.
+computes the dependency closure of the sealed benchmark targets, replays every
+remaining theorem, asks the independent kernel to check the resulting *closed*
+certificate again, and freezes the resulting records.
 
 Hash preimages are intentionally explicit:
 
@@ -49,6 +50,9 @@ SEALED_LIBRARY_GOALS: tuple[tuple[str, str], ...] = (
 )
 SEALED_LIBRARY_NAMES = frozenset(name for name, _ in SEALED_LIBRARY_GOALS)
 
+EXPECTED_PUBLIC_LIBRARY_COUNT = 63
+EXPECTED_MODEL_V2_LIBRARY_COUNT = 56
+
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 PEANO_PYTHON = REPOSITORY_ROOT / "peano-lab" / "py"
 MOD5_SOURCE_REPORT = (
@@ -57,10 +61,55 @@ MOD5_SOURCE_REPORT = (
     / "peano-library"
     / "mod5-source-validation-report.json"
 )
+PUBLIC_LIBRARY_CATALOG = (
+    REPOSITORY_ROOT / "artifacts" / "peano-library" / "catalog-v1.json"
+)
+PUBLIC_LIBRARY_SOURCE = (
+    PEANO_PYTHON / "peano_lab" / "library" / "theorems.py"
+)
 
 
 class LibraryIdentityError(RuntimeError):
     """The public theorem authority could not be independently identified."""
+
+
+def sealed_library_closure(
+    specifications: tuple["TheoremSpec", ...],
+) -> frozenset[str]:
+    """Return benchmark targets and every theorem depending on one of them.
+
+    A descendant would leak a sealed certificate even if its own name and
+    statement differ from the benchmark.  Computing this reverse dependency
+    closure makes that information-flow boundary explicit and fail-closed.
+    """
+
+    names = tuple(spec.name for spec in specifications)
+    if len(names) != len(set(names)):
+        raise LibraryIdentityError("public theorem library has duplicate names")
+    missing = SEALED_LIBRARY_NAMES.difference(names)
+    if missing:
+        raise LibraryIdentityError(
+            "sealed theorem(s) are absent from the public library: "
+            + ", ".join(sorted(missing))
+        )
+    known = frozenset(names)
+    for spec in specifications:
+        unknown = set(spec.dependencies).difference(known)
+        if unknown:
+            raise LibraryIdentityError(
+                f"public theorem {spec.name!r} has unknown dependencies: "
+                + ", ".join(sorted(unknown))
+            )
+
+    excluded = set(SEALED_LIBRARY_NAMES)
+    changed = True
+    while changed:
+        changed = False
+        for spec in specifications:
+            if spec.name not in excluded and excluded.intersection(spec.dependencies):
+                excluded.add(spec.name)
+                changed = True
+    return frozenset(excluded)
 
 
 def _canonical_json_bytes(value: object) -> bytes:
@@ -131,6 +180,79 @@ def _load_mod5_report() -> dict[str, object]:
     return report
 
 
+def _load_public_catalog() -> dict[str, object]:
+    try:
+        raw = PUBLIC_LIBRARY_CATALOG.read_bytes()
+        catalog = json.loads(raw)
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise LibraryIdentityError("cannot read the public library catalog") from exc
+    if type(catalog) is not dict:
+        raise LibraryIdentityError("public library catalog must be an object")
+    return catalog
+
+
+def _public_catalog_rows(
+    catalog: dict[str, object],
+    specifications: tuple["TheoremSpec", ...],
+) -> dict[str, dict[str, object]]:
+    rows = catalog.get("theorems")
+    if (
+        catalog.get("schema") != "peano-library-snapshot-v1"
+        or catalog.get("theorem_count") != EXPECTED_PUBLIC_LIBRARY_COUNT
+        or type(rows) is not list
+        or len(rows) != EXPECTED_PUBLIC_LIBRARY_COUNT
+    ):
+        raise LibraryIdentityError("public library catalog has invalid metadata")
+    if len(specifications) != EXPECTED_PUBLIC_LIBRARY_COUNT:
+        raise LibraryIdentityError(
+            "public theorem library must contain exactly "
+            f"{EXPECTED_PUBLIC_LIBRARY_COUNT} theorems, got {len(specifications)}"
+        )
+    if catalog.get("theorem_source") != (
+        "peano-lab/py/peano_lab/library/theorems.py"
+    ):
+        raise LibraryIdentityError("public library catalog names the wrong source")
+    source_digest = hashlib.sha256(PUBLIC_LIBRARY_SOURCE.read_bytes()).hexdigest()
+    if catalog.get("theorem_source_sha256") != source_digest:
+        raise LibraryIdentityError("public library catalog source hash is stale")
+    expected_root = hashlib.sha256(_canonical_json_bytes(rows)).hexdigest()
+    if catalog.get("ordered_root_sha256") != expected_root:
+        raise LibraryIdentityError("public library catalog ordered root is invalid")
+
+    result: dict[str, dict[str, object]] = {}
+    ordered_names: list[str] = []
+    for index, (row, spec) in enumerate(zip(rows, specifications, strict=True)):
+        if type(row) is not dict or type(row.get("name")) is not str:
+            raise LibraryIdentityError("public library catalog has a malformed row")
+        name = row["name"]
+        if name in result:
+            raise LibraryIdentityError(f"duplicate public catalog row {name!r}")
+        expected_source = {
+            "index": index,
+            "name": spec.name,
+            "statement": spec.statement,
+            "dependencies": list(spec.dependencies),
+            "script": list(spec.script),
+            "summary": spec.summary,
+            "statement_sha256": hashlib.sha256(
+                spec.statement.encode("utf-8")
+            ).hexdigest(),
+            "script_sha256": hashlib.sha256(
+                ("\n".join(spec.script) + "\n").encode("utf-8")
+            ).hexdigest(),
+        }
+        for key, expected in expected_source.items():
+            if row.get(key) != expected:
+                raise LibraryIdentityError(
+                    f"public catalog source mismatch for {spec.name!r}: {key}"
+                )
+        result[name] = row
+        ordered_names.append(name)
+    if ordered_names != [spec.name for spec in specifications]:
+        raise LibraryIdentityError("public library catalog order differs from source")
+    return result
+
+
 def _mod5_rows(report: dict[str, object]) -> dict[str, dict[str, object]]:
     rows = report.get("lemmas")
     if type(rows) is not list or not rows:
@@ -197,9 +319,28 @@ def _validate_mod5_record(
         )
 
 
+def _validate_public_catalog_record(
+    record: LibraryIdentityRecord,
+    row: dict[str, object],
+) -> None:
+    expected = {
+        "certificate_representation": "python-dataclass-repr-v1",
+        "certificate_sha256": record.certificate_sha256,
+        "dependencies": list(record.dependencies),
+        "proof_depth": record.proof_depth,
+        "proof_nodes": record.proof_nodes,
+    }
+    differing = [key for key, value in expected.items() if row.get(key) != value]
+    if differing:
+        raise LibraryIdentityError(
+            f"public catalog replay mismatch for {record.name!r}: "
+            + ", ".join(differing)
+        )
+
+
 @lru_cache(maxsize=1)
 def model_v2_library_identity() -> tuple[LibraryIdentityRecord, ...]:
-    """Replay and return the exact 45-theorem model-v2 library identity.
+    """Replay and return the exact 56-theorem model-v2 library identity.
 
     Results are sorted by theorem name rather than source order.  Source order
     remains committed by each theorem's dependency tuple and source-spec hash.
@@ -213,14 +354,7 @@ def model_v2_library_identity() -> tuple[LibraryIdentityRecord, ...]:
     from peano_lab.library.theorems import MOD5_THEOREMS, THEOREMS, replay
 
     names = [spec.name for spec in THEOREMS]
-    if len(names) != len(set(names)):
-        raise LibraryIdentityError("public theorem library has duplicate names")
-    sealed_missing = SEALED_LIBRARY_NAMES.difference(names)
-    if sealed_missing:
-        raise LibraryIdentityError(
-            "sealed theorem(s) are absent from the public library: "
-            + ", ".join(sorted(sealed_missing))
-        )
+    excluded_names = sealed_library_closure(THEOREMS)
 
     canonical_sealed = {
         name: _canonical_closed_statement(statement)
@@ -234,9 +368,9 @@ def model_v2_library_identity() -> tuple[LibraryIdentityRecord, ...]:
                 f"sealed theorem {name!r} no longer states its frozen target"
             )
     sealed_statements = frozenset(canonical_sealed.values())
-    allowed_names = frozenset(names).difference(SEALED_LIBRARY_NAMES)
+    allowed_names = frozenset(names).difference(excluded_names)
     for spec in THEOREMS:
-        if spec.name in SEALED_LIBRARY_NAMES:
+        if spec.name in excluded_names:
             continue
         statement = _canonical_closed_statement(spec.statement)
         if statement in sealed_statements:
@@ -257,10 +391,11 @@ def model_v2_library_identity() -> tuple[LibraryIdentityRecord, ...]:
         raise LibraryIdentityError(
             "modular-arithmetic source report does not identify the exact import"
         )
+    public_rows = _public_catalog_rows(_load_public_catalog(), THEOREMS)
 
     records: list[LibraryIdentityRecord] = []
     for spec in THEOREMS:
-        if spec.name in SEALED_LIBRARY_NAMES:
+        if spec.name in excluded_names:
             continue
         checked = replay(spec.name)
         if checked.spec != spec:
@@ -295,12 +430,17 @@ def model_v2_library_identity() -> tuple[LibraryIdentityRecord, ...]:
         )
         if spec.name in mod5_names:
             _validate_mod5_record(record, report_rows[spec.name])
+        _validate_public_catalog_record(record, public_rows[spec.name])
         records.append(record)
 
-    expected_count = len(THEOREMS) - len(SEALED_LIBRARY_NAMES)
-    if len(records) != expected_count or expected_count != 45:
+    expected_count = len(THEOREMS) - len(excluded_names)
+    if (
+        len(records) != expected_count
+        or expected_count != EXPECTED_MODEL_V2_LIBRARY_COUNT
+    ):
         raise LibraryIdentityError(
-            f"model-v2 library must contain exactly 45 theorems, got {len(records)}"
+            "model-v2 library must contain exactly "
+            f"{EXPECTED_MODEL_V2_LIBRARY_COUNT} theorems, got {len(records)}"
         )
     return tuple(sorted(records, key=lambda item: item.name))
 
@@ -348,6 +488,9 @@ def clear_model_v2_library_identity_cache() -> None:
 __all__ = [
     "LIBRARY_IDENTITY_FORMAT",
     "LIBRARY_IDENTITY_VERSION",
+    "EXPECTED_PUBLIC_LIBRARY_COUNT",
+    "EXPECTED_MODEL_V2_LIBRARY_COUNT",
+    "PUBLIC_LIBRARY_CATALOG",
     "SEALED_LIBRARY_GOALS",
     "SEALED_LIBRARY_NAMES",
     "LibraryIdentityError",
@@ -356,4 +499,5 @@ __all__ = [
     "model_v2_library_identity_record",
     "model_v2_library_identity_sha256",
     "clear_model_v2_library_identity_cache",
+    "sealed_library_closure",
 ]

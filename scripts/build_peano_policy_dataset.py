@@ -65,6 +65,7 @@ from peano_lab.ui.prove import (  # noqa: E402
 from training.peano_policy.contract import prompt_environment  # noqa: E402
 from training.peano_policy.library_identity import (  # noqa: E402
     MOD5_SOURCE_REPORT,
+    PUBLIC_LIBRARY_CATALOG,
 )
 from training.peano_policy.prompt import (  # noqa: E402
     CapabilityIdentity,
@@ -384,6 +385,7 @@ def _compiler_manifest() -> dict[str, object]:
         REPOSITORY_ROOT / "training" / "peano_policy" / "prompt.py",
         REPOSITORY_ROOT / "training" / "peano_policy" / "library_identity.py",
         MOD5_SOURCE_REPORT,
+        PUBLIC_LIBRARY_CATALOG,
         *sorted((PEANO_PYTHON / "peano_lab").rglob("*.py")),
     )
     return {

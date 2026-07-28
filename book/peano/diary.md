@@ -1350,3 +1350,29 @@ current kernel. The correction protects the scientific statement “which librar
 policy?” The smaller name/statement projection remains useful model input; the full checked identity
 is the authority. Keeping those roles separate makes the prompt compact without making provenance
 vague.
+
+## 2026-07-28 — Sealing a target also seals its descendants
+
+The reconciled public ladder now contains 63 dependency-ordered entries, with ordered root
+`d0f9070a2677a03eeca8ce2d1b83bcee04df3c907ef8cec2f797ab5ef99e5db0`. The evaluation contract
+still has exactly four benchmark goals: `le_trans`, `le_antisymm`, `le_total`, and `mul_eq_zero`.
+That count is different from the number of theorem imports that must be withheld.
+
+Subtracting only those four names would leave `mul_ne_zero` and
+`two_large_factors_impossible` importable even though both declare `mul_eq_zero` as a direct
+dependency. It would also leave `prime_two` importable even though it depends transitively on
+`mul_eq_zero` through `two_large_factors_impossible`. Such a snapshot is not dependency-closed:
+either its declared proof authority reaches outside the permitted set, or the imported descendant
+carries information derived from the benchmark theorem back into training and retrieval. Renaming
+or wrapping a held-out result must not turn it into admissible supervision.
+
+Model-v2 therefore seals the reverse dependency closure of the four roots. The excluded import set
+has seven names: the four roots plus `mul_ne_zero`, `two_large_factors_impossible`, and `prime_two`.
+The remaining 56 public records form the permitted authority, and every dependency of every
+permitted record remains inside that authority. Its full independently checked identity is
+`3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439`.
+
+This is an experimental-authority correction, not a new proof rule. The kernel is unchanged. It
+does mean that datasets, capacity reports, adapters, and evaluation requests made under the former
+45-record identity cannot be relabelled as current model-v2 artifacts; the 56-record corpus must be
+regenerated and re-attested before training.

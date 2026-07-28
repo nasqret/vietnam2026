@@ -255,8 +255,8 @@
   delivery remains blocked on administrator-managed cache headers, while M17 is published to
   staging. The implementation, checked corpus,
   construction book, Obsidian knowledge base, kernel-judged evaluation protocol, live checked-
-  theorem reuse, 49-entry checked ladder (23-entry core plus 26 public modular-arithmetic lemmas),
-  certificate-producing `ring`, and bounded checked
+  theorem reuse, 63-entry checked ladder (23-entry core, 14 audited general-arithmetic additions,
+  and 26 public modular-arithmetic lemmas), certificate-producing `ring`, and bounded checked
   `norm_num` teaching surface are present. The odd-square induction closes through explicit
   `trans`/`rewrite` structure, while concrete coefficients can now be certified without obscuring
   the independent final check. M19's headless runner, first 10,000-row checked corpus, and policy
@@ -296,3 +296,10 @@
   Helios REPL are implemented. A fresh 1,000-row end-to-end audit passed with zero contamination;
   the complete gate is 1,103 Peano tests, Lambda 360 plus 36 subtests, 27 warning-clean book
   sources, and 193 links/170 commands. No model-v2 trained result exists yet.
+- M19 authority reconciliation on 2026-07-28 supersedes that preflight for future training. The
+  public ladder now has 63 checked theorems and ordered artifact root `d0f9070a…e5db0`. Four
+  benchmark goals induce a seven-name reverse-dependency exclusion; 56 theorems remain in the
+  independently replayed training authority `3ce83721…96439`. A fresh 10,000-row gate produced
+  2,274 kernel-checked sessions, exactly 4,999/2,500/2,501 foundation/induction/library rows,
+  covered all 25 tactic heads and all 56 imports, rebuilt as 7,838/1,021/1,141 rows, and passed a
+  second independent replay with zero held-out contamination. No model-v2 checkpoint exists yet.

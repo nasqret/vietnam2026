@@ -96,10 +96,20 @@ qed
 as a local cut; surface finalization contracts that cut and independently checks the resulting
 closed proof against the original stated goal.
 
-The public catalog now contains 49 dependency-ordered entries: the 23-entry core and a 26-entry
-extension through `mod5_fourth_power_one`. The extension's largest certificate has 21,515 nodes at
-depth 66, so the untrusted import ceiling is 32,768 nodes; the kernel is unchanged. A short reuse of
-the capstone is:
+The public catalog now contains 63 dependency-ordered entries: the 23-entry core, 14 audited
+general-arithmetic additions through `prime_two`, and the 26-entry modular extension through
+`mod5_fourth_power_one`. Its ordered root is
+`d0f9070a2677a03eeca8ce2d1b83bcee04df3c907ef8cec2f797ab5ef99e5db0`.
+The largest certificate has 21,515 nodes at depth 66, so the untrusted import ceiling is 32,768
+nodes; the kernel is unchanged.
+
+The model-v2 training authority is deliberately narrower than this public catalog. Its four
+benchmark goals are `le_trans`, `le_antisymm`, `le_total`, and `mul_eq_zero`; import sealing also
+removes the dependent `mul_ne_zero`, `two_large_factors_impossible`, and `prime_two`. The remaining
+56 records have full checked identity
+`3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439`.
+
+A short reuse of the capstone is:
 
 ```text
 pa prove forall n. ~(exists x. n = 5 * x) -> exists x. n * n * n * n = 5 * x + 1
@@ -267,12 +277,16 @@ The M7 theorem-library core contains twenty named, scripted entries: the fifteen
 arithmetic/order rungs plus five explicit helper lemmas, ending at
 `forall n m. n * m = 0 -> n = 0 \/ m = 0`. M11 extends the current index to twenty-three with
 `one_mul`, `mul_one`, and `add_mul`, the only missing orientations needed by certificate-producing
-commutative-semiring normalization. A public 26-entry modular-arithmetic extension then brings the
-current index to 49 and ends at `mod5_fourth_power_one`. Dependencies are introduced as ordinary hypotheses,
-then compiled away by untrusted, capture-avoiding proof-term cut elimination. The resulting closed
-certificate is independently checked against the original theorem. `pa lib <name>` shows that exact
-replay script; `pa lean <name>` exports the exact statement as a Lean 4 theorem over `Nat`, with one
-intentional proof stub and a Live Lean link for cross-checking.
+commutative-semiring normalization. Fourteen audited general-arithmetic entries then add equality
+transport, congruence, cancellation, basic order/zero reasoning, nonzero products, and `prime_two`.
+The public 26-entry modular-arithmetic extension brings the current index to 63 and ends at
+`mod5_fourth_power_one`. The ordered catalog root is
+`d0f9070a2677a03eeca8ce2d1b83bcee04df3c907ef8cec2f797ab5ef99e5db0`.
+Dependencies are introduced as ordinary hypotheses, then compiled away by
+untrusted, capture-avoiding proof-term cut elimination. The resulting closed certificate is
+independently checked against the original theorem. `pa lib <name>` shows that exact replay script;
+`pa lean <name>` exports the exact statement as a Lean 4 theorem over `Nat`, with one intentional
+proof stub and a Live Lean link for cross-checking.
 
 ## Polynomial identities with checked certificates
 

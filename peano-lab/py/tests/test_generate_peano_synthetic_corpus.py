@@ -33,6 +33,7 @@ from training.peano_policy.contract import (  # noqa: E402
 )
 from training.peano_policy.library_identity import (  # noqa: E402
     MOD5_SOURCE_REPORT,
+    PUBLIC_LIBRARY_CATALOG,
     model_v2_library_identity_sha256,
 )
 
@@ -70,15 +71,16 @@ def test_catalog_is_diverse_model_v2_surface_data_not_a_second_prover() -> None:
     assert {schema.lane for schema in generator.SCHEMAS} == set(generator.LANES)
     assert len(generator.SCHEMAS) == len({schema.name for schema in generator.SCHEMAS})
     assert len(generator.SCHEMAS) >= 25
-    assert generator.CATALOG_VERSION == 3
+    assert generator.CATALOG_VERSION == 4
     assert generator.GENERATOR == "proof-first-synthetic-v2"
     assert generator.POLICY_CAPABILITIES.label == "model-v2"
-    assert len(THEOREMS) == 49
-    assert len(generator.MODEL_V2_THEOREMS) == 45
+    assert len(THEOREMS) == 63
+    assert len(generator.MODEL_V2_THEOREMS) == 56
     assert generator.HELD_OUT_NAMES == frozenset(
         name for name, _ in HELD_OUT_POLICY_GOALS
     )
-    assert not generator.MODEL_V2_THEOREMS & generator.HELD_OUT_NAMES
+    assert len(generator.EXCLUDED_LIBRARY_NAMES) == 7
+    assert not generator.MODEL_V2_THEOREMS & generator.EXCLUDED_LIBRARY_NAMES
     assert generator.HELD_OUT_FORMULAS == frozenset(canonical_held_out_formulas())
     assert dict(generator.LANE_WEIGHTS) == {
         "foundation": 2,
@@ -95,6 +97,7 @@ def test_catalog_is_diverse_model_v2_surface_data_not_a_second_prover() -> None:
         "training/peano_policy/prompt.py",
         "training/peano_policy/library_identity.py",
         MOD5_SOURCE_REPORT.relative_to(REPOSITORY_ROOT).as_posix(),
+        PUBLIC_LIBRARY_CATALOG.relative_to(REPOSITORY_ROOT).as_posix(),
     }
     assert required <= set(semantic_sources)
     assert "ProofSession" not in source
@@ -234,13 +237,15 @@ def test_thousand_row_curriculum_is_balanced_complete_and_holdout_safe(
     assert counts["tactic_heads"]["suffices"] > 0
 
     snapshot = manifest["library_snapshot"]
-    assert snapshot["catalog_entries"] == 49
-    assert snapshot["allowed_import_count"] == 45
+    assert snapshot["catalog_entries"] == 63
+    assert snapshot["allowed_import_count"] == 56
     assert set(snapshot["allowed_imports"]) == generator.MODEL_V2_THEOREMS
+    assert snapshot["excluded_import_count"] == 7
+    assert set(snapshot["excluded_imports"]) == generator.EXCLUDED_LIBRARY_NAMES
     assert snapshot["checked_authority"]["format"] == (
         "peano-model-v2-library-identity"
     )
-    assert len(snapshot["checked_authority"]["theorems"]) == 45
+    assert len(snapshot["checked_authority"]["theorems"]) == 56
     assert snapshot["checked_authority_sha256"] == (
         snapshot["prompt_library_identity_sha256"]
     )

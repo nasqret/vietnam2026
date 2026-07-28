@@ -1,0 +1,17 @@
+{
+  "live_use_limits": {
+    "proof_depth": 128,
+    "proof_nodes": 32768
+  },
+  "maximum_proof_depth": 66,
+  "maximum_proof_nodes": 21515,
+  "ordered_root_sha256": "d0f9070a2677a03eeca8ce2d1b83bcee04df3c907ef8cec2f797ab5ef99e5db0",
+  "schema": "peano-library-metrics-v1",
+  "theorem_count": 63,
+  "theorems_by_layer": {
+    "foundational_extension": 28,
+    "legacy_core": 23,
+    "published_mod5_unique": 12
+  },
+  "total_proof_nodes": 51409
+}

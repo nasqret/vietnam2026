@@ -1032,3 +1032,22 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   plus 36 subtests pass. All 27 book sources build from clean state with warnings as errors, and 193
   links/170 commands replay. The kernel is unchanged at 234 checker lines. No model-v2 checkpoint
   or solve-rate claim exists yet; the guarded Helios chain is the next action.
+
+## 2026-07-28 (branch peano-lab) — reconcile the 63-theorem authority before launch
+
+- Audited the independently developed general-arithmetic branch at `bb90b0b`/`90bd8dc` against the
+  49-entry public ladder. It adds exactly 14 unique theorem specs and changes none of the existing
+  49 statements, dependencies, scripts, summaries, or certificate identities. Integrated only
+  those 14 records, avoiding the candidate branch's duplicate modular definitions.
+- Replayed all 63 authored scripts, checked every closed certificate with the independent kernel,
+  and generated `artifacts/peano-library/catalog-v1.json`. Its ordered theorem-row root is
+  `d0f9070a…e5db0`; the catalog totals 51,409 proof nodes with maximum 21,515/depth 66.
+- Corrected a potential benchmark leak before training. `mul_ne_zero` and
+  `two_large_factors_impossible` depend directly on sealed `mul_eq_zero`; `prime_two` depends on it
+  transitively. Model-v2 now computes the reverse dependency closure: four benchmark goals, seven
+  excluded imports, and 56 permitted theorems under checked identity `3ce83721…96439`.
+- Regenerated a fresh 10,000-row proof-first gate as 2,274 kernel QEDs and exact row lanes
+  4,999/2,500/2,501. It exercises all 25 tactic heads and every one of the 56 permitted imports.
+  Replay compilation split 7,838/1,021/1,141; a second independent replay reports zero held-out
+  contamination and binds the same library identity. WMI currently projects an immediate A100
+  allocation, while Helios projects 1 August. No real training job has yet been submitted.

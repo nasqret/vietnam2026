@@ -19,6 +19,7 @@ from peano_lab.batch import capability_sha256, run_proof
 from peano_lab.library.theorems import THEOREMS
 from peano_lab.ui.prove import SurfaceCapabilities
 from training.peano_policy.contract import (
+    EXCLUDED_POLICY_LIBRARY_NAMES,
     HELD_OUT_POLICY_NAMES,
     attested_training_environment,
     environment_record,
@@ -98,15 +99,17 @@ def _v2_training_manifest() -> dict[str, object]:
     }
 
 
-def test_model_v2_is_exact_public_catalog_minus_frozen_targets() -> None:
+def test_model_v2_is_exact_public_catalog_minus_sealed_dependency_closure() -> None:
     environment = model_v2_environment()
     public_names = {spec.name for spec in THEOREMS}
     allowed = set(environment.capabilities.allowed_theorems or ())
 
     assert environment.prompt_version == PEANO_PROMPT_V2
-    assert allowed == public_names - HELD_OUT_POLICY_NAMES
-    assert allowed.isdisjoint(HELD_OUT_POLICY_NAMES)
-    assert len(allowed) == len(THEOREMS) - 4 == 45
+    assert allowed == public_names - EXCLUDED_POLICY_LIBRARY_NAMES
+    assert allowed.isdisjoint(EXCLUDED_POLICY_LIBRARY_NAMES)
+    assert HELD_OUT_POLICY_NAMES < EXCLUDED_POLICY_LIBRARY_NAMES
+    assert len(EXCLUDED_POLICY_LIBRARY_NAMES) == 7
+    assert len(allowed) == len(THEOREMS) - 7 == 56
     assert tuple(record.name for record in environment.library) == tuple(
         sorted(allowed)
     )
@@ -130,7 +133,9 @@ def test_v2_retrieval_is_bounded_deterministic_relevant_and_permitted() -> None:
     assert first == second
     assert len(first) == V2_RETRIEVAL_K
     assert first[0].name == "zero_add"
-    assert {record.name for record in first}.isdisjoint(HELD_OUT_POLICY_NAMES)
+    assert {record.name for record in first}.isdisjoint(
+        EXCLUDED_POLICY_LIBRARY_NAMES
+    )
     assert all(
         record.name in (environment.capabilities.allowed_theorems or ())
         for record in first

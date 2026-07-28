@@ -30,7 +30,7 @@ from .data import (
     load_dataset_manifest,
 )
 from .manifest import sha256_file, sha256_json, write_manifest
-from .library_identity import MOD5_SOURCE_REPORT
+from .library_identity import MOD5_SOURCE_REPORT, PUBLIC_LIBRARY_CATALOG
 from .prompt import (
     PEANO_PROMPT_V1,
     PEANO_PROMPT_V2,
@@ -87,6 +87,7 @@ def _compiler_paths() -> tuple[Path, ...]:
         REPOSITORY_ROOT / "training" / "peano_policy" / "prompt.py",
         REPOSITORY_ROOT / "training" / "peano_policy" / "library_identity.py",
         MOD5_SOURCE_REPORT,
+        PUBLIC_LIBRARY_CATALOG,
         *sorted((PEANO_PYTHON / "peano_lab").rglob("*.py")),
     )
 

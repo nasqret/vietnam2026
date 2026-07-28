@@ -27,12 +27,21 @@ kernel check, tests, and a source commit.
 M11 extends the twenty-rung core with `one_mul`, `mul_one`, and `add_mul`, completing the oriented
 [[commutative-semiring-basis]] needed by proof-producing polynomial normalization.
 
-A public 26-entry extension brings the complete ladder to 49 entries. It develops multiples,
-residue transport, the five residue cases, square residues, and the capstone
-$\neg(5\mid n)\to\exists q.\;n^4=5q+1$. Its source commit and catalog hash are retained, and every
-expanded certificate is checked in the empty context. This extension is also a useful seed for a
-[[verifier-guided-policy-evaluation-and-search|model-v2 curriculum]], but the capstone itself is now
-a library-retrieval test rather than a sealed theorem-discovery benchmark.
+The complete public ladder now has 63 entries: the original 23-entry core, 14 audited
+general-arithmetic additions, and the 26-entry modular extension. The general additions cover
+equality transport and congruence, additive cancellation, elementary order and zero facts,
+nonzero-product reasoning, and `prime_two`. The modular extension develops multiples, residue
+transport, the five residue cases, square residues, and the capstone
+$\neg(5\mid n)\to\exists q.\;n^4=5q+1$.
+
+The ordered catalog root is
+`d0f9070a2677a03eeca8ce2d1b83bcee04df3c907ef8cec2f797ab5ef99e5db0`.
+
+The 14-entry source origin `bb90b0b…e24e1` and audited merge `90bd8dcd…d1d7`, together with the
+modular source commit and catalog hash, are retained under `artifacts/peano-library/`. Every
+expanded certificate is checked in the empty context. The modular extension remains a useful seed
+for a [[verifier-guided-policy-evaluation-and-search|policy curriculum]], but the capstone itself is
+now a library-retrieval test rather than a sealed theorem-discovery benchmark.
 
 ## Related
 

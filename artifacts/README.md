@@ -164,17 +164,27 @@ ordinary exported proof. It is not trusted model output: repository tests replay
 therefore records a limited in-distribution success, not a broad PA prover; attribution to
 fine-tuning awaits the pretrained-base baseline.
 
-## Public modular-arithmetic catalog
+## Peano Lab public checked catalog
+
+[`peano-library/`](peano-library/) is the reproducible snapshot of the complete 63-entry theorem
+ladder: the original 23-entry core, 14 audited general-arithmetic additions, and the previously
+published 26-entry modular-arithmetic extension. The generated
+[`catalog-v1.json`](peano-library/catalog-v1.json),
+[`metrics.json`](peano-library/metrics.json), and
+[`dependency-graph.mmd`](peano-library/dependency-graph.mmd) record every statement, dependency,
+authored script, certificate digest and size. The current closed certificates contain 51,409 nodes
+in total; the maximum remains 21,515 nodes at depth 66, and the ordered snapshot root is
+`d0f9070a2677a03eeca8ce2d1b83bcee04df3c907ef8cec2f797ab5ef99e5db0`.
+
+The 14 general additions run from `eq_symm` through `prime_two`; together their certificates contain
+1,183 nodes, with `prime_two` the largest at 395 nodes and depth 59. Their origin and audited merge
+revisions are preserved alongside the modular import's source revision and exact MIT notice in
+[`peano-library/NOTICE.md`](peano-library/NOTICE.md). The audit retained the earlier 49 entries in
+the same relative order with identical certificate hashes and metrics.
 
 [`peano-library/mod5-source-validation-report.json`](peano-library/mod5-source-validation-report.json)
-is the unaltered validation report for the 26 theorem specifications imported into Peano Lab's
-public checked catalog. It records source catalog hash
-`91c88c1f3311cc0dc540671b169c270758ff6211e77716ed07bd3dd4f55c8380`, deterministic replay,
-empty-context kernel acceptance, certificate hashes, and a 21,515-node/depth-66 maximum. The source
-revision and exact MIT notice are preserved in [`peano-library/NOTICE.md`](peano-library/NOTICE.md).
-
-The report predates the public integration and therefore marks three certificates as exceeding the
-then-current 4,096-node `use` ceiling. The public catalog raises only that untrusted import resource
-limit to 32,768; no kernel rule changes. Repository regressions cold-replay all 26 certificates
-twice, match every retained hash and metric, reject a mutated capstone target, and exercise the
-short live `use`/`apply`/`exact` route.
+is the unaltered validation report for the 26 imported modular specifications. It predates public
+integration and therefore marks three certificates as exceeding the then-current 4,096-node `use`
+ceiling. The public catalog raises only that untrusted import resource limit to 32,768; no kernel
+rule changes. Snapshot generation replays every script, eliminates dependency cuts, and checks the
+resulting closed certificate against its original statement in the empty context.

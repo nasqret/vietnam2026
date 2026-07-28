@@ -43,10 +43,11 @@ Every `pa>` block and browser deep link in this part is replayed through the rea
 book gate; prose examples do not get a private, easier semantics.
 
 The full library is executable too. {doc}`The checked theorem ladder <ladder>` follows the original
-23 scripted entries through order totality and the zero-product core capstone, then a public
-26-entry modular-arithmetic extension to the fourth-power modulo-five capstone. It explains how theorem reuse is
-cut-eliminated outside the trusted kernel, and links each statement to the browser and Lean 4
-cross-checking surface. M9 then turns the same checked interactions into a reproducible
+23 scripted entries through order totality and the zero-product core capstone, 14 audited general
+arithmetic additions through `prime_two`, and the 26-entry modular-arithmetic extension to the
+fourth-power modulo-five capstone. It explains how theorem reuse is cut-eliminated outside the
+trusted kernel, and links each statement to the browser and Lean 4 cross-checking surface. M9 then
+turns the same checked interactions into a reproducible
 [proof-trace corpus](https://github.com/nasqret/vietnam2026/tree/peano-lab/peano-lab/corpus) and fixes
 a [kernel-judged evaluation protocol](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_LLM.md)
 for later small-model experiments; at that milestone no model was trained. The dated

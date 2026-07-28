@@ -11,9 +11,9 @@ Open the currently deployed index or the core zero-product card:
 - [`pa lib mul_eq_zero`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mul_eq_zero)
 - [`pa lean add_comm`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lean%20add_comm)
 
-Local candidate `2026-07-28g` also exposes `pa lib mod5_fourth_power_one`. Its production deep link
-will be added only after the candidate is actually deployed; documentation does not pretend that a
-local theorem is already live.
+The repository snapshot also exposes `pa lib prime_two` and `pa lib mod5_fourth_power_one`.
+Production deep links should be treated as deployed only after the corresponding build is released;
+the checked repository catalog may lead the public site.
 
 ## The route
 
@@ -49,9 +49,19 @@ $$
 \forall n\,m.\;n\cdot m=0 \to n=0\lor m=0.
 $$
 
-That is the capstone of the original 23-entry core. A public 26-entry extension now continues
-through multiples, residue algebra, the completeness of residues modulo five, square residues,
-and fourth-power residues. The 49th entry is
+That is the capstone of the original 23-entry core. An audited 14-entry general-arithmetic
+extension next supplies equality symmetry and transitivity, congruence, additive cancellation,
+basic order/zero facts, nonzero products, a two-factor size contradiction, and `prime_two`. In
+catalog order these are
+
+```text
+eq_symm, eq_trans, succ_congr, add_congr, mul_congr,
+add_right_cancel, add_left_cancel, zero_le, le_succ_self, le_zero,
+add_eq_zero_left, mul_ne_zero, two_large_factors_impossible, prime_two
+```
+
+The existing public 26-entry extension then continues through multiples, residue algebra, the
+completeness of residues modulo five, square residues, and fourth-power residues. The 63rd entry is
 
 $$
 \forall n.\;\neg(\exists q.\;n=5q)\to
@@ -60,8 +70,10 @@ $$
 
 It is not a new axiom or an opaque solver result. Its source script replays through the same public
 tactic surface to a 21,515-node, depth-66 closed certificate, and the independent kernel checks that
-certificate in the empty context. The source revision, catalog hash, license notice, and unaltered
-pre-integration validation report are retained under `artifacts/peano-library/`.
+certificate in the empty context. The integration retained the earlier 49 entries in the same
+relative order and changed none of their certificate hashes, node counts, or depths. The general
+extension's origin commit, audited merge, modular source revision, catalog identity, license notice,
+and unaltered pre-integration validation report are retained under `artifacts/peano-library/`.
 
 Once imported, the long derivation can be reused in an ordinary short proof:
 

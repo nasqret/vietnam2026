@@ -35,12 +35,14 @@ from .library_identity import (
     SEALED_LIBRARY_NAMES,
     model_v2_library_identity,
     model_v2_library_identity_sha256,
+    sealed_library_closure,
 )
 
 
 CONTRACT_VERSION = 1
 HELD_OUT_POLICY_GOALS = SEALED_LIBRARY_GOALS
 HELD_OUT_POLICY_NAMES = frozenset(name for name, _ in HELD_OUT_POLICY_GOALS)
+EXCLUDED_POLICY_LIBRARY_NAMES = sealed_library_closure(THEOREMS)
 
 
 def model_v1_environment() -> PromptEnvironment:
@@ -60,9 +62,9 @@ def model_v1_environment() -> PromptEnvironment:
 def model_v2_library() -> tuple[LibraryRecord, ...]:
     """Return the canonical public catalog visible to model-v2.
 
-    The four benchmark targets are absent by name and statement.  Statements
-    are parser/printer canonicalized so whitespace edits in source records do
-    not silently create a new prompt library snapshot.
+    The four benchmark targets and all of their dependency descendants are
+    absent. Statements are parser/printer canonicalized so whitespace edits in
+    source records do not silently create a new prompt library snapshot.
     """
 
     sealed_formulas: set[str] = set()
@@ -72,11 +74,13 @@ def model_v2_library() -> tuple[LibraryRecord, ...]:
             raise RuntimeError(f"held-out policy goal {name!r} is not closed")
         sealed_formulas.add(pretty_formula(target, list(free_names)))
     allowed_names = frozenset(
-        spec.name for spec in THEOREMS if spec.name not in HELD_OUT_POLICY_NAMES
+        spec.name
+        for spec in THEOREMS
+        if spec.name not in EXCLUDED_POLICY_LIBRARY_NAMES
     )
     records: list[LibraryRecord] = []
     for spec in THEOREMS:
-        if spec.name in HELD_OUT_POLICY_NAMES:
+        if spec.name in EXCLUDED_POLICY_LIBRARY_NAMES:
             continue
         formula, free_names = parse_formula_with_names(spec.statement)
         if free_names:
@@ -107,6 +111,8 @@ def model_v2_environment() -> PromptEnvironment:
 
     if HELD_OUT_POLICY_NAMES != SEALED_LIBRARY_NAMES:
         raise RuntimeError("model-v2 identity and held-out contract disagree")
+    if not HELD_OUT_POLICY_NAMES <= EXCLUDED_POLICY_LIBRARY_NAMES:
+        raise RuntimeError("model-v2 import exclusion omits a held-out target")
     library = model_v2_library()
     identity = model_v2_library_identity()
     if tuple((item.name, item.statement) for item in identity) != tuple(
@@ -333,6 +339,7 @@ def attested_training_environment(
 
 __all__ = [
     "CONTRACT_VERSION",
+    "EXCLUDED_POLICY_LIBRARY_NAMES",
     "HELD_OUT_POLICY_GOALS",
     "HELD_OUT_POLICY_NAMES",
     "MODEL_V2_THEOREMS",

@@ -18,6 +18,7 @@ from peano_lab.kernel.formulas import parse_formula  # noqa: E402
 from peano_lab.library.theorems import get as get_theorem  # noqa: E402
 from peano_lab.ui.prove import SurfaceCapabilities  # noqa: E402
 from training.peano_policy.contract import (  # noqa: E402
+    EXCLUDED_POLICY_LIBRARY_NAMES,
     HELD_OUT_POLICY_NAMES,
     model_v2_environment,
 )
@@ -280,6 +281,9 @@ def test_depth_32_budget_contains_a_checked_reference_route_for_every_sealed_goa
         label=environment.capabilities.label,
         allowed_commands=frozenset(environment.capabilities.allowed_commands or ()),
         allowed_theorems=frozenset(environment.capabilities.allowed_theorems or ()),
+    )
+    assert capabilities.allowed_theorems.isdisjoint(
+        EXCLUDED_POLICY_LIBRARY_NAMES
     )
     route_lengths: dict[str, int] = {}
     for name in sorted(HELD_OUT_POLICY_NAMES):

@@ -8,7 +8,8 @@ parses the statement, executes the script under the fixed ``model-v2``
 capability set, builds a certificate, and asks the independent kernel to check
 QED against the original statement.  Model-v2 keeps the 25-command language
 from model-v1, but binds the current public theorem catalog while removing the
-four sealed evaluation targets from its import authority.
+four sealed evaluation targets and every theorem depending on one of them from
+its import authority.
 
 Generation is bounded by *successful tactic rows*.  A session is either
 written completely (all transitions and its footer) or the unpublished staged
@@ -55,6 +56,7 @@ from peano_lab.kernel.formulas import (  # noqa: E402
 from peano_lab.library.theorems import THEOREMS, TheoremSpec  # noqa: E402
 from peano_lab.ui.prove import SurfaceCapabilities  # noqa: E402
 from training.peano_policy.contract import (  # noqa: E402
+    EXCLUDED_POLICY_LIBRARY_NAMES,
     HELD_OUT_POLICY_GOALS,
     HELD_OUT_POLICY_NAMES,
     MODEL_V2_THEOREMS as CONTRACT_MODEL_V2_THEOREMS,
@@ -64,7 +66,10 @@ from training.peano_policy.contract import (  # noqa: E402
     model_v2_environment,
 )
 from training.peano_policy.library_identity import (  # noqa: E402
+    EXPECTED_MODEL_V2_LIBRARY_COUNT,
+    EXPECTED_PUBLIC_LIBRARY_COUNT,
     MOD5_SOURCE_REPORT,
+    PUBLIC_LIBRARY_CATALOG,
     model_v2_library_identity_record,
     model_v2_library_identity_sha256,
 )
@@ -73,12 +78,13 @@ from training.peano_policy.library_identity import (  # noqa: E402
 FORMAT = "peano-policy-corpus"
 VERSION = 1
 PROFILE = "model-v2"
-CATALOG_VERSION = 3
+CATALOG_VERSION = 4
 GENERATOR = "proof-first-synthetic-v2"
 DEFAULT_SEED = "peano-synthetic-v2"
 DEFAULT_ROW_BUDGET = 1_000
 MAX_ROW_BUDGET = 100_000
 HELD_OUT_NAMES = HELD_OUT_POLICY_NAMES
+EXCLUDED_LIBRARY_NAMES = EXCLUDED_POLICY_LIBRARY_NAMES
 HELD_OUT_FORMULAS = frozenset(canonical_held_out_formulas())
 MODEL_V2_THEOREMS = frozenset(CONTRACT_MODEL_V2_THEOREMS)
 MODEL_V2_THEOREM_SPECS: tuple[TheoremSpec, ...] = tuple(
@@ -211,6 +217,7 @@ def _source_manifest() -> dict[str, dict[str, str]]:
         REPOSITORY_ROOT / "training" / "peano_policy" / "prompt.py",
         REPOSITORY_ROOT / "training" / "peano_policy" / "library_identity.py",
         MOD5_SOURCE_REPORT,
+        PUBLIC_LIBRARY_CATALOG,
         *sorted((PEANO_PYTHON / "peano_lab").rglob("*.py")),
     )
     return {
@@ -253,6 +260,8 @@ def _library_snapshot() -> dict[str, object]:
         "entries": entries,
         "allowed_imports": sorted(MODEL_V2_THEOREMS),
         "allowed_import_count": len(MODEL_V2_THEOREMS),
+        "excluded_imports": sorted(EXCLUDED_LIBRARY_NAMES),
+        "excluded_import_count": len(EXCLUDED_LIBRARY_NAMES),
         "checked_authority": model_v2_library_identity_record(),
         "checked_authority_sha256": model_v2_library_identity_sha256(),
         "prompt_library_identity_sha256": model_v2_environment().library_sha256,
@@ -1095,12 +1104,15 @@ def _validate_catalog() -> None:
         raise GenerationError("synthetic catalog does not cover every declared domain")
     if {schema.lane for schema in SCHEMAS} != set(LANES):
         raise GenerationError("synthetic catalog does not cover every curriculum lane")
-    if len(THEOREMS) != 49 or len(MODEL_V2_THEOREMS) != 45:
+    if (
+        len(THEOREMS) != EXPECTED_PUBLIC_LIBRARY_COUNT
+        or len(MODEL_V2_THEOREMS) != EXPECTED_MODEL_V2_LIBRARY_COUNT
+    ):
         raise GenerationError(
-            "model-v2 expects the pinned 49-entry catalog with four sealed targets"
+            "model-v2 theorem counts differ from the pinned checked authority"
         )
-    if MODEL_V2_THEOREMS & HELD_OUT_NAMES:
-        raise GenerationError("model-v2 import authority contains a held-out target")
+    if MODEL_V2_THEOREMS & EXCLUDED_LIBRARY_NAMES:
+        raise GenerationError("model-v2 import authority contains a sealed descendant")
     if capability_sha256(POLICY_CAPABILITIES) != model_v2_environment().sha256:
         raise GenerationError(
             "model-v2 runner authority differs from the prompt environment"

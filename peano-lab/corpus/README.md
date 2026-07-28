@@ -8,10 +8,10 @@ sessions:
 
 | Artifact | Role | Records | SHA-256 |
 |---|---|---:|---|
-| `train.jsonl` | learning split | 13,326 | `89e199b7a1c40a5c2ef15a2ef5224b3e19381ffa310b9bd67fec2ef320be52d2` |
-| `val.jsonl` | exact-theorem-group validation split | 18 | `61b758a7db5711ca5fc73a27352177f8047d18fb7f6fb603c12a25c99d17a274` |
-| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `bb216ae7765909730d8942188ceda9233652096911691ea8f2061d5316b21860` |
-| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `82715b85e464fdcd0e7fb1eaed7c55297fea5693a6d7b3fc30f292cbb852b5f0` |
+| `train.jsonl` | learning split | 13,326 | `56ab6d0716125d6cb54a2a5dd9cb1ad1c7007d202dc4042bc50679e7ec4cf2f4` |
+| `val.jsonl` | exact-theorem-group validation split | 18 | `70142bb83c03c0512ac3f4f4b25bbb678e75a79ce957b77af562daa71ae62dfb` |
+| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `6c52b60c159edab1d3d86a6837bfb46e99373851b1149e5a55a15a5b35836d20` |
+| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `8a5cf40f6d676f08a161d41cb15c05ce72c93539ba45f3505bdec6471ae6224e` |
 
 The source stream contained 11,652 successful and 1,692 deliberately failing, transactional
 applications, for a labeled failure ratio of `0.12679856115107913`. Every one of the 1,692 sessions
@@ -53,18 +53,24 @@ That target first writes the replayable raw session stream to
 `/tmp/peano-lab-release-raw.jsonl`, then strictly validates, globally deduplicates, and exports it.
 The raw intermediate is not committed because it duplicates the split payload, but the manifest
 records its exact size (`6,215,711` UTF-8 bytes) and SHA-256
-`d3f863f670d40c2a48a2f74a5b72a76b8d6ef37852b83d1ab69b32a81ff2731d`.
+`4703a96b986449352469bb91715cdb3fb9fbe5cc5e7fe14bb80c83a93952e93e`.
 It also fingerprints `scripts/generate_peano_traces.py`, the trusted checker, and the complete
 Peano Lab Python source tree. Because the Python runtime participates in the run fingerprint and
 session IDs, changing that runtime changes the raw byte hash even when every session-agnostic
 semantic transition remains the same.
 
-To exercise one-node/depth-one `auto` plumbing attempts and checked authored replays for all 49
+To exercise one-node/depth-one `auto` plumbing attempts and checked authored replays for all 63
 ladder entries without contaminating the release, run:
 
 ```console
 make peano-corpus-smoke
 ```
+
+That smoke covers the complete public catalog, whose ordered root is
+`d0f9070a2677a03eeca8ce2d1b83bcee04df3c907ef8cec2f797ab5ef99e5db0`; it is not the narrower
+model-v2 import authority. Model-v2 excludes the reverse-dependency closure of its four benchmark
+goals—seven imports total—and binds the remaining 56 records under
+`3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439`.
 
 Those acceptance artifacts stay under `/tmp`. The data pipeline, corpus, and this README are
 released under the repository's MIT License.

@@ -16,7 +16,7 @@ mode=--test-only
 confirmation=""
 theorem=""
 k=1
-max_steps=16
+max_steps=32
 seed=20260728
 sample=false
 while [ "$#" -gt 0 ]; do
