@@ -56,13 +56,14 @@ no positive rows for nine tactic heads, including `induction`, `simp`, and `spec
 the next registered iteration is a library-snapshot-bound `model-v2`, not a 4B scale-up on the same
 curriculum. The owner authorized the compatibility-validated 26-record modular extension for the
 public catalog. After reconciliation with M20, fourteen records overlap exactly and twelve are
-new, giving 63 unique checked runtime theorems without changing the kernel. A
-subsequent native arithmetic passes extend that same runtime to 127 checked
+new, giving 63 unique checked runtime theorems without changing the kernel.
+Subsequent native arithmetic passes extend that same runtime to 137 checked
 theorems, including discrete order, multiplication cancellation and
 monotonicity, constructive quotient-remainder existence, and full
 quotient-remainder uniqueness, mutual-divisibility antisymmetry, relational
-gcd uniqueness, both directions of Euclidean gcd invariance, and constructive
-relational gcd existence. The runtime
+gcd uniqueness, both directions of Euclidean gcd invariance, constructive
+relational gcd existence, balanced-natural Bézout, Gauss cancellation, and
+Euclid's lemma. The runtime
 now also has audited self-contained dependency sharing: a Cut embeds
 the full lemma and body proofs and is checked without external theorem names or
 hashes. This enlarges the trusted certificate checker but leaves the PA object
@@ -83,8 +84,9 @@ exact route to division, gcd, the general prime spine, and factorization. A
 sorted Gödel-β sequence/product encoding is now selected, and a pinned Lean
 companion checks full list-based FTA existence and uniqueness up to
 permutation. The reconciled runtime also includes twelve unique upstream
-mod-five capstones for 127 checked Peano theorems in total. Division,
-relational gcd existence and uniqueness, Euclidean-step invariance, and
-self-contained proof sharing are now native; Peano admission of FTA still
-awaits Bézout, Euclid, and the encoded finite-product spine. See
+mod-five capstones for 137 checked Peano theorems in total. Division,
+relational gcd existence and uniqueness, balanced-natural Bézout, Gauss,
+Euclid's lemma, and self-contained proof sharing are now native; Peano
+admission of FTA still awaits prime-divisor existence and the encoded
+finite-product spine. See
 [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md).

@@ -22,6 +22,7 @@ forall n. n * 1 = n
 - [[multiple_refl]]
 - [[multiple_antisymm]]
 - [[coprime_to_is_gcd_one]]
+- [[prime_divisor_eq_one_or_self]]
 
 ## Verification record
 

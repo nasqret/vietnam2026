@@ -12,8 +12,18 @@ $$
 $$
 
 It is the central uniqueness tool for the
-[[fundamental-theorem-of-arithmetic]]. It is first-order expressible today, but
-the prerequisite gcd/Bézout nodes must be checked before admission.
+[[fundamental-theorem-of-arithmetic]]. It is now admitted natively as
+[[euclid_prime_dvd_product]], with the factor-pair definition of primality and
+all divisibility relations expanded in the stored first-order formula. Its
+closed shared certificate has 5,382 nodes and depth 55 and checks in the
+intuitionistic kernel.
+
+The proof chooses a relational gcd $g$ of $(p,a)$.
+[[prime_divisor_eq_one_or_self]] turns $g\mid p$ into $g=1$ or $p=g$. In the
+first branch,
+[[is_gcd_one_to_coprime]] and [[gauss_coprime_cancel]] yield $p\mid b$; in the
+second, $p=g$ and the gcd's divisibility witness yields $p\mid a$. Constructive
+prime-divisor existence is still a separate theorem.
 
 ## Related
 

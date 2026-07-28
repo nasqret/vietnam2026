@@ -20,7 +20,7 @@ forall a. (((exists x. a = a * x) /\ (exists y. 0 = a * y)) /\ forall c. (exists
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[gcd_balanced_bezout_exists_up_to]]
 
 ## Verification record
 

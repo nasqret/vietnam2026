@@ -55,7 +55,7 @@ does not determine the architecture.
 - [x] Add both constructive normal forms for non-divisibility.
 - [x] Add modulus-independent quotient-and-remainder transport through
       addition and squaring.
-- [x] Replay and independently check all 127 unique library entries and enforce
+- [x] Replay and independently check all 137 unique library entries and enforce
       the live 32,768-node/depth-128 import bound.
 - [x] Generate a deterministic versioned JSON snapshot, exact metrics,
       certificate hashes, structural Cut counts, and Mermaid dependency graph.
@@ -89,13 +89,16 @@ does not determine the architecture.
       induction schema, or intuitionistic default.
 - [x] Prove relational gcd existence by bounded induction and derive the
       unrestricted theorem from reflexivity of the order relation.
-- [ ] Prove subtraction-free signed-pair Bézout and Gauss cancellation.
+- [x] Prove subtraction-free four-natural Bézout, its common-divisor and
+      scaling bridges, and Gauss cancellation.
 - [x] Check `prime_two` as a completely expanded first-order formula, without
       adding a primitive `Prime` predicate.
 - [ ] Add round-tripping prime surface syntax and capture tests, and prove zero
       and one non-prime before admitting a broader prime API.
-- [ ] Prove proper-factor descent, prime-divisor existence, Euclid's lemma, and
-      primes above every bound.
+- [x] Prove Euclid's lemma constructively from relational gcd existence, Gauss,
+      and the expanded prime factor-pair disjunction.
+- [ ] Prove proper-factor descent, prime-divisor existence, and primes above
+      every bound.
 
 ## M20E — Finite factorization representation and FTA
 
@@ -130,14 +133,15 @@ does not determine the architecture.
 
 ## Current acceptance record
 
-- Checked runtime: 127 unique theorems — 23 baseline and 104 post-baseline.
-  The latter are the 92-node foundational layer plus twelve unique upstream
+- Checked runtime: 137 unique theorems — 23 baseline and 114 post-baseline.
+  The latter are the 102-node foundational layer plus twelve unique upstream
   modular capstones.
-- Research catalog: 139 nodes — 23 `checked_existing`, 104 `checked_m20`, eight
+- Research catalog: 148 nodes — 23 `checked_existing`, 114 `checked_m20`, seven
   `planned_expressible`, and four `blocked_by_language`.
-- Shared-certificate metrics: 33,979 total structural proof nodes and 814 Cuts;
-  the largest by nodes is `mod5_fourth_power_one` at 2,675/depth 38, while the
-  ladder's maximum depth is 57. The immutable upstream report retains the
+- Shared-certificate metrics: 52,433 total structural proof nodes and 1,345
+  Cuts across 98 entries. The largest by nodes is
+  `euclid_prime_dvd_product` at 5,382/depth 55, while the ladder's maximum
+  depth remains 57. The immutable upstream report retains the
   former fully expanded capstone metric of 21,515/depth 66.
 - Trusted-kernel change: one self-contained Cut constructor and checker rule.
   The checker is 247 lines (formerly 234). The object language and logical
@@ -146,9 +150,9 @@ does not determine the architecture.
 - Full FTA companion status: checked in Lean for every nonzero natural, with
   finite-list existence and permutation uniqueness and no `sorryAx`.
 - Full Peano FTA status: absent from `pa lib` pending closed certificates for
-  the selected β-sequence/product encoding and its Bézout/prime/Euclid
-  dependency spine; no admitted theorem or hidden primitive.
-- Current validation: 1,086 Peano tests on Python 3.10; 36-source
+  prime-divisor existence and the selected β-sequence/product encoding;
+  no admitted theorem or hidden primitive.
+- Current validation: 1,090 Peano tests on Python 3.10; 36-source
   warning-as-error Jupyter Book; 199 deep links and 45 sessions/264 replayed
-  commands; 206-note/1,547-link Obsidian graph; exact
+  commands; 216-note/1,696-link Obsidian graph; exact
   snapshot, catalog, corpus, application-manifest, and Lean FTA audits.

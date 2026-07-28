@@ -8,24 +8,27 @@ The **foundational arithmetic library** is a versioned dependency graph for
 [[arithmetic-congruence]], [[quotient-and-remainder]], gcd, primes, and
 factorization.
 
-Its current snapshot has 127 closed, independently checked theorems: the
-original 23-node [[theorem-ladder]] and 104 unique post-baseline additions.
-The latter combine 92 general arithmetic facts with twelve additional modular
-capstones. The 139-node research catalog separates 23 `checked_existing`,
-104 `checked_m20`, eight
+Its current snapshot has 137 closed, independently checked theorems: the
+original 23-node [[theorem-ladder]] and 114 unique post-baseline additions.
+The latter combine 102 general arithmetic facts with twelve additional modular
+capstones. The 148-node research catalog separates 23 `checked_existing`,
+114 `checked_m20`, seven
 `planned_expressible`, and four `blocked_by_language` nodes, but only replayed
 certificates appear in `pa lib`. The M20 additions now include [[prime_two]],
 the first checked instance of the fully expanded prime predicate, and native
 [[quotient-and-remainder]] existence and uniqueness.
 It also contains the relational [[gcd-and-coprimality]] API through uniqueness
 and Euclidean-step invariance, plus [[gcd_exists_up_to|bounded]] and
-[[gcd_exists_relational|general]] relational gcd existence. Bézout remains
-planned.
+[[gcd_exists_relational|general]] relational gcd existence. The checked
+[[gcd_balanced_bezout_exists|balanced gcd/Bézout construction]] now feeds
+[[coprime_balanced_bezout]], [[gauss_coprime_cancel]],
+[[prime_divisor_eq_one_or_self]], and
+[[euclid_prime_dvd_product|Euclid's lemma]].
 
-The shared snapshot contains 33,979 structural proof nodes and 814 trusted
-Cuts; 88 of the 127 certificates contain a Cut. Its maximum certificate size
-is 2,675 nodes and its maximum depth is 57. These are representation metrics,
-not proof authority.
+The generated snapshot contains 52,433 structural proof nodes and 1,345
+trusted Cuts; 98 of the 137 certificates contain a Cut. Its maximum
+certificate is [[euclid_prime_dvd_product]] at 5,382 nodes, and its maximum
+depth is 57. These are representation metrics, not proof authority.
 
 One theorem name identifies its executable entry, generated artifact node,
 Obsidian lemma page, and book discussion. [[lemma-dependency-dag]] records the

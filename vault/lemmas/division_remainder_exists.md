@@ -21,6 +21,7 @@ forall m n. ~(m = 0) -> exists q r. n = m * q + r /\ S r <= m
 ## Checked dependents
 
 - [[gcd_exists_up_to]]
+- [[gcd_balanced_bezout_exists_up_to]]
 
 ## Verification record
 

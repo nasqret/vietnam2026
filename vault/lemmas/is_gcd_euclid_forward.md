@@ -21,6 +21,7 @@ forall d a b q r. a = b * q + r -> (((exists x. b = d * x) /\ (exists y. r = d *
 ## Checked dependents
 
 - [[gcd_exists_up_to]]
+- [[gcd_balanced_bezout_exists_up_to]]
 
 ## Verification record
 

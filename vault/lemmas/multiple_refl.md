@@ -22,6 +22,7 @@ forall a. exists q. a = a * q
 - [[is_gcd_zero_right]]
 - [[is_gcd_of_dvd]]
 - [[gcd_exists_up_to]]
+- [[gauss_coprime_cancel]]
 
 ## Verification record
 

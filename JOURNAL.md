@@ -1260,3 +1260,46 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   corpus provenance, and the pinned Lean FTA exact-axiom audit. Nothing was
   merged or deployed. The next mathematical gate is subtraction-free balanced
   Bézout, followed by Gauss cancellation and the general prime spine.
+
+## 2026-07-28 — Balanced Bézout, Gauss cancellation, and Euclid's lemma
+
+- Added ten closed native theorems that carry the relational-gcd construction
+  through four-natural balanced Bézout witnesses, scale those witnesses,
+  extract divisibility of the balanced result, specialize to coprime inputs,
+  prove Gauss cancellation, characterize a divisor of a prime as one or the
+  prime, and conclude Euclid's lemma. Every relation remains a fully expanded
+  first-order PA formula; no integer type, gcd function, prime predicate,
+  choice principle, classical `DNE`, or hidden theorem authority was added.
+- The bounded simultaneous construction proves, by ordinary induction on an
+  explicit upper bound, both `IsGCD(d,a,b)` and
+  `a*xp + b*yp = d + (a*xn + b*yn)`. Across a Euclidean step
+  `a=b*q+r`, it transports coefficients by
+  `(xp',yp',xn',yn')=(yp,xp+q*yn,yn,xn+q*yp)`. The greatest-divisor clause is
+  transported separately with `is_gcd_euclid_forward`; it is not inferred
+  from the balanced equation.
+- `gauss_coprime_cancel` scales a result-one equation and applies the checked
+  common-divisor bridge. `euclid_prime_dvd_product` takes a relational gcd of
+  `p` and `a`, uses `prime_divisor_eq_one_or_self` to split that gcd into the
+  unit or prime case, then invokes Gauss or the gcd divisibility projection.
+  The final certificates are 3,800 nodes/depth 51 for Gauss, 57/depth 12 for
+  the prime-divisor API, and 5,382/depth 55 for Euclid.
+- Independent admission tests pin all ten statements, scripts, dependency
+  orders, certificate hashes, metrics, and Cut counts; cold replay is
+  deterministic, every dependency slot is necessary, PA/hypothesis mutations
+  are rejected, all certificates check from the empty context, and live
+  theorem use closes. The runtime is now 137 theorems and the catalog 148
+  nodes: 23 baseline checked, 114 post-baseline checked, seven planned, and
+  four language-blocked.
+- Regenerated the 137-record certificate snapshot (52,433 structural nodes,
+  1,345 Cuts across 98 entries), 137 lemma pages, 216-note/1,696-link Obsidian
+  graph, 13,344-transition/1,692-session leakage-safe corpus, and the isolated
+  3,007-transition/274-session ladder smoke with all 137 authored kernel QEDs.
+  Local browser candidate `2026-07-28p` has content identity
+  `a-48059fcca9d3`; the clean checkout lacks the untracked vendor mirror, so no
+  static staging or deployment is claimed.
+- Acceptance passes 1,090 Peano tests on CPython 3.10, Lambda's 360 tests plus
+  36 subtests, the warning-as-error 36-source Jupyter Book, 199 deep links and
+  45 session blocks containing 264 replayed commands, catalog/snapshot/vault/
+  corpus/application drift checks, and the arithmetic knowledge-base audit.
+  Native Peano FTA remains unclaimed: the next arithmetic gate is constructive
+  prime-divisor existence, followed by β-coded finite prefixes and products.

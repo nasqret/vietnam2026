@@ -1,36 +1,33 @@
 ---
-title: "Lemma: add_mul"
+title: "Lemma: add_permute_outer"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `add_mul`
+# `add_permute_outer`
 
-Multiplication distributes over addition on the left.
+Permute the outer entries of two additive pairs.
 
 ## Closed Peano statement
 
 ```text
-forall n m k. (n + m) * k = n * k + m * k
+forall a b c d. (a + b) + (c + d) = (c + b) + (a + d)
 ```
 
 ## Dependencies
 
-- [[mul_comm]]
-- [[mul_add]]
+- [[add_assoc]]
+- [[add_comm]]
 
 ## Checked dependents
 
-- [[mul_le_mul_right]]
 - [[balanced_bezout_euclid_step]]
-- [[balanced_combination_scale_right]]
-- [[square_decomp]]
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **326 nodes**, depth **25**.
-- Authored script length: **4 commands**.
-- Runtime card: `pa lib add_mul`.
+- Certificate: **149 nodes**, depth **15**.
+- Authored script length: **25 commands**.
+- Runtime card: `pa lib add_permute_outer`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

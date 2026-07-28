@@ -20,6 +20,7 @@ forall n. n <= 0 -> n = 0
 ## Checked dependents
 
 - [[gcd_exists_up_to]]
+- [[gcd_balanced_bezout_exists_up_to]]
 
 ## Verification record
 

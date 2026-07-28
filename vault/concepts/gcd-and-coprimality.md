@@ -30,11 +30,24 @@ Coprimality means that one satisfies this relation. Bézout coefficients can be
 encoded by four naturals:
 
 $$
-a x_+ + b y_+ = 1 + a x_- + b y_-.
+a x_+ + b y_+ = 1 + (a x_- + b y_-).
 $$
 
-That subtraction-free form is sufficient for Gauss cancellation and
-[[euclids-lemma]].
+The checked [[balanced_bezout_euclid_step]] transports these coefficients from
+$(b,r)$ to $(a,b)$ when $a=bq+r$. The bounded
+[[gcd_balanced_bezout_exists_up_to]] proof carries the **full** relational gcd
+proof and the four coefficients simultaneously: [[is_gcd_euclid_forward]]
+transports `IsGCD`, while the coefficient theorem transports the balanced
+equation. [[gcd_balanced_bezout_exists]] removes the bound, and
+[[coprime_balanced_bezout]] specializes the balanced result to one.
+
+[[balanced_combination_scale_right]] scales
+`BalancedBezout(d,a,b)` to `BalancedBezout(d*z,a,b*z)`.
+[[common_divisor_divides_balanced_result]] then turns a common divisor of the
+scaled inputs into a divisor of the result. This bridge is used for
+[[gauss_coprime_cancel]]; it is not used to reconstruct the greatest-divisor
+clause during bounded induction. Gauss in turn supplies the cancellation
+branch of the now-checked [[euclids-lemma]].
 
 The checked unit bridge consists of [[mul_eq_one_components]], [[divisor_one]],
 [[coprime_one_left]], [[coprime_one_right]], [[coprime_to_is_gcd_one]], and
@@ -43,10 +56,11 @@ expanded common-divisor definition of coprimality and `IsGCD(1,a,b)`.
 
 The [native gcd/Bézout roadmap](../../research/arithmetic-library/gcd-bezout-roadmap.md)
 records the checked Euclidean-invariance certificates, the bounded
-formula-specific induction route to existence, and the original
-proof-composition failure. The reviewed [[self-contained-proof-sharing]] rule
-removed that architectural gate, and the two existence scripts have now passed
-fresh empty-context kernel checks. Balanced Bézout is the next missing bridge.
+formula-specific induction route to simultaneous gcd/Bézout existence, and
+the original proof-composition failure. The reviewed
+[[self-contained-proof-sharing]] rule removed that architectural gate; the
+complete Bézout-to-Gauss-to-Euclid chain now has fresh empty-context kernel
+checks.
 
 ## Related
 

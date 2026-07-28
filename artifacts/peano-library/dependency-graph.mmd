@@ -107,6 +107,16 @@ flowchart TD
   coprime_one_left[coprime_one_left]
   coprime_to_is_gcd_one[coprime_to_is_gcd_one]
   is_gcd_one_to_coprime[is_gcd_one_to_coprime]
+  add_permute_outer[add_permute_outer]
+  balanced_bezout_euclid_step[balanced_bezout_euclid_step]
+  gcd_balanced_bezout_exists_up_to[gcd_balanced_bezout_exists_up_to]
+  gcd_balanced_bezout_exists[gcd_balanced_bezout_exists]
+  balanced_combination_scale_right[balanced_combination_scale_right]
+  common_divisor_divides_balanced_result[common_divisor_divides_balanced_result]
+  coprime_balanced_bezout[coprime_balanced_bezout]
+  gauss_coprime_cancel[gauss_coprime_cancel]
+  prime_divisor_eq_one_or_self[prime_divisor_eq_one_or_self]
+  euclid_prime_dvd_product[euclid_prime_dvd_product]
   mod_eq_refl[mod_eq_refl]
   mod_eq_symm[mod_eq_symm]
   dvd_to_mod_zero[dvd_to_mod_zero]
@@ -259,6 +269,42 @@ flowchart TD
   one_mul --> coprime_to_is_gcd_one
   mul_one --> coprime_to_is_gcd_one
   divisor_one --> is_gcd_one_to_coprime
+  add_assoc --> add_permute_outer
+  add_comm --> add_permute_outer
+  add_assoc --> balanced_bezout_euclid_step
+  add_comm --> balanced_bezout_euclid_step
+  mul_add --> balanced_bezout_euclid_step
+  mul_assoc --> balanced_bezout_euclid_step
+  add_mul --> balanced_bezout_euclid_step
+  add_permute_outer --> balanced_bezout_euclid_step
+  zero_add --> gcd_balanced_bezout_exists_up_to
+  le_zero --> gcd_balanced_bezout_exists_up_to
+  le_eq_or_lt --> gcd_balanced_bezout_exists_up_to
+  le_of_succ_le_succ --> gcd_balanced_bezout_exists_up_to
+  division_remainder_exists --> gcd_balanced_bezout_exists_up_to
+  is_gcd_zero_right --> gcd_balanced_bezout_exists_up_to
+  is_gcd_euclid_forward --> gcd_balanced_bezout_exists_up_to
+  balanced_bezout_euclid_step --> gcd_balanced_bezout_exists_up_to
+  le_refl --> gcd_balanced_bezout_exists
+  gcd_balanced_bezout_exists_up_to --> gcd_balanced_bezout_exists
+  mul_assoc --> balanced_combination_scale_right
+  mul_comm --> balanced_combination_scale_right
+  add_mul --> balanced_combination_scale_right
+  mul_assoc --> common_divisor_divides_balanced_result
+  mul_add --> common_divisor_divides_balanced_result
+  add_comm --> common_divisor_divides_balanced_result
+  factor_difference --> common_divisor_divides_balanced_result
+  gcd_balanced_bezout_exists --> coprime_balanced_bezout
+  multiple_refl --> gauss_coprime_cancel
+  one_mul --> gauss_coprime_cancel
+  coprime_balanced_bezout --> gauss_coprime_cancel
+  balanced_combination_scale_right --> gauss_coprime_cancel
+  common_divisor_divides_balanced_result --> gauss_coprime_cancel
+  mul_one --> prime_divisor_eq_one_or_self
+  prime_divisor_eq_one_or_self --> euclid_prime_dvd_product
+  gcd_exists_relational --> euclid_prime_dvd_product
+  is_gcd_one_to_coprime --> euclid_prime_dvd_product
+  gauss_coprime_cancel --> euclid_prime_dvd_product
   zero_add --> dvd_to_mod_zero
   add_assoc --> add_residue
   mul_add --> add_residue

@@ -24,6 +24,7 @@ forall c u v r. c * u = c * v + r -> exists w. r = c * w
 ## Checked dependents
 
 - [[divides_remainder]]
+- [[common_divisor_divides_balanced_result]]
 
 ## Verification record
 

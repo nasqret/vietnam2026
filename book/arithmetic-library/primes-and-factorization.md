@@ -29,16 +29,19 @@ Its proof depends on `two_large_factors_impossible`; neither theorem adds a
 trusted primality oracle or a primitive `Prime` atom.
 
 The checked division layer now supplies constructive quotient-remainder
-existence and uniqueness. The remaining prime layer should establish:
+existence and uniqueness. The checked `prime_divisor_eq_one_or_self` theorem
+says every divisor of a prime is one or the prime itself. The runtime also
+contains `euclid_prime_dvd_product`: a prime dividing $a b$ divides $a$ or
+$b$.
+The remaining prime layer should establish:
 
 1. zero and one are not prime;
 2. a non-prime number at least two has a proper nontrivial divisor;
 3. every number at least two has a prime divisor, by strong induction;
-4. a prime dividing a product divides one factor, after the gcd/Bézout layer;
-5. there are primes above every bound.
+4. there are primes above every bound.
 
-These claims are expressible today, but they are catalog targets rather than
-checked entries in the first snapshot.
+These remaining claims are expressible today, but they are catalog targets
+rather than checked entries in the current snapshot.
 
 ## GCD without a gcd function
 
@@ -59,31 +62,42 @@ from the empty context. The uniqueness proof uses the checked
 coprimality with one on both sides, and both directions between expanded
 coprimality and `IsGCD(1,a,b)`.
 
-A balanced four-natural Bézout equation is now the missing bridge from checked
-gcd existence to Gauss cancellation; it requires no integer extension to the
-kernel language.
+A balanced four-natural Bézout equation now supplies the checked bridge from
+gcd existence to Gauss cancellation without extending the kernel language.
+The runtime simultaneously constructs a relational gcd and balanced
+coefficients, specializes the result to coprime inputs, and proves
 
-The exact next statements, prototype certificate metrics, bounded-induction
+$$
+\operatorname{Coprime}(a,b)\land a\mid bz\Longrightarrow a\mid z
+$$
+
+as `gauss_coprime_cancel`.
+
+The exact checked statements, certificate metrics, bounded-induction
 construction, and balanced coefficient transport are developed in
 {doc}`GCD and balanced Bézout construction <gcd-and-bezout>`.
 
-The key route is
+The checked proof of Euclid's lemma takes a relational gcd $g$ of $p$ and
+$a$. Since $g\mid p$, `prime_divisor_eq_one_or_self` gives $g=1$ or $p=g$:
 
 $$
-\operatorname{IsGCD}(1,a,p)
-\to \text{Bézout witness}
-\to p\mid ab\Rightarrow p\mid b,
+\begin{array}{rcl}
+g=1 &\Longrightarrow& \operatorname{Coprime}(p,a)
+  \Longrightarrow p\mid ab\Rightarrow p\mid b,\\
+p=g &\Longrightarrow& p\mid a.
+\end{array}
 $$
 
-when $p$ is prime and $p\nmid a$. Together with the case $p\mid a$, this is
-Euclid's lemma.
+The first branch is Gauss cancellation; the second uses the gcd's checked
+divisibility projection. This proof is constructive and its closed shared
+certificate has 5,382 nodes and depth 55.
 
 ## Existence and uniqueness are different theorems
 
-Factorization existence follows by strong induction: a number at least two is
-prime, or it splits into smaller nontrivial factors which factor recursively.
-Uniqueness uses Euclid's lemma to match one prime from one factorization with a
-prime in the other, cancel it, and continue.
+Factorization existence will follow by strong induction: a number at least two
+is prime, or it splits into smaller nontrivial factors which factor
+recursively. Uniqueness can now use the checked Euclid lemma to match one prime
+from one factorization with a prime in the other, cancel it, and continue.
 
 That familiar paper proof quietly quantifies over finite products. An honest
 formal statement needs a representation and theorems for:
@@ -169,6 +183,7 @@ This release contains two deliberately separate FTA forms:
 - no external theorem is smuggled into `pa lib` as a Peano certificate.
 
 The remaining Peano work starts by freezing and implementing the hygienic
-macro expansions with round-trip tests. It then discharges the
-gcd/Bézout/Euclid and β-coding lemmas and produces the two closed PA
-certificates.
+macro expansions with round-trip tests. The gcd/Bézout/Gauss/Euclid chain is
+now checked; the remaining arithmetic gate is constructive prime-divisor
+existence. After that come the β-value, CRT, finite-prefix, product-trace, and
+factorization certificates.

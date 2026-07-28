@@ -29,6 +29,9 @@ forall n m. n + m = m + n
 - [[positive_quotient_gap_impossible]]
 - [[add_eq_zero_left]]
 - [[factor_difference]]
+- [[add_permute_outer]]
+- [[balanced_bezout_euclid_step]]
+- [[common_divisor_divides_balanced_result]]
 - [[add_residue_lift]]
 - [[mod5_square_residue_two]]
 

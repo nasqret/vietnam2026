@@ -23,6 +23,7 @@ forall n m. n * m = m * n
 - [[add_mul]]
 - [[mul_right_cancel_nonzero]]
 - [[multiple_mul_left]]
+- [[balanced_combination_scale_right]]
 - [[square_decomp]]
 
 ## Verification record

@@ -28,6 +28,7 @@ forall n. 0 + n = n
 - [[division_remainder_succ]]
 - [[division_remainder_unique]]
 - [[factor_difference]]
+- [[gcd_balanced_bezout_exists_up_to]]
 - [[dvd_to_mod_zero]]
 
 ## Verification record

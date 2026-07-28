@@ -3,14 +3,15 @@
 This directory is the planning and provenance source for Peano Lab's general
 arithmetic library. Start with:
 
-The current runtime/catalog boundary is 127 checked Peano entries (23
-baseline, 92 general foundational, and twelve fixed modular) inside a 139-node
-catalog. Its shared snapshot has 33,979 proof nodes, 814 Cuts, and 88
-Cut-bearing certificates; the maximum certificate size remains 2,675 and the
-maximum depth remains 57.
+The current runtime/catalog boundary is 137 checked Peano entries (23
+baseline, 102 general foundational, and twelve fixed modular) inside a
+148-node catalog. Exact shared-certificate totals are reproduced in the
+generated snapshot: 52,433 proof nodes, 1,345 Cuts, and 98 Cut-bearing
+certificates. `euclid_prime_dvd_product` is largest at 5,382 nodes and 159
+Cuts; the snapshot-wide maximum depth is 57.
 
-- [`catalog.json`](catalog.json): 139 dependency-ordered facts — 23
-  `checked_existing`, 104 `checked_m20`, eight `planned_expressible`, and four
+- [`catalog.json`](catalog.json): 148 dependency-ordered facts — 23
+  `checked_existing`, 114 `checked_m20`, seven `planned_expressible`, and four
   `blocked_by_language` — with exact source IDs, Peano statements where
   expressible, and blockers where not;
 - [`source-register.json`](source-register.json): pinned revisions, licenses,
@@ -19,8 +20,8 @@ maximum depth remains 57.
   selected conservative Gödel-β factor-sequence and prefix-product design,
   its exact FTA endpoints, and its Peano proof dependency spine;
 - [`gcd-bezout-roadmap.md`](gcd-bezout-roadmap.md): the checked relational API,
-  checked Euclidean-invariance ladder, checked bounded/general gcd existence, and
-  balanced-natural Bézout gate;
+  Euclidean-invariance ladder, simultaneous bounded gcd/Bézout construction,
+  Gauss cancellation, and Euclid's lemma;
 - [`proof-sharing-design.md`](proof-sharing-design.md): the reviewed
   self-contained Cut rule, trust boundary, structural integration, and honest
   erasure limitation;

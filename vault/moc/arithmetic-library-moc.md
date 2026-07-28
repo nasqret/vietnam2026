@@ -6,10 +6,10 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-The current runtime has 127 unique checked nodes: 23 from the original ladder
-and 104 in the reconciled post-baseline extension. Of the latter, 92 form the
+The current runtime has 137 unique checked nodes: 23 from the original ladder
+and 114 in the reconciled post-baseline extension. Of the latter, 102 form the
 general foundational layer and twelve form the fixed modular capstone. The
-broader 139-node catalog contains eight `planned_expressible` and four
+broader 148-node catalog contains seven `planned_expressible` and four
 `blocked_by_language` nodes in addition to those checked layers. One
 separately cataloged Lean companion checks full list-based FTA existence and
 uniqueness; it is not counted as a Peano theorem.
@@ -42,6 +42,7 @@ uniqueness; it is not counted as a Peano theorem.
 - [[add_right_cancel]] · [[add_left_cancel]] · [[add_eq_zero_right]] · [[add_eq_zero_left]]
 - [[add_eq_zero_components]] · [[add_le_add_left]] · [[add_le_add_right]] · [[add_le_cancel_right]]
 - [[no_succ_add_fixed]] · [[drop_add_prefix_from_fixed]]
+- [[add_permute_outer]]
 
 ## Checked multiplication nodes
 
@@ -77,6 +78,13 @@ uniqueness; it is not counted as a Peano theorem.
 - [[coprime_symm]] · [[coprime_one_left]] · [[coprime_one_right]]
 - [[coprime_to_is_gcd_one]] · [[is_gcd_one_to_coprime]]
 
+## Checked balanced Bézout and Gauss nodes
+
+- [[balanced_bezout_euclid_step]]
+- [[gcd_balanced_bezout_exists_up_to]] · [[gcd_balanced_bezout_exists]]
+- [[balanced_combination_scale_right]] · [[common_divisor_divides_balanced_result]]
+- [[coprime_balanced_bezout]] · [[gauss_coprime_cancel]]
+
 ## Checked quotient-and-remainder algebra
 
 - [[division_remainder_succ]] · [[division_remainder_exists]] · [[division_remainder_unique]]
@@ -85,9 +93,11 @@ uniqueness; it is not counted as a Peano theorem.
 - [[add_residue]] · [[add_residue_lift]]
 - [[square_decomp]] · [[square_residue_lift]] · [[square_residue_witness]]
 
-## Checked first prime instance
+## Checked prime nodes
 
 - [[prime_two]] — the fully expanded factor-pair predicate for the numeral two
+- [[prime_divisor_eq_one_or_self]] — every divisor of a prime is one or that prime
+- [[euclid_prime_dvd_product]] — Euclid's lemma with primality and divisibility expanded
 
 ## Executable and documentary views
 

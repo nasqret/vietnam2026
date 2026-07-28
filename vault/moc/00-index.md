@@ -23,7 +23,7 @@ tags: [moc, index]
 - [[peano-lab-moc|Peano Lab MOC]] · [[trusted-kernel]] · [[proof-certificate]] · [[self-contained-proof-sharing]] · [[theorem-ladder]] · [[kernel-guided-policy-training]]
 
 ## Foundational arithmetic
-- [[arithmetic-library-moc|Arithmetic library MOC]] · [[divisibility]] · [[arithmetic-congruence]] · [[prime-number]] · [[fundamental-theorem-of-arithmetic]]
+- [[arithmetic-library-moc|Arithmetic library MOC]] · [[divisibility]] · [[arithmetic-congruence]] · [[gcd-and-coprimality]] · [[prime-number]] · [[fundamental-theorem-of-arithmetic]]
 
 ---
 Book: https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026/book  ·  Lab: /lab-lambda  ·  Repo: github.com/nasqret/vietnam2026

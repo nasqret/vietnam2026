@@ -5,8 +5,10 @@
 The checked runtime currently exposes the relational gcd/coprimality API
 through uniqueness, the zero-right gcd base case, and both directions of
 Euclidean-step invariance, together with bounded and unrestricted relational
-gcd existence. It does **not** yet expose Bézout, Gauss cancellation, or
-Euclid's lemma.
+gcd existence. It now also exposes simultaneous relational-gcd/balanced-Bézout
+existence, result-one witnesses for coprime inputs, Gauss cancellation, and
+Euclid's lemma. Prime-divisor existence and the encoded finite-product layer
+remain separate milestones.
 
 All relations below are authoring notation only. In particular,
 
@@ -31,11 +33,18 @@ The current checked layer contains:
 - `factor_difference`, `divides_remainder`, and `divides_linear_step`; and
 - `is_gcd_zero_right`, `is_gcd_euclid_forward`, and
   `is_gcd_euclid_backward`; and
-- `gcd_exists_up_to` and `gcd_exists_relational`.
+- `gcd_exists_up_to` and `gcd_exists_relational`; and
+- `add_permute_outer`, `balanced_bezout_euclid_step`,
+  `gcd_balanced_bezout_exists_up_to`, `gcd_balanced_bezout_exists`,
+  `balanced_combination_scale_right`,
+  `common_divisor_divides_balanced_result`, `coprime_balanced_bezout`,
+  `gauss_coprime_cancel`, `prime_divisor_eq_one_or_self`, and
+  `euclid_prime_dvd_product`.
 
 In the current shared representation, the largest certificate in this layer is
-`gcd_exists_relational` at 1,268 proof nodes/depth 46. Every entry replays
-constructively and checks from the empty context.
+`euclid_prime_dvd_product` at 5,382 proof nodes/depth 55. Every entry replays
+constructively and checks from the empty context. The snapshot-wide maximum
+depth is 57.
 
 ## Checked Euclidean invariance
 
@@ -143,23 +152,117 @@ a * yp + b * (xp + q * yn)
   = d + (a * yn + b * (xn + q * yp)).
 ```
 
-The maximality bridge is already prototype-checked: if `c` divides both `a`
-and `b`, any balanced combination equal to `d` gives `c | d`. Its current
-shared certificate has 626 nodes. Thus the most efficient recursive theorem should
-construct divisibility witnesses and balanced coefficients simultaneously;
-the bridge then supplies the greatest-common-divisor clause.
+The coefficient identity is now admitted as
+`balanced_bezout_euclid_step`; `add_permute_outer` is its only new additive
+helper. The checked proof uses explicit associativity, commutativity, and
+distributivity certificates rather than treating `ring` as a library oracle.
+
+## Checked simultaneous bounded descent
+
+The strengthened bounded theorem is
+
+```text
+forall B b.
+  b <= B ->
+  forall a.
+    exists d. IsGCD(d,a,b) /\ BalancedBezout(d,a,b)
+```
+
+with both relations expanded in the stored formula. This is ordinary
+induction on `B`, not a polymorphic strong-induction axiom.
+
+1. At zero, `b = 0`; choose `d = a` and coefficients `(1,0,0,0)`.
+2. At `S B`, split into `b <= B` and `b = S B`.
+3. The first branch applies the induction hypothesis directly.
+4. In the boundary branch, divide `a = b*q+r`; the remainder bound gives
+   `r <= B`.
+5. Apply the induction hypothesis to `(b,r)`.
+6. Transport the full `IsGCD(d,b,r)` proof with
+   `is_gcd_euclid_forward`, and independently transport the four coefficients
+   with `balanced_bezout_euclid_step`.
+
+The word *full* is important. The bounded proof carries the complete
+greatest-common-divisor clause through the Euclidean step. It does not derive
+maximality afterward from the balanced equation.
+
+The public `gcd_balanced_bezout_exists` wrapper takes `B=b` using `le_refl`.
+For coprime inputs, the constructed gcd divides both inputs and therefore must
+equal one; `coprime_balanced_bezout` exposes the resulting balanced result-one
+witness directly.
+
+## Checked Gauss bridge
+
+Two independent algebraic interfaces turn that result-one witness into Gauss
+cancellation:
+
+```text
+balanced_combination_scale_right:
+  BalancedBezout(d,a,b) -> BalancedBezout(d*z,a,b*z)
+
+common_divisor_divides_balanced_result:
+  c | a -> c | b -> BalancedBezout(d,a,b) -> c | d
+```
+
+The second theorem has a 626-node shared certificate. It is used here, in the
+Gauss proof; it is **not** the source of the maximality clause in the bounded
+gcd/Bézout construction. Scaling a coprime result-one equation by `z` and
+applying the bridge to the inputs `(a,b*z)` proves
+
+```text
+Coprime(a,b) -> a | b*z -> a | z.
+```
+
+This is `gauss_coprime_cancel`.
+
+## Checked Euclid lemma
+
+The checked `prime_divisor_eq_one_or_self` packages the prime factor-pair API
+as the reusable implication `Prime(p) -> g | p -> g = 1 \/ p = g`.
+
+For a prime `p`, choose a relational gcd `g` of `(p,a)`. Since `g | p`, this
+new divisor characterization gives two constructive branches:
+
+- if `g = 1`, then `p` and `a` are coprime, so Gauss turns `p | a*b` into
+  `p | b`;
+- if `p = g`, the gcd divisibility witness gives `p | a`.
+
+Thus the checked `euclid_prime_dvd_product` theorem proves
+
+```text
+Prime(p) -> p | a*b -> p | a \/ p | b
+```
+
+with every displayed relation expanded in its actual first-order statement.
+
+## Shared-certificate metrics
+
+| Checked theorem | Nodes/depth |
+|---|---:|
+| `add_permute_outer` | 149 / 15 |
+| `balanced_bezout_euclid_step` | 880 / 35 |
+| `gcd_balanced_bezout_exists_up_to` | 2,233 / 45 |
+| `gcd_balanced_bezout_exists` | 2,269 / 47 |
+| `balanced_combination_scale_right` | 754 / 28 |
+| `common_divisor_divides_balanced_result` | 626 / 39 |
+| `coprime_balanced_bezout` | 2,304 / 48 |
+| `gauss_coprime_cancel` | 3,800 / 51 |
+| `prime_divisor_eq_one_or_self` | 57 / 12 |
+| `euclid_prime_dvd_product` | 5,382 / 55 |
 
 ## Admission gates
 
 1. **Complete:** admit and mutation-test the Euclidean invariance ladder.
 2. **Complete:** land and audit self-contained proof sharing.
 3. **Complete:** admit bounded gcd existence and its public wrapper.
-4. Prove the coefficient-update identity with an ordinary checked semiring
-   certificate; library replay cannot treat `ring` as an oracle.
-5. Admit balanced gcd/Bézout existence, derive maximality, then prove Gauss
-   cancellation.
-6. Develop prime-divisor existence separately by bounded search/strong
-   induction before combining it with Gauss to obtain Euclid's lemma.
+4. **Complete:** prove the coefficient-update identity with an ordinary
+   checked semiring certificate.
+5. **Complete:** admit simultaneous balanced gcd/Bézout existence and derive
+   coprime Bézout and Gauss cancellation.
+6. **Complete:** combine relational gcd, primality, and Gauss to prove Euclid's
+   lemma.
+7. Develop prime-divisor existence separately by bounded search/strong
+   induction.
 
 Prime-divisor existence does not follow automatically from gcd or Bézout, and
-none of these steps yet supplies finite sequences or products for FTA.
+Euclid's lemma does not construct a prime divisor. None of these steps yet
+supplies finite sequences or products for FTA.

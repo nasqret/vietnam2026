@@ -17,8 +17,8 @@ needs.
 | Modular congruence | balanced reflexivity and symmetry; additive and multiplicative compatibility | first two checked; transitivity/compatibility planned; fixed mod-five residue ladder checked |
 | Parity | even/odd dichotomy and arithmetic tables | planned and expressible |
 | Division | quotient-remainder existence, uniqueness, block separation, and zero-remainder/divisibility bridges | checked |
-| GCD/coprime | relational symmetry/projections/constructors, uniqueness, zero-right base, Euclidean invariance, existence, Bézout, Gauss cancellation | bounded and unrestricted relational existence checked; Bézout/Gauss planned |
-| Primes | characterization, prime divisors, Euclid's lemma, infinitely many primes | `prime_two` checked; general spine planned and expressible |
+| GCD/coprime | relational symmetry/projections/constructors, uniqueness, zero-right base, Euclidean invariance, existence, balanced Bézout, Gauss cancellation | checked through `gauss_coprime_cancel` |
+| Primes | characterization, prime divisors, Euclid's lemma, infinitely many primes | `prime_two`, `prime_divisor_eq_one_or_self`, and `euclid_prime_dvd_product` checked; prime-divisor existence and the remaining spine planned |
 | Factorization | existence and uniqueness up to permutation | β representation selected; Peano proof spine pending; Lean companion checked |
 
 The generated `dependency-graph.mmd` is the exact graph for checked entries.
@@ -92,6 +92,16 @@ $$
 &\to \text{factorization existence and uniqueness}.
 \end{aligned}
 $$
+
+The middle line is now a checked native chain. The bounded theorem
+`gcd_balanced_bezout_exists_up_to` carries both the full relational gcd proof
+and four balanced coefficients through Euclidean descent. Its unrestricted
+wrapper gives `coprime_balanced_bezout`; coefficient scaling and the
+common-divisor bridge then give `gauss_coprime_cancel`. Finally,
+`prime_divisor_eq_one_or_self` applies the prime factor dichotomy to a
+relational gcd divisor of $p$, and `euclid_prime_dvd_product` uses its two
+branches. Prime-divisor existence remains an
+independent bounded-search milestone; Euclid's lemma does not supply it.
 
 Infinitely many primes can be reached before a general factorial function.
 It is enough to construct, for each bound, a common multiple of every number

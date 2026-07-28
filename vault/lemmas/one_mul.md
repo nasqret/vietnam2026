@@ -22,6 +22,7 @@ forall n. 1 * n = n
 - [[mul_eq_one_components]]
 - [[one_multiple]]
 - [[coprime_to_is_gcd_one]]
+- [[gauss_coprime_cancel]]
 
 ## Verification record
 

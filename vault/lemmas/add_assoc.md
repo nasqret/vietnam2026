@@ -31,6 +31,8 @@ forall n m k. (n + m) + k = n + (m + k)
 - [[division_block_upper]]
 - [[positive_quotient_gap_impossible]]
 - [[factor_difference]]
+- [[add_permute_outer]]
+- [[balanced_bezout_euclid_step]]
 - [[add_residue]]
 - [[add_residue_lift]]
 - [[square_decomp]]

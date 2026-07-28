@@ -15,11 +15,11 @@ divisibility witnesses before the greatest-common-divisor clause.
 
 ## What is checked now
 
-The 127-theorem runtime contains 23 baseline entries and 104 checked
-post-baseline entries. Ninety-two of the latter form the general foundational
-layer; the other twelve are the fixed modular capstone. The broader catalog
-has 139 nodes: those 127 checked entries, eight planned entries, and four
-blocked-by-language entries.
+The 137-theorem runtime contains 23 baseline entries and 114 checked
+post-baseline entries. One hundred and two of the latter form the general
+foundational layer; the other twelve are the fixed modular capstone. The
+broader catalog has 148 nodes: those 137 checked entries, seven planned
+entries, and four blocked-by-language entries.
 
 The checked gcd layer includes the relational API through uniqueness and
 existence:
@@ -34,9 +34,9 @@ existence:
 - bounded formula-specific gcd construction and unrestricted relational gcd
   existence.
 
-All twenty-three gcd/coprimality, Euclidean-step, and existence certificates
-are constructive. In the shared representation, the largest is
-`gcd_exists_relational` at 1,268 proof nodes/depth 46.
+Every gcd/coprimality, Euclidean-step, Bézout, and Gauss certificate is
+constructive. No theorem in this layer uses integer coefficients, subtraction,
+or classical logic.
 
 ## Euclidean invariance without subtraction
 
@@ -136,20 +136,82 @@ For $a=bq+r$, coefficients for $(b,r)$ transport to coefficients for $(a,b)$
 by
 
 $$
-x'_+=y_+,qquad
-y'_+=x_+ + qy_-,qquad
-x'_-=y_-,qquad
+x'_+=y_+,\qquad
+y'_+=x_+ + qy_-,\qquad
+x'_-=y_-,\qquad
 y'_-=x_- + qy_+.
 $$
 
-An independently checked 626-node shared prototype proves the maximality bridge:
-if $c$ divides $a$ and $b$, then a balanced combination equal to $d$ implies
-$c\mid d$. The efficient recursive theorem should therefore construct the two
-divisibility witnesses and the four coefficients simultaneously; maximality
-then turns it into `IsGCD`.
+The checked `balanced_bezout_euclid_step` theorem proves this identity using
+only ordinary semiring equalities. The small `add_permute_outer` helper makes
+the balanced equation available as an exact subterm; neither theorem invokes
+`ring` as an oracle.
 
-With relational gcd existence admitted, the next route is balanced Bézout
-$\to$ Gauss cancellation
-$\to$ Euclid's lemma. Prime-divisor existence is a separate bounded-search
-milestone, and finite factorization still requires the selected β-coded
-sequence/product layer.
+## Simultaneous bounded construction
+
+The admitted bounded motive strengthens the earlier gcd-only construction to
+
+$$
+\forall B,b,\quad b\le B\to\forall a,\;\exists d,\quad
+\operatorname{IsGCD}(d,a,b)\land\operatorname{BalancedBezout}(d,a,b).
+$$
+
+At $B=0$, $b=0$, so $d=a$ and coefficients $(1,0,0,0)$ close the balanced
+equation. At a successor bound, the branch $b\le B$ uses the induction
+hypothesis directly. In the boundary branch $b=S B$, division gives
+$a=bq+r$ and $r<b$, hence $r\le B$. The induction hypothesis supplies both a
+full `IsGCD(d,b,r)` proof and balanced coefficients for $(b,r)$.
+`is_gcd_euclid_forward` transports the complete relational gcd proof, while
+`balanced_bezout_euclid_step` transports the coefficients.
+
+This distinction matters: `common_divisor_divides_balanced_result` is not used
+to manufacture the greatest-divisor clause in the bounded proof. It is a
+separate bridge used downstream in Gauss cancellation.
+
+The unrestricted `gcd_balanced_bezout_exists` theorem takes $B=b$, exactly as
+`gcd_exists_relational` does. Coprimality then forces the constructed gcd to be
+one, yielding `coprime_balanced_bezout`.
+
+## From balanced Bézout to Gauss
+
+The scale theorem has the precise semantic form
+
+$$
+\operatorname{BalancedBezout}(d,a,b)
+\Longrightarrow
+\operatorname{BalancedBezout}(dz,a,bz).
+$$
+
+Its stored name is `balanced_combination_scale_right`; the displayed formula
+clarifies that the second input and balanced result are scaled, while the
+first input absorbs $z$ into its positive and negative coefficients.
+
+The checked `common_divisor_divides_balanced_result` theorem says that if
+$c\mid a$, $c\mid b$, and a balanced equation has result $d$, then $c\mid d$.
+Applied to the scaled result-one equation, with inputs $a$ and $bz$, it proves
+
+$$
+\operatorname{Coprime}(a,b)\land a\mid bz\Longrightarrow a\mid z.
+$$
+
+This is the admitted `gauss_coprime_cancel` theorem. The complete new ladder
+has the following shared-certificate metrics:
+
+| Checked theorem | Role | Nodes/depth |
+|---|---|---:|
+| `add_permute_outer` | four-summand additive permutation | 149 / 15 |
+| `balanced_bezout_euclid_step` | coefficient transport across $a=bq+r$ | 880 / 35 |
+| `gcd_balanced_bezout_exists_up_to` | bounded simultaneous gcd/Bézout descent | 2,233 / 45 |
+| `gcd_balanced_bezout_exists` | unrestricted simultaneous existence | 2,269 / 47 |
+| `balanced_combination_scale_right` | scale the balanced result and second input | 754 / 28 |
+| `common_divisor_divides_balanced_result` | recover divisibility of the result | 626 / 39 |
+| `coprime_balanced_bezout` | balanced result-one witnesses for coprime inputs | 2,304 / 48 |
+| `gauss_coprime_cancel` | cancel a coprime factor from divisibility | 3,800 / 51 |
+| `prime_divisor_eq_one_or_self` | every divisor of a prime is one or that prime | 57 / 12 |
+| `euclid_prime_dvd_product` | a prime divisor of a product divides a factor | 5,382 / 55 |
+
+Every certificate checks from the empty context in the intuitionistic kernel.
+Euclid's lemma is developed in {doc}`Primes and unique factorization
+<primes-and-factorization>`. Prime-divisor existence remains a separate
+bounded-search milestone, and finite factorization still requires the selected
+β-coded sequence/product layer.

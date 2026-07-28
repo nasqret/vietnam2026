@@ -20,6 +20,7 @@ forall a b. (exists k. k + S a = S b) -> exists r. r + a = b
 ## Checked dependents
 
 - [[gcd_exists_up_to]]
+- [[gcd_balanced_bezout_exists_up_to]]
 
 ## Verification record
 

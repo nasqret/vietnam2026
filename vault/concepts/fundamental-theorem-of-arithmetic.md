@@ -18,9 +18,10 @@ Sorted decoded entries make uniqueness extensional without equating
 non-unique codes. The encoding itself adds no kernel rule: every relation must
 expand into the existing PA object language. Division existence
 and uniqueness and constructive [[gcd_exists_relational|relational gcd
-existence]] are now checked. Balanced Bézout, CRT, prime-divisor existence,
-[[euclids-lemma]], and sequence-law certificates are still missing, so no
-Peano FTA is exposed through `pa lib` yet.
+existence]] are now checked. Balanced Bézout, [[gauss_coprime_cancel]], and
+[[euclids-lemma]] are checked as well. CRT, prime-divisor existence, and the
+β-sequence/product laws are still missing, so no Peano FTA is exposed through
+`pa lib` yet.
 
 The repository now also contains an independently checked Lean 4 companion.
 It proves that every nonzero natural has a finite list of prime factors and

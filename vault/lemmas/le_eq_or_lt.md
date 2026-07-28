@@ -23,6 +23,7 @@ forall a b. (exists k. k + a = b) -> a = b \/ exists k. k + S a = b
 
 - [[remainder_bound_step]]
 - [[gcd_exists_up_to]]
+- [[gcd_balanced_bezout_exists_up_to]]
 
 ## Verification record
 

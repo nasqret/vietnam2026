@@ -317,6 +317,27 @@
       "blocker": null
     },
     {
+      "id": "add_permute_outer",
+      "title": "The outer terms of two additive pairs may be permuted",
+      "domain": "addition",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_assoc",
+        "add_comm"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Permute the outer entries of two additive pairs.",
+      "peano": {
+        "statement": "forall a b c d. (a + b) + (c + d) = (c + b) + (a + d)",
+        "existing_name": "add_permute_outer"
+      },
+      "blocker": null
+    },
+    {
       "id": "add_eq_zero_right",
       "title": "A zero sum has a zero right summand",
       "domain": "addition",
@@ -2644,6 +2665,181 @@
       "blocker": null
     },
     {
+      "id": "balanced_bezout_euclid_step",
+      "title": "Balanced Bézout coefficients cross one Euclidean step",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_assoc",
+        "add_comm",
+        "mul_add",
+        "mul_assoc",
+        "add_mul",
+        "add_permute_outer"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "weissman_python_number_theory",
+        "stein_ent_tex"
+      ],
+      "summary": "Transport balanced natural Bezout coefficients across one Euclidean division step.",
+      "peano": {
+        "statement": "forall a b q r d xp yp xn yn. a = b * q + r -> b * xp + r * yp = d + (b * xn + r * yn) -> a * yp + b * (xp + q * yn) = d + (a * yn + b * (xn + q * yp))",
+        "existing_name": "balanced_bezout_euclid_step"
+      },
+      "blocker": null
+    },
+    {
+      "id": "gcd_balanced_bezout_exists_up_to",
+      "title": "A gcd with balanced Bézout witnesses exists below a bound",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "zero_add",
+        "le_zero",
+        "le_eq_or_lt",
+        "le_of_succ_le_succ",
+        "division_remainder_exists",
+        "is_gcd_zero_right",
+        "is_gcd_euclid_forward",
+        "balanced_bezout_euclid_step"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "weissman_python_number_theory",
+        "stein_ent_tex"
+      ],
+      "summary": "Bounded Euclidean descent simultaneously constructs a relational gcd and balanced natural Bezout witnesses.",
+      "peano": {
+        "statement": "forall B b. (exists t. t + b = B) -> forall a. exists d. ((((exists x. a = d * x) /\\ (exists y. b = d * y)) /\\ forall c. (exists u. a = c * u) -> (exists v. b = c * v) -> exists w. d = c * w) /\\ exists xp yp xn yn. a * xp + b * yp = d + (a * xn + b * yn))",
+        "existing_name": "gcd_balanced_bezout_exists_up_to"
+      },
+      "blocker": null
+    },
+    {
+      "id": "gcd_balanced_bezout_exists",
+      "title": "A gcd has balanced natural Bézout coefficients",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "le_refl",
+        "gcd_balanced_bezout_exists_up_to"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "weissman_python_number_theory",
+        "stein_ent_tex"
+      ],
+      "summary": "Every pair has a relational gcd together with balanced natural Bezout witnesses.",
+      "peano": {
+        "statement": "forall a b. exists d. ((((exists x. a = d * x) /\\ (exists y. b = d * y)) /\\ forall c. (exists u. a = c * u) -> (exists v. b = c * v) -> exists w. d = c * w) /\\ exists xp yp xn yn. a * xp + b * yp = d + (a * xn + b * yn))",
+        "existing_name": "gcd_balanced_bezout_exists"
+      },
+      "blocker": null
+    },
+    {
+      "id": "balanced_combination_scale_right",
+      "title": "A balanced combination may be scaled on the right",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_assoc",
+        "mul_comm",
+        "add_mul"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "Scale a balanced natural combination on the right.",
+      "peano": {
+        "statement": "forall a b d xp yp xn yn z. a * xp + b * yp = d + (a * xn + b * yn) -> a * (xp * z) + (b * z) * yp = d * z + (a * (xn * z) + (b * z) * yn)",
+        "existing_name": "balanced_combination_scale_right"
+      },
+      "blocker": null
+    },
+    {
+      "id": "common_divisor_divides_balanced_result",
+      "title": "A common divisor divides a balanced-combination result",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_assoc",
+        "mul_add",
+        "add_comm",
+        "factor_difference"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "weissman_python_number_theory",
+        "stein_ent_tex"
+      ],
+      "summary": "Every common divisor of two inputs divides the result of a balanced natural combination.",
+      "peano": {
+        "statement": "forall c a b d xp yp xn yn. (exists u. a = c * u) -> (exists v. b = c * v) -> a * xp + b * yp = d + (a * xn + b * yn) -> exists w. d = c * w",
+        "existing_name": "common_divisor_divides_balanced_result"
+      },
+      "blocker": null
+    },
+    {
+      "id": "coprime_balanced_bezout",
+      "title": "Coprime inputs have a balanced Bézout identity",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "gcd_balanced_bezout_exists"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "weissman_python_number_theory",
+        "stein_ent_tex"
+      ],
+      "summary": "Coprime inputs admit balanced natural Bezout coefficients with result one.",
+      "peano": {
+        "statement": "forall a b. (forall d. (exists x. a = d * x) -> (exists y. b = d * y) -> d = 1) -> exists xp yp xn yn. a * xp + b * yp = 1 + (a * xn + b * yn)",
+        "existing_name": "coprime_balanced_bezout"
+      },
+      "blocker": null
+    },
+    {
+      "id": "gauss_coprime_cancel",
+      "title": "Gauss cancellation for coprime factors",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "multiple_refl",
+        "one_mul",
+        "coprime_balanced_bezout",
+        "balanced_combination_scale_right",
+        "common_divisor_divides_balanced_result"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "weissman_python_number_theory",
+        "stein_ent_tex"
+      ],
+      "summary": "Cancel a coprime factor from a divisibility witness (Gauss cancellation).",
+      "peano": {
+        "statement": "forall a b z. (forall d. (exists x. a = d * x) -> (exists y. b = d * y) -> d = 1) -> (exists q. b * z = a * q) -> exists w. z = a * w",
+        "existing_name": "gauss_coprime_cancel"
+      },
+      "blocker": null
+    },
+    {
       "id": "bezout_integer_coefficients",
       "title": "Bézout identity with integer coefficients",
       "domain": "gcd_coprime",
@@ -2750,23 +2946,46 @@
       "blocker": null
     },
     {
+      "id": "prime_divisor_eq_one_or_self",
+      "title": "Every divisor of a prime is one or the prime",
+      "domain": "primes",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_one"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "Every divisor of a prime is one or the prime itself.",
+      "peano": {
+        "statement": "forall p g. (~(p = 1) /\\ forall c d. p = c * d -> c = 1 \\/ d = 1) -> (exists x. p = g * x) -> g = 1 \\/ p = g",
+        "existing_name": "prime_divisor_eq_one_or_self"
+      },
+      "blocker": null
+    },
+    {
       "id": "euclid_prime_dvd_product",
       "title": "Euclid's lemma",
       "domain": "primes",
-      "status": "planned_expressible",
+      "status": "checked_m20",
       "dependencies": [
+        "prime_divisor_eq_one_or_self",
         "gcd_exists_relational",
-        "coprime_symm",
-        "multiple_trans"
+        "is_gcd_one_to_coprime",
+        "gauss_coprime_cancel"
       ],
       "sources": [
+        "peano_lab_library",
         "macbeth_math2001_repo",
         "weissman_illustrated_programming"
       ],
-      "summary": "A prime dividing a product divides at least one factor, with all predicates expanded.",
+      "summary": "A prime dividing a product divides at least one factor (Euclid's lemma).",
       "peano": {
         "statement": "forall p a b. (~(p = 1) /\\ forall c d. p = c * d -> c = 1 \\/ d = 1) -> (exists k. a * b = p * k) -> (exists u. a = p * u) \\/ exists v. b = p * v",
-        "existing_name": null
+        "existing_name": "euclid_prime_dvd_product"
       },
       "blocker": null
     },

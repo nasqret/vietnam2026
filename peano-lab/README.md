@@ -270,7 +270,7 @@ arithmetic/order rungs plus five explicit helper lemmas, ending at
 `forall n m. n * m = 0 -> n = 0 \/ m = 0`. M11 extends the current index to twenty-three with
 `one_mul`, `mul_one`, and `add_mul`, the only missing orientations needed by certificate-producing
 commutative-semiring normalization. The current local runtime extends that
-reconciled foundation to 127 unique checked entries: 23 baseline theorems, 92
+reconciled foundation to 137 unique checked entries: 23 baseline theorems, 102
 post-baseline foundational theorems, and twelve unique modular capstones. The
 complete 26-record modular provenance catalog ends at
 `mod5_fourth_power_one`; fourteen of those records coincide exactly with
@@ -414,14 +414,15 @@ session commands replay. Automated worker boot is green. A direct in-app Pyodide
 still pending because no browser was attached to this session. This candidate is staged locally
 only; production is untouched.
 
-The current local candidate is build `2026-07-28n`, immutable application
-release `a-2099b556a7d3`. It exposes 127 unique checked theorems, including
-constructive relational gcd existence, and the reviewed self-contained Cut
-rule. It preserves both parent snapshots as provenance and binds a freshly
+The current local candidate is build `2026-07-28p`, immutable application
+release `a-48059fcca9d3`. It exposes 137 unique checked theorems, including
+constructive relational gcd existence, balanced-natural Bézout, Gauss
+cancellation, and Euclid's lemma, together with the reviewed self-contained
+Cut rule. It preserves both parent snapshots as provenance and binds a freshly
 regenerated proof-trace corpus and application manifest. Its complete suite
-passes 1,086 tests on Python 3.10; the 36-source
-warning-as-error book and all 264 documented commands are green. It has not
-been deployed or promoted; production remains untouched.
+passes 1,090 tests on Python 3.10; the 36-source warning-as-error book and all
+264 documented commands are green. It has not been deployed or promoted;
+production remains untouched.
 
 Back at the repository root, run both regression suites:
 

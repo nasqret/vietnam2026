@@ -19,7 +19,7 @@ forall a b. (((exists x. a = 1 * x) /\ (exists y. b = 1 * y)) /\ forall d. (exis
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[euclid_prime_dvd_product]]
 
 ## Verification record
 
