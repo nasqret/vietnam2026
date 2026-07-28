@@ -429,6 +429,38 @@ dependencies.  A job must first confirm `aarch64`, CUDA availability, BF16,
 one forward/backward step, adapter reload, tokenizer round trip, and Peano
 kernel multiprocessing.
 
+Preparation job `20029964` passed that full gate on 2026-07-28 from clean commit
+`41683e24358f5ce42e357ff3be6300aa233620e4`. Its attested runtime was Python
+3.13.5, `torch==2.9.1+cu129`, CUDA 12.9, and one NVIDIA GH200 120GB. The exact
+Qwen3-1.7B model/tokenizer revision resolved to the requested commit, both the
+training and reloaded losses were finite, and the closed adapter/tokenizer
+artifact hashes were recorded. This is an environment and one-step LoRA smoke,
+not a trained-policy result; the 100-step training job remains scheduler work.
+
+### 10.1 WMI A100 replication path
+
+WMI is a second execution site, not a substitute provenance label for Helios.
+The [official WMI resource table](https://cluster.wmi.amu.edu.pl/02_02_zasoby_klastra.html)
+documents one four-GPU NVIDIA A100 80GB node. Live Slurm inspection on 2026-07-28
+confirmed node `g3n1`, partition `gpu_csi`, feature `vram80g`, and the owner's
+`hw_csi` access. `gpu_csi` is the preferred non-preemptible route; `gpu_spot`
+and `gpu_idle` are not used for the initial run because the current trainer does
+not yet implement the site's requeue/checkpoint signal contract.
+
+WMI is x86-64 and its documented runtime differs from Helios. The initial
+read-only probe therefore requests exactly one typed `nvidia_a100` GPU for five
+minutes, loads `anaconda/2025.12-1`, activates the central `pytorch-gpu`
+environment, and requires Python 3.12, PyTorch 2.5.1, CUDA 12.4, one visible
+A100, at least 75 GiB VRAM, BF16 support, and a finite BF16 matrix
+forward/backward pass. It also records module, driver, storage, PyPI, and model
+repository reachability without installing anything.
+
+After that probe passes, WMI receives its own version-pinned Transformers/PEFT
+overlay, source-sync record, job scripts, submission ledger, and runtime
+manifest. The ARM Helios lock and `.venv-helios` must never be reused or
+relabeled on WMI. Training may move to WMI only after the same real
+forward/backward/save/reload smoke and independent data attestation pass there.
+
 ## 11. Provenance and result ledger
 
 Each published run records:

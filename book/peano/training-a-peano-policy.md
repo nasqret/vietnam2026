@@ -534,6 +534,35 @@ execution, the relevant Python packages, adapter save/reload, tokenizer round tr
 through the Peano kernel.  FlashAttention, vLLM, DeepSpeed, bitsandbytes, and QLoRA may later be
 measured optimizations; none is a prerequisite for the first correctness run.
 
+The corrected preparation job `20029964` subsequently passed this entire gate from clean commit
+`41683e2`. It resolved the pinned Qwen3-1.7B model and tokenizer revision, performed a finite BF16
+LoRA optimizer step on a GH200, saved and hashed the adapter and tokenizer, reloaded them, and
+obtained another finite loss. That is evidence for the runtime boundary, not evidence that a useful
+policy has been trained. The registered 100-step run and kernel-judged held-out evaluation remain
+pending.
+
+## WMI A100: reproduce the gate, do not rename the environment
+
+The WMI cluster provides a useful second path when Helios queues are long. Its
+[published resource table](https://cluster.wmi.amu.edu.pl/02_02_zasoby_klastra.html) lists a node
+with four NVIDIA A100 80GB GPUs. Live scheduler inspection confirmed that the owner belongs to
+`hw_csi` and can use the non-preemptible `gpu_csi` partition. The lower-priority `gpu_spot` and
+`gpu_idle` partitions can be requeued; they are inappropriate until the training loop explicitly
+handles that lifecycle.
+
+The important lesson is that “NVIDIA cluster” is not one environment. Helios is ARM with the
+CUDA-12.9 wheel lock described above. WMI is x86-64 and exposes an official
+`anaconda/2025.12-1` module whose `pytorch-gpu` environment contains Python 3.12, PyTorch 2.5.1,
+and CUDA 12.4. Reusing the Helios lock would be both technically wrong and provenance laundering.
+
+The tracked WMI probe therefore requests one *typed* A100 for five minutes and installs nothing.
+It asserts exactly one visible device, at least 75 GiB VRAM, BF16 support, and a finite BF16 matrix
+forward/backward pass, while recording driver, module, storage, and outbound-access facts. Only
+after it passes may a dedicated Peano overlay add pinned Transformers and PEFT packages. WMI must
+then repeat the real LoRA save/reload smoke and independent dataset attestation before accepting a
+training job. Moving the computation does not move the trust boundary: every generated proof is
+still replayed by Peano Lab and every QED is still checked against its original theorem.
+
 ## Reproduction and honest resume
 
 A checkpoint name such as `checkpoint-100` is not an identity.  M19 binds a run to:

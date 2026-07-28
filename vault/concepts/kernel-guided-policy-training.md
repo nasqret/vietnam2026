@@ -30,6 +30,11 @@ make Torch importable. The corrected preflight recreates an isolated environment
 replaces inherited Python paths, disables the user site, and only then performs the real BF16 LoRA
 step. Dependency gating kept the failed attempt from starting training or evaluation.
 
+The replacement Helios preparation job passed the full one-step BF16 LoRA save/reload smoke. A
+second execution site, [[wmi-a100-training-runtime]], is intentionally treated as a different
+environment rather than a drop-in queue: it must reproduce the gate under its own source, package,
+accelerator, and scheduler provenance.
+
 Training data enters through the [[compact-headless-proof-runner]] and is separated with a
 [[genealogy-safe-proof-data-split]]. The planned second stage uses
 [[verifier-guided-policy-evaluation-and-search]] to collect only newly kernel-checked trajectories

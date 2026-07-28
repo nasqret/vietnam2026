@@ -979,3 +979,21 @@ links / 34 sessions / 170 commands are green.  Independent dataset replay preser
 8,149/926/925 split hashes and aggregate digest while refreshing the attestation to SHA-256
 `5a3b172627d15a1f5dfa303c3acdcf02e9673039a239385ef8c5d8d57b238e0a` for the new runtime-source
 inventory.  These are corrected preflight facts, not a successful model smoke.
+
+## 2026-07-28 — M19 cluster portability: a second GPU site is a new experiment boundary
+
+The corrected Helios preparation finally passed. Job `20029964` did more than import Torch: it
+matched the exact Qwen revision, ran a BF16 LoRA optimizer step, saved and hashed the adapter and
+tokenizer, reloaded them, and produced another finite loss. This proves the environment/save path,
+not the policy's mathematical ability; the registered training and evaluator are still pending.
+
+When VPN access to WMI returned, the tempting shortcut was to call any NVIDIA node equivalent and
+copy the Helios virtual environment. Live inspection showed why that would be false provenance.
+WMI's A100 node is x86-64, while Helios's GH200 is aarch64; WMI supplies PyTorch 2.5.1/CUDA 12.4 in
+a central Conda environment, while Helios uses the pinned 2.9.1/CUDA-12.9 ARM wheel closure.
+
+The first WMI artifact is therefore only a five-minute, typed-A100, read-only probe. It verifies one
+visible 80GB A100, BF16 matrix forward/backward, exact central Torch/CUDA versions, modules,
+storage, and public package/model reachability. Only a passing report licenses a separate Peano
+overlay and full LoRA save/reload smoke. Cluster portability means reproducing the boundary with
+new evidence, not relabeling old evidence.

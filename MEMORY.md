@@ -185,8 +185,13 @@
   prepare job failed before model loading because `ML-bundle/25.10` exposes, but does not install,
   its ARM Torch wheel. Dependency gating prevented training/evaluation and the stale jobs were
   canceled. The corrected isolated recipe pins `torch==2.9.1+cu129`, its transitive closure, binary
-  wheels, and `pip check`; no model has yet been downloaded or trained. The model never enters the
-  trusted computing base.
+  wheels, and `pip check`. Replacement preparation job `20029964` passed on a GH200 from exact
+  commit `41683e2`: the pinned Qwen3-1.7B revision downloaded, one BF16 LoRA step and adapter
+  save/reload produced finite losses, and closed artifact hashes were recorded. The registered
+  100-step training and kernel-judged evaluation remain pending; the model never enters the trusted
+  computing base. WMI access is available through `hw_csi`; its distinct x86-64/PyTorch-2.5.1/
+  CUDA-12.4 A100 path must pass its own probe and save/reload smoke rather than reuse the Helios ARM
+  lock.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -233,8 +238,9 @@
   `norm_num` teaching surface are present. The odd-square induction closes through explicit
   `trans`/`rewrite` structure, while concrete coefficients can now be certified without obscuring
   the independent final check. M19's headless runner, first 10,000-row checked corpus, and policy
-  infrastructure have focused green coverage, but the real Helios smoke, model comparison, and
-  milestone-wide release gates are not yet complete.
+  infrastructure have focused green coverage. The real Helios environment/one-step LoRA smoke has
+  passed, while 100-step training, WMI replication, model comparison, and milestone-wide release
+  gates are not yet complete.
 - M19 pre-training infrastructure gate on 2026-07-28: 363 focused tests, 912 full Peano tests,
   Lambda 360 tests plus 36 subtests, clean book build/command replay, and green local staging as
   build `2026-07-28f`, application `a-69aa3b753965`. This is not deployed and is not a model result.

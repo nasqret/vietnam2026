@@ -39,6 +39,9 @@ the prover's trust boundary. The JSONL runner reuses the production parser, surf
 theorem library, proof engine, traces, and independent original-target finalizer. The pilot data,
 replay compiler, fixed capability profile, BF16 LoRA runtime, evaluator provenance, guarded
 Helios controls, and the first independently replay-attested 10,000-row synthetic release are
-implemented. Real model training and evaluation remain open; no model result is claimed yet. See
+implemented. The corrected Helios environment/LoRA save-reload smoke passed as job `20029964`; its
+training dependency remains queued. A separate typed-A100 WMI runtime probe is being brought up
+under `gpu_csi` rather than reusing Helios's ARM environment. Real policy training and evaluation
+remain open; no model result is claimed yet. See
 [`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest completed and staged
 milestone; production remains untouched behind the M14 cache-header blocker.

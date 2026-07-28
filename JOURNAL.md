@@ -832,3 +832,18 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   27-source book; 193 links and 170 replayed commands in 34 sessions. Independent replay retained
   the exact split/dataset hashes and refreshed only the source-bound attestation to
   `5a3b172627d15a1f5dfa303c3acdcf02e9673039a239385ef8c5d8d57b238e0a`.
+
+## 2026-07-28 (branch peano-lab) — M19: Helios smoke passed; WMI A100 path opened
+
+- Replacement preparation job `20029964` completed in 1m31s from exact clean commit `41683e2`.
+  It loaded Python 3.13.5 and `torch==2.9.1+cu129` on one GH200, matched the pinned Qwen3-1.7B
+  model/tokenizer revision, completed a BF16 LoRA update, saved and hashed the adapter/tokenizer,
+  reloaded them, and reported finite training/reload losses. Training `20029970` remains queued and
+  evaluation `20029980` remains dependency-blocked; no learned solve rate is claimed.
+- Restored VPN access made WMI live inspection possible. The owner belongs to `hw_csi`; partition
+  `gpu_csi` exposes node `g3n1` with four A100 80GB GPUs, 880GB RAM, and non-preemptible jobs up to
+  three days. Its lower-tier spot work is scheduler-requeueable.
+- Added a read-only five-minute probe requesting one typed A100. It installs nothing and asserts
+  the site's central x86-64 Python-3.12/PyTorch-2.5.1/CUDA-12.4 runtime, exactly one visible A100,
+  at least 75 GiB VRAM, BF16 support, and a finite matrix forward/backward pass. The Helios ARM lock
+  is explicitly not portable to WMI; a separate pinned overlay follows only after this gate passes.

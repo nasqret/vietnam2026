@@ -486,6 +486,10 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       ordinary public surface followed by original-target kernel finalization can score a proof.
 - [x] Add guarded Helios sync, environment, training, evaluation, queue, and submission controls;
       test-only is the default and real submission requires the explicit confirmation token.
+- [x] Pass the corrected isolated Helios environment and one-step BF16 LoRA save/reload smoke on
+      job `20029964`, with exact source/model/runtime/artifact provenance.
+- [ ] Pass the tracked five-minute WMI A100 runtime probe, build a separate pinned x86-64 overlay,
+      and repeat the LoRA save/reload gate before submitting WMI training.
 - [x] Expand the checked synthetic curriculum beyond the 18-session pilot, keeping genealogy and
       capability metadata complete, and freeze the first training/validation/test release.
 - [ ] Run the Qwen3-1.7B smoke on Helios, verify resume identity, publish the complete training and
@@ -531,7 +535,11 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   first environment recipe incorrectly assumed the ML module made Torch importable. Its dependent
   train/evaluation jobs were canceled without running. The corrected recipe pins Helios's
   `torch==2.9.1+cu129` ARM wheel, isolates the venv, enumerates transitive dependencies, and runs
-  `pip check`; no M19 completion or performance result is claimed yet.
+  `pip check`. Replacement preparation job `20029964` completed in 1m31s: exact commit/model
+  revisions matched, GH200 BF16 was active, train/reload losses were finite, and closed adapter and
+  tokenizer hashes were emitted. Training job `20029970` remains queued, so no learned-policy
+  performance result is claimed. A separate typed-A100 WMI probe is now tracked; WMI may be used
+  only after its distinct x86-64 runtime passes the same gates.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search
