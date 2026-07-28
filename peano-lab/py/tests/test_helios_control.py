@@ -105,9 +105,20 @@ def test_training_jobs_pin_hash_seed_environment_and_safe_artifacts() -> None:
         assert "#SBATCH --account=plgccaiautore2026-gpu-gh200" in source
         assert "#SBATCH --partition=plgrid-gpu-gh200" in source
         assert "ML-bundle/25.10" in source
+        assert "PYTHONNOUSERSITE=1" in source
+        assert '${PYTHONPATH:+' not in source
     assert "requirements-helios.lock" in prepare
-    assert "--system-site-packages" in prepare
+    assert "--system-site-packages" not in prepare
+    assert "python3 -m venv --clear .venv-helios" in prepare
+    assert "PIP_FIND_LINKS" in prepare
+    assert "torch" in _text(
+        REPO_ROOT / "training" / "peano_policy" / "requirements-helios.lock"
+    )
+    assert "--only-binary=:all:" in prepare
     assert "--no-deps" in prepare
+    assert "-m pip check" in prepare
+    assert 'torch.__version__ == "2.9.1+cu129"' in prepare
+    assert 'torch.version.cuda == "12.9"' in prepare
     assert "training.peano_policy.smoke" in prepare
     assert "qwen3_1_7b_smoke.toml" in prepare
     assert "HF_HOME=" in prepare

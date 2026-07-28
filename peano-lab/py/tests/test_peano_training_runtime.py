@@ -711,12 +711,52 @@ def test_runtime_imports_are_lazy_and_stack_has_no_accelerator_extensions() -> N
     )
     assert "--adapter" in evaluator_help.stdout
     requirements = (TRAINING_ROOT / "requirements-helios.lock").read_text(encoding="utf-8").lower()
+    pins = [
+        line.split(";", 1)[0].strip()
+        for line in requirements.splitlines()
+        if line.strip() and not line.lstrip().startswith("#")
+    ]
+    assert all(pin.count("==") == 1 for pin in pins)
+    package_names = {pin.split("==", 1)[0] for pin in pins}
+    assert len(package_names) == len(pins)
+    assert package_names == {
+        "accelerate",
+        "certifi",
+        "charset-normalizer",
+        "filelock",
+        "fsspec",
+        "hf-xet",
+        "huggingface-hub",
+        "idna",
+        "jinja2",
+        "markupsafe",
+        "mpmath",
+        "networkx",
+        "numpy",
+        "packaging",
+        "peft",
+        "pip",
+        "psutil",
+        "pyyaml",
+        "regex",
+        "requests",
+        "safetensors",
+        "setuptools",
+        "sympy",
+        "tokenizers",
+        "tomli",
+        "torch",
+        "tqdm",
+        "transformers",
+        "typing-extensions",
+        "urllib3",
+    }
     assert "transformers==" in requirements
     assert "peft==" in requirements
     assert "accelerate==" in requirements
     assert "huggingface-hub==" in requirements
     assert "tokenizers==" in requirements
-    assert "torch==" not in requirements
+    assert "torch==2.9.1+cu129" in requirements
     for forbidden in ("vllm", "flash-attn", "flash_attn", "bitsandbytes"):
         assert forbidden not in requirements
 

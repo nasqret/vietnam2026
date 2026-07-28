@@ -69,9 +69,16 @@ grep -F -- "--test-only --afterok 12345 slurm/peano_cpu_smoke.sbatch" \
   "$ssh_log" >/dev/null
 
 : > "$ssh_log"
+if scripts/helios_submit_job.sh --submit --confirm PEANO-LAB-TRAINING \
+  slurm/peano_gpu_gh200_smoke.sbatch >/dev/null 2>&1; then
+  echo "GPU smoke unexpectedly accepted no prepared-environment dependency" >&2
+  exit 1
+fi
+[ ! -s "$ssh_log" ]
+
 scripts/helios_submit_job.sh --submit --confirm PEANO-LAB-TRAINING \
-  slurm/peano_gpu_gh200_smoke.sbatch >/dev/null
-grep -F -- "--submit --confirm PEANO-LAB-TRAINING slurm/peano_gpu_gh200_smoke.sbatch" \
+  --afterok 12345 slurm/peano_gpu_gh200_smoke.sbatch >/dev/null
+grep -F -- "--submit --confirm PEANO-LAB-TRAINING --afterok 12345 slurm/peano_gpu_gh200_smoke.sbatch" \
   "$ssh_log" >/dev/null
 
 : > "$ssh_log"

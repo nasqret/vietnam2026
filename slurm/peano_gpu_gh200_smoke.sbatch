@@ -16,13 +16,15 @@ module purge
 module load "${PEANO_HELIOS_ML_MODULE:-ML-bundle/25.10}"
 
 cd "${SLURM_SUBMIT_DIR:?SLURM_SUBMIT_DIR is not defined}"
-export PYTHONPATH="$SLURM_SUBMIT_DIR/peano-lab/py${PYTHONPATH:+:$PYTHONPATH}"
+test -x .venv-helios/bin/python
+export PYTHONNOUSERSITE=1
+export PYTHONPATH="$SLURM_SUBMIT_DIR/peano-lab/py:$SLURM_SUBMIT_DIR"
 hostname
 date -Is
 uname -m
-python3 --version
+.venv-helios/bin/python --version
 nvidia-smi -L
-python3 - <<'PY'
+.venv-helios/bin/python - <<'PY'
 import platform
 
 import torch

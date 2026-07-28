@@ -507,8 +507,8 @@ The intended progression is deliberately staged:
 4. synchronize source while preserving remote checkpoints, results, caches, and the submission
    ledger;
 5. test each Slurm script with `sbatch --test-only`;
-6. run CPU and GH200 environment smoke jobs;
-7. prepare the pinned lightweight Python environment above the cluster PyTorch module;
+6. run the CPU environment smoke;
+7. prepare the pinned isolated Python environment and run its full GH200 smoke;
 8. run the 1.7B, 100-step adapter smoke;
 9. reload/resume it and run kernel-judged evaluation; and
 10. only after the smoke gates pass, schedule controlled 4B comparisons.
@@ -519,12 +519,20 @@ script path, work directory, git commit, and script SHA-256 to `logs/submissions
 logs are evidence that a job ran; they are not a substitute for the dataset, training, and
 evaluation manifests.
 
-The GH200 is an ARM machine.  The existing short job checks `aarch64`, CUDA visibility, the loaded
-PyTorch build, and Peano kernel execution.  Before a longer job is trusted, the full smoke sequence
-must also demonstrate BF16 forward/backward execution, the relevant Python packages, adapter
-save/reload, tokenizer round trips, and evaluation through the Peano kernel.  FlashAttention, vLLM,
-DeepSpeed, bitsandbytes, and QLoRA may later be measured optimizations; none is a prerequisite for
-the first correctness run.
+The GH200 is an ARM machine.  `ML-bundle/25.10` loads CUDA libraries and advertises an immutable
+ARM wheel directory through `PIP_FIND_LINKS`; it does not itself make `torch` importable.  The
+preparation job therefore clears an isolated venv, installs the exact `torch==2.9.1+cu129` wheel
+and a fully version-pinned Python dependency closure using binary wheels and no resolver freedom,
+then requires `pip check`.  Scheduled jobs replace inherited `PYTHONPATH` with the two reviewed
+repository roots, disable the user site, and assert the exact Torch/CUDA build.  The standalone
+short GPU job consumes that prepared environment and therefore requires an `afterok` preparation
+dependency.  It checks `aarch64`, CUDA visibility, the loaded PyTorch build, and Peano kernel
+execution.  Versions and the resolved runtime inventory are recorded, but the current lock does not
+use `--require-hashes`; this is not yet a claim of byte-identical wheel reproduction.  Before a
+longer job is trusted, the full smoke sequence must also demonstrate BF16 forward/backward
+execution, the relevant Python packages, adapter save/reload, tokenizer round trips, and evaluation
+through the Peano kernel.  FlashAttention, vLLM, DeepSpeed, bitsandbytes, and QLoRA may later be
+measured optimizations; none is a prerequisite for the first correctness run.
 
 ## Reproduction and honest resume
 

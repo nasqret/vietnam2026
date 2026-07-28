@@ -71,9 +71,11 @@ The initial configurations are:
 - `configs/pythagoras_4b_pilot.toml`: two epochs, rank-16 LoRA.
 
 All three use BF16 weights and PyTorch SDPA.  They require neither FlashAttention,
-vLLM, bitsandbytes, nor quantized loading.  PyTorch comes from Helios
-`ML-bundle/25.10`; the small Python layer is pinned in
-`requirements-helios.lock`.
+vLLM, bitsandbytes, nor quantized loading.  Helios `ML-bundle/25.10` supplies
+CUDA and an approved ARM wheel directory, but not an importable `torch` package.
+The isolated environment therefore installs `torch==2.9.1+cu129` and its full
+Python dependency closure from `requirements-helios.lock`, without dependency
+resolution, and requires `pip check` before the real LoRA smoke.
 
 After the replay dataset has been installed at the path named in the config:
 

@@ -27,7 +27,9 @@ peano_helios_validate_single_job_id() {
 
 peano_helios_requires_dependency() {
   case "$1" in
-    slurm/peano_train_qwen3_1_7b.sbatch|slurm/peano_eval_qwen3_1_7b.sbatch)
+    slurm/peano_gpu_gh200_smoke.sbatch|\
+    slurm/peano_train_qwen3_1_7b.sbatch|\
+    slurm/peano_eval_qwen3_1_7b.sbatch)
       return 0
       ;;
     *)

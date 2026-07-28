@@ -526,8 +526,12 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   all 18 pilot scripts had traced/quiet parity. The fixed scaled dataset digest is
   `1fa98caa2e0528d39c1b9003c4ee153dfbe633cb1ee4505e8f5b28eb837465dd`.
   The historical 13,344-transition release was provenance-refreshed under the same current source;
-  all 1,692 sessions again reached kernel-checked QED. No model has been downloaded or trained, no Slurm
-  job has been submitted, and no M19 completion or performance result is claimed yet.
+  all 1,692 sessions again reached kernel-checked QED. No model has been downloaded or trained.
+  Slurm preparation job `20029189` was submitted but failed safely before model loading because the
+  first environment recipe incorrectly assumed the ML module made Torch importable. Its dependent
+  train/evaluation jobs were canceled without running. The corrected recipe pins Helios's
+  `torch==2.9.1+cu129` ARM wheel, isolates the venv, enumerates transitive dependencies, and runs
+  `pip check`; no M19 completion or performance result is claimed yet.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

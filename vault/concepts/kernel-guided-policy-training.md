@@ -23,6 +23,13 @@ evaluation. The first planned smoke model is Qwen3-1.7B-Base, followed only afte
 controlled four-billion-parameter comparisons. **No real trained-checkpoint result or model solve
 rate has been established yet.**
 
+The first Helios preparation attempt exposed an environment-design distinction: the pinned
+`ML-bundle/25.10` module loads CUDA and points `pip` at a reviewed ARM wheel directory, but does not
+make Torch importable. The corrected preflight recreates an isolated environment, installs exact
+`torch==2.9.1+cu129` plus an explicit transitive closure, requires binary wheels and `pip check`,
+replaces inherited Python paths, disables the user site, and only then performs the real BF16 LoRA
+step. Dependency gating kept the failed attempt from starting training or evaluation.
+
 Training data enters through the [[compact-headless-proof-runner]] and is separated with a
 [[genealogy-safe-proof-data-split]]. The planned second stage uses
 [[verifier-guided-policy-evaluation-and-search]] to collect only newly kernel-checked trajectories

@@ -950,3 +950,32 @@ reports 360 tests plus 36 subtests, and the book/command replay gates are clean.
 attestor independently rebuilt 8,149/926/925 rows with aggregate SHA-256
 `1fa98caa2e0528d39c1b9003c4ee153dfbe633cb1ee4505e8f5b28eb837465dd`. These are pre-training
 facts only: at this point no model result or Helios job outcome is claimed.
+
+## 2026-07-28 — M19 first Helios failure: a bundle can expose a wheel without importing it
+
+The first real preparation job, `20029189`, failed after 21 seconds and before model loading.  The
+failure was useful and cheap: importing Torch from the new virtual environment raised
+`ModuleNotFoundError`.  Dependency safety then left training job `20029217` and evaluation job
+`20029237` pending rather than consuming a GPU; both stale jobs were canceled explicitly.
+
+The original environment comment was wrong.  `ML-bundle/25.10` loads the CUDA 12.9.1 stack and
+sets `PIP_FIND_LINKS` to a reviewed ARM wheel directory, but it does not install a Torch Python
+distribution.  That directory contains `torch-2.9.1+cu129` for CPython 3.13/aarch64.  The fix is
+not to weaken the smoke or borrow unknown system site packages.  Preparation now recreates an
+isolated venv, installs that exact wheel plus an explicit pinned transitive closure with binary-only
+and no-dependency-resolution flags, and requires `pip check` before downloading the model or
+running the BF16 LoRA forward/backward/save/reload test.  The standalone GPU smoke uses the same
+prepared venv and cannot be submitted as a real job without an `afterok` dependency.  A final
+review also caught inherited `PYTHONPATH` as a route around venv isolation; scheduled jobs now set
+only the reviewed repository paths, disable the user site, and assert the exact Torch/CUDA build.
+The requirements and resolved runtime inventory pin `pip` and `setuptools` too.  This is a
+version-pinned environment, not yet a claim that every downloaded wheel byte is bound by
+`--require-hashes`; that remaining supply-chain refinement must not be described as bit-for-bit
+environment reproduction.
+
+The corrected preflight gate reports 41 focused Helios/runtime/data tests, 912 complete Peano
+tests, and 360 Lambda tests plus 36 subtests.  The warning-as-error 27-source book and all 193 deep
+links / 34 sessions / 170 commands are green.  Independent dataset replay preserved the exact
+8,149/926/925 split hashes and aggregate digest while refreshing the attestation to SHA-256
+`5a3b172627d15a1f5dfa303c3acdcf02e9673039a239385ef8c5d8d57b238e0a` for the new runtime-source
+inventory.  These are corrected preflight facts, not a successful model smoke.

@@ -812,3 +812,23 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   of 193 documented links / 34 command sessions. Local browser staging is
   `2026-07-28f` / `a-69aa3b753965`; it is not deployed. Refreshing the historical M9 corpus source
   fingerprint regenerated the same 13,344-transition/1,692-QED shape under the current source.
+
+## 2026-07-28 (branch peano-lab) — M19: first Helios environment correction
+
+- Synced and submitted the initial guarded prepare/train/evaluate dependency chain. Preparation job
+  `20029189` failed in 21 seconds before model loading because `torch` was absent from the isolated
+  environment. Slurm correctly prevented both downstream jobs from running; canceled exact stale
+  jobs `20029217` and `20029237`.
+- Read-only module inspection established the distinction the first recipe missed:
+  `ML-bundle/25.10` loads CUDA 12.9.1 and advertises an ARM wheel repository, but does not install a
+  Torch distribution. The repository contains the CPython-3.13/aarch64 wheel
+  `torch-2.9.1+cu129`.
+- Corrected preparation to recreate an isolated venv, install Torch and a fully pinned transitive
+  closure with binary-only/no-resolution flags, and run `pip check` before the costly LoRA smoke.
+  PyPI metadata inspection confirmed every non-Torch pin has a Python-3.13 ARM wheel. A new Helios
+  job result is still pending; no checkpoint or solve rate is claimed. Scheduled jobs now replace
+  inherited `PYTHONPATH`, disable the user site, and assert the exact Torch/CUDA build as well.
+- Corrected local gates: 41 focused tests; Peano 912; Lambda 360 plus 36 subtests; warning-as-error
+  27-source book; 193 links and 170 replayed commands in 34 sessions. Independent replay retained
+  the exact split/dataset hashes and refreshed only the source-bound attestation to
+  `5a3b172627d15a1f5dfa303c3acdcf02e9673039a239385ef8c5d8d57b238e0a`.

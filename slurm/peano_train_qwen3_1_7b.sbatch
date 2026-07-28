@@ -20,7 +20,8 @@ cd "${SLURM_SUBMIT_DIR:?SLURM_SUBMIT_DIR is not defined}"
 test -x .venv-helios/bin/python
 test -f data/peano-policy-v1/manifest.json
 export PYTHONHASHSEED=20260728
-export PYTHONPATH="$SLURM_SUBMIT_DIR/peano-lab/py:$SLURM_SUBMIT_DIR${PYTHONPATH:+:$PYTHONPATH}"
+export PYTHONNOUSERSITE=1
+export PYTHONPATH="$SLURM_SUBMIT_DIR/peano-lab/py:$SLURM_SUBMIT_DIR"
 export HF_HOME="$SLURM_SUBMIT_DIR/.cache/huggingface"
 export TOKENIZERS_PARALLELISM=false
 export PEANO_JOB_SCRIPT=slurm/peano_train_qwen3_1_7b.sbatch

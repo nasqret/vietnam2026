@@ -1,10 +1,35 @@
-# Exact overlay installed with --no-deps above Helios ML-bundle/25.10.
-# PyTorch and low-level transitive dependencies come from that pinned aarch64
-# module; the run manifest records their resolved versions and accelerator.
+# Complete version-pinned Python layer installed with --no-deps in an isolated venv.
+# Helios ML-bundle/25.10 supplies CUDA libraries and PIP_FIND_LINKS for its
+# reviewed aarch64 PyTorch wheel; it does not make torch importable by itself.
+torch==2.9.1+cu129
+pip==25.2
 transformers==4.53.3
 peft==0.16.0
 accelerate==1.8.1
 safetensors==0.5.3
 huggingface-hub==0.33.4
 tokenizers==0.21.2
+# Explicit transitive closure for the versions above.  Keeping --no-deps makes
+# a missing dependency fail at `pip check` rather than resolve differently.
+certifi==2025.7.14
+charset-normalizer==3.4.2
+filelock==3.18.0
+fsspec==2025.5.1
+hf-xet==1.1.5
+idna==3.10
+Jinja2==3.1.6
+MarkupSafe==3.0.2
+mpmath==1.3.0
+networkx==3.5
+numpy==2.3.1
+packaging==25.0
+psutil==7.0.0
+PyYAML==6.0.2
+regex==2024.11.6
+requests==2.32.4
+setuptools==80.9.0
+sympy==1.14.0
+tqdm==4.67.1
+typing-extensions==4.14.1
+urllib3==2.5.0
 tomli==2.2.1; python_version < "3.11"

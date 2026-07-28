@@ -181,9 +181,12 @@
   Training code pins Qwen3 1.7B and controlled 4B/Pythagoras comparisons, uses completion-only BF16
   LoRA, immutable model revisions, streaming hash validation, checkpoint-resume identity, and
   complete closed-directory hashes for every loader-visible adapter/tokenizer file. Evaluation
-  derives its exact surface authority from the embedded dataset attestation. No model has yet been
-  downloaded or trained and no Slurm job has been submitted; the model never enters the trusted
-  computing base.
+  derives its exact surface authority from the embedded dataset attestation. The first guarded
+  prepare job failed before model loading because `ML-bundle/25.10` exposes, but does not install,
+  its ARM Torch wheel. Dependency gating prevented training/evaluation and the stale jobs were
+  canceled. The corrected isolated recipe pins `torch==2.9.1+cu129`, its transitive closure, binary
+  wheels, and `pip check`; no model has yet been downloaded or trained. The model never enters the
+  trusted computing base.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =

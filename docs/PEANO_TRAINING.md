@@ -391,10 +391,19 @@ own prompts above and current project settings:
 - GPU account/partition: `plgccaiautore2026-gpu-gh200` /
   `plgrid-gpu-gh200`;
 - fixed project root: `$SCRATCH/codex-control/projects/peano-lab-training`;
-- current module baseline: `ML-bundle/25.10`; and
+- current module baseline: `ML-bundle/25.10`, whose pinned ARM wheel directory
+  supplies `torch==2.9.1+cu129` but whose module alone does not install Torch; and
 - one GH200 job at a time during the pilot.
 
-Sync protects `.venv-helios/`, the Hugging Face cache, `checkpoints/`,
+Preparation clears and recreates an isolated `.venv-helios/`, installs the
+complete version-pinned Python lock with `--no-deps --only-binary=:all:`, and runs
+`pip check` before model download or a LoRA step.  This deliberately avoids
+leaking cluster or failed-run site packages into the experiment.  Scheduled
+runs also replace, rather than extend, inherited `PYTHONPATH`, disable the user
+site, and assert the exact Torch/CUDA build.  Versions and the resolved runtime
+inventory are recorded; without `--require-hashes`, this is not yet a
+byte-identical wheel-reproduction claim.  Sync protects
+`.venv-helios/`, the Hugging Face cache, `checkpoints/`,
 `results/`, and all scheduler logs including the submission ledger.  Local and
 remote wrappers default to `sbatch --test-only`; real submission requires the
 explicit `PEANO-LAB-TRAINING` confirmation token.  Every submission records

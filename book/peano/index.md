@@ -48,7 +48,7 @@ cut-eliminated outside the trusted kernel, and links each statement to the brows
 cross-checking surface. M9 then turns the same checked interactions into a reproducible
 [proof-trace corpus](https://github.com/nasqret/vietnam2026/tree/peano-lab/peano-lab/corpus) and fixes
 a [kernel-judged evaluation protocol](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_LLM.md)
-for later small-model experiments; no model is trained in this repository. The dated
+for later small-model experiments; at that milestone no model was trained. The dated
 {doc}`implementation diary <diary>` preserves the design choices, bugs and objections behind the
 polished account.
 
