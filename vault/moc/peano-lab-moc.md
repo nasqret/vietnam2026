@@ -41,6 +41,7 @@ tags: [moc, peano-lab, theorem-proving]
 
 - [[compact-headless-proof-runner]]
 - [[kernel-guided-policy-training]]
+- [[content-addressed-lemma-library]]
 - [[wmi-a100-training-runtime]]
 - [[genealogy-safe-proof-data-split]]
 - [[verifier-guided-policy-evaluation-and-search]]

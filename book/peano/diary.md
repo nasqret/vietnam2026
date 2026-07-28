@@ -1166,3 +1166,73 @@ fix invalidated the old attestor digest. A fresh CPython-3.10 independent replay
 same 10,000 rows, 8,149/926/925 split hashes, raw source artifacts, environment, holdout contract,
 and dataset digest. Only the `contract.py` hash and aggregate attestor-source hash changed; the new
 canonical attestation file has SHA-256 `e4b319a0be94b4f0ec6584ddbcc1e9386104b249d660bc8d033d757ab11c66f8`.
+
+## 2026-07-28 — The first trained-policy result is a curriculum map, not a victory banner
+
+The corrected WMI chain finally separated infrastructure success from mathematical success.
+Preparation `171414` passed in 7m28s from exact commit `0c84fc3`; training `171421` completed 100
+steps in 11m40s; evaluator `171423` completed normally. The training manifest binds dataset
+`1fa98caa…`, adapter `ff187542…`, and itself as `ad16e60d…`. Train loss 0.78301 and validation
+loss 0.13615 look excellent. The theorem result does not: all sixteen sampled trajectories failed,
+so the four frozen goals scored pass@4 0.0.
+
+That discrepancy is pedagogically better than an ambiguous partial success. The validation rows
+are shallow interpolation within familiar schemas. Training consumed 1,600 effective examples,
+0.78125 of the selected 2,048. The full train split has no induction-hypothesis state, no use of any
+allowed foundation lemma, and no action headed by `assumption`, `exfalso`, `forall_elim`, `have`,
+`induction`, `simp`, `specialize`, `suffices`, or `use`. All source proofs are one to seven lines.
+The observed behavior lies squarely inside that support: after a universal existential goal the
+adapter introduced the variable, and all 513 comparable training states label the next action with
+an immediate witness. Whether fine-tuning caused that behavior still requires an unadapted-base
+comparison.
+
+On the parity theorem this became a vivid failure. Fifteen of sixteen runs proposed
+`(n * (n + 1)) / 2`: mathematically suggestive, syntactically outside PA, and structurally unable to
+replace induction. By contrast, a fresh direct-witness theorem absent exactly from all dataset
+splits succeeded once in eight samples. Its ordinary four-line script replayed to a seven-node
+kernel-checked certificate. The honest claim is neither “the adapter emitted nothing useful” nor
+“the adapter proves PA”. One success is consistent with within-template learning, but causal
+attribution awaits the pretrained-base baseline; the missing planning frontier plainly remains.
+
+The evaluator is already state-conditional: after every successful tactic it renders the new
+canonical state and asks again. But a rollout dies on its first failed tactic. It has no same-state
+retry, frontier, or backtracking. The next search layer should sample several complete tactic lines,
+execute each transactionally, discard failures, deduplicate successor states, and preserve siblings
+under explicit token/model-call/state/kernel budgets. That is where Peano's immutable state and
+cheap checker become algorithmic assets rather than only safety guards.
+
+The frozen benchmark exposed its own useful flaw. Known checked model-v1 routes require
+10/10/23/13 actions, while the registered budget was 16. The score remains correct for the declared
+budget, but `le_total` lacks a known route that fits it. Model-v2 must use at least 24 steps and test
+budget adequacy by replaying reference scripts before spending GPU time.
+
+## 2026-07-28 — An external lemma pack exposes a new visibility boundary
+
+The owner supplied a separately maintained candidate theorem library. Reading its integration
+contract before copying anything was essential. Its private compatibility gate passed against the
+current checkout, including deterministic replay, empty-context kernel checks, and bounded import
+tests. This public diary intentionally records neither its identifiers nor its detailed validation
+profile until the owner chooses a visibility boundary. No kernel or proof-rule change was made.
+
+Such a library can address several missing data modes at once: induction, `simp`, `specialize`, named
+local facts, existential witnesses, long proofs, and multi-lemma composition. But theorem names
+alone are not enough. Model-v1's capability hash binds a list of names, while the prompt shows only
+that opaque hash; it does not bind or reveal the lemmas' statements and certificates. Model-v2
+therefore needs a first-class library snapshot containing stable name, canonical formula,
+dependencies, source commit, authored-script hash, final certificate hash, nodes, and depth. That
+snapshot hash must enter every prompt, dataset row, attestation, training manifest, evaluator
+report, and WMI request.
+
+There is also a clean distinction between utility and evaluation. Once an exact capstone theorem is
+importable, a short `use`/`apply`/`exact` closure is a successful library-retrieval/application
+exercise, not evidence that the model discovered the underlying proof. A sealed test set must use
+different root families and must never enter training, retrieval, or tuning. Because the source pack
+is non-public while Peano Lab is public, neither its catalog nor identifying metadata enters this
+commit. That boundary requires an explicit integration decision.
+
+The result-recording gate then passed without changing the kernel: 1,033 Peano tests, Lambda's 360
+tests plus 36 subtests, a clean warning-as-error build of all 27 book sources, replay of 193 deep
+links and 170 session commands, and resolution of all 412 wikilinks in the 66-note Obsidian vault.
+`checker.py` remains 234 lines. These checks preserve a small positive result and the larger negative
+one with equal care; neither a low loss nor a non-public theorem name is allowed to substitute for a
+checked public experiment.

@@ -494,12 +494,15 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
 - [x] Pass the tracked WMI A100 runtime probe and build a separate reviewed central-base manifest,
       pinned x86-64 overlay, and transactional deployment path. Probe `171369` passed on one
       A100-SXM4-80GB; the 96-test local WMI/runtime/training gate is green.
-- [ ] Repeat the complete LoRA save/reload gate on WMI before submitting WMI training.
+- [x] Repeat the complete LoRA save/reload gate on WMI before submitting WMI training. Fresh
+      same-source preparation `171414` passed in 7m28s before dependent training `171421` ran.
 - [x] Expand the checked synthetic curriculum beyond the 18-session pilot, keeping genealogy and
       capability metadata complete, and freeze the first training/validation/test release.
-- [ ] Run the registered Qwen3-1.7B 100-step pilot on an accepted site, publish the complete
-      training and held-out evaluator manifests, and compare against pretrained/random/deterministic
-      baselines. Helios supports checked resume; WMI's first pilot is explicitly one-shot.
+- [x] Run the registered Qwen3-1.7B 100-step pilot on an accepted site and publish the complete
+      training and held-out evaluator manifests. WMI jobs `171421`/`171423` are the accepted
+      terminal chain; the model scored 0/4 at pass@4.
+- [ ] Compare against pretrained and deterministic baselines on the expanded v2 benchmark. The
+      existing random baseline is 0/4 at pass@8; four protocol goals are not a statistical result.
 - [ ] If the smoke gates pass, run the pre-registered Qwen3-4B versus Pythagoras-Prover-4B
       comparison at identical data, LoRA, decode, token, step, and kernel-call budgets.
 - [ ] Finish the full Peano/Lambda/book/vault/release gates, record measured results without
@@ -525,22 +528,33 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
 - [x] The first scaled release yields 2,522 kernel-checked roots and exactly 10,000 positive rows
       across 29 proof-first schemas/five domains. It splits 8,149/926/925, independently rebuilds
       byte-identical outputs from raw traces, and reports zero frozen-target contamination.
-- [ ] The model smoke reaches a reproducible terminal report on the frozen held-out set; a report
+- [x] The model smoke reaches a reproducible terminal report on the frozen held-out set; a report
       without model/data/source/decode/environment/checkpoint hashes is not an accepted result.
+- [x] Compatibility-check the separately maintained external library candidate against the current
+      kernel and import path without copying its private source or identifying metadata here.
+- [ ] Choose the explicit external-library visibility boundary: either authorize publication into
+      the public Peano catalog, or keep a content-addressed external model-v2 snapshot. Do not copy
+      non-public source into the public branch implicitly.
+- [ ] Register model-v2 with a library snapshot hash over names, canonical statements,
+      dependencies, source/script/certificate hashes, nodes, and depth; bind it through prompt,
+      rows, attestation, training manifest, evaluator, and WMI requests. Freeze sealed targets
+      before generating induction, invariant, lemma-use, and composition curricula.
+- [ ] Add oracle-budget validation (at least 24 held-out steps), bounded same-state candidate
+      rejection, and then canonical-state-deduplicated best-first search before the next GPU run.
 - [ ] All milestone-wide tests and documentation gates are green, the kernel has no semantic diff,
       and no heavy local or remote job remains running before the milestone is called complete.
 
-- **Current verification (2026-07-28, in progress):** the current focused trained-policy,
-  arbitrary-proof, WMI request/control, and runtime set reports 140 passes; the complete Peano
-  suite reports 1,030 passes, Lambda Lab reports 360 tests plus 36 subtests, the book builds, all 193 documented
-  links and 34 command sessions replay, and local application staging is green as
+- **Current verification (2026-07-28, in progress):** the post-result complete Peano suite reports
+  1,033 passes, Lambda Lab reports 360 tests plus 36 subtests, the book builds with warnings as
+  errors, all 193 documented links and 34 command sessions replay, and local application staging is green as
   `2026-07-28f` / `a-69aa3b753965`. A lightweight arm64 audit measured approximately
   12,538 quiet and 5,537 traced trivial proofs/second before the latest trace-copy optimization;
   all 18 pilot scripts had traced/quiet parity. The fixed scaled dataset digest is
   `1fa98caa2e0528d39c1b9003c4ee153dfbe633cb1ee4505e8f5b28eb837465dd`.
   The historical 13,344-transition release was provenance-refreshed under the same current source;
-  all 1,692 sessions again reached kernel-checked QED. A policy training artifact now exists, but
-  no kernel-judged theorem-solving result exists yet.
+  all 1,692 sessions again reached kernel-checked QED. The accepted policy result, complete
+  manifests, and independently replayable positive proof are recorded below and under
+  `artifacts/peano-policy/`.
   Slurm preparation job `20029189` was submitted but failed safely before model loading because the
   first environment recipe incorrectly assumed the ML module made Torch importable. Its dependent
   train/evaluation jobs were canceled without running. The corrected recipe pins Helios's
@@ -560,10 +574,37 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   safetensors reload. The first dependent training submission failed closed before `sbatch`:
   Bash's whitespace `IFS` collapsed the predecessor row's deliberately empty dependency column.
   A strict bounded UTF-8 nine-field parser now owns that boundary. Because source identity changed,
-  a fresh preparation job must precede training; no chain is silently relabeled. Preparation
-  `171404` was canceled after 1m56s when the manifest-loader defect was discovered. The fixed
-  loader reconstructs the exact three semantic fields from sorted manifest JSON, then retains the
-  same capability-value, environment-hash, fixed-authority, and strict dataset-row checks.
+  no chain was silently relabeled. Preparation `171404` was canceled after 1m56s when the
+  manifest-loader defect was discovered. The fixed loader reconstructs the exact three semantic
+  fields from sorted manifest JSON while retaining the capability-value, environment-hash,
+  fixed-authority, and strict dataset-row checks.
+
+  Fresh preparation `171414` completed in 7m28s from clean commit `0c84fc3`, reproduced dataset
+  digest `1fa98caa…`, and passed the A100 BF16 LoRA save/reload gate. Dependent training `171421`
+  completed 100 steps in 11m40s; its immutable manifest
+  (`ad16e60d…`) binds adapter `ff187542…` and records 2,048/256 examples, train loss 0.78301, and
+  final validation loss 0.13615. Evaluation `171423` completed without infrastructure errors:
+  16 sampled trajectories proved none of `le_trans`, `le_antisymm`, `le_total`, or `mul_eq_zero`,
+  hence pass@4 = 0.0. Arbitrary request `171428` likewise found no parity proof in 16 samples.
+  A fresh direct-witness formula absent exactly from all three dataset splits did succeed once in
+  eight samples under job `171430`; the selected four-line script replayed to a seven-node checked
+  certificate. The result is narrow but real: the adapter emitted one checked proof in a represented
+  template, while failing the induction/order smoke. Attribution to fine-tuning awaits the
+  pretrained-base baseline.
+
+  Post-result audit explains the stop decision. The 8,149-row train split represents only 16 of 25
+  allowed tactic heads and contains zero `induction`, `simp`, `have`, `suffices`, `specialize`, or
+  `use` rows; all source scripts have at most seven steps. Under exact model-v1 authority, the
+  known held-out routes need 10/10/23/13 steps, so the 16-step cap also underspecifies
+  `le_total`'s known route. Scaling the same curriculum to 4B would not test the intended
+  hypothesis, so the conditional 4B comparison remains unlaunched. The next data contract must freeze the user's
+  lemma library as a content-addressed `model-v2` authority and add induction, invariant, witness,
+  and lemma-composition curricula while retaining a sealed test set.
+
+  The result-recording gate is green: 1,033 Peano tests; Lambda 360 tests plus 36 subtests; all 27
+  book sources under warning-as-error; 193 deep links and 170 documented commands; and 412/412
+  vault wikilinks. The kernel checker has no diff and remains 234 lines. M19 stays open for the
+  model-v2 library decision, curriculum, search, baselines, and registered comparison.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

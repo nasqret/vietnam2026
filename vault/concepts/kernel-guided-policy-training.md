@@ -17,11 +17,13 @@ certificate, or privileged solver. The supervised runtime masks prompt tokens an
 bare tactic followed by EOS; a delimiter stored in the dataset envelope is validated and removed
 before computing loss.
 
-The implemented pipeline currently includes checked synthetic trace generation, replay compilation,
-strict manifests, a Qwen3 BF16 LoRA training runtime, Helios job controls, and kernel-judged rollout
-evaluation. The first planned smoke model is Qwen3-1.7B-Base, followed only after its gates pass by
-controlled four-billion-parameter comparisons. **No real trained-checkpoint result or model solve
-rate has been established yet.**
+The implemented pipeline includes checked synthetic trace generation, replay compilation, strict
+manifests, a Qwen3 BF16 LoRA training runtime, guarded cluster controls, arbitrary-theorem requests,
+and kernel-judged rollout evaluation. The first WMI Qwen3-1.7B smoke scored 0/4 at pass@4 and zero
+successful parity rollouts in 16 samples (pass@16 = 0.0), but did produce one checked proof in eight
+samples for a fresh direct-witness theorem. That result is consistent with a represented template;
+attribution to fine-tuning awaits the pretrained-base baseline, and induction-level planning was
+not demonstrated.
 
 The first Helios preparation attempt exposed an environment-design distinction: the pinned
 `ML-bundle/25.10` module loads CUDA and points `pip` at a reviewed ARM wheel directory, but does not
@@ -32,10 +34,8 @@ step. Dependency gating kept the failed attempt from starting training or evalua
 
 The replacement Helios preparation job passed the full one-step BF16 LoRA save/reload smoke. A
 second execution site, [[wmi-a100-training-runtime]], is intentionally treated as a different
-environment rather than a drop-in queue: it must reproduce the gate under its own source, package,
-accelerator, and scheduler provenance. Its typed-A100 probe has passed and its independent
-base/overlay/deployment contract is locally green; the real WMI LoRA save/reload gate remains
-pending.
+environment rather than a drop-in queue. Its accepted prepare/train/evaluate chain completed on an
+A100 with exact source, package, adapter, and scheduler provenance.
 
 Once an adapter exists, `scripts/eval_trained_peano_policy.py --theorem ... --proof-output ...`
 can attempt any bounded closed PA formula under that adapter's exact attested `model-v1` authority.
@@ -46,7 +46,8 @@ the model cannot widen its logic mode, tactic set, or importable theorem list.
 Training data enters through the [[compact-headless-proof-runner]] and is separated with a
 [[genealogy-safe-proof-data-split]]. The planned second stage uses
 [[verifier-guided-policy-evaluation-and-search]] to collect only newly kernel-checked trajectories
-for expert iteration.
+for expert iteration. A new [[content-addressed-lemma-library]] must bind the external foundation
+used by model-v2; simply adding theorem names to model-v1 would invalidate the experiment.
 
 ## Related
 

@@ -1,0 +1,6 @@
+pa prove ∀ x. ∃ y. (x + 17) · 19 + 23 + y = (x + 17) · 19 + 23
+intro n
+exists 0
+rewrite PA3
+refl
+qed

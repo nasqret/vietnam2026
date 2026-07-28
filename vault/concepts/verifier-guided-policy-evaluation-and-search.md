@@ -22,8 +22,10 @@ ablation, while the policy handles branching choices such as induction, witnesse
 direction, and local lemmas.
 
 Only final kernel-checked trajectories may feed [[kernel-guided-policy-training|expert iteration]].
-The current repository has the rollout evaluator and the research contract, but **the best-first
-driver, trained-model measurements, and expert-iteration results are still pending**.
+The first trained-model measurement is now available: independent single-path rollouts scored 0/4
+at pass@4, while one fresh shallow goal scored pass@8 = 1.0 with one successful rollout out of eight.
+The current driver stops at its first failing tactic, so **best-first search and expert-iteration
+results remain pending**.
 
 ## Related
 

@@ -40,16 +40,21 @@ theorem library, proof engine, traces, and independent original-target finalizer
 replay compiler, fixed capability profile, BF16 LoRA runtime, evaluator provenance, guarded
 Helios controls, and the first independently replay-attested 10,000-row synthetic release are
 implemented. Helios training `20029970` completed 100 steps, but evaluator `20029980` failed before
-generation on a manifest key-order bug, so there is no theorem solve rate yet. WMI typed-A100 probe
-`171369` also passed, and its independent
+generation on a manifest key-order bug. WMI typed-A100 probe `171369` also passed, and its independent
 x86-64 base manifest, hash-locked overlay, transactional source controls, and one-shot safetensors
 model-weight path are locally green. A trained adapter can now be used on an arbitrary bounded
 closed PA formula through a second-kernel-replayed CLI and a ledgered immutable-request WMI A100
-job; this is an execution path, not a learned solve-rate claim. Replacement WMI preparation job
-`171395` passed the full dataset replay and LoRA save/reload gate. The first training submission
-was refused before `sbatch` because Bash field splitting collapsed its predecessor's empty TSV
-dependency column; a strict parser now preserves and validates all nine fields. A fresh same-source
-prepare/train chain will also use a manifest loader that separates sorted JSON representation from
-semantic capability identity. No learned theorem-solving result is claimed. See
+job. The corrected same-source WMI chain then passed preparation (`171414`), 100-step training
+(`171421`), and held-out evaluation (`171423`). Its manifest records train/validation losses
+0.7830/0.1362, but the kernel-judged result is 0/4 goals at pass@4. The earlier parity theorem also
+failed at pass@16 (`171428`), while one fresh direct-witness theorem succeeded once in eight samples
+and replayed to a seven-node kernel-checked proof (`171430`). This is a real within-template success,
+but attribution to LoRA training awaits the pretrained-base baseline; the adapter is not yet a
+dependable induction/order prover. The current dataset has
+no positive rows for nine tactic heads, including `induction`, `simp`, and `specialize`;
+the next registered iteration is a library-snapshot-bound `model-v2`, not a 4B scale-up on the same
+curriculum. A separately maintained candidate library has been compatibility-validated locally,
+but neither its source nor identifying metadata will enter the public branch without an explicit
+visibility decision. See
 [`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest completed and staged
 milestone; production remains untouched behind the M14 cache-header blocker.

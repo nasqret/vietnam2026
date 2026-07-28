@@ -936,3 +936,38 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   defect was known. Independent CPython-3.10 replay preserved every dataset/split/source-artifact
   hash and changed only the attestor source identity; the refreshed attestation is
   `e4b319a0…`. A fresh safe chain is required; no kernel-judged solve rate is claimed.
+
+## 2026-07-28 (branch peano-lab) — WMI gives the first honest trained-policy result
+
+- Fresh preparation `171414` completed in 7m28s from exact clean commit `0c84fc3`. It reproduced
+  dataset digest `1fa98caa…`, revalidated the content-addressed Python 3.12/Torch 2.5.1/CUDA 12.4
+  runtime, and passed the A100 BF16 LoRA save/reload gate.
+- Dependent job `171421` completed 100 optimizer steps in 11m40s. Training itself took 246.38s;
+  the immutable manifest `ad16e60d…` binds adapter `ff187542…`, 2,048/256 examples, train loss
+  0.78301, and final teacher-forced validation loss 0.13615. The final loader-visible adapter
+  contains only safetensors, JSON, and README files; Trainer resume checkpoints remain outside that
+  closed inference root and are never loaded by the WMI prover.
+- Kernel-judged evaluator `171423` then ran successfully rather than failing at infrastructure.
+  All 16 sampled trajectories failed before QED: 0/4 held-out goals, pass@4 0.0. The model often
+  chose the right opening `intro` sequence but then invented unavailable Lean tactics, malformed
+  multi-name commands, or selected a tactic for the wrong goal shape.
+- Arbitrary request `171428` found no proof of `∀ x. ∃ y. x · (x + 1) = 2 · y` in 16 samples;
+  fifteen samples proposed unsupported division as the witness. A second, exact-formula-unseen
+  direct-witness theorem succeeded once in eight samples under `171430`. Its exported four-line
+  proof was replayed independently to a seven-node kernel-checked certificate.
+- The immediate known experimental deficiency is the curriculum, not an established parameter-count
+  limit. The 8,149-row train split
+  has zero actions headed by `induction`, `simp`, `have`, `suffices`, `specialize`, or `use`, while
+  the frozen benchmark includes induction-requiring goals and otherwise needs missing lemma-use and
+  composition patterns along known model-v1 routes of 10–23 lines. This stops the conditional 4B
+  comparison. The next experiment will be a separately hashed `model-v2` with a frozen lemma
+  snapshot, balanced induction/lemma-use curricula, and a sealed evaluation library; model-v1 is
+  preserved as the negative baseline.
+- Compatibility-checked a separately maintained candidate library against the current Peano source
+  and import boundary. Its detailed identifiers and validation record remain outside this public
+  checkout. No source or metadata was copied; publication versus a content-addressed external
+  snapshot remains an explicit owner decision.
+- Result-recording gate: 1,033 Peano tests passed; Lambda passed 360 tests plus 36 subtests; the
+  clean 27-source Jupyter Book build passed with warnings as errors; 193 deep links and 170 commands
+  replayed; the 66-note vault resolved all 412 wikilinks. `checker.py` remains unchanged at 234
+  lines, and no Peano training, evaluator, or deployment job remains active.

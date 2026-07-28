@@ -191,15 +191,26 @@
   `20029970` then completed 100 steps in 9m51s (train loss 0.78446, final validation loss 0.13518),
   but evaluator `20029980` failed before generation because sorted manifest JSON conflicted with a
   construction-order parser. The corrected parser preserves exact fields, values, authority hash,
-  and strict row-order checks; no kernel-judged solve rate exists yet. The model never enters the
+  and strict row-order checks. The model never enters the
   trusted computing base. WMI access is available through `hw_csi`; typed-A100 probe `171369` passed on an
   A100-SXM4-80GB. Its distinct x86-64/PyTorch-2.5.1/CUDA-12.4 route now has a reviewed central-base
   manifest, a 12-wheel hash-locked overlay, transactional deployment locks, and a one-shot
   safetensors model-weight contract. Full WMI preparation `171395` passed in 8m39s, including exact
   dataset replay and BF16 LoRA save/reload. Its first training submission was refused before
   `sbatch` when Bash whitespace splitting collapsed the empty dependency TSV field; a strict
-  nine-field parser replaces that boundary, and a fresh same-source chain is required. The Helios
-  ARM lock is never reused.
+  nine-field parser replaces that boundary. Fresh preparation/training/evaluation jobs
+  `171414`/`171421`/`171423` then completed from commit `0c84fc3`. The immutable WMI manifest binds
+  adapter `ff187542…` and records train/validation loss 0.78301/0.13615, but the kernel-judged
+  held-out result is 0/4 at pass@4. Parity request `171428` also failed in 16 samples. A fresh
+  direct-witness theorem absent exactly from every split succeeded once in eight samples under
+  `171430`, exporting a seven-node checked proof. The dataset has no IH states, no foundation-lemma
+  uses, and only 16/25 tactic heads, so model-v1 is an easy-schema baseline rather than a useful
+  induction prover. The Helios ARM lock is never reused.
+
+  A separately maintained candidate lemma library was compatibility-tested against this checkout.
+  Its source and identifying metadata remain outside the public repository. It can become a
+  content-addressed model-v2 foundation only after an explicit visibility decision; any theorem
+  imported from it becomes a retrieval/application target rather than a sealed benchmark.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -249,19 +260,21 @@
   infrastructure have focused green coverage. The real Helios environment/one-step LoRA smoke has
   passed. WMI typed-A100 probe `171369` also passed on an A100-SXM4-80GB; its independent
   x86-64/PyTorch-2.5.1/CUDA-12.4 route now has a reviewed central-base manifest, a 12-wheel
-  hash-locked overlay, transactional deployment locks, and a one-shot safetensors model-weight contract. The
-  full WMI LoRA save/reload smoke, 100-step training, model comparison, and milestone-wide release
-  gates are not yet complete.
+  hash-locked overlay, transactional deployment locks, and a one-shot safetensors model-weight
+  contract. The WMI LoRA save/reload, 100-step training, frozen evaluation, and two arbitrary
+  theorem probes are complete. Model-v2 curriculum/search work, controlled model comparison, and
+  milestone-wide release gates are not yet complete.
 - M19 pre-training infrastructure gate on 2026-07-28: 363 focused tests, 912 full Peano tests,
   Lambda 360 tests plus 36 subtests, clean book build/command replay, and green local staging as
   build `2026-07-28f`, application `a-69aa3b753965`. This is not deployed and is not a model result.
-- M19 current local gate on 2026-07-28: 140 focused trained-policy/WMI/arbitrary-proof tests and
+- M19 pre-result local gate on 2026-07-28: 140 focused trained-policy/WMI/arbitrary-proof tests and
   1,030 complete Peano tests. A trained adapter is usable on any bounded closed PA formula through
   an exact `model-v1` CLI that exports `.pa` only after a second kernel replay. WMI use goes through
   an immutable canonical request, SHA-256-only Slurm transport, durable request/job ledger, and
-  allowlisted typed-A100 proof job. WMI preparation `171395` passed the real LoRA save/reload gate;
-  the subsequent training submission failed closed before `sbatch` on empty-field TSV parsing. Its
-  strict parser is regression-tested. The adapter remains untrusted; a new same-source prepare,
-  100-step training, and learned evaluation results are still pending. WMI preparation `171404`
-  was explicitly canceled after 1m56s once the manifest-loader bug was known, avoiding an
-  unevaluable run.
+  allowlisted typed-A100 proof job. The adapter remains untrusted. The accepted WMI chain now has a
+  reproducible negative hard-proof result (0/4 pass@4) and one positive shallow rollout result
+  (1/8); exact hashes and the replayable proof live under `artifacts/peano-policy/`. A new local
+  artifact regression adds three tests. The post-result gate is green: 1,033 complete Peano tests,
+  Lambda 360 tests plus 36 subtests, a clean 27-source warning-as-error book build, 193 deep links
+  and 170 documented commands replayed, and 412/412 Obsidian wikilinks resolved. The remaining M19
+  work is the model-v2 curriculum/search experiment, not repair of this recorded result.
