@@ -175,3 +175,26 @@ Mermaid form. Rebuild or verify it with
 The snapshot is evidence about replayed certificates, not a theorem database
 trusted by the kernel. The broader checked/planned/blocked research graph lives
 in `research/arithmetic-library/catalog.json`.
+
+## Fundamental theorem of arithmetic companion
+
+[`lean-fta/`](lean-fta/) is a separate Lean 4.23.0 + Mathlib artifact for the
+full natural-number Fundamental Theorem of Arithmetic. It proves that every
+nonzero natural has a finite list of prime factors and that every other such
+list is a permutation of the canonical one. This is existence plus uniqueness
+up to factor order, including the empty factorization of one.
+
+The project pins Mathlib commit
+`37df177aaa770670452312393d4e84aaad56e7b6`. Its verifier rejects `sorryAx`
+and requires the exact declared axiom footprint `propext`,
+`Classical.choice`, and `Quot.sound`. It is an independent mathematical
+cross-check and is never imported as a Peano Lab axiom.
+
+```bash
+cd lean-fta
+lake update
+lake exe cache get
+lake build
+cd ../..
+python3 scripts/verify_lean_fta.py
+```

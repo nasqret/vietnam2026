@@ -49,8 +49,29 @@
     "checked_existing": "Already present in Peano Lab's theorem ladder and independently kernel-checked.",
     "checked_m20": "Added by the foundational-arithmetic M20 expansion and independently kernel-checked.",
     "planned_expressible": "Closed formula expressible in today's fixed Peano language, but not yet admitted to the checked runtime library.",
-    "blocked_by_language": "A natural reusable statement needs a representation not currently available in the fixed Peano surface language."
+    "blocked_by_language": "A natural reusable statement needs a representation or interface not yet implemented as an expanded Peano target."
   },
+  "companion_artifacts": [
+    {
+      "id": "lean_fta_companion",
+      "title": "Lean proof of the Fundamental Theorem of Arithmetic",
+      "prover": "Lean 4.23.0 with Mathlib v4.23.0",
+      "artifact_path": "artifacts/lean-fta/FTA.lean",
+      "source": "mathlib_nat_factorization",
+      "dependency_revision": "37df177aaa770670452312393d4e84aaad56e7b6",
+      "declarations": [
+        "ArithmeticFTA.prime_factorization_exists",
+        "ArithmeticFTA.prime_factorization_unique",
+        "ArithmeticFTA.fundamental_theorem_of_arithmetic"
+      ],
+      "allowed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "scope": "Kernel-checked finite-list existence and uniqueness up to permutation for every nonzero natural. This companion is not imported into Peano Lab and does not change any Peano catalog node to checked."
+    }
+  ],
   "domain_order": [
     "equality",
     "addition",
@@ -1471,14 +1492,14 @@
         "weissman_python_number_theory",
         "open_logic"
       ],
-      "summary": "The factor list has variable length and cannot be represented naturally in the current surface language.",
+      "summary": "The selected sorted Gödel-β encoding is conservative, but its sequence and prefix-product relations do not yet have checked Peano infrastructure.",
       "peano": null,
       "blocker": {
         "code": "variable_length_factorization_unrepresented",
-        "detail": "A finite prime factorization requires a sequence/multiset of primes, an exponent-vector representation, or an arithmetized sequence code. None exists in Peano Lab's current fixed signature.",
+        "detail": "Peano Lab's fixed signature has no primitive finite collection. A sorted Gödel-β factor code and β-coded prefix-product trace are now specified, but their division/CRT/extension lemmas and fully expanded theorem certificate are not implemented.",
         "unblocks_with": [
-          "a reviewed finite-sequence or multiset encoding",
-          "a product-fold graph relation",
+          "checked Gödel-β value and finite-prefix extension lemmas",
+          "a checked β-coded prefix-product relation",
           "and checked links between encoded elements, primality, and the folded product"
         ]
       }
@@ -1498,14 +1519,15 @@
         "weissman_illustrated_programming",
         "weissman_python_number_theory"
       ],
-      "summary": "Uniqueness must compare variable-length factorizations modulo permutation and multiplicity.",
+      "summary": "The selected sorted encoding reduces permutation uniqueness to length and pointwise decoded-value equality, but the Euclid/cancellation proof spine remains unchecked in Peano.",
       "peano": null,
       "blocker": {
         "code": "factorization_equivalence_unrepresented",
-        "detail": "The current language cannot quantify over two finite factor collections or express equality up to permutation and multiplicity. Fixed two-factor uniqueness is cataloged separately as an expressible milestone.",
+        "detail": "The current surface has no primitive finite collections. The selected β-code comparison is expressible extensionally, but its expanded relation and finite-product Euclid/cancellation lemmas are not yet available as checked Peano entries.",
         "unblocks_with": [
           "the factorization representation required by prime_factorization_existence",
-          "a checked permutation or exponent-vector equivalence relation"
+          "checked extensional equality for sorted β-decoded prefixes",
+          "checked finite-product Euclid and cancellation lemmas"
         ]
       }
     },
@@ -1524,15 +1546,15 @@
         "weissman_python_number_theory",
         "stein_ent_tex"
       ],
-      "summary": "The principal theorem combines existence and uniqueness; a complete Lean artifact is the appropriate near-term formal target.",
+      "summary": "A pinned Lean companion now checks list-based existence and permutation uniqueness; the combined Peano theorem awaits certificates for the selected conservative β encoding.",
       "peano": null,
       "blocker": {
         "code": "finite_factorization_language_missing",
-        "detail": "Both halves depend on a variable-length factorization representation absent from Peano Lab. Treating Prime, factor lists, or exponentiation as trusted primitives would violate the current small-kernel design.",
+        "detail": "Both Peano halves depend on the selected β-coded sequence/product infrastructure and its arithmetic proof spine. The checked Lean companion is deliberately not imported as an axiom, and treating Prime or factorization as a trusted primitive would still violate the small-kernel design.",
         "unblocks_with": [
           "prime_factorization_existence",
           "prime_factorization_uniqueness",
-          "a separately kernel-checked companion formalization while Peano support remains blocked"
+          "fully expanded closed Peano statements and ordinary kernel-checked certificates"
         ]
       }
     }

@@ -7,7 +7,8 @@
     "statement_adapted_proof_reconstructed": "Mathematical statements and organization may guide the catalog, but Peano proofs are independently reconstructed and kernel-checked.",
     "reference_only_clean_room": "Use only as a bibliographic or topic reference; do not copy prose, proof text, or code.",
     "algorithm_index_clean_room": "Use as an index of algorithms and examples; implementations and formal proofs must be independently written.",
-    "open_tex_reference": "Openly licensed TeX may be cited and consulted as a mathematical reference; no source is vendored into this catalog."
+    "open_tex_reference": "Openly licensed TeX may be cited and consulted as a mathematical reference; no source is vendored into this catalog.",
+    "checked_external_companion": "A pinned formal-library result may support a separately checked companion artifact, but never grants theorem authority to Peano Lab."
   },
   "sources": [
     {
@@ -19,6 +20,23 @@
       "license_url": "https://github.com/nasqret/vietnam2026/blob/peano-lab/LICENSE",
       "reuse_mode": "project_internal",
       "notes": "Binding source for all checked entries. Every listed theorem is replayed and independently checked from the empty context; the exact source bytes are bound by artifacts/peano-library/catalog-v1.json rather than a circular self-referential Git commit."
+    },
+    {
+      "id": "mathlib_nat_factorization",
+      "title": "Mathlib natural-number prime factorization",
+      "kind": "formal_library_source",
+      "url": "https://github.com/leanprover-community/mathlib4/tree/37df177aaa770670452312393d4e84aaad56e7b6",
+      "revision": "37df177aaa770670452312393d4e84aaad56e7b6",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/leanprover-community/mathlib4/blob/37df177aaa770670452312393d4e84aaad56e7b6/LICENSE",
+      "reuse_mode": "checked_external_companion",
+      "resources": [
+        {
+          "label": "Prime factor list existence and uniqueness",
+          "url": "https://github.com/leanprover-community/mathlib4/blob/37df177aaa770670452312393d4e84aaad56e7b6/Mathlib/Data/Nat/Factors.lean"
+        }
+      ],
+      "notes": "The Lean companion imports the pinned list-based existence and permutation-uniqueness results and restates the combined FTA theorem explicitly. Its separate axiom audit grants no authority to the unchanged Peano kernel."
     },
     {
       "id": "nng4",

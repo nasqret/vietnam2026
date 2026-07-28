@@ -1011,3 +1011,19 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   JSON behavior with an explicit iterative 256-container nesting check shared by decoding and
   deterministic session hashing. The exact boundary and first rejected depth have regression
   coverage; the complete 1,045-test suite passes on both locally available runtimes.
+- Added the requested full FTA as a separately trusted Lean companion rather than disguising an
+  external theorem as a Peano axiom. `ArithmeticFTA.fundamental_theorem_of_arithmetic` constructs a
+  finite prime list for every nonzero natural and proves every other prime list with the same
+  product is a permutation. Lean 4.23.0 and Mathlib commit
+  `37df177aaa770670452312393d4e84aaad56e7b6` are pinned; the verifier rejects `sorryAx` and requires
+  exactly `propext`, `Classical.choice`, and `Quot.sound`.
+- Completed the Peano representation decision: sorted Gödel-β factor codes, a β-coded prefix-product
+  trace, the cataloged factor-pair primality schema, and extensional decoded-value uniqueness
+  preserve the unchanged PA kernel. The research catalog now binds one checked companion artifact
+  while keeping all 51 Peano
+  claims under their existing certificate authority; the still-missing division/CRT/prime/Euclid
+  proof spine is not mislabeled as checked.
+- Post-FTA integration validation passed 1,049 Peano tests under both Python 3.10 and Python 3.12,
+  the warning-as-error 34-source Jupyter Book, 197 deep links and 253 replayed commands, the
+  75-node catalog plus one companion artifact, all 51 generated Peano snapshots, the exact Lean FTA
+  theorem-type and axiom audit, and the 129-note/884-link Obsidian graph.

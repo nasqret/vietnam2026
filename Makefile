@@ -20,7 +20,7 @@ PEANO_POLICY_ROWS ?= 10000
 override STAGEPEANO := _deploy/peano-lab
 override PEANOAPPID := a-265ffb1c28af
 
-.PHONY: help book lean lab-serve peano-serve peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
+.PHONY: help book lean lean-fta lab-serve peano-serve peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
 	deploy clean
 
@@ -28,6 +28,7 @@ help:
 	@echo "Targets:"
 	@echo "  make book         build the JupyterBook (book/_build/html)"
 	@echo "  make lean         build & axiom-check the Lean artifact"
+	@echo "  make lean-fta     build & exact-axiom-check the Lean FTA companion"
 	@echo "  make lab-serve    serve lab-lambda locally on :8001"
 	@echo "  make peano-serve serve the staged Peano Lab locally on :8002"
 	@echo "  make peano-corpus reproduce the leakage-safe Peano train/val release"
@@ -53,6 +54,12 @@ book:
 lean:
 	cd artifacts/lean && lake build
 	cd artifacts/lean && printf 'import Artifacts\nopen Artifacts Artifacts.Sqrt2\n#print axioms s_combinator\n#print axioms add_comm'"'"'\n#print axioms no_sqrt2\n' > /tmp/check.lean && lake env lean /tmp/check.lean | tee /dev/stderr | (! grep -q sorryAx)
+
+lean-fta:
+	cd artifacts/lean-fta && lake update
+	cd artifacts/lean-fta && lake exe cache get
+	cd artifacts/lean-fta && lake build
+	python3 scripts/verify_lean_fta.py
 
 lab-serve:
 	@echo "→ http://localhost:8001/  (Ctrl-C to stop)"
@@ -190,5 +197,5 @@ deploy: deploy-site deploy-lab
 
 clean:
 	rm -rf book/_build _deploy
-	rm -rf artifacts/lean/.lake
+	rm -rf artifacts/lean/.lake artifacts/lean-fta/.lake
 	find . -name '__pycache__' -type d -prune -exec rm -rf {} +

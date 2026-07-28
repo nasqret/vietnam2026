@@ -17,6 +17,7 @@ from verify_arithmetic_knowledge_base import (  # noqa: E402
     KnowledgeBaseError,
     validate_files,
 )
+from verify_lean_fta import verify_metadata  # noqa: E402
 
 
 CATALOG = ROOT / "research" / "arithmetic-library" / "catalog.json"
@@ -44,6 +45,7 @@ def test_arithmetic_knowledge_catalog_validates_against_production_peano() -> No
     assert _validate() == {
         "lemmas": 75,
         "domains": 9,
+        "companion_artifacts": 1,
         "blocked_by_language": 4,
         "checked_existing": 23,
         "checked_m20": 28,
@@ -104,3 +106,30 @@ def test_catalog_requires_an_explicit_language_blocker(tmp_path: Path) -> None:
     blocked["blocker"] = None
     with pytest.raises(KnowledgeBaseError, match="must be an object"):
         _validate(_write_catalog(tmp_path, catalog))
+
+
+def test_catalog_rejects_a_missing_companion_artifact(tmp_path: Path) -> None:
+    catalog = deepcopy(_catalog())
+    catalog["companion_artifacts"][0]["artifact_path"] = "artifacts/missing.lean"
+    with pytest.raises(KnowledgeBaseError, match="missing artifact"):
+        _validate(_write_catalog(tmp_path, catalog))
+
+
+@pytest.mark.parametrize(
+    ("field", "replacement"),
+    [
+        ("dependency_revision", "0" * 40),
+        ("declarations", ["WrongNamespace.fundamental_theorem_of_arithmetic"]),
+        ("allowed_axioms", ["sorryAx"]),
+    ],
+)
+def test_lean_fta_audit_rejects_catalog_metadata_drift(
+    tmp_path: Path,
+    field: str,
+    replacement: object,
+) -> None:
+    catalog = deepcopy(_catalog())
+    catalog["companion_artifacts"][0][field] = replacement
+    path = _write_catalog(tmp_path, catalog)
+    with pytest.raises(SystemExit, match="catalog metadata drifted"):
+        verify_metadata(catalog_path=path)

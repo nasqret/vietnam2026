@@ -90,10 +90,15 @@ the underlying language.
 
 The Fundamental Theorem of Arithmetic quantifies over an arbitrary finite
 collection of primes and compares factorizations up to permutation or
-multiplicity. Today's Peano surface has no finite-sequence, multiset,
-finite-map, generic power, or recursive factorization relation. One can encode
-sequences by Gödel numbers in first-order arithmetic, but that would be a poor
-public interface for a reusable teaching library.
+multiplicity. Today's Peano surface has no primitive finite-sequence,
+multiset, finite-map, generic power, or recursive factorization relation.
+
+The representation review selected a Gödel-β encoding because it elaborates
+entirely to existing PA formulas and therefore leaves the trusted kernel
+unchanged. A factor sequence uses natural codes `(b,c,l)`; a second code stores
+prefix products; bounded formulas express decoded values, primality, and
+sortedness. This is intentionally an untrusted authoring facade rather than a
+new kernel atom.
 
 The planned route is therefore explicit:
 
@@ -101,11 +106,14 @@ The planned route is therefore explicit:
    expressible;
 2. prove strong induction, division, gcd, prime-divisor existence, and
    Euclid's lemma in expanded first-order form;
-3. design and review a finite-sequence or multiset representation;
-4. only then state and check factorization existence and uniqueness.
+3. implement and prove the selected β-sequence and prefix-product relations;
+4. state and check factorization existence and extensional uniqueness.
 
-Until step 3 lands, FTA is a documented theorem target with a precise blocker,
-not a pretend `TheoremSpec`.
+A separate Lean companion already checks the conventional finite-list FTA,
+including uniqueness up to permutation and an exact axiom audit. It fixes the
+target statement but grants no Peano authority. Until steps 3–4 produce closed
+PA certificates, FTA remains absent from `pa lib` rather than becoming a
+pretend `TheoremSpec`.
 
 ## The trust path
 

@@ -81,8 +81,9 @@ The admission workflow is:
 9. run the full repository gates.
 
 Do not add a trusted predicate merely for notation. Do not mark a curriculum
-target checked because Lean or a textbook proves an analogous theorem. Do not
-hide a missing sequence representation behind a factorization name.
+target Peano-checked because Lean or a textbook proves an analogous theorem.
+Do not hide missing checked β-sequence/product laws behind a factorization
+name; keep separately checked companion authority explicit.
 
 ## Reproducing the artifact
 

@@ -31,8 +31,10 @@ nodes are `checked_existing`, 28 are `checked_m20`, 20 are
 `planned_expressible`, and four are `blocked_by_language`. Beyond
 `prime_two`, the catalog records candidate lemmas on modular congruence,
 division, gcd, coprimality, the general prime spine, Euclid's lemma, and prime
-factorization. Those entries are not presented as proved until a script and
-closed certificate pass the same kernel gate.
+factorization. A separate Lean 4 companion now checks full finite-list FTA
+existence and uniqueness up to permutation. It is cataloged as a companion,
+not counted among the 51 Peano theorems; those entries are not presented as
+Peano-proved until a script and closed certificate pass the same kernel gate.
 
 ## How to read the status labels
 
@@ -41,7 +43,7 @@ closed certificate pass the same kernel gate.
 | `checked_existing` | Already in the original 23-theorem Peano ladder. |
 | `checked_m20` | Added in this foundational release and independently checked. |
 | `planned_expressible` | Stateable in today's first-order Peano language, but not yet admitted. |
-| `blocked_by_language` | Needs a reviewed representation such as finite sequences or powers before it can be stated honestly. |
+| `blocked_by_language` | Needs a representation/interface not yet implemented as an expanded, checked Peano target. |
 
 There is no status called “obvious.” A familiar mathematical fact and a
 checked theorem are different repository objects.

@@ -87,12 +87,16 @@ does not determine the architecture.
 
 ## M20E — Finite factorization representation and FTA
 
-- [ ] Compare Gödel-coded sequences with a reviewed finite-list/multiset layer;
+- [x] Compare Gödel-coded sequences with a reviewed finite-list/multiset layer;
+      select sorted β-coded factors plus a β-coded prefix-product trace, and
       document the trust and browser-cost implications.
-- [ ] Specify finite product, all-prime, permutation/multiplicity, deletion,
-      and product-cancellation interfaces.
-- [ ] Add a companion cross-check in a mature prover without treating it as
-      Peano theorem authority.
+- [ ] Freeze and implement decoded-value, finite-product, all-prime, sorted
+      canonical-form, and extensional-equality expanders with hygiene and
+      round-trip tests, without adding kernel atoms. The mathematical schemas
+      and representation choice are documented.
+- [x] Add a pinned Lean 4/Mathlib companion proving existence and uniqueness
+      up to permutation, with `sorryAx` rejection and an exact standard-axiom
+      audit, without treating it as Peano theorem authority.
 - [ ] Prove prime-factorization existence by strong induction.
 - [ ] Prove uniqueness using Euclid's lemma and the selected finite-collection
       equality.
@@ -119,5 +123,8 @@ does not determine the architecture.
   `planned_expressible`, and four `blocked_by_language`.
 - Largest new closed certificate: 1,601 nodes, depth 59.
 - Trusted-kernel changes: none.
-- Full FTA status: `blocked_by_language` pending a finite-factorization
-  representation; no admitted theorem or hidden primitive.
+- Full FTA companion status: checked in Lean for every nonzero natural, with
+  finite-list existence and permutation uniqueness and no `sorryAx`.
+- Full Peano FTA status: absent from `pa lib` pending closed certificates for
+  the selected β-sequence/product encoding and its division/prime/Euclid
+  dependency spine; no admitted theorem or hidden primitive.

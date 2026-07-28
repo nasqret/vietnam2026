@@ -65,6 +65,17 @@ been vendored into this release: the mathematical statements and explanations
 were written independently, and direct links preserve provenance without
 creating a license mixture.
 
+## Mathlib FTA companion
+
+The independently checked FTA companion imports Mathlib's natural-number
+prime-factor list development at the exact Apache-2.0 revision
+`37df177aaa770670452312393d4e84aaad56e7b6`. It restates existence and
+permutation uniqueness as one explicit theorem in `artifacts/lean-fta`.
+
+This is formal evidence, not curricular source material and not Peano theorem
+authority. Its dedicated verifier rejects `sorryAx` and requires the exact
+reported standard axioms `propext`, `Classical.choice`, and `Quot.sound`.
+
 ## Reuse modes
 
 The source register uses explicit modes:
@@ -74,7 +85,9 @@ The source register uses explicit modes:
   statement informs coverage but the Peano proof is rebuilt;
 - `reference_only_clean_room` for unlicensed or publisher-controlled sources;
 - `algorithm_index_clean_room` for GPL notebooks used only to identify future
-  algorithms and examples.
+  algorithms and examples;
+- `checked_external_companion` for a pinned formal-library theorem checked in
+  a separate prover without importing it into Peano's trusted base.
 
 Mathematical facts are reusable; distinctive prose and source code are not
 silently treated as public domain. Provenance accompanies even independently

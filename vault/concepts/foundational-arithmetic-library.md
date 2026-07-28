@@ -20,7 +20,9 @@ ordering; [[arithmetic-library-provenance]] records why facts were selected and
 how external material may be reused.
 
 The [[fundamental-theorem-of-arithmetic]] is a destination, not a primitive.
-Its current blocker is a readable finite-factorization representation.
+A conservative [[godel-beta-sequence]] representation is selected and a Lean
+companion checks the full list theorem, while Peano admission still requires
+the encoded sequence/product and arithmetic certificates.
 
 ## Related
 

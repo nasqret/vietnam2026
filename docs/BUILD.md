@@ -26,6 +26,22 @@ lake env lean /tmp/check.lean     # → "'Artifacts.add_comm'' does not depend o
 The project pins `leanprover/lean4:v4.28.0-rc1` (the locally installed toolchain) and uses **no
 Mathlib**, so it builds in seconds. Current Lean stable is 4.32.0.
 
+## The Lean FTA companion
+
+The full natural-number Fundamental Theorem of Arithmetic is a separate,
+Mathlib-backed artifact so the small course artifact above remains
+Mathlib-free:
+
+```bash
+make lean-fta
+```
+
+This resolves the exact pinned Mathlib revision, builds
+`artifacts/lean-fta/FTA.lean`, rejects `sorryAx`, and requires the declared
+axiom footprint to be exactly `propext`, `Classical.choice`, and `Quot.sound`.
+It proves finite-list existence and uniqueness up to permutation and is not
+imported as a Peano theorem.
+
 Agda / Rocq / Mizar artifacts are authored to standard idioms; run them under a local install of each
 (`agda`, `rocq compile`/`coqc`, Mizar+MML). See [`../artifacts/README.md`](../artifacts/README.md).
 
@@ -47,5 +63,6 @@ cd lab-lambda/py && python3 -c "import sys; sys.path.insert(0,'.'); import drive
 ```bash
 make book      # build the book
 make lean      # build + axiom-check Lean
+make lean-fta  # build + exact-axiom-check full FTA companion
 make lab-serve # preview the lab
 ```

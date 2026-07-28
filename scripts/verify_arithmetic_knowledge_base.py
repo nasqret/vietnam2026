@@ -230,6 +230,102 @@ def _closed_formula(source: str, location: str, parser):
     return formula
 
 
+def _validate_companion_artifacts(
+    value: object,
+    location: str,
+    source_ids: set[str],
+    repository_root: Path,
+) -> int:
+    if type(value) is not list or not value:
+        _fail(location, "must be a non-empty list")
+    seen: set[str] = set()
+    for index, raw in enumerate(value):
+        item_location = f"{location}[{index}]"
+        companion = _fields(
+            raw,
+            {
+                "id",
+                "title",
+                "prover",
+                "artifact_path",
+                "source",
+                "dependency_revision",
+                "declarations",
+                "allowed_axioms",
+                "scope",
+            },
+            set(),
+            item_location,
+        )
+        companion_id = _identifier(companion["id"], f"{item_location}.id")
+        if companion_id in seen:
+            _fail(f"{item_location}.id", f"duplicate companion id {companion_id!r}")
+        seen.add(companion_id)
+        for field in ("title", "prover", "scope"):
+            _text(companion[field], f"{item_location}.{field}")
+
+        source_id = _identifier(companion["source"], f"{item_location}.source")
+        if source_id not in source_ids:
+            _fail(f"{item_location}.source", f"unknown source id {source_id!r}")
+        revision = _text(
+            companion["dependency_revision"],
+            f"{item_location}.dependency_revision",
+        )
+        if re.fullmatch(r"[0-9a-f]{40}", revision) is None:
+            _fail(
+                f"{item_location}.dependency_revision",
+                "must be a full lowercase Git commit",
+            )
+
+        relative_text = _text(
+            companion["artifact_path"], f"{item_location}.artifact_path"
+        )
+        relative = Path(relative_text)
+        if (
+            relative.is_absolute()
+            or ".." in relative.parts
+            or relative.as_posix() != relative_text
+        ):
+            _fail(
+                f"{item_location}.artifact_path",
+                "must be a normalized repository-relative path",
+            )
+        artifact = repository_root / relative
+        if not artifact.is_file():
+            _fail(
+                f"{item_location}.artifact_path",
+                f"missing artifact {relative_text!r}",
+            )
+        artifact_source = artifact.read_text(encoding="utf-8")
+
+        declarations = _string_list(
+            companion["declarations"],
+            f"{item_location}.declarations",
+            nonempty=True,
+        )
+        for declaration_index, declaration in enumerate(declarations):
+            declaration_location = (
+                f"{item_location}.declarations[{declaration_index}]"
+            )
+            _text(declaration, declaration_location)
+            short_name = declaration.rsplit(".", 1)[-1]
+            _identifier(short_name, declaration_location)
+            if re.search(rf"\btheorem\s+{re.escape(short_name)}\b", artifact_source) is None:
+                _fail(
+                    declaration_location,
+                    f"declaration {declaration!r} is absent from {relative_text}",
+                )
+
+        axioms = _string_list(
+            companion["allowed_axioms"],
+            f"{item_location}.allowed_axioms",
+            nonempty=True,
+        )
+        for axiom_index, axiom in enumerate(axioms):
+            _text(axiom, f"{item_location}.allowed_axioms[{axiom_index}]")
+    return len(value)
+
+
 def _validate_catalog(
     catalog: dict[str, Any],
     path: Path,
@@ -247,6 +343,7 @@ def _validate_catalog(
             "object_language",
             "expanded_predicate_conventions",
             "statuses",
+            "companion_artifacts",
             "domain_order",
             "lemmas",
         },
@@ -271,6 +368,13 @@ def _validate_catalog(
         _fail(f"{location}.statuses", "must define exactly " + ", ".join(sorted(STATUSES)))
     for status, description in statuses.items():
         _text(description, f"{location}.statuses.{status}")
+
+    companion_count = _validate_companion_artifacts(
+        record["companion_artifacts"],
+        f"{location}.companion_artifacts",
+        source_ids,
+        repository_root,
+    )
 
     domains = _string_list(record["domain_order"], f"{location}.domain_order", nonempty=True)
     for index, domain in enumerate(domains):
@@ -444,6 +548,7 @@ def _validate_catalog(
     return {
         "lemmas": len(lemmas),
         "domains": len(domain_counts),
+        "companion_artifacts": companion_count,
         **{status: status_counts[status] for status in sorted(STATUSES)},
     }
 
@@ -498,7 +603,8 @@ def main(argv: list[str] | None = None) -> int:
         f"({counts['checked_existing']} baseline checked, "
         f"{counts['checked_m20']} M20 checked, "
         f"{counts['planned_expressible']} planned, "
-        f"{counts['blocked_by_language']} language-blocked)"
+        f"{counts['blocked_by_language']} language-blocked; "
+        f"{counts['companion_artifacts']} checked companion artifact)"
     )
     return 0
 

@@ -12,6 +12,7 @@ it does not make an external proof part of Peano's trusted base.
 | Source | Immutable reference | License status | Allowed role |
 |---|---|---|---|
 | Peano Lab checked ladder | Project-pinned source and validation report | MIT/project-internal | Binding source for existing checked theorems |
+| Mathlib natural factorization | [`37df177aaa770670452312393d4e84aaad56e7b6`](https://github.com/leanprover-community/mathlib4/tree/37df177aaa770670452312393d4e84aaad56e7b6) | [Apache-2.0](https://github.com/leanprover-community/mathlib4/blob/37df177aaa770670452312393d4e84aaad56e7b6/LICENSE) | Pinned Lean FTA companion only; no Peano theorem authority |
 | Natural Number Game 4 | [`727e4d219838eeb7f3945d2e9a0539f244d50540`](https://github.com/leanprover-community/NNG4/tree/727e4d219838eeb7f3945d2e9a0539f244d50540) | [Apache-2.0](https://github.com/leanprover-community/NNG4/blob/727e4d219838eeb7f3945d2e9a0539f244d50540/LICENSE) | Statement and coverage map; Peano proofs reconstructed |
 | Heather Macbeth, *The Mechanics of Proof* | [`e660f42b13ddcb6d12b52ba036d6bd071a0cfb9b`](https://github.com/hrmacbeth/math2001/tree/e660f42b13ddcb6d12b52ba036d6bd071a0cfb9b) | No repository license; arithmetic files say `All rights reserved` | Reference-only clean-room taxonomy |
 | Weissman number-theory notebooks | [`5e819522e52e6a75c5dec597f024729bfc9ba4c5`](https://github.com/MartyWeissman/Python-for-number-theory/tree/5e819522e52e6a75c5dec597f024729bfc9ba4c5) | [GPL-3.0](https://github.com/MartyWeissman/Python-for-number-theory/blob/5e819522e52e6a75c5dec597f024729bfc9ba4c5/LICENSE) | External algorithm and example index only |
@@ -40,6 +41,11 @@ did identify three pinned source trees with different legal roles:
 The first two could legally support attributed adaptations under their license
 conditions. This release still proves and explains its facts independently so
 the corpus has one coherent voice and no unnecessary license-derived files.
+
+The Mathlib dependency is different: it is imported by the explicitly
+separate `artifacts/lean-fta` formal companion under Apache-2.0. The companion
+is kernel-checked in Lean, rejects `sorryAx`, and records its standard axioms;
+it is never converted into a trusted Peano theorem constant.
 
 - The audited Macbeth project supplies Lean and generated RST/HTML but no
   explicitly licensed TeX source. Its absence of a reuse license makes the

@@ -9,6 +9,9 @@ arithmetic library. Start with:
   expressible, and blockers where not;
 - [`source-register.json`](source-register.json): pinned revisions, licenses,
   resources, and reuse modes;
+- [`finite-factorization-encoding.md`](finite-factorization-encoding.md): the
+  selected conservative Gödel-β factor-sequence and prefix-product design,
+  its exact FTA endpoints, and its Peano proof dependency spine;
 - [`foundational-sources.md`](foundational-sources.md): clean-room workflow and
   the cross-source dependency architecture;
 - [`nng4-map.md`](nng4-map.md): complete Natural Number Game 4 coverage and
@@ -28,4 +31,5 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 The catalog is not theorem authority. Only entries whose replayed, cut-free
 certificates pass Peano Lab's independent kernel appear as checked. Planned and
 language-blocked nodes make the roadmap precise without overstating the
-current implementation.
+current implementation. The catalog separately binds one checked Lean FTA
+companion; companion status never counts as Peano runtime coverage.

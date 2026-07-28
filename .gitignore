@@ -25,6 +25,7 @@ _build/
 artifacts/lean/**/.lake/
 artifacts/lean/**/lake-packages/
 artifacts/lean/**/build/
+artifacts/lean-fta/.lake/
 *.olean
 
 # ── Agda ───────────────────────────────────────────────

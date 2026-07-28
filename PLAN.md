@@ -66,6 +66,9 @@ M20 generalizes the theorem ladder into a structured arithmetic corpus. Its
 first checked layer adds 28 reusable equality, cancellation, order,
 multiplication, divisibility, residue, and small-prime lemmas, including the
 first checked fully expanded prime instance `prime_two`. The catalog maps the
-exact route to division, gcd, the general prime spine, and factorization. Full
-FTA remains blocked on a reviewed finite-factorization representation. See
+exact route to division, gcd, the general prime spine, and factorization. A
+sorted Gödel-β sequence/product encoding is now selected, and a pinned Lean
+companion checks full list-based FTA existence and uniqueness up to
+permutation. Peano admission still awaits the encoding and arithmetic proof
+spine. See
 [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md).

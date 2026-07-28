@@ -8,7 +8,9 @@ tags: [moc, peano-arithmetic, number-theory, library]
 
 The current runtime has 51 checked nodes: 23 from the original ladder and 28
 from M20. The broader 75-node catalog contains 20 `planned_expressible` and
-four `blocked_by_language` nodes in addition to those checked layers.
+four `blocked_by_language` nodes in addition to those checked layers. One
+separately cataloged Lean companion checks full list-based FTA existence and
+uniqueness; it is not counted as a Peano theorem.
 
 ## Design and trust
 
@@ -28,6 +30,7 @@ four `blocked_by_language` nodes in addition to those checked layers.
 - [[prime-number]]
 - [[euclids-lemma]]
 - [[fundamental-theorem-of-arithmetic]]
+- [[godel-beta-sequence]]
 
 ## Checked equality and additive nodes
 

@@ -19,7 +19,7 @@ needs.
 | Division | quotient-remainder existence and uniqueness | planned and expressible |
 | GCD/coprime | relational gcd, uniqueness, Bézout, Gauss cancellation | planned; signed-pair encoding required |
 | Primes | characterization, prime divisors, Euclid's lemma, infinitely many primes | `prime_two` checked; general spine planned and expressible |
-| Factorization | existence and uniqueness up to permutation | blocked on finite-factorization representation |
+| Factorization | existence and uniqueness up to permutation | β representation selected; Peano proof spine pending; Lean companion checked |
 
 The generated `dependency-graph.mmd` is the exact graph for checked entries.
 The research catalog is the larger design graph and gives every unproved node

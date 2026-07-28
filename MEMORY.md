@@ -293,9 +293,14 @@
   largest new certificate is 1,601 nodes/depth 59, within live `use`.
 - The version-1 research catalog has 75 DAG nodes across nine domains: 23 `checked_existing`, 28
   `checked_m20`, 20 `planned_expressible`, and four `blocked_by_language`. Divisibility and
-  primality can be expanded in current first-order PA; a natural full Fundamental Theorem of
-  Arithmetic needs a reviewed finite-sequence/multiset/product representation and is not claimed
-  before that milestone.
+  primality can be expanded in current first-order PA. Full Peano FTA is not claimed before the
+  selected finite-sequence/product representation and its proof spine have closed certificates.
+- The FTA representation review selected sorted Gödel-β factor codes plus a second β-coded
+  prefix-product trace. This is a conservative authoring design whose relations must expand to the
+  unchanged PA language. A separate Lean 4.23.0/Mathlib companion now proves finite-list
+  factorization existence for every nonzero natural and uniqueness up to permutation. Its pinned
+  audit rejects `sorryAx` and reports exactly `propext`, `Classical.choice`, and `Quot.sound`; it is
+  cataloged as one checked companion and is never imported as Peano theorem authority.
 - Source policy is pinned and clean-room. NNG4 is Apache-2.0 and maps the early arithmetic ladder;
   Macbeth is reference-only because its repository lacks a reuse license; Weissman's notebooks are
   GPL-3.0 external algorithm indexes. Open Logic and Newstead supply openly licensed TeX references;
@@ -307,9 +312,9 @@
   `artifacts/peano-library/`. The generated snapshot binds exact source bytes, statements, scripts,
   dependencies, certificate hashes, proof metrics, and an ordered root digest; hashes are
   provenance, never theorem authority.
-- The final combined M20 validation record is 1,045 passing Peano tests on both Python 3.10 and
+- The final combined M20 validation record is 1,049 passing Peano tests on both Python 3.10 and
   Python 3.12, a warning-as-error Jupyter Book build over 34 sources, 197 checked deep links, 43
   documentation blocks with 253 replayed
-  commands, and a clean 128-note/874-link Obsidian vault after integrating the latest `peano-lab`
+  commands, and a clean 129-note/884-link Obsidian vault after integrating the latest `peano-lab`
   result-recording commit. The batch transport now enforces an explicit iterative 256-container
   JSON nesting limit, so malformed-depth behavior and session hashing are runtime-independent.

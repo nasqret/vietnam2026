@@ -79,13 +79,20 @@ formal statement needs a representation and theorems for:
 - permutation or multiplicity equality;
 - deletion of a matched prime and product cancellation.
 
-Peano Lab currently has none of these data interfaces. Consequently the
-Fundamental Theorem of Arithmetic is marked `blocked_by_language`, with
-`finite_factorization_representation` as its explicit missing dependency.
+Peano Lab has no primitive data interface for these objects. The project now
+has two deliberately separate results:
+
+- a selected conservative Peano representation, using sorted Gödel β-coded
+  factor sequences and a β-coded prefix-product trace; and
+- an independently checked Lean companion proving the conventional finite-list
+  theorem, including uniqueness up to permutation.
+
+The companion closes the mathematical cross-check, but it does not turn the
+unfinished Peano encoding lemmas into a `pa lib` theorem.
 
 ## The representation milestone
 
-Three designs are possible:
+Three designs were compared:
 
 | Design | Advantage | Cost |
 |---|---|---|
@@ -93,20 +100,59 @@ Three designs are possible:
 | Conservative sequence predicate over encoded naturals | Keeps the term grammar fixed | Still requires a substantial coding library and bounded-index relations |
 | Reviewed finite-list/multiset layer | Natural theorem statements and permutation reasoning | Adds data syntax and needs a separate soundness review |
 
-The plan prefers a reviewed finite-sequence or multiset layer, with translation
-to ordinary kernel evidence made explicit. A companion proof in a mature
-system can cross-check the theorem, but it cannot substitute for Peano's own
-certificate.
+The selected Peano design is the first row: natural codes preserve the kernel
+unchanged. For codes $b,c$, index $i$, and value $x$, define
+
+$$
+M(c,i)=1+(i+1)c,
+\qquad
+\operatorname{At}(b,c,i,x)
+\;:\!\Longleftrightarrow\;
+x<M(c,i)\land\exists q.\;b=qM(c,i)+x.
+$$
+
+A second code stores the prefix products, beginning at one and multiplying by
+the decoded factor at each step. `AllPrime` expands the factor-pair prime
+formula at every bounded index, and `Sorted` makes the representation
+canonical by decoded values. Codes themselves are never equated because one
+finite prefix can have more than one β-code.
+
+The selected formula schemas and dependency spine are recorded in
+`research/arithmetic-library/finite-factorization-encoding.md`.
+
+## The checked Lean theorem
+
+The separate `artifacts/lean-fta/FTA.lean` project now proves:
+
+```lean
+theorem fundamental_theorem_of_arithmetic (n : ℕ) (hn : n ≠ 0) :
+    ∃ factors : List ℕ,
+      IsPrimeFactorization n factors ∧
+      ∀ other : List ℕ,
+        IsPrimeFactorization n other → other.Perm factors
+```
+
+The witness is `n.primeFactorsList`. Existence checks that its entries are
+prime and its product is $n$; uniqueness proves that any other prime list with
+product $n$ is a permutation of it. For $n=1$, the witness is the empty list.
+
+The project pins Lean 4.23.0 and Mathlib commit
+`37df177aaa770670452312393d4e84aaad56e7b6`. Its audit rejects `sorryAx` and
+requires exactly the declared standard axioms `propext`, `Classical.choice`,
+and `Quot.sound`. This makes the dependency footprint visible rather than
+calling a library import “axiom-free.”
 
 ## What “include FTA” means in this release
 
-FTA is included as a fully specified destination:
+This release contains two deliberately separate FTA forms:
 
-- its prerequisite graph is recorded;
-- its mathematical existence and uniqueness halves are separated;
-- the exact current-language blocker is named;
+- the Lean companion is a checked existence-and-uniqueness proof up to
+  permutation, with no admission;
+- the conservative Peano representation design and formula schemas are
+  documented;
 - source curricula are mapped to the missing lemmas;
-- no unchecked or admitted theorem is exposed through `pa lib`.
+- no external theorem is smuggled into `pa lib` as a Peano certificate.
 
-That is more useful than a ceremonial theorem name with hidden trusted
-machinery. Future milestones can discharge the graph one interface at a time.
+The remaining Peano work starts by freezing and implementing the hygienic
+macro expansions with round-trip tests. It then discharges the
+division/Euclid/β-coding lemmas and produces the two closed PA certificates.
