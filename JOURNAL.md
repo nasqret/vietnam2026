@@ -908,3 +908,16 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - The child processes now receive `PEANO_WMI_EXPECTED_CENTRAL_PREFIX`, derived only from the same
   readonly constant. An executable shell regression covers both manifest and overlay-runtime
   verifier invocations. The corrected gate reports 139 focused and 1,029 complete Peano tests.
+
+## 2026-07-28 (branch peano-lab) — WMI preparation passes; empty TSV fields become explicit data
+
+- Replacement preparation `171395` completed in 8m39s on A100 node `g3n1`. It reproduced dataset
+  digest `1fa98caa…` with 8,149/926/925 rows, verified Python 3.12.12 and Torch 2.5.1/CUDA 12.4,
+  and saved/reloaded a 3,211,264-parameter LoRA adapter with finite losses 6.06434 and 5.53506.
+- The guarded training dry-run passed, but real submission stopped before `sbatch` with a chain
+  mismatch. Diagnosis found Bash's whitespace `IFS` collapsing the preparation row's empty
+  `dependency_job_id`, shifting every later field. The hash and literal ledger row were correct.
+- Replaced that parse with a size-bounded, strict UTF-8, exactly-nine-field TSV verifier that
+  preserves empty data and rejects duplicate, malformed, or differently sourced predecessors.
+  Because this changes the source commit, `171395` cannot be reused under the fix: a new prepare
+  must establish the next chain. Current gates are 140 focused and 1,030 complete Peano tests.

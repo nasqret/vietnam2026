@@ -151,37 +151,16 @@ if [ -n "$request_id" ]; then
 fi
 
 if [ -n "$afterok" ]; then
-  predecessor_matches=0
-  predecessor_script=""
-  predecessor_workdir=""
-  predecessor_commit=""
-  predecessor_sync=""
-  predecessor_hash=""
-  predecessor_dirty=""
-  while IFS=$'\t' read -r _timestamp row_job_id row_script _dependency row_workdir row_commit row_dirty row_sync row_hash; do
-    if [ "$row_job_id" = "$afterok" ]; then
-      predecessor_matches=$((predecessor_matches + 1))
-      predecessor_script="$row_script"
-      predecessor_workdir="$row_workdir"
-      predecessor_commit="$row_commit"
-      predecessor_dirty="$row_dirty"
-      predecessor_sync="$row_sync"
-      predecessor_hash="$row_hash"
-    fi
-  done < <(sed -n '2,$p' "$manifest")
   expected_predecessor_hash="$(sha256sum "$expected_predecessor" | awk '{print $1}')"
   support_hash="$(sha256sum scripts/wmi_job_environment.sh | awk '{print $1}')"
   expected_predecessor_hash="$({
     printf '%s\n' "$expected_predecessor_hash"
     printf '%s\n' "$support_hash"
   } | sha256sum | awk '{print $1}')"
-  if [ "$predecessor_matches" -ne 1 ] || \
-     [ "$predecessor_script" != "$expected_predecessor" ] || \
-     [ "$predecessor_workdir" != "$PEANO_WMI_PROJECT_ROOT" ] || \
-     [ "$predecessor_commit" != "$commit" ] || \
-     [ "$predecessor_dirty" != false ] || \
-     [ "$predecessor_sync" != "$sync_timestamp" ] || \
-     [ "$predecessor_hash" != "$expected_predecessor_hash" ]; then
+  if ! python3 scripts/verify_wmi_submission_predecessor.py \
+      "$manifest" "$afterok" "$expected_predecessor" \
+      "$PEANO_WMI_PROJECT_ROOT" "$commit" "$sync_timestamp" \
+      "$expected_predecessor_hash"; then
     echo "WMI dependency is absent or belongs to a different chain" >&2
     exit 1
   fi

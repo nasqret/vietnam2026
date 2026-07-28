@@ -187,6 +187,59 @@ def test_wmi_submission_ledger_hash_composes_job_and_support_helper() -> None:
     assert 'support_hash="$(sha256sum scripts/wmi_job_environment.sh' in source
     predecessor_composite = 'expected_predecessor_hash="$({\n    printf \'%s\\n\' "$expected_predecessor_hash"\n    printf \'%s\\n\' "$support_hash"\n  } | sha256sum'
     assert predecessor_composite in source
+    assert "scripts/verify_wmi_submission_predecessor.py" in source
+
+
+def test_wmi_predecessor_parser_preserves_empty_dependency_column(
+    tmp_path: Path,
+) -> None:
+    verifier = SCRIPTS / "verify_wmi_submission_predecessor.py"
+    header = "\t".join(
+        (
+            "timestamp",
+            "job_id",
+            "script",
+            "dependency_job_id",
+            "workdir",
+            "git_commit",
+            "git_dirty",
+            "sync_timestamp",
+            "script_sha256",
+        )
+    )
+    values = (
+        "2026-07-28T08:42:34+02:00",
+        "171395",
+        "slurm/peano_wmi_prepare_training.sbatch",
+        "",
+        "/work/bnaskrecki/peano-lab-training",
+        "9" * 40,
+        "false",
+        "2026-07-28T06:41:45Z",
+        "e" * 64,
+    )
+    ledger = tmp_path / "submissions.tsv"
+    ledger.write_text(header + "\n" + "\t".join(values) + "\n", encoding="utf-8")
+    command = [
+        "python3",
+        str(verifier),
+        str(ledger),
+        values[1],
+        values[2],
+        values[4],
+        values[5],
+        values[7],
+        values[8],
+    ]
+    subprocess.run(command, check=True)
+
+    ledger.write_text(
+        header + "\n" + "\t".join(values) + "\n" + "\t".join(values) + "\n",
+        encoding="utf-8",
+    )
+    rejected = subprocess.run(command, capture_output=True, text=True)
+    assert rejected.returncode == 1
+    assert "absent or duplicated" in rejected.stderr
 
 
 def test_wmi_jobs_request_typed_a100_and_keep_training_offline() -> None:

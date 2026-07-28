@@ -1102,3 +1102,30 @@ shell constant. A regression executes both call shapes under `set -euo pipefail`
 searching their source text. The focused gate now reports 139 passes and the complete Peano suite
 1,029. This is exactly why preparation is a separate milestone: it turns cluster-specific shell
 semantics into a small reproducible failure before any expensive or scientifically meaningful run.
+
+## 2026-07-28 — Empty fields are still fields
+
+Replacement preparation job `171395` passed in 8m39s. It independently replayed the exact
+8,149/926/925 dataset split and digest `1fa98caa…`, verified Python 3.12.12, Torch 2.5.1/CUDA 12.4,
+driver 610.43.02, and one A100-SXM4-80GB, then exercised a 3,211,264-parameter LoRA adapter. The
+training loss was 6.06434; after safetensors save and reload, the measured loss was 5.53506. Only
+after all of this did preparation publish the content-addressed environment pointer.
+
+The training scheduler preflight passed, but the guarded real submission correctly refused to
+call `sbatch`: it could not match `171395` to the current provenance chain. The ledger bytes and
+composite script/helper hash were right. The bug was more prosaic and more instructive: Bash treats
+a tab in `IFS` as whitespace, so consecutive tabs collapse. The intentionally empty
+`dependency_job_id` column vanished during `read`, and every later field shifted left.
+
+The controller now uses a small strict parser for this data boundary. It bounds total bytes and
+field lengths, requires complete UTF-8 with no carriage returns or NULs, requires exactly nine TSV
+columns, preserves the empty column, validates field shapes, rejects duplicate job IDs, and matches
+script, worktree, commit, cleanliness, sync time, and composite hash. A regression starts with the
+literal empty-column shape that failed remotely. The focused gate reports 140 passes and the full
+Peano suite 1,030.
+
+There is one deliberately inconvenient consequence. Fixing the controller changes the source
+commit and sync timestamp, so the passed `171395` report cannot become the predecessor of a job
+submitted from the fix. Weakening that comparison would erase the provenance guarantee precisely
+when it became useful. We instead run a fresh preparation and preserve `171395` as honest evidence
+for the earlier source.

@@ -20,8 +20,12 @@ tree under an exclusive lock; preparation, training, and evaluation hold the sha
 environment pointer is published only after data attestation and the complete LoRA save/reload smoke
 pass. Torch 2.5.1 makes this pilot one-shot with a safetensors-only model-weight path: partial output
 cannot be reused, checkpoint state is never loaded, and PEFT's pickle fallback is rejected before
-loading. The full WMI model smoke remains pending. Regardless of site, the learned model remains
-untrusted and every successful trajectory ends at the [[trusted-kernel]].
+loading. Preparation `171395` passed the full dataset-replay and LoRA save/reload smoke in 8m39s.
+The dependent training submission then failed closed before `sbatch` because Bash whitespace
+splitting lost its empty TSV dependency field. A strict nine-field parser fixes that control
+boundary; source binding requires a fresh preparation job rather than relabeling `171395`.
+Regardless of site, the learned model remains untrusted and every successful trajectory ends at
+the [[trusted-kernel]].
 
 After training, `scripts/wmi_prove_theorem.sh` is the supported arbitrary-theorem entry point. It
 stores the closed formula and search budget in immutable canonical JSON, submits only its SHA-256

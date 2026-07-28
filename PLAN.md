@@ -44,9 +44,10 @@ training dependency remains queued. WMI typed-A100 probe `171369` also passed, a
 x86-64 base manifest, hash-locked overlay, transactional source controls, and one-shot safetensors
 model-weight path are locally green. A trained adapter can now be used on an arbitrary bounded
 closed PA formula through a second-kernel-replayed CLI and a ledgered immutable-request WMI A100
-job; this is an execution path, not a learned solve-rate claim. WMI preparation job `171391`
-failed safely before installation on a readonly shell-variable collision; its corrected
-child-environment handoff is regression-tested and awaits resubmission. The full WMI LoRA
-save/reload gate, real policy training, and evaluation remain open; no model result is claimed. See
+job; this is an execution path, not a learned solve-rate claim. Replacement WMI preparation job
+`171395` passed the full dataset replay and LoRA save/reload gate. The first training submission
+was refused before `sbatch` because Bash field splitting collapsed its predecessor's empty TSV
+dependency column; a strict parser now preserves and validates all nine fields. A fresh same-source
+prepare/train chain is still required, and no learned model result is claimed. See
 [`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest completed and staged
 milestone; production remains untouched behind the M14 cache-header blocker.

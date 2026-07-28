@@ -573,9 +573,17 @@ the tree matches; source-dependent preparation, training, and evaluation jobs ho
 and sync removes valid provenance before it touches the live tree. Preparation moves the
 environment pointer last, after package checks,
 independent dataset attestation, a real LoRA optimizer step, adapter/tokenizer save and reload, and
-finite losses. The 96-test local control/runtime gate passes, but that real A100 model smoke is
-still pending. Moving the computation does not move the trust boundary: every generated proof is
-still replayed by Peano Lab and every QED is checked against its original theorem.
+finite losses. Replacement job `171395` passed that complete A100 gate in 8m39s. It reproduced
+dataset digest `1fa98caa…`, recorded the exact commit and A100/Python/Torch environment, and saw
+finite losses `6.06434` before save and `5.53506` after reload.
+
+The next failure was deliberately cheaper. The training controller refused to call `sbatch`
+because its Bash `IFS` reader collapsed the preparation row's empty dependency field, shifting the
+remaining TSV columns. Empty fields are data, so a bounded strict UTF-8 parser now validates nine
+columns exactly and rejects malformed or duplicate job rows. Since that repair changes source
+identity, the passed preparation report cannot be relabeled as its predecessor; a fresh same-source
+chain is required. Moving the computation does not move the trust boundary: every generated proof
+is still replayed by Peano Lab and every QED is checked against its original theorem.
 
 ## Reproduction and honest resume
 

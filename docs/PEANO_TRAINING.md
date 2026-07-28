@@ -472,9 +472,15 @@ invalidated before any live-tree change.
 Preparation publishes the environment pointer only after package checks,
 independent data attestation, a real BF16 LoRA step, safetensors save/reload,
 and finite losses all pass. The ARM Helios lock and `.venv-helios` are never
-reused or relabeled. As of this checkpoint the code and local tests for that
-gate are ready, but the full WMI save/reload job has not yet been accepted, so
-no WMI training result is claimed.
+reused or relabeled. Preparation job `171395` passed this complete gate in
+8m39s from commit `95197e9`: dataset digest `1fa98caa…` replayed exactly, the
+runtime report recorded finite losses `6.06434` and `5.53506` before and after
+reload, and only then did the environment pointer move. Its first dependent
+training submission was refused before `sbatch` because Bash whitespace
+splitting collapsed the empty dependency column in the TSV ledger. The
+controller now delegates that boundary to a bounded strict UTF-8 nine-field
+parser. The fix changes source identity, so a fresh preparation job is required
+before training; no WMI learned result is claimed yet.
 
 ### 10.2 Proving a new theorem with a trained adapter
 
