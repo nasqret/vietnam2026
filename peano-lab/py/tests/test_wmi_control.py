@@ -328,7 +328,12 @@ def test_wmi_proof_request_is_file_backed_allowlisted_and_ledgered() -> None:
     assert 'proof_manifest=logs/proof-requests.tsv' in submit
     assert 'request_path="results/peano-policy/requests/$request_id.json"' in submit
     assert "peano_policy_proof_request.py verify" in submit
+    assert "max_new_tokens=96" in local
     assert "max_steps=32" in local
+    assert "search_beam_width=4" in local
+    assert "search_candidates_per_state=4" in local
+    assert "search_max_model_calls=128" in local
+    assert "search_max_states=2048" in local
     assert "qwen3-1.7b-lora-v2-heavy" in job
     assert submit.index("sbatch --hold --parsable") < submit.index(
         '"$request_id" "$request_sha256" >> "$proof_manifest"'

@@ -628,24 +628,36 @@ checkout, create and submit a request with:
 scripts/wmi_prove_theorem.sh \
   --submit --confirm PEANO-LAB-WMI-TRAINING \
   --theorem 'forall n. exists x. n * (n + 1) = 2 * x' \
-  --sample --k 16 --max-steps 24
+  --sample --max-new-tokens 96 --max-steps 24 \
+  --search-beam-width 8 \
+  --search-candidates-per-state 16 \
+  --search-max-model-calls 512 \
+  --search-max-states 4096
 ```
 
-The wrapper validates the formula and total call budget locally, creates a nonce-bearing canonical
-JSON request, streams it under the WMI deployment lock, and exports only its 64-hex SHA-256 ID to
-Slurm. The guarded submitter revalidates and hashes the request, appends both the ordinary job row
-and an immutable request/job ledger row before releasing one typed-A100 job. The compute job
-rechecks the central base, overlay, source, scheduler row, request bytes, adapter, and kernel path.
+The wrapper validates the formula and total call budget locally, creates a version-2 canonical JSON
+request with a fresh nonce, and identity-binds kernel-guided-search mode, generated tokens per
+candidate, depth, beam width, candidates per state, model calls, and discovered states. It streams that request under the WMI
+deployment lock and exports only its 64-hex SHA-256 ID to Slurm. The guarded submitter revalidates
+and hashes the request, appends both the ordinary job row and an immutable request/job ledger row
+before releasing one typed-A100 job. The compute job rechecks the central base, overlay, source,
+scheduler row, request bytes, adapter, search report, and kernel path. Version-1 request artifacts
+remain replayable with their original bounded-rollout semantics; new requests cannot silently fall
+back to rollout mode. A version-2 request additionally requires the exact sealed model-v2
+environment, verifies the closed adapter/tokenizer snapshot before and after the run, and checks
+every per-goal, decoder, and aggregate search counter. The `--k` rollout flag is therefore rejected
+by this wrapper.
 It writes digest-named report, optional `.pa`, and terminal run-summary files under
 `results/peano-policy/user-proofs/`; a sound but unsolved request finishes with `status=no-proof`
 rather than masquerading as an infrastructure crash. The wrapper prints the request ID used in
 those filenames.
 
 The guarded one-shot job now targets the attested model-v2 heavy adapter and
-defaults to the same depth-32 search budget; before that adapter exists it
-fails closed. Model-v2 also adds a persistent terminal client so an interactive
-WMI allocation pays model loading cost once and can try many theorems in one
-session. Local inference, when the machine can load the adapter, uses:
+defaults to 96 generated tokens per candidate, depth 32, beam width 4, four candidates per state,
+128 model calls, and 2,048 states; before that adapter exists it fails closed. Model-v2 also adds
+a persistent terminal client so an interactive WMI allocation pays model loading
+cost once and can try many theorems in one session. Local inference, when the
+machine can load the adapter, uses:
 
 ```console
 python3 scripts/peano_policy_repl.py \

@@ -58,8 +58,20 @@ grep -F -- \
   "--submit --confirm PEANO-LAB-WMI-TRAINING --afterok 23456 slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch" \
   "$ssh_log" >/dev/null
 
+if scripts/wmi_prove_theorem.sh --test-only \
+  --theorem 'forall n. n = n' --sample --k 2 >/dev/null 2>&1; then
+  echo "legacy rollout flag entered the kernel-guided one-shot path" >&2
+  exit 1
+fi
+
 scripts/wmi_prove_theorem.sh --test-only \
-  --theorem 'forall n. n = n' --sample --k 2 >/dev/null
+  --theorem 'forall n. n = n' --sample \
+  --max-new-tokens 48 \
+  --max-steps 12 \
+  --search-beam-width 3 \
+  --search-candidates-per-state 2 \
+  --search-max-model-calls 24 \
+  --search-max-states 96 >/dev/null
 grep -E -- \
   '--request-id [0-9a-f]{64} slurm/peano_wmi_prove_theorem.sbatch' \
   "$ssh_log" >/dev/null

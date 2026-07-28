@@ -1376,3 +1376,60 @@ This is an experimental-authority correction, not a new proof rule. The kernel i
 does mean that datasets, capacity reports, adapters, and evaluation requests made under the former
 45-record identity cannot be relabelled as current model-v2 artifacts; the 56-record corpus must be
 regenerated and re-attested before training.
+
+## 2026-07-28 — A search request must identify the search, not just the theorem
+
+The first guarded one-shot wrapper claimed to use verifier-guided search, but its request schema
+still described the older rollout experiment. It recorded a theorem, rollout count, depth, seed,
+and sampling bit, then invoked the trained evaluator without `--mode search`. A successful result
+would still have needed an independent kernel replay, so this was not a kernel soundness hole. It
+was nevertheless an experimental and operational bug: the interface promised branching recovery
+while actually abandoning a proof at the first bad tactic.
+
+New request artifacts are version 2. Their canonical bytes bind the mode
+`kernel-guided-search` and all six host-owned bounds: generated tokens per candidate, depth, beam
+width, candidates per state, model calls, and discovered states. The compute-side runner passes
+those exact values to the evaluator and refuses to publish even a valid proof if the returned
+report does not repeat the requested mode and limits. Binding the token bound matters because the
+real decoding budget is the product of model calls, candidates per state, and tokens per candidate.
+The wrapper rejects the old `--k` flag rather than silently assigning it a new meaning. Existing
+version-1 artifacts remain replayable under their original rollout semantics, which preserves
+provenance instead of rewriting history.
+
+This is another use of the project's transactional boundary. Candidate tactics remain untrusted;
+failed candidates leave proof state unchanged; bounded search explores only states admitted by the
+real tactic engine; and a second replay against the original theorem remains the publication gate.
+The compute wrapper independently recovers that replay authority from the adapter's attested
+training manifest, checks the report's evaluator, policy, decoder, surface, and environment
+identities, and byte-compares the emitted script before replaying its commands against the original
+request. A second review made three implicit boundaries explicit. Version-2 requests accept exactly
+the sealed model-v2 environment, not merely either supported policy surface. The wrapper rebuilds
+the complete adapter and evaluation provenance, derives the policy name from the manifest run and
+manifest digest, and verifies the closed adapter and tokenizer snapshots both before model loading
+and after publication. Finally, it checks the entire one-goal search record: exact fields and integer
+types, one attempt, status agreement, decoder equations, aggregate resource bounds, per-goal
+counters, and equality of aggregate and per-goal accounting. This prevents a sound proof from being
+misreported as evidence for a different model or search experiment.
+
+The change adds no proof rule and leaves the kernel untouched. Its focused tests cover
+new-request identity, legacy dispatch, exact evaluator arguments, forged search reports, shell
+bounds, and WMI routing. The complete Peano suite now reports 1,113 passing tests, Lambda reports 360 tests plus 36
+subtests, the warning-as-error book builds all 27 sources, and 193 deep links plus 170 book commands
+replay cleanly.
+
+## 2026-07-29 — A checked proof does not authenticate its search history
+
+Independent kernel replay establishes that a published command sequence proves the original
+theorem. It cannot establish that the model and search actually spent the work claimed in the
+evaluation report. A forged depth-two proof could previously pair zero model calls, expansions,
+decoder outputs, and executed candidates so that all equality checks reconciled. The proof was
+sound, but it was not valid evidence about the policy experiment.
+
+The wrapper now checks semantic lower bounds inherited from the search loop. A proved path of
+depth $d$ expands at least $d$ parent states and executes at least $d$ complete candidate
+lines, so model calls, executed candidates, returned lines, returned sequences, and requested
+sequences are all at least $d$. The discovered-state bound is subtly $d$, not $d+1$: that
+counter starts with the root and adds the $d-1$ open proof prefixes, while the terminal checked
+proof is intentionally never admitted to the frontier. Every completed search report also has at
+least one root expansion. These checks change no proof rule; they make the experimental claim as
+auditable as the proof claim.

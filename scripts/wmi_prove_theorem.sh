@@ -8,15 +8,19 @@ repo_root="$(cd "$script_dir/.." && pwd)"
 source "$script_dir/wmi_common.sh"
 
 usage() {
-  echo "usage: $0 [--test-only] --theorem FORMULA [--sample --k N] [--max-steps N] [--seed N]" >&2
-  echo "       $0 --submit --confirm $PEANO_WMI_CONFIRM_TOKEN --theorem FORMULA [--sample --k N] [--max-steps N] [--seed N]" >&2
+  echo "usage: $0 [--test-only] --theorem FORMULA [--sample] [--max-new-tokens N] [--max-steps N] [--search-beam-width N] [--search-candidates-per-state N] [--search-max-model-calls N] [--search-max-states N] [--seed N]" >&2
+  echo "       $0 --submit --confirm $PEANO_WMI_CONFIRM_TOKEN --theorem FORMULA [--sample] [--max-new-tokens N] [--max-steps N] [--search-beam-width N] [--search-candidates-per-state N] [--search-max-model-calls N] [--search-max-states N] [--seed N]" >&2
 }
 
 mode=--test-only
 confirmation=""
 theorem=""
-k=1
+max_new_tokens=96
 max_steps=32
+search_beam_width=4
+search_candidates_per_state=4
+search_max_model_calls=128
+search_max_states=2048
 seed=20260728
 sample=false
 while [ "$#" -gt 0 ]; do
@@ -32,13 +36,33 @@ while [ "$#" -gt 0 ]; do
       [ -z "$theorem" ] || { echo "--theorem may appear only once" >&2; exit 2; }
       theorem="$2"; shift 2
       ;;
-    --k)
-      [ "$#" -ge 2 ] || { usage; exit 2; }
-      k="$2"; shift 2
-      ;;
     --max-steps)
       [ "$#" -ge 2 ] || { usage; exit 2; }
       max_steps="$2"; shift 2
+      ;;
+    --max-new-tokens)
+      [ "$#" -ge 2 ] || { usage; exit 2; }
+      max_new_tokens="$2"; shift 2
+      ;;
+    --search-beam-width)
+      [ "$#" -ge 2 ] || { usage; exit 2; }
+      search_beam_width="$2"; shift 2
+      ;;
+    --search-candidates-per-state)
+      [ "$#" -ge 2 ] || { usage; exit 2; }
+      search_candidates_per_state="$2"; shift 2
+      ;;
+    --search-max-model-calls)
+      [ "$#" -ge 2 ] || { usage; exit 2; }
+      search_max_model_calls="$2"; shift 2
+      ;;
+    --search-max-states)
+      [ "$#" -ge 2 ] || { usage; exit 2; }
+      search_max_states="$2"; shift 2
+      ;;
+    --k)
+      echo "--k was the legacy rollout count; use --search-candidates-per-state for bounded kernel-guided search" >&2
+      exit 2
       ;;
     --seed)
       [ "$#" -ge 2 ] || { usage; exit 2; }
@@ -63,8 +87,12 @@ fi
 create_args=(
   create
   --theorem "$theorem"
-  --k "$k"
+  --max-new-tokens "$max_new_tokens"
   --max-steps "$max_steps"
+  --search-beam-width "$search_beam_width"
+  --search-candidates-per-state "$search_candidates_per_state"
+  --search-max-model-calls "$search_max_model_calls"
+  --search-max-states "$search_max_states"
   --seed "$seed"
 )
 [ "$sample" = false ] || create_args+=(--sample)

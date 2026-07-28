@@ -893,21 +893,31 @@ The repository therefore transports a theorem as data, never as shell code:
 scripts/wmi_prove_theorem.sh \
   --submit --confirm PEANO-LAB-WMI-TRAINING \
   --theorem 'forall n. exists x. n * (n + 1) = 2 * x' \
-  --sample --k 16 --max-steps 24
+  --sample --max-new-tokens 96 --max-steps 24 \
+  --search-beam-width 8 \
+  --search-candidates-per-state 16 \
+  --search-max-model-calls 512 \
+  --search-max-states 4096
 ```
 
-This creates a bounded canonical JSON request with a fresh nonce, hashes its complete bytes, and
-streams it under the deployment lock. Only the 64-hex request ID enters `sbatch --export`. Before
-the held job is released, the controller has durably joined that ID and request hash to its Slurm
-job in a second ledger. The A100 job then repeats request, runtime, adapter, evaluator, and kernel
-checks. Digest-named evaluation, optional proof, and terminal summary artifacts live under
-`results/peano-policy/user-proofs/`. No-proof is a valid checked search outcome; malformed
-provenance remains a failed job.
+This creates a version-2 canonical JSON request with a fresh nonce. Its hash commits to
+kernel-guided-search mode and all six host-owned bounds: generated tokens per candidate, depth,
+beam width, candidates per state, model calls, and discovered states. The wrapper streams its complete bytes under the deployment
+lock; only the 64-hex request ID enters `sbatch --export`. Before the held job is released, the
+controller has durably joined that ID and request hash to its Slurm job in a second ledger. The A100
+job then repeats request, runtime, adapter, search-report, and kernel checks. Older version-1 request
+files retain their original rollout semantics, while the new wrapper rejects the old `--k` rollout
+flag instead of giving it a different meaning. Version 2 accepts only the exact sealed model-v2
+authority, verifies the complete adapter and tokenizer snapshots before and after evaluation, and
+requires exact per-goal, decoder, and aggregate search accounting. Digest-named evaluation,
+optional proof, and terminal summary artifacts live under `results/peano-policy/user-proofs/`.
+No-proof is a valid checked search outcome; malformed provenance remains a failed job.
 
 #### Keeping model-v2 loaded for an interactive session
 
 The guarded one-shot command now targets the attested model-v2 heavy adapter and uses bounded
-kernel-guided search; it fails closed until that adapter exists. Model-v2 also has a persistent
+kernel-guided search. Its defaults are 96 generated tokens per candidate, depth 32, beam width 4,
+four candidates per state, 128 model calls, and 2,048 states; it fails closed until that adapter exists. Model-v2 also has a persistent
 client that loads one adapter once and reuses it across theorem queries:
 
 ```console
