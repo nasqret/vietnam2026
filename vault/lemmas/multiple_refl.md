@@ -19,6 +19,7 @@ forall a. exists q. a = a * q
 
 ## Checked dependents
 
+- [[is_gcd_zero_right]]
 - [[is_gcd_of_dvd]]
 
 ## Verification record

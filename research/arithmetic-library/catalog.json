@@ -1550,6 +1550,78 @@
       "blocker": null
     },
     {
+      "id": "factor_difference",
+      "title": "A common-factor difference retains the factor",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [
+        "zero_add",
+        "add_eq_zero_right",
+        "add_right_cancel",
+        "add_assoc",
+        "add_comm"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "Induction on both factor witnesses and additive cancellation construct a witness for the residual multiple.",
+      "peano": {
+        "statement": "forall c u v r. c * u = c * v + r -> exists w. r = c * w",
+        "existing_name": "factor_difference"
+      },
+      "blocker": null
+    },
+    {
+      "id": "divides_remainder",
+      "title": "A common divisor divides a Euclidean remainder",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_assoc",
+        "factor_difference"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "Reassociates the divisor multiple inside a quotient block and applies the checked factor-difference theorem.",
+      "peano": {
+        "statement": "forall c a b q r. (exists u. a = c * u) -> (exists v. b = c * v) -> a = b * q + r -> exists w. r = c * w",
+        "existing_name": "divides_remainder"
+      },
+      "blocker": null
+    },
+    {
+      "id": "divides_linear_step",
+      "title": "A common divisor divides a Euclidean linear step",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_assoc",
+        "mul_add"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "Combines the two explicit multiple witnesses by associativity and right distributivity.",
+      "peano": {
+        "statement": "forall c b q r. (exists u. b = c * u) -> (exists v. r = c * v) -> exists w. b * q + r = c * w",
+        "existing_name": "divides_linear_step"
+      },
+      "blocker": null
+    },
+    {
       "id": "not_multiple_pointwise",
       "title": "A nonmultiple differs from every candidate multiple",
       "domain": "divisibility",
@@ -2232,6 +2304,29 @@
       "blocker": null
     },
     {
+      "id": "is_gcd_zero_right",
+      "title": "Every natural is the gcd of itself and zero",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "multiple_refl",
+        "multiple_zero"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "Reflexive divisibility and divisibility of zero supply the two witnesses; greatestness is the left common-divisor premise.",
+      "peano": {
+        "statement": "forall a. (((exists x. a = a * x) /\\ (exists y. 0 = a * y)) /\\ forall c. (exists u. a = c * u) -> (exists v. 0 = c * v) -> exists w. a = c * w)",
+        "existing_name": "is_gcd_zero_right"
+      },
+      "blocker": null
+    },
+    {
       "id": "is_gcd_symm",
       "title": "The relational gcd specification is symmetric",
       "domain": "gcd_coprime",
@@ -2351,14 +2446,64 @@
       "blocker": null
     },
     {
+      "id": "is_gcd_euclid_forward",
+      "title": "Euclidean gcd invariance in the forward direction",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "divides_remainder",
+        "divides_linear_step"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "For a = b*q+r, a gcd of b and r divides a, while each common divisor of a and b divides r.",
+      "peano": {
+        "statement": "forall d a b q r. a = b * q + r -> (((exists x. b = d * x) /\\ (exists y. r = d * y)) /\\ forall c. (exists u. b = c * u) -> (exists v. r = c * v) -> exists w. d = c * w) -> (((exists x. a = d * x) /\\ (exists y. b = d * y)) /\\ forall c. (exists u. a = c * u) -> (exists v. b = c * v) -> exists w. d = c * w)",
+        "existing_name": "is_gcd_euclid_forward"
+      },
+      "blocker": null
+    },
+    {
+      "id": "is_gcd_euclid_backward",
+      "title": "Euclidean gcd invariance in the backward direction",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "divides_remainder",
+        "divides_linear_step"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "For a = b*q+r, a gcd of a and b divides r, while each common divisor of b and r divides a.",
+      "peano": {
+        "statement": "forall d a b q r. a = b * q + r -> (((exists x. a = d * x) /\\ (exists y. b = d * y)) /\\ forall c. (exists u. a = c * u) -> (exists v. b = c * v) -> exists w. d = c * w) -> (((exists x. b = d * x) /\\ (exists y. r = d * y)) /\\ forall c. (exists u. b = c * u) -> (exists v. r = c * v) -> exists w. d = c * w)",
+        "existing_name": "is_gcd_euclid_backward"
+      },
+      "blocker": null
+    },
+    {
       "id": "gcd_exists_relational",
       "title": "A greatest common divisor exists",
       "domain": "gcd_coprime",
       "status": "planned_expressible",
       "dependencies": [
-        "multiple_refl",
-        "multiple_trans",
-        "le_total"
+        "le_refl",
+        "le_zero",
+        "le_of_succ_le_succ",
+        "le_eq_or_lt",
+        "division_remainder_exists",
+        "is_gcd_zero_right",
+        "is_gcd_euclid_forward"
       ],
       "sources": [
         "macbeth_math2001_repo",
@@ -2366,7 +2511,7 @@
         "weissman_python_number_theory",
         "stein_ent_tex"
       ],
-      "summary": "Uses a relational specification because the fixed language has no gcd function symbol.",
+      "summary": "A bounded-induction construction combines the zero base case, native quotient-remainder existence, and checked Euclidean-step invariance; the relational specification avoids adding a gcd function symbol.",
       "peano": {
         "statement": "forall a b. exists d. ((exists x. a = d * x) /\\ (exists y. b = d * y)) /\\ forall c. (exists u. a = c * u) -> (exists v. b = c * v) -> exists w. d = c * w",
         "existing_name": null

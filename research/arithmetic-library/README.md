@@ -3,8 +3,8 @@
 This directory is the planning and provenance source for Peano Lab's general
 arithmetic library. Start with:
 
-- [`catalog.json`](catalog.json): 132 dependency-ordered facts — 23
-  `checked_existing`, 96 `checked_m20`, nine `planned_expressible`, and four
+- [`catalog.json`](catalog.json): 138 dependency-ordered facts — 23
+  `checked_existing`, 102 `checked_m20`, nine `planned_expressible`, and four
   `blocked_by_language` — with exact source IDs, Peano statements where
   expressible, and blockers where not;
 - [`source-register.json`](source-register.json): pinned revisions, licenses,
@@ -13,7 +13,7 @@ arithmetic library. Start with:
   selected conservative Gödel-β factor-sequence and prefix-product design,
   its exact FTA endpoints, and its Peano proof dependency spine;
 - [`gcd-bezout-roadmap.md`](gcd-bezout-roadmap.md): the checked relational API,
-  prototype Euclidean-invariance ladder, bounded-induction construction, and
+  checked Euclidean-invariance ladder, bounded-induction construction, and
   balanced-natural Bézout gate;
 - [`foundational-sources.md`](foundational-sources.md): clean-room workflow and
   the cross-source dependency architecture;

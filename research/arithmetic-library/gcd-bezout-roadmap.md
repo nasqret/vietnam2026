@@ -3,8 +3,9 @@
 ## Status boundary
 
 The checked runtime currently exposes the relational gcd/coprimality API
-through uniqueness. It does **not** yet expose gcd existence, Euclidean-step
-invariance, Bézout, Gauss cancellation, or Euclid's lemma.
+through uniqueness, the zero-right gcd base case, and both directions of
+Euclidean-step invariance. It does **not** yet expose gcd existence, Bézout,
+Gauss cancellation, or Euclid's lemma.
 
 All relations below are authoring notation only. In particular,
 
@@ -25,19 +26,22 @@ The current checked layer contains:
 - `mul_eq_one_components`, `divisor_one`, and the two coprime-with-one laws;
 - `is_gcd_symm`, the two divisibility projections, and `is_gcd_greatest`;
 - `is_gcd_of_dvd` and the two `IsGCD(1)`/coprimality bridges; and
-- `multiple_antisymm` and `is_gcd_unique`.
+- `multiple_antisymm` and `is_gcd_unique`;
+- `factor_difference`, `divides_remainder`, and `divides_linear_step`; and
+- `is_gcd_zero_right`, `is_gcd_euclid_forward`, and
+  `is_gcd_euclid_backward`.
 
 The largest new certificate is `is_gcd_unique` at 600 proof nodes and depth
 51. Every entry replays constructively and checks from the empty context.
 
-## Euclidean invariance prototype
+## Checked Euclidean invariance
 
-A clean-room prototype has already produced closed, independently accepted
-certificates for the next arithmetic ladder. These results remain
-**prototype-only** until their scripts, catalog records, generated artifacts,
-and regression tests are admitted together.
+The runtime now contains closed, independently kernel-accepted certificates
+for the subtraction-free Euclidean ladder. Their authored scripts, catalog
+records, generated artifacts, and regression tests are admitted together as
+ordinary native library entries.
 
-| Candidate | Role | Expanded nodes |
+| Checked theorem | Role | Expanded nodes |
 |---|---|---:|
 | `is_gcd_zero_right` | base case `IsGCD(a,a,0)` | 45 |
 | `factor_difference` | from `c*u = c*v + r`, construct `c | r` | 250 |
@@ -140,7 +144,7 @@ the bridge then supplies the greatest-common-divisor clause.
 
 ## Admission gates
 
-1. Admit and mutation-test the Euclidean invariance ladder.
+1. **Complete:** admit and mutation-test the Euclidean invariance ladder.
 2. Land reviewed proof sharing or a fully verified reducer repair.
 3. Admit bounded gcd existence and its public wrapper.
 4. Prove the coefficient-update identity with an ordinary checked semiring

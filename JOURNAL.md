@@ -1155,3 +1155,33 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   deterministic 13,344-transition/1,692-session corpus was provenance-refreshed,
   and local browser candidate `2026-07-28k` has immutable application identity
   `a-c62e02aa4600`. Nothing was deployed.
+
+## 2026-07-28 — Native Euclidean gcd invariance
+
+- Extended the unchanged-kernel runtime from 119 to 125 checked theorems. The
+  six additions prove a subtraction-free factor-difference lemma, both
+  directions of divisibility transport across `a = b*q+r`, the `gcd(a,0)`
+  base case, and both directions of relational Euclidean gcd invariance.
+- Fresh replay and empty-context kernel checking pass for all six certificates,
+  with no classical `DNE`. Dependency-removal trials show every declared edge
+  is used; PA6-to-PA5 and hypothesis-index mutations are rejected. The two
+  Euclidean invariance certificates each have 586 nodes/depth 51 and require
+  neither a remainder bound nor a nonzero-divisor premise.
+- Expanded the synchronized research catalog to 138 nodes: 23 baseline
+  checked, 102 post-baseline checked, nine planned expressible, and four
+  language-blocked. The planned gcd-existence node now records the actual
+  bounded-induction route through division, the zero base case, and checked
+  Euclidean invariance rather than its obsolete divisibility-only sketch.
+- Relational gcd existence remains deliberately unadmitted. Its 90-node
+  dependency-curried prototype closes, but dependency substitution currently
+  corrupts the closed induction certificate. That engineering gate motivates
+  the next separately reviewed, conservatively erasable proof-sharing
+  milestone; it is not a new axiom and is not part of this arithmetic commit.
+- Regenerated the deterministic 13,344-transition/1,692-session corpus against
+  the 125-theorem source authority. Local browser candidate `2026-07-28l` has
+  immutable application identity `a-baf4cc52dad6`; nothing was deployed.
+- The complete Peano suite passes 1,054 tests on Python 3.10. A clean
+  warning-as-error Jupyter Book build passes over 35 sources, and 199 deep
+  links plus 45 session blocks containing 264 commands replay successfully.
+  Snapshot, catalog, corpus, vault, and application-manifest drift checks are
+  all green.

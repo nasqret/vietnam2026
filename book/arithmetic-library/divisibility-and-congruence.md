@@ -240,10 +240,10 @@ $$
 \end{array}
 $$
 
-All 69 entries in the current post-baseline foundational layer replay to
+All 90 entries in the current post-baseline general foundational layer replay to
 closed kernel-accepted certificates and fit the live `use` limits of 32,768
 nodes and depth 128. The quotient-remainder uniqueness certificate uses 1,442
-nodes and depth 47. The reconciled 119-entry snapshot still reaches its maximum
+nodes and depth 47. The reconciled 125-entry snapshot still reaches its maximum
 at the older modular capstone: 21,515 nodes and depth 66. These numbers are
 build artifacts, not new soundness assumptions.
 
@@ -300,6 +300,14 @@ Two checked bridges connect the theorem to divisibility:
 - `zero_remainder_implies_multiple` turns $n=mq+0$ into $m\mid n$;
 - `multiple_has_zero_remainder` packages a multiple of a nonzero divisor as a
   bounded division result with remainder zero.
+
+The checked Euclidean bridge is also subtraction-free. `factor_difference`
+removes a common multiple prefix, `divides_remainder` carries common divisors
+from $(a,b)$ to a remainder $r$ in $a=bq+r$, and `divides_linear_step` carries
+them back. Together with the base theorem `is_gcd_zero_right`, these yield the
+checked pair `is_gcd_euclid_forward` and `is_gcd_euclid_backward`. They prove
+gcd invariance for one division step; relational gcd existence and Bézout
+coefficients remain later milestones.
 
 These results are the foundation required by bounded divisor search and the
 Euclidean gcd layer; they are not a primitive computation service.

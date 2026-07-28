@@ -17,7 +17,7 @@ needs.
 | Modular congruence | balanced reflexivity and symmetry; additive and multiplicative compatibility | first two checked; transitivity/compatibility planned; fixed mod-five residue ladder checked |
 | Parity | even/odd dichotomy and arithmetic tables | planned and expressible |
 | Division | quotient-remainder existence, uniqueness, block separation, and zero-remainder/divisibility bridges | checked |
-| GCD/coprime | relational symmetry/projections/constructors, uniqueness, Bézout, Gauss cancellation | API through uniqueness checked; existence/Bézout/Gauss planned |
+| GCD/coprime | relational symmetry/projections/constructors, uniqueness, zero-right base, Euclidean invariance, Bézout, Gauss cancellation | API through uniqueness and both Euclidean-step directions checked; existence/Bézout/Gauss planned |
 | Primes | characterization, prime divisors, Euclid's lemma, infinitely many primes | `prime_two` checked; general spine planned and expressible |
 | Factorization | existence and uniqueness up to permutation | β representation selected; Peano proof spine pending; Lean companion checked |
 

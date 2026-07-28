@@ -17,13 +17,14 @@ $$
 \to \text{factorization}.
 $$
 
-The current candidate snapshot contains **119 replayed, closed, independently
-kernel-checked Peano theorems**. Eighty-four form the post-baseline foundational
+The current candidate snapshot contains **125 replayed, closed, independently
+kernel-checked Peano theorems**. Ninety form the post-baseline foundational
 layer: named equality congruences, additive cancellation, discrete order,
 multiplication cancellation and monotonicity, zero-sum and nonzero-product
 facts, divisibility closure, constructive non-divisibility, generic residue
 algebra, constructive quotient-remainder existence and uniqueness, and the
-relational gcd/coprimality API through gcd uniqueness. This layer includes
+relational gcd/coprimality API through gcd uniqueness, and both directions of
+Euclidean gcd invariance. This layer includes
 `prime_two`, the first checked instance of the fully expanded prime predicate.
 The reconciled upstream modular catalog contributes twelve
 more unique residue and fourth-power theorems; fourteen of its other records
@@ -33,14 +34,14 @@ Every current theorem fits the browser's ordinary `use` limit. The largest
 certificate, `mod5_fourth_power_one`, has 21,515 nodes and depth 66, below
 the 32,768-node/depth-128 import bound.
 
-That number is deliberately narrower than the 132-node research catalog: 23
-nodes are `checked_existing`, 96 are `checked_m20`, nine are
+That number is deliberately narrower than the 138-node research catalog: 23
+nodes are `checked_existing`, 102 are `checked_m20`, nine are
 `planned_expressible`, and four are `blocked_by_language`. Beyond
 `prime_two`, the catalog records candidate lemmas on modular congruence,
 gcd, coprimality, the general prime spine, Euclid's lemma, and prime
 factorization. A separate Lean 4 companion now checks full finite-list FTA
 existence and uniqueness up to permutation. It is cataloged as a companion,
-not counted among the 119 Peano theorems; those entries are not presented as
+not counted among the 125 Peano theorems; those entries are not presented as
 Peano-proved until a script and closed certificate pass the same kernel gate.
 
 ## How to read the status labels

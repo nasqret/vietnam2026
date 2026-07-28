@@ -601,7 +601,7 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   known held-out routes need 10/10/23/13 steps, so the 16-step cap also underspecifies
   `le_total`'s known route. Scaling the same curriculum to 4B would not test the intended
   hypothesis, so the conditional 4B comparison remains unlaunched. The next data contract must freeze the user's
-  current 119-entry library as a content-addressed successor authority and add induction, invariant, witness,
+  current 125-entry library as a content-addressed successor authority and add induction, invariant, witness,
   and lemma-composition curricula while retaining a sealed test set.
 
   The public-catalog local gate is green: 1,036 Peano tests; Lambda 360 tests plus 36 subtests; all
@@ -618,9 +618,9 @@ The theorem-ladder extension is tracked independently in
 [`PLAN/10_arithmetic_library.md`](10_arithmetic_library.md). Its first release
 keeps the kernel and object language fixed, expands divisibility and residue
 notions into ordinary formulas, and labels prime/factorization targets by
-their real dependencies. The reconciled runtime contains 119 unique checked
+their real dependencies. The reconciled runtime contains 125 unique checked
 theorems, including quotient-remainder existence/uniqueness and relational gcd
-uniqueness, and a
+uniqueness plus Euclidean-step invariance, and a
 conservative Gödel-β factorization design; a separate Lean companion checks
 full FTA, while Peano admission still requires gcd existence, Bézout, Euclid,
 and the encoded sequence/product proof spine.

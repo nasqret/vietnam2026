@@ -15,8 +15,13 @@ divisibility witnesses before the greatest-common-divisor clause.
 
 ## What is checked now
 
-The 119-theorem candidate includes a complete relational API through
-uniqueness:
+The 125-theorem runtime contains 23 baseline entries and 102 checked
+post-baseline entries. Ninety of the latter form the general foundational
+layer; the other twelve are the fixed modular capstone. The broader catalog
+has 138 nodes: those 125 checked entries, nine planned entries, and four
+blocked-by-language entries.
+
+The checked gcd layer includes a complete relational API through uniqueness:
 
 - symmetry and both input-divisibility projections;
 - extraction of the greatest-common-divisor clause;
@@ -26,7 +31,8 @@ uniqueness:
 - both directions between the expanded common-divisor definition of
   coprimality and $\operatorname{IsGCD}(1,a,b)$.
 
-All fifteen new certificates are constructive. The largest,
+All twenty-one gcd/coprimality and Euclidean-step certificates are
+constructive. The largest,
 `is_gcd_unique`, has 600 proof nodes and depth 51.
 
 Gcd **existence** is a different theorem and is not yet in `pa lib`.
@@ -47,19 +53,22 @@ forall c u v r.
   exists w. r = c * w
 ```
 
-An independently checked prototype proves this by induction on the two
-multipliers. It supports the following candidate ladder:
+The checked native theorem `factor_difference` proves this by induction on the
+two multipliers. It supports the following admitted ladder:
 
-| Candidate | Meaning | Expanded proof nodes |
+| Checked theorem | Meaning | Expanded proof nodes |
 |---|---|---:|
+| `is_gcd_zero_right` | base case $\operatorname{IsGCD}(a,a,0)$ | 45 |
 | `factor_difference` | remove a common multiple prefix | 250 |
 | `divides_remainder` | $c\mid a$ and $c\mid b$ imply $c\mid r$ | 378 |
 | `divides_linear_step` | $c\mid b$ and $c\mid r$ imply $c\mid bq+r$ | 194 |
 | `is_gcd_euclid_forward` | $\operatorname{IsGCD}(d,b,r)\to\operatorname{IsGCD}(d,a,b)$ | 586 |
 | `is_gcd_euclid_backward` | the converse direction | 586 |
 
-These metrics are research evidence, not library authority. Admission still
-requires the ordinary source, catalog, artifact, test, and documentation gate.
+Each entry replays from its declared earlier dependencies and its expanded
+certificate checks from the empty context. Gcd existence is still gated by
+proof composition; checking Euclidean invariance does not by itself provide an
+existence witness.
 
 ## A concrete strong-induction surrogate
 

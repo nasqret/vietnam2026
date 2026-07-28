@@ -18,7 +18,7 @@ PEANO_POLICY_ROWS ?= 10000
 # This path is a deletion target in `stage-peano`; command-line assignments
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
-override PEANOAPPID := a-c62e02aa4600
+override PEANOAPPID := a-baf4cc52dad6
 
 .PHONY: help book lean lean-fta lab-serve peano-serve peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \

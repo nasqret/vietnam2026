@@ -22,7 +22,8 @@ hashes, node counts, and depths make the import auditable. After reconciliation
 with the M20 [[theorem-ladder]], fourteen records overlap exactly and twelve
 were new, yielding the earlier 63-theorem content-addressed runtime snapshot.
 The subsequent native division/order extension yields a new 104-theorem root;
-the gcd/coprimality API yields a further 119-theorem root. Each must receive a
+the gcd/coprimality API yields a further 119-theorem root, and checked
+Euclidean gcd invariance yields the current 125-theorem root. Each must receive a
 distinct registered policy-library identity. Model-v1
 remains frozen, and no model may silently inherit either mutable catalog.
 

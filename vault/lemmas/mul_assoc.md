@@ -22,6 +22,8 @@ forall n m k. (n * m) * k = n * (m * k)
 - [[multiple_mul_right]]
 - [[multiple_trans]]
 - [[multiple_antisymm]]
+- [[divides_remainder]]
+- [[divides_linear_step]]
 - [[square_decomp]]
 - [[fourth_power_regroup]]
 - [[mod5_square_residue_one]]

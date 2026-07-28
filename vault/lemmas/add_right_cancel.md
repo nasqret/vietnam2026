@@ -22,6 +22,7 @@ forall a b c. a + c = b + c -> a = b
 - [[add_left_cancel]]
 - [[add_le_cancel_right]]
 - [[mul_left_cancel_nonzero]]
+- [[factor_difference]]
 
 ## Verification record
 

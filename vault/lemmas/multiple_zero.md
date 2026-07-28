@@ -19,7 +19,7 @@ forall a. exists q. 0 = a * q
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[is_gcd_zero_right]]
 
 ## Verification record
 

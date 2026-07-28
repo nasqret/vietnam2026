@@ -27,6 +27,7 @@ forall n. 0 + n = n
 - [[le_eq_or_lt]]
 - [[division_remainder_succ]]
 - [[division_remainder_unique]]
+- [[factor_difference]]
 - [[dvd_to_mod_zero]]
 
 ## Verification record

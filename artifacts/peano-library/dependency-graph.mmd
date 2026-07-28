@@ -86,14 +86,20 @@ flowchart TD
   divisor_le_nonzero[divisor_le_nonzero]
   divisor_one[divisor_one]
   multiple_antisymm[multiple_antisymm]
+  factor_difference[factor_difference]
+  divides_remainder[divides_remainder]
+  divides_linear_step[divides_linear_step]
   not_multiple_pointwise[not_multiple_pointwise]
   not_multiple_from_pointwise[not_multiple_from_pointwise]
+  is_gcd_zero_right[is_gcd_zero_right]
   is_gcd_symm[is_gcd_symm]
   is_gcd_dvd_left[is_gcd_dvd_left]
   is_gcd_dvd_right[is_gcd_dvd_right]
   is_gcd_greatest[is_gcd_greatest]
   is_gcd_of_dvd[is_gcd_of_dvd]
   is_gcd_unique[is_gcd_unique]
+  is_gcd_euclid_forward[is_gcd_euclid_forward]
+  is_gcd_euclid_backward[is_gcd_euclid_backward]
   coprime_symm[coprime_symm]
   coprime_one_right[coprime_one_right]
   coprime_one_left[coprime_one_left]
@@ -220,8 +226,23 @@ flowchart TD
   mul_one --> multiple_antisymm
   mul_left_cancel_nonzero --> multiple_antisymm
   mul_eq_one_components --> multiple_antisymm
+  zero_add --> factor_difference
+  add_eq_zero_right --> factor_difference
+  add_right_cancel --> factor_difference
+  add_assoc --> factor_difference
+  add_comm --> factor_difference
+  mul_assoc --> divides_remainder
+  factor_difference --> divides_remainder
+  mul_assoc --> divides_linear_step
+  mul_add --> divides_linear_step
+  multiple_refl --> is_gcd_zero_right
+  multiple_zero --> is_gcd_zero_right
   multiple_refl --> is_gcd_of_dvd
   multiple_antisymm --> is_gcd_unique
+  divides_remainder --> is_gcd_euclid_forward
+  divides_linear_step --> is_gcd_euclid_forward
+  divides_remainder --> is_gcd_euclid_backward
+  divides_linear_step --> is_gcd_euclid_backward
   divisor_one --> coprime_one_right
   divisor_one --> coprime_one_left
   one_multiple --> coprime_to_is_gcd_one

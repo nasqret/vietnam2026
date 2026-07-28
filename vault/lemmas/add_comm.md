@@ -28,6 +28,7 @@ forall n m. n + m = m + n
 - [[division_block_upper]]
 - [[positive_quotient_gap_impossible]]
 - [[add_eq_zero_left]]
+- [[factor_difference]]
 - [[add_residue_lift]]
 - [[mod5_square_residue_two]]
 

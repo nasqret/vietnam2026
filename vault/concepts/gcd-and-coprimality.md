@@ -11,6 +11,13 @@ Existence will follow the Euclidean algorithm. Uniqueness is already checked:
 relation's basic API. [[is_gcd_of_dvd]] handles the case in which one input
 divides the other.
 
+The checked Euclidean step begins at [[is_gcd_zero_right]]. The
+subtraction-free bridge [[factor_difference]] supports
+[[divides_remainder]] and [[divides_linear_step]], which in turn establish
+[[is_gcd_euclid_forward]] and [[is_gcd_euclid_backward]]. These theorems show
+that a division step preserves the relational gcd; they do not yet construct a
+gcd for every pair.
+
 Coprimality means that one satisfies this relation. Bézout coefficients can be
 encoded by four naturals:
 
@@ -27,7 +34,7 @@ The checked unit bridge consists of [[mul_eq_one_components]], [[divisor_one]],
 expanded common-divisor definition of coprimality and `IsGCD(1,a,b)`.
 
 The [native gcd/Bézout roadmap](../../research/arithmetic-library/gcd-bezout-roadmap.md)
-records the prototype Euclidean-invariance certificates, the bounded
+records the checked Euclidean-invariance certificates, the bounded
 formula-specific induction route to existence, and the current proof-sharing
 gate.
 
