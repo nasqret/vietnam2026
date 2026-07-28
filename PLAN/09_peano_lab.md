@@ -532,9 +532,10 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       without model/data/source/decode/environment/checkpoint hashes is not an accepted result.
 - [x] Compatibility-check the separately maintained external library candidate against the current
       kernel and import path without copying its private source or identifying metadata here.
-- [ ] Choose the explicit external-library visibility boundary: either authorize publication into
-      the public Peano catalog, or keep a content-addressed external model-v2 snapshot. Do not copy
-      non-public source into the public branch implicitly.
+- [x] Choose the explicit external-library visibility boundary. The owner authorized publication;
+      26 dependency-ordered entries are integrated with exact source commit/catalog-hash/license
+      provenance, deterministic cold replay, empty-context kernel checks, and a bounded live-use
+      capstone regression. The public catalog now has 49 entries.
 - [ ] Register model-v2 with a library snapshot hash over names, canonical statements,
       dependencies, source/script/certificate hashes, nodes, and depth; bind it through prompt,
       rows, attestation, training manifest, evaluator, and WMI requests. Freeze sealed targets
@@ -544,10 +545,10 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
 - [ ] All milestone-wide tests and documentation gates are green, the kernel has no semantic diff,
       and no heavy local or remote job remains running before the milestone is called complete.
 
-- **Current verification (2026-07-28, in progress):** the post-result complete Peano suite reports
-  1,033 passes, Lambda Lab reports 360 tests plus 36 subtests, the book builds with warnings as
+- **Current verification (2026-07-28, in progress):** the public-catalog complete Peano suite reports
+  1,036 passes, Lambda Lab reports 360 tests plus 36 subtests, all 27 book sources build with warnings as
   errors, all 193 documented links and 34 command sessions replay, and local application staging is green as
-  `2026-07-28f` / `a-69aa3b753965`. A lightweight arm64 audit measured approximately
+  `2026-07-28g` / `a-3ea7b7142aa0`. The 67-note vault resolves all 414 wikilinks. A lightweight arm64 audit measured approximately
   12,538 quiet and 5,537 traced trivial proofs/second before the latest trace-copy optimization;
   all 18 pilot scripts had traced/quiet parity. The fixed scaled dataset digest is
   `1fa98caa2e0528d39c1b9003c4ee153dfbe633cb1ee4505e8f5b28eb837465dd`.
@@ -598,13 +599,16 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   known held-out routes need 10/10/23/13 steps, so the 16-step cap also underspecifies
   `le_total`'s known route. Scaling the same curriculum to 4B would not test the intended
   hypothesis, so the conditional 4B comparison remains unlaunched. The next data contract must freeze the user's
-  lemma library as a content-addressed `model-v2` authority and add induction, invariant, witness,
+  49-entry public library as a content-addressed `model-v2` authority and add induction, invariant, witness,
   and lemma-composition curricula while retaining a sealed test set.
 
-  The result-recording gate is green: 1,033 Peano tests; Lambda 360 tests plus 36 subtests; all 27
-  book sources under warning-as-error; 193 deep links and 170 documented commands; and 412/412
-  vault wikilinks. The kernel checker has no diff and remains 234 lines. M19 stays open for the
-  model-v2 library decision, curriculum, search, baselines, and registered comparison.
+  The public-catalog local gate is green: 1,036 Peano tests; Lambda 360 tests plus 36 subtests; all
+  27 book sources under warning-as-error; 193 deep links and 170 documented commands; and 414/414
+  vault wikilinks. The kernel checker has no diff and remains 234 lines. Direct in-app Pyodide
+  latency could not be measured because no browser was attached; automated worker boot remains
+  green. The isolated all-ladder acceptance smoke reports 803 unique transitions in 98 sessions
+  with 49 authored-script kernel QEDs. M19 stays open for the model-v2 curriculum, search,
+  baselines, and registered comparison.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

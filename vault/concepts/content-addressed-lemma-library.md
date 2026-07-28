@@ -16,10 +16,10 @@ reuse a name for different statements. The [[trusted-kernel]] still protects sou
 scientific identity of a trained policy would be ambiguous. Adding or changing any lemma therefore
 creates `model-v3`, never a silent widening of `model-v2`.
 
-A separately maintained candidate library passed its private compatibility gate against Peano Lab.
-Neither its source nor identifying validation metadata enters the public repository until the owner
-chooses a visibility boundary. A private snapshot can still be content-addressed for training
-without silently widening the public theorem catalog.
+The owner authorized the compatibility-checked candidate for publication. Its 26 entries now extend
+Peano Lab's public [[theorem-ladder]] from 23 to 49 items. The retained source commit, catalog hash,
+MIT notice, proof hashes, node counts, and depths make the import auditable. Model-v1 remains frozen;
+model-v2 must bind this new exact snapshot rather than silently inheriting a mutable catalog.
 
 Library visibility and benchmark visibility are different. If a theorem is importable, closing its
 exact statement with `use`, `apply`, and `exact` measures retrieval and application, not discovery.

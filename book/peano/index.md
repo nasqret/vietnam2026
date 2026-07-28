@@ -42,8 +42,9 @@ commutativity, a source-level `symm_all` tactical walkthrough, and a numerical-n
 Every `pa>` block and browser deep link in this part is replayed through the real driver during the
 book gate; prose examples do not get a private, easier semantics.
 
-The full M7 library is executable too. {doc}`The checked theorem ladder <ladder>` follows twenty
-scripted entries through order totality and the zero-product capstone, explains how theorem reuse is
+The full library is executable too. {doc}`The checked theorem ladder <ladder>` follows the original
+23 scripted entries through order totality and the zero-product core capstone, then a public
+26-entry modular-arithmetic extension to the fourth-power modulo-five capstone. It explains how theorem reuse is
 cut-eliminated outside the trusted kernel, and links each statement to the browser and Lean 4
 cross-checking surface. M9 then turns the same checked interactions into a reproducible
 [proof-trace corpus](https://github.com/nasqret/vietnam2026/tree/peano-lab/peano-lab/corpus) and fixes
@@ -54,11 +55,11 @@ polished account.
 
 M19 is the authorized continuation of that deliberately frozen M9 protocol.  The
 {doc}`policy-training chapter <training-a-peano-policy>` explains the compact headless adapter and
-the planned small-model experiment.  Its first attested release contains 2,522 independently
+the small-model experiment. Its first attested release contains 2,522 independently
 kernel-checked roots and exactly 10,000 next-tactic rows, split by genealogy, canonical formula,
-and exact policy prompt and reproduced byte-for-byte from raw traces.  Model training and learned
-evaluation results remain pending until their manifests, scheduler logs, checkpoints, and
-kernel-judged reports actually exist.
+and exact policy prompt and reproduced byte-for-byte from raw traces. The first WMI Qwen3-1.7B
+pilot completed, scoring 0/4 at pass@4 on the frozen induction/order benchmark and 1/8 on one fresh
+direct-witness probe. The chapter treats this as a curriculum diagnosis, not broad proving ability.
 
 M11 extends that core with three ordinary checked entries—`one_mul`, `mul_one`, and `add_mul`—to
 complete the commutative-semiring basis for certificate-producing arithmetic normalization. M12's

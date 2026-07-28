@@ -1,0 +1,423 @@
+{
+  "budgets": {
+    "current": {
+      "certificate_nodes": 4096,
+      "global_depth": 256,
+      "global_nodes": 100000,
+      "partial_nodes": 32768,
+      "proof_depth": 128
+    },
+    "recommended_certificate_nodes": 32768
+  },
+  "catalog_sha256": "91c88c1f3311cc0dc540671b169c270758ff6211e77716ed07bd3dd4f55c8380",
+  "deterministic_replay": true,
+  "extended_lemma_count": 3,
+  "lemma_count": 26,
+  "lemmas": [
+    {
+      "certificate_sha256": "2304f77f5c8a2d7e6dc8b1dc65152b0ec98202f49b57d582ce3cbf92a09969b1",
+      "current_live_use": true,
+      "dependencies": [],
+      "kernel_checked": true,
+      "layer": "01-multiples",
+      "name": "multiple_zero",
+      "proof_depth": 6,
+      "proof_nodes": 7,
+      "statement": "∀ x. ∃ y. 0 = x · y",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "f13d842b0584e0b952c37fd377679aa97578a0ea9e2db6aeb432a92062bf816a",
+      "current_live_use": true,
+      "dependencies": [
+        "one_mul"
+      ],
+      "kernel_checked": true,
+      "layer": "01-multiples",
+      "name": "one_multiple",
+      "proof_depth": 13,
+      "proof_nodes": 30,
+      "statement": "∀ x. ∃ y. x = 1 · y",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "6d32a7d69a08b899a267f8479ea0fdea6ec0743dcc444eceacc660655faa18c7",
+      "current_live_use": true,
+      "dependencies": [
+        "mul_one"
+      ],
+      "kernel_checked": true,
+      "layer": "01-multiples",
+      "name": "multiple_refl",
+      "proof_depth": 16,
+      "proof_nodes": 33,
+      "statement": "∀ x. ∃ y. x = x · y",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "0d9680cb59bd8de12c30395323c3205d72c0d033c1df5fa3c145e56c59379051",
+      "current_live_use": true,
+      "dependencies": [
+        "mul_add"
+      ],
+      "kernel_checked": true,
+      "layer": "01-multiples",
+      "name": "multiple_add",
+      "proof_depth": 32,
+      "proof_nodes": 87,
+      "statement": "∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → (∃ n. z = x · n) → ∃ n. y + z = x · n",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "44727f95eb71cbfc4f817d6e04cc6b4cc086ecd8e5aa5c2fe57780c5c17b4942",
+      "current_live_use": true,
+      "dependencies": [
+        "mul_assoc"
+      ],
+      "kernel_checked": true,
+      "layer": "01-multiples",
+      "name": "multiple_mul_right",
+      "proof_depth": 37,
+      "proof_nodes": 113,
+      "statement": "∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → ∃ n. y · z = x · n",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "e6f2fe8397051f5cb29f1040d0118ab16bdf4e7c20c89d6233946f5099ff8bfd",
+      "current_live_use": true,
+      "dependencies": [
+        "mul_comm",
+        "multiple_mul_right"
+      ],
+      "kernel_checked": true,
+      "layer": "01-multiples",
+      "name": "multiple_mul_left",
+      "proof_depth": 44,
+      "proof_nodes": 337,
+      "statement": "∀ x. ∀ y. ∀ z. (∃ n. y = x · n) → ∃ n. z · y = x · n",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "1f8eb65111d530764e49bff67cb99d03ebd646231274f81a0fb2f16988b62e00",
+      "current_live_use": true,
+      "dependencies": [
+        "mul_assoc"
+      ],
+      "kernel_checked": true,
+      "layer": "01-multiples",
+      "name": "multiple_trans",
+      "proof_depth": 40,
+      "proof_nodes": 119,
+      "statement": "∀ x. ∀ y. ∀ z. (∃ n. z = x · n) → (∃ n. x = y · n) → ∃ n. z = y · n",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "fd88abf61d9cdcd410d8e4ff98239472b0d1db8ced09f82a37f5f47c48e66b63",
+      "current_live_use": true,
+      "dependencies": [],
+      "kernel_checked": true,
+      "layer": "02-logic",
+      "name": "not_multiple_pointwise",
+      "proof_depth": 8,
+      "proof_nodes": 9,
+      "statement": "∀ x. ∀ y. ¬(∃ z. y = x · z) → ∀ z. ¬y = x · z",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "53691b6629a86f8dab8a80291ed4cd4172b1fe1ad0a3cf8dfa4a91d4de54c370",
+      "current_live_use": true,
+      "dependencies": [],
+      "kernel_checked": true,
+      "layer": "02-logic",
+      "name": "not_multiple_from_pointwise",
+      "proof_depth": 9,
+      "proof_nodes": 13,
+      "statement": "∀ x. ∀ y. (∀ z. ¬y = x · z) → ¬(∃ z. y = x · z)",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "fc73628e30dfb2fa8040570d0619bb1d60ed3b62e6d21726657abad3dd294aa4",
+      "current_live_use": true,
+      "dependencies": [
+        "add_assoc",
+        "mul_add"
+      ],
+      "kernel_checked": true,
+      "layer": "03-residue-algebra",
+      "name": "add_residue",
+      "proof_depth": 31,
+      "proof_nodes": 117,
+      "statement": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. n = x · z + m → x · y + n = x · (y + z) + m",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "78a448012fc683f202cd4dcb4b0d63fe0525af8f2b1139e85ecf179cca4a8343",
+      "current_live_use": true,
+      "dependencies": [
+        "add_comm",
+        "add_assoc",
+        "mul_add"
+      ],
+      "kernel_checked": true,
+      "layer": "03-residue-algebra",
+      "name": "add_residue_lift",
+      "proof_depth": 42,
+      "proof_nodes": 409,
+      "statement": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. ∀ i. ∀ j. y = x · m + k → n + k = x · i + j → x · z + n + y = x · (z + m + i) + j",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "8043a7baa298338a8638908e531df88c8e3a32bfefd5a92bf24d1cbe41492fa0",
+      "current_live_use": true,
+      "dependencies": [
+        "add_assoc",
+        "mul_comm",
+        "mul_add",
+        "add_mul",
+        "mul_assoc"
+      ],
+      "kernel_checked": true,
+      "layer": "03-residue-algebra",
+      "name": "square_decomp",
+      "proof_depth": 54,
+      "proof_nodes": 1485,
+      "statement": "∀ x. ∀ y. ∀ z. ∀ n. y = x · z + n → y · y = x · (z · y + n · z) + n · n",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "4d430d58ea7933c37f66bf2b2803c9f50a8d64ed0b364bb6cccddac343685494",
+      "current_live_use": true,
+      "dependencies": [
+        "square_decomp",
+        "add_residue"
+      ],
+      "kernel_checked": true,
+      "layer": "03-residue-algebra",
+      "name": "square_residue_lift",
+      "proof_depth": 58,
+      "proof_nodes": 1600,
+      "statement": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. y = x · z + n → n · n = x · m + k → y · y = x · (z · y + n · z + m) + k",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "8059ba5f7eaadd6627438f278d685f7aeb4bc2bcca3a785f59622a8a7b4f248f",
+      "current_live_use": true,
+      "dependencies": [
+        "square_residue_lift"
+      ],
+      "kernel_checked": true,
+      "layer": "03-residue-algebra",
+      "name": "square_residue_witness",
+      "proof_depth": 59,
+      "proof_nodes": 1601,
+      "statement": "∀ x. ∀ y. ∀ z. ∀ n. ∀ m. ∀ k. y = x · z + n → n · n = x · m + k → ∃ i. y · y = x · i + k",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "2f92e5d93581b2c694a1316ec1a55d0db6d303731dbe18f2de67c16b597e193e",
+      "current_live_use": true,
+      "dependencies": [
+        "mul_assoc"
+      ],
+      "kernel_checked": true,
+      "layer": "03-residue-algebra",
+      "name": "fourth_power_regroup",
+      "proof_depth": 31,
+      "proof_nodes": 104,
+      "statement": "∀ x. x · x · x · x = x · x · (x · x)",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "f89dfde45b608505e6692fab7dda1f6c0254337ba790ad400b3125c45f0ab276",
+      "current_live_use": true,
+      "dependencies": [],
+      "kernel_checked": true,
+      "layer": "04-mod-five",
+      "name": "mod5_residue_complete",
+      "proof_depth": 28,
+      "proof_nodes": 248,
+      "statement": "∀ x. ∃ y. x = 5 · y ∨ x = 5 · y + 1 ∨ x = 5 · y + 2 ∨ x = 5 · y + 3 ∨ x = 5 · y + 4",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "6f69a49e7731a4faccedf788c4dc2fdca54a2ae220afb22eb8a325bc58040d40",
+      "current_live_use": true,
+      "dependencies": [
+        "mod5_residue_complete"
+      ],
+      "kernel_checked": true,
+      "layer": "04-mod-five",
+      "name": "mod5_nonzero_residue_cases",
+      "proof_depth": 32,
+      "proof_nodes": 282,
+      "statement": "∀ x. ¬(∃ y. x = 5 · y) → ∃ y. x = 5 · y + 1 ∨ x = 5 · y + 2 ∨ x = 5 · y + 3 ∨ x = 5 · y + 4",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "b9da431b319129847548f5a1f69c6e9dcd90fad9ddadfd17f59b95955594248c",
+      "current_live_use": true,
+      "dependencies": [
+        "add_assoc",
+        "mul_add",
+        "mul_assoc",
+        "mul_succ_left"
+      ],
+      "kernel_checked": true,
+      "layer": "04-mod-five",
+      "name": "mod5_square_residue_one",
+      "proof_depth": 38,
+      "proof_nodes": 416,
+      "statement": "∀ x. ∀ y. x = 5 · y + 1 → x · x = 5 · (y · x + y) + 1",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "c698f6966c9bc73daaaa1d51fb4117e3d19656b20e61387adf2fcaf4a84df9c6",
+      "current_live_use": true,
+      "dependencies": [
+        "add_comm",
+        "add_assoc",
+        "mul_add",
+        "mul_assoc",
+        "mul_succ_left"
+      ],
+      "kernel_checked": true,
+      "layer": "04-mod-five",
+      "name": "mod5_square_residue_two",
+      "proof_depth": 54,
+      "proof_nodes": 1002,
+      "statement": "∀ x. ∀ y. x = 5 · y + 2 → x · x = 5 · (y · x + y + y) + 4",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "ec510796c960f02d480a3ec7a481d1dee5eaffe681bf159f90ffe81b1ce8303e",
+      "current_live_use": true,
+      "dependencies": [
+        "square_residue_lift"
+      ],
+      "kernel_checked": true,
+      "layer": "04-mod-five",
+      "name": "mod5_square_residue_three",
+      "proof_depth": 53,
+      "proof_nodes": 1757,
+      "statement": "∀ x. ∀ y. x = 5 · y + 3 → x · x = 5 · (y · x + 3 · y + 1) + 4",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "e1b0b3cfde85c1b773fe50696372fe7df44279ad6fc3ead3b237c1cbde801689",
+      "current_live_use": true,
+      "dependencies": [
+        "square_residue_lift"
+      ],
+      "kernel_checked": true,
+      "layer": "04-mod-five",
+      "name": "mod5_square_residue_four",
+      "proof_depth": 53,
+      "proof_nodes": 1855,
+      "statement": "∀ x. ∀ y. x = 5 · y + 4 → x · x = 5 · (y · x + 4 · y + 3) + 1",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "ade006671bec51ae4ebdd2cc5155795e35cd791a61b6bd8bdda6c15046ea92a8",
+      "current_live_use": true,
+      "dependencies": [
+        "mod5_square_residue_one",
+        "mul_assoc"
+      ],
+      "kernel_checked": true,
+      "layer": "04-mod-five",
+      "name": "mod5_fourth_power_residue_one",
+      "proof_depth": 44,
+      "proof_nodes": 1343,
+      "statement": "∀ x. ∃ y. (5 · x + 1) · (5 · x + 1) · (5 · x + 1) · (5 · x + 1) = 5 · y + 1",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "2a0ae7eb5da86690b59c64140afa0e11d063a91c35de2563a53106dc5fe7b1bd",
+      "current_live_use": true,
+      "dependencies": [
+        "mod5_square_residue_two",
+        "mod5_square_residue_four",
+        "mul_assoc"
+      ],
+      "kernel_checked": true,
+      "layer": "04-mod-five",
+      "name": "mod5_fourth_power_residue_two",
+      "proof_depth": 61,
+      "proof_nodes": 3954,
+      "statement": "∀ x. ∃ y. (5 · x + 2) · (5 · x + 2) · (5 · x + 2) · (5 · x + 2) = 5 · y + 1",
+      "use_tier": "live"
+    },
+    {
+      "certificate_sha256": "e3e6343ac9e85d3d26e3aa8c00d6f5020482356116f89bd2aa24df1b99aaec84",
+      "current_live_use": false,
+      "dependencies": [
+        "mod5_square_residue_three",
+        "mod5_square_residue_four",
+        "mul_assoc"
+      ],
+      "kernel_checked": true,
+      "layer": "04-mod-five",
+      "name": "mod5_fourth_power_residue_three",
+      "proof_depth": 60,
+      "proof_nodes": 5464,
+      "statement": "∀ x. ∃ y. (5 · x + 3) · (5 · x + 3) · (5 · x + 3) · (5 · x + 3) = 5 · y + 1",
+      "use_tier": "extended"
+    },
+    {
+      "certificate_sha256": "0280078bd8dcabdabee29adb105b2b9e2a1dc98990509f6b1cee3b3181518534",
+      "current_live_use": false,
+      "dependencies": [
+        "mod5_square_residue_four",
+        "mod5_square_residue_one",
+        "mul_assoc"
+      ],
+      "kernel_checked": true,
+      "layer": "04-mod-five",
+      "name": "mod5_fourth_power_residue_four",
+      "proof_depth": 59,
+      "proof_nodes": 4221,
+      "statement": "∀ x. ∃ y. (5 · x + 4) · (5 · x + 4) · (5 · x + 4) · (5 · x + 4) = 5 · y + 1",
+      "use_tier": "extended"
+    },
+    {
+      "certificate_sha256": "8812b0a560d29d6713dac21ad1a5e0a060aca4306b4f7a295c68297adce4817f",
+      "current_live_use": false,
+      "dependencies": [
+        "mod5_residue_complete",
+        "square_residue_lift",
+        "mul_assoc"
+      ],
+      "kernel_checked": true,
+      "layer": "05-capstone",
+      "name": "mod5_fourth_power_one",
+      "proof_depth": 66,
+      "proof_nodes": 21515,
+      "statement": "∀ x. ¬(∃ y. x = 5 · y) → ∃ y. x · x · x · x = 5 · y + 1",
+      "use_tier": "extended"
+    }
+  ],
+  "live_lemma_count": 23,
+  "max_proof_depth": 66,
+  "max_proof_nodes": 21515,
+  "schema": 2,
+  "total_proof_nodes": 48121,
+  "upstream": {
+    "api_files": {
+      "peano-lab/py/peano_lab/engine/proof_reduction.py": "715e823a811f34bb13d20ecc97e52a9564b8057e236703cb7f4fd804936bdf61",
+      "peano-lab/py/peano_lab/engine/tactics.py": "d56de96482cd0a5e49249f23ecf8e64d570f4d3f1b1e386faf61a64b4a3f4e83",
+      "peano-lab/py/peano_lab/kernel/checker.py": "83323380e25124f2be56b74ea28b76bb3cc422c853a8797df68320edd1a18d92",
+      "peano-lab/py/peano_lab/kernel/formulas.py": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645",
+      "peano-lab/py/peano_lab/kernel/terms.py": "8f08e5843c92a68d2a4802615dc9417f7ca5c9bc3584660b8271028da6e0b94a",
+      "peano-lab/py/peano_lab/library/lean.py": "7ff129acb1ec8852e3cb1ab2ffe799d21a61535e28dfe16c5319c1d3ee20b167",
+      "peano-lab/py/peano_lab/library/theorems.py": "0f4c24befb30ff69213b6bdf69b348137218cb3fc857e4b08db3d4d441d2fbf7",
+      "peano-lab/py/peano_lab/ui/data_library.py": "17f74e96f544979e6885a434d02785d8c520967ee3dc247de1e5fb17c1177274",
+      "peano-lab/py/peano_lab/ui/prove.py": "b7803ef36f8064aac18e8d8e14e18b0306e7a66e9aae1511609f11f7a7ac37c0"
+    },
+    "api_fingerprint": "e795008fdda0520109942e485558de93f6d692265696fb6d07acf5494fe293e2",
+    "branch": "",
+    "dirty": false,
+    "pinned_revision": "bc2e272908dd649befce8dc31b2369289f1ca641",
+    "revision": "bc2e272908dd649befce8dc31b2369289f1ca641",
+    "revision_matches_pin": true
+  }
+}

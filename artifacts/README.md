@@ -163,3 +163,18 @@ ordinary exported proof. It is not trusted model output: repository tests replay
 `model-v1` authority and require another independent original-target kernel check. The artifact
 therefore records a limited in-distribution success, not a broad PA prover; attribution to
 fine-tuning awaits the pretrained-base baseline.
+
+## Public modular-arithmetic catalog
+
+[`peano-library/mod5-source-validation-report.json`](peano-library/mod5-source-validation-report.json)
+is the unaltered validation report for the 26 theorem specifications imported into Peano Lab's
+public checked catalog. It records source catalog hash
+`91c88c1f3311cc0dc540671b169c270758ff6211e77716ed07bd3dd4f55c8380`, deterministic replay,
+empty-context kernel acceptance, certificate hashes, and a 21,515-node/depth-66 maximum. The source
+revision and exact MIT notice are preserved in [`peano-library/NOTICE.md`](peano-library/NOTICE.md).
+
+The report predates the public integration and therefore marks three certificates as exceeding the
+then-current 4,096-node `use` ceiling. The public catalog raises only that untrusted import resource
+limit to 32,768; no kernel rule changes. Repository regressions cold-replay all 26 certificates
+twice, match every retained hash and metric, reject a mutated capstone target, and exercise the
+short live `use`/`apply`/`exact` route.

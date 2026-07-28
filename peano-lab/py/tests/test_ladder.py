@@ -1,4 +1,4 @@
-"""M7 theorem ladder: every script ends as a closed checked certificate."""
+"""Public theorem ladder: every script ends as a closed checked certificate."""
 
 from __future__ import annotations
 
@@ -43,6 +43,32 @@ EXPECTED_NAMES = (
     "le_total",
     "add_eq_zero_right",
     "mul_eq_zero",
+    "multiple_zero",
+    "one_multiple",
+    "multiple_refl",
+    "multiple_add",
+    "multiple_mul_right",
+    "multiple_mul_left",
+    "multiple_trans",
+    "not_multiple_pointwise",
+    "not_multiple_from_pointwise",
+    "add_residue",
+    "add_residue_lift",
+    "square_decomp",
+    "square_residue_lift",
+    "square_residue_witness",
+    "fourth_power_regroup",
+    "mod5_residue_complete",
+    "mod5_nonzero_residue_cases",
+    "mod5_square_residue_one",
+    "mod5_square_residue_two",
+    "mod5_square_residue_three",
+    "mod5_square_residue_four",
+    "mod5_fourth_power_residue_one",
+    "mod5_fourth_power_residue_two",
+    "mod5_fourth_power_residue_three",
+    "mod5_fourth_power_residue_four",
+    "mod5_fourth_power_one",
 )
 
 
@@ -84,7 +110,7 @@ def test_every_script_replays_and_final_certificate_checks_original_statement() 
     assert all(check((), item.certificate, item.formula) for item in checked)
 
 
-def test_capstone_is_the_required_zero_product_theorem() -> None:
+def test_core_capstone_is_the_required_zero_product_theorem() -> None:
     capstone = replay("mul_eq_zero")
     expected, names = parse_formula_with_names(
         "forall n m. n * m = 0 -> n = 0 \\/ m = 0"

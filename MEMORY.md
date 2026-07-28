@@ -207,10 +207,12 @@
   uses, and only 16/25 tactic heads, so model-v1 is an easy-schema baseline rather than a useful
   induction prover. The Helios ARM lock is never reused.
 
-  A separately maintained candidate lemma library was compatibility-tested against this checkout.
-  Its source and identifying metadata remain outside the public repository. It can become a
-  content-addressed model-v2 foundation only after an explicit visibility decision; any theorem
-  imported from it becomes a retrieval/application target rather than a sealed benchmark.
+  The owner authorized the compatibility-tested 26-lemma candidate for publication. It now extends
+  the checked catalog to 49 entries with source commit, catalog hash, exact MIT notice, deterministic
+  cold replay, empty-context kernel checks, and a 21,515-node/depth-66 capstone. The kernel is
+  unchanged; only the untrusted `use` import ceiling rises to 32,768. Model-v1 stays frozen. The
+  public snapshot becomes model-v2's retrieval foundation, while every imported exact theorem is a
+  retrieval/application target rather than a sealed benchmark.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
@@ -253,7 +255,8 @@
   delivery remains blocked on administrator-managed cache headers, while M17 is published to
   staging. The implementation, checked corpus,
   construction book, Obsidian knowledge base, kernel-judged evaluation protocol, live checked-
-  theorem reuse, 23-entry semiring ladder, certificate-producing `ring`, and bounded checked
+  theorem reuse, 49-entry checked ladder (23-entry core plus 26 public modular-arithmetic lemmas),
+  certificate-producing `ring`, and bounded checked
   `norm_num` teaching surface are present. The odd-square induction closes through explicit
   `trans`/`rewrite` structure, while concrete coefficients can now be certified without obscuring
   the independent final check. M19's headless runner, first 10,000-row checked corpus, and policy
@@ -278,3 +281,8 @@
   Lambda 360 tests plus 36 subtests, a clean 27-source warning-as-error book build, 193 deep links
   and 170 documented commands replayed, and 412/412 Obsidian wikilinks resolved. The remaining M19
   work is the model-v2 curriculum/search experiment, not repair of this recorded result.
+- M19 public-catalog local gate on 2026-07-28: 26 source-exact modular lemmas extend the ladder to
+  49 entries; 1,036 Peano tests, Lambda 360 plus 36 subtests, all 27 book sources, 193 deep links,
+  170 commands, and 414/414 vault wikilinks pass. Local browser candidate `2026-07-28g` has
+  application identity `a-3ea7b7142aa0`; automated worker boot passes, direct in-app Pyodide
+  latency remains unmeasured, and production is untouched.

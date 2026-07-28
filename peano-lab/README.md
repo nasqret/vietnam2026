@@ -76,6 +76,7 @@ kb de-bruijn-criterion
 pa tutorial add_comm
 pa tutorial norm_num
 pa lib mul_eq_zero
+pa lib mod5_fourth_power_one
 pa lean add_comm
 ```
 
@@ -94,6 +95,21 @@ qed
 `use` does not ask the kernel to trust a theorem name. It inserts the theorem's closed certificate
 as a local cut; surface finalization contracts that cut and independently checks the resulting
 closed proof against the original stated goal.
+
+The public catalog now contains 49 dependency-ordered entries: the 23-entry core and a 26-entry
+extension through `mod5_fourth_power_one`. The extension's largest certificate has 21,515 nodes at
+depth 66, so the untrusted import ceiling is 32,768 nodes; the kernel is unchanged. A short reuse of
+the capstone is:
+
+```text
+pa prove forall n. ~(exists x. n = 5 * x) -> exists x. n * n * n * n = 5 * x + 1
+intro n
+intro h
+use mod5_fourth_power_one
+apply mod5_fourth_power_one
+exact h
+qed
+```
 
 ## Local reasoning with `have` and `suffices`
 
@@ -251,7 +267,8 @@ The M7 theorem-library core contains twenty named, scripted entries: the fifteen
 arithmetic/order rungs plus five explicit helper lemmas, ending at
 `forall n m. n * m = 0 -> n = 0 \/ m = 0`. M11 extends the current index to twenty-three with
 `one_mul`, `mul_one`, and `add_mul`, the only missing orientations needed by certificate-producing
-commutative-semiring normalization. Dependencies are introduced as ordinary hypotheses,
+commutative-semiring normalization. A public 26-entry modular-arithmetic extension then brings the
+current index to 49 and ends at `mod5_fourth_power_one`. Dependencies are introduced as ordinary hypotheses,
 then compiled away by untrusted, capture-avoiding proof-term cut elimination. The resulting closed
 certificate is independently checked against the original theorem. `pa lib <name>` shows that exact
 replay script; `pa lean <name>` exports the exact statement as a Lean 4 theorem over `Nat`, with one
@@ -374,6 +391,13 @@ controls are covered by a 363-test focused set; the complete Peano suite reports
 existing Lambda Lab suite reports 360 tests plus 36 subtests, and the Jupyter Book plus documented
 command replay gates are green. This candidate has not been deployed or promoted, and no learned
 model result is claimed.
+
+The public-catalog integration candidate is build `2026-07-28g`, immutable application release
+`a-3ea7b7142aa0`. Its complete Peano suite reports 1,036 passes; Lambda remains green at 360 tests
+plus 36 subtests; all 27 book sources build with warnings as errors; and 193 deep links plus 170
+session commands replay. Automated worker boot is green. A direct in-app Pyodide latency smoke is
+still pending because no browser was attached to this session. This candidate is staged locally
+only; production is untouched.
 
 Back at the repository root, run both regression suites:
 

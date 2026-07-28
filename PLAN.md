@@ -53,8 +53,10 @@ but attribution to LoRA training awaits the pretrained-base baseline; the adapte
 dependable induction/order prover. The current dataset has
 no positive rows for nine tactic heads, including `induction`, `simp`, and `specialize`;
 the next registered iteration is a library-snapshot-bound `model-v2`, not a 4B scale-up on the same
-curriculum. A separately maintained candidate library has been compatibility-validated locally,
-but neither its source nor identifying metadata will enter the public branch without an explicit
-visibility decision. See
+curriculum. The owner authorized the compatibility-validated 26-lemma extension for the public
+catalog, bringing it to 49 entries without changing the kernel. A full-surface audit yields 474
+prospective model-v2 transitions. They are valuable curriculum seeds, but only one is an
+`induction` label, so balanced generation and
+sampling remain necessary. See
 [`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest completed and staged
 milestone; production remains untouched behind the M14 cache-header blocker.

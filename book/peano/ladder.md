@@ -5,11 +5,15 @@ an ordered list of earlier rungs, and the exact tactic script used to rebuild it
 replays all current entries, removes dependency assumptions from their proof terms, and asks the
 independent kernel to check the resulting closed certificate against the original statement.
 
-Open the live index or the capstone card:
+Open the currently deployed index or the core zero-product card:
 
 - [`pa lib`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib)
 - [`pa lib mul_eq_zero`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mul_eq_zero)
 - [`pa lean add_comm`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lean%20add_comm)
+
+Local candidate `2026-07-28g` also exposes `pa lib mod5_fourth_power_one`. Its production deep link
+will be added only after the candidate is actually deployed; documentation does not pretend that a
+local theorem is already live.
 
 ## The route
 
@@ -44,6 +48,36 @@ reflexivity, transitivity, antisymmetry, totality, and finally
 $$
 \forall n\,m.\;n\cdot m=0 \to n=0\lor m=0.
 $$
+
+That is the capstone of the original 23-entry core. A public 26-entry extension now continues
+through multiples, residue algebra, the completeness of residues modulo five, square residues,
+and fourth-power residues. The 49th entry is
+
+$$
+\forall n.\;\neg(\exists q.\;n=5q)\to
+\exists q.\;n^4=5q+1.
+$$
+
+It is not a new axiom or an opaque solver result. Its source script replays through the same public
+tactic surface to a 21,515-node, depth-66 closed certificate, and the independent kernel checks that
+certificate in the empty context. The source revision, catalog hash, license notice, and unaltered
+pre-integration validation report are retained under `artifacts/peano-library/`.
+
+Once imported, the long derivation can be reused in an ordinary short proof:
+
+```text
+pa prove forall n. ~(exists x. n = 5 * x) -> exists x. n * n * n * n = 5 * x + 1
+intro n
+intro h
+use mod5_fourth_power_one
+apply mod5_fourth_power_one
+exact h
+qed
+```
+
+The open proof temporarily reaches 21,523 nodes at depth 69. QED contracts the local cut and checks
+the original 21,515-node certificate again. The import ceiling is therefore 32,768 nodes, while two
+simultaneous capstone imports still exceed the separate live-partial bound and fail transactionally.
 
 Five named helper lemmas keep the scripts readable.  They are not shortcuts around checking: each
 helper is itself an ordinary scripted theorem with a closed certificate.  For example,

@@ -8,10 +8,10 @@ sessions:
 
 | Artifact | Role | Records | SHA-256 |
 |---|---|---:|---|
-| `train.jsonl` | learning split | 13,326 | `508f55d86c4ae4b1277fab3a8a8df779d2e46506dde2750de3795b2bf6b950f4` |
-| `val.jsonl` | exact-theorem-group validation split | 18 | `de7de14af29e8ca2e1d9e3dfb0fef1305a80316c3c1440de92f0fac8a4f31a13` |
-| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `59420436dd9e93f164e0b9eceb998f074d48758755e6ebec4ee3d1e439ad7421` |
-| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `ac6ec8b1bdfb07fb0c783461f63d4d505170909babaaa060d245a761379d9c8b` |
+| `train.jsonl` | learning split | 13,326 | `89e199b7a1c40a5c2ef15a2ef5224b3e19381ffa310b9bd67fec2ef320be52d2` |
+| `val.jsonl` | exact-theorem-group validation split | 18 | `61b758a7db5711ca5fc73a27352177f8047d18fb7f6fb603c12a25c99d17a274` |
+| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `bb216ae7765909730d8942188ceda9233652096911691ea8f2061d5316b21860` |
+| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `82715b85e464fdcd0e7fb1eaed7c55297fea5693a6d7b3fc30f292cbb852b5f0` |
 
 The source stream contained 11,652 successful and 1,692 deliberately failing, transactional
 applications, for a labeled failure ratio of `0.12679856115107913`. Every one of the 1,692 sessions
@@ -53,14 +53,14 @@ That target first writes the replayable raw session stream to
 `/tmp/peano-lab-release-raw.jsonl`, then strictly validates, globally deduplicates, and exports it.
 The raw intermediate is not committed because it duplicates the split payload, but the manifest
 records its exact size (`6,215,711` UTF-8 bytes) and SHA-256
-`dfd0d3707e0164f14b896802f4fd06a46ad2e255b1670fd14a55dd535484195c`.
+`d3f863f670d40c2a48a2f74a5b72a76b8d6ef37852b83d1ab69b32a81ff2731d`.
 It also fingerprints `scripts/generate_peano_traces.py`, the trusted checker, and the complete
 Peano Lab Python source tree. Because the Python runtime participates in the run fingerprint and
 session IDs, changing that runtime changes the raw byte hash even when every session-agnostic
 semantic transition remains the same.
 
-To exercise honest bounded `auto` attempts and checked authored replays for all twenty-three ladder
-entries without contaminating the release, run:
+To exercise one-node/depth-one `auto` plumbing attempts and checked authored replays for all 49
+ladder entries without contaminating the release, run:
 
 ```console
 make peano-corpus-smoke

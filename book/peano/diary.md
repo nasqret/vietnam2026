@@ -1236,3 +1236,54 @@ links and 170 session commands, and resolution of all 412 wikilinks in the 66-no
 `checker.py` remains 234 lines. These checks preserve a small positive result and the larger negative
 one with equal care; neither a low loss nor a non-public theorem name is allowed to substitute for a
 checked public experiment.
+
+## 2026-07-28 — Publication turns a private candidate into public theorem data
+
+The owner chose the public visibility boundary. I imported the 26 records exactly from source
+commit `d2ba05dca952e2e33479923433f8d2fcd3409493` and retained catalog hash
+`91c88c1f3311cc0dc540671b169c270758ff6211e77716ed07bd3dd4f55c8380`, the original validation
+report, and its exact MIT notice. A field-by-field audit found no name, case-folding, statement, or
+dependency-order collision with the 23 existing entries.
+
+The kernel did not change. The only resource change is the untrusted live-`use` certificate limit,
+4,096 to 32,768 nodes. That admits the 21,515-node/depth-66 capstone while the separate 32,768-node
+live-partial limit still rejects two simultaneous imports. Cold replay reconstructs all 26 proof
+trees twice, matches their source hashes and metrics, checks each in the empty context, and rejects
+a mutated capstone target. The short user proof reaches 21,523 temporary nodes/depth 69 before cut
+normalization returns the original 21,515-node certificate for QED.
+
+Publication also changes the scientific interpretation. The exact fourth-power theorem is now a
+retrieval/application exercise, not a novel-discovery benchmark. Model-v1 remains frozen and cannot
+see the new entries. Model-v2 must bind a new content-addressed 49-theorem snapshot and seal other
+families before generating training data.
+
+## 2026-07-28 — The failed policy run was trained for a different task
+
+A quantitative audit explains the 0/4 result without blaming parameter count. The optimizer saw
+1,600 examples, only 19.6% of the 8,149-row train split. That split covers 16/25 tactic heads, no
+induction-hypothesis or order states, no foundation-lemma use, and only 1--7-step scripts. Every
+validation template also occurs in training, whereas the benchmark reference paths take 10--23
+actions and require missing decisions. The low token loss therefore measures template imitation.
+
+Across 40 reported attempts, 24 ended on grammar/surface incompatibilities such as division,
+subtraction, unavailable commands or tactics, or malformed arity. The prompt exposes neither PA grammar nor
+lemma statements, and a rollout dies at its first rejected action. An explicit-import full-surface
+audit of the public catalog yields 474 prospective model-v2 transitions, but only one `induction`
+label; under the old sampler it would have about an 18.6% chance of being seen. The next honest
+experiment is balanced model-v2 data,
+grammar-grounded retrieval, a pretrained-base comparison, and bounded best-first search. A 4B
+scale-up comes only after those corrections.
+
+The local publication gate reports 1,036 Peano tests, Lambda's 360 tests plus 36 subtests, a clean
+warning-as-error build of all 27 book sources, replay of 193 deep links and 170 commands, and 414
+resolved wikilinks across 67 vault notes. The browser assembly is
+`2026-07-28g`/`a-3ea7b7142aa0`; automated worker boot passes. No in-app browser was attached, so
+direct Pyodide latency for the capstone remains an explicit unclaimed check. The independent kernel
+file has no diff and remains 234 lines.
+
+The old acceptance-data command also taught a scaling lesson. Its default depth-five, 5,000-node
+`auto` sweep over every ladder statement became impractical on the long modular formulas, so I
+stopped that optional `/tmp` run rather than confuse search cost with theorem admission. The smoke
+now isolates the ladder: one-node/depth-one `auto` plumbing attempts plus every complete authored
+script, while the release corpus separately covers generated variants. It finishes with 803 unique
+transitions in 98 sessions and 49 kernel-checked QEDs.
