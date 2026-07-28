@@ -213,7 +213,7 @@ smoke test; training on that raw superset and calling the following score
 
 ## Fixed held-out evaluation
 
-The version-2 test families are fixed in `scripts/eval_peano_policy.py`:
+The version-4 test families are fixed in `scripts/eval_peano_policy.py`:
 
 | Family | Closed goal |
 |---|---|
@@ -222,10 +222,10 @@ The version-2 test families are fixed in `scripts/eval_peano_policy.py`:
 | `le_total` | `forall n m. n <= m \/ m <= n` |
 | `mul_eq_zero` | `forall n m. n * m = 0 -> n = 0 \/ m = 0` |
 
-These four literal statements define evaluation protocol v2; the evaluator
+These four literal statements define evaluation protocol v4; the evaluator
 checks their parsed formulas against the library at import time rather than
 silently inheriting later library edits. Their canonical goal-set fingerprint
-is `f99b62e86e142c2b99221360b05e2d85969d4dda1d61d13c187c7ac6e80049db`
+is `7099c0a4df7e6f9a8a011124207967c5676871819a42e78e2787c62cd3bc4194`
 and appears in every report. They are outside the generator's
 renamed-reflexive, commuted-addition, and closed-coefficient template families;
 they also cannot be closed by the known cold-`auto` smoke set. Freeze the list,
@@ -281,7 +281,7 @@ attempt-status counts, commands, deterministic per-attempt seeds, the
 canonical goal-set SHA-256, and proof node counts. Report the whole JSON, not
 only the headline float. If a later
 experiment samples `n > k` candidates and estimates pass@k combinatorially,
-label that estimator separately; it is not the version-2 metric.
+label that estimator separately; it is not the version-4 metric.
 
 Run the in-repository random baseline end to end with:
 
@@ -296,9 +296,10 @@ meaningful theorem-proving baseline. Identical inputs produce byte-identical
 JSON. The evaluator's checked scripted regressions separately pin the arithmetic
 surface: `norm_num` proves closed arithmetic and reduces closed coefficients in
 open terms (using a coefficient shape deliberately outside the generated numeric grid), while a genuinely polynomial identity fails under `norm_num` and
-succeeds under `ring`. M13 bumps the evaluator protocol to version 2 because
-`norm_num` expands the production grammar, even though the deliberately weak
-`random-tactic-v1` menu itself is unchanged. To integrate a future local model,
+succeeds under `ring`. M13 first bumped the evaluator protocol to version 2 because
+`norm_num` expanded the production grammar. M19's capability-scoped authority and complete
+evaluator source/runtime identity subsequently create the current version 4, even though the
+deliberately weak `random-tactic-v1` menu itself is unchanged. To integrate a future local model,
 implement the importable
 `Policy.propose(goals_before, *, sample, step, rng)` interface and call
 `evaluate(policy, goals, k=..., max_steps=..., seed=...)`; the judge and report

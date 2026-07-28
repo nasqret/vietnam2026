@@ -27,6 +27,11 @@ boundary; source binding requires a fresh preparation job rather than relabeling
 Regardless of site, the learned model remains untrusted and every successful trajectory ends at
 the [[trusted-kernel]].
 
+Fresh same-source preparation `171414`, training `171421`, and evaluation `171423` subsequently
+completed. The 100-step adapter recorded train/validation losses 0.78301/0.13615, but its decisive
+result was 0/4 held-out goals at pass@4. Arbitrary request `171430` later exported one seven-node
+checked direct-witness proof; parity request `171428` found no proof in sixteen samples.
+
 After training, `scripts/wmi_prove_theorem.sh` is the supported arbitrary-theorem entry point. It
 stores the closed formula and search budget in immutable canonical JSON, submits only its SHA-256
 request ID through the allowlisted typed-A100 job, and binds request/job hashes in a durable ledger
@@ -37,4 +42,4 @@ submission provenance.
 ## Related
 
 [[kernel-guided-policy-training]] · [[kernel-judged-evaluation]] ·
-[[verifier-guided-policy-evaluation-and-search]]
+[[verifier-guided-policy-evaluation-and-search]] · [[content-addressed-lemma-library]]

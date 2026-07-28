@@ -109,7 +109,7 @@ does not determine the architecture.
 - [x] Pass the complete Peano suite, warning-as-error book build, executable
       command replay, vault/link checks, research-catalog validator, artifact
       drift checks, and browser deployment-manifest checks.
-- [ ] Publish a reviewable branch and draft pull request targeting `peano-lab`;
+- [x] Publish a reviewable branch and draft pull request targeting `peano-lab`;
       do not merge or deploy without owner authorization.
 
 ## Current acceptance record

@@ -16,11 +16,12 @@ valid.
 :class: important
 The local execution, prompt, training-runtime, evaluation, provenance, and cluster control paths are
 implemented, and the first attested training-scale data release is complete: 2,522 independently
-kernel-checked roots compile to exactly 10,000 positive rows. Helios completed one registered
-100-step training run, but its evaluator failed before generation on a manifest representation
-bug. The **proof-quality experiment is still pending**: no learned pass rate, model comparison, or
-expert-iteration gain is claimed in this chapter. Empty result cells are a feature of the protocol,
-not an invitation to invent numbers.
+kernel-checked roots compile to exactly 10,000 positive rows. WMI completed the first accepted
+100-step train/evaluate chain. The result is mixed and deliberately narrow: 0/4 frozen goals at
+pass@4, zero successful parity rollouts in 16 samples (pass@16 = 0.0), and one kernel-checked proof
+among eight samples for a fresh direct-witness theorem. That success is consistent with a represented
+pattern, but attribution to fine-tuning awaits the pretrained-base baseline; the adapter is not yet
+a useful induction/order prover. No model comparison or expert-iteration gain is claimed.
 ```
 
 The binding research protocol is
@@ -547,8 +548,7 @@ Evaluator `20029980` stopped after three seconds, before generation. Canonical m
 `sort_keys=True`, whereas the loader accidentally applied the construction-order rule designed for
 raw dataset rows to the nested capability mapping. The repair reconstructs the exact three semantic
 fields from sorted JSON and still checks their values, the environment preimage/hash, and equality
-with the fixed `model-v1` authority. A fresh safe training/evaluation chain is required before any
-kernel-judged solve-rate claim.
+with the fixed `model-v1` authority.
 
 ## WMI A100: reproduce the gate, do not rename the environment
 
@@ -590,9 +590,40 @@ The next failure was deliberately cheaper. The training controller refused to ca
 because its Bash `IFS` reader collapsed the preparation row's empty dependency field, shifting the
 remaining TSV columns. Empty fields are data, so a bounded strict UTF-8 parser now validates nine
 columns exactly and rejects malformed or duplicate job rows. Since that repair changes source
-identity, the passed preparation report cannot be relabeled as its predecessor; a fresh same-source
-chain is required. Moving the computation does not move the trust boundary: every generated proof
+identity, the passed preparation report could not be relabeled as its predecessor; a fresh
+same-source chain was required. Moving the computation does not move the trust boundary: every generated proof
 is still replayed by Peano Lab and every QED is checked against its original theorem.
+
+Fresh preparation `171414` then passed from clean commit `0c84fc3`; dependent training `171421`
+completed 100 steps, and evaluator `171423` reached a terminal kernel-judged report. The training
+manifest binds adapter `ff187542…`, 2,048/256 selected examples, and train/validation losses
+0.78301/0.13615. The attractive second number is teacher-forced next-token loss. The theorem result
+is 0/4 at pass@4: all sixteen rollouts failed before QED.
+
+Two arbitrary requests sharpen the diagnosis. The parity goal failed sixteen times; fifteen runs
+proposed division as a direct existential witness. A new direct-witness theorem absent exactly from
+all three splits succeeded once in eight samples and replayed to a seven-node checked proof. The
+adapter therefore demonstrated one within-template success, but not the missing induction frontier.
+Whether fine-tuning caused that success remains open until the pretrained base is evaluated.
+
+That behavior is predicted by the corpus. Its 8,149 train rows use only sixteen of twenty-five
+allowed tactic heads, contain no IH state or foundation-lemma use, and contain no `induction`,
+`simp`, `have`, `suffices`, `specialize`, or `use` action. Every source proof is at most seven
+steps. Under exact model-v1 authority, known checked held-out routes require 10, 10, 23, and 13
+commands; the old 16-step evaluation cap does not even fit the known `le_total` route. More
+parameters alone do not address absent actions and proof shapes; scaling now would confound the
+intended curriculum experiment.
+
+A separately maintained candidate lemma library supplies a promising next curriculum. Its private
+compatibility gate passed against this checkout, but this public chapter intentionally records no
+identifiers or detailed validation profile until the owner chooses a visibility boundary. The
+kernel and proof rules remain unchanged.
+
+For training, this becomes a new content-addressed `model-v2` library snapshot, not a silent
+extension of model-v1. The prompt must expose retrieved lemma names and canonical statements, and
+the data must include downstream `use`/`specialize` trajectories. Once the exact capstone theorem
+is importable, its three-line application is a usability test rather than an unseen proving test;
+different theorem families must remain sealed.
 
 ## Reproduction and honest resume
 
@@ -714,24 +745,27 @@ different model, environment, dataset, or checkpoint for the same experiment.
 
 ## Limitations and the next honest claims
 
-The current work establishes an auditable path to an experiment.  It does not yet establish that a
-small model is useful.  Important limitations remain:
+The current work establishes that one small trained adapter can emit a shallow checked proof, but
+not that fine-tuning caused the success or that the adapter is broadly useful for PA. Important
+limitations remain:
 
 - the attested 10,000-row release is schema-generated and still too narrow for a broad PA claim;
 - the four-goal protocol set is a regression fixture, not a statistically useful final test;
-- induction/invariant schemas, hard whole-template OOD sets, and human-authored problems remain to
-  be added or frozen;
+- induction/invariant schemas and downstream lemma-use traces remain to be added; hard
+  whole-template OOD sets and human-authored problems must be sealed before that generation;
 - verifier-guided best-first search and expert iteration remain protocol designs;
 - no preference-training or reinforcement-learning result exists;
 - no English-to-PA formalizer has been trained or semantically evaluated;
-- tokenization fertility and throughput must be measured on the actual resolved tokenizers; and
-- Helios job accounting and end-to-end resume evidence remain to be collected from real jobs.
+- tokenization fertility and throughput must be measured on the actual resolved tokenizers;
+- model-v2 needs a content-bound external-library contract and explicit lemma retrieval; and
+- the current 16-step held-out budget must be replaced by an oracle-adequate budget of at least 24.
 
-The next valid statement is therefore not “Peano Lab has a theorem-proving model.”  It is narrower:
-after the smoke runs, we may report whether one exact adapter, trained from one replay-validated
-dataset under one manifest, produced independently checked proofs for one frozen benchmark under
-one fixed budget.  Larger conclusions must be earned by the family splits, baselines, ablations,
-and repeated measurements described above.
+The valid statement is therefore not “Peano Lab has a theorem-proving model.” It is narrower: one
+exact 1.7B adapter, after training on the easy next-tactic distribution, failed the frozen
+induction/order smoke and produced one independently checked proof for a new theorem from a
+represented direct-witness schema. Causal attribution and larger conclusions must be earned by the
+pretrained baseline, model-v2 family splits, ablations, search, and repeated measurements described
+above.
 
 That restraint is the main pedagogical result.  A learned explorer can be cheap, fast, and
 surprisingly inventive.  Its suggestions remain suggestions.  Peano Lab's kernel decides theorems,

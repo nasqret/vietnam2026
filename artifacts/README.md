@@ -140,6 +140,30 @@ The result is a verified upper bound, not a claimed proof of global minimality. 
 and the independently replayed browser-tactic script now reach the same canonical ordinary proof;
 neither adds a trusted arithmetic shortcut.
 
+## First trained-policy result
+
+[`peano-policy/qwen3-1.7b-wmi-smoke-summary.json`](peano-policy/qwen3-1.7b-wmi-smoke-summary.json)
+records the exact hashes and kernel-judged outcomes of the first WMI Qwen3-1.7B LoRA smoke. The
+four-goal held-out run proved 0/4 at pass@4, and the harder triangular-number parity request proved
+0/1 at pass@16. A fresh direct-witness theorem absent as an exact formula from train, validation,
+and test succeeded once in eight samples.
+
+The immutable source reports are published beside that index:
+
+- [`qwen3-1.7b-wmi-training-manifest.json`](peano-policy/qwen3-1.7b-wmi-training-manifest.json)
+  is the complete training manifest;
+- [`qwen3-1.7b-wmi-heldout-k4.json`](peano-policy/qwen3-1.7b-wmi-heldout-k4.json) is the complete
+  four-goal evaluator report; and
+- [`qwen3-1.7b-wmi-parity-k16.json`](peano-policy/qwen3-1.7b-wmi-parity-k16.json) and
+  [`qwen3-1.7b-wmi-easy-witness-k8.json`](peano-policy/qwen3-1.7b-wmi-easy-witness-k8.json) are the
+  complete arbitrary-theorem reports.
+
+[`peano-policy/qwen3-1.7b-wmi-easy-witness.pa`](peano-policy/qwen3-1.7b-wmi-easy-witness.pa) is that
+ordinary exported proof. It is not trusted model output: repository tests replay it under the exact
+`model-v1` authority and require another independent original-target kernel check. The artifact
+therefore records a limited in-distribution success, not a broad PA prover; attribution to
+fine-tuning awaits the pretrained-base baseline.
+
 ## Peano foundational arithmetic library
 
 [`peano-library/`](peano-library/) is the deterministic snapshot of all 51

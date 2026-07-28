@@ -1,8 +1,8 @@
 # Peano Lab post-training experiment — M19 research protocol
 
-**Status:** binding experiment protocol, 2026-07-28.  Results are not filled in
-until the corresponding artifacts exist and have passed the independent
-kernel.  This document extends M9; it does not weaken any Peano Lab trust rule.
+**Status:** binding experiment protocol with the first accepted WMI result recorded, 2026-07-28.
+Result fields are filled only after the corresponding artifacts exist and successful scripts have
+passed the independent kernel. This document extends M9; it does not weaken any Peano Lab trust rule.
 
 ## 1. What changed after M9
 
@@ -304,11 +304,12 @@ AST size/depth, and whether an invariant/witness/local lemma was required.
 
 ## 8. Leakage-safe benchmark
 
-Protocol v3 keeps four literal library-tail goals (`le_trans`, `le_antisymm`,
+Protocol v4 keeps four literal library-tail goals (`le_trans`, `le_antisymm`,
 `le_total`, and `mul_eq_zero`) but fixes a capability-scoped environment.  The
 target theorem itself is never importable; `auto` is unavailable; a single
 reported foundation set is shared by all four goals.  The goal-set hash covers
-the statements, exact logic modes, surface profile, and allowed theorem names.
+the statements, exact logic modes, surface profile, and allowed theorem names. Version 4 also
+binds the evaluator's semantic source set and complete runtime identity into every report.
 
 That four-goal set remains a regression benchmark, not a statistically useful
 final test.  M19 also freezes 300–1,000 generated problems before serious
@@ -487,11 +488,25 @@ reload, and only then did the environment pointer move. Its first dependent
 training submission was refused before `sbatch` because Bash whitespace
 splitting collapsed the empty dependency column in the TSV ledger. The
 controller now delegates that boundary to a bounded strict UTF-8 nine-field
-parser. The fix changes source identity, so a fresh preparation job is required
-before training; no WMI learned result is claimed yet. Preparation `171404`
+parser. The fix changed source identity, so a fresh preparation job was required
+before training; at that point no WMI trained-policy result was claimed. Preparation `171404`
 was canceled after 1m56s when the manifest-loader defect was discovered, rather
 than spending A100 time on a chain whose evaluator would necessarily reject its
 manifest.
+
+The first accepted terminal WMI chain then ran from clean commit `0c84fc3`.
+Preparation `171414` completed in 7m28s and reproduced dataset digest
+`1fa98caa…`; dependent training `171421` completed 100 optimizer steps in
+11m40s. The immutable training manifest has SHA-256 `ad16e60d…`, binds final
+adapter `ff187542…`, and records 2,048 selected training examples, 256
+validation examples, train loss `0.78301`, and final teacher-forced validation
+loss `0.13615`. The optimizer saw only 1,600 examples—0.78125 of the selected
+subset—because the registered smoke stopped at 100 effective-batch-16 updates.
+
+Evaluator `171423` completed successfully on the same A100/runtime/source
+chain. Its result was 0/4 goals at pass@4: all sixteen rollouts ended on a
+failing tactic before QED. That is the first trained-policy theorem result, and
+it is negative. It must not be replaced by the attractive validation loss.
 
 ### 10.2 Proving a new theorem with a trained adapter
 
@@ -556,6 +571,75 @@ It writes digest-named report, optional `.pa`, and terminal run-summary files un
 `results/peano-policy/user-proofs/`; a sound but unsolved request finishes with `status=no-proof`
 rather than masquerading as an infrastructure crash. The wrapper prints the request ID used in
 those filenames.
+
+### 10.3 What the first adapter can and cannot do
+
+Two registered arbitrary-theorem requests make the boundary concrete. Job
+`171428` tried the earlier parity theorem
+
+```text
+∀ x. ∃ y. x · (x + 1) = 2 · y
+```
+
+sixteen times and found no proof. Fifteen trajectories introduced `x` and then
+proposed a quotient witness containing `/`, which is not a PA term. In contrast,
+job `171430` proved a fresh direct-witness formula absent exactly from train,
+validation, and test:
+
+```text
+∀ x. ∃ y. (x + 17) · 19 + 23 + y = (x + 17) · 19 + 23
+```
+
+One of eight samples produced `intro n; exists 0; rewrite PA3; refl`. The
+ordinary exported script replayed independently to a seven-node checked
+certificate. This is one real success in a represented schema, but attributing it to fine-tuning
+requires the still-pending pretrained-base baseline. The adapter did not demonstrate
+induction-level proof planning.
+
+The post-result audit explains why. The full 8,149-row train split represents
+only sixteen of the twenty-five permitted tactic heads. It has no IH states,
+no use of any of the seven allowed foundation lemmas, and zero actions headed
+by `assumption`, `exfalso`, `forall_elim`, `have`, `induction`, `simp`,
+`specialize`, `suffices`, or `use`. Every source proof is one to seven tactics
+long. All 513 comparable existential goals are labelled immediately with
+`exists`; the adapter's parity behavior is consistent with that supervised support.
+Known checked routes under the precise model-v1 authority take 10, 10, 23, and
+13 commands for the four held-out goals. The registered 16-step budget is
+therefore below the known `le_total` route and must rise to at least 24 in the
+next protocol.
+
+The run directly exposes curriculum and search failures. It also rules out sequence truncation and
+a train/inference template mismatch, but it does not establish that prompt v1 is adequate: grammar
+and lemma semantics remain hidden behind an opaque capability hash. No selected training sequence was truncated; the largest complete
+example used 595 of 1,024 tokens, and the one-line training/inference contract
+agrees exactly. The evaluator is closed-loop at the state level, but each
+rollout is one path: it stops at its first transactional tactic failure and has
+no retry, sibling frontier, or backtracking.
+
+A separately maintained candidate lemma library is a strong input for model-v2. Its private
+compatibility gate passed against this checkout, but this public protocol intentionally records no
+identifiers or detailed validation profile until the owner chooses a visibility boundary. The
+kernel and proof rules do not change.
+
+The pack must nevertheless enter through a new scientific contract. A
+content-addressed library snapshot must bind each name, canonical statement,
+dependencies, authored-script hash, checked certificate hash, nodes, and depth
+into prompt, dataset, training, evaluator, and request provenance. The current
+capability digest binds theorem names but not their statements or certificates.
+The model also needs checked downstream traces that actually `use` and
+`specialize` those lemmas, or a deterministic retriever that exposes selected
+name/statement pairs; an opaque environment hash cannot teach lemma semantics.
+
+Importing an exact capstone theorem can make its motivating goal a three-line
+library application. That is excellent usability evidence, but it is no longer
+a held-out proving benchmark. Model-v2 must retain separate sealed theorem
+families whose statements, proofs, descendants, and retrieval entries never
+enter training or development. The private catalog is not copied into the
+public Peano repository by this result-recording change; publishing or vendoring
+it is a separate explicit integration decision.
+
+The immutable training manifest, held-out report, two arbitrary-request reports, compact index, and
+checked positive script are published under [`artifacts/peano-policy/`](../artifacts/peano-policy/).
 
 ## 11. Provenance and result ledger
 
