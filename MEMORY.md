@@ -265,3 +265,35 @@
   100-step training, and learned evaluation results are still pending. WMI preparation `171404`
   was explicitly canceled after 1m56s once the manifest-loader bug was known, avoiding an
   unevaluable run.
+
+## Foundational arithmetic library (M20)
+
+- M20 is a parallel library milestone on top of `peano-lab`, not a replacement for the active M19
+  policy experiment. It organizes reusable facts as equality → semiring → order → divisibility →
+  congruence → gcd → primes → factorization. The modulus-five fourth-power theorem is a downstream
+  example rather than the organizing principle.
+- The first checked extension grows `pa lib` from 23 to 51 closed theorems: 28 new equality
+  congruence, additive cancellation and zero-sum, order-endpoint, zero-product/nonzero-product,
+  small-factor, divisibility, non-divisibility, and generic quotient/remainder lemmas. It now
+  includes `prime_two`, the first checked instance of the fully expanded prime predicate. Every
+  script replays, every cut-free certificate passes the unchanged independent kernel, and the
+  largest new certificate is 1,601 nodes/depth 59, within live `use`.
+- The version-1 research catalog has 75 DAG nodes across nine domains: 23 `checked_existing`, 28
+  `checked_m20`, 20 `planned_expressible`, and four `blocked_by_language`. Divisibility and
+  primality can be expanded in current first-order PA; a natural full Fundamental Theorem of
+  Arithmetic needs a reviewed finite-sequence/multiset/product representation and is not claimed
+  before that milestone.
+- Source policy is pinned and clean-room. NNG4 is Apache-2.0 and maps the early arithmetic ladder;
+  Macbeth is reference-only because its repository lacks a reuse license; Weissman's notebooks are
+  GPL-3.0 external algorithm indexes. Open Logic and Newstead supply openly licensed TeX references;
+  Stein's elementary-number-theory TeX is reference-only because its repository has no license.
+  No external source is vendored in M20.
+- The synchronized knowledge surfaces are `PLAN/10_arithmetic_library.md`,
+  `research/arithmetic-library/`, `book/arithmetic-library/`,
+  `vault/moc/arithmetic-library-moc.md` plus generated `vault/lemmas/`, and
+  `artifacts/peano-library/`. The generated snapshot binds exact source bytes, statements, scripts,
+  dependencies, certificate hashes, proof metrics, and an ordered root digest; hashes are
+  provenance, never theorem authority.
+- The final local M20 validation record is 1,041 passing Peano tests, a warning-as-error Jupyter
+  Book build over 34 sources, 197 checked deep links, 43 documentation blocks with 253 replayed
+  commands, and a clean 127-note/866-link Obsidian vault.

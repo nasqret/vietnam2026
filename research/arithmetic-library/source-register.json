@@ -1,0 +1,188 @@
+{
+  "format": "peano-arithmetic-source-register",
+  "version": 1,
+  "retrieved_at": "2026-07-28",
+  "reuse_modes": {
+    "project_internal": "Repository material that may be reused under this project's licenses.",
+    "statement_adapted_proof_reconstructed": "Mathematical statements and organization may guide the catalog, but Peano proofs are independently reconstructed and kernel-checked.",
+    "reference_only_clean_room": "Use only as a bibliographic or topic reference; do not copy prose, proof text, or code.",
+    "algorithm_index_clean_room": "Use as an index of algorithms and examples; implementations and formal proofs must be independently written.",
+    "open_tex_reference": "Openly licensed TeX may be cited and consulted as a mathematical reference; no source is vendored into this catalog."
+  },
+  "sources": [
+    {
+      "id": "peano_lab_library",
+      "title": "Peano Lab checked theorem ladder",
+      "kind": "project_source",
+      "url": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py",
+      "license": "MIT",
+      "license_url": "https://github.com/nasqret/vietnam2026/blob/peano-lab/LICENSE",
+      "reuse_mode": "project_internal",
+      "notes": "Binding source for all checked entries. Every listed theorem is replayed and independently checked from the empty context; the exact source bytes are bound by artifacts/peano-library/catalog-v1.json rather than a circular self-referential Git commit."
+    },
+    {
+      "id": "nng4",
+      "title": "Natural Number Game, Lean 4 edition",
+      "kind": "interactive_course_and_source",
+      "url": "https://github.com/leanprover-community/NNG4",
+      "revision": "727e4d219838eeb7f3945d2e9a0539f244d50540",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/leanprover-community/NNG4/blob/727e4d219838eeb7f3945d2e9a0539f244d50540/LICENSE",
+      "reuse_mode": "statement_adapted_proof_reconstructed",
+      "resources": [
+        {
+          "label": "Game manifest",
+          "url": "https://github.com/leanprover-community/NNG4/blob/727e4d219838eeb7f3945d2e9a0539f244d50540/Game.lean"
+        },
+        {
+          "label": "Interactive game",
+          "url": "https://adam.math.hhu.de/#/g/leanprover-community/nng4"
+        }
+      ],
+      "notes": "Use the stable arithmetic-world statements as a coverage map. Game/Levels/WIPPrime.lean is empty and Power/L10FLT.lean contains an admitted placeholder, so neither is evidence for a checked prime or FLT result."
+    },
+    {
+      "id": "macbeth_mechanics_site",
+      "title": "The Mechanics of Proof",
+      "kind": "online_course",
+      "url": "https://hrmacbeth.github.io/math2001/",
+      "license": "No repository-wide reuse license identified",
+      "reuse_mode": "reference_only_clean_room",
+      "notes": "Reference the exposition and topic sequence only. The associated source repository has no LICENSE file and individual Lean files state All rights reserved."
+    },
+    {
+      "id": "macbeth_math2001_repo",
+      "title": "Mechanics of Proof Lean source",
+      "kind": "lean_course_source",
+      "url": "https://github.com/hrmacbeth/math2001",
+      "revision": "e660f42b13ddcb6d12b52ba036d6bd071a0cfb9b",
+      "license": "All rights reserved / no repository LICENSE",
+      "reuse_mode": "reference_only_clean_room",
+      "resources": [
+        {
+          "label": "Division",
+          "url": "https://github.com/hrmacbeth/math2001/blob/e660f42b13ddcb6d12b52ba036d6bd071a0cfb9b/Library/Theory/Division.lean"
+        },
+        {
+          "label": "GCD",
+          "url": "https://github.com/hrmacbeth/math2001/blob/e660f42b13ddcb6d12b52ba036d6bd071a0cfb9b/Library/Theory/GCD.lean"
+        },
+        {
+          "label": "Prime",
+          "url": "https://github.com/hrmacbeth/math2001/blob/e660f42b13ddcb6d12b52ba036d6bd071a0cfb9b/Library/Theory/Prime.lean"
+        },
+        {
+          "label": "Parity",
+          "url": "https://github.com/hrmacbeth/math2001/blob/e660f42b13ddcb6d12b52ba036d6bd071a0cfb9b/Library/Theory/Parity.lean"
+        },
+        {
+          "label": "Modular parity",
+          "url": "https://github.com/hrmacbeth/math2001/blob/e660f42b13ddcb6d12b52ba036d6bd071a0cfb9b/Library/Theory/ParityModular.lean"
+        },
+        {
+          "label": "ModEq definitions",
+          "url": "https://github.com/hrmacbeth/math2001/blob/e660f42b13ddcb6d12b52ba036d6bd071a0cfb9b/Library/Theory/ModEq/Defs.lean"
+        },
+        {
+          "label": "ModEq lemmas",
+          "url": "https://github.com/hrmacbeth/math2001/blob/e660f42b13ddcb6d12b52ba036d6bd071a0cfb9b/Library/Theory/ModEq/Lemmas.lean"
+        }
+      ],
+      "notes": "Do not copy Lean code or prose. Independently reconstruct every Peano proof and accept it only after Peano's kernel check."
+    },
+    {
+      "id": "weissman_illustrated_programming",
+      "title": "An Illustrated Theory of Numbers — programming resources",
+      "kind": "book_companion_site",
+      "url": "https://illustratedtheoryofnumbers.com/prog.html#notebooks",
+      "license": "Website terms not established for redistribution",
+      "reuse_mode": "reference_only_clean_room",
+      "notes": "Use as a bibliography and subject index for divisibility, Euclidean algorithms, congruences, and primes; do not vendor site prose or notebooks from this page."
+    },
+    {
+      "id": "weissman_python_number_theory",
+      "title": "Python for number theory notebooks",
+      "kind": "notebook_source",
+      "url": "https://github.com/MartyWeissman/Python-for-number-theory",
+      "revision": "5e819522e52e6a75c5dec597f024729bfc9ba4c5",
+      "license": "GPL-3.0",
+      "license_url": "https://github.com/MartyWeissman/Python-for-number-theory/blob/5e819522e52e6a75c5dec597f024729bfc9ba4c5/LICENSE",
+      "reuse_mode": "algorithm_index_clean_room",
+      "notes": "The MIT Peano project must not copy or adapt GPL notebook code. Use the notebooks only to identify examples and algorithms, then write independent proofs and implementations."
+    },
+    {
+      "id": "open_logic",
+      "title": "Open Logic Project",
+      "kind": "open_tex_source",
+      "url": "https://github.com/OpenLogicProject/OpenLogic",
+      "revision": "9620cc73f9c8e0ad003c514a5d3748f29611c4c0",
+      "license": "CC-BY-4.0",
+      "license_url": "https://github.com/OpenLogicProject/OpenLogic/blob/9620cc73f9c8e0ad003c514a5d3748f29611c4c0/LICENSE",
+      "reuse_mode": "open_tex_reference",
+      "resources": [
+        {
+          "label": "Induction on natural numbers",
+          "url": "https://github.com/OpenLogicProject/OpenLogic/blob/9620cc73f9c8e0ad003c514a5d3748f29611c4c0/content/methods/induction/induction-on-N.tex"
+        },
+        {
+          "label": "Strong induction",
+          "url": "https://github.com/OpenLogicProject/OpenLogic/blob/9620cc73f9c8e0ad003c514a5d3748f29611c4c0/content/methods/induction/strong-induction.tex"
+        },
+        {
+          "label": "Arithmetization of syntax TeX sources",
+          "url": "https://github.com/OpenLogicProject/OpenLogic/tree/9620cc73f9c8e0ad003c514a5d3748f29611c4c0/content/incompleteness/arithmetization-syntax"
+        }
+      ],
+      "notes": "Consulted for induction and the possible future arithmetized-sequence roadmap. This change records pinned links only and vendors no Open Logic TeX."
+    },
+    {
+      "id": "stein_ent_tex",
+      "title": "Elementary Number Theory: Primes, Congruences, and Secrets",
+      "kind": "reference_only_tex_source",
+      "url": "https://github.com/williamstein/ent",
+      "revision": "c4984c7ddb22258674816f8c000b0d8eb485d694",
+      "license": "No repository license; README identifies a Springer publication",
+      "reuse_mode": "reference_only_clean_room",
+      "resources": [
+        {
+          "label": "Top-level TeX source",
+          "url": "https://github.com/williamstein/ent/blob/c4984c7ddb22258674816f8c000b0d8eb485d694/ent.tex"
+        },
+        {
+          "label": "Book body TeX source",
+          "url": "https://github.com/williamstein/ent/blob/c4984c7ddb22258674816f8c000b0d8eb485d694/body.tex"
+        }
+      ],
+      "notes": "Bibliographic and coverage reference only. Do not vendor or copy TeX, prose, exercises, or proof text; Peano statements and proofs must be independently reconstructed."
+    },
+    {
+      "id": "infinite_descent_tex",
+      "title": "An Infinite Descent into Pure Mathematics",
+      "kind": "open_tex_source",
+      "url": "https://codeberg.org/cnewstead/infdesc",
+      "revision": "3fcac1afe2a37fb92adf5fa9d22c25c83b1abf11",
+      "license": "CC-BY-SA-4.0 and LPPL-1.3c",
+      "license_url": "https://codeberg.org/cnewstead/infdesc/src/commit/3fcac1afe2a37fb92adf5fa9d22c25c83b1abf11/LICENCES.md",
+      "reuse_mode": "open_tex_reference",
+      "resources": [
+        {
+          "label": "Natural-number induction TeX",
+          "url": "https://codeberg.org/cnewstead/infdesc/src/commit/3fcac1afe2a37fb92adf5fa9d22c25c83b1abf11/book/mathematical-induction/strong-induction.tex"
+        },
+        {
+          "label": "Divisibility TeX",
+          "url": "https://codeberg.org/cnewstead/infdesc/src/commit/3fcac1afe2a37fb92adf5fa9d22c25c83b1abf11/book/number-theory/divisibility.tex"
+        },
+        {
+          "label": "Modular arithmetic TeX",
+          "url": "https://codeberg.org/cnewstead/infdesc/src/commit/3fcac1afe2a37fb92adf5fa9d22c25c83b1abf11/book/number-theory/modular-arithmetic.tex"
+        },
+        {
+          "label": "Prime numbers TeX",
+          "url": "https://codeberg.org/cnewstead/infdesc/src/commit/3fcac1afe2a37fb92adf5fa9d22c25c83b1abf11/book/number-theory/prime-numbers.tex"
+        }
+      ],
+      "notes": "Explicitly open TeX reference for induction, divisibility, modular arithmetic, and primes. This release cites pinned source paths but vendors and adapts none of the text."
+    }
+  ]
+}

@@ -936,3 +936,37 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   defect was known. Independent CPython-3.10 replay preserved every dataset/split/source-artifact
   hash and changed only the attestor source identity; the refreshed attestation is
   `e4b319a0…`. A fresh safe chain is required; no kernel-judged solve rate is claimed.
+
+## 2026-07-28 (branch agent/general-arithmetic-library) — M20 foundational corpus begins
+
+- Isolated the work in a clean clone based on `origin/peano-lab` because the owner's active Peano
+  checkout contains unrelated M19 changes. The publication target is a draft pull request back to
+  `peano-lab`; no merge or deployment is authorized by this milestone.
+- Reframed the modulus-five exercise as one client of a general dependency graph. Added 28 reusable
+  theorem entries—equality congruence, additive cancellation and zero-sum, basic order endpoints,
+  zero-product/nonzero-product and small-factor reasoning, divisibility witness algebra,
+  constructive non-divisibility, and modulus-independent residue transport—for a total of 51.
+  The last four additions are `add_eq_zero_left`, `mul_ne_zero`,
+  `two_large_factors_impossible`, and `prime_two`; the last is the first checked instance of the
+  fully expanded prime predicate. All replay to closed certificates under the unchanged kernel;
+  the largest new entry is 1,601 nodes/depth 59 and fits the live import budget.
+- Built a strict 75-node research catalog spanning equality, addition, multiplication, order,
+  divisibility, congruence, relational gcd/coprimality, primes, and factorization: 23
+  `checked_existing`, 28 `checked_m20`, 20 `planned_expressible`, and four
+  `blocked_by_language`. Its validator enforces exact runtime coverage for all checked claims,
+  closed production-parser formulas, ordered dependencies, source references, and explicit
+  representation blockers.
+- Audited the requested NNG4, Macbeth, and Weissman resources at pinned revisions. NNG4 has no
+  active prime corpus; Macbeth's arithmetic sources are all-rights-reserved/reference-only; the
+  Weissman notebooks are GPL-3.0 and stay external. The TeX search additionally pinned Open Logic,
+  Newstead's open proof/number-theory text, and Stein's unlicensed Springer-associated source tree.
+  No external prose, code, notebook, or TeX was copied; Peano proofs were constructed independently.
+- Added deterministic catalog/metrics/dependency artifacts, a dedicated seven-chapter Jupyter Book
+  part, an arithmetic Obsidian MOC and concept graph, and 51 generated per-lemma notes carrying exact
+  dependencies, dependents, and proof metrics. Memory, plan, root maps, and reproduction commands
+  now point to the same canonical theorem names.
+- The final local gate passed 1,041 Peano tests, a warning-as-error Jupyter Book build over 34
+  sources, 197 deep links, 43 documentation blocks with 253 replayed commands, and the
+  127-note/866-link vault check. Publication still requires the draft PR workflow. FTA remains
+  honestly `blocked_by_language` until a finite-factorization representation is reviewed and
+  checked.

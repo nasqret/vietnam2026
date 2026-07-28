@@ -5,6 +5,15 @@ an ordered list of earlier rungs, and the exact tactic script used to rebuild it
 replays all current entries, removes dependency assumptions from their proof terms, and asks the
 independent kernel to check the resulting closed certificate against the original statement.
 
+The M20 foundational extension brings the live ladder from 23 to 51 entries.
+The additional nodes name equality congruence, additive cancellation, basic
+order endpoints, zero/nonzero-product and small-factor reasoning, divisibility
+closure, constructive non-divisibility, and generic quotient-and-remainder
+algebra. They include `prime_two`, the first checked fully expanded prime
+instance. The complete layered design continues
+in {doc}`The foundational arithmetic library <../arithmetic-library/index>`;
+this chapter retains the construction story of the original core.
+
 Open the live index or the capstone card:
 
 - [`pa lib`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib)

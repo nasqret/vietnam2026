@@ -565,6 +565,15 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   loader reconstructs the exact three semantic fields from sorted manifest JSON, then retains the
   same capability-value, environment-hash, fixed-authority, and strict dataset-row checks.
 
+### M20 — General foundational arithmetic library
+
+The theorem-ladder extension is tracked independently in
+[`PLAN/10_arithmetic_library.md`](10_arithmetic_library.md). Its first release
+keeps the kernel and object language fixed, expands divisibility and residue
+notions into ordinary formulas, and labels prime/factorization targets by
+their real dependencies. A future finite-sequence or multiset milestone is a
+prerequisite for exposing the full Fundamental Theorem of Arithmetic.
+
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search
 performance work beyond the explicit tactic limits remain outside this plan. M14 is the

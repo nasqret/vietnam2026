@@ -12,7 +12,7 @@ Fails (exit 1) if any replay produces "Unknown command", "Parse error",
 
 Usage:  python3 scripts/verify_book_commands.py [paths...]
         (default: book/cookbook book/lectures book/appendix book/peano
-                  book/intro.md)
+                  book/arithmetic-library book/intro.md)
 """
 
 from __future__ import annotations
@@ -227,6 +227,7 @@ def main(argv: list[str]) -> int:
     targets = [pathlib.Path(a) for a in argv] or [
         REPO / "book" / "cookbook", REPO / "book" / "lectures",
         REPO / "book" / "appendix", REPO / "book" / "peano",
+        REPO / "book" / "arithmetic-library",
         REPO / "book" / "intro.md",
     ]
     files: list[pathlib.Path] = []

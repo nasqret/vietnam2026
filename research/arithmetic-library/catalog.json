@@ -1,0 +1,1540 @@
+{
+  "format": "peano-arithmetic-knowledge-catalog",
+  "version": 1,
+  "title": "Foundational arithmetic dependency catalog",
+  "scope": "A bounded roadmap of reusable arithmetic facts for Peano Lab. This file records mathematical dependencies and representability; it does not grant theorem authority.",
+  "object_language": {
+    "sorts": [
+      "natural_number"
+    ],
+    "term_formers": [
+      "0",
+      "S",
+      "+",
+      "*"
+    ],
+    "atomic_formulas": [
+      "equality"
+    ],
+    "logical_formers": [
+      "false",
+      "not",
+      "and",
+      "or",
+      "implies",
+      "forall",
+      "exists"
+    ],
+    "surface_sugar": {
+      "a <= b": "exists k. k + a = b"
+    },
+    "absent": [
+      "user-defined predicates",
+      "integer subtraction",
+      "gcd function",
+      "exponentiation",
+      "lists",
+      "multisets",
+      "finite sequences"
+    ]
+  },
+  "expanded_predicate_conventions": {
+    "divides(a,b)": "exists k. b = a * k",
+    "congruent_mod(m,a,b)": "exists u v. a + m * u = b + m * v",
+    "is_gcd(d,a,b)": "divides(d,a) /\\ divides(d,b) /\\ forall c. divides(c,a) -> divides(c,b) -> divides(c,d)",
+    "coprime(a,b)": "forall d. divides(d,a) -> divides(d,b) -> d = 1",
+    "prime(p)": "~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1"
+  },
+  "statuses": {
+    "checked_existing": "Already present in Peano Lab's theorem ladder and independently kernel-checked.",
+    "checked_m20": "Added by the foundational-arithmetic M20 expansion and independently kernel-checked.",
+    "planned_expressible": "Closed formula expressible in today's fixed Peano language, but not yet admitted to the checked runtime library.",
+    "blocked_by_language": "A natural reusable statement needs a representation not currently available in the fixed Peano surface language."
+  },
+  "domain_order": [
+    "equality",
+    "addition",
+    "multiplication",
+    "order",
+    "divisibility",
+    "congruence",
+    "gcd_coprime",
+    "primes",
+    "factorization"
+  ],
+  "lemmas": [
+    {
+      "id": "succ_ne_zero",
+      "title": "A successor is not zero",
+      "domain": "equality",
+      "status": "checked_existing",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Reusable form of Peano axiom PA1.",
+      "peano": {
+        "statement": "forall n. ~(S n = 0)",
+        "existing_name": "succ_ne_zero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "succ_injective",
+      "title": "Successor is injective",
+      "domain": "equality",
+      "status": "checked_existing",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Reusable form of Peano axiom PA2.",
+      "peano": {
+        "statement": "forall n m. S n = S m -> n = m",
+        "existing_name": "succ_injective"
+      },
+      "blocker": null
+    },
+    {
+      "id": "eq_symm",
+      "title": "Equality is symmetric",
+      "domain": "equality",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Packages the primitive symmetry rule as a reusable universally quantified fact.",
+      "peano": {
+        "statement": "forall a b. a = b -> b = a",
+        "existing_name": "eq_symm"
+      },
+      "blocker": null
+    },
+    {
+      "id": "eq_trans",
+      "title": "Equality is transitive",
+      "domain": "equality",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Packages the primitive transitivity rule for downstream rewriting arguments.",
+      "peano": {
+        "statement": "forall a b c. a = b -> b = c -> a = c",
+        "existing_name": "eq_trans"
+      },
+      "blocker": null
+    },
+    {
+      "id": "succ_congr",
+      "title": "Successor preserves equality",
+      "domain": "equality",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "The unary congruence rule exposed as a theorem.",
+      "peano": {
+        "statement": "forall a b. a = b -> S a = S b",
+        "existing_name": "succ_congr"
+      },
+      "blocker": null
+    },
+    {
+      "id": "add_congr",
+      "title": "Addition preserves equality in both arguments",
+      "domain": "equality",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "The binary addition congruence rule in reusable closed form.",
+      "peano": {
+        "statement": "forall a b c d. a = b -> c = d -> a + c = b + d",
+        "existing_name": "add_congr"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mul_congr",
+      "title": "Multiplication preserves equality in both arguments",
+      "domain": "equality",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "The binary multiplication congruence rule in reusable closed form.",
+      "peano": {
+        "statement": "forall a b c d. a = b -> c = d -> a * c = b * d",
+        "existing_name": "mul_congr"
+      },
+      "blocker": null
+    },
+    {
+      "id": "zero_add",
+      "title": "Zero is a left identity for addition",
+      "domain": "addition",
+      "status": "checked_existing",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "The induction-derived orientation complementary to PA3.",
+      "peano": {
+        "statement": "forall n. 0 + n = n",
+        "existing_name": "zero_add"
+      },
+      "blocker": null
+    },
+    {
+      "id": "add_succ_left",
+      "title": "Successor moves through addition on the left",
+      "domain": "addition",
+      "status": "checked_existing",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "The left-oriented successor law needed for commutativity.",
+      "peano": {
+        "statement": "forall n m. S n + m = S (n + m)",
+        "existing_name": "add_succ_left"
+      },
+      "blocker": null
+    },
+    {
+      "id": "add_comm",
+      "title": "Addition is commutative",
+      "domain": "addition",
+      "status": "checked_existing",
+      "dependencies": [
+        "zero_add",
+        "add_succ_left"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "The first substantial induction theorem in the arithmetic ladder.",
+      "peano": {
+        "statement": "forall n m. n + m = m + n",
+        "existing_name": "add_comm"
+      },
+      "blocker": null
+    },
+    {
+      "id": "add_assoc",
+      "title": "Addition is associative",
+      "domain": "addition",
+      "status": "checked_existing",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "The reassociation law used throughout order and divisibility proofs.",
+      "peano": {
+        "statement": "forall n m k. (n + m) + k = n + (m + k)",
+        "existing_name": "add_assoc"
+      },
+      "blocker": null
+    },
+    {
+      "id": "add_eq_zero_right",
+      "title": "A zero sum has a zero right summand",
+      "domain": "addition",
+      "status": "checked_existing",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Extracts the right component from a sum equal to zero.",
+      "peano": {
+        "statement": "forall a b. a + b = 0 -> b = 0",
+        "existing_name": "add_eq_zero_right"
+      },
+      "blocker": null
+    },
+    {
+      "id": "no_succ_add_fixed",
+      "title": "Adding a positive successor has no fixed point",
+      "domain": "addition",
+      "status": "checked_existing",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "A positivity helper expressed without a primitive strict-order relation.",
+      "peano": {
+        "statement": "forall p n. S p + n = n -> false",
+        "existing_name": "no_succ_add_fixed"
+      },
+      "blocker": null
+    },
+    {
+      "id": "drop_add_prefix_from_fixed",
+      "title": "Drop an additive prefix from a fixed-point equation",
+      "domain": "addition",
+      "status": "checked_existing",
+      "dependencies": [
+        "zero_add",
+        "add_succ_left",
+        "no_succ_add_fixed"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Helper underlying additive-witness antisymmetry.",
+      "peano": {
+        "statement": "forall a b n. (b + a) + n = n -> a + n = n",
+        "existing_name": "drop_add_prefix_from_fixed"
+      },
+      "blocker": null
+    },
+    {
+      "id": "add_right_cancel",
+      "title": "Addition cancels on the right",
+      "domain": "addition",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "A core cancellation lemma for order, congruence, and divisibility.",
+      "peano": {
+        "statement": "forall a b c. a + c = b + c -> a = b",
+        "existing_name": "add_right_cancel"
+      },
+      "blocker": null
+    },
+    {
+      "id": "add_left_cancel",
+      "title": "Addition cancels on the left",
+      "domain": "addition",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_comm",
+        "add_right_cancel"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "The commuted cancellation orientation.",
+      "peano": {
+        "statement": "forall a b c. a + b = a + c -> b = c",
+        "existing_name": "add_left_cancel"
+      },
+      "blocker": null
+    },
+    {
+      "id": "add_eq_zero_left",
+      "title": "A zero sum has a zero left summand",
+      "domain": "addition",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_comm",
+        "add_eq_zero_right"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "The symmetric component of zero-sum elimination.",
+      "peano": {
+        "statement": "forall a b. a + b = 0 -> a = 0",
+        "existing_name": "add_eq_zero_left"
+      },
+      "blocker": null
+    },
+    {
+      "id": "add_eq_zero_components",
+      "title": "Both summands of a zero sum are zero",
+      "domain": "addition",
+      "status": "planned_expressible",
+      "dependencies": [
+        "add_eq_zero_right",
+        "add_eq_zero_left"
+      ],
+      "sources": [
+        "nng4"
+      ],
+      "summary": "Combines both useful projections into one conjunction.",
+      "peano": {
+        "statement": "forall a b. a + b = 0 -> a = 0 /\\ b = 0",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "mul_zero_left",
+      "title": "Zero is a left annihilator for multiplication",
+      "domain": "multiplication",
+      "status": "checked_existing",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "The induction-derived orientation complementary to PA5.",
+      "peano": {
+        "statement": "forall n. 0 * n = 0",
+        "existing_name": "mul_zero_left"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mul_succ_left",
+      "title": "Successor moves through multiplication on the left",
+      "domain": "multiplication",
+      "status": "checked_existing",
+      "dependencies": [
+        "add_comm",
+        "add_assoc"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "The left-oriented successor multiplication law.",
+      "peano": {
+        "statement": "forall n m. S n * m = n * m + m",
+        "existing_name": "mul_succ_left"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mul_comm",
+      "title": "Multiplication is commutative",
+      "domain": "multiplication",
+      "status": "checked_existing",
+      "dependencies": [
+        "mul_zero_left",
+        "mul_succ_left"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Commutativity derived by induction from both successor orientations.",
+      "peano": {
+        "statement": "forall n m. n * m = m * n",
+        "existing_name": "mul_comm"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mul_add",
+      "title": "Multiplication distributes over right addition",
+      "domain": "multiplication",
+      "status": "checked_existing",
+      "dependencies": [
+        "add_assoc"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "The right-distributive orientation used by multiplication associativity.",
+      "peano": {
+        "statement": "forall n m k. n * (m + k) = n * m + n * k",
+        "existing_name": "mul_add"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mul_assoc",
+      "title": "Multiplication is associative",
+      "domain": "multiplication",
+      "status": "checked_existing",
+      "dependencies": [
+        "mul_add"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "The multiplication reassociation law.",
+      "peano": {
+        "statement": "forall n m k. (n * m) * k = n * (m * k)",
+        "existing_name": "mul_assoc"
+      },
+      "blocker": null
+    },
+    {
+      "id": "one_mul",
+      "title": "One is a left identity for multiplication",
+      "domain": "multiplication",
+      "status": "checked_existing",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "The induction-derived left identity orientation.",
+      "peano": {
+        "statement": "forall n. 1 * n = n",
+        "existing_name": "one_mul"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mul_one",
+      "title": "One is a right identity for multiplication",
+      "domain": "multiplication",
+      "status": "checked_existing",
+      "dependencies": [
+        "zero_add"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "The right identity orientation used by divisibility reflexivity.",
+      "peano": {
+        "statement": "forall n. n * 1 = n",
+        "existing_name": "mul_one"
+      },
+      "blocker": null
+    },
+    {
+      "id": "add_mul",
+      "title": "Left addition distributes through multiplication",
+      "domain": "multiplication",
+      "status": "checked_existing",
+      "dependencies": [
+        "mul_comm",
+        "mul_add"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "The left-distributive orientation completing the commutative-semiring basis.",
+      "peano": {
+        "statement": "forall n m k. (n + m) * k = n * k + m * k",
+        "existing_name": "add_mul"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mul_eq_zero",
+      "title": "A zero product has a zero factor",
+      "domain": "multiplication",
+      "status": "checked_existing",
+      "dependencies": [
+        "add_eq_zero_right"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo"
+      ],
+      "summary": "The current theorem-ladder capstone.",
+      "peano": {
+        "statement": "forall n m. n * m = 0 -> n = 0 \\/ m = 0",
+        "existing_name": "mul_eq_zero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mul_ne_zero",
+      "title": "A product of nonzero naturals is nonzero",
+      "domain": "multiplication",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_eq_zero"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo"
+      ],
+      "summary": "The contrapositive-facing form of the checked zero-product theorem.",
+      "peano": {
+        "statement": "forall a b. ~(a = 0) -> ~(b = 0) -> ~(a * b = 0)",
+        "existing_name": "mul_ne_zero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "two_large_factors_impossible",
+      "title": "Two is not a product of two successors of successors",
+      "domain": "multiplication",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_succ_left",
+        "add_eq_zero_left",
+        "mul_eq_zero"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo"
+      ],
+      "summary": "The bounded factor obstruction used by the checked proof that two is prime.",
+      "peano": {
+        "statement": "forall a b. ~(2 = S (S a) * S (S b))",
+        "existing_name": "two_large_factors_impossible"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mul_eq_one_components",
+      "title": "Both factors of a product equal to one are one",
+      "domain": "multiplication",
+      "status": "planned_expressible",
+      "dependencies": [
+        "mul_eq_zero"
+      ],
+      "sources": [
+        "nng4",
+        "macbeth_math2001_repo"
+      ],
+      "summary": "A basic unit-factor lemma needed by the expanded prime predicate.",
+      "peano": {
+        "statement": "forall a b. a * b = 1 -> a = 1 /\\ b = 1",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "mul_left_cancel_nonzero",
+      "title": "A nonzero factor cancels on the left",
+      "domain": "multiplication",
+      "status": "planned_expressible",
+      "dependencies": [
+        "mul_eq_zero",
+        "add_left_cancel"
+      ],
+      "sources": [
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Cancellation with the natural-number nonzero side condition made explicit.",
+      "peano": {
+        "statement": "forall a b c. ~(a = 0) -> a * b = a * c -> b = c",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "le_refl",
+      "title": "Order is reflexive",
+      "domain": "order",
+      "status": "checked_existing",
+      "dependencies": [
+        "zero_add"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Uses zero as the additive witness for the expanded order relation.",
+      "peano": {
+        "statement": "forall n. exists k. k + n = n",
+        "existing_name": "le_refl"
+      },
+      "blocker": null
+    },
+    {
+      "id": "le_trans",
+      "title": "Order is transitive",
+      "domain": "order",
+      "status": "checked_existing",
+      "dependencies": [
+        "add_assoc"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Composes two additive order witnesses.",
+      "peano": {
+        "statement": "forall n m k. (exists a. a + n = m) -> (exists b. b + m = k) -> exists c. c + n = k",
+        "existing_name": "le_trans"
+      },
+      "blocker": null
+    },
+    {
+      "id": "antisymm_from_witnesses",
+      "title": "Opposing additive witnesses force equality",
+      "domain": "order",
+      "status": "checked_existing",
+      "dependencies": [
+        "add_assoc",
+        "drop_add_prefix_from_fixed"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "The additive core of order antisymmetry.",
+      "peano": {
+        "statement": "forall a b n m. a + n = m -> b + m = n -> n = m",
+        "existing_name": "antisymm_from_witnesses"
+      },
+      "blocker": null
+    },
+    {
+      "id": "le_antisymm",
+      "title": "Order is antisymmetric",
+      "domain": "order",
+      "status": "checked_existing",
+      "dependencies": [
+        "antisymm_from_witnesses"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Eliminates the two existential order witnesses through the checked helper.",
+      "peano": {
+        "statement": "forall n m. (exists a. a + n = m) -> (exists b. b + m = n) -> n = m",
+        "existing_name": "le_antisymm"
+      },
+      "blocker": null
+    },
+    {
+      "id": "le_total",
+      "title": "Natural-number order is total",
+      "domain": "order",
+      "status": "checked_existing",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Every pair of naturals has an additive witness in one direction.",
+      "peano": {
+        "statement": "forall n m. (exists a. a + n = m) \\/ exists b. b + m = n",
+        "existing_name": "le_total"
+      },
+      "blocker": null
+    },
+    {
+      "id": "zero_le",
+      "title": "Zero is below every natural number",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "The number itself supplies the expanded additive witness.",
+      "peano": {
+        "statement": "forall n. exists k. k + 0 = n",
+        "existing_name": "zero_le"
+      },
+      "blocker": null
+    },
+    {
+      "id": "le_succ_self",
+      "title": "Every natural is below its successor",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [
+        "zero_add",
+        "add_succ_left"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "One supplies the expanded additive witness.",
+      "peano": {
+        "statement": "forall n. exists k. k + n = S n",
+        "existing_name": "le_succ_self"
+      },
+      "blocker": null
+    },
+    {
+      "id": "le_zero",
+      "title": "Only zero lies below zero",
+      "domain": "order",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_eq_zero_right"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4"
+      ],
+      "summary": "Eliminates an additive witness ending at zero.",
+      "peano": {
+        "statement": "forall n. (exists k. k + n = 0) -> n = 0",
+        "existing_name": "le_zero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "le_add_right",
+      "title": "A number is below itself plus a right summand",
+      "domain": "order",
+      "status": "planned_expressible",
+      "dependencies": [
+        "add_comm"
+      ],
+      "sources": [
+        "nng4"
+      ],
+      "summary": "The right summand becomes the additive order witness after commutation.",
+      "peano": {
+        "statement": "forall a b. exists k. k + a = a + b",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "add_le_add_right",
+      "title": "Adding the same right summand preserves order",
+      "domain": "order",
+      "status": "planned_expressible",
+      "dependencies": [
+        "add_assoc"
+      ],
+      "sources": [
+        "nng4",
+        "macbeth_mechanics_site"
+      ],
+      "summary": "Transports an explicit additive witness through right addition.",
+      "peano": {
+        "statement": "forall a b c. (exists k. k + a = b) -> exists r. r + (a + c) = b + c",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "lt_irrefl_expanded",
+      "title": "Strict order is irreflexive",
+      "domain": "order",
+      "status": "planned_expressible",
+      "dependencies": [
+        "no_succ_add_fixed"
+      ],
+      "sources": [
+        "nng4"
+      ],
+      "summary": "Uses S n <= n as the fixed-language expansion of n < n.",
+      "peano": {
+        "statement": "forall n. ~ (exists k. k + S n = n)",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "multiple_refl",
+      "title": "Divisibility is reflexive",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_one"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Uses one as the expanded divisibility witness.",
+      "peano": {
+        "statement": "forall a. exists k. a = a * k",
+        "existing_name": "multiple_refl"
+      },
+      "blocker": null
+    },
+    {
+      "id": "one_multiple",
+      "title": "One divides every natural number",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [
+        "one_mul"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "The target number is the divisibility witness.",
+      "peano": {
+        "statement": "forall a. exists k. a = 1 * k",
+        "existing_name": "one_multiple"
+      },
+      "blocker": null
+    },
+    {
+      "id": "multiple_zero",
+      "title": "Every natural number divides zero",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo"
+      ],
+      "summary": "Zero supplies the divisibility witness through PA5.",
+      "peano": {
+        "statement": "forall a. exists k. 0 = a * k",
+        "existing_name": "multiple_zero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "multiple_trans",
+      "title": "Divisibility is transitive",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_assoc"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "Multiplies two explicit witnesses.",
+      "peano": {
+        "statement": "forall a b n. (exists q. n = a * q) -> (exists r. a = b * r) -> exists s. n = b * s",
+        "existing_name": "multiple_trans"
+      },
+      "blocker": null
+    },
+    {
+      "id": "multiple_add",
+      "title": "A common divisor divides a sum",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_add"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Adds the two divisibility witnesses and distributes.",
+      "peano": {
+        "statement": "forall a n m. (exists q. n = a * q) -> (exists r. m = a * r) -> exists s. n + m = a * s",
+        "existing_name": "multiple_add"
+      },
+      "blocker": null
+    },
+    {
+      "id": "multiple_mul_right",
+      "title": "A divisor remains a divisor after right multiplication",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_assoc"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo"
+      ],
+      "summary": "Extends a witness by multiplying it with the new factor.",
+      "peano": {
+        "statement": "forall a n m. (exists q. n = a * q) -> exists s. n * m = a * s",
+        "existing_name": "multiple_mul_right"
+      },
+      "blocker": null
+    },
+    {
+      "id": "multiple_mul_left",
+      "title": "A divisor remains a divisor after left multiplication",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_comm",
+        "multiple_mul_right"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo"
+      ],
+      "summary": "The commuted multiplication closure for explicit multiple witnesses.",
+      "peano": {
+        "statement": "forall a n m. (exists q. n = a * q) -> exists s. m * n = a * s",
+        "existing_name": "multiple_mul_left"
+      },
+      "blocker": null
+    },
+    {
+      "id": "not_multiple_pointwise",
+      "title": "A nonmultiple differs from every candidate multiple",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo"
+      ],
+      "summary": "Moves existential negation to a reusable pointwise family without classical logic.",
+      "peano": {
+        "statement": "forall a n. ~(exists q. n = a * q) -> forall q. ~(n = a * q)",
+        "existing_name": "not_multiple_pointwise"
+      },
+      "blocker": null
+    },
+    {
+      "id": "not_multiple_from_pointwise",
+      "title": "Pointwise inequality excludes every multiple witness",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo"
+      ],
+      "summary": "Reconstructs existential negation from the pointwise family.",
+      "peano": {
+        "statement": "forall a n. (forall q. ~(n = a * q)) -> ~(exists q. n = a * q)",
+        "existing_name": "not_multiple_from_pointwise"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod_eq_refl",
+      "title": "Balanced natural congruence is reflexive",
+      "domain": "congruence",
+      "status": "planned_expressible",
+      "dependencies": [],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Uses the balanced existential definition that avoids integer subtraction.",
+      "peano": {
+        "statement": "forall m a. exists u v. a + m * u = a + m * v",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod_eq_symm",
+      "title": "Balanced natural congruence is symmetric",
+      "domain": "congruence",
+      "status": "planned_expressible",
+      "dependencies": [
+        "eq_symm"
+      ],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Swaps both existential witnesses and reverses the equality.",
+      "peano": {
+        "statement": "forall m a b. (exists u v. a + m * u = b + m * v) -> exists r s. b + m * r = a + m * s",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod_eq_trans",
+      "title": "Balanced natural congruence is transitive",
+      "domain": "congruence",
+      "status": "planned_expressible",
+      "dependencies": [
+        "add_assoc",
+        "add_comm",
+        "mul_add"
+      ],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "stein_ent_tex"
+      ],
+      "summary": "Combines balanced witnesses without introducing subtraction.",
+      "peano": {
+        "statement": "forall m a b c. (exists u v. a + m * u = b + m * v) -> (exists r s. b + m * r = c + m * s) -> exists x y. a + m * x = c + m * y",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod_eq_add",
+      "title": "Balanced congruence respects addition",
+      "domain": "congruence",
+      "status": "planned_expressible",
+      "dependencies": [
+        "mod_eq_trans",
+        "add_assoc",
+        "add_comm"
+      ],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Adds two congruences using combined balanced witnesses.",
+      "peano": {
+        "statement": "forall m a b c d. (exists u v. a + m * u = b + m * v) -> (exists r s. c + m * r = d + m * s) -> exists x y. (a + c) + m * x = (b + d) + m * y",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "dvd_to_mod_zero",
+      "title": "A multiple is congruent to zero",
+      "domain": "congruence",
+      "status": "planned_expressible",
+      "dependencies": [
+        "zero_add"
+      ],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Connects expanded divisibility with the balanced modular relation.",
+      "peano": {
+        "statement": "forall m a. (exists k. a = m * k) -> exists u v. a + m * u = 0 + m * v",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "add_residue",
+      "title": "Absorb a known residue decomposition into a multiple",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_assoc",
+        "mul_add"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "A general quotient-update identity used by residue calculations.",
+      "peano": {
+        "statement": "forall a u c r s. r = a * c + s -> a * u + r = a * (u + c) + s",
+        "existing_name": "add_residue"
+      },
+      "blocker": null
+    },
+    {
+      "id": "add_residue_lift",
+      "title": "Lift an additive residue decomposition",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_comm",
+        "add_assoc",
+        "mul_add"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Combines a decomposed input with a decomposed residue and returns the updated quotient.",
+      "peano": {
+        "statement": "forall a x u r q t c s. x = a * q + t -> r + t = a * c + s -> (a * u + r) + x = a * ((u + q) + c) + s",
+        "existing_name": "add_residue_lift"
+      },
+      "blocker": null
+    },
+    {
+      "id": "square_decomp",
+      "title": "Expand the square of a quotient-residue decomposition",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_assoc",
+        "mul_comm",
+        "mul_add",
+        "add_mul",
+        "mul_assoc"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "The generic algebraic decomposition behind reusable square-residue arguments.",
+      "peano": {
+        "statement": "forall a z q r. z = a * q + r -> z * z = a * (q * z + r * q) + r * r",
+        "existing_name": "square_decomp"
+      },
+      "blocker": null
+    },
+    {
+      "id": "square_residue_lift",
+      "title": "Lift a residue decomposition through squaring",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "square_decomp",
+        "add_residue"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Combines a decomposition of z with a decomposition of its residue square.",
+      "peano": {
+        "statement": "forall a z q r c s. z = a * q + r -> r * r = a * c + s -> z * z = a * ((q * z + r * q) + c) + s",
+        "existing_name": "square_residue_lift"
+      },
+      "blocker": null
+    },
+    {
+      "id": "square_residue_witness",
+      "title": "Package a square residue as an existential witness",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "square_residue_lift"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Forgets the explicit quotient formula while retaining a reusable existential multiple witness.",
+      "peano": {
+        "statement": "forall a z q r c s. z = a * q + r -> r * r = a * c + s -> exists w. z * z = a * w + s",
+        "existing_name": "square_residue_witness"
+      },
+      "blocker": null
+    },
+    {
+      "id": "gcd_exists_relational",
+      "title": "A greatest common divisor exists",
+      "domain": "gcd_coprime",
+      "status": "planned_expressible",
+      "dependencies": [
+        "multiple_refl",
+        "multiple_trans",
+        "le_total"
+      ],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "weissman_python_number_theory",
+        "stein_ent_tex"
+      ],
+      "summary": "Uses a relational specification because the fixed language has no gcd function symbol.",
+      "peano": {
+        "statement": "forall a b. exists d. (exists x. a = d * x) /\\ (exists y. b = d * y) /\\ forall c. (exists u. a = c * u) -> (exists v. b = c * v) -> exists w. d = c * w",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "coprime_symm",
+      "title": "Coprimality is symmetric",
+      "domain": "gcd_coprime",
+      "status": "planned_expressible",
+      "dependencies": [],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Swaps the two common-divisor hypotheses in the expanded relational definition.",
+      "peano": {
+        "statement": "forall a b. (forall d. (exists x. a = d * x) -> (exists y. b = d * y) -> d = 1) -> forall c. (exists u. b = c * u) -> (exists v. a = c * v) -> c = 1",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "coprime_one_right",
+      "title": "Every natural number is coprime to one",
+      "domain": "gcd_coprime",
+      "status": "planned_expressible",
+      "dependencies": [
+        "mul_eq_one_components"
+      ],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Any divisor of one must itself be one.",
+      "peano": {
+        "statement": "forall a d. (exists x. a = d * x) -> (exists y. 1 = d * y) -> d = 1",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "bezout_integer_coefficients",
+      "title": "Bézout identity with integer coefficients",
+      "domain": "gcd_coprime",
+      "status": "blocked_by_language",
+      "dependencies": [
+        "gcd_exists_relational"
+      ],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "weissman_python_number_theory"
+      ],
+      "summary": "The conventional reusable theorem quantifies over signed coefficients.",
+      "peano": null,
+      "blocker": {
+        "code": "integer_coefficients_unrepresented",
+        "detail": "Peano Lab quantifies only over naturals and has no integer encoding or subtraction. A balanced natural reformulation is possible, but it is a different interface and should be designed explicitly.",
+        "unblocks_with": [
+          "a reviewed integer-pair encoding",
+          "or a separately named balanced-natural Bézout relation"
+        ]
+      }
+    },
+    {
+      "id": "prime_two",
+      "title": "Two is prime",
+      "domain": "primes",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_zero_left",
+        "two_large_factors_impossible"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "First concrete theorem using the fully expanded natural prime predicate.",
+      "peano": {
+        "statement": "~(2 = 1) /\\ forall a b. 2 = a * b -> a = 1 \\/ b = 1",
+        "existing_name": "prime_two"
+      },
+      "blocker": null
+    },
+    {
+      "id": "prime_three",
+      "title": "Three is prime",
+      "domain": "primes",
+      "status": "planned_expressible",
+      "dependencies": [
+        "prime_two"
+      ],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "A second concrete prime proof for the numerical and factorization toolkit.",
+      "peano": {
+        "statement": "~(3 = 1) /\\ forall a b. 3 = a * b -> a = 1 \\/ b = 1",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "prime_or_composite",
+      "title": "Every nontrivial natural is prime or composite",
+      "domain": "primes",
+      "status": "planned_expressible",
+      "dependencies": [
+        "le_total",
+        "mul_left_cancel_nonzero"
+      ],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Makes the prime predicate and a nontrivial factor witness explicit.",
+      "peano": {
+        "statement": "forall n. ~(n = 0) -> ~(n = 1) -> ((~(n = 1) /\\ forall a b. n = a * b -> a = 1 \\/ b = 1) \\/ exists c d. ~(c = 1) /\\ ~(d = 1) /\\ n = c * d)",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "prime_divisor_exists",
+      "title": "Every nontrivial natural has a prime divisor",
+      "domain": "primes",
+      "status": "planned_expressible",
+      "dependencies": [
+        "prime_or_composite",
+        "multiple_trans"
+      ],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "An induction/minimal-counterexample milestone stated without a primitive Prime predicate.",
+      "peano": {
+        "statement": "forall n. ~(n = 0) -> ~(n = 1) -> exists p. (~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1) /\\ exists k. n = p * k",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "euclid_prime_dvd_product",
+      "title": "Euclid's lemma",
+      "domain": "primes",
+      "status": "planned_expressible",
+      "dependencies": [
+        "gcd_exists_relational",
+        "coprime_symm",
+        "multiple_trans"
+      ],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "A prime dividing a product divides at least one factor, with all predicates expanded.",
+      "peano": {
+        "statement": "forall p a b. (~(p = 1) /\\ forall c d. p = c * d -> c = 1 \\/ d = 1) -> (exists k. a * b = p * k) -> (exists u. a = p * u) \\/ exists v. b = p * v",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "prime_unbounded",
+      "title": "There is a prime larger than every given natural",
+      "domain": "primes",
+      "status": "planned_expressible",
+      "dependencies": [
+        "prime_divisor_exists"
+      ],
+      "sources": [
+        "weissman_illustrated_programming",
+        "weissman_python_number_theory",
+        "open_logic"
+      ],
+      "summary": "The theorem itself is first-order expressible; its proof should construct a nonzero common multiple up to the bound by induction before applying prime-divisor existence.",
+      "peano": {
+        "statement": "forall n. exists p. (exists k. k + S n = p) /\\ (~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1)",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "two_prime_product_uniqueness",
+      "title": "A product of two primes is unique up to order",
+      "domain": "factorization",
+      "status": "planned_expressible",
+      "dependencies": [
+        "euclid_prime_dvd_product",
+        "mul_left_cancel_nonzero"
+      ],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "A fixed-length factorization theorem that fits today's term language and exercises Euclid's lemma.",
+      "peano": {
+        "statement": "forall p q r s. (~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1) -> (~(q = 1) /\\ forall c d. q = c * d -> c = 1 \\/ d = 1) -> (~(r = 1) /\\ forall e f. r = e * f -> e = 1 \\/ f = 1) -> (~(s = 1) /\\ forall g h. s = g * h -> g = 1 \\/ h = 1) -> p * q = r * s -> (p = r /\\ q = s) \\/ (p = s /\\ q = r)",
+        "existing_name": null
+      },
+      "blocker": null
+    },
+    {
+      "id": "prime_factorization_existence",
+      "title": "Existence of a finite prime factorization",
+      "domain": "factorization",
+      "status": "blocked_by_language",
+      "dependencies": [
+        "prime_divisor_exists"
+      ],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "weissman_python_number_theory",
+        "open_logic"
+      ],
+      "summary": "The factor list has variable length and cannot be represented naturally in the current surface language.",
+      "peano": null,
+      "blocker": {
+        "code": "variable_length_factorization_unrepresented",
+        "detail": "A finite prime factorization requires a sequence/multiset of primes, an exponent-vector representation, or an arithmetized sequence code. None exists in Peano Lab's current fixed signature.",
+        "unblocks_with": [
+          "a reviewed finite-sequence or multiset encoding",
+          "a product-fold graph relation",
+          "and checked links between encoded elements, primality, and the folded product"
+        ]
+      }
+    },
+    {
+      "id": "prime_factorization_uniqueness",
+      "title": "Uniqueness of finite prime factorization",
+      "domain": "factorization",
+      "status": "blocked_by_language",
+      "dependencies": [
+        "euclid_prime_dvd_product",
+        "two_prime_product_uniqueness",
+        "prime_factorization_existence"
+      ],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "weissman_python_number_theory"
+      ],
+      "summary": "Uniqueness must compare variable-length factorizations modulo permutation and multiplicity.",
+      "peano": null,
+      "blocker": {
+        "code": "factorization_equivalence_unrepresented",
+        "detail": "The current language cannot quantify over two finite factor collections or express equality up to permutation and multiplicity. Fixed two-factor uniqueness is cataloged separately as an expressible milestone.",
+        "unblocks_with": [
+          "the factorization representation required by prime_factorization_existence",
+          "a checked permutation or exponent-vector equivalence relation"
+        ]
+      }
+    },
+    {
+      "id": "fundamental_theorem_of_arithmetic",
+      "title": "Fundamental theorem of arithmetic",
+      "domain": "factorization",
+      "status": "blocked_by_language",
+      "dependencies": [
+        "prime_factorization_existence",
+        "prime_factorization_uniqueness"
+      ],
+      "sources": [
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming",
+        "weissman_python_number_theory",
+        "stein_ent_tex"
+      ],
+      "summary": "The principal theorem combines existence and uniqueness; a complete Lean artifact is the appropriate near-term formal target.",
+      "peano": null,
+      "blocker": {
+        "code": "finite_factorization_language_missing",
+        "detail": "Both halves depend on a variable-length factorization representation absent from Peano Lab. Treating Prime, factor lists, or exponentiation as trusted primitives would violate the current small-kernel design.",
+        "unblocks_with": [
+          "prime_factorization_existence",
+          "prime_factorization_uniqueness",
+          "a separately kernel-checked companion formalization while Peano support remains blocked"
+        ]
+      }
+    }
+  ]
+}

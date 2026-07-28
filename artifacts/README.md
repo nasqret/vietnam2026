@@ -139,3 +139,15 @@ cd peano-lab/py && python3 -m pytest \
 The result is a verified upper bound, not a claimed proof of global minimality. The hand constructor
 and the independently replayed browser-tactic script now reach the same canonical ordinary proof;
 neither adds a trusted arithmetic shortcut.
+
+## Peano foundational arithmetic library
+
+[`peano-library/`](peano-library/) is the deterministic snapshot of all 51
+checked Peano library entries. It contains statement/script/certificate hashes,
+exact node/depth metrics, an ordered root digest, and the dependency DAG in
+Mermaid form. Rebuild or verify it with
+`python3 scripts/build_peano_library_snapshot.py [--check]`.
+
+The snapshot is evidence about replayed certificates, not a theorem database
+trusted by the kernel. The broader checked/planned/blocked research graph lives
+in `research/arithmetic-library/catalog.json`.

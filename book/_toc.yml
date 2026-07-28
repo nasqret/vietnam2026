@@ -32,6 +32,15 @@ parts:
       - file: peano/tutorials
       - file: peano/ladder
       - file: peano/diary
+  - caption: "Foundational arithmetic library"
+    chapters:
+      - file: arithmetic-library/index
+      - file: arithmetic-library/language-and-trust
+      - file: arithmetic-library/dependency-ladder
+      - file: arithmetic-library/divisibility-and-congruence
+      - file: arithmetic-library/primes-and-factorization
+      - file: arithmetic-library/source-audit
+      - file: arithmetic-library/using-the-library
   - caption: "Appendix"
     chapters:
       - file: appendix/cheatsheet

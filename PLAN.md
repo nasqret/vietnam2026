@@ -25,6 +25,7 @@ mathematics — with every idea presented **informally (runnable) and formally (
 | Research dossier | [`PLAN/07_research.md`](PLAN/07_research.md) | Depth, citations and current-landscape groundwork feeding every lecture. |
 | Release & deploy | [`PLAN/08_deploy.md`](PLAN/08_deploy.md) | Git → GitHub → faculty server; incremental go-live; build/link checks. |
 | Peano Lab | [`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md) | Sound browser theorem prover for PA: kernel → checked arithmetic tactics → UI → book/vault/corpus. |
+| Foundational arithmetic library | [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md) | Versioned lemma DAG: congruence and divisibility → division/gcd/primes → an honestly represented FTA. |
 
 ## L2 / L3
 
@@ -53,3 +54,13 @@ prepare/train chain will also use a manifest loader that separates sorted JSON r
 semantic capability identity. No learned theorem-solving result is claimed. See
 [`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest completed and staged
 milestone; production remains untouched behind the M14 cache-header blocker.
+
+## Parallel foundational arithmetic milestone
+
+M20 generalizes the theorem ladder into a structured arithmetic corpus. Its
+first checked layer adds 28 reusable equality, cancellation, order,
+multiplication, divisibility, residue, and small-prime lemmas, including the
+first checked fully expanded prime instance `prime_two`. The catalog maps the
+exact route to division, gcd, the general prime spine, and factorization. Full
+FTA remains blocked on a reviewed finite-factorization representation. See
+[`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md).

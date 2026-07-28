@@ -38,8 +38,8 @@ The exact abstracts, session plans and reading lists live on the [landing page](
 | `vault/` | The **Obsidian vault** — the atomic, wiki-linked knowledge base behind the book. |
 | `artifacts/` | **Formal proofs** of the same statements in four systems: `lean/`, `agda/`, `rocq/`, `mizar/`. |
 | `lab-lambda/` | The **Lambda Lab**, repackaged to run **directly in the browser** (Pyodide + xterm.js). Deployed to `/lab-lambda`. |
-| `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, checked theorem ladder, and reproducible proof-trace corpus. |
-| `research/` | The **research dossier** — the depth/citation groundwork behind every lecture. |
+| `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, 51-entry checked arithmetic ladder, and reproducible proof-trace corpus. |
+| `research/` | The **research dossier** — including the pinned 75-node foundational arithmetic catalog (23 existing checked, 28 M20 checked, 20 planned expressible, four language-blocked) and source/license maps. |
 | `scripts/` | Book replay gate plus the deterministic Peano trace generation, export, and kernel-judged evaluation pipeline. |
 | `docs/` | Lecturer-facing docs: how to build, deploy, and run each piece. |
 | `MEMORY.md` · `JOURNAL.md` · `PLAN.md` + `PLAN/` | Project **memory**, dated **journal**, and the multi-level **plan**. |

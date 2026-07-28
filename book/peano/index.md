@@ -42,8 +42,8 @@ commutativity, a source-level `symm_all` tactical walkthrough, and a numerical-n
 Every `pa>` block and browser deep link in this part is replayed through the real driver during the
 book gate; prose examples do not get a private, easier semantics.
 
-The full M7 library is executable too. {doc}`The checked theorem ladder <ladder>` follows twenty
-scripted entries through order totality and the zero-product capstone, explains how theorem reuse is
+The full library is executable too. {doc}`The checked theorem ladder <ladder>` follows the original
+23 scripted entries through order totality and the zero-product capstone, explains how theorem reuse is
 cut-eliminated outside the trusted kernel, and links each statement to the browser and Lean 4
 cross-checking surface. M9 then turns the same checked interactions into a reproducible
 [proof-trace corpus](https://github.com/nasqret/vietnam2026/tree/peano-lab/peano-lab/corpus) and fixes
@@ -79,3 +79,11 @@ M18 applies it once more to certificate size. The `compact_arith` tactic searche
 PA recurrence-template space for a small proof of one rigid equality, optionally using an explicit
 ordered list of equality hypotheses. It neither chooses an outer induction invariant nor invents an
 existential witness, and its cost report is never a substitute for independent checking.
+
+M20 begins a general {doc}`foundational arithmetic library
+<../arithmetic-library/index>`. It extends the live ladder to 51 independently checked entries with
+named equality congruences, cancellation and order facts, zero/nonzero-product and small-factor
+reasoning, divisibility closure, modulus-independent residue algebra, and the first checked fully
+expanded prime instance `prime_two`. Its larger research DAG continues through division, gcd, the
+general prime spine, and factorization while labeling every unproved or currently inexpressible
+target.

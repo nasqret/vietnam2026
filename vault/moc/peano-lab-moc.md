@@ -8,6 +8,7 @@ tags: [moc, peano-lab, theorem-proving]
 ## Architecture
 
 - [[peano-lab]]
+- [[arithmetic-library-moc]]
 - [[browser-proof-runtime]]
 - [[trusted-kernel]]
 - [[proof-certificate]]
@@ -54,6 +55,7 @@ tags: [moc, peano-lab, theorem-proving]
 - Post-training protocol: `docs/PEANO_TRAINING.md`
 - Binding design: `docs/PEANO_LAB_DESIGN.md`
 - Milestones: `PLAN/09_peano_lab.md`
+- Arithmetic-library plan: `PLAN/10_arithmetic_library.md`
 
 ## Up
 

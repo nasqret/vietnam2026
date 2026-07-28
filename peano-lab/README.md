@@ -375,6 +375,14 @@ existing Lambda Lab suite reports 360 tests plus 36 subtests, and the Jupyter Bo
 command replay gates are green. This candidate has not been deployed or promoted, and no learned
 model result is claimed.
 
+The M20 foundational-arithmetic candidate is build `2026-07-28h`, immutable
+application release `a-265ffb1c28af`. It expands the checked browser library
+from 23 to 51 theorems without changing the kernel or adding a trusted
+predicate. The 28 M20 additions include `prime_two`, the first checked
+instance of the fully expanded prime predicate. Its source snapshot and dependency metrics live under
+`../artifacts/peano-library/`; this candidate has not been deployed or
+promoted.
+
 Back at the repository root, run both regression suites:
 
 ```console

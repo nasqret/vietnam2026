@@ -1,0 +1,38 @@
+---
+title: "Lemma: mul_comm"
+tags: [peano-arithmetic, checked-lemma, dependency-dag]
+---
+
+# `mul_comm`
+
+Multiplication is commutative.
+
+## Closed Peano statement
+
+```text
+forall n m. n * m = m * n
+```
+
+## Dependencies
+
+- [[mul_zero_left]]
+- [[mul_succ_left]]
+
+## Checked dependents
+
+- [[add_mul]]
+- [[multiple_mul_left]]
+- [[square_decomp]]
+
+## Verification record
+
+- Independently checked from the empty context.
+- Certificate: **222 nodes**, depth **38**.
+- Authored script length: **4 commands**.
+- Runtime card: `pa lib mul_comm`.
+- Book route: *The dependency ladder* in the foundational arithmetic part.
+
+## Related
+
+[[arithmetic-library-moc]] · [[theorem-ladder]] · [[proof-certificate]] ·
+[[checked-theorem-reuse]]
