@@ -43,6 +43,8 @@ def test_wmi_probe_is_read_only_and_records_decisive_runtime_facts() -> None:
     assert "loss.backward()" in source
     assert "anaconda/2025.12-1" in source
     assert "conda activate pytorch-gpu" in source
+    assert "set +u\nsource " in source
+    assert "conda activate pytorch-gpu\nset -u" in source
     assert "module -t spider anaconda" in source
     assert "pypi.org/simple/torch/" in source
     assert "Qwen/Qwen3-1.7B-Base" in source

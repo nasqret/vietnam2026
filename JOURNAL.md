@@ -847,3 +847,8 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   the site's central x86-64 Python-3.12/PyTorch-2.5.1/CUDA-12.4 runtime, exactly one visible A100,
   at least 75 GiB VRAM, BF16 support, and a finite matrix forward/backward pass. The Helios ARM lock
   is explicitly not portable to WMI; a separate pinned overlay follows only after this gate passes.
+- First execution `171366` reached the correct A100 and failed safely after nine seconds during
+  Conda activation: the central MKL hook reads an unset `MKL_INTERFACE_LAYER` while the caller has
+  Bash `nounset` enabled. The probe now suspends `nounset` only while sourcing and activating the
+  administrator-owned Conda hooks, then immediately restores strict mode. No package or model was
+  installed by the failed diagnostic.

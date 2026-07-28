@@ -997,3 +997,10 @@ visible 80GB A100, BF16 matrix forward/backward, exact central Torch/CUDA versio
 storage, and public package/model reachability. Only a passing report licenses a separate Peano
 overlay and full LoRA save/reload smoke. Cluster portability means reproducing the boundary with
 new evidence, not relabeling old evidence.
+
+The first execution, job `171366`, demonstrated another small portability boundary. It acquired
+the intended A100, then the central Conda environment's MKL activation hook read
+`MKL_INTERFACE_LAYER` without guarding the unset case. Our strict `set -u` correctly made that an
+error. The fix does not weaken the probe body: it disables `nounset` only while executing the
+administrator-owned Conda activation hooks and restores it before any Peano assertion. The job
+failed after nine seconds and installed nothing.

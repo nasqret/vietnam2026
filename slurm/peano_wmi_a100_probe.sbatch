@@ -62,8 +62,13 @@ module load anaconda/2025.12-1
 module list 2>&1
 printf 'conda=%s\n' "$(command -v conda)"
 conda --version
+# The central environment's MKL activation hook reads MKL_INTERFACE_LAYER
+# without a default.  Keep our script strict, but do not impose nounset on the
+# administrator-owned Conda activation hooks.
+set +u
 source "$(conda info --base)/etc/profile.d/conda.sh"
 conda activate pytorch-gpu
+set -u
 conda env list
 python --version
 python - <<'PY'
