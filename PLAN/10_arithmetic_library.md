@@ -189,6 +189,10 @@ does not determine the architecture.
 
 - [x] Add a dedicated Jupyter Book part with formulas, executable commands,
       trust boundary, dependency route, source audit, and extension workflow.
+- [x] Add a ten-stage guided route and deterministic interactive theorem atlas
+      containing all 247 exact native statements, authored proof recipes,
+      dependency/dependent navigation, metrics, hashes, live-lab actions, and
+      source/vault links.
 - [x] Add an arithmetic Obsidian MOC, concept notes, and generated per-lemma
       pages linked by exact dependencies and dependents.
 - [x] Update project memory, journal, plans, root maps, and artifact index.
@@ -248,15 +252,17 @@ does not determine the architecture.
   `5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`;
   its smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and all 247
   QEDs. Browser build `2026-07-29j` packages `a-c983d7c60450` without staging
-  or deployment. The strict book rebuild passes all 36 sources with no
-  warnings; 234 deep links and 45 executable blocks/264 commands verify.
+  or deployment. The strict book rebuild passes all 38 sources with no
+  warnings; 194 deep links and 47 executable blocks/287 commands verify.
 - The complete current Peano suite passes all 1,101 tests on Python 3.10 in
   1,050.08 seconds with no reported warnings. No in-app browser was available,
   so direct Pyodide UI smoke remains explicitly unclaimed; the automated
   runtime/worker coverage and browser deployment-manifest checks pass.
-- The strict Jupyter Book build passes over 36 sources with no warnings or
-  errors. Documentation verification checks 234 deep links and 45 session
-  blocks containing 264 commands; all ten static documentation tests pass.
+- The strict Jupyter Book 1.0 build passes over 38 sources with no warnings or
+  errors. Documentation verification checks 194 deep links and 47 session
+  blocks containing 287 commands; all 17 static documentation tests pass. The
+  generated atlas contains 247 checked proof cards, one explicit boundary
+  card, all 640 dependency edges, and a local 1–4-hop navigator.
 - Remaining mathematical/library limits are explicit: generic powers, finite
   maps, and primitive lists remain absent; a
   conventional integer-coefficient Bézout statement is not representable in

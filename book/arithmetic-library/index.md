@@ -1,213 +1,164 @@
 # The foundational arithmetic library
 
-This part turns Peano Lab's original theorem ladder into a general-purpose,
-dependency-organized arithmetic library. The fourth-power-modulo-five exercise
-was a useful stress test, but it is now only one possible application. The
-organizing spine is reusable mathematics:
+This part of the book is the readable front end to a native first-order Peano
+arithmetic library. It begins with ordinary equality and semiring laws, builds
+division, relational gcd, balanced Bézout, Gauss cancellation and Euclid's
+lemma, then constructs finite factor sequences and their products using
+Gödel-β codes. The endpoint is a checked, β-coded Fundamental Theorem of
+Arithmetic.
+
+```{admonition} The result in one sentence
+:class: tip
+The current runtime contains **247 closed native theorems**, including
+factorization existence, extensional uniqueness, their combined FTA, and a
+constructive theorem producing a prime above every supplied bound.
+```
+
+<div class="pa-dashboard-metrics" aria-label="Current arithmetic library metrics">
+  <div><strong>247</strong><span>checked native theorems</span></div>
+  <div><strong>982,534</strong><span>structural proof nodes</span></div>
+  <div><strong>28,892</strong><span>self-contained Cuts</span></div>
+  <div><strong>0</strong><span>remaining planned catalog theorems</span></div>
+</div>
+
+The generated snapshot has ordered root
+`eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`.
+Every entry is reconstructed from its authored script and checked from the
+empty context. Names, summaries and hashes organize the library; none of them
+grant proof authority.
+
+## The mathematical metro map
+
+The exact dependency graph has 247 vertices and is useful to machines, but a
+human first needs the stations. Each box below is a link into the guided tour.
+
+<nav class="pa-roadmap" aria-label="Arithmetic dependency roadmap">
+  <a href="guided-tour.html#stage-foundations"><strong>1 · Foundations</strong><small>equality · semiring · induction</small></a>
+  <a href="guided-tour.html#stage-order"><strong>2 · Discrete order</strong><small>bounds · cancellation · descent</small></a>
+  <a href="guided-tour.html#stage-division"><strong>3 · Division</strong><small>n = dq + r · r &lt; d · uniqueness</small></a>
+  <a href="guided-tour.html#stage-bezout"><strong>4 · GCD &amp; Bézout</strong><small>Euclidean invariance · four coefficients</small></a>
+  <a href="guided-tour.html#stage-euclid"><strong>5 · Gauss &amp; Euclid</strong><small>coprime cancellation · prime products</small></a>
+  <a href="guided-tour.html#stage-primes"><strong>6 · Prime search</strong><small>bounded factors · descent · unboundedness</small></a>
+  <a href="guided-tour.html#stage-beta"><strong>7 · CRT &amp; β codes</strong><small>finite prefixes without primitive lists</small></a>
+  <a href="guided-tour.html#stage-products"><strong>8 · Prefix products</strong><small>decoded factors · exact recurrence traces</small></a>
+  <a href="guided-tour.html#stage-factorization"><strong>9 · Factorization</strong><small>greatest prime · sorted append · cancellation</small></a>
+  <a href="guided-tour.html#stage-fta"><strong>10 · Native FTA</strong><small>existence ∧ extensional uniqueness</small></a>
+</nav>
+
+The exact generated graph remains available as an immutable
+[`dependency-graph.mmd`](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/dependency-graph.mmd).
+The {doc}`interactive theorem atlas <theorem-atlas>` gives a readable local
+neighborhood instead of attempting to draw all 640 edges at once.
+
+## Choose your route
+
+| If you want to… | Begin here | Then move to… |
+|---|---|---|
+| understand the mathematics | {doc}`Guided route from zero to FTA <guided-tour>` | the focused theorem links inside each stage |
+| inspect every native proof | {doc}`Interactive theorem atlas <theorem-atlas>` | exact statements, complete scripts, dependencies and dependents |
+| understand soundness | {doc}`Language, notation, and trust <language-and-trust>` | {doc}`Self-contained proof sharing <proof-sharing>` |
+| study division and congruence | {doc}`Divisibility and subtraction-free congruence <divisibility-and-congruence>` | {doc}`GCD and balanced Bézout <gcd-and-bezout>` |
+| study primes and factorization | {doc}`Primes and unique factorization <primes-and-factorization>` | the FTA and `prime_unbounded` cards in the atlas |
+| train a proof-producing model | {doc}`Using and extending the library <using-the-library>` | the snapshot, corpus and vault links below |
+| audit provenance | {doc}`Sources and clean-room provenance <source-audit>` | catalog source mappings and the separate Lean companion |
+
+## What the native FTA says
+
+At the readable level, the endpoint is
 
 $$
-\text{equality}
-\to \text{semiring laws}
-\to \text{order}
-\to \text{divisibility}
-\to \text{congruence}
-\to \text{division}
-\to \gcd
-\to \text{primes}
-\to \text{factorization}.
+\begin{aligned}
+&\left(\forall n,\ n\ne0\Longrightarrow\exists F.\;
+  \operatorname{CanonicalPF}(n,F)\right)\\
+&\qquad\land
+\left(\forall n,F,G.\;
+  \operatorname{CanonicalPF}(n,F)\land
+  \operatorname{CanonicalPF}(n,G)
+  \Longrightarrow F=_{\mathrm{ext}}G\right).
+\end{aligned}
 $$
 
-The previous published snapshot contains **189 replayed, closed, independently
-kernel-checked Peano theorems**. One hundred and fifty-four form the post-baseline
-foundational layer: named equality congruences, additive cancellation, discrete order,
-multiplication cancellation and monotonicity, zero-sum and nonzero-product
-facts, divisibility closure, constructive non-divisibility, generic residue
-algebra, constructive quotient-remainder existence and uniqueness, and the
-relational gcd/coprimality API through gcd uniqueness and both directions of
-Euclidean gcd invariance, plus constructive bounded and general gcd existence,
-balanced-natural Bézout, Gauss cancellation, and Euclid's lemma. It now also
-contains constructive equality and divisibility decisions, bounded factor-pair
-search, the prime-or-composite decision, proper-factor descent, and prime-divisor
-existence. The latest congruence and encoding tranches prove balanced
-modular-congruence transitivity and compatibility with addition and
-multiplication, turn quotient-remainder decompositions into congruences, then
-check single-position Gödel-β decoding moduli, self-decoding below the bound,
-decoded-value existence, uniqueness, their combined
-existence-and-uniqueness interface, and both directions between a decoded
-value and a bounded balanced-congruence witness. Bounded congruent
-representatives are now unique, and a bounded congruence can be reconstructed
-as a directed quotient-remainder decomposition. The preceding six-theorem tranche
-extracts the two modular consequences of balanced Bézout, proves the
-successor-modulus predecessor cancellation used by the constructive witness, checks
-binary CRT for arbitrary nonzero coprime natural moduli, exposes bounded
-solutions as two directed quotient-remainder equations, and constructs one
-code realizing two bounded β values whenever the two expanded β moduli are
-given coprime. This layer
-includes `prime_two`, the first checked instance of the fully expanded prime
-predicate, `prime_divisor_eq_one_or_self`, its general divisor
-characterization, and `euclid_prime_dvd_product`.
-The latest six entries close the next conditional encoding checkpoint:
-`beta_modulus_coprime_base`,
-`common_divisor_beta_moduli_divides_gap_times_c`,
-`beta_moduli_coprime_of_gap_dvd`,
-`binary_crt_beta_pair_of_gap_dvd`,
-`bounded_common_multiple_step`, and
-`bounded_common_multiple_exists`. They prove pairwise beta-modulus
-coprimality when $j=i+\mathit{gap}$ and $\mathit{gap}\mid c$, then construct a
-nonzero $c$ divisible by every positive natural up to a given bound.
-Seven further entries turn that resource into bounded-prefix pairwise
-coprimality, close coprimality under products in both orientations, descend
-balanced congruence from a product modulus to any divisor modulus, and prove
-the universal preservation invariant of `binary_crt_fold_step`. That fold
-step preserves every old congruence whose modulus divides the accumulated
-product while adding the requested congruence for one new coprime modulus.
-Six more entries now carry this algebra through a genuine ordinary-induction
-fold. `right_factor_divides_product` supplies the new factor's explicit
-divisibility witness. `beta_accumulated_product_step` preserves a nonzero
-accumulated product, divisibility by every earlier beta modulus, and
-coprimality with every future bounded beta modulus.
-`beta_crt_prefix_congruence_step` extends congruence to the next value decoded
-from a supplied code, and `beta_crt_prefix_invariant_step` combines the two
-successor arguments. Finally, `bounded_beta_crt_prefix_invariant` constructs
-the full four-part invariant at every bounded prefix, and
-`bounded_beta_crt_for_existing_code` projects its congruence component at the
-full bound.
+Here $F$ and $G$ are not primitive lists. `BetaAt` decodes a bounded entry
+from two natural-number codes, a second β code records prefix products, and
+equality is extensional on the selected finite prefix. The exact statement is
+ordinary first-order PA over `0`, `S`, `+`, `*` and equality.
 
-At that checkpoint, the last wrapper had to be read narrowly. Its residues are already decoded
-from the input code $b$, so extensionally one could choose $z=b$. It does not
-construct a beta code for an independently specified finite sequence and is
-not the missing finite-prefix recoding theorem.
-The reconciled upstream modular catalog contributed twelve
-more unique residue and fourth-power theorems; fourteen of its other records
-are identical to foundational entries and are exposed only once.
-
-Every theorem in that published snapshot fit its browser `use` limit. The largest
-shared certificate, `bounded_beta_crt_for_existing_code`, has 25,545 structural
-proof nodes, depth 79, and 755 self-contained Cuts; `prime_divisor_exists`
-still sets the snapshot-wide maximum depth at 80. Across all 189 entries, the
-snapshot contains 242,629 structural nodes, including 6,895 Cuts, and 149 certificates
-contain at least one Cut. The
-immutable upstream
-report still records the capstone's former fully expanded 21,515-node/depth-66
-representation; it remains provenance, not the current runtime metric.
-
-Those historical counts were narrower than the then-196-node research catalog: 23
-nodes are `checked_existing`, 166 are `checked_m20`, three are
-`planned_expressible`, and four are `blocked_by_language`. Beyond
-`prime_two`, the catalog now includes checked relational gcd existence,
-balanced Bézout, Gauss cancellation, Euclid's lemma, constructive primality
-decisions, prime-divisor existence, additive and multiplicative
-modular-congruence compatibility, the decomposition-to-congruence bridge, and
-Gödel-β decoded-value totality, functionality, its bidirectional bounded
-congruence characterization, constructive binary CRT, the conditional
-gap-divisibility coprimality theorem, its two-position beta-code client,
-bounded common-multiple existence, bounded-prefix pairwise coprimality,
-product coprimality, modulus descent, the generic CRT fold step, and its
-ordinary-induction prefix invariant for already decoded values.
-
-That boundary has now advanced. At this integration checkpoint the native
-sorted Gödel-β route checks finite-prefix recoding and extension, exact
-prefix-product traces and Product functionality, greatest-prime-divisor
-descent, canonical append, factorization existence, and canonical extensional
-uniqueness.
-
-| Endpoint | Nodes | Depth | Cuts |
+| Native endpoint | Nodes | Depth | Cuts |
 |---|---:|---:|---:|
 | `prime_factorization_existence` | 43,973 | 98 | 1,328 |
 | `prime_factorization_uniqueness` | 29,789 | 82 | 854 |
 | `fundamental_theorem_of_arithmetic` | 73,767 | 99 | 2,184 |
 
-The exact FTA certificate SHA-256 is
-`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
-It checks from the empty context and passes the full prove/use/exact/QED path
-under the current 100,000-node/depth-256 cap. It uses only PA1–PA6 and
-induction and contains no DNE. Runtime integration is complete. The current
-runtime has 247 checked theorems: 23 baseline, 212 general foundational, and
-twelve fixed modular capstones. The synchronized 248-entry research catalog
-has 23 `checked_existing`, 224 `checked_m20`, no planned record, and one
-representation-blocked record. The generated snapshot has 982,534 nodes,
-28,892 Cuts, 204 Cut-bearing certificates, ordered root
-`eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`,
-and source digest
-`295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
-The vault has 327 notes and 3,287 links; corpus and browser identities are
-recorded in {doc}`Using and extending the library <using-the-library>`.
+The top-level authored proof is deliberately only three commands:
 
-The added `prime_unbounded` theorem is constructive and independent of FTA.
-It takes a nonzero common multiple of every positive value through `n`, chooses
-a prime divisor of its successor, and proves that divisor is above `n`: a
-prime at or below the bound would divide both consecutive numbers and hence
-one. Its certificate has 4,595 nodes, depth 82, 146 Cuts, and SHA-256
-`8a44fb2d207c2a41684de6d6630674f3f3b951cd036f733b3dd493321099d37b`.
-It uses PA1–PA6 only, has no DNE, and passes dependency, PA, hypothesis, and
-live-use audits.
+```text
+split
+exact prime_factorization_existence
+exact prime_factorization_uniqueness
+```
 
-This native result is not the conventional list theorem. Peano Lab still has
-no primitive list or multiset type; factors and prefix products are β-coded,
-and uniqueness compares lengths and decoded bounded entries rather than raw
-codes. A separate Lean 4 companion checks list existence and uniqueness up to
-permutation without supplying Peano authority. Conventional
-integer-coefficient Bézout is unavailable in the
-natural-only term language, while the four-natural balanced theorem is
-checked.
+That contrast is central. A short modular script is not a hidden axiom: its
+dependencies are embedded as self-contained `Cut` nodes, producing the
+73,767-node closed certificate checked by the kernel. Read the complete card
+for <a href="theorem-atlas.html#theorem-fundamental_theorem_of_arithmetic"><code>fundamental_theorem_of_arithmetic</code></a>.
 
-## How to read the status labels
+## Prime unboundedness is a separate constructive theorem
 
-| Label | Meaning |
-|---|---|
-| `checked_existing` | Already in the original 23-theorem Peano ladder. |
-| `checked_m20` | Checked post-baseline extension, including compatible upstream modular entries. |
-| `planned_expressible` | Stateable in today's first-order Peano language, but not yet admitted. |
-| `blocked_by_language` | Needs a representation/interface not yet implemented as an expanded, checked Peano target. |
+FTA is not used to prove that there is a prime above every bound. The native
+proof obtains a nonzero common multiple $c$ of every positive number through
+$n$, takes a prime divisor $p$ of $S(c)$, and excludes $p\le n$: such a $p$
+would divide both $c$ and $S(c)$, hence one.
 
-The β-coded factorization entries are no longer language-blocked: their exact
-expanded first-order formulas have checked certificates at this integration
-checkpoint. Primitive list syntax remains absent, and conventional
-integer-coefficient Bézout remains a distinct language limitation.
+$$
+c \longrightarrow S(c) \longleftarrow p,
+\qquad p\le n \Longrightarrow p\mid c \land p\mid S(c)
+\Longrightarrow p\mid1.
+$$
 
-There is no status called “obvious.” A familiar mathematical fact and a
-checked theorem are different repository objects.
+The theorem `prime_unbounded` has 4,595 nodes, depth 82 and 146 Cuts. Its full
+84-command authored proof is embedded in the
+<a href="theorem-atlas.html#theorem-prime_unbounded"><code>prime_unbounded</code> atlas card</a>.
 
-## Reading route
+## The trust path
 
-1. {doc}`Language, notation, and trust <language-and-trust>` explains why
-   divisibility and primality are expanded formulas rather than new kernel
-   predicates.
-2. {doc}`Self-contained proof sharing <proof-sharing>` explains the reviewed
-   Cut certificate rule, its trust cost, and why erasure remains an untrusted
-   compatibility audit.
-3. {doc}`The dependency ladder <dependency-ladder>` gives the complete
-   architecture from equality through factorization.
-4. {doc}`Divisibility and congruence <divisibility-and-congruence>` develops
-   the checked first layer and the balanced natural-number encoding of modular
-   congruence.
-5. {doc}`GCD and balanced Bézout construction <gcd-and-bezout>` follows the
-   checked bounded descent through Gauss cancellation.
-6. {doc}`Primes and unique factorization <primes-and-factorization>` explains
-   the checked native β-coded FTA and distinguishes it from a primitive-list
-   theorem.
-7. {doc}`Sources and clean-room provenance <source-audit>` maps the Natural
-   Number Game, *The Mechanics of Proof*, and *An Illustrated Theory of
-   Numbers* into the corpus without silently copying material.
-8. {doc}`Using and extending the library <using-the-library>` shows the live
-   workflow and the admission contract.
+<div class="pa-flow-bridge" role="figure" aria-label="From mathematical dependency graph to kernel-checked theorem">
+  <div class="pa-flow-node"><strong>Authored scripts</strong><br><small>readable tactic bodies</small></div>
+  <div class="pa-flow-arrow" aria-hidden="true">→</div>
+  <div class="pa-flow-node"><strong>Nested Cuts</strong><br><small>complete dependency proofs embedded</small></div>
+  <div class="pa-flow-arrow" aria-hidden="true">→</div>
+  <div class="pa-flow-node"><strong>Empty-context kernel check</strong><br><small>original closed formula</small></div>
+</div>
+
+The checked FTA and `prime_unbounded` use only PA1–PA6 and ordinary induction;
+their audits find no double-negation elimination. The object language gained
+no primitive division, remainder, gcd, prime, list, product or factorization
+symbol.
 
 ## Four synchronized views
 
-One stable theorem name is intended to identify the same object in four views:
+One theorem name identifies the same object in four places:
 
-- the executable `TheoremSpec` and its kernel-checked certificate;
-- the generated JSON snapshot and Mermaid dependency graph;
-- the explanatory Jupyter Book anchor;
-- the atomic Obsidian concept or lemma note.
+1. the executable `TheoremSpec` and checked certificate;
+2. the generated snapshot and dependency graph;
+3. its card and narrative links in this Jupyter Book;
+4. its atomic Obsidian vault note.
 
-The previously generated artifact binds the exact statement, dependency list, tactic
-script, certificate representation hash, node count, depth, and ordered root
-digest
-`9650ae53f506c282daf84fca5e9c08d0d48bb36db813b4efc43f54156d25bf6b`.
-The authorized runtime integration will regenerate the synchronized artifact
-views; this documentation checkpoint does not treat that older root as the
-FTA snapshot.
-These hashes make drift visible; they do not grant authority.
-Authority still comes only from checking the closed proof term against the
-closed formula.
+The current synchronized surfaces are:
+
+- [native theorem source](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py);
+- [247-theorem snapshot](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json);
+- [248-entry research catalog](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json);
+- [arithmetic vault map](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/moc/arithmetic-library-moc.md);
+- [deterministic training corpus](https://github.com/nasqret/vietnam2026/tree/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/corpus).
+
+There is exactly one deliberately unproved catalog boundary: the conventional
+integer-coefficient Bézout interface. Peano Lab quantifies only over naturals.
+The separately named balanced four-natural Bézout theorem is checked and is
+the interface used by Gauss cancellation and Euclid's lemma.
+
+## Start reading
+
+Continue with the {doc}`guided route <guided-tour>`. It alternates intuition,
+exact formulas, proof anatomy and immutable proof links. When you want to move
+backward or forward through the dependency DAG, open the
+{doc}`theorem atlas <theorem-atlas>` and focus the theorem you are reading.

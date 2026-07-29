@@ -42,7 +42,7 @@ html:
 repository:
   url: https://github.com/nasqret/vietnam2026
   path_to_book: book
-  branch: main
+  branch: peano-lab
 
 sphinx:
   config:

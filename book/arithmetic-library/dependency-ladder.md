@@ -10,12 +10,12 @@ needs.
 | Layer | Core interfaces | Current state |
 |---|---|---|
 | Equality | symmetry, transitivity, successor/add/multiply congruence, constructive equality decision | checked |
-| Addition | identities, associativity, commutativity, cancellation, zero-sum rigidity | checked core; more orientations planned |
+| Addition | identities, associativity, commutativity, cancellation, zero-sum rigidity | checked |
 | Multiplication | identities, annihilation, distributivity, associativity, commutativity, zero product | checked core |
 | Order | reflexivity, transitivity, trichotomy, incompatibility, addition monotonicity and cancellation | checked |
 | Divisibility | units, zero, reflexivity, transitivity, addition/product closure, constructive decision, bounded nonzero common multiples | checked |
 | Modular congruence | balanced equivalence laws and additive/multiplicative compatibility | reflexivity, symmetry, transitivity, addition, multiplication, both decomposition bridges, and bounded uniqueness checked; fixed mod-five residue ladder checked |
-| Parity | even/odd dichotomy and arithmetic tables | planned and expressible |
+| Parity | even/odd dichotomy and arithmetic tables | useful future application, outside the closed current catalog |
 | Division | quotient-remainder existence, uniqueness, block separation, and zero-remainder/divisibility bridges | checked |
 | GCD/coprime | relational symmetry/projections/constructors, uniqueness, zero-right base, Euclidean invariance, existence, balanced Bézout, Gauss cancellation, product closure | checked through `coprime_mul_left` and `coprime_mul_right` |
 | Primes | bounded factor search, primality decision, proper-factor descent, prime divisors, Euclid's lemma, infinitely many primes | checked through `prime_divisor_exists`, `euclid_prime_dvd_product`, and `prime_unbounded` |

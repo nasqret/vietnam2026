@@ -118,8 +118,10 @@ nodes, depth 99 and 2,184 self-contained Cuts, with no DNE. The synchronized
 planned theorem, and one representation-blocked
 conventional integer-coefficient Bézout interface. A pinned Lean companion
 independently checks conventional list-based FTA up to permutation. Remaining
-M20's native arithmetic and synchronized release artifacts are complete;
-direct attached-browser UI inspection remains explicitly unclaimed, and
+M20's native arithmetic and synchronized release artifacts are complete. The
+main Jupyter Book now includes a guided zero-to-FTA route and a generated
+interactive 247-proof atlas; direct attached-browser UI inspection remains
+explicitly unclaimed, and
 model-v2 curriculum expansion is a separate milestone—not mathematical
 admission of FTA or prime unboundedness. See
 [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md).

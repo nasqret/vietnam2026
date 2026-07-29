@@ -35,12 +35,14 @@ parts:
   - caption: "Foundational arithmetic library"
     chapters:
       - file: arithmetic-library/index
+      - file: arithmetic-library/guided-tour
+      - file: arithmetic-library/theorem-atlas
       - file: arithmetic-library/language-and-trust
       - file: arithmetic-library/proof-sharing
       - file: arithmetic-library/dependency-ladder
       - file: arithmetic-library/divisibility-and-congruence
-      - file: arithmetic-library/primes-and-factorization
       - file: arithmetic-library/gcd-and-bezout
+      - file: arithmetic-library/primes-and-factorization
       - file: arithmetic-library/source-audit
       - file: arithmetic-library/using-the-library
   - caption: "Appendix"

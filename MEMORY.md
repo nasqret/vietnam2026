@@ -446,9 +446,12 @@
   its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions,
   and all 247 authored QEDs. Local browser build `2026-07-29j` packages
   manifest identity `a-c983d7c60450`; it is not staged or deployed. The strict
-  book rebuild passes 36 sources with no warnings; 234 deep links and 45
-  executable blocks containing 264 commands verify. The complete Peano suite
+  book rebuild passes 38 sources with no warnings; 194 deep links and 47
+  executable blocks containing 287 commands verify. A guided ten-stage route
+  and generated interactive atlas expose all 247 exact statements, complete
+  authored proof recipes, dependencies, dependents, metrics and source/vault
+  links. The complete Peano suite
   passes 1,101 tests on Python 3.10 in 1,050.08 seconds with no reported
-  warnings. An in-app browser was unavailable, so direct Pyodide UI smoke is
-  not claimed; automated runtime/worker tests and the deployment-manifest
-  check remain green.
+  warnings. An in-app browser was unavailable, so direct Pyodide and rendered
+  book UI smokes are not claimed; automated runtime/worker tests, static HTML
+  contracts and the deployment-manifest check remain green.

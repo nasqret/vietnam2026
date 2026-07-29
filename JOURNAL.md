@@ -1722,3 +1722,35 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   Snapshot, vault, corpus, documentation, and deployment-manifest drift checks
   are green. No in-app browser was attached, so direct Pyodide UI smoke is
   explicitly unclaimed; nothing was staged, deployed, promoted, or merged.
+
+## 2026-07-29 — Interactive arithmetic Jupyter Book
+
+- Replaced the arithmetic landing page's historical-first status report with
+  a current 247-theorem dashboard, clickable ten-stage dependency metro map,
+  role-specific reading routes, native FTA receipt, constructive
+  `prime_unbounded` explanation, trust pipeline, and synchronized artifact
+  links. The course introduction and Peano construction chapter now route
+  readers directly into this part.
+- Added a guided route from equality and discrete order through division,
+  relational gcd, balanced Bézout, Gauss, Euclid, constructive prime search,
+  bounded CRT, Gödel-β finite-prefix recoding, exact prefix-product traces,
+  factorization existence/uniqueness, and FTA. It includes responsive HTML/CSS
+  diagrams, two kernel-replayed proof sessions, expandable proof anatomy, and
+  a browser-local progress checklist.
+- Added `scripts/build_arithmetic_book_atlas.py`. It joins the checked snapshot
+  and research catalog and deterministically generates a text-friendly atlas
+  with all 247 exact statements and complete dependency-import/authored-script
+  recipes, plus the one honest representation-boundary card. Each theorem has
+  prerequisite and dependent links, certificate metrics/hash, copy controls,
+  live Peano action, and source/vault/artifact links. Search, domain/status
+  filters and a 1–4-hop neighborhood navigator use local zero-dependency JS;
+  cards remain readable without JavaScript.
+- Corrected two stale chapters that still described greatest-prime descent,
+  prefix products and native FTA as missing, and aligned the mathematical TOC
+  so gcd/Bézout precedes primes/Euclid.
+- Jupyter Book 1.0 builds all 38 sources with warnings as errors and zero
+  warnings. The real command gate verifies 194 deep links and 47 sessions with
+  287 commands. Seventeen book tests, the atlas drift check, JavaScript syntax,
+  built-HTML card/asset/anchor contracts and `git diff --check` pass. No in-app
+  browser was attached, so a live visual/click interaction audit is explicitly
+  unclaimed rather than substituted with another browser backend.

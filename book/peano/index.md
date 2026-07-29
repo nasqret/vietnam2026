@@ -122,5 +122,10 @@ entries alongside no planned theorem and one representation-blocked
 conventional integer-coefficient Bézout interface. `prime_unbounded` is now a
 checked constructive client of bounded common multiples and prime-divisor
 existence.
+The arithmetic part now has a {doc}`guided zero-to-FTA route
+<../arithmetic-library/guided-tour>` and a generated
+{doc}`247-proof theorem atlas <../arithmetic-library/theorem-atlas>` that links
+every exact statement and authored script backward to prerequisites and
+forward to direct clients.
 This is local candidate authority; it does not claim that every new theorem
 card has already been promoted to the production browser.

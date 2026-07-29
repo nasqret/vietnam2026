@@ -17,47 +17,25 @@ The isolated all-ladder smoke has 494 sessions, 9,235 raw/9,232 unique
 transitions, and all 247 authored QEDs. Browser build `2026-07-29j`,
 application `a-c983d7c60450`, has not been staged or deployed.
 
-- [`pa lib`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib)
-- [`pa lib add_congr`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20add_congr)
-- [`pa lib multiple_trans`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20multiple_trans)
-- [`pa lib division_remainder_unique`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20division_remainder_unique)
-- [`pa lib prime_decidable`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20prime_decidable)
-- [`pa lib prime_divisor_exists`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20prime_divisor_exists)
-- [`pa lib prime_unbounded`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20prime_unbounded)
-- [`pa lib mod_eq_add`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod_eq_add)
-- [`pa lib mod_eq_mul`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod_eq_mul)
-- [`pa lib mod_eq_bounded_unique`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod_eq_bounded_unique)
-- [`pa lib beta_at_exists_unique`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_at_exists_unique)
-- [`pa lib beta_at_to_mod_eq`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_at_to_mod_eq)
-- [`pa lib beta_at_of_mod_eq_bound`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_at_of_mod_eq_bound)
-- [`pa lib bezout_mod_left`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20bezout_mod_left)
-- [`pa lib bezout_mod_right`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20bezout_mod_right)
-- [`pa lib mod_eq_predecessor_cancel`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod_eq_predecessor_cancel)
-- [`pa lib binary_crt`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20binary_crt)
-- [`pa lib binary_crt_remainders`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20binary_crt_remainders)
-- [`pa lib binary_crt_beta_pair`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20binary_crt_beta_pair)
-- [`pa lib beta_modulus_coprime_base`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_modulus_coprime_base)
-- [`pa lib common_divisor_beta_moduli_divides_gap_times_c`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20common_divisor_beta_moduli_divides_gap_times_c)
-- [`pa lib beta_moduli_coprime_of_gap_dvd`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_moduli_coprime_of_gap_dvd)
-- [`pa lib binary_crt_beta_pair_of_gap_dvd`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20binary_crt_beta_pair_of_gap_dvd)
-- [`pa lib bounded_common_multiple_step`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20bounded_common_multiple_step)
-- [`pa lib bounded_common_multiple_exists`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20bounded_common_multiple_exists)
-- [`pa lib beta_moduli_coprime_of_lt_bounded_common_multiple`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_moduli_coprime_of_lt_bounded_common_multiple)
-- [`pa lib beta_moduli_pairwise_coprime_bounded`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_moduli_pairwise_coprime_bounded)
-- [`pa lib bounded_beta_moduli_pairwise_coprime_exists`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20bounded_beta_moduli_pairwise_coprime_exists)
-- [`pa lib coprime_mul_left`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20coprime_mul_left)
-- [`pa lib coprime_mul_right`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20coprime_mul_right)
-- [`pa lib mod_eq_of_mod_eq_multiple`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod_eq_of_mod_eq_multiple)
-- [`pa lib binary_crt_fold_step`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20binary_crt_fold_step)
-- [`pa lib right_factor_divides_product`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20right_factor_divides_product)
-- [`pa lib beta_accumulated_product_step`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_accumulated_product_step)
-- [`pa lib beta_crt_prefix_congruence_step`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_crt_prefix_congruence_step)
-- [`pa lib beta_crt_prefix_invariant_step`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_crt_prefix_invariant_step)
-- [`pa lib bounded_beta_crt_prefix_invariant`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20bounded_beta_crt_prefix_invariant)
-- [`pa lib bounded_beta_crt_for_existing_code`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20bounded_beta_crt_for_existing_code)
-- [`pa lib fundamental_theorem_of_arithmetic`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20fundamental_theorem_of_arithmetic)
-- [`pa lib square_residue_witness`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20square_residue_witness)
-- [`pa lib mod5_fourth_power_one`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod5_fourth_power_one)
+The [public Peano Lab shell](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib)
+still serves the earlier production snapshot. In this candidate checkout, try
+representative milestones directly:
+
+```text
+pa lib division_remainder_unique
+pa lib gcd_bezout_exists
+pa lib euclid_prime_dvd_product
+pa lib prime_unbounded
+pa lib bounded_beta_crt_for_existing_code
+pa lib prime_factorization_existence
+pa lib prime_factorization_uniqueness
+pa lib fundamental_theorem_of_arithmetic
+```
+
+The {doc}`theorem atlas <theorem-atlas>` provides the complete 247-command
+index, with a full replay recipe and immutable source links for every entry.
+Candidate-only browser commands must not be presented as live until the
+corresponding Peano Lab build is promoted.
 
 ## Importing a checked theorem
 
@@ -145,30 +123,17 @@ The admission workflow is:
 9. run the full repository gates.
 
 Do not add a trusted predicate merely for notation. Do not mark a curriculum
-target Peano-checked because Lean or a textbook proves an analogous theorem.
-Do not hide missing checked β-sequence/product laws behind a factorization
-name; keep separately checked companion authority explicit. The native library
-now has constructive prime-divisor existence, the balanced additive and
-multiplicative congruence API, functional single-position β decoding with its
-bidirectional bounded-congruence characterization, constructive binary CRT,
-and a two-position β-code client. That client assumes the two expanded β
-moduli are coprime. The new conditional wrapper discharges the premise when
-$j=i+\mathit{gap}$ and $\mathit{gap}\mid c$, while
-`bounded_common_multiple_exists` supplies a nonzero $c$ divisible by all
-positive values through a bound. Unconditional beta-modulus coprimality is
-false: $c=1$ gives moduli $3$ and $6$. The bounded-prefix theorems now derive
-pairwise coprimality for all distinct
-positions, and `binary_crt_fold_step` checks the algebra that preserves every
-old divisor-modulus congruence while adding one new position. The new prefix
-step theorems and `bounded_beta_crt_prefix_invariant` now carry, by ordinary
-induction, a nonzero accumulated product, divisibility by all earlier beta
-moduli, congruence to decoded earlier values, and coprimality with all future
-bounded beta moduli. `bounded_beta_crt_for_existing_code` only projects the
-congruences for residues already decoded from its input code $b$; extensionally
-$z=b$ satisfies that conclusion, so it is not arbitrary finite-prefix
-recoding. The library does not yet have greatest-prime descent, an independent
-finite-prefix specification/recoding theorem, exact beta-coded prefix-product
-traces, the factorization links, or FTA.
+target Peano-checked because Lean or a textbook proves an analogous theorem,
+and keep companion authority explicit. The native library now checks the full
+conservative β route: bounded CRT, independent finite-prefix recoding,
+one-value extension, exact prefix-product traces, Product functionality,
+`AllPrime`, sortedness, greatest-prime descent, canonical append,
+factorization existence, extensional uniqueness and the combined FTA.
+Unconditional β-modulus coprimality remains false—$c=1$ gives moduli $3$ and
+$6$—so the checked bounded construction deliberately chooses a suitable
+common multiple. The generated {doc}`theorem atlas <theorem-atlas>` is the
+authoritative book view for current scripts and dependencies; this workflow
+must regenerate it whenever the snapshot changes.
 
 ## Reproducing the artifact
 
@@ -176,12 +141,15 @@ From the repository root:
 
 ```bash
 python3 scripts/build_peano_library_snapshot.py --check
+python3 scripts/build_arithmetic_book_atlas.py --check
 python3 scripts/verify_arithmetic_knowledge_base.py
 cd peano-lab/py
 python3 -m pytest tests/test_foundational_arithmetic_library.py -q
 ```
 
-The first command verifies exact metadata for all 247 checked certificates
-and ordered root digest `eb4775dfd181…ff432`. The second validates
-the 248-node research DAG and source register, and the last exercises the
-checked foundational layer directly.
+The snapshot command verifies exact metadata for all 247 checked certificates
+and ordered root digest `eb4775dfd181…ff432`. The atlas command verifies that
+every displayed statement, dependency, proof recipe, metric and hash still
+matches that snapshot. The catalog command validates the 248-node research DAG
+and source register, and the last command exercises the checked foundational
+layer directly.

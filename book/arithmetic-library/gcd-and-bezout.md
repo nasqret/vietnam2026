@@ -216,22 +216,13 @@ Euclid's lemma is developed in {doc}`Primes and unique factorization
 also checks bounded nontrivial-factor search, proper-factor descent, and
 `prime_divisor_exists`. Single-position Gödel-β decoding existence,
 uniqueness, and its equivalence to bounded balanced congruence are checked too.
-Constructive `binary_crt` now combines two residues for nonzero coprime
-moduli, and its two-position β client produces one code under an explicit
-coprimality premise for the two β moduli. The follow-up
-`beta_moduli_coprime_of_gap_dvd` now discharges that premise when
-$j=i+\mathit{gap}$ and $\mathit{gap}\mid c$; unconditional coprimality is
-false, as $c=1$ yields moduli $3$ and $6$. A checked bounded common-multiple
-construction supplies a nonzero $c$ divisible by every positive number up to
-an explicit bound. The checked successors
-`beta_moduli_pairwise_coprime_bounded` and
-`bounded_beta_moduli_pairwise_coprime_exists` now discharge pairwise
-coprimality across an entire bounded prefix. `coprime_mul_left` and
-`coprime_mul_right` preserve coprimality under accumulated products. Finite
-prefix induction now carries nonzeroness, earlier-modulus divisibility,
-congruences for values already decoded from an input code, and future-modulus
-coprimality. Its full-bound projection does not recode an independent
-sequence: extensionally the input code itself already satisfies those
-congruences. Finite factorization still requires greatest-prime descent,
-independent finite-prefix recoding, exact beta-coded prefix-product traces and
-bounds, and the factorization links; native FTA is not yet proved.
+Downstream, constructive `binary_crt` combines residues for nonzero coprime
+moduli. The β layer now goes beyond the earlier conditional two-position
+client: bounded pairwise coprimality, independent finite-prefix recoding,
+one-value extension, exact prefix-product traces, Product functionality,
+greatest-prime descent and canonical append are all checked. Those interfaces
+feed factorization existence, uniqueness and the combined native FTA. Follow
+that completed route in the {doc}`guided tour <guided-tour>` or move directly
+from
+<a href="theorem-atlas.html#theorem-gcd_balanced_bezout_exists"><code>gcd_balanced_bezout_exists</code></a>
+to its dependents in the {doc}`theorem atlas <theorem-atlas>`.

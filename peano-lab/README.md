@@ -513,6 +513,11 @@ all 247 authored QEDs. Browser build `2026-07-29j`, application
 Peano suite passes 1,101 tests on Python 3.10 in 1,050.08 seconds with no
 reported warnings. Automated runtime/worker and manifest checks pass; a
 direct Pyodide UI smoke is not claimed because no in-app browser was attached.
+The main Jupyter Book now adds a guided zero-to-FTA route and a generated
+interactive atlas for all 247 native proofs; its strict 38-source build and
+234-link/47-session/287-command replay are green. A rendered-book click and
+layout audit is likewise unclaimed because the in-app browser remained
+unattached.
 
 Back at the repository root, run both regression suites:
 

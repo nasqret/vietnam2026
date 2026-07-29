@@ -76,11 +76,13 @@ kernel-checked sessions under fingerprint
 its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
 all 247 authored QEDs. Local browser build `2026-07-29j` packages application
 `a-c983d7c60450`; it is not staged or deployed. The strict Jupyter Book rebuild
-passes over all 36 sources with zero warnings; 234 deep links and 45 session
-blocks containing 264 commands verify. The complete Peano Lab suite passes all
+passes over all 38 sources with zero warnings; 194 deep links and 47 session
+blocks containing 287 commands verify. Its guided zero-to-FTA route and
+generated interactive atlas embed all 247 exact statements and authored proof
+recipes with searchable dependency navigation. The complete Peano Lab suite passes all
 1,101 tests on Python 3.10 in 1,050.08 seconds with no reported warnings. No
-in-app browser was attached for this checkpoint, so a direct Pyodide UI smoke
-is explicitly unclaimed.
+in-app browser was attached for this checkpoint, so direct Pyodide and rendered
+book UI smokes are explicitly unclaimed.
 
 ---
 

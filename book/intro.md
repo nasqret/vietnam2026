@@ -18,6 +18,17 @@ The six-part {doc}`construction story <peano/index>` explains how the kernel, ta
 induction and checked theorem ladder fit together.
 ```
 
+```{admonition} New: explore the native arithmetic library
+:class: seealso
+The {doc}`foundational arithmetic dashboard <arithmetic-library/index>` now
+opens a {doc}`guided route <arithmetic-library/guided-tour>` from equality and
+division through GCD, Bézout, Euclid, Gödel-β finite products and the native
+Fundamental Theorem of Arithmetic. The
+{doc}`interactive theorem atlas <arithmetic-library/theorem-atlas>` embeds the
+exact statements and complete authored proofs for all 247 checked theorems,
+with searchable prerequisite and dependent links.
+```
+
 This is the **knowledge book** of the course — the text-friendly notes, with the mathematics, the code,
 and the links in one place. It grows lecture by lecture; we build the foundations first, then climb.
 
