@@ -20,6 +20,7 @@ forall a b. ~(a = 0) -> ~(b = 0) -> ~(a * b = 0)
 ## Checked dependents
 
 - [[mul_left_cancel_nonzero]]
+- [[beta_accumulated_product_step]]
 
 ## Verification record
 

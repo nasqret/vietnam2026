@@ -15,10 +15,10 @@ divisibility witnesses before the greatest-common-divisor clause.
 
 ## What is checked now
 
-The 183-theorem runtime contains 23 baseline entries and 160 checked
-post-baseline entries. One hundred and forty-eight of the latter form the general
+The 189-theorem runtime contains 23 baseline entries and 166 checked
+post-baseline entries. One hundred and fifty-four of the latter form the general
 foundational layer; the other twelve are the fixed modular capstone. The
-broader catalog has 190 nodes: those 183 checked entries, three planned
+broader catalog has 196 nodes: those 189 checked entries, three planned
 entries, and four blocked-by-language entries.
 
 The checked gcd layer includes the relational API through uniqueness and
@@ -228,7 +228,10 @@ an explicit bound. The checked successors
 `bounded_beta_moduli_pairwise_coprime_exists` now discharge pairwise
 coprimality across an entire bounded prefix. `coprime_mul_left` and
 `coprime_mul_right` preserve coprimality under accumulated products. Finite
-factorization still requires greatest-prime descent, an encoded
-accumulated-product trace, the actual bounded CRT fold over that trace, beta
-finite-prefix recoding, and the selected prefix-product layer; native FTA is
-not yet proved.
+prefix induction now carries nonzeroness, earlier-modulus divisibility,
+congruences for values already decoded from an input code, and future-modulus
+coprimality. Its full-bound projection does not recode an independent
+sequence: extensionally the input code itself already satisfies those
+congruences. Finite factorization still requires greatest-prime descent,
+independent finite-prefix recoding, exact beta-coded prefix-product traces and
+bounds, and the factorization links; native FTA is not yet proved.

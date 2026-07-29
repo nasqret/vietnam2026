@@ -19,7 +19,7 @@ forall a b c. (exists k. k + a = b) -> (exists k. k + S b = c) -> exists k. k + 
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[beta_accumulated_product_step]]
 
 ## Verification record
 

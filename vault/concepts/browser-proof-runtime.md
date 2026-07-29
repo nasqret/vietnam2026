@@ -14,10 +14,11 @@ and fetches application sources concurrently while Pyodide starts. Complete vers
 are uploaded before the HTML pointer and retained after promotion; an unversioned response must
 revalidate.
 
-The current local static artifact is labeled `2026-07-29g` and binds the
-manifest-derived application identity `a-6b72d4fe4ca4`. Those labels identify
+The current local static artifact is labeled `2026-07-29h` and binds the
+manifest-derived application identity `a-98b1d8bb8dd7`. Those labels identify
 the built bytes; they do not assert that this checkpoint has been staged or
 deployed.
+It packages the current 189-theorem library.
 
 This optimization does not weaken the [[trusted-kernel]] boundary. Network completion order never
 chooses a logical result: failed files are selected and successful files are mounted in a fixed

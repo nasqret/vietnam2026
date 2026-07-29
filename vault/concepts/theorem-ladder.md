@@ -46,8 +46,8 @@ expanded certificate is checked in the empty context. This extension is also a u
 [[verifier-guided-policy-evaluation-and-search|model-v2 curriculum]], but the capstone itself is now
 a library-retrieval test rather than a sealed theorem-discovery benchmark.
 
-The reconciled runtime now has 183 unique checked entries: the 23-entry core,
-148 post-baseline foundational entries, and twelve genuinely new modular
+The reconciled runtime now has 189 unique checked entries: the 23-entry core,
+154 post-baseline foundational entries, and twelve genuinely new modular
 capstones. The newer foundation includes discrete order, multiplication
 cancellation and monotonicity, and native [[quotient-and-remainder]] existence
 and uniqueness, plus the relational [[gcd-and-coprimality]] API through gcd
@@ -95,14 +95,23 @@ coprimality via [[coprime_mul_left]] and [[coprime_mul_right]], modulus descent
 via [[mod_eq_of_mod_eq_multiple]], and one invariant-preserving CRT extension
 via [[binary_crt_fold_step]].
 
-The shared snapshot now totals 154,220 proof nodes and 4,293 self-contained
-Cuts across 183 certificates; 143 certificates contain a Cut.
-[[binary_crt_beta_pair_of_gap_dvd]] is largest at 12,980 nodes and 378 Cuts,
+The latest six-node tranche adds [[right_factor_divides_product]], advances the
+product and decoded-congruence components through
+[[beta_accumulated_product_step]] and
+[[beta_crt_prefix_congruence_step]], combines them in
+[[beta_crt_prefix_invariant_step]], and closes the ordinary-induction fold as
+[[bounded_beta_crt_prefix_invariant]].
+[[bounded_beta_crt_for_existing_code]] projects the result only for values
+already represented by a supplied `BetaAt` code; it is not arbitrary
+finite-sequence coding.
+
+The shared snapshot now totals 242,629 proof nodes and 6,895 self-contained
+Cuts across 189 certificates; 149 certificates contain a Cut.
+[[bounded_beta_crt_for_existing_code]] is largest at 25,545 nodes and 755 Cuts,
 while prime-divisor existence sets the maximum depth at 80. The next
-mathematical/representation gate is greatest-prime descent plus the actual
-bounded CRT fold with its encoded-product invariant,
-[[godel-beta-sequence|β finite-prefix recoding]], and prefix-product
-infrastructure;
+mathematical/representation gate is genuine prefix-product recurrence and
+bounds, followed by [[godel-beta-sequence|β finite-prefix recoding]] and
+greatest-prime descent;
 [[fundamental-theorem-of-arithmetic|FTA]] is not yet a native checked theorem.
 
 ## Related

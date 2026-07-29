@@ -171,6 +171,12 @@ flowchart TD
   coprime_mul_right[coprime_mul_right]
   mod_eq_of_mod_eq_multiple[mod_eq_of_mod_eq_multiple]
   binary_crt_fold_step[binary_crt_fold_step]
+  right_factor_divides_product[right_factor_divides_product]
+  beta_accumulated_product_step[beta_accumulated_product_step]
+  beta_crt_prefix_congruence_step[beta_crt_prefix_congruence_step]
+  beta_crt_prefix_invariant_step[beta_crt_prefix_invariant_step]
+  bounded_beta_crt_prefix_invariant[bounded_beta_crt_prefix_invariant]
+  bounded_beta_crt_for_existing_code[bounded_beta_crt_for_existing_code]
   fourth_power_regroup[fourth_power_regroup]
   mod5_residue_complete[mod5_residue_complete]
   mod5_nonzero_residue_cases[mod5_nonzero_residue_cases]
@@ -504,6 +510,37 @@ flowchart TD
   binary_crt --> binary_crt_fold_step
   mod_eq_of_mod_eq_multiple --> binary_crt_fold_step
   mod_eq_trans --> binary_crt_fold_step
+  mul_comm --> right_factor_divides_product
+  mul_ne_zero --> beta_accumulated_product_step
+  right_factor_divides_product --> beta_accumulated_product_step
+  beta_modulus_nonzero --> beta_accumulated_product_step
+  le_eq_or_lt --> beta_accumulated_product_step
+  le_of_succ_le_succ --> beta_accumulated_product_step
+  multiple_mul_right --> beta_accumulated_product_step
+  le_succ_self --> beta_accumulated_product_step
+  lt_of_le_of_lt --> beta_accumulated_product_step
+  lt_irrefl_expanded --> beta_accumulated_product_step
+  beta_moduli_pairwise_coprime_bounded --> beta_accumulated_product_step
+  coprime_mul_left --> beta_accumulated_product_step
+  beta_modulus_nonzero --> beta_crt_prefix_congruence_step
+  le_refl --> beta_crt_prefix_congruence_step
+  binary_crt_fold_step --> beta_crt_prefix_congruence_step
+  beta_at_exists --> beta_crt_prefix_congruence_step
+  beta_at_unique --> beta_crt_prefix_congruence_step
+  le_eq_or_lt --> beta_crt_prefix_congruence_step
+  le_of_succ_le_succ --> beta_crt_prefix_congruence_step
+  beta_accumulated_product_step --> beta_crt_prefix_invariant_step
+  beta_crt_prefix_congruence_step --> beta_crt_prefix_invariant_step
+  beta_modulus_nonzero --> bounded_beta_crt_prefix_invariant
+  le_zero --> bounded_beta_crt_prefix_invariant
+  multiple_refl --> bounded_beta_crt_prefix_invariant
+  beta_at_to_mod_eq --> bounded_beta_crt_prefix_invariant
+  beta_moduli_coprime_of_lt_bounded_common_multiple --> bounded_beta_crt_prefix_invariant
+  le_succ_self --> bounded_beta_crt_prefix_invariant
+  le_trans --> bounded_beta_crt_prefix_invariant
+  beta_crt_prefix_invariant_step --> bounded_beta_crt_prefix_invariant
+  bounded_beta_crt_prefix_invariant --> bounded_beta_crt_for_existing_code
+  le_refl --> bounded_beta_crt_for_existing_code
   mul_assoc --> fourth_power_regroup
   mod5_residue_complete --> mod5_nonzero_residue_cases
   add_assoc --> mod5_square_residue_one

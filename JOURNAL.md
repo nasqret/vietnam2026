@@ -1591,3 +1591,43 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   The next representation gate is the actual bounded fold with an encoded
   accumulated-product/solution invariant, followed by β finite-prefix
   recoding, prefix products, factorization, and native FTA.
+
+## 2026-07-29 — Bounded β-CRT prefix invariant for an existing code
+
+- Added six closed native theorems. `right_factor_divides_product` supplies the
+  explicit divisibility witness needed by the product invariant.
+  `beta_accumulated_product_step` advances nonzeroness, earlier-modulus
+  divisibility, and future coprimality;
+  `beta_crt_prefix_congruence_step` advances congruence with values already
+  decoded from a supplied β code; and `beta_crt_prefix_invariant_step`
+  combines the two successor steps. `bounded_beta_crt_prefix_invariant` folds
+  that invariant by ordinary induction, while
+  `bounded_beta_crt_for_existing_code` projects its congruence witness.
+- Their audited nodes/depth/Cuts are respectively 229/25/7,
+  11,174/69/330, 7,352/64/213, 18,613/70/545, 25,496/78/752, and
+  25,545/79/755. Two cache-cleared empty-context replays were deterministic;
+  all 31 individual dependency-slot mutations, every first-PA mutation, and
+  every authored-body hypothesis mutation failed closed. No DNE occurs, only
+  PA1–PA6 are used, and all six live `use`/`exact`/`qed` checks pass.
+- The runtime now contains 189 unique checked theorems: 23 baseline, 154
+  general foundational, and twelve fixed modular capstones. The synchronized
+  196-node catalog contains 23 `checked_existing`, 166 `checked_m20`, three
+  planned, and four language-blocked entries. Shared certificates total
+  242,629 structural nodes and 6,895 Cuts across 149 Cut-bearing entries.
+  `bounded_beta_crt_for_existing_code` sets both maxima at 25,545 nodes and
+  755 Cuts; `prime_divisor_exists` retains maximum depth 80. The ordered root
+  is `9650ae53f506c282daf84fca5e9c08d0d48bb36db813b4efc43f54156d25bf6b`.
+- The complete current Peano suite passes 1,098 tests on CPython 3.10 in
+  181.34 seconds. The synchronized source-bound corpus has fingerprint
+  `a3c2f8c5c762b10fc9c1117723c74fecb50348cfb699f73bc76fb3714df3bf1b`;
+  its isolated smoke records 378 sessions, 5,373 raw transitions, 5,370 unique
+  transitions, and all 189 authored QEDs. Local browser build `2026-07-29h`
+  packages application `a-98b1d8bb8dd7` without claiming deployment. The
+  Obsidian graph verifies all 189 generated lemma notes within 268 notes and
+  2,513 resolved links.
+- Honesty boundary: the wrapper begins with values already represented by an
+  existing expanded `BetaAt` code. Extensionally that code itself is already a
+  common congruence witness, so this is proof of the bounded fold invariant,
+  not a theorem coding arbitrary finite sequences. Genuine prefix-product
+  recurrence and bounds are the next representation gate, followed by the
+  remaining recoding, factorization, and native FTA spine.

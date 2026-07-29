@@ -270,7 +270,7 @@ arithmetic/order rungs plus five explicit helper lemmas, ending at
 `forall n m. n * m = 0 -> n = 0 \/ m = 0`. M11 extends the current index to twenty-three with
 `one_mul`, `mul_one`, and `add_mul`, the only missing orientations needed by certificate-producing
 commutative-semiring normalization. The current local runtime extends that
-reconciled foundation to 183 unique checked entries: 23 baseline theorems, 148
+reconciled foundation to 189 unique checked entries: 23 baseline theorems, 154
 general foundational theorems, and twelve unique modular capstones. The
 complete 26-record modular provenance catalog ends at
 `mod5_fourth_power_one`; fourteen of those records coincide exactly with
@@ -316,13 +316,16 @@ every positive natural through a chosen bound. Unconditional pairwise
 3 and 6). The bounded-prefix theorems now construct a suitable base and prove
 all distinct moduli through the bound pairwise coprime. Product-coprimality
 closure, modulus descent, and one invariant-preserving binary CRT extension
-are checked too. The actual bounded fold with an encoded accumulated-product
-invariant, β finite-prefix recoding, prefix-product traces,
-greatest-prime descent, and native FTA remain future checked layers.
+are checked too. The newest six theorems advance the accumulated-product and
+decoded-congruence invariants together and fold them through every bounded
+prefix by ordinary induction. The final wrapper consumes values already
+decoded from a supplied `BetaAt` code; it is not arbitrary finite-sequence
+coding. Genuine prefix-product recurrence and bounds, β finite-prefix
+recoding, greatest-prime descent, and native FTA remain future checked layers.
 
-The shared ladder totals 154,220 structural nodes and 4,293 Cuts across 143
-Cut-bearing entries. `binary_crt_beta_pair_of_gap_dvd` is largest at
-12,980 nodes and 378 Cuts; `prime_divisor_exists` reaches the maximum
+The shared ladder totals 242,629 structural nodes and 6,895 Cuts across 149
+Cut-bearing entries. `bounded_beta_crt_for_existing_code` is largest at
+25,545 nodes and 755 Cuts; `prime_divisor_exists` reaches the maximum
 depth of 80.
 
 ## Polynomial identities with checked certificates
@@ -468,7 +471,7 @@ passes 1,090 tests on Python 3.10; the 36-source warning-as-error book and all
 264 documented commands are green. It has not been deployed or promoted;
 production remains untouched.
 
-The current local browser candidate is build `2026-07-29g`, immutable
+The preceding local browser candidate is build `2026-07-29g`, immutable
 application release `a-6b72d4fe4ca4`. It exposes all 183 checked
 theorems, including bounded-prefix pairwise β-modulus coprimality and the CRT
 fold-algebra layer. Its complete suite passes 1,098 tests on CPython 3.10 in
@@ -482,6 +485,16 @@ and all 183 authored QEDs. The corpus run fingerprint is
 `d0649a05ab1a88396d2d3046bc10a814e374cb3cf5ad8df225c9e15e91ff0df6`.
 This candidate has not been staged, deployed, or promoted; production remains
 untouched.
+
+The current source runtime and local browser candidate have since advanced to
+189 checked theorems. Build `2026-07-29h`, application
+`a-98b1d8bb8dd7`, has not been staged, deployed, or promoted. The source suite
+passes all 1,098 Peano tests on CPython 3.10 in 181.34 seconds. Its corpus run
+fingerprint is
+`a3c2f8c5c762b10fc9c1117723c74fecb50348cfb699f73bc76fb3714df3bf1b`;
+the isolated smoke has 378 sessions, 5,373 raw and 5,370 unique transitions,
+and all 189 authored QEDs. The synchronized vault verifies 189 lemma notes
+within 268 notes and 2,513 resolved links.
 
 Back at the repository root, run both regression suites:
 

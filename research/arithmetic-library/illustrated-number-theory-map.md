@@ -163,10 +163,12 @@ Therefore:
   an explicit project architecture decision;
 - prime-decomposition dictionaries require a finite-map or multiset layer;
 - the selected β route now has checked binary CRT, bounded-prefix pairwise
-  coprimality, coprime-product closure, modulus descent, and one fold step, but
-  still requires the actual bounded fold with an encoded-product invariant,
-  β finite-prefix recoding, and encoded prefix-product traces before it can
-  replace that external data structure inside native PA;
+  coprimality, coprime-product closure, modulus descent, and an
+  ordinary-induction prefix invariant for residues decoded from an existing
+  `BetaAt` code. That wrapper does not code arbitrary finite sequences; genuine
+  prefix-product recurrence and bounds plus β finite-prefix recoding remain
+  before the encoding can replace that external data structure inside native
+  PA;
 - Fermat, Euler, Miller--Rabin, primitive-root, and RSA layers require generic
   powers and additional finite algebra/counting infrastructure.
 

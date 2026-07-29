@@ -623,10 +623,10 @@ entries are appended to the public theorem ladder at source commit
 All replay deterministically and pass the empty-context kernel check. The largest certificate has
 21,515 nodes at depth 66 in the immutable upstream, fully expanded validation report. The current
 snapshot-v2 representation packages dependency proofs in self-contained kernel Cuts and records a
-maximum node count of 12,980 (`binary_crt_beta_pair_of_gap_dvd`) and a
+maximum node count of 25,545 (`bounded_beta_crt_for_existing_code`) and a
 maximum depth of 80 (`prime_divisor_exists`) across the current
-183-theorem ladder. It contains 154,220 structural nodes and 4,293
-self-contained Cuts across 143 Cut-bearing
+189-theorem ladder. It contains 242,629 structural nodes and 6,895
+self-contained Cuts across 149 Cut-bearing
 entries. The new premise surface includes the full `mod_eq_add`/`mod_eq_mul`
 compatibility layer, `mod_eq_bounded_unique`, both directed
 remainder/congruence bridges, and all expanded β-value theorems through
@@ -640,14 +640,19 @@ coprimality premise when an ordered index gap divides `c`,
 all positive gaps through a bound. The new bounded-prefix layer proves all
 distinct selected β moduli pairwise coprime, closes coprimality under products,
 descends congruence from product moduli, and checks one CRT fold step. The
-library still does not include the actual bounded fold with an encoded-product
-invariant, β finite-prefix recoding, finite products, greatest-prime descent,
+new six-theorem layer folds accumulated-product and decoded-congruence
+invariants through every bounded prefix of values already represented by a
+supplied `BetaAt` code. Its public wrapper is not arbitrary finite-sequence
+coding. The library still does not include genuine prefix-product recurrence
+and bounds, β finite-prefix recoding, finite products, greatest-prime descent,
 or native FTA. Unconditional pairwise β-modulus coprimality is false.
 Model provenance must bind the representation version as
 well as the certificate hashes and metrics.
-The corresponding 183-entry deterministic corpus refresh retains 13,344 transitions
+The corresponding 189-entry deterministic corpus refresh retains 13,344 transitions
 from 1,692 sessions and has run fingerprint
-`d0649a05ab1a88396d2d3046bc10a814e374cb3cf5ad8df225c9e15e91ff0df6`.
+`a3c2f8c5c762b10fc9c1117723c74fecb50348cfb699f73bc76fb3714df3bf1b`.
+Its isolated all-ladder smoke has 378 sessions, 5,373 raw transitions, 5,370
+unique transitions, and all 189 authored QEDs.
 
 The pack must nevertheless enter through a new scientific contract. A
 content-addressed library snapshot must bind each name, canonical statement,

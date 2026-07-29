@@ -22,6 +22,7 @@ forall b c i. exists x. ((exists h. h + S x = S ((S i) * c)) /\ exists q. b = q 
 ## Checked dependents
 
 - [[beta_at_exists_unique]]
+- [[beta_crt_prefix_congruence_step]]
 
 ## Verification record
 

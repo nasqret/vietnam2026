@@ -67,16 +67,22 @@ The fold algebra is checked as well. [[coprime_mul_left]] and
 [[coprime_mul_right]] preserve coprimality under accumulated products,
 [[mod_eq_of_mod_eq_multiple]] descends a product-modulus congruence to each
 factor, and [[binary_crt_fold_step]] adds one residue while preserving all old
-congruences. This is one step, not yet a bounded iteration or a β code for the
-product/solution trace.
+congruences. [[beta_accumulated_product_step]] and
+[[beta_crt_prefix_congruence_step]] advance the two invariant components;
+[[beta_crt_prefix_invariant_step]] combines them, and
+[[bounded_beta_crt_prefix_invariant]] performs the bounded iteration by
+ordinary induction. [[bounded_beta_crt_for_existing_code]] then projects a
+common witness for residues already decoded from a supplied `BetaAt` code.
+Extensionally the supplied code is itself such a witness, so this is not a
+theorem coding an arbitrary finite sequence or a β code for a product trace.
 
-The remaining spine begins with greatest-prime-divisor descent for the sorted
-factor order. The encoding layer then needs the actual bounded fold with an
-encoded accumulated-product invariant, β finite-prefix recoding,
-prefix-product trace existence/functionality/composition,
+The next encoding gate is genuine prefix-product recurrence and bounds, β
+finite-prefix recoding, and prefix-product trace
+existence/functionality/composition. Greatest-prime-divisor descent remains
+needed for the sorted factor order, together with
 preservation of bounded primality and sorting, and finite-product
 Euclid/cancellation. None of those relations is a trusted primitive, and the
-checked conditional two-position constructor does not by itself constitute
+checked existing-code bounded wrapper does not by itself constitute
 [[fundamental-theorem-of-arithmetic|FTA]].
 
 ## Related

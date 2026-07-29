@@ -22,6 +22,7 @@ forall B c i j. (forall t. (exists h. S t + S h = S B) -> exists k. c = S t * k)
 ## Checked dependents
 
 - [[beta_moduli_pairwise_coprime_bounded]]
+- [[bounded_beta_crt_prefix_invariant]]
 
 ## Verification record
 

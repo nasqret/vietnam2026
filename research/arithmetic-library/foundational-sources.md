@@ -217,18 +217,19 @@ This boundary should be explicit in the plan:
   decoding equivalent to bound plus congruence; constructive binary CRT; and
   a conditional two-position β-code constructor.
 - **Current-language feasible next target:** greatest-prime-divisor descent and
-  infinitude of primes, plus the actual bounded CRT fold carrying an encoded
-  accumulated-product invariant, and parity clients not already in the
-  fixed-modulus layer.
+  infinitude of primes, plus genuine prefix-product recurrence and bounds, and
+  parity clients not already in the fixed-modulus layer.
 - **Feasible with relational encodings but potentially unwieldy:** generic
   algorithms, signed-coefficient APIs beyond the checked four-natural balanced
   Bézout relation, and recursive arithmetic-function graphs.
 - **Encoding milestone:** decoded β values are checked and equivalent to bound
   plus balanced congruence, while binary CRT, conditional gap-divisibility
   coprimality, its two-position constructor, bounded-prefix pairwise
-  coprimality, product closure, modulus descent, and one CRT fold step are
-  checked. The actual bounded fold, β finite-prefix recoding, prefix products, extensional
-  sequence equality, and finite counting remain; generic exponentiation and an optional
+  coprimality, product closure, modulus descent, and the bounded prefix
+  invariant for values decoded from an existing `BetaAt` code are checked.
+  That wrapper is not arbitrary finite-sequence coding. Genuine prefix-product
+  recurrence and bounds, β finite-prefix recoding, extensional sequence
+  equality, and finite counting remain; generic exponentiation and an optional
   user-facing list/multiset layer are separate language-design choices.
 - **Blocked as a natural single theorem until that encoding milestone:** the
   full Fundamental Theorem of Arithmetic and its uniqueness clause,
@@ -239,10 +240,10 @@ a less direct pedagogical API and potentially very large certificates. The
 representation review nevertheless selected a conservative Gödel-β authoring
 facade because it expands into the unchanged Peano language. With constructive
 prime-divisor existence, the equivalent bound/congruence β-value API, binary
-CRT, bounded-prefix pairwise coprimality, and fold algebra now checked, the
-remaining critical path is greatest-prime descent followed by the actual
-bounded fold with its encoded-product invariant, β finite-prefix recoding,
-prefix-product traces, and finite-product
+CRT, bounded-prefix pairwise coprimality, fold algebra, and the existing-code
+bounded prefix invariant now checked, the next representation gate is genuine
+prefix-product recurrence and bounds, followed by β finite-prefix recoding,
+greatest-prime descent, and finite-product
 existence/uniqueness certificates.
 
 ## Source and artifact invariants

@@ -23,6 +23,7 @@ forall n. n <= 0 -> n = 0
 - [[gcd_balanced_bezout_exists_up_to]]
 - [[factor_search_up_to]]
 - [[prime_divisor_exists_up_to]]
+- [[bounded_beta_crt_prefix_invariant]]
 
 ## Verification record
 

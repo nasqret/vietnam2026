@@ -282,6 +282,12 @@ first-order PA.
 | `coprime_mul_right` | symmetric product-coprimality closure | 4,017 / 54 | 117 |
 | `mod_eq_of_mod_eq_multiple` | descend an accumulated-modulus congruence to a divisor modulus | 157 / 23 | 3 |
 | `binary_crt_fold_step` | preserve every old divisor-modulus congruence and add one new congruence | 5,501 / 52 | 156 |
+| `right_factor_divides_product` | expose the newly multiplied right factor as a divisor | 229 / 25 | 7 |
+| `beta_accumulated_product_step` | preserve nonzero, prefix-divisibility, and future-coprimality product invariants | 11,174 / 69 | 330 |
+| `beta_crt_prefix_congruence_step` | extend congruence to the next value decoded from the supplied code | 7,352 / 64 | 213 |
+| `beta_crt_prefix_invariant_step` | combine both successor invariants | 18,613 / 70 | 545 |
+| `bounded_beta_crt_prefix_invariant` | carry the four-part prefix invariant by ordinary induction | 25,496 / 78 | 752 |
+| `bounded_beta_crt_for_existing_code` | project full-bound congruences for residues already decoded from the input code | 25,545 / 79 | 755 |
 
 The bounded client strengthens the readable conclusion to
 
@@ -333,11 +339,19 @@ The next three checked theorems now expose every required bounded gap and
 prove that all distinct moduli in the prefix are pairwise coprime. Product
 coprimality, modulus descent, and `binary_crt_fold_step` then check the
 algebraic extension invariant: one new CRT solution preserves every old
-congruence whose modulus divides the accumulated product. These results still
-do not encode that accumulated product or iterate the step over a bounded
-prefix. The missing links are the β-coded product trace with its
-nonzero/divisor-membership invariants, the actual bounded fold, and
-finite-prefix recoding and extension itself.
+congruence whose modulus divides the accumulated product. The six newest
+theorems now iterate that step by ordinary induction. For every $k\le N$,
+`bounded_beta_crt_prefix_invariant` constructs $P,z$ such that $P$ is nonzero,
+every prefix beta modulus divides $P$, $z$ is congruent to each prefix value
+already decoded from the supplied code $b$, and $P$ is coprime to every future
+bounded beta modulus.
+
+Its wrapper `bounded_beta_crt_for_existing_code` is intentionally weaker than
+finite-prefix recoding. It projects the congruence component at $k=N$, but all
+residues in its premise already come from $b$; extensionally, choosing $z=b$
+proves the same conclusion. The missing links are an independently specified
+finite-prefix recoding/extension theorem, an exact beta-coded prefix-product
+trace with bounds, and the factor-primality and final-product connections.
 
 A second code stores the prefix products, beginning at one and multiplying by
 the decoded factor at each step. `AllPrime` expands the factor-pair prime
@@ -385,10 +399,13 @@ The gcd/Bézout/Gauss/Euclid chain, constructive prime-divisor existence,
 single-position Gödel-β decoded-value existence and uniqueness, its
 bidirectional bounded-congruence characterization, constructive binary CRT,
 bounded-prefix beta-modulus coprimality, product coprimality, modulus descent,
-and the generic CRT fold-preservation step are now checked in native PA. The
-next critical gates are greatest-prime descent, an encoded
-accumulated-product trace, the actual bounded fold, beta finite-prefix
-recoding and extension/restriction, and prefix-product traces.
+the generic CRT fold-preservation step, and the full bounded prefix invariant
+for values already decoded from a supplied code are now checked in native PA.
+The full-bound existing-code wrapper is extensionally trivial and does not
+perform arbitrary recoding. The next critical gates are greatest-prime
+descent, independent finite-prefix specification and recoding/extension,
+exact beta-coded prefix-product traces and bounds, and the factorization
+connections.
 Only after those interfaces have checked native certificates can factorization
 existence, uniqueness, and FTA enter `pa lib`. FTA therefore remains unproved
 in the native library.

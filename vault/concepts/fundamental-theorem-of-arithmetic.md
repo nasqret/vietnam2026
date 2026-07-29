@@ -47,15 +47,20 @@ pairwise-coprime moduli throughout one bounded prefix.
 [[mod_eq_of_mod_eq_multiple]], and [[binary_crt_fold_step]] establish the
 product-coprimality, modulus-descent, and one-step CRT algebra needed by an
 iteration.
+[[beta_accumulated_product_step]], [[beta_crt_prefix_congruence_step]], and
+[[beta_crt_prefix_invariant_step]] advance the combined invariant, while
+[[bounded_beta_crt_prefix_invariant]] folds it by ordinary induction.
+[[bounded_beta_crt_for_existing_code]] starts from values already decoded from
+a supplied `BetaAt` code. It therefore does not establish coding for an
+arbitrary finite sequence.
 
 FTA itself is **not** proved in native Peano Lab. The direct list-oriented
 existence, uniqueness, and combined catalog endpoints remain
 `blocked_by_language`; the selected conservative route must first replace that
 surface representation with fully expanded β-coded formulas. Its remaining
-critical path is greatest-prime-divisor descent, the actual bounded CRT fold
-with its encoded-product invariant, β finite-prefix recoding,
-prefix-product
-trace existence and composition, finite-product Euclid/cancellation, and the
+critical path is genuine prefix-product recurrence and bounds, β finite-prefix
+recoding, greatest-prime-divisor descent, trace existence and composition,
+finite-product Euclid/cancellation, and the
 final existence and extensional-uniqueness descents. Accordingly no Peano FTA
 is exposed through `pa lib`.
 
@@ -72,4 +77,5 @@ axiom.
 [[trusted-kernel]] · [[godel-beta-sequence]] · [[prime_divisor_exists]] ·
 [[euclid_prime_dvd_product]] · [[binary_crt]] ·
 [[binary_crt_beta_pair_of_gap_dvd]] ·
-[[bounded_beta_moduli_pairwise_coprime_exists]] · [[binary_crt_fold_step]]
+[[bounded_beta_moduli_pairwise_coprime_exists]] · [[binary_crt_fold_step]] ·
+[[bounded_beta_crt_for_existing_code]]

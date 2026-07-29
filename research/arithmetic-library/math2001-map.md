@@ -232,9 +232,11 @@ Consequently:
   equivalent to bound plus congruence. Constructive binary CRT and a
   conditional two-position β-code constructor, gap-divisibility
   β-coprimality, bounded-prefix pairwise coprimality, and CRT fold algebra are
-  checked as well; infinitude of primes, the actual bounded fold with an
-  encoded-product invariant, and greatest-prime descent remain expressible
-  next targets;
+  checked as well. The bounded prefix invariant for values already decoded
+  from a supplied `BetaAt` code is checked too, but is not arbitrary
+  finite-sequence coding; infinitude of primes, genuine prefix-product
+  recurrence and bounds, β finite-prefix recoding, and greatest-prime descent
+  remain expressible next targets;
 - integer modular arithmetic should remain a documented future layer;
 - generic powers need a graph relation or a conservative term-language
   extension;
@@ -246,8 +248,9 @@ selected conservative internal authoring route, but it is not a primitive
 user-facing list interface. The decoded-value API is checked and equivalent to
 bound plus balanced congruence; binary CRT, conditional gap-divisibility
 coprimality, its two-position constructor, bounded-prefix pairwise
-coprimality, and CRT fold algebra are checked as well. The actual bounded fold,
-β finite-prefix recoding, and encoded products remain open.
+coprimality, CRT fold algebra, and the existing-code bounded prefix invariant
+are checked as well. Genuine prefix-product recurrence and bounds, β
+finite-prefix recoding, and encoded products remain open.
 
 ## Clean-room acceptance rule
 

@@ -1541,6 +1541,26 @@
       "blocker": null
     },
     {
+      "id": "right_factor_divides_product",
+      "title": "The right factor divides a product",
+      "domain": "divisibility",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_comm"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "nng4",
+        "macbeth_math2001_repo"
+      ],
+      "summary": "Commutativity supplies the explicit witness that the right factor divides a product.",
+      "peano": {
+        "statement": "forall a b. exists k. a * b = b * k",
+        "existing_name": "right_factor_divides_product"
+      },
+      "blocker": null
+    },
+    {
       "id": "bounded_common_multiple_step",
       "title": "A bounded common multiple extends by one",
       "domain": "divisibility",
@@ -3960,14 +3980,138 @@
       "blocker": null
     },
     {
+      "id": "beta_accumulated_product_step",
+      "title": "Extend the accumulated beta-modulus product invariant",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_ne_zero",
+        "right_factor_divides_product",
+        "beta_modulus_nonzero",
+        "le_eq_or_lt",
+        "le_of_succ_le_succ",
+        "multiple_mul_right",
+        "le_succ_self",
+        "lt_of_le_of_lt",
+        "lt_irrefl_expanded",
+        "beta_moduli_pairwise_coprime_bounded",
+        "coprime_mul_left"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Multiplying the accumulated product by the next beta modulus preserves nonzeroness, divisibility by all earlier moduli, and coprimality with every future bounded modulus.",
+      "peano": {
+        "statement": "forall N c k P. (forall t. (exists h. S t + S h = S N) -> exists q. c = S t * q) -> (exists h. h + S k = N) -> ~(P = 0) -> (forall i. (exists h. h + i = k) -> exists q. P = S ((S i) * c) * q) -> (forall j. (exists g. g + S k = j) -> (exists h. h + j = N) -> forall d. (exists u. P = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1) -> (~(P * S ((S (S k)) * c) = 0) /\\ ((forall i. (exists h. h + i = S k) -> exists q. P * S ((S (S k)) * c) = S ((S i) * c) * q) /\\ forall j. (exists g. g + S (S k) = j) -> (exists h. h + j = N) -> forall d. (exists u. P * S ((S (S k)) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1))",
+        "existing_name": "beta_accumulated_product_step"
+      },
+      "blocker": null
+    },
+    {
+      "id": "beta_crt_prefix_congruence_step",
+      "title": "Extend decoded-prefix congruence by one beta position",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "beta_modulus_nonzero",
+        "le_refl",
+        "binary_crt_fold_step",
+        "beta_at_exists",
+        "beta_at_unique",
+        "le_eq_or_lt",
+        "le_of_succ_le_succ"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "The generic CRT fold step extends congruence with residues decoded from an already supplied beta code while preserving all earlier decoded positions.",
+      "peano": {
+        "statement": "forall N c b k P z. (exists h. h + S k = N) -> ~(P = 0) -> (forall i. (exists h. h + i = k) -> exists q. P = S ((S i) * c) * q) -> (forall i a. (exists h. h + i = k) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + a) -> exists u v. z + S ((S i) * c) * u = a + S ((S i) * c) * v) -> (forall j. (exists g. g + S k = j) -> (exists h. h + j = N) -> forall d. (exists u. P = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1) -> exists z2. forall i a. (exists h. h + i = S k) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + a) -> exists u v. z2 + S ((S i) * c) * u = a + S ((S i) * c) * v",
+        "existing_name": "beta_crt_prefix_congruence_step"
+      },
+      "blocker": null
+    },
+    {
+      "id": "beta_crt_prefix_invariant_step",
+      "title": "One full bounded beta-prefix CRT invariant step",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "beta_accumulated_product_step",
+        "beta_crt_prefix_congruence_step"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Combines accumulated-product and decoded-congruence extension into one concrete successor step for the bounded prefix invariant.",
+      "peano": {
+        "statement": "forall N c b k P z. (forall t. (exists h. S t + S h = S N) -> exists q. c = S t * q) -> (exists h. h + S k = N) -> ~(P = 0) -> (forall i. (exists h. h + i = k) -> exists q. P = S ((S i) * c) * q) -> (forall i a. (exists h. h + i = k) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + a) -> exists u v. z + S ((S i) * c) * u = a + S ((S i) * c) * v) -> (forall j. (exists g. g + S k = j) -> (exists h. h + j = N) -> forall d. (exists u. P = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1) -> exists z2. (~(P * S ((S (S k)) * c) = 0) /\\ ((forall i. (exists h. h + i = S k) -> exists q. P * S ((S (S k)) * c) = S ((S i) * c) * q) /\\ ((forall i a. (exists h. h + i = S k) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + a) -> exists u v. z2 + S ((S i) * c) * u = a + S ((S i) * c) * v) /\\ forall j. (exists g. g + S (S k) = j) -> (exists h. h + j = N) -> forall d. (exists u. P * S ((S (S k)) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1)))",
+        "existing_name": "beta_crt_prefix_invariant_step"
+      },
+      "blocker": null
+    },
+    {
+      "id": "bounded_beta_crt_prefix_invariant",
+      "title": "Bounded beta-prefix CRT invariant",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "beta_modulus_nonzero",
+        "le_zero",
+        "multiple_refl",
+        "beta_at_to_mod_eq",
+        "beta_moduli_coprime_of_lt_bounded_common_multiple",
+        "le_succ_self",
+        "le_trans",
+        "beta_crt_prefix_invariant_step"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Ordinary induction folds the accumulated-product, decoded-congruence, and future-coprimality invariant through every bounded prefix of values already decoded from b.",
+      "peano": {
+        "statement": "forall N c b. (forall t. (exists h. S t + S h = S N) -> exists q. c = S t * q) -> forall k. (exists h. h + k = N) -> exists P z. (~(P = 0) /\\ ((forall i. (exists h. h + i = k) -> exists q. P = S ((S i) * c) * q) /\\ ((forall i a. (exists h. h + i = k) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + a) -> exists u v. z + S ((S i) * c) * u = a + S ((S i) * c) * v) /\\ forall j. (exists g. g + S k = j) -> (exists h. h + j = N) -> forall d. (exists u. P = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1)))",
+        "existing_name": "bounded_beta_crt_prefix_invariant"
+      },
+      "blocker": null
+    },
+    {
+      "id": "bounded_beta_crt_for_existing_code",
+      "title": "Bounded CRT witness for an existing beta code",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "bounded_beta_crt_prefix_invariant",
+        "le_refl"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Projects the bounded fold to a witness congruent to every residue already decoded from b; extensionally b itself is such a witness, so this is not finite-prefix recoding.",
+      "peano": {
+        "statement": "forall N c b. (forall t. (exists h. S t + S h = S N) -> exists q. c = S t * q) -> exists z. forall i a. (exists h. h + i = N) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + a) -> exists u v. z + S ((S i) * c) * u = a + S ((S i) * c) * v",
+        "existing_name": "bounded_beta_crt_for_existing_code"
+      },
+      "blocker": null
+    },
+    {
       "id": "prime_factorization_existence",
       "title": "Existence of a finite prime factorization",
       "domain": "factorization",
       "status": "blocked_by_language",
       "dependencies": [
         "prime_divisor_exists",
-        "bounded_beta_moduli_pairwise_coprime_exists",
-        "binary_crt_fold_step"
+        "bounded_beta_crt_prefix_invariant"
       ],
       "sources": [
         "macbeth_math2001_repo",
@@ -3975,15 +4119,15 @@
         "weissman_python_number_theory",
         "open_logic"
       ],
-      "summary": "Single-position Gödel-β decoding, bounded pairwise modulus coprimality, multiplicative coprimality, modulus reduction, and the generic CRT fold step are checked; encoded prefix-product traces and their bounded iteration remain unavailable.",
+      "summary": "A checked bounded induction now carries nonzero accumulated products, divisor membership, future coprimality, and congruences for values already decoded from an input code; genuine finite-prefix recoding and prefix-product traces remain unavailable.",
       "peano": null,
       "blocker": {
         "code": "variable_length_factorization_unrepresented",
-        "detail": "Peano Lab's fixed signature has no primitive finite collection. Division, single-position Gödel-β value totality/functionality, a nonzero pairwise-coprime bounded modulus family, product coprimality, modulus reduction, and a generic CRT fold step are checked. The encoded prefix-product trace and the bounded induction that iterates that step over an arbitrary finite prefix are not implemented.",
+        "detail": "Peano Lab's fixed signature has no primitive finite collection. The checked bounded CRT invariant folds over residues that are already decoded from one supplied beta code b; its projected witness is therefore extensionally satisfied by b itself and does not construct a fresh code for an independently specified finite prefix. No checked relation yet encodes the exact prefix-product recurrence with bounds ensuring that all product entries can themselves be beta-decoded.",
         "unblocks_with": [
-          "a checked β-coded prefix-product relation with nonzero and divisor-membership invariants",
-          "checked bounded iteration of binary_crt_fold_step over that trace",
-          "and checked links between encoded elements, primality, and the folded product"
+          "a genuine β finite-prefix recoding or extension theorem for independently specified entries",
+          "a checked β-coded prefix-product recurrence with modulus bounds for every exact product",
+          "and checked links between encoded factors, primality, and the final product"
         ]
       }
     },
@@ -4002,11 +4146,11 @@
         "weissman_illustrated_programming",
         "weissman_python_number_theory"
       ],
-      "summary": "Single decoded values are functional and bounded beta-modulus families are pairwise coprime; extensional whole-prefix comparison and finite-product Euclid/cancellation remain unchecked in Peano.",
+      "summary": "The bounded CRT invariant is checked for an existing input code, but extensional whole-prefix comparison, exact prefix-product traces, and finite-product Euclid/cancellation remain unchecked in Peano.",
       "peano": null,
       "blocker": {
         "code": "factorization_equivalence_unrepresented",
-        "detail": "The current surface has no primitive finite collections. Single-position β decoding is checked and functional, bounded beta-modulus families are pairwise coprime, and multiplicative coprimality supports an eventual product fold. Extensional finite-prefix comparison and finite-product Euclid/cancellation lemmas are not yet available as checked Peano entries.",
+        "detail": "The current surface has no primitive finite collections. Single-position β decoding is functional and the existing-code bounded CRT invariant is checked, but that invariant neither identifies arbitrary codes extensionally nor supplies an exact product trace. Extensional finite-prefix comparison and finite-product Euclid/cancellation lemmas are not yet available as checked Peano entries.",
         "unblocks_with": [
           "the factorization representation required by prime_factorization_existence",
           "checked extensional equality for sorted β-decoded prefixes",

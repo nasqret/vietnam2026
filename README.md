@@ -38,13 +38,13 @@ The exact abstracts, session plans and reading lists live on the [landing page](
 | `vault/` | The **Obsidian vault** — the atomic, wiki-linked knowledge base behind the book. |
 | `artifacts/` | **Formal proofs** in four systems, plus `lean-fta/`: a pinned, sorry-free Lean proof of prime-factorization existence and uniqueness up to permutation. |
 | `lab-lambda/` | The **Lambda Lab**, repackaged to run **directly in the browser** (Pyodide + xterm.js). Deployed to `/lab-lambda`. |
-| `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, 183-entry checked arithmetic ladder, and reproducible proof-trace corpus. |
-| `research/` | The **research dossier** — including the 190-node foundational arithmetic catalog (23 baseline checked, 160 post-baseline checked, three planned expressible, four language-blocked), one checked FTA companion, and source/license maps. |
+| `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, 189-entry checked arithmetic ladder, and reproducible proof-trace corpus. |
+| `research/` | The **research dossier** — including the 196-node foundational arithmetic catalog (23 baseline checked, 166 post-baseline checked, three planned expressible, four language-blocked), one checked FTA companion, and source/license maps. |
 | `scripts/` | Book replay gate plus the deterministic Peano trace generation, export, and kernel-judged evaluation pipeline. |
 | `docs/` | Lecturer-facing docs: how to build, deploy, and run each piece. |
 | `MEMORY.md` · `JOURNAL.md` · `PLAN.md` + `PLAN/` | Project **memory**, dated **journal**, and the multi-level **plan**. |
 
-The 183-entry native ladder now checks full addition/multiplication
+The 189-entry native ladder now checks full addition/multiplication
 compatibility for balanced congruence and proves that expanded Gödel-β
 decoding is equivalent to a bound plus balanced congruence. Constructive binary
 CRT and a two-position β-code constructor are checked. A new conditional chain
@@ -54,10 +54,19 @@ divisible by every positive gap through a fixed bound. Unconditional pairwise
 coprimality is false: `c=1` at indices 1 and 4 gives moduli 3 and 6.
 The bounded-prefix glue is now checked: it constructs a suitable base with
 pairwise-coprime β moduli through a chosen bound. Coprime-product closure,
-modulus descent, and one invariant-preserving binary CRT fold step are checked
-too. The actual bounded fold with an encoded accumulated-product invariant, β
-finite-prefix recoding, prefix products, greatest-prime descent, and native
-FTA remain open.
+modulus descent, and an ordinary-induction CRT prefix invariant are checked
+too. The public wrapper applies only to residues already decoded from an
+existing `BetaAt` code; it is not an arbitrary finite-sequence coding theorem.
+Genuine prefix-product recurrence and bounds, β finite-prefix recoding,
+greatest-prime descent, and native FTA remain open.
+The shared snapshot totals 242,629 structural proof nodes and 6,895 Cuts
+across 149 Cut-bearing entries; `bounded_beta_crt_for_existing_code` is largest
+at 25,545 nodes and 755 Cuts.
+The synchronized source-bound corpus has fingerprint
+`a3c2f8c5c762b10fc9c1117723c74fecb50348cfb699f73bc76fb3714df3bf1b`;
+its all-ladder smoke closes all 189 authored proofs. Local browser build
+`2026-07-29h` packages the same library as application
+`a-98b1d8bb8dd7`; it is not a deployment claim.
 
 ---
 

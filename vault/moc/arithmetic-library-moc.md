@@ -6,17 +6,17 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-The current runtime has 183 unique checked nodes: 23 from the original ladder
-and 160 in the reconciled post-baseline extension. Of the latter, 148 form the
+The current runtime has 189 unique checked nodes: 23 from the original ladder
+and 166 in the reconciled post-baseline extension. Of the latter, 154 form the
 general foundational layer and twelve form the fixed modular capstone. The
-broader 190-node catalog contains three `planned_expressible` and four
+broader 196-node catalog contains three `planned_expressible` and four
 `blocked_by_language` nodes in addition to those checked layers. One
 separately cataloged Lean companion checks full list-based FTA existence and
 uniqueness; it is not counted as a Peano theorem.
 
-The shared snapshot contains 154,220 proof nodes and 4,293 self-contained Cuts;
-143 certificates contain at least one Cut.
-[[binary_crt_beta_pair_of_gap_dvd]] is largest at 12,980 nodes and 378 Cuts,
+The shared snapshot contains 242,629 proof nodes and 6,895 self-contained Cuts;
+149 certificates contain at least one Cut.
+[[bounded_beta_crt_for_existing_code]] is largest at 25,545 nodes and 755 Cuts,
 while [[prime_divisor_exists]] sets the maximum depth at 80. These are
 representation metrics, not additional axioms.
 
@@ -70,6 +70,7 @@ representation metrics, not additional axioms.
 
 - [[multiple_zero]] · [[one_multiple]] · [[multiple_refl]]
 - [[multiple_add]] · [[multiple_mul_right]] · [[multiple_mul_left]]
+- [[right_factor_divides_product]]
 - [[multiple_trans]] · [[multiple_antisymm]]
 - [[divisor_le_nonzero]] · [[divisor_one]]
 - [[factor_difference]] · [[divides_remainder]] · [[divides_linear_step]]
@@ -120,6 +121,9 @@ representation metrics, not additional axioms.
 - [[bounded_beta_moduli_pairwise_coprime_exists]]
 - [[coprime_mul_left]] · [[coprime_mul_right]]
 - [[mod_eq_of_mod_eq_multiple]] · [[binary_crt_fold_step]]
+- [[beta_accumulated_product_step]] · [[beta_crt_prefix_congruence_step]]
+- [[beta_crt_prefix_invariant_step]] · [[bounded_beta_crt_prefix_invariant]]
+- [[bounded_beta_crt_for_existing_code]]
 
 The original β-pair node constructs one code for two bounded values under an
 explicit coprimality premise. The new conditional chain discharges that premise
@@ -132,8 +136,10 @@ coprime: that statement is false (for `c = 1`, indices 1 and 4 give
 moduli 3 and 6). The checked bounded-prefix theorem instead first constructs a
 suitable common-multiple base, then proves all distinct positions through the
 chosen bound pairwise coprime. Product coprimality, congruence descent, and one
-binary CRT preservation step are checked too. The actual bounded fold and its
-encoded-product invariant are still missing.
+binary CRT preservation step are checked too. The newest invariant chain folds
+the accumulated product and decoded congruences through a bounded prefix by
+ordinary induction. Its wrapper assumes an already existing `BetaAt` code; it
+does not code an arbitrary finite sequence.
 
 ## Checked prime nodes
 
@@ -151,10 +157,9 @@ encoded-product invariant are still missing.
 - [[prime_divisor_exists_up_to]] · [[prime_divisor_exists]] — bounded and public prime-divisor existence
 
 The remaining FTA path is not hidden by these admissions: it still requires
-greatest-prime descent, the actual bounded CRT fold with an encoded
-accumulated-product invariant, [[godel-beta-sequence|β finite-prefix
-recoding]], prefix-product traces, and finite-product existence and
-uniqueness.
+genuine prefix-product recurrence and bounds,
+[[godel-beta-sequence|β finite-prefix recoding]], greatest-prime descent, and
+finite-product existence and uniqueness.
 
 ## Executable and documentary views
 

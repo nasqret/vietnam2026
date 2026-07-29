@@ -25,6 +25,7 @@ forall a. exists q. a = a * q
 - [[gauss_coprime_cancel]]
 - [[prime_divisor_exists_up_to]]
 - [[beta_moduli_coprime_of_gap_dvd]]
+- [[bounded_beta_crt_prefix_invariant]]
 
 ## Verification record
 

@@ -321,6 +321,17 @@ shared metrics:
 | `mod_eq_of_mod_eq_multiple` | 157 / 23 / 3 |
 | `binary_crt_fold_step` | 5,501 / 52 / 156 |
 
+The bounded existing-code prefix tranche continues with:
+
+| Checked theorem | Nodes/depth/Cuts |
+|---|---:|
+| `right_factor_divides_product` | 229 / 25 / 7 |
+| `beta_accumulated_product_step` | 11,174 / 69 / 330 |
+| `beta_crt_prefix_congruence_step` | 7,352 / 64 / 213 |
+| `beta_crt_prefix_invariant_step` | 18,613 / 70 / 545 |
+| `bounded_beta_crt_prefix_invariant` | 25,496 / 78 / 752 |
+| `bounded_beta_crt_for_existing_code` | 25,545 / 79 / 755 |
+
 ## Admission gates
 
 1. **Complete:** admit and mutation-test the Euclidean invariance ladder.
@@ -351,11 +362,15 @@ shared metrics:
 12. **Complete:** prove bounded-prefix pairwise coprimality, coprime-product
     closure, modulus descent, and one invariant-preserving binary CRT fold
     step.
-13. Develop greatest-prime-divisor descent for sorted factorization, then
-    prove the actual bounded fold with its encoded-product invariant, β
-    finite-prefix recoding, and the product gate.
+13. **Complete:** advance accumulated-product and decoded-congruence
+    invariants together, fold them through a bounded prefix by ordinary
+    induction, and expose the result for values already decoded from a
+    supplied `BetaAt` code. This does not code an arbitrary finite sequence.
+14. Prove genuine prefix-product recurrence and bounds, then β finite-prefix
+    recoding and the product gate; develop greatest-prime-divisor descent for
+    the later sorted-factorization construction.
 
 Prime-divisor existence does not follow automatically from gcd or Bézout, and
 Euclid's lemma does not construct a prime divisor; both sides are now checked
-independently. None of these steps yet supplies finite sequences or products
-for FTA.
+independently. The existing-code prefix wrapper does not supply arbitrary
+finite sequences or genuine prefix products for FTA.

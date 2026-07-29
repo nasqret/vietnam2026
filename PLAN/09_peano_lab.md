@@ -538,7 +538,7 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       capstone regression. That source snapshot has 49 entries; the initial
       reconciliation with M20 deduplicated fourteen exact overlaps and yielded
       63 unique checked theorems. Subsequent native arithmetic work extends
-      that historical release to the current 183-entry successor.
+      that historical release to the current 189-entry successor.
 - [ ] Register model-v2 with a library snapshot hash over names, canonical statements,
       dependencies, source/script/certificate hashes, nodes, and depth; bind it through prompt,
       rows, attestation, training manifest, evaluator, and WMI requests. Freeze sealed targets
@@ -602,7 +602,7 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   known held-out routes need 10/10/23/13 steps, so the 16-step cap also underspecifies
   `le_total`'s known route. Scaling the same curriculum to 4B would not test the intended
   hypothesis, so the conditional 4B comparison remains unlaunched. The next data contract must freeze the user's
-  current 183-entry library as a content-addressed successor authority and add induction, invariant, witness,
+  current 189-entry library as a content-addressed successor authority and add induction, invariant, witness,
   and lemma-composition curricula while retaining a sealed test set.
 
   The public-catalog local gate is green: 1,036 Peano tests; Lambda 360 tests plus 36 subtests; all
@@ -621,7 +621,7 @@ The theorem-ladder extension is tracked independently in
 [`PLAN/10_arithmetic_library.md`](10_arithmetic_library.md). Its first release
 kept the kernel and object language fixed, expanded divisibility and residue
 notions into ordinary formulas, and labeled prime/factorization targets by
-their real dependencies. The reconciled runtime contains 183 unique checked
+their real dependencies. The reconciled runtime contains 189 unique checked
 theorems, including quotient-remainder existence/uniqueness, relational gcd
 existence/uniqueness, balanced-natural Bézout, Gauss cancellation, and Euclid's
 lemma. It now also has constructive equality and divisibility decisions,
@@ -636,19 +636,25 @@ coprimality premise when the ordered index gap divides `c`, applies the
 constructor under that condition, and constructs nonzero bounded common
 multiples. The latest layer proves bounded-prefix pairwise coprimality,
 coprime-product closure, modulus descent, and one invariant-preserving binary
-CRT fold step. Unconditional pairwise β-modulus coprimality is false. A separate
+CRT fold step. The newest six theorems fold the accumulated-product and
+decoded-congruence invariant through every bounded prefix of a supplied
+`BetaAt` code. The wrapper is not arbitrary finite-sequence coding.
+Unconditional pairwise β-modulus coprimality is false. A separate
 Lean companion checks full FTA. The later proof-sharing milestone adds one
 reviewed self-contained
 Cut rule to the trusted certificate checker—without changing the PA object
 language, axioms, induction, or intuitionistic default. The current shared
-ladder has 154,220 structural nodes and 4,293 Cuts across 143 Cut-bearing
-entries; `binary_crt_beta_pair_of_gap_dvd` is largest at 12,980
-nodes/378 Cuts and
+ladder has 242,629 structural nodes and 6,895 Cuts across 149 Cut-bearing
+entries; `bounded_beta_crt_for_existing_code` is largest at 25,545
+nodes/755 Cuts and
 the maximum depth remains 80 at `prime_divisor_exists`. Peano admission
-of FTA still requires greatest-prime descent, the actual bounded fold with its
-encoded accumulated-product invariant, β finite-prefix recoding, and the
-encoded-product proof spine. The complete current Peano suite passes 1,098
-tests on CPython 3.10 in 127.22 seconds; Lambda passes 360 tests plus 36
+of FTA still requires genuine prefix-product recurrence and bounds, β
+finite-prefix recoding, greatest-prime descent, and the encoded-product proof
+spine. The complete current Peano suite passes 1,098 tests on CPython 3.10 in
+181.34 seconds. Local browser build `2026-07-29h` packages all 189 entries as
+application `a-98b1d8bb8dd7`; the synchronized corpus has run fingerprint
+`a3c2f8c5c762b10fc9c1117723c74fecb50348cfb699f73bc76fb3714df3bf1b`.
+Lambda's preceding independent regression remains green at 360 tests plus 36
 subtests.
 
 ## Explicitly out of scope

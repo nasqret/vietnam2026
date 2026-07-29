@@ -166,13 +166,13 @@ fine-tuning awaits the pretrained-base baseline.
 
 ## Peano foundational arithmetic snapshot
 
-[`peano-library/`](peano-library/) is the deterministic snapshot of all 183
+[`peano-library/`](peano-library/) is the deterministic snapshot of all 189
 checked Peano library entries. Its internal snapshot-v2 schema contains
 statement/script/certificate hashes, exact node/depth and structural Cut
 metrics, an ordered root digest, and the dependency DAG in Mermaid form.
-The current snapshot totals 154,220 structural nodes and 4,293 Cuts across 143
-Cut-bearing entries. `binary_crt_beta_pair_of_gap_dvd` is largest at
-12,980 nodes and 378 Cuts; `prime_divisor_exists` reaches the maximum
+The current snapshot totals 242,629 structural nodes and 6,895 Cuts across 149
+Cut-bearing entries. `bounded_beta_crt_for_existing_code` is largest at
+25,545 nodes and 755 Cuts; `prime_divisor_exists` reaches the maximum
 depth of 80.
 The latest checked tranches add the full additive/multiplicative compatibility
 layer for balanced congruence, the five expanded decoded-value theorems from
@@ -188,16 +188,19 @@ constructs a nonzero `c` divisible by every positive natural through a
 fixed bound. The newest seven records prove bounded-prefix pairwise
 coprimality, coprime-product closure, congruence descent from an accumulated
 product modulus, and one invariant-preserving binary CRT extension. The
-snapshot does not claim false unconditional pairwise coprimality, the actual
-bounded fold or its encoded-product invariant, β finite-prefix recoding,
-encoded prefix products, greatest-prime descent, or native FTA.
+newest six records advance the accumulated-product and decoded-congruence
+invariants together and fold them through every bounded prefix of values
+already decoded from a supplied `BetaAt` code. The final wrapper is not an
+arbitrary finite-sequence coding theorem. The snapshot does not claim false
+unconditional pairwise coprimality, genuine prefix-product recurrence and
+bounds, β finite-prefix recoding, greatest-prime descent, or native FTA.
 Rebuild or verify it with
 `python3 scripts/build_peano_library_snapshot.py [--check]`.
 
 The snapshot is evidence about replayed certificates, not a theorem database
 trusted by the kernel. The broader checked/planned/blocked research graph lives
-in `research/arithmetic-library/catalog.json`; it currently has 190 nodes: 23
-`checked_existing`, 160 `checked_m20`, three planned, and four
+in `research/arithmetic-library/catalog.json`; it currently has 196 nodes: 23
+`checked_existing`, 166 `checked_m20`, three planned, and four
 language-blocked.
 
 ## Fundamental theorem of arithmetic companion
@@ -244,5 +247,5 @@ The reconciled runtime keeps all 26 source records for provenance. Fourteen are
 identical to independently developed M20 records, so a guarded union exposes
 those once and adds the twelve genuinely new modular capstones. That initial
 reconciliation produced a historical 63-theorem release; the current generated
-snapshot is its 183-theorem successor. Incompatible same-name records fail
+snapshot is its 189-theorem successor. Incompatible same-name records fail
 closed.

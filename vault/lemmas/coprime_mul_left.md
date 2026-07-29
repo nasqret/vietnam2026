@@ -21,6 +21,7 @@ forall a b n. (forall d. (exists x. a = d * x) -> (exists y. n = d * y) -> d = 1
 ## Checked dependents
 
 - [[coprime_mul_right]]
+- [[beta_accumulated_product_step]]
 
 ## Verification record
 

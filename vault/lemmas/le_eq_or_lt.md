@@ -26,6 +26,8 @@ forall a b. (exists k. k + a = b) -> a = b \/ exists k. k + S a = b
 - [[gcd_balanced_bezout_exists_up_to]]
 - [[factor_property_succ]]
 - [[proper_factor_lt]]
+- [[beta_accumulated_product_step]]
+- [[beta_crt_prefix_congruence_step]]
 
 ## Verification record
 

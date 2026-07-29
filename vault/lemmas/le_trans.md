@@ -21,6 +21,7 @@ forall n m k. n <= m -> m <= k -> n <= k
 
 - [[lt_of_lt_of_le]]
 - [[beta_moduli_coprime_of_lt_bounded_common_multiple]]
+- [[bounded_beta_crt_prefix_invariant]]
 
 ## Verification record
 

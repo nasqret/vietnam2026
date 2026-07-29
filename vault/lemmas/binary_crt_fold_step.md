@@ -21,7 +21,7 @@ forall P n x b. ~(P = 0) -> ~(n = 0) -> (forall d. (exists u. P = d * u) -> (exi
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[beta_crt_prefix_congruence_step]]
 
 ## Verification record
 

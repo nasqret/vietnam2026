@@ -20,7 +20,7 @@ forall n. ~(exists k. k + S n = n)
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[beta_accumulated_product_step]]
 
 ## Verification record
 

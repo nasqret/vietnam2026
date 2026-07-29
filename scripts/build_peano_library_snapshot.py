@@ -222,6 +222,12 @@ def build_payloads() -> dict[str, str]:
         "coprime_mul_right",
         "mod_eq_of_mod_eq_multiple",
         "binary_crt_fold_step",
+        "right_factor_divides_product",
+        "beta_accumulated_product_step",
+        "beta_crt_prefix_congruence_step",
+        "beta_crt_prefix_invariant_step",
+        "bounded_beta_crt_prefix_invariant",
+        "bounded_beta_crt_for_existing_code",
     }
     published_mod5_unique_names = {
         spec.name for spec in MOD5_THEOREMS

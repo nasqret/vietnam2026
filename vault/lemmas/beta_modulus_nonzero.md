@@ -22,6 +22,9 @@ forall c i. ~(S ((S i) * c) = 0)
 - [[beta_at_exists]]
 - [[beta_at_of_mod_eq_bound]]
 - [[binary_crt_beta_pair]]
+- [[beta_accumulated_product_step]]
+- [[beta_crt_prefix_congruence_step]]
+- [[bounded_beta_crt_prefix_invariant]]
 
 ## Verification record
 

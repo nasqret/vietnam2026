@@ -256,7 +256,7 @@
   delivery remains blocked on administrator-managed cache headers, while M17 is published to
   staging. The implementation, checked corpus,
   construction book, Obsidian knowledge base, kernel-judged evaluation protocol, live checked-
-  theorem reuse, and the current 183-entry checked ladder (whose initial public-catalog/M20
+  theorem reuse, and the current 189-entry checked ladder (whose initial public-catalog/M20
   reconciliation produced a historical 63-entry release),
   certificate-producing `ring`, and bounded checked
   `norm_num` teaching surface are present. The odd-square induction closes through explicit
@@ -329,8 +329,8 @@
   170 commands, and 414/414 vault wikilinks pass. Local browser candidate `2026-07-28g` has
   application identity `a-3ea7b7142aa0`; automated worker boot passes, direct in-app Pyodide
   latency remains unmeasured, and production is untouched.
-- The current native arithmetic runtime has 183 unique checked theorems: 23
-  baseline entries, 148 general foundational entries, and twelve unique
+- The current native arithmetic runtime has 189 unique checked theorems: 23
+  baseline entries, 154 general foundational entries, and twelve unique
   modular capstones. It now includes discrete order, multiplication
   cancellation/monotonicity, constructive quotient-remainder existence, full
   quotient-remainder uniqueness, zero-remainder/divisibility bridges,
@@ -364,16 +364,21 @@
   base to prove pairwise coprimality for every distinct pair in a bounded
   prefix, close coprimality under products on both sides, descend congruence
   from an accumulated product modulus to its factors, and prove one binary CRT
-  extension preserves all earlier congruences. Under self-contained dependency
-  sharing, the complete ladder contains 154,220 structural proof nodes and
-  4,293 Cuts across 143 Cut-bearing entries.
-  `binary_crt_beta_pair_of_gap_dvd` is largest by
-  nodes and Cuts at 12,980/378;
+  extension preserves all earlier congruences. The latest six admissions add
+  the right-factor divisibility witness, advance accumulated-product and
+  decoded-congruence invariants together, fold them through every bounded
+  prefix by ordinary induction, and project a common congruence witness for
+  values already decoded from an existing `BetaAt` code. That final wrapper is
+  not arbitrary finite-sequence coding. Under self-contained dependency
+  sharing, the complete ladder contains 242,629 structural proof nodes and
+  6,895 Cuts across 149 Cut-bearing entries.
+  `bounded_beta_crt_for_existing_code` is largest by
+  nodes and Cuts at 25,545/755;
   `prime_divisor_exists` sets the maximum depth at 80. The synchronized
-  research catalog has 190 nodes (23 baseline checked, 160 post-baseline
+  research catalog has 196 nodes (23 baseline checked, 166 post-baseline
   checked, three planned, four language-blocked) plus the separate Lean FTA
-  companion. The generated vault has 262 notes and 2,397 resolved links,
-  including 183 lemma notes. The
+  companion. The generated vault has 268 notes and 2,513 resolved links,
+  including 189 lemma notes. The
   object language, PA axioms,
   induction schema, and intuitionistic default are unchanged. The trusted
   proof grammar/checker now contains the reviewed self-contained
@@ -381,20 +386,20 @@
   with no theorem-name/hash authority. The checker is 247 lines. Its untrusted
   erasure utility is diagnostic and cannot round-trip every introduction-headed
   or induction-bearing certificate. The ordered snapshot root is
-  `09359430226349a7d5fdd1fd67376d345bc1bb5f707e746e8b58c2799086f2d6`.
-  The local browser candidate is `2026-07-29g` / `a-6b72d4fe4ca4`
-  and exposes all 183 entries. Its 1,098 Peano tests pass on CPython 3.10 in
-  127.22 seconds. Lambda remains green at 360 tests plus 36 subtests.
+  `9650ae53f506c282daf84fca5e9c08d0d48bb36db813b4efc43f54156d25bf6b`.
+  The local browser candidate is `2026-07-29h` / `a-98b1d8bb8dd7` and exposes
+  all 189 entries. The current source suite passes 1,098 Peano tests on
+  CPython 3.10 in 181.34 seconds. Lambda remains green at 360 tests plus 36
+  subtests.
   The preceding checkpoint's 36-source book, 213 deep links, and 45 session
   blocks with 264 documented
   commands were also green. Those documentary counts have not been reused as
-  a current 183-theorem book claim.
+  a current 189-theorem book claim.
   The source-bound corpus retains 13,344 transitions/1,692 sessions under run
   fingerprint
-  `d0649a05ab1a88396d2d3046bc10a814e374cb3cf5ad8df225c9e15e91ff0df6`;
-  the isolated smoke has 366 sessions, 4,992 raw and 4,989 unique transitions,
-  and all 183 authored QEDs. Peano FTA remains absent pending
-  greatest-prime descent, the actual bounded CRT fold and its encoded-product
-  invariant, β finite-prefix recoding, and the prefix-product representation
-  spine.
+  `a3c2f8c5c762b10fc9c1117723c74fecb50348cfb699f73bc76fb3714df3bf1b`;
+  the isolated smoke has 378 sessions, 5,373 raw and 5,370 unique transitions,
+  and all 189 authored QEDs. Peano FTA remains absent pending genuine
+  prefix-product recurrence and bounds, arbitrary finite-prefix coding,
+  greatest-prime descent, and the remaining finite-product spine.
   Production is untouched.

@@ -4,18 +4,18 @@
     "proof_depth": 128,
     "proof_nodes": 32768
   },
-  "maximum_cut_nodes": 378,
+  "maximum_cut_nodes": 755,
   "maximum_proof_depth": 80,
-  "maximum_proof_nodes": 12980,
-  "ordered_root_sha256": "09359430226349a7d5fdd1fd67376d345bc1bb5f707e746e8b58c2799086f2d6",
+  "maximum_proof_nodes": 25545,
+  "ordered_root_sha256": "9650ae53f506c282daf84fca5e9c08d0d48bb36db813b4efc43f54156d25bf6b",
   "schema": "peano-library-metrics-v2",
-  "theorem_count": 183,
+  "theorem_count": 189,
   "theorems_by_layer": {
-    "foundational_extension": 148,
+    "foundational_extension": 154,
     "legacy_core": 23,
     "published_mod5_unique": 12
   },
-  "theorems_with_cut_nodes": 143,
-  "total_cut_nodes": 4293,
-  "total_proof_nodes": 154220
+  "theorems_with_cut_nodes": 149,
+  "total_cut_nodes": 6895,
+  "total_proof_nodes": 242629
 }

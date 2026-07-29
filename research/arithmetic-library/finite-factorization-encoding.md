@@ -27,10 +27,13 @@ coprimality premise. The new conditional layer proves that premise when the
 ordered index gap divides `c`, applies the constructor, and produces a
 nonzero `c` divisible by every positive gap through a chosen bound.
 The bounded-prefix pairwise-coprimality theorem and the product/modulus/CRT
-fold algebra are now checked too. This does **not** prove FTA. The remaining
-critical path starts with greatest-prime-divisor descent and then crosses the
-actual bounded fold with an encoded accumulated-product invariant, β
-finite-prefix recoding, prefix-product, and finite-product layers.
+fold algebra are now checked too. The accumulated-product and
+decoded-congruence invariant has also been folded through every bounded prefix
+of values already decoded from a supplied `BetaAt` code. This does **not**
+construct a code for an arbitrary finite sequence and does **not** prove FTA.
+The remaining critical path starts with genuine prefix-product recurrence and
+bounds, β finite-prefix recoding, greatest-prime-divisor descent, and the
+finite-product layers.
 
 ## Sequence values
 
@@ -246,10 +249,14 @@ make the proof small. The admission route and its current status are:
    gaps, package pairwise coprimality for the chosen prefix, close coprimality
    under products, descend congruence from product moduli, and prove one
    invariant-preserving CRT fold step.
-10. **Encoding gate:** prove the actual bounded fold with an encoded
-   accumulated-product invariant and β finite-prefix recoding.
-11. **Product gate:** prove prefix-product trace extension/functionality and
-   preservation of `AllPrime`/`Sorted`.
+10. **Checked existing-code prefix gate:** combine the accumulated-product and
+   decoded-congruence successor steps, fold their invariant by ordinary
+   induction, and project a common congruence witness for positions already
+   decoded from a supplied `BetaAt` code. This is not arbitrary
+   finite-sequence coding.
+11. **Product gate:** prove genuine prefix-product recurrence and bounds,
+   trace extension/functionality, β finite-prefix recoding, and preservation
+   of `AllPrime`/`Sorted`.
 12. **Existence gate:** perform the strengthened natural-number descent using
    the greatest prime divisor and the encoded prefix/product extension laws.
 13. **Uniqueness gate:** prove finite-product Euclid, prime matching,
@@ -259,8 +266,8 @@ The reviewed self-contained `Cut` rule now supplies lexical proof sharing while
 keeping every dependency proof inside the checked certificate. This removes
 the former fully expanded proof-tree bottleneck, but it does not establish that
 the much larger β/CRT/product spine will fit the live 32,768-node/depth-128
-import budget. The current runtime maximum is 12,980 nodes at
-`binary_crt_beta_pair_of_gap_dvd`, while
+import budget. The current runtime maximum is 25,545 nodes and 755 Cuts at
+`bounded_beta_crt_for_existing_code`, while
 `prime_divisor_exists` reaches depth 80; those observations are evidence for
 the arithmetic layer only, not a resource proof for encoded FTA. The
 proof-sharing trust review is recorded separately and must not be disguised as

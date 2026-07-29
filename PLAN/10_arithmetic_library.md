@@ -55,7 +55,7 @@ does not determine the architecture.
 - [x] Add both constructive normal forms for non-divisibility.
 - [x] Add modulus-independent quotient-and-remainder transport through
       addition and squaring.
-- [x] Replay and independently check all 183 unique library entries and enforce
+- [x] Replay and independently check all 189 unique library entries and enforce
       the live 32,768-node/depth-128 import bound.
 - [x] Generate a deterministic versioned JSON snapshot, exact metrics,
       certificate hashes, structural Cut counts, and Mermaid dependency graph.
@@ -149,9 +149,14 @@ does not determine the architecture.
 - [x] Prove the fold algebra: `coprime_mul_left`,
       `coprime_mul_right`, `mod_eq_of_mod_eq_multiple`, and
       the invariant-preserving one-step constructor `binary_crt_fold_step`.
-- [ ] Prove the actual bounded CRT fold with an encoded accumulated-product
-      invariant, then β finite-prefix
-      extension/restriction, prefix products, all-prime, sorted
+- [x] Prove `right_factor_divides_product`, the accumulated-product and
+      decoded-congruence successor lemmas, their combined invariant step, and
+      `bounded_beta_crt_prefix_invariant` by ordinary induction. Expose
+      `bounded_beta_crt_for_existing_code` only as a wrapper for values already
+      decoded from a supplied `BetaAt` code; do not describe it as arbitrary
+      finite-sequence coding.
+- [ ] Prove genuine prefix-product recurrence and bounds, then β finite-prefix
+      extension/restriction or recoding, all-prime, sorted
       canonical form, and extensional equality without adding kernel atoms.
       Add hygienic round-tripping surface expanders separately. The
       mathematical schemas and representation choice are documented.
@@ -181,14 +186,14 @@ does not determine the architecture.
 
 ## Current acceptance record
 
-- Checked runtime: 183 unique theorems — 23 baseline and 160 post-baseline.
-  The latter are the 148-entry general foundational layer plus twelve unique upstream
+- Checked runtime: 189 unique theorems — 23 baseline and 166 post-baseline.
+  The latter are the 154-entry general foundational layer plus twelve unique upstream
   modular capstones.
-- Research catalog: 190 nodes — 23 `checked_existing`, 160 `checked_m20`, three
+- Research catalog: 196 nodes — 23 `checked_existing`, 166 `checked_m20`, three
   `planned_expressible`, and four `blocked_by_language`.
-- Shared-certificate metrics: 154,220 total structural proof nodes and 4,293
-  Cuts across 143 Cut-bearing entries. The largest by nodes and Cuts remains
-  `binary_crt_beta_pair_of_gap_dvd` at 12,980/378.
+- Shared-certificate metrics: 242,629 total structural proof nodes and 6,895
+  Cuts across 149 Cut-bearing entries. The largest by nodes and Cuts is
+  `bounded_beta_crt_for_existing_code` at 25,545/755.
   `prime_divisor_exists` supplies the ladder's maximum depth of 80. The
   immutable upstream report retains the
   former fully expanded capstone metric of 21,515/depth 66.
@@ -198,23 +203,24 @@ does not determine the architecture.
   not a complete or authoritative admission route.
 - Full FTA companion status: checked in Lean for every nonzero natural, with
   finite-list existence and permutation uniqueness and no `sorryAx`.
-- Full Peano FTA status: absent from `pa lib` pending greatest-prime
-  descent, the actual bounded CRT fold and its encoded-product invariant,
-  β finite-prefix recoding, and prefix-product
-  representation spine;
+- Full Peano FTA status: absent from `pa lib`. The checked bounded-prefix
+  wrapper quantifies over an already existing `BetaAt` code and therefore does
+  not establish arbitrary finite-sequence coding. Genuine prefix-product
+  recurrence and bounds, β finite-prefix recoding, greatest-prime descent, and
+  the finite-product representation spine remain;
   no admitted theorem or hidden primitive.
-- Validation record: all 1,098 Peano tests pass on CPython 3.10 in 127.22
-  seconds, including the bounded-prefix coprimality/fold-algebra admission
-  gate. Lambda passes 360 tests plus 36 subtests. Exact
-  snapshot/catalog/corpus/application audits are current. The corpus retains
+- Validation record: all 1,098 Peano tests pass on CPython 3.10 in 181.34
+  seconds, including the bounded-prefix invariant admission gate. Lambda's
+  preceding independent result remains 360 tests plus 36 subtests. Exact
+  snapshot, catalog, corpus, and application audits are current. The corpus retains
   13,344 transitions/1,692 sessions under run fingerprint
-  `d0649a05ab1a88396d2d3046bc10a814e374cb3cf5ad8df225c9e15e91ff0df6`;
-  the isolated smoke has 366 sessions, 4,992 raw and 4,989 unique transitions,
-  and all 183 authored QEDs. Local browser build `2026-07-29g` has
-  content identity `a-6b72d4fe4ca4`; it is not
+  `a3c2f8c5c762b10fc9c1117723c74fecb50348cfb699f73bc76fb3714df3bf1b`;
+  the isolated smoke has 378 sessions, 5,373 raw and 5,370 unique transitions,
+  and all 189 authored QEDs. Local browser build `2026-07-29h` has content
+  identity `a-98b1d8bb8dd7`; it is not
   staged, deployed, or promoted.
-- The generated Obsidian graph has 262 notes and 2,397 resolved links,
-  including all 183 checked lemma notes.
+- The generated Obsidian graph has 268 notes and 2,513 resolved links,
+  including all 189 checked lemma notes.
 - The preceding checkpoint's independent Lambda result (360 tests plus 36
   subtests) and strict 36-source book/213-link/264-command record are retained
-  as prior evidence, not relabeled as a current 183-theorem documentary gate.
+  as prior evidence, not relabeled as a current 189-theorem documentary gate.

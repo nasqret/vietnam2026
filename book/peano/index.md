@@ -88,7 +88,7 @@ M20 begins a general {doc}`foundational arithmetic library
 original 23-entry base to 51 checked entries. That snapshot and the 49-entry public-catalog source
 remain provenance: fourteen post-core records coincide, so their initial reconciliation contained
 63 unique entries rather than their arithmetic sum. Subsequent native passes extend the current
-local candidate to **183 checked theorems**: the 23-entry base, 148 post-baseline foundational
+local candidate to **189 checked theorems**: the 23-entry base, 154 post-baseline foundational
 entries, and twelve further unique modular capstones. The checked route now includes division and
 remainder, relational gcd, balanced-natural Bézout, Gauss cancellation, the general prime-divisor
 characterization, Euclid's lemma, constructive equality/divisibility/primality decisions, bounded
@@ -107,12 +107,18 @@ balanced congruence from a product modulus to each divisor modulus, and check
 one generic `binary_crt_fold_step` that preserves every old congruence modulo
 a divisor of the accumulated product while adding a new modulus. Unconditional
 beta-modulus coprimality is false: with $c=1$, the family contains moduli
-$3$ and $6$. The associated
-190-node research catalog records those 183 checked entries alongside three planned expressible
+$3$ and $6$. Six further certificates now extend the accumulated beta-modulus
+product, extend congruences for values decoded from an already supplied code,
+combine those successor steps, and use ordinary induction to construct the
+four-part prefix invariant through every $k\le N$. The projected theorem
+`bounded_beta_crt_for_existing_code` is deliberately not a recoding theorem:
+because its residues already come from $b$, extensionally $z=b$ is already a
+solution. The associated
+196-node research catalog records those 189 checked entries alongside three planned expressible
 targets and four language-interface targets:
 conventional signed Bézout and the three finite-factorization endpoints. This is local candidate
 authority; it does not claim that every new theorem card has already been promoted to the
-production browser. Native FTA remains unproved; greatest-prime descent, an
-actual bounded fold carrying an encoded accumulated-product invariant,
-finite-prefix recoding and extension, and prefix-product traces are the next
+production browser. Native FTA remains unproved; greatest-prime descent,
+independently specified finite-prefix recoding and extension, exact beta-coded
+prefix-product traces, and the factor-primality/final-product links are the next
 critical gates.

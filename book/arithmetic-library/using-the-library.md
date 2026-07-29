@@ -10,15 +10,15 @@ Existing production entries may already open there; candidate-only entries,
 including the division, gcd, Bézout, Gauss, Euclid, and constructive
 prime-search layers, balanced modular congruence, single-position Gödel-β
 decoding as bounded congruence, and constructive binary CRT become available
-only after this build is promoted. The 183-entry local candidate is assembled
-as build `g`, application `a-6b72d4fe4ca4`; it has not been deployed
+only after this build is promoted. The 189-entry local candidate is assembled
+as build `2026-07-29h`, application `a-98b1d8bb8dd7`; it has not been deployed
 by this documentation change.
 
 The synchronized source-bound corpus has run fingerprint
-`d0649a05ab1a88396d2d3046bc10a814e374cb3cf5ad8df225c9e15e91ff0df6`.
-Its isolated all-ladder smoke has 366 sessions, 4,992 raw transitions, 4,989
-unique transitions, and all 183 authored-script kernel QEDs. The current full
-Peano suite passes 1,098 tests in 127.22 seconds; Lambda remains green at 360 tests plus 36
+`a3c2f8c5c762b10fc9c1117723c74fecb50348cfb699f73bc76fb3714df3bf1b`.
+Its isolated all-ladder smoke has 378 sessions, 5,373 raw transitions, 5,370
+unique transitions, and all 189 authored-script kernel QEDs. The current full
+Peano suite passes 1,098 tests in 181.34 seconds; Lambda remains green at 360 tests plus 36
 subtests. These are local-candidate facts, not a deployment claim.
 
 - [`pa lib`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib)
@@ -52,6 +52,12 @@ subtests. These are local-candidate facts, not a deployment claim.
 - [`pa lib coprime_mul_right`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20coprime_mul_right)
 - [`pa lib mod_eq_of_mod_eq_multiple`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod_eq_of_mod_eq_multiple)
 - [`pa lib binary_crt_fold_step`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20binary_crt_fold_step)
+- [`pa lib right_factor_divides_product`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20right_factor_divides_product)
+- [`pa lib beta_accumulated_product_step`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_accumulated_product_step)
+- [`pa lib beta_crt_prefix_congruence_step`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_crt_prefix_congruence_step)
+- [`pa lib beta_crt_prefix_invariant_step`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_crt_prefix_invariant_step)
+- [`pa lib bounded_beta_crt_prefix_invariant`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20bounded_beta_crt_prefix_invariant)
+- [`pa lib bounded_beta_crt_for_existing_code`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20bounded_beta_crt_for_existing_code)
 - [`pa lib square_residue_witness`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20square_residue_witness)
 - [`pa lib mod5_fourth_power_one`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod5_fourth_power_one)
 
@@ -155,10 +161,16 @@ positive values through a bound. Unconditional beta-modulus coprimality is
 false: $c=1$ gives moduli $3$ and $6$. The bounded-prefix theorems now derive
 pairwise coprimality for all distinct
 positions, and `binary_crt_fold_step` checks the algebra that preserves every
-old divisor-modulus congruence while adding one new position. The library does
-not yet have greatest-prime descent, an actual bounded fold carrying an
-encoded accumulated-product invariant, beta finite-prefix recoding,
-prefix-product traces, or FTA.
+old divisor-modulus congruence while adding one new position. The new prefix
+step theorems and `bounded_beta_crt_prefix_invariant` now carry, by ordinary
+induction, a nonzero accumulated product, divisibility by all earlier beta
+moduli, congruence to decoded earlier values, and coprimality with all future
+bounded beta moduli. `bounded_beta_crt_for_existing_code` only projects the
+congruences for residues already decoded from its input code $b$; extensionally
+$z=b$ satisfies that conclusion, so it is not arbitrary finite-prefix
+recoding. The library does not yet have greatest-prime descent, an independent
+finite-prefix specification/recoding theorem, exact beta-coded prefix-product
+traces, the factorization links, or FTA.
 
 ## Reproducing the artifact
 
@@ -171,7 +183,7 @@ cd peano-lab/py
 python3 -m pytest tests/test_foundational_arithmetic_library.py -q
 ```
 
-The first command verifies exact metadata for the 183 checked certificates
-and ordered root digest `093594302263…9086f2d6`, the second validates the 190-node
+The first command verifies exact metadata for the 189 checked certificates
+and ordered root digest `9650ae53f506…d25bf6b`, the second validates the 196-node
 research DAG and source register, and the last exercises the checked
 foundational layer directly.

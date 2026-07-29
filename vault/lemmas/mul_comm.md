@@ -34,6 +34,7 @@ forall n m. n * m = m * n
 - [[beta_modulus_coprime_base]]
 - [[beta_moduli_coprime_of_gap_dvd]]
 - [[bounded_common_multiple_step]]
+- [[right_factor_divides_product]]
 
 ## Verification record
 

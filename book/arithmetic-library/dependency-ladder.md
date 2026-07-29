@@ -19,7 +19,7 @@ needs.
 | Division | quotient-remainder existence, uniqueness, block separation, and zero-remainder/divisibility bridges | checked |
 | GCD/coprime | relational symmetry/projections/constructors, uniqueness, zero-right base, Euclidean invariance, existence, balanced Bézout, Gauss cancellation, product closure | checked through `coprime_mul_left` and `coprime_mul_right` |
 | Primes | bounded factor search, primality decision, proper-factor descent, prime divisors, Euclid's lemma, infinitely many primes | checked through `prime_divisor_exists` and `euclid_prime_dvd_product`; primes above every bound remain planned |
-| Factorization | existence and uniqueness up to permutation | single-position β decoding, bounded-prefix pairwise β-modulus coprimality, product coprimality, modulus descent, and generic CRT fold preservation checked; greatest-prime descent, actual bounded folding over an encoded accumulated product, prefix recoding, and product traces pending; Lean companion checked |
+| Factorization | existence and uniqueness up to permutation | single-position β decoding, bounded-prefix pairwise β-modulus coprimality, product coprimality, modulus descent, CRT fold preservation, and the ordinary-induction prefix invariant for values already decoded from a supplied code checked; greatest-prime descent, independent prefix specification/recoding, exact product traces, and factorization links pending; Lean companion checked |
 
 The generated `dependency-graph.mmd` is the exact graph for checked entries.
 The research catalog is the larger design graph and gives every unproved node
@@ -156,10 +156,22 @@ checked bounded-prefix theorems now prove that the whole bounded modulus
 family is pairwise coprime. Product coprimality and modulus descent support
 `binary_crt_fold_step`, whose universal clause preserves every old congruence
 modulo a divisor of the accumulated product while adding one new congruence.
-The representation gates that remain are an encoded accumulated-product
-trace, the bounded induction that iterates this step, finite-prefix recoding
-and restriction, and prefix-product trace existence and functionality. FTA
-itself is not yet a native `pa lib` theorem.
+`beta_accumulated_product_step` and `beta_crt_prefix_congruence_step` supply
+the two successor halves, and `beta_crt_prefix_invariant_step` combines them.
+Ordinary induction in `bounded_beta_crt_prefix_invariant` now constructs, for
+each $k\le N$, a nonzero accumulated product divisible by every earlier beta
+modulus, a value congruent to every earlier residue already decoded from the
+supplied code $b$, and coprimality of that product with every future bounded
+beta modulus.
+
+The full-bound projection `bounded_beta_crt_for_existing_code` does not cross
+the recoding gate. Its premise already says that each residue is decoded from
+$b$, so extensionally the witness may be $z=b$. The representation gates that
+remain are an independently specified finite-prefix recoding/extension
+theorem, exact beta-coded prefix-product recurrence and trace functionality,
+bounds placing those prefix products below the chosen moduli, and the
+factor-primality/final-product links. FTA itself is not yet a native `pa lib`
+theorem.
 
 ## Admission invariants
 

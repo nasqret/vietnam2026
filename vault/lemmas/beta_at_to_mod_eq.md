@@ -19,7 +19,7 @@ forall b c i x. ((exists h. h + S x = S ((S i) * c)) /\ exists q. b = q * S ((S 
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[bounded_beta_crt_prefix_invariant]]
 
 ## Verification record
 

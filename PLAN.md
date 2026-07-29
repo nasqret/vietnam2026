@@ -57,7 +57,7 @@ the next registered iteration is a library-snapshot-bound `model-v2`, not a 4B s
 curriculum. The owner authorized the compatibility-validated 26-record modular extension for the
 public catalog. After reconciliation with M20, fourteen records overlap exactly and twelve are
 new, giving 63 unique checked runtime theorems without changing the kernel.
-Subsequent native arithmetic passes extend that same runtime to 183 checked
+Subsequent native arithmetic passes extend that same runtime to 189 checked
 theorems, including discrete order, multiplication cancellation and
 monotonicity, constructive quotient-remainder existence, and full
 quotient-remainder uniqueness, mutual-divisibility antisymmetry, relational
@@ -74,11 +74,13 @@ congruence, while remaining total and functional. Constructive binary CRT and
 a conditional two-position β-code constructor are now checked. The latest
 tranche proves coprimality when an ordered index gap divides `c`,
 applies it to the β-pair constructor, and builds nonzero common multiples for
-every positive gap through a bound. The latest pass closes bounded-prefix
-pairwise coprimality and adds coprime-product closure, modulus descent, and one
-binary CRT fold step. Unconditional pairwise β-modulus coprimality remains
-false; the remaining representation work is the actual bounded fold and its
-encoded accumulated-product invariant.
+every positive gap through a bound. The latest passes close bounded-prefix
+pairwise coprimality, add coprime-product closure and modulus descent, and fold
+an accumulated-product/decoded-congruence invariant through every bounded
+prefix by ordinary induction. The resulting wrapper starts from an already
+existing `BetaAt` code; it does not code an arbitrary finite sequence.
+Unconditional pairwise β-modulus coprimality remains false; genuine
+prefix-product recurrence and bounds remain the next representation gate.
 The
 runtime now also has audited self-contained dependency sharing: a Cut embeds
 the full lemma and body proofs and is checked without external theorem names or
@@ -93,14 +95,14 @@ milestone; production remains untouched behind the M14 cache-header blocker.
 ## Parallel foundational arithmetic milestone
 
 M20 generalizes the theorem ladder into a structured arithmetic corpus. Its
-checked layers now add 148 reusable equality, cancellation, order,
+checked layers now add 154 reusable equality, cancellation, order,
 multiplication, divisibility, residue, division, and small-prime lemmas, including the
 first checked fully expanded prime instance `prime_two`. The catalog maps the
 exact route to division, gcd, the general prime spine, and factorization. A
 sorted Gödel-β sequence/product encoding is now selected, and a pinned Lean
 companion checks full list-based FTA existence and uniqueness up to
 permutation. The reconciled runtime also includes twelve unique upstream
-mod-five capstones for 183 checked Peano theorems in total. Division,
+mod-five capstones for 189 checked Peano theorems in total. Division,
 relational gcd existence and uniqueness, balanced-natural Bézout, Gauss,
 Euclid's lemma, constructive prime search and prime-divisor existence,
 full balanced-congruence addition/multiplication compatibility, bounded
@@ -110,7 +112,9 @@ self-contained proof sharing are now native. Constructive binary CRT,
 bounded-residue CRT equations, conditional β-modulus coprimality, its
 two-position β-code client, and bounded nonzero common multiples are checked
 as well. Bounded-prefix pairwise coprimality, product-coprimality closure,
-modulus descent, and one CRT fold step are now native. Peano admission of FTA
-still awaits greatest-prime descent, the actual bounded fold with its encoded
-product invariant, β finite-prefix recoding, and the encoded-product spine. See
+modulus descent, and the bounded CRT prefix invariant for residues decoded
+from an existing code are now native. This is not arbitrary finite-sequence
+coding. Peano admission of FTA still awaits genuine prefix-product recurrence
+and bounds, β finite-prefix recoding, greatest-prime descent, and the
+encoded-product spine. See
 [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md).

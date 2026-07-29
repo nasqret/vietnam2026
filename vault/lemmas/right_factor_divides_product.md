@@ -1,34 +1,32 @@
 ---
-title: "Lemma: le_succ_self"
+title: "Lemma: right_factor_divides_product"
 tags: [peano-arithmetic, checked-lemma, dependency-dag]
 ---
 
-# `le_succ_self`
+# `right_factor_divides_product`
 
-Every natural number is below its successor.
+The right factor divides a product.
 
 ## Closed Peano statement
 
 ```text
-forall n. n <= S n
+forall a b. exists k. a * b = b * k
 ```
 
 ## Dependencies
 
-- [[zero_add]]
-- [[add_succ_left]]
+- [[mul_comm]]
 
 ## Checked dependents
 
 - [[beta_accumulated_product_step]]
-- [[bounded_beta_crt_prefix_invariant]]
 
 ## Verification record
 
 - Independently checked from the empty context.
-- Certificate: **58 nodes**, depth **12**.
-- Authored script length: **3 commands**.
-- Runtime card: `pa lib le_succ_self`.
+- Certificate: **229 nodes**, depth **25**.
+- Authored script length: **4 commands**.
+- Runtime card: `pa lib right_factor_divides_product`.
 - Book route: *The dependency ladder* in the foundational arithmetic part.
 
 ## Related

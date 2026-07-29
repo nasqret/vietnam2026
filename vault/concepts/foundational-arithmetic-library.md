@@ -8,11 +8,11 @@ The **foundational arithmetic library** is a versioned dependency graph for
 [[arithmetic-congruence]], [[quotient-and-remainder]], gcd, primes, and
 factorization.
 
-Its current snapshot has 183 closed, independently checked theorems: the
-original 23-node [[theorem-ladder]] and 160 unique post-baseline additions.
-The latter combine 148 general arithmetic facts with twelve additional modular
-capstones. The 190-node research catalog separates 23 `checked_existing`,
-160 `checked_m20`, three
+Its current snapshot has 189 closed, independently checked theorems: the
+original 23-node [[theorem-ladder]] and 166 unique post-baseline additions.
+The latter combine 154 general arithmetic facts with twelve additional modular
+capstones. The 196-node research catalog separates 23 `checked_existing`,
+166 `checked_m20`, three
 `planned_expressible`, and four `blocked_by_language` nodes, but only replayed
 certificates appear in `pa lib`. The M20 additions now include [[prime_two]],
 the first checked instance of the fully expanded prime predicate, and native
@@ -75,14 +75,21 @@ product modulus to its factors; and [[binary_crt_fold_step]] performs one CRT
 extension while preserving every earlier congruence whose modulus divides the
 accumulated product.
 
-The generated snapshot contains 154,220 structural proof nodes and 4,293
-self-contained Cuts; 143 of the 183 certificates contain a Cut. Its maximum
-certificate is [[binary_crt_beta_pair_of_gap_dvd]] at 12,980 nodes and 378 Cuts, and its
+The newest six-node layer adds [[right_factor_divides_product]], advances the
+accumulated-product and decoded-congruence invariants separately and together,
+and folds them by ordinary induction as
+[[bounded_beta_crt_prefix_invariant]]. The wrapper
+[[bounded_beta_crt_for_existing_code]] only projects values already decoded
+from a supplied `BetaAt` code; it is not arbitrary finite-sequence coding.
+
+The generated snapshot contains 242,629 structural proof nodes and 6,895
+self-contained Cuts; 149 of the 189 certificates contain a Cut. Its maximum
+certificate is [[bounded_beta_crt_for_existing_code]] at 25,545 nodes and 755 Cuts, and its
 maximum depth is 80 at [[prime_divisor_exists]]. The ordered snapshot root is
-`09359430226349a7d5fdd1fd67376d345bc1bb5f707e746e8b58c2799086f2d6`.
+`9650ae53f506c282daf84fca5e9c08d0d48bb36db813b4efc43f54156d25bf6b`.
 These are representation metrics, not proof authority.
 
-The checkpoint passed all 1,098 Peano tests. The independent Lambda Lab
+The checkpoint passed all 1,098 Peano tests on CPython 3.10 in 181.34 seconds. The independent Lambda Lab
 regression remains green at 360 tests plus 36 subtests; the arithmetic changes
 do not alter that calculus or its kernel.
 
@@ -96,9 +103,8 @@ than granting names or hashes kernel authority.
 The [[fundamental-theorem-of-arithmetic]] is a destination, not a primitive.
 A conservative [[godel-beta-sequence]] representation is selected and a Lean
 companion checks the full list theorem, while Peano admission still requires
-greatest-prime descent, the actual bounded CRT fold and its encoded-product
-invariant, β finite-prefix recoding, prefix-product, and finite-product
-certificates.
+genuine prefix-product recurrence and bounds, β finite-prefix recoding,
+greatest-prime descent, and finite-product certificates.
 
 ## Related
 

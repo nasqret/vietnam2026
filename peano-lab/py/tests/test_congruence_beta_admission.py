@@ -270,6 +270,74 @@ EXPECTED = {
         "script": (40, "e7b70f504e72e6f465846f1f10ac0ba5d4e3d252cce005281abbc03020784a17"),
         "certificate": ((5_501, 52), 156, "f65c05b0db8af551e664f3194314657c999a9e6528c3dcf71a0ad0f02161f820"),
     },
+    "right_factor_divides_product": {
+        "dependencies": ("mul_comm",),
+        "statement": "4bfe67ec918a0e0f7c189a56fda0d1b256ecaefc78272611b51ec68507987b7d",
+        "script": (4, "fc069fee03a0522bf18640f442245e3976773e794ed10e3b7ec69cd86d63ae72"),
+        "certificate": ((229, 25), 7, "91ff76024f693baa1003685dc3cd57b2e1ebbf3c51dbf38f26f7bce1c573ba35"),
+    },
+    "beta_accumulated_product_step": {
+        "dependencies": (
+            "mul_ne_zero",
+            "right_factor_divides_product",
+            "beta_modulus_nonzero",
+            "le_eq_or_lt",
+            "le_of_succ_le_succ",
+            "multiple_mul_right",
+            "le_succ_self",
+            "lt_of_le_of_lt",
+            "lt_irrefl_expanded",
+            "beta_moduli_pairwise_coprime_bounded",
+            "coprime_mul_left",
+        ),
+        "statement": "caf17d298d156e39ff0ff4e24095d6938d04728114b9395a13f3a415be77d13d",
+        "script": (90, "3f0c5cda980d008d014b89957dd92e9ea091a94050df45965211e5e7d3cb373c"),
+        "certificate": ((11_174, 69), 330, "6da6cc49d4d9374497ee0572f98c23f835adb41e2432a1557fb0a47d9cc7495f"),
+    },
+    "beta_crt_prefix_congruence_step": {
+        "dependencies": (
+            "beta_modulus_nonzero",
+            "le_refl",
+            "binary_crt_fold_step",
+            "beta_at_exists",
+            "beta_at_unique",
+            "le_eq_or_lt",
+            "le_of_succ_le_succ",
+        ),
+        "statement": "9e2859391ee169231064da3447b9c610f525b6a76b6ace99f827a40fc07c90b0",
+        "script": (88, "96aed1f2ac79c6e9fc4ed8406f49dd48818eeab0e799d8bce5b913bfbf4d5f3b"),
+        "certificate": ((7_352, 64), 213, "39d62088be96c5368f12cc2426c8468e21c1cea2233409483a95eb2279300038"),
+    },
+    "beta_crt_prefix_invariant_step": {
+        "dependencies": (
+            "beta_accumulated_product_step",
+            "beta_crt_prefix_congruence_step",
+        ),
+        "statement": "a420d4f1da24e4d2c44eaa20cdb9d3b190ac93023c24e223a25652b30533c448",
+        "script": (47, "ba5be610f34c2a587a80e76a2e915839541bfd78c6d5cd1e353205f1e6b1d859"),
+        "certificate": ((18_613, 70), 545, "9cb74ed1e6aa131bab8b5a7775bd80588f8064838fffb78df2f016f26b6de5dd"),
+    },
+    "bounded_beta_crt_prefix_invariant": {
+        "dependencies": (
+            "beta_modulus_nonzero",
+            "le_zero",
+            "multiple_refl",
+            "beta_at_to_mod_eq",
+            "beta_moduli_coprime_of_lt_bounded_common_multiple",
+            "le_succ_self",
+            "le_trans",
+            "beta_crt_prefix_invariant_step",
+        ),
+        "statement": "d6b26a8578f6f3ad456060e7d2bdbad9435eadf57e995f5d37ec3e5671d40cdd",
+        "script": (81, "a9191946e416077a530d179a26828a5a0eb486a236ce093802958095fe3abecd"),
+        "certificate": ((25_496, 78), 752, "ef961db40c76a35a48af0bc94bc2b691844d77fa63efd64520718dcca2cdc072"),
+    },
+    "bounded_beta_crt_for_existing_code": {
+        "dependencies": ("bounded_beta_crt_prefix_invariant", "le_refl"),
+        "statement": "bf9bf8445ee1467abf5eb668e9f0e0e73f9bdd5eccd2457c58f4ff7b3ee789f8",
+        "script": (22, "aea748f15d03a84e81ac3ec2a51f1f29e760e569cb905240ab0cec7f95b97f39"),
+        "certificate": ((25_545, 79), 755, "8d9242fe5e071655fc62172df0a001c9a8389703d1d4c58ade5bacf0a313369c"),
+    },
 }
 
 ZERO = Zero()
@@ -432,6 +500,12 @@ def test_public_live_use_closes_congruence_and_beta_endpoints() -> None:
         "coprime_mul_right",
         "mod_eq_of_mod_eq_multiple",
         "binary_crt_fold_step",
+        "right_factor_divides_product",
+        "beta_accumulated_product_step",
+        "beta_crt_prefix_congruence_step",
+        "beta_crt_prefix_invariant_step",
+        "bounded_beta_crt_prefix_invariant",
+        "bounded_beta_crt_for_existing_code",
     ):
         theorem = get(name)
         assert theorem is not None

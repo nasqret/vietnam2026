@@ -1381,3 +1381,69 @@ is `d0649a05ab1a88396d2d3046bc10a814e374cb3cf5ad8df225c9e15e91ff0df6`;
 the isolated smoke records 366 sessions, 4,992 raw transitions, 4,989 unique
 transitions, and all 183 authored QEDs. The full Peano suite passes 1,098 tests
 in 127.22 seconds, and Lambda remains green at 360 tests plus 36 subtests.
+
+## 2026-07-29 — The bounded existing-code beta CRT prefix invariant is checked
+
+The current native checkpoint contains 189 unique checked theorems: 23
+baseline entries, 154 post-baseline foundational entries, and twelve modular
+capstones. The 196-node research catalog classifies them as 23
+`checked_existing`, 166 `checked_m20`, three `planned_expressible`, and four
+`blocked_by_language` records. The ordered snapshot root is
+`9650ae53f506c282daf84fca5e9c08d0d48bb36db813b4efc43f54156d25bf6b`;
+the theorem-source digest is
+`c4b02793df05a634b63cb4eff339c173b628f7646b5fc5788de6e6e8ebf8a737`.
+
+Six new certificates turn the preceding CRT fold algebra into an actual
+ordinary-induction prefix invariant:
+
+| Checked theorem | Nodes/depth | Cuts |
+|---|---:|---:|
+| `right_factor_divides_product` | 229 / 25 | 7 |
+| `beta_accumulated_product_step` | 11,174 / 69 | 330 |
+| `beta_crt_prefix_congruence_step` | 7,352 / 64 | 213 |
+| `beta_crt_prefix_invariant_step` | 18,613 / 70 | 545 |
+| `bounded_beta_crt_prefix_invariant` | 25,496 / 78 | 752 |
+| `bounded_beta_crt_for_existing_code` | 25,545 / 79 | 755 |
+
+The product successor multiplies the current $P$ by the next beta modulus and
+preserves three properties: $P$ stays nonzero, every modulus in the completed
+prefix divides it, and it remains coprime to every future bounded modulus.
+The congruence successor uses `binary_crt_fold_step` to add the next residue
+decoded from the already supplied code $b$ while preserving all earlier
+decoded congruences. `beta_crt_prefix_invariant_step` combines those results.
+
+The substantive induction theorem `bounded_beta_crt_prefix_invariant`
+constructs $P,z$ at every $k\le N$ and carries four facts simultaneously:
+
+1. $P\ne0$;
+2. every beta modulus at a position $i\le k$ divides $P$;
+3. $z$ is congruent modulo that modulus to every value already decoded from
+   $b$ at such a position; and
+4. $P$ is coprime to every future bounded beta modulus.
+
+The name `bounded_beta_crt_for_existing_code` is intentionally literal. Its
+conclusion only asks for congruences to residues already decoded from $b$.
+Extensionally it is trivial—one may choose $z=b$—and therefore it is not the
+generic theorem that recodes or extends an independently specified finite
+sequence. The admitted proof projects the genuine induction invariant, but
+its conclusion must not be advertised as arbitrary finite-prefix CRT.
+
+The remaining native factorization gates are independent finite-prefix
+specification and recoding/extension, exact beta-coded prefix-product
+recurrence and trace functionality, bounds placing each exact prefix product
+below the selected beta modulus family, the factor-primality and final-product
+links, greatest-prime descent, factorization existence and uniqueness, and
+FTA.
+
+The complete snapshot has 242,629 structural proof nodes, 6,895
+self-contained Cuts, and 149 Cut-bearing certificates. The largest theorem is
+`bounded_beta_crt_for_existing_code` at 25,545 nodes and 755 Cuts; its depth is
+79, while `prime_divisor_exists` retains the overall depth maximum of 80.
+Every declared dependency slot in the six new theorems is mutation-necessary.
+The synchronized, undeployed browser candidate is build `2026-07-29h` and has
+application identity `a-98b1d8bb8dd7`. Its source-bound corpus fingerprint is
+`a3c2f8c5c762b10fc9c1117723c74fecb50348cfb699f73bc76fb3714df3bf1b`;
+the isolated smoke records 378 sessions, 5,373 raw transitions, 5,370 unique
+transitions, and all 189 authored QEDs. The full Peano suite passes 1,098
+tests in 181.34 seconds, and Lambda remains green at 360 tests plus 36
+subtests.

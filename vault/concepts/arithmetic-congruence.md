@@ -47,8 +47,12 @@ pairwise-coprimality theorem. [[coprime_mul_left]] and
 [[coprime_mul_right]] support accumulated product moduli,
 [[mod_eq_of_mod_eq_multiple]] recovers every earlier congruence from the
 product congruence, and [[binary_crt_fold_step]] checks one preservation step.
-What remains is an actual bounded fold carrying the encoded accumulated
-product and solution invariant.
+The accumulated-product and decoded-congruence successor lemmas are now
+combined in [[beta_crt_prefix_invariant_step]] and folded by ordinary induction
+in [[bounded_beta_crt_prefix_invariant]]. Its wrapper
+[[bounded_beta_crt_for_existing_code]] applies only to residues already
+decoded from a supplied `BetaAt` code; it is not arbitrary finite-sequence
+coding. Genuine prefix-product recurrence and bounds remain next.
 
 The checked [[add_residue]], [[add_residue_lift]], [[square_decomp]],
 [[square_residue_lift]], and [[square_residue_witness]] already manipulate

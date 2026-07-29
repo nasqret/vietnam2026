@@ -23,6 +23,8 @@ forall a b. (exists k. k + S a = S b) -> exists r. r + a = b
 - [[gcd_balanced_bezout_exists_up_to]]
 - [[factor_property_succ]]
 - [[prime_divisor_exists_up_to]]
+- [[beta_accumulated_product_step]]
+- [[beta_crt_prefix_congruence_step]]
 
 ## Verification record
 

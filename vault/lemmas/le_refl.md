@@ -23,6 +23,8 @@ forall n. n <= n
 - [[gcd_balanced_bezout_exists]]
 - [[factor_search_up_to]]
 - [[prime_divisor_exists]]
+- [[beta_crt_prefix_congruence_step]]
+- [[bounded_beta_crt_for_existing_code]]
 
 ## Verification record
 

@@ -21,8 +21,10 @@ both directions of the bounded decomposition/congruence bridge and uniqueness
 of bounded congruent representatives are checked too. Constructive binary CRT,
 its bounded-remainder client, and a two-position β-code client are checked as
 well. Bounded-prefix pairwise β-modulus coprimality, product coprimality,
-modulus descent, and a generic CRT fold-preservation step are checked too;
-actual bounded iteration over an encoded accumulated product remains open.
+modulus descent, a generic CRT fold-preservation step, and ordinary induction
+carrying the full prefix invariant for values already decoded from a supplied
+code are checked too. Independent finite-prefix recoding and the exact
+beta-coded prefix-product trace remain open.
 Every checked entry mentioned below
 is an ordinary closed formula with a replayed certificate accepted by the
 independent Peano kernel; none is a new kernel rule. The general checking
@@ -248,18 +250,18 @@ $$
 \end{array}
 $$
 
-All 148 entries in the current post-baseline general foundational layer replay to
+All 154 entries in the current post-baseline general foundational layer replay to
 closed kernel-accepted certificates and fit the live `use` limits of 32,768
-nodes and depth 128. The current 183-entry local candidate reaches its node
-maximum at `binary_crt_beta_pair_of_gap_dvd`, with 12,980 nodes, depth 71, and 378 Cuts,
+nodes and depth 128. The current 189-entry local candidate reaches its node
+maximum at `bounded_beta_crt_for_existing_code`, with 25,545 nodes, depth 79, and 755 Cuts,
 while `prime_divisor_exists` reaches the snapshot-wide maximum depth of 80.
-Across the snapshot there are 154,220 structural nodes and 4,293
-self-contained Cuts; 143 certificates contain a Cut. The modular capstone
+Across the snapshot there are 242,629 structural nodes and 6,895
+self-contained Cuts; 149 certificates contain a Cut. The modular capstone
 itself remains 2,675 nodes and depth 38. These
 numbers are build artifacts,
 not new soundness assumptions; the immutable upstream report retains the older
 fully expanded capstone metric of 21,515 nodes/depth 66. The broader research
-catalog has 190 nodes: the 183 checked entries, three planned expressible targets,
+catalog has 196 nodes: the 189 checked entries, three planned expressible targets,
 and four language-interface targets covering conventional signed Bézout and the
 three finite-factorization endpoints.
 
@@ -451,10 +453,12 @@ The current status distinction is:
 | `remainder_decomposition_to_mod_eq`, `mod_eq_to_remainder_decomposition` | shared residue implies congruence |
 | `mod_eq_bounded_unique` | finite-prefix restriction and functionality |
 | `dvd_to_mod_zero` | reverse congruence-zero-to-divisibility |
-| `binary_crt`, `binary_crt_remainders`, `binary_crt_fold_step` | actual bounded iteration over an encoded accumulated-product invariant |
+| `binary_crt`, `binary_crt_remainders`, `binary_crt_fold_step` | independent finite-prefix specification and recoding |
 | `binary_crt_beta_pair`, `beta_moduli_coprime_of_gap_dvd`, `binary_crt_beta_pair_of_gap_dvd` | arbitrary finite-prefix recoding and assembly |
 | `bounded_common_multiple_step`, `bounded_common_multiple_exists`, `beta_moduli_pairwise_coprime_bounded` | prime-above-bound client and encoded finite-prefix use |
-| `coprime_mul_left`, `coprime_mul_right`, `mod_eq_of_mod_eq_multiple` | prefix-product trace and bounded fold carrying divisibility/nonzero invariants |
+| `coprime_mul_left`, `coprime_mul_right`, `mod_eq_of_mod_eq_multiple` | exact beta-coded prefix-product trace and product bounds |
+| `beta_accumulated_product_step`, `beta_crt_prefix_congruence_step`, `beta_crt_prefix_invariant_step`, `bounded_beta_crt_prefix_invariant` | factor-primality and final-product links |
+| `bounded_beta_crt_for_existing_code` | arbitrary sequence recoding; its current residues already come from the input code |
 | Closure of multiples under addition and multiplication | shared residue implies congruence |
 | Exact quotient-and-residue addition | finite-product congruence clients |
 | Exact square decomposition and square residue lifting | generated fixed-modulus clients |
@@ -578,6 +582,12 @@ added to the term language.
 | `coprime_mul_right` | symmetric accumulated-product closure | 4,017 / 54 | 117 |
 | `mod_eq_of_mod_eq_multiple` | descend congruence from a multiple modulus | 157 / 23 | 3 |
 | `binary_crt_fold_step` | preserve all old divisor-modulus congruences and add one new congruence | 5,501 / 52 | 156 |
+| `right_factor_divides_product` | expose the newly multiplied right factor as a divisor | 229 / 25 | 7 |
+| `beta_accumulated_product_step` | preserve nonzero, prefix-divisibility, and future-coprimality product invariants | 11,174 / 69 | 330 |
+| `beta_crt_prefix_congruence_step` | extend congruence to the next value decoded from the supplied code | 7,352 / 64 | 213 |
+| `beta_crt_prefix_invariant_step` | combine the product and congruence successor steps | 18,613 / 70 | 545 |
+| `bounded_beta_crt_prefix_invariant` | fold the full four-part invariant by ordinary induction | 25,496 / 78 | 752 |
+| `bounded_beta_crt_for_existing_code` | project full-bound congruences for an already supplied code | 25,545 / 79 | 755 |
 
 If $a<m$ and $b<n$, `binary_crt_remainders` feeds the result through
 `mod_eq_to_remainder_decomposition` twice and obtains
@@ -611,9 +621,35 @@ $$
 \forall m\mid P,\quad x\equiv a\pmod m\Longrightarrow z\equiv a\pmod m,
 $$
 
-while also proving $z\equiv b\pmod n$ for the new modulus. This theorem does
-not itself quantify over an encoded finite product trace or perform the
-bounded induction; those are the remaining fold infrastructure.
+while also proving $z\equiv b\pmod n$ for the new modulus.
+
+The next six theorems perform the bounded induction around that algebra.
+`right_factor_divides_product` provides the explicit divisibility witness for
+the new right factor. `beta_accumulated_product_step` multiplies the current
+product by the next beta modulus while preserving its nonzeroness,
+divisibility by all prefix moduli, and coprimality with all future bounded
+moduli. `beta_crt_prefix_congruence_step` uses the generic CRT fold to add the
+next residue decoded from the supplied code $b$ and preserve every earlier
+decoded congruence. `beta_crt_prefix_invariant_step` packages those two
+successor results.
+
+The ordinary-induction theorem `bounded_beta_crt_prefix_invariant` is the
+substantive endpoint. Given the bounded common-multiple hypothesis, for every
+$k\le N$ it constructs naturals $P,z$ satisfying all four components:
+
+1. $P\ne0$;
+2. every beta modulus at a prefix position $i\le k$ divides $P$;
+3. $z$ is congruent at that modulus to every value $a$ already decoded from
+   the supplied code $b$ at such a position; and
+4. $P$ is coprime to every future beta modulus between the successor of $k$
+   and $N$.
+
+This is a real bounded fold, but it is not yet beta finite-prefix recoding.
+The wrapper `bounded_beta_crt_for_existing_code` projects component 3 at
+$k=N$. Because its premise already decodes every residue from $b$, its
+conclusion is extensionally satisfied by choosing $z=b$. The large certificate
+records one path through the invariant; it does not construct a code for an
+independently specified sequence.
 
 The companion divisibility pair constructs the shared resource needed for a
 finite bound:
@@ -623,11 +659,12 @@ finite bound:
 | `bounded_common_multiple_step` | extend a nonzero common multiple across one endpoint | 483 / 29 | 15 |
 | `bounded_common_multiple_exists` | obtain nonzero $c$ divisible by every positive natural at most $B$ | 640 / 30 | 22 |
 
-What remains is to encode the accumulated products and their divisor/nonzero
-invariants, iterate the checked fold step over that trace, and prove beta
-finite-prefix recoding and extension. Thus bounded pairwise coprimality and
-the algebraic preservation step are checked, while arbitrary finite-prefix
-assembly remains an explicit later gate.
+What remains is to specify an independent finite prefix and recode or extend
+it, construct an exact beta-coded prefix-product recurrence/trace, prove the
+bounds placing every exact prefix product below the chosen beta moduli, and
+connect decoded factors to primality and the final product. Thus the bounded
+induction invariant is checked, while arbitrary finite-prefix assembly and
+the product trace remain explicit later gates.
 
 ## From a general library to the old modulo-five exercise
 
