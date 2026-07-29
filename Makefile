@@ -20,7 +20,7 @@ PEANO_POLICY_ROWS ?= 10000
 override STAGEPEANO := _deploy/peano-lab
 override PEANOAPPID := a-a9e8d65ec0f4
 
-.PHONY: help book lean lab-serve peano-serve peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-policy-v2-data peano-eval stage \
+.PHONY: help book lean serve lab-serve peano-serve peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-policy-v2-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
 	deploy clean
 
@@ -28,7 +28,8 @@ help:
 	@echo "Targets:"
 	@echo "  make book         build the JupyterBook (book/_build/html)"
 	@echo "  make lean         build & axiom-check the Lean artifact"
-	@echo "  make lab-serve    serve lab-lambda locally on :8001"
+	@echo "  make serve        serve the WHOLE site locally on :8000 (landing + book + slides + labs)"
+	@echo "  make lab-serve    serve lab-lambda alone on :8001"
 	@echo "  make peano-serve serve the staged Peano Lab locally on :8002"
 	@echo "  make peano-corpus reproduce the leakage-safe Peano train/val release"
 	@echo "  make peano-corpus-smoke  run the all-ladder M9 generation/export smoke"
@@ -54,6 +55,11 @@ book:
 lean:
 	cd artifacts/lean && lake build
 	cd artifacts/lean && printf 'import Artifacts\nopen Artifacts Artifacts.Sqrt2\n#print axioms s_combinator\n#print axioms add_comm'"'"'\n#print axioms no_sqrt2\n' > /tmp/check.lean && lake env lean /tmp/check.lean | tee /dev/stderr | (! grep -q sorryAx)
+
+# Full local preview: landing page at /, with /lab-lambda/ resolving like on the
+# server (symlink tree in _preview/, so edits are live). Needs `make book` once.
+serve:
+	python3 scripts/serve_local.py
 
 lab-serve:
 	@echo "→ http://localhost:8001/  (Ctrl-C to stop)"

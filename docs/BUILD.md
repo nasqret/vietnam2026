@@ -4,8 +4,9 @@
 
 - Python 3.10+ (`pip install -r requirements.txt`) for the knowledge book.
 - [`elan`](https://github.com/leanprover/elan) (Lean version manager) for the Lean artifact.
-- Node is *not* required to build; the browser lab ships as static files that pull Pyodide + xterm.js
-  from a CDN at runtime.
+- Node is *not* required. The browser lab is fully self-hosted: Pyodide, xterm.js and the fonts are
+  vendored under `lab-lambda/vendor/` (refresh them with `scripts/fetch_vendor.sh`), so it runs with
+  no network access after the first load.
 
 ## The knowledge book (JupyterBook 1.x)
 
@@ -29,17 +30,40 @@ Mathlib**, so it builds in seconds. Current Lean stable is 4.32.0.
 Agda / Rocq / Mizar artifacts are authored to standard idioms; run them under a local install of each
 (`agda`, `rocq compile`/`coqc`, Mizar+MML). See [`../artifacts/README.md`](../artifacts/README.md).
 
-## The browser Lambda Lab (local preview)
+## Local preview of the whole site
 
 ```bash
-cd lab-lambda
-python3 -m http.server 8001       # → http://localhost:8001/
+make book      # once — the preview serves book/_build/html
+make serve     # → http://localhost:8000/  (Ctrl-C to stop)
 ```
-It loads Pyodide (~7 MB) once from jsdelivr, mounts the vendored engine into the Pyodide virtual FS, and
-runs the REPL entirely client-side. To sanity-check the Python engine without a browser:
+
+`make serve` builds `_preview/` out of **symlinks** (so edits are live, nothing is copied) and serves
+it with the same URL shape as the faculty server:
+
+| Local URL | What |
+|---|---|
+| <http://localhost:8000/> | landing page |
+| <http://localhost:8000/book/> | knowledge book |
+| <http://localhost:8000/slides/> | the six decks |
+| <http://localhost:8000/lab-lambda/> | the Lambda Lab |
+| <http://localhost:8000/vietnam2026/…> | the same site under its production prefix |
+
+That last row is the point of the script: the landing page links to the lab with an **absolute**
+path (`/lab-lambda/`, because on the server the two live side by side under `~/public_html/`), and
+some pages link back to `/vietnam2026/`. Serving the repo root or `_deploy/vietnam2026` directly
+gives 404s for those; the preview tree resolves both shapes. `_preview/` is gitignored.
+
+Only the lab, on its own:
+
+```bash
+make lab-serve                    # → http://localhost:8001/
+```
+
+To sanity-check the Python engine with no browser at all:
 
 ```bash
 cd lab-lambda/py && python3 -c "import sys; sys.path.insert(0,'.'); import driver; print(driver.get_session().run('nf PLUS 2 3'))"
+cd lab-lambda/py && python3 -m pytest tests/ -q      # the full engine suite
 ```
 
 ## One-shot
@@ -47,5 +71,6 @@ cd lab-lambda/py && python3 -c "import sys; sys.path.insert(0,'.'); import drive
 ```bash
 make book      # build the book
 make lean      # build + axiom-check Lean
-make lab-serve # preview the lab
+make serve     # preview the whole site locally
+make lab-serve # preview just the lab
 ```
