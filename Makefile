@@ -8,13 +8,14 @@ LABNEXT   := ~/public_html/lab-lambda-next
 STAGE     := _deploy/vietnam2026
 STAGENEXT := _deploy/lab-lambda-next
 
-.PHONY: help book lean lab-serve stage deploy-site deploy-lab deploy-lab-next deploy clean
+.PHONY: help book lean serve lab-serve stage deploy-site deploy-lab deploy-lab-next deploy clean
 
 help:
 	@echo "Targets:"
 	@echo "  make book         build the JupyterBook (book/_build/html)"
 	@echo "  make lean         build & axiom-check the Lean artifact"
-	@echo "  make lab-serve    serve lab-lambda locally on :8001"
+	@echo "  make serve        serve the WHOLE site locally on :8000 (landing + book + slides + labs)"
+	@echo "  make lab-serve    serve lab-lambda alone on :8001"
 	@echo "  make stage        assemble _deploy/vietnam2026 (landing + book + slides)"
 	@echo "  make deploy-site  rsync the site to $(SITE)"
 	@echo "  make deploy-lab   rsync the browser lab to $(LAB)"
@@ -31,6 +32,11 @@ book:
 lean:
 	cd artifacts/lean && lake build
 	cd artifacts/lean && printf 'import Artifacts\nopen Artifacts Artifacts.Sqrt2\n#print axioms s_combinator\n#print axioms add_comm'"'"'\n#print axioms no_sqrt2\n' > /tmp/check.lean && lake env lean /tmp/check.lean | tee /dev/stderr | (! grep -q sorryAx)
+
+# Full local preview: landing page at /, with /lab-lambda/ resolving like on the
+# server (symlink tree in _preview/, so edits are live). Needs `make book` once.
+serve:
+	python3 scripts/serve_local.py
 
 lab-serve:
 	@echo "→ http://localhost:8001/  (Ctrl-C to stop)"
