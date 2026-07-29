@@ -501,8 +501,9 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
 - [x] Run the registered Qwen3-1.7B 100-step pilot on an accepted site and publish the complete
       training and held-out evaluator manifests. WMI jobs `171421`/`171423` are the accepted
       terminal chain; the model scored 0/4 at pass@4.
-- [ ] Compare against pretrained and deterministic baselines on the expanded v2 benchmark. The
-      existing random baseline is 0/4 at pass@8; four protocol goals are not a statistical result.
+- [ ] Compare against pretrained and deterministic baselines on the separately sealed model-v3
+      benchmark. The old model-v2 goals are now training-library entries and are no longer valid
+      discovery tests; four protocol goals are still not a statistical result.
 - [ ] If the smoke gates pass, run the pre-registered Qwen3-4B versus Pythagoras-Prover-4B
       comparison at identical data, LoRA, decode, token, step, and kernel-call budgets.
 - [ ] Finish the full Peano/Lambda/book/vault/release gates, record measured results without
@@ -539,11 +540,32 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       reconciliation with M20 deduplicated fourteen exact overlaps and yielded
       63 unique checked theorems. Subsequent native arithmetic work extends
       that historical release to the current 247-entry successor.
-- [ ] Register model-v2 with a library snapshot hash over names, canonical statements,
-      dependencies, source/script/certificate hashes, nodes, and depth; bind it through prompt,
-      rows, attestation, training manifest, evaluator, and WMI requests. Freeze sealed targets
-      before generating induction, invariant, lemma-use, and composition curricula.
-- [ ] Add oracle-budget validation (at least 24 held-out steps), bounded same-state candidate
+- [x] Register the complete declaration-ordered 247-theorem ladder as the distinct model-v3
+      authority. Bind canonical statements, dependencies, source specifications, authored scripts,
+      independently reconstructed certificates, nodes, and depth through prefix prompts, rows,
+      attestation, training manifests, evaluator, and WMI requests.
+- [x] Implement model-v3's exact predecessor-prefix library trajectories and separate root-balanced
+      synthetic generator. The latter has 51 proof-first schemas, 14 genuine root heads, an
+      `intro` root-session ceiling of 20%, no library schemas, and no artificial induction gates.
+      Prompt v3 includes the complete compact allowed-name inventory and bounds detailed
+      `name : statement` retrieval to 12 records from the exact checked prefix; this corrects the
+      measured 242/640 direct-dependency visibility of statement retrieval alone.
+- [ ] Generate and combine the final model-v3 raw corpora, independently replay and attest every
+      QED and all prefixes 0--247, then pass the pinned-tokenizer 32,768-token native-context
+      no-truncation gate or fail closed for a reviewed representation revision. The exact library
+      runner uses a host-owned, API-capped 128 MiB per-session trace allowance under M19's explicit
+      reviewed-limit escape hatch; ordinary requests retain 16 MB and cannot select the override.
+      Prompt-v3 states use lossless `shared-declarations-v1` exact context-chunk/target tables under
+      a 44,000-character fail-closed bound; raw traces, row states, replay, held-out checks, and
+      kernel inputs remain unchanged.
+- [ ] Run the registered WMI Qwen3-1.7B model-v3 experiment only after preparation passes:
+      rank-32/alpha-64 LoRA, effective batch 32, two epochs, at most 80,000 train and 6,000
+      validation rows. Record no checkpoint or quality result before the artifacts exist.
+- [ ] Treat the four sealed model-v3 goals as a launch smoke, not a sufficient capability
+      benchmark. Before making a general proof-quality claim, add a larger hidden kernel-checked
+      suite spanning multistep induction, theorem composition, order, divisibility, and quantified
+      witnesses, and report fixed-budget pretrained/adapted/search comparisons.
+- [x] Add oracle-budget validation (at least 24 held-out steps), bounded same-state candidate
       rejection, and then canonical-state-deduplicated best-first search before the next GPU run.
 - [ ] All milestone-wide tests and documentation gates are green, the kernel has no semantic diff,
       and no heavy local or remote job remains running before the milestone is called complete.
@@ -601,9 +623,11 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   `use` rows; all source scripts have at most seven steps. Under exact model-v1 authority, the
   known held-out routes need 10/10/23/13 steps, so the 16-step cap also underspecifies
   `le_total`'s known route. Scaling the same curriculum to 4B would not test the intended
-  hypothesis, so the conditional 4B comparison remains unlaunched. The next data contract must freeze the user's
-  current 247-entry library as a content-addressed successor authority and add induction, invariant, witness,
-  and lemma-composition curricula while retaining a sealed test set.
+  hypothesis, so the conditional 4B comparison remains unlaunched. The implemented model-v3 data
+  contract now freezes the 247-entry library as a content-addressed successor authority, provides
+  strict predecessor-prefix theorem trajectories and balanced induction/invariant/witness roots,
+  and defines a separate four-formula held-out set. Final corpus generation and attestation remain
+  pending before any WMI training submission.
 
   The public-catalog local gate is green: 1,036 Peano tests; Lambda 360 tests plus 36 subtests; all
   27 book sources under warning-as-error; 193 deep links and 170 documented commands; and 414/414
@@ -612,7 +636,7 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   green. At the 170-entry arithmetic checkpoint, the isolated all-ladder acceptance smoke exported
   4,474 raw and 4,471 unique transitions from 340 sessions, including 170
   authored-script kernel QEDs.
-  M19 stays open for the model-v2 curriculum, search,
+  M19 stays open for the model-v3 corpus gates, WMI training, kernel-judged search evaluation,
   baselines, and registered comparison.
 
 ### M20 — General foundational arithmetic library

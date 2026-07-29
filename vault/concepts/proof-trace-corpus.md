@@ -15,7 +15,7 @@ splits theorem/session groups deterministically. Failed attempts are retained be
 which actions do not apply is part of learning the tactic language.
 
 The corpus rebuilt against the 247-theorem runtime has fingerprint
-`5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`.
+`6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`.
 Its focused library smoke has 494 sessions, 9,235 raw/9,232 unique
 transitions, and 247 kernel-checked QED endpoints.
 

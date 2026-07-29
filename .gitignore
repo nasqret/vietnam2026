@@ -76,3 +76,6 @@ src/*.zip
 
 # raw source assets (originals; optimized copies live in assets/)
 /src/
+
+# local preview symlink tree (make serve)
+_preview/

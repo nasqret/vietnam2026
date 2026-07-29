@@ -136,6 +136,65 @@ def test_headless_trace_budget_fails_stop_before_publishing_partial_record(
     assert sink.getvalue() == ""
 
 
+def test_headless_trace_budget_keeps_default_and_caps_reviewed_override() -> None:
+    assert batch.MAX_BATCH_TRACE_BYTES == 16_000_000
+    assert batch.MAX_REVIEWED_BATCH_TRACE_BYTES == 128 * 1024 * 1024
+
+
+def test_headless_trace_budget_accepts_exact_boundary_and_rejects_next_byte() -> None:
+    session_id = "exact-headless-trace-boundary"
+    probe = run_proof("0 = 0", ("refl",), session_id=session_id)
+    assert probe.trace is not None
+    encoded = "".join(
+        json.dumps(record, ensure_ascii=False) + "\n" for record in probe.trace
+    )
+    budget = len(encoded.encode("utf-8"))
+
+    exact_sink = io.StringIO()
+    exact = run_proof(
+        "0 = 0",
+        ("refl",),
+        session_id=session_id,
+        trace_sink=exact_sink,
+        trace_byte_limit=budget,
+    )
+    assert exact.status == "proved"
+    assert exact_sink.getvalue() == encoded
+
+    blocked_sink = io.StringIO()
+    with pytest.raises(TraceLimitError, match="byte session limit"):
+        run_proof(
+            "0 = 0",
+            ("refl",),
+            session_id=session_id,
+            trace_sink=blocked_sink,
+            trace_byte_limit=budget - 1,
+        )
+    expected_prefix = json.dumps(probe.trace[0], ensure_ascii=False) + "\n"
+    assert blocked_sink.getvalue() == expected_prefix
+    assert '"qed"' not in blocked_sink.getvalue()
+
+
+@pytest.mark.parametrize(
+    "limit", (True, 0, -1, "16", batch.MAX_REVIEWED_BATCH_TRACE_BYTES + 1)
+)
+def test_reviewed_trace_override_is_strictly_bounded(limit: object) -> None:
+    with pytest.raises(BatchRequestError, match="trace_byte_limit must be"):
+        run_proof("0 = 0", ("refl",), trace_byte_limit=limit)  # type: ignore[arg-type]
+
+
+def test_request_json_cannot_select_reviewed_trace_override() -> None:
+    request = {
+        "v": BATCH_VERSION,
+        "id": "untrusted-limit",
+        "theorem": "0 = 0",
+        "tactics": ["refl"],
+        "trace_byte_limit": batch.MAX_REVIEWED_BATCH_TRACE_BYTES,
+    }
+    with pytest.raises(BatchRequestError, match="unknown request field.*trace_byte_limit"):
+        execute_request(request)
+
+
 def test_open_batch_has_false_footer_and_canonical_remaining_state() -> None:
     result = run_proof(REFLEXIVE, ("intro n",), request_id="open")
 

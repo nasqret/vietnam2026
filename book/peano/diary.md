@@ -1504,8 +1504,154 @@ certificates, root
 `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`,
 and source digest
 `295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
-The vault has 327 notes and 3,287 links. The corpus fingerprint is
-`5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`;
+The vault has 327 notes and 3,286 links. The corpus fingerprint is
+`6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
 its smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and all 247
-QEDs. Browser build `2026-07-29j`, application `a-c983d7c60450`, is local and
+QEDs. Browser build `2026-07-29k`, application `a-77df7c0860bc`, is local and
 undeployed.
+
+## 2026-07-29 — Model-v3 binds the 247-theorem curriculum without target leakage
+
+The first Qwen policy's low validation loss concealed a structurally weak
+curriculum: all 87 inspected roots began with `intro`, only two rows used
+`norm_num`, and the selected data contained no `use`, induction, or IH
+transition. Scaling that distribution would train the same shortcut more
+confidently. The successor experiment is therefore named `model-v3`; the old
+56-theorem model-v2 identity remains frozen for historical artifact replay.
+
+Model-v3 treats declaration order as a learning curriculum. For theorem rung
+$i$, the executable and prompt authority is exactly `THEOREMS[:i]`; the target
+and every later theorem are unavailable. The trajectory first executes one
+ordinary `use` command for each declared direct dependency and then the exact
+authored tactic script. Every resulting QED still passes the independent
+kernel against the original closed formula. A separate identity module binds
+the v2 catalog schema, its ordered root and theorem-source digest, reconstructs
+all 247 certificates, and checks them from the empty context. The full release
+gate passed all 247 reconstructions. Prefix and prompt tests passed 12 tests
+with one opt-in full replay skipped after that separate release run; a
+three-rung corpus sample passed six focused tests and yielded 13 independently
+replayed transitions: two dependency imports and eleven authored actions.
+
+Synthetic data uses the full checked prefix but no catalog-theorem schemas. It
+removes the earlier artificial implication gate from induction candidates and
+schedules complete proof sessions by their first tactic head, with `intro`
+roots capped at twenty percent. Closed equality, existential, conjunction,
+and disjunction roots prevent universal-introduction states from defining the
+entire opening distribution. Exact v3 held-out propositions are rejected by
+the generator and by dataset attestation.
+
+The prompt exposes the complete one-line tactic grammar and twelve
+deterministically retrieved `name : statement` records. Giant statements are
+displayed as bounded, content-addressed excerpts; retrieval still scores the
+full canonical proposition. Every row binds both its exact prefix identity and
+the full 247-theorem identity. A pinned-tokenizer root audit found that 57 of
+247 full-prefix theorem prompts exceed the draft 4,096-token budget; the root
+maximum is 6,235. The reviewed configuration therefore uses Qwen3-1.7B's
+native 32,768-token position limit, microbatch one, and accumulation 32. The
+preparation job must still reject the whole run if any selected prompt and
+completion exceed that native limit—there is no truncation fallback.
+
+An inherited evaluation leak was found before launch. The model-v2 benchmark
+targets are members of the new full library, so testing model-v3 on them would
+measure memorization or retrieval. Model-v3 now selects four separately sealed
+propositions from its own attested contract; model-v1 and model-v2 retain their
+historical targets. The trained evaluator still accepts a result only after
+public-surface execution and independent kernel replay.
+
+## 2026-07-29 — The launch audit closes prompt and split leakage
+
+A final adversarial pass delayed the WMI launch for sound reasons. The first
+draft displayed only twelve retrieved theorem statements, so many legal
+`use NAME` actions had no visible spelling. Model-v3 now carries a compact,
+hashed inventory of every name in the exact allowed prefix while retaining the
+bounded statement retrieval. This is a v3-only change: the published v2 prompt
+and environment identities remain byte-compatible.
+
+The same audit found three places where a dataset could make a stronger claim
+than its evidence. A sealed benchmark proposition could occur as an
+intermediate transition goal even when the root differed; a missing trajectory
+marker could turn arbitrary prefix examples into an apparently exact catalog
+schedule; and random validation assignment could expose a held-out library
+theorem through a later descendant proof. The corrected contract checks every
+transition target structurally, makes catalog and synthetic lane markers
+mandatory, and keeps the complete dependency ladder in the training split.
+Validation and test rows therefore come from independently grouped synthetic
+roots, while final success is measured only on the separately sealed goals by
+kernel-checked search.
+
+The training selection ceiling is 80,000 rows, above the complete expected
+split (70,000 synthetic rows before holdout assignment plus exactly 8,494
+catalog transitions). Thus the deterministic loader retains every one of the
+247 theorem trajectories instead of accidentally sampling away small rungs.
+
+WMI also supplied a concrete operational lesson. The 100,000-row v2
+preparation generated and built successfully, but its independent rebuild was
+killed by a one-hour subprocess watchdog. Independent replay is not removed or
+sampled for v3; its watchdog is raised to four hours and the preparation
+allocation to twelve hours so the exact 78,000-plus-row rebuild can finish.
+
+## 2026-07-29 — Large library traces use the reviewed-limit escape hatch
+
+Exact model-v3 library generation exposed a resource distinction that the
+ordinary pilot never reached: at least one valid, independently checked native
+library proof renders more than the normal 16 MB session-trace ceiling. The
+ordinary `run_proof` default and JSON request contract remain unchanged. The
+library generator instead passes an explicit host-owned trace allowance, capped
+by the shared runner at 128 MiB. The JSONL transport independently retains its
+512 MiB aggregate default. A request record cannot enlarge its own authority or
+resource envelope.
+
+The trace logger retains its fail-stop boundary: it rejects the record that
+would cross the selected limit before appending it or writing it to the sink.
+The library generator catches that specific resource exception and reports the
+name of the theorem that crossed the reviewed ceiling, while transactional
+publication leaves no plausible corpus artifact set behind.
+
+## 2026-07-29 — Shared exact state structure replaces a tempting lossy projection
+
+The first complete token audit found a state whose legacy JSON observation was
+122,546 tokens, far beyond Qwen's native context. A lossy, hash-marked excerpt design looked
+like the obvious repair, but the offending seven goals repeated declarations
+and targets extensively. Before discarding information, we measured that
+structure. Prompt v3 now puts exact comma-delimited context chunks and exact
+targets into deterministic first-occurrence tables, then represents each goal
+by declaration indices and one target index. The prompt parser reconstructs
+the original canonical one-line goal strings byte-for-byte.
+
+This is deliberately a v3-only lossless structural encoding. The raw trace,
+independent replay, dataset-row state, held-out contamination check, and kernel
+state remain exact, and the v1/v2 prompt byte hashes do not change. Canonicality
+is strict: exactly one correctly spaced turnstile, compact JSON, strict integer
+indices, first-use table order, no duplicate or unused entries, and exact
+reconstruction. Malformed claims fail rather than falling back to another
+interpretation.
+
+The encoded state JSON is capped at 44,000 Unicode characters, with no target,
+hypothesis, or name slicing. In all 443 retained before/after states of the
+index-230 stress trace, the maximum is 39,423 characters and zero states exceed
+the cap. Step 115 changes from 196,457 legacy characters to 37,259 encoded
+characters solely by sharing exact strings. The pinned check of the largest
+full prompt plus tactic and EOS is 29,111 tokens, leaving 3,657 below the
+32,768-token native window. All 222 exact transition prompts for the stress
+proof pass: median 17,444, p95 26,662, p99 28,537, and maximum 29,111 tokens.
+The complete combined-corpus scan remains the final gate.
+
+## 2026-07-29 — Resource API changes refresh generated provenance
+
+The reviewed trace ceiling adds a keyword to the trusted batch runner even
+though ordinary executions retain the same 16 MB behavior. Because the v1
+corpus manifest honestly fingerprints the complete Peano Python source tree,
+the old generated release could not simply be paired with a new expected hash.
+We reproduced all 1,692 sessions under the required CPython 3.10.0 runtime,
+re-exported 13,344 unique transitions, and refreshed the manifest, statistics,
+README, and browser application identity from the resulting bytes. The new
+corpus run fingerprint is
+`6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
+browser build `2026-07-29k` binds application manifest
+`a-77df7c0860bc`. Neither artifact has been deployed.
+
+The same full-suite pass exposed two model-v2 assertions that still equated
+the live public catalog with its historical 63-entry checkpoint. They now
+assert the append-only 247-entry public count while separately checking the
+frozen 56-name model-v2 authority and all 191 unavailable names. No model-v2
+prompt or environment identity was repinned.

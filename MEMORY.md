@@ -439,19 +439,33 @@
   `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`
   and source digest is
   `295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
-  The Obsidian graph has 327 notes and 3,287 resolved links, including 247
+  The Obsidian graph has 327 notes and 3,286 resolved links, including 247
   lemma notes. The deterministic 1,692-session/13,344-transition corpus has
   fingerprint
-  `5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`;
+  `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
   its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions,
-  and all 247 authored QEDs. Local browser build `2026-07-29j` packages
-  manifest identity `a-c983d7c60450`; it is not staged or deployed. The strict
-  book rebuild passes 38 sources with no warnings; 194 deep links and 47
+  and all 247 authored QEDs. Local browser build `2026-07-29k` packages
+  manifest identity `a-77df7c0860bc`; it is not staged or deployed. The strict
+  book rebuild passes 38 sources with no warnings; 195 deep links and 47
   executable blocks containing 287 commands verify. A guided ten-stage route
   and generated interactive atlas expose all 247 exact statements, complete
   authored proof recipes, dependencies, dependents, metrics and source/vault
-  links. The complete Peano suite
-  passes 1,101 tests on Python 3.10 in 1,050.08 seconds with no reported
-  warnings. An in-app browser was unavailable, so direct Pyodide and rendered
+  links. The complete Peano suite passes 1,288 tests with one intentional skip
+  in 1,259.11 seconds; Lambda passes 360 tests plus 36 subtests. An in-app
+  browser was unavailable, so direct Pyodide and rendered
   book UI smokes are not claimed; automated runtime/worker tests, static HTML
   contracts and the deployment-manifest check remain green.
+- **Model-v3 training curriculum (2026-07-29):** the complete 247-theorem
+  declaration order is now a content-bound training authority. Exact authored
+  predecessor-prefix replay contributes 8,494 transitions, and a separate
+  70,000-row, 51-schema synthetic lane balances 14 root tactic heads while
+  capping `intro` at 20%. Catalog-derived components are train-only;
+  validation and test are synthetic-only, and held-out target formulas are
+  rejected at every intermediate state. Prompt-v3 exposes exact theorem
+  names and statements and losslessly compacts repeated proof declarations
+  with `shared-declarations-v1`; across all 222 stress-proof transitions the
+  maximum pinned Qwen3 prompt, completion, and EOS length is 29,111 tokens,
+  leaving 3,657 below the native 32,768-token limit. The registered WMI run is
+  Qwen3-1.7B Base with rank-32/alpha-64 LoRA, effective batch 32, and two
+  epochs. These are implemented and locally verified launch controls, not a
+  trained-model result; no model-v3 adapter or solve-rate claim exists yet.

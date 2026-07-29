@@ -32,6 +32,12 @@ WMI_SHELL_FILES = (
     SLURM / "peano_wmi_prepare_training.sbatch",
     SLURM / "peano_wmi_train_qwen3_1_7b.sbatch",
     SLURM / "peano_wmi_eval_qwen3_1_7b.sbatch",
+    SLURM / "peano_wmi_prepare_v2_training.sbatch",
+    SLURM / "peano_wmi_train_qwen3_1_7b_v2.sbatch",
+    SLURM / "peano_wmi_eval_qwen3_1_7b_v2.sbatch",
+    SLURM / "peano_wmi_prepare_v3_training.sbatch",
+    SLURM / "peano_wmi_train_qwen3_1_7b_v3.sbatch",
+    SLURM / "peano_wmi_eval_qwen3_1_7b_v3.sbatch",
     SLURM / "peano_wmi_prove_theorem.sbatch",
 )
 
@@ -139,6 +145,12 @@ def test_wmi_submission_and_jobs_share_source_lock_and_queue_gate() -> None:
         "peano-wmi-prepare",
         "peano-wmi-qwen17",
         "peano-wmi-qwen17-eval",
+        "peano-wmi-v2-prepare",
+        "peano-wmi-qwen17-v2",
+        "peano-wmi-qwen17-v2-eval",
+        "peano-wmi-v3-prepare",
+        "peano-wmi-qwen17-v3",
+        "peano-wmi-qwen17-v3-eval",
         "peano-wmi-prove",
         "peano-wmi-probe",
     ):
@@ -151,6 +163,12 @@ def test_wmi_submission_and_jobs_share_source_lock_and_queue_gate() -> None:
         SLURM / "peano_wmi_prepare_training.sbatch",
         SLURM / "peano_wmi_train_qwen3_1_7b.sbatch",
         SLURM / "peano_wmi_eval_qwen3_1_7b.sbatch",
+        SLURM / "peano_wmi_prepare_v2_training.sbatch",
+        SLURM / "peano_wmi_train_qwen3_1_7b_v2.sbatch",
+        SLURM / "peano_wmi_eval_qwen3_1_7b_v2.sbatch",
+        SLURM / "peano_wmi_prepare_v3_training.sbatch",
+        SLURM / "peano_wmi_train_qwen3_1_7b_v3.sbatch",
+        SLURM / "peano_wmi_eval_qwen3_1_7b_v3.sbatch",
         SLURM / "peano_wmi_prove_theorem.sbatch",
     ):
         source = path.read_text(encoding="utf-8")
@@ -269,10 +287,115 @@ def test_wmi_jobs_request_typed_a100_and_keep_training_offline() -> None:
     assert "peano_policy_proof_request.py run" in prove
 
 
+def test_wmi_heavy_v2_chain_is_allowlisted_attested_and_one_shot() -> None:
+    common = (SCRIPTS / "wmi_common.sh").read_text(encoding="utf-8")
+    submit = (SCRIPTS / "submit_wmi_slurm_job.sh").read_text(encoding="utf-8")
+    prepare = (SLURM / "peano_wmi_prepare_v2_training.sbatch").read_text(
+        encoding="utf-8"
+    )
+    train = (SLURM / "peano_wmi_train_qwen3_1_7b_v2.sbatch").read_text(
+        encoding="utf-8"
+    )
+    evaluate = (SLURM / "peano_wmi_eval_qwen3_1_7b_v2.sbatch").read_text(
+        encoding="utf-8"
+    )
+    for source in (prepare, train, evaluate):
+        assert "#SBATCH --partition=gpu_csi" in source
+        assert "#SBATCH --gpus=nvidia_a100:1" in source
+        assert "#SBATCH --constraint=vram80g" in source
+        assert "wmi_job_environment.sh" in source
+    assert "PEANO_POLICY_ROWS=100000" in prepare
+    assert "PEANO_POLICY_DIR=data/peano-policy-v2" in prepare
+    assert "peano-policy-v2-data" in prepare
+    assert "training.peano_policy.token_audit" in prepare
+    assert "peano-policy-wmi-a100-v2-smoke" in prepare
+    assert "qwen3_1_7b_v2_heavy.toml" in train
+    assert "--resume-from-checkpoint NEVER" in train
+    assert "qwen3-1.7b-lora-v2-heavy" in evaluate
+    assert "--max-steps 32" in evaluate
+    for name in (
+        "slurm/peano_wmi_prepare_v2_training.sbatch",
+        "slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch",
+        "slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch",
+    ):
+        assert name in common
+    assert "peano-wmi-v2-prepare" in submit
+    assert "peano-wmi-qwen17-v2" in submit
+    assert "peano-wmi-qwen17-v2-eval" in submit
+
+
+def test_wmi_v3_chain_prepares_trains_and_evaluates_on_a100() -> None:
+    common = (SCRIPTS / "wmi_common.sh").read_text(encoding="utf-8")
+    submit = (SCRIPTS / "submit_wmi_slurm_job.sh").read_text(encoding="utf-8")
+    prepare = (SLURM / "peano_wmi_prepare_v3_training.sbatch").read_text(
+        encoding="utf-8"
+    )
+    train = (SLURM / "peano_wmi_train_qwen3_1_7b_v3.sbatch").read_text(
+        encoding="utf-8"
+    )
+    evaluate = (SLURM / "peano_wmi_eval_qwen3_1_7b_v3.sbatch").read_text(
+        encoding="utf-8"
+    )
+
+    assert "#SBATCH --partition=gpu_csi" in prepare
+    assert "#SBATCH --gpus=nvidia_a100:1" in prepare
+    assert "#SBATCH --constraint=vram80g" in prepare
+    assert "nvidia-smi" in prepare
+    assert "generate_peano_library_policy_corpus.py" in prepare
+    assert "generate_peano_v3_balanced_corpus.py" in prepare
+    assert "--row-budget 70000" in prepare
+    assert "--budget-mode exact" in prepare
+    assert "combine_peano_v3_corpus_metadata.py" in prepare
+    assert "build_peano_policy_dataset.py" in prepare
+    assert "training.peano_policy.attest" in prepare
+    assert "training.peano_policy.token_audit" in prepare
+    assert "training.peano_policy.smoke" in prepare
+    assert "peano-policy-wmi-a100-v3-smoke" in prepare
+    assert "max_length != 32768" in prepare
+    assert "peano_wmi_assert_runtime" in prepare
+    assert "HF_HUB_OFFLINE=1" in prepare
+    assert "TRANSFORMERS_OFFLINE=1" in prepare
+
+    for source in (train, evaluate):
+        assert "#SBATCH --partition=gpu_csi" in source
+        assert "#SBATCH --gpus=nvidia_a100:1" in source
+        assert "#SBATCH --constraint=vram80g" in source
+        assert "peano_wmi_assert_runtime" in source
+        assert "HF_HUB_OFFLINE=1" in source
+        assert "TRANSFORMERS_OFFLINE=1" in source
+    for source in (prepare, train, evaluate):
+        assert "export PYTHONHASHSEED=20260729" in source
+    assert "qwen3_1_7b_v3_library.toml" in train
+    assert "--resume-from-checkpoint NEVER" in train
+    assert "qwen3-1.7b-lora-v3-library" in evaluate
+    assert "--mode search" in evaluate
+    assert "independent kernel checker" in evaluate
+
+    for name in (
+        "slurm/peano_wmi_prepare_v3_training.sbatch",
+        "slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch",
+        "slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch",
+    ):
+        assert name in common
+    for name in (
+        "peano-wmi-v3-prepare",
+        "peano-wmi-qwen17-v3",
+        "peano-wmi-qwen17-v3-eval",
+    ):
+        assert name in submit
+        assert name in (SCRIPTS / "wmi_sync_project.sh").read_text(
+            encoding="utf-8"
+        )
+    assert "peano-policy-dataset-attestation" in submit
+    assert "peano-policy-token-audit" in submit
+    assert "catalog-predecessor-prefix-v1+full-synthetic-v1" in submit
+
+
 def test_wmi_proof_request_is_file_backed_allowlisted_and_ledgered() -> None:
     common = (SCRIPTS / "wmi_common.sh").read_text(encoding="utf-8")
     local = (SCRIPTS / "wmi_prove_theorem.sh").read_text(encoding="utf-8")
     submit = (SCRIPTS / "submit_wmi_slurm_job.sh").read_text(encoding="utf-8")
+    job = (SLURM / "peano_wmi_prove_theorem.sbatch").read_text(encoding="utf-8")
     assert "slurm/peano_wmi_prove_theorem.sbatch" in common
     assert "peano_wmi_validate_request_id" in common
     assert "peano_policy_proof_request.py receive" in local
@@ -281,6 +404,13 @@ def test_wmi_proof_request_is_file_backed_allowlisted_and_ledgered() -> None:
     assert 'proof_manifest=logs/proof-requests.tsv' in submit
     assert 'request_path="results/peano-policy/requests/$request_id.json"' in submit
     assert "peano_policy_proof_request.py verify" in submit
+    assert "max_new_tokens=96" in local
+    assert "max_steps=32" in local
+    assert "search_beam_width=4" in local
+    assert "search_candidates_per_state=4" in local
+    assert "search_max_model_calls=128" in local
+    assert "search_max_states=2048" in local
+    assert "qwen3-1.7b-lora-v2-heavy" in job
     assert submit.index("sbatch --hold --parsable") < submit.index(
         '"$request_id" "$request_sha256" >> "$proof_manifest"'
     ) < submit.index("scontrol release \"$held_job\"")
@@ -557,9 +687,10 @@ def test_wmi_local_submission_behavioral_harness(tmp_path: Path) -> None:
     environment.pop("WMI_SSH_TARGET", None)
     completed = subprocess.run(
         ["bash", str(harness), str(REPO_ROOT), str(tmp_path)],
-        check=True,
+        check=False,
         capture_output=True,
         text=True,
         env=environment,
     )
+    assert completed.returncode == 0, (completed.stdout, completed.stderr)
     assert completed.stdout == "WMI local control harness: OK\n"

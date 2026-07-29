@@ -69,20 +69,31 @@ nodes, 28,892 Cuts, and 204 Cut-bearing certificates, with ordered root
 `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`
 and source digest
 `295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
-The synchronized vault has 327 notes and 3,287 resolved links, including all
+The synchronized vault has 327 notes and 3,286 resolved links, including all
 247 generated lemma notes. The corpus retains 13,344 transitions in 1,692
 kernel-checked sessions under fingerprint
-`5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`;
+`6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
 its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
-all 247 authored QEDs. Local browser build `2026-07-29j` packages application
-`a-c983d7c60450`; it is not staged or deployed. The strict Jupyter Book rebuild
-passes over all 38 sources with zero warnings; 194 deep links and 47 session
+all 247 authored QEDs. Local browser build `2026-07-29k` packages application
+`a-77df7c0860bc`; it is not staged or deployed. The strict Jupyter Book rebuild
+passes over all 38 sources with zero warnings; 195 deep links and 47 session
 blocks containing 287 commands verify. Its guided zero-to-FTA route and
 generated interactive atlas embed all 247 exact statements and authored proof
-recipes with searchable dependency navigation. The complete Peano Lab suite passes all
-1,101 tests on Python 3.10 in 1,050.08 seconds with no reported warnings. No
+recipes with searchable dependency navigation. The complete Peano Lab suite
+passes 1,288 tests with one intentional skip in 1,259.11 seconds; Lambda Lab
+passes 360 tests plus 36 subtests. No
 in-app browser was attached for this checkpoint, so direct Pyodide and rendered
 book UI smokes are explicitly unclaimed.
+
+The next proof-policy experiment is implemented as `model-v3`: 8,494 exact
+authored predecessor-prefix transitions from the complete checked library plus
+a deterministic 70,000-row, 51-schema synthetic curriculum. Its split and
+attestation rules keep catalog-derived proofs train-only and reject held-out
+targets from every intermediate state. A lossless v3-only prompt encoding
+keeps the audited worst stress-proof turn at 29,111 of Qwen's 32,768 native
+tokens. The registered WMI run uses pinned Qwen3-1.7B Base with rank-32/
+alpha-64 LoRA for two epochs. This describes a verified launch candidate, not
+a trained adapter or measured solve rate.
 
 ---
 

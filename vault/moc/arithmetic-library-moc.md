@@ -30,7 +30,7 @@ and live-use audits.
 The generated 247-theorem snapshot has 982,534 nodes, 28,892 Cuts, and ordered
 root
 `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`.
-This vault has 327 notes and 3,287 resolved links, including all 247 theorem
+This vault has 327 notes and 3,286 resolved links, including all 247 theorem
 notes.
 
 ## Design and trust

@@ -18,7 +18,10 @@ CLI = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = CLI
 SPEC.loader.exec_module(CLI)
 
-from training.peano_policy.contract import model_v1_environment  # noqa: E402
+from training.peano_policy.contract import (  # noqa: E402
+    MODEL_V3_HELD_OUT_POLICY_GOALS,
+    model_v1_environment,
+)
 from training.peano_policy.prompt import (  # noqa: E402
     CapabilityIdentity,
     PromptEnvironment,
@@ -130,6 +133,27 @@ def test_user_goal_cannot_widen_attested_model_authority() -> None:
 
     with pytest.raises(ValueError, match="fixed intuitionistic model-v1"):
         CLI._user_goal("0 = 0", changed)
+
+
+def test_model_v3_selects_only_its_separately_sealed_unseen_goals() -> None:
+    environment = SimpleNamespace(
+        prompt_version=3,
+        capabilities=SimpleNamespace(
+            label="model-v3",
+            allowed_theorems=(),
+        ),
+    )
+    goals = CLI._selected_benchmark_goals([], environment)
+
+    assert tuple(goal.name for goal in goals) == tuple(
+        name for name, _ in MODEL_V3_HELD_OUT_POLICY_GOALS
+    )
+    assert all(goal.surface_profile == "model-v3" for goal in goals)
+    assert not {goal.name for goal in goals} & set(
+        CLI.evaluator.HELD_OUT_LADDER_NAMES
+    )
+    with pytest.raises(ValueError, match="unknown held-out"):
+        CLI._selected_benchmark_goals(["mod5_fourth_power_one"], environment)
 
 
 def test_atomic_proof_output_never_replaces_existing_text(tmp_path: Path) -> None:

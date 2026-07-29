@@ -12,10 +12,10 @@ prime-search layers, balanced modular congruence, single-position Gödel-β
 decoding as bounded congruence, and constructive binary CRT become available
 only after this build is promoted. The source runtime now has 247 checked
 entries. Its source-bound 1,692-session/13,344-transition corpus has fingerprint
-`5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`.
+`6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`.
 The isolated all-ladder smoke has 494 sessions, 9,235 raw/9,232 unique
-transitions, and all 247 authored QEDs. Browser build `2026-07-29j`,
-application `a-c983d7c60450`, has not been staged or deployed.
+transitions, and all 247 authored QEDs. Browser build `2026-07-29k`,
+application `a-77df7c0860bc`, has not been staged or deployed.
 
 The [public Peano Lab shell](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib)
 still serves the earlier production snapshot. In this candidate checkout, try

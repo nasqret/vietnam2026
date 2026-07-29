@@ -504,18 +504,18 @@ snapshot has 982,534 nodes, 28,892 Cuts, 204 Cut-bearing certificates, root
 `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`,
 and source digest
 `295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
-The vault has 247 lemma notes within 327 notes and 3,287 links. The
+The vault has 247 lemma notes within 327 notes and 3,286 links. The
 1,692-session/13,344-transition corpus has fingerprint
-`5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`;
+`6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
 its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
-all 247 authored QEDs. Browser build `2026-07-29j`, application
-`a-c983d7c60450`, has not been staged, deployed, or promoted. The complete
-Peano suite passes 1,101 tests on Python 3.10 in 1,050.08 seconds with no
-reported warnings. Automated runtime/worker and manifest checks pass; a
+all 247 authored QEDs. Browser build `2026-07-29k`, application
+`a-77df7c0860bc`, has not been staged, deployed, or promoted. The complete
+Peano suite passes 1,288 tests with one intentional skip in 1,259.11 seconds.
+Automated runtime/worker and manifest checks pass; a
 direct Pyodide UI smoke is not claimed because no in-app browser was attached.
 The main Jupyter Book now adds a guided zero-to-FTA route and a generated
 interactive atlas for all 247 native proofs; its strict 38-source build and
-234-link/47-session/287-command replay are green. A rendered-book click and
+195-link/47-session/287-command replay are green. A rendered-book click and
 layout audit is likewise unclaimed because the in-app browser remained
 unattached.
 

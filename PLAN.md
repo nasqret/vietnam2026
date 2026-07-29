@@ -93,12 +93,21 @@ The
 runtime now also has audited self-contained dependency sharing: a Cut embeds
 the full lemma and body proofs and is checked without external theorem names or
 hashes. This enlarges the trusted certificate checker but leaves the PA object
-language and logic unchanged. The earlier public-catalog full-surface audit yields 474
-prospective model-v2 transitions. They are valuable curriculum seeds, but only one is an
-`induction` label, so balanced generation and
-sampling remain necessary. See
-[`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest completed and staged
-milestone; production remains untouched behind the M14 cache-header blocker.
+language and logic unchanged. The earlier public-catalog full-surface audit
+yielded 474 prospective model-v2 transitions. It is retained as design
+history: only one is an `induction` label, so it cannot support the intended
+explorer by itself. The implemented successor is a distinct model-v3
+curriculum bound to the complete 247-theorem declaration order. It contributes
+8,494 exact authored predecessor-prefix transitions plus 70,000 deterministic
+synthetic rows over 51 schemas and 14 balanced root tactic heads. Catalog data
+is train-only; validation/test are synthetic-only, target formulas are
+rejected from every intermediate state, and a lossless v3-only prompt codec
+keeps the audited stress-proof maximum at 29,111 of 32,768 Qwen tokens. The
+pinned WMI Qwen3-1.7B Base rank-32/alpha-64 two-epoch run is registered but
+remains untrained and unevaluated. See
+[`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest completed
+and staged milestone; production remains untouched behind the M14 cache-header
+blocker.
 
 ## Parallel foundational arithmetic milestone
 
@@ -122,6 +131,6 @@ M20's native arithmetic and synchronized release artifacts are complete. The
 main Jupyter Book now includes a guided zero-to-FTA route and a generated
 interactive 247-proof atlas; direct attached-browser UI inspection remains
 explicitly unclaimed, and
-model-v2 curriculum expansion is a separate milestone—not mathematical
+model-v3 curriculum training is a separate milestone—not mathematical
 admission of FTA or prime unboundedness. See
 [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md).

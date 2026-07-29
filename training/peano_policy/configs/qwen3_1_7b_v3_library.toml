@@ -1,0 +1,56 @@
+[run]
+name = "qwen3-1.7b-peano-lora-v3-library"
+seed = 20260729
+output_dir = "results/peano-policy/qwen3-1.7b-lora-v3-library"
+# The complete expected train split is below this ceiling.  Keeping the ceiling
+# above it ensures every predecessor-prefix library transition is selected;
+# deterministic subsampling must never silently drop a small theorem rung.
+max_train_samples = 80000
+max_eval_samples = 6000
+resume = "auto"
+
+[model]
+model_id = "Qwen/Qwen3-1.7B-Base"
+revision = "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+dtype = "bfloat16"
+attn_implementation = "sdpa"
+trust_remote_code = false
+
+[data]
+train_path = "data/peano-policy-v3/train.jsonl"
+eval_path = "data/peano-policy-v3/val.jsonl"
+# Prompt-v3 abbreviates giant library statements, but theorem states can still
+# be long: 57/247 full-prefix theorem-root probes already exceed 4,096 tokens.
+# Use Qwen3-1.7B's pinned native position limit. The tokenizer audit remains a
+# mandatory exact-data gate and truncation is forbidden.
+max_length = 32768
+
+[lora]
+rank = 32
+alpha = 64
+dropout = 0.05
+target_modules = [
+  "q_proj", "k_proj", "v_proj", "o_proj",
+  "gate_proj", "up_proj", "down_proj",
+]
+
+[trainer]
+epochs = 2.0
+max_steps = -1
+per_device_train_batch_size = 1
+per_device_eval_batch_size = 1
+gradient_accumulation_steps = 32
+learning_rate = 0.0001
+weight_decay = 0.01
+warmup_ratio = 0.05
+logging_steps = 10
+eval_steps = 250
+save_steps = 250
+save_total_limit = 3
+gradient_checkpointing = true
+
+[generation]
+max_new_tokens = 128
+do_sample = false
+temperature = 1.0
+top_p = 1.0

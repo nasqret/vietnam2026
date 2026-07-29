@@ -34,10 +34,15 @@ from peano_lab.kernel.formulas import (  # noqa: E402
 )
 from peano_lab.ui.prove import MAX_INPUT, MAX_NUMERAL, oversized_numeral  # noqa: E402
 from training.peano_policy.contract import (  # noqa: E402
+    MODEL_V3_HELD_OUT_POLICY_GOALS,
     attested_training_environment,
     model_v1_environment,
+    model_v2_environment,
+    model_v3_environment,
 )
 from training.peano_policy.generate import (  # noqa: E402
+    MAX_CANDIDATES_PER_MODEL_CALL,
+    PeanoPolicyCandidateAdapter,
     PeanoPolicyAdapter,
     adapter_provenance,
     load_adapter,
@@ -53,12 +58,21 @@ from training.peano_policy.runtime import (  # noqa: E402
     slurm_job_identity,
     source_files_identity,
 )
+from training.peano_policy.search import (  # noqa: E402
+    MAX_SEARCH_DEPTH,
+    SearchLimits,
+    SearchResult,
+    search as kernel_guided_search,
+)
 
 
 MAX_USER_FORMULA_RECURSION_MARKERS = 256
 MAX_POLICY_NEW_TOKENS = 1_024
 MAX_POLICY_MODEL_CALLS = 4_096
 MAX_POLICY_GENERATED_TOKENS = 262_144
+MAX_POLICY_SEARCH_STATES = 4_096
+MAX_POLICY_SEARCH_BEAM = 256
+MAX_POLICY_SEARCH_GENERATED_TOKENS = 4_194_304
 MAX_TRAINING_MANIFEST_BYTES = 16_000_000
 _FORMULA_RECURSION_MARKER = re.compile(
     r"(?<![A-Za-z0-9_'])(?:forall|exists|S)(?![A-Za-z0-9_'])|->|[∀∃~¬→(]"
@@ -99,7 +113,20 @@ def _parser() -> argparse.ArgumentParser:
         type=int,
         help="rollouts per goal (default: 1 for --theorem, 8 for benchmarks)",
     )
+    parser.add_argument(
+        "--mode",
+        choices=("rollout", "search"),
+        default="rollout",
+        help=(
+            "rollout preserves the v1 one-path evaluator; search runs bounded "
+            "kernel-guided beam search (default: rollout)"
+        ),
+    )
     parser.add_argument("--max-steps", type=int, default=16)
+    parser.add_argument("--search-beam-width", type=int, default=16)
+    parser.add_argument("--search-candidates-per-state", type=int, default=8)
+    parser.add_argument("--search-max-model-calls", type=int, default=512)
+    parser.add_argument("--search-max-states", type=int, default=4096)
     parser.add_argument("--seed", type=int, default=20260728)
     parser.add_argument("--max-new-tokens", type=int)
     parser.add_argument("--sample", action="store_true")
@@ -292,21 +319,82 @@ def _atomic_create_text(path: Path, text: str) -> None:
 def _user_goal(canonical_statement: str, environment: object) -> evaluator.EvalGoal:
     capabilities = getattr(environment, "capabilities", None)
     classical = getattr(environment, "classical", None)
+    label = getattr(capabilities, "label", None)
+    expected = (
+        model_v1_environment()
+        if label == "model-v1"
+        else model_v2_environment()
+        if label == "model-v2"
+        else model_v3_environment()
+        if label == "model-v3"
+        else None
+    )
     if (
-        environment != model_v1_environment()
+        environment != expected
         or classical is not False
-        or getattr(capabilities, "label", None) != "model-v1"
+        or label not in {"model-v1", "model-v2", "model-v3"}
         or type(getattr(capabilities, "allowed_theorems", None)) is not tuple
     ):
-        raise ValueError("adapter does not expose the fixed intuitionistic model-v1 authority")
+        raise ValueError(
+            "adapter does not expose a fixed intuitionistic model-v1, "
+            "model-v2, or model-v3 authority"
+        )
     name_hash = hashlib.sha256(canonical_statement.encode("utf-8")).hexdigest()[:12]
     return evaluator.EvalGoal(
         f"user-{name_hash}",
         canonical_statement,
         classical=False,
-        surface_profile="model-v1",
+        surface_profile=capabilities.label,
         allowed_theorems=capabilities.allowed_theorems,
     )
+
+
+def _benchmark_goals_for_environment(
+    goals: tuple[evaluator.EvalGoal, ...],
+    environment: object,
+) -> tuple[evaluator.EvalGoal, ...]:
+    """Execute frozen targets under the adapter's exact attested authority."""
+
+    return tuple(
+        evaluator.EvalGoal(
+            goal.name,
+            goal.statement,
+            classical=False,
+            surface_profile=environment.capabilities.label,
+            allowed_theorems=environment.capabilities.allowed_theorems,
+        )
+        for goal in goals
+    )
+
+
+def _selected_benchmark_goals(
+    names: list[str],
+    environment: object,
+) -> tuple[evaluator.EvalGoal, ...]:
+    """Select the sealed benchmark appropriate to the adapter contract.
+
+    Model-v3 trains on the complete old public theorem ladder, so evaluating
+    it on model-v2's tail-ladder holdouts would be direct target leakage.  Its
+    four target propositions are separately frozen by the v3 dataset
+    attestation and are not library theorem names.
+    """
+
+    prompt_version = getattr(environment, "prompt_version", None)
+    if prompt_version == 3:
+        available = tuple(
+            evaluator.EvalGoal(name, statement)
+            for name, statement in MODEL_V3_HELD_OUT_POLICY_GOALS
+        )
+    else:
+        available = evaluator.DEFAULT_HELD_OUT_GOALS
+    table = {goal.name: goal for goal in available}
+    if len(set(names)) != len(names):
+        raise ValueError("held-out goal names may not be repeated")
+    unknown = [name for name in names if name not in table]
+    if unknown:
+        raise ValueError("unknown held-out goal(s): " + ", ".join(unknown))
+    selected = available if not names else tuple(table[name] for name in names)
+    return _benchmark_goals_for_environment(selected, environment)
 
 
 def _checked_proof_publication(
@@ -375,6 +463,218 @@ def _checked_proof_publication(
         },
         script,
     )
+
+
+def _search_limits_record(limits: SearchLimits) -> dict[str, int]:
+    return {
+        "max_depth": limits.max_depth,
+        "beam_width": limits.beam_width,
+        "candidates_per_state": limits.candidates_per_state,
+        "max_model_calls": limits.max_model_calls,
+        "max_states": limits.max_states,
+    }
+
+
+def _search_limits_from_args(args: argparse.Namespace) -> SearchLimits:
+    if not 1 <= args.search_beam_width <= MAX_POLICY_SEARCH_BEAM:
+        raise ValueError(
+            f"search beam width must lie between 1 and {MAX_POLICY_SEARCH_BEAM}"
+        )
+    if not (
+        1
+        <= args.search_candidates_per_state
+        <= MAX_CANDIDATES_PER_MODEL_CALL
+    ):
+        raise ValueError(
+            "search candidates per state must lie between 1 and "
+            f"{MAX_CANDIDATES_PER_MODEL_CALL}"
+        )
+    if not 1 <= args.search_max_model_calls <= MAX_POLICY_MODEL_CALLS:
+        raise ValueError(
+            "search max model calls must lie between 1 and "
+            f"{MAX_POLICY_MODEL_CALLS}"
+        )
+    if not 1 <= args.search_max_states <= MAX_POLICY_SEARCH_STATES:
+        raise ValueError(
+            "search max states must lie between 1 and "
+            f"{MAX_POLICY_SEARCH_STATES}"
+        )
+    return SearchLimits(
+        max_depth=args.max_steps,
+        beam_width=args.search_beam_width,
+        candidates_per_state=args.search_candidates_per_state,
+        max_model_calls=args.search_max_model_calls,
+        max_states=args.search_max_states,
+    )
+
+
+def _stable_search_seed(seed: int, goal: evaluator.EvalGoal) -> int:
+    payload = json.dumps(
+        [1, seed, goal.name, goal.statement],
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return int.from_bytes(hashlib.sha256(payload).digest()[:8], "big") & (2**63 - 1)
+
+
+def _search_error(result: SearchResult) -> str | None:
+    if result.proved:
+        return None
+    if not result.diagnostics:
+        return f"kernel-guided search {result.status} without a checked proof"
+    final = result.diagnostics[-1]
+    return (
+        f"kernel-guided search {result.status}: {final.kind}: {final.message}"
+    )[:1_000]
+
+
+def _evaluate_kernel_search(
+    adapter: PeanoPolicyAdapter,
+    goals: tuple[evaluator.EvalGoal, ...],
+    *,
+    seed: int,
+    limits: SearchLimits,
+) -> tuple[evaluator.EvaluationReport, dict[str, object]]:
+    """Run one bounded verifier-guided search per theorem.
+
+    A fresh candidate wrapper gives every theorem an order-independent seed
+    stream and exact decoder counters.  Each wrapper makes one batched physical
+    model call for every policy call counted by :func:`kernel_guided_search`.
+    """
+
+    goal_results: list[evaluator.GoalResult] = []
+    search_results: list[dict[str, object]] = []
+    total_model_calls = 0
+    total_states_expanded = 0
+    total_states_discovered = 0
+    total_candidates_executed = 0
+    total_sequences_requested = 0
+    total_sequences_returned = 0
+    total_candidate_lines = 0
+    total_malformed_sequences = 0
+    frontier_peak = 0
+
+    for goal in goals:
+        if adapter.policy_environment != evaluator._goal_environment(goal):
+            raise ValueError(
+                f"policy environment does not match evaluation goal {goal.name!r}"
+            )
+        goal_seed = _stable_search_seed(seed, goal)
+        candidate_policy = PeanoPolicyCandidateAdapter(
+            adapter,
+            seed=goal_seed,
+            name=f"{adapter.name}:kernel-guided-candidates",
+        )
+        result = kernel_guided_search(
+            goal.statement,
+            candidate_policy,
+            capabilities=goal.capabilities,
+            classical=goal.classical,
+            limits=limits,
+        )
+        generation = candidate_policy.generation_provenance
+        decoder_calls = generation["model_generate_calls"]
+        if decoder_calls != result.model_calls:
+            raise RuntimeError(
+                "candidate-policy decoder calls differ from search model-call count"
+            )
+        if generation["candidate_sequences_requested"] != (
+            result.model_calls * limits.candidates_per_state
+        ):
+            raise RuntimeError("candidate-policy request accounting is inconsistent")
+
+        attempt_status: evaluator.AttemptStatus
+        if result.status == "proof":
+            attempt_status = "proof"
+        elif result.status == "limit":
+            attempt_status = "limit"
+        else:
+            attempt_status = "failing"
+        attempt = evaluator.AttemptResult(
+            0,
+            goal_seed,
+            attempt_status,
+            result.commands,
+            result.certificate_nodes,
+            _search_error(result),
+        )
+        goal_results.append(
+            evaluator.GoalResult(
+                goal,
+                result.theorem,
+                (attempt,),
+            )
+        )
+        search_results.append(
+            {
+                "name": goal.name,
+                "environment_sha256": capability_sha256(goal.capabilities),
+                "result": result.to_dict(),
+                "decoder": generation,
+            }
+        )
+        total_model_calls += result.model_calls
+        total_states_expanded += result.states_expanded
+        total_states_discovered += result.states_discovered
+        total_candidates_executed += result.candidates_executed
+        total_sequences_requested += int(generation["candidate_sequences_requested"])
+        total_sequences_returned += int(generation["candidate_sequences_returned"])
+        total_candidate_lines += int(generation["candidate_lines_returned"])
+        total_malformed_sequences += int(
+            generation["malformed_sequences_rejected"]
+        )
+        frontier_peak = max(frontier_peak, result.frontier_peak)
+
+    policy_name = f"{adapter.name}:kernel-guided-search"
+    identity = {
+        "name": policy_name,
+        "kind": "peano-kernel-guided-search-v1",
+        "base_policy": adapter.evaluation_identity,
+        "limits": _search_limits_record(limits),
+        "seed": seed,
+        "seed_schedule": "sha256-json-v1(seed,goal_name,goal_statement)",
+        "decoder_batching": "one-model-generate-call-per-search-state",
+    }
+    report = evaluator.EvaluationReport(
+        policy_name,
+        identity,
+        seed,
+        1,
+        limits.max_depth,
+        tuple(goal_results),
+    )
+    search_record: dict[str, object] = {
+        "engine": "training.peano_policy.search.search-v1",
+        "budget_scope": "per-goal",
+        "limits": _search_limits_record(limits),
+        "aggregate_upper_bound": {
+            "model_generate_calls": len(goals) * limits.max_model_calls,
+            "candidate_sequences": (
+                len(goals)
+                * limits.max_model_calls
+                * limits.candidates_per_state
+            ),
+            "generated_sequence_tokens": (
+                len(goals)
+                * limits.max_model_calls
+                * limits.candidates_per_state
+                * adapter.max_new_tokens
+            ),
+        },
+        "actual": {
+            "model_generate_calls": total_model_calls,
+            "states_expanded": total_states_expanded,
+            "states_discovered": total_states_discovered,
+            "candidates_executed": total_candidates_executed,
+            "candidate_sequences_requested": total_sequences_requested,
+            "candidate_sequences_returned": total_sequences_returned,
+            "candidate_lines_returned": total_candidate_lines,
+            "malformed_sequences_rejected": total_malformed_sequences,
+            "frontier_peak_per_goal": frontier_peak,
+        },
+        "goals": search_results,
+    }
+    return report, search_record
 
 
 def _decode_options(
@@ -466,6 +766,36 @@ def _validate_search_budget(
         )
 
 
+def _validate_kernel_search_budget(
+    limits: SearchLimits,
+    *,
+    goal_count: int,
+    max_new_tokens: int | None,
+) -> None:
+    """Bound the aggregate batched-decoder work before model loading."""
+
+    if type(goal_count) is not int or goal_count < 1:
+        raise ValueError("kernel search needs at least one goal")
+    total_calls = goal_count * limits.max_model_calls
+    if total_calls > MAX_POLICY_MODEL_CALLS:
+        raise ValueError(
+            f"kernel search requests up to {total_calls} model calls across "
+            f"{goal_count} goals; limit is {MAX_POLICY_MODEL_CALLS}"
+        )
+    if max_new_tokens is not None:
+        generated = (
+            total_calls
+            * limits.candidates_per_state
+            * max_new_tokens
+        )
+        if generated > MAX_POLICY_SEARCH_GENERATED_TOKENS:
+            raise ValueError(
+                "kernel search requests up to "
+                f"{generated} generated sequence tokens; limit is "
+                f"{MAX_POLICY_SEARCH_GENERATED_TOKENS}"
+            )
+
+
 def _evaluation_sources() -> dict[str, object]:
     """Fingerprint every repository file that can affect model judging."""
 
@@ -492,29 +822,68 @@ def main(argv: list[str] | None = None) -> int:
         except ValueError as exc:
             parser.error(str(exc))
 
-    benchmark_goals: tuple[evaluator.EvalGoal, ...] | None = None
     try:
         _validate_decode_overrides(args)
-        if user_theorem_source is None:
-            benchmark_goals = evaluator.selected_goals(args.goal)
+        if len(set(args.goal)) != len(args.goal):
+            raise ValueError("held-out goal names may not be repeated")
+        known_goal_names = set(evaluator.HELD_OUT_LADDER_NAMES) | {
+            name for name, _ in MODEL_V3_HELD_OUT_POLICY_GOALS
+        }
+        unknown_goals = [name for name in args.goal if name not in known_goal_names]
+        if unknown_goals:
+            raise ValueError(
+                "unknown held-out goal(s): " + ", ".join(unknown_goals)
+            )
     except ValueError as exc:
         parser.error(str(exc))
+    selected_goal_count = (
+        1
+        if user_theorem_source is not None
+        else len(args.goal) if args.goal else 4
+    )
 
-    rollouts = args.k if args.k is not None else (1 if args.theorem is not None else 8)
+    if args.mode == "search" and args.k not in {None, 1}:
+        parser.error(
+            "--mode search performs one branching search per goal; --k must be 1"
+        )
+    if args.mode == "search":
+        rollouts = 1
+    elif args.k is not None:
+        rollouts = args.k
+    else:
+        rollouts = 1 if args.theorem is not None else 8
     if not 1 <= rollouts <= 256:
         parser.error("--k must lie between 1 and 256")
     if not 1 <= args.max_steps <= MAX_BATCH_TACTICS:
         parser.error(
             f"--max-steps must lie between 1 and {MAX_BATCH_TACTICS}"
         )
-    if args.theorem is not None and rollouts > 1 and not args.sample:
-        parser.error("--theorem with --k greater than 1 requires --sample")
-    try:
-        _validate_search_budget(
-            rollouts=rollouts,
-            max_steps=args.max_steps,
-            max_new_tokens=args.max_new_tokens,
+    if args.mode == "search" and args.max_steps > MAX_SEARCH_DEPTH:
+        parser.error(
+            f"--mode search limits --max-steps to {MAX_SEARCH_DEPTH}"
         )
+    if (
+        args.mode == "rollout"
+        and args.theorem is not None
+        and rollouts > 1
+        and not args.sample
+    ):
+        parser.error("--theorem with --k greater than 1 requires --sample")
+    search_limits: SearchLimits | None = None
+    try:
+        if args.mode == "search":
+            search_limits = _search_limits_from_args(args)
+            _validate_kernel_search_budget(
+                search_limits,
+                goal_count=selected_goal_count,
+                max_new_tokens=args.max_new_tokens,
+            )
+        else:
+            _validate_search_budget(
+                rollouts=rollouts,
+                max_steps=args.max_steps,
+                max_new_tokens=args.max_new_tokens,
+            )
     except ValueError as exc:
         parser.error(str(exc))
 
@@ -540,12 +909,25 @@ def main(argv: list[str] | None = None) -> int:
     decoded_token_limit = options.get("max_new_tokens")
     if type(decoded_token_limit) is not int:  # pragma: no cover - decoder invariant
         raise RuntimeError("validated decode token limit was lost")
-    _validate_search_budget(
-        rollouts=rollouts,
-        max_steps=args.max_steps,
-        max_new_tokens=decoded_token_limit,
-    )
+    if search_limits is not None:
+        _validate_kernel_search_budget(
+            search_limits,
+            goal_count=selected_goal_count,
+            max_new_tokens=decoded_token_limit,
+        )
+    else:
+        _validate_search_budget(
+            rollouts=rollouts,
+            max_steps=args.max_steps,
+            max_new_tokens=decoded_token_limit,
+        )
     environment = attested_training_environment(manifest_snapshot)
+    benchmark_goals: tuple[evaluator.EvalGoal, ...] | None = None
+    if user_theorem_source is None:
+        try:
+            benchmark_goals = _selected_benchmark_goals(args.goal, environment)
+        except ValueError as exc:
+            parser.error(str(exc))
     evaluation_sources = _evaluation_sources()
     model, tokenizer, manifest = load_adapter(adapter_dir, seed=args.seed)
     if manifest != manifest_snapshot:
@@ -582,13 +964,22 @@ def main(argv: list[str] | None = None) -> int:
     )
     if goals is None:  # pragma: no cover - guarded by the selection above
         raise RuntimeError("evaluation goal selection was lost")
-    report = evaluator.evaluate(
-        policy,
-        goals,
-        k=rollouts,
-        max_steps=args.max_steps,
-        seed=args.seed,
-    )
+    search_record: dict[str, object] | None = None
+    if search_limits is None:
+        report = evaluator.evaluate(
+            policy,
+            goals,
+            k=rollouts,
+            max_steps=args.max_steps,
+            seed=args.seed,
+        )
+    else:
+        report, search_record = _evaluate_kernel_search(
+            policy,
+            goals,
+            seed=args.seed,
+            limits=search_limits,
+        )
     if _evaluation_sources() != evaluation_sources:
         raise RuntimeError("evaluation source changed while the run was active")
     if slurm_job_identity() != evaluation_job:
@@ -596,6 +987,9 @@ def main(argv: list[str] | None = None) -> int:
     _recheck_adapter_snapshot(adapter_dir, manifest_snapshot, manifest_sha256)
 
     report_record = report.to_dict()
+    if search_record is not None:
+        report_record["mode"] = "kernel-guided-search"
+        report_record["search"] = search_record
     proof_script: str | None = None
     if user_theorem_source is not None:
         publication, proof_script = _checked_proof_publication(report)

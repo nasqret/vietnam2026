@@ -120,7 +120,7 @@ has 982,534 nodes, 28,892 Cuts, 204 Cut-bearing certificates, ordered root
 `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`,
 and source digest
 `295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
-The vault has 327 notes and 3,287 resolved links, including all 247 theorem
+The vault has 327 notes and 3,286 resolved links, including all 247 theorem
 notes.
 
 Peano Lab still has no primitive list type and does not equate raw β codes;

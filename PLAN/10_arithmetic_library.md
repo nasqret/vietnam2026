@@ -247,19 +247,19 @@ does not determine the architecture.
   `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`
   and source digest is
   `295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
-  The vault has 327 notes and 3,287 links. The 1,692-session/13,344-transition
+  The vault has 327 notes and 3,286 links. The 1,692-session/13,344-transition
   corpus has fingerprint
-  `5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`;
+  `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
   its smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and all 247
-  QEDs. Browser build `2026-07-29j` packages `a-c983d7c60450` without staging
+  QEDs. Browser build `2026-07-29k` packages `a-77df7c0860bc` without staging
   or deployment. The strict book rebuild passes all 38 sources with no
-  warnings; 194 deep links and 47 executable blocks/287 commands verify.
-- The complete current Peano suite passes all 1,101 tests on Python 3.10 in
-  1,050.08 seconds with no reported warnings. No in-app browser was available,
+  warnings; 195 deep links and 47 executable blocks/287 commands verify.
+- The complete current Peano suite passes 1,288 tests with one intentional
+  skip in 1,259.11 seconds. No in-app browser was available,
   so direct Pyodide UI smoke remains explicitly unclaimed; the automated
   runtime/worker coverage and browser deployment-manifest checks pass.
 - The strict Jupyter Book 1.0 build passes over 38 sources with no warnings or
-  errors. Documentation verification checks 194 deep links and 47 session
+  errors. Documentation verification checks 195 deep links and 47 session
   blocks containing 287 commands; all 17 static documentation tests pass. The
   generated atlas contains 247 checked proof cards, one explicit boundary
   card, all 640 dependency edges, and a local 1–4-hop navigator.

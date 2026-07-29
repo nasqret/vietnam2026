@@ -1754,3 +1754,55 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   built-HTML card/asset/anchor contracts and `git diff --check` pass. No in-app
   browser was attached, so a live visual/click interaction audit is explicitly
   unclaimed rather than substituted with another browser backend.
+
+## 2026-07-29 — Complete-library model-v3 launch candidate
+
+- Replaced the narrow model-v2 curriculum with a distinct, content-bound
+  model-v3 authority over all 247 kernel-checked theorems. Each authored
+  trajectory sees exactly its declaration-order predecessor prefix, producing
+  8,494 exact replay transitions. A separate deterministic 70,000-row
+  synthetic lane covers 51 schemas and balances 14 root tactic heads with an
+  `intro` ceiling of 20%. Catalog material is forced into training; validation
+  and test remain synthetic-only, and target formulas are checked for leakage
+  in every intermediate goal rather than only at session boundaries.
+- Added a lossless v3-only `shared-declarations-v1` state representation after
+  the largest exact proof produced a 122,546-token legacy prompt. The compact
+  form factors repeated exact context declarations and targets into canonical
+  first-occurrence tables and reconstructs the original one-line goals
+  byte-for-byte. Strict JSON canonicality, index/focus checks, table-use checks,
+  reserved-marker rejection, and a 44,000-character fail-closed bound preserve
+  the replay and attestation boundary. V1/v2 prompt bytes remain frozen. The
+  pinned Qwen tokenizer audit over all 222 transitions in the stress proof has
+  median 17,444, p95 26,662, p99 28,537, and maximum 29,111 tokens including
+  tactic and EOS, leaving 3,657 tokens below the native 32,768 limit.
+- Kept the ordinary batch trace limit at 16 MB. A host-only reviewed override,
+  capped at 128 MiB and unavailable in JSON requests, is granted solely to the
+  exact model-v3 catalog generator and to builder replay after strict catalog
+  trajectory validation. Limit failures remain transactional and concise.
+- Registered the WMI Qwen3-1.7B Base experiment at a pinned model revision,
+  rank-32/alpha-64 LoRA, effective batch 32, two epochs, 80,000 maximum train
+  rows, 6,000 maximum evaluation rows, and native 32,768-token contexts. The
+  guarded prepare/train/evaluate jobs have 12/20/6-hour limits; preparation
+  performs exact generation, replay, independent attestation, full tokenizer
+  audit, and an A100 smoke before training can start. No model-v3 job or result
+  is claimed at this checkpoint.
+- Regenerated the committed v1 corpus with its required CPython 3.10.0 after
+  the batch source changed. Its 1,692 sessions and 13,344 transitions now have
+  run fingerprint
+  `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
+  train, validation, statistics, manifest, semantic-tree, and raw-stream
+  SHA-256 values are respectively
+  `4e0053e1da89a32043cdfad98e6e6924ce19a6748a914c55095308f48dd2ad54`,
+  `abe0aa84de861aae9a72a173fd1114cf0a99114a8f4f9a6d6019fb3433d94e69`,
+  `68affad0cd91e0ad4fadda28901b083b6e45f4694791aa1d24b42a82183c04ca`,
+  `a89a2d2bdbe6362c17ece6b886ab5eba1dbd7af2b04ddd32d86d2fcccdde3d95`,
+  `55a6e70ce5a3ffe855866beb04b7441a85c58d6ac7c7bb9de727d1fefe14d250`,
+  and `c88a05343d27ded77ba871bd3552ddd099817ef78e6fbfa2a959b8a2e2aea306`.
+  Browser build `2026-07-29k` packages application `a-77df7c0860bc`; it has not
+  been deployed.
+- Final local gates: Peano Lab 1,288 passed/one skipped in 1,259.11 seconds;
+  Lambda Lab 360 passed plus 36 subtests; all 287 documented commands replay;
+  the vault verifies 247 lemma notes within 327 notes and 3,286 resolved links;
+  the manifest and atlas drift checks pass; and a clean 38-source Jupyter Book
+  render succeeds without warnings. Remote synchronization, training, and
+  evaluation remain subsequent steps rather than inferred successes.
