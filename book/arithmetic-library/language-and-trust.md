@@ -92,7 +92,10 @@ a x_+ + b y_+ = g + a x_- + b y_-.
 $$
 
 This is less convenient than integer notation, but it remains honest about
-the underlying language.
+the underlying language. A conventional integer-coefficient Bézout statement
+is not representable with these natural-only terms; the four-natural balanced
+relation is a separately named, checked native theorem, not hidden integer
+syntax.
 
 ## Proof sharing is not a new arithmetic language
 
@@ -124,7 +127,7 @@ Names and hashes remain useful provenance data, but the checker never accepts
 them as evidence. See {doc}`Self-contained proof sharing <proof-sharing>` for
 the full trust and erasure contract.
 
-## Where conservative expansion stops
+## How conservative expansion reaches factorization
 
 The Fundamental Theorem of Arithmetic quantifies over an arbitrary finite
 collection of primes and compares factorizations up to permutation or
@@ -181,11 +184,14 @@ The theorem `bounded_beta_crt_for_existing_code` projects only the third part
 at the full bound. It is extensionally trivial—choosing $z=b$ already gives
 the advertised congruences—because the residues in its premise are decoded
 from $b$. It is therefore not an arbitrary finite-sequence recoding or
-extension theorem. What remains is independent finite-prefix specification
-and recoding, exact beta-coded prefix-product recurrence and trace
-functionality, the required product bounds, and the factorization links.
+extension theorem. The later checked exclusive-prefix invariant and
+`beta_prefix_extend` cross that separate gate. Exact β-coded prefix-product
+trace existence and functionality then supply a relational Product API;
+greatest-prime-divisor descent and canonical append prove existence, while
+Euclid, sorted last-factor matching, and cancellation prove extensional
+uniqueness.
 
-The native route is therefore explicit:
+The now-checked native route is:
 
 1. add untrusted named-predicate expansion for the formulas already
    expressible;
@@ -199,14 +205,25 @@ The native route is therefore explicit:
    the generic CRT fold step, and the now-checked bounded prefix invariant;
    prove independent finite-prefix recoding and extension, exact beta-coded
    prefix-product traces and bounds, and their factorization relations;
-5. state and check factorization existence and extensional uniqueness.
+5. check factorization existence, extensional uniqueness, and their exact
+   combined FTA statement.
 
-A separate Lean companion already checks the conventional finite-list FTA,
-including uniqueness up to permutation and an exact axiom audit. It fixes the
-target statement but grants no Peano authority. Until steps 3–5 produce closed
-PA certificates, FTA remains absent from `pa lib` rather than becoming a
-pretend `TheoremSpec`. Prime-divisor existence closes an arithmetic milestone;
-it does not supply finite products or factor-sequence comparison by itself.
+A separate Lean companion checks the conventional finite-list FTA, including
+uniqueness up to permutation and an exact axiom audit. It grants no Peano
+authority. Steps 3–5 now have closed native PA certificates at this integration
+checkpoint. Existence checks at 43,973 nodes/depth 98; uniqueness at
+29,789/depth 82; their exact conjunction checks at 73,767 nodes/depth 99 with
+2,184 self-contained Cuts. The combined certificate SHA-256 is
+`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+It passes empty-context and full live-use checking under the
+100,000-node/depth-256 cap, uses only PA1–PA6 and induction, and contains no
+DNE. Runtime integration is complete.
+
+The theorem remains conservative in a precise sense: it adds no primitive
+list, multiset, Product function, Prime predicate, or factorization atom.
+Because β encodings are non-unique, its uniqueness clause compares lengths and
+decoded entries instead of raw codes. The independently checked
+`prime_unbounded` endpoint is not required for FTA.
 
 ## The trust path
 

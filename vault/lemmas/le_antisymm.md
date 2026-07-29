@@ -19,7 +19,7 @@ forall n m. n <= m -> m <= n -> n = m
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[beta_canonical_last_factors_equal]]
 
 ## Verification record
 

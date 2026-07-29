@@ -19,7 +19,7 @@ forall a d. (exists x. 1 = d * x) -> (exists y. a = d * y) -> d = 1
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[bounded_beta_exclusive_recode_invariant]]
 
 ## Verification record
 

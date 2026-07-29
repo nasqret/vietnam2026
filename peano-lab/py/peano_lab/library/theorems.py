@@ -4499,6 +4499,119 @@ THEOREMS: tuple[TheoremSpec, ...] = (
 )
 
 
+# Euclid's common-multiple argument constructs a prime strictly above every
+# natural.  The expanded statement and certificate remain constructive and use
+# no primitive primality or factorial symbol.
+PRIME_UNBOUNDED_THEOREMS: tuple[TheoremSpec, ...] = (
+    TheoremSpec(
+        "prime_unbounded",
+        (
+            "forall n. exists p. (exists k. k + S n = p) /\\ "
+            "(~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1)"
+        ),
+        (
+            "bounded_common_multiple_exists",
+            "prime_divisor_exists",
+            "prime_nonzero",
+            "nonzero_is_succ",
+            "add_succ_left",
+            "add_comm",
+            "divides_remainder",
+            "divisor_one",
+            "mul_one",
+            "le_or_lt",
+        ),
+        (
+            "intro n",
+            "specialize bounded_common_multiple_exists n",
+            "have hcommon : exists c. (~(c = 0) /\\ forall t. (exists h. S t + S h = S n) -> exists k. c = S t * k)",
+            "exact bounded_common_multiple_exists",
+            "cases hcommon",
+            "cases hcommon_witness",
+            "have hsucc_not_one : ~(S x = 1)",
+            "intro hsucc_one",
+            "apply hcommon_witness_left",
+            "apply PA2",
+            "exact hsucc_one",
+            "have hprime_divisor : exists p. ((~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1) /\\ exists k. S x = p * k)",
+            "specialize prime_divisor_exists (S x)",
+            "apply prime_divisor_exists",
+            "intro hsucc_zero",
+            "apply PA1",
+            "exact hsucc_zero",
+            "exact hsucc_not_one",
+            "cases hprime_divisor",
+            "cases hprime_divisor_witness",
+            "exists x1",
+            "split",
+            "have horder : (exists k. k + x1 = n) \\/ exists k. k + S n = x1",
+            "specialize le_or_lt x1",
+            "specialize le_or_lt n",
+            "exact le_or_lt",
+            "cases horder",
+            "exfalso",
+            "have hp_nonzero : ~(x1 = 0)",
+            "intro hp_zero",
+            "specialize prime_nonzero x1",
+            "apply prime_nonzero",
+            "exact hprime_divisor_witness_left",
+            "exact hp_zero",
+            "have hp_succ : exists t. x1 = S t",
+            "specialize nonzero_is_succ x1",
+            "apply nonzero_is_succ",
+            "exact hp_nonzero",
+            "cases hp_succ",
+            "have hp_bounded : exists h. S x2 + S h = S n",
+            "cases horder_left",
+            "exists x3",
+            "rewrite hp_succ_witness at horder_left_witness",
+            "trans S (x2 + S x3)",
+            "apply add_succ_left",
+            "trans S (S (x2 + x3))",
+            "congr",
+            "apply PA4",
+            "trans S (S (x3 + x2))",
+            "congr",
+            "congr",
+            "apply add_comm",
+            "trans S (x3 + S x2)",
+            "congr",
+            "symm",
+            "apply PA4",
+            "congr",
+            "exact horder_left_witness",
+            "have hp_divides_common : exists k. x = x1 * k",
+            "specialize hcommon_witness_right x2",
+            "have hpred_divides : exists k. x = S x2 * k",
+            "apply hcommon_witness_right",
+            "exact hp_bounded",
+            "rewrite hp_succ_witness",
+            "exact hpred_divides",
+            "have hp_divides_one : exists w. 1 = x1 * w",
+            "specialize divides_remainder x1",
+            "specialize divides_remainder (S x)",
+            "specialize divides_remainder x",
+            "specialize divides_remainder 1",
+            "specialize divides_remainder 1",
+            "apply divides_remainder",
+            "exact hprime_divisor_witness_right",
+            "exact hp_divides_common",
+            "specialize mul_one x",
+            "rewrite mul_one",
+            "simp",
+            "cases hprime_divisor_witness_left",
+            "apply hprime_divisor_witness_left_left",
+            "specialize divisor_one x1",
+            "apply divisor_one",
+            "exact hp_divides_one",
+            "exact horder_right",
+            "exact hprime_divisor_witness_left",
+        ),
+        "Euclid's common-multiple argument constructs a prime above every natural.",
+    ),
+)
+
+
 # Constructive Chinese-remainder layer.  Balanced congruence and the
 # four-natural Bezout identity keep every witness inside the unchanged
 # first-order natural-number language; no subtraction, quotient function, or
@@ -5381,6 +5494,1703 @@ BINARY_CRT_THEOREMS: tuple[TheoremSpec, ...] = (
 )
 
 
+# Exclusive-prefix recoding keeps enough certificate headroom to construct an
+# exact beta-coded prefix-product trace.  ``beta_product_exists`` exposes the
+# resulting Product relation.  The following audited layer proves functionality
+# and endpoint laws; no theorem here claims that decoded entries are prime or
+# sorted.
+BETA_PREFIX_PRODUCT_THEOREMS: tuple[TheoremSpec, ...] = (TheoremSpec(name='beta_value_le_code',
+             statement='forall b c i x. ((exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * '
+                       'S ((S i) * c) + x) -> exists h. h + x = b',
+             dependencies=(),
+             script=('intro b',
+                     'intro c',
+                     'intro i',
+                     'intro x',
+                     'intro hat',
+                     'cases hat',
+                     'cases hat_right',
+                     'exists x1 * S ((S i) * c)',
+                     'symm',
+                     'exact hat_right_witness'),
+             summary='Every decoded beta value is at most its code.'),
+ TheoremSpec(name='base_le_beta_modulus',
+             statement='forall c i. exists h. h + c = S ((S i) * c)',
+             dependencies=('le_add_left', 'mul_succ_left', 'le_succ'),
+             script=('intro c',
+                     'intro i',
+                     'have hproduct : exists h. h + c = S i * c',
+                     'specialize mul_succ_left i',
+                     'specialize mul_succ_left c',
+                     'rewrite mul_succ_left',
+                     'specialize le_add_left c',
+                     'specialize le_add_left (i * c)',
+                     'exact le_add_left',
+                     'specialize le_succ c',
+                     'specialize le_succ (S i * c)',
+                     'apply le_succ',
+                     'exact hproduct'),
+             summary='A beta base is at most every beta modulus over that base.'),
+ TheoremSpec(name='le_scaled_nonzero',
+             statement='forall C B. ~(C = 0) -> exists h. h + B = C * B',
+             dependencies=('one_le_of_ne_zero', 'mul_le_mul_right', 'one_mul'),
+             script=('intro C',
+                     'intro B',
+                     'intro hC',
+                     'have h1C : exists h. h + 1 = C',
+                     'specialize one_le_of_ne_zero C',
+                     'apply one_le_of_ne_zero',
+                     'exact hC',
+                     'have hscaled : exists h. h + 1 * B = C * B',
+                     'specialize mul_le_mul_right 1',
+                     'specialize mul_le_mul_right C',
+                     'specialize mul_le_mul_right B',
+                     'apply mul_le_mul_right',
+                     'exact h1C',
+                     'specialize one_mul B',
+                     'rewrite one_mul at hscaled',
+                     'exact hscaled'),
+             summary='Scaling by a nonzero natural does not decrease a natural.'),
+ TheoremSpec(name='scaled_bounded_common_multiple',
+             statement='forall N C B. (forall t. (exists h. S t + S h = S N) -> exists q. C = S t '
+                       '* q) -> forall t. (exists h. S t + S h = S N) -> exists q. C * B = S t * q',
+             dependencies=('multiple_mul_right',),
+             script=('intro N',
+                     'intro C',
+                     'intro B',
+                     'intro hcm',
+                     'intro t',
+                     'intro ht',
+                     'have htC : exists q. C = S t * q',
+                     'specialize hcm t',
+                     'apply hcm',
+                     'exact ht',
+                     'specialize multiple_mul_right (S t)',
+                     'specialize multiple_mul_right C',
+                     'specialize multiple_mul_right B',
+                     'apply multiple_mul_right',
+                     'exact htC'),
+             summary='A right multiple of a bounded common multiple remains such a common '
+                     'multiple.'),
+ TheoremSpec(name='beta_value_lt_scaled_base',
+             statement='forall b c i x C s j. ((exists h. h + S x = S ((S i) * c)) /\\ exists q. b '
+                       '= q * S ((S i) * c) + x) -> ~(C = 0) -> exists h. h + S x = S ((S j) * (C '
+                       '* S (b + s)))',
+             dependencies=('beta_value_le_code',
+                           'le_add_right',
+                           'succ_le_succ',
+                           'le_trans',
+                           'le_scaled_nonzero',
+                           'base_le_beta_modulus'),
+             script=('intro b',
+                     'intro c',
+                     'intro i',
+                     'intro x',
+                     'intro C',
+                     'intro s',
+                     'intro j',
+                     'intro hat',
+                     'intro hC',
+                     'have hxb : exists h. h + x = b',
+                     'specialize beta_value_le_code b',
+                     'specialize beta_value_le_code c',
+                     'specialize beta_value_le_code i',
+                     'specialize beta_value_le_code x',
+                     'apply beta_value_le_code',
+                     'exact hat',
+                     'have hbs : exists h. h + b = b + s',
+                     'specialize le_add_right b',
+                     'specialize le_add_right s',
+                     'exact le_add_right',
+                     'have hxs : exists h. h + x = b + s',
+                     'specialize le_trans x',
+                     'specialize le_trans b',
+                     'specialize le_trans (b + s)',
+                     'apply le_trans',
+                     'exact hxb',
+                     'exact hbs',
+                     'have hsx : exists h. h + S x = S (b + s)',
+                     'specialize succ_le_succ x',
+                     'specialize succ_le_succ (b + s)',
+                     'apply succ_le_succ',
+                     'exact hxs',
+                     'have hscale : exists h. h + S (b + s) = C * S (b + s)',
+                     'specialize le_scaled_nonzero C',
+                     'specialize le_scaled_nonzero (S (b + s))',
+                     'apply le_scaled_nonzero',
+                     'exact hC',
+                     'have hxbase : exists h. h + S x = C * S (b + s)',
+                     'specialize le_trans (S x)',
+                     'specialize le_trans (S (b + s))',
+                     'specialize le_trans (C * S (b + s))',
+                     'apply le_trans',
+                     'exact hsx',
+                     'exact hscale',
+                     'have hmod : exists h. h + C * S (b + s) = S ((S j) * (C * S (b + s)))',
+                     'specialize base_le_beta_modulus (C * S (b + s))',
+                     'specialize base_le_beta_modulus j',
+                     'exact base_le_beta_modulus',
+                     'specialize le_trans (S x)',
+                     'specialize le_trans (C * S (b + s))',
+                     'specialize le_trans (S ((S j) * (C * S (b + s))))',
+                     'apply le_trans',
+                     'exact hxbase',
+                     'exact hmod'),
+             summary='An old beta value fits every modulus after a constructive scaled-base '
+                     'rebase.'),
+ TheoremSpec(name='new_value_lt_scaled_base',
+             statement='forall b s C j. ~(C = 0) -> exists h. h + S s = S ((S j) * (C * S (b + '
+                       's)))',
+             dependencies=('le_add_left',
+                           'succ_le_succ',
+                           'le_scaled_nonzero',
+                           'le_trans',
+                           'base_le_beta_modulus'),
+             script=('intro b',
+                     'intro s',
+                     'intro C',
+                     'intro j',
+                     'intro hC',
+                     'have hsb : exists h. h + s = b + s',
+                     'specialize le_add_left s',
+                     'specialize le_add_left b',
+                     'exact le_add_left',
+                     'have hss : exists h. h + S s = S (b + s)',
+                     'specialize succ_le_succ s',
+                     'specialize succ_le_succ (b + s)',
+                     'apply succ_le_succ',
+                     'exact hsb',
+                     'have hscale : exists h. h + S (b + s) = C * S (b + s)',
+                     'specialize le_scaled_nonzero C',
+                     'specialize le_scaled_nonzero (S (b + s))',
+                     'apply le_scaled_nonzero',
+                     'exact hC',
+                     'have hsbase : exists h. h + S s = C * S (b + s)',
+                     'specialize le_trans (S s)',
+                     'specialize le_trans (S (b + s))',
+                     'specialize le_trans (C * S (b + s))',
+                     'apply le_trans',
+                     'exact hss',
+                     'exact hscale',
+                     'have hmod : exists h. h + C * S (b + s) = S ((S j) * (C * S (b + s)))',
+                     'specialize base_le_beta_modulus (C * S (b + s))',
+                     'specialize base_le_beta_modulus j',
+                     'exact base_le_beta_modulus',
+                     'specialize le_trans (S s)',
+                     'specialize le_trans (C * S (b + s))',
+                     'specialize le_trans (S ((S j) * (C * S (b + s))))',
+                     'apply le_trans',
+                     'exact hsbase',
+                     'exact hmod'),
+             summary='The appended value fits every modulus after the same constructive '
+                     'scaled-base rebase.'),
+ TheoremSpec(name='beta_exclusive_accumulated_product_step',
+             statement='forall N c k P. (forall t. (exists h. S t + S h = S N) -> exists q. c = S '
+                       't * q) -> (exists h. h + S k = N) -> ~(P = 0) -> (forall i. (exists h. h + '
+                       'S i = k) -> exists q. P = S ((S i) * c) * q) -> (forall j. (exists g. g + '
+                       'k = j) -> (exists h. h + j = N) -> forall d. (exists u. P = d * u) -> '
+                       '(exists v. S ((S j) * c) = d * v) -> d = 1) -> (~(P * S ((S k) * c) = 0) '
+                       '/\\ ((forall i. (exists h. h + S i = S k) -> exists q. P * S ((S k) * c) = '
+                       'S ((S i) * c) * q) /\\ forall j. (exists g. g + S k = j) -> (exists h. h + '
+                       'j = N) -> forall d. (exists u. P * S ((S k) * c) = d * u) -> (exists v. S '
+                       '((S j) * c) = d * v) -> d = 1))',
+             dependencies=('mul_ne_zero',
+                           'right_factor_divides_product',
+                           'beta_modulus_nonzero',
+                           'le_of_succ_le_succ',
+                           'le_eq_or_lt',
+                           'multiple_mul_right',
+                           'le_succ_self',
+                           'le_trans',
+                           'lt_to_le',
+                           'lt_irrefl_expanded',
+                           'beta_moduli_pairwise_coprime_bounded',
+                           'coprime_mul_left'),
+             script=('intro N',
+                     'intro c',
+                     'intro k',
+                     'intro P',
+                     'intro hcm',
+                     'intro hkN',
+                     'intro hP',
+                     'intro hdiv',
+                     'intro hfuture',
+                     'have hnew : ~(S ((S k) * c) = 0)',
+                     'specialize beta_modulus_nonzero c',
+                     'specialize beta_modulus_nonzero k',
+                     'exact beta_modulus_nonzero',
+                     'split',
+                     'specialize mul_ne_zero P',
+                     'specialize mul_ne_zero (S ((S k) * c))',
+                     'intro hzero',
+                     'apply mul_ne_zero',
+                     'exact hP',
+                     'exact hnew',
+                     'exact hzero',
+                     'split',
+                     'intro i',
+                     'intro hi',
+                     'have hik : exists r. r + i = k',
+                     'specialize le_of_succ_le_succ i',
+                     'specialize le_of_succ_le_succ k',
+                     'apply le_of_succ_le_succ',
+                     'exact hi',
+                     'have hsplit : i = k \\/ exists r. r + S i = k',
+                     'specialize le_eq_or_lt i',
+                     'specialize le_eq_or_lt k',
+                     'apply le_eq_or_lt',
+                     'exact hik',
+                     'cases hsplit',
+                     'rewrite hsplit_left',
+                     'specialize right_factor_divides_product P',
+                     'specialize right_factor_divides_product (S ((S k) * c))',
+                     'exact right_factor_divides_product',
+                     'have hiP : exists q. P = S ((S i) * c) * q',
+                     'specialize hdiv i',
+                     'apply hdiv',
+                     'exact hsplit_right',
+                     'specialize multiple_mul_right (S ((S i) * c))',
+                     'specialize multiple_mul_right P',
+                     'specialize multiple_mul_right (S ((S k) * c))',
+                     'apply multiple_mul_right',
+                     'exact hiP',
+                     'intro j',
+                     'intro hSkj',
+                     'intro hjN',
+                     'have hkj : exists r. r + k = j',
+                     'have hkSk : exists r. r + k = S k',
+                     'specialize le_succ_self k',
+                     'exact le_succ_self',
+                     'specialize le_trans k',
+                     'specialize le_trans (S k)',
+                     'specialize le_trans j',
+                     'apply le_trans',
+                     'exact hkSk',
+                     'exact hSkj',
+                     'have hPj : forall d. (exists u. P = d * u) -> (exists v. S ((S j) * c) = d * '
+                     'v) -> d = 1',
+                     'specialize hfuture j',
+                     'apply hfuture',
+                     'exact hkj',
+                     'exact hjN',
+                     'have hneq : ~(k = j)',
+                     'intro heq',
+                     'rewrite <- heq at hSkj',
+                     'specialize lt_irrefl_expanded k',
+                     'apply lt_irrefl_expanded',
+                     'exact hSkj',
+                     'have hkbound : exists r. r + k = N',
+                     'specialize lt_to_le k',
+                     'specialize lt_to_le N',
+                     'apply lt_to_le',
+                     'exact hkN',
+                     'have hpairs : forall i j. ~(i = j) -> (exists hi. hi + i = N) -> (exists hj. '
+                     'hj + j = N) -> forall d. (exists u. S ((S i) * c) = d * u) -> (exists v. S '
+                     '((S j) * c) = d * v) -> d = 1',
+                     'specialize beta_moduli_pairwise_coprime_bounded N',
+                     'specialize beta_moduli_pairwise_coprime_bounded c',
+                     'apply beta_moduli_pairwise_coprime_bounded',
+                     'exact hcm',
+                     'have hnewj : forall d. (exists u. S ((S k) * c) = d * u) -> (exists v. S ((S '
+                     'j) * c) = d * v) -> d = 1',
+                     'specialize hpairs k',
+                     'specialize hpairs j',
+                     'apply hpairs',
+                     'exact hneq',
+                     'exact hkbound',
+                     'exact hjN',
+                     'specialize coprime_mul_left P',
+                     'specialize coprime_mul_left (S ((S k) * c))',
+                     'specialize coprime_mul_left (S ((S j) * c))',
+                     'apply coprime_mul_left',
+                     'exact hPj',
+                     'exact hnewj'),
+             summary='Extend the accumulated target-modulus product for an exclusive prefix.'),
+ TheoremSpec(name='beta_exclusive_recode_congruence_step',
+             statement='forall N c b e k P z. (exists h. h + S k = N) -> ~(P = 0) -> (forall i. '
+                       '(exists h. h + S i = k) -> exists q. P = S ((S i) * c) * q) -> (forall i '
+                       'a. (exists h. h + S i = k) -> ((exists h. h + S a = S ((S i) * e)) /\\ '
+                       'exists q. b = q * S ((S i) * e) + a) -> exists u v. z + S ((S i) * c) * u '
+                       '= a + S ((S i) * c) * v) -> (forall j. (exists g. g + k = j) -> (exists h. '
+                       'h + j = N) -> forall d. (exists u. P = d * u) -> (exists v. S ((S j) * c) '
+                       '= d * v) -> d = 1) -> exists z2. forall i a. (exists h. h + S i = S k) -> '
+                       '((exists h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S ((S i) * e) + '
+                       'a) -> exists u v. z2 + S ((S i) * c) * u = a + S ((S i) * c) * v',
+             dependencies=('beta_modulus_nonzero',
+                           'le_refl',
+                           'lt_to_le',
+                           'binary_crt_fold_step',
+                           'beta_at_exists',
+                           'beta_at_unique',
+                           'le_of_succ_le_succ',
+                           'le_eq_or_lt'),
+             script=('intro N',
+                     'intro c',
+                     'intro b',
+                     'intro e',
+                     'intro k',
+                     'intro P',
+                     'intro z',
+                     'intro hkN',
+                     'intro hP',
+                     'intro hdiv',
+                     'intro hcong',
+                     'intro hfuture',
+                     'have hnew : ~(S ((S k) * c) = 0)',
+                     'specialize beta_modulus_nonzero c',
+                     'specialize beta_modulus_nonzero k',
+                     'exact beta_modulus_nonzero',
+                     'have hkbound : exists h. h + k = N',
+                     'specialize lt_to_le k',
+                     'specialize lt_to_le N',
+                     'apply lt_to_le',
+                     'exact hkN',
+                     'have hcop : forall d. (exists u. P = d * u) -> (exists v. S ((S k) * c) = d '
+                     '* v) -> d = 1',
+                     'specialize hfuture k',
+                     'apply hfuture',
+                     'specialize le_refl k',
+                     'exact le_refl',
+                     'exact hkbound',
+                     'have hvalue : exists a. ((exists h. h + S a = S ((S k) * e)) /\\ exists q. b '
+                     '= q * S ((S k) * e) + a)',
+                     'specialize beta_at_exists b',
+                     'specialize beta_at_exists e',
+                     'specialize beta_at_exists k',
+                     'exact beta_at_exists',
+                     'cases hvalue',
+                     'have hfold : exists z2. ((forall m a. (exists q. P = m * q) -> (exists u v. '
+                     'z + m * u = a + m * v) -> exists r s. z2 + m * r = a + m * s) /\\ exists q '
+                     'r. z2 + S ((S k) * c) * q = x + S ((S k) * c) * r)',
+                     'specialize binary_crt_fold_step P',
+                     'specialize binary_crt_fold_step (S ((S k) * c))',
+                     'specialize binary_crt_fold_step z',
+                     'specialize binary_crt_fold_step x',
+                     'apply binary_crt_fold_step',
+                     'exact hP',
+                     'exact hnew',
+                     'exact hcop',
+                     'cases hfold',
+                     'cases hfold_witness',
+                     'exists x1',
+                     'intro i',
+                     'intro a',
+                     'intro hi',
+                     'intro hati',
+                     'have hik : exists r. r + i = k',
+                     'specialize le_of_succ_le_succ i',
+                     'specialize le_of_succ_le_succ k',
+                     'apply le_of_succ_le_succ',
+                     'exact hi',
+                     'have hsplit : i = k \\/ exists r. r + S i = k',
+                     'specialize le_eq_or_lt i',
+                     'specialize le_eq_or_lt k',
+                     'apply le_eq_or_lt',
+                     'exact hik',
+                     'cases hsplit',
+                     'have hati_new : ((exists h. h + S a = S ((S k) * e)) /\\ exists q. b = q * S '
+                     '((S k) * e) + a)',
+                     'rewrite <- hsplit_left',
+                     'rewrite <- hsplit_left',
+                     'exact hati',
+                     'have haeq : a = x',
+                     'specialize beta_at_unique b',
+                     'specialize beta_at_unique e',
+                     'specialize beta_at_unique k',
+                     'specialize beta_at_unique a',
+                     'specialize beta_at_unique x',
+                     'apply beta_at_unique',
+                     'exact hati_new',
+                     'exact hvalue_witness',
+                     'rewrite hsplit_left',
+                     'rewrite hsplit_left',
+                     'rewrite haeq',
+                     'exact hfold_witness_right',
+                     'have hmiP : exists q. P = S ((S i) * c) * q',
+                     'specialize hdiv i',
+                     'apply hdiv',
+                     'exact hsplit_right',
+                     'have hzold : exists u v. z + S ((S i) * c) * u = a + S ((S i) * c) * v',
+                     'specialize hcong i',
+                     'specialize hcong a',
+                     'apply hcong',
+                     'exact hsplit_right',
+                     'exact hati',
+                     'specialize hfold_witness_left (S ((S i) * c))',
+                     'specialize hfold_witness_left a',
+                     'apply hfold_witness_left',
+                     'exact hmiP',
+                     'exact hzold'),
+             summary='Add the next source value to a target-base CRT code for an exclusive prefix.'),
+ TheoremSpec(name='beta_exclusive_recode_invariant_step',
+             statement='forall N c b e k P z. (forall t. (exists h. S t + S h = S N) -> exists q. '
+                       'c = S t * q) -> (exists h. h + S k = N) -> ~(P = 0) -> (forall i. (exists '
+                       'h. h + S i = k) -> exists q. P = S ((S i) * c) * q) -> (forall i a. '
+                       '(exists h. h + S i = k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists '
+                       'q. b = q * S ((S i) * e) + a) -> exists u v. z + S ((S i) * c) * u = a + S '
+                       '((S i) * c) * v) -> (forall j. (exists g. g + k = j) -> (exists h. h + j = '
+                       'N) -> forall d. (exists u. P = d * u) -> (exists v. S ((S j) * c) = d * v) '
+                       '-> d = 1) -> exists z2. (~(P * S ((S k) * c) = 0) /\\ ((forall i. (exists '
+                       'h. h + S i = S k) -> exists q. P * S ((S k) * c) = S ((S i) * c) * q) /\\ '
+                       '((forall i a. (exists h. h + S i = S k) -> ((exists h. h + S a = S ((S i) '
+                       '* e)) /\\ exists q. b = q * S ((S i) * e) + a) -> exists u v. z2 + S ((S '
+                       'i) * c) * u = a + S ((S i) * c) * v) /\\ forall j. (exists g. g + S k = j) '
+                       '-> (exists h. h + j = N) -> forall d. (exists u. P * S ((S k) * c) = d * '
+                       'u) -> (exists v. S ((S j) * c) = d * v) -> d = 1)))',
+             dependencies=('beta_exclusive_accumulated_product_step',
+                           'beta_exclusive_recode_congruence_step'),
+             script=('intro N',
+                     'intro c',
+                     'intro b',
+                     'intro e',
+                     'intro k',
+                     'intro P',
+                     'intro z',
+                     'intro hcm',
+                     'intro hkN',
+                     'intro hP',
+                     'intro hdiv',
+                     'intro hcong',
+                     'intro hfuture',
+                     'have hproduct : (~(P * S ((S k) * c) = 0) /\\ ((forall i. (exists h. h + S i '
+                     '= S k) -> exists q. P * S ((S k) * c) = S ((S i) * c) * q) /\\ forall j. '
+                     '(exists g. g + S k = j) -> (exists h. h + j = N) -> forall d. (exists u. P * '
+                     'S ((S k) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1))',
+                     'specialize beta_exclusive_accumulated_product_step N',
+                     'specialize beta_exclusive_accumulated_product_step c',
+                     'specialize beta_exclusive_accumulated_product_step k',
+                     'specialize beta_exclusive_accumulated_product_step P',
+                     'apply beta_exclusive_accumulated_product_step',
+                     'exact hcm',
+                     'exact hkN',
+                     'exact hP',
+                     'exact hdiv',
+                     'exact hfuture',
+                     'have hcodes : exists z2. forall i a. (exists h. h + S i = S k) -> ((exists '
+                     'h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S ((S i) * e) + a) -> '
+                     'exists u v. z2 + S ((S i) * c) * u = a + S ((S i) * c) * v',
+                     'specialize beta_exclusive_recode_congruence_step N',
+                     'specialize beta_exclusive_recode_congruence_step c',
+                     'specialize beta_exclusive_recode_congruence_step b',
+                     'specialize beta_exclusive_recode_congruence_step e',
+                     'specialize beta_exclusive_recode_congruence_step k',
+                     'specialize beta_exclusive_recode_congruence_step P',
+                     'specialize beta_exclusive_recode_congruence_step z',
+                     'apply beta_exclusive_recode_congruence_step',
+                     'exact hkN',
+                     'exact hP',
+                     'exact hdiv',
+                     'exact hcong',
+                     'exact hfuture',
+                     'cases hcodes',
+                     'cases hproduct',
+                     'cases hproduct_right',
+                     'exists x',
+                     'split',
+                     'exact hproduct_left',
+                     'split',
+                     'exact hproduct_right_left',
+                     'split',
+                     'exact hcodes_witness',
+                     'exact hproduct_right_right'),
+             summary='Combine modulus-product and cross-base congruence updates for an exclusive '
+                     'prefix.'),
+ TheoremSpec(name='bounded_beta_exclusive_recode_invariant',
+             statement='forall N c b e. (forall t. (exists h. S t + S h = S N) -> exists q. c = S '
+                       't * q) -> forall k. (exists h. h + k = N) -> exists P z. (~(P = 0) /\\ '
+                       '((forall i. (exists h. h + S i = k) -> exists q. P = S ((S i) * c) * q) '
+                       '/\\ ((forall i a. (exists h. h + S i = k) -> ((exists h. h + S a = S ((S '
+                       'i) * e)) /\\ exists q. b = q * S ((S i) * e) + a) -> exists u v. z + S ((S '
+                       'i) * c) * u = a + S ((S i) * c) * v) /\\ forall j. (exists g. g + k = j) '
+                       '-> (exists h. h + j = N) -> forall d. (exists u. P = d * u) -> (exists v. '
+                       'S ((S j) * c) = d * v) -> d = 1)))',
+             dependencies=('succ_ne_zero',
+                           'add_eq_zero_right',
+                           'coprime_one_left',
+                           'le_succ_self',
+                           'le_trans',
+                           'beta_exclusive_recode_invariant_step'),
+             script=('intro N',
+                     'intro c',
+                     'intro b',
+                     'intro e',
+                     'intro hcm',
+                     'induction k',
+                     'intro hkN',
+                     'exists 1',
+                     'exists 0',
+                     'split',
+                     'specialize succ_ne_zero 0',
+                     'exact succ_ne_zero',
+                     'split',
+                     'intro i',
+                     'intro hi',
+                     'exfalso',
+                     'cases hi',
+                     'have hsi0 : S i = 0',
+                     'specialize add_eq_zero_right x',
+                     'specialize add_eq_zero_right (S i)',
+                     'apply add_eq_zero_right',
+                     'exact hi_witness',
+                     'specialize succ_ne_zero i',
+                     'apply succ_ne_zero',
+                     'exact hsi0',
+                     'split',
+                     'intro i',
+                     'intro a',
+                     'intro hi',
+                     'intro hati',
+                     'exfalso',
+                     'cases hi',
+                     'have hsi0 : S i = 0',
+                     'specialize add_eq_zero_right x',
+                     'specialize add_eq_zero_right (S i)',
+                     'apply add_eq_zero_right',
+                     'exact hi_witness',
+                     'specialize succ_ne_zero i',
+                     'apply succ_ne_zero',
+                     'exact hsi0',
+                     'intro j',
+                     'intro h0j',
+                     'intro hjN',
+                     'intro d',
+                     'intro h1',
+                     'intro hm',
+                     'specialize coprime_one_left (S ((S j) * c))',
+                     'specialize coprime_one_left d',
+                     'apply coprime_one_left',
+                     'exact h1',
+                     'exact hm',
+                     'intro hkN',
+                     'have hkprev : exists h. h + k = N',
+                     'have hkstep : exists h. h + k = S k',
+                     'specialize le_succ_self k',
+                     'exact le_succ_self',
+                     'specialize le_trans k',
+                     'specialize le_trans (S k)',
+                     'specialize le_trans N',
+                     'apply le_trans',
+                     'exact hkstep',
+                     'exact hkN',
+                     'have hprev : exists P z. (~(P = 0) /\\ ((forall i. (exists h. h + S i = k) '
+                     '-> exists q. P = S ((S i) * c) * q) /\\ ((forall i a. (exists h. h + S i = '
+                     'k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S ((S i) * '
+                     'e) + a) -> exists u v. z + S ((S i) * c) * u = a + S ((S i) * c) * v) /\\ '
+                     'forall j. (exists g. g + k = j) -> (exists h. h + j = N) -> forall d. '
+                     '(exists u. P = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1)))',
+                     'apply IH',
+                     'exact hkprev',
+                     'cases hprev',
+                     'cases hprev_witness',
+                     'cases hprev_witness_witness',
+                     'cases hprev_witness_witness_right',
+                     'cases hprev_witness_witness_right_right',
+                     'have hnext : exists z2. (~(x * S ((S k) * c) = 0) /\\ ((forall i. (exists h. '
+                     'h + S i = S k) -> exists q. x * S ((S k) * c) = S ((S i) * c) * q) /\\ '
+                     '((forall i a. (exists h. h + S i = S k) -> ((exists h. h + S a = S ((S i) * '
+                     'e)) /\\ exists q. b = q * S ((S i) * e) + a) -> exists u v. z2 + S ((S i) * '
+                     'c) * u = a + S ((S i) * c) * v) /\\ forall j. (exists g. g + S k = j) -> '
+                     '(exists h. h + j = N) -> forall d. (exists u. x * S ((S k) * c) = d * u) -> '
+                     '(exists v. S ((S j) * c) = d * v) -> d = 1)))',
+                     'specialize beta_exclusive_recode_invariant_step N',
+                     'specialize beta_exclusive_recode_invariant_step c',
+                     'specialize beta_exclusive_recode_invariant_step b',
+                     'specialize beta_exclusive_recode_invariant_step e',
+                     'specialize beta_exclusive_recode_invariant_step k',
+                     'specialize beta_exclusive_recode_invariant_step x',
+                     'specialize beta_exclusive_recode_invariant_step x1',
+                     'apply beta_exclusive_recode_invariant_step',
+                     'exact hcm',
+                     'exact hkN',
+                     'exact hprev_witness_witness_left',
+                     'exact hprev_witness_witness_right_left',
+                     'exact hprev_witness_witness_right_right_left',
+                     'exact hprev_witness_witness_right_right_right',
+                     'cases hnext',
+                     'exists x * S ((S k) * c)',
+                     'exists x2',
+                     'exact hnext_witness'),
+             summary='Fold an empty-based, exclusive beta prefix into another base with append '
+                     'readiness.'),
+ TheoremSpec(name='beta_prefix_extend',
+             statement='forall k b e s. exists z c. (((exists h. h + S s = S ((S k) * c)) /\\ '
+                       'exists q. z = q * S ((S k) * c) + s) /\\ forall i a. (exists h. h + S i = '
+                       'k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S ((S i) '
+                       '* e) + a) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists q. z = q * S '
+                       '((S i) * c) + a))',
+             dependencies=('bounded_common_multiple_exists',
+                           'scaled_bounded_common_multiple',
+                           'bounded_beta_exclusive_recode_invariant',
+                           'le_refl',
+                           'beta_modulus_nonzero',
+                           'binary_crt_fold_step',
+                           'new_value_lt_scaled_base',
+                           'beta_value_lt_scaled_base',
+                           'beta_at_of_mod_eq_bound'),
+             script=('intro k',
+                     'intro b',
+                     'intro e',
+                     'intro s',
+                     'have hC : exists C. (~(C = 0) /\\ forall t. (exists h. S t + S h = S k) -> '
+                     'exists q. C = S t * q)',
+                     'specialize bounded_common_multiple_exists k',
+                     'exact bounded_common_multiple_exists',
+                     'cases hC',
+                     'cases hC_witness',
+                     'have hcm2 : forall t. (exists h. S t + S h = S k) -> exists q. x * S (b + s) '
+                     '= S t * q',
+                     'specialize scaled_bounded_common_multiple k',
+                     'specialize scaled_bounded_common_multiple x',
+                     'specialize scaled_bounded_common_multiple (S (b + s))',
+                     'apply scaled_bounded_common_multiple',
+                     'exact hC_witness_right',
+                     'have hall : forall n. (exists h. h + n = k) -> exists P z. (~(P = 0) /\\ '
+                     '((forall i. (exists h. h + S i = n) -> exists q. P = S ((S i) * (x * S (b + '
+                     's))) * q) /\\ ((forall i a. (exists h. h + S i = n) -> ((exists h. h + S a = '
+                     'S ((S i) * e)) /\\ exists q. b = q * S ((S i) * e) + a) -> exists u v. z + S '
+                     '((S i) * (x * S (b + s))) * u = a + S ((S i) * (x * S (b + s))) * v) /\\ '
+                     'forall j. (exists g. g + n = j) -> (exists h. h + j = k) -> forall d. '
+                     '(exists u. P = d * u) -> (exists v. S ((S j) * (x * S (b + s))) = d * v) -> '
+                     'd = 1)))',
+                     'specialize bounded_beta_exclusive_recode_invariant k',
+                     'specialize bounded_beta_exclusive_recode_invariant (x * S (b + s))',
+                     'specialize bounded_beta_exclusive_recode_invariant b',
+                     'specialize bounded_beta_exclusive_recode_invariant e',
+                     'apply bounded_beta_exclusive_recode_invariant',
+                     'exact hcm2',
+                     'have hinv : exists P z. (~(P = 0) /\\ ((forall i. (exists h. h + S i = k) -> '
+                     'exists q. P = S ((S i) * (x * S (b + s))) * q) /\\ ((forall i a. (exists h. '
+                     'h + S i = k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S '
+                     '((S i) * e) + a) -> exists u v. z + S ((S i) * (x * S (b + s))) * u = a + S '
+                     '((S i) * (x * S (b + s))) * v) /\\ forall j. (exists g. g + k = j) -> '
+                     '(exists h. h + j = k) -> forall d. (exists u. P = d * u) -> (exists v. S ((S '
+                     'j) * (x * S (b + s))) = d * v) -> d = 1)))',
+                     'specialize hall k',
+                     'apply hall',
+                     'specialize le_refl k',
+                     'exact le_refl',
+                     'cases hinv',
+                     'cases hinv_witness',
+                     'cases hinv_witness_witness',
+                     'cases hinv_witness_witness_right',
+                     'cases hinv_witness_witness_right_right',
+                     'have hcop : forall d. (exists u. x1 = d * u) -> (exists v. S ((S k) * (x * S '
+                     '(b + s))) = d * v) -> d = 1',
+                     'specialize hinv_witness_witness_right_right_right k',
+                     'apply hinv_witness_witness_right_right_right',
+                     'specialize le_refl k',
+                     'exact le_refl',
+                     'specialize le_refl k',
+                     'exact le_refl',
+                     'have hnew0 : ~(S ((S k) * (x * S (b + s))) = 0)',
+                     'specialize beta_modulus_nonzero (x * S (b + s))',
+                     'specialize beta_modulus_nonzero k',
+                     'exact beta_modulus_nonzero',
+                     'have hfold : exists z2. ((forall m a. (exists q. x1 = m * q) -> (exists u v. '
+                     'x2 + m * u = a + m * v) -> exists r t. z2 + m * r = a + m * t) /\\ exists q '
+                     'r. z2 + S ((S k) * (x * S (b + s))) * q = s + S ((S k) * (x * S (b + s))) * '
+                     'r)',
+                     'specialize binary_crt_fold_step x1',
+                     'specialize binary_crt_fold_step (S ((S k) * (x * S (b + s))))',
+                     'specialize binary_crt_fold_step x2',
+                     'specialize binary_crt_fold_step s',
+                     'apply binary_crt_fold_step',
+                     'exact hinv_witness_witness_left',
+                     'exact hnew0',
+                     'exact hcop',
+                     'cases hfold',
+                     'cases hfold_witness',
+                     'exists x3',
+                     'exists x * S (b + s)',
+                     'split',
+                     'specialize beta_at_of_mod_eq_bound x3',
+                     'specialize beta_at_of_mod_eq_bound (x * S (b + s))',
+                     'specialize beta_at_of_mod_eq_bound k',
+                     'specialize beta_at_of_mod_eq_bound s',
+                     'apply beta_at_of_mod_eq_bound',
+                     'specialize new_value_lt_scaled_base b',
+                     'specialize new_value_lt_scaled_base s',
+                     'specialize new_value_lt_scaled_base x',
+                     'specialize new_value_lt_scaled_base k',
+                     'apply new_value_lt_scaled_base',
+                     'exact hC_witness_left',
+                     'exact hfold_witness_right',
+                     'intro i',
+                     'intro a',
+                     'intro hi',
+                     'intro hati',
+                     'have hmi : exists q. x1 = S ((S i) * (x * S (b + s))) * q',
+                     'specialize hinv_witness_witness_right_left i',
+                     'apply hinv_witness_witness_right_left',
+                     'exact hi',
+                     'have hzold : exists u v. x2 + S ((S i) * (x * S (b + s))) * u = a + S ((S i) '
+                     '* (x * S (b + s))) * v',
+                     'specialize hinv_witness_witness_right_right_left i',
+                     'specialize hinv_witness_witness_right_right_left a',
+                     'apply hinv_witness_witness_right_right_left',
+                     'exact hi',
+                     'exact hati',
+                     'have hznew : exists u v. x3 + S ((S i) * (x * S (b + s))) * u = a + S ((S i) '
+                     '* (x * S (b + s))) * v',
+                     'specialize hfold_witness_left (S ((S i) * (x * S (b + s))))',
+                     'specialize hfold_witness_left a',
+                     'apply hfold_witness_left',
+                     'exact hmi',
+                     'exact hzold',
+                     'specialize beta_at_of_mod_eq_bound x3',
+                     'specialize beta_at_of_mod_eq_bound (x * S (b + s))',
+                     'specialize beta_at_of_mod_eq_bound i',
+                     'specialize beta_at_of_mod_eq_bound a',
+                     'apply beta_at_of_mod_eq_bound',
+                     'specialize beta_value_lt_scaled_base b',
+                     'specialize beta_value_lt_scaled_base e',
+                     'specialize beta_value_lt_scaled_base i',
+                     'specialize beta_value_lt_scaled_base a',
+                     'specialize beta_value_lt_scaled_base x',
+                     'specialize beta_value_lt_scaled_base s',
+                     'specialize beta_value_lt_scaled_base i',
+                     'apply beta_value_lt_scaled_base',
+                     'exact hati',
+                     'exact hC_witness_left',
+                     'exact hznew'),
+             summary='Rebase an arbitrary decoded prefix and append one exact natural value.'),
+ TheoremSpec(name='beta_prefix_product_trace_exists',
+             statement='forall b c l. exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists '
+                       'q. u = q * S ((S 0) * v) + 1) /\\ forall i. (exists h. h + S i = l) -> '
+                       'exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * '
+                       'S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. '
+                       'u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S (S i)) * v)) '
+                       '/\\ exists q. u = q * S ((S (S i)) * v) + s) /\\ s = r * p))))',
+             dependencies=('beta_at_self_of_bound',
+                           'add_eq_zero_right',
+                           'succ_ne_zero',
+                           'beta_at_exists',
+                           'beta_prefix_extend',
+                           'zero_le',
+                           'succ_le_succ',
+                           'le_refl',
+                           'le_of_succ_le_succ',
+                           'le_eq_or_lt',
+                           'one_mul'),
+             script=('intro b',
+                     'intro c',
+                     'induction l',
+                     'exists 1',
+                     'exists 1',
+                     'split',
+                     'specialize beta_at_self_of_bound 1',
+                     'specialize beta_at_self_of_bound 0',
+                     'specialize beta_at_self_of_bound 1',
+                     'apply beta_at_self_of_bound',
+                     'specialize one_mul 1',
+                     'rewrite one_mul',
+                     'specialize le_refl 2',
+                     'exact le_refl',
+                     'intro i',
+                     'intro hi',
+                     'exfalso',
+                     'cases hi',
+                     'have hsi0 : S i = 0',
+                     'specialize add_eq_zero_right x',
+                     'specialize add_eq_zero_right (S i)',
+                     'apply add_eq_zero_right',
+                     'exact hi_witness',
+                     'specialize succ_ne_zero i',
+                     'apply succ_ne_zero',
+                     'exact hsi0',
+                     'have htrace : exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists '
+                     'q. u = q * S ((S 0) * v) + 1) /\\ forall i. (exists h. h + S i = l) -> '
+                     'exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S '
+                     '((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = '
+                     'q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S (S i)) * v)) /\\ '
+                     'exists q. u = q * S ((S (S i)) * v) + s) /\\ s = r * p))))',
+                     'apply IH',
+                     'cases htrace',
+                     'cases htrace_witness',
+                     'cases htrace_witness_witness',
+                     'have hfactor : exists p. ((exists h. h + S p = S ((S l) * c)) /\\ exists q. '
+                     'b = q * S ((S l) * c) + p)',
+                     'specialize beta_at_exists b',
+                     'specialize beta_at_exists c',
+                     'specialize beta_at_exists l',
+                     'exact beta_at_exists',
+                     'cases hfactor',
+                     'have hlast : exists r. ((exists h. h + S r = S ((S l) * x1)) /\\ exists q. x '
+                     '= q * S ((S l) * x1) + r)',
+                     'specialize beta_at_exists x',
+                     'specialize beta_at_exists x1',
+                     'specialize beta_at_exists l',
+                     'exact beta_at_exists',
+                     'cases hlast',
+                     'have hext : exists z v. (((exists h. h + S (x3 * x2) = S ((S (S l)) * v)) '
+                     '/\\ exists q. z = q * S ((S (S l)) * v) + (x3 * x2)) /\\ forall i a. (exists '
+                     'h. h + S i = S l) -> ((exists h. h + S a = S ((S i) * x1)) /\\ exists q. x = '
+                     'q * S ((S i) * x1) + a) -> ((exists h. h + S a = S ((S i) * v)) /\\ exists '
+                     'q. z = q * S ((S i) * v) + a))',
+                     'specialize beta_prefix_extend (S l)',
+                     'specialize beta_prefix_extend x',
+                     'specialize beta_prefix_extend x1',
+                     'specialize beta_prefix_extend (x3 * x2)',
+                     'exact beta_prefix_extend',
+                     'cases hext',
+                     'cases hext_witness',
+                     'cases hext_witness_witness',
+                     'exists x4',
+                     'exists x5',
+                     'split',
+                     'specialize hext_witness_witness_right 0',
+                     'specialize hext_witness_witness_right 1',
+                     'apply hext_witness_witness_right',
+                     'have h0 : exists h. h + S 0 = S l',
+                     'have hzero : exists h. h + 0 = l',
+                     'specialize zero_le l',
+                     'exact zero_le',
+                     'specialize succ_le_succ 0',
+                     'specialize succ_le_succ l',
+                     'apply succ_le_succ',
+                     'exact hzero',
+                     'exact h0',
+                     'exact htrace_witness_witness_left',
+                     'intro i',
+                     'intro hi',
+                     'have hil : exists h. h + i = l',
+                     'specialize le_of_succ_le_succ i',
+                     'specialize le_of_succ_le_succ l',
+                     'apply le_of_succ_le_succ',
+                     'exact hi',
+                     'have hsplit : i = l \\/ exists h. h + S i = l',
+                     'specialize le_eq_or_lt i',
+                     'specialize le_eq_or_lt l',
+                     'apply le_eq_or_lt',
+                     'exact hil',
+                     'cases hsplit',
+                     'exists x2',
+                     'exists x3',
+                     'exists x3 * x2',
+                     'split',
+                     'rewrite hsplit_left',
+                     'rewrite hsplit_left',
+                     'exact hfactor_witness',
+                     'split',
+                     'rewrite hsplit_left',
+                     'rewrite hsplit_left',
+                     'specialize hext_witness_witness_right l',
+                     'specialize hext_witness_witness_right x3',
+                     'apply hext_witness_witness_right',
+                     'specialize le_refl (S l)',
+                     'exact le_refl',
+                     'exact hlast_witness',
+                     'split',
+                     'rewrite hsplit_left',
+                     'rewrite hsplit_left',
+                     'exact hext_witness_witness_left',
+                     'refl',
+                     'have hold : exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists '
+                     'q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * x1)) /\\ '
+                     'exists q. x = q * S ((S i) * x1) + r) /\\ (((exists h. h + S s = S ((S (S '
+                     'i)) * x1)) /\\ exists q. x = q * S ((S (S i)) * x1) + s) /\\ s = r * p)))',
+                     'specialize htrace_witness_witness_right i',
+                     'apply htrace_witness_witness_right',
+                     'exact hsplit_right',
+                     'cases hold',
+                     'cases hold_witness',
+                     'cases hold_witness_witness',
+                     'cases hold_witness_witness_witness',
+                     'cases hold_witness_witness_witness_right',
+                     'cases hold_witness_witness_witness_right_right',
+                     'exists x6',
+                     'exists x7',
+                     'exists x8',
+                     'split',
+                     'exact hold_witness_witness_witness_left',
+                     'split',
+                     'specialize hext_witness_witness_right i',
+                     'specialize hext_witness_witness_right x7',
+                     'apply hext_witness_witness_right',
+                     'exact hi',
+                     'exact hold_witness_witness_witness_right_left',
+                     'split',
+                     'specialize hext_witness_witness_right (S i)',
+                     'specialize hext_witness_witness_right x8',
+                     'apply hext_witness_witness_right',
+                     'specialize succ_le_succ (S i)',
+                     'specialize succ_le_succ l',
+                     'apply succ_le_succ',
+                     'exact hsplit_right',
+                     'exact hold_witness_witness_witness_right_right_left',
+                     'exact hold_witness_witness_witness_right_right_right'),
+             summary='Every decoded beta factor prefix admits a beta-coded exact prefix-product '
+                     'trace.'),
+ TheoremSpec(name='beta_product_exists',
+             statement='forall b c l. exists n u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ '
+                       'exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * '
+                       'v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + '
+                       'S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists '
+                       'q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) '
+                       '/\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S '
+                       '(S i)) * v)) /\\ exists q. u = q * S ((S (S i)) * v) + s) /\\ s = r * '
+                       'p)))))',
+             dependencies=('beta_prefix_product_trace_exists', 'beta_at_exists'),
+             script=('intro b',
+                     'intro c',
+                     'intro l',
+                     'have htrace : exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists '
+                     'q. u = q * S ((S 0) * v) + 1) /\\ forall i. (exists h. h + S i = l) -> '
+                     'exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S '
+                     '((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = '
+                     'q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S (S i)) * v)) /\\ '
+                     'exists q. u = q * S ((S (S i)) * v) + s) /\\ s = r * p))))',
+                     'specialize beta_prefix_product_trace_exists b',
+                     'specialize beta_prefix_product_trace_exists c',
+                     'specialize beta_prefix_product_trace_exists l',
+                     'exact beta_prefix_product_trace_exists',
+                     'cases htrace',
+                     'cases htrace_witness',
+                     'cases htrace_witness_witness',
+                     'have hterminal : exists n. ((exists h. h + S n = S ((S l) * x1)) /\\ exists '
+                     'q. x = q * S ((S l) * x1) + n)',
+                     'specialize beta_at_exists x',
+                     'specialize beta_at_exists x1',
+                     'specialize beta_at_exists l',
+                     'exact beta_at_exists',
+                     'cases hterminal',
+                     'exists x2',
+                     'exists x',
+                     'exists x1',
+                     'split',
+                     'exact htrace_witness_witness_left',
+                     'split',
+                     'exact hterminal_witness',
+                     'exact htrace_witness_witness_right'),
+             summary='Every finite decoded beta prefix has an exact relational product and a coded '
+                     'trace.'))
+
+
+BETA_PRODUCT_FUNCTIONALITY_THEOREMS: tuple[TheoremSpec, ...] = (TheoremSpec(name='beta_product_functional',
+             statement='forall b c l n u v m w d. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists '
+                       'q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) '
+                       '/\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i '
+                       '= l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. '
+                       'b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ '
+                       'exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) '
+                       '* v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p))))) -> '
+                       '(((exists h. h + S 1 = S ((S 0) * d)) /\\ exists q. w = q * S ((S 0) * d) '
+                       '+ 1) /\\ (((exists h. h + S m = S ((S l) * d)) /\\ exists q. w = q * S ((S '
+                       'l) * d) + m) /\\ forall i. (exists h. h + S i = l) -> exists p r s. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) '
+                       '+ p) /\\ (((exists h. h + S r = S ((S i) * d)) /\\ exists q. w = q * S ((S '
+                       'i) * d) + r) /\\ (((exists h. h + S s = S ((S S i) * d)) /\\ exists q. w = '
+                       'q * S ((S S i) * d) + s) /\\ s = r * p))))) -> n = m',
+             dependencies=('beta_at_unique', 'le_refl', 'le_succ', 'mul_congr'),
+             script=('intro b',
+                     'intro c',
+                     'induction l',
+                     'intro n',
+                     'intro u',
+                     'intro v',
+                     'intro m',
+                     'intro w',
+                     'intro d',
+                     'intro h1',
+                     'intro h2',
+                     'cases h1',
+                     'cases h1_right',
+                     'cases h2',
+                     'cases h2_right',
+                     'have hn : n = 1',
+                     'specialize beta_at_unique u',
+                     'specialize beta_at_unique v',
+                     'specialize beta_at_unique 0',
+                     'specialize beta_at_unique n',
+                     'specialize beta_at_unique 1',
+                     'apply beta_at_unique',
+                     'exact h1_right_left',
+                     'exact h1_left',
+                     'have hm : m = 1',
+                     'specialize beta_at_unique w',
+                     'specialize beta_at_unique d',
+                     'specialize beta_at_unique 0',
+                     'specialize beta_at_unique m',
+                     'specialize beta_at_unique 1',
+                     'apply beta_at_unique',
+                     'exact h2_right_left',
+                     'exact h2_left',
+                     'trans 1',
+                     'exact hn',
+                     'symm',
+                     'exact hm',
+                     'intro n',
+                     'intro u',
+                     'intro v',
+                     'intro m',
+                     'intro w',
+                     'intro d',
+                     'intro h1',
+                     'intro h2',
+                     'cases h1',
+                     'cases h1_right',
+                     'cases h2',
+                     'cases h2_right',
+                     'have hstep1 : exists p r s. (((exists h. h + S p = S ((S l) * c)) /\\ exists '
+                     'q. b = q * S ((S l) * c) + p) /\\ (((exists h. h + S r = S ((S l) * v)) /\\ '
+                     'exists q. u = q * S ((S l) * v) + r) /\\ (((exists h. h + S s = S ((S S l) * '
+                     'v)) /\\ exists q. u = q * S ((S S l) * v) + s) /\\ s = r * p)))',
+                     'specialize h1_right_right l',
+                     'apply h1_right_right',
+                     'specialize le_refl (S l)',
+                     'exact le_refl',
+                     'cases hstep1',
+                     'cases hstep1_witness',
+                     'cases hstep1_witness_witness',
+                     'cases hstep1_witness_witness_witness',
+                     'cases hstep1_witness_witness_witness_right',
+                     'cases hstep1_witness_witness_witness_right_right',
+                     'have hstep2 : exists p r s. (((exists h. h + S p = S ((S l) * c)) /\\ exists '
+                     'q. b = q * S ((S l) * c) + p) /\\ (((exists h. h + S r = S ((S l) * d)) /\\ '
+                     'exists q. w = q * S ((S l) * d) + r) /\\ (((exists h. h + S s = S ((S S l) * '
+                     'd)) /\\ exists q. w = q * S ((S S l) * d) + s) /\\ s = r * p)))',
+                     'specialize h2_right_right l',
+                     'apply h2_right_right',
+                     'specialize le_refl (S l)',
+                     'exact le_refl',
+                     'cases hstep2',
+                     'cases hstep2_witness',
+                     'cases hstep2_witness_witness',
+                     'cases hstep2_witness_witness_witness',
+                     'cases hstep2_witness_witness_witness_right',
+                     'cases hstep2_witness_witness_witness_right_right',
+                     'have hn : n = x2',
+                     'specialize beta_at_unique u',
+                     'specialize beta_at_unique v',
+                     'specialize beta_at_unique (S l)',
+                     'specialize beta_at_unique n',
+                     'specialize beta_at_unique x2',
+                     'apply beta_at_unique',
+                     'exact h1_right_left',
+                     'exact hstep1_witness_witness_witness_right_right_left',
+                     'have hm : m = x5',
+                     'specialize beta_at_unique w',
+                     'specialize beta_at_unique d',
+                     'specialize beta_at_unique (S l)',
+                     'specialize beta_at_unique m',
+                     'specialize beta_at_unique x5',
+                     'apply beta_at_unique',
+                     'exact h2_right_left',
+                     'exact hstep2_witness_witness_witness_right_right_left',
+                     'have hp : x = x3',
+                     'specialize beta_at_unique b',
+                     'specialize beta_at_unique c',
+                     'specialize beta_at_unique l',
+                     'specialize beta_at_unique x',
+                     'specialize beta_at_unique x3',
+                     'apply beta_at_unique',
+                     'exact hstep1_witness_witness_witness_left',
+                     'exact hstep2_witness_witness_witness_left',
+                     'have hprod1 : (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S '
+                     '((S 0) * v) + 1) /\\ (((exists h. h + S x1 = S ((S l) * v)) /\\ exists q. u '
+                     '= q * S ((S l) * v) + x1) /\\ forall i. (exists h. h + S i = l) -> exists p '
+                     'r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * '
+                     'c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S '
+                     '((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u '
+                     '= q * S ((S S i) * v) + s) /\\ s = r * p)))))',
+                     'split',
+                     'exact h1_left',
+                     'split',
+                     'exact hstep1_witness_witness_witness_right_left',
+                     'intro i',
+                     'intro hi',
+                     'specialize h1_right_right i',
+                     'apply h1_right_right',
+                     'specialize le_succ (S i)',
+                     'specialize le_succ l',
+                     'apply le_succ',
+                     'exact hi',
+                     'have hprod2 : (((exists h. h + S 1 = S ((S 0) * d)) /\\ exists q. w = q * S '
+                     '((S 0) * d) + 1) /\\ (((exists h. h + S x4 = S ((S l) * d)) /\\ exists q. w '
+                     '= q * S ((S l) * d) + x4) /\\ forall i. (exists h. h + S i = l) -> exists p '
+                     'r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * '
+                     'c) + p) /\\ (((exists h. h + S r = S ((S i) * d)) /\\ exists q. w = q * S '
+                     '((S i) * d) + r) /\\ (((exists h. h + S s = S ((S S i) * d)) /\\ exists q. w '
+                     '= q * S ((S S i) * d) + s) /\\ s = r * p)))))',
+                     'split',
+                     'exact h2_left',
+                     'split',
+                     'exact hstep2_witness_witness_witness_right_left',
+                     'intro i',
+                     'intro hi',
+                     'specialize h2_right_right i',
+                     'apply h2_right_right',
+                     'specialize le_succ (S i)',
+                     'specialize le_succ l',
+                     'apply le_succ',
+                     'exact hi',
+                     'have hprev : x1 = x4',
+                     'specialize IH x1',
+                     'specialize IH u',
+                     'specialize IH v',
+                     'specialize IH x4',
+                     'specialize IH w',
+                     'specialize IH d',
+                     'apply IH',
+                     'exact hprod1',
+                     'exact hprod2',
+                     'have hmul : x1 * x = x4 * x3',
+                     'specialize mul_congr x1',
+                     'specialize mul_congr x4',
+                     'specialize mul_congr x',
+                     'specialize mul_congr x3',
+                     'apply mul_congr',
+                     'exact hprev',
+                     'exact hp',
+                     'trans x2',
+                     'exact hn',
+                     'trans x1 * x',
+                     'exact hstep1_witness_witness_witness_right_right_right',
+                     'trans x4 * x3',
+                     'exact hmul',
+                     'trans x5',
+                     'symm',
+                     'exact hstep2_witness_witness_witness_right_right_right',
+                     'symm',
+                     'exact hm'),
+             summary='The fully expanded beta-coded Product relation is functional in its terminal '
+                     'product.'),
+ TheoremSpec(name='beta_product_exists_unique',
+             statement='forall b c l. exists n. ((exists u v. (((exists h. h + S 1 = S ((S 0) * '
+                       'v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S '
+                       '((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. '
+                       '(exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * '
+                       'c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S '
+                       '((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + '
+                       'S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = '
+                       'r * p)))))) /\\ forall m. (exists w d. (((exists h. h + S 1 = S ((S 0) * '
+                       'd)) /\\ exists q. w = q * S ((S 0) * d) + 1) /\\ (((exists h. h + S m = S '
+                       '((S l) * d)) /\\ exists q. w = q * S ((S l) * d) + m) /\\ forall i. '
+                       '(exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * '
+                       'c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S '
+                       '((S i) * d)) /\\ exists q. w = q * S ((S i) * d) + r) /\\ (((exists h. h + '
+                       'S s = S ((S S i) * d)) /\\ exists q. w = q * S ((S S i) * d) + s) /\\ s = '
+                       'r * p)))))) -> n = m)',
+             dependencies=('beta_product_exists', 'beta_product_functional'),
+             script=('intro b',
+                     'intro c',
+                     'intro l',
+                     'have hex : exists n u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. '
+                     'u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ '
+                     'exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) '
+                     '-> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * '
+                     'S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u '
+                     '= q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ '
+                     'exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))',
+                     'specialize beta_product_exists b',
+                     'specialize beta_product_exists c',
+                     'specialize beta_product_exists l',
+                     'exact beta_product_exists',
+                     'cases hex',
+                     'cases hex_witness',
+                     'cases hex_witness_witness',
+                     'exists x',
+                     'split',
+                     'exists x1',
+                     'exists x2',
+                     'exact hex_witness_witness_witness',
+                     'intro m',
+                     'intro hm',
+                     'cases hm',
+                     'cases hm_witness',
+                     'specialize beta_product_functional b',
+                     'specialize beta_product_functional c',
+                     'specialize beta_product_functional l',
+                     'specialize beta_product_functional x',
+                     'specialize beta_product_functional x1',
+                     'specialize beta_product_functional x2',
+                     'specialize beta_product_functional m',
+                     'specialize beta_product_functional x3',
+                     'specialize beta_product_functional x4',
+                     'apply beta_product_functional',
+                     'exact hex_witness_witness_witness',
+                     'exact hm_witness_witness'),
+             summary='Every finite decoded beta prefix has exactly one relational product value.'))
+
+
+BETA_PRODUCT_ENDPOINT_THEOREMS: tuple[TheoremSpec, ...] = (TheoremSpec(name='beta_product_zero',
+             statement='forall b c n. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ '
+                       'exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S 0) * '
+                       'v)) /\\ exists q. u = q * S ((S 0) * v) + n) /\\ forall i. (exists h. h + '
+                       'S i = 0) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists '
+                       'q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) '
+                       '/\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S '
+                       'S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) '
+                       '-> n = 1',
+             dependencies=('beta_at_unique',),
+             script=('intro b',
+                     'intro c',
+                     'intro n',
+                     'intro hproduct',
+                     'cases hproduct',
+                     'cases hproduct_witness',
+                     'cases hproduct_witness_witness',
+                     'cases hproduct_witness_witness_right',
+                     'specialize beta_at_unique x',
+                     'specialize beta_at_unique x1',
+                     'specialize beta_at_unique 0',
+                     'specialize beta_at_unique n',
+                     'specialize beta_at_unique 1',
+                     'apply beta_at_unique',
+                     'exact hproduct_witness_witness_right_left',
+                     'exact hproduct_witness_witness_left'),
+             summary='The product of an empty decoded prefix is one.'),
+ TheoremSpec(name='beta_product_succ_decompose',
+             statement='forall b c l n. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ '
+                       'exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S S l) '
+                       '* v)) /\\ exists q. u = q * S ((S S l) * v) + n) /\\ forall i. (exists h. '
+                       'h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ '
+                       'exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * '
+                       'v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S '
+                       '((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * '
+                       'p)))))) -> exists p r. (((exists h. h + S p = S ((S l) * c)) /\\ exists q. '
+                       'b = q * S ((S l) * c) + p) /\\ ((exists u v. (((exists h. h + S 1 = S ((S '
+                       '0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S r '
+                       '= S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + r) /\\ forall i. '
+                       '(exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * '
+                       'c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S '
+                       '((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + '
+                       'S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = '
+                       'r * p)))))) /\\ n = r * p))',
+             dependencies=('le_refl', 'le_succ', 'beta_at_unique'),
+             script=('intro b',
+                     'intro c',
+                     'intro l',
+                     'intro n',
+                     'intro hproduct',
+                     'cases hproduct',
+                     'cases hproduct_witness',
+                     'cases hproduct_witness_witness',
+                     'cases hproduct_witness_witness_right',
+                     'have hstep : exists p r s. (((exists h. h + S p = S ((S l) * c)) /\\ exists '
+                     'q. b = q * S ((S l) * c) + p) /\\ (((exists h. h + S r = S ((S l) * x1)) /\\ '
+                     'exists q. x = q * S ((S l) * x1) + r) /\\ (((exists h. h + S s = S ((S S l) '
+                     '* x1)) /\\ exists q. x = q * S ((S S l) * x1) + s) /\\ s = r * p)))',
+                     'specialize hproduct_witness_witness_right_right l',
+                     'apply hproduct_witness_witness_right_right',
+                     'specialize le_refl (S l)',
+                     'exact le_refl',
+                     'cases hstep',
+                     'cases hstep_witness',
+                     'cases hstep_witness_witness',
+                     'cases hstep_witness_witness_witness',
+                     'cases hstep_witness_witness_witness_right',
+                     'cases hstep_witness_witness_witness_right_right',
+                     'have hn : n = x4',
+                     'specialize beta_at_unique x',
+                     'specialize beta_at_unique x1',
+                     'specialize beta_at_unique (S l)',
+                     'specialize beta_at_unique n',
+                     'specialize beta_at_unique x4',
+                     'apply beta_at_unique',
+                     'exact hproduct_witness_witness_right_left',
+                     'exact hstep_witness_witness_witness_right_right_left',
+                     'exists x2',
+                     'exists x3',
+                     'split',
+                     'exact hstep_witness_witness_witness_left',
+                     'split',
+                     'exists x',
+                     'exists x1',
+                     'split',
+                     'exact hproduct_witness_witness_left',
+                     'split',
+                     'exact hstep_witness_witness_witness_right_left',
+                     'intro i',
+                     'intro hi',
+                     'specialize hproduct_witness_witness_right_right i',
+                     'apply hproduct_witness_witness_right_right',
+                     'specialize le_succ (S i)',
+                     'specialize le_succ l',
+                     'apply le_succ',
+                     'exact hi',
+                     'trans x4',
+                     'exact hn',
+                     'exact hstep_witness_witness_witness_right_right_right'),
+             summary='A successor product decomposes into its prefix product and final decoded '
+                     'factor.'),
+ TheoremSpec(name='beta_product_succ_append',
+             statement='forall b c l r p. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ '
+                       'exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S r = S ((S l) * '
+                       'v)) /\\ exists q. u = q * S ((S l) * v) + r) /\\ forall i. (exists h. h + '
+                       'S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists '
+                       'q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) '
+                       '/\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S '
+                       'S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) '
+                       '-> ((exists h. h + S p = S ((S l) * c)) /\\ exists q. b = q * S ((S l) * '
+                       'c) + p) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists '
+                       'q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S (r * p) = S ((S S l) '
+                       '* v)) /\\ exists q. u = q * S ((S S l) * v) + (r * p)) /\\ forall i. '
+                       '(exists h. h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) '
+                       '* c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = '
+                       'S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h '
+                       '+ S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s '
+                       '= r * p))))))',
+             dependencies=('beta_prefix_extend',
+                           'zero_le',
+                           'succ_le_succ',
+                           'le_refl',
+                           'le_of_succ_le_succ',
+                           'le_eq_or_lt'),
+             script=('intro b',
+                     'intro c',
+                     'intro l',
+                     'intro r',
+                     'intro p',
+                     'intro hproduct',
+                     'intro hp',
+                     'cases hproduct',
+                     'cases hproduct_witness',
+                     'cases hproduct_witness_witness',
+                     'cases hproduct_witness_witness_right',
+                     'have hext : exists z d. (((exists h. h + S (r * p) = S ((S S l) * d)) /\\ '
+                     'exists q. z = q * S ((S S l) * d) + (r * p)) /\\ forall i a. (exists h. h + '
+                     'S i = S l) -> ((exists h. h + S a = S ((S i) * x1)) /\\ exists q. x = q * S '
+                     '((S i) * x1) + a) -> ((exists h. h + S a = S ((S i) * d)) /\\ exists q. z = '
+                     'q * S ((S i) * d) + a))',
+                     'specialize beta_prefix_extend (S l)',
+                     'specialize beta_prefix_extend x',
+                     'specialize beta_prefix_extend x1',
+                     'specialize beta_prefix_extend (r * p)',
+                     'exact beta_prefix_extend',
+                     'cases hext',
+                     'cases hext_witness',
+                     'cases hext_witness_witness',
+                     'exists x2',
+                     'exists x3',
+                     'split',
+                     'specialize hext_witness_witness_right 0',
+                     'specialize hext_witness_witness_right 1',
+                     'apply hext_witness_witness_right',
+                     'have hzero : exists h. h + 0 = l',
+                     'specialize zero_le l',
+                     'exact zero_le',
+                     'specialize succ_le_succ 0',
+                     'specialize succ_le_succ l',
+                     'apply succ_le_succ',
+                     'exact hzero',
+                     'exact hproduct_witness_witness_left',
+                     'split',
+                     'exact hext_witness_witness_left',
+                     'intro i',
+                     'intro hi',
+                     'have hil : exists h. h + i = l',
+                     'specialize le_of_succ_le_succ i',
+                     'specialize le_of_succ_le_succ l',
+                     'apply le_of_succ_le_succ',
+                     'exact hi',
+                     'have hsplit : i = l \\/ exists h. h + S i = l',
+                     'specialize le_eq_or_lt i',
+                     'specialize le_eq_or_lt l',
+                     'apply le_eq_or_lt',
+                     'exact hil',
+                     'cases hsplit',
+                     'exists p',
+                     'exists r',
+                     'exists r * p',
+                     'split',
+                     'rewrite hsplit_left',
+                     'rewrite hsplit_left',
+                     'exact hp',
+                     'split',
+                     'rewrite hsplit_left',
+                     'rewrite hsplit_left',
+                     'specialize hext_witness_witness_right l',
+                     'specialize hext_witness_witness_right r',
+                     'apply hext_witness_witness_right',
+                     'specialize le_refl (S l)',
+                     'exact le_refl',
+                     'exact hproduct_witness_witness_right_left',
+                     'split',
+                     'rewrite hsplit_left',
+                     'rewrite hsplit_left',
+                     'exact hext_witness_witness_left',
+                     'refl',
+                     'have hold : exists p0 r0 s0. (((exists h. h + S p0 = S ((S i) * c)) /\\ '
+                     'exists q. b = q * S ((S i) * c) + p0) /\\ (((exists h. h + S r0 = S ((S i) * '
+                     'x1)) /\\ exists q. x = q * S ((S i) * x1) + r0) /\\ (((exists h. h + S s0 = '
+                     'S ((S S i) * x1)) /\\ exists q. x = q * S ((S S i) * x1) + s0) /\\ s0 = r0 * '
+                     'p0)))',
+                     'specialize hproduct_witness_witness_right_right i',
+                     'apply hproduct_witness_witness_right_right',
+                     'exact hsplit_right',
+                     'cases hold',
+                     'cases hold_witness',
+                     'cases hold_witness_witness',
+                     'cases hold_witness_witness_witness',
+                     'cases hold_witness_witness_witness_right',
+                     'cases hold_witness_witness_witness_right_right',
+                     'exists x4',
+                     'exists x5',
+                     'exists x6',
+                     'split',
+                     'exact hold_witness_witness_witness_left',
+                     'split',
+                     'specialize hext_witness_witness_right i',
+                     'specialize hext_witness_witness_right x5',
+                     'apply hext_witness_witness_right',
+                     'exact hi',
+                     'exact hold_witness_witness_witness_right_left',
+                     'split',
+                     'specialize hext_witness_witness_right (S i)',
+                     'specialize hext_witness_witness_right x6',
+                     'apply hext_witness_witness_right',
+                     'specialize succ_le_succ (S i)',
+                     'specialize succ_le_succ l',
+                     'apply succ_le_succ',
+                     'exact hsplit_right',
+                     'exact hold_witness_witness_witness_right_right_left',
+                     'exact hold_witness_witness_witness_right_right_right'),
+             summary='Append one decoded factor to an existing fully expanded Product witness.'))
+
+
+BETA_PRODUCT_TRANSPORT_THEOREMS: tuple[TheoremSpec, ...] = (TheoremSpec(name='beta_product_transport_prefix',
+             statement='forall b c z e l n. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ '
+                       'exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * '
+                       'v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + '
+                       'S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists '
+                       'q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) '
+                       '/\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S '
+                       'S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) '
+                       '-> (forall i a. (exists h. h + S i = l) -> ((exists h. h + S a = S ((S i) '
+                       '* c)) /\\ exists q. b = q * S ((S i) * c) + a) -> ((exists h. h + S a = S '
+                       '((S i) * e)) /\\ exists q. z = q * S ((S i) * e) + a)) -> (exists u v. '
+                       '(((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) '
+                       '+ 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. u = q * S ((S '
+                       'l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. '
+                       '(((exists h. h + S p = S ((S i) * e)) /\\ exists q. z = q * S ((S i) * e) '
+                       '+ p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S '
+                       'i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = '
+                       'q * S ((S S i) * v) + s) /\\ s = r * p))))))',
+             dependencies=(),
+             script=('intro b',
+                     'intro c',
+                     'intro z',
+                     'intro e',
+                     'intro l',
+                     'intro n',
+                     'intro hproduct',
+                     'intro hpres',
+                     'cases hproduct',
+                     'cases hproduct_witness',
+                     'cases hproduct_witness_witness',
+                     'cases hproduct_witness_witness_right',
+                     'exists x',
+                     'exists x1',
+                     'split',
+                     'exact hproduct_witness_witness_left',
+                     'split',
+                     'exact hproduct_witness_witness_right_left',
+                     'intro i',
+                     'intro hi',
+                     'have hstep : exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists '
+                     'q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * x1)) /\\ '
+                     'exists q. x = q * S ((S i) * x1) + r) /\\ (((exists h. h + S s = S ((S S i) '
+                     '* x1)) /\\ exists q. x = q * S ((S S i) * x1) + s) /\\ s = r * p)))',
+                     'specialize hproduct_witness_witness_right_right i',
+                     'apply hproduct_witness_witness_right_right',
+                     'exact hi',
+                     'cases hstep',
+                     'cases hstep_witness',
+                     'cases hstep_witness_witness',
+                     'cases hstep_witness_witness_witness',
+                     'cases hstep_witness_witness_witness_right',
+                     'cases hstep_witness_witness_witness_right_right',
+                     'exists x2',
+                     'exists x3',
+                     'exists x4',
+                     'split',
+                     'specialize hpres i',
+                     'specialize hpres x2',
+                     'apply hpres',
+                     'exact hi',
+                     'exact hstep_witness_witness_witness_left',
+                     'split',
+                     'exact hstep_witness_witness_witness_right_left',
+                     'split',
+                     'exact hstep_witness_witness_witness_right_right_left',
+                     'exact hstep_witness_witness_witness_right_right_right'),
+             summary='One-way extensional factor-prefix preservation transports Product without '
+                     'changing its trace.'),
+ TheoremSpec(name='beta_factor_prefix_product_append',
+             statement='forall b c l r p. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ '
+                       'exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S r = S ((S l) * '
+                       'v)) /\\ exists q. u = q * S ((S l) * v) + r) /\\ forall i. (exists h. h + '
+                       'S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists '
+                       'q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) '
+                       '/\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S '
+                       'S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) '
+                       '-> exists z e. (((exists h. h + S p = S ((S l) * e)) /\\ exists q. z = q * '
+                       'S ((S l) * e) + p) /\\ ((forall i a. (exists h. h + S i = l) -> ((exists '
+                       'h. h + S a = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + a) -> '
+                       '((exists h. h + S a = S ((S i) * e)) /\\ exists q. z = q * S ((S i) * e) + '
+                       'a)) /\\ (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u '
+                       '= q * S ((S 0) * v) + 1) /\\ (((exists h. h + S (r * p) = S ((S S l) * v)) '
+                       '/\\ exists q. u = q * S ((S S l) * v) + (r * p)) /\\ forall i. (exists h. '
+                       'h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ '
+                       'exists q. z = q * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * '
+                       'v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S '
+                       '((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * '
+                       'p))))))))',
+             dependencies=('beta_prefix_extend',
+                           'beta_product_transport_prefix',
+                           'zero_le',
+                           'succ_le_succ',
+                           'le_refl',
+                           'le_of_succ_le_succ',
+                           'le_eq_or_lt'),
+             script=('intro b',
+                     'intro c',
+                     'intro l',
+                     'intro r',
+                     'intro p',
+                     'intro hproduct',
+                     'have hfactor_ext : exists z e. (((exists h. h + S p = S ((S l) * e)) /\\ '
+                     'exists q. z = q * S ((S l) * e) + p) /\\ forall i a. (exists h. h + S i = l) '
+                     '-> ((exists h. h + S a = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) '
+                     '+ a) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. z = q * S ((S i) '
+                     '* e) + a))',
+                     'specialize beta_prefix_extend l',
+                     'specialize beta_prefix_extend b',
+                     'specialize beta_prefix_extend c',
+                     'specialize beta_prefix_extend p',
+                     'exact beta_prefix_extend',
+                     'cases hfactor_ext',
+                     'cases hfactor_ext_witness',
+                     'cases hfactor_ext_witness_witness',
+                     'have htransport : exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ '
+                     'exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S r = S ((S l) * '
+                     'v)) /\\ exists q. u = q * S ((S l) * v) + r) /\\ forall i. (exists h. h + S '
+                     'i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * x1)) /\\ exists q. '
+                     'x = q * S ((S i) * x1) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ '
+                     'exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * '
+                     'v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))',
+                     'specialize beta_product_transport_prefix b',
+                     'specialize beta_product_transport_prefix c',
+                     'specialize beta_product_transport_prefix x',
+                     'specialize beta_product_transport_prefix x1',
+                     'specialize beta_product_transport_prefix l',
+                     'specialize beta_product_transport_prefix r',
+                     'apply beta_product_transport_prefix',
+                     'exact hproduct',
+                     'exact hfactor_ext_witness_witness_right',
+                     'cases htransport',
+                     'cases htransport_witness',
+                     'cases htransport_witness_witness',
+                     'cases htransport_witness_witness_right',
+                     'have htrace_ext : exists u v. (((exists h. h + S (r * p) = S ((S S l) * v)) '
+                     '/\\ exists q. u = q * S ((S S l) * v) + (r * p)) /\\ forall i a. (exists h. '
+                     'h + S i = S l) -> ((exists h. h + S a = S ((S i) * x3)) /\\ exists q. x2 = q '
+                     '* S ((S i) * x3) + a) -> ((exists h. h + S a = S ((S i) * v)) /\\ exists q. '
+                     'u = q * S ((S i) * v) + a))',
+                     'specialize beta_prefix_extend (S l)',
+                     'specialize beta_prefix_extend x2',
+                     'specialize beta_prefix_extend x3',
+                     'specialize beta_prefix_extend (r * p)',
+                     'exact beta_prefix_extend',
+                     'cases htrace_ext',
+                     'cases htrace_ext_witness',
+                     'cases htrace_ext_witness_witness',
+                     'exists x',
+                     'exists x1',
+                     'split',
+                     'exact hfactor_ext_witness_witness_left',
+                     'split',
+                     'exact hfactor_ext_witness_witness_right',
+                     'exists x4',
+                     'exists x5',
+                     'split',
+                     'specialize htrace_ext_witness_witness_right 0',
+                     'specialize htrace_ext_witness_witness_right 1',
+                     'apply htrace_ext_witness_witness_right',
+                     'have hzero : exists h. h + 0 = l',
+                     'specialize zero_le l',
+                     'exact zero_le',
+                     'specialize succ_le_succ 0',
+                     'specialize succ_le_succ l',
+                     'apply succ_le_succ',
+                     'exact hzero',
+                     'exact htransport_witness_witness_left',
+                     'split',
+                     'exact htrace_ext_witness_witness_left',
+                     'intro i',
+                     'intro hi',
+                     'have hil : exists h. h + i = l',
+                     'specialize le_of_succ_le_succ i',
+                     'specialize le_of_succ_le_succ l',
+                     'apply le_of_succ_le_succ',
+                     'exact hi',
+                     'have hsplit : i = l \\/ exists h. h + S i = l',
+                     'specialize le_eq_or_lt i',
+                     'specialize le_eq_or_lt l',
+                     'apply le_eq_or_lt',
+                     'exact hil',
+                     'cases hsplit',
+                     'exists p',
+                     'exists r',
+                     'exists r * p',
+                     'split',
+                     'rewrite hsplit_left',
+                     'rewrite hsplit_left',
+                     'exact hfactor_ext_witness_witness_left',
+                     'split',
+                     'rewrite hsplit_left',
+                     'rewrite hsplit_left',
+                     'specialize htrace_ext_witness_witness_right l',
+                     'specialize htrace_ext_witness_witness_right r',
+                     'apply htrace_ext_witness_witness_right',
+                     'specialize le_refl (S l)',
+                     'exact le_refl',
+                     'exact htransport_witness_witness_right_left',
+                     'split',
+                     'rewrite hsplit_left',
+                     'rewrite hsplit_left',
+                     'exact htrace_ext_witness_witness_left',
+                     'refl',
+                     'have hold : exists p0 r0 s0. (((exists h. h + S p0 = S ((S i) * x1)) /\\ '
+                     'exists q. x = q * S ((S i) * x1) + p0) /\\ (((exists h. h + S r0 = S ((S i) '
+                     '* x3)) /\\ exists q. x2 = q * S ((S i) * x3) + r0) /\\ (((exists h. h + S s0 '
+                     '= S ((S S i) * x3)) /\\ exists q. x2 = q * S ((S S i) * x3) + s0) /\\ s0 = '
+                     'r0 * p0)))',
+                     'specialize htransport_witness_witness_right_right i',
+                     'apply htransport_witness_witness_right_right',
+                     'exact hsplit_right',
+                     'cases hold',
+                     'cases hold_witness',
+                     'cases hold_witness_witness',
+                     'cases hold_witness_witness_witness',
+                     'cases hold_witness_witness_witness_right',
+                     'cases hold_witness_witness_witness_right_right',
+                     'exists x6',
+                     'exists x7',
+                     'exists x8',
+                     'split',
+                     'exact hold_witness_witness_witness_left',
+                     'split',
+                     'specialize htrace_ext_witness_witness_right i',
+                     'specialize htrace_ext_witness_witness_right x7',
+                     'apply htrace_ext_witness_witness_right',
+                     'exact hi',
+                     'exact hold_witness_witness_witness_right_left',
+                     'split',
+                     'specialize htrace_ext_witness_witness_right (S i)',
+                     'specialize htrace_ext_witness_witness_right x8',
+                     'apply htrace_ext_witness_witness_right',
+                     'specialize succ_le_succ (S i)',
+                     'specialize succ_le_succ l',
+                     'apply succ_le_succ',
+                     'exact hsplit_right',
+                     'exact hold_witness_witness_witness_right_right_left',
+                     'exact hold_witness_witness_witness_right_right_right'),
+             summary='Extend a factor prefix by p and simultaneously append p to its exact '
+                     'Product.'))
+
+
 
 # Public arithmetic extension imported verbatim from the independently
 # compatibility-checked peano-private-mathlib catalog.  The source revision
@@ -5390,6 +7200,1723 @@ MOD5_LIBRARY_SOURCE_COMMIT = "d2ba05dca952e2e33479923433f8d2fcd3409493"
 MOD5_LIBRARY_CATALOG_SHA256 = (
     "91c88c1f3311cc0dc540671b169c270758ff6211e77716ed07bd3dd4f55c8380"
 )
+
+# Fully expanded AllPrime and adjacent-Sorted APIs over beta-coded prefixes.
+# These are conservative surface conventions: every predicate is expanded
+# before the unchanged PA kernel checks its certificate.
+BETA_FACTOR_PREDICATE_THEOREMS: tuple[TheoremSpec, ...] = (TheoremSpec(name='all_prime_empty',
+             statement='forall b c. (forall i. (exists h. h + S i = 0) -> exists p. (((exists h. h '
+                       '+ S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = '
+                       '1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)))',
+             dependencies=('add_eq_zero_right', 'succ_ne_zero'),
+             script=('intro b',
+                     'intro c',
+                     'intro i',
+                     'intro hi',
+                     'exfalso',
+                     'cases hi',
+                     'have hzero : S i = 0',
+                     'specialize add_eq_zero_right x',
+                     'specialize add_eq_zero_right (S i)',
+                     'apply add_eq_zero_right',
+                     'exact hi_witness',
+                     'specialize succ_ne_zero i',
+                     'apply succ_ne_zero',
+                     'exact hzero'),
+             summary='The fully expanded AllPrime predicate holds vacuously on the empty prefix.'),
+ TheoremSpec(name='all_prime_succ_intro',
+             statement='forall b c l p. (forall i. (exists h. h + S i = l) -> exists p. (((exists '
+                       'h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ '
+                       '(~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (((exists h. '
+                       'h + S p = S ((S l) * c)) /\\ exists w. b = w * S ((S l) * c) + p) /\\ (~(p '
+                       '= 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)) -> (forall i. (exists '
+                       'h. h + S i = S l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ '
+                       'exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * '
+                       'd -> a = 1 \\/ d = 1)))',
+             dependencies=('le_of_succ_le_succ', 'le_eq_or_lt'),
+             script=('intro b',
+                     'intro c',
+                     'intro l',
+                     'intro p',
+                     'intro hprev',
+                     'intro hlast',
+                     'cases hlast',
+                     'intro i',
+                     'intro hi',
+                     'have hil : exists h. h + i = l',
+                     'specialize le_of_succ_le_succ i',
+                     'specialize le_of_succ_le_succ l',
+                     'apply le_of_succ_le_succ',
+                     'exact hi',
+                     'have hsplit : i = l \\/ exists h. h + S i = l',
+                     'specialize le_eq_or_lt i',
+                     'specialize le_eq_or_lt l',
+                     'apply le_eq_or_lt',
+                     'exact hil',
+                     'cases hsplit',
+                     'exists p',
+                     'split',
+                     'rewrite hsplit_left',
+                     'rewrite hsplit_left',
+                     'exact hlast_left',
+                     'exact hlast_right',
+                     'specialize hprev i',
+                     'apply hprev',
+                     'exact hsplit_right'),
+             summary='Append one explicitly decoded prime to an AllPrime prefix.'),
+ TheoremSpec(name='all_prime_succ_elim_prefix',
+             statement='forall b c l. (forall i. (exists h. h + S i = S l) -> exists p. (((exists '
+                       'h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ '
+                       '(~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (forall i. '
+                       '(exists h. h + S i = l) -> exists p. (((exists h. h + S p = S ((S i) * c)) '
+                       '/\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = '
+                       'a * d -> a = 1 \\/ d = 1)))',
+             dependencies=('le_succ',),
+             script=('intro b',
+                     'intro c',
+                     'intro l',
+                     'intro hall',
+                     'intro i',
+                     'intro hi',
+                     'specialize hall i',
+                     'apply hall',
+                     'specialize le_succ (S i)',
+                     'specialize le_succ l',
+                     'apply le_succ',
+                     'exact hi'),
+             summary='Restrict an AllPrime successor prefix to its old prefix.'),
+ TheoremSpec(name='all_prime_succ_elim_last',
+             statement='forall b c l. (forall i. (exists h. h + S i = S l) -> exists p. (((exists '
+                       'h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ '
+                       '(~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> exists p. '
+                       '(((exists h. h + S p = S ((S l) * c)) /\\ exists w. b = w * S ((S l) * c) '
+                       '+ p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))',
+             dependencies=('le_refl',),
+             script=('intro b',
+                     'intro c',
+                     'intro l',
+                     'intro hall',
+                     'specialize hall l',
+                     'apply hall',
+                     'specialize le_refl (S l)',
+                     'exact le_refl'),
+             summary='Extract the final decoded prime from an AllPrime successor prefix.'),
+ TheoremSpec(name='all_prime_transport',
+             statement='forall b c z d l. (forall i. (exists h. h + S i = l) -> exists p. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                       '+ p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> '
+                       '(forall i p. (exists h. h + S i = l) -> ((exists h. h + S p = S ((S i) * '
+                       'c)) /\\ exists w. b = w * S ((S i) * c) + p) -> ((exists h. h + S p = S '
+                       '((S i) * d)) /\\ exists w. z = w * S ((S i) * d) + p)) -> (forall i. '
+                       '(exists h. h + S i = l) -> exists p. (((exists h. h + S p = S ((S i) * d)) '
+                       '/\\ exists w. z = w * S ((S i) * d) + p) /\\ (~(p = 1) /\\ forall a d. p = '
+                       'a * d -> a = 1 \\/ d = 1)))',
+             dependencies=(),
+             script=('intro b',
+                     'intro c',
+                     'intro z',
+                     'intro d',
+                     'intro l',
+                     'intro hall',
+                     'intro htransport',
+                     'intro i',
+                     'intro hi',
+                     'have hp : exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = '
+                     'w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ '
+                     'd = 1))',
+                     'specialize hall i',
+                     'apply hall',
+                     'exact hi',
+                     'cases hp',
+                     'cases hp_witness',
+                     'exists x',
+                     'split',
+                     'specialize htransport i',
+                     'specialize htransport x',
+                     'apply htransport',
+                     'exact hi',
+                     'exact hp_witness_left',
+                     'exact hp_witness_right'),
+             summary='Transport AllPrime across pointwise value-preserving beta recoding.'),
+ TheoremSpec(name='sorted_empty',
+             statement='forall b c. (forall i. (exists h. h + S (S i) = 0) -> exists p q. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                       '+ p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S '
+                       '((S S i) * c) + q) /\\ (exists h. h + p = q))))',
+             dependencies=('le_zero', 'succ_ne_zero'),
+             script=('intro b',
+                     'intro c',
+                     'intro i',
+                     'intro hi',
+                     'exfalso',
+                     'have hzero : S (S i) = 0',
+                     'specialize le_zero (S (S i))',
+                     'apply le_zero',
+                     'exact hi',
+                     'specialize succ_ne_zero (S i)',
+                     'apply succ_ne_zero',
+                     'exact hzero'),
+             summary='The fully expanded Sorted predicate holds vacuously on the empty prefix.'),
+ TheoremSpec(name='sorted_singleton',
+             statement='forall b c. (forall i. (exists h. h + S (S i) = 1) -> exists p q. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                       '+ p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S '
+                       '((S S i) * c) + q) /\\ (exists h. h + p = q))))',
+             dependencies=('le_of_succ_le_succ', 'le_zero', 'succ_ne_zero'),
+             script=('intro b',
+                     'intro c',
+                     'intro i',
+                     'intro hi',
+                     'exfalso',
+                     'have hzero_le : exists h. h + S i = 0',
+                     'specialize le_of_succ_le_succ (S i)',
+                     'specialize le_of_succ_le_succ 0',
+                     'apply le_of_succ_le_succ',
+                     'exact hi',
+                     'have hzero : S i = 0',
+                     'specialize le_zero (S i)',
+                     'apply le_zero',
+                     'exact hzero_le',
+                     'specialize succ_ne_zero i',
+                     'apply succ_ne_zero',
+                     'exact hzero'),
+             summary='The fully expanded Sorted predicate holds vacuously on every singleton '
+                     'prefix.'),
+ TheoremSpec(name='sorted_succ_intro',
+             statement='forall b c l p q. (forall i. (exists h. h + S (S i) = S l) -> exists p q. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                       '+ p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S '
+                       '((S S i) * c) + q) /\\ (exists h. h + p = q)))) -> ((exists h. h + S p = S '
+                       '((S l) * c)) /\\ exists w. b = w * S ((S l) * c) + p) -> ((exists h. h + S '
+                       'q = S ((S S l) * c)) /\\ exists w. b = w * S ((S S l) * c) + q) -> (exists '
+                       'h. h + p = q) -> (forall i. (exists h. h + S (S i) = S (S l)) -> exists p '
+                       'q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * '
+                       'c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * '
+                       'S ((S S i) * c) + q) /\\ (exists h. h + p = q))))',
+             dependencies=('le_of_succ_le_succ', 'le_eq_or_lt', 'succ_le_succ'),
+             script=('intro b',
+                     'intro c',
+                     'intro l',
+                     'intro p',
+                     'intro q',
+                     'intro hprev',
+                     'intro hp',
+                     'intro hq',
+                     'intro hpq',
+                     'intro i',
+                     'intro hi',
+                     'have hisl : exists h. h + S i = S l',
+                     'specialize le_of_succ_le_succ (S i)',
+                     'specialize le_of_succ_le_succ (S l)',
+                     'apply le_of_succ_le_succ',
+                     'exact hi',
+                     'have hil : exists h. h + i = l',
+                     'specialize le_of_succ_le_succ i',
+                     'specialize le_of_succ_le_succ l',
+                     'apply le_of_succ_le_succ',
+                     'exact hisl',
+                     'have hsplit : i = l \\/ exists h. h + S i = l',
+                     'specialize le_eq_or_lt i',
+                     'specialize le_eq_or_lt l',
+                     'apply le_eq_or_lt',
+                     'exact hil',
+                     'cases hsplit',
+                     'exists p',
+                     'exists q',
+                     'split',
+                     'rewrite hsplit_left',
+                     'rewrite hsplit_left',
+                     'exact hp',
+                     'split',
+                     'rewrite hsplit_left',
+                     'rewrite hsplit_left',
+                     'exact hq',
+                     'exact hpq',
+                     'specialize hprev i',
+                     'apply hprev',
+                     'specialize succ_le_succ (S i)',
+                     'specialize succ_le_succ l',
+                     'apply succ_le_succ',
+                     'exact hsplit_right'),
+             summary='Append one ordered adjacent pair to a nonempty Sorted prefix.'),
+ TheoremSpec(name='sorted_succ_elim_prefix',
+             statement='forall b c l. (forall i. (exists h. h + S (S i) = S l) -> exists p q. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                       '+ p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S '
+                       '((S S i) * c) + q) /\\ (exists h. h + p = q)))) -> (forall i. (exists h. h '
+                       '+ S (S i) = l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ '
+                       'exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) '
+                       '* c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = '
+                       'q))))',
+             dependencies=('le_succ',),
+             script=('intro b',
+                     'intro c',
+                     'intro l',
+                     'intro hsorted',
+                     'intro i',
+                     'intro hi',
+                     'specialize hsorted i',
+                     'apply hsorted',
+                     'specialize le_succ (S (S i))',
+                     'specialize le_succ l',
+                     'apply le_succ',
+                     'exact hi'),
+             summary='Restrict a Sorted successor prefix to its old prefix.'),
+ TheoremSpec(name='sorted_succ_elim_last',
+             statement='forall b c l. (forall i. (exists h. h + S (S i) = S (S l)) -> exists p q. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                       '+ p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S '
+                       '((S S i) * c) + q) /\\ (exists h. h + p = q)))) -> exists p q. (((exists '
+                       'h. h + S p = S ((S l) * c)) /\\ exists w. b = w * S ((S l) * c) + p) /\\ '
+                       '(((exists h. h + S q = S ((S S l) * c)) /\\ exists w. b = w * S ((S S l) * '
+                       'c) + q) /\\ (exists h. h + p = q)))',
+             dependencies=('le_refl',),
+             script=('intro b',
+                     'intro c',
+                     'intro l',
+                     'intro hsorted',
+                     'specialize hsorted l',
+                     'apply hsorted',
+                     'specialize le_refl (S (S l))',
+                     'exact le_refl'),
+             summary='Extract the final adjacent ordered pair from a Sorted prefix of length at '
+                     'least two.'),
+ TheoremSpec(name='sorted_transport',
+             statement='forall b c z d l. (forall i. (exists h. h + S (S i) = l) -> exists p q. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                       '+ p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S '
+                       '((S S i) * c) + q) /\\ (exists h. h + p = q)))) -> (forall i p. (exists h. '
+                       'h + S i = l) -> ((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * '
+                       'S ((S i) * c) + p) -> ((exists h. h + S p = S ((S i) * d)) /\\ exists w. z '
+                       '= w * S ((S i) * d) + p)) -> (forall i. (exists h. h + S (S i) = l) -> '
+                       'exists p q. (((exists h. h + S p = S ((S i) * d)) /\\ exists w. z = w * S '
+                       '((S i) * d) + p) /\\ (((exists h. h + S q = S ((S S i) * d)) /\\ exists w. '
+                       'z = w * S ((S S i) * d) + q) /\\ (exists h. h + p = q))))',
+             dependencies=('lt_to_le',),
+             script=('intro b',
+                     'intro c',
+                     'intro z',
+                     'intro d',
+                     'intro l',
+                     'intro hsorted',
+                     'intro htransport',
+                     'intro i',
+                     'intro hi',
+                     'have hpq : exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b '
+                     '= w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ '
+                     'exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q)))',
+                     'specialize hsorted i',
+                     'apply hsorted',
+                     'exact hi',
+                     'cases hpq',
+                     'cases hpq_witness',
+                     'cases hpq_witness_witness',
+                     'cases hpq_witness_witness_right',
+                     'have hii : exists h. h + S i = l',
+                     'specialize lt_to_le (S i)',
+                     'specialize lt_to_le l',
+                     'apply lt_to_le',
+                     'exact hi',
+                     'exists x',
+                     'exists x1',
+                     'split',
+                     'specialize htransport i',
+                     'specialize htransport x',
+                     'apply htransport',
+                     'exact hii',
+                     'exact hpq_witness_witness_left',
+                     'split',
+                     'specialize htransport (S i)',
+                     'specialize htransport x1',
+                     'apply htransport',
+                     'exact hi',
+                     'exact hpq_witness_witness_right_left',
+                     'exact hpq_witness_witness_right_right'),
+             summary='Transport Sorted across pointwise value-preserving beta recoding.'),
+ TheoremSpec(name='beta_prefix_extend_all_prime',
+             statement='forall k b e s. (forall i. (exists h. h + S i = k) -> exists p. (((exists '
+                       'h. h + S p = S ((S i) * e)) /\\ exists w. b = w * S ((S i) * e) + p) /\\ '
+                       '(~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (~(s = 1) /\\ '
+                       'forall a d. s = a * d -> a = 1 \\/ d = 1) -> exists z c. ((((exists h. h + '
+                       'S s = S ((S k) * c)) /\\ exists w. z = w * S ((S k) * c) + s) /\\ forall i '
+                       'a. (exists h. h + S i = k) -> ((exists h. h + S a = S ((S i) * e)) /\\ '
+                       'exists w. b = w * S ((S i) * e) + a) -> ((exists h. h + S a = S ((S i) * '
+                       'c)) /\\ exists w. z = w * S ((S i) * c) + a)) /\\ (forall i. (exists h. h '
+                       '+ S i = S k) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists '
+                       'w. z = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a '
+                       '= 1 \\/ d = 1))))',
+             dependencies=('beta_prefix_extend', 'all_prime_transport', 'all_prime_succ_intro'),
+             script=('intro k',
+                     'intro b',
+                     'intro e',
+                     'intro s',
+                     'intro hall',
+                     'intro hs',
+                     'have hext : exists z c. (((exists h. h + S s = S ((S k) * c)) /\\ exists w. '
+                     'z = w * S ((S k) * c) + s) /\\ forall i a. (exists h. h + S i = k) -> '
+                     '((exists h. h + S a = S ((S i) * e)) /\\ exists w. b = w * S ((S i) * e) + '
+                     'a) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists w. z = w * S ((S i) * '
+                     'c) + a))',
+                     'specialize beta_prefix_extend k',
+                     'specialize beta_prefix_extend b',
+                     'specialize beta_prefix_extend e',
+                     'specialize beta_prefix_extend s',
+                     'exact beta_prefix_extend',
+                     'cases hext',
+                     'cases hext_witness',
+                     'cases hext_witness_witness',
+                     'have hnew : (forall i. (exists h. h + S i = k) -> exists p. (((exists h. h + '
+                     'S p = S ((S i) * x1)) /\\ exists w. x = w * S ((S i) * x1) + p) /\\ (~(p = '
+                     '1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)))',
+                     'specialize all_prime_transport b',
+                     'specialize all_prime_transport e',
+                     'specialize all_prime_transport x',
+                     'specialize all_prime_transport x1',
+                     'specialize all_prime_transport k',
+                     'apply all_prime_transport',
+                     'exact hall',
+                     'exact hext_witness_witness_right',
+                     'exists x',
+                     'exists x1',
+                     'split',
+                     'split',
+                     'exact hext_witness_witness_left',
+                     'exact hext_witness_witness_right',
+                     'specialize all_prime_succ_intro x',
+                     'specialize all_prime_succ_intro x1',
+                     'specialize all_prime_succ_intro k',
+                     'specialize all_prime_succ_intro s',
+                     'apply all_prime_succ_intro',
+                     'exact hnew',
+                     'split',
+                     'exact hext_witness_witness_left',
+                     'exact hs'),
+             summary='Recode a beta prefix, preserve all old primes, and append one exact prime.'),
+ TheoremSpec(name='beta_prefix_extend_sorted_singleton',
+             statement='forall b e s. exists z c. ((((exists h. h + S s = S ((S 0) * c)) /\\ '
+                       'exists w. z = w * S ((S 0) * c) + s) /\\ forall i a. (exists h. h + S i = '
+                       '0) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists w. b = w * S ((S i) '
+                       '* e) + a) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists w. z = w * S '
+                       '((S i) * c) + a)) /\\ (forall i. (exists h. h + S (S i) = 1) -> exists p '
+                       'q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. z = w * S ((S i) * '
+                       'c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. z = w * '
+                       'S ((S S i) * c) + q) /\\ (exists h. h + p = q)))))',
+             dependencies=('beta_prefix_extend', 'sorted_singleton'),
+             script=('intro b',
+                     'intro e',
+                     'intro s',
+                     'have hext : exists z c. (((exists h. h + S s = S ((S 0) * c)) /\\ exists w. '
+                     'z = w * S ((S 0) * c) + s) /\\ forall i a. (exists h. h + S i = 0) -> '
+                     '((exists h. h + S a = S ((S i) * e)) /\\ exists w. b = w * S ((S i) * e) + '
+                     'a) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists w. z = w * S ((S i) * '
+                     'c) + a))',
+                     'specialize beta_prefix_extend 0',
+                     'specialize beta_prefix_extend b',
+                     'specialize beta_prefix_extend e',
+                     'specialize beta_prefix_extend s',
+                     'exact beta_prefix_extend',
+                     'cases hext',
+                     'cases hext_witness',
+                     'cases hext_witness_witness',
+                     'exists x',
+                     'exists x1',
+                     'split',
+                     'split',
+                     'exact hext_witness_witness_left',
+                     'exact hext_witness_witness_right',
+                     'specialize sorted_singleton x',
+                     'specialize sorted_singleton x1',
+                     'exact sorted_singleton'),
+             summary='Append the first value to an empty code; the resulting singleton is Sorted.'),
+ TheoremSpec(name='beta_prefix_extend_sorted_succ',
+             statement='forall l b e s p. (forall i. (exists h. h + S (S i) = S l) -> exists p q. '
+                       '(((exists h. h + S p = S ((S i) * e)) /\\ exists w. b = w * S ((S i) * e) '
+                       '+ p) /\\ (((exists h. h + S q = S ((S S i) * e)) /\\ exists w. b = w * S '
+                       '((S S i) * e) + q) /\\ (exists h. h + p = q)))) -> ((exists h. h + S p = S '
+                       '((S l) * e)) /\\ exists w. b = w * S ((S l) * e) + p) -> (exists h. h + p '
+                       '= s) -> exists z c. ((((exists h. h + S s = S ((S S l) * c)) /\\ exists w. '
+                       'z = w * S ((S S l) * c) + s) /\\ forall i a. (exists h. h + S i = S l) -> '
+                       '((exists h. h + S a = S ((S i) * e)) /\\ exists w. b = w * S ((S i) * e) + '
+                       'a) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists w. z = w * S ((S i) '
+                       '* c) + a)) /\\ (forall i. (exists h. h + S (S i) = S (S l)) -> exists p q. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. z = w * S ((S i) * c) '
+                       '+ p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. z = w * S '
+                       '((S S i) * c) + q) /\\ (exists h. h + p = q)))))',
+             dependencies=('beta_prefix_extend',
+                           'sorted_transport',
+                           'sorted_succ_intro',
+                           'le_refl'),
+             script=('intro l',
+                     'intro b',
+                     'intro e',
+                     'intro s',
+                     'intro p',
+                     'intro hsorted',
+                     'intro hp',
+                     'intro hps',
+                     'have hext : exists z c. (((exists h. h + S s = S ((S S l) * c)) /\\ exists '
+                     'w. z = w * S ((S S l) * c) + s) /\\ forall i a. (exists h. h + S i = S l) -> '
+                     '((exists h. h + S a = S ((S i) * e)) /\\ exists w. b = w * S ((S i) * e) + '
+                     'a) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists w. z = w * S ((S i) * '
+                     'c) + a))',
+                     'specialize beta_prefix_extend (S l)',
+                     'specialize beta_prefix_extend b',
+                     'specialize beta_prefix_extend e',
+                     'specialize beta_prefix_extend s',
+                     'exact beta_prefix_extend',
+                     'cases hext',
+                     'cases hext_witness',
+                     'cases hext_witness_witness',
+                     'have hnewsorted : (forall i. (exists h. h + S (S i) = S l) -> exists p q. '
+                     '(((exists h. h + S p = S ((S i) * x1)) /\\ exists w. x = w * S ((S i) * x1) '
+                     '+ p) /\\ (((exists h. h + S q = S ((S S i) * x1)) /\\ exists w. x = w * S '
+                     '((S S i) * x1) + q) /\\ (exists h. h + p = q))))',
+                     'specialize sorted_transport b',
+                     'specialize sorted_transport e',
+                     'specialize sorted_transport x',
+                     'specialize sorted_transport x1',
+                     'specialize sorted_transport (S l)',
+                     'apply sorted_transport',
+                     'exact hsorted',
+                     'exact hext_witness_witness_right',
+                     'have hnewp : ((exists h. h + S p = S ((S l) * x1)) /\\ exists w. x = w * S '
+                     '((S l) * x1) + p)',
+                     'specialize hext_witness_witness_right l',
+                     'specialize hext_witness_witness_right p',
+                     'apply hext_witness_witness_right',
+                     'specialize le_refl (S l)',
+                     'exact le_refl',
+                     'exact hp',
+                     'exists x',
+                     'exists x1',
+                     'split',
+                     'split',
+                     'exact hext_witness_witness_left',
+                     'exact hext_witness_witness_right',
+                     'specialize sorted_succ_intro x',
+                     'specialize sorted_succ_intro x1',
+                     'specialize sorted_succ_intro l',
+                     'specialize sorted_succ_intro p',
+                     'specialize sorted_succ_intro s',
+                     'apply sorted_succ_intro',
+                     'exact hnewsorted',
+                     'exact hnewp',
+                     'exact hext_witness_witness_left',
+                     'exact hps'),
+             summary='Recode a nonempty Sorted prefix and append a value above its former last '
+                     'value.'))
+
+
+# Canonical append packages one shared recoding witness with Product,
+# AllPrime, and adjacent Sorted preservation.  It does not assert FTA.
+BETA_CANONICAL_APPEND_THEOREMS: tuple[TheoremSpec, ...] = (TheoremSpec(name='beta_canonical_append_empty',
+             statement='forall b c s. (~(s = 1) /\\ forall a d. s = a * d -> a = 1 \\/ d = 1) -> '
+                       '(exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S '
+                       '((S 0) * v) + 1) /\\ (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u '
+                       '= w * S ((S 0) * v) + 1) /\\ forall i. (exists h. h + S i = 0) -> exists p '
+                       'r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) '
+                       '* c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * '
+                       'S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists '
+                       'w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) -> exists z e. '
+                       '(((exists h. h + S s = S ((S 0) * e)) /\\ exists w. z = w * S ((S 0) * e) '
+                       '+ s) /\\ ((forall i a. (exists h. h + S i = 0) -> ((exists h. h + S a = S '
+                       '((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + a) -> ((exists h. h + S '
+                       'a = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + a)) /\\ ((exists '
+                       'u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) '
+                       '* v) + 1) /\\ (((exists h. h + S s = S ((S 1) * v)) /\\ exists w. u = w * '
+                       'S ((S 1) * v) + s) /\\ forall i. (exists h. h + S i = 1) -> exists p r s. '
+                       '(((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) '
+                       '+ p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S '
+                       'i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = '
+                       'w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h '
+                       '+ S i = 1) -> exists p. (((exists h. h + S p = S ((S i) * e)) /\\ exists '
+                       'w. z = w * S ((S i) * e) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a '
+                       '= 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S (S i) = 1) -> exists p q. '
+                       '(((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) '
+                       '+ p) /\\ (((exists h. h + S q = S ((S S i) * e)) /\\ exists w. z = w * S '
+                       '((S S i) * e) + q) /\\ (exists h. h + p = q))))))))',
+             dependencies=('beta_factor_prefix_product_append',
+                           'all_prime_empty',
+                           'all_prime_succ_intro',
+                           'sorted_singleton',
+                           'one_mul'),
+             script=('intro b',
+                     'intro c',
+                     'intro s',
+                     'intro hs',
+                     'intro hproduct',
+                     'have hext : exists z e. (((exists h. h + S s = S ((S 0) * e)) /\\ exists w. '
+                     'z = w * S ((S 0) * e) + s) /\\ ((forall i a. (exists h. h + S i = 0) -> '
+                     '((exists h. h + S a = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + '
+                     'a) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * '
+                     'e) + a)) /\\ (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists '
+                     'w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S (1 * s) = S ((S 1) * '
+                     'v)) /\\ exists w. u = w * S ((S 1) * v) + (1 * s)) /\\ forall i. (exists h. '
+                     'h + S i = 1) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ '
+                     'exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * '
+                     'v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S '
+                     '((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * '
+                     'p))))))))',
+                     'specialize beta_factor_prefix_product_append b',
+                     'specialize beta_factor_prefix_product_append c',
+                     'specialize beta_factor_prefix_product_append 0',
+                     'specialize beta_factor_prefix_product_append 1',
+                     'specialize beta_factor_prefix_product_append s',
+                     'apply beta_factor_prefix_product_append',
+                     'exact hproduct',
+                     'cases hext',
+                     'cases hext_witness',
+                     'cases hext_witness_witness',
+                     'cases hext_witness_witness_right',
+                     'have hproduct_s : exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ '
+                     'exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S s = S ((S 1) * '
+                     'v)) /\\ exists w. u = w * S ((S 1) * v) + s) /\\ forall i. (exists h. h + S '
+                     'i = 1) -> exists p r s. (((exists h. h + S p = S ((S i) * x1)) /\\ exists w. '
+                     'x = w * S ((S i) * x1) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ '
+                     'exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * '
+                     'v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))',
+                     'specialize one_mul s',
+                     'rewrite one_mul at hext_witness_witness_right_right',
+                     'rewrite one_mul at hext_witness_witness_right_right',
+                     'exact hext_witness_witness_right_right',
+                     'have hall : (forall i. (exists h. h + S i = 1) -> exists p. (((exists h. h + '
+                     'S p = S ((S i) * x1)) /\\ exists w. x = w * S ((S i) * x1) + p) /\\ (~(p = '
+                     '1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)))',
+                     'specialize all_prime_succ_intro x',
+                     'specialize all_prime_succ_intro x1',
+                     'specialize all_prime_succ_intro 0',
+                     'specialize all_prime_succ_intro s',
+                     'apply all_prime_succ_intro',
+                     'specialize all_prime_empty x',
+                     'specialize all_prime_empty x1',
+                     'exact all_prime_empty',
+                     'split',
+                     'exact hext_witness_witness_left',
+                     'exact hs',
+                     'exists x',
+                     'exists x1',
+                     'split',
+                     'exact hext_witness_witness_left',
+                     'split',
+                     'exact hext_witness_witness_right_left',
+                     'split',
+                     'exact hproduct_s',
+                     'split',
+                     'exact hall',
+                     'specialize sorted_singleton x',
+                     'specialize sorted_singleton x1',
+                     'exact sorted_singleton'),
+             summary='Append the first prime using the canonical shared-code factor/Product append '
+                     'helper.'),
+ TheoremSpec(name='beta_canonical_append_succ',
+             statement='forall l b c n s p. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ '
+                       'exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S S l) '
+                       '* v)) /\\ exists w. u = w * S ((S S l) * v) + n) /\\ forall i. (exists h. '
+                       'h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ '
+                       'exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * '
+                       'v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S '
+                       '((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * '
+                       'p)))))) -> (forall i. (exists h. h + S i = S l) -> exists p. (((exists h. '
+                       'h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p '
+                       '= 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (forall i. (exists '
+                       'h. h + S (S i) = S l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) '
+                       '/\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S '
+                       'S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p '
+                       '= q)))) -> ((exists h. h + S p = S ((S l) * c)) /\\ exists w. b = w * S '
+                       '((S l) * c) + p) -> (exists h. h + p = s) -> (~(s = 1) /\\ forall a d. s = '
+                       'a * d -> a = 1 \\/ d = 1) -> exists z e. (((exists h. h + S s = S ((S S l) '
+                       '* e)) /\\ exists w. z = w * S ((S S l) * e) + s) /\\ ((forall i a. (exists '
+                       'h. h + S i = S l) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists w. b '
+                       '= w * S ((S i) * c) + a) -> ((exists h. h + S a = S ((S i) * e)) /\\ '
+                       'exists w. z = w * S ((S i) * e) + a)) /\\ ((exists u v. (((exists h. h + S '
+                       '1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists '
+                       'h. h + S (n * s) = S ((S S (S l)) * v)) /\\ exists w. u = w * S ((S S (S '
+                       'l)) * v) + (n * s)) /\\ forall i. (exists h. h + S i = S (S l)) -> exists '
+                       'p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S '
+                       'i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w '
+                       '* S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ '
+                       'exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. '
+                       '(exists h. h + S i = S (S l)) -> exists p. (((exists h. h + S p = S ((S i) '
+                       '* e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (~(p = 1) /\\ forall a '
+                       'd. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S (S i) = '
+                       'S (S l)) -> exists p q. (((exists h. h + S p = S ((S i) * e)) /\\ exists '
+                       'w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S q = S ((S S i) * e)) '
+                       '/\\ exists w. z = w * S ((S S i) * e) + q) /\\ (exists h. h + p = '
+                       'q))))))))',
+             dependencies=('beta_factor_prefix_product_append',
+                           'all_prime_transport',
+                           'all_prime_succ_intro',
+                           'sorted_transport',
+                           'sorted_succ_intro',
+                           'le_refl'),
+             script=('intro l',
+                     'intro b',
+                     'intro c',
+                     'intro n',
+                     'intro s',
+                     'intro p',
+                     'intro hproduct',
+                     'intro hall',
+                     'intro hsorted',
+                     'intro hp',
+                     'intro hps',
+                     'intro hs',
+                     'have hext : exists z e. (((exists h. h + S s = S ((S S l) * e)) /\\ exists '
+                     'w. z = w * S ((S S l) * e) + s) /\\ ((forall i a. (exists h. h + S i = S l) '
+                     '-> ((exists h. h + S a = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                     '+ a) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists w. z = w * S ((S i) '
+                     '* e) + a)) /\\ (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists '
+                     'w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S (n * s) = S ((S S (S '
+                     'l)) * v)) /\\ exists w. u = w * S ((S S (S l)) * v) + (n * s)) /\\ forall i. '
+                     '(exists h. h + S i = S (S l)) -> exists p r s. (((exists h. h + S p = S ((S '
+                     'i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = '
+                     'S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + '
+                     'S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r '
+                     '* p))))))))',
+                     'specialize beta_factor_prefix_product_append b',
+                     'specialize beta_factor_prefix_product_append c',
+                     'specialize beta_factor_prefix_product_append (S l)',
+                     'specialize beta_factor_prefix_product_append n',
+                     'specialize beta_factor_prefix_product_append s',
+                     'apply beta_factor_prefix_product_append',
+                     'exact hproduct',
+                     'cases hext',
+                     'cases hext_witness',
+                     'cases hext_witness_witness',
+                     'cases hext_witness_witness_right',
+                     'have hnew_all_prefix : (forall i. (exists h. h + S i = S l) -> exists p. '
+                     '(((exists h. h + S p = S ((S i) * x1)) /\\ exists w. x = w * S ((S i) * x1) '
+                     '+ p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)))',
+                     'specialize all_prime_transport b',
+                     'specialize all_prime_transport c',
+                     'specialize all_prime_transport x',
+                     'specialize all_prime_transport x1',
+                     'specialize all_prime_transport (S l)',
+                     'apply all_prime_transport',
+                     'exact hall',
+                     'exact hext_witness_witness_right_left',
+                     'have hnew_all : (forall i. (exists h. h + S i = S (S l)) -> exists p. '
+                     '(((exists h. h + S p = S ((S i) * x1)) /\\ exists w. x = w * S ((S i) * x1) '
+                     '+ p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)))',
+                     'specialize all_prime_succ_intro x',
+                     'specialize all_prime_succ_intro x1',
+                     'specialize all_prime_succ_intro (S l)',
+                     'specialize all_prime_succ_intro s',
+                     'apply all_prime_succ_intro',
+                     'exact hnew_all_prefix',
+                     'split',
+                     'exact hext_witness_witness_left',
+                     'exact hs',
+                     'have hnew_sorted_prefix : (forall i. (exists h. h + S (S i) = S l) -> exists '
+                     'p q. (((exists h. h + S p = S ((S i) * x1)) /\\ exists w. x = w * S ((S i) * '
+                     'x1) + p) /\\ (((exists h. h + S q = S ((S S i) * x1)) /\\ exists w. x = w * '
+                     'S ((S S i) * x1) + q) /\\ (exists h. h + p = q))))',
+                     'specialize sorted_transport b',
+                     'specialize sorted_transport c',
+                     'specialize sorted_transport x',
+                     'specialize sorted_transport x1',
+                     'specialize sorted_transport (S l)',
+                     'apply sorted_transport',
+                     'exact hsorted',
+                     'exact hext_witness_witness_right_left',
+                     'have hnewp : ((exists h. h + S p = S ((S l) * x1)) /\\ exists w. x = w * S '
+                     '((S l) * x1) + p)',
+                     'specialize hext_witness_witness_right_left l',
+                     'specialize hext_witness_witness_right_left p',
+                     'apply hext_witness_witness_right_left',
+                     'specialize le_refl (S l)',
+                     'exact le_refl',
+                     'exact hp',
+                     'have hnew_sorted : (forall i. (exists h. h + S (S i) = S (S l)) -> exists p '
+                     'q. (((exists h. h + S p = S ((S i) * x1)) /\\ exists w. x = w * S ((S i) * '
+                     'x1) + p) /\\ (((exists h. h + S q = S ((S S i) * x1)) /\\ exists w. x = w * '
+                     'S ((S S i) * x1) + q) /\\ (exists h. h + p = q))))',
+                     'specialize sorted_succ_intro x',
+                     'specialize sorted_succ_intro x1',
+                     'specialize sorted_succ_intro l',
+                     'specialize sorted_succ_intro p',
+                     'specialize sorted_succ_intro s',
+                     'apply sorted_succ_intro',
+                     'exact hnew_sorted_prefix',
+                     'exact hnewp',
+                     'exact hext_witness_witness_left',
+                     'exact hps',
+                     'exists x',
+                     'exists x1',
+                     'split',
+                     'exact hext_witness_witness_left',
+                     'split',
+                     'exact hext_witness_witness_right_left',
+                     'split',
+                     'exact hext_witness_witness_right_right',
+                     'split',
+                     'exact hnew_all',
+                     'exact hnew_sorted'),
+             summary='Append one ordered prime using the canonical shared-code factor/Product '
+                     'append helper.'))
+
+
+# Constructive greatest-prime search and the exact quotient-descent package.
+GREATEST_PRIME_DIVISOR_THEOREMS: tuple[TheoremSpec, ...] = (TheoremSpec(name='prime_divides_decidable',
+             statement='forall p n. ((~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1) /\\ '
+                       '(exists k. n = p * k)) \\/ ~(((~(p = 1) /\\ forall a d. p = a * d -> a = 1 '
+                       '\\/ d = 1) /\\ (exists k. n = p * k)))',
+             dependencies=('prime_decidable', 'multiple_decidable'),
+             script=('intro p',
+                     'intro n',
+                     'have hp : (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1) \\/ ~((~(p '
+                     '= 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))',
+                     'specialize prime_decidable p',
+                     'exact prime_decidable',
+                     'cases hp',
+                     'have hd : (exists k. n = p * k) \\/ ~((exists k. n = p * k))',
+                     'specialize multiple_decidable p',
+                     'specialize multiple_decidable n',
+                     'exact multiple_decidable',
+                     'cases hd',
+                     'left',
+                     'split',
+                     'exact hp_left',
+                     'exact hd_left',
+                     'right',
+                     'intro hpd',
+                     'cases hpd',
+                     'apply hd_right',
+                     'exact hpd_right',
+                     'right',
+                     'intro hpd',
+                     'cases hpd',
+                     'apply hp_right',
+                     'exact hpd_left'),
+             summary='The concrete property of being a prime divisor is constructively decidable.'),
+ TheoremSpec(name='greatest_prime_divisor_search',
+             statement='forall B n. ((forall r. (exists h. h + r = B) -> ~(((~(r = 1) /\\ forall a '
+                       'd. r = a * d -> a = 1 \\/ d = 1) /\\ (exists k. n = r * k)))) \\/ exists '
+                       'p. (((exists h. h + p = B) /\\ ((~(p = 1) /\\ forall a d. p = a * d -> a = '
+                       '1 \\/ d = 1) /\\ (exists k. n = p * k))) /\\ forall r. (exists h. h + r = '
+                       'B) -> ((~(r = 1) /\\ forall a d. r = a * d -> a = 1 \\/ d = 1) /\\ (exists '
+                       'k. n = r * k)) -> (exists h. h + r = p)))',
+             dependencies=('prime_nonzero',
+                           'le_zero',
+                           'prime_divides_decidable',
+                           'le_refl',
+                           'le_eq_or_lt',
+                           'le_of_succ_le_succ',
+                           'le_succ'),
+             script=('induction B',
+                     'intro n',
+                     'left',
+                     'intro r',
+                     'intro hr',
+                     'intro hpd',
+                     'cases hpd',
+                     'have hr0 : r = 0',
+                     'specialize le_zero r',
+                     'apply le_zero',
+                     'exact hr',
+                     'specialize prime_nonzero r',
+                     'apply prime_nonzero',
+                     'exact hpd_left',
+                     'exact hr0',
+                     'intro n',
+                     'have hboundary : ((~(S B = 1) /\\ forall a d. S B = a * d -> a = 1 \\/ d = '
+                     '1) /\\ (exists k. n = S B * k)) \\/ ~(((~(S B = 1) /\\ forall a d. S B = a * '
+                     'd -> a = 1 \\/ d = 1) /\\ (exists k. n = S B * k)))',
+                     'specialize prime_divides_decidable (S B)',
+                     'specialize prime_divides_decidable n',
+                     'exact prime_divides_decidable',
+                     'cases hboundary',
+                     'right',
+                     'exists S B',
+                     'split',
+                     'split',
+                     'specialize le_refl (S B)',
+                     'exact le_refl',
+                     'exact hboundary_left',
+                     'intro r',
+                     'intro hr',
+                     'intro hpd',
+                     'exact hr',
+                     'have hprev : ((forall r. (exists h. h + r = B) -> ~(((~(r = 1) /\\ forall a '
+                     'd. r = a * d -> a = 1 \\/ d = 1) /\\ (exists k. n = r * k)))) \\/ exists p. '
+                     '(((exists h. h + p = B) /\\ ((~(p = 1) /\\ forall a d. p = a * d -> a = 1 '
+                     '\\/ d = 1) /\\ (exists k. n = p * k))) /\\ forall r. (exists h. h + r = B) '
+                     '-> ((~(r = 1) /\\ forall a d. r = a * d -> a = 1 \\/ d = 1) /\\ (exists k. n '
+                     '= r * k)) -> (exists h. h + r = p)))',
+                     'specialize IH n',
+                     'exact IH',
+                     'cases hprev',
+                     'left',
+                     'intro r',
+                     'intro hr',
+                     'intro hpd',
+                     'have hsplit : r = S B \\/ exists h. h + S r = S B',
+                     'specialize le_eq_or_lt r',
+                     'specialize le_eq_or_lt (S B)',
+                     'apply le_eq_or_lt',
+                     'exact hr',
+                     'cases hsplit',
+                     'apply hboundary_right',
+                     'rewrite hsplit_left at hpd',
+                     'rewrite hsplit_left at hpd',
+                     'rewrite hsplit_left at hpd',
+                     'exact hpd',
+                     'specialize hprev_left r',
+                     'apply hprev_left',
+                     'specialize le_of_succ_le_succ r',
+                     'specialize le_of_succ_le_succ B',
+                     'apply le_of_succ_le_succ',
+                     'exact hsplit_right',
+                     'exact hpd',
+                     'right',
+                     'cases hprev_right',
+                     'cases hprev_right_witness',
+                     'cases hprev_right_witness_left',
+                     'exists x',
+                     'split',
+                     'split',
+                     'specialize le_succ x',
+                     'specialize le_succ B',
+                     'apply le_succ',
+                     'exact hprev_right_witness_left_left',
+                     'exact hprev_right_witness_left_right',
+                     'intro r',
+                     'intro hr',
+                     'intro hpd',
+                     'have hsplit2 : r = S B \\/ exists h. h + S r = S B',
+                     'specialize le_eq_or_lt r',
+                     'specialize le_eq_or_lt (S B)',
+                     'apply le_eq_or_lt',
+                     'exact hr',
+                     'cases hsplit2',
+                     'exfalso',
+                     'apply hboundary_right',
+                     'rewrite hsplit2_left at hpd',
+                     'rewrite hsplit2_left at hpd',
+                     'rewrite hsplit2_left at hpd',
+                     'exact hpd',
+                     'specialize hprev_right_witness_right r',
+                     'apply hprev_right_witness_right',
+                     'specialize le_of_succ_le_succ r',
+                     'specialize le_of_succ_le_succ B',
+                     'apply le_of_succ_le_succ',
+                     'exact hsplit2_right',
+                     'exact hpd'),
+             summary='Bounded search either excludes all prime divisors or returns a greatest one '
+                     'in the bound.'),
+ TheoremSpec(name='greatest_prime_divisor_exists',
+             statement='forall n. ~(n = 0) -> ~(n = 1) -> exists p. (((~(p = 1) /\\ forall a d. p '
+                       '= a * d -> a = 1 \\/ d = 1) /\\ (exists k. n = p * k)) /\\ forall r. ((~(r '
+                       '= 1) /\\ forall a d. r = a * d -> a = 1 \\/ d = 1) /\\ (exists k. n = r * '
+                       'k)) -> (exists h. h + r = p))',
+             dependencies=('prime_divisor_exists',
+                           'divisor_le_nonzero',
+                           'greatest_prime_divisor_search'),
+             script=('intro n',
+                     'intro hn0',
+                     'intro hn1',
+                     'have hsome : exists p. ((~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = '
+                     '1) /\\ (exists k. n = p * k))',
+                     'specialize prime_divisor_exists n',
+                     'apply prime_divisor_exists',
+                     'exact hn0',
+                     'exact hn1',
+                     'cases hsome',
+                     'cases hsome_witness',
+                     'have hxle : (exists h. h + x = n)',
+                     'specialize divisor_le_nonzero x',
+                     'specialize divisor_le_nonzero n',
+                     'apply divisor_le_nonzero',
+                     'exact hn0',
+                     'exact hsome_witness_right',
+                     'have hsearch : ((forall r. (exists h. h + r = n) -> ~(((~(r = 1) /\\ forall '
+                     'a d. r = a * d -> a = 1 \\/ d = 1) /\\ (exists k. n = r * k)))) \\/ exists '
+                     'p. (((exists h. h + p = n) /\\ ((~(p = 1) /\\ forall a d. p = a * d -> a = 1 '
+                     '\\/ d = 1) /\\ (exists k. n = p * k))) /\\ forall r. (exists h. h + r = n) '
+                     '-> ((~(r = 1) /\\ forall a d. r = a * d -> a = 1 \\/ d = 1) /\\ (exists k. n '
+                     '= r * k)) -> (exists h. h + r = p)))',
+                     'specialize greatest_prime_divisor_search n',
+                     'specialize greatest_prime_divisor_search n',
+                     'exact greatest_prime_divisor_search',
+                     'cases hsearch',
+                     'exfalso',
+                     'specialize hsearch_left x',
+                     'apply hsearch_left',
+                     'exact hxle',
+                     'split',
+                     'exact hsome_witness_left',
+                     'exact hsome_witness_right',
+                     'cases hsearch_right',
+                     'cases hsearch_right_witness',
+                     'cases hsearch_right_witness_left',
+                     'exists x1',
+                     'split',
+                     'exact hsearch_right_witness_left_right',
+                     'intro r',
+                     'intro hrpd',
+                     'cases hrpd',
+                     'specialize hsearch_right_witness_right r',
+                     'apply hsearch_right_witness_right',
+                     'specialize divisor_le_nonzero r',
+                     'specialize divisor_le_nonzero n',
+                     'apply divisor_le_nonzero',
+                     'exact hn0',
+                     'exact hrpd_right',
+                     'split',
+                     'exact hrpd_left',
+                     'exact hrpd_right'),
+             summary='Every nonzero nonunit has a greatest prime divisor in the ordinary natural '
+                     'order.'),
+ TheoremSpec(name='greatest_prime_divisor_quotient_bound',
+             statement='forall n p q. n = p * q -> (((~(p = 1) /\\ forall a d. p = a * d -> a = 1 '
+                       '\\/ d = 1) /\\ (exists k. n = p * k)) /\\ forall r. ((~(r = 1) /\\ forall '
+                       'a d. r = a * d -> a = 1 \\/ d = 1) /\\ (exists k. n = r * k)) -> (exists '
+                       'h. h + r = p)) -> forall r. (~(r = 1) /\\ forall a d. r = a * d -> a = 1 '
+                       '\\/ d = 1) -> (exists k. q = r * k) -> (exists h. h + r = p)',
+             dependencies=('mul_comm', 'multiple_trans'),
+             script=('intro n',
+                     'intro p',
+                     'intro q',
+                     'intro hfactor',
+                     'intro hgreat',
+                     'intro r',
+                     'intro hrprime',
+                     'intro hrdq',
+                     'cases hgreat',
+                     'have hqdn : (exists k. n = q * k)',
+                     'exists p',
+                     'trans p * q',
+                     'exact hfactor',
+                     'apply mul_comm',
+                     'have hrdn : (exists k. n = r * k)',
+                     'specialize multiple_trans q',
+                     'specialize multiple_trans r',
+                     'specialize multiple_trans n',
+                     'apply multiple_trans',
+                     'exact hqdn',
+                     'exact hrdq',
+                     'specialize hgreat_right r',
+                     'apply hgreat_right',
+                     'split',
+                     'exact hrprime',
+                     'exact hrdn'),
+             summary='Every prime divisor of the quotient by a greatest prime divisor is bounded '
+                     'by that divisor.'),
+ TheoremSpec(name='greatest_prime_divisor_descent',
+             statement='forall n. ~(n = 0) -> ~(n = 1) -> exists p q. (((~(p = 1) /\\ forall a d. '
+                       'p = a * d -> a = 1 \\/ d = 1) /\\ n = p * q) /\\ (~(q = 0) /\\ ((exists h. '
+                       'h + S q = n) /\\ forall r. (~(r = 1) /\\ forall a d. r = a * d -> a = 1 '
+                       '\\/ d = 1) -> (exists k. q = r * k) -> (exists h. h + r = p))))',
+             dependencies=('greatest_prime_divisor_exists',
+                           'mul_comm',
+                           'factor_nonzero_left',
+                           'proper_factor_lt',
+                           'greatest_prime_divisor_quotient_bound'),
+             script=('intro n',
+                     'intro hn0',
+                     'intro hn1',
+                     'have hgreat : exists p. (((~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d '
+                     '= 1) /\\ (exists k. n = p * k)) /\\ forall r. ((~(r = 1) /\\ forall a d. r = '
+                     'a * d -> a = 1 \\/ d = 1) /\\ (exists k. n = r * k)) -> (exists h. h + r = '
+                     'p))',
+                     'specialize greatest_prime_divisor_exists n',
+                     'apply greatest_prime_divisor_exists',
+                     'exact hn0',
+                     'exact hn1',
+                     'cases hgreat',
+                     'cases hgreat_witness',
+                     'cases hgreat_witness_left',
+                     'cases hgreat_witness_left_left',
+                     'cases hgreat_witness_left_right',
+                     'have hqp : n = x1 * x',
+                     'trans x * x1',
+                     'exact hgreat_witness_left_right_witness',
+                     'apply mul_comm',
+                     'have hq0 : ~(x1 = 0)',
+                     'intro hx10',
+                     'specialize factor_nonzero_left n',
+                     'specialize factor_nonzero_left x1',
+                     'specialize factor_nonzero_left x',
+                     'apply factor_nonzero_left',
+                     'exact hn0',
+                     'exact hqp',
+                     'exact hx10',
+                     'have hqlt : (exists h. h + S x1 = n)',
+                     'specialize proper_factor_lt n',
+                     'specialize proper_factor_lt x1',
+                     'specialize proper_factor_lt x',
+                     'apply proper_factor_lt',
+                     'exact hn0',
+                     'exact hqp',
+                     'exact hgreat_witness_left_left_left',
+                     'have hbound : forall r. (~(r = 1) /\\ forall a d. r = a * d -> a = 1 \\/ d = '
+                     '1) -> (exists k. x1 = r * k) -> (exists h. h + r = x)',
+                     'specialize greatest_prime_divisor_quotient_bound n',
+                     'specialize greatest_prime_divisor_quotient_bound x',
+                     'specialize greatest_prime_divisor_quotient_bound x1',
+                     'apply greatest_prime_divisor_quotient_bound',
+                     'exact hgreat_witness_left_right_witness',
+                     'split',
+                     'split',
+                     'split',
+                     'exact hgreat_witness_left_left_left',
+                     'exact hgreat_witness_left_left_right',
+                     'exists x1',
+                     'exact hgreat_witness_left_right_witness',
+                     'exact hgreat_witness_right',
+                     'exists x',
+                     'exists x1',
+                     'split',
+                     'split',
+                     'split',
+                     'exact hgreat_witness_left_left_left',
+                     'exact hgreat_witness_left_left_right',
+                     'exact hgreat_witness_left_right_witness',
+                     'split',
+                     'exact hq0',
+                     'split',
+                     'exact hqlt',
+                     'exact hbound'),
+             summary='Choose a greatest prime factor with a nonzero strict quotient and the exact '
+                     'append-order bound.'))
+
+
+# Link decoded factors to terminal Product divisibility.
+BETA_FACTOR_DIVISIBILITY_THEOREMS: tuple[TheoremSpec, ...] = (TheoremSpec(name='beta_factor_divides_product',
+             statement='forall b c l n i p. (exists h. h + S i = l) -> ((exists h. h + S p = S ((S '
+                       'i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) -> (exists u v. '
+                       '(((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) '
+                       '+ 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. u = q * S ((S '
+                       'l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) '
+                       '+ p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S '
+                       'i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = '
+                       'q * S ((S S i) * v) + s) /\\ s = r * p)))))) -> exists q. n = p * q',
+             dependencies=('add_eq_zero_right',
+                           'succ_ne_zero',
+                           'beta_product_succ_decompose',
+                           'le_of_succ_le_succ',
+                           'le_eq_or_lt',
+                           'beta_at_unique',
+                           'mul_comm',
+                           'multiple_mul_right'),
+             script=('intro b',
+                     'intro c',
+                     'induction l',
+                     'intro n',
+                     'intro i',
+                     'intro p',
+                     'intro hi',
+                     'intro hp',
+                     'intro hproduct',
+                     'exfalso',
+                     'cases hi',
+                     'have hsi0 : S i = 0',
+                     'specialize add_eq_zero_right x',
+                     'specialize add_eq_zero_right (S i)',
+                     'apply add_eq_zero_right',
+                     'exact hi_witness',
+                     'specialize succ_ne_zero i',
+                     'apply succ_ne_zero',
+                     'exact hsi0',
+                     'intro n',
+                     'intro i',
+                     'intro p',
+                     'intro hi',
+                     'intro hp',
+                     'intro hproduct',
+                     'have hdecomp : exists a r. (((exists h. h + S a = S ((S l) * c)) /\\ exists '
+                     'q. b = q * S ((S l) * c) + a) /\\ ((exists u v. (((exists h. h + S 1 = S ((S '
+                     '0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S r = '
+                     'S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + r) /\\ forall i. '
+                     '(exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * '
+                     'c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S '
+                     '((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S '
+                     's = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * '
+                     'p)))))) /\\ n = r * a))',
+                     'specialize beta_product_succ_decompose b',
+                     'specialize beta_product_succ_decompose c',
+                     'specialize beta_product_succ_decompose l',
+                     'specialize beta_product_succ_decompose n',
+                     'apply beta_product_succ_decompose',
+                     'exact hproduct',
+                     'cases hdecomp',
+                     'cases hdecomp_witness',
+                     'cases hdecomp_witness_witness',
+                     'cases hdecomp_witness_witness_right',
+                     'have hil : exists h. h + i = l',
+                     'specialize le_of_succ_le_succ i',
+                     'specialize le_of_succ_le_succ l',
+                     'apply le_of_succ_le_succ',
+                     'exact hi',
+                     'have hsplit : i = l \\/ exists h. h + S i = l',
+                     'specialize le_eq_or_lt i',
+                     'specialize le_eq_or_lt l',
+                     'apply le_eq_or_lt',
+                     'exact hil',
+                     'cases hsplit',
+                     'have hpa : p = x',
+                     'specialize beta_at_unique b',
+                     'specialize beta_at_unique c',
+                     'specialize beta_at_unique l',
+                     'specialize beta_at_unique p',
+                     'specialize beta_at_unique x',
+                     'apply beta_at_unique',
+                     'rewrite hsplit_left at hp',
+                     'rewrite hsplit_left at hp',
+                     'exact hp',
+                     'exact hdecomp_witness_witness_left',
+                     'exists x1',
+                     'trans x1 * x',
+                     'exact hdecomp_witness_witness_right_right',
+                     'rewrite hpa',
+                     'apply mul_comm',
+                     'have hidiv : exists q. x1 = p * q',
+                     'specialize IH x1',
+                     'specialize IH i',
+                     'specialize IH p',
+                     'apply IH',
+                     'exact hsplit_right',
+                     'exact hp',
+                     'exact hdecomp_witness_witness_right_left',
+                     'have hmul : exists q. x1 * x = p * q',
+                     'specialize multiple_mul_right p',
+                     'specialize multiple_mul_right x1',
+                     'specialize multiple_mul_right x',
+                     'apply multiple_mul_right',
+                     'exact hidiv',
+                     'cases hmul',
+                     'exists x2',
+                     'trans x1 * x',
+                     'exact hdecomp_witness_witness_right_right',
+                     'exact hmul_witness'),
+             summary='Every decoded factor inside an exact beta Product divides its terminal '
+                     'product.'),)
+
+
+# The nonempty canonical orchestration bridge bounds the last factor.
+BETA_CANONICAL_LAST_FACTOR_THEOREMS: tuple[TheoremSpec, ...] = (TheoremSpec(name='beta_canonical_last_factor_bound',
+             statement='forall b c l n s. (forall i. (exists h. h + S i = S l) -> exists p. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                       '+ p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> '
+                       '(exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S '
+                       '((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S S l) * v)) /\\ exists q. '
+                       'u = q * S ((S S l) * v) + n) /\\ forall i. (exists h. h + S i = S l) -> '
+                       'exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * '
+                       'S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. '
+                       'u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ '
+                       'exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) -> (forall r. '
+                       '(~(r = 1) /\\ forall a d. r = a * d -> a = 1 \\/ d = 1) -> (exists k. n = '
+                       'r * k) -> (exists h. h + r = s)) -> exists p. (((exists h. h + S p = S ((S '
+                       'l) * c)) /\\ exists w. b = w * S ((S l) * c) + p) /\\ (exists h. h + p = '
+                       's))',
+             dependencies=('all_prime_succ_elim_last', 'beta_factor_divides_product', 'le_refl'),
+             script=('intro b',
+                     'intro c',
+                     'intro l',
+                     'intro n',
+                     'intro s',
+                     'intro hall',
+                     'intro hproduct',
+                     'intro hbound',
+                     'have hlast : exists p. (((exists h. h + S p = S ((S l) * c)) /\\ exists w. b '
+                     '= w * S ((S l) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 '
+                     '\\/ d = 1))',
+                     'specialize all_prime_succ_elim_last b',
+                     'specialize all_prime_succ_elim_last c',
+                     'specialize all_prime_succ_elim_last l',
+                     'apply all_prime_succ_elim_last',
+                     'exact hall',
+                     'cases hlast',
+                     'cases hlast_witness',
+                     'have hpdiv : (exists k. n = x * k)',
+                     'specialize beta_factor_divides_product b',
+                     'specialize beta_factor_divides_product c',
+                     'specialize beta_factor_divides_product (S l)',
+                     'specialize beta_factor_divides_product n',
+                     'specialize beta_factor_divides_product l',
+                     'specialize beta_factor_divides_product x',
+                     'apply beta_factor_divides_product',
+                     'specialize le_refl (S l)',
+                     'exact le_refl',
+                     'exact hlast_witness_left',
+                     'exact hproduct',
+                     'have hps : (exists h. h + x = s)',
+                     'specialize hbound x',
+                     'apply hbound',
+                     'exact hlast_witness_right',
+                     'exact hpdiv',
+                     'exists x',
+                     'split',
+                     'exact hlast_witness_left',
+                     'exact hps'),
+             summary='The last factor of a nonempty AllPrime Product obeys any bound on prime '
+                     'divisors of the product.'),)
+
+
+# General canonical append packages Product, AllPrime, and Sorted preservation
+# for either an empty or nonempty prefix in one shared certificate.
+BETA_CANONICAL_APPEND_GENERAL_THEOREMS: tuple[TheoremSpec, ...] = (TheoremSpec(name='beta_canonical_append_general',
+             statement='forall l b c n s. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ '
+                       'exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * '
+                       'v)) /\\ exists w. u = w * S ((S l) * v) + n) /\\ forall i. (exists h. h + '
+                       'S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists '
+                       'w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) '
+                       '/\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S '
+                       'S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) '
+                       '-> (forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S p = '
+                       'S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ '
+                       'forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (forall i. (exists h. h + S '
+                       'S i = l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists '
+                       'w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) '
+                       '/\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q)))) -> '
+                       '(~(s = 1) /\\ forall a d. s = a * d -> a = 1 \\/ d = 1) -> (forall r. (~(r '
+                       '= 1) /\\ forall a d. r = a * d -> a = 1 \\/ d = 1) -> (exists k. n = r * '
+                       'k) -> (exists h. h + r = s)) -> exists z e. (((exists h. h + S s = S ((S '
+                       'l) * e)) /\\ exists w. z = w * S ((S l) * e) + s) /\\ ((forall i a. '
+                       '(exists h. h + S i = l) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists '
+                       'w. b = w * S ((S i) * c) + a) -> ((exists h. h + S a = S ((S i) * e)) /\\ '
+                       'exists w. z = w * S ((S i) * e) + a)) /\\ ((exists u v. (((exists h. h + S '
+                       '1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists '
+                       'h. h + S (n * s) = S ((S S l) * v)) /\\ exists w. u = w * S ((S S l) * v) '
+                       '+ (n * s)) /\\ forall i. (exists h. h + S i = S l) -> exists p r s. '
+                       '(((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) '
+                       '+ p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S '
+                       'i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = '
+                       'w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h '
+                       '+ S i = S l) -> exists p. (((exists h. h + S p = S ((S i) * e)) /\\ exists '
+                       'w. z = w * S ((S i) * e) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a '
+                       '= 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S S i = S l) -> exists p q. '
+                       '(((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) '
+                       '+ p) /\\ (((exists h. h + S q = S ((S S i) * e)) /\\ exists w. z = w * S '
+                       '((S S i) * e) + q) /\\ (exists h. h + p = q))))))))',
+             dependencies=('beta_factor_prefix_product_append',
+                           'all_prime_transport',
+                           'all_prime_succ_intro',
+                           'zero_or_succ',
+                           'sorted_singleton',
+                           'sorted_transport',
+                           'all_prime_succ_elim_last',
+                           'beta_factor_divides_product',
+                           'le_refl',
+                           'sorted_succ_intro'),
+             script=('intro l',
+                     'intro b',
+                     'intro c',
+                     'intro n',
+                     'intro s',
+                     'intro hproduct',
+                     'intro hall',
+                     'intro hsorted',
+                     'intro hs',
+                     'intro hbound',
+                     'have hext : exists z e. (((exists h. h + S s = S ((S l) * e)) /\\ exists w. '
+                     'z = w * S ((S l) * e) + s) /\\ ((forall i a. (exists h. h + S i = l) -> '
+                     '((exists h. h + S a = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + '
+                     'a) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * '
+                     'e) + a)) /\\ (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists '
+                     'w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S (n * s) = S ((S S l) * '
+                     'v)) /\\ exists w. u = w * S ((S S l) * v) + (n * s)) /\\ forall i. (exists '
+                     'h. h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ '
+                     'exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * '
+                     'v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S '
+                     '((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * '
+                     'p))))))))',
+                     'specialize beta_factor_prefix_product_append b',
+                     'specialize beta_factor_prefix_product_append c',
+                     'specialize beta_factor_prefix_product_append l',
+                     'specialize beta_factor_prefix_product_append n',
+                     'specialize beta_factor_prefix_product_append s',
+                     'apply beta_factor_prefix_product_append',
+                     'exact hproduct',
+                     'cases hext',
+                     'cases hext_witness',
+                     'cases hext_witness_witness',
+                     'cases hext_witness_witness_right',
+                     'have hnew_all_prefix : (forall i. (exists h. h + S i = l) -> exists p. '
+                     '(((exists h. h + S p = S ((S i) * x1)) /\\ exists w. x = w * S ((S i) * x1) '
+                     '+ p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)))',
+                     'specialize all_prime_transport b',
+                     'specialize all_prime_transport c',
+                     'specialize all_prime_transport x',
+                     'specialize all_prime_transport x1',
+                     'specialize all_prime_transport l',
+                     'apply all_prime_transport',
+                     'exact hall',
+                     'exact hext_witness_witness_right_left',
+                     'have hnew_all : (forall i. (exists h. h + S i = S l) -> exists p. (((exists '
+                     'h. h + S p = S ((S i) * x1)) /\\ exists w. x = w * S ((S i) * x1) + p) /\\ '
+                     '(~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)))',
+                     'specialize all_prime_succ_intro x',
+                     'specialize all_prime_succ_intro x1',
+                     'specialize all_prime_succ_intro l',
+                     'specialize all_prime_succ_intro s',
+                     'apply all_prime_succ_intro',
+                     'exact hnew_all_prefix',
+                     'split',
+                     'exact hext_witness_witness_left',
+                     'exact hs',
+                     'have hnew_sorted_prefix : (forall i. (exists h. h + S S i = l) -> exists p '
+                     'q. (((exists h. h + S p = S ((S i) * x1)) /\\ exists w. x = w * S ((S i) * '
+                     'x1) + p) /\\ (((exists h. h + S q = S ((S S i) * x1)) /\\ exists w. x = w * '
+                     'S ((S S i) * x1) + q) /\\ (exists h. h + p = q))))',
+                     'specialize sorted_transport b',
+                     'specialize sorted_transport c',
+                     'specialize sorted_transport x',
+                     'specialize sorted_transport x1',
+                     'specialize sorted_transport l',
+                     'apply sorted_transport',
+                     'exact hsorted',
+                     'exact hext_witness_witness_right_left',
+                     'have hlen : l = 0 \\/ exists k. l = S k',
+                     'specialize zero_or_succ l',
+                     'exact zero_or_succ',
+                     'have hnew_sorted : (forall i. (exists h. h + S S i = S l) -> exists p q. '
+                     '(((exists h. h + S p = S ((S i) * x1)) /\\ exists w. x = w * S ((S i) * x1) '
+                     '+ p) /\\ (((exists h. h + S q = S ((S S i) * x1)) /\\ exists w. x = w * S '
+                     '((S S i) * x1) + q) /\\ (exists h. h + p = q))))',
+                     'cases hlen',
+                     'rewrite hlen_left',
+                     'specialize sorted_singleton x',
+                     'specialize sorted_singleton x1',
+                     'exact sorted_singleton',
+                     'cases hlen_right',
+                     'rewrite hlen_right_witness',
+                     'rewrite hlen_right_witness at hall',
+                     'rewrite hlen_right_witness at hnew_sorted_prefix',
+                     'rewrite hlen_right_witness at hproduct',
+                     'rewrite hlen_right_witness at hproduct',
+                     'rewrite hlen_right_witness at hproduct',
+                     'have hlast : exists r. (((exists h. h + S r = S ((S x2) * c)) /\\ exists w. '
+                     'b = w * S ((S x2) * c) + r) /\\ (~(r = 1) /\\ forall a d. r = a * d -> a = 1 '
+                     '\\/ d = 1))',
+                     'specialize all_prime_succ_elim_last b',
+                     'specialize all_prime_succ_elim_last c',
+                     'specialize all_prime_succ_elim_last x2',
+                     'apply all_prime_succ_elim_last',
+                     'exact hall',
+                     'cases hlast',
+                     'cases hlast_witness',
+                     'have hrdiv : (exists k. n = x3 * k)',
+                     'specialize beta_factor_divides_product b',
+                     'specialize beta_factor_divides_product c',
+                     'specialize beta_factor_divides_product (S x2)',
+                     'specialize beta_factor_divides_product n',
+                     'specialize beta_factor_divides_product x2',
+                     'specialize beta_factor_divides_product x3',
+                     'apply beta_factor_divides_product',
+                     'specialize le_refl (S x2)',
+                     'exact le_refl',
+                     'exact hlast_witness_left',
+                     'exact hproduct',
+                     'have hrs : (exists h. h + x3 = s)',
+                     'specialize hbound x3',
+                     'apply hbound',
+                     'exact hlast_witness_right',
+                     'exact hrdiv',
+                     'have hklt : (exists h. h + S x2 = l)',
+                     'rewrite hlen_right_witness',
+                     'specialize le_refl (S x2)',
+                     'exact le_refl',
+                     'have hnew_last : ((exists h. h + S x3 = S ((S x2) * x1)) /\\ exists w. x = w '
+                     '* S ((S x2) * x1) + x3)',
+                     'specialize hext_witness_witness_right_left x2',
+                     'specialize hext_witness_witness_right_left x3',
+                     'apply hext_witness_witness_right_left',
+                     'exact hklt',
+                     'exact hlast_witness_left',
+                     'have hnew_append : ((exists h. h + S s = S ((S S x2) * x1)) /\\ exists w. x '
+                     '= w * S ((S S x2) * x1) + s)',
+                     'rewrite <- hlen_right_witness',
+                     'rewrite <- hlen_right_witness',
+                     'exact hext_witness_witness_left',
+                     'specialize sorted_succ_intro x',
+                     'specialize sorted_succ_intro x1',
+                     'specialize sorted_succ_intro x2',
+                     'specialize sorted_succ_intro x3',
+                     'specialize sorted_succ_intro s',
+                     'apply sorted_succ_intro',
+                     'exact hnew_sorted_prefix',
+                     'exact hnew_last',
+                     'exact hnew_append',
+                     'exact hrs',
+                     'exists x',
+                     'exists x1',
+                     'split',
+                     'exact hext_witness_witness_left',
+                     'split',
+                     'exact hext_witness_witness_right_left',
+                     'split',
+                     'exact hext_witness_witness_right_right',
+                     'split',
+                     'exact hnew_all',
+                     'exact hnew_sorted'),
+             summary='Append one prime to any canonical prefix using one shared beta append '
+                     'certificate.'),)
+
+
+# Consolidated bounded induction and its exact catalog wrapper construct a
+# sorted beta-coded prime factorization for every nonzero natural.
+PRIME_FACTORIZATION_EXISTENCE_THEOREMS: tuple[TheoremSpec, ...] = (TheoremSpec(name='prime_factorization_exists_up_to',
+             statement='forall B n. (exists h. h + n = B) -> ~(n = 0) -> exists l b c. ((exists u '
+                       'v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * '
+                       'v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists w. u = w * S '
+                       '((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                       '+ p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S '
+                       'i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = '
+                       'w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h '
+                       '+ S i = l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists '
+                       'w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a '
+                       '= 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S S i = l) -> exists p q. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                       '+ p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S '
+                       '((S S i) * c) + q) /\\ (exists h. h + p = q))))))',
+             dependencies=('le_zero',
+                           'le_eq_or_lt',
+                           'le_of_succ_le_succ',
+                           'eq_decidable',
+                           'succ_ne_zero',
+                           'beta_at_exists',
+                           'beta_at_self_of_bound',
+                           'beta_at_unique',
+                           'one_mul',
+                           'le_refl',
+                           'add_eq_zero_right',
+                           'all_prime_empty',
+                           'sorted_empty',
+                           'greatest_prime_divisor_descent',
+                           'beta_canonical_append_general',
+                           'mul_comm'),
+             script=('induction B',
+                     'intro n',
+                     'intro hnB',
+                     'intro hn0',
+                     'exfalso',
+                     'apply hn0',
+                     'specialize le_zero n',
+                     'apply le_zero',
+                     'exact hnB',
+                     'intro n',
+                     'intro hnB',
+                     'intro hn0',
+                     'have hsplit : n = S B \\/ exists h. h + S n = S B',
+                     'specialize le_eq_or_lt n',
+                     'specialize le_eq_or_lt (S B)',
+                     'apply le_eq_or_lt',
+                     'exact hnB',
+                     'cases hsplit',
+                     'rewrite hsplit_left',
+                     'rewrite hsplit_left',
+                     'have honecase : S B = 1 \\/ ~(S B = 1)',
+                     'specialize eq_decidable (S B)',
+                     'specialize eq_decidable 1',
+                     'apply eq_decidable',
+                     'cases honecase',
+                     'rewrite honecase_left',
+                     'rewrite honecase_left',
+                     'have hsome : exists x. ((exists h. h + S x = S ((S 0) * 1)) /\\ exists w. 1 '
+                     '= w * S ((S 0) * 1) + x)',
+                     'specialize beta_at_exists 1',
+                     'specialize beta_at_exists 1',
+                     'specialize beta_at_exists 0',
+                     'exact beta_at_exists',
+                     'cases hsome',
+                     'have hone : ((exists h. h + S 1 = S ((S 0) * 1)) /\\ exists w. 1 = w * S ((S '
+                     '0) * 1) + 1)',
+                     'specialize beta_at_self_of_bound 1',
+                     'specialize beta_at_self_of_bound 0',
+                     'specialize beta_at_self_of_bound 1',
+                     'apply beta_at_self_of_bound',
+                     'specialize one_mul 1',
+                     'rewrite one_mul',
+                     'specialize le_refl 2',
+                     'exact le_refl',
+                     'have hx1 : x = 1',
+                     'specialize beta_at_unique 1',
+                     'specialize beta_at_unique 1',
+                     'specialize beta_at_unique 0',
+                     'specialize beta_at_unique x',
+                     'specialize beta_at_unique 1',
+                     'apply beta_at_unique',
+                     'exact hsome_witness',
+                     'exact hone',
+                     'rewrite hx1 at hsome_witness',
+                     'rewrite hx1 at hsome_witness',
+                     'exists 0',
+                     'exists 0',
+                     'exists 0',
+                     'split',
+                     'exists 1',
+                     'exists 1',
+                     'split',
+                     'exact hsome_witness',
+                     'split',
+                     'exact hsome_witness',
+                     'intro i',
+                     'intro hi',
+                     'exfalso',
+                     'cases hi',
+                     'have hsi0 : S i = 0',
+                     'specialize add_eq_zero_right x1',
+                     'specialize add_eq_zero_right (S i)',
+                     'apply add_eq_zero_right',
+                     'exact hi_witness',
+                     'specialize succ_ne_zero i',
+                     'apply succ_ne_zero',
+                     'exact hsi0',
+                     'split',
+                     'specialize all_prime_empty 0',
+                     'specialize all_prime_empty 0',
+                     'exact all_prime_empty',
+                     'specialize sorted_empty 0',
+                     'specialize sorted_empty 0',
+                     'exact sorted_empty',
+                     'have hdesc : exists p q. (((~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ '
+                     'd = 1) /\\ S B = p * q) /\\ (~(q = 0) /\\ ((exists h. h + S q = S B) /\\ '
+                     'forall r. (~(r = 1) /\\ forall a d. r = a * d -> a = 1 \\/ d = 1) -> (exists '
+                     'k. q = r * k) -> (exists h. h + r = p))))',
+                     'specialize greatest_prime_divisor_descent (S B)',
+                     'apply greatest_prime_divisor_descent',
+                     'specialize succ_ne_zero B',
+                     'exact succ_ne_zero',
+                     'exact honecase_right',
+                     'cases hdesc',
+                     'cases hdesc_witness',
+                     'cases hdesc_witness_witness',
+                     'cases hdesc_witness_witness_left',
+                     'cases hdesc_witness_witness_right',
+                     'cases hdesc_witness_witness_right_right',
+                     'have hqB : exists h. h + x1 = B',
+                     'specialize le_of_succ_le_succ x1',
+                     'specialize le_of_succ_le_succ B',
+                     'apply le_of_succ_le_succ',
+                     'exact hdesc_witness_witness_right_right_left',
+                     'have hqfac : exists l b c. ((exists u v. (((exists h. h + S 1 = S ((S 0) * '
+                     'v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S x1 = S '
+                     '((S l) * v)) /\\ exists w. u = w * S ((S l) * v) + x1) /\\ forall i. (exists '
+                     'h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ '
+                     'exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * '
+                     'v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S '
+                     '((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * '
+                     'p)))))) /\\ ((forall i. (exists h. h + S i = l) -> exists p. (((exists h. h '
+                     '+ S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = '
+                     '1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. '
+                     'h + S S i = l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ '
+                     'exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * '
+                     'c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = '
+                     'q))))))',
+                     'specialize IH x1',
+                     'apply IH',
+                     'exact hqB',
+                     'exact hdesc_witness_witness_right_left',
+                     'cases hqfac',
+                     'cases hqfac_witness',
+                     'cases hqfac_witness_witness',
+                     'cases hqfac_witness_witness_witness',
+                     'cases hqfac_witness_witness_witness_right',
+                     'have happend : exists z e. (((exists h. h + S x = S ((S x2) * e)) /\\ exists '
+                     'w. z = w * S ((S x2) * e) + x) /\\ ((forall i a. (exists h. h + S i = x2) -> '
+                     '((exists h. h + S a = S ((S i) * x4)) /\\ exists w. x3 = w * S ((S i) * x4) '
+                     '+ a) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists w. z = w * S ((S i) '
+                     '* e) + a)) /\\ ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ '
+                     'exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S (x1 * x) = S ((S '
+                     'S x2) * v)) /\\ exists w. u = w * S ((S S x2) * v) + (x1 * x)) /\\ forall i. '
+                     '(exists h. h + S i = S x2) -> exists p r s. (((exists h. h + S p = S ((S i) '
+                     '* e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = S '
+                     '((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S '
+                     's = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * '
+                     'p)))))) /\\ ((forall i. (exists h. h + S i = S x2) -> exists p. (((exists h. '
+                     'h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (~(p = '
+                     '1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. '
+                     'h + S S i = S x2) -> exists p q. (((exists h. h + S p = S ((S i) * e)) /\\ '
+                     'exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S q = S ((S S i) * '
+                     'e)) /\\ exists w. z = w * S ((S S i) * e) + q) /\\ (exists h. h + p = '
+                     'q))))))))',
+                     'specialize beta_canonical_append_general x2',
+                     'specialize beta_canonical_append_general x3',
+                     'specialize beta_canonical_append_general x4',
+                     'specialize beta_canonical_append_general x1',
+                     'specialize beta_canonical_append_general x',
+                     'apply beta_canonical_append_general',
+                     'exact hqfac_witness_witness_witness_left',
+                     'exact hqfac_witness_witness_witness_right_left',
+                     'exact hqfac_witness_witness_witness_right_right',
+                     'exact hdesc_witness_witness_left_left',
+                     'exact hdesc_witness_witness_right_right_right',
+                     'cases happend',
+                     'cases happend_witness',
+                     'cases happend_witness_witness',
+                     'cases happend_witness_witness_right',
+                     'cases happend_witness_witness_right_right',
+                     'cases happend_witness_witness_right_right_right',
+                     'have hmul : x1 * x = S B',
+                     'trans x * x1',
+                     'apply mul_comm',
+                     'symm',
+                     'exact hdesc_witness_witness_left_right',
+                     'have hcap : exists l b c. ((exists u v. (((exists h. h + S 1 = S ((S 0) * '
+                     'v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S (x1 * x) '
+                     '= S ((S l) * v)) /\\ exists w. u = w * S ((S l) * v) + (x1 * x)) /\\ forall '
+                     'i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) '
+                     '* c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S '
+                     '((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S '
+                     's = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * '
+                     'p)))))) /\\ ((forall i. (exists h. h + S i = l) -> exists p. (((exists h. h '
+                     '+ S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = '
+                     '1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. '
+                     'h + S S i = l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ '
+                     'exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * '
+                     'c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = '
+                     'q))))))',
+                     'exists S x2',
+                     'exists x5',
+                     'exists x6',
+                     'split',
+                     'exact happend_witness_witness_right_right_left',
+                     'split',
+                     'exact happend_witness_witness_right_right_right_left',
+                     'exact happend_witness_witness_right_right_right_right',
+                     'rewrite hmul at hcap',
+                     'rewrite hmul at hcap',
+                     'exact hcap',
+                     'have hnB0 : exists h. h + n = B',
+                     'specialize le_of_succ_le_succ n',
+                     'specialize le_of_succ_le_succ B',
+                     'apply le_of_succ_le_succ',
+                     'exact hsplit_right',
+                     'specialize IH n',
+                     'apply IH',
+                     'exact hnB0',
+                     'exact hn0'),
+             summary='Bounded induction with one consolidated canonical append dependency.'),
+ TheoremSpec(name='prime_factorization_existence',
+             statement='forall n. ~(n = 0) -> exists l b c. ((exists u v. (((exists h. h + S 1 = S '
+                       '((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + '
+                       'S n = S ((S l) * v)) /\\ exists w. u = w * S ((S l) * v) + n) /\\ forall '
+                       'i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S '
+                       'i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r '
+                       '= S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. '
+                       'h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ '
+                       's = r * p)))))) /\\ ((forall i. (exists h. h + S i = l) -> exists p. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                       '+ p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ '
+                       '(forall i. (exists h. h + S S i = l) -> exists p q. (((exists h. h + S p = '
+                       'S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h '
+                       '+ S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ '
+                       '(exists h. h + p = q))))))',
+             dependencies=('prime_factorization_exists_up_to', 'le_refl'),
+             script=('intro n',
+                     'intro hn0',
+                     'specialize prime_factorization_exists_up_to n',
+                     'specialize prime_factorization_exists_up_to n',
+                     'apply prime_factorization_exists_up_to',
+                     'specialize le_refl n',
+                     'exact le_refl',
+                     'exact hn0'),
+             summary='Every nonzero natural has a canonical factorization using consolidated '
+                     'append.'))
+
 
 MOD5_THEOREMS: tuple[TheoremSpec, ...] = (
     # 01-multiples; source import tier: live
@@ -6018,6 +9545,1447 @@ MOD5_THEOREMS: tuple[TheoremSpec, ...] = (
     ),
 )
 
+# Checked finite-product and sorted-prefix bridges toward canonical
+# prime-factorization uniqueness. The full uniqueness wrapper is still pending.
+BETA_FACTORIZATION_UNIQUENESS_PREREQUISITES: tuple[TheoremSpec, ...] = (TheoremSpec(name='beta_prime_divisor_product_member',
+             statement='forall b c l n p. (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1) '
+                       '-> (forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S p = '
+                       'S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ '
+                       'forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (exists u v. (((exists h. h '
+                       '+ S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ '
+                       '(((exists h. h + S n = S ((S l) * v)) /\\ exists w. u = w * S ((S l) * v) '
+                       '+ n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h '
+                       '+ S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ '
+                       '(((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) '
+                       '+ r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S '
+                       '((S S i) * v) + s) /\\ s = r * p)))))) -> (exists k. n = p * k) -> exists '
+                       'i. ((exists h. h + S i = l) /\\ ((exists h. h + S p = S ((S i) * c)) /\\ '
+                       'exists w. b = w * S ((S i) * c) + p))',
+             dependencies=('beta_product_zero',
+                           'divisor_one',
+                           'beta_product_succ_decompose',
+                           'all_prime_succ_elim_prefix',
+                           'all_prime_succ_elim_last',
+                           'euclid_prime_dvd_product',
+                           'prime_divisor_eq_one_or_self',
+                           'beta_at_unique',
+                           'le_succ',
+                           'le_refl'),
+             script=('intro b',
+                     'intro c',
+                     'induction l',
+                     'intro n',
+                     'intro p',
+                     'intro hpprime',
+                     'intro hall',
+                     'intro hproduct',
+                     'intro hpdiv',
+                     'have hn1 : n = 1',
+                     'specialize beta_product_zero b',
+                     'specialize beta_product_zero c',
+                     'specialize beta_product_zero n',
+                     'apply beta_product_zero',
+                     'exact hproduct',
+                     'cases hpprime',
+                     'exfalso',
+                     'apply hpprime_left',
+                     'have hp1 : p = 1',
+                     'specialize divisor_one p',
+                     'apply divisor_one',
+                     'rewrite hn1 at hpdiv',
+                     'exact hpdiv',
+                     'exact hp1',
+                     'intro n',
+                     'intro p',
+                     'intro hpprime',
+                     'intro hall',
+                     'intro hproduct',
+                     'intro hpdiv',
+                     'have hdecomp : exists a r. (((exists h. h + S a = S ((S l) * c)) /\\ exists '
+                     'w. b = w * S ((S l) * c) + a) /\\ ((exists u v. (((exists h. h + S 1 = S ((S '
+                     '0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S r = '
+                     'S ((S l) * v)) /\\ exists w. u = w * S ((S l) * v) + r) /\\ forall i. '
+                     '(exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * '
+                     'c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S '
+                     '((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S '
+                     's = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * '
+                     'p)))))) /\\ n = r * a))',
+                     'specialize beta_product_succ_decompose b',
+                     'specialize beta_product_succ_decompose c',
+                     'specialize beta_product_succ_decompose l',
+                     'specialize beta_product_succ_decompose n',
+                     'apply beta_product_succ_decompose',
+                     'exact hproduct',
+                     'cases hdecomp',
+                     'cases hdecomp_witness',
+                     'cases hdecomp_witness_witness',
+                     'cases hdecomp_witness_witness_right',
+                     'have hprefix : (forall i. (exists h. h + S i = l) -> exists p. (((exists h. '
+                     'h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = '
+                     '1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)))',
+                     'specialize all_prime_succ_elim_prefix b',
+                     'specialize all_prime_succ_elim_prefix c',
+                     'specialize all_prime_succ_elim_prefix l',
+                     'apply all_prime_succ_elim_prefix',
+                     'exact hall',
+                     'have hlast : exists t. (((exists h. h + S t = S ((S l) * c)) /\\ exists w. b '
+                     '= w * S ((S l) * c) + t) /\\ (~(t = 1) /\\ forall a d. t = a * d -> a = 1 '
+                     '\\/ d = 1))',
+                     'specialize all_prime_succ_elim_last b',
+                     'specialize all_prime_succ_elim_last c',
+                     'specialize all_prime_succ_elim_last l',
+                     'apply all_prime_succ_elim_last',
+                     'exact hall',
+                     'have hpd : (exists k. x1 * x = p * k)',
+                     'rewrite hdecomp_witness_witness_right_right at hpdiv',
+                     'exact hpdiv',
+                     'have hsplit : (exists k. x1 = p * k) \\/ (exists k. x = p * k)',
+                     'specialize euclid_prime_dvd_product p',
+                     'specialize euclid_prime_dvd_product x1',
+                     'specialize euclid_prime_dvd_product x',
+                     'apply euclid_prime_dvd_product',
+                     'exact hpprime',
+                     'exact hpd',
+                     'cases hsplit',
+                     'have hmember : exists i. ((exists h. h + S i = l) /\\ ((exists h. h + S p = '
+                     'S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p))',
+                     'specialize IH x1',
+                     'specialize IH p',
+                     'apply IH',
+                     'exact hpprime',
+                     'exact hprefix',
+                     'exact hdecomp_witness_witness_right_left',
+                     'exact hsplit_left',
+                     'cases hmember',
+                     'cases hmember_witness',
+                     'exists x2',
+                     'split',
+                     'specialize le_succ (S x2)',
+                     'specialize le_succ l',
+                     'apply le_succ',
+                     'exact hmember_witness_left',
+                     'exact hmember_witness_right',
+                     'cases hlast',
+                     'cases hlast_witness',
+                     'have hlast_eq : x = x2',
+                     'specialize beta_at_unique b',
+                     'specialize beta_at_unique c',
+                     'specialize beta_at_unique l',
+                     'specialize beta_at_unique x',
+                     'specialize beta_at_unique x2',
+                     'apply beta_at_unique',
+                     'exact hdecomp_witness_witness_left',
+                     'exact hlast_witness_left',
+                     'have hxprime : (~(x = 1) /\\ forall a d. x = a * d -> a = 1 \\/ d = 1)',
+                     'rewrite hlast_eq',
+                     'rewrite hlast_eq',
+                     'exact hlast_witness_right',
+                     'have hpone_or_eq : p = 1 \\/ x = p',
+                     'specialize prime_divisor_eq_one_or_self x',
+                     'specialize prime_divisor_eq_one_or_self p',
+                     'apply prime_divisor_eq_one_or_self',
+                     'exact hxprime',
+                     'exact hsplit_right',
+                     'cases hpone_or_eq',
+                     'exfalso',
+                     'cases hpprime',
+                     'apply hpprime_left',
+                     'exact hpone_or_eq_left',
+                     'exists l',
+                     'split',
+                     'specialize le_refl (S l)',
+                     'exact le_refl',
+                     'rewrite hpone_or_eq_right at hdecomp_witness_witness_left',
+                     'rewrite hpone_or_eq_right at hdecomp_witness_witness_left',
+                     'exact hdecomp_witness_witness_left'),
+             summary='A prime divisor of an AllPrime beta Product occurs as one of its decoded '
+                     'factors.'),
+ TheoremSpec(name='beta_sorted_factor_le_last',
+             statement='forall b c l i p q. (exists h. h + S i = S l) -> ((exists h. h + S p = S '
+                       '((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) -> ((exists h. h + S '
+                       'q = S ((S l) * c)) /\\ exists w. b = w * S ((S l) * c) + q) -> (forall i. '
+                       '(exists h. h + S S i = S l) -> exists p q. (((exists h. h + S p = S ((S i) '
+                       '* c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = '
+                       'S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. '
+                       'h + p = q)))) -> (exists h. h + p = q)',
+             dependencies=('le_of_succ_le_succ',
+                           'le_zero',
+                           'beta_at_unique',
+                           'le_refl',
+                           'le_eq_or_lt',
+                           'sorted_succ_elim_prefix',
+                           'sorted_succ_elim_last',
+                           'le_trans'),
+             script=('intro b',
+                     'intro c',
+                     'induction l',
+                     'intro i',
+                     'intro p',
+                     'intro q',
+                     'intro hi',
+                     'intro hip',
+                     'intro hql',
+                     'intro hsorted',
+                     'have hile0 : (exists h. h + i = 0)',
+                     'specialize le_of_succ_le_succ i',
+                     'specialize le_of_succ_le_succ 0',
+                     'apply le_of_succ_le_succ',
+                     'exact hi',
+                     'have hi0 : i = 0',
+                     'specialize le_zero i',
+                     'apply le_zero',
+                     'exact hile0',
+                     'have hpq : p = q',
+                     'specialize beta_at_unique b',
+                     'specialize beta_at_unique c',
+                     'specialize beta_at_unique 0',
+                     'specialize beta_at_unique p',
+                     'specialize beta_at_unique q',
+                     'apply beta_at_unique',
+                     'rewrite hi0 at hip',
+                     'rewrite hi0 at hip',
+                     'exact hip',
+                     'exact hql',
+                     'rewrite hpq',
+                     'specialize le_refl q',
+                     'exact le_refl',
+                     'intro i',
+                     'intro p',
+                     'intro q',
+                     'intro hi',
+                     'intro hip',
+                     'intro hql',
+                     'intro hsorted',
+                     'have hile : (exists h. h + i = S l)',
+                     'specialize le_of_succ_le_succ i',
+                     'specialize le_of_succ_le_succ (S l)',
+                     'apply le_of_succ_le_succ',
+                     'exact hi',
+                     'have hsplit : i = S l \\/ (exists h. h + S i = S l)',
+                     'specialize le_eq_or_lt i',
+                     'specialize le_eq_or_lt (S l)',
+                     'apply le_eq_or_lt',
+                     'exact hile',
+                     'cases hsplit',
+                     'have hpq : p = q',
+                     'specialize beta_at_unique b',
+                     'specialize beta_at_unique c',
+                     'specialize beta_at_unique (S l)',
+                     'specialize beta_at_unique p',
+                     'specialize beta_at_unique q',
+                     'apply beta_at_unique',
+                     'rewrite hsplit_left at hip',
+                     'rewrite hsplit_left at hip',
+                     'exact hip',
+                     'exact hql',
+                     'rewrite hpq',
+                     'specialize le_refl q',
+                     'exact le_refl',
+                     'have hprefix : (forall i. (exists h. h + S S i = S l) -> exists p q. '
+                     '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + '
+                     'p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S '
+                     'i) * c) + q) /\\ (exists h. h + p = q))))',
+                     'specialize sorted_succ_elim_prefix b',
+                     'specialize sorted_succ_elim_prefix c',
+                     'specialize sorted_succ_elim_prefix (S l)',
+                     'apply sorted_succ_elim_prefix',
+                     'exact hsorted',
+                     'have hadj : exists a d. (((exists h. h + S a = S ((S l) * c)) /\\ exists w. '
+                     'b = w * S ((S l) * c) + a) /\\ (((exists h. h + S d = S ((S S l) * c)) /\\ '
+                     'exists w. b = w * S ((S S l) * c) + d) /\\ (exists h. h + a = d)))',
+                     'specialize sorted_succ_elim_last b',
+                     'specialize sorted_succ_elim_last c',
+                     'specialize sorted_succ_elim_last l',
+                     'apply sorted_succ_elim_last',
+                     'exact hsorted',
+                     'cases hadj',
+                     'cases hadj_witness',
+                     'cases hadj_witness_witness',
+                     'cases hadj_witness_witness_right',
+                     'have hdq : x1 = q',
+                     'specialize beta_at_unique b',
+                     'specialize beta_at_unique c',
+                     'specialize beta_at_unique (S l)',
+                     'specialize beta_at_unique x1',
+                     'specialize beta_at_unique q',
+                     'apply beta_at_unique',
+                     'exact hadj_witness_witness_right_left',
+                     'exact hql',
+                     'have hpa : (exists h. h + p = x)',
+                     'specialize IH i',
+                     'specialize IH p',
+                     'specialize IH x',
+                     'apply IH',
+                     'exact hsplit_right',
+                     'exact hip',
+                     'exact hadj_witness_witness_left',
+                     'exact hprefix',
+                     'specialize le_trans p',
+                     'specialize le_trans x',
+                     'specialize le_trans q',
+                     'apply le_trans',
+                     'exact hpa',
+                     'rewrite hdq at hadj_witness_witness_right_right',
+                     'exact hadj_witness_witness_right_right'),
+             summary='Every factor in a nonempty adjacent-sorted beta prefix is at most its last '
+                     'factor.'),
+ TheoremSpec(name='beta_nonempty_all_prime_product_ne_one',
+             statement='forall b c l n. (forall i. (exists h. h + S i = S l) -> exists p. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                       '+ p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> '
+                       '(exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S '
+                       '((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S S l) * v)) /\\ exists w. '
+                       'u = w * S ((S S l) * v) + n) /\\ forall i. (exists h. h + S i = S l) -> '
+                       'exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * '
+                       'S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. '
+                       'u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ '
+                       'exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) -> ~(n = 1)',
+             dependencies=('all_prime_succ_elim_last',
+                           'beta_factor_divides_product',
+                           'le_refl',
+                           'divisor_one'),
+             script=('intro b',
+                     'intro c',
+                     'intro l',
+                     'intro n',
+                     'intro hall',
+                     'intro hproduct',
+                     'intro hn1',
+                     'have hlast : exists p. (((exists h. h + S p = S ((S l) * c)) /\\ exists w. b '
+                     '= w * S ((S l) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 '
+                     '\\/ d = 1))',
+                     'specialize all_prime_succ_elim_last b',
+                     'specialize all_prime_succ_elim_last c',
+                     'specialize all_prime_succ_elim_last l',
+                     'apply all_prime_succ_elim_last',
+                     'exact hall',
+                     'cases hlast',
+                     'cases hlast_witness',
+                     'have hpdiv : (exists k. n = x * k)',
+                     'specialize beta_factor_divides_product b',
+                     'specialize beta_factor_divides_product c',
+                     'specialize beta_factor_divides_product (S l)',
+                     'specialize beta_factor_divides_product n',
+                     'specialize beta_factor_divides_product l',
+                     'specialize beta_factor_divides_product x',
+                     'apply beta_factor_divides_product',
+                     'specialize le_refl (S l)',
+                     'exact le_refl',
+                     'exact hlast_witness_left',
+                     'exact hproduct',
+                     'have hp1 : x = 1',
+                     'specialize divisor_one x',
+                     'apply divisor_one',
+                     'rewrite hn1 at hpdiv',
+                     'exact hpdiv',
+                     'cases hlast_witness_right',
+                     'apply hlast_witness_right_left',
+                     'exact hp1'),
+             summary='A nonempty product of prime decoded factors cannot have terminal value one.'),
+ TheoremSpec(name='beta_all_prime_product_one_iff_length_zero',
+             statement='forall b c l n. (forall i. (exists h. h + S i = l) -> exists p. (((exists '
+                       'h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ '
+                       '(~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (exists u v. '
+                       '(((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) '
+                       '+ 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists w. u = w * S ((S '
+                       'l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                       '+ p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S '
+                       'i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = '
+                       'w * S ((S S i) * v) + s) /\\ s = r * p)))))) -> ((n = 1 -> l = 0) /\\ (l = '
+                       '0 -> n = 1))',
+             dependencies=('beta_product_zero',
+                           'beta_nonempty_all_prime_product_ne_one',
+                           'succ_ne_zero'),
+             script=('intro b',
+                     'intro c',
+                     'induction l',
+                     'intro n',
+                     'intro hall',
+                     'intro hproduct',
+                     'split',
+                     'intro hn1',
+                     'refl',
+                     'intro hl0',
+                     'specialize beta_product_zero b',
+                     'specialize beta_product_zero c',
+                     'specialize beta_product_zero n',
+                     'apply beta_product_zero',
+                     'exact hproduct',
+                     'intro n',
+                     'intro hall',
+                     'intro hproduct',
+                     'split',
+                     'intro hn1',
+                     'exfalso',
+                     'specialize beta_nonempty_all_prime_product_ne_one b',
+                     'specialize beta_nonempty_all_prime_product_ne_one c',
+                     'specialize beta_nonempty_all_prime_product_ne_one l',
+                     'specialize beta_nonempty_all_prime_product_ne_one n',
+                     'apply beta_nonempty_all_prime_product_ne_one',
+                     'exact hall',
+                     'exact hproduct',
+                     'exact hn1',
+                     'intro hl0',
+                     'exfalso',
+                     'specialize succ_ne_zero l',
+                     'apply succ_ne_zero',
+                     'exact hl0'),
+             summary='Under AllPrime, a beta Product is one exactly when its encoded factor length '
+                     'is zero.'),
+ TheoremSpec(name='beta_canonical_last_factors_equal',
+             statement='forall b c z e l k n p q. (forall i. (exists h. h + S i = S l) -> exists '
+                       'p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * '
+                       'c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> '
+                       '(forall i. (exists h. h + S S i = S l) -> exists p q. (((exists h. h + S p '
+                       '= S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. '
+                       'h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ '
+                       '(exists h. h + p = q)))) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * '
+                       'v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S '
+                       '((S S l) * v)) /\\ exists w. u = w * S ((S S l) * v) + n) /\\ forall i. '
+                       '(exists h. h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) '
+                       '* c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = '
+                       'S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h '
+                       '+ S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s '
+                       '= r * p)))))) -> ((exists h. h + S p = S ((S l) * c)) /\\ exists w. b = w '
+                       '* S ((S l) * c) + p) -> (forall i. (exists h. h + S i = S k) -> exists p. '
+                       '(((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) '
+                       '+ p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> '
+                       '(forall i. (exists h. h + S S i = S k) -> exists p q. (((exists h. h + S p '
+                       '= S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. '
+                       'h + S q = S ((S S i) * e)) /\\ exists w. z = w * S ((S S i) * e) + q) /\\ '
+                       '(exists h. h + p = q)))) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * '
+                       'v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S '
+                       '((S S k) * v)) /\\ exists w. u = w * S ((S S k) * v) + n) /\\ forall i. '
+                       '(exists h. h + S i = S k) -> exists p r s. (((exists h. h + S p = S ((S i) '
+                       '* e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = '
+                       'S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h '
+                       '+ S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s '
+                       '= r * p)))))) -> ((exists h. h + S q = S ((S k) * e)) /\\ exists w. z = w '
+                       '* S ((S k) * e) + q) -> p = q',
+             dependencies=('all_prime_succ_elim_last',
+                           'beta_at_unique',
+                           'beta_factor_divides_product',
+                           'le_refl',
+                           'beta_prime_divisor_product_member',
+                           'beta_sorted_factor_le_last',
+                           'le_antisymm'),
+             script=('intro b',
+                     'intro c',
+                     'intro z',
+                     'intro e',
+                     'intro l',
+                     'intro k',
+                     'intro n',
+                     'intro p',
+                     'intro q',
+                     'intro hall1',
+                     'intro hsort1',
+                     'intro hprod1',
+                     'intro hat1',
+                     'intro hall2',
+                     'intro hsort2',
+                     'intro hprod2',
+                     'intro hat2',
+                     'have hlast1 : exists t. (((exists h. h + S t = S ((S l) * c)) /\\ exists w. '
+                     'b = w * S ((S l) * c) + t) /\\ (~(t = 1) /\\ forall a d. t = a * d -> a = 1 '
+                     '\\/ d = 1))',
+                     'specialize all_prime_succ_elim_last b',
+                     'specialize all_prime_succ_elim_last c',
+                     'specialize all_prime_succ_elim_last l',
+                     'apply all_prime_succ_elim_last',
+                     'exact hall1',
+                     'cases hlast1',
+                     'cases hlast1_witness',
+                     'have hpeq1 : p = x',
+                     'specialize beta_at_unique b',
+                     'specialize beta_at_unique c',
+                     'specialize beta_at_unique l',
+                     'specialize beta_at_unique p',
+                     'specialize beta_at_unique x',
+                     'apply beta_at_unique',
+                     'exact hat1',
+                     'exact hlast1_witness_left',
+                     'have hpprime : (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)',
+                     'rewrite hpeq1',
+                     'rewrite hpeq1',
+                     'exact hlast1_witness_right',
+                     'have hlast2 : exists t. (((exists h. h + S t = S ((S k) * e)) /\\ exists w. '
+                     'z = w * S ((S k) * e) + t) /\\ (~(t = 1) /\\ forall a d. t = a * d -> a = 1 '
+                     '\\/ d = 1))',
+                     'specialize all_prime_succ_elim_last z',
+                     'specialize all_prime_succ_elim_last e',
+                     'specialize all_prime_succ_elim_last k',
+                     'apply all_prime_succ_elim_last',
+                     'exact hall2',
+                     'cases hlast2',
+                     'cases hlast2_witness',
+                     'have hqeq2 : q = x1',
+                     'specialize beta_at_unique z',
+                     'specialize beta_at_unique e',
+                     'specialize beta_at_unique k',
+                     'specialize beta_at_unique q',
+                     'specialize beta_at_unique x1',
+                     'apply beta_at_unique',
+                     'exact hat2',
+                     'exact hlast2_witness_left',
+                     'have hqprime : (~(q = 1) /\\ forall a d. q = a * d -> a = 1 \\/ d = 1)',
+                     'rewrite hqeq2',
+                     'rewrite hqeq2',
+                     'exact hlast2_witness_right',
+                     'have hpdiv : (exists k. n = p * k)',
+                     'specialize beta_factor_divides_product b',
+                     'specialize beta_factor_divides_product c',
+                     'specialize beta_factor_divides_product (S l)',
+                     'specialize beta_factor_divides_product n',
+                     'specialize beta_factor_divides_product l',
+                     'specialize beta_factor_divides_product p',
+                     'apply beta_factor_divides_product',
+                     'specialize le_refl (S l)',
+                     'exact le_refl',
+                     'exact hat1',
+                     'exact hprod1',
+                     'have hqdiv : (exists k. n = q * k)',
+                     'specialize beta_factor_divides_product z',
+                     'specialize beta_factor_divides_product e',
+                     'specialize beta_factor_divides_product (S k)',
+                     'specialize beta_factor_divides_product n',
+                     'specialize beta_factor_divides_product k',
+                     'specialize beta_factor_divides_product q',
+                     'apply beta_factor_divides_product',
+                     'specialize le_refl (S k)',
+                     'exact le_refl',
+                     'exact hat2',
+                     'exact hprod2',
+                     'have hpmember2 : exists i. ((exists h. h + S i = S k) /\\ ((exists h. h + S '
+                     'p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p))',
+                     'specialize beta_prime_divisor_product_member z',
+                     'specialize beta_prime_divisor_product_member e',
+                     'specialize beta_prime_divisor_product_member (S k)',
+                     'specialize beta_prime_divisor_product_member n',
+                     'specialize beta_prime_divisor_product_member p',
+                     'apply beta_prime_divisor_product_member',
+                     'exact hpprime',
+                     'exact hall2',
+                     'exact hprod2',
+                     'exact hpdiv',
+                     'cases hpmember2',
+                     'cases hpmember2_witness',
+                     'have hpq : (exists h. h + p = q)',
+                     'specialize beta_sorted_factor_le_last z',
+                     'specialize beta_sorted_factor_le_last e',
+                     'specialize beta_sorted_factor_le_last k',
+                     'specialize beta_sorted_factor_le_last x2',
+                     'specialize beta_sorted_factor_le_last p',
+                     'specialize beta_sorted_factor_le_last q',
+                     'apply beta_sorted_factor_le_last',
+                     'exact hpmember2_witness_left',
+                     'exact hpmember2_witness_right',
+                     'exact hat2',
+                     'exact hsort2',
+                     'have hqmember1 : exists i. ((exists h. h + S i = S l) /\\ ((exists h. h + S '
+                     'q = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + q))',
+                     'specialize beta_prime_divisor_product_member b',
+                     'specialize beta_prime_divisor_product_member c',
+                     'specialize beta_prime_divisor_product_member (S l)',
+                     'specialize beta_prime_divisor_product_member n',
+                     'specialize beta_prime_divisor_product_member q',
+                     'apply beta_prime_divisor_product_member',
+                     'exact hqprime',
+                     'exact hall1',
+                     'exact hprod1',
+                     'exact hqdiv',
+                     'cases hqmember1',
+                     'cases hqmember1_witness',
+                     'have hqp : (exists h. h + q = p)',
+                     'specialize beta_sorted_factor_le_last b',
+                     'specialize beta_sorted_factor_le_last c',
+                     'specialize beta_sorted_factor_le_last l',
+                     'specialize beta_sorted_factor_le_last x3',
+                     'specialize beta_sorted_factor_le_last q',
+                     'specialize beta_sorted_factor_le_last p',
+                     'apply beta_sorted_factor_le_last',
+                     'exact hqmember1_witness_left',
+                     'exact hqmember1_witness_right',
+                     'exact hat1',
+                     'exact hsort1',
+                     'specialize le_antisymm p',
+                     'specialize le_antisymm q',
+                     'apply le_antisymm',
+                     'exact hpq',
+                     'exact hqp'),
+             summary='Two nonempty sorted AllPrime Products of the same number have equal last '
+                     'factors.'),
+ TheoremSpec(name='beta_canonical_product_cancel_last',
+             statement='forall b c z e l k n. (forall i. (exists h. h + S i = S l) -> exists p. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                       '+ p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> '
+                       '(forall i. (exists h. h + S S i = S l) -> exists p q. (((exists h. h + S p '
+                       '= S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. '
+                       'h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ '
+                       '(exists h. h + p = q)))) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * '
+                       'v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S '
+                       '((S S l) * v)) /\\ exists w. u = w * S ((S S l) * v) + n) /\\ forall i. '
+                       '(exists h. h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) '
+                       '* c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = '
+                       'S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h '
+                       '+ S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s '
+                       '= r * p)))))) -> (forall i. (exists h. h + S i = S k) -> exists p. '
+                       '(((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) '
+                       '+ p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> '
+                       '(forall i. (exists h. h + S S i = S k) -> exists p q. (((exists h. h + S p '
+                       '= S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. '
+                       'h + S q = S ((S S i) * e)) /\\ exists w. z = w * S ((S S i) * e) + q) /\\ '
+                       '(exists h. h + p = q)))) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * '
+                       'v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S '
+                       '((S S k) * v)) /\\ exists w. u = w * S ((S S k) * v) + n) /\\ forall i. '
+                       '(exists h. h + S i = S k) -> exists p r s. (((exists h. h + S p = S ((S i) '
+                       '* e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = '
+                       'S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h '
+                       '+ S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s '
+                       '= r * p)))))) -> exists p r s. (((exists h. h + S p = S ((S l) * c)) /\\ '
+                       'exists w. b = w * S ((S l) * c) + p) /\\ (((exists h. h + S p = S ((S k) * '
+                       'e)) /\\ exists w. z = w * S ((S k) * e) + p) /\\ ((forall i. (exists h. h '
+                       '+ S i = l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists '
+                       'w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a '
+                       '= 1 \\/ d = 1))) /\\ ((forall i. (exists h. h + S S i = l) -> exists p q. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                       '+ p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S '
+                       '((S S i) * c) + q) /\\ (exists h. h + p = q)))) /\\ ((exists u v. '
+                       '(((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) '
+                       '+ 1) /\\ (((exists h. h + S r = S ((S l) * v)) /\\ exists w. u = w * S ((S '
+                       'l) * v) + r) /\\ forall i. (exists h. h + S i = l) -> exists p r s. '
+                       '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) '
+                       '+ p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S '
+                       'i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = '
+                       'w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h '
+                       '+ S i = k) -> exists p. (((exists h. h + S p = S ((S i) * e)) /\\ exists '
+                       'w. z = w * S ((S i) * e) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a '
+                       '= 1 \\/ d = 1))) /\\ ((forall i. (exists h. h + S S i = k) -> exists p q. '
+                       '(((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) '
+                       '+ p) /\\ (((exists h. h + S q = S ((S S i) * e)) /\\ exists w. z = w * S '
+                       '((S S i) * e) + q) /\\ (exists h. h + p = q)))) /\\ ((exists u v. '
+                       '(((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) '
+                       '+ 1) /\\ (((exists h. h + S s = S ((S k) * v)) /\\ exists w. u = w * S ((S '
+                       'k) * v) + s) /\\ forall i. (exists h. h + S i = k) -> exists p r s. '
+                       '(((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) '
+                       '+ p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S '
+                       'i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = '
+                       'w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ (n = r * p /\\ (n = s * p '
+                       '/\\ r = s))))))))))',
+             dependencies=('beta_product_succ_decompose',
+                           'beta_canonical_last_factors_equal',
+                           'all_prime_succ_elim_last',
+                           'beta_at_unique',
+                           'prime_nonzero',
+                           'mul_right_cancel_nonzero',
+                           'all_prime_succ_elim_prefix',
+                           'sorted_succ_elim_prefix'),
+             script=('intro b',
+                     'intro c',
+                     'intro z',
+                     'intro e',
+                     'intro l',
+                     'intro k',
+                     'intro n',
+                     'intro hall1',
+                     'intro hsort1',
+                     'intro hprod1',
+                     'intro hall2',
+                     'intro hsort2',
+                     'intro hprod2',
+                     'have hdec1 : exists p r. (((exists h. h + S p = S ((S l) * c)) /\\ exists w. '
+                     'b = w * S ((S l) * c) + p) /\\ ((exists u v. (((exists h. h + S 1 = S ((S 0) '
+                     '* v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S r = S '
+                     '((S l) * v)) /\\ exists w. u = w * S ((S l) * v) + r) /\\ forall i. (exists '
+                     'h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ '
+                     'exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * '
+                     'v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S '
+                     '((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * '
+                     'p)))))) /\\ n = r * p))',
+                     'specialize beta_product_succ_decompose b',
+                     'specialize beta_product_succ_decompose c',
+                     'specialize beta_product_succ_decompose l',
+                     'specialize beta_product_succ_decompose n',
+                     'apply beta_product_succ_decompose',
+                     'exact hprod1',
+                     'cases hdec1',
+                     'cases hdec1_witness',
+                     'cases hdec1_witness_witness',
+                     'cases hdec1_witness_witness_right',
+                     'have hdec2 : exists p s. (((exists h. h + S p = S ((S k) * e)) /\\ exists w. '
+                     'z = w * S ((S k) * e) + p) /\\ ((exists u v. (((exists h. h + S 1 = S ((S 0) '
+                     '* v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S s = S '
+                     '((S k) * v)) /\\ exists w. u = w * S ((S k) * v) + s) /\\ forall i. (exists '
+                     'h. h + S i = k) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ '
+                     'exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * '
+                     'v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S '
+                     '((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * '
+                     'p)))))) /\\ n = s * p))',
+                     'specialize beta_product_succ_decompose z',
+                     'specialize beta_product_succ_decompose e',
+                     'specialize beta_product_succ_decompose k',
+                     'specialize beta_product_succ_decompose n',
+                     'apply beta_product_succ_decompose',
+                     'exact hprod2',
+                     'cases hdec2',
+                     'cases hdec2_witness',
+                     'cases hdec2_witness_witness',
+                     'cases hdec2_witness_witness_right',
+                     'have hfactor_eq : x = x2',
+                     'specialize beta_canonical_last_factors_equal b',
+                     'specialize beta_canonical_last_factors_equal c',
+                     'specialize beta_canonical_last_factors_equal z',
+                     'specialize beta_canonical_last_factors_equal e',
+                     'specialize beta_canonical_last_factors_equal l',
+                     'specialize beta_canonical_last_factors_equal k',
+                     'specialize beta_canonical_last_factors_equal n',
+                     'specialize beta_canonical_last_factors_equal x',
+                     'specialize beta_canonical_last_factors_equal x2',
+                     'apply beta_canonical_last_factors_equal',
+                     'exact hall1',
+                     'exact hsort1',
+                     'exact hprod1',
+                     'exact hdec1_witness_witness_left',
+                     'exact hall2',
+                     'exact hsort2',
+                     'exact hprod2',
+                     'exact hdec2_witness_witness_left',
+                     'have hshared_at2 : ((exists h. h + S x = S ((S k) * e)) /\\ exists w. z = w '
+                     '* S ((S k) * e) + x)',
+                     'rewrite hfactor_eq',
+                     'rewrite hfactor_eq',
+                     'exact hdec2_witness_witness_left',
+                     'have hshared_prod2 : n = x3 * x',
+                     'rewrite hfactor_eq',
+                     'exact hdec2_witness_witness_right_right',
+                     'have hlastprime : exists t. (((exists h. h + S t = S ((S l) * c)) /\\ exists '
+                     'w. b = w * S ((S l) * c) + t) /\\ (~(t = 1) /\\ forall a d. t = a * d -> a = '
+                     '1 \\/ d = 1))',
+                     'specialize all_prime_succ_elim_last b',
+                     'specialize all_prime_succ_elim_last c',
+                     'specialize all_prime_succ_elim_last l',
+                     'apply all_prime_succ_elim_last',
+                     'exact hall1',
+                     'cases hlastprime',
+                     'cases hlastprime_witness',
+                     'have hfactor_last : x = x4',
+                     'specialize beta_at_unique b',
+                     'specialize beta_at_unique c',
+                     'specialize beta_at_unique l',
+                     'specialize beta_at_unique x',
+                     'specialize beta_at_unique x4',
+                     'apply beta_at_unique',
+                     'exact hdec1_witness_witness_left',
+                     'exact hlastprime_witness_left',
+                     'have hprime : (~(x = 1) /\\ forall a d. x = a * d -> a = 1 \\/ d = 1)',
+                     'rewrite hfactor_last',
+                     'rewrite hfactor_last',
+                     'exact hlastprime_witness_right',
+                     'have hnonzero : ~(x = 0)',
+                     'intro hxzero',
+                     'specialize prime_nonzero x',
+                     'apply prime_nonzero',
+                     'exact hprime',
+                     'exact hxzero',
+                     'have hmuleq : x1 * x = x3 * x',
+                     'trans n',
+                     'symm',
+                     'exact hdec1_witness_witness_right_right',
+                     'exact hshared_prod2',
+                     'have hprefix_eq : x1 = x3',
+                     'specialize mul_right_cancel_nonzero x1',
+                     'specialize mul_right_cancel_nonzero x3',
+                     'specialize mul_right_cancel_nonzero x',
+                     'apply mul_right_cancel_nonzero',
+                     'exact hnonzero',
+                     'exact hmuleq',
+                     'have hallprefix1 : (forall i. (exists h. h + S i = l) -> exists p. (((exists '
+                     'h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ '
+                     '(~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)))',
+                     'specialize all_prime_succ_elim_prefix b',
+                     'specialize all_prime_succ_elim_prefix c',
+                     'specialize all_prime_succ_elim_prefix l',
+                     'apply all_prime_succ_elim_prefix',
+                     'exact hall1',
+                     'have hsortprefix1 : (forall i. (exists h. h + S S i = l) -> exists p q. '
+                     '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + '
+                     'p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S '
+                     'i) * c) + q) /\\ (exists h. h + p = q))))',
+                     'specialize sorted_succ_elim_prefix b',
+                     'specialize sorted_succ_elim_prefix c',
+                     'specialize sorted_succ_elim_prefix l',
+                     'apply sorted_succ_elim_prefix',
+                     'exact hsort1',
+                     'have hallprefix2 : (forall i. (exists h. h + S i = k) -> exists p. (((exists '
+                     'h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ '
+                     '(~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)))',
+                     'specialize all_prime_succ_elim_prefix z',
+                     'specialize all_prime_succ_elim_prefix e',
+                     'specialize all_prime_succ_elim_prefix k',
+                     'apply all_prime_succ_elim_prefix',
+                     'exact hall2',
+                     'have hsortprefix2 : (forall i. (exists h. h + S S i = k) -> exists p q. '
+                     '(((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + '
+                     'p) /\\ (((exists h. h + S q = S ((S S i) * e)) /\\ exists w. z = w * S ((S S '
+                     'i) * e) + q) /\\ (exists h. h + p = q))))',
+                     'specialize sorted_succ_elim_prefix z',
+                     'specialize sorted_succ_elim_prefix e',
+                     'specialize sorted_succ_elim_prefix k',
+                     'apply sorted_succ_elim_prefix',
+                     'exact hsort2',
+                     'exists x',
+                     'exists x1',
+                     'exists x3',
+                     'split',
+                     'exact hdec1_witness_witness_left',
+                     'split',
+                     'exact hshared_at2',
+                     'split',
+                     'exact hallprefix1',
+                     'split',
+                     'exact hsortprefix1',
+                     'split',
+                     'exact hdec1_witness_witness_right_left',
+                     'split',
+                     'exact hallprefix2',
+                     'split',
+                     'exact hsortprefix2',
+                     'split',
+                     'exact hdec2_witness_witness_right_left',
+                     'split',
+                     'exact hdec1_witness_witness_right_right',
+                     'split',
+                     'exact hshared_prod2',
+                     'exact hprefix_eq'),
+             summary='Cancel the common last prime from two nonempty canonical beta Products and '
+                     'return canonical prefixes.'))
+
+# Canonical sorted beta-coded prime-factorization uniqueness.
+PRIME_FACTORIZATION_UNIQUENESS_THEOREMS: tuple[TheoremSpec, ...] = (TheoremSpec(name='prime_factorization_uniqueness_by_length',
+             statement='forall l n b c m d e. ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) '
+                       '/\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S '
+                       'l) * v)) /\\ exists w. u = w * S ((S l) * v) + n) /\\ forall i. (exists h. '
+                       'h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ '
+                       'exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * '
+                       'v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S '
+                       '((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * '
+                       'p)))))) /\\ ((forall i. (exists h. h + S i = l) -> exists p. (((exists h. '
+                       'h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p '
+                       '= 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. '
+                       '(exists h. h + S S i = l) -> exists p q. (((exists h. h + S p = S ((S i) * '
+                       'c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S '
+                       '((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h '
+                       '+ p = q)))))) -> ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ '
+                       'exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S m) * '
+                       'v)) /\\ exists w. u = w * S ((S m) * v) + n) /\\ forall i. (exists h. h + '
+                       'S i = m) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists '
+                       'w. d = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) '
+                       '/\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S '
+                       'S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) '
+                       '/\\ ((forall i. (exists h. h + S i = m) -> exists p. (((exists h. h + S p '
+                       '= S ((S i) * e)) /\\ exists w. d = w * S ((S i) * e) + p) /\\ (~(p = 1) '
+                       '/\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. '
+                       'h + S S i = m) -> exists p q. (((exists h. h + S p = S ((S i) * e)) /\\ '
+                       'exists w. d = w * S ((S i) * e) + p) /\\ (((exists h. h + S q = S ((S S i) '
+                       '* e)) /\\ exists w. d = w * S ((S S i) * e) + q) /\\ (exists h. h + p = '
+                       'q)))))) -> (l = m /\\ forall i p q. (exists h. h + S i = l) -> ((exists h. '
+                       'h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) -> '
+                       '((exists h. h + S q = S ((S i) * e)) /\\ exists w. d = w * S ((S i) * e) + '
+                       'q) -> p = q)',
+             dependencies=('beta_product_zero',
+                           'beta_all_prime_product_one_iff_length_zero',
+                           'add_eq_zero_right',
+                           'succ_ne_zero',
+                           'beta_nonempty_all_prime_product_ne_one',
+                           'nonzero_is_succ',
+                           'beta_canonical_product_cancel_last',
+                           'succ_congr',
+                           'le_of_succ_le_succ',
+                           'le_eq_or_lt',
+                           'beta_at_unique'),
+             script=('induction l',
+                     'intro n',
+                     'intro b',
+                     'intro c',
+                     'intro m',
+                     'intro d',
+                     'intro e',
+                     'intro hcan1',
+                     'intro hcan2',
+                     'cases hcan1',
+                     'cases hcan1_right',
+                     'cases hcan2',
+                     'cases hcan2_right',
+                     'have hn1 : n = 1',
+                     'specialize beta_product_zero b',
+                     'specialize beta_product_zero c',
+                     'specialize beta_product_zero n',
+                     'apply beta_product_zero',
+                     'exact hcan1_left',
+                     'have hiff2 : ((n = 1 -> m = 0) /\\ (m = 0 -> n = 1))',
+                     'specialize beta_all_prime_product_one_iff_length_zero d',
+                     'specialize beta_all_prime_product_one_iff_length_zero e',
+                     'specialize beta_all_prime_product_one_iff_length_zero m',
+                     'specialize beta_all_prime_product_one_iff_length_zero n',
+                     'apply beta_all_prime_product_one_iff_length_zero',
+                     'exact hcan2_right_left',
+                     'exact hcan2_left',
+                     'cases hiff2',
+                     'have hm0 : m = 0',
+                     'apply hiff2_left',
+                     'exact hn1',
+                     'split',
+                     'symm',
+                     'exact hm0',
+                     'intro i',
+                     'intro p',
+                     'intro q',
+                     'intro hi',
+                     'intro hat1',
+                     'intro hat2',
+                     'exfalso',
+                     'cases hi',
+                     'have hsi0 : S i = 0',
+                     'specialize add_eq_zero_right x',
+                     'specialize add_eq_zero_right (S i)',
+                     'apply add_eq_zero_right',
+                     'exact hi_witness',
+                     'specialize succ_ne_zero i',
+                     'apply succ_ne_zero',
+                     'exact hsi0',
+                     'intro n',
+                     'intro b',
+                     'intro c',
+                     'intro m',
+                     'intro d',
+                     'intro e',
+                     'intro hcan1',
+                     'intro hcan2',
+                     'cases hcan1',
+                     'cases hcan1_right',
+                     'cases hcan2',
+                     'cases hcan2_right',
+                     'have hiff2 : ((n = 1 -> m = 0) /\\ (m = 0 -> n = 1))',
+                     'specialize beta_all_prime_product_one_iff_length_zero d',
+                     'specialize beta_all_prime_product_one_iff_length_zero e',
+                     'specialize beta_all_prime_product_one_iff_length_zero m',
+                     'specialize beta_all_prime_product_one_iff_length_zero n',
+                     'apply beta_all_prime_product_one_iff_length_zero',
+                     'exact hcan2_right_left',
+                     'exact hcan2_left',
+                     'cases hiff2',
+                     'have hmne : ~(m = 0)',
+                     'intro hm0',
+                     'have hn1 : n = 1',
+                     'apply hiff2_right',
+                     'exact hm0',
+                     'specialize beta_nonempty_all_prime_product_ne_one b',
+                     'specialize beta_nonempty_all_prime_product_ne_one c',
+                     'specialize beta_nonempty_all_prime_product_ne_one l',
+                     'specialize beta_nonempty_all_prime_product_ne_one n',
+                     'apply beta_nonempty_all_prime_product_ne_one',
+                     'exact hcan1_right_left',
+                     'exact hcan1_left',
+                     'exact hn1',
+                     'have hmsucc : exists k. m = S k',
+                     'specialize nonzero_is_succ m',
+                     'apply nonzero_is_succ',
+                     'exact hmne',
+                     'cases hmsucc',
+                     'rewrite hmsucc_witness at hcan2_right_left',
+                     'rewrite hmsucc_witness at hcan2_right_right',
+                     'rewrite hmsucc_witness at hcan2_left',
+                     'rewrite hmsucc_witness at hcan2_left',
+                     'rewrite hmsucc_witness at hcan2_left',
+                     'have hcancel : exists p r s. (((exists h. h + S p = S ((S l) * c)) /\\ '
+                     'exists w. b = w * S ((S l) * c) + p) /\\ (((exists h. h + S p = S ((S x) * '
+                     'e)) /\\ exists w. d = w * S ((S x) * e) + p) /\\ ((forall i. (exists h. h + '
+                     'S i = l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b '
+                     '= w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 '
+                     '\\/ d = 1))) /\\ ((forall i. (exists h. h + S S i = l) -> exists p q. '
+                     '(((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + '
+                     'p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S '
+                     'i) * c) + q) /\\ (exists h. h + p = q)))) /\\ ((exists u v. (((exists h. h + '
+                     'S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists '
+                     'h. h + S r = S ((S l) * v)) /\\ exists w. u = w * S ((S l) * v) + r) /\\ '
+                     'forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S '
+                     '((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S '
+                     'r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. '
+                     'h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s '
+                     '= r * p)))))) /\\ ((forall i. (exists h. h + S i = x) -> exists p. (((exists '
+                     'h. h + S p = S ((S i) * e)) /\\ exists w. d = w * S ((S i) * e) + p) /\\ '
+                     '(~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ ((forall i. '
+                     '(exists h. h + S S i = x) -> exists p q. (((exists h. h + S p = S ((S i) * '
+                     'e)) /\\ exists w. d = w * S ((S i) * e) + p) /\\ (((exists h. h + S q = S '
+                     '((S S i) * e)) /\\ exists w. d = w * S ((S S i) * e) + q) /\\ (exists h. h + '
+                     'p = q)))) /\\ ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists '
+                     'w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S s = S ((S x) * v)) /\\ '
+                     'exists w. u = w * S ((S x) * v) + s) /\\ forall i. (exists h. h + S i = x) '
+                     '-> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. d = w * '
+                     'S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u '
+                     '= w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ '
+                     'exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ (n = r * p '
+                     '/\\ (n = s * p /\\ r = s))))))))))',
+                     'specialize beta_canonical_product_cancel_last b',
+                     'specialize beta_canonical_product_cancel_last c',
+                     'specialize beta_canonical_product_cancel_last d',
+                     'specialize beta_canonical_product_cancel_last e',
+                     'specialize beta_canonical_product_cancel_last l',
+                     'specialize beta_canonical_product_cancel_last x',
+                     'specialize beta_canonical_product_cancel_last n',
+                     'apply beta_canonical_product_cancel_last',
+                     'exact hcan1_right_left',
+                     'exact hcan1_right_right',
+                     'exact hcan1_left',
+                     'exact hcan2_right_left',
+                     'exact hcan2_right_right',
+                     'exact hcan2_left',
+                     'cases hcancel',
+                     'cases hcancel_witness',
+                     'cases hcancel_witness_witness',
+                     'cases hcancel_witness_witness_witness',
+                     'cases hcancel_witness_witness_witness_right',
+                     'cases hcancel_witness_witness_witness_right_right',
+                     'cases hcancel_witness_witness_witness_right_right_right',
+                     'cases hcancel_witness_witness_witness_right_right_right_right',
+                     'cases hcancel_witness_witness_witness_right_right_right_right_right',
+                     'cases hcancel_witness_witness_witness_right_right_right_right_right_right',
+                     'cases '
+                     'hcancel_witness_witness_witness_right_right_right_right_right_right_right',
+                     'cases '
+                     'hcancel_witness_witness_witness_right_right_right_right_right_right_right_right',
+                     'cases '
+                     'hcancel_witness_witness_witness_right_right_right_right_right_right_right_right_right',
+                     'have hprod2prefix_same : (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) '
+                     '/\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S x2 = S ((S '
+                     'x) * v)) /\\ exists w. u = w * S ((S x) * v) + x2) /\\ forall i. (exists h. '
+                     'h + S i = x) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ '
+                     'exists w. d = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * '
+                     'v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S '
+                     '((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * '
+                     'p))))))',
+                     'rewrite '
+                     'hcancel_witness_witness_witness_right_right_right_right_right_right_right_right_right_right',
+                     'rewrite '
+                     'hcancel_witness_witness_witness_right_right_right_right_right_right_right_right_right_right',
+                     'exact '
+                     'hcancel_witness_witness_witness_right_right_right_right_right_right_right_left',
+                     'have hprefixcan1 : ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ '
+                     'exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S x2 = S ((S l) * '
+                     'v)) /\\ exists w. u = w * S ((S l) * v) + x2) /\\ forall i. (exists h. h + S '
+                     'i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. '
+                     'b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ '
+                     'exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * '
+                     'v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ '
+                     '((forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S p = S '
+                     '((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ '
+                     'forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S '
+                     'S i = l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. '
+                     'b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ '
+                     'exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q))))))',
+                     'split',
+                     'exact hcancel_witness_witness_witness_right_right_right_right_left',
+                     'split',
+                     'exact hcancel_witness_witness_witness_right_right_left',
+                     'exact hcancel_witness_witness_witness_right_right_right_left',
+                     'have hprefixcan2 : ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ '
+                     'exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S x2 = S ((S x) * '
+                     'v)) /\\ exists w. u = w * S ((S x) * v) + x2) /\\ forall i. (exists h. h + S '
+                     'i = x) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. '
+                     'd = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ '
+                     'exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * '
+                     'v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ '
+                     '((forall i. (exists h. h + S i = x) -> exists p. (((exists h. h + S p = S '
+                     '((S i) * e)) /\\ exists w. d = w * S ((S i) * e) + p) /\\ (~(p = 1) /\\ '
+                     'forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S '
+                     'S i = x) -> exists p q. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. '
+                     'd = w * S ((S i) * e) + p) /\\ (((exists h. h + S q = S ((S S i) * e)) /\\ '
+                     'exists w. d = w * S ((S S i) * e) + q) /\\ (exists h. h + p = q))))))',
+                     'split',
+                     'exact hprod2prefix_same',
+                     'split',
+                     'exact hcancel_witness_witness_witness_right_right_right_right_right_left',
+                     'exact '
+                     'hcancel_witness_witness_witness_right_right_right_right_right_right_left',
+                     'have hrec : (l = x /\\ forall i p q. (exists h. h + S i = l) -> ((exists h. '
+                     'h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) -> '
+                     '((exists h. h + S q = S ((S i) * e)) /\\ exists w. d = w * S ((S i) * e) + '
+                     'q) -> p = q)',
+                     'specialize IH x2',
+                     'specialize IH b',
+                     'specialize IH c',
+                     'specialize IH x',
+                     'specialize IH d',
+                     'specialize IH e',
+                     'apply IH',
+                     'exact hprefixcan1',
+                     'exact hprefixcan2',
+                     'cases hrec',
+                     'split',
+                     'have hslen : S l = S x',
+                     'specialize succ_congr l',
+                     'specialize succ_congr x',
+                     'apply succ_congr',
+                     'exact hrec_left',
+                     'trans S x',
+                     'exact hslen',
+                     'symm',
+                     'exact hmsucc_witness',
+                     'intro i',
+                     'intro p',
+                     'intro q',
+                     'intro hi',
+                     'intro hat1',
+                     'intro hat2',
+                     'have hile : (exists h. h + i = l)',
+                     'specialize le_of_succ_le_succ i',
+                     'specialize le_of_succ_le_succ l',
+                     'apply le_of_succ_le_succ',
+                     'exact hi',
+                     'have hsplit : i = l \\/ (exists h. h + S i = l)',
+                     'specialize le_eq_or_lt i',
+                     'specialize le_eq_or_lt l',
+                     'apply le_eq_or_lt',
+                     'exact hile',
+                     'cases hsplit',
+                     'have hp_last : p = x1',
+                     'specialize beta_at_unique b',
+                     'specialize beta_at_unique c',
+                     'specialize beta_at_unique l',
+                     'specialize beta_at_unique p',
+                     'specialize beta_at_unique x1',
+                     'apply beta_at_unique',
+                     'rewrite hsplit_left at hat1',
+                     'rewrite hsplit_left at hat1',
+                     'exact hat1',
+                     'exact hcancel_witness_witness_witness_left',
+                     'have hq_last : q = x1',
+                     'specialize beta_at_unique d',
+                     'specialize beta_at_unique e',
+                     'specialize beta_at_unique x',
+                     'specialize beta_at_unique q',
+                     'specialize beta_at_unique x1',
+                     'apply beta_at_unique',
+                     'rewrite hsplit_left at hat2',
+                     'rewrite hsplit_left at hat2',
+                     'rewrite hrec_left at hat2',
+                     'rewrite hrec_left at hat2',
+                     'exact hat2',
+                     'exact hcancel_witness_witness_witness_right_left',
+                     'trans x1',
+                     'exact hp_last',
+                     'symm',
+                     'exact hq_last',
+                     'specialize hrec_right i',
+                     'specialize hrec_right p',
+                     'specialize hrec_right q',
+                     'apply hrec_right',
+                     'exact hsplit_right',
+                     'exact hat1',
+                     'exact hat2'),
+             summary='Strengthened induction on the first canonical factorization length.'),
+ TheoremSpec(name='prime_factorization_uniqueness',
+             statement='forall n l b c m d e. (((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) '
+                       '/\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S '
+                       'l) * v)) /\\ exists w. u = w * S ((S l) * v) + n) /\\ forall i. (exists h. '
+                       'h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ '
+                       'exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * '
+                       'v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S '
+                       '((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * '
+                       'p)))))) /\\ ((forall i. (exists h. h + S i = l) -> exists p. (((exists h. '
+                       'h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p '
+                       '= 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. '
+                       '(exists h. h + S S i = l) -> exists p q. (((exists h. h + S p = S ((S i) * '
+                       'c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S '
+                       '((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h '
+                       '+ p = q)))))) /\\ ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ '
+                       'exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S m) * '
+                       'v)) /\\ exists w. u = w * S ((S m) * v) + n) /\\ forall i. (exists h. h + '
+                       'S i = m) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists '
+                       'w. d = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) '
+                       '/\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S '
+                       'S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) '
+                       '/\\ ((forall i. (exists h. h + S i = m) -> exists p. (((exists h. h + S p '
+                       '= S ((S i) * e)) /\\ exists w. d = w * S ((S i) * e) + p) /\\ (~(p = 1) '
+                       '/\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. '
+                       'h + S S i = m) -> exists p q. (((exists h. h + S p = S ((S i) * e)) /\\ '
+                       'exists w. d = w * S ((S i) * e) + p) /\\ (((exists h. h + S q = S ((S S i) '
+                       '* e)) /\\ exists w. d = w * S ((S S i) * e) + q) /\\ (exists h. h + p = '
+                       'q))))))) -> (l = m /\\ forall i p q. (exists h. h + S i = l) -> ((exists '
+                       'h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) -> '
+                       '((exists h. h + S q = S ((S i) * e)) /\\ exists w. d = w * S ((S i) * e) + '
+                       'q) -> p = q)',
+             dependencies=('prime_factorization_uniqueness_by_length',),
+             script=('intro n',
+                     'intro l',
+                     'intro b',
+                     'intro c',
+                     'intro m',
+                     'intro d',
+                     'intro e',
+                     'intro hboth',
+                     'cases hboth',
+                     'specialize prime_factorization_uniqueness_by_length l',
+                     'specialize prime_factorization_uniqueness_by_length n',
+                     'specialize prime_factorization_uniqueness_by_length b',
+                     'specialize prime_factorization_uniqueness_by_length c',
+                     'specialize prime_factorization_uniqueness_by_length m',
+                     'specialize prime_factorization_uniqueness_by_length d',
+                     'specialize prime_factorization_uniqueness_by_length e',
+                     'apply prime_factorization_uniqueness_by_length',
+                     'exact hboth_left',
+                     'exact hboth_right'),
+             summary='Exact catalog finite prime-factorization uniqueness target.'))
+
+# The exact catalog FTA combines native beta-coded existence and uniqueness.
+# It introduces neither conventional list primitives nor classical DNE.
+FUNDAMENTAL_THEOREM_OF_ARITHMETIC_THEOREMS: tuple[TheoremSpec, ...] = (TheoremSpec(name='fundamental_theorem_of_arithmetic',
+             statement='(forall n. ~(n = 0) -> exists l b c. ((exists u v. (((exists h. h + S 1 = '
+                       'S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h '
+                       '+ S n = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall '
+                       'i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S '
+                       'i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r '
+                       '= S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. '
+                       'h + S s = S ((S (S i)) * v)) /\\ exists q. u = q * S ((S (S i)) * v) + s) '
+                       '/\\ s = r * p)))))) /\\ ((forall i. (exists h. h + S i = l) -> exists p. '
+                       '(((exists h. h + S (p) = S ((S (i)) * c)) /\\ exists w. b = w * S ((S (i)) '
+                       '* c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) '
+                       '/\\ (forall i. (exists h. h + S (S i) = l) -> exists p q. (((exists h. h + '
+                       'S (p) = S ((S (i)) * c)) /\\ exists w. b = w * S ((S (i)) * c) + p) /\\ '
+                       '(((exists h. h + S (q) = S ((S (S i)) * c)) /\\ exists w. b = w * S ((S (S '
+                       'i)) * c) + q) /\\ exists h. h + p = q)))))) /\\ (forall n l b c m d e. '
+                       '(((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * '
+                       'S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. '
+                       'u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists '
+                       'p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S '
+                       'i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q '
+                       '* S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S (S i)) * v)) /\\ '
+                       'exists q. u = q * S ((S (S i)) * v) + s) /\\ s = r * p)))))) /\\ ((forall '
+                       'i. (exists h. h + S i = l) -> exists p. (((exists h. h + S (p) = S ((S '
+                       '(i)) * c)) /\\ exists w. b = w * S ((S (i)) * c) + p) /\\ (~(p = 1) /\\ '
+                       'forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. h + '
+                       'S (S i) = l) -> exists p q. (((exists h. h + S (p) = S ((S (i)) * c)) /\\ '
+                       'exists w. b = w * S ((S (i)) * c) + p) /\\ (((exists h. h + S (q) = S ((S '
+                       '(S i)) * c)) /\\ exists w. b = w * S ((S (S i)) * c) + q) /\\ exists h. h '
+                       '+ p = q))))) /\\ ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ '
+                       'exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S m) * '
+                       'v)) /\\ exists q. u = q * S ((S m) * v) + n) /\\ forall i. (exists h. h + '
+                       'S i = m) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists '
+                       'q. d = q * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) '
+                       '/\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S '
+                       '(S i)) * v)) /\\ exists q. u = q * S ((S (S i)) * v) + s) /\\ s = r * '
+                       'p)))))) /\\ ((forall i. (exists h. h + S i = m) -> exists p. (((exists h. '
+                       'h + S (p) = S ((S (i)) * e)) /\\ exists w. d = w * S ((S (i)) * e) + p) '
+                       '/\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall '
+                       'i. (exists h. h + S (S i) = m) -> exists p q. (((exists h. h + S (p) = S '
+                       '((S (i)) * e)) /\\ exists w. d = w * S ((S (i)) * e) + p) /\\ (((exists h. '
+                       'h + S (q) = S ((S (S i)) * e)) /\\ exists w. d = w * S ((S (S i)) * e) + '
+                       'q) /\\ exists h. h + p = q)))))) -> (l = m /\\ forall i p q. (exists h. h '
+                       '+ S i = l) -> ((exists h. h + S (p) = S ((S (i)) * c)) /\\ exists w. b = w '
+                       '* S ((S (i)) * c) + p) -> ((exists h. h + S (q) = S ((S (i)) * e)) /\\ '
+                       'exists w. d = w * S ((S (i)) * e) + q) -> p = q))',
+             dependencies=('prime_factorization_existence', 'prime_factorization_uniqueness'),
+             script=('split',
+                     'exact prime_factorization_existence',
+                     'exact prime_factorization_uniqueness'),
+             summary='Native beta-coded prime-factorization existence and uniqueness in '
+                     'first-order PA; no conventional list primitive and no DNE.'),)
+
+# Independently audited small prime and fixed-length factorization endpoints.
+SMALL_PRIME_FACTORIZATION_THEOREMS: tuple[TheoremSpec, ...] = (TheoremSpec(name='prime_three',
+             statement='~(3 = 1) /\\ forall a b. 3 = a * b -> a = 1 \\/ b = 1',
+             dependencies=('mul_succ_left',
+                           'mul_eq_one_components',
+                           'add_eq_zero_left',
+                           'mul_eq_zero',
+                           'mul_zero_left',
+                           'zero_or_succ'),
+             script=('have hlarge : forall x y. ~(3 = S (S x) * S (S y))',
+                     'intro x',
+                     'intro y',
+                     'intro hlarge_eq',
+                     'specialize mul_succ_left (S x)',
+                     'specialize mul_succ_left (S (S y))',
+                     'rewrite mul_succ_left at hlarge_eq',
+                     'rewrite PA4 at hlarge_eq',
+                     'rewrite PA4 at hlarge_eq',
+                     'have hone : 1 = S x * S (S y) + y',
+                     'apply PA2',
+                     'apply PA2',
+                     'exact hlarge_eq',
+                     'have hysplit : y = 0 \\/ exists z. y = S z',
+                     'specialize zero_or_succ y',
+                     'exact zero_or_succ',
+                     'cases hysplit',
+                     'rewrite hysplit_left at hone',
+                     'rewrite hysplit_left at hone',
+                     'rewrite PA3 at hone',
+                     'have hprod_one : S x * S (S 0) = 1',
+                     'symm',
+                     'exact hone',
+                     'have hcomponents : S x = 1 /\\ S (S 0) = 1',
+                     'specialize mul_eq_one_components (S x)',
+                     'specialize mul_eq_one_components (S (S 0))',
+                     'apply mul_eq_one_components',
+                     'exact hprod_one',
+                     'cases hcomponents',
+                     'have h10 : 1 = 0',
+                     'apply PA2',
+                     'exact hcomponents_right',
+                     'apply PA1',
+                     'exact h10',
+                     'cases hysplit_right',
+                     'rewrite hysplit_right_witness at hone',
+                     'rewrite hysplit_right_witness at hone',
+                     'rewrite PA4 at hone',
+                     'have hzero : 0 = S x * S (S (S x1)) + x1',
+                     'apply PA2',
+                     'exact hone',
+                     'have hsumzero : S x * S (S (S x1)) + x1 = 0',
+                     'symm',
+                     'exact hzero',
+                     'have hprodzero : S x * S (S (S x1)) = 0',
+                     'specialize add_eq_zero_left (S x * S (S (S x1)))',
+                     'specialize add_eq_zero_left x1',
+                     'apply add_eq_zero_left',
+                     'exact hsumzero',
+                     'have hfactors : S x = 0 \\/ S (S (S x1)) = 0',
+                     'specialize mul_eq_zero (S x)',
+                     'specialize mul_eq_zero (S (S (S x1)))',
+                     'apply mul_eq_zero',
+                     'exact hprodzero',
+                     'cases hfactors',
+                     'apply PA1',
+                     'exact hfactors_left',
+                     'apply PA1',
+                     'exact hfactors_right',
+                     'split',
+                     'intro h31',
+                     'have h20 : 2 = 0',
+                     'apply PA2',
+                     'exact h31',
+                     'apply PA1',
+                     'exact h20',
+                     'intro a',
+                     'induction b',
+                     'intro hab',
+                     'rewrite PA5 at hab',
+                     'exfalso',
+                     'apply PA1',
+                     'exact hab',
+                     'induction b',
+                     'intro hab',
+                     'right',
+                     'refl',
+                     'induction a',
+                     'intro hab',
+                     'specialize mul_zero_left (S (S b))',
+                     'rewrite mul_zero_left at hab',
+                     'exfalso',
+                     'apply PA1',
+                     'exact hab',
+                     'induction a',
+                     'intro hab',
+                     'left',
+                     'refl',
+                     'intro hab',
+                     'exfalso',
+                     'specialize hlarge a',
+                     'specialize hlarge b',
+                     'apply hlarge',
+                     'exact hab'),
+             summary='Three is prime in the expanded first-order prime predicate.'),
+ TheoremSpec(name='two_prime_product_uniqueness',
+             statement='forall p q r s. (~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1) -> '
+                       '(~(q = 1) /\\ forall c d. q = c * d -> c = 1 \\/ d = 1) -> (~(r = 1) /\\ '
+                       'forall e f. r = e * f -> e = 1 \\/ f = 1) -> (~(s = 1) /\\ forall g h. s = '
+                       'g * h -> g = 1 \\/ h = 1) -> p * q = r * s -> (p = r /\\ q = s) \\/ (p = s '
+                       '/\\ q = r)',
+             dependencies=('euclid_prime_dvd_product',
+                           'prime_divisor_eq_one_or_self',
+                           'prime_nonzero',
+                           'mul_left_cancel_nonzero',
+                           'mul_comm'),
+             script=('intro p',
+                     'intro q',
+                     'intro r',
+                     'intro s',
+                     'intro hp',
+                     'cases hp',
+                     'intro hq',
+                     'intro hr',
+                     'intro hs',
+                     'intro hproduct',
+                     'have hpdiv : exists k. r * s = p * k',
+                     'exists q',
+                     'symm',
+                     'exact hproduct',
+                     'have hcases : (exists u. r = p * u) \\/ exists v. s = p * v',
+                     'specialize euclid_prime_dvd_product p',
+                     'specialize euclid_prime_dvd_product r',
+                     'specialize euclid_prime_dvd_product s',
+                     'apply euclid_prime_dvd_product',
+                     'split',
+                     'exact hp_left',
+                     'exact hp_right',
+                     'exact hpdiv',
+                     'cases hcases',
+                     'have hpr : p = 1 \\/ r = p',
+                     'specialize prime_divisor_eq_one_or_self r',
+                     'specialize prime_divisor_eq_one_or_self p',
+                     'apply prime_divisor_eq_one_or_self',
+                     'exact hr',
+                     'exact hcases_left',
+                     'cases hpr',
+                     'exfalso',
+                     'apply hp_left',
+                     'exact hpr_left',
+                     'left',
+                     'split',
+                     'symm',
+                     'exact hpr_right',
+                     'specialize mul_left_cancel_nonzero r',
+                     'specialize mul_left_cancel_nonzero q',
+                     'specialize mul_left_cancel_nonzero s',
+                     'apply mul_left_cancel_nonzero',
+                     'intro hrzero',
+                     'specialize prime_nonzero r',
+                     'apply prime_nonzero',
+                     'exact hr',
+                     'exact hrzero',
+                     'rewrite <- hpr_right at hproduct',
+                     'exact hproduct',
+                     'have hps : p = 1 \\/ s = p',
+                     'specialize prime_divisor_eq_one_or_self s',
+                     'specialize prime_divisor_eq_one_or_self p',
+                     'apply prime_divisor_eq_one_or_self',
+                     'exact hs',
+                     'exact hcases_right',
+                     'cases hps',
+                     'exfalso',
+                     'apply hp_left',
+                     'exact hps_left',
+                     'right',
+                     'split',
+                     'symm',
+                     'exact hps_right',
+                     'specialize mul_left_cancel_nonzero s',
+                     'specialize mul_left_cancel_nonzero q',
+                     'specialize mul_left_cancel_nonzero r',
+                     'apply mul_left_cancel_nonzero',
+                     'intro hszero',
+                     'specialize prime_nonzero s',
+                     'apply prime_nonzero',
+                     'exact hs',
+                     'exact hszero',
+                     'rewrite <- hps_right at hproduct',
+                     'specialize mul_comm r',
+                     'specialize mul_comm s',
+                     'rewrite mul_comm at hproduct',
+                     'exact hproduct'),
+             summary='A product of two primes determines its factors up to swapping them.'))
+
 def _merge_compatible_theorems(
     base: tuple[TheoremSpec, ...],
     imported: tuple[TheoremSpec, ...],
@@ -6039,6 +11007,22 @@ def _merge_compatible_theorems(
 
 
 THEOREMS = _merge_compatible_theorems(THEOREMS, BINARY_CRT_THEOREMS)
+THEOREMS = _merge_compatible_theorems(THEOREMS, PRIME_UNBOUNDED_THEOREMS)
+THEOREMS = _merge_compatible_theorems(THEOREMS, BETA_PREFIX_PRODUCT_THEOREMS)
+THEOREMS = _merge_compatible_theorems(THEOREMS, BETA_PRODUCT_FUNCTIONALITY_THEOREMS)
+THEOREMS = _merge_compatible_theorems(THEOREMS, BETA_PRODUCT_ENDPOINT_THEOREMS)
+THEOREMS = _merge_compatible_theorems(THEOREMS, BETA_PRODUCT_TRANSPORT_THEOREMS)
+THEOREMS = _merge_compatible_theorems(THEOREMS, BETA_FACTOR_PREDICATE_THEOREMS)
+THEOREMS = _merge_compatible_theorems(THEOREMS, BETA_CANONICAL_APPEND_THEOREMS)
+THEOREMS = _merge_compatible_theorems(THEOREMS, GREATEST_PRIME_DIVISOR_THEOREMS)
+THEOREMS = _merge_compatible_theorems(THEOREMS, BETA_FACTOR_DIVISIBILITY_THEOREMS)
+THEOREMS = _merge_compatible_theorems(THEOREMS, BETA_CANONICAL_APPEND_GENERAL_THEOREMS)
+THEOREMS = _merge_compatible_theorems(THEOREMS, BETA_CANONICAL_LAST_FACTOR_THEOREMS)
+THEOREMS = _merge_compatible_theorems(THEOREMS, PRIME_FACTORIZATION_EXISTENCE_THEOREMS)
+THEOREMS = _merge_compatible_theorems(THEOREMS, BETA_FACTORIZATION_UNIQUENESS_PREREQUISITES)
+THEOREMS = _merge_compatible_theorems(THEOREMS, PRIME_FACTORIZATION_UNIQUENESS_THEOREMS)
+THEOREMS = _merge_compatible_theorems(THEOREMS, FUNDAMENTAL_THEOREM_OF_ARITHMETIC_THEOREMS)
+THEOREMS = _merge_compatible_theorems(THEOREMS, SMALL_PRIME_FACTORIZATION_THEOREMS)
 THEOREMS = _merge_compatible_theorems(THEOREMS, MOD5_THEOREMS)
 
 
@@ -6149,7 +11133,23 @@ __all__ = [
     "TheoremSpec",
     "CheckedTheorem",
     "THEOREMS",
+    "PRIME_UNBOUNDED_THEOREMS",
     "BINARY_CRT_THEOREMS",
+    "BETA_PREFIX_PRODUCT_THEOREMS",
+    "BETA_PRODUCT_FUNCTIONALITY_THEOREMS",
+    "BETA_PRODUCT_ENDPOINT_THEOREMS",
+    "BETA_PRODUCT_TRANSPORT_THEOREMS",
+    "BETA_FACTOR_PREDICATE_THEOREMS",
+    "BETA_CANONICAL_APPEND_THEOREMS",
+    "GREATEST_PRIME_DIVISOR_THEOREMS",
+    "BETA_FACTOR_DIVISIBILITY_THEOREMS",
+    "BETA_CANONICAL_APPEND_GENERAL_THEOREMS",
+    "BETA_CANONICAL_LAST_FACTOR_THEOREMS",
+    "PRIME_FACTORIZATION_EXISTENCE_THEOREMS",
+    "BETA_FACTORIZATION_UNIQUENESS_PREREQUISITES",
+    "PRIME_FACTORIZATION_UNIQUENESS_THEOREMS",
+    "FUNDAMENTAL_THEOREM_OF_ARITHMETIC_THEOREMS",
+    "SMALL_PRIME_FACTORIZATION_THEOREMS",
     "MOD5_THEOREMS",
     "MOD5_LIBRARY_SOURCE_REPOSITORY",
     "MOD5_LIBRARY_SOURCE_COMMIT",

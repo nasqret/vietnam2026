@@ -19,7 +19,12 @@ forall a b. (exists k. k + a = b) -> exists r. r + S a = S b
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[beta_value_lt_scaled_base]]
+- [[new_value_lt_scaled_base]]
+- [[beta_prefix_product_trace_exists]]
+- [[beta_product_succ_append]]
+- [[beta_factor_prefix_product_append]]
+- [[sorted_succ_intro]]
 
 ## Verification record
 

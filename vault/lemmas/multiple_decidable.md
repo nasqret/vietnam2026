@@ -21,7 +21,7 @@ forall d n. (exists q. n = d * q) \/ ~(exists q. n = d * q)
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[prime_divides_decidable]]
 
 ## Verification record
 

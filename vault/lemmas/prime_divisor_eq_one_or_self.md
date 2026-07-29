@@ -20,6 +20,8 @@ forall p g. (~(p = 1) /\ forall c d. p = c * d -> c = 1 \/ d = 1) -> (exists x. 
 ## Checked dependents
 
 - [[euclid_prime_dvd_product]]
+- [[beta_prime_divisor_product_member]]
+- [[two_prime_product_uniqueness]]
 
 ## Verification record
 

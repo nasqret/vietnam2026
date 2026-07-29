@@ -25,6 +25,19 @@ forall a b. (exists k. k + S a = S b) -> exists r. r + a = b
 - [[prime_divisor_exists_up_to]]
 - [[beta_accumulated_product_step]]
 - [[beta_crt_prefix_congruence_step]]
+- [[beta_exclusive_accumulated_product_step]]
+- [[beta_exclusive_recode_congruence_step]]
+- [[beta_prefix_product_trace_exists]]
+- [[beta_product_succ_append]]
+- [[beta_factor_prefix_product_append]]
+- [[all_prime_succ_intro]]
+- [[sorted_singleton]]
+- [[sorted_succ_intro]]
+- [[greatest_prime_divisor_search]]
+- [[beta_factor_divides_product]]
+- [[prime_factorization_exists_up_to]]
+- [[beta_sorted_factor_le_last]]
+- [[prime_factorization_uniqueness_by_length]]
 
 ## Verification record
 

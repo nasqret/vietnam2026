@@ -23,6 +23,7 @@ forall a b. a * b = 1 -> a = 1 /\ b = 1
 
 - [[divisor_one]]
 - [[multiple_antisymm]]
+- [[prime_three]]
 
 ## Verification record
 

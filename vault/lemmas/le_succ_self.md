@@ -22,6 +22,8 @@ forall n. n <= S n
 
 - [[beta_accumulated_product_step]]
 - [[bounded_beta_crt_prefix_invariant]]
+- [[beta_exclusive_accumulated_product_step]]
+- [[bounded_beta_exclusive_recode_invariant]]
 
 ## Verification record
 

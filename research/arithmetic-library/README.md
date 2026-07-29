@@ -3,36 +3,48 @@
 This directory is the planning and provenance source for Peano Lab's general
 arithmetic library. Start with:
 
-The current runtime/catalog boundary is 189 checked Peano entries (23
-baseline, 154 general foundational, and twelve fixed modular) inside a
-196-node catalog. Exact shared-certificate totals are reproduced in the
-generated snapshot: 242,629 proof nodes, 6,895 self-contained Cuts, and 149
-Cut-bearing certificates. `bounded_beta_crt_for_existing_code` is largest
-at 25,545 nodes and 755 Cuts; `prime_divisor_exists` sets the snapshot-wide
-maximum depth at 80.
-The latest tranches establish full additive/multiplicative balanced-congruence
-compatibility, bounded representative uniqueness, both remainder/congruence
-directions, expanded β decoding equivalent to bound plus congruence,
-constructive binary CRT, conditional β-modulus coprimality when an ordered
-index gap divides `c`, its two-position β-code client, and bounded
-nonzero common multiples. Unconditional pairwise coprimality is false. The
-bounded-prefix form, coprime-product closure, modulus descent, and the combined
-accumulated-product/decoded-congruence prefix invariant are now checked. Its
-wrapper is restricted to residues already decoded from a supplied `BetaAt`
-code and is not arbitrary finite-sequence coding. Genuine prefix-product
-recurrence and bounds, β finite-prefix recoding, greatest-prime descent, and
-native FTA remain open.
+The current runtime contains 247 checked entries and the factorization tranche
+is fully synchronized. The exact native β-coded endpoints are checked
+from the empty context:
 
-- [`catalog.json`](catalog.json): 196 dependency-ordered facts — 23
-  `checked_existing`, 166 `checked_m20`, three `planned_expressible`, and four
-  `blocked_by_language` — with exact source IDs, Peano statements where
-  expressible, and blockers where not;
+| Endpoint | Nodes | Depth | Cuts |
+|---|---:|---:|---:|
+| `prime_factorization_existence` | 43,973 | 98 | 1,328 |
+| `prime_factorization_uniqueness` | 29,789 | 82 | 854 |
+| `fundamental_theorem_of_arithmetic` | 73,767 | 99 | 2,184 |
+
+The exact FTA certificate has SHA-256
+`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+It passes the full prove/use/exact/QED route under the current 100,000-node,
+depth-256 cap. The certificate uses only PA1–PA6 and induction, contains no
+DNE, and has passed dependency, hypothesis, PA-rule, and semantic mutation
+audits.
+
+The constructive prime endpoint is checked as well. `prime_unbounded` takes a
+nonzero common multiple through the supplied bound, chooses a prime divisor of
+its successor, and proves it cannot lie at or below the bound: otherwise it
+would divide both consecutive numbers and hence one. Its exact certificate is
+4,595 nodes/depth 82/146 Cuts with SHA-256
+`8a44fb2d207c2a41684de6d6630674f3f3b951cd036f733b3dd493321099d37b`.
+It uses PA1–PA6 only, contains no DNE, and passes exact dependency, PA,
+hypothesis, and live-use audits.
+
+This is a native PA result in the selected conservative encoding, not a claim
+that Peano Lab has gained primitive lists. Factors and prefix products are
+Gödel-β coded; uniqueness proves equal lengths and equality of every decoded
+bounded entry. It deliberately does not equate raw codes, because distinct
+codes may represent the same finite prefix. Runtime/catalog synchronization is
+complete.
+
+- [`catalog.json`](catalog.json): the dependency-ordered theorem and planning
+  register, including exact Peano statements, source IDs, blockers, and the
+  factorization integration tranche;
 - [`source-register.json`](source-register.json): pinned revisions, licenses,
   resources, and reuse modes;
 - [`finite-factorization-encoding.md`](finite-factorization-encoding.md): the
   selected conservative Gödel-β factor-sequence and prefix-product design,
-  its checked decoded-value foundation, exact FTA endpoints, and remaining
-  CRT/product dependency spine;
+  its checked decoded-value, recoding, product, canonical-factorization, and
+  exact FTA endpoints;
 - [`gcd-bezout-roadmap.md`](gcd-bezout-roadmap.md): the checked relational API,
   Euclidean-invariance ladder, simultaneous bounded gcd/Bézout construction,
   Gauss cancellation, Euclid's lemma, and the constructive factor-search and
@@ -62,4 +74,8 @@ context appear as checked. Dependency Cuts embed complete proof branches and
 never grant names or hashes authority. Planned and
 language-blocked nodes make the roadmap precise without overstating the
 current implementation. The catalog separately binds one checked Lean FTA
-companion; companion status never counts as Peano runtime coverage.
+companion; that conventional list theorem remains independent of the native
+β-coded certificate and never supplies Peano theorem authority. The catalog
+has no remaining planned entry. Conventional integer-coefficient Bézout is not
+available in the natural-only term language, while the checked balanced
+four-natural relation supplies the native replacement.

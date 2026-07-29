@@ -19,7 +19,7 @@ forall a b. (exists k. k + a = b) \/ exists k. k + S b = a
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[prime_unbounded]]
 
 ## Verification record
 

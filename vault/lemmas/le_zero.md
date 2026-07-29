@@ -24,6 +24,11 @@ forall n. n <= 0 -> n = 0
 - [[factor_search_up_to]]
 - [[prime_divisor_exists_up_to]]
 - [[bounded_beta_crt_prefix_invariant]]
+- [[sorted_empty]]
+- [[sorted_singleton]]
+- [[greatest_prime_divisor_search]]
+- [[prime_factorization_exists_up_to]]
+- [[beta_sorted_factor_le_last]]
 
 ## Verification record
 

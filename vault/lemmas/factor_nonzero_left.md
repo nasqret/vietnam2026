@@ -19,7 +19,7 @@ forall n c d. ~(n = 0) -> n = c * d -> ~(c = 0)
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[greatest_prime_divisor_descent]]
 
 ## Verification record
 

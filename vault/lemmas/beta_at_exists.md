@@ -23,6 +23,10 @@ forall b c i. exists x. ((exists h. h + S x = S ((S i) * c)) /\ exists q. b = q 
 
 - [[beta_at_exists_unique]]
 - [[beta_crt_prefix_congruence_step]]
+- [[beta_exclusive_recode_congruence_step]]
+- [[beta_prefix_product_trace_exists]]
+- [[beta_product_exists]]
+- [[prime_factorization_exists_up_to]]
 
 ## Verification record
 

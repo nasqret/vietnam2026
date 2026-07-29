@@ -83,10 +83,20 @@ every $n\ne0,1$ has a prime $p$ and a witness $k$ with $n=pk$.
 principle: its concrete motive is proved by ordinary induction on $B$, and a
 nontrivial factor is shown smaller before the induction hypothesis is used.
 All twelve certificates check in the default intuitionistic kernel and contain
-no DNE node. Primes above every bound remain a planned expressible theorem;
-prime-divisor existence no longer does. The supporting finite-bound
-common-multiple construction is now checked separately, so the remaining
-prime-unbounded work is its successor/prime-divisor contradiction client.
+no DNE node. The successor client is now checked too. For any bound `n`,
+`prime_unbounded` chooses a nonzero `c` divisible by every positive value at
+most `n`, then takes a prime divisor `p` of `S c`. If `p <= n`, bounded common
+divisibility gives `p | c`; together with `p | S c`, `divides_remainder`
+gives `p | 1`, and `divisor_one` contradicts the prime premise `p != 1`.
+Therefore `n < p`.
+
+The exact certificate has 4,595 nodes, depth 82, 146 self-contained Cuts, and
+SHA-256
+`8a44fb2d207c2a41684de6d6630674f3f3b951cd036f733b3dd493321099d37b`.
+It uses PA1–PA6 only, contains no DNE, and passes exact-statement replay, every
+dependency-slot mutation, PA-leaf and authored-hypothesis mutations, and the
+live `use`/`exact`/`qed` path. No factorial symbol, FTA dependency, or classical
+existence extraction is hidden in the proof.
 
 ## GCD without a gcd function
 
@@ -140,12 +150,12 @@ certificate has 5,382 nodes and depth 55.
 ## Existence and uniqueness are different theorems
 
 The checked `prime_or_composite`, `proper_factor_lt`, and
-`prime_divisor_exists` theorems now supply the basic arithmetic descent needed
-for factorization existence. For the selected sorted encoding, the next
-critical arithmetic gate is greatest-prime-divisor descent: recursively factor
-the complementary quotient and append a greatest prime factor while preserving
-sortedness. Uniqueness can use the checked Euclid lemma to match one prime from
-one factorization with a prime in the other, cancel it, and continue.
+`prime_divisor_exists` theorems supply the basic arithmetic descent needed for
+factorization existence. The completed sorted route constructs a greatest
+prime divisor, recursively factors the complementary quotient, and appends
+that greatest factor while preserving sortedness. The completed uniqueness
+route uses Euclid's lemma to locate a prime in the other Product, matches the
+sorted last factors, cancels the common nonzero prime, and continues by length.
 
 That familiar paper proof quietly quantifies over finite products. An honest
 formal statement needs a representation and theorems for:
@@ -156,16 +166,18 @@ formal statement needs a representation and theorems for:
 - permutation or multiplicity equality;
 - deletion of a matched prime and product cancellation.
 
-Peano Lab has no primitive data interface for these objects. The project now
-has two deliberately separate results:
+Peano Lab still has no primitive data interface for these objects. The project
+has two deliberately separate checked results:
 
-- a selected conservative Peano representation, using sorted Gödel β-coded
-  factor sequences and a β-coded prefix-product trace; and
+- a native conservative PA theorem using sorted Gödel β-coded factor
+  sequences, a β-coded prefix-product trace, and extensional decoded-entry
+  equality; and
 - an independently checked Lean companion proving the conventional finite-list
   theorem, including uniqueness up to permutation.
 
-The companion closes the mathematical cross-check, but it does not turn the
-unfinished Peano encoding lemmas into a `pa lib` theorem.
+The companion is a mathematical cross-check, not Peano authority. The native
+β-coded existence, uniqueness, and combined FTA certificates are independently
+checked and synchronized in the 247-theorem runtime.
 
 ## The representation milestone
 
@@ -242,7 +254,8 @@ x<M(c,i)\;\land\;b\equiv x\pmod{M(c,i)}.
 $$
 
 This establishes single-position decoding as a bounded congruence interface.
-It does not construct one code realizing an arbitrary finite prefix.
+By itself it does not construct one code realizing an arbitrary finite prefix;
+the later exclusive-prefix recoding layer does.
 
 ## Constructive binary CRT and a conditional two-position β code
 
@@ -349,9 +362,9 @@ bounded beta modulus.
 Its wrapper `bounded_beta_crt_for_existing_code` is intentionally weaker than
 finite-prefix recoding. It projects the congruence component at $k=N$, but all
 residues in its premise already come from $b$; extensionally, choosing $z=b$
-proves the same conclusion. The missing links are an independently specified
-finite-prefix recoding/extension theorem, an exact beta-coded prefix-product
-trace with bounds, and the factor-primality and final-product connections.
+proves the same conclusion. The later checked chain adds the missing exclusive
+recoding invariant, `beta_prefix_extend`, exact prefix-product trace
+construction, Product functionality, prefix transport, and canonical append.
 
 A second code stores the prefix products, beginning at one and multiplying by
 the decoded factor at each step. `AllPrime` expands the factor-pair prime
@@ -359,8 +372,38 @@ formula at every bounded index, and `Sorted` makes the representation
 canonical by decoded values. Codes themselves are never equated because one
 finite prefix can have more than one β-code.
 
-The selected formula schemas and dependency spine are recorded in
+The selected formula schemas and completed dependency spine are recorded in
 `research/arithmetic-library/finite-factorization-encoding.md`.
+
+## The checked native PA theorem
+
+The final native theorem combines two independently useful endpoints:
+
+- `prime_factorization_existence`: every nonzero natural has a sorted
+  β-coded prime prefix whose exact β-coded Product is the natural;
+- `prime_factorization_uniqueness`: any two such canonical representations of
+  the same natural have equal lengths and equal decoded entries at every
+  bounded position.
+
+The metrics at this integration checkpoint are:
+
+| Endpoint | Nodes | Depth | Cuts |
+|---|---:|---:|---:|
+| existence | 43,973 | 98 | 1,328 |
+| uniqueness | 29,789 | 82 | 854 |
+| combined FTA | 73,767 | 99 | 2,184 |
+
+The exact FTA certificate SHA-256 is
+`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+It passes independent empty-context checking and the full
+prove/use/exact/QED path under the current 100,000-node/depth-256 cap.
+Dependency, hypothesis, PA-rule, and semantic mutation audits are live. The
+certificate uses only PA1–PA6 and induction and contains no DNE.
+
+This is not raw-code uniqueness. Multiple β-code pairs can decode the same
+finite prefix, so the theorem intentionally compares decoded entries. Nor does
+it add a primitive list, multiset, Product function, or Prime predicate: all
+relations are fully expanded before the kernel sees them.
 
 ## The checked Lean theorem
 
@@ -386,26 +429,24 @@ calling a library import “axiom-free.”
 
 ## What “include FTA” means in this release
 
-This release keeps two deliberately separate FTA tracks:
+This integration checkpoint keeps two deliberately separate FTA tracks:
 
 - the Lean companion is a checked existence-and-uniqueness proof up to
   permutation, with no admission;
-- the conservative Peano representation design and formula schemas are
-  documented;
-- source curricula are mapped to the missing lemmas;
+- the conservative native Peano β-coded certificate is checked from the empty
+  context;
+- source curricula document the dependency route and provenance;
 - no external theorem is smuggled into `pa lib` as a Peano certificate.
 
-The gcd/Bézout/Gauss/Euclid chain, constructive prime-divisor existence,
-single-position Gödel-β decoded-value existence and uniqueness, its
-bidirectional bounded-congruence characterization, constructive binary CRT,
-bounded-prefix beta-modulus coprimality, product coprimality, modulus descent,
-the generic CRT fold-preservation step, and the full bounded prefix invariant
-for values already decoded from a supplied code are now checked in native PA.
-The full-bound existing-code wrapper is extensionally trivial and does not
-perform arbitrary recoding. The next critical gates are greatest-prime
-descent, independent finite-prefix specification and recoding/extension,
-exact beta-coded prefix-product traces and bounds, and the factorization
-connections.
-Only after those interfaces have checked native certificates can factorization
-existence, uniqueness, and FTA enter `pa lib`. FTA therefore remains unproved
-in the native library.
+The native chain now continues beyond the early existing-code wrapper through
+genuine finite-prefix recoding, Product traces, greatest-prime descent,
+canonical existence, last-factor matching, cancellation, and extensional
+uniqueness. The exact combined certificate is therefore a checked native PA
+FTA at this integration checkpoint. Runtime integration is complete.
+
+The boundary remains explicit: there is no primitive list type and no theorem
+that distinct raw β codes must be equal. `prime_unbounded` is checked
+independently of the factorization theorem.
+Conventional integer-coefficient Bézout is unavailable in the natural-only
+term language; the checked four-natural balanced relation is the native
+substitute.

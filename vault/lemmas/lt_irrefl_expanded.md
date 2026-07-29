@@ -21,6 +21,7 @@ forall n. ~(exists k. k + S n = n)
 ## Checked dependents
 
 - [[beta_accumulated_product_step]]
+- [[beta_exclusive_accumulated_product_step]]
 
 ## Verification record
 

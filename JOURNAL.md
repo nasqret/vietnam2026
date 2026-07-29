@@ -1631,3 +1631,94 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   not a theorem coding arbitrary finite sequences. Genuine prefix-product
   recurrence and bounds are the next representation gate, followed by the
   remaining recoding, factorization, and native FTA spine.
+
+## 2026-07-29 — Native Gödel-β factorization and FTA
+
+- Closed the former representation gate without changing Peano Lab's term or
+  formula language. Thirteen recoding/product theorems establish bounded β
+  finite-prefix recoding and exact prefix-product trace existence. The next
+  layers prove Product functionality, zero/successor decomposition, transport,
+  factor-prefix append, bounded `AllPrime`, adjacent sortedness, and their
+  extension laws.
+- Added canonical append, greatest-prime-divisor descent,
+  factor-divides-Product, canonical-last-factor bounds, and the matching and
+  cancellation prerequisites needed for uniqueness. Multiple β codes can
+  decode the same finite prefix, so the final uniqueness statement compares
+  lengths and decoded entries extensionally; it never asserts raw code
+  equality.
+- Checked `prime_factorization_existence` at 43,973 nodes/depth 98/1,328 Cuts
+  and `prime_factorization_uniqueness` at 29,789/82/854. Their exact native
+  conjunction, `fundamental_theorem_of_arithmetic`, checks at
+  73,767/99/2,184 with certificate SHA-256
+  `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+  Empty-context replay, live `use`/`exact`/`qed`, semantic checks, all thirty
+  dependency-slot mutations, PA-leaf mutation, and authored-hypothesis
+  mutation pass. Only PA1–PA6 and induction occur; DNE does not.
+- Aligned the untrusted `use` preflight with the existing live-proof ceiling:
+  100,000 nodes and depth 256. Real 33,000-node composition and exact
+  100,000/256 admission tests pass; 100,001/257 and repeated transactional
+  failure tests reject. This changes resource policy, not the kernel or logic.
+- Added checked `prime_three` and `two_prime_product_uniqueness`. The runtime
+  now has 246 unique theorems; the 248-entry catalog contains 23 baseline
+  checked, 223 M20 checked, one planned `prime_unbounded`, and one
+  representation-blocked conventional integer-coefficient Bézout endpoint.
+  Production remains untouched and the work stays on draft PR #1.
+- Regenerated the source-bound snapshot: 977,939 structural nodes, 28,746
+  Cuts, 203 Cut-bearing certificates, ordered root
+  `ec31ca0a6eb822e00dc2f334b66b0878bf997ea0601068cc8d0639bfbb90d877`,
+  and theorem-source digest
+  `fde7888f2c8e66bd92ccc7cae05cfd146eacb873b830d1abaf2ca75e8063f56d`.
+  Both snapshot and vault drift checks pass; the vault has 325 notes, 3,245
+  resolved links, and all 246 generated lemma notes.
+- Regenerated the 1,692-session/13,344-transition training corpus under run
+  fingerprint
+  `7b98ddcdb5220df4130b00ae79954ef3b45c6fa37f6a16e213bc2a73613c347b`.
+  The isolated acceptance smoke has 492 sessions, 9,138 raw and 9,135 unique
+  transitions, and all 246 authored-script QEDs. Local browser build
+  `2026-07-29i` has manifest identity `a-0ec541ed8d13`; it is not staged,
+  deployed, or promoted.
+- Built the Jupyter Book strictly across all 36 sources with zero warnings or
+  errors. The documentation gate verifies 234 deep links and 45 executable
+  session blocks containing 264 commands; all ten static documentation tests
+  pass.
+
+## 2026-07-29 — Constructive prime unboundedness
+
+- Added the native theorem `prime_unbounded`:
+  `forall n. exists p. (exists k. k + S n = p) /\ Prime(p)`, with `Prime`
+  fully expanded into the nonunit factor-pair formula. The proof first uses
+  `bounded_common_multiple_exists` to obtain a nonzero `c` divisible by every
+  positive natural at most `n`, then applies `prime_divisor_exists` to `S c`.
+  If the resulting prime `p` were at most `n`, it would divide both `c` and
+  `S c`; `divides_remainder` would make it divide one, and `divisor_one`
+  would force `p = 1`, contradicting primality. Thus `n < p`.
+- The exact certificate has 4,595 structural nodes, depth 82, 146
+  self-contained Cuts, and SHA-256
+  `8a44fb2d207c2a41684de6d6630674f3f3b951cd036f733b3dd493321099d37b`.
+  It checks from the exact catalog statement using PA1–PA6 only and no DNE.
+  Every dependency-slot mutation, the PA-leaf mutation, and the authored-body
+  hypothesis mutation fail closed; the live `use`/`exact`/`qed` route passes.
+- The runtime now has 247 unique theorems: 23 baseline, 212 general
+  foundational, and twelve fixed modular capstones. The 248-entry catalog has
+  23 `checked_existing`, 224 `checked_m20`, no planned entries, and one
+  representation-blocked conventional integer-coefficient Bézout interface.
+  Balanced four-natural Bézout remains checked.
+- Regenerated the 247-theorem snapshot at 982,534 nodes, 28,892 Cuts, and 204
+  Cut-bearing certificates. Its ordered root is
+  `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`;
+  the source digest is
+  `295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
+  The synchronized vault has 327 notes, 3,287 resolved links, and all 247
+  generated lemma notes.
+- Regenerated the 1,692-session/13,344-transition corpus under fingerprint
+  `5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`.
+  Its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
+  all 247 authored QEDs. Browser build `2026-07-29j` packages application
+  `a-c983d7c60450`; it is not staged, deployed, or promoted. The strict book
+  rebuild passes all 36 sources with zero warnings; 234 deep links and 45
+  session blocks containing 264 commands verify.
+- Closed the synchronized release gate with all 1,101 Peano tests passing on
+  Python 3.10 in 1,050.08 seconds, with no failures or reported warnings.
+  Snapshot, vault, corpus, documentation, and deployment-manifest drift checks
+  are green. No in-app browser was attached, so direct Pyodide UI smoke is
+  explicitly unclaimed; nothing was staged, deployed, promoted, or merged.

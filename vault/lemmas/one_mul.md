@@ -23,6 +23,10 @@ forall n. 1 * n = n
 - [[one_multiple]]
 - [[coprime_to_is_gcd_one]]
 - [[gauss_coprime_cancel]]
+- [[le_scaled_nonzero]]
+- [[beta_prefix_product_trace_exists]]
+- [[beta_canonical_append_empty]]
+- [[prime_factorization_exists_up_to]]
 
 ## Verification record
 

@@ -10,16 +10,12 @@ Existing production entries may already open there; candidate-only entries,
 including the division, gcd, Bézout, Gauss, Euclid, and constructive
 prime-search layers, balanced modular congruence, single-position Gödel-β
 decoding as bounded congruence, and constructive binary CRT become available
-only after this build is promoted. The 189-entry local candidate is assembled
-as build `2026-07-29h`, application `a-98b1d8bb8dd7`; it has not been deployed
-by this documentation change.
-
-The synchronized source-bound corpus has run fingerprint
-`a3c2f8c5c762b10fc9c1117723c74fecb50348cfb699f73bc76fb3714df3bf1b`.
-Its isolated all-ladder smoke has 378 sessions, 5,373 raw transitions, 5,370
-unique transitions, and all 189 authored-script kernel QEDs. The current full
-Peano suite passes 1,098 tests in 181.34 seconds; Lambda remains green at 360 tests plus 36
-subtests. These are local-candidate facts, not a deployment claim.
+only after this build is promoted. The source runtime now has 247 checked
+entries. Its source-bound 1,692-session/13,344-transition corpus has fingerprint
+`5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`.
+The isolated all-ladder smoke has 494 sessions, 9,235 raw/9,232 unique
+transitions, and all 247 authored QEDs. Browser build `2026-07-29j`,
+application `a-c983d7c60450`, has not been staged or deployed.
 
 - [`pa lib`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib)
 - [`pa lib add_congr`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20add_congr)
@@ -27,6 +23,7 @@ subtests. These are local-candidate facts, not a deployment claim.
 - [`pa lib division_remainder_unique`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20division_remainder_unique)
 - [`pa lib prime_decidable`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20prime_decidable)
 - [`pa lib prime_divisor_exists`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20prime_divisor_exists)
+- [`pa lib prime_unbounded`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20prime_unbounded)
 - [`pa lib mod_eq_add`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod_eq_add)
 - [`pa lib mod_eq_mul`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod_eq_mul)
 - [`pa lib mod_eq_bounded_unique`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod_eq_bounded_unique)
@@ -58,6 +55,7 @@ subtests. These are local-candidate facts, not a deployment claim.
 - [`pa lib beta_crt_prefix_invariant_step`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20beta_crt_prefix_invariant_step)
 - [`pa lib bounded_beta_crt_prefix_invariant`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20bounded_beta_crt_prefix_invariant)
 - [`pa lib bounded_beta_crt_for_existing_code`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20bounded_beta_crt_for_existing_code)
+- [`pa lib fundamental_theorem_of_arithmetic`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20fundamental_theorem_of_arithmetic)
 - [`pa lib square_residue_witness`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20square_residue_witness)
 - [`pa lib mod5_fourth_power_one`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib%20mod5_fourth_power_one)
 
@@ -183,7 +181,7 @@ cd peano-lab/py
 python3 -m pytest tests/test_foundational_arithmetic_library.py -q
 ```
 
-The first command verifies exact metadata for the 189 checked certificates
-and ordered root digest `9650ae53f506…d25bf6b`, the second validates the 196-node
-research DAG and source register, and the last exercises the checked
-foundational layer directly.
+The first command verifies exact metadata for all 247 checked certificates
+and ordered root digest `eb4775dfd181…ff432`. The second validates
+the 248-node research DAG and source register, and the last exercises the
+checked foundational layer directly.

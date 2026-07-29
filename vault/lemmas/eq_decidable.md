@@ -23,6 +23,7 @@ forall a b. a = b \/ ~(a = b)
 - [[multiple_decidable]]
 - [[factor_search_up_to]]
 - [[prime_decidable]]
+- [[prime_factorization_exists_up_to]]
 
 ## Verification record
 

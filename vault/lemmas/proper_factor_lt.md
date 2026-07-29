@@ -23,6 +23,7 @@ forall n c d. ~(n = 0) -> n = c * d -> ~(d = 1) -> exists k. k + S c = n
 ## Checked dependents
 
 - [[prime_divisor_exists_up_to]]
+- [[greatest_prime_divisor_descent]]
 
 ## Verification record
 

@@ -19,7 +19,9 @@ forall n. 0 <= n
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[beta_prefix_product_trace_exists]]
+- [[beta_product_succ_append]]
+- [[beta_factor_prefix_product_append]]
 
 ## Verification record
 

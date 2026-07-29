@@ -20,6 +20,7 @@ forall n. ~(n = 0) -> 1 <= n
 ## Checked dependents
 
 - [[divisor_le_nonzero]]
+- [[le_scaled_nonzero]]
 
 ## Verification record
 

@@ -167,6 +167,9 @@ a x_+ + b y_+ = g + (a x_- + b y_-),
 
 then derives coprime Bézout and Gauss cancellation. This is a clean-room Peano
 formulation, not a translation of the integer Lean implementation.
+The conventional integer-coefficient Bézout interface remains unavailable in
+the natural-only term language; it must not be conflated with the separately
+named, checked four-natural balanced relation.
 
 ### Primes
 
@@ -181,8 +184,8 @@ The source's reusable spine is:
 7. the corresponding prime-divides-power result;
 8. existence of a prime above every bound.
 
-The current Peano snapshot independently checks the first concrete instance,
-`prime_two`, through `two_large_factors_impossible`, the general
+The current Peano integration checkpoint independently checks the first small
+instances, `prime_two` and `prime_three`, the general
 divisor-of-a-prime one-or-self API, Gauss cancellation, and Euclid's lemma. It
 also checks constructive equality and divisibility decisions, bounded factor
 search, a prime-or-nontrivial-factor-pair split, proper-factor descent, general
@@ -190,8 +193,10 @@ primality decidability, and bounded/unrestricted prime-divisor existence. In
 runtime terms this is the linked spine from `eq_decidable` and
 `multiple_decidable_nonzero` through `factor_search_up_to`,
 `prime_or_composite`, `proper_factor_lt`, and `prime_divisor_exists`.
-Primes above every bound and the greatest-prime-divisor descent needed by the
-selected sorted factorization construction remain open. Macbeth remains a
+Greatest-prime-divisor search and descent for the selected sorted
+factorization construction are now checked. `prime_unbounded`, the separate
+theorem that a prime exists above every bound, is checked constructively by
+taking a prime divisor of one more than a bounded nonzero common multiple. Macbeth remains a
 reference-only statement and dependency source; no Lean proof or prose was
 copied into the Peano certificate.
 
@@ -203,11 +208,10 @@ prime divisor of `M+1`, and show that it exceeds the bound.
 ### Factorization and irrationality
 
 The square-root-of-two argument contributes parity, descent, and strong
-induction patterns, but is not itself foundational for factorization. Prime
-factorization existence uses strong induction and prime-factor existence;
-uniqueness uses Euclid's lemma. A single natural-language statement of the
-Fundamental Theorem of Arithmetic additionally needs a representation of an
-arbitrary finite list or multiset of prime factors.
+induction patterns, but is not itself foundational for factorization. The
+native endpoint does not add a list or multiset. It uses sorted Gödel-β factor
+codes plus β-coded prefix-product traces; strengthened-induction existence and
+canonical extensional uniqueness are checked at this integration checkpoint.
 
 ## Current-language boundary
 
@@ -221,36 +225,28 @@ quantifiers; and induction. They do not provide:
 - quotient, remainder, gcd, or factorial terms;
 - lists, multisets, finite maps, or quantification over functions.
 
-Consequently:
+Consequently, the full native route through relational arithmetic, finite β
+coding, exact Product traces, greatest-prime descent, canonical factorization,
+and FTA is checked at this integration checkpoint. The endpoint metrics are:
 
-- parity, divisibility, balanced natural congruence, the natural division
-  algorithm, relational gcd, prime-factor existence, and Euclid's lemma are
-  current-language targets already represented by checked native
-  certificates; balanced congruence is checked through full addition and
-  multiplication compatibility and bounded representative uniqueness, the
-  directed remainder bridge works both ways, and expanded Gödel-β decoding is
-  equivalent to bound plus congruence. Constructive binary CRT and a
-  conditional two-position β-code constructor, gap-divisibility
-  β-coprimality, bounded-prefix pairwise coprimality, and CRT fold algebra are
-  checked as well. The bounded prefix invariant for values already decoded
-  from a supplied `BetaAt` code is checked too, but is not arbitrary
-  finite-sequence coding; infinitude of primes, genuine prefix-product
-  recurrence and bounds, β finite-prefix recoding, and greatest-prime descent
-  remain expressible next targets;
-- integer modular arithmetic should remain a documented future layer;
-- generic powers need a graph relation or a conservative term-language
-  extension;
-- the Fundamental Theorem of Arithmetic needs a checked finite-sequence or
-  multiset representation before it can be stated naturally as one theorem.
+| Endpoint | Nodes | Depth | Cuts |
+|---|---:|---:|---:|
+| `prime_factorization_existence` | 43,973 | 98 | 1,328 |
+| `prime_factorization_uniqueness` | 29,789 | 82 | 854 |
+| `fundamental_theorem_of_arithmetic` | 73,767 | 99 | 2,184 |
 
-Gödel coding of sequences is possible in first-order arithmetic and is the
-selected conservative internal authoring route, but it is not a primitive
-user-facing list interface. The decoded-value API is checked and equivalent to
-bound plus balanced congruence; binary CRT, conditional gap-divisibility
-coprimality, its two-position constructor, bounded-prefix pairwise
-coprimality, CRT fold algebra, and the existing-code bounded prefix invariant
-are checked as well. Genuine prefix-product recurrence and bounds, β
-finite-prefix recoding, and encoded products remain open.
+The FTA certificate SHA-256 is
+`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+It passes the 100,000-node/depth-256 live/use cap using PA1–PA6 and induction
+only, with no DNE. Runtime integration is complete.
+
+This does not contradict the syntax inventory above. Gödel coding is a
+conservative internal authoring route, not a primitive user-facing list
+interface, and uniqueness compares lengths and decoded entries rather than raw
+codes. Integer modular arithmetic, generic powers, finite maps, and
+conventional integer-coefficient Bézout remain outside the present term
+language. `prime_unbounded` is checked and uses neither generic powers nor a
+factorial symbol.
 
 ## Clean-room acceptance rule
 

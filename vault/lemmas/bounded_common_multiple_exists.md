@@ -22,6 +22,8 @@ forall B. exists c. (~(c = 0) /\ forall t. (exists h. S t + S h = S B) -> exists
 ## Checked dependents
 
 - [[bounded_beta_moduli_pairwise_coprime_exists]]
+- [[prime_unbounded]]
+- [[beta_prefix_extend]]
 
 ## Verification record
 

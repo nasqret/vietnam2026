@@ -54,22 +54,41 @@ iteration.
 a supplied `BetaAt` code. It therefore does not establish coding for an
 arbitrary finite sequence.
 
-FTA itself is **not** proved in native Peano Lab. The direct list-oriented
-existence, uniqueness, and combined catalog endpoints remain
-`blocked_by_language`; the selected conservative route must first replace that
-surface representation with fully expanded β-coded formulas. Its remaining
-critical path is genuine prefix-product recurrence and bounds, β finite-prefix
-recoding, greatest-prime-divisor descent, trace existence and composition,
-finite-product Euclid/cancellation, and the
-final existence and extensional-uniqueness descents. Accordingly no Peano FTA
-is exposed through `pa lib`.
+The later native tranche closes those former encoding gates: finite-prefix
+recoding and append, exact β-coded prefix-product traces, Product existence and
+functionality, greatest-prime-divisor descent, canonical append, strengthened
+factorization existence, and sorted last-factor uniqueness are all checked.
 
-The repository now also contains an independently checked Lean 4 companion.
+At this integration checkpoint the exact endpoints are:
+
+| Endpoint | Nodes | Depth | Cuts |
+|---|---:|---:|---:|
+| `prime_factorization_existence` | 43,973 | 98 | 1,328 |
+| `prime_factorization_uniqueness` | 29,789 | 82 | 854 |
+| `fundamental_theorem_of_arithmetic` | 73,767 | 99 | 2,184 |
+
+The FTA certificate SHA-256 is
+`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+It passes independent empty-context checking and the full prove/use/exact/QED
+path under the 100,000-node/depth-256 live/use cap. It uses only PA1–PA6 and
+induction and contains no DNE. Dependency, hypothesis, PA-rule, and semantic
+mutation audits are live. Runtime integration is complete.
+
+This is a native β-coded FTA, not a primitive-list theorem. Peano Lab still
+has no list or multiset type. Since multiple codes may decode the same prefix,
+uniqueness proves equal lengths and equality of every decoded bounded entry;
+it does not assert raw-code equality. The independently checked
+[[constructive-prime-unboundedness|prime-unboundedness theorem]] is not needed
+for this theorem. Conventional integer-coefficient Bézout remains
+unavailable in the natural-only language, while balanced four-natural Bézout
+is checked.
+
+The repository also contains an independently checked Lean 4 companion.
 It proves that every nonzero natural has a finite list of prime factors and
 that any other such list is a permutation. Its pinned audit rejects `sorryAx`
 and records the exact standard axioms `propext`, `Classical.choice`, and
-`Quot.sound`. It fixes the mathematical endpoint without acting as a Peano
-axiom.
+`Quot.sound`. It proves the conventional list/permutation presentation without
+acting as a Peano axiom or supplying any part of the native certificate.
 
 ## Related
 

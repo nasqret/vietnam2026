@@ -532,9 +532,6 @@ def _validate_catalog(
     missing_domains = domain_set - set(domain_counts)
     if missing_domains:
         _fail(f"{location}.lemmas", "domains without entries: " + ", ".join(sorted(missing_domains)))
-    missing_statuses = STATUSES - set(status_counts)
-    if missing_statuses:
-        _fail(f"{location}.lemmas", "statuses without entries: " + ", ".join(sorted(missing_statuses)))
     runtime_names = set(theorem_names())
     if checked_claims != runtime_names:
         missing = runtime_names - checked_claims

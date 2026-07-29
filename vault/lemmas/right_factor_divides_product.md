@@ -20,6 +20,7 @@ forall a b. exists k. a * b = b * k
 ## Checked dependents
 
 - [[beta_accumulated_product_step]]
+- [[beta_exclusive_accumulated_product_step]]
 
 ## Verification record
 

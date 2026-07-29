@@ -88,7 +88,7 @@ M20 begins a general {doc}`foundational arithmetic library
 original 23-entry base to 51 checked entries. That snapshot and the 49-entry public-catalog source
 remain provenance: fourteen post-core records coincide, so their initial reconciliation contained
 63 unique entries rather than their arithmetic sum. Subsequent native passes extend the current
-local candidate to **189 checked theorems**: the 23-entry base, 154 post-baseline foundational
+local candidate to **247 checked theorems**: the 23-entry base, 212 post-baseline foundational
 entries, and twelve further unique modular capstones. The checked route now includes division and
 remainder, relational gcd, balanced-natural Bézout, Gauss cancellation, the general prime-divisor
 characterization, Euclid's lemma, constructive equality/divisibility/primality decisions, bounded
@@ -113,12 +113,14 @@ combine those successor steps, and use ordinary induction to construct the
 four-part prefix invariant through every $k\le N$. The projected theorem
 `bounded_beta_crt_for_existing_code` is deliberately not a recoding theorem:
 because its residues already come from $b$, extensionally $z=b$ is already a
-solution. The associated
-196-node research catalog records those 189 checked entries alongside three planned expressible
-targets and four language-interface targets:
-conventional signed Bézout and the three finite-factorization endpoints. This is local candidate
-authority; it does not claim that every new theorem card has already been promoted to the
-production browser. Native FTA remains unproved; greatest-prime descent,
-independently specified finite-prefix recoding and extension, exact beta-coded
-prefix-product traces, and the factor-primality/final-product links are the next
-critical gates.
+solution. Later checked layers supply genuine finite-prefix recoding, exact
+β-coded prefix-product traces, greatest-prime-divisor descent, canonical
+factorization existence, and extensional uniqueness. Their native FTA
+conjunction checks at 73,767 nodes/depth 99 with 2,184 self-contained Cuts and
+no DNE. The associated 248-node research catalog records those 247 checked
+entries alongside no planned theorem and one representation-blocked
+conventional integer-coefficient Bézout interface. `prime_unbounded` is now a
+checked constructive client of bounded common multiples and prime-divisor
+existence.
+This is local candidate authority; it does not claim that every new theorem
+card has already been promoted to the production browser.

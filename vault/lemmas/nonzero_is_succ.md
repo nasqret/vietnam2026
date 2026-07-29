@@ -20,6 +20,8 @@ forall n. ~(n = 0) -> exists k. n = S k
 ## Checked dependents
 
 - [[binary_crt]]
+- [[prime_unbounded]]
+- [[prime_factorization_uniqueness_by_length]]
 
 ## Verification record
 

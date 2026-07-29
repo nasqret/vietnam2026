@@ -538,7 +538,7 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       capstone regression. That source snapshot has 49 entries; the initial
       reconciliation with M20 deduplicated fourteen exact overlaps and yielded
       63 unique checked theorems. Subsequent native arithmetic work extends
-      that historical release to the current 189-entry successor.
+      that historical release to the current 247-entry successor.
 - [ ] Register model-v2 with a library snapshot hash over names, canonical statements,
       dependencies, source/script/certificate hashes, nodes, and depth; bind it through prompt,
       rows, attestation, training manifest, evaluator, and WMI requests. Freeze sealed targets
@@ -602,7 +602,7 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   known held-out routes need 10/10/23/13 steps, so the 16-step cap also underspecifies
   `le_total`'s known route. Scaling the same curriculum to 4B would not test the intended
   hypothesis, so the conditional 4B comparison remains unlaunched. The next data contract must freeze the user's
-  current 189-entry library as a content-addressed successor authority and add induction, invariant, witness,
+  current 247-entry library as a content-addressed successor authority and add induction, invariant, witness,
   and lemma-composition curricula while retaining a sealed test set.
 
   The public-catalog local gate is green: 1,036 Peano tests; Lambda 360 tests plus 36 subtests; all
@@ -620,42 +620,34 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
 The theorem-ladder extension is tracked independently in
 [`PLAN/10_arithmetic_library.md`](10_arithmetic_library.md). Its first release
 kept the kernel and object language fixed, expanded divisibility and residue
-notions into ordinary formulas, and labeled prime/factorization targets by
-their real dependencies. The reconciled runtime contains 189 unique checked
-theorems, including quotient-remainder existence/uniqueness, relational gcd
-existence/uniqueness, balanced-natural Bézout, Gauss cancellation, and Euclid's
-lemma. It now also has constructive equality and divisibility decisions,
-bounded factor search, prime/composite and prime decisions, proper-factor
-descent, prime-divisor existence, full additive/multiplicative balanced
-congruence compatibility, bounded representative uniqueness, bidirectional
-remainder/congruence bridges, and total functional expanded Gödel-β decoding
-equivalent to bound plus congruence, plus a conservative Gödel-β
-factorization design. Constructive binary CRT, bounded-residue CRT equations,
-and a two-position β-code constructor are checked. The latest layer proves its
-coprimality premise when the ordered index gap divides `c`, applies the
-constructor under that condition, and constructs nonzero bounded common
-multiples. The latest layer proves bounded-prefix pairwise coprimality,
-coprime-product closure, modulus descent, and one invariant-preserving binary
-CRT fold step. The newest six theorems fold the accumulated-product and
-decoded-congruence invariant through every bounded prefix of a supplied
-`BetaAt` code. The wrapper is not arbitrary finite-sequence coding.
-Unconditional pairwise β-modulus coprimality is false. A separate
-Lean companion checks full FTA. The later proof-sharing milestone adds one
-reviewed self-contained
-Cut rule to the trusted certificate checker—without changing the PA object
-language, axioms, induction, or intuitionistic default. The current shared
-ladder has 242,629 structural nodes and 6,895 Cuts across 149 Cut-bearing
-entries; `bounded_beta_crt_for_existing_code` is largest at 25,545
-nodes/755 Cuts and
-the maximum depth remains 80 at `prime_divisor_exists`. Peano admission
-of FTA still requires genuine prefix-product recurrence and bounds, β
-finite-prefix recoding, greatest-prime descent, and the encoded-product proof
-spine. The complete current Peano suite passes 1,098 tests on CPython 3.10 in
-181.34 seconds. Local browser build `2026-07-29h` packages all 189 entries as
-application `a-98b1d8bb8dd7`; the synchronized corpus has run fingerprint
-`a3c2f8c5c762b10fc9c1117723c74fecb50348cfb699f73bc76fb3714df3bf1b`.
-Lambda's preceding independent regression remains green at 360 tests plus 36
-subtests.
+notions into ordinary formulas, and organized factorization targets by their
+actual dependencies. The reconciled runtime now contains 247 unique checked
+theorems. Quotient-remainder existence and uniqueness, relational gcd,
+balanced-natural Bézout, Gauss cancellation, constructive primality search,
+prime-divisor existence, Euclid's lemma, prime unboundedness, CRT, and
+functional Gödel-β decoding
+all remain ordinary expanded PA formulas.
+
+The finite-factorization spine is now checked as well: bounded β recoding,
+exact prefix-product traces, their functionality and transport laws,
+`AllPrime` and adjacent-sorted interfaces, canonical append,
+greatest-prime-divisor descent, factorization existence, and extensional
+factorization uniqueness culminate in native
+`fundamental_theorem_of_arithmetic`. Its empty-context certificate has 73,767
+nodes, depth 99 and 2,184 self-contained Cuts, uses only PA1–PA6 and induction,
+and contains no DNE. The reviewed `Cut` rule embeds both the dependency proof
+and its body; neither theorem names nor hashes carry authority. The object
+language, PA axioms, induction schema, and intuitionistic default remain
+unchanged. The untrusted `use` and live-proof resource gates are aligned at
+100,000 nodes and depth 256, which admits the 73,767-node theorem while still
+rejecting the exact 100,001-node and depth-257 boundaries transactionally.
+
+The synchronized catalog has 248 entries: 23 baseline checked, 224 M20
+checked, no planned entries, and one representation-blocked
+conventional integer-coefficient Bézout interface. A separate pinned Lean
+companion checks conventional list-based FTA up to permutation. Current test,
+corpus, snapshot, book, vault, and local-browser identifiers are recorded in
+the latest journal checkpoint; production remains untouched.
 
 ## Explicitly out of scope
 Dependent types, definitional reduction, elaboration, typeclasses, and speculative proof-search

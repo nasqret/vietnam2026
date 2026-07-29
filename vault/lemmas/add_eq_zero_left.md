@@ -23,6 +23,7 @@ forall a b. a + b = 0 -> a = 0
 - [[add_eq_zero_components]]
 - [[two_large_factors_impossible]]
 - [[bounded_common_multiple_exists]]
+- [[prime_three]]
 
 ## Verification record
 

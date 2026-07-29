@@ -52,7 +52,9 @@ combined in [[beta_crt_prefix_invariant_step]] and folded by ordinary induction
 in [[bounded_beta_crt_prefix_invariant]]. Its wrapper
 [[bounded_beta_crt_for_existing_code]] applies only to residues already
 decoded from a supplied `BetaAt` code; it is not arbitrary finite-sequence
-coding. Genuine prefix-product recurrence and bounds remain next.
+coding. The later [[godel-beta-sequence]] layer supplies genuine finite-prefix
+recoding and exact Product traces, culminating in the checked
+[[fundamental-theorem-of-arithmetic]].
 
 The checked [[add_residue]], [[add_residue_lift]], [[square_decomp]],
 [[square_residue_lift]], and [[square_residue_witness]] already manipulate

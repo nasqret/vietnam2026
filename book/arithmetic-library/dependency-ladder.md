@@ -18,8 +18,8 @@ needs.
 | Parity | even/odd dichotomy and arithmetic tables | planned and expressible |
 | Division | quotient-remainder existence, uniqueness, block separation, and zero-remainder/divisibility bridges | checked |
 | GCD/coprime | relational symmetry/projections/constructors, uniqueness, zero-right base, Euclidean invariance, existence, balanced Bézout, Gauss cancellation, product closure | checked through `coprime_mul_left` and `coprime_mul_right` |
-| Primes | bounded factor search, primality decision, proper-factor descent, prime divisors, Euclid's lemma, infinitely many primes | checked through `prime_divisor_exists` and `euclid_prime_dvd_product`; primes above every bound remain planned |
-| Factorization | existence and uniqueness up to permutation | single-position β decoding, bounded-prefix pairwise β-modulus coprimality, product coprimality, modulus descent, CRT fold preservation, and the ordinary-induction prefix invariant for values already decoded from a supplied code checked; greatest-prime descent, independent prefix specification/recoding, exact product traces, and factorization links pending; Lean companion checked |
+| Primes | bounded factor search, primality decision, proper-factor descent, prime divisors, Euclid's lemma, infinitely many primes | checked through `prime_divisor_exists`, `euclid_prime_dvd_product`, and `prime_unbounded` |
+| Factorization | sorted β-coded existence and canonical extensional uniqueness | finite-prefix recoding, exact Product traces, greatest-prime descent, canonical append, existence, uniqueness, and combined native FTA checked at this integration checkpoint; primitive lists remain absent; Lean list companion checked independently |
 
 The generated `dependency-graph.mmd` is the exact graph for checked entries.
 The research catalog is the larger design graph and gives every unproved node
@@ -124,11 +124,14 @@ from two to that bound and then take a prime divisor of one more than that
 multiple. The constructive infrastructure for the first half is now checked:
 `bounded_common_multiple_step` extends the invariant by one endpoint, and
 `bounded_common_multiple_exists` constructs a nonzero common multiple of
-every positive natural at most the supplied bound. The prime-above-bound
-client remains planned.
+every positive natural at most the supplied bound. The checked
+`prime_unbounded` client applies prime-divisor existence to the successor of
+that multiple. A divisor at or below the bound would divide the multiple as
+well, hence divide one by the consecutive-number remainder lemma, contradicting
+primality.
 
-For FTA, the next arithmetic gate is a greatest-prime-divisor descent suited
-to constructing a sorted factor sequence. Single-position β-value existence,
+For FTA, the selected route uses greatest-prime-divisor descent to construct a
+sorted factor sequence. Single-position β-value existence,
 functionality, and the equivalence
 
 $$
@@ -164,14 +167,35 @@ modulus, a value congruent to every earlier residue already decoded from the
 supplied code $b$, and coprimality of that product with every future bounded
 beta modulus.
 
-The full-bound projection `bounded_beta_crt_for_existing_code` does not cross
-the recoding gate. Its premise already says that each residue is decoded from
-$b$, so extensionally the witness may be $z=b$. The representation gates that
-remain are an independently specified finite-prefix recoding/extension
-theorem, exact beta-coded prefix-product recurrence and trace functionality,
-bounds placing those prefix products below the chosen moduli, and the
-factor-primality/final-product links. FTA itself is not yet a native `pa lib`
-theorem.
+The full-bound projection `bounded_beta_crt_for_existing_code` did not by
+itself cross the recoding gate: its premise already said that each residue was
+decoded from $b$. The later checked tranche closes that gap with an exclusive
+cross-base recoding invariant and `beta_prefix_extend`, then builds exact
+β-coded prefix-product traces and proves Product existence, functionality,
+zero/successor decomposition, append, and prefix transport. Greatest-prime
+descent plus canonical append yields factorization existence. Euclid's lemma,
+product membership, sorted last-factor matching, and nonzero cancellation
+yield uniqueness by length.
+
+At this integration checkpoint the exact endpoints check as follows:
+
+| Endpoint | Nodes | Depth | Cuts |
+|---|---:|---:|---:|
+| `prime_factorization_existence` | 43,973 | 98 | 1,328 |
+| `prime_factorization_uniqueness` | 29,789 | 82 | 854 |
+| `fundamental_theorem_of_arithmetic` | 73,767 | 99 | 2,184 |
+
+The combined certificate has SHA-256
+`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`,
+checks from the empty context, and passes the full live-use path under the
+100,000-node/depth-256 cap. It uses PA1–PA6 and induction only, with no DNE.
+Runtime integration is complete.
+
+The theorem remains deliberately relational: Peano Lab has no primitive list
+or multiset type, and uniqueness compares equal lengths and decoded entries,
+not raw β-code equality. The checked `prime_unbounded` theorem is not a
+dependency of FTA. Conventional integer-coefficient Bézout is not expressible
+with the natural-only terms; the four-natural balanced theorem is checked.
 
 ## Admission invariants
 

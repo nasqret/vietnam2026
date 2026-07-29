@@ -25,6 +25,7 @@ forall n. n * 1 = n
 - [[proper_factor_lt]]
 - [[prime_divisor_eq_one_or_self]]
 - [[binary_crt]]
+- [[prime_unbounded]]
 
 ## Verification record
 

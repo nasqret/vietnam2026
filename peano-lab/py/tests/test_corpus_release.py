@@ -1,4 +1,4 @@
-"""Integrity and leakage boundary for the M13-refreshed corpus release."""
+"""Integrity and leakage boundary for the M20-refreshed corpus release."""
 
 from __future__ import annotations
 
@@ -22,6 +22,12 @@ STEP_FIELDS = (
     "status",
     "error",
 )
+RELEASE_ARTIFACT_SHA256 = {
+    "train.jsonl": "44794fa75477cc3f8a4271f19a79f632e02f5fbca1f243173c2ceca9ab8762ca",
+    "val.jsonl": "ddf0b14e44f89afff34775f5002ae79c6867ec6438e5024430534430dd471f68",
+    "stats.json": "538a437ab23e9305bf3f822cf3433947929e415ef0df73241cc129462918d221",
+    "generation-manifest.json": "327f734431e4b5c74c2d59b8df438aeba20a5622dc3a37cc9311a8101967a0d8",
+}
 
 
 def _sha256(path: Path) -> str:
@@ -57,7 +63,9 @@ def test_release_metadata_counts_hashes_and_source_provenance() -> None:
     assert manifest["format"] == "peano-lab-trace-generation-manifest"
     assert manifest["version"] == manifest["trace_version"] == 1
     assert manifest["generator_version"] == 2
-    assert len(manifest["run_fingerprint"]) == 64
+    assert manifest["run_fingerprint"] == (
+        "5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c"
+    )
     assert manifest["config"] == {
         "auto_depth": 5,
         "auto_max_nodes": 5000,
@@ -86,6 +94,11 @@ def test_release_metadata_counts_hashes_and_source_provenance() -> None:
         "sessions_by_result": {"qed": 1692},
         "transition_records": 13344,
     }
+    assert manifest["raw"] == {
+        "bytes": 6215711,
+        "encoding": "utf-8",
+        "sha256": "fc696f3d94136a8c414c54d411e4f8a6c94f7e0ac78785cddb7798005525749d",
+    }
     assert all(
         session["kernel_checked"] is True and session["result"] == "qed"
         for session in manifest["sessions"]
@@ -104,27 +117,39 @@ def test_release_metadata_counts_hashes_and_source_provenance() -> None:
 
     for source in manifest["provenance"]["sources"].values():
         assert _sha256(REPO / source["path"]) == source["sha256"]
+    expected_semantic_source_tree = {
+        "root": "peano-lab/py/peano_lab",
+        "pattern": "**/*.py",
+        "files": 32,
+        "sha256": "eee28177d1fce902330fabb721a22fef8b3cfa69963c8e12c92fd1d6ace10b5d",
+    }
+    assert manifest["provenance"]["semantic_source_tree"] == (
+        expected_semantic_source_tree
+    )
     tree_files, tree_sha256 = _semantic_tree()
-    assert manifest["provenance"]["semantic_source_tree"] == {
+    assert {
         "root": "peano-lab/py/peano_lab",
         "pattern": "**/*.py",
         "files": tree_files,
         "sha256": tree_sha256,
-    }
+    } == expected_semantic_source_tree
 
     assert stats["source"]["sessions"] == 1692
     assert stats["source"]["transitions"] == 13344
+    assert stats["source"]["canonical_sessions_sha256"] == (
+        "54361e2ca291000608edbec82b253d0388a29076d50309b6be530b8830f533f8"
+    )
     assert stats["deduplication"]["unique_transitions"] == 13344
     assert stats["deduplication"]["duplicates_removed"] == 0
     assert stats["splits"]["train"] == {
         "sessions": 1683,
         "records": 13326,
-        "sha256": "b0676685e6d824aafe63851bdca3d2e2caaa6e7a88da78283aef1a4d2d503422",
+        "sha256": RELEASE_ARTIFACT_SHA256["train.jsonl"],
     }
     assert stats["splits"]["val"] == {
         "sessions": 9,
         "records": 18,
-        "sha256": "59d318fe36ac0ffb2636a3f62c47f49278b147655376e6515301eab78174f4cf",
+        "sha256": RELEASE_ARTIFACT_SHA256["val.jsonl"],
     }
     assert stats["theorem_coverage"]["source_count"] == 99
     assert stats["theorem_coverage"]["train_count"] == 90
@@ -144,13 +169,9 @@ def test_release_metadata_counts_hashes_and_source_provenance() -> None:
     assert stats["tactic_distribution"]["norm_num"] == 96
     for split in ("train", "val"):
         assert _sha256(CORPUS / f"{split}.jsonl") == stats["splits"][split]["sha256"]
-    for artifact in (
-        "train.jsonl",
-        "val.jsonl",
-        "stats.json",
-        "generation-manifest.json",
-    ):
-        assert _sha256(CORPUS / artifact) in readme
+    for artifact, expected_sha256 in RELEASE_ARTIFACT_SHA256.items():
+        assert _sha256(CORPUS / artifact) == expected_sha256
+        assert expected_sha256 in readme
     assert manifest["raw"]["sha256"] in readme
 
 

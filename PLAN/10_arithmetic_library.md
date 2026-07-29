@@ -5,8 +5,8 @@
 Build a versioned, dependency-ordered, independently checked arithmetic
 library for Peano Lab. The library begins with equality and semiring structure,
 continues through order, divisibility, modular congruence, division, gcd and
-primes, and reaches the Fundamental Theorem of Arithmetic only after the
-language has a reviewed finite-factorization representation.
+primes, and now reaches a native Fundamental Theorem of Arithmetic through a
+reviewed finite-factorization representation based on natural-number codes.
 
 The modulus-five fourth-power theorem is a downstream regression example. It
 does not determine the architecture.
@@ -25,8 +25,10 @@ does not determine the architecture.
   code/prose is not copied into the MIT/CC BY-SA corpus.
 - Code, generated artifact, Jupyter Book, and Obsidian views use the same stable
   names and are checked for drift.
-- Full factorization is not claimed inside current Peano syntax until finite
-  products and uniqueness up to order/multiplicity are representable.
+- Full factorization is claimed only in its exact checked form: sorted
+  Gödel-β-coded factors, a β-coded prefix-product trace, and extensional
+  equality of decoded entries. This does not add a primitive list type and
+  does not identify non-unique raw codes.
 
 ## M20A — Architecture, source audit, and version-1 catalog
 
@@ -55,8 +57,9 @@ does not determine the architecture.
 - [x] Add both constructive normal forms for non-divisibility.
 - [x] Add modulus-independent quotient-and-remainder transport through
       addition and squaring.
-- [x] Replay and independently check all 189 unique library entries and enforce
-      the live 32,768-node/depth-128 import bound.
+- [x] Replay and independently check the published 189-entry checkpoint.
+      The audited FTA integration uses the current live/use cap of 100,000
+      nodes and depth 256.
 - [x] Generate a deterministic versioned JSON snapshot, exact metrics,
       certificate hashes, structural Cut counts, and Mermaid dependency graph.
 
@@ -85,8 +88,9 @@ does not determine the architecture.
       and strict-block contradiction interface needed by division uniqueness.
 - [x] Add the concrete bounded-search interface needed for constructive factor
       extraction.
-- [ ] Add reusable strong-induction and least-counterexample proof-producing
-      interfaces for later greatest-prime and factorization descent.
+- [x] Add formula-specific strengthened-induction certificates for
+      greatest-prime and factorization descent. A polymorphic predicate-level
+      induction theorem remains outside the first-order object language.
 - [x] Prove quotient-remainder existence and uniqueness for positive divisors,
       plus zero-remainder equivalence bridges for divisibility.
 - [x] Prove the relational gcd projection, symmetry, constructor, and uniqueness
@@ -113,8 +117,10 @@ does not determine the architecture.
 - [x] Prove proper-factor descent and constructive prime-divisor existence via
       `factor_nonzero_left`, `proper_factor_lt`,
       `prime_divisor_exists_up_to`, and `prime_divisor_exists`.
-- [ ] Prove primes above every bound and the greatest-prime descent interface
-      needed by canonical factorization.
+- [x] Prove the greatest-prime-divisor search, existence, quotient bound, and
+      strict descent interface needed by canonical factorization.
+- [ ] Prove primes above every bound; prime unboundedness is intentionally a
+      later client and is not needed by the checked FTA route.
 
 ## M20E — Finite factorization representation and FTA
 
@@ -155,21 +161,29 @@ does not determine the architecture.
       `bounded_beta_crt_for_existing_code` only as a wrapper for values already
       decoded from a supplied `BetaAt` code; do not describe it as arbitrary
       finite-sequence coding.
-- [ ] Prove genuine prefix-product recurrence and bounds, then β finite-prefix
-      extension/restriction or recoding, all-prime, sorted
-      canonical form, and extensional equality without adding kernel atoms.
-      Add hygienic round-tripping surface expanders separately. The
-      mathematical schemas and representation choice are documented.
+- [x] Prove genuine β finite-prefix recoding and one-value extension, exact
+      prefix-product trace existence and functionality, finite-product
+      decomposition/append/transport, all-prime and sorted elimination, and
+      canonical append without adding kernel atoms.
+      Equality remains extensional on decoded entries; raw codes are not
+      equated. Hygienic readable notation remains an untrusted surface layer.
       Unconditional pairwise β-modulus coprimality is not a target: it is
       false, as `c=1` at indices 1 and 4 gives moduli 3 and 6.
 - [x] Add a pinned Lean 4/Mathlib companion proving existence and uniqueness
       up to permutation, with `sorryAx` rejection and an exact standard-axiom
       audit, without treating it as Peano theorem authority.
-- [ ] Prove prime-factorization existence by strong induction.
-- [ ] Prove uniqueness using Euclid's lemma and the selected finite-collection
-      equality.
-- [ ] Expose FTA through `pa lib` only after its closed certificate and all
-      representation lemmas pass the ordinary kernel and resource gates.
+- [x] Prove prime-factorization existence by formula-specific strengthened
+      induction: 43,973 nodes, depth 98.
+- [x] Prove uniqueness using Euclid's lemma, sorted last-factor matching,
+      cancellation, and extensional decoded-entry equality: 29,789 nodes,
+      depth 82.
+- [x] Check the exact combined FTA certificate from the empty context:
+      73,767 nodes, depth 99, and 2,184 self-contained Cuts, with certificate
+      SHA-256
+      `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+      It fits the 100,000-node/depth-256 live/use gate, uses only PA1–PA6 and
+      induction, and contains no DNE. Runtime integration is complete in the
+      synchronized 247-theorem checkpoint.
 
 ## M20F — Knowledge and release gates
 
@@ -183,43 +197,83 @@ does not determine the architecture.
       drift checks, and browser deployment-manifest checks.
 - [x] Publish a reviewable branch and draft pull request targeting `peano-lab`;
       do not merge or deploy without owner authorization.
+- [x] Complete the final full-suite, strict-book, corpus, snapshot, vault, and
+      browser-manifest gates for the synchronized FTA snapshot.
+- [ ] Run a direct Pyodide UI smoke in an attached in-app browser. No browser
+      was attached to this session, so this observational gate is unclaimed
+      rather than inferred from another browser backend.
 
 ## Current acceptance record
 
-- Checked runtime: 189 unique theorems — 23 baseline and 166 post-baseline.
-  The latter are the 154-entry general foundational layer plus twelve unique upstream
-  modular capstones.
-- Research catalog: 196 nodes — 23 `checked_existing`, 166 `checked_m20`, three
-  `planned_expressible`, and four `blocked_by_language`.
-- Shared-certificate metrics: 242,629 total structural proof nodes and 6,895
-  Cuts across 149 Cut-bearing entries. The largest by nodes and Cuts is
-  `bounded_beta_crt_for_existing_code` at 25,545/755.
-  `prime_divisor_exists` supplies the ladder's maximum depth of 80. The
-  immutable upstream report retains the
-  former fully expanded capstone metric of 21,515/depth 66.
+- The factorization and unbounded-primes tranches are synchronized into the
+  247-theorem runtime, 248-entry catalog, generated snapshot, and all 247
+  generated lemma notes. The
+  previously published 189-theorem snapshot remains historical provenance.
+- At this integration checkpoint, the exact expanded catalog statements for
+  `prime_factorization_existence`, `prime_factorization_uniqueness`, and
+  `fundamental_theorem_of_arithmetic` all have deterministic, closed,
+  empty-context kernel checks. Their final metrics are respectively
+  43,973/depth 98, 29,789/depth 82, and 73,767/depth 99; the combined theorem
+  contains 2,184 Cuts.
+- The exact FTA certificate SHA-256 is
+  `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+  The full prove/use/exact/QED path passes under the 100,000-node/depth-256
+  cap. Dependency, hypothesis, and PA-rule mutation audits are live. The proof
+  uses only PA1–PA6 and induction and contains no DNE.
 - Trusted-kernel change: one self-contained Cut constructor and checker rule.
   The checker is 247 lines (formerly 234). The object language and logical
   strength are unchanged; the untrusted erasure utility is diagnostic and is
   not a complete or authoritative admission route.
 - Full FTA companion status: checked in Lean for every nonzero natural, with
   finite-list existence and permutation uniqueness and no `sorryAx`.
-- Full Peano FTA status: absent from `pa lib`. The checked bounded-prefix
-  wrapper quantifies over an already existing `BetaAt` code and therefore does
-  not establish arbitrary finite-sequence coding. Genuine prefix-product
-  recurrence and bounds, β finite-prefix recoding, greatest-prime descent, and
-  the finite-product representation spine remain;
-  no admitted theorem or hidden primitive.
-- Validation record: all 1,098 Peano tests pass on CPython 3.10 in 181.34
+- Native Peano FTA status: checked and synchronized in the 247-theorem runtime
+  in the conservative β-coded representation. The endpoint is not a conventional list theorem: there is no
+  primitive list type, and uniqueness compares lengths and decoded entries
+  rather than raw β codes. The conventional list statement remains the
+  separate Lean companion.
+- `prime_unbounded` is checked constructively at 4,595 nodes/depth 82 with
+  146 Cuts and certificate SHA-256
+  `8a44fb2d207c2a41684de6d6630674f3f3b951cd036f733b3dd493321099d37b`.
+  It takes a prime divisor of the successor of a bounded nonzero common
+  multiple; any such divisor at or below the bound would divide both
+  consecutive numbers and hence one. It uses PA1–PA6 only, has no DNE, and
+  passes dependency, PA, hypothesis, and live-use audits.
+- The generated snapshot has 982,534 nodes, 28,892 Cuts, and 204 Cut-bearing
+  certificates. Its root is
+  `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`
+  and source digest is
+  `295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
+  The vault has 327 notes and 3,287 links. The 1,692-session/13,344-transition
+  corpus has fingerprint
+  `5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`;
+  its smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and all 247
+  QEDs. Browser build `2026-07-29j` packages `a-c983d7c60450` without staging
+  or deployment. The strict book rebuild passes all 36 sources with no
+  warnings; 234 deep links and 45 executable blocks/264 commands verify.
+- The complete current Peano suite passes all 1,101 tests on Python 3.10 in
+  1,050.08 seconds with no reported warnings. No in-app browser was available,
+  so direct Pyodide UI smoke remains explicitly unclaimed; the automated
+  runtime/worker coverage and browser deployment-manifest checks pass.
+- The strict Jupyter Book build passes over 36 sources with no warnings or
+  errors. Documentation verification checks 234 deep links and 45 session
+  blocks containing 264 commands; all ten static documentation tests pass.
+- Remaining mathematical/library limits are explicit: generic powers, finite
+  maps, and primitive lists remain absent; a
+  conventional integer-coefficient Bézout statement is not representable in
+  the natural-only term language, while the four-natural balanced Bézout
+  theorem is checked.
+- Pre-integration validation record: all 1,098 Peano tests passed on CPython 3.10 in 181.34
   seconds, including the bounded-prefix invariant admission gate. Lambda's
-  preceding independent result remains 360 tests plus 36 subtests. Exact
-  snapshot, catalog, corpus, and application audits are current. The corpus retains
+  preceding independent result remains 360 tests plus 36 subtests. Those exact
+  snapshot, catalog, corpus, and application audits belong to the published
+  189-theorem checkpoint. The corpus retains
   13,344 transitions/1,692 sessions under run fingerprint
   `a3c2f8c5c762b10fc9c1117723c74fecb50348cfb699f73bc76fb3714df3bf1b`;
   the isolated smoke has 378 sessions, 5,373 raw and 5,370 unique transitions,
   and all 189 authored QEDs. Local browser build `2026-07-29h` has content
   identity `a-98b1d8bb8dd7`; it is not
   staged, deployed, or promoted.
-- The generated Obsidian graph has 268 notes and 2,513 resolved links,
+- The pre-integration generated Obsidian graph has 268 notes and 2,513 resolved links,
   including all 189 checked lemma notes.
 - The preceding checkpoint's independent Lambda result (360 tests plus 36
   subtests) and strict 36-source book/213-link/264-command record are retained

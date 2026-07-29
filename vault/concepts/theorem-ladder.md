@@ -46,7 +46,7 @@ expanded certificate is checked in the empty context. This extension is also a u
 [[verifier-guided-policy-evaluation-and-search|model-v2 curriculum]], but the capstone itself is now
 a library-retrieval test rather than a sealed theorem-discovery benchmark.
 
-The reconciled runtime now has 189 unique checked entries: the 23-entry core,
+The previous published runtime checkpoint had 189 unique checked entries: the 23-entry core,
 154 post-baseline foundational entries, and twelve genuinely new modular
 capstones. The newer foundation includes discrete order, multiplication
 cancellation and monotonicity, and native [[quotient-and-remainder]] existence
@@ -105,14 +105,29 @@ product and decoded-congruence components through
 already represented by a supplied `BetaAt` code; it is not arbitrary
 finite-sequence coding.
 
-The shared snapshot now totals 242,629 proof nodes and 6,895 self-contained
+That published snapshot totals 242,629 proof nodes and 6,895 self-contained
 Cuts across 189 certificates; 149 certificates contain a Cut.
 [[bounded_beta_crt_for_existing_code]] is largest at 25,545 nodes and 755 Cuts,
-while prime-divisor existence sets the maximum depth at 80. The next
-mathematical/representation gate is genuine prefix-product recurrence and
-bounds, followed by [[godel-beta-sequence|β finite-prefix recoding]] and
-greatest-prime descent;
-[[fundamental-theorem-of-arithmetic|FTA]] is not yet a native checked theorem.
+while prime-divisor existence sets its maximum depth at 80.
+
+The current integration checkpoint advances beyond that artifact. Native
+[[godel-beta-sequence|β finite-prefix recoding]], exact Product traces,
+greatest-prime-divisor descent, canonical append, factorization existence, and
+canonical extensional uniqueness all have closed checks. Existence is 43,973
+nodes/depth 98; uniqueness is 29,789/depth 82; the exact combined
+[[fundamental-theorem-of-arithmetic|FTA]] is 73,767 nodes/depth 99 with 2,184
+self-contained Cuts. Its certificate SHA-256 is
+`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+
+The FTA passes the 100,000-node/depth-256 live/use gate, uses only PA1–PA6 and
+induction, and contains no DNE. Runtime integration is complete. The current
+247-theorem artifact has 982,534 nodes, 28,892 Cuts, and ordered root
+`eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`.
+The endpoint adds no primitive lists and compares decoded
+entries, not raw β codes. [[constructive-prime-unboundedness|Prime
+unboundedness]] is checked independently. Conventional
+integer-coefficient Bézout remains unavailable; balanced four-natural Bézout
+is checked.
 
 ## Related
 

@@ -8,25 +8,50 @@ import sys
 import pytest
 
 import driver
-from peano_lab.engine.state import final_certificate, start
+from peano_lab.engine.state import final_certificate, proof_metrics, start
 from peano_lab.engine.tactics import (
+    MAX_USE_PARTIAL_NODES,
     MAX_USE_PROOF_DEPTH,
     InvalidProof,
     TacticError,
     TacticLimit,
+    _enforce_use_proof_budget,
     checked_final,
     exact,
     use_checked,
 )
 from peano_lab.kernel.checker import check
-from peano_lab.kernel.formulas import Eq
-from peano_lab.kernel.proofs import Cut, EqRefl, EqSym
+from peano_lab.kernel.formulas import Eq, parse_formula
+from peano_lab.kernel.proofs import AndIntro, Cut, EqRefl, EqSym, Proof
 from peano_lab.kernel.terms import Zero
 from peano_lab.library.theorems import LibraryError, normalise_cuts, replay
 from peano_lab.ui import prove
 
 
 ZERO = Zero()
+
+
+def _balanced_budget_proof(nodes: int) -> Proof:
+    """Build an exact, shallow structural fixture for the iterative use guard."""
+
+    assert nodes >= 1
+    if nodes == 1:
+        return EqRefl(ZERO)
+    if nodes == 2:
+        return EqSym(EqRefl(ZERO))
+    left_nodes = (nodes - 1) // 2
+    return AndIntro(
+        _balanced_budget_proof(left_nodes),
+        _balanced_budget_proof(nodes - 1 - left_nodes),
+    )
+
+
+def _depth_budget_proof(depth: int) -> Proof:
+    assert depth >= 1
+    proof: Proof = EqRefl(ZERO)
+    for _ in range(depth - 1):
+        proof = EqSym(proof)
+    return proof
 
 
 def _owner(session: driver.LabSession) -> prove.ProofSession:
@@ -150,6 +175,34 @@ def test_live_use_composes_two_checked_facts_into_a_new_theorem() -> None:
     assert "QED." in session.run("qed")
 
 
+def test_large_canonical_append_prime_divisor_and_induction_share_one_qed() -> None:
+    """The first factorization composition above the former 32K gate stays live."""
+
+    session = driver.LabSession()
+    session.run("pa prove forall n. n = n")
+    session.run("use beta_canonical_append_succ as canonical_append")
+    session.run("use prime_divisor_exists as prime_divisor")
+
+    owner = _owner(session)
+    nodes, depth = proof_metrics(owner.state.partial)
+    assert (nodes, depth) == (33_000, 83)
+    assert 32_768 < nodes <= MAX_USE_PARTIAL_NODES
+    assert depth <= MAX_USE_PROOF_DEPTH
+
+    session.run("induction n")
+    session.run("refl")
+    assert "No open goals" in session.run("refl")
+    owner = _owner(session)
+    certificate = prove.checked_surface_final(
+        owner.state,
+        owner.original_target,
+        classical=owner.classical,
+    )
+    assert check((), certificate, owner.original_target)
+    assert not check((), certificate, parse_formula("forall n. n = 0"))
+    assert "QED." in session.run("qed")
+
+
 def test_live_use_failures_are_traced_and_leave_the_exact_state_unchanged() -> None:
     session = driver.LabSession()
     session.run("pa prove forall n. n = n")
@@ -194,6 +247,36 @@ def test_live_use_resource_limit_is_typed_traced_and_transactional() -> None:
     assert owner.state is before_limit
     assert owner.trace.records[-1]["status"] == "error"
     assert "live-certificate limit" in owner.trace.records[-1]["error"]
+
+
+def test_use_budget_accepts_exact_global_boundaries_and_rejects_one_more() -> None:
+    at_nodes = _balanced_budget_proof(MAX_USE_PARTIAL_NODES)
+    assert proof_metrics(at_nodes)[0] == MAX_USE_PARTIAL_NODES
+    _enforce_use_proof_budget(
+        at_nodes,
+        max_nodes=MAX_USE_PARTIAL_NODES,
+        label="test-node-boundary",
+    )
+    with pytest.raises(TacticLimit, match="test-node-boundary limit"):
+        _enforce_use_proof_budget(
+            EqSym(at_nodes),
+            max_nodes=MAX_USE_PARTIAL_NODES,
+            label="test-node-boundary",
+        )
+
+    at_depth = _depth_budget_proof(MAX_USE_PROOF_DEPTH)
+    assert proof_metrics(at_depth)[1] == MAX_USE_PROOF_DEPTH
+    _enforce_use_proof_budget(
+        at_depth,
+        max_nodes=MAX_USE_PARTIAL_NODES,
+        label="test-depth-boundary",
+    )
+    with pytest.raises(TacticLimit, match="test-depth-boundary limit"):
+        _enforce_use_proof_budget(
+            EqSym(at_depth),
+            max_nodes=MAX_USE_PARTIAL_NODES,
+            label="test-depth-boundary",
+        )
 
 
 def test_live_use_obeys_orelse_and_inactive_session_grammar() -> None:

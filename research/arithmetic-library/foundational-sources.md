@@ -171,23 +171,27 @@ course merely because that course uses a powerful congruence tactic.
 ### L7: Primes
 
 - prime and composite definitions;
-- the checked expanded instance `prime_two` and its small-factor prerequisites;
+- the checked expanded instances `prime_two` and `prime_three` and their
+  small-factor prerequisites;
 - checked prime nonzeroness, bounded factor search, proper-factor descent,
   prime-or-composite, and general primality decision;
 - the checked general divisor-of-a-prime one-or-self API;
 - checked constructive bounded and unrestricted prime-divisor existence;
-- checked Euclid's lemma, with finite-product consequences still planned;
-- infinitude of primes;
+- checked Euclid's lemma and its checked encoded finite-product/factorization
+  consequences;
+- checked infinitude of primes via `prime_unbounded`;
 - bounded primality-test specifications after the mathematical layer is
   complete.
 
 ### L8: Factorization
 
-- strong-induction factorization existence;
-- prime-factor cancellation;
-- uniqueness up to permutation or equality of multiplicities;
-- valuations and arithmetic-function interfaces;
-- the Fundamental Theorem of Arithmetic as the capstone.
+- checked strengthened-induction sorted β-coded factorization existence;
+- checked prime matching and last-factor cancellation;
+- checked canonical extensional uniqueness by equal lengths and decoded
+  entries;
+- the checked native β-coded Fundamental Theorem of Arithmetic as the
+  capstone;
+- valuations and arithmetic-function interfaces remain planned.
 
 ### L9: Powers and computational number theory
 
@@ -207,44 +211,34 @@ quantification.
 
 This boundary should be explicit in the plan:
 
-- **Checked in the current language through the prime spine:** semiring and
-  order facts; existential divisibility; natural quotient/remainder existence;
-  relational gcd and balanced Bézout; constructive equality, divisibility,
-  prime/composite, and primality decisions; proper-factor descent;
-  prime-divisor existence; Gauss cancellation; Euclid's lemma; full balanced
-  congruence addition/multiplication compatibility; bounded representative
-  uniqueness; both remainder/congruence directions; and expanded β-value
-  decoding equivalent to bound plus congruence; constructive binary CRT; and
-  a conditional two-position β-code constructor.
-- **Current-language feasible next target:** greatest-prime-divisor descent and
-  infinitude of primes, plus genuine prefix-product recurrence and bounds, and
-  parity clients not already in the fixed-modulus layer.
-- **Feasible with relational encodings but potentially unwieldy:** generic
-  algorithms, signed-coefficient APIs beyond the checked four-natural balanced
-  Bézout relation, and recursive arithmetic-function graphs.
-- **Encoding milestone:** decoded β values are checked and equivalent to bound
-  plus balanced congruence, while binary CRT, conditional gap-divisibility
-  coprimality, its two-position constructor, bounded-prefix pairwise
-  coprimality, product closure, modulus descent, and the bounded prefix
-  invariant for values decoded from an existing `BetaAt` code are checked.
-  That wrapper is not arbitrary finite-sequence coding. Genuine prefix-product
-  recurrence and bounds, β finite-prefix recoding, extensional sequence
-  equality, and finite counting remain; generic exponentiation and an optional
-  user-facing list/multiset layer are separate language-design choices.
-- **Blocked as a natural single theorem until that encoding milestone:** the
-  full Fundamental Theorem of Arithmetic and its uniqueness clause,
-  totient-based results, and generic finite-product theorems.
+- **Checked in the current language:** the full relational arithmetic spine
+  through division, relational gcd, four-natural balanced Bézout, prime
+  divisors, Gauss and Euclid; finite-prefix β recoding; exact prefix-product
+  traces; greatest-prime-divisor descent; sorted canonical factorization
+  existence; canonical extensional uniqueness; and their combined native FTA.
+- **Audited endpoint metrics:** existence is 43,973 nodes/depth 98,
+  uniqueness is 29,789/depth 82, and FTA is 73,767/depth 99 with 2,184 Cuts.
+  The combined certificate fits the 100,000-node/depth-256 live/use limit,
+  uses PA1–PA6 and induction only, and contains no DNE.
+- **Current-language feasible next targets:** parity clients not already in
+  the fixed-modulus layer and additional relational
+  arithmetic-function graphs.
+- **Still absent as primitive interfaces:** integers and conventional signed
+  Bézout coefficients, generic exponentiation, lists, multisets, finite maps,
+  and finite counting. The balanced four-natural Bézout relation is checked,
+  but it must not be relabeled as an integer-coefficient theorem.
+- **Encoding boundary:** the checked native FTA uses natural-number β codes and
+  compares equal lengths and decoded bounded entries. It neither adds a
+  primitive list type nor proves raw-code equality.
 
 Gödel coding represents sequences inside first-order arithmetic at the cost of
-a less direct pedagogical API and potentially very large certificates. The
-representation review nevertheless selected a conservative Gödel-β authoring
-facade because it expands into the unchanged Peano language. With constructive
-prime-divisor existence, the equivalent bound/congruence β-value API, binary
-CRT, bounded-prefix pairwise coprimality, fold algebra, and the existing-code
-bounded prefix invariant now checked, the next representation gate is genuine
-prefix-product recurrence and bounds, followed by β finite-prefix recoding,
-greatest-prime descent, and finite-product
-existence/uniqueness certificates.
+a less direct pedagogical API and large certificates. The conservative
+Gödel-β facade expands into the unchanged Peano language, and the complete
+route through Product, canonical existence, extensional uniqueness, and FTA
+is checked at this integration checkpoint. The exact FTA certificate SHA-256
+is `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+Runtime integration is complete; the certificate passed empty-context and
+live-use audits.
 
 ## Source and artifact invariants
 

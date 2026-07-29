@@ -21,7 +21,7 @@ forall n. ((~(n = 1) /\ forall a b. n = a * b -> a = 1 \/ b = 1) \/ ~((~(n = 1) 
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[prime_divides_decidable]]
 
 ## Verification record
 

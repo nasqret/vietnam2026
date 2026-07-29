@@ -22,6 +22,9 @@ forall a n m. (exists q. n = a * q) -> exists s. n * m = a * s
 - [[multiple_mul_left]]
 - [[bounded_common_multiple_step]]
 - [[beta_accumulated_product_step]]
+- [[scaled_bounded_common_multiple]]
+- [[beta_exclusive_accumulated_product_step]]
+- [[beta_factor_divides_product]]
 
 ## Verification record
 

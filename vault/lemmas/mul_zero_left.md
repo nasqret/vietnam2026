@@ -29,6 +29,7 @@ forall n. 0 * n = 0
 - [[factor_nonzero_left]]
 - [[prime_divisor_exists_up_to]]
 - [[beta_at_self_of_bound]]
+- [[prime_three]]
 
 ## Verification record
 

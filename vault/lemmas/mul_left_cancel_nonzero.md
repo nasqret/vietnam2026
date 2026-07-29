@@ -26,6 +26,7 @@ forall a b c. ~(a = 0) -> a * b = a * c -> b = c
 - [[multiple_antisymm]]
 - [[factor_search_up_to]]
 - [[proper_factor_lt]]
+- [[two_prime_product_uniqueness]]
 
 ## Verification record
 

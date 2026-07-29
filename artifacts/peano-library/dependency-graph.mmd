@@ -177,6 +177,64 @@ flowchart TD
   beta_crt_prefix_invariant_step[beta_crt_prefix_invariant_step]
   bounded_beta_crt_prefix_invariant[bounded_beta_crt_prefix_invariant]
   bounded_beta_crt_for_existing_code[bounded_beta_crt_for_existing_code]
+  prime_unbounded[prime_unbounded]
+  beta_value_le_code[beta_value_le_code]
+  base_le_beta_modulus[base_le_beta_modulus]
+  le_scaled_nonzero[le_scaled_nonzero]
+  scaled_bounded_common_multiple[scaled_bounded_common_multiple]
+  beta_value_lt_scaled_base[beta_value_lt_scaled_base]
+  new_value_lt_scaled_base[new_value_lt_scaled_base]
+  beta_exclusive_accumulated_product_step[beta_exclusive_accumulated_product_step]
+  beta_exclusive_recode_congruence_step[beta_exclusive_recode_congruence_step]
+  beta_exclusive_recode_invariant_step[beta_exclusive_recode_invariant_step]
+  bounded_beta_exclusive_recode_invariant[bounded_beta_exclusive_recode_invariant]
+  beta_prefix_extend[beta_prefix_extend]
+  beta_prefix_product_trace_exists[beta_prefix_product_trace_exists]
+  beta_product_exists[beta_product_exists]
+  beta_product_functional[beta_product_functional]
+  beta_product_exists_unique[beta_product_exists_unique]
+  beta_product_zero[beta_product_zero]
+  beta_product_succ_decompose[beta_product_succ_decompose]
+  beta_product_succ_append[beta_product_succ_append]
+  beta_product_transport_prefix[beta_product_transport_prefix]
+  beta_factor_prefix_product_append[beta_factor_prefix_product_append]
+  all_prime_empty[all_prime_empty]
+  all_prime_succ_intro[all_prime_succ_intro]
+  all_prime_succ_elim_prefix[all_prime_succ_elim_prefix]
+  all_prime_succ_elim_last[all_prime_succ_elim_last]
+  all_prime_transport[all_prime_transport]
+  sorted_empty[sorted_empty]
+  sorted_singleton[sorted_singleton]
+  sorted_succ_intro[sorted_succ_intro]
+  sorted_succ_elim_prefix[sorted_succ_elim_prefix]
+  sorted_succ_elim_last[sorted_succ_elim_last]
+  sorted_transport[sorted_transport]
+  beta_prefix_extend_all_prime[beta_prefix_extend_all_prime]
+  beta_prefix_extend_sorted_singleton[beta_prefix_extend_sorted_singleton]
+  beta_prefix_extend_sorted_succ[beta_prefix_extend_sorted_succ]
+  beta_canonical_append_empty[beta_canonical_append_empty]
+  beta_canonical_append_succ[beta_canonical_append_succ]
+  prime_divides_decidable[prime_divides_decidable]
+  greatest_prime_divisor_search[greatest_prime_divisor_search]
+  greatest_prime_divisor_exists[greatest_prime_divisor_exists]
+  greatest_prime_divisor_quotient_bound[greatest_prime_divisor_quotient_bound]
+  greatest_prime_divisor_descent[greatest_prime_divisor_descent]
+  beta_factor_divides_product[beta_factor_divides_product]
+  beta_canonical_append_general[beta_canonical_append_general]
+  beta_canonical_last_factor_bound[beta_canonical_last_factor_bound]
+  prime_factorization_exists_up_to[prime_factorization_exists_up_to]
+  prime_factorization_existence[prime_factorization_existence]
+  beta_prime_divisor_product_member[beta_prime_divisor_product_member]
+  beta_sorted_factor_le_last[beta_sorted_factor_le_last]
+  beta_nonempty_all_prime_product_ne_one[beta_nonempty_all_prime_product_ne_one]
+  beta_all_prime_product_one_iff_length_zero[beta_all_prime_product_one_iff_length_zero]
+  beta_canonical_last_factors_equal[beta_canonical_last_factors_equal]
+  beta_canonical_product_cancel_last[beta_canonical_product_cancel_last]
+  prime_factorization_uniqueness_by_length[prime_factorization_uniqueness_by_length]
+  prime_factorization_uniqueness[prime_factorization_uniqueness]
+  fundamental_theorem_of_arithmetic[fundamental_theorem_of_arithmetic]
+  prime_three[prime_three]
+  two_prime_product_uniqueness[two_prime_product_uniqueness]
   fourth_power_regroup[fourth_power_regroup]
   mod5_residue_complete[mod5_residue_complete]
   mod5_nonzero_residue_cases[mod5_nonzero_residue_cases]
@@ -541,6 +599,267 @@ flowchart TD
   beta_crt_prefix_invariant_step --> bounded_beta_crt_prefix_invariant
   bounded_beta_crt_prefix_invariant --> bounded_beta_crt_for_existing_code
   le_refl --> bounded_beta_crt_for_existing_code
+  bounded_common_multiple_exists --> prime_unbounded
+  prime_divisor_exists --> prime_unbounded
+  prime_nonzero --> prime_unbounded
+  nonzero_is_succ --> prime_unbounded
+  add_succ_left --> prime_unbounded
+  add_comm --> prime_unbounded
+  divides_remainder --> prime_unbounded
+  divisor_one --> prime_unbounded
+  mul_one --> prime_unbounded
+  le_or_lt --> prime_unbounded
+  le_add_left --> base_le_beta_modulus
+  mul_succ_left --> base_le_beta_modulus
+  le_succ --> base_le_beta_modulus
+  one_le_of_ne_zero --> le_scaled_nonzero
+  mul_le_mul_right --> le_scaled_nonzero
+  one_mul --> le_scaled_nonzero
+  multiple_mul_right --> scaled_bounded_common_multiple
+  beta_value_le_code --> beta_value_lt_scaled_base
+  le_add_right --> beta_value_lt_scaled_base
+  succ_le_succ --> beta_value_lt_scaled_base
+  le_trans --> beta_value_lt_scaled_base
+  le_scaled_nonzero --> beta_value_lt_scaled_base
+  base_le_beta_modulus --> beta_value_lt_scaled_base
+  le_add_left --> new_value_lt_scaled_base
+  succ_le_succ --> new_value_lt_scaled_base
+  le_scaled_nonzero --> new_value_lt_scaled_base
+  le_trans --> new_value_lt_scaled_base
+  base_le_beta_modulus --> new_value_lt_scaled_base
+  mul_ne_zero --> beta_exclusive_accumulated_product_step
+  right_factor_divides_product --> beta_exclusive_accumulated_product_step
+  beta_modulus_nonzero --> beta_exclusive_accumulated_product_step
+  le_of_succ_le_succ --> beta_exclusive_accumulated_product_step
+  le_eq_or_lt --> beta_exclusive_accumulated_product_step
+  multiple_mul_right --> beta_exclusive_accumulated_product_step
+  le_succ_self --> beta_exclusive_accumulated_product_step
+  le_trans --> beta_exclusive_accumulated_product_step
+  lt_to_le --> beta_exclusive_accumulated_product_step
+  lt_irrefl_expanded --> beta_exclusive_accumulated_product_step
+  beta_moduli_pairwise_coprime_bounded --> beta_exclusive_accumulated_product_step
+  coprime_mul_left --> beta_exclusive_accumulated_product_step
+  beta_modulus_nonzero --> beta_exclusive_recode_congruence_step
+  le_refl --> beta_exclusive_recode_congruence_step
+  lt_to_le --> beta_exclusive_recode_congruence_step
+  binary_crt_fold_step --> beta_exclusive_recode_congruence_step
+  beta_at_exists --> beta_exclusive_recode_congruence_step
+  beta_at_unique --> beta_exclusive_recode_congruence_step
+  le_of_succ_le_succ --> beta_exclusive_recode_congruence_step
+  le_eq_or_lt --> beta_exclusive_recode_congruence_step
+  beta_exclusive_accumulated_product_step --> beta_exclusive_recode_invariant_step
+  beta_exclusive_recode_congruence_step --> beta_exclusive_recode_invariant_step
+  succ_ne_zero --> bounded_beta_exclusive_recode_invariant
+  add_eq_zero_right --> bounded_beta_exclusive_recode_invariant
+  coprime_one_left --> bounded_beta_exclusive_recode_invariant
+  le_succ_self --> bounded_beta_exclusive_recode_invariant
+  le_trans --> bounded_beta_exclusive_recode_invariant
+  beta_exclusive_recode_invariant_step --> bounded_beta_exclusive_recode_invariant
+  bounded_common_multiple_exists --> beta_prefix_extend
+  scaled_bounded_common_multiple --> beta_prefix_extend
+  bounded_beta_exclusive_recode_invariant --> beta_prefix_extend
+  le_refl --> beta_prefix_extend
+  beta_modulus_nonzero --> beta_prefix_extend
+  binary_crt_fold_step --> beta_prefix_extend
+  new_value_lt_scaled_base --> beta_prefix_extend
+  beta_value_lt_scaled_base --> beta_prefix_extend
+  beta_at_of_mod_eq_bound --> beta_prefix_extend
+  beta_at_self_of_bound --> beta_prefix_product_trace_exists
+  add_eq_zero_right --> beta_prefix_product_trace_exists
+  succ_ne_zero --> beta_prefix_product_trace_exists
+  beta_at_exists --> beta_prefix_product_trace_exists
+  beta_prefix_extend --> beta_prefix_product_trace_exists
+  zero_le --> beta_prefix_product_trace_exists
+  succ_le_succ --> beta_prefix_product_trace_exists
+  le_refl --> beta_prefix_product_trace_exists
+  le_of_succ_le_succ --> beta_prefix_product_trace_exists
+  le_eq_or_lt --> beta_prefix_product_trace_exists
+  one_mul --> beta_prefix_product_trace_exists
+  beta_prefix_product_trace_exists --> beta_product_exists
+  beta_at_exists --> beta_product_exists
+  beta_at_unique --> beta_product_functional
+  le_refl --> beta_product_functional
+  le_succ --> beta_product_functional
+  mul_congr --> beta_product_functional
+  beta_product_exists --> beta_product_exists_unique
+  beta_product_functional --> beta_product_exists_unique
+  beta_at_unique --> beta_product_zero
+  le_refl --> beta_product_succ_decompose
+  le_succ --> beta_product_succ_decompose
+  beta_at_unique --> beta_product_succ_decompose
+  beta_prefix_extend --> beta_product_succ_append
+  zero_le --> beta_product_succ_append
+  succ_le_succ --> beta_product_succ_append
+  le_refl --> beta_product_succ_append
+  le_of_succ_le_succ --> beta_product_succ_append
+  le_eq_or_lt --> beta_product_succ_append
+  beta_prefix_extend --> beta_factor_prefix_product_append
+  beta_product_transport_prefix --> beta_factor_prefix_product_append
+  zero_le --> beta_factor_prefix_product_append
+  succ_le_succ --> beta_factor_prefix_product_append
+  le_refl --> beta_factor_prefix_product_append
+  le_of_succ_le_succ --> beta_factor_prefix_product_append
+  le_eq_or_lt --> beta_factor_prefix_product_append
+  add_eq_zero_right --> all_prime_empty
+  succ_ne_zero --> all_prime_empty
+  le_of_succ_le_succ --> all_prime_succ_intro
+  le_eq_or_lt --> all_prime_succ_intro
+  le_succ --> all_prime_succ_elim_prefix
+  le_refl --> all_prime_succ_elim_last
+  le_zero --> sorted_empty
+  succ_ne_zero --> sorted_empty
+  le_of_succ_le_succ --> sorted_singleton
+  le_zero --> sorted_singleton
+  succ_ne_zero --> sorted_singleton
+  le_of_succ_le_succ --> sorted_succ_intro
+  le_eq_or_lt --> sorted_succ_intro
+  succ_le_succ --> sorted_succ_intro
+  le_succ --> sorted_succ_elim_prefix
+  le_refl --> sorted_succ_elim_last
+  lt_to_le --> sorted_transport
+  beta_prefix_extend --> beta_prefix_extend_all_prime
+  all_prime_transport --> beta_prefix_extend_all_prime
+  all_prime_succ_intro --> beta_prefix_extend_all_prime
+  beta_prefix_extend --> beta_prefix_extend_sorted_singleton
+  sorted_singleton --> beta_prefix_extend_sorted_singleton
+  beta_prefix_extend --> beta_prefix_extend_sorted_succ
+  sorted_transport --> beta_prefix_extend_sorted_succ
+  sorted_succ_intro --> beta_prefix_extend_sorted_succ
+  le_refl --> beta_prefix_extend_sorted_succ
+  beta_factor_prefix_product_append --> beta_canonical_append_empty
+  all_prime_empty --> beta_canonical_append_empty
+  all_prime_succ_intro --> beta_canonical_append_empty
+  sorted_singleton --> beta_canonical_append_empty
+  one_mul --> beta_canonical_append_empty
+  beta_factor_prefix_product_append --> beta_canonical_append_succ
+  all_prime_transport --> beta_canonical_append_succ
+  all_prime_succ_intro --> beta_canonical_append_succ
+  sorted_transport --> beta_canonical_append_succ
+  sorted_succ_intro --> beta_canonical_append_succ
+  le_refl --> beta_canonical_append_succ
+  prime_decidable --> prime_divides_decidable
+  multiple_decidable --> prime_divides_decidable
+  prime_nonzero --> greatest_prime_divisor_search
+  le_zero --> greatest_prime_divisor_search
+  prime_divides_decidable --> greatest_prime_divisor_search
+  le_refl --> greatest_prime_divisor_search
+  le_eq_or_lt --> greatest_prime_divisor_search
+  le_of_succ_le_succ --> greatest_prime_divisor_search
+  le_succ --> greatest_prime_divisor_search
+  prime_divisor_exists --> greatest_prime_divisor_exists
+  divisor_le_nonzero --> greatest_prime_divisor_exists
+  greatest_prime_divisor_search --> greatest_prime_divisor_exists
+  mul_comm --> greatest_prime_divisor_quotient_bound
+  multiple_trans --> greatest_prime_divisor_quotient_bound
+  greatest_prime_divisor_exists --> greatest_prime_divisor_descent
+  mul_comm --> greatest_prime_divisor_descent
+  factor_nonzero_left --> greatest_prime_divisor_descent
+  proper_factor_lt --> greatest_prime_divisor_descent
+  greatest_prime_divisor_quotient_bound --> greatest_prime_divisor_descent
+  add_eq_zero_right --> beta_factor_divides_product
+  succ_ne_zero --> beta_factor_divides_product
+  beta_product_succ_decompose --> beta_factor_divides_product
+  le_of_succ_le_succ --> beta_factor_divides_product
+  le_eq_or_lt --> beta_factor_divides_product
+  beta_at_unique --> beta_factor_divides_product
+  mul_comm --> beta_factor_divides_product
+  multiple_mul_right --> beta_factor_divides_product
+  beta_factor_prefix_product_append --> beta_canonical_append_general
+  all_prime_transport --> beta_canonical_append_general
+  all_prime_succ_intro --> beta_canonical_append_general
+  zero_or_succ --> beta_canonical_append_general
+  sorted_singleton --> beta_canonical_append_general
+  sorted_transport --> beta_canonical_append_general
+  all_prime_succ_elim_last --> beta_canonical_append_general
+  beta_factor_divides_product --> beta_canonical_append_general
+  le_refl --> beta_canonical_append_general
+  sorted_succ_intro --> beta_canonical_append_general
+  all_prime_succ_elim_last --> beta_canonical_last_factor_bound
+  beta_factor_divides_product --> beta_canonical_last_factor_bound
+  le_refl --> beta_canonical_last_factor_bound
+  le_zero --> prime_factorization_exists_up_to
+  le_eq_or_lt --> prime_factorization_exists_up_to
+  le_of_succ_le_succ --> prime_factorization_exists_up_to
+  eq_decidable --> prime_factorization_exists_up_to
+  succ_ne_zero --> prime_factorization_exists_up_to
+  beta_at_exists --> prime_factorization_exists_up_to
+  beta_at_self_of_bound --> prime_factorization_exists_up_to
+  beta_at_unique --> prime_factorization_exists_up_to
+  one_mul --> prime_factorization_exists_up_to
+  le_refl --> prime_factorization_exists_up_to
+  add_eq_zero_right --> prime_factorization_exists_up_to
+  all_prime_empty --> prime_factorization_exists_up_to
+  sorted_empty --> prime_factorization_exists_up_to
+  greatest_prime_divisor_descent --> prime_factorization_exists_up_to
+  beta_canonical_append_general --> prime_factorization_exists_up_to
+  mul_comm --> prime_factorization_exists_up_to
+  prime_factorization_exists_up_to --> prime_factorization_existence
+  le_refl --> prime_factorization_existence
+  beta_product_zero --> beta_prime_divisor_product_member
+  divisor_one --> beta_prime_divisor_product_member
+  beta_product_succ_decompose --> beta_prime_divisor_product_member
+  all_prime_succ_elim_prefix --> beta_prime_divisor_product_member
+  all_prime_succ_elim_last --> beta_prime_divisor_product_member
+  euclid_prime_dvd_product --> beta_prime_divisor_product_member
+  prime_divisor_eq_one_or_self --> beta_prime_divisor_product_member
+  beta_at_unique --> beta_prime_divisor_product_member
+  le_succ --> beta_prime_divisor_product_member
+  le_refl --> beta_prime_divisor_product_member
+  le_of_succ_le_succ --> beta_sorted_factor_le_last
+  le_zero --> beta_sorted_factor_le_last
+  beta_at_unique --> beta_sorted_factor_le_last
+  le_refl --> beta_sorted_factor_le_last
+  le_eq_or_lt --> beta_sorted_factor_le_last
+  sorted_succ_elim_prefix --> beta_sorted_factor_le_last
+  sorted_succ_elim_last --> beta_sorted_factor_le_last
+  le_trans --> beta_sorted_factor_le_last
+  all_prime_succ_elim_last --> beta_nonempty_all_prime_product_ne_one
+  beta_factor_divides_product --> beta_nonempty_all_prime_product_ne_one
+  le_refl --> beta_nonempty_all_prime_product_ne_one
+  divisor_one --> beta_nonempty_all_prime_product_ne_one
+  beta_product_zero --> beta_all_prime_product_one_iff_length_zero
+  beta_nonempty_all_prime_product_ne_one --> beta_all_prime_product_one_iff_length_zero
+  succ_ne_zero --> beta_all_prime_product_one_iff_length_zero
+  all_prime_succ_elim_last --> beta_canonical_last_factors_equal
+  beta_at_unique --> beta_canonical_last_factors_equal
+  beta_factor_divides_product --> beta_canonical_last_factors_equal
+  le_refl --> beta_canonical_last_factors_equal
+  beta_prime_divisor_product_member --> beta_canonical_last_factors_equal
+  beta_sorted_factor_le_last --> beta_canonical_last_factors_equal
+  le_antisymm --> beta_canonical_last_factors_equal
+  beta_product_succ_decompose --> beta_canonical_product_cancel_last
+  beta_canonical_last_factors_equal --> beta_canonical_product_cancel_last
+  all_prime_succ_elim_last --> beta_canonical_product_cancel_last
+  beta_at_unique --> beta_canonical_product_cancel_last
+  prime_nonzero --> beta_canonical_product_cancel_last
+  mul_right_cancel_nonzero --> beta_canonical_product_cancel_last
+  all_prime_succ_elim_prefix --> beta_canonical_product_cancel_last
+  sorted_succ_elim_prefix --> beta_canonical_product_cancel_last
+  beta_product_zero --> prime_factorization_uniqueness_by_length
+  beta_all_prime_product_one_iff_length_zero --> prime_factorization_uniqueness_by_length
+  add_eq_zero_right --> prime_factorization_uniqueness_by_length
+  succ_ne_zero --> prime_factorization_uniqueness_by_length
+  beta_nonempty_all_prime_product_ne_one --> prime_factorization_uniqueness_by_length
+  nonzero_is_succ --> prime_factorization_uniqueness_by_length
+  beta_canonical_product_cancel_last --> prime_factorization_uniqueness_by_length
+  succ_congr --> prime_factorization_uniqueness_by_length
+  le_of_succ_le_succ --> prime_factorization_uniqueness_by_length
+  le_eq_or_lt --> prime_factorization_uniqueness_by_length
+  beta_at_unique --> prime_factorization_uniqueness_by_length
+  prime_factorization_uniqueness_by_length --> prime_factorization_uniqueness
+  prime_factorization_existence --> fundamental_theorem_of_arithmetic
+  prime_factorization_uniqueness --> fundamental_theorem_of_arithmetic
+  mul_succ_left --> prime_three
+  mul_eq_one_components --> prime_three
+  add_eq_zero_left --> prime_three
+  mul_eq_zero --> prime_three
+  mul_zero_left --> prime_three
+  zero_or_succ --> prime_three
+  euclid_prime_dvd_product --> two_prime_product_uniqueness
+  prime_divisor_eq_one_or_self --> two_prime_product_uniqueness
+  prime_nonzero --> two_prime_product_uniqueness
+  mul_left_cancel_nonzero --> two_prime_product_uniqueness
+  mul_comm --> two_prime_product_uniqueness
   mul_assoc --> fourth_power_regroup
   mod5_residue_complete --> mod5_nonzero_residue_cases
   add_assoc --> mod5_square_residue_one

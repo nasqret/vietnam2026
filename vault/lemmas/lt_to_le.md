@@ -19,7 +19,9 @@ forall a b. (exists k. k + S a = b) -> exists r. r + a = b
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[beta_exclusive_accumulated_product_step]]
+- [[beta_exclusive_recode_congruence_step]]
+- [[sorted_transport]]
 
 ## Verification record
 

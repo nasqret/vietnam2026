@@ -20,6 +20,13 @@ forall a b. (exists k. k + a = b) -> exists r. r + a = S b
 ## Checked dependents
 
 - [[factor_search_up_to]]
+- [[base_le_beta_modulus]]
+- [[beta_product_functional]]
+- [[beta_product_succ_decompose]]
+- [[all_prime_succ_elim_prefix]]
+- [[sorted_succ_elim_prefix]]
+- [[greatest_prime_divisor_search]]
+- [[beta_prime_divisor_product_member]]
 
 ## Verification record
 

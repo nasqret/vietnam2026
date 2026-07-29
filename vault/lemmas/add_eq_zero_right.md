@@ -25,6 +25,12 @@ forall a b. a + b = 0 -> b = 0
 - [[add_eq_zero_components]]
 - [[mul_eq_one_components]]
 - [[factor_difference]]
+- [[bounded_beta_exclusive_recode_invariant]]
+- [[beta_prefix_product_trace_exists]]
+- [[all_prime_empty]]
+- [[beta_factor_divides_product]]
+- [[prime_factorization_exists_up_to]]
+- [[prime_factorization_uniqueness_by_length]]
 
 ## Verification record
 

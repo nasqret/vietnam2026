@@ -107,13 +107,13 @@ def test_public_mod5_catalog_matches_its_source_validation_artifact() -> None:
         MOD5_LIBRARY_CATALOG_SHA256
     )
 
-    assert MAX_USE_CERTIFICATE_NODES == (
-        report["budgets"]["recommended_certificate_nodes"]
-    ) == 32_768
-    assert MAX_USE_PARTIAL_NODES == 32_768
-    assert MAX_USE_PROOF_DEPTH == 128
-    assert MAX_LIVE_PROOF_NODES == 100_000
-    assert MAX_LIVE_PROOF_DEPTH == 256
+    # The immutable M10 source report retains its historical recommendation;
+    # live theorem composition now deliberately shares the reviewed global cap.
+    assert report["budgets"]["recommended_certificate_nodes"] == 32_768
+    assert MAX_USE_CERTIFICATE_NODES == MAX_USE_PARTIAL_NODES == (
+        MAX_LIVE_PROOF_NODES
+    ) == 100_000
+    assert MAX_USE_PROOF_DEPTH == MAX_LIVE_PROOF_DEPTH == 256
 
     expected = tuple(
         (
@@ -184,7 +184,9 @@ def test_repeated_capstone_imports_reach_the_same_transactional_partial_limit() 
     failure = None
     accepted = 0
     before = None
-    for index in range(32):
+    capstone_nodes = replay("mod5_fourth_power_one").proof_nodes
+    attempts = MAX_USE_PARTIAL_NODES // (capstone_nodes + 1) + 2
+    for index in range(attempts):
         owner = get_owner(session.webstate)
         assert owner is not None
         before = owner.state

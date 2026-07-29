@@ -21,6 +21,7 @@ forall a b. ~(a = 0) -> ~(b = 0) -> ~(a * b = 0)
 
 - [[mul_left_cancel_nonzero]]
 - [[beta_accumulated_product_step]]
+- [[beta_exclusive_accumulated_product_step]]
 
 ## Verification record
 

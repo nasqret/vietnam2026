@@ -23,6 +23,9 @@ forall d. (exists y. 1 = d * y) -> d = 1
 - [[coprime_one_left]]
 - [[is_gcd_one_to_coprime]]
 - [[beta_modulus_coprime_base]]
+- [[prime_unbounded]]
+- [[beta_prime_divisor_product_member]]
+- [[beta_nonempty_all_prime_product_ne_one]]
 
 ## Verification record
 

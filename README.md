@@ -38,35 +38,49 @@ The exact abstracts, session plans and reading lists live on the [landing page](
 | `vault/` | The **Obsidian vault** — the atomic, wiki-linked knowledge base behind the book. |
 | `artifacts/` | **Formal proofs** in four systems, plus `lean-fta/`: a pinned, sorry-free Lean proof of prime-factorization existence and uniqueness up to permutation. |
 | `lab-lambda/` | The **Lambda Lab**, repackaged to run **directly in the browser** (Pyodide + xterm.js). Deployed to `/lab-lambda`. |
-| `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, 189-entry checked arithmetic ladder, and reproducible proof-trace corpus. |
-| `research/` | The **research dossier** — including the 196-node foundational arithmetic catalog (23 baseline checked, 166 post-baseline checked, three planned expressible, four language-blocked), one checked FTA companion, and source/license maps. |
+| `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, 247-entry checked arithmetic ladder, and reproducible proof-trace corpus. |
+| `research/` | The **research dossier** — including the 248-node foundational arithmetic catalog (247 checked and one representation-blocked), native and Lean FTA certificates, and source/license maps. |
 | `scripts/` | Book replay gate plus the deterministic Peano trace generation, export, and kernel-judged evaluation pipeline. |
 | `docs/` | Lecturer-facing docs: how to build, deploy, and run each piece. |
 | `MEMORY.md` · `JOURNAL.md` · `PLAN.md` + `PLAN/` | Project **memory**, dated **journal**, and the multi-level **plan**. |
 
-The 189-entry native ladder now checks full addition/multiplication
-compatibility for balanced congruence and proves that expanded Gödel-β
-decoding is equivalent to a bound plus balanced congruence. Constructive binary
-CRT and a two-position β-code constructor are checked. A new conditional chain
-proves the β moduli coprime when the ordered index gap divides `c`,
-discharges the constructor's premise, and constructs a nonzero `c`
-divisible by every positive gap through a fixed bound. Unconditional pairwise
-coprimality is false: `c=1` at indices 1 and 4 gives moduli 3 and 6.
-The bounded-prefix glue is now checked: it constructs a suitable base with
-pairwise-coprime β moduli through a chosen bound. Coprime-product closure,
-modulus descent, and an ordinary-induction CRT prefix invariant are checked
-too. The public wrapper applies only to residues already decoded from an
-existing `BetaAt` code; it is not an arbitrary finite-sequence coding theorem.
-Genuine prefix-product recurrence and bounds, β finite-prefix recoding,
-greatest-prime descent, and native FTA remain open.
-The shared snapshot totals 242,629 structural proof nodes and 6,895 Cuts
-across 149 Cut-bearing entries; `bounded_beta_crt_for_existing_code` is largest
-at 25,545 nodes and 755 Cuts.
-The synchronized source-bound corpus has fingerprint
-`a3c2f8c5c762b10fc9c1117723c74fecb50348cfb699f73bc76fb3714df3bf1b`;
-its all-ladder smoke closes all 189 authored proofs. Local browser build
-`2026-07-29h` packages the same library as application
-`a-98b1d8bb8dd7`; it is not a deployment claim.
+The 247-entry native ladder now reaches the Fundamental Theorem of Arithmetic
+without adding lists, division, remainder, gcd, or factorization as primitive
+symbols. Finite factor sequences and their prefix products are represented by
+expanded Gödel-β relations; code equality is extensional on the selected
+prefix. The checked dependency spine includes generic division with
+remainder, relational gcd, balanced-natural Bézout, Gauss cancellation,
+constructive prime search, Euclid's lemma, binary and bounded CRT, β recoding,
+prefix-product traces, greatest-prime-divisor descent, canonical factorization
+existence, uniqueness, and a prime strictly above every supplied bound. The
+last result is constructive: choose a nonzero common multiple through the
+bound, take a prime divisor of its successor, and rule out a prime at or below
+the bound because it would divide both consecutive numbers and hence divide
+one. The exact native FTA certificate has 73,767
+structural nodes, depth 99, 2,184 self-contained Cuts, and SHA-256
+`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+It checks from the empty context using only PA1–PA6 and ordinary induction; it
+does not use double-negation elimination. The catalog now has 23 baseline
+checked entries, 224 M20 checked entries, no planned theorem, and one
+deliberately blocked conventional
+integer-coefficient Bézout interface. This is a local draft-PR checkpoint, not
+a deployment claim. The generated 247-theorem snapshot has 982,534 structural
+nodes, 28,892 Cuts, and 204 Cut-bearing certificates, with ordered root
+`eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`
+and source digest
+`295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
+The synchronized vault has 327 notes and 3,287 resolved links, including all
+247 generated lemma notes. The corpus retains 13,344 transitions in 1,692
+kernel-checked sessions under fingerprint
+`5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`;
+its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
+all 247 authored QEDs. Local browser build `2026-07-29j` packages application
+`a-c983d7c60450`; it is not staged or deployed. The strict Jupyter Book rebuild
+passes over all 36 sources with zero warnings; 234 deep links and 45 session
+blocks containing 264 commands verify. The complete Peano Lab suite passes all
+1,101 tests on Python 3.10 in 1,050.08 seconds with no reported warnings. No
+in-app browser was attached for this checkpoint, so a direct Pyodide UI smoke
+is explicitly unclaimed.
 
 ---
 

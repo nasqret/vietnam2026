@@ -22,6 +22,7 @@ forall B c. (forall t. (exists h. S t + S h = S B) -> exists k. c = S t * k) -> 
 
 - [[bounded_beta_moduli_pairwise_coprime_exists]]
 - [[beta_accumulated_product_step]]
+- [[beta_exclusive_accumulated_product_step]]
 
 ## Verification record
 

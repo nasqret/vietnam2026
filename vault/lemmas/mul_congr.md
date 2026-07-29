@@ -19,7 +19,7 @@ forall a b c d. a = b -> c = d -> a * c = b * d
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[beta_product_functional]]
 
 ## Verification record
 

@@ -25,6 +25,9 @@ forall c i. ~(S ((S i) * c) = 0)
 - [[beta_accumulated_product_step]]
 - [[beta_crt_prefix_congruence_step]]
 - [[bounded_beta_crt_prefix_invariant]]
+- [[beta_exclusive_accumulated_product_step]]
+- [[beta_exclusive_recode_congruence_step]]
+- [[beta_prefix_extend]]
 
 ## Verification record
 

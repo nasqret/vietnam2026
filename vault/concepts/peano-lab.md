@@ -12,12 +12,16 @@ than trusting a goal returned by the tactic engine.
 
 The public learning path is the [[theorem-ladder]]. The lab is intuitionistic by default; use of
 double-negation elimination is explicit and checked only in the labeled classical mode.
-The current native library exposes 189 closed checked theorems, including
+The current native library exposes 247 closed checked theorems, including
 constructive [[binary_crt]], bounded-prefix
 [[beta_moduli_pairwise_coprime_bounded|β-modulus coprimality]], and the
 invariant-preserving [[binary_crt_fold_step]]. The newest ordinary-induction
 [[bounded_beta_crt_prefix_invariant]] applies to values already decoded from
-an existing `BetaAt` code; it is not arbitrary finite-sequence coding.
+an existing `BetaAt` code. Later checked β recoding and Product layers support
+canonical factorization existence, extensional uniqueness, and the native
+[[fundamental-theorem-of-arithmetic]].
+The separate [[constructive-prime-unboundedness]] endpoint derives a prime
+above each bound without a factorial symbol or classical logic.
 
 The static delivery boundary is recorded separately as [[browser-proof-runtime]]: compressed and
 versioned bytes may arrive concurrently, but they add no proof authority and do not alter the

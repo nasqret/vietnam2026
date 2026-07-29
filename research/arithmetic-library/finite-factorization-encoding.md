@@ -12,7 +12,7 @@ the existing first-order language before the theorem target reaches the
 independent kernel. The kernel continues to know only `0`, `S`, `+`, `*`,
 equality, logical connectives, quantifiers, PA1–PA6, and induction.
 
-The arithmetic entrance gate is now checked: the runtime has constructive
+The arithmetic entrance gate is checked: the library has constructive
 equality and divisibility decisions, bounded factor search,
 prime-or-composite and primality decisions, proper-factor descent,
 prime-divisor existence, relational gcd/Bézout, Gauss cancellation, and
@@ -27,13 +27,13 @@ coprimality premise. The new conditional layer proves that premise when the
 ordered index gap divides `c`, applies the constructor, and produces a
 nonzero `c` divisible by every positive gap through a chosen bound.
 The bounded-prefix pairwise-coprimality theorem and the product/modulus/CRT
-fold algebra are now checked too. The accumulated-product and
-decoded-congruence invariant has also been folded through every bounded prefix
-of values already decoded from a supplied `BetaAt` code. This does **not**
-construct a code for an arbitrary finite sequence and does **not** prove FTA.
-The remaining critical path starts with genuine prefix-product recurrence and
-bounds, β finite-prefix recoding, greatest-prime-divisor descent, and the
-finite-product layers.
+fold algebra are checked too. The later tranche now crosses the former
+representation gap: it proves β finite-prefix recoding and exact one-value
+extension, β-coded prefix-product trace existence and functionality,
+relational finite-product laws, all-prime and sorted prefix laws,
+greatest-prime-divisor descent, canonical append, factorization existence, and
+extensional uniqueness. The exact combined FTA certificate is checked at this
+integration checkpoint; runtime synchronization is complete.
 
 ## Sequence values
 
@@ -112,13 +112,15 @@ divisible by every positive natural at most a specified bound.
 `bounded_beta_moduli_pairwise_coprime_exists` now orient the indices
 and package pairwise coprimality across the whole chosen prefix.
 
-The next four checked facts supply fold algebra:
+Four checked facts supply fold algebra:
 `coprime_mul_left` and `coprime_mul_right` preserve
 coprimality for an accumulated product,
 `mod_eq_of_mod_eq_multiple` descends a product-modulus congruence to
 each factor, and `binary_crt_fold_step` performs one extension while
-preserving every earlier congruence. Still required is the bounded induction
-that carries an encoded product and solution invariant through all positions.
+preserving every earlier congruence. The checked bounded induction carries an
+encoded modulus-product and solution invariant through all positions; the
+subsequent exclusive-prefix invariant is what enables genuine recoding and
+append.
 
 A code pair is deliberately not treated as a canonical sequence identity.
 Different pairs can decode the same finite prefix, so all later equality is
@@ -156,9 +158,9 @@ $$
 \end{aligned}
 $$
 
-The existential decoded values make non-vacuity explicit. Before admission,
-these schemas must be frozen as hygienic Peano expanders with round-trip and
-capture tests; the displayed names are not new kernel predicates.
+The existential decoded values make non-vacuity explicit. In the checked
+targets these schemas are fully expanded; the displayed names are expository
+abbreviations, not new kernel predicates.
 
 The product is not introduced as a function. A second β-code `(u,v)` stores
 prefix products:
@@ -214,13 +216,15 @@ $$
 \end{aligned}
 $$
 
-The combined Peano FTA will expose both statements only after their fully
-expanded targets and closed certificates pass the ordinary kernel gate.
+The exact combined Peano FTA is the conjunction of those fully expanded
+endpoints. At this integration checkpoint its closed certificate passes the
+ordinary empty-context kernel gate. The conclusion compares lengths and
+decoded entries, never raw codes.
 
 ## Proof dependency spine
 
 The selected encoding fixes the intended first-order endpoint; it does not
-make the proof small. The admission route and its current status are:
+make the proof small. The completed admission route is:
 
 1. **Checked:** discrete order, nonzero multiplication cancellation, and
    divisor bounds.
@@ -242,8 +246,8 @@ make the proof small. The admission route and its current status are:
 7. **Checked conditional β-coprimality gate:** prove the base-coprimality and
    common-divisor/gap lemmas, discharge binary β-pair CRT when the gap divides
    `c`, and construct nonzero bounded common multiples.
-8. **Next arithmetic gate:** construct a greatest prime divisor with a strict
-   quotient descent suitable for appending to an already sorted
+8. **Checked greatest-prime gate:** construct a greatest prime divisor with a
+   strict quotient descent suitable for appending to an already sorted
    factorization.
 9. **Checked bounded-prefix/fold-algebra gate:** orient and bound all index
    gaps, package pairwise coprimality for the chosen prefix, close coprimality
@@ -254,24 +258,31 @@ make the proof small. The admission route and its current status are:
    induction, and project a common congruence witness for positions already
    decoded from a supplied `BetaAt` code. This is not arbitrary
    finite-sequence coding.
-11. **Product gate:** prove genuine prefix-product recurrence and bounds,
-   trace extension/functionality, β finite-prefix recoding, and preservation
-   of `AllPrime`/`Sorted`.
-12. **Existence gate:** perform the strengthened natural-number descent using
-   the greatest prime divisor and the encoded prefix/product extension laws.
-13. **Uniqueness gate:** prove finite-product Euclid, prime matching,
-   cancellation, and extensional equality of the two sorted decoded prefixes.
+11. **Checked recoding/product gate:** prove exclusive-prefix recoding,
+   `beta_prefix_extend`, exact prefix-product trace existence,
+   `beta_product_exists`, functionality, unique existence, zero/successor
+   decomposition, append, and prefix transport.
+12. **Checked canonical append gate:** preserve `AllPrime`, `Sorted`, and the
+   exact Product relation while appending the greatest prime divisor.
+13. **Checked existence gate:** perform strengthened natural-number descent
+   using greatest-prime-divisor descent and canonical append. The final
+   existence certificate has 43,973 nodes and depth 98.
+14. **Checked uniqueness gate:** prove product membership for a prime divisor,
+   match sorted last factors, cancel them, and induct on length. The final
+   uniqueness certificate has 29,789 nodes and depth 82.
+15. **Checked FTA gate:** combine the exact catalog endpoints in a closed
+   73,767-node, depth-99 certificate containing 2,184 self-contained Cuts.
 
 The reviewed self-contained `Cut` rule now supplies lexical proof sharing while
-keeping every dependency proof inside the checked certificate. This removes
-the former fully expanded proof-tree bottleneck, but it does not establish that
-the much larger β/CRT/product spine will fit the live 32,768-node/depth-128
-import budget. The current runtime maximum is 25,545 nodes and 755 Cuts at
-`bounded_beta_crt_for_existing_code`, while
-`prime_divisor_exists` reaches depth 80; those observations are evidence for
-the arithmetic layer only, not a resource proof for encoded FTA. The
-proof-sharing trust review is recorded separately and must not be disguised as
-part of this notation.
+keeping every dependency proof inside the checked certificate. The exact FTA
+certificate fits the current live/use budget of 100,000 nodes and depth 256:
+73,767 nodes, depth 99, and 2,184 Cuts. Its SHA-256 is
+`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+The full prove/use/exact/QED path and independent empty-context replay pass;
+dependency, hypothesis, PA-rule, and semantic mutations are rejected. The
+proof uses PA1–PA6 and induction only and contains no DNE. The proof-sharing
+trust review is recorded separately and must not be disguised as part of the
+β notation.
 
 ## Independently checked companion
 
@@ -282,6 +293,9 @@ natural and uniqueness up to list permutation. Mathlib is pinned at commit
 `sorryAx` and requires the exact declared standard-axiom footprint
 `propext`, `Classical.choice`, and `Quot.sound`.
 
-That artifact establishes the target mathematics and statement shape. It is
-not imported as a Peano axiom, and the Peano catalog remains explicit about
-which sequence and arithmetic lemmas still lack closed PA certificates.
+That artifact establishes the conventional list statement independently. It
+is not imported as a Peano axiom. The native theorem is instead the checked
+β-coded, sorted, extensional endpoint above. Peano Lab still has no primitive
+list or multiset type, and code equality is intentionally not the uniqueness
+criterion. Prime unboundedness is checked independently of FTA by the
+bounded-common-multiple/successor-prime-divisor argument.

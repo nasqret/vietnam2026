@@ -1321,9 +1321,9 @@ $c$ divisible by every positive natural at most $B$.
 The complete snapshot has 120,976 structural nodes, 3,331 self-contained
 Cuts, and 136 Cut-bearing certificates. The largest certificate is
 `binary_crt_beta_pair_of_gap_dvd` at 12,980 nodes, 378 Cuts, and depth 71;
-the overall depth maximum remains 80. What is not proved is equally explicit:
+the overall depth maximum remains 80. At that checkpoint the open boundary was:
 index-bound finite-prefix glue, product-modulus CRT iteration, prefix-product
-traces, factorization existence and uniqueness, and native FTA remain open.
+traces, factorization existence and uniqueness, and native FTA were open.
 
 The synchronized local browser candidate keeps build `2026-07-29e` and now
 has application identity `a-72e034c621a7`; it has not been deployed. The
@@ -1366,7 +1366,7 @@ preservation invariant: every congruence already held modulo a divisor of the
 old product is retained, while the requested congruence at the new modulus is
 added.
 
-This is fold algebra, not the bounded fold itself. The library still lacks an
+This was fold algebra, not yet the bounded fold itself. At that checkpoint the library lacked an
 encoded accumulated-product trace and the induction that carries its
 nonzero, divisor-membership, and coprimality invariants through a finite
 prefix. Beta finite-prefix recoding, prefix-product traces, factorization
@@ -1447,3 +1447,65 @@ the isolated smoke records 378 sessions, 5,373 raw transitions, 5,370 unique
 transitions, and all 189 authored QEDs. The full Peano suite passes 1,098
 tests in 181.34 seconds, and Lambda remains green at 360 tests plus 36
 subtests.
+
+## 2026-07-29 — The native beta-coded FTA closes
+
+The local candidate now contains 246 unique checked theorems. The final
+finite-factorization tranche constructs independent β-coded prefixes, exact
+prefix-product traces, prime and adjacent-sorted invariants, canonical append,
+and greatest-prime-divisor descent. These feed factorization existence and
+extensional uniqueness; no primitive list, division, remainder, gcd, or
+factorization symbol was added.
+
+The exact endpoints are:
+
+| Theorem | Nodes/depth | Cuts |
+|---|---:|---:|
+| `prime_factorization_existence` | 43,973 / 98 | 1,328 |
+| `prime_factorization_uniqueness` | 29,789 / 82 | 854 |
+| `fundamental_theorem_of_arithmetic` | 73,767 / 99 | 2,184 |
+
+The FTA certificate SHA-256 is
+`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+It checks from the empty context and through the interactive
+`use`/`exact`/`qed` route, uses PA1–PA6 and induction only, and contains no
+DNE. Dependency, PA-leaf, hypothesis, and semantic mutations all fail closed.
+Because β coding is not canonical, uniqueness compares equal lengths and
+decoded entries rather than raw code numbers.
+
+The untrusted import preflight now shares the existing live-proof resource
+gate of 100,000 nodes and depth 256. Exact 100,000/256 boundary certificates
+pass; 100,001/257 certificates fail transactionally. The synchronized
+248-entry catalog has 246 checked entries, one planned `prime_unbounded`
+endpoint, and one representation-blocked conventional integer-coefficient
+Bézout interface. Balanced four-natural Bézout remains checked.
+
+## 2026-07-29 — A prime above every bound
+
+The final planned arithmetic endpoint is now checked. Given `n`,
+`prime_unbounded` first constructs a nonzero common multiple `c` of every
+positive natural at most `n`, then takes a prime divisor `p` of `S c`. If
+`p <= n`, the common-multiple invariant gives `p | c`; since `p | S c` too,
+the consecutive-number remainder lemma gives `p | 1`, forcing `p = 1` and
+contradicting primality. Thus `n < p`.
+
+The certificate has 4,595 nodes, depth 82, and 146 self-contained Cuts. Its
+SHA-256 is
+`8a44fb2d207c2a41684de6d6630674f3f3b951cd036f733b3dd493321099d37b`.
+It uses PA1–PA6 only, contains no DNE, and passes exact statement replay,
+dependency-slot, PA-leaf, authored-hypothesis, and live-use audits.
+
+The runtime is now 247 theorems: 23 baseline, 212 general foundational, and
+twelve modular capstones. The 248-entry catalog records 23
+`checked_existing`, 224 `checked_m20`, no planned entry, and one
+representation-blocked conventional integer-coefficient Bézout interface.
+The regenerated snapshot has 982,534 nodes, 28,892 Cuts, 204 Cut-bearing
+certificates, root
+`eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`,
+and source digest
+`295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
+The vault has 327 notes and 3,287 links. The corpus fingerprint is
+`5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`;
+its smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and all 247
+QEDs. Browser build `2026-07-29j`, application `a-c983d7c60450`, is local and
+undeployed.

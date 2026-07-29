@@ -57,7 +57,7 @@ the next registered iteration is a library-snapshot-bound `model-v2`, not a 4B s
 curriculum. The owner authorized the compatibility-validated 26-record modular extension for the
 public catalog. After reconciliation with M20, fourteen records overlap exactly and twelve are
 new, giving 63 unique checked runtime theorems without changing the kernel.
-Subsequent native arithmetic passes extend that same runtime to 189 checked
+Subsequent native arithmetic passes extend that same runtime to 247 checked
 theorems, including discrete order, multiplication cancellation and
 monotonicity, constructive quotient-remainder existence, and full
 quotient-remainder uniqueness, mutual-divisibility antisymmetry, relational
@@ -77,10 +77,18 @@ applies it to the β-pair constructor, and builds nonzero common multiples for
 every positive gap through a bound. The latest passes close bounded-prefix
 pairwise coprimality, add coprime-product closure and modulus descent, and fold
 an accumulated-product/decoded-congruence invariant through every bounded
-prefix by ordinary induction. The resulting wrapper starts from an already
-existing `BetaAt` code; it does not code an arbitrary finite sequence.
-Unconditional pairwise β-modulus coprimality remains false; genuine
-prefix-product recurrence and bounds remain the next representation gate.
+prefix by ordinary induction. Later checked layers supply genuine β
+finite-prefix recoding, exact prefix-product traces, prime and sortedness
+predicates, greatest-prime-divisor descent, and canonical factorization
+existence and extensional uniqueness. Their native FTA conjunction checks at
+73,767 nodes/depth 99 with 2,184 self-contained Cuts. Unconditional pairwise
+β-modulus coprimality remains false; it is handled by the bounded-base
+construction rather than assumed.
+The same constructive spine now proves `prime_unbounded`: take a prime divisor
+of the successor of a nonzero common multiple through `n`; if that prime were
+at most `n`, it would divide both consecutive numbers and hence one. Its exact
+certificate checks at 4,595 nodes/depth 82 with 146 Cuts, uses PA1–PA6 only,
+and contains no DNE.
 The
 runtime now also has audited self-contained dependency sharing: a Cut embeds
 the full lemma and body proofs and is checked without external theorem names or
@@ -95,26 +103,23 @@ milestone; production remains untouched behind the M14 cache-header blocker.
 ## Parallel foundational arithmetic milestone
 
 M20 generalizes the theorem ladder into a structured arithmetic corpus. Its
-checked layers now add 154 reusable equality, cancellation, order,
-multiplication, divisibility, residue, division, and small-prime lemmas, including the
-first checked fully expanded prime instance `prime_two`. The catalog maps the
-exact route to division, gcd, the general prime spine, and factorization. A
-sorted Gödel-β sequence/product encoding is now selected, and a pinned Lean
-companion checks full list-based FTA existence and uniqueness up to
-permutation. The reconciled runtime also includes twelve unique upstream
-mod-five capstones for 189 checked Peano theorems in total. Division,
-relational gcd existence and uniqueness, balanced-natural Bézout, Gauss,
-Euclid's lemma, constructive prime search and prime-divisor existence,
-full balanced-congruence addition/multiplication compatibility, bounded
-representative uniqueness, both remainder/congruence directions, equivalent
-bound-plus-congruence β decoding, expanded β-value totality/functionality, and
-self-contained proof sharing are now native. Constructive binary CRT,
-bounded-residue CRT equations, conditional β-modulus coprimality, its
-two-position β-code client, and bounded nonzero common multiples are checked
-as well. Bounded-prefix pairwise coprimality, product-coprimality closure,
-modulus descent, and the bounded CRT prefix invariant for residues decoded
-from an existing code are now native. This is not arbitrary finite-sequence
-coding. Peano admission of FTA still awaits genuine prefix-product recurrence
-and bounds, β finite-prefix recoding, greatest-prime descent, and the
-encoded-product spine. See
+247 checked runtime entries comprise the original 23-theorem base, 212
+post-baseline foundational theorems, and twelve unique upstream mod-five
+capstones. The constructive dependency graph now runs from equality, order,
+cancellation, division and relational gcd through balanced-natural Bézout,
+Gauss cancellation, primality decision, prime-divisor existence and Euclid's
+lemma. Its conservative finite-sequence layer uses expanded Gödel-β relations
+and prefix-product traces—without adding lists or arithmetic functions to the
+object language—and proves CRT recoding, canonical sorted factorization
+existence, extensional uniqueness, and the native Fundamental Theorem of
+Arithmetic. The exact FTA certificate checks from the empty context at 73,767
+nodes, depth 99 and 2,184 self-contained Cuts, with no DNE. The synchronized
+248-entry catalog has 23 `checked_existing`, 224 `checked_m20`, no remaining
+planned theorem, and one representation-blocked
+conventional integer-coefficient Bézout interface. A pinned Lean companion
+independently checks conventional list-based FTA up to permutation. Remaining
+M20's native arithmetic and synchronized release artifacts are complete;
+direct attached-browser UI inspection remains explicitly unclaimed, and
+model-v2 curriculum expansion is a separate milestone—not mathematical
+admission of FTA or prime unboundedness. See
 [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md).

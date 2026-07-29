@@ -22,6 +22,7 @@ forall a b n. (forall d. (exists x. a = d * x) -> (exists y. n = d * y) -> d = 1
 
 - [[coprime_mul_right]]
 - [[beta_accumulated_product_step]]
+- [[beta_exclusive_accumulated_product_step]]
 
 ## Verification record
 

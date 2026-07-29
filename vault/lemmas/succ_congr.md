@@ -19,7 +19,7 @@ forall a b. a = b -> S a = S b
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[prime_factorization_uniqueness_by_length]]
 
 ## Verification record
 

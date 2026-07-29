@@ -20,7 +20,7 @@ forall a b c. ~(c = 0) -> a * c = b * c -> a = b
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[beta_canonical_product_cancel_last]]
 
 ## Verification record
 

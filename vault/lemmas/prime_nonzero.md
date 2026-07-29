@@ -21,6 +21,10 @@ forall p. (~(p = 1) /\ forall a b. p = a * b -> a = 1 \/ b = 1) -> ~(p = 0)
 ## Checked dependents
 
 - [[prime_decidable]]
+- [[prime_unbounded]]
+- [[greatest_prime_divisor_search]]
+- [[beta_canonical_product_cancel_last]]
+- [[two_prime_product_uniqueness]]
 
 ## Verification record
 

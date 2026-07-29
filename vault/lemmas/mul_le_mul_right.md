@@ -19,7 +19,7 @@ forall a b c. (exists k. k + a = b) -> exists r. r + a * c = b * c
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[le_scaled_nonzero]]
 
 ## Verification record
 

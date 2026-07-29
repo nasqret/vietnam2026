@@ -250,20 +250,16 @@ $$
 \end{array}
 $$
 
-All 154 entries in the current post-baseline general foundational layer replay to
-closed kernel-accepted certificates and fit the live `use` limits of 32,768
-nodes and depth 128. The current 189-entry local candidate reaches its node
-maximum at `bounded_beta_crt_for_existing_code`, with 25,545 nodes, depth 79, and 755 Cuts,
-while `prime_divisor_exists` reaches the snapshot-wide maximum depth of 80.
-Across the snapshot there are 242,629 structural nodes and 6,895
-self-contained Cuts; 149 certificates contain a Cut. The modular capstone
-itself remains 2,675 nodes and depth 38. These
-numbers are build artifacts,
-not new soundness assumptions; the immutable upstream report retains the older
-fully expanded capstone metric of 21,515 nodes/depth 66. The broader research
-catalog has 196 nodes: the 189 checked entries, three planned expressible targets,
-and four language-interface targets covering conventional signed Bézout and the
-three finite-factorization endpoints.
+All 212 entries in the current post-baseline general foundational layer replay
+to closed kernel-accepted certificates and fit the live `use` limits of
+100,000 nodes and depth 256. Together with the 23-entry base and twelve unique
+modular capstones, the runtime has 247 checked theorems. The native
+`fundamental_theorem_of_arithmetic` certificate has 73,767 nodes, depth 99,
+and 2,184 self-contained Cuts. These are build metrics, not new soundness
+assumptions; the exact certificate checks from the empty context using PA1–PA6
+and induction, with no DNE. The broader research catalog has 248 nodes: 247
+checked entries, no planned endpoint, and one representation-blocked
+conventional integer-coefficient Bézout interface.
 
 ## The division algorithm is now native
 

@@ -23,6 +23,7 @@ forall n m. n * m = 0 -> n = 0 \/ m = 0
 - [[mul_left_cancel_nonzero]]
 - [[two_large_factors_impossible]]
 - [[bounded_common_multiple_step]]
+- [[prime_three]]
 
 ## Verification record
 

@@ -9,8 +9,11 @@ gcd existence. It now also exposes simultaneous relational-gcd/balanced-Bézout
 existence, result-one witnesses for coprime inputs, Gauss cancellation, and
 Euclid's lemma. A separate constructive search spine now decides equality,
 divisibility, bounded factor pairs, and primality, and constructs a prime
-divisor of every nonzero nonunit natural. Greatest-prime descent and the
-encoded finite-product layer remain separate milestones.
+divisor of every nonzero nonunit natural. The subsequent factorization tranche
+now checks greatest-prime-divisor descent, β-coded finite products, canonical
+factorization existence and uniqueness, and the exact combined native FTA.
+Prime unboundedness is also checked as a separate constructive client of
+bounded common multiples and prime-divisor existence.
 
 All relations below are authoring notation only. In particular,
 
@@ -128,8 +131,9 @@ the composition mechanism alone could not supply.
 
 ## Balanced-natural Bézout
 
-Conventional signed coefficients are not terms in the current language. The
-constructive native relation uses four naturals:
+Conventional integer coefficients are not terms in the current natural-only
+language. That representation remains unavailable; the checked constructive
+native relation uses four naturals:
 
 ```text
 BalancedBezout(d,a,b) :=
@@ -366,11 +370,36 @@ The bounded existing-code prefix tranche continues with:
     invariants together, fold them through a bounded prefix by ordinary
     induction, and expose the result for values already decoded from a
     supplied `BetaAt` code. This does not code an arbitrary finite sequence.
-14. Prove genuine prefix-product recurrence and bounds, then β finite-prefix
-    recoding and the product gate; develop greatest-prime-divisor descent for
-    the later sorted-factorization construction.
+14. **Complete:** prove β finite-prefix recoding and exact extension, genuine
+    prefix-product traces, Product existence/functionality, and the finite
+    product API.
+15. **Complete:** develop greatest-prime-divisor search and strict quotient
+    descent, canonical append, and sorted factorization existence.
+16. **Complete:** derive product membership from Euclid's lemma, match and
+    cancel sorted last factors, and prove extensional uniqueness by length.
+17. **Complete at the integration checkpoint:** check the exact combined
+    native FTA certificate at 73,767 nodes, depth 99, and 2,184 Cuts under the
+    100,000-node/depth-256 live/use cap. Its SHA-256 is
+    `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
 
 Prime-divisor existence does not follow automatically from gcd or Bézout, and
-Euclid's lemma does not construct a prime divisor; both sides are now checked
-independently. The existing-code prefix wrapper does not supply arbitrary
-finite sequences or genuine prefix products for FTA.
+Euclid's lemma does not construct a prime divisor; both sides were checked
+independently. Likewise, the earlier existing-code prefix wrapper did not
+supply arbitrary finite sequences. The later exclusive recoding and
+prefix-product trace certificates close that separate representation gap.
+The final existence, uniqueness, and FTA certificates use only PA1–PA6 and
+induction and contain no DNE. Their native endpoint still has no primitive
+list type and compares decoded values rather than raw β codes.
+
+## Factorization checkpoint
+
+| Checked endpoint | Nodes | Depth | Cuts |
+|---|---:|---:|---:|
+| `prime_factorization_existence` | 43,973 | 98 | 1,328 |
+| `prime_factorization_uniqueness` | 29,789 | 82 | 854 |
+| `fundamental_theorem_of_arithmetic` | 73,767 | 99 | 2,184 |
+
+Runtime integration of this audited tranche is complete.
+The conventional integer-coefficient Bézout interface and a primitive
+finite-list interface remain language-design questions; neither is hidden in
+the checked balanced Bézout or Gödel-β formulas.

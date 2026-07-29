@@ -23,6 +23,8 @@ forall n m. S n * m = n * m + m
 - [[mul_comm]]
 - [[two_large_factors_impossible]]
 - [[mod_eq_predecessor_cancel]]
+- [[base_le_beta_modulus]]
+- [[prime_three]]
 - [[mod5_square_residue_one]]
 - [[mod5_square_residue_two]]
 

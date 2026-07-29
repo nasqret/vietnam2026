@@ -22,6 +22,8 @@ forall P n x b. ~(P = 0) -> ~(n = 0) -> (forall d. (exists u. P = d * u) -> (exi
 ## Checked dependents
 
 - [[beta_crt_prefix_congruence_step]]
+- [[beta_exclusive_recode_congruence_step]]
+- [[beta_prefix_extend]]
 
 ## Verification record
 

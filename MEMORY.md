@@ -403,3 +403,52 @@
   prefix-product recurrence and bounds, arbitrary finite-prefix coding,
   greatest-prime descent, and the remaining finite-product spine.
   Production is untouched.
+- **Current M20 native FTA and unbounded-primes checkpoint (2026-07-29):** the runtime now contains
+  247 unique closed theorems: 23 baseline, 212 general foundational entries,
+  and twelve unique modular capstones. The synchronized 248-entry catalog has
+  23 `checked_existing`, 224 `checked_m20`, no `planned_expressible`
+  entry, and one `blocked_by_language` entry (the conventional
+  integer-coefficient Bézout interface; balanced four-natural Bézout is
+  checked). The conservative Gödel-β spine now includes finite-prefix
+  recoding, exact prefix-product traces, `AllPrime`, adjacent sortedness,
+  canonical append, greatest-prime-divisor descent, factorization existence,
+  and extensional uniqueness. `prime_factorization_existence` checks at
+  43,973 nodes/depth 98/1,328 Cuts;
+  `prime_factorization_uniqueness` at 29,789/82/854; and
+  `fundamental_theorem_of_arithmetic` at 73,767/99/2,184. The exact FTA
+  certificate SHA-256 is
+  `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+  It checks from the empty context and through live `use`/`exact`/`qed`, uses
+  only PA1–PA6 plus induction, and contains no DNE. All dependency-slot,
+  authored-hypothesis, and PA-leaf mutations fail closed. The PA term/formula
+  language remains unchanged, with no primitive lists or raw β-code equality.
+  The untrusted import and live-proof gates are aligned at 100,000 nodes and
+  depth 256; exact boundary and transactional-failure tests cover them.
+- **Constructive prime unboundedness:** `prime_unbounded` constructs a nonzero
+  common multiple through an arbitrary bound `n`, chooses a prime divisor of
+  its successor, and proves that divisor is above `n`. If it were at most
+  `n`, it would divide both the common multiple and its successor, hence one,
+  contradicting primality. Its exact certificate has 4,595 nodes, depth 82,
+  146 self-contained Cuts, and SHA-256
+  `8a44fb2d207c2a41684de6d6630674f3f3b951cd036f733b3dd493321099d37b`.
+  It uses PA1–PA6 only, contains no DNE, and passes exact-statement,
+  dependency-slot, PA-leaf, authored-hypothesis, and live-use audits.
+- **Current M20 generated identities:** the 247-theorem snapshot contains
+  982,534 structural nodes and 28,892 Cuts across 204 Cut-bearing
+  certificates. Its ordered root is
+  `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`
+  and source digest is
+  `295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
+  The Obsidian graph has 327 notes and 3,287 resolved links, including 247
+  lemma notes. The deterministic 1,692-session/13,344-transition corpus has
+  fingerprint
+  `5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`;
+  its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions,
+  and all 247 authored QEDs. Local browser build `2026-07-29j` packages
+  manifest identity `a-c983d7c60450`; it is not staged or deployed. The strict
+  book rebuild passes 36 sources with no warnings; 234 deep links and 45
+  executable blocks containing 264 commands verify. The complete Peano suite
+  passes 1,101 tests on Python 3.10 in 1,050.08 seconds with no reported
+  warnings. An in-app browser was unavailable, so direct Pyodide UI smoke is
+  not claimed; automated runtime/worker tests and the deployment-manifest
+  check remain green.

@@ -15,11 +15,11 @@ divisibility witnesses before the greatest-common-divisor clause.
 
 ## What is checked now
 
-The 189-theorem runtime contains 23 baseline entries and 166 checked
-post-baseline entries. One hundred and fifty-four of the latter form the general
-foundational layer; the other twelve are the fixed modular capstone. The
-broader catalog has 196 nodes: those 189 checked entries, three planned
-entries, and four blocked-by-language entries.
+The 247-theorem runtime contains 23 baseline entries and 224 checked
+post-baseline entries. Two hundred and twelve of the latter form the general
+foundational layer; the other twelve are the fixed modular capstones. The
+broader catalog has 248 nodes: those 247 checked entries and one
+representation-blocked entry; it has no planned entry.
 
 The checked gcd layer includes the relational API through uniqueness and
 existence:

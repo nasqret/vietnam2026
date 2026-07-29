@@ -130,13 +130,22 @@ Tactic = Callable[[ProofState, str], ProofState]
 
 _RESERVED_TERM_NAMES = {"S", "forall", "exists", "bot", "false"}
 
+# Every ordinary tactic shares a conservative live-certificate boundary.
+# Specialized automation may enforce still smaller limits, but no generic
+# sequence may build a tree deep enough to exhaust the recursive finalizer or
+# kernel before QED can return an honest result.
+MAX_LIVE_PROOF_NODES = 100_000
+MAX_LIVE_PROOF_DEPTH = 256
+
 # ``use`` embeds a checked theorem certificate in a self-contained Cut node.
 # Honest bounds keep repeated aliases from turning the live tree into a
 # host-recursion or browser-memory failure. The ceiling is explicit headroom,
-# not additional proof authority.
-MAX_USE_CERTIFICATE_NODES = 32_768
-MAX_USE_PARTIAL_NODES = 32_768
-MAX_USE_PROOF_DEPTH = 128
+# not additional proof authority. Keep this iterative preflight aligned with
+# the global live boundary so a composable proof is not rejected by an older,
+# overlapping policy before the transactional ``_commit`` guard runs.
+MAX_USE_CERTIFICATE_NODES = MAX_LIVE_PROOF_NODES
+MAX_USE_PARTIAL_NODES = MAX_LIVE_PROOF_NODES
+MAX_USE_PROOF_DEPTH = MAX_LIVE_PROOF_DEPTH
 
 # ``norm_num`` can install a checked transport around one new residual hole.
 # Bound the whole live certificate on both sides of that operation so a small
@@ -144,13 +153,6 @@ MAX_USE_PROOF_DEPTH = 128
 MAX_NORM_NUM_PARTIAL_NODES = 100_000
 MAX_NORM_NUM_PARTIAL_DEPTH = 256
 MAX_NORM_NUM_FORALLS = 64
-
-# Every ordinary tactic shares a conservative live-certificate boundary.
-# Specialized automation may enforce still smaller limits, but no generic
-# sequence may build a tree deep enough to exhaust the recursive finalizer or
-# kernel before QED can return an honest result.
-MAX_LIVE_PROOF_NODES = 100_000
-MAX_LIVE_PROOF_DEPTH = 256
 
 
 def enforce_live_proof_bounds(proof: Proof) -> tuple[int, int]:

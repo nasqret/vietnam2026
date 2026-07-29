@@ -8,10 +8,10 @@ The **foundational arithmetic library** is a versioned dependency graph for
 [[arithmetic-congruence]], [[quotient-and-remainder]], gcd, primes, and
 factorization.
 
-Its current snapshot has 189 closed, independently checked theorems: the
+Its previous published snapshot has 189 closed, independently checked theorems: the
 original 23-node [[theorem-ladder]] and 166 unique post-baseline additions.
 The latter combine 154 general arithmetic facts with twelve additional modular
-capstones. The 196-node research catalog separates 23 `checked_existing`,
+capstones. That checkpoint's 196-node research catalog separates 23 `checked_existing`,
 166 `checked_m20`, three
 `planned_expressible`, and four `blocked_by_language` nodes, but only replayed
 certificates appear in `pa lib`. The M20 additions now include [[prime_two]],
@@ -82,14 +82,14 @@ and folds them by ordinary induction as
 [[bounded_beta_crt_for_existing_code]] only projects values already decoded
 from a supplied `BetaAt` code; it is not arbitrary finite-sequence coding.
 
-The generated snapshot contains 242,629 structural proof nodes and 6,895
+That generated snapshot contains 242,629 structural proof nodes and 6,895
 self-contained Cuts; 149 of the 189 certificates contain a Cut. Its maximum
 certificate is [[bounded_beta_crt_for_existing_code]] at 25,545 nodes and 755 Cuts, and its
 maximum depth is 80 at [[prime_divisor_exists]]. The ordered snapshot root is
 `9650ae53f506c282daf84fca5e9c08d0d48bb36db813b4efc43f54156d25bf6b`.
 These are representation metrics, not proof authority.
 
-The checkpoint passed all 1,098 Peano tests on CPython 3.10 in 181.34 seconds. The independent Lambda Lab
+That checkpoint passed all 1,098 Peano tests on CPython 3.10 in 181.34 seconds. The independent Lambda Lab
 regression remains green at 360 tests plus 36 subtests; the arithmetic changes
 do not alter that calculus or its kernel.
 
@@ -100,11 +100,36 @@ how external material may be reused. Replay discharges dependency edges with
 [[self-contained-proof-sharing]], embedding full checked certificates rather
 than granting names or hashes kernel authority.
 
-The [[fundamental-theorem-of-arithmetic]] is a destination, not a primitive.
-A conservative [[godel-beta-sequence]] representation is selected and a Lean
-companion checks the full list theorem, while Peano admission still requires
-genuine prefix-product recurrence and bounds, β finite-prefix recoding,
-greatest-prime descent, and finite-product certificates.
+The [[fundamental-theorem-of-arithmetic]] is now checked at the current
+integration checkpoint, but it is still not a primitive. The conservative
+[[godel-beta-sequence]] route now has checked finite-prefix recoding, exact
+Product traces, greatest-prime-divisor descent, canonical append,
+factorization existence, and extensional uniqueness.
+
+Existence checks at 43,973 nodes/depth 98, uniqueness at 29,789/depth 82, and
+their exact FTA conjunction at 73,767 nodes/depth 99 with 2,184 Cuts. The FTA
+certificate SHA-256 is
+`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+It passes the 100,000-node/depth-256 live/use cap with PA1–PA6 and induction
+only and no DNE. Runtime integration is complete.
+
+The current runtime has 247 checked theorems: 23 baseline, 212 general
+foundational, and twelve modular capstones. The synchronized 248-entry catalog
+has no planned endpoint and one representation-blocked endpoint. The snapshot
+has 982,534 nodes, 28,892 Cuts, 204 Cut-bearing certificates, ordered root
+`eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`,
+and source digest
+`295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
+The vault has 327 notes and 3,287 resolved links, including all 247 theorem
+notes.
+
+Peano Lab still has no primitive list type and does not equate raw β codes;
+canonical uniqueness compares lengths and decoded entries. The separate Lean
+companion checks the conventional list theorem without supplying Peano
+authority. [[constructive-prime-unboundedness|Prime unboundedness]] is checked
+independently. Conventional
+integer-coefficient Bézout remains unavailable, while balanced four-natural
+Bézout is checked.
 
 ## Related
 

@@ -17,14 +17,14 @@ The generated artifact binds each checked statement, script, dependency list,
 certificate hash, and certificate metrics. Hashes expose drift but are not
 proof authority.
 
-The current 189-theorem artifact has ordered root
-`9650ae53f506c282daf84fca5e9c08d0d48bb36db813b4efc43f54156d25bf6b`.
-Its binary-CRT, bounded-prefix β-coprimality, product-coprimality, and fold-step
-tranches, plus the existing-code bounded prefix invariant, are independently
-authored in the native tactic language; external CRT and Gödel-β sources
-provide mathematical orientation, not imported proof code. The final wrapper
-assumes a supplied `BetaAt` code and is not recorded as arbitrary
-finite-sequence coding.
+The current 247-theorem artifact has ordered root
+`eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`
+and theorem-source digest
+`295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
+Its CRT, β finite-prefix recoding, Product traces, greatest-prime descent,
+canonical factorization, and native FTA tranches are independently authored
+in the tactic language; external CRT and Gödel-β sources provide mathematical
+orientation, not imported proof code.
 
 ## Related
 

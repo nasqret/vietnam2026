@@ -26,6 +26,8 @@ forall n. n = 0 \/ exists k. n = S k
 - [[multiple_has_zero_remainder]]
 - [[multiple_antisymm]]
 - [[bounded_common_multiple_step]]
+- [[beta_canonical_append_general]]
+- [[prime_three]]
 
 ## Verification record
 

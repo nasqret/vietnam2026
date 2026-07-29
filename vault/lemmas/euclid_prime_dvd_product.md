@@ -22,7 +22,8 @@ forall p a b. (~(p = 1) /\ forall c d. p = c * d -> c = 1 \/ d = 1) -> (exists k
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[beta_prime_divisor_product_member]]
+- [[two_prime_product_uniqueness]]
 
 ## Verification record
 

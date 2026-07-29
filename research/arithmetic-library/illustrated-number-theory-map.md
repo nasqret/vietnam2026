@@ -3,7 +3,7 @@
 ## Purpose and scope
 
 This note maps Martin H. Weissman's computational number-theory notebooks to
-future Peano library layers and documentation artifacts. The notebooks are an
+current and future Peano library layers and documentation artifacts. The notebooks are an
 algorithm and example index, not a source of trusted proofs or MIT-licensed
 code.
 
@@ -71,6 +71,10 @@ Formalize the mathematical specifications before any executable algorithm:
 The Python loop structure is not to be translated. A Peano proof should arise
 from induction and the checked quotient/remainder lemmas.
 
+The subtraction-free four-natural balanced Bézout relation is checked. A
+conventional integer-coefficient interface remains unavailable because the
+native term language has no integer or subtraction terms.
+
 ### Primality and sieving
 
 Separate mathematical facts from algorithm claims:
@@ -95,17 +99,18 @@ trial-division implementations remain future milestones.
 ### Prime factorization and arithmetic functions
 
 The dictionary representation in Part 4 suggests a useful documentation API:
-finite maps from primes to exponents. It is not currently a Peano term. A
-future checked representation should support:
+finite maps from primes to exponents. It is not a Peano term. Native PA now
+instead checks sorted β-coded factorization existence and canonical
+extensional uniqueness. Future interfaces should support:
 
-- existence and uniqueness of prime factorization;
 - factor multiplicities and valuation laws;
 - reconstruction of a number from its finite support;
 - multiplicative functions determined on prime powers;
 - divisor-count and divisor-sum formulas.
 
-Until finite maps or multisets exist, keep these as planned interfaces rather
-than encoding a Python dictionary into theorem statements.
+Keep these dictionary-like and arithmetic-function APIs planned rather than
+encoding a Python dictionary into theorem statements. Their absence does not
+block the checked relational β-coded FTA.
 
 ### Modular powers and primality tests
 
@@ -149,28 +154,30 @@ Peano Lab can presently state first-order facts about natural numbers using
 connectives, quantifiers, and induction. It has no generic power, quotient,
 remainder, gcd, factorial, prime-factor list, finite set, or counting term.
 
-Therefore:
+Therefore, quotient/remainder, relational gcd, balanced Bézout, constructive
+primality and prime-divisor search, Euclid's lemma, greatest-prime-divisor
+descent, finite β recoding, exact Product traces, canonical existence,
+extensional uniqueness, and native FTA are checked at this integration
+checkpoint. The endpoint metrics are:
 
-- quotient/remainder existence, divisibility, relational gcd, constructive
-  primality decision, prime-divisor existence, and Euclid's lemma are now
-  checked native layers; balanced congruence is checked through full addition
-  and multiplication compatibility plus bounded representative uniqueness;
-  the directed remainder bridge works both ways, and expanded Gödel-β
-  decoding is equivalent to bound plus congruence;
-- greatest-prime descent and infinitude of primes remain expressible without
-  changing the object language;
-- algorithms may be specified relationally, but executable functions require
-  an explicit project architecture decision;
-- prime-decomposition dictionaries require a finite-map or multiset layer;
-- the selected β route now has checked binary CRT, bounded-prefix pairwise
-  coprimality, coprime-product closure, modulus descent, and an
-  ordinary-induction prefix invariant for residues decoded from an existing
-  `BetaAt` code. That wrapper does not code arbitrary finite sequences; genuine
-  prefix-product recurrence and bounds plus β finite-prefix recoding remain
-  before the encoding can replace that external data structure inside native
-  PA;
-- Fermat, Euler, Miller--Rabin, primitive-root, and RSA layers require generic
-  powers and additional finite algebra/counting infrastructure.
+| Endpoint | Nodes | Depth | Cuts |
+|---|---:|---:|---:|
+| factorization existence | 43,973 | 98 | 1,328 |
+| factorization uniqueness | 29,789 | 82 | 854 |
+| combined FTA | 73,767 | 99 | 2,184 |
+
+The FTA certificate SHA-256 is
+`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+It passes the 100,000-node/depth-256 live/use cap using PA1–PA6 and induction
+only, with no DNE. Runtime integration is complete.
+
+No primitive dictionary, list, or multiset was added, and uniqueness never
+identifies raw β codes. `prime_unbounded` is now checked constructively from
+the bounded-common-multiple and prime-divisor APIs. Algorithms may be
+specified relationally, but executable functions still require an explicit
+architecture decision. Fermat, Euler, Miller--Rabin, primitive-root, and RSA
+layers still require generic powers and additional finite algebra/counting
+infrastructure.
 
 ## Artifact policy
 

@@ -1,20 +1,23 @@
 # Peano Lab proof-trace release v1
 
 This directory is the deterministic learning-data release whose provenance follows the checked
-theorem catalog. Its semantic families remain the M13 set. The current 189-theorem source tree
-has its own fresh fingerprints rather than reusing either parent branch's hashes. The release contains
+theorem catalog. Its semantic families remain the M13 set, while the theorem ladder has grown
+into the final 247-theorem M20 source tree. It has its own fresh fingerprints rather than reusing
+either parent branch's hashes. The release contains
 **13,344** clean, deduplicated version-1 tactic transitions from **1,692** generated proof
 sessions:
 
 | Artifact | Role | Records | SHA-256 |
 |---|---|---:|---|
-| `train.jsonl` | learning split | 13,326 | `b0676685e6d824aafe63851bdca3d2e2caaa6e7a88da78283aef1a4d2d503422` |
-| `val.jsonl` | exact-theorem-group validation split | 18 | `59d318fe36ac0ffb2636a3f62c47f49278b147655376e6515301eab78174f4cf` |
-| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `2e6e9eff381312236c50b909c35d68eb973f20d5d89f6bca6f6025ebf90e1ea1` |
-| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `58660242a24295e56bdd9d748e6e86415359a76bce5c137729b722603f0279aa` |
+| `train.jsonl` | learning split | 13,326 | `44794fa75477cc3f8a4271f19a79f632e02f5fbca1f243173c2ceca9ab8762ca` |
+| `val.jsonl` | exact-theorem-group validation split | 18 | `ddf0b14e44f89afff34775f5002ae79c6867ec6438e5024430534430dd471f68` |
+| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `538a437ab23e9305bf3f822cf3433947929e415ef0df73241cc129462918d221` |
+| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `327f734431e4b5c74c2d59b8df438aeba20a5622dc3a37cc9311a8101967a0d8` |
 
 The deterministic run fingerprint is
-`a3c2f8c5c762b10fc9c1117723c74fecb50348cfb699f73bc76fb3714df3bf1b`.
+`5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`.
+The complete 32-file semantic source-tree fingerprint is
+`eee28177d1fce902330fabb721a22fef8b3cfa69963c8e12c92fd1d6ace10b5d`.
 
 The source stream contained 11,652 successful and 1,692 deliberately failing, transactional
 applications, for a labeled failure ratio of `0.12679856115107913`. Every one of the 1,692 sessions
@@ -56,7 +59,7 @@ That target first writes the replayable raw session stream to
 `/tmp/peano-lab-release-raw.jsonl`, then strictly validates, globally deduplicates, and exports it.
 The raw intermediate is not committed because it duplicates the split payload, but the manifest
 records its exact UTF-8 size (6,215,711 bytes) and SHA-256
-`5cc489b72f4f9d699c0e73099629fb198ef3b5e16ce54632e548b12169e5f78a`.
+`fc696f3d94136a8c414c54d411e4f8a6c94f7e0ac78785cddb7798005525749d`.
 It also fingerprints `scripts/generate_peano_traces.py`, the trusted checker, and the complete
 Peano Lab Python source tree. Because the Python runtime participates in the run fingerprint and
 session IDs, changing that runtime changes the raw byte hash even when every session-agnostic
@@ -69,8 +72,19 @@ every entry in the resolved ladder without contaminating the release, run:
 make peano-corpus-smoke
 ```
 
-The current 189-entry smoke has 378 sessions, 5,373 raw transitions, 5,370
-unique transitions, and all 189 authored-script kernel QEDs.
+The current 247-entry smoke has 494 sessions, 9,235 raw transitions, 9,232
+unique transitions, and all 247 authored-script kernel QEDs. Its deterministic run fingerprint
+is `72657457dfa567d0748d5275a227e5316271bd19350012a44e6e4802851e59ef`;
+the 97,730,404-byte raw stream hashes to
+`95c6681c6bee84f080905acccbc4fb9774fdfb60347630f74265ef470ab418dc`.
+After removing three semantic duplicates, the temporary acceptance export contains 8,154 train
+rows in 444 sessions (`a351be8db2965454353f38de888f60b6f3435ad9862bd1aef81a0921b6e27fc3`)
+and 1,078 validation rows in 50 sessions
+(`aa710a97576e532db251f4682b1909ab84d34c4e25c26759be720289656ae010`).
+The temporary generation manifest and export statistics hash to
+`e5f1e1514f4b1f2505069f176a7a24474fcbce47a53811f4fd0009c403c5d813` and
+`f095277577cd8392a2e610057046bf3ea3de6c63dfab54a8608c78bd1211ce79`,
+respectively.
 
 Those acceptance artifacts stay under `/tmp`. The data pipeline, corpus, and this README are
 released under the repository's MIT License.

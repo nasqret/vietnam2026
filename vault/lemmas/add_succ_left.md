@@ -30,6 +30,7 @@ forall n m. S n + m = S (n + m)
 - [[lt_not_eq_add_middle]]
 - [[division_remainder_succ]]
 - [[common_divisor_beta_moduli_divides_gap_times_c]]
+- [[prime_unbounded]]
 
 ## Verification record
 

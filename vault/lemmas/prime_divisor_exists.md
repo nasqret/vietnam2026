@@ -20,7 +20,8 @@ forall n. ~(n = 0) -> ~(n = 1) -> exists p. ((~(p = 1) /\ forall a b. p = a * b 
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[prime_unbounded]]
+- [[greatest_prime_divisor_exists]]
 
 ## Verification record
 

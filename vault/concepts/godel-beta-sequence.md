@@ -73,17 +73,29 @@ congruences. [[beta_accumulated_product_step]] and
 [[bounded_beta_crt_prefix_invariant]] performs the bounded iteration by
 ordinary induction. [[bounded_beta_crt_for_existing_code]] then projects a
 common witness for residues already decoded from a supplied `BetaAt` code.
-Extensionally the supplied code is itself such a witness, so this is not a
-theorem coding an arbitrary finite sequence or a β code for a product trace.
+Extensionally the supplied code is itself such a witness, so this theorem by
+itself is not arbitrary finite-sequence coding or a product trace.
 
-The next encoding gate is genuine prefix-product recurrence and bounds, β
-finite-prefix recoding, and prefix-product trace
-existence/functionality/composition. Greatest-prime-divisor descent remains
-needed for the sorted factor order, together with
-preservation of bounded primality and sorting, and finite-product
-Euclid/cancellation. None of those relations is a trusted primitive, and the
-checked existing-code bounded wrapper does not by itself constitute
-[[fundamental-theorem-of-arithmetic|FTA]].
+The later checked tranche closes precisely that gap. An exclusive-prefix
+cross-base invariant supports finite recoding and one-value append; an exact
+second β code records prefix products; Product existence and functionality,
+zero/successor decomposition, append, and prefix transport form the finite
+product API. Greatest-prime-divisor descent and canonical append preserve
+`AllPrime` and `Sorted`. Existence then follows by strengthened descent, and
+uniqueness follows by sorted last-factor matching and cancellation.
+
+At this integration checkpoint, factorization existence checks at 43,973
+nodes/depth 98, uniqueness at 29,789/depth 82, and the combined
+[[fundamental-theorem-of-arithmetic|FTA]] at 73,767 nodes/depth 99 with 2,184
+self-contained Cuts. The exact FTA certificate SHA-256 is
+`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+It passes the 100,000-node/depth-256 live/use gate using only PA1–PA6 and
+induction and no DNE. Runtime integration is complete.
+
+None of these relations is a trusted primitive. Peano Lab still has no list
+type, and uniqueness compares decoded bounded entries rather than raw β-code
+identity. [[constructive-prime-unboundedness|Prime unboundedness]] is checked
+independently of this encoding.
 
 ## Related
 

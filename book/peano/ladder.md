@@ -6,8 +6,8 @@ replays all current entries, discharges dependency assumptions through embedded 
 Cuts, and asks the independent kernel to check the resulting closed certificate against the
 original statement.
 
-The current local candidate runtime contains 189 unique checked entries: the
-original 23-entry base, 154 post-baseline foundational entries, and twelve
+The current local candidate runtime contains 247 unique checked entries: the
+original 23-entry base, 212 post-baseline foundational entries, and twelve
 further unique records from the upstream modular catalog. The upstream
 26-record catalog ends at the fourth-power modulo-five capstone. Its first
 reconciliation with the 51-entry M20 branch exposed fourteen coincident
@@ -48,13 +48,16 @@ decoded-congruence successor steps, their combined prefix step, and the
 ordinary-induction theorem carrying the full bounded prefix invariant. Its
 full-bound projection concerns residues already decoded from the supplied
 code $b$; it is extensionally satisfied by $z=b$ and does not perform
-finite-sequence recoding. Across the snapshot, 242,629 structural nodes
+finite-sequence recoding. At that intermediate 189-entry checkpoint, 242,629 structural nodes
 include 6,895 self-contained Cuts; 149 certificates contain a Cut.
 `bounded_beta_crt_for_existing_code` is the largest certificate at 25,545
 nodes and sets the per-certificate Cut maximum at 755, while
 `prime_divisor_exists` retains the depth maximum at 80.
-Independent finite-prefix specification and recoding, exact beta-coded
-prefix-product traces, and factorization remain open.
+The later checked spine supplies independent finite-prefix recoding, exact
+β-coded prefix-product traces, primality and adjacent-sorted interfaces,
+greatest-prime-divisor descent, and canonical factorization. Its native
+`fundamental_theorem_of_arithmetic` certificate has 73,767 nodes, depth 99,
+and 2,184 self-contained Cuts; it uses PA1–PA6 and induction, with no DNE.
 The complete layered design continues
 in {doc}`The foundational arithmetic library <../arithmetic-library/index>`;
 this chapter retains the construction story of the original core and the public modular route.
@@ -133,7 +136,7 @@ qed
 ```
 
 The open proof reaches 2,682 structural nodes at depth 41, and finalization checks a
-2,670-node/depth-41 certificate. The import ceiling remains 32,768 nodes; repeated capstone imports
+2,670-node/depth-41 certificate. The import ceiling is 100,000 nodes and depth 256; repeated capstone imports
 eventually reach the separate live-partial bound and fail transactionally without changing state.
 
 Five named helper lemmas keep the scripts readable.  They are not shortcuts around checking: each

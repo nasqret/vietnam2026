@@ -22,6 +22,11 @@ forall n m k. n <= m -> m <= k -> n <= k
 - [[lt_of_lt_of_le]]
 - [[beta_moduli_coprime_of_lt_bounded_common_multiple]]
 - [[bounded_beta_crt_prefix_invariant]]
+- [[beta_value_lt_scaled_base]]
+- [[new_value_lt_scaled_base]]
+- [[beta_exclusive_accumulated_product_step]]
+- [[bounded_beta_exclusive_recode_invariant]]
+- [[beta_sorted_factor_le_last]]
 
 ## Verification record
 

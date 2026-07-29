@@ -35,6 +35,11 @@ forall n m. n * m = m * n
 - [[beta_moduli_coprime_of_gap_dvd]]
 - [[bounded_common_multiple_step]]
 - [[right_factor_divides_product]]
+- [[greatest_prime_divisor_quotient_bound]]
+- [[greatest_prime_divisor_descent]]
+- [[beta_factor_divides_product]]
+- [[prime_factorization_exists_up_to]]
+- [[two_prime_product_uniqueness]]
 
 ## Verification record
 

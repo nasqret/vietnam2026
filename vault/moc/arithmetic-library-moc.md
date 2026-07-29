@@ -6,19 +6,32 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-The current runtime has 189 unique checked nodes: 23 from the original ladder
-and 166 in the reconciled post-baseline extension. Of the latter, 154 form the
-general foundational layer and twelve form the fixed modular capstone. The
-broader 196-node catalog contains three `planned_expressible` and four
-`blocked_by_language` nodes in addition to those checked layers. One
-separately cataloged Lean companion checks full list-based FTA existence and
-uniqueness; it is not counted as a Peano theorem.
+The current runtime contains 247 checked entries and the factorization tranche
+is fully synchronized. The exact native sorted Gödel-β endpoints check from the
+empty context: existence at 43,973 nodes/depth 98, canonical extensional
+uniqueness at 29,789/depth 82, and combined
+[[fundamental-theorem-of-arithmetic|FTA]] at 73,767 nodes/depth 99 with 2,184
+self-contained Cuts.
 
-The shared snapshot contains 242,629 proof nodes and 6,895 self-contained Cuts;
-149 certificates contain at least one Cut.
-[[bounded_beta_crt_for_existing_code]] is largest at 25,545 nodes and 755 Cuts,
-while [[prime_divisor_exists]] sets the maximum depth at 80. These are
-representation metrics, not additional axioms.
+The exact FTA certificate SHA-256 is
+`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+It passes the 100,000-node/depth-256 live/use gate with PA1–PA6 and induction
+only and no DNE. Runtime integration is complete. No
+primitive list type was added, and uniqueness compares decoded entries rather
+than raw β codes. The separate Lean companion checks the conventional list
+theorem without supplying Peano authority.
+
+[[constructive-prime-unboundedness|Prime unboundedness]] is checked separately
+at 4,595 nodes/depth 82 with 146 Cuts and certificate SHA-256
+`8a44fb2d207c2a41684de6d6630674f3f3b951cd036f733b3dd493321099d37b`.
+It uses PA1–PA6 only, contains no DNE, and passes dependency, PA, hypothesis,
+and live-use audits.
+
+The generated 247-theorem snapshot has 982,534 nodes, 28,892 Cuts, and ordered
+root
+`eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`.
+This vault has 327 notes and 3,287 resolved links, including all 247 theorem
+notes.
 
 ## Design and trust
 
@@ -136,10 +149,24 @@ coprime: that statement is false (for `c = 1`, indices 1 and 4 give
 moduli 3 and 6). The checked bounded-prefix theorem instead first constructs a
 suitable common-multiple base, then proves all distinct positions through the
 chosen bound pairwise coprime. Product coprimality, congruence descent, and one
-binary CRT preservation step are checked too. The newest invariant chain folds
+binary CRT preservation step are checked too. The bounded invariant chain folds
 the accumulated product and decoded congruences through a bounded prefix by
 ordinary induction. Its wrapper assumes an already existing `BetaAt` code; it
-does not code an arbitrary finite sequence.
+does not by itself code an arbitrary finite sequence. The later checked
+exclusive-prefix recoding and extension layer closes that separate gap.
+
+## Checked finite β coding, Products, and factorization
+
+- `beta_prefix_extend` — rebase a decoded finite prefix and append one value
+- `beta_prefix_product_trace_exists` — construct an exact β-coded product trace
+- `beta_product_exists` · `beta_product_functional` · `beta_product_exists_unique`
+- `beta_product_zero` · `beta_product_succ_decompose` · `beta_product_succ_append`
+- `greatest_prime_divisor_search` · `greatest_prime_divisor_exists`
+- `greatest_prime_divisor_quotient_bound` · `greatest_prime_divisor_descent`
+- `beta_canonical_append_general` — preserve Product, `AllPrime`, and `Sorted`
+- `prime_factorization_existence` — 43,973 nodes/depth 98
+- `prime_factorization_uniqueness` — 29,789 nodes/depth 82
+- `fundamental_theorem_of_arithmetic` — 73,767 nodes/depth 99/2,184 Cuts
 
 ## Checked prime nodes
 
@@ -155,11 +182,14 @@ does not code an arbitrary finite sequence.
 - [[factor_property_succ]] · [[factor_search_up_to]] — bounded factor-pair search
 - [[prime_nonzero]] · [[prime_or_composite]] · [[prime_decidable]]
 - [[prime_divisor_exists_up_to]] · [[prime_divisor_exists]] — bounded and public prime-divisor existence
+- [[constructive-prime-unboundedness]] — a prime above every bound from a common multiple and its successor
 
-The remaining FTA path is not hidden by these admissions: it still requires
-genuine prefix-product recurrence and bounds,
-[[godel-beta-sequence|β finite-prefix recoding]], greatest-prime descent, and
-finite-product existence and uniqueness.
+The native [[godel-beta-sequence|β-coded FTA]] and constructive
+[[constructive-prime-unboundedness|prime unboundedness]] are checked at this
+integration checkpoint. Remaining boundaries are different: primitive lists,
+finite maps, and generic powers remain absent; conventional
+integer-coefficient Bézout is unavailable, while the four-natural balanced
+relation is checked.
 
 ## Executable and documentary views
 

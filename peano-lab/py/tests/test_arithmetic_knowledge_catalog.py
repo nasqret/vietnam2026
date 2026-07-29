@@ -43,22 +43,22 @@ def _validate(catalog: Path = CATALOG) -> dict[str, int]:
 
 def test_arithmetic_knowledge_catalog_validates_against_production_peano() -> None:
     assert _validate() == {
-        "lemmas": 196,
+        "lemmas": 248,
         "domains": 10,
         "companion_artifacts": 1,
-        "blocked_by_language": 4,
+        "blocked_by_language": 1,
         "checked_existing": 23,
-        "checked_m20": 166,
-        "planned_expressible": 3,
+        "checked_m20": 224,
+        "planned_expressible": 0,
     }
 
 
-def test_catalog_covers_every_domain_status_and_runtime_theorem() -> None:
+def test_catalog_covers_every_domain_and_runtime_theorem() -> None:
     catalog = _catalog()
     lemmas = catalog["lemmas"]
     assert isinstance(lemmas, list)
     assert {lemma["domain"] for lemma in lemmas} == set(catalog["domain_order"])
-    assert {lemma["status"] for lemma in lemmas} == set(catalog["statuses"])
+    assert {lemma["status"] for lemma in lemmas} <= set(catalog["statuses"])
 
     from peano_lab.library.theorems import names
 
@@ -68,6 +68,13 @@ def test_catalog_covers_every_domain_status_and_runtime_theorem() -> None:
         if lemma["status"] in {"checked_existing", "checked_m20"}
     }
     assert checked == set(names())
+
+
+def test_catalog_rejects_an_unknown_status(tmp_path: Path) -> None:
+    catalog = deepcopy(_catalog())
+    catalog["lemmas"][0]["status"] = "invented_status"
+    with pytest.raises(KnowledgeBaseError, match="unknown status"):
+        _validate(_write_catalog(tmp_path, catalog))
 
 
 def test_catalog_rejects_a_dependency_that_is_not_earlier(tmp_path: Path) -> None:

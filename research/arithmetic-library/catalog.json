@@ -45,7 +45,10 @@
     "is_gcd(d,a,b)": "divides(d,a) /\\ divides(d,b) /\\ forall c. divides(c,a) -> divides(c,b) -> divides(c,d)",
     "coprime(a,b)": "forall d. divides(d,a) -> divides(d,b) -> d = 1",
     "prime(p)": "~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1",
-    "beta_at(b,c,i,x)": "(exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + x"
+    "beta_at(b,c,i,x)": "(exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + x",
+    "product(b,c,l,n)": "exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S (S i)) * v)) /\\ exists q. u = q * S ((S (S i)) * v) + s) /\\ s = r * p)))))",
+    "all_prime(b,c,l)": "forall i. (exists h. h + S i = l) -> exists p. (beta_at(b,c,i,p) /\\ prime(p))",
+    "sorted(b,c,l)": "forall i. (exists h. h + S (S i) = l) -> exists p q. (beta_at(b,c,i,p) /\\ (beta_at(b,c,S i,q) /\\ exists h. h + p = q))"
   },
   "statuses": {
     "checked_existing": "Already present in Peano Lab's theorem ladder and independently kernel-checked.",
@@ -3369,18 +3372,24 @@
       "id": "prime_three",
       "title": "Three is prime",
       "domain": "primes",
-      "status": "planned_expressible",
+      "status": "checked_m20",
       "dependencies": [
-        "prime_two"
+        "mul_succ_left",
+        "mul_eq_one_components",
+        "add_eq_zero_left",
+        "mul_eq_zero",
+        "mul_zero_left",
+        "zero_or_succ"
       ],
       "sources": [
+        "peano_lab_library",
         "macbeth_math2001_repo",
         "weissman_illustrated_programming"
       ],
       "summary": "A second concrete prime proof for the numerical and factorization toolkit.",
       "peano": {
         "statement": "~(3 = 1) /\\ forall a b. 3 = a * b -> a = 1 \\/ b = 1",
-        "existing_name": null
+        "existing_name": "prime_three"
       },
       "blocker": null
     },
@@ -3622,20 +3631,29 @@
       "id": "prime_unbounded",
       "title": "There is a prime larger than every given natural",
       "domain": "primes",
-      "status": "planned_expressible",
+      "status": "checked_m20",
       "dependencies": [
+        "bounded_common_multiple_exists",
         "prime_divisor_exists",
-        "bounded_common_multiple_exists"
+        "prime_nonzero",
+        "nonzero_is_succ",
+        "add_succ_left",
+        "add_comm",
+        "divides_remainder",
+        "divisor_one",
+        "mul_one",
+        "le_or_lt"
       ],
       "sources": [
+        "peano_lab_library",
         "weissman_illustrated_programming",
         "weissman_python_number_theory",
         "open_logic"
       ],
-      "summary": "The bounded nonzero common-multiple surrogate is now checked; the remaining proof must apply prime-divisor existence to its successor and show the resulting prime exceeds the bound.",
+      "summary": "Euclid's common-multiple argument constructively produces a prime strictly above every natural.",
       "peano": {
         "statement": "forall n. exists p. (exists k. k + S n = p) /\\ (~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1)",
-        "existing_name": null
+        "existing_name": "prime_unbounded"
       },
       "blocker": null
     },
@@ -3643,19 +3661,23 @@
       "id": "two_prime_product_uniqueness",
       "title": "A product of two primes is unique up to order",
       "domain": "factorization",
-      "status": "planned_expressible",
+      "status": "checked_m20",
       "dependencies": [
         "euclid_prime_dvd_product",
-        "mul_left_cancel_nonzero"
+        "prime_divisor_eq_one_or_self",
+        "prime_nonzero",
+        "mul_left_cancel_nonzero",
+        "mul_comm"
       ],
       "sources": [
+        "peano_lab_library",
         "macbeth_math2001_repo",
         "weissman_illustrated_programming"
       ],
       "summary": "A fixed-length factorization theorem that fits today's term language and exercises Euclid's lemma.",
       "peano": {
         "statement": "forall p q r s. (~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1) -> (~(q = 1) /\\ forall c d. q = c * d -> c = 1 \\/ d = 1) -> (~(r = 1) /\\ forall e f. r = e * f -> e = 1 \\/ f = 1) -> (~(s = 1) /\\ forall g h. s = g * h -> g = 1 \\/ h = 1) -> p * q = r * s -> (p = r /\\ q = s) \\/ (p = s /\\ q = r)",
-        "existing_name": null
+        "existing_name": "two_prime_product_uniqueness"
       },
       "blocker": null
     },
@@ -4105,85 +4127,1295 @@
       "blocker": null
     },
     {
+        "id": "beta_value_le_code",
+        "title": "A decoded beta value is bounded by its code",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Every decoded beta value is at most its code.",
+        "peano": {
+          "statement": "forall b c i x. ((exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + x) -> exists h. h + x = b",
+          "existing_name": "beta_value_le_code"
+        },
+        "blocker": null
+      },
+      {
+        "id": "base_le_beta_modulus",
+        "title": "The beta base is bounded by every beta modulus",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "le_add_left",
+          "mul_succ_left",
+          "le_succ"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "A beta base is at most every beta modulus over that base.",
+        "peano": {
+          "statement": "forall c i. exists h. h + c = S ((S i) * c)",
+          "existing_name": "base_le_beta_modulus"
+        },
+        "blocker": null
+      },
+      {
+        "id": "le_scaled_nonzero",
+        "title": "Nonzero scaling is monotone",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "one_le_of_ne_zero",
+          "mul_le_mul_right",
+          "one_mul"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Scaling by a nonzero natural does not decrease a natural.",
+        "peano": {
+          "statement": "forall C B. ~(C = 0) -> exists h. h + B = C * B",
+          "existing_name": "le_scaled_nonzero"
+        },
+        "blocker": null
+      },
+      {
+        "id": "scaled_bounded_common_multiple",
+        "title": "Scaling preserves bounded common multiples",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "multiple_mul_right"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "A right multiple of a bounded common multiple remains such a common multiple.",
+        "peano": {
+          "statement": "forall N C B. (forall t. (exists h. S t + S h = S N) -> exists q. C = S t * q) -> forall t. (exists h. S t + S h = S N) -> exists q. C * B = S t * q",
+          "existing_name": "scaled_bounded_common_multiple"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_value_lt_scaled_base",
+        "title": "Old decoded values fit the scaled target base",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "beta_value_le_code",
+          "le_add_right",
+          "succ_le_succ",
+          "le_trans",
+          "le_scaled_nonzero",
+          "base_le_beta_modulus"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "An old beta value fits every modulus after a constructive scaled-base rebase.",
+        "peano": {
+          "statement": "forall b c i x C s j. ((exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + x) -> ~(C = 0) -> exists h. h + S x = S ((S j) * (C * S (b + s)))",
+          "existing_name": "beta_value_lt_scaled_base"
+        },
+        "blocker": null
+      },
+      {
+        "id": "new_value_lt_scaled_base",
+        "title": "An appended value fits the scaled target base",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "le_add_left",
+          "succ_le_succ",
+          "le_scaled_nonzero",
+          "le_trans",
+          "base_le_beta_modulus"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "The appended value fits every modulus after the same constructive scaled-base rebase.",
+        "peano": {
+          "statement": "forall b s C j. ~(C = 0) -> exists h. h + S s = S ((S j) * (C * S (b + s)))",
+          "existing_name": "new_value_lt_scaled_base"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_exclusive_accumulated_product_step",
+        "title": "Extend an exclusive beta-modulus product invariant",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "mul_ne_zero",
+          "right_factor_divides_product",
+          "beta_modulus_nonzero",
+          "le_of_succ_le_succ",
+          "le_eq_or_lt",
+          "multiple_mul_right",
+          "le_succ_self",
+          "le_trans",
+          "lt_to_le",
+          "lt_irrefl_expanded",
+          "beta_moduli_pairwise_coprime_bounded",
+          "coprime_mul_left"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Extend the accumulated target-modulus product for an exclusive prefix.",
+        "peano": {
+          "statement": "forall N c k P. (forall t. (exists h. S t + S h = S N) -> exists q. c = S t * q) -> (exists h. h + S k = N) -> ~(P = 0) -> (forall i. (exists h. h + S i = k) -> exists q. P = S ((S i) * c) * q) -> (forall j. (exists g. g + k = j) -> (exists h. h + j = N) -> forall d. (exists u. P = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1) -> (~(P * S ((S k) * c) = 0) /\\ ((forall i. (exists h. h + S i = S k) -> exists q. P * S ((S k) * c) = S ((S i) * c) * q) /\\ forall j. (exists g. g + S k = j) -> (exists h. h + j = N) -> forall d. (exists u. P * S ((S k) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1))",
+          "existing_name": "beta_exclusive_accumulated_product_step"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_exclusive_recode_congruence_step",
+        "title": "Extend exclusive cross-base beta congruences",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "beta_modulus_nonzero",
+          "le_refl",
+          "lt_to_le",
+          "binary_crt_fold_step",
+          "beta_at_exists",
+          "beta_at_unique",
+          "le_of_succ_le_succ",
+          "le_eq_or_lt"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Add the next source value to a target-base CRT code for an exclusive prefix.",
+        "peano": {
+          "statement": "forall N c b e k P z. (exists h. h + S k = N) -> ~(P = 0) -> (forall i. (exists h. h + S i = k) -> exists q. P = S ((S i) * c) * q) -> (forall i a. (exists h. h + S i = k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S ((S i) * e) + a) -> exists u v. z + S ((S i) * c) * u = a + S ((S i) * c) * v) -> (forall j. (exists g. g + k = j) -> (exists h. h + j = N) -> forall d. (exists u. P = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1) -> exists z2. forall i a. (exists h. h + S i = S k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S ((S i) * e) + a) -> exists u v. z2 + S ((S i) * c) * u = a + S ((S i) * c) * v",
+          "existing_name": "beta_exclusive_recode_congruence_step"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_exclusive_recode_invariant_step",
+        "title": "One exclusive beta-recoding invariant step",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "beta_exclusive_accumulated_product_step",
+          "beta_exclusive_recode_congruence_step"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Combine modulus-product and cross-base congruence updates for an exclusive prefix.",
+        "peano": {
+          "statement": "forall N c b e k P z. (forall t. (exists h. S t + S h = S N) -> exists q. c = S t * q) -> (exists h. h + S k = N) -> ~(P = 0) -> (forall i. (exists h. h + S i = k) -> exists q. P = S ((S i) * c) * q) -> (forall i a. (exists h. h + S i = k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S ((S i) * e) + a) -> exists u v. z + S ((S i) * c) * u = a + S ((S i) * c) * v) -> (forall j. (exists g. g + k = j) -> (exists h. h + j = N) -> forall d. (exists u. P = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1) -> exists z2. (~(P * S ((S k) * c) = 0) /\\ ((forall i. (exists h. h + S i = S k) -> exists q. P * S ((S k) * c) = S ((S i) * c) * q) /\\ ((forall i a. (exists h. h + S i = S k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S ((S i) * e) + a) -> exists u v. z2 + S ((S i) * c) * u = a + S ((S i) * c) * v) /\\ forall j. (exists g. g + S k = j) -> (exists h. h + j = N) -> forall d. (exists u. P * S ((S k) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1)))",
+          "existing_name": "beta_exclusive_recode_invariant_step"
+        },
+        "blocker": null
+      },
+      {
+        "id": "bounded_beta_exclusive_recode_invariant",
+        "title": "Bounded exclusive beta-recoding invariant",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "succ_ne_zero",
+          "add_eq_zero_right",
+          "coprime_one_left",
+          "le_succ_self",
+          "le_trans",
+          "beta_exclusive_recode_invariant_step"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Fold an empty-based, exclusive beta prefix into another base with append readiness.",
+        "peano": {
+          "statement": "forall N c b e. (forall t. (exists h. S t + S h = S N) -> exists q. c = S t * q) -> forall k. (exists h. h + k = N) -> exists P z. (~(P = 0) /\\ ((forall i. (exists h. h + S i = k) -> exists q. P = S ((S i) * c) * q) /\\ ((forall i a. (exists h. h + S i = k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S ((S i) * e) + a) -> exists u v. z + S ((S i) * c) * u = a + S ((S i) * c) * v) /\\ forall j. (exists g. g + k = j) -> (exists h. h + j = N) -> forall d. (exists u. P = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1)))",
+          "existing_name": "bounded_beta_exclusive_recode_invariant"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_prefix_extend",
+        "title": "Recode and append one exact beta-prefix value",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "bounded_common_multiple_exists",
+          "scaled_bounded_common_multiple",
+          "bounded_beta_exclusive_recode_invariant",
+          "le_refl",
+          "beta_modulus_nonzero",
+          "binary_crt_fold_step",
+          "new_value_lt_scaled_base",
+          "beta_value_lt_scaled_base",
+          "beta_at_of_mod_eq_bound"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Rebase an arbitrary decoded prefix and append one exact natural value.",
+        "peano": {
+          "statement": "forall k b e s. exists z c. (((exists h. h + S s = S ((S k) * c)) /\\ exists q. z = q * S ((S k) * c) + s) /\\ forall i a. (exists h. h + S i = k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S ((S i) * e) + a) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists q. z = q * S ((S i) * c) + a))",
+          "existing_name": "beta_prefix_extend"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_prefix_product_trace_exists",
+        "title": "Exact beta-coded prefix-product trace exists",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "beta_at_self_of_bound",
+          "add_eq_zero_right",
+          "succ_ne_zero",
+          "beta_at_exists",
+          "beta_prefix_extend",
+          "zero_le",
+          "succ_le_succ",
+          "le_refl",
+          "le_of_succ_le_succ",
+          "le_eq_or_lt",
+          "one_mul"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Every decoded beta factor prefix admits a beta-coded exact prefix-product trace.",
+        "peano": {
+          "statement": "forall b c l. exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S (S i)) * v)) /\\ exists q. u = q * S ((S (S i)) * v) + s) /\\ s = r * p))))",
+          "existing_name": "beta_prefix_product_trace_exists"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_product_exists",
+        "title": "Relational finite beta product exists",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "beta_prefix_product_trace_exists",
+          "beta_at_exists"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Constructs n, u, and v satisfying the fully expanded Product(b,c,l,n) relation: the trace starts at one, decodes terminal n, and satisfies the exact multiplication recurrence at every exclusive prefix index. This theorem establishes relational existence; Product functionality and unique existence are checked separately. It does not prove primality of factors, sorting, factorization, or the Fundamental Theorem of Arithmetic.",
+        "peano": {
+          "statement": "forall b c l. exists n u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S (S i)) * v)) /\\ exists q. u = q * S ((S (S i)) * v) + s) /\\ s = r * p)))))",
+          "existing_name": "beta_product_exists"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_product_functional",
+        "title": "Finite beta Product is functional",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "beta_at_unique",
+          "le_refl",
+          "le_succ",
+          "mul_congr"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Induction on the prefix length proves that any two fully expanded Product traces over the same factor code, base, and length decode the same terminal product.",
+        "peano": {
+          "statement": "forall b c l n u v m w d. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p))))) -> (((exists h. h + S 1 = S ((S 0) * d)) /\\ exists q. w = q * S ((S 0) * d) + 1) /\\ (((exists h. h + S m = S ((S l) * d)) /\\ exists q. w = q * S ((S l) * d) + m) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * d)) /\\ exists q. w = q * S ((S i) * d) + r) /\\ (((exists h. h + S s = S ((S S i) * d)) /\\ exists q. w = q * S ((S S i) * d) + s) /\\ s = r * p))))) -> n = m",
+          "existing_name": "beta_product_functional"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_product_exists_unique",
+        "title": "A unique finite beta Product exists",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "beta_product_exists",
+          "beta_product_functional"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Combines checked relational Product existence with Product functionality to construct exactly one terminal product value for every decoded beta prefix.",
+        "peano": {
+          "statement": "forall b c l. exists n. ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ forall m. (exists w d. (((exists h. h + S 1 = S ((S 0) * d)) /\\ exists q. w = q * S ((S 0) * d) + 1) /\\ (((exists h. h + S m = S ((S l) * d)) /\\ exists q. w = q * S ((S l) * d) + m) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * d)) /\\ exists q. w = q * S ((S i) * d) + r) /\\ (((exists h. h + S s = S ((S S i) * d)) /\\ exists q. w = q * S ((S S i) * d) + s) /\\ s = r * p)))))) -> n = m)",
+          "existing_name": "beta_product_exists_unique"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_product_zero",
+        "title": "The empty beta Product is one",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "beta_at_unique"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Every fully expanded Product witness for a zero-length factor prefix has terminal value one.",
+        "peano": {
+          "statement": "forall b c n. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + n) /\\ forall i. (exists h. h + S i = 0) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) -> n = 1",
+          "existing_name": "beta_product_zero"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_product_succ_decompose",
+        "title": "Decompose a successor beta Product",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "le_refl",
+          "le_succ",
+          "beta_at_unique"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Every fully expanded Product witness at successor length exposes the last decoded factor, a prefix Product witness, and the exact terminal multiplication equation.",
+        "peano": {
+          "statement": "forall b c l n. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S S l) * v)) /\\ exists q. u = q * S ((S S l) * v) + n) /\\ forall i. (exists h. h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) -> exists p r. (((exists h. h + S p = S ((S l) * c)) /\\ exists q. b = q * S ((S l) * c) + p) /\\ ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S r = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + r) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ n = r * p))",
+          "existing_name": "beta_product_succ_decompose"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_product_succ_append",
+        "title": "Append one factor to a beta Product",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "beta_prefix_extend",
+          "zero_le",
+          "succ_le_succ",
+          "le_refl",
+          "le_of_succ_le_succ",
+          "le_eq_or_lt"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "A fully expanded Product witness and one decoded factor at its endpoint construct a successor-length Product witness with terminal value equal to the old product times that factor.",
+        "peano": {
+          "statement": "forall b c l r p. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S r = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + r) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) -> ((exists h. h + S p = S ((S l) * c)) /\\ exists q. b = q * S ((S l) * c) + p) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S (r * p) = S ((S S l) * v)) /\\ exists q. u = q * S ((S S l) * v) + (r * p)) /\\ forall i. (exists h. h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p))))))",
+          "existing_name": "beta_product_succ_append"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_product_transport_prefix",
+        "title": "Transport Product across an extensionally preserved factor prefix",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "One-way preservation of every decoded factor below l transports the fully expanded Product relation without changing its trace codes, recurrence, or terminal value.",
+        "peano": {
+          "statement": "forall b c z e l n. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) -> (forall i a. (exists h. h + S i = l) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + a) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. z = q * S ((S i) * e) + a)) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists q. z = q * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p))))))",
+          "existing_name": "beta_product_transport_prefix"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_factor_prefix_product_append",
+        "title": "Extend a factor prefix and Product together",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "beta_prefix_extend",
+          "beta_product_transport_prefix",
+          "zero_le",
+          "succ_le_succ",
+          "le_refl",
+          "le_of_succ_le_succ",
+          "le_eq_or_lt"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Constructs a rebased factor code preserving every old entry, appends the exact factor p, and simultaneously constructs the matching successor Product with terminal r * p. No nonzero premise on p is required.",
+        "peano": {
+          "statement": "forall b c l r p. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S r = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + r) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) -> exists z e. (((exists h. h + S p = S ((S l) * e)) /\\ exists q. z = q * S ((S l) * e) + p) /\\ ((forall i a. (exists h. h + S i = l) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + a) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. z = q * S ((S i) * e) + a)) /\\ (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S (r * p) = S ((S S l) * v)) /\\ exists q. u = q * S ((S S l) * v) + (r * p)) /\\ forall i. (exists h. h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists q. z = q * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p))))))))",
+          "existing_name": "beta_factor_prefix_product_append"
+        },
+        "blocker": null
+      },
+    {
+        "id": "all_prime_empty",
+        "title": "AllPrime holds on the empty beta prefix",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "add_eq_zero_right",
+          "succ_ne_zero"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "The fully expanded AllPrime predicate holds vacuously on the empty prefix.",
+        "peano": {
+          "statement": "forall b c. (forall i. (exists h. h + S i = 0) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)))",
+          "existing_name": "all_prime_empty"
+        },
+        "blocker": null
+      },
+      {
+        "id": "all_prime_succ_intro",
+        "title": "Extend AllPrime across one beta entry",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "le_of_succ_le_succ",
+          "le_eq_or_lt"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Append one explicitly decoded prime to an AllPrime prefix.",
+        "peano": {
+          "statement": "forall b c l p. (forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (((exists h. h + S p = S ((S l) * c)) /\\ exists w. b = w * S ((S l) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)) -> (forall i. (exists h. h + S i = S l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)))",
+          "existing_name": "all_prime_succ_intro"
+        },
+        "blocker": null
+      },
+      {
+        "id": "all_prime_succ_elim_prefix",
+        "title": "Project AllPrime to the previous beta prefix",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "le_succ"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Restrict an AllPrime successor prefix to its old prefix.",
+        "peano": {
+          "statement": "forall b c l. (forall i. (exists h. h + S i = S l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)))",
+          "existing_name": "all_prime_succ_elim_prefix"
+        },
+        "blocker": null
+      },
+      {
+        "id": "all_prime_succ_elim_last",
+        "title": "Extract the last prime from AllPrime",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "le_refl"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Extract the final decoded prime from an AllPrime successor prefix.",
+        "peano": {
+          "statement": "forall b c l. (forall i. (exists h. h + S i = S l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> exists p. (((exists h. h + S p = S ((S l) * c)) /\\ exists w. b = w * S ((S l) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))",
+          "existing_name": "all_prime_succ_elim_last"
+        },
+        "blocker": null
+      },
+      {
+        "id": "all_prime_transport",
+        "title": "Transport AllPrime across beta recoding",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Transport AllPrime across pointwise value-preserving beta recoding.",
+        "peano": {
+          "statement": "forall b c z d l. (forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (forall i p. (exists h. h + S i = l) -> ((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) -> ((exists h. h + S p = S ((S i) * d)) /\\ exists w. z = w * S ((S i) * d) + p)) -> (forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S p = S ((S i) * d)) /\\ exists w. z = w * S ((S i) * d) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1)))",
+          "existing_name": "all_prime_transport"
+        },
+        "blocker": null
+      },
+      {
+        "id": "sorted_empty",
+        "title": "Adjacent Sorted holds on the empty beta prefix",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "le_zero",
+          "succ_ne_zero"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "The fully expanded Sorted predicate holds vacuously on the empty prefix.",
+        "peano": {
+          "statement": "forall b c. (forall i. (exists h. h + S (S i) = 0) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q))))",
+          "existing_name": "sorted_empty"
+        },
+        "blocker": null
+      },
+      {
+        "id": "sorted_singleton",
+        "title": "Adjacent Sorted holds on a singleton beta prefix",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "le_of_succ_le_succ",
+          "le_zero",
+          "succ_ne_zero"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "The fully expanded Sorted predicate holds vacuously on every singleton prefix.",
+        "peano": {
+          "statement": "forall b c. (forall i. (exists h. h + S (S i) = 1) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q))))",
+          "existing_name": "sorted_singleton"
+        },
+        "blocker": null
+      },
+      {
+        "id": "sorted_succ_intro",
+        "title": "Extend adjacent Sorted across one beta entry",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "le_of_succ_le_succ",
+          "le_eq_or_lt",
+          "succ_le_succ"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Append one ordered adjacent pair to a nonempty Sorted prefix.",
+        "peano": {
+          "statement": "forall b c l p q. (forall i. (exists h. h + S (S i) = S l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q)))) -> ((exists h. h + S p = S ((S l) * c)) /\\ exists w. b = w * S ((S l) * c) + p) -> ((exists h. h + S q = S ((S S l) * c)) /\\ exists w. b = w * S ((S S l) * c) + q) -> (exists h. h + p = q) -> (forall i. (exists h. h + S (S i) = S (S l)) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q))))",
+          "existing_name": "sorted_succ_intro"
+        },
+        "blocker": null
+      },
+      {
+        "id": "sorted_succ_elim_prefix",
+        "title": "Project adjacent Sorted to the previous beta prefix",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "le_succ"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Restrict a Sorted successor prefix to its old prefix.",
+        "peano": {
+          "statement": "forall b c l. (forall i. (exists h. h + S (S i) = S l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q)))) -> (forall i. (exists h. h + S (S i) = l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q))))",
+          "existing_name": "sorted_succ_elim_prefix"
+        },
+        "blocker": null
+      },
+      {
+        "id": "sorted_succ_elim_last",
+        "title": "Extract the last adjacent order witness",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "le_refl"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Extract the final adjacent ordered pair from a Sorted prefix of length at least two.",
+        "peano": {
+          "statement": "forall b c l. (forall i. (exists h. h + S (S i) = S (S l)) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q)))) -> exists p q. (((exists h. h + S p = S ((S l) * c)) /\\ exists w. b = w * S ((S l) * c) + p) /\\ (((exists h. h + S q = S ((S S l) * c)) /\\ exists w. b = w * S ((S S l) * c) + q) /\\ (exists h. h + p = q)))",
+          "existing_name": "sorted_succ_elim_last"
+        },
+        "blocker": null
+      },
+      {
+        "id": "sorted_transport",
+        "title": "Transport adjacent Sorted across beta recoding",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "lt_to_le"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Transport Sorted across pointwise value-preserving beta recoding.",
+        "peano": {
+          "statement": "forall b c z d l. (forall i. (exists h. h + S (S i) = l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q)))) -> (forall i p. (exists h. h + S i = l) -> ((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) -> ((exists h. h + S p = S ((S i) * d)) /\\ exists w. z = w * S ((S i) * d) + p)) -> (forall i. (exists h. h + S (S i) = l) -> exists p q. (((exists h. h + S p = S ((S i) * d)) /\\ exists w. z = w * S ((S i) * d) + p) /\\ (((exists h. h + S q = S ((S S i) * d)) /\\ exists w. z = w * S ((S S i) * d) + q) /\\ (exists h. h + p = q))))",
+          "existing_name": "sorted_transport"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_prefix_extend_all_prime",
+        "title": "Recode a beta prefix and preserve AllPrime",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "beta_prefix_extend",
+          "all_prime_transport",
+          "all_prime_succ_intro"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Recode a beta prefix, preserve all old primes, and append one exact prime.",
+        "peano": {
+          "statement": "forall k b e s. (forall i. (exists h. h + S i = k) -> exists p. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. b = w * S ((S i) * e) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (~(s = 1) /\\ forall a d. s = a * d -> a = 1 \\/ d = 1) -> exists z c. ((((exists h. h + S s = S ((S k) * c)) /\\ exists w. z = w * S ((S k) * c) + s) /\\ forall i a. (exists h. h + S i = k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists w. b = w * S ((S i) * e) + a) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists w. z = w * S ((S i) * c) + a)) /\\ (forall i. (exists h. h + S i = S k) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. z = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))))",
+          "existing_name": "beta_prefix_extend_all_prime"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_prefix_extend_sorted_singleton",
+        "title": "Recode an empty prefix into a sorted singleton",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "beta_prefix_extend",
+          "sorted_singleton"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Append the first value to an empty code; the resulting singleton is Sorted.",
+        "peano": {
+          "statement": "forall b e s. exists z c. ((((exists h. h + S s = S ((S 0) * c)) /\\ exists w. z = w * S ((S 0) * c) + s) /\\ forall i a. (exists h. h + S i = 0) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists w. b = w * S ((S i) * e) + a) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists w. z = w * S ((S i) * c) + a)) /\\ (forall i. (exists h. h + S (S i) = 1) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. z = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. z = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q)))))",
+          "existing_name": "beta_prefix_extend_sorted_singleton"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_prefix_extend_sorted_succ",
+        "title": "Recode a nonempty prefix and preserve adjacent Sorted",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "beta_prefix_extend",
+          "sorted_transport",
+          "sorted_succ_intro",
+          "le_refl"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Recode a nonempty Sorted prefix and append a value above its former last value.",
+        "peano": {
+          "statement": "forall l b e s p. (forall i. (exists h. h + S (S i) = S l) -> exists p q. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. b = w * S ((S i) * e) + p) /\\ (((exists h. h + S q = S ((S S i) * e)) /\\ exists w. b = w * S ((S S i) * e) + q) /\\ (exists h. h + p = q)))) -> ((exists h. h + S p = S ((S l) * e)) /\\ exists w. b = w * S ((S l) * e) + p) -> (exists h. h + p = s) -> exists z c. ((((exists h. h + S s = S ((S S l) * c)) /\\ exists w. z = w * S ((S S l) * c) + s) /\\ forall i a. (exists h. h + S i = S l) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists w. b = w * S ((S i) * e) + a) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists w. z = w * S ((S i) * c) + a)) /\\ (forall i. (exists h. h + S (S i) = S (S l)) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. z = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. z = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q)))))",
+          "existing_name": "beta_prefix_extend_sorted_succ"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_canonical_append_empty",
+        "title": "Canonical first-prime append",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "beta_factor_prefix_product_append",
+          "all_prime_empty",
+          "all_prime_succ_intro",
+          "sorted_singleton",
+          "one_mul"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Append the first prime using the canonical shared-code factor/Product append helper.",
+        "peano": {
+          "statement": "forall b c s. (~(s = 1) /\\ forall a d. s = a * d -> a = 1 \\/ d = 1) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ forall i. (exists h. h + S i = 0) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) -> exists z e. (((exists h. h + S s = S ((S 0) * e)) /\\ exists w. z = w * S ((S 0) * e) + s) /\\ ((forall i a. (exists h. h + S i = 0) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + a) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + a)) /\\ ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S s = S ((S 1) * v)) /\\ exists w. u = w * S ((S 1) * v) + s) /\\ forall i. (exists h. h + S i = 1) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h + S i = 1) -> exists p. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S (S i) = 1) -> exists p q. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S q = S ((S S i) * e)) /\\ exists w. z = w * S ((S S i) * e) + q) /\\ (exists h. h + p = q))))))))",
+          "existing_name": "beta_canonical_append_empty"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_canonical_append_succ",
+        "title": "Canonical ordered-prime append",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "beta_factor_prefix_product_append",
+          "all_prime_transport",
+          "all_prime_succ_intro",
+          "sorted_transport",
+          "sorted_succ_intro",
+          "le_refl"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Append one ordered prime using the canonical shared-code factor/Product append helper.",
+        "peano": {
+          "statement": "forall l b c n s p. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S S l) * v)) /\\ exists w. u = w * S ((S S l) * v) + n) /\\ forall i. (exists h. h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) -> (forall i. (exists h. h + S i = S l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (forall i. (exists h. h + S (S i) = S l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q)))) -> ((exists h. h + S p = S ((S l) * c)) /\\ exists w. b = w * S ((S l) * c) + p) -> (exists h. h + p = s) -> (~(s = 1) /\\ forall a d. s = a * d -> a = 1 \\/ d = 1) -> exists z e. (((exists h. h + S s = S ((S S l) * e)) /\\ exists w. z = w * S ((S S l) * e) + s) /\\ ((forall i a. (exists h. h + S i = S l) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + a) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + a)) /\\ ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S (n * s) = S ((S S (S l)) * v)) /\\ exists w. u = w * S ((S S (S l)) * v) + (n * s)) /\\ forall i. (exists h. h + S i = S (S l)) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h + S i = S (S l)) -> exists p. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S (S i) = S (S l)) -> exists p q. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S q = S ((S S i) * e)) /\\ exists w. z = w * S ((S S i) * e) + q) /\\ (exists h. h + p = q))))))))",
+          "existing_name": "beta_canonical_append_succ"
+        },
+        "blocker": null
+      }
+    ,
+    {
+        "id": "prime_divides_decidable",
+        "title": "Prime divisibility is constructively decidable",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "prime_decidable",
+          "multiple_decidable"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "The concrete property of being a prime divisor is constructively decidable.",
+        "peano": {
+          "statement": "forall p n. ((~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1) /\\ (exists k. n = p * k)) \\/ ~(((~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1) /\\ (exists k. n = p * k)))",
+          "existing_name": "prime_divides_decidable"
+        },
+        "blocker": null
+      },
+      {
+        "id": "greatest_prime_divisor_search",
+        "title": "Bounded greatest-prime-divisor search",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "prime_nonzero",
+          "le_zero",
+          "prime_divides_decidable",
+          "le_refl",
+          "le_eq_or_lt",
+          "le_of_succ_le_succ",
+          "le_succ"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Bounded search either excludes all prime divisors or returns a greatest one in the bound.",
+        "peano": {
+          "statement": "forall B n. ((forall r. (exists h. h + r = B) -> ~(((~(r = 1) /\\ forall a d. r = a * d -> a = 1 \\/ d = 1) /\\ (exists k. n = r * k)))) \\/ exists p. (((exists h. h + p = B) /\\ ((~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1) /\\ (exists k. n = p * k))) /\\ forall r. (exists h. h + r = B) -> ((~(r = 1) /\\ forall a d. r = a * d -> a = 1 \\/ d = 1) /\\ (exists k. n = r * k)) -> (exists h. h + r = p)))",
+          "existing_name": "greatest_prime_divisor_search"
+        },
+        "blocker": null
+      },
+      {
+        "id": "greatest_prime_divisor_exists",
+        "title": "A greatest prime divisor exists",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "prime_divisor_exists",
+          "divisor_le_nonzero",
+          "greatest_prime_divisor_search"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Every nonzero nonunit has a greatest prime divisor in the ordinary natural order.",
+        "peano": {
+          "statement": "forall n. ~(n = 0) -> ~(n = 1) -> exists p. (((~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1) /\\ (exists k. n = p * k)) /\\ forall r. ((~(r = 1) /\\ forall a d. r = a * d -> a = 1 \\/ d = 1) /\\ (exists k. n = r * k)) -> (exists h. h + r = p))",
+          "existing_name": "greatest_prime_divisor_exists"
+        },
+        "blocker": null
+      },
+      {
+        "id": "greatest_prime_divisor_quotient_bound",
+        "title": "Prime divisors of the quotient are bounded",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "mul_comm",
+          "multiple_trans"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Every prime divisor of the quotient by a greatest prime divisor is bounded by that divisor.",
+        "peano": {
+          "statement": "forall n p q. n = p * q -> (((~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1) /\\ (exists k. n = p * k)) /\\ forall r. ((~(r = 1) /\\ forall a d. r = a * d -> a = 1 \\/ d = 1) /\\ (exists k. n = r * k)) -> (exists h. h + r = p)) -> forall r. (~(r = 1) /\\ forall a d. r = a * d -> a = 1 \\/ d = 1) -> (exists k. q = r * k) -> (exists h. h + r = p)",
+          "existing_name": "greatest_prime_divisor_quotient_bound"
+        },
+        "blocker": null
+      },
+      {
+        "id": "greatest_prime_divisor_descent",
+        "title": "Greatest-prime-divisor quotient descent",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "greatest_prime_divisor_exists",
+          "mul_comm",
+          "factor_nonzero_left",
+          "proper_factor_lt",
+          "greatest_prime_divisor_quotient_bound"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Choose a greatest prime factor with a nonzero strict quotient and the exact append-order bound.",
+        "peano": {
+          "statement": "forall n. ~(n = 0) -> ~(n = 1) -> exists p q. (((~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1) /\\ n = p * q) /\\ (~(q = 0) /\\ ((exists h. h + S q = n) /\\ forall r. (~(r = 1) /\\ forall a d. r = a * d -> a = 1 \\/ d = 1) -> (exists k. q = r * k) -> (exists h. h + r = p))))",
+          "existing_name": "greatest_prime_divisor_descent"
+        },
+        "blocker": null
+      },
+      {
+        "id": "beta_factor_divides_product",
+        "title": "Every decoded factor divides its Product",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "add_eq_zero_right",
+          "succ_ne_zero",
+          "beta_product_succ_decompose",
+          "le_of_succ_le_succ",
+          "le_eq_or_lt",
+          "beta_at_unique",
+          "mul_comm",
+          "multiple_mul_right"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "Every decoded factor inside an exact beta Product divides its terminal product.",
+        "peano": {
+          "statement": "forall b c l n i p. (exists h. h + S i = l) -> ((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) -> exists q. n = p * q",
+          "existing_name": "beta_factor_divides_product"
+        },
+        "blocker": null
+      },
+    {
+      "id": "beta_canonical_append_general",
+      "title": "Append one prime to any canonical beta prefix",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "beta_factor_prefix_product_append",
+        "all_prime_transport",
+        "all_prime_succ_intro",
+        "zero_or_succ",
+        "sorted_singleton",
+        "sorted_transport",
+        "all_prime_succ_elim_last",
+        "beta_factor_divides_product",
+        "le_refl",
+        "sorted_succ_intro"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "One shared native PA certificate appends a prime while preserving the beta-coded Product, AllPrime, and Sorted relations; it uses no list primitive and no DNE.",
+      "peano": {
+        "statement": "forall l b c n s. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists w. u = w * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) -> (forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (forall i. (exists h. h + S S i = l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q)))) -> (~(s = 1) /\\ forall a d. s = a * d -> a = 1 \\/ d = 1) -> (forall r. (~(r = 1) /\\ forall a d. r = a * d -> a = 1 \\/ d = 1) -> (exists k. n = r * k) -> (exists h. h + r = s)) -> exists z e. (((exists h. h + S s = S ((S l) * e)) /\\ exists w. z = w * S ((S l) * e) + s) /\\ ((forall i a. (exists h. h + S i = l) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + a) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + a)) /\\ ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S (n * s) = S ((S S l) * v)) /\\ exists w. u = w * S ((S S l) * v) + (n * s)) /\\ forall i. (exists h. h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h + S i = S l) -> exists p. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S S i = S l) -> exists p q. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S q = S ((S S i) * e)) /\\ exists w. z = w * S ((S S i) * e) + q) /\\ (exists h. h + p = q))))))))",
+        "existing_name": "beta_canonical_append_general"
+      },
+      "blocker": null
+    },
+    {
+      "id": "beta_canonical_last_factor_bound",
+        "title": "The last canonical factor obeys prime-divisor bounds",
+        "domain": "factorization",
+        "status": "checked_m20",
+        "dependencies": [
+          "all_prime_succ_elim_last",
+          "beta_factor_divides_product",
+          "le_refl"
+        ],
+        "sources": [
+          "peano_lab_library",
+          "open_logic",
+          "stein_ent_tex"
+        ],
+        "summary": "The last factor of a nonempty AllPrime Product obeys any bound on prime divisors of the product.",
+        "peano": {
+          "statement": "forall b c l n s. (forall i. (exists h. h + S i = S l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S S l) * v)) /\\ exists q. u = q * S ((S S l) * v) + n) /\\ forall i. (exists h. h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) -> (forall r. (~(r = 1) /\\ forall a d. r = a * d -> a = 1 \\/ d = 1) -> (exists k. n = r * k) -> (exists h. h + r = s)) -> exists p. (((exists h. h + S p = S ((S l) * c)) /\\ exists w. b = w * S ((S l) * c) + p) /\\ (exists h. h + p = s))",
+          "existing_name": "beta_canonical_last_factor_bound"
+        },
+        "blocker": null
+      }
+    ,
+    {
+      "id": "prime_factorization_exists_up_to",
+      "title": "Bounded prime-factorization existence",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "le_zero",
+        "le_eq_or_lt",
+        "le_of_succ_le_succ",
+        "eq_decidable",
+        "succ_ne_zero",
+        "beta_at_exists",
+        "beta_at_self_of_bound",
+        "beta_at_unique",
+        "one_mul",
+        "le_refl",
+        "add_eq_zero_right",
+        "all_prime_empty",
+        "sorted_empty",
+        "greatest_prime_divisor_descent",
+        "beta_canonical_append_general",
+        "mul_comm"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "macbeth_math2001_repo",
+        "weissman_illustrated_programming"
+      ],
+      "summary": "Consolidated bounded induction constructs one sorted beta-coded prime factorization through the general append certificate, without lists or DNE.",
+      "peano": {
+        "statement": "forall B n. (exists h. h + n = B) -> ~(n = 0) -> exists l b c. ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists w. u = w * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S (S i) = l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q))))))",
+        "existing_name": "prime_factorization_exists_up_to"
+      },
+      "blocker": null
+    }
+    ,
+    {
       "id": "prime_factorization_existence",
       "title": "Existence of a finite prime factorization",
       "domain": "factorization",
-      "status": "blocked_by_language",
+      "status": "checked_m20",
       "dependencies": [
-        "prime_divisor_exists",
-        "bounded_beta_crt_prefix_invariant"
+        "prime_factorization_exists_up_to",
+        "le_refl"
       ],
       "sources": [
+        "peano_lab_library",
         "macbeth_math2001_repo",
         "weissman_illustrated_programming",
         "weissman_python_number_theory",
         "open_logic"
       ],
-      "summary": "A checked bounded induction now carries nonzero accumulated products, divisor membership, future coprimality, and congruences for values already decoded from an input code; genuine finite-prefix recoding and prefix-product traces remain unavailable.",
-      "peano": null,
-      "blocker": {
-        "code": "variable_length_factorization_unrepresented",
-        "detail": "Peano Lab's fixed signature has no primitive finite collection. The checked bounded CRT invariant folds over residues that are already decoded from one supplied beta code b; its projected witness is therefore extensionally satisfied by b itself and does not construct a fresh code for an independently specified finite prefix. No checked relation yet encodes the exact prefix-product recurrence with bounds ensuring that all product entries can themselves be beta-decoded.",
-        "unblocks_with": [
-          "a genuine β finite-prefix recoding or extension theorem for independently specified entries",
-          "a checked β-coded prefix-product recurrence with modulus bounds for every exact product",
-          "and checked links between encoded factors, primality, and the final product"
-        ]
-      }
+      "summary": "Every nonzero natural has a native sorted beta-coded prime factorization with an exact Product trace; no conventional list primitive or DNE is used.",
+      "peano": {
+        "statement": "forall n. ~(n = 0) -> exists l b c. ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists w. u = w * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S (S i) = l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q))))))",
+        "existing_name": "prime_factorization_existence"
+      },
+      "blocker": null
+    },
+    {
+      "id": "beta_prime_divisor_product_member",
+      "title": "A prime divisor of an AllPrime beta Product occurs as a factor",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "beta_product_zero",
+        "divisor_one",
+        "beta_product_succ_decompose",
+        "all_prime_succ_elim_prefix",
+        "all_prime_succ_elim_last",
+        "euclid_prime_dvd_product",
+        "prime_divisor_eq_one_or_self",
+        "beta_at_unique",
+        "le_succ",
+        "le_refl"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "A prime divisor of an AllPrime beta Product occurs as one of its decoded factors.",
+      "peano": {
+        "statement": "forall b c l n p. (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1) -> (forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists w. u = w * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) -> (exists k. n = p * k) -> exists i. ((exists h. h + S i = l) /\\ ((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p))",
+        "existing_name": "beta_prime_divisor_product_member"
+      },
+      "blocker": null
+    },
+    {
+      "id": "beta_sorted_factor_le_last",
+      "title": "Every sorted factor is bounded by the last factor",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "le_of_succ_le_succ",
+        "le_zero",
+        "beta_at_unique",
+        "le_refl",
+        "le_eq_or_lt",
+        "sorted_succ_elim_prefix",
+        "sorted_succ_elim_last",
+        "le_trans"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Every factor in a nonempty adjacent-sorted beta prefix is at most its last factor.",
+      "peano": {
+        "statement": "forall b c l i p q. (exists h. h + S i = S l) -> ((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) -> ((exists h. h + S q = S ((S l) * c)) /\\ exists w. b = w * S ((S l) * c) + q) -> (forall i. (exists h. h + S S i = S l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q)))) -> (exists h. h + p = q)",
+        "existing_name": "beta_sorted_factor_le_last"
+      },
+      "blocker": null
+    },
+    {
+      "id": "beta_nonempty_all_prime_product_ne_one",
+      "title": "A nonempty AllPrime beta Product is not one",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "all_prime_succ_elim_last",
+        "beta_factor_divides_product",
+        "le_refl",
+        "divisor_one"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "A nonempty product of prime decoded factors cannot have terminal value one.",
+      "peano": {
+        "statement": "forall b c l n. (forall i. (exists h. h + S i = S l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S S l) * v)) /\\ exists w. u = w * S ((S S l) * v) + n) /\\ forall i. (exists h. h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) -> ~(n = 1)",
+        "existing_name": "beta_nonempty_all_prime_product_ne_one"
+      },
+      "blocker": null
+    },
+    {
+      "id": "beta_all_prime_product_one_iff_length_zero",
+      "title": "An AllPrime beta Product is one exactly at length zero",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "beta_product_zero",
+        "beta_nonempty_all_prime_product_ne_one",
+        "succ_ne_zero"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Under AllPrime, a beta Product is one exactly when its encoded factor length is zero.",
+      "peano": {
+        "statement": "forall b c l n. (forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists w. u = w * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) -> ((n = 1 -> l = 0) /\\ (l = 0 -> n = 1))",
+        "existing_name": "beta_all_prime_product_one_iff_length_zero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "beta_canonical_last_factors_equal",
+      "title": "Canonical factorizations have equal last factors",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "all_prime_succ_elim_last",
+        "beta_at_unique",
+        "beta_factor_divides_product",
+        "le_refl",
+        "beta_prime_divisor_product_member",
+        "beta_sorted_factor_le_last",
+        "le_antisymm"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Two nonempty sorted AllPrime Products of the same number have equal last factors.",
+      "peano": {
+        "statement": "forall b c z e l k n p q. (forall i. (exists h. h + S i = S l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (forall i. (exists h. h + S S i = S l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q)))) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S S l) * v)) /\\ exists w. u = w * S ((S S l) * v) + n) /\\ forall i. (exists h. h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) -> ((exists h. h + S p = S ((S l) * c)) /\\ exists w. b = w * S ((S l) * c) + p) -> (forall i. (exists h. h + S i = S k) -> exists p. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (forall i. (exists h. h + S S i = S k) -> exists p q. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S q = S ((S S i) * e)) /\\ exists w. z = w * S ((S S i) * e) + q) /\\ (exists h. h + p = q)))) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S S k) * v)) /\\ exists w. u = w * S ((S S k) * v) + n) /\\ forall i. (exists h. h + S i = S k) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) -> ((exists h. h + S q = S ((S k) * e)) /\\ exists w. z = w * S ((S k) * e) + q) -> p = q",
+        "existing_name": "beta_canonical_last_factors_equal"
+      },
+      "blocker": null
+    },
+    {
+      "id": "beta_canonical_product_cancel_last",
+      "title": "Cancel the common last factor of canonical Products",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "beta_product_succ_decompose",
+        "beta_canonical_last_factors_equal",
+        "all_prime_succ_elim_last",
+        "beta_at_unique",
+        "prime_nonzero",
+        "mul_right_cancel_nonzero",
+        "all_prime_succ_elim_prefix",
+        "sorted_succ_elim_prefix"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Cancel the common last prime from two nonempty canonical beta Products and return canonical prefixes.",
+      "peano": {
+        "statement": "forall b c z e l k n. (forall i. (exists h. h + S i = S l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (forall i. (exists h. h + S S i = S l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q)))) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S S l) * v)) /\\ exists w. u = w * S ((S S l) * v) + n) /\\ forall i. (exists h. h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) -> (forall i. (exists h. h + S i = S k) -> exists p. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) -> (forall i. (exists h. h + S S i = S k) -> exists p q. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S q = S ((S S i) * e)) /\\ exists w. z = w * S ((S S i) * e) + q) /\\ (exists h. h + p = q)))) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S S k) * v)) /\\ exists w. u = w * S ((S S k) * v) + n) /\\ forall i. (exists h. h + S i = S k) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) -> exists p r s. (((exists h. h + S p = S ((S l) * c)) /\\ exists w. b = w * S ((S l) * c) + p) /\\ (((exists h. h + S p = S ((S k) * e)) /\\ exists w. z = w * S ((S k) * e) + p) /\\ ((forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ ((forall i. (exists h. h + S S i = l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q)))) /\\ ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S r = S ((S l) * v)) /\\ exists w. u = w * S ((S l) * v) + r) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h + S i = k) -> exists p. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ ((forall i. (exists h. h + S S i = k) -> exists p q. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S q = S ((S S i) * e)) /\\ exists w. z = w * S ((S S i) * e) + q) /\\ (exists h. h + p = q)))) /\\ ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S s = S ((S k) * v)) /\\ exists w. u = w * S ((S k) * v) + s) /\\ forall i. (exists h. h + S i = k) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. z = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ (n = r * p /\\ (n = s * p /\\ r = s))))))))))",
+        "existing_name": "beta_canonical_product_cancel_last"
+      },
+      "blocker": null
+    },
+    {
+      "id": "prime_factorization_uniqueness_by_length",
+      "title": "Prime-factorization uniqueness by length",
+      "domain": "factorization",
+      "status": "checked_m20",
+      "dependencies": [
+        "beta_product_zero",
+        "beta_all_prime_product_one_iff_length_zero",
+        "add_eq_zero_right",
+        "succ_ne_zero",
+        "beta_nonempty_all_prime_product_ne_one",
+        "nonzero_is_succ",
+        "beta_canonical_product_cancel_last",
+        "succ_congr",
+        "le_of_succ_le_succ",
+        "le_eq_or_lt",
+        "beta_at_unique"
+      ],
+      "sources": [
+        "peano_lab_library",
+        "open_logic",
+        "stein_ent_tex"
+      ],
+      "summary": "Strengthened induction on the first canonical factorization length.",
+      "peano": {
+        "statement": "forall l n b c m d e. ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists w. u = w * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S S i = l) -> exists p q. (((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) /\\ (((exists h. h + S q = S ((S S i) * c)) /\\ exists w. b = w * S ((S S i) * c) + q) /\\ (exists h. h + p = q)))))) -> ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists w. u = w * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S m) * v)) /\\ exists w. u = w * S ((S m) * v) + n) /\\ forall i. (exists h. h + S i = m) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. d = w * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists w. u = w * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists w. u = w * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h + S i = m) -> exists p. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. d = w * S ((S i) * e) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S S i = m) -> exists p q. (((exists h. h + S p = S ((S i) * e)) /\\ exists w. d = w * S ((S i) * e) + p) /\\ (((exists h. h + S q = S ((S S i) * e)) /\\ exists w. d = w * S ((S S i) * e) + q) /\\ (exists h. h + p = q)))))) -> (l = m /\\ forall i p q. (exists h. h + S i = l) -> ((exists h. h + S p = S ((S i) * c)) /\\ exists w. b = w * S ((S i) * c) + p) -> ((exists h. h + S q = S ((S i) * e)) /\\ exists w. d = w * S ((S i) * e) + q) -> p = q)",
+        "existing_name": "prime_factorization_uniqueness_by_length"
+      },
+      "blocker": null
     },
     {
       "id": "prime_factorization_uniqueness",
       "title": "Uniqueness of finite prime factorization",
       "domain": "factorization",
-      "status": "blocked_by_language",
+      "status": "checked_m20",
       "dependencies": [
-        "euclid_prime_dvd_product",
-        "two_prime_product_uniqueness",
-        "prime_factorization_existence"
+        "prime_factorization_uniqueness_by_length"
       ],
       "sources": [
+        "peano_lab_library",
         "macbeth_math2001_repo",
         "weissman_illustrated_programming",
         "weissman_python_number_theory"
       ],
-      "summary": "The bounded CRT invariant is checked for an existing input code, but extensional whole-prefix comparison, exact prefix-product traces, and finite-product Euclid/cancellation remain unchecked in Peano.",
-      "peano": null,
-      "blocker": {
-        "code": "factorization_equivalence_unrepresented",
-        "detail": "The current surface has no primitive finite collections. Single-position β decoding is functional and the existing-code bounded CRT invariant is checked, but that invariant neither identifies arbitrary codes extensionally nor supplies an exact product trace. Extensional finite-prefix comparison and finite-product Euclid/cancellation lemmas are not yet available as checked Peano entries.",
-        "unblocks_with": [
-          "the factorization representation required by prime_factorization_existence",
-          "checked extensional equality for sorted β-decoded prefixes",
-          "checked finite-product Euclid and cancellation lemmas"
-        ]
-      }
+      "summary": "Canonical sorted beta-coded prime factorizations of the same natural have equal lengths and extensionally equal decoded entries.",
+      "peano": {
+        "statement": "forall n l b c m d e. (((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S (S i)) * v)) /\\ exists q. u = q * S ((S (S i)) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S (p) = S ((S (i)) * c)) /\\ exists w. b = w * S ((S (i)) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S (S i) = l) -> exists p q. (((exists h. h + S (p) = S ((S (i)) * c)) /\\ exists w. b = w * S ((S (i)) * c) + p) /\\ (((exists h. h + S (q) = S ((S (S i)) * c)) /\\ exists w. b = w * S ((S (S i)) * c) + q) /\\ exists h. h + p = q))))) /\\ ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S m) * v)) /\\ exists q. u = q * S ((S m) * v) + n) /\\ forall i. (exists h. h + S i = m) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists q. d = q * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S (S i)) * v)) /\\ exists q. u = q * S ((S (S i)) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h + S i = m) -> exists p. (((exists h. h + S (p) = S ((S (i)) * e)) /\\ exists w. d = w * S ((S (i)) * e) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S (S i) = m) -> exists p q. (((exists h. h + S (p) = S ((S (i)) * e)) /\\ exists w. d = w * S ((S (i)) * e) + p) /\\ (((exists h. h + S (q) = S ((S (S i)) * e)) /\\ exists w. d = w * S ((S (S i)) * e) + q) /\\ exists h. h + p = q)))))) -> (l = m /\\ forall i p q. (exists h. h + S i = l) -> ((exists h. h + S (p) = S ((S (i)) * c)) /\\ exists w. b = w * S ((S (i)) * c) + p) -> ((exists h. h + S (q) = S ((S (i)) * e)) /\\ exists w. d = w * S ((S (i)) * e) + q) -> p = q)",
+        "existing_name": "prime_factorization_uniqueness"
+      },
+      "blocker": null
     },
     {
       "id": "fundamental_theorem_of_arithmetic",
       "title": "Fundamental theorem of arithmetic",
       "domain": "factorization",
-      "status": "blocked_by_language",
+      "status": "checked_m20",
       "dependencies": [
         "prime_factorization_existence",
         "prime_factorization_uniqueness"
       ],
       "sources": [
+        "peano_lab_library",
         "macbeth_math2001_repo",
         "weissman_illustrated_programming",
         "weissman_python_number_theory",
         "stein_ent_tex"
       ],
-      "summary": "A pinned Lean companion now checks list-based existence and permutation uniqueness; the combined Peano theorem awaits certificates for the selected conservative β encoding.",
-      "peano": null,
-      "blocker": {
-        "code": "finite_factorization_language_missing",
-        "detail": "Both Peano halves depend on the selected β-coded sequence/product infrastructure and its arithmetic proof spine. The checked Lean companion is deliberately not imported as an axiom, and treating Prime or factorization as a trusted primitive would still violate the small-kernel design.",
-        "unblocks_with": [
-          "prime_factorization_existence",
-          "prime_factorization_uniqueness",
-          "fully expanded closed Peano statements and ordinary kernel-checked certificates"
-        ]
-      }
+      "summary": "The native first-order PA theorem combines beta-coded prime-factorization existence with extensional sorted-factor uniqueness. It uses neither conventional lists nor DNE.",
+      "peano": {
+        "statement": "(forall n. ~(n = 0) -> exists l b c. ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S (S i)) * v)) /\\ exists q. u = q * S ((S (S i)) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S (p) = S ((S (i)) * c)) /\\ exists w. b = w * S ((S (i)) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S (S i) = l) -> exists p q. (((exists h. h + S (p) = S ((S (i)) * c)) /\\ exists w. b = w * S ((S (i)) * c) + p) /\\ (((exists h. h + S (q) = S ((S (S i)) * c)) /\\ exists w. b = w * S ((S (S i)) * c) + q) /\\ exists h. h + p = q)))))) /\\ (forall n l b c m d e. (((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S (S i)) * v)) /\\ exists q. u = q * S ((S (S i)) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h + S i = l) -> exists p. (((exists h. h + S (p) = S ((S (i)) * c)) /\\ exists w. b = w * S ((S (i)) * c) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S (S i) = l) -> exists p q. (((exists h. h + S (p) = S ((S (i)) * c)) /\\ exists w. b = w * S ((S (i)) * c) + p) /\\ (((exists h. h + S (q) = S ((S (S i)) * c)) /\\ exists w. b = w * S ((S (S i)) * c) + q) /\\ exists h. h + p = q))))) /\\ ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S m) * v)) /\\ exists q. u = q * S ((S m) * v) + n) /\\ forall i. (exists h. h + S i = m) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists q. d = q * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S (S i)) * v)) /\\ exists q. u = q * S ((S (S i)) * v) + s) /\\ s = r * p)))))) /\\ ((forall i. (exists h. h + S i = m) -> exists p. (((exists h. h + S (p) = S ((S (i)) * e)) /\\ exists w. d = w * S ((S (i)) * e) + p) /\\ (~(p = 1) /\\ forall a d. p = a * d -> a = 1 \\/ d = 1))) /\\ (forall i. (exists h. h + S (S i) = m) -> exists p q. (((exists h. h + S (p) = S ((S (i)) * e)) /\\ exists w. d = w * S ((S (i)) * e) + p) /\\ (((exists h. h + S (q) = S ((S (S i)) * e)) /\\ exists w. d = w * S ((S (S i)) * e) + q) /\\ exists h. h + p = q)))))) -> (l = m /\\ forall i p q. (exists h. h + S i = l) -> ((exists h. h + S (p) = S ((S (i)) * c)) /\\ exists w. b = w * S ((S (i)) * c) + p) -> ((exists h. h + S (q) = S ((S (i)) * e)) /\\ exists w. d = w * S ((S (i)) * e) + q) -> p = q))",
+        "existing_name": "fundamental_theorem_of_arithmetic"
+      },
+      "blocker": null
     }
   ]
 }

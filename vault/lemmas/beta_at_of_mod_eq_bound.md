@@ -21,6 +21,7 @@ forall b c i x. (exists h. h + S x = S ((S i) * c)) -> (exists u v. b + S ((S i)
 ## Checked dependents
 
 - [[binary_crt_beta_pair]]
+- [[beta_prefix_extend]]
 
 ## Verification record
 

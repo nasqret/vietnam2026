@@ -99,7 +99,7 @@ closed shared certificate to the kernel against the original stated goal.
 The upstream public-catalog candidate contains 49 dependency-ordered entries: the 23-entry core and
 a 26-entry extension through `mod5_fourth_power_one`. Its immutable source report records the former
 fully expanded capstone at 21,515 nodes/depth 66. The current self-contained shared certificate is
-2,675 nodes/depth 38 and remains below the 32,768-node/depth-128 import ceiling. A short reuse of
+2,675 nodes/depth 38 and remains below the 100,000-node/depth-256 import ceiling. A short reuse of
 the capstone is:
 
 ```text
@@ -270,7 +270,7 @@ arithmetic/order rungs plus five explicit helper lemmas, ending at
 `forall n m. n * m = 0 -> n = 0 \/ m = 0`. M11 extends the current index to twenty-three with
 `one_mul`, `mul_one`, and `add_mul`, the only missing orientations needed by certificate-producing
 commutative-semiring normalization. The current local runtime extends that
-reconciled foundation to 189 unique checked entries: 23 baseline theorems, 154
+reconciled foundation to 247 unique checked entries: 23 baseline theorems, 212
 general foundational theorems, and twelve unique modular capstones. The
 complete 26-record modular provenance catalog ends at
 `mod5_fourth_power_one`; fourteen of those records coincide exactly with
@@ -289,6 +289,17 @@ The constructive prime-search layer contributes twelve checked rungs:
 divisibility decisions, bounded factor search, primality decision, proper-factor
 descent, and prime-divisor existence are native expanded PA theorems rather
 than hidden predicates or axioms.
+
+The checked `prime_unbounded` endpoint completes the constructive
+prime-existence client without a factorial symbol. For a bound `n`, it obtains
+a nonzero common multiple `c` of every positive value through `n` and a prime
+divisor `p` of `S c`. Were `p <= n`, the common-multiple property would give
+`p | c`; together with `p | S c`, `divides_remainder` gives `p | 1`, so
+`divisor_one` contradicts `p != 1`. Hence `n < p`. The exact certificate has
+4,595 nodes, depth 82, 146 Cuts, and SHA-256
+`8a44fb2d207c2a41684de6d6630674f3f3b951cd036f733b3dd493321099d37b`.
+It uses PA1–PA6 only, contains no DNE, and passes dependency, PA, hypothesis,
+and live-use mutation/admission checks.
 
 Balanced natural congruence is now a checked transitive relation compatible
 with addition and multiplication through `mod_eq_trans`, `mod_eq_add`,
@@ -315,18 +326,20 @@ every positive natural through a chosen bound. Unconditional pairwise
 β-modulus coprimality is false (`c=1` at indices 1 and 4 gives moduli
 3 and 6). The bounded-prefix theorems now construct a suitable base and prove
 all distinct moduli through the bound pairwise coprime. Product-coprimality
-closure, modulus descent, and one invariant-preserving binary CRT extension
-are checked too. The newest six theorems advance the accumulated-product and
-decoded-congruence invariants together and fold them through every bounded
-prefix by ordinary induction. The final wrapper consumes values already
-decoded from a supplied `BetaAt` code; it is not arbitrary finite-sequence
-coding. Genuine prefix-product recurrence and bounds, β finite-prefix
-recoding, greatest-prime descent, and native FTA remain future checked layers.
+closure and modulus descent feed a checked ordinary-induction CRT prefix
+invariant. The subsequent layer proves finite-prefix β recoding and exact
+prefix-product existence, functionality, transport, and successor
+decomposition. Expanded `AllPrime`, adjacent sortedness, canonical append,
+greatest-prime-divisor descent, and factor-divides-product lemmas then support
+canonical factorization existence and extensional uniqueness.
 
-The shared ladder totals 242,629 structural nodes and 6,895 Cuts across 149
-Cut-bearing entries. `bounded_beta_crt_for_existing_code` is largest at
-25,545 nodes and 755 Cuts; `prime_divisor_exists` reaches the maximum
-depth of 80.
+The final `fundamental_theorem_of_arithmetic` theorem combines those results
+in the unchanged first-order PA language. Its closed certificate has 73,767
+structural nodes, depth 99 and 2,184 self-contained Cuts; SHA-256 is
+`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+It uses only PA1–PA6 and induction, with no DNE. Multiple raw β codes may
+represent the same finite prefix, so uniqueness is deliberately extensional
+on decoded entries rather than equality of code numbers.
 
 ## Polynomial identities with checked certificates
 
@@ -486,15 +499,20 @@ and all 183 authored QEDs. The corpus run fingerprint is
 This candidate has not been staged, deployed, or promoted; production remains
 untouched.
 
-The current source runtime and local browser candidate have since advanced to
-189 checked theorems. Build `2026-07-29h`, application
-`a-98b1d8bb8dd7`, has not been staged, deployed, or promoted. The source suite
-passes all 1,098 Peano tests on CPython 3.10 in 181.34 seconds. Its corpus run
-fingerprint is
-`a3c2f8c5c762b10fc9c1117723c74fecb50348cfb699f73bc76fb3714df3bf1b`;
-the isolated smoke has 378 sessions, 5,373 raw and 5,370 unique transitions,
-and all 189 authored QEDs. The synchronized vault verifies 189 lemma notes
-within 268 notes and 2,513 resolved links.
+The current source runtime has since advanced to 247 checked theorems. Its
+snapshot has 982,534 nodes, 28,892 Cuts, 204 Cut-bearing certificates, root
+`eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`,
+and source digest
+`295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
+The vault has 247 lemma notes within 327 notes and 3,287 links. The
+1,692-session/13,344-transition corpus has fingerprint
+`5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`;
+its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
+all 247 authored QEDs. Browser build `2026-07-29j`, application
+`a-c983d7c60450`, has not been staged, deployed, or promoted. The complete
+Peano suite passes 1,101 tests on Python 3.10 in 1,050.08 seconds with no
+reported warnings. Automated runtime/worker and manifest checks pass; a
+direct Pyodide UI smoke is not claimed because no in-app browser was attached.
 
 Back at the repository root, run both regression suites:
 

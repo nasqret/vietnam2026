@@ -19,7 +19,7 @@ forall a b. exists k. k + a = a + b
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[beta_value_lt_scaled_base]]
 
 ## Verification record
 
