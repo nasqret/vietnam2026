@@ -43,6 +43,17 @@ if [ -L "$data_dir" ]; then
   printf 'refusing symlinked WMI v3 data directory: %s\n' "$data_dir" >&2
   exit 1
 fi
+if [ -e "$data_dir" ] && [ ! -d "$data_dir" ]; then
+  printf 'refusing non-directory WMI v3 data path: %s\n' "$data_dir" >&2
+  exit 1
+fi
+if [ -d "$data_dir" ]; then
+  peano_v3_stale_entry="$(find "$data_dir" -mindepth 1 -print -quit)"
+  if [ -n "$peano_v3_stale_entry" ]; then
+    printf 'refusing nonempty WMI v3 data directory: %s\n' "$data_dir" >&2
+    exit 1
+  fi
+fi
 mkdir -p "$data_dir" logs
 
 "$wmi_python" - "$config" <<'PY'
@@ -60,11 +71,8 @@ if config.model.revision != "ea980cb0a6c2ae4b936e82123acc929f1cec04c1":
     raise SystemExit("model-v3 preparation received an unreviewed model revision")
 PY
 
-"$wmi_python" scripts/generate_peano_library_policy_corpus.py \
-  --trace-output "$data_dir/library-raw-traces.jsonl" \
-  --metadata-output "$data_dir/library-session-metadata.jsonl" \
-  --manifest "$data_dir/library-source-manifest.json"
-
+# Run the synthetic generator first: its model-free whole-schedule prepass can
+# reject a bad launch in seconds, before either corpus pays for proof replay.
 "$wmi_python" scripts/generate_peano_v3_balanced_corpus.py \
   --profile model-v3 \
   --trace-output "$data_dir/balanced-raw-traces.jsonl" \
@@ -73,6 +81,11 @@ PY
   --row-budget 70000 \
   --budget-mode exact \
   --seed peano-policy-v3-balanced-wmi-20260729
+
+"$wmi_python" scripts/generate_peano_library_policy_corpus.py \
+  --trace-output "$data_dir/library-raw-traces.jsonl" \
+  --metadata-output "$data_dir/library-session-metadata.jsonl" \
+  --manifest "$data_dir/library-source-manifest.json"
 
 combined_metadata="$data_dir/session-metadata.jsonl"
 "$wmi_python" scripts/combine_peano_v3_corpus_metadata.py \

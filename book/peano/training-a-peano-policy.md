@@ -26,8 +26,9 @@ retrieval prompt, balanced 100,000-row generator, tokenizer gate, depth-32 verif
 heavy 1.7B configuration, and persistent local/WMI/Helios REPL have been implemented. No model-v2 heavy
 checkpoint was trained or evaluated. It is retained as an auditable design stage, while model-v3
 now supersedes it with the complete 247-theorem checked ladder, leakage-safe prefix trajectories,
-a root-balanced synthetic curriculum, and a native 32,768-token no-truncation gate. No model-v3 training job
-has yet been submitted or completed, so its proof quality and search gain remain unknown.
+a root-balanced synthetic curriculum, and a native 32,768-token no-truncation gate. A first
+model-v3 preparation job ran and failed closed in synthetic generation; no model-v3 training job
+has been submitted and no adapter exists, so its proof quality and search gain remain unknown.
 The historical reconciled model-v2 authority is 63 public entries, seven dependency-closed import
 exclusions, and 56 permitted records. Model-v3 binds the later 247-entry ladder independently.
 The 4B comparison and expert iteration are still deferred.
@@ -868,6 +869,49 @@ proof-first schemas across 14 root heads; root-session imbalance is bounded and 
 for at most 20% of emitted sessions. Library schemas are deliberately absent here because the exact
 247 predecessor-prefix trajectories provide that supervision separately.
 
+That gate removal exposed a useful generator-design trap. The implication was not only a proof
+obstacle: it was also the sole index-varying text in each inherited induction statement. Deleting
+it therefore collapsed thousands of intended examples to four canonical roots. The repair adds a
+six-digit base-4 expression made entirely from terms `d * 0`. It has 4,096 syntactically distinct
+values per induction schema, remains arithmetically zero, and leaves `induction` as the first
+tactic. Closed-zero syntax creates statement diversity here without pretending to add new
+mathematical difficulty.
+
+The first WMI preparation run, job `172536`, found a separate finite-domain defect. It completed
+all 247 checked library trajectories—8,494 transitions and 247 QED footers—then failed after
+1:02:34 when `root-equality-ring` generated a product with normalized coefficient 132. The `ring`
+tactic correctly rejected it because its reviewed limit is 128. The corrected domain enumerates
+the 2,396 safe base-7 tuples, excluding the four coefficient-132 tuples and the one
+coefficient-144 tuple. Pairing those tuples with sixteen compact two-digit base-4 zero tags yields
+38,336 distinct safe ring statements. Because the failed run had already exercised schema catalog
+version 1, this repaired catalog is explicitly version 2 rather than silently changing the meaning
+of an old identity.
+
+The deeper repair treats scheduling like a compiler prepass. Before executing any proof or
+creating output files, a model-free planner canonicalizes every proposed statement, enforces
+uniqueness and finite-domain capacity, checks the exact row total, the `intro` cap, and root-head
+balance, and hashes the ordered schedule. A valid candidate that exactly equals a sealed evaluation
+formula follows one narrow typed exclusion path and is counted; malformed candidates still abort.
+The expensive execution must reproduce the planned counts, skip counts, and digest exactly. A
+final-row edge case required one more rule: among equally deficient heads, prefer the
+heads whose shortest sessions are longer, reserving one-row heads for exact completion. For seed
+`peano-policy-v3-balanced-wmi-20260729`, this prepass gives exactly 70,000 rows in 32,600 distinct
+sessions, covers all 51 schemas, and assigns 2,328 or 2,329 sessions to every one of the fourteen
+heads. The pinned sequence digest is
+`79d2704eab6eb73205ff2234f55f0d4a7e034176fe8dc8649c6950ff499d547b`. The registered version-2
+plan needs no duplicate or overlong-session skips; both closed-`norm_num` schema families contribute
+1,164 distinct roots. At the advertised 100,000-row maximum, the same prepass produces 46,574
+unique sessions and safely counts and omits the one numeric candidate equal to a sealed target.
+WMI now invokes the synthetic generator before the library generator, allowing this seconds-long
+prepass to reject a bad launch before either corpus begins expensive proof replay. An upfront
+empty-data-directory gate likewise rejects stale partial-run artifacts before either generator
+starts.
+
+Job `172536` exited with status 2 before dataset construction, attestation, tokenization, A100
+smoke, training, or evaluation. Transactional staging published no partial synthetic corpus. The
+figures above describe the corrected deterministic plan, not a completed corpus or learned-model
+result.
+
 Attestation accepts the combined release only if it reconstructs every prefix from 0 through 247,
 finds the exact predecessor-prefix plus full-synthetic schedule, rebuilds the dataset from raw
 traces, and observes zero held-out contamination. Tokenization is another fail-closed gate: every
@@ -891,8 +935,8 @@ The registered first run uses pinned `Qwen/Qwen3-1.7B-Base`, BF16 SDPA, rank-32/
 effective batch 32, and two full epochs, with at most 80,000 train and 6,000 validation examples.
 Microbatch one and gradient accumulation 32 preserve the effective batch without padding two long
 states together. It is planned for a WMI A100 after corpus replay, attestation, and the native-context audit pass. This is
-a run specification, not a result: no model-v3 job, adapter, solve rate, or comparison is claimed
-here.
+a run specification, not a result: no model-v3 training job, adapter, solve rate, or comparison is
+claimed here.
 
 ## Reproduction and honest resume
 
@@ -1070,8 +1114,9 @@ limitations remain:
 - the only trained result is still the narrow 10,000-row model-v1 smoke; no model-v2 or model-v3
   heavy adapter or quality measurement exists;
 - model-v3's 247-theorem identity, strict predecessor-prefix generator, 51-schema root-balanced
-  generator, replay attestation, and 32,768-token native-context gate are implemented, but the final combined corpus
-  must still pass all of those gates before the registered WMI run;
+  generator, replay attestation, and 32,768-token native-context gate are implemented, and the
+  repaired 70,000-row schedule has passed model-free preflight, but full generation, attestation,
+  and tokenization must still pass before the registered WMI training run;
 - the four-goal protocol set is a regression fixture, not a statistically useful final test, and
   hard whole-template OOD sets plus human-authored problems still need to be sealed;
 - depth-32 verifier-guided beam search is implemented, but its gain with a trained model-v3 policy

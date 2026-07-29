@@ -446,20 +446,26 @@
   its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions,
   and all 247 authored QEDs. Local browser build `2026-07-29k` packages
   manifest identity `a-77df7c0860bc`; it is not staged or deployed. The strict
-  book rebuild passes 38 sources with no warnings; 195 deep links and 47
+  book rebuild passes 38 sources with no warnings; 194 deep links and 47
   executable blocks containing 287 commands verify. A guided ten-stage route
   and generated interactive atlas expose all 247 exact statements, complete
   authored proof recipes, dependencies, dependents, metrics and source/vault
-  links. The complete Peano suite passes 1,288 tests with one intentional skip
-  in 1,259.11 seconds; Lambda passes 360 tests plus 36 subtests. An in-app
+  links. The complete Peano suite passes 1,298 tests with one intentional skip
+  in 1,275.58 seconds; Lambda passes 360 tests plus 36 subtests. An in-app
   browser was unavailable, so direct Pyodide and rendered
   book UI smokes are not claimed; automated runtime/worker tests, static HTML
   contracts and the deployment-manifest check remain green.
 - **Model-v3 training curriculum (2026-07-29):** the complete 247-theorem
   declaration order is now a content-bound training authority. Exact authored
-  predecessor-prefix replay contributes 8,494 transitions, and a separate
-  70,000-row, 51-schema synthetic lane balances 14 root tactic heads while
-  capping `intro` at 20%. Catalog-derived components are train-only;
+  predecessor-prefix replay contributes 8,494 transitions. WMI preparation
+  `172536` completed that library lane, then failed closed after 1:02:34 when
+  the original synthetic ring schema exceeded its reviewed coefficient limit;
+  no training or evaluation job was submitted. The repaired version-2
+  synthetic plan has exactly 70,000 rows in 32,600 unique roots, covers all 51
+  schemas, balances 14 first-tactic heads at 2,328--2,329 sessions, caps
+  `intro` below 20%, and needs zero candidate skips. Its ordered SHA-256 is
+  `79d2704eab6eb73205ff2234f55f0d4a7e034176fe8dc8649c6950ff499d547b`.
+  Catalog-derived components are train-only;
   validation and test are synthetic-only, and held-out target formulas are
   rejected at every intermediate state. Prompt-v3 exposes exact theorem
   names and statements and losslessly compacts repeated proof declarations
@@ -467,5 +473,10 @@
   maximum pinned Qwen3 prompt, completion, and EOS length is 29,111 tokens,
   leaving 3,657 below the native 32,768-token limit. The registered WMI run is
   Qwen3-1.7B Base with rank-32/alpha-64 LoRA, effective batch 32, and two
-  epochs. These are implemented and locally verified launch controls, not a
-  trained-model result; no model-v3 adapter or solve-rate claim exists yet.
+  epochs. A model-free whole-schedule prepass, safe ring and induction domains,
+  a typed/counted held-out collision skip, synthetic-first WMI ordering, and an
+  upfront empty-data-directory gate now fail before expensive retry work. The
+  advertised 100,000-row maximum also preflights exactly, with 46,574 unique
+  roots and one held-out skip. These are implemented launch controls and a
+  deterministic plan, not a completed synthetic corpus or trained-model
+  result; no model-v3 adapter or solve-rate claim exists yet.

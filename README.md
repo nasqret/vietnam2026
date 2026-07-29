@@ -76,24 +76,27 @@ kernel-checked sessions under fingerprint
 its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
 all 247 authored QEDs. Local browser build `2026-07-29k` packages application
 `a-77df7c0860bc`; it is not staged or deployed. The strict Jupyter Book rebuild
-passes over all 38 sources with zero warnings; 195 deep links and 47 session
+passes over all 38 sources with zero warnings; 194 deep links and 47 session
 blocks containing 287 commands verify. Its guided zero-to-FTA route and
 generated interactive atlas embed all 247 exact statements and authored proof
 recipes with searchable dependency navigation. The complete Peano Lab suite
-passes 1,288 tests with one intentional skip in 1,259.11 seconds; Lambda Lab
+passes 1,298 tests with one intentional skip in 1,275.58 seconds; Lambda Lab
 passes 360 tests plus 36 subtests. No
 in-app browser was attached for this checkpoint, so direct Pyodide and rendered
 book UI smokes are explicitly unclaimed.
 
 The next proof-policy experiment is implemented as `model-v3`: 8,494 exact
 authored predecessor-prefix transitions from the complete checked library plus
-a deterministic 70,000-row, 51-schema synthetic curriculum. Its split and
-attestation rules keep catalog-derived proofs train-only and reject held-out
-targets from every intermediate state. A lossless v3-only prompt encoding
-keeps the audited worst stress-proof turn at 29,111 of Qwen's 32,768 native
-tokens. The registered WMI run uses pinned Qwen3-1.7B Base with rank-32/
-alpha-64 LoRA for two epochs. This describes a verified launch candidate, not
-a trained adapter or measured solve rate.
+a version-2 deterministic plan for 70,000 synthetic rows, 32,600 unique roots,
+and all 51 schemas. Its split and attestation rules keep catalog-derived proofs
+train-only and reject held-out targets from every intermediate state. A
+lossless v3-only prompt encoding keeps the audited worst stress-proof turn at
+29,111 of Qwen's 32,768 native tokens. WMI preparation `172536` completed the
+library lane and then failed closed on an over-limit synthetic ring instance;
+no training or evaluation job was submitted. The repaired run uses pinned
+Qwen3-1.7B Base with rank-32/alpha-64 LoRA for two epochs. This describes a
+preflighted launch plan awaiting complete replay, not a trained adapter or
+measured solve rate.
 
 ---
 

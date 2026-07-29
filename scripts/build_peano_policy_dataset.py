@@ -673,6 +673,12 @@ def _validate_v3_synthetic_lane(
             if candidate.parameters.get("artificial_gate_removed") is True
             else []
         ),
+        *(
+            ["add-bounded-closed-induction-zero-tag"]
+            if candidate.parameters.get("closed_root_zero_tag_method")
+            == "bounded-syntactic-zero-v1"
+            else []
+        ),
     ]
     expected_metadata = {
         "theorem": f"synthetic.{schema.name}.{root.rsplit('/', 1)[-1]}",

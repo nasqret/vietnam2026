@@ -549,7 +549,12 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       `intro` root-session ceiling of 20%, no library schemas, and no artificial induction gates.
       Prompt v3 includes the complete compact allowed-name inventory and bounds detailed
       `name : statement` retrieval to 12 records from the exact checked prefix; this corrects the
-      measured 242/640 direct-dependency visibility of statement retrieval alone.
+      measured 242/640 direct-dependency visibility of statement retrieval alone. The repaired
+      schema catalog is version 2: 2,396 safe ring tuples plus compact zero tags stay within tactic
+      limits, and four induction families each have 4,096 distinct gate-free roots. A model-free
+      prepass pins the registered 70,000-row plan to 32,600 unique sessions across all 51 schemas,
+      first-head counts 2,328--2,329, zero skips, and sequence SHA-256
+      `79d2704eab6eb73205ff2234f55f0d4a7e034176fe8dc8649c6950ff499d547b`.
 - [ ] Generate and combine the final model-v3 raw corpora, independently replay and attest every
       QED and all prefixes 0--247, then pass the pinned-tokenizer 32,768-token native-context
       no-truncation gate or fail closed for a reviewed representation revision. The exact library
@@ -557,7 +562,11 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       reviewed-limit escape hatch; ordinary requests retain 16 MB and cannot select the override.
       Prompt-v3 states use lossless `shared-declarations-v1` exact context-chunk/target tables under
       a 44,000-character fail-closed bound; raw traces, row states, replay, held-out checks, and
-      kernel inputs remain unchanged.
+      kernel inputs remain unchanged. First WMI preparation `172536` completed all 8,494 library
+      transitions and 247 QED footers but failed closed on an over-limit synthetic ring instance;
+      no downstream job was submitted. The retry now plans synthetic data before proof execution,
+      runs the synthetic generator before the library generator, and rejects a nonempty data
+      directory before either starts. The final corpus, attestation, and token gate remain pending.
 - [ ] Run the registered WMI Qwen3-1.7B model-v3 experiment only after preparation passes:
       rank-32/alpha-64 LoRA, effective batch 32, two epochs, at most 80,000 train and 6,000
       validation rows. Record no checkpoint or quality result before the artifacts exist.

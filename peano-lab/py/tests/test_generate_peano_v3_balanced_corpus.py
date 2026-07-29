@@ -73,6 +73,7 @@ def _cheap_full_capabilities() -> SurfaceCapabilities:
 
 def test_catalog_removes_library_schemas_and_exposes_real_root_shapes() -> None:
     assert generator.PROFILE == "model-v3"
+    assert generator.CATALOG_VERSION == 2
     assert generator.GENERATOR == "proof-first-root-balanced-v3"
     assert len(generator.SCHEMAS) == len({schema.name for schema in generator.SCHEMAS})
     assert not [
@@ -109,6 +110,97 @@ def test_catalog_removes_library_schemas_and_exposes_real_root_shapes() -> None:
     assert {"equality", "existential", "conjunction", "disjunction"} <= root_kinds
 
 
+def test_ring_root_domain_excludes_every_over_limit_tuple_and_stays_unique() -> None:
+    all_coefficients = {
+        (a, b, c, d)
+        for a in range(generator.RING_DIGIT_BASE)
+        for b in range(generator.RING_DIGIT_BASE)
+        for c in range(generator.RING_DIGIT_BASE)
+        for d in range(generator.RING_DIGIT_BASE)
+    }
+    unsafe_coefficients = {
+        (5, 6, 6, 6),
+        (6, 5, 6, 6),
+        (6, 6, 5, 6),
+        (6, 6, 6, 5),
+        (6, 6, 6, 6),
+    }
+    safe_coefficients = set(generator.RING_SAFE_COEFFICIENTS)
+    assert len(generator.RING_SAFE_COEFFICIENTS) == 2_396
+    assert all_coefficients - safe_coefficients == unsafe_coefficients
+    assert max((a + b) * (c + d) for a, b, c, d in safe_coefficients) <= 128
+
+    maximum_balanced_ring_index = (
+        generator.SCHEMA_OFFSET_MODULUS
+        + (generator.MAX_ROW_BUDGET + len(generator.ROOT_HEADS) - 1)
+        // len(generator.ROOT_HEADS)
+    )
+    assert generator.RING_CANDIDATE_PERIOD > maximum_balanced_ring_index
+    assert len(
+        {
+            generator._closed_ring(index).statement
+            for index in range(generator.RING_CANDIDATE_PERIOD)
+        }
+    ) == generator.RING_CANDIDATE_PERIOD
+
+    ring_schema = next(
+        schema for schema in generator.ROOT_SCHEMAS if schema.name == "root-equality-ring"
+    )
+    offset = generator._schema_offset(
+        "peano-policy-v3-balanced-wmi-20260729",
+        ring_schema,
+    )
+    capabilities = _cheap_full_capabilities()
+    for ordinal, unsafe in enumerate(sorted(unsafe_coefficients), 1):
+        old_residue = sum(
+            digit * generator.RING_DIGIT_BASE**position
+            for position, digit in enumerate(unsafe)
+        )
+        parameter_index = offset + (
+            (old_residue - offset)
+            % generator.RING_DIGIT_BASE**len(unsafe)
+        )
+        candidate = generator._closed_ring(parameter_index)
+        assert candidate.parameters["normalized_coefficient"] <= 128
+        assert tuple(candidate.parameters["coefficients"]) not in unsafe_coefficients
+        result = run_proof(
+            candidate.statement,
+            candidate.tactics,
+            capabilities=capabilities,
+            request_id=f"ring-limit-regression-{ordinal}",
+        )
+        assert result.status == "proved", (parameter_index, result.error)
+        assert result.kernel_checked is True
+
+
+@pytest.mark.parametrize(
+    ("schema_name", "parameter_index"),
+    (
+        ("root-equality-ring", 4_446),
+        ("root-equality-ring", 4_452),
+        ("root-equality-ring", 4_739),
+        ("root-equality-ring", 4_745),
+        ("reused-arithmetic-ring-product", 559),
+        ("reused-arithmetic-ring-square", 19_327),
+    ),
+)
+def test_ring_resource_frontier_instances_remain_kernel_checked(
+    schema_name: str,
+    parameter_index: int,
+) -> None:
+    schema = next(schema for schema in generator.SCHEMAS if schema.name == schema_name)
+    candidate = schema.build(parameter_index)
+    result = run_proof(
+        candidate.statement,
+        candidate.tactics,
+        capabilities=_cheap_full_capabilities(),
+        request_id=f"ring-resource-frontier-{schema_name}-{parameter_index}",
+    )
+    assert result.status == "proved", result.error
+    assert result.kernel_checked is True
+    assert result.proof_nodes is not None and result.proof_nodes < 100_000
+
+
 def test_induction_gate_removal_is_exact_immutable_and_checked() -> None:
     schemas = [
         schema
@@ -118,11 +210,19 @@ def test_induction_gate_removal_is_exact_immutable_and_checked() -> None:
     assert len(schemas) == 4
     capabilities = _cheap_full_capabilities()
     for ordinal, schema in enumerate(schemas, 1):
-        candidate = schema.build(ordinal)
+        parameter_index = generator._schema_offset(
+            "peano-policy-v3-balanced-wmi-20260729",
+            schema,
+        )
+        candidate = schema.build(parameter_index)
         assert candidate.tactics[0].split(maxsplit=1)[0] == "induction"
         assert "intro gate" not in candidate.tactics
         assert "gate" not in candidate.parameters
         assert candidate.parameters["artificial_gate_removed"] is True
+        assert (
+            candidate.parameters["closed_root_zero_tag_method"]
+            == "bounded-syntactic-zero-v1"
+        )
         assert not candidate.statement.startswith("(") or "gate" not in candidate.statement
         result = run_proof(
             candidate.statement,
@@ -132,6 +232,12 @@ def test_induction_gate_removal_is_exact_immutable_and_checked() -> None:
         )
         assert result.status == "proved", (schema.name, result.error)
         assert result.kernel_checked is True
+        assert len(
+            {
+                schema.build(index).statement
+                for index in range(generator.INDUCTION_ZERO_TAG_PERIOD)
+            }
+        ) == generator.INDUCTION_ZERO_TAG_PERIOD
 
     malformed = generator.Candidate("0 = 0", ("refl",), {"gate": "0 = 0"})
     with pytest.raises(generator.GenerationError, match="exact removable gate"):
@@ -139,6 +245,100 @@ def test_induction_gate_removal_is_exact_immutable_and_checked() -> None:
     assert malformed == generator.Candidate(
         "0 = 0", ("refl",), {"gate": "0 = 0"}
     )
+
+
+def test_full_wmi_schedule_is_exact_balanced_unique_and_preflighted() -> None:
+    generator._validate_catalog()
+    plan = generator._plan_schedule(
+        seed="peano-policy-v3-balanced-wmi-20260729",
+        row_budget=70_000,
+        budget_mode="exact",
+    )
+
+    assert plan["positive_tactic_rows"] == 70_000
+    assert plan["sessions"] == 32_600
+    assert plan["independent_roots"] == plan["sessions"]
+    assert plan["unique_canonical_statements"] == plan["sessions"]
+
+    head_counts = plan["root_sessions_by_first_tactic_head"]
+    assert isinstance(head_counts, dict)
+    assert set(head_counts) == set(generator.ROOT_HEADS)
+    assert set(head_counts.values()) == {2_328, 2_329}
+    assert max(head_counts.values()) - min(head_counts.values()) == 1
+    assert 5 * head_counts["intro"] <= plan["sessions"]
+    assert plan["candidate_skips"] == {
+        "duplicate_statement": 0,
+        "held_out_target": 0,
+        "overlong_exact_fill": 0,
+    }
+
+    schema_counts = plan["sessions_by_schema"]
+    assert isinstance(schema_counts, dict)
+    assert set(schema_counts) == {schema.name for schema in generator.SCHEMAS}
+    assert all(count > 0 for count in schema_counts.values())
+    assert plan["sequence_sha256"] == (
+        "79d2704eab6eb73205ff2234f55f0d4a7e034176fe8dc8649c6950ff499d547b"
+    )
+
+
+def test_maximum_schedule_counts_and_skips_reserved_held_out_candidate() -> None:
+    schema = next(
+        schema
+        for schema in generator.ROOT_SCHEMAS
+        if schema.name == "root-equality-norm"
+    )
+    held_out_candidate = schema.build(13_616)
+    with pytest.raises(generator._HeldOutTargetError, match="held-out target"):
+        generator._canonical_statement(held_out_candidate, schema)
+
+    plan = generator._plan_schedule(
+        seed="peano-policy-v3-balanced-wmi-20260729",
+        row_budget=generator.MAX_ROW_BUDGET,
+        budget_mode="exact",
+    )
+    assert plan["positive_tactic_rows"] == generator.MAX_ROW_BUDGET
+    assert plan["sessions"] == 46_574
+    assert plan["independent_roots"] == plan["sessions"]
+    assert plan["unique_canonical_statements"] == plan["sessions"]
+    assert set(plan["sessions_by_schema"]) == {
+        schema.name for schema in generator.SCHEMAS
+    }
+    assert max(plan["root_sessions_by_first_tactic_head"].values()) - min(
+        plan["root_sessions_by_first_tactic_head"].values()
+    ) == 1
+    assert plan["candidate_skips"] == {
+        "duplicate_statement": 0,
+        "held_out_target": 1,
+        "overlong_exact_fill": 0,
+    }
+    assert plan["sequence_sha256"] == (
+        "c9acdf586b16ee6a8cf8dacf923977f177c4262859156c5f9c5d45848ba1e83e"
+    )
+
+
+def test_schedule_does_not_swallow_an_ordinary_generation_error(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def fail_candidate(*args: object, **kwargs: object):
+        del args, kwargs
+        raise generator.GenerationError("ordinary schema failure")
+
+    monkeypatch.setattr(generator, "_canonical_statement", fail_candidate)
+    schedule = generator._Schedule(
+        "fail-closed-test",
+        generator.Counter(),
+        generator.Counter(),
+        generator.Counter(),
+    )
+    with pytest.raises(generator.GenerationError, match="ordinary schema failure"):
+        generator._select_candidate(
+            schedule,
+            sessions=0,
+            remaining=1,
+            budget_mode="exact",
+            seen_statements=set(),
+            seen_roots=set(),
+        )
 
 
 def test_held_out_formula_cannot_hide_as_an_intermediate_goal_target() -> None:
@@ -223,8 +423,10 @@ def test_exact_budget_is_root_balanced_full_prefix_and_builder_replayable(
     assert counts["intro_root_percent"] <= 20
     assert counts["root_head_session_imbalance"] <= 1
     assert generator.REQUIRED_ROOT_KINDS <= set(counts["sessions_by_root_kind"])
+    assert manifest["config"]["selection"] == generator.SCHEDULE_SELECTION
     assert manifest["curriculum"]["artificial_induction_gates"] == 0
     assert manifest["curriculum"]["library_schemas"] == 0
+    assert manifest["curriculum"]["schedule_plan"]["sessions"] == len(sessions)
     assert not {record["statement"] for record in metadata} & generator.HELD_OUT_FORMULAS
 
     assert all(record["surface"] == "model-v3" for record in metadata)

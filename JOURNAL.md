@@ -1806,3 +1806,37 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   the manifest and atlas drift checks pass; and a clean 38-source Jupyter Book
   render succeeds without warnings. Remote synchronization, training, and
   evaluation remain subsequent steps rather than inferred successes.
+
+## 2026-07-29 — Model-v3 preparation fails closed and gains a schedule prepass
+
+- WMI job `172536` validated the pinned A100 environment and completed the exact library lane:
+  8,494 transitions and 247 independently checked QED footers. Synthetic generation then stopped
+  after 1:02:34 with exit 2 because one ring root normalized to coefficient 132, above the tactic's
+  reviewed limit of 128. No partial synthetic corpus was published and no training or evaluation
+  job was submitted.
+- The repaired ring domain contains exactly 2,396 safe base-7 coefficient tuples. Sixteen compact
+  closed-zero tags extend it to 38,336 distinct safe statements. The four gate-free induction
+  schemas now each use a 4,096-value closed-zero tag, correcting their unintended collapse to only
+  four canonical roots. The repaired schema catalog is version 2, distinct from the failed job's
+  version-1 identity.
+- A model-free prepass now plans and canonicalizes the entire schedule before proof execution or
+  output creation. It rejects duplicates, exhausted domains, inexact filling, `intro` overflow,
+  and head imbalance; execution must reproduce its counts and digest exactly. For the registered
+  seed, 70,000 rows form 32,600 distinct roots across all 51 schemas, with each of 14 heads used
+  2,328 or 2,329 times. The ordered schedule SHA-256 is
+  `79d2704eab6eb73205ff2234f55f0d4a7e034176fe8dc8649c6950ff499d547b`; it requires no duplicate
+  or overlong-session skips.
+- A maximum-budget audit found one numeric candidate exactly equal to a sealed evaluation target.
+  A dedicated typed and counted exclusion now skips only that valid collision; malformed schema
+  output still fails. The 100,000-row preflight completes with 46,574 unique sessions, balanced
+  heads, and exactly one held-out skip.
+- WMI preparation now starts with the synthetic generator, whose whole-schedule prepass runs before
+  either corpus begins expensive proof replay. A future schedule-contract failure therefore stops
+  in seconds instead of following the hour-long library phase. An upfront empty-data-directory gate
+  also rejects every stale artifact before either generator starts.
+- Final local gates: Peano Lab 1,298 passed/one skipped in 1,275.58 seconds; Lambda Lab 360 plus 36
+  subtests; 19 focused generator tests and 23 WMI/config tests; 287 documented commands; 247 vault
+  lemma notes and 3,286 links; and a warning-free 38-source Jupyter Book rebuild.
+- Full WMI preparation, training, and independent kernel evaluation remain pending. The balanced
+  object currently established is the deterministic plan, not a published corpus or trained
+  model.

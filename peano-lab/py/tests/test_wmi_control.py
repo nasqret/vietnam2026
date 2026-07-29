@@ -343,6 +343,13 @@ def test_wmi_v3_chain_prepares_trains_and_evaluates_on_a100() -> None:
     assert "nvidia-smi" in prepare
     assert "generate_peano_library_policy_corpus.py" in prepare
     assert "generate_peano_v3_balanced_corpus.py" in prepare
+    assert "refusing nonempty WMI v3 data directory" in prepare
+    assert prepare.index("refusing nonempty WMI v3 data directory") < prepare.index(
+        "generate_peano_v3_balanced_corpus.py"
+    )
+    assert prepare.index("generate_peano_v3_balanced_corpus.py") < prepare.index(
+        "generate_peano_library_policy_corpus.py"
+    )
     assert "--row-budget 70000" in prepare
     assert "--budget-mode exact" in prepare
     assert "combine_peano_v3_corpus_metadata.py" in prepare

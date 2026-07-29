@@ -3,9 +3,10 @@
 **Status:** binding experiment protocol with the first accepted WMI model-v1 result, the historical
 model-v2 launch stack, and the implemented model-v3 successor recorded, 2026-07-29. Model-v3 binds
 the complete 247-theorem ladder and corrects the curriculum and leakage contract described below.
-It has not yet produced a trained checkpoint or theorem-proving result; its proof quality is
-unknown. Result fields are filled only after the corresponding artifacts exist and successful
-scripts have passed the independent kernel.
+WMI preparation job `172536` reached the registered A100 environment but failed closed during
+synthetic generation. No model-v3 training or evaluation job was submitted, and no trained
+checkpoint exists. Its proof quality is unknown. Result fields are filled only after the
+corresponding artifacts exist and successful scripts have passed the independent kernel.
 This document extends M9; it does not weaken any Peano Lab trust rule.
 
 ## 1. What changed after M9
@@ -883,7 +884,7 @@ not identify parameter count as the limiting factor.
 The immutable training manifest, held-out report, two arbitrary-request reports, compact index, and
 checked positive script are published under [`artifacts/peano-policy/`](../artifacts/peano-policy/).
 
-### 10.5 Model-v3 successor: implemented, WMI run pending
+### 10.5 Model-v3 successor: first WMI preparation diagnosed; training pending
 
 Model-v3 replaces the undersized model-v2 authority with all 247 declaration-ordered public
 theorems. Its checked identity binds each canonical statement, dependency list, source
@@ -904,6 +905,39 @@ The model-v3 positive curriculum has two complementary sources:
    inherited induction schemas have their artificial implication gates removed, so their root
    action is `induction`, not `intro gate`. Library schemas are omitted because the exact prefix
    corpus owns theorem-reuse supervision.
+
+Preparation job `172536` completed the exact 247-theorem library phase, producing 8,494 transition
+records and 247 checked QED footers. After 1:02:34 it stopped in `root-equality-ring`: the generated
+`(6 + 6) * (6 + 5)` factor product normalizes to coefficient 132, above `ring`'s reviewed
+coefficient limit of 128. The job exited with status 2 before dataset construction, token audit,
+A100 smoke, training, or evaluation. Transactional staging published no partial synthetic corpus.
+
+The corrected ring schema enumerates exactly 2,396 safe base-7 coefficient tuples satisfying
+`(a + b) * (c + d) <= 128`; it excludes four tuples normalizing to 132 and one normalizing to 144.
+Sixteen two-digit base-4 terms of the form `a * 0 + b * 0`, inserted identically on both sides,
+extend this to 38,336 distinct closed statements without increasing the normalized coefficient.
+
+Removing the old implication gates also removed the only varying text from four induction
+families, so they had silently collapsed to four canonical targets. The repaired schema catalog is
+version 2, so its identity cannot be confused with the failed WMI catalog. Each family now carries a
+six-digit base-4 closed-zero tag, giving 4,096 distinct targets per schema while preserving
+`induction` as the genuine first tactic.
+
+Before proof execution or output-file creation, a model-free planner now canonicalizes the entire
+proposed schedule and rejects exhausted finite domains, an inexact row total, an `intro`-cap
+violation, or root-head imbalance. Exact held-out formula collisions are the only valid candidates
+excluded by a dedicated typed path, and every such skip is counted; malformed candidates still
+fail hard. Execution must reproduce the planned counts, skip counts, and sequence digest exactly.
+For seed `peano-policy-v3-balanced-wmi-20260729`, the exact plan contains
+70,000 tactic rows in 32,600 distinct sessions, covers all 51 schemas, and assigns either 2,328 or
+2,329 sessions to each of 14 first-tactic heads. Its sequence SHA-256 is
+`79d2704eab6eb73205ff2234f55f0d4a7e034176fe8dc8649c6950ff499d547b`. This is a balanced plan;
+it needs zero candidate skips. A separate maximum-budget preflight reaches 100,000 rows in 46,574
+unique sessions while counting and excluding the one sealed-target collision. Complete kernel
+replay and corpus publication remain pending. The WMI preparation order now invokes this synthetic
+prepass before the library generator, so a schedule-contract failure cannot again consume an hour
+of unrelated proof replay first. It also requires the model-v3 data directory to be empty before
+either generator starts, turning stale partial-run artifacts into an immediate refusal.
 
 Prompt v3 carries the complete compact allowed-name inventory plus at most twelve deterministically
 retrieved statement records from the current prefix. The latter are detailed semantic context, not
@@ -930,6 +964,12 @@ splits from raw traces, and requires zero held-out contamination. Preparation th
 selected train and validation example with the pinned tokenizer and rejects the release if any
 sequence exceeds Qwen's 32,768-token native context. Truncation is forbidden; a failed audit
 requires a reviewed representation change.
+
+That attestation name describes the outer two-lane authority schedule. The synthetic lane's inner
+selection algorithm is separately versioned as
+`first-tactic-head-deficit-long-session-tiebreak-v2`; changing its ordering must therefore change
+the recorded selection label and deterministic plan digest without pretending that catalog-prefix
+authority changed.
 
 The model-v2 goals `le_trans`, `le_antisymm`, `le_total`, and `mul_eq_zero` are now theorem-ladder
 training material, so they cannot remain model-v3 discovery tests. The separately sealed v3 set is:

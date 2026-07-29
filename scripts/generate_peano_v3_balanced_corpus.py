@@ -6,9 +6,11 @@ move: many otherwise useful schemas were hidden behind an artificial
 ``gate -> ...`` proposition, so their root transition was ``intro gate``.
 This generator keeps the useful proof-first schema builders, drops every old
 ``library-*`` schema (library trajectories are generated separately), and
-removes the induction gates as one validated immutable transformation.  It
-also adds genuinely closed equality, existential, conjunction, and
-disjunction roots.
+removes the induction gates as one validated immutable transformation.  The
+gate-free induction bodies retain bounded closed tags so that they remain
+distinct theorem roots instead of collapsing to four repeated statements.
+The generator also adds genuinely closed equality, existential, conjunction,
+and disjunction roots.
 
 Sessions are scheduled by a deficit over their *first tactic head*.  Thus a
 large family of introduction-based schemas cannot dominate root states, and
@@ -87,16 +89,27 @@ GenerationError = source.GenerationError
 GenerationResult = source.GenerationResult
 _DigestingWriter = source._DigestingWriter
 
+
+class _HeldOutTargetError(GenerationError):
+    """A valid schema candidate is reserved exclusively for evaluation."""
+
+
 FORMAT = "peano-policy-corpus"
 VERSION = 1
 PROFILE = "model-v3"
-CATALOG_VERSION = 1
+CATALOG_VERSION = 2
 GENERATOR = "proof-first-root-balanced-v3"
 DEFAULT_SEED = "peano-synthetic-v3-balanced"
 DEFAULT_ROW_BUDGET = 1_000
 MAX_ROW_BUDGET = 100_000
 BUDGET_MODES = ("exact", "complete-session")
 INTRO_ROOT_PERCENT = 20
+SCHEDULE_SELECTION = "first-tactic-head-deficit-long-session-tiebreak-v2"
+SCHEMA_OFFSET_MODULUS = 20_000
+CLOSED_TERM_PERIOD = 10_000
+INDUCTION_ZERO_TAG_BASE = 4
+INDUCTION_ZERO_TAG_DIGITS = 6
+INDUCTION_ZERO_TAG_PERIOD = INDUCTION_ZERO_TAG_BASE**INDUCTION_ZERO_TAG_DIGITS
 HELD_OUT_NAMES = frozenset(
     name for name, _ in MODEL_V3_HELD_OUT_POLICY_GOALS
 )
@@ -125,7 +138,11 @@ def _digits(value: int, base: int, count: int) -> tuple[int, ...]:
 
 
 def _closed_term(index: int, *, salt: int = 0) -> str:
-    a, b, c, d = _digits((index * 17 + salt * 101) % 10_000, 10, 4)
+    a, b, c, d = _digits(
+        (index * 17 + salt * 101) % CLOSED_TERM_PERIOD,
+        10,
+        4,
+    )
     return f"(({a} + {b}) * ({c} + 1) + {d})"
 
 
@@ -148,16 +165,46 @@ def _closed_norm(index: int) -> Candidate:
     )
 
 
+RING_DIGIT_BASE = 7
+RING_ZERO_TAG_BASE = 4
+RING_ZERO_TAG_DIGITS = 2
+RING_ZERO_TAG_COUNT = RING_ZERO_TAG_BASE**RING_ZERO_TAG_DIGITS
+RING_SAFE_COEFFICIENTS: tuple[tuple[int, int, int, int], ...] = tuple(
+    (a, b, c, d)
+    for d in range(RING_DIGIT_BASE)
+    for c in range(RING_DIGIT_BASE)
+    for b in range(RING_DIGIT_BASE)
+    for a in range(RING_DIGIT_BASE)
+    if (a + b) * (c + d) <= 128
+)
+RING_CANDIDATE_PERIOD = len(RING_SAFE_COEFFICIENTS) * RING_ZERO_TAG_COUNT
+
+
 def _closed_ring(index: int) -> Candidate:
-    a, b, c, d = _digits(index % 2_401, 7, 4)
+    cycle, coefficient_index = divmod(
+        index % RING_CANDIDATE_PERIOD,
+        len(RING_SAFE_COEFFICIENTS),
+    )
+    a, b, c, d = RING_SAFE_COEFFICIENTS[coefficient_index]
+    tag_left, tag_right = _digits(
+        cycle,
+        RING_ZERO_TAG_BASE,
+        RING_ZERO_TAG_DIGITS,
+    )
+    # The compact syntactic tag is always polynomially zero.  It gives the
+    # one ring-root schema enough distinct closed statements for the largest
+    # supported row budget without raising any normalized coefficient.
+    zero_tag = f"({tag_left} * 0 + {tag_right} * 0)"
     return _candidate(
         (
-            f"({a} + {b}) * ({c} + {d}) = "
-            f"{a} * {c} + {a} * {d} + {b} * {c} + {b} * {d}"
+            f"({a} + {b}) * ({c} + {d}) + {zero_tag} = "
+            f"{a} * {c} + {a} * {d} + {b} * {c} + {b} * {d} + {zero_tag}"
         ),
         ("ring",),
         root_kind="equality",
         coefficients=[a, b, c, d],
+        normalized_coefficient=(a + b) * (c + d),
+        zero_tag_digits=[tag_left, tag_right],
     )
 
 
@@ -319,9 +366,85 @@ def _ungate_candidate(candidate: Candidate) -> Candidate:
     return Candidate(statement, tactics, parameters)
 
 
-def _ungated_builder(build: Callable[[int], Candidate]) -> Callable[[int], Candidate]:
+_UNGATED_INDUCTION_BODIES = {
+    "induction-add-zero": "forall n. 0 + n = n",
+    "induction-mul-zero": "forall n. 0 * n = 0",
+    "induction-add-one": "forall n. n + 0 = n",
+    "induction-explicit-IH": "forall n. 0 = 0",
+}
+_UNGATED_INDUCTION_SALTS = {
+    "induction-add-zero": 20,
+    "induction-mul-zero": 21,
+    "induction-add-one": 22,
+    "induction-explicit-IH": 23,
+}
+
+
+def _closed_zero_tag(index: int, *, salt: int) -> str:
+    digits = _digits(
+        (index * 17 + salt * 101) % INDUCTION_ZERO_TAG_PERIOD,
+        INDUCTION_ZERO_TAG_BASE,
+        INDUCTION_ZERO_TAG_DIGITS,
+    )
+    return "(" + " + ".join(f"{digit} * 0" for digit in digits) + ")"
+
+
+def _vary_ungated_induction(
+    candidate: Candidate,
+    *,
+    schema_name: str,
+    index: int,
+) -> Candidate:
+    expected = _UNGATED_INDUCTION_BODIES.get(schema_name)
+    if expected is None or candidate.statement != expected:
+        raise GenerationError("induction schema changed its reviewed gate-free body")
+    tag = _closed_zero_tag(index, salt=_UNGATED_INDUCTION_SALTS[schema_name])
+    if schema_name == "induction-add-zero":
+        statement = f"forall n. ({tag}) + n = n"
+        tactics = (
+            "induction n",
+            "simp",
+            "rewrite PA4",
+            "rewrite IH",
+            "refl",
+        )
+    elif schema_name == "induction-mul-zero":
+        statement = f"forall n. ({tag}) * n = 0"
+        tactics = (
+            "induction n",
+            "simp",
+            "rewrite PA6",
+            "rewrite IH",
+            "simp",
+        )
+    elif schema_name == "induction-add-one":
+        statement = f"forall n. n + ({tag}) = n"
+        tactics = candidate.tactics
+    else:
+        statement = f"forall n. ({tag}) = ({tag})"
+        tactics = candidate.tactics
+    return Candidate(
+        statement,
+        tactics,
+        {
+            **candidate.parameters,
+            "closed_root_zero_tag": tag,
+            "closed_root_zero_tag_method": "bounded-syntactic-zero-v1",
+        },
+    )
+
+
+def _ungated_builder(
+    build: Callable[[int], Candidate],
+    schema_name: str,
+) -> Callable[[int], Candidate]:
     def transformed(index: int) -> Candidate:
-        return _ungate_candidate(build(index))
+        candidate = _ungate_candidate(build(index))
+        return _vary_ungated_induction(
+            candidate,
+            schema_name=schema_name,
+            index=index,
+        )
 
     return transformed
 
@@ -334,8 +457,8 @@ def _reused_schemas() -> tuple[Schema, ...]:
         build = schema.build
         tags = schema.tags + ("reused-v2-proof-first",)
         if schema.name.startswith("induction-"):
-            build = _ungated_builder(build)
-            tags += ("gate-removed",)
+            build = _ungated_builder(build, schema.name)
+            tags += ("gate-removed", "closed-root-tag",)
         result.append(
             Schema(
                 f"reused-{schema.name}",
@@ -450,7 +573,7 @@ def _canonical_statement(candidate: Candidate, schema: Schema) -> tuple[str, For
         )
     canonical = pretty_formula(formula, [])
     if canonical in HELD_OUT_FORMULAS:
-        raise GenerationError(
+        raise _HeldOutTargetError(
             f"schema {schema.name!r} emitted a model-v3 held-out target"
         )
     return canonical, formula
@@ -486,7 +609,10 @@ def _rank(seed: str, epoch: int, label: str) -> str:
 
 def _schema_offset(seed: str, schema: Schema) -> int:
     material = f"{seed}\0{CATALOG_VERSION}\0{schema.name}".encode("utf-8")
-    return int.from_bytes(hashlib.sha256(material).digest()[:4], "big") % 20_000
+    return (
+        int.from_bytes(hashlib.sha256(material).digest()[:4], "big")
+        % SCHEMA_OFFSET_MODULUS
+    )
 
 
 def _first_head(schema: Schema) -> str:
@@ -506,6 +632,10 @@ def _schemas_by_head() -> dict[str, tuple[Schema, ...]]:
 
 SCHEMAS_BY_HEAD = _schemas_by_head()
 ROOT_HEADS = tuple(SCHEMAS_BY_HEAD)
+MIN_TACTIC_ROWS_BY_HEAD = {
+    head: min(len(schema.build(0).tactics) for schema in schemas)
+    for head, schemas in SCHEMAS_BY_HEAD.items()
+}
 
 
 def _validate_catalog() -> None:
@@ -518,6 +648,27 @@ def _validate_catalog() -> None:
         raise GenerationError("model-v3 synthetic catalog contains a library schema")
     if "intro" not in ROOT_HEADS or "induction" not in ROOT_HEADS:
         raise GenerationError("root curriculum lacks intro or induction")
+    maximum_balanced_ring_attempts = (
+        SCHEMA_OFFSET_MODULUS
+        + (MAX_ROW_BUDGET + len(ROOT_HEADS) - 1) // len(ROOT_HEADS)
+    )
+    if (
+        len(RING_SAFE_COEFFICIENTS) != 2_396
+        or any((a + b) * (c + d) > 128 for a, b, c, d in RING_SAFE_COEFFICIENTS)
+        or RING_CANDIDATE_PERIOD <= maximum_balanced_ring_attempts
+    ):
+        raise GenerationError("root ring schema exceeds its reviewed coefficient domain")
+    induction_schemas = SCHEMAS_BY_HEAD["induction"]
+    maximum_balanced_induction_attempts = (
+        (MAX_ROW_BUDGET + len(ROOT_HEADS) - 1) // len(ROOT_HEADS)
+        + len(induction_schemas)
+        - 1
+    ) // len(induction_schemas)
+    if (
+        len(induction_schemas) != 4
+        or INDUCTION_ZERO_TAG_PERIOD <= maximum_balanced_induction_attempts
+    ):
+        raise GenerationError("induction root tags cannot cover the reviewed row budget")
     for schema in SCHEMAS:
         if not _safe_text(schema.name, nonempty=True):
             raise GenerationError("model-v3 synthetic catalog has an unsafe name")
@@ -673,6 +824,12 @@ def _metadata_record(
                 if candidate.parameters.get("artificial_gate_removed") is True
                 else []
             ),
+            *(
+                ["add-bounded-closed-induction-zero-tag"]
+                if candidate.parameters.get("closed_root_zero_tag_method")
+                == "bounded-syntactic-zero-v1"
+                else []
+            ),
         ],
         "parameter_index": parameter_index,
         "parameters": candidate.parameters,
@@ -688,6 +845,9 @@ class _Schedule:
     attempts: Counter[str]
     head_counts: Counter[str]
     schema_cursors: Counter[str]
+    duplicate_skips: int = 0
+    held_out_skips: int = 0
+    overlong_skips: int = 0
 
     def ordered_heads(self, sessions: int) -> tuple[str, ...]:
         heads = list(ROOT_HEADS)
@@ -698,6 +858,7 @@ class _Schedule:
                 heads,
                 key=lambda head: (
                     self.head_counts[head],
+                    -MIN_TACTIC_ROWS_BY_HEAD[head],
                     _rank(self.seed, sessions, f"root-head:{head}"),
                     head,
                 ),
@@ -730,6 +891,77 @@ class _Schedule:
         return schema, parameter_index, candidate
 
 
+ScheduledCandidate = tuple[Schema, int, Candidate, str, Formula, str]
+
+
+def _select_candidate(
+    schedule: _Schedule,
+    *,
+    sessions: int,
+    remaining: int,
+    budget_mode: str,
+    seen_statements: set[str],
+    seen_roots: set[str],
+) -> ScheduledCandidate:
+    chosen: ScheduledCandidate | None = None
+    # A full pass is enough to find a one-row root in exact mode; the
+    # multiplier also lets duplicate or held-out candidates advance safely.
+    max_attempts = max(16, 4 * len(SCHEMAS))
+    for head in schedule.ordered_heads(sessions):
+        for _ in range(max_attempts):
+            schema, parameter_index, candidate = schedule.next_candidate(head)
+            if budget_mode == "exact" and len(candidate.tactics) > remaining:
+                schedule.overlong_skips += 1
+                continue
+            try:
+                canonical, formula = _canonical_statement(candidate, schema)
+            except _HeldOutTargetError:
+                schedule.held_out_skips += 1
+                continue
+            if canonical in seen_statements:
+                schedule.duplicate_skips += 1
+                continue
+            root = _root_id(schema, canonical)
+            if root in seen_roots:
+                raise GenerationError(
+                    f"schema {schema.name!r} generated duplicate root {root!r}"
+                )
+            chosen = (
+                schema,
+                parameter_index,
+                candidate,
+                canonical,
+                formula,
+                root,
+            )
+            break
+        if chosen is not None:
+            break
+    if chosen is None:
+        raise GenerationError(
+            f"no unique checked schema can fill the remaining {remaining} row(s)"
+        )
+    return chosen
+
+
+def _schedule_digest_record(
+    *,
+    schema: Schema,
+    parameter_index: int,
+    candidate: Candidate,
+    canonical: str,
+    root: str,
+) -> bytes:
+    return (
+        json.dumps(
+            [schema.name, parameter_index, canonical, list(candidate.tactics), root],
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ).encode("utf-8")
+        + b"\n"
+    )
+
+
 def _validate_arguments(
     seed: object,
     row_budget: object,
@@ -747,6 +979,76 @@ def _validate_arguments(
     return seed, row_budget, budget_mode
 
 
+def _plan_schedule(
+    *,
+    seed: str,
+    row_budget: int,
+    budget_mode: str,
+) -> dict[str, object]:
+    """Plan every root without executing tactics or emitting partial data."""
+
+    seed, row_budget, budget_mode = _validate_arguments(
+        seed,
+        row_budget,
+        budget_mode,
+    )
+    schedule = _Schedule(seed, Counter(), Counter(), Counter())
+    sessions = 0
+    rows = 0
+    schema_counts: Counter[str] = Counter()
+    seen_statements: set[str] = set()
+    seen_roots: set[str] = set()
+    digest = hashlib.sha256()
+    while rows < row_budget:
+        chosen = _select_candidate(
+            schedule,
+            sessions=sessions,
+            remaining=row_budget - rows,
+            budget_mode=budget_mode,
+            seen_statements=seen_statements,
+            seen_roots=seen_roots,
+        )
+        schema, parameter_index, candidate, canonical, _, root = chosen
+        first_head = candidate.tactics[0].split(maxsplit=1)[0]
+        digest.update(
+            _schedule_digest_record(
+                schema=schema,
+                parameter_index=parameter_index,
+                candidate=candidate,
+                canonical=canonical,
+                root=root,
+            )
+        )
+        sessions += 1
+        rows += len(candidate.tactics)
+        schedule.head_counts[first_head] += 1
+        schema_counts[schema.name] += 1
+        seen_statements.add(canonical)
+        seen_roots.add(root)
+
+    head_values = tuple(schedule.head_counts[head] for head in ROOT_HEADS)
+    if 5 * schedule.head_counts["intro"] > sessions:
+        raise GenerationError("planned intro roots exceed the twenty-percent cap")
+    if max(head_values) - min(head_values) > 1:
+        raise GenerationError("planned root tactic heads are not session-balanced")
+    return {
+        "sessions": sessions,
+        "positive_tactic_rows": rows,
+        "independent_roots": len(seen_roots),
+        "unique_canonical_statements": len(seen_statements),
+        "root_sessions_by_first_tactic_head": {
+            head: schedule.head_counts[head] for head in ROOT_HEADS
+        },
+        "sessions_by_schema": dict(sorted(schema_counts.items())),
+        "candidate_skips": {
+            "duplicate_statement": schedule.duplicate_skips,
+            "held_out_target": schedule.held_out_skips,
+            "overlong_exact_fill": schedule.overlong_skips,
+        },
+        "sequence_sha256": digest.hexdigest(),
+    }
+
+
 def generate_corpus(
     trace_output: str | os.PathLike[str],
     metadata_output: str | os.PathLike[str],
@@ -762,6 +1064,11 @@ def generate_corpus(
         seed, row_budget, budget_mode
     )
     _validate_catalog()
+    schedule_plan = _plan_schedule(
+        seed=seed,
+        row_budget=row_budget,
+        budget_mode=budget_mode,
+    )
     environment = _policy_environment()
     capabilities = _policy_capabilities()
     trace_path = Path(trace_output)
@@ -795,46 +1102,31 @@ def generate_corpus(
     tactic_heads: Counter[str] = Counter()
     seen_statements: set[str] = set()
     seen_roots: set[str] = set()
+    schedule_digest = hashlib.sha256()
     manifest: dict[str, object]
 
     try:
         while rows < row_budget:
             remaining = row_budget - rows
-            chosen: tuple[Schema, int, Candidate, str, Formula, str] | None = None
-            # A full pass is enough to find a one-row root in exact mode; the
-            # multiplier also lets a duplicate schema advance to a new index.
-            max_attempts = max(16, 4 * len(SCHEMAS))
-            for head in schedule.ordered_heads(sessions):
-                for _ in range(max_attempts):
-                    schema, parameter_index, candidate = schedule.next_candidate(head)
-                    if budget_mode == "exact" and len(candidate.tactics) > remaining:
-                        continue
-                    canonical, formula = _canonical_statement(candidate, schema)
-                    if canonical in seen_statements:
-                        continue
-                    root = _root_id(schema, canonical)
-                    if root in seen_roots:
-                        raise GenerationError(
-                            f"schema {schema.name!r} generated duplicate root {root!r}"
-                        )
-                    chosen = (
-                        schema,
-                        parameter_index,
-                        candidate,
-                        canonical,
-                        formula,
-                        root,
-                    )
-                    break
-                if chosen is not None:
-                    break
-            if chosen is None:
-                raise GenerationError(
-                    f"no unique checked schema can fill the remaining {remaining} row(s)"
-                )
-
+            chosen = _select_candidate(
+                schedule,
+                sessions=sessions,
+                remaining=remaining,
+                budget_mode=budget_mode,
+                seen_statements=seen_statements,
+                seen_roots=seen_roots,
+            )
             schema, parameter_index, candidate, canonical, formula, root = chosen
             first_head = candidate.tactics[0].split(maxsplit=1)[0]
+            schedule_digest.update(
+                _schedule_digest_record(
+                    schema=schema,
+                    parameter_index=parameter_index,
+                    candidate=candidate,
+                    canonical=canonical,
+                    root=root,
+                )
+            )
             ordinal = sessions + 1
             session_id = f"peano-synth-v3-{fingerprint[:20]}-{ordinal:07d}"
             result = run_proof(
@@ -889,6 +1181,28 @@ def generate_corpus(
         source._finish_staged(metadata_stream)
 
         head_values = tuple(schedule.head_counts[head] for head in ROOT_HEADS)
+        if max(head_values) - min(head_values) > 1:
+            raise GenerationError("root tactic heads are not session-balanced")
+        observed_plan = {
+            "sessions": sessions,
+            "positive_tactic_rows": rows,
+            "independent_roots": len(seen_roots),
+            "unique_canonical_statements": len(seen_statements),
+            "root_sessions_by_first_tactic_head": {
+                head: schedule.head_counts[head] for head in ROOT_HEADS
+            },
+            "sessions_by_schema": dict(sorted(schema_counts.items())),
+            "candidate_skips": {
+                "duplicate_statement": schedule.duplicate_skips,
+                "held_out_target": schedule.held_out_skips,
+                "overlong_exact_fill": schedule.overlong_skips,
+            },
+            "sequence_sha256": schedule_digest.hexdigest(),
+        }
+        if observed_plan != schedule_plan:
+            raise GenerationError(
+                "executed corpus differs from its fail-fast schedule plan"
+            )
         missing_root_kinds = REQUIRED_ROOT_KINDS.difference(root_kind_counts)
         manifest = {
             "format": FORMAT,
@@ -903,7 +1217,7 @@ def generate_corpus(
                 "seed": seed,
                 "row_budget": row_budget,
                 "budget_mode": budget_mode,
-                "selection": "first-tactic-head-deficit-balanced-v1",
+                "selection": SCHEDULE_SELECTION,
                 "stopping": (
                     "complete-sessions-exact-positive-row-budget-v1"
                     if budget_mode == "exact"
@@ -978,6 +1292,7 @@ def generate_corpus(
                 "missing_root_kinds": sorted(missing_root_kinds),
                 "intro_root_maximum_percent": INTRO_ROOT_PERCENT,
                 "artificial_induction_gates": 0,
+                "schedule_plan": schedule_plan,
                 "library_schemas": 0,
             },
             "limitations": [

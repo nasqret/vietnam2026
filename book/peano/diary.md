@@ -1655,3 +1655,43 @@ the live public catalog with its historical 63-entry checkpoint. They now
 assert the append-only 247-entry public count while separately checking the
 frozen 56-name model-v2 authority and all 191 unavailable names. No model-v2
 prompt or environment identity was repinned.
+
+## 2026-07-29 — The first model-v3 preparation failed before training
+
+WMI preparation `172536` validated the pinned environment and completed all 247
+predecessor-prefix library trajectories: 8,494 transitions plus 247 independently checked QED
+footers. It then failed after 1:02:34 on a synthetic ring instance whose normalized coefficient was
+132, above the reviewed limit of 128. The failure was neither an OOM nor a training failure.
+Transactional staging published no complete synthetic artifact, and no dependent training or
+evaluation job was submitted.
+
+The repair enumerates the 2,396 safe coefficient tuples and combines them with sixteen compact
+closed-zero tags, yielding a 38,336-statement ring period. The repaired schema catalog is version
+2: version 1 had already been exercised by the failed job and cannot honestly acquire new meaning.
+A separate audit found that removing induction gates had collapsed every indexed variant to one
+of four statements. Six-digit base-4 zero tags now give each induction schema a period of 4,096
+genuinely distinct canonical roots without hiding `induction` behind `intro`.
+
+A model-free full-schedule pass now runs before expensive proof replay. It also exposed an
+exact-fill edge case: choosing a one-row head for the final row could leave head imbalance two.
+Ties between equally deficient heads now prefer longer minimum sessions, reserving one-row heads
+for exact completion. The registered 70,000-row plan contains 32,600 unique roots; every head
+occurs 2,328 or 2,329 times, every schema occurs, and the sequence digest is
+`79d2704eab6eb73205ff2234f55f0d4a7e034176fe8dc8649c6950ff499d547b`. This is a deterministic
+plan, not yet a completed corpus or learned-model result. An intermediate version-1 repair plan had
+2,174 benign duplicate skips between two closed-`norm_num` families. Version 2's hash-derived
+offsets make the registered ranges disjoint: the final plan has zero duplicate skips, and both
+families contribute 1,164 roots. A boundary audit then found that row budget 70,001 would encounter
+one numeric candidate exactly equal to a sealed evaluation target. The candidate is valid PA, not
+a malformed schema, so a dedicated typed path now counts and excludes it while every other
+generation error remains fatal. The maximum 100,000-row preflight succeeds with 46,574 unique
+sessions and exactly one such held-out skip. Finally, the WMI job now invokes the synthetic
+generator before the library generator. Its whole-schedule prepass therefore runs before either
+corpus spends time on proof replay, rather than after another hour of work. The job also refuses a
+nonempty model-v3 data directory up front. A stale artifact from a previous partial run can no
+longer wait until the second generator to turn a costly retry into an overwrite refusal.
+
+The final local gate for this repair reports 1,298 Peano tests passed with one intentional skip in
+1,275.58 seconds. Lambda Lab reports 360 tests plus 36 subtests; the 19 focused generator tests and
+23 WMI/config tests pass; all 287 documented commands replay; the 247-note arithmetic vault and
+3,286 links verify; and a complete 38-source Jupyter Book build succeeds with warnings as errors.
