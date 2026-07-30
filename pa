@@ -1,0 +1,59 @@
+#!/bin/sh
+set -eu
+
+launcher_path=$0
+while [ -L "$launcher_path" ]; do
+    launcher_target=$(readlink "$launcher_path")
+    case "$launcher_target" in
+        /*) launcher_path=$launcher_target ;;
+        *) launcher_path=$(dirname -- "$launcher_path")/$launcher_target ;;
+    esac
+done
+repo_dir=$(CDPATH= cd -- "$(dirname -- "$launcher_path")" && pwd)
+adapter_dir="$repo_dir/results/peano-policy/diagnostics/qwen3-1.7b-lora-v3-morning-diagnostic-20260731-r1"
+cache_dir="$repo_dir/.cache/huggingface/hub"
+
+# This reviewed launcher is deliberately bound to the frozen morning
+# diagnostic.  The generic Python entry point still requires an explicit
+# --diagnostic flag and may be used with another adapter directly.
+help_requested=false
+for argument in "$@"; do
+    case "$argument" in
+        --adapter|--adapter=*|--cache-dir|--cache-dir=*)
+            echo "pa: this launcher is fixed to the morning diagnostic adapter and cache" >&2
+            exit 2
+            ;;
+        -h|--help) help_requested=true ;;
+    esac
+done
+
+if [ -x "$repo_dir/.venv/peano-model-macos/bin/python" ]; then
+    peano_python="$repo_dir/.venv/peano-model-macos/bin/python"
+elif [ "$help_requested" = true ]; then
+    # Keep help model-free for a fresh checkout.  No proof attempt may use the
+    # unsealed system interpreter.
+    peano_python=python3
+else
+    echo "pa: run scripts/bootstrap_peano_model_lab_macos.sh first" >&2
+    exit 2
+fi
+
+export HF_HUB_OFFLINE=1
+export TRANSFORMERS_OFFLINE=1
+export TOKENIZERS_PARALLELISM=false
+export PYTORCH_ENABLE_MPS_FALLBACK=1
+
+if [ "$help_requested" = false ]; then
+    echo "Verifying frozen Peano model and adapter seals…" >&2
+    "$peano_python" "$repo_dir/scripts/prefetch_peano_base_model.py" \
+        --verify-only >/dev/null
+    "$peano_python" "$repo_dir/scripts/verify_peano_morning_adapter.py" \
+        "$adapter_dir" >/dev/null
+fi
+
+exec "$peano_python" "$repo_dir/scripts/peano_model_lab.py" \
+    --diagnostic \
+    --adapter "$adapter_dir" \
+    --cache-dir "$cache_dir" \
+    --local-files-only \
+    "$@"

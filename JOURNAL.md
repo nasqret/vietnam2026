@@ -1840,3 +1840,46 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - Full WMI preparation, training, and independent kernel evaluation remain pending. The balanced
   object currently established is the deterministic plan, not a published corpus or trained
   model.
+
+## 2026-07-31 — Native local `pa prove-model` laboratory
+
+- Added a persistent Peano Lab host shell with one resident, untrusted policy
+  model. Idle input of `pa prove-model FORMULA` starts bounded verifier-guided
+  search; ordinary `pa` commands remain native, while an active manual proof
+  or tutorial receives each raw line before model-command interception.
+- Added a versioned observational event stream covering canonical state
+  selection, exact policy prompt and raw decoder output, each proposed tactic,
+  fresh-root compilation/replay, successor goals, frontier updates, internal
+  kernel finalization, and the final independent whole-route replay. Concise,
+  full, and off displays are terminal-control-safe and do not carry proof
+  authority.
+- Built a hash-locked native arm64 CPython 3.12.2 environment and verified real
+  MPS BF16 causal attention. Downloaded only Qwen3-1.7B Base commit
+  `ea980cb0a6c2ae4b936e82123acc929f1cec04c1`; its 3,441,185,608-byte weight
+  file, raw architecture config, and generation config pass offline SHA-256
+  verification. Atomically synchronized and verified the 14-file, 158,302,721
+  byte morning diagnostic adapter.
+- Hardened the dedicated launcher against abbreviated adapter/cache overrides,
+  unsealed Python overrides, configuration-hash ambiguity, oversized context
+  requests, misleading policy-error exhaustion, terminal control sequences,
+  and inaccurate partial-publication messages. Reports now distinguish the
+  BF16 base-load dtype from the FP32 adapter artifact and record Python,
+  architecture, and all inference-package versions.
+- Installed `~/.local/bin/pa` as a symlink to the repository launcher. The
+  launcher is fixed to the diagnostic adapter and repo-local offline cache,
+  rechecks all seals before a proof attempt, and keeps `--help` model-free.
+- Completed an exact one-shot MPS smoke and then two proofs in one resident
+  shell. The model emitted `simp` for
+  `0 * 0 + 3 + (0 * 1 + 1) + (3 + 0) = 7`; the resulting certificate had 78
+  nodes. It then emitted `use add_assoc` and `simp [add_assoc]` for
+  `forall n. (n + 0) + 0 = n`; that certificate had 44 nodes. Both internal
+  checks and both independent replays accepted, and the checked scripts and
+  JSON receipts were published below `results/peano-policy/interactive-local/`.
+- The representative proof/report SHA-256 values are
+  `2c6006e3da644ce1bf32c2d6c2dc55f7b1ab58173bb0bb3cb3372dae2c4a7210` /
+  `54e407cb47145b0a0fcd21175bdabd02116b2f7b5fa9134174a99c9631a985af`;
+  the two-step proof/report values are
+  `545d0f1bfff9f85937531833082f96f112c9dfb54f6606e132ca00c7334099f4` /
+  `c928c100ab335c4af4ccca480daa27ea3eaa51b01d969c57c0bfd51b26b0a60c`.
+  These receipts are local ignored artifacts; the reproducible launcher,
+  verifier, tests, and documentation are source-controlled.

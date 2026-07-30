@@ -648,6 +648,30 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   M19 stays open for the model-v3 corpus gates, WMI training, kernel-judged search evaluation,
   baselines, and registered comparison.
 
+### M19L — Local live proof-policy laboratory
+
+- [x] Provide a global `pa` launcher fixed to one sealed diagnostic adapter,
+      pinned repo-local base cache, and hash-locked arm64 Python environment;
+      reject identity overrides and require offline re-verification before
+      every model load.
+- [x] Keep one model resident across theorem requests and route idle
+      `pa prove-model FORMULA` through bounded candidate search while
+      preserving manual proof/tutorial raw-input ownership and all ordinary
+      Peano Lab commands.
+- [x] Stream exact prompt metadata, raw model candidates, each fresh surface
+      compilation, resulting canonical goals, internal kernel finalization,
+      and independent replay in concise/full/off terminal-safe views.
+- [x] Fail closed on model/runtime errors, context overflow, malformed tactic
+      output, capability mismatch, seal mutation, publication races, and
+      independent-replay disagreement. Model output remains wholly untrusted.
+- [x] Pass model-free regressions, real MPS/BF16 placement, an exact one-shot
+      checked proof, and a two-theorem persistent-shell reuse smoke. Record the
+      routes, node counts, runtime versions, and hashes in the journal.
+- [ ] Mirror the 158 MB diagnostic adapter into durable release/LFS/object
+      storage so a future fresh clone does not depend on the WMI working copy.
+      This distribution task does not affect the already installed local lab
+      or its proof-soundness gate.
+
 ### M20 — General foundational arithmetic library
 
 The theorem-ladder extension is tracked independently in

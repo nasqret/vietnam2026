@@ -44,6 +44,10 @@ The exact abstracts, session plans and reading lists live on the [landing page](
 | `docs/` | Lecturer-facing docs: how to build, deploy, and run each piece. |
 | `MEMORY.md` · `JOURNAL.md` · `PLAN.md` + `PLAN/` | Project **memory**, dated **journal**, and the multi-level **plan**. |
 
+For the native Apple-silicon proof-policy shell—including the sealed setup,
+offline model cache, live `pa prove-model` transcript, and checking semantics—see
+[`docs/LOCAL_MODEL_LAB.md`](docs/LOCAL_MODEL_LAB.md).
+
 The 247-entry native ladder now reaches the Fundamental Theorem of Arithmetic
 without adding lists, division, remainder, gcd, or factorization as primitive
 symbols. Finite factor sequences and their prefix products are represented by

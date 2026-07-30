@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+from types import SimpleNamespace
 
 import pytest
 
@@ -130,6 +131,106 @@ def test_import_and_help_do_not_import_gpu_packages() -> None:
     )
     assert completed.returncode == 0
     assert "--candidates" in completed.stdout
+    assert "--diagnostic" in completed.stdout
+    assert "--device {auto,cpu,mps,cuda}" in completed.stdout
+
+
+def test_model_command_prefix_normalizes_to_the_closed_theorem() -> None:
+    assert REPL.normalize_theorem_input("pa prove-model forall n. n = n") == (
+        "forall n. n = n"
+    )
+    assert REPL.normalize_theorem_input("pa prove 0 = 0") == "0 = 0"
+    assert REPL.normalize_theorem_input("0 = 0") == "0 = 0"
+
+
+def test_runtime_loader_propagates_explicit_diagnostic_and_mac_placement(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    import training.peano_policy.contract as contract
+    import training.peano_policy.generate as generation
+
+    adapter = tmp_path / "adapter"
+    adapter.mkdir()
+    received: dict[str, object] = {}
+    placement = SimpleNamespace(
+        to_record=lambda: {"device": "mps", "dtype": "bfloat16"}
+    )
+    model = SimpleNamespace(
+        peano_runtime_placement=placement,
+        device="mps:0",
+        dtype="torch.bfloat16",
+    )
+    environment = SimpleNamespace(
+        capabilities=SimpleNamespace(
+            label="model-v3",
+            allowed_commands=("refl",),
+            allowed_theorems=(),
+        )
+    )
+
+    def load(path, **kwargs):
+        received.update(path=path, **kwargs)
+        return model, object(), {"manifest": "test"}
+
+    class FakeBasePolicy:
+        def __init__(self, **kwargs):
+            self.kwargs = kwargs
+
+    class FakeCandidatePolicy:
+        evaluation_identity = {"kind": "test"}
+
+        def __init__(self, base, *, seed):
+            self.base = base
+            self.seed = seed
+
+    monkeypatch.setattr(generation, "load_adapter", load)
+    monkeypatch.setattr(generation, "adapter_provenance", lambda *args: {})
+    monkeypatch.setattr(generation, "PeanoPolicyAdapter", FakeBasePolicy)
+    monkeypatch.setattr(
+        generation, "PeanoPolicyCandidateAdapter", FakeCandidatePolicy
+    )
+    monkeypatch.setattr(
+        contract, "attested_training_environment", lambda manifest: environment
+    )
+
+    runtime = REPL.load_model_runtime(
+        adapter,
+        seed=17,
+        max_new_tokens=48,
+        sample=False,
+        temperature=0.8,
+        top_p=0.95,
+        diagnostic_mode=True,
+        device="mps",
+        dtype="bfloat16",
+        local_files_only=True,
+        cache_dir=tmp_path / "cache",
+    )
+
+    assert received == {
+        "path": adapter.resolve(),
+        "seed": 17,
+        "diagnostic_mode": True,
+        "device": "mps",
+        "dtype": "bfloat16",
+        "local_files_only": True,
+        "cache_dir": tmp_path / "cache",
+    }
+    assert runtime.runtime_identity is not None
+    assert runtime.runtime_identity["device"] == "mps"
+    assert runtime.runtime_identity["dtype"] == "bfloat16"
+    software = runtime.runtime_identity["software"]
+    assert software["python"]
+    assert software["machine"]
+    assert set(software["packages"]) == {
+        "accelerate",
+        "peft",
+        "safetensors",
+        "tokenizers",
+        "torch",
+        "transformers",
+    }
 
 
 def test_wmi_launcher_is_fixed_dry_by_default_and_requires_confirmation() -> None:
@@ -232,6 +333,74 @@ def test_checked_search_replays_original_theorem_before_building_script() -> Non
     assert verified[0][1] == ("intro n", "refl")
     assert attempt.report["publication"]["status"] == "kernel-checked-proof"
     assert searched[0][2]["limits"].values["max_depth"] == 8
+
+
+def test_live_events_distinguish_search_certificate_from_independent_replay() -> None:
+    events: list[dict[str, object]] = []
+    result = FakeSearchResult(
+        "proof", "∀ n. n = n", ("intro n", "refl"), 3
+    )
+
+    attempt = REPL.run_checked_search(
+        "forall n. n = n",
+        _runtime(
+            lambda *args, **kwargs: result,
+            lambda *args, **kwargs: FakeReplay("∀ n. n = n", 3),
+        ),
+        REPL.SearchBudget(),
+        created_at="2026-07-28T12:00:00Z",
+        on_event=lambda event: events.append(dict(event)),
+    )
+
+    assert attempt.proved
+    assert [event["kind"] for event in events] == [
+        "independent_replay_started",
+        "independent_replay_finished",
+    ]
+    assert events[-1] == {
+        "v": 1,
+        "kind": "independent_replay_finished",
+        "status": "accepted",
+        "kernel_checked": True,
+        "proof_nodes": 3,
+        "message": None,
+    }
+
+
+def test_each_theorem_gets_fresh_policy_counters_without_reloading_weights() -> None:
+    policies: list[object] = []
+
+    class FreshPolicy:
+        def __init__(self, generation: int) -> None:
+            self.generation = generation
+            self.generation_provenance = {"model_generate_calls": generation}
+
+        def fresh(self):
+            return FreshPolicy(0)
+
+    def search(theorem, policy, **kwargs):
+        del theorem, kwargs
+        policies.append(policy)
+        policy.generation = 1
+        policy.generation_provenance = {"model_generate_calls": 1}
+        return FakeSearchResult("limit", "0 = 0", (), None)
+
+    runtime = REPL.ReplRuntime(
+        policy=FreshPolicy(99),
+        capabilities=FakeCapabilities(),
+        classical=False,
+        adapter_identity={"adapter_sha256": "a" * 64},
+        search=search,
+        verify=lambda *args, **kwargs: None,
+        make_limits=FakeLimits,
+    )
+    first = REPL.run_checked_search("0 = 0", runtime, REPL.SearchBudget())
+    second = REPL.run_checked_search("0 = 0", runtime, REPL.SearchBudget())
+
+    assert policies[0] is not policies[1]
+    assert runtime.policy.generation == 99
+    assert first.report["generation"] == {"model_generate_calls": 1}
+    assert second.report["generation"] == {"model_generate_calls": 1}
 
 
 def test_real_search_and_independent_kernel_replay_integrate_without_a_model() -> None:

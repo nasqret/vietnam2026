@@ -106,6 +106,13 @@ python3 -m training.peano_policy.generate \
   --environment-file /path/to/peano-environment.json
 ```
 
+For the persistent Apple-silicon shell that exposes live prompt, tactic,
+surface-replay, goal, and independent-kernel events through
+`pa prove-model`, see
+[`docs/LOCAL_MODEL_LAB.md`](../../docs/LOCAL_MODEL_LAB.md). Its dedicated
+launcher admits only the sealed morning diagnostic, uses a pinned offline
+cache, and keeps model output outside the proof authority boundary.
+
 The evaluation adapter renders each new state with an explicit
 `PromptEnvironment`; callers must provide the exact capability identity that
 the replay attestation recorded at training.  A hard-coded environment cannot

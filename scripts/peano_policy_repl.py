@@ -18,10 +18,12 @@ import argparse
 from dataclasses import dataclass
 from datetime import datetime, timezone
 import hashlib
+from importlib import metadata as importlib_metadata
 import json
 import math
 import os
 from pathlib import Path
+import platform
 import re
 import secrets
 import sys
@@ -45,6 +47,28 @@ MAX_MODEL_CALLS = 4_096
 MAX_STATES = 65_536
 MAX_NEW_TOKENS = 1_024
 _STEM_RE = re.compile(r"[0-9A-Za-z._-]{1,160}")
+_RUNTIME_PACKAGES = (
+    "accelerate",
+    "peft",
+    "safetensors",
+    "tokenizers",
+    "torch",
+    "transformers",
+)
+
+
+def _runtime_software_record() -> dict[str, object]:
+    packages: dict[str, str | None] = {}
+    for name in _RUNTIME_PACKAGES:
+        try:
+            packages[name] = importlib_metadata.version(name)
+        except importlib_metadata.PackageNotFoundError:
+            packages[name] = None
+    return {
+        "python": platform.python_version(),
+        "machine": platform.machine(),
+        "packages": packages,
+    }
 
 
 @dataclass(frozen=True, slots=True)
@@ -93,6 +117,7 @@ class ReplRuntime:
     search: Callable[..., object]
     verify: Callable[..., object]
     make_limits: Callable[..., object]
+    runtime_identity: Mapping[str, object] | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -139,6 +164,11 @@ def load_model_runtime(
     sample: bool,
     temperature: float,
     top_p: float,
+    diagnostic_mode: bool = False,
+    device: str = "auto",
+    dtype: str = "auto",
+    local_files_only: bool | None = None,
+    cache_dir: Path | None = None,
 ) -> ReplRuntime:
     """Validate and load one adapter once, after all lightweight CLI checks."""
 
@@ -159,7 +189,15 @@ def load_model_runtime(
     absolute_adapter = adapter_dir.resolve(strict=True)
     if not absolute_adapter.is_dir():
         raise ValueError(f"adapter is not a directory: {absolute_adapter}")
-    model, tokenizer, manifest = load_adapter(absolute_adapter, seed=seed)
+    model, tokenizer, manifest = load_adapter(
+        absolute_adapter,
+        seed=seed,
+        diagnostic_mode=diagnostic_mode,
+        device=device,
+        dtype=dtype,
+        local_files_only=local_files_only,
+        cache_dir=cache_dir,
+    )
     environment = attested_training_environment(manifest)
     capabilities = _surface_capabilities(environment)
     provenance = adapter_provenance(absolute_adapter, manifest)
@@ -179,6 +217,32 @@ def load_model_runtime(
         "directory": str(absolute_adapter),
         "policy": policy.evaluation_identity,
     }
+    placement = getattr(model, "peano_runtime_placement", None)
+    if callable(getattr(placement, "to_record", None)):
+        runtime_identity = placement.to_record()
+    elif isinstance(placement, Mapping):
+        runtime_identity = dict(placement)
+    else:
+        runtime_identity = {
+            "device": str(getattr(model, "device", "unknown")),
+            "dtype": str(getattr(model, "dtype", "unknown")),
+        }
+    runtime_identity = dict(runtime_identity)
+    runtime_identity["software"] = _runtime_software_record()
+    diagnostic = manifest.get("diagnostic")
+    tensor_audit = (
+        diagnostic.get("adapter_tensor_audit")
+        if isinstance(diagnostic, Mapping)
+        else None
+    )
+    artifact_dtypes = (
+        tensor_audit.get("dtypes") if isinstance(tensor_audit, Mapping) else None
+    )
+    if isinstance(artifact_dtypes, Mapping) and all(
+        type(name) is str and type(count) is int
+        for name, count in artifact_dtypes.items()
+    ):
+        runtime_identity["adapter_artifact_dtypes"] = dict(artifact_dtypes)
     return ReplRuntime(
         policy=policy,
         capabilities=capabilities,
@@ -187,6 +251,7 @@ def load_model_runtime(
         search=search,
         verify=verify_proof,
         make_limits=SearchLimits,
+        runtime_identity=runtime_identity,
     )
 
 
@@ -204,11 +269,13 @@ def _safe_one_line(value: object, *, label: str) -> str:
 
 
 def normalize_theorem_input(line: object) -> str:
-    """Accept a bare formula or the browser-friendly ``pa prove`` prefix."""
+    """Accept a bare formula or either Peano proof-command prefix."""
 
     source = _safe_one_line(line, label="input").strip()
-    if source.startswith("pa prove "):
-        source = source[len("pa prove ") :].strip()
+    for prefix in ("pa prove-model ", "pa prove "):
+        if source.startswith(prefix):
+            source = source[len(prefix) :].strip()
+            break
     if not source:
         raise ValueError("theorem must be non-empty text")
     if source in {"qed", "quit", "exit"} or source.startswith(":"):
@@ -271,17 +338,25 @@ def run_checked_search(
     budget: SearchBudget,
     *,
     created_at: str | None = None,
+    on_event: Callable[[Mapping[str, object]], object] | None = None,
 ) -> CheckedAttempt:
     """Search and, on success, independently replay before publication."""
 
+    if on_event is not None and not callable(on_event):
+        raise TypeError("on_event must be callable or None")
+    # Keep weights resident, but reset per-theorem counters and the deterministic
+    # call-index seed schedule when the concrete policy supports a fresh view.
+    fresh = getattr(runtime.policy, "fresh", None)
+    policy = fresh() if callable(fresh) else runtime.policy
     limits = runtime.make_limits(**budget.to_dict())
-    result = runtime.search(
-        theorem,
-        runtime.policy,
-        capabilities=runtime.capabilities,
-        classical=runtime.classical,
-        limits=limits,
-    )
+    search_options = {
+        "capabilities": runtime.capabilities,
+        "classical": runtime.classical,
+        "limits": limits,
+    }
+    if on_event is not None:
+        search_options["on_event"] = on_event
+    result = runtime.search(theorem, policy, **search_options)
     status = getattr(result, "status", None)
     proved = getattr(result, "proved", None)
     commands = getattr(result, "commands", None)
@@ -303,16 +378,36 @@ def run_checked_search(
     if proved:
         if not commands or type(certificate_nodes) is not int:
             raise RuntimeError("search claimed a proof without certificate data")
-        request_hash = hashlib.sha256(theorem.encode("utf-8")).hexdigest()[:16]
-        replay = runtime.verify(
-            theorem,
-            commands,
-            request_id=f"interactive-{request_hash}",
-            classical=runtime.classical,
-            capabilities=runtime.capabilities,
+        from training.peano_policy.events import emit_event
+
+        emit_event(
+            on_event,
+            "independent_replay_started",
+            theorem=canonical_theorem,
+            path=commands,
         )
+        request_hash = hashlib.sha256(theorem.encode("utf-8")).hexdigest()[:16]
+        try:
+            replay = runtime.verify(
+                theorem,
+                commands,
+                request_id=f"interactive-{request_hash}",
+                classical=runtime.classical,
+                capabilities=runtime.capabilities,
+            )
+        except Exception as exc:
+            message = " ".join(str(exc).split()) or type(exc).__name__
+            emit_event(
+                on_event,
+                "independent_replay_finished",
+                status="rejected",
+                kernel_checked=False,
+                proof_nodes=None,
+                message=message[:1_000],
+            )
+            raise
         expected_surface = getattr(runtime.capabilities, "label", None)
-        if (
+        replay_mismatch = (
             getattr(replay, "status", None) != "proved"
             or getattr(replay, "kernel_checked", None) is not True
             or getattr(replay, "theorem", None) != canonical_theorem
@@ -321,11 +416,34 @@ def run_checked_search(
             or getattr(replay, "failed_tactics", None) != 0
             or getattr(replay, "surface", None) != expected_surface
             or getattr(replay, "classical", None) is not runtime.classical
-        ):
+        )
+        if replay_mismatch:
+            emit_event(
+                on_event,
+                "independent_replay_finished",
+                status="rejected",
+                kernel_checked=(
+                    getattr(replay, "kernel_checked", None) is True
+                ),
+                proof_nodes=(
+                    getattr(replay, "proof_nodes", None)
+                    if type(getattr(replay, "proof_nodes", None)) is int
+                    else None
+                ),
+                message="independent replay did not exactly match searched proof",
+            )
             raise RuntimeError(
                 "refusing to publish: independent kernel replay did not "
                 "exactly confirm the searched proof"
             )
+        emit_event(
+            on_event,
+            "independent_replay_finished",
+            status="accepted",
+            kernel_checked=True,
+            proof_nodes=certificate_nodes,
+            message=None,
+        )
         replay_record = _verification_record(replay)
         proof_script = "\n".join(
             (f"pa prove {canonical_theorem}", *commands, "qed", "")
@@ -354,13 +472,18 @@ def run_checked_search(
             "canonical_theorem": canonical_theorem,
         },
         "adapter": _canonical_json_copy(dict(runtime.adapter_identity)),
+        "runtime": (
+            None
+            if runtime.runtime_identity is None
+            else _canonical_json_copy(dict(runtime.runtime_identity))
+        ),
         "authority": {
             "classical": runtime.classical,
             "capabilities": _capability_record(runtime.capabilities),
         },
         "budget": budget.to_dict(),
         "generation": _canonical_json_copy(
-            getattr(runtime.policy, "generation_provenance", None)
+            getattr(policy, "generation_provenance", None)
         ),
         "search": _search_record(result),
         "kernel_verification": replay_record,
@@ -615,6 +738,37 @@ def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--adapter", type=Path, default=DEFAULT_ADAPTER)
     parser.add_argument("--results-dir", type=Path, default=DEFAULT_RESULTS_DIR)
+    parser.add_argument(
+        "--diagnostic",
+        action="store_true",
+        help=(
+            "explicitly admit an adapter whose signed manifest marks it as "
+            "completed diagnostic, never production"
+        ),
+    )
+    parser.add_argument(
+        "--device",
+        choices=("auto", "cpu", "mps", "cuda"),
+        default="auto",
+        help="inference device (auto prefers CUDA, then Apple MPS, then CPU)",
+    )
+    parser.add_argument(
+        "--dtype",
+        choices=("auto", "bfloat16", "float16", "float32"),
+        default="auto",
+        help="inference tensor type; auto is validated for the selected device",
+    )
+    parser.add_argument(
+        "--offline",
+        action="store_true",
+        help="require the pinned base-model snapshot to exist in the local cache",
+    )
+    parser.add_argument(
+        "--cache-dir",
+        type=Path,
+        default=None,
+        help="optional Hugging Face cache root for the pinned base snapshot",
+    )
     parser.add_argument("--seed", type=int, default=20260729)
     parser.add_argument(
         "--max-new-tokens",
@@ -684,6 +838,11 @@ def main(argv: list[str] | None = None) -> int:
             sample=args.sample,
             temperature=args.temperature,
             top_p=args.top_p,
+            diagnostic_mode=args.diagnostic,
+            device=args.device,
+            dtype=args.dtype,
+            local_files_only=args.offline,
+            cache_dir=args.cache_dir,
         )
     except Exception as exc:
         message = " ".join(str(exc).split()) or type(exc).__name__

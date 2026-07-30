@@ -12,6 +12,12 @@ import random
 from typing import Any
 
 from .contract import attested_training_environment, prompt_environment
+from .events import (
+    EventSink,
+    EventSinkError,
+    canonical_state_sha256,
+    emit_event,
+)
 from .manifest import (
     ADAPTER_SUBDIR,
     MANIFEST_VERSION,
@@ -29,9 +35,30 @@ from .prompt import (
     prompt_contract_sha256,
     render_prompt,
 )
+from .placement import DEVICE_CHOICES, DTYPE_CHOICES, resolve_runtime_placement
 
 
 MAX_CANDIDATES_PER_MODEL_CALL = 64
+
+
+def _require_generation_fits_context(
+    model: Any,
+    *,
+    prompt_tokens: int,
+    max_new_tokens: int,
+) -> None:
+    config = getattr(model, "config", None)
+    context_tokens = getattr(config, "max_position_embeddings", None)
+    if type(context_tokens) is not int or context_tokens < 1:
+        raise RuntimeError(
+            "loaded model does not expose a positive max_position_embeddings"
+        )
+    requested = prompt_tokens + max_new_tokens
+    if requested > context_tokens:
+        raise ValueError(
+            "prompt plus generation budget exceeds the model context: "
+            f"{prompt_tokens} + {max_new_tokens} > {context_tokens} tokens"
+        )
 
 
 def _newline_stopper(tokenizer: Any, prompt_length: int) -> Any:
@@ -86,6 +113,11 @@ def generate_raw_tactic(
     encoded = tokenizer(prompt, add_special_tokens=False, return_tensors="pt")
     encoded = {name: tensor.to(model.device) for name, tensor in encoded.items()}
     prompt_length = encoded["input_ids"].shape[1]
+    _require_generation_fits_context(
+        model,
+        prompt_tokens=prompt_length,
+        max_new_tokens=max_new_tokens,
+    )
     generate_options: dict[str, Any] = {
         "max_new_tokens": max_new_tokens,
         "do_sample": do_sample,
@@ -188,6 +220,11 @@ def generate_tactic_candidates(
     encoded = tokenizer(prompt, add_special_tokens=False, return_tensors="pt")
     encoded = {name: tensor.to(model.device) for name, tensor in encoded.items()}
     prompt_length = encoded["input_ids"].shape[1]
+    _require_generation_fits_context(
+        model,
+        prompt_tokens=prompt_length,
+        max_new_tokens=max_new_tokens,
+    )
     options: dict[str, Any] = {
         "max_new_tokens": max_new_tokens,
         "do_sample": do_sample,
@@ -206,6 +243,9 @@ def generate_tactic_candidates(
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
+    mps_manual_seed = getattr(getattr(torch, "mps", None), "manual_seed", None)
+    if callable(mps_manual_seed):
+        mps_manual_seed(seed)
     with torch.inference_mode():
         output = model.generate(**encoded, **options)
     if len(output) != max_candidates:
@@ -317,6 +357,11 @@ class PeanoPolicyAdapter:
             torch.manual_seed(seed)
             if torch.cuda.is_available():
                 torch.cuda.manual_seed_all(seed)
+            mps_manual_seed = getattr(
+                getattr(torch, "mps", None), "manual_seed", None
+            )
+            if callable(mps_manual_seed):
+                mps_manual_seed(seed)
         prompt = render_prompt(
             goals=goals_before,
             focus=0,
@@ -347,6 +392,7 @@ class PeanoPolicyCandidateAdapter:
     adapter: PeanoPolicyAdapter
     seed: int
     name: str = "qwen3-peano-candidate-policy-v1"
+    on_event: EventSink | None = field(default=None, repr=False, compare=False)
     generation_calls: int = field(default=0, init=False)
     candidate_sequences_requested: int = field(default=0, init=False)
     candidate_sequences_returned: int = field(default=0, init=False)
@@ -360,6 +406,8 @@ class PeanoPolicyCandidateAdapter:
             raise ValueError("seed must be an integer in [0, 2^63)")
         if type(self.name) is not str or not self.name.strip():
             raise ValueError("candidate policy name must be non-empty text")
+        if self.on_event is not None and not callable(self.on_event):
+            raise ValueError("on_event must be callable or None")
         # Python 3.10.0 does not initialize ``init=False`` defaults on slotted
         # dataclasses (fixed by later patch releases), so set these explicitly.
         self.generation_calls = 0
@@ -394,11 +442,63 @@ class PeanoPolicyCandidateAdapter:
             "one_batched_call_per_search_state": True,
         }
 
+    def fresh(
+        self,
+        *,
+        on_event: EventSink | None = None,
+    ) -> "PeanoPolicyCandidateAdapter":
+        """Return a zero-counter wrapper over the same loaded base adapter.
+
+        This resets the call-index portion of the deterministic seed schedule
+        for a new theorem without reloading or copying model weights.
+        """
+
+        if on_event is not None and not callable(on_event):
+            raise ValueError("on_event must be callable or None")
+        return PeanoPolicyCandidateAdapter(
+            adapter=self.adapter,
+            seed=self.seed,
+            name=self.name,
+            on_event=on_event,
+        )
+
     def propose(
         self,
         goals_before: tuple[str, ...],
         *,
         max_candidates: int,
+    ) -> tuple[str, ...]:
+        """Generate with the optional observer supplied at construction."""
+
+        return self._propose(
+            goals_before,
+            max_candidates=max_candidates,
+            on_event=self.on_event,
+        )
+
+    def propose_with_events(
+        self,
+        goals_before: tuple[str, ...],
+        *,
+        max_candidates: int,
+        on_event: EventSink,
+    ) -> tuple[str, ...]:
+        """Generate while reporting the exact prompt and decoded batch."""
+
+        if not callable(on_event):
+            raise ValueError("on_event must be callable")
+        return self._propose(
+            goals_before,
+            max_candidates=max_candidates,
+            on_event=on_event,
+        )
+
+    def _propose(
+        self,
+        goals_before: tuple[str, ...],
+        *,
+        max_candidates: int,
+        on_event: EventSink | None,
     ) -> tuple[str, ...]:
         if not goals_before or not all(
             type(goal) is str and goal.strip() for goal in goals_before
@@ -426,31 +526,77 @@ class PeanoPolicyCandidateAdapter:
         )
         self.generation_calls += 1
         self.candidate_sequences_requested += max_candidates
-        candidates = generate_tactic_candidates(
-            model=self.adapter.model,
-            tokenizer=self.adapter.tokenizer,
+        model_call = call_index + 1
+        state_sha256 = canonical_state_sha256(goals_before)
+        emit_event(
+            on_event,
+            "model_prompt",
+            model_call=model_call,
+            state_sha256=state_sha256,
+            goals_before=goals_before,
             prompt=prompt,
-            environment=self.adapter.environment,
-            max_candidates=max_candidates,
-            seed=call_seed,
-            max_new_tokens=self.adapter.max_new_tokens,
-            do_sample=self.adapter.do_sample,
-            temperature=self.adapter.temperature,
-            top_p=self.adapter.top_p,
+            prompt_chars=len(prompt),
+            call_seed=call_seed,
+            requested_candidates=max_candidates,
+            decoding={
+                "max_new_tokens": self.adapter.max_new_tokens,
+                "do_sample": self.adapter.do_sample,
+                "temperature": self.adapter.temperature,
+                "top_p": self.adapter.top_p,
+            },
         )
-        if type(candidates) is not tuple or len(candidates) > max_candidates:
-            raise RuntimeError(
-                "candidate generator did not return one bounded exact tuple"
+        try:
+            candidates = generate_tactic_candidates(
+                model=self.adapter.model,
+                tokenizer=self.adapter.tokenizer,
+                prompt=prompt,
+                environment=self.adapter.environment,
+                max_candidates=max_candidates,
+                seed=call_seed,
+                max_new_tokens=self.adapter.max_new_tokens,
+                do_sample=self.adapter.do_sample,
+                temperature=self.adapter.temperature,
+                top_p=self.adapter.top_p,
             )
+            if type(candidates) is not tuple or len(candidates) > max_candidates:
+                raise RuntimeError(
+                    "candidate generator did not return one bounded exact tuple"
+                )
+        except EventSinkError:
+            raise
+        except Exception as exc:
+            message = " ".join(str(exc).split()) or type(exc).__name__
+            emit_event(
+                on_event,
+                "model_error",
+                model_call=model_call,
+                state_sha256=state_sha256,
+                error_type=type(exc).__name__,
+                message=message[:1_000],
+            )
+            raise
         self.candidate_sequences_returned += len(candidates)
         complete: list[str] = []
-        for candidate in candidates:
+        rejections: list[dict[str, object]] = []
+        for rank, candidate in enumerate(candidates):
             try:
                 complete.append(extract_one_tactic(candidate))
-            except (TypeError, ValueError):
+            except (TypeError, ValueError) as exc:
                 self.malformed_sequences_rejected += 1
+                message = " ".join(str(exc).split()) or type(exc).__name__
+                rejections.append({"rank": rank, "message": message[:1_000]})
         self.candidate_lines_returned += len(complete)
-        return tuple(complete)
+        result = tuple(complete)
+        emit_event(
+            on_event,
+            "model_output",
+            model_call=model_call,
+            state_sha256=state_sha256,
+            raw_candidates=candidates,
+            candidates=result,
+            rejections=tuple(rejections),
+        )
+        return result
 
 
 def _require_diagnostic_mode(
@@ -495,6 +641,10 @@ def load_adapter(
     *,
     seed: int,
     diagnostic_mode: bool = False,
+    device: str = "auto",
+    dtype: str = "auto",
+    local_files_only: bool | None = None,
+    cache_dir: Path | None = None,
     _allow_pending_diagnostic_probe: bool = False,
 ) -> tuple[Any, Any, dict[str, Any]]:
     """Load base+adapter according to its immutable training manifest."""
@@ -548,24 +698,40 @@ def load_adapter(
     from peft import PeftModel
     from transformers import AutoModelForCausalLM, AutoTokenizer, set_seed
 
+    if local_files_only is not None and type(local_files_only) is not bool:
+        raise ValueError("local_files_only must be a Boolean or None")
+    if cache_dir is not None and not isinstance(cache_dir, Path):
+        raise ValueError("cache_dir must be a Path or None")
+    placement = resolve_runtime_placement(torch, device=device, dtype=dtype)
     random.seed(seed)
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
+    mps_manual_seed = getattr(getattr(torch, "mps", None), "manual_seed", None)
+    if placement.device == "mps" and callable(mps_manual_seed):
+        mps_manual_seed(seed)
     set_seed(seed)
     tokenizer = AutoTokenizer.from_pretrained(tokenizer_output, use_fast=True)
+    optional_model_options: dict[str, Any] = {}
+    if local_files_only is not None:
+        optional_model_options["local_files_only"] = local_files_only
+    if cache_dir is not None:
+        optional_model_options["cache_dir"] = cache_dir
     model = AutoModelForCausalLM.from_pretrained(
         model_id,
         revision=revision,
-        torch_dtype=torch.bfloat16,
+        torch_dtype=placement.dtype_object(torch),
         attn_implementation="sdpa",
+        low_cpu_mem_usage=True,
         trust_remote_code=False,
         use_safetensors=True,
+        **optional_model_options,
     )
     model = PeftModel.from_pretrained(model, adapter_output)
     model.eval()
-    if torch.cuda.is_available():
-        model.to("cuda")
+    model.to(placement.device_object(torch))
+    # Presentation/reporting metadata only; it grants no proof authority.
+    model.peano_runtime_placement = placement
     return model, tokenizer, manifest
 
 
@@ -654,6 +820,14 @@ def _parser() -> argparse.ArgumentParser:
         action="store_true",
         help="explicitly admit a manifest marked completed-diagnostic-not-production",
     )
+    parser.add_argument("--device", choices=DEVICE_CHOICES, default="auto")
+    parser.add_argument("--dtype", choices=DTYPE_CHOICES, default="auto")
+    parser.add_argument(
+        "--offline",
+        action="store_true",
+        help="require the pinned base snapshot to exist in the selected cache",
+    )
+    parser.add_argument("--cache-dir", type=Path)
     return parser
 
 
@@ -677,6 +851,10 @@ def main() -> int:
         args.adapter,
         seed=args.seed,
         diagnostic_mode=args.diagnostic,
+        device=args.device,
+        dtype=args.dtype,
+        local_files_only=args.offline,
+        cache_dir=args.cache_dir,
     )
     environment = _read_environment(args.environment_file)
     if environment != attested_training_environment(manifest):

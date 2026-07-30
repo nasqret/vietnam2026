@@ -16,8 +16,6 @@ or another branch-local owner across the frontier.
 from __future__ import annotations
 
 from dataclasses import dataclass
-import hashlib
-import json
 from typing import Literal, Protocol, runtime_checkable
 import unicodedata
 
@@ -44,6 +42,13 @@ from peano_lab.ui.prove import (
     run_surface,
 )
 
+from .events import (
+    EventSink,
+    EventSinkError,
+    canonical_state_sha256,
+    emit_event,
+)
+
 
 MAX_SEARCH_DEPTH = 32
 MAX_DIAGNOSTIC_CHARS = 1_000
@@ -67,6 +72,24 @@ class CandidatePolicy(Protocol):
         max_candidates: int,
     ) -> tuple[str, ...]:
         """Return ranked complete Peano Lab tactic lines for this state."""
+
+
+@runtime_checkable
+class EventfulCandidatePolicy(Protocol):
+    """Optional extension that reports the exact physical model call.
+
+    Keeping this separate from :class:`CandidatePolicy` preserves the public
+    structural protocol for existing policies and model-free tests.
+    """
+
+    def propose_with_events(
+        self,
+        goals_before: tuple[str, ...],
+        *,
+        max_candidates: int,
+        on_event: EventSink,
+    ) -> tuple[str, ...]:
+        """Return ranked tactics while reporting prompt/decoder events."""
 
 
 @dataclass(frozen=True, slots=True)
@@ -178,12 +201,7 @@ def _one_line(value: BaseException | str) -> str:
 
 
 def _state_sha256(goals: tuple[str, ...]) -> str:
-    payload = json.dumps(
-        list(goals),
-        ensure_ascii=False,
-        separators=(",", ":"),
-    ).encode("utf-8")
-    return hashlib.sha256(payload).hexdigest()
+    return canonical_state_sha256(goals)
 
 
 def _canonical_goals(owner: ProofSession) -> tuple[str, ...]:
@@ -309,6 +327,7 @@ def search(
     capabilities: SurfaceCapabilities,
     classical: bool = False,
     limits: SearchLimits = SearchLimits(),
+    on_event: EventSink | None = None,
 ) -> SearchResult:
     """Search for and independently check one closed PA theorem.
 
@@ -338,6 +357,8 @@ def search(
         raise TypeError("capabilities must be an exact SurfaceCapabilities value")
     if type(limits) is not SearchLimits:
         raise TypeError("limits must be an exact SearchLimits value")
+    if on_event is not None and not callable(on_event):
+        raise TypeError("on_event must be callable or None")
     if not isinstance(policy, CandidatePolicy):
         raise TypeError("policy must provide propose(goals_before, max_candidates=...)")
 
@@ -379,6 +400,21 @@ def search(
     replay_id = 0
     limited = False
 
+    emit_event(
+        on_event,
+        "search_started",
+        theorem=canonical_theorem,
+        root_state_sha256=root_key,
+        goals=root_goals,
+        limits={
+            "max_depth": limits.max_depth,
+            "beam_width": limits.beam_width,
+            "candidates_per_state": limits.candidates_per_state,
+            "max_model_calls": limits.max_model_calls,
+            "max_states": limits.max_states,
+        },
+    )
+
     def diagnostic(
         kind: str,
         node: _Node,
@@ -397,22 +433,40 @@ def search(
             )
         )
 
+    def finished(result: SearchResult) -> SearchResult:
+        emit_event(
+            on_event,
+            "search_finished",
+            status=result.status,
+            commands=result.commands,
+            certificate_nodes=result.certificate_nodes,
+            model_calls=result.model_calls,
+            states_expanded=result.states_expanded,
+            states_discovered=result.states_discovered,
+            candidates_executed=result.candidates_executed,
+            frontier_peak=result.frontier_peak,
+            depth_reached=result.depth_reached,
+        )
+        return result
+
     def unsuccessful(status: SearchStatus) -> SearchResult:
-        return SearchResult(
-            status,
-            canonical_theorem,
-            (),
-            None,
-            tuple(diagnostics),
-            model_calls,
-            states_expanded,
-            states_discovered,
-            candidates_executed,
-            frontier_peak,
-            depth_reached,
+        return finished(
+            SearchResult(
+                status,
+                canonical_theorem,
+                (),
+                None,
+                tuple(diagnostics),
+                model_calls,
+                states_expanded,
+                states_discovered,
+                candidates_executed,
+                frontier_peak,
+                depth_reached,
+            )
         )
 
-    for _ in range(limits.max_depth):
+    for layer_index in range(limits.max_depth):
         next_nodes: dict[tuple[str, ...], _Node] = {}
 
         for parent_rank, node in enumerate(frontier):
@@ -427,21 +481,79 @@ def search(
 
             model_calls += 1
             states_expanded += 1
+            emit_event(
+                on_event,
+                "state_selected",
+                model_call=model_calls,
+                depth=node.depth,
+                frontier_size=len(frontier),
+                frontier_rank=parent_rank,
+                state_sha256=node.state_sha256,
+                path=node.commands,
+                goals_before=node.goals,
+                max_candidates=limits.candidates_per_state,
+            )
             try:
-                proposed = policy.propose(
-                    node.goals,
-                    max_candidates=limits.candidates_per_state,
-                )
+                if on_event is not None and isinstance(
+                    policy, EventfulCandidatePolicy
+                ):
+                    proposed = policy.propose_with_events(
+                        node.goals,
+                        max_candidates=limits.candidates_per_state,
+                        on_event=on_event,
+                    )
+                else:
+                    proposed = policy.propose(
+                        node.goals,
+                        max_candidates=limits.candidates_per_state,
+                    )
+            except EventSinkError:
+                raise
             except Exception as exc:
+                # A decoder/runtime failure is not a mathematical exhaustion
+                # of the authorized tactic frontier.  Classify the bounded
+                # attempt as limited so the UI cannot imply that the model
+                # successfully returned an empty search space.
+                limited = True
                 diagnostic("policy_error", node, exc)
+                emit_event(
+                    on_event,
+                    "policy_error",
+                    model_call=model_calls,
+                    depth=node.depth,
+                    state_sha256=node.state_sha256,
+                    message=_one_line(exc),
+                )
                 continue
             if type(proposed) is not tuple:
+                limited = True
+                message = "policy result must be an exact tuple of tactic lines"
                 diagnostic(
                     "policy_error",
                     node,
-                    "policy result must be an exact tuple of tactic lines",
+                    message,
+                )
+                emit_event(
+                    on_event,
+                    "policy_error",
+                    model_call=model_calls,
+                    depth=node.depth,
+                    state_sha256=node.state_sha256,
+                    message=message,
                 )
                 continue
+            authorized = min(len(proposed), limits.candidates_per_state)
+            emit_event(
+                on_event,
+                "proposal_received",
+                model_call=model_calls,
+                depth=node.depth,
+                state_sha256=node.state_sha256,
+                candidates=proposed[:authorized],
+                returned=len(proposed),
+                authorized=authorized,
+                truncated=max(0, len(proposed) - authorized),
+            )
             if len(proposed) > limits.candidates_per_state:
                 limited = True
                 diagnostic(
@@ -458,26 +570,76 @@ def search(
             ):
                 command, error = _validate_candidate(raw_command)
                 if command is None:
+                    message = error or "invalid candidate"
                     diagnostic(
                         "invalid_candidate",
                         node,
-                        error or "invalid candidate",
+                        message,
                         depth=node.depth + 1,
+                    )
+                    emit_event(
+                        on_event,
+                        "candidate_result",
+                        model_call=model_calls,
+                        depth=node.depth + 1,
+                        state_sha256=node.state_sha256,
+                        candidate_rank=proposal_rank,
+                        command=raw_command if type(raw_command) is str else None,
+                        path=node.commands,
+                        goals_before=node.goals,
+                        status="error",
+                        error_kind="invalid_candidate",
+                        message=message,
+                        failed_index=None,
+                        goals_after=node.goals,
+                        successor_state_sha256=None,
+                        disposition="rejected",
                     )
                     continue
                 if command in local_commands:
+                    message = "duplicate candidate at the same canonical state"
                     diagnostic(
                         "duplicate_candidate",
                         node,
-                        "duplicate candidate at the same canonical state",
+                        message,
                         command,
                         depth=node.depth + 1,
+                    )
+                    emit_event(
+                        on_event,
+                        "candidate_result",
+                        model_call=model_calls,
+                        depth=node.depth + 1,
+                        state_sha256=node.state_sha256,
+                        candidate_rank=proposal_rank,
+                        command=command,
+                        path=node.commands + (command,),
+                        goals_before=node.goals,
+                        status="error",
+                        error_kind="duplicate_candidate",
+                        message=message,
+                        failed_index=None,
+                        goals_after=node.goals,
+                        successor_state_sha256=None,
+                        disposition="rejected",
                     )
                     continue
                 local_commands.add(command)
                 path = node.commands + (command,)
                 candidates_executed += 1
                 replay_id += 1
+                emit_event(
+                    on_event,
+                    "candidate_started",
+                    model_call=model_calls,
+                    depth=node.depth + 1,
+                    state_sha256=node.state_sha256,
+                    candidate_rank=proposal_rank,
+                    command=command,
+                    path=path,
+                    goals_before=node.goals,
+                    replay_commands=path,
+                )
                 owner, failed_index, replay_error = _replay(
                     target,
                     names,
@@ -516,10 +678,54 @@ def search(
                         command,
                         depth=node.depth + 1,
                     )
+                    emit_event(
+                        on_event,
+                        "candidate_result",
+                        model_call=model_calls,
+                        depth=node.depth + 1,
+                        state_sha256=node.state_sha256,
+                        candidate_rank=proposal_rank,
+                        command=command,
+                        path=path,
+                        goals_before=node.goals,
+                        status="error",
+                        error_kind=kind,
+                        message=_one_line(message),
+                        failed_index=failed_index,
+                        goals_after=node.goals,
+                        successor_state_sha256=None,
+                        disposition="rejected",
+                    )
                     continue
 
                 depth_reached = max(depth_reached, len(path))
                 if owner.state.is_done():
+                    emit_event(
+                        on_event,
+                        "candidate_result",
+                        model_call=model_calls,
+                        depth=node.depth + 1,
+                        state_sha256=node.state_sha256,
+                        candidate_rank=proposal_rank,
+                        command=command,
+                        path=path,
+                        goals_before=node.goals,
+                        status="ok",
+                        error_kind=None,
+                        message=None,
+                        failed_index=None,
+                        goals_after=(),
+                        successor_state_sha256=None,
+                        disposition="closed_pending_kernel",
+                    )
+                    emit_event(
+                        on_event,
+                        "kernel_check_started",
+                        depth=node.depth + 1,
+                        state_sha256=node.state_sha256,
+                        command=command,
+                        path=path,
+                    )
                     try:
                         certificate = checked_surface_final(
                             owner.state,
@@ -535,19 +741,44 @@ def search(
                             command,
                             depth=node.depth + 1,
                         )
+                        emit_event(
+                            on_event,
+                            "kernel_check_finished",
+                            depth=node.depth + 1,
+                            state_sha256=node.state_sha256,
+                            command=command,
+                            path=path,
+                            status="rejected",
+                            certificate_nodes=None,
+                            message=_one_line(exc),
+                        )
                         continue
-                    return SearchResult(
-                        "proof",
-                        canonical_theorem,
-                        path,
-                        proof_size(certificate),
-                        tuple(diagnostics),
-                        model_calls,
-                        states_expanded,
-                        states_discovered,
-                        candidates_executed,
-                        frontier_peak,
-                        depth_reached,
+                    certificate_nodes = proof_size(certificate)
+                    emit_event(
+                        on_event,
+                        "kernel_check_finished",
+                        depth=node.depth + 1,
+                        state_sha256=node.state_sha256,
+                        command=command,
+                        path=path,
+                        status="accepted",
+                        certificate_nodes=certificate_nodes,
+                        message=None,
+                    )
+                    return finished(
+                        SearchResult(
+                            "proof",
+                            canonical_theorem,
+                            path,
+                            certificate_nodes,
+                            tuple(diagnostics),
+                            model_calls,
+                            states_expanded,
+                            states_discovered,
+                            candidates_executed,
+                            frontier_peak,
+                            depth_reached,
+                        )
                     )
 
                 goals = _canonical_goals(owner)
@@ -565,34 +796,96 @@ def search(
                 )
                 if goals in seen:
                     existing = next_nodes.get(goals)
+                    replaced = False
                     if existing is not None and successor.priority < existing.priority:
                         next_nodes[goals] = successor
+                        replaced = True
+                    message = "successor is a canonical state already discovered"
                     diagnostic(
                         "duplicate_state",
                         node,
-                        "successor is a canonical state already discovered",
+                        message,
                         command,
                         depth=node.depth + 1,
+                    )
+                    emit_event(
+                        on_event,
+                        "candidate_result",
+                        model_call=model_calls,
+                        depth=node.depth + 1,
+                        state_sha256=node.state_sha256,
+                        candidate_rank=proposal_rank,
+                        command=command,
+                        path=path,
+                        goals_before=node.goals,
+                        status="ok",
+                        error_kind="duplicate_state",
+                        message=message,
+                        failed_index=None,
+                        goals_after=goals,
+                        successor_state_sha256=key,
+                        disposition=(
+                            "duplicate_replaced" if replaced else "duplicate_ignored"
+                        ),
                     )
                     continue
                 if states_discovered >= limits.max_states:
                     limited = True
+                    message = f"state limit reached ({limits.max_states})"
                     diagnostic(
                         "state_limit",
                         node,
-                        f"state limit reached ({limits.max_states})",
+                        message,
                         command,
                         depth=node.depth + 1,
+                    )
+                    emit_event(
+                        on_event,
+                        "candidate_result",
+                        model_call=model_calls,
+                        depth=node.depth + 1,
+                        state_sha256=node.state_sha256,
+                        candidate_rank=proposal_rank,
+                        command=command,
+                        path=path,
+                        goals_before=node.goals,
+                        status="ok",
+                        error_kind="state_limit",
+                        message=message,
+                        failed_index=None,
+                        goals_after=goals,
+                        successor_state_sha256=key,
+                        disposition="state_limit",
                     )
                     continue
                 seen.add(goals)
                 states_discovered += 1
                 next_nodes[goals] = successor
+                emit_event(
+                    on_event,
+                    "candidate_result",
+                    model_call=model_calls,
+                    depth=node.depth + 1,
+                    state_sha256=node.state_sha256,
+                    candidate_rank=proposal_rank,
+                    command=command,
+                    path=path,
+                    goals_before=node.goals,
+                    status="ok",
+                    error_kind=None,
+                    message=None,
+                    failed_index=None,
+                    goals_after=goals,
+                    successor_state_sha256=key,
+                    disposition="admitted",
+                )
 
         ordered = sorted(next_nodes.values(), key=lambda item: item.priority)
+        pruned_count = 0
         if len(ordered) > limits.beam_width:
             limited = True
             kept = ordered[: limits.beam_width]
+            pruned_count = len(ordered) - len(kept)
             for pruned in ordered[limits.beam_width :]:
                 diagnostics.append(
                     SearchDiagnostic(
@@ -608,6 +901,16 @@ def search(
             ordered = kept
         frontier = tuple(ordered)
         frontier_peak = max(frontier_peak, len(frontier))
+        emit_event(
+            on_event,
+            "frontier_updated",
+            depth=layer_index + 1,
+            frontier_size=len(frontier),
+            frontier_peak=frontier_peak,
+            beam_width=limits.beam_width,
+            pruned=pruned_count,
+            state_sha256s=tuple(node.state_sha256 for node in frontier),
+        )
         if not frontier:
             return unsuccessful("limit" if limited else "exhausted")
 
@@ -624,6 +927,7 @@ def search(
 __all__ = [
     "MAX_SEARCH_DEPTH",
     "CandidatePolicy",
+    "EventfulCandidatePolicy",
     "SearchDiagnostic",
     "SearchLimits",
     "SearchResult",

@@ -14,6 +14,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from peano_lab.batch import verify_proof  # noqa: E402
+from peano_lab.engine.tactics import InvalidProof  # noqa: E402
 from peano_lab.kernel.formulas import parse_formula  # noqa: E402
 from peano_lab.library.theorems import get as get_theorem  # noqa: E402
 from peano_lab.ui.prove import SurfaceCapabilities  # noqa: E402
@@ -22,6 +23,7 @@ from training.peano_policy.contract import (  # noqa: E402
     HELD_OUT_POLICY_NAMES,
     model_v2_environment,
 )
+from training.peano_policy.events import EVENT_FIELDS  # noqa: E402
 import training.peano_policy.search as policy_search  # noqa: E402
 
 
@@ -261,7 +263,7 @@ def test_policy_failure_is_diagnostic_and_configuration_is_host_validated() -> N
         capabilities=_capabilities("refl"),
         limits=_limits(),
     )
-    assert result.status == "exhausted"
+    assert result.status == "limit"
     assert result.diagnostics[0].kind == "policy_error"
     assert "\n" not in result.diagnostics[0].message
 
@@ -271,6 +273,139 @@ def test_policy_failure_is_diagnostic_and_configuration_is_host_validated() -> N
         policy_search.SearchLimits(beam_width=0)
     with pytest.raises(TypeError, match="capabilities"):
         policy_search.search("0 = 0", RaisingPolicy())  # type: ignore[call-arg]
+
+
+def test_live_events_are_exact_transactional_and_do_not_change_the_result() -> None:
+    theorem = "0 = 0"
+    capabilities = _capabilities("left", "refl")
+    observed_policy = FunctionPolicy(lambda goals, limit: ("left", "refl"))
+    records: list[dict[str, object]] = []
+
+    observed = policy_search.search(
+        theorem,
+        observed_policy,
+        capabilities=capabilities,
+        limits=_limits(),
+        on_event=records.append,
+    )
+    unobserved = policy_search.search(
+        theorem,
+        FunctionPolicy(lambda goals, limit: ("left", "refl")),
+        capabilities=capabilities,
+        limits=_limits(),
+    )
+
+    assert observed.to_dict() == unobserved.to_dict()
+    assert [record["kind"] for record in records] == [
+        "search_started",
+        "state_selected",
+        "proposal_received",
+        "candidate_started",
+        "candidate_result",
+        "candidate_started",
+        "candidate_result",
+        "kernel_check_started",
+        "kernel_check_finished",
+        "search_finished",
+    ]
+    for record in records:
+        kind = record["kind"]
+        assert tuple(record)[0:2] == ("v", "kind")
+        assert tuple(record)[2:] == EVENT_FIELDS[kind]  # type: ignore[index]
+
+    failed = next(
+        record
+        for record in records
+        if record["kind"] == "candidate_result"
+        and record["command"] == "left"
+    )
+    assert failed["status"] == "error"
+    assert failed["error_kind"] == "tactic_error"
+    assert failed["goals_before"] == failed["goals_after"] == ("⊢ 0 = 0",)
+    closed = next(
+        record
+        for record in records
+        if record["kind"] == "candidate_result"
+        and record["command"] == "refl"
+    )
+    assert closed["status"] == "ok"
+    assert closed["goals_after"] == ()
+    assert closed["disposition"] == "closed_pending_kernel"
+    assert records[-2]["status"] == "accepted"
+    assert records[-2]["certificate_nodes"] == 1
+    assert records[-1]["status"] == "proof"
+
+
+def test_live_events_show_logical_edges_not_internal_prefix_replays() -> None:
+    theorem = "0 = 0 \\/ 0 + 0 = 0"
+
+    def candidates(goals: tuple[str, ...], limit: int) -> tuple[str, ...]:
+        del limit
+        if "∨" in goals[0]:
+            return ("left", "right")
+        if goals[0] == "⊢ 0 = 0":
+            return ("left",)
+        return ("norm_num",)
+
+    records: list[dict[str, object]] = []
+    result = policy_search.search(
+        theorem,
+        FunctionPolicy(candidates),
+        capabilities=_capabilities("left", "right", "norm_num"),
+        limits=_limits(beam_width=2),
+        on_event=records.append,
+    )
+
+    assert result.commands == ("right", "norm_num")
+    starts = [
+        record for record in records if record["kind"] == "candidate_started"
+    ]
+    assert [record["command"] for record in starts] == [
+        "left",
+        "right",
+        "left",
+        "norm_num",
+    ]
+    # The final edge replays its accepted prefix internally, but that prefix is
+    # described in the path instead of being falsely displayed as a new firing.
+    assert starts[-1]["path"] == ("right", "norm_num")
+    assert starts[-1]["replay_commands"] == ("right", "norm_num")
+    frontier = next(
+        record for record in records if record["kind"] == "frontier_updated"
+    )
+    assert frontier["depth"] == 1
+    assert frontier["frontier_size"] == 2
+    assert frontier["pruned"] == 0
+
+
+def test_kernel_rejection_is_streamed_and_search_still_finishes(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    records: list[dict[str, object]] = []
+
+    def reject(*args: object, **kwargs: object) -> object:
+        del args, kwargs
+        raise InvalidProof("unit kernel rejection")
+
+    monkeypatch.setattr(policy_search, "checked_surface_final", reject)
+    result = policy_search.search(
+        "0 = 0",
+        FunctionPolicy(lambda goals, limit: ("refl",)),
+        capabilities=_capabilities("refl"),
+        limits=_limits(),
+        on_event=records.append,
+    )
+
+    assert result.status == "exhausted"
+    kernel = [
+        record for record in records if record["kind"] == "kernel_check_finished"
+    ]
+    assert len(kernel) == 1
+    assert kernel[0]["status"] == "rejected"
+    assert kernel[0]["certificate_nodes"] is None
+    assert kernel[0]["message"] == "unit kernel rejection"
+    assert records[-1]["kind"] == "search_finished"
+    assert records[-1]["status"] == "exhausted"
 
 
 def test_depth_32_budget_contains_a_checked_reference_route_for_every_sealed_goal() -> None:

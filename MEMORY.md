@@ -480,3 +480,20 @@
   roots and one held-out skip. These are implemented launch controls and a
   deterministic plan, not a completed synthetic corpus or trained-model
   result; no model-v3 adapter or solve-rate claim exists yet.
+- **Local Peano Model Lab (2026-07-31):** the frozen morning diagnostic now
+  runs offline on this Apple-silicon laptop through the global `pa` command.
+  One resident Qwen3-1.7B base plus rank-32 LoRA accepts
+  `pa prove-model FORMULA`, streams the exact prompt metadata, decoded tactic,
+  fresh surface replay, successor goals, internal kernel check, and final
+  independent replay, and publishes only checked `.pa`/JSON results. The
+  hash-locked arm64 CPython 3.12.2 stack uses Torch 2.8.0, Transformers 4.53.3,
+  PEFT 0.16.0, MPS BF16 base weights, and the sealed FP32×392 adapter artifact.
+  Base weights/config/generation-config and the complete 14-file adapter tree
+  are reverified offline at launch. The base/adaptor SHA-256 values are
+  `6df85b39330e5a425ee36253d0f894e4387e4f0a15b9c53cb467d668e6b3a841`
+  and `817e4f4bf8edb9d47511533c6ef1a9810aa9f0f2353fd4de57af97c82e632324`.
+  Exact MPS receipts prove the fixed arithmetic showcase with `simp` at 78
+  nodes/one call and `forall n. (n + 0) + 0 = n` with `use add_assoc` then
+  `simp [add_assoc]` at 44 nodes/two calls. Both passed independent replay in
+  one persistent two-request shell. This is explicitly diagnostic, not a
+  production quality claim.

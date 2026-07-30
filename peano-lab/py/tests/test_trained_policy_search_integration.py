@@ -138,6 +138,7 @@ def test_low_level_candidate_generation_is_one_physical_model_call(
 
     class Model:
         device = "unit-device"
+        config = SimpleNamespace(max_position_embeddings=32_768)
 
         def __init__(self) -> None:
             self.calls: list[dict[str, object]] = []
@@ -164,6 +165,19 @@ def test_low_level_candidate_generation_is_one_physical_model_call(
     assert len(model.calls) == 1
     assert model.calls[0]["num_return_sequences"] == 3
     assert model.calls[0]["num_beams"] == 3
+
+    with pytest.raises(ValueError, match="exceeds the model context"):
+        generate_tactic_candidates(
+            model=model,
+            tokenizer=Tokenizer(),
+            prompt=prompt,
+            environment=environment,
+            max_candidates=1,
+            seed=19,
+            max_new_tokens=32_766,
+            do_sample=False,
+        )
+    assert len(model.calls) == 1
 
 
 class _ScriptedCandidatePolicy:
