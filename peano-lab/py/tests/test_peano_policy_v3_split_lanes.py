@@ -34,6 +34,10 @@ def _load_builder() -> object:
 builder = _load_builder()
 
 
+def test_v3_replay_watchdog_exceeds_measured_five_hour_build() -> None:
+    assert attestor.REPLAY_WATCHDOG_SECONDS == 8 * 60 * 60
+
+
 def _group(label: str) -> tuple[tuple[str, ...], tuple[str, ...]]:
     return ((f"family-{label}",), (f"lineage-{label}",))
 

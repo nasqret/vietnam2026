@@ -52,6 +52,7 @@ from peano_lab.kernel.formulas import (  # noqa: E402
 
 
 ATTESTATION_VERSION = 2
+REPLAY_WATCHDOG_SECONDS = 28_800
 V3_CATALOG_TRAJECTORY = "catalog-predecessor-prefix-v1"
 V3_SYNTHETIC_LANE = "synthetic-root-balanced"
 V3_SPLIT_LANES = (V3_CATALOG_TRAJECTORY, V3_SYNTHETIC_LANE)
@@ -761,12 +762,12 @@ def _replay_builder(
             env=environment,
             capture_output=True,
             text=True,
-            # The WMI model-v2 preparation established that a 100,000-row
-            # replay can legitimately take longer than one hour after the
-            # source corpus and first build have already succeeded.  This is a
-            # watchdog, not a performance acceptance criterion: retain a hard
-            # bound while allowing the independent model-v3 rebuild to finish.
-            timeout=14_400,
+            # The exact 78,494-row model-v3 first build on WMI took 5h07m.
+            # Independent replay executes the same checked builder, so a
+            # four-hour watchdog would deterministically reject valid data.
+            # This remains a hard failure bound, with roughly 56% headroom
+            # over that measured build rather than an acceptance criterion.
+            timeout=REPLAY_WATCHDOG_SECONDS,
         )
         if completed.returncode != 0:
             error = " ".join((completed.stderr or completed.stdout).split())
@@ -944,6 +945,7 @@ def main(argv: list[str] | None = None) -> int:
 
 __all__ = [
     "ATTESTATION_VERSION",
+    "REPLAY_WATCHDOG_SECONDS",
     "DatasetAttestationError",
     "attest_dataset",
     "main",
