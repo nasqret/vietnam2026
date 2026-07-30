@@ -31,6 +31,7 @@ DOMAIN_COUNTS = {
     "gcd_coprime": 25,
     "primes": 13,
     "factorization": 76,
+    "quadratic_residues": 137,
 }
 PROOF_SNAPSHOT_COMMIT = "5fff3eab2a7599035a6833c52b658da118f4a20c"
 
@@ -45,12 +46,14 @@ def test_arithmetic_dashboard_tour_atlas_and_dependency_chapters_are_ordered() -
         "index",
         "guided-tour",
         "theorem-atlas",
+        "proof-explorer",
         "language-and-trust",
         "proof-sharing",
         "dependency-ladder",
         "divisibility-and-congruence",
         "gcd-and-bezout",
         "primes-and-factorization",
+        "quadratic-reciprocity",
         "source-audit",
         "using-the-library",
     )
@@ -92,9 +95,9 @@ def test_atlas_embeds_every_checked_statement_script_receipt_and_edge() -> None:
         by_name[match.group(1)] = card
 
     theorems = snapshot["theorems"]
-    assert len(theorems) == snapshot["theorem_count"] == 247
-    assert len(by_name) == 247
-    assert sum(len(theorem["dependencies"]) for theorem in theorems) == 640
+    assert len(theorems) == snapshot["theorem_count"] == 384
+    assert len(by_name) == 384
+    assert sum(len(theorem["dependencies"]) for theorem in theorems) == 1_038
 
     for theorem in theorems:
         card = by_name[theorem["name"]]
@@ -106,6 +109,8 @@ def test_atlas_embeds_every_checked_statement_script_receipt_and_edge() -> None:
         assert html.escape("\n".join(recipe), quote=True) in card
         assert theorem["certificate_sha256"] in card
         assert f"<dd>{theorem['proof_nodes']:,}</dd>" in card
+        assert f"<dd>{theorem['distinct_proof_objects']:,}</dd>" in card
+        assert f"<dd>{theorem['reused_proof_references']:,}</dd>" in card
         assert f"<dd>{theorem['proof_depth']}</dd>" in card
         assert f"<dd>{theorem['cut_nodes']:,}</dd>" in card
         for dependency in theorem["dependencies"]:
@@ -135,13 +140,20 @@ def test_research_domains_and_runtime_names_match_the_atlas_contract() -> None:
     assert dict(counts) == DOMAIN_COUNTS
 
 
-def test_interaction_assets_are_local_progressive_and_not_duplicated_in_config() -> None:
+def test_interaction_assets_are_local_progressive_and_auto_discovered_once() -> None:
     config = (BOOK / "_config.yml").read_text(encoding="utf-8")
     css = (BOOK / "_static" / "arithmetic-book.css").read_text(encoding="utf-8")
     js = (BOOK / "_static" / "arithmetic-book.js").read_text(encoding="utf-8")
+    # Jupyter Book 1.x auto-discovers the local _static tree. Repeating these
+    # Sphinx keys would load the same assets twice, but the files themselves
+    # are a required, versioned part of the Book.
     assert "html_static_path" not in config
     assert "html_css_files" not in config
     assert "html_js_files" not in config
+    assert (BOOK / "_static" / "arithmetic-book.css").is_file()
+    assert (BOOK / "_static" / "arithmetic-book.js").is_file()
+    assert (BOOK / "_static" / "pa-proof-explorer" / "assets" / "explorer.css").is_file()
+    assert (BOOK / "_static" / "pa-proof-explorer" / "assets" / "explorer.js").is_file()
     assert "fetch(" not in js
     assert "innerHTML" not in js
     assert "prefers-reduced-motion" in css

@@ -17,6 +17,8 @@ from peano_lab.engine.state import (
     holes_in,
     instantiate_formula,
     invariants_ok,
+    proof_identity_metrics,
+    proof_metrics,
     record_step,
     replace_current_hole,
     start,
@@ -108,6 +110,14 @@ def test_hole_replacement_preserves_goal_traversal_order() -> None:
     assert holes_in(closed_left.partial) == (right.id,)
     assert closed_left.goals == (goals[1],)
     assert invariants_ok(closed_left)
+
+
+def test_identity_metrics_expose_sharing_without_changing_tree_metrics() -> None:
+    shared = EqRefl(ZERO)
+    certificate = EqTrans(shared, shared)
+
+    assert proof_metrics(certificate) == (3, 2)
+    assert proof_identity_metrics(certificate) == (2, 2, 1)
 
 
 def test_mismatched_goal_and_hole_counts_are_rejected() -> None:

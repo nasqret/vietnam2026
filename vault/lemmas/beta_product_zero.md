@@ -22,6 +22,9 @@ forall b c n. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\ exists q. u 
 - [[beta_prime_divisor_product_member]]
 - [[beta_all_prime_product_one_iff_length_zero]]
 - [[prime_factorization_uniqueness_by_length]]
+- [[pow_zero]]
+- [[beta_product_pointwise_mod_congruent]]
+- [[factorial_zero]]
 
 ## Verification record
 

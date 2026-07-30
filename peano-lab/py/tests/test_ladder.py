@@ -9,6 +9,24 @@ from peano_lab.kernel.formulas import Eq, Forall, Imp, parse_formula_with_names
 from peano_lab.kernel.proofs import Axiom, EqRefl, ForallIntro, Hyp, ImpElim, ImpIntro, Proof
 from peano_lab.kernel.terms import Succ, Var, Zero
 from peano_lab.library.theorems import (
+    FINITE_BITCOUNT_THEOREMS,
+    FINITE_CONGRUENCE_THEOREMS,
+    FINITE_FACTORIAL_THEOREMS,
+    FINITE_FOLD_THEOREMS,
+    FINITE_PERMUTATION_THEOREMS,
+    FINITE_PRODUCT_PERMUTATION_THEOREMS,
+    FINITE_PRODUCT_REINDEX_SUPPORT_THEOREMS,
+    FINITE_RANGE_THEOREMS,
+    FINITE_SUM_THEOREMS,
+    GAUSS_HALF_RANGE_THEOREMS,
+    GAUSS_SIGN_BRIDGE_THEOREMS,
+    PARITY_THEOREMS,
+    POWER_ALGEBRA_THEOREMS,
+    POWER_CONGRUENCE_THEOREMS,
+    QR_PRIME_UNIT_THEOREMS,
+    QR_BOUNDED_UNIT_THEOREMS,
+    QR_SMALL_MODULI_THEOREMS,
+    QUADRATIC_RESIDUE_THEOREMS,
     THEOREMS,
     get,
     names,
@@ -267,6 +285,34 @@ EXPECTED_NAMES = (
     "mod5_fourth_power_residue_three",
     "mod5_fourth_power_residue_four",
     "mod5_fourth_power_one",
+)
+
+# The reciprocity campaign keeps its native theorem tranches in isolated data
+# modules; their ordered names extend the historical ladder without copying
+# those source lists into this broad integration test.
+EXPECTED_NAMES += tuple(
+    spec.name
+    for tranche in (
+        PARITY_THEOREMS,
+        QUADRATIC_RESIDUE_THEOREMS,
+        FINITE_FOLD_THEOREMS,
+        FINITE_RANGE_THEOREMS,
+        FINITE_SUM_THEOREMS,
+        FINITE_CONGRUENCE_THEOREMS,
+        FINITE_BITCOUNT_THEOREMS,
+        QR_PRIME_UNIT_THEOREMS,
+        FINITE_FACTORIAL_THEOREMS,
+        POWER_CONGRUENCE_THEOREMS,
+        QR_SMALL_MODULI_THEOREMS,
+        POWER_ALGEBRA_THEOREMS,
+        GAUSS_SIGN_BRIDGE_THEOREMS,
+        GAUSS_HALF_RANGE_THEOREMS,
+        FINITE_PERMUTATION_THEOREMS,
+        FINITE_PRODUCT_PERMUTATION_THEOREMS,
+        FINITE_PRODUCT_REINDEX_SUPPORT_THEOREMS,
+        QR_BOUNDED_UNIT_THEOREMS,
+    )
+    for spec in tranche
 )
 
 

@@ -216,7 +216,8 @@ checkpoint. Existence checks at 43,973 nodes/depth 98; uniqueness at
 2,184 self-contained Cuts. The combined certificate SHA-256 is
 `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
 It passes empty-context and full live-use checking under the
-100,000-node/depth-256 cap, uses only PA1–PA6 and induction, and contains no
+500,000-occurrence/100,000-object/depth-256 cap, uses only PA1–PA6 and
+induction, and contains no
 DNE. Runtime integration is complete.
 
 The theorem remains conservative in a precise sense: it adds no primitive

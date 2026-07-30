@@ -15,6 +15,21 @@ def _owner(session: driver.LabSession) -> prove.ProofSession:
     return owner
 
 
+def test_expanded_formula_input_ceiling_is_synchronized_and_exact() -> None:
+    assert driver.MAX_INPUT == prove.MAX_INPUT == 8_192
+
+    prefix = "pa prove "
+    at_limit = prefix + "x" * (driver.MAX_INPUT - len(prefix))
+    accepted_for_parsing = driver.LabSession().run(at_limit)
+    assert "Input is too long" not in accepted_for_parsing
+    assert "Parse error:" in accepted_for_parsing
+
+    over_limit = at_limit + "x"
+    assert driver.LabSession().run(over_limit) == (
+        f"Input is too long (max {driver.MAX_INPUT} characters)."
+    )
+
+
 def test_pa_foundation_commands_are_plain_text_and_use_canonical_arithmetic() -> None:
     session = driver.LabSession()
     axioms = session.run("pa axioms")

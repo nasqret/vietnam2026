@@ -27,6 +27,13 @@ forall b c i. exists x. ((exists h. h + S x = S ((S i) * c)) /\ exists q. b = q 
 - [[beta_prefix_product_trace_exists]]
 - [[beta_product_exists]]
 - [[prime_factorization_exists_up_to]]
+- [[beta_prefix_sum_trace_exists]]
+- [[beta_sum_exists]]
+- [[beta_prefix_replace_exists]]
+- [[beta_prefix_swap_last_exists]]
+- [[beta_prefix_swap_last_reflect]]
+- [[finite_contains_decidable]]
+- [[beta_prefix_replace_reflect]]
 
 ## Verification record
 

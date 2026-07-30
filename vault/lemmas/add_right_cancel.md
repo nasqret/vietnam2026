@@ -23,6 +23,7 @@ forall a b c. a + c = b + c -> a = b
 - [[add_le_cancel_right]]
 - [[mul_left_cancel_nonzero]]
 - [[factor_difference]]
+- [[odd_half_unique]]
 
 ## Verification record
 

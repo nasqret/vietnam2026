@@ -26,6 +26,7 @@ forall n m k. (n + m) * k = n * k + m * k
 - [[mod_eq_mul_right]]
 - [[square_decomp]]
 - [[common_divisor_beta_moduli_divides_gap_times_c]]
+- [[odd_mul_odd]]
 
 ## Verification record
 

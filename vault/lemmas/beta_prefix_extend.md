@@ -33,6 +33,10 @@ forall k b e s. exists z c. (((exists h. h + S s = S ((S k) * c)) /\ exists q. z
 - [[beta_prefix_extend_all_prime]]
 - [[beta_prefix_extend_sorted_singleton]]
 - [[beta_prefix_extend_sorted_succ]]
+- [[beta_repeat_succ_extend]]
+- [[beta_range_succ_extend]]
+- [[beta_prefix_sum_trace_exists]]
+- [[beta_prefix_replace_exists]]
 
 ## Verification record
 

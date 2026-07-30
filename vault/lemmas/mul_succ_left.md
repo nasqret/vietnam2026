@@ -27,6 +27,8 @@ forall n m. S n * m = n * m + m
 - [[prime_three]]
 - [[mod5_square_residue_one]]
 - [[mod5_square_residue_two]]
+- [[predecessor_square_mod_one]]
+- [[beta_half_range_entry_bounds]]
 
 ## Verification record
 

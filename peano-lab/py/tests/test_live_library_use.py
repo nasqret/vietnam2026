@@ -8,8 +8,15 @@ import sys
 import pytest
 
 import driver
-from peano_lab.engine.state import final_certificate, proof_metrics, start
+import peano_lab.engine.tactics as tactics_module
+from peano_lab.engine.state import (
+    final_certificate,
+    proof_identity_metrics,
+    proof_metrics,
+    start,
+)
 from peano_lab.engine.tactics import (
+    MAX_USE_PARTIAL_OBJECTS,
     MAX_USE_PARTIAL_NODES,
     MAX_USE_PROOF_DEPTH,
     InvalidProof,
@@ -21,7 +28,7 @@ from peano_lab.engine.tactics import (
     use_checked,
 )
 from peano_lab.kernel.checker import check
-from peano_lab.kernel.formulas import Eq, parse_formula
+from peano_lab.kernel.formulas import And, Eq, parse_formula
 from peano_lab.kernel.proofs import AndIntro, Cut, EqRefl, EqSym, Proof
 from peano_lab.kernel.terms import Zero
 from peano_lab.library.theorems import LibraryError, normalise_cuts, replay
@@ -255,13 +262,30 @@ def test_use_budget_accepts_exact_global_boundaries_and_rejects_one_more() -> No
     _enforce_use_proof_budget(
         at_nodes,
         max_nodes=MAX_USE_PARTIAL_NODES,
+        max_objects=MAX_USE_PARTIAL_NODES,
         label="test-node-boundary",
     )
     with pytest.raises(TacticLimit, match="test-node-boundary limit"):
         _enforce_use_proof_budget(
             EqSym(at_nodes),
             max_nodes=MAX_USE_PARTIAL_NODES,
+            max_objects=MAX_USE_PARTIAL_NODES + 1,
             label="test-node-boundary",
+        )
+
+    at_objects = _balanced_budget_proof(MAX_USE_PARTIAL_OBJECTS)
+    _enforce_use_proof_budget(
+        at_objects,
+        max_nodes=MAX_USE_PARTIAL_NODES,
+        max_objects=MAX_USE_PARTIAL_OBJECTS,
+        label="test-object-boundary",
+    )
+    with pytest.raises(TacticLimit, match="test-object-boundary limit"):
+        _enforce_use_proof_budget(
+            EqSym(at_objects),
+            max_nodes=MAX_USE_PARTIAL_NODES,
+            max_objects=MAX_USE_PARTIAL_OBJECTS,
+            label="test-object-boundary",
         )
 
     at_depth = _depth_budget_proof(MAX_USE_PROOF_DEPTH)
@@ -269,14 +293,40 @@ def test_use_budget_accepts_exact_global_boundaries_and_rejects_one_more() -> No
     _enforce_use_proof_budget(
         at_depth,
         max_nodes=MAX_USE_PARTIAL_NODES,
+        max_objects=MAX_USE_PARTIAL_OBJECTS,
         label="test-depth-boundary",
     )
     with pytest.raises(TacticLimit, match="test-depth-boundary limit"):
         _enforce_use_proof_budget(
             EqSym(at_depth),
             max_nodes=MAX_USE_PARTIAL_NODES,
+            max_objects=MAX_USE_PARTIAL_OBJECTS,
             label="test-depth-boundary",
         )
+
+
+def test_surface_qed_retains_shared_objects_under_the_dual_limit(monkeypatch) -> None:
+    target = Eq(ZERO, ZERO)
+    certificate: Proof = EqRefl(ZERO)
+    for _ in range(60):
+        certificate = EqSym(certificate)
+    for _ in range(4):
+        target = And(target, target)
+        certificate = AndIntro(certificate, certificate)
+
+    assert proof_metrics(certificate) == (991, 65)
+    assert proof_identity_metrics(certificate)[0] == 65
+    monkeypatch.setattr(tactics_module, "MAX_LIVE_PROOF_OBJECTS", 100)
+    completed = replace(
+        start(target),
+        goals=(),
+        partial_certificate_with_holes=certificate,
+    )
+
+    normalized = prove.checked_surface_final(completed, target)
+
+    assert check((), normalized, target)
+    assert proof_identity_metrics(normalized)[0] == 65
 
 
 def test_live_use_obeys_orelse_and_inactive_session_grammar() -> None:

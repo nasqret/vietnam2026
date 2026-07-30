@@ -40,6 +40,14 @@ forall a b. (exists k. k + a = b) -> a = b \/ exists k. k + S a = b
 - [[prime_factorization_exists_up_to]]
 - [[beta_sorted_factor_le_last]]
 - [[prime_factorization_uniqueness_by_length]]
+- [[quadratic_residue_search_up_to]]
+- [[beta_repeat_succ_extend]]
+- [[beta_range_succ_extend]]
+- [[beta_prefix_sum_trace_exists]]
+- [[lt_three_cases]]
+- [[lt_five_cases]]
+- [[lt_seven_cases]]
+- [[finite_lt_succ_eq_or_lt]]
 
 ## Verification record
 

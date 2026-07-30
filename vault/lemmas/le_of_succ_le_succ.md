@@ -38,6 +38,13 @@ forall a b. (exists k. k + S a = S b) -> exists r. r + a = b
 - [[prime_factorization_exists_up_to]]
 - [[beta_sorted_factor_le_last]]
 - [[prime_factorization_uniqueness_by_length]]
+- [[beta_repeat_succ_extend]]
+- [[beta_range_succ_extend]]
+- [[beta_prefix_sum_trace_exists]]
+- [[lt_three_cases]]
+- [[lt_five_cases]]
+- [[lt_seven_cases]]
+- [[finite_lt_succ_eq_or_lt]]
 
 ## Verification record
 

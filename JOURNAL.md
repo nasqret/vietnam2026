@@ -1754,3 +1754,1129 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   built-HTML card/asset/anchor contracts and `git diff --check` pass. No in-app
   browser was attached, so a live visual/click interaction audit is explicitly
   unclaimed rather than substituted with another browser backend.
+
+## 2026-07-29 — Constructive finite permutation completeness
+
+- Added nineteen native β-prefix permutation theorems. The tranche proves
+  finite occurrence decision, one-position recoding, interior/last swap,
+  reverse pointwise reflection, and transport of boundedness, injectivity and
+  surjectivity. Its endpoint `finite_bounded_injective_surjective` proves that
+  every bounded injective decoded prefix is surjective onto the same finite
+  interval by ordinary induction; no finite-set or function primitive was
+  added.
+- Two cold isolated replays and empty-context kernel checks pass for all
+  nineteen theorems (`3 passed in 62.65s`). The swap constructor reaches
+  31,742 structural occurrences, 4,832 distinct objects and depth 87. The
+  finite-pigeonhole endpoint reaches 42,463 occurrences, 6,399 objects and
+  depth 89. Neither contains `DNE`; both remain well below the
+  500,000-occurrence/100,000-object/depth-256 policy, so no resource limit was
+  raised.
+- Canonical registry replay reproduces the endpoint metrics exactly, and the
+  full stable-order/dependency test passes in 123.85 seconds. The runtime now
+  contains 377 checked theorems. The synchronized research graph contains 378
+  records: 23 baseline checked, 354 post-baseline checked, no planned record,
+  and one language-blocked conventional integer-coefficient interface.
+- Regenerated the deterministic snapshot at 1,780,721 structural occurrences,
+  51,883 Cuts and 322 Cut-bearing certificates. Its ordered root is
+  `6a489a2bfab7722d357bea5744d2d4f08faad1a00cf833e0b6c0ae93208f413a`.
+  The global certificate maxima remain the earlier FTA endpoint, confirming
+  that the existing resource policy has adequate measured headroom.
+- Regenerated 377 Obsidian lemma notes; the full vault has 458 notes and 4,626
+  resolved links. Regenerated the 377-card Jupyter Book theorem atlas and
+  taught its source locator to recognize the reviewed dynamic small-modulus
+  spec families without weakening literal-name checks for other modules.
+  Product invariance under finite permutations is the next mathematical gate;
+  Wilson, Fermat, Euler, Gauss and Eisenstein remain explicitly unproved.
+- The strict Jupyter Book build passes all 39 sources with warnings as errors.
+  The command verifier checks 194 deep links and 47 session blocks containing
+  287 commands; every command replays cleanly. Atlas drift, catalog drift,
+  dashboard counts, synchronized 8,192-character input bounds, and
+  `git diff --check` are green.
+
+## 2026-07-29 — Product replacement balance and swap invariance
+
+- Added three native PA theorems in the isolated
+  `finite_product_permutation_theorems.py` tranche. The reflection lemma
+  classifies entries of a one-position replacement; the balance theorem proves
+  `q * x = p * y` when one decoded factor changes from `x` to `y`; and
+  `beta_product_swap_last_invariant` proves exact product equality after an
+  interior/final transposition. These are expanded β and Product relations,
+  not new list, product, or permutation primitives.
+- Added the hygienic authoring helper `product_successor_relation`. It permits
+  exactly the audited successor-length Product surface while retaining the
+  identifier-only contract of `product_relation`; the helper and rejection
+  boundary have dedicated tests.
+- Two cold isolated replays pass for all three certificates, together with
+  exact statement/dependency/hash receipts, empty-context kernel checks,
+  no-`DNE` checks, capacity gates, and false-contract/Cut mutations. Exact
+  metrics are 1,735 nodes/depth 62/1,011 objects for replacement reflection,
+  4,780/66/1,552 for replacement balance, and 7,439/67/1,685 for swap-last
+  invariance. No capacity limit was raised.
+- Integrated the tranche after constructive finite permutation completeness.
+  The runtime now contains 380 checked theorems and 1,017 dependency edges;
+  the synchronized research graph has 381 records: 23 baseline checked, 357
+  post-baseline checked, no planned catalog record, and one language-blocked
+  conventional interface.
+- Regenerated the deterministic snapshot at 1,794,675 structural occurrences,
+  405,807 aggregate distinct objects, 52,266 Cuts, and 325 Cut-bearing
+  certificates. The ordered root is
+  `cd492e79c0dd69f65108653423c6df3ccc6efc2756306a14e1b3743afb83ba0e`;
+  FTA remains the global maximum at 73,767 nodes, 8,701 objects and depth 99.
+- Regenerated 380 lemma notes and the 380-card theorem atlas. The full Obsidian
+  vault now has 461 notes and 4,693 resolved links. General invariance under an
+  arbitrary bounded injective reindexing is still a separate unchecked gate;
+  Wilson, Fermat, Euler, Gauss, Eisenstein, and quadratic reciprocity remain
+  explicitly unproved.
+
+## 2026-07-30 — WMI-only QR replay campaign
+
+- Moved every heavy QR proof replay, capacity profile, mutation audit, and
+  full-ladder regression off the authoring Mac. No QR replay process remains
+  local; source inspection and text authoring are the only local activities.
+- Submitted baseline WMI job `172707` on `cpu_idle` from immutable archive
+  `e4a0ff3909b970438aba4dfbc952220c02a7be5d74232ca3af98aad2fcd3e10c`.
+  It selects 22 gates covering the checked reindex-support and bounded-unit
+  tranches, both isolated general-reindex candidates, dual capacity policy,
+  adversarial mutations, and the complete public theorem ladder.
+- Added an isolated three-rung Fermat candidate: range-entry normalization,
+  pointwise product coprimality, and coprimality of the product
+  `1*...*(p-1)` with `p`. The source is not registered and carries no theorem
+  claim. Submitted WMI discovery job `172716` from immutable archive
+  `27cf34986f0b7f0fd2f70d4c840c9fc4f7f5a8e49889c71a54db662327ede823`;
+  its three candidate gates run before the broader integration suite.
+- Both jobs were still `PENDING (Priority)` with zero CPU time at the latest
+  check. Consequently there is no pass receipt to record and neither
+  candidate tranche is admitted. If discovery passes, exact statement hashes,
+  lengths, occurrences, depth, object/edge/reuse counts, and Cuts will be
+  pinned before a distinct admission snapshot is submitted.
+- Added isolated rungs 4 and 5, `beta_successor_lift_exists` and
+  `prime_mul_index_map_exists_up_to`. The latter constructively divides each
+  `a*S i` by the prime, excludes zero remainder with Euclid's lemma and the
+  strict bound, stores the predecessor of the remainder, and extends the
+  β-coded map. WMI discovery job `172722` uses snapshot
+  `0d050e5d631a080bec41753438636047c257ca146c43be4f9382e8752a6caccd`.
+  It too was `PENDING (Priority)` with zero CPU time; the two new theorems are
+  isolated and unverified.
+- Added the cluster workflow, honest status vocabulary, first readable
+  candidate proof, and the eight-rung Fermat dependency table to the Jupyter
+  Book and Obsidian MOC. No Book build was run locally; its build and link
+  validation belong to a later WMI-backed integration gate.
+- Added isolated rung 7, `beta_product_pointwise_scale_mod`, by simultaneous
+  induction over two exact products and a relational power. Its successor
+  step multiplies the prefix congruence by the final pointwise congruence and
+  uses only checked semiring reassociation/commutation. Static review found no
+  proof-shape error.
+- Reworked its public authoring helper to allocate every pointwise bound,
+  decoded-entry, and congruence binder in one capture-avoiding scope; product
+  and power decomposition witnesses are generated hygienically as well.
+  Superseded pending job `172734` was cancelled before using CPU. Replacement
+  WMI job `172737` uses snapshot
+  `08cb916fee48cfd5b2f4882052e5812c99f496f1f34e502dac61ea97d1c6c1c4`.
+- Authored rung 6 as five isolated theorems rather than one brittle proof:
+  `fermat_index_map_bounded`, `prime_mul_index_map_injective`,
+  `beta_successor_range_reindex_aligned`,
+  `beta_successor_range_scale_mod`, and the existential package
+  `prime_mul_residue_reindex_exists`. Two independent static audits found and
+  corrected malformed free-variable annotations before execution, then
+  confirmed the cancellation and bounded-uniqueness route.
+- Authored isolated rung 8, `prime_mul_residue_product_balance`. It constructs
+  one exact target product, identifies it with the source product through the
+  general bounded-injective reindex theorem, applies pointwise scale-product
+  transport, and performs one reverse rewrite. Static audit found and fixed a
+  missing conjunction destructuring; the patched alias flow was re-audited.
+- Added named WMI suites so expensive discovery does not have to repeat the
+  full integration ladder. Snapshot
+  `c6e6cabbbaf8b617e8d42576828d8c10d75d166e59c3bd2c09dd27aab4328632`
+  was scheduler-validated and submitted as focused jobs `172769`
+  (`fermat-reindex`) and `172770` (`fermat-balance`). Both were pending at the
+  recorded checkpoint. The source archive is shared and content-addressed;
+  suite and job ID remain distinct receipt fields. No local Python or replay
+  was run.
+- Authored two isolated Fermat endpoint candidates. The predecessor-exponent
+  theorem `fermat_predecessor_exponent_mod_one` obtains an exact factorial
+  witness, invokes rung 8, proves the residue product coprime to the prime,
+  normalizes the two products, and applies checked coprime modular
+  cancellation. Its exact direct dependencies are `factorial_exists`, rung
+  8 (`prime_mul_residue_product_balance`),
+  `prime_range_product_coprime`, `prime_nonzero`,
+  `mod_eq_cancel_coprime`, `mul_comm`, and `mul_one`.
+- Authored the constructive all-input wrapper `fermat_little_all_inputs`.
+  It derives a successor presentation of the prime, decomposes the successor
+  power, and uses `prime_coprime_or_divides`: the coprime branch applies the
+  predecessor endpoint and scales its congruence, while the divisible branch
+  constructs divisibility witnesses for both sides. It has no classical
+  case split and remains an isolated candidate.
+- Added a dedicated five-gate `fermat-endpoints` WMI suite for exact contracts,
+  helper hygiene, dependency topology, two cold replays with profiles, Cut
+  spines, and false-contract/dependency mutations. Submitted discovery job
+  `172837` from immutable snapshot
+  `c7cc39f94b2cb0ae5542f89b3ddec947d84c55627168e07851c62da36f51bd34`
+  on `cpu_idle` with 1 CPU, 32768 MiB, and `04:00:00`. It is queued/pending:
+  there is no endpoint pass receipt or admission claim. At that
+  endpoint-submission checkpoint, all seven submitted QR discovery jobs
+  remained pending; no heavy work or Book build was run locally.
+- Authored the isolated Wilson fixed-point candidate
+  `prime_bounded_square_one_cases`. For positive `x`, it writes `x = S t`,
+  normalizes `x*x = 1 + t*(t+2)`, cancels the balanced congruence witnesses to
+  obtain `p | t*(t+2)`, and invokes `euclid_prime_dvd_product`. Divisor bounds
+  then force `t=0` or `p=t+2`, yielding `x=1` or the prime predecessor. This
+  uses no subtraction, integer type, classical case split, or `DNE`.
+- Fixed its ordered direct boundary at exactly 16 checked dependencies:
+  `ne_zero_of_one_le`, `nonzero_is_succ`, `mul_succ_left`, `add_assoc`, `add_comm`,
+  `add_left_cancel`, `factor_difference`, `euclid_prime_dvd_product`,
+  `le_succ_self`, `lt_of_le_of_lt`, `zero_or_succ`,
+  `divisor_le_nonzero`, `lt_not_le`, `succ_ne_zero`, `le_antisymm`, and
+  `succ_injective`.
+- Added the focused five-gate `wilson-square-one` WMI suite for the expanded
+  contract, helper hygiene, isolated dependency boundary, two cold profiled
+  full-Cut replays, no-DNE/capacity checks, and contract/every-edge mutations.
+  Submitted discovery job `172855` from immutable snapshot
+  `396af02c5aa4fdf62d4c3484f8a2c711b03c489cad498c121d0402ce3ee79981`
+  on `cpu_idle` with 1 CPU, 16384 MiB, and `02:00:00`. It is queued/pending;
+  no pass, pinned metrics, or admission is claimed, and no heavy work or Book
+  build was run locally.
+- Authored four isolated pointwise Wilson-inverse candidates. The zero-based
+  relation `InvIdx(p,n,i,j)` stores `i<n`, `j<n`, and a balanced witness that
+  residues `S i` and `S j` multiply to one modulo `p`. The dependency
+  decomposition is: `prime_inverse_index_exists` from bounded prime inverse
+  existence and successor-bound conversion; `bounded_mod_inverse_unique` from
+  modular scaling/transitivity and bounded representative uniqueness;
+  `bounded_inverse_index_unique` from raw uniqueness plus successor
+  injectivity; and `inverse_index_symmetric` from multiplication commutativity.
+- Authored three isolated β-prefix candidates. `prime_inverse_prefix_extend`
+  appends the mate at `l` with `beta_prefix_extend` and splits `i<S l` into
+  the last/old cases; `prime_inverse_prefix_exists_bounded` inducts over any
+  `l≤n`; `prime_inverse_prefix_exists` specializes to the full length `n`.
+  Their sources preserve the exact ordered dependency tuples recorded in the
+  Fermat/Wilson design note and remain outside the public registry.
+- Wired the five-gate `wilson-inverse-prefix` WMI suite. Its recursive source
+  graph closes all seven candidates, and its gates cover exact helpers and
+  contracts, dependency topology, two cold profiled full-Cut replays,
+  no-DNE/capacity checks, and contract/every-live-edge mutations. Submitted
+  discovery job `172899` from immutable snapshot
+  `1a11442b18dd6c40b49975e16f0b2062be57fade347acca20d87dba27e6adffc`
+  on `cpu_idle` with 1 CPU, 16384 MiB, and `02:00:00`. It is queued/pending;
+  no replay result, pinned metrics, pass, or admission is claimed.
+- At that inverse-prefix checkpoint, the next Wilson blockers were an
+  extensional involution theorem from β functionality/uniqueness/symmetry,
+  treatment of the fixed residues `1` and
+  `p-1` (including prime `2`), a β-coded deletion/reindex or exactly-two-fixed-
+  points pairing theorem, and the final factorial-product bridge. No tests,
+  proof replay, profiling, or Book build ran locally.
+- Authored six isolated extensional inverse-map candidates:
+  `inverse_prefix_entry_sound`, `inverse_prefix_extensional`,
+  `inverse_prefix_involutive`, `inverse_prefix_injective`,
+  `inverse_prefix_surjective`, and `prime_inverse_prefix_fixed_cases`.
+  Soundness uses β uniqueness; extensionality uses bounded inverse-index
+  uniqueness; symmetry and extensionality give involution; injection and
+  surjection follow constructively. The first five theorems are prime-free.
+  Only the fixed theorem assumes primality, and its exact zero-based conclusion
+  is `i = 0 \/ S i = n`.
+- Wired the five-gate `wilson-inverse-involution` suite, whose recursive source
+  graph closes 14 isolated specs. Submitted discovery job `172920` from
+  immutable snapshot
+  `cfa4eea18d4a746a49a2d7579f217dbd65a27a79df61c76e8dba49079ba1aaa4`
+  on `cpu_idle` with 1 CPU, 16384 MiB, and `02:00:00`. It is queued/pending;
+  no report, pinned metric set, pass, or admission is claimed. The remaining
+  Wilson blockers are endpoint removal/exactly-two-fixed-points pairing,
+  prime `2`, paired products, and the final factorial bridge. No local build,
+  proof replay, profiling, or tests ran.
+- Authored three isolated fixed-endpoint candidates for the full zero-based
+  inverse prefix. `inverse_prefix_zero_fixed` builds the fixed entry for
+  residue one; `inverse_prefix_last_fixed` uses
+  `predecessor_square_mod_one` to fix the last index; and
+  `prime_inverse_prefix_exact_endpoints` combines both entries with
+  `prime_inverse_prefix_fixed_cases` to conclude that every fixed index is
+  `0` or the last index. The contract is honest at prime `2`: its witness is
+  `k=0`, so the two endpoint descriptions coincide and no distinctness is
+  asserted.
+- Added the focused five-gate `wilson-inverse-endpoints` WMI suite. Its
+  recursive graph closes 17 isolated specs and audits exact contracts and
+  ordered dependencies, helper/formula hygiene, graph/core isolation, two
+  cold closed replays with hashes/RSS/no-DNE/capacity metadata, and a unique
+  false contract plus every direct Cut-edge mutation. Local bounded checks
+  were limited to syntax and the first three cheap gates, all of which passed;
+  the heavy replay and mutation gates remain WMI-only.
+- Submitted discovery job `172927` from exact snapshot
+  `7083e3876cc54daa782153aa6e1a2554aa75fa5a40cce3d6cf6b5971979dc35d`
+  on `cpu_idle` with 1 CPU, 16384 MiB, and `02:00:00`. It is queued/pending
+  only: there is no replay report, pass, pinned metric set, or admission. The
+  runner now has seven focused suites and a 66-gate full audit. No local heavy
+  Python, proof replay, mutation run, or Book build was started.
+- Authored the first two isolated nonendpoint inverse-orbit candidates.
+  `prime_inverse_prefix_nonendpoint_not_fixed` uses the existing fixed-case
+  classification to show that a decoded mate of an explicitly nonendpoint
+  source cannot equal that source. `prime_inverse_prefix_nonendpoint_mate`
+  uses involution, prime successor shape, both decoded fixed endpoint entries,
+  successor injectivity, and β uniqueness to show that the mate is also a
+  nonendpoint. Both proofs are constructive. Their contracts make no endpoint-
+  distinctness claim and do not manufacture a nonendpoint index at prime `2`,
+  where the endpoint descriptions coincide.
+- Added the focused five-gate `wilson-inverse-orbit` WMI suite. It recursively
+  closes the square-one, point, prefix, involution, endpoint, and orbit layers:
+  `1+4+3+6+3+2 = 19` isolated specs. The gates audit exact contracts and
+  helper hygiene, the ordered dependency/core/source boundary, two cold closed
+  replays with proof metrics/hashes/RSS/no-DNE/capacity receipts, and a unique
+  false contract plus every direct Cut-edge mutation. Local work was limited
+  to syntax and the first three cheap gates, all passing; both cold replays and
+  adversarial mutations remain WMI-only.
+- Submitted discovery job `172932` from exact snapshot
+  `5463565294da6d757356985a0e8d353ad2e0e16ca1b21b99d2aa5cfa6bb5c6f6`
+  on `cpu_idle` with 1 CPU, 16384 MiB, and `02:00:00`. It is queued/pending
+  only: there is no replay report, pass, pinned metric set, or admission. The
+  runner now has eight focused suites and a 71-gate full audit. No local heavy
+  Python, proof replay, profiling, mutation run, or Book build was started.
+- Authored two isolated generic Wilson pair-product candidates.
+  `beta_product_double_succ_decompose` derives a terminal two-factor
+  decomposition from the checked one-step β-product decomposition.
+  `beta_adjacent_unit_pairs_product_one` inducts over `m`: if every adjacent
+  pair of a β-coded factor prefix is congruent to one modulo `p`, the exact
+  product of its first `m+m` factors is congruent to one. Reindexing the
+  nonendpoint inverse orbits into that adjacent layout and restoring the fixed
+  endpoint factors remain separate.
+- Two bounded replay corrections were made before the authoritative WMI
+  submission. Snapshots for jobs `172936` and `172943` each exposed a separate
+  missing third length rewrite; both jobs were cancelled before start as
+  superseded known-broken snapshots and provide no evidence.
+- The corrected focused `wilson-pair-product` suite has two specs and five
+  gates: exact contracts, hygienic/canonical helper expansions, the ordered
+  dependency/core/source boundary, two cold closed replays with hashes/RSS/
+  no-DNE/capacity receipts, and false-contract plus every direct Cut mutation.
+  All five gates passed locally in 5.4 seconds. Exact metrics were 1,317 nodes,
+  depth 63, and 844 objects for `beta_product_double_succ_decompose`; and 4,372
+  nodes, depth 64, and 1,290 objects for
+  `beta_adjacent_unit_pairs_product_one`. The deterministic graph hash is
+  `622496753bd474f9f64d5d3001424d3c4513d43d6a5256022cd5a172167959ec`;
+  the source hash is
+  `193fe015b32ffde4d93e00720c9fef510a804228e24f19f5cc6c97e8ad5fa724`.
+- Submitted authoritative replacement job `172946` from exact snapshot
+  `9d890542b964d40580ad2f8f77fa83455de3b9af0f8ca905a37f6a6ee278e296`
+  on `cpu_idle` with 1 CPU, 16384 MiB, and `02:00:00`. It is queued/pending.
+  The local pass does not substitute for an independent WMI admission receipt:
+  no WMI pass, pinned remote receipt, or theorem admission is claimed. The
+  runner now has nine focused suites and a 76-gate full audit.
+- To prioritize the focused prerequisite jobs, superseded full jobs `172707`,
+  `172716`, `172722`, and `172737` were placed in a reversible user-held state.
+  They were not cancelled and are to be released after focused results settle.
+
+## 2026-07-30 — Native body receipts and a common WMI QR batch
+
+- Removed the UI-only `ring` call from
+  `prime_bounded_square_one_cases`. Its normalization is now an explicit
+  native equality/rewrite derivation, which explains the corrected 16-item
+  dependency boundary including `mul_succ_left`. A body-only laptop replay
+  measured 182 nodes at depth 48.
+- Authored the signed-half candidate pair
+  `odd_upper_remainder_reflection` and
+  `gauss_pointwise_signed_half_representative`. Their body-only laptop
+  receipts are respectively 125 nodes/depth 34 and 116 nodes/depth 38.
+- Authored the eight-candidate finite-omission stack. In theorem/dependency
+  order, the body-only nodes/depth receipts are `73/22`, `69/27`, `58/23`,
+  `21/15`, `89/31`, `149/43`, `24/16`, and `27/18` for
+  `finite_covers_into_or_omits`, `finite_inverse_choice_prefix_extend`,
+  `finite_inverse_choice_prefix_exists`,
+  `finite_inverse_choice_bounded_into`, `finite_inverse_choice_injective`,
+  `finite_short_cover_impossible`, `finite_short_prefix_omits`, and
+  `finite_bounded_into_injective_omits`.
+- For each of `wilson-square-one`, `gauss-signed-half`, and
+  `finite-omission`, the three bounded local structural gates passed: exact
+  contract/dependency checks; helper hygiene/native/witness checks; and
+  graph/core/source isolation. These receipts exercise theorem bodies or
+  bounded structure only. They are not closed recursive replay, are not
+  closed-certificate admission, and admit no new theorem.
+- Ran the cheap all-stack body replay and fixed two existential-binder errors
+  in `wilson_inverse_prefix_candidate.py` and an apply-to-negation error in
+  `wilson_inverse_orbit_candidate.py`. All 19 Wilson bodies now pass. Layered
+  nodes/depth are square `182/48`; point `55/22`, `70/28`, `50/21`, `20/12`;
+  prefix `76/29`, `64/25`, `29/16`; involution `44/23`, `49/25`, `80/29`,
+  `55/29`, `31/22`, `83/31`; endpoints `76/23`, `54/23`, `104/32`; and orbit
+  `45/26`, `206/40`. Twelve bounded structural gates pass across prefix,
+  involution, endpoints, and orbit—three for each suite. These remain body-
+  only/structural evidence, not closed-certificate admission.
+- Cancelled stale zero-CPU jobs `172855`, `172899`, `172920`, `172927`, and
+  `172932`; their historical submissions remain recorded above. Snapshot
+  `9a59e7a590223d4852f02dde19633b21bfcc4fb92491705d4aade022a116265a`
+  produced valid pending jobs `172964` (`gauss-signed-half`), `172965`
+  (`finite-omission`), and `172966` (`wilson-square-one`). Its first dependent
+  replacements `172967` (`wilson-inverse-involution`), `172968`
+  (`wilson-inverse-endpoints`), and `172970` (`wilson-inverse-orbit`) were
+  cancelled after zero CPU when the prefix errors made them stale.
+- Staged the corrected Wilson stack as exact snapshot
+  `6d32a5ba65b2268dc3fd6c027726a86c5054788bbeb5edacd6d6cbec3373403e`
+  and submitted `172975` (`wilson-inverse-prefix`), `172976`
+  (`wilson-inverse-involution`), `172977` (`wilson-inverse-endpoints`), and
+  `172978` (`wilson-inverse-orbit`). They were pending at submission. No
+  current job had consumed CPU at the latest recorded poll, so there is no WMI
+  pass or admission result.
+- The WMI runner now selects 86 gates across 19 source modules and exposes 11
+  focused five-gate suites. Full recursive replay, profiling, capacity/no-DNE
+  checks, and adversarial mutation for this batch remain cluster-only.
+- Ran the cheap finite-product plus Fermat body preflight. It caught and fixed
+  a missing second rewrite in `beta_successor_range_reindex_aligned` and
+  eliminated an invalid locally repackaged `hprojection` in
+  `prime_mul_residue_product_balance`. All 21 bodies now pass. Key nodes/depth
+  are reindex aligned `86/34`, scale `62/32`, reindex exists `106/40`, balance
+  `93/39`, predecessor Fermat `93/34`, and all-input Fermat `104/30`.
+- Added reusable
+  `peano_lab.library.candidate_validation.replay_candidate_bodies`. It
+  kernel-checks dependency-curried candidate scripts without replaying or
+  closing dependencies and returns exact structural/identity metrics. Its
+  three unit tests pass. It is a defect-finding preflight, never an admission
+  receipt.
+- Passed nine bounded structural gates across `fermat-reindex`,
+  `fermat-balance`, and `fermat-endpoints`, three per suite. These are body-
+  only/structural receipts, not closed recursive replay or closed-certificate
+  admission, and they admit no theorem.
+- Cancelled stale jobs `172769`, `172770`, and `172837` after zero CPU. Staged
+  their corrected sources as exact snapshot
+  `73d2863a0138c8dce1f8a7f2793bcd96f543e389c0c4af6cce75cc13005ac3d9`
+  and submitted `172988` (`fermat-reindex`, 16 GiB/2 hours), `172989`
+  (`fermat-balance`, 16 GiB/2 hours), and `172990` (`fermat-endpoints`,
+  32 GiB/4 hours). All three were pending at submission; no WMI pass or
+  admission is claimed.
+- Authored the seven-candidate signed-half prefix tranche. It adds an explicit
+  pointwise magnitude/sign choice, full-half-range choices, simultaneous
+  magnitude/sign beta-prefix extension, generic and specialized prefix
+  existence, an `AllBits` projection, and relational `BitCount` existence.
+  The new bodies measured `73/27`, `133/39`, `164/47`, `70/31`, `33/22`,
+  `35/25`, and `31/26` nodes/depth.
+- Ran the requested 60-second-capped dependency-curried preflight for the two
+  earlier and seven new signed-half candidates. It caught one missing explicit
+  `intro hpzero`/`exact hpzero` pair in the prime-nonzero subproof. After that
+  correction all nine bodies passed in about 1.8 seconds. This replay closes
+  no dependencies and admits no theorem.
+- Added the focused `gauss-signed-prefix` WMI audit and wired it through the
+  runner, submission wrapper, and Slurm allowlist. Its five gates cover exact
+  native contracts/body metrics, hygiene and alpha-equivalence, the exact
+  local/core/source boundary, two cold recursive closures with capacity/no-DNE
+  receipts, and contract plus every-direct-Cut mutations. The runner now has
+  91 gates across 20 source modules and 12 focused suites. Heavy replay remains
+  cluster-only and has not yet produced a receipt.
+- Recorded the representation, dependency graph, validation policy, and exact
+  next boundary in `gauss-signed-prefix-design.md`. Work stops here before the
+  magnitude-permutation tranche; no Gauss-lemma claim is made.
+- Authored the ten-candidate Euler scaled-inverse entrance ladder. It proves
+  pointwise existence and uniqueness of the bounded relation
+  `x*y == a (mod p)`, symmetry, involution, the fixed-point/square-root
+  equivalence, and fixed-point freedom under `~QRes`. Dependency-curried body
+  nodes/depth are `36/17`, `30/19`, `59/26`, `126/34`, `74/24`, `31/12`,
+  `28/19`, `38/15`, `17/15`, and `24/15`. See
+  `research/arithmetic-library/euler-scaled-inverse.md`; these scripts remain
+  isolated and unadmitted.
+- Authored the nine-candidate Wilson PairOrder extension layer: append and
+  reflect two β entries, choose an unused nonendpoint constructively, extract
+  its unused inverse mate, preserve orbit closure/nonendpoint range/
+  injectivity, and package one choose-and-append step. Body nodes/depth are
+  `63/27`, `115/32`, `113/30`, `138/43`, `34/20`, `167/38`, `63/31`,
+  `202/36`, and `191/53`. The exact representation and remaining iteration,
+  coverage, lift and product obligations are in
+  `research/arithmetic-library/pair-order-encoding.md`.
+- Staged both ladders and the signed-prefix audit in exact snapshot
+  `8c9c4ae067b0dc202684e410bee563cd592a67080cb7c9939440ae8b44d4bccd`.
+  All three remote test-only validations returned exit zero after replacing
+  WMI `bash -l -s` with `bash -s`; a login-shell logout hook had previously
+  overwritten successful validation status with local exit 1. Submitted jobs
+  `173015` (`euler-scaled-inverse`), `173016` (`gauss-signed-prefix`), and
+  `173017` (`wilson-pair-order`); each is pending with zero CPU and supplies no
+  proof or admission result. The live runner now contains 101 gates across 22
+  test sources and 14 focused five-gate suites plus `full`. Only static checks
+  and hard-60-second dependency-curried body preflights run on the laptop;
+  recursive closure, profiles, mutations and book builds remain WMI-only.
+- Completed the eleven-spec magnitude-permutation endpoint: range,
+  prime-scaled uniqueness, same/mixed-sign collision analysis, magnitude
+  injectivity, predecessor recoding, boundedness, injectivity and surjectivity.
+  Body nodes/depth are `39/25`, `48/24`, `96/34`, `169/50`, `626/70`,
+  `157/45`, `31/25`, `87/30`, `48/20`, `60/31`, and `39/21`. Three follow-on
+  magnitude-product alignment bodies pass at `51/28`, `127/39`, `72/34`; two
+  sign-product/power bodies pass at `35/24`, `259/46`. The latter five remain
+  body-only; β sign-factor recoding and the combined product bridge are open.
+- Corrected PairOrder's maintained state by adding decoded boundedness, then
+  authored fifteen candidates for state-preserving append, empty state,
+  remaining-pair arithmetic and terminal nonendpoint coverage. Body
+  nodes/depth are `95/40`, `19/12`, `69/27`, `90/42`, `23/19`, `18/14`,
+  `20/16`, `22/18`, `64/19`, `8/8`, `12/9`, `266/44`, `33/20`, `72/37`,
+  and `51/36`. Full iteration, successor lift and product transport remain.
+- Froze snapshot
+  `fd129d34bf4a31a131a28d55bc6a16153984e0d37ac24dcefe7c2735cfb058d1`
+  and submitted pending zero-CPU jobs `173021`
+  (`gauss-magnitude-permutation`) and `173022`
+  (`wilson-pair-order-induction`). The live WMI surface is 111 gates across 24
+  test sources and 16 focused five-gate suites plus `full`; no result or
+  admission is claimed.
+- Independently audited and remediated the WMI Jupyter Book harness: immutable
+  canonical packaging, worktree-drift guards, non-login environment isolation,
+  source/output separation and path-escape checks are now explicit. It is
+  ready for test-only scheduler validation. No transfer, build submission or
+  Book build has run.
+- The audited WMI Jupyter Book test-only scheduler validation succeeded. The
+  frozen archive contains 125 files, has SHA-256
+  `6feb5ebcdb9f59e6d94b71acd3fb2bce06d45b3a3885ad95aa8e9c02d61a3bcb`,
+  and content-manifest SHA-256
+  `c09064eb67906761c357626df4ee9e0cf387a89b7593654c8c5bf74baf836c24`.
+  Submitted job `173024` was `PENDING (Priority)` with zero CPU at the last
+  observation. This is submission provenance only: no Book-build or integrity
+  result exists yet.
+
+## 2026-07-30 — Laptop-safe Gauss composition and paired Wilson iteration
+
+- Kept every laptop proof replay under a hard 60-second CPU limit. Recursive
+  dependency closure, mutation campaigns, full profiles, and the Jupyter Book
+  build remained WMI-only. A read-only scheduler query found jobs `173015`,
+  `173016`, `173017`, `173021`, `173022`, and `173024` still pending with zero
+  CPU; this is not a result.
+- Completed the five-body plain PairOrder iteration and terminal specialization
+  at `95/37`, `78/24`, `68/22`, `148/37`, and `52/26` nodes/depth. A soundness
+  audit then exposed that the four-part state did not remember adjacency
+  history. Added `PairedInverseWitness` and seven corrected history/iteration
+  bodies at `34/16`, `38/17`, `19/15`, `114/31`, `122/40`, `169/39`, and
+  `52/26`.
+- Authored the successor lift from zero-based inverse indices to actual
+  residues. Its four bodies construct the lifted code, prove every adjacent
+  pair is a unit pair, package the factor code, and obtain an exact product
+  congruent to one. Metrics are `17/11`, `124/38`, `41/31`, and `65/32`.
+  A packaging failure was real but local: the product theorem expected the
+  full existential trace relation rather than its bare trace body. Restoring
+  the two trace witnesses fixed it.
+- Completed sign-factor recoding, generic pointwise-product recoding and exact
+  multiplication, and the signed pointwise modular product bridge. The latter
+  three bodies measure `165/46`, `80/53`, and `70/51`.
+- Added the reusable theorem that a finite product of positive residues below
+  a prime is coprime to that prime (`64/31`). Its Gauss specializations prove
+  the odd half bound, pointwise magnitude bounds, and magnitude-product
+  coprimality at `45/20`, `69/29`, and `31/20`.
+- Composed the magnitude, sign, pointwise-product, and scaling layers. The
+  resulting bodies prove `A*P == P*R (mod p)` and then constructively cancel
+  the half-range product using balanced Bézout, at `148/70` and `156/87`.
+  The focused test traversed all six new coprimality/composition certificates,
+  found no DNE, and reported three passes in 24.58 seconds. This is the
+  algebraic heart of Gauss's lemma under explicit witness premises; it is not
+  recursive closure, an existence-packaged endpoint, or admission.
+- Added focused successor-lift and generic prime-product tests. Six tests
+  passed in 1.24 seconds, covering five specs, 251 tactic commands, and 311
+  body proof nodes. All candidates remain outside the public registry.
+- Prepared, but did not upload, a 197-file WMI archive for exactly
+  `gauss-sign-factor-recode` and `wilson-pair-order-iteration`. It is
+  3,552,256 bytes with SHA-256
+  `938b212fb594708f7cee05c12a10e7c709110619b70d71b3200a27e6e85ede1b`.
+  Each intended job requests one CPU, 16384 MiB, and two hours. Local static
+  and dry-run checks passed; explicit authorization of this exact upload is
+  still required, so no transfer or submission occurred.
+- Packaged the entire Gauss witness chain in the isolated theorem
+  `gauss_lemma_power_congruence_exists`. From `p=2*h+1`, primality,
+  `p` not dividing `a`, and a canonical half-range code, it returns `e,A,R`,
+  both relational powers, hidden signed-prefix/`BitCount` evidence, and
+  `A == R (mod p)`. The 193-command body checks at 258 nodes/depth 83, with no
+  DNE; three focused tests passed in 31.29 seconds under the CPU cap.
+- Completed the terminal Wilson product transport in four isolated bodies.
+  Terminal state gives the positive magnitude range (`80/30`), predecessor
+  recoding aligns the canonical range `2,...,l+1` with the successor lift
+  (`152/42`), product permutation gives exact equality (`79/39`), and the
+  terminal package combines state, pair history, coverage, lifted product
+  congruent to one, canonical product, and equality at `188/65`. Endpoint
+  restoration remains.
+- Completed endpoint restoration and the full native Wilson capstone. The
+  seven-body ladder supplies the leading factor `1`, restores the last factor,
+  transports the modular product, splits prime `2` from the odd shape, and
+  concludes `Factorial(n,F) -> F == n (mod p)` for `p=S n`. Nodes/depth are
+  `30/15`, `258/45`, `63/29`, `21/16`, `104/30`, `94/35`, and `110/31`;
+  three focused tests pass in 4.00 seconds. The prime-two proof does not call
+  Range2 or PairOrder. This is body-green evidence, not WMI closure or
+  admission.
+- Opened M25 with a generic beta-coded quotient/remainder prefix. One-step
+  extension and full finite-prefix existence check at `132/41` and `71/30`.
+  This is the native first-order replacement for a floor-sequence function;
+  no division operator or list type was added.
+- Added the exact Eisenstein scaling bridge rather than reusing a merely
+  modular Fermat representative. A constant prefix and canonical half range
+  are pointwise-multiplied into literal entries `a*(1+i)`; relational division
+  then constructs quotient/remainder prefixes and `Sum` supplies the floor-sum
+  witness. The three bodies check at `34/24`, `71/40`, and `52/28`; four
+  focused tests passed in 0.66 seconds under the laptop CPU cap. The remaining
+  boundary is the two-orientation lattice partition, not sequence existence.
+- Re-ran the two terminal-Wilson/division-prefix focused suites together:
+  seven tests passed in 6.26 seconds. A read-only scheduler query again found
+  all six existing WMI jobs pending at zero CPU.
+- Lifted Euler's pointwise scaled-inverse relation to a beta-coded map on the
+  whole predecessor interval. The extension, bounded-induction, and full-map
+  bodies check at `105/36`, `81/33`, and `40/23`; four focused tests pass in
+  0.76 seconds. This closes map existence, but not decoded extensionality,
+  fixed-point-free two-cycle enumeration, Euler's criterion, recursive WMI
+  closure, or admission.
+- Completed the first Euler prefix extensional tranche. Entry soundness,
+  pointwise extensionality, nonresidue fixed-point freedom, positive-mate
+  predecessor extraction and decoded involution pass at `58/25`, `54/26`,
+  `36/27`, `67/36`, and `91/39`; four focused tests pass in 0.82 seconds.
+  The witness-scope failure encountered while authoring involution was only a
+  local existential-name mismatch; rebuilding the local formulas with the
+  actual eliminated witness fixed it without changing the statement.
+- Added decoded Euler-prefix injectivity at `77/36`. The proof is smaller than
+  a finite-cardinality route: soundness gives two scaled relations with the
+  same decoded mate, symmetry turns the mate into their common source, and
+  pointwise uniqueness plus successor injectivity identifies the indices.
+- Proved the constructive arithmetic boundary for Eisenstein's half rectangle.
+  Distinct odd primes cannot have `q*(1+i)=p*(1+j)` inside the two half
+  ranges; every cell therefore has exactly one strict orientation. The three
+  bodies check at `72/30`, `77/34`, and `53/34`, and four focused tests pass
+  in 0.54 seconds. The honest remaining representation gap is a reviewed
+  rectangular indicator/double-count fold, because current `Sum` and
+  `BitCount` relations are one-dimensional.
+- Resolved the first half of that representation gap with one beta code per
+  fixed row. Exact zero/one cell semantics, append/induction, `AllBits`,
+  decoded semantics, and the native row `BitCount` package pass in seven
+  bodies at `46/29`, `71/27`, `58/23`, `53/34`, `27/16`, `43/23`, and
+  `63/29`; four focused tests pass in 1.11 seconds. A second beta prefix over
+  the row counts will conservatively provide the rectangle total.
+- Added that second, nested beta prefix without flattening or a pairing
+  function. Eight bodies choose semantic row counts, append and construct the
+  outer prefix, recover the inner row/`BitCount` witness from every decoded
+  entry, and attach a native outer `Sum`. Their metrics are `39/25`, `71/27`,
+  `58/23`, `40/27`, `37/26`, `30/23`, `43/23`, and `40/22`; four focused
+  tests pass in 2.22 seconds. This constructs a rectangle-total witness but
+  proves no quotient/floor-sum equality, transposed partition, or reciprocity.
+- Generalized Wilson's adjacent-unit fold into
+  `beta_adjacent_target_pairs_product_power`. If every adjacent pair has
+  product congruent to `a`, the exact product of `m+m` entries is congruent to
+  any relational `Pow(a,m,A)` witness. The constructive 118-command body
+  checks at `171/47` with two shared proof objects; its exact-contract,
+  hygiene, native-syntax and no-DNE audit passes `4/4` in 1.71 seconds. This
+  closes the generic product comparison, not the Euler scaled-prefix
+  reordering, recursive WMI closure, registration, or admission.
+- Closed the constructive quadratic-residue branch of Euler's criterion at
+  the candidate-body level. First, `mod_eq_zero_to_dvd_nonzero` turns a
+  balanced zero congruence into an explicit divisibility witness (`48/18`).
+  Then `quadratic_residue_half_power_mod_one` proves that for
+  `p=2*h+1`, prime `p`, `p` not dividing `a`, a square witness for `a` forces
+  every relational half-power witness `A` to satisfy `A == 1 (mod p)`.
+  It derives nondivisibility of the square root constructively, identifies
+  `(r^2)^h` with `r^(2h)` via `pow_mul_exp`, applies the Fermat predecessor
+  endpoint, and transports the base congruence. The 136-command body checks
+  at `148/39`; the two-spec exact-contract/native/no-DNE audit passes `4/4`
+  in 2.11 seconds. The nonresidue direction and full equivalence remain.
+- Added the generic Eisenstein division threshold. From `n=p*q+r`, nonzero
+  `r`, and `r<p`, it proves constructively that `p*S(j)<n` iff `S(j)<=q`.
+  The 67-command body checks at `92/30` with no DNE; four focused tests pass
+  in 0.30 seconds. Distinct-prime remainder nonzeroness, quotient bounds and
+  the initial-segment `BitCount` evaluation remain before row-count equality.
+- Added the correct structural entrance for Euler's fixed-point-free pairing.
+  The raw scaled prefix stores actual mates `S j`, so reusing Wilson's
+  zero-based `OrbitClosed` relation unchanged would be unsound. The new
+  shifted closure tracks `At(scaled,i,S j)`. Four bodies prove omission
+  transfer across a back edge, append preservation of shifted closure,
+  constructive selection of an omitted distinct two-cycle under `~QRes`, and
+  the full choose-and-append step preserving closure and order injectivity.
+  Metrics are `34/20`, `184/40`, `107/38`, and `190/52`; three focused tests
+  pass in 2.78 seconds with no DNE. This is one orbit only: balanced
+  iteration, explicit adjacent history, terminal coverage, recursive WMI
+  closure and admission remain.
+- Audited the Eisenstein remainder specialization before proving it and found
+  a real orientation error: `p=3`, `q=7`, `i=2` satisfies the proposed
+  cross-half bounds but gives remainder zero. Replaced that false claim with
+  a generic prime/nondivisor theorem requiring `S i<p`, a distinct-prime
+  wrapper, and the correctly oriented own-half wrapper `p=2*k+1`, `i<k`.
+  Their body metrics are `47/21`, `45/24`, and `45/28`; the pinned regression,
+  exact contracts and no-DNE certificates pass `4/4` in 0.40 seconds. No
+  remainder-bound premise is needed.
+- Closed the quotient-bound arithmetic independently of primality. The
+  explicit gap `(2*k+1)*h < (2*h+1)*S k` has a native no-ring body at
+  `160/45`. From `i<h` and
+  `(2*k+1)*S i=(2*h+1)*d+r`, the second theorem uses monotonicity and that
+  gap to force `d<=k` at `67/29`. The quotient and remainder suites pass
+  together `8/8` in 0.54 seconds. Only the generic initial-segment
+  `BitCount=quotient` bridge remains before one-row identification.
+- Closed that generic exact-initial-segment bridge at the dependency-curried
+  body level. Eight constructive bodies build the threshold bit choice and
+  beta prefix, project `AllBits`, recover decoded semantics, count an all-one
+  prefix, and prove functional and exact `BitCount=q`. Their metrics are
+  `23/12`, `63/25`, `40/19`, `25/14`, `41/21`, `91/28`, `160/37`, and
+  `49/21`; all eight bodies plus hygiene/native-contract checks pass `11/11`
+  in 2.09 seconds with no `DNE`. Complete replay exposed and fixed stale
+  induction-variable names, over-rewrites, and missing conjunction cases in
+  the draft scripts without changing the theorem contracts. The next exact
+  step is to turn a decoded division row into this initial-segment relation
+  and transport `BitCount` equality into the nested outer sum.
+- Added the general exact fold transport needed immediately after that
+  pointwise identification. `beta_sum_transport_prefix` reuses an existing
+  beta-coded sum trace when a target prefix decodes the same bounded entries;
+  it compares semantic entries rather than raw beta-code identities. The
+  dependency-free 44-command body checks at `59/29`, with 59 proof objects,
+  58 edges, no reuse and no `DNE`; its focused test passes `3/3`, and the
+  combined initial-segment/transport audit passes `14/14` in 2.20 seconds.
+- Replayed the full laptop-safe Eisenstein stack together after these changes:
+  scaled division, lattice orientation, row indicators, nested rectangle
+  counts, division threshold, remainder nonvanishing, quotient bounds, exact
+  initial-segment counting, and exact sum transport pass `42/42` in 6.48
+  seconds under one 60-second wall alarm. This remains body-only evidence;
+  recursive closure, mutations, registration and admission stay WMI gates.
+- Completed and audited Euler's terminal scaled PairOrder iteration. Ten
+  dependency-curried bodies cover empty shifted closure/history, adjacent
+  history append, empty state, the invariant-preserving pair step, the two
+  length-balance facts, full paired iteration, terminal packaging, and
+  terminal coverage. Their nodes/depth are `23/19`, `19/15`, `114/31`,
+  `49/18`, `125/40`, `80/24`, `40/15`, `155/39`, `41/25`, and `64/26`.
+  The focused exact-contract, dependency, hygiene, native-syntax,
+  registry-isolation and no-DNE audit passes `4/4` in 4.72 seconds.
+- The terminal-iteration replay exposed only authoring defects, not a change
+  in theorem content: composite-length parenthesization, simplification
+  order, typed terminal specialization, both injectivity-bound rewrites, and
+  hygienic formula generation were corrected. The candidates remain outside
+  the public registry and are not admitted. The next Euler work is
+  successor-lift/product alignment and the nonresidue endpoint, followed by
+  recursive WMI closure, mutation audits, and a separate admission replay.
+- Added the exact one-dimensional cardinality identity needed by the later
+  rectangle partition. `complementary_bit_counts_add_length` inducts through
+  two relational `BitCount` witnesses and proves their values add to the
+  common prefix length when every decoded pair is `(0,1)` or `(1,0)`. The
+  five-dependency, 112-command body checks at `220/46` (211 objects, 219
+  edges, nine reused), contains no `DNE`, and passes its focused `3/3` audit
+  in 1.47 seconds. This does not yet prove the nested row/column transpose.
+- Closed the Eisenstein-specific pointwise row identification. The four new
+  bodies convert a semantic row prefix to the quotient's exact initial
+  segment (`78/36`), prove its `BitCount` equals the bounded division quotient
+  (`95/45`), connect that value to the decoded quotient beta entry (`111/55`),
+  and consume the nested rectangle layer's existing semantic row witness
+  directly (`119/72`). The focused kernel/no-DNE/no-auto/no-ring audit passes
+  `4/4` in 3.40 seconds; the author's prerequisite-integrated run passed
+  `27/27` in 5.86 seconds. All remain dependency-curried and unregistered.
+  The immediate next theorem must instantiate exact sum transport between the
+  quotient prefix and outer row-count prefix before the transposed partition.
+- Closed Euler's bounded nonresidue product/sign endpoint. Five constructive
+  bodies prove adjacent lifted pairs have target product `a`, identify the
+  lifted order product with the exact factorial, combine the generic power
+  fold with Wilson at the terminal state, package the nonresidue iteration,
+  and expose the bounded public theorem. Their nodes/depth are `132/39`,
+  `144/45`, `136/52`, `61/34`, and `49/30`; focused tests pass `4/4` in 4.39
+  seconds and the related body-only Euler stack passes `16/16` in 12.19
+  seconds. The endpoint proves `A == n (mod p)` from `p=S n`, `n=h+h`, prime
+  `p`, `0<a<p`, `~QRes(p,a)`, and `Pow(a,h,A)`. It remains unregistered and
+  unadmitted; bounded equivalence packaging, unreduced representatives, and
+  WMI closure/mutations/admission remain.
+- Closed the first-orientation quotient-sum/rectangle-total identification.
+  Pointwise decoded quotient entries now match the semantic outer row-count
+  entries (`104/52`), the exact quotient `Sum` transports to that outer prefix
+  (`73/54`), and functionality equates it with any independently supplied
+  rectangle total (`67/51`). The focused audit passes `4/4` in 4.92 seconds;
+  five related body-only suites pass `19/19` in 10.71 seconds. The theorem is
+  parameter-symmetric, so the remaining obstruction is not the second floor
+  sum but the equality of the two transposed semantic totals with `h*k`.
+- Opened that obstruction at the exact semantic-cell boundary. A decoded cell
+  bit and its swapped-row transpose are constructively complementary at
+  `95/33`. A second theorem opens decoded entries from both outer count
+  prefixes, recovers their existential inner row codes and `BitCount`
+  witnesses, decodes the transposed bits, and packages complementarity at
+  `116/58`. Their focused tests pass together `6/6` in 2.08 seconds. This is
+  deliberately not claimed as nested Fubini: summing the pointwise witnesses
+  across differently shaped existential row codes remains the exact gap.
+- Corrected two stale mutation-harness metadata keywords from the removed
+  `description` field to `TheoremSpec.summary`. A combined local mutation
+  attempt reached the strict 60-second alarm and was terminated without a
+  result; no further closure/mutation replay will run on the laptop. Those
+  gates remain explicitly WMI-only.
+- Added generic exact addition for relational beta sums.
+  `beta_sum_pointwise_add` inducts over three equal-length prefixes, uses the
+  existing exact successor decompositions, and derives `n+m=q` from decoded
+  equations `s=a+z`. Its six-dependency, 127-command body checks at 195 nodes,
+  depth 57, 195 objects, 194 edges, no reuse and no `DNE`; the exact-contract,
+  native-expansion and isolation audit passes `3/3`.
+- Added exact evaluation and existence for constant-prefix sums.
+  `beta_repeat_sum_exact` proves that a length-`l` `Repeat(a)` prefix with
+  terminal `Sum` value `n` satisfies `n=l*a`; its 64-command body checks at
+  `85/32`. `beta_repeat_sum_exists_exact` packages the beta code, sum trace,
+  and exact endpoint at `33/21`. Their focused tests pass `4/4`, and the two
+  constant-sum bodies plus pointwise addition pass `7/7` in 2.18 seconds.
+- Lifted transposed-cell complementarity from independently chosen cells to a
+  coherent whole-column encoding. Six new bodies retain, at every decoded
+  column entry, the swapped outer entry, one exact inner row, its `BitCount`,
+  and the corresponding cell. Their receipts are `42/26`, `80/31`, `64/29`,
+  `56/33`, `87/47`, and `117/56`; the endpoint proves that an original row
+  count plus the constructed transposed-column count is exactly `k`. Focused
+  tests pass `5/5` in 5.21 seconds and five related suites pass `18/18` in
+  10.39 seconds. Raw beta-code equality is never used.
+- Replayed the new exact-sum theorem with sum transport, complementary counts,
+  both transposed-cell layers and the coherent-column stack: all 20 focused
+  tests passed in 9.75 seconds under the laptop boundary. This is body-only
+  evidence, not recursive closure, mutation validation, or admission.
+- Packaged the complete bounded odd-prime Euler criterion. Seven constructive
+  bodies derive bounded nondivisibility, rule out `1 == p-1`, establish the
+  residue/nonresidue dichotomy, prove both iff directions, and expose one
+  theorem containing
+  `QRes(p,a) <-> A == 1 (mod p)` and
+  `~QRes(p,a) <-> A == p-1 (mod p)`. Their nodes/depth are `20/13`, `65/19`,
+  `56/25`, `120/39`, `92/30`, `91/37`, and `80/31`; focused tests pass `4/4`
+  in 1.67 seconds and the combined bounded Euler suites pass `12/12` in 7.62
+  seconds. The arbitrary-representative reduction and all WMI gates remain.
+- Completed the arbitrary-unit Euler interface. Six isolated bodies use
+  quotient/remainder existence to choose a nonzero bounded representative,
+  prove `QRes` invariant under balanced congruence, transport a relational
+  power witness with `pow_mod_congruent`, and derive both arbitrary residue
+  and nonresidue iff statements plus one combined endpoint. Their
+  dependencies/commands/nodes/depth receipts are `3/39/49/20`,
+  `2/31/38/17`, `2/25/29/22`, `7/92/140/36`, `7/98/146/37`, and
+  `2/33/75/29`. Focused tests pass `4/4` in 2.04 seconds; all four Euler suites
+  pass `16/16` in 9.96 seconds. The theorem no longer assumes a reduced `a`,
+  only `p` not dividing `a`.
+- Completed the outer aggregation of coherent transposed-column counts. Eight
+  bodies construct a provenance-carrying prefix over all original row indices,
+  attach its exact `Sum M`, recover the decoded equations `n_i+m_i=k`, align
+  them with a constant beta prefix, and compose exact pointwise addition with
+  the constant-prefix sum to prove `N+M=h*k`. Their receipts are `70/32`,
+  `88/35`, `68/33`, `59/28`, `51/26`, `60/36`, `61/43`, and `116/61`.
+  Focused tests pass `5/5` in 13.29 seconds and five related suites pass
+  `21/21` in 23.05 seconds. The remaining Fubini theorem is isolated exactly
+  as `M=T`, with `T` the swapped rectangle's native outer `Sum`.
+- Independently replayed the new column-count outer tranche, both generic
+  exact sum tranches, and bounded/arbitrary Euler packaging together: all 20
+  focused tests passed in 18.04 seconds under the laptop-safe limit. This is
+  still dependency-curried body evidence rather than WMI closure or admission.
+- Added the constructive converse parity API needed after the lattice-count
+  identity. `even_sum_parity_cases` and `odd_sum_parity_cases` split explicit
+  parity witnesses and reject the impossible branches; the two iff wrappers
+  add the already checked forward closure laws. Their dependency-curried body
+  receipts are `61/18`, `61/18`, `63/19`, and `63/19`, with no object reuse,
+  `DNE`, `auto`, or `ring`. The focused audit passes `4/4` in 0.40 seconds.
+- Added the native modulo-two parity interface. Four conversion bodies prove
+  `Even(n) -> n == 0`, `n == 0 -> Even(n)`, `Odd(n) -> n == 1`, and
+  `n == 1 -> Odd(n)` modulo two; a fifth proves that balanced congruence
+  transports both parity predicates. Receipts are `14/9`, `20/13`, `42/18`,
+  `50/16`, and `86/20` nodes/depth. The tests pin expanded statements,
+  dependencies and identity metrics and rule out registration, automation,
+  classical escape and `DNE`.
+- Independently replayed the six-body odd-multiplier/division parity tranche.
+  It proves exact parity reflection under an odd multiplier and across
+  `n=p*q+r`, without a remainder bound. Together with sum classification and
+  modulo-two transport, all three focused suites pass `12/12` in 1.27
+  seconds under the laptop cap.
+- Added the fixed-odd-half/modulo-four bridge needed by the final reciprocity
+  split. Two exact bodies use `odd_half_unique` to derive `h=2*a` or
+  `h=2*a+1`; two wrappers prove the corresponding constructive iff packages.
+  Their receipts are `20/13`, `78/27`, `42/18`, and `100/30`. With the other
+  parity candidates, all four suites pass `16/16` in 1.24 seconds.
+- Completed and independently replayed the first actual-QRes Gauss endpoint.
+  `bounded_gauss_lemma_complete` retains the signed-prefix/count provenance
+  and proves `QRes(p,a) <-> Even(e)` and `~QRes(p,a) <-> Odd(e)` for prime
+  `p=2*h+1` and `0<a<p`. Its receipt is 11 dependencies, 204 commands,
+  597 nodes/depth 53, 559 objects, 596 edges and 38 reused objects; the
+  focused audit passes `5/5` in 7.88 seconds. It is dependency-curried and
+  unadmitted.
+- Removed the canonical-representative restriction from actual Gauss's lemma.
+  `arbitrary_gauss_lemma_complete` replaces `0<a<p` by the exact native
+  premise `~exists k. a=p*k`, invokes the arbitrary Euler package, and retains
+  the original signed prefix plus `BitCount e`. Its 188-command body checks
+  at 547 nodes/depth 49, 513 objects, 546 edges and 34 reused objects. The
+  focused audit passes, and the bounded/arbitrary pair passes `9/9` in 13.64
+  seconds. Neither theorem is registered or admitted.
+- Independently replayed the generic signed-division parity bridge. Its five
+  bodies constructively derive modulo-two congruence from matching parity,
+  transport odd scaled division, handle an odd reflected remainder, align the
+  two sign branches, and conclude `x == q+m+s (mod 2)`. Nodes/depth are
+  `53/15`, `77/27`, `87/27`, `64/22`, and `43/25`; all `5/5` focused checks
+  pass in 0.56 seconds. The theorem is exact pointwise arithmetic; it does not
+  yet assert that independently beta-coded Gauss signs and division remainders
+  satisfy the required exact branch.
+- Added exact signed-remainder representation alignment. Four constructive
+  bodies derive the positive odd-half complement, the reflected predecessor
+  congruence, uniqueness of the canonical remainder, and finally
+  `(s=0 /\ r=m) \/ (s=1 /\ r+m=p)`. Their nodes/depth are `238/39`,
+  `53/22`, `49/24`, and `115/35`; dependencies, hashes and identity metrics
+  are pinned in an isolated focused audit.
+- Added the common-index Gauss--Eisenstein β-prefix join. The generic
+  composition checks at `58/34`; the prefix theorem opens the canonical half
+  range, exact scaled values, quotient/remainder trace and signed
+  magnitude/bit trace and proves `x_i == q_i+m_i+s_i (mod 2)` at `250/61`.
+  Its expanded native statement has length 5,440 and SHA-256
+  `84b039612f162c0c0935ebf49e1ffadf0cdf8e660914f583b7f490744175884e`.
+  Five related suites pass `21/21` in 3.07 seconds. The candidates are
+  unregistered and unadmitted.
+- Completed the exact finite-sum permutation ladder. Replacement balance,
+  swap-last invariance, fixed-last reindexing and arbitrary bounded-injective
+  reindexing check at `327/59`, `133/50`, `85/33`, and `631/88`; the two
+  focused suites pass `8/8` in 22.67 seconds. This gives the constructive
+  magnitude-sum cancellation tool without treating different β codes as
+  equal. Aggregation of the pointwise congruence remains the next local gate.
+- Closed the native Eisenstein transpose/Fubini gap. Sixteen recovered row-
+  decomposition bodies and nine total-level bodies prove the universal
+  transposed-column identity `M=T` (`264/65`), specialize it to the campaign's
+  constructed column prefix (`49/33`), and compose with `N+M=h*k` to obtain
+  `N+T=h*k` (`65/37`). The decoded endpoint
+  `distinct_odd_prime_eisenstein_quotient_sum_identity` then proves the actual
+  two-orientation quotient/floor-sum identity `Q+U=h*k` at `145/68`, with
+  SHA-256
+  `d10467b948c749bcf5727127213b5337583b3bba415da7d30a1589ede66116ae`.
+  An independent 60-second-capped run passes all three focused suites
+  `12/12` in 45.25 seconds. No theorem is registered or admitted.
+- Added the final constructive parity truth-table layer in isolation. Six
+  bodies turn an even/odd Gauss-count sum into equal/opposite cross-residue
+  status, transfer that result from congruence modulo two with `h*k`, and
+  prove the one-mod-four and both-three-mod-four cases. Nodes/depth are
+  `48/17`, `48/17`, `31/20`, `31/20`, `56/27`, and `52/26`; focused tests
+  pass `4/4` in 0.93 seconds. This deliberately assumes the missing
+  count-sum congruence and therefore is not yet quadratic reciprocity.
+- Closed the terminal Gauss--Eisenstein finite-sum parity gate. The reusable
+  `beta_sum_pointwise_mod_three_add` induction checks at `328/66`; exact
+  magnitude-prefix recoding and sum-permutation transport then identify the
+  common half-range/magnitude sum, and constructive modulo-two cancellation
+  yields `gauss_eisenstein_sign_count_mod_quotient_sum` at `89/65`. Its
+  statement retains the scaled, division, signed, `BitCount`, and quotient
+  `Sum` codes and proves `Q == E (mod 2)`. An independent pointwise plus sum
+  replay passes `12/12` in 17.47 seconds. This is still an isolated,
+  dependency-curried and unadmitted endpoint; the next gate is composing both
+  prime orientations with `Q+U=h*k` and the final QRes parity truth tables.
+- Constructed the final provenance-hiding two-prime package. The orientation
+  theorem checks at 5 dependencies, 102 commands, 139 nodes/depth 67; the
+  pair theorem checks at 4 dependencies, 150 commands, 222 nodes/depth 77.
+  For distinct `p=2h+1` and `q=2k+1`, it exposes exactly `e,f,Q,U`, both full
+  QRes/parity classifications, `e == Q` and `f == U` modulo two, and the
+  native Fubini identity `Q+U=h*k`.
+- Proved all three exact sign-free QR authoring surfaces. The same-status and
+  opposite-status bodies each check at 2 dependencies, 46 commands, 73
+  nodes/depth 33. An initial 2-dependency, 54-node combined wrapper proved the
+  predeclared surface, then a direct 3-dependency, 65-command, 113-node/depth
+  35 body replaced it so the common two-prime data is constructed only once.
+  The statements are byte-for-byte the
+  formulas pinned by `quadratic_residue_surface.py`, with no hidden auxiliary
+  premise or surviving beta-code variable. The focused terminal integration
+  run passes `20/20` in 27.25 seconds. This is the first complete native PA
+  quadratic-reciprocity body, but it remains isolated and unadmitted pending
+  WMI recursive closure, adversarial mutation, resource and admission gates.
+- Audited the optimized final dependency graph without replaying it on the
+  laptop. It contains 557 unique specifications, has longest dependency depth
+  45, and unfolds to 191,672 theorem occurrences before body nodes—almost
+  exactly half the first wrapper's 382,882. This remains strong
+  evidence that structural tree expansion—not PA expressibility or the final
+  proof body—is now the limiting resource. The WMI discovery suite will keep
+  the existing 500,000-occurrence/100,000-object policy and report both sides;
+  no limit was raised from an estimate alone.
+- Finished the content-addressed WMI transport for the exact final stack.
+  `quadratic-reciprocity-final` selects nine gates and requests a fail-closed
+  single-CPU, 32-GiB, four-hour allocation. Failure-path JSON metadata now
+  survives an expected capacity assertion while the original failure and
+  traceback remain authoritative. The transport harness passes `5/5`, the
+  safe closure manifest/graph tests pass `2/2`, and the exact downstream proof
+  slice still passes `20/20`.
+- Attempted one Slurm test-only transport after freezing those files. SSH to
+  `access.cluster.wmi.amu.edu.pl:22` timed out before upload. No remote
+  snapshot directory, scheduler validation or job was created, so the heavy
+  gates and WMI Book build remain pending without a fabricated receipt.
+- Proved statically that the naive recursive QR closure cannot satisfy the
+  current structural policy. Its 191,672 theorem occurrences force 191,671
+  Cuts, 348,145 dependency-introduction constructors and at least 191,672
+  terminal body nodes, already 731,488 nodes before real proof work. This
+  rules out both wishful WMI admission and an arbitrary small limit bump.
+- Selected an unchanged-kernel sharing compiler. The 557-spec, 1,792-edge DAG
+  has 45 dependency layers and maximum layer width 63. Each layer becomes a
+  balanced conjunction proved from projections of earlier packages and is
+  introduced by one ordinary contextual Cut. The final object remains one
+  standard `Proof` checked at the original QR formula; `ClosedCut` or theorem
+  references are now fallback architecture rather than the first trust change.
+
+## 2026-07-30 — Layered unchanged-kernel QR closure is locally ready
+
+- Implemented the production-isolated generic layered Cut compiler and the
+  thin exact QR-stack adapter. No production kernel, proof grammar, tactic or
+  theorem-registry module imports the experiment. The compiler replaces 557
+  sequential or recursively duplicated Cuts by 45 balanced conjunction
+  packages and ordinary `AndElim` projections, then returns one existing
+  `Proof` for the unchanged empty-context checker.
+- The generic/fallback/adapter experiment passes `25/25`. On a reused 20-node
+  synthetic DAG the unchanged kernel accepts both constructions, with the
+  layered proof at 274 nodes/depth 16 versus 3,643/depth 20 recursively.
+- Exercised the full real QR topology without replaying heavy mathematics.
+  Actual QR targets with distinct false one-node bodies give exactly 13,723
+  proof nodes/depth 56 and 144,197 package-formula occurrences/depth 68; the
+  kernel rejects the certificate. A second surrogate assigns a distinct
+  shallow reflexive marker to each node and consumes every declared premise
+  through a formula-annotated Cut. It preserves all 1,792 ordered edges and
+  checks at 19,099 nodes/depth 74; swapping dependencies 3 and 4 at
+  `beta_range_empty` makes the kernel reject. This validates compilation, not
+  quadratic reciprocity.
+- Split WMI meanings cleanly: six exact body/source/graph gates remain in
+  `quadratic-reciprocity-final`; nine layered compile/check/determinism/
+  mutation/capacity gates form the real admission suite; three recursive
+  gates are diagnostic-only and excluded from `full` because the 731,488-node
+  lower bound already proves policy failure. Strict JSON records body, proof,
+  package-formula, timing, RSS, source and mutation evidence.
+- Independent laptop validation passes `49` tests with four WMI-only functions
+  skipped in 6.64 seconds. Shell syntax and suite manifests are clean and pin
+  9 layered, 6 exact-body/static and 3 recursive-diagnostic selectors. Book
+  statics pass `14/14`; the new closure comparison diagram and linked research
+  and vault notes preserve the unadmitted boundary.
+- Attempted one content-addressed scheduler validation for
+  `quadratic-reciprocity-layered`. SSH to
+  `access.cluster.wmi.amu.edu.pl:22` timed out before upload. No remote
+  snapshot, scheduler validation, Slurm job or proof receipt was created, and
+  no retry was made in this laptop batch.
+- Audited the later public migration before changing production code. The
+  existing QR stack imports the theorem registry and would become cyclic and
+  self-conflicting if appended directly. The reviewed route makes stack
+  assembly injection-based over a frozen pre-QR table, promotes the layered
+  compiler only as an untrusted ordinary-proof builder, and pins replay
+  strategy before release. The 317 candidate count already includes the root
+  (`316+1`). Public release additionally requires stable legacy receipts,
+  all 317 on-demand replays, catalog regeneration, list-without-replay UI,
+  and exact Pyodide `use`/QED/Stop gates; see
+  `research/arithmetic-library/quadratic-reciprocity-admission-path.md`.
+
+## 2026-07-30 — QR admission architecture hardened without enrollment
+
+- Refactored the exact QR collector into a registry-neutral builder over an
+  explicitly injected, copied pre-QR mapping. A separate cached runtime
+  adapter preserves the no-argument campaign API without creating an import
+  cycle. Fresh-process import-order, snapshot, conflict, and cache tests pass;
+  the unchanged receipt is `84/346/317/240/557/45` factories, outputs,
+  candidate ancestors, public ancestors, closure nodes, and layers. The graph
+  and source hashes remain `2b312887...bbc39` and `141bfb8d...d58b5`.
+- Promoted layered replay into the production-neutral
+  `peano_lab.library.layered_replay` module. It compiles local-ID modular
+  bodies into balanced conjunction packages and ordinary existing `Cut`,
+  `And`, `Imp`, and `Hyp` proof constructors. It imports no theorem registry,
+  human theorem name, receipt hash, or checker and grants no authority; the
+  unchanged empty-context kernel remains the admission boundary.
+- An independent resource audit found that proof-node counting alone ignored
+  formula and term annotations hidden inside constructors. The compiler now
+  scans all 25 kernel proof constructors iteratively, rejects `DNE`, engine
+  holes/metavariables, custom proof subclasses and malformed fields, charges
+  every repeated annotation and the separately supplied target, bounds both
+  annotation and combined proof-envelope depth, and validates malformed graph
+  topology before scanning bodies. No kernel, proof grammar, tactic, or PA
+  language rule changed.
+- The real-formula false-body scaffold retains `13,723` proof nodes/depth `56`
+  and package cost `144,197/68`; its new annotation/envelope receipt is
+  `157,579/92` and the kernel rejects it. The exact 557-node/1,792-edge
+  dependency-consuming surrogate retains `19,099` nodes/depth `74` and
+  package cost `19,297/18`; it now records `142,396` annotations/envelope
+  depth `84`, is kernel-green, and its dependency-order mutation is rejected.
+  These remain compiler evidence, not a quadratic-reciprocity proof.
+- Bare `pa lib` now parses and pretty-prints closed statements without replay;
+  theorem detail, Lean export, and `use` remain on-demand replay/check paths.
+  The browser worker now lists the complete 147-file Python surface, maintained
+  by the deterministic `scripts/update_peano_worker_sources.py --check` gate.
+  The content-addressed `APP_MANIFEST`, release ID, and browser publication
+  remain deliberately stale/pending until admission.
+- Audited the future public-test migration. There are 125 blanket absence
+  assumptions in 79 tests and 113 unified-registry candidate-core seeds in
+  74 tests. The new migration note pins the exact 317-enrolled/29-omitted
+  partition and the omitted-set digest `1b08f341...ded85`; no assertion was
+  prematurely converted and no candidate was enrolled.
+- The root bounded integration run passes `42` tests with four WMI-only tests
+  skipped. Independent review found 25/25 kernel proof constructors covered
+  and no remaining layered-compiler defect. No heavy real-body replay ran on
+  the laptop.
+- One post-hardening WMI test-only attempt did not execute: the managed
+  approval reviewer requires payload-specific permission before the wrapper
+  uploads the Peano source/test/script archive to the external cluster. No
+  archive, snapshot, scheduler validation, job ID, or proof receipt was
+  created, and no retry or real submission was made.
+
+## 2026-07-30 — QR admission preflight and WMI payload freeze
+
+- Revalidated the exact unadmitted endpoint locally. Its three modular bodies
+  pass `4/4` in 2.80 seconds, the two static 557-node closure tests pass `2/2`
+  in 2.76 seconds, and the production-neutral layered stack/compiler suite
+  passes `37` tests with four WMI-only gates skipped in 12.21 seconds. Five
+  targeted no-replay library/browser inventory tests pass in 0.38 seconds.
+  No real 557-body closure was executed on the laptop.
+- Python compilation, shell and worker JavaScript syntax, deterministic
+  147-file worker inventory, and `git diff --check` are clean. Documentation
+  statics pass `12/12`; a nine-document local-link audit has no unresolved
+  targets. The admission guide now describes the old registry cycle as
+  historical and records the implemented injected-stack boundary.
+- Removed macOS `.DS_Store` metadata from the WMI archive and added a transport
+  regression. Two independent local builds of the exact upload were
+  byte-identical: SHA-256
+  `13f279cf2390104009825abac01c17e8b96d56bb764719964e36949ea3345a43`,
+  5,343,232 bytes, 337 tar members, base commit
+  `a549a537cfe3d3d7e8ef292a49250c4308d12c5d`, dirty worktree. The source-tree
+  and extracted-archive transport harnesses pass `9/9`.
+- The archive contains only `peano-lab/py/peano_lab/`,
+  `peano-lab/py/tests/`, `scripts/profile_peano_certificate_capacity.py`,
+  `scripts/run_qr_wmi_replay.py`, `scripts/submit_wmi_qr_replay.sh`, and
+  `slurm/peano_wmi_qr_replay.sbatch`; it excludes `__pycache__`, `*.pyc`, and
+  `.DS_Store`. No cluster contact occurred. Upload, scheduler validation, and
+  real submission still require content-specific approval for this exact
+  hash; any payload-changing edit invalidates that approval request.
+
+## 2026-07-30 — Native PA Proof Explorer and Book integration
+
+- Built a deterministic Stacks-style reading interface for the exact
+  `quadratic_reciprocity_combined` closure. It contains 557 canonical
+  `PAxxxx` tag pages, 557 theorem-name aliases, 1,792 forward/reverse edges
+  over 45 layers, and all 27,491 authored tactic commands. The permanent QR
+  endpoint is `PA00FW`; its 65-line wrapper links to its three direct
+  ingredients and onward through the complete closure.
+- Linked 8,557 syntax-classified direct-theorem occurrences in `specialize`,
+  `apply`, `exact`, `simp`, `cases`, and `rewrite`, plus 140 explicit PA-axiom
+  occurrences. The eight declared packaging edges without literal body
+  tokens remain visible in the dependency panels rather than being
+  fabricated as proof-line references. Every command has a numbered anchor,
+  and every tactic links to the native tactic/foundation reference.
+- Preserved the admission boundary in both JSON and HTML: 240 nodes are
+  public, 316 are `candidate_body_checked`, and only the root is
+  `pending_layered_closure`. A tag, source hash, generated page, or informal
+  explanation grants no theorem authority.
+- Added a persistent append-only tag registry and a separate informal-proof
+  sidecar. All 557 pages have an explicitly labelled explanation: 553
+  deterministic structural guides and four curated QR endpoint/bridge
+  proofs. Informal references are structured, validated, and clickable.
+- Added the Book explorer chapter, embedded dashboard, PA language reference,
+  axioms/rules page, foundations microsite, responsive local CSS/JavaScript,
+  TOC/landing/QR links, and `make book-proof-explorer`. The static explorer is
+  dependency-free and readable without JavaScript; search, status/layer
+  filters, copy controls, and line-target focus are progressive enhancements.
+- The generator owns 1,119 deterministic files. Its aggregate receipt is
+  `669b978fff47fe7a6e9b55ddcffb4f12082872bbed1657ff35ff839b873ec13e`.
+  Combined explorer, Book-static, and WMI-harness tests pass `24/24`; Python,
+  shell, JavaScript, scoped-CSS, YAML, DOM, and diff checks are clean.
+- Extended the WMI Book snapshot/build/integrity harness to carry the exact
+  theorem stack, tag/informal registries, generator, APIs, and complete static
+  explorer, and to reject drift, broken links/fragments, remote runtime
+  assets, or an inexact built copy. No new WMI upload, allocation, full Book
+  build, or built-HTML receipt was performed. The new manifest-only Book
+  boundary is 1,359 files / 42,263,297 bytes at
+  `8a6378db...970fe8b`. The previously frozen QR upload hash is now stale
+  because the repository payload has changed; a new
+  content-specific approval and snapshot are required before transport.
+- The in-app browser surface was unavailable, so no visual/click-through
+  browser result is claimed. Static DOM, reference-resolution, security, and
+  interaction-contract tests are green; attached-browser smoke testing
+  remains a publication gate.
+
+## 2026-07-30 — Dependency graph v2 and premise paths
+
+- Added the generated graph-v2 view for the exact 557-theorem QR closure:
+  1,792 direct edges over 45 layers, with arrows oriented from prerequisite to
+  dependent. Its 48 theorem roots are corpus roots, not additions to PA1–PA6
+  or to the kernel foundations.
+- For `PA00FW`, the graph records 101,296 distinct theorem-root-to-target
+  paths. It exposes both a deterministic shortest witness (4 vertices / 3
+  edges) and a critical dependency-depth witness (45 vertices / 44 edges),
+  while the complete prerequisite cone contains all other 556 theorems.
+- Integrated the reading page at
+  `book/arithmetic-library/dependency-graph.md` and the static explorer at
+  `book/_static/pa-proof-explorer/graph.html?target=PA00FW`; the latter links
+  to the exact `tag/PA00FW.html` proof page. This is a navigation milestone,
+  not an admission: `PA00FW` remains `pending_layered_closure`. No attached-
+  browser validation is claimed here.
+- Hardened the release surface after review. The generator now owns and
+  hashes all 1,123 explorer files, rejects or prunes unexpected files anywhere
+  in the subtree, and embeds the compact file-protocol graph payload only in
+  `graph.html` rather than allowing Jupyter Book to inject it into every
+  chapter. The final aggregate is
+  `7f7d4ec08902ce3d3991aa6c4dc38cd32715a2145fc3486b6314b6dd063e2477`.
+  Eleven explorer tests and sixteen Book/WMI harness tests pass; a full local
+  Book build succeeds, and its integrity receipt reports identical 1,123-file
+  source/built explorer trees with no broken relative links or fragments.
+
+## 2026-07-30 — Approved full QR snapshot submitted to WMI
+
+- Received content-specific authorization for dirty snapshot SHA-256
+  `2bab0898a5bc628a0e1f06b5e6cdf56af86fe39c2fdbeaaa4147ac43d2c7faaa`.
+  The deterministic archive contains 338 files, is 5,374,464 bytes, and binds
+  its contents to base commit
+  `a549a537cfe3d3d7e8ef292a49250c4308d12c5d` with `local_dirty=true`.
+- Uploaded the frozen archive to WMI, verified its digest after transfer, and
+  passed the source/extracted 9-test transport harness and Slurm test-only
+  validation. Submitted job `187187`, suite `full`, selecting 136 gates on
+  `cpu_idle` with one CPU, 32 GiB and a four-hour limit.
+- The latest scheduler observation is `PENDING (Priority)`. This checkpoint
+  records transport and submission provenance only: it does not report a
+  replay pass, a pinned admission receipt, or an admitted quadratic-
+  reciprocity theorem.

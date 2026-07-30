@@ -25,8 +25,15 @@ opens a {doc}`guided route <arithmetic-library/guided-tour>` from equality and
 division through GCD, Bézout, Euclid, Gödel-β finite products and the native
 Fundamental Theorem of Arithmetic. The
 {doc}`interactive theorem atlas <arithmetic-library/theorem-atlas>` embeds the
-exact statements and complete authored proofs for all 247 checked theorems,
-with searchable prerequisite and dependent links.
+exact statements and complete authored proofs for all 384 checked theorems,
+with searchable prerequisite and dependent links. The new
+{doc}`native PA proof explorer <arithmetic-library/proof-explorer>` adds
+permanent theorem tags, line-addressable tactic scripts, informal proof
+outlines, and the complete 557-node quadratic-reciprocity dependency route
+without confusing body-checked candidates with public admission. Its
+{doc}`interactive dependency graph <arithmetic-library/dependency-graph>` lets
+you draw individual premise chains or inspect a theorem's complete dependency
+cone.
 ```
 
 This is the **knowledge book** of the course — the text-friendly notes, with the mathematics, the code,

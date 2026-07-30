@@ -1,0 +1,51 @@
+{
+  "overrides": {
+    "distinct_odd_primes_gauss_eisenstein_data_exists": {
+      "paragraphs": [
+        "For two distinct odd primes, construct both oriented Gauss half-system counts at once. The preceding finite-fold, bounded-remainder, permutation, and Euler/Gauss lemmas show that each count classifies the corresponding cross-residue proposition.",
+        "Eisenstein's lattice count supplies the shared parity relation: after transporting both counts modulo two, their sum is the product of the two half-prime parameters. The theorem retains all witnesses, so the two final reciprocity cases can reuse one provenance-preserving data package."
+      ],
+      "references": [
+        "odd_prime_gauss_eisenstein_orientation_data_exists",
+        "conditional_qres_same_status_from_oriented_gauss_counts",
+        "conditional_qres_opposite_status_from_oriented_gauss_counts"
+      ],
+      "title": "Build the common Gauss–Eisenstein data package"
+    },
+    "quadratic_reciprocity_combined": {
+      "paragraphs": [
+        "Write the two odd primes as successors of twice their half-prime parameters. Construct the common Gauss–Eisenstein data package once and unpack its two residue classifications, two parity transports, and the lattice-count identity.",
+        "For the same-status implication, feed the hypothesis that one half-prime parameter is even into the constructive same-parity endpoint. For the opposite-status implication, feed the hypothesis that both half-prime parameters are odd into the opposite-parity endpoint. Pair the two implications under the original quantifiers."
+      ],
+      "references": [
+        "distinct_odd_primes_gauss_eisenstein_data_exists",
+        "conditional_qres_same_status_from_oriented_gauss_counts",
+        "conditional_qres_opposite_status_from_oriented_gauss_counts"
+      ],
+      "title": "Combine the two sign-free reciprocity cases"
+    },
+    "conditional_qres_opposite_status_from_oriented_gauss_counts": {
+      "paragraphs": [
+        "Construct and unpack the shared oriented Gauss–Eisenstein counts. When both half-prime parameters are odd, their product is odd, so the Eisenstein identity forces the two Gauss counts to have opposite parity.",
+        "The two count classifications then say that exactly one of the cross-residue propositions holds. This is the three-mod-four case of quadratic reciprocity, expressed without a sign or Legendre-symbol primitive."
+      ],
+      "references": [
+        "gauss_count_sum_mod_two_from_quotient_sums",
+        "qres_opposite_status_from_mod_four_three"
+      ],
+      "title": "Derive opposite residue status in the three-mod-four case"
+    },
+    "conditional_qres_same_status_from_oriented_gauss_counts": {
+      "paragraphs": [
+        "Construct and unpack the shared oriented Gauss–Eisenstein counts. If one half-prime parameter is even, their product is even; the Eisenstein identity and the two modulo-two transports therefore force the Gauss counts to have the same parity.",
+        "Each count's parity is already equivalent to the truth status of its cross-residue proposition, so the two propositions are equivalent. This is the one-mod-four case of quadratic reciprocity."
+      ],
+      "references": [
+        "gauss_count_sum_mod_two_from_quotient_sums",
+        "qres_same_status_from_mod_four_one"
+      ],
+      "title": "Derive equal residue status when one prime is one modulo four"
+    }
+  },
+  "schema": "peano-lab-proof-informal-v1"
+}

@@ -87,6 +87,18 @@ def test_worker_mounts_the_complete_python_surface() -> None:
     assert "driver.banner()" in WORKER
 
 
+def test_worker_source_inventory_is_reproducible() -> None:
+    updater = LAB.parent / "scripts" / "update_peano_worker_sources.py"
+    result = subprocess.run(
+        ["python3", str(updater), "--check"],
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "source inventory verified" in result.stdout
+
+
 def test_shell_exposes_accessible_proof_controls_and_ladder_shortcuts() -> None:
     assert 'role="status"' in INDEX
     assert 'aria-live="polite"' in INDEX
@@ -119,6 +131,8 @@ def test_shell_exposes_accessible_bounded_multiline_proof_paste() -> None:
     assert 'id="run-pasted-proof"' in INDEX
     assert "const MAX_PASTE_CHARS=100000" in INDEX
     assert "const MAX_PASTE_LINES=256" in INDEX
+    assert "const MAX_INPUT=8192" in INDEX
+    assert "8,192 characters per command" in INDEX
     assert "beginning with <code>pa prove …</code> and ending with <code>qed</code>" in INDEX
     assert 'pasteDialog.addEventListener("close",restorePasteFocus)' in INDEX
     assert "pasteInput.focus()" in INDEX

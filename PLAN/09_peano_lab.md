@@ -621,8 +621,9 @@ The theorem-ladder extension is tracked independently in
 [`PLAN/10_arithmetic_library.md`](10_arithmetic_library.md). Its first release
 kept the kernel and object language fixed, expanded divisibility and residue
 notions into ordinary formulas, and organized factorization targets by their
-actual dependencies. The reconciled runtime now contains 247 unique checked
-theorems. Quotient-remainder existence and uniqueness, relational gcd,
+actual dependencies. The reconciled runtime now contains 380 unique checked
+theorems after the first quadratic-reciprocity campaign checkpoint.
+Quotient-remainder existence and uniqueness, relational gcd,
 balanced-natural Bézout, Gauss cancellation, constructive primality search,
 prime-divisor existence, Euclid's lemma, prime unboundedness, CRT, and
 functional Gödel-β decoding
@@ -638,12 +639,13 @@ nodes, depth 99 and 2,184 self-contained Cuts, uses only PA1–PA6 and induction
 and contains no DNE. The reviewed `Cut` rule embeds both the dependency proof
 and its body; neither theorem names nor hashes carry authority. The object
 language, PA axioms, induction schema, and intuitionistic default remain
-unchanged. The untrusted `use` and live-proof resource gates are aligned at
-100,000 nodes and depth 256, which admits the 73,767-node theorem while still
-rejecting the exact 100,001-node and depth-257 boundaries transactionally.
+unchanged. The untrusted `use` and live-proof resource gates now admit at most
+500,000 structural occurrences, 100,000 distinct proof objects, and depth 256.
+This admits shared campaign certificates while preserving the former
+worst-case object count; exact one-past boundaries fail transactionally.
 
-The synchronized catalog has 248 entries: 23 baseline checked, 224 M20
-checked, no planned entries, and one representation-blocked
+The synchronized catalog has 381 entries: 23 baseline checked, 357
+post-baseline checked, no planned entries, and one representation-blocked
 conventional integer-coefficient Bézout interface. A separate pinned Lean
 companion checks conventional list-based FTA up to permutation. Current test,
 corpus, snapshot, book, vault, and local-browser identifiers are recorded in

@@ -67,6 +67,26 @@ Python changes must also produce a new application-manifest release path.
 Deployment retains old immutable directories, uploads the complete new release first, and publishes
 the non-stored HTML pointer last, so an open older page cannot be stranded mid-promotion.
 
+### Deterministic worker source inventory
+
+The worker's explicit `PY_FILES` block is maintained by
+`scripts/update_peano_worker_sources.py`. The script sorts every `.py` source
+below `peano-lab/py/peano_lab/`, appends `peano-lab/py/driver.py`, and replaces
+only that canonical block in `worker.js`. Check it without writing files with:
+
+```console
+python3 scripts/update_peano_worker_sources.py --check
+```
+
+Running the command without `--check` updates a stale worker inventory. The
+browser contract test independently requires that this list equal the complete
+package-source set plus the driver. This inventory step does not update
+`APP_MANIFEST.sha256`, select a new `PEANOAPPID`/`APP_ROOT`, or publish a
+release. For the quadratic-reciprocity admission campaign, that manifest and
+its derived application release ID remain pending until admission and the
+cluster/browser gates pass; the existing values continue to identify the
+preceding application assembly.
+
 The teaching surfaces are executable too:
 
 ```text
@@ -80,6 +100,13 @@ pa lib mod5_fourth_power_one
 pa lean add_comm
 ```
 
+Bare `pa lib` is a lightweight inventory operation: it parses and
+pretty-prints every stored closed statement without replaying certificates.
+`pa lib <name>` still replays that one theorem before displaying its detailed
+check, and `pa lean <name>` likewise obtains the checked theorem on demand.
+Listing names therefore cannot grant theorem authority or accidentally launch
+a full-library replay.
+
 Checked library facts can also be composed inside an ordinary live proof:
 
 ```text
@@ -92,14 +119,17 @@ simp [add_succ_left, add_comm]
 qed
 ```
 
-`use` does not ask the kernel to trust a theorem name. It embeds the theorem's closed certificate
-in a self-contained `Cut` carrying both formulas and both proof branches. Finalization submits that
+`use` does not ask the kernel to trust a theorem name. It first replays the
+selected public theorem, then passes its actual closed formula and certificate
+through `use_checked`. The certificate is embedded in a self-contained `Cut`
+carrying both formulas and both proof branches. Finalization submits that
 closed shared certificate to the kernel against the original stated goal.
 
 The upstream public-catalog candidate contains 49 dependency-ordered entries: the 23-entry core and
 a 26-entry extension through `mod5_fourth_power_one`. Its immutable source report records the former
 fully expanded capstone at 21,515 nodes/depth 66. The current self-contained shared certificate is
-2,675 nodes/depth 38 and remains below the 100,000-node/depth-256 import ceiling. A short reuse of
+2,675 nodes/depth 38 and remains below the 500,000-occurrence,
+100,000-object, depth-256 import ceiling. A short reuse of
 the capstone is:
 
 ```text
@@ -255,7 +285,8 @@ The tactic takes no arguments and never treats local hypotheses as arithmetic re
 single call allows at most 256 equality-term AST nodes at depth 64, at most 64 leading universal
 binders, 32 closed computations, intermediate values up to 128, 25,000 work units, a
 50,000-node/256-level generated numerical bridge, and five seconds. The complete live partial proof
-is separately capped at 100,000 nodes and depth 256. False closed equations, unsupported goals,
+is separately capped at 500,000 structural occurrences, 100,000 distinct proof
+objects, and depth 256. False closed equations, unsupported goals,
 non-closing no-progress calls, and every limit fail transactionally; reflexive equality can close
 without performing a numerical computation.
 

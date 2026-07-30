@@ -21,6 +21,7 @@ forall a b. (forall d. (exists x. a = d * x) -> (exists y. b = d * y) -> d = 1) 
 
 - [[gauss_coprime_cancel]]
 - [[binary_crt]]
+- [[coprime_balanced_mod_inverse]]
 
 ## Verification record
 

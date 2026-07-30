@@ -166,14 +166,24 @@ fine-tuning awaits the pretrained-base baseline.
 
 ## Peano foundational arithmetic snapshot
 
-[`peano-library/`](peano-library/) is the deterministic snapshot of all 189
-checked Peano library entries. Its internal snapshot-v2 schema contains
-statement/script/certificate hashes, exact node/depth and structural Cut
-metrics, an ordered root digest, and the dependency DAG in Mermaid form.
-The current snapshot totals 242,629 structural nodes and 6,895 Cuts across 149
-Cut-bearing entries. `bounded_beta_crt_for_existing_code` is largest at
-25,545 nodes and 755 Cuts; `prime_divisor_exists` reaches the maximum
-depth of 80.
+[`peano-library/`](peano-library/) is the deterministic snapshot of all 384
+checked Peano library entries. Its internal snapshot-v3 schema contains
+statement/script/certificate hashes, exact structural, depth, distinct-object,
+and Cut metrics, an ordered root digest, and the dependency DAG in Mermaid
+form. The current snapshot totals 1,806,923 structural occurrences and 52,626
+Cuts across 329 Cut-bearing entries. `fundamental_theorem_of_arithmetic` is
+largest at 73,767 occurrences and reaches depth 99; its shared in-memory graph
+contains 8,701 distinct proof objects.
+The 137-entry quadratic-residue foundation adds parity and modulo-four algebra,
+constructive residue decision, finite folds, factorial and power algebra,
+modular units, small-modulus classifications, sign and half-range bridges,
+β-prefix swap/reindex, constructive finite pigeonhole, replacement balance,
+and exact swap-last product invariance. It is a checked campaign checkpoint,
+not yet a proof of quadratic reciprocity.
+The separate unregistered campaign sources now contain a dependency-curried
+kernel-checked body for the exact combined law, documented in the Jupyter Book.
+It is intentionally absent from this 384-theorem artifact until its recursive
+WMI closure, mutation, capacity, and receipt-pinned admission gates pass.
 The latest checked tranches add the full additive/multiplicative compatibility
 layer for balanced congruence, the five expanded decoded-value theorems from
 `beta_modulus_nonzero` through `beta_at_exists_unique`, and the directed
@@ -190,18 +200,32 @@ coprimality, coprime-product closure, congruence descent from an accumulated
 product modulus, and one invariant-preserving binary CRT extension. The
 newest six records advance the accumulated-product and decoded-congruence
 invariants together and fold them through every bounded prefix of values
-already decoded from a supplied `BetaAt` code. The final wrapper is not an
-arbitrary finite-sequence coding theorem. The snapshot does not claim false
-unconditional pairwise coprimality, genuine prefix-product recurrence and
-bounds, β finite-prefix recoding, greatest-prime descent, or native FTA.
+already decoded from a supplied `BetaAt` code. Later checked layers provide
+genuine finite-prefix recoding, exact prefix-product traces,
+greatest-prime-divisor descent, canonical factorization, and the native
+β-coded FTA. The snapshot does not claim false unconditional pairwise
+β-modulus coprimality, raw-code uniqueness, or a primitive list theorem.
 Rebuild or verify it with
 `python3 scripts/build_peano_library_snapshot.py [--check]`.
 
 The snapshot is evidence about replayed certificates, not a theorem database
 trusted by the kernel. The broader checked/planned/blocked research graph lives
-in `research/arithmetic-library/catalog.json`; it currently has 196 nodes: 23
-`checked_existing`, 166 `checked_m20`, three planned, and four
-language-blocked.
+in `research/arithmetic-library/catalog.json`; it currently has 385 nodes: 23
+`checked_existing`, 361 `checked_m20`, no planned entries, and one
+language-blocked conventional interface.
+
+## Quadratic-reciprocity reading artifact
+
+[`quadratic-reciprocity/pa00fg-gauss-eisenstein-data.tex`](quadratic-reciprocity/pa00fg-gauss-eisenstein-data.tex)
+and its compiled
+[`PDF`](quadratic-reciprocity/pa00fg-gauss-eisenstein-data.pdf) give a
+standalone standard-mathematical restatement of Proof Explorer theorem
+`PA00FG`, `distinct_odd_primes_gauss_eisenstein_data_exists`. The document
+keeps the formal status visible: the native tactic body is checked relative
+to its declared dependencies, but the theorem is not yet a publicly admitted
+closed certificate. The canonical interactive source remains the Proof
+Explorer page at
+`book/_static/pa-proof-explorer/tag/PA00FG.html`.
 
 ## Fundamental theorem of arithmetic companion
 

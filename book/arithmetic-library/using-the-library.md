@@ -10,8 +10,9 @@ Existing production entries may already open there; candidate-only entries,
 including the division, gcd, Bézout, Gauss, Euclid, and constructive
 prime-search layers, balanced modular congruence, single-position Gödel-β
 decoding as bounded congruence, and constructive binary CRT become available
-only after this build is promoted. The source runtime now has 247 checked
-entries. Its source-bound 1,692-session/13,344-transition corpus has fingerprint
+only after this build is promoted. The source runtime now has 384 checked
+entries. The last source-bound 1,692-session/13,344-transition corpus was built
+at the 247-theorem checkpoint and has fingerprint
 `5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`.
 The isolated all-ladder smoke has 494 sessions, 9,235 raw/9,232 unique
 transitions, and all 247 authored QEDs. Browser build `2026-07-29j`,
@@ -32,7 +33,7 @@ pa lib prime_factorization_uniqueness
 pa lib fundamental_theorem_of_arithmetic
 ```
 
-The {doc}`theorem atlas <theorem-atlas>` provides the complete 247-command
+The {doc}`theorem atlas <theorem-atlas>` provides the complete 380-command
 index, with a full replay recipe and immutable source links for every entry.
 Candidate-only browser commands must not be presented as live until the
 corresponding Peano Lab build is promoted.
@@ -147,9 +148,9 @@ cd peano-lab/py
 python3 -m pytest tests/test_foundational_arithmetic_library.py -q
 ```
 
-The snapshot command verifies exact metadata for all 247 checked certificates
-and ordered root digest `eb4775dfd181…ff432`. The atlas command verifies that
+The snapshot command verifies exact metadata for all 384 checked certificates
+and ordered root digest `73b31b4775d2…6e89b`. The atlas command verifies that
 every displayed statement, dependency, proof recipe, metric and hash still
-matches that snapshot. The catalog command validates the 248-node research DAG
+matches that snapshot. The catalog command validates the 385-node research DAG
 and source register, and the last command exercises the checked foundational
 layer directly.

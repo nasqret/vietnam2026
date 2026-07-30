@@ -35,6 +35,14 @@ forall n m k. n * (m + k) = n * m + n * k
 - [[binary_crt]]
 - [[mod5_square_residue_one]]
 - [[mod5_square_residue_two]]
+- [[even_add_even]]
+- [[even_add_odd]]
+- [[odd_add_even]]
+- [[odd_add_odd]]
+- [[odd_mul_odd]]
+- [[odd_mod4_cases]]
+- [[mod4_three_is_odd]]
+- [[coprime_mod_inverse]]
 
 ## Verification record
 

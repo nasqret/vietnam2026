@@ -58,8 +58,8 @@ does not determine the architecture.
 - [x] Add modulus-independent quotient-and-remainder transport through
       addition and squaring.
 - [x] Replay and independently check the published 189-entry checkpoint.
-      The audited FTA integration uses the current live/use cap of 100,000
-      nodes and depth 256.
+      The audited FTA integration now uses the dual live/use cap of 500,000
+      structural occurrences, 100,000 distinct proof objects, and depth 256.
 - [x] Generate a deterministic versioned JSON snapshot, exact metrics,
       certificate hashes, structural Cut counts, and Mermaid dependency graph.
 
@@ -181,7 +181,8 @@ does not determine the architecture.
       73,767 nodes, depth 99, and 2,184 self-contained Cuts, with certificate
       SHA-256
       `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
-      It fits the 100,000-node/depth-256 live/use gate, uses only PA1–PA6 and
+      It fits the 500,000-occurrence/100,000-object/depth-256 live/use gate,
+      uses only PA1–PA6 and
       induction, and contains no DNE. Runtime integration is complete in the
       synchronized 247-theorem checkpoint.
 

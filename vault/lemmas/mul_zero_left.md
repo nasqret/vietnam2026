@@ -30,6 +30,7 @@ forall n. 0 * n = 0
 - [[prime_divisor_exists_up_to]]
 - [[beta_at_self_of_bound]]
 - [[prime_three]]
+- [[beta_half_range_entry_bounds]]
 
 ## Verification record
 

@@ -20,6 +20,7 @@ forall a b c. (exists k. k + a = b) -> (exists k. k + S b = c) -> exists k. k + 
 ## Checked dependents
 
 - [[beta_accumulated_product_step]]
+- [[beta_half_range_entry_bounds]]
 
 ## Verification record
 

@@ -26,6 +26,7 @@ mathematics — with every idea presented **informally (runnable) and formally (
 | Release & deploy | [`PLAN/08_deploy.md`](PLAN/08_deploy.md) | Git → GitHub → faculty server; incremental go-live; build/link checks. |
 | Peano Lab | [`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md) | Sound browser theorem prover for PA: kernel → checked arithmetic tactics → UI → book/vault/corpus. |
 | Foundational arithmetic library | [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md) | Versioned lemma DAG: congruence and divisibility → division/gcd/primes → an honestly represented FTA. |
+| Native quadratic reciprocity | [`PLAN/11_quadratic_reciprocity.md`](PLAN/11_quadratic_reciprocity.md) | Parity and finite folds → Euler/Gauss/Eisenstein → a checked reciprocity certificate. |
 
 ## L2 / L3
 
@@ -57,8 +58,8 @@ the next registered iteration is a library-snapshot-bound `model-v2`, not a 4B s
 curriculum. The owner authorized the compatibility-validated 26-record modular extension for the
 public catalog. After reconciliation with M20, fourteen records overlap exactly and twelve are
 new, giving 63 unique checked runtime theorems without changing the kernel.
-Subsequent native arithmetic passes extend that same runtime to 247 checked
-theorems, including discrete order, multiplication cancellation and
+Subsequent native arithmetic and quadratic-residue campaign passes extend that
+same runtime to 384 checked theorems, including discrete order, multiplication cancellation and
 monotonicity, constructive quotient-remainder existence, and full
 quotient-remainder uniqueness, mutual-divisibility antisymmetry, relational
 gcd uniqueness, both directions of Euclidean gcd invariance, constructive
@@ -100,12 +101,13 @@ sampling remain necessary. See
 [`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest completed and staged
 milestone; production remains untouched behind the M14 cache-header blocker.
 
-## Parallel foundational arithmetic milestone
+## Parallel foundational arithmetic and quadratic-reciprocity milestones
 
-M20 generalizes the theorem ladder into a structured arithmetic corpus. Its
-247 checked runtime entries comprise the original 23-theorem base, 212
-post-baseline foundational theorems, and twelve unique upstream mod-five
-capstones. The constructive dependency graph now runs from equality, order,
+M20 generalizes the theorem ladder into a structured arithmetic corpus. The
+current 384 checked runtime entries comprise the original 23-theorem base, 212
+post-baseline foundational theorems, twelve unique upstream mod-five
+capstones, and 137 checked M21–M23 quadratic-residue foundations. The
+constructive dependency graph now runs from equality, order,
 cancellation, division and relational gcd through balanced-natural Bézout,
 Gauss cancellation, primality decision, prime-divisor existence and Euclid's
 lemma. Its conservative finite-sequence layer uses expanded Gödel-β relations
@@ -114,14 +116,110 @@ object language—and proves CRT recoding, canonical sorted factorization
 existence, extensional uniqueness, and the native Fundamental Theorem of
 Arithmetic. The exact FTA certificate checks from the empty context at 73,767
 nodes, depth 99 and 2,184 self-contained Cuts, with no DNE. The synchronized
-248-entry catalog has 23 `checked_existing`, 224 `checked_m20`, no remaining
+381-entry catalog has 23 `checked_existing`, 357 `checked_m20`, no remaining
 planned theorem, and one representation-blocked
 conventional integer-coefficient Bézout interface. A pinned Lean companion
 independently checks conventional list-based FTA up to permutation. Remaining
 M20's native arithmetic and synchronized release artifacts are complete. The
-main Jupyter Book now includes a guided zero-to-FTA route and a generated
-interactive 247-proof atlas; direct attached-browser UI inspection remains
+main Jupyter Book now includes a guided zero-to-FTA route, a quadratic
+reciprocity campaign chapter, and a generated interactive 380-proof atlas;
+direct attached-browser UI inspection remains
 explicitly unclaimed, and
 model-v2 curriculum expansion is a separate milestone—not mathematical
 admission of FTA or prime unboundedness. See
 [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md).
+
+M21–M25 continue systematically toward a native sign-free quadratic
+reciprocity theorem. M21 and M22 are checked through constructive residue
+membership, finite folds and fold congruence. The dependency-curried campaign
+is now body-green through general product permutation, Fermat and Wilson,
+both bounded branches of Euler's criterion, and the power-congruence form of
+Gauss's lemma. The complete bounded Gauss classification is now body-green as
+an actual quadratic-residue/count-parity equivalence, and the supporting
+modulo-two plus odd-division parity interfaces are body-green as well. The
+complete odd-prime Euler equivalence is now body-green in
+both directions for arbitrary unit representatives, using canonical-remainder
+reduction and congruence transport. On the Eisenstein route, quotient
+prefixes/sums, exact row counts, quotient-sum-to-rectangle transport, generic
+exact pointwise sum addition, transposed-cell complementarity, and coherent
+whole-column count partitions are body-green. The entire column-count outer
+prefix is now summed as well, giving `N+M=h*k`. The genuine Fubini induction
+now identifies `M` with the swapped total `T`, yielding `N+T=h*k`, and the
+decoded two-orientation quotient endpoint proves `Q+U=h*k`. These are not admissions:
+recursive closure, mutations and receipt-pinned admission remain WMI gates,
+and the final two-orientation existential composition is now body-green. The
+actual-QRes Gauss endpoint
+also accepts arbitrary unit representatives, so both prime orientations can
+reuse it directly in the completed count/floor-sum parity bridge. Its
+generic pointwise arithmetic core is now body-green as
+`x == q+m+s (mod 2)` for aligned odd scaled-division/sign data; exact prefix
+alignment is now body-green as well, including the exact `r=m`/`r+m=p`
+branch and the common-index β-prefix theorem. Exact finite-sum permutation
+invariance is also available. Terminal summation and magnitude-sum
+cancellation are now body-green, preserving all beta-code provenance and
+proving each orientation's Gauss sign count congruent modulo two to its
+quotient sum. The constructive final modulo-four/QRes truth tables are
+body-green and feed exact same-status and opposite-status QR bodies; the predeclared
+combined sign-free quadratic-reciprocity surface is now body-green. Its
+sharing-optimized direct wrapper checks at 113 nodes/depth 35 and constructs
+the two-orientation package only once. A 20-test downstream replay passes in
+27.25 seconds. This is
+the mathematical certificate body, not yet a library admission: layered
+closure, mutation checks, capacity profiling, and pinned admission remain WMI
+gates. The dual availability policy is 500,000 structural occurrences,
+100,000 distinct
+proof objects, and depth 256; the kernel and PA language are unchanged. See
+[`PLAN/11_quadratic_reciprocity.md`](PLAN/11_quadratic_reciprocity.md).
+
+The recursive QR tree is no longer a capacity uncertainty: source recurrence
+forces at least 731,488 proof nodes. The preferred replacement is implemented
+as an isolated 45-layer balanced-conjunction compiler whose output is one
+ordinary existing `Proof` checked by the unchanged kernel. Its focused tests
+pass `25/25`; an exact 557-node/1,792-edge dependency-consuming surrogate is
+kernel-green at 19,099 nodes/depth 74, while false bodies against the actual
+QR formulas are rejected. The real 557-body compile/check, resource receipt,
+mutations, public migration and Pyodide gate remain WMI-dependent. The
+content-addressed nine-gate job is ready. A historical second
+scheduler-validation attempt timed out before upload and created no remote
+snapshot or job; the newer approval boundary is recorded below.
+
+The admission implementation is now prepared but deliberately not activated.
+The QR stack is injection-based over a frozen pre-QR table, and the generic
+layered compiler is a production-neutral constructive ordinary-proof builder.
+Its exact proof-envelope scanner covers all 25 kernel constructors, rejects
+classical and engine-only nodes, and separately bounds embedded annotations.
+Static exact-topology evidence preserves the `19,099/74` proof receipt and now
+adds `142,396/84` annotations/envelope depth; the actual-formula false scaffold
+adds `157,579/92`. Bare `pa lib` no longer replays the ladder, and the browser
+worker inventory deterministically covers 147 Python files. A migration audit
+identifies 125 pre-admission absence assertions and the exact 317/29 public
+partition. The real 557-body WMI replay is now queued as full 136-gate job
+`187187`, bound to approved dirty snapshot
+`2bab0898a5bc628a0e1f06b5e6cdf56af86fe39c2fdbeaaa4147ac43d2c7faaa`.
+Scheduler validation passed, but the latest state is `PENDING (Priority)`;
+there is no replay receipt and no basis for candidate enrollment.
+
+The native PA Proof Explorer now makes that exact evidence boundary
+navigable. Its persistent 557-page tag corpus has 1,792 dependency edges,
+27,491 line-addressable tactic commands, 8,557 explicit theorem links, and a
+separate foundations view for PA grammar, PA1–PA6, proof constructors, and
+tactics. The permanent QR endpoint is `PA00FW`. The interface labels 240
+public theorems, 316 body-checked candidates, and the one root awaiting
+layered closure; it does not enroll any candidate. Source integration and 24
+bounded explorer/Book/WMI-harness checks are complete. A fresh WMI Jupyter
+Book build/integrity receipt and attached-browser interaction pass remain
+publication gates, and the former frozen QR upload hash is stale after these
+payload-changing additions.
+
+Graph v2 now exposes the same closure as navigable premise paths: 557 theorem
+nodes, 1,792 direct edges, 45 layers, and 48 theorem roots (corpus roots, not
+PA axioms or kernel foundations). For `PA00FW` it records 101,296 distinct
+root-to-target paths, a 4-vertex shortest witness, and a 45-vertex critical
+depth witness. The Book endpoint is
+`book/arithmetic-library/dependency-graph.md`, and the static explorer opens at
+`book/_static/pa-proof-explorer/graph.html?target=PA00FW` with the exact proof
+page one click away. This completes the static dependency-path presentation;
+the generator owns all 1,123 files under a pinned aggregate, and the full
+local Book build/integrity check is green. `PA00FW` remains pending layered
+closure while WMI job `187187` is queued; attached-browser validation also
+remains a publication gate.

@@ -20,7 +20,7 @@ PEANO_POLICY_ROWS ?= 10000
 override STAGEPEANO := _deploy/peano-lab
 override PEANOAPPID := a-c983d7c60450
 
-.PHONY: help book book-atlas lean lean-fta lab-serve peano-serve peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
+.PHONY: help book book-atlas book-proof-explorer lean lean-fta lab-serve peano-serve peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
 	deploy clean
 
@@ -28,6 +28,7 @@ help:
 	@echo "Targets:"
 	@echo "  make book         build the JupyterBook (book/_build/html)"
 	@echo "  make book-atlas   regenerate the checked arithmetic theorem atlas"
+	@echo "  make book-proof-explorer  regenerate the static PA proof explorer"
 	@echo "  make lean         build & axiom-check the Lean artifact"
 	@echo "  make lean-fta     build & exact-axiom-check the Lean FTA companion"
 	@echo "  make lab-serve    serve lab-lambda locally on :8001"
@@ -49,7 +50,10 @@ help:
 book-atlas:
 	python3 scripts/build_arithmetic_book_atlas.py
 
-book: book-atlas
+book-proof-explorer:
+	python3 scripts/build_pa_proof_explorer.py
+
+book: book-atlas book-proof-explorer
 	rm -rf book/_build   # full rebuild: incremental Sphinx leaves stale sidebars after TOC changes
 	jupyter-book build book/
 	@# ensure a directory index exists (external-toc usually writes one)

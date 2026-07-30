@@ -42,6 +42,13 @@ forall n m k. (n + m) + k = n + (m + k)
 - [[mod_eq_predecessor_cancel]]
 - [[mod5_square_residue_one]]
 - [[mod5_square_residue_two]]
+- [[even_add_odd]]
+- [[odd_add_odd]]
+- [[odd_mul_odd]]
+- [[bit_count_bounded]]
+- [[coprime_balanced_mod_inverse]]
+- [[predecessor_square_mod_one]]
+- [[beta_half_range_entry_bounds]]
 
 ## Verification record
 

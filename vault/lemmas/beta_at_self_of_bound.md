@@ -22,6 +22,7 @@ forall c i x. (exists h. h + S x = S ((S i) * c)) -> ((exists h. h + S x = S ((S
 
 - [[beta_prefix_product_trace_exists]]
 - [[prime_factorization_exists_up_to]]
+- [[beta_prefix_sum_trace_exists]]
 
 ## Verification record
 

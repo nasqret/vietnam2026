@@ -31,6 +31,15 @@ forall a b. a + b = 0 -> b = 0
 - [[beta_factor_divides_product]]
 - [[prime_factorization_exists_up_to]]
 - [[prime_factorization_uniqueness_by_length]]
+- [[quadratic_residue_search_up_to]]
+- [[beta_repeat_empty]]
+- [[beta_range_empty]]
+- [[beta_prefix_sum_trace_exists]]
+- [[all_bits_zero]]
+- [[finite_surjective_zero]]
+- [[beta_prefix_replace_exists]]
+- [[finite_contains_decidable]]
+- [[beta_product_replace_balance]]
 
 ## Verification record
 

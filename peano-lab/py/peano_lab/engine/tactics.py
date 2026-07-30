@@ -98,6 +98,7 @@ from .state import (
     metas_in_formula,
     metas_in_proof,
     metas_in_term,
+    proof_identity_metrics,
     proof_metrics,
     proof_size,
     record_step,
@@ -130,11 +131,16 @@ Tactic = Callable[[ProofState, str], ProofState]
 
 _RESERVED_TERM_NAMES = {"S", "forall", "exists", "bot", "false"}
 
-# Every ordinary tactic shares a conservative live-certificate boundary.
-# Specialized automation may enforce still smaller limits, but no generic
-# sequence may build a tree deep enough to exhaust the recursive finalizer or
-# kernel before QED can return an honest result.
-MAX_LIVE_PROOF_NODES = 100_000
+# Every ordinary tactic shares conservative live-certificate boundaries.
+# Structural occurrences deliberately charge a shared child once per incoming
+# edge, while the identity bound limits actual immutable proof objects.  This
+# lets large, highly shared arithmetic certificates compose without granting a
+# larger worst-case object footprint.  The 500K/100K split is supported by the
+# reproducible capacity profiler: the 73,767-occurrence FTA certificate has
+# only 8,701 distinct proof objects.  Specialized automation may enforce still
+# smaller limits.
+MAX_LIVE_PROOF_NODES = 500_000
+MAX_LIVE_PROOF_OBJECTS = 100_000
 MAX_LIVE_PROOF_DEPTH = 256
 
 # ``use`` embeds a checked theorem certificate in a self-contained Cut node.
@@ -145,12 +151,14 @@ MAX_LIVE_PROOF_DEPTH = 256
 # overlapping policy before the transactional ``_commit`` guard runs.
 MAX_USE_CERTIFICATE_NODES = MAX_LIVE_PROOF_NODES
 MAX_USE_PARTIAL_NODES = MAX_LIVE_PROOF_NODES
+MAX_USE_CERTIFICATE_OBJECTS = MAX_LIVE_PROOF_OBJECTS
+MAX_USE_PARTIAL_OBJECTS = MAX_LIVE_PROOF_OBJECTS
 MAX_USE_PROOF_DEPTH = MAX_LIVE_PROOF_DEPTH
 
 # ``norm_num`` can install a checked transport around one new residual hole.
 # Bound the whole live certificate on both sides of that operation so a small
 # numerical calculation cannot be appended to an already hostile proof tree.
-MAX_NORM_NUM_PARTIAL_NODES = 100_000
+MAX_NORM_NUM_PARTIAL_NODES = MAX_LIVE_PROOF_NODES
 MAX_NORM_NUM_PARTIAL_DEPTH = 256
 MAX_NORM_NUM_FORALLS = 64
 
@@ -166,6 +174,11 @@ def enforce_live_proof_bounds(proof: Proof) -> tuple[int, int]:
     if depth > MAX_LIVE_PROOF_DEPTH:
         raise TacticLimit(
             f"tactic exceeded the {MAX_LIVE_PROOF_DEPTH}-live-proof-depth limit."
+        )
+    objects, _, _ = proof_identity_metrics(proof)
+    if objects > MAX_LIVE_PROOF_OBJECTS:
+        raise TacticLimit(
+            f"tactic exceeded the {MAX_LIVE_PROOF_OBJECTS}-live-proof-object limit."
         )
     return nodes, depth
 
@@ -256,20 +269,27 @@ def _enforce_use_proof_budget(
     proof: Proof,
     *,
     max_nodes: int,
+    max_objects: int,
     label: str,
 ) -> None:
     """Measure a proof iteratively before ``use`` invokes recursive code."""
 
     pending = [(proof, 1)]
     node_count = 0
+    identities: set[int] = set()
     try:
         while pending:
             current, depth = pending.pop()
             node_count += 1
+            identities.add(id(current))
             if node_count > max_nodes or depth > MAX_USE_PROOF_DEPTH:
                 raise TacticLimit(
                     f"`use` exceeded its {max_nodes}-node / "
                     f"{MAX_USE_PROOF_DEPTH}-level {label} limit."
+                )
+            if len(identities) > max_objects:
+                raise TacticLimit(
+                    f"`use` exceeded its {max_objects}-object {label} limit."
                 )
             children = [
                 getattr(current, item.name)
@@ -1101,11 +1121,13 @@ def use_checked(
     _enforce_use_proof_budget(
         certificate,
         max_nodes=MAX_USE_CERTIFICATE_NODES,
+        max_objects=MAX_USE_CERTIFICATE_OBJECTS,
         label="import-certificate",
     )
     _enforce_use_proof_budget(
         state.partial,
         max_nodes=MAX_USE_PARTIAL_NODES,
+        max_objects=MAX_USE_PARTIAL_OBJECTS,
         label="live-certificate",
     )
     if not check((), certificate, formula):
@@ -1124,6 +1146,7 @@ def use_checked(
     _enforce_use_proof_budget(
         after.partial,
         max_nodes=MAX_USE_PARTIAL_NODES,
+        max_objects=MAX_USE_PARTIAL_OBJECTS,
         label="live-certificate",
     )
     return _commit(state, after, "use", visible_name)
@@ -1773,6 +1796,10 @@ def checked_final(
         certificate = compile_local_cuts(certificate)
     except ProofReductionError as exc:
         raise InvalidProof(f"local-reasoning cut compilation failed: {exc}.") from None
+    try:
+        enforce_live_proof_bounds(certificate)
+    except TacticLimit as exc:
+        raise InvalidProof(f"final certificate exceeds the live resource policy: {exc}") from None
     checker = check_classical if classical else check
     if not checker((), certificate, original_target):
         raise InvalidProof("the independent kernel rejected the certificate for the stated goal.")
@@ -1872,12 +1899,15 @@ __all__ = [
     "Tactic",
     "TACTIC_NAMES",
     "MAX_USE_CERTIFICATE_NODES",
+    "MAX_USE_CERTIFICATE_OBJECTS",
     "MAX_USE_PARTIAL_NODES",
+    "MAX_USE_PARTIAL_OBJECTS",
     "MAX_USE_PROOF_DEPTH",
     "MAX_NORM_NUM_PARTIAL_NODES",
     "MAX_NORM_NUM_PARTIAL_DEPTH",
     "MAX_NORM_NUM_FORALLS",
     "MAX_LIVE_PROOF_NODES",
+    "MAX_LIVE_PROOF_OBJECTS",
     "MAX_LIVE_PROOF_DEPTH",
     "enforce_live_proof_bounds",
     "intro",

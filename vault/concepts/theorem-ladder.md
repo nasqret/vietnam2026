@@ -119,7 +119,8 @@ nodes/depth 98; uniqueness is 29,789/depth 82; the exact combined
 self-contained Cuts. Its certificate SHA-256 is
 `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
 
-The FTA passes the 100,000-node/depth-256 live/use gate, uses only PA1–PA6 and
+The FTA passes the 500,000-occurrence/100,000-object/depth-256 live/use gate,
+uses only PA1–PA6 and
 induction, and contains no DNE. Runtime integration is complete. The current
 247-theorem artifact has 982,534 nodes, 28,892 Cuts, and ordered root
 `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`.

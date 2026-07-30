@@ -298,22 +298,38 @@ def apply_formula_subst(formula: Formula, subst: Mapping[int, Term]) -> Formula:
 
 
 def apply_proof_subst(proof: Proof, subst: Mapping[int, Term]) -> Proof:
-    """Apply a term substitution everywhere terms occur in a certificate."""
+    """Apply a term substitution while preserving input proof-DAG sharing."""
 
-    if type(proof) is Hole:
-        return proof
-    if not isinstance(proof, Proof):
-        raise TypeError("expected a proof certificate")
-    changes: dict[str, object] = {}
-    for item in fields(proof):
-        value = getattr(proof, item.name)
-        if isinstance(value, Proof):
-            changes[item.name] = apply_proof_subst(value, subst)
-        elif isinstance(value, Formula):
-            changes[item.name] = apply_formula_subst(value, subst)
-        elif isinstance(value, Term):
-            changes[item.name] = apply_term_subst(value, subst)
-    return replace(proof, **changes) if changes else proof
+    memo: dict[int, tuple[Proof, Proof]] = {}
+
+    def apply(value: Proof) -> Proof:
+        identity = id(value)
+        cached = memo.get(identity)
+        if cached is not None and cached[0] is value:
+            return cached[1]
+        result = apply_unseen(value)
+        # Retaining the original object prevents Python from reusing its ID for
+        # a distinct temporary proof during this substitution pass.
+        memo[identity] = (value, result)
+        return result
+
+    def apply_unseen(value: Proof) -> Proof:
+        if type(value) is Hole:
+            return value
+        if not isinstance(value, Proof):
+            raise TypeError("expected a proof certificate")
+        changes: dict[str, object] = {}
+        for item in fields(value):
+            child = getattr(value, item.name)
+            if isinstance(child, Proof):
+                changes[item.name] = apply(child)
+            elif isinstance(child, Formula):
+                changes[item.name] = apply_formula_subst(child, subst)
+            elif isinstance(child, Term):
+                changes[item.name] = apply_term_subst(child, subst)
+        return replace(value, **changes) if changes else value
+
+    return apply(proof)
 
 
 def _occurs(meta_id: int, term: Term, subst: Mapping[int, Term]) -> bool:
@@ -598,6 +614,40 @@ def proof_size(proof: Proof) -> int:
     return proof_metrics(proof)[0]
 
 
+def proof_identity_metrics(proof: Proof) -> tuple[int, int, int]:
+    """Return distinct objects, proof edges, and reused object references.
+
+    The kernel certificate grammar is tree-shaped, but Python certificates can
+    reuse the same immutable proof object from more than one parent.  The
+    ordinary :func:`proof_metrics` deliberately charges every occurrence and
+    remains the structural half of the live resource policy. These identity
+    metrics supply its separate object-count guard and diagnostic evidence for
+    a possible self-contained proof-DAG format; they never grant proof
+    authority or weaken a resource check.
+    """
+
+    if not isinstance(proof, Proof):
+        raise TypeError("proof_identity_metrics expects a proof certificate")
+    pending = [proof]
+    seen: set[int] = set()
+    edges = 0
+    while pending:
+        node = pending.pop()
+        identity = id(node)
+        if identity in seen:
+            continue
+        seen.add(identity)
+        children = [
+            getattr(node, item.name)
+            for item in fields(node)
+            if isinstance(getattr(node, item.name), Proof)
+        ]
+        edges += len(children)
+        pending.extend(children)
+    reused = max(0, edges - (len(seen) - 1))
+    return len(seen), edges, reused
+
+
 __all__ = [
     "StateError",
     "MetaVar",
@@ -632,4 +682,5 @@ __all__ = [
     "invariants_ok",
     "proof_metrics",
     "proof_size",
+    "proof_identity_metrics",
 ]

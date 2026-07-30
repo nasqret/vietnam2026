@@ -20,6 +20,7 @@ forall a b. (((exists x. a = 1 * x) /\ (exists y. b = 1 * y)) /\ forall d. (exis
 ## Checked dependents
 
 - [[euclid_prime_dvd_product]]
+- [[prime_coprime_or_divides]]
 
 ## Verification record
 

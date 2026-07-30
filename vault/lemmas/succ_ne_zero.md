@@ -34,6 +34,18 @@ forall n. ~(S n = 0)
 - [[prime_factorization_exists_up_to]]
 - [[beta_all_prime_product_one_iff_length_zero]]
 - [[prime_factorization_uniqueness_by_length]]
+- [[beta_repeat_empty]]
+- [[beta_range_empty]]
+- [[beta_prefix_sum_trace_exists]]
+- [[all_bits_zero]]
+- [[qres_mod3_canonical_iff]]
+- [[qres_mod5_canonical_iff]]
+- [[qres_mod7_canonical_iff]]
+- [[finite_surjective_zero]]
+- [[beta_prefix_replace_exists]]
+- [[finite_contains_decidable]]
+- [[beta_product_replace_balance]]
+- [[prime_bounded_nonzero_mod_inverse]]
 
 ## Verification record
 

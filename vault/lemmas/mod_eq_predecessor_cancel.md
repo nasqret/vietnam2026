@@ -22,6 +22,7 @@ forall k a z. exists u v. ((a + z) + k * z) + S k * u = a + S k * v
 ## Checked dependents
 
 - [[binary_crt]]
+- [[coprime_mod_inverse]]
 
 ## Verification record
 

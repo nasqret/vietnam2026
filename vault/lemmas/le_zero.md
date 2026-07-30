@@ -29,6 +29,7 @@ forall n. n <= 0 -> n = 0
 - [[greatest_prime_divisor_search]]
 - [[prime_factorization_exists_up_to]]
 - [[beta_sorted_factor_le_last]]
+- [[lt_three_cases]]
 
 ## Verification record
 

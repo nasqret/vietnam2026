@@ -24,6 +24,11 @@ forall a b. a = b \/ ~(a = b)
 - [[factor_search_up_to]]
 - [[prime_decidable]]
 - [[prime_factorization_exists_up_to]]
+- [[mod_eq_decidable_from_remainders]]
+- [[beta_prefix_swap_last_reflect]]
+- [[finite_swap_last_bounded]]
+- [[finite_contains_decidable]]
+- [[beta_prefix_replace_reflect]]
 
 ## Verification record
 

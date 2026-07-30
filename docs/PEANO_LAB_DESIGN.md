@@ -245,8 +245,9 @@ or arbitrary quantified formulas. It may structurally open leading universal bin
 is an equality, then wrap the result in ordinary `ForallIntro` certificates. One attempt is bounded
 by 256 equality-term AST nodes at depth 64, at most 64 such leading binders, 32 closed computations,
 intermediate values at most 128, 25,000 work units, a 50,000-node/256-level generated numerical
-bridge, and five seconds. The complete live partial certificate is separately capped at 100,000
-nodes and depth 256. Multiplication tests the value bound before forming the product. Resource or
+bridge, and five seconds. The complete live partial certificate is separately capped at 500,000
+structural occurrences, 100,000 distinct proof objects, and depth 256. Multiplication tests the
+value bound before forming the product. Resource or
 host-recursion exhaustion raises `TacticLimit` and preserves the exact proof state and history.
 Arithmetic-aware `hint` uses the same pure bounded preflight; it never runs a speculative state
 tactic or allocates proof holes.

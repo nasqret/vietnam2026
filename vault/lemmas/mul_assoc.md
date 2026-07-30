@@ -39,6 +39,13 @@ forall n m k. (n * m) * k = n * (m * k)
 - [[mod5_fourth_power_residue_three]]
 - [[mod5_fourth_power_residue_four]]
 - [[mod5_fourth_power_one]]
+- [[even_mul_left]]
+- [[mul_double_right]]
+- [[four_mul_eq_double_double]]
+- [[coprime_mod_inverse]]
+- [[mod_eq_cancel_coprime]]
+- [[pow_add]]
+- [[beta_product_replace_balance]]
 
 ## Verification record
 

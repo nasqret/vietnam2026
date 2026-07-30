@@ -59,6 +59,12 @@ Thumbs.db
 scratch/
 *.local.md
 
+# Local generated reports and one-off debugging scratch. Reviewed deliverables
+# belong under artifacts/ instead of these working directories.
+output/
+tmp/
+peano-lab/py/debug_candidate.py
+
 # Claude Code local settings
 .claude/
 

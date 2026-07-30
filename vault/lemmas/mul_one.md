@@ -26,6 +26,9 @@ forall n. n * 1 = n
 - [[prime_divisor_eq_one_or_self]]
 - [[binary_crt]]
 - [[prime_unbounded]]
+- [[mod_eq_cancel_coprime]]
+- [[pow_add]]
+- [[predecessor_square_mod_one]]
 
 ## Verification record
 

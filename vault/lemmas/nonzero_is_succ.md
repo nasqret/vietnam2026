@@ -22,6 +22,9 @@ forall n. ~(n = 0) -> exists k. n = S k
 - [[binary_crt]]
 - [[prime_unbounded]]
 - [[prime_factorization_uniqueness_by_length]]
+- [[quadratic_residue_bounded_decidable_nonzero]]
+- [[coprime_mod_inverse]]
+- [[prime_is_succ_succ]]
 
 ## Verification record
 

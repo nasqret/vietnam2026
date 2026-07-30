@@ -9,27 +9,31 @@ Arithmetic.
 
 ```{admonition} The result in one sentence
 :class: tip
-The current runtime contains **247 closed native theorems**, including
+The current runtime contains **384 closed native theorems**, including
 factorization existence, extensional uniqueness, their combined FTA, and a
-constructive theorem producing a prime above every supplied bound.
+constructive theorem producing a prime above every supplied bound. The newest
+137-theorem quadratic-reciprocity campaign now includes parity, constructive
+residue decision, finite folds, factorial and power algebra, modular units,
+sign and half-range bridges, β swap/reindex, finite pigeonhole, replacement
+balance, and exact swap-last product invariance.
 ```
 
 <div class="pa-dashboard-metrics" aria-label="Current arithmetic library metrics">
-  <div><strong>247</strong><span>checked native theorems</span></div>
-  <div><strong>982,534</strong><span>structural proof nodes</span></div>
-  <div><strong>28,892</strong><span>self-contained Cuts</span></div>
+  <div><strong>384</strong><span>checked native theorems</span></div>
+  <div><strong>1,806,923</strong><span>structural proof occurrences</span></div>
+  <div><strong>52,626</strong><span>self-contained Cuts</span></div>
   <div><strong>0</strong><span>remaining planned catalog theorems</span></div>
 </div>
 
 The generated snapshot has ordered root
-`eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`.
+`73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
 Every entry is reconstructed from its authored script and checked from the
 empty context. Names, summaries and hashes organize the library; none of them
 grant proof authority.
 
 ## The mathematical metro map
 
-The exact dependency graph has 247 vertices and is useful to machines, but a
+The exact dependency graph has 384 vertices and 1,038 edges and is useful to machines, but a
 human first needs the stations. Each box below is a link into the guided tour.
 
 <nav class="pa-roadmap" aria-label="Arithmetic dependency roadmap">
@@ -48,7 +52,12 @@ human first needs the stations. Each box below is a link into the guided tour.
 The exact generated graph remains available as an immutable
 [`dependency-graph.mmd`](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/dependency-graph.mmd).
 The {doc}`interactive theorem atlas <theorem-atlas>` gives a readable local
-neighborhood instead of attempting to draw all 640 edges at once.
+neighborhood instead of attempting to draw all 1,038 edges at once. The
+{doc}`native PA proof explorer <proof-explorer>` adds permanent theorem tags,
+numbered tactic-line targets, and the larger quadratic-reciprocity closure.
+Its {doc}`interactive dependency graph <dependency-graph>` draws short or
+critical premise chains, start-to-target corridors, and complete transitive
+cones.
 
 ## Choose your route
 
@@ -56,9 +65,12 @@ neighborhood instead of attempting to draw all 640 edges at once.
 |---|---|---|
 | understand the mathematics | {doc}`Guided route from zero to FTA <guided-tour>` | the focused theorem links inside each stage |
 | inspect every native proof | {doc}`Interactive theorem atlas <theorem-atlas>` | exact statements, complete scripts, dependencies and dependents |
+| follow a proof line by line | {doc}`Native PA proof explorer <proof-explorer>` | permanent tags, linked lemma references, informal outlines and source receipts |
+| see how theorems depend on one another | {doc}`Interactive dependency graph <dependency-graph>` | short and critical premise chains, route corridors and complete prerequisite cones |
 | understand soundness | {doc}`Language, notation, and trust <language-and-trust>` | {doc}`Self-contained proof sharing <proof-sharing>` |
 | study division and congruence | {doc}`Divisibility and subtraction-free congruence <divisibility-and-congruence>` | {doc}`GCD and balanced Bézout <gcd-and-bezout>` |
 | study primes and factorization | {doc}`Primes and unique factorization <primes-and-factorization>` | the FTA and `prime_unbounded` cards in the atlas |
+| follow the reciprocity campaign | {doc}`Quadratic reciprocity campaign <quadratic-reciprocity>` | parity, residue-decision, and finite-fold cards in the atlas |
 | train a proof-producing model | {doc}`Using and extending the library <using-the-library>` | the snapshot, corpus and vault links below |
 | audit provenance | {doc}`Sources and clean-room provenance <source-audit>` | catalog source mappings and the separate Lean companion |
 
@@ -146,8 +158,8 @@ One theorem name identifies the same object in four places:
 The current synchronized surfaces are:
 
 - [native theorem source](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py);
-- [247-theorem snapshot](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json);
-- [248-entry research catalog](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json);
+- [checked-theorem snapshot](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json);
+- [research catalog](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json);
 - [arithmetic vault map](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/moc/arithmetic-library-moc.md);
 - [deterministic training corpus](https://github.com/nasqret/vietnam2026/tree/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/corpus).
 

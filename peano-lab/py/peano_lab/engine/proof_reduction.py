@@ -13,6 +13,7 @@ the independent kernel checker against the intended formula.
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass, fields, replace
 
 from ..kernel.formulas import Formula
@@ -305,104 +306,133 @@ def _open_hypothesis(
 
 
 def _normalise_forall_cuts(proof: Proof) -> Proof:
-    """Contract forall and implication redexes exposed by theorem substitution."""
+    """Contract exposed redexes while preserving input proof-DAG sharing.
+
+    Normalization is a pure function of a proof object: it has no ambient
+    hypothesis or term-depth parameter.  Therefore two incoming references to
+    the same immutable proof object must have the same normalized result.  A
+    per-invocation identity memo retains that sharing instead of materializing
+    one copy per structural occurrence during interactive QED.
+
+    Each memo entry holds the original object strongly as well as its result.
+    That prevents a temporary object from being collected and its Python
+    ``id`` being reused for a different proof during the same normalization.
+    """
+
+    memo: dict[int, tuple[Proof, Proof]] = {}
+
+    def normalise(value: Proof) -> Proof:
+        identity = id(value)
+        cached = memo.get(identity)
+        if cached is not None and cached[0] is value:
+            return cached[1]
+        result = _normalise_forall_cuts_uncached(value, normalise)
+        memo[identity] = (value, result)
+        return result
+
+    return normalise(proof)
+
+
+def _normalise_forall_cuts_uncached(
+    proof: Proof,
+    normalise: Callable[[Proof], Proof],
+) -> Proof:
+    """Normalize one previously unseen proof object."""
 
     if type(proof) is Hyp:
         return proof
     if type(proof) is ImpIntro:
-        return ImpIntro(_normalise_forall_cuts(proof.body))
+        return ImpIntro(normalise(proof.body))
     if type(proof) is ImpElim:
-        function = _normalise_forall_cuts(proof.function)
-        argument = _normalise_forall_cuts(proof.argument)
+        function = normalise(proof.function)
+        argument = normalise(proof.argument)
         if type(function) is ImpIntro:
-            return _normalise_forall_cuts(_open_hypothesis(function.body, argument))
+            return normalise(_open_hypothesis(function.body, argument))
         return ImpElim(function, argument)
     if type(proof) is LocalHave:
         if not isinstance(proof.proposition, Formula):
             raise ProofReductionError("local `have` needs a PA proposition")
-        lemma = _normalise_forall_cuts(proof.proof)
-        body = _normalise_forall_cuts(proof.body)
-        return _normalise_forall_cuts(_open_hypothesis(body, lemma))
+        lemma = normalise(proof.proof)
+        body = normalise(proof.body)
+        return normalise(_open_hypothesis(body, lemma))
     if type(proof) is LocalSuffices:
         if not isinstance(proof.proposition, Formula):
             raise ProofReductionError("local `suffices` needs a PA proposition")
-        body = _normalise_forall_cuts(proof.body)
-        lemma = _normalise_forall_cuts(proof.proof)
-        return _normalise_forall_cuts(_open_hypothesis(body, lemma))
+        body = normalise(proof.body)
+        lemma = normalise(proof.proof)
+        return normalise(_open_hypothesis(body, lemma))
     if type(proof) is Cut:
         return Cut(
             proof.proposition,
             proof.conclusion,
-            _normalise_forall_cuts(proof.lemma),
-            _normalise_forall_cuts(proof.body),
+            normalise(proof.lemma),
+            normalise(proof.body),
         )
     if type(proof) is AndIntro:
         return AndIntro(
-            _normalise_forall_cuts(proof.left),
-            _normalise_forall_cuts(proof.right),
+            normalise(proof.left),
+            normalise(proof.right),
         )
     if type(proof) is AndElimL:
-        return AndElimL(_normalise_forall_cuts(proof.pair))
+        return AndElimL(normalise(proof.pair))
     if type(proof) is AndElimR:
-        return AndElimR(_normalise_forall_cuts(proof.pair))
+        return AndElimR(normalise(proof.pair))
     if type(proof) is OrIntroL:
-        return OrIntroL(_normalise_forall_cuts(proof.proof))
+        return OrIntroL(normalise(proof.proof))
     if type(proof) is OrIntroR:
-        return OrIntroR(_normalise_forall_cuts(proof.proof))
+        return OrIntroR(normalise(proof.proof))
     if type(proof) is OrElim:
         return OrElim(
-            _normalise_forall_cuts(proof.disjunction),
-            _normalise_forall_cuts(proof.left_case),
-            _normalise_forall_cuts(proof.right_case),
+            normalise(proof.disjunction),
+            normalise(proof.left_case),
+            normalise(proof.right_case),
         )
     if type(proof) is BotElim:
-        return BotElim(_normalise_forall_cuts(proof.absurdity))
+        return BotElim(normalise(proof.absurdity))
     if type(proof) is ForallIntro:
-        return ForallIntro(_normalise_forall_cuts(proof.body))
+        return ForallIntro(normalise(proof.body))
     if type(proof) is ForallElim:
-        universal = _normalise_forall_cuts(proof.universal)
+        universal = normalise(proof.universal)
         if type(universal) is ForallIntro:
-            return _normalise_forall_cuts(
-                _open_term_slot(universal.body, proof.term)
-            )
+            return normalise(_open_term_slot(universal.body, proof.term))
         return ForallElim(universal, proof.term)
     if type(proof) is ExistsIntro:
-        return ExistsIntro(proof.term, _normalise_forall_cuts(proof.proof))
+        return ExistsIntro(proof.term, normalise(proof.proof))
     if type(proof) is ExistsElim:
         return ExistsElim(
-            _normalise_forall_cuts(proof.existential),
-            _normalise_forall_cuts(proof.body),
+            normalise(proof.existential),
+            normalise(proof.body),
         )
     if type(proof) is EqSym:
-        return EqSym(_normalise_forall_cuts(proof.proof))
+        return EqSym(normalise(proof.proof))
     if type(proof) is EqTrans:
         return EqTrans(
-            _normalise_forall_cuts(proof.first),
-            _normalise_forall_cuts(proof.second),
+            normalise(proof.first),
+            normalise(proof.second),
         )
     if type(proof) is CongS:
-        return CongS(_normalise_forall_cuts(proof.proof))
+        return CongS(normalise(proof.proof))
     if type(proof) is CongAdd:
         return CongAdd(
-            _normalise_forall_cuts(proof.left),
-            _normalise_forall_cuts(proof.right),
+            normalise(proof.left),
+            normalise(proof.right),
         )
     if type(proof) is CongMul:
         return CongMul(
-            _normalise_forall_cuts(proof.left),
-            _normalise_forall_cuts(proof.right),
+            normalise(proof.left),
+            normalise(proof.right),
         )
     if type(proof) is EqSubst:
         return EqSubst(
             proof.motive,
-            _normalise_forall_cuts(proof.equation),
-            _normalise_forall_cuts(proof.body),
+            normalise(proof.equation),
+            normalise(proof.body),
         )
     if type(proof) is Ind:
         return Ind(
             proof.motive,
-            _normalise_forall_cuts(proof.base),
-            _normalise_forall_cuts(proof.step),
+            normalise(proof.base),
+            normalise(proof.step),
         )
     if type(proof) in (EqRefl, DNE, Axiom):
         return proof

@@ -38,13 +38,13 @@ The exact abstracts, session plans and reading lists live on the [landing page](
 | `vault/` | The **Obsidian vault** — the atomic, wiki-linked knowledge base behind the book. |
 | `artifacts/` | **Formal proofs** in four systems, plus `lean-fta/`: a pinned, sorry-free Lean proof of prime-factorization existence and uniqueness up to permutation. |
 | `lab-lambda/` | The **Lambda Lab**, repackaged to run **directly in the browser** (Pyodide + xterm.js). Deployed to `/lab-lambda`. |
-| `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, 247-entry checked arithmetic ladder, and reproducible proof-trace corpus. |
-| `research/` | The **research dossier** — including the 248-node foundational arithmetic catalog (247 checked and one representation-blocked), native and Lean FTA certificates, and source/license maps. |
+| `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, 384-entry checked arithmetic ladder, and reproducible proof-trace corpus. |
+| `research/` | The **research dossier** — including the 385-node arithmetic catalog (384 checked and one representation-blocked), native and Lean FTA certificates, the quadratic-reciprocity campaign, and source/license maps. |
 | `scripts/` | Book replay gate plus the deterministic Peano trace generation, export, and kernel-judged evaluation pipeline. |
 | `docs/` | Lecturer-facing docs: how to build, deploy, and run each piece. |
 | `MEMORY.md` · `JOURNAL.md` · `PLAN.md` + `PLAN/` | Project **memory**, dated **journal**, and the multi-level **plan**. |
 
-The 247-entry native ladder now reaches the Fundamental Theorem of Arithmetic
+The 384-entry native ladder reaches the Fundamental Theorem of Arithmetic
 without adding lists, division, remainder, gcd, or factorization as primitive
 symbols. Finite factor sequences and their prefix products are represented by
 expanded Gödel-β relations; code equality is extensional on the selected
@@ -60,27 +60,45 @@ one. The exact native FTA certificate has 73,767
 structural nodes, depth 99, 2,184 self-contained Cuts, and SHA-256
 `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
 It checks from the empty context using only PA1–PA6 and ordinary induction; it
-does not use double-negation elimination. The catalog now has 23 baseline
-checked entries, 224 M20 checked entries, no planned theorem, and one
+does not use double-negation elimination. The newest 137 certificates form a
+systematic quadratic-reciprocity campaign: parity and residue decision,
+finite folds, factorial and power algebra, small-modulus classifications,
+modular units, sign and positive-half-range bridges, β-prefix swap/reindex,
+constructive finite pigeonhole, replacement balance, and exact swap-last
+product invariance. Those 137 admitted certificates do not themselves claim
+the reciprocity law. A separate, registry-isolated campaign stack now has a
+kernel-checked dependency-curried body for the exact sign-free same-case,
+opposite-case, and combined quadratic-reciprocity surfaces; the optimized
+combined body is `3/65/113/35` (dependencies/commands/nodes/depth). It is not
+yet an admitted library theorem: its 557-spec recursive closure, mutation,
+capacity, browser and receipt gates remain assigned to WMI. The catalog now
+has 23 baseline checked entries, 361 post-baseline checked entries,
+no planned theorem, and one
 deliberately blocked conventional
 integer-coefficient Bézout interface. This is a local draft-PR checkpoint, not
-a deployment claim. The generated 247-theorem snapshot has 982,534 structural
-nodes, 28,892 Cuts, and 204 Cut-bearing certificates, with ordered root
-`eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`
-and source digest
-`295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
-The synchronized vault has 327 notes and 3,287 resolved links, including all
-247 generated lemma notes. The corpus retains 13,344 transitions in 1,692
+a deployment claim. The generated 384-theorem snapshot has 1,806,923
+structural occurrences, 52,626 Cuts, and 329 Cut-bearing certificates, with
+ordered root
+`73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
+The synchronized vault has 474 notes and 4,818 resolved links, including all
+384 generated lemma notes. The last released corpus retains 13,344 transitions in 1,692
 kernel-checked sessions under fingerprint
 `5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`;
 its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
 all 247 authored QEDs. Local browser build `2026-07-29j` packages application
 `a-c983d7c60450`; it is not staged or deployed. The strict Jupyter Book rebuild
-passes over all 38 sources with zero warnings; 194 deep links and 47 session
-blocks containing 287 commands verify. Its guided zero-to-FTA route and
-generated interactive atlas embed all 247 exact statements and authored proof
-recipes with searchable dependency navigation. The complete Peano Lab suite passes all
-1,101 tests on Python 3.10 in 1,050.08 seconds with no reported warnings. No
+completes over all 43 sources with 76 currently documented Sphinx warnings;
+its post-build integrity gate reports zero broken relative targets or
+fragments and byte-identical 1,123-file source and built Proof Explorer trees.
+The existing 194 deep links and 47 session blocks containing 287 commands
+verify. Its guided zero-to-FTA route and
+generated interactive atlas embed all 384 exact statements and authored proof
+recipes with searchable dependency navigation. The last recorded complete
+Peano Lab run passed all 1,101 tests on Python 3.10 in 1,050.08 seconds; the
+expanded QR checkpoint has focused local receipts and awaits its full WMI
+receipt. Full 136-gate job `187187` is queued against exact dirty snapshot
+`2bab0898a5bc628a0e1f06b5e6cdf56af86fe39c2fdbeaaa4147ac43d2c7faaa`;
+pending is not a proof result. No
 in-app browser was attached for this checkpoint, so direct Pyodide and rendered
 book UI smokes are explicitly unclaimed.
 

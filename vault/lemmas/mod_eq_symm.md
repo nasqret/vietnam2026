@@ -19,7 +19,10 @@ forall m a b. (exists u v. a + m * u = b + m * v) -> exists r s. b + m * r = a +
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[mod_eq_decidable_from_remainders]]
+- [[quadratic_residue_bounded_equiv]]
+- [[mod_eq_cancel_coprime]]
+- [[prime_bounded_nonzero_mod_inverse]]
 
 ## Verification record
 

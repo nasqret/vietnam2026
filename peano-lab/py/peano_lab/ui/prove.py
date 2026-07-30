@@ -75,7 +75,10 @@ from ..library.theorems import (
 from .panels import NL, collect_meta_ids, render_certificate, render_state
 
 
-MAX_INPUT = 4_000
+# Fully expanded native PA surfaces (notably relational finite folds) need a
+# little more source room than the original tutorial-sized 4,000 characters.
+# This is a syntax/transport ceiling, independent of certificate resources.
+MAX_INPUT = 8_192
 MAX_NUMERAL = 256
 MAX_SCRIPT_STEPS = 10_000
 MAX_SCRIPT_BYTES = 500_000

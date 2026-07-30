@@ -28,7 +28,10 @@ from peano_lab.ui import prove as web_prove
 
 
 NL = "\r\n"
-MAX_INPUT = 4_000
+# Expanded conservative formulas for finite folds can exceed the historical
+# 4,000-character line budget without stressing the parser or proof checker.
+# Keep this synchronized with ``peano_lab.ui.prove`` and the browser shell.
+MAX_INPUT = 8_192
 MAX_NUMERAL = web_prove.MAX_NUMERAL
 _oversized_numeral = web_prove.oversized_numeral
 _PYTHON_ERROR_LINE = re.compile(r"^[A-Za-z][A-Za-z0-9_]*Error:")

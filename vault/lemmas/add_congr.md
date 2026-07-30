@@ -19,7 +19,7 @@ forall a b c d. a = b -> c = d -> a + c = b + d
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[beta_sum_trace_functional]]
 
 ## Verification record
 

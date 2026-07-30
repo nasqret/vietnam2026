@@ -31,6 +31,14 @@ forall n m. S n + m = S (n + m)
 - [[division_remainder_succ]]
 - [[common_divisor_beta_moduli_divides_gap_times_c]]
 - [[prime_unbounded]]
+- [[odd_add_even]]
+- [[odd_add_odd]]
+- [[odd_mul_odd]]
+- [[quadratic_residue_search_up_to]]
+- [[bit_count_bounded]]
+- [[factorial_succ_decompose]]
+- [[predecessor_square_mod_one]]
+- [[beta_half_range_entry_bounds]]
 
 ## Verification record
 

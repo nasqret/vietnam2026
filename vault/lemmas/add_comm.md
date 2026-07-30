@@ -43,6 +43,8 @@ forall n m. n + m = m + n
 - [[beta_moduli_coprime_of_lt_bounded_common_multiple]]
 - [[prime_unbounded]]
 - [[mod5_square_residue_two]]
+- [[odd_add_odd]]
+- [[predecessor_square_mod_one]]
 
 ## Verification record
 
