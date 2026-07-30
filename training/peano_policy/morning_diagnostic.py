@@ -23,7 +23,7 @@ import re
 from typing import Any, Iterable
 
 from .config import ExperimentConfig, load_config
-from .data import ProofExample, example_from_record
+from .data import IGNORE_INDEX, ProofExample, example_from_record, tokenize_completion
 from .manifest import sha256_file, sha256_json, write_manifest
 
 
@@ -244,6 +244,235 @@ def _select_evaluation(
     }
 
 
+def _token_split_record(
+    *,
+    role: str,
+    examples: list[ProofExample],
+    tokenizer: Any,
+    max_length: int,
+) -> dict[str, object]:
+    rows: list[dict[str, object]] = []
+    for example in examples:
+        encoded = tokenize_completion(example, tokenizer, max_length=max_length)
+        sequence_tokens = len(encoded["input_ids"])
+        supervised_tokens = sum(
+            token != IGNORE_INDEX for token in encoded["labels"]
+        )
+        rows.append(
+            {
+                "example_id": example.example_id,
+                "sequence_tokens": sequence_tokens,
+                "supervised_tokens": supervised_tokens,
+            }
+        )
+    if not rows:
+        raise ValueError(f"{role} token audit has no rows")
+    lengths = [int(row["sequence_tokens"]) for row in rows]
+    maximum = max(lengths)
+    if maximum > max_length:
+        raise ValueError(f"{role} selection exceeds the model token budget")
+    longest = min(
+        row["example_id"]
+        for row in rows
+        if row["sequence_tokens"] == maximum
+    )
+    return {
+        "role": role,
+        "rows": len(rows),
+        "budget": max_length,
+        "minimum": min(lengths),
+        "maximum": maximum,
+        "mean": round(sum(lengths) / len(lengths), 6),
+        "longest_example_id": longest,
+        "length_records_sha256": sha256_json(rows),
+    }
+
+
+def _audit_selected_tokens(
+    config: ExperimentConfig,
+    *,
+    training: list[ProofExample],
+    evaluation: list[ProofExample],
+) -> dict[str, object]:
+    """Tokenize exactly the selected 512/16 rows with the pinned tokenizer."""
+
+    from transformers import AutoTokenizer
+
+    tokenizer = AutoTokenizer.from_pretrained(
+        config.model.model_id,
+        revision=config.model.revision,
+        use_fast=True,
+        trust_remote_code=config.model.trust_remote_code,
+    )
+    resolved = tokenizer.init_kwargs.get("_commit_hash") or config.model.revision
+    if resolved != config.model.revision or tokenizer.eos_token_id is None:
+        raise RuntimeError("diagnostic tokenizer differs from its pinned revision")
+    core = {
+        "format": "peano-policy-v3-morning-selected-token-audit",
+        "v": 1,
+        "tokenizer": {
+            "class": type(tokenizer).__name__,
+            "model_id": config.model.model_id,
+            "revision": resolved,
+            "vocab_size": len(tokenizer),
+        },
+        "splits": {
+            "train": _token_split_record(
+                role="train",
+                examples=training,
+                tokenizer=tokenizer,
+                max_length=config.data.max_length,
+            ),
+            "eval": _token_split_record(
+                role="eval",
+                examples=evaluation,
+                tokenizer=tokenizer,
+                max_length=config.data.max_length,
+            ),
+        },
+    }
+    return {**core, "token_audit_sha256": sha256_json(core)}
+
+
+def _bind_completed_manifest(
+    completed_manifest: Path,
+    *,
+    diagnostic: dict[str, object],
+) -> tuple[Path, str]:
+    """Put the real selection in loader-visible authority, then add a receipt.
+
+    The historical trainer cannot know about this emergency selection policy.
+    Its initial manifest is therefore incomplete until this function adds the
+    exact diagnostic record.  The sidecar points to the hash of that final
+    manifest; the manifest points back to the sidecar by its fixed basename and
+    remains self-sufficient if the convenience sidecar is moved or removed.
+    """
+
+    if not completed_manifest.is_file() or completed_manifest.is_symlink():
+        raise FileNotFoundError("completed training manifest is not one regular file")
+    manifest = _decode_record(
+        completed_manifest.read_text(encoding="utf-8"),
+        location=str(completed_manifest),
+    )
+    if manifest.get("prompt_version") != 3 or "diagnostic" in manifest:
+        raise ValueError("training manifest cannot admit the morning diagnostic")
+    manifest["diagnostic"] = diagnostic
+    write_manifest(completed_manifest, manifest)
+    manifest_sha256 = sha256_file(completed_manifest)
+
+    sidecar = completed_manifest.parent / "morning-diagnostic.json"
+    if sidecar.exists() or sidecar.is_symlink():
+        raise FileExistsError(f"refusing to replace diagnostic sidecar: {sidecar}")
+    write_manifest(
+        sidecar,
+        {
+            "format": FORMAT,
+            "v": VERSION,
+            "status": "completed-diagnostic-not-production",
+            "diagnostic_sha256": diagnostic["diagnostic_sha256"],
+            "training_manifest": {
+                "path": str(completed_manifest),
+                "sha256": manifest_sha256,
+            },
+        },
+    )
+    return sidecar, manifest_sha256
+
+
+def _audit_adapter_tensors(output_dir: Path) -> dict[str, object]:
+    """Require the saved LoRA population to remain FP32 after evaluation."""
+
+    from safetensors import safe_open
+
+    path = output_dir / "adapter" / "adapter_model.safetensors"
+    if not path.is_file() or path.is_symlink():
+        raise FileNotFoundError("diagnostic adapter safetensors is unavailable")
+    with safe_open(path, framework="pt", device="cpu") as tensors:
+        keys = sorted(tensors.keys())
+        dtypes: dict[str, int] = {}
+        for key in keys:
+            dtype = str(tensors.get_tensor(key).dtype)
+            dtypes[dtype] = dtypes.get(dtype, 0) + 1
+    if not keys or set(dtypes) != {"torch.float32"}:
+        raise RuntimeError(f"diagnostic LoRA tensors are not all FP32: {dtypes}")
+    return {
+        "path": str(path),
+        "sha256": sha256_file(path),
+        "tensors": len(keys),
+        "dtypes": dtypes,
+        "tensor_names_sha256": sha256_json(keys),
+    }
+
+
+def _reload_probe(
+    output_dir: Path,
+    *,
+    example: ProofExample,
+    seed: int,
+    training_manifest_sha256: str,
+    diagnostic_sha256: str,
+) -> Path:
+    """Reload safetensors and generate once with explicit diagnostic admission."""
+
+    import gc
+
+    import torch
+
+    from .contract import attested_training_environment
+    from .generate import generate_one_tactic, load_adapter
+    from .prompt import extract_one_tactic
+
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+    model, tokenizer, manifest = load_adapter(
+        output_dir,
+        seed=seed,
+        diagnostic_mode=True,
+    )
+    environment = attested_training_environment(manifest)
+    generated = generate_one_tactic(
+        model=model,
+        tokenizer=tokenizer,
+        prompt=example.prompt,
+        environment=environment,
+        max_new_tokens=64,
+        do_sample=False,
+        temperature=1.0,
+        top_p=1.0,
+    )
+    try:
+        parsed = extract_one_tactic(generated)
+        valid_single_tactic = True
+    except (TypeError, ValueError):
+        parsed = None
+        valid_single_tactic = False
+    report = output_dir / "morning-reload-probe.json"
+    if report.exists() or report.is_symlink():
+        raise FileExistsError(f"refusing to replace reload probe: {report}")
+    write_manifest(
+        report,
+        {
+            "format": "peano-policy-v3-morning-reload-probe",
+            "v": 1,
+            "status": "completed-diagnostic-not-production",
+            "loader": "explicit-historical-diagnostic-admission-v1",
+            "current_hardened_v3_loader_compatible": False,
+            "training_manifest_sha256": training_manifest_sha256,
+            "diagnostic_sha256": diagnostic_sha256,
+            "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
+            "example_id": example.example_id,
+            "expected_tactic": example.tactic,
+            "generated_text": generated,
+            "parsed_tactic": parsed,
+            "valid_single_tactic": valid_single_tactic,
+            "exact_match": parsed == example.tactic,
+            "decode": {"max_new_tokens": 64, "do_sample": False},
+        },
+    )
+    return report
+
+
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, required=True)
@@ -301,6 +530,11 @@ def run(args: argparse.Namespace) -> Path:
         count=expected_eval,
         seed=config.run.seed + 1,
     )
+    selected_token_audit = _audit_selected_tokens(
+        config,
+        training=training,
+        evaluation=evaluation,
+    )
 
     train_module = importlib.import_module("training.peano_policy.train")
     original_attest = train_module.attest_dataset
@@ -334,16 +568,28 @@ def run(args: argparse.Namespace) -> Path:
     train_module.attest_dataset = cached_attestation
     train_module.load_examples = selected_examples
     try:
-        completed_manifest = train_module.train(config, resume_override="never")
+        completed_manifest = train_module.train(
+            config,
+            resume_override="never",
+            checkpoint_strategy="no",
+            bf16_full_eval_override=False,
+        )
     finally:
         train_module.attest_dataset = original_attest
         train_module.load_examples = original_load
 
     output_dir = Path(config.run.output_dir)
-    sidecar = output_dir / "morning-diagnostic.json"
-    if sidecar.exists():
-        raise FileExistsError(f"refusing to replace diagnostic sidecar: {sidecar}")
-    record = {
+    # A legacy Trainer checkpoint contains a pickle-compatible optimizer state
+    # on this runtime.  This bounded lane must publish only the explicit final
+    # safetensors adapter and tokenizer.
+    checkpoints = sorted(output_dir.glob("checkpoint-*"))
+    if checkpoints:
+        raise RuntimeError(
+            "morning diagnostic unexpectedly published Trainer checkpoints: "
+            + ", ".join(path.name for path in checkpoints)
+        )
+    adapter_tensor_audit = _audit_adapter_tensors(output_dir)
+    diagnostic_core = {
         "format": FORMAT,
         "v": VERSION,
         "status": "completed-diagnostic-not-production",
@@ -351,6 +597,7 @@ def run(args: argparse.Namespace) -> Path:
             "Bounded morning check over an authenticated historical corpus; "
             "not the sealed full model-v3 curriculum or final adapter."
         ),
+        "current_hardened_v3_loader_compatible": False,
         "historical_source_commit": args.historical_source_commit,
         "historical_prepare_job_id": args.historical_prepare_job_id,
         "corpus": {
@@ -367,13 +614,38 @@ def run(args: argparse.Namespace) -> Path:
             "train": training_selection,
             "eval": evaluation_selection,
         },
-        "training_manifest": {
-            "path": str(completed_manifest),
-            "sha256": sha256_file(completed_manifest),
-        },
+        "selected_token_audit": selected_token_audit,
+        "checkpoint_policy": "disabled-no-optimizer-pickle",
+        "evaluation_dtype_policy": "bf16-full-eval-disabled-preserve-fp32-lora",
+        "adapter_tensor_audit": adapter_tensor_audit,
+        "sidecar": "morning-diagnostic.json",
+        "reload_probe": "morning-reload-probe.json",
         "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
     }
-    write_manifest(sidecar, record)
+    diagnostic = {
+        **diagnostic_core,
+        "diagnostic_sha256": sha256_json(diagnostic_core),
+    }
+    sidecar, final_manifest_sha256 = _bind_completed_manifest(
+        completed_manifest,
+        diagnostic=diagnostic,
+    )
+    reload_report = _reload_probe(
+        output_dir,
+        example=evaluation[0],
+        seed=config.run.seed,
+        training_manifest_sha256=final_manifest_sha256,
+        diagnostic_sha256=diagnostic["diagnostic_sha256"],
+    )
+    print(
+        json.dumps(
+            {
+                "final_training_manifest_sha256": final_manifest_sha256,
+                "reload_probe": str(reload_report),
+            },
+            sort_keys=True,
+        )
+    )
     return sidecar
 
 

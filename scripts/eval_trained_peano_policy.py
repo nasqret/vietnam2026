@@ -144,6 +144,11 @@ def _parser() -> argparse.ArgumentParser:
         help="return exit status 1 unless every selected goal has a checked proof",
     )
     parser.add_argument("--compact", action="store_true")
+    parser.add_argument(
+        "--diagnostic",
+        action="store_true",
+        help="explicitly admit an adapter marked diagnostic-not-production",
+    )
     return parser
 
 
@@ -929,7 +934,11 @@ def main(argv: list[str] | None = None) -> int:
         except ValueError as exc:
             parser.error(str(exc))
     evaluation_sources = _evaluation_sources()
-    model, tokenizer, manifest = load_adapter(adapter_dir, seed=args.seed)
+    model, tokenizer, manifest = load_adapter(
+        adapter_dir,
+        seed=args.seed,
+        diagnostic_mode=args.diagnostic,
+    )
     if manifest != manifest_snapshot:
         raise RuntimeError("adapter training manifest changed while the model loaded")
     provenance = adapter_provenance(adapter_dir, manifest)

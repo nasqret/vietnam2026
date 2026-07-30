@@ -37,11 +37,23 @@ readonly expected_manifest_sha256=ccb62c771d1f7dab1e90e98da42c6c8acee40f47b5527c
 readonly expected_train_sha256=626bcf4456efd98eae80828efceb9b89386e6ef83be463251fc1d07b3c2ff15e
 readonly expected_eval_sha256=784512bbcb15b3d46fc7333fd3f917fa440d5d1d263385b7d2c16e9a40f0dd27
 
-exec 8>"$main_root/.deployment.lock"
-flock -s 8
 exec 9>"$main_root/.qwen3-1.7b-v3-morning-diagnostic-20260731-r1.lock"
 if ! flock -n 9; then
   printf 'another r1 morning diagnostic owns the output lock\n' >&2
+  exit 1
+fi
+# Lock source first, then the mutable corpus/output root.  Fail immediately
+# rather than burn an A100 allocation behind another deployment or Peano job.
+# The exclusive main lock prevents any preparation/sync lane from changing the
+# unsealed corpus between its hash check and completed adapter publication.
+exec 7>"${SLURM_SUBMIT_DIR:?}/.deployment.lock"
+if ! flock -n -s 7; then
+  printf 'diagnostic source deployment is active; refusing GPU run\n' >&2
+  exit 1
+fi
+exec 8>"$main_root/.deployment.lock"
+if ! flock -n -x 8; then
+  printf 'main Peano deployment/job is active; refusing GPU run\n' >&2
   exit 1
 fi
 
@@ -102,13 +114,21 @@ require_hash "$expected_manifest_sha256" "$dataset_manifest"
 require_hash "$expected_train_sha256" "$train_split"
 require_hash "$expected_eval_sha256" "$eval_split"
 
-"$wmi_python" - "$token_audit" "$runtime_smoke" "$historical_prepare_job" <<'PY'
+"$wmi_python" - \
+  "$token_audit" \
+  "$runtime_smoke" \
+  "$historical_prepare_job" \
+  "$historical_source_commit" \
+  "$main_root" <<'PY'
 import json
 from pathlib import Path
 import sys
 
 audit = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
 smoke = json.loads(Path(sys.argv[2]).read_text(encoding="utf-8"))
+deployment = smoke.get("job", {}).get("deployment", {})
+source_sync = deployment.get("source_sync", {})
+submission = smoke.get("job", {}).get("submission", {})
 if (
     audit.get("format") != "peano-policy-token-audit"
     or audit.get("status") != "passed"
@@ -123,6 +143,14 @@ if (
     or smoke.get("job", {}).get("job_id") != sys.argv[3]
     or smoke.get("model", {}).get("model_commit")
     != "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+    or source_sync.get("git_commit") != sys.argv[4]
+    or source_sync.get("git_dirty") is not False
+    or source_sync.get("status") != "synced"
+    or submission.get("job_id") != sys.argv[3]
+    or submission.get("git_commit") != sys.argv[4]
+    or submission.get("git_dirty") != "false"
+    or submission.get("script") != "slurm/peano_wmi_prepare_v3_training.sbatch"
+    or submission.get("workdir") != sys.argv[5]
 ):
     raise SystemExit("historical A100 runtime smoke is not admitted")
 PY
@@ -139,29 +167,11 @@ PY
 
 test -f "$output_dir/training-manifest.json"
 test -f "$output_dir/morning-diagnostic.json"
+test -f "$output_dir/morning-reload-probe.json"
 test -f "$output_dir/adapter/adapter_model.safetensors"
 test -f "$output_dir/tokenizer/tokenizer.json"
-
-# Leave one generated held-out-goal report ready for inspection in the morning.
-# Unset scheduler identity because this is a local reload test inside the same
-# allocation, not a separately ledger-bound evaluation job.
-env \
-  -u SLURM_JOB_ID \
-  -u SLURM_JOB_NAME \
-  -u SLURM_JOB_ACCOUNT \
-  -u SLURM_JOB_PARTITION \
-  -u SLURM_CLUSTER_NAME \
-  -u SLURM_JOB_NODELIST \
-  -u SLURM_SUBMIT_DIR \
-  -u SLURM_JOB_CONSTRAINTS \
-  -u SLURM_JOB_GRES \
-  "$wmi_python" scripts/eval_trained_peano_policy.py \
-    --adapter "$output_dir" \
-    --goal closed_arithmetic_seven \
-    --k 1 \
-    --max-steps 4 \
-    --output "$output_dir/morning-held-out-eval.json" \
-    --compact
-
-test -s "$output_dir/morning-held-out-eval.json"
+if find "$output_dir" -mindepth 1 -maxdepth 1 -type d -name 'checkpoint-*' | grep -q .; then
+  printf 'morning diagnostic published a forbidden Trainer checkpoint\n' >&2
+  exit 1
+fi
 printf 'MORNING_DIAGNOSTIC_READY=%s\n' "$output_dir"

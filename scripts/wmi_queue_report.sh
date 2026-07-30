@@ -16,7 +16,7 @@ ssh -o BatchMode=yes -o ConnectTimeout=15 "$ssh_target" \
   "bash -l -s -- $job_ids" <<'REMOTE'
 set -euo pipefail
 job_ids="${1:-}"
-project_root=/work/bnaskrecki/peano-lab-training
+project_root=/work/bnaskrecki/peano-v3-morning-diagnostic-20260731-r1
 printf '%s\n' '== gpu partitions =='
 sinfo -o '%P|%a|%l|%D|%t|%G|%N' | grep -E '^(PARTITION|gpu)'
 printf '%s\n' '== peano queue =='
@@ -25,7 +25,7 @@ if [ -n "$job_ids" ]; then
   printf '%s\n' '== accounting =='
   sacct -j "$job_ids" --format=JobID,JobName,Partition,State,ExitCode,Elapsed,AllocTRES -P
 fi
-printf '%s\n' '== ledger =='
+printf '%s\n' '== morning diagnostic ledger =='
 if [ -f "$project_root/logs/submissions.tsv" ]; then
   sed -n '1,240p' "$project_root/logs/submissions.tsv"
 else

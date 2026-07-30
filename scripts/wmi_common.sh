@@ -30,18 +30,7 @@ peano_wmi_validate_request_id() {
 
 peano_wmi_validate_script_name() {
   case "$1" in
-    slurm/peano_wmi_a100_probe.sbatch|\
-    slurm/peano_wmi_prepare_training.sbatch|\
-    slurm/peano_wmi_train_qwen3_1_7b.sbatch|\
-    slurm/peano_wmi_eval_qwen3_1_7b.sbatch|\
-    slurm/peano_wmi_prepare_v2_training.sbatch|\
-    slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch|\
-    slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch|\
-    slurm/peano_wmi_prepare_v3_training.sbatch|\
-    slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch|\
-    slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch|\
-    slurm/peano_wmi_train_v3_morning_diagnostic.sbatch|\
-    slurm/peano_wmi_prove_theorem.sbatch)
+    slurm/peano_wmi_train_v3_morning_diagnostic.sbatch)
       return 0
       ;;
     *)

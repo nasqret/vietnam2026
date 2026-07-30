@@ -267,8 +267,22 @@ class _CompletionCollator:
         }
 
 
-def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Path:
+def train(
+    config: ExperimentConfig,
+    *,
+    resume_override: str | None = None,
+    checkpoint_strategy: str = "steps",
+    bf16_full_eval_override: bool | None = None,
+) -> Path:
     """Run one adapter experiment and return its provenance manifest path."""
+
+    if checkpoint_strategy not in {"steps", "no"}:
+        raise ValueError("checkpoint strategy must be 'steps' or 'no'")
+    if (
+        bf16_full_eval_override is not None
+        and type(bf16_full_eval_override) is not bool
+    ):
+        raise ValueError("bf16 full-evaluation override must be Boolean or None")
 
     output_dir = _repo_path(config.run.output_dir)
     train_path = _repo_path(config.data.train_path)
@@ -399,13 +413,17 @@ def train(config: ExperimentConfig, *, resume_override: str | None = None) -> Pa
         lr_scheduler_type="cosine",
         optim="adamw_torch_fused",
         bf16=True,
-        bf16_full_eval=bool(eval_examples),
+        bf16_full_eval=(
+            bool(eval_examples)
+            if bf16_full_eval_override is None
+            else bf16_full_eval_override
+        ),
         tf32=True,
         gradient_checkpointing=config.trainer.gradient_checkpointing,
         logging_steps=config.trainer.logging_steps,
         eval_strategy="steps" if eval_examples else "no",
         eval_steps=config.trainer.eval_steps,
-        save_strategy="steps",
+        save_strategy=checkpoint_strategy,
         save_steps=config.trainer.save_steps,
         save_total_limit=config.trainer.save_total_limit,
         save_safetensors=True,

@@ -44,7 +44,10 @@ warmup_ratio = 0.05
 logging_steps = 8
 # Evaluation runs once explicitly after training; avoid a duplicate full pass.
 eval_steps = 1000
-save_steps = 128
+# The final adapter is saved explicitly by the trainer.  Keep the legacy
+# Trainer checkpoint interval beyond this 128-step run so no optimizer pickle
+# is published or mistaken for resumable state on WMI's Torch 2.5.1 runtime.
+save_steps = 1000
 save_total_limit = 1
 gradient_checkpointing = true
 

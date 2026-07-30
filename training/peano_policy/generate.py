@@ -427,13 +427,48 @@ class PeanoPolicyCandidateAdapter:
         return tuple(complete)
 
 
-def load_adapter(adapter_dir: Path, *, seed: int) -> tuple[Any, Any, dict[str, Any]]:
+def _require_diagnostic_mode(
+    manifest: dict[str, Any],
+    *,
+    diagnostic_mode: bool,
+) -> dict[str, object] | None:
+    diagnostic = manifest.get("diagnostic")
+    if diagnostic is None:
+        if diagnostic_mode:
+            raise ValueError("diagnostic mode requires an explicitly diagnostic adapter")
+        return None
+    if type(diagnostic) is not dict:
+        raise ValueError("training manifest has malformed diagnostic authority")
+    if not diagnostic_mode:
+        raise ValueError(
+            "non-production adapter requires explicit diagnostic_mode=True"
+        )
+    core = dict(diagnostic)
+    claimed = core.pop("diagnostic_sha256", None)
+    if (
+        diagnostic.get("format") != "peano-policy-v3-morning-diagnostic"
+        or diagnostic.get("v") != 1
+        or diagnostic.get("status") != "completed-diagnostic-not-production"
+        or type(claimed) is not str
+        or sha256_json(core) != claimed
+    ):
+        raise ValueError("diagnostic adapter authority is incomplete or inconsistent")
+    return diagnostic
+
+
+def load_adapter(
+    adapter_dir: Path,
+    *,
+    seed: int,
+    diagnostic_mode: bool = False,
+) -> tuple[Any, Any, dict[str, Any]]:
     """Load base+adapter according to its immutable training manifest."""
 
     manifest_path = adapter_dir / "training-manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if manifest.get("v") != MANIFEST_VERSION:
         raise ValueError("unsupported training manifest version")
+    _require_diagnostic_mode(manifest, diagnostic_mode=diagnostic_mode)
     environment = attested_training_environment(manifest)
     if manifest.get("prompt_version") != environment.prompt_version:
         raise ValueError("adapter uses a different Peano prompt version")
@@ -523,7 +558,7 @@ def adapter_provenance(
     environment = attestation.get("environment")
     if not isinstance(environment, dict):
         environment = attestation.get("inference_environment")
-    return {
+    result = {
         "training_manifest_sha256": sha256_file(manifest_path),
         "prompt_version": manifest.get("prompt_version"),
         "prompt_contract_sha256": manifest.get("prompt_contract_sha256"),
@@ -544,6 +579,12 @@ def adapter_provenance(
             "library_snapshot_sha256"
         ),
     }
+    diagnostic = manifest.get("diagnostic")
+    if type(diagnostic) is dict:
+        result["diagnostic"] = json.loads(
+            json.dumps(diagnostic, ensure_ascii=False, sort_keys=True)
+        )
+    return result
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -569,6 +610,11 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--sample", action="store_true")
     parser.add_argument("--temperature", type=float, default=0.8)
     parser.add_argument("--top-p", type=float, default=0.95)
+    parser.add_argument(
+        "--diagnostic",
+        action="store_true",
+        help="explicitly admit a manifest marked completed-diagnostic-not-production",
+    )
     return parser
 
 
@@ -588,7 +634,11 @@ def _read_environment(path: Path) -> PromptEnvironment:
 
 def main() -> int:
     args = _parser().parse_args()
-    model, tokenizer, manifest = load_adapter(args.adapter, seed=args.seed)
+    model, tokenizer, manifest = load_adapter(
+        args.adapter,
+        seed=args.seed,
+        diagnostic_mode=args.diagnostic,
+    )
     environment = _read_environment(args.environment_file)
     if environment != attested_training_environment(manifest):
         raise ValueError(
