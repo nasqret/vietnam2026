@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 # Shared WMI compute-job environment. Source this only from Bash Slurm jobs.
 
+# This branch is an isolated, explicitly diagnostic replay of the historical
+# source that produced the authenticated model-v3 corpus.  Code and manifests
+# live in the immutable diagnostic deployment, while the reviewed Python
+# overlay and Hugging Face cache remain in the main WMI deployment.
 readonly PEANO_WMI_PROJECT_ROOT="/work/bnaskrecki/peano-lab-training"
+readonly PEANO_WMI_SOURCE_ROOT="/work/bnaskrecki/peano-v3-morning-diagnostic-20260731-r1"
 readonly PEANO_WMI_CONDA_MODULE="anaconda/2025.12-1"
 readonly PEANO_WMI_BASE_ENV="pytorch-gpu"
 readonly PEANO_WMI_CENTRAL_PREFIX="/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu"
@@ -9,11 +14,11 @@ readonly PEANO_WMI_REQUIREMENTS_LOCK="training/peano_policy/requirements-wmi-ove
 readonly PEANO_WMI_BASE_MANIFEST="training/peano_policy/wmi-base-v1.json"
 
 peano_wmi_activate_base() {
-  if [ "${SLURM_SUBMIT_DIR:-}" != "$PEANO_WMI_PROJECT_ROOT" ]; then
+  if [ "${SLURM_SUBMIT_DIR:-}" != "$PEANO_WMI_SOURCE_ROOT" ]; then
     printf 'unexpected WMI submit directory: %s\n' "${SLURM_SUBMIT_DIR:-}" >&2
     return 1
   fi
-  cd "$PEANO_WMI_PROJECT_ROOT"
+  cd "$PEANO_WMI_SOURCE_ROOT"
   unset PEANO_HELIOS_ML_MODULE
   unset HF_HUB_OFFLINE TRANSFORMERS_OFFLINE
   unset HUGGINGFACE_HUB_CACHE HF_HUB_CACHE TRANSFORMERS_CACHE
@@ -40,7 +45,7 @@ peano_wmi_activate_base() {
   export PEANO_JOB_ENV_SCRIPT=scripts/wmi_job_environment.sh
   export PYTHONHASHSEED=20260728
   export PYTHONNOUSERSITE=1
-  export PYTHONPATH="$PEANO_WMI_PROJECT_ROOT/peano-lab/py:$PEANO_WMI_PROJECT_ROOT"
+  export PYTHONPATH="$PEANO_WMI_SOURCE_ROOT/peano-lab/py:$PEANO_WMI_SOURCE_ROOT"
   export HF_HOME="$PEANO_WMI_PROJECT_ROOT/.cache/huggingface"
   export TOKENIZERS_PARALLELISM=false
 }

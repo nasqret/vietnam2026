@@ -1,0 +1,55 @@
+[run]
+name = "qwen3-1.7b-peano-v3-morning-diagnostic-20260731-r1"
+seed = 20260731
+output_dir = "/work/bnaskrecki/peano-lab-training/results/peano-policy/diagnostics/qwen3-1.7b-lora-v3-morning-diagnostic-20260731-r1"
+# The diagnostic selector admits the first and last catalog proof states per
+# theorem (one state for each of the two one-step proofs), then fills the 512
+# row budget with deterministic synthetic states.  This is deliberately not
+# the full model-v3 curriculum and must never be presented as production.
+max_train_samples = 512
+max_eval_samples = 16
+resume = "never"
+
+[model]
+model_id = "Qwen/Qwen3-1.7B-Base"
+revision = "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+dtype = "bfloat16"
+attn_implementation = "sdpa"
+trust_remote_code = false
+
+[data]
+train_path = "/work/bnaskrecki/peano-lab-training/data/peano-policy-v3/train.jsonl"
+eval_path = "/work/bnaskrecki/peano-lab-training/data/peano-policy-v3/val.jsonl"
+max_length = 32768
+
+[lora]
+rank = 32
+alpha = 64
+dropout = 0.05
+target_modules = [
+  "q_proj", "k_proj", "v_proj", "o_proj",
+  "gate_proj", "up_proj", "down_proj",
+]
+
+[trainer]
+epochs = 1.0
+# 128 updates x four microbatches exposes every one of the 512 selected rows.
+max_steps = 128
+per_device_train_batch_size = 1
+per_device_eval_batch_size = 1
+gradient_accumulation_steps = 4
+learning_rate = 0.0001
+weight_decay = 0.01
+warmup_ratio = 0.05
+logging_steps = 8
+# Evaluation runs once explicitly after training; avoid a duplicate full pass.
+eval_steps = 1000
+save_steps = 128
+save_total_limit = 1
+gradient_checkpointing = true
+
+[generation]
+max_new_tokens = 128
+do_sample = false
+temperature = 1.0
+top_p = 1.0

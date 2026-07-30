@@ -2,7 +2,8 @@
 # Fixed constants and conservative validators for WMI control tools.
 
 readonly PEANO_WMI_DEFAULT_SSH_TARGET="wmicluster"
-readonly PEANO_WMI_PROJECT_ROOT="/work/bnaskrecki/peano-lab-training"
+readonly PEANO_WMI_PRIMARY_ROOT="/work/bnaskrecki/peano-lab-training"
+readonly PEANO_WMI_PROJECT_ROOT="/work/bnaskrecki/peano-v3-morning-diagnostic-20260731-r1"
 readonly PEANO_WMI_CONFIRM_TOKEN="PEANO-LAB-WMI-TRAINING"
 
 peano_wmi_ssh_target() {
@@ -39,6 +40,7 @@ peano_wmi_validate_script_name() {
     slurm/peano_wmi_prepare_v3_training.sbatch|\
     slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch|\
     slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch|\
+    slurm/peano_wmi_train_v3_morning_diagnostic.sbatch|\
     slurm/peano_wmi_prove_theorem.sbatch)
       return 0
       ;;

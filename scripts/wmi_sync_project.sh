@@ -46,7 +46,7 @@ archive="${4:?archive required}"
 [[ "$tree" =~ ^[0-9a-f]{40}$ ]]
 [[ "$synced_at" =~ ^[0-9TZ:-]+$ ]]
 
-project_root=/work/bnaskrecki/peano-lab-training
+project_root=/work/bnaskrecki/peano-v3-morning-diagnostic-20260731-r1
 expected_archive="$project_root/.incoming-source-$commit-"
 if [[ "$archive" != "$expected_archive"[0-9]*.tar ]] || [ ! -f "$archive" ] || \
    [ -L "$archive" ]; then
@@ -72,7 +72,7 @@ active="$(
      $2 == "peano-wmi-qwen17-eval" || $2 == "peano-wmi-v2-prepare" || \
      $2 == "peano-wmi-qwen17-v2" || $2 == "peano-wmi-qwen17-v2-eval" || \
      $2 == "peano-wmi-v3-prepare" || $2 == "peano-wmi-qwen17-v3" || \
-     $2 == "peano-wmi-qwen17-v3-eval" || \
+     $2 == "peano-wmi-qwen17-v3-eval" || $2 == "peano-v3-morning" || \
      $2 == "peano-wmi-prove" || $2 == "peano-wmi-probe"'
 )"
 if [ -n "$active" ]; then
