@@ -76,9 +76,9 @@ around the focused goal.
 Per-theorem recursive replay works well for the checked arithmetic library,
 but a dense dependency DAG can revisit the same ancestor along many paths.
 The quadratic-reciprocity graph makes the distinction exact: 557 unique
-specifications and 1,792 direct edges expand to 191,672 theorem occurrences.
+specifications and 1,791 direct edges expand to 191,669 theorem occurrences.
 The forced Cuts, one node per occurrence, and recorded leading introductions
-alone give a 731,488-node lower bound, beyond the 500,000-node policy. See the
+alone give a 731,482-node lower bound, beyond the 500,000-node policy. See the
 [hotspot audit](../../research/arithmetic-library/quadratic-reciprocity-closure-hotspots.md).
 
 The preferred unchanged-kernel compiler groups each dependency-depth layer

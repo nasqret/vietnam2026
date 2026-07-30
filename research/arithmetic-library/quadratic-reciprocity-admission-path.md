@@ -470,11 +470,10 @@ and are not mounted in Pyodide.
 
 Updating `PY_FILES` is packaging preparation, not admission or release
 publication. The QR campaign's `peano-lab/APP_MANIFEST.sha256` is synchronized
-for the source checkpoint at digest prefix `ca8e8c5bca40`. The corresponding
-content-addressed application release ID remains deliberately unpromoted until
-theorem admission and all WMI/browser gates pass. Until then,
-`APP_ROOT`/`PEANOAPPID` continue to describe the preceding deployed assembly;
-manifest synchronization alone does not publish the candidate library.
+for the source checkpoint at digest prefix `279f7fd6f2b9`. The corresponding
+repository-local `APP_ROOT` and `PEANOAPPID` are synchronized at
+`a-279f7fd6f2b9`, with human build label `2026-07-31a`. This is packaging
+preparation only: no external deployment or theorem admission is claimed.
 
 The browser gate must use the repository's exact self-hosted Pyodide build,
 not CPython as a proxy.  In a cold worker, verify:

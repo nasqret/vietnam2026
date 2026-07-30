@@ -1,13 +1,15 @@
 # WMI quadratic-reciprocity replay experiment
 
-Status on **2026-07-30**: full 136-gate job `187187` is queued on `cpu_idle`
+Status on **2026-07-31**: full 136-gate job `187187` ran on `cpu_idle`
 against the exact approved dirty snapshot
 `2bab0898a5bc628a0e1f06b5e6cdf56af86fe39c2fdbeaaa4147ac43d2c7faaa`.
 The 338-member archive is 5,374,464 bytes, records base commit
 `a549a537cfe3d3d7e8ef292a49250c4308d12c5d` with `local_dirty=true`, and
 passed source/extracted transport checks, remote digest verification, and
-scheduler validation before submission. The latest scheduler state is
-`PENDING (Priority)`, so no WMI proof result or admission is claimed. Earlier
+scheduler validation before submission. It failed after 39 seconds with exit
+code `1:0`: four gates passed, gate 5 exposed an unused `succ_ne_zero`
+dependency, and 131 gates were unrun. This is a fail-closed hygiene result,
+not a mathematical QR rejection or admission receipt. Earlier
 focused and held submissions remain documented below; thirteen stale jobs
 were cancelled without consuming CPU.
 
@@ -55,7 +57,12 @@ receipt and admit no theorem.
 The current full checkpoint is exact snapshot
 `2bab0898a5bc628a0e1f06b5e6cdf56af86fe39c2fdbeaaa4147ac43d2c7faaa`.
 Job `187187` requests one CPU, 32 GiB and four hours for all 136 selected
-non-diagnostic gates. It was pending for priority at the latest poll.
+non-diagnostic gates. It failed at gate 5/136 as described above.
+
+The corrected upload candidate is locally frozen, but not uploaded, at
+SHA-256 `989011c09d82dbbb239df43334e88553e1fb3e0d2f1033f93c5b8b1791851757`.
+Two independent archive builds are byte-identical: 338 members and 5,374,464
+bytes. A new WMI run requires separate content-specific authorization.
 
 | Job | Snapshot prefix | Suite / provenance status |
 |---:|---|---|
@@ -92,7 +99,7 @@ non-diagnostic gates. It was pending for priority at the latest poll.
 | `173017` | `8c9c4ae067b0dc20…` | `wilson-pair-order`; pending, zero CPU |
 | `173021` | `fd129d34bf4a31a1…` | `gauss-magnitude-permutation`; pending, zero CPU |
 | `173022` | `fd129d34bf4a31a1…` | `wilson-pair-order-induction`; pending, zero CPU |
-| `187187` | `2bab0898a5bc628a…` | full 136-gate layered campaign; scheduler-validated and pending, no result |
+| `187187` | `2bab0898a5bc628a…` | failed after 39 seconds at gate 5/136 on an unused-dependency mutation; four passed, 131 unrun, no QR result |
 
 Jobs `172707`, `172716`, `172722`, and `172737` are user-held, not cancelled,
 to prioritize focused prerequisite jobs. This action is reversible; release
@@ -159,7 +166,7 @@ certificate/RSS/capacity profiling, adversarial full-certificate mutations,
 full-suite replay, and Jupyter Book builds run only inside the WMI allocation.
 Laptop checks may compile the exact graph with deliberately trivial dummy
 bodies: one scaffold preserves all expanded targets and must be kernel
-rejected, while one preserves all 1,792 dependency edges using 557 distinct
+rejected, while one preserves all 1,791 dependency edges using 557 distinct
 shallow reflexive marker formulas and must be accepted. This checks every
 real projection direction and local ID without replaying QR mathematics. The
 separation avoids competing multi-hour processes on the workstation and
@@ -252,8 +259,8 @@ unknown or accidentally empty named suite fails closed.
 | `gauss-sign-factor-recode` | three constructive bit-to-sign-factor recoding/product-power contracts, exact graph, two cold profiled closures, no-DNE/capacity metadata, and false-contract/direct-Cut mutations | 5 |
 | `finite-omission` | eight constructive finite cover/choice/omission contracts, hygienic helper checks, exact source graph, two cold profiled replays, Cut/no-DNE/capacity metadata, and false-contract/every-edge mutations | 5 |
 | `quadratic-reciprocity-final` | four exact endpoint/body gates plus the source-manifest and dependency-graph static audits; no recursive closure or known-failing recursive capacity gate | 6 |
-| `quadratic-reciprocity-layered` | exact 557-node/45-layer adapter statics; expanded-target rejecting and 1,792-edge accepting scaffolds; exactly-once modular-body construction; two cold layered compiles and unchanged-kernel checks; package/layer/body/target mutations; and unchanged 500k/100k/256 capacity gate | 9 |
-| `quadratic-reciprocity-recursive-diagnostic` | two cold recursive closures, direct-Cut mutations, and the deliberately fail-closed recursive capacity comparison; excluded from `full` because the recursive certificate has a proven 731,488-node lower bound | 3 |
+| `quadratic-reciprocity-layered` | exact 557-node/45-layer adapter statics; expanded-target rejecting and 1,791-edge accepting scaffolds; exactly-once modular-body construction; two cold layered compiles and unchanged-kernel checks; package/layer/body/target mutations; and unchanged 500k/100k/256 capacity gate | 9 |
+| `quadratic-reciprocity-recursive-diagnostic` | two cold recursive closures, direct-Cut mutations, and the deliberately fail-closed recursive capacity comparison; excluded from `full` because the recursive certificate has a proven 731,482-node lower bound | 3 |
 | `full` | every current Fermat candidate; Wilson square-one, inverse, orbit, pair-product, PairOrder, bounded induction and iteration candidates; Euler scaled inverse; Gauss signed-half/prefix/magnitude/sign-recode candidates; finite omission; exact QR endpoints/static graph; the layered unchanged-kernel admission experiment; and integration/capacity/ladder gates across 30 test sources | 136 |
 
 The full suite consists of 5 Euler scaled-inverse gates, 5 finite-omission
@@ -276,7 +283,7 @@ outside this count.
 The `quadratic-reciprocity-final` selector is now a literal six-function
 allowlist: the exact public surfaces and bodies plus the two static
 source/graph audits. The old recursive construction has a rigorous structural
-lower bound of 731,488 nodes against the unchanged 500,000-node policy. Its
+lower bound of 731,482 nodes against the unchanged 500,000-node policy. Its
 three heavy gates therefore moved to
 `quadratic-reciprocity-recursive-diagnostic`; that suite remains useful for
 comparison but its capacity failure is not an acceptance failure and it is
@@ -306,12 +313,12 @@ the sole proof authority.
 Two laptop-safe full-topology receipts pin the integration before any real
 body replay. With the 557 exact expanded targets and deliberately invalid
 `EqRefl(0)` bodies, compilation has 45 layers, 144,197 package-formula
-occurrences at depth 68, a 13,723-node/depth-56 certificate, and
+occurrences at depth 68, a 13,715-node/depth-56 certificate, and
 157,579 annotation occurrences at envelope depth 92; the unchanged kernel
 rejects it. With 557 distinct shallow reflexive marker targets and
-type-pinning bodies that consume every one of the 1,792 declared dependency
+type-pinning bodies that consume every one of the 1,791 declared dependency
 hypotheses, compilation has 19,297 package-formula occurrences at depth 18
-and a 19,099-node/depth-74 certificate with 142,396 annotations at envelope
+and a 19,088-node/depth-74 certificate with 142,346 annotations at envelope
 depth 84; the unchanged kernel accepts it.
 Swapping the two dependency IDs of `beta_range_empty` preserves an acyclic
 compilable graph but makes that second certificate kernel-invalid. Thus the
@@ -416,7 +423,7 @@ The ten-spec
 [Euler scaled-inverse ladder](euler-scaled-inverse.md) constructs the bounded
 scaled inverse, proves functionality, symmetry and involution, and identifies
 fixed points with square roots. Its body-only nodes/depth, in source order,
-are `36/17`, `30/19`, `59/26`, `126/34`, `74/24`, `31/12`, `28/19`,
+are `36/17`, `30/19`, `58/25`, `126/34`, `74/24`, `31/12`, `28/19`,
 `38/15`, `17/15`, and `24/15`.
 
 The nine-spec Wilson [PairOrder extension](pair-order-encoding.md) appends two
@@ -621,9 +628,10 @@ A valid success receipt requires all of the following, not merely a Slurm
 4. the report file's recomputed SHA-256 matches the digest printed in stdout;
 5. stdout and stderr show no unaccounted alternate runner or source path.
 
-The twenty noncancelled jobs listed above remain unresolved—sixteen queued/
-pending and four user-held—so none of these WMI success conditions has yet
-been established for their snapshots. All thirteen cancelled rows are
+Of the twenty noncancelled jobs listed above, `187187` is resolved as a
+fail-closed hygiene failure; the other nineteen remain unresolved—fifteen
+queued/pending and four user-held. None has established the full WMI success
+conditions for its snapshot. All thirteen cancelled rows are
 provenance only. Current Fermat jobs `172988`--`172990` have no pass receipt,
 pinned-metric admission replay, or theorem-admission consequence. Current
 Wilson discovery jobs are `172966` and `172975`--`172978`; signed-half and

@@ -16,7 +16,7 @@ quadratic-reciprocity dependency closure. It combines three ideas:
 
 The explorer is generated, not hand-copied. Its current scope is exactly the
 557-node dependency closure of `quadratic_reciprocity_combined`: 240 public
-ancestors and 317 unadmitted candidate ancestors, 1,792 direct edges, 45
+ancestors and 317 unadmitted candidate ancestors, 1,791 direct edges, 45
 dependency layers, and 27,491 authored PA tactic commands.
 
 ## Stable identity
@@ -80,7 +80,7 @@ metadata. They are roots only relative to this theorem corpus, not additional
 PA axioms; the separate foundations prelude owns the language, PA1--PA6,
 induction, and proof rules.
 
-The graph records 557 nodes, 1,792 direct edges, and 45 layers. Path arrays
+The graph records 557 nodes, 1,791 direct edges, and 45 layers. Path arrays
 include both endpoints and use deterministic admission-order/lexicographic
 tie-breaking:
 
@@ -92,7 +92,7 @@ tie-breaking:
 
 These are individual premise chains, not certificates and not substitutes for
 the full ancestor set. In particular, PA00FW has a four-node shortest path, a
-45-node critical path, and 101,296 root-to-target paths. Its readable critical
+45-node critical path, and 101,293 root-to-target paths. Its readable critical
 spine passes through arithmetic/Bézout and Gauss cancellation, β/CRT sequence
 machinery, finite injectivity and omission, prime pair-order, Wilson, Euler's
 criterion, Gauss's lemma, and PA00FG. That spine is representative; the graph's
@@ -110,7 +110,7 @@ or `simp`. PA1--PA6 link to the foundations page. The first tactic token links
 to the tactic reference. Local hypotheses remain plain local names.
 
 Across the present closure, this identifies 8,557 explicit dependency-token
-occurrences. Eight of the 1,792 declared edges are packaging prerequisites
+occurrences. Seven of the 1,791 declared edges are packaging prerequisites
 that do not occur literally in the later authored body. They remain visible
 and clickable through the theorem's explicit dependency-import rows and
 dependency panel; they must not be fabricated as tactic-line references.
@@ -209,7 +209,7 @@ evidence, never reconstruct it heuristically.
 
 Before publication, the explorer must prove all of the following mechanically:
 
-1. exact `557 / 1,792 / 45 / 27,491` topology and command counts;
+1. exact `557 / 1,791 / 45 / 27,491` topology and command counts;
 2. exact `240 public / 317 candidate` status partition;
 3. unique persistent tags and complete live-name coverage;
 4. deterministic graph, corpus, manifest, tag pages, and aliases;

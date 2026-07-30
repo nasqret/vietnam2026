@@ -719,7 +719,7 @@
   construct and uniquely characterize the bounded relation
   `x*y == a (mod p)`, prove symmetry and involution, identify fixed points
   with square roots, and make the relation fixed-point-free under `~QRes`.
-  Their dependency-curried body nodes/depth are `36/17`, `30/19`, `59/26`,
+  Their dependency-curried body nodes/depth are `36/17`, `30/19`, `58/25`,
   `126/34`, `74/24`, `31/12`, `28/19`, `38/15`, `17/15`, and `24/15`.
   A three-candidate follow-on now constructs the complete beta-coded map on
   sources `1,...,p-1`: extension, bounded existence, and full existence pass
@@ -945,7 +945,7 @@
 - **QR closure pressure forecast (2026-07-30):** static recursive dependency
   discovery for the optimized combined endpoint reaches 557 unique
   public/candidate specifications at depth 45. The naive theorem-certificate
-  recurrence has 191,672 occurrences before proof-body nodes are counted,
+  recurrence has 191,669 occurrences before proof-body nodes are counted,
   almost exactly half the first wrapper's 382,882. This predicts that
   the 500,000 structural-occurrence boundary may fail even when the 100,000
   distinct-object boundary succeeds. Do not convert that forecast into a
@@ -954,11 +954,11 @@
   self-contained closed-proof DAG rather than an arbitrarily larger proof
   tree.
 - **Recursive QR tree is statically over budget (2026-07-30):** the optimized
-  recurrence forces 191,671 recursive Cuts, 348,145 repeated leading
-  dependency introductions, and at least 191,672 terminal body nodes: a
-  rigorous lower bound of 731,488 proof nodes before substantive tactics.
+  recurrence forces 191,668 recursive Cuts, 348,145 repeated leading
+  dependency introductions, and at least 191,669 terminal body nodes: a
+  rigorous lower bound of 731,482 proof nodes before substantive tactics.
   The selected response is not a guessed larger limit. Compile the 557
-  specifications and 1,792 edges into 45 balanced-conjunction layers (maximum
+  specifications and 1,791 edges into 45 balanced-conjunction layers (maximum
   width 63), Cut each layer package once, and project dependencies from prior
   packages. This uses every body once and produces an ordinary certificate
   for the unchanged kernel. A new proof-reference node is fallback-only.
@@ -1060,9 +1060,9 @@
   pinned and the focused audit passes `4/4` in 0.93 seconds. This is the final
   logical layer only: it assumes the still-unproved count-sum congruence.
 - **Recursive QR closure is impossible under the current policy
-  (2026-07-30):** the exact 557-spec/1,792-edge graph unfolds to 191,672
+  (2026-07-30):** the exact 557-spec/1,791-edge graph unfolds to 191,669
   theorem occurrences. Its Cuts, repeated leading introductions and one
-  terminal node per occurrence already force at least 731,488 proof nodes,
+  terminal node per occurrence already force at least 731,482 proof nodes,
   before substantive proof constructors. Do not raise the 500,000 limit to
   hide this compilation duplication.
 - **Layered Cut closure is the preferred unchanged-kernel route
@@ -1073,10 +1073,10 @@
   authority. A fallback closed-proof DAG is not yet justified.
 - **Layered QR static evidence (2026-07-30):** 25 focused architecture tests
   pass. The real formulas plus deliberately false bodies compile to a
-  13,723-node/depth-56 scaffold with 144,197 package-formula occurrences and
+  13,715-node/depth-56 scaffold with 144,197 package-formula occurrences and
   depth 68, and the unchanged kernel rejects it. A distinct-marker surrogate
-  consumes every one of the real 1,792 ordered dependencies and is accepted
-  at 19,099 nodes/depth 74; it is compiler evidence, not a QR proof.
+  consumes every one of the real 1,791 ordered dependencies and is accepted
+  at 19,088 nodes/depth 74; it is compiler evidence, not a QR proof.
 - **Layered WMI transport boundary (2026-07-30):** the actual acceptance suite
   has nine gates; exact body/statics have six; the known-over-budget recursive
   experiment has three diagnostic gates and is excluded from the passing
@@ -1107,9 +1107,9 @@
   five-million annotation ceiling and envelope depth 256. Only the unchanged
   kernel grants theorem authority.
 - **Hardened layered static receipts (2026-07-30):** the false-body actual-QR
-  scaffold is `13,723/56`, annotations/envelope `157,579/92`, package
+  scaffold is `13,715/56`, annotations/envelope `157,579/92`, package
   `144,197/68`, and kernel-rejected. The exact dependency-consuming surrogate
-  is `19,099/74`, annotations/envelope `142,396/84`, package `19,297/18`, and
+  is `19,088/74`, annotations/envelope `142,346/84`, package `19,297/18`, and
   kernel-accepted; swapping the two `beta_range_empty` dependencies is
   rejected. Neither receipt proves QR.
 - **Public/browser preparation is non-admitting (2026-07-30):** bare `pa lib`
@@ -1117,18 +1117,24 @@
   `use` replay on demand. The deterministic worker inventory covers 147
   Python files. The future test migration has 125 absence assertions in 79
   files and must use the exact 317/29 partition. The checkpoint manifest is
-  synchronized at `a-ca8e8c5bca40`; promotion of that digest into the public
-  release ID, all public entries, and the Pyodide replay remain pending.
-- **Latest WMI boundary (2026-07-30):** payload-specific approval was granted
+  synchronized with repository-local release ID `a-279f7fd6f2b9` and build
+  label `2026-07-31a`; external deployment, candidate admission, and the cold
+  Pyodide replay remain pending.
+- **Latest WMI boundary (2026-07-31):** payload-specific approval was granted
   for SHA-256
   `2bab0898a5bc628a0e1f06b5e6cdf56af86fe39c2fdbeaaa4147ac43d2c7faaa`.
   The wrapper uploaded and remotely verified the exact 338-member,
   5,374,464-byte dirty snapshot based on commit
   `a549a537cfe3d3d7e8ef292a49250c4308d12c5d`, passed scheduler validation,
   and submitted full 136-gate job `187187` on `cpu_idle` with one CPU,
-  32 GiB and four hours. Its latest observed state is `PENDING (Priority)`.
-  This is transport and scheduler provenance only: no WMI test result, proof
-  receipt, or theorem admission exists yet.
+  32 GiB and four hours. It failed after 39 seconds with exit code `1:0`:
+  gates 1--4 passed, gate 5 exposed the unused `succ_ne_zero` dependency in
+  `prime_scaled_inverse_target_nonzero`, and 131 gates were unrun. The
+  redundant edge is now removed and focused local validation passes, but no
+  complete WMI proof receipt or theorem admission exists yet. The corrected
+  338-member, 5,374,464-byte archive was built twice identically at SHA-256
+  `989011c09d82dbbb239df43334e88553e1fb3e0d2f1033f93c5b8b1791851757`;
+  it remains local pending new content-specific authorization.
 - **Historical QR WMI preflight (2026-07-30):** the earlier cleaned candidate
   upload excluded
   `__pycache__`, bytecode, and `.DS_Store`; two builds agree at SHA-256
@@ -1147,8 +1153,8 @@
   infer admission from a page, tag, source hash, body receipt, or prose.
 - **Proof Explorer link policy (2026-07-30):** link only declared direct
   dependencies in theorem-accepting positions of the authored tactic
-  language. The current corpus has 8,557 such occurrences and eight
-  dependency edges with no literal body occurrence; those eight stay in the
+  language. The current corpus has 8,557 such occurrences and seven
+  dependency edges with no literal body occurrence; those seven stay in the
   import/dependency panels. PA1–PA6 and tactic names link to foundations.
   Dynamic local-hypothesis lineage and implicit `simp` firing require a real
   replay trace and must not be reconstructed heuristically.
@@ -1166,18 +1172,18 @@
   `13f279...` archive is historical and cannot be uploaded under its former
   content-specific approval.
 - **Dependency graph v2 (2026-07-30):** the generated QR closure graph has 557
-  theorem nodes, 1,792 direct edges, 45 layers, and 48 theorem roots. Those
+  theorem nodes, 1,791 direct edges, 45 layers, and 48 theorem roots. Those
   roots mean “no theorem prerequisite in this corpus”; they are not PA
   axioms, whose language and rules remain in the separate foundations pages.
   For `PA00FW`, graph v2 records a deterministic short chain of 4 vertices, a
-  critical depth witness of 45 vertices, and 101,296 distinct theorem-root-to-
+  critical depth witness of 45 vertices, and 101,293 distinct theorem-root-to-
   target paths. The Book entry is
   `book/arithmetic-library/dependency-graph.md`; the static explorer endpoint
   is `book/_static/pa-proof-explorer/graph.html?target=PA00FW`, with the exact
   theorem at `tag/PA00FW.html`. Navigation does not change status:
   `PA00FW` remains `pending_layered_closure`. The final explorer owns and
   hashes all 1,123 files (aggregate
-  `7f7d4ec08902ce3d3991aa6c4dc38cd32715a2145fc3486b6314b6dd063e2477`);
+  `6c47124a4a86c764d0e9af274cba9dfbc6df8a89c7327fe4744f49f097b93dd2`);
   the file-protocol payload is safely embedded only in `graph.html`, so it is
   not injected into ordinary Book chapters. A full local Book build and
   source/built-tree integrity check pass with zero broken relative targets,

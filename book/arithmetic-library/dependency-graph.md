@@ -16,7 +16,7 @@ the kernel proof rules are documented separately in the
 
 <div class="pa-dashboard-metrics" aria-label="Quadratic-reciprocity dependency graph metrics">
   <div><strong>557</strong><span>theorem nodes</span></div>
-  <div><strong>1,792</strong><span>direct dependency edges</span></div>
+  <div><strong>1,791</strong><span>direct dependency edges</span></div>
   <div><strong>45</strong><span>dependency layers</span></div>
   <div><strong>48</strong><span>theorem roots</span></div>
 </div>
@@ -88,7 +88,7 @@ The canonical short route is
 `quadratic_reciprocity_combined` (**PA00FW**). It is short because these are
 direct edges, not because the intermediate theorems have small proofs.
 
-For PA00FW there are **101,296 distinct theorem-root-to-target premise
+For PA00FW there are **101,293 distinct theorem-root-to-target premise
 chains**. It is the unique terminal of this closure and all other 556 nodes
 are its ancestors. One representative mathematical spine is
 

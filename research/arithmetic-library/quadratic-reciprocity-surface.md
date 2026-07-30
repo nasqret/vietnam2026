@@ -325,11 +325,11 @@ above:
 The downstream data/parity/conditional/final integration passes `20/20` in
 27.25 seconds. The combined body constructs the two-prime data package once
 and calls both conditional clients directly; its statement and hash remain
-unchanged. The exact graph has 557 unique specifications, 1,792 edges, 45
-layers, root depth 44, and 191,672 theorem occurrences under recursive
+unchanged. The exact graph has 557 unique specifications, 1,791 edges, 45
+layers, root depth 44, and 191,669 theorem occurrences under recursive
 expansion—roughly half the superseded wrapper's 382,882 occurrences. The
 [hotspot audit](quadratic-reciprocity-closure-hotspots.md) proves that this
-recursive tree has at least 731,488 proof nodes before most body constructors
+recursive tree has at least 731,482 proof nodes before most body constructors
 are counted, so it cannot satisfy the 500,000-node policy.
 
 This is a complete body-green mathematical route, not an

@@ -334,7 +334,7 @@ without a written review; the largest endpoint passes browser replay.
       [Euler scaled-inverse ladder](../research/arithmetic-library/euler-scaled-inverse.md):
       bounded existence/uniqueness, symmetry, involution, fixed-point/square
       equivalence, and fixed-point freedom under `~QRes`. Body nodes/depth are
-      `36/17`, `30/19`, `59/26`, `126/34`, `74/24`, `31/12`, `28/19`,
+      `36/17`, `30/19`, `58/25`, `126/34`, `74/24`, `31/12`, `28/19`,
       `38/15`, `17/15`, and `24/15`; these dependency-curried receipts are not
       closed replay or admission.
 - [x] Lift the pointwise scaled inverse to a full beta-coded predecessor
@@ -754,17 +754,17 @@ objects and depth 256, rejects formula/certificate/dependency mutations, and
 passes cold CPython and browser/Pyodide replay. If it does not, use a reviewed
 self-contained proof-DAG bundle; never trust an external theorem name or hash.
 Static dependency discovery currently reaches 557 unique specifications at
-dependency depth 45, but 191,672 theorem-certificate occurrences before even
+dependency depth 45, but 191,669 theorem-certificate occurrences before even
 counting body nodes. A sharper static lower bound is decisive: recursive Cut
-expansion contributes 191,671 Cuts, the repeated dependency-curried scripts
+expansion contributes 191,668 Cuts, the repeated dependency-curried scripts
 contribute 348,145 leading theorem introductions, and every theorem occurrence
-needs at least one terminal body node. Hence the old tree has at least 731,488
+needs at least one terminal body node. Hence the old tree has at least 731,482
 proof nodes before any substantive `apply`, `split`, `exists`, or arithmetic
 node. It cannot pass the 500,000 policy, so raising the limit without measuring
 the much larger actual tree would be unsound engineering.
 
 The preferred capacity route requires no kernel extension: compile the
-557-spec, 1,792-edge DAG into 45 topological layers (maximum width 63), package
+557-spec, 1,791-edge DAG into 45 topological layers (maximum width 63), package
 each layer as a balanced conjunction, discharge direct dependencies by
 projections from earlier packages, and Cut each package once. Every theorem
 body then occurs once. The result is an ordinary existing Peano Lab `Proof`
@@ -786,8 +786,10 @@ SHA-256
 The wrapper uploaded and remotely verified that exact 338-member,
 5,374,464-byte dirty snapshot, passed scheduler validation, and submitted full
 136-gate job `187187` on `cpu_idle` with one CPU, 32 GiB and four hours. Its
-latest observed state is `PENDING (Priority)`. Submission is not replay
-evidence: no WMI proof receipt or admission exists yet.
+final state is `FAILED` after 39 seconds with exit code `1:0`. The first four
+scaled-inverse gates passed; gate 5 found an unused `succ_ne_zero` dependency,
+and the remaining 131 gates did not run. This fail-closed hygiene result is
+not a mathematical rejection or a QR proof receipt.
 
 - [x] Implement and statically audit the unchanged-kernel layered Cut-bundle
       compiler. The hardened compiler scans all 25 exact kernel proof
@@ -797,11 +799,11 @@ evidence: no WMI proof receipt or admission exists yet.
       replay. A 20-node
       sharing fixture shrinks from `3,643/20` recursive nodes/depth to
       `274/16`. The real 557-node formulas with false one-node bodies produce
-      a rejected `13,723/56` scaffold and exact package-formula cost
+      a rejected `13,715/56` scaffold and exact package-formula cost
       `144,197/68`, plus `157,579/92` annotations/envelope depth; a
       distinct-marker, dependency-consuming surrogate checks
-      every real edge/order under the unchanged kernel at `19,099/74` with
-      package cost `19,297/18` and annotations/envelope `142,396/84`. Neither
+      every real edge/order under the unchanged kernel at `19,088/74` with
+      package cost `19,297/18` and annotations/envelope `142,346/84`. Neither
       surrogate is QR evidence.
 - [x] Remove the QR stack/registry import cycle through an injected copied
       pre-QR mapping while preserving the exact 317-candidate order and hashes.
@@ -822,9 +824,19 @@ evidence: no WMI proof receipt or admission exists yet.
       validation, and submit full 136-gate job `187187`. The snapshot records
       base commit `a549a537cfe3d3d7e8ef292a49250c4308d12c5d` with
       `local_dirty=true`.
-- [ ] Run its full QR compile/check, mutation, determinism, node/object/depth,
-      time and RSS gates on WMI; job `187187` is currently pending and has no
-      result receipt.
+- [x] Retrieve and diagnose job `187187`: it failed closed at gate 5/136
+      because `prime_scaled_inverse_target_nonzero` declared but did not use
+      `succ_ne_zero`; four gates passed and 131 were unrun.
+- [x] Remove that redundant edge, preserve the mutation test, refresh all
+      graph/source/scaffold pins, regenerate the Proof Explorer, and pass the
+      focused local replay/topology/Explorer suites.
+- [x] Freeze the corrected archive twice at exact SHA-256
+      `989011c09d82dbbb239df43334e88553e1fb3e0d2f1033f93c5b8b1791851757`;
+      both builds contain 338 members and 5,374,464 bytes. It has not been
+      uploaded under the earlier hash-specific authorization.
+- [ ] Obtain content-specific approval for the corrected immutable payload,
+      resubmit all 136 gates, and require a complete WMI receipt before any
+      admission claim.
 - [ ] After those gates pass, migrate the generic layered closure into the
       public theorem replay/registry without a theorem-name or hash trust
       shortcut; regenerate the catalog and run cold Pyodide `use` gates.
@@ -839,7 +851,7 @@ evidence: no WMI proof receipt or admission exists yet.
 - [x] Regenerate the interactive Jupyter Book theorem atlas.
 - [x] Update the quadratic-reciprocity chapter and roadmap diagram.
 - [x] Generate the native PA Proof Explorer for the exact 557-node closure:
-      persistent `PAxxxx` tags, 557 canonical pages and name aliases, 1,792
+      persistent `PAxxxx` tags, 557 canonical pages and name aliases, 1,791
       forward/reverse edges, 27,491 tactic-line anchors, syntax-aware theorem
       and PA-axiom links, truthful public/candidate status, and explicitly
       generated-versus-curated informal proofs. The QR endpoint is `PA00FW`.
@@ -847,10 +859,10 @@ evidence: no WMI proof receipt or admission exists yet.
       dashboard, direct QR links, PA grammar and axiom/rule chapters,
       foundations/tactic navigation, responsive isolated assets, deterministic
       `--check`, and bounded static/security tests.
-- [x] Add graph v2 to the Book and explorer: 557 theorem nodes, 1,792 direct
+- [x] Add graph v2 to the Book and explorer: 557 theorem nodes, 1,791 direct
       edges, 45 layers, and 48 corpus roots distinct from the PA foundations.
       For `PA00FW`, expose the 4-vertex shortest chain, 45-vertex critical
-      chain, complete prerequisite cone, and all 101,296 theorem-root paths.
+      chain, complete prerequisite cone, and all 101,293 theorem-root paths.
       This is navigational evidence only; `PA00FW` remains pending layered
       closure.
 - [x] Add the static-clean

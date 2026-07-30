@@ -247,7 +247,7 @@ python3 -m pytest -q tests/test_layered_replay.py
 
 ## Full QR-graph scaffold checks
 
-Two laptop-safe experiments exercise the exact 557-node, 1,792-edge,
+Two laptop-safe experiments exercise the exact 557-node, 1,791-edge,
 45-layer topology without replaying a single real theorem body.
 
 The first attaches a distinct one-node dummy body to every real blueprint
@@ -256,10 +256,10 @@ proof. Before rejection, compilation gives exact fixed-scaffold measurements:
 
 | Dummy-body scaffold metric | Value |
 |---|---:|
-| ordinary proof nodes / depth | `13,723 / 56` |
-| distinct proof objects / edges | `13,723 / 13,722` |
+| ordinary proof nodes / depth | `13,715 / 56` |
+| distinct proof objects / edges | `13,715 / 13,714` |
 | reused references | `0` |
-| fixed glue beyond one node per body | `13,166` |
+| fixed glue beyond one node per body | `13,158` |
 | balanced package-formula occurrences / maximum depth | `144,197 / 68` |
 | proof annotation occurrences / combined envelope depth | `157,579 / 92` |
 
@@ -276,13 +276,13 @@ existing contextual `Cut` per direct dependency. For dependency position
 `Hyp(k-1)`. Thus a wrong projection ID or left/right direction produces the
 wrong unique marker, while a wrong dependency order produces the wrong
 hypothesis; the unchanged kernel rejects either mistake. It accepts this
-strong exact-topology surrogate at 19,099 proof nodes and depth 74. Its
+strong exact-topology surrogate at 19,088 proof nodes and depth 74. Its
 balanced package formulas measure 19,297 structural occurrences at maximum
-depth 18; the full proof envelope contains 142,396 formula/term annotation
+depth 18; the full proof envelope contains 142,346 formula/term annotation
 occurrences at combined depth 84.
 
 This is stronger compiler-integration evidence than the small fixture because
-all 1,792 real dependency applications and their declared order are exercised.
+all 1,791 real dependency applications and their declared order are exercised.
 It is still explicitly **not** a quadratic-reciprocity proof: no real target
 or real theorem body is present.
 

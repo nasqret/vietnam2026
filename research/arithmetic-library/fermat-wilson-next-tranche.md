@@ -984,7 +984,7 @@ They remain unadmitted pending recursive replay and mutation review.
 The ten scripts construct and uniquely characterize the bounded relation
 `x*y == a (mod p)`, prove symmetry and involution, identify fixed points with
 square roots, and derive fixed-point freedom under `~QRes`. Their
-dependency-curried body nodes/depth are `36/17`, `30/19`, `59/26`, `126/34`,
+dependency-curried body nodes/depth are `36/17`, `30/19`, `58/25`, `126/34`,
 `74/24`, `31/12`, `28/19`, `38/15`, `17/15`, and `24/15`. Focused job
 `173015`, from exact snapshot `8c9c4ae0...`, is pending with zero CPU and has
 not produced a closed-replay receipt.

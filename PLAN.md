@@ -172,11 +172,11 @@ proof objects, and depth 256; the kernel and PA language are unchanged. See
 [`PLAN/11_quadratic_reciprocity.md`](PLAN/11_quadratic_reciprocity.md).
 
 The recursive QR tree is no longer a capacity uncertainty: source recurrence
-forces at least 731,488 proof nodes. The preferred replacement is implemented
+forces at least 731,482 proof nodes. The preferred replacement is implemented
 as an isolated 45-layer balanced-conjunction compiler whose output is one
 ordinary existing `Proof` checked by the unchanged kernel. Its focused tests
-pass `25/25`; an exact 557-node/1,792-edge dependency-consuming surrogate is
-kernel-green at 19,099 nodes/depth 74, while false bodies against the actual
+pass `25/25`; an exact 557-node/1,791-edge dependency-consuming surrogate is
+kernel-green at 19,088 nodes/depth 74, while false bodies against the actual
 QR formulas are rejected. The real 557-body compile/check, resource receipt,
 mutations, public migration and Pyodide gate remain WMI-dependent. The
 content-addressed nine-gate job is ready. A historical second
@@ -188,19 +188,20 @@ The QR stack is injection-based over a frozen pre-QR table, and the generic
 layered compiler is a production-neutral constructive ordinary-proof builder.
 Its exact proof-envelope scanner covers all 25 kernel constructors, rejects
 classical and engine-only nodes, and separately bounds embedded annotations.
-Static exact-topology evidence preserves the `19,099/74` proof receipt and now
-adds `142,396/84` annotations/envelope depth; the actual-formula false scaffold
+Static exact-topology evidence preserves the `19,088/74` proof receipt and now
+adds `142,346/84` annotations/envelope depth; the actual-formula false scaffold
 adds `157,579/92`. Bare `pa lib` no longer replays the ladder, and the browser
 worker inventory deterministically covers 147 Python files. A migration audit
 identifies 125 pre-admission absence assertions and the exact 317/29 public
-partition. The real 557-body WMI replay is now queued as full 136-gate job
-`187187`, bound to approved dirty snapshot
+partition. Full 136-gate WMI job `187187`, bound to approved dirty snapshot
 `2bab0898a5bc628a0e1f06b5e6cdf56af86fe39c2fdbeaaa4147ac43d2c7faaa`.
-Scheduler validation passed, but the latest state is `PENDING (Priority)`;
-there is no replay receipt and no basis for candidate enrollment.
+failed closed after 39 seconds at gate 5. Four scaled-inverse gates passed;
+the fifth exposed the unused `succ_ne_zero` dependency, and 131 gates did not
+run. The corrected focused suite and refreshed topology receipts pass locally,
+but there is still no full replay receipt or basis for candidate enrollment.
 
 The native PA Proof Explorer now makes that exact evidence boundary
-navigable. Its persistent 557-page tag corpus has 1,792 dependency edges,
+navigable. Its persistent 557-page tag corpus has 1,791 dependency edges,
 27,491 line-addressable tactic commands, 8,557 explicit theorem links, and a
 separate foundations view for PA grammar, PA1–PA6, proof constructors, and
 tactics. The permanent QR endpoint is `PA00FW`. The interface labels 240
@@ -212,8 +213,8 @@ publication gates, and the former frozen QR upload hash is stale after these
 payload-changing additions.
 
 Graph v2 now exposes the same closure as navigable premise paths: 557 theorem
-nodes, 1,792 direct edges, 45 layers, and 48 theorem roots (corpus roots, not
-PA axioms or kernel foundations). For `PA00FW` it records 101,296 distinct
+nodes, 1,791 direct edges, 45 layers, and 48 theorem roots (corpus roots, not
+PA axioms or kernel foundations). For `PA00FW` it records 101,293 distinct
 root-to-target paths, a 4-vertex shortest witness, and a 45-vertex critical
 depth witness. The Book endpoint is
 `book/arithmetic-library/dependency-graph.md`, and the static explorer opens at
@@ -221,5 +222,5 @@ depth witness. The Book endpoint is
 page one click away. This completes the static dependency-path presentation;
 the generator owns all 1,123 files under a pinned aggregate, and the full
 local Book build/integrity check is green. `PA00FW` remains pending layered
-closure while WMI job `187187` is queued; attached-browser validation also
-remains a publication gate.
+closure after WMI job `187187` failed at its early dependency-hygiene gate;
+attached-browser validation also remains a publication gate.

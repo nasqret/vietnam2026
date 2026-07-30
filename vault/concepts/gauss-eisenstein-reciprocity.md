@@ -110,10 +110,10 @@ surfaces:
 The downstream data, parity, conditional, and final integration passes
 `20/20` in 27.25 seconds. The combined body constructs the pair data once and
 calls both conditional clients directly; the exact statement and its hash are
-unchanged. The exact closure graph contains 557 unique specifications, 1,792
-edges, 45 layers, root depth 44, and 191,672 theorem occurrences under
+unchanged. The exact closure graph contains 557 unique specifications, 1,791
+edges, 45 layers, root depth 44, and 191,669 theorem occurrences under
 recursive expansion. The static hotspot audit gives that tree a rigorous
-731,488-node lower bound, already beyond policy.
+731,482-node lower bound, already beyond policy.
 
 All these candidates are constructive,
 dependency-curried, unregistered, and unadmitted. The selected next route is

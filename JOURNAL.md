@@ -2880,3 +2880,42 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   records transport and submission provenance only: it does not report a
   replay pass, a pinned admission receipt, or an admitted quadratic-
   reciprocity theorem.
+
+## 2026-07-31 — WMI fail-closed diagnosis and corrected QR payload
+
+- Retrieved the final accounting and immutable logs for job `187187`.
+  Slurm reports `FAILED`, elapsed `00:00:39`, exit code `1:0`. Gates 1--4 of
+  the 136-gate full suite passed, including two full cut-closure replays of
+  the scaled-inverse ladder. Gate 5 rejected the dependency audit because a
+  mutation replacing the declared `succ_ne_zero` cut still checked; the
+  remaining 131 gates were not run. This is an early hygiene failure, not a
+  quadratic-reciprocity result.
+- Confirmed that `prime_scaled_inverse_target_nonzero` never referenced
+  `succ_ne_zero`. Removed only that redundant dependency and the matching
+  expected-boundary entries; the theorem statement and tactic body are
+  unchanged. The complete five-test scaled-inverse candidate suite now
+  passes locally, including every-direct-cut mutation.
+- Refreshed every affected exact receipt. The closure remains 557 nodes and
+  45 layers, with 1,791 edges; graph SHA-256 is
+  `2231ca4cde6931fad296513fb0c419e19beb7c37989d31fbf6cf01771597cb46`
+  and candidate-source SHA-256 is
+  `457327e29134e08fd8802a18b9e1a9e0e23fa84bb44f2934f1fcba466f6e6cb5`.
+  Recursive expansion is 191,669 theorem occurrences with a 731,482-node
+  lower bound. The rejected actual-target scaffold is `13,715/56`; the
+  accepted dependency-consuming surrogate is `19,088/74` with
+  `142,346/84` annotations/envelope depth.
+- Regenerated all 1,123 Proof Explorer files at aggregate
+  `6c47124a4a86c764d0e9af274cba9dfbc6df8a89c7327fe4744f49f097b93dd2`.
+  The graph now has seven implicit packaging edges and 101,293 root-to-QR
+  paths; all 8,557 explicit tactic references remain unchanged. Twenty-three
+  focused topology, scaffold and Explorer tests pass, and the generator's
+  byte-current check is green.
+- Regenerated `peano-lab/APP_MANIFEST.sha256` and synchronized the local
+  packaging identity to `a-279f7fd6f2b9`, build `2026-07-31a`. This is not an
+  external deployment or theorem admission.
+- Built the corrected WMI archive twice, byte-identically: SHA-256
+  `989011c09d82dbbb239df43334e88553e1fb3e0d2f1033f93c5b8b1791851757`,
+  338 members, 5,374,464 bytes, with exactly 136 selected gates. It has not
+  been uploaded or submitted: the earlier authorization was specific to the
+  historical `2bab0898...faaa` payload, so the corrected hash requires new
+  explicit authorization.
