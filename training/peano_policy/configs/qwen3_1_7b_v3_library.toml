@@ -2,12 +2,8 @@
 name = "qwen3-1.7b-peano-lora-v3-library"
 seed = 20260729
 output_dir = "results/peano-policy/qwen3-1.7b-lora-v3-library"
-# The complete expected train split is below this ceiling.  Keeping the ceiling
-# above it ensures every predecessor-prefix library transition is selected;
-# deterministic subsampling must never silently drop a small theorem rung.
-max_train_samples = 80000
-max_eval_samples = 6000
-resume = "auto"
+max_eval_samples = 512
+resume = "never"
 
 [model]
 model_id = "Qwen/Qwen3-1.7B-Base"
@@ -17,12 +13,8 @@ attn_implementation = "sdpa"
 trust_remote_code = false
 
 [data]
-train_path = "data/peano-policy-v3/train.jsonl"
-eval_path = "data/peano-policy-v3/val.jsonl"
-# Prompt-v3 abbreviates giant library statements, but theorem states can still
-# be long: 57/247 full-prefix theorem-root probes already exceed 4,096 tokens.
-# Use Qwen3-1.7B's pinned native position limit. The tokenizer audit remains a
-# mandatory exact-data gate and truncation is forbidden.
+train_path = "checkpoints/corpora/peano-policy-v3-173040/data/train.jsonl"
+eval_path = "checkpoints/corpora/peano-policy-v3-173040/data/val.jsonl"
 max_length = 32768
 
 [lora]
@@ -35,7 +27,7 @@ target_modules = [
 ]
 
 [trainer]
-epochs = 2.0
+epochs = 1.0
 max_steps = -1
 per_device_train_batch_size = 1
 per_device_eval_batch_size = 1
@@ -44,13 +36,26 @@ learning_rate = 0.0001
 weight_decay = 0.01
 warmup_ratio = 0.05
 logging_steps = 10
-eval_steps = 250
-save_steps = 250
-save_total_limit = 3
+eval_steps = 1000
+save_steps = 1000
+save_total_limit = 1
 gradient_checkpointing = true
 
 [generation]
-max_new_tokens = 128
+max_new_tokens = 1024
 do_sample = false
 temperature = 1.0
 top_p = 1.0
+
+[curriculum]
+kind = "model-v3-library-balanced-v1"
+selection_seed = 20260729
+synthetic_row_ceiling = 12288
+max_train_tokens = 70000000
+max_eval_tokens = 2000000
+max_train_squared_tokens = 2300000000000
+max_eval_squared_tokens = 66000000000
+corpus_seal_path = "checkpoints/corpora/peano-policy-v3-173040"
+corpus_source_commit = "5faa3d27cbaf522198ffa1bdcd11fa9d57341658"
+corpus_prepare_job_id = "173040"
+corpus_content_sha256 = "7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b"

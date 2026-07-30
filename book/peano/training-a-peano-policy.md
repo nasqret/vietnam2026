@@ -12,7 +12,7 @@ runtime, a kernel-judged evaluator, and guarded Helios job controls.  These piec
 outside the kernel.  They can make proof search faster; they cannot make an invalid certificate
 valid.
 
-```{admonition} Experiment status, 2026-07-30
+```{admonition} Experiment status, 2026-07-31
 :class: important
 The local execution, prompt, training-runtime, evaluation, provenance, and cluster control paths are
 implemented, and the first attested training-scale data release is complete: 2,522 independently
@@ -30,8 +30,11 @@ a whole-session root-balanced synthetic curriculum, indexed completion logits, a
 seal, and a native 32,768-token no-truncation gate. The first model-v3 preparation failed closed;
 retry `172729` generated both source lanes and published the complete split, but its combined
 allocation could not also finish independent replay and runtime gates. Exact-corpus continuation
-`173040` now performs those checks from clean commit `5faa3d27`. No model-v3 optimizer step has run
-and no adapter exists, so its proof quality and search gain remain unknown.
+`173040` completed those checks from clean commit `5faa3d27`. Current-source job `213641` then
+published and independently verified the immutable 15-file corpus with content SHA-256
+`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`. That real digest now
+binds the one-epoch curriculum configuration. No model-v3 optimizer step has run and no adapter
+exists, so its proof quality and search gain remain unknown.
 The historical reconciled model-v2 authority is 63 public entries, seven dependency-closed import
 exclusions, and 56 permitted records. Model-v3 binds the later 247-entry ladder independently.
 The 4B comparison and expert iteration are still deferred.
@@ -1236,12 +1239,14 @@ and
 The binding command sequence and pending-result ledger live in
 [`docs/PEANO_TRAINING.md`](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_TRAINING.md#106-model-v3-sealed-curriculum-indexed-objective-and-launch-chain).
 
-At this documentation checkpoint, WMI job `172729` has generated both source lanes and published
-the complete split. Exact-corpus continuation `173040` is still performing independent attestation,
-so the corpus seal digest, new sealed-preparation job, selected token counts, optimizer-step count,
-adapter hashes, losses, evaluation job, solve results, and independent replay digest are all
-explicitly **pending**. An A100 reserved by CPU preparation is not evidence that transformer
-training has begun.
+At this documentation checkpoint, WMI job `172729` generated both source lanes, exact-corpus
+continuation `173040` completed independent attestation, token audit, and A100 runtime smoke, and
+current-source seal job `213641` published the immutable corpus. A separate verifier reproduced its
+content SHA-256
+`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`. The new sealed-
+preparation job, selected token counts, optimizer-step count, adapter hashes, losses, evaluation job,
+solve results, and independent replay digest remain explicitly **pending**. A preparation smoke on
+an A100 is not evidence that transformer training has begun.
 
 ## Reproduction and honest resume
 
@@ -1440,10 +1445,10 @@ limitations remain:
   heavy adapter or quality measurement exists;
 - model-v3's 247-theorem identity, strict predecessor-prefix generator, 51-schema root-balanced
   generator, whole-session selector, indexed completion objective, immutable-seal/current-source
-  eligibility gate, and independent evaluation replay are implemented; retry `172729` produced
-  both source lanes and the complete split, while exact-corpus continuation `173040`, historical
-  reports, seal, selected token audit, and the new sealed-preparation gate must all finish before
-  the registered WMI training run;
+  eligibility gate, and independent evaluation replay are implemented; retry `172729`, continuation
+  `173040`, and seal job `213641` produced and authenticated the complete immutable corpus, while the
+  new current-source sealed-preparation gate must still finish before the registered WMI training
+  run;
 - the four-goal protocol set is a regression fixture, not a statistically useful final test, and
   hard whole-template OOD sets plus human-authored problems still need to be sealed;
 - depth-32 verifier-guided beam search is implemented, but its gain with a trained model-v3 policy

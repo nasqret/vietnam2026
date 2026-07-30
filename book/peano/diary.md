@@ -2269,3 +2269,34 @@ Shell syntax, Python compilation, and diff hygiene pass. The standalone seal CLI
 module SHA-256 is `751a759bc7916a72b26f03b8c32502cc802de78565ec149b1136f9c1562711d7`, and the WMI
 launcher pins both literally. These are predeployment results; the fresh live Ceph preflight and
 the authenticated seal are still pending, so optimizer training remains unstarted.
+
+## 2026-07-31 — Genuine model-v3 corpus seal published
+
+The Ceph repair was committed as `84943ca1a5653542f117d519dddf1fa2906259a0`, pushed to
+`peano-lab`, and deployed as the same clean Git tree. Test-only admission succeeded, and real CPU
+seal job `213641` completed `0:0` in 7m01s. Its live publication-preflight v2 exercised both a
+protected directory and regular file on Ceph, selected
+`exclusive-type-matched-claim-rename-v1`, and retained the passing probe. The canonical preflight
+report SHA-256 is `c29c1b4b742621dc45e469f9c2f586e2cc3e431a9d378f455ddded985994decc`.
+
+The published 15-file seal is
+`checkpoints/corpora/peano-policy-v3-173040`. Its content SHA-256 is
+`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`; its `seal.json`
+SHA-256 is `22ecb4ad16f06abc39d6aac553052be9fa08b195d9250216fa1195db0a7e49e6`. The
+profile-bound v2 verification report has SHA-256
+`218d3a16f582c460dd93a01eb809d157dc9a55a09357d6c24f16f74cda9b1c3e` and truthfully records
+`atomic_destination_no_replace: false`, an exclusive type-matched claim, and transient destination
+visibility. A separate current-source verifier reproduced the exact content digest after Slurm
+reported completion; stderr was empty.
+
+This real digest, never a placeholder, now enters the reviewed one-epoch model-v3 configuration.
+The run removes row-level train subsampling, uses the sealed train/validation paths, caps the
+deterministically selected curriculum at 70 million train tokens and 2 million evaluation tokens,
+keeps the 32,768-token context, raises proof generation to 1,024 tokens, and forbids resume into an
+old output. This is the single planned post-seal source transition. It still is not transformer
+training: sealed A100 preparation and the real optimizer job remain subsequent evidence boundaries.
+
+The post-seal launch-contract selection passed 152 focused tests with one expected skip. The final
+complete Peano suite passed 1,761 tests with five expected skips in 24m16s. The earlier clean Ceph
+repair commit also passed all 360 Lambda Lab tests plus 36 parametrized subtests; this post-seal
+transition changes no Lambda Lab source.

@@ -1,13 +1,15 @@
 # Peano Lab post-training experiment — M19 research protocol
 
 **Status:** binding experiment protocol with the first accepted WMI model-v1 result, the historical
-model-v2 launch stack, and the implemented model-v3 successor recorded through 2026-07-30.
+model-v2 launch stack, and the implemented model-v3 successor recorded through 2026-07-31.
 Model-v3 binds the complete 247-theorem ladder and corrects the curriculum, loss, artifact, and
 leakage contracts described below. WMI job `172536` is the recorded failed first preparation.
 Retry `172729` generated both source lanes and published the exact 64,500/6,948/7,046 split, but
 its combined allocation could not also finish independent replay, token audit, and smoke. Exact-
-corpus continuation `173040` now runs those gates from clean commit `5faa3d27`; it accepts only the
-known twelve files and manifest digest and regenerates no data. No model-v3 optimizer step,
+corpus continuation `173040` completed those gates from clean commit `5faa3d27`; it accepted only
+the known twelve files and manifest digest and regenerated no data. Current-source seal job
+`213641` then published and independently verified the immutable corpus with content SHA-256
+`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`. No model-v3 optimizer step,
 checkpoint, evaluation score, or solve-rate claim exists yet. Result fields are filled only after
 the corresponding artifacts exist and claimed proofs have passed a separate independent kernel
 replay.
@@ -947,10 +949,12 @@ For seed `peano-policy-v3-balanced-wmi-20260729`, the exact plan contains
 `79d2704eab6eb73205ff2234f55f0d4a7e034176fe8dc8649c6950ff499d547b`. This is a balanced plan;
 it needs zero candidate skips. A separate maximum-budget preflight reaches 100,000 rows in 46,574
 unique sessions while counting and excluding the one sealed-target collision. Complete kernel
-replay and corpus publication remain pending. The WMI preparation order now invokes this synthetic
-prepass before the library generator, so a schedule-contract failure cannot again consume an hour
-of unrelated proof replay first. It also requires the model-v3 data directory to be empty before
-either generator starts, turning stale partial-run artifacts into an immediate refusal.
+replay later succeeded in continuation `173040`, and current-source job `213641` published the
+authenticated immutable corpus seal; optimizer training remains pending. The WMI preparation order
+now invokes this synthetic prepass before the library generator, so a schedule-contract failure
+cannot again consume an hour of unrelated proof replay first. It also requires the model-v3 data
+directory to be empty before either generator starts, turning stale partial-run artifacts into an
+immediate refusal.
 
 Prompt v3 carries the complete compact allowed-name inventory plus at most twelve deterministically
 retrieved statement records from the current prefix. The latter are detailed semantic context, not
@@ -1159,11 +1163,13 @@ python3 scripts/seal_peano_v3_corpus.py verify \
 
 That command establishes internal consistency, not external authenticity by itself. Its printed
 `content_sha256` must equal the independently authenticated digest copied into the tracked v3 TOML;
-a mismatch is fatal even when the command otherwise succeeds. Only the resulting seal
-`content_sha256` remains **pending** until the non-replacing seal is published and verified. The
-genuine seal digest must then be copied into the tracked v3 TOML;
-no placeholder digest is an eligible configuration. The dataset-attestation report, twelve
-artifact anchors, and historical manifest anchor shown above are already known and pinned.
+a mismatch is fatal even when the command otherwise succeeds. Seal job `213641` completed `0:0` in
+7m01s and a separate current-source verifier reproduced
+`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`. The canonical seal
+manifest SHA-256 is `22ecb4ad16f06abc39d6aac553052be9fa08b195d9250216fa1195db0a7e49e6`;
+the profile-bound v2 verification-report SHA-256 is
+`218d3a16f582c460dd93a01eb809d157dc9a55a09357d6c24f16f74cda9b1c3e`. That genuine content
+digest is now pinned in the tracked v3 TOML; no placeholder digest is an eligible configuration.
 
 #### Sealed preparation, one-shot training, evaluation, and replay
 
@@ -1309,7 +1315,7 @@ hours for evaluation. Current result ledger:
 
 | Result-dependent field | Status at this checkpoint |
 |---|---|
-| historical corpus seal path/content digest | **pending** |
+| historical corpus seal path/content digest | `checkpoints/corpora/peano-policy-v3-173040`; `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b` (job `213641`, verified) |
 | current-source sealed-preparation job/report digests | **pending** |
 | selected train/evaluation rows and exact token exposure | **pending** |
 | optimizer steps, losses, adapter and tokenizer digests | **pending** |
