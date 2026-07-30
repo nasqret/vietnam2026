@@ -285,7 +285,7 @@ while IFS='|' read -r active_job_id active_name active_state; do
     peano-wmi-prepare|peano-wmi-qwen17|peano-wmi-qwen17-eval|\
     peano-wmi-v2-prepare|peano-wmi-qwen17-v2|peano-wmi-qwen17-v2-eval|\
     peano-wmi-v3-prepare|peano-wmi-qwen17-v3|peano-wmi-qwen17-v3-eval|\
-    peano-wmi-v3-sealprep|peano-wmi-qwen17-v3-base|\
+    peano-wmi-v3-seal|peano-wmi-v3-sealprep|peano-wmi-qwen17-v3-base|\
     peano-wmi-prove|peano-wmi-probe)
       if [ -z "$afterok" ] || [ "$active_job_id" != "$afterok" ]; then
         printf 'another WMI Peano job is active: %s %s %s\n' \

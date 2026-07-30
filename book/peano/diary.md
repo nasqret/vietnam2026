@@ -2055,3 +2055,148 @@ warning-as-error book builds all 38 sources; 194 deep links and 287 commands rep
 327-note vault resolves all 3,288 links. The real Linux `/work` publication probe, A100 admission
 smoke, optimizer steps, losses, and independent kernel-judged evaluation remain pending. This
 section records why the launch contract changed; it records no transformer-training result.
+
+## 2026-07-30 — Make the claimed seal launcher real
+
+A repository audit found that the preceding bootstrap prose had outrun the implementation. The
+two-file CLI/module inventory was enforced, but every executable test still invoked the CLI by
+pathname; Python could therefore execute its top-level code before the CLI checked its own hash.
+There was no seal-publication Slurm job containing the launcher described in the diary. That was a
+real execute-before-self-hash gap, so the earlier claim was not accepted as evidence.
+
+The missing operational artifact is now tracked as the CPU-only one-time job
+`slurm/peano_wmi_seal_v3_corpus.sbatch`. It pins historical commit
+`5faa3d27cbaf522198ffa1bdcd11fa9d57341658`, preparation `173040`, the fixed destination, and the
+two reviewed source digests. After checking that the historical root job is uniquely completed and
+that its three reports are regular single-link files, it creates and retains a fresh read-only
+`mktemp` bootstrap with exactly three directories and two files. The inline launcher is part of
+the submission-hashed Slurm bytes. Under `python3 -I -B -S -` it stable-reads the staged CLI through
+`O_NOFOLLOW`, checks full descriptor/path identity and its pinned digest, and compiles and executes
+those same bytes as `__main__`. The CLI then independently verifies both sources and the exact
+inventory, creates by no-replace publication, and a fresh process verifies the result again.
+
+An executable adversarial test lets reviewed CLI bytes replace their own pathname: the already
+read bytes finish, while the next invocation rejects the replacement before it executes. Missing
+isolation, digest drift, symlink/hard-link aliases, and an extra inventory entry also fail. Twelve
+new launcher/job tests and the 69-test WMI control plus sealed-preparation set pass locally. The job
+has not been submitted; publication still waits for authoritative confirmation that `173040`
+completed.
+
+## 2026-07-30 — The first launcher repair was still not launchable evidence
+
+Adversarial review found that closing execute-before-self-hash was necessary but not sufficient.
+The first tracked job knew the historical manifest hash, yet did not independently anchor every
+corpus file or any of the three reports. It treated an already published destination as a fatal
+collision, so a crash after the irreversible seal rename but before the one-line report could not
+recover. That report used shell noclobber rather than the reviewed staged no-replace primitive.
+The job also selected ambient `python3` and had not exercised the target filesystem's actual
+no-replace syscall. Those were blockers; the job remained unsubmitted.
+
+Authoritative inspection supplied exact hashes for all twelve historical artifacts. They and the
+known manifest are now literal job inputs and are rechecked before sealing and again through the
+standalone module's copied-file inventory. The first authenticated report then arrived: the
+1,254,810-byte, single-link dataset attestation has SHA-256
+`4e1cf0d00725a739d6f371062ff2079cfb9bc3e36daf4f4219cbbe1399a68a12`, format
+`peano-policy-dataset-attestation` v2, the expected manifest, independent replay, and prompt v3.
+That digest is now pinned. At 09:13:57 elapsed the 1,350-byte, single-link token audit also arrived
+with SHA-256 `c290b285eabcf9d39ab13b4d6f0f194588541484390d35c00681041979e2f8d8`.
+It checked all 64,500 train rows and 6,000 capped validation rows; their maxima were 29,111 and
+4,882 under the 32,768-token limit. That digest is pinned too. The runtime-smoke hash remains the
+deliberately non-hex `PENDING_AFTER_173040_RUNTIME_SMOKE_SHA256` value. A validator reaches and
+rejects that placeholder before `cd`, `sacct`, `mktemp`, the filesystem probe, or publication.
+This is intentional executable evidence that the current tree cannot seal anything until the
+remaining completed report is inspected; no digest was guessed.
+
+The CPU job now activates the content-derived reviewed WMI environment, verifies its Python
+identity, and runs the existing retained recovery-publication preflight directly inside
+`checkpoints/corpora`. It first proves that this seal parent and the report parent under `logs`
+share one filesystem device; a requeue then verifies the same report and live probe. Destination
+classification precedes any read of the mutable historical corpus and reports. Those paths are
+required only when creation is necessary. Otherwise a fresh isolated process verifies every
+protected sealed file, all fifteen external anchors, the historical commit, and preparation job,
+then enters a strictly verify-only report-recovery lane that still works after the originals are
+retired. The canonical report is written and fsynced in a unique sibling stage, made `0444`,
+fsynced again after the mode change, and atomically renamed without replacement. An existing report
+succeeds only when it is protected, canonical, bound to the same Slurm job, and exactly recomputed
+from the verified seal.
+
+The underlying corpus module now rejects external hard links for every source and sealed regular
+file, not merely duplicate inodes inside one directory. Executable tests create a complete minimal
+corpus through the in-memory launcher, stop in the post-seal/pre-report crash window, and use a
+second process/job identity to verify the existing seal and publish its report. Separate tests
+cover same-job report replay, wrong-job rejection, retained-stage evidence after rename failure, and
+external hard links. This remains local prelaunch work: one report anchor is still pending and
+no WMI seal job has been submitted.
+
+A second fresh review then caught a durability ordering mistake before launch. Payload bytes and
+directory entries were fsynced while their staging modes were still `0600`/`0700`; `_protect_tree`
+changed them to `0444`/`0555`, but those final inode metadata changes were not flushed before the
+no-replace rename. The seal now fsyncs every protected regular file, both protected child
+directories, the protected manifest, and the protected root before publication. The macOS test
+path additionally fsyncs the root after its unavoidable post-rename re-protection. New tests prove
+the protect → fsync → rename order, prove that a protected-tree fsync failure prevents publication,
+and exercise the macOS post-rename target-before-parent order. The focused corpus/launcher set is
+52 green after this repair; the production WMI path remains Linux and still unsubmitted.
+
+The report-specific review found four more cases where a type annotation or an earlier read was
+doing more rhetorical work than the runtime contract. A direct Python caller could pass `None` for
+anchors described as mandatory; an existing exact report returned without freshly flushing its
+inode and parent; its `0444` check was not bound to the inode later opened; and failure cleanup
+could race a replacement or hide the primary error. Publication now validates commit, both job
+IDs, the manifest digest, all twelve artifact digests, and all three report digests before touching
+the seal. Existing reports follow verify → file-fsync → parent-fsync → fresh verify. The mode is
+checked on the same stable-open inode whose canonical bytes are decoded. A stage is identity-
+checked immediately before rename and the published inode is compared with the original stage
+identity. Failed stages remain read-only evidence rather than being deleted by an inherently non-
+conditional pathname cleanup. Tests cover missing runtime anchors, retry flush order, the old
+mode-check replacement window, and stage replacement before rename. These remain prelaunch
+corrections, not evidence that the transformer trained.
+
+The same cleanup and late-path rules now cover seal creation itself. The final source-path check
+compares mode and link count in addition to device, inode, size, mtime, and ctime; a hard-link or
+permission transition after the descriptor was opened is therefore rejected even when the bytes
+and timestamps are unchanged. If creation fails, its partial stage is retained instead of removed
+through an unguarded pathname. New regression tests force the late link-count change and each
+post-protection failure boundary. The focused corpus module is 43 green, and its exact reviewed
+bytes are pinned in the Slurm launcher. This is still a fail-closed prelaunch state: the
+runtime-smoke anchor remains pending, so the seal job cannot run.
+
+At 07:55 elapsed, historical job `173040` was still healthy: the attestation had completed and the
+token audit was active, with no token or smoke report yet. The final model output and seal
+destination remain absent, while the pinned local Qwen snapshot is present. Because the replay had
+already consumed more than seven hours, I tried to extend only its 12-hour Slurm ceiling to 18
+hours; WMI rejected that operation with `Access/permission denied`, and no second attempt or
+privilege workaround was made. The job remains unchanged and is being monitored. This is an
+operational safeguard record, not transformer training evidence.
+
+The post-seal readiness pass also exposed that the tracked v3 TOML is intentionally unfinished,
+not merely conservative: its v3 run name has no `[curriculum]`, so the strict loader rejects it.
+After the real seal exists, the only required source transition is the genuine seal digest plus the
+already reviewed one-epoch, 70-million-token curriculum configuration and a static test that
+actually calls `load_config`. No fake digest is being staged meanwhile. The downstream REPL,
+proof-request, search, and trained-policy integration surface is 122 tests green; this verifies the
+interface contract only, not a model artifact.
+
+The token audit was authenticated and pinned while the historical job moved into its A100 runtime
+smoke. Downstream jobs were deliberately not pre-submitted: the seal has no trustworthy runtime
+report hash yet, the tracked training config cannot name a genuine seal digest yet, and the WMI
+predecessor verifier is designed to reject such a chain. The safe preparation is complete instead:
+only the final runtime hash remains to patch before focused/full gates, clean publication, and the
+one-time seal job. At 10:39:58 elapsed the smoke was still active with 1:20:02 remaining. This
+records staging readiness, not optimizer training.
+
+Historical preparation `173040` completed at 10:54:30 with exit `0:0`. Its final single-link,
+7,241-byte A100 report has SHA-256
+`86cc35bfcf2d5ff51931c140f3eb7168e3f641e1f80d54a3984dba9e49e40749`, format
+`peano-policy-wmi-a100-v3-smoke` v1, and `passed` status. It binds the historical clean source,
+pinned Qwen revision, A100-80GB BF16 runtime, rank-32 LoRA, 34,865,152 trainable parameters, and
+closed adapter/tokenizer save-reload evidence. The hash is now literal in the seal launcher, so no
+report placeholder remains. The next evidence boundary is the immutable seal and its independently
+read `content_sha256`; actual transformer training still has not started.
+
+The fully anchored seal milestone is green before publication: 134 focused seal/WMI tests, 1,738
+complete Peano tests with one intentional skip, and 360 Lambda tests plus 36 subtests pass. The
+warning-as-error Jupyter Book build succeeds, and all 194 deep links, 47 sessions, and 287 commands
+replay. Shell syntax, Python compilation, diff hygiene, and the standalone module's exact pinned
+SHA-256 also pass. These gates authorize committing and deploying the one-time seal job; they do
+not claim that the seal or trained adapter exists yet.

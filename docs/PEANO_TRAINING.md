@@ -1059,17 +1059,53 @@ creation:
 - rejects symlinks, non-regular files, hard-link aliases, missing or extra files, malformed JSON,
   mixed jobs, and mixed source identities;
 - copies into a private staging directory, fsyncs, verifies every copied hash, publishes by one
-  non-replacing rename, makes the closed tree read-only, and verifies it again; and
+  non-replacing rename, makes the closed tree read-only, and verifies it again; a failed creation
+  retains its visibly partial stage instead of pathname-based cleanup that could mask the primary
+  error or delete a replacement; and
 - binds the historical clean commit, decimal Slurm job, model/tokenizer and authority schedule,
   every file hash, and one `content_sha256`.
 
-The first seal must run beside the still-unsealed historical directory, before a normal source
-deployment can replace that checkout. Its bootstrap is therefore an explicitly reviewed two-file
-program: the CLI and standard-library-only seal module. The staged tree admits no package marker,
-bytecode cache, alias, or extra entry. An embedded, submission-hashed launcher stable-reads and
+The first seal must run while the unsealed historical directory and its reports are still
+preserved. Source synchronization protects `data/`, `logs/`, and `tmp/`, so the current clean tree
+can supply the explicitly reviewed two-file bootstrap: the CLI and standard-library-only seal
+module. [`slurm/peano_wmi_seal_v3_corpus.sbatch`](../slurm/peano_wmi_seal_v3_corpus.sbatch)
+hardcodes the historical commit, job, destination, and both reviewed source hashes. It refuses
+unless historical job `173040` is uniquely `COMPLETED`. The manifest, all twelve corpus files, and
+dataset-attestation report have independent literal SHA-256 anchors. The completed token audit is
+also pinned at `c290b285eabcf9d39ab13b4d6f0f194588541484390d35c00681041979e2f8d8`:
+it passed all 64,500 train rows and 6,000 capped validation rows, with maxima 29,111 and 4,882
+tokens under the 32,768-token ceiling. The completed A100 runtime smoke is pinned at
+`86cc35bfcf2d5ff51931c140f3eb7168e3f641e1f80d54a3984dba9e49e40749`; its single-link,
+7,241-byte report records the pinned Qwen3-1.7B revision, A100-80GB BF16 runtime, rank-32 LoRA,
+34,865,152 trainable parameters, save/reload checks, and `passed` status. No report placeholder
+remains. The authenticated dataset-attestation SHA-256 is
+`4e1cf0d00725a739d6f371062ff2079cfb9bc3e36daf4f4219cbbe1399a68a12`.
+
+After those three real hashes are reviewed, the job selects the content-derived WMI Python,
+rechecks all fifteen pinned inputs, and runs the retained production no-replace preflight on
+`checkpoints/corpora`. It then makes and retains one fresh read-only `mktemp` tree with exactly
+three directories and two files. Its submission-hashed inline launcher stable-reads and
 SHA-256-checks the CLI, then compiles those exact in-memory bytes under `python -I -B -S`; the CLI
-independently repeats the inventory and module check before sealing. This avoids executing
-`training.peano_policy.__init__`, `.pyc` bytes, or a pathname that changed after verification.
+independently repeats the inventory, module, and external input-anchor checks before sealing. This
+avoids executing `training.peano_policy.__init__`, `.pyc` bytes, or a pathname that changed after
+verification.
+
+Seal and report publication are separate crash boundaries. If the destination is absent, the job
+creates it once and a fresh process verifies it. If it already exists, creation is skipped and the
+entire protected tree must verify against every external anchor. A canonical same-job report is
+written to a fsynced sibling stage and installed with the same atomic no-replace primitive. A
+valid existing same-job report is reverified; a different, linked, mutable, or malformed report is
+fatal. A failed report publication retains its read-only sibling stage as evidence; it never tries
+to delete a pathname that might have been replaced after inspection. Thus a crash after the seal
+rename but before its report is recoverable without ever recreating or replacing the seal.
+The copy boundary compares device, inode, mode, link count, size, mtime, and ctime both on the open
+descriptor and at the final source pathname, so a late hard-link or mode transition cannot evade
+the stable-source check merely because content and timestamps still match.
+Destination classification precedes inspection of the mutable
+historical corpus and reports, and those original paths are required only in the creation lane;
+verify-only recovery remains possible after they have been retired. The retained no-replace probe
+runs beneath `checkpoints/corpora`, and the job requires its seal parent and the report parent under
+`logs` to have the same device identity before relying on that probe for both publications.
 
 The seal is an integrity envelope, not a signature. Its source commit, preparation job ID, and
 content digest must come from an authenticated channel outside `seal.json`; reading values from an
@@ -1079,27 +1115,32 @@ and 247-theorem authority with the historical manifest. This *eligibility* check
 not replay the proofs again: the historical attestation says how the bytes were built, while the
 current-source record says whether their meaning has drifted.
 
-The operator-facing commands are:
+With all three authenticated report hashes installed, initial publication uses the tracked
+one-time CPU job without a same-source dependency on the historical preparation:
 
 ```console
-python3 scripts/seal_peano_v3_corpus.py create \
-  --artifact-dir data/peano-policy-v3 \
-  --dataset-attestation logs/peano-wmi-v3-dataset-attestation-PREPARE_JOB.json \
-  --token-audit logs/peano-wmi-v3-token-audit-PREPARE_JOB.json \
-  --runtime-smoke logs/peano-wmi-v3-prepare-runtime-PREPARE_JOB.json \
-  --destination checkpoints/corpora/peano-policy-v3-PREPARE_JOB \
-  --source-commit HISTORICAL_CLEAN_COMMIT \
-  --prepare-job-id PREPARE_JOB
-
-python3 scripts/seal_peano_v3_corpus.py verify \
-  --seal checkpoints/corpora/peano-policy-v3-PREPARE_JOB \
-  --source-commit HISTORICAL_CLEAN_COMMIT \
-  --prepare-job-id PREPARE_JOB
+./scripts/wmi_submit_job.sh --test-only slurm/peano_wmi_seal_v3_corpus.sbatch
+./scripts/wmi_submit_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  slurm/peano_wmi_seal_v3_corpus.sbatch
 ```
 
-The literal anchors and resulting `content_sha256` remain **pending** until job `173040` completes
-and the non-replacing seal is verified. They must then be copied into the tracked v3 TOML; no
-placeholder digest is an eligible configuration.
+After publication, any current clean checkout can independently recompute and verify the sealed
+bytes and invariants:
+
+```console
+python3 scripts/seal_peano_v3_corpus.py verify \
+  --seal checkpoints/corpora/peano-policy-v3-173040 \
+  --source-commit 5faa3d27cbaf522198ffa1bdcd11fa9d57341658 \
+  --prepare-job-id 173040
+```
+
+That command establishes internal consistency, not external authenticity by itself. Its printed
+`content_sha256` must equal the independently authenticated digest copied into the tracked v3 TOML;
+a mismatch is fatal even when the command otherwise succeeds. Only the resulting seal
+`content_sha256` remains **pending** until the non-replacing seal is published and verified. The
+genuine seal digest must then be copied into the tracked v3 TOML;
+no placeholder digest is an eligible configuration. The dataset-attestation report, twelve
+artifact anchors, and historical manifest anchor shown above are already known and pinned.
 
 #### Sealed preparation, one-shot training, evaluation, and replay
 

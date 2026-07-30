@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import stat
 import sys
+from types import SimpleNamespace
 from typing import Any
 
 import pytest
@@ -311,6 +312,37 @@ def _seal(bundle: dict[str, Path | str]) -> dict[str, object]:
     )
 
 
+def _hash_anchors(
+    bundle: dict[str, Path | str],
+) -> tuple[str, dict[str, str], dict[str, str]]:
+    data = bundle["artifact_dir"]
+    assert isinstance(data, Path)
+    data_hashes = {
+        name: _digest_file(data / name) for name in corpus_seal.DATA_FILES
+    }
+    report_hashes = {
+        role: _digest_file(bundle[role])  # type: ignore[arg-type]
+        for role in corpus_seal.REPORT_FILES
+    }
+    return data_hashes["manifest.json"], data_hashes, report_hashes
+
+
+def _anchored_seal(bundle: dict[str, Path | str]) -> dict[str, object]:
+    manifest_sha256, data_sha256s, report_sha256s = _hash_anchors(bundle)
+    return corpus_seal.seal_corpus(
+        bundle["artifact_dir"],
+        bundle["dataset_attestation"],
+        bundle["token_audit"],
+        bundle["runtime_smoke"],
+        bundle["destination"],
+        source_commit=str(bundle["source_commit"]),
+        prepare_job_id=str(bundle["prepare_job_id"]),
+        dataset_manifest_sha256=manifest_sha256,
+        data_sha256s=data_sha256s,
+        report_sha256s=report_sha256s,
+    )
+
+
 def _unlock_tree(root: Path) -> None:
     if not root.exists():
         return
@@ -320,6 +352,12 @@ def _unlock_tree(root: Path) -> None:
         for name in directories:
             os.chmod(Path(current) / name, 0o700, follow_symlinks=False)
     os.chmod(root, 0o700, follow_symlinks=False)
+
+
+def _retained_seal_stage(parent: Path) -> Path:
+    stages = list(parent.glob(".sealed-corpus.staging-*"))
+    assert len(stages) == 1
+    return stages[0]
 
 
 def _load_script():
@@ -416,6 +454,62 @@ def test_rejects_symlinked_report(tmp_path: Path) -> None:
     assert not destination.exists()
 
 
+def test_copy_rechecks_source_mode_and_link_count_at_final_path(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    source = tmp_path / "source.jsonl"
+    target = tmp_path / "target.jsonl"
+    source.write_text('{"proof":"checked"}\n', encoding="utf-8")
+    original_lstat = corpus_seal.os.lstat
+    source_inspections = 0
+
+    def add_link_after_open(path: os.PathLike[str] | str) -> os.stat_result:
+        nonlocal source_inspections
+        measured = original_lstat(path)
+        if Path(path) != source:
+            return measured
+        source_inspections += 1
+        if source_inspections == 1:
+            return measured
+        return SimpleNamespace(
+            st_dev=measured.st_dev,
+            st_ino=measured.st_ino,
+            st_mode=measured.st_mode,
+            st_nlink=2,
+            st_size=measured.st_size,
+            st_mtime_ns=measured.st_mtime_ns,
+            st_ctime_ns=measured.st_ctime_ns,
+        )  # type: ignore[return-value]
+
+    monkeypatch.setattr(corpus_seal.os, "lstat", add_link_after_open)
+    with pytest.raises(
+        corpus_seal.CorpusSealError,
+        match="source changed while it was copied",
+    ):
+        corpus_seal._copy_regular_file(source, target, "copy-race fixture")
+    assert source_inspections == 2
+
+
+@pytest.mark.parametrize("role", ("artifact", "report"))
+def test_rejects_external_hard_links_before_publication(
+    tmp_path: Path,
+    role: str,
+) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    if role == "artifact":
+        target = bundle["artifact_dir"] / "train.jsonl"  # type: ignore[operator]
+    else:
+        target = bundle["token_audit"]
+    assert isinstance(target, Path)
+    os.link(target, tmp_path / f"external-{role}-alias")
+    with pytest.raises(corpus_seal.CorpusSealError, match="single-link"):
+        _seal(bundle)
+    assert not destination.exists()
+
+
 def test_rejects_cross_report_hash_or_runtime_identity(tmp_path: Path) -> None:
     bundle = _fixture_bundle(tmp_path)
     audit_path = bundle["token_audit"]
@@ -451,7 +545,7 @@ def test_never_overwrites_an_existing_destination(tmp_path: Path) -> None:
     assert not list(tmp_path.glob(".sealed-corpus.staging-*"))
 
 
-def test_publication_failure_rolls_back_staging(
+def test_publication_failure_retains_staging_without_masking_error(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     bundle = _fixture_bundle(tmp_path)
@@ -465,7 +559,12 @@ def test_publication_failure_rolls_back_staging(
     with pytest.raises(OSError, match="simulated"):
         _seal(bundle)
     assert not destination.exists()
-    assert not list(tmp_path.glob(".sealed-corpus.staging-*"))
+    stage = _retained_seal_stage(tmp_path)
+    try:
+        assert (stage / "seal.json").is_file()
+        assert stat.S_IMODE((stage / "seal.json").stat().st_mode) == 0o444
+    finally:
+        _unlock_tree(stage)
 
 
 def test_linux_publication_keeps_staging_root_read_only(
@@ -488,7 +587,115 @@ def test_linux_publication_keeps_staging_root_read_only(
     assert observed_mode is not None
     assert observed_mode & (stat.S_IWUSR | stat.S_IWGRP | stat.S_IWOTH) == 0
     assert not destination.exists()
-    assert not list(tmp_path.glob(".sealed-corpus.staging-*"))
+    stage = _retained_seal_stage(tmp_path)
+    try:
+        assert stat.S_IMODE(stage.stat().st_mode) == 0o555
+    finally:
+        _unlock_tree(stage)
+
+
+def test_final_protected_modes_are_fsynced_before_linux_publication(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    events: list[str] = []
+    original_protect = corpus_seal._protect_tree
+    original_fsync = corpus_seal._fsync_protected_tree
+
+    def protect(root: Path) -> None:
+        original_protect(root)
+        events.append("protect")
+
+    def fsync_protected(root: Path) -> None:
+        assert stat.S_IMODE(root.stat().st_mode) == 0o555
+        assert stat.S_IMODE((root / "data").stat().st_mode) == 0o555
+        assert stat.S_IMODE((root / "reports").stat().st_mode) == 0o555
+        assert stat.S_IMODE((root / "seal.json").stat().st_mode) == 0o444
+        assert all(
+            stat.S_IMODE(path.stat().st_mode) == 0o444
+            for directory in (root / "data", root / "reports")
+            for path in directory.iterdir()
+        )
+        original_fsync(root)
+        events.append("fsync-protected")
+
+    def stop_at_rename(_source: Path, _target: Path) -> None:
+        events.append("rename")
+        raise OSError("stop after durable-mode inspection")
+
+    monkeypatch.setattr(corpus_seal.sys, "platform", "linux")
+    monkeypatch.setattr(corpus_seal, "_protect_tree", protect)
+    monkeypatch.setattr(corpus_seal, "_fsync_protected_tree", fsync_protected)
+    monkeypatch.setattr(corpus_seal, "_rename_noreplace", stop_at_rename)
+    with pytest.raises(OSError, match="durable-mode inspection"):
+        _seal(bundle)
+    assert events == ["protect", "fsync-protected", "rename"]
+    assert not destination.exists()
+    stage = _retained_seal_stage(tmp_path)
+    try:
+        assert stat.S_IMODE(stage.stat().st_mode) == 0o555
+    finally:
+        _unlock_tree(stage)
+
+
+def test_protected_tree_fsync_failure_prevents_publication(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    rename_called = False
+
+    def fail_fsync(_root: Path) -> None:
+        raise OSError("simulated protected-tree fsync failure")
+
+    def observe_rename(_source: Path, _target: Path) -> None:
+        nonlocal rename_called
+        rename_called = True
+
+    monkeypatch.setattr(corpus_seal, "_fsync_protected_tree", fail_fsync)
+    monkeypatch.setattr(corpus_seal, "_rename_noreplace", observe_rename)
+    with pytest.raises(OSError, match="protected-tree fsync failure"):
+        _seal(bundle)
+    assert rename_called is False
+    assert not destination.exists()
+    stage = _retained_seal_stage(tmp_path)
+    try:
+        assert stat.S_IMODE(stage.stat().st_mode) == 0o555
+    finally:
+        _unlock_tree(stage)
+
+
+def test_darwin_reprotected_root_is_fsynced_before_parent_commit(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    original_fsync_directory = corpus_seal._fsync_directory
+    post_rename_syncs: list[tuple[Path, int]] = []
+
+    def rename(source: Path, target: Path) -> None:
+        source.rename(target)
+
+    def fsync_directory(path: Path) -> None:
+        if destination.exists():
+            post_rename_syncs.append((path, stat.S_IMODE(path.stat().st_mode)))
+        original_fsync_directory(path)
+
+    monkeypatch.setattr(corpus_seal.sys, "platform", "darwin")
+    monkeypatch.setattr(corpus_seal, "_rename_noreplace", rename)
+    monkeypatch.setattr(corpus_seal, "_fsync_directory", fsync_directory)
+    try:
+        _seal(bundle)
+        assert post_rename_syncs[-2:] == [
+            (destination, 0o555),
+            (destination.parent, stat.S_IMODE(destination.parent.stat().st_mode)),
+        ]
+    finally:
+        _unlock_tree(destination)
 
 
 @pytest.mark.parametrize("mutation", ("content", "extra", "symlink", "noncanonical"))
@@ -533,6 +740,370 @@ def test_verifier_accepts_external_trust_anchors_only_on_exact_match(tmp_path: P
             corpus_seal.verify_seal(destination, source_commit="b" * 40)
         with pytest.raises(corpus_seal.CorpusSealError, match="different preparation job"):
             corpus_seal.verify_seal(destination, prepare_job_id="172730")
+    finally:
+        _unlock_tree(destination)
+
+
+@pytest.mark.parametrize(
+    "relative",
+    ("seal.json", "data/train.jsonl", "reports/token-audit.json"),
+)
+def test_verifier_rejects_external_hard_links(
+    tmp_path: Path,
+    relative: str,
+) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    _seal(bundle)
+    alias = tmp_path / (Path(relative).name + ".external-alias")
+    try:
+        os.link(destination / relative, alias)
+        with pytest.raises(corpus_seal.CorpusSealError, match="single-link"):
+            corpus_seal.verify_seal(destination)
+    finally:
+        alias.unlink(missing_ok=True)
+        _unlock_tree(destination)
+
+
+def test_external_hash_anchors_cover_all_data_and_reports(tmp_path: Path) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    manifest_sha256, data_sha256s, report_sha256s = _hash_anchors(bundle)
+    try:
+        manifest = _anchored_seal(bundle)
+        assert corpus_seal.verify_seal(
+            destination,
+            source_commit=COMMIT,
+            prepare_job_id=JOB_ID,
+            dataset_manifest_sha256=manifest_sha256,
+            data_sha256s=data_sha256s,
+            report_sha256s=report_sha256s,
+        ) == manifest
+        wrong = dict(data_sha256s)
+        wrong["balanced-source-manifest.json"] = "f" * 64
+        with pytest.raises(corpus_seal.CorpusSealError, match="external SHA-256"):
+            corpus_seal.verify_seal(
+                destination,
+                dataset_manifest_sha256=manifest_sha256,
+                data_sha256s=wrong,
+                report_sha256s=report_sha256s,
+            )
+    finally:
+        _unlock_tree(destination)
+
+
+def test_report_publication_recovers_crash_window_and_reuses_only_same_job(
+    tmp_path: Path,
+) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    report = tmp_path / "logs" / "seal-report-99.json"
+    manifest_sha256, data_sha256s, report_sha256s = _hash_anchors(bundle)
+    try:
+        _anchored_seal(bundle)
+        assert not report.exists()  # simulated crash after seal publication
+        first = corpus_seal.publish_seal_report(
+            report,
+            destination,
+            source_commit=COMMIT,
+            prepare_job_id=JOB_ID,
+            publisher_job_id="99",
+            dataset_manifest_sha256=manifest_sha256,
+            data_sha256s=data_sha256s,
+            report_sha256s=report_sha256s,
+        )
+        assert first["publisher"] == {"scheduler": "slurm", "job_id": "99"}
+        before = (report.stat().st_dev, report.stat().st_ino, report.read_bytes())
+        second = corpus_seal.publish_seal_report(
+            report,
+            destination,
+            source_commit=COMMIT,
+            prepare_job_id=JOB_ID,
+            publisher_job_id="99",
+            dataset_manifest_sha256=manifest_sha256,
+            data_sha256s=data_sha256s,
+            report_sha256s=report_sha256s,
+        )
+        assert second == first
+        assert (report.stat().st_dev, report.stat().st_ino, report.read_bytes()) == before
+        with pytest.raises(corpus_seal.CorpusSealError, match="publisher job"):
+            corpus_seal.publish_seal_report(
+                report,
+                destination,
+                source_commit=COMMIT,
+                prepare_job_id=JOB_ID,
+                publisher_job_id="100",
+                dataset_manifest_sha256=manifest_sha256,
+                data_sha256s=data_sha256s,
+                report_sha256s=report_sha256s,
+            )
+    finally:
+        if report.exists():
+            os.chmod(report, 0o600)
+        _unlock_tree(destination)
+
+
+def test_report_publication_failure_retains_its_stage_without_masking_error(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    report = tmp_path / "logs" / "seal-report-99.json"
+    manifest_sha256, data_sha256s, report_sha256s = _hash_anchors(bundle)
+    _anchored_seal(bundle)
+
+    def fail_rename(_source: Path, _destination: Path) -> None:
+        raise OSError("simulated report rename failure")
+
+    monkeypatch.setattr(corpus_seal, "_rename_noreplace", fail_rename)
+    try:
+        with pytest.raises(OSError, match="simulated report rename failure"):
+            corpus_seal.publish_seal_report(
+                report,
+                destination,
+                source_commit=COMMIT,
+                prepare_job_id=JOB_ID,
+                publisher_job_id="99",
+                dataset_manifest_sha256=manifest_sha256,
+                data_sha256s=data_sha256s,
+                report_sha256s=report_sha256s,
+            )
+        assert not report.exists()
+        stages = list(report.parent.glob(f".{report.name}.staging-*"))
+        assert len(stages) == 1
+        assert stat.S_IMODE(stages[0].stat().st_mode) == 0o444
+        staged = json.loads(stages[0].read_text(encoding="utf-8"))
+        assert staged["publisher"] == {"scheduler": "slurm", "job_id": "99"}
+    finally:
+        _unlock_tree(destination)
+
+
+def test_report_failure_never_deletes_a_replacement_at_its_stage_path(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    report = tmp_path / "logs" / "seal-report-99.json"
+    manifest_sha256, data_sha256s, report_sha256s = _hash_anchors(bundle)
+    _anchored_seal(bundle)
+    replacement = b"foreign replacement\n"
+
+    def replace_then_fail(source: Path, _destination: Path) -> None:
+        os.chmod(source, 0o600)
+        source.unlink()
+        source.write_bytes(replacement)
+        raise OSError("simulated replacement race")
+
+    monkeypatch.setattr(corpus_seal, "_rename_noreplace", replace_then_fail)
+    try:
+        with pytest.raises(OSError, match="simulated replacement race"):
+            corpus_seal.publish_seal_report(
+                report,
+                destination,
+                source_commit=COMMIT,
+                prepare_job_id=JOB_ID,
+                publisher_job_id="99",
+                dataset_manifest_sha256=manifest_sha256,
+                data_sha256s=data_sha256s,
+                report_sha256s=report_sha256s,
+            )
+        stages = list(report.parent.glob(f".{report.name}.staging-*"))
+        assert len(stages) == 1
+        assert stages[0].read_bytes() == replacement
+        stages[0].unlink()
+    finally:
+        _unlock_tree(destination)
+
+
+def test_report_publication_requires_every_external_anchor_at_runtime(
+    tmp_path: Path,
+) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    report = tmp_path / "logs" / "seal-report-99.json"
+    manifest_sha256, data_sha256s, report_sha256s = _hash_anchors(bundle)
+    _anchored_seal(bundle)
+    try:
+        with pytest.raises(corpus_seal.CorpusSealError, match="dataset manifest hash"):
+            corpus_seal.publish_seal_report(
+                report,
+                destination,
+                source_commit=COMMIT,
+                prepare_job_id=JOB_ID,
+                publisher_job_id="99",
+                dataset_manifest_sha256=None,  # type: ignore[arg-type]
+                data_sha256s=data_sha256s,
+                report_sha256s=report_sha256s,
+            )
+        with pytest.raises(corpus_seal.CorpusSealError, match="requires all twelve"):
+            corpus_seal.publish_seal_report(
+                report,
+                destination,
+                source_commit=COMMIT,
+                prepare_job_id=JOB_ID,
+                publisher_job_id="99",
+                dataset_manifest_sha256=manifest_sha256,
+                data_sha256s=None,  # type: ignore[arg-type]
+                report_sha256s=report_sha256s,
+            )
+        with pytest.raises(corpus_seal.CorpusSealError, match="requires all twelve"):
+            corpus_seal.publish_seal_report(
+                report,
+                destination,
+                source_commit=COMMIT,
+                prepare_job_id=JOB_ID,
+                publisher_job_id="99",
+                dataset_manifest_sha256=manifest_sha256,
+                data_sha256s=data_sha256s,
+                report_sha256s=None,  # type: ignore[arg-type]
+            )
+    finally:
+        _unlock_tree(destination)
+
+
+def test_existing_report_is_fsynced_with_its_parent_then_reverified(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    report = tmp_path / "logs" / "seal-report-99.json"
+    manifest_sha256, data_sha256s, report_sha256s = _hash_anchors(bundle)
+    _anchored_seal(bundle)
+    try:
+        expected = corpus_seal.publish_seal_report(
+            report,
+            destination,
+            source_commit=COMMIT,
+            prepare_job_id=JOB_ID,
+            publisher_job_id="99",
+            dataset_manifest_sha256=manifest_sha256,
+            data_sha256s=data_sha256s,
+            report_sha256s=report_sha256s,
+        )
+        events: list[tuple[str, Path]] = []
+        original_file = corpus_seal._fsync_regular_file
+        original_directory = corpus_seal._fsync_directory
+
+        def fsync_file(path: Path, label: str) -> None:
+            events.append(("file", path))
+            original_file(path, label)
+
+        def fsync_directory(path: Path) -> None:
+            events.append(("directory", path))
+            original_directory(path)
+
+        monkeypatch.setattr(corpus_seal, "_fsync_regular_file", fsync_file)
+        monkeypatch.setattr(corpus_seal, "_fsync_directory", fsync_directory)
+        assert corpus_seal.publish_seal_report(
+            report,
+            destination,
+            source_commit=COMMIT,
+            prepare_job_id=JOB_ID,
+            publisher_job_id="99",
+            dataset_manifest_sha256=manifest_sha256,
+            data_sha256s=data_sha256s,
+            report_sha256s=report_sha256s,
+        ) == expected
+        assert events == [("file", report), ("directory", report.parent)]
+    finally:
+        if report.exists():
+            os.chmod(report, 0o600)
+        _unlock_tree(destination)
+
+
+def test_report_mode_check_is_bound_to_the_inode_that_is_opened(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    report = tmp_path / "logs" / "seal-report-99.json"
+    manifest_sha256, data_sha256s, report_sha256s = _hash_anchors(bundle)
+    _anchored_seal(bundle)
+    expected = corpus_seal.publish_seal_report(
+        report,
+        destination,
+        source_commit=COMMIT,
+        prepare_job_id=JOB_ID,
+        publisher_job_id="99",
+        dataset_manifest_sha256=manifest_sha256,
+        data_sha256s=data_sha256s,
+        report_sha256s=report_sha256s,
+    )
+    replacement = report.with_name("writable-replacement.json")
+    replacement.write_bytes(report.read_bytes())
+    os.chmod(replacement, 0o644)
+    original_lstat = corpus_seal._regular_lstat
+    replaced = False
+
+    def replace_after_lstat(path: Path, label: str) -> os.stat_result:
+        nonlocal replaced
+        before = original_lstat(path, label)
+        if path == report and not replaced:
+            os.replace(replacement, report)
+            replaced = True
+        return before
+
+    monkeypatch.setattr(corpus_seal, "_regular_lstat", replace_after_lstat)
+    try:
+        with pytest.raises(corpus_seal.CorpusSealError, match="changed while it was opened"):
+            corpus_seal._verify_seal_report(report, expected)
+    finally:
+        if report.exists():
+            os.chmod(report, 0o600)
+        _unlock_tree(destination)
+
+
+def test_stage_replacement_after_read_is_rejected_before_report_rename(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    report = tmp_path / "logs" / "seal-report-99.json"
+    manifest_sha256, data_sha256s, report_sha256s = _hash_anchors(bundle)
+    _anchored_seal(bundle)
+    original_read = corpus_seal._read_regular_bytes
+    replacement = b"foreign report stage\n"
+
+    def replace_after_read(path: Path, label: str, *, limit: int) -> bytes:
+        raw = original_read(path, label, limit=limit)
+        if label == "staged corpus seal verification report":
+            os.chmod(path, 0o600)
+            path.unlink()
+            path.write_bytes(replacement)
+            os.chmod(path, 0o444)
+        return raw
+
+    monkeypatch.setattr(corpus_seal, "_read_regular_bytes", replace_after_read)
+    try:
+        with pytest.raises(corpus_seal.CorpusSealError, match="changed before publication"):
+            corpus_seal.publish_seal_report(
+                report,
+                destination,
+                source_commit=COMMIT,
+                prepare_job_id=JOB_ID,
+                publisher_job_id="99",
+                dataset_manifest_sha256=manifest_sha256,
+                data_sha256s=data_sha256s,
+                report_sha256s=report_sha256s,
+            )
+        assert not report.exists()
+        stages = list(report.parent.glob(f".{report.name}.staging-*"))
+        assert len(stages) == 1
+        assert stages[0].read_bytes() == replacement
     finally:
         _unlock_tree(destination)
 

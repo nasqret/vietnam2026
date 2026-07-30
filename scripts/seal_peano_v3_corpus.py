@@ -220,6 +220,7 @@ def _parser() -> argparse.ArgumentParser:
     create.add_argument("--destination", type=Path, required=True)
     create.add_argument("--source-commit", required=True)
     create.add_argument("--prepare-job-id", required=True)
+    _add_external_anchor_arguments(create)
 
     verify = subparsers.add_parser(
         "verify",
@@ -228,7 +229,69 @@ def _parser() -> argparse.ArgumentParser:
     verify.add_argument("--seal", type=Path, required=True)
     verify.add_argument("--source-commit")
     verify.add_argument("--prepare-job-id")
+    _add_external_anchor_arguments(verify)
+
+    report = subparsers.add_parser(
+        "report",
+        help="verify one seal and atomically publish or recover its same-job report",
+    )
+    report.add_argument("--seal", type=Path, required=True)
+    report.add_argument("--report", type=Path, required=True)
+    report.add_argument("--source-commit", required=True)
+    report.add_argument("--prepare-job-id", required=True)
+    report.add_argument("--publisher-job-id", required=True)
+    _add_external_anchor_arguments(report, required=True)
     return parser
+
+
+def _add_external_anchor_arguments(
+    parser: argparse.ArgumentParser,
+    *,
+    required: bool = False,
+) -> None:
+    parser.add_argument("--dataset-manifest-sha256", required=required)
+    parser.add_argument("--dataset-attestation-sha256", required=required)
+    parser.add_argument("--token-audit-sha256", required=required)
+    parser.add_argument("--runtime-smoke-sha256", required=required)
+    parser.add_argument(
+        "--artifact-sha256",
+        action="append",
+        required=required,
+        metavar="NAME=SHA256",
+    )
+
+
+def _external_anchors(
+    args: argparse.Namespace,
+) -> tuple[str | None, dict[str, str] | None, dict[str, str] | None]:
+    values = (
+        args.dataset_manifest_sha256,
+        args.dataset_attestation_sha256,
+        args.token_audit_sha256,
+        args.runtime_smoke_sha256,
+    )
+    artifact_values = args.artifact_sha256
+    if (any(value is not None for value in values) or artifact_values) and not all(
+        value is not None for value in values
+    ):
+        raise BootstrapError(
+            "all data and report SHA-256 anchors are required together"
+        )
+    if values[0] is None:
+        return None, None, None
+    artifacts: dict[str, str] = {}
+    for raw in artifact_values or []:
+        name, separator, digest = raw.partition("=")
+        if not separator or not name or name in artifacts:
+            raise BootstrapError(
+                f"artifact hash anchor must be one unique NAME=SHA256 pair: {raw!r}"
+            )
+        artifacts[name] = digest
+    return values[0], artifacts, {
+        "dataset_attestation": values[1],
+        "token_audit": values[2],
+        "runtime_smoke": values[3],
+    }
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -264,6 +327,7 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     try:
+        dataset_manifest_sha256, data_sha256s, report_sha256s = _external_anchors(args)
         if args.command == "create":
             manifest = corpus_seal.seal_corpus(
                 args.artifact_dir,
@@ -273,16 +337,38 @@ def main(argv: list[str] | None = None) -> int:
                 args.destination,
                 source_commit=args.source_commit,
                 prepare_job_id=args.prepare_job_id,
+                dataset_manifest_sha256=dataset_manifest_sha256,
+                data_sha256s=data_sha256s,
+                report_sha256s=report_sha256s,
             )
             location = args.destination
-        else:
+        elif args.command == "verify":
             manifest = corpus_seal.verify_seal(
                 args.seal,
                 source_commit=args.source_commit,
                 prepare_job_id=args.prepare_job_id,
+                dataset_manifest_sha256=dataset_manifest_sha256,
+                data_sha256s=data_sha256s,
+                report_sha256s=report_sha256s,
             )
             location = args.seal
-    except (corpus_seal.CorpusSealError, FileExistsError, OSError) as exc:
+        else:
+            assert dataset_manifest_sha256 is not None
+            assert data_sha256s is not None
+            assert report_sha256s is not None
+            report = corpus_seal.publish_seal_report(
+                args.report,
+                args.seal,
+                source_commit=args.source_commit,
+                prepare_job_id=args.prepare_job_id,
+                publisher_job_id=args.publisher_job_id,
+                dataset_manifest_sha256=dataset_manifest_sha256,
+                data_sha256s=data_sha256s,
+                report_sha256s=report_sha256s,
+            )
+            print(json.dumps(report, ensure_ascii=False, sort_keys=True))
+            return 0
+    except (BootstrapError, corpus_seal.CorpusSealError, FileExistsError, OSError) as exc:
         print(f"Peano v3 corpus seal failed: {exc}", file=sys.stderr)
         return 2
 

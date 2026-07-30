@@ -17,6 +17,7 @@ except ModuleNotFoundError:  # Python 3.10 test host
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 PROBE = REPO_ROOT / "slurm" / "peano_wmi_a100_probe.sbatch"
+CORPUS_SEAL_JOB = REPO_ROOT / "slurm" / "peano_wmi_seal_v3_corpus.sbatch"
 SCRIPTS = REPO_ROOT / "scripts"
 SLURM = REPO_ROOT / "slurm"
 TRAINING = REPO_ROOT / "training" / "peano_policy"
@@ -36,6 +37,7 @@ WMI_SHELL_FILES = (
     SLURM / "peano_wmi_train_qwen3_1_7b_v2.sbatch",
     SLURM / "peano_wmi_eval_qwen3_1_7b_v2.sbatch",
     SLURM / "peano_wmi_prepare_v3_training.sbatch",
+    CORPUS_SEAL_JOB,
     SLURM / "peano_wmi_prepare_v3_sealed_training.sbatch",
     SLURM / "peano_wmi_train_qwen3_1_7b_v3.sbatch",
     SLURM / "peano_wmi_eval_qwen3_1_7b_v3.sbatch",
@@ -155,6 +157,7 @@ def test_wmi_submission_and_jobs_share_source_lock_and_queue_gate() -> None:
         "peano-wmi-qwen17-v2",
         "peano-wmi-qwen17-v2-eval",
         "peano-wmi-v3-prepare",
+        "peano-wmi-v3-seal",
         "peano-wmi-v3-sealprep",
         "peano-wmi-qwen17-v3",
         "peano-wmi-qwen17-v3-eval",
@@ -175,6 +178,7 @@ def test_wmi_submission_and_jobs_share_source_lock_and_queue_gate() -> None:
         SLURM / "peano_wmi_train_qwen3_1_7b_v2.sbatch",
         SLURM / "peano_wmi_eval_qwen3_1_7b_v2.sbatch",
         SLURM / "peano_wmi_prepare_v3_training.sbatch",
+        CORPUS_SEAL_JOB,
         SLURM / "peano_wmi_prepare_v3_sealed_training.sbatch",
         SLURM / "peano_wmi_train_qwen3_1_7b_v3.sbatch",
         SLURM / "peano_wmi_eval_qwen3_1_7b_v3.sbatch",

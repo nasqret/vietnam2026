@@ -1025,14 +1025,37 @@ and the historical preparation's three reports, validates their internal source/
 relations, copies them into a private directory, fsyncs and re-hashes them, publishes with a
 non-replacing rename, and makes the closed tree read-only. Symlinks, hard-link aliases, non-regular
 files, unexpected names, malformed JSON, mixed Slurm jobs, or a changed source during copying are
-fatal. One `content_sha256` binds the complete result.
+fatal. The last source-path comparison includes mode and link count as well as identity, size, and
+timestamps. A failed creation retains its visibly partial stage: pathname-based cleanup could both
+mask the original I/O failure and delete a replacement installed after inspection. One
+`content_sha256` binds the complete result.
 
-There is a bootstrapping wrinkle: the first seal is created next to the old unsealed corpus, before
-the newer package can be deployed normally. The reviewed bootstrap contains only the CLI and the
-standard-library seal module. Its staged inventory forbids package markers and bytecode caches. A
-launcher embedded in the submitted job stable-reads and hashes the CLI, then compiles exactly those
-verified bytes with isolated Python; the CLI performs the same closed-tree check on the module.
-Thus neither `__init__.py`, `.pyc`, nor a replaced pathname silently joins the trusted program.
+There is a bootstrapping wrinkle: the first seal must preserve the old unsealed corpus and reports
+while using the newer sealing code. Deployment explicitly protects those historical paths. The
+tracked one-time CPU job `peano_wmi_seal_v3_corpus.sbatch` pins job `173040`, its clean source
+commit, destination, manifest, all twelve artifacts, and both reviewed source hashes. The
+authenticated dataset-attestation report is now pinned at
+`4e1cf0d00725a739d6f371062ff2079cfb9bc3e36daf4f4219cbbe1399a68a12`;
+the token audit is now pinned at
+`c290b285eabcf9d39ab13b4d6f0f194588541484390d35c00681041979e2f8d8` after checking all 64,500
+train and 6,000 validation rows. The A100 runtime smoke is pinned at
+`86cc35bfcf2d5ff51931c140f3eb7168e3f641e1f80d54a3984dba9e49e40749`; it passed on the immutable
+Qwen3-1.7B revision with rank-32 LoRA and 34,865,152 trainable parameters. All three report anchors
+are therefore installed. A reviewed WMI Python verifies all inputs and retains a no-replace probe
+on the target filesystem.
+The job then makes and retains a fresh private bootstrap containing only the CLI and standard-
+library seal module; its staged inventory forbids package markers and bytecode caches. A launcher
+embedded in the submission-hashed job stable-reads and hashes the CLI, then compiles exactly those
+verified bytes with isolated Python; the CLI performs the same closed-tree and external-anchor
+checks on the module and corpus. Thus neither `__init__.py`, `.pyc`, nor a replaced pathname
+silently joins the trusted program. Seal recovery verifies an existing destination and atomically
+publishes only a canonical same-job report, closing the crash window without replacing the seal.
+The destination is classified before the mutable historical paths are inspected, so recovery reads
+only sealed copies and literal anchors even if the originals have since been retired. The retained
+no-replace probe covers both atomic publications only after the seal and report parents are proven
+to share one filesystem device. Existing reports are freshly verified, fsynced with their parent,
+and verified again; a failed publication retains its read-only sibling stage rather than risking
+deletion of a pathname that changed after inspection.
 
 A seal is not a signature. The expected historical commit, job ID, and content digest must be
 obtained independently. Current code first verifies those external anchors and every sealed byte,

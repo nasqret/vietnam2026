@@ -21,7 +21,6 @@ import json
 import os
 from pathlib import Path
 import re
-import shutil
 import stat
 import sys
 import tempfile
@@ -31,6 +30,8 @@ from collections.abc import Mapping, Sequence
 SEAL_FORMAT = "peano-policy-v3-corpus-seal"
 SEAL_VERSION = 1
 SEAL_MANIFEST = "seal.json"
+SEAL_REPORT_FORMAT = "peano-policy-v3-corpus-seal-verification"
+SEAL_REPORT_VERSION = 1
 
 DATA_FILES = (
     "balanced-raw-traces.jsonl",
@@ -163,8 +164,14 @@ def _regular_lstat(path: Path, label: str) -> os.stat_result:
         metadata = os.lstat(path)
     except OSError as exc:
         raise CorpusSealError(f"{label}: cannot inspect regular file: {exc}") from exc
-    if stat.S_ISLNK(metadata.st_mode) or not stat.S_ISREG(metadata.st_mode):
-        raise CorpusSealError(f"{label}: expected one non-symlink regular file")
+    if (
+        stat.S_ISLNK(metadata.st_mode)
+        or not stat.S_ISREG(metadata.st_mode)
+        or metadata.st_nlink != 1
+    ):
+        raise CorpusSealError(
+            f"{label}: expected one non-symlink single-link regular file"
+        )
     return metadata
 
 
@@ -178,6 +185,7 @@ def _open_regular(path: Path, label: str) -> tuple[int, os.stat_result]:
     opened = os.fstat(descriptor)
     if (
         not stat.S_ISREG(opened.st_mode)
+        or opened.st_nlink != 1
         or (opened.st_dev, opened.st_ino) != (before.st_dev, before.st_ino)
     ):
         os.close(descriptor)
@@ -198,14 +206,27 @@ def _require_stable_read(
         current = os.lstat(path)
     except OSError as exc:
         raise CorpusSealError(f"{label}: file disappeared during read") from exc
-    stable_fields = ("st_dev", "st_ino", "st_size", "st_mtime_ns", "st_ctime_ns")
+    stable_fields = (
+        "st_dev",
+        "st_ino",
+        "st_mode",
+        "st_nlink",
+        "st_size",
+        "st_mtime_ns",
+        "st_ctime_ns",
+    )
     if any(getattr(opened, field) != getattr(after, field) for field in stable_fields) or any(
         getattr(opened, field) != getattr(current, field) for field in stable_fields
     ):
         raise CorpusSealError(f"{label}: file changed while it was read")
 
 
-def _read_regular_bytes(path: Path, label: str, *, limit: int) -> bytes:
+def _read_regular_bytes_with_stat(
+    path: Path,
+    label: str,
+    *,
+    limit: int,
+) -> tuple[bytes, os.stat_result]:
     descriptor, opened = _open_regular(path, label)
     if opened.st_size > limit:
         os.close(descriptor)
@@ -219,6 +240,11 @@ def _read_regular_bytes(path: Path, label: str, *, limit: int) -> bytes:
     if len(raw) > limit:
         raise CorpusSealError(f"{label}: file exceeds the {limit}-byte safety limit")
     _require_stable_read(path, label=label, opened=opened, after=after)
+    return raw, opened
+
+
+def _read_regular_bytes(path: Path, label: str, *, limit: int) -> bytes:
+    raw, _ = _read_regular_bytes_with_stat(path, label, limit=limit)
     return raw
 
 
@@ -295,19 +321,17 @@ def _copy_regular_file(source: Path, target: Path, label: str) -> dict[str, obje
         current = os.lstat(source)
     except OSError as exc:
         raise CorpusSealError(f"{label}: source disappeared during copy") from exc
-    stable_fields = ("st_dev", "st_ino", "st_size", "st_mtime_ns", "st_ctime_ns")
-    if any(getattr(opened, field) != getattr(after, field) for field in stable_fields) or (
-        current.st_dev,
-        current.st_ino,
-        current.st_size,
-        current.st_mtime_ns,
-        current.st_ctime_ns,
-    ) != (
-        opened.st_dev,
-        opened.st_ino,
-        opened.st_size,
-        opened.st_mtime_ns,
-        opened.st_ctime_ns,
+    stable_fields = (
+        "st_dev",
+        "st_ino",
+        "st_mode",
+        "st_nlink",
+        "st_size",
+        "st_mtime_ns",
+        "st_ctime_ns",
+    )
+    if any(getattr(opened, field) != getattr(after, field) for field in stable_fields) or any(
+        getattr(opened, field) != getattr(current, field) for field in stable_fields
     ):
         raise CorpusSealError(f"{label}: source changed while it was copied")
     if copied != opened.st_size:
@@ -374,8 +398,14 @@ def _scan_data_directory(path: Path) -> dict[str, Path]:
             entry_stat = entry.stat(follow_symlinks=False)
         except OSError as exc:
             raise CorpusSealError(f"artifact {name}: cannot inspect entry: {exc}") from exc
-        if entry.is_symlink() or not stat.S_ISREG(entry_stat.st_mode):
-            raise CorpusSealError(f"artifact {name}: expected one non-symlink regular file")
+        if (
+            entry.is_symlink()
+            or not stat.S_ISREG(entry_stat.st_mode)
+            or entry_stat.st_nlink != 1
+        ):
+            raise CorpusSealError(
+                f"artifact {name}: expected one non-symlink single-link regular file"
+            )
         inode = (entry_stat.st_dev, entry_stat.st_ino)
         if inode in inodes:
             raise CorpusSealError(f"artifact {name}: hard-linked artifact aliases are forbidden")
@@ -446,6 +476,37 @@ def _sha256(value: object, label: str) -> str:
     return value
 
 
+def _report_hash_anchors(
+    value: Mapping[str, str] | None,
+) -> dict[str, str] | None:
+    if value is None:
+        return None
+    if type(value) is not dict or set(value) != set(REPORT_FILES):
+        raise CorpusSealError(
+            "report hash anchors must name exactly dataset_attestation, "
+            "token_audit, and runtime_smoke"
+        )
+    return {
+        role: _sha256(value[role], f"expected {role} report hash")
+        for role in REPORT_FILES
+    }
+
+
+def _data_hash_anchors(
+    value: Mapping[str, str] | None,
+) -> dict[str, str] | None:
+    if value is None:
+        return None
+    if type(value) is not dict or set(value) != set(DATA_FILES):
+        raise CorpusSealError(
+            "data hash anchors must name the exact twelve corpus artifacts"
+        )
+    return {
+        name: _sha256(value[name], f"expected {name} hash")
+        for name in DATA_FILES
+    }
+
+
 def _commit(value: object, label: str) -> str:
     if type(value) is not str or _COMMIT_RE.fullmatch(value) is None:
         raise CorpusSealError(f"{label}: expected one lowercase 40-hex Git commit")
@@ -471,6 +532,45 @@ def _record_table(records: Sequence[Mapping[str, object]]) -> dict[str, Mapping[
         path = _text(record.get("path"), "seal file path")
         result[path] = record
     return result
+
+
+def _verify_pinned_file_records(
+    records: Mapping[str, Mapping[str, object]],
+    *,
+    dataset_manifest_sha256: str | None,
+    data_sha256s: Mapping[str, str] | None,
+    report_sha256s: Mapping[str, str] | None,
+) -> None:
+    expected_data = _data_hash_anchors(data_sha256s)
+    if expected_data is not None:
+        for name in DATA_FILES:
+            if records[f"data/{name}"]["sha256"] != expected_data[name]:
+                raise CorpusSealError(
+                    f"artifact {name} differs from its external SHA-256 anchor"
+                )
+    if dataset_manifest_sha256 is not None:
+        expected_manifest = _sha256(
+            dataset_manifest_sha256,
+            "expected dataset manifest hash",
+        )
+        if records["data/manifest.json"]["sha256"] != expected_manifest:
+            raise CorpusSealError(
+                "dataset manifest differs from its external SHA-256 anchor"
+            )
+        if expected_data is not None and expected_data["manifest.json"] != expected_manifest:
+            raise CorpusSealError(
+                "dataset manifest anchors disagree with each other"
+            )
+    expected_reports = _report_hash_anchors(report_sha256s)
+    if expected_reports is not None:
+        for role, sealed_name in REPORT_FILES.items():
+            if (
+                records[f"reports/{sealed_name}"]["sha256"]
+                != expected_reports[role]
+            ):
+                raise CorpusSealError(
+                    f"{role} report differs from its external SHA-256 anchor"
+                )
 
 
 def _match_artifact_record(
@@ -950,6 +1050,18 @@ def _fsync_directory(path: Path) -> None:
         os.close(descriptor)
 
 
+def _fsync_regular_file(path: Path, label: str) -> None:
+    descriptor, opened = _open_regular(path, label)
+    try:
+        os.fsync(descriptor)
+        after = os.fstat(descriptor)
+    except OSError as exc:
+        raise CorpusSealError(f"{label}: cannot fsync file: {exc}") from exc
+    finally:
+        os.close(descriptor)
+    _require_stable_read(path, label=label, opened=opened, after=after)
+
+
 def _protect_tree(root: Path) -> None:
     for directory in (root / "data", root / "reports"):
         for entry in os.scandir(directory):
@@ -959,25 +1071,22 @@ def _protect_tree(root: Path) -> None:
     os.chmod(root, 0o555, follow_symlinks=False)
 
 
-def _remove_staging(root: Path) -> None:
-    if not root.exists():
-        return
-    for current, directories, files in os.walk(root, topdown=False, followlinks=False):
-        for name in files:
-            try:
-                os.chmod(Path(current) / name, 0o600, follow_symlinks=False)
-            except OSError:
-                pass
-        for name in directories:
-            try:
-                os.chmod(Path(current) / name, 0o700, follow_symlinks=False)
-            except OSError:
-                pass
-    try:
-        os.chmod(root, 0o700, follow_symlinks=False)
-    except OSError:
-        pass
-    shutil.rmtree(root)
+def _fsync_protected_tree(root: Path) -> None:
+    """Durably flush every final file and directory mode before publication."""
+
+    for directory_name, names in (
+        ("data", DATA_FILES),
+        ("reports", tuple(REPORT_FILES.values())),
+    ):
+        directory = root / directory_name
+        for name in names:
+            _fsync_regular_file(
+                directory / name,
+                f"protected {directory_name}/{name}",
+            )
+        _fsync_directory(directory)
+    _fsync_regular_file(root / SEAL_MANIFEST, "protected seal manifest")
+    _fsync_directory(root)
 
 
 def _rename_noreplace(source: Path, destination: Path) -> None:
@@ -1039,8 +1148,14 @@ def _scan_sealed_tree(root: Path) -> dict[str, Path]:
             raise CorpusSealError(f"sealed {directory_name} directory must be read-only")
     seal_entry = root_entries[SEAL_MANIFEST]
     seal_stat = seal_entry.stat(follow_symlinks=False)
-    if seal_entry.is_symlink() or not stat.S_ISREG(seal_stat.st_mode):
-        raise CorpusSealError("seal manifest must be one non-symlink regular file")
+    if (
+        seal_entry.is_symlink()
+        or not stat.S_ISREG(seal_stat.st_mode)
+        or seal_stat.st_nlink != 1
+    ):
+        raise CorpusSealError(
+            "seal manifest must be one non-symlink single-link regular file"
+        )
     if seal_stat.st_mode & write_bits:
         raise CorpusSealError("seal manifest must be read-only")
 
@@ -1057,8 +1172,14 @@ def _scan_sealed_tree(root: Path) -> dict[str, Path]:
         for name in sorted(expected):
             entry = entries[name]
             entry_stat = entry.stat(follow_symlinks=False)
-            if entry.is_symlink() or not stat.S_ISREG(entry_stat.st_mode):
-                raise CorpusSealError(f"sealed {directory_name}/{name} is not a regular file")
+            if (
+                entry.is_symlink()
+                or not stat.S_ISREG(entry_stat.st_mode)
+                or entry_stat.st_nlink != 1
+            ):
+                raise CorpusSealError(
+                    f"sealed {directory_name}/{name} is not a single-link regular file"
+                )
             if entry_stat.st_mode & write_bits:
                 raise CorpusSealError(
                     f"sealed {directory_name}/{name} must be read-only"
@@ -1073,6 +1194,9 @@ def verify_seal(
     *,
     source_commit: str | None = None,
     prepare_job_id: str | None = None,
+    dataset_manifest_sha256: str | None = None,
+    data_sha256s: Mapping[str, str] | None = None,
+    report_sha256s: Mapping[str, str] | None = None,
 ) -> dict[str, object]:
     """Independently verify one existing sealed corpus and return its manifest."""
 
@@ -1090,6 +1214,12 @@ def verify_seal(
         _file_record(path, _hash_regular_file(files[path], f"sealed {path}"))
         for path in expected_paths
     ]
+    _verify_pinned_file_records(
+        _record_table(actual_records),
+        dataset_manifest_sha256=dataset_manifest_sha256,
+        data_sha256s=data_sha256s,
+        report_sha256s=report_sha256s,
+    )
     if claimed_files != actual_records:
         raise CorpusSealError("seal file inventory differs from the closed tree")
     if _sha256(manifest.get("files_sha256"), "seal file inventory hash") != _sha256_json(actual_records):
@@ -1115,6 +1245,206 @@ def verify_seal(
     return expected_manifest
 
 
+def _seal_report_record(
+    report: Path,
+    seal: Path,
+    manifest: Mapping[str, object],
+    *,
+    publisher_job_id: str,
+) -> dict[str, object]:
+    source = _mapping(manifest.get("source"), "seal source identity")
+    dataset = _mapping(manifest.get("dataset"), "seal dataset identity")
+    return {
+        "format": SEAL_REPORT_FORMAT,
+        "v": SEAL_REPORT_VERSION,
+        "status": "verified",
+        "publisher": {
+            "scheduler": "slurm",
+            "job_id": _job_id(publisher_job_id, "seal report publisher job"),
+        },
+        "report": {
+            "path": str(report),
+            "encoding": "utf-8",
+            "canonical_json": "sorted-keys-compact-lf",
+            "atomic_no_replace": True,
+            "mode": "0o444",
+        },
+        "seal": {
+            "path": str(seal),
+            "source_commit": _commit(
+                source.get("git_commit"),
+                "seal report source commit",
+            ),
+            "prepare_job_id": _job_id(
+                source.get("prepare_job_id"),
+                "seal report preparation job",
+            ),
+            "dataset_manifest_sha256": _sha256(
+                dataset.get("manifest_sha256"),
+                "seal report dataset manifest hash",
+            ),
+            "files_sha256": _sha256(
+                manifest.get("files_sha256"),
+                "seal report file inventory hash",
+            ),
+            "content_sha256": _sha256(
+                manifest.get("content_sha256"),
+                "seal report content hash",
+            ),
+        },
+    }
+
+
+def _verify_seal_report(path: Path, expected: Mapping[str, object]) -> dict[str, object]:
+    raw, metadata = _read_regular_bytes_with_stat(
+        path,
+        "corpus seal verification report",
+        limit=_MAX_JSON_BYTES,
+    )
+    if stat.S_IMODE(metadata.st_mode) != 0o444:
+        raise CorpusSealError(
+            "corpus seal verification report must have exact mode 0444"
+        )
+    report = _decode_json(raw, location="corpus seal verification report")
+    if raw != _canonical_bytes(report):
+        raise CorpusSealError(
+            "corpus seal verification report is not canonical compact JSON"
+        )
+    if report != expected:
+        raise CorpusSealError(
+            "corpus seal verification report differs from its seal or publisher job"
+        )
+    return report
+
+
+def _durably_verify_seal_report(
+    path: Path,
+    expected: Mapping[str, object],
+) -> dict[str, object]:
+    """Verify, flush, and freshly reverify one already-published report."""
+
+    first = _verify_seal_report(path, expected)
+    _fsync_regular_file(path, "corpus seal verification report")
+    _fsync_directory(path.parent)
+    second = _verify_seal_report(path, expected)
+    if second != first:  # pragma: no cover - exact dictionaries are deterministic
+        raise CorpusSealError("corpus seal verification report changed while flushing")
+    return second
+
+
+def publish_seal_report(
+    report_path: str | os.PathLike[str],
+    seal_path: str | os.PathLike[str],
+    *,
+    source_commit: str,
+    prepare_job_id: str,
+    publisher_job_id: str,
+    dataset_manifest_sha256: str,
+    data_sha256s: Mapping[str, str],
+    report_sha256s: Mapping[str, str],
+) -> dict[str, object]:
+    """Verify a seal and atomically publish or recover its same-job report."""
+
+    expected_commit = _commit(source_commit, "expected source commit")
+    expected_job = _job_id(prepare_job_id, "expected preparation job id")
+    expected_publisher = _job_id(publisher_job_id, "seal report publisher job")
+    expected_manifest = _sha256(
+        dataset_manifest_sha256,
+        "expected dataset manifest hash",
+    )
+    expected_data = _data_hash_anchors(data_sha256s)
+    expected_reports = _report_hash_anchors(report_sha256s)
+    if expected_data is None or expected_reports is None:
+        raise CorpusSealError(
+            "seal report publication requires all twelve data and three report anchors"
+        )
+    report = _safe_absolute_path(report_path, "corpus seal verification report")
+    seal = _safe_absolute_path(seal_path, "sealed corpus")
+    _reject_symlink_components(report.parent, "seal report parent")
+    parent_stat = os.lstat(report.parent)
+    if stat.S_ISLNK(parent_stat.st_mode) or not stat.S_ISDIR(parent_stat.st_mode):
+        raise CorpusSealError("seal report parent must be a non-symlink directory")
+    manifest = verify_seal(
+        seal,
+        source_commit=expected_commit,
+        prepare_job_id=expected_job,
+        dataset_manifest_sha256=expected_manifest,
+        data_sha256s=expected_data,
+        report_sha256s=expected_reports,
+    )
+    expected = _seal_report_record(
+        report,
+        seal,
+        manifest,
+        publisher_job_id=expected_publisher,
+    )
+    try:
+        os.lstat(report)
+    except FileNotFoundError:
+        pass
+    else:
+        return _durably_verify_seal_report(report, expected)
+
+    payload = _canonical_bytes(expected)
+    descriptor, temporary_name = tempfile.mkstemp(
+        prefix=f".{report.name}.staging-",
+        dir=report.parent,
+    )
+    temporary = Path(temporary_name)
+    temporary_identity = os.fstat(descriptor)
+    temporary_inode = (temporary_identity.st_dev, temporary_identity.st_ino)
+    try:
+        with os.fdopen(descriptor, "wb") as stream:
+            stream.write(payload)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.chmod(temporary, 0o444, follow_symlinks=False)
+        _fsync_regular_file(
+            temporary,
+            "staged corpus seal verification report",
+        )
+        if _read_regular_bytes(
+            temporary,
+            "staged corpus seal verification report",
+            limit=_MAX_JSON_BYTES,
+        ) != payload:
+            raise CorpusSealError("staged corpus seal verification report changed")
+        staged = _regular_lstat(
+            temporary,
+            "staged corpus seal verification report",
+        )
+        if (
+            (staged.st_dev, staged.st_ino) != temporary_inode
+            or stat.S_IMODE(staged.st_mode) != 0o444
+        ):
+            raise CorpusSealError(
+                "staged corpus seal verification report changed before publication"
+            )
+        _fsync_directory(report.parent)
+        try:
+            _rename_noreplace(temporary, report)
+        except FileExistsError:
+            # A same-job retry may have won the race.  Only the exact protected
+            # report is admissible.  Retain our private stage: deleting by
+            # pathname after a failed publication could remove a replacement.
+            return _durably_verify_seal_report(report, expected)
+        published = _regular_lstat(report, "published corpus seal verification report")
+        if (
+            (published.st_dev, published.st_ino) != temporary_inode
+            or stat.S_IMODE(published.st_mode) != 0o444
+        ):
+            raise CorpusSealError(
+                "published corpus seal verification report is not the staged inode"
+            )
+        _fsync_directory(report.parent)
+        return _durably_verify_seal_report(report, expected)
+    except Exception:
+        # Retain any unpublished stage as read-only evidence.  Cleanup by
+        # pathname cannot be made conditional on inode identity atomically and
+        # must never mask the primary publication failure or delete a replacement.
+        raise
+
+
 def seal_corpus(
     artifact_dir: str | os.PathLike[str],
     dataset_attestation: str | os.PathLike[str],
@@ -1124,6 +1454,9 @@ def seal_corpus(
     *,
     source_commit: str,
     prepare_job_id: str,
+    dataset_manifest_sha256: str | None = None,
+    data_sha256s: Mapping[str, str] | None = None,
+    report_sha256s: Mapping[str, str] | None = None,
 ) -> dict[str, object]:
     """Validate and atomically publish one new, non-overwriting corpus seal."""
 
@@ -1131,6 +1464,27 @@ def seal_corpus(
     expected_job = _job_id(prepare_job_id, "expected preparation job id")
     source_root = _safe_absolute_path(artifact_dir, "artifact directory")
     source_files = _scan_data_directory(source_root)
+    expected_manifest = (
+        _sha256(dataset_manifest_sha256, "expected dataset manifest hash")
+        if dataset_manifest_sha256 is not None
+        else None
+    )
+    expected_data = _data_hash_anchors(data_sha256s)
+    if (
+        expected_manifest is not None
+        and expected_data is not None
+        and expected_data["manifest.json"] != expected_manifest
+    ):
+        raise CorpusSealError("dataset manifest anchors disagree with each other")
+    if expected_manifest is not None:
+        measured_manifest = _hash_regular_file(
+            source_files["manifest.json"],
+            "pinned dataset manifest",
+        )
+        if measured_manifest["sha256"] != expected_manifest:
+            raise CorpusSealError(
+                "dataset manifest differs from its external SHA-256 anchor"
+            )
     report_sources = _prepare_report_paths(
         {
             "dataset_attestation": dataset_attestation,
@@ -1139,6 +1493,14 @@ def seal_corpus(
         },
         expected_job,
     )
+    expected_reports = _report_hash_anchors(report_sha256s)
+    if expected_reports is not None:
+        for role, path in report_sources.items():
+            measured_report = _hash_regular_file(path, f"pinned {role} report")
+            if measured_report["sha256"] != expected_reports[role]:
+                raise CorpusSealError(
+                    f"{role} report differs from its external SHA-256 anchor"
+                )
 
     target = _safe_absolute_path(destination, "seal destination")
     if target.name in {"", ".", ".."}:
@@ -1159,7 +1521,6 @@ def seal_corpus(
     staging = Path(
         tempfile.mkdtemp(prefix=f".{target.name}.staging-", dir=target.parent)
     )
-    published = False
     try:
         (staging / "data").mkdir(mode=0o700)
         (staging / "reports").mkdir(mode=0o700)
@@ -1177,6 +1538,12 @@ def seal_corpus(
             )
             file_records.append(_file_record(f"reports/{sealed_name}", measured))
         file_records.sort(key=lambda record: str(record["path"]))
+        _verify_pinned_file_records(
+            _record_table(file_records),
+            dataset_manifest_sha256=expected_manifest,
+            data_sha256s=expected_data,
+            report_sha256s=expected_reports,
+        )
 
         identities = _validate_bundle(
             staging,
@@ -1190,10 +1557,14 @@ def seal_corpus(
         _fsync_directory(staging / "reports")
         _fsync_directory(staging)
         _protect_tree(staging)
+        _fsync_protected_tree(staging)
         verify_seal(
             staging,
             source_commit=expected_commit,
             prepare_job_id=expected_job,
+            dataset_manifest_sha256=expected_manifest,
+            data_sha256s=expected_data,
+            report_sha256s=expected_reports,
         )
         # macOS renamex_np(RENAME_EXCL) rejects a read-only source directory,
         # even though its parent is writable.  Linux does not, so its staging
@@ -1203,18 +1574,23 @@ def seal_corpus(
         if sys.platform == "darwin":
             os.chmod(staging, 0o700, follow_symlinks=False)
         _rename_noreplace(staging, target)
-        published = True
         if sys.platform == "darwin":
             os.chmod(target, 0o555, follow_symlinks=False)
+            _fsync_directory(target)
         _fsync_directory(target.parent)
         return verify_seal(
             target,
             source_commit=expected_commit,
             prepare_job_id=expected_job,
+            dataset_manifest_sha256=expected_manifest,
+            data_sha256s=expected_data,
+            report_sha256s=expected_reports,
         )
-    finally:
-        if not published and staging.exists():
-            _remove_staging(staging)
+    except BaseException:
+        # Retain a visibly partial/private stage on any failure.  Attempting
+        # pathname cleanup cannot be made conditional on inode identity and can
+        # both mask the primary I/O error and delete a replacement.
+        raise
 
 
 __all__ = [
@@ -1223,7 +1599,10 @@ __all__ = [
     "REPORT_FILES",
     "SEAL_FORMAT",
     "SEAL_MANIFEST",
+    "SEAL_REPORT_FORMAT",
+    "SEAL_REPORT_VERSION",
     "SEAL_VERSION",
+    "publish_seal_report",
     "seal_corpus",
     "verify_seal",
 ]

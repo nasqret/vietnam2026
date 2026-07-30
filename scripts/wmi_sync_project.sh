@@ -72,7 +72,8 @@ active="$(
      $2 == "peano-wmi-qwen17-eval" || $2 == "peano-wmi-v2-prepare" || \
      $2 == "peano-wmi-qwen17-v2" || $2 == "peano-wmi-qwen17-v2-eval" || \
      $2 == "peano-wmi-v3-prepare" || $2 == "peano-wmi-qwen17-v3" || \
-     $2 == "peano-wmi-qwen17-v3-eval" || $2 == "peano-wmi-v3-sealprep" || \
+     $2 == "peano-wmi-qwen17-v3-eval" || $2 == "peano-wmi-v3-seal" || \
+     $2 == "peano-wmi-v3-sealprep" || \
      $2 == "peano-wmi-qwen17-v3-base" || \
      $2 == "peano-wmi-prove" || $2 == "peano-wmi-probe"'
 )"

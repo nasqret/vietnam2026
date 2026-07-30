@@ -36,6 +36,7 @@ peano_wmi_validate_script_name() {
     slurm/peano_wmi_prepare_v2_training.sbatch|\
     slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch|\
     slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch|\
+    slurm/peano_wmi_seal_v3_corpus.sbatch|\
     slurm/peano_wmi_prepare_v3_sealed_training.sbatch|\
     slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch|\
     slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch|\
