@@ -121,6 +121,8 @@ rsync -a --delete-delay \
   --exclude='/.venv-wmi/***' \
   --filter='protect /.cache/huggingface/***' \
   --exclude='/.cache/huggingface/***' \
+  --filter='protect /data/peano-policy-v3/***' \
+  --exclude='/data/peano-policy-v3/***' \
   --filter='protect /checkpoints/***' \
   --exclude='/checkpoints/***' \
   --filter='protect /results/***' \
