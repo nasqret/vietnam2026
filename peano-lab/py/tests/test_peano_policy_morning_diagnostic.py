@@ -278,6 +278,26 @@ def test_morning_config_is_bounded_fresh_and_checkpoint_free() -> None:
     assert "forbidden Trainer checkpoint" in sbatch
 
 
+def test_morning_showcase_is_diagnostic_bounded_and_kernel_judged() -> None:
+    root = Path(__file__).resolve().parents[3]
+    sbatch = (
+        root / "slurm/peano_wmi_eval_v3_morning_showcase.sbatch"
+    ).read_text(encoding="utf-8")
+    common = (root / "scripts/wmi_common.sh").read_text(encoding="utf-8")
+    assert "#SBATCH --time=00:20:00" in sbatch
+    assert "#SBATCH --gpus=nvidia_a100:1" in sbatch
+    assert "--diagnostic" in sbatch
+    assert "--mode rollout" in sbatch
+    assert "--goal closed_arithmetic_seven" in sbatch
+    assert "--goal double_right_zero" in sbatch
+    assert "--k 1" in sbatch
+    assert "--max-steps 4" in sbatch
+    assert "--max-new-tokens 64" in sbatch
+    assert "flock -n -s 7" in sbatch
+    assert "flock -n -s 8" in sbatch
+    assert "peano_wmi_eval_v3_morning_showcase.sbatch" in common
+
+
 def test_diagnostic_adapter_requires_explicit_admission() -> None:
     core = {
         "format": diagnostic.FORMAT,

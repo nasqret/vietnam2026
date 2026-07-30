@@ -30,7 +30,8 @@ peano_wmi_validate_request_id() {
 
 peano_wmi_validate_script_name() {
   case "$1" in
-    slurm/peano_wmi_train_v3_morning_diagnostic.sbatch)
+    slurm/peano_wmi_train_v3_morning_diagnostic.sbatch|\
+    slurm/peano_wmi_eval_v3_morning_showcase.sbatch)
       return 0
       ;;
     *)
