@@ -72,10 +72,10 @@ EXPECTED_TOTAL_GRAPH_COUNT = 557
 # Filled from the lightweight static audit.  Both cover theorem statements,
 # scripts, ordered dependencies, and (for the latter) every isolated source.
 EXPECTED_GRAPH_SHA256 = (
-    "2b31288720415a10ac954916dc48144c6c6d2333fb551e5e4daac382cd9bbc39"
+    "2231ca4cde6931fad296513fb0c419e19beb7c37989d31fbf6cf01771597cb46"
 )
 EXPECTED_SOURCE_SHA256 = (
-    "141bfb8db2b7267c27e0254b2edde24d633c8d6d75f49ffdc35d46e732ad58b5"
+    "457327e29134e08fd8802a18b9e1a9e0e23fa84bb44f2934f1fcba466f6e6cb5"
 )
 
 _SOURCE_ROOT = Path(__file__).resolve().parents[1] / "peano_lab" / "library"

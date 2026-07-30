@@ -1,13 +1,13 @@
 {
   "candidate_count": 317,
-  "edge_count": 1792,
+  "edge_count": 1791,
   "explicit_dependency_reference_count": 8557,
   "formal_line_count": 27491,
-  "graph_sha256": "2b31288720415a10ac954916dc48144c6c6d2333fb551e5e4daac382cd9bbc39",
+  "graph_sha256": "2231ca4cde6931fad296513fb0c419e19beb7c37989d31fbf6cf01771597cb46",
   "layer_count": 45,
   "public_count": 240,
   "schema": "peano-lab-pa-proof-corpus-v1",
-  "source_sha256": "141bfb8db2b7267c27e0254b2edde24d633c8d6d75f49ffdc35d46e732ad58b5",
+  "source_sha256": "457327e29134e08fd8802a18b9e1a9e0e23fa84bb44f2934f1fcba466f6e6cb5",
   "theorem_count": 557,
   "theorems": [
     {
@@ -1389,13 +1389,6 @@
           "href": "PA008K.html",
           "name": "prime_range_product_coprime",
           "tag": "PA008K"
-        },
-        {
-          "body_reference": false,
-          "explicit_reference_count": 0,
-          "href": "PA008P.html",
-          "name": "prime_scaled_inverse_target_nonzero",
-          "tag": "PA008P"
         },
         {
           "body_reference": true,
@@ -198785,7 +198778,7 @@
         "line": 262,
         "owner_module": "euler_scaled_inverse_candidate",
         "path": "peano-lab/py/peano_lab/library/euler_scaled_inverse_candidate.py",
-        "sha256": "02c10dbc70a82bedd04f1c2e4ca18ec085af0eaed4328ed0260489b9807f82d8"
+        "sha256": "a3bab40c51e82d3778bead4a1a0ca461263d04f4fa3eb2530a16ef9a9eea4d19"
       },
       "spec_sha256": "fc9c3355f68d574c30b223116faf4a697b54a9688887c5569f0b27add40766c8",
       "statement": "forall p a x z. (exists esi_mod_left_from_unit_source esi_mod_right_from_unit_source. (x * z) + p * esi_mod_left_from_unit_source = (1) + p * esi_mod_right_from_unit_source) -> (exists esi_mod_left_from_unit_result esi_mod_right_from_unit_result. (x * (a * z)) + p * esi_mod_left_from_unit_result = (a) + p * esi_mod_right_from_unit_result)",
@@ -199264,7 +199257,7 @@
         "line": 303,
         "owner_module": "euler_scaled_inverse_candidate",
         "path": "peano-lab/py/peano_lab/library/euler_scaled_inverse_candidate.py",
-        "sha256": "02c10dbc70a82bedd04f1c2e4ca18ec085af0eaed4328ed0260489b9807f82d8"
+        "sha256": "a3bab40c51e82d3778bead4a1a0ca461263d04f4fa3eb2530a16ef9a9eea4d19"
       },
       "spec_sha256": "9dd6f7fc81dcb5d5b7aed05fad4fb665ccec91bb45bcd3bc2667668ef02255aa",
       "statement": "forall p a x y z. (exists esi_mod_left_transport_source esi_mod_right_transport_source. (x * y) + p * esi_mod_left_transport_source = (a) + p * esi_mod_right_transport_source) -> (exists esi_mod_left_transport_argument esi_mod_right_transport_argument. (y) + p * esi_mod_left_transport_argument = (z) + p * esi_mod_right_transport_argument) -> (exists esi_mod_left_transport_result esi_mod_right_transport_result. (x * z) + p * esi_mod_left_transport_result = (a) + p * esi_mod_right_transport_result)",
@@ -199289,13 +199282,6 @@
           "href": "PA002U.html",
           "name": "mod_eq_bounded_unique",
           "tag": "PA002U"
-        },
-        {
-          "body_reference": false,
-          "explicit_reference_count": 0,
-          "href": "PA0005.html",
-          "name": "succ_ne_zero",
-          "tag": "PA0005"
         }
       ],
       "dependents": [
@@ -199312,7 +199298,7 @@
         "kind": "generated_structural_guide",
         "paragraphs": [
           "A scaled inverse of a nonzero bounded target cannot be zero.",
-          "Use the direct prerequisites prime_is_succ_succ, mod_eq_bounded_unique, succ_ne_zero as previously established PA formulas.",
+          "Use the direct prerequisites prime_is_succ_succ, mod_eq_bounded_unique as previously established PA formulas.",
           "The proof proceeds by case analysis (3), intermediate claims (4), equality transport (1), certified simplification (1)."
         ],
         "references": [
@@ -199325,11 +199311,6 @@
             "href": "PA002U.html",
             "name": "mod_eq_bounded_unique",
             "tag": "PA002U"
-          },
-          {
-            "href": "PA0005.html",
-            "name": "succ_ne_zero",
-            "tag": "PA0005"
           }
         ],
         "review": "generated",
@@ -199849,9 +199830,9 @@
         "line": 339,
         "owner_module": "euler_scaled_inverse_candidate",
         "path": "peano-lab/py/peano_lab/library/euler_scaled_inverse_candidate.py",
-        "sha256": "02c10dbc70a82bedd04f1c2e4ca18ec085af0eaed4328ed0260489b9807f82d8"
+        "sha256": "a3bab40c51e82d3778bead4a1a0ca461263d04f4fa3eb2530a16ef9a9eea4d19"
       },
-      "spec_sha256": "cc9797d99edcf670eb59442e4620ad4077fc31a33c1427834aad77b55ccdefcd",
+      "spec_sha256": "7e37839360bcc89fc48628bcda70eead6d7458a3e97d318f213950e8723b2e9a",
       "statement": "forall p a x y. ((~(p = 1) /\\ forall esi_prime_left_target_nonzero_prime esi_prime_right_target_nonzero_prime. p = esi_prime_left_target_nonzero_prime * esi_prime_right_target_nonzero_prime -> esi_prime_left_target_nonzero_prime = 1 \\/ esi_prime_right_target_nonzero_prime = 1)) -> ~(a = 0) -> (exists esi_strict_gap_target_nonzero_target_bound. esi_strict_gap_target_nonzero_target_bound + S a = p) -> (exists esi_mod_left_target_nonzero_product esi_mod_right_target_nonzero_product. (x * y) + p * esi_mod_left_target_nonzero_product = (a) + p * esi_mod_right_target_nonzero_product) -> ~(y = 0)",
       "statement_sha256": "c90f5a72ba31cb1fd21d062558022bc006c38a939bdc8b55676295e57c6468e3",
       "status": "candidate_body_checked",
@@ -201092,7 +201073,7 @@
         "line": 392,
         "owner_module": "euler_scaled_inverse_candidate",
         "path": "peano-lab/py/peano_lab/library/euler_scaled_inverse_candidate.py",
-        "sha256": "02c10dbc70a82bedd04f1c2e4ca18ec085af0eaed4328ed0260489b9807f82d8"
+        "sha256": "a3bab40c51e82d3778bead4a1a0ca461263d04f4fa3eb2530a16ef9a9eea4d19"
       },
       "spec_sha256": "48692235b52122e9a222ed8571cc106080e53bff1c095801dbc1f4e8b674d78e",
       "statement": "forall p a x. ((~(p = 1) /\\ forall esi_prime_left_exists_prime esi_prime_right_exists_prime. p = esi_prime_left_exists_prime * esi_prime_right_exists_prime -> esi_prime_left_exists_prime = 1 \\/ esi_prime_right_exists_prime = 1)) -> ~(a = 0) -> (exists esi_strict_gap_exists_target_bound. esi_strict_gap_exists_target_bound + S a = p) -> ~(x = 0) -> (exists esi_strict_gap_exists_input_bound. esi_strict_gap_exists_input_bound + S x = p) -> exists y. ((((~(x = 0) /\\ (exists esi_strict_gap_exists_result_left_bound. esi_strict_gap_exists_result_left_bound + S x = p))) /\\ (((~(y = 0) /\\ (exists esi_strict_gap_exists_result_right_bound. esi_strict_gap_exists_result_right_bound + S y = p))) /\\ (exists esi_mod_left_exists_result_mod esi_mod_right_exists_result_mod. (x * y) + p * esi_mod_left_exists_result_mod = (a) + p * esi_mod_right_exists_result_mod))))",
@@ -212175,7 +212156,7 @@
         "line": 569,
         "owner_module": "euler_scaled_inverse_candidate",
         "path": "peano-lab/py/peano_lab/library/euler_scaled_inverse_candidate.py",
-        "sha256": "02c10dbc70a82bedd04f1c2e4ca18ec085af0eaed4328ed0260489b9807f82d8"
+        "sha256": "a3bab40c51e82d3778bead4a1a0ca461263d04f4fa3eb2530a16ef9a9eea4d19"
       },
       "spec_sha256": "f72ad57ddbb32d015c1de9e4e2a0d454c3d48d89e21b260537e915e54a04f3d9",
       "statement": "forall p a x y. ((((~(x = 0) /\\ (exists esi_strict_gap_symmetric_source_left_bound. esi_strict_gap_symmetric_source_left_bound + S x = p))) /\\ (((~(y = 0) /\\ (exists esi_strict_gap_symmetric_source_right_bound. esi_strict_gap_symmetric_source_right_bound + S y = p))) /\\ (exists esi_mod_left_symmetric_source_mod esi_mod_right_symmetric_source_mod. (x * y) + p * esi_mod_left_symmetric_source_mod = (a) + p * esi_mod_right_symmetric_source_mod)))) -> ((((~(y = 0) /\\ (exists esi_strict_gap_symmetric_target_left_bound. esi_strict_gap_symmetric_target_left_bound + S y = p))) /\\ (((~(x = 0) /\\ (exists esi_strict_gap_symmetric_target_right_bound. esi_strict_gap_symmetric_target_right_bound + S x = p))) /\\ (exists esi_mod_left_symmetric_target_mod esi_mod_right_symmetric_target_mod. (y * x) + p * esi_mod_left_symmetric_target_mod = (a) + p * esi_mod_right_symmetric_target_mod))))",
@@ -213100,7 +213081,7 @@
         "line": 494,
         "owner_module": "euler_scaled_inverse_candidate",
         "path": "peano-lab/py/peano_lab/library/euler_scaled_inverse_candidate.py",
-        "sha256": "02c10dbc70a82bedd04f1c2e4ca18ec085af0eaed4328ed0260489b9807f82d8"
+        "sha256": "a3bab40c51e82d3778bead4a1a0ca461263d04f4fa3eb2530a16ef9a9eea4d19"
       },
       "spec_sha256": "56a77a5ef3df9be0acd7ba35d5e67fbb53ce155bc12a5ea629b6d14318b26eef",
       "statement": "forall p a x y z. ((~(p = 1) /\\ forall esi_prime_left_unique_prime esi_prime_right_unique_prime. p = esi_prime_left_unique_prime * esi_prime_right_unique_prime -> esi_prime_left_unique_prime = 1 \\/ esi_prime_right_unique_prime = 1)) -> ((((~(x = 0) /\\ (exists esi_strict_gap_unique_left_left_bound. esi_strict_gap_unique_left_left_bound + S x = p))) /\\ (((~(y = 0) /\\ (exists esi_strict_gap_unique_left_right_bound. esi_strict_gap_unique_left_right_bound + S y = p))) /\\ (exists esi_mod_left_unique_left_mod esi_mod_right_unique_left_mod. (x * y) + p * esi_mod_left_unique_left_mod = (a) + p * esi_mod_right_unique_left_mod)))) -> ((((~(x = 0) /\\ (exists esi_strict_gap_unique_right_left_bound. esi_strict_gap_unique_right_left_bound + S x = p))) /\\ (((~(z = 0) /\\ (exists esi_strict_gap_unique_right_right_bound. esi_strict_gap_unique_right_right_bound + S z = p))) /\\ (exists esi_mod_left_unique_right_mod esi_mod_right_unique_right_mod. (x * z) + p * esi_mod_left_unique_right_mod = (a) + p * esi_mod_right_unique_right_mod)))) -> y = z",
@@ -214902,7 +214883,7 @@
         "line": 631,
         "owner_module": "euler_scaled_inverse_candidate",
         "path": "peano-lab/py/peano_lab/library/euler_scaled_inverse_candidate.py",
-        "sha256": "02c10dbc70a82bedd04f1c2e4ca18ec085af0eaed4328ed0260489b9807f82d8"
+        "sha256": "a3bab40c51e82d3778bead4a1a0ca461263d04f4fa3eb2530a16ef9a9eea4d19"
       },
       "spec_sha256": "731091d7eafbc61351a54c19636ceab5c7b9883d6a92004216f35363fec5ee7f",
       "statement": "forall p a x. ((((((~(x = 0) /\\ (exists esi_strict_gap_fixed_relation_left_bound. esi_strict_gap_fixed_relation_left_bound + S x = p))) /\\ (((~(x = 0) /\\ (exists esi_strict_gap_fixed_relation_right_bound. esi_strict_gap_fixed_relation_right_bound + S x = p))) /\\ (exists esi_mod_left_fixed_relation_mod esi_mod_right_fixed_relation_mod. (x * x) + p * esi_mod_left_fixed_relation_mod = (a) + p * esi_mod_right_fixed_relation_mod)))) -> ((((~(x = 0) /\\ (exists esi_strict_gap_fixed_square_unit_bound. esi_strict_gap_fixed_square_unit_bound + S x = p))) /\\ (exists esi_mod_left_fixed_square_square esi_mod_right_fixed_square_square. (x * x) + p * esi_mod_left_fixed_square_square = (a) + p * esi_mod_right_fixed_square_square)))) /\\ (((((~(x = 0) /\\ (exists esi_strict_gap_fixed_square_unit_bound. esi_strict_gap_fixed_square_unit_bound + S x = p))) /\\ (exists esi_mod_left_fixed_square_square esi_mod_right_fixed_square_square. (x * x) + p * esi_mod_left_fixed_square_square = (a) + p * esi_mod_right_fixed_square_square))) -> ((((~(x = 0) /\\ (exists esi_strict_gap_fixed_relation_left_bound. esi_strict_gap_fixed_relation_left_bound + S x = p))) /\\ (((~(x = 0) /\\ (exists esi_strict_gap_fixed_relation_right_bound. esi_strict_gap_fixed_relation_right_bound + S x = p))) /\\ (exists esi_mod_left_fixed_relation_mod esi_mod_right_fixed_relation_mod. (x * x) + p * esi_mod_left_fixed_relation_mod = (a) + p * esi_mod_right_fixed_relation_mod))))))",
@@ -215157,7 +215138,7 @@
         "line": 657,
         "owner_module": "euler_scaled_inverse_candidate",
         "path": "peano-lab/py/peano_lab/library/euler_scaled_inverse_candidate.py",
-        "sha256": "02c10dbc70a82bedd04f1c2e4ca18ec085af0eaed4328ed0260489b9807f82d8"
+        "sha256": "a3bab40c51e82d3778bead4a1a0ca461263d04f4fa3eb2530a16ef9a9eea4d19"
       },
       "spec_sha256": "2da9c39a86eae6eb5b4a7215d018d235f4ffc3049ef35598b85f01debf166adb",
       "statement": "forall p a x. ~(exists qr_x_euler_scaled_inverse. exists qr_u_euler_scaled_inverse qr_v_euler_scaled_inverse. qr_x_euler_scaled_inverse * qr_x_euler_scaled_inverse + p * qr_u_euler_scaled_inverse = a + p * qr_v_euler_scaled_inverse) -> ~((((~(x = 0) /\\ (exists esi_strict_gap_no_fixed_relation_left_bound. esi_strict_gap_no_fixed_relation_left_bound + S x = p))) /\\ (((~(x = 0) /\\ (exists esi_strict_gap_no_fixed_relation_right_bound. esi_strict_gap_no_fixed_relation_right_bound + S x = p))) /\\ (exists esi_mod_left_no_fixed_relation_mod esi_mod_right_no_fixed_relation_mod. (x * x) + p * esi_mod_left_no_fixed_relation_mod = (a) + p * esi_mod_right_no_fixed_relation_mod))))",

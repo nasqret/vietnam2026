@@ -61,10 +61,10 @@ from peano_lab.library.theorems import (
 EXPECTED_NODE_COUNT = 557
 EXPECTED_LAYER_COUNT = 45
 EXPECTED_GRAPH_SHA256 = (
-    "2b31288720415a10ac954916dc48144c6c6d2333fb551e5e4daac382cd9bbc39"
+    "2231ca4cde6931fad296513fb0c419e19beb7c37989d31fbf6cf01771597cb46"
 )
 EXPECTED_SOURCE_SHA256 = (
-    "141bfb8db2b7267c27e0254b2edde24d633c8d6d75f49ffdc35d46e732ad58b5"
+    "457327e29134e08fd8802a18b9e1a9e0e23fa84bb44f2934f1fcba466f6e6cb5"
 )
 EXPECTED_SURFACE_SHA256 = (
     "2a95f83a5a21a5e21e482d5de8a19d55ee1843f676f086438f8a9853b6a97070"
@@ -801,7 +801,7 @@ def test_qr_layered_actual_targets_dummy_body_scaffold_metrics_are_pinned() -> N
         compiled.proof_objects,
         compiled.proof_edges,
         compiled.reused_objects,
-    ) == (13_723, 56, 13_723, 13_722, 0)
+    ) == (13_715, 56, 13_715, 13_714, 0)
     assert (
         compiled.proof_annotation_occurrences,
         compiled.proof_envelope_depth,
@@ -849,7 +849,7 @@ def test_qr_layered_exact_topology_distinct_target_scaffold_kernel_checks() -> N
         limits=DEFAULT_LAYERED_REPLAY_LIMITS,
     )
 
-    assert sum(len(item) for item in blueprint.dependencies) == 1_792
+    assert sum(len(item) for item in blueprint.dependencies) == 1_791
     assert len(set(targets)) == EXPECTED_NODE_COUNT
     assert compiled is not None
     assert compiled.layers == blueprint.layers
@@ -861,11 +861,11 @@ def test_qr_layered_exact_topology_distinct_target_scaffold_kernel_checks() -> N
         compiled.proof_objects,
         compiled.proof_edges,
         compiled.reused_objects,
-    ) == (19_099, 74, 19_099, 19_098, 0)
+    ) == (19_088, 74, 19_088, 19_087, 0)
     assert (
         compiled.proof_annotation_occurrences,
         compiled.proof_envelope_depth,
-    ) == (142_396, 84)
+    ) == (142_346, 84)
     assert check((), compiled.certificate, root_target)
 
     swapped_nodes = list(nodes)

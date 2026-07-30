@@ -1,19 +1,19 @@
 {
-  "aggregate_sha256": "7f7d4ec08902ce3d3991aa6c4dc38cd32715a2145fc3486b6314b6dd063e2477",
+  "aggregate_sha256": "6c47124a4a86c764d0e9af274cba9dfbc6df8a89c7327fe4744f49f097b93dd2",
   "candidate_count": 317,
   "canonical_tag_page_count": 557,
-  "edge_count": 1792,
+  "edge_count": 1791,
   "explicit_dependency_reference_count": 8557,
   "files": [
     {
-      "bytes": 17232953,
+      "bytes": 17232412,
       "path": "api/corpus.json",
-      "sha256": "434d091f330fdd33c96d4e42af36ad0903a92e2c3db21951644ec1bfd4c1f351"
+      "sha256": "a5bc304640ee454fc51161dcbd7da71e6c7b0a745bebcb7dc98f555d5c930a89"
     },
     {
-      "bytes": 2006515,
+      "bytes": 2006272,
       "path": "api/graph.json",
-      "sha256": "f120c6d402922760fa5401e3192ead8225b7a2ba2924630fb88b216e61c9b29c"
+      "sha256": "dcd31d6861fe913a3aeac2f68cfa7f53c3d59cb74907c9977ef4619fa1e3ff2d"
     },
     {
       "bytes": 6529,
@@ -36,14 +36,14 @@
       "sha256": "73f9b76bd45150224d98663362edd7e7a36cf3c11018c353ea686315696dad70"
     },
     {
-      "bytes": 1179701,
+      "bytes": 1179516,
       "path": "graph.html",
-      "sha256": "29e418d8cf645d9eb51ac9402a269deba656f6da13c958bd1d0de6a67330877e"
+      "sha256": "fc86504b0300fa318df20fc4755527ef4bd8dfbe8aef8f72601c3c289bd39176"
     },
     {
-      "bytes": 353862,
+      "bytes": 353849,
       "path": "index.html",
-      "sha256": "dea10b2150842854447ef8aa0490cd15d5a34c194782c47e7386e69b41918767"
+      "sha256": "74e9f934535d1895b5aea55ec10e4370050a341fc5237dbfd909793e85ee63e3"
     },
     {
       "bytes": 315,
@@ -2851,9 +2851,9 @@
       "sha256": "b76295a108100a4edf208e24db2580dd175ecb9eb5cdc26edcdeb3a2bdcf7782"
     },
     {
-      "bytes": 7463,
+      "bytes": 7358,
       "path": "tag/PA0005.html",
-      "sha256": "f421253d7a15d4e9a115b0e41ba46482f484faffd90da32983f4eb016156ce20"
+      "sha256": "6add53fd6013daa9cab8192c964e620e290cd9b15c62d8cbbd8a4205281c5bb5"
     },
     {
       "bytes": 8496,
@@ -4343,22 +4343,22 @@
     {
       "bytes": 13950,
       "path": "tag/PA008N.html",
-      "sha256": "b4831abccde9135065296478c52832ff767073c267b3298a39555e113e44328e"
+      "sha256": "6ff059f82ad2a8453069ab57e9bbbf3ca1578a20aa164619864a58728dccd1c7"
     },
     {
       "bytes": 12352,
       "path": "tag/PA008O.html",
-      "sha256": "5768a5098e769fe83feaad30c29208d06d14ef927de5e68f161cfdb45c4a1842"
+      "sha256": "c60b0ffd5b112a82d70895f7c5a80c815db458b5355180bc48f36f55752c8d43"
     },
     {
-      "bytes": 16501,
+      "bytes": 16322,
       "path": "tag/PA008P.html",
-      "sha256": "3303d8c40d545a845eaabc2366dea34f303c4c49e51f1cab1d0586a1e78bc396"
+      "sha256": "4efade73e37ac5b0d7777d24111eb2cbc2f64eac893cc02b8be66c541f1210f9"
     },
     {
       "bytes": 31226,
       "path": "tag/PA008Q.html",
-      "sha256": "e5bf5d590cf1eaf16ce493af0ae8e6f49bba766a443dc5874687a0b5c7826a31"
+      "sha256": "d48ed666948c6f1fcfa1ea809f35ed128b7f9b218eded7e90f671b4232d977bd"
     },
     {
       "bytes": 30316,
@@ -4458,12 +4458,12 @@
     {
       "bytes": 9526,
       "path": "tag/PA009B.html",
-      "sha256": "42dfb1d8d373317e250b41d188c202e5a868cf6e403f1cfec739c9423f479cd4"
+      "sha256": "f4fb2f4f830c45afe89e268ee39c689b8f54dce033f88adf8a052996574cc56a"
     },
     {
       "bytes": 23078,
       "path": "tag/PA009C.html",
-      "sha256": "89dc10b5f91dae3c49a3de4145cc2bde5d39a7791eaef83cf49839bce06f2bd5"
+      "sha256": "9a3cb6b1eba4ea8c2ac2b4a6a44d6d211b8fbd8ee4ee4a3a3ce2a73a4cc2c98d"
     },
     {
       "bytes": 16043,
@@ -4478,12 +4478,12 @@
     {
       "bytes": 8799,
       "path": "tag/PA009F.html",
-      "sha256": "fcc3976329b9d86d80cf373ecd57c1a676ac8821fd1b4bb89c1cf0f23bf16b18"
+      "sha256": "8aedaa050d8f3a8deda63b0c35384aaa4564fb6ea664089b1d68db25cafb4c5a"
     },
     {
       "bytes": 8662,
       "path": "tag/PA009G.html",
-      "sha256": "697fadde42c904cf2b45ea64558466b6db9df124124d595e45af0458e1f154fa"
+      "sha256": "33de8fc6a31857f1d2c88eb5ceffeba0aa84d64fb909c213e7dd2a9f2bc45bd9"
     },
     {
       "bytes": 15177,
@@ -5618,7 +5618,7 @@
   ],
   "formal_line_count": 27491,
   "generated_file_count": 1123,
-  "graph_sha256": "2b31288720415a10ac954916dc48144c6c6d2333fb551e5e4daac382cd9bbc39",
+  "graph_sha256": "2231ca4cde6931fad296513fb0c419e19beb7c37989d31fbf6cf01771597cb46",
   "informal_overrides_sha256": "bedbdfc3d823b04277880384b09c68bf226b577e2321d64daa1765ffe7d39134",
   "layer_count": 45,
   "name_alias_page_count": 557,
@@ -5628,7 +5628,7 @@
     "assets/explorer.js"
   ],
   "schema": "peano-lab-pa-proof-explorer-manifest-v1",
-  "source_sha256": "141bfb8db2b7267c27e0254b2edde24d633c8d6d75f49ffdc35d46e732ad58b5",
+  "source_sha256": "457327e29134e08fd8802a18b9e1a9e0e23fa84bb44f2934f1fcba466f6e6cb5",
   "tag_registry_sha256": "84d741c7319cd14ac2f42dd3a131ae908f3ca56b421a1a3bb8c78f4e6f2f2052",
   "theorem_count": 557
 }

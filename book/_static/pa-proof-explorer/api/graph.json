@@ -1202,7 +1202,6 @@
         "PA008B",
         "PA008C",
         "PA008K",
-        "PA008P",
         "PA008R",
         "PA008S",
         "PA008U",
@@ -45009,7 +45008,6 @@
         "PA008P"
       ],
       "dependencies": [
-        "PA0005",
         "PA002U",
         "PA0061"
       ],
@@ -45034,12 +45032,14 @@
         "PA00FW"
       ],
       "foundation_path": [
-        "PA0005",
+        "PA001V",
+        "PA0061",
         "PA008P"
       ],
-      "root_path_count": 20,
+      "root_path_count": 19,
       "shortest_root_path": [
-        "PA0005",
+        "PA001V",
+        "PA0061",
         "PA008P"
       ]
     },
@@ -45165,7 +45165,7 @@
         "PA0031",
         "PA008Q"
       ],
-      "root_path_count": 206,
+      "root_path_count": 205,
       "shortest_root_path": [
         "PA0005",
         "PA0031",
@@ -45346,7 +45346,7 @@
         "PA0005",
         "PA008R"
       ],
-      "root_path_count": 664,
+      "root_path_count": 663,
       "shortest_root_path": [
         "PA0005",
         "PA008R"
@@ -45526,7 +45526,7 @@
         "PA0004",
         "PA008S"
       ],
-      "root_path_count": 667,
+      "root_path_count": 666,
       "shortest_root_path": [
         "PA0004",
         "PA008S"
@@ -45706,7 +45706,7 @@
         "PA001A",
         "PA008T"
       ],
-      "root_path_count": 668,
+      "root_path_count": 667,
       "shortest_root_path": [
         "PA0001",
         "PA001A",
@@ -58621,7 +58621,7 @@
         "PA008T",
         "PA00BM"
       ],
-      "root_path_count": 17169,
+      "root_path_count": 17168,
       "shortest_root_path": [
         "PA0001",
         "PA001A",
@@ -59028,7 +59028,7 @@
         "PA0001",
         "PA00BN"
       ],
-      "root_path_count": 24624,
+      "root_path_count": 24623,
       "shortest_root_path": [
         "PA0001",
         "PA00BN"
@@ -59558,7 +59558,7 @@
         "PA003L",
         "PA00BQ"
       ],
-      "root_path_count": 24668,
+      "root_path_count": 24667,
       "shortest_root_path": [
         "PA003L",
         "PA00BQ"
@@ -59967,7 +59967,7 @@
         "PA003L",
         "PA00BR"
       ],
-      "root_path_count": 25793,
+      "root_path_count": 25792,
       "shortest_root_path": [
         "PA003L",
         "PA00BR"
@@ -60372,7 +60372,7 @@
         "PA003L",
         "PA00BS"
       ],
-      "root_path_count": 49336,
+      "root_path_count": 49334,
       "shortest_root_path": [
         "PA003L",
         "PA00BS"
@@ -60783,7 +60783,7 @@
         "PA003L",
         "PA00BT"
       ],
-      "root_path_count": 50461,
+      "root_path_count": 50459,
       "shortest_root_path": [
         "PA003L",
         "PA00BT"
@@ -61192,7 +61192,7 @@
         "PA00BR",
         "PA00BU"
       ],
-      "root_path_count": 76254,
+      "root_path_count": 76251,
       "shortest_root_path": [
         "PA003L",
         "PA00BR",
@@ -61662,7 +61662,7 @@
         "PA0001",
         "PA00BV"
       ],
-      "root_path_count": 85616,
+      "root_path_count": 85613,
       "shortest_root_path": [
         "PA0001",
         "PA00BV"
@@ -66432,7 +66432,7 @@
         "PA003L",
         "PA00D7"
       ],
-      "root_path_count": 91832,
+      "root_path_count": 91829,
       "shortest_root_path": [
         "PA003L",
         "PA00D7"
@@ -76257,7 +76257,7 @@
         "PA00D7",
         "PA00FG"
       ],
-      "root_path_count": 101055,
+      "root_path_count": 101052,
       "shortest_root_path": [
         "PA003L",
         "PA00D7",
@@ -77899,7 +77899,7 @@
         "PA00FG",
         "PA00FW"
       ],
-      "root_path_count": 101296,
+      "root_path_count": 101293,
       "shortest_root_path": [
         "PA003L",
         "PA00D7",
@@ -77909,7 +77909,7 @@
     }
   },
   "candidate_count": 317,
-  "edge_count": 1792,
+  "edge_count": 1791,
   "edges": [
     {
       "body_reference": true,
@@ -85280,14 +85280,6 @@
       "explicit_reference_count": 4
     },
     {
-      "body_reference": false,
-      "dependency": "PA0005",
-      "dependency_name": "succ_ne_zero",
-      "dependent": "PA008P",
-      "dependent_name": "prime_scaled_inverse_target_nonzero",
-      "explicit_reference_count": 0
-    },
-    {
       "body_reference": true,
       "dependency": "PA0063",
       "dependency_name": "prime_bounded_nonzero_mod_inverse",
@@ -92300,7 +92292,7 @@
     "PA00F0",
     "PA00F5"
   ],
-  "graph_sha256": "2b31288720415a10ac954916dc48144c6c6d2333fb551e5e4daac382cd9bbc39",
+  "graph_sha256": "2231ca4cde6931fad296513fb0c419e19beb7c37989d31fbf6cf01771597cb46",
   "layer_count": 45,
   "layers": [
     {
@@ -98111,7 +98103,7 @@
   },
   "public_count": 240,
   "schema": "peano-lab-pa-proof-graph-v2",
-  "source_sha256": "141bfb8db2b7267c27e0254b2edde24d633c8d6d75f49ffdc35d46e732ad58b5",
+  "source_sha256": "457327e29134e08fd8802a18b9e1a9e0e23fa84bb44f2934f1fcba466f6e6cb5",
   "terminals": [
     "PA00FW"
   ],
