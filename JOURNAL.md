@@ -2915,7 +2915,10 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   external deployment or theorem admission.
 - Built the corrected WMI archive twice, byte-identically: SHA-256
   `989011c09d82dbbb239df43334e88553e1fb3e0d2f1033f93c5b8b1791851757`,
-  338 members, 5,374,464 bytes, with exactly 136 selected gates. It has not
-  been uploaded or submitted: the earlier authorization was specific to the
-  historical `2bab0898...faaa` payload, so the corrected hash requires new
-  explicit authorization.
+  338 members, 5,374,464 bytes, with exactly 136 selected gates. After new
+  hash-specific authorization, uploaded it to its separate content-addressed
+  WMI directory, verified snapshot provenance
+  `b73f8e5d91e82d0c3d9fbb1acf846f699680f4f3 / local_dirty=false`, and passed
+  Slurm test-only validation. Submitted full job `210714` on `cpu_idle` with
+  one CPU, 32 GiB and four hours; its initial state was `PENDING (Priority)`.
+  Submission and pending state are not proof receipts.

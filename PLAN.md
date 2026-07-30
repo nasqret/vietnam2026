@@ -194,11 +194,12 @@ adds `157,579/92`. Bare `pa lib` no longer replays the ladder, and the browser
 worker inventory deterministically covers 147 Python files. A migration audit
 identifies 125 pre-admission absence assertions and the exact 317/29 public
 partition. Full 136-gate WMI job `187187`, bound to approved dirty snapshot
-`2bab0898a5bc628a0e1f06b5e6cdf56af86fe39c2fdbeaaa4147ac43d2c7faaa`.
+`2bab0898a5bc628a0e1f06b5e6cdf56af86fe39c2fdbeaaa4147ac43d2c7faaa`,
 failed closed after 39 seconds at gate 5. Four scaled-inverse gates passed;
 the fifth exposed the unused `succ_ne_zero` dependency, and 131 gates did not
-run. The corrected focused suite and refreshed topology receipts pass locally,
-but there is still no full replay receipt or basis for candidate enrollment.
+run. The corrected focused suite and refreshed topology receipts pass locally;
+full replacement job `210714` was initially queued from exact clean snapshot
+`989011c0…1757`, but there is still no replay receipt or basis for enrollment.
 
 The native PA Proof Explorer now makes that exact evidence boundary
 navigable. Its persistent 557-page tag corpus has 1,791 dependency edges,

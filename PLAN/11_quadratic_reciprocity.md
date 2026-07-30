@@ -832,11 +832,12 @@ not a mathematical rejection or a QR proof receipt.
       focused local replay/topology/Explorer suites.
 - [x] Freeze the corrected archive twice at exact SHA-256
       `989011c09d82dbbb239df43334e88553e1fb3e0d2f1033f93c5b8b1791851757`;
-      both builds contain 338 members and 5,374,464 bytes. It has not been
-      uploaded under the earlier hash-specific authorization.
-- [ ] Obtain content-specific approval for the corrected immutable payload,
-      resubmit all 136 gates, and require a complete WMI receipt before any
-      admission claim.
+      both builds contain 338 members and 5,374,464 bytes.
+- [x] Obtain content-specific approval, upload and remotely verify that exact
+      clean snapshot, pass Slurm test-only validation, and submit all 136
+      gates as job `210714` with one CPU, 32 GiB and four hours.
+- [ ] Require a complete passing receipt from job `210714` before any
+      admission claim; its initial state was `PENDING (Priority)`.
 - [ ] After those gates pass, migrate the generic layered closure into the
       public theorem replay/registry without a theorem-name or hash trust
       shortcut; regenerate the catalog and run cold Pyodide `use` gates.

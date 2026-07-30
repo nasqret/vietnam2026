@@ -1134,7 +1134,9 @@
   complete WMI proof receipt or theorem admission exists yet. The corrected
   338-member, 5,374,464-byte archive was built twice identically at SHA-256
   `989011c09d82dbbb239df43334e88553e1fb3e0d2f1033f93c5b8b1791851757`;
-  it remains local pending new content-specific authorization.
+  after new content-specific authorization it was uploaded and submitted as
+  full job `210714`, initially `PENDING (Priority)`, with one CPU, 32 GiB and
+  four hours. Pending is not a proof receipt.
 - **Historical QR WMI preflight (2026-07-30):** the earlier cleaned candidate
   upload excluded
   `__pycache__`, bytecode, and `.DS_Store`; two builds agree at SHA-256

@@ -59,10 +59,12 @@ The current full checkpoint is exact snapshot
 Job `187187` requests one CPU, 32 GiB and four hours for all 136 selected
 non-diagnostic gates. It failed at gate 5/136 as described above.
 
-The corrected upload candidate is locally frozen, but not uploaded, at
+The corrected upload is frozen at
 SHA-256 `989011c09d82dbbb239df43334e88553e1fb3e0d2f1033f93c5b8b1791851757`.
 Two independent archive builds are byte-identical: 338 members and 5,374,464
-bytes. A new WMI run requires separate content-specific authorization.
+bytes. After separate content-specific authorization it was uploaded,
+remotely verified, and submitted as full job `210714`; the initial scheduler
+state was `PENDING (Priority)`.
 
 | Job | Snapshot prefix | Suite / provenance status |
 |---:|---|---|
@@ -100,6 +102,7 @@ bytes. A new WMI run requires separate content-specific authorization.
 | `173021` | `fd129d34bf4a31a1…` | `gauss-magnitude-permutation`; pending, zero CPU |
 | `173022` | `fd129d34bf4a31a1…` | `wilson-pair-order-induction`; pending, zero CPU |
 | `187187` | `2bab0898a5bc628a…` | failed after 39 seconds at gate 5/136 on an unused-dependency mutation; four passed, 131 unrun, no QR result |
+| `210714` | `989011c09d82dbbb…` | corrected full 136-gate campaign; remotely verified and initially `PENDING (Priority)`, no result yet |
 
 Jobs `172707`, `172716`, `172722`, and `172737` are user-held, not cancelled,
 to prioritize focused prerequisite jobs. This action is reversible; release

@@ -101,6 +101,9 @@ receipt. Full 136-gate job `187187`, against exact dirty snapshot
 failed closed after 39 seconds at gate 5: four scaled-inverse gates passed,
 then the dependency-hygiene mutation test exposed an unused `succ_ne_zero`
 edge. The remaining 131 gates did not run, so this is not a QR result. No
+complete receipt exists yet; corrected full job `210714` was subsequently
+submitted from exact clean snapshot `989011c0…1757` and initially queued.
+No
 in-app browser was attached for this checkpoint, so direct Pyodide and rendered
 book UI smokes are explicitly unclaimed.
 

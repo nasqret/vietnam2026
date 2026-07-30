@@ -1466,7 +1466,9 @@ The first full 136-gate WMI attempt, job `187187`, failed closed after 39
 seconds at gate 5. Four scaled-inverse gates passed; the mutation audit then
 found an unused `succ_ne_zero` dependency, so 131 gates were never reached.
 That redundant edge is removed and the focused local suite passes, but no
-complete rerun or quadratic-reciprocity admission receipt exists yet.
+complete quadratic-reciprocity admission receipt exists yet. Corrected full
+job `210714`, from clean snapshot `989011c0…1757`, was initially queued on
+WMI after remote verification and Slurm resource validation.
 
 [`pointwise source`](../../peano-lab/py/peano_lab/library/gauss_eisenstein_pointwise_candidate.py)
 · [`pointwise test`](../../peano-lab/py/tests/test_gauss_eisenstein_pointwise_candidate.py)
