@@ -5,7 +5,7 @@ independent reports.  Training must never consume a hand-picked subset of
 those files, nor a mixture of reports from different Slurm jobs.  This module
 copies the closed set into a new sibling staging directory, validates all JSON
 strictly, joins the hashes and runtime identities, and publishes the result
-with an operating-system no-replace rename.
+with a preflighted collision-safe filesystem profile.
 
 The seal is an integrity envelope, not a signature.  A verifier that needs an
 external trust anchor should pass the expected source commit and preparation
@@ -31,7 +31,7 @@ SEAL_FORMAT = "peano-policy-v3-corpus-seal"
 SEAL_VERSION = 1
 SEAL_MANIFEST = "seal.json"
 SEAL_REPORT_FORMAT = "peano-policy-v3-corpus-seal-verification"
-SEAL_REPORT_VERSION = 1
+SEAL_REPORT_VERSION = 2
 
 DATA_FILES = (
     "balanced-raw-traces.jsonl",
@@ -65,6 +65,16 @@ _JOB_ID_RE = re.compile(r"[0-9]+")
 _MAX_JSON_BYTES = 64 * 1024 * 1024
 _MAX_JSONL_LINE_BYTES = 64 * 1024 * 1024
 _COPY_CHUNK_BYTES = 1024 * 1024
+NATIVE_PUBLICATION_PROFILE = "native-no-replace-rename-v1"
+CLAIM_RENAME_PUBLICATION_PROFILE = "exclusive-type-matched-claim-rename-v1"
+_UNSUPPORTED_NOREPLACE_ERRNOS = frozenset(
+    {
+        errno.EINVAL,
+        errno.ENOSYS,
+        getattr(errno, "ENOTSUP", errno.EOPNOTSUPP),
+        errno.EOPNOTSUPP,
+    }
+)
 
 
 class CorpusSealError(ValueError):
@@ -1089,8 +1099,8 @@ def _fsync_protected_tree(root: Path) -> None:
     _fsync_directory(root)
 
 
-def _rename_noreplace(source: Path, destination: Path) -> None:
-    """Atomically install one sibling directory without replacing a target."""
+def _native_rename_noreplace(source: Path, destination: Path) -> None:
+    """Use the platform's native atomic no-replace rename."""
 
     libc = ctypes.CDLL(None, use_errno=True)
     source_bytes = os.fsencode(source)
@@ -1107,7 +1117,11 @@ def _rename_noreplace(source: Path, destination: Path) -> None:
         try:
             rename = libc.renameat2
         except AttributeError as exc:  # pragma: no cover - unsupported old libc
-            raise CorpusSealError("atomic no-replace publication is unavailable") from exc
+            raise OSError(
+                errno.ENOSYS,
+                "renameat2 is unavailable from the process libc",
+                str(destination),
+            ) from exc
         rename.argtypes = (
             ctypes.c_int,
             ctypes.c_char_p,
@@ -1125,6 +1139,319 @@ def _rename_noreplace(source: Path, destination: Path) -> None:
     if error in {errno.EEXIST, errno.ENOTEMPTY}:
         raise FileExistsError(f"refusing to replace existing seal: {destination}")
     raise OSError(error, os.strerror(error), str(destination))
+
+
+def _publication_source_type(metadata: os.stat_result) -> str:
+    if stat.S_ISDIR(metadata.st_mode) and not stat.S_ISLNK(metadata.st_mode):
+        return "directory"
+    if stat.S_ISREG(metadata.st_mode) and not stat.S_ISLNK(metadata.st_mode):
+        return "regular_file"
+    raise CorpusSealError(
+        "no-replace publication requires a regular file or directory source"
+    )
+
+
+def _open_claim_parent(parent: Path) -> int:
+    flags = (
+        os.O_RDONLY
+        | getattr(os, "O_DIRECTORY", 0)
+        | getattr(os, "O_NOFOLLOW", 0)
+        | getattr(os, "O_CLOEXEC", 0)
+    )
+    try:
+        return os.open(parent, flags)
+    except OSError as exc:
+        raise CorpusSealError(f"cannot open publication parent {parent}: {exc}") from exc
+
+
+def _claim_file_then_rename(
+    source: Path,
+    destination: Path,
+    *,
+    parent_descriptor: int,
+    source_before: os.stat_result,
+) -> None:
+    claim_flags = (
+        os.O_WRONLY
+        | os.O_CREAT
+        | os.O_EXCL
+        | getattr(os, "O_NOFOLLOW", 0)
+        | getattr(os, "O_CLOEXEC", 0)
+    )
+    try:
+        claim_descriptor = os.open(
+            destination.name,
+            claim_flags,
+            0o600,
+            dir_fd=parent_descriptor,
+        )
+    except FileExistsError as exc:
+        raise FileExistsError(
+            f"refusing to replace existing seal: {destination}"
+        ) from exc
+    try:
+        os.fchmod(claim_descriptor, 0o600)
+        claim = os.fstat(claim_descriptor)
+        named_claim = os.stat(
+            destination.name,
+            dir_fd=parent_descriptor,
+            follow_symlinks=False,
+        )
+        parent = os.fstat(parent_descriptor)
+        source_identity = (source_before.st_dev, source_before.st_ino)
+        claim_identity = (claim.st_dev, claim.st_ino)
+        if (
+            not stat.S_ISREG(claim.st_mode)
+            or stat.S_IMODE(claim.st_mode) != 0o600
+            or claim.st_uid != os.geteuid()
+            or claim.st_nlink != 1
+            or claim.st_size != 0
+            or claim.st_dev != parent.st_dev
+            or source_before.st_dev != parent.st_dev
+            or claim_identity != (named_claim.st_dev, named_claim.st_ino)
+        ):
+            raise CorpusSealError(
+                "exclusive regular-file publication claim is unsafe or nonempty"
+            )
+        os.fsync(claim_descriptor)
+        os.fsync(parent_descriptor)
+        current_source = os.stat(
+            source.name,
+            dir_fd=parent_descriptor,
+            follow_symlinks=False,
+        )
+        current_claim = os.stat(
+            destination.name,
+            dir_fd=parent_descriptor,
+            follow_symlinks=False,
+        )
+        opened_claim = os.fstat(claim_descriptor)
+        if (
+            (current_source.st_dev, current_source.st_ino) != source_identity
+            or (current_claim.st_dev, current_claim.st_ino) != claim_identity
+            or (opened_claim.st_dev, opened_claim.st_ino) != claim_identity
+            or opened_claim.st_nlink != 1
+            or opened_claim.st_size != 0
+        ):
+            raise CorpusSealError(
+                "regular-file publication source or claim changed before rename"
+            )
+        os.rename(
+            source.name,
+            destination.name,
+            src_dir_fd=parent_descriptor,
+            dst_dir_fd=parent_descriptor,
+        )
+        try:
+            os.stat(source.name, dir_fd=parent_descriptor, follow_symlinks=False)
+        except FileNotFoundError:
+            pass
+        else:
+            raise CorpusSealError(
+                "regular-file publication source still exists after rename"
+            )
+        published = os.stat(
+            destination.name,
+            dir_fd=parent_descriptor,
+            follow_symlinks=False,
+        )
+        if (
+            (published.st_dev, published.st_ino) != source_identity
+            or (published.st_dev, published.st_ino) == claim_identity
+            or published.st_nlink != 1
+        ):
+            raise CorpusSealError(
+                "published regular file differs from its staged inode"
+            )
+        os.fsync(parent_descriptor)
+    finally:
+        os.close(claim_descriptor)
+
+
+def _claim_directory_then_rename(
+    source: Path,
+    destination: Path,
+    *,
+    parent_descriptor: int,
+    source_before: os.stat_result,
+) -> None:
+    directory_flags = (
+        os.O_RDONLY
+        | getattr(os, "O_DIRECTORY", 0)
+        | getattr(os, "O_NOFOLLOW", 0)
+        | getattr(os, "O_CLOEXEC", 0)
+    )
+    source_descriptor = os.open(
+        source.name,
+        directory_flags,
+        dir_fd=parent_descriptor,
+    )
+    claim_descriptor = -1
+    try:
+        source_identity = (source_before.st_dev, source_before.st_ino)
+        opened_source = os.fstat(source_descriptor)
+        if (opened_source.st_dev, opened_source.st_ino) != source_identity:
+            raise CorpusSealError(
+                "directory publication source changed while it was opened"
+            )
+        try:
+            os.mkdir(destination.name, mode=0o700, dir_fd=parent_descriptor)
+        except FileExistsError as exc:
+            raise FileExistsError(
+                f"refusing to replace existing seal: {destination}"
+            ) from exc
+        claim_descriptor = os.open(
+            destination.name,
+            directory_flags,
+            dir_fd=parent_descriptor,
+        )
+        os.fchmod(claim_descriptor, 0o700)
+        claim = os.fstat(claim_descriptor)
+        named_claim = os.stat(
+            destination.name,
+            dir_fd=parent_descriptor,
+            follow_symlinks=False,
+        )
+        parent = os.fstat(parent_descriptor)
+        claim_identity = (claim.st_dev, claim.st_ino)
+        if (
+            not stat.S_ISDIR(claim.st_mode)
+            or stat.S_IMODE(claim.st_mode) != 0o700
+            or claim.st_uid != os.geteuid()
+            or claim.st_dev != parent.st_dev
+            or source_before.st_dev != parent.st_dev
+            or claim_identity != (named_claim.st_dev, named_claim.st_ino)
+            or os.listdir(claim_descriptor)
+        ):
+            raise CorpusSealError(
+                "exclusive directory publication claim is unsafe or nonempty"
+            )
+        os.fsync(claim_descriptor)
+        os.fsync(parent_descriptor)
+        current_source = os.stat(
+            source.name,
+            dir_fd=parent_descriptor,
+            follow_symlinks=False,
+        )
+        current_claim = os.stat(
+            destination.name,
+            dir_fd=parent_descriptor,
+            follow_symlinks=False,
+        )
+        if (
+            (current_source.st_dev, current_source.st_ino) != source_identity
+            or (current_claim.st_dev, current_claim.st_ino) != claim_identity
+            or os.listdir(claim_descriptor)
+        ):
+            raise CorpusSealError(
+                "directory publication source or claim changed before rename"
+            )
+        os.rename(
+            source.name,
+            destination.name,
+            src_dir_fd=parent_descriptor,
+            dst_dir_fd=parent_descriptor,
+        )
+        try:
+            os.stat(source.name, dir_fd=parent_descriptor, follow_symlinks=False)
+        except FileNotFoundError:
+            pass
+        else:
+            raise CorpusSealError(
+                "directory publication source still exists after rename"
+            )
+        published = os.stat(
+            destination.name,
+            dir_fd=parent_descriptor,
+            follow_symlinks=False,
+        )
+        if (
+            (published.st_dev, published.st_ino) != source_identity
+            or (published.st_dev, published.st_ino) == claim_identity
+        ):
+            raise CorpusSealError(
+                "published directory differs from its staged inode"
+            )
+        os.fsync(parent_descriptor)
+    finally:
+        if claim_descriptor >= 0:
+            os.close(claim_descriptor)
+        os.close(source_descriptor)
+
+
+def _rename_noreplace(
+    source: Path,
+    destination: Path,
+    *,
+    publication_profile: str | None = None,
+) -> str:
+    """Publish one sibling path with a collision-safe reviewed profile."""
+
+    source = Path(source)
+    destination = Path(destination)
+    if source.parent != destination.parent or source.name == destination.name:
+        raise CorpusSealError(
+            "no-replace publication paths must be distinct lexical siblings"
+        )
+    source_before = os.lstat(source)
+    source_type = _publication_source_type(source_before)
+    if publication_profile not in {
+        None,
+        NATIVE_PUBLICATION_PROFILE,
+        CLAIM_RENAME_PUBLICATION_PROFILE,
+    }:
+        raise CorpusSealError(
+            f"unsupported corpus publication profile: {publication_profile!r}"
+        )
+
+    def claim_and_rename() -> str:
+        if not sys.platform.startswith("linux"):
+            raise CorpusSealError(
+                "the claim-and-rename publication profile is Linux-only"
+            )
+        parent_descriptor = _open_claim_parent(source.parent)
+        try:
+            parent = os.fstat(parent_descriptor)
+            if source_before.st_dev != parent.st_dev:
+                raise CorpusSealError(
+                    "no-replace publication crosses a filesystem boundary"
+                )
+            if source_type == "regular_file":
+                _claim_file_then_rename(
+                    source,
+                    destination,
+                    parent_descriptor=parent_descriptor,
+                    source_before=source_before,
+                )
+            else:
+                _claim_directory_then_rename(
+                    source,
+                    destination,
+                    parent_descriptor=parent_descriptor,
+                    source_before=source_before,
+                )
+        finally:
+            os.close(parent_descriptor)
+        return CLAIM_RENAME_PUBLICATION_PROFILE
+
+    # A non-None profile is a preflight decision, not a hint. Select its exact
+    # branch before any namespace mutation; it either commits that protocol or
+    # raises. Only the legacy/diagnostic None lane may negotiate a fallback.
+    if publication_profile == CLAIM_RENAME_PUBLICATION_PROFILE:
+        return claim_and_rename()
+    if publication_profile == NATIVE_PUBLICATION_PROFILE:
+        _native_rename_noreplace(source, destination)
+        return NATIVE_PUBLICATION_PROFILE
+    try:
+        _native_rename_noreplace(source, destination)
+    except OSError as exc:
+        if (
+            not sys.platform.startswith("linux")
+            or exc.errno not in _UNSUPPORTED_NOREPLACE_ERRNOS
+        ):
+            raise
+        return claim_and_rename()
+    return NATIVE_PUBLICATION_PROFILE
 
 
 def _scan_sealed_tree(root: Path) -> dict[str, Path]:
@@ -1251,6 +1578,7 @@ def _seal_report_record(
     manifest: Mapping[str, object],
     *,
     publisher_job_id: str,
+    publication_profile: str,
 ) -> dict[str, object]:
     source = _mapping(manifest.get("source"), "seal source identity")
     dataset = _mapping(manifest.get("dataset"), "seal dataset identity")
@@ -1266,8 +1594,21 @@ def _seal_report_record(
             "path": str(report),
             "encoding": "utf-8",
             "canonical_json": "sorted-keys-compact-lf",
-            "atomic_no_replace": True,
             "mode": "0o444",
+        },
+        "publication": {
+            "profile": publication_profile,
+            "source_types": ["directory", "regular_file"],
+            "atomic_destination_no_replace": (
+                publication_profile == NATIVE_PUBLICATION_PROFILE
+            ),
+            "exclusive_type_matched_claim": (
+                publication_profile == CLAIM_RENAME_PUBLICATION_PROFILE
+            ),
+            "transient_destination": (
+                publication_profile == CLAIM_RENAME_PUBLICATION_PROFILE
+            ),
+            "threat_model": "non-hostile-same-owner",
         },
         "seal": {
             "path": str(seal),
@@ -1295,6 +1636,107 @@ def _seal_report_record(
     }
 
 
+def _require_seal_report_v2(value: object) -> dict[str, object]:
+    """Reject JSON numeric aliases and every non-v2 report shape."""
+
+    def exact_object(
+        candidate: object,
+        keys: set[str],
+        *,
+        label: str,
+    ) -> dict[str, object]:
+        if type(candidate) is not dict or set(candidate) != keys:
+            raise CorpusSealError(f"{label} has an incompatible v2 shape")
+        return candidate
+
+    report = exact_object(
+        value,
+        {"format", "v", "status", "publisher", "report", "publication", "seal"},
+        label="corpus seal verification report",
+    )
+    publisher = exact_object(
+        report["publisher"],
+        {"scheduler", "job_id"},
+        label="corpus seal report publisher",
+    )
+    report_identity = exact_object(
+        report["report"],
+        {"path", "encoding", "canonical_json", "mode"},
+        label="corpus seal report identity",
+    )
+    publication = exact_object(
+        report["publication"],
+        {
+            "profile",
+            "source_types",
+            "atomic_destination_no_replace",
+            "exclusive_type_matched_claim",
+            "transient_destination",
+            "threat_model",
+        },
+        label="corpus seal report publication evidence",
+    )
+    seal = exact_object(
+        report["seal"],
+        {
+            "path",
+            "source_commit",
+            "prepare_job_id",
+            "dataset_manifest_sha256",
+            "files_sha256",
+            "content_sha256",
+        },
+        label="corpus seal report seal identity",
+    )
+    if (
+        report["format"] != SEAL_REPORT_FORMAT
+        or type(report["format"]) is not str
+        or type(report["v"]) is not int
+        or report["v"] != SEAL_REPORT_VERSION
+        or report["status"] != "verified"
+        or type(report["status"]) is not str
+        or any(type(item) is not str for item in publisher.values())
+        or any(type(item) is not str for item in report_identity.values())
+        or any(type(item) is not str for item in seal.values())
+    ):
+        raise CorpusSealError(
+            "corpus seal verification report contains invalid v2 field types"
+        )
+    profile = publication["profile"]
+    source_types = publication["source_types"]
+    boolean_fields = (
+        "atomic_destination_no_replace",
+        "exclusive_type_matched_claim",
+        "transient_destination",
+    )
+    if (
+        type(profile) is not str
+        or profile not in {
+            NATIVE_PUBLICATION_PROFILE,
+            CLAIM_RENAME_PUBLICATION_PROFILE,
+        }
+        or type(source_types) is not list
+        or source_types != ["directory", "regular_file"]
+        or any(type(item) is not str for item in source_types)
+        or any(type(publication[name]) is not bool for name in boolean_fields)
+        or type(publication["threat_model"]) is not str
+        or publication["threat_model"] != "non-hostile-same-owner"
+    ):
+        raise CorpusSealError(
+            "corpus seal verification report contains invalid v2 publication types"
+        )
+    uses_claim = profile == CLAIM_RENAME_PUBLICATION_PROFILE
+    if (
+        publication["atomic_destination_no_replace"] is not (not uses_claim)
+        or publication["exclusive_type_matched_claim"] is not uses_claim
+        or publication["transient_destination"] is not uses_claim
+    ):
+        raise CorpusSealError(
+            "corpus seal verification report contains inconsistent v2 publication facts"
+        )
+    return report
+
+
 def _verify_seal_report(path: Path, expected: Mapping[str, object]) -> dict[str, object]:
     raw, metadata = _read_regular_bytes_with_stat(
         path,
@@ -1310,6 +1752,7 @@ def _verify_seal_report(path: Path, expected: Mapping[str, object]) -> dict[str,
         raise CorpusSealError(
             "corpus seal verification report is not canonical compact JSON"
         )
+    _require_seal_report_v2(report)
     if report != expected:
         raise CorpusSealError(
             "corpus seal verification report differs from its seal or publisher job"
@@ -1342,6 +1785,7 @@ def publish_seal_report(
     dataset_manifest_sha256: str,
     data_sha256s: Mapping[str, str],
     report_sha256s: Mapping[str, str],
+    publication_profile: str,
 ) -> dict[str, object]:
     """Verify a seal and atomically publish or recover its same-job report."""
 
@@ -1354,6 +1798,13 @@ def publish_seal_report(
     )
     expected_data = _data_hash_anchors(data_sha256s)
     expected_reports = _report_hash_anchors(report_sha256s)
+    if publication_profile not in {
+        NATIVE_PUBLICATION_PROFILE,
+        CLAIM_RENAME_PUBLICATION_PROFILE,
+    }:
+        raise CorpusSealError(
+            "seal report publication requires one admitted preflight profile"
+        )
     if expected_data is None or expected_reports is None:
         raise CorpusSealError(
             "seal report publication requires all twelve data and three report anchors"
@@ -1377,6 +1828,7 @@ def publish_seal_report(
         seal,
         manifest,
         publisher_job_id=expected_publisher,
+        publication_profile=publication_profile,
     )
     try:
         os.lstat(report)
@@ -1422,7 +1874,13 @@ def publish_seal_report(
             )
         _fsync_directory(report.parent)
         try:
-            _rename_noreplace(temporary, report)
+            # The non-None branch is selected and validated before mutation by
+            # _rename_noreplace; it cannot renegotiate after committing.
+            _rename_noreplace(
+                temporary,
+                report,
+                publication_profile=publication_profile,
+            )
         except FileExistsError:
             # A same-job retry may have won the race.  Only the exact protected
             # report is admissible.  Retain our private stage: deleting by
@@ -1457,6 +1915,7 @@ def seal_corpus(
     dataset_manifest_sha256: str | None = None,
     data_sha256s: Mapping[str, str] | None = None,
     report_sha256s: Mapping[str, str] | None = None,
+    publication_profile: str | None = None,
 ) -> dict[str, object]:
     """Validate and atomically publish one new, non-overwriting corpus seal."""
 
@@ -1573,7 +2032,14 @@ def seal_corpus(
         # already protected.
         if sys.platform == "darwin":
             os.chmod(staging, 0o700, follow_symlinks=False)
-        _rename_noreplace(staging, target)
+        if publication_profile is None:
+            _rename_noreplace(staging, target)
+        else:
+            _rename_noreplace(
+                staging,
+                target,
+                publication_profile=publication_profile,
+            )
         if sys.platform == "darwin":
             os.chmod(target, 0o555, follow_symlinks=False)
             _fsync_directory(target)

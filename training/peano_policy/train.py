@@ -71,6 +71,8 @@ from .prompt import (
 from .recovery import (
     AdapterRecoveryCallbackMixin,
     AdapterRecoverySnapshotter,
+    CLAIM_RENAME_PUBLICATION_PROFILE,
+    NATIVE_PUBLICATION_PROFILE,
     recovery_snapshot_plan,
     verify_recovery_publication_preflight,
 )
@@ -225,7 +227,8 @@ def _verify_recovery_filesystem_for_training(
     )
     filesystem = record.get("filesystem")
     platform_record = record.get("platform")
-    mechanism = record.get("mechanism")
+    mechanisms = record.get("mechanisms")
+    publication_profile = record.get("publication_profile")
     expected_probe_root = (
         output_dir.parent / "recovery-publication-preflights"
     ).resolve()
@@ -234,7 +237,9 @@ def _verify_recovery_filesystem_for_training(
         or Path(str(filesystem.get("root"))).resolve() != expected_probe_root
         or filesystem.get("same_device") is not True
         or type(platform_record) is not dict
-        or type(mechanism) is not dict
+        or type(mechanisms) is not dict
+        or publication_profile
+        not in {NATIVE_PUBLICATION_PROFILE, CLAIM_RENAME_PUBLICATION_PROFILE}
     ):
         raise ValueError(
             "recovery publication preflight is not on the training filesystem"
@@ -261,11 +266,19 @@ def _verify_recovery_filesystem_for_training(
             or report.name != expected_name
             or platform_record.get("os_name") != "posix"
             or not str(platform_record.get("sys_platform", "")).startswith("linux")
-            or mechanism.get("syscall") != "renameat2"
-            or mechanism.get("flag") != "RENAME_NOREPLACE"
+            or set(mechanisms) != {"directory", "regular_file"}
+            or any(
+                type(mechanisms.get(kind)) is not dict
+                or mechanisms[kind].get("protocol") != publication_profile
+                or type(mechanisms[kind].get("native_attempt")) is not dict
+                or mechanisms[kind]["native_attempt"].get("syscall") != "renameat2"
+                or mechanisms[kind]["native_attempt"].get("flag")
+                != "RENAME_NOREPLACE"
+                for kind in ("directory", "regular_file")
+            )
         ):
             raise ValueError(
-                "WMI recovery preflight lacks the exact Linux no-replace contract"
+                "WMI recovery preflight lacks an exact admitted Linux publication profile"
             )
     return {"report": report_identity, "record": record}
 
@@ -902,7 +915,12 @@ def _run_identity(
     }
 
 
-def _ensure_run_identity(output_dir: Path, identity: dict[str, Any]) -> tuple[Path, str]:
+def _ensure_run_identity(
+    output_dir: Path,
+    identity: dict[str, Any],
+    *,
+    publication_profile: str | None = None,
+) -> tuple[Path, str]:
     path = output_dir / "run-identity.json"
     if path.exists():
         try:
@@ -914,7 +932,11 @@ def _ensure_run_identity(output_dir: Path, identity: dict[str, Any]) -> tuple[Pa
                 "output directory belongs to a different training identity"
             )
     else:
-        write_manifest_noreplace(path, identity)
+        write_manifest_noreplace(
+            path,
+            identity,
+            publication_profile=publication_profile,
+        )
     return path, sha256_file(path)
 
 
@@ -1225,6 +1247,22 @@ def train(
         output_dir=output_dir,
         job_identity=job_identity,
     )
+    publication_profile: str | None = None
+    if recovery_filesystem_verification is not None:
+        recovery_record = recovery_filesystem_verification.get("record")
+        candidate_profile = (
+            recovery_record.get("publication_profile")
+            if type(recovery_record) is dict
+            else None
+        )
+        if candidate_profile not in {
+            NATIVE_PUBLICATION_PROFILE,
+            CLAIM_RENAME_PUBLICATION_PROFILE,
+        }:
+            raise RuntimeError(
+                "verified recovery filesystem has no admitted publication profile"
+            )
+        publication_profile = candidate_profile
     preparation_verification = _verify_preparation_reports(
         config,
         preparation_reports,
@@ -1354,7 +1392,9 @@ def train(
         job_identity=job_identity,
     )
     run_identity_path, run_identity_sha256 = _ensure_run_identity(
-        output_dir, run_identity
+        output_dir,
+        run_identity,
+        publication_profile=publication_profile,
     )
     admission_probe_plan = (
         select_admission_probes(
@@ -1456,6 +1496,7 @@ def train(
                     expected_optimizer_steps=schedule_preflight[
                         "expected_optimizer_steps"
                     ],
+                    publication_profile=publication_profile,
                 )
             )
         )
@@ -1596,12 +1637,20 @@ def train(
         tempfile.mkdtemp(prefix=f".{ADAPTER_SUBDIR}.partial-", dir=output_dir)
     )
     model.save_pretrained(adapter_staging, safe_serialization=True)
-    publish_staged_directory_noreplace(adapter_staging, adapter_output)
+    publish_staged_directory_noreplace(
+        adapter_staging,
+        adapter_output,
+        publication_profile=publication_profile,
+    )
     tokenizer_staging = Path(
         tempfile.mkdtemp(prefix=f".{TOKENIZER_SUBDIR}.partial-", dir=output_dir)
     )
     tokenizer.save_pretrained(str(tokenizer_staging))
-    publish_staged_directory_noreplace(tokenizer_staging, tokenizer_output)
+    publish_staged_directory_noreplace(
+        tokenizer_staging,
+        tokenizer_output,
+        publication_profile=publication_profile,
+    )
     if schedule_preflight is not None:
         if final_tensor_population is None:
             raise RuntimeError("model-v3 final tensor fingerprint is missing")
@@ -1825,7 +1874,11 @@ def train(
         require_protected=(schedule_preflight is not None),
     )
     manifest_path = output_dir / "training-manifest.json"
-    write_manifest_noreplace(manifest_path, manifest)
+    write_manifest_noreplace(
+        manifest_path,
+        manifest,
+        publication_profile=publication_profile,
+    )
     return manifest_path
 
 

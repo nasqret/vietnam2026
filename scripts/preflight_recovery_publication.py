@@ -75,6 +75,7 @@ def main(argv: list[str] | None = None) -> int:
                     "report": str(report),
                     "report_sha256": _sha256(report),
                     "retained_probe": publication["probe_parent"]["path"],
+                    "publication_profile": record["publication_profile"],
                     "status": "passed",
                 },
                 ensure_ascii=False,

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import errno
 import hashlib
 import importlib.util
 import json
@@ -327,7 +328,11 @@ def _hash_anchors(
     return data_hashes["manifest.json"], data_hashes, report_hashes
 
 
-def _anchored_seal(bundle: dict[str, Path | str]) -> dict[str, object]:
+def _anchored_seal(
+    bundle: dict[str, Path | str],
+    *,
+    publication_profile: str | None = None,
+) -> dict[str, object]:
     manifest_sha256, data_sha256s, report_sha256s = _hash_anchors(bundle)
     return corpus_seal.seal_corpus(
         bundle["artifact_dir"],
@@ -340,6 +345,7 @@ def _anchored_seal(bundle: dict[str, Path | str]) -> dict[str, object]:
         dataset_manifest_sha256=manifest_sha256,
         data_sha256s=data_sha256s,
         report_sha256s=report_sha256s,
+        publication_profile=publication_profile,
     )
 
 
@@ -814,8 +820,18 @@ def test_report_publication_recovers_crash_window_and_reuses_only_same_job(
             dataset_manifest_sha256=manifest_sha256,
             data_sha256s=data_sha256s,
             report_sha256s=report_sha256s,
+            publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
         )
         assert first["publisher"] == {"scheduler": "slurm", "job_id": "99"}
+        assert first["v"] == 2
+        assert first["publication"] == {
+            "profile": corpus_seal.NATIVE_PUBLICATION_PROFILE,
+            "source_types": ["directory", "regular_file"],
+            "atomic_destination_no_replace": True,
+            "exclusive_type_matched_claim": False,
+            "transient_destination": False,
+            "threat_model": "non-hostile-same-owner",
+        }
         before = (report.stat().st_dev, report.stat().st_ino, report.read_bytes())
         second = corpus_seal.publish_seal_report(
             report,
@@ -826,6 +842,7 @@ def test_report_publication_recovers_crash_window_and_reuses_only_same_job(
             dataset_manifest_sha256=manifest_sha256,
             data_sha256s=data_sha256s,
             report_sha256s=report_sha256s,
+            publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
         )
         assert second == first
         assert (report.stat().st_dev, report.stat().st_ino, report.read_bytes()) == before
@@ -839,11 +856,273 @@ def test_report_publication_recovers_crash_window_and_reuses_only_same_job(
                 dataset_manifest_sha256=manifest_sha256,
                 data_sha256s=data_sha256s,
                 report_sha256s=report_sha256s,
+                publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
             )
     finally:
         if report.exists():
             os.chmod(report, 0o600)
         _unlock_tree(destination)
+
+
+@pytest.mark.skipif(
+    sys.platform == "darwin",
+    reason="the production claim-and-rename profile is Linux/Ceph-only",
+)
+def test_preflight_selected_claim_profile_publishes_seal_and_report(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    report = tmp_path / "logs" / "seal-report-99.json"
+    manifest_sha256, data_sha256s, report_sha256s = _hash_anchors(bundle)
+
+    def forbidden_native(_source: Path, _destination: Path) -> None:
+        raise AssertionError("selected corpus profile must not renegotiate")
+
+    monkeypatch.setattr(corpus_seal.sys, "platform", "linux")
+    monkeypatch.setattr(corpus_seal, "_native_rename_noreplace", forbidden_native)
+    try:
+        manifest = _anchored_seal(
+            bundle,
+            publication_profile=corpus_seal.CLAIM_RENAME_PUBLICATION_PROFILE,
+        )
+        assert manifest["content_sha256"]
+        published = corpus_seal.publish_seal_report(
+            report,
+            destination,
+            source_commit=COMMIT,
+            prepare_job_id=JOB_ID,
+            publisher_job_id="99",
+            dataset_manifest_sha256=manifest_sha256,
+            data_sha256s=data_sha256s,
+            report_sha256s=report_sha256s,
+            publication_profile=corpus_seal.CLAIM_RENAME_PUBLICATION_PROFILE,
+        )
+        assert published["seal"]["content_sha256"] == manifest["content_sha256"]
+        assert published["publication"] == {
+            "profile": corpus_seal.CLAIM_RENAME_PUBLICATION_PROFILE,
+            "source_types": ["directory", "regular_file"],
+            "atomic_destination_no_replace": False,
+            "exclusive_type_matched_claim": True,
+            "transient_destination": True,
+            "threat_model": "non-hostile-same-owner",
+        }
+        assert report.stat().st_nlink == 1
+        assert stat.S_IMODE(report.stat().st_mode) == 0o444
+    finally:
+        if report.exists():
+            os.chmod(report, 0o600)
+        _unlock_tree(destination)
+
+
+@pytest.mark.parametrize(
+    ("initial_profile", "retry_profile"),
+    [
+        (
+            corpus_seal.NATIVE_PUBLICATION_PROFILE,
+            corpus_seal.CLAIM_RENAME_PUBLICATION_PROFILE,
+        ),
+        (
+            corpus_seal.CLAIM_RENAME_PUBLICATION_PROFILE,
+            corpus_seal.NATIVE_PUBLICATION_PROFILE,
+        ),
+    ],
+)
+def test_existing_seal_report_rejects_a_different_publication_profile(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    initial_profile: str,
+    retry_profile: str,
+) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    report = tmp_path / "logs" / "seal-report-99.json"
+    manifest_sha256, data_sha256s, report_sha256s = _hash_anchors(bundle)
+    _anchored_seal(bundle)
+    if initial_profile == corpus_seal.CLAIM_RENAME_PUBLICATION_PROFILE:
+        monkeypatch.setattr(corpus_seal.sys, "platform", "linux")
+    try:
+        corpus_seal.publish_seal_report(
+            report,
+            destination,
+            source_commit=COMMIT,
+            prepare_job_id=JOB_ID,
+            publisher_job_id="99",
+            dataset_manifest_sha256=manifest_sha256,
+            data_sha256s=data_sha256s,
+            report_sha256s=report_sha256s,
+            publication_profile=initial_profile,
+        )
+        with pytest.raises(corpus_seal.CorpusSealError, match="differs"):
+            corpus_seal.publish_seal_report(
+                report,
+                destination,
+                source_commit=COMMIT,
+                prepare_job_id=JOB_ID,
+                publisher_job_id="99",
+                dataset_manifest_sha256=manifest_sha256,
+                data_sha256s=data_sha256s,
+                report_sha256s=report_sha256s,
+                publication_profile=retry_profile,
+            )
+    finally:
+        if report.exists():
+            os.chmod(report, 0o600)
+        _unlock_tree(destination)
+
+
+@pytest.mark.parametrize(
+    ("field", "forged_value"),
+    [
+        ("profile", corpus_seal.CLAIM_RENAME_PUBLICATION_PROFILE),
+        ("atomic_destination_no_replace", False),
+        ("exclusive_type_matched_claim", True),
+        ("transient_destination", True),
+    ],
+)
+def test_existing_seal_report_rejects_forged_publication_evidence(
+    tmp_path: Path,
+    field: str,
+    forged_value: object,
+) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    report = tmp_path / "logs" / "seal-report-99.json"
+    manifest_sha256, data_sha256s, report_sha256s = _hash_anchors(bundle)
+    _anchored_seal(bundle)
+    try:
+        corpus_seal.publish_seal_report(
+            report,
+            destination,
+            source_commit=COMMIT,
+            prepare_job_id=JOB_ID,
+            publisher_job_id="99",
+            dataset_manifest_sha256=manifest_sha256,
+            data_sha256s=data_sha256s,
+            report_sha256s=report_sha256s,
+            publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
+        )
+        forged = json.loads(report.read_text(encoding="utf-8"))
+        forged["publication"][field] = forged_value
+        os.chmod(report, 0o600)
+        report.write_text(
+            json.dumps(
+                forged,
+                ensure_ascii=False,
+                allow_nan=False,
+                sort_keys=True,
+                separators=(",", ":"),
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+        os.chmod(report, 0o444)
+        with pytest.raises(
+            corpus_seal.CorpusSealError,
+            match="inconsistent v2 publication facts",
+        ):
+            corpus_seal.publish_seal_report(
+                report,
+                destination,
+                source_commit=COMMIT,
+                prepare_job_id=JOB_ID,
+                publisher_job_id="99",
+                dataset_manifest_sha256=manifest_sha256,
+                data_sha256s=data_sha256s,
+                report_sha256s=report_sha256s,
+                publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
+            )
+    finally:
+        if report.exists():
+            os.chmod(report, 0o600)
+        _unlock_tree(destination)
+
+
+@pytest.mark.parametrize("numeric_alias", ["boolean", "version"])
+def test_seal_report_v2_rejects_json_numeric_type_aliases(
+    tmp_path: Path,
+    numeric_alias: str,
+) -> None:
+    bundle = _fixture_bundle(tmp_path)
+    destination = bundle["destination"]
+    assert isinstance(destination, Path)
+    report = tmp_path / "logs" / "seal-report-99.json"
+    manifest_sha256, data_sha256s, report_sha256s = _hash_anchors(bundle)
+    _anchored_seal(bundle)
+    try:
+        corpus_seal.publish_seal_report(
+            report,
+            destination,
+            source_commit=COMMIT,
+            prepare_job_id=JOB_ID,
+            publisher_job_id="99",
+            dataset_manifest_sha256=manifest_sha256,
+            data_sha256s=data_sha256s,
+            report_sha256s=report_sha256s,
+            publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
+        )
+        forged = json.loads(report.read_text(encoding="utf-8"))
+        if numeric_alias == "boolean":
+            forged["publication"]["atomic_destination_no_replace"] = 1
+        else:
+            forged["v"] = 2.0
+        os.chmod(report, 0o600)
+        report.write_text(
+            json.dumps(
+                forged,
+                ensure_ascii=False,
+                allow_nan=False,
+                sort_keys=True,
+                separators=(",", ":"),
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+        os.chmod(report, 0o444)
+        with pytest.raises(corpus_seal.CorpusSealError, match="v2"):
+            corpus_seal.publish_seal_report(
+                report,
+                destination,
+                source_commit=COMMIT,
+                prepare_job_id=JOB_ID,
+                publisher_job_id="99",
+                dataset_manifest_sha256=manifest_sha256,
+                data_sha256s=data_sha256s,
+                report_sha256s=report_sha256s,
+                publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
+            )
+    finally:
+        if report.exists():
+            os.chmod(report, 0o600)
+        _unlock_tree(destination)
+
+
+def test_explicit_native_corpus_profile_never_falls_back_after_selection(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    source = tmp_path / "source"
+    destination = tmp_path / "destination"
+    source.write_bytes(b"candidate")
+
+    def unsupported(_source: Path, _destination: Path) -> None:
+        raise OSError(errno.EINVAL, "native no-replace unsupported")
+
+    monkeypatch.setattr(corpus_seal.sys, "platform", "linux")
+    monkeypatch.setattr(corpus_seal, "_native_rename_noreplace", unsupported)
+    with pytest.raises(OSError, match="native no-replace unsupported"):
+        corpus_seal._rename_noreplace(
+            source,
+            destination,
+            publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
+        )
+
+    assert source.read_bytes() == b"candidate"
+    assert not destination.exists()
 
 
 def test_report_publication_failure_retains_its_stage_without_masking_error(
@@ -857,7 +1136,13 @@ def test_report_publication_failure_retains_its_stage_without_masking_error(
     manifest_sha256, data_sha256s, report_sha256s = _hash_anchors(bundle)
     _anchored_seal(bundle)
 
-    def fail_rename(_source: Path, _destination: Path) -> None:
+    def fail_rename(
+        _source: Path,
+        _destination: Path,
+        *,
+        publication_profile: str,
+    ) -> None:
+        assert publication_profile == corpus_seal.NATIVE_PUBLICATION_PROFILE
         raise OSError("simulated report rename failure")
 
     monkeypatch.setattr(corpus_seal, "_rename_noreplace", fail_rename)
@@ -872,6 +1157,7 @@ def test_report_publication_failure_retains_its_stage_without_masking_error(
                 dataset_manifest_sha256=manifest_sha256,
                 data_sha256s=data_sha256s,
                 report_sha256s=report_sha256s,
+                publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
             )
         assert not report.exists()
         stages = list(report.parent.glob(f".{report.name}.staging-*"))
@@ -895,7 +1181,13 @@ def test_report_failure_never_deletes_a_replacement_at_its_stage_path(
     _anchored_seal(bundle)
     replacement = b"foreign replacement\n"
 
-    def replace_then_fail(source: Path, _destination: Path) -> None:
+    def replace_then_fail(
+        source: Path,
+        _destination: Path,
+        *,
+        publication_profile: str,
+    ) -> None:
+        assert publication_profile == corpus_seal.NATIVE_PUBLICATION_PROFILE
         os.chmod(source, 0o600)
         source.unlink()
         source.write_bytes(replacement)
@@ -913,6 +1205,7 @@ def test_report_failure_never_deletes_a_replacement_at_its_stage_path(
                 dataset_manifest_sha256=manifest_sha256,
                 data_sha256s=data_sha256s,
                 report_sha256s=report_sha256s,
+                publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
             )
         stages = list(report.parent.glob(f".{report.name}.staging-*"))
         assert len(stages) == 1
@@ -932,6 +1225,18 @@ def test_report_publication_requires_every_external_anchor_at_runtime(
     manifest_sha256, data_sha256s, report_sha256s = _hash_anchors(bundle)
     _anchored_seal(bundle)
     try:
+        with pytest.raises(corpus_seal.CorpusSealError, match="admitted preflight profile"):
+            corpus_seal.publish_seal_report(
+                report,
+                destination,
+                source_commit=COMMIT,
+                prepare_job_id=JOB_ID,
+                publisher_job_id="99",
+                dataset_manifest_sha256=manifest_sha256,
+                data_sha256s=data_sha256s,
+                report_sha256s=report_sha256s,
+                publication_profile=None,  # type: ignore[arg-type]
+            )
         with pytest.raises(corpus_seal.CorpusSealError, match="dataset manifest hash"):
             corpus_seal.publish_seal_report(
                 report,
@@ -942,6 +1247,7 @@ def test_report_publication_requires_every_external_anchor_at_runtime(
                 dataset_manifest_sha256=None,  # type: ignore[arg-type]
                 data_sha256s=data_sha256s,
                 report_sha256s=report_sha256s,
+                publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
             )
         with pytest.raises(corpus_seal.CorpusSealError, match="requires all twelve"):
             corpus_seal.publish_seal_report(
@@ -953,6 +1259,7 @@ def test_report_publication_requires_every_external_anchor_at_runtime(
                 dataset_manifest_sha256=manifest_sha256,
                 data_sha256s=None,  # type: ignore[arg-type]
                 report_sha256s=report_sha256s,
+                publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
             )
         with pytest.raises(corpus_seal.CorpusSealError, match="requires all twelve"):
             corpus_seal.publish_seal_report(
@@ -964,6 +1271,7 @@ def test_report_publication_requires_every_external_anchor_at_runtime(
                 dataset_manifest_sha256=manifest_sha256,
                 data_sha256s=data_sha256s,
                 report_sha256s=None,  # type: ignore[arg-type]
+                publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
             )
     finally:
         _unlock_tree(destination)
@@ -989,6 +1297,7 @@ def test_existing_report_is_fsynced_with_its_parent_then_reverified(
             dataset_manifest_sha256=manifest_sha256,
             data_sha256s=data_sha256s,
             report_sha256s=report_sha256s,
+            publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
         )
         events: list[tuple[str, Path]] = []
         original_file = corpus_seal._fsync_regular_file
@@ -1013,6 +1322,7 @@ def test_existing_report_is_fsynced_with_its_parent_then_reverified(
             dataset_manifest_sha256=manifest_sha256,
             data_sha256s=data_sha256s,
             report_sha256s=report_sha256s,
+            publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
         ) == expected
         assert events == [("file", report), ("directory", report.parent)]
     finally:
@@ -1040,6 +1350,7 @@ def test_report_mode_check_is_bound_to_the_inode_that_is_opened(
         dataset_manifest_sha256=manifest_sha256,
         data_sha256s=data_sha256s,
         report_sha256s=report_sha256s,
+        publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
     )
     replacement = report.with_name("writable-replacement.json")
     replacement.write_bytes(report.read_bytes())
@@ -1099,6 +1410,7 @@ def test_stage_replacement_after_read_is_rejected_before_report_rename(
                 dataset_manifest_sha256=manifest_sha256,
                 data_sha256s=data_sha256s,
                 report_sha256s=report_sha256s,
+                publication_profile=corpus_seal.NATIVE_PUBLICATION_PROFILE,
             )
         assert not report.exists()
         stages = list(report.parent.glob(f".{report.name}.staging-*"))
@@ -1161,6 +1473,8 @@ def test_cli_create_and_verify_contract(
                 COMMIT,
                 "--prepare-job-id",
                 JOB_ID,
+                "--publication-profile",
+                corpus_seal.NATIVE_PUBLICATION_PROFILE,
             ]
         ) == 0
         output = json.loads(capsys.readouterr().out)

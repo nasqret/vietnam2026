@@ -331,6 +331,8 @@ def test_launcher_creates_then_freshly_verifies_and_recovers_report(
             str(bundle["source_commit"]),
             "--prepare-job-id",
             str(bundle["prepare_job_id"]),
+            "--publication-profile",
+            "native-no-replace-rename-v1",
             *anchors,
         )
         assert created.returncode == 0, created.stderr
@@ -378,6 +380,8 @@ def test_launcher_creates_then_freshly_verifies_and_recovers_report(
             str(bundle["prepare_job_id"]),
             "--publisher-job-id",
             "100",
+            "--publication-profile",
+            "native-no-replace-rename-v1",
             *anchors,
         )
         assert recovered.returncode == 0, recovered.stderr
@@ -398,6 +402,8 @@ def test_launcher_creates_then_freshly_verifies_and_recovers_report(
             str(bundle["prepare_job_id"]),
             "--publisher-job-id",
             "100",
+            "--publication-profile",
+            "native-no-replace-rename-v1",
             *anchors,
         )
         assert repeated.returncode == 0, repeated.stderr

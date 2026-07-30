@@ -20,6 +20,7 @@ import training.peano_policy.recovery as recovery  # noqa: E402
 from training.peano_policy.recovery import (  # noqa: E402
     AdapterRecoveryCallbackMixin,
     AdapterRecoverySnapshotter,
+    CLAIM_RENAME_PUBLICATION_PROFILE,
     RECOVERY_MANIFEST,
     RecoverySnapshotError,
     recovery_snapshot_plan,
@@ -151,6 +152,41 @@ def test_snapshot_is_adapter_only_manifest_last_and_authority_bound(
     assert all(
         path.stat().st_mode & 0o777 == (0o555 if path.is_dir() else 0o444)
         for path in snapshot.rglob("*")
+    )
+
+
+@pytest.mark.skipif(
+    sys.platform == "darwin",
+    reason="the production claim-and-rename profile is Linux/Ceph-only",
+)
+def test_snapshot_uses_preflight_selected_claim_profile_without_renegotiation(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    output = tmp_path / "run"
+    identity_path, identity, digest = _identity(output)
+
+    def forbidden_native(_source: Path, _destination: Path) -> None:
+        raise AssertionError("selected recovery profile must not renegotiate")
+
+    monkeypatch.setattr(recovery.sys, "platform", "linux")
+    monkeypatch.setattr(recovery, "_native_rename_noreplace", forbidden_native)
+    snapshotter = AdapterRecoverySnapshotter(
+        output_dir=output,
+        run_identity_path=identity_path,
+        run_identity_sha256=digest,
+        run_identity=identity,
+        expected_optimizer_steps=650,
+        publication_profile=CLAIM_RENAME_PUBLICATION_PROFILE,
+    )
+    snapshot = snapshotter.maybe_save(_AdapterModel(), global_step=100)
+    assert snapshot is not None
+    assert snapshot.is_dir()
+    verify_recovery_snapshot(
+        snapshot,
+        run_identity_path=identity_path,
+        expected_optimizer_steps=650,
+        expected_global_step=100,
     )
 
 

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 from types import SimpleNamespace
+import errno
 import os
 import sys
 
@@ -25,8 +26,10 @@ from training.peano_policy.train import (  # noqa: E402
     _verify_recovery_filesystem_for_training,
 )
 from training.peano_policy.recovery import (  # noqa: E402
+    CLAIM_RENAME_PUBLICATION_PROFILE,
     run_recovery_publication_preflight,
 )
+import training.peano_policy.recovery as recovery  # noqa: E402
 from training.peano_policy.training_evidence import (  # noqa: E402
     FiniteGradientAudit,
     TrainingEvidenceError,
@@ -153,7 +156,9 @@ def test_training_runner_wires_clip_before_recovery_and_manifest_admission() -> 
     final_population = source.index("final_tensor_population =")
     final_save = source.index("model.save_pretrained(adapter_staging")
     adapter_publication = source.index(
-        "publish_staged_directory_noreplace(adapter_staging, adapter_output)"
+        "publish_staged_directory_noreplace(\n"
+        "        adapter_staging,\n"
+        "        adapter_output,"
     )
     post_serialization = source.index("post_serialization_tensor_population =")
     post_evaluation = source.index("post_evaluation_tensor_population =")
@@ -162,7 +167,11 @@ def test_training_runner_wires_clip_before_recovery_and_manifest_admission() -> 
     release = source.index("del callbacks, named_trainable, trainer, model, tokenizer")
     admission = source.index("adapter_admission = admit_saved_adapter(")
     final_artifact_recheck = source.rindex("_verify_final_artifact_trees(")
-    publication = source.index("write_manifest_noreplace(manifest_path, manifest)")
+    publication = source.index(
+        "write_manifest_noreplace(\n"
+        "        manifest_path,\n"
+        "        manifest,"
+    )
 
     assert finite_callback < recovery_callback < train_call
     assert (
@@ -186,6 +195,7 @@ def test_training_runner_wires_clip_before_recovery_and_manifest_admission() -> 
     assert source.count(
         "require_protected=(schedule_preflight is not None)"
     ) == 3
+    assert source.count("publication_profile=publication_profile") >= 5
 
 
 def test_training_binds_live_recovery_probe_on_exact_output_filesystem(
@@ -207,6 +217,38 @@ def test_training_binds_live_recovery_probe_on_exact_output_filesystem(
     assert verification is not None
     assert verification["report"]["path"] == str(report.resolve())
     _require_recovery_filesystem_unchanged(verification)
+
+
+@pytest.mark.skipif(
+    sys.platform == "darwin",
+    reason="the production claim-and-rename profile is Linux/Ceph-only",
+)
+def test_wmi_training_accepts_exact_fallback_profile_and_binds_it(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    output_parent = tmp_path / "results" / "peano-policy"
+    probe_root = output_parent / "recovery-publication-preflights"
+    probe_root.mkdir(parents=True)
+    output_dir = output_parent / "adapter-run"
+    report = tmp_path / "peano-wmi-recovery-publication-preflight-123.json"
+
+    def unsupported(_source: Path, _destination: Path) -> None:
+        raise OSError(errno.EINVAL, "Ceph rejects RENAME_NOREPLACE")
+
+    monkeypatch.setattr(recovery, "_native_rename_noreplace", unsupported)
+    run_recovery_publication_preflight(probe_root, report_path=report)
+    verification = _verify_recovery_filesystem_for_training(
+        SimpleNamespace(curriculum=object()),
+        report,
+        output_dir=output_dir,
+        job_identity={"scheduler": "slurm", "job_id": "123"},
+    )
+    assert verification is not None
+    assert (
+        verification["record"]["publication_profile"]
+        == CLAIM_RENAME_PUBLICATION_PROFILE
+    )
 
 
 def test_training_claims_one_output_inode_and_rejects_path_or_mode_swap(

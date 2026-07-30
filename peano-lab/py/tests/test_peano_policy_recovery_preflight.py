@@ -19,6 +19,8 @@ if str(REPOSITORY_ROOT) not in sys.path:
 
 import training.peano_policy.recovery as recovery  # noqa: E402
 from training.peano_policy.recovery import (  # noqa: E402
+    CLAIM_RENAME_PUBLICATION_PROFILE,
+    NATIVE_PUBLICATION_PROFILE,
     RECOVERY_PUBLICATION_PREFLIGHT_FORMAT,
     RecoverySnapshotError,
     run_recovery_publication_preflight,
@@ -64,10 +66,14 @@ def test_preflight_publishes_and_retains_canonical_protected_evidence(
     source = Path(publication["source"]["path"])
     destination = Path(publication["destination"]["path"])
     sentinel = Path(publication["sentinel"]["path"])
+    file_source = Path(publication["regular_file"]["source_path"])
+    file_destination = Path(publication["regular_file"]["destination_path"])
     assert parent == _only_probe(root)
     assert not source.exists()
     assert destination.is_dir()
     assert sentinel.is_file()
+    assert not file_source.exists()
+    assert file_destination.is_file()
     assert stat.S_IMODE(parent.stat().st_mode) == 0o555
     assert stat.S_IMODE(destination.stat().st_mode) == 0o555
     assert stat.S_IMODE(sentinel.stat().st_mode) == 0o444
@@ -79,10 +85,49 @@ def test_preflight_publishes_and_retains_canonical_protected_evidence(
     assert all(publication["checks"].values())
     assert record["filesystem"]["same_device"] is True
     assert record["filesystem"]["statvfs"]["f_namemax"] > 0
-    if sys.platform == "darwin":
-        assert record["mechanism"]["syscall"] == "renamex_np"
-    else:
-        assert record["mechanism"]["syscall"] == "renameat2"
+    assert record["publication_profile"] == NATIVE_PUBLICATION_PROFILE
+    assert set(record["mechanisms"]) == {"directory", "regular_file"}
+    expected_syscall = "renamex_np" if sys.platform == "darwin" else "renameat2"
+    for kind, mechanism in record["mechanisms"].items():
+        assert mechanism["protocol"] == NATIVE_PUBLICATION_PROFILE
+        assert mechanism["source_type"] == kind
+        assert mechanism["native_attempt"]["syscall"] == expected_syscall
+        assert mechanism["native_attempt"]["result"] == "success"
+    assert bytes.fromhex(publication["regular_file"]["content_hex"]) == (
+        file_destination.read_bytes()
+    )
+
+
+@pytest.mark.skipif(
+    sys.platform == "darwin",
+    reason="the production claim-and-rename profile is Linux/Ceph-only",
+)
+def test_linux_einval_selects_and_verifies_one_claim_profile_for_both_types(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    root = tmp_path / "ceph-like"
+    root.mkdir()
+    report = tmp_path / "preflight.json"
+
+    def unsupported(_source: Path, _destination: Path) -> None:
+        raise OSError(errno.EINVAL, "RENAME_NOREPLACE unsupported")
+
+    monkeypatch.setattr(recovery.sys, "platform", "linux")
+    monkeypatch.setattr(recovery, "_native_rename_noreplace", unsupported)
+    record = run_recovery_publication_preflight(root, report_path=report)
+
+    assert record["publication_profile"] == CLAIM_RENAME_PUBLICATION_PROFILE
+    for kind, mechanism in record["mechanisms"].items():
+        assert mechanism["protocol"] == CLAIM_RENAME_PUBLICATION_PROFILE
+        assert mechanism["source_type"] == kind
+        assert mechanism["native_attempt"]["result"] == "unsupported"
+        assert mechanism["native_attempt"]["errno"] == errno.EINVAL
+        assert mechanism["claim"]["exclusive"] is True
+        assert mechanism["claim"]["transient_destination"] is True
+        assert mechanism["commit"]["syscall"] == "renameat"
+        assert mechanism["atomic_destination_no_replace"] is False
+    assert verify_recovery_publication_preflight(report) == record
 
 
 def test_existing_report_is_rejected_before_creating_a_probe(tmp_path: Path) -> None:
@@ -218,6 +263,54 @@ def test_verifier_rejects_noncanonical_report_and_live_sentinel_tampering(
     sentinel.write_bytes(b"changed")
     sentinel.chmod(0o444)
     with pytest.raises(RecoverySnapshotError, match="differs"):
+        verify_recovery_publication_preflight(report)
+
+
+def test_verifier_rejects_forged_or_mixed_publication_profile_evidence(
+    tmp_path: Path,
+) -> None:
+    root = tmp_path / "root"
+    root.mkdir()
+    report = tmp_path / "report.json"
+    record = run_recovery_publication_preflight(root, report_path=report)
+    forged = json.loads(json.dumps(record))
+    forged["mechanisms"]["regular_file"]["protocol"] = (
+        CLAIM_RENAME_PUBLICATION_PROFILE
+        if record["publication_profile"] == NATIVE_PUBLICATION_PROFILE
+        else NATIVE_PUBLICATION_PROFILE
+    )
+    report.chmod(0o644)
+    report.write_bytes(_canonical(forged))
+    report.chmod(0o444)
+
+    with pytest.raises(RecoverySnapshotError, match="protocol|profile|evidence"):
+        verify_recovery_publication_preflight(report)
+
+
+@pytest.mark.parametrize("field", ["claim_booleans", "check_booleans"])
+def test_v2_report_rejects_json_integers_where_booleans_are_required(
+    tmp_path: Path,
+    field: str,
+) -> None:
+    root = tmp_path / "root"
+    root.mkdir()
+    report = tmp_path / "report.json"
+    record = run_recovery_publication_preflight(root, report_path=report)
+    forged = json.loads(json.dumps(record))
+    if field == "claim_booleans":
+        claim = forged["mechanisms"]["regular_file"]["claim"]
+        claim["exclusive"] = int(claim["exclusive"])
+        claim["transient_destination"] = int(claim["transient_destination"])
+    else:
+        forged["publication"]["checks"] = {
+            key: int(value)
+            for key, value in forged["publication"]["checks"].items()
+        }
+    report.chmod(0o644)
+    report.write_bytes(_canonical(forged))
+    report.chmod(0o444)
+
+    with pytest.raises(RecoverySnapshotError, match="mechanism|protocol|checks"):
         verify_recovery_publication_preflight(report)
 
 

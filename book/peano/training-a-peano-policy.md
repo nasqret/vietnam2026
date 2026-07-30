@@ -1170,11 +1170,37 @@ prompt-v1/v2 artifacts preserve their historical contract; they cannot manufactu
 completion record.
 
 Recovery publication has an environmental premise as well as a code proof. Immediately before
-scheduled training, a model-free probe on the exact output filesystem exercises the production
-atomic no-replace rename with fsynced protected sentinel bytes. Its retained tree and exclusive
-report bind modes, inodes, device, mechanism, and byte hashes. The trainer includes that record in
-its run identity and checks the live tree again before final publication. This turns “the shared
-filesystem probably supports `renameat2(RENAME_NOREPLACE)`” into a tested precondition.
+scheduled training, publication-preflight v2 exercises both a protected directory and a protected
+regular file on the exact output filesystem. Its retained tree and exclusive report bind modes,
+inodes, device, byte hashes, the attempted native syscall, and one profile selected for both node
+types. The trainer includes that record in its run identity, threads the selected profile through
+every authoritative publication, and checks the live probes again before final publication. This
+turns “the shared filesystem probably supports our publication rule” into a tested precondition.
+
+The preferred profile remains `renamex_np(RENAME_EXCL)` on macOS or
+`renameat2(RENAME_NOREPLACE)` on Linux. WMI's Ceph filesystem returns `EINVAL` for the Linux flag.
+Only `EINVAL`, `EOPNOTSUPP`/`ENOTSUP`, or `ENOSYS` permits the Linux fallback. It atomically claims
+the absent final name with a type-matched empty object: an owned `0700` directory or a zero-length,
+single-link `0600` regular file. Parent and claim descriptors stay open while device, inode, type,
+owner, mode, and emptiness are checked, fsynced, and checked again. A descriptor-relative plain
+rename then atomically replaces only that owned claim with the complete stage. Success requires
+source disappearance, staging-inode continuity at the canonical name, claim-inode displacement,
+and a final parent fsync.
+
+That fallback is not mislabeled as atomic no-replace. Its claim is briefly visible, and a crash
+may leave a permanent empty canonical reservation plus a complete private stage. Existence alone
+is therefore never authority; all readers require the complete protected tree or canonical
+manifest. Failures remain for manual audit and are never cleaned up or automatically adopted. The
+last identity-check-to-rename interval is not secure against a malicious same-UID process, so the
+contract explicitly retains the project's non-hostile-same-owner premise. The preflight-selected
+profile is passed to run identity, recovery snapshots, adapter, tokenizer, and final manifest; a
+production call never silently renegotiates it.
+
+The corpus seal's canonical verification report uses schema v2 to make the distinction
+machine-readable. It binds the admitted profile, both exercised source types, whether the final
+operation had true atomic destination-no-replace semantics, and whether a transient exclusive
+claim was used. Existing-report recovery recomputes that exact record from the requested profile,
+so a retry cannot reinterpret claim publication as native publication (or the reverse).
 
 Final artifacts use the same primitive rather than an overwriting library rename. The runner first
 claims a fresh output directory with exclusive `mkdir` and records the output and parent devices,

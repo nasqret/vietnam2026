@@ -24,8 +24,8 @@ readonly expected_manifest_sha256=ccb62c771d1f7dab1e90e98da42c6c8acee40f47b5527c
 readonly expected_dataset_attestation_sha256=4e1cf0d00725a739d6f371062ff2079cfb9bc3e36daf4f4219cbbe1399a68a12
 readonly expected_token_audit_sha256=c290b285eabcf9d39ab13b4d6f0f194588541484390d35c00681041979e2f8d8
 readonly expected_runtime_smoke_sha256=86cc35bfcf2d5ff51931c140f3eb7168e3f641e1f80d54a3984dba9e49e40749
-readonly expected_cli_sha256=1d004f87d75c69d6ac21f82e6c213a919f0def91f0c22e0a284041fdcdd5bacd
-readonly expected_module_sha256=6073fbb96e27465a2ed2f00a9d17dfc52ebd74c333adad34bbbdd0dc7d6c055d
+readonly expected_cli_sha256=0b391513878c5fa333505a4e01049611fabbd091f11384c08462d6241604cc5d
+readonly expected_module_sha256=751a759bc7916a72b26f03b8c32502cc802de78565ec149b1136f9c1562711d7
 readonly destination=checkpoints/corpora/peano-policy-v3-173040
 readonly -a artifact_names=(
   balanced-raw-traces.jsonl
@@ -224,8 +224,8 @@ if [ "$seal_parent_device" != "$report_parent_device" ]; then
   exit 1
 fi
 
-# Exercise the production no-replace syscall on the exact shared publication
-# filesystem used by both the seal and its report.
+# Exercise both production publication node types on the exact shared
+# filesystem used by the seal and its report, then bind one selected profile.
 # A same-job requeue verifies the retained report and live probe instead of
 # creating another; both paths are reverified immediately before any seal work.
 readonly publication_preflight_report="logs/peano-wmi-v3-corpus-seal-publication-preflight-${SLURM_JOB_ID}.json"
@@ -241,8 +241,23 @@ else
     --probe-root "$project_root/checkpoints/corpora" \
     --report "$publication_preflight_report"
 fi
-"$wmi_python" scripts/preflight_recovery_publication.py verify \
-  --report "$publication_preflight_report"
+publication_preflight_summary="$(
+  "$wmi_python" scripts/preflight_recovery_publication.py verify \
+    --report "$publication_preflight_report"
+)"
+publication_profile="$(
+  "$wmi_python" -I -c \
+    'import json,sys; print(json.loads(sys.argv[1])["publication_profile"])' \
+    "$publication_preflight_summary"
+)"
+case "$publication_profile" in
+  native-no-replace-rename-v1|exclusive-type-matched-claim-rename-v1) ;;
+  *)
+    printf 'unrecognized publication profile: %s\n' "$publication_profile" >&2
+    exit 1
+    ;;
+esac
+readonly publication_profile
 
 bootstrap_root="$(
   mktemp -d "$project_root/tmp/peano-v3-seal-bootstrap-${SLURM_JOB_ID}.XXXXXX"
@@ -426,6 +441,7 @@ if [ "$destination_exists" = false ]; then
     --destination "$destination" \
     --source-commit "$historical_source_commit" \
     --prepare-job-id "$historical_prepare_job" \
+    --publication-profile "$publication_profile" \
     "${anchor_arguments[@]}"
 fi
 verify_output="$(
@@ -442,6 +458,7 @@ report_output="$(
     --source-commit "$historical_source_commit" \
     --prepare-job-id "$historical_prepare_job" \
     --publisher-job-id "$SLURM_JOB_ID" \
+    --publication-profile "$publication_profile" \
     "${anchor_arguments[@]}"
 )"
 test -n "$verify_output"

@@ -18,6 +18,16 @@ MANIFEST_VERSION = 1
 ADAPTER_SUBDIR = "adapter"
 TOKENIZER_SUBDIR = "tokenizer"
 _UNSAFE_MODEL_SUFFIXES = {".bin", ".pkl", ".pickle", ".pt", ".pth"}
+NATIVE_PUBLICATION_PROFILE = "native-no-replace-rename-v1"
+CLAIM_RENAME_PUBLICATION_PROFILE = "exclusive-type-matched-claim-rename-v1"
+_UNSUPPORTED_NOREPLACE_ERRNOS = frozenset(
+    {
+        errno.EINVAL,
+        errno.ENOSYS,
+        getattr(errno, "ENOTSUP", errno.EOPNOTSUPP),
+        errno.EOPNOTSUPP,
+    }
+)
 
 
 class PublicationError(RuntimeError):
@@ -599,14 +609,8 @@ def _fsync_publication_directory(path: Path) -> None:
         os.close(descriptor)
 
 
-def _atomic_rename_noreplace(source: Path, destination: Path) -> None:
-    """Rename one path atomically with the recovery-tested no-replace flags.
-
-    This is the same minimal OS boundary used by adapter recovery:
-    ``renamex_np(RENAME_EXCL)`` on macOS and
-    ``renameat2(RENAME_NOREPLACE)`` on Linux.  It deliberately has no fallback
-    to a check-then-rename sequence.
-    """
+def _native_atomic_rename_noreplace(source: Path, destination: Path) -> None:
+    """Use the platform's native atomic no-replace rename."""
 
     libc = ctypes.CDLL(None, use_errno=True)
     source_bytes = os.fsencode(source)
@@ -625,8 +629,10 @@ def _atomic_rename_noreplace(source: Path, destination: Path) -> None:
         try:
             rename = libc.renameat2
         except AttributeError as exc:  # pragma: no cover - unsupported old libc
-            raise PublicationError(
-                "atomic no-replace publication is unavailable"
+            raise OSError(
+                errno.ENOSYS,
+                "renameat2 is unavailable from the process libc",
+                str(destination),
             ) from exc
         rename.argtypes = (
             ctypes.c_int,
@@ -649,6 +655,319 @@ def _atomic_rename_noreplace(source: Path, destination: Path) -> None:
             f"refusing to replace existing publication destination: {destination}"
         )
     raise OSError(error, os.strerror(error), str(destination))
+
+
+def _publication_source_type(metadata: os.stat_result) -> str:
+    if stat.S_ISDIR(metadata.st_mode) and not stat.S_ISLNK(metadata.st_mode):
+        return "directory"
+    if stat.S_ISREG(metadata.st_mode) and not stat.S_ISLNK(metadata.st_mode):
+        return "regular_file"
+    raise PublicationError(
+        "no-replace publication requires a regular file or directory source"
+    )
+
+
+def _open_claim_parent(parent: Path) -> int:
+    flags = (
+        os.O_RDONLY
+        | getattr(os, "O_DIRECTORY", 0)
+        | getattr(os, "O_NOFOLLOW", 0)
+        | getattr(os, "O_CLOEXEC", 0)
+    )
+    try:
+        return os.open(parent, flags)
+    except OSError as exc:
+        raise PublicationError(f"cannot open publication parent {parent}: {exc}") from exc
+
+
+def _claim_file_then_rename(
+    source: Path,
+    destination: Path,
+    *,
+    parent_descriptor: int,
+    source_before: os.stat_result,
+) -> None:
+    claim_flags = (
+        os.O_WRONLY
+        | os.O_CREAT
+        | os.O_EXCL
+        | getattr(os, "O_NOFOLLOW", 0)
+        | getattr(os, "O_CLOEXEC", 0)
+    )
+    try:
+        claim_descriptor = os.open(
+            destination.name,
+            claim_flags,
+            0o600,
+            dir_fd=parent_descriptor,
+        )
+    except FileExistsError as exc:
+        raise FileExistsError(
+            f"refusing to replace existing publication destination: {destination}"
+        ) from exc
+    try:
+        os.fchmod(claim_descriptor, 0o600)
+        claim = os.fstat(claim_descriptor)
+        named_claim = os.stat(
+            destination.name,
+            dir_fd=parent_descriptor,
+            follow_symlinks=False,
+        )
+        parent = os.fstat(parent_descriptor)
+        source_identity = (source_before.st_dev, source_before.st_ino)
+        claim_identity = (claim.st_dev, claim.st_ino)
+        if (
+            not stat.S_ISREG(claim.st_mode)
+            or stat.S_IMODE(claim.st_mode) != 0o600
+            or claim.st_uid != os.geteuid()
+            or claim.st_nlink != 1
+            or claim.st_size != 0
+            or claim.st_dev != parent.st_dev
+            or source_before.st_dev != parent.st_dev
+            or claim_identity != (named_claim.st_dev, named_claim.st_ino)
+        ):
+            raise PublicationError(
+                "exclusive regular-file publication claim is unsafe or nonempty"
+            )
+        os.fsync(claim_descriptor)
+        os.fsync(parent_descriptor)
+        current_source = os.stat(
+            source.name,
+            dir_fd=parent_descriptor,
+            follow_symlinks=False,
+        )
+        current_claim = os.stat(
+            destination.name,
+            dir_fd=parent_descriptor,
+            follow_symlinks=False,
+        )
+        opened_claim = os.fstat(claim_descriptor)
+        if (
+            (current_source.st_dev, current_source.st_ino) != source_identity
+            or (current_claim.st_dev, current_claim.st_ino) != claim_identity
+            or (opened_claim.st_dev, opened_claim.st_ino) != claim_identity
+            or opened_claim.st_nlink != 1
+            or opened_claim.st_size != 0
+        ):
+            raise PublicationError(
+                "regular-file publication source or claim changed before rename"
+            )
+        os.rename(
+            source.name,
+            destination.name,
+            src_dir_fd=parent_descriptor,
+            dst_dir_fd=parent_descriptor,
+        )
+        try:
+            os.stat(source.name, dir_fd=parent_descriptor, follow_symlinks=False)
+        except FileNotFoundError:
+            pass
+        else:
+            raise PublicationError(
+                "regular-file publication source still exists after rename"
+            )
+        published = os.stat(
+            destination.name,
+            dir_fd=parent_descriptor,
+            follow_symlinks=False,
+        )
+        if (
+            (published.st_dev, published.st_ino) != source_identity
+            or (published.st_dev, published.st_ino) == claim_identity
+            or published.st_nlink != 1
+        ):
+            raise PublicationError(
+                "published regular file differs from its staged inode"
+            )
+        os.fsync(parent_descriptor)
+    finally:
+        os.close(claim_descriptor)
+
+
+def _claim_directory_then_rename(
+    source: Path,
+    destination: Path,
+    *,
+    parent_descriptor: int,
+    source_before: os.stat_result,
+) -> None:
+    directory_flags = (
+        os.O_RDONLY
+        | getattr(os, "O_DIRECTORY", 0)
+        | getattr(os, "O_NOFOLLOW", 0)
+        | getattr(os, "O_CLOEXEC", 0)
+    )
+    source_descriptor = os.open(
+        source.name,
+        directory_flags,
+        dir_fd=parent_descriptor,
+    )
+    claim_descriptor = -1
+    try:
+        source_identity = (source_before.st_dev, source_before.st_ino)
+        opened_source = os.fstat(source_descriptor)
+        if (opened_source.st_dev, opened_source.st_ino) != source_identity:
+            raise PublicationError(
+                "directory publication source changed while it was opened"
+            )
+        try:
+            os.mkdir(destination.name, mode=0o700, dir_fd=parent_descriptor)
+        except FileExistsError as exc:
+            raise FileExistsError(
+                f"refusing to replace existing publication destination: {destination}"
+            ) from exc
+        claim_descriptor = os.open(
+            destination.name,
+            directory_flags,
+            dir_fd=parent_descriptor,
+        )
+        os.fchmod(claim_descriptor, 0o700)
+        claim = os.fstat(claim_descriptor)
+        named_claim = os.stat(
+            destination.name,
+            dir_fd=parent_descriptor,
+            follow_symlinks=False,
+        )
+        parent = os.fstat(parent_descriptor)
+        claim_identity = (claim.st_dev, claim.st_ino)
+        if (
+            not stat.S_ISDIR(claim.st_mode)
+            or stat.S_IMODE(claim.st_mode) != 0o700
+            or claim.st_uid != os.geteuid()
+            or claim.st_dev != parent.st_dev
+            or source_before.st_dev != parent.st_dev
+            or claim_identity != (named_claim.st_dev, named_claim.st_ino)
+            or os.listdir(claim_descriptor)
+        ):
+            raise PublicationError(
+                "exclusive directory publication claim is unsafe or nonempty"
+            )
+        os.fsync(claim_descriptor)
+        os.fsync(parent_descriptor)
+        current_source = os.stat(
+            source.name,
+            dir_fd=parent_descriptor,
+            follow_symlinks=False,
+        )
+        current_claim = os.stat(
+            destination.name,
+            dir_fd=parent_descriptor,
+            follow_symlinks=False,
+        )
+        if (
+            (current_source.st_dev, current_source.st_ino) != source_identity
+            or (current_claim.st_dev, current_claim.st_ino) != claim_identity
+            or os.listdir(claim_descriptor)
+        ):
+            raise PublicationError(
+                "directory publication source or claim changed before rename"
+            )
+        os.rename(
+            source.name,
+            destination.name,
+            src_dir_fd=parent_descriptor,
+            dst_dir_fd=parent_descriptor,
+        )
+        try:
+            os.stat(source.name, dir_fd=parent_descriptor, follow_symlinks=False)
+        except FileNotFoundError:
+            pass
+        else:
+            raise PublicationError(
+                "directory publication source still exists after rename"
+            )
+        published = os.stat(
+            destination.name,
+            dir_fd=parent_descriptor,
+            follow_symlinks=False,
+        )
+        if (
+            (published.st_dev, published.st_ino) != source_identity
+            or (published.st_dev, published.st_ino) == claim_identity
+        ):
+            raise PublicationError(
+                "published directory differs from its staged inode"
+            )
+        os.fsync(parent_descriptor)
+    finally:
+        if claim_descriptor >= 0:
+            os.close(claim_descriptor)
+        os.close(source_descriptor)
+
+
+def _atomic_rename_noreplace(
+    source: Path,
+    destination: Path,
+    *,
+    publication_profile: str | None = None,
+) -> str:
+    """Publish one sibling path with an admitted, collision-safe profile.
+
+    Linux filesystems that reject ``RENAME_NOREPLACE`` may use the explicitly
+    preflighted claim-and-rename profile.  Its briefly visible empty claim is
+    fail-closed and assumes a non-hostile process sharing the effective UID.
+    """
+
+    source = Path(source)
+    destination = Path(destination)
+    if source.parent != destination.parent or source.name == destination.name:
+        raise PublicationError(
+            "no-replace publication paths must be distinct lexical siblings"
+        )
+    source_before = os.lstat(source)
+    source_type = _publication_source_type(source_before)
+    if publication_profile not in {
+        None,
+        NATIVE_PUBLICATION_PROFILE,
+        CLAIM_RENAME_PUBLICATION_PROFILE,
+    }:
+        raise PublicationError(
+            f"unsupported publication profile: {publication_profile!r}"
+        )
+
+    def claim_and_rename() -> str:
+        if not sys.platform.startswith("linux"):
+            raise PublicationError(
+                "the claim-and-rename publication profile is Linux-only"
+            )
+        parent_descriptor = _open_claim_parent(source.parent)
+        try:
+            parent = os.fstat(parent_descriptor)
+            if source_before.st_dev != parent.st_dev:
+                raise PublicationError(
+                    "no-replace publication crosses a filesystem boundary"
+                )
+            if source_type == "regular_file":
+                _claim_file_then_rename(
+                    source,
+                    destination,
+                    parent_descriptor=parent_descriptor,
+                    source_before=source_before,
+                )
+            else:
+                _claim_directory_then_rename(
+                    source,
+                    destination,
+                    parent_descriptor=parent_descriptor,
+                    source_before=source_before,
+                )
+        finally:
+            os.close(parent_descriptor)
+        return CLAIM_RENAME_PUBLICATION_PROFILE
+
+    if publication_profile == CLAIM_RENAME_PUBLICATION_PROFILE:
+        return claim_and_rename()
+    try:
+        _native_atomic_rename_noreplace(source, destination)
+    except OSError as exc:
+        if (
+            publication_profile == NATIVE_PUBLICATION_PROFILE
+            or not sys.platform.startswith("linux")
+            or exc.errno not in _UNSUPPORTED_NOREPLACE_ERRNOS
+        ):
+            raise
+        return claim_and_rename()
+    return NATIVE_PUBLICATION_PROFILE
 
 
 def _regular_publication_file(
@@ -873,14 +1192,17 @@ def _restore_failed_darwin_staging_root(
 
 
 def write_manifest_noreplace(
-    path: Path, manifest: Mapping[str, Any]
+    path: Path,
+    manifest: Mapping[str, Any],
+    *,
+    publication_profile: str | None = None,
 ) -> Path:
     """Atomically publish one canonical manifest, never replacing authority.
 
     The parent must already be an ordinary, non-symlink directory.  Canonical
     bytes are first written and flushed under a recognizable hidden partial
-    name, then installed with an OS-level no-replace rename, and finally the
-    parent directory is flushed.  A failed publication can therefore leave a
+    name, then installed with the selected collision-safe publication profile,
+    and finally the parent directory is flushed.  A failed publication can therefore leave a
     partial file, but never a partially written file at ``path``.
     """
 
@@ -987,7 +1309,14 @@ def write_manifest_noreplace(
         _fsync_publication_directory(parent)
         _require_absent_publication(destination, label="manifest")
         # An exception intentionally leaves this recognizable partial in place.
-        _atomic_rename_noreplace(temporary, destination)
+        if publication_profile is None:
+            _atomic_rename_noreplace(temporary, destination)
+        else:
+            _atomic_rename_noreplace(
+                temporary,
+                destination,
+                publication_profile=publication_profile,
+            )
     finally:
         if descriptor >= 0:
             os.close(descriptor)
@@ -1023,13 +1352,16 @@ def write_manifest_noreplace(
 
 
 def publish_staged_directory_noreplace(
-    staging: Path, destination: Path
+    staging: Path,
+    destination: Path,
+    *,
+    publication_profile: str | None = None,
 ) -> Path:
     """Durably install one recognizable sibling staging directory exactly once.
 
     ``staging`` must be named ``.<destination>.partial-<nonempty>``.  The
-    complete regular-file tree is flushed before a single OS-level no-replace
-    rename makes it visible at ``destination``.  Validation and syscall
+    complete regular-file tree is flushed before the selected publication
+    profile makes it visible at ``destination``.  Validation and syscall
     failures intentionally retain the partial tree under its non-authoritative
     name; this function never cleans or replaces either pathname.
     """
@@ -1090,7 +1422,14 @@ def publish_staged_directory_noreplace(
         os.chmod(source, 0o700, follow_symlinks=False)
         _fsync_publication_directory(source)
     try:
-        _atomic_rename_noreplace(source, target)
+        if publication_profile is None:
+            _atomic_rename_noreplace(source, target)
+        else:
+            _atomic_rename_noreplace(
+                source,
+                target,
+                publication_profile=publication_profile,
+            )
     except BaseException as exc:
         if darwin_root_compatibility:
             _restore_failed_darwin_staging_root(
@@ -1098,6 +1437,42 @@ def publish_staged_directory_noreplace(
                 expected_device=source_metadata.st_dev,
                 expected_inode=source_metadata.st_ino,
             )
+        try:
+            failed_source = os.lstat(source)
+        except FileNotFoundError:
+            try:
+                committed_target = os.lstat(target)
+            except OSError as target_error:
+                raise PublicationError(
+                    "publication source disappeared and the canonical target "
+                    "cannot be authenticated after failure"
+                ) from target_error
+            if (
+                not stat.S_ISLNK(committed_target.st_mode)
+                and stat.S_ISDIR(committed_target.st_mode)
+                and (committed_target.st_dev, committed_target.st_ino)
+                == (source_metadata.st_dev, source_metadata.st_ino)
+            ):
+                # The atomic rename committed and a later verification/fsync
+                # failed. Preserve that primary error and the canonical tree.
+                raise exc.with_traceback(exc.__traceback__)
+            raise PublicationError(
+                "publication source disappeared without its staged inode at "
+                "the canonical target"
+            ) from exc
+        except OSError as source_error:
+            raise PublicationError(
+                "cannot inspect staging after failed publication"
+            ) from source_error
+        if (
+            stat.S_ISLNK(failed_source.st_mode)
+            or not stat.S_ISDIR(failed_source.st_mode)
+            or (failed_source.st_dev, failed_source.st_ino)
+            != (source_metadata.st_dev, source_metadata.st_ino)
+        ):
+            raise PublicationError(
+                "staging identity changed during failed publication"
+            ) from exc
         try:
             protected_after_failure = _protected_publication_inventory(
                 source, device=parent_metadata.st_dev

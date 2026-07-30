@@ -2200,3 +2200,72 @@ warning-as-error Jupyter Book build succeeds, and all 194 deep links, 47 session
 replay. Shell syntax, Python compilation, diff hygiene, and the standalone module's exact pinned
 SHA-256 also pass. These gates authorize committing and deploying the one-time seal job; they do
 not claim that the seal or trained adapter exists yet.
+
+## 2026-07-31 — Ceph rejected `RENAME_NOREPLACE`; publication failed closed
+
+The authenticated-seal milestone was committed as
+`1757f1c38e54e86473757753c6d7ad4eac9f8da2` and pushed to `peano-lab`. Its clean tree was synced
+to WMI and passed submission admission. Real CPU seal job `210942` then stopped after 26 seconds,
+before copying or publishing the corpus. Ceph device 44 returned `EINVAL` for Linux
+`renameat2(RENAME_NOREPLACE)` while the retained filesystem preflight tried to publish its
+protected directory. The intended seal destination, seal report, and preflight report remained
+absent. The protected source and sentinel remain under
+`.recovery-publication-preflight-5c86ec1ac59ecf1f9c78066f63f4359c`; no cleanup or retry adopted
+that evidence. This was the desired failure mode. It is not a seal and it is not model training.
+
+A narrow live probe on the same Ceph filesystem established the missing fact: an exclusive empty
+directory claim can be replaced by descriptor-relative plain `rename`, and the published path then
+has the original staging inode. That result does not justify a directory-only patch. The seal
+report, run identity, final training manifest, adapter/tokenizer trees, and recovery snapshots use
+the same publication boundary, so both regular files and directories must be exercised and bound.
+
+The replacement contract is publication-preflight v2. It probes both node types and selects one
+profile for the whole run. Native `renamex_np(RENAME_EXCL)` or
+`renameat2(RENAME_NOREPLACE)` remains preferred. On Linux only, and only when the native call
+returns `EINVAL`, `EOPNOTSUPP`/`ENOTSUP`, or `ENOSYS`, the fallback exclusively creates a
+type-matched canonical claim: `mkdirat` mode `0700` for a directory or
+`openat(O_CREAT|O_EXCL)` mode `0600` for a file. It holds the parent and claim descriptors,
+records and rechecks device/inode/type/owner/mode, requires an empty directory or zero-length
+single-link file, fsyncs claim and parent, rechecks source and claim, and atomically renames the
+complete protected stage over only that owned claim. The final canonical inode must equal the
+staging inode and differ from the claim; the source must be absent; the parent is fsynced again.
+
+This fallback is deliberately described more narrowly than native no-replace rename. The empty
+claim is briefly visible, so existence is never completion evidence; all readers still require the
+complete protected tree or canonical report. A crash can leave a durable empty claim and private
+stage that require manual audit. Neither is deleted or automatically adopted. The final rename is
+atomic, but the claim protocol is not a hostile-same-UID security boundary: a malicious process
+with the same filesystem identity could swap the claim after its final check. Peano's documented
+non-hostile-same-owner premise excludes that actor.
+
+The verified profile is now threaded rather than renegotiated: the WMI seal job extracts it from
+the retained v2 report and passes it to both seal and report publication; scheduled training binds
+the same report into its run identity and passes the profile to run-identity, recovery-snapshot,
+adapter, tokenizer, and final-manifest publication. A forced native profile fails if its syscall is
+unsupported; it never silently changes protocol. The local macOS suite exercises native behavior
+and the regular-file claim state machine. Linux-only directory-claim tests run in Linux CI and the
+next live Ceph preflight, because APFS refuses plain rename of the protected `0555` staging root.
+No new seal job is submitted until this repair is reviewed, fully green, committed, synced, and
+accepted by the test-only WMI gate. Actual optimizer training remains unstarted.
+
+A final semantic audit found one inaccurate sentence encoded as data rather than prose: seal-report
+v1 always claimed `atomic_no_replace: true`, even when the selected Ceph profile atomically renamed
+the stage over its own exclusive empty claim. The report is now v2. It binds the admitted profile,
+both exercised node types, native destination-no-replace versus type-matched claim semantics, the
+claim's transient visibility, and the same-owner threat model. Report publication requires the
+profile, selects its exact low-level branch before any namespace mutation, forbids renegotiation,
+and rejects an existing report under a different profile. Tests cover native and claim records,
+both retry directions, forged profile/boolean fields, JSON numeric type aliases, and forced-native
+failure without fallback. Strict v2 validation is necessary because Python otherwise equates
+JSON `1` with `true` and `2.0` with `2` during ordinary dictionary comparison.
+This correction happened before a second live seal attempt; optimizer training is still unstarted.
+
+The repaired publication boundary closes its local gate with 203 focused tests passing and four
+intentional Linux/Ceph-only skips. The complete Peano suite is 1,761 passed with five skips; the
+Lambda sibling remains 360 passed plus 36 subtests. A forced warning-as-error rebuild covers all 38
+book sources, and the executable-book audit replays 194 deep links plus 287 commands in 47 sessions.
+Shell syntax, Python compilation, and diff hygiene pass. The standalone seal CLI SHA-256 is
+`0b391513878c5fa333505a4e01049611fabbd091f11384c08462d6241604cc5d`; the reviewed corpus
+module SHA-256 is `751a759bc7916a72b26f03b8c32502cc802de78565ec149b1136f9c1562711d7`, and the WMI
+launcher pins both literally. These are predeployment results; the fresh live Ceph preflight and
+the authenticated seal are still pending, so optimizer training remains unstarted.

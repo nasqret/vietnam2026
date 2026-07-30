@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import errno
 import json
 import os
 from pathlib import Path
@@ -17,6 +18,7 @@ if str(REPOSITORY_ROOT) not in sys.path:
 
 import training.peano_policy.manifest as publication  # noqa: E402
 import training.peano_policy.recovery as recovery  # noqa: E402
+import training.peano_policy.corpus_seal as corpus_seal  # noqa: E402
 from training.peano_policy.manifest import (  # noqa: E402
     PublicationError,
     publish_staged_directory_noreplace,
@@ -36,6 +38,19 @@ def _canonical_pretty(value: object) -> bytes:
         )
         + "\n"
     ).encode("utf-8")
+
+
+def test_all_authoritative_publishers_share_exact_profile_identifiers() -> None:
+    assert (
+        publication.NATIVE_PUBLICATION_PROFILE
+        == recovery.NATIVE_PUBLICATION_PROFILE
+        == corpus_seal.NATIVE_PUBLICATION_PROFILE
+    )
+    assert (
+        publication.CLAIM_RENAME_PUBLICATION_PROFILE
+        == recovery.CLAIM_RENAME_PUBLICATION_PROFILE
+        == corpus_seal.CLAIM_RENAME_PUBLICATION_PROFILE
+    )
 
 
 def _staging(parent: Path, destination_name: str, suffix: str = "test") -> Path:
@@ -312,6 +327,33 @@ def test_directory_publication_race_retains_partial_and_existing_destination(
     assert (destination / "prior-authority").read_bytes() == b"winner"
 
 
+def test_postcommit_publication_error_is_not_masked_as_missing_staging(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    destination = tmp_path / "trained-policy"
+    staging = _staging(tmp_path, destination.name, suffix="postcommit")
+    (staging / "payload").write_bytes(b"complete")
+    staging_inode = staging.stat().st_ino
+    real_publish = publication._atomic_rename_noreplace
+
+    def commit_then_fail(source: Path, target: Path) -> None:
+        real_publish(source, target)
+        raise OSError(5, "simulated post-commit parent fsync failure")
+
+    monkeypatch.setattr(
+        publication,
+        "_atomic_rename_noreplace",
+        commit_then_fail,
+    )
+    with pytest.raises(OSError, match="simulated post-commit parent fsync failure"):
+        publish_staged_directory_noreplace(staging, destination)
+
+    assert not staging.exists()
+    assert destination.stat().st_ino == staging_inode
+    assert (destination / "payload").read_bytes() == b"complete"
+
+
 @pytest.mark.parametrize("kind", ["directory", "file", "symlink", "fifo"])
 def test_directory_publication_rejects_every_existing_destination(
     tmp_path: Path,
@@ -451,3 +493,229 @@ def test_atomic_no_replace_boundary_matches_recovery_semantics(
             assert destination.read_bytes() == b"candidate"
         else:
             assert (destination / "payload").read_bytes() == b"candidate"
+
+
+def test_claim_profile_publishes_regular_file_and_directory_without_renegotiating(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(publication.sys, "platform", "linux")
+
+    def forbidden_native(_source: Path, _destination: Path) -> None:
+        raise AssertionError("a preflight-selected profile must not renegotiate")
+
+    monkeypatch.setattr(
+        publication,
+        "_native_atomic_rename_noreplace",
+        forbidden_native,
+    )
+    manifest = tmp_path / "manifest.json"
+    write_manifest_noreplace(
+        manifest,
+        {"profile": "claim"},
+        publication_profile=publication.CLAIM_RENAME_PUBLICATION_PROFILE,
+    )
+    assert json.loads(manifest.read_text(encoding="utf-8")) == {"profile": "claim"}
+    assert manifest.stat().st_nlink == 1
+    assert stat.S_IMODE(manifest.stat().st_mode) == 0o444
+
+    # APFS refuses plain rename over an empty directory when the protected
+    # source root is 0555.  The production fallback is Linux/Ceph-only; its
+    # directory half is exercised by the Linux CI and live WMI preflight.
+    if os.uname().sysname == "Darwin":
+        return
+
+    destination = tmp_path / "trained-policy"
+    staging = _staging(tmp_path, destination.name, suffix="claim")
+    (staging / "payload").write_bytes(b"complete tree")
+    staging_inode = staging.stat().st_ino
+    publish_staged_directory_noreplace(
+        staging,
+        destination,
+        publication_profile=publication.CLAIM_RENAME_PUBLICATION_PROFILE,
+    )
+    assert not staging.exists()
+    assert destination.stat().st_ino == staging_inode
+    assert (destination / "payload").read_bytes() == b"complete tree"
+    _assert_exact_protected_tree(destination)
+
+
+def test_selected_native_profile_fails_instead_of_falling_back(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    source = tmp_path / "source"
+    destination = tmp_path / "destination"
+    source.write_bytes(b"candidate")
+
+    def unsupported(_source: Path, _destination: Path) -> None:
+        raise OSError(22, "unsupported")
+
+    monkeypatch.setattr(publication.sys, "platform", "linux")
+    monkeypatch.setattr(
+        publication,
+        "_native_atomic_rename_noreplace",
+        unsupported,
+    )
+    with pytest.raises(OSError, match="unsupported"):
+        publication._atomic_rename_noreplace(
+            source,
+            destination,
+            publication_profile=publication.NATIVE_PUBLICATION_PROFILE,
+        )
+    assert source.read_bytes() == b"candidate"
+    assert not destination.exists()
+
+
+@pytest.mark.parametrize(
+    "unsupported_errno",
+    [errno.EINVAL, errno.EOPNOTSUPP, errno.ENOSYS],
+)
+def test_linux_native_unsupported_errno_selects_file_claim_profile(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    unsupported_errno: int,
+) -> None:
+    source = tmp_path / "source"
+    destination = tmp_path / "destination"
+    source.write_bytes(b"candidate")
+
+    def unsupported(_source: Path, _destination: Path) -> None:
+        raise OSError(unsupported_errno, "native no-replace is unsupported")
+
+    monkeypatch.setattr(publication.sys, "platform", "linux")
+    monkeypatch.setattr(
+        publication,
+        "_native_atomic_rename_noreplace",
+        unsupported,
+    )
+
+    selected = publication._atomic_rename_noreplace(source, destination)
+
+    assert selected == publication.CLAIM_RENAME_PUBLICATION_PROFILE
+    assert not source.exists()
+    assert destination.read_bytes() == b"candidate"
+
+
+def test_linux_native_unrelated_error_never_falls_back(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    source = tmp_path / "source"
+    destination = tmp_path / "destination"
+    source.write_bytes(b"candidate")
+
+    def fail(_source: Path, _destination: Path) -> None:
+        raise OSError(errno.EIO, "simulated filesystem failure")
+
+    monkeypatch.setattr(publication.sys, "platform", "linux")
+    monkeypatch.setattr(publication, "_native_atomic_rename_noreplace", fail)
+
+    with pytest.raises(OSError, match="simulated filesystem failure"):
+        publication._atomic_rename_noreplace(source, destination)
+
+    assert source.read_bytes() == b"candidate"
+    assert not destination.exists()
+
+
+def test_linux_fallback_collision_preserves_external_winner(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    source = tmp_path / "source"
+    destination = tmp_path / "destination"
+    source.write_bytes(b"candidate")
+
+    def lose_native_race(_source: Path, target: Path) -> None:
+        target.write_bytes(b"external winner")
+        raise OSError(errno.EINVAL, "native no-replace is unsupported")
+
+    monkeypatch.setattr(publication.sys, "platform", "linux")
+    monkeypatch.setattr(
+        publication,
+        "_native_atomic_rename_noreplace",
+        lose_native_race,
+    )
+
+    with pytest.raises(FileExistsError, match="refusing to replace"):
+        publication._atomic_rename_noreplace(source, destination)
+
+    assert source.read_bytes() == b"candidate"
+    assert destination.read_bytes() == b"external winner"
+
+
+def test_file_claim_rename_failure_retains_stage_and_empty_claim(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    destination = tmp_path / "training-manifest.json"
+    real_rename = publication.os.rename
+
+    def fail_rename(*args: object, **kwargs: object) -> None:
+        del args, kwargs
+        raise OSError(5, "simulated claim commit failure")
+
+    monkeypatch.setattr(publication.sys, "platform", "linux")
+    monkeypatch.setattr(publication.os, "rename", fail_rename)
+    with pytest.raises(OSError, match="simulated claim commit failure"):
+        write_manifest_noreplace(
+            destination,
+            {"training_complete": True},
+            publication_profile=publication.CLAIM_RENAME_PUBLICATION_PROFILE,
+        )
+    monkeypatch.setattr(publication.os, "rename", real_rename)
+
+    assert destination.is_file()
+    assert destination.read_bytes() == b""
+    assert stat.S_IMODE(destination.stat().st_mode) == 0o600
+    partials = list(tmp_path.glob(".training-manifest.json.partial-*.tmp"))
+    assert len(partials) == 1
+    assert json.loads(partials[0].read_text(encoding="utf-8")) == {
+        "training_complete": True
+    }
+    assert stat.S_IMODE(partials[0].stat().st_mode) == 0o444
+
+
+def test_nonempty_directory_claim_blocks_commit_and_retains_both_trees(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    destination = tmp_path / "trained-policy"
+    staging = _staging(tmp_path, destination.name, suffix="nonempty-claim")
+    (staging / "payload").write_bytes(b"candidate")
+    real_rename = publication.os.rename
+
+    def populate_claim(
+        source: str,
+        target: str,
+        *,
+        src_dir_fd: int,
+        dst_dir_fd: int,
+    ) -> None:
+        descriptor = os.open(
+            f"{target}/intruder",
+            os.O_WRONLY | os.O_CREAT | os.O_EXCL,
+            0o600,
+            dir_fd=dst_dir_fd,
+        )
+        os.close(descriptor)
+        real_rename(
+            source,
+            target,
+            src_dir_fd=src_dir_fd,
+            dst_dir_fd=dst_dir_fd,
+        )
+
+    monkeypatch.setattr(publication.sys, "platform", "linux")
+    monkeypatch.setattr(publication.os, "rename", populate_claim)
+    with pytest.raises(OSError):
+        publish_staged_directory_noreplace(
+            staging,
+            destination,
+            publication_profile=publication.CLAIM_RENAME_PUBLICATION_PROFILE,
+        )
+
+    assert staging.is_dir()
+    _assert_exact_protected_tree(staging)
+    assert destination.is_dir()
+    assert (destination / "intruder").is_file()

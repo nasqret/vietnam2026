@@ -220,6 +220,14 @@ def _parser() -> argparse.ArgumentParser:
     create.add_argument("--destination", type=Path, required=True)
     create.add_argument("--source-commit", required=True)
     create.add_argument("--prepare-job-id", required=True)
+    create.add_argument(
+        "--publication-profile",
+        required=True,
+        choices=(
+            "native-no-replace-rename-v1",
+            "exclusive-type-matched-claim-rename-v1",
+        ),
+    )
     _add_external_anchor_arguments(create)
 
     verify = subparsers.add_parser(
@@ -240,6 +248,14 @@ def _parser() -> argparse.ArgumentParser:
     report.add_argument("--source-commit", required=True)
     report.add_argument("--prepare-job-id", required=True)
     report.add_argument("--publisher-job-id", required=True)
+    report.add_argument(
+        "--publication-profile",
+        required=True,
+        choices=(
+            "native-no-replace-rename-v1",
+            "exclusive-type-matched-claim-rename-v1",
+        ),
+    )
     _add_external_anchor_arguments(report, required=True)
     return parser
 
@@ -340,6 +356,7 @@ def main(argv: list[str] | None = None) -> int:
                 dataset_manifest_sha256=dataset_manifest_sha256,
                 data_sha256s=data_sha256s,
                 report_sha256s=report_sha256s,
+                publication_profile=args.publication_profile,
             )
             location = args.destination
         elif args.command == "verify":
@@ -365,6 +382,7 @@ def main(argv: list[str] | None = None) -> int:
                 dataset_manifest_sha256=dataset_manifest_sha256,
                 data_sha256s=data_sha256s,
                 report_sha256s=report_sha256s,
+                publication_profile=args.publication_profile,
             )
             print(json.dumps(report, ensure_ascii=False, sort_keys=True))
             return 0

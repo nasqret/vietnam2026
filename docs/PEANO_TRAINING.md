@@ -1082,8 +1082,10 @@ remains. The authenticated dataset-attestation SHA-256 is
 `4e1cf0d00725a739d6f371062ff2079cfb9bc3e36daf4f4219cbbe1399a68a12`.
 
 After those three real hashes are reviewed, the job selects the content-derived WMI Python,
-rechecks all fifteen pinned inputs, and runs the retained production no-replace preflight on
-`checkpoints/corpora`. It then makes and retains one fresh read-only `mktemp` tree with exactly
+rechecks all fifteen pinned inputs, and runs publication-preflight v2 on
+`checkpoints/corpora`. The preflight publishes and freshly verifies both a protected directory and
+a protected regular file, then selects one profile for all later publications on that filesystem.
+It then makes and retains one fresh read-only `mktemp` tree with exactly
 three directories and two files. Its submission-hashed inline launcher stable-reads and
 SHA-256-checks the CLI, then compiles those exact in-memory bytes under `python -I -B -S`; the CLI
 independently repeats the inventory, module, and external input-anchor checks before sealing. This
@@ -1093,7 +1095,7 @@ verification.
 Seal and report publication are separate crash boundaries. If the destination is absent, the job
 creates it once and a fresh process verifies it. If it already exists, creation is skipped and the
 entire protected tree must verify against every external anchor. A canonical same-job report is
-written to a fsynced sibling stage and installed with the same atomic no-replace primitive. A
+written to a fsynced sibling stage and installed with the same preflight-selected profile. A
 valid existing same-job report is reverified; a different, linked, mutable, or malformed report is
 fatal. A failed report publication retains its read-only sibling stage as evidence; it never tries
 to delete a pathname that might have been replaced after inspection. Thus a crash after the seal
@@ -1103,9 +1105,30 @@ descriptor and at the final source pathname, so a late hard-link or mode transit
 the stable-source check merely because content and timestamps still match.
 Destination classification precedes inspection of the mutable
 historical corpus and reports, and those original paths are required only in the creation lane;
-verify-only recovery remains possible after they have been retired. The retained no-replace probe
+verify-only recovery remains possible after they have been retired. The retained two-type probe
 runs beneath `checkpoints/corpora`, and the job requires its seal parent and the report parent under
-`logs` to have the same device identity before relying on that probe for both publications.
+`logs` to have the same device identity before relying on that profile for both publications.
+Seal-report v2 binds that admitted profile and states its semantics explicitly: native publication
+records atomic destination no-replace, while claim publication records a transient exclusive
+type-matched claim and does not claim atomic destination no-replace. A retry under a different
+profile, a report with forged profile booleans, or JSON numeric aliases for v2 booleans/version is
+rejected before ordinary dictionary equality can blur their types.
+
+The preferred profile is the native platform operation: macOS
+`renamex_np(RENAME_EXCL)` or Linux `renameat2(RENAME_NOREPLACE)`. Ceph returns `EINVAL` for the
+latter. On Linux only, that error (or `EOPNOTSUPP`/`ENOTSUP`/`ENOSYS`) admits the v1
+type-matched-claim profile. It exclusively creates an empty `0700` directory or zero-length
+single-link `0600` file at the final name, holds parent and claim descriptors, verifies identity,
+type, ownership, mode, device, and emptiness, fsyncs and rechecks them, then atomically renames the
+complete stage over its own claim. The canonical inode must be the staging inode, not the claim.
+The profile is threaded into seal/report or training publication and is never renegotiated.
+
+The fallback has deliberately narrower semantics than native no-replace rename. Its empty claim
+is briefly visible, and a crash may leave that claim plus the private stage. Existence therefore
+never means completion: readers require the complete protected tree or canonical report. Failed
+claims are retained for manual audit and are never deleted or adopted automatically. The protocol
+assumes a non-hostile process sharing the filesystem UID; it is not a security boundary against a
+malicious same-owner claim swap.
 
 The seal is an integrity envelope, not a signature. Its source commit, preparation job ID, and
 content digest must come from an authenticated channel outside `seal.json`; reading values from an
@@ -1177,8 +1200,9 @@ After a clean current-source deployment, the accepted WMI chain is:
    evidence to corpus eligibility, curriculum selection, both token-audit records, closed artifact
    hashes, and the pristine pinned base configuration.
 2. `peano_wmi_train_qwen3_1_7b_v3.sbatch` can depend only on that exact completed sealed-preparation
-   job. It repeats the three-report cross-check, then exercises the production atomic no-replace
-   recovery rename on the exact `/work` output filesystem. The retained protected probe and its
+   job. It repeats the three-report cross-check, then exercises both node types through the
+   production publication preflight on the exact `/work` output filesystem. The retained protected
+   probe, selected profile, and its
    exclusive canonical report are passed into the trainer, bound into the run identity, and checked
    again before final publication. The job requires one visible A100 and one process, rejects
    resume, and runs the indexed completion objective. The schedule is derived from the admitted
@@ -1190,8 +1214,8 @@ After a clean current-source deployment, the accepted WMI chain is:
    100, 200, 300, 400, 500, and 600. Each contains only PEFT safetensors and loader metadata: no
    optimizer, scheduler, RNG, `trainer_state`, or pickle-compatible resume artifact. A snapshot is
    built in a private, visibly partial sibling, bound to the stable `run-identity.json` bytes and
-   their source/Slurm job, fsynced, made read-only, verified, then installed by an OS-level atomic
-   no-replace rename. Failed staging trees and prior snapshots are never removed or overwritten.
+   their source/Slurm job, fsynced, made read-only, verified, then installed by the selected
+   publication profile. Failed staging trees and prior snapshots are never removed or overwritten.
    Its manifest says `training_complete=false`, `eligible_as_training_result=false`, and
    `resumable=false`; neither the generator nor evaluator accepts it as a completed run. The
    completed adapter and tokenizer are still saved before the explicit full validation pass, so a
