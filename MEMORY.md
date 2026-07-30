@@ -439,7 +439,7 @@
   `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`
   and source digest is
   `295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
-  The Obsidian graph has 327 notes and 3,286 resolved links, including 247
+  The Obsidian graph has 327 notes and 3,288 resolved links, including 247
   lemma notes. The deterministic 1,692-session/13,344-transition corpus has
   fingerprint
   `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
@@ -455,7 +455,7 @@
   browser was unavailable, so direct Pyodide and rendered
   book UI smokes are not claimed; automated runtime/worker tests, static HTML
   contracts and the deployment-manifest check remain green.
-- **Model-v3 training curriculum (2026-07-29):** the complete 247-theorem
+- **Model-v3 training curriculum and launch gate (2026-07-30):** the complete 247-theorem
   declaration order is now a content-bound training authority. Exact authored
   predecessor-prefix replay contributes 8,494 transitions. WMI preparation
   `172536` completed that library lane, then failed closed after 1:02:34 when
@@ -471,12 +471,92 @@
   names and statements and losslessly compacts repeated proof declarations
   with `shared-declarations-v1`; across all 222 stress-proof transitions the
   maximum pinned Qwen3 prompt, completion, and EOS length is 29,111 tokens,
-  leaving 3,657 below the native 32,768-token limit. The registered WMI run is
-  Qwen3-1.7B Base with rank-32/alpha-64 LoRA, effective batch 32, and two
-  epochs. A model-free whole-schedule prepass, safe ring and induction domains,
-  a typed/counted held-out collision skip, synthetic-first WMI ordering, and an
-  upfront empty-data-directory gate now fail before expensive retry work. The
-  advertised 100,000-row maximum also preflights exactly, with 46,574 unique
-  roots and one held-out skip. These are implemented launch controls and a
-  deterministic plan, not a completed synthetic corpus or trained-model
-  result; no model-v3 adapter or solve-rate claim exists yet.
+  leaving 3,657 below the native 32,768-token limit. Retry `172729` generated
+  32,600 independently checked synthetic sessions/70,000 transitions and all
+  247 library sessions/8,494 transitions, then atomically built 64,500 train,
+  6,948 validation, and 7,046 test rows. The exact manifest SHA-256 is
+  `ccb62c771d1f7dab1e90e98da42c6c8acee40f47b5527c4f65611f718661d983`.
+  Its combined walltime could not also fit independent replay, token audit,
+  and smoke. Exact-corpus continuation `173040` now runs those gates from clean
+  commit `5faa3d27cbaf522198ffa1bdcd11fa9d57341658`; this is still not a sealed
+  dataset release or a transformer training run.
+- **Model-v3 selected objective (2026-07-30):** the trainer retains all 8,494
+  catalog rows and selects only complete synthetic sessions under a 12,288-row
+  ceiling, anchoring all 51 schemas and balancing all 14 root heads by a
+  seed-bound, input-order-independent record. `run.max_train_samples` is
+  forbidden. The pinned tokenizer binds every selected token sequence and
+  enforces linear, quadratic, sequence, and supervised-completion ceilings.
+  Completion-only causal loss uses Qwen's indexed `logits_to_keep` positions,
+  the exact one-token shift, FP32 summed cross entropy, and the exact supervised
+  token count across gradient accumulation; a pinned LoRA probe matches the
+  full-logit loss and gradients to numerical precision.
+- **Model-v3 historical/current boundary (2026-07-30):** a non-replacing,
+  read-only corpus seal will bind exactly twelve historical data artifacts and
+  three preparation reports to their clean source commit, job ID, and one
+  content digest. Current code may consume it only after full seal verification
+  and compiler/kernel/prompt/held-out/library eligibility comparison. The new
+  WMI chain is sealed preparation (eligibility + exact token audit + extremal
+  indexed-loss A100 smoke), fresh one-GPU training, four-goal bounded search,
+  then model-free independent kernel replay of every claimed proof. Seal
+  digest, new job IDs, selected token counts, optimizer steps/losses, adapter
+  hashes, and evaluation results remain pending. No model-v3 optimizer step or
+  solve-rate claim exists yet. The attestor's independent-builder watchdog is
+  eight hours, above the exact measured 5h07m first build; the old four-hour
+  value would have rejected a legitimate replay deterministically.
+- **Model-v3 prelaunch durability and chain binding (2026-07-30):** the
+  one-shot trainer preserves adapter/tokenizer tensors before its explicit
+  full evaluation, while withholding the final manifest until evaluation and
+  all immutable-input checks pass. Scheduled benchmark evaluation must match
+  the manifest producer job, exported training predecessor, and submission
+  dependency before model load; its report records that relation for the
+  independent replay gate. Interactive proof requests bind the completed
+  manifest under a separate non-dependency status.
+- **Model-v3 seal bootstrap closure (2026-07-30):** first publication uses an
+  exact two-source staged program with no package marker or bytecode cache. A
+  submission-embedded launcher stable-reads, hashes, compiles, and executes
+  identical CLI bytes under isolated Python; the CLI independently verifies
+  and compiles the standard-library module. Remote staging is still pending
+  the successful completion of historical preparation `173040`.
+- **Model-v3 completed-run authority (2026-07-30):** a usable v3 adapter now
+  requires more than a positive/equal `global_step`. One canonical evidence
+  object binds all schedule/result/Trainer-state step counts, the reviewed
+  one-CUDA-process BF16 runtime, actual save/eval/clipping arguments, every raw
+  and post-clip gradient boundary, all strict pre-clip norms, exact finite
+  Trainer history and metrics, initial/final raw-byte fingerprints for the
+  stable trainable tensor population, a nonempty adapter update, and the closed
+  adapter/tokenizer hashes. Trainer's permissive built-in clipping and terminal
+  checkpoints are disabled; a custom pre-optimizer max-norm-1 clip owns the
+  update boundary. Model-v3 loaders and the same-base control reject absent,
+  partial, stale, duplicate-key, non-finite, linked, or inconsistent manifests
+  before framework import. Scheduled training also binds a retained
+  no-replace recovery-publication probe on the exact output filesystem. The
+  local macOS branch is tested; the WMI `/work` Linux branch and all optimizer
+  results remain pending while FortiClient is disconnected.
+- **Model-v3 saved-policy admission (2026-07-30):** completion now crosses the
+  serialization boundary. Three run-bound admitted train/validation probes
+  fingerprint terminal indexed losses/projected logits and the canonical PEFT
+  tensor population. After releasing the original Trainer/model, one fresh
+  local-only load must equal the actual safetensors and all probe outputs, and
+  disabling LoRA must change at least one probe. The admission joins base
+  commit/config, run identity, `cuda:0`, individual files, closed artifact
+  trees, and completion evidence. `bf16_full_eval` is false because the pinned
+  Transformers path would cast PEFT's FP32 weights; tensor fingerprints are
+  rechecked after save and evaluation. Final output, adapter/tokenizer trees,
+  run identity, and manifest are exclusive no-replace publications with a
+  rechecked output inode/device/mode. V3 artifact closure rejects link/special/
+  cross-device/hard-link nodes, descriptor or tree mutation, and any mode other
+  than 0555 directories plus 0444 files; v1/v2 retain their legacy mode rule.
+  These are prelaunch safeguards; the WMI
+  preparation, real optimizer losses, adapter digest, and replay results are
+  still pending.
+- **Model-v3 launch-contract wiring closure (2026-07-30):** before any Torch,
+  PEFT, or Transformers import, prompt v3 is now accepted if and only if the
+  model-v3 curriculum is present. After semantic admission and the remaining
+  source/report checks, the trainer re-verifies the protected adapter and
+  tokenizer trees immediately before publishing the final manifest without
+  replacement. Direct generation and pretrained-base comparison verify those
+  trees both before and after heavy loading, while recovery requires exact
+  directory/file modes `0555`/`0444`. These modes detect provenance drift and
+  accidental corruption; they are not a hostile-same-owner security boundary.
+  The focused wiring audit passes 89 tests. No optimizer or trained-model
+  result follows from this prelaunch gate.

@@ -23,6 +23,14 @@ A trace row is not a complete [[proof-certificate]] or standalone proof-state sn
 supervised transition example. The source session and the independent [[trusted-kernel]] remain
 the authority for whether the complete trajectory proves its original theorem.
 
+Model-v3 has two separately identifiable sources: 247 predecessor-prefix library sessions with
+8,494 transitions and a 32,600-session, 70,000-transition root-balanced synthetic population.
+Historical WMI job `172729` generated both sources; its combined builder/attestation was still
+pending at the documentation checkpoint. A completed release is not “whatever is under `data/`”:
+exact dataset artifacts and same-job reports must be copied into one immutable, non-replacing,
+content-addressed seal. Current training then retains all library transitions and chooses only
+complete synthetic sessions under its audited ceiling.
+
 ## Related
 
 - [[kernel-judged-evaluation]]

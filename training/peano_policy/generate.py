@@ -11,7 +11,12 @@ from pathlib import Path
 import random
 from typing import Any
 
-from .contract import attested_training_environment, prompt_environment
+from .adapter_admission import require_adapter_admission_for_prompt
+from .contract import (
+    attested_training_environment,
+    environment_record,
+    prompt_environment,
+)
 from .manifest import (
     ADAPTER_SUBDIR,
     MANIFEST_VERSION,
@@ -23,15 +28,22 @@ from .manifest import (
 )
 from .prompt import (
     CapabilityIdentity,
+    PEANO_PROMPT_V3,
     PromptEnvironment,
     extract_one_tactic,
     parse_prompt,
     prompt_contract_sha256,
     render_prompt,
 )
+from .training_evidence import (
+    read_strict_training_manifest,
+    require_completed_training_evidence_for_prompt,
+)
 
 
 MAX_CANDIDATES_PER_MODEL_CALL = 64
+ADAPTER_POLICY_KIND = "peano-policy-adapter-v1"
+PRETRAINED_BASE_POLICY_KIND = "peano-policy-pretrained-base-v1"
 
 
 def _newline_stopper(tokenizer: Any, prompt_length: int) -> Any:
@@ -252,7 +264,7 @@ class PeanoPolicyAdapter:
         )
         return {
             "name": self.name,
-            "kind": "peano-policy-adapter-v1",
+            "kind": ADAPTER_POLICY_KIND,
             "prompt_version": self.environment.prompt_version,
             "prompt_contract_sha256": prompt_contract_sha256(
                 self.environment.prompt_version
@@ -308,6 +320,19 @@ class PeanoPolicyAdapter:
         )
 
 
+class PeanoPretrainedBasePolicy(PeanoPolicyAdapter):
+    """Explicit non-PEFT policy identity for the same-authority control."""
+
+    __slots__ = ()
+
+    @property
+    def evaluation_identity(self) -> dict[str, object]:
+        identity = super().evaluation_identity
+        identity["kind"] = PRETRAINED_BASE_POLICY_KIND
+        identity["environment"] = environment_record(self.environment)
+        return identity
+
+
 @dataclass(slots=True)
 class PeanoPolicyCandidateAdapter:
     """Bounded multi-candidate view of a loaded next-tactic adapter.
@@ -318,7 +343,7 @@ class PeanoPolicyCandidateAdapter:
     not this class, executes tactics and independently checks any final proof.
     """
 
-    adapter: PeanoPolicyAdapter
+    adapter: PeanoPolicyAdapter | PeanoPretrainedBasePolicy
     seed: int
     name: str = "qwen3-peano-candidate-policy-v1"
     generation_calls: int = field(default=0, init=False)
@@ -328,8 +353,13 @@ class PeanoPolicyCandidateAdapter:
     malformed_sequences_rejected: int = field(default=0, init=False)
 
     def __post_init__(self) -> None:
-        if type(self.adapter) is not PeanoPolicyAdapter:
-            raise ValueError("adapter must be an exact PeanoPolicyAdapter")
+        if type(self.adapter) not in {
+            PeanoPolicyAdapter,
+            PeanoPretrainedBasePolicy,
+        }:
+            raise ValueError(
+                "adapter must be an exact trained or pretrained Peano policy"
+            )
         if type(self.seed) is not int or not 0 <= self.seed < 2**63:
             raise ValueError("seed must be an integer in [0, 2^63)")
         if type(self.name) is not str or not self.name.strip():
@@ -431,7 +461,7 @@ def load_adapter(adapter_dir: Path, *, seed: int) -> tuple[Any, Any, dict[str, A
     """Load base+adapter according to its immutable training manifest."""
 
     manifest_path = adapter_dir / "training-manifest.json"
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest = read_strict_training_manifest(manifest_path)
     if manifest.get("v") != MANIFEST_VERSION:
         raise ValueError("unsupported training manifest version")
     environment = attested_training_environment(manifest)
@@ -441,6 +471,11 @@ def load_adapter(adapter_dir: Path, *, seed: int) -> tuple[Any, Any, dict[str, A
         environment.prompt_version
     ):
         raise ValueError("adapter uses a different Peano prompt contract")
+    # Legacy v1/v2 adapters retain their historical admission contract.  A v3
+    # adapter is usable only after the final manifest proves a complete,
+    # finite, exact-step Trainer run and binds the saved artifact hashes.
+    require_completed_training_evidence_for_prompt(manifest)
+    require_adapter_admission_for_prompt(manifest)
     base = manifest.get("base_model")
     tokenizer_record = manifest.get("tokenizer")
     if not isinstance(base, dict) or not isinstance(tokenizer_record, dict):
@@ -463,11 +498,18 @@ def load_adapter(adapter_dir: Path, *, seed: int) -> tuple[Any, Any, dict[str, A
         )
     adapter_record = manifest.get("adapter", {})
     require_safetensors_adapter(adapter_record)
+    require_protected = manifest.get("prompt_version") == PEANO_PROMPT_V3
     adapter_output = verify_artifact_directory(
-        adapter_dir, adapter_record, ADAPTER_SUBDIR
+        adapter_dir,
+        adapter_record,
+        ADAPTER_SUBDIR,
+        require_protected=require_protected,
     )
     tokenizer_output = verify_artifact_directory(
-        adapter_dir, tokenizer_record.get("artifacts", {}), TOKENIZER_SUBDIR
+        adapter_dir,
+        tokenizer_record.get("artifacts", {}),
+        TOKENIZER_SUBDIR,
+        require_protected=require_protected,
     )
 
     import torch
@@ -492,6 +534,20 @@ def load_adapter(adapter_dir: Path, *, seed: int) -> tuple[Any, Any, dict[str, A
     model.eval()
     if torch.cuda.is_available():
         model.to("cuda")
+    # A loader may spend seconds reading several files.  Close the TOCTOU
+    # window before exposing the in-memory policy to direct CLI/REPL callers.
+    verify_artifact_directory(
+        adapter_dir,
+        adapter_record,
+        ADAPTER_SUBDIR,
+        require_protected=require_protected,
+    )
+    verify_artifact_directory(
+        adapter_dir,
+        tokenizer_record.get("artifacts", {}),
+        TOKENIZER_SUBDIR,
+        require_protected=require_protected,
+    )
     return model, tokenizer, manifest
 
 

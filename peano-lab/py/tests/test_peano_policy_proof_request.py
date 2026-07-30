@@ -43,16 +43,18 @@ TEST_MANIFEST_SHA256 = "e" * 64
 
 def _test_authority(
     *,
-    model_v2: bool = True,
+    model_version: int = 2,
 ) -> tuple[dict[str, object], object, object]:
     environment = (
-        REQUEST.trained_cli.model_v2_environment()
-        if model_v2
+        REQUEST.trained_cli.model_v3_environment()
+        if model_version == 3
+        else REQUEST.trained_cli.model_v2_environment()
+        if model_version == 2
         else REQUEST.trained_cli.model_v1_environment()
     )
     goal = REQUEST.trained_cli._user_goal("∀ x. x = x", environment)
     manifest: dict[str, object] = {
-        "run": {"name": "unit-v2" if model_v2 else "unit-v1"},
+        "run": {"name": f"unit-v{model_version}"},
         "generation": {
             "max_new_tokens": 96,
             "do_sample": False,
@@ -73,7 +75,7 @@ def _test_adapter_provenance(environment: object) -> dict[str, object]:
         "base_model_id": "unit-base",
         "base_model_revision": "a" * 40,
         "adapter_sha256": "b" * 64,
-        "run_name": "unit-v2",
+        "run_name": f"unit-v{environment.prompt_version}",
         "dataset_sha256": "c" * 64,
         "environment_sha256": environment.sha256,
         "held_out_contract_sha256": "d" * 64,
@@ -96,7 +98,9 @@ def _patch_attested_authority(
         require_model_v2: bool,
     ) -> tuple[object, ...]:
         assert canonical_statement == "∀ x. x = x"
-        manifest, environment, goal = _test_authority(model_v2=require_model_v2)
+        manifest, environment, goal = _test_authority(
+            model_version=2 if require_model_v2 else 1
+        )
         return manifest, TEST_MANIFEST_SHA256, environment, goal
 
     monkeypatch.setattr(REQUEST, "_load_attested_adapter_authority", load)
@@ -120,9 +124,9 @@ def _valid_search_report(
     request: dict[str, object],
     *,
     proved: bool,
-    model_v2: bool = True,
+    model_version: int = 2,
 ) -> tuple[dict[str, object], str | None]:
-    manifest, environment, goal = _test_authority(model_v2=model_v2)
+    manifest, environment, goal = _test_authority(model_version=model_version)
     capabilities = goal.capabilities
     environment_record = REQUEST._goal_environment_record(goal)
     prompt_digest = REQUEST.prompt_contract_sha256(environment.prompt_version)
@@ -458,7 +462,7 @@ def test_request_rejects_decoder_search_cross_product_before_model_loading() -> 
         )
 
 
-def test_v2_authority_rejects_attested_model_v1_but_legacy_can_replay_it(
+def test_search_request_rejects_attested_model_v1_but_legacy_can_replay_it(
     monkeypatch: pytest.MonkeyPatch,
     tmp_path: Path,
 ) -> None:
@@ -475,7 +479,7 @@ def test_v2_authority_rejects_attested_model_v1_but_legacy_can_replay_it(
         lambda value: environment,
     )
 
-    with pytest.raises(ValueError, match="exact model-v2 authority"):
+    with pytest.raises(ValueError, match="exact model-v2 or model-v3 authority"):
         REQUEST._load_attested_adapter_authority(
             tmp_path / "adapter",
             "∀ x. x = x",
@@ -492,6 +496,86 @@ def test_v2_authority_rejects_attested_model_v1_but_legacy_can_replay_it(
     assert digest == TEST_MANIFEST_SHA256
     assert legacy_environment == environment
     assert goal.surface_profile == "model-v1"
+
+
+def test_search_request_accepts_exact_model_v3_247_theorem_authority(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    manifest = {"kind": "unit-v3"}
+    environment = REQUEST.trained_cli.model_v3_environment()
+    monkeypatch.setattr(
+        REQUEST.trained_cli,
+        "_read_adapter_manifest_snapshot",
+        lambda adapter: (manifest, TEST_MANIFEST_SHA256),
+    )
+    monkeypatch.setattr(
+        REQUEST.trained_cli,
+        "attested_training_environment",
+        lambda value: environment,
+    )
+
+    loaded, digest, search_environment, goal = (
+        REQUEST._load_attested_adapter_authority(
+            tmp_path / "adapter",
+            "∀ x. x = x",
+            require_model_v2=True,
+        )
+    )
+
+    assert loaded is manifest
+    assert digest == TEST_MANIFEST_SHA256
+    assert search_environment == environment
+    assert goal.surface_profile == "model-v3"
+    assert goal.allowed_theorems == environment.capabilities.allowed_theorems
+    assert len(goal.allowed_theorems) == 247
+
+
+def test_search_report_accepts_only_exact_model_v3_decode_and_authority(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    request = _request(sample=False)
+    report, script = _valid_search_report(
+        request,
+        proved=False,
+        model_version=3,
+    )
+    manifest, environment, goal = _test_authority(model_version=3)
+    limits = {
+        "max_depth": request["max_steps"],
+        "beam_width": request["search_beam_width"],
+        "candidates_per_state": request["search_candidates_per_state"],
+        "max_model_calls": request["search_max_model_calls"],
+        "max_states": request["search_max_states"],
+    }
+    monkeypatch.setattr(
+        REQUEST,
+        "_expected_adapter_provenance",
+        lambda adapter, loaded, digest: _test_adapter_provenance(environment),
+    )
+
+    REQUEST._validate_v2_report_identity(
+        report,
+        request,
+        tmp_path / "adapter",
+        manifest,
+        TEST_MANIFEST_SHA256,
+        environment,
+        goal,
+        limits,
+    )
+    assert script is None
+    assert report["goals"][0]["surface_profile"] == "model-v3"
+    assert len(report["goals"][0]["allowed_theorems"]) == 247
+    REQUEST._validate_v2_search_accounting(
+        report,
+        request,
+        goal,
+        report["proof_publication"],
+        status=1,
+        expected_limits=limits,
+    )
 
 
 def test_receive_is_canonical_immutable_and_reloads_exactly(
@@ -1047,7 +1131,7 @@ def test_legacy_v1_proof_still_uses_attested_original_goal_replay(
     search_report, script = _valid_search_report(
         source_request,
         proved=True,
-        model_v2=False,
+        model_version=1,
     )
     assert script is not None
     legacy_report = {

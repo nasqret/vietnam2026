@@ -247,7 +247,7 @@ does not determine the architecture.
   `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`
   and source digest is
   `295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
-  The vault has 327 notes and 3,286 links. The 1,692-session/13,344-transition
+  The vault has 327 notes and 3,288 links. The 1,692-session/13,344-transition
   corpus has fingerprint
   `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
   its smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and all 247

@@ -73,6 +73,23 @@ class GenerationConfig:
 
 
 @dataclass(frozen=True, slots=True)
+class CurriculumConfig:
+    """Deterministic selection and compute gates for a model-v3 run."""
+
+    kind: str
+    selection_seed: int
+    synthetic_row_ceiling: int
+    max_train_tokens: int
+    max_eval_tokens: int
+    max_train_squared_tokens: int
+    max_eval_squared_tokens: int
+    corpus_seal_path: str
+    corpus_source_commit: str
+    corpus_prepare_job_id: str
+    corpus_content_sha256: str
+
+
+@dataclass(frozen=True, slots=True)
 class ExperimentConfig:
     path: Path
     run: RunConfig
@@ -81,9 +98,32 @@ class ExperimentConfig:
     lora: LoraConfig
     trainer: TrainerConfig
     generation: GenerationConfig
+    curriculum: CurriculumConfig | None = None
 
 
-_SECTIONS = {"run", "model", "data", "lora", "trainer", "generation"}
+_SECTIONS = {
+    "run",
+    "model",
+    "data",
+    "lora",
+    "trainer",
+    "generation",
+    "curriculum",
+}
+_CURRICULUM_KEYS = {
+    "kind",
+    "selection_seed",
+    "synthetic_row_ceiling",
+    "max_train_tokens",
+    "max_eval_tokens",
+    "max_train_squared_tokens",
+    "max_eval_squared_tokens",
+    "corpus_seal_path",
+    "corpus_source_commit",
+    "corpus_prepare_job_id",
+    "corpus_content_sha256",
+}
+_MODEL_V3_CURRICULUM_KIND = "model-v3-library-balanced-v1"
 _SUPPORTED_BASE_MODELS = {
     "Qwen/Qwen3-1.7B-Base": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
     "Qwen/Qwen3-4B-Base": "906bfd4b4dc7f14ee4320094d8b41684abff8539",
@@ -118,6 +158,10 @@ def load_config(path: str | Path) -> ExperimentConfig:
     lora = _section(document, "lora")
     trainer = _section(document, "trainer")
     generation = _section(document, "generation")
+    curriculum_value = document.get("curriculum")
+    if curriculum_value is not None and not isinstance(curriculum_value, dict):
+        raise ValueError("[curriculum] must be a table")
+    curriculum = curriculum_value
     _only(run, {"name", "seed", "output_dir", "max_train_samples", "max_eval_samples", "resume"}, "run")
     _only(model, {"model_id", "revision", "dtype", "attn_implementation", "trust_remote_code"}, "model")
     _only(data, {"train_path", "eval_path", "max_length"}, "data")
@@ -134,10 +178,25 @@ def load_config(path: str | Path) -> ExperimentConfig:
         "trainer",
     )
     _only(generation, {"max_new_tokens", "do_sample", "temperature", "top_p"}, "generation")
+    if curriculum is not None:
+        _only(curriculum, _CURRICULUM_KEYS, "curriculum")
+        missing_curriculum_keys = _CURRICULUM_KEYS - set(curriculum)
+        if missing_curriculum_keys:
+            raise ValueError(
+                "missing [curriculum] keys: "
+                + ", ".join(sorted(missing_curriculum_keys))
+            )
 
     result = ExperimentConfig(
         path=config_path,
-        run=RunConfig(**run),
+        run=RunConfig(
+            name=run["name"],
+            seed=run["seed"],
+            output_dir=run["output_dir"],
+            max_train_samples=run.get("max_train_samples"),
+            max_eval_samples=run.get("max_eval_samples"),
+            resume=run["resume"],
+        ),
         model=ModelConfig(**model),
         data=DataConfig(
             train_path=data["train_path"],
@@ -152,6 +211,9 @@ def load_config(path: str | Path) -> ExperimentConfig:
         ),
         trainer=TrainerConfig(**trainer),
         generation=GenerationConfig(**generation),
+        curriculum=(
+            CurriculumConfig(**curriculum) if curriculum is not None else None
+        ),
     )
     validate_config(result)
     return result
@@ -201,3 +263,98 @@ def validate_config(config: ExperimentConfig) -> None:
         raise ValueError("generation max_new_tokens must be positive")
     if config.generation.temperature <= 0 or not 0 < config.generation.top_p <= 1:
         raise ValueError("generation temperature and top_p must be positive")
+
+    model_v3_name = re.search(
+        r"(?:^|[-_.])v3(?:[-_.]|$)", config.run.name, flags=re.IGNORECASE
+    ) is not None
+    model_v3_data = any(
+        re.search(
+            r"(?:^|[/\\])peano-policy-v3(?:[/\\]|$)",
+            path,
+            flags=re.IGNORECASE,
+        )
+        is not None
+        for path in (config.data.train_path, config.data.eval_path)
+    )
+    is_model_v3 = model_v3_name or model_v3_data
+    if is_model_v3 and config.curriculum is None:
+        raise ValueError("model-v3 configurations require a [curriculum] table")
+    if config.curriculum is not None and not is_model_v3:
+        raise ValueError(
+            "[curriculum] is supported only for a model-v3 run name or data path"
+        )
+    if config.curriculum is not None:
+        curriculum = config.curriculum
+        if curriculum.kind != _MODEL_V3_CURRICULUM_KIND:
+            raise ValueError(
+                "curriculum.kind must be 'model-v3-library-balanced-v1'"
+            )
+        if type(curriculum.selection_seed) is not int or curriculum.selection_seed < 0:
+            raise ValueError("curriculum.selection_seed must be a non-negative integer")
+        if curriculum.selection_seed != config.run.seed:
+            raise ValueError(
+                "curriculum.selection_seed must equal run.seed so selection and "
+                "training randomness share one audited seed"
+            )
+        if config.run.max_train_samples is not None:
+            raise ValueError(
+                "model-v3 curriculum forbids run.max_train_samples; selection is "
+                "performed only by the audited whole-session curriculum selector"
+            )
+        if config.trainer.epochs != 1.0:
+            raise ValueError(
+                "model-v3 curriculum requires exactly one training epoch so every "
+                "selected whole-session row has one audited exposure"
+            )
+        positive_gates = {
+            "synthetic_row_ceiling": curriculum.synthetic_row_ceiling,
+            "max_train_tokens": curriculum.max_train_tokens,
+            "max_eval_tokens": curriculum.max_eval_tokens,
+            "max_train_squared_tokens": curriculum.max_train_squared_tokens,
+            "max_eval_squared_tokens": curriculum.max_eval_squared_tokens,
+        }
+        invalid_gates = [
+            name
+            for name, value in positive_gates.items()
+            if type(value) is not int or value <= 0
+        ]
+        if invalid_gates:
+            raise ValueError(
+                "curriculum compute gates must be positive integers: "
+                + ", ".join(invalid_gates)
+            )
+        if (
+            type(curriculum.corpus_seal_path) is not str
+            or not curriculum.corpus_seal_path
+            or ".." in Path(curriculum.corpus_seal_path).parts
+            or any(
+                ord(character) < 32 or ord(character) == 127
+                for character in curriculum.corpus_seal_path
+            )
+        ):
+            raise ValueError(
+                "curriculum.corpus_seal_path must be non-empty safe path text"
+            )
+        if (
+            type(curriculum.corpus_source_commit) is not str
+            or re.fullmatch(r"[0-9a-f]{40}", curriculum.corpus_source_commit)
+            is None
+        ):
+            raise ValueError(
+                "curriculum.corpus_source_commit must be a lowercase 40-hex commit"
+            )
+        if (
+            type(curriculum.corpus_prepare_job_id) is not str
+            or re.fullmatch(r"[0-9]+", curriculum.corpus_prepare_job_id) is None
+        ):
+            raise ValueError(
+                "curriculum.corpus_prepare_job_id must be non-empty decimal text"
+            )
+        if (
+            type(curriculum.corpus_content_sha256) is not str
+            or re.fullmatch(r"[0-9a-f]{64}", curriculum.corpus_content_sha256)
+            is None
+        ):
+            raise ValueError(
+                "curriculum.corpus_content_sha256 must be a lowercase 64-hex digest"
+            )

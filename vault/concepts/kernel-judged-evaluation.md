@@ -17,6 +17,14 @@ model. This makes accuracy comparable without granting learned code logical auth
 Evaluation cases must also be separated from the [[proof-trace-corpus]] by theorem or template
 family; otherwise memorized transitions can masquerade as proof search.
 
+Model-v3 adds a model-free publication gate after GPU evaluation. The replay command accepts only
+the exact four-goal evaluator-v4 report, capability identity, source commit, Slurm job, seed, and
+depth/beam/candidate/model-call/state/token limits. It cross-checks duplicated search payloads and
+counters, then runs every attempt labelled `proof` through a fresh `verify_proof` call against the
+original formula. Its canonical non-overwriting attestation distinguishes “the search report
+claimed success” from “the independent kernel replayed that exact claim.” A report containing zero
+proof claims can still be structurally valid, but it establishes no theorem-solving success.
+
 ## Related
 
 - [[de-bruijn-criterion]]

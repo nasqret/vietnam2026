@@ -7,4 +7,4 @@ The foundational arithmetic library starts at
 under `lemmas/` are generated from the checked runtime DAG by
 `scripts/build_arithmetic_vault.py`; edit the theorem source or the generator,
 then rebuild rather than hand-editing those notes.
-The verified 247-theorem graph has 327 notes and 3,286 resolved wikilinks.
+The verified 247-theorem graph has 327 notes and 3,288 resolved wikilinks.

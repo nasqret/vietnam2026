@@ -456,8 +456,27 @@ def _load_attested_adapter_authority(
 
     manifest, manifest_sha256 = trained_cli._read_adapter_manifest_snapshot(adapter)
     environment = trained_cli.attested_training_environment(manifest)
-    if require_model_v2 and environment != trained_cli.model_v2_environment():
-        raise ValueError("version-2 proof requests require the exact model-v2 authority")
+    # ``REQUEST_VERSION == 2`` names the immutable kernel-search request
+    # protocol, not the policy prompt version.  Such requests were introduced
+    # with model-v2, but model-v3 deliberately keeps the same bounded search
+    # and publication envelope while exposing its attested 247-theorem
+    # authority.  Accept only those two exact repository-owned environments;
+    # a custom capability set must never acquire their trusted label here.
+    if require_model_v2:
+        capabilities = getattr(environment, "capabilities", None)
+        label = getattr(capabilities, "label", None)
+        expected_environment = (
+            trained_cli.model_v2_environment()
+            if label == "model-v2"
+            else trained_cli.model_v3_environment()
+            if label == "model-v3"
+            else None
+        )
+        if expected_environment is None or environment != expected_environment:
+            raise ValueError(
+                "version-2 proof requests require the exact model-v2 or "
+                "model-v3 authority"
+            )
     goal = trained_cli._user_goal(canonical_statement, environment)
     return manifest, manifest_sha256, environment, goal
 
@@ -474,10 +493,15 @@ def _expected_adapter_provenance(
         raise RuntimeError("adapter provenance differs from its manifest snapshot")
     import torch
 
+    evaluation_job = trained_cli.slurm_job_identity()
     provenance["evaluation"] = {
         "sources": trained_cli._evaluation_sources(),
         "runtime": trained_cli.runtime_identity(torch),
-        "job": trained_cli.slurm_job_identity(),
+        "job": evaluation_job,
+        "training_job_binding": trained_cli._require_training_job_binding(
+            manifest,
+            evaluation_job,
+        ),
     }
     return json.loads(
         json.dumps(
@@ -1317,7 +1341,8 @@ def run_request(request_id: str, adapter: Path) -> dict[str, object]:
         or type(goal) is not dict
         or goal.get("statement") != canonical_statement
         or goal.get("classical") is not False
-        or goal.get("surface_profile") not in {"model-v1", "model-v2"}
+        or goal.get("surface_profile")
+        not in {"model-v1", "model-v2", "model-v3"}
         or goal.get("passed") is not (status == 0)
     ):
         raise RuntimeError("proof request, status, and evaluation report disagree")

@@ -6,7 +6,7 @@
 #SBATCH --mem=64G
 #SBATCH --gpus=nvidia_a100:1
 #SBATCH --constraint=vram80g
-#SBATCH --time=06:00:00
+#SBATCH --time=12:00:00
 #SBATCH --hint=nomultithread
 #SBATCH --job-name=peano-wmi-qwen17-v3-eval
 #SBATCH --open-mode=append
@@ -35,10 +35,17 @@ nvidia-smi -L
 # Both rollout QED and verifier-guided search finalize through Peano Lab's
 # independent kernel checker.  A generated tactic sequence is never itself a
 # proof result unless that original-goal replay succeeds.
+#
+# Evaluation deliberately overrides the training completion ceiling: four
+# frozen goals * 512 model calls * 8 candidates * 256 tokens = 4,194,304, the
+# evaluator's exact reviewed aggregate search-token cap.  Inheriting the 1024-
+# token SFT ceiling would be rejected before model loading and would quadruple
+# search work without increasing the 32-step tactic horizon.
 "$wmi_python" scripts/eval_trained_peano_policy.py \
   --adapter results/peano-policy/qwen3-1.7b-lora-v3-library \
   --mode search \
   --sample \
+  --max-new-tokens 256 \
   --max-steps 32 \
   --search-beam-width 16 \
   --search-candidates-per-state 8 \

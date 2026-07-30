@@ -82,7 +82,12 @@ def test_v3_wmi_jobs_share_config_and_fresh_output_policy() -> None:
         encoding="utf-8"
     )
 
-    assert "--row-budget 70000" in prepare
+    assert "--row-budget 70000" not in prepare
+    assert (
+        "expected_manifest_sha256="
+        "ccb62c771d1f7dab1e90e98da42c6c8acee40f47b5527c4f65611f718661d983"
+        in prepare
+    )
     assert "training.peano_policy.attest" in prepare
     assert "training.peano_policy.token_audit" in prepare
     assert "peano-policy-wmi-a100-v3-smoke" in prepare

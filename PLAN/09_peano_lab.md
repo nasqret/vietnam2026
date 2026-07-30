@@ -555,6 +555,47 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       prepass pins the registered 70,000-row plan to 32,600 unique sessions across all 51 schemas,
       first-head counts 2,328--2,329, zero skips, and sequence SHA-256
       `79d2704eab6eb73205ff2234f55f0d4a7e034176fe8dc8649c6950ff499d547b`.
+- [x] Replace row-prefix subsampling with a self-bound whole-session curriculum selector. Retain all
+      8,494 catalog transitions, select synthetic sessions under a 12,288-row ceiling, anchor all
+      51 schemas, balance all 14 root heads in complete rounds, make selection independent of input
+      order, require `selection_seed == run.seed`, and reject `run.max_train_samples` for model-v3.
+- [x] Add exact selected-token compute gates and the indexed completion-only objective. Bind every
+      selected token sequence; cap linear and squared train/evaluation exposure, native sequence
+      length, and supervised completion length; score label $i+1$ from logit $i$; accumulate FP32
+      token sums over the exact gradient-accumulation denominator; and fail closed unless the model
+      explicitly implements `logits_to_keep`. The pinned Qwen3 LoRA equivalence probe matches the
+      full-logit loss and gradients to numerical precision.
+- [x] Implement the historical-corpus/current-trainer boundary. Atomically seal exactly twelve data
+      artifacts and three same-job reports into a non-replacing read-only tree, bind external source
+      commit/job/content anchors, and require a current-source compiler/kernel/prompt/held-out/library
+      eligibility record before tokenization or training. Add a distinct sealed-preparation job
+      that performs no generation or proof replay and verifies eligibility, selected tokens, and
+      the longest-sequence/largest-completion indexed-loss A100 LoRA save/reload envelope.
+- [x] Harden the post-training boundary with an exact one-GPU one-shot schedule and independent
+      evaluation replay. Trainer periodic evaluation and checkpoints are disabled (the default flow
+      can still force a terminal checkpoint beyond `save_steps`); actual optimizer steps must equal
+      preflight; and every evaluator-v4 attempt claiming a proof must be checked again model-free
+      under the exact four-goal/search/source/job authority.
+- [x] Make model-v3 completion a fail-closed artifact contract. Bind observed Trainer/Accelerator
+      runtime and arguments, every raw/custom-clipped/post-clip gradient boundary, the full finite
+      norm and exact log history, honest window/example-mean loss semantics, initial/final
+      name-dtype-shape-byte fingerprints for a changed finite adapter population, and the closed
+      adapter/tokenizer hashes. Reject partial or inconsistent v3 manifests before framework load.
+      Exercise the production atomic no-replace recovery publication on the exact scheduled output
+      filesystem, retain its protected probe, bind its canonical report into the run identity, and
+      recheck it before final publication. Claim the final output directory exclusively; publish
+      run identity, adapter, tokenizer, and manifest without replacement; and admit the saved
+      adapter through one fresh local-only reload whose canonical tensor state and exact indexed
+      outputs equal the terminal in-memory policy and differ from the disabled base. Require v3
+      artifact closure to reject symlink/special/cross-device/hard-link nodes, stable-read races,
+      concurrent tree insertion, and non-0555/0444 modes without changing legacy v1/v2 loading.
+- [x] Close the model-v3 launch-contract wiring gaps. Require prompt v3 if and only if the v3
+      curriculum is present before importing Torch, PEFT, or Transformers; re-verify the protected
+      adapter/tokenizer trees immediately before no-replace final-manifest publication; and make
+      direct generation plus pretrained-base comparison verify them before and after heavy loading.
+      Recovery requires exact directory/file modes `0555`/`0444`. Treat these modes as provenance
+      and accidental-corruption gates, not hostile-same-owner security. The focused wiring audit
+      passes 89 tests; this is not a transformer-training result.
 - [ ] Generate and combine the final model-v3 raw corpora, independently replay and attest every
       QED and all prefixes 0--247, then pass the pinned-tokenizer 32,768-token native-context
       no-truncation gate or fail closed for a reviewed representation revision. The exact library
@@ -564,12 +605,21 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       a 44,000-character fail-closed bound; raw traces, row states, replay, held-out checks, and
       kernel inputs remain unchanged. First WMI preparation `172536` completed all 8,494 library
       transitions and 247 QED footers but failed closed on an over-limit synthetic ring instance;
-      no downstream job was submitted. The retry now plans synthetic data before proof execution,
-      runs the synthetic generator before the library generator, and rejects a nonempty data
-      directory before either starts. The final corpus, attestation, and token gate remain pending.
+      no downstream job was submitted. Retry `172729` has generated 32,600 independently checked
+      synthetic sessions/70,000 transitions and all 247 library sessions/8,494 transitions, and its
+      first builder published the exact 64,500/6,948/7,046 train/validation/test split with manifest
+      SHA-256 `ccb62c771d1f7dab1e90e98da42c6c8acee40f47b5527c4f65611f718661d983`.
+      The combined allocation could not also fit independent replay, token audit, and smoke. Exact-
+      corpus continuation `173040` is running those gates from clean commit
+      `5faa3d27cbaf522198ffa1bdcd11fa9d57341658`; the immutable seal content digest,
+      current-source eligibility, and selected token audit remain pending and must not be inferred
+      from completed split artifacts alone.
 - [ ] Run the registered WMI Qwen3-1.7B model-v3 experiment only after preparation passes:
-      rank-32/alpha-64 LoRA, effective batch 32, two epochs, at most 80,000 train and 6,000
-      validation rows. Record no checkpoint or quality result before the artifacts exist.
+      pinned BF16 SDPA, rank-32/alpha-64 LoRA, microbatch one/effective batch 32, exactly one
+      row-count-derived pass over the whole-session curriculum, fresh output, and no resume. The
+      guarded chain is sealed preparation (8h), training (36h), evaluation (12h), then independent
+      replay. Record no optimizer step, checkpoint, loss, adapter hash, or quality result before its
+      corresponding artifact exists.
 - [ ] Treat the four sealed model-v3 goals as a launch smoke, not a sufficient capability
       benchmark. Before making a general proof-quality claim, add a larger hidden kernel-checked
       suite spanning multistep induction, theorem composition, order, divisibility, and quantified
@@ -578,6 +628,19 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       rejection, and then canonical-state-deduplicated best-first search before the next GPU run.
 - [ ] All milestone-wide tests and documentation gates are green, the kernel has no semantic diff,
       and no heavy local or remote job remains running before the milestone is called complete.
+
+- **Current model-v3 status (2026-07-30):** WMI `173040` is exact-corpus attestation/token/runtime
+  preparation, not transformer training. The first builder is complete, but its independent
+  attestation and reports, corpus sealing, current-source sealed preparation, optimizer training,
+  evaluation, and independent replay remain ordered pending gates. Seal digest, successor job IDs,
+  selected token totals, optimizer steps, losses, adapter hashes, solve counts, and replay digest
+  are intentionally not populated early. The real-Trainer smoke, completion-evidence gate, strict
+  raw-gradient clip, and local recovery-publication preflight are implemented and green; their WMI
+  execution is still pending. Saved-policy admission, post-save/post-evaluation tensor checks, and
+  exclusive final publication are also implemented locally. Prompt/curriculum alignment, the final
+  protected-tree recheck, loader pre/post checks, and exact recovery modes pass the 89-test focused
+  wiring audit. The WMI DNS route remains unavailable at this checkpoint, so no newer cluster state
+  is claimed.
 
 - **Current verification (2026-07-28, in progress):** the public-catalog complete Peano suite reports
   1,036 passes, Lambda Lab reports 360 tests plus 36 subtests, all 27 book sources build with warnings as

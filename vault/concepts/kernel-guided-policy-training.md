@@ -72,14 +72,48 @@ model-v2 targets because those theorems now occur in training. The current confi
 selected row to fit the pinned tokenizer within Qwen's 32,768-token native limit; any over-length row fails preparation
 instead of being truncated.
 
+The final curriculum is selected by proof session rather than by JSONL prefix. All 8,494 catalog
+transitions are mandatory; synthetic sessions are indivisible and fit under a 12,288-row ceiling.
+The selector anchors every schema, balances all root heads in complete rounds, is stable under
+input reordering, and binds the candidate and selected populations. Exact tokenizer records cap
+both total token exposure and the sum of squared sequence lengths. Model-v3 therefore forbids an
+additional `max_train_samples` slice.
+
+Long prompts use an exact indexed completion objective. Prompt labels remain ignored and the
+supervised tactic-plus-EOS suffix is unchanged, but Qwen materializes vocabulary logits only at
+positions that predict supervised tokens. FP32 cross-entropy sums are divided by the exact
+supervised-token count across gradient accumulation. A pinned Qwen3 LoRA probe matches full-logit
+loss and gradients; this is a memory optimization, not weaker supervision.
+
+Model-v3 completion admits the serialized policy independently of the live training object. Three
+deterministic admitted train/validation probes bind exact tokenization, indexed losses, and
+projected-logit bytes, while a canonical fingerprint binds every PEFT tensor. One fresh local-only
+reload must equal both the terminal state and actual safetensors and must behave differently when
+the adapter is disabled. The resulting evidence is joined to the run, base commit/configuration,
+single-GPU runtime, and closed artifacts before inference. This guards the optimizer-to-inference
+handoff; it does not make model suggestions trusted proofs.
+
+Prompt-v3 attestation and the model-v3 curriculum form one launch contract: each is present if and
+only if the other is, with the check performed before importing Torch, PEFT, or Transformers. Once
+the saved policy passes semantic admission, both protected artifact trees are checked again after
+the remaining provenance work and immediately before no-replace publication of the final manifest.
+The direct generation and pretrained-base comparison paths check their adapter/tokenizer trees on
+both sides of heavy loading. Recovery requires exact directory/file modes `0555`/`0444`; these are
+provenance and accidental-corruption checks, not protection from a hostile same-owner process. The
+focused wiring audit passes 89 tests, while optimizer training and model-v3 capability evidence
+remain pending.
+
 The implemented [[verifier-guided-policy-evaluation-and-search]] asks for several complete lines at
 one immutable state, rejects failures transactionally, deduplicates canonical successor states, and
 keeps a bounded depth-32 beam. `scripts/peano_policy_repl.py` keeps the adapter resident and exposes
 a proof only after a second fresh kernel replay. The guarded WMI and Helios launchers provide the
-same interface on an A100 or GH200. The registered model-v3 WMI run uses pinned Qwen3-1.7B Base,
-rank-32/alpha-64 LoRA, and two epochs, but it has not yet been submitted or completed. No model-v3
-quality result exists until corpus attestation, the tokenizer gate, training, and kernel-judged
-evaluation finish.
+same interface on an A100 or GH200. The model-v3 WMI chain first seals the historical replay
+corpus, then verifies that current compiler/kernel/prompt/library sources remain eligible to
+consume those exact bytes. A distinct sealed-preparation job performs the selected tokenizer audit
+and extremal indexed-loss LoRA smoke; only its exact dependent training job may optimize. Frozen
+search is followed by a model-free independent replay of every claimed proof. Retry `172729` has
+generated both source lanes, but no model-v3 optimizer step has run. Corpus seal digest, successor
+jobs, adapter, and proof-quality result remain pending.
 
 ## Related
 

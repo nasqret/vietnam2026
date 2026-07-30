@@ -1,12 +1,16 @@
 # Peano Lab post-training experiment — M19 research protocol
 
 **Status:** binding experiment protocol with the first accepted WMI model-v1 result, the historical
-model-v2 launch stack, and the implemented model-v3 successor recorded, 2026-07-29. Model-v3 binds
-the complete 247-theorem ladder and corrects the curriculum and leakage contract described below.
-WMI preparation job `172536` reached the registered A100 environment but failed closed during
-synthetic generation. No model-v3 training or evaluation job was submitted, and no trained
-checkpoint exists. Its proof quality is unknown. Result fields are filled only after the
-corresponding artifacts exist and successful scripts have passed the independent kernel.
+model-v2 launch stack, and the implemented model-v3 successor recorded through 2026-07-30.
+Model-v3 binds the complete 247-theorem ladder and corrects the curriculum, loss, artifact, and
+leakage contracts described below. WMI job `172536` is the recorded failed first preparation.
+Retry `172729` generated both source lanes and published the exact 64,500/6,948/7,046 split, but
+its combined allocation could not also finish independent replay, token audit, and smoke. Exact-
+corpus continuation `173040` now runs those gates from clean commit `5faa3d27`; it accepts only the
+known twelve files and manifest digest and regenerates no data. No model-v3 optimizer step,
+checkpoint, evaluation score, or solve-rate claim exists yet. Result fields are filled only after
+the corresponding artifacts exist and claimed proofs have passed a separate independent kernel
+replay.
 This document extends M9; it does not weaken any Peano Lab trust rule.
 
 ## 1. What changed after M9
@@ -440,11 +444,15 @@ ARM, dependency, masking, and checkpoint bugs—not to produce a headline.
 
 ### Stage 1 — supervised policy
 
-Use BF16 LoRA, PyTorch SDPA, completion-only loss, deterministic seeds, packed
-1–2k-token sequences, and one to three epochs chosen by validation kernel
-success rather than training loss.  On a 96GB GH200, ordinary BF16 adapters are
-preferred to QLoRA so the initial run does not depend on quantization-specific
-ARM wheels.  Full fine-tuning is reserved for the 1.7B scaling check.
+Use BF16 LoRA, PyTorch SDPA, completion-only loss, and deterministic seeds.
+Historical v1/v2 experiments use short 1–2k-token examples; model-v3 instead
+uses microbatch one at its audited native-context lengths and an exact
+indexed-logit completion objective. Its first sealed run is one selected-data
+pass with a precomputed optimizer-step total. Additional epochs or packing are
+later controlled experiments chosen by kernel-judged validation, not by
+training loss. On a 96GB GH200, ordinary BF16 adapters are preferred to QLoRA
+so the initial run does not depend on quantization-specific ARM wheels. Full
+fine-tuning is reserved for a later 1.7B scaling check.
 
 ### Stage 2 — bounded verifier-guided search; expert iteration later
 
@@ -679,25 +687,29 @@ and hashes the request, appends both the ordinary job row and an immutable reque
 before releasing one typed-A100 job. The compute job rechecks the central base, overlay, source,
 scheduler row, request bytes, adapter, search report, and kernel path. Version-1 request artifacts
 remain replayable with their original bounded-rollout semantics; new requests cannot silently fall
-back to rollout mode. A version-2 request additionally requires the exact sealed model-v2
-environment, verifies the closed adapter/tokenizer snapshot before and after the run, and checks
-every per-goal, decoder, and aggregate search counter. The `--k` rollout flag is therefore rejected
-by this wrapper.
+back to rollout mode. A version-2 request additionally requires either the exact sealed model-v2
+authority or the exact sealed model-v3 authority recovered from the selected adapter manifest.
+Here “version 2” names the immutable request/search protocol, not the prompt version; it never
+licenses a custom capability set. The runner verifies the closed adapter/tokenizer snapshot before
+and after the run and checks every per-goal, decoder, and aggregate search counter. The `--k`
+rollout flag is therefore rejected by this wrapper.
 It writes digest-named report, optional `.pa`, and terminal run-summary files under
 `results/peano-policy/user-proofs/`; a sound but unsolved request finishes with `status=no-proof`
 rather than masquerading as an infrastructure crash. The wrapper prints the request ID used in
 those filenames.
 
-The guarded one-shot job now targets the attested model-v2 heavy adapter and
+The guarded one-shot WMI job now targets the attested model-v3 247-theorem adapter and
 defaults to 96 generated tokens per candidate, depth 32, beam width 4, four candidates per state,
-128 model calls, and 2,048 states; before that adapter exists it fails closed. Model-v2 also adds
-a persistent terminal client so an interactive WMI allocation pays model loading
-cost once and can try many theorems in one session. Local inference, when the
+128 model calls, and 2,048 states; before that adapter exists it fails closed. The Python client
+also retains compatibility with an exact attested model-v2 adapter. A persistent terminal client
+lets an interactive WMI allocation pay the model-loading cost once while the user tries many
+theorems in one session. Local inference, when the
 machine can load the adapter, uses:
 
 ```console
 python3 scripts/peano_policy_repl.py \
-  --adapter results/peano-policy/qwen3-1.7b-lora-v2-heavy
+  --adapter results/peano-policy/qwen3-1.7b-lora-v3-library \
+  --max-new-tokens 256
 ```
 
 The prompt accepts either a bare closed formula or `pa prove FORMULA`.  Default
@@ -714,8 +726,8 @@ scripts/wmi_peano_policy_repl.sh \
 
 The WMI wrapper requests one typed A100, validates the fixed deployment and
 runtime, and keeps the policy resident while theorem lines arrive on standard
-input.  A Helios-trained adapter is immediately available through the matching
-GH200 launcher, without first copying its closed artifact tree to WMI:
+input. The earlier model-v2-heavy adapter remains available in place on Helios
+through its separate GH200 launcher, without copying that closed artifact tree to WMI:
 
 ```console
 scripts/helios_peano_policy_repl.sh \
@@ -723,10 +735,11 @@ scripts/helios_peano_policy_repl.sh \
 ```
 
 Both cluster wrappers are dry-run by default, allocate one fixed GPU, keep
-theorem text out of shell arguments, and deliberately refuse a model-v1 or
-unattested adapter. They are implemented and model-free tested, but the
-expected model-v2 adapter path does not yet contain a completed heavy-run
-result.
+theorem text out of shell arguments, and deliberately refuse a model-v1 or unattested/custom
+adapter. The WMI wrapper is pinned to model-v3; the historical Helios wrapper remains pinned to
+model-v2-heavy. The model-v3 WMI adapter path and interface are therefore ready, but no model-v3
+transformer result exists there until the sealed training job really finishes; this is not yet
+evidence of proof quality.
 
 ### 10.3 What the first adapter can and cannot do
 
@@ -986,13 +999,260 @@ short arithmetic behavior; only `consecutive_product_even` exercises multistep i
 quality claim must use a larger hidden kernel-checked suite spanning induction, theorem composition,
 order, divisibility, and quantified witnesses under fixed budgets.
 
-The registered WMI configuration uses the pinned `Qwen/Qwen3-1.7B-Base` revision, BF16 SDPA,
-rank-32/alpha-64 LoRA, effective batch 32, learning rate $10^{-4}$, two epochs, and caps of 80,000
-training and 6,000 validation rows. Microbatch one with gradient accumulation 32 preserves the
-effective batch while avoiding long-state padding pairs. The CPU preparation, independent
-attestation, and 32,768-token native-context gate must pass before the A100 job is eligible to train.
-No model-v3 training submission,
-checkpoint, evaluation score, or model-quality claim is recorded yet.
+The original registered draft used an 80,000-row cap and two epochs. That draft is superseded by
+the sealed whole-session protocol below. In particular, row-prefix truncation is forbidden, and a
+second pass over the longest prompts is not justified until one exact selected-curriculum pass has
+been measured. No model-v3 training submission, checkpoint, evaluation score, or model-quality
+claim is recorded yet.
+
+### 10.6 Model-v3 sealed curriculum, indexed objective, and launch chain
+
+#### Selection is over complete proofs, not a file prefix
+
+The compiled model-v3 train file is a validated population, not the final training schedule. The
+version-1 curriculum selector first admits **all 8,494** `catalog-predecessor-prefix-v1` transitions.
+It then selects synthetic data only as complete proof sessions under a hard 12,288-row ceiling.
+One complete session anchors each of the 51 reviewed schemas; subsequent complete rounds balance
+all 14 genuine root-tactic heads. Selection ranks are derived from the training seed and immutable
+session evidence, so reordering the input JSONL cannot change the selected set. The record binds
+both the candidate population and selected rows by SHA-256.
+
+This changes the meaning of a sample budget. The selector may leave a small unused remainder when
+no further complete balanced round fits. That is preferable to cutting a trajectory. Model-v3
+therefore rejects `run.max_train_samples`, requires `curriculum.selection_seed == run.seed`, and
+retains the library lane even when it is small relative to the synthetic population. Validation is
+a deterministic capped view of the synthetic-only validation split; the final cap and exact row
+count are recorded by the run rather than inferred here.
+
+Before model allocation, the pinned tokenizer scans every admitted train row and the selected
+validation view. Its self-digested records bind every token-id sequence, total token exposure,
+$\sum_i L_i^2$ as a conservative attention-compute proxy, maximum sequence length, and maximum
+supervised completion length. Four independent configuration ceilings bound train/evaluation
+linear and quadratic exposure. A row over 32,768 tokens, a completion above the configured
+generation ceiling, or any aggregate over-budget result fails closed; there is no truncation path.
+
+#### Completion-only loss without full-sequence vocabulary logits
+
+The supervised target is still exactly one tactic line followed by EOS. Prompt labels are
+`-100`, and supervised labels form one contiguous suffix of each right-padded row. For an ordinary
+causal language model, label $y_{i+1}$ is scored by the logits at position $i$. Model-v3 computes
+the union of precisely those shifted positions and passes it through Qwen's explicit
+`logits_to_keep` argument. Cross entropy is accumulated in FP32 as a sum and divided by the exact
+number of supervised tokens in the whole gradient-accumulation window.
+
+This is a projection of the usual completion-only objective, not a surrogate objective. The code
+rejects a model that does not explicitly support indexed logits, malformed completion masks,
+PyTorch `DataParallel`, or inconsistent distributed token accounting. A pinned Qwen3-1.7B LoRA
+probe matched the full-logit loss and gradients to numerical precision. The optimization removes
+unneeded vocabulary-logit tensors for long prompts while retaining the same causal targets.
+
+#### The historical replay is sealed before current code consumes it
+
+Job `172729` built the data under an older clean source commit because proof generation and replay
+are multi-hour CPU work. Its exact-corpus continuation `173040` independently checks the embedded
+compiler/source identities and must reproduce every split byte before producing the three reports
+under its own truthful job identity. Later trainer hardening must neither mutate those historical
+bytes nor pretend they were produced by newer semantics. The bridge is an immutable corpus seal
+containing exactly twelve data artifacts and the continuation's three preparation reports. Seal
+creation:
+
+- rejects symlinks, non-regular files, hard-link aliases, missing or extra files, malformed JSON,
+  mixed jobs, and mixed source identities;
+- copies into a private staging directory, fsyncs, verifies every copied hash, publishes by one
+  non-replacing rename, makes the closed tree read-only, and verifies it again; and
+- binds the historical clean commit, decimal Slurm job, model/tokenizer and authority schedule,
+  every file hash, and one `content_sha256`.
+
+The first seal must run beside the still-unsealed historical directory, before a normal source
+deployment can replace that checkout. Its bootstrap is therefore an explicitly reviewed two-file
+program: the CLI and standard-library-only seal module. The staged tree admits no package marker,
+bytecode cache, alias, or extra entry. An embedded, submission-hashed launcher stable-reads and
+SHA-256-checks the CLI, then compiles those exact in-memory bytes under `python -I -B -S`; the CLI
+independently repeats the inventory and module check before sealing. This avoids executing
+`training.peano_policy.__init__`, `.pyc` bytes, or a pathname that changed after verification.
+
+The seal is an integrity envelope, not a signature. Its source commit, preparation job ID, and
+content digest must come from an authenticated channel outside `seal.json`; reading values from an
+untrusted seal and passing them back proves nothing. A current checkout first verifies the whole
+seal, then compares its present compiler, kernel/source inventory, prompt contract, held-out set,
+and 247-theorem authority with the historical manifest. This *eligibility* check deliberately does
+not replay the proofs again: the historical attestation says how the bytes were built, while the
+current-source record says whether their meaning has drifted.
+
+The operator-facing commands are:
+
+```console
+python3 scripts/seal_peano_v3_corpus.py create \
+  --artifact-dir data/peano-policy-v3 \
+  --dataset-attestation logs/peano-wmi-v3-dataset-attestation-PREPARE_JOB.json \
+  --token-audit logs/peano-wmi-v3-token-audit-PREPARE_JOB.json \
+  --runtime-smoke logs/peano-wmi-v3-prepare-runtime-PREPARE_JOB.json \
+  --destination checkpoints/corpora/peano-policy-v3-PREPARE_JOB \
+  --source-commit HISTORICAL_CLEAN_COMMIT \
+  --prepare-job-id PREPARE_JOB
+
+python3 scripts/seal_peano_v3_corpus.py verify \
+  --seal checkpoints/corpora/peano-policy-v3-PREPARE_JOB \
+  --source-commit HISTORICAL_CLEAN_COMMIT \
+  --prepare-job-id PREPARE_JOB
+```
+
+The literal anchors and resulting `content_sha256` remain **pending** until job `173040` completes
+and the non-replacing seal is verified. They must then be copied into the tracked v3 TOML; no
+placeholder digest is an eligible configuration.
+
+#### Sealed preparation, one-shot training, evaluation, and replay
+
+After a clean current-source deployment, the accepted WMI chain is:
+
+1. `peano_wmi_prepare_v3_sealed_training.sbatch` performs no generation and no proof replay. It
+   independently checks eligibility, audits the selected tokenizer population, and executes a real
+   BF16 LoRA optimizer/save/reload smoke on the memory envelope. That smoke exercises one natural
+   longest-sequence row and, when necessary, extends the longest-completion row by inserting
+   attended, label-masked prompt tokens immediately before its supervised suffix. Thus both active
+   sequence length and completion length reach their audited maxima even under an attention backend
+   that unpads ignored positions. After releasing the manual AdamW/scheduler state, it also runs one
+   actual `CompletionOnlyTrainer.train()` step and an explicit `evaluate()` on that same envelope,
+   with saving and periodic evaluation disabled. Both paths require finite gradients for every
+   trainable adapter parameter and an actual adapter update; the final state must have deterministic
+   equality between post-update and reloaded outputs. A shared runtime gate requires one process,
+   one Trainer-visible GPU, matching `cuda:0` Trainer/Accelerator devices, BF16 mixed precision,
+   `DistributedType.NO`, `DynamoBackend.NO`, no DeepSpeed/FSDP/tensor parallelism, and Accelerator's
+   backward divisor equal to one. Transformers performs accumulation manually, while the indexed
+   loss is already normalized over the whole supervised-token window; accepting an
+   environment-selected Accelerator divisor would scale that loss twice. Training loss therefore
+   also fails closed if Trainer omits `num_items_in_batch`; evaluation deliberately retains its
+   local supervised-token denominator. Both production and probe explicitly bind non-reentrant
+   checkpointing, AdamW betas/epsilon, and disabled NaN/Inf log filtering instead of relying on
+   framework defaults. Trainer's built-in clipping is disabled with `max_grad_norm=0.0`: it runs
+   before `on_pre_optimizer_step` with `error_if_nonfinite=False`. The callback instead audits raw
+   gradients, clips to norm 1.0 with `error_if_nonfinite=True`, and audits every post-clip gradient
+   before the optimizer may run. The smoke also performs the same saved-policy admission required
+   after production training. It selects bounded natural probes from the admitted train extrema and
+   capped validation population, fingerprints the terminal canonical PEFT state and indexed
+   outputs, directly reads the saved safetensors, and uses its one fresh local-only base, tokenizer,
+   and PEFT reload for both exact admission and the memory-envelope comparison. Disabling the adapter
+   must change at least one admission probe. The standard-library preparation verifier joins that
+   evidence to corpus eligibility, curriculum selection, both token-audit records, closed artifact
+   hashes, and the pristine pinned base configuration.
+2. `peano_wmi_train_qwen3_1_7b_v3.sbatch` can depend only on that exact completed sealed-preparation
+   job. It repeats the three-report cross-check, then exercises the production atomic no-replace
+   recovery rename on the exact `/work` output filesystem. The retained protected probe and its
+   exclusive canonical report are passed into the trainer, bound into the run identity, and checked
+   again before final publication. The job requires one visible A100 and one process, rejects
+   resume, and runs the indexed completion objective. The schedule is derived from the admitted
+   row count; Trainer checkpointing and periodic evaluation are disabled, and the actual
+   optimizer-step count must equal the preflight count. This is stronger than placing their
+   intervals beyond the schedule: Transformers' default flow can still request a terminal
+   checkpoint at `max_steps`. Separate adapter-only recovery snapshots are predeclared in that
+   schedule. For the expected 650-step run they occur after steps
+   100, 200, 300, 400, 500, and 600. Each contains only PEFT safetensors and loader metadata: no
+   optimizer, scheduler, RNG, `trainer_state`, or pickle-compatible resume artifact. A snapshot is
+   built in a private, visibly partial sibling, bound to the stable `run-identity.json` bytes and
+   their source/Slurm job, fsynced, made read-only, verified, then installed by an OS-level atomic
+   no-replace rename. Failed staging trees and prior snapshots are never removed or overwritten.
+   Its manifest says `training_complete=false`, `eligible_as_training_result=false`, and
+   `resumable=false`; neither the generator nor evaluator accepts it as a completed run. The
+   completed adapter and tokenizer are still saved before the explicit full validation pass, so a
+   late evaluation timeout cannot erase the terminal optimizer result. Each final tree is first
+   serialized into a private partial sibling and is then fsynced, protected read-only, closed-tree
+   verified, and atomically installed without replacement. The output directory itself is claimed
+   exclusively before model allocation; its path, parent, device, inode, and mode are bound into
+   the run identity and rechecked before the final manifest. `run-identity.json` and
+   `training-manifest.json` are likewise exclusive non-replacing files. The model-v3 closed-tree
+   verifier requires directories `0555` and files `0444`, rejects symlink components, specials,
+   cross-device nodes, and hard links, and uses descriptor-bound stable hashing plus a second
+   inventory to detect mutation or insertion. Stock Trainer evaluation
+   averages per-batch token means, so it is finite lifecycle evidence rather than a corpus-global
+   completion-token NLL. The ordinary
+   `training-manifest.json` remains unpublished until validation and all source/report rechecks
+   succeed. Its model-v3 completion record then requires the scheduled, returned, and Trainer-state
+   step counts to agree; every raw and post-clip trainable-gradient boundary to be present and
+   finite; all strict pre-clip norms and exact log-history records to be finite; and the canonical
+   trainable tensor population to change between its initial and final raw-byte fingerprints. It
+   states explicitly that `train_loss` averages optimizer-window token means and `eval_loss`
+   averages per-example token means at batch size one. The record also binds the closed adapter and
+   tokenizer hashes. Before releasing the live model, the runner selects three deterministic
+   SHA-ranked probes from the complete admitted train and validation populations and fingerprints
+   their tokenization, indexed losses, projected-logit bytes, and the canonical terminal PEFT
+   tensor population. After releasing Trainer/model references, one fresh local-only reload must
+   reproduce the exact persisted tensor population and all probe outputs; its disabled-adapter base
+   must differ on at least one probe. The admission record joins the run identity, base commit and
+   pristine configuration, `cuda:0` runtime, individual safetensors/config files, and complete
+   adapter/tokenizer tree hashes. Production pins `bf16_full_eval=false`: in Transformers 4.53.3
+   the full-eval flag calls `model.to(bfloat16)`, which would otherwise cast PEFT's FP32 LoRA
+   tensors after their terminal save. Tensor populations are checked after serialization and after
+   explicit evaluation. Model-v3 inference and same-base comparison reject an absent, partial,
+   stale, or inconsistent completion/admission record before importing Torch or PEFT. Prompt-v3
+   attestation and the model-v3 curriculum are an inseparable pair, checked before any framework
+   import. After admission and all slower source/report validation, the runner repeats strict
+   adapter/tokenizer verification immediately before publishing the final no-replace manifest.
+3. `peano_wmi_eval_qwen3_1_7b_v3.sbatch` depends on the exact training job and runs the four frozen
+   goals with sampled kernel-guided search at depth 32, beam width 16, eight candidates per state,
+   512 model calls, 4,096 states, and 256 tokens per candidate. These four goals are still only a
+   launch smoke. Before model loading, the evaluator requires the adapter manifest's training job,
+   `PEANO_TRAIN_JOB_ID`, and the recorded Slurm dependency to be the same numeric job. That binding
+   is preserved in the report and checked again by independent replay.
+4. `peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch` is a separate same-authority control. It
+   verifies the completed adapter manifest and closed adapter/tokenizer trees but never attaches
+   PEFT weights. It loads the pinned Qwen base and repeats the exact four-goal seed and search
+   envelope under the distinct `peano-policy-pretrained-base-v1` identity. Its fixed contract is
+   documented in [`PEANO_PRETRAINED_BASELINE.md`](PEANO_PRETRAINED_BASELINE.md). Both this loader
+   and the trained-adapter generator verify their input trees before and after heavy loading;
+   recovery requires exact directory `0555` and file `0444` modes. These are provenance and
+   accidental-corruption checks, not a security boundary against a hostile same-owner process.
+5. `replay_peano_v3_evaluation.py` is a model-free final gate. It accepts only evaluator-v4 search
+   reports with the exact goal set, environment, seed, budgets, source and job identities; it
+   cross-checks duplicated search accounting and independently calls `verify_proof` for every
+   attempt that claims success. Its canonical attestation is published without replacing an
+   existing file.
+
+The guarded remote submission shape is:
+
+```console
+scripts/submit_wmi_slurm_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  slurm/peano_wmi_prepare_v3_sealed_training.sbatch
+scripts/submit_wmi_slurm_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  --afterok SEALED_PREP_JOB slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch
+scripts/submit_wmi_slurm_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  --afterok TRAIN_JOB slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch
+scripts/submit_wmi_slurm_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  --afterok TRAIN_JOB slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch
+python3 scripts/replay_peano_v3_evaluation.py \
+  --report results/peano-policy/qwen3-1.7b-lora-v3-library/heldout-search-wmi-b16-c8-d32.json \
+  --output results/peano-policy/qwen3-1.7b-lora-v3-library/evaluation-replay.json \
+  --source-commit EVALUATION_CLEAN_COMMIT \
+  --evaluation-job-id EVALUATION_JOB
+```
+
+The training batch script runs the equivalent model-free storage check before invoking the trainer:
+
+```console
+python3 scripts/preflight_recovery_publication.py run \
+  --probe-root results/peano-policy/recovery-publication-preflights \
+  --report logs/peano-wmi-recovery-publication-preflight-JOB_ID.json
+python3 scripts/preflight_recovery_publication.py verify \
+  --report logs/peano-wmi-recovery-publication-preflight-JOB_ID.json
+```
+
+Both commands retain and recheck the probe; they never clean up or replace prior evidence.
+
+The submission wrapper defaults to `--test-only`, checks the immutable deployment ledger and exact
+predecessor script, submits held, appends the job identity durably, and only then releases it. The
+implemented Slurm limits are eight hours for sealed preparation, 36 hours for training, and twelve
+hours for evaluation. Current result ledger:
+
+| Result-dependent field | Status at this checkpoint |
+|---|---|
+| historical corpus seal path/content digest | **pending** |
+| current-source sealed-preparation job/report digests | **pending** |
+| selected train/evaluation rows and exact token exposure | **pending** |
+| optimizer steps, losses, adapter and tokenizer digests | **pending** |
+| evaluation job/report and independently replayed proofs | **pending** |
+| same-authority pretrained-base comparison report | **pending** |
+
+An idle A100 attached to CPU replay is not transformer training. The run begins only when the
+training process has passed every predecessor gate and logs its first optimizer step.
 
 ## 11. Provenance and result ledger
 

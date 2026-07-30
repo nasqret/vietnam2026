@@ -48,6 +48,10 @@ tags: [moc, peano-lab, theorem-proving]
 - [[genealogy-safe-proof-data-split]]
 - [[verifier-guided-policy-evaluation-and-search]]
 
+Model-v3 reading route: follow the notes above from the checked proof-trace corpus through
+genealogy and whole-session selection, distinguish the immutable corpus from the content-addressed
+lemma library, then follow the guarded WMI runtime to model-free kernel judgment.
+
 ## Executable surfaces
 
 - Browser: `/peano-lab/`

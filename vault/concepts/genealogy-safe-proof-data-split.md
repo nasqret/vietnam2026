@@ -31,6 +31,15 @@ before splitting; a hash cannot recover semantic genealogy that was never record
 pre-training attestor rejects any canonical formula or exact policy prompt crossing splits and
 byte-rebuilds every split from the raw sessions under the current compiler.
 
+Model-v3 adds a second, later boundary: **curriculum selection also preserves whole sessions**.
+Every catalog-prefix transition is retained, while synthetic sessions are ranked independently of
+input order and admitted only in complete schema-anchoring and root-head-balanced rounds. A row
+ceiling may leave unused capacity; it never cuts a proof trajectory. The selection attestation
+binds the full candidate population and chosen rows, and the trainer rejects a subsequent row-level
+sample cap. Genealogy splitting answers “which release split owns this proof family?”; whole-session
+selection answers “which complete training proofs from the already validated train population are
+optimized?” Neither can substitute for the other.
+
 ## Related
 
 [[kernel-guided-policy-training]] · [[proof-trace-corpus]] ·

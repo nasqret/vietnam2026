@@ -26,6 +26,14 @@ The first model-v1 measurement remains 0/4 at pass@4, while one fresh shallow go
 rollout out of eight. Model-v2 search and its persistent REPL are implemented, but **their learned
 solve rate and any expert-iteration result remain pending** until the heavy adapter exists.
 
+The frozen model-v3 launch smoke fixes depth 32, beam width 16, eight candidates per state, 512
+model calls, 4,096 discovered states, and 256 generated tokens per candidate for each of four
+goals. Evaluation remains untrusted: a separate model-free reader validates the evaluator-v4
+authority and all search accounting, then independently kernel-replays every attempt reported as a
+proof. The four formulas calibrate infrastructure and include one multistep induction theorem; they
+are not a statistically sufficient claim of general PA capability. No model-v3 search result exists
+until the sealed-preparation, training, evaluation, and replay chain completes.
+
 ## Related
 
 [[compact-headless-proof-runner]] · [[genealogy-safe-proof-data-split]] · [[pass-at-k]] ·

@@ -1840,3 +1840,179 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - Full WMI preparation, training, and independent kernel evaluation remain pending. The balanced
   object currently established is the deterministic plan, not a published corpus or trained
   model.
+
+## 2026-07-30 — Model-v3 separates replay, selection, optimization, and judgment
+
+- WMI retry `172729` generated the two expensive proof sources: 32,600 independently checked
+  synthetic sessions with 70,000 transitions and 247 declaration-prefix library sessions with
+  8,494 transitions. The combined builder and historical attestation were still running at this
+  checkpoint. The job had an A100 allocation because it shares the registered preparation script,
+  but the GPU was idle and no transformer optimizer step had run.
+- Replaced the draft row-prefix curriculum with a deterministic whole-session selector. Every one
+  of the 8,494 catalog transitions is mandatory. Synthetic selection has a 12,288-row ceiling,
+  anchors all 51 schemas, adds balanced complete rounds across all 14 root heads, and is stable
+  under input reordering. Model-v3 rejects `run.max_train_samples` and requires the selection seed
+  to equal the training seed.
+- Added exact token-exposure accounting for the selected curriculum. The pinned tokenizer binds
+  every row's token IDs and reports linear and squared sequence exposure, sequence extrema, and
+  supervised-completion extrema; all receive explicit fail-closed limits. This replaces row count
+  as the only compute gate.
+- Implemented the exact completion-only objective with indexed vocabulary logits. A causal logit at
+  position $i$ scores the supervised label at $i+1$; only that union of shifted positions is
+  requested from Qwen. FP32 summed cross entropy is normalized by the exact supervised-token count
+  across the accumulation window. The code rejects malformed suffix masks, unsupported model
+  forwards, ambiguous multi-device execution, and incorrect token accounting.
+- Added an immutable historical corpus seal and current-source eligibility record. The seal accepts
+  exactly twelve data artifacts and three same-job reports, rejects filesystem aliasing and mixed
+  provenance, publishes atomically without replacement, becomes read-only, and binds all bytes to
+  the historical clean commit and Slurm job. A newer trainer must independently verify the seal and
+  match its current compiler, kernel, prompt, held-out, and 247-theorem identities before reuse.
+- Split the new WMI path into a sealed-preparation job, a one-shot training job, a fixed-budget
+  four-goal search job, and a model-free independent replay. Preparation performs no proof replay;
+  it checks eligibility and all selected tokens, then exercises the longest sequence and largest
+  completion through a real indexed-loss LoRA update/save/reload smoke. Training repeats the report
+  cross-check and must match a precomputed one-GPU step schedule. Independent replay accepts only
+  the exact evaluator-v4 goal/search authority and reruns every claimed proof through Peano Lab's
+  kernel.
+- Result-dependent identities remain deliberately blank until artifacts exist: the corpus content
+  digest, sealed-preparation/train/evaluation job IDs, selected token totals, optimizer steps and
+  losses, adapter hashes, solve results, and replay-attestation digest. The next honest status
+  transition is “optimizer stepping,” not “an A100 is allocated.”
+- Documentation verification is green: 38 Jupyter Book sources build with warnings as errors; 194
+  deep links and 47 sessions containing 287 commands replay; 17 focused book tests pass; the vault
+  verifies 247 generated lemma notes in a connected 327-note/3,286-link graph; the new seal,
+  eligibility, sealed-preparation, replay, and submit command-line help surfaces match the text; and
+  `git diff --check` reports no whitespace errors. None of these static checks is reported as a GPU
+  training result.
+
+## 2026-07-30 — Exact-corpus preparation recovery
+
+- Job `172729` completed and published the 78,494-row split, but its attestor
+  was still in the pre-replay validation scan after 7h58m. With the measured
+  5h07m independent builder entirely ahead, the remaining allocation could not
+  produce all three required reports. It was cancelled without changing the
+  twelve corpus files; no report or optimizer step existed.
+- The continuation entry point now accepts only the exact twelve-file set and
+  manifest SHA-256
+  `ccb62c771d1f7dab1e90e98da42c6c8acee40f47b5527c4f65611f718661d983`.
+  It does not regenerate data. WMI synchronization explicitly preserves that
+  unsealed directory.
+- A four-hour subprocess watchdog was shorter than the measured first build.
+  Job `173037` was stopped after 6m30s before it could reach that deterministic
+  failure. Commit `5faa3d27cbaf522198ffa1bdcd11fa9d57341658`
+  sets the replay watchdog to eight hours and tests the bound.
+- Replacement preparation job `173040` is running from that clean commit. Its
+  purpose is independent replay, tokenizer audit, and runtime smoke; transformer
+  optimization has not started.
+
+## 2026-07-30 — Prelaunch optimizer and evaluation-chain safeguards
+
+- The one-shot trainer now saves the completed adapter and tokenizer before
+  its explicit full validation pass. The final manifest is still withheld
+  until evaluation and every immutable-input recheck passes, but a late
+  validation timeout can no longer erase the only learned tensors.
+- Scheduled model-v3 evaluation now equates the adapter manifest's producer
+  job, `PEANO_TRAIN_JOB_ID`, and the recorded Slurm dependency before loading
+  weights. The report carries that binding and independent replay checks it.
+  Interactive proof-request jobs use a distinct completed-manifest binding and
+  do not pretend to have an evaluation-chain dependency.
+- The combined evaluator, proof-request, replay, trainer, and same-base-control
+  regression set passes 144 tests.
+
+## 2026-07-30 — Closed two-source seal bootstrap
+
+- The historical seal bootstrap now admits only its CLI and standard-library
+  module in an exact cache-free inventory; package markers, `.pyc`, aliases,
+  extras, and mutations fail closed.
+- A launcher embedded in the Slurm script stable-reads, hashes, compiles, and
+  executes the same CLI bytes under isolated Python. The CLI then repeats the
+  module/inventory check, closing the execute-before-self-hash gap.
+- Forty-nine focused seal tests, shell syntax, an adversarial pathname
+  replacement probe, and the exact standalone pipeline pass locally. Remote
+  staging remains untouched until job `173040` finishes.
+
+## 2026-07-30 — Fail-closed Trainer completion and recovery filesystem proof
+
+- Pinned Transformers source review showed that accumulation is already
+  normalized by the whole window's supervised-token count, while an inherited
+  Accelerate accumulation divisor could divide it again. Production and smoke
+  now require one CUDA process, BF16, no distributed/Dynamo plugin, Trainer's
+  configured accumulation, and Accelerator divisor one. Training fails if
+  `num_items_in_batch` is missing.
+- Trainer's terminal callback would save optimizer/scheduler/RNG state even
+  with `save_steps` beyond the 650-step run. Model-v3 now uses
+  `save_strategy="no"` and `eval_strategy="no"`; only explicit adapter
+  safetensors, six non-resumable recovery snapshots, and the explicit final
+  validation remain.
+- Built-in clipping happens before `on_pre_optimizer_step`, so model-v3
+  disables it. The first callback checks every raw gradient, strictly clips at
+  norm 1.0 with non-finite errors enabled, checks post-clip gradients, and
+  records all expected boundaries and norms.
+- A v3 `training_evidence` record now binds step agreement, runtime and actual
+  Trainer arguments, exact finite history/metrics, initial-versus-final
+  trainable tensor fingerprints, adapter changes, and closed artifact hashes.
+  V3 inference and same-base comparison reject missing or inconsistent
+  evidence before importing the model framework; strict JSON rejects duplicate
+  keys, links, changing files, and NaN/Infinity.
+- Scheduled training now runs a retained atomic no-replace probe on the exact
+  recovery output filesystem and passes its canonical report into the trainer.
+  Local `renamex_np(RENAME_EXCL)` tests pass; the real WMI
+  `renameat2(RENAME_NOREPLACE)` `/work` probe remains pending because the VPN
+  is disconnected. No transformer optimizer step has started.
+
+## 2026-07-30 — Saved-policy admission and one-shot final publication
+
+- Model-v3 no longer treats a successful PEFT save as proof that the saved
+  directory is the terminal learned policy. Three deterministic probes are
+  selected from the admitted train/validation populations and bound to the run
+  identity. The live policy records canonical PEFT tensor and exact indexed
+  loss/projected-logit fingerprints; after Trainer/model release, one fresh
+  local-only base/tokenizer/adapter load must reproduce them exactly and must
+  differ from its disabled-adapter base on at least one probe.
+- The admission object joins the pinned base commit and pristine configuration,
+  individual adapter files, complete adapter/tokenizer tree digests, `cuda:0`
+  runtime, run identity, and completed-training artifact hashes. Model-v3
+  inference and the same-base control require it before heavy framework import.
+- A pinned-framework audit found that `bf16_full_eval=true` casts the whole
+  model to BF16, including PEFT's normally FP32 LoRA tensors. Production and
+  smoke now keep BF16 autocast but set full-eval casting to false, and compare
+  tensor populations after serialization and explicit evaluation.
+- Final output is claimed by exclusive directory creation. Adapter/tokenizer
+  partial trees, run identity, and final manifest are fsynced, protected, and
+  atomically published without replacement; output and parent inode/device/mode
+  identities are rechecked before completion. The expected optimizer-step
+  count must be divisible by the logging interval before allocation.
+- Artifact closure now enumerates every filesystem node rather than filtering a
+  glob. It rejects symlink components/directories, specials, cross-device nodes,
+  and hard links; hashes through stable `O_NOFOLLOW` descriptors; compares a
+  second inventory; and requires exact 0555/0444 protection for v3 callers.
+  The protection option is intentionally off for historical v1/v2 adapters.
+- The focused admission/completion suite passes 81 tests, and the smoke plus
+  admission suite passes 59 tests. The preparation report verifier, full suite,
+  real WMI `/work` probe, A100 smoke, and optimizer training remain pending at
+  this checkpoint; no loss or trained-model claim is made.
+
+## 2026-07-30 — Model-v3 launch-contract wiring audit
+
+- Prompt-v3 attestation and the model-v3 curriculum are now an equivalence:
+  either both are present or both are absent. The trainer checks this before
+  importing Torch, PEFT, or Transformers, so a v3 prompt cannot enter the
+  legacy training lane by omitting its curriculum.
+- After saved-policy admission and all slower source/report checks, the trainer
+  verifies both protected artifact trees once more immediately before the
+  exclusive no-replace manifest publication. The direct generation and
+  pretrained-base comparison loaders likewise verify their adapter/tokenizer
+  trees both before and after heavy model loading.
+- Recovery publication now accepts exactly mode `0555` for directories and
+  `0444` for regular files. These mode checks are provenance and
+  accidental-corruption gates, not security against a hostile process running
+  as the same filesystem owner.
+- The focused wiring-audit suite passes 89 tests. This closes local launch
+  contract gaps only: no model-v3 optimizer step, trained adapter, loss, or
+  proof-quality result is claimed.
+- The frozen-tree local gate then passed 540 focused model-v3 tests, all 1,707
+  Peano tests with one intentional skip, and all 360 Lambda tests plus 36
+  subtests. The warning-as-error 38-source book, 194 deep links/47 sessions/287
+  commands, and the 327-note/3,288-link vault are green. The WMI `/work` probe,
+  A100 smoke, optimizer training, and kernel-judged model evaluation remain
+  pending rather than inferred from these local results.

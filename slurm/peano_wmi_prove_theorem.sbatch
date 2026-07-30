@@ -35,4 +35,4 @@ request_id="${PEANO_PROOF_REQUEST_ID:?}"
 }
 "$wmi_python" scripts/peano_policy_proof_request.py run \
   --request-id "$request_id" \
-  --adapter results/peano-policy/qwen3-1.7b-lora-v2-heavy
+  --adapter results/peano-policy/qwen3-1.7b-lora-v3-library

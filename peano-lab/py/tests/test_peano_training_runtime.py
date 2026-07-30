@@ -39,6 +39,7 @@ from training.peano_policy.manifest import (
     hash_files,
     require_safetensors_adapter,
     sha256_file,
+    sha256_json,
     verify_hash_group,
     verify_artifact_directory,
     write_manifest,
@@ -498,6 +499,23 @@ def test_adapter_loader_rejects_divergent_model_and_tokenizer_snapshots_before_l
         generation.load_adapter(tmp_path, seed=0)
 
 
+def test_adapter_loader_rechecks_closed_trees_after_framework_load() -> None:
+    source = Path(generation.__file__).read_text(encoding="utf-8")
+    function = source[
+        source.index("def load_adapter(") : source.index("def adapter_provenance(")
+    ]
+    assert function.count("verify_artifact_directory(") == 4
+    assert (
+        function.index("require_protected =")
+        < function.index("PeftModel.from_pretrained(")
+        < function.rindex("verify_artifact_directory(")
+        < function.index("return model, tokenizer, manifest")
+    )
+    assert (
+        'manifest.get("prompt_version") == PEANO_PROMPT_V3' in function
+    )
+
+
 def test_training_attestation_cannot_launder_a_different_policy_environment() -> None:
     valid = {"inputs": _valid_training_inputs()}
     assert attested_training_environment(valid) == model_v1_environment()
@@ -551,6 +569,24 @@ def test_manifest_hashes_are_path_bound_and_write_is_canonical(tmp_path: Path) -
     left.write_text("mutated", encoding="utf-8")
     with pytest.raises(ValueError, match="hash mismatch"):
         verify_hash_group(tmp_path, digest)
+
+
+@pytest.mark.parametrize("nonfinite", [float("nan"), float("inf"), float("-inf")])
+def test_manifest_writer_rejects_nonfinite_numbers(
+    tmp_path: Path,
+    nonfinite: float,
+) -> None:
+    destination = tmp_path / "manifest.json"
+    with pytest.raises(ValueError, match="Out of range float values"):
+        write_manifest(destination, {"metric": nonfinite})
+    assert not destination.exists()
+    assert not list(tmp_path.glob(".manifest.json.*.tmp"))
+
+
+@pytest.mark.parametrize("nonfinite", [float("nan"), float("inf"), float("-inf")])
+def test_canonical_json_hash_rejects_nonfinite_numbers(nonfinite: float) -> None:
+    with pytest.raises(ValueError, match="Out of range float values"):
+        sha256_json({"metric": nonfinite})
 
 
 def test_loader_artifact_manifest_must_cover_its_complete_closed_directory(
@@ -634,6 +670,10 @@ def test_run_identity_gates_and_hashes_checkpoint_resume(tmp_path: Path) -> None
     assert decision.global_step == 25
     assert decision.checkpoint_sha256 is not None
 
+    # The no-replace authority is protected against accidental writes; a
+    # same-owner adversary can still chmod it, after which the hash join must
+    # detect the forged bytes.
+    path.chmod(0o600)
     path.write_text(
         json.dumps({"v": 1, "experiment": "forged"}), encoding="utf-8"
     )
@@ -673,7 +713,8 @@ def test_one_shot_freshness_guard_runs_before_identity_mutation(tmp_path: Path) 
     output = tmp_path / "one-shot"
     training_run._require_fresh_one_shot_output(output, "never")
     output.mkdir()
-    training_run._require_fresh_one_shot_output(output, "never")
+    with pytest.raises(ValueError, match="existing empty directory"):
+        training_run._require_fresh_one_shot_output(output, "never")
     (output / "run-identity.json").write_text("{}\n", encoding="utf-8")
     with pytest.raises(ValueError, match="requires a fresh output directory"):
         training_run._require_fresh_one_shot_output(output, "never")
@@ -695,7 +736,7 @@ def test_hf_model_loading_and_training_checkpoints_are_safetensors_only() -> Non
 
     expected_model_loads = {
         "train.py": 1,
-        "smoke.py": 2,
+        "smoke.py": 1,
         "generate.py": 1,
     }
     for name, expected_count in expected_model_loads.items():
@@ -745,6 +786,12 @@ def test_hf_model_loading_and_training_checkpoints_are_safetensors_only() -> Non
 
     train_source = (TRAINING_ROOT / "train.py").read_text(encoding="utf-8")
     assert "trainer.save_model" not in train_source
+    assert train_source.index("model.save_pretrained(") < train_source.index(
+        "eval_metrics = trainer.evaluate()"
+    )
+    assert train_source.index("tokenizer.save_pretrained(") < train_source.index(
+        "eval_metrics = trainer.evaluate()"
+    )
     peft_saves = calls(TRAINING_ROOT / "train.py", "model", "save_pretrained")
     assert len(peft_saves) == 1
     safe_keyword = next(

@@ -35,6 +35,11 @@ if scripts/wmi_submit_job.sh --test-only ../bad.sbatch >/dev/null 2>&1; then
   echo "unsafe WMI script succeeded" >&2
   exit 1
 fi
+if scripts/wmi_submit_job.sh --test-only \
+  slurm/peano_wmi_prepare_v3_training.sbatch >/dev/null 2>&1; then
+  echo "historical full-replay WMI v3 preparation remained launchable" >&2
+  exit 1
+fi
 
 scripts/wmi_submit_job.sh --test-only \
   slurm/peano_wmi_prepare_training.sbatch >/dev/null
@@ -56,6 +61,24 @@ scripts/wmi_submit_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
   --afterok 23456 slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch >/dev/null
 grep -F -- \
   "--submit --confirm PEANO-LAB-WMI-TRAINING --afterok 23456 slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch" \
+  "$ssh_log" >/dev/null
+
+scripts/wmi_submit_job.sh --test-only \
+  slurm/peano_wmi_prepare_v3_sealed_training.sbatch >/dev/null
+grep -F -- \
+  "--test-only slurm/peano_wmi_prepare_v3_sealed_training.sbatch" \
+  "$ssh_log" >/dev/null
+
+scripts/wmi_submit_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  --afterok 34567 slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch >/dev/null
+grep -F -- \
+  "--submit --confirm PEANO-LAB-WMI-TRAINING --afterok 34567 slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch" \
+  "$ssh_log" >/dev/null
+
+scripts/wmi_submit_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  --afterok 45678 slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch >/dev/null
+grep -F -- \
+  "--submit --confirm PEANO-LAB-WMI-TRAINING --afterok 45678 slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch" \
   "$ssh_log" >/dev/null
 
 if scripts/wmi_prove_theorem.sh --test-only \

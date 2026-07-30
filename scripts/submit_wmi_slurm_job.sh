@@ -87,7 +87,8 @@ case "$job_script" in
     ;;
   slurm/peano_wmi_eval_qwen3_1_7b.sbatch|\
   slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch|\
-  slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch)
+  slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch|\
+  slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch)
     sbatch_args+=("--export=ALL,PEANO_TRAIN_JOB_ID=$afterok")
     ;;
   slurm/peano_wmi_prove_theorem.sbatch)
@@ -194,7 +195,12 @@ if [ -n "$afterok" ]; then
     slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch:CONFIGURING|\
     slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch:RUNNING|\
     slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch:COMPLETING|\
-    slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch:COMPLETED)
+    slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch:COMPLETED|\
+    slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch:PENDING|\
+    slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch:CONFIGURING|\
+    slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch:RUNNING|\
+    slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch:COMPLETING|\
+    slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch:COMPLETED)
       ;;
     *)
       printf 'WMI predecessor %s is not in an acceptable state: %s\n' \
@@ -206,60 +212,36 @@ if [ -n "$afterok" ]; then
      [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch ] || \
      [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch ]; then
     if [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch ]; then
-      data_report="logs/peano-wmi-v3-dataset-attestation-$afterok.json"
+      eligibility_report="logs/peano-wmi-v3-sealed-eligibility-$afterok.json"
       token_report="logs/peano-wmi-v3-token-audit-$afterok.json"
       smoke_report="logs/peano-wmi-v3-prepare-runtime-$afterok.json"
-      for report in "$data_report" "$token_report" "$smoke_report"; do
+      for report in "$eligibility_report" "$token_report" "$smoke_report"; do
         [ -f "$report" ] && [ ! -L "$report" ] || {
           printf 'missing regular WMI v3 preparation report: %s\n' "$report" >&2
           exit 1
         }
       done
-      python3 - "$data_report" "$token_report" "$smoke_report" "$afterok" <<'PY'
-import json
-from pathlib import Path
-import sys
-
-attestation = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
-audit = json.loads(Path(sys.argv[2]).read_text(encoding="utf-8"))
-smoke = json.loads(Path(sys.argv[3]).read_text(encoding="utf-8"))
-if (
-    attestation.get("format") != "peano-policy-dataset-attestation"
-    or attestation.get("v") != 2
-    or attestation.get("prompt_version") != 3
-    or attestation.get("independent_replay") is not True
-    or attestation.get("held_out_contamination") != 0
-):
-    raise SystemExit("WMI v3 dataset attestation is not accepted")
-schedule = attestation.get("authority_schedule", {})
-if (
-    schedule.get("method")
-    != "catalog-predecessor-prefix-v1+full-synthetic-v1"
-    or schedule.get("library_size") != 247
-    or schedule.get("training_prefixes") != list(range(248))
-    or schedule.get("inference_prefix") != 247
-):
-    raise SystemExit("WMI v3 authority schedule is not accepted")
-if (
-    audit.get("format") != "peano-policy-token-audit"
-    or audit.get("status") != "passed"
-    or audit.get("config", {}).get("max_length") != 32768
-    or audit.get("tokenizer", {}).get("model_id") != "Qwen/Qwen3-1.7B-Base"
-    or audit.get("tokenizer", {}).get("requested_revision")
-    != "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
-):
-    raise SystemExit("WMI v3 tokenizer audit is not accepted")
-for split in ("train", "eval"):
-    record = audit.get("splits", {}).get(split, {})
-    if record.get("budget") != 32768 or record.get("headroom", -1) < 0:
-        raise SystemExit(f"WMI v3 {split} split exceeds its token budget")
-if (
-    smoke.get("format") != "peano-policy-wmi-a100-v3-smoke"
-    or smoke.get("status") != "passed"
-    or smoke.get("job", {}).get("job_id") != sys.argv[4]
-):
-    raise SystemExit("WMI v3 A100 smoke report is not accepted")
-PY
+      environment_pointer=.venv-wmi/current
+      [ -f "$environment_pointer" ] && [ ! -L "$environment_pointer" ] && \
+        [ "$(wc -l < "$environment_pointer")" -eq 1 ] || {
+        echo "missing reviewed WMI environment pointer" >&2
+        exit 1
+      }
+      environment_id="$(sed -n '1p' "$environment_pointer")"
+      [[ "$environment_id" =~ ^[0-9a-f]{64}$ ]] || {
+        echo "malformed reviewed WMI environment pointer" >&2
+        exit 1
+      }
+      verifier_python=".venv-wmi/releases/$environment_id/bin/python"
+      [ -x "$verifier_python" ] || {
+        echo "reviewed WMI verifier Python is unavailable" >&2
+        exit 1
+      }
+      "$verifier_python" scripts/verify_wmi_v3_sealed_preparation.py \
+        --eligibility-report "$eligibility_report" \
+        --token-audit-report "$token_report" \
+        --smoke-report "$smoke_report" \
+        --prepare-job-id "$afterok" >/dev/null
       smoke_report=""
     elif [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch ]; then
       smoke_report="logs/peano-wmi-v2-prepare-runtime-$afterok.json"
@@ -303,6 +285,7 @@ while IFS='|' read -r active_job_id active_name active_state; do
     peano-wmi-prepare|peano-wmi-qwen17|peano-wmi-qwen17-eval|\
     peano-wmi-v2-prepare|peano-wmi-qwen17-v2|peano-wmi-qwen17-v2-eval|\
     peano-wmi-v3-prepare|peano-wmi-qwen17-v3|peano-wmi-qwen17-v3-eval|\
+    peano-wmi-v3-sealprep|peano-wmi-qwen17-v3-base|\
     peano-wmi-prove|peano-wmi-probe)
       if [ -z "$afterok" ] || [ "$active_job_id" != "$afterok" ]; then
         printf 'another WMI Peano job is active: %s %s %s\n' \

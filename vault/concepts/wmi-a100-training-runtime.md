@@ -45,6 +45,86 @@ input loop. A matching Helios GH200 launcher permits immediate use of a Helios-t
 moving the closed adapter/tokenizer/manifest tree to WMI remains a separately integrity-checked
 deployment step.
 
+Model-v3 separates the expensive historical proof replay from the current GPU program. Historical
+job `172729` has generated both source lanes, but it is still preparation rather than transformer
+training. After its complete reports pass, an immutable corpus seal binds the old clean source/job
+and exactly fifteen files. A new clean deployment must pass
+`peano_wmi_prepare_v3_sealed_training.sbatch`: full seal/current-source eligibility, exact selected
+token audit, and a real BF16 indexed-loss LoRA optimizer/save/reload smoke over the combined
+longest-active-sequence/largest-completion memory envelope. When distinct rows witness the maxima,
+the completion row receives attended label-masked prompt tokens before its supervised suffix;
+zero-attention padding is not trusted because an unpadding backend could discard it. After freeing
+the manual optimizer state, preparation performs one actual bounded `CompletionOnlyTrainer` step
+and explicit evaluation on that same envelope. The cross-verifier requires its finite losses,
+complete LoRA gradient population, adapter update, active dimensions, and no-save argument set.
+The shared runtime record additionally requires one process/GPU, matching `cuda:0` Trainer and
+Accelerator devices, BF16 mixed precision, `DistributedType.NO`, `DynamoBackend.NO`, no
+DeepSpeed/FSDP/tensor-parallel plugin, exact Trainer accumulation, and Accelerator's backward
+divisor equal to one so an environment override cannot rescale an already window-normalized loss.
+The training loss also refuses a missing whole-window `num_items_in_batch`; evaluation alone may
+use the local supervised-token mean. Checkpointing mode, AdamW constants, and NaN/Inf filtering are
+explicit. Trainer's permissive built-in clipping is disabled; the pre-optimizer callback audits raw
+gradients, clips to norm 1.0 with `error_if_nonfinite=True`, and audits all post-clip gradients. That
+job performs no proof generation.
+
+Production sets both Trainer save and evaluation strategies to `no`. An interval beyond the run is
+not a sufficient checkpoint guard because the default callback can request a terminal save at
+`max_steps`. Recovery and final persistence are explicit adapter-only safetensors operations; the
+explicit stock validation metric is a mean of per-batch token means, not a corpus-global
+completion-token NLL.
+
+For model-v3, completion is now a separately validated evidence object. All scheduled, returned,
+and Trainer-state optimizer counts agree; raw gradients, the strict custom max-norm-1 clip, and
+post-clip gradients are observed at every boundary; and the complete finite norm/log curve is
+bound to the final manifest. Canonical raw-byte fingerprints over trainable tensor names, dtypes,
+shapes, and contents must change from initialization to the terminal adapter. The loader rejects
+partial or inconsistent v3 artifacts before importing the model stack. See
+[[kernel-guided-policy-training]] and [[kernel-judged-evaluation]].
+
+Completion also admits the *saved* policy rather than trusting the live Python object. Three
+run-bound probes from admitted train and validation states fingerprint canonical PEFT tensors and
+exact indexed outputs. After the original Trainer/model is released, one fresh local-only Qwen,
+tokenizer, and PEFT reload must reproduce the safetensors population and every probe; disabling the
+adapter must change at least one probe. The evidence joins the base configuration, run identity,
+`cuda:0` runtime, individual files, closed artifact trees, and completion record. Preparation runs
+the same admission mechanism on a smaller extrema-plus-validation probe set and its model-free
+verifier cross-binds the selection to the corpus and token audits.
+
+Production pins `bf16_full_eval=false`. In the pinned Transformers version that option casts the
+whole live model to BF16, whereas PEFT normally retains FP32 LoRA tensors; using it would mutate the
+policy after the terminal save. Tensor populations are rechecked after serialization and explicit
+evaluation. Final output is claimed by exclusive directory creation, and the run identity,
+adapter, tokenizer, and manifest are protected, fsynced no-replace publications whose output and
+parent inode/device/mode identities are checked again before completion. V3 closed-tree hashing
+rejects symlink components, special/cross-device nodes, and hard links, binds descriptor identities
+through the read, repeats the complete inventory, and requires 0555 directories plus 0444 files.
+
+The launch contract ties that strict lane to the data contract: prompt v3 is accepted if and only
+if the model-v3 curriculum is present, and this alignment is checked before Torch, PEFT, or
+Transformers import. After semantic admission and slower provenance checks, production re-verifies
+both protected trees immediately before publishing the final manifest without replacement. Direct
+generation and pretrained-base comparison also verify adapter/tokenizer closure before and after
+heavy loading. The focused wiring audit passes 89 tests; it establishes no optimizer or capability
+result.
+
+The adapter-only recovery path depends on a real filesystem capability, not just Linux API
+availability. Before scheduled training, a retained model-free probe exercises the production
+`renameat2(RENAME_NOREPLACE)` branch on the exact `/work` output filesystem, fsyncs and protects its
+sentinel tree, and publishes an exclusive canonical report. The trainer binds that report into its
+run identity and rechecks the live probe before final publication. Until that WMI probe actually
+runs, Linux shared-filesystem support remains pending rather than assumed.
+
+Recovery accepts exact modes `0555` for directories and `0444` for regular files. These protected
+modes are provenance and accidental-corruption gates. They do not defend against a hostile process
+with the same filesystem-owner authority, which can deliberately change modes and bytes.
+
+Only an exact completed sealed-preparation job may authorize the one-shot 36-hour training script;
+only that training job may authorize the twelve-hour fixed-budget evaluation. The guarded submitter
+checks the immutable ledger, expected predecessor script, report digests, and current reviewed
+environment before releasing a held job. Evaluation is followed by a model-free independent
+kernel replay. Corpus seal digest, sealed-preparation/train/evaluation job IDs, adapter, and model-v3
+solve results remain pending.
+
 ## Related
 
 [[kernel-guided-policy-training]] · [[kernel-judged-evaluation]] ·

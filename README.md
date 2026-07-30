@@ -69,7 +69,7 @@ nodes, 28,892 Cuts, and 204 Cut-bearing certificates, with ordered root
 `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`
 and source digest
 `295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
-The synchronized vault has 327 notes and 3,286 resolved links, including all
+The synchronized vault has 327 notes and 3,288 resolved links, including all
 247 generated lemma notes. The corpus retains 13,344 transitions in 1,692
 kernel-checked sessions under fingerprint
 `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;

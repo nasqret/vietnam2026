@@ -60,6 +60,15 @@ exact statement with `use`, `apply`, and `exact` measures retrieval and applicat
 Sealed evaluation roots and descendants must remain outside training imports, retrieval, and
 development data, even though only the four roots are evaluation goals.
 
+The model-v3 **corpus seal** is a separate content-addressed object. The library root identifies
+the meaning and declaration order of 247 reusable theorems; the corpus seal identifies twelve
+historical dataset artifacts and three preparation reports produced by one clean source commit and
+one Slurm job. It is atomically published without replacement as a read-only closed tree. A newer
+trainer may reuse it only after verifying externally supplied commit/job/content anchors and
+matching its current compiler, kernel, prompt, held-out, and library identities to the historical
+manifest. Neither digest proves PA: certificates still pass the trusted kernel, and every
+model-claimed evaluation proof is replayed independently.
+
 ## Related
 
 [[checked-theorem-reuse]] · [[kernel-guided-policy-training]] ·

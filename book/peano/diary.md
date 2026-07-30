@@ -1695,3 +1695,363 @@ The final local gate for this repair reports 1,298 Peano tests passed with one i
 1,275.58 seconds. Lambda Lab reports 360 tests plus 36 subtests; the 19 focused generator tests and
 23 WMI/config tests pass; all 287 documented commands replay; the 247-note arithmetic vault and
 3,286 links verify; and a complete 38-source Jupyter Book build succeeds with warnings as errors.
+
+## 2026-07-30 — A corpus is historical evidence; a trainer is current code
+
+WMI preparation `172729` completed the two expensive source generators before this entry was
+written: 32,600 independently checked synthetic sessions supply exactly 70,000 transitions, while
+all 247 declaration-ordered library sessions supply 8,494 transitions. The combined builder was
+still replaying those sessions, so no transformer optimizer step had started. This distinction is
+now reported literally. Reserving an A100 for a CPU-heavy preparation job does not make the job a
+training run, and a partial trace directory is not a dataset release.
+
+That long replay also exposed a deployment problem. The generated data belongs to the old clean
+source commit that performed the replay, while the trainer has since acquired stricter loss and
+selection code. Re-running every proof merely to change the optimizer would be wasteful; trusting
+mutable files from an earlier checkout would be unsafe. The chosen bridge is a content-addressed,
+closed-tree corpus seal. It copies exactly twelve dataset artifacts and the preparation job's three
+reports into an atomic, non-overwriting, read-only directory; binds their hashes, source commit,
+Slurm job, authority schedule, tokenizer, and replay identities; and then verifies the copy again.
+A current checkout may consume it only after independently matching its present compiler, Peano
+source inventory, prompt contract, held-out set, and library identities. This check deliberately
+does not replay the proofs a second time: the historical report proves how the bytes were made, and
+the current-source eligibility record proves that their semantics have not drifted.
+
+The model-v3 loader no longer means “take the first 80,000 rows.” It retains every one of the 8,494
+catalog transitions and chooses whole synthetic proof sessions under an explicit 12,288-row
+ceiling. Every one of the fourteen first-tactic heads and all fifty-one synthetic schemas receives
+an anchor, head counts differ by at most one complete fill round, and the canonical selection is
+independent of input order. A second `max_train_samples` cap is forbidden, because row-level
+subsampling could silently sever a proof trajectory or remove a small library rung. The curriculum
+seed must equal the training seed so the selection record and stochastic run have one audited
+identity.
+
+Finally, the loss path now projects vocabulary logits only at completion-token positions. It still
+computes the exact ordinary causal cross entropy: completion label at position $i+1$ is scored by
+the logit at position $i$, sums are accumulated in FP32, and the accumulation window is divided by
+its exact number of supervised tokens. A pinned Qwen3-1.7B LoRA probe matched full-logit loss and
+gradients to numerical precision. The optimization is therefore a memory reduction, not a new
+learning objective. The A100 smoke gate was strengthened to exercise both the longest total
+sequence and the largest projected completion, require gradients on every trainable adapter
+parameter, and compare deterministic post-update output with the separately reloaded adapter.
+
+The final manual smoke design uses no redundant third optimizer step. If one natural row has both
+maxima, it is the sole probe. Otherwise the natural longest-sequence row is retained and the
+longest-completion prompt is extended to the maximum sequence length with attended token ids whose
+labels remain masked. They are inserted immediately before the supervised suffix, so the suffix
+contract and completion targets are unchanged while all sequence positions remain active. This is
+stronger than zero-attention right padding, which an unpadding attention backend could discard and
+therefore could not establish a backend-independent memory envelope. The natural rows still supply
+the tokenizer round-trip evidence. Each manual probe follows the trainer's fused AdamW grouping,
+cosine schedule, warmup, gradient clipping, gradient-checkpointing, and cache settings; every LoRA
+parameter must receive a finite gradient and at least one adapter tensor must change.
+
+A second gap was that faithfully reproducing Trainer components did not execute Trainer itself.
+The smoke now destroys the manual optimizer and scheduler, runs garbage collection, and empties the
+CUDA cache before constructing a real `CompletionOnlyTrainer`; the two optimizer states can never
+coexist. It performs exactly one non-warmup optimizer step and one explicit evaluation on the same
+active componentwise-maximal envelope, with accumulation fixed to one and logging, periodic
+evaluation, and saving disabled to bound runtime and storage. A pre-optimizer callback checks every
+raw LoRA gradient, performs the norm-1.0 clip with `error_if_nonfinite=True`, and checks every
+post-clip gradient; a separate tensor snapshot proves an adapter update.
+The cross-verifier requires the exact step, losses, batch dimensions, active-token count, arguments,
+gradient population, update, and CUDA evidence. Both production and smoke TrainingArguments now
+pin `gradient_checkpointing_kwargs={"use_reentrant": False}`; otherwise Transformers 4.53.3 would
+call `gradient_checkpointing_enable` again without preserving the manually selected mode.
+
+The same review found an environment-sensitive loss-scaling boundary. Transformers 4.53.3 chunks
+gradient accumulation itself, and our completion loss has already divided each microbatch sum by
+the complete window's supervised-token count. Accelerator's `backward` divisor must therefore stay
+one; an `ACCELERATE_GRADIENT_ACCUMULATION_STEPS` override could otherwise divide the loss again.
+One shared framework-light checker now guards production and smoke immediately after Trainer
+construction: one process, one visible GPU, matching `cuda:0` Trainer and Accelerator devices,
+BF16 mixed precision, `DistributedType.NO`, `DynamoBackend.NO`, no DeepSpeed, FSDP, or tensor
+parallel plugin, exact configured Trainer accumulation, and Accelerator divisor one. Its normalized
+record is saved and cross-verified. Trainer's built-in clip is disabled (`max_grad_norm=0.0`) because
+its callback order would clip before our audit and its non-finite mode is permissive. The strict
+pre-optimizer callback records the finite pre-clip norm and finite post-clip population. Training
+also rejects a missing `num_items_in_batch`: without
+that whole-window token count, gradient accumulation would silently change the objective. Evaluation
+keeps the local token mean because it runs with the model in evaluation mode. The real paths also
+spell out the custom max gradient norm 1.0, AdamW betas $(0.9,0.999)$, epsilon $10^{-8}$, and
+`logging_nan_inf_filter=False`; defaults are not evidence.
+
+The operational lesson is to separate four jobs that answer four questions. The historical full
+replay asks whether the source proofs generated valid data. The current sealed-preparation job asks
+whether newer code may consume those exact bytes and whether the selected token/memory envelope
+fits the A100. The training job asks whether one fresh indexed-loss optimization run completed its
+predeclared step schedule. The evaluation job asks what bounded search reported. A fifth,
+model-free command then independently checks every reported proof against the frozen original goal.
+Combining any pair would make a faster status message but a weaker experiment.
+
+The independent replay parser is deliberately narrow: evaluator version 4, the exact four goal
+names and formulas, the model-v3 environment digest, search mode, seed, depth 32, beam 16, eight
+candidates, 512 model calls, 4,096 states, and 256 generated tokens must all agree before one proof
+is executed. Duplicated search payloads and counters are cross-checked rather than trusted. Only
+then does each attempt labelled `proof` reach `verify_proof`; a no-proof report may be structurally
+valid, but it establishes no proving success.
+
+At 01:46 CEST the first builder pass in WMI job `172729` atomically published the complete split:
+64,500 training rows from 26,335 sessions, 6,948 validation rows from 3,217 sessions, and 7,046 test
+rows from 3,295 sessions. The training split contains all 247 catalog sessions and all 8,494 exact
+catalog transitions; validation and test are synthetic-only. Its canonical manifest records
+32,847 accepted kernel-checked sessions, 78,494 positive transitions, zero ignored transactional
+errors, dataset digest `2e236384ecb6e7b15ccf986abab53fcfd4ec47fc97c7e00f5cc736dbbb4f224e`,
+and split-file digests. The independently copied manifest matched the live WMI SHA-256
+`ccb62c771d1f7dab1e90e98da42c6c8acee40f47b5527c4f65611f718661d983`.
+This is a real completed builder milestone, but not yet a corpus release: the same job immediately
+entered the independent attestation rebuild, and no attestation, token-audit, or runtime-smoke
+report existed at this checkpoint.
+
+At this checkpoint the seal content digest and all successor job/result identities remain pending.
+They are not placeholders to fill optimistically: the tracked configuration must remain ineligible
+until the historical job ends, the non-replacing seal verifies, and its three external anchors have
+been copied from authenticated evidence.
+
+The documentation gate for this design change is green. All 38 Jupyter Book sources rebuild with
+warnings treated as errors; the complete executable-book gate replays 194 deep links and 47
+sessions containing 287 commands; seventeen focused book tests pass; and the vault generator
+verifies all 247 lemma notes inside a connected 327-note graph with 3,286 resolved links. The seal,
+eligibility, sealed-preparation verifier, evaluation replay, and guarded submission CLIs all expose
+the documented arguments. These checks validate the documentation and static launch contract, not
+the still-pending corpus seal or trained-model result.
+
+## 2026-07-30 — A same-authority pretrained control, without identity laundering
+
+The model-v3 evaluation now has a separate pretrained-base entry point and typed-A100 Slurm job.
+The completed adapter manifest is used only to pin the Qwen revision, saved tokenizer, full
+247-theorem prompt environment, held-out contract, and exact comparison artifact hashes. The
+adapter tree is checked before and after the run, but PEFT is never imported or attached. This
+matters scientifically: calling the base model through the adapter identity would make a clean
+report look comparable while obscuring which weights actually generated it.
+
+The control therefore emits `peano-policy-pretrained-base-v1`, fixes the same seed and
+beam-16/candidates-8/depth-32/calls-512/states-4096/tokens-256 envelope, and permits no goal or
+budget overrides. Its report lives beside the completed run but outside the closed adapter and
+tokenizer subtrees. The trained-adapter replay parser was deliberately left unchanged and rejects
+the new identity; a future independent control attestation, if needed, must be a separate narrow
+gate. Ten focused baseline tests and twenty-one WMI-control tests pass. No GPU baseline job was
+submitted: the comparison adapter does not yet exist.
+
+## 2026-07-30 — Recovery must preserve both bytes and job identity
+
+The completed corpus outlived its first preparation allocation. Job `172729`
+spent 5h07m on the first combined build, then entered the attestor's strict
+row scan. A live file-descriptor probe showed that the independent rebuild had
+not even started with only 4h12m of wall time left. Finishing replay, tokenizer
+audit, and A100 smoke was impossible. We cancelled the CPU-bound attestor after
+7h58m while it was scanning validation data; the twelve completed artifacts
+and manifest SHA-256
+`ccb62c771d1f7dab1e90e98da42c6c8acee40f47b5527c4f65611f718661d983`
+remained unchanged, and all three reports remained absent.
+
+The recovery does not rename a report from another job or pretend the cancelled
+allocation completed. Commit `c56b7854ad2818257fee55a5c5d60ac7891fb9da`
+turns the historical preparation entry point into an exact-corpus continuation:
+it permits only the known twelve filenames and manifest hash, never invokes a
+generator or first builder, and reruns attestation, token audit, and smoke under
+one fresh Slurm identity. The deployment synchronizer protects exactly
+`data/peano-policy-v3/***` so publishing that clean source cannot delete the
+still-unsealed evidence.
+
+A second timing check caught a subtler deterministic failure before it consumed
+the night. The attestor's independent-builder watchdog was four hours, shorter
+than the measured 5h07m build it was required to reproduce. Job `173037` was
+therefore stopped after 6m30s with no report. Commit
+`5faa3d27cbaf522198ffa1bdcd11fa9d57341658` raises only that watchdog to eight
+hours and pins the measured rationale in a focused test. Replacement job
+`173040` now runs from that clean commit and the same corpus bytes. It is still
+preparation, not transformer training: the next honest evidence is a completed
+attestation report, not an allocated A100.
+
+## 2026-07-30 — Preserve the optimizer result and bind its judge
+
+A final prelaunch audit found two faults that would not change the loss but
+could weaken the experiment around it. First, the one-epoch schedule has fewer
+steps than the configured periodic checkpoint interval. The old ordering ran a
+full 512-row evaluation before the only explicit adapter save, so a late
+timeout could discard every learned tensor. The adapter and tokenizer are now
+saved immediately after the exact optimizer-step check and before that final
+evaluation. The training manifest is still withheld until evaluation and all
+source, deployment, corpus, and report rechecks pass; preserved weights alone
+are therefore recoverable evidence, not a falsely completed run.
+
+Second, the evaluation Slurm job previously carried a training dependency but
+did not compare it with the producer recorded inside the adapter manifest. A
+same-source stale adapter could consequently be judged under the wrong chain.
+The evaluator now requires equality of the manifest training job,
+`PEANO_TRAIN_JOB_ID`, and the immutable submission-ledger dependency before it
+loads the model, repeats the check before publication, records the binding,
+and lets the model-free replay parser verify it. Interactive theorem requests
+have a separate `slurm-proof-request-bound` status: they bind the completed
+manifest but correctly claim no `afterok` dependency. The combined evaluator,
+proof-request, replay, trainer, and pretrained-control regression set passes
+144 tests.
+
+## 2026-07-30 — The seal bootstrap is code too
+
+The original staging plan pinned the seal CLI and module but left a Python
+package marker and cached bytecode in the directory. Invoking the CLI by path
+also allowed Python to read it before its own digest check. Those were small
+files, but they were executable inputs outside the reviewed two-file claim.
+
+The bootstrap now requires exactly three directories and two single-link
+source files: the seal CLI and the standard-library-only module. Package
+markers, `__pycache__`, symlinks, specials, aliases, extras, mutations, and
+digest drift are fatal. The Slurm script no longer asks Python to execute the
+CLI pathname. A launcher embedded in the submitted script stable-reads and
+hashes it, compiles those same bytes as `__main__` under `-I -B -S`, and only
+then lets the CLI independently verify and compile the module. An adversarial
+replacement probe proved that execution retained the reviewed bytes and that
+the next launch rejected the replacement. Forty-nine focused seal tests pass;
+the remote staging tree is deliberately not changed until preparation
+`173040` completes.
+
+## 2026-07-30 — Intermediate weights are evidence, not a resumable run
+
+The end-of-epoch adapter save fixed a late-evaluation failure mode but left a larger gap: the
+audited one-pass model-v3 schedule is about 650 optimizer steps, while the ordinary Transformers
+checkpoint interval is 1,000. A wall-time, node, or process failure at step 599 would therefore
+discard every learned tensor. Lowering `save_steps` was the wrong repair. A Trainer checkpoint also
+writes optimizer, scheduler, RNG, trainer-state, and historically pickle-compatible files; loading
+that state would contradict the one-shot `resume="never"` experiment and expand the trusted
+serialization surface.
+
+The trainer now has a deliberately narrower recovery channel. Its preflight record plans six
+adapter-only saves, at optimizer steps 100 through 600. The callback asks PEFT for safe
+serialization only, verifies exactly one `adapter_model.safetensors`, and records no continuation
+state. It stable-reads `run-identity.json` before and after the save, so each snapshot is bound to
+the exact configuration, selected data, source tree, deployment, and Slurm job that began the run.
+The recovery manifest explicitly says that training is incomplete, the artifact is not eligible as
+a training result, and resumption is unsupported. The final training manifest and evaluator rules
+were not widened.
+
+A later callback audit found that merely choosing `save_steps` beyond the 650-step run was still
+insufficient: Transformers' default flow sets its save flag at the final `max_steps`. Production now
+uses `save_strategy="no"` and `eval_strategy="no"`. The six recovery artifacts and final save remain
+explicit adapter-only safetensors operations, and the validation pass is called explicitly after the
+adapter is secured. That stock validation metric averages per-batch token means; it is runtime
+evidence, not a corpus-global completion-token NLL.
+
+Publication uses the same lesson as the corpus seal but preserves failed evidence rather than
+cleaning it up. Adapter bytes and the manifest are written under a private `.partial-…` sibling;
+the manifest is last, all files and directories are fsynced and made read-only, the closed tree is
+verified, and an operating-system no-replace rename installs the canonical step/run/job name.
+After publication the read-only tree is verified again. A crash leaves a visibly partial staging
+directory, a race leaves both the staging bytes and prior target untouched, and a repeated callback
+cannot replace a completed snapshot. Focused adversarial tests cover interrupted serialization,
+unsafe weight suffixes, run-identity replacement during a stable read, manifest laundering,
+publication races, duplicate callbacks, permissions, and absence of every optimizer/resume file.
+
+## 2026-07-30 — A completed run is an evidence object, not a step counter
+
+The prelaunch review then followed the exact Transformers 4.53.3 callback order. Built-in gradient
+clipping happens before `on_pre_optimizer_step` and does not request an exception for a non-finite
+global norm. Inspecting gradients only in our callback would therefore inspect already modified
+values. Model-v3 now sets Trainer's built-in norm to zero, requires every raw LoRA gradient to exist
+and be finite, calls one strict max-norm-1 clip with `error_if_nonfinite=True`, checks every
+optimizer-visible gradient again, and records the pre-clip norm at all expected optimizer
+boundaries. The callback interprets Trainer's still-unincremented `global_step` as boundary
+`global_step + 1`; finalization requires the exact sequence 1 through 650. Legacy training retains
+its old built-in clipping and cannot accidentally claim this record.
+
+`global_step == 650` is still not sufficient evidence. The final manifest now binds five agreeing
+step counts, the one-CUDA-process/no-plugin/Accelerator-divisor-one runtime, observed Trainer
+arguments, all raw and post-clip gradient boundaries, the complete finite norm curve, the exact
+periodic/train-summary/evaluation-summary log history, finite metrics with honest loss semantics,
+and the closed adapter/tokenizer hashes. A raw-byte tensor-population fingerprint is taken before
+and after optimization; names, dtypes, shapes, and each tensor's content hash are canonicalized.
+An unchanged or non-finite adapter cannot be published. Model-v3 loaders and the same-authority
+pretrained control reject a missing, partial, stale, or internally inconsistent completion record
+before importing Torch, Transformers, or PEFT. The manifest reader also rejects duplicate keys,
+NaN/Infinity, symlinks, hard links, and a changing file snapshot. The stock `train_loss` remains a
+mean of optimizer-window token means, while `eval_loss` is a mean of per-example token means at the
+pinned evaluation batch size one; neither is described as corpus-global token NLL.
+
+The recovery rename itself also gained an executable filesystem premise. A model-free preflight
+creates an unpredictable exclusive parent on the exact output filesystem, writes and fsyncs a
+sentinel, protects the tree, invokes the production no-replace rename, and verifies preserved
+bytes, modes, inodes, device, and source disappearance. The protected probe and an exclusive
+canonical report are deliberately retained. Scheduled WMI training runs this check on `/work`
+before model allocation and passes the live report into the trainer, which binds it into the run
+identity and re-verifies both report and probe before publishing the final manifest. Local macOS
+tests establish the `renamex_np(RENAME_EXCL)` branch; the Linux
+`renameat2(RENAME_NOREPLACE)` fact remains explicitly pending until WMI connectivity returns and
+the real `/work` probe runs.
+
+These are local launch safeguards, not training results. Focused completion/evidence/loader tests
+and live callback tensor tests pass, as do the recovery publication race and tamper tests. Job
+`173040` remains historical preparation, FortiClient is disconnected at this checkpoint, and no
+model-v3 optimizer step or loss has been observed.
+
+## 2026-07-30 — Admit the saved policy, not the Python object
+
+The last completion contract still trusted an awkward handoff. It proved that the live LoRA
+tensors changed, then asked PEFT and the tokenizer to serialize them, but it did not prove that a
+fresh process would reconstruct the same policy from those files. A successful `save_pretrained`
+call is not that proof: a wrong adapter name, missing tensor, dtype conversion, stale tokenizer, or
+loader-visible extra file could leave a plausible directory whose behavior differs from the
+terminal optimizer state.
+
+Model-v3 now performs a bounded semantic admission after training. Before releasing the live
+model, it chooses three SHA-ranked probes from the *admitted* train and validation populations;
+selection is independent of input order and binds the complete candidate population to the run
+identity. For each probe it records the exact tokenization, indexed completion loss, and raw bytes
+of the projected logits. It also hashes the canonical PEFT save-format tensor population: sorted
+names, dtypes, shapes, and content digests. Frozen evaluation goals are intentionally absent. This
+stage asks whether the saved artifact is the learned policy, not whether the policy already solves
+the benchmark.
+
+The Trainer, optimizer, tokenizer, and original model references are then released and CUDA memory
+is cleared. One fresh local-only load reconstructs the pinned Qwen base, saved tokenizer, and
+single `default` PEFT adapter. Admission independently reads `adapter_model.safetensors`, requires
+the saved and reloaded canonical tensor populations to equal the terminal in-memory population,
+retokenizes all probes, and requires byte-exact projected logits and exact finite losses. Disabling
+the adapter must change at least one probe, which catches a loaded-but-inert LoRA path. The final
+evidence joins the base commit/configuration, run-identity digest, `cuda:0` Trainer runtime,
+individual adapter files, complete adapter/tokenizer tree hashes, and completed-training hashes.
+Inference and the same-base control reject model-v3 manifests without that join before importing
+the heavy framework.
+
+Pinned Transformers 4.53.3 exposed a related lifecycle trap. `bf16_full_eval=True` performs a
+destructive `model.to(dtype=bfloat16)` before full evaluation, while PEFT 0.16 normally keeps LoRA
+parameters in FP32. That would mutate the learned adapter after its final fingerprint and save.
+Production therefore keeps BF16 autocast but sets `bf16_full_eval=False`; tensor populations are
+checked again after serialization and after explicit evaluation. Any change withholds the final
+manifest.
+
+Final publication is now one-shot as well. The output directory is claimed by exclusive `mkdir`
+and its path, parent, device, inode, and mode are rechecked at the end. Adapter and tokenizer trees
+are written into private partial siblings, fsynced, protected read-only, and installed with the
+operating system's atomic no-replace rename. `run-identity.json` and the final training manifest
+use the same non-replacing publication rule. A crash leaves named partial evidence; a competing or
+repeated run cannot replace an existing result. The planned 650-step schedule must also divide
+exactly by its logging interval, preventing a late evidence-shape failure after expensive training.
+
+Auditing that “closed-tree” check found another quiet filesystem trap: `Path.rglob()` combined with
+`is_file()` can simply omit a symlinked directory or special node. The artifact scanner now walks
+without following links, rejects symlinks in every path component, FIFOs/devices/sockets,
+cross-filesystem nodes, and every hard link, and hashes each regular file through an `O_NOFOLLOW`
+descriptor. Device, inode, mode, link count, size, mtime, and ctime must agree before opening,
+through the read, and at the pathname afterward; a second complete inventory catches insertion or
+removal during hashing. Model-v3 callers additionally require exact directory `0555` and file
+`0444` modes, while historical v1/v2 adapters retain their compatible default contract.
+
+The wiring audit then asked a different question: could correct primitives still be bypassed by a
+mislabelled caller or by mutation between two correctly placed checks? Prompt-v3 attestation and
+the model-v3 curriculum must now either appear together or be absent together, and that alignment
+is checked before importing Torch, Transformers, or PEFT. Training repeats the strict protected
+tree check after semantic admission and all slow source/report validation, immediately before the
+non-replacing manifest write. The generator and same-base control check their adapter/tokenizer
+inputs both before and after heavy loading, and recovery requires exact `0555` directories and
+`0444` files rather than merely testing that write bits are absent. The focused wiring audit passed
+89 tests. These modes and repeated observations are provenance and accidental-corruption gates;
+they are deliberately not described as security against a hostile process running as the same
+filesystem owner, which could change permissions and race any pathname-based verifier.
+
+The frozen-tree verification now reports 540 focused model-v3 tests and 1,707 complete Peano tests
+passing (with one intentional skip), followed by all 360 Lambda tests and 36 subtests. The
+warning-as-error book builds all 38 sources; 194 deep links and 287 commands replay; and the
+327-note vault resolves all 3,288 links. The real Linux `/work` publication probe, A100 admission
+smoke, optimizer steps, losses, and independent kernel-judged evaluation remain pending. This
+section records why the launch contract changed; it records no transformer-training result.

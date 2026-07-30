@@ -275,7 +275,13 @@ def _recheck_adapter_snapshot(
     if type(adapter_record) is not dict or type(tokenizer_record) is not dict:
         raise ValueError("training manifest lacks adapter/tokenizer artifacts")
     require_safetensors_adapter(adapter_record)
-    verify_artifact_directory(adapter_dir, adapter_record, ADAPTER_SUBDIR)
+    require_protected = manifest.get("prompt_version") == 3
+    verify_artifact_directory(
+        adapter_dir,
+        adapter_record,
+        ADAPTER_SUBDIR,
+        require_protected=require_protected,
+    )
     tokenizer_artifacts = tokenizer_record.get("artifacts")
     if type(tokenizer_artifacts) is not dict:
         raise ValueError("training manifest lacks tokenizer artifact identity")
@@ -283,7 +289,88 @@ def _recheck_adapter_snapshot(
         adapter_dir,
         tokenizer_artifacts,
         TOKENIZER_SUBDIR,
+        require_protected=require_protected,
     )
+
+
+def _require_training_job_binding(
+    manifest: dict[str, object], evaluation_job: dict[str, object]
+) -> dict[str, object]:
+    """Bind a scheduled evaluation to the job that produced its manifest.
+
+    The submission helper exports the training predecessor as
+    ``PEANO_TRAIN_JOB_ID`` and records the same dependency in the immutable
+    submission ledger.  Neither claim is sufficient alone: this gate also
+    reads the completed adapter's training manifest and requires all three
+    job identifiers to agree before model weights are loaded.
+    """
+
+    current_job_id = os.environ.get("SLURM_JOB_ID")
+    predecessor = os.environ.get("PEANO_TRAIN_JOB_ID")
+    proof_request_id = os.environ.get("PEANO_PROOF_REQUEST_ID")
+    if current_job_id is None and predecessor is None:
+        if evaluation_job.get("scheduler") == "slurm":
+            raise RuntimeError("Slurm evaluation lacks its job environment")
+        return {"status": "local-unbound"}
+    if predecessor is None and proof_request_id is not None:
+        runtime = manifest.get("runtime")
+        training_job = runtime.get("job") if type(runtime) is dict else None
+        submission = evaluation_job.get("submission")
+        training_job_id = (
+            training_job.get("job_id") if type(training_job) is dict else None
+        )
+        if (
+            type(current_job_id) is not str
+            or not current_job_id.isdigit()
+            or type(proof_request_id) is not str
+            or re.fullmatch(r"[0-9a-f]{64}", proof_request_id) is None
+            or type(training_job) is not dict
+            or training_job.get("scheduler") != "slurm"
+            or type(training_job_id) is not str
+            or not training_job_id.isdigit()
+            or evaluation_job.get("scheduler") != "slurm"
+            or evaluation_job.get("job_id") != current_job_id
+            or type(submission) is not dict
+            or submission.get("dependency_job_id") not in {None, ""}
+        ):
+            raise RuntimeError(
+                "WMI proof request cannot bind its completed adapter manifest"
+            )
+        return {
+            "status": "slurm-proof-request-bound",
+            "training_manifest_job_id": training_job_id,
+            "evaluation_job_id": current_job_id,
+            "dependency_job_id": None,
+        }
+    if (
+        type(current_job_id) is not str
+        or not current_job_id.isdigit()
+        or type(predecessor) is not str
+        or not predecessor.isdigit()
+    ):
+        raise RuntimeError("WMI evaluation requires one numeric training predecessor")
+
+    runtime = manifest.get("runtime")
+    training_job = runtime.get("job") if type(runtime) is dict else None
+    submission = evaluation_job.get("submission")
+    if (
+        type(training_job) is not dict
+        or training_job.get("scheduler") != "slurm"
+        or training_job.get("job_id") != predecessor
+        or evaluation_job.get("scheduler") != "slurm"
+        or evaluation_job.get("job_id") != current_job_id
+        or type(submission) is not dict
+        or submission.get("dependency_job_id") != predecessor
+    ):
+        raise RuntimeError(
+            "evaluation adapter manifest differs from its declared training job"
+        )
+    return {
+        "status": "slurm-bound",
+        "training_manifest_job_id": predecessor,
+        "evaluation_job_id": current_job_id,
+        "dependency_job_id": predecessor,
+    }
 
 
 def _atomic_create_text(path: Path, text: str) -> None:
@@ -929,6 +1016,11 @@ def main(argv: list[str] | None = None) -> int:
         except ValueError as exc:
             parser.error(str(exc))
     evaluation_sources = _evaluation_sources()
+    evaluation_job = slurm_job_identity()
+    training_job_binding = _require_training_job_binding(
+        manifest_snapshot,
+        evaluation_job,
+    )
     model, tokenizer, manifest = load_adapter(adapter_dir, seed=args.seed)
     if manifest != manifest_snapshot:
         raise RuntimeError("adapter training manifest changed while the model loaded")
@@ -938,11 +1030,11 @@ def main(argv: list[str] | None = None) -> int:
     _recheck_adapter_snapshot(adapter_dir, manifest_snapshot, manifest_sha256)
     import torch
 
-    evaluation_job = slurm_job_identity()
     provenance["evaluation"] = {
         "sources": evaluation_sources,
         "runtime": runtime_identity(torch),
         "job": evaluation_job,
+        "training_job_binding": training_job_binding,
     }
     run = manifest.get("run")
     run_name = run.get("name") if isinstance(run, dict) else "unknown-run"
@@ -984,6 +1076,11 @@ def main(argv: list[str] | None = None) -> int:
         raise RuntimeError("evaluation source changed while the run was active")
     if slurm_job_identity() != evaluation_job:
         raise RuntimeError("evaluation deployment changed while the run was active")
+    if (
+        _require_training_job_binding(manifest_snapshot, evaluation_job)
+        != training_job_binding
+    ):
+        raise RuntimeError("evaluation training-job binding changed while active")
     _recheck_adapter_snapshot(adapter_dir, manifest_snapshot, manifest_sha256)
 
     report_record = report.to_dict()
@@ -1000,6 +1097,11 @@ def main(argv: list[str] | None = None) -> int:
         raise RuntimeError("evaluation source changed during proof replay")
     if slurm_job_identity() != evaluation_job:
         raise RuntimeError("evaluation deployment changed during proof replay")
+    if (
+        _require_training_job_binding(manifest_snapshot, evaluation_job)
+        != training_job_binding
+    ):
+        raise RuntimeError("evaluation training-job binding changed during proof replay")
     _recheck_adapter_snapshot(adapter_dir, manifest_snapshot, manifest_sha256)
 
     indent = None if args.compact else 2
