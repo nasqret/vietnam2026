@@ -75,7 +75,6 @@ EXPECTED_DEPENDENCIES = {
     "prime_scaled_inverse_target_nonzero": (
         "prime_is_succ_succ",
         "mod_eq_bounded_unique",
-        "succ_ne_zero",
     ),
     "prime_scaled_inverse_exists": (
         "prime_bounded_nonzero_mod_inverse",
@@ -117,7 +116,6 @@ EXPECTED_CORE_BOUNDARY = (
     "mod_eq_trans",
     "prime_is_succ_succ",
     "mod_eq_bounded_unique",
-    "succ_ne_zero",
     "prime_bounded_nonzero_mod_inverse",
     "prime_nonzero",
     "division_remainder_exists",

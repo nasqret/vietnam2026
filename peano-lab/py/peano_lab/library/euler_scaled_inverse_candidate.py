@@ -340,7 +340,7 @@ def make_euler_scaled_inverse_candidate_theorems(
             "prime_scaled_inverse_target_nonzero",
             f"forall p a x y. ({prime_nonzero_target}) -> ~(a = 0) -> "
             f"({target_bound}) -> ({target_product}) -> ~(y = 0)",
-            ("prime_is_succ_succ", "mod_eq_bounded_unique", "succ_ne_zero"),
+            ("prime_is_succ_succ", "mod_eq_bounded_unique"),
             (
                 "intro p",
                 "intro a",
