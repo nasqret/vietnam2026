@@ -13,9 +13,13 @@
 #SBATCH --output=logs/peano-wmi-v3-prepare-%j.out
 #SBATCH --error=logs/peano-wmi-v3-prepare-%j.err
 
-# Build both checked model-v3 corpora, replay the exact split, independently
-# attest it, audit every selected example against Qwen's 32768-token hard limit,
-# and finish with the reviewed one-batch A100 LoRA save/reload smoke.
+# Complete preparation of the already-built model-v3 corpus.  Historical job
+# 172729 finished all twelve corpus artifacts but its independent attestor
+# could not fit a second five-hour replay plus the tokenizer/GPU gates into the
+# original twelve-hour allocation.  This job accepts only that exact manifest,
+# independently replays it from the same compiler snapshot, audits every row
+# against Qwen's 32768-token hard limit, and finishes with the reviewed A100
+# LoRA save/reload smoke.  It never regenerates or rewrites corpus data.
 set -euo pipefail
 exec 8>/work/bnaskrecki/peano-lab-training/.deployment.lock
 flock -s 8
@@ -47,14 +51,7 @@ if [ -e "$data_dir" ] && [ ! -d "$data_dir" ]; then
   printf 'refusing non-directory WMI v3 data path: %s\n' "$data_dir" >&2
   exit 1
 fi
-if [ -d "$data_dir" ]; then
-  peano_v3_stale_entry="$(find "$data_dir" -mindepth 1 -print -quit)"
-  if [ -n "$peano_v3_stale_entry" ]; then
-    printf 'refusing nonempty WMI v3 data directory: %s\n' "$data_dir" >&2
-    exit 1
-  fi
-fi
-mkdir -p "$data_dir" logs
+mkdir -p logs
 
 "$wmi_python" - "$config" <<'PY'
 from pathlib import Path
@@ -71,48 +68,67 @@ if config.model.revision != "ea980cb0a6c2ae4b936e82123acc929f1cec04c1":
     raise SystemExit("model-v3 preparation received an unreviewed model revision")
 PY
 
-# Run the synthetic generator first: its model-free whole-schedule prepass can
-# reject a bad launch in seconds, before either corpus pays for proof replay.
-"$wmi_python" scripts/generate_peano_v3_balanced_corpus.py \
-  --profile model-v3 \
-  --trace-output "$data_dir/balanced-raw-traces.jsonl" \
-  --metadata-output "$data_dir/balanced-session-metadata.jsonl" \
-  --manifest "$data_dir/balanced-source-manifest.json" \
-  --row-budget 70000 \
-  --budget-mode exact \
-  --seed peano-policy-v3-balanced-wmi-20260729
+# Fail closed unless this is the exact closed artifact set produced by 172729.
+# The attestor below then checks all embedded source/compiler hashes and
+# reproduces train/val/test byte-for-byte in a private temporary directory.
+expected_manifest_sha256=ccb62c771d1f7dab1e90e98da42c6c8acee40f47b5527c4f65611f718661d983
+expected_files=(
+  balanced-raw-traces.jsonl
+  balanced-session-metadata.jsonl
+  balanced-source-manifest.json
+  combined-metadata-manifest.json
+  library-raw-traces.jsonl
+  library-session-metadata.jsonl
+  library-source-manifest.json
+  manifest.json
+  session-metadata.jsonl
+  test.jsonl
+  train.jsonl
+  val.jsonl
+)
+test -d "$data_dir"
+test ! -L "$data_dir"
+mapfile -t observed_files < <(
+  find "$data_dir" -mindepth 1 -maxdepth 1 -printf '%f\n' | LC_ALL=C sort
+)
+if [ "${#observed_files[@]}" -ne "${#expected_files[@]}" ]; then
+  printf 'model-v3 corpus is not closed: expected %s files, found %s\n' \
+    "${#expected_files[@]}" "${#observed_files[@]}" >&2
+  exit 1
+fi
+for index in "${!expected_files[@]}"; do
+  expected="${expected_files[$index]}"
+  if [ "${observed_files[$index]}" != "$expected" ]; then
+    printf 'model-v3 corpus entry mismatch at %s: expected %s, found %s\n' \
+      "$index" "$expected" "${observed_files[$index]}" >&2
+    exit 1
+  fi
+  test -f "$data_dir/$expected"
+  test ! -L "$data_dir/$expected"
+done
+test "$(sha256sum "$data_dir/manifest.json" | awk '{print $1}')" = \
+  "$expected_manifest_sha256"
 
-"$wmi_python" scripts/generate_peano_library_policy_corpus.py \
-  --trace-output "$data_dir/library-raw-traces.jsonl" \
-  --metadata-output "$data_dir/library-session-metadata.jsonl" \
-  --manifest "$data_dir/library-source-manifest.json"
-
-combined_metadata="$data_dir/session-metadata.jsonl"
-"$wmi_python" scripts/combine_peano_v3_corpus_metadata.py \
-  --library-metadata "$data_dir/library-session-metadata.jsonl" \
-  --synthetic-metadata "$data_dir/balanced-session-metadata.jsonl" \
-  --output "$combined_metadata" \
-  --manifest "$data_dir/combined-metadata-manifest.json"
-
-"$wmi_python" scripts/build_peano_policy_dataset.py \
-  "$data_dir/library-raw-traces.jsonl" \
-  "$data_dir/balanced-raw-traces.jsonl" \
-  --metadata "$combined_metadata" \
-  --output-dir "$data_dir" \
-  --seed peano-policy-v3
+attestation_report="logs/peano-wmi-v3-dataset-attestation-${SLURM_JOB_ID:?}.json"
+token_report="logs/peano-wmi-v3-token-audit-${SLURM_JOB_ID}.json"
+smoke_report="logs/peano-wmi-v3-prepare-runtime-${SLURM_JOB_ID}.json"
+for report in "$attestation_report" "$token_report" "$smoke_report"; do
+  test ! -e "$report"
+  test ! -L "$report"
+done
 
 "$wmi_python" -m training.peano_policy.attest \
   --train "$data_dir/train.jsonl" \
   --eval "$data_dir/val.jsonl" \
-  --output "logs/peano-wmi-v3-dataset-attestation-${SLURM_JOB_ID:?}.json"
+  --output "$attestation_report"
 
 "$wmi_python" -m training.peano_policy.token_audit \
   --config "$config" \
-  --output "logs/peano-wmi-v3-token-audit-${SLURM_JOB_ID}.json"
+  --output "$token_report"
 
 "$wmi_python" -m training.peano_policy.smoke \
   --config "$config" \
   --expected-machine x86_64 \
   --minimum-cuda-capability 8.0 \
   --report-format peano-policy-wmi-a100-v3-smoke \
-  --output "logs/peano-wmi-v3-prepare-runtime-${SLURM_JOB_ID}.json"
+  --output "$smoke_report"
