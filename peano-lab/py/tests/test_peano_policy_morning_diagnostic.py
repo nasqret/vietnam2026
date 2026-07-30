@@ -295,6 +295,9 @@ def test_morning_showcase_is_diagnostic_bounded_and_kernel_judged() -> None:
     assert "--max-new-tokens 64" in sbatch
     assert "flock -n -s 7" in sbatch
     assert "flock -n -s 8" in sbatch
+    assert "68d3ba2bfe080d83995bdd59eb3eb516a22d268276f78b17350c262d5ff22302" in sbatch
+    assert "6f745a13c0fceab4aff4ac2292e8b8fdec597c9a96b1b3aae4e1981e0af6937d" in sbatch
+    assert "817e4f4bf8edb9d47511533c6ef1a9810aa9f0f2353fd4de57af97c82e632324" in sbatch
     assert "peano_wmi_eval_v3_morning_showcase.sbatch" in common
 
 

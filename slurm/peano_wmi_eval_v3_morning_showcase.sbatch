@@ -23,6 +23,9 @@ set -euo pipefail
 readonly main_root=/work/bnaskrecki/peano-lab-training
 readonly adapter="$main_root/results/peano-policy/diagnostics/qwen3-1.7b-lora-v3-morning-diagnostic-20260731-r1"
 readonly report="${SLURM_SUBMIT_DIR:?}/results/peano-policy/showcase/morning-rollout-${SLURM_JOB_ID:?}.json"
+readonly expected_manifest_sha256=68d3ba2bfe080d83995bdd59eb3eb516a22d268276f78b17350c262d5ff22302
+readonly expected_probe_sha256=6f745a13c0fceab4aff4ac2292e8b8fdec597c9a96b1b3aae4e1981e0af6937d
+readonly expected_adapter_sha256=817e4f4bf8edb9d47511533c6ef1a9810aa9f0f2353fd4de57af97c82e632324
 
 # Prevent source or adapter publication from changing underneath evaluation.
 exec 7>"$SLURM_SUBMIT_DIR/.deployment.lock"
@@ -50,9 +53,25 @@ wmi_python="$(peano_wmi_current_python)"
 peano_wmi_assert_runtime "$wmi_python"
 nvidia-smi -L
 
-test -f "$adapter/training-manifest.json"
+require_hash() {
+  local expected="${1:?expected SHA-256 required}"
+  local path="${2:?artifact path required}"
+  test -f "$path"
+  test ! -L "$path"
+  local observed
+  observed="$(sha256sum "$path" | awk '{print $1}')"
+  if [ "$observed" != "$expected" ]; then
+    printf 'showcase input changed: %s != %s for %s\n' \
+      "$observed" "$expected" "$path" >&2
+    exit 1
+  fi
+}
+
+require_hash "$expected_manifest_sha256" "$adapter/training-manifest.json"
+require_hash "$expected_probe_sha256" "$adapter/morning-reload-probe.json"
+require_hash "$expected_adapter_sha256" "$adapter/adapter/adapter_model.safetensors"
 test -f "$adapter/morning-diagnostic.json"
-test -f "$adapter/adapter/adapter_model.safetensors"
+test ! -L "$adapter/morning-diagnostic.json"
 mkdir -p "$(dirname "$report")"
 if [ -e "$report" ]; then
   printf 'refusing to replace showcase report: %s\n' "$report" >&2
