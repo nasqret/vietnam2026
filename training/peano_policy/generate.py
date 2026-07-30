@@ -52,7 +52,7 @@ def _newline_stopper(tokenizer: Any, prompt_length: int) -> Any:
     return StopAfterOneLine()
 
 
-def generate_one_tactic(
+def generate_raw_tactic(
     *,
     model: Any,
     tokenizer: Any,
@@ -63,7 +63,7 @@ def generate_one_tactic(
     temperature: float = 1.0,
     top_p: float = 1.0,
 ) -> str:
-    """Generate one line; Peano Lab must still execute and kernel-check it."""
+    """Generate raw decoded text for a diagnostic or strict tactic boundary."""
 
     import torch
     from transformers import StoppingCriteriaList
@@ -103,6 +103,32 @@ def generate_one_tactic(
         output[0, prompt_length:],
         skip_special_tokens=True,
         clean_up_tokenization_spaces=False,
+    )
+    return generated
+
+
+def generate_one_tactic(
+    *,
+    model: Any,
+    tokenizer: Any,
+    prompt: str,
+    environment: PromptEnvironment,
+    max_new_tokens: int = 64,
+    do_sample: bool = False,
+    temperature: float = 1.0,
+    top_p: float = 1.0,
+) -> str:
+    """Generate one line; Peano Lab must still execute and kernel-check it."""
+
+    generated = generate_raw_tactic(
+        model=model,
+        tokenizer=tokenizer,
+        prompt=prompt,
+        environment=environment,
+        max_new_tokens=max_new_tokens,
+        do_sample=do_sample,
+        temperature=temperature,
+        top_p=top_p,
     )
     return extract_one_tactic(generated)
 
@@ -431,7 +457,10 @@ def _require_diagnostic_mode(
     manifest: dict[str, Any],
     *,
     diagnostic_mode: bool,
+    allow_pending_probe: bool = False,
 ) -> dict[str, object] | None:
+    if allow_pending_probe and not diagnostic_mode:
+        raise ValueError("pending diagnostic probe requires explicit diagnostic mode")
     diagnostic = manifest.get("diagnostic")
     if diagnostic is None:
         if diagnostic_mode:
@@ -445,10 +474,15 @@ def _require_diagnostic_mode(
         )
     core = dict(diagnostic)
     claimed = core.pop("diagnostic_sha256", None)
+    admitted_status = (
+        "pending-reload-probe"
+        if allow_pending_probe
+        else "completed-diagnostic-not-production"
+    )
     if (
         diagnostic.get("format") != "peano-policy-v3-morning-diagnostic"
         or diagnostic.get("v") != 1
-        or diagnostic.get("status") != "completed-diagnostic-not-production"
+        or diagnostic.get("status") != admitted_status
         or type(claimed) is not str
         or sha256_json(core) != claimed
     ):
@@ -461,6 +495,7 @@ def load_adapter(
     *,
     seed: int,
     diagnostic_mode: bool = False,
+    _allow_pending_diagnostic_probe: bool = False,
 ) -> tuple[Any, Any, dict[str, Any]]:
     """Load base+adapter according to its immutable training manifest."""
 
@@ -468,7 +503,11 @@ def load_adapter(
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if manifest.get("v") != MANIFEST_VERSION:
         raise ValueError("unsupported training manifest version")
-    _require_diagnostic_mode(manifest, diagnostic_mode=diagnostic_mode)
+    _require_diagnostic_mode(
+        manifest,
+        diagnostic_mode=diagnostic_mode,
+        allow_pending_probe=_allow_pending_diagnostic_probe,
+    )
     environment = attested_training_environment(manifest)
     if manifest.get("prompt_version") != environment.prompt_version:
         raise ValueError("adapter uses a different Peano prompt version")

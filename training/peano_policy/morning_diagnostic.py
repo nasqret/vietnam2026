@@ -334,6 +334,46 @@ def _audit_selected_tokens(
     return {**core, "token_audit_sha256": sha256_json(core)}
 
 
+def _install_pending_manifest(
+    completed_manifest: Path,
+    *,
+    diagnostic: dict[str, object],
+) -> str:
+    """Mark a saved adapter as non-production before attempting its reload."""
+
+    core = dict(diagnostic)
+    claimed = core.pop("diagnostic_sha256", None)
+    reload_probe = diagnostic.get("reload_probe")
+    if (
+        diagnostic.get("format") != FORMAT
+        or diagnostic.get("v") != VERSION
+        or diagnostic.get("status") != "pending-reload-probe"
+        or type(claimed) is not str
+        or sha256_json(core) != claimed
+        or type(reload_probe) is not dict
+        or reload_probe.get("path") != "morning-reload-probe.json"
+        or reload_probe.get("sha256") is not None
+    ):
+        raise ValueError("pending diagnostic authority is incomplete or inconsistent")
+    if not completed_manifest.is_file() or completed_manifest.is_symlink():
+        raise FileNotFoundError("completed training manifest is not one regular file")
+    for unpublished in (
+        completed_manifest.parent / "morning-diagnostic.json",
+        completed_manifest.parent / "morning-reload-probe.json",
+    ):
+        if unpublished.exists() or unpublished.is_symlink():
+            raise FileExistsError(f"refusing stale diagnostic artifact: {unpublished}")
+    manifest = _decode_record(
+        completed_manifest.read_text(encoding="utf-8"),
+        location=str(completed_manifest),
+    )
+    if manifest.get("prompt_version") != 3 or "diagnostic" in manifest:
+        raise ValueError("training manifest cannot enter pending diagnostic state")
+    manifest["diagnostic"] = diagnostic
+    write_manifest(completed_manifest, manifest)
+    return sha256_file(completed_manifest)
+
+
 def _bind_completed_manifest(
     completed_manifest: Path,
     *,
@@ -354,15 +394,113 @@ def _bind_completed_manifest(
         completed_manifest.read_text(encoding="utf-8"),
         location=str(completed_manifest),
     )
-    if manifest.get("prompt_version") != 3 or "diagnostic" in manifest:
+    previous = manifest.get("diagnostic")
+    if (
+        manifest.get("prompt_version") != 3
+        or type(previous) is not dict
+        or previous.get("status") != "pending-reload-probe"
+    ):
         raise ValueError("training manifest cannot admit the morning diagnostic")
+    previous_core = dict(previous)
+    previous_claimed = previous_core.pop("diagnostic_sha256", None)
+    final_core = dict(diagnostic)
+    final_claimed = final_core.pop("diagnostic_sha256", None)
+    if (
+        type(previous_claimed) is not str
+        or sha256_json(previous_core) != previous_claimed
+        or type(final_claimed) is not str
+        or sha256_json(final_core) != final_claimed
+        or diagnostic.get("status") != "completed-diagnostic-not-production"
+    ):
+        raise ValueError("diagnostic transition has invalid authority hashes")
+    for key in set(previous_core) | set(final_core):
+        if (
+            key not in {"status", "reload_probe"}
+            and previous_core.get(key) != final_core.get(key)
+        ):
+            raise ValueError(f"diagnostic transition changed stable field {key!r}")
+    previous_probe = previous.get("reload_probe")
+    final_probe = diagnostic.get("reload_probe")
+    if (
+        type(previous_probe) is not dict
+        or previous_probe.get("path") != "morning-reload-probe.json"
+        or previous_probe.get("sha256") is not None
+        or type(final_probe) is not dict
+        or final_probe.get("path") != "morning-reload-probe.json"
+        or type(final_probe.get("sha256")) is not str
+        or _SHA256_RE.fullmatch(final_probe["sha256"]) is None
+    ):
+        raise ValueError("diagnostic transition has malformed reload-probe authority")
+    report = completed_manifest.parent / final_probe["path"]
+    if (
+        not report.is_file()
+        or report.is_symlink()
+        or sha256_file(report) != final_probe["sha256"]
+    ):
+        raise ValueError("reload probe differs from completed diagnostic authority")
+    pending_manifest_sha256 = sha256_file(completed_manifest)
+    probe = _decode_record(report.read_text(encoding="utf-8"), location=str(report))
+    expected_probe_keys = {
+        "format",
+        "v",
+        "status",
+        "loader",
+        "current_hardened_v3_loader_compatible",
+        "pending_training_manifest_sha256",
+        "pending_diagnostic_sha256",
+        "slurm_job_id",
+        "example_id",
+        "expected_tactic",
+        "generated_text",
+        "parsed_tactic",
+        "valid_single_tactic",
+        "exact_match",
+        "decode",
+    }
+    if (
+        set(probe) != expected_probe_keys
+        or probe.get("format") != "peano-policy-v3-morning-reload-probe"
+        or probe.get("v") != 1
+        or probe.get("status") != "probe-completed"
+        or probe.get("loader") != "explicit-historical-diagnostic-admission-v1"
+        or probe.get("current_hardened_v3_loader_compatible") is not False
+        or probe.get("pending_training_manifest_sha256")
+        != pending_manifest_sha256
+        or probe.get("pending_diagnostic_sha256") != previous_claimed
+        or probe.get("slurm_job_id") != previous_core.get("slurm_job_id")
+        or type(probe.get("example_id")) is not str
+        or not probe["example_id"]
+        or type(probe.get("expected_tactic")) is not str
+        or not probe["expected_tactic"]
+        or type(probe.get("generated_text")) is not str
+        or type(probe.get("valid_single_tactic")) is not bool
+        or type(probe.get("exact_match")) is not bool
+        or probe.get("decode") != {"max_new_tokens": 64, "do_sample": False}
+    ):
+        raise ValueError("reload probe is not valid pending-manifest evidence")
+    from .prompt import extract_one_tactic
+
+    try:
+        observed_tactic = extract_one_tactic(probe["generated_text"])
+        observed_valid = True
+    except (TypeError, ValueError):
+        observed_tactic = None
+        observed_valid = False
+    if (
+        probe.get("parsed_tactic") != observed_tactic
+        or probe.get("valid_single_tactic") is not observed_valid
+        or probe.get("exact_match") is not (
+            observed_tactic == probe["expected_tactic"]
+        )
+    ):
+        raise ValueError("reload probe tactic fields are inconsistent")
+    sidecar = completed_manifest.parent / "morning-diagnostic.json"
+    if sidecar.exists() or sidecar.is_symlink():
+        raise FileExistsError(f"refusing to replace diagnostic sidecar: {sidecar}")
     manifest["diagnostic"] = diagnostic
     write_manifest(completed_manifest, manifest)
     manifest_sha256 = sha256_file(completed_manifest)
 
-    sidecar = completed_manifest.parent / "morning-diagnostic.json"
-    if sidecar.exists() or sidecar.is_symlink():
-        raise FileExistsError(f"refusing to replace diagnostic sidecar: {sidecar}")
     write_manifest(
         sidecar,
         {
@@ -409,9 +547,9 @@ def _reload_probe(
     *,
     example: ProofExample,
     seed: int,
-    training_manifest_sha256: str,
-    diagnostic_sha256: str,
-) -> Path:
+    pending_training_manifest_sha256: str,
+    pending_diagnostic_sha256: str,
+) -> tuple[Path, str]:
     """Reload safetensors and generate once with explicit diagnostic admission."""
 
     import gc
@@ -419,7 +557,7 @@ def _reload_probe(
     import torch
 
     from .contract import attested_training_environment
-    from .generate import generate_one_tactic, load_adapter
+    from .generate import generate_raw_tactic, load_adapter
     from .prompt import extract_one_tactic
 
     gc.collect()
@@ -429,9 +567,10 @@ def _reload_probe(
         output_dir,
         seed=seed,
         diagnostic_mode=True,
+        _allow_pending_diagnostic_probe=True,
     )
     environment = attested_training_environment(manifest)
-    generated = generate_one_tactic(
+    generated = generate_raw_tactic(
         model=model,
         tokenizer=tokenizer,
         prompt=example.prompt,
@@ -455,11 +594,11 @@ def _reload_probe(
         {
             "format": "peano-policy-v3-morning-reload-probe",
             "v": 1,
-            "status": "completed-diagnostic-not-production",
+            "status": "probe-completed",
             "loader": "explicit-historical-diagnostic-admission-v1",
             "current_hardened_v3_loader_compatible": False,
-            "training_manifest_sha256": training_manifest_sha256,
-            "diagnostic_sha256": diagnostic_sha256,
+            "pending_training_manifest_sha256": pending_training_manifest_sha256,
+            "pending_diagnostic_sha256": pending_diagnostic_sha256,
             "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
             "example_id": example.example_id,
             "expected_tactic": example.tactic,
@@ -470,7 +609,7 @@ def _reload_probe(
             "decode": {"max_new_tokens": 64, "do_sample": False},
         },
     )
-    return report
+    return report, sha256_file(report)
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -589,10 +728,9 @@ def run(args: argparse.Namespace) -> Path:
             + ", ".join(path.name for path in checkpoints)
         )
     adapter_tensor_audit = _audit_adapter_tensors(output_dir)
-    diagnostic_core = {
+    diagnostic_stable = {
         "format": FORMAT,
         "v": VERSION,
-        "status": "completed-diagnostic-not-production",
         "warning": (
             "Bounded morning check over an authenticated historical corpus; "
             "not the sealed full model-v3 curriculum or final adapter."
@@ -619,23 +757,46 @@ def run(args: argparse.Namespace) -> Path:
         "evaluation_dtype_policy": "bf16-full-eval-disabled-preserve-fp32-lora",
         "adapter_tensor_audit": adapter_tensor_audit,
         "sidecar": "morning-diagnostic.json",
-        "reload_probe": "morning-reload-probe.json",
         "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
     }
-    diagnostic = {
-        **diagnostic_core,
-        "diagnostic_sha256": sha256_json(diagnostic_core),
+    pending_core = {
+        **diagnostic_stable,
+        "status": "pending-reload-probe",
+        "reload_probe": {
+            "path": "morning-reload-probe.json",
+            "sha256": None,
+        },
     }
-    sidecar, final_manifest_sha256 = _bind_completed_manifest(
+    pending_diagnostic = {
+        **pending_core,
+        "diagnostic_sha256": sha256_json(pending_core),
+    }
+    pending_manifest_sha256 = _install_pending_manifest(
         completed_manifest,
-        diagnostic=diagnostic,
+        diagnostic=pending_diagnostic,
     )
-    reload_report = _reload_probe(
+    reload_report, reload_report_sha256 = _reload_probe(
         output_dir,
         example=evaluation[0],
         seed=config.run.seed,
-        training_manifest_sha256=final_manifest_sha256,
-        diagnostic_sha256=diagnostic["diagnostic_sha256"],
+        pending_training_manifest_sha256=pending_manifest_sha256,
+        pending_diagnostic_sha256=pending_diagnostic["diagnostic_sha256"],
+    )
+    final_core = {
+        **diagnostic_stable,
+        "status": "completed-diagnostic-not-production",
+        "reload_probe": {
+            "path": reload_report.name,
+            "sha256": reload_report_sha256,
+        },
+    }
+    final_diagnostic = {
+        **final_core,
+        "diagnostic_sha256": sha256_json(final_core),
+    }
+    sidecar, final_manifest_sha256 = _bind_completed_manifest(
+        completed_manifest,
+        diagnostic=final_diagnostic,
     )
     print(
         json.dumps(
