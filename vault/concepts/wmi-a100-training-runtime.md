@@ -46,9 +46,11 @@ moving the closed adapter/tokenizer/manifest tree to WMI remains a separately in
 deployment step.
 
 Model-v3 separates the expensive historical proof replay from the current GPU program. Historical
-job `172729` has generated both source lanes, but it is still preparation rather than transformer
-training. After its complete reports pass, an immutable corpus seal binds the old clean source/job
-and exactly fifteen files. A new clean deployment must pass
+job `172729` generated both source lanes, continuation `173040` completed independent replay,
+token audit, and A100 runtime smoke, and job `213641` published the verified immutable fifteen-file
+seal with content SHA-256
+`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`.
+A new clean deployment must pass
 `peano_wmi_prepare_v3_sealed_training.sbatch`: full seal/current-source eligibility, exact selected
 token audit, and a real BF16 indexed-loss LoRA optimizer/save/reload smoke over the combined
 longest-active-sequence/largest-completion memory envelope. When distinct rows witness the maxima,
@@ -65,7 +67,10 @@ The training loss also refuses a missing whole-window `num_items_in_batch`; eval
 use the local supervised-token mean. Checkpointing mode, AdamW constants, and NaN/Inf filtering are
 explicit. Trainer's permissive built-in clipping is disabled; the pre-optimizer callback audits raw
 gradients, clips to norm 1.0 with `error_if_nonfinite=True`, and audits all post-clip gradients. That
-job performs no proof generation.
+job performs no proof generation. First current-source attempt `214264` reached the selected-token
+audit and failed closed before this runtime smoke or model loading: 73,446,475 train tokens exceeded
+the reviewed 70,000,000-token ceiling. Its replacement raises only that ceiling to 74,000,000;
+quadratic, completion, runtime, and downstream training gates remain unchanged and unproved.
 
 Production sets both Trainer save and evaluation strategies to `no`. An interval beyond the run is
 not a sufficient checkpoint guard because the default callback can request a terminal save at
@@ -122,8 +127,9 @@ Only an exact completed sealed-preparation job may authorize the one-shot 36-hou
 only that training job may authorize the twelve-hour fixed-budget evaluation. The guarded submitter
 checks the immutable ledger, expected predecessor script, report digests, and current reviewed
 environment before releasing a held job. Evaluation is followed by a model-free independent
-kernel replay. Corpus seal digest, sealed-preparation/train/evaluation job IDs, adapter, and model-v3
-solve results remain pending.
+kernel replay. The corpus seal digest is fixed above; job `214264` is rejected evidence, not an
+accepted predecessor. A replacement sealed-preparation job, training and evaluation job IDs,
+adapter, independent replay, and model-v3 solve results remain pending.
 
 ## Related
 

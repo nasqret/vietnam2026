@@ -2300,3 +2300,37 @@ The post-seal launch-contract selection passed 152 focused tests with one expect
 complete Peano suite passed 1,761 tests with five expected skips in 24m16s. The earlier clean Ceph
 repair commit also passed all 360 Lambda Lab tests plus 36 parametrized subtests; this post-seal
 transition changes no Lambda Lab source.
+
+## 2026-07-31 — The measured curriculum exceeded the linear token ceiling
+
+Current-source sealed-preparation job `214264` ran on one A100-SXM4-80GB and first accepted the
+immutable corpus eligibility gate. Its exact selected-curriculum scan then counted 73,446,475 train
+tokens and failed closed against the reviewed 70,000,000-token ceiling after 1h58m16s. Because
+linear exposure is the first aggregate check, no accepted token-audit report was published; the
+runtime smoke, model load, optimizer, adapter publication, evaluation, and replay did not run. The
+job-specific eligibility report and terminal logs remain evidence of the rejected attempt and are
+not valid predecessors for a retry.
+
+The selector itself is independently reproducible without tokenization: it admits 20,765 rows,
+comprising 8,494 catalog rows and 12,271 synthetic rows across 5,712 synthetic sessions. Seventeen
+synthetic row slots remain unused because the next balanced whole-session round does not fit. With
+microbatch one and gradient accumulation 32, this fixes the planned one-epoch schedule at 649
+optimizer updates; it does not show that any update has occurred.
+
+The correction is intentionally smaller than changing the curriculum or broadly relaxing its
+compute contract. `max_train_tokens` becomes 74,000,000, leaving 553,525 tokens (about 0.754%)
+above the deterministic observation. The 12,288 synthetic-row ceiling, 32,768-token context,
+2.3-trillion train squared-token ceiling, evaluation ceilings, 1,024-token completion ceiling, and
+single epoch remain fixed. This is enough without changing the quadratic limit: the historical
+full-population audit used the same immutable rows and tokenizer, `data.py` is unchanged, and its
+maximum was 29,111 tokens. Thus the selected schedule satisfies the conservative upper bound
+`29,111 * 73,446,475 = 2,138,100,333,725`, still below 2.3 trillion. A new clean commit, one fresh
+deployment, and a new preparation job must repeat all gates and publish all three reports before
+training can be submitted. The proof is in the new artifacts, not in this calculation.
+
+The reviewed 74-million transition is green locally. The focused curriculum, token-audit, sealed-
+preparation, and WMI-control set passes 123 tests; the documentation subset passes 36; the
+warning-as-error Jupyter Book build, executable-book audit, and 248-lemma knowledge-base/vault
+checks pass. The complete Peano suite reports 1,761 passed with five expected skips in 23m39s, and
+the unchanged Lambda sibling reports 360 passed plus 36 subtests. No kernel or tactic semantics
+changed, and no replacement WMI job had been submitted when these results were recorded.

@@ -2016,3 +2016,29 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   commands, and the 327-note/3,288-link vault are green. The WMI `/work` probe,
   A100 smoke, optimizer training, and kernel-judged model evaluation remain
   pending rather than inferred from these local results.
+
+## 2026-07-31 — The selected-token ceiling failed closed before model loading
+
+- Historical continuation `173040` completed independent replay, full-population
+  tokenizer audit, and A100 runtime smoke. Seal job `213641` then published and
+  independently verified the immutable 15-file corpus at
+  `checkpoints/corpora/peano-policy-v3-173040`, with content SHA-256
+  `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`.
+- The first current-source sealed-preparation attempt, WMI job `214264`, reached
+  the selected-curriculum token audit and failed closed at its first budget
+  comparison: 73,446,475 train tokens exceeded the reviewed 70,000,000-token
+  ceiling. The batch stopped before the indexed-loss runtime smoke or model
+  loading. It produced no accepted token-audit/runtime-smoke chain and no
+  optimizer step, checkpoint, loss, adapter, evaluation, or proof-quality result.
+- Passing row-count and historical full-population audits did not imply that the
+  whole-session selected curriculum fit its current linear budget. Because the
+  linear comparison failed first, this run does not establish the quadratic or
+  supervised-completion gates either. The reviewed retry raises only
+  `max_train_tokens` to 74,000,000, leaving 553,525 tokens (about 0.754%) above
+  the measured exposure; every other compute, context, evaluation, and runtime
+  gate remains unchanged and must pass afresh.
+- The configuration change creates a new current-source identity. Any
+  job-`214264` eligibility evidence is bound to the rejected configuration and
+  cannot authorize training. The immutable historical corpus seal remains
+  unchanged, but a fresh clean deployment and new sealed-preparation job are
+  required before the one-epoch Qwen3-1.7B optimizer run may be submitted.

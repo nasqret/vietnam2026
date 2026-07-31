@@ -111,9 +111,14 @@ same interface on an A100 or GH200. The model-v3 WMI chain first seals the histo
 corpus, then verifies that current compiler/kernel/prompt/library sources remain eligible to
 consume those exact bytes. A distinct sealed-preparation job performs the selected tokenizer audit
 and extremal indexed-loss LoRA smoke; only its exact dependent training job may optimize. Frozen
-search is followed by a model-free independent replay of every claimed proof. Retry `172729` has
-generated both source lanes, but no model-v3 optimizer step has run. Corpus seal digest, successor
-jobs, adapter, and proof-quality result remain pending.
+search is followed by a model-free independent replay of every claimed proof. Retry `172729` built
+both source lanes, continuation `173040` completed their independent gates, and seal job `213641`
+published content SHA-256
+`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`.
+Current-source preparation `214264` then failed closed before runtime smoke or model loading because
+the selected train exposure, 73,446,475 tokens, exceeded its 70,000,000-token ceiling. The reviewed
+retry changes only that ceiling to 74,000,000. No model-v3 optimizer step has run; replacement
+preparation, adapter, evaluation, independent replay, and proof-quality results remain pending.
 
 ## Related
 

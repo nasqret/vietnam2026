@@ -9,10 +9,14 @@ its combined allocation could not also finish independent replay, token audit, a
 corpus continuation `173040` completed those gates from clean commit `5faa3d27`; it accepted only
 the known twelve files and manifest digest and regenerated no data. Current-source seal job
 `213641` then published and independently verified the immutable corpus with content SHA-256
-`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`. No model-v3 optimizer step,
-checkpoint, evaluation score, or solve-rate claim exists yet. Result fields are filled only after
-the corresponding artifacts exist and claimed proofs have passed a separate independent kernel
-replay.
+`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`. Current-source sealed-
+preparation job `214264` then passed corpus eligibility but failed closed after 1h58m16s when the
+exact selected train exposure, 73,446,475 tokens, exceeded the reviewed 70,000,000-token linear
+ceiling. It produced no accepted token-audit or smoke report and loaded no optimizer. The reviewed
+retry raises only that ceiling to 74,000,000; all row, context, quadratic, evaluation, completion,
+and one-epoch bounds remain unchanged. No model-v3 optimizer step, checkpoint, evaluation score,
+or solve-rate claim exists yet. Result fields are filled only after the corresponding artifacts
+exist and claimed proofs have passed a separate independent kernel replay.
 This document extends M9; it does not weaken any Peano Lab trust rule.
 
 ## 1. What changed after M9
@@ -950,8 +954,11 @@ For seed `peano-policy-v3-balanced-wmi-20260729`, the exact plan contains
 it needs zero candidate skips. A separate maximum-budget preflight reaches 100,000 rows in 46,574
 unique sessions while counting and excluding the one sealed-target collision. Complete kernel
 replay later succeeded in continuation `173040`, and current-source job `213641` published the
-authenticated immutable corpus seal; optimizer training remains pending. The WMI preparation order
-now invokes this synthetic prepass before the library generator, so a schedule-contract failure
+authenticated immutable corpus seal. Sealed-preparation job `214264` subsequently reached the
+complete selected-curriculum tokenizer scan and failed its old 70,000,000-token linear gate at
+73,446,475 tokens, before runtime smoke or training. The reviewed replacement ceiling is
+74,000,000 tokens; optimizer training remains pending. The WMI preparation order now invokes this
+synthetic prepass before the library generator, so a schedule-contract failure
 cannot again consume an hour of unrelated proof replay first. It also requires the model-v3 data
 directory to be empty before either generator starts, turning stale partial-run artifacts into an
 immediate refusal.
@@ -1034,6 +1041,22 @@ $\sum_i L_i^2$ as a conservative attention-compute proxy, maximum sequence lengt
 supervised completion length. Four independent configuration ceilings bound train/evaluation
 linear and quadratic exposure. A row over 32,768 tokens, a completion above the configured
 generation ceiling, or any aggregate over-budget result fails closed; there is no truncation path.
+
+Job `214264` made the distinction between row count and token exposure concrete. Its deterministic
+selection contains 20,765 rows: all 8,494 catalog rows and 12,271 synthetic rows, leaving 17 slots
+under the whole-session synthetic ceiling. It reached exactly 73,446,475 train tokens, so the
+70,000,000-token ceiling rejected the run before publication of a token-audit report. At
+microbatch one and gradient accumulation 32, the unchanged one-epoch schedule contains 649 planned
+optimizer updates. The reviewed correction raises only
+`max_train_tokens` to 74,000,000, leaving 553,525 tokens, or about 0.754%, of headroom. The
+synthetic-row ceiling, 32,768-token per-row bound, 2.3-trillion train squared-token ceiling,
+2-million evaluation-token ceiling, 66-billion evaluation squared-token ceiling, and
+1,024-token completion ceiling do not change. The historical full-population audit used the same
+sealed rows, tokenizer revision, and unchanged tokenization code and found a 29,111-token maximum;
+therefore even the conservative bound
+$29{,}111 \times 73{,}446{,}475 = 2{,}138{,}100{,}333{,}725$ remains below the unchanged
+2.3-trillion quadratic ceiling. A fresh job must nevertheless produce and publish the complete
+linear, quadratic, and supervision audit; this bound is review evidence, not a substitute report.
 
 #### Completion-only loss without full-sequence vocabulary logits
 
@@ -1316,8 +1339,8 @@ hours for evaluation. Current result ledger:
 | Result-dependent field | Status at this checkpoint |
 |---|---|
 | historical corpus seal path/content digest | `checkpoints/corpora/peano-policy-v3-173040`; `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b` (job `213641`, verified) |
-| current-source sealed-preparation job/report digests | **pending** |
-| selected train/evaluation rows and exact token exposure | **pending** |
+| current-source sealed-preparation job/report digests | job `214264` passed eligibility, then failed the old linear token gate before token/smoke reports; 74-million-token retry **pending** |
+| selected train/evaluation rows and exact token exposure | deterministic train selection is 20,765 rows (8,494 catalog + 12,271 synthetic); rejected run observed 73,446,475 train tokens; an accepted complete train/evaluation audit remains **pending** |
 | optimizer steps, losses, adapter and tokenizer digests | **pending** |
 | evaluation job/report and independently replayed proofs | **pending** |
 | same-authority pretrained-base comparison report | **pending** |

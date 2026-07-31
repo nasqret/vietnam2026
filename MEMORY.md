@@ -455,7 +455,7 @@
   browser was unavailable, so direct Pyodide and rendered
   book UI smokes are not claimed; automated runtime/worker tests, static HTML
   contracts and the deployment-manifest check remain green.
-- **Model-v3 training curriculum and launch gate (2026-07-30):** the complete 247-theorem
+- **Model-v3 training curriculum and launch gate (2026-07-31):** the complete 247-theorem
   declaration order is now a content-bound training authority. Exact authored
   predecessor-prefix replay contributes 8,494 transitions. WMI preparation
   `172536` completed that library lane, then failed closed after 1:02:34 when
@@ -477,9 +477,12 @@
   6,948 validation, and 7,046 test rows. The exact manifest SHA-256 is
   `ccb62c771d1f7dab1e90e98da42c6c8acee40f47b5527c4f65611f718661d983`.
   Its combined walltime could not also fit independent replay, token audit,
-  and smoke. Exact-corpus continuation `173040` now runs those gates from clean
-  commit `5faa3d27cbaf522198ffa1bdcd11fa9d57341658`; this is still not a sealed
-  dataset release or a transformer training run.
+  and smoke. Exact-corpus continuation `173040` subsequently completed those
+  gates from clean commit `5faa3d27cbaf522198ffa1bdcd11fa9d57341658`.
+  Job `213641` published and independently verified the resulting immutable
+  15-file seal at `checkpoints/corpora/peano-policy-v3-173040`, with content
+  SHA-256 `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`.
+  These are corpus-preparation results, not transformer training.
 - **Model-v3 selected objective (2026-07-30):** the trainer retains all 8,494
   catalog rows and selects only complete synthetic sessions under a 12,288-row
   ceiling, anchoring all 51 schemas and balancing all 14 root heads by a
@@ -490,19 +493,25 @@
   the exact one-token shift, FP32 summed cross entropy, and the exact supervised
   token count across gradient accumulation; a pinned LoRA probe matches the
   full-logit loss and gradients to numerical precision.
-- **Model-v3 historical/current boundary (2026-07-30):** a non-replacing,
-  read-only corpus seal will bind exactly twelve historical data artifacts and
-  three preparation reports to their clean source commit, job ID, and one
-  content digest. Current code may consume it only after full seal verification
-  and compiler/kernel/prompt/held-out/library eligibility comparison. The new
-  WMI chain is sealed preparation (eligibility + exact token audit + extremal
+- **Model-v3 historical/current boundary (2026-07-31):** the non-replacing,
+  read-only corpus seal binds exactly twelve historical data artifacts and
+  three preparation reports to clean source commit `5faa3d27`, preparation
+  `173040`, and content SHA-256
+  `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`.
+  Current code may consume it only after full seal verification and
+  compiler/kernel/prompt/held-out/library eligibility comparison. The new WMI
+  chain remains sealed preparation (eligibility + exact token audit + extremal
   indexed-loss A100 smoke), fresh one-GPU training, four-goal bounded search,
-  then model-free independent kernel replay of every claimed proof. Seal
-  digest, new job IDs, selected token counts, optimizer steps/losses, adapter
-  hashes, and evaluation results remain pending. No model-v3 optimizer step or
-  solve-rate claim exists yet. The attestor's independent-builder watchdog is
-  eight hours, above the exact measured 5h07m first build; the old four-hour
-  value would have rejected a legitimate replay deterministically.
+  then model-free independent kernel replay of every claimed proof. Its first
+  current-source preparation, job `214264`, reached the selected-token audit
+  and failed closed before runtime smoke or model loading because train exposure
+  was 73,446,475 tokens against the reviewed 70,000,000-token ceiling. The
+  replacement changes only that ceiling to 74,000,000; the quadratic,
+  evaluation, context, completion, runtime, optimizer, adapter, and proof-
+  quality gates remain unproved. No model-v3 optimizer step or solve-rate claim
+  exists. The attestor's independent-builder watchdog is eight hours, above the
+  exact measured 5h07m first build; the old four-hour value would have rejected
+  a legitimate replay deterministically.
 - **Model-v3 prelaunch durability and chain binding (2026-07-30):** the
   one-shot trainer preserves adapter/tokenizer tensors before its explicit
   full evaluation, while withholding the final manifest until evaluation and
@@ -511,12 +520,14 @@
   dependency before model load; its report records that relation for the
   independent replay gate. Interactive proof requests bind the completed
   manifest under a separate non-dependency status.
-- **Model-v3 seal bootstrap closure (2026-07-30):** first publication uses an
+- **Model-v3 seal bootstrap closure (2026-07-31):** first publication used an
   exact two-source staged program with no package marker or bytecode cache. A
   submission-embedded launcher stable-reads, hashes, compiles, and executes
   identical CLI bytes under isolated Python; the CLI independently verifies
-  and compiles the standard-library module. Remote staging is still pending
-  the successful completion of historical preparation `173040`.
+  and compiles the standard-library module. After historical preparation
+  `173040` completed, job `213641` exercised the repaired Ceph publication
+  profile and published the verified immutable seal; bootstrap staging is no
+  longer pending.
 - **Model-v3 completed-run authority (2026-07-30):** a usable v3 adapter now
   requires more than a positive/equal `global_step`. One canonical evidence
   object binds all schedule/result/Trainer-state step counts, the reviewed

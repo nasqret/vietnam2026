@@ -25,11 +25,15 @@ the authority for whether the complete trajectory proves its original theorem.
 
 Model-v3 has two separately identifiable sources: 247 predecessor-prefix library sessions with
 8,494 transitions and a 32,600-session, 70,000-transition root-balanced synthetic population.
-Historical WMI job `172729` generated both sources; its combined builder/attestation was still
-pending at the documentation checkpoint. A completed release is not “whatever is under `data/`”:
-exact dataset artifacts and same-job reports must be copied into one immutable, non-replacing,
-content-addressed seal. Current training then retains all library transitions and chooses only
-complete synthetic sessions under its audited ceiling.
+Historical WMI job `172729` generated both sources, continuation `173040` independently replayed
+and audited them, and job `213641` published the exact fifteen-file immutable, non-replacing seal
+with content SHA-256
+`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`. A completed release is not
+“whatever is under `data/`”: it is this content-addressed object. Current training retains all
+library transitions and chooses only complete synthetic sessions under its audited ceiling. The
+first selected-curriculum audit, job `214264`, measured 73,446,475 train tokens and failed closed
+against the 70,000,000-token linear ceiling before runtime smoke or model loading. Its reviewed
+retry raises only that ceiling to 74,000,000; later budget and training gates remain pending.
 
 ## Related
 

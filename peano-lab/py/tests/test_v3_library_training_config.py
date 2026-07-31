@@ -91,7 +91,7 @@ def test_v3_config_has_the_reviewed_sealed_training_budget() -> None:
         "kind": "model-v3-library-balanced-v1",
         "selection_seed": 20260729,
         "synthetic_row_ceiling": 12288,
-        "max_train_tokens": 70000000,
+        "max_train_tokens": 74000000,
         "max_eval_tokens": 2000000,
         "max_train_squared_tokens": 2300000000000,
         "max_eval_squared_tokens": 66000000000,

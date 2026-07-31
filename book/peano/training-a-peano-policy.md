@@ -33,8 +33,12 @@ allocation could not also finish independent replay and runtime gates. Exact-cor
 `173040` completed those checks from clean commit `5faa3d27`. Current-source job `213641` then
 published and independently verified the immutable 15-file corpus with content SHA-256
 `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`. That real digest now
-binds the one-epoch curriculum configuration. No model-v3 optimizer step has run and no adapter
-exists, so its proof quality and search gain remain unknown.
+binds the one-epoch curriculum configuration. Sealed-preparation job `214264` passed eligibility
+and then failed closed at the tokenizer gate: 73,446,475 selected train tokens exceeded the
+reviewed 70,000,000-token ceiling. No accepted token-audit or smoke report was published. The
+reviewed retry raises only the linear ceiling to 74,000,000 and leaves every other compute bound
+unchanged. No model-v3 optimizer step has run and no adapter exists, so its proof quality and search
+gain remain unknown.
 The historical reconciled model-v2 authority is 63 public entries, seven dependency-closed import
 exclusions, and 56 permitted records. Model-v3 binds the later 247-entry ladder independently.
 The 4B comparison and expert iteration are still deferred.
@@ -989,6 +993,19 @@ The squared term is a deliberately conservative proxy for attention work. These 
 small-looking row budget from hiding an accidental long-context explosion. No tokenizer result may
 be truncated to pass the gate.
 
+The first current-source scan is a useful example of why these are measured gates rather than
+decorative configuration. WMI job `214264` selected 20,765 rows---8,494 catalog rows and 12,271
+synthetic rows, with 17 synthetic slots deliberately unused at the next whole-session boundary---
+but counted 73,446,475 train tokens, 4.92% above the registered 70-million limit, and stopped before
+runtime smoke or optimization. That selection implies 649 one-epoch optimizer updates at
+microbatch one and accumulation 32. The revision to 74 million is deliberately narrow: it gives the observed
+immutable selection 553,525 tokens (0.754%) of headroom while preserving the 12,288 synthetic-row
+ceiling and every other gate. The earlier full-population audit measured a 29,111-token maximum
+under the same tokenizer and unchanged tokenization code, so
+$\sum_i L_i^2 \leq 29{,}111\sum_i L_i = 2{,}138{,}100{,}333{,}725$, below the unchanged
+2.3-trillion quadratic ceiling. The retry must still publish the actual self-digested audit before
+this evidence can authorize training.
+
 ### Indexed completion logits preserve the objective
 
 Each example is still the repository-owned prompt followed by one tactic line and EOS. Prompt
@@ -1244,9 +1261,12 @@ continuation `173040` completed independent attestation, token audit, and A100 r
 current-source seal job `213641` published the immutable corpus. A separate verifier reproduced its
 content SHA-256
 `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`. The new sealed-
-preparation job, selected token counts, optimizer-step count, adapter hashes, losses, evaluation job,
-solve results, and independent replay digest remain explicitly **pending**. A preparation smoke on
-an A100 is not evidence that transformer training has begun.
+preparation job `214264` passed eligibility, deterministically selected 20,765 train rows, but
+rejected their 73,446,475 tokens against the old 70-million ceiling; it produced neither an
+accepted token-audit report nor a runtime-smoke report. A fresh 74-million-ceiling preparation job,
+complete accepted token counts, optimizer-step
+count, adapter hashes, losses, evaluation job, solve results, and independent replay digest remain
+explicitly **pending**. An A100 allocation is not evidence that transformer training has begun.
 
 ## Reproduction and honest resume
 
@@ -1446,9 +1466,9 @@ limitations remain:
 - model-v3's 247-theorem identity, strict predecessor-prefix generator, 51-schema root-balanced
   generator, whole-session selector, indexed completion objective, immutable-seal/current-source
   eligibility gate, and independent evaluation replay are implemented; retry `172729`, continuation
-  `173040`, and seal job `213641` produced and authenticated the complete immutable corpus, while the
-  new current-source sealed-preparation gate must still finish before the registered WMI training
-  run;
+  `173040`, and seal job `213641` produced and authenticated the complete immutable corpus; job
+  `214264` then failed the old 70-million linear-token gate at 73,446,475 tokens, so a fresh reviewed
+  74-million-ceiling preparation must still finish before the registered WMI training run;
 - the four-goal protocol set is a regression fixture, not a statistically useful final test, and
   hard whole-template OOD sets plus human-authored problems still need to be sealed;
 - depth-32 verifier-guided beam search is implemented, but its gain with a trained model-v3 policy

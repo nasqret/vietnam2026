@@ -93,10 +93,16 @@ train-only and reject held-out targets from every intermediate state. A
 lossless v3-only prompt encoding keeps the audited worst stress-proof turn at
 29,111 of Qwen's 32,768 native tokens. WMI preparation `172536` completed the
 library lane and then failed closed on an over-limit synthetic ring instance;
-no training or evaluation job was submitted. The repaired run uses pinned
-Qwen3-1.7B Base with rank-32/alpha-64 LoRA for two epochs. This describes a
-preflighted launch plan awaiting complete replay, not a trained adapter or
-measured solve rate.
+retry `172729` generated the complete split, continuation `173040` independently
+replayed and audited it, and job `213641` published the verified immutable seal
+with content SHA-256
+`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`.
+The first current-source sealed-preparation attempt, job `214264`, then failed
+closed before runtime smoke or model loading: the selected train curriculum
+contained 73,446,475 tokens, above the reviewed 70,000,000-token ceiling. The
+retry raises only that linear ceiling to 74,000,000; the pinned Qwen3-1.7B Base
+rank-32/alpha-64 LoRA schedule remains exactly one epoch. No model-v3 optimizer
+step, trained adapter, evaluation result, or measured solve rate exists yet.
 
 ---
 

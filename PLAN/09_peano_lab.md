@@ -596,7 +596,7 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       Recovery requires exact directory/file modes `0555`/`0444`. Treat these modes as provenance
       and accidental-corruption gates, not hostile-same-owner security. The focused wiring audit
       passes 89 tests; this is not a transformer-training result.
-- [ ] Generate and combine the final model-v3 raw corpora, independently replay and attest every
+- [x] Generate and combine the final model-v3 raw corpora, independently replay and attest every
       QED and all prefixes 0--247, then pass the pinned-tokenizer 32,768-token native-context
       no-truncation gate or fail closed for a reviewed representation revision. The exact library
       runner uses a host-owned, API-capped 128 MiB per-session trace allowance under M19's explicit
@@ -610,16 +610,21 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       first builder published the exact 64,500/6,948/7,046 train/validation/test split with manifest
       SHA-256 `ccb62c771d1f7dab1e90e98da42c6c8acee40f47b5527c4f65611f718661d983`.
       The combined allocation could not also fit independent replay, token audit, and smoke. Exact-
-      corpus continuation `173040` is running those gates from clean commit
-      `5faa3d27cbaf522198ffa1bdcd11fa9d57341658`; the immutable seal content digest,
-      current-source eligibility, and selected token audit remain pending and must not be inferred
-      from completed split artifacts alone.
+      corpus continuation `173040` completed those gates from clean commit
+      `5faa3d27cbaf522198ffa1bdcd11fa9d57341658`. Seal job `213641` then published
+      and independently verified the immutable 15-file corpus at
+      `checkpoints/corpora/peano-policy-v3-173040`, with content SHA-256
+      `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`.
 - [ ] Run the registered WMI Qwen3-1.7B model-v3 experiment only after preparation passes:
       pinned BF16 SDPA, rank-32/alpha-64 LoRA, microbatch one/effective batch 32, exactly one
       row-count-derived pass over the whole-session curriculum, fresh output, and no resume. The
       guarded chain is sealed preparation (8h), training (36h), evaluation (12h), then independent
-      replay. Record no optimizer step, checkpoint, loss, adapter hash, or quality result before its
-      corresponding artifact exists.
+      replay. Current-source sealed-preparation job `214264` reached the selected-token audit and
+      failed closed before runtime smoke or model loading: train exposure was 73,446,475 tokens,
+      above the reviewed 70,000,000-token ceiling. The reviewed retry changes only that linear
+      ceiling to 74,000,000; the quadratic, evaluation, context, and supervised-completion gates
+      remain unchanged and must still pass in a fresh job. Record no optimizer step, checkpoint,
+      loss, adapter hash, or quality result before its corresponding artifact exists.
 - [ ] Treat the four sealed model-v3 goals as a launch smoke, not a sufficient capability
       benchmark. Before making a general proof-quality claim, add a larger hidden kernel-checked
       suite spanning multistep induction, theorem composition, order, divisibility, and quantified
@@ -629,18 +634,18 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
 - [ ] All milestone-wide tests and documentation gates are green, the kernel has no semantic diff,
       and no heavy local or remote job remains running before the milestone is called complete.
 
-- **Current model-v3 status (2026-07-30):** WMI `173040` is exact-corpus attestation/token/runtime
-  preparation, not transformer training. The first builder is complete, but its independent
-  attestation and reports, corpus sealing, current-source sealed preparation, optimizer training,
-  evaluation, and independent replay remain ordered pending gates. Seal digest, successor job IDs,
-  selected token totals, optimizer steps, losses, adapter hashes, solve counts, and replay digest
-  are intentionally not populated early. The real-Trainer smoke, completion-evidence gate, strict
-  raw-gradient clip, and local recovery-publication preflight are implemented and green; their WMI
-  execution is still pending. Saved-policy admission, post-save/post-evaluation tensor checks, and
-  exclusive final publication are also implemented locally. Prompt/curriculum alignment, the final
-  protected-tree recheck, loader pre/post checks, and exact recovery modes pass the 89-test focused
-  wiring audit. The WMI DNS route remains unavailable at this checkpoint, so no newer cluster state
-  is claimed.
+- **Current model-v3 status (2026-07-31):** exact-corpus continuation `173040` completed independent
+  attestation, token audit, and A100 runtime smoke; job `213641` published and independently verified
+  the immutable seal with content SHA-256
+  `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`.
+  Current-source sealed-preparation job `214264` failed safely at the first selected-train budget
+  gate: 73,446,475 total tokens exceeded the configured 70,000,000 ceiling. It therefore produced
+  no accepted token-audit/runtime-smoke chain and authorized no training. The reviewed retry raises
+  only the linear train ceiling to 74,000,000; all later budget and runtime gates remain pending.
+  No model-v3 optimizer step, checkpoint, loss, adapter hash, evaluation solve count, or replay
+  digest exists. The real-Trainer smoke, completion-evidence gate, strict raw-gradient clip,
+  saved-policy admission, exclusive publication, and independent replay remain implemented
+  safeguards whose current-source WMI execution must be established by the replacement chain.
 
 - **Current verification (2026-07-28, in progress):** the public-catalog complete Peano suite reports
   1,036 passes, Lambda Lab reports 360 tests plus 36 subtests, all 27 book sources build with warnings as

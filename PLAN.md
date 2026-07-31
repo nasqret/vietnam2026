@@ -103,8 +103,13 @@ synthetic rows over 51 schemas and 14 balanced root tactic heads. Catalog data
 is train-only; validation/test are synthetic-only, target formulas are
 rejected from every intermediate state, and a lossless v3-only prompt codec
 keeps the audited stress-proof maximum at 29,111 of 32,768 Qwen tokens. The
-pinned WMI Qwen3-1.7B Base rank-32/alpha-64 two-epoch run is registered but
-remains untrained and unevaluated. See
+pinned WMI Qwen3-1.7B Base rank-32/alpha-64 one-epoch run is registered. Exact-
+corpus continuation `173040` completed its independent gates and seal job
+`213641` published the verified immutable corpus. Current-source preparation
+`214264` failed closed before runtime smoke or model loading because the
+selected train curriculum exposed 73,446,475 tokens against the reviewed
+70,000,000-token ceiling. A retry with only that ceiling raised to 74,000,000
+is pending; the run remains untrained and unevaluated. See
 [`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest completed
 and staged milestone; production remains untouched behind the M14 cache-header
 blocker.
