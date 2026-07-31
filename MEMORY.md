@@ -495,5 +495,13 @@
   Exact MPS receipts prove the fixed arithmetic showcase with `simp` at 78
   nodes/one call and `forall n. (n + 0) + 0 = n` with `use add_assoc` then
   `simp [add_assoc]` at 44 nodes/two calls. Both passed independent replay in
-  one persistent two-request shell. This is explicitly diagnostic, not a
-  production quality claim.
+  one persistent two-request shell. Interactive inference now validates a
+  source/catalog projection locked to the same full identity
+  `d173c2f1a32de6a9207fdee1ac77334a77cdebbf84568559eeb6066653d94c63`
+  instead of silently replaying all 247 certificates before each load; strict
+  certificate replay remains the default training/release audit and each
+  imported theorem is still reconstructed and kernel-checked when used. A
+  fresh one-shot regression reached a ready MPS model in 8.2 seconds and
+  completed the two-tactic proof in 22.68 seconds; an exact interactive
+  `pa --live full` launch displayed `pa>` after a 10.4-second model-load phase.
+  This is explicitly diagnostic, not a production quality claim.

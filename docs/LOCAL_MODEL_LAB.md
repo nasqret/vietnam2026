@@ -60,9 +60,12 @@ pa
 Example session:
 
 ```text
+[startup 1/3] Verifying frozen 3.44 GB base-model seal…
+[startup 2/3] Verifying frozen 158 MB adapter seal…
 PEANO MODEL LAB — DIAGNOSTIC / NOT PRODUCTION
-Loading attested Peano adapter once from ...
-Model ready · device=mps · base dtype=bfloat16 · adapter artifact=torch.float32×392
+[startup 3/3] Validating the sealed prompt identity and mapping the 1.7B model ...
+Input begins only when the `pa>` prompt appears.
+Model ready in ...s · device=mps · base dtype=bfloat16 · adapter artifact=torch.float32×392
 pa> pa prove-model forall n. (n + 0) + 0 = n
 [request] forall n. (n + 0) + 0 = n
 [search] started
@@ -90,6 +93,8 @@ seed schedule reset for each theorem. Ordinary Peano Lab commands still work,
 including manual `pa prove`, `pa eval`, `pa lib`, `pa tactic`, and `kb`. An
 active manual proof or tutorial owns every raw input line before
 `pa prove-model` is considered. Exit with `quit`, `exit`, `:q`, or Ctrl-D.
+Wait for the literal `pa>` prompt before typing. Text entered earlier is only
+terminal typeahead because the model process has not begun reading commands.
 
 For a one-shot attempt:
 
@@ -163,6 +168,14 @@ The base weight seal is
 `6df85b39330e5a425ee36253d0f894e4387e4f0a15b9c53cb467d668e6b3a841`;
 the adapter seal is
 `817e4f4bf8edb9d47511533c6ef1a9810aa9f0f2353fd4de57af97c82e632324`.
+
+Interactive startup validates the exact theorem source and catalog against
+their frozen source, ordered-root, and full-identity hashes; it does not replay
+all 247 certificates before every model load. Full certificate reconstruction
+and independent checking remain the training/release audit. Whenever a model
+route actually invokes `use THEOREM`, that theorem's certificate is still
+reconstructed and kernel-checked, and the completed user proof still receives
+both final checks described above.
 
 ## Verification and troubleshooting
 

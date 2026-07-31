@@ -1883,3 +1883,17 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   `c928c100ab335c4af4ccca480daa27ea3eaa51b01d969c57c0bfd51b26b0a60c`.
   These receipts are local ignored artifacts; the reproducible launcher,
   verifier, tests, and documentation are source-controlled.
+- Removed a severe interactive-startup regression discovered from a live
+  Ctrl-C traceback. Adapter attestation had been invoking the intentional
+  five-minute release audit, reconstructing and independently checking all
+  247 library certificates before model weights were mapped. The inference
+  path now derives every prefix identity from the exact source/catalog sealed
+  by the frozen source hash, ordered catalog root, and full identity hash;
+  strict replay remains the default for training and release validation.
+  Catalog attestation of the real training manifest takes 0.59 seconds. A
+  clean MPS smoke reported `Model ready in 8.2s`, then generated and checked
+  `use add_assoc` / `simp [add_assoc]` in 22.68 seconds total. A second exact
+  `pa --live full` launch reached the literal interactive `pa>` prompt after a
+  10.4-second model-load phase and exited normally. The launcher exposes three
+  startup phases, tells the operator to wait for that prompt, and converts a
+  model-load Ctrl-C into exit status 130 without a traceback.

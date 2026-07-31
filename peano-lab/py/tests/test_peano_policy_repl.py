@@ -190,8 +190,14 @@ def test_runtime_loader_propagates_explicit_diagnostic_and_mac_placement(
     monkeypatch.setattr(
         generation, "PeanoPolicyCandidateAdapter", FakeCandidatePolicy
     )
+    attestation_options: list[dict[str, object]] = []
+
+    def attested_environment(manifest, **kwargs):
+        attestation_options.append(kwargs)
+        return environment
+
     monkeypatch.setattr(
-        contract, "attested_training_environment", lambda manifest: environment
+        contract, "attested_training_environment", attested_environment
     )
 
     runtime = REPL.load_model_runtime(
@@ -217,6 +223,7 @@ def test_runtime_loader_propagates_explicit_diagnostic_and_mac_placement(
         "local_files_only": True,
         "cache_dir": tmp_path / "cache",
     }
+    assert attestation_options == [{"replay_library_certificates": False}]
     assert runtime.runtime_identity is not None
     assert runtime.runtime_identity["device"] == "mps"
     assert runtime.runtime_identity["dtype"] == "bfloat16"

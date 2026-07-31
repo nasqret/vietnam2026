@@ -67,6 +67,47 @@ class _FakeTorch:
         return f"device:{name}"
 
 
+def test_environment_file_reuses_already_attested_inference_authority(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    capabilities = generation.CapabilityIdentity(
+        label="model-v3",
+        allowed_commands=("intro",),
+        allowed_theorems=("zero_add",),
+    )
+    expected = generation.PromptEnvironment(False, capabilities)
+    path = tmp_path / "environment.json"
+    path.write_text(
+        json.dumps(
+            {
+                "classical": False,
+                "capabilities": capabilities.to_record(),
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    def forbidden(*args, **kwargs):
+        del args, kwargs
+        raise AssertionError("the attested inference path must not resolve again")
+
+    monkeypatch.setattr(generation, "prompt_environment", forbidden)
+    assert generation._read_environment(path, expected=expected) is expected
+
+    path.write_text(
+        json.dumps(
+            {
+                "classical": True,
+                "capabilities": capabilities.to_record(),
+            }
+        ),
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="training authority"):
+        generation._read_environment(path, expected=expected)
+
+
 def test_auto_preserves_cuda_bfloat16_precedence() -> None:
     torch = _FakeTorch(cuda=True, cuda_bf16=True, mps=True)
 
@@ -156,10 +197,17 @@ def test_adapter_loader_threads_resolved_placement_and_offline_cache(
         json.dumps(manifest), encoding="utf-8"
     )
     monkeypatch.setattr(generation, "_require_diagnostic_mode", lambda *a, **k: None)
+    attestation_options: list[dict[str, object]] = []
+
+    def attested_environment(value, **kwargs):
+        assert value == manifest
+        attestation_options.append(kwargs)
+        return SimpleNamespace(prompt_version="test-prompt")
+
     monkeypatch.setattr(
         generation,
         "attested_training_environment",
-        lambda value: SimpleNamespace(prompt_version="test-prompt"),
+        attested_environment,
     )
     monkeypatch.setattr(generation, "prompt_contract_sha256", lambda value: "contract")
     monkeypatch.setattr(generation, "require_safetensors_adapter", lambda value: None)
@@ -257,6 +305,7 @@ def test_adapter_loader_threads_resolved_placement_and_offline_cache(
     )
 
     assert loaded is model
+    assert attestation_options == [{"replay_library_certificates": False}]
     assert calls["placement"] == (
         fake_torch,
         {"device": "mps", "dtype": "bfloat16"},

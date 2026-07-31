@@ -32,6 +32,8 @@ from .prompt import (
     prompt_manifest_record,
 )
 from .library_identity_v3 import (
+    model_v3_catalog_full_identity_sha256,
+    model_v3_catalog_prefix_sha256,
     model_v3_full_identity_sha256,
     model_v3_prefix_index,
     model_v3_prefix_names,
@@ -126,21 +128,29 @@ MODEL_V2_THEOREMS: tuple[str, ...] = tuple(
 MODEL_V3_LIBRARY_SIZE = len(THEOREMS)
 
 
-@lru_cache(maxsize=None)
-def model_v3_prefix_library(prefix_length: int) -> tuple[LibraryRecord, ...]:
-    """Return canonical name/statement records for one strict ladder prefix."""
+@lru_cache(maxsize=1)
+def _model_v3_declaration_library() -> tuple[LibraryRecord, ...]:
+    """Parse every source-ordered statement once for all prefix projections."""
 
-    names = frozenset(model_v3_prefix_names(prefix_length))
     records: list[LibraryRecord] = []
     for spec in THEOREMS:
-        if spec.name not in names:
-            continue
         formula, free_names = parse_formula_with_names(spec.statement)
         if free_names:
             raise RuntimeError(f"model-v3 theorem {spec.name!r} is not closed")
         records.append(
             LibraryRecord(spec.name, pretty_formula(formula, list(free_names)))
         )
+    return tuple(records)
+
+
+@lru_cache(maxsize=None)
+def model_v3_prefix_library(prefix_length: int) -> tuple[LibraryRecord, ...]:
+    """Return canonical name/statement records for one strict ladder prefix."""
+
+    names = model_v3_prefix_names(prefix_length)
+    records = _model_v3_declaration_library()[: len(names)]
+    if tuple(record.name for record in records) != names:
+        raise RuntimeError("model-v3 catalog/source prefix order disagrees")
     return tuple(sorted(records, key=lambda record: record.name))
 
 
@@ -165,10 +175,45 @@ def model_v3_prefix_environment(prefix_length: int) -> PromptEnvironment:
     )
 
 
+@lru_cache(maxsize=None)
+def model_v3_catalog_prefix_environment(prefix_length: int) -> PromptEnvironment:
+    """Return the same authority from the sealed source/catalog projection.
+
+    This latency-sensitive path does not replay 247 certificates.  It is for
+    loading an untrusted inference model only; dataset/release construction
+    continues to call :func:`model_v3_prefix_environment` and therefore
+    performs independent replay.
+    """
+
+    library = model_v3_prefix_library(prefix_length)
+    return PromptEnvironment(
+        False,
+        CapabilityIdentity(
+            label="model-v3",
+            allowed_commands=tuple(sorted(MODEL_V1_COMMANDS)),
+            allowed_theorems=tuple(record.name for record in library),
+        ),
+        prompt_version=PEANO_PROMPT_V3,
+        library=library,
+        library_identity_sha256=model_v3_catalog_prefix_sha256(prefix_length),
+        library_prefix_length=prefix_length,
+        library_full_length=MODEL_V3_LIBRARY_SIZE,
+        library_full_identity_sha256=(
+            model_v3_catalog_full_identity_sha256()
+        ),
+    )
+
+
 def model_v3_environment() -> PromptEnvironment:
     """Return the full 247-theorem inference authority for model-v3."""
 
     return model_v3_prefix_environment(MODEL_V3_LIBRARY_SIZE)
+
+
+def model_v3_catalog_environment() -> PromptEnvironment:
+    """Return the full source/catalog-bound inference authority."""
+
+    return model_v3_catalog_prefix_environment(MODEL_V3_LIBRARY_SIZE)
 
 
 @lru_cache(maxsize=1)
@@ -200,6 +245,32 @@ def model_v2_environment() -> PromptEnvironment:
     )
 
 
+def _resolve_model_v3_environment(
+    classical: bool,
+    capabilities: CapabilityIdentity,
+    resolver: object,
+) -> PromptEnvironment:
+    if classical or capabilities.allowed_theorems is None:
+        raise ValueError(
+            "model-v3 requires a finite intuitionistic prefix authority"
+        )
+    expected_commands = tuple(sorted(MODEL_V1_COMMANDS))
+    if capabilities.allowed_commands != expected_commands:
+        raise ValueError("model-v3 requires its exact tactic command set")
+    try:
+        prefix_length = model_v3_prefix_index(capabilities.allowed_theorems)
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"model-v3 theorem authority is not a prefix: {exc}") from None
+    if not callable(resolver):  # pragma: no cover - internal invariant
+        raise TypeError("model-v3 environment resolver must be callable")
+    expected = resolver(prefix_length)
+    if type(expected) is not PromptEnvironment:
+        raise TypeError("model-v3 environment resolver returned an invalid value")
+    if capabilities != expected.capabilities:
+        raise ValueError("model-v3 capability preimage is not canonical")
+    return expected
+
+
 def prompt_environment(
     classical: bool,
     capabilities: CapabilityIdentity,
@@ -219,23 +290,11 @@ def prompt_environment(
     if capabilities.label not in {"model-v2", "model-v3"}:
         return PromptEnvironment(classical, capabilities)
     if capabilities.label == "model-v3":
-        if classical or capabilities.allowed_theorems is None:
-            raise ValueError(
-                "model-v3 requires a finite intuitionistic prefix authority"
-            )
-        expected_commands = tuple(sorted(MODEL_V1_COMMANDS))
-        if capabilities.allowed_commands != expected_commands:
-            raise ValueError("model-v3 requires its exact tactic command set")
-        try:
-            prefix_length = model_v3_prefix_index(
-                capabilities.allowed_theorems
-            )
-        except (TypeError, ValueError) as exc:
-            raise ValueError(f"model-v3 theorem authority is not a prefix: {exc}") from None
-        expected = model_v3_prefix_environment(prefix_length)
-        if capabilities != expected.capabilities:
-            raise ValueError("model-v3 capability preimage is not canonical")
-        return expected
+        return _resolve_model_v3_environment(
+            classical,
+            capabilities,
+            model_v3_prefix_environment,
+        )
     expected = model_v2_environment()
     if classical or capabilities != expected.capabilities:
         raise ValueError(
@@ -319,9 +378,19 @@ def held_out_contract_sha256(
 
 def attested_training_environment(
     training_manifest: object,
+    *,
+    replay_library_certificates: bool = True,
 ) -> PromptEnvironment:
-    """Validate the replay/holdout gate embedded in a trained adapter."""
+    """Validate the replay/holdout gate embedded in a trained adapter.
 
+    The default independently replays the theorem certificates and remains
+    mandatory for training/release audits. Latency-sensitive inference may
+    select the catalog-bound projection explicitly; imported theorems are
+    still reconstructed and kernel-checked when the proof surface uses them.
+    """
+
+    if type(replay_library_certificates) is not bool:
+        raise TypeError("replay_library_certificates must be a Boolean")
     if type(training_manifest) is not dict:
         raise ValueError("training manifest must be an object")
     inputs = training_manifest.get("inputs")
@@ -365,7 +434,12 @@ def attested_training_environment(
             "training input hashes are not bound to the dataset attestation"
         )
     if attested_prompt_version == PEANO_PROMPT_V3:
-        environment = model_v3_environment()
+        v3_resolver = (
+            model_v3_prefix_environment
+            if replay_library_certificates
+            else model_v3_catalog_prefix_environment
+        )
+        environment = v3_resolver(MODEL_V3_LIBRARY_SIZE)
         records = attestation.get("training_environments")
         if (
             type(records) is not list
@@ -388,9 +462,13 @@ def attested_training_environment(
                 "allowed_theorems": capability_record.get("allowed_theorems"),
             }
             try:
-                resolved = prompt_environment(
+                capability_identity = CapabilityIdentity.from_record(
+                    canonical_capabilities
+                )
+                resolved = _resolve_model_v3_environment(
                     False,
-                    CapabilityIdentity.from_record(canonical_capabilities),
+                    capability_identity,
+                    v3_resolver,
                 )
             except (TypeError, ValueError) as exc:
                 raise ValueError(
@@ -544,6 +622,8 @@ __all__ = [
     "model_v2_environment",
     "model_v2_library",
     "model_v3_environment",
+    "model_v3_catalog_environment",
+    "model_v3_catalog_prefix_environment",
     "model_v3_prefix_environment",
     "model_v3_prefix_library",
     "prompt_environment",

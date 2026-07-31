@@ -22,6 +22,7 @@ import os
 from pathlib import Path
 import re
 import sys
+import time
 import unicodedata
 from typing import Any
 
@@ -741,13 +742,27 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.diagnostic:
         print("PEANO MODEL LAB — DIAGNOSTIC / NOT PRODUCTION", flush=True)
-    print(f"Loading attested Peano adapter once from {args.adapter} …", flush=True)
+    print(
+        "[startup 3/3] Validating the sealed prompt identity and mapping the "
+        "1.7B model onto the selected device …",
+        flush=True,
+    )
+    if args.command is None:
+        print("Input begins only when the `pa>` prompt appears.", flush=True)
+    started = time.monotonic()
     try:
         runtime = _load_runtime(policy_repl.load_model_runtime, args)
+    except KeyboardInterrupt:
+        print("\nStartup interrupted cleanly; no proof search began.", flush=True)
+        return 130
     except Exception as exc:
         message = " ".join(_plain_string(exc).split()) or type(exc).__name__
         raise SystemExit(f"could not load the attested adapter: {_safe_inline(message)}") from None
-    print(f"Model ready · {_runtime_summary(runtime)}", flush=True)
+    elapsed = time.monotonic() - started
+    print(
+        f"Model ready in {elapsed:.1f}s · {_runtime_summary(runtime)}",
+        flush=True,
+    )
 
     shell = PeanoModelShell(
         lab_session=driver.LabSession(),

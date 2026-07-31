@@ -41,6 +41,9 @@ EXPECTED_ORDERED_ROOT_SHA256 = (
 EXPECTED_SOURCE_SHA256 = (
     "295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868"
 )
+EXPECTED_FULL_IDENTITY_SHA256 = (
+    "d173c2f1a32de6a9207fdee1ac77334a77cdebbf84568559eeb6066653d94c63"
+)
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 PEANO_PYTHON = REPOSITORY_ROOT / "peano-lab" / "py"
@@ -372,10 +375,14 @@ def model_v3_library_identity() -> tuple[ModelV3LibraryIdentityRecord, ...]:
     return _prefix_identity(EXPECTED_LIBRARY_SIZE)
 
 
-def _identity_record(prefix_length: int) -> dict[str, object]:
+def _identity_document(
+    prefix_length: int,
+    records: tuple[ModelV3LibraryIdentityRecord, ...],
+) -> dict[str, object]:
     prefix_length = _prefix_length(prefix_length)
     catalog = _validated_catalog()
-    records = _prefix_identity(prefix_length)
+    if len(records) != prefix_length:
+        raise LibraryIdentityV3Error("model-v3 identity prefix length is inconsistent")
     return {
         "format": LIBRARY_IDENTITY_FORMAT,
         "v": LIBRARY_IDENTITY_VERSION,
@@ -394,6 +401,76 @@ def _identity_record(prefix_length: int) -> dict[str, object]:
     }
 
 
+def _identity_record(prefix_length: int) -> dict[str, object]:
+    prefix_length = _prefix_length(prefix_length)
+    return _identity_document(prefix_length, _prefix_identity(prefix_length))
+
+
+@lru_cache(maxsize=1)
+def _catalog_identity() -> tuple[ModelV3LibraryIdentityRecord, ...]:
+    """Reconstruct the checked identity fields from the sealed catalog.
+
+    Unlike :func:`model_v3_library_identity`, this does not replay tactic
+    scripts or certificates.  The catalog rows are already bound to exact
+    theorem source by hard-coded source and ordered-root hashes in
+    :func:`_validated_catalog`.  This projection is suitable for loading an
+    untrusted inference policy; training/release gates continue to use the
+    independent replay path above.
+    """
+
+    catalog = _validated_catalog()
+    records: list[ModelV3LibraryIdentityRecord] = []
+    for spec, row in zip(catalog.specifications, catalog.rows, strict=True):
+        _, statement = _closed_formula_and_statement(spec.statement)
+        certificate_sha256 = row.get("certificate_sha256")
+        proof_nodes = row.get("proof_nodes")
+        proof_depth = row.get("proof_depth")
+        if (
+            type(certificate_sha256) is not str
+            or type(proof_nodes) is not int
+            or type(proof_depth) is not int
+        ):  # pragma: no cover - guaranteed by _validated_catalog
+            raise LibraryIdentityV3Error(
+                "validated model-v3 catalog lost certificate identity fields"
+            )
+        records.append(
+            ModelV3LibraryIdentityRecord(
+                name=spec.name,
+                statement=statement,
+                dependencies=tuple(spec.dependencies),
+                source_spec_sha256=_json_sha256(_source_spec_record(spec)),
+                script_sha256=_json_sha256(list(spec.script)),
+                certificate_sha256=certificate_sha256,
+                proof_nodes=proof_nodes,
+                proof_depth=proof_depth,
+            )
+        )
+    return tuple(records)
+
+
+@lru_cache(maxsize=EXPECTED_LIBRARY_SIZE + 1)
+def model_v3_catalog_prefix_sha256(prefix_length: int) -> str:
+    """Return a source/catalog-bound prefix digest without replaying proofs."""
+
+    prefix_length = _prefix_length(prefix_length)
+    records = _catalog_identity()[:prefix_length]
+    digest = _json_sha256(_identity_document(prefix_length, records))
+    if (
+        prefix_length == EXPECTED_LIBRARY_SIZE
+        and digest != EXPECTED_FULL_IDENTITY_SHA256
+    ):
+        raise LibraryIdentityV3Error(
+            "model-v3 catalog projection has the wrong full identity"
+        )
+    return digest
+
+
+def model_v3_catalog_full_identity_sha256() -> str:
+    """Return the sealed full digest used for latency-sensitive inference."""
+
+    return model_v3_catalog_prefix_sha256(EXPECTED_LIBRARY_SIZE)
+
+
 def model_v3_library_identity_record() -> dict[str, object]:
     """Return a fresh canonical JSON document for the full checked ladder."""
 
@@ -404,7 +481,12 @@ def model_v3_library_identity_record() -> dict[str, object]:
 def model_v3_full_identity_sha256() -> str:
     """Return the canonical SHA-256 of the full checked identity document."""
 
-    return _json_sha256(model_v3_library_identity_record())
+    digest = _json_sha256(model_v3_library_identity_record())
+    if digest != EXPECTED_FULL_IDENTITY_SHA256:
+        raise LibraryIdentityV3Error(
+            "checked model-v3 ladder has the wrong full identity"
+        )
+    return digest
 
 
 @lru_cache(maxsize=EXPECTED_LIBRARY_SIZE + 1)
@@ -453,6 +535,8 @@ def clear_model_v3_library_identity_cache() -> None:
     model_v3_prefix_sha256.cache_clear()
     model_v3_full_identity_sha256.cache_clear()
     model_v3_library_identity.cache_clear()
+    model_v3_catalog_prefix_sha256.cache_clear()
+    _catalog_identity.cache_clear()
     _prefix_identity.cache_clear()
     _replay_record.cache_clear()
     _validated_catalog.cache_clear()
@@ -466,12 +550,15 @@ __all__ = [
     "EXPECTED_LIBRARY_SIZE",
     "EXPECTED_ORDERED_ROOT_SHA256",
     "EXPECTED_SOURCE_SHA256",
+    "EXPECTED_FULL_IDENTITY_SHA256",
     "PUBLIC_LIBRARY_CATALOG",
     "PUBLIC_LIBRARY_SOURCE",
     "LibraryIdentityV3Error",
     "ModelV3LibraryIdentityRecord",
     "model_v3_library_identity",
     "model_v3_library_identity_record",
+    "model_v3_catalog_prefix_sha256",
+    "model_v3_catalog_full_identity_sha256",
     "model_v3_full_identity_sha256",
     "model_v3_prefix_sha256",
     "model_v3_prefix_names",

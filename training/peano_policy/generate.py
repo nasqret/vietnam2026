@@ -658,7 +658,13 @@ def load_adapter(
         diagnostic_mode=diagnostic_mode,
         allow_pending_probe=_allow_pending_diagnostic_probe,
     )
-    environment = attested_training_environment(manifest)
+    # Inference remains source/catalog-bound but must not replay all 247
+    # certificates before every model load.  Training/release callers retain
+    # the default independent-replay path in ``attested_training_environment``.
+    environment = attested_training_environment(
+        manifest,
+        replay_library_certificates=False,
+    )
     if manifest.get("prompt_version") != environment.prompt_version:
         raise ValueError("adapter uses a different Peano prompt version")
     if manifest.get("prompt_contract_sha256") != prompt_contract_sha256(
@@ -831,7 +837,11 @@ def _parser() -> argparse.ArgumentParser:
     return parser
 
 
-def _read_environment(path: Path) -> PromptEnvironment:
+def _read_environment(
+    path: Path,
+    *,
+    expected: PromptEnvironment | None = None,
+) -> PromptEnvironment:
     value = json.loads(path.read_text(encoding="utf-8"))
     if type(value) is not dict or tuple(value) != ("classical", "capabilities"):
         raise ValueError(
@@ -839,10 +849,15 @@ def _read_environment(path: Path) -> PromptEnvironment:
         )
     if type(value["classical"]) is not bool:
         raise ValueError("environment classical mode must be a Boolean")
-    return prompt_environment(
-        value["classical"],
-        CapabilityIdentity.from_record(value["capabilities"]),
-    )
+    classical = value["classical"]
+    capabilities = CapabilityIdentity.from_record(value["capabilities"])
+    if expected is not None:
+        if classical != expected.classical or capabilities != expected.capabilities:
+            raise ValueError(
+                "inference environment differs from the adapter's training authority"
+            )
+        return expected
+    return prompt_environment(classical, capabilities)
 
 
 def main() -> int:
@@ -856,11 +871,14 @@ def main() -> int:
         local_files_only=args.offline,
         cache_dir=args.cache_dir,
     )
-    environment = _read_environment(args.environment_file)
-    if environment != attested_training_environment(manifest):
-        raise ValueError(
-            "inference environment differs from the adapter's training authority"
-        )
+    attested_environment = attested_training_environment(
+        manifest,
+        replay_library_certificates=False,
+    )
+    environment = _read_environment(
+        args.environment_file,
+        expected=attested_environment,
+    )
     tactic = generate_one_tactic(
         model=model,
         tokenizer=tokenizer,

@@ -7,6 +7,7 @@ import importlib.util
 from pathlib import Path
 import subprocess
 import sys
+from types import SimpleNamespace
 
 import pytest
 
@@ -343,6 +344,8 @@ def test_help_is_model_free_and_launcher_is_fixed_to_the_diagnostic() -> None:
     assert "verify_peano_morning_adapter.py" in source
     assert "--verify-only" in source
     assert "qwen3-1.7b-lora-v3-morning-diagnostic-20260731-r1" in source
+    assert "[startup 1/3]" in source
+    assert "[startup 2/3]" in source
     assert "PEANO_MODEL_PYTHON" not in source
     assert 'peano_python=python3' in source  # lightweight help only
     assert 'elif [ "$help_requested" = true ]' in source
@@ -379,3 +382,32 @@ def test_launcher_resolves_a_user_path_symlink(tmp_path: Path) -> None:
 
     assert completed.returncode == 0
     assert "Peano Lab shell" in completed.stdout
+
+
+def test_startup_interrupt_is_clean_and_never_opens_a_shell(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    policy_repl = SimpleNamespace(
+        _validated_results_dir=lambda path: path,
+        SearchBudget=lambda **kwargs: SimpleNamespace(**kwargs),
+        load_model_runtime=object(),
+    )
+    monkeypatch.setattr(
+        MODEL_LAB,
+        "_load_components",
+        lambda: (SimpleNamespace(), policy_repl),
+    )
+
+    def interrupted(*args, **kwargs):
+        del args, kwargs
+        raise KeyboardInterrupt
+
+    monkeypatch.setattr(MODEL_LAB, "_load_runtime", interrupted)
+
+    assert MODEL_LAB.main([]) == 130
+    captured = capsys.readouterr()
+    output = captured.out + captured.err
+    assert "Input begins only when the `pa>` prompt appears." in output
+    assert "Startup interrupted cleanly" in output
+    assert "Traceback" not in output

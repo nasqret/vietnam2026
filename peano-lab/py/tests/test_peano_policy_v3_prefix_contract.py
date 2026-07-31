@@ -19,10 +19,19 @@ from peano_lab.library.theorems import THEOREMS
 from training.peano_policy.contract import (
     MODEL_V3_LIBRARY_SIZE,
     environment_record,
+    model_v3_catalog_environment,
+    model_v3_catalog_prefix_environment,
     model_v3_environment,
     model_v3_prefix_environment,
     prompt_environment,
 )
+from training.peano_policy.library_identity_v3 import (
+    EXPECTED_FULL_IDENTITY_SHA256,
+    model_v3_catalog_full_identity_sha256,
+    model_v3_catalog_prefix_sha256,
+    model_v3_prefix_sha256,
+)
+import training.peano_policy.library_identity_v3 as library_identity_v3
 from training.peano_policy.data import example_from_record
 from training.peano_policy.prompt import (
     PEANO_PROMPT_V2,
@@ -45,6 +54,38 @@ from training.peano_policy.prompt import (
 
 
 GOAL = "⊢ 0 = 0"
+
+
+def test_catalog_bound_digest_matches_checked_empty_prefix() -> None:
+    # Strict environment construction also binds the checked full-library
+    # identity, so environment comparisons belong to the release audit. The
+    # empty digest boundary still verifies the shared canonical encoder.
+    prefix = 0
+    assert model_v3_catalog_prefix_sha256(prefix) == model_v3_prefix_sha256(
+        prefix
+    )
+    assert model_v3_catalog_full_identity_sha256() == (
+        EXPECTED_FULL_IDENTITY_SHA256
+    )
+
+
+def test_full_catalog_inference_identity_never_replays_certificates(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    library_identity_v3.clear_model_v3_library_identity_cache()
+    model_v3_prefix_environment.cache_clear()
+    model_v3_catalog_prefix_environment.cache_clear()
+
+    def forbidden(*args: object, **kwargs: object) -> object:
+        del args, kwargs
+        raise AssertionError("catalog inference identity must not replay proofs")
+
+    monkeypatch.setattr(library_identity_v3, "_replay_record", forbidden)
+    environment = model_v3_catalog_environment()
+    assert environment.library_sha256 == EXPECTED_FULL_IDENTITY_SHA256
+    assert environment.library_full_identity_sha256 == (
+        EXPECTED_FULL_IDENTITY_SHA256
+    )
 
 
 def _library_payload(prompt: str) -> dict[str, object]:

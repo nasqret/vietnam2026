@@ -198,7 +198,10 @@ def load_model_runtime(
         local_files_only=local_files_only,
         cache_dir=cache_dir,
     )
-    environment = attested_training_environment(manifest)
+    environment = attested_training_environment(
+        manifest,
+        replay_library_certificates=False,
+    )
     capabilities = _surface_capabilities(environment)
     provenance = adapter_provenance(absolute_adapter, manifest)
     base_policy = PeanoPolicyAdapter(
