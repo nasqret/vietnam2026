@@ -117,8 +117,12 @@ published content SHA-256
 `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`.
 Current-source preparation `214264` then failed closed before runtime smoke or model loading because
 the selected train exposure, 73,446,475 tokens, exceeded its 70,000,000-token ceiling. The reviewed
-retry changes only that ceiling to 74,000,000. No model-v3 optimizer step has run; replacement
-preparation, adapter, evaluation, independent replay, and proof-quality results remain pending.
+retry changed only that ceiling to 74,000,000. Job `217123` passed the resulting token audit and
+ran the representative smoke updates, but failed before smoke-report publication because the live
+Trainer model retained Accelerate's mixed-precision forward wrapper while the fresh reload used
+bare inference. The repair unwraps and verifies the original forward without weakening exact
+admission. No production model-v3 optimizer job has run; replacement preparation, adapter,
+evaluation, independent replay, and proof-quality results remain pending.
 
 ## Related
 

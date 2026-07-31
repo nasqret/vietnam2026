@@ -33,7 +33,10 @@ with content SHA-256
 library transitions and chooses only complete synthetic sessions under its audited ceiling. The
 first selected-curriculum audit, job `214264`, measured 73,446,475 train tokens and failed closed
 against the 70,000,000-token linear ceiling before runtime smoke or model loading. Its reviewed
-retry raises only that ceiling to 74,000,000; later budget and training gates remain pending.
+retry raised only that ceiling to 74,000,000. Job `217123` then passed the complete token audit for
+the same selection: 415,247,631,205 squared train tokens, maximum sequence length 29,111, and
+maximum supervised completion 936. Its later saved-policy smoke admission failed on a retained
+Accelerate forward wrapper, so production training remains pending.
 
 ## Related
 

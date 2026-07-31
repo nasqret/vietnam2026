@@ -745,6 +745,63 @@ def canonical_peft_adapter_state(
     return state
 
 
+def restore_model_for_adapter_admission(*, trainer: Any, model: Any) -> Any:
+    """Remove Accelerate's mixed-precision forward wrapper before admission.
+
+    ``Trainer`` prepares even a single-process BF16 model by mutating its
+    ``forward`` method in place: the prepared wrapper enters an autocast
+    context and converts returned tensors to FP32.  A freshly loaded PEFT
+    model has the bare forward method instead.  Comparing those two execution
+    paths would therefore reject identical saved adapter tensors by design.
+
+    The reviewed model-v3 runtime already forbids distributed wrappers and
+    Torch compilation.  Require that exact single-model relationship here,
+    use Accelerate's public unwrapping API, and fail closed unless the original
+    forward method is restored on the same object.
+    """
+
+    trainer_model = getattr(trainer, "model", None)
+    accelerator = getattr(trainer, "accelerator", None)
+    unwrap_model = getattr(accelerator, "unwrap_model", None)
+    model_state = getattr(model, "__dict__", None)
+    if trainer_model is not model:
+        raise AdapterAdmissionError(
+            "Trainer admission model is not the reviewed single-process model"
+        )
+    if not callable(unwrap_model):
+        raise AdapterAdmissionError(
+            "Trainer accelerator cannot restore the admission model forward"
+        )
+    if not isinstance(model_state, dict):
+        raise AdapterAdmissionError("admission model has no inspectable state")
+    original_forward = model_state.get("_original_forward")
+    if not callable(original_forward):
+        raise AdapterAdmissionError(
+            "Trainer model has no mixed-precision forward wrapper to restore"
+        )
+    original_function = getattr(original_forward, "__func__", original_forward)
+    restored = unwrap_model(
+        trainer_model,
+        keep_fp32_wrapper=False,
+        keep_torch_compile=False,
+    )
+    if restored is not model:
+        raise AdapterAdmissionError(
+            "Accelerate unwrapped to a different admission model"
+        )
+    if "_original_forward" in model_state:
+        raise AdapterAdmissionError(
+            "Accelerate retained its mixed-precision admission wrapper"
+        )
+    restored_forward = getattr(restored, "forward", None)
+    restored_function = getattr(restored_forward, "__func__", restored_forward)
+    if not callable(restored_forward) or restored_function is not original_function:
+        raise AdapterAdmissionError(
+            "Accelerate did not restore the original admission forward"
+        )
+    return restored
+
+
 def capture_in_memory_policy(
     *,
     model: Any,
@@ -761,6 +818,11 @@ def capture_in_memory_policy(
     if torch_module is None:
         import torch as torch_module
 
+    model_state = getattr(model, "__dict__", None)
+    if isinstance(model_state, dict) and "_original_forward" in model_state:
+        raise AdapterAdmissionError(
+            "policy model retains an Accelerate mixed-precision forward wrapper"
+        )
     _validate_probe_plan(plan)
     _verify_probe_encodings(tokenizer, plan)
     tokenizer_digest = sha256_json(_tokenizer_identity(tokenizer, base_contract))
@@ -1565,6 +1627,7 @@ __all__ = [
     "canonical_peft_adapter_state",
     "canonical_tensor_population_fingerprint",
     "capture_in_memory_policy",
+    "restore_model_for_adapter_admission",
     "require_adapter_admission_for_prompt",
     "select_admission_probes",
     "validate_adapter_admission_evidence",

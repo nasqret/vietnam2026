@@ -621,9 +621,13 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       guarded chain is sealed preparation (8h), training (36h), evaluation (12h), then independent
       replay. Current-source sealed-preparation job `214264` reached the selected-token audit and
       failed closed before runtime smoke or model loading: train exposure was 73,446,475 tokens,
-      above the reviewed 70,000,000-token ceiling. The reviewed retry changes only that linear
+      above the reviewed 70,000,000-token ceiling. The reviewed retry changed only that linear
       ceiling to 74,000,000; the quadratic, evaluation, context, and supervised-completion gates
-      remain unchanged and must still pass in a fresh job. Record no optimizer step, checkpoint,
+      remain unchanged. Retry `217123` passed those token gates and reached the real-Trainer smoke,
+      then failed closed at saved-policy admission because the live model retained Accelerate's
+      mixed-precision forward wrapper while the fresh reload used the bare inference forward. The
+      repair explicitly restores and verifies the original forward before admission; it must still
+      pass in a fresh job. Record no production optimizer step, checkpoint,
       loss, adapter hash, or quality result before its corresponding artifact exists.
 - [ ] Treat the four sealed model-v3 goals as a launch smoke, not a sufficient capability
       benchmark. Before making a general proof-quality claim, add a larger hidden kernel-checked
@@ -640,9 +644,13 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`.
   Current-source sealed-preparation job `214264` failed safely at the first selected-train budget
   gate: 73,446,475 total tokens exceeded the configured 70,000,000 ceiling. It therefore produced
-  no accepted token-audit/runtime-smoke chain and authorized no training. The reviewed retry raises
-  only the linear train ceiling to 74,000,000; all later budget and runtime gates remain pending.
-  No model-v3 optimizer step, checkpoint, loss, adapter hash, evaluation solve count, or replay
+  no accepted token-audit/runtime-smoke chain and authorized no training. Retry `217123` raised
+  only the linear train ceiling to 74,000,000 and passed the exact token audit, but failed after its
+  representative smoke updates at exact saved-policy admission. Adapter tensor identity passed;
+  the in-memory/fresh semantic paths differed because only the former retained Accelerate's
+  BF16/FP32 forward wrapper. The repair removes and verifies that wrapper in smoke and production,
+  while keeping every exact tensor and output check unchanged. No production optimizer step,
+  checkpoint, loss, adapter hash, evaluation solve count, or replay
   digest exists. The real-Trainer smoke, completion-evidence gate, strict raw-gradient clip,
   saved-policy admission, exclusive publication, and independent replay remain implemented
   safeguards whose current-source WMI execution must be established by the replacement chain.

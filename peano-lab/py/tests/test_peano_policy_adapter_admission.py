@@ -28,6 +28,7 @@ from training.peano_policy.adapter_admission import (  # noqa: E402
     canonical_tensor_population_fingerprint,
     capture_in_memory_policy,
     require_adapter_admission_for_prompt,
+    restore_model_for_adapter_admission,
     select_admission_probes,
     validate_adapter_admission_evidence,
     validate_manifest_adapter_admission,
@@ -520,6 +521,70 @@ def test_tensor_population_rejects_nonfinite_or_nontensor_values() -> None:
         )
     with pytest.raises(AdapterAdmissionError, match="not a tensor"):
         canonical_tensor_population_fingerprint({"a": [1.0]}, torch_module=torch)
+
+
+def test_trainer_forward_wrapper_is_removed_before_adapter_admission() -> None:
+    model = _TinyPolicy(0.5)
+    original_forward = model.forward
+
+    def prepared_forward(*args, **kwargs):
+        return original_forward(*args, **kwargs)
+
+    prepared_forward.__wrapped__ = original_forward  # type: ignore[attr-defined]
+    model._original_forward = original_forward
+    model.forward = prepared_forward  # type: ignore[method-assign]
+    calls: list[tuple[bool, bool]] = []
+
+    class Accelerator:
+        @staticmethod
+        def unwrap_model(
+            prepared,
+            *,
+            keep_fp32_wrapper: bool,
+            keep_torch_compile: bool,
+        ):
+            calls.append((keep_fp32_wrapper, keep_torch_compile))
+            restored = prepared.__dict__.pop("_original_forward")
+            prepared.forward = restored
+            return prepared
+
+    trainer = SimpleNamespace(model=model, accelerator=Accelerator())
+    restored = restore_model_for_adapter_admission(trainer=trainer, model=model)
+
+    assert restored is model
+    assert calls == [(False, False)]
+    assert "_original_forward" not in model.__dict__
+    assert model.forward.__func__ is original_forward.__func__
+
+
+def test_adapter_snapshot_rejects_retained_accelerate_forward_wrapper() -> None:
+    stack = _FakeStack()
+    plan = _plan()
+    model = _TinyPolicy(0.5)
+    model._original_forward = model.forward
+
+    with pytest.raises(AdapterAdmissionError, match="retains an Accelerate"):
+        capture_in_memory_policy(
+            model=model,
+            tokenizer=_Tokenizer(),
+            plan=plan,
+            base_contract=_contract(stack),
+            canonical_adapter_state={ADAPTER_KEY: model.adapter},
+            torch_module=torch,
+            device="cpu",
+        )
+
+
+def test_trainer_forward_restoration_fails_if_wrapper_survives() -> None:
+    model = _TinyPolicy(0.5)
+    model._original_forward = model.forward
+    trainer = SimpleNamespace(
+        model=model,
+        accelerator=SimpleNamespace(unwrap_model=lambda prepared, **kwargs: prepared),
+    )
+
+    with pytest.raises(AdapterAdmissionError, match="retained"):
+        restore_model_for_adapter_admission(trainer=trainer, model=model)
 
 
 def test_fresh_saved_adapter_admission_passes_and_is_compact(tmp_path: Path) -> None:

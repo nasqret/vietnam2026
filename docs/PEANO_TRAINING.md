@@ -13,9 +13,13 @@ the known twelve files and manifest digest and regenerated no data. Current-sour
 preparation job `214264` then passed corpus eligibility but failed closed after 1h58m16s when the
 exact selected train exposure, 73,446,475 tokens, exceeded the reviewed 70,000,000-token linear
 ceiling. It produced no accepted token-audit or smoke report and loaded no optimizer. The reviewed
-retry raises only that ceiling to 74,000,000; all row, context, quadratic, evaluation, completion,
-and one-epoch bounds remain unchanged. No model-v3 optimizer step, checkpoint, evaluation score,
-or solve-rate claim exists yet. Result fields are filled only after the corresponding artifacts
+retry raised only that ceiling to 74,000,000; all row, context, quadratic, evaluation, completion,
+and one-epoch bounds remain unchanged. Retry `217123` passed the resulting exact token audit and
+ran the representative LoRA/Trainer smoke, but failed closed before smoke-report publication:
+Accelerate's retained mixed-precision forward wrapper was compared with a bare fresh reload. The
+repair explicitly restores and verifies the original bare forward before saved-policy admission
+in both smoke and production. No production training job, checkpoint, evaluation score, or solve-
+rate claim exists yet. Result fields are filled only after the corresponding artifacts
 exist and claimed proofs have passed a separate independent kernel replay.
 This document extends M9; it does not weaken any Peano Lab trust rule.
 
@@ -1058,6 +1062,13 @@ $29{,}111 \times 73{,}446{,}475 = 2{,}138{,}100{,}333{,}725$ remains below the u
 2.3-trillion quadratic ceiling. A fresh job must nevertheless produce and publish the complete
 linear, quadratic, and supervision audit; this bound is review evidence, not a substitute report.
 
+Retry `217123` supplied that missing direct evidence. Its report passed with 73,446,475 train
+tokens, 415,247,631,205 squared train tokens, maximum sequence length 29,111, and maximum
+supervised completion length 936. The capped evaluation view contained 1,351,537 tokens and
+3,591,898,935 squared tokens with maximum length 4,759. These results validate the 74-million
+linear correction and every unchanged token gate. They do not authorize training because the
+later runtime smoke did not publish an accepted report.
+
 #### Completion-only loss without full-sequence vocabulary logits
 
 The supervised target is still exactly one tactic line followed by EOS. Prompt labels are
@@ -1228,6 +1239,17 @@ After a clean current-source deployment, the accepted WMI chain is:
    must change at least one admission probe. The standard-library preparation verifier joins that
    evidence to corpus eligibility, curriculum selection, both token-audit records, closed artifact
    hashes, and the pristine pinned base configuration.
+
+   A BF16 `Trainer` is not automatically the same execution surface as ordinary inference.
+   Accelerate 1.8.1 prepares the live single-process model by replacing `forward` with an autocast
+   wrapper that converts returned tensors to FP32 and retains `_original_forward`. Deleting the
+   Trainer does not restore that method. Before any terminal semantic snapshot, the shared
+   admission helper therefore calls Accelerate's public `unwrap_model` with
+   `keep_fp32_wrapper=False` and `keep_torch_compile=False`, requires the exact original model and
+   forward function, and rejects a surviving wrapper. This keeps the exact comparison meaningful:
+   bare trained inference is compared with bare freshly loaded inference. Job `217123` discovered
+   this boundary after all adapter tensor populations had already matched byte-for-byte; no
+   numerical tolerance or weaker argmax-only admission was introduced.
 2. `peano_wmi_train_qwen3_1_7b_v3.sbatch` can depend only on that exact completed sealed-preparation
    job. It repeats the three-report cross-check, then exercises both node types through the
    production publication preflight on the exact `/work` output filesystem. The retained protected
@@ -1339,8 +1361,8 @@ hours for evaluation. Current result ledger:
 | Result-dependent field | Status at this checkpoint |
 |---|---|
 | historical corpus seal path/content digest | `checkpoints/corpora/peano-policy-v3-173040`; `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b` (job `213641`, verified) |
-| current-source sealed-preparation job/report digests | job `214264` passed eligibility, then failed the old linear token gate before token/smoke reports; 74-million-token retry **pending** |
-| selected train/evaluation rows and exact token exposure | deterministic train selection is 20,765 rows (8,494 catalog + 12,271 synthetic); rejected run observed 73,446,475 train tokens; an accepted complete train/evaluation audit remains **pending** |
+| current-source sealed-preparation job/report digests | job `217123` passed eligibility and token audit, then failed closed at saved-policy admission before a smoke report; wrapper-restoration retry **pending** |
+| selected train/evaluation rows and exact token exposure | accepted token audit: 20,765 train rows (8,494 catalog + 12,271 synthetic), 73,446,475 train tokens, 415,247,631,205 squared train tokens; 512 evaluation rows and 1,351,537 tokens |
 | optimizer steps, losses, adapter and tokenizer digests | **pending** |
 | evaluation job/report and independently replayed proofs | **pending** |
 | same-authority pretrained-base comparison report | **pending** |

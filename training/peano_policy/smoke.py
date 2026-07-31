@@ -24,6 +24,7 @@ from .adapter_admission import (
     admit_loaded_policy,
     canonical_peft_adapter_state,
     capture_in_memory_policy,
+    restore_model_for_adapter_admission,
     select_admission_probes,
 )
 from .budget import (
@@ -1051,6 +1052,8 @@ def _trainer_integration_probe(
         evaluation_loss = _finite_trainer_metric(
             eval_metrics.get("eval_loss"), "evaluation loss"
         )
+
+        restore_model_for_adapter_admission(trainer=trainer, model=model)
 
         del trainer, arguments, train_result, eval_metrics
 

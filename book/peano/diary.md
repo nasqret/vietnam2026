@@ -2334,3 +2334,45 @@ warning-as-error Jupyter Book build, executable-book audit, and 248-lemma knowle
 checks pass. The complete Peano suite reports 1,761 passed with five expected skips in 23m39s, and
 the unchanged Lambda sibling reports 360 passed plus 36 subtests. No kernel or tactic semantics
 changed, and no replacement WMI job had been submitted when these results were recorded.
+
+## 2026-07-31 — A correct adapter was compared through two different forwards
+
+The 74-million-token retry, WMI job `217123`, established that the ceiling correction was enough.
+It published a passing audit for the exact 20,765-row selection: 73,446,475 train tokens,
+415,247,631,205 squared tokens, a 29,111-token longest sequence, and a 936-token longest
+completion. It then exercised the extremal LoRA updates and one real `CompletionOnlyTrainer`
+optimizer step and evaluation. The run nevertheless failed closed after 3h58m16s, before the
+runtime-smoke report was written, with “fresh adapter changed indexed loss or projected logits.”
+No production training job was authorized.
+
+The placement of that exception was decisive. Admission had already compared every canonical
+LoRA tensor in three places: the terminal in-memory PEFT state, the saved safetensors, and the
+freshly populated PEFT model. Names, dtypes, shapes, and raw bytes all agreed. The failure was not
+evidence of a lost or corrupted adapter; it was evidence that identical weights had been executed
+under different wrappers.
+
+Transformers delegates BF16 preparation to Accelerate. In the pinned Accelerate 1.8.1 runtime,
+`prepare_model` mutates the same model object: it stores `_original_forward`, installs an autocast
+forward, and converts returned BF16 tensors to FP32. The smoke's real-Trainer probe deleted its
+Trainer but never unwrapped that forward. The in-memory admission snapshot therefore hashed FP32-
+converted outputs from the prepared path. The newly loaded PEFT model had the ordinary bare
+inference forward and returned native BF16 indexed logits. Because the admission fingerprint
+deliberately includes dtype and every raw projected-logit byte, rejection was inevitable.
+
+The tempting response would have been to weaken exact equality to `allclose`, argmax agreement, or
+a loss tolerance. That would hide the lifecycle error and make it harder to distinguish a genuine
+semantic drift later. Instead, smoke and production now call Accelerate's public `unwrap_model`
+with `keep_fp32_wrapper=False` and `keep_torch_compile=False`. The helper requires the same model
+object, verifies removal of `_original_forward`, and verifies restoration of the original forward
+function. Snapshot capture independently refuses a retained wrapper. Tests simulate the mutation,
+prove the explicit flags and identity checks, and keep all existing exact tensor/output and
+adapter-effect gates unchanged. The canonical comparison is now bare trained inference versus
+bare freshly loaded inference---the same path used by the proof service.
+
+The repair is green locally. The direct adapter/smoke regression set reports 73 passed with one
+expected skip; the wider sealed-preparation and documentation selection reports 140 passed with
+one skip. The complete Peano suite reports 1,764 passed and five expected skips in 24m09s, while
+the unchanged Lambda sibling reports 360 passed plus 36 subtests. The warning-as-error Jupyter
+Book, all 194 deep links and 47 executable sessions (287 commands), the 248-entry arithmetic
+knowledge base, and the 327-note/3,288-link vault pass. The next claim must come from a fresh WMI
+smoke report, not from these CPU tests.

@@ -2042,3 +2042,35 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   cannot authorize training. The immutable historical corpus seal remains
   unchanged, but a fresh clean deployment and new sealed-preparation job are
   required before the one-epoch Qwen3-1.7B optimizer run may be submitted.
+
+## 2026-07-31 — Exact admission exposed a retained Accelerate forward wrapper
+
+- Reviewed-ceiling retry `217123` passed corpus eligibility and published a
+  complete token audit for 20,765 train rows: 73,446,475 total tokens,
+  415,247,631,205 squared-token exposure, 29,111 maximum sequence tokens, and
+  936 maximum supervised tokens. The unchanged 74-million, 2.3-trillion,
+  32,768, and 1,024 gates all passed.
+- The job then performed its representative LoRA updates and one real
+  `CompletionOnlyTrainer` step/evaluation, but failed before publishing the
+  smoke report. Byte-exact comparison had already proved equality of the live
+  PEFT population, saved safetensors, and freshly loaded PEFT population. The
+  next semantic comparison rejected the fresh outputs.
+- The mismatch was structural. Accelerate 1.8.1 prepares a BF16 Trainer model
+  by replacing `model.forward` with autocast plus FP32 output conversion and
+  retaining `_original_forward`. Deleting Trainer does not undo that mutation.
+  The live snapshot therefore used the prepared forward, while the fresh PEFT
+  reload used the bare inference forward; exact dtype/raw-byte fingerprints
+  were guaranteed to disagree.
+- The repair uses Accelerate's public `unwrap_model` with both
+  `keep_fp32_wrapper=False` and `keep_torch_compile=False`, requires the exact
+  same single-process model object and original forward, and makes snapshot
+  capture reject any retained wrapper. Smoke and production share this path.
+  No tolerance was introduced: exact tensors, tokenization, loss/logit bytes,
+  and adapter-versus-disabled-base checks remain intact. A new sealed-
+  preparation job is required; no production training job has run.
+- Local verification is green: 73 focused admission/smoke tests passed with
+  one expected skip; the wider preparation/documentation selection reports
+  140 passed with one skip; the complete Peano suite reports 1,764 passed with
+  five skips; Lambda Lab reports 360 passed plus 36 subtests. The warning-as-
+  error book, all 287 documented commands, the 248-entry knowledge base, and
+  the 327-note/3,288-link vault also pass.

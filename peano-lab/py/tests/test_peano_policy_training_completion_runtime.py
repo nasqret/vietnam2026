@@ -162,6 +162,7 @@ def test_training_runner_wires_clip_before_recovery_and_manifest_admission() -> 
     )
     post_serialization = source.index("post_serialization_tensor_population =")
     post_evaluation = source.index("post_evaluation_tensor_population =")
+    restore_forward = source.index("model = restore_model_for_adapter_admission(")
     evidence = source.index("training_evidence = completed_training_evidence_record(")
     capture = source.index("in_memory_policy = capture_in_memory_policy(")
     release = source.index("del callbacks, named_trainable, trainer, model, tokenizer")
@@ -181,6 +182,7 @@ def test_training_runner_wires_clip_before_recovery_and_manifest_admission() -> 
         < adapter_publication
         < post_serialization
         < post_evaluation
+        < restore_forward
         < evidence
         < capture
         < release

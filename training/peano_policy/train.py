@@ -24,6 +24,7 @@ from .adapter_admission import (
     BaseReloadContract,
     admit_saved_adapter,
     capture_in_memory_policy,
+    restore_model_for_adapter_admission,
     select_admission_probes,
     validate_manifest_adapter_admission,
 )
@@ -1670,6 +1671,10 @@ def train(
             raise TrainingEvidenceError(
                 "explicit evaluation changed the learned adapter population"
             )
+        model = restore_model_for_adapter_admission(
+            trainer=trainer,
+            model=model,
+        )
 
     tokenizer_identity = {
         "class": type(tokenizer).__name__,

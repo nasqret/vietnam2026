@@ -506,10 +506,16 @@
   current-source preparation, job `214264`, reached the selected-token audit
   and failed closed before runtime smoke or model loading because train exposure
   was 73,446,475 tokens against the reviewed 70,000,000-token ceiling. The
-  replacement changes only that ceiling to 74,000,000; the quadratic,
-  evaluation, context, completion, runtime, optimizer, adapter, and proof-
-  quality gates remain unproved. No model-v3 optimizer step or solve-rate claim
-  exists. The attestor's independent-builder watchdog is eight hours, above the
+  replacement changed only that ceiling to 74,000,000. Job `217123` then passed
+  eligibility and the complete selected token audit: train squared exposure was
+  415,247,631,205, maximum sequence length 29,111, and maximum supervised
+  completion 936. Its runtime smoke performed representative adapter updates
+  and one real Trainer step, but saved-policy admission failed before report
+  publication because Accelerate's retained mixed-precision forward wrapper
+  was compared with a bare fresh reload. The repair explicitly unwraps to the
+  original single-process forward and makes snapshot capture reject a retained
+  wrapper. A fresh preparation must prove it on WMI; no production training
+  optimizer step or solve-rate claim exists. The attestor's independent-builder watchdog is eight hours, above the
   exact measured 5h07m first build; the old four-hour value would have rejected
   a legitimate replay deterministically.
 - **Model-v3 prelaunch durability and chain binding (2026-07-30):** the

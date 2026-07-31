@@ -36,9 +36,12 @@ published and independently verified the immutable 15-file corpus with content S
 binds the one-epoch curriculum configuration. Sealed-preparation job `214264` passed eligibility
 and then failed closed at the tokenizer gate: 73,446,475 selected train tokens exceeded the
 reviewed 70,000,000-token ceiling. No accepted token-audit or smoke report was published. The
-reviewed retry raises only the linear ceiling to 74,000,000 and leaves every other compute bound
-unchanged. No model-v3 optimizer step has run and no adapter exists, so its proof quality and search
-gain remain unknown.
+reviewed retry raised only the linear ceiling to 74,000,000. Job `217123` then passed the complete
+token audit and ran the representative LoRA/Trainer smoke, but failed closed at saved-policy
+admission because the live model retained Accelerate's mixed-precision forward wrapper while the
+fresh reload used the bare inference forward. The repair now restores and verifies that bare
+forward in smoke and production without weakening exact equality. No production training job has
+run and no persistent adapter exists, so its proof quality and search gain remain unknown.
 The historical reconciled model-v2 authority is 63 public entries, seven dependency-closed import
 exclusions, and 56 permitted records. Model-v3 binds the later 247-entry ladder independently.
 The 4B comparison and expert iteration are still deferred.
@@ -1166,6 +1169,25 @@ is joined to the base configuration, run identity, `cuda:0` runtime, individual 
 closed adapter/tokenizer trees, and completed-training hashes. A v3 manifest lacking any join is
 not loadable.
 
+This exact gate exposed a lifecycle distinction that tensor hashes alone could not show. In WMI
+job `217123`, the terminal in-memory, saved, and freshly loaded adapter populations agreed byte for
+byte, yet the semantic comparison failed. Accelerate 1.8.1 had prepared the BF16 Trainer by
+mutating the live model's `forward`: it retained `_original_forward`, entered autocast, and
+converted returned tensors to FP32. Releasing the Trainer did not undo that mutation. The
+in-memory snapshot therefore used a prepared FP32-output path, while the newly loaded PEFT model
+used bare BF16 inference. Since the fingerprint includes dtype and every raw projected-logit byte,
+those outputs could never be identical.
+
+The correction is normalization, not tolerance. Immediately after the final Trainer evaluation,
+the shared helper calls Accelerate's public `unwrap_model` with
+`keep_fp32_wrapper=False` and `keep_torch_compile=False`. It requires the exact same
+single-process model, disappearance of `_original_forward`, and restoration of the original
+forward function. Snapshot capture has a second guard against retained wrappers. Both the smoke
+and the production runner now compare bare terminal inference with bare fresh inference, matching
+the proof-service loader. The exact tensor, tokenization, loss/logit-byte, and
+adapter-versus-disabled-base checks remain unchanged. An `allclose`, loss-only, or argmax-only fix
+would have hidden the bug and weakened future corruption detection.
+
 The lifecycle audit found why these comparisons must surround evaluation as well as saving. In the
 [pinned Transformers 4.53.3 implementation](https://github.com/huggingface/transformers/blob/v4.53.3/src/transformers/trainer.py),
 `bf16_full_eval=True` calls
@@ -1263,10 +1285,12 @@ content SHA-256
 `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`. The new sealed-
 preparation job `214264` passed eligibility, deterministically selected 20,765 train rows, but
 rejected their 73,446,475 tokens against the old 70-million ceiling; it produced neither an
-accepted token-audit report nor a runtime-smoke report. A fresh 74-million-ceiling preparation job,
-complete accepted token counts, optimizer-step
-count, adapter hashes, losses, evaluation job, solve results, and independent replay digest remain
-explicitly **pending**. An A100 allocation is not evidence that transformer training has begun.
+accepted token-audit report nor a runtime-smoke report. Retry `217123` passed the 74-million token
+gate and published the complete selected train/evaluation audit, then failed at the retained-
+wrapper admission boundary before a runtime-smoke report. A fresh repaired preparation job,
+production optimizer-step count, adapter hashes, losses, evaluation job, solve results, and
+independent replay digest remain explicitly **pending**. An A100 allocation is not evidence that
+transformer training has begun.
 
 ## Reproduction and honest resume
 
@@ -1467,8 +1491,10 @@ limitations remain:
   generator, whole-session selector, indexed completion objective, immutable-seal/current-source
   eligibility gate, and independent evaluation replay are implemented; retry `172729`, continuation
   `173040`, and seal job `213641` produced and authenticated the complete immutable corpus; job
-  `214264` then failed the old 70-million linear-token gate at 73,446,475 tokens, so a fresh reviewed
-  74-million-ceiling preparation must still finish before the registered WMI training run;
+  `214264` then failed the old 70-million linear-token gate at 73,446,475 tokens; retry `217123`
+  passed all token gates but exposed a retained Accelerate forward wrapper at saved-policy
+  admission, so a fresh repaired preparation must still finish before the registered WMI training
+  run;
 - the four-goal protocol set is a regression fixture, not a statistically useful final test, and
   hard whole-template OOD sets plus human-authored problems still need to be sealed;
 - depth-32 verifier-guided beam search is implemented, but its gain with a trained model-v3 policy

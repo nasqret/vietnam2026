@@ -100,9 +100,15 @@ with content SHA-256
 The first current-source sealed-preparation attempt, job `214264`, then failed
 closed before runtime smoke or model loading: the selected train curriculum
 contained 73,446,475 tokens, above the reviewed 70,000,000-token ceiling. The
-retry raises only that linear ceiling to 74,000,000; the pinned Qwen3-1.7B Base
-rank-32/alpha-64 LoRA schedule remains exactly one epoch. No model-v3 optimizer
-step, trained adapter, evaluation result, or measured solve rate exists yet.
+reviewed retry, job `217123`, raised only that linear ceiling to 74,000,000 and
+passed the complete token audit. It then ran the representative LoRA and real-
+Trainer smoke steps but failed closed before publishing the smoke report: the
+live model still carried Accelerate's BF16/FP32 forward wrapper, while the
+fresh reload used the bare inference forward, so their exact output
+fingerprints could not agree. The repair removes and verifies that wrapper
+before saved-policy admission in both smoke and production. A fresh preparation
+must still validate the repair. No production training job, persistent trained
+adapter, evaluation result, or measured solve rate exists yet.
 
 ---
 

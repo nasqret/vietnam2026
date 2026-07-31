@@ -108,8 +108,13 @@ corpus continuation `173040` completed its independent gates and seal job
 `213641` published the verified immutable corpus. Current-source preparation
 `214264` failed closed before runtime smoke or model loading because the
 selected train curriculum exposed 73,446,475 tokens against the reviewed
-70,000,000-token ceiling. A retry with only that ceiling raised to 74,000,000
-is pending; the run remains untrained and unevaluated. See
+70,000,000-token ceiling. Retry `217123`, with only that ceiling raised to
+74,000,000, passed the exact token audit and reached saved-policy admission.
+It then failed closed because the in-memory model retained Accelerate's
+mixed-precision forward wrapper while the fresh reload used the bare inference
+forward. The shared admission path now unwraps and verifies the exact original
+forward before comparison; a fresh preparation remains pending, and the run
+remains untrained and unevaluated. See
 [`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest completed
 and staged milestone; production remains untouched behind the M14 cache-header
 blocker.

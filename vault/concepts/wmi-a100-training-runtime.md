@@ -69,8 +69,11 @@ explicit. Trainer's permissive built-in clipping is disabled; the pre-optimizer 
 gradients, clips to norm 1.0 with `error_if_nonfinite=True`, and audits all post-clip gradients. That
 job performs no proof generation. First current-source attempt `214264` reached the selected-token
 audit and failed closed before this runtime smoke or model loading: 73,446,475 train tokens exceeded
-the reviewed 70,000,000-token ceiling. Its replacement raises only that ceiling to 74,000,000;
-quadratic, completion, runtime, and downstream training gates remain unchanged and unproved.
+the reviewed 70,000,000-token ceiling. Its replacement raised only that ceiling to 74,000,000;
+job `217123` passed the linear, quadratic, context, and completion gates and reached the runtime
+smoke. It failed closed at saved-policy admission because Accelerate's retained BF16/FP32 forward
+wrapper was compared with a bare fresh reload. The repaired shared path explicitly unwraps and
+verifies the original forward before semantic capture; all exact output checks remain unchanged.
 
 Production sets both Trainer save and evaluation strategies to `no`. An interval beyond the run is
 not a sufficient checkpoint guard because the default callback can request a terminal save at
@@ -128,7 +131,8 @@ only that training job may authorize the twelve-hour fixed-budget evaluation. Th
 checks the immutable ledger, expected predecessor script, report digests, and current reviewed
 environment before releasing a held job. Evaluation is followed by a model-free independent
 kernel replay. The corpus seal digest is fixed above; job `214264` is rejected evidence, not an
-accepted predecessor. A replacement sealed-preparation job, training and evaluation job IDs,
+accepted predecessor. Job `217123` contributes a valid token audit but no accepted runtime-smoke
+report and is likewise not a training predecessor. A replacement sealed-preparation job, training and evaluation job IDs,
 adapter, independent replay, and model-v3 solve results remain pending.
 
 ## Related

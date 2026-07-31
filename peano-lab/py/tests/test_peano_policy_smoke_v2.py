@@ -448,6 +448,14 @@ def test_actual_completion_trainer_lifecycle_probe_updates_and_evaluates(
             callbacks: list[object],
         ) -> None:
             self.model = model
+            self.model._original_forward = self.model.forward
+
+            def prepared_forward(*args, **kwargs):
+                outputs = self.model._original_forward(*args, **kwargs)
+                return {"logits": outputs["logits"].double()}
+
+            prepared_forward.__wrapped__ = self.model._original_forward
+            self.model.forward = prepared_forward
             self.args = args
             self.train_dataset = train_dataset
             self.eval_dataset = eval_dataset
@@ -462,11 +470,24 @@ def test_actual_completion_trainer_lifecycle_probe_updates_and_evaluates(
                 state=SimpleNamespace(
                     dynamo_plugin=SimpleNamespace(backend=DynamoBackend.NO)
                 ),
+                unwrap_model=self._unwrap_model,
             )
             self.is_deepspeed_enabled = False
             self.is_fsdp_enabled = False
             self.is_tp_enabled = False
             self.state = SimpleNamespace(global_step=0)
+
+        @staticmethod
+        def _unwrap_model(
+            model,
+            *,
+            keep_fp32_wrapper: bool,
+            keep_torch_compile: bool,
+        ):
+            assert keep_fp32_wrapper is False
+            assert keep_torch_compile is False
+            model.forward = model.__dict__.pop("_original_forward")
+            return model
 
         def train(self) -> SimpleNamespace:
             self.model.train()
@@ -535,6 +556,13 @@ def test_actual_completion_trainer_lifecycle_probe_updates_and_evaluates(
     )
 
     assert record["format"] == "peano-completion-only-trainer-integration"
+    assert "_original_forward" not in model.__dict__
+    restored_outputs = model(
+        input_ids=batch["input_ids"],
+        attention_mask=batch["attention_mask"],
+        logits_to_keep=torch.tensor([3], dtype=torch.long),
+    )
+    assert restored_outputs["logits"].dtype == torch.float32
     assert record["train_global_step"] == 1
     assert math.isfinite(record["training_loss"])
     assert math.isfinite(record["evaluation_loss"])
@@ -897,6 +925,7 @@ def test_v2_source_contains_exact_reload_and_two_probe_fail_closed_checks() -> N
     assert "class CompletionOnlyTrainer(CompletionOnlyTrainerMixin, Trainer)" in source
     assert "train_result = trainer.train()" in source
     assert "eval_metrics = trainer.evaluate()" in source
+    assert "restore_model_for_adapter_admission(trainer=trainer, model=model)" in source
 
 
 def test_v2_saved_adapter_admission_reuses_one_strict_fresh_base_reload() -> None:
