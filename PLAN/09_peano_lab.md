@@ -547,6 +547,10 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       rejection, and then canonical-state-deduplicated best-first search before the next GPU run.
 - [ ] All milestone-wide tests and documentation gates are green, the kernel has no semantic diff,
       and no heavy local or remote job remains running before the milestone is called complete.
+- [x] Provide a process-isolated model-free terminal for the current native
+      library and a first-token `pa native` / `pa model` selector. Preserve
+      legacy bare `pa`, proof/tutorial raw-input ownership, fail-fast batch
+      replay, and the frozen model authority without mixing source trees.
 
 - **Current verification (2026-07-28, in progress):** the public-catalog complete Peano suite reports
   1,036 passes, Lambda Lab reports 360 tests plus 36 subtests, all 27 book sources build with warnings as

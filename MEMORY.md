@@ -1190,3 +1190,8 @@
   not injected into ordinary Book chapters. A full local Book build and
   source/built-tree integrity check pass with zero broken relative targets,
   but the attached-browser visual gate remains unavailable.
+- **Unified local terminal (2026-07-31):** `pa native` runs the current
+  model-free 384-theorem worktree, while `pa model` and bare `pa` retain the
+  separately attested 247-theorem diagnostic model. Native dispatch occurs
+  before model seals or imports; `use THEOREM` still reconstructs and
+  kernel-checks the selected dependency and the final empty-context proof.

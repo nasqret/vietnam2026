@@ -136,6 +136,43 @@ cd artifacts/lean && lake build
 
 See [`docs/BUILD.md`](docs/BUILD.md) and [`docs/DEPLOY.md`](docs/DEPLOY.md) for the full pipeline.
 
+## Unified local Peano terminal
+
+When this worktree is paired with the frozen diagnostic-model worktree, the
+installed `pa` launcher exposes both authorities without mixing their Python
+imports:
+
+```text
+pa native    # this model-free 384-theorem source tree
+pa model     # frozen 247-theorem trained-policy environment
+pa           # backward-compatible alias for `pa model`
+```
+
+At the native `pa>` prompt, inspect the current library with `pa lib`, start a
+manual proof with `pa prove FORMULA`, and import a checked fact with
+`use THEOREM`. For example:
+
+```text
+pa prove forall n. n * 1 + 0 = n
+use mul_one
+intro n
+specialize mul_one n
+rewrite mul_one
+simp
+qed
+```
+
+For automation, repeat `-c` without opening an interactive terminal:
+
+```bash
+pa native -c 'pa lib mul_one'
+```
+
+Native mode requires Python 3.10 or newer and does not verify or
+load model artifacts. Each selected theorem is nevertheless reconstructed,
+embedded through checked `Cut` nodes, and checked again as part of the final
+empty-context certificate.
+
 ## License
 
 Code and associated documentation are released under the MIT License; prose in `book/`, `vault/`,

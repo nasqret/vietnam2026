@@ -2922,3 +2922,21 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   Slurm test-only validation. Submitted full job `210714` on `cpu_idle` with
   one CPU, 32 GiB and four hours; its initial state was `PENDING (Priority)`.
   Submission and pending state are not proof receipts.
+
+## 2026-07-31 — Unified native/model Peano terminal
+
+- Added a model-free terminal host over the current `driver.LabSession`. It
+  exposes all 384 theorem specifications, preserves proof/tutorial raw-input
+  ownership, supports interactive and fail-fast repeated `-c` commands, and
+  treats unfinished batch EOF as a non-result.
+- Extended the already installed model launcher with a first-token selector:
+  `pa native` dispatches to this worktree before model setup, while `pa model`
+  and legacy bare `pa` retain the frozen 247-theorem diagnostic. The two
+  `peano_lab` trees execute in separate processes and import paths.
+- Replayed a complete native theorem-reuse example using `use mul_one`,
+  `specialize`, `rewrite`, and `simp`; QED passed the unchanged independent
+  kernel. No model artifact was verified or loaded on that route.
+- Hardened automation boundaries: Python older than 3.10 is rejected before
+  imports, Ctrl-C during replay returns 130 without a traceback, a closed
+  output pipe is quiet but nonzero (141), and `--version` cannot suppress a
+  repeated `-c` command stream. Seven focused terminal tests pass.

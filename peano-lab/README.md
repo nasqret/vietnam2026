@@ -24,6 +24,19 @@ Reference implementations to copy patterns from (same repo):
 
 ## Run locally
 
+For a model-free terminal over the current source tree (Python 3.10 or newer),
+run:
+
+```console
+python3 scripts/peano_native_shell.py
+```
+
+When the unified launcher is installed, the equivalent command is
+`pa native`. This path loads no Torch, Transformers, adapter, or model weights;
+`pa lib <name>` and `use <name>` replay and kernel-check library certificates
+on demand. Repeated `-c` options provide a fail-fast noninteractive command
+stream.
+
 From the repository root, fetch the version-pinned browser runtime once, stage
 the content-addressed release, and serve that exact static assembly:
 
