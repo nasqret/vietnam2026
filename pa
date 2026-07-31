@@ -10,6 +10,40 @@ while [ -L "$launcher_path" ]; do
     esac
 done
 repo_dir=$(CDPATH= cd -- "$(dirname -- "$launcher_path")" && pwd)
+
+# Keep the current native library physically separate from the frozen model
+# authority.  Dispatch before model interpreter selection, seal verification,
+# and ML environment setup so `pa native` never imports or maps the model.
+case "${1-}" in
+    native)
+        shift
+        native_root=${PEANO_NATIVE_LAB_ROOT:-"$repo_dir/../vietnam2026-arithmetic"}
+        if [ ! -d "$native_root" ]; then
+            echo "pa: native Peano Lab root not found: $native_root" >&2
+            echo "pa: set PEANO_NATIVE_LAB_ROOT to the current arithmetic worktree" >&2
+            exit 2
+        fi
+        native_root=$(CDPATH= cd -- "$native_root" && pwd)
+        native_runner="$native_root/scripts/peano_native_shell.py"
+        if [ ! -f "$native_runner" ]; then
+            echo "pa: native Peano Lab runner not found: $native_runner" >&2
+            exit 2
+        fi
+        if ! command -v python3 >/dev/null 2>&1; then
+            echo "pa: Python 3.10 or newer is required for native mode" >&2
+            exit 2
+        fi
+        if ! python3 -c 'import sys; raise SystemExit(sys.version_info < (3, 10))'; then
+            echo "pa: Python 3.10 or newer is required for native mode" >&2
+            exit 2
+        fi
+        exec python3 "$native_runner" "$@"
+        ;;
+    model)
+        shift
+        ;;
+esac
+
 adapter_dir="$repo_dir/results/peano-policy/diagnostics/qwen3-1.7b-lora-v3-morning-diagnostic-20260731-r1"
 cache_dir="$repo_dir/.cache/huggingface/hub"
 
@@ -26,6 +60,15 @@ for argument in "$@"; do
         -h|--help) help_requested=true ;;
     esac
 done
+
+if [ "$help_requested" = true ]; then
+    printf '%s\n' \
+        'Unified Peano launcher modes:' \
+        '  pa native    current model-free theorem library' \
+        '  pa model     frozen diagnostic proof-policy shell' \
+        '  pa           backward-compatible alias for pa model' \
+        ''
+fi
 
 if [ -x "$repo_dir/.venv/peano-model-macos/bin/python" ]; then
     peano_python="$repo_dir/.venv/peano-model-macos/bin/python"

@@ -48,6 +48,11 @@ For the native Apple-silicon proof-policy shell—including the sealed setup,
 offline model cache, live `pa prove-model` transcript, and checking semantics—see
 [`docs/LOCAL_MODEL_LAB.md`](docs/LOCAL_MODEL_LAB.md).
 
+The installed launcher keeps the trained and current-native authorities
+separate: `pa model` (and legacy bare `pa`) runs this frozen 247-theorem
+diagnostic, while `pa native` dispatches to the sibling current arithmetic
+worktree without verifying or loading model artifacts.
+
 The 247-entry native ladder now reaches the Fundamental Theorem of Arithmetic
 without adding lists, division, remainder, gcd, or factorization as primitive
 symbols. Finite factor sequences and their prefix products are represented by

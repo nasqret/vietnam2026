@@ -504,4 +504,7 @@
   fresh one-shot regression reached a ready MPS model in 8.2 seconds and
   completed the two-tactic proof in 22.68 seconds; an exact interactive
   `pa --live full` launch displayed `pa>` after a 10.4-second model-load phase.
-  This is explicitly diagnostic, not a production quality claim.
+  The same global launcher now accepts `pa native` before any model gate and
+  runs the physically separate current 384-theorem arithmetic worktree;
+  `pa model` and bare `pa` retain the sealed 247-theorem authority. This is
+  explicitly diagnostic, not a production quality claim.

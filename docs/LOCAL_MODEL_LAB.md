@@ -16,6 +16,29 @@ This launcher is deliberately marked **diagnostic / not production**. It is
 bound to the frozen morning adapter and cannot be redirected to arbitrary
 weights or a different model cache.
 
+## Unified launcher modes
+
+The installed `pa` command now has two explicit, process-isolated modes:
+
+```text
+pa native    # current model-free 384-theorem arithmetic worktree
+pa model     # frozen 247-theorem diagnostic model shell
+pa           # backward-compatible alias for `pa model`
+```
+
+Native mode dispatches before model environment setup, base/adapter seal
+hashing, or weight loading. Its `use THEOREM` tactic replays and kernel-checks
+the selected current theorem on demand. Model mode remains byte-bound to the
+older 247-theorem source identity used during training; the 384-theorem tree
+is never placed on that process's import path.
+
+The selector must be the first argument: use `pa model --live full`, not
+`pa --live full model`. By default the native worktree is the sibling
+`../vietnam2026-arithmetic`; a checkout in another layout can set
+`PEANO_NATIVE_LAB_ROOT` to that repository root.
+Native mode requires Python 3.10 or newer and fails before importing Peano Lab
+when only an older interpreter is available.
+
 ## One-time installation on this Mac
 
 From the repository root:

@@ -1897,3 +1897,13 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   10.4-second model-load phase and exited normally. The launcher exposes three
   startup phases, tells the operator to wait for that prompt, and converts a
   model-load Ctrl-C into exit status 130 without a traceback.
+- Added an early, process-isolated launcher selector. Bare `pa` and explicit
+  `pa model` retain the exact frozen 247-theorem diagnostic path; `pa native`
+  dispatches before every model seal, environment, and weight-loading step to
+  the sibling current arithmetic worktree. The latest 384-theorem modules are
+  never inserted into the trained process, so model-v3's source/catalog hash
+  remains unchanged. Native theorem reuse through `use mul_one` reached an
+  independently checked QED in a model-free subprocess.
+- The launcher rejects native mode cleanly under pre-3.10 Python before the
+  native runner executes. Eighteen focused launcher/model-shell tests pass,
+  including exact explicit/legacy model help and dispatch-before-seal checks.

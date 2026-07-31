@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import importlib.util
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -346,6 +347,10 @@ def test_help_is_model_free_and_launcher_is_fixed_to_the_diagnostic() -> None:
     assert "qwen3-1.7b-lora-v3-morning-diagnostic-20260731-r1" in source
     assert "[startup 1/3]" in source
     assert "[startup 2/3]" in source
+    assert 'case "${1-}" in' in source
+    assert source.index('case "${1-}" in') < source.index(
+        "prefetch_peano_base_model.py"
+    )
     assert "PEANO_MODEL_PYTHON" not in source
     assert 'peano_python=python3' in source  # lightweight help only
     assert 'elif [ "$help_requested" = true ]' in source
@@ -367,6 +372,93 @@ def test_help_is_model_free_and_launcher_is_fixed_to_the_diagnostic() -> None:
             check=False,
         )
         assert refused.returncode == 2
+
+
+def test_explicit_model_mode_is_an_exact_alias_for_legacy_help() -> None:
+    legacy = subprocess.run(
+        [str(LAUNCHER), "--help"],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    explicit = subprocess.run(
+        [str(LAUNCHER), "model", "--help"],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+
+    assert explicit.returncode == legacy.returncode == 0
+    assert explicit.stdout == legacy.stdout
+    assert explicit.stderr == legacy.stderr
+    assert "pa native" in legacy.stdout
+    assert "pa model" in legacy.stdout
+
+
+def test_native_mode_dispatches_before_every_model_gate(tmp_path: Path) -> None:
+    native_root = tmp_path / "native"
+    scripts = native_root / "scripts"
+    scripts.mkdir(parents=True)
+    runner = scripts / "peano_native_shell.py"
+    runner.write_text(
+        "import sys\nprint('native argv:', repr(sys.argv[1:]))\n",
+        encoding="utf-8",
+    )
+    environment = os.environ.copy()
+    environment["PEANO_NATIVE_LAB_ROOT"] = str(native_root)
+
+    completed = subprocess.run(
+        [str(LAUNCHER), "native", "--probe", "x"],
+        text=True,
+        capture_output=True,
+        check=False,
+        env=environment,
+    )
+
+    assert completed.returncode == 0
+    assert completed.stdout == "native argv: ['--probe', 'x']\n"
+    assert "startup" not in completed.stderr.casefold()
+    assert "adapter" not in completed.stderr.casefold()
+
+
+def test_native_mode_rejects_old_python_without_a_traceback(tmp_path: Path) -> None:
+    native_root = tmp_path / "native"
+    scripts = native_root / "scripts"
+    scripts.mkdir(parents=True)
+    runner = scripts / "peano_native_shell.py"
+    runner.write_text(
+        "raise SystemExit('native runner must not execute')\n",
+        encoding="utf-8",
+    )
+
+    binary_directory = tmp_path / "bin"
+    binary_directory.mkdir()
+    old_python = binary_directory / "python3"
+    old_python.write_text(
+        "#!/bin/sh\n"
+        "if [ \"${1-}\" = \"-c\" ]; then exit 1; fi\n"
+        "echo 'native runner must not execute' >&2\n"
+        "exit 99\n",
+        encoding="utf-8",
+    )
+    old_python.chmod(0o755)
+
+    environment = os.environ.copy()
+    environment["PEANO_NATIVE_LAB_ROOT"] = str(native_root)
+    environment["PATH"] = f"{binary_directory}:/usr/bin:/bin"
+    completed = subprocess.run(
+        [str(LAUNCHER), "native", "--version"],
+        text=True,
+        capture_output=True,
+        check=False,
+        env=environment,
+    )
+
+    assert completed.returncode == 2
+    assert completed.stdout == ""
+    assert "Python 3.10 or newer is required for native mode" in completed.stderr
+    assert "Traceback" not in completed.stderr
+    assert "native runner must not execute" not in completed.stderr
 
 
 def test_launcher_resolves_a_user_path_symlink(tmp_path: Path) -> None:

@@ -673,6 +673,10 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       theorem, expose visible startup phases, and exit cleanly when model
       loading is interrupted. Two fresh MPS model-load measurements are 8.2
       seconds one-shot and 10.4 seconds in the exact interactive shell.
+- [x] Add process-isolated `pa native` / `pa model` launcher modes. Dispatch
+      native mode before every model gate, never mix the current 384-theorem
+      source into the frozen 247-theorem process, and retain bare `pa` as the
+      exact backward-compatible model alias.
 - [ ] Mirror the 158 MB diagnostic adapter into durable release/LFS/object
       storage so a future fresh clone does not depend on the WMI working copy.
       This distribution task does not affect the already installed local lab
