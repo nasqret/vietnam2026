@@ -31,6 +31,17 @@ if scripts/wmi_submit_job.sh --test-only --afterok 12 \
   echo "dependent WMI preparation succeeded" >&2
   exit 1
 fi
+if scripts/wmi_submit_job.sh --test-only --afterok 12 \
+  slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch >/dev/null 2>&1; then
+  echo "WMI training accepted a live-predecessor mode" >&2
+  exit 1
+fi
+if scripts/wmi_submit_job.sh --test-only --afterok 12 \
+  --completed-predecessor 12 \
+  slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch >/dev/null 2>&1; then
+  echo "WMI submission accepted two predecessor modes" >&2
+  exit 1
+fi
 if scripts/wmi_submit_job.sh --test-only ../bad.sbatch >/dev/null 2>&1; then
   echo "unsafe WMI script succeeded" >&2
   exit 1
@@ -47,9 +58,9 @@ grep -F -- \
   "--test-only slurm/peano_wmi_prepare_training.sbatch" "$ssh_log" >/dev/null
 
 scripts/wmi_submit_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
-  --afterok 12345 slurm/peano_wmi_train_qwen3_1_7b.sbatch >/dev/null
+  --completed-predecessor 12345 slurm/peano_wmi_train_qwen3_1_7b.sbatch >/dev/null
 grep -F -- \
-  "--submit --confirm PEANO-LAB-WMI-TRAINING --afterok 12345 slurm/peano_wmi_train_qwen3_1_7b.sbatch" \
+  "--submit --confirm PEANO-LAB-WMI-TRAINING --completed-predecessor 12345 slurm/peano_wmi_train_qwen3_1_7b.sbatch" \
   "$ssh_log" >/dev/null
 
 scripts/wmi_submit_job.sh --test-only \
@@ -58,9 +69,9 @@ grep -F -- \
   "--test-only slurm/peano_wmi_prepare_v2_training.sbatch" "$ssh_log" >/dev/null
 
 scripts/wmi_submit_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
-  --afterok 23456 slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch >/dev/null
+  --completed-predecessor 23456 slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch >/dev/null
 grep -F -- \
-  "--submit --confirm PEANO-LAB-WMI-TRAINING --afterok 23456 slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch" \
+  "--submit --confirm PEANO-LAB-WMI-TRAINING --completed-predecessor 23456 slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch" \
   "$ssh_log" >/dev/null
 
 scripts/wmi_submit_job.sh --test-only \
@@ -70,9 +81,9 @@ grep -F -- \
   "$ssh_log" >/dev/null
 
 scripts/wmi_submit_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
-  --afterok 34567 slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch >/dev/null
+  --completed-predecessor 34567 slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch >/dev/null
 grep -F -- \
-  "--submit --confirm PEANO-LAB-WMI-TRAINING --afterok 34567 slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch" \
+  "--submit --confirm PEANO-LAB-WMI-TRAINING --completed-predecessor 34567 slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch" \
   "$ssh_log" >/dev/null
 
 scripts/wmi_submit_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \

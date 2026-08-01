@@ -365,6 +365,32 @@ def test_v3_schedule_is_exact_and_legacy_schedule_is_untouched() -> None:
     }
 
 
+def test_production_v3_schedule_matches_the_measured_selected_rows() -> None:
+    config = load_config(CONFIG_ROOT / "qwen3_1_7b_v3_library.toml")
+    schedule = training._curriculum_schedule_preflight(
+        config,
+        train_rows=20_765,
+        eval_rows=512,
+        cuda_device_count=1,
+        distributed_process_count=1,
+    )
+    assert schedule is not None
+    assert schedule["micro_batches_per_epoch"] == 20_765
+    assert schedule["optimizer_steps_per_epoch"] == 649
+    assert schedule["expected_optimizer_steps"] == 649
+    assert config.trainer.logging_steps == 11
+    assert 649 % config.trainer.logging_steps == 0
+    assert schedule["adapter_recovery"] == {
+        "format": "peano-policy-adapter-recovery-plan",
+        "v": 1,
+        "artifact": "adapter-safetensors-only",
+        "resumable": False,
+        "optimizer_state_included": False,
+        "interval_optimizer_steps": 100,
+        "planned_optimizer_steps": [100, 200, 300, 400, 500, 600],
+    }
+
+
 def test_process_count_fails_closed_on_invalid_or_disagreeing_launchers(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -681,7 +707,7 @@ def test_scheduled_v3_requires_reports_bound_to_ledger_dependency(
     reports = training.PreparationReports(
         Path("eligibility"), Path("token"), Path("smoke"), "98"
     )
-    with pytest.raises(ValueError, match="dependency differs"):
+    with pytest.raises(ValueError, match="predecessor differs"):
         training._verify_preparation_reports(
             _v3_config(), reports, job_identity=job
         )

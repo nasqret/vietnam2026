@@ -626,8 +626,12 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       remain unchanged. Retry `217123` passed those token gates and reached the real-Trainer smoke,
       then failed closed at saved-policy admission because the live model retained Accelerate's
       mixed-precision forward wrapper while the fresh reload used the bare inference forward. The
-      repair explicitly restores and verifies the original forward before admission; it must still
-      pass in a fresh job. Record no production optimizer step, checkpoint,
+      repair explicitly restores and verifies the original forward before admission. Fresh
+      preparation `217768` passed corpus eligibility, the exact token audit, the complete repaired
+      runtime smoke, and independent three-report verification under source `e0f7e7d0`. The
+      completed-predecessor submission fix is a new source transition, so `217768` must not be
+      relabelled as its predecessor. Run one fresh preparation after deploying the fix and do not
+      sync again before dependent training. Record no production optimizer step, checkpoint,
       loss, adapter hash, or quality result before its corresponding artifact exists.
 - [ ] Treat the four sealed model-v3 goals as a launch smoke, not a sufficient capability
       benchmark. Before making a general proof-quality claim, add a larger hidden kernel-checked
@@ -638,7 +642,7 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
 - [ ] All milestone-wide tests and documentation gates are green, the kernel has no semantic diff,
       and no heavy local or remote job remains running before the milestone is called complete.
 
-- **Current model-v3 status (2026-07-31):** exact-corpus continuation `173040` completed independent
+- **Current model-v3 status (2026-08-01):** exact-corpus continuation `173040` completed independent
   attestation, token audit, and A100 runtime smoke; job `213641` published and independently verified
   the immutable seal with content SHA-256
   `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`.
@@ -649,16 +653,28 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   representative smoke updates at exact saved-policy admission. Adapter tensor identity passed;
   the in-memory/fresh semantic paths differed because only the former retained Accelerate's
   BF16/FP32 forward wrapper. The repair removes and verifies that wrapper in smoke and production,
-  while keeping every exact tensor and output check unchanged. No production optimizer step,
+  while keeping every exact tensor and output check unchanged. Fresh job `217768` reproduced the
+  token audit and passed the repaired real-Trainer smoke, saved-policy admission, fresh reload, and
+  independent three-report verifier. WMI accounting records it as `COMPLETED` with ordinary and
+  derived exit codes `0:0`. The guarded submitter now represents a completed logical predecessor
+  separately from a live Slurm `afterok` edge, because the controller rejects new dependencies
+  after `MinJobAge`; ledger, source, script/helper, report, and job-environment bindings remain
+  mandatory. Because that control repair changes the clean source identity, a fresh post-fix
+  preparation remains mandatory; `217768` is evidence for the repaired smoke, not a predecessor
+  that may be relabelled across commits. The measured 20,765 rows produce 649 optimizer updates;
+  production logging is now every 11 steps, giving 59 periodic records ending at the terminal update, while
+  batching, warmup, snapshots, objective, and optimizer remain fixed. No production optimizer step,
   checkpoint, loss, adapter hash, evaluation solve count, or replay
   digest exists. The real-Trainer smoke, completion-evidence gate, strict raw-gradient clip,
   saved-policy admission, exclusive publication, and independent replay remain implemented
-  safeguards whose current-source WMI execution must be established by the replacement chain.
+  safeguards whose production WMI execution must be established by the training chain.
 
-- **Current verification (2026-07-28, in progress):** the public-catalog complete Peano suite reports
-  1,036 passes, Lambda Lab reports 360 tests plus 36 subtests, all 27 book sources build with warnings as
-  errors, all 193 documented links and 34 command sessions replay, and local application staging is green as
-  `2026-07-28g` / `a-3ea7b7142aa0`. The 67-note vault resolves all 414 wikilinks. A lightweight arm64 audit measured approximately
+- **Current verification (2026-08-01):** the complete Peano suite reports 1,769 passed with five
+  expected skips; Lambda Lab reports 360 passed plus 36 subtests. All 38 Jupyter Book sources build
+  with warnings as errors; 194 deep links, 47 sessions, and 287 commands replay; the 248-entry
+  arithmetic knowledge base and 327-note/3,288-link vault verify. Bash syntax, Python compilation,
+  executed local/remote submission harnesses, and diff hygiene pass. The historical experiment
+  ledger follows. A lightweight arm64 audit measured approximately
   12,538 quiet and 5,537 traced trivial proofs/second before the latest trace-copy optimization;
   all 18 pilot scripts had traced/quiet parity. The fixed scaled dataset digest is
   `1fa98caa2e0528d39c1b9003c4ee153dfbe633cb1ee4505e8f5b28eb837465dd`.
@@ -714,9 +730,8 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   and defines a separate four-formula held-out set. Final corpus generation and attestation remain
   pending before any WMI training submission.
 
-  The public-catalog local gate is green: 1,036 Peano tests; Lambda 360 tests plus 36 subtests; all
-  27 book sources under warning-as-error; 193 deep links and 170 documented commands; and 414/414
-  vault wikilinks. The kernel checker has no diff and remains 234 lines. Direct in-app Pyodide
+  At the earlier 170-entry checkpoint, the public-catalog gate had 1,036 Peano tests, 27 book
+  sources, and 414 vault links. The kernel checker had no diff and remained 234 lines. Direct in-app Pyodide
   latency could not be measured because no browser was attached; automated worker boot remains
   green. At the 170-entry arithmetic checkpoint, the isolated all-ladder acceptance smoke exported
   4,474 raw and 4,471 unique transitions from 340 sessions, including 170

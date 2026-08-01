@@ -514,7 +514,14 @@
   publication because Accelerate's retained mixed-precision forward wrapper
   was compared with a bare fresh reload. The repair explicitly unwraps to the
   original single-process forward and makes snapshot capture reject a retained
-  wrapper. A fresh preparation must prove it on WMI; no production training
+  wrapper. Fresh preparation `217768` then passed the exact eligibility, token-audit, runtime-smoke,
+  saved-policy-admission, and reload gates; `sacct` records `COMPLETED|0:0|0:0`. Because Slurm rejects a new `afterok` edge after a
+  completed job ages out of its 300-second controller retention, guarded submission now uses
+  `--completed-predecessor` for the durable accounting/ledger/report binding and reserves
+  `--afterok` for live jobs. That fix creates a new source commit, so exact provenance forbids
+  relabelling `217768`; one post-fix preparation must pass before training. The same audit fixes
+  the measured schedule at 649 updates for 20,765 rows and changes only production logging from 10
+  to 11, yielding 59 exact periodic records through the terminal step. No production training
   optimizer step or solve-rate claim exists. The attestor's independent-builder watchdog is eight hours, above the
   exact measured 5h07m first build; the old four-hour value would have rejected
   a legitimate replay deterministically.
@@ -522,8 +529,8 @@
   one-shot trainer preserves adapter/tokenizer tensors before its explicit
   full evaluation, while withholding the final manifest until evaluation and
   all immutable-input checks pass. Scheduled benchmark evaluation must match
-  the manifest producer job, exported training predecessor, and submission
-  dependency before model load; its report records that relation for the
+  the manifest producer job, exported training predecessor, and submission-ledger
+  predecessor before model load; its report records that relation for the
   independent replay gate. Interactive proof requests bind the completed
   manifest under a separate non-dependency status.
 - **Model-v3 seal bootstrap closure (2026-07-31):** first publication used an

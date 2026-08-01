@@ -360,7 +360,7 @@ def _load_config(root: Path) -> tuple[dict[str, object], Path, str]:
         or trainer.get("learning_rate") != 0.0001
         or trainer.get("weight_decay") != 0.01
         or trainer.get("warmup_ratio") != 0.05
-        or trainer.get("logging_steps") != 10
+        or trainer.get("logging_steps") != 11
         or trainer.get("eval_steps") != 1000
         or trainer.get("save_steps") != 1000
         or trainer.get("save_total_limit") != 1

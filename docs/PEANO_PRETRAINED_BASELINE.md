@@ -76,12 +76,12 @@ source, dry-run and then submit the separate dependent job:
 
 ```console
 scripts/submit_wmi_slurm_job.sh --test-only \
-  --afterok TRAIN_JOB \
+  --completed-predecessor TRAIN_JOB \
   slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch
 
 scripts/submit_wmi_slurm_job.sh --submit \
   --confirm PEANO-LAB-WMI-TRAINING \
-  --afterok TRAIN_JOB \
+  --completed-predecessor TRAIN_JOB \
   slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch
 ```
 

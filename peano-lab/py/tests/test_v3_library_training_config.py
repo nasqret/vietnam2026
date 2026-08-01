@@ -75,7 +75,7 @@ def test_v3_config_has_the_reviewed_sealed_training_budget() -> None:
         "learning_rate": 0.0001,
         "weight_decay": 0.01,
         "warmup_ratio": 0.05,
-        "logging_steps": 10,
+        "logging_steps": 11,
         "eval_steps": 1000,
         "save_steps": 1000,
         "save_total_limit": 1,

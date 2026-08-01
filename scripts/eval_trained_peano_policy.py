@@ -299,7 +299,7 @@ def _require_training_job_binding(
     """Bind a scheduled evaluation to the job that produced its manifest.
 
     The submission helper exports the training predecessor as
-    ``PEANO_TRAIN_JOB_ID`` and records the same dependency in the immutable
+    ``PEANO_TRAIN_JOB_ID`` and records the same logical predecessor in the immutable
     submission ledger.  Neither claim is sufficient alone: this gate also
     reads the completed adapter's training manifest and requires all three
     job identifiers to agree before model weights are loaded.

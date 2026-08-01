@@ -119,7 +119,7 @@ def test_wmi_sync_and_submission_controls_fix_scope_and_preserve_outputs() -> No
         "sync -f \"$manifest\""
     ) < remote_submit.index("scontrol release \"$held_job\"")
     assert "scancel \"$held_job\"" in remote_submit
-    assert "WMI dependency is absent or belongs to a different chain" in remote_submit
+    assert "WMI predecessor is absent or belongs to a different chain" in remote_submit
     assert not any(line.lstrip().startswith("eval ") for line in combined.splitlines())
 
 
@@ -272,6 +272,136 @@ def test_wmi_predecessor_parser_preserves_empty_dependency_column(
     rejected = subprocess.run(command, capture_output=True, text=True)
     assert rejected.returncode == 1
     assert "absent or duplicated" in rejected.stderr
+
+
+def _run_wmi_common(*arguments: str) -> subprocess.CompletedProcess[str]:
+    command = "source \"$1\"; shift; \"$@\""
+    return subprocess.run(
+        [
+            "bash",
+            "-c",
+            command,
+            "bash",
+            str(SCRIPTS / "wmi_common.sh"),
+            *arguments,
+        ],
+        capture_output=True,
+        text=True,
+    )
+
+
+def test_wmi_completed_predecessor_omits_only_the_scheduler_edge() -> None:
+    parsed = _run_wmi_common(
+        "peano_wmi_parse_predecessor_accounting",
+        "217768",
+        "217768|COMPLETED|0:0|0:0",
+    )
+    assert parsed.returncode == 0
+    assert parsed.stdout == "COMPLETED|0:0|0:0\n"
+
+    completed = _run_wmi_common(
+        "peano_wmi_scheduler_dependency_argument",
+        "completed",
+        "COMPLETED",
+        "0:0",
+        "0:0",
+        "217768",
+    )
+    assert completed.returncode == 0
+    assert completed.stdout == ""
+
+    for state in ("PENDING", "CONFIGURING", "RUNNING", "COMPLETING"):
+        live = _run_wmi_common(
+            "peano_wmi_scheduler_dependency_argument",
+            "afterok",
+            state,
+            "0:0",
+            "0:0",
+            "217768",
+        )
+        assert live.returncode == 0
+        assert live.stdout == "--dependency=afterok:217768\n"
+
+
+def test_wmi_predecessor_accounting_and_modes_fail_closed() -> None:
+    malformed_records = (
+        "",
+        "217769|COMPLETED|0:0|0:0",
+        "217768|COMPLETED|0:0|0:0\n217768|COMPLETED|0:0|0:0",
+        "217768.batch|COMPLETED|0:0|0:0",
+        "217768|COMPLETED+|0:0|0:0",
+        "217768|COMPLETED|0:0|0:0|extra",
+    )
+    for record in malformed_records:
+        result = _run_wmi_common(
+            "peano_wmi_parse_predecessor_accounting", "217768", record
+        )
+        assert result.returncode != 0, record
+
+    rejected_states = (
+        ("completed", "FAILED", "0:0", "0:0"),
+        ("completed", "RUNNING", "0:0", "0:0"),
+        ("completed", "COMPLETED", "1:0", "0:0"),
+        ("completed", "COMPLETED", "0:0", "1:0"),
+        ("afterok", "COMPLETED", "0:0", "0:0"),
+        ("afterok", "CANCELLED", "0:0", "0:0"),
+    )
+    for mode, state, exit_code, derived_exit_code in rejected_states:
+        result = _run_wmi_common(
+            "peano_wmi_scheduler_dependency_argument",
+            mode,
+            state,
+            exit_code,
+            derived_exit_code,
+            "217768",
+        )
+        assert result.returncode != 0, (mode, state, exit_code, derived_exit_code)
+
+    train_completed = _run_wmi_common(
+        "peano_wmi_validate_predecessor_mode",
+        "slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch",
+        "completed",
+    )
+    train_live = _run_wmi_common(
+        "peano_wmi_validate_predecessor_mode",
+        "slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch",
+        "afterok",
+    )
+    eval_live = _run_wmi_common(
+        "peano_wmi_validate_predecessor_mode",
+        "slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch",
+        "afterok",
+    )
+    eval_completed = _run_wmi_common(
+        "peano_wmi_validate_predecessor_mode",
+        "slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch",
+        "completed",
+    )
+    assert train_completed.returncode == 0
+    assert train_live.returncode != 0
+    assert eval_live.returncode == 0
+    assert eval_completed.returncode == 0
+
+
+def test_wmi_completed_predecessor_keeps_provenance_binding() -> None:
+    submit = (SCRIPTS / "submit_wmi_slurm_job.sh").read_text(encoding="utf-8")
+    verifier = 'python3 scripts/verify_wmi_submission_predecessor.py'
+    accounting_gate = (
+        '  verify_predecessor_accounting\n  if [ "$job_script" = '
+        "slurm/peano_wmi_train_qwen3_1_7b.sbatch ]"
+    )
+    report_verifier = '"$verifier_python" scripts/verify_wmi_v3_sealed_preparation.py'
+    final_recheck = "# Re-read accounting immediately before submission."
+    held_submit = 'sbatch --hold --parsable'
+    assert submit.index(verifier) < submit.index(accounting_gate) < submit.index(
+        report_verifier
+    ) < submit.index(final_recheck) < submit.index(held_submit)
+    assert 'sacct -n -X -j "$predecessor_job_id"' in submit
+    assert "--format=JobIDRaw,State,ExitCode,DerivedExitCode -P" in submit
+    assert submit.count("verify_predecessor_accounting") == 4
+    assert "--export=ALL,PEANO_PREPARE_JOB_ID=$predecessor_job_id" in submit
+    assert '"$job_script" "$predecessor_job_id" "$PEANO_WMI_PROJECT_ROOT"' in submit
+    assert 'sbatch_args+=("--dependency=afterok:$predecessor_job_id")' not in submit
 
 
 def test_wmi_jobs_request_typed_a100_and_keep_training_offline() -> None:
@@ -506,7 +636,7 @@ def test_wmi_v3_chain_prepares_trains_and_evaluates_on_a100() -> None:
         "printf '%s\\n' slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch"
         in baseline_case
     )
-    assert "PEANO_TRAIN_JOB_ID=$afterok" in submit
+    assert "PEANO_TRAIN_JOB_ID=$predecessor_job_id" in submit
 
 
 def test_wmi_proof_request_is_file_backed_allowlisted_and_ledgered() -> None:
@@ -812,3 +942,20 @@ def test_wmi_local_submission_behavioral_harness(tmp_path: Path) -> None:
     )
     assert completed.returncode == 0, (completed.stdout, completed.stderr)
     assert completed.stdout == "WMI local control harness: OK\n"
+
+
+def test_wmi_remote_submission_behavioral_harness(tmp_path: Path) -> None:
+    harness = Path(__file__).with_name("wmi_remote_submission_harness.sh")
+    environment = os.environ.copy()
+    for name in tuple(environment):
+        if name.startswith("WMI_REMOTE_TEST_"):
+            environment.pop(name)
+    completed = subprocess.run(
+        ["bash", str(harness), str(REPO_ROOT), str(tmp_path)],
+        check=False,
+        capture_output=True,
+        text=True,
+        env=environment,
+    )
+    assert completed.returncode == 0, (completed.stdout, completed.stderr)
+    assert completed.stdout == "WMI remote submission harness: OK\n"

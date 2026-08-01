@@ -452,7 +452,7 @@ def _verify_preparation_reports(
             or submission.get("dependency_job_id") != reports.prepare_job_id
         ):
             raise ValueError(
-                "training job dependency differs from its preparation reports"
+                "training job predecessor differs from its preparation reports"
             )
 
     # The standard-library verifier is also invoked by the submitter and the
@@ -696,6 +696,11 @@ def _curriculum_schedule_preflight(
     )
     if expected_optimizer_steps < 1:
         raise ValueError("model-v3 schedule has no optimizer steps")
+    if (
+        type(config.trainer.logging_steps) is not int
+        or config.trainer.logging_steps < 1
+    ):
+        raise ValueError("model-v3 logging_steps must be a positive integer")
     if expected_optimizer_steps % config.trainer.logging_steps != 0:
         raise ValueError(
             "model-v3 optimizer schedule must be divisible by logging_steps"

@@ -7,13 +7,14 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$script_dir/wmi_common.sh"
 
 usage() {
-  echo "usage: $0 [--test-only] [--afterok JOB_ID] [--request-id ID] slurm/wmi-job.sbatch" >&2
-  echo "       $0 --submit --confirm $PEANO_WMI_CONFIRM_TOKEN [--afterok JOB_ID] [--request-id ID] slurm/wmi-job.sbatch" >&2
+  echo "usage: $0 [--test-only] [--afterok JOB_ID | --completed-predecessor JOB_ID] [--request-id ID] slurm/wmi-job.sbatch" >&2
+  echo "       $0 --submit --confirm $PEANO_WMI_CONFIRM_TOKEN [--afterok JOB_ID | --completed-predecessor JOB_ID] [--request-id ID] slurm/wmi-job.sbatch" >&2
 }
 
 mode=--test-only
 confirmation=""
-afterok=""
+predecessor_job_id=""
+predecessor_mode=""
 request_id=""
 job_script=""
 while [ "$#" -gt 0 ]; do
@@ -26,8 +27,13 @@ while [ "$#" -gt 0 ]; do
       ;;
     --afterok)
       [ "$#" -ge 2 ] || { usage; exit 2; }
-      [ -z "$afterok" ] || { echo "--afterok may appear only once" >&2; exit 2; }
-      afterok="$2"; shift 2
+      [ -z "$predecessor_job_id" ] || { echo "only one predecessor option is allowed" >&2; exit 2; }
+      predecessor_job_id="$2"; predecessor_mode=afterok; shift 2
+      ;;
+    --completed-predecessor)
+      [ "$#" -ge 2 ] || { usage; exit 2; }
+      [ -z "$predecessor_job_id" ] || { echo "only one predecessor option is allowed" >&2; exit 2; }
+      predecessor_job_id="$2"; predecessor_mode=completed; shift 2
       ;;
     --request-id)
       [ "$#" -ge 2 ] || { usage; exit 2; }
@@ -55,8 +61,8 @@ elif [ -n "$request_id" ]; then
   echo "--request-id is valid only for the WMI theorem-proof job" >&2
   exit 2
 fi
-[ -z "$afterok" ] || peano_wmi_validate_single_job_id "$afterok" || {
-  printf 'invalid --afterok job id: %s\n' "$afterok" >&2
+[ -z "$predecessor_job_id" ] || peano_wmi_validate_single_job_id "$predecessor_job_id" || {
+  printf 'invalid predecessor job id: %s\n' "$predecessor_job_id" >&2
   exit 2
 }
 if [ "$mode" = --test-only ] && [ -n "$confirmation" ]; then
@@ -68,16 +74,24 @@ if [ "$mode" = --submit ] && [ "$confirmation" != "$PEANO_WMI_CONFIRM_TOKEN" ]; 
   exit 2
 fi
 if peano_wmi_expected_predecessor "$job_script" >/dev/null; then
-  [ -n "$afterok" ] || { echo "WMI train/eval requires --afterok JOB_ID" >&2; exit 2; }
-elif [ -n "$afterok" ]; then
-  echo "this WMI job must not have a dependency" >&2
+  [ -n "$predecessor_job_id" ] || { echo "WMI train/eval requires a predecessor job" >&2; exit 2; }
+  peano_wmi_validate_predecessor_mode "$job_script" "$predecessor_mode" || {
+    echo "WMI training requires --completed-predecessor; evaluation accepts it or --afterok" >&2
+    exit 2
+  }
+elif [ -n "$predecessor_job_id" ]; then
+  echo "this WMI job must not have a predecessor" >&2
   exit 2
 fi
 
 ssh_target="$(peano_wmi_ssh_target)"
 remote_args=("$mode")
 [ "$mode" = --test-only ] || remote_args+=(--confirm "$confirmation")
-[ -z "$afterok" ] || remote_args+=(--afterok "$afterok")
+if [ "$predecessor_mode" = afterok ]; then
+  remote_args+=(--afterok "$predecessor_job_id")
+elif [ "$predecessor_mode" = completed ]; then
+  remote_args+=(--completed-predecessor "$predecessor_job_id")
+fi
 [ -z "$request_id" ] || remote_args+=(--request-id "$request_id")
 remote_args+=("$job_script")
 

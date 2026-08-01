@@ -7,13 +7,14 @@ script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$script_dir/wmi_common.sh"
 
 usage() {
-  echo "usage: $0 [--test-only] [--afterok JOB_ID] [--request-id ID] slurm/wmi-job.sbatch" >&2
-  echo "       $0 --submit --confirm $PEANO_WMI_CONFIRM_TOKEN [--afterok JOB_ID] [--request-id ID] slurm/wmi-job.sbatch" >&2
+  echo "usage: $0 [--test-only] [--afterok JOB_ID | --completed-predecessor JOB_ID] [--request-id ID] slurm/wmi-job.sbatch" >&2
+  echo "       $0 --submit --confirm $PEANO_WMI_CONFIRM_TOKEN [--afterok JOB_ID | --completed-predecessor JOB_ID] [--request-id ID] slurm/wmi-job.sbatch" >&2
 }
 
 mode=--test-only
 confirmation=""
-afterok=""
+predecessor_job_id=""
+predecessor_mode=""
 request_id=""
 job_script=""
 while [ "$#" -gt 0 ]; do
@@ -26,8 +27,13 @@ while [ "$#" -gt 0 ]; do
       ;;
     --afterok)
       [ "$#" -ge 2 ] || { usage; exit 2; }
-      [ -z "$afterok" ] || { echo "--afterok may appear only once" >&2; exit 2; }
-      afterok="$2"; shift 2
+      [ -z "$predecessor_job_id" ] || { echo "only one predecessor option is allowed" >&2; exit 2; }
+      predecessor_job_id="$2"; predecessor_mode=afterok; shift 2
+      ;;
+    --completed-predecessor)
+      [ "$#" -ge 2 ] || { usage; exit 2; }
+      [ -z "$predecessor_job_id" ] || { echo "only one predecessor option is allowed" >&2; exit 2; }
+      predecessor_job_id="$2"; predecessor_mode=completed; shift 2
       ;;
     --request-id)
       [ "$#" -ge 2 ] || { usage; exit 2; }
@@ -65,36 +71,81 @@ fi
   printf 'WMI job script is not one regular file: %s\n' "$job_script" >&2
   exit 2
 }
-[ -z "$afterok" ] || peano_wmi_validate_single_job_id "$afterok" || {
-  printf 'invalid --afterok job id: %s\n' "$afterok" >&2
+[ -z "$predecessor_job_id" ] || peano_wmi_validate_single_job_id "$predecessor_job_id" || {
+  printf 'invalid predecessor job id: %s\n' "$predecessor_job_id" >&2
   exit 2
 }
 expected_predecessor="$(peano_wmi_expected_predecessor "$job_script" || true)"
 if [ -n "$expected_predecessor" ]; then
-  [ -n "$afterok" ] || { echo "WMI train/eval requires --afterok JOB_ID" >&2; exit 2; }
-elif [ -n "$afterok" ]; then
-  echo "this WMI job must not have a dependency" >&2
+  [ -n "$predecessor_job_id" ] || { echo "WMI train/eval requires a predecessor job" >&2; exit 2; }
+  peano_wmi_validate_predecessor_mode "$job_script" "$predecessor_mode" || {
+    echo "WMI training requires --completed-predecessor; evaluation accepts it or --afterok" >&2
+    exit 2
+  }
+elif [ -n "$predecessor_job_id" ]; then
+  echo "this WMI job must not have a predecessor" >&2
   exit 2
 fi
 
 sbatch_args=()
-[ -z "$afterok" ] || sbatch_args+=("--dependency=afterok:$afterok")
 case "$job_script" in
   slurm/peano_wmi_train_qwen3_1_7b.sbatch|\
   slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch|\
   slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch)
-    sbatch_args+=("--export=ALL,PEANO_PREPARE_JOB_ID=$afterok")
+    sbatch_args+=("--export=ALL,PEANO_PREPARE_JOB_ID=$predecessor_job_id")
     ;;
   slurm/peano_wmi_eval_qwen3_1_7b.sbatch|\
   slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch|\
   slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch|\
   slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch)
-    sbatch_args+=("--export=ALL,PEANO_TRAIN_JOB_ID=$afterok")
+    sbatch_args+=("--export=ALL,PEANO_TRAIN_JOB_ID=$predecessor_job_id")
     ;;
   slurm/peano_wmi_prove_theorem.sbatch)
     sbatch_args+=("--export=ALL,PEANO_PROOF_REQUEST_ID=$request_id")
     ;;
 esac
+scheduler_dependency_arg=""
+verify_predecessor_accounting() {
+  local raw_record parsed_record predecessor_state exit_code derived_exit_code extra
+  scheduler_dependency_arg=""
+  if ! raw_record="$(
+    sacct -n -X -j "$predecessor_job_id" \
+      --format=JobIDRaw,State,ExitCode,DerivedExitCode -P
+  )"; then
+    echo "cannot verify the WMI predecessor accounting record" >&2
+    return 1
+  fi
+  if ! parsed_record="$(
+    peano_wmi_parse_predecessor_accounting "$predecessor_job_id" "$raw_record"
+  )"; then
+    printf 'WMI predecessor %s has no unique canonical accounting row\n' \
+      "$predecessor_job_id" >&2
+    return 1
+  fi
+  IFS='|' read -r predecessor_state exit_code derived_exit_code extra \
+    <<< "$parsed_record"
+  if [ -n "${extra:-}" ]; then
+    echo "internal WMI predecessor-accounting parse failure" >&2
+    return 1
+  fi
+  if ! scheduler_dependency_arg="$(
+    peano_wmi_scheduler_dependency_argument \
+      "$predecessor_mode" "$predecessor_state" "$exit_code" \
+      "$derived_exit_code" "$predecessor_job_id"
+  )"; then
+    if [ "$predecessor_mode" = afterok ] && \
+       [ "$predecessor_state" = COMPLETED ] && \
+       [ "$exit_code" = 0:0 ] && [ "$derived_exit_code" = 0:0 ]; then
+      printf 'WMI predecessor %s is complete; use --completed-predecessor\n' \
+        "$predecessor_job_id" >&2
+    else
+      printf 'WMI predecessor %s is not admissible in %s mode: %s %s %s\n' \
+        "$predecessor_job_id" "$predecessor_mode" "$predecessor_state" \
+        "$exit_code" "$derived_exit_code" >&2
+    fi
+    return 1
+  fi
+}
 request_sha256=""
 if [ -n "$request_id" ]; then
   request_path="results/peano-policy/requests/$request_id.json"
@@ -108,6 +159,11 @@ if [ -n "$request_id" ]; then
 fi
 if [ "$mode" = --test-only ]; then
   [ -z "$confirmation" ] || { echo "--confirm is only valid with --submit" >&2; exit 2; }
+  if [ -n "$predecessor_job_id" ]; then
+    verify_predecessor_accounting
+    [ -z "$scheduler_dependency_arg" ] || \
+      sbatch_args+=("$scheduler_dependency_arg")
+  fi
   exec sbatch --test-only "${sbatch_args[@]}" "$job_script"
 fi
 if [ "$confirmation" != "$PEANO_WMI_CONFIRM_TOKEN" ]; then
@@ -155,7 +211,7 @@ if [ -n "$request_id" ]; then
   fi
 fi
 
-if [ -n "$afterok" ]; then
+if [ -n "$predecessor_job_id" ]; then
   expected_predecessor_hash="$(sha256sum "$expected_predecessor" | awk '{print $1}')"
   support_hash="$(sha256sum scripts/wmi_job_environment.sh | awk '{print $1}')"
   expected_predecessor_hash="$({
@@ -163,58 +219,20 @@ if [ -n "$afterok" ]; then
     printf '%s\n' "$support_hash"
   } | sha256sum | awk '{print $1}')"
   if ! python3 scripts/verify_wmi_submission_predecessor.py \
-      "$manifest" "$afterok" "$expected_predecessor" \
+      "$manifest" "$predecessor_job_id" "$expected_predecessor" \
       "$PEANO_WMI_PROJECT_ROOT" "$commit" "$sync_timestamp" \
       "$expected_predecessor_hash"; then
-    echo "WMI dependency is absent or belongs to a different chain" >&2
+    echo "WMI predecessor is absent or belongs to a different chain" >&2
     exit 1
   fi
-  if ! predecessor_states="$(
-    sacct -n -X -j "$afterok" --format=State -P
-  )"; then
-    echo "cannot verify the WMI predecessor state" >&2
-    exit 1
-  fi
-  predecessor_state="$(printf '%s\n' "$predecessor_states" | sed -n '1p')"
-  predecessor_state="${predecessor_state%%+*}"
-  case "$job_script:$predecessor_state" in
-    slurm/peano_wmi_train_qwen3_1_7b.sbatch:COMPLETED|\
-    slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch:COMPLETED|\
-    slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch:COMPLETED|\
-    slurm/peano_wmi_eval_qwen3_1_7b.sbatch:PENDING|\
-    slurm/peano_wmi_eval_qwen3_1_7b.sbatch:CONFIGURING|\
-    slurm/peano_wmi_eval_qwen3_1_7b.sbatch:RUNNING|\
-    slurm/peano_wmi_eval_qwen3_1_7b.sbatch:COMPLETING|\
-    slurm/peano_wmi_eval_qwen3_1_7b.sbatch:COMPLETED|\
-    slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch:PENDING|\
-    slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch:CONFIGURING|\
-    slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch:RUNNING|\
-    slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch:COMPLETING|\
-    slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch:COMPLETED|\
-    slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch:PENDING|\
-    slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch:CONFIGURING|\
-    slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch:RUNNING|\
-    slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch:COMPLETING|\
-    slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch:COMPLETED|\
-    slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch:PENDING|\
-    slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch:CONFIGURING|\
-    slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch:RUNNING|\
-    slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch:COMPLETING|\
-    slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch:COMPLETED)
-      ;;
-    *)
-      printf 'WMI predecessor %s is not in an acceptable state: %s\n' \
-        "$afterok" "$predecessor_state" >&2
-      exit 1
-      ;;
-  esac
+  verify_predecessor_accounting
   if [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b.sbatch ] || \
      [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch ] || \
      [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch ]; then
     if [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch ]; then
-      eligibility_report="logs/peano-wmi-v3-sealed-eligibility-$afterok.json"
-      token_report="logs/peano-wmi-v3-token-audit-$afterok.json"
-      smoke_report="logs/peano-wmi-v3-prepare-runtime-$afterok.json"
+      eligibility_report="logs/peano-wmi-v3-sealed-eligibility-$predecessor_job_id.json"
+      token_report="logs/peano-wmi-v3-token-audit-$predecessor_job_id.json"
+      smoke_report="logs/peano-wmi-v3-prepare-runtime-$predecessor_job_id.json"
       for report in "$eligibility_report" "$token_report" "$smoke_report"; do
         [ -f "$report" ] && [ ! -L "$report" ] || {
           printf 'missing regular WMI v3 preparation report: %s\n' "$report" >&2
@@ -241,15 +259,15 @@ if [ -n "$afterok" ]; then
         --eligibility-report "$eligibility_report" \
         --token-audit-report "$token_report" \
         --smoke-report "$smoke_report" \
-        --prepare-job-id "$afterok" >/dev/null
+        --prepare-job-id "$predecessor_job_id" >/dev/null
       smoke_report=""
     elif [ "$job_script" = slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch ]; then
-      smoke_report="logs/peano-wmi-v2-prepare-runtime-$afterok.json"
-      data_report="logs/peano-wmi-v2-dataset-attestation-$afterok.json"
+      smoke_report="logs/peano-wmi-v2-prepare-runtime-$predecessor_job_id.json"
+      data_report="logs/peano-wmi-v2-dataset-attestation-$predecessor_job_id.json"
       smoke_format=peano-policy-wmi-a100-v2-smoke
     else
-      smoke_report="logs/peano-wmi-prepare-runtime-$afterok.json"
-      data_report="logs/peano-wmi-dataset-attestation-$afterok.json"
+      smoke_report="logs/peano-wmi-prepare-runtime-$predecessor_job_id.json"
+      data_report="logs/peano-wmi-dataset-attestation-$predecessor_job_id.json"
       smoke_format=peano-policy-wmi-a100-smoke
     fi
     if [ -n "$smoke_report" ]; then
@@ -259,7 +277,7 @@ if [ -n "$afterok" ]; then
           exit 1
         }
       done
-      python3 - "$smoke_report" "$afterok" "$smoke_format" <<'PY'
+      python3 - "$smoke_report" "$predecessor_job_id" "$smoke_format" <<'PY'
 import json
 from pathlib import Path
 import sys
@@ -287,7 +305,7 @@ while IFS='|' read -r active_job_id active_name active_state; do
     peano-wmi-v3-prepare|peano-wmi-qwen17-v3|peano-wmi-qwen17-v3-eval|\
     peano-wmi-v3-seal|peano-wmi-v3-sealprep|peano-wmi-qwen17-v3-base|\
     peano-wmi-prove|peano-wmi-probe)
-      if [ -z "$afterok" ] || [ "$active_job_id" != "$afterok" ]; then
+      if [ -z "$predecessor_job_id" ] || [ "$active_job_id" != "$predecessor_job_id" ]; then
         printf 'another WMI Peano job is active: %s %s %s\n' \
           "$active_job_id" "$active_name" "$active_state" >&2
         exit 1
@@ -315,6 +333,13 @@ cancel_held() {
   fi
 }
 trap cancel_held EXIT
+if [ -n "$predecessor_job_id" ]; then
+  # Re-read accounting immediately before submission.  In live mode a state
+  # transition is rejected rather than silently dropping the scheduler edge.
+  verify_predecessor_accounting
+  [ -z "$scheduler_dependency_arg" ] || \
+    sbatch_args+=("$scheduler_dependency_arg")
+fi
 submission="$(sbatch --hold --parsable "${sbatch_args[@]}" "$job_script")"
 held_job="${submission%%;*}"
 if [[ ! "$held_job" =~ ^[0-9]+$ ]]; then
@@ -322,7 +347,7 @@ if [[ ! "$held_job" =~ ^[0-9]+$ ]]; then
   exit 1
 fi
 printf '%s\t%s\t%s\t%s\t%s\t%s\tfalse\t%s\t%s\n' \
-  "$timestamp" "$held_job" "$job_script" "$afterok" "$PEANO_WMI_PROJECT_ROOT" \
+  "$timestamp" "$held_job" "$job_script" "$predecessor_job_id" "$PEANO_WMI_PROJECT_ROOT" \
   "$commit" "$sync_timestamp" "$script_sha256" >> "$manifest"
 sync -f "$manifest"
 if [ -n "$request_id" ]; then

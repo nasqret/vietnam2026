@@ -121,8 +121,14 @@ retry changed only that ceiling to 74,000,000. Job `217123` passed the resulting
 ran the representative smoke updates, but failed before smoke-report publication because the live
 Trainer model retained Accelerate's mixed-precision forward wrapper while the fresh reload used
 bare inference. The repair unwraps and verifies the original forward without weakening exact
-admission. No production model-v3 optimizer job has run; replacement preparation, adapter,
-evaluation, independent replay, and proof-quality results remain pending.
+admission. No production model-v3 optimizer job has run; adapter, evaluation, independent replay,
+and proof-quality results remain pending. Fresh replacement
+preparation `217768` has since passed all three reports, including exact bare-forward saved-policy
+admission. WMI submission distinguishes a live `--afterok` scheduler edge from a
+`--completed-predecessor` accounting/ledger/report binding after Slurm's controller retention
+expires; the latter preserves the producer identity without claiming a nonexistent live edge. The
+control change creates a new source identity, so `217768` cannot be relabelled: a post-fix sealed
+preparation must pass before training, with no intervening deployment.
 
 ## Related
 

@@ -1912,7 +1912,7 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   until evaluation and every immutable-input recheck passes, but a late
   validation timeout can no longer erase the only learned tensors.
 - Scheduled model-v3 evaluation now equates the adapter manifest's producer
-  job, `PEANO_TRAIN_JOB_ID`, and the recorded Slurm dependency before loading
+  job, `PEANO_TRAIN_JOB_ID`, and the recorded submission-ledger predecessor before loading
   weights. The report carries that binding and independent replay checks it.
   Interactive proof-request jobs use a distinct completed-manifest binding and
   do not pretend to have an evaluation-chain dependency.
@@ -2074,3 +2074,43 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   five skips; Lambda Lab reports 360 passed plus 36 subtests. The warning-as-
   error book, all 287 documented commands, the 248-entry knowledge base, and
   the 327-note/3,288-link vault also pass.
+
+## 2026-08-01 — Repaired preparation passed; completed predecessor made explicit
+
+- Fresh WMI job `217768` completed in 3h53m05s on one A100 with scheduler state
+  `COMPLETED`, ordinary exit `0:0`, and derived exit `0:0`. It passed sealed-corpus eligibility,
+  reproduced the accepted 20,765-row/73,446,475-token curriculum, completed representative LoRA
+  updates plus a real Trainer step/evaluation, restored the bare forward, and passed exact
+  saved-policy admission and fresh reload. Independent verification accepts all three terminal
+  reports. Smoke train/evaluation losses were `2.7942631244659424` and `0.8226498961448669`; they
+  are infrastructure diagnostics, not a production learning result.
+- The first production dry-run then exposed a scheduler/API mismatch rather than a model failure.
+  WMI's Slurm controller has `MinJobAge=300`: persistent `sacct` still retained the successful
+  allocation row, but the controller had purged it, so a newly attached
+  `--dependency=afterok:217768` was rejected with “Job dependency problem.”
+- Submission now distinguishes the two authorities. `--afterok` is only for a live producer and
+  emits an edge whose dependent job may run only if that producer succeeds. `--completed-predecessor` requires exactly one
+  canonical `JobIDRaw|State|ExitCode|DerivedExitCode` row with `COMPLETED|0:0|0:0`, preserves the
+  job ID in the environment and append-only ledger, rechecks the exact same-source predecessor and,
+  where required for preparation-to-training, its terminal reports, and emits no impossible
+  scheduler edge. Accounting is re-read immediately
+  before held submission; every failed, missing, duplicate, malformed, nonzero, or mismatched row
+  fails closed.
+- Production optimization is still unstarted at this checkpoint. The next legitimate event is a
+  clean deployment followed by one fresh sealed preparation under that exact source. The guarded
+  training submission may use only that new job; exact provenance deliberately forbids relabelling
+  `217768` across the submission-fix commit.
+- The same final audit corrected a latent schedule mismatch. Exact selection admits 20,765 rows,
+  so microbatch one with accumulation 32 yields 649 optimizer updates, unlike the old 20,782-row
+  fixture that yielded 650.
+  Logging every 10 steps would have failed the reviewed terminal-boundary preflight before model
+  allocation. Production now changes only the observation interval to 11 because
+  `649 = 11 × 59`; batching, warmup (33 steps), recovery snapshots, objective, and optimizer are
+  unchanged. The evidence contract still requires a periodic finite-loss record at the final
+  update rather than accepting a partial last logging interval.
+- Final local admission is green: 1,769 Peano tests passed with five expected skips; Lambda Lab
+  passed 360 tests plus 36 subtests; all 38 book sources built with warnings as errors; 194 links,
+  47 sessions, and 287 commands replayed; and the 248-entry knowledge base plus
+  327-note/3,288-link vault verified. The executed fake-Slurm harness covers completed/live modes,
+  the second accounting read, ledger preservation, and held-submit ordering. No production or
+  preparation job was active when these gates completed.

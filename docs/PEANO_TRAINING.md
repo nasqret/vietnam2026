@@ -1,7 +1,7 @@
 # Peano Lab post-training experiment — M19 research protocol
 
 **Status:** binding experiment protocol with the first accepted WMI model-v1 result, the historical
-model-v2 launch stack, and the implemented model-v3 successor recorded through 2026-07-31.
+model-v2 launch stack, and the implemented model-v3 successor recorded through 2026-08-01.
 Model-v3 binds the complete 247-theorem ladder and corrects the curriculum, loss, artifact, and
 leakage contracts described below. WMI job `172536` is the recorded failed first preparation.
 Retry `172729` generated both source lanes and published the exact 64,500/6,948/7,046 split, but
@@ -18,9 +18,17 @@ and one-epoch bounds remain unchanged. Retry `217123` passed the resulting exact
 ran the representative LoRA/Trainer smoke, but failed closed before smoke-report publication:
 Accelerate's retained mixed-precision forward wrapper was compared with a bare fresh reload. The
 repair explicitly restores and verifies the original bare forward before saved-policy admission
-in both smoke and production. No production training job, checkpoint, evaluation score, or solve-
-rate claim exists yet. Result fields are filled only after the corresponding artifacts
+in both smoke and production. Fresh job `217768` then passed the complete sealed-preparation
+contract: corpus eligibility, exact token exposure, representative LoRA updates, one real Trainer
+step/evaluation, bare-forward saved-policy admission, and fresh reload all succeeded. Its three
+terminal reports independently verify against the original job and clean source. No production
+training optimizer step, checkpoint, evaluation score, or solve-rate claim exists yet. Result
+fields are filled only after the corresponding artifacts
 exist and claimed proofs have passed a separate independent kernel replay.
+The completed-predecessor submission repair described below is itself a source transition.
+Therefore `217768` proves the repaired preparation path but cannot authorize training after that
+new commit is deployed: one fresh sealed preparation under the submission-fix commit must pass the
+same three gates first.
 This document extends M9; it does not weaken any Peano Lab trust rule.
 
 ## 1. What changed after M9
@@ -1069,6 +1077,13 @@ supervised completion length 936. The capped evaluation view contained 1,351,537
 linear correction and every unchanged token gate. They do not authorize training because the
 later runtime smoke did not publish an accepted report.
 
+Fresh repaired preparation `217768` reproduced the same token counts and completed the missing
+runtime-smoke boundary. Its one-step smoke recorded finite training loss
+`2.7942631244659424` and evaluation loss `0.8226498961448669`; these are smoke diagnostics, not
+production-learning results. Its accepted three-report chain was an admissible training
+predecessor only for its exact clean source. Deploying the completed-predecessor control change
+intentionally invalidates that same-source join, so the new tree requires a fresh preparation.
+
 #### Completion-only loss without full-sequence vocabulary logits
 
 The supervised target is still exactly one tactic line followed by EOS. Prompt labels are
@@ -1258,15 +1273,22 @@ After a clean current-source deployment, the accepted WMI chain is:
    again before final publication. The job requires one visible A100 and one process, rejects
    resume, and runs the indexed completion objective. The schedule is derived from the admitted
    row count; Trainer checkpointing and periodic evaluation are disabled, and the actual
-   optimizer-step count must equal the preflight count. This is stronger than placing their
+   optimizer-step count must equal the preflight count. The measured 20,765 rows and accumulation
+   32 give 649 updates. Logging every 11 updates gives exactly 59 periodic records and retains the
+   fail-closed rule that the terminal update is itself a logging boundary. This is stronger than placing their
    intervals beyond the schedule: Transformers' default flow can still request a terminal
    checkpoint at `max_steps`. Separate adapter-only recovery snapshots are predeclared in that
-   schedule. For the expected 650-step run they occur after steps
+   schedule. For the measured 649-step run they occur after steps
    100, 200, 300, 400, 500, and 600. Each contains only PEFT safetensors and loader metadata: no
    optimizer, scheduler, RNG, `trainer_state`, or pickle-compatible resume artifact. A snapshot is
    built in a private, visibly partial sibling, bound to the stable `run-identity.json` bytes and
    their source/Slurm job, fsynced, made read-only, verified, then installed by the selected
    publication profile. Failed staging trees and prior snapshots are never removed or overwritten.
+   Submission names the successful accounting record with `--completed-predecessor`. The guarded
+   submitter requires one exact `sacct` allocation row with matching `JobIDRaw`, state
+   `COMPLETED`, and both exit codes `0:0`; then it rechecks the immutable same-source ledger and all
+   preparation reports. It deliberately emits no Slurm `afterok` argument, because Slurm rejects a
+   newly attached dependency after the completed job ages out of the controller.
    Its manifest says `training_complete=false`, `eligible_as_training_result=false`, and
    `resumable=false`; neither the generator nor evaluator accepts it as a completed run. The
    completed adapter and tokenizer are still saved before the explicit full validation pass, so a
@@ -1307,7 +1329,7 @@ After a clean current-source deployment, the accepted WMI chain is:
    goals with sampled kernel-guided search at depth 32, beam width 16, eight candidates per state,
    512 model calls, 4,096 states, and 256 tokens per candidate. These four goals are still only a
    launch smoke. Before model loading, the evaluator requires the adapter manifest's training job,
-   `PEANO_TRAIN_JOB_ID`, and the recorded Slurm dependency to be the same numeric job. That binding
+   `PEANO_TRAIN_JOB_ID`, and the submission-ledger predecessor to be the same numeric job. That binding
    is preserved in the report and checked again by independent replay.
 4. `peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch` is a separate same-authority control. It
    verifies the completed adapter manifest and closed adapter/tokenizer trees but never attaches
@@ -1329,7 +1351,7 @@ The guarded remote submission shape is:
 scripts/submit_wmi_slurm_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
   slurm/peano_wmi_prepare_v3_sealed_training.sbatch
 scripts/submit_wmi_slurm_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
-  --afterok SEALED_PREP_JOB slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch
+  --completed-predecessor SEALED_PREP_JOB slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch
 scripts/submit_wmi_slurm_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
   --afterok TRAIN_JOB slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch
 scripts/submit_wmi_slurm_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
@@ -1340,6 +1362,12 @@ python3 scripts/replay_peano_v3_evaluation.py \
   --source-commit EVALUATION_CLEAN_COMMIT \
   --evaluation-job-id EVALUATION_JOB
 ```
+
+Use `--afterok` only while the named predecessor is live in Slurm
+(`PENDING`, `CONFIGURING`, `RUNNING`, or `COMPLETING`). If training has already completed, use
+`--completed-predecessor TRAIN_JOB` for either evaluator. The latter requires a canonical
+successful accounting row and preserves the exact logical predecessor in `PEANO_TRAIN_JOB_ID` and
+the append-only ledger, but correctly omits a scheduler edge that Slurm can no longer accept.
 
 The training batch script runs the equivalent model-free storage check before invoking the trainer:
 
@@ -1353,15 +1381,20 @@ python3 scripts/preflight_recovery_publication.py verify \
 
 Both commands retain and recheck the probe; they never clean up or replace prior evidence.
 
-The submission wrapper defaults to `--test-only`, checks the immutable deployment ledger and exact
-predecessor script, submits held, appends the job identity durably, and only then releases it. The
+The submission wrapper defaults to `--test-only`. Real submission checks the immutable deployment
+ledger, exact predecessor script, canonical accounting state and exit codes, and, where required
+(notably preparation-to-training), terminal reports;
+rechecks accounting immediately before submission; submits held; appends the job identity durably;
+and only then releases it. The legacy ledger column `dependency_job_id` records the logical
+predecessor in both live and completed modes; it does not by itself claim that a scheduler edge was
+emitted. The
 implemented Slurm limits are eight hours for sealed preparation, 36 hours for training, and twelve
 hours for evaluation. Current result ledger:
 
 | Result-dependent field | Status at this checkpoint |
 |---|---|
 | historical corpus seal path/content digest | `checkpoints/corpora/peano-policy-v3-173040`; `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b` (job `213641`, verified) |
-| current-source sealed-preparation job/report digests | job `217123` passed eligibility and token audit, then failed closed at saved-policy admission before a smoke report; wrapper-restoration retry **pending** |
+| last verified sealed preparation | job `217768` under source `e0f7e7d0cf6d0fbd6797a355980874d1918a8732`: eligibility `ab753a38d3ac7b88f63fb859d35a797a8537f788231fda7705bf0e26d74e40f0`; token audit `91acb72b2ff8545d5b88d1b1aff18e8aabda877997c2720ae7ce35c6a8341218`; runtime smoke `628213fe764d5107db855968074404661df8cb6fa9efd90792894cddf2aa1add`; a fresh post-submission-fix preparation is **pending** because source identity changes |
 | selected train/evaluation rows and exact token exposure | accepted token audit: 20,765 train rows (8,494 catalog + 12,271 synthetic), 73,446,475 train tokens, 415,247,631,205 squared train tokens; 512 evaluation rows and 1,351,537 tokens |
 | optimizer steps, losses, adapter and tokenizer digests | **pending** |
 | evaluation job/report and independently replayed proofs | **pending** |

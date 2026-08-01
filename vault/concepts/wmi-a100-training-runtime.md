@@ -132,8 +132,11 @@ checks the immutable ledger, expected predecessor script, report digests, and cu
 environment before releasing a held job. Evaluation is followed by a model-free independent
 kernel replay. The corpus seal digest is fixed above; job `214264` is rejected evidence, not an
 accepted predecessor. Job `217123` contributes a valid token audit but no accepted runtime-smoke
-report and is likewise not a training predecessor. A replacement sealed-preparation job, training and evaluation job IDs,
-adapter, independent replay, and model-v3 solve results remain pending.
+report and is likewise not a training predecessor. Repaired job `217768`
+subsequently passed all three preparation reports under source `e0f7e7d0`, but the reviewed
+completed-predecessor and 649-step schedule fixes create a new exact source identity. A fresh
+post-fix sealed-preparation job, training and evaluation job IDs, adapter, independent replay, and
+model-v3 solve results therefore remain pending rather than relabelling `217768`.
 
 ## Related
 

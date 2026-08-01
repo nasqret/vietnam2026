@@ -12,7 +12,7 @@ runtime, a kernel-judged evaluator, and guarded Helios job controls.  These piec
 outside the kernel.  They can make proof search faster; they cannot make an invalid certificate
 valid.
 
-```{admonition} Experiment status, 2026-07-31
+```{admonition} Experiment status, 2026-08-01
 :class: important
 The local execution, prompt, training-runtime, evaluation, provenance, and cluster control paths are
 implemented, and the first attested training-scale data release is complete: 2,522 independently
@@ -41,7 +41,11 @@ token audit and ran the representative LoRA/Trainer smoke, but failed closed at 
 admission because the live model retained Accelerate's mixed-precision forward wrapper while the
 fresh reload used the bare inference forward. The repair now restores and verifies that bare
 forward in smoke and production without weakening exact equality. No production training job has
-run and no persistent adapter exists, so its proof quality and search gain remain unknown.
+run and no persistent adapter exists, so its proof quality and search gain remain unknown. Fresh
+sealed-preparation job `217768` has now passed all three then-current-source gates, including the repaired
+bare-forward admission and exact fresh reload. It was admissible for its exact clean source. The
+completed-predecessor submission repair is a new source commit, so the same-source contract requires
+one more sealed preparation after that commit is deployed before production training.
 The historical reconciled model-v2 authority is 63 public entries, seven dependency-closed import
 exclusions, and 56 permitted records. Model-v3 binds the later 247-entry ladder independently.
 The 4B comparison and expert iteration are still deferred.
@@ -1126,13 +1130,37 @@ The new GPU path is intentionally split:
    kernel-guided search with depth 32, beam width 16, eight candidates per state, 512 model calls,
    4,096 states, and 256 generated tokens per candidate. Before loading weights, the evaluator
    equates the manifest's training-job ID, the exported predecessor ID, and the submission-ledger
-   dependency; independent replay checks the recorded binding. Later interactive proof requests
+   predecessor; independent replay checks the recorded binding. Later interactive proof requests
    are labelled separately because they consume an already completed adapter and have no false
    `afterok` edge.
 4. **Independent replay** loads no model. It accepts only the exact evaluator-v4 authority and
    search budget, checks all duplicated counters and proof payloads, and sends every attempt marked
    `proof` through a fresh `verify_proof` call against its original goal. It emits a canonical
    non-overwriting attestation.
+
+### A logical predecessor is not always a live Slurm edge
+
+WMI's Slurm controller retains a finished job only for its configured `MinJobAge` (observed as
+300 seconds), although `sacct` keeps the accounting record much longer. Slurm therefore rejects a
+new `afterok` dependency once a successful producer has aged out of the controller. That happened
+after preparation `217768`: `sacct` still reported exactly
+`217768|COMPLETED|0:0|0:0`, while a new scheduler dependency was no longer legal.
+
+The launch API now represents the distinction directly. `--afterok JOB` is accepted only for a
+live `PENDING`, `CONFIGURING`, `RUNNING`, or `COMPLETING` predecessor and emits exactly one Slurm
+edge. `--completed-predecessor JOB` requires one canonical matching `sacct` allocation row,
+`COMPLETED`, and zero ordinary and derived exit codes; it emits no scheduler edge. Both modes still
+bind the same job ID into the environment and the append-only ledger. Real submission also verifies
+the predecessor's same-source ledger row and script/helper digest, plus the terminal preparation
+reports where the handoff requires them, then rechecks accounting immediately before the
+held-submit → durable-ledger-append → release transaction. The
+historical ledger field remains named `dependency_job_id` for compatibility, but its durable
+meaning is the logical predecessor, not proof that Slurm still carried an edge.
+
+That same-source check has a real operational cost: changing this submitter is still a repository
+source transition. Preparation `217768` cannot be relabelled as the predecessor of training from the
+new commit, even though none of its mathematical data changed. The honest continuation is a fresh
+sealed preparation after deployment, followed by training without any intervening source sync.
 
 ### What “training completed” means
 
@@ -1147,7 +1175,7 @@ clip is disabled; the callback performs the only clip with max norm $1$ and
 The adapter itself supplies a second independent completion test. Before the first update and after
 the last, the runner sorts the trainable names and hashes canonical records containing each name,
 dtype, shape, and raw-content SHA-256. The population must remain identical, every final tensor must
-be finite, and at least one tensor record must change. Thus 650 callback events around a no-op or
+be finite, and at least one tensor record must change. Thus 649 callback events around a no-op or
 miswired optimizer do not become a usable adapter.
 
 That still identifies a Python object, not the directory students will later load. Model-v3 adds a
@@ -1197,8 +1225,10 @@ serialization. Production keeps BF16 autocast but pins `bf16_full_eval=False`, t
 the trainable population after serialization and again after explicit evaluation. Equality is
 required at both boundaries.
 
-The exact Trainer history has 65 periodic records at steps 10 through 650, followed by one final
-training summary and one explicit validation summary, both at step 650. Extra, reordered,
+The exact Trainer history has 59 periodic records at steps 11 through 649, followed by one final
+training summary and one explicit validation summary, both at step 649. The interval is 11 because
+the measured schedule is $649 = 11 \times 59$; this preserves the reviewed requirement that the
+last optimizer update has its own periodic loss record. Extra, reordered,
 non-finite, or inconsistent records are rejected. The reported `train_loss` is a mean of
 optimizer-window completion-token means; with evaluation batch size one, `eval_loss` is a mean of
 per-example completion-token means. These are useful diagnostics, but neither is mislabeled as the
@@ -1287,10 +1317,12 @@ preparation job `214264` passed eligibility, deterministically selected 20,765 t
 rejected their 73,446,475 tokens against the old 70-million ceiling; it produced neither an
 accepted token-audit report nor a runtime-smoke report. Retry `217123` passed the 74-million token
 gate and published the complete selected train/evaluation audit, then failed at the retained-
-wrapper admission boundary before a runtime-smoke report. A fresh repaired preparation job,
-production optimizer-step count, adapter hashes, losses, evaluation job, solve results, and
-independent replay digest remain explicitly **pending**. An A100 allocation is not evidence that
-transformer training has begun.
+wrapper admission boundary before a runtime-smoke report. Fresh repaired preparation job `217768`
+then passed the repaired smoke and all three independent report checks under source
+`e0f7e7d0`. The completed-predecessor and exact-649-step fixes change source identity, so one fresh
+post-fix preparation remains **pending**. Production optimizer-step count, adapter hashes, losses,
+evaluation job, solve results, and independent replay digest are likewise pending. An A100
+allocation is not evidence that transformer training has begun.
 
 ## Reproduction and honest resume
 
@@ -1493,8 +1525,10 @@ limitations remain:
   `173040`, and seal job `213641` produced and authenticated the complete immutable corpus; job
   `214264` then failed the old 70-million linear-token gate at 73,446,475 tokens; retry `217123`
   passed all token gates but exposed a retained Accelerate forward wrapper at saved-policy
-  admission, so a fresh repaired preparation must still finish before the registered WMI training
-  run;
+  admission; fresh job `217768` then passed eligibility, the exact token audit, the complete
+  repaired runtime smoke, and independent three-report verification; because the submission repair
+  changes source identity, a fresh post-fix preparation is still required before production
+  training and no optimizer result exists;
 - the four-goal protocol set is a regression fixture, not a statistically useful final test, and
   hard whole-template OOD sets plus human-authored problems still need to be sealed;
 - depth-32 verifier-guided beam search is implemented, but its gain with a trained model-v3 policy

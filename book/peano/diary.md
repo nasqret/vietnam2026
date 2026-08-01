@@ -2376,3 +2376,65 @@ the unchanged Lambda sibling reports 360 passed plus 36 subtests. The warning-as
 Book, all 194 deep links and 47 executable sessions (287 commands), the 248-entry arithmetic
 knowledge base, and the 327-note/3,288-link vault pass. The next claim must come from a fresh WMI
 smoke report, not from these CPU tests.
+
+## 2026-08-01 — A completed proof obligation is not a live scheduler edge
+
+Fresh sealed-preparation job `217768` supplied the missing machine evidence. It completed in
+3h53m05s on an A100 and passed eligibility, the exact token audit, representative LoRA updates, a
+real Trainer step and evaluation, restored-bare-forward admission, and a fresh local-only reload.
+The independent verifier accepted all three terminal reports. The smoke losses were finite
+(`2.7942631244659424` for training and `0.8226498961448669` for evaluation), but they are only
+one-step lifecycle diagnostics. They say nothing yet about the production adapter's proof ability.
+
+The next dry-run failed before allocation with Slurm's “Job dependency problem.” That initially
+looked surprising: persistent accounting still said exactly
+`217768|COMPLETED|0:0|0:0`. The important distinction is that WMI's controller retains a completed
+job for only `MinJobAge=300` seconds. Slurm permits a new `afterok` attachment only while the job is
+active or remains in that controller window. `sacct` is durable evidence of successful completion;
+it is not evidence that the controller can still construct a dependency edge.
+
+I chose to make the distinction explicit rather than retry after failure or silently reinterpret a
+flag. `--afterok JOB` now means a live scheduler dependency and accepts only `PENDING`,
+`CONFIGURING`, `RUNNING`, or `COMPLETING`. `--completed-predecessor JOB` means a durable completed
+handoff. It accepts only one exact allocation row for that numeric `JobIDRaw`, state `COMPLETED`,
+ordinary exit `0:0`, and derived exit `0:0`; duplicate rows, steps, arrays, truncation, malformed
+fields, missing accounting, and every unsuccessful state fail closed. Training requires completed
+mode. Evaluation can use live mode while its producer runs or completed mode afterward.
+
+The new mode changes the scheduler argument and strengthens accounting admission; it does not change
+the logical producer identity. That predecessor remains in `PEANO_PREPARE_JOB_ID` or
+`PEANO_TRAIN_JOB_ID`, the historical `dependency_job_id` ledger column, the same-source predecessor
+row, the composite job/helper digest, and every report/runtime cross-check. Real submission re-reads
+accounting immediately before `sbatch --hold`, appends and fsyncs the new ledger row, and only then
+releases the held job. This is a small but useful systems lesson for students: a durable proof that
+an event happened and a live mechanism that waits for the event are different objects, even when
+an early prototype calls both a “dependency.”
+
+There is one intentionally expensive consequence. The guarded predecessor verifier joins both jobs
+to the exact clean deployed commit and synchronization timestamp. Committing this control fix changes
+that identity. Therefore I cannot use `217768` after deployment merely because the training payload
+looks unchanged; doing so would silently weaken the chain we built. The next run must be another
+sealed preparation from the fix commit, followed by training without an intervening source sync.
+Four hours of repeated machine evidence is cheaper than teaching that provenance may be waived when
+it becomes inconvenient.
+
+The audit also caught a completely separate arithmetic error in the launch contract. Early tests
+used a synthetic 20,782-row fixture, which gives 650 updates at accumulation 32. The sealed selector
+actually admits 20,765 rows, so production gives
+$\lceil 20{,}765 / 32 \rceil = 649$. The old preflight would reject 649 because its ten-step logging
+interval did not divide the schedule. Removing that invariant would lose the dedicated periodic
+loss record at the terminal optimizer update. Instead, production logging moves from 10 to 11:
+$649 = 11 \times 59$. There are now exactly 59 periodic records ending at step 649, followed by the
+training and evaluation summaries at the same step. The 33-step warmup, six recovery snapshots at
+100 through 600, batching, objective, and optimizer remain unchanged. A regression runs the real
+production config against the measured row count so the pleasant 20,782-row fixture cannot hide this
+boundary again.
+
+The final local gate passed 1,769 Peano tests with five expected skips and all 360 Lambda tests plus
+36 subtests. The warning-as-error book rebuilt all 38 sources; 194 links, 47 executable sessions,
+and 287 commands replayed; the 248-entry arithmetic knowledge base and 327-note/3,288-link vault
+verified. A copied-root fake-Slurm harness executes the real guarded submitter without weakening its
+fixed production root. It proves both predecessor modes, exact environment/ledger binding, two
+accounting reads, rejection of bad or changing state, and held-submit → durable append → release
+ordering. These gates authorize one clean deployment and a fresh preparation, not a claim about a
+trained policy.
