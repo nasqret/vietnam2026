@@ -119,8 +119,9 @@ The adapter-only recovery path depends on a real filesystem capability, not just
 availability. Before scheduled training, a retained model-free probe exercises the production
 `renameat2(RENAME_NOREPLACE)` branch on the exact `/work` output filesystem, fsyncs and protects its
 sentinel tree, and publishes an exclusive canonical report. The trainer binds that report into its
-run identity and rechecks the live probe before final publication. Until that WMI probe actually
-runs, Linux shared-filesystem support remains pending rather than assumed.
+run identity and rechecks the live probe before final publication. Job `217859` passed and retained
+that exact-filesystem publication preflight before optimization, so the current run has direct
+Linux shared-filesystem evidence rather than an assumption.
 
 Recovery accepts exact modes `0555` for directories and `0444` for regular files. These protected
 modes are provenance and accidental-corruption gates. They do not defend against a hostile process
@@ -132,11 +133,23 @@ checks the immutable ledger, expected predecessor script, report digests, and cu
 environment before releasing a held job. Evaluation is followed by a model-free independent
 kernel replay. The corpus seal digest is fixed above; job `214264` is rejected evidence, not an
 accepted predecessor. Job `217123` contributes a valid token audit but no accepted runtime-smoke
-report and is likewise not a training predecessor. Repaired job `217768`
-subsequently passed all three preparation reports under source `e0f7e7d0`, but the reviewed
-completed-predecessor and 649-step schedule fixes create a new exact source identity. A fresh
-post-fix sealed-preparation job, training and evaluation job IDs, adapter, independent replay, and
-model-v3 solve results therefore remain pending rather than relabelling `217768`.
+report and is likewise not a training predecessor. Repaired job `217768` passed all three
+preparation reports under source `e0f7e7d0`, but the completed-predecessor and 649-step schedule
+fixes created a new exact source identity. Fresh same-source preparation `217851` then passed the
+full chain under source `4d44609e`; guarded successor `217859` is actively running the production
+optimizer. Its live progress and recovery trees are evidence of execution, not a final adapter or
+model-v3 solve result.
+
+## Read-only live observation
+
+The Training Observatory keeps the browser outside WMI authority. A localhost-only Python
+collector serializes one fixed bounded SSH read, caches sanitized JSON, and exposes only GET/HEAD
+routes. VPN loss turns the last view visibly stale. The browser cannot submit, cancel, signal, name
+a remote path, or run a command. Exact production loss is shown only after a flushed Trainer record
+or final manifest; admission-smoke loss is labeled separately. Because the Trainer shuffles rows
+and accumulates 32 microbatches, its corpus panel shows representative admitted examples, never a
+claimed current batch. See the repository document
+[`docs/PEANO_TRAINING_DASHBOARD.md`](../../docs/PEANO_TRAINING_DASHBOARD.md).
 
 ## Related
 

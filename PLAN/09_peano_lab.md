@@ -627,12 +627,12 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       then failed closed at saved-policy admission because the live model retained Accelerate's
       mixed-precision forward wrapper while the fresh reload used the bare inference forward. The
       repair explicitly restores and verifies the original forward before admission. Fresh
-      preparation `217768` passed corpus eligibility, the exact token audit, the complete repaired
-      runtime smoke, and independent three-report verification under source `e0f7e7d0`. The
-      completed-predecessor submission fix is a new source transition, so `217768` must not be
-      relabelled as its predecessor. Run one fresh preparation after deploying the fix and do not
-      sync again before dependent training. Record no production optimizer step, checkpoint,
-      loss, adapter hash, or quality result before its corresponding artifact exists.
+      same-source preparation `217851` passed corpus eligibility, the exact token audit, the
+      complete repaired runtime smoke, fresh reload, and independent three-report verification
+      under source `4d44609e`. Production job `217859` is now running the guarded 649-update
+      Qwen3-1.7B rank-32 optimizer on one WMI A100 without an intervening source sync. Recovery
+      evidence is live; the final manifest, adapter hashes, evaluation, and quality result remain
+      pending and must not be claimed before their corresponding artifacts exist.
 - [ ] Treat the four sealed model-v3 goals as a launch smoke, not a sufficient capability
       benchmark. Before making a general proof-quality claim, add a larger hidden kernel-checked
       suite spanning multistep induction, theorem composition, order, divisibility, and quantified
@@ -660,16 +660,17 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   separately from a live Slurm `afterok` edge, because the controller rejects new dependencies
   after `MinJobAge`; ledger, source, script/helper, report, and job-environment bindings remain
   mandatory. Because that control repair changes the clean source identity, a fresh post-fix
-  preparation remains mandatory; `217768` is evidence for the repaired smoke, not a predecessor
-  that may be relabelled across commits. The measured 20,765 rows produce 649 optimizer updates;
-  production logging is now every 11 steps, giving 59 periodic records ending at the terminal update, while
-  batching, warmup, snapshots, objective, and optimizer remain fixed. No production optimizer step,
-  checkpoint, loss, adapter hash, evaluation solve count, or replay
-  digest exists. The real-Trainer smoke, completion-evidence gate, strict raw-gradient clip,
+  preparation was therefore repeated: job `217851` passed under clean source `4d44609e`, and its
+  same-source guarded successor `217859` is actively training. The measured 20,765 rows produce
+  649 optimizer updates; production logging is every 11 steps, giving 59 exact periodic records
+  through the terminal update, while batching, warmup, snapshots, objective, and optimizer remain
+  fixed. Progress and partial recovery evidence exist; redirected stdout has not yet exposed exact
+  production loss, and no final adapter hash, evaluation solve count, or replay digest exists. The
+  real-Trainer smoke, completion-evidence gate, strict raw-gradient clip,
   saved-policy admission, exclusive publication, and independent replay remain implemented
   safeguards whose production WMI execution must be established by the training chain.
 
-- **Current verification (2026-08-01):** the complete Peano suite reports 1,769 passed with five
+- **Last milestone-wide verification before the dashboard (2026-08-01):** the complete Peano suite reports 1,769 passed with five
   expected skips; Lambda Lab reports 360 passed plus 36 subtests. All 38 Jupyter Book sources build
   with warnings as errors; 194 deep links, 47 sessions, and 287 commands replay; the 248-entry
   arithmetic knowledge base and 327-note/3,288-link vault verify. Bash syntax, Python compilation,

@@ -518,11 +518,15 @@
   saved-policy-admission, and reload gates; `sacct` records `COMPLETED|0:0|0:0`. Because Slurm rejects a new `afterok` edge after a
   completed job ages out of its 300-second controller retention, guarded submission now uses
   `--completed-predecessor` for the durable accounting/ledger/report binding and reserves
-  `--afterok` for live jobs. That fix creates a new source commit, so exact provenance forbids
-  relabelling `217768`; one post-fix preparation must pass before training. The same audit fixes
-  the measured schedule at 649 updates for 20,765 rows and changes only production logging from 10
-  to 11, yielding 59 exact periodic records through the terminal step. No production training
-  optimizer step or solve-rate claim exists. The attestor's independent-builder watchdog is eight hours, above the
+  `--afterok` for live jobs. Exact provenance therefore forbade relabelling `217768`. Fresh
+  same-source preparation `217851` subsequently passed every gate under clean source `4d44609e`,
+  and guarded production successor `217859` is actively running the 649-step rank-32 Qwen3-1.7B
+  optimizer on one WMI A100. Recovery evidence and live progress exist; production loss remains
+  buffered, and no final adapter, solve rate, or replay claim exists. The schedule uses logging 11,
+  yielding 59 exact periodic records through the terminal step. A loopback-only Training
+  Observatory reads fixed bounded WMI evidence without exposing SSH or scheduler mutation to the
+  browser and labels corpus examples as representative rather than current microbatches. The
+  attestor's independent-builder watchdog is eight hours, above the
   exact measured 5h07m first build; the old four-hour value would have rejected
   a legitimate replay deterministically.
 - **Model-v3 prelaunch durability and chain binding (2026-07-30):** the

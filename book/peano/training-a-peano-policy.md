@@ -14,46 +14,60 @@ valid.
 
 ```{admonition} Experiment status, 2026-08-01
 :class: important
-The local execution, prompt, training-runtime, evaluation, provenance, and cluster control paths are
-implemented, and the first attested training-scale data release is complete: 2,522 independently
-kernel-checked roots compile to exactly 10,000 positive rows. WMI completed the first accepted
-100-step train/evaluate chain. The result is mixed and deliberately narrow: 0/4 frozen goals at
-pass@4, zero successful parity rollouts in 16 samples (pass@16 = 0.0), and one kernel-checked proof
-among eight samples for a fresh direct-witness theorem. That success is consistent with a represented
-pattern, but attribution to fine-tuning awaits the pretrained-base baseline; the adapter is not yet
-a useful induction/order prover. Since that model-v1 result, the model-v2 library identity,
-retrieval prompt, balanced 100,000-row generator, tokenizer gate, depth-32 verifier-guided search,
-heavy 1.7B configuration, and persistent local/WMI/Helios REPL have been implemented. No model-v2 heavy
-checkpoint was trained or evaluated. It is retained as an auditable design stage, while model-v3
-now supersedes it with the complete 247-theorem checked ladder, leakage-safe prefix trajectories,
-a whole-session root-balanced synthetic curriculum, indexed completion logits, an immutable corpus
-seal, and a native 32,768-token no-truncation gate. The first model-v3 preparation failed closed;
-retry `172729` generated both source lanes and published the complete split, but its combined
-allocation could not also finish independent replay and runtime gates. Exact-corpus continuation
-`173040` completed those checks from clean commit `5faa3d27`. Current-source job `213641` then
-published and independently verified the immutable 15-file corpus with content SHA-256
-`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`. That real digest now
-binds the one-epoch curriculum configuration. Sealed-preparation job `214264` passed eligibility
-and then failed closed at the tokenizer gate: 73,446,475 selected train tokens exceeded the
-reviewed 70,000,000-token ceiling. No accepted token-audit or smoke report was published. The
-reviewed retry raised only the linear ceiling to 74,000,000. Job `217123` then passed the complete
-token audit and ran the representative LoRA/Trainer smoke, but failed closed at saved-policy
-admission because the live model retained Accelerate's mixed-precision forward wrapper while the
-fresh reload used the bare inference forward. The repair now restores and verifies that bare
-forward in smoke and production without weakening exact equality. No production training job has
-run and no persistent adapter exists, so its proof quality and search gain remain unknown. Fresh
-sealed-preparation job `217768` has now passed all three then-current-source gates, including the repaired
-bare-forward admission and exact fresh reload. It was admissible for its exact clean source. The
-completed-predecessor submission repair is a new source commit, so the same-source contract requires
-one more sealed preparation after that commit is deployed before production training.
-The historical reconciled model-v2 authority is 63 public entries, seven dependency-closed import
-exclusions, and 56 permitted records. Model-v3 binds the later 247-entry ladder independently.
-The 4B comparison and expert iteration are still deferred.
+The local execution, prompt, training-runtime, evaluation, provenance, and guarded cluster paths
+are implemented. Historical model-v1 WMI training produced a deliberately narrow result: 0/4
+frozen goals at pass@4 and one checked direct-witness proof among eight samples. Model-v2 remains
+an auditable design stage. Model-v3 supersedes it with the complete 247-theorem checked ladder,
+leakage-safe predecessor-prefix trajectories, a whole-session root-balanced synthetic curriculum,
+indexed completion loss, an immutable corpus seal, and a native 32,768-token no-truncation gate.
+
+Fresh same-source sealed preparation `217851` completed in 4h01m09s under clean commit
+`4d44609ee32d5d28726c082ef7b5649c0a1107a6`. It passed eligibility, the exact
+20,765-row/73,446,475-token audit, representative LoRA updates, a real Trainer step and evaluation,
+restored-bare-forward saved-policy admission, fresh reload, and independent report verification.
+Production job `217859` is now actively running the 649-update Qwen3-1.7B Base rank-32 LoRA
+optimizer on one WMI A100. Recovery adapter evidence is published every 100 updates. This is an
+execution claim only: the final adapter, kernel-judged evaluation, pretrained-base comparison,
+solve rate, 4B comparison, and expert iteration remain pending.
 ```
 
 The binding research protocol is
 [`docs/PEANO_TRAINING.md`](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_TRAINING.md).
 This chapter explains why that protocol has its present shape.
+
+## Watching training without steering it
+
+A long cluster job should be observable without giving a web page scheduler authority. Peano Lab's
+Training Observatory therefore keeps SSH in a small loopback Python process:
+
+```text
+browser → localhost JSON cache → fixed read-only SSH reader → WMI evidence
+```
+
+The browser polls every five seconds while visible. The collector serializes remote reads, accepts
+one explicit decimal job number, reads only fixed Slurm commands, bounded artifact reads, and log
+tails, and
+retains the last good snapshot when the VPN drops. There is no cancel, submit, arbitrary-command,
+path, or write endpoint. Remote values enter the document as text, and the server sends a strict
+same-origin content-security policy.
+
+The more subtle design problem is semantic honesty. The active Trainer shuffles rows and is
+configured to accumulate up to 32 microbatches per optimizer step; its final partial window has 29.
+The corpus inspector therefore says *representative reported sample*, not *current batch*.
+Likewise, job `217859` emits carriage-return progress immediately but buffers
+its periodic loss dictionaries in redirected stdout. The dashboard plots only exact flushed or
+terminal-manifest loss records. Until one exists, it leaves the production curve empty and labels
+the preparation loss `2.8299612998962402` as a one-step admission-smoke diagnostic. GPU activity,
+step time, or a falling ETA can never be repackaged as learning evidence.
+
+Run the view with:
+
+```bash
+make peano-training-dashboard PEANO_TRAIN_JOB=217859
+```
+
+The complete architecture, field meanings, security boundary, and test contract are in
+[`docs/PEANO_TRAINING_DASHBOARD.md`](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_TRAINING_DASHBOARD.md).
 
 ## The useful interpretation of “a compact Peano Lab”
 
@@ -1157,10 +1171,10 @@ held-submit → durable-ledger-append → release transaction. The
 historical ledger field remains named `dependency_job_id` for compatibility, but its durable
 meaning is the logical predecessor, not proof that Slurm still carried an edge.
 
-That same-source check has a real operational cost: changing this submitter is still a repository
-source transition. Preparation `217768` cannot be relabelled as the predecessor of training from the
-new commit, even though none of its mathematical data changed. The honest continuation is a fresh
-sealed preparation after deployment, followed by training without any intervening source sync.
+That same-source check had a real operational cost: changing this submitter was a repository source
+transition. Preparation `217768` could not be relabelled as the predecessor of training from the
+new commit, even though none of its mathematical data changed. The required continuation was fresh
+sealed preparation `217851`; guarded training `217859` followed without an intervening source sync.
 
 ### What “training completed” means
 
@@ -1308,7 +1322,7 @@ and
 The binding command sequence and pending-result ledger live in
 [`docs/PEANO_TRAINING.md`](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_TRAINING.md#106-model-v3-sealed-curriculum-indexed-objective-and-launch-chain).
 
-At this documentation checkpoint, WMI job `172729` generated both source lanes, exact-corpus
+In the historical preparation sequence, WMI job `172729` generated both source lanes, exact-corpus
 continuation `173040` completed independent attestation, token audit, and A100 runtime smoke, and
 current-source seal job `213641` published the immutable corpus. A separate verifier reproduced its
 content SHA-256
@@ -1319,10 +1333,11 @@ accepted token-audit report nor a runtime-smoke report. Retry `217123` passed th
 gate and published the complete selected train/evaluation audit, then failed at the retained-
 wrapper admission boundary before a runtime-smoke report. Fresh repaired preparation job `217768`
 then passed the repaired smoke and all three independent report checks under source
-`e0f7e7d0`. The completed-predecessor and exact-649-step fixes change source identity, so one fresh
-post-fix preparation remains **pending**. Production optimizer-step count, adapter hashes, losses,
-evaluation job, solve results, and independent replay digest are likewise pending. An A100
-allocation is not evidence that transformer training has begun.
+`e0f7e7d0`. The completed-predecessor and exact-649-step fixes changed source identity, so fresh
+post-fix preparation `217851` repeated and passed the complete gate under `4d44609e`. Production
+optimizer `217859` is now running on an A100. Its live steps and recovery trees establish execution,
+but adapter hashes, exact production loss records, evaluation, solve results, and the independent
+replay digest remain pending.
 
 ## Reproduction and honest resume
 
@@ -1517,18 +1532,19 @@ The current work establishes that one small trained adapter can emit a shallow c
 not that fine-tuning caused the success or that the adapter is broadly useful for PA. Important
 limitations remain:
 
-- the only trained result is still the narrow 10,000-row model-v1 smoke; no model-v2 or model-v3
-  heavy adapter or quality measurement exists;
+- the only *completed and evaluated* result is still the narrow 10,000-row model-v1 smoke;
+  model-v3 production optimization is active but has no admitted final adapter or quality
+  measurement yet;
 - model-v3's 247-theorem identity, strict predecessor-prefix generator, 51-schema root-balanced
   generator, whole-session selector, indexed completion objective, immutable-seal/current-source
   eligibility gate, and independent evaluation replay are implemented; retry `172729`, continuation
   `173040`, and seal job `213641` produced and authenticated the complete immutable corpus; job
   `214264` then failed the old 70-million linear-token gate at 73,446,475 tokens; retry `217123`
   passed all token gates but exposed a retained Accelerate forward wrapper at saved-policy
-  admission; fresh job `217768` then passed eligibility, the exact token audit, the complete
-  repaired runtime smoke, and independent three-report verification; because the submission repair
-  changes source identity, a fresh post-fix preparation is still required before production
-  training and no optimizer result exists;
+  admission; after the completed-predecessor repair, fresh same-source preparation `217851` passed
+  eligibility, the exact token audit, repaired runtime smoke, and independent three-report
+  verification; production optimizer job `217859` is now running, while its final admission and
+  quality evidence do not yet exist;
 - the four-goal protocol set is a regression fixture, not a statistically useful final test, and
   hard whole-template OOD sets plus human-authored problems still need to be sealed;
 - depth-32 verifier-guided beam search is implemented, but its gain with a trained model-v3 policy

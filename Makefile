@@ -15,12 +15,14 @@ PEANO_CORPUS_PYTHON ?= python3
 PEANO_POLICY_DIR ?= data/peano-policy-v2
 PEANO_POLICY_PILOT_DIR ?= data/peano-policy-pilot-v1
 PEANO_POLICY_ROWS ?= 10000
+PEANO_TRAIN_JOB ?= 217859
+PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 # This path is a deletion target in `stage-peano`; command-line assignments
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
 override PEANOAPPID := a-77df7c0860bc
 
-.PHONY: help book book-atlas lean lean-fta lab-serve peano-serve peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
+.PHONY: help book book-atlas lean lean-fta lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
 	deploy clean
 
@@ -32,6 +34,7 @@ help:
 	@echo "  make lean-fta     build & exact-axiom-check the Lean FTA companion"
 	@echo "  make lab-serve    serve lab-lambda locally on :8001"
 	@echo "  make peano-serve serve the staged Peano Lab locally on :8002"
+	@echo "  make peano-training-dashboard  observe WMI job $(PEANO_TRAIN_JOB) on :$(PEANO_TRAIN_DASHBOARD_PORT)"
 	@echo "  make peano-corpus reproduce the leakage-safe Peano train/val release"
 	@echo "  make peano-corpus-smoke  run the all-ladder M9 generation/export smoke"
 	@echo "  make peano-policy-pilot  build the checked M19 pilot policy dataset"
@@ -73,6 +76,9 @@ lab-serve:
 peano-serve: stage-peano
 	@echo "→ http://localhost:8002/  (Ctrl-C to stop)"
 	cd "$(STAGEPEANO)" && python3 -m http.server 8002
+
+peano-training-dashboard:
+	python3 scripts/serve_wmi_training_dashboard.py --job-id "$(PEANO_TRAIN_JOB)" --port "$(PEANO_TRAIN_DASHBOARD_PORT)"
 
 # The committed learning release deliberately omits every ladder session.  Raw
 # session JSONL remains a reproducible intermediate in /tmp; the manifest keeps

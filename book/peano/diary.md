@@ -2438,3 +2438,54 @@ fixed production root. It proves both predecessor modes, exact environment/ledge
 accounting reads, rejection of bad or changing state, and held-submit → durable append → release
 ordering. These gates authorize one clean deployment and a fresh preparation, not a claim about a
 trained policy.
+
+## 2026-08-01 — A training window should be a window, not a control panel
+
+Fresh sealed preparation `217851` completed the post-submission-fix proof obligation under clean
+source `4d44609e`, so same-source production job `217859` could finally begin the 649-update
+Qwen3-1.7B LoRA run. I wanted a live browser view, but “direct log fetching” contains an important
+authority trap: JavaScript cannot read SSH logs without either receiving credentials or being
+given a general remote-command proxy. Neither belongs in an observational teaching tool.
+
+The implemented boundary is intentionally narrow. A standard-library Python server listens only
+on `127.0.0.1`. One background thread executes one reviewed read-only SSH program at a time. That
+program knows a fixed WMI root, fixed Slurm queries, fixed artifact names, byte ceilings, and a
+validated decimal job ID. The browser receives only a sanitized JSON projection and fixed local
+assets. There are no write, upload, cancel, submit, signal, arbitrary-command, or arbitrary-path
+routes. A last-good cache means a lost VPN produces an honest stale view instead of a blank screen
+or a false live badge.
+
+Two missing values forced better interface language. First, Transformers progress uses stderr and
+arrives immediately, whereas its Python dictionary logs are block-buffered in redirected stdout
+for this already-running job. A tempting chart could interpolate loss from progress or display the
+preparation smoke as if it came from production. Both would be lies. The chart accepts only exact
+flushed logging records or final-manifest evidence. Until then it says “awaiting,” while the
+one-step preparation loss is named *admission smoke* and described as an infrastructure diagnostic.
+
+Second, the Trainer shuffles the corpus and is configured to aggregate up to 32 microbatches per
+optimizer update; this run's final partial window contains 29. From
+the files we can show representative admitted examples, but not the exact current row. The corpus
+inspector therefore says precisely that. It previews theorem, formula, focused proof state,
+available-library names, and hides the supervised next tactic behind an explicit reveal button.
+This is pedagogically nicer too: a student can predict the next action before comparing it with the
+training target.
+
+The visual language follows Peano Lab itself: deep navy instrument panels, cyan structure,
+emerald verified/live states, monospace proof surfaces, a phase rail, native progress, an SVG loss
+plot with an accessible table, recovery evidence, run provenance, GPU telemetry, and bounded live
+logs. Polling slows when the tab is hidden, overlapping reads are forbidden, remote values use
+`textContent`, and reduced-motion/high-contrast/mobile layouts are explicit.
+
+The focused contract currently reports 25 passes. It covers adversarial parser inputs, strict host
+and job validation, bounded response sizes, stale-cache preservation, loopback and GET-only HTTP,
+fixed routing, security headers, self-contained assets, JavaScript syntax, accessibility, and the
+two honesty labels above. The dashboard makes training legible; it does not move the soundness
+boundary. The model may later suggest proofs, but only independent kernel replay can turn one into
+a theorem.
+
+A final review found that the same honesty rule applies to the Refresh button. The HTTP response to
+a refresh request may still contain the previous cached snapshot while the serialized SSH read is
+running. The interface now waits for `fetched_at` to advance instead of flashing “Live” immediately,
+allows sixty seconds because a requested twenty-five-second read may queue behind another such
+read, and queues a click that arrives during an automatic browser poll. This small state machine is
+preferable to pretending that a request and its eventual observation are the same event.

@@ -64,11 +64,29 @@ have no `accepted_statuses` escape hatch.
 
 ## Runs
 
+For a read-only live view of a guarded WMI run, see
+[`docs/PEANO_TRAINING_DASHBOARD.md`](../../docs/PEANO_TRAINING_DASHBOARD.md) and run:
+
+```bash
+make peano-training-dashboard PEANO_TRAIN_JOB=217859
+```
+
+The local browser receives sanitized cached JSON, never SSH authority. The dashboard distinguishes
+exact production-loss evidence from the predecessor's one-step admission-smoke loss and labels its
+sealed-corpus samples as representative rather than pretending to know the shuffled microbatch.
+
+## Configured runs
+
 The initial configurations are:
 
 - `configs/qwen3_1_7b_smoke.toml`: 100 optimizer steps, rank-8 LoRA;
 - `configs/qwen3_4b_pilot.toml`: two epochs, rank-16 LoRA; and
 - `configs/pythagoras_4b_pilot.toml`: two epochs, rank-16 LoRA.
+
+The active model-v3 production configuration is
+`configs/qwen3_1_7b_v3_library.toml`: one whole-session-selected epoch over 20,765 rows,
+649 optimizer updates at configured accumulation 32 (29 microbatches in the final partial window),
+and rank-32/alpha-64 LoRA.
 
 All three use BF16 weights and PyTorch SDPA.  They require neither FlashAttention,
 vLLM, bitsandbytes, nor quantized loading.  Helios `ML-bundle/25.10` supplies

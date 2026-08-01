@@ -1,34 +1,20 @@
 # Peano Lab post-training experiment — M19 research protocol
 
-**Status:** binding experiment protocol with the first accepted WMI model-v1 result, the historical
-model-v2 launch stack, and the implemented model-v3 successor recorded through 2026-08-01.
-Model-v3 binds the complete 247-theorem ladder and corrects the curriculum, loss, artifact, and
-leakage contracts described below. WMI job `172536` is the recorded failed first preparation.
-Retry `172729` generated both source lanes and published the exact 64,500/6,948/7,046 split, but
-its combined allocation could not also finish independent replay, token audit, and smoke. Exact-
-corpus continuation `173040` completed those gates from clean commit `5faa3d27`; it accepted only
-the known twelve files and manifest digest and regenerated no data. Current-source seal job
-`213641` then published and independently verified the immutable corpus with content SHA-256
-`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`. Current-source sealed-
-preparation job `214264` then passed corpus eligibility but failed closed after 1h58m16s when the
-exact selected train exposure, 73,446,475 tokens, exceeded the reviewed 70,000,000-token linear
-ceiling. It produced no accepted token-audit or smoke report and loaded no optimizer. The reviewed
-retry raised only that ceiling to 74,000,000; all row, context, quadratic, evaluation, completion,
-and one-epoch bounds remain unchanged. Retry `217123` passed the resulting exact token audit and
-ran the representative LoRA/Trainer smoke, but failed closed before smoke-report publication:
-Accelerate's retained mixed-precision forward wrapper was compared with a bare fresh reload. The
-repair explicitly restores and verifies the original bare forward before saved-policy admission
-in both smoke and production. Fresh job `217768` then passed the complete sealed-preparation
-contract: corpus eligibility, exact token exposure, representative LoRA updates, one real Trainer
-step/evaluation, bare-forward saved-policy admission, and fresh reload all succeeded. Its three
-terminal reports independently verify against the original job and clean source. No production
-training optimizer step, checkpoint, evaluation score, or solve-rate claim exists yet. Result
-fields are filled only after the corresponding artifacts
-exist and claimed proofs have passed a separate independent kernel replay.
-The completed-predecessor submission repair described below is itself a source transition.
-Therefore `217768` proves the repaired preparation path but cannot authorize training after that
-new commit is deployed: one fresh sealed preparation under the submission-fix commit must pass the
-same three gates first.
+**Status:** binding experiment protocol with the historical accepted WMI model-v1 result, the
+model-v2 design stage, and the active model-v3 successor recorded through 2026-08-01. Model-v3 binds
+the complete 247-theorem ladder and the immutable corpus seal at content SHA-256
+`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`. After the earlier fail-closed
+preparation diagnostics described below, fresh same-source sealed preparation `217851` completed
+in 4h01m09s under clean commit `4d44609ee32d5d28726c082ef7b5649c0a1107a6`. It passed corpus
+eligibility, the exact 20,765-row/73,446,475-token audit, representative LoRA updates, one real
+Trainer step and evaluation, restored-bare-forward saved-policy admission, fresh reload, and the
+independent terminal-report verifier. Production job `217859` is now actively training the pinned
+Qwen3-1.7B Base rank-32 adapter on one WMI A100: 649 optimizer updates, effective batch 32, one
+complete selected-curriculum pass, and recovery publications at steps 100 through 600. This is a
+live optimizer fact, not a capability result. The final adapter, evaluation report, kernel-replayed
+proofs, and solve rate remain pending. Result fields are filled only after their artifacts exist
+and every claimed proof has passed a separate independent kernel replay. A local read-only live
+view is documented in [Peano Lab Training Observatory](PEANO_TRAINING_DASHBOARD.md).
 This document extends M9; it does not weaken any Peano Lab trust rule.
 
 ## 1. What changed after M9
@@ -915,7 +901,7 @@ not identify parameter count as the limiting factor.
 The immutable training manifest, held-out report, two arbitrary-request reports, compact index, and
 checked positive script are published under [`artifacts/peano-policy/`](../artifacts/peano-policy/).
 
-### 10.5 Model-v3 successor: first WMI preparation diagnosed; training pending
+### 10.5 Model-v3 successor: from fail-closed preparation to a live production run
 
 Model-v3 replaces the undersized model-v2 authority with all 247 declaration-ordered public
 theorems. Its checked identity binds each canonical statement, dependency list, source
@@ -969,7 +955,7 @@ replay later succeeded in continuation `173040`, and current-source job `213641`
 authenticated immutable corpus seal. Sealed-preparation job `214264` subsequently reached the
 complete selected-curriculum tokenizer scan and failed its old 70,000,000-token linear gate at
 73,446,475 tokens, before runtime smoke or training. The reviewed replacement ceiling is
-74,000,000 tokens; optimizer training remains pending. The WMI preparation order now invokes this
+74,000,000 tokens; optimizer training was still pending at that checkpoint. The WMI preparation order now invokes this
 synthetic prepass before the library generator, so a schedule-contract failure
 cannot again consume an hour of unrelated proof replay first. It also requires the model-v3 data
 directory to be empty before either generator starts, turning stale partial-run artifacts into an
@@ -1025,8 +1011,9 @@ order, divisibility, and quantified witnesses under fixed budgets.
 The original registered draft used an 80,000-row cap and two epochs. That draft is superseded by
 the sealed whole-session protocol below. In particular, row-prefix truncation is forbidden, and a
 second pass over the longest prompts is not justified until one exact selected-curriculum pass has
-been measured. No model-v3 training submission, checkpoint, evaluation score, or model-quality
-claim is recorded yet.
+been measured. At that draft checkpoint no model-v3 training submission, checkpoint, evaluation
+score, or model-quality claim had been recorded. Current production job `217859` now establishes
+live optimizer execution only; the final checkpoint and all quality claims remain pending.
 
 ### 10.6 Model-v3 sealed curriculum, indexed objective, and launch chain
 
@@ -1083,6 +1070,9 @@ runtime-smoke boundary. Its one-step smoke recorded finite training loss
 production-learning results. Its accepted three-report chain was an admissible training
 predecessor only for its exact clean source. Deploying the completed-predecessor control change
 intentionally invalidates that same-source join, so the new tree requires a fresh preparation.
+That required preparation is now job `217851`, and its guarded same-source production successor
+`217859` is running. This later event does not retroactively turn either earlier attempt into valid
+evidence.
 
 #### Completion-only loss without full-sequence vocabulary logits
 
@@ -1394,9 +1384,9 @@ hours for evaluation. Current result ledger:
 | Result-dependent field | Status at this checkpoint |
 |---|---|
 | historical corpus seal path/content digest | `checkpoints/corpora/peano-policy-v3-173040`; `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b` (job `213641`, verified) |
-| last verified sealed preparation | job `217768` under source `e0f7e7d0cf6d0fbd6797a355980874d1918a8732`: eligibility `ab753a38d3ac7b88f63fb859d35a797a8537f788231fda7705bf0e26d74e40f0`; token audit `91acb72b2ff8545d5b88d1b1aff18e8aabda877997c2720ae7ce35c6a8341218`; runtime smoke `628213fe764d5107db855968074404661df8cb6fa9efd90792894cddf2aa1add`; a fresh post-submission-fix preparation is **pending** because source identity changes |
+| last verified sealed preparation | job `217851` under source `4d44609ee32d5d28726c082ef7b5649c0a1107a6`; complete eligibility, exact token-audit, runtime-smoke, and independent three-report verification passed |
 | selected train/evaluation rows and exact token exposure | accepted token audit: 20,765 train rows (8,494 catalog + 12,271 synthetic), 73,446,475 train tokens, 415,247,631,205 squared train tokens; 512 evaluation rows and 1,351,537 tokens |
-| optimizer steps, losses, adapter and tokenizer digests | **pending** |
+| optimizer steps, losses, adapter and tokenizer digests | job `217859` is **running** the 649-step production optimizer; progress and recovery trees are live, while exact production loss is still buffered and final artifact digests are pending |
 | evaluation job/report and independently replayed proofs | **pending** |
 | same-authority pretrained-base comparison report | **pending** |
 

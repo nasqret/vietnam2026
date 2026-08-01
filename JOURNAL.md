@@ -2114,3 +2114,29 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   327-note/3,288-link vault verified. The executed fake-Slurm harness covers completed/live modes,
   the second accounting read, ledger preservation, and held-submit ordering. No production or
   preparation job was active when these gates completed.
+
+## 2026-08-01 — Same-source training is live; observation remains read-only
+
+- Fresh post-fix sealed preparation `217851` completed in 4h01m09s under clean source
+  `4d44609ee32d5d28726c082ef7b5649c0a1107a6`. It passed the exact eligibility and token audits,
+  representative LoRA and Trainer smoke, restored-bare-forward admission, fresh reload, and the
+  independent terminal-report verifier. Its smoke losses (`2.8299612998962402` train and
+  `0.8195649981498718` evaluation) remain lifecycle diagnostics only.
+- Guarded same-source production successor `217859` is running on one A100-SXM4-80GB. The audited
+  schedule has 649 optimizer updates, 20,765 selected rows, 73,446,475 train tokens, effective
+  batch 32, and non-resumable recovery publications every 100 steps. A live observation during
+  dashboard validation reached step 196/649 with one step-100 recovery tree. This observation is
+  not a terminal result and will naturally become stale.
+- Added the Peano Lab Training Observatory: a dependency-free browser UI backed by a standard-
+  library server bound only to `127.0.0.1`. One serialized collector runs a fixed read-only SSH
+  program, projects bounded Slurm/log/artifact evidence, and keeps the last good snapshot visibly
+  stale across VPN failures. The browser has no SSH credential, arbitrary command/path, scheduler
+  mutation, or remote write surface.
+- The UI deliberately refuses two seductive false claims. Shuffling plus accumulation means no
+  exact “current dataset row” is observable, so it shows representative admitted catalog samples.
+  Redirected stdout has not flushed the production Trainer dictionaries, so the loss curve is
+  empty and status is `buffered`; the predecessor's one-step loss is separately labeled admission
+  smoke. Exact flushed points or terminal-manifest evidence will backfill without inference.
+- The focused parser/server/web contract reports 25 passes, covering hostile parsing, bounds,
+  stale-cache semantics, loopback routing, prohibited methods, security headers, self-contained
+  assets, JavaScript syntax, accessible loss fallback, and honest sample labeling.
