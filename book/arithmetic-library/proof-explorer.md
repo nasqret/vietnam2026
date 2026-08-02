@@ -26,6 +26,9 @@ your mathematical route.
   <a class="btn btn-primary" href="../_static/pa-proof-explorer/index.html">
     Open the full proof explorer
   </a>
+  <a class="btn btn-outline-primary" href="../_static/pa-proof-explorer/defined/index.html">
+    Open the 40-definition reading edition
+  </a>
   <a class="btn btn-outline-primary" href="../_static/pa-proof-explorer/foundations.html">
     Read the PA grammar and axioms
   </a>
@@ -76,6 +79,12 @@ The existing {doc}`theorem atlas <theorem-atlas>` remains the compact,
 progressively enhanced view of the public 384-theorem snapshot. The explorer
 adds the exact quadratic-reciprocity closure and permanent line-level routes;
 it does not silently promote those candidates into `pa lib`.
+
+When a fully expanded formula obscures the mathematical structure, use the
+{doc}`definition-aware edition <defined-proof-explorer>`. It preserves the
+same `PA` tags, 557-node proof graph, exact native replay lines, and
+public/candidate status while providing a 40-entry conservative-definition
+registry; 38 definitions occur in this closure.
 
 For the exact syntax and trust base behind every page, continue with the
 {doc}`PA language reference <../peano/language-reference>` and

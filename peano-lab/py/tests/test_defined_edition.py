@@ -138,13 +138,29 @@ def test_exact_qr_closure_has_complete_receipts_metrics_and_compilation() -> Non
     assert edition.metrics.candidate_theorem_count == 317
     assert edition.metrics.tactic_line_count == 27_491
     assert edition.metrics.local_statement_count == 1_839
-    assert edition.metrics.changed_theorem_statement_count > 400
-    assert edition.metrics.changed_local_statement_count > 1_200
-    assert edition.metrics.defined_statement_characters < (
-        edition.metrics.expanded_statement_characters // 2
+    assert edition.metrics.changed_theorem_statement_count == 506
+    assert edition.metrics.changed_local_statement_count == 1_275
+    assert edition.metrics.expanded_statement_characters == 2_457_096
+    assert edition.metrics.defined_statement_characters == 107_386
+    assert edition.metrics.expanded_local_statement_characters == 1_971_403
+    assert edition.metrics.defined_local_statement_characters == 111_519
+    assert edition.metrics.longest_expanded_statement == (
+        "eisenstein_transposed_column_count_prefix_extend",
+        82_377,
     )
-    assert edition.metrics.defined_local_statement_characters < (
-        edition.metrics.expanded_local_statement_characters // 2
+    assert edition.metrics.longest_defined_statement == (
+        "eisenstein_transposed_column_count_prefix_extend",
+        1_759,
+    )
+    assert edition.metrics.longest_expanded_local_statement == (
+        "eisenstein_rectangle_floor_sum_identity",
+        15,
+        36_479,
+    )
+    assert edition.metrics.longest_defined_local_statement == (
+        "eisenstein_successor_row_split_prefix_exists",
+        26,
+        963,
     )
     root = edition.by_name["quadratic_reciprocity_combined"]
     assert root.defined_spec.statement.startswith("∀ p. ∀ q. ")

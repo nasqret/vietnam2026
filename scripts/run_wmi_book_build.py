@@ -261,6 +261,12 @@ def main() -> int:
                 True,
             ),
             (
+                "06b-defined-proof-explorer-check",
+                [str(venv_python), "scripts/build_pa_defined_explorer.py", "--check"],
+                600,
+                True,
+            ),
+            (
                 "07-jupyter-book-build",
                 [str(jupyter_book), "build", "book/", "--warningiserror", "--keep-going"],
                 1800,

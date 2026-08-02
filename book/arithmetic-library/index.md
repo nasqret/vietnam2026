@@ -55,6 +55,10 @@ The {doc}`interactive theorem atlas <theorem-atlas>` gives a readable local
 neighborhood instead of attempting to draw all 1,038 edges at once. The
 {doc}`native PA proof explorer <proof-explorer>` adds permanent theorem tags,
 numbered tactic-line targets, and the larger quadratic-reciprocity closure.
+Its parallel {doc}`definition-aware edition <defined-proof-explorer>` renders
+the same 557 specifications with a 40-entry conservative-definition registry
+(38 definitions occur) and exact native replay lines; it does not change the
+proof graph or admission status.
 Its {doc}`interactive dependency graph <dependency-graph>` draws short or
 critical premise chains, start-to-target corridors, and complete transitive
 cones.
@@ -66,6 +70,7 @@ cones.
 | understand the mathematics | {doc}`Guided route from zero to FTA <guided-tour>` | the focused theorem links inside each stage |
 | inspect every native proof | {doc}`Interactive theorem atlas <theorem-atlas>` | exact statements, complete scripts, dependencies and dependents |
 | follow a proof line by line | {doc}`Native PA proof explorer <proof-explorer>` | permanent tags, linked lemma references, informal outlines and source receipts |
+| read expanded formulas through linked names | {doc}`Definition-aware proof explorer <defined-proof-explorer>` | persistent `PD` expansions, exact native replay lines, and the unchanged theorem status |
 | see how theorems depend on one another | {doc}`Interactive dependency graph <dependency-graph>` | short and critical premise chains, route corridors and complete prerequisite cones |
 | understand soundness | {doc}`Language, notation, and trust <language-and-trust>` | {doc}`Self-contained proof sharing <proof-sharing>` |
 | study division and congruence | {doc}`Divisibility and subtraction-free congruence <divisibility-and-congruence>` | {doc}`GCD and balanced Bézout <gcd-and-bezout>` |

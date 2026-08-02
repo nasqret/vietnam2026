@@ -2940,3 +2940,28 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   imports, Ctrl-C during replay returns 130 without a traceback, a closed
   output pipe is quiet but nonzero (141), and `--version` cannot suppress a
   repeated `-c` command stream. Seven focused terminal tests pass.
+
+## 2026-08-02 — Conservative defined-notation Proof Explorer
+
+- Completed the parallel definition-aware reading edition over the exact
+  557-specification quadratic-reciprocity closure. Its persistent inventory
+  contains 40 display definitions (`PD0001`–`PD0040`), 38 of which occur in
+  the closure; `AllPrime` and `Sorted` have zero whole-schema matches. The
+  edition covers 557 theorem pages and all 27,491 authored tactic lines. Of
+  557 statements, 506 use at least one selected definition; 1,275 of 1,839
+  proposition-bearing `have` or `suffices` commands are compacted.
+- Measured aggregate theorem-statement text at 2,457,096 expanded characters
+  versus 107,386 defined characters (95.63% reduction), and local proposition
+  text at 1,971,403 versus 111,519 (94.34%). The longest statement falls from
+  82,377 to 1,759 characters; the `PA00FE` line-15 `have` command falls from
+  36,497 to 642.
+- Kept the trust boundary explicit: the definition compiler, registry,
+  persistent `PD` tags, expansion hashes, and generated pages are untrusted.
+  Every changed formula is checked to expand to the same parsed native PA AST,
+  and every changed local command exposes its exact replay line. The mixed
+  graph adds 40 definition nodes and 1,725 notation edges, but proof paths
+  retain the exact 557 theorem nodes, 1,791 proof edges, and 45 layers.
+- Preserved evidence-level status from the explicit corpus: 240 nodes are
+  public, 316 are `candidate_body_checked`, and only `PA00FW` is
+  `pending_layered_closure`. The readable endpoint and definition pages do not
+  admit quadratic reciprocity or change the kernel language.

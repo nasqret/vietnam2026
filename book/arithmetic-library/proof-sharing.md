@@ -79,7 +79,7 @@ The quadratic-reciprocity graph makes the distinction exact: 557 unique
 specifications and 1,791 direct edges expand to 191,669 theorem occurrences.
 The forced Cuts, one node per occurrence, and recorded leading introductions
 alone give a 731,482-node lower bound, beyond the 500,000-node policy. See the
-[hotspot audit](../../research/arithmetic-library/quadratic-reciprocity-closure-hotspots.md).
+[hotspot audit](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/quadratic-reciprocity-closure-hotspots.md).
 
 The preferred unchanged-kernel compiler groups each dependency-depth layer
 into a balanced conjunction. Each dependency-curried theorem body occurs
@@ -95,7 +95,7 @@ $$
 not a theorem reference or a new checker case. The complete WMI certificate
 and admission gates remain pending. The construction and synthetic comparison
 are documented in the
-[layered-bundle design](../../research/arithmetic-library/layered-cut-bundle.md).
+[layered-bundle design](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/layered-cut-bundle.md).
 
 ## Why this is not a theorem oracle
 

@@ -65,8 +65,11 @@ does not determine the architecture.
 
 ## M20C — Conservative notation and modular congruence
 
-- [ ] Specify untrusted, round-tripping expansions for `a | b`, balanced
-      natural congruence, relational gcd/coprimality, and primality.
+- [x] Specify untrusted, round-tripping expansions for `a | b`, balanced
+      natural congruence, relational gcd/coprimality, and primality. The
+      completed 40-entry Proof Explorer registry (38 used in this closure)
+      now checks conservative expansion by parsed PA AST equality; it is
+      reading notation, not trusted core-language or kernel syntax.
 - [x] Prove balanced congruence reflexive and symmetric.
 - [x] Prove balanced congruence transitive as `mod_eq_trans`.
 - [x] Prove congruence compatibility with addition as `mod_eq_add`.
@@ -196,6 +199,10 @@ does not determine the architecture.
       source/vault links.
 - [x] Add an arithmetic Obsidian MOC, concept notes, and generated per-lemma
       pages linked by exact dependencies and dependents.
+- [x] Add a parallel 40-entry defined-notation edition for the exact 557-node QR
+      closure. It preserves explicit native replay lines, theorem dependencies,
+      and public/candidate status while linking compact formulas to persistent
+      `PD` expansion pages.
 - [x] Update project memory, journal, plans, root maps, and artifact index.
 - [x] Pass the complete Peano suite, warning-as-error book build, executable
       command replay, vault/link checks, research-catalog validator, artifact
@@ -210,6 +217,15 @@ does not determine the architecture.
 
 ## Current acceptance record
 
+- The definition-aware Proof Explorer is a completed conservative presentation
+  of the exact 557-specification QR closure, not a larger trusted language. It
+  compacts 506 statements and 1,275/1,839 local propositions using a 40-entry
+  registry; 38 definitions occur in the closure. Aggregate statement/local
+  text falls by 95.63%/94.34%. Expansion receipts reconstruct the same parsed
+  native formulas. The proof
+  DAG remains 557 nodes, 1,791 edges, and 45 layers; its status split remains
+  240 public, 316 body-checked candidates, and the QR root pending layered
+  closure.
 - The factorization and unbounded-primes tranches are synchronized into the
   247-theorem runtime, 248-entry catalog, generated snapshot, and all 247
   generated lemma notes. The

@@ -86,6 +86,7 @@ def test_snapshot_contains_the_complete_proof_explorer_evidence_boundary() -> No
     packager = _load(PACKAGER, "_test_wmi_book_packager_explorer_boundary")
     selected = {path.as_posix() for path in packager.snapshot_files(REPO)}
     required = {
+        "scripts/build_pa_defined_explorer.py",
         "scripts/build_pa_proof_explorer.py",
         "research/arithmetic-library/pa-proof-tags.json",
         "research/arithmetic-library/pa-proof-informal.json",
@@ -99,9 +100,23 @@ def test_snapshot_contains_the_complete_proof_explorer_evidence_boundary() -> No
         "book/_static/pa-proof-explorer/api/corpus.json",
         "book/_static/pa-proof-explorer/api/graph.json",
         "book/_static/pa-proof-explorer/api/graph.schema.json",
+        "book/_static/pa-proof-explorer/defined/manifest.json",
+        "book/_static/pa-proof-explorer/defined/api/corpus.json",
+        "book/_static/pa-proof-explorer/defined/api/graph.json",
+        "book/_static/pa-proof-explorer/defined/api/graph.schema.json",
+        "book/_static/pa-proof-explorer/defined/assets/explorer.css",
+        "book/_static/pa-proof-explorer/defined/assets/explorer.js",
     }
     assert required <= selected
     assert any(path.startswith("book/_static/pa-proof-explorer/tag/") for path in selected)
+    assert any(
+        path.startswith("book/_static/pa-proof-explorer/defined/tag/")
+        for path in selected
+    )
+    assert any(
+        path.startswith("book/_static/pa-proof-explorer/defined/definition/")
+        for path in selected
+    )
 
 
 def test_runner_checks_both_generators_before_the_book_build() -> None:
@@ -109,12 +124,14 @@ def test_runner_checks_both_generators_before_the_book_build() -> None:
     labels = (
         '"05-atlas-check"',
         '"06-proof-explorer-check"',
+        '"06b-defined-proof-explorer-check"',
         '"07-jupyter-book-build"',
         '"08-book-integrity"',
     )
     positions = [source.index(label) for label in labels]
     assert positions == sorted(positions)
     assert '[str(venv_python), "scripts/build_pa_proof_explorer.py", "--check"]' in source
+    assert '[str(venv_python), "scripts/build_pa_defined_explorer.py", "--check"]' in source
 
 
 def test_checker_rejects_an_existing_target_outside_html_root(

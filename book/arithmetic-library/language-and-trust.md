@@ -38,8 +38,10 @@ $$
 
 Unlike the asymmetric claim that one number is the other plus a multiple,
 this formula is symmetric even when $a<b$. It is also meaningful at modulus
-zero: then it reduces to equality. A future pretty notation may expand to this
-formula before proof checking, exactly as `<=` expands today.
+zero: then it reduces to equality. The definition-aware Proof Explorer now
+uses `ModEq(m,a,b)` as conservative display notation for this formula, while
+native replay still expands it before checking, exactly as `<=` expands
+today.
 
 Primality can also be expanded:
 
@@ -69,6 +71,25 @@ negation for every natural, and `prime_divisor_exists` constructs an expanded
 prime together with a divisibility witness for every nonzero nonunit natural.
 Their bounded search and descent certificates contain no DNE node; decidability
 is proved rather than imported from the host language.
+
+### The definition-aware reading edition
+
+The {doc}`definition-aware proof explorer <defined-proof-explorer>` provides a
+40-entry registry over the exact 557-specification quadratic-reciprocity
+closure. Thirty-eight definitions occur; `AllPrime` and `Sorted` have zero
+whole-schema matches. The edition compacts 506 theorem statements and 1,275
+of 1,839 proposition-bearing local commands. Aggregate statement text falls
+from 2,457,096 to 107,386 characters (95.63%); local proposition text falls
+from 1,971,403 to 111,519 (94.34%). Every changed formula links to its expansion
+and an exact native replay line, and the generator checks equality of the
+parsed PA abstract syntax trees.
+
+This is a reading layer, not a language extension. The compiler, registry,
+`PD` identifiers, hashes, pages, and notation edges are untrusted and cannot
+participate in a theorem dependency path. The underlying status remains 240
+public theorems, 316 body-checked candidates, and the `PA00FW`
+quadratic-reciprocity root pending layered closure. Compact notation therefore
+grants no theorem admission.
 
 ## Relational definitions before functions
 

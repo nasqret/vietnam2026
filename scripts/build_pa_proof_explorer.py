@@ -45,6 +45,11 @@ PINNED_UI_ASSETS = {
     "assets/explorer.css": "c2ddf371f05c195dc44d32d793f643afbcddf134dd762f9f478a5c4b3c6dedd5",
     "assets/explorer.js": "d02d28a144ffa53585de8dac6e0bd40806b1a6562a80d4bb5e1df90f0524e76e",
 }
+# A second generator owns the conservative defined-notation reading edition.
+# Keeping that subtree outside this frozen explicit manifest preserves every
+# explicit page and receipt byte-for-byte while still allowing both editions
+# to live under one stable static URL.
+RESERVED_SUBTREES = {"defined"}
 
 EXPECTED = {
     "theorem_count": 557,
@@ -942,7 +947,12 @@ def _write(files: dict[str, bytes]) -> None:
     expected = set(files)
     if OUTPUT.exists():
         for path in OUTPUT.rglob("*"):
-            if path.is_file() and str(path.relative_to(OUTPUT)) not in expected:
+            relative = path.relative_to(OUTPUT)
+            if (
+                path.is_file()
+                and (not relative.parts or relative.parts[0] not in RESERVED_SUBTREES)
+                and str(relative) not in expected
+            ):
                 path.unlink()
 
 
@@ -957,7 +967,12 @@ def _check(files: dict[str, bytes]) -> bool:
         drift.extend(
             str(path.relative_to(OUTPUT))
             for path in OUTPUT.rglob("*")
-            if path.is_file() and str(path.relative_to(OUTPUT)) not in expected
+            if path.is_file()
+            and (
+                not path.relative_to(OUTPUT).parts
+                or path.relative_to(OUTPUT).parts[0] not in RESERVED_SUBTREES
+            )
+            and str(path.relative_to(OUTPUT)) not in expected
         )
     if drift:
         print("PA proof explorer drift: " + ", ".join(sorted(set(drift))[:20]), file=sys.stderr)

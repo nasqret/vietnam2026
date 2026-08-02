@@ -51,6 +51,11 @@ chapter, “body-green” names exactly that intermediate evidence level.
 <strong>PA00FW</strong> for <code>quadratic_reciprocity_combined</code></a>.
 From there, every numbered tactic line and linked dependency opens its own
 stable theorem page; the candidate/public status remains visible throughout.
+The parallel
+<a href="../_static/pa-proof-explorer/defined/tag/PA00FW.html">definition-aware
+PA00FW page</a> renders the same formula with linked conservative names and an
+exact native replay line. It inherits the same `pending_layered_closure`
+candidate status; readability does not constitute admission.
 
 ```{admonition} Constructive meaning
 :class: important
@@ -110,9 +115,9 @@ largest of these 24 certificates has 6,761 structural occurrences, 4,333
 distinct objects, and depth 95.
 
 Open {doc}`the theorem atlas <theorem-atlas>` at
-[`parity_cases`](theorem-atlas.html#theorem-parity_cases),
-[`odd_mod4_cases`](theorem-atlas.html#theorem-odd_mod4_cases), or
-[`mod_eq_decidable_nonzero`](theorem-atlas.html#theorem-mod_eq_decidable_nonzero)
+<a href="theorem-atlas.html#theorem-parity_cases"><code>parity_cases</code></a>,
+<a href="theorem-atlas.html#theorem-odd_mod4_cases"><code>odd_mod4_cases</code></a>, or
+<a href="theorem-atlas.html#theorem-mod_eq_decidable_nonzero"><code>mod_eq_decidable_nonzero</code></a>
 to inspect the exact expanded statement, every dependency, the complete tactic
 recipe, and certificate metrics.
 
@@ -132,7 +137,7 @@ All four focused modules pass together at `16/16` in 1.24 seconds under the
 60-second cap. Their predicates are fully expanded existential equations in
 native PA; the candidates are dependency-curried, unregistered, and
 unadmitted. The linked Obsidian concept
-[`parity transport`](../../vault/concepts/parity-transport.md) records the
+[`parity transport`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/vault/concepts/parity-transport.md) records the
 exact client ladder and source links.
 
 ## Checked prime-unit bridge
@@ -157,9 +162,9 @@ m\ne0\land\operatorname{Coprime}(a,m)
 $$
 
 The exact expanded cards are
-[`distinct_primes_coprime`](theorem-atlas.html#theorem-distinct_primes_coprime),
-[`coprime_mod_inverse`](theorem-atlas.html#theorem-coprime_mod_inverse), and
-[`prime_mod_cancel`](theorem-atlas.html#theorem-prime_mod_cancel).
+<a href="theorem-atlas.html#theorem-distinct_primes_coprime"><code>distinct_primes_coprime</code></a>,
+<a href="theorem-atlas.html#theorem-coprime_mod_inverse"><code>coprime_mod_inverse</code></a>, and
+<a href="theorem-atlas.html#theorem-prime_mod_cancel"><code>prime_mod_cancel</code></a>.
 They use the existing relational gcd, balanced Bézout, and congruence API; no
 field or inverse function was added to the PA language.
 
@@ -199,10 +204,10 @@ evaluate and construct the exact sum `l*a` of a length-$l$ `Repeat(a)` prefix
 at `85/32` and `33/21`. The focused audits pass `3/3` and `4/4`; all remain
 unregistered and unadmitted.
 
-[`pointwise-add source`](../../peano-lab/py/peano_lab/library/finite_sum_pointwise_add_candidate.py)
-· [`pointwise-add test`](../../peano-lab/py/tests/test_finite_sum_pointwise_add_candidate.py)
-· [`constant-sum source`](../../peano-lab/py/peano_lab/library/finite_repeat_sum_candidate.py)
-· [`constant-sum test`](../../peano-lab/py/tests/test_finite_repeat_sum_candidate.py)
+[`pointwise-add source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/finite_sum_pointwise_add_candidate.py)
+· [`pointwise-add test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_finite_sum_pointwise_add_candidate.py)
+· [`constant-sum source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/finite_repeat_sum_candidate.py)
+· [`constant-sum test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_finite_repeat_sum_candidate.py)
 
 The isolated finite-fold laboratory now has an exact complement identity as
 well. `complementary_bit_counts_add_length` takes two length-$l$ native
@@ -217,8 +222,8 @@ It depends only on `bit_count_zero`, `bit_count_succ_decompose`, `le_succ`,
 `le_refl`, and `add_succ_left`. Its 112-command dependency-curried body has
 `220` nodes at depth `46`, `211` objects, `219` edges, and `9` reused objects;
 the focused no-`DNE` audit passes `3/3` in 1.47 seconds. See the
-[`source`](../../peano-lab/py/peano_lab/library/finite_bitcount_complement_candidate.py)
-and [`test`](../../peano-lab/py/tests/test_finite_bitcount_complement_candidate.py).
+[`source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/finite_bitcount_complement_candidate.py)
+and [`test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_finite_bitcount_complement_candidate.py).
 The theorem is unregistered and unadmitted. It is a one-dimensional
 same-index count identity, not a theorem exchanging the two folds of a nested
 rectangle.
@@ -475,7 +480,7 @@ passed. Replacement job `172966`, from exact snapshot
 is `PENDING (Priority)` with zero CPU. The body receipt and structural checks
 are not closed-certificate admission: there is no WMI pass or new theorem.
 
-#### The inverse map is zero-based
+### The inverse map is zero-based
 
 The next seven Wilson candidates remain isolated source artifacts under queued
 WMI discovery. For `p = S n`, index `i<n` represents residue `S i`, while a
@@ -537,7 +542,7 @@ pinned metric set, pass, or admission. A second isolated layer now composes
 β-value functionality, inverse-index uniqueness, and symmetry; its own WMI
 discovery remains pending.
 
-#### From inverse data to an involution
+### From inverse data to an involution
 
 Six isolated candidates expose the full extensional API:
 
@@ -580,7 +585,7 @@ job `172976`, from snapshot
 is pending at submission. No report, pinned metrics, pass, or admission is
 claimed.
 
-#### The fixed entries are now explicit candidates
+### The fixed entries are now explicit candidates
 
 The next isolated layer turns the fixed-point classification into actual
 decoded endpoint entries:
@@ -611,7 +616,7 @@ passed. The two cold recursive replays, proof/RSS profiling, no-DNE/capacity
 checks, and adversarial mutations remain WMI-only. This is discovery only:
 there is no report, pass, pinned metric receipt, or theorem admission.
 
-#### Nonendpoint inverse orbits are now explicit candidates
+### Nonendpoint inverse orbits are now explicit candidates
 
 The next isolated layer begins the pairing argument without pretending that
 the fixed endpoints are distinct:
@@ -644,7 +649,7 @@ was also cancelled after zero CPU. Corrected job `172978`, snapshot
 is pending at submission.
 There is no report, pass, pinned metric receipt, or theorem admission.
 
-#### The complete Wilson body stack now replays cheaply
+### The complete Wilson body stack now replays cheaply
 
 The bounded body replay succeeds for all 19 isolated Wilson candidates. It is
 also where the two prefix binder defects and the orbit apply-to-negation defect
@@ -665,7 +670,7 @@ graph/core/source isolation for each suite. These measurements check theorem
 bodies and bounded structure only; they do not recursively close the Cut
 graph, do not constitute closed-certificate admission, and admit no theorem.
 
-#### Adjacent inverse pairs now have a generic product fold
+### Adjacent inverse pairs now have a generic product fold
 
 Two isolated candidates cover the arithmetic once the inverse factors have
 been laid out in adjacent pairs:
@@ -710,7 +715,7 @@ below now discharges iteration, adjacency, terminal coverage and canonical
 nonendpoint product transport. The current gap is endpoint restoration, the
 prime-two branch and the final factorial-product bridge.
 
-#### PairOrder can append one fresh inverse orbit
+### PairOrder can append one fresh inverse orbit
 
 The isolated Wilson PairOrder layer now constructs one honest extension step.
 Its generic core appends two decoded entries and reflects the resulting
@@ -740,7 +745,7 @@ Focused job `173017`, from exact snapshot
 `8c9c4ae067b0dc202684e410bee563cd592a67080cb7c9939440ae8b44d4bccd`,
 is pending with zero CPU; no replay result or admission is claimed.
 
-#### The scaled inverse supplies Euler's pointwise involution
+### The scaled inverse supplies Euler's pointwise involution
 
 For a prime modulus, a nonzero bounded target `a`, and a nonzero bounded
 residue `x`, the Euler entrance layer constructs the unique bounded `y` with
@@ -839,11 +844,11 @@ The exact focused audit passes `4/4` in 4.72 seconds with a separate
 `DNE`. This remains dependency-curried, unregistered body evidence: recursive
 closure and admission are still open; the endpoint tranche below now closes
 successor-lift/product alignment and the bounded nonresidue implication. See the
-[`iteration source`](../../peano-lab/py/peano_lab/library/euler_scaled_pair_order_iteration_candidate.py)
+[`iteration source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/euler_scaled_pair_order_iteration_candidate.py)
 and
-[`focused test`](../../peano-lab/py/tests/test_euler_scaled_pair_order_iteration_candidate.py).
+[`focused test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_euler_scaled_pair_order_iteration_candidate.py).
 
-#### Euler's bounded nonresidue endpoint
+### Euler's bounded nonresidue endpoint
 
 The terminal product/sign branch is now body-green. Five isolated candidates
 successor-lift the terminal scaled history, connect it to the generic
@@ -870,8 +875,8 @@ The exact focused audit passes `4/4` in 4.39 seconds; the endpoint plus its
 related prerequisite stack passes `16/16` in 12.19 seconds. Every contract is
 fully expanded constructive first-order PA, every certificate is free of
 `DNE`, and all five candidates remain unregistered and unadmitted. See the
-[`source`](../../peano-lab/py/peano_lab/library/euler_nonresidue_endpoint_candidate.py)
-and [`test`](../../peano-lab/py/tests/test_euler_nonresidue_endpoint_candidate.py).
+[`source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/euler_nonresidue_endpoint_candidate.py)
+and [`test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_euler_nonresidue_endpoint_candidate.py).
 
 The bounded equivalence is now packaged as well:
 
@@ -897,10 +902,10 @@ QRes(p,a)\Longleftrightarrow A\equiv1\pmod p,
 The focused audit passes `4/4` in 1.67 seconds and the combined bounded Euler
 run passes `12/12` in 7.62 seconds. All seven bodies are constructive,
 unregistered, and unadmitted. See the
-[`source`](../../peano-lab/py/peano_lab/library/euler_criterion_bounded_candidate.py)
-and [`test`](../../peano-lab/py/tests/test_euler_criterion_bounded_candidate.py).
+[`source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/euler_criterion_bounded_candidate.py)
+and [`test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_euler_criterion_bounded_candidate.py).
 
-#### Euler's criterion for arbitrary representatives
+### Euler's criterion for arbitrary representatives
 
 The bounded theorem is now transported to every representative `a` for which
 `p` does not divide `a`. The isolated implementation does not add `%`, `/`, a
@@ -938,11 +943,11 @@ native syntax, registry isolation, and the receipts above. It passes `4/4` in
 bounded, and arbitrary Euler selection passes `16/16` in 9.96 seconds. No
 script uses `DNE`, classical reasoning, `sorry`, `auto`, or `ring`; none of
 the six candidates is registered, recursively closed, or admitted. See the
-[`source`](../../peano-lab/py/peano_lab/library/euler_criterion_arbitrary_candidate.py)
+[`source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/euler_criterion_arbitrary_candidate.py)
 and
-[`test`](../../peano-lab/py/tests/test_euler_criterion_arbitrary_candidate.py).
+[`test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_euler_criterion_arbitrary_candidate.py).
 
-```{mermaid}
+```text
 flowchart LR
   T[terminal scaled PairOrder coverage] --> L[successor-lift adjacent targets]
   L --> F[lifted product equals predecessor factorial]
@@ -965,7 +970,7 @@ Thus the terminal product/sign, bounded-equivalence, and arbitrary-
 representative gaps are body-green. The remaining Euler work is recursive WMI
 closure, mutation testing, and a separate admission replay.
 
-#### The second frozen checkpoint reaches finite coverage
+### The second frozen checkpoint reaches finite coverage
 
 The eleven-spec
 [`magnitude-permutation endpoint`](https://github.com/nasqret/vietnam2026/blob/agent/general-arithmetic-library/research/arithmetic-library/gauss-magnitude-permutation.md)
@@ -1031,7 +1036,7 @@ classification tail, then replayed independently against its own expanded
 contract. Neither source sharing nor a body receipt grants theorem authority:
 both endpoints remain dependency-curried, registry-isolated, and unadmitted.
 
-```{mermaid}
+```text
 flowchart LR
   S[signed half prefix] --> M[magnitude product P]
   S --> B[reflection count e]
@@ -1073,7 +1078,7 @@ Their nodes/depth are `30/15`, `258/45`, `63/29`, `21/16`, `104/30`,
 branch never invokes the odd PairOrder. Recursive WMI closure and admission
 remain separate.
 
-#### Native division prefixes for Eisenstein sums
+### Native division prefixes for Eisenstein sums
 
 The first Eisenstein layer is now concrete. For every decoded source value
 `x` at `i<l`, `DivisionPrefix` constructs aligned beta entries `q,r` with
@@ -1091,7 +1096,7 @@ constructs the quotient sum. Its three bodies measure `34/24`, `71/40`, and
 `52/28`, with another `4/4` capped audit. This remains a candidate layer: the
 equality between quotient sums and lattice counts, the two-orientation
 partition, and WMI closure are still required. See the
-[`division-prefix design`](../../research/arithmetic-library/eisenstein-division-prefix.md).
+[`division-prefix design`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/eisenstein-division-prefix.md).
 
 The smallest arithmetic threshold connecting those quotients to a row is now
 body-green. `nonzero_remainder_division_positive_multiple_threshold` proves
@@ -1119,9 +1124,9 @@ No remainder-bound premise such as `r<p` is needed for nonvanishing. The
 focused exact-contract audit passes `4/4` in 0.40 seconds and finds no `DNE`;
 the bodies remain dependency-curried, unregistered, and neither recursively
 closed nor admitted. See the
-[`remainder-nonzero source`](../../peano-lab/py/peano_lab/library/eisenstein_remainder_nonzero_candidate.py)
+[`remainder-nonzero source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/eisenstein_remainder_nonzero_candidate.py)
 and its
-[`focused test`](../../peano-lab/py/tests/test_eisenstein_remainder_nonzero_candidate.py).
+[`focused test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_eisenstein_remainder_nonzero_candidate.py).
 
 The divisor-own-half condition is essential. The proposed cross-half variant
 `p=2*k+1`, `q=2*h+1`, `i<h` is false: with `p=3`, `q=7`, and `i=2`, one has
@@ -1145,8 +1150,8 @@ and uses it to derive `d<=k` from `p=2*h+1`, `q=2*k+1`, `i<h`, and
 `13` and `62` commands. Neither primality nor a remainder condition is
 needed. Its combined focused run with the sound remainder suite passes `8/8`
 in 0.54 seconds. See the
-[`source`](../../peano-lab/py/peano_lab/library/eisenstein_quotient_bound_candidate.py)
-and [`test`](../../peano-lab/py/tests/test_eisenstein_quotient_bound_candidate.py).
+[`source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/eisenstein_quotient_bound_candidate.py)
+and [`test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_eisenstein_quotient_bound_candidate.py).
 
 The generic initial-segment module constructs a beta-coded bit prefix whose
 entry at `j` is `1` exactly when `S j<=q` and `0` when `q<S j`, then proves
@@ -1165,8 +1170,8 @@ that any native `BitCount` of the prefix equals `q` whenever `q<=k`.
 
 The exact-contract audit passes `11/11` in 2.09 seconds, pins all eight
 receipts, and finds no `DNE`. See the
-[`source`](../../peano-lab/py/peano_lab/library/eisenstein_initial_segment_count_candidate.py)
-and [`test`](../../peano-lab/py/tests/test_eisenstein_initial_segment_count_candidate.py).
+[`source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/eisenstein_initial_segment_count_candidate.py)
+and [`test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_eisenstein_initial_segment_count_candidate.py).
 These results are dependency-curried, unregistered, unadmitted, and not yet
 recursively WMI-closed.
 
@@ -1182,8 +1187,8 @@ The client-specific row bridge is body-green too:
 The focused audit passes `4/4` in 3.40 seconds; the four bodies together with
 their explicit prerequisite stack pass `27/27` in 5.86 seconds. They use no
 `DNE`, `auto`, or `ring`, and remain unregistered and unadmitted. See the
-[`source`](../../peano-lab/py/peano_lab/library/eisenstein_row_quotient_candidate.py)
-and [`test`](../../peano-lab/py/tests/test_eisenstein_row_quotient_candidate.py).
+[`source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/eisenstein_row_quotient_candidate.py)
+and [`test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_eisenstein_row_quotient_candidate.py).
 This closes pointwise row-count identification, but not the outer-sum
 endpoint equality.
 
@@ -1194,8 +1199,8 @@ has no theorem dependencies and measures `59/29` nodes/depth, `59` objects,
 `58` edges, no reuse, and `44` commands. Its focused audit passes `3/3`; the
 combined initial-segment and transport run passes `14/14` in 2.20 seconds.
 The proof contains no `DNE` and does not identify raw beta codes. See the
-[`source`](../../peano-lab/py/peano_lab/library/finite_sum_transport_candidate.py)
-and [`test`](../../peano-lab/py/tests/test_finite_sum_transport_candidate.py).
+[`source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/finite_sum_transport_candidate.py)
+and [`test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_finite_sum_transport_candidate.py).
 This candidate is likewise unregistered and unadmitted.
 
 The concrete outer transport and endpoint bridge is now body-green:
@@ -1209,8 +1214,8 @@ The concrete outer transport and endpoint bridge is now body-green:
 The focused audit passes `4/4` in 4.92 seconds; the bridge with its related
 prerequisites passes `19/19` in 10.71 seconds. The bodies contain no `DNE`,
 `auto`, or `ring` and remain unregistered and unadmitted. See the
-[`source`](../../peano-lab/py/peano_lab/library/eisenstein_outer_sum_bridge_candidate.py)
-and [`test`](../../peano-lab/py/tests/test_eisenstein_outer_sum_bridge_candidate.py).
+[`source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/eisenstein_outer_sum_bridge_candidate.py)
+and [`test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_eisenstein_outer_sum_bridge_candidate.py).
 This proves quotient `Sum` = semantic rectangle total for one orientation,
 and the uniformly quantified theorem applies again after swapping the two
 primes and their halves.
@@ -1273,11 +1278,11 @@ The transposed cell semantics and their nested exposure are now body-green:
 Their combined focused audit passes `6/6` in 2.08 seconds. Both bodies are
 constructive, contain no `DNE`, and remain unregistered and unadmitted. See
 the
-[`cell source`](../../peano-lab/py/peano_lab/library/eisenstein_transposed_cell_candidate.py),
-[`cell test`](../../peano-lab/py/tests/test_eisenstein_transposed_cell_candidate.py),
-[`outer-cell source`](../../peano-lab/py/peano_lab/library/eisenstein_transposed_outer_cell_candidate.py),
+[`cell source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/eisenstein_transposed_cell_candidate.py),
+[`cell test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_eisenstein_transposed_cell_candidate.py),
+[`outer-cell source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/eisenstein_transposed_outer_cell_candidate.py),
 and
-[`outer-cell test`](../../peano-lab/py/tests/test_eisenstein_transposed_outer_cell_candidate.py).
+[`outer-cell test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_eisenstein_transposed_outer_cell_candidate.py).
 These witnesses expose every local complement fact but do not sum the
 row-major and column-major nested folds.
 
@@ -1311,16 +1316,16 @@ constructs `z,e,m` such that
 \]
 
 The exact
-[`column source`](../../peano-lab/py/peano_lab/library/eisenstein_transposed_column_candidate.py)
+[`column source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/eisenstein_transposed_column_candidate.py)
 and
-[`focused test`](../../peano-lab/py/tests/test_eisenstein_transposed_column_candidate.py)
+[`focused test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_eisenstein_transposed_column_candidate.py)
 pass `5/5` in 5.05 seconds under the 60-second laptop cap. Besides replaying
 all six bodies, the audit pins names, dependencies, statement hashes and the
 receipts above; checks alpha-hygiene and fully expanded native PA; and rejects
 `auto`, `ring`, `DNE`, `by_contra`, `classical`, and `sorry`. These remain
 dependency-curried, unregistered and unadmitted candidates.
 
-```{mermaid}
+```text
 flowchart LR
   D[decoded quotient and remainder] --> N[nonzero-remainder threshold]
   D --> B[odd-half quotient bound]
@@ -1362,7 +1367,7 @@ and `S` applies to both orientations by swapping the parameters. No equality
 of raw beta codes substitutes for decoded-entry functionality along this
 path.
 
-#### Exact Fubini identity
+### Exact Fubini identity
 
 The nine-body Fubini follow-on constructs an outer beta prefix of the column
 counts, retargets its semantic witnesses during induction on `h`, sums the
@@ -1384,7 +1389,7 @@ traces:
 123 commands, 145 nodes and depth 68. This closes the formerly open
 rectangle-level mathematical gate at the dependency-curried body level.
 
-#### Pointwise Gauss--Eisenstein parity and exact sums
+### Pointwise Gauss--Eisenstein parity and exact sums
 
 The exact finite-sum permutation ladder mirrors the product-permutation
 architecture:
@@ -1416,7 +1421,7 @@ the half range, scaled/division prefixes, signed magnitude/sign prefixes,
 
 The pointwise and sum suites pass together at `12/12` in 17.47 seconds.
 
-#### Two-prime package and exact reciprocity surfaces
+### Two-prime package and exact reciprocity surfaces
 
 One existential constructor packages a single odd-prime orientation: its
 division codes, Gauss count `e`, quotient sum `Q`, the two actual-`QRes`
@@ -1470,16 +1475,16 @@ complete quadratic-reciprocity admission receipt exists yet. Corrected full
 job `210714`, from clean snapshot `989011c0…1757`, was initially queued on
 WMI after remote verification and Slurm resource validation.
 
-[`pointwise source`](../../peano-lab/py/peano_lab/library/gauss_eisenstein_pointwise_candidate.py)
-· [`pointwise test`](../../peano-lab/py/tests/test_gauss_eisenstein_pointwise_candidate.py)
-· [`sum source`](../../peano-lab/py/peano_lab/library/gauss_eisenstein_sum_candidate.py)
-· [`sum test`](../../peano-lab/py/tests/test_gauss_eisenstein_sum_candidate.py)
-· [`Fubini source`](../../peano-lab/py/peano_lab/library/eisenstein_fubini_total_candidate.py)
-· [`quotient identity`](../../peano-lab/py/peano_lab/library/eisenstein_quotient_sum_identity_candidate.py)
-· [`data source`](../../peano-lab/py/peano_lab/library/gauss_eisenstein_data_candidate.py)
-· [`data test`](../../peano-lab/py/tests/test_gauss_eisenstein_data_candidate.py)
-· [`final source`](../../peano-lab/py/peano_lab/library/quadratic_reciprocity_candidate.py)
-· [`final test`](../../peano-lab/py/tests/test_quadratic_reciprocity_candidate.py)
+[`pointwise source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/gauss_eisenstein_pointwise_candidate.py)
+· [`pointwise test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_gauss_eisenstein_pointwise_candidate.py)
+· [`sum source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/gauss_eisenstein_sum_candidate.py)
+· [`sum test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_gauss_eisenstein_sum_candidate.py)
+· [`Fubini source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/eisenstein_fubini_total_candidate.py)
+· [`quotient identity`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/eisenstein_quotient_sum_identity_candidate.py)
+· [`data source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/gauss_eisenstein_data_candidate.py)
+· [`data test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_gauss_eisenstein_data_candidate.py)
+· [`final source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/quadratic_reciprocity_candidate.py)
+· [`final test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_quadratic_reciprocity_candidate.py)
 
 ### Closing the theorem DAG without changing the kernel
 
@@ -1506,7 +1511,7 @@ rewrite constructor, it necessarily contains:
 | recorded leading theorem-level `intro` nodes | 348,145 |
 | **rigorous lower bound** | **731,482** |
 
-The [static hotspot audit](../../research/arithmetic-library/quadratic-reciprocity-closure-hotspots.md)
+The [static hotspot audit](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/quadratic-reciprocity-closure-hotspots.md)
 derives these values directly from the frozen graph recurrence. Raising the
 limit would hide known tree-expansion duplication rather than pay for new
 mathematics.
@@ -1566,17 +1571,17 @@ replayed in Pyodide. Quadratic reciprocity is therefore still unregistered and
 unadmitted.
 ```
 
-See the full [layered construction and gate list](../../research/arithmetic-library/layered-cut-bundle.md).
-The [closed-proof DAG design](../../research/arithmetic-library/closed-proof-dag.md)
+See the full [layered construction and gate list](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/layered-cut-bundle.md).
+The [closed-proof DAG design](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/closed-proof-dag.md)
 is retained only as a fallback if the ordinary layered certificate fails a
 measured object, formula, depth, memory, or browser gate.
 
-[`generic compiler`](../../peano-lab/py/peano_lab/library/layered_replay.py)
-· [`QR adapter`](../../peano-lab/py/peano_lab/experimental/quadratic_reciprocity_layered.py)
-· [`production tests`](../../peano-lab/py/tests/test_layered_replay.py)
-· [`recursive comparison`](../../peano-lab/py/tests/test_layered_cut_bundle_experiment.py)
-· [`QR static tests`](../../peano-lab/py/tests/test_quadratic_reciprocity_layered_experiment.py)
-· [`WMI integration`](../../peano-lab/py/tests/test_quadratic_reciprocity_layered_wmi.py)
+[`generic compiler`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/layered_replay.py)
+· [`QR adapter`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/experimental/quadratic_reciprocity_layered.py)
+· [`production tests`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_layered_replay.py)
+· [`recursive comparison`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_layered_cut_bundle_experiment.py)
+· [`QR static tests`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_quadratic_reciprocity_layered_experiment.py)
+· [`WMI integration`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_quadratic_reciprocity_layered_wmi.py)
 
 #### Signed-half representatives and finite omission
 
@@ -1590,7 +1595,7 @@ are 125 nodes/depth 34 and 116 nodes/depth 38. The source is
 The pointwise layer is now lifted by a second isolated source into aligned
 β-coded magnitude and sign prefixes:
 
-```{mermaid}
+```text
 flowchart LR
   A[pointwise signed representative] --> B[explicit 0/1 signed choice]
   B --> C[choices at every half-range index]
@@ -1775,10 +1780,10 @@ for the profiler and exact gates, the
 for the lower bound, and the
 [`layered design`](https://github.com/nasqret/vietnam2026/blob/agent/general-arithmetic-library/research/arithmetic-library/layered-cut-bundle.md)
 for the unchanged-kernel compiler. If the WMI gates pass, the separate
-[`public-admission design`](../../research/arithmetic-library/quadratic-reciprocity-admission-path.md)
+[`public-admission design`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/quadratic-reciprocity-admission-path.md)
 specifies how to enroll exactly 316 proper ancestors plus the root without an
 import cycle, recursive fallback, or theorem-name authority. The companion
-[`test-migration audit`](../../research/arithmetic-library/quadratic-reciprocity-test-migration.md)
+[`test-migration audit`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/quadratic-reciprocity-test-migration.md)
 pins the 317-enrolled/29-omitted partition and identifies every candidate test
 whose pre-admission absence assumption must change in the enrollment commit.
 

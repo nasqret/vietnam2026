@@ -37,16 +37,18 @@ the corpus.
 Peano Lab's object language still has only natural-number variables, `0`,
 `S`, `+`, `*`, equality, falsity, connectives, and first-order quantifiers.
 Names such as `Prime`, `BetaAt`, `Product`, and `QRes` are documentation and
-authoring notation. They are not constants accepted by the parser or kernel.
+authoring notation. The ordinary formula parser still rejects them. A separate,
+opt-in parser accepts the calls only long enough to expand them; they are never
+constants in the formula AST or kernel.
 
 The conservative pipeline is:
 
 ```text
 readable relation call
-        ↓  untrusted hygienic authoring helper
-fully expanded ordinary PA formula
-        ↓  parser (negation/numerals also expand)
-de Bruijn formula AST
+        ↓  opt-in parser plus hygienic simultaneous substitution
+ordinary de Bruijn formula AST
+        ↓  exact comparison with the frozen expanded formula
+ordinary theorem specification
         ↓
 ordinary proof term checked by the unchanged kernel
 ```
@@ -58,6 +60,12 @@ connectives, then parse. The listed binder order is outermost to innermost;
 together with the syntax tree, it uniquely fixes the de Bruijn representation.
 No registry entry grants theorem authority or permits a named predicate to
 survive into a certificate.
+
+The implemented registry has SHA-256
+`924c8bc220f23ce772b72991b8234c3499be7698dc086d90509d39760a1ed0fe`.
+The generated 557-theorem reading edition has identity
+`f137db3d549b82c8ee0798362cc9a039f408c01d9ebded8814858f6d5964bad2`.
+These are reproducibility receipts, not trust anchors.
 
 ## Inventory overview
 
@@ -110,38 +118,29 @@ The first and third have no whole-schema occurrence in this QR closure;
 their components do occur. `BalancedBezout` occurs three times in three
 public theorem statements.
 
-## Exactness and hygiene risks
+## Exactness, hygiene, and remaining risks
 
-The current identifier-only public helpers are reasonably auditable: they
-validate arguments and synthesize tag-qualified binder names while rejecting
-direct collisions. The remaining risks are concrete:
+The defined edition implements the previously proposed AST boundary in
+`defined_syntax.py` and `defined_edition.py`:
 
-1. Several private helpers accept raw term strings plus a caller-supplied
-   `variables` or `avoid` tuple. If a free identifier is omitted, a generated
-   binder can capture it.
-2. Tag choice and complete avoidance sets remain caller responsibilities
-   across composed fragments.
-3. Text interpolation is precedence-sensitive. The finite-fold surface has
-   an explicit parenthesization safeguard because `S start + i` and
-   `S (start + i)` are different terms.
-4. Some modules substitute owned marker identifiers with `str.replace` to
-   insert compound terms or numerals. Count guards reduce accidental edits,
-   but this is not AST-level hygiene.
-5. Duplicated private builders can drift in multiplication orientation,
-   connective association, or parentheses while remaining mathematically
-   similar.
-6. Alpha-equivalent generated formulas can receive different source hashes,
-   and tactic scripts may accidentally depend on generated surface names.
-7. Closedness checks detect leaked free variables, but they do not detect a
-   captured variable or a well-formed formula with the wrong grouping.
+1. definition templates are parsed once in an explicit parameter context;
+2. compound actual terms are substituted simultaneously under de Bruijn
+   binders, with the required shifts, so generated binder names cannot capture
+   them;
+3. structural compaction prefers the largest matching reviewed schema;
+4. every compact theorem statement and every compact `have` or `suffices`
+   proposition is expanded again and compared with the original AST;
+5. formulas with no selected definition are preserved byte-for-byte; and
+6. compilation returns the ordinary `TheoremSpec` type containing only core
+   PA formulas.
 
-The natural implementation direction is one untrusted AST-producing
-`arithmetic_surface` layer. It should accept term ASTs, compute free variables
-itself, allocate fresh binders hygienically, and serialize a fully expanded PA
-formula before the parser/kernel boundary. Migration tests should compare old
-and new expansions by alpha/de Bruijn equality, retain legacy statement hashes
-until intentionally revised, and include capture, precedence, and mutation
-regressions.
+The older string-producing helpers remain part of the source corpus, so their
+capture, precedence, and drift risks have not vanished in the *original*
+authoring path. The second edition does not trust or rewrite those helpers: it
+starts from their already frozen parsed formulas and proves exact structural
+round trips. Adding or changing a definition still requires registry review,
+capture and precedence regressions, full-corpus re-expansion, and new content
+receipts.
 
 ## Using the machine registry
 

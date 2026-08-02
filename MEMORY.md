@@ -1195,3 +1195,17 @@
   separately attested 247-theorem diagnostic model. Native dispatch occurs
   before model seals or imports; `use THEOREM` still reconstructs and
   kernel-checks the selected dependency and the final empty-context proof.
+- **Conservative defined-notation edition (2026-08-02):** the second PA Proof
+  Explorer edition provides a 40-entry persistent `PD` registry over the exact
+  557-specification QR closure and all 27,491 tactic lines. Thirty-eight
+  definitions occur; `AllPrime` and `Sorted` have zero whole-schema matches.
+  It compacts 506 theorem statements and 1,275 of 1,839 proposition-bearing
+  `have`/`suffices` commands: aggregate statement text falls from 2,457,096 to
+  107,386 characters (95.63%), and local proposition text from 1,971,403 to
+  111,519 (94.34%). Every compact formula expands back to the same parsed PA
+  AST and retains an exact native replay line. The compiler, registry, `PD`
+  tags, hashes, pages, and 1,725 notation edges are untrusted presentation
+  data; proof paths still use only the unchanged 557-node, 1,791-edge,
+  45-layer theorem DAG. Status is also unchanged: 240 public theorems, 316
+  body-checked candidates, and `PA00FW` alone pending layered closure. The
+  edition supplies no quadratic-reciprocity admission.

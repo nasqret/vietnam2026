@@ -5,10 +5,11 @@ This gate does not replay Peano or Lambda proofs.  It checks that every TOC
 source has a corresponding nonempty HTML page, required Sphinx indexes and
 static assets exist, and generated HTML does not contain broken relative
 ``href`` or ``src`` targets.  The generated PA Proof Explorer is audited as a
-static microsite: its canonical JSON surfaces and all 557 theorem pages must
-be copied byte-for-byte, its local links and fragments must resolve, and it
-must not load a remote runtime asset.  The checker also emits deterministic
-source and output tree manifests for the enclosing WMI provenance receipt.
+static microsite: the explicit and defined editions, all theorem pages, and
+all definition pages must be copied byte-for-byte; their local links and
+fragments must resolve; and they must not load a remote runtime asset.  The
+checker also emits deterministic source and output tree manifests for the
+enclosing WMI provenance receipt.
 """
 
 from __future__ import annotations
@@ -38,8 +39,18 @@ EXPLORER_REQUIRED = (
     Path("api/graph.schema.json"),
     Path("assets/explorer.css"),
     Path("assets/explorer.js"),
+    Path("defined/index.html"),
+    Path("defined/graph.html"),
+    Path("defined/manifest.json"),
+    Path("defined/api/corpus.json"),
+    Path("defined/api/graph.json"),
+    Path("defined/api/graph.schema.json"),
+    Path("defined/assets/explorer.css"),
+    Path("defined/assets/explorer.js"),
 )
 EXPLORER_TAG_COUNT = 557
+DEFINED_EXPLORER_TAG_COUNT = 557
+DEFINED_EXPLORER_DEFINITION_COUNT = 40
 REMOTE_ASSET_TAGS = {"audio", "embed", "iframe", "img", "object", "script", "source", "video"}
 EXPLORER_BODY_SELECTOR = "body.pa-proof-site"
 
@@ -252,6 +263,8 @@ def _check_explorer_copy(book: Path, html_root: Path, errors: list[str]) -> dict
         "built": built.is_dir(),
         "source": source.is_dir(),
         "tag_page_count": 0,
+        "defined_tag_page_count": 0,
+        "defined_definition_page_count": 0,
     }
     if not source.is_dir():
         errors.append(f"missing PA Proof Explorer source: {EXPLORER_RELATIVE}")
@@ -302,6 +315,10 @@ def _check_explorer_copy(book: Path, html_root: Path, errors: list[str]) -> dict
         Path("api/corpus.json"),
         Path("api/graph.json"),
         Path("api/graph.schema.json"),
+        Path("defined/manifest.json"),
+        Path("defined/api/corpus.json"),
+        Path("defined/api/graph.json"),
+        Path("defined/api/graph.schema.json"),
     ):
         source_path = source / relative
         if source_path.is_file():
@@ -352,6 +369,43 @@ def _check_explorer_copy(book: Path, html_root: Path, errors: list[str]) -> dict
                     f"{unscoped[:8]!r}"
                 )
 
+    defined_script_path = source / "defined" / "assets" / "explorer.js"
+    defined_style_path = source / "defined" / "assets" / "explorer.css"
+    if defined_script_path.is_file():
+        defined_script = defined_script_path.read_text(encoding="utf-8", errors="replace")
+        for sink in ("eval(", "innerHTML", "insertAdjacentHTML", "document.write", "new Function"):
+            if sink in defined_script:
+                errors.append(f"unsafe defined-explorer JavaScript sink: {sink}")
+        if 'classList.contains("pa-defined-proof-site")' not in defined_script:
+            errors.append("defined-explorer JavaScript lacks its body-class guard")
+    else:
+        defined_script = ""
+    defined_style = (
+        defined_style_path.read_text(encoding="utf-8", errors="replace")
+        if defined_style_path.is_file()
+        else ""
+    )
+    if "http://" in defined_script + defined_style or "https://" in defined_script + defined_style:
+        errors.append("defined-explorer CSS/JavaScript contains a remote URL")
+    if ":root" in defined_style or "--pa-" in defined_style:
+        errors.append("defined-explorer CSS contains an unscoped root/custom-property surface")
+    if defined_style:
+        try:
+            defined_selectors = _qualified_css_selectors(defined_style)
+        except ValueError as exc:
+            errors.append(f"cannot audit defined-explorer CSS isolation: {exc}")
+        else:
+            unscoped = [
+                selector
+                for selector in defined_selectors
+                if not selector.startswith("body.pa-defined-proof-site")
+            ]
+            if not defined_selectors or unscoped:
+                errors.append(
+                    "defined-explorer CSS is not isolated below "
+                    f"body.pa-defined-proof-site: {unscoped[:8]!r}"
+                )
+
     source_tags = tuple(sorted((source / "tag").glob("*.html"), key=lambda item: item.name))
     built_tags = tuple(sorted((built / "tag").glob("*.html"), key=lambda item: item.name))
     result["tag_page_count"] = len(built_tags)
@@ -368,6 +422,35 @@ def _check_explorer_copy(book: Path, html_root: Path, errors: list[str]) -> dict
             "built explorer tag-page set differs from source: "
             f"missing={missing[:8]!r}, unexpected={unexpected[:8]!r}"
         )
+    defined_source_tags = tuple((source / "defined" / "tag").glob("*.html"))
+    defined_built_tags = tuple((built / "defined" / "tag").glob("*.html"))
+    result["defined_tag_page_count"] = len(defined_built_tags)
+    if len(defined_source_tags) != DEFINED_EXPLORER_TAG_COUNT:
+        errors.append(
+            "defined explorer source has "
+            f"{len(defined_source_tags)} tag pages; expected {DEFINED_EXPLORER_TAG_COUNT}"
+        )
+    if {path.name for path in defined_built_tags} != {
+        path.name for path in defined_source_tags
+    }:
+        errors.append("built defined-explorer tag-page set differs from source")
+    defined_source_definitions = tuple(
+        (source / "defined" / "definition").glob("*.html")
+    )
+    defined_built_definitions = tuple(
+        (built / "defined" / "definition").glob("*.html")
+    )
+    result["defined_definition_page_count"] = len(defined_built_definitions)
+    if len(defined_source_definitions) != DEFINED_EXPLORER_DEFINITION_COUNT:
+        errors.append(
+            "defined explorer source has "
+            f"{len(defined_source_definitions)} definition pages; expected "
+            f"{DEFINED_EXPLORER_DEFINITION_COUNT}"
+        )
+    if {path.name for path in defined_built_definitions} != {
+        path.name for path in defined_source_definitions
+    }:
+        errors.append("built defined-explorer definition-page set differs from source")
     if source.is_dir():
         result["source_manifest"] = _tree_manifest(source, source=False)
     if built.is_dir():
@@ -459,6 +542,14 @@ def check(book: Path) -> dict[str, object]:
         if is_explorer and (
             explorer_relative in {Path("index.html"), Path("foundations.html")}
             or explorer_relative.parent == Path("tag")
+            or explorer_relative in {
+                Path("defined/index.html"),
+                Path("defined/graph.html"),
+            }
+            or explorer_relative.parent in {
+                Path("defined/tag"),
+                Path("defined/definition"),
+            }
         ):
             referenced_names = [
                 Path(urlsplit(raw).path).name

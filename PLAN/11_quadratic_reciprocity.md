@@ -21,6 +21,9 @@ Resource policy is recorded in
 - No primitive integer, power, sum, count, list, set or remainder function.
 - Surface helpers are untrusted formula producers and grant no theorem
   authority.
+- Definition-aware pages and `PD` tags are likewise conservative presentation:
+  they must expand to the same native PA AST, and notation edges never become
+  proof dependencies.
 - Every library entry reconstructs a self-contained certificate and passes the
   independent kernel from the empty context.
 - Intuitionistic mode is the default; campaign certificates contain no `DNE`.
@@ -866,6 +869,13 @@ not a mathematical rejection or a QR proof receipt.
       chain, complete prerequisite cone, and all 101,293 theorem-root paths.
       This is navigational evidence only; `PA00FW` remains pending layered
       closure.
+- [x] Add the conservative defined-notation edition over the same exact
+      closure: a 40-entry persistent `PD` registry (38 definitions used), 557
+      theorem pages, 27,491 tactic lines, 506 compacted statements, and
+      1,275/1,839 compacted local propositions. Exact expansion/native-replay
+      receipts preserve the theorem graph and the
+      `240 public / 316 body-checked / 1 pending layered closure` status split;
+      the readable `PA00FW` remains a candidate.
 - [x] Add the static-clean
       [WMI Jupyter Book build harness](../docs/WMI_JUPYTER_BOOK_BUILD.md).
       Its independent static audit findings are remediated. Test-only
