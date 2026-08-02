@@ -8,8 +8,10 @@ from types import SimpleNamespace
 import sys
 
 import pytest
-import torch
-import torch.nn.functional as functional
+
+
+torch = pytest.importorskip("torch")
+functional = pytest.importorskip("torch.nn.functional")
 
 
 REPO_ROOT = Path(__file__).resolve().parents[3]

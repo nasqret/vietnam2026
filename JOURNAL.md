@@ -3509,3 +3509,9 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   the QR status: jobs `187187` and `210714` failed closed at dependency-
   minimality gates, so the 557-spec closure still has no complete 136-gate WMI
   receipt and quadratic reciprocity is not admitted as a public native theorem.
+- The first GitHub merge-ref CI run exposed one optional-dependency boundary:
+  core CI installs `pytest` but not PyTorch, while three newly merged training
+  test modules imported `torch` unconditionally during collection. They now
+  use the repository's existing `pytest.importorskip("torch")` convention.
+  With PyTorch present all 96 affected tests pass; with its import deliberately
+  blocked, the three modules skip cleanly instead of aborting collection.
