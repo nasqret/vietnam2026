@@ -1,19 +1,31 @@
 # Peano Lab post-training experiment — M19 research protocol
 
 **Status:** binding experiment protocol with the historical accepted WMI model-v1 result, the
-model-v2 design stage, and the active model-v3 successor recorded through 2026-08-01. Model-v3 binds
+model-v2 design stage, and the model-v3 successor recorded through 2026-08-02. Model-v3 binds
 the complete 247-theorem ladder and the immutable corpus seal at content SHA-256
 `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`. After the earlier fail-closed
 preparation diagnostics described below, fresh same-source sealed preparation `217851` completed
 in 4h01m09s under clean commit `4d44609ee32d5d28726c082ef7b5649c0a1107a6`. It passed corpus
 eligibility, the exact 20,765-row/73,446,475-token audit, representative LoRA updates, one real
 Trainer step and evaluation, restored-bare-forward saved-policy admission, fresh reload, and the
-independent terminal-report verifier. Production job `217859` is now actively training the pinned
-Qwen3-1.7B Base rank-32 adapter on one WMI A100: 649 optimizer updates, effective batch 32, one
-complete selected-curriculum pass, and recovery publications at steps 100 through 600. This is a
-live optimizer fact, not a capability result. The final adapter, evaluation report, kernel-replayed
-proofs, and solve rate remain pending. Result fields are filled only after their artifacts exist
-and every claimed proof has passed a separate independent kernel replay. A local read-only live
+independent terminal-report verifier. Production job `217859` subsequently completed and supplied
+the admitted Qwen3-1.7B Base rank-32 adapter for the paired frozen-goal experiment. Trained-policy
+job `218171` and the revision/configuration-pinned pretrained comparison `218172`, whose report
+declares that no PEFT adapter was attached, completed sequentially in 3m51s and 4m20s.
+Their immutable raw reports say, at `k=1`, 3/4 versus 0/4. The three trained scripts also replay
+individually through the independent kernel (98, 29, and 10 certificate nodes), while the only
+induction-heavy goal remained unsolved. Canonical whole-report replay rejected the trained report
+because its nested policy identity omitted four required library-prefix fields. The ordinary replay
+remains unchanged and continues to reject that
+historical report. A distinct version-pinned historical attestation has now passed, however: it
+binds the immutable input and exact reconstruction and independently replayed all 3/3 proof claims.
+A dedicated pretrained-base attestation also passed, validating the declared control identity,
+provenance, search accounting, and zero proof claims. The narrow four-goal `k=1` launch-smoke result
+is therefore admitted as 3/4 versus 0/4. It is not a statistical benchmark, evidence of non-trivial
+induction, a bit-for-bit base-weight identity result, or a broad or causal model-superiority claim.
+Result fields are filled only after their
+artifacts exist and every claimed proof has passed the applicable independent provenance and kernel
+replay. A local read-only live
 view is documented in [Peano Lab Training Observatory](PEANO_TRAINING_DASHBOARD.md).
 This document extends M9; it does not weaken any Peano Lab trust rule.
 
@@ -741,9 +753,9 @@ scripts/helios_peano_policy_repl.sh \
 Both cluster wrappers are dry-run by default, allocate one fixed GPU, keep
 theorem text out of shell arguments, and deliberately refuse a model-v1 or unattested/custom
 adapter. The WMI wrapper is pinned to model-v3; the historical Helios wrapper remains pinned to
-model-v2-heavy. The model-v3 WMI adapter path and interface are therefore ready, but no model-v3
-transformer result exists there until the sealed training job really finishes; this is not yet
-evidence of proof quality.
+model-v2-heavy. The model-v3 WMI adapter now exists, and its separately attested four-goal launch
+smoke is 3/4 versus 0/4 at `k=1`. That tiny shallow result is not evidence of broad proof quality
+or induction capability.
 
 ### 10.3 What the first adapter can and cannot do
 
@@ -766,8 +778,8 @@ validation, and test:
 One of eight samples produced `intro n; exists 0; rewrite PA3; refl`. The
 ordinary exported script replayed independently to a seven-node checked
 certificate. This is one real success in a represented schema, but attributing it to fine-tuning
-requires the still-pending pretrained-base baseline. The adapter did not demonstrate
-induction-level proof planning.
+would require a matching baseline for that historical model-v1 experiment; none was run. The
+adapter did not demonstrate induction-level proof planning.
 
 The post-result audit explains why. The full 8,149-row train split represents
 only sixteen of the twenty-five permitted tactic heads. It has no IH states,
@@ -1012,8 +1024,9 @@ The original registered draft used an 80,000-row cap and two epochs. That draft 
 the sealed whole-session protocol below. In particular, row-prefix truncation is forbidden, and a
 second pass over the longest prompts is not justified until one exact selected-curriculum pass has
 been measured. At that draft checkpoint no model-v3 training submission, checkpoint, evaluation
-score, or model-quality claim had been recorded. Current production job `217859` now establishes
-live optimizer execution only; the final checkpoint and all quality claims remain pending.
+score, or model-quality claim had been recorded. Production job `217859` later completed, and the
+separately admitted four-goal `k=1` launch smoke is 3/4 versus 0/4. Its three successes are shallow
+and its induction goal is unsolved, so broad quality claims remain unsupported.
 
 ### 10.6 Model-v3 sealed curriculum, indexed objective, and launch chain
 
@@ -1071,8 +1084,8 @@ production-learning results. Its accepted three-report chain was an admissible t
 predecessor only for its exact clean source. Deploying the completed-predecessor control change
 intentionally invalidates that same-source join, so the new tree requires a fresh preparation.
 That required preparation is now job `217851`, and its guarded same-source production successor
-`217859` is running. This later event does not retroactively turn either earlier attempt into valid
-evidence.
+`217859` subsequently completed. That later event does not retroactively turn either earlier
+attempt into valid evidence.
 
 #### Completion-only loss without full-sequence vocabulary logits
 
@@ -1321,7 +1334,8 @@ After a clean current-source deployment, the accepted WMI chain is:
    launch smoke. Before model loading, the evaluator requires the adapter manifest's training job,
    `PEANO_TRAIN_JOB_ID`, and the submission-ledger predecessor to be the same numeric job. That binding
    is preserved in the report and checked again by independent replay.
-4. `peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch` is a separate same-authority control. It
+4. `peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch` is a separate comparison under the same
+   declared prompt/search authority. It
    verifies the completed adapter manifest and closed adapter/tokenizer trees but never attaches
    PEFT weights. It loads the pinned Qwen base and repeats the exact four-goal seed and search
    envelope under the distinct `peano-policy-pretrained-base-v1` identity. Its fixed contract is
@@ -1386,12 +1400,97 @@ hours for evaluation. Current result ledger:
 | historical corpus seal path/content digest | `checkpoints/corpora/peano-policy-v3-173040`; `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b` (job `213641`, verified) |
 | last verified sealed preparation | job `217851` under source `4d44609ee32d5d28726c082ef7b5649c0a1107a6`; complete eligibility, exact token-audit, runtime-smoke, and independent three-report verification passed |
 | selected train/evaluation rows and exact token exposure | accepted token audit: 20,765 train rows (8,494 catalog + 12,271 synthetic), 73,446,475 train tokens, 415,247,631,205 squared train tokens; 512 evaluation rows and 1,351,537 tokens |
-| optimizer steps, losses, adapter and tokenizer digests | job `217859` is **running** the 649-step production optimizer; progress and recovery trees are live, while exact production loss is still buffered and final artifact digests are pending |
-| evaluation job/report and independently replayed proofs | **pending** |
-| same-authority pretrained-base comparison report | **pending** |
+| optimizer steps, losses, adapter and tokenizer digests | training manifest SHA-256 `caa5569c98ed9ea048d413301b803c39011957d1c97307e5b109846989e18569` binds expected and actual 649 optimizer steps; job `217859` completed and its admitted adapter was consumed by the guarded evaluator |
+| evaluation job/report and independently replayed proofs | trained job `218171`, 3m51s: immutable `k=1` report says 3/4; ordinary canonical replay still rejects its incomplete nested environment identity, while version-pinned `trained-compatibility-replay.json` passed and independently replayed all 3/3 claims (embedded attestation SHA-256 `e900a10241db0451992313eb2a7b0341911a7a71cd8af91e831a279874afda56`) |
+| revision/configuration-pinned pretrained comparison, with no PEFT adapter reported | job `218172`, 4m20s: immutable `k=1` report says 0/4; `pretrained-base-replay.json` passed declared identity/provenance/search-accounting validation with zero proof claims (embedded attestation SHA-256 `056519bc3598a390526fdf9054aa38090d499f7f837af0a2ace7af8caaa560e7`) |
+| paired admission | `paired-launch-smoke-attestation.json`: `paired_launch_smoke_admitted`; embedded attestation SHA-256 `9b33b4e488f14e38fc7c5a122410d53e9e1123409dcccafdc73e0a8ab1a14bae`, file SHA-256 `cdd20cc6e97ff442cff1c476135963f726b740372223f6eac72335543f6c11ba` |
 
 An idle A100 attached to CPU replay is not transformer training. The run begins only when the
 training process has passed every predecessor gate and logs its first optimizer step.
+
+### 10.7 Paired model-v3 launch smoke: admitted narrow result
+
+The paired run used the frozen four goals and identical depth-32, beam-16, eight-candidate search
+authority for the admitted adapter and a revision/configuration-pinned Qwen3-1.7B pretrained
+comparison whose report declares that no PEFT adapter was attached. The single-owner
+launcher ran them sequentially rather than bypassing its concurrency guard:
+
+| Policy | WMI job | GPU wall time | Raw `k=1` result |
+|---|---:|---:|---:|
+| rank-32 model-v3 adapter | `218171` | 3m51s | 3/4 |
+| pretrained comparison; no PEFT adapter reported | `218172` | 4m20s | 0/4 |
+
+The reports were produced under source
+`4d44609ee32d5d28726c082ef7b5649c0a1107a6`. Their untouched local copies are
+`artifacts/peano-policy/model-v3-evaluation-2026-08-02/trained-report.json` (SHA-256
+`f134f8c2d8c173e2ebcee0ebd3b8dfbc59805619bd7e79706c11e51732e0956c`) and
+`pretrained-base-report.json` (SHA-256
+`410be8f224d2dac6d28c4e0f55f125e95d5bc1f725b9c20851b00c15394d97b9`).
+The paired admission also binds the exact 1,631,246-byte training manifest at SHA-256
+`caa5569c98ed9ea048d413301b803c39011957d1c97307e5b109846989e18569`; that manifest records 649
+expected and 649 actual optimizer steps.
+
+The raw trained report contains three short successful tactic scripts:
+
+| Goal | Tactics | Independently replayed certificate nodes |
+|---|---|---:|
+| closed arithmetic | `norm_num` | 98 |
+| existential witness | `exists 5`; `norm_num` | 29 |
+| universally quantified right-zero calculation | `intro n`; `rewrite PA3`; `simp` | 10 |
+
+Each script was separately replayed through `verify_proof` against its original formula under the
+actual model-v3 capabilities. The fourth goal,
+`forall x. exists y. x * (x + 1) = 2 * y`, requires induction-level planning and remained unsolved.
+The pretrained comparison produced 32 malformed candidate sequences and executed no tactics. These facts
+support only the narrow observation that the adapter emitted executable syntax and shallow proof
+compositions in this smoke; they do not demonstrate non-trivial induction, broad PA proving
+ability, or a stable causal effect.
+
+The canonical report replay deliberately refused to publish an attestation. The evaluator had used
+the full 247-theorem environment to render prompts and had recorded that library separately, but
+the nested `base_policy_identity.environment` serialized only the older four-field projection. It
+therefore omitted `library_identity_sha256`, `library_full_identity_sha256`,
+`library_prefix_length`, and `library_size`. The ordinary replay requires the exact full authority
+and correctly treated this structural provenance mismatch as fatal. The original report is not
+edited, and the ordinary verifier is not relaxed.
+
+That historical defect is now covered without changing the ordinary verifier. The distinct
+version-pinned artifact `trained-compatibility-replay.json` binds the immutable report, source and
+job, exact four-field legacy projection, reconstructed full-library values, and historical source
+inventories. It passed and independently replayed all 3/3 claimed proofs; its embedded attestation
+SHA-256 is `e900a10241db0451992313eb2a7b0341911a7a71cd8af91e831a279874afda56`.
+The dedicated `pretrained-base-replay.json` also passed, validating the declared pretrained identity,
+provenance, and search accounting and correctly replaying zero proof claims; its embedded
+attestation SHA-256 is
+`056519bc3598a390526fdf9054aa38090d499f7f837af0a2ace7af8caaa560e7`.
+
+The final paired layer cross-binds both reports, both producer attestations, the training manifest,
+source commit, three job records, four goals, seed, and all search limits. It verified historical
+Git blobs for 36 trained-semantic, 36 pretrained-semantic, 61 trained-evaluation, and 62
+pretrained-evaluation entries—62 unique source blobs in total—and found all overlapping digests
+equal. `paired-launch-smoke-attestation.json` passed with result
+`paired_launch_smoke_admitted`; its embedded attestation SHA-256 is
+`9b33b4e488f14e38fc7c5a122410d53e9e1123409dcccafdc73e0a8ab1a14bae`, and the file SHA-256 is
+`cdd20cc6e97ff442cff1c476135963f726b740372223f6eac72335543f6c11ba`.
+
+This attribution has explicit limits. The pretrained comparison is revision/configuration-pinned
+and reports no PEFT adapter, but its base-model weight shards were not content-hashed before and
+after loading; the experiment therefore does not attest bit-for-bit base weights. The immutable
+evaluation reports do not contain complete raw generation transcripts, so the paired layer cannot
+replay raw model output, extraction, or every executed search edge. Candidate attribution instead
+rests on byte-pinned historical producer/source/job records, while the consumed trained attestation
+independently kernel-replays the three published certificates. WMI completion was additionally
+observed in the retained `sacct` and log evidence bundle, but scheduler observations are not
+cryptographically authenticated by Slurm.
+
+Consequently, **the narrow frozen four-goal `k=1` launch-smoke result is admitted as 3/4 versus
+0/4**. The ordinary trained-report replay still rejects the old incomplete identity and remains
+unchanged; the historical bridge is a separately scoped admission, not a weakened general rule.
+This tiny smoke contains three shallow proofs and one unsolved induction theorem. It establishes
+neither broad PA ability, induction capability, bit-for-bit pretrained-weight identity, statistical
+reliability, nor causal superiority of the adapter. Those questions require stronger weight and
+generation-transcript attestation, a deterministic baseline, a larger hidden induction-rich
+benchmark, and repeated controlled measurements.
 
 ## 11. Provenance and result ledger
 

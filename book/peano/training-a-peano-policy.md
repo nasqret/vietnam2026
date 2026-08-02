@@ -12,7 +12,7 @@ runtime, a kernel-judged evaluator, and guarded Helios job controls.  These piec
 outside the kernel.  They can make proof search faster; they cannot make an invalid certificate
 valid.
 
-```{admonition} Experiment status, 2026-08-01
+```{admonition} Experiment status, 2026-08-02
 :class: important
 The local execution, prompt, training-runtime, evaluation, provenance, and guarded cluster paths
 are implemented. Historical model-v1 WMI training produced a deliberately narrow result: 0/4
@@ -25,10 +25,19 @@ Fresh same-source sealed preparation `217851` completed in 4h01m09s under clean 
 `4d44609ee32d5d28726c082ef7b5649c0a1107a6`. It passed eligibility, the exact
 20,765-row/73,446,475-token audit, representative LoRA updates, a real Trainer step and evaluation,
 restored-bare-forward saved-policy admission, fresh reload, and independent report verification.
-Production job `217859` is now actively running the 649-update Qwen3-1.7B Base rank-32 LoRA
-optimizer on one WMI A100. Recovery adapter evidence is published every 100 updates. This is an
-execution claim only: the final adapter, kernel-judged evaluation, pretrained-base comparison,
-solve rate, 4B comparison, and expert iteration remain pending.
+Production job `217859` completed and its admitted rank-32 adapter entered the paired frozen-goal
+experiment. Trained job `218171` and revision/configuration-pinned pretrained comparison `218172`,
+whose report declares no PEFT adapter, finished sequentially in 3m51s and 4m20s. Their immutable
+raw `k=1` reports say 3/4 versus 0/4. The three trained scripts
+also replay individually through the independent kernel, but the induction-heavy fourth goal was
+not solved. The canonical whole-report replay rejected the trained report because its nested policy
+identity omitted four full-library fields, and the ordinary replay remains unchanged. A separate
+version-pinned historical attestation has now passed and independently replayed all 3/3 claims; a
+dedicated base attestation also passed declared control identity, provenance, search accounting, and
+zero-claim validation. The narrow four-goal `k=1` result is therefore admitted as 3/4 versus 0/4.
+The cross-binding paired artifact records `paired_launch_smoke_admitted`. No bit-for-bit base-weight,
+statistical, broad PA, non-trivial induction, causal-superiority, 4B, or expert-iteration claim
+follows.
 ```
 
 The binding research protocol is
@@ -54,9 +63,9 @@ same-origin content-security policy.
 The more subtle design problem is semantic honesty. The active Trainer shuffles rows and is
 configured to accumulate up to 32 microbatches per optimizer step; its final partial window has 29.
 The corpus inspector therefore says *representative reported sample*, not *current batch*.
-Likewise, job `217859` emits carriage-return progress immediately but buffers
+Likewise, while job `217859` was active it emitted carriage-return progress immediately but buffered
 its periodic loss dictionaries in redirected stdout. The dashboard plots only exact flushed or
-terminal-manifest loss records. Until one exists, it leaves the production curve empty and labels
+terminal-manifest loss records. Before one existed, it left the production curve empty and labelled
 the preparation loss `2.8299612998962402` as a one-step admission-smoke diagnostic. GPU activity,
 step time, or a falling ETA can never be repackaged as learning evidence.
 
@@ -532,6 +541,78 @@ a separate ranking objective.
 They should not be mixed into SFT labels merely because they were produced by the same run.  Any
 later reward optimization receives terminal proof reward only from independent QED; a certificate
 size bonus is conditional on QED and cannot compensate for an invalid theorem.
+
+### The first paired model-v3 smoke—and why it needed a historical bridge
+
+The first frozen comparison ran the trained adapter and a revision/configuration-pinned pretrained
+Qwen3-1.7B comparison under the same four goals, seed, depth-32 beam-16 search, eight candidates per
+state, and host-owned budgets. The comparison report declares that no PEFT adapter was attached.
+The single-session-owner rule made the GPU jobs sequential: trained job `218171` took 3m51s, and
+pretrained job `218172` took 4m20s. At `k=1`, their immutable raw reports say 3/4 and 0/4
+respectively.
+
+The trained policy found three compact tactic routes:
+
+| Goal shape | Route | Certificate nodes |
+|---|---|---:|
+| closed numeral arithmetic | `norm_num` | 98 |
+| existential witness | `exists 5`; `norm_num` | 29 |
+| quantified right-zero calculation | `intro n`; `rewrite PA3`; `simp` | 10 |
+
+All three scripts replay independently through `verify_proof` against their original formulas and
+the actual model-v3 surface. The pretrained comparison emitted 32 malformed sequences and executed
+no tactics. The
+fourth theorem, `forall x. exists y. x * (x + 1) = 2 * y`, remained unsolved. Because it is the only
+genuinely induction-heavy goal, the narrow pedagogical reading is clear: the adapter displayed
+useful syntax and shallow tactic composition, but this run did not demonstrate induction planning.
+
+There is also a provenance lesson. The evaluator used the real full 247-theorem environment for
+prompting and listed that authority elsewhere in the report, yet the nested base-policy identity
+serialized a legacy reduced projection. Four required fields were absent:
+`library_identity_sha256`, `library_full_identity_sha256`, `library_prefix_length`, and
+`library_size`. The canonical model-free replay compared this nested record with the exact full
+authority and rejected it. That refusal is the system working: three kernel-valid certificates do
+not excuse a structurally incomplete experiment identity.
+
+The original report remains immutable, and the ordinary replay gate remains strict. The separate
+compatibility attestation recovers this historical case by pinning the exact
+report hash, source commit, evaluation job, historical evaluator sources, legacy four-field
+projection, and reconstructed full-library values, and then independently replaying every claimed
+proof. `trained-compatibility-replay.json` passed with all 3/3 proof claims independently replayed;
+its embedded attestation SHA-256 is
+`e900a10241db0451992313eb2a7b0341911a7a71cd8af91e831a279874afda56`.
+The dedicated `pretrained-base-replay.json` passed declared pretrained identity, provenance, and
+search-accounting validation with zero proof claims; its embedded attestation SHA-256 is
+`056519bc3598a390526fdf9054aa38090d499f7f837af0a2ace7af8caaa560e7`.
+
+One final paired artifact joins the two conditions rather than leaving their agreement implicit.
+It binds the exact training manifest—SHA-256
+`caa5569c98ed9ea048d413301b803c39011957d1c97307e5b109846989e18569`, with 649 expected and 649
+actual optimizer steps—the two reports, both producer attestations, source commit, three job
+records, goal set, seed, and search budgets. Historical Git lookup verified 36 trained-semantic,
+36 pretrained-semantic, 61 trained-evaluation, and 62 pretrained-evaluation entries, with 62 unique
+source blobs and agreement on every overlap. `paired-launch-smoke-attestation.json` passed with
+result `paired_launch_smoke_admitted`; its embedded attestation SHA-256 is
+`9b33b4e488f14e38fc7c5a122410d53e9e1123409dcccafdc73e0a8ab1a14bae`, and its file SHA-256 is
+`cdd20cc6e97ff442cff1c476135963f726b740372223f6eac72335543f6c11ba`.
+
+The pairing is strong, but deliberately not stronger than its inputs. The pretrained condition is
+revision/configuration-pinned and reports no PEFT adapter, yet its base weight shards were not
+content-hashed before and after model loading. It is therefore not a bit-for-bit base-weight
+attestation. Neither evaluation report retains complete raw generation transcripts, so the paired
+layer cannot replay the model's raw text, host extraction, or every executed search edge.
+Attribution of candidates to the two producers rests on byte-pinned historical
+producer/source/job records; certificate validity rests separately on the consumed trained
+attestation's three kernel replays. Retained WMI `sacct` and log-bundle artifacts additionally
+record completion, but Slurm does not cryptographically authenticate those scheduler observations.
+
+Thus the narrow frozen four-goal `k=1` launch smoke is admitted as 3/4 versus 0/4. The ordinary
+trained-report replay still rejects the historical incomplete identity and has not been weakened;
+the bridge is version-pinned and separately scoped. This distinction is as important to students
+as the tactics: kernel soundness and scientific provenance are related, but neither substitutes
+for the other. Three shallow proofs on four goals, with the induction theorem unsolved, establish
+neither broad PA ability, induction capability, bit-for-bit pretrained-weight identity,
+statistical reliability, nor causal superiority.
 
 ## What to measure
 
@@ -1319,7 +1400,7 @@ The relevant entry points are
 [`slurm/peano_wmi_prepare_v3_sealed_training.sbatch`](https://github.com/nasqret/vietnam2026/blob/peano-lab/slurm/peano_wmi_prepare_v3_sealed_training.sbatch),
 and
 [`scripts/replay_peano_v3_evaluation.py`](https://github.com/nasqret/vietnam2026/blob/peano-lab/scripts/replay_peano_v3_evaluation.py).
-The binding command sequence and pending-result ledger live in
+The binding command sequence and result ledger live in
 [`docs/PEANO_TRAINING.md`](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_TRAINING.md#106-model-v3-sealed-curriculum-indexed-objective-and-launch-chain).
 
 In the historical preparation sequence, WMI job `172729` generated both source lanes, exact-corpus
@@ -1335,9 +1416,11 @@ wrapper admission boundary before a runtime-smoke report. Fresh repaired prepara
 then passed the repaired smoke and all three independent report checks under source
 `e0f7e7d0`. The completed-predecessor and exact-649-step fixes changed source identity, so fresh
 post-fix preparation `217851` repeated and passed the complete gate under `4d44609e`. Production
-optimizer `217859` is now running on an A100. Its live steps and recovery trees establish execution,
-but adapter hashes, exact production loss records, evaluation, solve results, and the independent
-replay digest remain pending.
+optimizer `217859` then completed on an A100 and supplied the admitted adapter consumed by trained
+evaluation `218171`. The paired reports exist, but the trained report's canonical replay rejection
+is now covered by the passed, version-pinned historical attestation; the dedicated base attestation
+also passed. The narrow launch-smoke comparison is admitted as 3/4 versus 0/4, without changing the
+ordinary verifier or implying broader capability.
 
 ## Reproduction and honest resume
 
@@ -1505,8 +1588,8 @@ scripts/helios_peano_policy_repl.sh \
 That historical wrapper requests one GH200 under the fixed account and enters the same Python
 client with its model-v2-heavy path; the WMI wrapper is pinned to model-v3. Both reject an
 unattested adapter or the wrong surface profile. The interfaces and their model-free tests exist;
-the model-v3 result remains pending until real optimizer training and evaluation finish, so this is
-not yet a demonstration of model-v3 proof quality.
+the model-v3 adapter now exists and the narrow frozen comparison has separate passed admissions,
+but this interface is not evidence of broad model-v3 proof quality.
 Neither interface translates English into PA, changes logic mode, or enlarges the adapter's theorem
 authority.
 
@@ -1519,8 +1602,10 @@ report says `peano-policy-pretrained-base-v1` and binds the comparison manifest 
 tree hashes. Keeping this identity and WMI job separate prevents base-model behavior from being
 misreported as adapter behavior. The trained-adapter independent replay gate remains narrow and
 does not accept the control identity; a control replay attestation would be a separate protocol.
-The implementation and model-free tests are complete, but no control result is claimed before the
-comparison adapter itself exists.
+The implementation and model-free tests are complete. Control job `218172` produced a raw 0/4 at
+`k=1`; its dedicated attestation passed exact identity, provenance, search-accounting, and
+zero-claim validation. The paired launch-smoke comparison is therefore admitted under its two
+separately scoped attestations.
 
 Reproducible does not necessarily mean bit-identical floating-point training on every platform.
 It means that any remaining nondeterminism is bounded and visible, and that nobody can mistake a
@@ -1528,13 +1613,14 @@ different model, environment, dataset, or checkpoint for the same experiment.
 
 ## Limitations and the next honest claims
 
-The current work establishes that one small trained adapter can emit a shallow checked proof, but
-not that fine-tuning caused the success or that the adapter is broadly useful for PA. Important
+The current work establishes that one small trained adapter can emit several shallow checked
+proofs, but not that it is broadly useful for PA or capable of non-trivial induction. Important
 limitations remain:
 
-- the only *completed and evaluated* result is still the narrow 10,000-row model-v1 smoke;
-  model-v3 production optimization is active but has no admitted final adapter or quality
-  measurement yet;
+- the model-v3 adapter exists, and the separately admitted four-goal `k=1` launch smoke is 3/4
+  versus 0/4; the ordinary trained-report replay still rejects four omitted library-prefix identity
+  fields, while the version-pinned historical bridge validates this exact immutable report rather
+  than weakening that rule;
 - model-v3's 247-theorem identity, strict predecessor-prefix generator, 51-schema root-balanced
   generator, whole-session selector, indexed completion objective, immutable-seal/current-source
   eligibility gate, and independent evaluation replay are implemented; retry `172729`, continuation
@@ -1543,26 +1629,29 @@ limitations remain:
   passed all token gates but exposed a retained Accelerate forward wrapper at saved-policy
   admission; after the completed-predecessor repair, fresh same-source preparation `217851` passed
   eligibility, the exact token audit, repaired runtime smoke, and independent three-report
-  verification; production optimizer job `217859` is now running, while its final admission and
-  quality evidence do not yet exist;
+  verification; production optimizer job `217859` then completed, and paired evaluation jobs
+  `218171`/`218172` produced the separately attested launch-smoke reports described above;
 - the four-goal protocol set is a regression fixture, not a statistically useful final test, and
   hard whole-template OOD sets plus human-authored problems still need to be sealed;
-- depth-32 verifier-guided beam search is implemented, but its gain with a trained model-v3 policy
-  has not been measured and no expert-iteration round exists;
+- depth-32 verifier-guided beam search ran in the four-goal smoke, but its gain over a trained
+  greedy/rollout condition has not been isolated and no expert-iteration round exists;
 - no preference-training or reinforcement-learning result exists;
 - no English-to-PA formalizer has been trained or semantically evaluated;
 - the full content-bound library identity, prompt projection, and retrieval are implemented, but
   their usefulness remains an empirical question; and
-- pretrained/deterministic baselines must accompany the heavy evaluation, while all LoRA-rank and
-  4B comparisons remain deferred until the 1.7B model-v3 baseline exists.
+- a revision/configuration-pinned pretrained comparison reporting no PEFT adapter now accompanies
+  the four-goal smoke, but weight-shard and raw-generation transcript attestation, a deterministic
+  baseline, larger hidden suite, repeated runs, all LoRA-rank studies, and 4B comparisons remain
+  outstanding.
 
 The valid statement is therefore not “Peano Lab has a theorem-proving model.” It is narrower: one
-exact 1.7B adapter, after training on the easy next-tactic distribution, failed the frozen
-induction/order smoke and produced one independently checked proof for a new theorem from a
-represented direct-witness schema. Peano Lab now also has the implemented infrastructure for a much
-stronger model-v3 experiment, but no trained v3 result. Causal attribution and larger conclusions
-must be earned by the pretrained baseline, model-v3 family splits, tokenizer-attested heavy run,
-search comparison, and repeated measurements described above.
+one 1.7B model-v3 adapter produced three independently kernel-valid shallow scripts in a frozen
+four-goal run where a revision/configuration-pinned pretrained comparison reporting no PEFT adapter
+produced none, but it did not solve the induction goal. The 3/4-versus-0/4 result is admitted only
+through separately scoped, immutable attestations;
+the ordinary trained-report replay still rejects its historical identity defect. Larger conclusions
+must be earned by hidden family splits, deterministic and search comparisons, repeated
+measurements, and harder induction-rich problems.
 
 That restraint is the main pedagogical result.  A learned explorer can be cheap, fast, and
 surprisingly inventive.  Its suggestions remain suggestions.  Peano Lab's kernel decides theorems,

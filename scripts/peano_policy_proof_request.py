@@ -25,6 +25,7 @@ for import_root in (REPOSITORY_ROOT, PEANO_PYTHON, Path(__file__).resolve().pare
         sys.path.insert(0, str(import_root))
 
 import eval_trained_peano_policy as trained_cli  # noqa: E402
+from training.peano_policy.contract import environment_record  # noqa: E402
 from training.peano_policy.prompt import prompt_contract_sha256  # noqa: E402
 
 
@@ -630,7 +631,7 @@ def _validate_v2_report_identity(
         "temperature": float(temperature),
         "top_p": float(top_p),
     }
-    expected_environment = _goal_environment_record(goal)
+    expected_environment = environment_record(environment)
     expected_prompt_version = getattr(environment, "prompt_version", None)
     if (
         set(base)

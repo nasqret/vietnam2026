@@ -31,8 +31,23 @@ model calls, 4,096 discovered states, and 256 generated tokens per candidate for
 goals. Evaluation remains untrusted: a separate model-free reader validates the evaluator-v4
 authority and all search accounting, then independently kernel-replays every attempt reported as a
 proof. The four formulas calibrate infrastructure and include one multistep induction theorem; they
-are not a statistically sufficient claim of general PA capability. No model-v3 search result exists
-until the sealed-preparation, training, evaluation, and replay chain completes.
+are not a statistically sufficient claim of general PA capability.
+
+The first paired search completed on 2026-08-02. At raw `k=1`, trained job `218171` reported 3/4
+and revision/configuration-pinned pretrained job `218172`, reporting no PEFT adapter, reported 0/4.
+The three trained tactic scripts independently
+kernel-replay with 98, 29, and 10 nodes; the induction-heavy goal was unsolved, and the base's 32
+sequences were malformed before tactic execution. Canonical whole-report replay rejected the
+trained report because its nested environment omitted four required library-prefix identity
+fields. The ordinary verifier remains unchanged. A separately version-pinned historical
+attestation has now passed and replayed all 3/3 claims, while a dedicated pretrained attestation
+passed declared identity/provenance/search-accounting validation with zero claims. A paired
+cross-binding records `paired_launch_smoke_admitted`. Thus the narrow four-goal
+`k=1` launch smoke is admitted as 3/4 versus 0/4. It remains too small for statistical inference,
+and the unsolved induction theorem prevents an induction-capability claim. Base weight shards and
+complete raw generation/extraction/executed-edge transcripts were not attested, so neither
+bit-for-bit base identity nor raw-output replay is claimed. The episode illustrates why kernel-valid
+proof payloads and a valid experiment identity are separate requirements.
 
 ## Related
 

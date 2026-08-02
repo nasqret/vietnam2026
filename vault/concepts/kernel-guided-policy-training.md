@@ -100,8 +100,8 @@ the remaining provenance work and immediately before no-replace publication of t
 The direct generation and pretrained-base comparison paths check their adapter/tokenizer trees on
 both sides of heavy loading. Recovery requires exact directory/file modes `0555`/`0444`; these are
 provenance and accidental-corruption checks, not protection from a hostile same-owner process. The
-focused wiring audit passes 89 tests, while optimizer training and model-v3 capability evidence
-remain pending.
+focused wiring audit passed 89 tests; at that prelaunch checkpoint optimizer training and model-v3
+capability evidence remained pending.
 
 The implemented [[verifier-guided-policy-evaluation-and-search]] asks for several complete lines at
 one immutable state, rejects failures transactionally, deduplicates canonical successor states, and
@@ -121,14 +121,29 @@ retry changed only that ceiling to 74,000,000. Job `217123` passed the resulting
 ran the representative smoke updates, but failed before smoke-report publication because the live
 Trainer model retained Accelerate's mixed-precision forward wrapper while the fresh reload used
 bare inference. The repair unwraps and verifies the original forward without weakening exact
-admission. No production model-v3 optimizer job has run; adapter, evaluation, independent replay,
-and proof-quality results remain pending. Fresh replacement
-preparation `217768` has since passed all three reports, including exact bare-forward saved-policy
-admission. WMI submission distinguishes a live `--afterok` scheduler edge from a
+admission. At that checkpoint no production model-v3 optimizer job had run; adapter, evaluation,
+independent replay, and proof-quality results remained pending. Fresh replacement preparation
+`217768` then passed all three reports, including exact bare-forward saved-policy admission. WMI
+submission distinguishes a live `--afterok` scheduler edge from a
 `--completed-predecessor` accounting/ledger/report binding after Slurm's controller retention
 expires; the latter preserves the producer identity without claiming a nonexistent live edge. The
 control change creates a new source identity, so `217768` cannot be relabelled: a post-fix sealed
-preparation must pass before training, with no intervening deployment.
+preparation had to pass before training, with no intervening deployment. Preparation `217851` did
+so under source `4d44609e`, and production optimizer `217859` completed.
+
+The first paired model-v3 launch smoke then produced raw `k=1` results of 3/4 for trained job
+`218171` and 0/4 for revision/configuration-pinned pretrained comparison `218172`, whose report
+declares no PEFT adapter. The three trained scripts are independently
+kernel-valid, but the induction-heavy theorem was not solved. Canonical report replay rejected the
+trained JSON because the nested policy environment omitted the full model-v3 library identity and
+size fields. The ordinary replay remains strict and still rejects that historical identity.
+Distinct version-pinned `trained-compatibility-replay.json` has now passed and independently
+replayed all 3/3 claims; dedicated `pretrained-base-replay.json` passed declared control identity,
+provenance, and search accounting with zero claims. This admits the narrow four-goal `k=1` result
+as 3/4 versus 0/4. Paired cross-binding reports `paired_launch_smoke_admitted`, but base weight
+shards and complete raw generation/extraction/executed-edge transcripts were not attested. It
+therefore supplies no bit-for-bit base, statistical, broad PA, induction, or causal-superiority
+result.
 
 ## Related
 

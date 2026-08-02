@@ -1,0 +1,67 @@
+No broken requirements found.
+{'python': '3.12.12', 'torch': '2.5.1', 'torch_cuda': '12.4', 'cudnn': 90100, 'numpy': '2.3.5', 'device': 'NVIDIA A100-SXM4-80GB', 'total_memory': 85119205376, 'bf16': True, 'environment': '/work/bnaskrecki/peano-lab-training/.venv-wmi/releases/8318df5e68bc61260ffbea8d1bf03b85d6557c98a2e96ceb0762c17d2e3d4d3e'}
+{"adapter_admission_content_sha256": "acd5bb688fe9c211feb29c76f1eb882c77f5fb0b219e8d7fc5491cc4a0584556", "adapter_admission_selection_binding_sha256": "bea18dc0348fa829bd5dc932f67c79975cf12dbd60b482a2931f2658803c5e90", "config_sha256": "8367eba75d9791dc7faae9fc7b9d91b87e503a4ad794d3a22ee0e6118b147f03", "corpus_content_sha256": "7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b", "corpus_eligibility_sha256": "0d7ebcf772e35c33918c7a733aba0360df157bcd9500f4be455a4979866b6d6a", "curriculum_sha256": "4ad6d8da973fbf47bcfce35930f8122383968042d9f321dffffb2f7c2595408a", "eval_token_record_sha256": "3e318569f0d9aca98edf004f87476eedc969e21bc5f62c8e0744f957a9926c4b", "format": "peano-policy-wmi-v3-sealed-preparation-verification", "longest_example_id": "peano-library-v3-230-2ca21688748c7afbbad1:158", "longest_sequence_tokens": 29111, "prepare_job_id": "217851", "reports": {"eligibility": {"bytes": 20718, "path": "/work/bnaskrecki/peano-lab-training/logs/peano-wmi-v3-sealed-eligibility-217851.json", "sha256": "b59e904c6608a37b37ba96aecc2793271443353ee51372b56999a114e85f1e73"}, "runtime_smoke": {"bytes": 50835, "path": "/work/bnaskrecki/peano-lab-training/logs/peano-wmi-v3-prepare-runtime-217851.json", "sha256": "b12a14aae9185363d1c49b9348753462a58262df47ad8deac770e09e5f71fffd"}, "token_audit": {"bytes": 1370697, "path": "/work/bnaskrecki/peano-lab-training/logs/peano-wmi-v3-token-audit-217851.json", "sha256": "fabb4b2478dfc623c97ffd55fbf947a13505a5be6fde590a96c19d18e3695de3"}}, "source_commit": "4d44609ee32d5d28726c082ef7b5649c0a1107a6", "status": "verified", "train_token_record_sha256": "874d331c62fa70d6dd6612862715cda554dc4957972d889898829b176e5ac2d8", "trainer_integration": {"evaluation_loss": 0.8195649981498718, "train_global_step": 1, "training_loss": 2.8299612998962402}, "v": 1}
+{"publication_profile":"exclusive-type-matched-claim-rename-v1","report":"/work/bnaskrecki/peano-lab-training/logs/peano-wmi-recovery-publication-preflight-217859.json","report_sha256":"0e861d90c3a5b5c1a3744d59b82075af200a7ded133c5edda0c8a3dc130a34ba","retained_probe":"/work/bnaskrecki/peano-lab-training/results/peano-policy/recovery-publication-preflights/.recovery-publication-preflight-94eb3e9fbb50912c0cfb39dfaa06df48","status":"passed"}
+{"publication_profile":"exclusive-type-matched-claim-rename-v1","report":"/work/bnaskrecki/peano-lab-training/logs/peano-wmi-recovery-publication-preflight-217859.json","report_sha256":"0e861d90c3a5b5c1a3744d59b82075af200a7ded133c5edda0c8a3dc130a34ba","retained_probe":"/work/bnaskrecki/peano-lab-training/results/peano-policy/recovery-publication-preflights/.recovery-publication-preflight-94eb3e9fbb50912c0cfb39dfaa06df48","status":"passed"}
+GPU 0: NVIDIA A100-SXM4-80GB (UUID: GPU-154f8c59-ced0-5b74-2e88-0786c16c73b9)
+{'loss': 3.5161, 'learning_rate': 3.0303030303030306e-05, 'epoch': 0.02}
+{'loss': 1.7253, 'learning_rate': 6.363636363636364e-05, 'epoch': 0.03}
+{'loss': 0.9456, 'learning_rate': 9.696969696969698e-05, 'epoch': 0.05}
+{'loss': 0.7043, 'learning_rate': 9.993498939692743e-05, 'epoch': 0.07}
+{'loss': 0.6201, 'learning_rate': 9.971351508859488e-05, 'epoch': 0.08}
+{'loss': 0.5861, 'learning_rate': 9.933562366956445e-05, 'epoch': 0.1}
+{'loss': 0.5356, 'learning_rate': 9.880250412604681e-05, 'epoch': 0.12}
+{'loss': 0.4571, 'learning_rate': 9.811583384936107e-05, 'epoch': 0.14}
+{'loss': 0.4843, 'learning_rate': 9.727777335824124e-05, 'epoch': 0.15}
+{'loss': 0.4515, 'learning_rate': 9.62909595010449e-05, 'epoch': 0.17}
+{'loss': 0.4009, 'learning_rate': 9.515849715925276e-05, 'epoch': 0.19}
+{'loss': 0.3341, 'learning_rate': 9.388394947836279e-05, 'epoch': 0.2}
+{'loss': 0.3921, 'learning_rate': 9.24713266569163e-05, 'epoch': 0.22}
+{'loss': 0.3435, 'learning_rate': 9.092507332892968e-05, 'epoch': 0.24}
+{'loss': 0.4001, 'learning_rate': 8.92500545794314e-05, 'epoch': 0.25}
+{'loss': 0.3933, 'learning_rate': 8.745154063710464e-05, 'epoch': 0.27}
+{'loss': 0.3284, 'learning_rate': 8.553519029219803e-05, 'epoch': 0.29}
+{'loss': 0.393, 'learning_rate': 8.350703309187798e-05, 'epoch': 0.31}
+{'loss': 0.3126, 'learning_rate': 8.13734503690426e-05, 'epoch': 0.32}
+{'loss': 0.3265, 'learning_rate': 7.914115516428751e-05, 'epoch': 0.34}
+{'loss': 0.2971, 'learning_rate': 7.681717110419656e-05, 'epoch': 0.36}
+{'loss': 0.2953, 'learning_rate': 7.440881030241407e-05, 'epoch': 0.37}
+{'loss': 0.3461, 'learning_rate': 7.192365035303013e-05, 'epoch': 0.39}
+{'loss': 0.3115, 'learning_rate': 6.936951048866616e-05, 'epoch': 0.41}
+{'loss': 0.2627, 'learning_rate': 6.675442697827615e-05, 'epoch': 0.42}
+{'loss': 0.2701, 'learning_rate': 6.408662784207149e-05, 'epoch': 0.44}
+{'loss': 0.2699, 'learning_rate': 6.137450696312533e-05, 'epoch': 0.46}
+{'loss': 0.2572, 'learning_rate': 5.862659767711094e-05, 'epoch': 0.47}
+{'loss': 0.266, 'learning_rate': 5.585154592327059e-05, 'epoch': 0.49}
+{'loss': 0.2712, 'learning_rate': 5.305808304109214e-05, 'epoch': 0.51}
+{'loss': 0.2901, 'learning_rate': 5.025499829828467e-05, 'epoch': 0.53}
+{'loss': 0.2753, 'learning_rate': 4.7451111236490495e-05, 'epoch': 0.54}
+{'loss': 0.2403, 'learning_rate': 4.4655243921744374e-05, 'epoch': 0.56}
+{'loss': 0.3026, 'learning_rate': 4.187619318698971e-05, 'epoch': 0.58}
+{'loss': 0.2491, 'learning_rate': 3.912270295398784e-05, 'epoch': 0.59}
+{'loss': 0.2199, 'learning_rate': 3.6403436721705034e-05, 'epoch': 0.61}
+{'loss': 0.2169, 'learning_rate': 3.372695030773966e-05, 'epoch': 0.63}
+{'loss': 0.2857, 'learning_rate': 3.110166492855468e-05, 'epoch': 0.64}
+{'loss': 0.2798, 'learning_rate': 2.8535840703215018e-05, 'epoch': 0.66}
+{'loss': 0.2175, 'learning_rate': 2.603755066399718e-05, 'epoch': 0.68}
+{'loss': 0.2519, 'learning_rate': 2.3614655355642758e-05, 'epoch': 0.7}
+{'loss': 0.2333, 'learning_rate': 2.127477810317685e-05, 'epoch': 0.71}
+{'loss': 0.1986, 'learning_rate': 1.9025281026106843e-05, 'epoch': 0.73}
+{'loss': 0.2023, 'learning_rate': 1.687324187447102e-05, 'epoch': 0.75}
+{'loss': 0.2078, 'learning_rate': 1.4825431759618209e-05, 'epoch': 0.76}
+{'loss': 0.2192, 'learning_rate': 1.2888293849786503e-05, 'epoch': 0.78}
+{'loss': 0.2359, 'learning_rate': 1.1067923097512256e-05, 'epoch': 0.8}
+{'loss': 0.1931, 'learning_rate': 9.370047062654385e-06, 'epoch': 0.81}
+{'loss': 0.1657, 'learning_rate': 7.800007891372246e-06, 'epoch': 0.83}
+{'loss': 0.2411, 'learning_rate': 6.36274550775719e-06, 'epoch': 0.85}
+{'loss': 0.2092, 'learning_rate': 5.062782071003974e-06, 'epoch': 0.86}
+{'loss': 0.2029, 'learning_rate': 3.904207747024757e-06, 'epoch': 0.88}
+{'loss': 0.1723, 'learning_rate': 2.8906678392739974e-06, 'epoch': 0.9}
+{'loss': 0.1975, 'learning_rate': 2.0253513192751373e-06, 'epoch': 0.92}
+{'loss': 0.2028, 'learning_rate': 1.310980792936345e-06, 'epoch': 0.93}
+{'loss': 0.218, 'learning_rate': 7.498039342251572e-07, 'epoch': 0.95}
+{'loss': 0.2087, 'learning_rate': 3.435864131544897e-07, 'epoch': 0.97}
+{'loss': 0.2416, 'learning_rate': 9.360634033165338e-08, 'epoch': 0.98}
+{'loss': 0.2122, 'learning_rate': 6.502455494716841e-10, 'epoch': 1.0}
+{'train_runtime': 13069.4001, 'train_samples_per_second': 1.589, 'train_steps_per_second': 0.05, 'train_loss': 0.3913449776374688, 'epoch': 1.0}
+{"manifest": "/work/bnaskrecki/peano-lab-training/results/peano-policy/qwen3-1.7b-lora-v3-library/training-manifest.json"}

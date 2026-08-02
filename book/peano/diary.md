@@ -2489,3 +2489,121 @@ running. The interface now waits for `fetched_at` to advance instead of flashing
 allows sixty seconds because a requested twenty-five-second read may queue behind another such
 read, and queues a click that arrives during an automatic browser poll. This small state machine is
 preferable to pretending that a request and its eventual observation are the same event.
+
+## 2026-08-02 — Three checked scripts do not make an incomplete report identity complete
+
+The production adapter from job `217859` was ready, so I ran the frozen trained/base comparison
+without bypassing the evaluator's single-owner rule. Trained job `218171` completed in 3m51s. Only
+after it finished did the guarded watcher submit revision/configuration-pinned pretrained job
+`218172`, whose report declares no PEFT adapter and which completed in 4m20s. The two GPU stages
+therefore took 8m11s sequentially.
+
+Both reports are bound to source `4d44609ee32d5d28726c082ef7b5649c0a1107a6`. The untouched
+trained report has SHA-256
+`f134f8c2d8c173e2ebcee0ebd3b8dfbc59805619bd7e79706c11e51732e0956c`; the untouched base report
+has SHA-256 `410be8f224d2dac6d28c4e0f55f125e95d5bc1f725b9c20851b00c15394d97b9`.
+
+At first glance the result was exciting. With `k=1`, the trained report claimed three of four
+goals, while the pretrained comparison claimed none. The successful trained routes were small
+tactic programs:
+
+- `norm_num` for the closed arithmetic formula, producing a 98-node certificate;
+- `exists 5` followed by `norm_num`, producing 29 nodes; and
+- `intro n`, `rewrite PA3`, `simp`, producing 10 nodes.
+
+I replayed each route independently through `verify_proof` under the actual model-v3
+`SurfaceCapabilities`; all three certificates check against their original goals. The fourth
+formula, `forall x. exists y. x * (x + 1) = 2 * y`, was the only genuinely induction-heavy item and
+remained unsolved. The base produced 32 malformed candidate strings and executed no tactics. The
+defensible pedagogical hint is therefore much narrower than “the model proves PA”: in this tiny
+raw comparison the adapter emitted executable syntax and shallow compositions, but it did not
+demonstrate induction planning or establish a stable causal effect.
+
+Then the independent report replay rejected the trained JSON. The evaluator really had rendered
+prompts with the full 247-theorem environment, and the report separately recorded all 247 allowed
+names. However, `PeanoPolicyAdapter.evaluation_identity` placed the older reduced
+`policy_environment` object inside `base_policy_identity.environment`. That projection contains
+only the common surface fields. It omitted the four model-v3 library-prefix fields required by the
+exact authority: `library_identity_sha256`, `library_full_identity_sha256`,
+`library_prefix_length`, and `library_size`.
+
+This distinction matters. Kernel replay answers “are these three scripts proofs?”—yes. Canonical
+report replay also asks “is this entire measured condition exactly the registered condition?”—not
+from the serialized identity. A sound kernel result cannot repair missing scientific provenance.
+The correct response is to keep both original reports immutable, keep the ordinary verifier
+strict, and quarantine the raw 3/4-versus-0/4 comparison.
+
+The planned recovery is a separate compatibility attestation, not a permissive branch in the main
+replayer. It must accept only this exact historical report/source/job, require the recorded legacy
+environment to equal the exact projection of today's trusted full authority, pin the four omitted
+values and historical source inventories, independently replay every claimed proof, and publish a
+distinct non-replacing attestation that hashes the untouched input. Until that artifact exists, I
+record only the raw score and the three independently kernel-valid scripts. I do not record an
+accepted pass rate, a causal theorem-proving result, or induction capability.
+
+## 2026-08-02 — The narrow bridge passed without teaching the ordinary verifier an exception
+
+The recovery described above is now complete. It was deliberately implemented as a distinct,
+version-pinned historical admission rather than a conditional inside the canonical replayer. The
+ordinary trained-report replay still rejects the missing environment fields, the immutable report
+bytes are unchanged, and future reports must serialize the full authority.
+
+`trained-compatibility-replay.json` accepts only the exact job-`218171` report and historical
+source identity. It proves that the recorded four-field object is exactly the legacy projection of
+the pinned complete model-v3 authority, reconstructs the four omitted library fields, binds the
+historical evaluator inventories, and independently replays every reported proof. The admission
+passed with 3/3 proof claims replayed. Its embedded attestation SHA-256 is
+`e900a10241db0451992313eb2a7b0341911a7a71cd8af91e831a279874afda56`.
+
+The zero-proof control needed its own evidence rather than inheriting credibility from the trained
+bridge. `pretrained-base-replay.json` validates the declared pretrained identity, comparison
+provenance, goal and search budgets, duplicated accounting, and the absence of any proof claim. It
+passed with embedded attestation SHA-256
+`056519bc3598a390526fdf9054aa38090d499f7f837af0a2ace7af8caaa560e7`.
+
+I can therefore admit one carefully scoped result: on the frozen four-goal launch smoke at `k=1`,
+the trained adapter solved 3/4 and the revision/configuration-pinned pretrained comparison,
+reporting no PEFT adapter, solved 0/4. That sentence must travel with its limits. Three proofs are
+shallow; the only induction-heavy goal is still unsolved; four
+problems cannot support a statistically useful pass rate; and a single paired run does not prove
+general PA ability, induction skill, or causal superiority. The deterministic baseline, larger
+hidden induction-rich suite, and repeated measurements remain the next scientific work.
+
+## 2026-08-02 — Pairing the producers exposed the last missing kinds of evidence
+
+The two producer admissions were necessary but did not by themselves prove that their conditions
+formed one comparison. The final paired attestor therefore consumes both reports and both producer
+attestations together with the exact training manifest. That manifest has SHA-256
+`caa5569c98ed9ea048d413301b803c39011957d1c97307e5b109846989e18569` and records 649 expected and
+649 actual optimizer steps. The paired layer also equates source commit, training and evaluation
+jobs, goal set, seed, and every search limit.
+
+Historical source attribution is now explicit Git-object verification rather than trust in copied
+path/hash maps. The attestor checked 36 trained-semantic entries, 36 pretrained-semantic entries,
+61 trained-evaluation entries, and 62 pretrained-evaluation entries. Their union contains 62 unique
+source blobs, and every overlap agrees. The resulting
+`paired-launch-smoke-attestation.json` passed with literal result
+`paired_launch_smoke_admitted`. Its embedded attestation SHA-256 is
+`9b33b4e488f14e38fc7c5a122410d53e9e1123409dcccafdc73e0a8ab1a14bae`; the complete file SHA-256 is
+`cdd20cc6e97ff442cff1c476135963f726b740372223f6eac72335543f6c11ba`.
+
+This extra scrutiny also corrected an overly strong phrase: “exact pretrained base.” What the
+records establish is a revision/configuration-pinned pretrained comparison whose report declares
+that no PEFT adapter was attached. They did not hash the resolved base weight shards before and
+after loading, so they do not establish bit-for-bit base-weight identity. That is a concrete future
+gate: bind the repository/LFS identity and ordered shard hashes, then stable-hash every weight file
+on both sides of model execution.
+
+The second missing object is the raw generation transcript. The immutable reports retain outcomes,
+commands, search counters, and certificates, but not every model call's raw text, deterministic
+extraction result, attempted action, and executed edge. The paired layer therefore cannot replay
+the whole model-output-to-search-frontier derivation. It attributes candidates through
+byte-pinned historical producer/source/job records, while the consumed trained attestation
+independently kernel-checks the three published certificates. A stronger benchmark should retain
+and hash the complete per-call transcript.
+
+Finally, the retained `sacct` and WMI log bundle observe successful completion of jobs
+`217859`, `218171`, and `218172`, but the scheduler does not cryptographically authenticate those
+records. They are useful operational evidence, not a signature. None of these limits revoke the
+narrow `k=1` observation, 3/4 versus 0/4. They do forbid stronger language: no bit-for-bit base,
+causal effect, statistical solve rate, broad PA ability, or induction capability has been shown.

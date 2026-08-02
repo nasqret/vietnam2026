@@ -501,9 +501,24 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
 - [x] Run the registered Qwen3-1.7B 100-step pilot on an accepted site and publish the complete
       training and held-out evaluator manifests. WMI jobs `171421`/`171423` are the accepted
       terminal chain; the model scored 0/4 at pass@4.
-- [ ] Compare against pretrained and deterministic baselines on the separately sealed model-v3
-      benchmark. The old model-v2 goals are now training-library entries and are no longer valid
-      discovery tests; four protocol goals are still not a statistical result.
+- [x] Compare against a revision/configuration-pinned pretrained condition, whose report declares
+      no PEFT adapter, on the separately sealed model-v3 launch smoke. Trained job `218171` and
+      pretrained job `218172` produced immutable `k=1` reports of 3/4 and 0/4. Ordinary replay
+      still rejects the trained report's four omitted
+      library-prefix identity fields, but the separately scoped, version-pinned historical
+      attestation passed and independently replayed all 3/3 claims. The dedicated base attestation
+      passed declared identity/provenance/search-accounting validation with zero claims. The paired
+      cross-binding records `paired_launch_smoke_admitted`. Base weight shards were not
+      content-hashed before/after loading, so this is not bit-for-bit base identity. The admitted
+      comparison remains a four-goal infrastructure smoke, not a statistical or causal result.
+- [ ] Before publishing a stronger pretrained comparison, content-hash every resolved base-model
+      weight file before and after loading and bind the repository revision, LFS metadata or
+      equivalent immutable download identity, ordered shard inventory, and pair attestation.
+- [ ] Before publishing a stronger search benchmark, retain and bind every per-call raw generation,
+      deterministic extraction result, attempted tactic, and executed search edge so attribution
+      does not rest only on byte-pinned historical producer/source/job records.
+- [ ] Run the deterministic baseline on the same sealed model-v3 authority and fixed budgets. The
+      old model-v2 goals are training-library entries and remain invalid discovery tests.
 - [ ] If the smoke gates pass, run the pre-registered Qwen3-4B versus Pythagoras-Prover-4B
       comparison at identical data, LoRA, decode, token, step, and kernel-call budgets.
 - [ ] Finish the full Peano/Lambda/book/vault/release gates, record measured results without
@@ -615,7 +630,7 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       and independently verified the immutable 15-file corpus at
       `checkpoints/corpora/peano-policy-v3-173040`, with content SHA-256
       `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`.
-- [ ] Run the registered WMI Qwen3-1.7B model-v3 experiment only after preparation passes:
+- [x] Run the registered WMI Qwen3-1.7B model-v3 experiment only after preparation passes:
       pinned BF16 SDPA, rank-32/alpha-64 LoRA, microbatch one/effective batch 32, exactly one
       row-count-derived pass over the whole-session curriculum, fresh output, and no resume. The
       guarded chain is sealed preparation (8h), training (36h), evaluation (12h), then independent
@@ -629,10 +644,18 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       repair explicitly restores and verifies the original forward before admission. Fresh
       same-source preparation `217851` passed corpus eligibility, the exact token audit, the
       complete repaired runtime smoke, fresh reload, and independent three-report verification
-      under source `4d44609e`. Production job `217859` is now running the guarded 649-update
-      Qwen3-1.7B rank-32 optimizer on one WMI A100 without an intervening source sync. Recovery
-      evidence is live; the final manifest, adapter hashes, evaluation, and quality result remain
-      pending and must not be claimed before their corresponding artifacts exist.
+      under source `4d44609e`. Production job `217859` then completed the guarded 649-update
+      Qwen3-1.7B rank-32 optimizer on one WMI A100 without an intervening source sync. Trained
+      evaluation `218171` completed in 3m51s and revision/configuration-pinned pretrained
+      comparison `218172`, reporting no PEFT adapter, in 4m20s. Their raw `k=1` results are 3/4 and
+      0/4. The three trained scripts independently kernel-replay at
+      98/29/10 nodes, but the induction-heavy goal remains unsolved. Canonical whole-report replay
+      rejected the trained report's legacy four-field environment projection because it omitted
+      the four required library identity/size fields. The ordinary verifier remains unchanged.
+      Version-pinned `trained-compatibility-replay.json` subsequently passed and independently
+      replayed all 3/3 claims; dedicated `pretrained-base-replay.json` passed declared control
+      identity/provenance/search accounting with zero claims. This admits only the narrow four-goal
+      `k=1` result, not bit-for-bit base identity, broad PA, induction, or causal capability.
 - [ ] Treat the four sealed model-v3 goals as a launch smoke, not a sufficient capability
       benchmark. Before making a general proof-quality claim, add a larger hidden kernel-checked
       suite spanning multistep induction, theorem composition, order, divisibility, and quantified
@@ -642,7 +665,7 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
 - [ ] All milestone-wide tests and documentation gates are green, the kernel has no semantic diff,
       and no heavy local or remote job remains running before the milestone is called complete.
 
-- **Current model-v3 status (2026-08-01):** exact-corpus continuation `173040` completed independent
+- **Current model-v3 status (2026-08-02):** exact-corpus continuation `173040` completed independent
   attestation, token audit, and A100 runtime smoke; job `213641` published and independently verified
   the immutable seal with content SHA-256
   `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`.
@@ -661,14 +684,39 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   after `MinJobAge`; ledger, source, script/helper, report, and job-environment bindings remain
   mandatory. Because that control repair changes the clean source identity, a fresh post-fix
   preparation was therefore repeated: job `217851` passed under clean source `4d44609e`, and its
-  same-source guarded successor `217859` is actively training. The measured 20,765 rows produce
-  649 optimizer updates; production logging is every 11 steps, giving 59 exact periodic records
-  through the terminal update, while batching, warmup, snapshots, objective, and optimizer remain
-  fixed. Progress and partial recovery evidence exist; redirected stdout has not yet exposed exact
-  production loss, and no final adapter hash, evaluation solve count, or replay digest exists. The
-  real-Trainer smoke, completion-evidence gate, strict raw-gradient clip,
-  saved-policy admission, exclusive publication, and independent replay remain implemented
-  safeguards whose production WMI execution must be established by the training chain.
+  same-source guarded successor `217859` completed. The measured 20,765 rows produced 649 optimizer
+  updates; production logging was every 11 steps, giving 59 periodic boundaries, while batching,
+  warmup, snapshots, objective, and optimizer remained fixed. Guarded trained evaluation `218171`
+  and revision/configuration-pinned pretrained comparison `218172`, whose report declares no PEFT
+  adapter, then completed sequentially in 3m51s and 4m20s. The
+  immutable raw `k=1` reports say 3/4 versus 0/4. Independently replaying the three trained scripts
+  yields kernel-valid certificates of 98, 29, and 10 nodes; the fourth, induction-heavy theorem was
+  not solved. Canonical replay nevertheless rejected the trained report because its nested
+  `base_policy_identity.environment` recorded the legacy projection and omitted
+  `library_identity_sha256`, `library_full_identity_sha256`, `library_prefix_length`, and
+  `library_size`. The ordinary verifier remains strict and the original report remains immutable.
+  The version-pinned `trained-compatibility-replay.json` now passes against the historical
+  report/source/job and reconstructed full authority, independently replaying all 3/3 claims. Its
+  embedded attestation SHA-256 is
+  `e900a10241db0451992313eb2a7b0341911a7a71cd8af91e831a279874afda56`.
+  Dedicated `pretrained-base-replay.json` also passes declared pretrained identity, provenance, and
+  search-accounting validation with zero proof claims; its embedded attestation SHA-256 is
+  `056519bc3598a390526fdf9054aa38090d499f7f837af0a2ace7af8caaa560e7`.
+  The exact training manifest SHA-256 is
+  `caa5569c98ed9ea048d413301b803c39011957d1c97307e5b109846989e18569`; it records expected and
+  actual 649 optimizer steps. Final `paired-launch-smoke-attestation.json` cross-binds the manifest,
+  reports, producer attestations, jobs, sources, goals, seed, and search limits. It verifies Git
+  source maps of 36/36 semantic and 61/62 evaluation entries (62 unique blobs), reports result
+  `paired_launch_smoke_admitted`, and has embedded attestation SHA-256
+  `9b33b4e488f14e38fc7c5a122410d53e9e1123409dcccafdc73e0a8ab1a14bae` plus file SHA-256
+  `cdd20cc6e97ff442cff1c476135963f726b740372223f6eac72335543f6c11ba`.
+  The ordinary canonical trained-report verifier still rejects the historical incomplete identity
+  and is unchanged. The separately admitted launch smoke is therefore 3/4 versus 0/4 at `k=1`,
+  but the benchmark remains tiny, the three proofs shallow, and the induction goal unsolved. Base
+  weight shards were not content-hashed before/after loading, raw generation/extraction/edge
+  transcripts are absent, and retained `sacct`/log completion observations are not
+  cryptographically authenticated by the scheduler. No bit-for-bit base, broad, induction,
+  statistical, or causal claim follows.
 
 - **Last milestone-wide verification before the dashboard (2026-08-01):** the complete Peano suite reports 1,769 passed with five
   expected skips; Lambda Lab reports 360 passed plus 36 subtests. All 38 Jupyter Book sources build
@@ -737,8 +785,8 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   green. At the 170-entry arithmetic checkpoint, the isolated all-ladder acceptance smoke exported
   4,474 raw and 4,471 unique transitions from 340 sessions, including 170
   authored-script kernel QEDs.
-  M19 stays open for the model-v3 corpus gates, WMI training, kernel-judged search evaluation,
-  baselines, and registered comparison.
+  M19 stays open for a deterministic baseline, the larger hidden benchmark, milestone-wide release
+  gates, and any registered comparison beyond the admitted 1.7B four-goal launch smoke.
 
 ### M20 — General foundational arithmetic library
 

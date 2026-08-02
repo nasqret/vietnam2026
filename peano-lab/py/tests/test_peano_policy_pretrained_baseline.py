@@ -421,7 +421,10 @@ def test_baseline_identity_is_distinct_and_binds_full_environment(
     )
 
     trained = PeanoPolicyAdapter(object(), object(), trusted_environment)
-    assert trained.evaluation_identity["kind"] == "peano-policy-adapter-v1"
+    trained_identity = trained.evaluation_identity
+    assert trained_identity["kind"] == "peano-policy-adapter-v1"
+    assert trained_identity["environment"] == environment_record(trusted_environment)
+    assert trained.policy_environment != trained_identity["environment"]
 
 
 def test_authority_record_rechecks_both_closed_artifact_trees(

@@ -520,15 +520,47 @@
   `--completed-predecessor` for the durable accounting/ledger/report binding and reserves
   `--afterok` for live jobs. Exact provenance therefore forbade relabelling `217768`. Fresh
   same-source preparation `217851` subsequently passed every gate under clean source `4d44609e`,
-  and guarded production successor `217859` is actively running the 649-step rank-32 Qwen3-1.7B
-  optimizer on one WMI A100. Recovery evidence and live progress exist; production loss remains
-  buffered, and no final adapter, solve rate, or replay claim exists. The schedule uses logging 11,
-  yielding 59 exact periodic records through the terminal step. A loopback-only Training
+  and guarded production successor `217859` completed the 649-step rank-32 Qwen3-1.7B optimizer on
+  one WMI A100. The schedule used logging 11, yielding 59 periodic boundaries through the terminal
+  step. A loopback-only Training
   Observatory reads fixed bounded WMI evidence without exposing SSH or scheduler mutation to the
   browser and labels corpus examples as representative rather than current microbatches. The
   attestor's independent-builder watchdog is eight hours, above the
   exact measured 5h07m first build; the old four-hour value would have rejected
   a legitimate replay deterministically.
+- **Model-v3 paired evaluation admission (2026-08-02):** trained-policy job `218171` completed in
+  3m51s and revision/configuration-pinned pretrained comparison `218172`, whose report declares no
+  PEFT adapter, in 4m20s under the same frozen four-goal, depth-32/beam-16 search authority. Their
+  immutable raw `k=1` reports say 3/4 versus 0/4. The
+  trained routes `norm_num`, `exists 5; norm_num`, and
+  `intro n; rewrite PA3; simp` independently replay through the kernel with 98, 29, and 10 nodes;
+  the induction-heavy consecutive-product theorem remains unsolved. The pretrained comparison
+  produced 32 malformed sequences and executed no tactics. Canonical whole-report replay rejected the trained report
+  because its nested policy environment retained the legacy four-field projection and omitted
+  `library_identity_sha256`, `library_full_identity_sha256`, `library_prefix_length`, and
+  `library_size`. The original report stays immutable and the ordinary replay gate stays strict.
+  Separate version-pinned `trained-compatibility-replay.json` now passes after pinning the historical
+  report, source, job, projection, reconstructed full authority, and source inventories; it
+  independently replayed all 3/3 claims and has embedded attestation SHA-256
+  `e900a10241db0451992313eb2a7b0341911a7a71cd8af91e831a279874afda56`.
+  Dedicated `pretrained-base-replay.json` passes declared control identity, provenance, and search
+  accounting with zero claims; its embedded attestation SHA-256 is
+  `056519bc3598a390526fdf9054aa38090d499f7f837af0a2ace7af8caaa560e7`.
+  Exact training manifest SHA-256
+  `caa5569c98ed9ea048d413301b803c39011957d1c97307e5b109846989e18569` records expected and actual
+  649 optimizer steps. `paired-launch-smoke-attestation.json` cross-binds that manifest, both
+  reports and producer attestations, three jobs, source, goals, seed, and search limits. It verifies
+  historical Git source maps of 36/36 semantic and 61/62 evaluation records (62 unique blobs) and
+  reports `paired_launch_smoke_admitted`; embedded attestation SHA-256 is
+  `9b33b4e488f14e38fc7c5a122410d53e9e1123409dcccafdc73e0a8ab1a14bae`, file SHA-256
+  `cdd20cc6e97ff442cff1c476135963f726b740372223f6eac72335543f6c11ba`.
+  The narrow four-goal `k=1` launch smoke is therefore admitted as 3/4 versus 0/4. Base weight
+  shards were not content-hashed before/after loading, and raw generation/extraction/executed-edge
+  transcripts are absent, so attribution relies on byte-pinned historical producer/source/job
+  records rather than a bit-for-bit base or raw-output replay. Retained `sacct`/log artifacts also
+  observe WMI completion but are not cryptographically authenticated by the scheduler. This is not
+  a statistical benchmark or evidence of broad PA ability, induction capability, or causal
+  superiority.
 - **Model-v3 prelaunch durability and chain binding (2026-07-30):** the
   one-shot trainer preserves adapter/tokenizer tensors before its explicit
   full evaluation, while withholding the final manifest until evaluation and

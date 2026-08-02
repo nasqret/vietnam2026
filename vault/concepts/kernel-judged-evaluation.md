@@ -25,6 +25,17 @@ original formula. Its canonical non-overwriting attestation distinguishes “the
 claimed success” from “the independent kernel replayed that exact claim.” A report containing zero
 proof claims can still be structurally valid, but it establishes no theorem-solving success.
 
+The 2026-08-02 model-v3 launch smoke exposed the converse distinction. Three tactic scripts from
+the trained raw report independently kernel-replay, yet the canonical report replay rejected the
+experiment because its nested policy identity omitted four required library-prefix fields. The raw
+report remains rejected by that unchanged ordinary gate. A separately version-pinned historical
+attestation now validates this exact immutable report and independently replayed all 3/3 claims;
+the dedicated pretrained attestation validates declared identity/provenance/search accounting and
+zero claims, and the paired cross-binding reports `paired_launch_smoke_admitted`. The narrow
+four-goal `k=1` trained/pretrained result is therefore admitted as 3/4 versus 0/4.
+Mathematical certificate validity does not waive complete evaluation provenance, and this tiny
+smoke does not establish bit-for-bit base identity, broad PA, causal, or induction capability.
+
 ## Related
 
 - [[de-bruijn-criterion]]

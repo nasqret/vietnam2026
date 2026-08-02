@@ -2140,3 +2140,75 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - The focused parser/server/web contract reports 25 passes, covering hostile parsing, bounds,
   stale-cache semantics, loopback routing, prohibited methods, security headers, self-contained
   assets, JavaScript syntax, accessible loss fallback, and honest sample labeling.
+
+## 2026-08-02 — Paired model-v3 smoke completed, then failed closed at report replay
+
+- Production job `217859` completed, and the admitted rank-32 Qwen3-1.7B adapter was available to
+  the frozen evaluator. The single-evaluation-owner guard was preserved: trained job `218171` ran
+  first and completed in 3m51s; a watcher then submitted revision/configuration-pinned pretrained
+  comparison `218172`, whose report declares no PEFT adapter and which completed in 4m20s. Total
+  sequential GPU evaluation time was 8m11s.
+- The immutable raw `k=1` reports say 3/4 for the adapter and 0/4 for the base. The adapter found
+  `norm_num` (98 nodes), `exists 5; norm_num` (29 nodes), and
+  `intro n; rewrite PA3; simp` (10 nodes). Each script independently replayed through the kernel
+  against its original formula and the actual model-v3 capabilities. The only genuinely
+  induction-heavy target, `forall x. exists y. x * (x + 1) = 2 * y`, was not solved. The base
+  produced 32 malformed sequences and executed no tactics.
+- Canonical replay of the trained report refused to publish an attestation. Prompt rendering and
+  the report's separate library record used the full 247-theorem authority, but the nested
+  `base_policy_identity.environment` serialized the legacy four-field projection. It omitted
+  `library_identity_sha256`, `library_full_identity_sha256`, `library_prefix_length`, and
+  `library_size`, so it was not byte-for-byte the exact model-v3 authority required by the replay
+  gate.
+- This is a reporting/identity defect, not evidence that an invalid proof passed: all three scripts
+  are independently kernel-valid. It is nevertheless scientifically fatal to the whole-report
+  attestation. The raw reports remain immutable, the ordinary verifier remains strict, and the
+  3/4-versus-0/4 score is quarantined. A separate, versioned compatibility replay must pin the
+  exact historical report hash, source commit, evaluation job, source inventories, legacy
+  projection, reconstructed full-library values, and every claimed proof. No accepted pass rate,
+  broad PA capability, or induction capability is claimed before that attestation exists.
+
+## 2026-08-02 — Separate immutable admissions completed
+
+- The historical recovery did not modify the trained report or weaken the ordinary replay gate.
+  Version-pinned `trained-compatibility-replay.json` requires the exact report hash, source commit,
+  evaluation job, legacy projection, reconstructed complete environment, and historical source
+  identities. It passed and independently replayed all 3/3 proof claims. Its embedded attestation
+  SHA-256 is `e900a10241db0451992313eb2a7b0341911a7a71cd8af91e831a279874afda56`.
+- A distinct `pretrained-base-replay.json` also passed. It validated the declared pretrained-policy
+  identity, comparison provenance, goal/search budgets and accounting, and correctly observed zero
+  proof claims. Its embedded attestation SHA-256 is
+  `056519bc3598a390526fdf9054aa38090d499f7f837af0a2ace7af8caaa560e7`.
+- These separately scoped immutable admissions release only the narrow frozen four-goal `k=1`
+  launch-smoke result: trained 3/4 versus the revision/configuration-pinned, no-PEFT-reported
+  pretrained comparison's 0/4. The ordinary trained-report replay still
+  rejects the historical incomplete nested environment, by design. The suite is too small for a
+  statistical or broad capability claim; all three proofs are shallow, the induction goal remains
+  unsolved, and no causal superiority conclusion is recorded. A deterministic baseline, larger
+  hidden induction-rich suite, and repeated controlled runs remain pending.
+
+## 2026-08-02 — The paired layer fixes the admissible wording
+
+- Final `paired-launch-smoke-attestation.json` cross-binds the exact training manifest (SHA-256
+  `caa5569c98ed9ea048d413301b803c39011957d1c97307e5b109846989e18569`, expected/actual 649
+  optimizer steps), both reports, both producer attestations, source commit, and jobs
+  `217859`/`218171`/`218172` under the same goals, seed, and search limits. Historical Git lookup
+  verified 36 trained-semantic, 36 pretrained-semantic, 61 trained-evaluation, and 62
+  pretrained-evaluation entries, comprising 62 unique source blobs with all overlaps equal.
+- The paired artifact passed with result `paired_launch_smoke_admitted`. Its embedded attestation
+  SHA-256 is `9b33b4e488f14e38fc7c5a122410d53e9e1123409dcccafdc73e0a8ab1a14bae`; its file SHA-256 is
+  `cdd20cc6e97ff442cff1c476135963f726b740372223f6eac72335543f6c11ba`. Strengthened producer
+  embedded hashes are `e900a10241db0451992313eb2a7b0341911a7a71cd8af91e831a279874afda56`
+  (trained) and `056519bc3598a390526fdf9054aa38090d499f7f837af0a2ace7af8caaa560e7`
+  (pretrained comparison).
+- The admitted wording is intentionally narrower than “exact base.” Job `218172` is a
+  revision/configuration-pinned pretrained comparison whose report declares no PEFT adapter. Its
+  base weight shards were not content-hashed before and after loading, so bit-for-bit base identity
+  is not attested. The reports also omit complete per-call raw generation, extraction, and executed-
+  edge transcripts; candidate attribution relies on byte-pinned historical producer/source/job
+  records. WMI completion is additionally observed in retained `sacct` and log-bundle artifacts,
+  but Slurm does not cryptographically authenticate those scheduler observations.
+- The result remains the narrow frozen four-goal `k=1` smoke, 3/4 versus 0/4. Three proofs are
+  shallow and kernel-replayed; the induction theorem is unsolved. This does not establish a
+  bit-for-bit base comparison, causal training effect, statistical result, broad PA ability, or
+  induction capability.

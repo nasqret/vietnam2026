@@ -136,9 +136,36 @@ accepted predecessor. Job `217123` contributes a valid token audit but no accept
 report and is likewise not a training predecessor. Repaired job `217768` passed all three
 preparation reports under source `e0f7e7d0`, but the completed-predecessor and 649-step schedule
 fixes created a new exact source identity. Fresh same-source preparation `217851` then passed the
-full chain under source `4d44609e`; guarded successor `217859` is actively running the production
-optimizer. Its live progress and recovery trees are evidence of execution, not a final adapter or
-model-v3 solve result.
+full chain under source `4d44609e`; guarded successor `217859` subsequently completed the production
+optimizer and supplied the admitted adapter for the paired launch smoke. Its earlier live progress
+and recovery trees were evidence of execution, not a final adapter or model-v3 solve result.
+
+Trained evaluation `218171` then completed in 3m51s, followed under the single-owner guard by
+revision/configuration-pinned pretrained comparison `218172`, whose report declares no PEFT
+adapter, in 4m20s. Their immutable raw `k=1` reports say 3/4 versus 0/4.
+The three trained scripts independently kernel-replay at 98, 29, and 10 certificate nodes, while
+the induction-heavy consecutive-product goal remains unsolved; the base produced 32 malformed
+sequences and executed no tactics. Canonical whole-report replay rejected the trained report,
+however, because its nested policy environment omitted the full-authority fields
+`library_identity_sha256`, `library_full_identity_sha256`, `library_prefix_length`, and
+`library_size`. The ordinary trained-report replay remains unchanged and continues to reject that
+historical identity. Version-pinned `trained-compatibility-replay.json` separately passed and
+independently replayed all 3/3 claims (embedded attestation SHA-256
+`e900a10241db0451992313eb2a7b0341911a7a71cd8af91e831a279874afda56`). Dedicated
+`pretrained-base-replay.json` passed declared control identity, provenance, and search-accounting
+validation with zero claims (embedded SHA-256
+`056519bc3598a390526fdf9054aa38090d499f7f837af0a2ace7af8caaa560e7`). The narrow four-goal
+`k=1` smoke is therefore admitted as 3/4 versus 0/4, but it is not a statistical, broad PA,
+induction, or causal-superiority result. A final paired artifact binds the exact training manifest
+(`caa5569c98ed9ea048d413301b803c39011957d1c97307e5b109846989e18569`, 649 expected/actual
+steps), producers, sources, jobs, goals, seed, and search limits;
+it verifies Git maps of 36/36 semantic and 61/62 evaluation entries (62 unique blobs) and reports
+`paired_launch_smoke_admitted` with embedded SHA-256
+`9b33b4e488f14e38fc7c5a122410d53e9e1123409dcccafdc73e0a8ab1a14bae` and file SHA-256
+`cdd20cc6e97ff442cff1c476135963f726b740372223f6eac72335543f6c11ba`.
+Base weight shards were not content-hashed before/after loading, raw generation/extraction/edge
+transcripts are absent, and retained `sacct`/log observations are not scheduler-authenticated.
+The claim is therefore neither bit-for-bit base identity nor raw-output replay.
 
 ## Read-only live observation
 

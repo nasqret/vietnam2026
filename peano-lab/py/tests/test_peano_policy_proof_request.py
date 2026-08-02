@@ -128,7 +128,8 @@ def _valid_search_report(
 ) -> tuple[dict[str, object], str | None]:
     manifest, environment, goal = _test_authority(model_version=model_version)
     capabilities = goal.capabilities
-    environment_record = REQUEST._goal_environment_record(goal)
+    goal_environment_record = REQUEST._goal_environment_record(goal)
+    identity_environment_record = REQUEST.environment_record(environment)
     prompt_digest = REQUEST.prompt_contract_sha256(environment.prompt_version)
     decoding = {
         "max_new_tokens": request["max_new_tokens"],
@@ -205,7 +206,7 @@ def _valid_search_report(
         "statement": "∀ x. x = x",
         "classical": False,
         "surface_profile": capabilities.label,
-        "environment_sha256": environment_record["environment_sha256"],
+        "environment_sha256": goal_environment_record["environment_sha256"],
         "allowed_theorems": list(goal.allowed_theorems),
         "passed": proved,
         "status_counts": status_counts,
@@ -222,7 +223,7 @@ def _valid_search_report(
                 "kind": "peano-policy-adapter-v1",
                 "prompt_version": environment.prompt_version,
                 "prompt_contract_sha256": prompt_digest,
-                "environment": environment_record,
+                "environment": identity_environment_record,
                 "decoding": decoding,
                 "provenance": _test_adapter_provenance(environment),
             },
@@ -274,7 +275,7 @@ def _valid_search_report(
             "goals": [
                 {
                     "name": goal.name,
-                    "environment_sha256": environment_record[
+                    "environment_sha256": goal_environment_record[
                         "environment_sha256"
                     ],
                     "result": {

@@ -269,7 +269,10 @@ class PeanoPolicyAdapter:
             "prompt_contract_sha256": prompt_contract_sha256(
                 self.environment.prompt_version
             ),
-            "environment": self.policy_environment,
+            # ``policy_environment`` is the evaluator's deliberately reduced
+            # execution-capability projection.  Report identity must retain
+            # the complete prompt-v3 library-prefix authority as well.
+            "environment": environment_record(self.environment),
             "decoding": {
                 "max_new_tokens": self.max_new_tokens,
                 "do_sample": self.do_sample,
