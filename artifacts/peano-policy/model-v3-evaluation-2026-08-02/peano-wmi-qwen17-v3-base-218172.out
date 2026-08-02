@@ -1,0 +1,4 @@
+No broken requirements found.
+{'python': '3.12.12', 'torch': '2.5.1', 'torch_cuda': '12.4', 'cudnn': 90100, 'numpy': '2.3.5', 'device': 'NVIDIA A100-SXM4-80GB', 'total_memory': 85119205376, 'bf16': True, 'environment': '/work/bnaskrecki/peano-lab-training/.venv-wmi/releases/8318df5e68bc61260ffbea8d1bf03b85d6557c98a2e96ceb0762c17d2e3d4d3e'}
+GPU 0: NVIDIA A100-SXM4-80GB (UUID: GPU-8e22f05e-55e4-f6eb-0e53-9eb404e20da1)
+{"report": "/work/bnaskrecki/peano-lab-training/results/peano-policy/qwen3-1.7b-lora-v3-library/pretrained-base-heldout-search-wmi-b16-c8-d32.json"}

@@ -13,10 +13,12 @@ decoding as bounded congruence, and constructive binary CRT become available
 only after this build is promoted. The source runtime now has 384 checked
 entries. The last source-bound 1,692-session/13,344-transition corpus was built
 at the 247-theorem checkpoint and has fingerprint
-`5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`.
+`6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`.
 The isolated all-ladder smoke has 494 sessions, 9,235 raw/9,232 unique
-transitions, and all 247 authored QEDs. Browser build `2026-07-29j`,
-application `a-c983d7c60450`, has not been staged or deployed.
+transitions, and all 247 authored QEDs. The integrated local browser candidate
+deterministically verifies as build `2026-08-02a`, application
+`a-cd3e54b68949`, with 149 worker sources; it assembles successfully in the
+local content-addressed stage and has not been deployed.
 
 The [public Peano Lab shell](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib)
 still serves the earlier production snapshot. In this candidate checkout, try
@@ -33,7 +35,7 @@ pa lib prime_factorization_uniqueness
 pa lib fundamental_theorem_of_arithmetic
 ```
 
-The {doc}`theorem atlas <theorem-atlas>` provides the complete 380-command
+The {doc}`theorem atlas <theorem-atlas>` provides the complete 384-theorem
 index, with a full replay recipe and immutable source links for every entry.
 Candidate-only browser commands must not be presented as live until the
 corresponding Peano Lab build is promoted.

@@ -43,6 +43,8 @@ const PY_FILES = [
   "py/peano_lab/kernel/terms.py",
   "py/peano_lab/library/__init__.py",
   "py/peano_lab/library/candidate_validation.py",
+  "py/peano_lab/library/defined_edition.py",
+  "py/peano_lab/library/defined_syntax.py",
   "py/peano_lab/library/distinct_primes_nondivisibility_candidate.py",
   "py/peano_lab/library/eisenstein_division_threshold_candidate.py",
   "py/peano_lab/library/eisenstein_fubini_row_decomposition_candidate.py",

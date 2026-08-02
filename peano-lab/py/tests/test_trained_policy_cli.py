@@ -18,7 +18,10 @@ CLI = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = CLI
 SPEC.loader.exec_module(CLI)
 
-from training.peano_policy.contract import model_v1_environment  # noqa: E402
+from training.peano_policy.contract import (  # noqa: E402
+    MODEL_V3_HELD_OUT_POLICY_GOALS,
+    model_v1_environment,
+)
 from training.peano_policy.prompt import (  # noqa: E402
     CapabilityIdentity,
     PromptEnvironment,
@@ -132,6 +135,27 @@ def test_user_goal_cannot_widen_attested_model_authority() -> None:
         CLI._user_goal("0 = 0", changed)
 
 
+def test_model_v3_selects_only_its_separately_sealed_unseen_goals() -> None:
+    environment = SimpleNamespace(
+        prompt_version=3,
+        capabilities=SimpleNamespace(
+            label="model-v3",
+            allowed_theorems=(),
+        ),
+    )
+    goals = CLI._selected_benchmark_goals([], environment)
+
+    assert tuple(goal.name for goal in goals) == tuple(
+        name for name, _ in MODEL_V3_HELD_OUT_POLICY_GOALS
+    )
+    assert all(goal.surface_profile == "model-v3" for goal in goals)
+    assert not {goal.name for goal in goals} & set(
+        CLI.evaluator.HELD_OUT_LADDER_NAMES
+    )
+    with pytest.raises(ValueError, match="unknown held-out"):
+        CLI._selected_benchmark_goals(["mod5_fourth_power_one"], environment)
+
+
 def test_atomic_proof_output_never_replaces_existing_text(tmp_path: Path) -> None:
     output = tmp_path / "proof.pa"
     CLI._atomic_create_text(output, "first\n")
@@ -155,6 +179,108 @@ def test_outputs_cannot_alias_nest_or_mutate_model_inputs(tmp_path: Path) -> Non
         REPOSITORY_ROOT / "results" / "user-proofs" / "proof.pa",
         adapter,
     )
+
+
+def test_scheduled_evaluation_is_bound_to_manifest_training_job(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    manifest = {
+        "runtime": {
+            "job": {
+                "scheduler": "slurm",
+                "job_id": "173100",
+            }
+        }
+    }
+    evaluation_job = {
+        "scheduler": "slurm",
+        "job_id": "173101",
+        "submission": {"dependency_job_id": "173100"},
+    }
+    monkeypatch.setenv("SLURM_JOB_ID", "173101")
+    monkeypatch.setenv("PEANO_TRAIN_JOB_ID", "173100")
+
+    assert CLI._require_training_job_binding(manifest, evaluation_job) == {
+        "status": "slurm-bound",
+        "training_manifest_job_id": "173100",
+        "evaluation_job_id": "173101",
+        "dependency_job_id": "173100",
+    }
+
+
+@pytest.mark.parametrize(
+    ("manifest_job", "dependency", "current", "predecessor"),
+    (
+        ("173099", "173100", "173101", "173100"),
+        ("173100", "173099", "173101", "173100"),
+        ("173100", "173100", "173102", "173100"),
+        ("173100", "173100", "173101", "not-a-job"),
+    ),
+)
+def test_scheduled_evaluation_rejects_every_training_job_mismatch(
+    monkeypatch: pytest.MonkeyPatch,
+    manifest_job: str,
+    dependency: str,
+    current: str,
+    predecessor: str,
+) -> None:
+    manifest = {
+        "runtime": {
+            "job": {
+                "scheduler": "slurm",
+                "job_id": manifest_job,
+            }
+        }
+    }
+    evaluation_job = {
+        "scheduler": "slurm",
+        "job_id": "173101",
+        "submission": {"dependency_job_id": dependency},
+    }
+    monkeypatch.setenv("SLURM_JOB_ID", current)
+    monkeypatch.setenv("PEANO_TRAIN_JOB_ID", predecessor)
+
+    with pytest.raises(RuntimeError, match="training (?:predecessor|job)"):
+        CLI._require_training_job_binding(manifest, evaluation_job)
+
+
+def test_local_evaluation_is_explicitly_unbound(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.delenv("SLURM_JOB_ID", raising=False)
+    monkeypatch.delenv("PEANO_TRAIN_JOB_ID", raising=False)
+
+    assert CLI._require_training_job_binding({}, {"scheduler": "none"}) == {
+        "status": "local-unbound"
+    }
+
+
+def test_scheduled_proof_request_binds_completed_manifest_without_dependency(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    manifest = {
+        "runtime": {
+            "job": {
+                "scheduler": "slurm",
+                "job_id": "173100",
+            }
+        }
+    }
+    evaluation_job = {
+        "scheduler": "slurm",
+        "job_id": "173105",
+        "submission": {"dependency_job_id": ""},
+    }
+    monkeypatch.setenv("SLURM_JOB_ID", "173105")
+    monkeypatch.delenv("PEANO_TRAIN_JOB_ID", raising=False)
+    monkeypatch.setenv("PEANO_PROOF_REQUEST_ID", "a" * 64)
+
+    assert CLI._require_training_job_binding(manifest, evaluation_job) == {
+        "status": "slurm-proof-request-bound",
+        "training_manifest_job_id": "173100",
+        "evaluation_job_id": "173105",
+        "dependency_job_id": None,
+    }
 
 
 def test_nested_or_symlink_aliased_outputs_fail_before_model_loading(

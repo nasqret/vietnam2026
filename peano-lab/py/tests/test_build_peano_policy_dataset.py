@@ -137,6 +137,7 @@ def _assert_emitted_rows_replay(rows: list[dict[str, object]]) -> None:
 
 def test_builds_only_replayed_qed_rows_with_group_splits_and_hashes(
     tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     # The first positive session contains a deliberately failing tactic.  Its
     # state is transactional, so removing it leaves the successful proof
@@ -173,6 +174,14 @@ def test_builds_only_replayed_qed_rows_with_group_splits_and_hashes(
         ],
     )
 
+    replay_options: list[dict[str, object]] = []
+    real_run_proof = builder.run_proof
+
+    def observed_replay(*args: object, **kwargs: object):
+        replay_options.append(dict(kwargs))
+        return real_run_proof(*args, **kwargs)
+
+    monkeypatch.setattr(builder, "run_proof", observed_replay)
     result = builder.build_dataset(
         [raw],
         metadata,
@@ -183,6 +192,8 @@ def test_builds_only_replayed_qed_rows_with_group_splits_and_hashes(
     )
 
     assert raw.read_bytes() == original_raw
+    assert replay_options
+    assert all("trace_byte_limit" not in options for options in replay_options)
     rows = _all_rows(result)
     assert len(rows) == 3
     assert {row["session"] for row in rows} == {"zero", "one", "two"}

@@ -16,7 +16,7 @@ and proof requests.
 This matters because a command/theorem-name capability hash cannot distinguish two libraries that
 reuse a name for different statements. The [[trusted-kernel]] still protects soundness, but the
 scientific identity of a trained policy would be ambiguous. Adding or changing any lemma therefore
-creates `model-v3`, never a silent widening of `model-v2`.
+creates a new versioned authority, never a silent widening of an existing one.
 
 Content addressing is provenance, not proof authority. No hash is stored as an admissible theorem
 reference inside Cut; the full formula and proof branches remain present and are checked.
@@ -50,14 +50,24 @@ historical 246-theorem root
 `ec31ca0a6eb822e00dc2f334b66b0878bf997ea0601068cc8d0639bfbb90d877`.
 The checked prime-unboundedness successor has 247 theorems and ordered root
 `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`.
-Its browser artifact is build `2026-07-29j` with identity
-`a-c983d7c60450`. Model-v1
+Its browser artifact is build `2026-07-29k` with identity
+`a-77df7c0860bc`. Model-v1
 remains frozen, and no model may silently
 inherit either mutable catalog.
 
 Library visibility and benchmark visibility are different. If a theorem is importable, closing its
 exact statement with `use`, `apply`, and `exact` measures retrieval and application, not discovery.
-Sealed evaluation roots and descendants must remain outside training, retrieval, and development.
+Sealed evaluation roots and descendants must remain outside training imports, retrieval, and
+development data, even though only the four roots are evaluation goals.
+
+The model-v3 **corpus seal** is a separate content-addressed object. The library root identifies
+the meaning and declaration order of 247 reusable theorems; the corpus seal identifies twelve
+historical dataset artifacts and three preparation reports produced by one clean source commit and
+one Slurm job. It is atomically published without replacement as a read-only closed tree. A newer
+trainer may reuse it only after verifying externally supplied commit/job/content anchors and
+matching its current compiler, kernel, prompt, held-out, and library identities to the historical
+manifest. Neither digest proves PA: certificates still pass the trusted kernel, and every
+model-claimed evaluation proof is replayed independently.
 
 ## Related
 

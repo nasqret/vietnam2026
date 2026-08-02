@@ -2,7 +2,9 @@
 
 This is the complete interactive reading surface for the current native Peano
 arithmetic library. It is generated from the same checked snapshot used by the
-tests and corpus—not copied by hand. Search by mathematical idea, filter by
+current library tests and catalog—not copied by hand. The released training
+corpus remains explicitly frozen at its earlier 247-theorem checkpoint. Search
+by mathematical idea, filter by
 domain, focus a theorem to move backward to prerequisites or forward to its
 clients, and expand any card to read the exact first-order statement and the
 complete authored tactic recipe.

@@ -1,8 +1,33 @@
 # Peano Lab post-training experiment — M19 research protocol
 
-**Status:** binding experiment protocol with the first accepted WMI result recorded, 2026-07-28.
-Result fields are filled only after the corresponding artifacts exist and successful scripts have
-passed the independent kernel. This document extends M9; it does not weaken any Peano Lab trust rule.
+**Status:** binding experiment protocol with the historical accepted WMI model-v1 result, the
+model-v2 design stage, and the model-v3 successor recorded through 2026-08-02. Model-v3 binds
+the complete 247-theorem ladder and the immutable corpus seal at content SHA-256
+`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`. After the earlier fail-closed
+preparation diagnostics described below, fresh same-source sealed preparation `217851` completed
+in 4h01m09s under clean commit `4d44609ee32d5d28726c082ef7b5649c0a1107a6`. It passed corpus
+eligibility, the exact 20,765-row/73,446,475-token audit, representative LoRA updates, one real
+Trainer step and evaluation, restored-bare-forward saved-policy admission, fresh reload, and the
+independent terminal-report verifier. Production job `217859` subsequently completed and supplied
+the admitted Qwen3-1.7B Base rank-32 adapter for the paired frozen-goal experiment. Trained-policy
+job `218171` and the revision/configuration-pinned pretrained comparison `218172`, whose report
+declares that no PEFT adapter was attached, completed sequentially in 3m51s and 4m20s.
+Their immutable raw reports say, at `k=1`, 3/4 versus 0/4. The three trained scripts also replay
+individually through the independent kernel (98, 29, and 10 certificate nodes), while the only
+induction-heavy goal remained unsolved. Canonical whole-report replay rejected the trained report
+because its nested policy identity omitted four required library-prefix fields. The ordinary replay
+remains unchanged and continues to reject that
+historical report. A distinct version-pinned historical attestation has now passed, however: it
+binds the immutable input and exact reconstruction and independently replayed all 3/3 proof claims.
+A dedicated pretrained-base attestation also passed, validating the declared control identity,
+provenance, search accounting, and zero proof claims. The narrow four-goal `k=1` launch-smoke result
+is therefore admitted as 3/4 versus 0/4. It is not a statistical benchmark, evidence of non-trivial
+induction, a bit-for-bit base-weight identity result, or a broad or causal model-superiority claim.
+Result fields are filled only after their
+artifacts exist and every claimed proof has passed the applicable independent provenance and kernel
+replay. A local read-only live
+view is documented in [Peano Lab Training Observatory](PEANO_TRAINING_DASHBOARD.md).
+This document extends M9; it does not weaken any Peano Lab trust rule.
 
 ## 1. What changed after M9
 
@@ -36,19 +61,22 @@ The experiment asks four separate questions:
 4. Can a still smaller policy retain most of the solve rate and become a cheap,
    token-efficient explorer?
 
-The first pilot is not allowed to drift into a ten-billion-parameter run merely
-because a smaller run disappoints.  It starts with `Qwen/Qwen3-1.7B-Base`, then
-compares two four-billion-parameter models under the same data and LoRA budget:
+The experiment is not allowed to drift into a ten-billion-parameter run merely
+because a smaller run disappoints.  Model-v2 starts with the pinned
+`Qwen/Qwen3-1.7B-Base` heavy configuration.  Two four-billion-parameter
+candidates remain defined for a later controlled comparison:
 
 - `Qwen/Qwen3-4B-Base` for a clean Peano-specific baseline;
 - `Pythagoras-LM/Pythagoras-Prover-4B` for a same-family formal-proving prior.
 
 Both model cards identify Apache-2.0 weights.  Pythagoras is a June 2026
 preprint/checkpoint, so its reported Lean numbers are treated as authors'
-claims, not as established Peano results.  An eight-billion model is a later
-ceiling experiment, not a pilot default.  DeepSeek-Prover-V2-7B remains a
-scientific reference but its custom model license must be reviewed before it
-becomes a released artifact.
+claims, not as established Peano results.  The 4B comparison is explicitly
+deferred until the 1.7B model-v2 corpus, training run, and kernel-judged
+evaluation establish a baseline.  An eight-billion model is a later ceiling
+experiment, not a pilot default.  DeepSeek-Prover-V2-7B remains a scientific
+reference but its custom model license must be reviewed before it becomes a
+released artifact.
 
 Stop or redesign if any of these occurs:
 
@@ -100,7 +128,7 @@ learned auxiliary constructions explicit.
 
 ## 4. Our prompt, not a vendor prompt
 
-The base-model completion format is deliberately small and project-owned:
+The frozen model-v1 completion format is deliberately small and project-owned:
 
 ```text
 <task>next_tactic</task>
@@ -119,10 +147,68 @@ the trace focus is derived from the submitted action, so feeding it back would
 leak part of the label.  The theorem's hidden family name, source spelling,
 certificate, and held-out label never enter the policy prompt.
 
-The tokenizer vocabulary is not modified in the first run.  Before training,
-each candidate tokenizer is audited on exact UTF-8 round trips and token
-fertility for Peano states, theorem formulas, and tactics.  ASCII aliases may
-be studied as an ablation, but one run never silently mixes two printers.
+Model-v2 keeps the same one-line completion boundary but adds two observation
+channels before `<state>`: the exact compact tactic grammar and a deterministic
+retrieval block.  Its public source catalog contains 63 ordered entries and has
+root `d0f9070a2677a03eeca8ce2d1b83bcee04df3c907ef8cec2f797ab5ef99e5db0`.
+The model-v2 library has two deliberately different identities:
+
+- the **full checked identity** is the authority record for all 56 permitted
+  theorems.  For each theorem it binds the canonical statement, dependencies,
+  source-spec hash, authored-script hash, independently checked expanded
+  certificate hash, proof nodes, and proof depth.  Its SHA-256 is
+  `3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439`;
+- the **prompt projection** is the sorted name/canonical-statement view used for
+  retrieval over those same 56 records.  It has its own statement-projection hash, while each prompt
+  contains only eight deterministically retrieved `name : statement` records
+  plus the full checked-identity hash.
+
+The prompt projection is useful model context, never an attestation substitute.
+Dataset, adapter, evaluator, and interactive inference authority is derived
+from the full 56-theorem checked identity.  The four benchmark goals are
+`le_trans`, `le_antisymm`, `le_total`, and `mul_eq_zero`.  All four are excluded
+from generated targets.  Import sealing additionally follows reverse dependency
+edges: `mul_ne_zero` and `two_large_factors_impossible` depend directly on
+`mul_eq_zero`, and `prime_two` depends on it transitively through
+`two_large_factors_impossible`.  Those seven names are absent from both library
+identities and cannot be retrieved or imported.  The evaluation set therefore
+still has four goals; the import-exclusion closure has seven entries.
+
+Model-v3 retains the one-line completion boundary but replaces the fixed model-v2
+authority with the complete declaration-ordered 247-theorem checked identity. For
+the library trajectory targeting theorem $i$, its prompt and executable capability
+contain exactly `THEOREMS[:i]`: the current theorem and all later theorems are
+unavailable. The trajectory imports declared direct dependencies with ordinary
+`use` commands, then executes the theorem's authored script unchanged. Every
+certificate is reconstructed and independently checked from the empty context;
+the dataset compiler replays each resulting QED before emitting rows.
+
+Prompt v3 includes a compact inventory of every allowed theorem name in that exact
+prefix and retrieves at most twelve detailed `name : statement` records. Retrieval
+scores full canonical propositions deterministically, while a large displayed
+statement is replaced by a bounded canonical excerpt carrying a content marker. A
+coverage audit explains the two layers: $K=12$ statement retrieval alone exposed
+only 242 of 640 direct-dependency `use` labels. The complete name inventory keeps
+all legal dependencies selectable without placing every full proposition in every
+prompt. The environment still binds both the full 247-theorem identity and the
+exact prefix digest, so a compact observation cannot weaken or disguise proof
+authority.
+
+The tokenizer vocabulary is not modified.  The historical model-v2 token-audit gate
+loads the exact pinned tokenizer revision and checks every selected train and
+validation example with the configured 2,048-token budget.  It rejects rather
+than truncates, requires an EOS token and exact resolved revision, hashes the
+tokenizer/config/input files, and reports minimum, median, p95, p99, maximum,
+mean, and remaining headroom.  Both Helios and WMI preparation paths run this
+gate offline before a training job may consume GPU time.  ASCII aliases may be
+studied as an ablation, but one run never silently mixes two printers.
+
+Model-v3 applies the same no-truncation rule at Qwen3-1.7B's pinned native
+32,768-token position limit over every selected train and validation sequence.
+An exact root-probe audit already found 57 of 247 full-prefix theorem prompts
+above 4,096 tokens (maximum 6,235), so the smaller draft ceiling was invalid.
+Any native-limit violation aborts preparation; no prefix, state, retrieval
+record, or completion may be silently clipped.
 
 ## 5. The headless verifier boundary
 
@@ -142,8 +228,14 @@ are absent.  It is a finite file transaction rather than a duplex service:
 results appear only after EOF and, in generation mode, after the trace commits.
 Default aggregate limits are 10,000 requests, 256 MiB input, 128 MiB results,
 and 512 MiB trace, so larger jobs must be deliberately sharded or opt into
-reviewed limits.  Generation/search mode retains the binding v1 success and
-failure trace.  A separately named verification-only mode may omit transition
+reviewed limits. Ordinary proofs retain the binding 16 MB per-session trace
+ceiling. The exact model-v3 library generator uses the documented reviewed-limit
+escape hatch: a host-owned Python keyword raises that one session ceiling to a
+hard maximum of 128 MiB. This does not change the JSONL transport's independent
+512 MiB aggregate default, and the JSON request schema cannot select the
+override. Generation/search mode retains the binding v1 success and failure
+trace. A separately named
+verification-only mode may omit transition
 rendering when checking already-authored scripts; it does not define training
 data.
 
@@ -282,8 +374,14 @@ Generation is schema-driven.  Every seed theorem receives a stable
 renaming, commutation, substitution, paraphrase, or alternative proof is made.
 All descendants stay in the seed's split.
 
-A later 100k–300k positive state/action release should expand coverage, rather
-than merely repeat the first 10,000-row checkpoint:
+The implemented model-v2 generator raises the checked positive ceiling to
+exactly 100,000 transition rows.  It schedules complete proof sessions in
+three deficit-balanced lanes with a row ratio of
+**foundation : induction : library = 2 : 1 : 1**.  A session is accepted
+atomically only after the ordinary public surface reaches independently
+kernel-checked QED; no proof is cut merely to hit a lane quota.  The generated
+curriculum expands coverage rather than merely repeating the first 10,000-row
+checkpoint:
 
 - logic and context management: `intro`, `exact`, `apply`, conjunction,
   disjunction, cases, quantifiers, and explicit witnesses;
@@ -296,7 +394,22 @@ than merely repeat the first 10,000-row checkpoint:
 - polynomial and closed-numeral leaves for `ring`, `norm_num`, and
   `compact_arith`;
 - explicit theorem reuse, specialization, `have`, and `suffices`; and
-- deliberately failed nearby actions for preference/ranking data.
+- explicit coverage of every one of the 25 permitted tactic heads and every
+  one of the 56 allowed theorem imports.
+
+For any run of at least 10,000 rows, publication fails if even one tactic head
+or permitted theorem import is absent.  The four held-out theorem names and
+canonical statements are excluded before target generation; the complete
+seven-name reverse-dependency closure is excluded from retrieval and imports.
+A deterministic pre-reconciliation capacity exercise under the former
+45-import authority filled 100,000 rows with 50,002 foundation, 25,000 induction,
+and 24,998 library rows from 22,706 distinct checked roots.  That historical
+exercise demonstrates the scheduler mechanics, not capacity under the current
+63-entry catalog and 56-import identity.  The current corpus must be regenerated
+and re-attested before the heavy run, and its exact lane/root counts must come
+from that new attestation.
+Actually executed failures remain a separate future ranking/value corpus and
+are never relabelled as positive SFT examples.
 
 Difficulty is a vector, not proof length alone: accepted tactic count, search
 expansions, verifier calls, certificate nodes/depth, automation used, formula
@@ -347,27 +460,43 @@ ARM, dependency, masking, and checkpoint bugs—not to produce a headline.
 
 ### Stage 1 — supervised policy
 
-Use BF16 LoRA, PyTorch SDPA, completion-only loss, deterministic seeds, packed
-1–2k-token sequences, and one to three epochs chosen by validation kernel
-success rather than training loss.  On a 96GB GH200, ordinary BF16 adapters are
-preferred to QLoRA so the initial run does not depend on quantization-specific
-ARM wheels.  Full fine-tuning is reserved for the 1.7B scaling check.
+Use BF16 LoRA, PyTorch SDPA, completion-only loss, and deterministic seeds.
+Historical v1/v2 experiments use short 1–2k-token examples; model-v3 instead
+uses microbatch one at its audited native-context lengths and an exact
+indexed-logit completion objective. Its first sealed run is one selected-data
+pass with a precomputed optimizer-step total. Additional epochs or packing are
+later controlled experiments chosen by kernel-judged validation, not by
+training loss. On a 96GB GH200, ordinary BF16 adapters are preferred to QLoRA
+so the initial run does not depend on quantization-specific ARM wheels. Full
+fine-tuning is reserved for a later 1.7B scaling check.
 
-### Stage 2 — verifier-guided expert iteration
+### Stage 2 — bounded verifier-guided search; expert iteration later
 
-The policy proposes complete tactic lines.  Peano Lab executes each line
-transactionally, hashes the canonical successor state, and deduplicates the
-frontier.  The initial best-first priority is accumulated negative log
-probability plus a documented depth penalty.  Every run has hard caps on model
-tokens, tactic proposals, unique states, kernel calls, wall time, and generated
-certificate size.
+The search layer is implemented.  At each immutable canonical state the policy
+returns a bounded ranked tuple of complete tactic lines.  Each candidate edge
+is replayed from the original theorem in a fresh `ProofSession`; a rejected
+sibling therefore cannot mutate the parent or another branch.  Successful
+successors are rendered canonically, hashed from their ordered goal tuple, and
+deduplicated before a bounded beam is retained.  The deterministic initial
+priority prefers fewer and smaller remaining obligations, then policy rank and
+stable path order.
+
+Depth has a hard host-owned maximum of 32.  Beam width, candidates per state,
+model calls, discovered states, and generated text are independently bounded;
+the trained-policy adapter can generate several sibling candidates in one
+physical model call.  Multiline, malformed, session-command, and failing
+outputs are rejected without repair.  A search result becomes a proof only
+after `checked_surface_final` checks the certificate against the separately
+retained original target.  The persistent client then performs a second fresh
+kernel replay before displaying or saving the script.
 
 Deterministic closers may run at compatible arithmetic leaves.  The model
 spends probability on branching choices such as induction variables,
 invariants, witnesses, rewrite direction, theorem specialization, and local
 lemmas.  This division of labour is the transferable AlphaGeometry lesson.
 
-Only final-kernel-checked trajectories enter the next positive round.  Prefer
+Only final-kernel-checked trajectories may enter a future expert-iteration
+round.  Prefer
 smaller certificates while retaining a bounded number of structurally diverse
 proofs.  Rebuild a clean adapter from the accumulated verified set as an
 ablation against continual training.
@@ -559,18 +688,74 @@ checkout, create and submit a request with:
 scripts/wmi_prove_theorem.sh \
   --submit --confirm PEANO-LAB-WMI-TRAINING \
   --theorem 'forall n. exists x. n * (n + 1) = 2 * x' \
-  --sample --k 16 --max-steps 24
+  --sample --max-new-tokens 96 --max-steps 24 \
+  --search-beam-width 8 \
+  --search-candidates-per-state 16 \
+  --search-max-model-calls 512 \
+  --search-max-states 4096
 ```
 
-The wrapper validates the formula and total call budget locally, creates a nonce-bearing canonical
-JSON request, streams it under the WMI deployment lock, and exports only its 64-hex SHA-256 ID to
-Slurm. The guarded submitter revalidates and hashes the request, appends both the ordinary job row
-and an immutable request/job ledger row before releasing one typed-A100 job. The compute job
-rechecks the central base, overlay, source, scheduler row, request bytes, adapter, and kernel path.
+The wrapper validates the formula and total call budget locally, creates a version-2 canonical JSON
+request with a fresh nonce, and identity-binds kernel-guided-search mode, generated tokens per
+candidate, depth, beam width, candidates per state, model calls, and discovered states. It streams that request under the WMI
+deployment lock and exports only its 64-hex SHA-256 ID to Slurm. The guarded submitter revalidates
+and hashes the request, appends both the ordinary job row and an immutable request/job ledger row
+before releasing one typed-A100 job. The compute job rechecks the central base, overlay, source,
+scheduler row, request bytes, adapter, search report, and kernel path. Version-1 request artifacts
+remain replayable with their original bounded-rollout semantics; new requests cannot silently fall
+back to rollout mode. A version-2 request additionally requires either the exact sealed model-v2
+authority or the exact sealed model-v3 authority recovered from the selected adapter manifest.
+Here “version 2” names the immutable request/search protocol, not the prompt version; it never
+licenses a custom capability set. The runner verifies the closed adapter/tokenizer snapshot before
+and after the run and checks every per-goal, decoder, and aggregate search counter. The `--k`
+rollout flag is therefore rejected by this wrapper.
 It writes digest-named report, optional `.pa`, and terminal run-summary files under
 `results/peano-policy/user-proofs/`; a sound but unsolved request finishes with `status=no-proof`
 rather than masquerading as an infrastructure crash. The wrapper prints the request ID used in
 those filenames.
+
+The guarded one-shot WMI job now targets the attested model-v3 247-theorem adapter and
+defaults to 96 generated tokens per candidate, depth 32, beam width 4, four candidates per state,
+128 model calls, and 2,048 states; before that adapter exists it fails closed. The Python client
+also retains compatibility with an exact attested model-v2 adapter. A persistent terminal client
+lets an interactive WMI allocation pay the model-loading cost once while the user tries many
+theorems in one session. Local inference, when the
+machine can load the adapter, uses:
+
+```console
+python3 scripts/peano_policy_repl.py \
+  --adapter results/peano-policy/qwen3-1.7b-lora-v3-library \
+  --max-new-tokens 256
+```
+
+The prompt accepts either a bare closed formula or `pa prove FORMULA`.  Default
+search bounds are depth 32, beam width 4, four candidates per state, 128 model
+calls, and 2,048 states.  A successful path is replayed independently before
+the ordinary `.pa` proof and structured JSON report are written under
+`results/peano-policy/interactive/`; existing artifacts are never overwritten.
+On WMI, the guarded interactive allocation is:
+
+```console
+scripts/wmi_peano_policy_repl.sh \
+  --connect --confirm PEANO-LAB-WMI-TRAINING
+```
+
+The WMI wrapper requests one typed A100, validates the fixed deployment and
+runtime, and keeps the policy resident while theorem lines arrive on standard
+input. The earlier model-v2-heavy adapter remains available in place on Helios
+through its separate GH200 launcher, without copying that closed artifact tree to WMI:
+
+```console
+scripts/helios_peano_policy_repl.sh \
+  --connect --confirm PEANO-LAB-TRAINING
+```
+
+Both cluster wrappers are dry-run by default, allocate one fixed GPU, keep
+theorem text out of shell arguments, and deliberately refuse a model-v1 or unattested/custom
+adapter. The WMI wrapper is pinned to model-v3; the historical Helios wrapper remains pinned to
+model-v2-heavy. The model-v3 WMI adapter now exists, and its separately attested four-goal launch
+smoke is 3/4 versus 0/4 at `k=1`. That tiny shallow result is not evidence of broad proof quality
+or induction capability.
 
 ### 10.3 What the first adapter can and cannot do
 
@@ -593,8 +778,8 @@ validation, and test:
 One of eight samples produced `intro n; exists 0; rewrite PA3; refl`. The
 ordinary exported script replayed independently to a seven-node checked
 certificate. This is one real success in a represented schema, but attributing it to fine-tuning
-requires the still-pending pretrained-base baseline. The adapter did not demonstrate
-induction-level proof planning.
+would require a matching baseline for that historical model-v1 experiment; none was run. The
+adapter did not demonstrate induction-level proof planning.
 
 The post-result audit explains why. The full 8,149-row train split represents
 only sixteen of the twenty-five permitted tactic heads. It has no IH states,
@@ -654,14 +839,14 @@ from 1,692 sessions and has run fingerprint
 Its isolated all-ladder smoke has 378 sessions, 5,373 raw transitions, 5,370
 unique transitions, and all 189 authored QEDs.
 
-The pack must nevertheless enter through a new scientific contract. A
-content-addressed library snapshot must bind each name, canonical statement,
-dependencies, authored-script hash, checked certificate hash, nodes, and depth
-into prompt, dataset, training, evaluator, and request provenance. The current
-capability digest binds theorem names but not their statements or certificates.
-The model also needs checked downstream traces that actually `use` and
-`specialize` those lemmas, or a deterministic retriever that exposes selected
-name/statement pairs; an opaque environment hash cannot teach lemma semantics.
+The pack now enters model-v2 through a distinct scientific contract. Its
+content-addressed checked identity binds each name, canonical statement,
+dependencies, authored-script hash, checked expanded-certificate hash, nodes,
+and depth into dataset, training, evaluator, search, and request provenance.
+The model sees the compact grammar and eight deterministic retrieved
+name/statement records rather than only an opaque capability hash. Balanced
+checked generation supplies downstream theorem-import and composition traces;
+the full identity, not the retrieval excerpt, remains the authority.
 
 Importing an exact capstone theorem can make its motivating goal a three-line
 library application. That is excellent usability evidence, but it is no longer
@@ -671,7 +856,15 @@ enter training or development. The exact public capstone is therefore excluded f
 claims unless its library entry is masked. It remains useful as a retrieval/application and
 end-to-end kernel-replay regression.
 
-### 10.4 Model-v2 correction plan
+A later reconciliation with the public general-arithmetic work brings the
+ordered catalog to 63 entries, with public root
+`d0f9070a2677a03eeca8ce2d1b83bcee04df3c907ef8cec2f797ab5ef99e5db0`.
+Model-v2 does not obtain 59 imports by subtracting only the four goal names.
+It excludes their complete seven-name reverse-dependency closure and binds the
+remaining 56 records under full identity
+`3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439`.
+
+### 10.4 Model-v2 correction stack: implemented, training pending
 
 The first run consumed 1,600 examples—19.6% of the full train split and less than one epoch of its
 selected subset. The full split covers only 16/25 tactic heads, contains no induction-hypothesis or
@@ -680,31 +873,624 @@ order states, and has no foundation-lemma uses. All 27 validation schemas also o
 held-out reference routes require 10--23 actions and induction/lemma-use decisions unseen in
 training.
 
-In a reproducible local full-surface audit, the public catalog contributes 474 prospective model-v2
+In the pre-reconciliation full-surface audit, the 49-entry public catalog contributed 474 prospective model-v2
 transitions when each dependency becomes an explicit `use`: 427 authored commands plus 47 imports.
 This seed has longer proofs and richer contexts, but only one `induction` label. Naive concatenation under the old sampler would expose the
 optimizer to about 88 catalog rows in expectation and gives the singleton induction row only about
-an 18.6% chance of being seen. Model-v2 must therefore use family/head-aware generation and
-sampling, not just a larger file.
+an 18.6% chance of being seen. The implemented model-v2 stack therefore uses a balanced generator,
+not merely a larger concatenated file. That audit remains useful historical
+evidence for the sampler diagnosis, but its transition count is not the current
+63-entry authority's capacity result.
 
-Before another GPU run:
+The correction stack now present in the repository is:
 
-1. freeze an oracle-replayable, family-disjoint benchmark and raise the action budget to at least 32;
-2. run pretrained-base and deterministic baselines under the same budgets;
-3. bind the complete name/statement/dependency/certificate snapshot and expose retrieved
-   `name : statement` records plus compact PA grammar in the prompt;
-4. generate 100k--150k balanced checked transitions with substantial induction/IH, recursive
-   witnesses, lemma retrieval/composition, and 8--32-step proofs;
-5. collect actually executed failures in a separate ranking corpus;
-6. train Qwen3-1.7B for two to three full epochs; and
-7. compare single rollouts with same-state candidate rejection and canonical-state best-first
-   search at identical model-token and kernel-call budgets.
+1. a 56-theorem checked identity, SHA-256
+   `3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439`, that independently
+   replays every permitted public theorem and binds statement, dependency, source, script,
+   expanded certificate, node, and depth data;
+2. a separate prompt projection with compact grammar and eight deterministic retrieved
+   name/statement records, while the full checked identity remains the authority hash;
+3. a proof-first 100,000-row generator balanced by emitted rows at 2:1:1 across foundation,
+   induction, and library lanes, with hard coverage gates for all 25 tactic heads and all 56
+   imports;
+4. a no-truncation tokenizer audit over every example selected by the exact training config;
+5. depth-32 transactional canonical-state beam search with bounded sibling generation and an
+   independent publication replay;
+6. one shared heavy configuration for Helios and WMI: pinned Qwen3-1.7B Base, BF16 SDPA,
+   rank-16/alpha-32 LoRA, effective batch 32, learning rate $10^{-4}$, 2,048-token inputs, and three
+   full epochs over the model-v2 data; and
+7. a persistent local/WMI/Helios REPL that loads that attested adapter once and publishes only
+   twice-kernel-checked ordinary Peano Lab scripts.
 
-Only after these corrections should LoRA rank or a 4B base be varied. The current evidence does not
-identify parameter count as the limiting factor.
+Implementation did not turn these items into an experimental result. No model-v2 checkpoint
+established pass rate, search gain, or induction/lemma-use quality. The 247-theorem library then
+made the fixed 56-theorem authority and its old held-outs obsolete, so the unrun model-v2 heavy
+path is retained as design history and superseded by model-v3 below. Pretrained and deterministic
+baselines, a separate executed-failure ranking corpus, and expert iteration still remain to be
+run. The 4B comparison is deferred until the model-v3 1.7B baseline exists; current evidence does
+not identify parameter count as the limiting factor.
 
 The immutable training manifest, held-out report, two arbitrary-request reports, compact index, and
 checked positive script are published under [`artifacts/peano-policy/`](../artifacts/peano-policy/).
+
+### 10.5 Model-v3 successor: from fail-closed preparation to a live production run
+
+Model-v3 replaces the undersized model-v2 authority with all 247 declaration-ordered public
+theorems. Its checked identity binds each canonical statement, dependency list, source
+specification, authored script, reconstructed certificate, proof-node count, and proof depth.
+Identity construction replays every authored proof and asks the independent kernel to validate the
+certificate from the empty context against the original proposition. The catalog is an input to
+that check, not a trusted proof database.
+
+The model-v3 positive curriculum has two complementary sources:
+
+1. **Exact library trajectories.** The trajectory for theorem $i$ runs under exactly
+   `THEOREMS[:i]`, imports its declared direct dependencies with `use`, and executes the authored
+   script unchanged. The target theorem and every later theorem are absent from execution and from
+   retrieval.
+2. **Root-balanced synthetic trajectories.** Fifty-one proof-first schemas are scheduled across
+   fourteen genuine first-tactic heads. Complete checked sessions are the indivisible scheduling
+   unit, first-head counts remain balanced, and `intro` is capped at 20% of root sessions. The four
+   inherited induction schemas have their artificial implication gates removed, so their root
+   action is `induction`, not `intro gate`. Library schemas are omitted because the exact prefix
+   corpus owns theorem-reuse supervision.
+
+Preparation job `172536` completed the exact 247-theorem library phase, producing 8,494 transition
+records and 247 checked QED footers. After 1:02:34 it stopped in `root-equality-ring`: the generated
+`(6 + 6) * (6 + 5)` factor product normalizes to coefficient 132, above `ring`'s reviewed
+coefficient limit of 128. The job exited with status 2 before dataset construction, token audit,
+A100 smoke, training, or evaluation. Transactional staging published no partial synthetic corpus.
+
+The corrected ring schema enumerates exactly 2,396 safe base-7 coefficient tuples satisfying
+`(a + b) * (c + d) <= 128`; it excludes four tuples normalizing to 132 and one normalizing to 144.
+Sixteen two-digit base-4 terms of the form `a * 0 + b * 0`, inserted identically on both sides,
+extend this to 38,336 distinct closed statements without increasing the normalized coefficient.
+
+Removing the old implication gates also removed the only varying text from four induction
+families, so they had silently collapsed to four canonical targets. The repaired schema catalog is
+version 2, so its identity cannot be confused with the failed WMI catalog. Each family now carries a
+six-digit base-4 closed-zero tag, giving 4,096 distinct targets per schema while preserving
+`induction` as the genuine first tactic.
+
+Before proof execution or output-file creation, a model-free planner now canonicalizes the entire
+proposed schedule and rejects exhausted finite domains, an inexact row total, an `intro`-cap
+violation, or root-head imbalance. Exact held-out formula collisions are the only valid candidates
+excluded by a dedicated typed path, and every such skip is counted; malformed candidates still
+fail hard. Execution must reproduce the planned counts, skip counts, and sequence digest exactly.
+For seed `peano-policy-v3-balanced-wmi-20260729`, the exact plan contains
+70,000 tactic rows in 32,600 distinct sessions, covers all 51 schemas, and assigns either 2,328 or
+2,329 sessions to each of 14 first-tactic heads. Its sequence SHA-256 is
+`79d2704eab6eb73205ff2234f55f0d4a7e034176fe8dc8649c6950ff499d547b`. This is a balanced plan;
+it needs zero candidate skips. A separate maximum-budget preflight reaches 100,000 rows in 46,574
+unique sessions while counting and excluding the one sealed-target collision. Complete kernel
+replay later succeeded in continuation `173040`, and current-source job `213641` published the
+authenticated immutable corpus seal. Sealed-preparation job `214264` subsequently reached the
+complete selected-curriculum tokenizer scan and failed its old 70,000,000-token linear gate at
+73,446,475 tokens, before runtime smoke or training. The reviewed replacement ceiling is
+74,000,000 tokens; optimizer training was still pending at that checkpoint. The WMI preparation order now invokes this
+synthetic prepass before the library generator, so a schedule-contract failure
+cannot again consume an hour of unrelated proof replay first. It also requires the model-v3 data
+directory to be empty before either generator starts, turning stale partial-run artifacts into an
+immediate refusal.
+
+Prompt v3 carries the complete compact allowed-name inventory plus at most twelve deterministically
+retrieved statement records from the current prefix. The latter are detailed semantic context, not
+the only names the policy may select. Its proof-state field uses the v3-only
+`shared-declarations-v1` lossless structural encoding. From each canonical one-line goal it stores
+exact comma-delimited context chunks and the exact target in deterministic first-occurrence tables;
+each goal is then a declaration-index vector plus a target index. Parsing rejects alternate JSON,
+non-first-use or unused table entries, non-integer or out-of-range indices, and any reconstruction
+that differs from the original goal string. Raw traces, replay states, dataset-row `state` values,
+held-out checks, and kernel inputs remain exact. Model-v1 and model-v2 prompt bytes are unchanged.
+
+The compact state JSON has a 44,000-Unicode-character fail-closed bound. It never slices a target,
+abbreviates a hypothesis, or drops a name. Across all 443 before/after states retained for the
+index-230 stress proof, the largest encoded state is 39,423 characters and none crosses that bound;
+step 115 falls from 196,457 legacy-state characters to 37,259 by sharing exact repeated structure.
+The exact pinned check of the largest state is 53,901 full-prompt characters and 29,111 tokens
+including tactic and EOS, leaving 3,657 tokens below Qwen's 32,768 native limit. All 222 exact
+transition prompts for that stress proof pass: median 17,444, p95 26,662, p99 28,537, and maximum
+29,111 tokens. The complete combined-corpus scan remains the final authority.
+
+Attestation reconstructs all 248 environments—prefixes 0 through 247—requires the exact
+`catalog-predecessor-prefix-v1+full-synthetic-v1` schedule, independently rebuilds the compiled
+splits from raw traces, and requires zero held-out contamination. Preparation then tokenizes every
+selected train and validation example with the pinned tokenizer and rejects the release if any
+sequence exceeds Qwen's 32,768-token native context. Truncation is forbidden; a failed audit
+requires a reviewed representation change.
+
+That attestation name describes the outer two-lane authority schedule. The synthetic lane's inner
+selection algorithm is separately versioned as
+`first-tactic-head-deficit-long-session-tiebreak-v2`; changing its ordering must therefore change
+the recorded selection label and deterministic plan digest without pretending that catalog-prefix
+authority changed.
+
+The model-v2 goals `le_trans`, `le_antisymm`, `le_total`, and `mul_eq_zero` are now theorem-ladder
+training material, so they cannot remain model-v3 discovery tests. The separately sealed v3 set is:
+
+| Name | Exact source formula |
+|---|---|
+| `closed_arithmetic_seven` | `0 * 0 + 3 + (0 * 1 + 1) + (3 + 0) = 7` |
+| `existential_subtraction_two` | `exists x. 7 = x + 2` |
+| `double_right_zero` | `forall n. (n + 0) + 0 = n` |
+| `consecutive_product_even` | `forall n. exists x. n * (n + 1) = 2 * x` |
+
+This four-goal set is the launch smoke, not evidence for broad proving ability. Three goals calibrate
+short arithmetic behavior; only `consecutive_product_even` exercises multistep induction. Any broad
+quality claim must use a larger hidden kernel-checked suite spanning induction, theorem composition,
+order, divisibility, and quantified witnesses under fixed budgets.
+
+The original registered draft used an 80,000-row cap and two epochs. That draft is superseded by
+the sealed whole-session protocol below. In particular, row-prefix truncation is forbidden, and a
+second pass over the longest prompts is not justified until one exact selected-curriculum pass has
+been measured. At that draft checkpoint no model-v3 training submission, checkpoint, evaluation
+score, or model-quality claim had been recorded. Production job `217859` later completed, and the
+separately admitted four-goal `k=1` launch smoke is 3/4 versus 0/4. Its three successes are shallow
+and its induction goal is unsolved, so broad quality claims remain unsupported.
+
+### 10.6 Model-v3 sealed curriculum, indexed objective, and launch chain
+
+#### Selection is over complete proofs, not a file prefix
+
+The compiled model-v3 train file is a validated population, not the final training schedule. The
+version-1 curriculum selector first admits **all 8,494** `catalog-predecessor-prefix-v1` transitions.
+It then selects synthetic data only as complete proof sessions under a hard 12,288-row ceiling.
+One complete session anchors each of the 51 reviewed schemas; subsequent complete rounds balance
+all 14 genuine root-tactic heads. Selection ranks are derived from the training seed and immutable
+session evidence, so reordering the input JSONL cannot change the selected set. The record binds
+both the candidate population and selected rows by SHA-256.
+
+This changes the meaning of a sample budget. The selector may leave a small unused remainder when
+no further complete balanced round fits. That is preferable to cutting a trajectory. Model-v3
+therefore rejects `run.max_train_samples`, requires `curriculum.selection_seed == run.seed`, and
+retains the library lane even when it is small relative to the synthetic population. Validation is
+a deterministic capped view of the synthetic-only validation split; the final cap and exact row
+count are recorded by the run rather than inferred here.
+
+Before model allocation, the pinned tokenizer scans every admitted train row and the selected
+validation view. Its self-digested records bind every token-id sequence, total token exposure,
+$\sum_i L_i^2$ as a conservative attention-compute proxy, maximum sequence length, and maximum
+supervised completion length. Four independent configuration ceilings bound train/evaluation
+linear and quadratic exposure. A row over 32,768 tokens, a completion above the configured
+generation ceiling, or any aggregate over-budget result fails closed; there is no truncation path.
+
+Job `214264` made the distinction between row count and token exposure concrete. Its deterministic
+selection contains 20,765 rows: all 8,494 catalog rows and 12,271 synthetic rows, leaving 17 slots
+under the whole-session synthetic ceiling. It reached exactly 73,446,475 train tokens, so the
+70,000,000-token ceiling rejected the run before publication of a token-audit report. At
+microbatch one and gradient accumulation 32, the unchanged one-epoch schedule contains 649 planned
+optimizer updates. The reviewed correction raises only
+`max_train_tokens` to 74,000,000, leaving 553,525 tokens, or about 0.754%, of headroom. The
+synthetic-row ceiling, 32,768-token per-row bound, 2.3-trillion train squared-token ceiling,
+2-million evaluation-token ceiling, 66-billion evaluation squared-token ceiling, and
+1,024-token completion ceiling do not change. The historical full-population audit used the same
+sealed rows, tokenizer revision, and unchanged tokenization code and found a 29,111-token maximum;
+therefore even the conservative bound
+$29{,}111 \times 73{,}446{,}475 = 2{,}138{,}100{,}333{,}725$ remains below the unchanged
+2.3-trillion quadratic ceiling. A fresh job must nevertheless produce and publish the complete
+linear, quadratic, and supervision audit; this bound is review evidence, not a substitute report.
+
+Retry `217123` supplied that missing direct evidence. Its report passed with 73,446,475 train
+tokens, 415,247,631,205 squared train tokens, maximum sequence length 29,111, and maximum
+supervised completion length 936. The capped evaluation view contained 1,351,537 tokens and
+3,591,898,935 squared tokens with maximum length 4,759. These results validate the 74-million
+linear correction and every unchanged token gate. They do not authorize training because the
+later runtime smoke did not publish an accepted report.
+
+Fresh repaired preparation `217768` reproduced the same token counts and completed the missing
+runtime-smoke boundary. Its one-step smoke recorded finite training loss
+`2.7942631244659424` and evaluation loss `0.8226498961448669`; these are smoke diagnostics, not
+production-learning results. Its accepted three-report chain was an admissible training
+predecessor only for its exact clean source. Deploying the completed-predecessor control change
+intentionally invalidates that same-source join, so the new tree requires a fresh preparation.
+That required preparation is now job `217851`, and its guarded same-source production successor
+`217859` subsequently completed. That later event does not retroactively turn either earlier
+attempt into valid evidence.
+
+#### Completion-only loss without full-sequence vocabulary logits
+
+The supervised target is still exactly one tactic line followed by EOS. Prompt labels are
+`-100`, and supervised labels form one contiguous suffix of each right-padded row. For an ordinary
+causal language model, label $y_{i+1}$ is scored by the logits at position $i$. Model-v3 computes
+the union of precisely those shifted positions and passes it through Qwen's explicit
+`logits_to_keep` argument. Cross entropy is accumulated in FP32 as a sum and divided by the exact
+number of supervised tokens in the whole gradient-accumulation window.
+
+This is a projection of the usual completion-only objective, not a surrogate objective. The code
+rejects a model that does not explicitly support indexed logits, malformed completion masks,
+PyTorch `DataParallel`, or inconsistent distributed token accounting. A pinned Qwen3-1.7B LoRA
+probe matched the full-logit loss and gradients to numerical precision. The optimization removes
+unneeded vocabulary-logit tensors for long prompts while retaining the same causal targets.
+
+#### The historical replay is sealed before current code consumes it
+
+Job `172729` built the data under an older clean source commit because proof generation and replay
+are multi-hour CPU work. Its exact-corpus continuation `173040` independently checks the embedded
+compiler/source identities and must reproduce every split byte before producing the three reports
+under its own truthful job identity. Later trainer hardening must neither mutate those historical
+bytes nor pretend they were produced by newer semantics. The bridge is an immutable corpus seal
+containing exactly twelve data artifacts and the continuation's three preparation reports. Seal
+creation:
+
+- rejects symlinks, non-regular files, hard-link aliases, missing or extra files, malformed JSON,
+  mixed jobs, and mixed source identities;
+- copies into a private staging directory, fsyncs, verifies every copied hash, publishes by one
+  non-replacing rename, makes the closed tree read-only, and verifies it again; a failed creation
+  retains its visibly partial stage instead of pathname-based cleanup that could mask the primary
+  error or delete a replacement; and
+- binds the historical clean commit, decimal Slurm job, model/tokenizer and authority schedule,
+  every file hash, and one `content_sha256`.
+
+The first seal must run while the unsealed historical directory and its reports are still
+preserved. Source synchronization protects `data/`, `logs/`, and `tmp/`, so the current clean tree
+can supply the explicitly reviewed two-file bootstrap: the CLI and standard-library-only seal
+module. [`slurm/peano_wmi_seal_v3_corpus.sbatch`](../slurm/peano_wmi_seal_v3_corpus.sbatch)
+hardcodes the historical commit, job, destination, and both reviewed source hashes. It refuses
+unless historical job `173040` is uniquely `COMPLETED`. The manifest, all twelve corpus files, and
+dataset-attestation report have independent literal SHA-256 anchors. The completed token audit is
+also pinned at `c290b285eabcf9d39ab13b4d6f0f194588541484390d35c00681041979e2f8d8`:
+it passed all 64,500 train rows and 6,000 capped validation rows, with maxima 29,111 and 4,882
+tokens under the 32,768-token ceiling. The completed A100 runtime smoke is pinned at
+`86cc35bfcf2d5ff51931c140f3eb7168e3f641e1f80d54a3984dba9e49e40749`; its single-link,
+7,241-byte report records the pinned Qwen3-1.7B revision, A100-80GB BF16 runtime, rank-32 LoRA,
+34,865,152 trainable parameters, save/reload checks, and `passed` status. No report placeholder
+remains. The authenticated dataset-attestation SHA-256 is
+`4e1cf0d00725a739d6f371062ff2079cfb9bc3e36daf4f4219cbbe1399a68a12`.
+
+After those three real hashes are reviewed, the job selects the content-derived WMI Python,
+rechecks all fifteen pinned inputs, and runs publication-preflight v2 on
+`checkpoints/corpora`. The preflight publishes and freshly verifies both a protected directory and
+a protected regular file, then selects one profile for all later publications on that filesystem.
+It then makes and retains one fresh read-only `mktemp` tree with exactly
+three directories and two files. Its submission-hashed inline launcher stable-reads and
+SHA-256-checks the CLI, then compiles those exact in-memory bytes under `python -I -B -S`; the CLI
+independently repeats the inventory, module, and external input-anchor checks before sealing. This
+avoids executing `training.peano_policy.__init__`, `.pyc` bytes, or a pathname that changed after
+verification.
+
+Seal and report publication are separate crash boundaries. If the destination is absent, the job
+creates it once and a fresh process verifies it. If it already exists, creation is skipped and the
+entire protected tree must verify against every external anchor. A canonical same-job report is
+written to a fsynced sibling stage and installed with the same preflight-selected profile. A
+valid existing same-job report is reverified; a different, linked, mutable, or malformed report is
+fatal. A failed report publication retains its read-only sibling stage as evidence; it never tries
+to delete a pathname that might have been replaced after inspection. Thus a crash after the seal
+rename but before its report is recoverable without ever recreating or replacing the seal.
+The copy boundary compares device, inode, mode, link count, size, mtime, and ctime both on the open
+descriptor and at the final source pathname, so a late hard-link or mode transition cannot evade
+the stable-source check merely because content and timestamps still match.
+Destination classification precedes inspection of the mutable
+historical corpus and reports, and those original paths are required only in the creation lane;
+verify-only recovery remains possible after they have been retired. The retained two-type probe
+runs beneath `checkpoints/corpora`, and the job requires its seal parent and the report parent under
+`logs` to have the same device identity before relying on that profile for both publications.
+Seal-report v2 binds that admitted profile and states its semantics explicitly: native publication
+records atomic destination no-replace, while claim publication records a transient exclusive
+type-matched claim and does not claim atomic destination no-replace. A retry under a different
+profile, a report with forged profile booleans, or JSON numeric aliases for v2 booleans/version is
+rejected before ordinary dictionary equality can blur their types.
+
+The preferred profile is the native platform operation: macOS
+`renamex_np(RENAME_EXCL)` or Linux `renameat2(RENAME_NOREPLACE)`. Ceph returns `EINVAL` for the
+latter. On Linux only, that error (or `EOPNOTSUPP`/`ENOTSUP`/`ENOSYS`) admits the v1
+type-matched-claim profile. It exclusively creates an empty `0700` directory or zero-length
+single-link `0600` file at the final name, holds parent and claim descriptors, verifies identity,
+type, ownership, mode, device, and emptiness, fsyncs and rechecks them, then atomically renames the
+complete stage over its own claim. The canonical inode must be the staging inode, not the claim.
+The profile is threaded into seal/report or training publication and is never renegotiated.
+
+The fallback has deliberately narrower semantics than native no-replace rename. Its empty claim
+is briefly visible, and a crash may leave that claim plus the private stage. Existence therefore
+never means completion: readers require the complete protected tree or canonical report. Failed
+claims are retained for manual audit and are never deleted or adopted automatically. The protocol
+assumes a non-hostile process sharing the filesystem UID; it is not a security boundary against a
+malicious same-owner claim swap.
+
+The seal is an integrity envelope, not a signature. Its source commit, preparation job ID, and
+content digest must come from an authenticated channel outside `seal.json`; reading values from an
+untrusted seal and passing them back proves nothing. A current checkout first verifies the whole
+seal, then compares its present compiler, kernel/source inventory, prompt contract, held-out set,
+and 247-theorem authority with the historical manifest. This *eligibility* check deliberately does
+not replay the proofs again: the historical attestation says how the bytes were built, while the
+current-source record says whether their meaning has drifted.
+
+With all three authenticated report hashes installed, initial publication uses the tracked
+one-time CPU job without a same-source dependency on the historical preparation:
+
+```console
+./scripts/wmi_submit_job.sh --test-only slurm/peano_wmi_seal_v3_corpus.sbatch
+./scripts/wmi_submit_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  slurm/peano_wmi_seal_v3_corpus.sbatch
+```
+
+After publication, any current clean checkout can independently recompute and verify the sealed
+bytes and invariants:
+
+```console
+python3 scripts/seal_peano_v3_corpus.py verify \
+  --seal checkpoints/corpora/peano-policy-v3-173040 \
+  --source-commit 5faa3d27cbaf522198ffa1bdcd11fa9d57341658 \
+  --prepare-job-id 173040
+```
+
+That command establishes internal consistency, not external authenticity by itself. Its printed
+`content_sha256` must equal the independently authenticated digest copied into the tracked v3 TOML;
+a mismatch is fatal even when the command otherwise succeeds. Seal job `213641` completed `0:0` in
+7m01s and a separate current-source verifier reproduced
+`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`. The canonical seal
+manifest SHA-256 is `22ecb4ad16f06abc39d6aac553052be9fa08b195d9250216fa1195db0a7e49e6`;
+the profile-bound v2 verification-report SHA-256 is
+`218d3a16f582c460dd93a01eb809d157dc9a55a09357d6c24f16f74cda9b1c3e`. That genuine content
+digest is now pinned in the tracked v3 TOML; no placeholder digest is an eligible configuration.
+
+#### Sealed preparation, one-shot training, evaluation, and replay
+
+After a clean current-source deployment, the accepted WMI chain is:
+
+1. `peano_wmi_prepare_v3_sealed_training.sbatch` performs no generation and no proof replay. It
+   independently checks eligibility, audits the selected tokenizer population, and executes a real
+   BF16 LoRA optimizer/save/reload smoke on the memory envelope. That smoke exercises one natural
+   longest-sequence row and, when necessary, extends the longest-completion row by inserting
+   attended, label-masked prompt tokens immediately before its supervised suffix. Thus both active
+   sequence length and completion length reach their audited maxima even under an attention backend
+   that unpads ignored positions. After releasing the manual AdamW/scheduler state, it also runs one
+   actual `CompletionOnlyTrainer.train()` step and an explicit `evaluate()` on that same envelope,
+   with saving and periodic evaluation disabled. Both paths require finite gradients for every
+   trainable adapter parameter and an actual adapter update; the final state must have deterministic
+   equality between post-update and reloaded outputs. A shared runtime gate requires one process,
+   one Trainer-visible GPU, matching `cuda:0` Trainer/Accelerator devices, BF16 mixed precision,
+   `DistributedType.NO`, `DynamoBackend.NO`, no DeepSpeed/FSDP/tensor parallelism, and Accelerator's
+   backward divisor equal to one. Transformers performs accumulation manually, while the indexed
+   loss is already normalized over the whole supervised-token window; accepting an
+   environment-selected Accelerator divisor would scale that loss twice. Training loss therefore
+   also fails closed if Trainer omits `num_items_in_batch`; evaluation deliberately retains its
+   local supervised-token denominator. Both production and probe explicitly bind non-reentrant
+   checkpointing, AdamW betas/epsilon, and disabled NaN/Inf log filtering instead of relying on
+   framework defaults. Trainer's built-in clipping is disabled with `max_grad_norm=0.0`: it runs
+   before `on_pre_optimizer_step` with `error_if_nonfinite=False`. The callback instead audits raw
+   gradients, clips to norm 1.0 with `error_if_nonfinite=True`, and audits every post-clip gradient
+   before the optimizer may run. The smoke also performs the same saved-policy admission required
+   after production training. It selects bounded natural probes from the admitted train extrema and
+   capped validation population, fingerprints the terminal canonical PEFT state and indexed
+   outputs, directly reads the saved safetensors, and uses its one fresh local-only base, tokenizer,
+   and PEFT reload for both exact admission and the memory-envelope comparison. Disabling the adapter
+   must change at least one admission probe. The standard-library preparation verifier joins that
+   evidence to corpus eligibility, curriculum selection, both token-audit records, closed artifact
+   hashes, and the pristine pinned base configuration.
+
+   A BF16 `Trainer` is not automatically the same execution surface as ordinary inference.
+   Accelerate 1.8.1 prepares the live single-process model by replacing `forward` with an autocast
+   wrapper that converts returned tensors to FP32 and retains `_original_forward`. Deleting the
+   Trainer does not restore that method. Before any terminal semantic snapshot, the shared
+   admission helper therefore calls Accelerate's public `unwrap_model` with
+   `keep_fp32_wrapper=False` and `keep_torch_compile=False`, requires the exact original model and
+   forward function, and rejects a surviving wrapper. This keeps the exact comparison meaningful:
+   bare trained inference is compared with bare freshly loaded inference. Job `217123` discovered
+   this boundary after all adapter tensor populations had already matched byte-for-byte; no
+   numerical tolerance or weaker argmax-only admission was introduced.
+2. `peano_wmi_train_qwen3_1_7b_v3.sbatch` can depend only on that exact completed sealed-preparation
+   job. It repeats the three-report cross-check, then exercises both node types through the
+   production publication preflight on the exact `/work` output filesystem. The retained protected
+   probe, selected profile, and its
+   exclusive canonical report are passed into the trainer, bound into the run identity, and checked
+   again before final publication. The job requires one visible A100 and one process, rejects
+   resume, and runs the indexed completion objective. The schedule is derived from the admitted
+   row count; Trainer checkpointing and periodic evaluation are disabled, and the actual
+   optimizer-step count must equal the preflight count. The measured 20,765 rows and accumulation
+   32 give 649 updates. Logging every 11 updates gives exactly 59 periodic records and retains the
+   fail-closed rule that the terminal update is itself a logging boundary. This is stronger than placing their
+   intervals beyond the schedule: Transformers' default flow can still request a terminal
+   checkpoint at `max_steps`. Separate adapter-only recovery snapshots are predeclared in that
+   schedule. For the measured 649-step run they occur after steps
+   100, 200, 300, 400, 500, and 600. Each contains only PEFT safetensors and loader metadata: no
+   optimizer, scheduler, RNG, `trainer_state`, or pickle-compatible resume artifact. A snapshot is
+   built in a private, visibly partial sibling, bound to the stable `run-identity.json` bytes and
+   their source/Slurm job, fsynced, made read-only, verified, then installed by the selected
+   publication profile. Failed staging trees and prior snapshots are never removed or overwritten.
+   Submission names the successful accounting record with `--completed-predecessor`. The guarded
+   submitter requires one exact `sacct` allocation row with matching `JobIDRaw`, state
+   `COMPLETED`, and both exit codes `0:0`; then it rechecks the immutable same-source ledger and all
+   preparation reports. It deliberately emits no Slurm `afterok` argument, because Slurm rejects a
+   newly attached dependency after the completed job ages out of the controller.
+   Its manifest says `training_complete=false`, `eligible_as_training_result=false`, and
+   `resumable=false`; neither the generator nor evaluator accepts it as a completed run. The
+   completed adapter and tokenizer are still saved before the explicit full validation pass, so a
+   late evaluation timeout cannot erase the terminal optimizer result. Each final tree is first
+   serialized into a private partial sibling and is then fsynced, protected read-only, closed-tree
+   verified, and atomically installed without replacement. The output directory itself is claimed
+   exclusively before model allocation; its path, parent, device, inode, and mode are bound into
+   the run identity and rechecked before the final manifest. `run-identity.json` and
+   `training-manifest.json` are likewise exclusive non-replacing files. The model-v3 closed-tree
+   verifier requires directories `0555` and files `0444`, rejects symlink components, specials,
+   cross-device nodes, and hard links, and uses descriptor-bound stable hashing plus a second
+   inventory to detect mutation or insertion. Stock Trainer evaluation
+   averages per-batch token means, so it is finite lifecycle evidence rather than a corpus-global
+   completion-token NLL. The ordinary
+   `training-manifest.json` remains unpublished until validation and all source/report rechecks
+   succeed. Its model-v3 completion record then requires the scheduled, returned, and Trainer-state
+   step counts to agree; every raw and post-clip trainable-gradient boundary to be present and
+   finite; all strict pre-clip norms and exact log-history records to be finite; and the canonical
+   trainable tensor population to change between its initial and final raw-byte fingerprints. It
+   states explicitly that `train_loss` averages optimizer-window token means and `eval_loss`
+   averages per-example token means at batch size one. The record also binds the closed adapter and
+   tokenizer hashes. Before releasing the live model, the runner selects three deterministic
+   SHA-ranked probes from the complete admitted train and validation populations and fingerprints
+   their tokenization, indexed losses, projected-logit bytes, and the canonical terminal PEFT
+   tensor population. After releasing Trainer/model references, one fresh local-only reload must
+   reproduce the exact persisted tensor population and all probe outputs; its disabled-adapter base
+   must differ on at least one probe. The admission record joins the run identity, base commit and
+   pristine configuration, `cuda:0` runtime, individual safetensors/config files, and complete
+   adapter/tokenizer tree hashes. Production pins `bf16_full_eval=false`: in Transformers 4.53.3
+   the full-eval flag calls `model.to(bfloat16)`, which would otherwise cast PEFT's FP32 LoRA
+   tensors after their terminal save. Tensor populations are checked after serialization and after
+   explicit evaluation. Model-v3 inference and same-base comparison reject an absent, partial,
+   stale, or inconsistent completion/admission record before importing Torch or PEFT. Prompt-v3
+   attestation and the model-v3 curriculum are an inseparable pair, checked before any framework
+   import. After admission and all slower source/report validation, the runner repeats strict
+   adapter/tokenizer verification immediately before publishing the final no-replace manifest.
+3. `peano_wmi_eval_qwen3_1_7b_v3.sbatch` depends on the exact training job and runs the four frozen
+   goals with sampled kernel-guided search at depth 32, beam width 16, eight candidates per state,
+   512 model calls, 4,096 states, and 256 tokens per candidate. These four goals are still only a
+   launch smoke. Before model loading, the evaluator requires the adapter manifest's training job,
+   `PEANO_TRAIN_JOB_ID`, and the submission-ledger predecessor to be the same numeric job. That binding
+   is preserved in the report and checked again by independent replay.
+4. `peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch` is a separate comparison under the same
+   declared prompt/search authority. It
+   verifies the completed adapter manifest and closed adapter/tokenizer trees but never attaches
+   PEFT weights. It loads the pinned Qwen base and repeats the exact four-goal seed and search
+   envelope under the distinct `peano-policy-pretrained-base-v1` identity. Its fixed contract is
+   documented in [`PEANO_PRETRAINED_BASELINE.md`](PEANO_PRETRAINED_BASELINE.md). Both this loader
+   and the trained-adapter generator verify their input trees before and after heavy loading;
+   recovery requires exact directory `0555` and file `0444` modes. These are provenance and
+   accidental-corruption checks, not a security boundary against a hostile same-owner process.
+5. `replay_peano_v3_evaluation.py` is a model-free final gate. It accepts only evaluator-v4 search
+   reports with the exact goal set, environment, seed, budgets, source and job identities; it
+   cross-checks duplicated search accounting and independently calls `verify_proof` for every
+   attempt that claims success. Its canonical attestation is published without replacing an
+   existing file.
+
+The guarded remote submission shape is:
+
+```console
+scripts/submit_wmi_slurm_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  slurm/peano_wmi_prepare_v3_sealed_training.sbatch
+scripts/submit_wmi_slurm_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  --completed-predecessor SEALED_PREP_JOB slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch
+scripts/submit_wmi_slurm_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  --afterok TRAIN_JOB slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch
+scripts/submit_wmi_slurm_job.sh --submit --confirm PEANO-LAB-WMI-TRAINING \
+  --afterok TRAIN_JOB slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch
+python3 scripts/replay_peano_v3_evaluation.py \
+  --report results/peano-policy/qwen3-1.7b-lora-v3-library/heldout-search-wmi-b16-c8-d32.json \
+  --output results/peano-policy/qwen3-1.7b-lora-v3-library/evaluation-replay.json \
+  --source-commit EVALUATION_CLEAN_COMMIT \
+  --evaluation-job-id EVALUATION_JOB
+```
+
+Use `--afterok` only while the named predecessor is live in Slurm
+(`PENDING`, `CONFIGURING`, `RUNNING`, or `COMPLETING`). If training has already completed, use
+`--completed-predecessor TRAIN_JOB` for either evaluator. The latter requires a canonical
+successful accounting row and preserves the exact logical predecessor in `PEANO_TRAIN_JOB_ID` and
+the append-only ledger, but correctly omits a scheduler edge that Slurm can no longer accept.
+
+The training batch script runs the equivalent model-free storage check before invoking the trainer:
+
+```console
+python3 scripts/preflight_recovery_publication.py run \
+  --probe-root results/peano-policy/recovery-publication-preflights \
+  --report logs/peano-wmi-recovery-publication-preflight-JOB_ID.json
+python3 scripts/preflight_recovery_publication.py verify \
+  --report logs/peano-wmi-recovery-publication-preflight-JOB_ID.json
+```
+
+Both commands retain and recheck the probe; they never clean up or replace prior evidence.
+
+The submission wrapper defaults to `--test-only`. Real submission checks the immutable deployment
+ledger, exact predecessor script, canonical accounting state and exit codes, and, where required
+(notably preparation-to-training), terminal reports;
+rechecks accounting immediately before submission; submits held; appends the job identity durably;
+and only then releases it. The legacy ledger column `dependency_job_id` records the logical
+predecessor in both live and completed modes; it does not by itself claim that a scheduler edge was
+emitted. The
+implemented Slurm limits are eight hours for sealed preparation, 36 hours for training, and twelve
+hours for evaluation. Current result ledger:
+
+| Result-dependent field | Status at this checkpoint |
+|---|---|
+| historical corpus seal path/content digest | `checkpoints/corpora/peano-policy-v3-173040`; `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b` (job `213641`, verified) |
+| last verified sealed preparation | job `217851` under source `4d44609ee32d5d28726c082ef7b5649c0a1107a6`; complete eligibility, exact token-audit, runtime-smoke, and independent three-report verification passed |
+| selected train/evaluation rows and exact token exposure | accepted token audit: 20,765 train rows (8,494 catalog + 12,271 synthetic), 73,446,475 train tokens, 415,247,631,205 squared train tokens; 512 evaluation rows and 1,351,537 tokens |
+| optimizer steps, losses, adapter and tokenizer digests | training manifest SHA-256 `caa5569c98ed9ea048d413301b803c39011957d1c97307e5b109846989e18569` binds expected and actual 649 optimizer steps; job `217859` completed and its admitted adapter was consumed by the guarded evaluator |
+| evaluation job/report and independently replayed proofs | trained job `218171`, 3m51s: immutable `k=1` report says 3/4; ordinary canonical replay still rejects its incomplete nested environment identity, while version-pinned `trained-compatibility-replay.json` passed and independently replayed all 3/3 claims (embedded attestation SHA-256 `e900a10241db0451992313eb2a7b0341911a7a71cd8af91e831a279874afda56`) |
+| revision/configuration-pinned pretrained comparison, with no PEFT adapter reported | job `218172`, 4m20s: immutable `k=1` report says 0/4; `pretrained-base-replay.json` passed declared identity/provenance/search-accounting validation with zero proof claims (embedded attestation SHA-256 `056519bc3598a390526fdf9054aa38090d499f7f837af0a2ace7af8caaa560e7`) |
+| paired admission | `paired-launch-smoke-attestation.json`: `paired_launch_smoke_admitted`; embedded attestation SHA-256 `9b33b4e488f14e38fc7c5a122410d53e9e1123409dcccafdc73e0a8ab1a14bae`, file SHA-256 `cdd20cc6e97ff442cff1c476135963f726b740372223f6eac72335543f6c11ba` |
+
+An idle A100 attached to CPU replay is not transformer training. The run begins only when the
+training process has passed every predecessor gate and logs its first optimizer step.
+
+### 10.7 Paired model-v3 launch smoke: admitted narrow result
+
+The paired run used the frozen four goals and identical depth-32, beam-16, eight-candidate search
+authority for the admitted adapter and a revision/configuration-pinned Qwen3-1.7B pretrained
+comparison whose report declares that no PEFT adapter was attached. The single-owner
+launcher ran them sequentially rather than bypassing its concurrency guard:
+
+| Policy | WMI job | GPU wall time | Raw `k=1` result |
+|---|---:|---:|---:|
+| rank-32 model-v3 adapter | `218171` | 3m51s | 3/4 |
+| pretrained comparison; no PEFT adapter reported | `218172` | 4m20s | 0/4 |
+
+The reports were produced under source
+`4d44609ee32d5d28726c082ef7b5649c0a1107a6`. Their untouched local copies are
+`artifacts/peano-policy/model-v3-evaluation-2026-08-02/trained-report.json` (SHA-256
+`f134f8c2d8c173e2ebcee0ebd3b8dfbc59805619bd7e79706c11e51732e0956c`) and
+`pretrained-base-report.json` (SHA-256
+`410be8f224d2dac6d28c4e0f55f125e95d5bc1f725b9c20851b00c15394d97b9`).
+The paired admission also binds the exact 1,631,246-byte training manifest at SHA-256
+`caa5569c98ed9ea048d413301b803c39011957d1c97307e5b109846989e18569`; that manifest records 649
+expected and 649 actual optimizer steps.
+
+The raw trained report contains three short successful tactic scripts:
+
+| Goal | Tactics | Independently replayed certificate nodes |
+|---|---|---:|
+| closed arithmetic | `norm_num` | 98 |
+| existential witness | `exists 5`; `norm_num` | 29 |
+| universally quantified right-zero calculation | `intro n`; `rewrite PA3`; `simp` | 10 |
+
+Each script was separately replayed through `verify_proof` against its original formula under the
+actual model-v3 capabilities. The fourth goal,
+`forall x. exists y. x * (x + 1) = 2 * y`, requires induction-level planning and remained unsolved.
+The pretrained comparison produced 32 malformed candidate sequences and executed no tactics. These facts
+support only the narrow observation that the adapter emitted executable syntax and shallow proof
+compositions in this smoke; they do not demonstrate non-trivial induction, broad PA proving
+ability, or a stable causal effect.
+
+The canonical report replay deliberately refused to publish an attestation. The evaluator had used
+the full 247-theorem environment to render prompts and had recorded that library separately, but
+the nested `base_policy_identity.environment` serialized only the older four-field projection. It
+therefore omitted `library_identity_sha256`, `library_full_identity_sha256`,
+`library_prefix_length`, and `library_size`. The ordinary replay requires the exact full authority
+and correctly treated this structural provenance mismatch as fatal. The original report is not
+edited, and the ordinary verifier is not relaxed.
+
+That historical defect is now covered without changing the ordinary verifier. The distinct
+version-pinned artifact `trained-compatibility-replay.json` binds the immutable report, source and
+job, exact four-field legacy projection, reconstructed full-library values, and historical source
+inventories. It passed and independently replayed all 3/3 claimed proofs; its embedded attestation
+SHA-256 is `e900a10241db0451992313eb2a7b0341911a7a71cd8af91e831a279874afda56`.
+The dedicated `pretrained-base-replay.json` also passed, validating the declared pretrained identity,
+provenance, and search accounting and correctly replaying zero proof claims; its embedded
+attestation SHA-256 is
+`056519bc3598a390526fdf9054aa38090d499f7f837af0a2ace7af8caaa560e7`.
+
+The final paired layer cross-binds both reports, both producer attestations, the training manifest,
+source commit, three job records, four goals, seed, and all search limits. It verified historical
+Git blobs for 36 trained-semantic, 36 pretrained-semantic, 61 trained-evaluation, and 62
+pretrained-evaluation entries—62 unique source blobs in total—and found all overlapping digests
+equal. `paired-launch-smoke-attestation.json` passed with result
+`paired_launch_smoke_admitted`; its embedded attestation SHA-256 is
+`9b33b4e488f14e38fc7c5a122410d53e9e1123409dcccafdc73e0a8ab1a14bae`, and the file SHA-256 is
+`cdd20cc6e97ff442cff1c476135963f726b740372223f6eac72335543f6c11ba`.
+
+This attribution has explicit limits. The pretrained comparison is revision/configuration-pinned
+and reports no PEFT adapter, but its base-model weight shards were not content-hashed before and
+after loading; the experiment therefore does not attest bit-for-bit base weights. The immutable
+evaluation reports do not contain complete raw generation transcripts, so the paired layer cannot
+replay raw model output, extraction, or every executed search edge. Candidate attribution instead
+rests on byte-pinned historical producer/source/job records, while the consumed trained attestation
+independently kernel-replays the three published certificates. WMI completion was additionally
+observed in the retained `sacct` and log evidence bundle, but scheduler observations are not
+cryptographically authenticated by Slurm.
+
+Consequently, **the narrow frozen four-goal `k=1` launch-smoke result is admitted as 3/4 versus
+0/4**. The ordinary trained-report replay still rejects the old incomplete identity and remains
+unchanged; the historical bridge is a separately scoped admission, not a weakened general rule.
+This tiny smoke contains three shallow proofs and one unsolved induction theorem. It establishes
+neither broad PA ability, induction capability, bit-for-bit pretrained-weight identity, statistical
+reliability, nor causal superiority of the adapter. Those questions require stronger weight and
+generation-transcript attestation, a deterministic baseline, a larger hidden induction-rich
+benchmark, and repeated controlled measurements.
 
 ## 11. Provenance and result ledger
 

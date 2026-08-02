@@ -479,7 +479,10 @@ tactic characters, the ordinary formula/line/numeral/live-certificate limits, an
 trace records; a bound is checked before the offending record is appended or sent to a sink. The
 CLI additionally defaults to at most 10,000 requests, 256 MiB input, 128 MiB result envelopes, and
 512 MiB raw trace per finite transaction; larger workloads must use explicit reviewed limits or
-shards.
+shards. The exact model-v3 library-corpus runner exercises that escape hatch with an explicit,
+host-owned 128 MiB per-session ceiling because a reviewed valid certificate exceeds the ordinary
+limit. The override is capped in the Python API and absent from the request JSON schema; it does not
+change the JSONL transport's independent 512 MiB aggregate default.
 Raw v1 records and compact result envelopes are
 separate streams; the raw artifact is written to a same-directory staging file and appears at its
 requested final name only after a complete, durable batch. Empty, all-invalid, fail-fast, or

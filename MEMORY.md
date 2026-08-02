@@ -10,7 +10,8 @@
   **VIASM** (Vietnam Institute for Advanced Study in Mathematics, Hanoi), 2026.
 - **Author:** dr Bartosz Naskręcki — Faculty of Mathematics and Computer Science, Adam Mickiewicz
   University in Poznań (WMI UAM); also Centre for Trustworthy AI (CCAI), Warsaw University of Technology.
-- **Active local repo root:** `/Users/bnaskrecki/codex/peano` (git `peano-lab`).
+- **Active local repo root:** `/Users/bnaskrecki/codex/test/vietnam2026-arithmetic`
+  (git branch `agent/quadratic-reciprocity-campaign`).
 - **Public GitHub repo:** `nasqret/vietnam2026`.
 - **VIASM course page:** <https://viasm.edu.vn/en/hdkh/Mini-Course_AIATPM>
 - **Lecture-title doc (Google Docs):** `1w08zKuLrq3XLFEWS_jNN4ZZv6lkXJWHKgVUSBWYSI7A`.
@@ -174,7 +175,9 @@
   bytes are deployed to staging. No in-app browser was attached, so a live Pyodide click-through is
   not claimed. The delivery verifier reaches the known missing-cache-header stop, so production is
   unchanged.
-  M19 is the active, not-yet-complete post-training milestone. Its compact headless adapter is not
+  M19 began as the post-training milestone; its narrow model-v3 launch smoke is
+  now completed, while broader capability and induction evaluation remain open.
+  Its compact headless adapter is not
   a second prover: one warm JSONL/Python process reuses the production parser, public surface,
   proof engine, theorem library, binding v1 trace logger, checked finalizer, and unchanged kernel.
   Its CLI is a bounded finite transaction (not a duplex service), with strict JSON numbers,
@@ -269,7 +272,7 @@
   delivery remains blocked on administrator-managed cache headers, while M17 is published to
   staging. The implementation, checked corpus,
   construction book, Obsidian knowledge base, kernel-judged evaluation protocol, live checked-
-  theorem reuse, and the current 189-entry checked ladder (whose initial public-catalog/M20
+  theorem reuse, and the historical 189-entry checked ladder (whose initial public-catalog/M20
   reconciliation produced a historical 63-entry release),
   certificate-producing `ring`, and bounded checked
   `norm_num` teaching surface are present. The odd-square induction closes through explicit
@@ -280,8 +283,13 @@
   x86-64/PyTorch-2.5.1/CUDA-12.4 route now has a reviewed central-base manifest, a 12-wheel
   hash-locked overlay, transactional deployment locks, and a one-shot safetensors model-weight
   contract. The WMI LoRA save/reload, 100-step training, frozen evaluation, and two arbitrary
-  theorem probes are complete. Model-v2 curriculum/search work, controlled model comparison, and
-  milestone-wide release gates are not yet complete.
+  theorem probes are complete. Those model-v1/model-v2 results are historical.
+  The current model-v3 chain instead records passing same-source preparation
+  `217851`, completed 649-update training `217859`, trained evaluation `218171`,
+  and the revision/configuration-pinned no-PEFT-reported comparison `218172`.
+  Their narrowly admitted four-goal `k=1` launch smoke is 3/4 versus 0/4; the
+  three trained claims kernel-replay, the induction goal remains unsolved, and
+  no bit-for-bit base, statistical, causal, broad-PA, or induction claim follows.
 - M19 pre-training infrastructure gate on 2026-07-28: 363 focused tests, 912 full Peano tests,
   Lambda 360 tests plus 36 subtests, clean book build/command replay, and green local staging as
   build `2026-07-28f`, application `a-69aa3b753965`. This is not deployed and is not a model result.
@@ -294,8 +302,10 @@
   (1/8); exact hashes and the replayable proof live under `artifacts/peano-policy/`. A new local
   artifact regression adds three tests. The post-result gate is green: 1,033 complete Peano tests,
   Lambda 360 tests plus 36 subtests, a clean 27-source warning-as-error book build, 193 deep links
-  and 170 documented commands replayed, and 412/412 Obsidian wikilinks resolved. The remaining M19
-  work is the model-v2 curriculum/search experiment, not repair of this recorded result.
+  and 170 documented commands replayed, and 412/412 Obsidian wikilinks resolved.
+  At that checkpoint the remaining M19 work was the model-v2 curriculum/search
+  experiment; the present next gate is a larger hidden induction-rich,
+  kernel-checked benchmark under fixed pretrained/adapted/search budgets.
 
 ## Foundational arithmetic library (M20)
 
@@ -342,7 +352,8 @@
   170 commands, and 414/414 vault wikilinks pass. Local browser candidate `2026-07-28g` has
   application identity `a-3ea7b7142aa0`; automated worker boot passes, direct in-app Pyodide
   latency remains unmeasured, and production is untouched.
-- The current native arithmetic runtime has 189 unique checked theorems: 23
+- At the 189-theorem arithmetic checkpoint, the native runtime had 189 unique
+  checked theorems: 23
   baseline entries, 154 general foundational entries, and twelve unique
   modular capstones. It now includes discrete order, multiplication
   cancellation/monotonicity, constructive quotient-remainder existence, full
@@ -416,7 +427,7 @@
   prefix-product recurrence and bounds, arbitrary finite-prefix coding,
   greatest-prime descent, and the remaining finite-product spine.
   Production is untouched.
-- **Current M20 native FTA and unbounded-primes checkpoint (2026-07-29):** the runtime now contains
+- **Historical M20 native FTA and unbounded-primes checkpoint (2026-07-29):** the runtime then contained
   247 unique closed theorems: 23 baseline, 212 general foundational entries,
   and twelve unique modular capstones. The synchronized 248-entry catalog has
   23 `checked_existing`, 224 `checked_m20`, no `planned_expressible`
@@ -447,29 +458,28 @@
   `8a44fb2d207c2a41684de6d6630674f3f3b951cd036f733b3dd493321099d37b`.
   It uses PA1–PA6 only, contains no DNE, and passes exact-statement,
   dependency-slot, PA-leaf, authored-hypothesis, and live-use audits.
-- **Current M20 generated identities:** the 247-theorem snapshot contains
+- **Historical M20 generated identities (2026-07-29):** the 247-theorem snapshot contains
   982,534 structural nodes and 28,892 Cuts across 204 Cut-bearing
   certificates. Its ordered root is
   `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`
   and source digest is
   `295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
-  The Obsidian graph has 327 notes and 3,287 resolved links, including 247
+  The Obsidian graph has 327 notes and 3,288 resolved links, including 247
   lemma notes. The deterministic 1,692-session/13,344-transition corpus has
   fingerprint
-  `5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`;
+  `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
   its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions,
-  and all 247 authored QEDs. Local browser build `2026-07-29j` packages
-  manifest identity `a-c983d7c60450`; it is not staged or deployed. The strict
+  and all 247 authored QEDs. Local browser build `2026-07-29k` packages
+  manifest identity `a-77df7c0860bc`; it is not staged or deployed. The strict
   book rebuild passes 38 sources with no warnings; 194 deep links and 47
   executable blocks containing 287 commands verify. A guided ten-stage route
   and generated interactive atlas expose all 247 exact statements, complete
   authored proof recipes, dependencies, dependents, metrics and source/vault
-  links. The complete Peano suite
-  passes 1,101 tests on Python 3.10 in 1,050.08 seconds with no reported
-  warnings. An in-app browser was unavailable, so direct Pyodide and rendered
+  links. The complete Peano suite passes 1,298 tests with one intentional skip
+  in 1,275.58 seconds; Lambda passes 360 tests plus 36 subtests. An in-app
+  browser was unavailable, so direct Pyodide and rendered
   book UI smokes are not claimed; automated runtime/worker tests, static HTML
   contracts and the deployment-manifest check remain green.
-
 - **Quadratic-reciprocity campaign checkpoint (2026-07-29):** the exact
   sign-free same/opposite/combined reciprocity endpoints are expressible in
   unchanged first-order PA; the combined expanded target is 1,520 source
@@ -504,8 +514,12 @@
   329 Cut-bearing certificates. Its ordered root is
   `73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
   The synchronized research graph has 385 records (384 checked and one
-  language-blocked conventional interface). The Obsidian vault has 474 notes
-  and 4,818 resolved links, including all 384 generated theorem notes.
+  language-blocked conventional interface). The Obsidian vault has 475 notes
+  and 4,825 resolved links, including all 384 generated theorem notes. The
+  integrated local browser candidate deterministically verifies as build
+  `2026-08-02a`, application `a-cd3e54b68949`, with 149 worker sources; it
+  assembles successfully in the local content-addressed stage and is not
+  deployed.
 - **QR heavy-execution boundary (2026-07-30):** proof replay, certificate
   profiling, mutation audits, full-ladder tests, and documentation builds run
   on WMI from content-addressed dirty-worktree archives; the Mac is restricted
@@ -1227,3 +1241,182 @@
   45-layer theorem DAG. Status is also unchanged: 240 public theorems, 316
   body-checked candidates, and `PA00FW` alone pending layered closure. The
   edition supplies no quadratic-reciprocity admission.
+- **Model-v3 training curriculum and launch gate (2026-07-31):** the frozen
+  first-247 declaration-order prefix of the current 384-theorem native ladder
+  is the content-bound training authority. Exact authored
+  predecessor-prefix replay contributes 8,494 transitions. WMI preparation
+  `172536` completed that library lane, then failed closed after 1:02:34 when
+  the original synthetic ring schema exceeded its reviewed coefficient limit;
+  no training or evaluation job was submitted. The repaired version-2
+  synthetic plan has exactly 70,000 rows in 32,600 unique roots, covers all 51
+  schemas, balances 14 first-tactic heads at 2,328--2,329 sessions, caps
+  `intro` below 20%, and needs zero candidate skips. Its ordered SHA-256 is
+  `79d2704eab6eb73205ff2234f55f0d4a7e034176fe8dc8649c6950ff499d547b`.
+  Catalog-derived components are train-only;
+  validation and test are synthetic-only, and held-out target formulas are
+  rejected at every intermediate state. Prompt-v3 exposes exact theorem
+  names and statements and losslessly compacts repeated proof declarations
+  with `shared-declarations-v1`; across all 222 stress-proof transitions the
+  maximum pinned Qwen3 prompt, completion, and EOS length is 29,111 tokens,
+  leaving 3,657 below the native 32,768-token limit. Retry `172729` generated
+  32,600 independently checked synthetic sessions/70,000 transitions and all
+  247 library sessions/8,494 transitions, then atomically built 64,500 train,
+  6,948 validation, and 7,046 test rows. The exact manifest SHA-256 is
+  `ccb62c771d1f7dab1e90e98da42c6c8acee40f47b5527c4f65611f718661d983`.
+  Its combined walltime could not also fit independent replay, token audit,
+  and smoke. Exact-corpus continuation `173040` subsequently completed those
+  gates from clean commit `5faa3d27cbaf522198ffa1bdcd11fa9d57341658`.
+  Job `213641` published and independently verified the resulting immutable
+  15-file seal at `checkpoints/corpora/peano-policy-v3-173040`, with content
+  SHA-256 `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`.
+  These are corpus-preparation results, not transformer training.
+- **Model-v3 selected objective (2026-07-30):** the trainer retains all 8,494
+  catalog rows and selects only complete synthetic sessions under a 12,288-row
+  ceiling, anchoring all 51 schemas and balancing all 14 root heads by a
+  seed-bound, input-order-independent record. `run.max_train_samples` is
+  forbidden. The pinned tokenizer binds every selected token sequence and
+  enforces linear, quadratic, sequence, and supervised-completion ceilings.
+  Completion-only causal loss uses Qwen's indexed `logits_to_keep` positions,
+  the exact one-token shift, FP32 summed cross entropy, and the exact supervised
+  token count across gradient accumulation; a pinned LoRA probe matches the
+  full-logit loss and gradients to numerical precision.
+- **Model-v3 historical/current boundary (2026-07-31):** the non-replacing,
+  read-only corpus seal binds exactly twelve historical data artifacts and
+  three preparation reports to clean source commit `5faa3d27`, preparation
+  `173040`, and content SHA-256
+  `7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`.
+  Current code may consume it only after full seal verification and
+  compiler/kernel/prompt/held-out/library eligibility comparison. The new WMI
+  chain remains sealed preparation (eligibility + exact token audit + extremal
+  indexed-loss A100 smoke), fresh one-GPU training, four-goal bounded search,
+  then model-free independent kernel replay of every claimed proof. Its first
+  current-source preparation, job `214264`, reached the selected-token audit
+  and failed closed before runtime smoke or model loading because train exposure
+  was 73,446,475 tokens against the reviewed 70,000,000-token ceiling. The
+  replacement changed only that ceiling to 74,000,000. Job `217123` then passed
+  eligibility and the complete selected token audit: train squared exposure was
+  415,247,631,205, maximum sequence length 29,111, and maximum supervised
+  completion 936. Its runtime smoke performed representative adapter updates
+  and one real Trainer step, but saved-policy admission failed before report
+  publication because Accelerate's retained mixed-precision forward wrapper
+  was compared with a bare fresh reload. The repair explicitly unwraps to the
+  original single-process forward and makes snapshot capture reject a retained
+  wrapper. Fresh preparation `217768` then passed the exact eligibility, token-audit, runtime-smoke,
+  saved-policy-admission, and reload gates; `sacct` records `COMPLETED|0:0|0:0`. Because Slurm rejects a new `afterok` edge after a
+  completed job ages out of its 300-second controller retention, guarded submission now uses
+  `--completed-predecessor` for the durable accounting/ledger/report binding and reserves
+  `--afterok` for live jobs. Exact provenance therefore forbade relabelling `217768`. Fresh
+  same-source preparation `217851` subsequently passed every gate under clean source `4d44609e`,
+  and guarded production successor `217859` completed the 649-step rank-32 Qwen3-1.7B optimizer on
+  one WMI A100. The schedule used logging 11, yielding 59 periodic boundaries through the terminal
+  step. A loopback-only Training
+  Observatory reads fixed bounded WMI evidence without exposing SSH or scheduler mutation to the
+  browser and labels corpus examples as representative rather than current microbatches. The
+  attestor's independent-builder watchdog is eight hours, above the
+  exact measured 5h07m first build; the old four-hour value would have rejected
+  a legitimate replay deterministically.
+- **Model-v3 paired evaluation admission (2026-08-02):** trained-policy job `218171` completed in
+  3m51s and revision/configuration-pinned pretrained comparison `218172`, whose report declares no
+  PEFT adapter, in 4m20s under the same frozen four-goal, depth-32/beam-16 search authority. Their
+  immutable raw `k=1` reports say 3/4 versus 0/4. The
+  trained routes `norm_num`, `exists 5; norm_num`, and
+  `intro n; rewrite PA3; simp` independently replay through the kernel with 98, 29, and 10 nodes;
+  the induction-heavy consecutive-product theorem remains unsolved. The pretrained comparison
+  produced 32 malformed sequences and executed no tactics. Canonical whole-report replay rejected the trained report
+  because its nested policy environment retained the legacy four-field projection and omitted
+  `library_identity_sha256`, `library_full_identity_sha256`, `library_prefix_length`, and
+  `library_size`. The original report stays immutable and the ordinary replay gate stays strict.
+  Separate version-pinned `trained-compatibility-replay.json` now passes after pinning the historical
+  report, source, job, projection, reconstructed full authority, and source inventories; it
+  independently replayed all 3/3 claims and has embedded attestation SHA-256
+  `e900a10241db0451992313eb2a7b0341911a7a71cd8af91e831a279874afda56`.
+  Dedicated `pretrained-base-replay.json` passes declared control identity, provenance, and search
+  accounting with zero claims; its embedded attestation SHA-256 is
+  `056519bc3598a390526fdf9054aa38090d499f7f837af0a2ace7af8caaa560e7`.
+  Exact training manifest SHA-256
+  `caa5569c98ed9ea048d413301b803c39011957d1c97307e5b109846989e18569` records expected and actual
+  649 optimizer steps. `paired-launch-smoke-attestation.json` cross-binds that manifest, both
+  reports and producer attestations, three jobs, source, goals, seed, and search limits. It verifies
+  historical Git source maps of 36/36 semantic and 61/62 evaluation records (62 unique blobs) and
+  reports `paired_launch_smoke_admitted`; embedded attestation SHA-256 is
+  `9b33b4e488f14e38fc7c5a122410d53e9e1123409dcccafdc73e0a8ab1a14bae`, file SHA-256
+  `cdd20cc6e97ff442cff1c476135963f726b740372223f6eac72335543f6c11ba`.
+  The narrow four-goal `k=1` launch smoke is therefore admitted as 3/4 versus 0/4. Base weight
+  shards were not content-hashed before/after loading, and raw generation/extraction/executed-edge
+  transcripts are absent, so attribution relies on byte-pinned historical producer/source/job
+  records rather than a bit-for-bit base or raw-output replay. Retained `sacct`/log artifacts also
+  observe WMI completion but are not cryptographically authenticated by the scheduler. This is not
+  a statistical benchmark or evidence of broad PA ability, induction capability, or causal
+  superiority.
+- **Post-merge integration seal (2026-08-02):** the 384-theorem native library
+  and the incoming trained-policy stack coexist without widening either frozen
+  model authority: model-v2 remains 56 theorems and model-v3 remains the first
+  247 declaration-order theorems. The selected merged matrix passed 1,183 tests
+  with five intentional skips, including six loopback-server tests run outside
+  the socket-restricted sandbox. The 45-source Book rebuilt successfully; its
+  integrity report covers 2,323 HTML pages with zero broken, escaping, or
+  unsafe links and byte-identical explicit/defined explorer trees. The
+  385-record knowledge catalog, 149-source browser manifest, historical corpus
+  release, and 475-note/4,825-link vault all verify. This is an integration
+  seal, not a quadratic-reciprocity admission: the 136-gate WMI QR campaign
+  still has no complete passing receipt.
+- **Model-v3 prelaunch durability and chain binding (2026-07-30):** the
+  one-shot trainer preserves adapter/tokenizer tensors before its explicit
+  full evaluation, while withholding the final manifest until evaluation and
+  all immutable-input checks pass. Scheduled benchmark evaluation must match
+  the manifest producer job, exported training predecessor, and submission-ledger
+  predecessor before model load; its report records that relation for the
+  independent replay gate. Interactive proof requests bind the completed
+  manifest under a separate non-dependency status.
+- **Model-v3 seal bootstrap closure (2026-07-31):** first publication used an
+  exact two-source staged program with no package marker or bytecode cache. A
+  submission-embedded launcher stable-reads, hashes, compiles, and executes
+  identical CLI bytes under isolated Python; the CLI independently verifies
+  and compiles the standard-library module. After historical preparation
+  `173040` completed, job `213641` exercised the repaired Ceph publication
+  profile and published the verified immutable seal; bootstrap staging is no
+  longer pending.
+- **Model-v3 completed-run authority (2026-07-30):** a usable v3 adapter now
+  requires more than a positive/equal `global_step`. One canonical evidence
+  object binds all schedule/result/Trainer-state step counts, the reviewed
+  one-CUDA-process BF16 runtime, actual save/eval/clipping arguments, every raw
+  and post-clip gradient boundary, all strict pre-clip norms, exact finite
+  Trainer history and metrics, initial/final raw-byte fingerprints for the
+  stable trainable tensor population, a nonempty adapter update, and the closed
+  adapter/tokenizer hashes. Trainer's permissive built-in clipping and terminal
+  checkpoints are disabled; a custom pre-optimizer max-norm-1 clip owns the
+  update boundary. Model-v3 loaders and the same-base control reject absent,
+  partial, stale, duplicate-key, non-finite, linked, or inconsistent manifests
+  before framework import. Scheduled training also binds a retained
+  no-replace recovery-publication probe on the exact output filesystem. The
+  At that 2026-07-30 prelaunch checkpoint the local macOS branch was tested,
+  while the WMI `/work` Linux branch and optimizer results were still pending
+  during the FortiClient disconnection. Later entries record their completion.
+- **Model-v3 saved-policy admission (2026-07-30):** completion now crosses the
+  serialization boundary. Three run-bound admitted train/validation probes
+  fingerprint terminal indexed losses/projected logits and the canonical PEFT
+  tensor population. After releasing the original Trainer/model, one fresh
+  local-only load must equal the actual safetensors and all probe outputs, and
+  disabling LoRA must change at least one probe. The admission joins base
+  commit/config, run identity, `cuda:0`, individual files, closed artifact
+  trees, and completion evidence. `bf16_full_eval` is false because the pinned
+  Transformers path would cast PEFT's FP32 weights; tensor fingerprints are
+  rechecked after save and evaluation. Final output, adapter/tokenizer trees,
+  run identity, and manifest are exclusive no-replace publications with a
+  rechecked output inode/device/mode. V3 artifact closure rejects link/special/
+  cross-device/hard-link nodes, descriptor or tree mutation, and any mode other
+  than 0555 directories plus 0444 files; v1/v2 retain their legacy mode rule.
+  At that 2026-07-30 checkpoint these were prelaunch safeguards: the WMI
+  preparation, real optimizer losses, adapter digest, and replay results were
+  still pending. Later entries record the completed run and narrow admission.
+- **Model-v3 launch-contract wiring closure (2026-07-30):** before any Torch,
+  PEFT, or Transformers import, prompt v3 is now accepted if and only if the
+  model-v3 curriculum is present. After semantic admission and the remaining
+  source/report checks, the trainer re-verifies the protected adapter and
+  tokenizer trees immediately before publishing the final manifest without
+  replacement. Direct generation and pretrained-base comparison verify those
+  trees both before and after heavy loading, while recovery requires exact
+  directory/file modes `0555`/`0444`. These modes detect provenance drift and
+  accidental corruption; they are not a hostile-same-owner security boundary.
+  The focused wiring audit passes 89 tests. No optimizer or trained-model
+  result follows from this prelaunch gate.

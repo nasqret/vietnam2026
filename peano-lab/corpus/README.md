@@ -1,23 +1,25 @@
 # Peano Lab proof-trace release v1
 
-This directory is the deterministic learning-data release whose provenance follows the checked
-theorem catalog. Its semantic families remain the M13 set, while the theorem ladder has grown
-into the final 247-theorem M20 source tree. It has its own fresh fingerprints rather than reusing
-either parent branch's hashes. The release contains
+This directory is the frozen deterministic learning-data release produced at the 247-theorem
+checkpoint. The live native library has since grown to 384 theorems, so these bytes and their
+32-file semantic-source fingerprint are historical training authority, not a claim about the
+current source tree. The producing source is preserved at commit
+`64893e13bd25bd9169f41f118a6483b426e1a962`; the release has its own fingerprints rather than
+silently inheriting the enlarged library. It contains
 **13,344** clean, deduplicated version-1 tactic transitions from **1,692** generated proof
 sessions:
 
 | Artifact | Role | Records | SHA-256 |
 |---|---|---:|---|
-| `train.jsonl` | learning split | 13,326 | `44794fa75477cc3f8a4271f19a79f632e02f5fbca1f243173c2ceca9ab8762ca` |
-| `val.jsonl` | exact-theorem-group validation split | 18 | `ddf0b14e44f89afff34775f5002ae79c6867ec6438e5024430534430dd471f68` |
-| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `538a437ab23e9305bf3f822cf3433947929e415ef0df73241cc129462918d221` |
-| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `327f734431e4b5c74c2d59b8df438aeba20a5622dc3a37cc9311a8101967a0d8` |
+| `train.jsonl` | learning split | 13,326 | `4e0053e1da89a32043cdfad98e6e6924ce19a6748a914c55095308f48dd2ad54` |
+| `val.jsonl` | exact-theorem-group validation split | 18 | `abe0aa84de861aae9a72a173fd1114cf0a99114a8f4f9a6d6019fb3433d94e69` |
+| `stats.json` | split, deduplication, outcome, and tactic statistics | — | `68affad0cd91e0ad4fadda28901b083b6e45f4694791aa1d24b42a82183c04ca` |
+| `generation-manifest.json` | configuration, source fingerprints, and per-session provenance | — | `a89a2d2bdbe6362c17ece6b886ab5eba1dbd7af2b04ddd32d86d2fcccdde3d95` |
 
 The deterministic run fingerprint is
-`5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`.
+`6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`.
 The complete 32-file semantic source-tree fingerprint is
-`eee28177d1fce902330fabb721a22fef8b3cfa69963c8e12c92fd1d6ace10b5d`.
+`55a6e70ce5a3ffe855866beb04b7441a85c58d6ac7c7bb9de727d1fefe14d250`.
 
 The source stream contained 11,652 successful and 1,692 deliberately failing, transactional
 applications, for a labeled failure ratio of `0.12679856115107913`. Every one of the 1,692 sessions
@@ -44,13 +46,15 @@ separately kernel-judged held-out ladder families.
 
 ## Reproduce
 
-From the repository root, using the exact checked-out generator and kernel:
+From a checkout of the producing commit named above, using CPython 3.10.0:
 
 ```console
 make peano-corpus
 ```
 
-The reproducible release uses generator v2 and CPython 3.10.0, recorded in the manifest;
+Do not expect the current 384-theorem branch to reproduce the same run fingerprint: its semantic
+source tree is intentionally different. The frozen release uses generator v2 and CPython 3.10.0,
+recorded in the manifest;
 transition and manifest schemas remain v1. The Make target checks this and accepts
 `PEANO_CORPUS_PYTHON=/path/to/python3.10`
 when that interpreter is not the ambient `python3`.
@@ -59,7 +63,7 @@ That target first writes the replayable raw session stream to
 `/tmp/peano-lab-release-raw.jsonl`, then strictly validates, globally deduplicates, and exports it.
 The raw intermediate is not committed because it duplicates the split payload, but the manifest
 records its exact UTF-8 size (6,215,711 bytes) and SHA-256
-`fc696f3d94136a8c414c54d411e4f8a6c94f7e0ac78785cddb7798005525749d`.
+`c88a05343d27ded77ba871bd3552ddd099817ef78e6fbfa2a959b8a2e2aea306`.
 It also fingerprints `scripts/generate_peano_traces.py`, the trusted checker, and the complete
 Peano Lab Python source tree. Because the Python runtime participates in the run fingerprint and
 session IDs, changing that runtime changes the raw byte hash even when every session-agnostic
@@ -72,7 +76,7 @@ every entry in the resolved ladder without contaminating the release, run:
 make peano-corpus-smoke
 ```
 
-The current 247-entry smoke has 494 sessions, 9,235 raw transitions, 9,232
+The historical 247-entry smoke has 494 sessions, 9,235 raw transitions, 9,232
 unique transitions, and all 247 authored-script kernel QEDs. Its deterministic run fingerprint
 is `72657457dfa567d0748d5275a227e5316271bd19350012a44e6e4802851e59ef`;
 the 97,730,404-byte raw stream hashes to

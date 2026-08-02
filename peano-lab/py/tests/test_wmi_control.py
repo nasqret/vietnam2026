@@ -17,6 +17,7 @@ except ModuleNotFoundError:  # Python 3.10 test host
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 PROBE = REPO_ROOT / "slurm" / "peano_wmi_a100_probe.sbatch"
+CORPUS_SEAL_JOB = REPO_ROOT / "slurm" / "peano_wmi_seal_v3_corpus.sbatch"
 SCRIPTS = REPO_ROOT / "scripts"
 SLURM = REPO_ROOT / "slurm"
 TRAINING = REPO_ROOT / "training" / "peano_policy"
@@ -32,6 +33,15 @@ WMI_SHELL_FILES = (
     SLURM / "peano_wmi_prepare_training.sbatch",
     SLURM / "peano_wmi_train_qwen3_1_7b.sbatch",
     SLURM / "peano_wmi_eval_qwen3_1_7b.sbatch",
+    SLURM / "peano_wmi_prepare_v2_training.sbatch",
+    SLURM / "peano_wmi_train_qwen3_1_7b_v2.sbatch",
+    SLURM / "peano_wmi_eval_qwen3_1_7b_v2.sbatch",
+    SLURM / "peano_wmi_prepare_v3_training.sbatch",
+    CORPUS_SEAL_JOB,
+    SLURM / "peano_wmi_prepare_v3_sealed_training.sbatch",
+    SLURM / "peano_wmi_train_qwen3_1_7b_v3.sbatch",
+    SLURM / "peano_wmi_eval_qwen3_1_7b_v3.sbatch",
+    SLURM / "peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch",
     SLURM / "peano_wmi_prove_theorem.sbatch",
 )
 
@@ -92,11 +102,15 @@ def test_wmi_sync_and_submission_controls_fix_scope_and_preserve_outputs() -> No
     for protected in (
         "/.venv-wmi/***",
         "/.cache/huggingface/***",
+        "/data/peano-policy-v3/***",
         "/checkpoints/***",
         "/results/***",
         "/logs/***",
     ):
         assert f"protect {protected}" in sync
+    data_filter = "/data/peano-policy-v3/***"
+    assert sync.count(f"--filter='protect {data_filter}'") == 1
+    assert sync.count(f"--exclude='{data_filter}'") == 1
     assert "--delete-delay" in sync
     assert "git_dirty" in remote_submit
     assert "[ \"$git_dirty\" != false ]" in remote_submit
@@ -105,7 +119,7 @@ def test_wmi_sync_and_submission_controls_fix_scope_and_preserve_outputs() -> No
         "sync -f \"$manifest\""
     ) < remote_submit.index("scontrol release \"$held_job\"")
     assert "scancel \"$held_job\"" in remote_submit
-    assert "WMI dependency is absent or belongs to a different chain" in remote_submit
+    assert "WMI predecessor is absent or belongs to a different chain" in remote_submit
     assert not any(line.lstrip().startswith("eval ") for line in combined.splitlines())
 
 
@@ -139,6 +153,15 @@ def test_wmi_submission_and_jobs_share_source_lock_and_queue_gate() -> None:
         "peano-wmi-prepare",
         "peano-wmi-qwen17",
         "peano-wmi-qwen17-eval",
+        "peano-wmi-v2-prepare",
+        "peano-wmi-qwen17-v2",
+        "peano-wmi-qwen17-v2-eval",
+        "peano-wmi-v3-prepare",
+        "peano-wmi-v3-seal",
+        "peano-wmi-v3-sealprep",
+        "peano-wmi-qwen17-v3",
+        "peano-wmi-qwen17-v3-eval",
+        "peano-wmi-qwen17-v3-base",
         "peano-wmi-prove",
         "peano-wmi-probe",
     ):
@@ -151,6 +174,15 @@ def test_wmi_submission_and_jobs_share_source_lock_and_queue_gate() -> None:
         SLURM / "peano_wmi_prepare_training.sbatch",
         SLURM / "peano_wmi_train_qwen3_1_7b.sbatch",
         SLURM / "peano_wmi_eval_qwen3_1_7b.sbatch",
+        SLURM / "peano_wmi_prepare_v2_training.sbatch",
+        SLURM / "peano_wmi_train_qwen3_1_7b_v2.sbatch",
+        SLURM / "peano_wmi_eval_qwen3_1_7b_v2.sbatch",
+        SLURM / "peano_wmi_prepare_v3_training.sbatch",
+        CORPUS_SEAL_JOB,
+        SLURM / "peano_wmi_prepare_v3_sealed_training.sbatch",
+        SLURM / "peano_wmi_train_qwen3_1_7b_v3.sbatch",
+        SLURM / "peano_wmi_eval_qwen3_1_7b_v3.sbatch",
+        SLURM / "peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch",
         SLURM / "peano_wmi_prove_theorem.sbatch",
     ):
         source = path.read_text(encoding="utf-8")
@@ -242,6 +274,136 @@ def test_wmi_predecessor_parser_preserves_empty_dependency_column(
     assert "absent or duplicated" in rejected.stderr
 
 
+def _run_wmi_common(*arguments: str) -> subprocess.CompletedProcess[str]:
+    command = "source \"$1\"; shift; \"$@\""
+    return subprocess.run(
+        [
+            "bash",
+            "-c",
+            command,
+            "bash",
+            str(SCRIPTS / "wmi_common.sh"),
+            *arguments,
+        ],
+        capture_output=True,
+        text=True,
+    )
+
+
+def test_wmi_completed_predecessor_omits_only_the_scheduler_edge() -> None:
+    parsed = _run_wmi_common(
+        "peano_wmi_parse_predecessor_accounting",
+        "217768",
+        "217768|COMPLETED|0:0|0:0",
+    )
+    assert parsed.returncode == 0
+    assert parsed.stdout == "COMPLETED|0:0|0:0\n"
+
+    completed = _run_wmi_common(
+        "peano_wmi_scheduler_dependency_argument",
+        "completed",
+        "COMPLETED",
+        "0:0",
+        "0:0",
+        "217768",
+    )
+    assert completed.returncode == 0
+    assert completed.stdout == ""
+
+    for state in ("PENDING", "CONFIGURING", "RUNNING", "COMPLETING"):
+        live = _run_wmi_common(
+            "peano_wmi_scheduler_dependency_argument",
+            "afterok",
+            state,
+            "0:0",
+            "0:0",
+            "217768",
+        )
+        assert live.returncode == 0
+        assert live.stdout == "--dependency=afterok:217768\n"
+
+
+def test_wmi_predecessor_accounting_and_modes_fail_closed() -> None:
+    malformed_records = (
+        "",
+        "217769|COMPLETED|0:0|0:0",
+        "217768|COMPLETED|0:0|0:0\n217768|COMPLETED|0:0|0:0",
+        "217768.batch|COMPLETED|0:0|0:0",
+        "217768|COMPLETED+|0:0|0:0",
+        "217768|COMPLETED|0:0|0:0|extra",
+    )
+    for record in malformed_records:
+        result = _run_wmi_common(
+            "peano_wmi_parse_predecessor_accounting", "217768", record
+        )
+        assert result.returncode != 0, record
+
+    rejected_states = (
+        ("completed", "FAILED", "0:0", "0:0"),
+        ("completed", "RUNNING", "0:0", "0:0"),
+        ("completed", "COMPLETED", "1:0", "0:0"),
+        ("completed", "COMPLETED", "0:0", "1:0"),
+        ("afterok", "COMPLETED", "0:0", "0:0"),
+        ("afterok", "CANCELLED", "0:0", "0:0"),
+    )
+    for mode, state, exit_code, derived_exit_code in rejected_states:
+        result = _run_wmi_common(
+            "peano_wmi_scheduler_dependency_argument",
+            mode,
+            state,
+            exit_code,
+            derived_exit_code,
+            "217768",
+        )
+        assert result.returncode != 0, (mode, state, exit_code, derived_exit_code)
+
+    train_completed = _run_wmi_common(
+        "peano_wmi_validate_predecessor_mode",
+        "slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch",
+        "completed",
+    )
+    train_live = _run_wmi_common(
+        "peano_wmi_validate_predecessor_mode",
+        "slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch",
+        "afterok",
+    )
+    eval_live = _run_wmi_common(
+        "peano_wmi_validate_predecessor_mode",
+        "slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch",
+        "afterok",
+    )
+    eval_completed = _run_wmi_common(
+        "peano_wmi_validate_predecessor_mode",
+        "slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch",
+        "completed",
+    )
+    assert train_completed.returncode == 0
+    assert train_live.returncode != 0
+    assert eval_live.returncode == 0
+    assert eval_completed.returncode == 0
+
+
+def test_wmi_completed_predecessor_keeps_provenance_binding() -> None:
+    submit = (SCRIPTS / "submit_wmi_slurm_job.sh").read_text(encoding="utf-8")
+    verifier = 'python3 scripts/verify_wmi_submission_predecessor.py'
+    accounting_gate = (
+        '  verify_predecessor_accounting\n  if [ "$job_script" = '
+        "slurm/peano_wmi_train_qwen3_1_7b.sbatch ]"
+    )
+    report_verifier = '"$verifier_python" scripts/verify_wmi_v3_sealed_preparation.py'
+    final_recheck = "# Re-read accounting immediately before submission."
+    held_submit = 'sbatch --hold --parsable'
+    assert submit.index(verifier) < submit.index(accounting_gate) < submit.index(
+        report_verifier
+    ) < submit.index(final_recheck) < submit.index(held_submit)
+    assert 'sacct -n -X -j "$predecessor_job_id"' in submit
+    assert "--format=JobIDRaw,State,ExitCode,DerivedExitCode -P" in submit
+    assert submit.count("verify_predecessor_accounting") == 4
+    assert "--export=ALL,PEANO_PREPARE_JOB_ID=$predecessor_job_id" in submit
+    assert '"$job_script" "$predecessor_job_id" "$PEANO_WMI_PROJECT_ROOT"' in submit
+    assert 'sbatch_args+=("--dependency=afterok:$predecessor_job_id")' not in submit
+
+
 def test_wmi_jobs_request_typed_a100_and_keep_training_offline() -> None:
     prepare = (SLURM / "peano_wmi_prepare_training.sbatch").read_text(encoding="utf-8")
     train = (SLURM / "peano_wmi_train_qwen3_1_7b.sbatch").read_text(encoding="utf-8")
@@ -269,10 +431,219 @@ def test_wmi_jobs_request_typed_a100_and_keep_training_offline() -> None:
     assert "peano_policy_proof_request.py run" in prove
 
 
+def test_wmi_heavy_v2_chain_is_allowlisted_attested_and_one_shot() -> None:
+    common = (SCRIPTS / "wmi_common.sh").read_text(encoding="utf-8")
+    submit = (SCRIPTS / "submit_wmi_slurm_job.sh").read_text(encoding="utf-8")
+    prepare = (SLURM / "peano_wmi_prepare_v2_training.sbatch").read_text(
+        encoding="utf-8"
+    )
+    train = (SLURM / "peano_wmi_train_qwen3_1_7b_v2.sbatch").read_text(
+        encoding="utf-8"
+    )
+    evaluate = (SLURM / "peano_wmi_eval_qwen3_1_7b_v2.sbatch").read_text(
+        encoding="utf-8"
+    )
+    for source in (prepare, train, evaluate):
+        assert "#SBATCH --partition=gpu_csi" in source
+        assert "#SBATCH --gpus=nvidia_a100:1" in source
+        assert "#SBATCH --constraint=vram80g" in source
+        assert "wmi_job_environment.sh" in source
+    assert "PEANO_POLICY_ROWS=100000" in prepare
+    assert "PEANO_POLICY_DIR=data/peano-policy-v2" in prepare
+    assert "peano-policy-v2-data" in prepare
+    assert "training.peano_policy.token_audit" in prepare
+    assert "peano-policy-wmi-a100-v2-smoke" in prepare
+    assert "qwen3_1_7b_v2_heavy.toml" in train
+    assert "--resume-from-checkpoint NEVER" in train
+    assert "qwen3-1.7b-lora-v2-heavy" in evaluate
+    assert "--max-steps 32" in evaluate
+    for name in (
+        "slurm/peano_wmi_prepare_v2_training.sbatch",
+        "slurm/peano_wmi_train_qwen3_1_7b_v2.sbatch",
+        "slurm/peano_wmi_eval_qwen3_1_7b_v2.sbatch",
+    ):
+        assert name in common
+    assert "peano-wmi-v2-prepare" in submit
+    assert "peano-wmi-qwen17-v2" in submit
+    assert "peano-wmi-qwen17-v2-eval" in submit
+
+
+def test_wmi_v3_chain_prepares_trains_and_evaluates_on_a100() -> None:
+    common = (SCRIPTS / "wmi_common.sh").read_text(encoding="utf-8")
+    submit = (SCRIPTS / "submit_wmi_slurm_job.sh").read_text(encoding="utf-8")
+    historical_prepare = (SLURM / "peano_wmi_prepare_v3_training.sbatch").read_text(
+        encoding="utf-8"
+    )
+    prepare = (SLURM / "peano_wmi_prepare_v3_sealed_training.sbatch").read_text(
+        encoding="utf-8"
+    )
+    train = (SLURM / "peano_wmi_train_qwen3_1_7b_v3.sbatch").read_text(
+        encoding="utf-8"
+    )
+    evaluate = (SLURM / "peano_wmi_eval_qwen3_1_7b_v3.sbatch").read_text(
+        encoding="utf-8"
+    )
+    baseline = (
+        SLURM / "peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch"
+    ).read_text(encoding="utf-8")
+
+    # The continuation consumes the exact already-built output of 172729. It
+    # closes that tree and never invokes any first-pass producer again.
+    for forbidden in (
+        "generate_peano_library_policy_corpus.py",
+        "generate_peano_v3_balanced_corpus.py",
+        "combine_peano_v3_corpus_metadata.py",
+        "build_peano_policy_dataset.py",
+    ):
+        assert forbidden not in historical_prepare
+    assert (
+        "expected_manifest_sha256="
+        "ccb62c771d1f7dab1e90e98da42c6c8acee40f47b5527c4f65611f718661d983"
+        in historical_prepare
+    )
+    expected_files_match = re.search(
+        r"expected_files=\(\n(?P<body>.*?)\n\)",
+        historical_prepare,
+        flags=re.DOTALL,
+    )
+    assert expected_files_match is not None
+    expected_files = tuple(
+        line.strip()
+        for line in expected_files_match.group("body").splitlines()
+        if line.strip()
+    )
+    assert expected_files == (
+        "balanced-raw-traces.jsonl",
+        "balanced-session-metadata.jsonl",
+        "balanced-source-manifest.json",
+        "combined-metadata-manifest.json",
+        "library-raw-traces.jsonl",
+        "library-session-metadata.jsonl",
+        "library-source-manifest.json",
+        "manifest.json",
+        "session-metadata.jsonl",
+        "test.jsonl",
+        "train.jsonl",
+        "val.jsonl",
+    )
+    for required in (
+        "find \"$data_dir\" -mindepth 1 -maxdepth 1",
+        '"${#observed_files[@]}" -ne "${#expected_files[@]}"',
+        'test -f "$data_dir/$expected"',
+        'test ! -L "$data_dir/$expected"',
+        'sha256sum "$data_dir/manifest.json"',
+        "never regenerates or rewrites corpus data",
+    ):
+        assert required in historical_prepare
+    assert 'mkdir -p "$data_dir"' not in historical_prepare
+    assert '--output "$data_dir' not in historical_prepare
+    assert 'rm -rf -- "$data_dir"' not in historical_prepare
+    attestation = '"$wmi_python" -m training.peano_policy.attest'
+    token_audit = '"$wmi_python" -m training.peano_policy.token_audit'
+    smoke = '"$wmi_python" -m training.peano_policy.smoke'
+    assert historical_prepare.index(attestation) < historical_prepare.index(
+        token_audit
+    ) < historical_prepare.index(smoke)
+    for report in (
+        'peano-wmi-v3-dataset-attestation-${SLURM_JOB_ID:?}.json',
+        'peano-wmi-v3-token-audit-${SLURM_JOB_ID}.json',
+        'peano-wmi-v3-prepare-runtime-${SLURM_JOB_ID}.json',
+    ):
+        assert report in historical_prepare
+
+    # New source revisions verify and reuse the immutable seal.  They do not
+    # regenerate the corpus or repeat its multi-hour independent proof replay.
+    assert "#SBATCH --partition=gpu_csi" in prepare
+    assert "#SBATCH --gpus=nvidia_a100:1" in prepare
+    assert "#SBATCH --constraint=vram80g" in prepare
+    assert "#SBATCH --time=08:00:00" in prepare
+    assert "#SBATCH --job-name=peano-wmi-v3-sealprep" in prepare
+    assert "nvidia-smi" in prepare
+    assert "verify_peano_v3_corpus_eligibility.py" in prepare
+    assert "training.peano_policy.token_audit" in prepare
+    assert "training.peano_policy.smoke" in prepare
+    assert "peano-policy-wmi-a100-v3-smoke" in prepare
+    assert "verify_wmi_v3_sealed_preparation.py" in prepare
+    assert "generate_peano_v3_balanced_corpus.py" not in prepare
+    assert "generate_peano_library_policy_corpus.py" not in prepare
+    assert "build_peano_policy_dataset.py" not in prepare
+    assert "training.peano_policy.attest" not in prepare
+    assert "peano_wmi_assert_runtime" in prepare
+    assert "HF_HUB_OFFLINE=1" in prepare
+    assert "TRANSFORMERS_OFFLINE=1" in prepare
+
+    for source in (train, evaluate, baseline):
+        assert "#SBATCH --partition=gpu_csi" in source
+        assert "#SBATCH --gpus=nvidia_a100:1" in source
+        assert "#SBATCH --constraint=vram80g" in source
+        assert "peano_wmi_assert_runtime" in source
+        assert "HF_HUB_OFFLINE=1" in source
+        assert "TRANSFORMERS_OFFLINE=1" in source
+    for source in (prepare, train, evaluate, baseline):
+        assert "export PYTHONHASHSEED=20260729" in source
+    assert "qwen3_1_7b_v3_library.toml" in train
+    assert "#SBATCH --time=36:00:00" in train
+    assert "verify_wmi_v3_sealed_preparation.py" in train
+    assert "peano-wmi-v3-sealed-eligibility-" in train
+    assert "--preparation-eligibility-report" in train
+    assert "--preparation-token-audit-report" in train
+    assert "--preparation-runtime-smoke-report" in train
+    assert "--prepare-job-id" in train
+    assert "--resume-from-checkpoint NEVER" in train
+    assert "qwen3-1.7b-lora-v3-library" in evaluate
+    assert "#SBATCH --time=12:00:00" in evaluate
+    assert "--mode search" in evaluate
+    assert "--max-new-tokens 256" in evaluate
+    assert "4,194,304" in evaluate
+    assert "independent kernel checker" in evaluate
+    assert "scripts/eval_pretrained_peano_policy.py" in baseline
+    assert "pretrained-base-heldout-search-wmi-b16-c8-d32.json" in baseline
+    assert "adapter_attached" not in baseline
+    assert "--mode" not in baseline
+    assert "--goal" not in baseline
+
+    for name in (
+        "slurm/peano_wmi_prepare_v3_sealed_training.sbatch",
+        "slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch",
+        "slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch",
+        "slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch",
+    ):
+        assert name in common
+    assert "slurm/peano_wmi_prepare_v3_training.sbatch" not in common
+    for name in (
+        "peano-wmi-v3-prepare",
+        "peano-wmi-v3-sealprep",
+        "peano-wmi-qwen17-v3",
+        "peano-wmi-qwen17-v3-eval",
+        "peano-wmi-qwen17-v3-base",
+    ):
+        assert name in submit
+        assert name in (SCRIPTS / "wmi_sync_project.sh").read_text(
+            encoding="utf-8"
+        )
+    assert "verify_wmi_v3_sealed_preparation.py" in submit
+    assert "peano-wmi-v3-sealed-eligibility-" in submit
+    assert 'environment_pointer=.venv-wmi/current' in submit
+    assert 'verifier_python=".venv-wmi/releases/$environment_id/bin/python"' in submit
+    assert (
+        "printf '%s\\n' slurm/peano_wmi_prepare_v3_sealed_training.sbatch"
+        in common
+    )
+    baseline_case = common.split(
+        "slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch)", 1
+    )[1]
+    assert (
+        "printf '%s\\n' slurm/peano_wmi_train_qwen3_1_7b_v3.sbatch"
+        in baseline_case
+    )
+    assert "PEANO_TRAIN_JOB_ID=$predecessor_job_id" in submit
+
+
 def test_wmi_proof_request_is_file_backed_allowlisted_and_ledgered() -> None:
     common = (SCRIPTS / "wmi_common.sh").read_text(encoding="utf-8")
     local = (SCRIPTS / "wmi_prove_theorem.sh").read_text(encoding="utf-8")
     submit = (SCRIPTS / "submit_wmi_slurm_job.sh").read_text(encoding="utf-8")
+    job = (SLURM / "peano_wmi_prove_theorem.sbatch").read_text(encoding="utf-8")
     assert "slurm/peano_wmi_prove_theorem.sbatch" in common
     assert "peano_wmi_validate_request_id" in common
     assert "peano_policy_proof_request.py receive" in local
@@ -281,6 +652,13 @@ def test_wmi_proof_request_is_file_backed_allowlisted_and_ledgered() -> None:
     assert 'proof_manifest=logs/proof-requests.tsv' in submit
     assert 'request_path="results/peano-policy/requests/$request_id.json"' in submit
     assert "peano_policy_proof_request.py verify" in submit
+    assert "max_new_tokens=96" in local
+    assert "max_steps=32" in local
+    assert "search_beam_width=4" in local
+    assert "search_candidates_per_state=4" in local
+    assert "search_max_model_calls=128" in local
+    assert "search_max_states=2048" in local
+    assert "qwen3-1.7b-lora-v3-library" in job
     assert submit.index("sbatch --hold --parsable") < submit.index(
         '"$request_id" "$request_sha256" >> "$proof_manifest"'
     ) < submit.index("scontrol release \"$held_job\"")
@@ -557,9 +935,27 @@ def test_wmi_local_submission_behavioral_harness(tmp_path: Path) -> None:
     environment.pop("WMI_SSH_TARGET", None)
     completed = subprocess.run(
         ["bash", str(harness), str(REPO_ROOT), str(tmp_path)],
-        check=True,
+        check=False,
         capture_output=True,
         text=True,
         env=environment,
     )
+    assert completed.returncode == 0, (completed.stdout, completed.stderr)
     assert completed.stdout == "WMI local control harness: OK\n"
+
+
+def test_wmi_remote_submission_behavioral_harness(tmp_path: Path) -> None:
+    harness = Path(__file__).with_name("wmi_remote_submission_harness.sh")
+    environment = os.environ.copy()
+    for name in tuple(environment):
+        if name.startswith("WMI_REMOTE_TEST_"):
+            environment.pop(name)
+    completed = subprocess.run(
+        ["bash", str(harness), str(REPO_ROOT), str(tmp_path)],
+        check=False,
+        capture_output=True,
+        text=True,
+        env=environment,
+    )
+    assert completed.returncode == 0, (completed.stdout, completed.stderr)
+    assert completed.stdout == "WMI remote submission harness: OK\n"

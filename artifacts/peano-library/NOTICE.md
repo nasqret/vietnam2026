@@ -1,4 +1,18 @@
-# Public modular-arithmetic catalog provenance
+# Public theorem-catalog provenance
+
+## General-arithmetic extension
+
+The 14 entries from `eq_symm` through `prime_two` originate at commit
+`bb90b0b89ac5b408049bcc5370c0d2a1411e24e1`. Their compatibility audit and
+reviewed merge are identified by
+`90bd8dcd99b2765c8175df1ecdf60dc7f400d1d7`. The normalized audit added
+exactly those 14 entries to the existing 49, preserved all earlier entries in
+the same relative order, and found no change in any earlier certificate hash,
+node count, or depth. These revisions establish source provenance only: the
+current snapshot still replays every script and checks every closed
+certificate independently.
+
+## Modular-arithmetic extension
 
 The 26 theorem specifications published in Peano Lab as `MOD5_THEOREMS` were
 imported from `nasqret/peano-private-mathlib` at commit

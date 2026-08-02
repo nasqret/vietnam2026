@@ -69,8 +69,13 @@ fi
 active="$(
   printf '%s\n' "$queue" | awk -F'|' \
     '$2 == "peano-wmi-prepare" || $2 == "peano-wmi-qwen17" || \
-     $2 == "peano-wmi-qwen17-eval" || $2 == "peano-wmi-prove" || \
-     $2 == "peano-wmi-probe"'
+     $2 == "peano-wmi-qwen17-eval" || $2 == "peano-wmi-v2-prepare" || \
+     $2 == "peano-wmi-qwen17-v2" || $2 == "peano-wmi-qwen17-v2-eval" || \
+     $2 == "peano-wmi-v3-prepare" || $2 == "peano-wmi-qwen17-v3" || \
+     $2 == "peano-wmi-qwen17-v3-eval" || $2 == "peano-wmi-v3-seal" || \
+     $2 == "peano-wmi-v3-sealprep" || \
+     $2 == "peano-wmi-qwen17-v3-base" || \
+     $2 == "peano-wmi-prove" || $2 == "peano-wmi-probe"'
 )"
 if [ -n "$active" ]; then
   printf '%s\n' 'refusing WMI sync while a Peano job is queued:' >&2
@@ -118,6 +123,8 @@ rsync -a --delete-delay \
   --exclude='/.venv-wmi/***' \
   --filter='protect /.cache/huggingface/***' \
   --exclude='/.cache/huggingface/***' \
+  --filter='protect /data/peano-policy-v3/***' \
+  --exclude='/data/peano-policy-v3/***' \
   --filter='protect /checkpoints/***' \
   --exclude='/checkpoints/***' \
   --filter='protect /results/***' \

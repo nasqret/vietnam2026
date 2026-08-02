@@ -12,15 +12,17 @@ override PEANONEXT := ~/public_html/peano-lab-next
 STAGE     := _deploy/vietnam2026
 STAGENEXT := _deploy/lab-lambda-next
 PEANO_CORPUS_PYTHON ?= python3
-PEANO_POLICY_DIR ?= data/peano-policy-v1
+PEANO_POLICY_DIR ?= data/peano-policy-v2
 PEANO_POLICY_PILOT_DIR ?= data/peano-policy-pilot-v1
 PEANO_POLICY_ROWS ?= 10000
+PEANO_TRAIN_JOB ?= 217859
+PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 # This path is a deletion target in `stage-peano`; command-line assignments
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
-override PEANOAPPID := a-279f7fd6f2b9
+override PEANOAPPID := a-cd3e54b68949
 
-.PHONY: help book book-atlas book-proof-explorer lean lean-fta lab-serve peano-serve peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
+.PHONY: help book book-atlas book-proof-explorer lean lean-fta lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
 	deploy clean
 
@@ -33,10 +35,12 @@ help:
 	@echo "  make lean-fta     build & exact-axiom-check the Lean FTA companion"
 	@echo "  make lab-serve    serve lab-lambda locally on :8001"
 	@echo "  make peano-serve serve the staged Peano Lab locally on :8002"
+	@echo "  make peano-training-dashboard  observe WMI job $(PEANO_TRAIN_JOB) on :$(PEANO_TRAIN_DASHBOARD_PORT)"
 	@echo "  make peano-corpus reproduce the leakage-safe Peano train/val release"
 	@echo "  make peano-corpus-smoke  run the all-ladder M9 generation/export smoke"
 	@echo "  make peano-policy-pilot  build the checked M19 pilot policy dataset"
-	@echo "  make peano-policy-data   build+attest $(PEANO_POLICY_ROWS) proof-first policy rows"
+	@echo "  make peano-policy-v2-data  build+attest $(PEANO_POLICY_ROWS) model-v2 policy rows"
+	@echo "  make peano-policy-data   compatibility alias for peano-policy-v2-data"
 	@echo "  make peano-eval   run the deterministic kernel-judged random baseline"
 	@echo "  make stage        assemble _deploy/vietnam2026 (landing + book + slides)"
 	@echo "  make deploy-site  rsync the site to $(SITE)"
@@ -77,6 +81,9 @@ peano-serve: stage-peano
 	@echo "→ http://localhost:8002/  (Ctrl-C to stop)"
 	cd "$(STAGEPEANO)" && python3 -m http.server 8002
 
+peano-training-dashboard:
+	python3 scripts/serve_wmi_training_dashboard.py --job-id "$(PEANO_TRAIN_JOB)" --port "$(PEANO_TRAIN_DASHBOARD_PORT)"
+
 # The committed learning release deliberately omits every ladder session.  Raw
 # session JSONL remains a reproducible intermediate in /tmp; the manifest keeps
 # its exact byte hash and the released transitions live under peano-lab/corpus/.
@@ -115,9 +122,12 @@ peano-policy-pilot:
 		--metadata "$(PEANO_POLICY_PILOT_DIR)/session-metadata.jsonl" \
 		--output-dir "$(PEANO_POLICY_PILOT_DIR)"
 
-peano-policy-data:
+peano-policy-data: peano-policy-v2-data
+
+peano-policy-v2-data:
 	mkdir -p "$(PEANO_POLICY_DIR)"
 	$(PEANO_CORPUS_PYTHON) scripts/generate_peano_synthetic_corpus.py \
+		--profile model-v2 \
 		--trace-output "$(PEANO_POLICY_DIR)/raw-traces.jsonl" \
 		--metadata-output "$(PEANO_POLICY_DIR)/session-metadata.jsonl" \
 		--manifest "$(PEANO_POLICY_DIR)/source-manifest.json" \

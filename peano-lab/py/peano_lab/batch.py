@@ -51,6 +51,10 @@ BATCH_VERSION = 1
 MAX_BATCH_TACTICS = 1_024
 MAX_BATCH_TEXT = 500_000
 MAX_BATCH_TRACE_BYTES = 16_000_000
+# Host-owned corpus runners may select a larger reviewed per-session budget.
+# This is not part of the JSON request schema, and the JSONL transport still
+# applies its separate aggregate ceiling across the whole transaction.
+MAX_REVIEWED_BATCH_TRACE_BYTES = 128 * 1024 * 1024
 FULL_BATCH_COMMANDS = SURFACE_COMMAND_NAMES - {"undo"}
 MODEL_V1_COMMANDS = frozenset(
     (set(TACTIC_NAMES) - {"undo"}) | {"compact_arith", "ring", "use"}
@@ -575,6 +579,7 @@ def _execute_proof(
     capabilities: SurfaceCapabilities = FULL_SURFACE_CAPABILITIES,
     trace_sink: TextIO | Callable[[str], object] | None = None,
     session_id: str | None = None,
+    trace_byte_limit: int | None = None,
 ) -> BatchResult:
     """Shared implementation for traced generation and quiet verification.
 
@@ -615,6 +620,21 @@ def _execute_proof(
         raise BatchRequestError("trace must be a Boolean")
     if type(capabilities) is not SurfaceCapabilities:
         raise BatchRequestError("capabilities must be a SurfaceCapabilities value")
+    if trace_byte_limit is not None:
+        if not emit_trace:
+            raise BatchRequestError(
+                "trace_byte_limit is only valid for traced execution"
+            )
+        if (
+            type(trace_byte_limit) is not int
+            or not 1 <= trace_byte_limit <= MAX_REVIEWED_BATCH_TRACE_BYTES
+        ):
+            raise BatchRequestError(
+                "trace_byte_limit must be a positive integer no greater than "
+                f"{MAX_REVIEWED_BATCH_TRACE_BYTES}"
+            )
+    elif emit_trace:
+        trace_byte_limit = MAX_BATCH_TRACE_BYTES
     environment_sha256 = capability_sha256(capabilities)
     if not emit_trace and trace_sink is not None:
         raise BatchRequestError("verification-only execution cannot receive a trace sink")
@@ -648,7 +668,7 @@ def _execute_proof(
     trace = TraceLogger(
         checked_sink,
         session_id=session_id,
-        max_bytes=MAX_BATCH_TRACE_BYTES if emit_trace else None,
+        max_bytes=trace_byte_limit if emit_trace else None,
     )
     owner = ProofSession(
         state=start(target, names),
@@ -916,8 +936,14 @@ def run_proof(
     capabilities: SurfaceCapabilities = FULL_SURFACE_CAPABILITIES,
     trace_sink: TextIO | Callable[[str], object] | None = None,
     session_id: str | None = None,
+    trace_byte_limit: int | None = None,
 ) -> BatchResult:
-    """Run one corpus/search proof with binding always-on v1 tracing."""
+    """Run one corpus/search proof with binding always-on v1 tracing.
+
+    Ordinary callers receive the fixed 16 MB session ceiling.  A reviewed
+    host-owned runner may pass ``trace_byte_limit`` explicitly, up to
+    ``MAX_REVIEWED_BATCH_TRACE_BYTES``.  Request JSON cannot set this value.
+    """
 
     return _execute_proof(
         theorem,
@@ -929,6 +955,7 @@ def run_proof(
         capabilities=capabilities,
         trace_sink=trace_sink,
         session_id=session_id,
+        trace_byte_limit=trace_byte_limit,
     )
 
 
@@ -1049,6 +1076,7 @@ __all__ = [
     "MAX_BATCH_TACTICS",
     "MAX_BATCH_TEXT",
     "MAX_BATCH_TRACE_BYTES",
+    "MAX_REVIEWED_BATCH_TRACE_BYTES",
     "FULL_BATCH_COMMANDS",
     "MODEL_V1_COMMANDS",
     "MODEL_V1_THEOREMS",

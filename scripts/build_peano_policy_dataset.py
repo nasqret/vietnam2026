@@ -42,7 +42,7 @@ from pathlib import Path
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS_ROOT = Path(__file__).resolve().parent
 PEANO_PYTHON = REPOSITORY_ROOT / "peano-lab" / "py"
-for import_root in (SCRIPTS_ROOT, PEANO_PYTHON):
+for import_root in (REPOSITORY_ROOT, SCRIPTS_ROOT, PEANO_PYTHON):
     if str(import_root) not in sys.path:
         sys.path.insert(0, str(import_root))
 
@@ -55,13 +55,39 @@ from export_traces import (  # noqa: E402
 from peano_lab.batch import (  # noqa: E402
     BatchRequestError,
     FULL_BATCH_COMMANDS,
+    MAX_REVIEWED_BATCH_TRACE_BYTES,
     capability_sha256,
     run_proof,
+)
+from peano_lab.engine.trace import TraceLimitError  # noqa: E402
+from peano_lab.kernel.formulas import (  # noqa: E402
+    Formula,
+    ParseError,
+    parse_formula_with_names,
+    pretty_formula,
 )
 from peano_lab.ui.prove import (  # noqa: E402
     SURFACE_THEOREM_NAMES,
     SurfaceCapabilities,
 )
+from training.peano_policy.contract import (  # noqa: E402
+    MODEL_V3_LIBRARY_SIZE,
+    canonical_held_out_formulas,
+    environment_record,
+    model_v3_prefix_environment,
+    prompt_environment,
+)
+from training.peano_policy.library_identity import (  # noqa: E402
+    MOD5_SOURCE_REPORT,
+    PUBLIC_LIBRARY_CATALOG,
+)
+from training.peano_policy.prompt import (  # noqa: E402
+    PEANO_PROMPT_V3,
+    CapabilityIdentity,
+    prompt_manifest_record,
+    render_prompt,
+)
+from peano_lab.library.theorems import THEOREMS  # noqa: E402
 
 
 DATASET_FORMAT = "peano-lab-next-tactic"
@@ -91,6 +117,22 @@ REQUIRED_TEXT_METADATA_FIELDS = (
     "environment_sha256",
 )
 CAPABILITY_FIELDS = ("label", "allowed_commands", "allowed_theorems")
+LIBRARY_IDENTITY_METADATA_FIELD = "library_identity_sha256"
+V3_LIBRARY_METADATA_FIELDS = (
+    "library_full_identity_sha256",
+    "library_prefix_length",
+    "library_size",
+)
+V3_CATALOG_TRAJECTORY = "catalog-predecessor-prefix-v1"
+V3_SYNTHETIC_LANE = "synthetic-root-balanced"
+V3_SYNTHETIC_VARIANT = "authored-v3-root-balanced"
+LEGACY_SPLIT_METHOD = "sha256-ranked-genealogy-formula-prompt-components-v2"
+V3_SPLIT_METHOD = "catalog-train-sha256-ranked-synthetic-components-v1"
+V3_SPLIT_LANES = (V3_CATALOG_TRAJECTORY, V3_SYNTHETIC_LANE)
+MODEL_V3_HELD_OUT_TARGETS = frozenset(
+    parse_formula_with_names(source)[0]
+    for source in canonical_held_out_formulas(PEANO_PROMPT_V3)
+)
 ROW_FIELDS = (
     "v",
     "task",
@@ -251,6 +293,50 @@ def _capabilities_from_metadata(
     return capabilities
 
 
+def _validate_library_identity_metadata(
+    record: Mapping[str, object],
+    capabilities: SurfaceCapabilities,
+    *,
+    location: str,
+) -> None:
+    try:
+        identity = CapabilityIdentity.from_record(
+            _capability_identity(capabilities)
+        )
+        environment = prompt_environment(record["classical"], identity)
+    except (KeyError, TypeError, ValueError) as exc:
+        raise DatasetBuildError(
+            f"{location}: cannot resolve checked library identity: {exc}"
+        ) from None
+    expected = environment.library_sha256
+    present = LIBRARY_IDENTITY_METADATA_FIELD in record
+    actual = record.get(LIBRARY_IDENTITY_METADATA_FIELD)
+    if expected is None:
+        if present:
+            raise DatasetBuildError(
+                f"{location}: model-v1 metadata must not claim a library identity"
+            )
+        return
+    if not present or actual != expected:
+        raise DatasetBuildError(
+            f"{location}: {LIBRARY_IDENTITY_METADATA_FIELD} {actual!r} "
+            f"does not match checked model-v2 authority {expected!r}"
+        )
+    if environment.prompt_version == PEANO_PROMPT_V3:
+        expected_v3 = {
+            "library_full_identity_sha256": (
+                environment.library_full_identity_sha256
+            ),
+            "library_prefix_length": environment.library_prefix_length,
+            "library_size": environment.library_full_length,
+        }
+        if any(record.get(key) != value for key, value in expected_v3.items()):
+            raise DatasetBuildError(
+                f"{location}: model-v3 prefix metadata differs from its "
+                "checked authority"
+            )
+
+
 def load_metadata(path: str | os.PathLike[str]) -> dict[str, dict[str, object]]:
     """Load the strict separate JSONL map keyed by raw trace session id."""
 
@@ -305,7 +391,14 @@ def load_metadata(path: str | os.PathLike[str]) -> dict[str, dict[str, object]]:
                 f"{source}:{line_number}: classical must be a Boolean"
             )
         _validate_json_value(record, location=f"{source}:{line_number}")
-        _capabilities_from_metadata(record, location=f"{source}:{line_number}")
+        capabilities = _capabilities_from_metadata(
+            record, location=f"{source}:{line_number}"
+        )
+        _validate_library_identity_metadata(
+            record,
+            capabilities,
+            location=f"{source}:{line_number}",
+        )
         session_id = record["session"]
         if session_id in result:
             raise DatasetBuildError(
@@ -332,6 +425,14 @@ def _compiler_manifest() -> dict[str, object]:
     paths = (
         Path(__file__).resolve(),
         SCRIPTS_ROOT / "export_traces.py",
+        SCRIPTS_ROOT / "generate_peano_synthetic_corpus.py",
+        SCRIPTS_ROOT / "generate_peano_v3_balanced_corpus.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "contract.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "prompt.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "library_identity.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "library_identity_v3.py",
+        MOD5_SOURCE_REPORT,
+        PUBLIC_LIBRARY_CATALOG,
         *sorted((PEANO_PYTHON / "peano_lab").rglob("*.py")),
     )
     return {
@@ -363,24 +464,361 @@ def _prompt(
     classical: bool,
     capabilities: SurfaceCapabilities,
     environment_sha256: str,
+    library_identity_sha256: object = None,
 ) -> tuple[str, str]:
-    logic = "classical" if classical else "intuitionistic"
-    environment = (
-        f"{ENVIRONMENT};surface={capabilities.label};logic={logic};"
-        f"capability_sha256={environment_sha256}"
+    try:
+        identity = CapabilityIdentity.from_record(
+            _capability_identity(capabilities)
+        )
+        environment = prompt_environment(classical, identity)
+    except (TypeError, ValueError) as exc:
+        raise DatasetBuildError(f"cannot resolve prompt environment: {exc}") from None
+    if environment.sha256 != environment_sha256:
+        raise DatasetBuildError("prompt environment hash differs from trace metadata")
+    if environment.library_sha256 != library_identity_sha256:
+        raise DatasetBuildError(
+            "prompt checked-library identity differs from trace metadata"
+        )
+    return environment.text, render_prompt(
+        goals=goals,
+        focus=focus,
+        environment=environment,
     )
-    state = _compact_json({"focus": focus, "goals": list(goals)})
-    prompt = (
-        f"<task>{TASK}</task>\n"
-        f"<env>{environment}</env>\n"
-        f"<state>{state}</state>\n"
-        "<tactic>"
-    )
-    return environment, prompt
 
 
 def _successful_steps(session: TraceSession) -> tuple[dict[str, object], ...]:
     return tuple(step for step in session.steps if step["status"] == "ok")
+
+
+def _rendered_goal_target(
+    rendered: object,
+    *,
+    location: str,
+) -> Formula | None:
+    """Parse one rigid trace-goal target, ignoring only flexible metavariables.
+
+    The context to the left of the final turnstile is intentionally irrelevant:
+    held-out propositions may be assumptions without becoming the supervised
+    target.  A target containing ``?tN`` cannot equal one of the closed rigid
+    held-outs and is not accepted by the kernel formula parser, so it is the one
+    canonical trace form for which structural comparison is inapplicable.
+    """
+
+    if type(rendered) is not str:
+        raise DatasetBuildError(f"{location}: trace goal must be canonical text")
+    _, turnstile, target_text = rendered.rpartition("⊢")
+    target_text = target_text.strip()
+    if not turnstile or not target_text:
+        raise DatasetBuildError(
+            f"{location}: trace goal has no canonical turnstile/target"
+        )
+    if "?" in target_text:
+        return None
+    try:
+        target, _ = parse_formula_with_names(target_text)
+    except (ParseError, TypeError, ValueError, RecursionError) as exc:
+        raise DatasetBuildError(
+            f"{location}: trace goal target is not a PA formula: {exc}"
+        ) from exc
+    return target
+
+
+def _validate_no_v3_held_out_goal_targets(
+    steps: Sequence[Mapping[str, object]],
+    *,
+    session_id: str,
+) -> None:
+    """Reject a v3 proof whose transition states expose a held-out target."""
+
+    for ordinal, step in enumerate(steps, 1):
+        step_number = step.get("step", ordinal)
+        for field in ("goals_before", "goals_after"):
+            goals = step.get(field)
+            if type(goals) is not list:
+                raise DatasetBuildError(
+                    f"session {session_id!r} step {step_number}: {field} must be "
+                    "a canonical goal array"
+                )
+            for goal_index, rendered in enumerate(goals, 1):
+                target = _rendered_goal_target(
+                    rendered,
+                    location=(
+                        f"session {session_id!r} step {step_number} {field} "
+                        f"goal {goal_index}"
+                    ),
+                )
+                if target in MODEL_V3_HELD_OUT_TARGETS:
+                    raise DatasetBuildError(
+                        f"session {session_id!r} exposes a model-v3 held-out "
+                        f"formula as a goal target at step {step_number} "
+                        f"{field} goal {goal_index}"
+                    )
+
+
+def _validate_v3_catalog_trajectory(
+    session: TraceSession,
+    metadata: Mapping[str, object],
+    capabilities: SurfaceCapabilities,
+    commands: tuple[object, ...],
+) -> None:
+    """Require one exact source theorem under its strict predecessor prefix."""
+
+    index = metadata.get("library_prefix_length")
+    if metadata.get("trajectory") != V3_CATALOG_TRAJECTORY:
+        raise DatasetBuildError(
+            f"session {session.session_id!r} with model-v3 prefix {index!r} "
+            f"must use the exact {V3_CATALOG_TRAJECTORY!r} trajectory"
+        )
+    if (
+        type(index) is not int
+        or isinstance(index, bool)
+        or not 0 <= index < MODEL_V3_LIBRARY_SIZE
+    ):
+        raise DatasetBuildError(
+            f"session {session.session_id!r} has an invalid library target index"
+        )
+    spec = THEOREMS[index]
+    canonical_formula = pretty_formula(
+        parse_formula_with_names(spec.statement)[0], []
+    )
+    expected_commands = tuple(
+        f"use {dependency}" for dependency in spec.dependencies
+    ) + spec.script
+    expected_capabilities = model_v3_prefix_environment(index).capabilities
+    actual_identity = CapabilityIdentity.from_record(
+        _capability_identity(capabilities)
+    )
+    expected_metadata = {
+        "theorem": spec.name,
+        "library_target_index": index,
+        "library_target_name": spec.name,
+        "statement": canonical_formula,
+        "direct_dependencies": list(spec.dependencies),
+        "tactics": list(expected_commands),
+        "proof_nodes": session.footer["proof_size"],
+    }
+    if (
+        "lane" in metadata
+        or session.theorem != canonical_formula
+        or commands != expected_commands
+        or actual_identity != expected_capabilities
+        or any(metadata.get(key) != value for key, value in expected_metadata.items())
+    ):
+        raise DatasetBuildError(
+            f"session {session.session_id!r} does not match its exact "
+            "predecessor-prefix theorem trajectory"
+        )
+
+
+def _validate_v3_synthetic_lane(
+    session: TraceSession,
+    metadata: Mapping[str, object],
+    commands: tuple[object, ...],
+) -> None:
+    """Reconstruct and bind one approved root-balanced schema instance."""
+
+    if metadata.get("lane") != V3_SYNTHETIC_LANE:
+        raise DatasetBuildError(
+            f"session {session.session_id!r} at the full model-v3 prefix must "
+            f"use the approved {V3_SYNTHETIC_LANE!r} lane"
+        )
+    forbidden = {
+        "trajectory",
+        "library_target_index",
+        "library_target_name",
+        "direct_dependencies",
+    }
+    if forbidden.intersection(metadata):
+        raise DatasetBuildError(
+            f"session {session.session_id!r} mixes synthetic and catalog markers"
+        )
+
+    template = metadata.get("template")
+    parameter_index = metadata.get("parameter_index")
+    if (
+        not _safe_text(template, nonempty=True)
+        or type(parameter_index) is not int
+        or isinstance(parameter_index, bool)
+        or parameter_index < 0
+    ):
+        raise DatasetBuildError(
+            f"session {session.session_id!r} has malformed synthetic schema markers"
+        )
+    try:
+        import generate_peano_v3_balanced_corpus as generator
+
+        schemas = {schema.name: schema for schema in generator.SCHEMAS}
+        schema = schemas.get(template)
+        if schema is None:
+            raise DatasetBuildError(
+                f"session {session.session_id!r} names an unapproved synthetic template"
+            )
+        candidate = schema.build(parameter_index)
+        canonical_statement, formula = generator._canonical_statement(
+            candidate, schema
+        )
+        root = generator._root_id(schema, canonical_statement)
+        first_head = candidate.tactics[0].split(maxsplit=1)[0]
+        root_kind = generator._root_kind(formula, first_head, candidate)
+    except DatasetBuildError:
+        raise
+    except Exception as exc:
+        raise DatasetBuildError(
+            f"session {session.session_id!r} cannot reconstruct its approved "
+            f"synthetic schema: {exc}"
+        ) from None
+
+    expected_commands = tuple(candidate.tactics)
+    expected_transformations = [
+        "proof-first-schema-instantiation",
+        *(
+            ["remove-artificial-induction-gate"]
+            if candidate.parameters.get("artificial_gate_removed") is True
+            else []
+        ),
+        *(
+            ["add-bounded-closed-induction-zero-tag"]
+            if candidate.parameters.get("closed_root_zero_tag_method")
+            == "bounded-syntactic-zero-v1"
+            else []
+        ),
+    ]
+    expected_metadata = {
+        "theorem": f"synthetic.{schema.name}.{root.rsplit('/', 1)[-1]}",
+        "family": root,
+        "lineage": root,
+        "statement": canonical_statement,
+        "statement_sha256": _sha256_bytes(canonical_statement.encode("utf-8")),
+        "script_sha256": _sha256_bytes(
+            _compact_json(list(expected_commands)).encode("utf-8")
+        ),
+        "domain": schema.domain,
+        "tags": list(schema.tags),
+        "root": root,
+        "root_first_tactic_head": first_head,
+        "root_kind": root_kind,
+        "variant": V3_SYNTHETIC_VARIANT,
+        "parents": [],
+        "transformations": expected_transformations,
+        "parameters": candidate.parameters,
+        "tactics": list(expected_commands),
+        "tactic_rows": len(expected_commands),
+        "proof_nodes": session.footer["proof_size"],
+    }
+    seed = metadata.get("seed")
+    ordinal = metadata.get("ordinal")
+    if (
+        not _safe_text(seed, nonempty=True)
+        or type(ordinal) is not int
+        or isinstance(ordinal, bool)
+        or ordinal < 1
+        or session.theorem != canonical_statement
+        or commands != expected_commands
+        or any(metadata.get(key) != value for key, value in expected_metadata.items())
+    ):
+        raise DatasetBuildError(
+            f"session {session.session_id!r} differs from its approved "
+            "synthetic statement, tactics, hashes, or schema metadata"
+        )
+
+
+def _validate_v3_curriculum_session(
+    session: TraceSession,
+    metadata: Mapping[str, object],
+    capabilities: SurfaceCapabilities,
+    commands: tuple[object, ...],
+) -> None:
+    """Select the only allowed model-v3 lane from the checked prefix."""
+
+    if metadata.get("surface") != "model-v3":
+        return
+    prefix = metadata.get("library_prefix_length")
+    if type(prefix) is not int or isinstance(prefix, bool):
+        raise DatasetBuildError(
+            f"session {session.session_id!r} has no exact model-v3 prefix"
+        )
+    if prefix < MODEL_V3_LIBRARY_SIZE:
+        _validate_v3_catalog_trajectory(
+            session, metadata, capabilities, commands
+        )
+        return
+    if prefix == MODEL_V3_LIBRARY_SIZE:
+        _validate_v3_synthetic_lane(session, metadata, commands)
+        return
+    raise DatasetBuildError(
+        f"session {session.session_id!r} exceeds the model-v3 library size"
+    )
+
+
+def _validate_v3_curriculum_population(
+    sessions: Sequence[TraceSession],
+    metadata: Mapping[str, Mapping[str, object]],
+) -> None:
+    """Reject duplicate catalog rungs or ambiguous synthetic populations."""
+
+    catalog_sessions: dict[int, str] = {}
+    synthetic_seeds: set[str] = set()
+    synthetic_ordinals: set[int] = set()
+    synthetic_roots: set[str] = set()
+    synthetic_statements: set[str] = set()
+    synthetic_count = 0
+    for session in sessions:
+        record = metadata[session.session_id]
+        if record.get("surface") != "model-v3":
+            continue
+        prefix = record.get("library_prefix_length")
+        if type(prefix) is not int or isinstance(prefix, bool):
+            raise DatasetBuildError(
+                f"session {session.session_id!r} has no exact model-v3 prefix"
+            )
+        if prefix < MODEL_V3_LIBRARY_SIZE:
+            previous = catalog_sessions.setdefault(prefix, session.session_id)
+            if previous != session.session_id:
+                raise DatasetBuildError(
+                    f"model-v3 catalog prefix {prefix} has duplicate sessions"
+                )
+            continue
+        if prefix != MODEL_V3_LIBRARY_SIZE:
+            raise DatasetBuildError(
+                f"session {session.session_id!r} exceeds the model-v3 library size"
+            )
+        seed = record.get("seed")
+        ordinal = record.get("ordinal")
+        root = record.get("root")
+        statement = record.get("statement")
+        if (
+            type(seed) is not str
+            or type(ordinal) is not int
+            or isinstance(ordinal, bool)
+            or type(root) is not str
+            or type(statement) is not str
+        ):
+            raise DatasetBuildError("model-v3 synthetic population is malformed")
+        if ordinal in synthetic_ordinals:
+            raise DatasetBuildError(
+                f"model-v3 synthetic population has duplicate ordinal {ordinal}"
+            )
+        if root in synthetic_roots:
+            raise DatasetBuildError(
+                f"model-v3 synthetic population has duplicate root {root!r}"
+            )
+        if statement in synthetic_statements:
+            raise DatasetBuildError(
+                "model-v3 synthetic population has duplicate target statement"
+            )
+        synthetic_seeds.add(seed)
+        synthetic_ordinals.add(ordinal)
+        synthetic_roots.add(root)
+        synthetic_statements.add(statement)
+        synthetic_count += 1
+    if len(synthetic_seeds) > 1:
+        raise DatasetBuildError(
+            "model-v3 data must contain exactly one synthetic population seed"
+        )
+    if synthetic_count and synthetic_ordinals != set(range(1, synthetic_count + 1)):
+        raise DatasetBuildError(
+            "model-v3 synthetic ordinals must be the exact contiguous population"
+        )
 
 
 def _replay(
@@ -396,6 +834,19 @@ def _replay(
             f"session {session.session_id!r} claims QED without a successful tactic"
         )
     commands = tuple(step["tactic"] for step in successful)
+    _validate_v3_curriculum_session(
+        session, metadata, capabilities, commands
+    )
+    # Only an exact catalog rung that has just survived reconstruction against
+    # THEOREMS[index], its authored script, and its predecessor authority may
+    # use the reviewed large-certificate allowance.  In particular, neither a
+    # metadata claim nor a full-prefix synthetic row can select this budget.
+    replay_options: dict[str, object] = {}
+    if (
+        metadata.get("surface") == "model-v3"
+        and metadata.get("trajectory") == V3_CATALOG_TRAJECTORY
+    ):
+        replay_options["trace_byte_limit"] = MAX_REVIEWED_BATCH_TRACE_BYTES
     replay_id = "dataset-" + hashlib.sha256(
         session.session_id.encode("utf-8")
     ).hexdigest()[:24]
@@ -407,7 +858,13 @@ def _replay(
             classical=metadata["classical"],  # type: ignore[arg-type]
             capabilities=capabilities,
             session_id=f"{replay_id}-trace",
+            **replay_options,
         )
+    except TraceLimitError:
+        raise DatasetBuildError(
+            f"session {session.session_id!r} theorem "
+            f"{metadata['theorem']!r} exceeded its checked replay trace limit"
+        ) from None
     except BatchRequestError as exc:
         raise DatasetBuildError(
             f"session {session.session_id!r} cannot enter checked replay: {exc}"
@@ -468,6 +925,11 @@ def _replay(
                     f"replay mismatch in {field}: {replay_step[field]!r} != "
                     f"{raw_step[field]!r}"
                 )
+    if metadata.get("surface") == "model-v3":
+        _validate_no_v3_held_out_goal_targets(
+            replay_steps,
+            session_id=session.session_id,
+        )
     return successful
 
 
@@ -530,6 +992,9 @@ def _split_components(
                 classical=session_metadata["classical"],  # type: ignore[arg-type]
                 capabilities=capabilities[session.session_id],
                 environment_sha256=session_metadata["environment_sha256"],  # type: ignore[arg-type]
+                library_identity_sha256=session_metadata.get(
+                    LIBRARY_IDENTITY_METADATA_FIELD
+                ),
             )
             # Validation/test loss must not see a policy input that training
             # already saw, even when producers assign unrelated genealogy and
@@ -575,11 +1040,19 @@ def _assign_groups(
     seed: str,
     val_fraction: float,
     test_fraction: float,
+    forced_train_groups: Iterable[SplitGroup] = (),
 ) -> dict[SplitGroup, str]:
     if not _safe_text(seed, nonempty=True):
         raise ValueError("seed must be non-empty control-free text")
     val_fraction, test_fraction = _validate_fractions(val_fraction, test_fraction)
-    ordered = sorted(set(groups), key=lambda group: (_group_rank(seed, group), group))
+    complete = set(groups)
+    forced = set(forced_train_groups)
+    if not forced <= complete:
+        raise ValueError("forced training groups must belong to the split population")
+    ordered = sorted(
+        complete - forced,
+        key=lambda group: (_group_rank(seed, group), group),
+    )
     # Always reserve one training group when any data exists.  For tiny inputs,
     # test receives the first available holdout and validation the next.
     available = max(0, len(ordered) - 1)
@@ -588,12 +1061,50 @@ def _assign_groups(
     val_count = _held_out_count(len(ordered), val_fraction, available)
     test_groups = set(ordered[:test_count])
     val_groups = set(ordered[test_count : test_count + val_count])
-    return {
+    result = {
         group: (
-            "test" if group in test_groups else "val" if group in val_groups else "train"
+            "test"
+            if group in test_groups
+            else "val"
+            if group in val_groups
+            else "train"
         )
         for group in ordered
     }
+    result.update((group, "train") for group in sorted(forced))
+    return result
+
+
+def _v3_catalog_train_groups(
+    session_groups: Mapping[str, SplitGroup],
+    metadata: Mapping[str, Mapping[str, object]],
+) -> frozenset[SplitGroup]:
+    """Return every component containing a checked catalog-prefix session."""
+
+    return frozenset(
+        group
+        for session, group in session_groups.items()
+        if metadata[session].get("surface") == "model-v3"
+        and metadata[session].get("trajectory") == V3_CATALOG_TRAJECTORY
+    )
+
+
+def _v3_lane(metadata: Mapping[str, object]) -> str:
+    """Classify one already-validated model-v3 curriculum session."""
+
+    prefix = metadata.get("library_prefix_length")
+    if type(prefix) is not int or isinstance(prefix, bool):
+        raise DatasetBuildError("model-v3 split lane has no exact prefix")
+    if prefix < MODEL_V3_LIBRARY_SIZE:
+        if metadata.get("trajectory") != V3_CATALOG_TRAJECTORY:
+            raise DatasetBuildError("model-v3 catalog split lane is unmarked")
+        return V3_CATALOG_TRAJECTORY
+    if (
+        prefix == MODEL_V3_LIBRARY_SIZE
+        and metadata.get("lane") == V3_SYNTHETIC_LANE
+    ):
+        return V3_SYNTHETIC_LANE
+    raise DatasetBuildError("model-v3 split lane is not an approved curriculum lane")
 
 
 def _metadata_extras(metadata: Mapping[str, object]) -> dict[str, object]:
@@ -624,6 +1135,9 @@ def _make_row(
         classical=classical,  # type: ignore[arg-type]
         capabilities=capabilities,
         environment_sha256=environment_sha256,  # type: ignore[arg-type]
+        library_identity_sha256=metadata.get(
+            LIBRARY_IDENTITY_METADATA_FIELD
+        ),
     )
     tactic = str(step["tactic"])
     row = {
@@ -715,6 +1229,7 @@ def build_dataset(
         )
         for session in positives
     }
+    _validate_v3_curriculum_population(positives, metadata)
     replayed: dict[str, tuple[dict[str, object], ...]] = {}
     for session in sorted(positives, key=lambda item: item.session_id):
         replayed[session.session_id] = _replay(
@@ -729,11 +1244,13 @@ def build_dataset(
         replayed,
         session_capabilities,
     )
+    catalog_train_groups = _v3_catalog_train_groups(session_groups, metadata)
     assignment = _assign_groups(
         session_groups.values(),
         seed=seed,
         val_fraction=val_fraction,
         test_fraction=test_fraction,
+        forced_train_groups=catalog_train_groups,
     )
     rows: dict[str, list[dict[str, object]]] = {
         "train": [],
@@ -742,6 +1259,7 @@ def build_dataset(
     }
     split_sessions: dict[str, set[str]] = {name: set() for name in rows}
     split_groups: dict[str, set[SplitGroup]] = {name: set() for name in rows}
+    session_splits: dict[str, str] = {}
     for session in sorted(
         positives,
         key=lambda item: (
@@ -752,6 +1270,7 @@ def build_dataset(
         record = metadata[session.session_id]
         group = session_groups[session.session_id]
         split = assignment[group]
+        session_splits[session.session_id] = split
         split_sessions[split].add(session.session_id)
         split_groups[split].add(group)
         rows[split].extend(
@@ -815,48 +1334,91 @@ def build_dataset(
         )
         environment_sessions.setdefault(key, set()).add(session.session_id)
     environments = []
+    prompt_versions: set[int] = set()
     for (surface, environment_sha256, classical), ids in sorted(
         environment_sessions.items()
     ):
         exemplar = min(ids)
-        environments.append(
-            {
-                "surface": surface,
-                "environment_sha256": environment_sha256,
-                "classical": classical,
-                "capabilities": _capability_identity(
-                    session_capabilities[exemplar]
-                ),
-                "sessions": len(ids),
-            }
+        capability_record = _capability_identity(session_capabilities[exemplar])
+        try:
+            resolved_prompt_environment = prompt_environment(
+                classical,
+                CapabilityIdentity.from_record(capability_record),
+            )
+        except (TypeError, ValueError) as exc:
+            raise DatasetBuildError(
+                f"cannot resolve dataset prompt environment: {exc}"
+            ) from None
+        prompt_versions.add(resolved_prompt_environment.prompt_version)
+        environment_entry = environment_record(resolved_prompt_environment)
+        if (
+            environment_entry["surface"] != surface
+            or environment_entry["environment_sha256"] != environment_sha256
+            or environment_entry["classical"] is not classical
+            or environment_entry["capabilities"] != capability_record
+        ):
+            raise DatasetBuildError("dataset environment preimage is inconsistent")
+        environment_entry["sessions"] = len(ids)
+        environments.append(environment_entry)
+    if len(prompt_versions) != 1:
+        raise DatasetBuildError(
+            "one dataset may use exactly one repository prompt contract"
         )
+    prompt_version = next(iter(prompt_versions))
+
+    if prompt_version == PEANO_PROMPT_V3:
+        lane_sessions = {
+            split: {lane: set() for lane in V3_SPLIT_LANES}
+            for split in ("train", "val", "test")
+        }
+        lane_rows = {
+            split: {lane: 0 for lane in V3_SPLIT_LANES}
+            for split in ("train", "val", "test")
+        }
+        for session in positives:
+            split = session_splits[session.session_id]
+            lane = _v3_lane(metadata[session.session_id])
+            if lane == V3_CATALOG_TRAJECTORY and split != "train":
+                raise DatasetBuildError(
+                    "model-v3 catalog trajectories must be in the training split"
+                )
+            lane_sessions[split][lane].add(session.session_id)
+            lane_rows[split][lane] += len(replayed[session.session_id])
+        for split in ("train", "val", "test"):
+            split_record = split_manifest[split]
+            assert type(split_record) is dict
+            split_record["lane_populations"] = {
+                lane: {
+                    "sessions": len(lane_sessions[split][lane]),
+                    "rows": lane_rows[split][lane],
+                }
+                for lane in V3_SPLIT_LANES
+            }
 
     manifest: dict[str, object] = {
         "format": DATASET_FORMAT,
         "version": DATASET_VERSION,
         "trace_version": TRACE_VERSION,
-        "prompt": {
-            "task": TASK,
-            "environment_base": ENVIRONMENT,
-            "environment_template": (
-                "peano-lab-v1;surface=LABEL;logic=MODE;"
-                "capability_sha256=SHA256"
-            ),
-            "template": "<task>...</task>\\n<env>...</env>\\n<state>...</state>\\n<tactic>",
-            "completion_suffix": "</tactic>",
-            "binder_policy": "exact-authored-binders-v1",
-            "binder_policy_detail": (
-                "preserve exact visible state names and exact successful tactic "
-                "lines so every emitted transition is executable"
-            ),
-        },
+        "prompt": prompt_manifest_record(prompt_version),
         "split": {
-            "method": "sha256-ranked-genealogy-formula-prompt-components-v2",
+            "method": (
+                V3_SPLIT_METHOD
+                if prompt_version == PEANO_PROMPT_V3
+                else LEGACY_SPLIT_METHOD
+            ),
             "seed": seed,
             "group": (
-                "connected components sharing family, lineage, exact "
-                "canonical theorem, or exact policy prompt, "
-                "assigned before row expansion"
+                (
+                    "catalog-containing components forced to train; only "
+                    "catalog-free synthetic components are hash-ranked for "
+                    "train, validation, or test before row expansion"
+                )
+                if prompt_version == PEANO_PROMPT_V3
+                else (
+                    "connected components sharing family, lineage, exact "
+                    "canonical theorem, or exact policy prompt, "
+                    "assigned before row expansion"
+                )
             ),
             "val_fraction": float(val_fraction),
             "test_fraction": float(test_fraction),

@@ -122,8 +122,10 @@ does not determine the architecture.
       `prime_divisor_exists_up_to`, and `prime_divisor_exists`.
 - [x] Prove the greatest-prime-divisor search, existence, quotient bound, and
       strict descent interface needed by canonical factorization.
-- [ ] Prove primes above every bound; prime unboundedness is intentionally a
-      later client and is not needed by the checked FTA route.
+- [x] Prove a prime above every supplied bound as `prime_unbounded`, a later
+      constructive client of bounded common multiples and prime-divisor
+      existence. Its certificate has 4,595 nodes, depth 82, and 146 Cuts; it
+      is not needed by the checked FTA route.
 
 ## M20E — Finite factorization representation and FTA
 
@@ -186,15 +188,17 @@ does not determine the architecture.
       `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
       It fits the 500,000-occurrence/100,000-object/depth-256 live/use gate,
       uses only PA1–PA6 and
-      induction, and contains no DNE. Runtime integration is complete in the
-      synchronized 247-theorem checkpoint.
+      induction, and contains no DNE. Runtime integration first completed in
+      the historical synchronized 247-theorem checkpoint and remains present
+      in the current 384-theorem runtime.
 
 ## M20F — Knowledge and release gates
 
 - [x] Add a dedicated Jupyter Book part with formulas, executable commands,
       trust boundary, dependency route, source audit, and extension workflow.
 - [x] Add a ten-stage guided route and deterministic interactive theorem atlas
-      containing all 247 exact native statements, authored proof recipes,
+      initially released with 247 exact native statements and now regenerated
+      for all 384 checked statements, with authored proof recipes,
       dependency/dependent navigation, metrics, hashes, live-lab actions, and
       source/vault links.
 - [x] Add an arithmetic Obsidian MOC, concept notes, and generated per-lemma
@@ -263,8 +267,10 @@ does not determine the architecture.
   240 public, 316 body-checked candidates, and the QR root pending layered
   closure.
 - The factorization and unbounded-primes tranches are synchronized into the
-  247-theorem runtime, 248-entry catalog, generated snapshot, and all 247
-  generated lemma notes. The
+  current 384-theorem runtime, 385-entry catalog, generated snapshot, and all
+  384 generated lemma notes. The catalog split is 23 baseline checked, 361
+  post-baseline checked, and one representation-blocked conventional
+  integer-coefficient Bézout interface. The
   previously published 189-theorem snapshot remains historical provenance.
 - At this integration checkpoint, the exact expanded catalog statements for
   `prime_factorization_existence`, `prime_factorization_uniqueness`, and
@@ -274,8 +280,9 @@ does not determine the architecture.
   contains 2,184 Cuts.
 - The exact FTA certificate SHA-256 is
   `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
-  The full prove/use/exact/QED path passes under the 100,000-node/depth-256
-  cap. Dependency, hypothesis, and PA-rule mutation audits are live. The proof
+  The full prove/use/exact/QED path passes under the
+  500,000-occurrence/100,000-object/depth-256 cap. Dependency, hypothesis, and
+  PA-rule mutation audits are live. The proof
   uses only PA1–PA6 and induction and contains no DNE.
 - Trusted-kernel change: one self-contained Cut constructor and checker rule.
   The checker is 247 lines (formerly 234). The object language and logical
@@ -283,7 +290,7 @@ does not determine the architecture.
   not a complete or authoritative admission route.
 - Full FTA companion status: checked in Lean for every nonzero natural, with
   finite-list existence and permutation uniqueness and no `sorryAx`.
-- Native Peano FTA status: checked and synchronized in the 247-theorem runtime
+- Native Peano FTA status: checked and synchronized in the 384-theorem runtime
   in the conservative β-coded representation. The endpoint is not a conventional list theorem: there is no
   primitive list type, and uniqueness compares lengths and decoded entries
   rather than raw β codes. The conventional list statement remains the
@@ -295,27 +302,28 @@ does not determine the architecture.
   multiple; any such divisor at or below the bound would divide both
   consecutive numbers and hence one. It uses PA1–PA6 only, has no DNE, and
   passes dependency, PA, hypothesis, and live-use audits.
-- The generated snapshot has 982,534 nodes, 28,892 Cuts, and 204 Cut-bearing
-  certificates. Its root is
-  `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`
-  and source digest is
-  `295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
-  The vault has 327 notes and 3,287 links. The 1,692-session/13,344-transition
-  corpus has fingerprint
-  `5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`;
+- The generated 384-theorem snapshot has 1,806,923 structural occurrences,
+  52,626 Cuts, and 329 Cut-bearing certificates. Its ordered root is
+  `73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
+  The vault has 475 notes and 4,825 resolved links, including all 384 generated
+  theorem notes. The last source-bound 1,692-session/13,344-transition corpus
+  remains intentionally tied to the historical 247-theorem checkpoint and has
+  fingerprint
+  `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
   its smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and all 247
-  QEDs. Browser build `2026-07-29j` packages `a-c983d7c60450` without staging
-  or deployment. The strict book rebuild passes all 38 sources with no
-  warnings; 194 deep links and 47 executable blocks/287 commands verify.
-- The complete current Peano suite passes all 1,101 tests on Python 3.10 in
-  1,050.08 seconds with no reported warnings. No in-app browser was available,
-  so direct Pyodide UI smoke remains explicitly unclaimed; the automated
-  runtime/worker coverage and browser deployment-manifest checks pass.
-- The strict Jupyter Book 1.0 build passes over 38 sources with no warnings or
-  errors. Documentation verification checks 194 deep links and 47 session
-  blocks containing 287 commands; all 17 static documentation tests pass. The
-  generated atlas contains 247 checked proof cards, one explicit boundary
-  card, all 640 dependency edges, and a local 1–4-hop navigator.
+  QEDs. The integrated local browser candidate deterministically verifies as
+  build `2026-08-02a`, application `a-cd3e54b68949`, with 149 worker sources;
+  it assembles successfully in the local content-addressed stage and has not
+  been deployed.
+- The current Book source set has 45 sources. Its last strict arithmetic-branch
+  rebuild completed without warnings; 194 deep links and 47 executable blocks
+  containing 287 commands verify. The generated atlas contains 384 checked
+  proof cards, one explicit boundary card, all 1,038 dependency edges, and a
+  local 1–4-hop navigator. The post-merge compatibility matrix passed 1,183
+  tests with five intentional skips, and the strict 45-source Book replay plus
+  its 2,323-page integrity gate passed with zero broken or escaping targets.
+  Direct Pyodide UI smoke and a complete passing 136-gate QR WMI receipt are
+  still explicitly unclaimed.
 - Remaining mathematical/library limits are explicit: generic powers, finite
   maps, and primitive lists remain absent; a
   conventional integer-coefficient Bézout statement is not representable in

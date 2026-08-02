@@ -1,0 +1,257 @@
+{
+  "format": "peano-policy-acceptance-preregistration",
+  "v": 1,
+  "preregistration_id": "qwen3-1.7b-peano-v2-2026-07-28",
+  "subject": {
+    "run_name": "qwen3-1.7b-peano-lora-v2-heavy",
+    "adapter_directory": "results/peano-policy/qwen3-1.7b-lora-v2-heavy",
+    "base_model": {
+      "id": "Qwen/Qwen3-1.7B-Base",
+      "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+    },
+    "authority": {
+      "surface": "model-v2",
+      "classical": false,
+      "environment_sha256": "16187209c69042bddc11cafbeb730c484d30d36dd21e3c9613457abc550ebd42",
+      "library_identity_sha256": "3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439",
+      "held_out_contract_sha256": "37aa8242ce437997cb88a31479e7a1ce42d60bd9a40b7a1ddb4b6f991fefb16f",
+      "allowed_theorem_count": 56
+    },
+    "adapter_identity_rule": "All 16 reports must carry one identical training-manifest hash and adapter hash; the hashes are learned only after training."
+  },
+  "protocol": {
+    "primary_run_rules": {
+      "attempts_per_goal": 1,
+      "retry_failed_goals": false,
+      "reorder_goals": false,
+      "change_seed": false,
+      "select_best_run": false
+    },
+    "interactive": {
+      "goal_ids": [
+        "R1",
+        "R2",
+        "R3",
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "I1",
+        "I2",
+        "I3",
+        "I4"
+      ],
+      "seed": 20260728,
+      "decoding": {
+        "max_new_tokens": 96,
+        "do_sample": false,
+        "temperature": 0.8,
+        "top_p": 0.95
+      },
+      "search_budget_per_goal": {
+        "max_depth": 32,
+        "beam_width": 4,
+        "candidates_per_state": 4,
+        "max_model_calls": 128,
+        "max_states": 2048
+      }
+    },
+    "sealed_evaluator": {
+      "goal_ids": [
+        "H1",
+        "H2",
+        "H3",
+        "H4"
+      ],
+      "seed": 20260728,
+      "decoding": {
+        "max_new_tokens": 96,
+        "do_sample": true,
+        "temperature": 1.0,
+        "top_p": 1.0
+      },
+      "search_budget_per_goal": {
+        "max_depth": 32,
+        "beam_width": 16,
+        "candidates_per_state": 8,
+        "max_model_calls": 512,
+        "max_states": 4096
+      }
+    }
+  },
+  "goals": [
+    {
+      "id": "R1",
+      "category": "retrieval",
+      "statement": "∀ x. 0 + x = x",
+      "public_collisions": [
+        "zero_add"
+      ],
+      "model_v2_visibility": "allowed",
+      "retrieval_theorem": "zero_add"
+    },
+    {
+      "id": "R2",
+      "category": "retrieval",
+      "statement": "∀ x. ∀ y. ∀ z. x + z = y + z → x = y",
+      "public_collisions": [
+        "add_right_cancel"
+      ],
+      "model_v2_visibility": "allowed",
+      "retrieval_theorem": "add_right_cancel"
+    },
+    {
+      "id": "R3",
+      "category": "retrieval",
+      "statement": "∀ x. ∀ y. x = 5 · y + 4 → x · x = 5 · (y · x + 4 · y + 3) + 1",
+      "public_collisions": [
+        "mod5_square_residue_four"
+      ],
+      "model_v2_visibility": "allowed",
+      "retrieval_theorem": "mod5_square_residue_four"
+    },
+    {
+      "id": "C1",
+      "category": "composition",
+      "statement": "∀ x. ∀ y. ∀ z. x = y → y = z → S x = S z",
+      "public_collisions": [],
+      "model_v2_visibility": "fresh"
+    },
+    {
+      "id": "C2",
+      "category": "composition",
+      "statement": "∀ x. ∀ y. ∀ z. x + z = y + z → S x = S y",
+      "public_collisions": [],
+      "model_v2_visibility": "fresh"
+    },
+    {
+      "id": "C3",
+      "category": "composition",
+      "statement": "∀ x. ∀ y. x + y = 0 → x = 0 ∧ y = 0",
+      "public_collisions": [],
+      "model_v2_visibility": "fresh"
+    },
+    {
+      "id": "C4",
+      "category": "composition",
+      "statement": "∀ x. ∀ y. ∀ z. ∀ n. (∃ m. y = x · m) → (∃ m. z = x · m) → ∃ m. (y + z) · n = x · m",
+      "public_collisions": [],
+      "model_v2_visibility": "fresh"
+    },
+    {
+      "id": "C5",
+      "category": "composition",
+      "statement": "∀ x. ∀ y. x = 5 · y + 1 → ∃ z. x · x = 5 · z + 1",
+      "public_collisions": [],
+      "model_v2_visibility": "fresh"
+    },
+    {
+      "id": "I1",
+      "category": "induction",
+      "statement": "∀ x. x = 0 ∨ (∃ y. x = S y)",
+      "public_collisions": [],
+      "model_v2_visibility": "fresh"
+    },
+    {
+      "id": "I2",
+      "category": "induction",
+      "statement": "∀ x. ∃ y. x = y + y ∨ x = S (y + y)",
+      "public_collisions": [],
+      "model_v2_visibility": "fresh"
+    },
+    {
+      "id": "I3",
+      "category": "induction",
+      "statement": "∀ x. ∃ y. (x + 2) · (x + 3) = 2 · y",
+      "public_collisions": [],
+      "model_v2_visibility": "fresh"
+    },
+    {
+      "id": "I4",
+      "category": "induction",
+      "statement": "∀ x. ∃ y. (2 · x + 3) · (2 · x + 3) = 8 · y + 1",
+      "public_collisions": [],
+      "model_v2_visibility": "fresh"
+    },
+    {
+      "id": "H1",
+      "category": "sealed",
+      "statement": "∀ x. ∀ y. ∀ z. x ≤ y → y ≤ z → x ≤ z",
+      "public_collisions": [
+        "le_trans"
+      ],
+      "model_v2_visibility": "sealed",
+      "sealed_name": "le_trans"
+    },
+    {
+      "id": "H2",
+      "category": "sealed",
+      "statement": "∀ x. ∀ y. x ≤ y → y ≤ x → x = y",
+      "public_collisions": [
+        "le_antisymm"
+      ],
+      "model_v2_visibility": "sealed",
+      "sealed_name": "le_antisymm"
+    },
+    {
+      "id": "H3",
+      "category": "sealed",
+      "statement": "∀ x. ∀ y. x ≤ y ∨ y ≤ x",
+      "public_collisions": [
+        "le_total"
+      ],
+      "model_v2_visibility": "sealed",
+      "sealed_name": "le_total"
+    },
+    {
+      "id": "H4",
+      "category": "sealed",
+      "statement": "∀ x. ∀ y. x · y = 0 → x = 0 ∨ y = 0",
+      "public_collisions": [
+        "mul_eq_zero"
+      ],
+      "model_v2_visibility": "sealed",
+      "sealed_name": "mul_eq_zero"
+    }
+  ],
+  "decision_rule": {
+    "integrity": {
+      "complete_exact_primary_run": true,
+      "one_shared_adapter_identity": true,
+      "exact_model_v2_authority": true,
+      "independently_kernel_replay_every_counted_success": true,
+      "retrieval_hit_requires_exact_use_command": true
+    },
+    "binary_pass": {
+      "category_minimums": {
+        "retrieval": 3,
+        "composition": 3,
+        "induction": 2,
+        "sealed": 1
+      },
+      "nontrivial_induction_goal_ids": [
+        "I2",
+        "I3",
+        "I4"
+      ],
+      "nontrivial_induction_minimum": 1,
+      "synthesis_categories": [
+        "composition",
+        "induction",
+        "sealed"
+      ],
+      "synthesis_minimum": 7,
+      "overall_minimum": 10
+    },
+    "stretch": {
+      "category_minimums": {
+        "retrieval": 3,
+        "composition": 4,
+        "induction": 3,
+        "sealed": 2
+      },
+      "overall_minimum": 12
+    }
+  }
+}

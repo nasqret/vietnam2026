@@ -4,9 +4,12 @@
 This module is a data driver around :func:`peano_lab.batch.run_proof`, not a
 second prover.  Each schema constructs a true statement together with an
 ordinary public-surface tactic script.  The production headless runner then
-parses the statement, executes the script under the fixed ``model-v1``
+parses the statement, executes the script under the fixed ``model-v2``
 capability set, builds a certificate, and asks the independent kernel to check
-QED against the original statement.
+QED against the original statement.  Model-v2 keeps the 25-command language
+from model-v1, but binds the current public theorem catalog while removing the
+four sealed evaluation targets and every theorem depending on one of them from
+its import authority.
 
 Generation is bounded by *successful tactic rows*.  A session is either
 written completely (all transitions and its footer) or the unpublished staged
@@ -34,12 +37,12 @@ from typing import TextIO
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS_ROOT = REPOSITORY_ROOT / "scripts"
 PEANO_PYTHON = REPOSITORY_ROOT / "peano-lab" / "py"
-if str(PEANO_PYTHON) not in sys.path:
-    sys.path.insert(0, str(PEANO_PYTHON))
+for import_root in (REPOSITORY_ROOT, PEANO_PYTHON):
+    if str(import_root) not in sys.path:
+        sys.path.insert(0, str(import_root))
 
 from peano_lab.batch import (  # noqa: E402
     MODEL_V1_COMMANDS,
-    MODEL_V1_THEOREMS,
     BatchResult,
     capability_sha256,
     run_proof,
@@ -50,23 +53,58 @@ from peano_lab.kernel.formulas import (  # noqa: E402
     parse_formula_with_names,
     pretty_formula,
 )
+from peano_lab.library.theorems import THEOREMS, TheoremSpec  # noqa: E402
 from peano_lab.ui.prove import SurfaceCapabilities  # noqa: E402
+from training.peano_policy.contract import (  # noqa: E402
+    EXCLUDED_POLICY_LIBRARY_NAMES,
+    HELD_OUT_POLICY_GOALS,
+    HELD_OUT_POLICY_NAMES,
+    MODEL_V2_THEOREMS as CONTRACT_MODEL_V2_THEOREMS,
+    canonical_held_out_formulas,
+    environment_record,
+    held_out_contract_sha256,
+    model_v2_environment,
+)
+from training.peano_policy.library_identity import (  # noqa: E402
+    EXPECTED_MODEL_V2_LIBRARY_COUNT,
+    EXPECTED_PUBLIC_LIBRARY_COUNT,
+    MOD5_SOURCE_REPORT,
+    PUBLIC_LIBRARY_CATALOG,
+    model_v2_library_identity_record,
+    model_v2_library_identity_sha256,
+)
 
 
 FORMAT = "peano-policy-corpus"
 VERSION = 1
-CATALOG_VERSION = 2
-GENERATOR = "proof-first-synthetic-v1"
-DEFAULT_SEED = "peano-synthetic-v1"
+PROFILE = "model-v2"
+CATALOG_VERSION = 4
+GENERATOR = "proof-first-synthetic-v2"
+DEFAULT_SEED = "peano-synthetic-v2"
 DEFAULT_ROW_BUDGET = 1_000
 MAX_ROW_BUDGET = 100_000
+HELD_OUT_NAMES = HELD_OUT_POLICY_NAMES
+EXCLUDED_LIBRARY_NAMES = EXCLUDED_POLICY_LIBRARY_NAMES
+HELD_OUT_FORMULAS = frozenset(canonical_held_out_formulas())
+MODEL_V2_THEOREMS = frozenset(CONTRACT_MODEL_V2_THEOREMS)
+MODEL_V2_THEOREM_SPECS: tuple[TheoremSpec, ...] = tuple(
+    spec for spec in THEOREMS if spec.name in MODEL_V2_THEOREMS
+)
 POLICY_CAPABILITIES = SurfaceCapabilities(
-    label="model-v1",
+    label="model-v2",
     allowed_commands=MODEL_V1_COMMANDS,
-    allowed_theorems=frozenset(MODEL_V1_THEOREMS),
+    allowed_theorems=MODEL_V2_THEOREMS,
 )
 CAPABILITY_FIELDS = ("label", "allowed_commands", "allowed_theorems")
 DOMAINS = ("logic", "equality", "recurrence", "witnesses", "arithmetic")
+LANE_WEIGHTS: tuple[tuple[str, int], ...] = (
+    ("foundation", 2),
+    ("induction", 1),
+    ("library", 1),
+)
+LANES = tuple(lane for lane, _ in LANE_WEIGHTS)
+LANE_WEIGHT_BY_NAME = dict(LANE_WEIGHTS)
+MIN_BALANCE_AUDIT_ROWS = 1_000
 
 
 class GenerationError(RuntimeError):
@@ -90,6 +128,8 @@ class Schema:
     domain: str
     tags: tuple[str, ...]
     build: Callable[[int], Candidate]
+    lane: str = "foundation"
+    weight: int = 1
 
 
 @dataclass(frozen=True, slots=True)
@@ -173,6 +213,11 @@ def _source_manifest() -> dict[str, dict[str, str]]:
     paths = (
         Path(__file__).resolve(),
         SCRIPTS_ROOT / "export_traces.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "contract.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "prompt.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "library_identity.py",
+        MOD5_SOURCE_REPORT,
+        PUBLIC_LIBRARY_CATALOG,
         *sorted((PEANO_PYTHON / "peano_lab").rglob("*.py")),
     )
     return {
@@ -187,6 +232,48 @@ def _runtime_record() -> dict[str, str]:
     return {
         "implementation": platform.python_implementation(),
         "python": platform.python_version(),
+    }
+
+
+def _library_snapshot() -> dict[str, object]:
+    """Return the exact public catalog and sealed model-v2 import boundary."""
+
+    entries = [
+        {
+            "name": spec.name,
+            "statement": pretty_formula(
+                parse_formula_with_names(spec.statement)[0], []
+            ),
+            "dependencies": list(spec.dependencies),
+        }
+        for spec in THEOREMS
+    ]
+    encoded = json.dumps(
+        entries,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return {
+        "catalog_entries": len(entries),
+        "catalog_sha256": hashlib.sha256(encoded).hexdigest(),
+        "entries": entries,
+        "allowed_imports": sorted(MODEL_V2_THEOREMS),
+        "allowed_import_count": len(MODEL_V2_THEOREMS),
+        "excluded_imports": sorted(EXCLUDED_LIBRARY_NAMES),
+        "excluded_import_count": len(EXCLUDED_LIBRARY_NAMES),
+        "checked_authority": model_v2_library_identity_record(),
+        "checked_authority_sha256": model_v2_library_identity_sha256(),
+        "prompt_library_identity_sha256": model_v2_environment().library_sha256,
+        "sealed_evaluation_targets": [
+            {"name": name, "statement": statement}
+            for (name, _), statement in zip(
+                HELD_OUT_POLICY_GOALS,
+                canonical_held_out_formulas(),
+                strict=True,
+            )
+        ],
+        "held_out_contract_sha256": held_out_contract_sha256(),
     }
 
 
@@ -602,6 +689,212 @@ def _arithmetic_compact(index: int) -> Candidate:
     )
 
 
+# Model-v2 coverage schemas.  These are deliberately small public-surface
+# programs: their purpose is to expose state shapes and tactic heads that the
+# first synthetic catalog never emitted, not to add a second proof procedure.
+def _logic_assumption(index: int) -> Candidate:
+    term = _term(index)
+    atom = f"({term}) = ({term})"
+    return _candidate(
+        f"forall n. ({atom}) -> ({atom})",
+        ("intro n", "intro h", "assumption"),
+        term=term,
+    )
+
+
+def _logic_exfalso(index: int) -> Candidate:
+    term = _term(index)
+    return _candidate(
+        f"forall n. S ({term}) = 0 -> ({term}) = ({term})",
+        ("intro n", "intro h", "exfalso", "apply PA1", "exact h"),
+        term=term,
+    )
+
+
+def _logic_specialize(index: int) -> Candidate:
+    term = _term(index)
+    return _candidate(
+        f"forall n. (forall x. x + 0 = x) -> ({term}) + 0 = ({term})",
+        ("intro n", "intro h", f"specialize h {term}", "exact h"),
+        term=term,
+    )
+
+
+def _logic_forall_elim(index: int) -> Candidate:
+    term = _term(index)
+    return _candidate(
+        f"forall n. (forall x. x + 0 = x) -> ({term}) + 0 = ({term})",
+        ("intro n", "intro h", f"forall_elim h {term}", "exact h"),
+        term=term,
+    )
+
+
+def _logic_have(index: int) -> Candidate:
+    term = _term(index)
+    atom = f"({term}) = ({term})"
+    return _candidate(
+        f"forall n. {atom}",
+        ("intro n", f"have h : {atom}", "refl", "exact h"),
+        term=term,
+    )
+
+
+def _logic_suffices(index: int) -> Candidate:
+    term = _term(index)
+    atom = f"({term}) = ({term})"
+    return _candidate(
+        f"forall n. {atom}",
+        ("intro n", f"suffices h : {atom}", "exact h", "refl"),
+        term=term,
+    )
+
+
+def _induction_add_zero(index: int) -> Candidate:
+    gate = f"forall a. ({_term(index, 'a')}) = ({_term(index, 'a')})"
+    return _candidate(
+        f"({gate}) -> forall n. 0 + n = n",
+        ("intro gate", "induction n", "simp", "simp [IH]"),
+        gate=gate,
+        induction_variable="n",
+    )
+
+
+def _induction_mul_zero(index: int) -> Candidate:
+    gate = f"forall a. ({_term(index, 'a')}) = ({_term(index, 'a')})"
+    return _candidate(
+        f"({gate}) -> forall n. 0 * n = 0",
+        ("intro gate", "induction n", "simp", "simp [IH]"),
+        gate=gate,
+        induction_variable="n",
+    )
+
+
+def _induction_add_one(index: int) -> Candidate:
+    gate = f"forall a. ({_term(index, 'a')}) = ({_term(index, 'a')})"
+    return _candidate(
+        f"({gate}) -> forall n. n + 0 = n",
+        ("intro gate", "induction n", "simp", "simp [IH]"),
+        gate=gate,
+        induction_variable="n",
+    )
+
+
+def _induction_explicit_ih(index: int) -> Candidate:
+    gate = f"forall a. ({_term(index, 'a')}) = ({_term(index, 'a')})"
+    return _candidate(
+        f"({gate}) -> forall n. 0 = 0",
+        ("intro gate", "induction n", "refl", "exact IH"),
+        gate=gate,
+        induction_variable="n",
+    )
+
+
+def _library_gate(index: int, shape: str) -> str:
+    term = _term(index, "z")
+    if shape == "refl":
+        return f"forall z. ({term}) = ({term})"
+    if shape == "add-zero":
+        return f"forall z. ({term}) + 0 = ({term})"
+    if shape == "successor":
+        return f"forall z. S ({term}) = S ({term})"
+    if shape == "mul-zero":
+        return f"forall z. ({term}) * 0 = ({term}) * 0"
+    raise RuntimeError(f"unknown internal library gate shape {shape!r}")
+
+
+def _library_selection(
+    index: int,
+    specs: Sequence[TheoremSpec] = MODEL_V2_THEOREM_SPECS,
+) -> tuple[TheoremSpec, int]:
+    if not specs:
+        raise RuntimeError("model-v2 has no checked library theorems")
+    return specs[index % len(specs)], index // len(specs)
+
+
+def _library_import(index: int) -> Candidate:
+    spec, variant = _library_selection(index)
+    gate = _library_gate(variant, "refl")
+    return _candidate(
+        f"({gate}) -> ({spec.statement})",
+        ("intro gate", f"use {spec.name}", f"exact {spec.name}"),
+        gate=gate,
+        retrieved_theorems=[spec.name],
+        library_statement=spec.statement,
+    )
+
+
+def _library_conjunction(index: int) -> Candidate:
+    spec, variant = _library_selection(index)
+    gate = _library_gate(variant, "refl")
+    return _candidate(
+        f"({gate}) -> (({spec.statement}) /\\ ({gate}))",
+        (
+            "intro gate",
+            "split",
+            f"use {spec.name}",
+            f"exact {spec.name}",
+            "exact gate",
+        ),
+        gate=gate,
+        retrieved_theorems=[spec.name],
+        library_statement=spec.statement,
+    )
+
+
+def _library_have(index: int) -> Candidate:
+    spec, variant = _library_selection(index)
+    gate = _library_gate(variant, "add-zero")
+    return _candidate(
+        f"({gate}) -> ({spec.statement})",
+        (
+            "intro gate",
+            f"have imported : {spec.statement}",
+            f"use {spec.name}",
+            f"exact {spec.name}",
+            "exact imported",
+        ),
+        gate=gate,
+        retrieved_theorems=[spec.name],
+        library_statement=spec.statement,
+    )
+
+
+def _authored_specs(minimum: int, maximum: int) -> tuple[TheoremSpec, ...]:
+    return tuple(
+        spec
+        for spec in MODEL_V2_THEOREM_SPECS
+        if spec.dependencies
+        and set(spec.dependencies) <= MODEL_V2_THEOREMS
+        and minimum <= 1 + len(spec.dependencies) + len(spec.script) <= maximum
+    )
+
+
+MEDIUM_AUTHORED_SPECS = _authored_specs(8, 15)
+LONG_AUTHORED_SPECS = _authored_specs(16, 32)
+
+
+def _library_authored(index: int, specs: Sequence[TheoremSpec], shape: str) -> Candidate:
+    spec, variant = _library_selection(index, specs)
+    gate = _library_gate(variant, shape)
+    imports = tuple(f"use {dependency}" for dependency in spec.dependencies)
+    return _candidate(
+        f"({gate}) -> ({spec.statement})",
+        ("intro gate", *imports, *spec.script),
+        gate=gate,
+        retrieved_theorems=list(spec.dependencies),
+        authored_theorem=spec.name,
+        library_statement=spec.statement,
+    )
+
+
+def _library_authored_medium(index: int) -> Candidate:
+    return _library_authored(index, MEDIUM_AUTHORED_SPECS, "successor")
+
+
+def _library_authored_long(index: int) -> Candidate:
+    return _library_authored(index, LONG_AUTHORED_SPECS, "mul-zero")
+
+
 SCHEMAS: tuple[Schema, ...] = (
     Schema("logic-identity", "logic", ("logic", "intro", "exact"), _logic_identity),
     Schema("logic-and-swap", "logic", ("logic", "cases", "split"), _logic_and_swap),
@@ -682,6 +975,126 @@ SCHEMAS: tuple[Schema, ...] = (
         ("arithmetic", "compact_arith"),
         _arithmetic_compact,
     ),
+    Schema(
+        "logic-assumption",
+        "logic",
+        ("logic", "context", "assumption"),
+        _logic_assumption,
+        lane="foundation",
+        weight=3,
+    ),
+    Schema(
+        "logic-exfalso",
+        "logic",
+        ("logic", "false-elimination", "exfalso"),
+        _logic_exfalso,
+        lane="foundation",
+        weight=3,
+    ),
+    Schema(
+        "logic-specialize",
+        "logic",
+        ("logic", "universal", "specialize"),
+        _logic_specialize,
+        lane="foundation",
+        weight=3,
+    ),
+    Schema(
+        "logic-forall-elim",
+        "logic",
+        ("logic", "universal", "forall_elim"),
+        _logic_forall_elim,
+        lane="foundation",
+        weight=3,
+    ),
+    Schema(
+        "logic-have",
+        "logic",
+        ("logic", "local-cut", "have"),
+        _logic_have,
+        lane="foundation",
+        weight=3,
+    ),
+    Schema(
+        "logic-suffices",
+        "logic",
+        ("logic", "local-cut", "suffices"),
+        _logic_suffices,
+        lane="foundation",
+        weight=3,
+    ),
+    Schema(
+        "induction-add-zero",
+        "arithmetic",
+        ("arithmetic", "induction", "IH", "addition"),
+        _induction_add_zero,
+        lane="induction",
+        weight=1,
+    ),
+    Schema(
+        "induction-mul-zero",
+        "arithmetic",
+        ("arithmetic", "induction", "IH", "multiplication"),
+        _induction_mul_zero,
+        lane="induction",
+        weight=1,
+    ),
+    Schema(
+        "induction-add-one",
+        "arithmetic",
+        ("arithmetic", "induction", "IH", "successor"),
+        _induction_add_one,
+        lane="induction",
+        weight=1,
+    ),
+    Schema(
+        "induction-explicit-IH",
+        "logic",
+        ("logic", "induction", "IH", "exact"),
+        _induction_explicit_ih,
+        lane="induction",
+        weight=1,
+    ),
+    Schema(
+        "library-import",
+        "logic",
+        ("library", "retrieval", "use"),
+        _library_import,
+        lane="library",
+        weight=5,
+    ),
+    Schema(
+        "library-conjunction",
+        "logic",
+        ("library", "retrieval", "composition", "split"),
+        _library_conjunction,
+        lane="library",
+        weight=1,
+    ),
+    Schema(
+        "library-have",
+        "logic",
+        ("library", "retrieval", "composition", "have"),
+        _library_have,
+        lane="library",
+        weight=1,
+    ),
+    Schema(
+        "library-authored-medium",
+        "arithmetic",
+        ("library", "retrieval", "composition", "medium"),
+        _library_authored_medium,
+        lane="library",
+        weight=1,
+    ),
+    Schema(
+        "library-authored-long",
+        "arithmetic",
+        ("library", "retrieval", "composition", "long"),
+        _library_authored_long,
+        lane="library",
+        weight=1,
+    ),
 )
 
 
@@ -689,12 +1102,33 @@ def _validate_catalog() -> None:
     names: set[str] = set()
     if {schema.domain for schema in SCHEMAS} != set(DOMAINS):
         raise GenerationError("synthetic catalog does not cover every declared domain")
+    if {schema.lane for schema in SCHEMAS} != set(LANES):
+        raise GenerationError("synthetic catalog does not cover every curriculum lane")
+    if (
+            len(THEOREMS) < EXPECTED_PUBLIC_LIBRARY_COUNT
+        or len(MODEL_V2_THEOREMS) != EXPECTED_MODEL_V2_LIBRARY_COUNT
+    ):
+        raise GenerationError(
+            "model-v2 theorem counts differ from the pinned checked authority"
+        )
+    if MODEL_V2_THEOREMS & EXCLUDED_LIBRARY_NAMES:
+        raise GenerationError("model-v2 import authority contains a sealed descendant")
+    if capability_sha256(POLICY_CAPABILITIES) != model_v2_environment().sha256:
+        raise GenerationError(
+            "model-v2 runner authority differs from the prompt environment"
+        )
+    if not MEDIUM_AUTHORED_SPECS or not LONG_AUTHORED_SPECS:
+        raise GenerationError("model-v2 needs both medium and long authored routes")
     for schema in SCHEMAS:
         if not _safe_text(schema.name, nonempty=True) or schema.name in names:
             raise GenerationError(f"duplicate or unsafe schema name {schema.name!r}")
         names.add(schema.name)
         if schema.domain not in DOMAINS:
             raise GenerationError(f"schema {schema.name!r} has an unknown domain")
+        if schema.lane not in LANES:
+            raise GenerationError(f"schema {schema.name!r} has an unknown lane")
+        if type(schema.weight) is not int or schema.weight < 1:
+            raise GenerationError(f"schema {schema.name!r} has an invalid weight")
         if not schema.tags or not all(_safe_text(tag, nonempty=True) for tag in schema.tags):
             raise GenerationError(f"schema {schema.name!r} has unsafe tags")
 
@@ -723,7 +1157,12 @@ def _canonical_statement(candidate: Candidate, schema: Schema) -> str:
             f"schema {schema.name!r} emitted a non-closed statement: "
             + ", ".join(free_names)
         )
-    return pretty_formula(formula, [])
+    canonical = pretty_formula(formula, [])
+    if canonical in HELD_OUT_FORMULAS:
+        raise GenerationError(
+            f"schema {schema.name!r} emitted a sealed held-out target"
+        )
+    return canonical
 
 
 def _rank(seed: str, epoch: int, label: str) -> str:
@@ -740,28 +1179,52 @@ def _schema_offset(seed: str, schema: Schema) -> int:
     return int.from_bytes(hashlib.sha256(material).digest()[:4], "big") % 20_000
 
 
-def _schema_schedule(seed: str, epoch: int) -> Iterator[Schema]:
-    """Interleave domains, then deterministically permute schemas within each."""
+def _schema_schedule(seed: str, lane: str) -> Iterator[Schema]:
+    """Yield an infinite deterministic weighted schedule inside one lane."""
 
-    domain_order = sorted(DOMAINS, key=lambda item: (_rank(seed, epoch, item), item))
-    queues = {
-        domain: sorted(
-            (schema for schema in SCHEMAS if schema.domain == domain),
-            key=lambda item: (_rank(seed, epoch, item.name), item.name),
-        )
-        for domain in domain_order
-    }
-    position = 0
+    schemas = tuple(schema for schema in SCHEMAS if schema.lane == lane)
+    if not schemas:
+        raise GenerationError(f"curriculum lane {lane!r} has no schemas")
+    epoch = 0
     while True:
-        emitted = False
-        for domain in domain_order:
-            items = queues[domain]
-            if position < len(items):
-                yield items[position]
-                emitted = True
-        if not emitted:
-            return
-        position += 1
+        tickets = [
+            (schema, ticket)
+            for schema in schemas
+            for ticket in range(schema.weight)
+        ]
+        tickets.sort(
+            key=lambda item: (
+                _rank(seed, epoch, f"{lane}:{item[0].name}:{item[1]}"),
+                item[0].name,
+                item[1],
+            )
+        )
+        for schema, _ in tickets:
+            yield schema
+        epoch += 1
+
+
+def _lane_order(
+    seed: str,
+    rows: int,
+    lane_rows: Counter[str],
+) -> tuple[str, ...]:
+    """Put the most under-target row lane first, with a stable seeded tie."""
+
+    total_weight = sum(LANE_WEIGHT_BY_NAME.values())
+    return tuple(
+        sorted(
+            LANES,
+            key=lambda lane: (
+                -(
+                    (rows + 1) * LANE_WEIGHT_BY_NAME[lane]
+                    - lane_rows[lane] * total_weight
+                ),
+                _rank(seed, rows, f"lane:{lane}"),
+                lane,
+            ),
+        )
+    )
 
 
 def _generation_fingerprint(
@@ -773,14 +1236,14 @@ def _generation_fingerprint(
     payload = {
         "format": FORMAT,
         "version": VERSION,
+        "profile": PROFILE,
         "catalog_version": CATALOG_VERSION,
         "generator": GENERATOR,
         "config": {"seed": seed, "row_budget": row_budget},
-        "environment": {
-            "surface": POLICY_CAPABILITIES.label,
-            "classical": False,
-            "environment_sha256": capability_sha256(POLICY_CAPABILITIES),
-            "capabilities": _capability_record(),
+        "environment": environment_record(model_v2_environment()),
+        "library_snapshot": _library_snapshot(),
+        "curriculum": {
+            "lane_row_weights": dict(LANE_WEIGHTS),
         },
         "runtime": _runtime_record(),
         "sources": sources,
@@ -789,6 +1252,8 @@ def _generation_fingerprint(
                 "name": schema.name,
                 "domain": schema.domain,
                 "tags": list(schema.tags),
+                "lane": schema.lane,
+                "weight": schema.weight,
             }
             for schema in SCHEMAS
         ],
@@ -809,7 +1274,7 @@ def _root_id(schema: Schema, canonical_statement: str) -> str:
         separators=(",", ":"),
     ).encode("utf-8")
     digest = hashlib.sha256(encoded).hexdigest()[:20]
-    return f"synthetic-v1/{schema.name}/{digest}"
+    return f"synthetic-v2/{schema.name}/{digest}"
 
 
 def _checked_result(
@@ -832,7 +1297,7 @@ def _checked_result(
         or result.environment_sha256 != capability_sha256(POLICY_CAPABILITIES)
         or result.classical is not False
     ):
-        raise GenerationError(f"schema {schema.name!r} escaped model-v1 authority")
+        raise GenerationError(f"schema {schema.name!r} escaped model-v2 authority")
     if result.trace is None or not result.trace:
         raise GenerationError(f"schema {schema.name!r} returned no binding trace")
     transitions = tuple(record for record in result.trace if "v" in record)
@@ -881,6 +1346,7 @@ def _metadata_record(
         "classical": False,
         "surface": POLICY_CAPABILITIES.label,
         "environment_sha256": capability_sha256(POLICY_CAPABILITIES),
+        "library_identity_sha256": model_v2_library_identity_sha256(),
         "capabilities": _capability_record(),
         "statement": canonical_statement,
         "statement_sha256": _sha256_text(canonical_statement),
@@ -888,16 +1354,27 @@ def _metadata_record(
         "template": schema.name,
         "domain": schema.domain,
         "tags": list(schema.tags),
+        "lane": schema.lane,
+        "schema_weight": schema.weight,
         "seed": seed,
         "ordinal": ordinal,
         "root": root,
-        "variant": "authored-v1",
+        "variant": "authored-v2",
         "parents": [],
         "transformations": ["proof-first-schema-instantiation"],
         "parameter_index": parameter_index,
         "parameters": candidate.parameters,
         "tactics": list(candidate.tactics),
         "tactic_rows": len(candidate.tactics),
+        "length_band": (
+            "short"
+            if len(candidate.tactics) <= 7
+            else "medium"
+            if len(candidate.tactics) <= 15
+            else "long"
+            if len(candidate.tactics) <= 32
+            else "extended"
+        ),
         "proof_nodes": result.proof_nodes,
     }
 
@@ -1056,80 +1533,148 @@ def generate_corpus(
     proof_nodes = 0
     domain_counts: Counter[str] = Counter()
     schema_counts: Counter[str] = Counter()
+    schema_row_counts: Counter[str] = Counter()
+    lane_counts: Counter[str] = Counter()
+    lane_row_counts: Counter[str] = Counter()
+    length_band_counts: Counter[str] = Counter()
+    length_band_row_counts: Counter[str] = Counter()
     tactic_heads: Counter[str] = Counter()
+    library_use_counts: Counter[str] = Counter()
+    schema_attempts: Counter[str] = Counter()
     seen_statements: set[str] = set()
     seen_roots: set[str] = set()
-    epoch = 0
+    ih_observation_rows = 0
+    lane_schedules = {
+        lane: _schema_schedule(seed, lane)
+        for lane in LANES
+    }
+    attempts_per_lane = {
+        lane: 4 * sum(
+            schema.weight for schema in SCHEMAS if schema.lane == lane
+        )
+        for lane in LANES
+    }
     manifest: dict[str, object]
 
     try:
         while rows < row_budget:
             remaining = row_budget - rows
             made_progress = False
-            for schema in _schema_schedule(seed, epoch):
-                parameter_index = _schema_offset(seed, schema) + epoch
-                candidate = schema.build(parameter_index)
-                if len(candidate.tactics) > remaining:
-                    continue
-                canonical = _canonical_statement(candidate, schema)
-                if canonical in seen_statements:
-                    continue
-                root = _root_id(schema, canonical)
-                if root in seen_roots:
-                    raise GenerationError(
-                        f"schema {schema.name!r} generated duplicate root {root!r}"
+            for lane in _lane_order(seed, rows, lane_row_counts):
+                for _ in range(attempts_per_lane[lane]):
+                    schema = next(lane_schedules[lane])
+                    occurrence = schema_attempts[schema.name]
+                    schema_attempts[schema.name] += 1
+                    parameter_index = _schema_offset(seed, schema) + occurrence
+                    candidate = schema.build(parameter_index)
+                    if len(candidate.tactics) > remaining:
+                        continue
+                    canonical = _canonical_statement(candidate, schema)
+                    if canonical in seen_statements:
+                        continue
+                    root = _root_id(schema, canonical)
+                    if root in seen_roots:
+                        raise GenerationError(
+                            f"schema {schema.name!r} generated duplicate root {root!r}"
+                        )
+
+                    ordinal = sessions + 1
+                    session_id = f"peano-synth-{fingerprint[:20]}-{ordinal:07d}"
+                    result = run_proof(
+                        candidate.statement,
+                        candidate.tactics,
+                        request_id=f"synthetic-{schema.name}-{ordinal}",
+                        classical=False,
+                        capabilities=POLICY_CAPABILITIES,
+                        trace_sink=trace_writer,
+                        session_id=session_id,
                     )
+                    transitions = _checked_result(
+                        result,
+                        schema=schema,
+                        candidate=candidate,
+                        canonical_statement=canonical,
+                    )
+                    metadata = _metadata_record(
+                        schema=schema,
+                        candidate=candidate,
+                        result=result,
+                        canonical_statement=canonical,
+                        root=root,
+                        seed=seed,
+                        parameter_index=parameter_index,
+                        ordinal=ordinal,
+                    )
+                    metadata_writer.write(_line_json(metadata))
 
-                ordinal = sessions + 1
-                session_id = f"peano-synth-{fingerprint[:20]}-{ordinal:07d}"
-                result = run_proof(
-                    candidate.statement,
-                    candidate.tactics,
-                    request_id=f"synthetic-{schema.name}-{ordinal}",
-                    classical=False,
-                    capabilities=POLICY_CAPABILITIES,
-                    trace_sink=trace_writer,
-                    session_id=session_id,
-                )
-                transitions = _checked_result(
-                    result,
-                    schema=schema,
-                    candidate=candidate,
-                    canonical_statement=canonical,
-                )
-                metadata = _metadata_record(
-                    schema=schema,
-                    candidate=candidate,
-                    result=result,
-                    canonical_statement=canonical,
-                    root=root,
-                    seed=seed,
-                    parameter_index=parameter_index,
-                    ordinal=ordinal,
-                )
-                metadata_writer.write(_line_json(metadata))
-
-                seen_statements.add(canonical)
-                seen_roots.add(root)
-                sessions += 1
-                rows += len(transitions)
-                proof_nodes += result.proof_nodes or 0
-                domain_counts[schema.domain] += 1
-                schema_counts[schema.name] += 1
-                tactic_heads.update(
-                    command.split(maxsplit=1)[0] for command in candidate.tactics
-                )
-                remaining = row_budget - rows
-                made_progress = True
-                if remaining == 0:
+                    transition_count = len(transitions)
+                    band = (
+                        "short"
+                        if transition_count <= 7
+                        else "medium"
+                        if transition_count <= 15
+                        else "long"
+                        if transition_count <= 32
+                        else "extended"
+                    )
+                    seen_statements.add(canonical)
+                    seen_roots.add(root)
+                    sessions += 1
+                    rows += transition_count
+                    proof_nodes += result.proof_nodes or 0
+                    domain_counts[schema.domain] += 1
+                    schema_counts[schema.name] += 1
+                    schema_row_counts[schema.name] += transition_count
+                    lane_counts[schema.lane] += 1
+                    lane_row_counts[schema.lane] += transition_count
+                    length_band_counts[band] += 1
+                    length_band_row_counts[band] += transition_count
+                    heads = tuple(
+                        command.split(maxsplit=1)[0]
+                        for command in candidate.tactics
+                    )
+                    tactic_heads.update(heads)
+                    for command in candidate.tactics:
+                        pieces = command.split(maxsplit=1)
+                        if pieces[0] == "use" and len(pieces) == 2:
+                            library_use_counts[pieces[1].split()[0]] += 1
+                    ih_observation_rows += sum(
+                        any(
+                            type(goal) is str and "IH :" in goal
+                            for goal in transition.get("goals_before", [])
+                        )
+                        for transition in transitions
+                    )
+                    made_progress = True
+                    break
+                if made_progress:
                     break
             if not made_progress:
                 raise GenerationError(
                     f"no unique schema instance can fill the remaining {remaining} row(s)"
                 )
-            epoch += 1
-            if epoch > row_budget * 2:
-                raise GenerationError("synthetic schedule exceeded its progress bound")
+
+        if row_budget >= MIN_BALANCE_AUDIT_ROWS:
+            for lane in ("induction", "library"):
+                lane_rows = lane_row_counts[lane]
+                if 5 * lane_rows < rows or 10 * lane_rows > 3 * rows:
+                    raise GenerationError(
+                        f"{lane} lane emitted {lane_rows}/{rows} rows outside "
+                        "the audited 20--30% curriculum band"
+                    )
+        if row_budget >= 10_000:
+            missing_heads = set(MODEL_V1_COMMANDS) - set(tactic_heads)
+            if missing_heads:
+                raise GenerationError(
+                    "10k curriculum omitted tactic head(s): "
+                    + ", ".join(sorted(missing_heads))
+                )
+            missing_imports = MODEL_V2_THEOREMS - set(library_use_counts)
+            if missing_imports:
+                raise GenerationError(
+                    "10k curriculum omitted allowed library import(s): "
+                    + ", ".join(sorted(missing_imports))
+                )
 
         _finish_staged(trace_stream)
         _finish_staged(metadata_stream)
@@ -1137,6 +1682,7 @@ def generate_corpus(
         manifest = {
             "format": FORMAT,
             "version": VERSION,
+            "profile": PROFILE,
             "trace_version": TRACE_VERSION,
             "catalog_version": CATALOG_VERSION,
             "generator": GENERATOR,
@@ -1145,14 +1691,18 @@ def generate_corpus(
             "config": {
                 "seed": seed,
                 "row_budget": row_budget,
-                "selection": "domain-interleaved-proof-first-v1",
-                "stopping": "complete-sessions-exact-positive-row-budget-v1",
+                "selection": "deficit-balanced-weighted-lanes-v2",
+                "stopping": "complete-sessions-exact-positive-row-budget-v2",
+                "lane_row_weights": dict(LANE_WEIGHTS),
+                "balance_audit_minimum_rows": MIN_BALANCE_AUDIT_ROWS,
             },
-            "environment": {
-                "surface": POLICY_CAPABILITIES.label,
-                "classical": False,
-                "environment_sha256": capability_sha256(POLICY_CAPABILITIES),
-                "capabilities": _capability_record(),
+            "environment": environment_record(model_v2_environment()),
+            "library_snapshot": _library_snapshot(),
+            "evaluation_exclusion": {
+                "rule": "exact canonical target and theorem-name exclusion",
+                "held_out_contract_sha256": held_out_contract_sha256(),
+                "names": sorted(HELD_OUT_NAMES),
+                "formulas": sorted(HELD_OUT_FORMULAS),
             },
             "sources": sources,
             "schemas": [
@@ -1160,6 +1710,8 @@ def generate_corpus(
                     "name": schema.name,
                     "domain": schema.domain,
                     "tags": list(schema.tags),
+                    "lane": schema.lane,
+                    "weight": schema.weight,
                 }
                 for schema in SCHEMAS
             ],
@@ -1186,14 +1738,41 @@ def generate_corpus(
                 "unique_canonical_statements": len(seen_statements),
                 "sessions_by_domain": dict(sorted(domain_counts.items())),
                 "sessions_by_schema": dict(sorted(schema_counts.items())),
+                "rows_by_schema": dict(sorted(schema_row_counts.items())),
+                "sessions_by_lane": {
+                    lane: lane_counts[lane] for lane in LANES
+                },
+                "rows_by_lane": {
+                    lane: lane_row_counts[lane] for lane in LANES
+                },
+                "sessions_by_length_band": dict(
+                    sorted(length_band_counts.items())
+                ),
+                "rows_by_length_band": dict(
+                    sorted(length_band_row_counts.items())
+                ),
+                "transitions_with_induction_hypothesis": ih_observation_rows,
+                "library_use": dict(sorted(library_use_counts.items())),
+                "distinct_library_imports": len(library_use_counts),
                 "tactic_heads": dict(sorted(tactic_heads.items())),
+            },
+            "curriculum": {
+                "target_row_weights": dict(LANE_WEIGHTS),
+                "audited_row_bands": {
+                    "induction": {"minimum_percent": 20, "maximum_percent": 30},
+                    "library": {"minimum_percent": 20, "maximum_percent": 30},
+                },
+                "induction_or_ih_session_rows": lane_row_counts["induction"],
+                "library_retrieval_or_composition_rows": lane_row_counts["library"],
+                "all_command_heads_required_at_rows": 10_000,
+                "all_allowed_imports_required_at_rows": 10_000,
             },
             "genealogy": {
                 "root": "sha256(catalog_version, schema, canonical_statement)",
                 "family": "root-specific; descendants share the exact root value",
                 "lineage": "root-specific; descendants share the exact root value",
                 "deduplication": "canonical statements are unique before execution",
-                "broad_taxonomy_fields": ["domain", "template", "tags"],
+                "broad_taxonomy_fields": ["domain", "template", "tags", "lane"],
                 "parents": "empty for these independently sampled roots",
             },
             "limitations": [
@@ -1203,14 +1782,14 @@ def generate_corpus(
                     "a separate preference corpus"
                 ),
                 "no natural-language formalization pairs",
-                "no induction or planner-generated invariants in catalog version 2",
+                "induction motives are proof-first schemas, not planner-generated invariants",
                 (
                     "schema similarity remains across IID roots; family-OOD "
                     "evaluation must hold out whole templates"
                 ),
                 (
-                    "row balance is deterministic domain interleaving, not an "
-                    "optimized tactic-frequency distribution"
+                    "lane balance is deterministic; individual tactic heads remain "
+                    "naturally frequency-skewed inside checked proofs"
                 ),
             ],
         }
@@ -1241,6 +1820,15 @@ def generate_corpus(
 
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--profile",
+        choices=(PROFILE,),
+        required=True,
+        help=(
+            "required safety acknowledgement; model-v2 artifacts must not "
+            "overwrite the frozen model-v1 release"
+        ),
+    )
     parser.add_argument("--trace-output", required=True)
     parser.add_argument("--metadata-output", required=True)
     parser.add_argument("--manifest", required=True)
@@ -1289,7 +1877,10 @@ __all__ = [
     "Schema",
     "GenerationError",
     "GenerationResult",
+    "PROFILE",
     "POLICY_CAPABILITIES",
+    "MODEL_V2_THEOREMS",
+    "LANE_WEIGHTS",
     "SCHEMAS",
     "generate_corpus",
     "main",

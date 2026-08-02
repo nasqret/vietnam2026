@@ -14,8 +14,8 @@ and fetches application sources concurrently while Pyodide starts. Complete vers
 are uploaded before the HTML pointer and retained after promotion; an unversioned response must
 revalidate.
 
-The browser artifact for the 247-theorem runtime is build `2026-07-29j` with
-manifest identity `a-c983d7c60450`. These labels identify local built bytes;
+The browser artifact for the 247-theorem runtime is build `2026-07-29k` with
+manifest identity `a-77df7c0860bc`. These labels identify local built bytes;
 they do not assert that anything has been staged or deployed.
 
 This optimization does not weaken the [[trusted-kernel]] boundary. Network completion order never

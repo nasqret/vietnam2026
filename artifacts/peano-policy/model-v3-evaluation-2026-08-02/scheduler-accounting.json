@@ -1,0 +1,39 @@
+{
+  "cluster": "WMI",
+  "format": "peano-policy-wmi-scheduler-accounting",
+  "jobs": [
+    {
+      "elapsed": "05:36:19",
+      "end": "2026-08-01T13:52:45",
+      "exit_code": "0:0",
+      "job_id": "217859",
+      "job_name": "peano-wmi-qwen17-v3",
+      "node": "g3n1",
+      "start": "2026-08-01T08:16:26",
+      "state": "COMPLETED"
+    },
+    {
+      "elapsed": "00:03:51",
+      "end": "2026-08-02T06:58:38",
+      "exit_code": "0:0",
+      "job_id": "218171",
+      "job_name": "peano-wmi-qwen17-v3-eval",
+      "node": "g3n1",
+      "start": "2026-08-02T06:54:47",
+      "state": "COMPLETED"
+    },
+    {
+      "elapsed": "00:04:20",
+      "end": "2026-08-02T07:03:07",
+      "exit_code": "0:0",
+      "job_id": "218172",
+      "job_name": "peano-wmi-qwen17-v3-base",
+      "node": "g3n1",
+      "start": "2026-08-02T06:58:47",
+      "state": "COMPLETED"
+    }
+  ],
+  "observed_at_utc": "2026-08-02T05:56:50Z",
+  "source": "sacct -n -X -j 217859,218171,218172 --format=JobIDRaw,JobName%34,State,ExitCode,Elapsed,Start,End,NodeList -P",
+  "v": 1
+}

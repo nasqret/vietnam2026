@@ -19,6 +19,10 @@ from .contract import (
     held_out_contract_record,
     held_out_contract_sha256,
     model_v1_environment,
+    model_v2_environment,
+    model_v3_environment,
+    model_v3_prefix_environment,
+    prompt_environment,
 )
 from .data import (
     MAX_DATASET_LINE_BYTES,
@@ -29,9 +33,31 @@ from .data import (
     load_dataset_manifest,
 )
 from .manifest import sha256_file, sha256_json, write_manifest
+from .library_identity import MOD5_SOURCE_REPORT, PUBLIC_LIBRARY_CATALOG
+from .prompt import (
+    PEANO_PROMPT_V1,
+    PEANO_PROMPT_V2,
+    PEANO_PROMPT_V3,
+    CapabilityIdentity,
+    PromptEnvironment,
+    prompt_contract_sha256,
+    prompt_manifest_record,
+    prompt_version_from_manifest,
+)
+from peano_lab.kernel.formulas import (  # noqa: E402
+    Formula,
+    ParseError,
+    parse_formula_with_names,
+)
 
 
-ATTESTATION_VERSION = 1
+ATTESTATION_VERSION = 2
+REPLAY_WATCHDOG_SECONDS = 28_800
+V3_CATALOG_TRAJECTORY = "catalog-predecessor-prefix-v1"
+V3_SYNTHETIC_LANE = "synthetic-root-balanced"
+V3_SPLIT_LANES = (V3_CATALOG_TRAJECTORY, V3_SYNTHETIC_LANE)
+LEGACY_SPLIT_METHOD = "sha256-ranked-genealogy-formula-prompt-components-v2"
+V3_SPLIT_METHOD = "catalog-train-sha256-ranked-synthetic-components-v1"
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 PEANO_PYTHON = REPOSITORY_ROOT / "peano-lab" / "py"
 BUILDER = REPOSITORY_ROOT / "scripts" / "build_peano_policy_dataset.py"
@@ -40,6 +66,54 @@ EXPORTER = REPOSITORY_ROOT / "scripts" / "export_traces.py"
 
 class DatasetAttestationError(ValueError):
     """A dataset is not reproducibly authorized for the fixed policy run."""
+
+
+def _rendered_goal_target(
+    rendered: object,
+    *,
+    location: str,
+) -> Formula | None:
+    """Independently parse the rigid target after a trace goal's turnstile."""
+
+    if type(rendered) is not str:
+        raise DatasetAttestationError(f"{location}: goal must be canonical text")
+    _, turnstile, target_text = rendered.rpartition("⊢")
+    target_text = target_text.strip()
+    if not turnstile or not target_text:
+        raise DatasetAttestationError(
+            f"{location}: goal has no canonical turnstile/target"
+        )
+    if "?" in target_text:
+        return None
+    try:
+        target, _ = parse_formula_with_names(target_text)
+    except (ParseError, TypeError, ValueError, RecursionError) as exc:
+        raise DatasetAttestationError(
+            f"{location}: goal target is not a PA formula: {exc}"
+        ) from exc
+    return target
+
+
+def _validate_no_held_out_goal_targets(
+    goals: object,
+    *,
+    forbidden_targets: frozenset[Formula],
+    location: str,
+) -> None:
+    """Reject exact held-out propositions as supervised goal targets."""
+
+    if type(goals) is not list:
+        raise DatasetAttestationError(f"{location}: state must be a goal array")
+    for goal_index, rendered in enumerate(goals, 1):
+        target = _rendered_goal_target(
+            rendered,
+            location=f"{location} goal {goal_index}",
+        )
+        if target in forbidden_targets:
+            raise DatasetAttestationError(
+                f"{location}: model-v3 held-out formula appears as goal target "
+                f"{goal_index}"
+            )
 
 
 def _strict_object(pairs: list[tuple[str, object]]) -> dict[str, object]:
@@ -73,6 +147,14 @@ def _compiler_paths() -> tuple[Path, ...]:
     return (
         BUILDER,
         EXPORTER,
+        REPOSITORY_ROOT / "scripts" / "generate_peano_synthetic_corpus.py",
+        REPOSITORY_ROOT / "scripts" / "generate_peano_v3_balanced_corpus.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "contract.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "prompt.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "library_identity.py",
+        REPOSITORY_ROOT / "training" / "peano_policy" / "library_identity_v3.py",
+        MOD5_SOURCE_REPORT,
+        PUBLIC_LIBRARY_CATALOG,
         *sorted((PEANO_PYTHON / "peano_lab").rglob("*.py")),
     )
 
@@ -181,26 +263,295 @@ def _verify_source_artifacts(
     }
 
 
-def _expected_environment_record() -> dict[str, object]:
-    return environment_record(model_v1_environment())
+def _expected_environment(prompt_version: int) -> PromptEnvironment:
+    if prompt_version == PEANO_PROMPT_V1:
+        return model_v1_environment()
+    if prompt_version == PEANO_PROMPT_V2:
+        return model_v2_environment()
+    if prompt_version == PEANO_PROMPT_V3:
+        return model_v3_environment()
+    raise DatasetAttestationError("dataset uses an unsupported prompt version")
 
 
-def _verify_environment(manifest: Mapping[str, object]) -> dict[str, object]:
+def _verify_environments(
+    manifest: Mapping[str, object],
+) -> tuple[
+    dict[tuple[str, str, bool], dict[str, object]],
+    PromptEnvironment,
+    tuple[dict[str, object], ...],
+]:
     environments = manifest.get("environments")
-    expected = _expected_environment_record()
-    if type(environments) is not list or len(environments) != 1:
+    try:
+        prompt_version = prompt_version_from_manifest(manifest.get("prompt"))
+    except ValueError as exc:
+        raise DatasetAttestationError(str(exc)) from None
+    inference_environment = _expected_environment(prompt_version)
+    if type(environments) is not list or not environments:
         raise DatasetAttestationError(
-            "training data must contain exactly one fixed policy environment"
+            "training data must contain policy environment records"
         )
-    record = environments[0]
-    if type(record) is not dict or type(record.get("sessions")) is not int:
-        raise DatasetAttestationError("dataset environment record is malformed")
-    visible = {key: record.get(key) for key in expected}
-    if visible != expected or record["sessions"] < 1:
+    if prompt_version in {PEANO_PROMPT_V1, PEANO_PROMPT_V2}:
+        expected = environment_record(inference_environment)
+        if len(environments) != 1:
+            raise DatasetAttestationError(
+                "model-v1/v2 data must contain exactly one fixed environment"
+            )
+        record = environments[0]
+        if type(record) is not dict or type(record.get("sessions")) is not int:
+            raise DatasetAttestationError("dataset environment record is malformed")
+        if set(record) != {*expected, "sessions"}:
+            raise DatasetAttestationError(
+                "dataset environment fields are not canonical"
+            )
+        visible = {key: record.get(key) for key in expected}
+        if visible != expected or record["sessions"] < 1:
+            raise DatasetAttestationError(
+                f"dataset environment differs from model-v{prompt_version} authority"
+            )
+        key = (
+            str(expected["surface"]),
+            str(expected["environment_sha256"]),
+            bool(expected["classical"]),
+        )
+        return {key: expected}, inference_environment, (dict(record),)
+
+    verified: dict[tuple[str, str, bool], dict[str, object]] = {}
+    prefixes: set[int] = set()
+    canonical_records: list[dict[str, object]] = []
+    for position, record in enumerate(environments, 1):
+        if type(record) is not dict or type(record.get("sessions")) is not int:
+            raise DatasetAttestationError(
+                f"model-v3 environment {position} is malformed"
+            )
+        capability_record = record.get("capabilities")
+        if type(capability_record) is not dict:
+            raise DatasetAttestationError("model-v3 capabilities are malformed")
+        canonical_capabilities = {
+            "label": capability_record.get("label"),
+            "allowed_commands": capability_record.get("allowed_commands"),
+            "allowed_theorems": capability_record.get("allowed_theorems"),
+        }
+        try:
+            capabilities = CapabilityIdentity.from_record(canonical_capabilities)
+            resolved = prompt_environment(False, capabilities)
+        except (TypeError, ValueError) as exc:
+            raise DatasetAttestationError(
+                f"model-v3 environment {position} is unsupported: {exc}"
+            ) from None
+        expected = environment_record(resolved)
+        if (
+            resolved.prompt_version != PEANO_PROMPT_V3
+            or set(record) != {*expected, "sessions"}
+            or any(record.get(key) != value for key, value in expected.items())
+            or record["sessions"] < 1
+        ):
+            raise DatasetAttestationError(
+                f"model-v3 environment {position} is not canonical"
+            )
+        prefix = resolved.library_prefix_length
+        assert type(prefix) is int
+        library_size = inference_environment.library_full_length
+        assert type(library_size) is int
+        if prefix < library_size and record["sessions"] != 1:
+            raise DatasetAttestationError(
+                f"model-v3 predecessor prefix {prefix} must contain exactly "
+                "one catalog session"
+            )
+        if prefix in prefixes:
+            raise DatasetAttestationError("duplicate model-v3 library prefix")
+        prefixes.add(prefix)
+        key = (
+            str(expected["surface"]),
+            str(expected["environment_sha256"]),
+            bool(expected["classical"]),
+        )
+        if key in verified:
+            raise DatasetAttestationError("duplicate model-v3 environment identity")
+        verified[key] = expected
+        canonical_records.append(dict(record))
+    required_prefixes = set(range((inference_environment.library_full_length or 0) + 1))
+    if prefixes != required_prefixes:
+        missing = sorted(required_prefixes - prefixes)
+        extra = sorted(prefixes - required_prefixes)
         raise DatasetAttestationError(
-            "dataset environment differs from the fixed model-v1 authority"
+            "model-v3 authority schedule is incomplete"
+            + (f"; missing={missing}" if missing else "")
+            + (f"; extra={extra}" if extra else "")
         )
-    return expected
+    return verified, inference_environment, tuple(canonical_records)
+
+
+def _record_v3_curriculum_evidence(
+    record: Mapping[str, object],
+    evidence: dict[str, tuple[int, str, str]],
+    *,
+    library_size: int,
+    location: str,
+    split: str = "train",
+) -> str | None:
+    """Independently bind a dataset row to one model-v3 curriculum lane."""
+
+    if record.get("surface") != "model-v3":
+        return None
+    metadata = record.get("metadata")
+    if type(metadata) is not dict:
+        raise DatasetAttestationError(f"{location}: model-v3 metadata is malformed")
+    session = record.get("session")
+    prefix = metadata.get("library_prefix_length")
+    if (
+        type(session) is not str
+        or not session
+        or type(prefix) is not int
+        or isinstance(prefix, bool)
+        or not 0 <= prefix <= library_size
+    ):
+        raise DatasetAttestationError(
+            f"{location}: model-v3 curriculum prefix/session is malformed"
+        )
+    if prefix < library_size:
+        if (
+            metadata.get("trajectory") != V3_CATALOG_TRAJECTORY
+            or metadata.get("library_target_index") != prefix
+            or metadata.get("library_target_name") != record.get("theorem")
+            or metadata.get("statement") != record.get("formula")
+            or "lane" in metadata
+        ):
+            raise DatasetAttestationError(
+                f"{location}: predecessor prefix {prefix} lacks its exact "
+                "catalog trajectory evidence"
+            )
+        lane = V3_CATALOG_TRAJECTORY
+        if split != "train":
+            raise DatasetAttestationError(
+                f"{location}: catalog trajectory appears outside the training split"
+            )
+    else:
+        statement = record.get("formula")
+        tactics = metadata.get("tactics")
+        if (
+            metadata.get("lane") != V3_SYNTHETIC_LANE
+            or "trajectory" in metadata
+            or metadata.get("statement") != statement
+            or type(statement) is not str
+            or metadata.get("statement_sha256")
+            != hashlib.sha256(statement.encode("utf-8")).hexdigest()
+            or type(tactics) is not list
+            or not tactics
+            or not all(type(tactic) is str and tactic for tactic in tactics)
+            or metadata.get("script_sha256")
+            != hashlib.sha256(
+                json.dumps(
+                    tactics,
+                    ensure_ascii=False,
+                    separators=(",", ":"),
+                ).encode("utf-8")
+            ).hexdigest()
+            or metadata.get("tactic_rows") != len(tactics)
+        ):
+            raise DatasetAttestationError(
+                f"{location}: full prefix lacks approved synthetic lane evidence"
+            )
+        lane = V3_SYNTHETIC_LANE
+    metadata_sha256 = sha256_json(metadata)
+    claimed = (prefix, lane, metadata_sha256)
+    previous = evidence.setdefault(session, claimed)
+    if previous != claimed:
+        raise DatasetAttestationError(
+            f"{location}: session {session!r} changes curriculum evidence"
+        )
+    return lane
+
+
+def _verify_v3_curriculum_schedule(
+    evidence: Mapping[str, tuple[int, str, str]],
+    training_environments: tuple[dict[str, object], ...],
+    inference_environment: PromptEnvironment,
+) -> dict[str, object]:
+    """Derive the public authority schedule only from checked row evidence."""
+
+    library_size = inference_environment.library_full_length
+    if type(library_size) is not int or library_size < 1:
+        raise DatasetAttestationError("model-v3 inference library size is malformed")
+    sessions_by_prefix: dict[int, set[str]] = {}
+    for session, (prefix, lane, _) in evidence.items():
+        expected_lane = (
+            V3_CATALOG_TRAJECTORY
+            if prefix < library_size
+            else V3_SYNTHETIC_LANE
+        )
+        if lane != expected_lane:
+            raise DatasetAttestationError(
+                f"model-v3 prefix {prefix} uses the wrong curriculum lane"
+            )
+        sessions_by_prefix.setdefault(prefix, set()).add(session)
+    required_prefixes = set(range(library_size + 1))
+    if set(sessions_by_prefix) != required_prefixes:
+        missing = sorted(required_prefixes - set(sessions_by_prefix))
+        extra = sorted(set(sessions_by_prefix) - required_prefixes)
+        raise DatasetAttestationError(
+            "model-v3 row evidence does not cover the exact authority schedule"
+            + (f"; missing={missing}" if missing else "")
+            + (f"; extra={extra}" if extra else "")
+        )
+    for prefix in range(library_size):
+        if len(sessions_by_prefix[prefix]) != 1:
+            raise DatasetAttestationError(
+                f"model-v3 predecessor prefix {prefix} must have exactly one "
+                "catalog session"
+            )
+    if not sessions_by_prefix[library_size]:
+        raise DatasetAttestationError(
+            "model-v3 full prefix must contain synthetic sessions"
+        )
+
+    environment_counts: dict[int, int] = {}
+    for record in training_environments:
+        prefix = record.get("library_prefix_length")
+        sessions = record.get("sessions")
+        if type(prefix) is not int or type(sessions) is not int:
+            raise DatasetAttestationError(
+                "model-v3 training environment counts are malformed"
+            )
+        environment_counts[prefix] = sessions
+    observed_counts = {
+        prefix: len(sessions) for prefix, sessions in sessions_by_prefix.items()
+    }
+    if environment_counts != observed_counts:
+        raise DatasetAttestationError(
+            "model-v3 environment session counts differ from row evidence"
+        )
+    return {
+        "method": "catalog-predecessor-prefix-v1+full-synthetic-v1",
+        "full_library_sha256": (
+            inference_environment.library_full_identity_sha256
+        ),
+        "library_size": library_size,
+        "training_prefixes": sorted(sessions_by_prefix),
+        "inference_prefix": library_size,
+    }
+
+
+def _verify_v3_lane_populations(
+    claimed: object,
+    lane_sessions: Mapping[str, set[str]],
+    lane_rows: Mapping[str, int],
+    *,
+    location: str,
+) -> dict[str, dict[str, int]]:
+    """Recompute one split's exact catalog/synthetic session and row counts."""
+
+    actual = {
+        lane: {
+            "sessions": len(lane_sessions[lane]),
+            "rows": lane_rows[lane],
+        }
+        for lane in V3_SPLIT_LANES
+    }
+    if claimed != actual:
+        raise DatasetAttestationError(
+            f"{location}: split lane populations are forged or stale"
+        )
+    return actual
 
 
 def _stream_split(
@@ -208,18 +559,41 @@ def _stream_split(
     split: str,
     split_record: Mapping[str, object],
     *,
-    expected_environment: Mapping[str, object],
+    expected_environments: Mapping[
+        tuple[str, str, bool], Mapping[str, object]
+    ],
     forbidden_formulas: frozenset[str],
     forbidden_names: frozenset[str],
-) -> tuple[int, str, frozenset[str], frozenset[str]]:
+    forbidden_goal_targets: frozenset[Formula],
+    v3_curriculum_evidence: dict[str, tuple[int, str, str]] | None,
+    v3_library_size: int | None,
+) -> tuple[
+    int,
+    str,
+    frozenset[str],
+    frozenset[str],
+    dict[str, dict[str, int]] | None,
+]:
+    expected_split_fields = {"groups", "sessions", "rows", "sha256"}
+    if v3_curriculum_evidence is not None:
+        expected_split_fields.add("lane_populations")
+    if set(split_record) != expected_split_fields:
+        raise DatasetAttestationError(
+            f"{path}: split manifest fields are not canonical"
+        )
     digest = hashlib.sha256()
     rows = 0
     formulas: set[str] = set()
     prompts: set[str] = set()
+    sessions: set[str] = set()
+    lane_sessions = {lane: set() for lane in V3_SPLIT_LANES}
+    lane_rows = {lane: 0 for lane in V3_SPLIT_LANES}
     try:
         stream = path.open("rb")
     except OSError as exc:
-        raise DatasetAttestationError(f"cannot open dataset split {path}: {exc}") from exc
+        raise DatasetAttestationError(
+            f"cannot open dataset split {path}: {exc}"
+        ) from exc
     with stream:
         for line_number, raw in enumerate(stream, 1):
             digest.update(raw)
@@ -244,12 +618,55 @@ def _stream_split(
                 )
             # This revalidates prompt/completion/capability redundancy.
             example_from_record(record, line_number)
-            environment = {
+            if v3_curriculum_evidence is not None:
+                if type(v3_library_size) is not int:
+                    raise DatasetAttestationError(
+                        "model-v3 curriculum evidence has no library size"
+                    )
+                lane = _record_v3_curriculum_evidence(
+                    record,
+                    v3_curriculum_evidence,
+                    library_size=v3_library_size,
+                    location=f"{path}:{line_number}",
+                    split=split,
+                )
+                if lane is None:
+                    raise DatasetAttestationError(
+                        f"{path}:{line_number}: model-v3 split contains another surface"
+                    )
+                lane_sessions[lane].add(str(record["session"]))
+                lane_rows[lane] += 1
+            if forbidden_goal_targets:
+                _validate_no_held_out_goal_targets(
+                    record["state"],
+                    forbidden_targets=forbidden_goal_targets,
+                    location=f"{path}:{line_number}",
+                )
+            key = (
+                str(record["surface"]),
+                str(record["environment_sha256"]),
+                bool(record["classical"]),
+            )
+            expected_environment = expected_environments.get(key)
+            if expected_environment is None:
+                raise DatasetAttestationError(
+                    f"{path}:{line_number}: row uses an unattested environment"
+                )
+            environment: dict[str, object] = {
                 "classical": record["classical"],
                 "surface": record["surface"],
                 "environment_sha256": record["environment_sha256"],
                 "capabilities": record["capabilities"],
             }
+            metadata = record["metadata"]
+            for field in (
+                "library_identity_sha256",
+                "library_full_identity_sha256",
+                "library_prefix_length",
+                "library_size",
+            ):
+                if field in expected_environment:
+                    environment[field] = metadata.get(field)
             if environment != expected_environment:
                 raise DatasetAttestationError(
                     f"{path}:{line_number}: row uses another policy environment"
@@ -262,11 +679,30 @@ def _stream_split(
                 )
             formulas.add(str(formula))
             prompts.add(str(record["prompt"]))
+            sessions.add(str(record["session"]))
             rows += 1
     actual_hash = digest.hexdigest()
-    if split_record.get("rows") != rows or split_record.get("sha256") != actual_hash:
+    if (
+        split_record.get("sessions") != len(sessions)
+        or split_record.get("rows") != rows
+        or split_record.get("sha256") != actual_hash
+    ):
         raise DatasetAttestationError(f"{path}: split counters/hash mismatch")
-    return rows, actual_hash, frozenset(formulas), frozenset(prompts)
+    lane_populations: dict[str, dict[str, int]] | None = None
+    if v3_curriculum_evidence is not None:
+        lane_populations = _verify_v3_lane_populations(
+            split_record.get("lane_populations"),
+            lane_sessions,
+            lane_rows,
+            location=str(path),
+        )
+    return (
+        rows,
+        actual_hash,
+        frozenset(formulas),
+        frozenset(prompts),
+        lane_populations,
+    )
 
 
 def _replay_builder(
@@ -276,9 +712,16 @@ def _replay_builder(
     split_paths: Mapping[str, Path],
 ) -> None:
     split = manifest.get("split")
-    if type(split) is not dict or split.get("method") != (
-        "sha256-ranked-genealogy-formula-prompt-components-v2"
-    ):
+    try:
+        prompt_version = prompt_version_from_manifest(manifest.get("prompt"))
+    except ValueError as exc:
+        raise DatasetAttestationError(str(exc)) from None
+    expected_method = (
+        V3_SPLIT_METHOD
+        if prompt_version == PEANO_PROMPT_V3
+        else LEGACY_SPLIT_METHOD
+    )
+    if type(split) is not dict or split.get("method") != expected_method:
         raise DatasetAttestationError("dataset uses an unsupported split method")
     seed = split.get("seed")
     val_fraction = split.get("val_fraction")
@@ -319,7 +762,12 @@ def _replay_builder(
             env=environment,
             capture_output=True,
             text=True,
-            timeout=3_600,
+            # The exact 78,494-row model-v3 first build on WMI took 5h07m.
+            # Independent replay executes the same checked builder, so a
+            # four-hour watchdog would deterministically reject valid data.
+            # This remains a hard failure bound, with roughly 56% headroom
+            # over that measured build rather than an acceptance criterion.
+            timeout=REPLAY_WATCHDOG_SECONDS,
         )
         if completed.returncode != 0:
             error = " ".join((completed.stderr or completed.stdout).split())
@@ -353,13 +801,24 @@ def attest_dataset(train_path: Path, eval_path: Path) -> dict[str, object]:
     manifest = load_dataset_manifest(manifest_path)
     compiler = _verify_compiler(manifest)
     traces, metadata, source_hashes = _verify_source_artifacts(manifest)
-    expected_environment = _verify_environment(manifest)
+    expected_environments, inference_environment, training_environments = (
+        _verify_environments(manifest)
+    )
+    prompt_version = inference_environment.prompt_version
     split_table = manifest.get("splits")
     if type(split_table) is not dict or tuple(split_table) != SPLITS:
         raise DatasetAttestationError("dataset split table is not canonical")
 
-    forbidden_formulas = frozenset(canonical_held_out_formulas())
-    held_out = held_out_contract_record()
+    forbidden_formulas = frozenset(canonical_held_out_formulas(prompt_version))
+    forbidden_goal_targets = (
+        frozenset(
+            parse_formula_with_names(source)[0]
+            for source in forbidden_formulas
+        )
+        if prompt_version == PEANO_PROMPT_V3
+        else frozenset()
+    )
+    held_out = held_out_contract_record(prompt_version)
     forbidden_names = frozenset(
         str(record["name"]) for record in held_out["goals"]  # type: ignore[index]
     )
@@ -370,23 +829,37 @@ def attest_dataset(train_path: Path, eval_path: Path) -> dict[str, object]:
     formula_sets: dict[str, frozenset[str]] = {}
     prompt_sets: dict[str, frozenset[str]] = {}
     dataset_digest = hashlib.sha256()
+    v3_curriculum_evidence: dict[str, tuple[int, str, str]] | None = (
+        {} if prompt_version == PEANO_PROMPT_V3 else None
+    )
+    v3_library_size = (
+        inference_environment.library_full_length
+        if prompt_version == PEANO_PROMPT_V3
+        else None
+    )
     for split_name in SPLITS:
         split_record = split_table[split_name]
         if type(split_record) is not dict:
             raise DatasetAttestationError(f"{split_name} split record is malformed")
-        rows, digest, formulas, prompts = _stream_split(
+        rows, digest, formulas, prompts, lane_populations = _stream_split(
             split_paths[split_name],
             split_name,
             split_record,
-            expected_environment=expected_environment,
+            expected_environments=expected_environments,
             forbidden_formulas=forbidden_formulas,
             forbidden_names=forbidden_names,
+            forbidden_goal_targets=forbidden_goal_targets,
+            v3_curriculum_evidence=v3_curriculum_evidence,
+            v3_library_size=v3_library_size,
         )
         dataset_digest.update(split_name.encode("ascii") + b"\0")
         with split_paths[split_name].open("rb") as stream:
             for chunk in iter(lambda: stream.read(1024 * 1024), b""):
                 dataset_digest.update(chunk)
-        split_results[split_name] = {"rows": rows, "sha256": digest}
+        split_result: dict[str, object] = {"rows": rows, "sha256": digest}
+        if lane_populations is not None:
+            split_result["lane_populations"] = lane_populations
+        split_results[split_name] = split_result
         formula_sets[split_name] = formulas
         prompt_sets[split_name] = prompts
     for index, left in enumerate(SPLITS):
@@ -402,22 +875,55 @@ def attest_dataset(train_path: Path, eval_path: Path) -> dict[str, object]:
     if manifest.get("dataset_sha256") != dataset_digest.hexdigest():
         raise DatasetAttestationError("dataset aggregate hash mismatch")
 
+    authority_schedule: dict[str, object] | None = None
+    if prompt_version == PEANO_PROMPT_V3:
+        assert v3_curriculum_evidence is not None
+        authority_schedule = _verify_v3_curriculum_schedule(
+            v3_curriculum_evidence,
+            training_environments,
+            inference_environment,
+        )
+
     _replay_builder(traces, metadata, manifest, split_paths)
-    return {
+    result: dict[str, object] = {
         "format": "peano-policy-dataset-attestation",
-        "v": ATTESTATION_VERSION,
+        "v": (
+            ATTESTATION_VERSION
+            if prompt_version == PEANO_PROMPT_V3
+            else 1
+        ),
         "manifest_sha256": sha256_file(manifest_path),
         "attestor": _attestor_manifest(),
         "compiler": compiler,
         "source_artifacts": source_hashes,
-        "environment": expected_environment,
+        "prompt_version": prompt_version,
+        "prompt_contract": prompt_manifest_record(
+            prompt_version
+        ),
+        "prompt_contract_sha256": prompt_contract_sha256(
+            prompt_version
+        ),
+        "library_snapshot_sha256": inference_environment.library_sha256,
         "held_out_contract": held_out,
-        "held_out_contract_sha256": held_out_contract_sha256(),
+        "held_out_contract_sha256": held_out_contract_sha256(prompt_version),
         "held_out_contamination": 0,
         "splits": split_results,
         "dataset_sha256": dataset_digest.hexdigest(),
         "independent_replay": True,
     }
+    if prompt_version == PEANO_PROMPT_V3:
+        result["training_environments"] = list(training_environments)
+        result["training_environments_sha256"] = sha256_json(
+            list(training_environments)
+        )
+        assert authority_schedule is not None
+        result["authority_schedule"] = authority_schedule
+        result["inference_environment"] = environment_record(
+            inference_environment
+        )
+    else:
+        result["environment"] = next(iter(expected_environments.values()))
+    return result
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -439,6 +945,7 @@ def main(argv: list[str] | None = None) -> int:
 
 __all__ = [
     "ATTESTATION_VERSION",
+    "REPLAY_WATCHDOG_SECONDS",
     "DatasetAttestationError",
     "attest_dataset",
     "main",

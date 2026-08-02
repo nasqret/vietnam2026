@@ -51,10 +51,11 @@ job. The corrected same-source WMI chain then passed preparation (`171414`), 100
 0.7830/0.1362, but the kernel-judged result is 0/4 goals at pass@4. The earlier parity theorem also
 failed at pass@16 (`171428`), while one fresh direct-witness theorem succeeded once in eight samples
 and replayed to a seven-node kernel-checked proof (`171430`). This is a real within-template success,
-but attribution to LoRA training awaits the pretrained-base baseline; the adapter is not yet a
-dependable induction/order prover. The current dataset has
+but at that model-v1 checkpoint attribution to LoRA training still awaited its
+own pretrained-base baseline, and that adapter was not a dependable
+induction/order prover. The then-current dataset had
 no positive rows for nine tactic heads, including `induction`, `simp`, and `specialize`;
-the next registered iteration is a library-snapshot-bound `model-v2`, not a 4B scale-up on the same
+the next registered iteration was a library-snapshot-bound `model-v2`, not a 4B scale-up on the same
 curriculum. The owner authorized the compatibility-validated 26-record modular extension for the
 public catalog. After reconciliation with M20, fourteen records overlap exactly and twelve are
 new, giving 63 unique checked runtime theorems without changing the kernel.
@@ -94,12 +95,42 @@ The
 runtime now also has audited self-contained dependency sharing: a Cut embeds
 the full lemma and body proofs and is checked without external theorem names or
 hashes. This enlarges the trusted certificate checker but leaves the PA object
-language and logic unchanged. The earlier public-catalog full-surface audit yields 474
-prospective model-v2 transitions. They are valuable curriculum seeds, but only one is an
-`induction` label, so balanced generation and
-sampling remain necessary. See
-[`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest completed and staged
-milestone; production remains untouched behind the M14 cache-header blocker.
+language and logic unchanged. The earlier public-catalog full-surface audit
+yielded 474 prospective model-v2 transitions. It is retained as design
+history: only one is an `induction` label, so it cannot support the intended
+explorer by itself. The implemented successor is a distinct model-v3
+curriculum bound to the frozen first-247 declaration-order prefix of the
+current 384-theorem native ladder. It contributes
+8,494 exact authored predecessor-prefix transitions plus 70,000 deterministic
+synthetic rows over 51 schemas and 14 balanced root tactic heads. Catalog data
+is train-only; validation/test are synthetic-only, target formulas are
+rejected from every intermediate state, and a lossless v3-only prompt codec
+keeps the audited stress-proof maximum at 29,111 of 32,768 Qwen tokens. The
+pinned WMI Qwen3-1.7B Base rank-32/alpha-64 one-epoch run is registered. Exact-
+corpus continuation `173040` completed its independent gates and seal job
+`213641` published the verified immutable corpus. Current-source preparation
+`214264` failed closed before runtime smoke or model loading because the
+selected train curriculum exposed 73,446,475 tokens against the reviewed
+70,000,000-token ceiling. Retry `217123`, with only that ceiling raised to
+74,000,000, passed the exact token audit and reached saved-policy admission.
+It then failed closed because the in-memory model retained Accelerate's
+mixed-precision forward wrapper while the fresh reload used the bare inference
+forward. The shared admission path now unwraps and verifies the exact original
+forward before comparison. Fresh same-source preparation `217851` passed every
+gate, and guarded successor `217859` completed the registered 649-update
+rank-32 Qwen3-1.7B run. Trained evaluation `218171` and the
+revision/configuration-pinned pretrained comparison `218172`, whose report
+declares no PEFT adapter, completed with immutable four-goal `k=1` reports of
+3/4 and 0/4. The three trained proof claims independently kernel-replay; the
+induction-heavy goal remains unsolved. Version-pinned producer recoveries and
+the paired cross-binding pass as `paired_launch_smoke_admitted`, while the
+ordinary trained-report replay correctly continues to reject its incomplete
+historical nested environment. This is a narrow launch smoke, not bit-for-bit
+base identity, a statistical or causal comparison, broad PA ability, or
+induction capability. See
+[`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest staged
+browser milestone; production remains untouched behind the M14 cache-header
+blocker.
 
 ## Parallel foundational arithmetic and quadratic-reciprocity milestones
 
@@ -116,16 +147,18 @@ object language—and proves CRT recoding, canonical sorted factorization
 existence, extensional uniqueness, and the native Fundamental Theorem of
 Arithmetic. The exact FTA certificate checks from the empty context at 73,767
 nodes, depth 99 and 2,184 self-contained Cuts, with no DNE. The synchronized
-381-entry catalog has 23 `checked_existing`, 357 `checked_m20`, no remaining
+385-entry catalog has 23 `checked_existing`, 361 `checked_m20`, no remaining
 planned theorem, and one representation-blocked
 conventional integer-coefficient Bézout interface. A pinned Lean companion
 independently checks conventional list-based FTA up to permutation. Remaining
 M20's native arithmetic and synchronized release artifacts are complete. The
 main Jupyter Book now includes a guided zero-to-FTA route, a quadratic
-reciprocity campaign chapter, and a generated interactive 380-proof atlas;
-direct attached-browser UI inspection remains
-explicitly unclaimed, and
-model-v2 curriculum expansion is a separate milestone—not mathematical
+reciprocity campaign chapter, and a generated interactive 384-proof atlas;
+the integrated local browser candidate deterministically verifies as build
+`2026-08-02a`, application `a-cd3e54b68949`, with 149 worker sources. It
+assembles successfully in the local content-addressed stage, is not deployed,
+and direct attached-browser UI inspection remains
+explicitly unclaimed. Model-v3 curriculum training is a separate milestone—not mathematical
 admission of FTA or prime unboundedness. See
 [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md).
 
@@ -191,8 +224,8 @@ classical and engine-only nodes, and separately bounds embedded annotations.
 Static exact-topology evidence preserves the `19,088/74` proof receipt and now
 adds `142,346/84` annotations/envelope depth; the actual-formula false scaffold
 adds `157,579/92`. Bare `pa lib` no longer replays the ladder, and the browser
-worker inventory deterministically covers 147 Python files. A migration audit
-identifies 125 pre-admission absence assertions and the exact 317/29 public
+integrated worker inventory deterministically covers 149 Python sources. A
+migration audit identifies 125 pre-admission absence assertions and the exact 317/29 public
 partition. Full 136-gate WMI job `187187`, bound to approved dirty snapshot
 `2bab0898a5bc628a0e1f06b5e6cdf56af86fe39c2fdbeaaa4147ac43d2c7faaa`,
 failed closed after 39 seconds at gate 5. Four scaled-inverse gates passed;
@@ -226,5 +259,7 @@ depth witness. The Book endpoint is
 page one click away. This completes the static dependency-path presentation;
 the generator owns all 1,123 files under a pinned aggregate, and the full
 local Book build/integrity check is green. `PA00FW` remains pending layered
-closure after WMI job `187187` failed at its early dependency-hygiene gate;
+closure: WMI job `187187` failed at gate 5 on one redundant dependency, and
+replacement job `210714` failed at gate 15 after a second direct-edge mutation
+still checked. Neither fail-closed dependency-minimality result is a QR result;
 attached-browser validation also remains a publication gate.

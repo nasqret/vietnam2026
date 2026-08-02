@@ -94,22 +94,26 @@ a deployment claim. The generated 384-theorem snapshot has 1,806,923
 structural occurrences, 52,626 Cuts, and 329 Cut-bearing certificates, with
 ordered root
 `73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
-The synchronized vault has 474 notes and 4,818 resolved links, including all
-384 generated lemma notes. The last released corpus retains 13,344 transitions in 1,692
+The synchronized vault includes all 384 generated lemma notes. The released
+source-bound corpus retains 13,344 transitions in 1,692
 kernel-checked sessions under fingerprint
-`5b41aae76a1980c768fdf815f1ffc531fa86ebcdecf9bfae39de2dceb608f81c`;
+`6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
 its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
-all 247 authored QEDs. Local browser build `2026-07-29j` packages application
-`a-c983d7c60450`; it is not staged or deployed. The strict Jupyter Book rebuild
-completes over all 43 sources with 76 currently documented Sphinx warnings;
-its post-build integrity gate reports zero broken relative targets or
-fragments and byte-identical 1,123-file source and built Proof Explorer trees.
+all 247 authored QEDs. The integrated local browser candidate deterministically
+verifies as build `2026-08-02a`, application `a-cd3e54b68949`, with 149 worker
+sources; it assembles successfully in the local content-addressed stage and is
+not deployed. The
+strict Jupyter Book rebuild completes over all 45 sources; its post-build
+integrity gate reports zero broken relative targets or fragments and
+byte-identical explicit and defined Proof Explorer trees.
 The existing 194 deep links and 47 session blocks containing 287 commands
 verify. Its guided zero-to-FTA route and
 generated interactive atlas embed all 384 exact statements and authored proof
-recipes with searchable dependency navigation. The last recorded complete
-Peano Lab run passed all 1,101 tests on Python 3.10 in 1,050.08 seconds; the
-expanded QR checkpoint has focused local receipts and awaits its full WMI
+recipes with searchable dependency navigation. The selected post-merge
+compatibility matrix passed 1,183 tests with five intentional skips, including
+six loopback-server tests run outside the socket-restricted sandbox; this is
+not relabeled as the complete 220-file Peano suite. The expanded QR checkpoint
+has focused local receipts and awaits its full WMI
 receipt. Full 136-gate job `187187`, against exact dirty snapshot
 `2bab0898a5bc628a0e1f06b5e6cdf56af86fe39c2fdbeaaa4147ac43d2c7faaa`,
 failed closed after 39 seconds at gate 5: four scaled-inverse gates passed,
@@ -124,6 +128,44 @@ dependency-minimality failure, not a kernel-soundness failure or a QR result.
 No
 in-app browser was attached for this checkpoint, so direct Pyodide and rendered
 book UI smokes are explicitly unclaimed.
+
+The current proof-policy experiment is implemented as `model-v3`: 8,494 exact
+authored predecessor-prefix transitions from its frozen 247-theorem training
+authority plus
+a version-2 deterministic plan for 70,000 synthetic rows, 32,600 unique roots,
+and all 51 schemas. Its split and attestation rules keep catalog-derived proofs
+train-only and reject held-out targets from every intermediate state. A
+lossless v3-only prompt encoding keeps the audited worst stress-proof turn at
+29,111 of Qwen's 32,768 native tokens. WMI preparation `172536` completed the
+library lane and then failed closed on an over-limit synthetic ring instance;
+retry `172729` generated the complete split, continuation `173040` independently
+replayed and audited it, and job `213641` published the verified immutable seal
+with content SHA-256
+`7b22bdf083894e3d87b84fc463ff537a75eeecba8e34098429db215592ec6b5b`.
+The first current-source sealed-preparation attempt, job `214264`, then failed
+closed before runtime smoke or model loading: the selected train curriculum
+contained 73,446,475 tokens, above the reviewed 70,000,000-token ceiling. The
+reviewed retry, job `217123`, raised only that linear ceiling to 74,000,000 and
+passed the complete token audit. It then ran the representative LoRA and real-
+Trainer smoke steps but failed closed before publishing the smoke report: the
+live model still carried Accelerate's BF16/FP32 forward wrapper, while the
+fresh reload used the bare inference forward, so their exact output
+fingerprints could not agree. The repair removes and verifies that wrapper
+before saved-policy admission in both smoke and production. Fresh same-source
+preparation `217851` subsequently passed every gate, and guarded production job
+`217859` completed the registered 649-update rank-32 Qwen3-1.7B run on one WMI
+A100. Trained evaluation `218171` and the revision/configuration-pinned
+pretrained comparison `218172`, whose report declares no PEFT adapter,
+completed sequentially. Their immutable four-goal `k=1` reports are 3/4 and
+0/4; all three trained proof claims independently replay through the Peano
+kernel, while the induction-heavy goal remains unsolved. Ordinary replay still
+rejects the trained report's incomplete historical nested environment, but the
+version-pinned trained and pretrained recovery attestations and their paired
+cross-binding pass as `paired_launch_smoke_admitted`. This admits only that
+narrow launch smoke. Base weight shards were not content-hashed before and
+after loading, complete raw generation/extraction/search-edge transcripts are
+absent, and four goals cannot establish bit-for-bit base identity, a causal or
+statistical training effect, broad PA ability, or induction capability.
 
 ---
 

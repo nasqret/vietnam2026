@@ -13,6 +13,10 @@ uniqueness at 29,789/depth 82, and combined
 [[fundamental-theorem-of-arithmetic|FTA]] at 73,767 nodes/depth 99 with 2,184
 self-contained Cuts.
 
+The synchronized research catalog has 385 entries: 23 baseline checked, 361
+post-baseline checked, and one representation-blocked conventional
+integer-coefficient Bézout interface.
+
 The exact FTA certificate SHA-256 is
 `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
 It passes the 500,000-occurrence/100,000-object/depth-256 live/use gate with
@@ -31,8 +35,7 @@ The generated 384-theorem snapshot has 1,806,923 structural occurrences,
 52,626 Cuts, and ordered
 root
 `73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
-The synchronized vault has 474 notes and 4,818 resolved links, including all
-384 generated theorem notes.
+The synchronized vault includes all 384 generated theorem notes.
 
 ## Design and trust
 
