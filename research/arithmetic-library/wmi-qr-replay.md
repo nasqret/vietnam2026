@@ -63,8 +63,13 @@ The corrected upload is frozen at
 SHA-256 `989011c09d82dbbb239df43334e88553e1fb3e0d2f1033f93c5b8b1791851757`.
 Two independent archive builds are byte-identical: 338 members and 5,374,464
 bytes. After separate content-specific authorization it was uploaded,
-remotely verified, and submitted as full job `210714`; the initial scheduler
-state was `PENDING (Priority)`.
+remotely verified, and submitted as full job `210714`. Slurm reports
+`FAILED`, elapsed `00:08:29`, exit `1:0`. Gates 1--14 passed; gate 15 found
+that replacing the declared direct edge
+`odd_upper_remainder_reflection -> add_succ_left` did not invalidate the
+certificate, and 121 gates were unrun. This is a fail-closed
+dependency-minimality result, not a complete replay receipt or theorem
+admission.
 
 | Job | Snapshot prefix | Suite / provenance status |
 |---:|---|---|
@@ -102,7 +107,7 @@ state was `PENDING (Priority)`.
 | `173021` | `fd129d34bf4a31a1…` | `gauss-magnitude-permutation`; pending, zero CPU |
 | `173022` | `fd129d34bf4a31a1…` | `wilson-pair-order-induction`; pending, zero CPU |
 | `187187` | `2bab0898a5bc628a…` | failed after 39 seconds at gate 5/136 on an unused-dependency mutation; four passed, 131 unrun, no QR result |
-| `210714` | `989011c09d82dbbb…` | corrected full 136-gate campaign; remotely verified and initially `PENDING (Priority)`, no result yet |
+| `210714` | `989011c09d82dbbb…` | failed closed after 8m29s at gate 15/136 on a replaceable declared direct edge; 14 passed, 121 unrun, no QR result |
 
 Jobs `172707`, `172716`, `172722`, and `172737` are user-held, not cancelled,
 to prioritize focused prerequisite jobs. This action is reversible; release

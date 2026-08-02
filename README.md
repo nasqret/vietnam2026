@@ -115,8 +115,12 @@ receipt. Full 136-gate job `187187`, against exact dirty snapshot
 failed closed after 39 seconds at gate 5: four scaled-inverse gates passed,
 then the dependency-hygiene mutation test exposed an unused `succ_ne_zero`
 edge. The remaining 131 gates did not run, so this is not a QR result. No
-complete receipt exists yet; corrected full job `210714` was subsequently
-submitted from exact clean snapshot `989011c0…1757` and initially queued.
+complete receipt exists yet. Corrected full job `210714`, from exact clean
+snapshot `989011c0…1757`, later failed closed after 8 minutes 29 seconds at
+gate 15/136: 14 gates passed, then the direct-edge mutation audit showed that
+replacing `odd_upper_remainder_reflection -> add_succ_left` did not invalidate
+the certificate. The remaining 121 gates did not run. This is a second
+dependency-minimality failure, not a kernel-soundness failure or a QR result.
 No
 in-app browser was attached for this checkpoint, so direct Pyodide and rendered
 book UI smokes are explicitly unclaimed.

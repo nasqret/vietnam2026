@@ -1472,8 +1472,12 @@ seconds at gate 5. Four scaled-inverse gates passed; the mutation audit then
 found an unused `succ_ne_zero` dependency, so 131 gates were never reached.
 That redundant edge is removed and the focused local suite passes, but no
 complete quadratic-reciprocity admission receipt exists yet. Corrected full
-job `210714`, from clean snapshot `989011c0…1757`, was initially queued on
-WMI after remote verification and Slurm resource validation.
+job `210714`, from clean snapshot `989011c0…1757`, subsequently failed closed
+after 8 minutes 29 seconds at gate 15/136. Fourteen gates passed; the next
+direct-edge mutation showed that replacing
+`odd_upper_remainder_reflection -> add_succ_left` did not invalidate the
+certificate, and 121 gates were unrun. This is a dependency-minimality
+failure, not a kernel-soundness failure or a quadratic-reciprocity result.
 
 [`pointwise source`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/peano_lab/library/gauss_eisenstein_pointwise_candidate.py)
 · [`pointwise test`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/peano-lab/py/tests/test_gauss_eisenstein_pointwise_candidate.py)

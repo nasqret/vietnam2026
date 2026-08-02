@@ -2996,3 +2996,19 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   and typed intermediate propositions immediately to ordinary formulas, and
   publishes paired expanded/readable receipts. Definition names remain
   untrusted syntax and never enter the object language or kernel.
+
+## 2026-08-02 — Terminal QR replay audit and publication seal
+
+- Re-queried Slurm rather than carrying the submission-time state forward.
+  Corrected full job `210714` is terminal `FAILED`, elapsed `00:08:29`, exit
+  `1:0`, on host `c4n2.cluster.wmi.amu.edu.pl`.
+- Inspected the immutable stdout, stderr and JSON result in the
+  content-addressed WMI directory for snapshot
+  `989011c09d82dbbb239df43334e88553e1fb3e0d2f1033f93c5b8b1791851757`.
+  Gates 1--14 passed. Gate 15 rejected the direct-edge mutation audit because
+  replacing `odd_upper_remainder_reflection -> add_succ_left` still produced
+  a checking certificate; the remaining 121 gates were not run.
+- Classified the result narrowly: it exposes a non-minimal declared
+  dependency and blocks admission. It does not show a kernel-soundness bug,
+  does not complete the 136-gate suite, and does not admit quadratic
+  reciprocity.

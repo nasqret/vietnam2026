@@ -1148,8 +1148,13 @@
   338-member, 5,374,464-byte archive was built twice identically at SHA-256
   `989011c09d82dbbb239df43334e88553e1fb3e0d2f1033f93c5b8b1791851757`;
   after new content-specific authorization it was uploaded and submitted as
-  full job `210714`, initially `PENDING (Priority)`, with one CPU, 32 GiB and
-  four hours. Pending is not a proof receipt.
+  full job `210714` with one CPU, 32 GiB and four hours. Slurm later reported
+  `FAILED`, elapsed `00:08:29`, exit `1:0`: gates 1--14 passed, gate 15 found
+  that replacing the declared direct edge
+  `odd_upper_remainder_reflection -> add_succ_left` did not invalidate the
+  certificate, and 121 gates were unrun. This is a fail-closed
+  dependency-minimality result, not a kernel-soundness failure, a complete
+  replay receipt, or a theorem admission.
 - **Historical QR WMI preflight (2026-07-30):** the earlier cleaned candidate
   upload excluded
   `__pycache__`, bytecode, and `.DS_Store`; two builds agree at SHA-256

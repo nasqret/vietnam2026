@@ -839,8 +839,14 @@ not a mathematical rejection or a QR proof receipt.
 - [x] Obtain content-specific approval, upload and remotely verify that exact
       clean snapshot, pass Slurm test-only validation, and submit all 136
       gates as job `210714` with one CPU, 32 GiB and four hours.
-- [ ] Require a complete passing receipt from job `210714` before any
-      admission claim; its initial state was `PENDING (Priority)`.
+- [x] Retrieve and diagnose job `210714`: it failed closed at gate 15/136
+      after 14 passes because the direct-edge mutation
+      `odd_upper_remainder_reflection -> add_succ_left` did not invalidate the
+      certificate; 121 gates were unrun. Record that this is a
+      dependency-minimality failure, not a kernel-soundness failure or QR
+      result.
+- [ ] Remove or justify that redundant edge, refresh every affected pin, and
+      obtain a complete passing 136-gate receipt before any admission claim.
 - [ ] After those gates pass, migrate the generic layered closure into the
       public theorem replay/registry without a theorem-name or hash trust
       shortcut; regenerate the catalog and run cold Pyodide `use` gates.
