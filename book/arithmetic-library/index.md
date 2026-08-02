@@ -71,6 +71,7 @@ cones.
 | inspect every native proof | {doc}`Interactive theorem atlas <theorem-atlas>` | exact statements, complete scripts, dependencies and dependents |
 | follow a proof line by line | {doc}`Native PA proof explorer <proof-explorer>` | permanent tags, linked lemma references, informal outlines and source receipts |
 | read expanded formulas through linked names | {doc}`Definition-aware proof explorer <defined-proof-explorer>` | persistent `PD` expansions, exact native replay lines, and the unchanged theorem status |
+| curate the next conservative edition | {doc}`Curating the next conservative edition <curation>` | P0/P1/P2 definitions, API completeness, and paired-source gates |
 | see how theorems depend on one another | {doc}`Interactive dependency graph <dependency-graph>` | short and critical premise chains, route corridors and complete prerequisite cones |
 | understand soundness | {doc}`Language, notation, and trust <language-and-trust>` | {doc}`Self-contained proof sharing <proof-sharing>` |
 | study division and congruence | {doc}`Divisibility and subtraction-free congruence <divisibility-and-congruence>` | {doc}`GCD and balanced Bézout <gcd-and-bezout>` |

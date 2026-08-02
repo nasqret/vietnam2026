@@ -148,6 +148,17 @@ Names and hashes remain useful provenance data, but the checker never accepts
 them as evidence. See {doc}`Self-contained proof sharing <proof-sharing>` for
 the full trust and erasure contract.
 
+The separate
+[`peano-lab-lean`](https://github.com/nasqret/peano-lab-lean) project models
+this rule and the rest of the certificate calculus in Lean. Its semantic
+theorem proves accepted derivations true in standard natural numbers, relative
+to Lean's kernel and reported standard axioms. Historical WMI job `211445`
+seals cut-free v1. Cut-aware version-two source
+[`ab966fd1`](https://github.com/nasqret/peano-lab-lean/commit/ab966fd1b8207b99eea0c9dc3d719c6e61ef73c2)
+passed pinned Lean 4.31/WMI job
+[`218358`](https://github.com/nasqret/peano-lab-lean/tree/8515336ab3b89ca6f0c8ab521d01745a220b5211/artifacts/wmi/218358).
+This metaverification does not move readable predicates into either kernel.
+
 ## How conservative expansion reaches factorization
 
 The Fundamental Theorem of Arithmetic quantifies over an arbitrary finite

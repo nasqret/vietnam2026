@@ -239,7 +239,7 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   mutated motive/base/step/target/axiom/hypothesis variants are rejected. Further tests cover every
   rule family, eigenvariable escape, capture under quantifiers, malformed certificates, and all six
   exact PA axiom types.
-- Adversarial review found and closed a Python subclass/equality forgery: the trusted checker now
+- A GPT Pro adversarial review found and closed a Python subclass/equality forgery: the trusted checker now
   accepts exact kernel constructors only. Verification: Peano `42 passed`; existing Lambda Lab
   `360 passed, 36 subtests passed`; import hygiene, byte-compilation, and diff checks clean.
 
@@ -2965,3 +2965,34 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   public, 316 are `candidate_body_checked`, and only `PA00FW` is
   `pending_layered_closure`. The readable endpoint and definition pages do not
   admit quadratic reciprocity or change the kernel language.
+
+## 2026-08-02 — Lean kernel synchronization and curation charter
+
+- Corrected the trust account to include the independent
+  `nasqret/peano-lab-lean` semantic soundness formalization. Its immutable Lean
+  4.31/WMI job `211445` verifies the historical cut-free kernel; finite
+  Python/Lean differential testing is recorded as correspondence evidence, not
+  an exhaustive CPython equivalence proof.
+- Recorded the GPT Pro adversarial finding precisely: malicious Python AST
+  subclasses could override equality. The repaired checker accepts exact
+  constructors and recursively validates terms and formulas; the permanent
+  subclass mutation regressions remain green.
+- Compared the old Lean mirror with this branch and found one material logical
+  delta: production `Cut`, used by 329 of 384 published certificates. Extended
+  the Lean syntax, `Derives` calculus, proof-producing checker, semantic
+  induction, and canonical codec with that ordinary cut rule. Mirrored the
+  current Python sources byte-for-byte and introduced `peano-lab-v2` artifacts.
+- Local verifier matrix passes: 22 Lean 4.28 build jobs, 11 codec/mutation
+  tests, 154 Python/Lean cases with zero mismatches or decode errors, both
+  standalone sample acceptances, clean static audit, and unchanged axiom
+  report. Exact source commit
+  `ab966fd1b8207b99eea0c9dc3d719c6e61ef73c2` subsequently passed pinned Lean
+  4.31/WMI job `218358` in `00:03:03` with exit `0:0`; the collected receipts
+  are preserved by evidence commit
+  `8515336ab3b89ca6f0c8ab521d01745a220b5211`.
+- Added `research/arithmetic-library/curation-policy.md` and M20G. The next
+  edition freezes eleven P0 AST-first definitions, eliminates duplicate string
+  builders, records relation API completeness, compiles readable statements
+  and typed intermediate propositions immediately to ordinary formulas, and
+  publishes paired expanded/readable receipts. Definition names remain
+  untrusted syntax and never enter the object language or kernel.

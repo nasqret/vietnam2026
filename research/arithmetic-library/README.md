@@ -125,6 +125,9 @@ target or body occurs in that test.
   tag policy, LeanBlueprint-style dependency/status model, tactic-line linking
   rules, informal-proof overlay, foundations atlas, and deterministic release
   gates for the 557-node QR proof explorer;
+- [`curation-policy.md`](curation-policy.md): the conservative P0/P1/P2
+  definition tiers, relation API matrix, paired-edition identity gates, and
+  release checklist for the next native library edition;
 - [`closed-proof-dag.md`](closed-proof-dag.md): the explicitly secondary
   bundle-checker design, retained only if the ordinary layered certificate
   fails a measured resource or browser gate;

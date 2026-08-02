@@ -41,6 +41,7 @@ parts:
       - file: arithmetic-library/theorem-atlas
       - file: arithmetic-library/proof-explorer
       - file: arithmetic-library/defined-proof-explorer
+      - file: arithmetic-library/curation
       - file: arithmetic-library/dependency-graph
       - file: arithmetic-library/language-and-trust
       - file: arithmetic-library/proof-sharing

@@ -195,3 +195,7 @@ For the core grammar and accepted proof constructors, read the
 {doc}`PA language reference <../peano/language-reference>` and
 {doc}`axioms and proof rules <../peano/axioms-and-rules>`. For theorem-only
 routes, use the {doc}`dependency graph <dependency-graph>`.
+
+For the promotion rules, P0/P1/P2 tiers, API-completeness matrix, and paired
+source release gates, continue to {doc}`Curating the next conservative edition
+<curation>`.

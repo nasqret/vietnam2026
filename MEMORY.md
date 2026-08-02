@@ -64,6 +64,19 @@
   served from the faculty server via `lab-lambda/vendor/` (`scripts/fetch_vendor.sh`), zero CDN.
   `/lab-lambda-next/` = staging. Desktop-only features (lake/lean verify, openai judge) degrade to
   notices; `lean` links out to Live Lean.
+- **Lean metaverification boundary:** the separate
+  [`nasqret/peano-lab-lean`](https://github.com/nasqret/peano-lab-lean)
+  project proves `Derives.sound`, `check_derives`, `checkClosed_sound`, and
+  `Artifact.check_sound` for the modeled checker over standard `Nat`, relative
+  to Lean's kernel and reported axioms. WMI job `211445` seals the historical
+  cut-free v1 snapshot. The production `Cut` rule and `peano-lab-v2` codec at
+  source commit
+  [`ab966fd1`](https://github.com/nasqret/peano-lab-lean/commit/ab966fd1b8207b99eea0c9dc3d719c6e61ef73c2)
+  passed pinned Lean 4.31/WMI job
+  [`218358`](https://github.com/nasqret/peano-lab-lean/tree/8515336ab3b89ca6f0c8ab521d01745a220b5211/artifacts/wmi/218358):
+  `COMPLETED`, `0:0`, `00:03:03`, 22 build jobs, 11 security tests, two
+  artifacts, and 154 differential cases all passed. Python correspondence
+  remains finite differential evidence, not exhaustive program equivalence.
 - **Peano Lab = proof certificates + an independent kernel checker** on branch `peano-lab`:
   tactics are untrusted, every QED is rechecked against the original goal, tactic failures are
   transactional, and the kernel may not import the engine/UI. M0 landed a 196-line structural

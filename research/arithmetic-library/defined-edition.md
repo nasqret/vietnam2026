@@ -6,6 +6,8 @@ recurring formula schemas in the exact 557-theorem closure rooted at
 `quadratic_reciprocity_combined`. The persistent identifiers `PD0001` through
 `PD0040` identify definitions, not theorems. They therefore remain stable when
 theorem tags, proof scripts, generated binder names, or page layouts change.
+The promotion and consolidation rules for the next authoring release are in
+[`curation-policy.md`](curation-policy.md).
 
 ## Frozen baseline
 

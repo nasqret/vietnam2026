@@ -215,6 +215,42 @@ does not determine the architecture.
       was attached to this session, so this observational gate is unclaimed
       rather than inferred from another browser backend.
 
+## M20G — Curated conservative authoring edition
+
+- [x] Write the binding curation policy with definition tiers, API matrix,
+      paired-edition identity gates, and release artifacts in
+      `research/arithmetic-library/curation-policy.md`.
+- [x] Extend the separate Lean formalization with the production `Cut` rule,
+      version the artifact grammar as `peano-lab-v2`, mirror the repaired
+      Python kernel, and pass the local build, mutation, source-identity,
+      differential, and axiom gates.
+- [x] Seal that kernel identity with pinned Lean 4.31 and an immutable WMI
+      receipt. Source commit
+      [`ab966fd1`](https://github.com/nasqret/peano-lab-lean/commit/ab966fd1b8207b99eea0c9dc3d719c6e61ef73c2)
+      passed job
+      [`218358`](https://github.com/nasqret/peano-lab-lean/tree/8515336ab3b89ca6f0c8ab521d01745a220b5211/artifacts/wmi/218358);
+      historical job `211445` covers only cut-free v1.
+- [ ] Freeze the eleven P0 authoring definitions: `Le`, `Lt`, `Dvd`, `Prime`,
+      `Coprime`, `IsGCD`, `DivRem`, `ModEq`, `BetaAt`, `Product`, and `Sum`.
+- [ ] Replace duplicate private text builders with canonical AST-first owners,
+      prioritizing `Lt`, `Dvd`, `Prime`, `Coprime`, `IsGCD`, `DivRem`,
+      `ModEq`, and `BetaAt`, without changing expanded theorem ASTs.
+- [ ] Publish the relation API-completeness matrix: introduction, elimination,
+      boundary, characterization/functionality, transport, decision/search,
+      and composition.
+- [ ] Compile defined theorem statements and typed `have`/`suffices`
+      propositions immediately to ordinary `TheoremSpec` formulas; require
+      exact expanded-AST, dependency, status, command, and certificate receipts
+      against the explicit edition.
+- [ ] Complete the parity API, round-tripping prime surface with capture tests,
+      and generated fixed-residue clients already open in M20C/M20D.
+- [ ] Consolidate P1 definitions next; keep the eight campaign-specific P2
+      definitions namespaced. Review `BalancedBezout`, `PermutationPrefix`,
+      and `CanonicalPF` before assigning new stable PD identifiers.
+- [ ] Release paired readable/expanded training rows, Proof Explorer pages,
+      proof-only and mixed graphs, Jupyter Book text, Obsidian notes, expansion
+      hashes, duplicate reports, and kernel-verifier identity receipts.
+
 ## Current acceptance record
 
 - The definition-aware Proof Explorer is a completed conservative presentation

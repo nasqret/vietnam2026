@@ -619,6 +619,25 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   M19 stays open for the model-v2 curriculum, search,
   baselines, and registered comparison.
 
+### Kernel metaverification synchronization
+
+- [x] Link the independent Lean soundness project and historical cut-free
+      Lean 4.31/WMI receipt `211445`.
+- [x] Extend the Lean syntax, `Derives` calculus, proof-producing checker,
+      semantic proof, and canonical codec with the production
+      `Cut(A,B,lemma,body)` rule.
+- [x] Version the extended artifact grammar as `peano-lab-v2`, mirror the
+      repaired exact-constructor Python kernel, and pass the local Lean build,
+      codec mutations, source identity, axiom audit, and differential matrix.
+- [x] Seal the current Cut-aware revision with a clean pinned Lean 4.31 build
+      and immutable WMI receipt. Source commit
+      [`ab966fd1`](https://github.com/nasqret/peano-lab-lean/commit/ab966fd1b8207b99eea0c9dc3d719c6e61ef73c2)
+      passed job
+      [`218358`](https://github.com/nasqret/peano-lab-lean/tree/8515336ab3b89ca6f0c8ab521d01745a220b5211/artifacts/wmi/218358)
+      with `COMPLETED/0:0`; job `211445` remains historical v1 evidence.
+- [ ] Export representative native library certificates through the v2 codec,
+      beginning with a small Cut-bearing theorem before attempting FTA or QR.
+
 ### M20 — General foundational arithmetic library
 
 The theorem-ladder extension is tracked independently in

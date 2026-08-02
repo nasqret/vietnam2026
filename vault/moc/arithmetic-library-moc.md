@@ -42,6 +42,7 @@ The synchronized vault has 474 notes and 4,818 resolved links, including all
 - [[arithmetic-library-provenance]]
 - [[theorem-ladder]]
 - [[trusted-kernel]]
+- [[conservative-library-curation]]
 - [[proof-certificate]]
 - [[self-contained-proof-sharing]]
 - [[layered-cut-bundle]]

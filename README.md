@@ -44,6 +44,20 @@ The exact abstracts, session plans and reading lists live on the [landing page](
 | `docs/` | Lecturer-facing docs: how to build, deploy, and run each piece. |
 | `MEMORY.md` · `JOURNAL.md` · `PLAN.md` + `PLAN/` | Project **memory**, dated **journal**, and the multi-level **plan**. |
 
+The certificate calculus and reference checker also have an independent Lean
+formalization in
+[`nasqret/peano-lab-lean`](https://github.com/nasqret/peano-lab-lean).
+Lean proves checker acceptance implies a `Derives` judgment and that every such
+judgment is true in the standard natural numbers, relative to Lean's kernel
+and reported standard axioms. Historical WMI job `211445` covers the cut-free
+kernel. The production `Cut` rule and `peano-lab-v2` codec at immutable source
+commit
+[`ab966fd1`](https://github.com/nasqret/peano-lab-lean/commit/ab966fd1b8207b99eea0c9dc3d719c6e61ef73c2)
+passed the complete pinned Lean 4.31/WMI matrix in job
+[`218358`](https://github.com/nasqret/peano-lab-lean/tree/8515336ab3b89ca6f0c8ab521d01745a220b5211/artifacts/wmi/218358).
+Canonical decoding and finite differential tests support Python/Lean
+correspondence but are not an exhaustive theorem about CPython execution.
+
 The 384-entry native ladder reaches the Fundamental Theorem of Arithmetic
 without adding lists, division, remainder, gcd, or factorization as primitive
 symbols. Finite factor sequences and their prefix products are represented by

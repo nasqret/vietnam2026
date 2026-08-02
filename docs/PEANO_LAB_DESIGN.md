@@ -97,6 +97,19 @@ single structural recursion `check(ctx, proof, formula) -> bool` of target size 
 that number is a design constraint, not an aspiration: if the checker grows past it, the rule set
 is wrong.
 
+**Independent metaverification.** The separate
+[`nasqret/peano-lab-lean`](https://github.com/nasqret/peano-lab-lean) project
+models this certificate grammar and checker in Lean and proves semantic
+soundness over standard natural numbers. Its historical Lean 4.31/WMI receipt
+`211445` covers the cut-free v1 kernel. The explicit `Cut` rule and
+`peano-lab-v2` codec at source
+[`ab966fd1`](https://github.com/nasqret/peano-lab-lean/commit/ab966fd1b8207b99eea0c9dc3d719c6e61ef73c2)
+passed pinned Lean 4.31/WMI job
+[`218358`](https://github.com/nasqret/peano-lab-lean/tree/8515336ab3b89ca6f0c8ab521d01745a220b5211/artifacts/wmi/218358)
+and form the verified Cut-aware v2 baseline. Named mathematical
+definitions remain hygienic untrusted expansions into ordinary `Formula` ASTs
+and are deliberately absent from this trusted grammar.
+
 ## 2. The engine (untrusted, where all the fun lives)
 
 Everything mirrors the post-audit `proof_builder` design, generalized:
