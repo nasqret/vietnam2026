@@ -42,6 +42,8 @@ notes.
 - [[trusted-kernel]]
 - [[proof-certificate]]
 - [[self-contained-proof-sharing]]
+- [[library-epoch]]
+- [[sealed-theorem-benchmark]]
 
 ## Mathematical concepts
 

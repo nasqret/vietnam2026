@@ -177,13 +177,20 @@ def _one_line(value: BaseException | str) -> str:
     return raw[:MAX_DIAGNOSTIC_CHARS]
 
 
-def _state_sha256(goals: tuple[str, ...]) -> str:
+def state_sha256(goals: tuple[str, ...]) -> str:
+    """Hash one complete canonical goal tuple using the search v1 contract."""
+
     payload = json.dumps(
         list(goals),
         ensure_ascii=False,
         separators=(",", ":"),
     ).encode("utf-8")
     return hashlib.sha256(payload).hexdigest()
+
+
+# Compatibility for repository tools which imported the original private
+# helper while the public transcript/policy boundary was being introduced.
+_state_sha256 = state_sha256
 
 
 def _canonical_goals(owner: ProofSession) -> tuple[str, ...]:
@@ -362,7 +369,7 @@ def search(
         replay_id=0,
     )
     root_goals = _canonical_goals(root_owner)
-    root_key = _state_sha256(root_goals)
+    root_key = state_sha256(root_goals)
     root = _Node((), root_goals, root_key, (len(root_goals), 0, 0, 0, ()))
 
     frontier = (root,)
@@ -551,7 +558,7 @@ def search(
                     )
 
                 goals = _canonical_goals(owner)
-                key = _state_sha256(goals)
+                key = state_sha256(goals)
                 successor = _Node(
                     path,
                     goals,
@@ -629,4 +636,5 @@ __all__ = [
     "SearchResult",
     "SearchStatus",
     "search",
+    "state_sha256",
 ]
