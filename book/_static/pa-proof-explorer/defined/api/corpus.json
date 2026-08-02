@@ -9,9 +9,9 @@
       "name": "Le",
       "signature": "Le(a,b)",
       "source": {
-        "line": 355,
+        "line": 359,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "Witness-defined non-strict order on natural numbers."
     },
@@ -23,9 +23,9 @@
       "name": "Lt",
       "signature": "Lt(a,b)",
       "source": {
-        "line": 363,
+        "line": 367,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "Witness-defined strict order on natural numbers."
     },
@@ -37,9 +37,9 @@
       "name": "Dvd",
       "signature": "Dvd(d,n)",
       "source": {
-        "line": 371,
+        "line": 375,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "The natural number d divides n."
     },
@@ -51,9 +51,9 @@
       "name": "Prime",
       "signature": "Prime(p)",
       "source": {
-        "line": 379,
+        "line": 383,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "p is nonunit and every factorization of p has a unit factor."
     },
@@ -67,9 +67,9 @@
       "name": "Coprime",
       "signature": "Coprime(a,b)",
       "source": {
-        "line": 389,
+        "line": 393,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "Every common divisor of a and b is one."
     },
@@ -83,9 +83,9 @@
       "name": "IsGCD",
       "signature": "IsGCD(g,a,b)",
       "source": {
-        "line": 401,
+        "line": 405,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "g is a common divisor divisible by every common divisor."
     },
@@ -99,9 +99,9 @@
       "name": "DivRem",
       "signature": "DivRem(n,d,q,r)",
       "source": {
-        "line": 414,
+        "line": 418,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "q and r are a quotient and a strict remainder for n by d."
     },
@@ -113,9 +113,9 @@
       "name": "ModEq",
       "signature": "ModEq(m,a,b)",
       "source": {
-        "line": 423,
+        "line": 427,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "Balanced-natural congruence modulo m."
     },
@@ -127,9 +127,9 @@
       "name": "Even",
       "signature": "Even(n)",
       "source": {
-        "line": 431,
+        "line": 435,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "n has an even decomposition."
     },
@@ -141,9 +141,9 @@
       "name": "Odd",
       "signature": "Odd(n)",
       "source": {
-        "line": 440,
+        "line": 444,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "n has an odd decomposition."
     },
@@ -155,9 +155,9 @@
       "name": "Mod4One",
       "signature": "Mod4One(n)",
       "source": {
-        "line": 449,
+        "line": 453,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "n is one modulo four by an explicit quotient."
     },
@@ -169,9 +169,9 @@
       "name": "Mod4Three",
       "signature": "Mod4Three(n)",
       "source": {
-        "line": 458,
+        "line": 462,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "n is three modulo four by an explicit quotient."
     },
@@ -183,9 +183,9 @@
       "name": "BetaAt",
       "signature": "BetaAt(b,c,i,x)",
       "source": {
-        "line": 467,
+        "line": 471,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "x is the bounded beta-decoded value at index i."
     },
@@ -200,9 +200,9 @@
       "name": "Product",
       "signature": "Product(b,c,l,z)",
       "source": {
-        "line": 475,
+        "line": 479,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "z is the product of a beta-coded prefix of length l."
     },
@@ -217,9 +217,9 @@
       "name": "Sum",
       "signature": "Sum(b,c,l,z)",
       "source": {
-        "line": 486,
+        "line": 490,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "z is the sum of a beta-coded prefix of length l."
     },
@@ -234,9 +234,9 @@
       "name": "AllBits",
       "signature": "AllBits(b,c,l)",
       "source": {
-        "line": 495,
+        "line": 499,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "Every decoded entry below l is zero or one."
     },
@@ -251,9 +251,9 @@
       "name": "BitCount",
       "signature": "BitCount(b,c,l,z)",
       "source": {
-        "line": 505,
+        "line": 509,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "z is the sum of a beta-coded all-bit prefix."
     },
@@ -268,9 +268,9 @@
       "name": "Range",
       "signature": "Range(b,c,a,l)",
       "source": {
-        "line": 517,
+        "line": 521,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "The decoded prefix is a,a+1,...,a+l-1."
     },
@@ -285,9 +285,9 @@
       "name": "Repeat",
       "signature": "Repeat(b,c,a,l)",
       "source": {
-        "line": 529,
+        "line": 533,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "The decoded prefix repeats a for l positions."
     },
@@ -302,9 +302,9 @@
       "name": "Pow",
       "signature": "Pow(a,e,z)",
       "source": {
-        "line": 541,
+        "line": 545,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "z is the relational e-th power of a."
     },
@@ -318,9 +318,9 @@
       "name": "QRes",
       "signature": "QRes(m,a)",
       "source": {
-        "line": 551,
+        "line": 555,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "a has a square root modulo m."
     },
@@ -335,9 +335,9 @@
       "name": "BoundedQRes",
       "signature": "BoundedQRes(m,a)",
       "source": {
-        "line": 561,
+        "line": 565,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "a has a square root strictly below m modulo m."
     },
@@ -352,9 +352,9 @@
       "name": "Factorial",
       "signature": "Factorial(n,z)",
       "source": {
-        "line": 573,
+        "line": 577,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "z is the relational factorial of n."
     },
@@ -369,9 +369,9 @@
       "name": "BoundedPrefix",
       "signature": "BoundedPrefix(b,c,l)",
       "source": {
-        "line": 583,
+        "line": 587,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "Every decoded entry below l is itself below l."
     },
@@ -386,9 +386,9 @@
       "name": "InjectivePrefix",
       "signature": "InjectivePrefix(b,c,l)",
       "source": {
-        "line": 595,
+        "line": 599,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "Equal decoded values below l have equal indices."
     },
@@ -403,9 +403,9 @@
       "name": "SurjectivePrefix",
       "signature": "SurjectivePrefix(b,c,l)",
       "source": {
-        "line": 607,
+        "line": 611,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "Every value below l occurs at an index below l."
     },
@@ -420,9 +420,9 @@
       "name": "ContainsPrefix",
       "signature": "ContainsPrefix(b,c,l,x)",
       "source": {
-        "line": 619,
+        "line": 623,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "x occurs in the decoded prefix below l."
     },
@@ -438,9 +438,9 @@
       "name": "AllPrime",
       "signature": "AllPrime(b,c,l)",
       "source": {
-        "line": 631,
+        "line": 635,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "Every decoded factor below l is prime."
     },
@@ -456,9 +456,9 @@
       "name": "Sorted",
       "signature": "Sorted(b,c,l)",
       "source": {
-        "line": 641,
+        "line": 645,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "Adjacent decoded entries form a nondecreasing prefix."
     },
@@ -472,9 +472,9 @@
       "name": "UnitResidue",
       "signature": "UnitResidue(m,a)",
       "source": {
-        "line": 651,
+        "line": 655,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "a is nonzero and strictly below m."
     },
@@ -488,9 +488,9 @@
       "name": "BalancedInverse",
       "signature": "BalancedInverse(m,a,b)",
       "source": {
-        "line": 661,
+        "line": 665,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "a times b is congruent to one modulo m."
     },
@@ -505,9 +505,9 @@
       "name": "BoundedNonzeroInverse",
       "signature": "BoundedNonzeroInverse(m,a)",
       "source": {
-        "line": 671,
+        "line": 675,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "a has a nonzero inverse strictly below m."
     },
@@ -522,9 +522,9 @@
       "name": "ScaledInverse",
       "signature": "ScaledInverse(m,t,a,b)",
       "source": {
-        "line": 681,
+        "line": 685,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "a and b are bounded units whose product is t modulo m."
     },
@@ -539,9 +539,9 @@
       "name": "ScaledFixedPoint",
       "signature": "ScaledFixedPoint(m,t,a)",
       "source": {
-        "line": 691,
+        "line": 695,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "a is a bounded unit whose square is t modulo m."
     },
@@ -555,9 +555,9 @@
       "name": "SuccessorInverse",
       "signature": "SuccessorInverse(m,i,j)",
       "source": {
-        "line": 701,
+        "line": 705,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "The successor residues of i and j multiply to one modulo m."
     },
@@ -572,9 +572,9 @@
       "name": "InverseIndex",
       "signature": "InverseIndex(m,l,i,j)",
       "source": {
-        "line": 711,
+        "line": 715,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "i and j are bounded zero-based modular inverse indices."
     },
@@ -590,9 +590,9 @@
       "name": "InversePrefix",
       "signature": "InversePrefix(m,l,b,c,k)",
       "source": {
-        "line": 721,
+        "line": 725,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "A beta prefix decodes a bounded modular inverse map."
     },
@@ -607,9 +607,9 @@
       "name": "ScaledInverseIndex",
       "signature": "ScaledInverseIndex(m,t,l,i,y)",
       "source": {
-        "line": 731,
+        "line": 735,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "i indexes a bounded unit mapped to y by scaled inversion."
     },
@@ -625,9 +625,9 @@
       "name": "ScaledInversePrefix",
       "signature": "ScaledInversePrefix(m,t,l,b,c,k)",
       "source": {
-        "line": 741,
+        "line": 745,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "A beta prefix decodes a scaled inverse map."
     },
@@ -643,14 +643,14 @@
       "name": "DivisionPrefix",
       "signature": "DivisionPrefix(m,b,c,qb,qc,rb,rc,l)",
       "source": {
-        "line": 753,
+        "line": 757,
         "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
-        "sha256": "e173b1083a033f29747c6be2b170acfe8b1a5b75c6edb7a2cc46e9d63de7f1f8"
+        "sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903"
       },
       "summary": "Beta prefixes encode pointwise quotients and strict remainders."
     }
   ],
-  "edition_identity_sha256": "cbfd6d2ecee9a1c0d933a4333f0ee523b894e8417fc944cbcc6668e4e78c7db6",
+  "edition_identity_sha256": "f137db3d549b82c8ee0798362cc9a039f408c01d9ebded8814858f6d5964bad2",
   "explicit_corpus_sha256": "a5bc304640ee454fc51161dcbd7da71e6c7b0a745bebcb7dc98f555d5c930a89",
   "schema": "peano-lab-pa-defined-corpus-v1",
   "theorem_count": 557,
