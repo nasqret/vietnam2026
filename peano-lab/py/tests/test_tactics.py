@@ -6,10 +6,12 @@ from dataclasses import replace
 
 import pytest
 
+import peano_lab.engine.tactics as tactics_module
 from peano_lab.engine.state import Goal, holes_in, invariants_ok, start
 from peano_lab.engine.tactics import (
     InvalidProof,
     TacticError,
+    TacticLimit,
     apply_tactic,
     assumption,
     checked_final,
@@ -172,6 +174,31 @@ def test_failed_tactics_are_transactional(operation, args: str, message: str) ->
     assert state.partial == before_partial
     assert state.history == before_history
     assert dict(state.subst) == before_subst
+
+
+def test_commit_uses_one_fused_resource_snapshot_transactionally(monkeypatch) -> None:
+    state = start(Eq(ZERO, ZERO))
+    before_goals = state.goals
+    before_partial = state.partial
+    before_history = state.history
+    before_subst = state.subst
+    calls = 0
+
+    def over_limit(_proof):
+        nonlocal calls
+        calls += 1
+        return (tactics_module.MAX_LIVE_PROOF_NODES + 1, 1, 1, 0, 0)
+
+    monkeypatch.setattr(tactics_module, "proof_resource_metrics", over_limit)
+
+    with pytest.raises(TacticLimit, match="live-proof-node limit"):
+        refl(state)
+
+    assert calls == 1
+    assert state.goals is before_goals
+    assert state.partial is before_partial
+    assert state.history is before_history
+    assert state.subst is before_subst
 
 
 def test_rewrite_rejects_a_non_equation_hypothesis_transactionally() -> None:

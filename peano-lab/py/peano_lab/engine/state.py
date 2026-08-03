@@ -614,6 +614,40 @@ def proof_size(proof: Proof) -> int:
     return proof_metrics(proof)[0]
 
 
+def proof_resource_metrics(proof: Proof) -> tuple[int, int, int, int, int]:
+    """Return structural and identity metrics in one iterative traversal.
+
+    Structural nodes and depth charge every proof occurrence, including a
+    shared child reached through more than one parent edge.  Distinct objects
+    and proof edges instead visit each immutable proof object once; reuse is
+    the number of edges beyond those needed to connect the distinct objects.
+    """
+
+    if not isinstance(proof, Proof):
+        raise TypeError("proof_resource_metrics expects a proof certificate")
+    structural_nodes = 0
+    maximum_depth = 0
+    seen: set[int] = set()
+    edges = 0
+    pending = [(proof, 1)]
+    while pending:
+        node, depth = pending.pop()
+        structural_nodes += 1
+        maximum_depth = max(maximum_depth, depth)
+        children = [
+            child
+            for item in fields(node)
+            if isinstance((child := getattr(node, item.name)), Proof)
+        ]
+        identity = id(node)
+        if identity not in seen:
+            seen.add(identity)
+            edges += len(children)
+        pending.extend((child, depth + 1) for child in children)
+    reused = max(0, edges - (len(seen) - 1))
+    return structural_nodes, maximum_depth, len(seen), edges, reused
+
+
 def proof_identity_metrics(proof: Proof) -> tuple[int, int, int]:
     """Return distinct objects, proof edges, and reused object references.
 
@@ -682,5 +716,6 @@ __all__ = [
     "invariants_ok",
     "proof_metrics",
     "proof_size",
+    "proof_resource_metrics",
     "proof_identity_metrics",
 ]

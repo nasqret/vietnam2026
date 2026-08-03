@@ -25,7 +25,7 @@ THEOREM_SOURCE = PY_ROOT / "peano_lab" / "library" / "theorems.py"
 if str(PY_ROOT) not in sys.path:
     sys.path.insert(0, str(PY_ROOT))
 
-from peano_lab.engine.state import proof_identity_metrics, proof_metrics  # noqa: E402
+from peano_lab.engine.state import proof_resource_metrics  # noqa: E402
 from peano_lab.engine.tactics import (  # noqa: E402
     MAX_USE_CERTIFICATE_NODES,
     MAX_USE_CERTIFICATE_OBJECTS,
@@ -363,10 +363,13 @@ def build_payloads() -> dict[str, str]:
         checked = replay(spec.name)
         if not check((), checked.certificate, checked.formula):
             raise RuntimeError(f"independent kernel rejected {spec.name!r}")
-        nodes, depth = proof_metrics(checked.certificate)
-        distinct_objects, proof_edges, reused_references = proof_identity_metrics(
-            checked.certificate
-        )
+        (
+            nodes,
+            depth,
+            distinct_objects,
+            proof_edges,
+            reused_references,
+        ) = proof_resource_metrics(checked.certificate)
         cut_nodes = _cut_nodes(checked.certificate)
         if (
             nodes > MAX_USE_CERTIFICATE_NODES

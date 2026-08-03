@@ -3643,3 +3643,55 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   H0.2 cold replay and independent reference/conformance/mutation campaigns,
   H0.3 typed macros, complete evidence bundles, and the H0 acceptance review
   remain open.
+
+## 2026-08-04 — The Python kernel became faster; Rust became a shadow
+
+- Profiled the exact 73,767-node FTA certificate before changing languages.
+  The hot path was eager shifting of every context formula below every term
+  binder. Replacing formulas with internal `(formula, pending_shift)` entries
+  preserves the old judgment while materializing a shift only at `Hyp(i)`.
+  The checker remains independent and below its design ceiling at 263 lines.
+- The FTA final-check median fell from 4.338 to 0.451 seconds; cache-cleared
+  replay fell from 57.497 to 29.241 seconds. Two cold complete public-library
+  passes each reconstructed 384 theorems with identical receipt
+  `cee5f55c9801b8698a18a0795c06d2ae0455b49dbb7325f71aeb0c7093c20ef3`.
+  The retained observation artifact is
+  `artifacts/peano-kernel/performance-baseline-v1.json`.
+- Fused duplicate live-certificate metric traversals and replaced source-byte
+  CI balancing with a strict runtime profile and deterministic LPT assignment.
+  The first eight-way local run exposed no semantic failure and finished in
+  8 minutes 24 seconds on its slowest shard. Its observations were fed back
+  into a 74-file profile whose modeled loads span 420.5--421.5 seconds.
+- Corrected the frozen trace-corpus seal to verify its two recorded source
+  blobs at its declared producing commit. Updating the historical checker hash
+  to the live file would have silently falsified provenance. Refreshed the
+  separately current browser manifest as build `2026-08-04b`, application
+  `a-903a05e31da9`, with 150 worker sources.
+- Added an inert Python encoder and an independent dependency-free Rust kernel
+  for canonical Cut-aware `peano-lab-v2` artifacts. Reviews caught adversarial
+  metaclass equality in the first Python dispatch and unused artifact fuel in
+  the first Rust boundary; both now fail closed. Rust mirrors Lean path fuel,
+  adds a global work cap, and exposes a process-isolated CLI with distinct
+  accept, semantic-reject, malformed, I/O, and usage outcomes. Debug and
+  release suites each pass 27 tests.
+- A final trusted-boundary review found a pre-existing Python metaclass trap:
+  `type(value) in (ConstructorA, ConstructorB)` can invoke hostile class
+  equality. An adversarial `Term` could impersonate `Add` and make reflexivity
+  match the false exact target `0 = S 0`. All checker dispatch is now
+  identity-only, axiom names are exact strings, and the exploit is pinned as a
+  rejection test.
+- The native differential harness replayed all 384 public theorems and checked
+  1,536 subprocess cases. Every original canonical artifact was accepted and
+  every wrong-target, zero-fuel, and malformed-newline mutation was rejected.
+  The artifact-hash receipt is
+  `4652c103b317ddf3405f74c022d2229be0c7bdb57fa94c9b0cc6e129d5a20b64`;
+  the largest artifact is the 3,608,301-byte, 73,767-node FTA certificate.
+  Three post-hardening complete processes reproduced the receipt. The retained
+  384-row, 159-source-sealed report is
+  `artifacts/peano-kernel/native-differential-v1.json`.
+- Python still solely grants QED against the session owner's original target.
+  Pinned-Lean representative replay and browser WASM worker/trap integration
+  remain explicit next steps, not implied results.
+- Final exact-tree validation: eight runtime-weighted shards passed 2,707 tests
+  with twelve intentional skips and zero failures; the critical path was
+  494.88 seconds. The strict Book build and all 287 documented commands passed.

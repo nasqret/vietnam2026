@@ -28,6 +28,7 @@ mathematics — with every idea presented **informally (runnable) and formally (
 | Foundational arithmetic library | [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md) | Versioned lemma DAG: congruence and divisibility → division/gcd/primes → an honestly represented FTA. |
 | Native quadratic reciprocity | [`PLAN/11_quadratic_reciprocity.md`](PLAN/11_quadratic_reciprocity.md) | Parity and finite folds → Euler/Gauss/Eisenstein → a checked reciprocity certificate. |
 | Peano Hydra | [`PLAN/11_peano_hydra.md`](PLAN/11_peano_hydra.md) | Falsifiable neuro-symbolic campaign: frozen fragment/library/benchmark → strong symbolic baseline → sparse LLM guidance → matched-compute evaluation. |
+| Kernel acceleration | [`PLAN/12_peano_kernel_acceleration.md`](PLAN/12_peano_kernel_acceleration.md) | Profile-guided Python checker/replay optimization followed by an independently validated native/WASM Rust shadow checker. |
 
 ## L2 / L3
 
@@ -156,7 +157,7 @@ M20's native arithmetic and synchronized release artifacts are complete. The
 main Jupyter Book now includes a guided zero-to-FTA route, a quadratic
 reciprocity campaign chapter, and a generated interactive 384-proof atlas;
 the integrated local browser candidate deterministically verifies as build
-`2026-08-03c`, application `a-4f03b6fb429b`, with 149 worker sources. Its
+`2026-08-04b`, application `a-903a05e31da9`, with 150 worker sources. Its
 source inventory, content manifest, and deployment contracts pass; complete
 local staging awaits the gitignored pinned vendor mirror. It is not deployed,
 and direct attached-browser UI inspection remains

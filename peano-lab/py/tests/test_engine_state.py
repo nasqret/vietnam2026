@@ -19,6 +19,7 @@ from peano_lab.engine.state import (
     invariants_ok,
     proof_identity_metrics,
     proof_metrics,
+    proof_resource_metrics,
     record_step,
     replace_current_hole,
     start,
@@ -118,6 +119,23 @@ def test_identity_metrics_expose_sharing_without_changing_tree_metrics() -> None
 
     assert proof_metrics(certificate) == (3, 2)
     assert proof_identity_metrics(certificate) == (2, 2, 1)
+    assert proof_resource_metrics(certificate) == (3, 2, 2, 2, 1)
+
+
+def test_fused_resource_metrics_preserve_nested_sharing_and_iterative_depth() -> None:
+    leaf = EqRefl(ZERO)
+    shared = EqTrans(leaf, leaf)
+    certificate = EqTrans(shared, shared)
+
+    assert proof_resource_metrics(certificate) == (
+        *proof_metrics(certificate),
+        *proof_identity_metrics(certificate),
+    ) == (7, 3, 3, 4, 2)
+
+    deep = leaf
+    for _ in range(1_500):
+        deep = EqTrans(deep, leaf)
+    assert proof_resource_metrics(deep) == (3_001, 1_501, 1_501, 3_000, 1_500)
 
 
 def test_mismatched_goal_and_hole_counts_are_rejected() -> None:

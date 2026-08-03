@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -28,10 +29,23 @@ RELEASE_ARTIFACT_SHA256 = {
     "stats.json": "68affad0cd91e0ad4fadda28901b083b6e45f4694791aa1d24b42a82183c04ca",
     "generation-manifest.json": "a89a2d2bdbe6362c17ece6b886ab5eba1dbd7af2b04ddd32d86d2fcccdde3d95",
 }
+PINNED_SOURCE_REVISION = "64893e13bd25bd9169f41f118a6483b426e1a962"
 
 
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _pinned_blob_sha256(relative_path: str) -> str:
+    """Hash one producing-source blob without rebinding it to the live tree."""
+
+    completed = subprocess.run(
+        ["git", "show", f"{PINNED_SOURCE_REVISION}:{relative_path}"],
+        cwd=REPO,
+        check=True,
+        stdout=subprocess.PIPE,
+    )
+    return hashlib.sha256(completed.stdout).hexdigest()
 
 
 def _semantic_tree() -> tuple[int, str]:
@@ -116,7 +130,7 @@ def test_release_metadata_counts_hashes_and_source_provenance() -> None:
     }
 
     for source in manifest["provenance"]["sources"].values():
-        assert _sha256(REPO / source["path"]) == source["sha256"]
+        assert _pinned_blob_sha256(source["path"]) == source["sha256"]
     expected_semantic_source_tree = {
         "root": "peano-lab/py/peano_lab",
         "pattern": "**/*.py",
@@ -134,7 +148,7 @@ def test_release_metadata_counts_hashes_and_source_provenance() -> None:
     assert tree_files > expected_semantic_source_tree["files"]
     assert tree_sha256 != expected_semantic_source_tree["sha256"]
     assert "frozen deterministic learning-data release" in readme
-    assert "64893e13bd25bd9169f41f118a6483b426e1a962" in readme
+    assert PINNED_SOURCE_REVISION in readme
 
     assert stats["source"]["sessions"] == 1692
     assert stats["source"]["transitions"] == 13344

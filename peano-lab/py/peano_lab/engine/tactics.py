@@ -98,8 +98,7 @@ from .state import (
     metas_in_formula,
     metas_in_proof,
     metas_in_term,
-    proof_identity_metrics,
-    proof_metrics,
+    proof_resource_metrics,
     proof_size,
     record_step,
     replace_current_hole,
@@ -166,7 +165,7 @@ MAX_NORM_NUM_FORALLS = 64
 def enforce_live_proof_bounds(proof: Proof) -> tuple[int, int]:
     """Check the global certificate bound shared by primitives and tacticals."""
 
-    nodes, depth = proof_metrics(proof)
+    nodes, depth, objects, _, _ = proof_resource_metrics(proof)
     if nodes > MAX_LIVE_PROOF_NODES:
         raise TacticLimit(
             f"tactic exceeded the {MAX_LIVE_PROOF_NODES}-live-proof-node limit."
@@ -175,7 +174,6 @@ def enforce_live_proof_bounds(proof: Proof) -> tuple[int, int]:
         raise TacticLimit(
             f"tactic exceeded the {MAX_LIVE_PROOF_DEPTH}-live-proof-depth limit."
         )
-    objects, _, _ = proof_identity_metrics(proof)
     if objects > MAX_LIVE_PROOF_OBJECTS:
         raise TacticLimit(
             f"tactic exceeded the {MAX_LIVE_PROOF_OBJECTS}-live-proof-object limit."

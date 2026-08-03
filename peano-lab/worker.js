@@ -36,6 +36,7 @@ const PY_FILES = [
   "py/peano_lab/experimental/layered_cut_bundle.py",
   "py/peano_lab/experimental/quadratic_reciprocity_layered.py",
   "py/peano_lab/kernel/__init__.py",
+  "py/peano_lab/kernel/artifact_codec.py",
   "py/peano_lab/kernel/checker.py",
   "py/peano_lab/kernel/formulas.py",
   "py/peano_lab/kernel/proofs.py",
