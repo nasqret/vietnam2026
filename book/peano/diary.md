@@ -2986,8 +2986,8 @@ Rust 1.95.0 and `wasm32-unknown-unknown` are pinned. The local Homebrew Rust
 installation lacked target libraries, so I installed the keg-only `rustup`
 manager and exact target rather than pretending a native build established
 WASM. Two clean builds in separate target directories produced identical
-52,966-byte modules with SHA-256
-`de40d41295d08772ed7adde46e0fbc2ed061c3e1d35b542e3d1c8ef42848389c`.
+path-remapped 52,890-byte modules with SHA-256
+`2ba86a22a01602a504df792830e25d743a7038876f47b2b6effa50fe00099063`.
 Node inspection reports zero imports, the expected raw exports, unshared
 memory, and a hard 256 MiB growth ceiling. Real-module fixtures cover HA and
 classical acceptance, HA rejection of DNE, wrong target, zero fuel, malformed
@@ -3004,7 +3004,7 @@ matched the expected verdict. The original-artifact receipt is
 exactly the native Rust receipt. The strengthened 406,243-byte retained report
 records every per-case artifact hash, a second all-case receipt, and hashes of
 both runner sources. It has SHA-256
-`b26a06ea9647a4e7c8125e797fdfee28401d6cc99c21356b2265e5adba8008e0`.
+`4433ba5b418a50f02d4bbae4a3dab9d7d6d05e45573197cadfe8ed79d094a2d5`.
 
 An adversarial pre-commit review found three availability or attribution bugs,
 none capable of forging a theorem, and all were fixed before sealing. First,
@@ -3042,9 +3042,9 @@ and 151 shipped Python files: 154 exact application entries. Deployment
 staging copies the two new assets, and the live verifier requires their hash,
 `application/wasm` MIME type, Brotli/gzip negotiation, immutable caching, and
 an encoded size below one megabyte. The local candidate is visible build
-`2026-08-04d`, application `a-7ba6efe377bf`. It has not been deployed to a
+`2026-08-04e`, application `a-129c5c680e53`. It has not been deployed to a
 remote environment by this milestone. A temporary local staging tree returned
-HTTP 200 for the shell and the exact 52,966-byte module with
+HTTP 200 for the shell and the exact 52,890-byte module with
 `application/wasm`; its hashes matched the source release. The in-app browser
 service was unavailable in this Codex session, so this record does not claim a
 visual-browser pass. The real-WASM and worker-lifecycle harnesses remain the
@@ -3061,3 +3061,14 @@ build, all 287 documented commands, the 484-note/4,910-link vault graph, Rust
 fmt and clippy, both 27-test native-core profiles, both 14-test wrapper
 profiles, Python bytecode compilation, manifest identity, and two-clean-build
 WASM comparison all passed on the final bytes.
+
+The first GitHub Actions run then caught a stricter reproducibility fact than
+two local clean directories could reveal. Every Rust test passed, but Linux
+did not byte-match the macOS-built module because panic-location strings
+contained the absolute checkout root (`/Users/...` versus `/home/runner/...`).
+This was not a logical disagreement, yet a red exact-byte gate was the correct
+outcome. The build now passes a fixed Rust `--remap-path-prefix`, mapping the
+repository to `/peano-lab-src`. A regression assertion rejects the live
+workspace path and requires the virtual prefix. The path-remapped module was
+rebuilt twice, the full 1,536-case campaign was repeated, and only the
+WASM/report/release hashes changed; both logical receipts stayed identical.

@@ -12,6 +12,7 @@ elif [[ $# -ne 0 ]]; then
 fi
 
 cd "$(dirname "$0")/.."
+PEANO_SOURCE_ROOT="$(pwd -P)"
 PEANO_WASM_CRATE="peano-lab/rust/peano-kernel-shadow-wasm"
 PEANO_WASM_DESTINATION="peano-lab/peano_kernel_shadow.wasm"
 PEANO_RUSTUP="${PEANO_RUSTUP:-$(command -v rustup || true)}"
@@ -27,6 +28,7 @@ PEANO_TOOLCHAIN=1.95.0
 PEANO_RUSTC="$($PEANO_RUSTUP which rustc --toolchain "$PEANO_TOOLCHAIN")"
 PEANO_TOOLCHAIN_BIN="$(dirname "$PEANO_RUSTC")"
 PEANO_CARGO="$PEANO_TOOLCHAIN_BIN/cargo"
+PEANO_REPRODUCIBLE_RUSTFLAGS="--remap-path-prefix=$PEANO_SOURCE_ROOT=/peano-lab-src"
 if ! "$PEANO_RUSTUP" target list --installed --toolchain "$PEANO_TOOLCHAIN" \
   | grep -Fxq wasm32-unknown-unknown; then
   echo "the pinned $PEANO_TOOLCHAIN wasm32-unknown-unknown target is not installed" >&2
@@ -38,7 +40,7 @@ trap 'rm -rf -- "$PEANO_WASM_TMP"' EXIT
 
 build_once() {
   local destination="$1"
-  "$PEANO_CARGO" \
+  RUSTFLAGS="$PEANO_REPRODUCIBLE_RUSTFLAGS" "$PEANO_CARGO" \
     --config "build.rustc=\"$PEANO_RUSTC\"" \
     build \
     --locked \
@@ -61,6 +63,11 @@ if $PEANO_WASM_CHECK; then
   if [[ ! -f "$PEANO_WASM_DESTINATION" ]] \
     || ! cmp -s "$PEANO_WASM_FIRST" "$PEANO_WASM_DESTINATION"; then
     echo "Peano WASM shadow is missing or stale; regenerate it with $0" >&2
+    if [[ -f "$PEANO_WASM_DESTINATION" ]]; then
+      printf 'rebuilt:   %s\ncommitted: %s\n' \
+        "$(shasum -a 256 "$PEANO_WASM_FIRST" | awk '{print $1}')" \
+        "$(shasum -a 256 "$PEANO_WASM_DESTINATION" | awk '{print $1}')" >&2
+    fi
     exit 1
   fi
 else

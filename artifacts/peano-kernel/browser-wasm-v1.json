@@ -28,15 +28,16 @@
   },
   "format": "peano-kernel-browser-wasm-evidence",
   "release": {
-    "application_id": "a-7ba6efe377bf",
+    "application_id": "a-129c5c680e53",
     "application_manifest_entries": 154,
-    "application_manifest_sha256": "7ba6efe377bf321bb24074e8c73a54ca5b8fb410a89c0c52e3b40726b29af38d",
-    "build": "2026-08-04d",
+    "application_manifest_sha256": "129c5c680e53769b4e71ae48b0560d3a92b88e4a38e002d7b8dc3b135a551363",
+    "build": "2026-08-04e",
     "deployed": false
   },
   "toolchain": {
     "profile": "release-size-lto-overflow-checks-panic-abort",
     "rust": "1.95.0 (59807616e 2026-04-14)",
+    "source_path_remap": "/peano-lab-src",
     "target": "wasm32-unknown-unknown"
   },
   "validation": {
@@ -45,7 +46,7 @@
       "artifact_receipt_sha256": "4652c103b317ddf3405f74c022d2229be0c7bdb57fa94c9b0cc6e129d5a20b64",
       "case_receipt_sha256": "2e6e5df23ec90555bb754b7297d87b75f37a1e6f9fcd5a6d9da6facbf1ad1f68",
       "cases": 1536,
-      "file_sha256": "b26a06ea9647a4e7c8125e797fdfee28401d6cc99c21356b2265e5adba8008e0",
+      "file_sha256": "4433ba5b418a50f02d4bbae4a3dab9d7d6d05e45573197cadfe8ed79d094a2d5",
       "path": "artifacts/peano-kernel/browser-wasm-differential-v1.json",
       "theorems": 384
     },
@@ -69,10 +70,10 @@
   },
   "version": 1,
   "wasm": {
-    "bytes": 52966,
+    "bytes": 52890,
     "imports": [],
     "path": "peano-lab/peano_kernel_shadow.wasm",
-    "sha256": "de40d41295d08772ed7adde46e0fbc2ed061c3e1d35b542e3d1c8ef42848389c",
+    "sha256": "2ba86a22a01602a504df792830e25d743a7038876f47b2b6effa50fe00099063",
     "shared_memory": false
   }
 }

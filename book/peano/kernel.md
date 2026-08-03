@@ -155,8 +155,10 @@ One portability boundary required care. Wire naturals fit in `u32`, while native
 64-bit `usize` and `wasm32` uses 32 bits. The wrapper rejects term-variable and hypothesis indices
 above $2^{32}-1-256$ before checking, reserving enough fixed-width room for every binder shift
 allowed by the depth limit. Boundary fixtures run in both native tests and the real WASM module.
-The committed 52,966-byte module has no imports, no threads or shared memory, and is rebuilt twice
-in CI before exact comparison with the checked-in bytes.
+The committed 52,890-byte module has no imports, no threads or shared memory, and is rebuilt twice
+in CI before exact comparison with the checked-in bytes. Rust source paths under the checkout are
+remapped to the fixed `/peano-lab-src` prefix, preventing macOS/Linux workspace names from leaking
+into panic-location strings and making the binary comparison genuinely cross-host.
 
 The visible outcomes deliberately say **shadow agreement**, **shadow disagreement**, or **shadow
 unavailable**—never “Rust QED.” Classical artifacts carry a separate logic label and reach only the

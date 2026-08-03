@@ -11177,8 +11177,8 @@
   "validation_passed": true,
   "version": 1,
   "wasm": {
-    "bytes": 52966,
+    "bytes": 52890,
     "path": "peano-lab/peano_kernel_shadow.wasm",
-    "sha256": "de40d41295d08772ed7adde46e0fbc2ed061c3e1d35b542e3d1c8ef42848389c"
+    "sha256": "2ba86a22a01602a504df792830e25d743a7038876f47b2b6effa50fe00099063"
   }
 }

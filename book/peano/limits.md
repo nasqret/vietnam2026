@@ -132,7 +132,7 @@ kernel locally. This distinction explains an initially surprising observation: t
 small, but a cold browser still needs an 8.6 MB WebAssembly runtime and a 2.4 MB Python standard
 library before the prompt can appear.
 
-A second 52,966-byte WebAssembly module initializes independently as a Rust shadow checker. It does
+A second 52,890-byte WebAssembly module initializes independently as a Rust shadow checker. It does
 not delay terminal readiness and receives bytes only after the Python kernel has already accepted
 QED. Its 16 MiB input, one-million-node, depth-192, 64-million-step, 256 MiB unshared-memory, and
 30-second worker limits are availability boundaries, not mathematical decision limits. A rejected,

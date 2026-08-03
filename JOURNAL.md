@@ -3714,15 +3714,15 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   are pinned by dependency-free harnesses; only `accept` displays shadow
   agreement, never Rust QED.
 - Two clean pinned Rust 1.95.0 builds are byte-identical. The committed
-  52,966-byte module has no imports and SHA-256
-  `de40d41295d08772ed7adde46e0fbc2ed061c3e1d35b542e3d1c8ef42848389c`.
+  path-remapped 52,890-byte module has no imports and SHA-256
+  `2ba86a22a01602a504df792830e25d743a7038876f47b2b6effa50fe00099063`.
   Wrapper debug/release tests each pass 14 cases and the real module passes
   HA/classical, malformed, fuel, one-shot, portability, and memory-cap cases.
 - Complete real-WASM replay passes all 384 public theorems and all 1,536
   original/wrong-target/zero-fuel/malformed cases. Its artifact receipt
   `4652c103b317ddf3405f74c022d2229be0c7bdb57fa94c9b0cc6e129d5a20b64`
   exactly matches native Rust; the retained report SHA-256 is
-  `b26a06ea9647a4e7c8125e797fdfee28401d6cc99c21356b2265e5adba8008e0`.
+  `4433ba5b418a50f02d4bbae4a3dab9d7d6d05e45573197cadfe8ed79d094a2d5`.
   The report now seals all per-case hashes and both runner sources; its
   all-case receipt is
   `2e6e5df23ec90555bb754b7297d87b75f37a1e6f9fcd5a6d9da6facbf1ad1f68`.
@@ -3730,10 +3730,15 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   after the Python result is posted; a newer same-generation QED cancels an
   older diagnostic; and bounded natural encoding preflights digit size before
   allocating chunks. Regression tests cover all three boundaries.
-- Sealed local build `2026-08-04d` as application `a-7ba6efe377bf` with 154
+- Sealed local build `2026-08-04e` as application `a-129c5c680e53` with 154
   exact entries and extended MIME/compression/cache/hash deployment checks.
   No remote staging or production deployment is claimed.
 - Final K4 validation: Peano 2,724 passed / 12 skipped in eight balanced shards
   (7m19s critical path); Lambda 360 passed plus 36 subtests; strict book and
   287 command replays passed; vault 484 notes / 4,910 links; Rust fmt, clippy,
   native debug/release, wrapper debug/release, and reproducible WASM passed.
+- The first remote exact-byte gate exposed absolute macOS/Linux checkout paths
+  in Rust panic-location strings. The build now remaps the repository to
+  `/peano-lab-src`; evidence rejects live host paths, and the complete WASM
+  differential was repeated on the corrected bytes without changing either
+  logical artifact receipt.

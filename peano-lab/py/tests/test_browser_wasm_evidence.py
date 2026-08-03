@@ -33,6 +33,8 @@ def test_browser_wasm_evidence_binds_exact_module_and_release() -> None:
     assert report["wasm"]["sha256"] == sha256(wasm).hexdigest()
     assert report["wasm"]["imports"] == []
     assert report["wasm"]["shared_memory"] is False
+    assert str(ROOT).encode() not in wasm
+    assert b"/peano-lab-src/peano-lab/rust/peano-kernel-shadow/" in wasm
     assert report["release"]["application_manifest_sha256"] == sha256(
         manifest
     ).hexdigest()
