@@ -18,12 +18,16 @@ from .subst import shift_formula, subst_formula
 from .terms import Add, Mul, Succ, Term, Var, Zero
 
 
-Context = tuple[Formula, ...]
+# ``(formula, pending)`` denotes ``shift_formula(formula, pending)``.
+ContextEntry = tuple[Formula, int]
+Context = tuple[ContextEntry, ...]
 
 
 def axiom_formula(name: str) -> Formula | None:
     """Return the closed formula denoted by a PA axiom constant."""
 
+    if type(name) is not str:
+        return None
     z = Zero()
     x, y = Var(1), Var(0)  # below two nested quantifiers: x is outer
     axioms = {
@@ -44,7 +48,7 @@ def _valid_term(term: object) -> bool:
         return True
     if type(term) is Succ:
         return _valid_term(term.term)
-    if type(term) in (Add, Mul):
+    if type(term) is Add or type(term) is Mul:
         return _valid_term(term.left) and _valid_term(term.right)
     return False
 
@@ -54,9 +58,9 @@ def _valid_formula(formula: object) -> bool:
         return _valid_term(formula.left) and _valid_term(formula.right)
     if type(formula) is Bot:
         return True
-    if type(formula) in (Imp, And, Or):
+    if type(formula) is Imp or type(formula) is And or type(formula) is Or:
         return _valid_formula(formula.left) and _valid_formula(formula.right)
-    if type(formula) in (Forall, Exists):
+    if type(formula) is Forall or type(formula) is Exists:
         return _valid_formula(formula.body)
     return False
 
@@ -64,19 +68,26 @@ def _valid_formula(formula: object) -> bool:
 def _normalise_context(ctx: object) -> Context | None:
     if not isinstance(ctx, (tuple, list)):
         return None
-    result: list[Formula] = []
+    result: list[ContextEntry] = []
     for entry in ctx:
         formula = entry
         if isinstance(entry, tuple) and len(entry) == 2 and isinstance(entry[0], str):
             formula = entry[1]
         if not _valid_formula(formula):
             return None
-        result.append(formula)
+        result.append((formula, 0))
     return tuple(result)
 
 
+def _extend(ctx: Context, formula: Formula) -> Context:
+    return ((formula, 0),) + ctx
+
+
 def _under_term_binder(ctx: Context) -> Context:
-    return tuple(shift_formula(formula, 1) for formula in ctx)
+    # Delaying the shift is extensionally equal to shifting every hypothesis
+    # now, but avoids repeatedly rebuilding large contexts whose entries may
+    # never be selected by a Hyp node.
+    return tuple((formula, pending + 1) for formula, pending in ctx)
 
 
 def _successor_instance(motive: Formula) -> Formula:
@@ -91,7 +102,10 @@ def _infer(ctx: Context, proof: object, classical: bool) -> Formula | None:
 
     if type(proof) is Hyp:
         i = proof.index
-        return ctx[i] if type(i) is int and 0 <= i < len(ctx) else None
+        if type(i) is not int or not 0 <= i < len(ctx):
+            return None
+        formula, pending = ctx[i]
+        return shift_formula(formula, pending) if pending else formula
     if type(proof) is Axiom:
         return axiom_formula(proof.name)
     if type(proof) is EqRefl and _valid_term(proof.term):
@@ -105,7 +119,7 @@ def _infer(ctx: Context, proof: object, classical: bool) -> Formula | None:
         and _valid_formula(proof.conclusion)
     ):
         if _check(ctx, proof.lemma, proof.proposition, classical) and _check(
-            (proof.proposition,) + ctx,
+            _extend(ctx, proof.proposition),
             proof.body,
             proof.conclusion,
             classical,
@@ -117,7 +131,7 @@ def _infer(ctx: Context, proof: object, classical: bool) -> Formula | None:
         if type(function) is Imp and _check(ctx, proof.argument, function.left, classical):
             return function.right
         return None
-    if type(proof) in (AndElimL, AndElimR):
+    if type(proof) is AndElimL or type(proof) is AndElimR:
         pair = _infer(ctx, proof.pair, classical)
         if type(pair) is not And:
             return None
@@ -137,7 +151,7 @@ def _infer(ctx: Context, proof: object, classical: bool) -> Formula | None:
     if type(proof) is CongS:
         equation = _infer(ctx, proof.proof, classical)
         return Eq(Succ(equation.left), Succ(equation.right)) if type(equation) is Eq else None
-    if type(proof) in (CongAdd, CongMul):
+    if type(proof) is CongAdd or type(proof) is CongMul:
         left = _infer(ctx, proof.left, classical)
         right = _infer(ctx, proof.right, classical)
         if type(left) is not Eq or type(right) is not Eq:
@@ -174,7 +188,9 @@ def _check(ctx: Context, proof: object, target: Formula, classical: bool) -> boo
             ctx, proof.function, Imp(argument, target), classical
         ) and _check(ctx, proof.argument, argument, classical)
     if type(proof) is ImpIntro and type(target) is Imp:
-        return _check((target.left,) + ctx, proof.body, target.right, classical)
+        return _check(
+            _extend(ctx, target.left), proof.body, target.right, classical
+        )
     if type(proof) is AndIntro and type(target) is And:
         return _check(ctx, proof.left, target.left, classical) and _check(
             ctx, proof.right, target.right, classical
@@ -187,8 +203,8 @@ def _check(ctx: Context, proof: object, target: Formula, classical: bool) -> boo
         source = _infer(ctx, proof.disjunction, classical)
         return (
             type(source) is Or
-            and _check((source.left,) + ctx, proof.left_case, target, classical)
-            and _check((source.right,) + ctx, proof.right_case, target, classical)
+            and _check(_extend(ctx, source.left), proof.left_case, target, classical)
+            and _check(_extend(ctx, source.right), proof.right_case, target, classical)
         )
     if type(proof) is BotElim:
         return _check(ctx, proof.absurdity, Bot(), classical)
@@ -207,7 +223,7 @@ def _check(ctx: Context, proof: object, target: Formula, classical: bool) -> boo
             return False
         lifted_ctx = _under_term_binder(ctx)
         return _check(
-            (source.body,) + lifted_ctx,
+            _extend(lifted_ctx, source.body),
             proof.body,
             shift_formula(target, 1),
             classical,

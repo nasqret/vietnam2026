@@ -109,16 +109,51 @@ jobs:
     name: Peano Lab kernel, engine, UI, and browser contracts
     runs-on: ubuntu-latest
     if: ${{ always() }}
-    needs: peano-lab-shards
+    needs: [peano-lab-shards, peano-kernel-shadow]
     steps:
-      - name: Require every Peano Lab shard
+      - name: Require every Python shard and the native shadow
         env:
           SHARD_RESULT: ${{ needs.peano-lab-shards.result }}
+          SHADOW_RESULT: ${{ needs.peano-kernel-shadow.result }}
         run: |
           if [ "$SHARD_RESULT" != "success" ]; then
             echo "One or more Peano Lab shards failed: $SHARD_RESULT"
             exit 1
           fi
+          if [ "$SHADOW_RESULT" != "success" ]; then
+            echo "The native Rust shadow failed: $SHADOW_RESULT"
+            exit 1
+          fi
+
+  peano-kernel-shadow:
+    name: Peano native Rust shadow (never QED authority)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check formatting
+        working-directory: peano-lab/rust/peano-kernel-shadow
+        run: cargo fmt --all -- --check
+      - name: Lint every native target
+        working-directory: peano-lab/rust/peano-kernel-shadow
+        run: cargo clippy --all-targets --all-features --locked -- -D warnings
+      - name: Test the strict codec, checker, and process boundary
+        working-directory: peano-lab/rust/peano-kernel-shadow
+        run: cargo test --all-targets --all-features --locked
+      - name: Repeat the Rust suite with release arithmetic
+        working-directory: peano-lab/rust/peano-kernel-shadow
+        run: cargo test --release --all-targets --all-features --locked
+      - name: Build the release shadow CLI
+        working-directory: peano-lab/rust/peano-kernel-shadow
+        run: cargo build --release --locked --bin peano-kernel-shadow
+      - name: Differentially replay a tiny and a Cut-bearing theorem
+        run: >-
+          python3 scripts/differential_peano_kernel_shadow.py
+          --rust-cli peano-lab/rust/peano-kernel-shadow/target/release/peano-kernel-shadow
+          --theorem zero_add
+          --theorem add_comm
 
   rocq:
     name: Rocq artifacts (statements 1–5, incl. √2)

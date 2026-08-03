@@ -18,7 +18,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Iterable, Mapping
 
-from ..engine.state import proof_identity_metrics, proof_metrics, start
+from ..engine.state import proof_resource_metrics, start
 from ..engine.tactics import apply_tactic, checked_final
 from ..kernel.formulas import Imp
 from .theorems import (
@@ -114,8 +114,7 @@ def replay_candidate_bodies(
             raise CandidateBodyError(
                 f"candidate {spec.name!r} produced a rejected dependency-curried certificate: {exc}"
             ) from exc
-        nodes, depth = proof_metrics(certificate)
-        objects, edges, reused = proof_identity_metrics(certificate)
+        nodes, depth, objects, edges, reused = proof_resource_metrics(certificate)
         receipts.append(
             CandidateBodyReceipt(
                 name=spec.name,

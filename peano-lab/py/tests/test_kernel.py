@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 
 from peano_lab.kernel.checker import axiom_formula, check, check_classical
-from peano_lab.kernel.formulas import And, Bot, Eq, Exists, Forall, Imp, Or
+from peano_lab.kernel.formulas import And, Bot, Eq, Exists, Forall, Formula, Imp, Or
 from peano_lab.kernel.proofs import (
     AndElimL,
     AndIntro,
@@ -17,6 +17,7 @@ from peano_lab.kernel.proofs import (
     CongAdd,
     CongMul,
     CongS,
+    Cut,
     DNE,
     EqRefl,
     EqSubst,
@@ -33,9 +34,10 @@ from peano_lab.kernel.proofs import (
     OrElim,
     OrIntroL,
     OrIntroR,
+    Proof,
 )
 from peano_lab.kernel.subst import shift_formula, shift_term, subst_formula, subst_term
-from peano_lab.kernel.terms import Add, Mul, Succ, Var, Zero
+from peano_lab.kernel.terms import Add, Mul, Succ, Term, Var, Zero
 
 
 ZERO = Zero()
@@ -242,6 +244,46 @@ def test_ast_subclasses_cannot_override_equality_at_the_trusted_boundary() -> No
     assert not check((), EqRefl(EvilZero()), false_equation)
     assert not check((EvilEq(ZERO, ZERO),), Hyp(0), Bot())
     assert not check((), EvilRefl(ZERO), Eq(ZERO, ZERO))
+
+
+def test_adversarial_metaclass_equality_cannot_forge_constructor_tags() -> None:
+    class EqualMeta(type):
+        def __eq__(cls, other: object) -> bool:
+            return True
+
+        __hash__ = type.__hash__
+
+    class EvilTerm(Term, metaclass=EqualMeta):
+        def __init__(self) -> None:
+            self.left = ZERO
+            self.right = ZERO
+
+        def __eq__(self, other: object) -> bool:
+            return True
+
+    class EvilFormula(Formula, metaclass=EqualMeta):
+        def __init__(self) -> None:
+            self.left = Eq(ZERO, ZERO)
+            self.right = Eq(ZERO, ZERO)
+
+        def __eq__(self, other: object) -> bool:
+            return True
+
+    class EvilElimination(Proof, metaclass=EqualMeta):
+        def __init__(self, pair: Proof) -> None:
+            self.pair = pair
+
+    false_equation = Eq(ZERO, ONE)
+    assert not check((), EqRefl(EvilTerm()), false_equation)
+    forged_cut = Cut(EvilFormula(), false_equation, EqRefl(ZERO), Hyp(0))
+    assert not check((), forged_cut, false_equation)
+    pair = And(Eq(ZERO, ZERO), Eq(ZERO, ZERO))
+    assert not check((pair,), EvilElimination(Hyp(0)), Eq(ZERO, ZERO))
+
+    class EvilName(str):
+        pass
+
+    assert axiom_formula(EvilName("PA3")) is None
 
 
 def test_kernel_import_hygiene() -> None:

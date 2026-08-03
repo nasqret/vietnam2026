@@ -2802,3 +2802,128 @@ set, no double cold replay of a frozen library epoch, and no typed H0.3 macro
 protocol. The old Qwen prompt is rejected by Hydra because it does not expose
 the new profile digest; adding a real profile-aware prompt is future work, not
 a hash pasted onto an unseen model input.
+
+## 2026-08-04 — Make the checker do less, not trust less
+
+The four-hour validation session was not blocked on agents or a GPU. A few
+Cut-heavy arithmetic tests repeatedly reconstructed and checked enormous
+dependency closures, while the byte-balanced CI sharder accidentally grouped
+several slow files together. Before translating the kernel to Rust, I profiled
+the existing small Python checker. The largest hot path was surprisingly
+mundane: every term binder eagerly shifted every formula in its context.
+
+The replacement keeps a per-hypothesis pending-shift count. Entering a binder
+increments integers; selecting `Hyp(i)` performs the one composed shift that
+the eager checker would eventually have produced. New logical hypotheses
+start at the current depth. In particular, `ExistsElim` shifts the old context
+but not the newly opened existential body. Seven focused tests exercise this
+invariant and reject the corresponding capture, swapped-index, and off-by-one
+mutations.
+
+For the unchanged 73,767-node FTA certificate, five baseline final checks had
+median 4.338 seconds. After the final exact-dispatch hardening, five
+lazy-context checks had median 0.451 seconds, a 9.6-fold improvement. A
+cache-cleared FTA library replay fell from 57.497 to 29.241 seconds. The
+smaller end-to-end gain is useful evidence: kernel
+checking is important, but certificate construction and repeated surrounding
+passes remain real costs. The new benchmark harness therefore reports cold
+replay, one extra original-goal check, and proof metrics as separate
+observational phases; it never turns wall time into proof authority.
+
+Rust remains worthwhile as an independent native/WASM shadow checker, but it
+will begin behind the Python authority. A language rewrite must not disguise
+an algorithmic mistake, and no Rust `ACCEPT` may grant QED until the binding
+design is explicitly amended after differential Python/Rust/Lean validation.
+
+The semantic acceptance check was deliberately stronger than a fast smoke.
+Two same-process cold passes cleared both theorem caches, reconstructed all
+384 public certificates, and produced the identical receipt
+`cee5f55c9801b8698a18a0795c06d2ae0455b49dbb7325f71aeb0c7093c20ef3`.
+The fused structural/identity traversal also matched the old two traversals on
+1,000 generated shared proof DAGs. This let us optimize the tactic commit gate
+without changing its node, depth, object, edge, or reuse policy.
+
+The first runtime-weighted eight-shard local run completed in 8 minutes 24
+seconds of wall time. Six shards were green immediately. One source failure
+was an honest stale seal: the immutable browser manifest still named the
+pre-optimization checker and therefore required a new content address. The
+other exposed a mistaken test assumption. The frozen trace corpus correctly
+named the checker from its producing commit, but its test had compared that
+historical hash to the live tree. The corpus did not receive a new identity:
+its README already says that it is a frozen 247-theorem release made at commit
+`64893e13bd25bd9169f41f118a6483b426e1a962`. Its test now verifies the recorded
+source blobs at that producing commit instead of incorrectly requiring those
+historical hashes to equal the live tree. Rewriting the corpus provenance
+would have been easier and false. The remaining loopback-server failure was a
+sandbox socket prohibition and passed unchanged when run with permission to
+bind `127.0.0.1`.
+
+The Rust experiment then became concrete. A Python encoder and a zero-
+dependency, unsafe-forbidden Rust crate implement the exact Cut-aware
+`peano-lab-v2` tags. An adversarial review caught two useful boundary bugs
+before integration. Python constructor dispatch originally used containers
+whose membership invokes metaclass equality; a malicious subclass could claim
+to equal a real constructor. Dispatch is now identity-only. Separately, the
+first Rust artifact API preserved the wire fuel but did not consume it. The
+native gate now mirrors Lean's path-fuel convention, adds a global work cap,
+and rejects fuel zero. Lean independently confirmed the smallest forall-refl
+fixture rejects at fuel 2 and accepts at fuel 3.
+
+The final red-team pass found that the same Python idiom predated this work in
+the authoritative checker itself. Expressions such as `type(term) in (Add,
+Mul)` look like exact-constructor checks, but tuple membership may call an
+attacker-controlled metaclass `__eq__`. A forged `Term` could impersonate
+`Add`, override instance equality, and make `EqRefl` appear to prove the false
+closed target `0 = S 0`. This was a genuine trusted-boundary soundness bug.
+Every such dispatch in the checker now uses `is`, axiom names must be exact
+strings, and the exact exploit is a permanent rejection regression. The lazy
+context optimization was not the cause, but refusing to treat the performance
+branch as “just an optimization” is what made the audit find it.
+
+The native shadow CLI distinguishes accepted, semantic rejection, malformed
+input, I/O failure, and usage error. It still has no vote in QED. Debug and
+release Rust suites each pass 27 tests, including strict-codec mutations and
+subprocess protocol checks. The differential harness then replayed all 384
+public theorems, checked every certificate against its original goal in
+Python, and sent four cases per theorem to the native process. All 1,536 Rust
+cases agreed with the expected result: the original artifact was accepted,
+while a wrong target, zero fuel, and a missing terminal newline were rejected.
+The aggregate canonical-artifact receipt is
+`4652c103b317ddf3405f74c022d2229be0c7bdb57fa94c9b0cc6e129d5a20b64`.
+The largest artifact was the 73,767-node FTA certificate at 3,608,301 bytes.
+After the checker hardening, three fresh complete processes reproduced that
+receipt. The retained 384-row report is
+`artifacts/peano-kernel/native-differential-v1.json`, SHA-256
+`0aaa968c91d8769c101afd51681090396a31e4885a2629e7ecfb44113cd47e5d`.
+Its own provenance manifest seals all 159 relevant Python/Rust sources and the
+exact native executable; a cheap CI test re-hashes the seal without rebuilding
+all certificates.
+
+This is strong native differential evidence, not a new trust decision. A
+representative third-way replay through the pinned Lean verifier, browser
+WASM, and trap-isolated worker integration remain follow-on work; recording
+those gaps is part of keeping a shadow checker honest.
+
+Because the new inert encoder is a shipped Python source, the worker inventory
+now contains 150 files. The regenerated immutable application namespace is
+`a-f30eccf3c47a`, with visible candidate build `2026-08-04a`. This is a local
+release identity, not a deployment claim.
+
+The later trusted-boundary hardening necessarily invalidated that candidate:
+the checker bytes are part of the immutable browser seal. After the
+metaclass regression landed, the current local candidate advanced to build
+`2026-08-04b`, application `a-903a05e31da9`, still with 150 worker sources.
+Neither candidate was deployed by this work.
+
+The final acceptance run used the exact hardened and resealed tree. Eight
+runtime-weighted pytest shards finished green: 2,707 passed, twelve intentional
+skips, and no failures. Their durations were 475.21, 487.90, 454.08, 448.49,
+458.04, 494.88, 459.74, and 435.09 seconds, so the critical path was 8 minutes
+15 seconds. The shard containing the dashboard-server contract was allowed to
+bind only local `127.0.0.1`; all others ran in the ordinary restricted
+sandbox. The Lambda Lab regression remained a separate compatibility gate,
+and the strict Jupyter Book build plus all 287 documented commands also passed.
+
+This closes the authoritative-Python and native-shadow milestone, not K4. The
+browser WASM worker and the representative pinned-Lean third-way replay remain
+explicitly open, and Rust remains unable to publish QED.

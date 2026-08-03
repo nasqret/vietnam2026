@@ -100,7 +100,7 @@ kernel-checked sessions under fingerprint
 `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
 its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
 all 247 authored QEDs. The integrated local browser candidate deterministically
-verifies as build `2026-08-03c`, application `a-4f03b6fb429b`, with 149 worker
+verifies as build `2026-08-04b`, application `a-903a05e31da9`, with 150 worker
 sources; its source inventory, content manifest, and deployment contracts pass.
 A complete local stage is not claimed in this isolated clone because its
 gitignored pinned vendor mirror is absent, and the build is not deployed. The

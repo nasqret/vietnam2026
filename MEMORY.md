@@ -553,7 +553,7 @@
   language-blocked conventional interface). The Obsidian vault has 482 notes
   and 4,886 resolved links, including all 384 generated theorem notes. The
   integrated local browser candidate deterministically verifies as build
-  `2026-08-03c`, application `a-4f03b6fb429b`, with 149 worker sources; its
+  `2026-08-04b`, application `a-903a05e31da9`, with 150 worker sources; its
   source inventory, content manifest, and deployment contracts pass. Complete
   local staging awaits the gitignored pinned vendor mirror, and the build is
   not deployed.
@@ -1413,6 +1413,30 @@
   release, and 475-note/4,825-link vault all verify. This is an integration
   seal, not a quadratic-reciprocity admission: the 136-gate WMI QR campaign
   still has no complete passing receipt.
+- **Kernel acceleration and native shadow checkpoint (2026-08-04):** the
+  authoritative Python checker remains the only QED authority and is 263
+  lines. Lazy per-hypothesis binder shifts reduce the unchanged 73,767-node
+  FTA final check from a 4.338-second median to 0.451 seconds on arm64 CPython
+  3.10. Two cold 384-theorem passes share receipt
+  `cee5f55c9801b8698a18a0795c06d2ae0455b49dbb7325f71aeb0c7093c20ef3`.
+  Runtime-weighted eight-way validation has a first measured critical path of
+  504.44 seconds and a recalibrated modeled spread of 420.5--421.5 seconds.
+  A dependency-free, unsafe-forbidden Rust shadow kernel and strict bounded
+  `peano-lab-v2` codec pass 27 debug and 27 release tests; their CLI never
+  grants QED. Native differential replay passes all 384 public theorems and
+  all 1,536 original/wrong-target/zero-fuel/malformed cases, with aggregate
+  artifact receipt
+  `4652c103b317ddf3405f74c022d2229be0c7bdb57fa94c9b0cc6e129d5a20b64`.
+  The retained 384-row report is
+  `artifacts/peano-kernel/native-differential-v1.json`; it seals 159 source
+  files and the exact native executable, and a cheap regression re-hashes it.
+  The audit also closed a pre-existing trusted-boundary bug where tuple
+  membership on `type(value)` could invoke adversarial metaclass equality and
+  forge an `EqRefl` match for `0 = S 0`; checker constructor dispatch is now
+  identity-only and the exact exploit is a permanent rejection test.
+  Pinned-Lean representative replay and browser WASM remain open. Candidate
+  browser build `2026-08-04b` has application address
+  `a-903a05e31da9` and 150 Python worker sources; it is not deployed.
 - **Model-v3 prelaunch durability and chain binding (2026-07-30):** the
   one-shot trainer preserves adapter/tokenizer tensors before its explicit
   full evaluation, while withholding the final manifest until evaluation and

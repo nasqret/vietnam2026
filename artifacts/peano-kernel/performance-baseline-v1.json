@@ -1,0 +1,115 @@
+{
+  "format": "peano-kernel-performance-observation",
+  "version": 1,
+  "recorded_at": "2026-08-04",
+  "authority": "timings are observational; only the Python kernel judgment grants QED",
+  "environment": {
+    "machine": "arm64",
+    "operating_system": "macOS 15.6.1",
+    "python": "CPython 3.10.0"
+  },
+  "sources": {
+    "baseline_revision": "db786bfc80d3f0318e1afe3140b6ea3dadd06bc1",
+    "baseline_checker_sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe",
+    "pre_hardening_lazy_context_checker_sha256": "fc6e54d432015c7ea51625340aaa8a70a5db25deefde7962c6193f57a9444a03",
+    "final_checker_sha256": "396c593f0d734d1c5cb728610a95f17c5f8a0c2076ef173203f9265d030f6a19"
+  },
+  "representative_certificate": {
+    "theorem": "fundamental_theorem_of_arithmetic",
+    "proof_nodes": 73767,
+    "proof_depth": 99,
+    "distinct_proof_objects": 8701,
+    "proof_edges": 9077,
+    "reused_proof_references": 377
+  },
+  "extra_final_kernel_check": {
+    "optimized_checker_sha256": "396c593f0d734d1c5cb728610a95f17c5f8a0c2076ef173203f9265d030f6a19",
+    "baseline_seconds": [
+      4.338259459,
+      4.718256666,
+      4.410086334,
+      4.230422708,
+      4.29933
+    ],
+    "baseline_median_seconds": 4.338259459,
+    "lazy_context_seconds": [
+      0.447076167,
+      0.450945125,
+      0.467192583,
+      0.451871667,
+      0.439239167
+    ],
+    "lazy_context_median_seconds": 0.450945125,
+    "median_speedup": 9.6204
+  },
+  "cache_cleared_fta_replay": {
+    "optimized_checker_sha256": "396c593f0d734d1c5cb728610a95f17c5f8a0c2076ef173203f9265d030f6a19",
+    "baseline_seconds": 57.497177042,
+    "lazy_context_seconds": 29.240550917,
+    "speedup": 1.9664,
+    "interpretation": "end-to-end replay still includes tactic construction and surrounding certificate traversals"
+  },
+  "double_cold_public_library_receipt": {
+    "checker_sha256": "fc6e54d432015c7ea51625340aaa8a70a5db25deefde7962c6193f57a9444a03",
+    "theorems_per_pass": 384,
+    "sha256_pass_1": "cee5f55c9801b8698a18a0795c06d2ae0455b49dbb7325f71aeb0c7093c20ef3",
+    "sha256_pass_2": "cee5f55c9801b8698a18a0795c06d2ae0455b49dbb7325f71aeb0c7093c20ef3",
+    "seconds_under_concurrent_load": [79.344203584, 83.048190875]
+  },
+  "first_runtime_weighted_parallel_suite": {
+    "checker_sha256": "fc6e54d432015c7ea51625340aaa8a70a5db25deefde7962c6193f57a9444a03",
+    "shard_seconds": [330.58, 395.71, 412.9, 504.44, 453.88, 474.49, 443.23, 391.58],
+    "critical_path_seconds": 504.44,
+    "semantic_failures": 0,
+    "known_nonsemantic_failures_before_manifest_and_provenance_test_refresh": 2,
+    "sandbox_only_loopback_bind_failures": 1,
+    "post_observation_modeled_shard_ms": [
+      421000,
+      420800,
+      421000,
+      421000,
+      420500,
+      421500,
+      420500,
+      421500
+    ]
+  },
+  "post_hardening_repeated_cold_differential_replay": {
+    "checker_sha256": "396c593f0d734d1c5cb728610a95f17c5f8a0c2076ef173203f9265d030f6a19",
+    "theorems_per_pass": 384,
+    "rust_cases_per_pass": 1536,
+    "canonical_artifact_receipts": [
+      "4652c103b317ddf3405f74c022d2229be0c7bdb57fa94c9b0cc6e129d5a20b64",
+      "4652c103b317ddf3405f74c022d2229be0c7bdb57fa94c9b0cc6e129d5a20b64",
+      "4652c103b317ddf3405f74c022d2229be0c7bdb57fa94c9b0cc6e129d5a20b64"
+    ],
+    "summed_library_replay_seconds": [
+      79.096674467,
+      76.154692238,
+      79.072518477
+    ],
+    "retained_report": "artifacts/peano-kernel/native-differential-v1.json",
+    "retained_report_sha256": "0aaa968c91d8769c101afd51681090396a31e4885a2629e7ecfb44113cd47e5d",
+    "retained_source_manifest_sha256": "e2edb223680e511c7e3d3664e604e13e29270756031ff87098f1070852484508",
+    "retained_native_executable_sha256": "161f1091ee44153a2a1b418e7a86e007397d6086614f35302ca275c7b35d9a24"
+  },
+  "final_post_hardening_runtime_weighted_parallel_suite": {
+    "checker_sha256": "396c593f0d734d1c5cb728610a95f17c5f8a0c2076ef173203f9265d030f6a19",
+    "runtime_profile_sha256": "62474445cf9ecda92417775ce73d94e8a56630adc28a1f04cb8ac40d5216a919",
+    "shard_seconds": [
+      475.21,
+      487.9,
+      454.08,
+      448.49,
+      458.04,
+      494.88,
+      459.74,
+      435.09
+    ],
+    "critical_path_seconds": 494.88,
+    "passed": 2707,
+    "intentional_skips": 12,
+    "failures": 0,
+    "loopback_note": "the shard containing the local dashboard server ran with permission to bind 127.0.0.1"
+  }
+}

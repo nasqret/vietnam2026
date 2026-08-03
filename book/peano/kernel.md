@@ -68,9 +68,65 @@ quantified successor step for its stored motive.
 The checker is bidirectional.  Elimination and annotated equality forms usually *synthesize* their
 conclusion; introduction forms are *checked* against a conclusion already known.  This avoids
 stuffing every proof node with redundant formula annotations while keeping the recursion readable.
-The whole trusted checker is now 247 physical lines (formerly 234 before the explicit `Cut` sharing
+The whole trusted checker is now 263 physical lines (formerly 234 before the explicit `Cut` sharing
 rule), below the project's roughly 300-line design ceiling, and an import-hygiene test forbids it
 from importing the engine or UI.
+
+### Delaying a shift without delaying a proof obligation
+
+Large certificates exposed an algorithmic cost hidden in the simple rule for universal
+introduction. Entering a term binder used to rebuild *every* formula in the context with
+`shift_formula(formula, 1)`, even when the proof never selected most of those hypotheses. Deep
+Cut-heavy proofs repeated that work thousands of times.
+
+The checker now stores each internal context entry as `(formula, pending)`, with the invariant that
+it denotes `shift_formula(formula, pending)`. Entering a term binder increments the small pending
+integer. Only `Hyp(i)` materializes the accumulated shift. A hypothesis introduced by `ImpIntro`,
+`Cut`, or an `OrElim` branch starts at pending zero because it is already written at the current
+binder depth. `ExistsElim` is the delicate case: old hypotheses acquire one pending shift, while
+the opened existential body is prepended at zero because it already lives beneath the fresh witness
+binder.
+
+This changes evaluation order, not the judgment. Positive cutoff-zero shifts compose,
+
+$$
+  \operatorname{shift}(\operatorname{shift}(A,k),1)
+  = \operatorname{shift}(A,k+1),
+$$
+
+so materializing once gives the formula produced by the former eager sequence. Focused tests cover
+mixed-age contexts, both disjunction branches, cuts, witness scope, off-by-one mutations, and the
+important observation that an unused hypothesis causes no shift at all.
+
+On one arm64 CPython 3.10 run, the unchanged 73,767-node FTA certificate moved from a median
+4.338-second final check to 0.451 seconds, while its complete cold library replay moved from 57.497
+to 29.241 seconds. These are observational benchmark results, never acceptance thresholds. They
+also illustrate Amdahl's law: accelerating the trusted check cannot remove tactic construction,
+dependency replay, or diagnostic traversals around it.
+
+### A second checker is a witness, not a promotion
+
+Peano Lab now also has a dependency-free Rust *shadow* checker. It independently defines the same
+terms, formulas, proof constructors, capture-avoiding operations, PA axioms, induction rule, `Cut`,
+and explicit HA-versus-DNE boundary. The crate forbids unsafe Rust. Its answer is useful
+cross-implementation evidence, but the browser session still grants QED only after the small Python
+checker accepts the owner's original goal.
+
+The boundary between implementations is the verified Cut-aware `peano-lab-v2` artifact grammar.
+Python's inert encoder writes exact-arity tagged arrays, canonical natural-number decimals, and one
+terminal line feed. It deliberately does **not** check proofs. Rust parses a strict bounded subset of
+those bytes without a generic JSON normalizer: whitespace, escapes, objects, references, unknown
+tags, alternate integer spellings, excessive resources, and trailing bytes all fail closed. The
+decoded artifact contains the original target itself—never a theorem name or a target copied from a
+possibly corrupted final tactic state.
+
+The artifact also carries fuel. Rust consumes it with the same mutually recursive `check`/`infer`
+path convention as the Lean verifier, then applies a separate global work budget. Thus fuel zero,
+an open target, malformed bytes, exhausted work, or an unwinding panic cannot become `ACCEPT`. The
+native command-line boundary makes the status explicit: `ACCEPT`, `REJECT`, and malformed-input
+failure are distinct, and its help text says that it never grants QED. Process isolation is also the
+prototype for a later browser worker, where an abort or WebAssembly trap must remain a negative
+shadow result rather than freezing or authorizing the Python session.
 
 Python adds an unusual adversarial wrinkle.  A GPT Pro adversarial review found that a subclass can
 override equality and pretend to equal any target.  The trusted recursion therefore accepts exact

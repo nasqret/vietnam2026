@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from ..engine.state import proof_identity_metrics, proof_metrics
+from ..engine.state import proof_resource_metrics
 from ..kernel.formulas import Formula
 from ..kernel.proofs import Cut, ImpIntro, Proof
 from ..library.layered_replay import (
@@ -238,8 +238,7 @@ def _compile_recursive_cut_bundle(
             )
         closed[node_id] = proof
     certificate = closed[bundle.root]
-    nodes, depth = proof_metrics(certificate)
-    objects, edges, reused = proof_identity_metrics(certificate)
+    nodes, depth, objects, edges, reused = proof_resource_metrics(certificate)
     return RecursiveCutCompilation(
         certificate,
         nodes,
