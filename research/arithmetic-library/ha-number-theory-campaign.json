@@ -49,7 +49,8 @@
       "peano-lab/py/tests/test_ha_signed_balance_candidate.py",
       "peano-lab/py/tests/test_ha_signed_balance_complete_candidate.py",
       "peano-lab/py/tests/test_ha_signed_negate_candidate.py",
-      "peano-lab/py/tests/test_ha_signed_add_candidate.py"
+      "peano-lab/py/tests/test_ha_signed_add_candidate.py",
+      "peano-lab/py/tests/test_ha_signed_add_laws_candidate.py"
     ],
     "theorems": [
       {
@@ -352,6 +353,41 @@
         "source_module": "peano-lab/py/peano_lab/library/ha_signed_add_candidate.py",
         "statement_sha256": "09bcd858c7bddac1940bc48cbbccd32b26b83963408b8da3165f2b6a529b11a6",
         "receipt": {"nodes": 1754, "depth": 38, "objects": 1103, "edges": 1136, "reused": 34, "cuts": 34, "certificate_sha256": "63eb78997ade1da36271de19138643f20e5e48666a1318d6a4982e616a6b9b87"}
+      },
+      {
+        "name": "signed_add_commutative",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_add_laws_candidate.py",
+        "statement_sha256": "62fa5a5c2045b88379c68b93ab8d0e357c145ecb5832f3bf2b7597c76e008856",
+        "receipt": {"nodes": 139, "depth": 38, "objects": 133, "edges": 138, "reused": 6, "cuts": 3, "certificate_sha256": "047393b1f607b4bca1bc66f92fe62bc4d29d5ca30b23dbe1bd99480a03504bc7"}
+      },
+      {
+        "name": "signed_add_zero_left",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_add_laws_candidate.py",
+        "statement_sha256": "afb5ba61d840581893d6d198841aca38eff57cfe962462807b08de3b40139ec6",
+        "receipt": {"nodes": 266, "depth": 25, "objects": 234, "edges": 249, "reused": 16, "cuts": 7, "certificate_sha256": "9612c4bdec80a063e2b58c173d461b7ef7b8a52235e9e3cfeff1b65c060d902e"}
+      },
+      {
+        "name": "signed_add_zero_right",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_add_laws_candidate.py",
+        "statement_sha256": "95060521b559e507f1903fd98b99b4897eecd816a4b3581fac8f96f2f343ea50",
+        "receipt": {"nodes": 427, "depth": 40, "objects": 322, "edges": 338, "reused": 17, "cuts": 10, "certificate_sha256": "a2cf2150e8f0797bddcafd2d2d8b56d7ceb9b946556929ed0602fbe0f8bca527"}
+      },
+      {
+        "name": "signed_add_negate_right_zero",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_add_laws_candidate.py",
+        "statement_sha256": "2f005145bef5945703e002eb79d42ef82246042e9b09fef751521271872bac1e",
+        "receipt": {"nodes": 145, "depth": 24, "objects": 139, "edges": 144, "reused": 6, "cuts": 4, "certificate_sha256": "fef01c13514968cd017e0623abd2aaf1cfe41e44507e81ab6ddbe3223ea70d47"}
+      },
+      {
+        "name": "signed_add_negate_left_zero",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_add_laws_candidate.py",
+        "statement_sha256": "7593806922fd71def930a77a3158bad702a19351ad5429dc6f9ba9e53a88e60f",
+        "receipt": {"nodes": 299, "depth": 40, "objects": 220, "edges": 226, "reused": 7, "cuts": 7, "certificate_sha256": "c0644346209c5ed963b612704a8c53fcfb91cadb598181f9ea2835aa0b0a5275"}
       }
     ]
   },
@@ -605,9 +641,21 @@
             "signed_add_functional"
           ],
           "role": "Closed-checked but non-public decoder-equation bridges, totality, and literal-output functionality for the canonical SignedAdd graph."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_signed_add_laws_candidate.py",
+          "factory": "make_ha_signed_add_laws_candidate_theorems",
+          "theorem_names": [
+            "signed_add_commutative",
+            "signed_add_zero_left",
+            "signed_add_zero_right",
+            "signed_add_negate_right_zero",
+            "signed_add_negate_left_zero"
+          ],
+          "role": "Closed-checked but non-public commutativity, two-sided zero identity, and two-sided additive-inverse graph laws for canonical SignedAdd."
         }
       ],
-      "remaining_gap": "The parity-interleaved decoder, decoded-code extensionality, total functional SignedBalance normalization, total functional involutive SignedNegate graph, and total functional SignedAdd core now have deterministic empty-context candidate receipts without division, remainder, beta, or CRT dependencies. Public admission, SignedAdd algebraic laws, signed multiply/natural-scale operation graphs, decidable equality packaging, pair/list/map encodings, and list recursion remain.",
+      "remaining_gap": "The parity-interleaved decoder, decoded-code extensionality, total functional SignedBalance normalization, total functional involutive SignedNegate graph, total functional SignedAdd core, and SignedAdd commutativity/zero/inverse laws now have deterministic empty-context candidate receipts without division, remainder, beta, or CRT dependencies. Public admission, SignedAdd associativity, signed multiply/natural-scale operation graphs, decidable equality packaging, pair/list/map encodings, and list recursion remain.",
       "validation": {
         "path": [
           "manifest_integrity",

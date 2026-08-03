@@ -46,13 +46,13 @@ It separates three facts which are easy to blur in an informal development:
     context but are not in the public registry.
 * - Canonical signed naturals
   - closed candidate
-  - The representation is frozen. Thirty-one parity, decoder,
-    code-extensionality, balance-normalization, negation, and addition-core
+  - The representation is frozen. Thirty-six parity, decoder,
+    code-extensionality, balance-normalization, negation, and addition
     theorems close from the empty context without division.
 ```
 
 The public registry therefore has 393 entries. The first nine campaign
-theorems occupy append-only positions 384--392. The three gcd and thirty-one
+theorems occupy append-only positions 384--392. The three gcd and thirty-six
 signed candidates stay outside it. This tail append leaves the frozen
 first-247 model curriculum unchanged.
 
@@ -557,17 +557,17 @@ The bounded semantic regression table starts with
   - right value
   - output value
 * - `SignedAdd(1,1,3)`
-  - (-1)
-  - (-1)
-  - (-2)
+  - $-1$
+  - $-1$
+  - $-2$
 * - `SignedAdd(1,2,0)`
-  - (-1)
-  - (+1)
-  - (0)
+  - $-1$
+  - $+1$
+  - $0$
 * - `SignedAdd(2,2,4)`
-  - (+1)
-  - (+1)
-  - (+2)
+  - $+1$
+  - $+1$
+  - $+2$
 ```
 
 Two cold replays agree on the complete 31-theorem signed-stack digest
@@ -581,6 +581,68 @@ Inspect the immutable
 and its
 [`cold-closure audit`](https://github.com/nasqret/vietnam2026/blob/ce2f865389013ab2ad16cb2c351f735972330554/peano-lab/py/tests/test_ha_signed_add_candidate.py#L456)
 for every expanded statement, tactic line, mutation, and receipt.
+
+### Elementary addition laws
+
+The next five graph theorems close commutativity, both zero orientations, and
+both orders of adding a code to its canonical negation:
+
+$$
+0+x=x,qquad x+0=x,qquad x+y=y+x,qquad
+x+(-x)=0,qquad(-x)+x=0.
+$$
+
+Each displayed equality abbreviates an exact D05 graph statement whose
+inputs and output are literal canonical natural codes. In particular, the
+inverse results consume the exact D04 negation graph; they do not use host
+subtraction or an integer evaluator.
+
+```{list-table}
+:header-rows: 1
+:widths: 45 10 10 10 25
+
+* - Closed candidate
+  - Nodes
+  - Depth
+  - Cuts
+  - Certificate prefix
+* - `signed_add_commutative`
+  - 139
+  - 38
+  - 3
+  - `047393b1f607`
+* - `signed_add_zero_left`
+  - 266
+  - 25
+  - 7
+  - `9612c4bdec80`
+* - `signed_add_zero_right`
+  - 427
+  - 40
+  - 10
+  - `a2cf2150e8f0`
+* - `signed_add_negate_right_zero`
+  - 145
+  - 24
+  - 4
+  - `fef01c135149`
+* - `signed_add_negate_left_zero`
+  - 299
+  - 40
+  - 7
+  - `c0644346209c`
+```
+
+The complete 36-theorem signed stack has deterministic digest
+`a5fdad35078f386ccb42fd6e17f942f83f504aaaf748c40259b68a2798ab28c7`.
+An independent audit verified that the private literal-zero expansions are
+alpha-identical to D05 instantiated at the appropriate slot. The transitive
+closure uses only four public arithmetic facts and five earlier/local signed
+facts, with no division, remainder, CRT, Gödel-β, classical, or DNE edge.
+
+Associativity remains deliberately separate. Its proof needs a reusable
+cross-sum composition lemma before graph-level reassociation, so the complete
+addition-law acceptance gate is not yet claimed.
 
 Read the complete
 [`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/ce2f865389013ab2ad16cb2c351f735972330554/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
@@ -597,10 +659,10 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 ```
 
-The first command checks the 12-layer campaign manifest, all 43 theorem
+The first command checks the 12-layer campaign manifest, all 48 theorem
 receipts, the 44-theorem definition API, the nine public admissions, the three
-isolated gcd candidates, and the thirty-one isolated signed representation,
-normalization, negation, and addition-core candidates. The second cross-checks
+isolated gcd candidates, and the thirty-six isolated signed representation,
+normalization, negation, and addition candidates. The second cross-checks
 all 393 public runtime theorems against the 394-row research catalog. The third
 independently replays the full public ladder and compares the deterministic
 snapshot.

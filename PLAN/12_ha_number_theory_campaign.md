@@ -166,8 +166,10 @@ with `m != 0` on totality statements.
       symmetry, and involution as deterministic empty-context candidates.
 - [x] Prove the signed-add decoder/equation bridges, totality, and literal
       output functionality as deterministic empty-context candidates.
-- [ ] Prove the signed-add zero identities, commutativity, associativity, and
-      inverse law through the decoded contribution equation.
+- [x] Prove the signed-add zero identities, commutativity, and both inverse
+      orientations through the decoded contribution equation.
+- [ ] Prove signed-add associativity through an independently reviewed
+      cross-sum composition helper.
 - [ ] Prove the signed multiply and natural-scale operation graph obligations
       frozen by that RFC.
 - [ ] Translate four-natural balanced Bezout witnesses to and from the signed

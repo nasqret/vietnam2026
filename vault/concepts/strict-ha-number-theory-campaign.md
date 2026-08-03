@@ -23,8 +23,8 @@ intuitionistic arithmetic without extending Peano Lab's object language.
 - a checked dependency-curried body is weaker than either status.
 
 The current registry has 393 theorems. Nine strict-HA tranche-01 interfaces are
-public; three canonical-gcd and 31 signed representation, normalization,
-negation, and addition-core theorems remain closed candidates.
+public; three canonical-gcd and 36 signed representation, normalization,
+negation, and addition theorems remain closed candidates.
 
 ## Dependency spine
 
@@ -62,8 +62,9 @@ criterion. Negation is now total, functional, symmetric, fixes zero, and is
 involutive. `SignedAdd` now has exact decoded-equation introduction and
 elimination, totality, and literal-output functionality. The largest signed
 certificate is currently `signed_add_functional` at 1,754 structural nodes,
-depth 38, and 34 Cuts. None is public yet. The next gate is the addition-law
-tranche: zero identities, commutativity, associativity, and the inverse law.
+depth 38, and 34 Cuts. Addition is now commutative, has two-sided zero, and
+sums with canonical negation to zero in both orientations. None is public yet.
+The next gate is graph associativity through a reviewed cross-sum helper.
 
 ## Repository anchors
 

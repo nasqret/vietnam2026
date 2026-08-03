@@ -519,6 +519,41 @@ The zero identities, commutativity, associativity, and inverse law remain
 separate proof obligations. No algebraic law and no public admission is
 claimed by this checkpoint.
 
+#### 6.4.3 Closed elementary addition laws
+
+The next five closed candidates establish the inexpensive graph laws:
+
+```text
+signed_add_commutative
+signed_add_zero_left
+signed_add_zero_right
+signed_add_negate_right_zero
+signed_add_negate_left_zero
+```
+
+Commutativity swaps the two decoder pairs and commutes the positive and
+negative contribution sums. Left zero decodes the input once, reuses that
+decoder for the output, and supplies the explicit canonical zero decoder;
+right zero follows by graph commutativity. The inverse laws destruct the D04
+negation graph, whose output decoder swaps the source parts, and construct the
+D05 zero-output graph. Neither inverse proof uses host subtraction.
+
+The five certificates contain respectively 139, 266, 427, 145, and 299
+structural nodes, at depths 38, 25, 40, 24, and 40. Two cold replays agree on
+the complete 36-theorem signed-stack digest
+`a5fdad35078f386ccb42fd6e17f942f83f504aaaf748c40259b68a2798ab28c7`.
+Their exact transitive dependency union consists only of `add_comm`,
+`add_succ_left`, `zero_add`, `parity_cases`, decoder totality, the D05
+introduction theorem, and earlier laws in this five-row tranche. It reaches no
+division, remainder, CRT, beta, classical, or DNE theorem.
+
+The private literal-zero expanders used by these statements are regression
+checked for alpha-identity with D05 instantiated at the corresponding zero
+slot; they add no surface or kernel primitive. Associativity is still open and
+will use a separately reviewed cross-sum composition helper. Therefore the
+full addition-law acceptance gate remains open, and all 36 signed results
+remain nonpublic.
+
 ### 6.5 Bezout bridge obligations
 
 The existing expanded balanced relation is

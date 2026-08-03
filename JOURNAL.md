@@ -3828,3 +3828,27 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   2,285-file explicit/defined Proof Explorer trees. The vault generation
   check passes. No public admission, push, deployment, or WMI receipt is
   claimed.
+
+## 2026-08-03 — Elementary SignedAdd laws closed
+
+- Added graph commutativity, both zero identities, and both orientations of
+  adding a code to its canonical negation. The zero-slot statements use
+  private hygienic D05 expanders rather than weakening the identifier-only
+  core expander or adding a trusted literal-term API.
+- Closed the five candidates twice from the empty context. Exact nodes/depths
+  are 139/38 for `signed_add_commutative`, 266/25 for
+  `signed_add_zero_left`, 427/40 for `signed_add_zero_right`, 145/24 for
+  `signed_add_negate_right_zero`, and 299/40 for
+  `signed_add_negate_left_zero`. Their 36-theorem stack digest is
+  `a5fdad35078f386ccb42fd6e17f942f83f504aaaf748c40259b68a2798ab28c7`.
+- The eight-test focused audit pins all hashes, receipts, strict dependencies,
+  exact RFC zero instantiations, registry isolation, no-DNE/no-automation
+  checks, nearby false mutations, and bounded zero/commutative/inverse
+  semantics. Independent review approved the proof semantics and found the
+  exact closure to contain four public and five earlier/local facts only.
+- Integrated the laws as the eighth K3 candidate module. The campaign now has
+  56 public references, 39 candidate references, and 48 exact receipts; the
+  registry remains at 393. The full local gate passes 26
+  manifest/definition tests and 77 proof/admission tests. Associativity is
+  still open and will be attempted only through a separately checked
+  cross-sum composition helper.

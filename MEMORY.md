@@ -1581,3 +1581,18 @@
   warning-free 47-source rebuild retains 2,325 HTML pages, zero integrity
   errors, and byte-identical 2,285-file explicit/defined explorer trees; the
   vault generation check also passes.
+- **Signed addition elementary laws (2026-08-03):** five more closed,
+  nonpublic candidates prove graph commutativity, left and right zero, and
+  both orientations of addition with canonical `SignedNegate`. Their exact
+  nodes/depths are 139/38, 266/25, 427/40, 145/24, and 299/40; certificate
+  hashes are pinned in the campaign manifest. Two cold replays agree on the
+  36-theorem signed-stack digest
+  `a5fdad35078f386ccb42fd6e17f942f83f504aaaf748c40259b68a2798ab28c7`.
+  An independent review verified all three private literal-zero D05
+  expansions against the RFC AST and found the exact dependency closure to be
+  four public arithmetic facts plus five earlier/local candidates, with no
+  division, remainder, beta, CRT, classical, or DNE edge. The manifest now
+  binds 39 candidates and 48 exact receipts; the registry remains 393.
+  `make ha-number-theory-check` passes 26 manifest/definition tests and 77
+  proof/admission tests. Associativity remains the one open additive law and
+  is intentionally isolated behind a cross-sum helper tranche.
