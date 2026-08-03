@@ -13,7 +13,7 @@ conservative notation: every occurrence expands before the ordinary kernel
 checks a certificate.
 
 The controlling machine manifest is
-[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/bc45de0da2ff60ca65d81d4b8cef612f0b935892/research/arithmetic-library/ha-number-theory-campaign.json).
+[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/bb02ee5a767f6c4c585916269de688e7068b3716/research/arithmetic-library/ha-number-theory-campaign.json).
 It separates three facts which are easy to blur in an informal development:
 
 - a dependency-curried tactic body may check;
@@ -46,11 +46,11 @@ It separates three facts which are easy to blur in an informal development:
     context but are not in the public registry.
 * - Canonical signed naturals
   - closed candidate
-  - The representation is frozen. Seventy parity, decoder,
+  - The representation is frozen. Seventy-four parity, decoder,
     code-extensionality, balance-normalization, negation, addition, and
-    multiplication theorems, together with the direct natural-scaling graph
-    and its zero, one, and composition laws, close from the empty context
-    without division.
+    multiplication theorems, together with the direct natural-scaling graph,
+    its laws, and the balanced-to-signed Bezout bridge, close from the empty
+    context without division.
 * - Canonical pair/cell coding
   - design frozen
   - Doubled-Cantor pairs and successor-tagged cells have exact expanded
@@ -59,7 +59,7 @@ It separates three facts which are easy to blur in an informal development:
 ```
 
 The public registry therefore has 393 entries. The first nine campaign
-theorems occupy append-only positions 384--392. The three gcd and seventy
+theorems occupy append-only positions 384--392. The three gcd and seventy-four
 signed candidates stay outside it. This tail append leaves the frozen
 first-247 model curriculum unchanged.
 
@@ -1221,6 +1221,156 @@ bind these claims to the exact
 and
 [`nine-test law audit`](https://github.com/nasqret/vietnam2026/blob/bc45de0da2ff60ca65d81d4b8cef612f0b935892/peano-lab/py/tests/test_ha_signed_nat_scale_laws_candidate.py).
 
+### Canonical signed Bezout coefficients: D08
+
+The legacy Euclidean layer represents a signed Bezout identity with four
+naturals. Write
+
+$$
+\operatorname{BalancedBezout}(r,a,b)
+\;:\!\Longleftrightarrow\;
+\exists x_+,y_+,x_-,y_-,\quad
+a x_+ + b y_+ = r + \bigl(a x_- + b y_-\bigr).
+$$
+
+This is honest natural arithmetic: it means
+\(a(x_+-x_-)+b(y_+-y_-)=r\) without adding subtraction or an integer type.
+D08 connects it to the parity-interleaved canonical signed codes. If
+\(\operatorname{Decode}(x,x_+,x_-)\) and
+\(\operatorname{Decode}(y,y_+,y_-)\) are the frozen D01 decoders, define
+
+$$
+\begin{aligned}
+\operatorname{SignedBezout}(r,a,b,x,y)
+\;:\!\Longleftrightarrow\;&
+\exists x_+,x_-,y_+,y_-,\\
+&\operatorname{Decode}(x,x_+,x_-)
+\land \operatorname{Decode}(y,y_+,y_-)\\
+&\land\;a x_+ + b y_+
+   = r + \bigl(a x_- + b y_-\bigr).
+\end{aligned}
+$$
+
+The checked endpoint is the intuitionistic pair of implications
+
+$$
+\operatorname{BalancedBezout}(r,a,b)
+\quad\Longleftrightarrow\quad
+\exists x,y,\ \operatorname{SignedBezout}(r,a,b,x,y),
+$$
+
+where the displayed \(\Longleftrightarrow\) is stored as a conjunction of
+two implications. It does **not** claim that \((x,y)\) is unique. Canonical
+representation makes each chosen coefficient unique as a code, but a Bezout
+equation may have many coefficient pairs. For example,
+
+$$
+2(-1)+3(1)=1=2(2)+3(-1),
+$$
+
+so codes `(1,2)` and `(4,1)` are two distinct D08 witnesses for the same
+result and inputs.
+
+The main algebraic step takes raw coefficients and normalized coefficients:
+
+$$
+\begin{aligned}
+x_+ + x'_- &= x_- + x'_+,\\
+y_+ + y'_- &= y_- + y'_+,\\
+a x_+ + b y_+ &= r + (a x_- + b y_-),
+\end{aligned}
+$$
+
+and proves
+
+$$
+a x'_+ + b y'_+ = r + (a x'_- + b y'_-).
+$$
+
+The first two equalities come independently from `SignedBalance`. They are
+lifted by `mul_cross_sum_left`, combined by
+`add_balance_outputs_compose`, and oriented with ordinary commutativity. No
+signed multiplication or natural-scale graph is needed in this bridge. The
+proof also makes an easy-to-miss representation change explicit:
+`BalancedBezout` stores witnesses in the order
+`xp,yp,xn,yn`, while `SignedBezout` groups decoder parts as
+`xp,xn,yp,yn`.
+
+```text
+flowchart LR
+  SB[SignedBalance totality] --> F[balanced to signed]
+  MC[mul_cross_sum_left] --> T[equation transport]
+  AC[add_balance_outputs_compose] --> T
+  T --> F
+  R[signed to balanced] --> I[packaged equivalence]
+  F --> I
+```
+
+The proof surface has four topologically ordered rows:
+
+```{list-table}
+:header-rows: 1
+:widths: 34 10 10 10 36
+
+* - Candidate
+  - Nodes
+  - Depth
+  - Cuts
+  - Certificate SHA-256
+* - `balanced_bezout_equation_transport`
+  - 943
+  - 34
+  - 20
+  - `9e3f3b984b0c9bdd42e7747f5660541364bb5bee3655b95b9242e5ed3305e4cc`
+* - `balanced_bezout_to_signed_bezout`
+  - 1,241
+  - 39
+  - 24
+  - `f39a790749e8da2b6d6c36f3639e2b81ecdd1b5db892a543a7ece18941978923`
+* - `signed_bezout_to_balanced_bezout`
+  - 35
+  - 23
+  - 0
+  - `f0fb3fa8d5f09c69d22721164468227765bab34b6f1eadb8d67593bfeb81fa28`
+* - `balanced_bezout_iff_signed_bezout_exists`
+  - 1,326
+  - 40
+  - 26
+  - `1bc7e28457b07b7aaf37b48aea0f3f86b58035797aeca50a022c73409f6eae1d`
+```
+
+The focused audit pins the exact D08 template, statements, ordered
+dependencies, tactic bodies, empty-context DAG receipts, false mutations,
+registry isolation, and endpoint reachability. Its untrusted semantic oracle
+exhausts 2,185 satisfying transport premises, 5,736 raw balanced witnesses,
+and 1,600 bounded direct graph cases. It includes nonunique solutions, an
+all-zero coefficient boundary, and a trap showing that the raw parity codes
+cannot be substituted for decoded signed values.
+
+Two cache-cleared closures agree on the complete 74-row signed-stack digest
+`b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`.
+The transitive closure contains no DNE, forbidden automation, division,
+remainder, CRT, Gödel-β, or classical theorem. The campaign now records 74
+signed candidates, 77 candidates overall, and 86 exact receipts across 16 K3
+candidate modules and 18 focused evidence tests. The public registry remains
+393 entries with 56 public references; the definition freeze remains 45 rows
+over 44 public theorems; and the catalog remains 394 entries. No D08 row is
+publicly admitted.
+
+The separate theorem that combines this bridge with
+`gcd_balanced_bezout_exists` belongs to K4, not this strict K3 closure: the
+public gcd route transitively reaches division. Likewise, D08 does not assert
+a canonical choice of Bezout pair. Those are deliberate mathematical and
+architectural boundaries, not missing hidden assumptions.
+
+The sealed source checkpoint binds the exact
+[`campaign manifest`](https://github.com/nasqret/vietnam2026/blob/bb02ee5a767f6c4c585916269de688e7068b3716/research/arithmetic-library/ha-number-theory-campaign.json),
+[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/bb02ee5a767f6c4c585916269de688e7068b3716/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md),
+[`D08 tactic source`](https://github.com/nasqret/vietnam2026/blob/bb02ee5a767f6c4c585916269de688e7068b3716/peano-lab/py/peano_lab/library/ha_signed_bezout_candidate.py),
+and
+[`ten-test focused audit`](https://github.com/nasqret/vietnam2026/blob/bb02ee5a767f6c4c585916269de688e7068b3716/peano-lab/py/tests/test_ha_signed_bezout_candidate.py)
+to commit `bb02ee5a767f6c4c585916269de688e7068b3716`.
+
 ## Independent pair/cell checkpoint
 
 The finite-data lane has selected a representation for pairs and single cells,
@@ -1262,7 +1412,7 @@ honest ways to resolve the uniform-list blocker. It is a design target; no
 pair theorem or list theorem is claimed by that document.
 
 Read the complete
-[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/bc45de0da2ff60ca65d81d4b8cef612f0b935892/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
+[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/bb02ee5a767f6c4c585916269de688e7068b3716/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
 for the exact formulas, hashes, forbidden dependency paths, and staged proof
 obligations.
 
@@ -1276,11 +1426,11 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 ```
 
-The first command checks the 12-layer campaign manifest, all 82 theorem
+The first command checks the 12-layer campaign manifest, all 86 theorem
 receipts, the 45-row definition API over 44 distinct public-theorem replays,
-the nine public admissions, the three isolated gcd candidates, and the seventy
-isolated signed representation, normalization, negation, addition, and
-multiplication and natural-scaling candidates. The
+the nine public admissions, the three isolated gcd candidates, and the
+seventy-four isolated signed representation, normalization, arithmetic,
+natural-scaling, and Bezout-bridge candidates. The
 second cross-checks all 393 public runtime theorems against the 394-row
 research catalog. The third independently replays the full public ladder and
 compares the deterministic snapshot.

@@ -1759,3 +1759,11 @@
   The integrated local gate passes 29 campaign-structure tests and all 142
   proof/admission tests. Independent checks keep the 394-row knowledge base,
   393-theorem snapshot, and 492-note/4,991-link vault green.
+  The source checkpoint is sealed as
+  `bb02ee5a767f6c4c585916269de688e7068b3716`. Its warning-free 47-source
+  Book rebuild passes integrity with 2,325 HTML pages, byte-identical
+  2,285-file source/built explorer trees, and zero broken, escaping,
+  fragment, unsafe, or remote-runtime links. The 2,493-file HTML tree has
+  87,178,354 bytes and SHA-256
+  `ee4f046d54b019e780d05dfcf2fd75af7f1c481c930cea3de219a6c1c0870a8b`.
+  No push, deployment, public admission, or visual click-through is claimed.

@@ -4113,5 +4113,14 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   drift, and the vault verifies 492 notes with 4,991 resolved links.
 - `gcd_signed_bezout_exists` remains a deliberate K4 client because its
   public gcd source reaches division. It is not smuggled into the strict K3
-  closure. Source sealing, Book binding, push, and deployment remain separate
-  operations.
+  closure.
+- Sealed the D08 source checkpoint as
+  `bb02ee5a767f6c4c585916269de688e7068b3716` and bound the strict-HA Book
+  chapter to that immutable source. The warning-free 47-source rebuild passes
+  the structural integrity checker with 2,325 HTML pages, zero broken,
+  escaping, fragment, unsafe, or remote-runtime links, and byte-identical
+  2,285-file source/built explorer trees. The 2,493-file HTML tree contains
+  87,178,354 bytes and has SHA-256
+  `ee4f046d54b019e780d05dfcf2fd75af7f1c481c930cea3de219a6c1c0870a8b`.
+  No browser is attached, so visual QA is not claimed. Push, deployment, and
+  public theorem admission remain separate and unperformed.
