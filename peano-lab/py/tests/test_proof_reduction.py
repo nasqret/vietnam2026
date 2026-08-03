@@ -7,9 +7,11 @@ import pytest
 import driver
 import peano_lab.engine.proof_reduction as reduction
 from peano_lab.kernel.checker import check
-from peano_lab.kernel.formulas import Eq, Forall
+from peano_lab.kernel.formulas import And, Eq, Forall
 from peano_lab.kernel.proofs import (
+    AndIntro,
     EqRefl,
+    EqSym,
     ForallIntro,
     Hyp,
     ImpElim,
@@ -38,6 +40,18 @@ def test_engine_reducer_and_library_facade_preserve_capture_safe_results() -> No
     assert reduced == ForallIntro(EqRefl(Var(1)))
     assert library_normalise_cuts(redex) == reduced
     assert check((proposition,), reduced, target)
+
+
+def test_normalization_preserves_shared_input_proof_objects() -> None:
+    equation = Eq(Zero(), Zero())
+    shared = EqSym(EqSym(EqRefl(Zero())))
+    proof = AndIntro(shared, shared)
+
+    normalized = reduction.normalise_cuts(proof)
+
+    assert type(normalized) is AndIntro
+    assert normalized.left is normalized.right
+    assert check((), normalized, And(equation, equation))
 
 
 def test_engine_and_library_facade_reject_malformed_proofs_with_stable_types() -> None:

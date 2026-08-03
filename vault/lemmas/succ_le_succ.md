@@ -25,6 +25,7 @@ forall a b. (exists k. k + a = b) -> exists r. r + S a = S b
 - [[beta_product_succ_append]]
 - [[beta_factor_prefix_product_append]]
 - [[sorted_succ_intro]]
+- [[beta_prefix_sum_trace_exists]]
 
 ## Verification record
 

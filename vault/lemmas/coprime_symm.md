@@ -20,6 +20,7 @@ forall a b. (forall d. (exists x. a = d * x) -> (exists y. b = d * y) -> d = 1) 
 ## Checked dependents
 
 - [[coprime_mul_right]]
+- [[prime_mod_cancel]]
 
 ## Verification record
 

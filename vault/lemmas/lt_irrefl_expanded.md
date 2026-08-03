@@ -22,6 +22,12 @@ forall n. ~(exists k. k + S n = n)
 
 - [[beta_accumulated_product_step]]
 - [[beta_exclusive_accumulated_product_step]]
+- [[beta_prefix_swap_last_from_entries]]
+- [[finite_last_is_top_from_prefix_surjective]]
+- [[finite_bounded_injective_surjective]]
+- [[beta_product_replace_balance]]
+- [[beta_product_swap_last_invariant]]
+- [[finite_fixed_last_prefix_bounded]]
 
 ## Verification record
 

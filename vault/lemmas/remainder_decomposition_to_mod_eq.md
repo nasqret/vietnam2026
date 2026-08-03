@@ -21,6 +21,9 @@ forall m b q x. b = q * m + x -> exists u v. b + m * u = x + m * v
 ## Checked dependents
 
 - [[beta_at_to_mod_eq]]
+- [[mod_eq_decidable_from_remainders]]
+- [[quadratic_residue_bounded_equiv]]
+- [[prime_bounded_nonzero_mod_inverse]]
 
 ## Verification record
 

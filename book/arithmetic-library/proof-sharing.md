@@ -53,14 +53,49 @@ This removes repeated proof substitution within that lexical scope.
 
 This is deliberately smaller than a general proof DAG. Reusing the same
 certificate at two distinct Cut nodes still creates two structural
-occurrences. Peano Lab does not memoize arbitrary nodes by identity and does
-not ask the checker to retrieve a proof from a global table.
+occurrences. The kernel follows and checks both incoming edges; it does not
+retrieve a proof from a global table or grant identity-based authority.
+
+The untrusted finalizer does retain existing identity sharing while applying
+term substitutions and normalizing administrative cuts. Those pure
+transformations use a per-invocation identity memo so one immutable input
+object produces one transformed output object. Without that preservation, two
+shared FTA branches inflated from 8,704 input objects to 109,150 normalized
+objects and tripped the object availability limit. The corrected end-to-end
+certificate has 139,203 structural occurrences but only 8,274 distinct
+objects, and is still checked in full by the independent kernel.
 
 Library replay uses nested Cuts. It first proves the dependency-curried body,
 peels the generated implication introductions, and surrounds the remaining
 body with one Cut per already checked dependency. The live `use` command
 similarly rechecks the selected closed certificate before placing it in a Cut
 around the focused goal.
+
+## Dense DAGs: layered lexical sharing
+
+Per-theorem recursive replay works well for the checked arithmetic library,
+but a dense dependency DAG can revisit the same ancestor along many paths.
+The quadratic-reciprocity graph makes the distinction exact: 557 unique
+specifications and 1,787 direct edges expand to 191,648 theorem occurrences.
+The forced Cuts, one node per occurrence, and recorded leading introductions
+alone give a 731,423-node lower bound, beyond the 500,000-node policy. See the
+[hotspot audit](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/quadratic-reciprocity-closure-hotspots.md).
+
+The preferred unchanged-kernel compiler groups each dependency-depth layer
+into a balanced conjunction. Each dependency-curried theorem body occurs
+once, later bodies obtain earlier theorems through ordinary `AndElimL` and
+`AndElimR`, and one existing contextual `Cut` introduces each package. For QR
+this yields a 45-Cut spine. The result is still the ordinary judgment
+
+$$
+  \operatorname{check}(\varnothing,p,
+  \mathrm{QuadraticReciprocity}),
+$$
+
+not a theorem reference or a new checker case. The complete WMI certificate
+and admission gates remain pending. The construction and synthetic comparison
+are documented in the
+[layered-bundle design](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/layered-cut-bundle.md).
 
 ## Why this is not a theorem oracle
 

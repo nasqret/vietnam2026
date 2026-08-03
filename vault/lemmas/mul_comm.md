@@ -40,6 +40,13 @@ forall n m. n * m = m * n
 - [[beta_factor_divides_product]]
 - [[prime_factorization_exists_up_to]]
 - [[two_prime_product_uniqueness]]
+- [[mul_double_right]]
+- [[mod_eq_decidable_nonzero]]
+- [[quadratic_residue_bounded_equiv]]
+- [[coprime_mod_inverse]]
+- [[mod_eq_cancel_coprime]]
+- [[beta_product_replace_balance]]
+- [[prime_bounded_nonzero_mod_inverse]]
 
 ## Verification record
 

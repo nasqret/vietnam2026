@@ -24,6 +24,11 @@ forall b c l n. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\ exists q. 
 - [[beta_factor_divides_product]]
 - [[beta_prime_divisor_product_member]]
 - [[beta_canonical_product_cancel_last]]
+- [[pow_successor_decompose]]
+- [[beta_product_pointwise_mod_congruent]]
+- [[factorial_succ_decompose]]
+- [[beta_product_replace_balance]]
+- [[beta_product_swap_last_invariant]]
 
 ## Verification record
 

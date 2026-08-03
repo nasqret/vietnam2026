@@ -1,0 +1,39 @@
+---
+title: "Lemma: pow_add"
+tags: [peano-arithmetic, checked-lemma, dependency-dag]
+---
+
+# `pow_add`
+
+Relational powers turn addition of exponents into multiplication.
+
+## Closed Peano statement
+
+```text
+forall a e f s x y z. s = e + f -> (exists ff_b_add_left ff_c_add_left. ((forall ff_i_add_left_repeat. (exists ff_lt_add_left_repeat_bound. ff_lt_add_left_repeat_bound + S ff_i_add_left_repeat = e) -> (((exists ff_h_add_left_repeat_decoded. ff_h_add_left_repeat_decoded + S (a) = S ((S (ff_i_add_left_repeat)) * ff_c_add_left)) /\ exists ff_q_add_left_repeat_decoded. ff_b_add_left = ff_q_add_left_repeat_decoded * S ((S (ff_i_add_left_repeat)) * ff_c_add_left) + (a)))) /\ (exists ff_u_add_left_product ff_v_add_left_product. ((((exists ff_h_add_left_product_start. ff_h_add_left_product_start + S (1) = S ((S (0)) * ff_v_add_left_product)) /\ exists ff_q_add_left_product_start. ff_u_add_left_product = ff_q_add_left_product_start * S ((S (0)) * ff_v_add_left_product) + (1))) /\ ((((exists ff_h_add_left_product_terminal. ff_h_add_left_product_terminal + S (x) = S ((S (e)) * ff_v_add_left_product)) /\ exists ff_q_add_left_product_terminal. ff_u_add_left_product = ff_q_add_left_product_terminal * S ((S (e)) * ff_v_add_left_product) + (x))) /\ forall ff_i_add_left_product. (exists ff_lt_add_left_product_bound. ff_lt_add_left_product_bound + S ff_i_add_left_product = e) -> exists ff_p_add_left_product ff_r_add_left_product ff_s_add_left_product. ((((exists ff_h_add_left_product_factor. ff_h_add_left_product_factor + S (ff_p_add_left_product) = S ((S (ff_i_add_left_product)) * ff_c_add_left)) /\ exists ff_q_add_left_product_factor. ff_b_add_left = ff_q_add_left_product_factor * S ((S (ff_i_add_left_product)) * ff_c_add_left) + (ff_p_add_left_product))) /\ ((((exists ff_h_add_left_product_partial. ff_h_add_left_product_partial + S (ff_r_add_left_product) = S ((S (ff_i_add_left_product)) * ff_v_add_left_product)) /\ exists ff_q_add_left_product_partial. ff_u_add_left_product = ff_q_add_left_product_partial * S ((S (ff_i_add_left_product)) * ff_v_add_left_product) + (ff_r_add_left_product))) /\ ((((exists ff_h_add_left_product_successor. ff_h_add_left_product_successor + S (ff_s_add_left_product) = S ((S (S ff_i_add_left_product)) * ff_v_add_left_product)) /\ exists ff_q_add_left_product_successor. ff_u_add_left_product = ff_q_add_left_product_successor * S ((S (S ff_i_add_left_product)) * ff_v_add_left_product) + (ff_s_add_left_product))) /\ ff_s_add_left_product = ff_r_add_left_product * ff_p_add_left_product)))))))) -> (exists ff_b_add_right ff_c_add_right. ((forall ff_i_add_right_repeat. (exists ff_lt_add_right_repeat_bound. ff_lt_add_right_repeat_bound + S ff_i_add_right_repeat = f) -> (((exists ff_h_add_right_repeat_decoded. ff_h_add_right_repeat_decoded + S (a) = S ((S (ff_i_add_right_repeat)) * ff_c_add_right)) /\ exists ff_q_add_right_repeat_decoded. ff_b_add_right = ff_q_add_right_repeat_decoded * S ((S (ff_i_add_right_repeat)) * ff_c_add_right) + (a)))) /\ (exists ff_u_add_right_product ff_v_add_right_product. ((((exists ff_h_add_right_product_start. ff_h_add_right_product_start + S (1) = S ((S (0)) * ff_v_add_right_product)) /\ exists ff_q_add_right_product_start. ff_u_add_right_product = ff_q_add_right_product_start * S ((S (0)) * ff_v_add_right_product) + (1))) /\ ((((exists ff_h_add_right_product_terminal. ff_h_add_right_product_terminal + S (y) = S ((S (f)) * ff_v_add_right_product)) /\ exists ff_q_add_right_product_terminal. ff_u_add_right_product = ff_q_add_right_product_terminal * S ((S (f)) * ff_v_add_right_product) + (y))) /\ forall ff_i_add_right_product. (exists ff_lt_add_right_product_bound. ff_lt_add_right_product_bound + S ff_i_add_right_product = f) -> exists ff_p_add_right_product ff_r_add_right_product ff_s_add_right_product. ((((exists ff_h_add_right_product_factor. ff_h_add_right_product_factor + S (ff_p_add_right_product) = S ((S (ff_i_add_right_product)) * ff_c_add_right)) /\ exists ff_q_add_right_product_factor. ff_b_add_right = ff_q_add_right_product_factor * S ((S (ff_i_add_right_product)) * ff_c_add_right) + (ff_p_add_right_product))) /\ ((((exists ff_h_add_right_product_partial. ff_h_add_right_product_partial + S (ff_r_add_right_product) = S ((S (ff_i_add_right_product)) * ff_v_add_right_product)) /\ exists ff_q_add_right_product_partial. ff_u_add_right_product = ff_q_add_right_product_partial * S ((S (ff_i_add_right_product)) * ff_v_add_right_product) + (ff_r_add_right_product))) /\ ((((exists ff_h_add_right_product_successor. ff_h_add_right_product_successor + S (ff_s_add_right_product) = S ((S (S ff_i_add_right_product)) * ff_v_add_right_product)) /\ exists ff_q_add_right_product_successor. ff_u_add_right_product = ff_q_add_right_product_successor * S ((S (S ff_i_add_right_product)) * ff_v_add_right_product) + (ff_s_add_right_product))) /\ ff_s_add_right_product = ff_r_add_right_product * ff_p_add_right_product)))))))) -> (exists ff_b_add_total ff_c_add_total. ((forall ff_i_add_total_repeat. (exists ff_lt_add_total_repeat_bound. ff_lt_add_total_repeat_bound + S ff_i_add_total_repeat = s) -> (((exists ff_h_add_total_repeat_decoded. ff_h_add_total_repeat_decoded + S (a) = S ((S (ff_i_add_total_repeat)) * ff_c_add_total)) /\ exists ff_q_add_total_repeat_decoded. ff_b_add_total = ff_q_add_total_repeat_decoded * S ((S (ff_i_add_total_repeat)) * ff_c_add_total) + (a)))) /\ (exists ff_u_add_total_product ff_v_add_total_product. ((((exists ff_h_add_total_product_start. ff_h_add_total_product_start + S (1) = S ((S (0)) * ff_v_add_total_product)) /\ exists ff_q_add_total_product_start. ff_u_add_total_product = ff_q_add_total_product_start * S ((S (0)) * ff_v_add_total_product) + (1))) /\ ((((exists ff_h_add_total_product_terminal. ff_h_add_total_product_terminal + S (z) = S ((S (s)) * ff_v_add_total_product)) /\ exists ff_q_add_total_product_terminal. ff_u_add_total_product = ff_q_add_total_product_terminal * S ((S (s)) * ff_v_add_total_product) + (z))) /\ forall ff_i_add_total_product. (exists ff_lt_add_total_product_bound. ff_lt_add_total_product_bound + S ff_i_add_total_product = s) -> exists ff_p_add_total_product ff_r_add_total_product ff_s_add_total_product. ((((exists ff_h_add_total_product_factor. ff_h_add_total_product_factor + S (ff_p_add_total_product) = S ((S (ff_i_add_total_product)) * ff_c_add_total)) /\ exists ff_q_add_total_product_factor. ff_b_add_total = ff_q_add_total_product_factor * S ((S (ff_i_add_total_product)) * ff_c_add_total) + (ff_p_add_total_product))) /\ ((((exists ff_h_add_total_product_partial. ff_h_add_total_product_partial + S (ff_r_add_total_product) = S ((S (ff_i_add_total_product)) * ff_v_add_total_product)) /\ exists ff_q_add_total_product_partial. ff_u_add_total_product = ff_q_add_total_product_partial * S ((S (ff_i_add_total_product)) * ff_v_add_total_product) + (ff_r_add_total_product))) /\ ((((exists ff_h_add_total_product_successor. ff_h_add_total_product_successor + S (ff_s_add_total_product) = S ((S (S ff_i_add_total_product)) * ff_v_add_total_product)) /\ exists ff_q_add_total_product_successor. ff_u_add_total_product = ff_q_add_total_product_successor * S ((S (S ff_i_add_total_product)) * ff_v_add_total_product) + (ff_s_add_total_product))) /\ ff_s_add_total_product = ff_r_add_total_product * ff_p_add_total_product)))))))) -> z = x * y
+```
+
+## Dependencies
+
+- [[pow_zero]]
+- [[pow_functional]]
+- [[pow_successor_decompose]]
+- [[mul_one]]
+- [[mul_assoc]]
+
+## Checked dependents
+
+- [[pow_mul_exp]]
+
+## Verification record
+
+- Independently checked from the empty context.
+- Certificate: **6744 nodes**, depth **66**.
+- Authored script length: **90 commands**.
+- Runtime card: `pa lib pow_add`.
+- Book route: *The quadratic-reciprocity campaign* in the foundational arithmetic part.
+
+## Related
+
+[[arithmetic-library-moc]] · [[theorem-ladder]] · [[proof-certificate]] ·
+[[checked-theorem-reuse]]

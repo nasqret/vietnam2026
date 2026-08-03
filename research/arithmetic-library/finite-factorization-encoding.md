@@ -275,7 +275,8 @@ make the proof small. The completed admission route is:
 
 The reviewed self-contained `Cut` rule now supplies lexical proof sharing while
 keeping every dependency proof inside the checked certificate. The exact FTA
-certificate fits the current live/use budget of 100,000 nodes and depth 256:
+certificate fits the current live/use budget of 500,000 structural
+occurrences, 100,000 distinct proof objects, and depth 256:
 73,767 nodes, depth 99, and 2,184 Cuts. Its SHA-256 is
 `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
 The full prove/use/exact/QED path and independent empty-context replay pass;

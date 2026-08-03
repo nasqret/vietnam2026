@@ -22,6 +22,7 @@ forall d n. ~(n = 0) -> (exists q. n = d * q) -> exists k. k + d = n
 - [[prime_or_composite]]
 - [[proper_factor_lt]]
 - [[greatest_prime_divisor_exists]]
+- [[prime_bounded_nonzero_mod_inverse]]
 
 ## Verification record
 

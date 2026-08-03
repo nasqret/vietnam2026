@@ -20,6 +20,7 @@ forall a b. (exists k. k + S a = b) -> ~ (exists k. k + b = a)
 ## Checked dependents
 
 - [[le_not_lt]]
+- [[prime_bounded_nonzero_mod_inverse]]
 
 ## Verification record
 

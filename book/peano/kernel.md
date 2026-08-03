@@ -68,11 +68,13 @@ quantified successor step for its stored motive.
 The checker is bidirectional.  Elimination and annotated equality forms usually *synthesize* their
 conclusion; introduction forms are *checked* against a conclusion already known.  This avoids
 stuffing every proof node with redundant formula annotations while keeping the recursion readable.
-The whole trusted checker is 234 physical lines at this stage, below the project's roughly
-300-line design ceiling, and an import-hygiene test forbids it from importing the engine or UI.
+The whole trusted checker is now 247 physical lines (formerly 234 before the explicit `Cut` sharing
+rule), below the project's roughly 300-line design ceiling, and an import-hygiene test forbids it
+from importing the engine or UI.
 
-Python adds an unusual adversarial wrinkle.  A subclass can override equality and pretend to equal
-any target.  The trusted recursion therefore accepts exact frozen kernel constructors at rule
+Python adds an unusual adversarial wrinkle.  A GPT Pro adversarial review found that a subclass can
+override equality and pretend to equal any target.  The trusted recursion therefore accepts exact
+frozen kernel constructors at rule
 boundaries—`type(node) is EqRefl`, for example—rather than granting meaning to arbitrary subclasses.
 Engine-only `Hole` and `MetaVar` nodes consequently cannot slip across QED merely because they share
 a marker base class.
@@ -173,10 +175,21 @@ If the checker accepts $p:A$, we have evidence that $A$ is derivable from the en
 deduction rules, PA1–PA6, and the selected induction instances (plus explicit DNE only in classical
 mode).  This is the lab's operational meaning of sound proof checking.
 
-It is not a machine-checked proof that the Python checker itself is correct.  It does not establish
-that PA is consistent, that every true arithmetic sentence is derivable, or that the intended
-natural-number model is the only model of the first-order axioms.  The De Bruijn criterion reduces
-the trusted computing base; it does not erase metamathematics or hardware and runtime trust.
+The certificate calculus and reference checker have an independent Lean formalization in
+[`nasqret/peano-lab-lean`](https://github.com/nasqret/peano-lab-lean). Lean proves that checker
+acceptance yields a `Derives` judgment and that every such judgment is true in the standard natural
+numbers. This result is relative to Lean's kernel and reported standard axioms. Canonical inert
+decoding and differential tests support correspondence with the retained Python sources; they are
+not an exhaustive program-equivalence theorem for CPython. Historical pinned Lean 4.31/WMI job
+`211445` covers the cut-free kernel. Cut-aware v2 source
+[`ab966fd1`](https://github.com/nasqret/peano-lab-lean/commit/ab966fd1b8207b99eea0c9dc3d719c6e61ef73c2)
+passed pinned Lean 4.31/WMI job
+[`218358`](https://github.com/nasqret/peano-lab-lean/tree/8515336ab3b89ca6f0c8ab521d01745a220b5211/artifacts/wmi/218358).
+
+This metaverification does not establish that PA is consistent, that every true arithmetic sentence
+is derivable, that the intended natural-number model is the only model of the first-order axioms, or
+that Lean's own implementation and hardware are infallible. The De Bruijn criterion and the Lean
+proof reduce the trusted computing base; they do not erase metamathematics or platform trust.
 
 That modesty is a strength.  The tactic engine can grow new search procedures, simplifiers, and even
 learned tactic proposers without enlarging the logical authority they possess.  Every proposed QED

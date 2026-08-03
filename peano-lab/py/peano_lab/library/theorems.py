@@ -57,6 +57,28 @@ from ..kernel.proofs import (
     OrIntroR,
     Proof,
 )
+from .parity import make_parity_theorems
+from .quadratic_residue_theorems import make_quadratic_residue_theorems
+from .finite_fold_theorems import make_finite_fold_theorems
+from .finite_range_theorems import make_finite_range_theorems
+from .finite_sum_theorems import make_finite_sum_theorems
+from .finite_congruence_theorems import make_finite_congruence_theorems
+from .finite_bitcount_theorems import make_finite_bitcount_theorems
+from .finite_factorial_theorems import make_finite_factorial_theorems
+from .power_congruence_theorems import make_power_congruence_theorems
+from .qr_small_moduli import make_qr_small_moduli_theorems
+from .power_algebra_theorems import make_power_algebra_theorems
+from .gauss_sign_bridge import make_gauss_sign_bridge_theorems
+from .gauss_half_range import make_gauss_half_range_theorems
+from .finite_permutation_theorems import make_finite_permutation_theorems
+from .finite_product_permutation_theorems import (
+    make_finite_product_permutation_theorems,
+)
+from .finite_product_reindex_support import (
+    make_finite_product_reindex_support_theorems,
+)
+from .qr_bounded_units import make_qr_bounded_unit_theorems
+from .qr_prime_units import make_qr_prime_unit_theorems
 
 
 class LibraryError(ValueError):
@@ -11024,6 +11046,74 @@ THEOREMS = _merge_compatible_theorems(THEOREMS, PRIME_FACTORIZATION_UNIQUENESS_T
 THEOREMS = _merge_compatible_theorems(THEOREMS, FUNDAMENTAL_THEOREM_OF_ARITHMETIC_THEOREMS)
 THEOREMS = _merge_compatible_theorems(THEOREMS, SMALL_PRIME_FACTORIZATION_THEOREMS)
 THEOREMS = _merge_compatible_theorems(THEOREMS, MOD5_THEOREMS)
+PARITY_THEOREMS: tuple[TheoremSpec, ...] = make_parity_theorems(TheoremSpec)
+THEOREMS = _merge_compatible_theorems(THEOREMS, PARITY_THEOREMS)
+QUADRATIC_RESIDUE_THEOREMS: tuple[TheoremSpec, ...] = (
+    make_quadratic_residue_theorems(TheoremSpec)
+)
+THEOREMS = _merge_compatible_theorems(THEOREMS, QUADRATIC_RESIDUE_THEOREMS)
+FINITE_FOLD_THEOREMS: tuple[TheoremSpec, ...] = make_finite_fold_theorems(TheoremSpec)
+THEOREMS = _merge_compatible_theorems(THEOREMS, FINITE_FOLD_THEOREMS)
+FINITE_RANGE_THEOREMS: tuple[TheoremSpec, ...] = make_finite_range_theorems(TheoremSpec)
+THEOREMS = _merge_compatible_theorems(THEOREMS, FINITE_RANGE_THEOREMS)
+FINITE_SUM_THEOREMS: tuple[TheoremSpec, ...] = make_finite_sum_theorems(TheoremSpec)
+THEOREMS = _merge_compatible_theorems(THEOREMS, FINITE_SUM_THEOREMS)
+FINITE_CONGRUENCE_THEOREMS: tuple[TheoremSpec, ...] = (
+    make_finite_congruence_theorems(TheoremSpec)
+)
+THEOREMS = _merge_compatible_theorems(THEOREMS, FINITE_CONGRUENCE_THEOREMS)
+FINITE_BITCOUNT_THEOREMS: tuple[TheoremSpec, ...] = make_finite_bitcount_theorems(
+    TheoremSpec
+)
+THEOREMS = _merge_compatible_theorems(THEOREMS, FINITE_BITCOUNT_THEOREMS)
+QR_PRIME_UNIT_THEOREMS: tuple[TheoremSpec, ...] = make_qr_prime_unit_theorems(
+    TheoremSpec
+)
+THEOREMS = _merge_compatible_theorems(THEOREMS, QR_PRIME_UNIT_THEOREMS)
+FINITE_FACTORIAL_THEOREMS: tuple[TheoremSpec, ...] = (
+    make_finite_factorial_theorems(TheoremSpec)
+)
+THEOREMS = _merge_compatible_theorems(THEOREMS, FINITE_FACTORIAL_THEOREMS)
+POWER_CONGRUENCE_THEOREMS: tuple[TheoremSpec, ...] = (
+    make_power_congruence_theorems(TheoremSpec)
+)
+THEOREMS = _merge_compatible_theorems(THEOREMS, POWER_CONGRUENCE_THEOREMS)
+QR_SMALL_MODULI_THEOREMS: tuple[TheoremSpec, ...] = (
+    make_qr_small_moduli_theorems(TheoremSpec)
+)
+THEOREMS = _merge_compatible_theorems(THEOREMS, QR_SMALL_MODULI_THEOREMS)
+POWER_ALGEBRA_THEOREMS: tuple[TheoremSpec, ...] = make_power_algebra_theorems(
+    TheoremSpec
+)
+THEOREMS = _merge_compatible_theorems(THEOREMS, POWER_ALGEBRA_THEOREMS)
+GAUSS_SIGN_BRIDGE_THEOREMS: tuple[TheoremSpec, ...] = (
+    make_gauss_sign_bridge_theorems(TheoremSpec)
+)
+THEOREMS = _merge_compatible_theorems(THEOREMS, GAUSS_SIGN_BRIDGE_THEOREMS)
+GAUSS_HALF_RANGE_THEOREMS: tuple[TheoremSpec, ...] = (
+    make_gauss_half_range_theorems(TheoremSpec)
+)
+THEOREMS = _merge_compatible_theorems(THEOREMS, GAUSS_HALF_RANGE_THEOREMS)
+FINITE_PERMUTATION_THEOREMS: tuple[TheoremSpec, ...] = (
+    make_finite_permutation_theorems(TheoremSpec)
+)
+THEOREMS = _merge_compatible_theorems(THEOREMS, FINITE_PERMUTATION_THEOREMS)
+FINITE_PRODUCT_PERMUTATION_THEOREMS: tuple[TheoremSpec, ...] = (
+    make_finite_product_permutation_theorems(TheoremSpec)
+)
+THEOREMS = _merge_compatible_theorems(
+    THEOREMS, FINITE_PRODUCT_PERMUTATION_THEOREMS
+)
+FINITE_PRODUCT_REINDEX_SUPPORT_THEOREMS: tuple[TheoremSpec, ...] = (
+    make_finite_product_reindex_support_theorems(TheoremSpec)
+)
+THEOREMS = _merge_compatible_theorems(
+    THEOREMS, FINITE_PRODUCT_REINDEX_SUPPORT_THEOREMS
+)
+QR_BOUNDED_UNIT_THEOREMS: tuple[TheoremSpec, ...] = (
+    make_qr_bounded_unit_theorems(TheoremSpec)
+)
+THEOREMS = _merge_compatible_theorems(THEOREMS, QR_BOUNDED_UNIT_THEOREMS)
 
 
 def names() -> tuple[str, ...]:
@@ -11151,6 +11241,24 @@ __all__ = [
     "FUNDAMENTAL_THEOREM_OF_ARITHMETIC_THEOREMS",
     "SMALL_PRIME_FACTORIZATION_THEOREMS",
     "MOD5_THEOREMS",
+    "PARITY_THEOREMS",
+    "QUADRATIC_RESIDUE_THEOREMS",
+    "FINITE_FOLD_THEOREMS",
+    "FINITE_RANGE_THEOREMS",
+    "FINITE_SUM_THEOREMS",
+    "FINITE_CONGRUENCE_THEOREMS",
+    "FINITE_BITCOUNT_THEOREMS",
+    "QR_PRIME_UNIT_THEOREMS",
+    "FINITE_FACTORIAL_THEOREMS",
+    "POWER_CONGRUENCE_THEOREMS",
+    "QR_SMALL_MODULI_THEOREMS",
+    "POWER_ALGEBRA_THEOREMS",
+    "GAUSS_SIGN_BRIDGE_THEOREMS",
+    "GAUSS_HALF_RANGE_THEOREMS",
+    "FINITE_PERMUTATION_THEOREMS",
+    "FINITE_PRODUCT_PERMUTATION_THEOREMS",
+    "FINITE_PRODUCT_REINDEX_SUPPORT_THEOREMS",
+    "QR_BOUNDED_UNIT_THEOREMS",
     "MOD5_LIBRARY_SOURCE_REPOSITORY",
     "MOD5_LIBRARY_SOURCE_COMMIT",
     "MOD5_LIBRARY_CATALOG_SHA256",

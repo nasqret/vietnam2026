@@ -22,6 +22,8 @@ parts:
       - file: peano/index
       - file: peano/why-pa
       - file: peano/kernel
+      - file: peano/language-reference
+      - file: peano/axioms-and-rules
       - file: peano/tactics
       - file: peano/tacticals
       - file: peano/induction-ladder
@@ -38,12 +40,17 @@ parts:
       - file: arithmetic-library/index
       - file: arithmetic-library/guided-tour
       - file: arithmetic-library/theorem-atlas
+      - file: arithmetic-library/proof-explorer
+      - file: arithmetic-library/defined-proof-explorer
+      - file: arithmetic-library/curation
+      - file: arithmetic-library/dependency-graph
       - file: arithmetic-library/language-and-trust
       - file: arithmetic-library/proof-sharing
       - file: arithmetic-library/dependency-ladder
       - file: arithmetic-library/divisibility-and-congruence
       - file: arithmetic-library/gcd-and-bezout
       - file: arithmetic-library/primes-and-factorization
+      - file: arithmetic-library/quadratic-reciprocity
       - file: arithmetic-library/source-audit
       - file: arithmetic-library/using-the-library
   - caption: "Appendix"

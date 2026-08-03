@@ -58,15 +58,18 @@ does not determine the architecture.
 - [x] Add modulus-independent quotient-and-remainder transport through
       addition and squaring.
 - [x] Replay and independently check the published 189-entry checkpoint.
-      The audited FTA integration uses the current live/use cap of 100,000
-      nodes and depth 256.
+      The audited FTA integration now uses the dual live/use cap of 500,000
+      structural occurrences, 100,000 distinct proof objects, and depth 256.
 - [x] Generate a deterministic versioned JSON snapshot, exact metrics,
       certificate hashes, structural Cut counts, and Mermaid dependency graph.
 
 ## M20C — Conservative notation and modular congruence
 
-- [ ] Specify untrusted, round-tripping expansions for `a | b`, balanced
-      natural congruence, relational gcd/coprimality, and primality.
+- [x] Specify untrusted, round-tripping expansions for `a | b`, balanced
+      natural congruence, relational gcd/coprimality, and primality. The
+      completed 40-entry Proof Explorer registry (38 used in this closure)
+      now checks conservative expansion by parsed PA AST equality; it is
+      reading notation, not trusted core-language or kernel syntax.
 - [x] Prove balanced congruence reflexive and symmetric.
 - [x] Prove balanced congruence transitive as `mod_eq_trans`.
 - [x] Prove congruence compatibility with addition as `mod_eq_add`.
@@ -119,8 +122,10 @@ does not determine the architecture.
       `prime_divisor_exists_up_to`, and `prime_divisor_exists`.
 - [x] Prove the greatest-prime-divisor search, existence, quotient bound, and
       strict descent interface needed by canonical factorization.
-- [ ] Prove primes above every bound; prime unboundedness is intentionally a
-      later client and is not needed by the checked FTA route.
+- [x] Prove a prime above every supplied bound as `prime_unbounded`, a later
+      constructive client of bounded common multiples and prime-divisor
+      existence. Its certificate has 4,595 nodes, depth 82, and 146 Cuts; it
+      is not needed by the checked FTA route.
 
 ## M20E — Finite factorization representation and FTA
 
@@ -181,20 +186,27 @@ does not determine the architecture.
       73,767 nodes, depth 99, and 2,184 self-contained Cuts, with certificate
       SHA-256
       `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
-      It fits the 100,000-node/depth-256 live/use gate, uses only PA1–PA6 and
-      induction, and contains no DNE. Runtime integration is complete in the
-      synchronized 247-theorem checkpoint.
+      It fits the 500,000-occurrence/100,000-object/depth-256 live/use gate,
+      uses only PA1–PA6 and
+      induction, and contains no DNE. Runtime integration first completed in
+      the historical synchronized 247-theorem checkpoint and remains present
+      in the current 384-theorem runtime.
 
 ## M20F — Knowledge and release gates
 
 - [x] Add a dedicated Jupyter Book part with formulas, executable commands,
       trust boundary, dependency route, source audit, and extension workflow.
 - [x] Add a ten-stage guided route and deterministic interactive theorem atlas
-      containing all 247 exact native statements, authored proof recipes,
+      initially released with 247 exact native statements and now regenerated
+      for all 384 checked statements, with authored proof recipes,
       dependency/dependent navigation, metrics, hashes, live-lab actions, and
       source/vault links.
 - [x] Add an arithmetic Obsidian MOC, concept notes, and generated per-lemma
       pages linked by exact dependencies and dependents.
+- [x] Add a parallel 40-entry defined-notation edition for the exact 557-node QR
+      closure. It preserves explicit native replay lines, theorem dependencies,
+      and public/candidate status while linking compact formulas to persistent
+      `PD` expansion pages.
 - [x] Update project memory, journal, plans, root maps, and artifact index.
 - [x] Pass the complete Peano suite, warning-as-error book build, executable
       command replay, vault/link checks, research-catalog validator, artifact
@@ -207,11 +219,58 @@ does not determine the architecture.
       was attached to this session, so this observational gate is unclaimed
       rather than inferred from another browser backend.
 
+## M20G — Curated conservative authoring edition
+
+- [x] Write the binding curation policy with definition tiers, API matrix,
+      paired-edition identity gates, and release artifacts in
+      `research/arithmetic-library/curation-policy.md`.
+- [x] Extend the separate Lean formalization with the production `Cut` rule,
+      version the artifact grammar as `peano-lab-v2`, mirror the repaired
+      Python kernel, and pass the local build, mutation, source-identity,
+      differential, and axiom gates.
+- [x] Seal that kernel identity with pinned Lean 4.31 and an immutable WMI
+      receipt. Source commit
+      [`ab966fd1`](https://github.com/nasqret/peano-lab-lean/commit/ab966fd1b8207b99eea0c9dc3d719c6e61ef73c2)
+      passed job
+      [`218358`](https://github.com/nasqret/peano-lab-lean/tree/8515336ab3b89ca6f0c8ab521d01745a220b5211/artifacts/wmi/218358);
+      historical job `211445` covers only cut-free v1.
+- [ ] Freeze the eleven P0 authoring definitions: `Le`, `Lt`, `Dvd`, `Prime`,
+      `Coprime`, `IsGCD`, `DivRem`, `ModEq`, `BetaAt`, `Product`, and `Sum`.
+- [ ] Replace duplicate private text builders with canonical AST-first owners,
+      prioritizing `Lt`, `Dvd`, `Prime`, `Coprime`, `IsGCD`, `DivRem`,
+      `ModEq`, and `BetaAt`, without changing expanded theorem ASTs.
+- [ ] Publish the relation API-completeness matrix: introduction, elimination,
+      boundary, characterization/functionality, transport, decision/search,
+      and composition.
+- [ ] Compile defined theorem statements and typed `have`/`suffices`
+      propositions immediately to ordinary `TheoremSpec` formulas; require
+      exact expanded-AST, dependency, status, command, and certificate receipts
+      against the explicit edition.
+- [ ] Complete the parity API, round-tripping prime surface with capture tests,
+      and generated fixed-residue clients already open in M20C/M20D.
+- [ ] Consolidate P1 definitions next; keep the eight campaign-specific P2
+      definitions namespaced. Review `BalancedBezout`, `PermutationPrefix`,
+      and `CanonicalPF` before assigning new stable PD identifiers.
+- [ ] Release paired readable/expanded training rows, Proof Explorer pages,
+      proof-only and mixed graphs, Jupyter Book text, Obsidian notes, expansion
+      hashes, duplicate reports, and kernel-verifier identity receipts.
+
 ## Current acceptance record
 
+- The definition-aware Proof Explorer is a completed conservative presentation
+  of the exact 557-specification QR closure, not a larger trusted language. It
+  compacts 506 statements and 1,275/1,839 local propositions using a 40-entry
+  registry; 38 definitions occur in the closure. Aggregate statement/local
+  text falls by 95.63%/94.34%. Expansion receipts reconstruct the same parsed
+  native formulas. The proof
+  DAG remains 557 nodes, 1,787 edges, and 45 layers; its status split remains
+  240 public, 316 body-checked candidates, and the QR root pending layered
+  closure.
 - The factorization and unbounded-primes tranches are synchronized into the
-  247-theorem runtime, 248-entry catalog, generated snapshot, and all 247
-  generated lemma notes. The
+  current 384-theorem runtime, 385-entry catalog, generated snapshot, and all
+  384 generated lemma notes. The catalog split is 23 baseline checked, 361
+  post-baseline checked, and one representation-blocked conventional
+  integer-coefficient Bézout interface. The
   previously published 189-theorem snapshot remains historical provenance.
 - At this integration checkpoint, the exact expanded catalog statements for
   `prime_factorization_existence`, `prime_factorization_uniqueness`, and
@@ -221,8 +280,9 @@ does not determine the architecture.
   contains 2,184 Cuts.
 - The exact FTA certificate SHA-256 is
   `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
-  The full prove/use/exact/QED path passes under the 100,000-node/depth-256
-  cap. Dependency, hypothesis, and PA-rule mutation audits are live. The proof
+  The full prove/use/exact/QED path passes under the
+  500,000-occurrence/100,000-object/depth-256 cap. Dependency, hypothesis, and
+  PA-rule mutation audits are live. The proof
   uses only PA1–PA6 and induction and contains no DNE.
 - Trusted-kernel change: one self-contained Cut constructor and checker rule.
   The checker is 247 lines (formerly 234). The object language and logical
@@ -230,7 +290,7 @@ does not determine the architecture.
   not a complete or authoritative admission route.
 - Full FTA companion status: checked in Lean for every nonzero natural, with
   finite-list existence and permutation uniqueness and no `sorryAx`.
-- Native Peano FTA status: checked and synchronized in the 247-theorem runtime
+- Native Peano FTA status: checked and synchronized in the 384-theorem runtime
   in the conservative β-coded representation. The endpoint is not a conventional list theorem: there is no
   primitive list type, and uniqueness compares lengths and decoded entries
   rather than raw β codes. The conventional list statement remains the
@@ -242,27 +302,28 @@ does not determine the architecture.
   multiple; any such divisor at or below the bound would divide both
   consecutive numbers and hence one. It uses PA1–PA6 only, has no DNE, and
   passes dependency, PA, hypothesis, and live-use audits.
-- The generated snapshot has 982,534 nodes, 28,892 Cuts, and 204 Cut-bearing
-  certificates. Its root is
-  `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`
-  and source digest is
-  `295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
-  The vault has 327 notes and 3,288 links. The 1,692-session/13,344-transition
-  corpus has fingerprint
+- The generated 384-theorem snapshot has 1,806,923 structural occurrences,
+  52,626 Cuts, and 329 Cut-bearing certificates. Its ordered root is
+  `73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
+  The vault has 482 notes and 4,886 resolved links, including all 384 generated
+  theorem notes. The last source-bound 1,692-session/13,344-transition corpus
+  remains intentionally tied to the historical 247-theorem checkpoint and has
+  fingerprint
   `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
   its smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and all 247
-  QEDs. Browser build `2026-07-29k` packages `a-77df7c0860bc` without staging
-  or deployment. The strict book rebuild passes all 38 sources with no
-  warnings; 195 deep links and 47 executable blocks/287 commands verify.
-- The complete current Peano suite passes 1,288 tests with one intentional
-  skip in 1,259.11 seconds. No in-app browser was available,
-  so direct Pyodide UI smoke remains explicitly unclaimed; the automated
-  runtime/worker coverage and browser deployment-manifest checks pass.
-- The strict Jupyter Book 1.0 build passes over 38 sources with no warnings or
-  errors. Documentation verification checks 195 deep links and 47 session
-  blocks containing 287 commands; all 17 static documentation tests pass. The
-  generated atlas contains 247 checked proof cards, one explicit boundary
-  card, all 640 dependency edges, and a local 1–4-hop navigator.
+  QEDs. The integrated local browser candidate deterministically verifies as
+  build `2026-08-03a`, application `a-ff0ad1985520`, with 149 worker sources;
+  it assembles successfully in the local content-addressed stage and has not
+  been deployed.
+- The current Book source set has 46 sources. Its last strict arithmetic-branch
+  rebuild completed without warnings; 194 deep links and 47 executable blocks
+  containing 287 commands verify. The generated atlas contains 384 checked
+  proof cards, one explicit boundary card, all 1,038 dependency edges, and a
+  local 1–4-hop navigator. The post-merge compatibility matrix passed 1,183
+  tests with five intentional skips, and the strict 46-source Book replay plus
+  its 2,324-page integrity gate passed with zero broken or escaping targets.
+  Direct Pyodide UI smoke and a complete passing 136-gate QR WMI receipt are
+  still explicitly unclaimed.
 - Remaining mathematical/library limits are explicit: generic powers, finite
   maps, and primitive lists remain absent; a
   conventional integer-coefficient Bézout statement is not representable in

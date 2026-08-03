@@ -6,17 +6,21 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-The current runtime contains 247 checked entries and the factorization tranche
+The current runtime contains 384 checked entries and the factorization tranche
 is fully synchronized. The exact native sorted Gödel-β endpoints check from the
 empty context: existence at 43,973 nodes/depth 98, canonical extensional
 uniqueness at 29,789/depth 82, and combined
 [[fundamental-theorem-of-arithmetic|FTA]] at 73,767 nodes/depth 99 with 2,184
 self-contained Cuts.
 
+The synchronized research catalog has 385 entries: 23 baseline checked, 361
+post-baseline checked, and one representation-blocked conventional
+integer-coefficient Bézout interface.
+
 The exact FTA certificate SHA-256 is
 `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
-It passes the 100,000-node/depth-256 live/use gate with PA1–PA6 and induction
-only and no DNE. Runtime integration is complete. No
+It passes the 500,000-occurrence/100,000-object/depth-256 live/use gate with
+PA1–PA6 and induction only and no DNE. Runtime integration is complete. No
 primitive list type was added, and uniqueness compares decoded entries rather
 than raw β codes. The separate Lean companion checks the conventional list
 theorem without supplying Peano authority.
@@ -27,21 +31,25 @@ at 4,595 nodes/depth 82 with 146 Cuts and certificate SHA-256
 It uses PA1–PA6 only, contains no DNE, and passes dependency, PA, hypothesis,
 and live-use audits.
 
-The generated 247-theorem snapshot has 982,534 nodes, 28,892 Cuts, and ordered
+The generated 384-theorem snapshot has 1,806,923 structural occurrences,
+52,626 Cuts, and ordered
 root
-`eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`.
-This vault has 327 notes and 3,288 resolved links, including all 247 theorem
-notes.
+`73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
+The synchronized vault includes all 384 generated theorem notes.
 
 ## Design and trust
 
+- [[quadratic-reciprocity-moc]]
 - [[foundational-arithmetic-library]]
 - [[lemma-dependency-dag]]
 - [[arithmetic-library-provenance]]
 - [[theorem-ladder]]
 - [[trusted-kernel]]
+- [[conservative-library-curation]]
 - [[proof-certificate]]
 - [[self-contained-proof-sharing]]
+- [[layered-cut-bundle]]
+- [[closed-proof-dag]]
 - [[library-epoch]]
 - [[sealed-theorem-benchmark]]
 
@@ -199,6 +207,7 @@ relation is checked.
 - Catalog: `research/arithmetic-library/catalog.json`
 - Generated snapshot: `artifacts/peano-library/catalog-v1.json`
 - Dependency graph: `artifacts/peano-library/dependency-graph.mmd`
+- Line-by-line dashboard: [[pa-proof-explorer]]
 - Book: `book/arithmetic-library/`
 - Plan: `PLAN/10_arithmetic_library.md`
 

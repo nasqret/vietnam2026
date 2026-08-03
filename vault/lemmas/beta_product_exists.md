@@ -21,6 +21,8 @@ forall b c l. exists n u v. (((exists h. h + S 1 = S ((S 0) * v)) /\ exists q. u
 ## Checked dependents
 
 - [[beta_product_exists_unique]]
+- [[pow_exists]]
+- [[factorial_exists]]
 
 ## Verification record
 

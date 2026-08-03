@@ -34,6 +34,35 @@ def test_pa_lib_lists_every_rung_and_opens_exact_replay_script() -> None:
     assert "direct closed certificate; no dependency-sharing Cut nodes" in direct
 
 
+def test_pa_lib_index_parses_statements_without_replaying_certificates(
+    monkeypatch,
+) -> None:
+    def forbidden_replay(_name: str):
+        raise AssertionError("the library index must not replay certificates")
+
+    monkeypatch.setattr(data_library, "replay", forbidden_replay)
+
+    index = driver.LabSession().run("pa lib")
+
+    assert f"{len(THEOREMS)} scripted theorems" in index
+    assert all(spec.name in index for spec in THEOREMS)
+
+
+def test_pa_lib_detail_still_requires_checked_replay(monkeypatch) -> None:
+    calls: list[str] = []
+
+    def rejected_replay(name: str):
+        calls.append(name)
+        raise RuntimeError("sentinel replay failure")
+
+    monkeypatch.setattr(data_library, "replay", rejected_replay)
+
+    output = driver.LabSession().run("pa lib add_comm")
+
+    assert calls == ["add_comm"]
+    assert output == "RuntimeError: sentinel replay failure"
+
+
 def test_pa_lib_help_usage_and_unknown_name_are_final_text() -> None:
     session = driver.LabSession()
 

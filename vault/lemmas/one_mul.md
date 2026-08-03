@@ -27,6 +27,9 @@ forall n. 1 * n = n
 - [[beta_prefix_product_trace_exists]]
 - [[beta_canonical_append_empty]]
 - [[prime_factorization_exists_up_to]]
+- [[beta_prefix_sum_trace_exists]]
+- [[pow_one_from_zero_successor]]
+- [[pow_predecessor_parity_mod]]
 
 ## Verification record
 

@@ -70,7 +70,8 @@ At this integration checkpoint the exact endpoints are:
 The FTA certificate SHA-256 is
 `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
 It passes independent empty-context checking and the full prove/use/exact/QED
-path under the 100,000-node/depth-256 live/use cap. It uses only PA1–PA6 and
+path under the 500,000-occurrence/100,000-object/depth-256 live/use cap. It
+uses only PA1–PA6 and
 induction and contains no DNE. Dependency, hypothesis, PA-rule, and semantic
 mutation audits are live. Runtime integration is complete.
 

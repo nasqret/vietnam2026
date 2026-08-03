@@ -25,17 +25,61 @@ THEOREM_SOURCE = PY_ROOT / "peano_lab" / "library" / "theorems.py"
 if str(PY_ROOT) not in sys.path:
     sys.path.insert(0, str(PY_ROOT))
 
-from peano_lab.engine.state import proof_metrics  # noqa: E402
+from peano_lab.engine.state import proof_identity_metrics, proof_metrics  # noqa: E402
 from peano_lab.engine.tactics import (  # noqa: E402
     MAX_USE_CERTIFICATE_NODES,
+    MAX_USE_CERTIFICATE_OBJECTS,
     MAX_USE_PROOF_DEPTH,
 )
 from peano_lab.kernel.checker import check  # noqa: E402
 from peano_lab.kernel.proofs import Cut, Proof  # noqa: E402
-from peano_lab.library.theorems import MOD5_THEOREMS, THEOREMS, replay  # noqa: E402
+from peano_lab.library.theorems import (  # noqa: E402
+    FINITE_BITCOUNT_THEOREMS,
+    FINITE_CONGRUENCE_THEOREMS,
+    FINITE_FACTORIAL_THEOREMS,
+    FINITE_FOLD_THEOREMS,
+    FINITE_PERMUTATION_THEOREMS,
+    FINITE_PRODUCT_PERMUTATION_THEOREMS,
+    FINITE_PRODUCT_REINDEX_SUPPORT_THEOREMS,
+    FINITE_RANGE_THEOREMS,
+    FINITE_SUM_THEOREMS,
+    GAUSS_SIGN_BRIDGE_THEOREMS,
+    GAUSS_HALF_RANGE_THEOREMS,
+    MOD5_THEOREMS,
+    PARITY_THEOREMS,
+    POWER_ALGEBRA_THEOREMS,
+    POWER_CONGRUENCE_THEOREMS,
+    QR_PRIME_UNIT_THEOREMS,
+    QR_BOUNDED_UNIT_THEOREMS,
+    QR_SMALL_MODULI_THEOREMS,
+    QUADRATIC_RESIDUE_THEOREMS,
+    THEOREMS,
+    replay,
+)
 
 
 CERTIFICATE_REPRESENTATION = "python-dataclass-repr-with-cut-v2"
+THEOREM_SOURCES = (
+    THEOREM_SOURCE,
+    PY_ROOT / "peano_lab" / "library" / "parity.py",
+    PY_ROOT / "peano_lab" / "library" / "quadratic_residue_theorems.py",
+    PY_ROOT / "peano_lab" / "library" / "finite_fold_theorems.py",
+    PY_ROOT / "peano_lab" / "library" / "finite_range_theorems.py",
+    PY_ROOT / "peano_lab" / "library" / "finite_sum_theorems.py",
+    PY_ROOT / "peano_lab" / "library" / "finite_congruence_theorems.py",
+    PY_ROOT / "peano_lab" / "library" / "finite_bitcount_theorems.py",
+    PY_ROOT / "peano_lab" / "library" / "finite_factorial_theorems.py",
+    PY_ROOT / "peano_lab" / "library" / "power_congruence_theorems.py",
+    PY_ROOT / "peano_lab" / "library" / "power_algebra_theorems.py",
+    PY_ROOT / "peano_lab" / "library" / "gauss_sign_bridge.py",
+    PY_ROOT / "peano_lab" / "library" / "gauss_half_range.py",
+    PY_ROOT / "peano_lab" / "library" / "finite_permutation_theorems.py",
+    PY_ROOT / "peano_lab" / "library" / "finite_product_permutation_theorems.py",
+    PY_ROOT / "peano_lab" / "library" / "finite_product_reindex_support.py",
+    PY_ROOT / "peano_lab" / "library" / "qr_bounded_units.py",
+    PY_ROOT / "peano_lab" / "library" / "qr_prime_units.py",
+    PY_ROOT / "peano_lab" / "library" / "qr_small_moduli.py",
+)
 
 
 def _digest(payload: bytes | str) -> str:
@@ -72,6 +116,7 @@ def build_payloads() -> dict[str, str]:
         "legacy_core": 0,
         "foundational_extension": 0,
         "published_mod5_unique": 0,
+        "quadratic_residue_foundation": 0,
     }
     foundational_names = {
         "eq_symm",
@@ -290,21 +335,54 @@ def build_payloads() -> dict[str, str]:
     published_mod5_unique_names = {
         spec.name for spec in MOD5_THEOREMS
     } - foundational_names
+    quadratic_residue_names = {
+        spec.name
+        for spec in (
+            PARITY_THEOREMS
+            + QUADRATIC_RESIDUE_THEOREMS
+            + FINITE_FOLD_THEOREMS
+            + FINITE_RANGE_THEOREMS
+            + FINITE_SUM_THEOREMS
+            + FINITE_CONGRUENCE_THEOREMS
+            + FINITE_BITCOUNT_THEOREMS
+            + FINITE_FACTORIAL_THEOREMS
+            + POWER_CONGRUENCE_THEOREMS
+            + QR_PRIME_UNIT_THEOREMS
+            + QR_SMALL_MODULI_THEOREMS
+            + POWER_ALGEBRA_THEOREMS
+            + GAUSS_SIGN_BRIDGE_THEOREMS
+            + GAUSS_HALF_RANGE_THEOREMS
+            + FINITE_PERMUTATION_THEOREMS
+            + FINITE_PRODUCT_PERMUTATION_THEOREMS
+            + FINITE_PRODUCT_REINDEX_SUPPORT_THEOREMS
+            + QR_BOUNDED_UNIT_THEOREMS
+        )
+    }
 
     for index, spec in enumerate(THEOREMS):
         checked = replay(spec.name)
         if not check((), checked.certificate, checked.formula):
             raise RuntimeError(f"independent kernel rejected {spec.name!r}")
         nodes, depth = proof_metrics(checked.certificate)
+        distinct_objects, proof_edges, reused_references = proof_identity_metrics(
+            checked.certificate
+        )
         cut_nodes = _cut_nodes(checked.certificate)
-        if nodes > MAX_USE_CERTIFICATE_NODES or depth > MAX_USE_PROOF_DEPTH:
+        if (
+            nodes > MAX_USE_CERTIFICATE_NODES
+            or distinct_objects > MAX_USE_CERTIFICATE_OBJECTS
+            or depth > MAX_USE_PROOF_DEPTH
+        ):
             raise RuntimeError(
-                f"{spec.name!r} exceeds live-use bounds: {nodes} nodes, depth {depth}"
+                f"{spec.name!r} exceeds live-use bounds: {nodes} occurrences, "
+                f"{distinct_objects} objects, depth {depth}"
             )
         if spec.name in foundational_names:
             layer = "foundational_extension"
         elif spec.name in published_mod5_unique_names:
             layer = "published_mod5_unique"
+        elif spec.name in quadratic_residue_names:
+            layer = "quadratic_residue_foundation"
         else:
             layer = "legacy_core"
         layer_counts[layer] += 1
@@ -316,11 +394,14 @@ def build_payloads() -> dict[str, str]:
                 "certificate_sha256": _digest(certificate_repr),
                 "cut_nodes": cut_nodes,
                 "dependencies": list(spec.dependencies),
+                "distinct_proof_objects": distinct_objects,
                 "index": index,
                 "layer": layer,
                 "name": spec.name,
                 "proof_depth": depth,
+                "proof_edges": proof_edges,
                 "proof_nodes": nodes,
+                "reused_proof_references": reused_references,
                 "script": list(spec.script),
                 "script_sha256": _digest(script_text),
                 "statement": spec.statement,
@@ -333,6 +414,13 @@ def build_payloads() -> dict[str, str]:
         theorem_rows, ensure_ascii=False, separators=(",", ":"), sort_keys=True
     )
     ordered_root = _digest(root_material)
+    theorem_sources = [
+        {
+            "path": str(path.relative_to(ROOT)),
+            "sha256": _digest(path.read_bytes()),
+        }
+        for path in THEOREM_SOURCES
+    ]
     catalog = {
         "certificate_representation": CERTIFICATE_REPRESENTATION,
         "certificate_policy": (
@@ -343,10 +431,10 @@ def build_payloads() -> dict[str, str]:
             "external theorem environment, theorem name, or certificate hash."
         ),
         "ordered_root_sha256": ordered_root,
-        "schema": "peano-library-snapshot-v2",
+        "schema": "peano-library-snapshot-v3",
         "theorem_count": len(theorem_rows),
-        "theorem_source": "peano-lab/py/peano_lab/library/theorems.py",
-        "theorem_source_sha256": _digest(THEOREM_SOURCE.read_bytes()),
+        "theorem_source_root_sha256": _digest(_canonical_json(theorem_sources)),
+        "theorem_sources": theorem_sources,
         "theorems": theorem_rows,
     }
 
@@ -355,18 +443,25 @@ def build_payloads() -> dict[str, str]:
         "live_use_limits": {
             "proof_depth": MAX_USE_PROOF_DEPTH,
             "proof_nodes": MAX_USE_CERTIFICATE_NODES,
+            "proof_objects": MAX_USE_CERTIFICATE_OBJECTS,
         },
         "maximum_cut_nodes": max(row["cut_nodes"] for row in theorem_rows),
+        "maximum_distinct_proof_objects": max(
+            row["distinct_proof_objects"] for row in theorem_rows
+        ),
         "maximum_proof_depth": max(row["proof_depth"] for row in theorem_rows),
         "maximum_proof_nodes": max(row["proof_nodes"] for row in theorem_rows),
         "ordered_root_sha256": ordered_root,
-        "schema": "peano-library-metrics-v2",
+        "schema": "peano-library-metrics-v3",
         "theorem_count": len(theorem_rows),
         "theorems_with_cut_nodes": sum(
             row["cut_nodes"] > 0 for row in theorem_rows
         ),
         "theorems_by_layer": layer_counts,
         "total_cut_nodes": sum(row["cut_nodes"] for row in theorem_rows),
+        "total_distinct_proof_objects": sum(
+            row["distinct_proof_objects"] for row in theorem_rows
+        ),
         "total_proof_nodes": sum(row["proof_nodes"] for row in theorem_rows),
     }
 

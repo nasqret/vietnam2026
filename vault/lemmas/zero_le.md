@@ -22,6 +22,7 @@ forall n. 0 <= n
 - [[beta_prefix_product_trace_exists]]
 - [[beta_product_succ_append]]
 - [[beta_factor_prefix_product_append]]
+- [[beta_prefix_sum_trace_exists]]
 
 ## Verification record
 

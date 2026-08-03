@@ -20,6 +20,9 @@ forall b c z e l n. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\ exists
 ## Checked dependents
 
 - [[beta_factor_prefix_product_append]]
+- [[pow_functional]]
+- [[factorial_functional]]
+- [[beta_product_replace_balance]]
 
 ## Verification record
 

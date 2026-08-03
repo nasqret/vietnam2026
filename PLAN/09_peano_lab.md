@@ -554,7 +554,9 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       capstone regression. That source snapshot has 49 entries; the initial
       reconciliation with M20 deduplicated fourteen exact overlaps and yielded
       63 unique checked theorems. Subsequent native arithmetic work extends
-      that historical release to the current 247-entry successor.
+      that historical release through a 247-entry checkpoint. That declaration
+      order remains the frozen model-v3 authority; later native-only work
+      extends the live source runtime to 384 entries.
 - [x] Register the complete declaration-ordered 247-theorem ladder as the distinct model-v3
       authority. Bind canonical statements, dependencies, source specifications, authored scripts,
       independently reconstructed certificates, nodes, and depth through prefix prompts, rows,
@@ -664,6 +666,10 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
       rejection, and then canonical-state-deduplicated best-first search before the next GPU run.
 - [ ] All milestone-wide tests and documentation gates are green, the kernel has no semantic diff,
       and no heavy local or remote job remains running before the milestone is called complete.
+- [x] Provide a process-isolated model-free terminal for the current native
+      library and a first-token `pa native` / `pa model` selector. Preserve
+      legacy bare `pa`, proof/tutorial raw-input ownership, fail-fast batch
+      replay, and the frozen model authority without mixing source trees.
 
 - **Current model-v3 status (2026-08-02):** exact-corpus continuation `173040` completed independent
   attestation, token audit, and A100 runtime smoke; job `213641` published and independently verified
@@ -788,14 +794,34 @@ Priorities: soundness → clarity → pedagogy → extensibility → efficiency.
   M19 stays open for a deterministic baseline, the larger hidden benchmark, milestone-wide release
   gates, and any registered comparison beyond the admitted 1.7B four-goal launch smoke.
 
+### Kernel metaverification synchronization
+
+- [x] Link the independent Lean soundness project and historical cut-free
+      Lean 4.31/WMI receipt `211445`.
+- [x] Extend the Lean syntax, `Derives` calculus, proof-producing checker,
+      semantic proof, and canonical codec with the production
+      `Cut(A,B,lemma,body)` rule.
+- [x] Version the extended artifact grammar as `peano-lab-v2`, mirror the
+      repaired exact-constructor Python kernel, and pass the local Lean build,
+      codec mutations, source identity, axiom audit, and differential matrix.
+- [x] Seal the current Cut-aware revision with a clean pinned Lean 4.31 build
+      and immutable WMI receipt. Source commit
+      [`ab966fd1`](https://github.com/nasqret/peano-lab-lean/commit/ab966fd1b8207b99eea0c9dc3d719c6e61ef73c2)
+      passed job
+      [`218358`](https://github.com/nasqret/peano-lab-lean/tree/8515336ab3b89ca6f0c8ab521d01745a220b5211/artifacts/wmi/218358)
+      with `COMPLETED/0:0`; job `211445` remains historical v1 evidence.
+- [ ] Export representative native library certificates through the v2 codec,
+      beginning with a small Cut-bearing theorem before attempting FTA or QR.
+
 ### M20 — General foundational arithmetic library
 
 The theorem-ladder extension is tracked independently in
 [`PLAN/10_arithmetic_library.md`](10_arithmetic_library.md). Its first release
 kept the kernel and object language fixed, expanded divisibility and residue
 notions into ordinary formulas, and organized factorization targets by their
-actual dependencies. The reconciled runtime now contains 247 unique checked
-theorems. Quotient-remainder existence and uniqueness, relational gcd,
+actual dependencies. The reconciled runtime now contains 384 unique checked
+theorems after the current quadratic-reciprocity foundation checkpoint.
+Quotient-remainder existence and uniqueness, relational gcd,
 balanced-natural Bézout, Gauss cancellation, constructive primality search,
 prime-divisor existence, Euclid's lemma, prime unboundedness, CRT, and
 functional Gödel-β decoding
@@ -811,12 +837,13 @@ nodes, depth 99 and 2,184 self-contained Cuts, uses only PA1–PA6 and induction
 and contains no DNE. The reviewed `Cut` rule embeds both the dependency proof
 and its body; neither theorem names nor hashes carry authority. The object
 language, PA axioms, induction schema, and intuitionistic default remain
-unchanged. The untrusted `use` and live-proof resource gates are aligned at
-100,000 nodes and depth 256, which admits the 73,767-node theorem while still
-rejecting the exact 100,001-node and depth-257 boundaries transactionally.
+unchanged. The untrusted `use` and live-proof resource gates now admit at most
+500,000 structural occurrences, 100,000 distinct proof objects, and depth 256.
+This admits shared campaign certificates while preserving the former
+worst-case object count; exact one-past boundaries fail transactionally.
 
-The synchronized catalog has 248 entries: 23 baseline checked, 224 M20
-checked, no planned entries, and one representation-blocked
+The synchronized catalog has 385 entries: 23 baseline checked, 361
+post-baseline checked, no planned entries, and one representation-blocked
 conventional integer-coefficient Bézout interface. A separate pinned Lean
 companion checks conventional list-based FTA up to permutation. Current test,
 corpus, snapshot, book, vault, and local-browser identifiers are recorded in

@@ -110,10 +110,11 @@ Existence checks at 43,973 nodes/depth 98, uniqueness at 29,789/depth 82, and
 their exact FTA conjunction at 73,767 nodes/depth 99 with 2,184 Cuts. The FTA
 certificate SHA-256 is
 `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
-It passes the 100,000-node/depth-256 live/use cap with PA1–PA6 and induction
+It passes the 500,000-occurrence/100,000-object/depth-256 live/use cap with
+PA1–PA6 and induction
 only and no DNE. Runtime integration is complete.
 
-The current runtime has 247 checked theorems: 23 baseline, 212 general
+The source-bound model-v3 corpus checkpoint has 247 checked theorems: 23 baseline, 212 general
 foundational, and twelve modular capstones. The synchronized 248-entry catalog
 has no planned endpoint and one representation-blocked endpoint. The snapshot
 has 982,534 nodes, 28,892 Cuts, 204 Cut-bearing certificates, ordered root

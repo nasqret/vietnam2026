@@ -22,7 +22,112 @@ REPO = Path(__file__).resolve().parents[1]
 SNAPSHOT = REPO / "artifacts" / "peano-library" / "catalog-v1.json"
 METRICS = REPO / "artifacts" / "peano-library" / "metrics.json"
 RESEARCH = REPO / "research" / "arithmetic-library" / "catalog.json"
-THEOREM_SOURCE = REPO / "peano-lab" / "py" / "peano_lab" / "library" / "theorems.py"
+THEOREM_SOURCES = (
+    REPO / "peano-lab" / "py" / "peano_lab" / "library" / "theorems.py",
+    REPO / "peano-lab" / "py" / "peano_lab" / "library" / "parity.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "quadratic_residue_theorems.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "finite_fold_theorems.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "finite_range_theorems.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "finite_sum_theorems.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "finite_congruence_theorems.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "finite_bitcount_theorems.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "finite_factorial_theorems.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "power_congruence_theorems.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "power_algebra_theorems.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "gauss_sign_bridge.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "gauss_half_range.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "finite_permutation_theorems.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "finite_product_permutation_theorems.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "finite_product_reindex_support.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "qr_bounded_units.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "qr_prime_units.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "qr_small_moduli.py",
+)
 OUTPUT = REPO / "book" / "arithmetic-library" / "theorem-atlas.md"
 
 # The proof snapshot was published by this immutable commit before the book
@@ -44,6 +149,7 @@ DOMAIN_ORDER = (
     "gcd_coprime",
     "primes",
     "factorization",
+    "quadratic_residues",
 )
 
 DOMAIN_LABELS = {
@@ -57,6 +163,7 @@ DOMAIN_LABELS = {
     "gcd_coprime": "GCD, Bézout & coprimality",
     "primes": "Primes",
     "factorization": "β sequences, products & FTA",
+    "quadratic_residues": "Quadratic reciprocity campaign",
 }
 
 DOMAIN_CHAPTERS = {
@@ -70,6 +177,7 @@ DOMAIN_CHAPTERS = {
     "gcd_coprime": "guided-tour.html#stage-bezout",
     "primes": "guided-tour.html#stage-primes",
     "factorization": "guided-tour.html#stage-factorization",
+    "quadratic_residues": "quadratic-reciprocity.html",
 }
 
 
@@ -81,12 +189,17 @@ def _e(value: object, *, quote_attr: bool = True) -> str:
     return html.escape(str(value), quote=quote_attr)
 
 
-def _source_lines(source: str) -> dict[str, int]:
-    result: dict[str, int] = {}
+def _source_lines(path: Path) -> dict[str, tuple[str, int]]:
+    source = path.read_text(encoding="utf-8")
+    relative = str(path.relative_to(REPO))
+    result: dict[str, tuple[str, int]] = {}
     for node in ast.walk(ast.parse(source)):
         if not isinstance(node, ast.Call):
             continue
-        if not isinstance(node.func, ast.Name) or node.func.id != "TheoremSpec":
+        if not isinstance(node.func, ast.Name) or node.func.id not in {
+            "TheoremSpec",
+            "spec",
+        }:
             continue
         name_node: ast.expr | None = node.args[0] if node.args else None
         if name_node is None:
@@ -95,11 +208,62 @@ def _source_lines(source: str) -> dict[str, int]:
                     name_node = keyword.value
                     break
         if not isinstance(name_node, ast.Constant) or not isinstance(name_node.value, str):
-            raise ValueError(f"TheoremSpec at line {node.lineno} has no literal name")
+            # The reviewed small-modulus generator constructs exactly these
+            # three finite-case names from the literal moduli 3, 5 and 7.
+            # Keep their links on the helper that returns the specs while
+            # retaining the literal-name requirement everywhere else.
+            literal_fragments = "".join(
+                item.value
+                for item in getattr(name_node, "values", ())
+                if isinstance(item, ast.Constant) and isinstance(item.value, str)
+            )
+            generated_small_moduli = {
+                "lt__cases": ("lt_five_cases", "lt_seven_cases"),
+                "bounded_square_mod_classify": (
+                    "bounded_square_mod3_classify",
+                    "bounded_square_mod5_classify",
+                    "bounded_square_mod7_classify",
+                ),
+                "qres_mod_": (
+                    "qres_mod3_zero",
+                    "qres_mod3_one",
+                    "qres_mod5_zero",
+                    "qres_mod5_one",
+                    "qres_mod5_four",
+                    "qres_mod7_zero",
+                    "qres_mod7_one",
+                    "qres_mod7_two",
+                    "qres_mod7_four",
+                ),
+                "qres_mod_canonical_iff": (
+                    "qres_mod3_canonical_iff",
+                    "qres_mod5_canonical_iff",
+                    "qres_mod7_canonical_iff",
+                ),
+                "not_qres_mod_": (
+                    "not_qres_mod3_two",
+                    "not_qres_mod5_two",
+                    "not_qres_mod5_three",
+                    "not_qres_mod7_three",
+                    "not_qres_mod7_five",
+                    "not_qres_mod7_six",
+                ),
+            }
+            if (
+                path.name == "qr_small_moduli.py"
+                and isinstance(name_node, ast.JoinedStr)
+                and literal_fragments in generated_small_moduli
+            ):
+                for generated in generated_small_moduli[literal_fragments]:
+                    result.setdefault(generated, (relative, node.lineno))
+                continue
+            raise ValueError(
+                f"TheoremSpec in {relative} at line {node.lineno} has no literal name"
+            )
         # The reconciled modular source intentionally repeats fourteen exact
         # overlaps.  The runtime exposes each only once; link to the first
         # declaration, which is the foundational entry selected by the ladder.
-        result.setdefault(name_node.value, node.lineno)
+        result.setdefault(name_node.value, (relative, node.lineno))
     return result
 
 
@@ -138,7 +302,7 @@ def _card(
     theorem: dict,
     research: dict,
     dependents: dict[str, list[str]],
-    source_lines: dict[str, int],
+    source_lines: dict[str, tuple[str, int]],
 ) -> str:
     name = theorem["name"]
     domain = research["domain"]
@@ -146,9 +310,9 @@ def _card(
     summary = theorem["summary"]
     prerequisites = theorem["dependencies"]
     next_names = dependents[name]
-    line = source_lines[name]
+    source_path, line = source_lines[name]
     source_url = (
-        f"{GITHUB_ROOT}/peano-lab/py/peano_lab/library/theorems.py#L{line}"
+        f"{GITHUB_ROOT}/{source_path}#L{line}"
     )
     vault_url = f"{GITHUB_ROOT}/vault/lemmas/{name}.md"
     artifact_url = f"{GITHUB_ROOT}/artifacts/peano-library/catalog-v1.json"
@@ -191,7 +355,9 @@ def _card(
       </details>
 
       <dl class="pa-proof-receipt">
-        <div><dt>Nodes</dt><dd>{theorem['proof_nodes']:,}</dd></div>
+        <div><dt>Occurrences</dt><dd>{theorem['proof_nodes']:,}</dd></div>
+        <div><dt>Distinct objects</dt><dd>{theorem['distinct_proof_objects']:,}</dd></div>
+        <div><dt>Reused references</dt><dd>{theorem['reused_proof_references']:,}</dd></div>
         <div><dt>Depth</dt><dd>{theorem['proof_depth']}</dd></div>
         <div><dt>Cuts</dt><dd>{theorem['cut_nodes']:,}</dd></div>
         <div><dt>Certificate SHA-256</dt><dd><code title="{_e(theorem['certificate_sha256'])}">{_e(theorem['certificate_sha256'][:12])}…</code></dd></div>
@@ -247,8 +413,10 @@ def render() -> str:
     theorems = snapshot["theorems"]
     research_rows = research_catalog["lemmas"]
     research_by_name = _research_by_runtime_name(research_rows)
-    source = THEOREM_SOURCE.read_text(encoding="utf-8")
-    source_lines = _source_lines(source)
+    source_lines: dict[str, tuple[str, int]] = {}
+    for source_path in THEOREM_SOURCES:
+        for name, location in _source_lines(source_path).items():
+            source_lines.setdefault(name, location)
 
     names = [theorem["name"] for theorem in theorems]
     missing_research = sorted(set(names) - set(research_by_name))
@@ -295,7 +463,9 @@ def render() -> str:
 
 This is the complete interactive reading surface for the current native Peano
 arithmetic library. It is generated from the same checked snapshot used by the
-tests and corpus—not copied by hand. Search by mathematical idea, filter by
+current library tests and catalog—not copied by hand. The released training
+corpus remains explicitly frozen at its earlier 247-theorem checkpoint. Search
+by mathematical idea, filter by
 domain, focus a theorem to move backward to prerequisites or forward to its
 clients, and expand any card to read the exact first-order statement and the
 complete authored tactic recipe.
@@ -311,7 +481,7 @@ metrics rather than pasted as tens of thousands of constructor nodes.
 
 ```{{admonition}} Public-lab deployment status
 :class: caution
-The 247-theorem candidate is committed and checked but is not yet deployed to
+The {len(theorems)}-theorem candidate is checked locally but is not yet deployed to
 the public Peano Lab. Cards therefore show the eventual `pa lib NAME` command
 without turning it into a misleading live command link. The embedded recipe,
 immutable source links, and local checkout are usable now.
@@ -319,7 +489,7 @@ immutable source links, and local checkout are usable now.
 
 <div class="pa-atlas-hero" role="note">
   <div><strong>{len(theorems)}</strong><span>checked native theorems</span></div>
-  <div><strong>{metrics['total_proof_nodes']:,}</strong><span>structural proof nodes</span></div>
+  <div><strong>{metrics['total_proof_nodes']:,}</strong><span>structural proof occurrences</span></div>
   <div><strong>{metrics['total_cut_nodes']:,}</strong><span>self-contained Cuts</span></div>
   <div><strong>{len(blocked)}</strong><span>explicit language boundary</span></div>
 </div>
@@ -393,7 +563,7 @@ Generated card digest: <code>{digest}</code>
 - A theorem card's prerequisite and dependent chips are bidirectional links.
   Browser Back and Forward therefore become mathematical navigation controls.
 - The `pa lib NAME` label is the command to run in this candidate checkout and
-  will become a live browser action only after the 247-theorem build is
+  will become a live browser action only after this checked build is
   promoted. “Native source” and “Vault note” already point to immutable proof
   material.
 - The single boundary card is intentionally not presented as proved. It keeps

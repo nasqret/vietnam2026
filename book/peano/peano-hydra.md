@@ -157,7 +157,7 @@ explicit partial-evidence option and never becomes a positive proof label.
 
 ## Why the library must have epochs
 
-The current Peano arithmetic library contains 247 independently checked
+The source-bound model-v3 training epoch contains 247 independently checked
 runtime theorems, including a constructive, conservatively encoded Fundamental
 Theorem of Arithmetic. It is a powerful training source. It is not a fair test
 of whether a model can prove the same theorems after reading their proofs.
@@ -198,14 +198,15 @@ This is stricter than matching statement strings. It should be. A theorem
 prover that retrieves a disguised copy of the target is demonstrating lookup,
 not discovery.
 
-## Quadratic reciprocity as a future experiment
+## Quadratic reciprocity as a sealed experiment
 
-Quadratic reciprocity would make a fascinating stress test because a formal
-development would require a long dependency chain and several useful choices
-of representation. It is not in the current 247-theorem library.
+Quadratic reciprocity is a demanding stress test because its formal development
+requires a long dependency chain and several useful choices of representation.
+The current 384-theorem library contains 137 checked reciprocity-infrastructure
+certificates, but the reciprocity law itself is not admitted.
 
-Suppose we later formalize a reciprocity theorem $Q$. If $Q$ is to be a test,
-we must deposit its statement before its proof enters the library. We then mask
+For a reciprocity endpoint $Q$ to serve as a test, we must deposit its statement
+before its proof enters the library. We then mask
 the whole $Q$ lineage: definitions introduced only for the route,
 residue-theory lemmas, generated variants, equivalent formulations, authored
 scripts, teacher sketches, stronger consequences, and retrieval records whose

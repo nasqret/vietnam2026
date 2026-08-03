@@ -109,7 +109,7 @@ def test_full_identity_reconstructs_exactly_56_historical_certificates() -> None
     records = model_v2_library_identity()
     expected_names = sorted(MODEL_V2_LIBRARY_NAMES)
 
-    assert len(THEOREMS) == EXPECTED_PUBLIC_LIBRARY_COUNT == 247
+    assert EXPECTED_PUBLIC_LIBRARY_COUNT == 247 < len(THEOREMS)
     assert len(records) == EXPECTED_MODEL_V2_LIBRARY_COUNT == 56
     assert [record.name for record in records] == expected_names
     assert {record.name for record in records}.isdisjoint(SEALED_LIBRARY_NAMES)
@@ -208,17 +208,37 @@ def test_all_26_imported_records_match_the_public_source_report() -> None:
         assert record.proof_depth == row["proof_depth"]
 
 
-def test_all_247_source_rows_match_the_current_cut_checked_catalog() -> None:
+def test_frozen_247_rows_are_the_prefix_of_the_live_cut_checked_catalog() -> None:
     catalog = json.loads(PUBLIC_LIBRARY_CATALOG.read_text(encoding="utf-8"))
     rows = catalog["theorems"]
 
-    assert catalog["schema"] == "peano-library-snapshot-v2"
+    assert catalog["schema"] == "peano-library-snapshot-v3"
     assert catalog["certificate_representation"] == (
         "python-dataclass-repr-with-cut-v2"
     )
-    assert catalog["theorem_count"] == len(rows) == len(THEOREMS) == 247
+    assert catalog["theorem_count"] == len(rows) == len(THEOREMS)
     assert [row["name"] for row in rows] == [spec.name for spec in THEOREMS]
-    assert catalog["ordered_root_sha256"] == (
+    legacy_fields = {
+        "certificate_representation",
+        "certificate_sha256",
+        "cut_nodes",
+        "dependencies",
+        "index",
+        "layer",
+        "name",
+        "proof_depth",
+        "proof_nodes",
+        "script",
+        "script_sha256",
+        "statement",
+        "statement_sha256",
+        "summary",
+    }
+    projected_prefix = [
+        {key: row[key] for key in legacy_fields}
+        for row in rows[:EXPECTED_PUBLIC_LIBRARY_COUNT]
+    ]
+    assert _sha256(projected_prefix) == (
         "eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432"
     )
 

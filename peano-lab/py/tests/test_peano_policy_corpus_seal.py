@@ -350,14 +350,27 @@ def _anchored_seal(
 
 
 def _unlock_tree(root: Path) -> None:
-    if not root.exists():
+    try:
+        root_mode = os.lstat(root).st_mode
+    except FileNotFoundError:
+        return
+    if stat.S_ISLNK(root_mode):
         return
     for current, directories, files in os.walk(root, topdown=False, followlinks=False):
         for name in files:
-            os.chmod(Path(current) / name, 0o600, follow_symlinks=False)
+            path = Path(current) / name
+            if not stat.S_ISLNK(os.lstat(path).st_mode):
+                os.chmod(path, 0o600)
         for name in directories:
-            os.chmod(Path(current) / name, 0o700, follow_symlinks=False)
-    os.chmod(root, 0o700, follow_symlinks=False)
+            path = Path(current) / name
+            if not stat.S_ISLNK(os.lstat(path).st_mode):
+                os.chmod(path, 0o700)
+    try:
+        root_mode = os.lstat(root).st_mode
+    except FileNotFoundError:
+        return
+    if not stat.S_ISLNK(root_mode):
+        os.chmod(root, 0o700)
 
 
 def _retained_seal_stage(parent: Path) -> Path:

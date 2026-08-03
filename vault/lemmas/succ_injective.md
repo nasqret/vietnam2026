@@ -19,7 +19,12 @@ forall n m. S n = S m -> n = m
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[not_qres_mod3_two]]
+- [[not_qres_mod5_two]]
+- [[not_qres_mod5_three]]
+- [[not_qres_mod7_three]]
+- [[not_qres_mod7_five]]
+- [[not_qres_mod7_six]]
 
 ## Verification record
 

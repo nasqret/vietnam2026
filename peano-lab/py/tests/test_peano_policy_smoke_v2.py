@@ -10,7 +10,9 @@ import math
 import sys
 
 import pytest
-import torch
+
+
+torch = pytest.importorskip("torch")
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]

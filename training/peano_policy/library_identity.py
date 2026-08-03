@@ -28,6 +28,7 @@ from functools import lru_cache
 import hashlib
 import json
 from pathlib import Path
+import re
 import sys
 from typing import TYPE_CHECKING
 
@@ -61,6 +62,51 @@ EXPECTED_MODEL_V2_LIBRARY_COUNT = 56
 EXPECTED_MODEL_V2_LIBRARY_SHA256 = (
     "3ce83721f4517f2d5f2e734da1fbeae086473c4d1b8abb45d875a52769096439"
 )
+LIVE_CATALOG_SCHEMA = "peano-library-snapshot-v3"
+CERTIFICATE_REPRESENTATION = "python-dataclass-repr-with-cut-v2"
+EXPECTED_CERTIFICATE_POLICY_SHA256 = (
+    "8e1019a14a523e72e82723e7c7667f79daf25c271fddf487154efeb43701bd57"
+)
+
+_LIVE_CATALOG_FIELDS = frozenset(
+    {
+        "certificate_policy",
+        "certificate_representation",
+        "ordered_root_sha256",
+        "schema",
+        "theorem_count",
+        "theorem_source_root_sha256",
+        "theorem_sources",
+        "theorems",
+    }
+)
+_LEGACY_ROW_FIELDS = frozenset(
+    {
+        "certificate_representation",
+        "certificate_sha256",
+        "cut_nodes",
+        "dependencies",
+        "index",
+        "layer",
+        "name",
+        "proof_depth",
+        "proof_nodes",
+        "script",
+        "script_sha256",
+        "statement",
+        "statement_sha256",
+        "summary",
+    }
+)
+_LIVE_ROW_FIELDS = _LEGACY_ROW_FIELDS | {
+    "distinct_proof_objects",
+    "proof_edges",
+    "reused_proof_references",
+}
+_SOURCE_FIELDS = frozenset({"path", "sha256"})
+_PRIMARY_SOURCE = "peano-lab/py/peano_lab/library/theorems.py"
+_SOURCE_DIRECTORY = "peano-lab/py/peano_lab/library/"
+_HEX_SHA256 = re.compile(r"[0-9a-f]{64}")
 
 # Model-v2 is a published historical authority.  The public theorem ladder is
 # intentionally allowed to grow, but the meaning of an already trained policy
@@ -159,6 +205,22 @@ def _json_sha256(value: object) -> str:
     return hashlib.sha256(_canonical_json_bytes(value)).hexdigest()
 
 
+def _snapshot_document_sha256(value: object) -> str:
+    text = json.dumps(
+        value,
+        ensure_ascii=False,
+        indent=2,
+        sort_keys=True,
+    ) + "\n"
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def _require_sha256(label: str, value: object) -> str:
+    if type(value) is not str or _HEX_SHA256.fullmatch(value) is None:
+        raise LibraryIdentityError(f"{label} must be a lowercase SHA-256")
+    return value
+
+
 @dataclass(frozen=True, slots=True)
 class LibraryIdentityRecord:
     """One independently replayed theorem in the model-v2 authority."""
@@ -229,10 +291,72 @@ def _public_catalog_rows(
     catalog: dict[str, object],
     specifications: tuple["TheoremSpec", ...],
 ) -> dict[str, dict[str, object]]:
+    if set(catalog) != _LIVE_CATALOG_FIELDS:
+        raise LibraryIdentityError("public library catalog has invalid top-level fields")
+    if catalog.get("schema") != LIVE_CATALOG_SCHEMA:
+        raise LibraryIdentityError("public library catalog has the wrong schema")
+    if catalog.get("certificate_representation") != CERTIFICATE_REPRESENTATION:
+        raise LibraryIdentityError(
+            "public library catalog has the wrong certificate representation"
+        )
+    policy = catalog.get("certificate_policy")
+    if (
+        type(policy) is not str
+        or not policy.strip()
+        or hashlib.sha256(policy.encode("utf-8")).hexdigest()
+        != EXPECTED_CERTIFICATE_POLICY_SHA256
+    ):
+        raise LibraryIdentityError("public library catalog certificate policy changed")
+
+    sources = catalog.get("theorem_sources")
+    if type(sources) is not list or not sources:
+        raise LibraryIdentityError("public library catalog theorem sources are malformed")
+    source_paths: set[str] = set()
+    for index, source in enumerate(sources):
+        if type(source) is not dict or set(source) != _SOURCE_FIELDS:
+            raise LibraryIdentityError(
+                f"public library catalog theorem source {index} is malformed"
+            )
+        path = source.get("path")
+        if (
+            type(path) is not str
+            or not path.startswith(_SOURCE_DIRECTORY)
+            or not path.endswith(".py")
+            or Path(path).is_absolute()
+            or ".." in Path(path).parts
+            or Path(path).as_posix() != path
+            or path in source_paths
+        ):
+            raise LibraryIdentityError(
+                f"public library catalog theorem source {index} has an invalid path"
+            )
+        expected_digest = _require_sha256(
+            f"public theorem source hash for {path!r}", source.get("sha256")
+        )
+        try:
+            actual_digest = hashlib.sha256(
+                (REPOSITORY_ROOT / path).read_bytes()
+            ).hexdigest()
+        except OSError as exc:
+            raise LibraryIdentityError(
+                f"cannot read public theorem source {path!r}"
+            ) from exc
+        if actual_digest != expected_digest:
+            raise LibraryIdentityError(
+                f"public theorem source hash for {path!r} is stale"
+            )
+        source_paths.add(path)
+    if sources[0].get("path") != _PRIMARY_SOURCE:
+        raise LibraryIdentityError("public library catalog names the wrong primary source")
+    source_root = _require_sha256(
+        "public theorem source root", catalog.get("theorem_source_root_sha256")
+    )
+    if source_root != _snapshot_document_sha256(sources):
+        raise LibraryIdentityError("public library catalog theorem source root is invalid")
+
     rows = catalog.get("theorems")
     if (
-        catalog.get("schema") != "peano-library-snapshot-v2"
-        or type(rows) is not list
+        type(rows) is not list
         or catalog.get("theorem_count") != len(rows)
         or len(rows) < EXPECTED_PUBLIC_LIBRARY_COUNT
     ):
@@ -241,29 +365,33 @@ def _public_catalog_rows(
         raise LibraryIdentityError(
             "public theorem library and catalog have different theorem counts"
         )
-    if catalog.get("theorem_source") != (
-        "peano-lab/py/peano_lab/library/theorems.py"
-    ):
-        raise LibraryIdentityError("public library catalog names the wrong source")
-    source_digest = hashlib.sha256(PUBLIC_LIBRARY_SOURCE.read_bytes()).hexdigest()
-    if catalog.get("theorem_source_sha256") != source_digest:
-        raise LibraryIdentityError("public library catalog source hash is stale")
-    expected_root = hashlib.sha256(_canonical_json_bytes(rows)).hexdigest()
+    expected_root = _json_sha256(rows)
     if catalog.get("ordered_root_sha256") != expected_root:
         raise LibraryIdentityError("public library catalog ordered root is invalid")
-    baseline_root = hashlib.sha256(
-        _canonical_json_bytes(rows[:EXPECTED_PUBLIC_LIBRARY_COUNT])
-    ).hexdigest()
-    if baseline_root != EXPECTED_PUBLIC_LIBRARY_PREFIX_SHA256:
-        raise LibraryIdentityError(
-            "public library catalog rewrites the frozen 247-row baseline"
-        )
 
     result: dict[str, dict[str, object]] = {}
-    ordered_names: list[str] = []
+    prior_names: set[str] = set()
     for index, (row, spec) in enumerate(zip(rows, specifications, strict=True)):
-        if type(row) is not dict or type(row.get("name")) is not str:
-            raise LibraryIdentityError("public library catalog has a malformed row")
+        if type(row) is not dict or set(row) != _LIVE_ROW_FIELDS:
+            raise LibraryIdentityError(
+                f"public library catalog row {index} has invalid fields"
+            )
+        if (
+            type(spec.name) is not str
+            or not spec.name
+            or spec.name in prior_names
+        ):
+            raise LibraryIdentityError("public theorem library has invalid names")
+        if not all(type(item) is str for item in spec.dependencies):
+            raise LibraryIdentityError(
+                f"public theorem {spec.name!r} has malformed dependencies"
+            )
+        unavailable = set(spec.dependencies).difference(prior_names)
+        if unavailable:
+            raise LibraryIdentityError(
+                f"public theorem {spec.name!r} has non-prefix dependencies: "
+                + ", ".join(sorted(unavailable))
+            )
         name = row["name"]
         if name in result:
             raise LibraryIdentityError(f"duplicate public catalog row {name!r}")
@@ -280,16 +408,54 @@ def _public_catalog_rows(
             "script_sha256": hashlib.sha256(
                 ("\n".join(spec.script) + "\n").encode("utf-8")
             ).hexdigest(),
+            "certificate_representation": CERTIFICATE_REPRESENTATION,
         }
         for key, expected in expected_source.items():
             if row.get(key) != expected:
                 raise LibraryIdentityError(
                     f"public catalog source mismatch for {spec.name!r}: {key}"
                 )
+        _require_sha256(
+            f"public certificate hash for {spec.name!r}",
+            row.get("certificate_sha256"),
+        )
+        if type(row.get("layer")) is not str or not str(row["layer"]).strip():
+            raise LibraryIdentityError(
+                f"public catalog layer for {spec.name!r} is malformed"
+            )
+        for field in ("proof_nodes", "proof_depth"):
+            if type(row.get(field)) is not int or row[field] < 1:
+                raise LibraryIdentityError(
+                    f"public catalog {field} for {spec.name!r} is malformed"
+                )
+        if type(row.get("cut_nodes")) is not int or row["cut_nodes"] < 0:
+            raise LibraryIdentityError(
+                f"public catalog cut count for {spec.name!r} is malformed"
+            )
+        for field in (
+            "distinct_proof_objects",
+            "proof_edges",
+            "reused_proof_references",
+        ):
+            if type(row.get(field)) is not int or row[field] < 0:
+                raise LibraryIdentityError(
+                    f"public catalog {field} for {spec.name!r} is malformed"
+                )
+        if row["distinct_proof_objects"] < 1:
+            raise LibraryIdentityError(
+                f"public catalog distinct object count for {spec.name!r} is malformed"
+            )
         result[name] = row
-        ordered_names.append(name)
-    if ordered_names != [spec.name for spec in specifications]:
-        raise LibraryIdentityError("public library catalog order differs from source")
+        prior_names.add(spec.name)
+
+    legacy_prefix = [
+        {key: row[key] for key in _LEGACY_ROW_FIELDS}
+        for row in rows[:EXPECTED_PUBLIC_LIBRARY_COUNT]
+    ]
+    if _json_sha256(legacy_prefix) != EXPECTED_PUBLIC_LIBRARY_PREFIX_SHA256:
+        raise LibraryIdentityError(
+            "public library catalog rewrites the frozen 247-row baseline"
+        )
     return result
 
 

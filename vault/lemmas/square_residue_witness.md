@@ -19,7 +19,7 @@ forall a z q r c s. z = a * q + r -> r * r = a * c + s -> exists w. z * z = a * 
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[quadratic_residue_bounded_equiv]]
 
 ## Verification record
 

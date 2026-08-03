@@ -29,11 +29,13 @@ the encoded natural-deduction, equality, PA1–PA6, and induction rules.  That i
 as whether $A$ is true in the standard natural numbers, whether some other certificate exists, or
 whether the rules are consistent.
 
-The distinction is the De Bruijn criterion in action.  We reduce trust to a program small enough to
-inspect; we do not eliminate trust.  A defect in the checker or an inconsistent axiom set could still
-certify nonsense.  Conversely, rejection of one malformed certificate says nothing about whether the
-same theorem has a valid proof.  Soundness here is a disciplined boundary between search and checking,
-not a machine-checked metatheorem about the Python runtime.
+The distinction is the De Bruijn criterion in action. We reduce trust to a program small enough to
+inspect; we do not eliminate trust. Machine verification reduces the residual trust further: the
+separate [`peano-lab-lean`](https://github.com/nasqret/peano-lab-lean) project proves semantic
+soundness of the modeled checker in standard `Nat`. It does not prove Lean's own kernel or hardware
+sound, complete equivalence with every CPython execution, or consistency of the arithmetic axioms.
+Conversely, rejection of one malformed certificate says nothing about whether the same theorem has
+a valid proof.
 
 ## Gödel–Rosser: incompleteness is structural
 
@@ -223,5 +225,11 @@ The bridge is intentionally one-way and non-authoritative.  [`pa lean mul_eq_zer
 translates the exact Peano formula to a Lean theorem over `Nat`, comments the source tactic script, and
 leaves one visible `sorry` stub.  The exporter in
 [`library/lean.py`](https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/lean.py)
-is a cross-checking convenience.  Lean does not certify Peano Lab's QED, and Peano Lab does not pretend
-to be Lean.  Each system's own kernel remains the judge of its own proof object.
+is a cross-checking convenience and remains non-authoritative: it leaves a visible proof stub.
+Separately, `peano-lab-lean` can decode and verify canonical Peano certificate artifacts and supplies
+the cross-system soundness theorem. Historical WMI job `211445` covers the cut-free format;
+Cut-aware v2 source
+[`ab966fd1`](https://github.com/nasqret/peano-lab-lean/commit/ab966fd1b8207b99eea0c9dc3d719c6e61ef73c2)
+passed pinned Lean 4.31/WMI job
+[`218358`](https://github.com/nasqret/peano-lab-lean/tree/8515336ab3b89ca6f0c8ab521d01745a220b5211/artifacts/wmi/218358).
+The stub exporter must not be confused with that independent certificate verifier.

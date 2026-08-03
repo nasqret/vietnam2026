@@ -12,7 +12,7 @@ than trusting a goal returned by the tactic engine.
 
 The public learning path is the [[theorem-ladder]]. The lab is intuitionistic by default; use of
 double-negation elimination is explicit and checked only in the labeled classical mode.
-The current native library exposes 247 closed checked theorems, including
+The current native library exposes 384 closed checked theorems, including
 constructive [[binary_crt]], bounded-prefix
 [[beta_moduli_pairwise_coprime_bounded|β-modulus coprimality]], and the
 invariant-preserving [[binary_crt_fold_step]]. The newest ordinary-induction

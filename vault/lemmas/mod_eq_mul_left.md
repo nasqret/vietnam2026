@@ -22,6 +22,8 @@ forall m a b c. (exists u v. a + m * u = b + m * v) -> exists r s. (c * a) + m *
 
 - [[mod_eq_mul]]
 - [[binary_crt]]
+- [[mod_eq_cancel_coprime]]
+- [[prime_bounded_nonzero_mod_inverse]]
 
 ## Verification record
 

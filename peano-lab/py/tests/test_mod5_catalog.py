@@ -112,7 +112,7 @@ def test_public_mod5_catalog_matches_its_source_validation_artifact() -> None:
     assert report["budgets"]["recommended_certificate_nodes"] == 32_768
     assert MAX_USE_CERTIFICATE_NODES == MAX_USE_PARTIAL_NODES == (
         MAX_LIVE_PROOF_NODES
-    ) == 100_000
+    ) == 500_000
     assert MAX_USE_PROOF_DEPTH == MAX_LIVE_PROOF_DEPTH == 256
 
     expected = tuple(
@@ -178,14 +178,25 @@ def test_capstone_can_be_used_to_close_the_original_problem() -> None:
     assert "QED." in session.run("qed")
 
 
-def test_repeated_capstone_imports_reach_the_same_transactional_partial_limit() -> None:
+def test_repeated_capstone_imports_reach_the_same_transactional_partial_limit(
+    monkeypatch,
+) -> None:
+    # Exercise the transaction at a smaller local ceiling.  The exact global
+    # 500K occurrence and 100K object boundaries are covered independently in
+    # test_live_library_use without replaying this 21K-node theorem two dozen
+    # times in every CI run.
+    from peano_lab.engine import tactics as tactic_engine
+
+    local_cap = 100_000
+    monkeypatch.setattr(tactic_engine, "MAX_LIVE_PROOF_NODES", local_cap)
+    monkeypatch.setattr(tactic_engine, "MAX_USE_PARTIAL_NODES", local_cap)
     session = driver.LabSession()
     session.run("pa prove 0 = 0")
     failure = None
     accepted = 0
     before = None
     capstone_nodes = replay("mod5_fourth_power_one").proof_nodes
-    attempts = MAX_USE_PARTIAL_NODES // (capstone_nodes + 1) + 2
+    attempts = local_cap // (capstone_nodes + 1) + 2
     for index in range(attempts):
         owner = get_owner(session.webstate)
         assert owner is not None

@@ -33,6 +33,11 @@ forall n. 0 + n = n
 - [[dvd_to_mod_zero]]
 - [[binary_crt]]
 - [[common_divisor_beta_moduli_divides_gap_times_c]]
+- [[quadratic_residue_search_up_to]]
+- [[quadratic_residue_bounded_equiv]]
+- [[factorial_succ_decompose]]
+- [[predecessor_square_mod_one]]
+- [[beta_half_range_entry_bounds]]
 
 ## Verification record
 

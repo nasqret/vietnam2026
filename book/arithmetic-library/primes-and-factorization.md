@@ -177,7 +177,7 @@ has two deliberately separate checked results:
 
 The companion is a mathematical cross-check, not Peano authority. The native
 β-coded existence, uniqueness, and combined FTA certificates are independently
-checked and synchronized in the 247-theorem runtime.
+checked and synchronized in the 384-theorem runtime.
 
 ## The representation milestone
 
@@ -396,7 +396,8 @@ The metrics at this integration checkpoint are:
 The exact FTA certificate SHA-256 is
 `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
 It passes independent empty-context checking and the full
-prove/use/exact/QED path under the current 100,000-node/depth-256 cap.
+prove/use/exact/QED path under the current 500,000-occurrence,
+100,000-object, depth-256 cap.
 Dependency, hypothesis, PA-rule, and semantic mutation audits are live. The
 certificate uses only PA1–PA6 and induction and contains no DNE.
 

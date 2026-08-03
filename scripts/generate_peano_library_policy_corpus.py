@@ -144,11 +144,15 @@ def select_theorems(limit: int | None = None) -> tuple[TheoremSpec, ...]:
     """Return a declaration-order prefix; no limit means all 247 rungs."""
 
     if limit is None:
-        limit = len(THEOREMS)
-    if type(limit) is not int or isinstance(limit, bool) or not 1 <= limit <= len(
-        THEOREMS
+        limit = MODEL_V3_LIBRARY_SIZE
+    if (
+        type(limit) is not int
+        or isinstance(limit, bool)
+        or not 1 <= limit <= MODEL_V3_LIBRARY_SIZE
     ):
-        raise ValueError(f"limit must be between 1 and {len(THEOREMS)}")
+        raise ValueError(
+            f"limit must be between 1 and {MODEL_V3_LIBRARY_SIZE}"
+        )
     return THEOREMS[:limit]
 
 
@@ -498,7 +502,10 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--limit",
         type=int,
-        help=f"generate the first N theorem sessions (1..{len(THEOREMS)})",
+        help=(
+            "generate the first N frozen model-v3 theorem sessions "
+            f"(1..{MODEL_V3_LIBRARY_SIZE})"
+        ),
     )
     return parser
 

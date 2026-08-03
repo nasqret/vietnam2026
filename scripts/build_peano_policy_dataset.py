@@ -71,6 +71,7 @@ from peano_lab.ui.prove import (  # noqa: E402
     SurfaceCapabilities,
 )
 from training.peano_policy.contract import (  # noqa: E402
+    MODEL_V3_LIBRARY_SIZE,
     canonical_held_out_formulas,
     environment_record,
     model_v3_prefix_environment,
@@ -568,8 +569,10 @@ def _validate_v3_catalog_trajectory(
             f"session {session.session_id!r} with model-v3 prefix {index!r} "
             f"must use the exact {V3_CATALOG_TRAJECTORY!r} trajectory"
         )
-    if type(index) is not int or isinstance(index, bool) or not 0 <= index < len(
-        THEOREMS
+    if (
+        type(index) is not int
+        or isinstance(index, bool)
+        or not 0 <= index < MODEL_V3_LIBRARY_SIZE
     ):
         raise DatasetBuildError(
             f"session {session.session_id!r} has an invalid library target index"
@@ -734,12 +737,12 @@ def _validate_v3_curriculum_session(
         raise DatasetBuildError(
             f"session {session.session_id!r} has no exact model-v3 prefix"
         )
-    if prefix < len(THEOREMS):
+    if prefix < MODEL_V3_LIBRARY_SIZE:
         _validate_v3_catalog_trajectory(
             session, metadata, capabilities, commands
         )
         return
-    if prefix == len(THEOREMS):
+    if prefix == MODEL_V3_LIBRARY_SIZE:
         _validate_v3_synthetic_lane(session, metadata, commands)
         return
     raise DatasetBuildError(
@@ -768,14 +771,14 @@ def _validate_v3_curriculum_population(
             raise DatasetBuildError(
                 f"session {session.session_id!r} has no exact model-v3 prefix"
             )
-        if prefix < len(THEOREMS):
+        if prefix < MODEL_V3_LIBRARY_SIZE:
             previous = catalog_sessions.setdefault(prefix, session.session_id)
             if previous != session.session_id:
                 raise DatasetBuildError(
                     f"model-v3 catalog prefix {prefix} has duplicate sessions"
                 )
             continue
-        if prefix != len(THEOREMS):
+        if prefix != MODEL_V3_LIBRARY_SIZE:
             raise DatasetBuildError(
                 f"session {session.session_id!r} exceeds the model-v3 library size"
             )
@@ -1092,11 +1095,14 @@ def _v3_lane(metadata: Mapping[str, object]) -> str:
     prefix = metadata.get("library_prefix_length")
     if type(prefix) is not int or isinstance(prefix, bool):
         raise DatasetBuildError("model-v3 split lane has no exact prefix")
-    if prefix < len(THEOREMS):
+    if prefix < MODEL_V3_LIBRARY_SIZE:
         if metadata.get("trajectory") != V3_CATALOG_TRAJECTORY:
             raise DatasetBuildError("model-v3 catalog split lane is unmarked")
         return V3_CATALOG_TRAJECTORY
-    if prefix == len(THEOREMS) and metadata.get("lane") == V3_SYNTHETIC_LANE:
+    if (
+        prefix == MODEL_V3_LIBRARY_SIZE
+        and metadata.get("lane") == V3_SYNTHETIC_LANE
+    ):
         return V3_SYNTHETIC_LANE
     raise DatasetBuildError("model-v3 split lane is not an approved curriculum lane")
 

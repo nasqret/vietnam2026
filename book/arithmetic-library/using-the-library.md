@@ -10,12 +10,15 @@ Existing production entries may already open there; candidate-only entries,
 including the division, gcd, Bézout, Gauss, Euclid, and constructive
 prime-search layers, balanced modular congruence, single-position Gödel-β
 decoding as bounded congruence, and constructive binary CRT become available
-only after this build is promoted. The source runtime now has 247 checked
-entries. Its source-bound 1,692-session/13,344-transition corpus has fingerprint
+only after this build is promoted. The source runtime now has 384 checked
+entries. The last source-bound 1,692-session/13,344-transition corpus was built
+at the 247-theorem checkpoint and has fingerprint
 `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`.
 The isolated all-ladder smoke has 494 sessions, 9,235 raw/9,232 unique
-transitions, and all 247 authored QEDs. Browser build `2026-07-29k`,
-application `a-77df7c0860bc`, has not been staged or deployed.
+transitions, and all 247 authored QEDs. The integrated local browser candidate
+deterministically verifies as build `2026-08-03a`, application
+`a-ff0ad1985520`, with 149 worker sources; it assembles successfully in the
+local content-addressed stage and has not been deployed.
 
 The [public Peano Lab shell](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib)
 still serves the earlier production snapshot. In this candidate checkout, try
@@ -32,7 +35,7 @@ pa lib prime_factorization_uniqueness
 pa lib fundamental_theorem_of_arithmetic
 ```
 
-The {doc}`theorem atlas <theorem-atlas>` provides the complete 247-command
+The {doc}`theorem atlas <theorem-atlas>` provides the complete 384-theorem
 index, with a full replay recipe and immutable source links for every entry.
 Candidate-only browser commands must not be presented as live until the
 corresponding Peano Lab build is promoted.
@@ -147,9 +150,9 @@ cd peano-lab/py
 python3 -m pytest tests/test_foundational_arithmetic_library.py -q
 ```
 
-The snapshot command verifies exact metadata for all 247 checked certificates
-and ordered root digest `eb4775dfd181…ff432`. The atlas command verifies that
+The snapshot command verifies exact metadata for all 384 checked certificates
+and ordered root digest `73b31b4775d2…6e89b`. The atlas command verifies that
 every displayed statement, dependency, proof recipe, metric and hash still
-matches that snapshot. The catalog command validates the 248-node research DAG
+matches that snapshot. The catalog command validates the 385-node research DAG
 and source register, and the last command exercises the checked foundational
 layer directly.

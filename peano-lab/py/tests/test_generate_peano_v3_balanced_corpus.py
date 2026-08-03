@@ -67,7 +67,9 @@ def _cheap_full_capabilities() -> SurfaceCapabilities:
     return SurfaceCapabilities(
         label="model-v3",
         allowed_commands=MODEL_V1_COMMANDS,
-        allowed_theorems=frozenset(spec.name for spec in THEOREMS),
+        allowed_theorems=frozenset(
+            spec.name for spec in THEOREMS[:MODEL_V3_LIBRARY_SIZE]
+        ),
     )
 
 

@@ -12,7 +12,9 @@ from types import SimpleNamespace
 from typing import Any
 
 import pytest
-import torch
+
+
+torch = pytest.importorskip("torch")
 
 
 REPO_ROOT = Path(__file__).resolve().parents[3]

@@ -75,7 +75,7 @@
         <p>Paste one command per line, beginning with <code>pa prove …</code> and ending with <code>qed</code>. Blank lines are ignored. Commands run in order and stop at the first failed line; the successful prefix remains available to inspect or undo.</p>
         <label for="paste-proof-input">Complete proof script</label>
         <textarea id="paste-proof-input" maxlength="100000" spellcheck="false" autocomplete="off" aria-describedby="paste-proof-rules paste-proof-error" placeholder="pa prove forall n. n = n&#10;intro n&#10;refl&#10;qed"></textarea>
-        <p id="paste-proof-rules">Limit: 256 nonblank commands, 100,000 characters total, and 4,000 characters per command. Pasting never authorizes a file download.</p>
+        <p id="paste-proof-rules">Limit: 256 nonblank commands, 100,000 characters total, and 8,192 characters per command. Pasting never authorizes a file download.</p>
         <p class="paste-error" id="paste-proof-error" role="alert" aria-live="polite"></p>
         <div class="paste-actions"><button class="paste-cancel" value="cancel">Cancel</button><button class="paste-run" id="run-pasted-proof" type="button">Run proof</button></div>
       </form>
@@ -90,9 +90,9 @@
   <script>
   (function(){
     "use strict";
-    const BUILD="2026-07-29k";
-    const APP_ROOT="releases/a-77df7c0860bc/";
-    const MAX_INPUT=4000;
+    const BUILD="2026-08-03a";
+    const APP_ROOT="releases/a-ff0ad1985520/";
+    const MAX_INPUT=8192;
     const MAX_PASTE_CHARS=100000;
     const MAX_PASTE_LINES=256;
     const MAX_SCRIPT_DOWNLOAD=500000;
@@ -182,7 +182,7 @@
         const line=index+1;
         if(!text)continue;
         if(controls.test(raw))return {commands:[],error:"source line "+line+" contains an unsafe control or format character"};
-        if(text.length>MAX_INPUT)return {commands:[],error:"source line "+line+" exceeds 4,000 characters"};
+        if(text.length>MAX_INPUT)return {commands:[],error:"source line "+line+" exceeds "+MAX_INPUT.toLocaleString("en-US")+" characters"};
         commands.push({line:line,text:text});
         if(commands.length>MAX_PASTE_LINES)return {commands:[],error:"the pasted proof exceeds 256 nonblank commands"};
       }

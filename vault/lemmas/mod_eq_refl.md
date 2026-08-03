@@ -20,6 +20,11 @@ forall m a. exists u v. a + m * u = a + m * v
 ## Checked dependents
 
 - [[binary_crt]]
+- [[beta_product_pointwise_mod_congruent]]
+- [[beta_sum_pointwise_mod_congruent]]
+- [[coprime_mod_inverse]]
+- [[pow_mod_congruent]]
+- [[pow_predecessor_parity_mod]]
 
 ## Verification record
 

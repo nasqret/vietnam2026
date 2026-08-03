@@ -108,7 +108,7 @@ def test_model_v2_remains_the_exact_published_56_theorem_authority() -> None:
     assert allowed == public_names - EXCLUDED_POLICY_LIBRARY_NAMES
     assert allowed.isdisjoint(EXCLUDED_POLICY_LIBRARY_NAMES)
     assert HELD_OUT_POLICY_NAMES < EXCLUDED_POLICY_LIBRARY_NAMES
-    assert len(EXCLUDED_POLICY_LIBRARY_NAMES) == len(THEOREMS) - 56 == 191
+    assert len(EXCLUDED_POLICY_LIBRARY_NAMES) == len(THEOREMS) - 56
     assert len(allowed) == 56
     assert tuple(record.name for record in environment.library) == tuple(
         sorted(allowed)

@@ -1,0 +1,237 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{ink}{HTML}{1F2933}
+\definecolor{accent}{HTML}{8C2F39}
+\definecolor{statusbg}{HTML}{FFF0C9}
+\definecolor{statusborder}{HTML}{8A5A00}
+
+\hypersetup{
+  pdftitle={PA00FG: The Gauss--Eisenstein Data Lemma},
+  pdfsubject={A standard mathematical restatement of a native Peano Lab theorem},
+  pdfauthor={Peano Lab arithmetic library},
+  colorlinks=true,
+  linkcolor=accent,
+  urlcolor=accent
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{accent}{PA00FG}}
+\fancyhead[R]{\small Gauss--Eisenstein data lemma}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.2em}
+
+\newtheorem{theorem}{Theorem}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PrimePA}{\operatorname{Prime}_{\mathrm{PA}}}
+\newcommand{\QRes}{\operatorname{QRes}}
+\newcommand{\Even}{\operatorname{Even}}
+\newcommand{\Odd}{\operatorname{Odd}}
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+
+\newcommand{\statusbox}[1]{%
+  \begin{center}
+    \fcolorbox{statusborder}{statusbg}{%
+      \parbox{0.89\textwidth}{\small\textcolor{ink}{#1}}}
+  \end{center}}
+
+\begin{document}
+
+\begin{center}
+  {\color{accent}\Large\bfseries PA00FG}\par
+  \vspace{0.35em}
+  {\huge\bfseries The Gauss--Eisenstein Data Lemma}\par
+  \vspace{0.55em}
+  {\large A standard mathematical restatement of}\par
+  \vspace{0.15em}
+  {\large\ttfamily distinct\_odd\_primes\_gauss\_eisenstein\_data\_exists}
+\end{center}
+
+\statusbox{\textbf{Formal status.}
+The native tactic body is kernel-checked relative to its declared dependencies,
+but the theorem is currently a \texttt{candidate\_body\_checked} result rather
+than a publicly admitted closed theorem.}
+
+\section{Abbreviations for the expanded PA formulas}
+
+All variables range over \(\N\).  The native theorem uses only \(0\),
+successor, addition, multiplication, equality, first-order connectives, and
+quantifiers.  The familiar notation below abbreviates formulas that are fully
+expanded on the theorem page.
+
+The PA primality predicate used in the statement is
+\begin{equation}
+  \PrimePA(r)
+  \;:\Longleftrightarrow\;
+  r\neq 1
+  \;\land\;
+  \forall a,b\in\N,
+  \bigl(r=ab\Longrightarrow a=1\lor b=1\bigr).
+  \label{eq:prime}
+\end{equation}
+
+Quadratic residuosity is encoded without subtraction:
+\begin{equation}
+  \QRes_m(a)
+  \;:\Longleftrightarrow\;
+  \exists x,u,v\in\N,
+  \qquad x^2+mu=a+mv.
+  \label{eq:qres}
+\end{equation}
+Thus \(\QRes_m(a)\) is the natural-number formulation of
+\(x^2\equiv a\pmod m\).
+
+Parity is expressed by
+\begin{align}
+  \Even(n)&\;:\Longleftrightarrow\;\exists t\in\N,\quad n=2t,
+  \label{eq:even}\\
+  \Odd(n)&\;:\Longleftrightarrow\;\exists t\in\N,\quad n=2t+1.
+  \label{eq:odd}
+\end{align}
+Finally, balanced congruence modulo two means
+\begin{equation}
+  a\equiv b\pmod 2
+  \;:\Longleftrightarrow\;
+  \exists u,v\in\N,
+  \qquad a+2u=b+2v.
+  \label{eq:modtwo}
+\end{equation}
+
+\section{The clean mathematical statement}
+
+\begin{theorem}[PA00FG]
+Let \(p,q,h,k\in\N\).  Suppose
+\begin{equation}
+  p=2h+1,
+  \qquad
+  q=2k+1,
+  \qquad
+  \PrimePA(p),
+  \qquad
+  \PrimePA(q),
+  \qquad
+  p\neq q.
+  \label{eq:hypotheses}
+\end{equation}
+Then there exist \(e,f,Q,U\in\N\) such that
+\begin{align}
+  \QRes_p(q)
+    &\Longleftrightarrow \Even(e),
+    \label{eq:first-residue}\\
+  \neg\QRes_p(q)
+    &\Longleftrightarrow \Odd(e),
+    \label{eq:first-nonresidue}\\
+  \QRes_q(p)
+    &\Longleftrightarrow \Even(f),
+    \label{eq:second-residue}\\
+  \neg\QRes_q(p)
+    &\Longleftrightarrow \Odd(f),
+    \label{eq:second-nonresidue}\\
+  e&\equiv Q\pmod 2,
+    \label{eq:first-parity}\\
+  f&\equiv U\pmod 2,
+    \label{eq:second-parity}\\
+  Q+U&=hk.
+    \label{eq:eisenstein}
+\end{align}
+\end{theorem}
+
+Because \(p=2h+1\) and \(q=2k+1\), the parameters are
+\begin{equation}
+  h=\frac{p-1}{2},
+  \qquad
+  k=\frac{q-1}{2}.
+  \label{eq:halves}
+\end{equation}
+The equations in \eqref{eq:hypotheses} are used instead of subtraction or
+division because neither operation is primitive in the native PA term
+language.
+
+\section{What the four witnesses represent}
+
+The proof constructs \(e\) and \(f\) as the two Gauss-lemma sign counts.  In
+ordinary notation, one may view them as
+\begin{align}
+  e
+  &=\#\left\{
+      1\leq i\leq h:
+      \langle iq\rangle_p>\frac{p}{2}
+    \right\},
+  \label{eq:e-count}\\
+  f
+  &=\#\left\{
+      1\leq j\leq k:
+      \langle jp\rangle_q>\frac{q}{2}
+    \right\},
+  \label{eq:f-count}
+\end{align}
+where \(\langle n\rangle_m\) denotes the least positive residue of \(n\)
+modulo \(m\).  Gauss's lemma explains
+\eqref{eq:first-residue}--\eqref{eq:second-nonresidue}: quadratic residuosity
+is exactly the evenness of the appropriate sign count.
+
+The proof chooses \(Q\) and \(U\) as the Eisenstein quotient sums
+\begin{align}
+  Q&=\sum_{i=1}^{h}\left\lfloor\frac{iq}{p}\right\rfloor,
+  \label{eq:q-sum}\\
+  U&=\sum_{j=1}^{k}\left\lfloor\frac{jp}{q}\right\rfloor.
+  \label{eq:u-sum}
+\end{align}
+The parity bridges \eqref{eq:first-parity} and
+\eqref{eq:second-parity} identify the Gauss counts with these quotient sums
+modulo two.  Eisenstein's lattice-point argument gives the exact identity
+\begin{equation}
+  \sum_{i=1}^{h}\left\lfloor\frac{iq}{p}\right\rfloor
+  +
+  \sum_{j=1}^{k}\left\lfloor\frac{jp}{q}\right\rfloor
+  =hk.
+  \label{eq:lattice}
+\end{equation}
+
+\paragraph{Formal nuance.}
+The public surface of PA00FG exposes only the relations
+\eqref{eq:first-residue}--\eqref{eq:eisenstein}.  The much larger internal
+proof constructs the beta-coded finite sequences and sums that realize
+\eqref{eq:e-count}--\eqref{eq:u-sum}, then hides those implementation
+witnesses before returning \(e,f,Q,U\).
+
+\section{Why this is the central quadratic-reciprocity package}
+
+In conventional Legendre-symbol notation, the four classification formulas
+say
+\begin{equation}
+  \legendre{q}{p}=(-1)^e,
+  \qquad
+  \legendre{p}{q}=(-1)^f.
+  \label{eq:gauss-signs}
+\end{equation}
+The two parity bridges and the Eisenstein identity therefore give
+\begin{align}
+  \legendre{q}{p}\legendre{p}{q}
+    &=(-1)^{e+f}
+      \notag\\
+    &=(-1)^{Q+U}
+      \notag\\
+    &=(-1)^{hk}
+      \notag\\
+    &=(-1)^{\frac{(p-1)(q-1)}{4}}.
+  \label{eq:qr}
+\end{align}
+Equation \eqref{eq:qr} is the standard parity identity behind quadratic
+reciprocity.  PA00FG is therefore not yet the final reciprocity theorem; it is
+the common witness package from which the final same-status and
+opposite-status cases are derived constructively.
+
+\end{document}

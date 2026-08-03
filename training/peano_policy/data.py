@@ -28,6 +28,7 @@ from .prompt import (
     validate_completion,
 )
 from .contract import (
+    MODEL_V3_LIBRARY_SIZE,
     environment_record,
     model_v3_prefix_environment,
     prompt_environment,
@@ -297,7 +298,10 @@ def example_from_record(record: Mapping[str, Any], line_number: int) -> ProofExa
             "catalog-predecessor-prefix-v1"
         ):
             index = record["metadata"].get("library_target_index")
-            if type(index) is not int or not 0 <= index < len(THEOREMS):
+            if (
+                type(index) is not int
+                or not 0 <= index < MODEL_V3_LIBRARY_SIZE
+            ):
                 raise PromptError(f"{location}: invalid model-v3 target index")
             spec = THEOREMS[index]
             formula, free_names = parse_formula_with_names(spec.statement)

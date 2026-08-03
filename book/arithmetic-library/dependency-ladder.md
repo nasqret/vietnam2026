@@ -188,7 +188,8 @@ At this integration checkpoint the exact endpoints check as follows:
 The combined certificate has SHA-256
 `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`,
 checks from the empty context, and passes the full live-use path under the
-100,000-node/depth-256 cap. It uses PA1–PA6 and induction only, with no DNE.
+500,000-occurrence/100,000-object/depth-256 cap. It uses PA1–PA6 and induction
+only, with no DNE.
 Runtime integration is complete.
 
 The theorem remains deliberately relational: Peano Lab has no primitive list

@@ -32,6 +32,7 @@ from .prompt import (
     prompt_manifest_record,
 )
 from .library_identity_v3 import (
+    EXPECTED_LIBRARY_SIZE,
     model_v3_full_identity_sha256,
     model_v3_prefix_index,
     model_v3_prefix_names,
@@ -123,7 +124,10 @@ MODEL_V2_THEOREMS: tuple[str, ...] = tuple(
     record.name for record in model_v2_library()
 )
 
-MODEL_V3_LIBRARY_SIZE = len(THEOREMS)
+# Model-v3 was trained against the historical 247-rung authority.  The native
+# library may grow append-only, but that cannot widen an existing model's
+# prompt, corpus, or inference contract.
+MODEL_V3_LIBRARY_SIZE = EXPECTED_LIBRARY_SIZE
 
 
 @lru_cache(maxsize=None)
@@ -132,7 +136,7 @@ def model_v3_prefix_library(prefix_length: int) -> tuple[LibraryRecord, ...]:
 
     names = frozenset(model_v3_prefix_names(prefix_length))
     records: list[LibraryRecord] = []
-    for spec in THEOREMS:
+    for spec in THEOREMS[:MODEL_V3_LIBRARY_SIZE]:
         if spec.name not in names:
             continue
         formula, free_names = parse_formula_with_names(spec.statement)
@@ -166,7 +170,7 @@ def model_v3_prefix_environment(prefix_length: int) -> PromptEnvironment:
 
 
 def model_v3_environment() -> PromptEnvironment:
-    """Return the full 247-theorem inference authority for model-v3."""
+    """Return the frozen 247-theorem inference authority for model-v3."""
 
     return model_v3_prefix_environment(MODEL_V3_LIBRARY_SIZE)
 

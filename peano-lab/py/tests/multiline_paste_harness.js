@@ -48,7 +48,7 @@ const forbiddenCalls = [];
 const routedPastes = [];
 const focusCalls = [];
 const context = {
-  MAX_INPUT: 4000,
+  MAX_INPUT: 8192,
   MAX_PASTE_CHARS: 100000,
   MAX_PASTE_COMMANDS: 256,
   MAX_PASTE_LINES: 256,
@@ -163,7 +163,7 @@ function preparationAcceptsPortableTextAndPreservesSourceLines() {
 
   // The boundary values are accepted.  Validation is syntactic and does not
   // try to parse the theorem or tactic language in JavaScript.
-  const exactLimit = "pa prove " + "x".repeat(3991) + "\nqed";
+  const exactLimit = "pa prove " + "x".repeat(8183) + "\nqed";
   assert.strictEqual(context.preparePastedProof(exactLimit).error, "");
   const maximumCommands = ["pa prove 0 = 0"]
     .concat(Array(254).fill("refl"), ["qed"])
@@ -184,13 +184,13 @@ function preparationRejectsEveryUnsafeOrAmbiguousShape() {
     reject("pa prove 0 = 0\n" + blocked + "\nqed", ["2"]);
   }
 
-  reject("pa prove 0 = 0\n" + "x".repeat(4001) + "\nqed", ["2", "4,000"]);
+  reject("pa prove 0 = 0\n" + "x".repeat(8193) + "\nqed", ["2", "8,192"]);
   const tooMany = ["pa prove 0 = 0"]
     .concat(Array(255).fill("refl"), ["qed"])
     .join("\n");
   reject(tooMany, ["256"]);
   const tooLarge = ["pa prove 0 = 0"]
-    .concat(Array(26).fill("x".repeat(4000)), ["qed"])
+    .concat(Array(13).fill("x".repeat(8192)), ["qed"])
     .join("\n");
   assert.ok(tooLarge.length > 100000);
   reject(tooLarge, ["100,000"]);

@@ -23,6 +23,7 @@ forall a b c. a + b = a + c -> b = c
 - [[positive_quotient_gap_impossible]]
 - [[remainder_unique_same_quotient]]
 - [[division_remainder_unique]]
+- [[beta_range_injective]]
 
 ## Verification record
 

@@ -1025,7 +1025,8 @@ def _require_publication_mechanism(
     if protocol == NATIVE_PUBLICATION_PROFILE:
         if claim["identity"] is not None:
             raise RecoverySnapshotError(
-                "native no-replace publication may not record a destination claim"
+                "native no-replace publication protocol evidence may not record "
+                "a destination claim"
             )
         expected = {
             "attempt": ("success", None, None),
@@ -1046,7 +1047,8 @@ def _require_publication_mechanism(
             or attempt["errno_name"] != errno.errorcode.get(error_value)
         ):
             raise RecoverySnapshotError(
-                "claim-and-rename publication lacks an admitted native error"
+                "claim-and-rename publication protocol evidence lacks an "
+                "admitted native error"
             )
         claim_values = (
             ("mkdirat", "owned-empty-directory", True, True)

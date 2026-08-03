@@ -77,13 +77,13 @@ def test_catalog_is_diverse_model_v2_surface_data_not_a_second_prover() -> None:
     assert generator.POLICY_CAPABILITIES.label == "model-v2"
     # The public catalog is append-only.  Model-v2's executable/prompt
     # authority remains the separately pinned 56-name subset below.
-    assert len(THEOREMS) == EXPECTED_PUBLIC_LIBRARY_COUNT == 247
+    assert EXPECTED_PUBLIC_LIBRARY_COUNT == 247 < len(THEOREMS)
     assert len(generator.MODEL_V2_THEOREMS) == 56
     assert generator.HELD_OUT_NAMES == frozenset(
         name for name, _ in HELD_OUT_POLICY_GOALS
     )
     assert len(generator.EXCLUDED_LIBRARY_NAMES) == (
-        EXPECTED_PUBLIC_LIBRARY_COUNT - len(generator.MODEL_V2_THEOREMS)
+        len(THEOREMS) - len(generator.MODEL_V2_THEOREMS)
     )
     assert generator.EXCLUDED_LIBRARY_NAMES == {
         spec.name for spec in THEOREMS
@@ -245,11 +245,12 @@ def test_thousand_row_curriculum_is_balanced_complete_and_holdout_safe(
     assert counts["tactic_heads"]["suffices"] > 0
 
     snapshot = manifest["library_snapshot"]
-    assert snapshot["catalog_entries"] == EXPECTED_PUBLIC_LIBRARY_COUNT == 247
+    assert snapshot["catalog_entries"] == len(THEOREMS)
+    assert EXPECTED_PUBLIC_LIBRARY_COUNT == 247 < snapshot["catalog_entries"]
     assert snapshot["allowed_import_count"] == 56
     assert set(snapshot["allowed_imports"]) == generator.MODEL_V2_THEOREMS
     assert snapshot["excluded_import_count"] == (
-        EXPECTED_PUBLIC_LIBRARY_COUNT - snapshot["allowed_import_count"]
+        len(THEOREMS) - snapshot["allowed_import_count"]
     )
     assert set(snapshot["excluded_imports"]) == generator.EXCLUDED_LIBRARY_NAMES
     assert snapshot["checked_authority"]["format"] == (

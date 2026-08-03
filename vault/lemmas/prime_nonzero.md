@@ -25,6 +25,10 @@ forall p. (~(p = 1) /\ forall a b. p = a * b -> a = 1 \/ b = 1) -> ~(p = 0)
 - [[greatest_prime_divisor_search]]
 - [[beta_canonical_product_cancel_last]]
 - [[two_prime_product_uniqueness]]
+- [[prime_mod_inverse]]
+- [[prime_mod_cancel]]
+- [[prime_is_succ_succ]]
+- [[prime_bounded_nonzero_mod_inverse]]
 
 ## Verification record
 

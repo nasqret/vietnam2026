@@ -25,6 +25,15 @@ forall m a b c. (exists u v. a + m * u = b + m * v) -> (exists r s. b + m * r = 
 - [[mod_eq_to_remainder_decomposition]]
 - [[binary_crt]]
 - [[binary_crt_fold_step]]
+- [[mod_eq_decidable_from_remainders]]
+- [[quadratic_residue_bounded_equiv]]
+- [[coprime_mod_inverse]]
+- [[mod_eq_cancel_coprime]]
+- [[bounded_square_mod3_classify]]
+- [[bounded_square_mod5_classify]]
+- [[bounded_square_mod7_classify]]
+- [[pow_predecessor_parity_mod]]
+- [[prime_bounded_nonzero_mod_inverse]]
 
 ## Verification record
 

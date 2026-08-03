@@ -92,7 +92,7 @@ class _TokenStream:
 
 
 _TWO_CHARACTER_TOKENS = ("->", "/\\", "\\/", "<=")
-_SINGLE_TOKENS = set("#()+*=.~¬⊥→∧∨∀∃·≤")
+_SINGLE_TOKENS = set("#(),+*=.~¬⊥→∧∨∀∃·≤")
 
 
 def _tokenize(source: str) -> list[_Token]:

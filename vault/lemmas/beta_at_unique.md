@@ -33,6 +33,21 @@ forall b c i x y. ((exists h. h + S x = S ((S i) * c)) /\ exists q. b = q * S ((
 - [[beta_canonical_last_factors_equal]]
 - [[beta_canonical_product_cancel_last]]
 - [[prime_factorization_uniqueness_by_length]]
+- [[beta_repeat_entry_eq]]
+- [[beta_range_entry_eq]]
+- [[beta_sum_trace_functional]]
+- [[beta_sum_zero]]
+- [[beta_sum_succ_decompose]]
+- [[bit_count_succ_decompose]]
+- [[finite_bounded_entry_lt]]
+- [[beta_prefix_replace_exists]]
+- [[beta_prefix_swap_last_reflect]]
+- [[finite_contains_decidable]]
+- [[finite_bounded_injective_surjective]]
+- [[beta_prefix_replace_reflect]]
+- [[beta_product_replace_balance]]
+- [[beta_product_swap_last_invariant]]
+- [[beta_reindex_alignment_swap_last]]
 
 ## Verification record
 

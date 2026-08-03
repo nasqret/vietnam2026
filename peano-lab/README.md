@@ -24,6 +24,19 @@ Reference implementations to copy patterns from (same repo):
 
 ## Run locally
 
+For a model-free terminal over the current source tree (Python 3.10 or newer),
+run:
+
+```console
+python3 scripts/peano_native_shell.py
+```
+
+When the unified launcher is installed, the equivalent command is
+`pa native`. This path loads no Torch, Transformers, adapter, or model weights;
+`pa lib <name>` and `use <name>` replay and kernel-check library certificates
+on demand. Repeated `-c` options provide a fail-fast noninteractive command
+stream.
+
 From the repository root, fetch the version-pinned browser runtime once, stage
 the content-addressed release, and serve that exact static assembly:
 
@@ -67,6 +80,26 @@ Python changes must also produce a new application-manifest release path.
 Deployment retains old immutable directories, uploads the complete new release first, and publishes
 the non-stored HTML pointer last, so an open older page cannot be stranded mid-promotion.
 
+### Deterministic worker source inventory
+
+The worker's explicit `PY_FILES` block is maintained by
+`scripts/update_peano_worker_sources.py`. The script sorts every `.py` source
+below `peano-lab/py/peano_lab/`, appends `peano-lab/py/driver.py`, and replaces
+only that canonical block in `worker.js`. Check it without writing files with:
+
+```console
+python3 scripts/update_peano_worker_sources.py --check
+```
+
+Running the command without `--check` updates a stale worker inventory. The
+browser contract test independently requires that this list equal the complete
+package-source set plus the driver. This inventory step does not update
+`APP_MANIFEST.sha256`, select a new `PEANOAPPID`/`APP_ROOT`, or publish a
+release. For the quadratic-reciprocity admission campaign, that manifest and
+its derived application release ID remain pending until admission and the
+cluster/browser gates pass; the existing values continue to identify the
+preceding application assembly.
+
 The teaching surfaces are executable too:
 
 ```text
@@ -80,6 +113,13 @@ pa lib mod5_fourth_power_one
 pa lean add_comm
 ```
 
+Bare `pa lib` is a lightweight inventory operation: it parses and
+pretty-prints every stored closed statement without replaying certificates.
+`pa lib <name>` still replays that one theorem before displaying its detailed
+check, and `pa lean <name>` likewise obtains the checked theorem on demand.
+Listing names therefore cannot grant theorem authority or accidentally launch
+a full-library replay.
+
 Checked library facts can also be composed inside an ordinary live proof:
 
 ```text
@@ -92,14 +132,17 @@ simp [add_succ_left, add_comm]
 qed
 ```
 
-`use` does not ask the kernel to trust a theorem name. It embeds the theorem's closed certificate
-in a self-contained `Cut` carrying both formulas and both proof branches. Finalization submits that
+`use` does not ask the kernel to trust a theorem name. It first replays the
+selected public theorem, then passes its actual closed formula and certificate
+through `use_checked`. The certificate is embedded in a self-contained `Cut`
+carrying both formulas and both proof branches. Finalization submits that
 closed shared certificate to the kernel against the original stated goal.
 
 The upstream public-catalog candidate contains 49 dependency-ordered entries: the 23-entry core and
 a 26-entry extension through `mod5_fourth_power_one`. Its immutable source report records the former
 fully expanded capstone at 21,515 nodes/depth 66. The current self-contained shared certificate is
-2,675 nodes/depth 38 and remains below the 100,000-node/depth-256 import ceiling. A short reuse of
+2,675 nodes/depth 38 and remains below the 500,000-occurrence,
+100,000-object, depth-256 import ceiling. A short reuse of
 the capstone is:
 
 ```text
@@ -255,7 +298,8 @@ The tactic takes no arguments and never treats local hypotheses as arithmetic re
 single call allows at most 256 equality-term AST nodes at depth 64, at most 64 leading universal
 binders, 32 closed computations, intermediate values up to 128, 25,000 work units, a
 50,000-node/256-level generated numerical bridge, and five seconds. The complete live partial proof
-is separately capped at 100,000 nodes and depth 256. False closed equations, unsupported goals,
+is separately capped at 500,000 structural occurrences, 100,000 distinct proof
+objects, and depth 256. False closed equations, unsupported goals,
 non-closing no-progress calls, and every limit fail transactionally; reflexive equality can close
 without performing a numerical computation.
 
@@ -499,7 +543,7 @@ and all 183 authored QEDs. The corpus run fingerprint is
 This candidate has not been staged, deployed, or promoted; production remains
 untouched.
 
-The current source runtime has since advanced to 247 checked theorems. Its
+The source-bound model-v3 corpus checkpoint contains 247 checked theorems. Its
 snapshot has 982,534 nodes, 28,892 Cuts, 204 Cut-bearing certificates, root
 `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`,
 and source digest
@@ -508,7 +552,7 @@ The vault has 247 lemma notes within 327 notes and 3,286 links. The
 1,692-session/13,344-transition corpus has fingerprint
 `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
 its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
-all 247 authored QEDs. Browser build `2026-07-29k`, application
+all 247 authored QEDs. Its browser build `2026-07-29k`, application
 `a-77df7c0860bc`, has not been staged, deployed, or promoted. The complete
 Peano suite passes 1,288 tests with one intentional skip in 1,259.11 seconds.
 Automated runtime/worker and manifest checks pass; a

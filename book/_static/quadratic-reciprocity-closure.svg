@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Recursive and layered quadratic-reciprocity closure compared</title>
+  <desc id="desc">The recursive proof tree duplicates shared theorem bodies and has a rigorous lower bound of 731,423 nodes. The preferred unchanged-kernel design packages 557 unique bodies into 45 balanced conjunction layers connected by 45 ordinary Cuts and short AndElim projections. Full WMI admission is pending.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eef2ff"/>
+    </linearGradient>
+    <marker id="arrow-red" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#2563eb"/>
+    </marker>
+    <style>
+      .title{font:700 28px system-ui,sans-serif;fill:#0f172a}
+      .subtitle{font:400 15px system-ui,sans-serif;fill:#475569}
+      .panel-title{font:700 20px system-ui,sans-serif;fill:#0f172a}
+      .label{font:650 15px system-ui,sans-serif;fill:#0f172a;text-anchor:middle}
+      .small{font:400 13px system-ui,sans-serif;fill:#334155;text-anchor:middle}
+      .metric{font:700 18px system-ui,sans-serif;fill:#0f172a;text-anchor:middle}
+      .metric-small{font:500 13px system-ui,sans-serif;fill:#475569;text-anchor:middle}
+      .panel{fill:#ffffff;stroke:#cbd5e1;stroke-width:2;rx:20;ry:20}
+      .bad{fill:#fef2f2;stroke:#dc2626;stroke-width:2;rx:12;ry:12}
+      .good{fill:#eff6ff;stroke:#2563eb;stroke-width:2;rx:12;ry:12}
+      .body{fill:#fff7ed;stroke:#ea580c;stroke-width:1.8;rx:10;ry:10}
+      .package{fill:#ecfdf5;stroke:#059669;stroke-width:2;rx:12;ry:12}
+      .root{fill:#faf5ff;stroke:#9333ea;stroke-width:2.5;rx:12;ry:12}
+      .edge-red{stroke:#dc2626;stroke-width:2;fill:none;marker-end:url(#arrow-red)}
+      .edge-blue{stroke:#2563eb;stroke-width:2;fill:none;marker-end:url(#arrow-blue)}
+      .edge-thin{stroke:#64748b;stroke-width:1.6;fill:none}
+      .status{font:650 14px system-ui,sans-serif;fill:#7c2d12;text-anchor:middle}
+    </style>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#background)" rx="24"/>
+  <text x="600" y="43" class="title" text-anchor="middle">Closing the QR theorem DAG</text>
+  <text x="600" y="70" class="subtitle" text-anchor="middle">Same 557 dependency-curried PA bodies; radically different proof compilation</text>
+
+  <rect x="35" y="98" width="545" height="512" class="panel"/>
+  <text x="307" y="133" class="panel-title" text-anchor="middle">Recursive Cut expansion — baseline</text>
+  <text x="307" y="158" class="subtitle" text-anchor="middle">Every incoming path embeds the ancestor closure again</text>
+
+  <rect x="238" y="183" width="138" height="48" class="root"/>
+  <text x="307" y="213" class="label">exact QR root</text>
+  <rect x="85" y="278" width="136" height="48" class="body"/>
+  <rect x="239" y="278" width="136" height="48" class="body"/>
+  <rect x="393" y="278" width="136" height="48" class="body"/>
+  <text x="153" y="308" class="label">client A</text>
+  <text x="307" y="308" class="label">data package</text>
+  <text x="461" y="308" class="label">client B</text>
+  <path d="M270 231 C245 250 196 252 171 276" class="edge-red"/>
+  <path d="M307 231 V276" class="edge-red"/>
+  <path d="M344 231 C369 250 418 252 443 276" class="edge-red"/>
+
+  <rect x="115" y="385" width="116" height="43" class="bad"/>
+  <rect x="249" y="385" width="116" height="43" class="bad"/>
+  <rect x="383" y="385" width="116" height="43" class="bad"/>
+  <text x="173" y="412" class="small">shared ancestor</text>
+  <text x="307" y="412" class="small">shared ancestor</text>
+  <text x="441" y="412" class="small">shared ancestor</text>
+  <path d="M153 326 C153 349 169 359 173 383" class="edge-red"/>
+  <path d="M307 326 V383" class="edge-red"/>
+  <path d="M461 326 C461 349 445 359 441 383" class="edge-red"/>
+
+  <path d="M173 428 C190 449 247 452 268 473" class="edge-thin"/>
+  <path d="M307 428 V473" class="edge-thin"/>
+  <path d="M441 428 C424 449 367 452 346 473" class="edge-thin"/>
+  <rect x="238" y="475" width="138" height="43" class="bad"/>
+  <text x="307" y="502" class="small">duplicated again…</text>
+
+  <text x="307" y="552" class="metric">191,648 theorem occurrences</text>
+  <text x="307" y="578" class="metric">≥ 731,423 proof nodes</text>
+  <text x="307" y="598" class="metric-small">rigorous lower bound &gt; 500,000-node policy</text>
+
+  <rect x="620" y="98" width="545" height="512" class="panel"/>
+  <text x="892" y="133" class="panel-title" text-anchor="middle">Layered Cut bundle — preferred</text>
+  <text x="892" y="158" class="subtitle" text-anchor="middle">Each body once; later uses are balanced projections</text>
+
+  <rect x="677" y="190" width="430" height="54" class="package"/>
+  <text x="892" y="214" class="label">P₀ — balanced conjunction of layer 0</text>
+  <text x="892" y="234" class="small">48 unique theorem bodies</text>
+
+  <rect x="677" y="282" width="430" height="54" class="package"/>
+  <text x="892" y="306" class="label">P₁ — balanced conjunction of layer 1</text>
+  <text x="892" y="326" class="small">dependencies projected from P₀ with AndElim</text>
+  <path d="M892 244 V280" class="edge-blue"/>
+  <text x="924" y="269" class="small">Cut</text>
+
+  <rect x="677" y="373" width="430" height="54" class="good"/>
+  <text x="892" y="397" class="label">⋮ 43 further balanced packages ⋮</text>
+  <text x="892" y="417" class="small">maximum width 63 · projection depth ≤ 6</text>
+  <path d="M892 336 V371" class="edge-blue"/>
+
+  <rect x="677" y="464" width="430" height="54" class="package"/>
+  <text x="892" y="488" class="label">P₄₄ — exact QR root package</text>
+  <text x="892" y="508" class="small">final body appears once</text>
+  <path d="M892 427 V462" class="edge-blue"/>
+
+  <text x="892" y="552" class="metric">45 ordinary contextual Cuts</text>
+  <text x="892" y="578" class="metric">19,066 nodes · depth 74 (strong surrogate)</text>
+  <text x="892" y="598" class="metric-small">projection IDs and dependency order checked; real QR pending</text>
+
+  <rect x="180" y="632" width="840" height="66" class="bad"/>
+  <text x="600" y="659" class="status">Body-green and unadmitted — full real-body layered WMI and mutation gates remain</text>
+  <text x="600" y="681" class="status">Capacity, browser replay, registration, and separate pinned admission remain</text>
+</svg>

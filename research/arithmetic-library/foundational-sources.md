@@ -218,7 +218,8 @@ This boundary should be explicit in the plan:
   existence; canonical extensional uniqueness; and their combined native FTA.
 - **Audited endpoint metrics:** existence is 43,973 nodes/depth 98,
   uniqueness is 29,789/depth 82, and FTA is 73,767/depth 99 with 2,184 Cuts.
-  The combined certificate fits the 100,000-node/depth-256 live/use limit,
+  The combined certificate fits the
+  500,000-occurrence/100,000-object/depth-256 live/use limit,
   uses PA1–PA6 and induction only, and contains no DNE.
 - **Current-language feasible next targets:** parity clients not already in
   the fixed-modulus layer and additional relational

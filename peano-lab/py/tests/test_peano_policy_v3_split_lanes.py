@@ -17,6 +17,7 @@ for import_root in (REPOSITORY_ROOT, SCRIPTS_ROOT):
 
 from peano_lab.library.theorems import THEOREMS  # noqa: E402
 from training.peano_policy import attest as attestor  # noqa: E402
+from training.peano_policy.contract import MODEL_V3_LIBRARY_SIZE  # noqa: E402
 
 
 def _load_builder() -> object:
@@ -130,7 +131,7 @@ def test_attestor_rejects_catalog_rows_outside_train() -> None:
             attestor._record_v3_curriculum_evidence(
                 record,
                 {},
-                library_size=len(THEOREMS),
+                library_size=MODEL_V3_LIBRARY_SIZE,
                 location=f"forged-{split}",
                 split=split,
             )
@@ -139,7 +140,7 @@ def test_attestor_rejects_catalog_rows_outside_train() -> None:
     assert attestor._record_v3_curriculum_evidence(
         record,
         evidence,
-        library_size=len(THEOREMS),
+        library_size=MODEL_V3_LIBRARY_SIZE,
         location="train-row",
         split="train",
     ) == attestor.V3_CATALOG_TRAJECTORY

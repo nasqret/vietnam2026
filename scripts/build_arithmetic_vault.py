@@ -23,6 +23,52 @@ from peano_lab.library.theorems import THEOREMS, replay  # noqa: E402
 
 
 def _book_target(name: str) -> str:
+    if name.startswith(
+        (
+            "parity_",
+            "even_",
+            "odd_",
+            "successor_even_",
+            "successor_odd_",
+            "mod4_",
+            "prime_ne_two_is_odd",
+            "four_mul_eq_double_double",
+            "mul_double_right",
+            "quadratic_residue_",
+            "bounded_square_",
+            "qres_",
+            "not_qres_",
+            "lt_three_cases",
+            "lt_five_cases",
+            "lt_seven_cases",
+            "mod_eq_decidable_",
+            "beta_repeat_",
+            "beta_range_",
+            "beta_half_range_",
+            "beta_prefix_replace_",
+            "beta_prefix_swap_",
+            "beta_product_replace_",
+            "beta_product_swap_",
+            "beta_sum_",
+            "beta_prefix_sum_",
+            "beta_product_pointwise_",
+            "pow_",
+            "predecessor_square_mod_one",
+            "bit_count_",
+            "all_bits_",
+            "factorial_",
+            "finite_",
+            "prime_coprime_or_divides",
+            "prime_not_divides_coprime",
+            "distinct_primes_coprime",
+            "coprime_balanced_mod_inverse",
+            "coprime_mod_inverse",
+            "mod_eq_cancel_coprime",
+            "prime_mod_inverse",
+            "prime_mod_cancel",
+        )
+    ):
+        return "The quadratic-reciprocity campaign"
     if name.startswith(("multiple_", "not_multiple", "add_residue", "square_")):
         return "Divisibility and congruence"
     return "The dependency ladder"

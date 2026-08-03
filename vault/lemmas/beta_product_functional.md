@@ -23,6 +23,9 @@ forall b c l n u v m w d. (((exists h. h + S 1 = S ((S 0) * v)) /\ exists q. u =
 ## Checked dependents
 
 - [[beta_product_exists_unique]]
+- [[pow_functional]]
+- [[factorial_functional]]
+- [[beta_product_replace_balance]]
 
 ## Verification record
 

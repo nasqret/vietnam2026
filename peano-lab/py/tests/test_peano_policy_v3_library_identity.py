@@ -22,6 +22,8 @@ from peano_lab.kernel.checker import check
 from peano_lab.library.theorems import THEOREMS, replay
 from training.peano_policy.library_identity_v3 import (
     CATALOG_SCHEMA,
+    LIVE_CATALOG_SCHEMA,
+    EXPECTED_FULL_IDENTITY_SHA256,
     EXPECTED_LIBRARY_SIZE,
     EXPECTED_ORDERED_ROOT_SHA256,
     EXPECTED_SOURCE_SHA256,
@@ -72,15 +74,38 @@ def test_v3_identity_import_is_light() -> None:
 def test_catalog_and_prefix_names_bind_the_exact_source_order() -> None:
     catalog = json.loads(PUBLIC_LIBRARY_CATALOG.read_text(encoding="utf-8"))
 
-    assert len(THEOREMS) == EXPECTED_LIBRARY_SIZE == 247
-    assert catalog["schema"] == CATALOG_SCHEMA
-    assert catalog["ordered_root_sha256"] == EXPECTED_ORDERED_ROOT_SHA256
-    assert catalog["theorem_source_sha256"] == EXPECTED_SOURCE_SHA256
+    assert EXPECTED_LIBRARY_SIZE == 247 < len(THEOREMS)
+    assert catalog["schema"] == LIVE_CATALOG_SCHEMA
+    assert catalog["theorem_count"] == len(catalog["theorems"]) == len(THEOREMS)
+    legacy_fields = {
+        "certificate_representation",
+        "certificate_sha256",
+        "cut_nodes",
+        "dependencies",
+        "index",
+        "layer",
+        "name",
+        "proof_depth",
+        "proof_nodes",
+        "script",
+        "script_sha256",
+        "statement",
+        "statement_sha256",
+        "summary",
+    }
+    projected_prefix = [
+        {key: row[key] for key in legacy_fields}
+        for row in catalog["theorems"][:EXPECTED_LIBRARY_SIZE]
+    ]
+    assert _canonical_sha256(projected_prefix) == EXPECTED_ORDERED_ROOT_SHA256
     assert model_v3_prefix_names(0) == ()
     assert model_v3_prefix_names(3) == tuple(
         spec.name for spec in THEOREMS[:3]
     )
-    assert model_v3_prefix_names(247) == tuple(spec.name for spec in THEOREMS)
+    assert model_v3_prefix_names(247) == tuple(
+        spec.name for spec in THEOREMS[:EXPECTED_LIBRARY_SIZE]
+    )
+    assert THEOREMS[EXPECTED_LIBRARY_SIZE].name not in model_v3_prefix_names(247)
 
 
 def test_prefix_index_accepts_exact_sets_and_rejects_non_prefixes() -> None:
@@ -158,6 +183,7 @@ def test_public_full_document_digest_definition() -> None:
     assert document["format"] == LIBRARY_IDENTITY_FORMAT
     assert document["v"] == LIBRARY_IDENTITY_VERSION
     assert _canonical_sha256(document) == model_v3_full_identity_sha256()
+    assert model_v3_full_identity_sha256() == EXPECTED_FULL_IDENTITY_SHA256
     with pytest.raises(FrozenInstanceError):
         records[0].name = "forged"  # type: ignore[misc]
     document["theorems"][0]["name"] = "forged"  # type: ignore[index]
@@ -177,5 +203,23 @@ def test_catalog_root_corruption_fails_before_replay(
     monkeypatch.setattr(identity, "PUBLIC_LIBRARY_CATALOG", corrupted)
     clear_model_v3_library_identity_cache()
     with pytest.raises(LibraryIdentityV3Error, match="ordered root"):
+        model_v3_prefix_names(0)
+    clear_model_v3_library_identity_cache()
+
+
+def test_catalog_baseline_rewrite_fails_after_live_root_is_resealed(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    import training.peano_policy.library_identity_v3 as identity
+
+    catalog = json.loads(PUBLIC_LIBRARY_CATALOG.read_text(encoding="utf-8"))
+    catalog["theorems"][0]["certificate_sha256"] = "0" * 64
+    catalog["ordered_root_sha256"] = _canonical_sha256(catalog["theorems"])
+    rewritten = tmp_path / "catalog.json"
+    rewritten.write_text(json.dumps(catalog), encoding="utf-8")
+    monkeypatch.setattr(identity, "PUBLIC_LIBRARY_CATALOG", rewritten)
+    clear_model_v3_library_identity_cache()
+    with pytest.raises(LibraryIdentityV3Error, match="frozen 247-row baseline"):
         model_v3_prefix_names(0)
     clear_model_v3_library_identity_cache()

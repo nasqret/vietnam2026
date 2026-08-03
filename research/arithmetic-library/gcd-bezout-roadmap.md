@@ -379,7 +379,7 @@ The bounded existing-code prefix tranche continues with:
     cancel sorted last factors, and prove extensional uniqueness by length.
 17. **Complete at the integration checkpoint:** check the exact combined
     native FTA certificate at 73,767 nodes, depth 99, and 2,184 Cuts under the
-    100,000-node/depth-256 live/use cap. Its SHA-256 is
+    500,000-occurrence/100,000-object/depth-256 live/use cap. Its SHA-256 is
     `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
 
 Prime-divisor existence does not follow automatically from gcd or Bézout, and

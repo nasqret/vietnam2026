@@ -639,8 +639,8 @@ MIN_TACTIC_ROWS_BY_HEAD = {
 
 
 def _validate_catalog() -> None:
-    if len(THEOREMS) != MODEL_V3_LIBRARY_SIZE:
-        raise GenerationError("model-v3 library size differs from the source catalog")
+    if len(THEOREMS) < MODEL_V3_LIBRARY_SIZE:
+        raise GenerationError("frozen model-v3 prefix is absent from the source catalog")
     names = [schema.name for schema in SCHEMAS]
     if len(set(names)) != len(names):
         raise GenerationError("model-v3 synthetic schema names are not unique")

@@ -17,7 +17,8 @@ valid.
 The local execution, prompt, training-runtime, evaluation, provenance, and guarded cluster paths
 are implemented. Historical model-v1 WMI training produced a deliberately narrow result: 0/4
 frozen goals at pass@4 and one checked direct-witness proof among eight samples. Model-v2 remains
-an auditable design stage. Model-v3 supersedes it with the complete 247-theorem checked ladder,
+an auditable design stage. Model-v3 supersedes it with the frozen first-247
+declaration-order prefix of the current 384-theorem checked ladder,
 leakage-safe predecessor-prefix trajectories, a whole-session root-balanced synthetic curriculum,
 indexed completion loss, an immutable corpus seal, and a native 32,768-token no-truncation gate.
 
@@ -636,7 +637,8 @@ not portable by itself.
 Mandatory baselines include deterministic Peano tactics, the untrained base model, SFT greedy
 decoding, SFT sampled pass@$k$, and SFT plus the now-implemented bounded beam search.  Comparisons
 between 1.7B and 4B models must use the same data and verifier/token budgets, but the 4B run remains
-deferred until the 1.7B model-v3 baseline exists.  A formal-prover prior and a general base model of
+deferred until the narrow four-goal smoke is replaced by a larger, repeated,
+adequately attested 1.7B benchmark. A formal-prover prior and a general base model of
 similar size should be compared as model families, not under selectively tuned settings.
 
 Formalization remains a separate experiment.  The kernel can decide whether a proof derives the
@@ -819,8 +821,10 @@ Its full-library smoke has 494 sessions, 9,235 raw/9,232 unique transitions,
 and all 247 authored QEDs. Browser build `2026-07-29k`, application
 `a-77df7c0860bc`, records the local candidate and does not claim deployment.
 
-For training, the current 247-theorem catalog is registered as the distinct content-addressed
-`model-v3` successor authority, not as a silent extension of model-v1 or model-v2. The prompt
+For training, the historical frozen first-247 declaration-order prefix is
+registered as the distinct content-addressed `model-v3` authority inside the
+current 384-theorem native runtime, not as a silent extension of model-v1 or
+model-v2. The prompt
 exposes bounded retrieved lemma names and canonical statements, and the library corpus contains
 downstream `use` and authored proof trajectories. Once an exact capstone theorem is importable,
 its three-line application is a usability test rather than an unseen proving test; different
@@ -1048,9 +1052,11 @@ audit rejected both choices for the first model-v3 run. A row prefix can cut a p
 discard a small theorem rung, and a second traversal doubles the dominant long-context cost before
 one exact pass has established a baseline. The successor protocol below retains every library
 transition, selects synthetic data by whole proof sessions, derives one pass from the selected row
-count, and records the exact optimizer-step total before loading the model. This is still a run
-specification, not a result: no model-v3 optimizer step, adapter, solve rate, or comparison is
-claimed here.
+count, and records the exact optimizer-step total before loading the model. At
+the time this protocol was frozen, it was still a run specification rather
+than a result: no model-v3 optimizer step, adapter, solve rate, or comparison
+had yet been produced. Later sections record the completed run and its
+narrowly admitted four-goal launch smoke.
 
 ## From a checked population to one auditable training run
 

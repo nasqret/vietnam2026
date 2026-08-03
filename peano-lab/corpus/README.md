@@ -1,9 +1,11 @@
 # Peano Lab proof-trace release v1
 
-This directory is the deterministic learning-data release whose provenance follows the checked
-theorem catalog. Its semantic families remain the M13 set, while the theorem ladder has grown
-into the final 247-theorem M20 source tree. It has its own fresh fingerprints rather than reusing
-either parent branch's hashes. The release contains
+This directory is the frozen deterministic learning-data release produced at the 247-theorem
+checkpoint. The live native library has since grown to 384 theorems, so these bytes and their
+32-file semantic-source fingerprint are historical training authority, not a claim about the
+current source tree. The producing source is preserved at commit
+`64893e13bd25bd9169f41f118a6483b426e1a962`; the release has its own fingerprints rather than
+silently inheriting the enlarged library. It contains
 **13,344** clean, deduplicated version-1 tactic transitions from **1,692** generated proof
 sessions:
 
@@ -44,13 +46,15 @@ separately kernel-judged held-out ladder families.
 
 ## Reproduce
 
-From the repository root, using the exact checked-out generator and kernel:
+From a checkout of the producing commit named above, using CPython 3.10.0:
 
 ```console
 make peano-corpus
 ```
 
-The reproducible release uses generator v2 and CPython 3.10.0, recorded in the manifest;
+Do not expect the current 384-theorem branch to reproduce the same run fingerprint: its semantic
+source tree is intentionally different. The frozen release uses generator v2 and CPython 3.10.0,
+recorded in the manifest;
 transition and manifest schemas remain v1. The Make target checks this and accepts
 `PEANO_CORPUS_PYTHON=/path/to/python3.10`
 when that interpreter is not the ambient `python3`.
@@ -72,7 +76,7 @@ every entry in the resolved ladder without contaminating the release, run:
 make peano-corpus-smoke
 ```
 
-The current 247-entry smoke has 494 sessions, 9,235 raw transitions, 9,232
+The historical 247-entry smoke has 494 sessions, 9,235 raw transitions, 9,232
 unique transitions, and all 247 authored-script kernel QEDs. Its deterministic run fingerprint
 is `72657457dfa567d0748d5275a227e5316271bd19350012a44e6e4802851e59ef`;
 the 97,730,404-byte raw stream hashes to

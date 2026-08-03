@@ -288,8 +288,8 @@ def test_library_snapshot_records_self_contained_cut_representation() -> None:
     metrics = json.loads((artifact_root / "metrics.json").read_text())
     rows = catalog["theorems"]
 
-    assert catalog["schema"] == "peano-library-snapshot-v2"
-    assert metrics["schema"] == "peano-library-metrics-v2"
+    assert catalog["schema"] == "peano-library-snapshot-v3"
+    assert metrics["schema"] == "peano-library-metrics-v3"
     assert catalog["certificate_representation"] == (
         "python-dataclass-repr-with-cut-v2"
     )
@@ -302,6 +302,38 @@ def test_library_snapshot_records_self_contained_cut_representation() -> None:
     )
     assert metrics["total_cut_nodes"] == sum(row["cut_nodes"] for row in rows)
     assert metrics["maximum_cut_nodes"] == max(row["cut_nodes"] for row in rows)
+    assert metrics["maximum_distinct_proof_objects"] == max(
+        row["distinct_proof_objects"] for row in rows
+    )
+    assert metrics["total_distinct_proof_objects"] == sum(
+        row["distinct_proof_objects"] for row in rows
+    )
+    assert metrics["live_use_limits"] == {
+        "proof_depth": 256,
+        "proof_nodes": 500_000,
+        "proof_objects": 100_000,
+    }
+    assert [source["path"] for source in catalog["theorem_sources"]] == [
+        "peano-lab/py/peano_lab/library/theorems.py",
+        "peano-lab/py/peano_lab/library/parity.py",
+        "peano-lab/py/peano_lab/library/quadratic_residue_theorems.py",
+        "peano-lab/py/peano_lab/library/finite_fold_theorems.py",
+        "peano-lab/py/peano_lab/library/finite_range_theorems.py",
+        "peano-lab/py/peano_lab/library/finite_sum_theorems.py",
+        "peano-lab/py/peano_lab/library/finite_congruence_theorems.py",
+        "peano-lab/py/peano_lab/library/finite_bitcount_theorems.py",
+        "peano-lab/py/peano_lab/library/finite_factorial_theorems.py",
+        "peano-lab/py/peano_lab/library/power_congruence_theorems.py",
+        "peano-lab/py/peano_lab/library/power_algebra_theorems.py",
+        "peano-lab/py/peano_lab/library/gauss_sign_bridge.py",
+        "peano-lab/py/peano_lab/library/gauss_half_range.py",
+        "peano-lab/py/peano_lab/library/finite_permutation_theorems.py",
+        "peano-lab/py/peano_lab/library/finite_product_permutation_theorems.py",
+        "peano-lab/py/peano_lab/library/finite_product_reindex_support.py",
+        "peano-lab/py/peano_lab/library/qr_bounded_units.py",
+        "peano-lab/py/peano_lab/library/qr_prime_units.py",
+        "peano-lab/py/peano_lab/library/qr_small_moduli.py",
+    ]
     assert metrics["theorems_with_cut_nodes"] == sum(
         row["cut_nodes"] > 0 for row in rows
     )

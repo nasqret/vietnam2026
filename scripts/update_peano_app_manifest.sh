@@ -16,6 +16,8 @@ APP=peano-lab
 TMP_MANIFEST="$(mktemp)"
 trap 'rm -f "$TMP_MANIFEST"' EXIT
 
+python3 scripts/update_peano_worker_sources.py --check
+
 (
   cd "$APP"
   {

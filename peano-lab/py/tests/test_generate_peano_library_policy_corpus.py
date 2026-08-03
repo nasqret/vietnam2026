@@ -65,8 +65,9 @@ def test_three_rungs_are_exact_checked_prefixes_and_builder_compatible(
     sessions = load_trace_file(trace)
     records = _jsonl(metadata)
     assert len(sessions) == len(records) == 3
-    assert generator.select_theorems() == THEOREMS
-    assert MODEL_V3_LIBRARY_SIZE == len(THEOREMS) == 247
+    assert generator.select_theorems() == THEOREMS[:MODEL_V3_LIBRARY_SIZE]
+    assert MODEL_V3_LIBRARY_SIZE == 247 < len(THEOREMS)
+    assert THEOREMS[MODEL_V3_LIBRARY_SIZE] not in generator.select_theorems()
     assert generated.manifest["counts"] == {
         "sessions": 3,
         "kernel_checked_qed": 3,
@@ -98,7 +99,7 @@ def test_three_rungs_are_exact_checked_prefixes_and_builder_compatible(
         assert record["library_target_index"] == index
         assert record["library_target_name"] == record["theorem"] == spec.name
         assert record["library_prefix_length"] == index
-        assert record["library_size"] == len(THEOREMS)
+        assert record["library_size"] == MODEL_V3_LIBRARY_SIZE
         assert record["environment_sha256"] == environment.sha256
         assert record["library_identity_sha256"] == environment.library_sha256
         assert record["library_full_identity_sha256"] == (
@@ -272,6 +273,34 @@ def test_builder_rejects_omitted_or_forged_predecessor_marker(
                 test_fraction=0.0,
             )
     assert replay_attempts == 0
+
+
+def test_builder_rejects_appended_theorem_as_a_frozen_catalog_rung(
+    tmp_path: Path,
+) -> None:
+    trace, metadata, manifest = _artifact_paths(tmp_path / "appended-rung")
+    generator.generate_corpus(trace, metadata, manifest, limit=1)
+    session = load_trace_file(trace)[0]
+    record = _jsonl(metadata)[0]
+    appended = THEOREMS[MODEL_V3_LIBRARY_SIZE]
+    record.update(
+        {
+            "library_prefix_length": MODEL_V3_LIBRARY_SIZE,
+            "library_target_index": MODEL_V3_LIBRARY_SIZE,
+            "library_target_name": appended.name,
+        }
+    )
+    commands = tuple(step["tactic"] for step in session.steps)
+    with pytest.raises(
+        builder.DatasetBuildError,
+        match="approved.*synthetic-root-balanced.*lane",
+    ):
+        builder._validate_v3_curriculum_session(
+            session,
+            record,
+            None,
+            commands,
+        )
 
 
 @pytest.mark.parametrize("limit", [0, -1, 248, True])

@@ -168,7 +168,8 @@ checkpoint. The endpoint metrics are:
 
 The FTA certificate SHA-256 is
 `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
-It passes the 100,000-node/depth-256 live/use cap using PA1–PA6 and induction
+It passes the 500,000-occurrence/100,000-object/depth-256 live/use cap using
+PA1–PA6 and induction
 only, with no DNE. Runtime integration is complete.
 
 No primitive dictionary, list, or multiset was added, and uniqueness never

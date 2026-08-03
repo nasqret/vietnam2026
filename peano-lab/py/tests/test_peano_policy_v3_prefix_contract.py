@@ -80,7 +80,7 @@ def _replace_state_payload(prompt: str, payload: dict[str, object]) -> str:
 
 
 def test_every_v3_prefix_exposes_exactly_its_strict_predecessors() -> None:
-    for index, target in enumerate(THEOREMS):
+    for index, target in enumerate(THEOREMS[:MODEL_V3_LIBRARY_SIZE]):
         environment = model_v3_prefix_environment(index)
         allowed = environment.capabilities.allowed_theorems
         expected_names = tuple(sorted(spec.name for spec in THEOREMS[:index]))
@@ -496,5 +496,45 @@ def test_v3_environment_record_binds_prefix_and_full_identity() -> None:
         record["library_full_identity_sha256"]
         == environment.library_full_identity_sha256
     )
+    assert THEOREMS[MODEL_V3_LIBRARY_SIZE].name not in (
+        environment.capabilities.allowed_theorems or ()
+    )
     with pytest.raises(PromptError, match="64-hex"):
         replace(environment, library_identity_sha256="0")
+
+
+def test_appended_native_theorem_cannot_masquerade_as_v3_catalog_row() -> None:
+    environment = model_v3_environment()
+    spec = THEOREMS[MODEL_V3_LIBRARY_SIZE]
+    goals = ("⊢ 0 = 0",)
+    row = {
+        "v": 1,
+        "task": "next_tactic",
+        "env": environment.text,
+        "surface": "model-v3",
+        "environment_sha256": environment.sha256,
+        "classical": False,
+        "capabilities": environment.capabilities.to_record(),
+        "split": "train",
+        "session": "forged-appended-catalog-row",
+        "step": 1,
+        "formula": spec.statement,
+        "theorem": spec.name,
+        "family": "forged-appended-catalog-row",
+        "lineage": "forged-appended-catalog-row/seed-1",
+        "state": list(goals),
+        "focus": 0,
+        "prompt": render_prompt(goals=goals, focus=0, environment=environment),
+        "completion": "refl</tactic>",
+        "metadata": {
+            "library_identity_sha256": environment.library_sha256,
+            "library_full_identity_sha256": environment.library_full_identity_sha256,
+            "library_prefix_length": MODEL_V3_LIBRARY_SIZE,
+            "library_size": MODEL_V3_LIBRARY_SIZE,
+            "trajectory": "catalog-predecessor-prefix-v1",
+            "library_target_index": MODEL_V3_LIBRARY_SIZE,
+            "library_target_name": spec.name,
+        },
+    }
+    with pytest.raises(PromptError, match="invalid model-v3 target index"):
+        example_from_record(row, 1)

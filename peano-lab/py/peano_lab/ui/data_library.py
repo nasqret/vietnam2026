@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from ..kernel.formulas import pretty_formula
+from ..kernel.formulas import parse_formula_with_names, pretty_formula
 from ..library.lean import LeanExport, export_theorem
 from ..library.theorems import THEOREMS, TheoremSpec, get, replay, replay_target
 
@@ -11,8 +11,23 @@ NL = "\r\n"
 
 
 def _statement(spec: TheoremSpec) -> str:
-    theorem = replay(spec.name)
-    return pretty_formula(theorem.formula, [])
+    """Render one closed statement without constructing its certificate.
+
+    The library index is an inventory, not a theorem-use boundary.  Replaying
+    every certificate merely to list names makes ``pa lib`` scale with the
+    transitive proof closure (and would make the QR-sized ladder unusable in a
+    browser).  The detail card and ``use`` still call :func:`replay`, so no
+    theorem can be consumed or reported as independently checked through this
+    lightweight path.
+    """
+
+    formula, free_names = parse_formula_with_names(spec.statement)
+    if free_names:
+        raise ValueError(
+            "library theorem statements must be closed; free variable(s): "
+            + ", ".join(free_names)
+        )
+    return pretty_formula(formula, [])
 
 
 def script_with_prelude(spec: TheoremSpec) -> tuple[str, ...]:
@@ -33,7 +48,8 @@ def render_index() -> str:
     rows.extend(
         (
             "",
-            f"{len(THEOREMS)} scripted theorems; each final closed certificate is kernel-checked.",
+            f"{len(THEOREMS)} scripted theorems; each closed certificate is "
+            "independently kernel-checked when replayed.",
             "Open one with `pa lib <name>`; export it with `pa lean <name>`.",
         )
     )

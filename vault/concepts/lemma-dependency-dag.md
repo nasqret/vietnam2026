@@ -16,9 +16,9 @@ its nodes carry `checked_existing`, `checked_m20`, `planned_expressible`, or
 `blocked_by_language` status. A blocked node must name the missing representation
 or interface rather than masquerading as a theorem.
 
-The current executable DAG contains 247 checked nodes: 23 baseline, 212
-general foundational, and twelve fixed modular capstones. The 248-node
-research graph adds one representation-blocked endpoint and no planned node.
+The current executable DAG contains 384 checked nodes: 23 baseline and 361
+post-baseline theorems. The 385-record research graph adds one
+representation-blocked conventional interface and no planned theorem.
 
 The main spine is
 

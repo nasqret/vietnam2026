@@ -25,6 +25,9 @@ forall m n. ~(m = 0) -> exists q r. n = m * q + r /\ S r <= m
 - [[multiple_decidable_nonzero]]
 - [[mod_eq_to_remainder_decomposition]]
 - [[beta_at_exists]]
+- [[mod_eq_decidable_nonzero]]
+- [[quadratic_residue_bounded_equiv]]
+- [[prime_bounded_nonzero_mod_inverse]]
 
 ## Verification record
 

@@ -10,8 +10,8 @@ library used by one evaluation campaign. Its root commits to each theorem's
 canonical statement, ordered dependencies, source/script/certificate hashes,
 proof nodes and depth, declaration order, and logic profile.
 
-In [[peano-hydra]], the initial epoch $L_0$ contains at least the current 247
-checked runtime theorems. Training may use eligible $L_0$ material, but a
+In [[peano-hydra]], the initial source-bound epoch $L_0$ contains 247 checked
+runtime theorems. Training may use eligible $L_0$ material, but a
 [[sealed-theorem-benchmark]] must be lineage-disjoint. Mathematics added after
 the freeze belongs to $L_1$ or later and cannot enter the active campaign's
 prompts, retrieval index, imports, or headline test.
