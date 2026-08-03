@@ -1724,6 +1724,11 @@
   and contains no DNE, forbidden automation, division, remainder, CRT, beta,
   or classical dependency. The checkpoint has 70 signed candidates, 73
   campaign candidates in total, and 82 exact receipts; the public registry
-  remains unchanged at 393. The D08 `SignedBezout` bridge is next. No public
-  admission,
-  source commit, Book build, push, or deployment is claimed yet.
+  remains unchanged at 393. The D08 `SignedBezout` bridge is next. The D07
+  source checkpoint is sealed as
+  `bc45de0da2ff60ca65d81d4b8cef612f0b935892`. Its clean 47-source Book
+  build passed integrity with 2,325 HTML pages and zero broken, escaping,
+  fragment, unsafe, or remote-runtime links; the 2,493-file HTML tree has
+  SHA-256
+  `7be58cd44aa4b2a8b4e1a233fc9db6101dc478b097f0a22f028d2391b7b194e6`.
+  No public admission, push, deployment, or visual click-through is claimed.

@@ -4057,10 +4057,20 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   is reachable. With D07, the isolated campaign has 70 signed candidates, 73
   candidates overall, and 82 exact receipts; the public registry remains 393.
   The D08 `SignedBezout` bridge is next.
-- This is a proof checkpoint only. Public admission, source commit, Book
-  rebuild, push, and deployment have not yet been claimed.
+- This is a proof checkpoint only. Public admission, push, and deployment are
+  separate and unclaimed by the proof receipt.
 - The integrated local gate passes 29 manifest, definition-freeze, and
   pair-RFC tests plus 132 proof/admission tests. The 394-row research
   knowledge base, the independently replayed 393-theorem public snapshot,
   and the 492-note/4,991-link vault remain green and unchanged, confirming
   that the ten D07 rows are isolated evidence rather than public admissions.
+- Sealed the 14-file D07 source checkpoint as
+  `bc45de0da2ff60ca65d81d4b8cef612f0b935892` and bound the strict-HA Book
+  chapter to that immutable source. The clean 47-source build passed the WMI
+  integrity checker with 2,325 HTML pages, zero broken/escaping/fragment/
+  unsafe/remote-runtime links, and byte-identical 2,285-file source/built
+  explorer trees. The 2,493-file HTML tree contains 87,162,964 bytes and has
+  SHA-256
+  `7be58cd44aa4b2a8b4e1a233fc9db6101dc478b097f0a22f028d2391b7b194e6`.
+  No browser was attached, so visual QA is not claimed. No push, deployment,
+  or public theorem admission was performed.

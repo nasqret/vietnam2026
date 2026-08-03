@@ -13,7 +13,7 @@ conservative notation: every occurrence expands before the ordinary kernel
 checks a certificate.
 
 The controlling machine manifest is
-[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/497d0fc3327e6fa2564aad8b44c4ce151e20269c/research/arithmetic-library/ha-number-theory-campaign.json).
+[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/bc45de0da2ff60ca65d81d4b8cef612f0b935892/research/arithmetic-library/ha-number-theory-campaign.json).
 It separates three facts which are easy to blur in an informal development:
 
 - a dependency-curried tactic body may check;
@@ -46,10 +46,11 @@ It separates three facts which are easy to blur in an informal development:
     context but are not in the public registry.
 * - Canonical signed naturals
   - closed candidate
-  - The representation is frozen. Sixty parity, decoder,
+  - The representation is frozen. Seventy parity, decoder,
     code-extensionality, balance-normalization, negation, addition, and
-    multiplication theorems, including associativity and both distributive
-    orientations, close from the empty context without division.
+    multiplication theorems, together with the direct natural-scaling graph
+    and its zero, one, and composition laws, close from the empty context
+    without division.
 * - Canonical pair/cell coding
   - design frozen
   - Doubled-Cantor pairs and successor-tagged cells have exact expanded
@@ -58,7 +59,7 @@ It separates three facts which are easy to blur in an informal development:
 ```
 
 The public registry therefore has 393 entries. The first nine campaign
-theorems occupy append-only positions 384--392. The three gcd and sixty
+theorems occupy append-only positions 384--392. The three gcd and seventy
 signed candidates stay outside it. This tail append leaves the frozen
 first-247 model curriculum unchanged.
 
@@ -1027,11 +1028,12 @@ cache-cleared closure runs agree on every receipt and on the complete
 All eleven rows are constructive, dependency-curried, registry-isolated, and
 closed from the empty context. Their transitive closure reaches neither DNE
 nor classical reasoning, forbidden automation, division, remainder, CRT, or
-Gödel-β coding. The campaign now has 60 signed candidates, 63 candidates in
-total, and 72 theorem receipts. The public registry remains at 393, the
-definition freeze remains 45 API rows over 44 distinct public-theorem
-replays, and the research catalog remains at 394. Nothing in this tranche is
-publicly admitted; D07 natural scaling is the next signed-arithmetic gate.
+Gödel-β coding. At this D06 checkpoint the campaign had 60 signed candidates,
+63 candidates in total, and 72 theorem receipts. The public registry remained
+at 393; the definition freeze and research catalog likewise remained at 45
+API rows over 44 distinct public-theorem replays and 394 entries,
+respectively. Nothing in this tranche is
+publicly admitted; D07 natural scaling was the next signed-arithmetic gate.
 
 Inspect the immutable
 [`associativity tactic source`](https://github.com/nasqret/vietnam2026/blob/497d0fc3327e6fa2564aad8b44c4ce151e20269c/peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py#L22),
@@ -1041,6 +1043,183 @@ and
 [`distributivity audit`](https://github.com/nasqret/vietnam2026/blob/497d0fc3327e6fa2564aad8b44c4ce151e20269c/peano-lab/py/tests/test_ha_signed_mul_distributive_candidate.py#L563)
 for the exact expanded statements, tactic scripts, dependency audits,
 mutations, semantic oracles, and closed receipts.
+
+### Direct natural scaling: D07
+
+`SignedNatScale` multiplies a canonical signed code by an ordinary natural
+without first encoding that natural as a signed value. If `input` decodes as
+\((i_+,i_-)\) and `output` decodes as \((o_+,o_-)\), its exact defining
+equation is
+
+$$
+s i_+ + o_- = s i_- + o_+.
+$$
+
+Equivalently, the frozen D07 graph is the following conservative expansion:
+
+$$
+\begin{aligned}
+\operatorname{SignedNatScale}(s,i,o)\;:\!\Longleftrightarrow\;
+\exists i_+,i_-,o_+,o_-,\quad
+&\operatorname{SignedDecode}(i,i_+,i_-)\\
+{}\land{}&\operatorname{SignedDecode}(o,o_+,o_-)\\
+{}\land{}&s i_+ + o_- = s i_- + o_+.
+\end{aligned}
+$$
+
+All three predicate occurrences expand before kernel checking. The first five
+candidate rows prove introduction from the decoded equation, elimination back
+to it, the exact iff package, totality, and literal-code functionality. The
+second five supply the arithmetic transport and graph laws:
+
+```text
+signed_nat_scale_of/to_decoded_equation
+  |--> totality / functionality
+  |--> zero / one
+  `--> signed_nat_scale_compose
+            ^
+            |
+mul_cross_sum_left + add_cross_sum_chain
+  `--> signed_nat_scale_equations_compose
+```
+
+The exposed graph formulas are exactly
+
+$$
+\operatorname{SignedNatScale}(0,i,0),
+\qquad
+\operatorname{SignedNatScale}(1,i,i),
+$$
+
+and
+
+$$
+\begin{aligned}
+&\operatorname{SignedNatScale}(n,i,m)
+\to \operatorname{SignedNatScale}(k,m,o)\\
+&\hspace{34mm}\to
+\operatorname{SignedNatScale}(kn,i,o).
+\end{aligned}
+$$
+
+Here `0` is the unique signed-zero code and the product in the last scale slot
+is the ordinary natural product. The full ten-row empty-context receipt table
+is:
+
+```{list-table}
+:header-rows: 1
+:widths: 37 7 7 7 42
+
+* - Closed candidate
+  - Nodes
+  - Depth
+  - Cuts
+  - Certificate SHA-256
+* - `signed_nat_scale_of_decoded_equation`
+  - 19
+  - 17
+  - 0
+  - `348988d2b7802c5c319975a537c568f51b55b894890638b1465bc7c8617eb918`
+* - `signed_nat_scale_to_decoded_equation`
+  - 785
+  - 28
+  - 14
+  - `66ef87988a3703a713a4ce0a16e235228df640be182c22d51d01f082ca5df1bd`
+* - `signed_nat_scale_decoded_iff_equation`
+  - 888
+  - 31
+  - 16
+  - `1b96a56388461895781783b29c091b55a61f562b198a93c8c1a7449049ec1e6a`
+* - `signed_nat_scale_total`
+  - 431
+  - 39
+  - 8
+  - `e1ee2921a7e967369bd70cd70564ef340ad643926c15c62dba394ae535e76947`
+* - `signed_nat_scale_functional`
+  - 1,698
+  - 36
+  - 34
+  - `59f948b0d2c8335cd3cd0098fb4acec9f895d8db2f930393d4dad33375ee2727`
+* - `mul_cross_sum_left`
+  - 98
+  - 17
+  - 2
+  - `ffa3381d8208858dee25aba6f2f96ddfe2252f7c4c45d724a84f29f043e42586`
+* - `signed_nat_scale_equations_compose`
+  - 575
+  - 32
+  - 13
+  - `064add40a96584356d47ca6a5455d16273403d23648ea64de5c5b3c5dc37a76b`
+* - `signed_nat_scale_zero`
+  - 183
+  - 21
+  - 4
+  - `0e24789df5c82b513e59f376f03758a8d8f5e8ab03869d7e54fde7b7118e63af`
+* - `signed_nat_scale_one`
+  - 257
+  - 21
+  - 7
+  - `90f005fdc0330354282b2dfec0105558dbc4533f1ef6436bdc070ed3a8789c4b`
+* - `signed_nat_scale_compose`
+  - 1,453
+  - 34
+  - 30
+  - `7548acf6871b7db3db4ba2cdaf89b9544e2d641c881a9f27e47dc4c77448b49e`
+```
+
+The direct D07 definition was chosen deliberately over the possible D06
+alias `SignedMul(2*scale,input,output)`. That alias can be related to D07 by a
+later theorem, but making it foundational would force a signed encoding of
+every natural coefficient, add D06 to each dependency path, and hide the
+simple equation needed by the forthcoming Bezout bridge. The direct graph
+keeps the common coefficient path smaller and exposes exactly the natural
+arithmetic being checked.
+
+The core audit passes all eight focused tests and the law/helper audit passes
+all nine. In addition to statement, hygiene, dependency, body, mutation,
+registry-isolation, and two-cold-replay gates, their semantic oracles are
+exhaustive over the selected domains:
+
+- all \(17\cdot17=289\) scale/input pairs are tested against every one of 257
+  candidate output codes;
+- the natural helper checks exactly 425 assignments satisfying its cross-sum
+  premise, and the decoded composition helper checks exactly 477 assignments
+  satisfying both premises;
+- zero and one are checked on the first 33 canonical codes, while composition
+  is checked on all \(17^3=4{,}913\) bounded triples.
+
+The raw-code regression is essential: \(2\cdot1=2\) in natural arithmetic,
+but code `1` denotes \(-1\), so scaling it by two produces code `3`, the
+canonical representation of \(-2\), rather than code `2`. Host evaluation is
+only a test oracle; logical authority comes from the empty-context kernel
+certificates above.
+
+Two cache-cleared closures agree on the five-core-row, 65-theorem signed-stack
+digest
+`511aa0ba4a6dac1a22f52db740f539c675307b5b77b6b1a7d9ef2e00dd8a5331`.
+Adding the five law/helper rows gives the 70-theorem digest
+`81a18daf55e564c11dee83ce7465bc91876109a5e6bc092f75e0f31f46e27d8d`.
+The closure is intuitionistic and reaches no DNE, forbidden automation,
+division, remainder, CRT, Gödel-β, or classical theorem.
+
+This checkpoint contains 70 signed candidates and 73 candidates overall,
+with 82 theorem receipts across 15 K3 candidate modules and 17 focused
+evidence tests. The public registry is unchanged at 393 entries with 56
+public references; the definition layer is unchanged at 45 API rows over 44
+distinct public-theorem replays; and the research catalog is unchanged at
+394 entries. None of D07 is admitted. D08 `SignedBezout` is the next
+signed-arithmetic gate.
+
+The sealed checkpoint
+[`campaign manifest`](https://github.com/nasqret/vietnam2026/blob/bc45de0da2ff60ca65d81d4b8cef612f0b935892/research/arithmetic-library/ha-number-theory-campaign.json)
+and
+[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/bc45de0da2ff60ca65d81d4b8cef612f0b935892/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
+bind these claims to the exact
+[`core tactic source`](https://github.com/nasqret/vietnam2026/blob/bc45de0da2ff60ca65d81d4b8cef612f0b935892/peano-lab/py/peano_lab/library/ha_signed_nat_scale_candidate.py),
+[`law tactic source`](https://github.com/nasqret/vietnam2026/blob/bc45de0da2ff60ca65d81d4b8cef612f0b935892/peano-lab/py/peano_lab/library/ha_signed_nat_scale_laws_candidate.py),
+[`eight-test core audit`](https://github.com/nasqret/vietnam2026/blob/bc45de0da2ff60ca65d81d4b8cef612f0b935892/peano-lab/py/tests/test_ha_signed_nat_scale_candidate.py),
+and
+[`nine-test law audit`](https://github.com/nasqret/vietnam2026/blob/bc45de0da2ff60ca65d81d4b8cef612f0b935892/peano-lab/py/tests/test_ha_signed_nat_scale_laws_candidate.py).
 
 ## Independent pair/cell checkpoint
 
@@ -1083,7 +1262,7 @@ honest ways to resolve the uniform-list blocker. It is a design target; no
 pair theorem or list theorem is claimed by that document.
 
 Read the complete
-[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/497d0fc3327e6fa2564aad8b44c4ce151e20269c/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
+[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/bc45de0da2ff60ca65d81d4b8cef612f0b935892/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
 for the exact formulas, hashes, forbidden dependency paths, and staged proof
 obligations.
 
@@ -1097,11 +1276,11 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 ```
 
-The first command checks the 12-layer campaign manifest, all 72 theorem
+The first command checks the 12-layer campaign manifest, all 82 theorem
 receipts, the 45-row definition API over 44 distinct public-theorem replays,
-the nine public admissions, the three isolated gcd candidates, and the sixty
+the nine public admissions, the three isolated gcd candidates, and the seventy
 isolated signed representation, normalization, negation, addition, and
-multiplication candidates. The
+multiplication and natural-scaling candidates. The
 second cross-checks all 393 public runtime theorems against the 394-row
 research catalog. The third independently replays the full public ladder and
 compares the deterministic snapshot.
