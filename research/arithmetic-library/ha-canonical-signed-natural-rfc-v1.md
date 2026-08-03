@@ -629,6 +629,45 @@ All five results remain nonpublic. The D06 zero, one, commutative,
 associative, and distributive laws remain separate gates, as do D07 natural
 scaling and D08 signed Bezout.
 
+#### 6.4.6 Closed elementary multiplication laws
+
+The next five candidates close the inexpensive D06 graph laws:
+
+```text
+signed_mul_commutative
+signed_mul_zero_left
+signed_mul_zero_right
+signed_mul_one_left
+signed_mul_one_right
+```
+
+The identity code in the last two statements is `2`, because D01 decodes
+`2` as the pair `(1,0)`. Code `1` decodes as `(0,1)` and therefore represents
+negative one. The exact graph statements are `SignedMul(0,a,0)`,
+`SignedMul(a,0,0)`, `SignedMul(2,a,a)`, and `SignedMul(a,2,a)`.
+
+Commutativity swaps the two decoder pairs, commutes the four products, and
+uses one additive commutation for the two negative cross terms. Left zero and
+left one decode the arbitrary input once, supply reviewed literal decoders
+for codes `0` and `2`, and invoke the D06 introduction bridge. The right laws
+then follow graphwise from their left counterparts and commutativity. The
+private literal expanders are alpha-checked against D06 instantiated at the
+corresponding slots; they add no parser or kernel primitive.
+
+The five empty-context certificates contain respectively 376, 209, 607, 347,
+and 745 structural nodes at depths 41, 25, 43, 25, and 43, with 8, 4, 14, 10,
+and 18 Cuts. Two cold replays agree on the complete 49-theorem signed-stack
+digest
+`be074dfe1b79e3f27b2d48851c64f58360ee86fc3776ae681c451d38f67d25b2`.
+
+The bounded oracle checks commutativity, both zero laws, and both unit laws on
+all pairs of the first 33 parity-interleaved codes. Mutation tests explicitly
+distinguish raw natural code multiplication from signed multiplication:
+natural `1 * 1 = 1`, while the signed product of code `1` with itself has code
+`2`. The exact transitive closure uses no division, remainder, CRT, beta,
+classical theorem, DNE, or SignedAdd law. All five results remain nonpublic;
+D06 associativity and distributivity are the next multiplication gates.
+
 ### 6.5 Bezout bridge obligations
 
 The existing expanded balanced relation is

@@ -1632,6 +1632,21 @@
   classical theorem, or DNE. The manifest now binds 47 candidates and 56
   receipts; the registry remains 393. The next gate is elementary D06 laws,
   not public admission by implication.
+- **Signed multiplication elementary laws (2026-08-04):** five further
+  closed, nonpublic candidates prove graph commutativity, left and right zero
+  annihilation, and left and right identity for signed positive-one code `2`.
+  Their exact certificates have 376, 209, 607, 347, and 745 structural nodes
+  at depths 41, 25, 43, 25, and 43, with 8, 4, 14, 10, and 18 Cuts. The
+  `signed_mul_one_right` endpoint has DAG SHA-256
+  `fe3977029e00057909e7204631ce6f66b5ce2aff10a4132872ce011a899ef378`;
+  the complete 49-theorem signed-stack digest is
+  `be074dfe1b79e3f27b2d48851c64f58360ee86fc3776ae681c451d38f67d25b2`.
+  Literal-code alpha audits and a 33-code bounded oracle distinguish code `2`
+  as `+1` from code `1` as `-1`, and reject raw multiplication of parity
+  codes. The exact closure uses no SignedAdd law, division, remainder, beta,
+  CRT, classical theorem, or DNE. The manifest now binds 52 candidates and 61
+  receipts; the registry remains 393. Associativity and distributivity are the
+  next D06 proof layer.
 - **Independent pair/cell design audit (2026-08-03):** `HA-K3-PAIR-1`
   selects the doubled Cantor polynomial
   `code=(left+right)*S(left+right)+(right+right)` and successor-tagged cells,
@@ -1641,9 +1656,9 @@
   maps, and finite CRT remain blocked on a separate computation-history
   representation or proved conservative primitive-recursive definition
   mechanism. Fixed-length generated schemas are honest but insufficient.
-- **Current strict-HA gate:** 29 manifest/definition/pair-RFC tests and 91
+- **Current strict-HA gate:** 29 manifest/definition/pair-RFC tests and 99
   proof/admission tests pass. The campaign manifest records 56 public
-  references, 47 closed candidates, and 56 receipts; the public registry and
+  references, 52 closed candidates, and 61 receipts; the public registry and
   independently replayed snapshot both remain at 393 theorems.
 - **Current documentation gate:** the warning-free 47-source Book build has
   2,325 HTML pages and zero integrity errors. Its explicit/defined explorer

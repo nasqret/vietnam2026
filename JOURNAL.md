@@ -3942,3 +3942,34 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - Sealed the exact D06 and pair/cell RFC source checkpoint as
   `01fb459bc2ef797ca1e1e76b353c219dcc1eecb6`; the Book links are rebound to
   that immutable commit in the following documentation-only checkpoint.
+
+## 2026-08-04 — Elementary SignedMul laws closed
+
+- Added five exact D06 graph-law candidates: multiplication commutativity,
+  left and right zero annihilation, and left and right identity for signed
+  positive-one code `2`. Code `1` remains negative one; no statement confuses
+  the parity-interleaved representation with raw natural-code multiplication.
+- Commutativity swaps the two input decoder pairs and uses `mul_comm` on all
+  four monomials plus `add_comm` on the cross-term order. Left zero and left
+  one construct reviewed literal decoders and reuse the arbitrary input
+  decoder through `signed_mul_of_decoded_equation`; the right laws follow from
+  their left counterparts and graph commutativity.
+- Two cold empty-context replays pin exact nodes/depths/Cuts at 376/41/8,
+  209/25/4, 607/43/14, 347/25/10, and 745/43/18. The endpoint certificate
+  SHA-256 is
+  `fe3977029e00057909e7204631ce6f66b5ce2aff10a4132872ce011a899ef378`,
+  and the complete 49-theorem signed-stack digest is
+  `be074dfe1b79e3f27b2d48851c64f58360ee86fc3776ae681c451d38f67d25b2`.
+- The eight-test focused audit pins statements, bodies, closures, literal D06
+  alpha-identity, strict dependency closure, registry isolation, false target
+  mutations, and the multiplication laws on every pair of the first 33 codes.
+  No DNE, division, remainder, CRT, beta, SignedAdd law, or forbidden tactic is
+  reachable.
+- Integrated the laws as the eleventh K3 candidate module. The campaign now
+  has 56 public references, 52 candidates, and 61 exact receipts; the public
+  registry remains 393. The integrated local gate passes 29 manifest,
+  definition, and pair-RFC tests plus 99 proof/admission tests. Public
+  admission, push, deployment, and WMI work remain separate and unclaimed.
+- D06 associativity and distributivity are next. Their proofs must use
+  independently audited decoded-equation composition lemmas before D07
+  natural scaling begins.

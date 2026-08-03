@@ -23,8 +23,8 @@ intuitionistic arithmetic without extending Peano Lab's object language.
 - a checked dependency-curried body is weaker than either status.
 
 The current registry has 393 theorems. Nine strict-HA tranche-01 interfaces are
-public; three canonical-gcd and 44 signed representation, normalization,
-negation, addition, and multiplication-core theorems remain closed candidates.
+public; three canonical-gcd and 49 signed representation, normalization,
+negation, addition, and multiplication theorems remain closed candidates.
 
 ## Dependency spine
 
@@ -42,7 +42,7 @@ flowchart TD
   N --> A[signed addition core]
   G --> L[signed addition laws]
   A --> L
-  L --> M[signed multiplication]
+  L --> M[signed multiplication core and elementary laws]
   M --> B[signed Bezout bridge]
 ```
 
@@ -67,8 +67,12 @@ sums with canonical negation to zero in both orientations. A generic cross-sum
 composition helper now also closes graph associativity. None is public yet.
 The five-row `SignedMul` core now has decoder bridges, totality, and literal
 output functionality. Its largest certificate is `signed_mul_functional` at
-1,808 nodes, depth 40, and 34 Cuts. The next gate is the elementary
-multiplication laws; natural scaling remains after them.
+1,808 nodes, depth 40, and 34 Cuts. Five further candidates prove graph
+commutativity, two-sided zero annihilation, and the two-sided identity law for
+signed positive-one code `2`. The largest new certificate is
+`signed_mul_one_right` at 745 nodes, depth 43, and 18 Cuts. The next gates are
+multiplication associativity and distributivity; natural scaling remains after
+them.
 
 The independent pair/cell design is now frozen in `HA-K3-PAIR-1` using the
 doubled Cantor polynomial and a successor cell tag. This does not close the

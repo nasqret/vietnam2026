@@ -52,7 +52,8 @@
       "peano-lab/py/tests/test_ha_signed_add_candidate.py",
       "peano-lab/py/tests/test_ha_signed_add_laws_candidate.py",
       "peano-lab/py/tests/test_ha_signed_add_associative_candidate.py",
-      "peano-lab/py/tests/test_ha_signed_mul_candidate.py"
+      "peano-lab/py/tests/test_ha_signed_mul_candidate.py",
+      "peano-lab/py/tests/test_ha_signed_mul_laws_candidate.py"
     ],
     "theorems": [
       {
@@ -446,6 +447,41 @@
         "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_candidate.py",
         "statement_sha256": "6493bb4d1759df101717a003411aaf38c80794559b9b4504987b96937f0c49eb",
         "receipt": {"nodes": 1808, "depth": 40, "objects": 1157, "edges": 1190, "reused": 34, "cuts": 34, "certificate_sha256": "632bd740e1f6a5a00497205379dd64f3cdc3e45d75a33c8c02d46f727f05f410"}
+      },
+      {
+        "name": "signed_mul_commutative",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_laws_candidate.py",
+        "statement_sha256": "8e25f4cf6b48c125f7df426ee648ad9bae88fd6acc05257dde2afdffbeddd09c",
+        "receipt": {"nodes": 376, "depth": 41, "objects": 281, "edges": 303, "reused": 23, "cuts": 8, "certificate_sha256": "6bc3661f663bc26f85541485f1397b0b3da4dd4aee4f17e847deb53c49ff1ff6"}
+      },
+      {
+        "name": "signed_mul_zero_left",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_laws_candidate.py",
+        "statement_sha256": "0b5d0d3aac940edbe0abe6eb750feb128870cb8d7aaf5c8d7ff1501556b712f6",
+        "receipt": {"nodes": 209, "depth": 25, "objects": 199, "edges": 208, "reused": 10, "cuts": 4, "certificate_sha256": "78a9b2f876c73f601723e2ab21eb24f5bf0b2ce31a182cf9a5840eba33025153"}
+      },
+      {
+        "name": "signed_mul_zero_right",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_laws_candidate.py",
+        "statement_sha256": "bcdea695be4d1c8d6102a1962ab9ede07e1ea7c79a31b7311702c5f02e0cce8c",
+        "receipt": {"nodes": 607, "depth": 43, "objects": 480, "edges": 514, "reused": 35, "cuts": 14, "certificate_sha256": "30d11a08094266eee94edb5cee101f2fa1d80423b2754da61a69dead287c1174"}
+      },
+      {
+        "name": "signed_mul_one_left",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_laws_candidate.py",
+        "statement_sha256": "c2a92014bb6e7752fe05c4c59071f12a4182a38e943893316eac10189cb12cc0",
+        "receipt": {"nodes": 347, "depth": 25, "objects": 307, "edges": 330, "reused": 24, "cuts": 10, "certificate_sha256": "8d1406a347d46d83bd11baa5027088e4e761b1a740ba3f815632120eec8f2325"}
+      },
+      {
+        "name": "signed_mul_one_right",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_laws_candidate.py",
+        "statement_sha256": "4739fd46ffd8ba093d92e56bccbe7fba593d5372c8b2a090f747785e6f862124",
+        "receipt": {"nodes": 745, "depth": 43, "objects": 523, "edges": 564, "reused": 42, "cuts": 18, "certificate_sha256": "fe3977029e00057909e7204631ce6f66b5ce2aff10a4132872ce011a899ef378"}
       }
     ]
   },
@@ -733,9 +769,21 @@
             "signed_mul_functional"
           ],
           "role": "Closed-checked but non-public decoder-equation bridges, totality, and literal-output functionality for the canonical SignedMul graph."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_signed_mul_laws_candidate.py",
+          "factory": "make_ha_signed_mul_laws_candidate_theorems",
+          "theorem_names": [
+            "signed_mul_commutative",
+            "signed_mul_zero_left",
+            "signed_mul_zero_right",
+            "signed_mul_one_left",
+            "signed_mul_one_right"
+          ],
+          "role": "Closed-checked but non-public commutativity, two-sided zero annihilation, and two-sided signed-one identity laws for canonical SignedMul."
         }
       ],
-      "remaining_gap": "The parity-interleaved decoder, decoded-code extensionality, total functional SignedBalance normalization, total functional involutive SignedNegate graph, the complete SignedAdd graph and laws, and the total functional SignedMul core now have deterministic empty-context candidate receipts without division, remainder, beta, or CRT dependencies. HA-K3-PAIR-1 freezes a non-circular pair/cell design but has no proof candidates yet. Public admission, SignedMul laws, natural scale, decidable equality, pair/cell proofs, an independent uniform computation-trace/list/map encoding, and list recursion remain.",
+      "remaining_gap": "The parity-interleaved decoder, decoded-code extensionality, total functional SignedBalance normalization, total functional involutive SignedNegate graph, the complete SignedAdd graph and laws, and the total functional SignedMul core plus its zero, one, and commutative laws now have deterministic empty-context candidate receipts without division, remainder, beta, or CRT dependencies. HA-K3-PAIR-1 freezes a non-circular pair/cell design but has no proof candidates yet. Public admission, SignedMul associativity and distributivity, natural scale, decidable equality, pair/cell proofs, an independent uniform computation-trace/list/map encoding, and list recursion remain.",
       "validation": {
         "path": [
           "manifest_integrity",

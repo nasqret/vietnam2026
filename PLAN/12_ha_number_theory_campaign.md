@@ -173,8 +173,9 @@ with `m != 0` on totality statements.
 - [x] Prove the five-row `SignedMul` decoder/equation core, totality, and
       literal-output functionality as deterministic empty-context candidates.
 - [ ] Prove the signed multiply and natural-scale operation graph obligations
-      frozen by that RFC; the remaining multiplication obligations are its
-      zero, one, commutative, associative, and distributive laws.
+      frozen by that RFC. The zero, one, and commutative multiplication laws
+      are closed candidates; associativity, distributivity, and natural scale
+      remain.
 - [ ] Translate four-natural balanced Bezout witnesses to and from the signed
       interface.
 - [ ] Add lcm only after its zero convention and gcd compatibility statement
@@ -306,8 +307,10 @@ closure remains 557 nodes and 1,787 edges, now partitioned as 241 public and
       `SignedMul`.
 - [x] Close the five-row `SignedMul` core without using any SignedAdd law,
       host-integer multiplication, division, remainder, CRT, or beta coding.
-- [ ] Prove the elementary `SignedMul` zero, one, and commutative laws before
+- [x] Prove the elementary `SignedMul` zero, one, and commutative laws before
       attempting associativity or distributivity.
+- [ ] Prove `SignedMul` associativity and distributivity from independently
+      reviewed decoded-equation composition lemmas.
 - [x] Audit the independent pair/list route, freeze the pair/cell component,
       and record the missing uniform computation-history step rather than
       hiding variable iteration in a recursive macro.

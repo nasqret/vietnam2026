@@ -71,8 +71,8 @@ def test_repository_campaign_validates() -> None:
     assert summary == {
         "layers": 12,
         "public_references": 56,
-        "candidate_references": 47,
-        "theorem_evidence": 56,
+        "candidate_references": 52,
+        "theorem_evidence": 61,
         "validation_gates": 7,
     }
 

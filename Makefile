@@ -94,6 +94,7 @@ ha-number-theory-check:
 		tests/test_ha_signed_add_laws_candidate.py \
 		tests/test_ha_signed_add_associative_candidate.py \
 		tests/test_ha_signed_mul_candidate.py \
+		tests/test_ha_signed_mul_laws_candidate.py \
 		tests/test_ha_number_theory_tranche01_admission.py
 
 lab-serve:
