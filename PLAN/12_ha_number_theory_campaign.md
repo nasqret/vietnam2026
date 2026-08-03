@@ -164,8 +164,12 @@ with `m != 0` on totality statements.
       empty-context candidates.
 - [x] Prove the signed-negate decoder bridges, totality, functionality, zero,
       symmetry, and involution as deterministic empty-context candidates.
-- [ ] Prove the signed add, multiply, and natural-scale operation graph
-      obligations frozen by that RFC.
+- [x] Prove the signed-add decoder/equation bridges, totality, and literal
+      output functionality as deterministic empty-context candidates.
+- [ ] Prove the signed-add zero identities, commutativity, associativity, and
+      inverse law through the decoded contribution equation.
+- [ ] Prove the signed multiply and natural-scale operation graph obligations
+      frozen by that RFC.
 - [ ] Translate four-natural balanced Bezout witnesses to and from the signed
       interface.
 - [ ] Add lcm only after its zero convention and gcd compatibility statement
@@ -286,8 +290,11 @@ closure remains 557 nodes and 1,787 edges, now partitioned as 241 public and
 - [x] Begin the signed arithmetic graph strictly with negation totality,
       functionality, decoder semantics, zero, symmetry, and involution; retain
       all eight results as closed candidates.
-- [ ] Build `SignedAdd` next from decoded contribution sums plus
-      `SignedBalance`; do not bypass normalization with host integers.
+- [x] Build the five-row `SignedAdd` core from decoded contribution sums plus
+      `SignedBalance`; retain its decoder bridges, totality, and functionality
+      as closed candidates without bypassing normalization with host integers.
+- [ ] Complete the `SignedAdd` algebraic-law tranche before starting
+      `SignedMul`.
 
 ## Release boundary
 

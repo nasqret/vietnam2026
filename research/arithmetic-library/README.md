@@ -21,11 +21,11 @@ arithmetic library. Start with:
 
 Run `make ha-number-theory-check` from the repository root for the fast
 campaign-manifest, 44-theorem definition-API replay, candidate-body, and
-empty-context receipt checks. The campaign manifest carries 38 statement
+empty-context receipt checks. The campaign manifest carries 43 statement
 hashes and exact closure receipts: nine deliberately admitted tranche-01
-theorems, three isolated canonical-gcd candidates, and 26 isolated signed
-parity, decoder, code-extensionality, balance-normalization, and negation
-candidates. Passing the candidate gate alone never enrolls a theorem in the
+theorems, three isolated canonical-gcd candidates, and 31 isolated signed
+parity, decoder, code-extensionality, balance-normalization, negation, and
+addition-core candidates. Passing the candidate gate alone never enrolls a theorem in the
 public registry.
 
 The current runtime contains 393 checked entries. The factorization tranche

@@ -46,13 +46,13 @@ It separates three facts which are easy to blur in an informal development:
     context but are not in the public registry.
 * - Canonical signed naturals
   - closed candidate
-  - The representation is frozen. Twenty-six parity, decoder,
-    code-extensionality, balance-normalization, and negation theorems close
-    from the empty context without division.
+  - The representation is frozen. Thirty-one parity, decoder,
+    code-extensionality, balance-normalization, negation, and addition-core
+    theorems close from the empty context without division.
 ```
 
 The public registry therefore has 393 entries. The first nine campaign
-theorems occupy append-only positions 384--392. The three gcd and twenty-six
+theorems occupy append-only positions 384--392. The three gcd and thirty-one
 signed candidates stay outside it. This tail append leaves the frozen
 first-247 model curriculum unchanged.
 
@@ -476,8 +476,106 @@ $$
 which are exactly \(0\mapsto0\), \(-1\mapsto+1\), \(+1\mapsto-1\),
 \(-2\mapsto+2\), and \(+2\mapsto-2\). The oracle is a regression test; the
 authority remains the empty-context certificate. All eight negation results
-remain nonpublic. The next candidate graph is `SignedAdd`, built from decoded
-natural contribution sums and `SignedBalance` normalization.
+remain nonpublic.
+
+## Canonical signed addition: the closed graph core
+
+If the two inputs and output decode respectively as
+((l_+,l_-)), ((r_+,r_-)), and ((o_+,o_-)), D05 defines addition by the
+subtraction-free equation
+
+$$
+(l_+ + r_+) + o_- = (l_- + r_-) + o_+.
+$$
+
+This is exactly the integer identity
+
+$$
+(l_+-l_-)+(r_+-r_-)=o_+-o_-,
+$$
+
+but the checked statement never introduces subtraction or an integer term
+type. Totality decodes both inputs and sends the two natural contribution sums
+through `SignedBalance`; functionality reduces two outputs to the same
+balance-normalization problem.
+
+```text
+flowchart LR
+  DL[decode left] --> C[contribution sums]
+  DR[decode right] --> C
+  C --> B[SignedBalance totality]
+  B --> T[SignedAdd totality]
+  DF[decoder functionality] --> E[decoded equation elimination]
+  E --> U[SignedAdd functionality]
+  BF[SignedBalance functionality] --> U
+```
+
+```{list-table}
+:header-rows: 1
+:widths: 45 10 10 10 25
+
+* - Closed candidate
+  - Nodes
+  - Depth
+  - Cuts
+  - Certificate prefix
+* - `signed_add_of_decoded_equation`
+  - 26
+  - 23
+  - 0
+  - `94c77cd7434e`
+* - `signed_add_to_decoded_equation`
+  - 823
+  - 35
+  - 14
+  - `77bb73fbc741`
+* - `signed_add_decoded_iff_equation`
+  - 956
+  - 39
+  - 16
+  - `376faba0f2bf`
+* - `signed_add_total`
+  - 411
+  - 27
+  - 8
+  - `793ef15dc81c`
+* - `signed_add_functional`
+  - 1,754
+  - 38
+  - 34
+  - `63eb78997ade`
+```
+
+The bounded semantic regression table starts with
+
+```{list-table}
+:header-rows: 1
+:widths: 20 20 20 20
+
+* - encoded sum
+  - left value
+  - right value
+  - output value
+* - `SignedAdd(1,1,3)`
+  - (-1)
+  - (-1)
+  - (-2)
+* - `SignedAdd(1,2,0)`
+  - (-1)
+  - (+1)
+  - (0)
+* - `SignedAdd(2,2,4)`
+  - (+1)
+  - (+1)
+  - (+2)
+```
+
+Two cold replays agree on the complete 31-theorem signed-stack digest
+`11f41d395be9597892e2d5577ff80b54d04a61a57c81e50d02bc335c7e6012da`.
+The closure has no DNE, division, remainder, CRT, Gödel-β, or negation edge.
+These five results remain nonpublic. They establish the total functional graph
+and its decoded specification; zero identity, commutativity, associativity,
+and addition of a value to its negation are the next separate theorem tranche.
 
 Read the complete
 [`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/d5a734292b11e516a86606c65653be38d2faa7f1/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
@@ -494,9 +592,10 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 ```
 
-The first command checks the 12-layer campaign manifest, all 38 theorem
+The first command checks the 12-layer campaign manifest, all 43 theorem
 receipts, the 44-theorem definition API, the nine public admissions, the three
-isolated gcd candidates, and the twenty-six isolated signed representation,
-normalization, and negation candidates. The second cross-checks all 393 public runtime
-theorems against the 394-row research catalog. The third independently replays
-the full public ladder and compares the deterministic snapshot.
+isolated gcd candidates, and the thirty-one isolated signed representation,
+normalization, negation, and addition-core candidates. The second cross-checks
+all 393 public runtime theorems against the 394-row research catalog. The third
+independently replays the full public ladder and compares the deterministic
+snapshot.

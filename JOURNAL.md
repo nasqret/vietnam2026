@@ -3791,3 +3791,32 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   campaign-specific manifest/RFC links in the Book to that source. The public
   theorem atlas remains intentionally pinned to its unchanged 393-theorem
   source checkpoint.
+
+## 2026-08-03 — Canonical SignedAdd core closed
+
+- Implemented RFC D05 as the exact three-decoder contribution equation
+  `(lp + rp) + on = (ln + rn) + op`, without subtraction, host-integer proof
+  steps, or a new kernel symbol. Introduction and elimination expose the
+  equation in both directions; a third row packages their equivalence.
+- Proved totality by decoding both inputs and normalizing their positive and
+  negative contribution sums with `signed_balance_total`. Proved literal
+  output functionality by transporting two graphs to a common balance problem
+  and applying `signed_balance_functional`.
+- Closed all five candidates twice from a cold public replay. Their exact
+  nodes/depths are 26/23, 823/35, 956/39, 411/27, and 1,754/38. The functional
+  endpoint has 1,103 distinct proof objects, 1,136 DAG edges, 34 reused
+  objects, 34 Cuts, and certificate SHA-256
+  `63eb78997ade1da36271de19138643f20e5e48666a1318d6a4982e616a6b9b87`.
+  The complete 31-theorem signed-stack digest is
+  `11f41d395be9597892e2d5577ff80b54d04a61a57c81e50d02bc335c7e6012da`.
+- The focused seven-test audit pins RFC D05 and all five statement hashes,
+  checks hygienic expansion and registry isolation, rejects false certificate
+  mutations, bans automation and DNE, and exhaustively checks unique canonical
+  outputs for 17 by 17 bounded input pairs. Independent review approved the
+  semantics and exact 17-public/eleven-candidate dependency closure.
+- Integrated the module after SignedNegate in K3 without public admission. The
+  campaign manifest now reports 12 layers, 56 public references, 34 candidate
+  references, 43 theorem receipts, and seven gates. The registry stays at 393.
+  The complete local campaign gate passes 26 validator/definition tests and
+  69 focused proof/admission tests. Algebraic laws remain deliberately
+  unclaimed and form the next tranche.

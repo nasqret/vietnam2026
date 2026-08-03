@@ -480,6 +480,45 @@ context without `DNE`, division, remainder, CRT, or beta-coded dependencies,
 and remain outside the public registry. `SignedAdd` is the next arithmetic
 graph obligation.
 
+#### 6.4.2 Closed addition-core checkpoint
+
+The exact D05 graph now has a five-row closed candidate core, in dependency
+order:
+
+```text
+signed_add_of_decoded_equation
+signed_add_to_decoded_equation
+signed_add_decoded_iff_equation
+signed_add_total
+signed_add_functional
+```
+
+The introduction row packages three decoder witnesses and the contribution
+equation
+
+```text
+(lp + rp) + on = (ln + rn) + op.
+```
+
+The elimination row uses decoder functionality to recover that same equation
+from any D05 witness. Totality decodes both inputs, normalizes their positive
+and negative contribution sums with `SignedBalance`, and packages the
+normalized output. Functionality transports two output witnesses to a common
+balanced pair and applies `signed_balance_functional`.
+
+The five empty-context certificates have respectively 26, 823, 956, 411, and
+1,754 structural nodes, with depths 23, 35, 39, 27, and 38. Their exact
+certificate hashes and statements are pinned in the campaign manifest and
+focused test. The 31-theorem signed-stack digest is
+`11f41d395be9597892e2d5577ff80b54d04a61a57c81e50d02bc335c7e6012da`.
+The transitive closure contains no `DNE`, division, remainder, CRT, or
+beta-coded theorem and does not use `SignedNegate`.
+
+This closes only the total functional graph and its decoded specification.
+The zero identities, commutativity, associativity, and inverse law remain
+separate proof obligations. No algebraic law and no public admission is
+claimed by this checkpoint.
+
 ### 6.5 Bezout bridge obligations
 
 The existing expanded balanced relation is

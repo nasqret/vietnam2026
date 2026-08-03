@@ -1558,3 +1558,21 @@
   proof/admission tests, a cold 393-theorem public replay, the 4,991-link vault
   audit, and the 2,325-page Book integrity audit. Local source checkpoint
   `d5a734292b11e516a86606c65653be38d2faa7f1` contains the exact tranche.
+- **Signed addition core closure (2026-08-03):** five closed, nonpublic
+  candidates implement RFC D05 exactly: decoded-equation introduction and
+  elimination, the packaged equivalence, totality through `SignedBalance`, and
+  literal-output functionality. Their certificates have 26, 823, 956, 411,
+  and 1,754 structural nodes at depths 23, 35, 39, 27, and 38; the functional
+  endpoint has 34 Cuts and DAG SHA-256
+  `63eb78997ade1da36271de19138643f20e5e48666a1318d6a4982e616a6b9b87`.
+  Two cold replays agree on full 31-theorem signed-stack digest
+  `11f41d395be9597892e2d5577ff80b54d04a61a57c81e50d02bc335c7e6012da`.
+  The exact transitive closure has 17 public and eleven earlier/local
+  candidate dependencies, with no DNE, division, remainder, beta, CRT,
+  classical, or SignedNegate edge. An independent review approved the witness
+  plumbing and RFC alpha-equivalence; the focused semantic oracle checks 289
+  input pairs. The manifest now binds 56 public references, 34 closed
+  candidates, and 43 exact receipts. The public registry remains 393.
+  `make ha-number-theory-check` passes 26 manifest/definition tests and 69
+  proof/admission tests. The total functional graph is closed, but zero,
+  commutativity, associativity, and inverse laws remain separate obligations.
