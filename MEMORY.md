@@ -1648,4 +1648,5 @@
 - **Current documentation gate:** the warning-free 47-source Book build has
   2,325 HTML pages and zero integrity errors. Its explicit/defined explorer
   source and built trees are byte-identical across 2,285 files; the vault has
-  492 notes and 4,991 resolved links.
+  492 notes and 4,991 resolved links. Immutable D06/pair source checkpoint:
+  `01fb459bc2ef797ca1e1e76b353c219dcc1eecb6`.

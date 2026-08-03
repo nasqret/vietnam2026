@@ -13,7 +13,7 @@ conservative notation: every occurrence expands before the ordinary kernel
 checks a certificate.
 
 The controlling machine manifest is
-[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/883febe3fcf3b8a29707f34780c457f8fcd8edc6/research/arithmetic-library/ha-number-theory-campaign.json).
+[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/01fb459bc2ef797ca1e1e76b353c219dcc1eecb6/research/arithmetic-library/ha-number-theory-campaign.json).
 It separates three facts which are easy to blur in an informal development:
 
 - a dependency-curried tactic body may check;
@@ -795,9 +795,9 @@ $$
 
 These five rows remain nonpublic. Zero, one, commutativity, associativity, and
 distributivity are deliberately separate D06 law gates. Inspect the
-[`candidate source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_signed_mul_candidate.py)
+[`candidate source`](https://github.com/nasqret/vietnam2026/blob/01fb459bc2ef797ca1e1e76b353c219dcc1eecb6/peano-lab/py/peano_lab/library/ha_signed_mul_candidate.py)
 and
-[`focused audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_signed_mul_candidate.py)
+[`focused audit`](https://github.com/nasqret/vietnam2026/blob/01fb459bc2ef797ca1e1e76b353c219dcc1eecb6/peano-lab/py/tests/test_ha_signed_mul_candidate.py)
 for the complete expanded formulas, tactic scripts, mutations, and receipts.
 
 ## Independent pair/cell checkpoint
@@ -834,14 +834,14 @@ computation history or a proved conservative primitive-recursive definition
 mechanism.
 
 The
-[`pair/cell RFC`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/research/arithmetic-library/ha-canonical-pair-cell-rfc-v1.md)
+[`pair/cell RFC`](https://github.com/nasqret/vietnam2026/blob/01fb459bc2ef797ca1e1e76b353c219dcc1eecb6/research/arithmetic-library/ha-canonical-pair-cell-rfc-v1.md)
 freezes eight exact expanded templates and their SHA-256 receipts, the pair
 injectivity and cell-descent theorem ladder, forbidden dependencies, and four
 honest ways to resolve the uniform-list blocker. It is a design target; no
 pair theorem or list theorem is claimed by that document.
 
 Read the complete
-[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/883febe3fcf3b8a29707f34780c457f8fcd8edc6/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
+[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/01fb459bc2ef797ca1e1e76b353c219dcc1eecb6/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
 for the exact formulas, hashes, forbidden dependency paths, and staged proof
 obligations.
 

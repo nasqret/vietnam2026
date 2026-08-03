@@ -3939,3 +3939,6 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   runtime links, and byte-identical 2,285-file explicit/defined explorer
   trees. The 492-note vault retains 4,991 resolved links. No public admission,
   push, deployment, or WMI receipt is claimed.
+- Sealed the exact D06 and pair/cell RFC source checkpoint as
+  `01fb459bc2ef797ca1e1e76b353c219dcc1eecb6`; the Book links are rebound to
+  that immutable commit in the following documentation-only checkpoint.
