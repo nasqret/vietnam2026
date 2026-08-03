@@ -26,6 +26,7 @@ EXPECTED_ARTIFACT_RECEIPT = (
 EXPECTED_REPORT_SHA256 = (
     "0aaa968c91d8769c101afd51681090396a31e4885a2629e7ecfb44113cd47e5d"
 )
+PERSISTED_REPORT_SOURCE_COMMIT = "c0171d080ccda1e07b132590db6f7b922dff73ff"
 
 
 class FakeShadow:
@@ -207,37 +208,60 @@ def test_persisted_complete_report_is_source_sealed_and_self_consistent() -> Non
     assert report["artifact_set"]["receipt_sha256"] == receipt
     assert receipt == EXPECTED_ARTIFACT_RECEIPT
 
+    # This K3 report is a retained observation from its producing commit, not
+    # a claim that later K4 browser/UI sources are byte-identical. Re-hash the
+    # declared Git blobs at that immutable producer instead of silently
+    # relabeling historical evidence with the live worktree.
+    tree = subprocess.run(
+        [
+            "git",
+            "ls-tree",
+            "-r",
+            "--name-only",
+            PERSISTED_REPORT_SOURCE_COMMIT,
+        ],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.splitlines()
     fixed = {
-        ROOT / "scripts" / "differential_peano_kernel_shadow.py",
-        ROOT / "peano-lab" / "rust" / "peano-kernel-shadow" / "Cargo.lock",
-        ROOT / "peano-lab" / "rust" / "peano-kernel-shadow" / "Cargo.toml",
-        ROOT
-        / "peano-lab"
-        / "rust"
-        / "peano-kernel-shadow"
-        / "rust-toolchain.toml",
+        "scripts/differential_peano_kernel_shadow.py",
+        "peano-lab/rust/peano-kernel-shadow/Cargo.lock",
+        "peano-lab/rust/peano-kernel-shadow/Cargo.toml",
+        "peano-lab/rust/peano-kernel-shadow/rust-toolchain.toml",
     }
     expected_sources = sorted(
         {
             *fixed,
-            *(ROOT / "peano-lab" / "py" / "peano_lab").rglob("*.py"),
             *(
-                ROOT / "peano-lab" / "rust" / "peano-kernel-shadow" / "src"
-            ).rglob("*.rs"),
-        },
-        key=lambda path: path.relative_to(ROOT).as_posix(),
+                path
+                for path in tree
+                if path.startswith("peano-lab/py/peano_lab/")
+                and path.endswith(".py")
+            ),
+            *(
+                path
+                for path in tree
+                if path.startswith("peano-lab/rust/peano-kernel-shadow/src/")
+                and path.endswith(".rs")
+            ),
+        }
     )
     source_records = report["implementation_sources"]["files"]
-    assert [record["path"] for record in source_records] == [
-        path.relative_to(ROOT).as_posix() for path in expected_sources
-    ]
+    assert [record["path"] for record in source_records] == expected_sources
     manifest_lines = []
     for path, record in zip(expected_sources, source_records, strict=True):
-        data = path.read_bytes()
+        data = subprocess.run(
+            ["git", "show", f"{PERSISTED_REPORT_SOURCE_COMMIT}:{path}"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+        ).stdout
         digest = sha256(data).hexdigest()
         assert record == {
             "bytes": len(data),
-            "path": path.relative_to(ROOT).as_posix(),
+            "path": path,
             "sha256": digest,
         }
         manifest_lines.append(f"{digest}  {record['path']}\n")

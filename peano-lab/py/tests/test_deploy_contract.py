@@ -28,6 +28,8 @@ def test_peano_production_deploy_uses_an_isolated_staging_tree() -> None:
     assert 'peano-lab/index.html "_deploy/peano-lab/index.html"' in output
     assert 'peano-lab/.htaccess  "_deploy/peano-lab/.htaccess"' in output
     assert 'peano-lab/worker.js "_deploy/peano-lab/releases/a-' in output
+    assert 'peano-lab/shadow-worker.js "_deploy/peano-lab/releases/a-' in output
+    assert 'peano-lab/peano_kernel_shadow.wasm "_deploy/peano-lab/releases/a-' in output
     assert 'peano-lab/APP_MANIFEST.sha256 "_deploy/peano-lab/releases/a-' in output
     assert 'peano-lab/py/ "_deploy/peano-lab/releases/a-' in output
     assert 'peano-lab/vendor/ "_deploy/peano-lab/vendor/"' in output
@@ -126,6 +128,9 @@ def test_release_verifiers_are_canonical_and_shell_valid() -> None:
     assert "%{size_download}" in delivery_source
     assert "size < 3000000" in delivery_source
     assert "APP_PIDS" in delivery_source
+    assert "SHADOW_WASM_URL" in delivery_source
+    assert "Rust shadow WASM media type" in delivery_source
+    assert "EXPECTED_SHADOW_WASM" in delivery_source
     for script in (app, vendor, delivery):
         result = subprocess.run(
             ["bash", "-n", str(script)],

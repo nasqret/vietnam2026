@@ -19,6 +19,8 @@ from peano_lab.kernel.terms import parse_term
 LAB = Path(__file__).resolve().parents[2]
 INDEX = (LAB / "index.html").read_text(encoding="utf-8")
 WORKER = (LAB / "worker.js").read_text(encoding="utf-8")
+SHADOW_WORKER = (LAB / "shadow-worker.js").read_text(encoding="utf-8")
+SHADOW_WASM = LAB / "peano_kernel_shadow.wasm"
 HTACCESS = (LAB / ".htaccess").read_text(encoding="utf-8")
 APP_MANIFEST = LAB / "APP_MANIFEST.sha256"
 
@@ -29,6 +31,7 @@ def test_shell_has_its_own_build_history_and_deep_link_contracts() -> None:
     assert 'new URLSearchParams(location.search).get("cmd")' in INDEX
     assert 'const APP_ROOT="releases/a-' in INDEX
     assert 'new Worker(APP_ROOT+"worker.js")' in INDEX
+    assert 'new Worker(APP_ROOT+"shadow-worker.js")' in INDEX
     assert "worker.terminate()" in INDEX
     assert "function sanitizeCommand(command)" in INDEX
     assert '.replace(/[\\x00-\\x1f\\x7f-\\x9f]/g," ")' in INDEX
@@ -43,13 +46,15 @@ def test_all_runtime_assets_are_self_hosted() -> None:
     )
     assert asset_urls
     assert all(re.match(r"vendor/v-[0-9a-f]{12,64}/", url) for url in asset_urls)
-    vendor_ids = set(re.findall(r"vendor/(v-[0-9a-f]{12,64})/", INDEX + WORKER))
+    vendor_ids = set(
+        re.findall(r"vendor/(v-[0-9a-f]{12,64})/", INDEX + WORKER + SHADOW_WORKER)
+    )
     assert vendor_ids == {"v-85fb3352e49c"}
     assert 'const VENDOR_ROOT = "../../vendor/v-85fb3352e49c/"' in WORKER
     assert 'importScripts(VENDOR_ROOT + "pyodide/pyodide.js")' in WORKER
     assert 'indexURL: VENDOR_ROOT + "pyodide/"' in WORKER
-    assert "cdn.jsdelivr" not in INDEX + WORKER
-    assert "unpkg.com" not in INDEX + WORKER
+    assert "cdn.jsdelivr" not in INDEX + WORKER + SHADOW_WORKER
+    assert "unpkg.com" not in INDEX + WORKER + SHADOW_WORKER
 
 
 def test_application_release_is_content_addressed_and_complete() -> None:
@@ -64,7 +69,11 @@ def test_application_release_is_content_addressed_and_complete() -> None:
         for path in (LAB / "py").rglob("*.py")
         if "tests" not in path.relative_to(LAB / "py").parts
     }
-    assert set(entries) == package_files | {"worker.js"}
+    assert set(entries) == package_files | {
+        "worker.js",
+        "shadow-worker.js",
+        "peano_kernel_shadow.wasm",
+    }
     for relative_path, expected in entries.items():
         actual = hashlib.sha256((LAB / relative_path).read_bytes()).hexdigest()
         assert actual == expected
@@ -209,6 +218,35 @@ def test_worker_fetches_sources_concurrently_but_mounts_deterministically() -> N
     assert result.returncode == 0, result.stderr
 
 
+def test_shadow_workers_are_bounded_one_shot_and_failure_is_only_diagnostic() -> None:
+    for harness in ("shadow_worker_harness.js", "shadow_main_harness.js"):
+        target = LAB / ("shadow-worker.js" if harness.startswith("shadow_worker") else "index.html")
+        result = subprocess.run(
+            ["node", str(Path(__file__).with_name(harness)), str(target)],
+            capture_output=True,
+            text=True,
+        )
+        assert result.returncode == 0, result.stderr
+
+    assert "Python QED is authoritative" in INDEX
+    assert "diagnostic only" in SHADOW_WORKER
+    assert "SHADOW_TIMEOUT_MS=30000" in INDEX
+    assert "MAX_SHADOW_ARTIFACT_BYTES=16*1024*1024" in INDEX
+    assert "SharedArrayBuffer" not in INDEX + WORKER + SHADOW_WORKER
+
+
+def test_committed_real_wasm_has_the_pinned_abi_and_fail_closed_fixtures() -> None:
+    assert SHADOW_WASM.read_bytes().startswith(b"\x00asm\x01\x00\x00\x00")
+    harness = Path(__file__).with_name("real_wasm_shadow_harness.js")
+    result = subprocess.run(
+        ["node", str(harness), str(SHADOW_WASM)],
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert result.returncode == 0, result.stderr
+
+
 def test_multiline_paste_is_validated_sequential_and_stop_safe() -> None:
     harness = Path(__file__).with_name("multiline_paste_harness.js")
     result = subprocess.run(
@@ -256,7 +294,7 @@ def test_script_download_is_validated_local_and_requires_direct_keyboard_intent(
 def test_browser_javascript_is_syntactically_valid() -> None:
     inline_scripts = re.findall(r"<script>(.*?)</script>", INDEX, re.DOTALL)
     assert len(inline_scripts) == 1
-    for source in (WORKER, inline_scripts[0]):
+    for source in (WORKER, SHADOW_WORKER, inline_scripts[0]):
         result = subprocess.run(
             ["node", "--check", "-"],
             input=source,

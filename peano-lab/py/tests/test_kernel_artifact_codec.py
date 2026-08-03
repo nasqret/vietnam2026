@@ -2,11 +2,15 @@
 
 from __future__ import annotations
 
+import builtins
+
 import pytest
 
 import peano_lab.kernel.artifact_codec as artifact_codec
 from peano_lab.kernel.artifact_codec import (
+    ArtifactLimitError,
     encode_artifact,
+    encode_artifact_bounded,
     encode_formula,
     encode_proof,
     encode_term,
@@ -161,6 +165,49 @@ def test_exact_lean_cut_refl_fixture() -> None:
         b'["eq_refl",["zero"]],["hyp",0]]]\n'
     )
     assert encode_artifact(64, target, proof) == expected
+
+
+def test_bounded_artifact_encoder_includes_terminal_lf_in_exact_limit() -> None:
+    artifact = encode_artifact(1, ATOM, REFL)
+
+    assert (
+        encode_artifact_bounded(1, ATOM, REFL, max_bytes=len(artifact))
+        == artifact
+    )
+    with pytest.raises(ArtifactLimitError, match="canonical artifact exceeds"):
+        encode_artifact_bounded(1, ATOM, REFL, max_bytes=len(artifact) - 1)
+
+
+def test_bounded_encoder_rejects_huge_naturals_before_decimal_chunk_allocation(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    huge = 1 << 100_000
+    real_divmod = builtins.divmod
+
+    def guarded_divmod(value: int, divisor: int) -> tuple[int, int]:
+        assert value.bit_length() < 1_000, "huge natural reached the chunk allocator"
+        return real_divmod(value, divisor)
+
+    monkeypatch.setattr(artifact_codec, "divmod", guarded_divmod, raising=False)
+    cases = (
+        (huge, ATOM, REFL),
+        (1, Eq(Var(huge), ZERO), REFL),
+        (1, ATOM, Hyp(huge)),
+    )
+    for fuel, target, proof in cases:
+        with pytest.raises(ArtifactLimitError, match="canonical artifact exceeds"):
+            encode_artifact_bounded(fuel, target, proof, max_bytes=64)
+
+
+@pytest.mark.parametrize("limit", [None, 0, -1, True, 1.5])
+def test_bounded_encoder_accepts_none_or_rejects_non_positive_exact_ints(
+    limit: object,
+) -> None:
+    if limit is None:
+        assert encode_artifact_bounded(1, ATOM, REFL, max_bytes=None).endswith(b"\n")
+        return
+    with pytest.raises(ValueError, match="positive integer"):
+        encode_artifact_bounded(1, ATOM, REFL, max_bytes=limit)  # type: ignore[arg-type]
 
 
 @pytest.mark.parametrize("bad_fuel", [True, False, -1, 1.0, "1", None])

@@ -133,7 +133,7 @@ for app_index in "${!APP_PATHS[@]}"; do
   fi
 done
 
-for relative_path in worker.js py/peano_lab/kernel/checker.py; do
+for relative_path in worker.js shadow-worker.js py/peano_lab/kernel/checker.py; do
   curl -fsS -H 'Accept-Encoding: br, gzip' -D "$TMP_DIR/source.headers" \
     -o /dev/null "$BASE/releases/$APP/$relative_path"
   require_header "$TMP_DIR/source.headers" '^content-encoding:[[:space:]]*(br|gzip)' \
@@ -143,6 +143,40 @@ for relative_path in worker.js py/peano_lab/kernel/checker.py; do
   require_header "$TMP_DIR/source.headers" '^cache-control:.*max-age=31536000.*immutable' \
     "immutable cache policy for $relative_path"
 done
+
+# The small Rust shadow module is an immutable application asset, distinct
+# from the much larger vendor Pyodide runtime checked below.
+SHADOW_WASM_PATH="peano_kernel_shadow.wasm"
+SHADOW_WASM_URL="$BASE/releases/$APP/$SHADOW_WASM_PATH"
+EXPECTED_SHADOW_WASM="$(awk -v path="$SHADOW_WASM_PATH" \
+  '$2 == path {print $1}' "$APP_ROOT/APP_MANIFEST.sha256")"
+if [[ -z "$EXPECTED_SHADOW_WASM" ]]; then
+  echo "Staged application manifest has no Rust shadow WASM entry" >&2
+  exit 1
+fi
+SHADOW_ENCODED_SIZE="$(curl -fsS -H 'Accept-Encoding: br, gzip' \
+  -D "$TMP_DIR/shadow-wasm.headers" -o "$TMP_DIR/shadow-wasm.encoded" \
+  -w '%{size_download}' "$SHADOW_WASM_URL")"
+require_header "$TMP_DIR/shadow-wasm.headers" '^content-type:.*application/wasm' \
+  'Rust shadow WASM media type'
+require_header "$TMP_DIR/shadow-wasm.headers" '^content-encoding:[[:space:]]*(br|gzip)' \
+  'Rust shadow WASM compression'
+require_header "$TMP_DIR/shadow-wasm.headers" '^vary:.*accept-encoding' \
+  'Rust shadow WASM negotiation Vary'
+require_header "$TMP_DIR/shadow-wasm.headers" \
+  '^cache-control:.*max-age=31536000.*immutable' \
+  'immutable Rust shadow WASM cache policy'
+if ! awk -v size="$SHADOW_ENCODED_SIZE" 'BEGIN { exit !(size > 0 && size < 1000000) }'; then
+  echo "Encoded Rust shadow WASM is not below 1,000,000 bytes: $SHADOW_ENCODED_SIZE" >&2
+  exit 1
+fi
+curl -fsS --compressed -H 'Accept-Encoding: br, gzip' \
+  "$SHADOW_WASM_URL" -o "$TMP_DIR/shadow-wasm.decoded"
+ACTUAL_SHADOW_WASM="$(shasum -a 256 "$TMP_DIR/shadow-wasm.decoded" | awk '{print $1}')"
+if [[ "$ACTUAL_SHADOW_WASM" != "$EXPECTED_SHADOW_WASM" ]]; then
+  echo "Decoded Rust shadow WASM differs from the pinned local bytes" >&2
+  exit 1
+fi
 
 # Measure encoded WASM, then download/decode it and compare the pinned hash.
 WASM_PATH="vendor/$VENDOR/pyodide/pyodide.asm.wasm"
@@ -207,5 +241,5 @@ if [[ "$STATUS" != 404 ]]; then
 fi
 require_header "$TMP_DIR/missing.headers" '^cache-control:.*no-store' 'non-storable error policy'
 
-printf 'Verified %s: build=%s app=%s vendor=%s encoded_wasm=%s bytes\n' \
-  "$BASE" "$BUILD" "$APP" "$VENDOR" "$ENCODED_SIZE"
+printf 'Verified %s: build=%s app=%s vendor=%s encoded_wasm=%s shadow_wasm=%s bytes\n' \
+  "$BASE" "$BUILD" "$APP" "$VENDOR" "$ENCODED_SIZE" "$SHADOW_ENCODED_SIZE"

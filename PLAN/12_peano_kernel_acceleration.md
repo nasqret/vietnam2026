@@ -111,15 +111,35 @@ critical path includes the socket-enabled local dashboard-server shard.
 
 ## K4 — Browser WebAssembly shadow
 
-- [ ] Pin a Rust toolchain and `wasm32-unknown-unknown` target reproducibly.
-- [ ] Build the same core as native Rust and deterministic integer-only WASM.
-- [ ] Run it in a separate worker over transferable bounded certificate bytes.
-- [ ] Initialize concurrently with Pyodide; do not add thread/COOP/COEP
+- [x] Pin a Rust toolchain and `wasm32-unknown-unknown` target reproducibly.
+- [x] Build the same core as native Rust and deterministic integer-only WASM.
+- [x] Run it in a separate worker over transferable bounded certificate bytes.
+- [x] Initialize concurrently with Pyodide; do not add thread/COOP/COEP
       requirements.
-- [ ] Include JS/WASM bytes in `APP_MANIFEST.sha256`, immutable release paths,
+- [x] Include JS/WASM bytes in `APP_MANIFEST.sha256`, immutable release paths,
       MIME/compression checks, and browser/deployment contracts.
-- [ ] Require Python acceptance; record Rust agreement or shadow failure
+- [x] Require Python acceptance; record Rust agreement or shadow failure
       without letting Rust publish QED.
+
+K4 candidate build `2026-08-04e` is application
+`a-129c5c680e53`. Its path-remapped 52,890-byte module has SHA-256
+`2ba86a22a01602a504df792830e25d743a7038876f47b2b6effa50fe00099063`,
+no imports, unshared memory capped at 256 MiB, and a one-shot ABI. Two clean
+Rust 1.95.0 builds are byte-identical. Native wrapper debug/release suites
+each pass 14 tests; the real module passes HA/classical acceptance, wrong
+target, zero fuel, malformed input, one-shot, resource, portable-index, and
+memory-cap fixtures. A complete real-WASM run accepted all 384 originals and
+rejected all 1,152 wrong-target/zero-fuel/malformed mutations. Its 1,536-case
+artifact receipt exactly matches native Rust:
+`4652c103b317ddf3405f74c022d2229be0c7bdb57fa94c9b0cc6e129d5a20b64`.
+The retained report additionally seals all 1,536 per-case artifact hashes, its
+Python/Node runner sources, and all-case receipt
+`2e6e5df23ec90555bb754b7297d87b75f37a1e6f9fcd5a6d9da6facbf1ad1f68`.
+Worker and main-page harnesses pin result-before-artifact
+ordering, transfer, timeout, trap, restart, generation suppression, and the
+rule that only Python publishes QED. This is a sealed local candidate, not a
+staging or production deployment claim. The machine-readable K4 receipt is
+`artifacts/peano-kernel/browser-wasm-v1.json`.
 
 ## K5 — Optional authority review
 

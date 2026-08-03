@@ -48,6 +48,9 @@ peano-lab/_dist/
 # ── Node (only used for tooling, not committed) ────────
 node_modules/
 
+# Rust build trees (the canonical browser WASM is committed separately).
+**/target/
+
 # ── OS / editor ────────────────────────────────────────
 .DS_Store
 Thumbs.db

@@ -111,7 +111,7 @@ jobs:
     if: ${{ always() }}
     needs: [peano-lab-shards, peano-kernel-shadow]
     steps:
-      - name: Require every Python shard and the native shadow
+      - name: Require every Python shard and both Rust shadow targets
         env:
           SHARD_RESULT: ${{ needs.peano-lab-shards.result }}
           SHADOW_RESULT: ${{ needs.peano-kernel-shadow.result }}
@@ -121,12 +121,12 @@ jobs:
             exit 1
           fi
           if [ "$SHADOW_RESULT" != "success" ]; then
-            echo "The native Rust shadow failed: $SHADOW_RESULT"
+            echo "The native/WASM Rust shadow job failed: $SHADOW_RESULT"
             exit 1
           fi
 
   peano-kernel-shadow:
-    name: Peano native Rust shadow (never QED authority)
+    name: Peano native + WASM Rust shadows (never QED authority)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -154,6 +154,19 @@ jobs:
           --rust-cli peano-lab/rust/peano-kernel-shadow/target/release/peano-kernel-shadow
           --theorem zero_add
           --theorem add_comm
+      - name: Check the dependency-free WASM wrapper
+        working-directory: peano-lab/rust/peano-kernel-shadow-wasm
+        run: |
+          cargo fmt --all -- --check
+          cargo clippy --all-targets --locked -- -D warnings
+          cargo test --all-targets --locked
+          cargo test --release --all-targets --locked
+      - name: Rebuild the committed WASM twice and compare exact bytes
+        run: scripts/build_peano_shadow_wasm.sh --check
+      - name: Exercise the real WASM ABI and fail-closed boundary
+        run: >-
+          node peano-lab/py/tests/real_wasm_shadow_harness.js
+          peano-lab/peano_kernel_shadow.wasm
 
   rocq:
     name: Rocq artifacts (statements 1–5, incl. √2)

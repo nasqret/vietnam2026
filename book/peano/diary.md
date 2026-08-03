@@ -2927,3 +2927,148 @@ and the strict Jupyter Book build plus all 287 documented commands also passed.
 This closes the authoritative-Python and native-shadow milestone, not K4. The
 browser WASM worker and the representative pinned-Lean third-way replay remain
 explicitly open, and Rust remains unable to publish QED.
+
+## 2026-08-04 — Put the Rust shadow in the browser without giving it a vote
+
+K4 began with an ordering question rather than a compiler question: when may
+Rust see a certificate without becoming another accidental QED path? The
+answer is deliberately asymmetric. `checked_surface_final` first asks the
+Python kernel to check the certificate against the proof owner's original
+target and exact HA/classical authority. Only after success does it retain an
+inert pending tuple of target, certificate, logic label, and fuel. The proof
+worker posts the Python result before serializing that tuple, so QED reaches
+the page even if optional encoding later fails.
+
+This forced a new bounded form of the canonical encoder. It produces exactly
+the same `peano-lab-v2` bytes as the unbounded API, but checks the 16 MiB limit
+on every append, including the terminal line feed. The pending artifact is
+one-shot and is cleared by the next command. Failed QED, abort, inspection,
+and unrelated commands export nothing. Encoder failure is tested after an
+already returned QED and cannot retract it.
+
+The browser wrapper is a sibling `cdylib`, not a modification of the
+unsafe-forbidden core. It has no third-party dependency and owns one
+thread-local `Vec<u8>`. JavaScript asks Rust to prepare an exact-length
+allocation, refreshes the linear-memory view after possible growth, copies
+the bytes, and calls a consuming check with logic `0` for HA or `1` for the
+explicit PA+DNE extension. Rust never reconstructs a slice from a
+caller-controlled pointer. The wrapper's only superficially alarming syntax
+is Rust 2024's required `#[unsafe(no_mangle)]` linkage annotation; there is no
+unsafe block, raw dereference, imported host function, theorem lookup, tactic,
+or proof search.
+
+The native/WASM comparison exposed a portability edge before it became a
+claim. Canonical naturals are limited to `u32`, but their Rust representation
+is `usize`: 64 bits on the native development host and 32 bits in WASM. A
+variable index near `u32::MAX` could therefore leave different headroom for a
+binder shift. The wrapper now rejects every term-variable and hypothesis
+index above `u32::MAX - 256`, matching the codec depth reserve. The inclusive
+boundary and first rejected value run in both native tests and the real WASM
+module.
+
+The raw ABI has four verdicts: accept, logical reject, malformed/resource
+reject, and bad-call/internal failure. The page maps only accept to *shadow
+agreement*. It calls every other outcome disagreement or unavailable, always
+adding that Python QED is authoritative. The Rust worker is one-shot; traps,
+timeouts, and completion all cause replacement. Its initialisation overlaps
+Pyodide but never gates Python readiness. One artifact may wait for readiness,
+one may be in flight, and a 30-second main-page watchdog can terminate the
+worker because synchronous WASM cannot cancel itself.
+
+The first architecture sketch considered `wasm-bindgen`. The smaller final
+design did not need it: the raw integer ABI avoids generated glue and runtime
+dependencies while keeping the trusted core unchanged. Fixed limits are 16
+MiB input, one million decoded nodes, depth 192, 64 million checker calls, a
+2 MiB stack, and 256 MiB maximum unshared memory. There are no atomics,
+threads, `SharedArrayBuffer`, COOP, or COEP requirements.
+
+Rust 1.95.0 and `wasm32-unknown-unknown` are pinned. The local Homebrew Rust
+installation lacked target libraries, so I installed the keg-only `rustup`
+manager and exact target rather than pretending a native build established
+WASM. Two clean builds in separate target directories produced identical
+path-remapped 52,890-byte modules with SHA-256
+`2ba86a22a01602a504df792830e25d743a7038876f47b2b6effa50fe00099063`.
+Node inspection reports zero imports, the expected raw exports, unshared
+memory, and a hard 256 MiB growth ceiling. Real-module fixtures cover HA and
+classical acceptance, HA rejection of DNE, wrong target, zero fuel, malformed
+newline, one-shot consumption, invalid logic, byte limits, portable indices,
+and the memory cap.
+
+The focused fixtures were not the final conformance ceiling. A length-prefixed
+binary runner kept one Node process alive while instantiating a fresh module
+for each case. Python replayed every one of the 384 public theorems, rechecked
+each original and wrong target, and streamed original, wrong-target, zero-fuel,
+and malformed-newline artifacts to the real committed module. All 1,536 cases
+matched the expected verdict. The original-artifact receipt is
+`4652c103b317ddf3405f74c022d2229be0c7bdb57fa94c9b0cc6e129d5a20b64`,
+exactly the native Rust receipt. The strengthened 406,243-byte retained report
+records every per-case artifact hash, a second all-case receipt, and hashes of
+both runner sources. It has SHA-256
+`4433ba5b418a50f02d4bbae4a3dab9d7d6d05e45573197cadfe8ed79d094a2d5`.
+
+An adversarial pre-commit review found three availability or attribution bugs,
+none capable of forging a theorem, and all were fixed before sealing. First,
+the worker originally asked Python for optional shadow metadata inside the
+same exception boundary as the authoritative command; a failing accessor
+could therefore hide an already successful QED from the page. Result delivery
+now precedes even that lookup, with a forced-exception regression test.
+Second, an older in-flight shadow verdict could overwrite the status for a
+newer QED in the same browser generation. A new QED now terminates the older
+diagnostic and stale instance messages are ignored. Third, bounded encoding
+checked bytes on append but could first allocate the whole decimal spelling of
+an adversarially enormous natural. A safe bit-length preflight and bounded
+base-billion walk now reject huge fuel and indices before that allocation.
+
+The same review also tightened what “complete differential” means. Each of the
+1,536 original or mutated artifacts is now retained by hash and expected
+verdict; the all-case receipt is
+`2e6e5df23ec90555bb754b7297d87b75f37a1e6f9fcd5a6d9da6facbf1ad1f68`.
+The report seals its Python generator and Node runner, so changing how a
+negative case is constructed makes the cheap evidence test fail. Conversely,
+the older native K3 report remains historical: its source seal is recomputed
+from producer commit `c0171d080ccda1e07b132590db6f7b922dff73ff`, not from
+the deliberately changed K4 working tree.
+
+The JavaScript tests deliberately use two layers. One executes the dedicated
+worker against fake accept/reject/trap modules to pin protocol mapping. The
+other executes the main-page lifecycle to pin concurrent readiness,
+transfer, timeout, worker replacement, and stale-generation suppression. A
+third harness invokes the committed real module. These tests complement the
+wrapper's fourteen debug and fourteen release tests; they do not promote Rust
+to theorem authority.
+
+The release manifest now contains the Python worker, shadow worker, Rust WASM,
+and 151 shipped Python files: 154 exact application entries. Deployment
+staging copies the two new assets, and the live verifier requires their hash,
+`application/wasm` MIME type, Brotli/gzip negotiation, immutable caching, and
+an encoded size below one megabyte. The local candidate is visible build
+`2026-08-04e`, application `a-129c5c680e53`. It has not been deployed to a
+remote environment by this milestone. A temporary local staging tree returned
+HTTP 200 for the shell and the exact 52,890-byte module with
+`application/wasm`; its hashes matched the source release. The in-app browser
+service was unavailable in this Codex session, so this record does not claim a
+visual-browser pass. The real-WASM and worker-lifecycle harnesses remain the
+behavioral browser gate. K5 and a representative pinned-Lean third-way replay
+remain separate reviews; Rust still has no vote in QED.
+
+The final K4 tree passed all eight runtime-balanced Peano shards: 2,724 tests
+passed, 12 were intentionally skipped, and none failed. Shard times were
+424.23, 434.18, 390.72, 405.65, 405.29, 439.11, 419.85, and 385.44 seconds;
+the critical path was 7 minutes 19 seconds. The one loopback dashboard test ran
+with local-socket permission, while the other shards stayed sandboxed. Lambda
+Lab remained green at 360 tests plus 36 subtests. The strict Jupyter Book
+build, all 287 documented commands, the 484-note/4,910-link vault graph, Rust
+fmt and clippy, both 27-test native-core profiles, both 14-test wrapper
+profiles, Python bytecode compilation, manifest identity, and two-clean-build
+WASM comparison all passed on the final bytes.
+
+The first GitHub Actions run then caught a stricter reproducibility fact than
+two local clean directories could reveal. Every Rust test passed, but Linux
+did not byte-match the macOS-built module because panic-location strings
+contained the absolute checkout root (`/Users/...` versus `/home/runner/...`).
+This was not a logical disagreement, yet a red exact-byte gate was the correct
+outcome. The build now passes a fixed Rust `--remap-path-prefix`, mapping the
+repository to `/peano-lab-src`. A regression assertion rejects the live
+workspace path and requires the virtual prefix. The path-remapped module was
+rebuilt twice, the full 1,536-case campaign was repeated, and only the
+WASM/report/release hashes changed; both logical receipts stayed identical.

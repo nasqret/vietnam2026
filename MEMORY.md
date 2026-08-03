@@ -1434,9 +1434,23 @@
   membership on `type(value)` could invoke adversarial metaclass equality and
   forge an `EqRefl` match for `0 = S 0`; checker constructor dispatch is now
   identity-only and the exact exploit is a permanent rejection test.
-  Pinned-Lean representative replay and browser WASM remain open. Candidate
-  browser build `2026-08-04b` has application address
-  `a-903a05e31da9` and 150 Python worker sources; it is not deployed.
+  Pinned-Lean representative replay remains open. K4 now ships a separate
+  dependency-free Rust/WASM diagnostic worker: Python posts authoritative QED
+  first, then transfers one bounded canonical artifact. The wrapper has 14
+  debug and 14 release tests; the real path-remapped 52,890-byte, zero-import module has
+  SHA-256
+  `2ba86a22a01602a504df792830e25d743a7038876f47b2b6effa50fe00099063`
+  and passes HA/classical, mutation, one-shot, portability, and memory-cap
+  fixtures. The complete real-WASM campaign agrees on all 384 originals and
+  1,152 negative mutations; its 1,536-case receipt exactly equals native Rust,
+  `4652c103b317ddf3405f74c022d2229be0c7bdb57fa94c9b0cc6e129d5a20b64`.
+  All four case artifacts per theorem and both runner sources are sealed; the
+  all-case receipt is
+  `2e6e5df23ec90555bb754b7297d87b75f37a1e6f9fcd5a6d9da6facbf1ad1f68`.
+  Traps/timeouts/rejections cannot grant or retract QED. Candidate
+  browser build `2026-08-04e` has application address
+  `a-129c5c680e53`, 150 mounted worker sources, and 154 sealed application
+  entries; it is not deployed.
 - **Model-v3 prelaunch durability and chain binding (2026-07-30):** the
   one-shot trainer preserves adapter/tokenizer tensors before its explicit
   full evaluation, while withholding the final manifest until evaluation and
