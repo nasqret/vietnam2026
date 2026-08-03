@@ -58,7 +58,8 @@
       "peano-lab/py/tests/test_ha_signed_mul_distributive_candidate.py",
       "peano-lab/py/tests/test_ha_signed_nat_scale_candidate.py",
       "peano-lab/py/tests/test_ha_signed_nat_scale_laws_candidate.py",
-      "peano-lab/py/tests/test_ha_signed_bezout_candidate.py"
+      "peano-lab/py/tests/test_ha_signed_bezout_candidate.py",
+      "peano-lab/py/tests/test_ha_signed_bezout_gcd_candidate.py"
     ],
     "theorems": [
       {
@@ -662,6 +663,13 @@
         "source_module": "peano-lab/py/peano_lab/library/ha_signed_bezout_candidate.py",
         "statement_sha256": "6054c489066d48e357e1a6df72a0f05d4c33657066e3a4b03c595d76e0974faa",
         "receipt": {"nodes": 1326, "depth": 40, "objects": 807, "edges": 829, "reused": 23, "cuts": 26, "certificate_sha256": "1bc7e28457b07b7aaf37b48aea0f3f86b58035797aeca50a022c73409f6eae1d"}
+      },
+      {
+        "name": "gcd_signed_bezout_exists",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py",
+        "statement_sha256": "2e729fe9d25b8afda315489713f0a4cd7980371bf621e8af9e557f4ffca7496e",
+        "receipt": {"nodes": 3535, "depth": 48, "objects": 1734, "edges": 1824, "reused": 91, "cuts": 74, "certificate_sha256": "4edeb4ffc7de0b9aa0a870d2125f7640f2447a7358ba454abba3db003f9044a3"}
       }
     ]
   },
@@ -1047,7 +1055,8 @@
       "depends_on_layers": [
         "K0",
         "K1",
-        "K2"
+        "K2",
+        "K3"
       ],
       "target": "Provide canonical quotient and remainder, gcd, lcm, extended Euclid, balanced Bezout coefficients, and executable specifications.",
       "public_theorem_references": [
@@ -1073,9 +1082,17 @@
             "canonical_gcd_exists_unique"
           ],
           "role": "Closed-checked but non-public existence, functionality, and unique-existence package for the canonical relational gcd predicate, derived without zero side conditions from the public IsGCD interface."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py",
+          "factory": "make_ha_signed_bezout_gcd_candidate_theorems",
+          "theorem_names": [
+            "gcd_signed_bezout_exists"
+          ],
+          "role": "Closed-checked but non-public K4 client combining public relational-gcd and balanced-Bezout existence with the strict-K3 canonical SignedBezout bridge."
         }
       ],
-      "remaining_gap": "Canonical remainder and its congruence bridge are public. The canonical relational-gcd package has deterministic empty-context closure receipts but remains isolated pending deliberate admission; lcm, an executable Euclidean graph, and the HA-K3-SIGNED-1 coefficient interface remain.",
+      "remaining_gap": "Canonical remainder and its congruence bridge are public. The canonical relational-gcd package and the K4 client exposing canonical signed Bezout coefficients have deterministic empty-context closure receipts but remain isolated pending deliberate admission; lcm and an executable Euclidean graph remain.",
       "validation": {
         "path": [
           "manifest_integrity",

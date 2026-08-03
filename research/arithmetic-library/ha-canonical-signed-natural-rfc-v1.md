@@ -945,8 +945,29 @@ total, and 86 theorem receipts, across 16 K3 candidate modules and 18 focused
 tests. The public registry remains 393 entries with 56 public references, the
 definition freeze remains 45 API rows over 44 distinct public theorems, and
 the catalog remains 394 entries. No D08 theorem is admitted. The proposed
-`gcd_signed_bezout_exists` remains a future K4 client rather than a strict-K3
+`gcd_signed_bezout_exists` is a separate K4 client rather than a strict-K3
 row because the public gcd route reaches division.
+
+#### 6.5.2 Closed K4 gcd client
+
+The isolated
+[`ha_signed_bezout_gcd_candidate.py`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)
+now combines public `gcd_balanced_bezout_exists` with the D08 forward bridge:
+
+```text
+forall a b. exists d x y. IsGCD(d,a,b) /\ SignedBezout(d,a,b,x,y)
+```
+
+Both readable predicates are fully expanded before parsing. Its certificate
+has 3,535 nodes, depth 48, 1,734 distinct objects, 1,824 edges, 91 reused
+references, and 74 Cuts, with SHA-256
+`4edeb4ffc7de0b9aa0a870d2125f7640f2447a7358ba454abba3db003f9044a3`.
+Unlike D08, its audited closure intentionally includes the public Euclidean
+division chain. It is therefore recorded under K4 with an explicit dependency
+on K3; it is not appended to the 74-row strict-K3 signed stack. The full
+campaign now has 78 candidates and 87 receipts across 18 candidate modules
+and 19 focused tests. The public boundary remains unchanged, and this K4 row
+is not admitted.
 
 ## 7. Primitive-recursive and conservativity argument to be certified
 

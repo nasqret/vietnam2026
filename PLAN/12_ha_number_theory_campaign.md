@@ -180,6 +180,8 @@ with `m != 0` on totality statements.
       candidates.
 - [x] Translate four-natural balanced Bezout witnesses to and from the signed
       interface.
+- [x] Combine public relational-gcd and balanced-Bezout existence with the
+      signed bridge as an explicitly K4, division-bearing client.
 - [ ] Add lcm only after its zero convention and gcd compatibility statement
       are frozen.
 
@@ -400,6 +402,22 @@ remains 45 rows over 44 distinct public theorems, and the catalog remains 394
 entries. Nothing in D08 is admitted. A `gcd_signed_bezout_exists` client is
 deliberately deferred to K4 because its public gcd dependency reaches
 division; it is not part of the strict K3 closure.
+
+The next isolated K4 row, `gcd_signed_bezout_exists`, now performs exactly
+that composition in
+[`ha_signed_bezout_gcd_candidate.py`](../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py),
+with a focused audit in
+[`test_ha_signed_bezout_gcd_candidate.py`](../peano-lab/py/tests/test_ha_signed_bezout_gcd_candidate.py).
+It produces a relational gcd `d` and canonical signed codes `x,y` satisfying
+`SignedBezout(d,a,b,x,y)`. Its empty-context certificate has 3,535 nodes,
+depth 48, 1,734 DAG objects, 1,824 edges, 91 reused references, and 74 Cuts,
+with SHA-256
+`4edeb4ffc7de0b9aa0a870d2125f7640f2447a7358ba454abba3db003f9044a3`.
+The layer edge `K3 -> K4` is now explicit: the client's public gcd branch
+reaches division, while the strict 74-row K3 stack and digest remain exactly
+unchanged. The campaign has 78 candidates and 87 theorem receipts: 74 strict-
+K3 signed rows, three canonical-gcd rows, and this one K4 signed-gcd client,
+across 18 candidate modules and 19 focused tests. Nothing is admitted.
 
 ## Release boundary
 

@@ -26,11 +26,12 @@ arithmetic library. Start with:
 Run `make ha-number-theory-check` from the repository root for the fast
 campaign-manifest, 45-row definition-freeze validation with 44 distinct public
 theorem replays, candidate-body, and empty-context receipt checks. The campaign
-manifest carries 86 statement hashes and exact closure receipts: nine
-deliberately admitted tranche-01 theorems and 77 total isolated candidates,
-comprising three canonical-gcd rows and 74 signed parity, decoder,
+manifest carries 87 statement hashes and exact closure receipts: nine
+deliberately admitted tranche-01 theorems and 78 total isolated candidates,
+comprising three canonical-gcd rows, 74 strict-K3 signed parity, decoder,
 code-extensionality, balance-normalization, negation, addition, complete D06
-multiplication-algebra, D07 natural-scale, and D08 Bezout-bridge rows. The D06
+multiplication-algebra, D07 natural-scale, and D08 Bezout-bridge rows, plus one
+K4 signed-gcd client. The D06
 closure ends with the four-row
 [`SignedMul` associativity candidate](../../peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py)
 and seven-row
@@ -63,13 +64,19 @@ then normalize legacy four-natural balanced coefficients into canonical
 signed codes and recover the raw witnesses in the opposite direction. The
 complete 74-row signed-stack digest is
 `b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`.
-The K3 evidence now spans 16 candidate modules and 18 focused tests. The
+The strict K3 evidence spans 16 candidate modules. The K4
+[`signed-gcd client`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)
+and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_signed_bezout_gcd_candidate.py)
+compose public relational-gcd/Bezout existence with D08; their closure is
+explicitly division-bearing and leaves the 74-row K3 digest unchanged. The
+full candidate evidence spans 18 modules and 19 focused tests. The
 public registry remains 393 entries with 56 public references, the definition
 freeze remains 45 API rows over 44 distinct public theorems, and the catalog
 remains 394 entries. Passing the candidate gate alone never enrolls a theorem
-in the public registry; none of these 77 candidates has been admitted. D08 is
-closed nonpublic. Deliberate admission, the separate K4 gcd packaging client,
-and lcm remain future gates.
+in the public registry; none of these 78 candidates has been admitted. D08 and
+the separate K4 gcd packaging client are closed nonpublic. Deliberate
+admission, lcm, and an executable Euclidean graph remain future gates.
 
 The current runtime contains 393 checked entries. The factorization tranche
 is fully synchronized. The exact native β-coded endpoints are checked

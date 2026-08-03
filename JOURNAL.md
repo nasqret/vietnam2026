@@ -4124,3 +4124,32 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   `ee4f046d54b019e780d05dfcf2fd75af7f1c481c930cea3de219a6c1c0870a8b`.
   No browser is attached, so visual QA is not claimed. Push, deployment, and
   public theorem admission remain separate and unperformed.
+
+## 2026-08-04 — K4 signed gcd/Bezout client closed in isolation
+
+- Added the one-row `gcd_signed_bezout_exists` client. It specializes public
+  `gcd_balanced_bezout_exists`, retains the complete relational-gcd witness,
+  and feeds the balanced coefficient conjunct to D08
+  `balanced_bezout_to_signed_bezout`. The result simultaneously returns
+  `d,x,y` with the expanded `IsGCD(d,a,b)` and
+  `SignedBezout(d,a,b,x,y)` relations.
+- The 592-byte statement has SHA-256
+  `2e729fe9d25b8afda315489713f0a4cd7980371bf621e8af9e557f4ffca7496e`.
+  Its 20-command dependency-curried body receipt is
+  `(2,20,25,13,25,24,0)`. Two empty-context closures reproduce
+  `(3535,48,1734,1824,91,74,
+  4edeb4ffc7de0b9aa0a870d2125f7640f2447a7358ba454abba3db003f9044a3)`.
+- The transitive audit identifies eight local K3 dependencies and 33 public
+  dependencies. It contains zero DNE and no CRT, beta, or classical theorem;
+  `divides_remainder`, `division_remainder_exists`, and
+  `division_remainder_succ` are expected K4 dependencies. The campaign
+  manifest now records `K3` explicitly in K4's layer dependencies rather than
+  contaminating the strict-K3 stack.
+- This raises the isolated corpus to 78 candidates and 87 receipts across 18
+  candidate modules and 19 focused tests. The strict signed stack remains 74
+  rows with digest `b7949148...`; registry/public-reference/definition/catalog
+  counts remain 393/56/45-over-44/394. The integrated source gate passes 29
+  campaign-structure tests and all 148 proof/admission tests. The arithmetic
+  knowledge base validates 394 rows, the independent snapshot replays all 393
+  public theorems, and the vault verifies 492 notes with 4,991 resolved links.
+  No admission, source seal, Book bind, push, or deployment is claimed yet.

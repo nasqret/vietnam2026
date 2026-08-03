@@ -1767,3 +1767,20 @@
   87,178,354 bytes and SHA-256
   `ee4f046d54b019e780d05dfcf2fd75af7f1c481c930cea3de219a6c1c0870a8b`.
   No push, deployment, public admission, or visual click-through is claimed.
+- **K4 signed gcd/Bezout client (2026-08-04):** the isolated nonpublic
+  `gcd_signed_bezout_exists` candidate composes public
+  `gcd_balanced_bezout_exists` with D08
+  `balanced_bezout_to_signed_bezout`. Its exact expanded statement has
+  SHA-256
+  `2e729fe9d25b8afda315489713f0a4cd7980371bf621e8af9e557f4ffca7496e`;
+  the closed receipt is `(3535,48,1734,1824,91,74,
+  4edeb4ffc7de0b9aa0a870d2125f7640f2447a7358ba454abba3db003f9044a3)`.
+  The closure has zero DNE and no CRT, beta, or classical dependency, but it
+  intentionally reaches the public Euclidean division chain. The manifest
+  therefore adds the honest `K3 -> K4` edge and keeps this theorem outside the
+  unchanged 74-row strict-K3 stack. The campaign now has 78 candidates and 87
+  receipts across 18 modules and 19 focused tests; public counts remain
+  393/56/45-over-44/394. The integrated gate passes 29 campaign-structure
+  tests and all 148 proof/admission tests. Independent checks keep the
+  394-row knowledge base, 393-theorem snapshot, and 492-note/4,991-link vault
+  green. Nothing is admitted.

@@ -23,11 +23,13 @@ intuitionistic arithmetic without extending Peano Lab's object language.
 - a checked dependency-curried body is weaker than either status.
 
 The current registry has 393 theorems. Nine strict-HA tranche-01 interfaces are
-public; three canonical-gcd and 74 signed representation, normalization,
-negation, addition, multiplication, natural-scale, and Bezout-bridge theorems
-remain closed candidates. Thus the isolated corpus has 77 total candidates
-and the campaign records 86 theorem receipts. The K3 evidence spans 16
-candidate modules and 18 focused tests. The definition freeze remains 45 API
+public; three canonical-gcd and 74 strict-K3 signed representation,
+normalization, arithmetic, natural-scale, and Bezout-bridge theorems remain
+closed candidates, together with one K4 signed-gcd client. Thus the isolated
+corpus has 78 total candidates and the campaign records 87 theorem receipts.
+The evidence spans 18 candidate modules and 19 focused tests, of which 16
+modules and the 74-row signed stack remain strict K3. The definition freeze
+remains 45 API
 rows over 44 distinct
 public theorems, there are 56 public references, and the catalog remains 394
 entries; the latest D08 work grants no admission.
@@ -51,6 +53,8 @@ flowchart TD
   L --> M[signed multiplication core and complete algebra]
   M --> D7[D07 natural scaling closed candidate]
   D7 --> B[D08 signed Bezout bridge closed candidate]
+  CG --> SG[K4 signed gcd and Bezout client]
+  B --> SG
 ```
 
 The signed representation is parity-interleaved:
@@ -127,6 +131,18 @@ D08 is closed at candidate status with 74 signed/77 total candidates, 86
 receipts, 16 K3 modules, and 18 focused tests. Its strict closure reaches no
 division, remainder, CRT, beta, classical, or DNE theorem. The gcd packaging
 client remains separate in K4 and no D08 row is public.
+
+The one-row
+[`K4 signed-gcd client`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)
+and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_signed_bezout_gcd_candidate.py)
+now combine the public relational-gcd/balanced-Bezout theorem with D08. The
+certificate has 3,535 nodes, depth 48, and 74 Cuts, with digest
+`4edeb4ffc7de0b9aa0a870d2125f7640f2447a7358ba454abba3db003f9044a3`.
+Its closure intentionally reaches the Euclidean division chain; the manifest
+therefore records an explicit `K3 -> K4` layer edge. It does not change the
+strict 74-row K3 digest. The complete isolated corpus is now 78 candidates and
+87 receipts across 18 modules and 19 tests, with no public admission.
 
 The independent pair/cell design is now frozen in `HA-K3-PAIR-1` using the
 doubled Cantor polynomial and a successor cell tag. This does not close the
