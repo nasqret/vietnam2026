@@ -42,8 +42,8 @@ TAG_RE = re.compile(r"^PA[0-9A-Y]{4}$")
 IDENT_RE = r"[A-Za-z_][A-Za-z0-9_']*"
 PA_AXIOMS = {f"PA{i}" for i in range(1, 7)}
 PINNED_UI_ASSETS = {
-    "assets/explorer.css": "c2ddf371f05c195dc44d32d793f643afbcddf134dd762f9f478a5c4b3c6dedd5",
-    "assets/explorer.js": "d02d28a144ffa53585de8dac6e0bd40806b1a6562a80d4bb5e1df90f0524e76e",
+    "assets/explorer.css": "6dd0cf105c498dec70fe6a7fac04dcda397b40f947de677b36fc9c01962d84bc",
+    "assets/explorer.js": "98f11fff5d34b5fa481c1dd6a6b39eef58fed28d00bb7d1f4ac7d1226b4d6606",
 }
 # A second generator owns the conservative defined-notation reading edition.
 # Keeping that subtree outside this frozen explicit manifest preserves every
@@ -376,15 +376,23 @@ def _render_graph(graph: dict[str, Any]) -> bytes:
             <option value="shortest">Short premise chain</option>
             <option value="corridor">All routes from start to target</option>
             <option value="prerequisites">Complete prerequisite cone</option>
-            <option value="neighborhood">Direct neighborhood</option>
+            <option value="neighborhood" selected>Direct neighborhood</option>
             <option value="dependents">Complete dependent cone</option>
             <option value="corpus">Entire theorem corpus</option>
+          </select>
+        </label>
+        <label>
+          Arrows
+          <select data-graph-edges>
+            <option value="focus" selected>Focused: path + target</option>
+            <option value="none">Hide arrows</option>
+            <option value="all">All direct arrows (heavy)</option>
           </select>
         </label>
         <button type="submit">Draw path</button>
       </form>
       <datalist id="pa-graph-theorems"></datalist>
-      <p class="pa-graph-control-note">A theorem root has no <em>theorem</em> prerequisites; it is not an axiom. The separate PA-foundations prelude records the language, arithmetic axioms, and proof rules.</p>
+      <p class="pa-graph-control-note">The sparse view suppresses arrows visually only: exact direct relations remain in the details panel and graph data. Large views use compact clickable theorem marks. A theorem root has no <em>theorem</em> prerequisites; it is not an axiom.</p>
     </section>
 
     <div class="pa-graph-layout">
@@ -406,7 +414,7 @@ def _render_graph(graph: dict[str, Any]) -> bytes:
             <text x="24" y="42">Loading theorem graph…</text>
           </svg>
         </div>
-        <p id="graph-instructions" class="pa-graph-instructions">Arrows run from prerequisite to dependent. Click a node to make it the target; use its ↗ link or the details-panel proof link to open the formal proof. Drag the background to pan. Use the buttons or Control/Command + wheel to zoom.</p>
+        <p id="graph-instructions" class="pa-graph-instructions">Shown arrows run from prerequisite to dependent. Click a node or compact mark to make it the target; use its ↗ link, when shown, or the details-panel proof link to open the formal proof. Drag the background to pan. Use the buttons or Control/Command + wheel to zoom.</p>
         <div class="pa-graph-legend" aria-label="Graph legend">
           <span><i class="pa-legend-node pa-legend-selected"></i> target</span>
           <span><i class="pa-legend-node pa-legend-critical"></i> chosen chain</span>

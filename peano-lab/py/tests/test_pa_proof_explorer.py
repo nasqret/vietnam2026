@@ -515,6 +515,44 @@ def test_graph_schema_and_inline_file_protocol_payload_are_exact_and_determinist
     assert on_disk == set(manifest_files) | {"manifest.json"}
 
 
+def test_graph_ui_has_sparse_defaults_and_keeps_full_direct_graph_available() -> None:
+    graph = _load(GRAPH)
+    target = "PA00FW"
+    neighborhood = graph["adjacency"][target]
+    visible = {
+        target,
+        *neighborhood["dependencies"],
+        *neighborhood["dependents"],
+    }
+    induced = [
+        edge for edge in graph["edges"]
+        if edge["dependency"] in visible and edge["dependent"] in visible
+    ]
+    assert len(visible) == 4
+    assert len(induced) == 3
+    assert len(graph["nodes"]) == THEOREM_COUNT
+    assert len(graph["edges"]) == EDGE_COUNT
+
+    page = (EXPLORER / "graph.html").read_text(encoding="utf-8")
+    assert '<option value="neighborhood" selected>' in page
+    assert '<option value="focus" selected>Focused: path + target</option>' in page
+    assert '<option value="all">All direct arrows (heavy)</option>' in page
+    assert "suppresses arrows visually only" in page
+
+    script = (EXPLORER / "assets" / "explorer.js").read_text(encoding="utf-8")
+    assert 'function graphDisplayedEdges(state, selection)' in script
+    assert 'state.edgeMode === "none"' in script
+    assert 'state.edgeMode === "all"' in script
+    assert ': "neighborhood";' in script
+    assert 'visible.length > 160' in script
+    assert 'selection.displayedEdges.length + " of " + selection.edges.length' in script
+    # Autocomplete no longer doubles 557 persistent option elements merely to
+    # expose theorem names; graphResolve still accepts typed exact names.
+    datalist_block = script[script.index('var datalist = root.querySelector("#pa-graph-theorems")'):]
+    datalist_block = datalist_block[:datalist_block.index('state.form.addEventListener("submit"')]
+    assert datalist_block.count('document.createElement("option")') == 1
+
+
 def test_all_formal_lines_have_stable_clickable_anchors_and_safe_references() -> None:
     records = _records()
     total_lines = 0

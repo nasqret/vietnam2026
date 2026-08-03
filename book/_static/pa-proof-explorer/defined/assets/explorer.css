@@ -228,6 +228,13 @@ body.pa-defined-proof-site .pd-graph-controls label:first-child {
   flex: 1 1 20rem;
 }
 
+body.pa-defined-proof-site .pd-graph-note {
+  margin: 0.45rem 0 0.85rem;
+  color: var(--pd-muted);
+  font-family: var(--pd-sans);
+  font-size: 0.82rem;
+}
+
 body.pa-defined-proof-site .pd-results {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
@@ -567,6 +574,11 @@ body.pa-defined-proof-site .pd-node-id {
   font-family: var(--pd-mono);
   font-size: 12px;
   font-weight: 800;
+}
+
+body.pa-defined-proof-site .pd-graph-node-compact .pd-node-id {
+  font-size: 8px;
+  letter-spacing: 0.04em;
 }
 
 body.pa-defined-proof-site .pd-node-name {

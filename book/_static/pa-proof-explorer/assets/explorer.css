@@ -725,7 +725,7 @@ body.pa-proof-site .pa-graph-path-fallback h2 {
 
 body.pa-proof-site .pa-graph-controls form {
   display: grid;
-  grid-template-columns: minmax(13rem, 1fr) minmax(13rem, 1fr) minmax(15rem, 1fr) auto;
+  grid-template-columns: minmax(11rem, 1.2fr) minmax(11rem, 1.2fr) minmax(10rem, 1fr) minmax(11rem, 1fr) auto;
   gap: 0.75rem;
   align-items: end;
   margin-top: 0.8rem;
@@ -942,6 +942,11 @@ body.pa-proof-site .pa-graph-prelude text {
   font-family: var(--pe-mono);
   font-size: 12px;
   font-weight: 800;
+}
+
+body.pa-proof-site .pa-graph-node-compact .pa-graph-node-tag {
+  font-size: 8px;
+  letter-spacing: 0.04em;
 }
 
 body.pa-proof-site .pa-graph-node-name,

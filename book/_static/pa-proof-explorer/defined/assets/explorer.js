@@ -168,8 +168,8 @@
     });
   }
 
-  function addDefinitionClosure(model, ids) {
-    var pending = Array.from(ids);
+  function addDefinitionClosure(model, ids, sources) {
+    var pending = Array.from(sources || ids);
     while (pending.length) {
       var source = pending.pop();
       (model.notationUses.get(source) || []).forEach(function (definitionId) {
@@ -179,6 +179,19 @@
         }
       });
     }
+  }
+
+  function displayedEdges(state, selection) {
+    if (state.edgeMode === "none") return [];
+    if (state.edgeMode === "all") return selection.edges.slice();
+    var route = new Set();
+    for (var index = 1; index < selection.path.length; index += 1) {
+      route.add(selection.path[index - 1] + "\u0000" + selection.path[index]);
+    }
+    return selection.edges.filter(function (edge) {
+      return edge.source === state.selected || edge.target === state.selected ||
+        (edge.kind === "proof_dependency" && route.has(edge.source + "\u0000" + edge.target));
+    });
   }
 
   function graphSelection(state) {
@@ -199,10 +212,15 @@
       (state.model.proofDependents.get(state.target) || []).forEach(function (id) { theoremIds.add(id); });
     }
     var ids = new Set(theoremIds);
-    if (state.includeDefinitions) addDefinitionClosure(state.model, ids);
+    if (state.definitionMode === "visible") {
+      addDefinitionClosure(state.model, ids, theoremIds);
+    } else if (state.definitionMode === "selected") {
+      ids.add(state.selected);
+      addDefinitionClosure(state.model, ids, new Set([state.selected]));
+    }
     var edges = state.model.edges.filter(function (edge) {
       return ids.has(edge.source) && ids.has(edge.target) &&
-        (state.includeDefinitions || edge.kind === "proof_dependency");
+        (state.definitionMode !== "off" || edge.kind === "proof_dependency");
     });
     return { ids: ids, theoremIds: theoremIds, path: path, edges: edges };
   }
@@ -254,6 +272,10 @@
     var visible = Array.from(selection.ids).map(function (id) { return state.model.byId.get(id); }).filter(Boolean);
     var theoremNodes = visible.filter(function (node) { return node.kind === "theorem"; });
     var definitionNodes = visible.filter(function (node) { return node.kind === "definition"; });
+    var compact = visible.length > 160;
+    var horizontalStep = compact ? 76 : 225;
+    var verticalStep = compact ? 25 : 70;
+    var nodeHalfWidth = compact ? 27 : 96;
     var byLayer = new Map();
     theoremNodes.forEach(function (node) {
       var layer = Number(node.layer);
@@ -275,12 +297,13 @@
       var hasPath = rows.some(function (node) { return pathIds.has(node.id); });
       var branch = 0;
       rows.forEach(function (node) {
-        var y = hasPath && pathIds.has(node.id) ? 90 : (hasPath ? 165 : 90) + branch++ * 70;
-        positions.set(node.id, { x: 130 + (layer - minimumLayer) * 225, y: y });
+        var y = hasPath && pathIds.has(node.id) ? (compact ? 54 : 90) :
+          (hasPath ? (compact ? 84 : 165) : (compact ? 54 : 90)) + branch++ * verticalStep;
+        positions.set(node.id, { x: 60 + (layer - minimumLayer) * horizontalStep, y: y });
         maximumY = Math.max(maximumY, y);
       });
       var label = svgElement("text", {
-        x: 130 + (layer - minimumLayer) * 225, y: "23",
+        x: 60 + (layer - minimumLayer) * horizontalStep, y: "23",
         class: "pd-graph-layer-label", "text-anchor": "middle"
       });
       label.textContent = "proof layer " + layer;
@@ -294,18 +317,18 @@
       if (!definitionsByDepth.has(depth)) definitionsByDepth.set(depth, []);
       definitionsByDepth.get(depth).push(node);
     });
-    var definitionBaseX = 130 + (maximumLayer - minimumLayer + 1) * 225;
+    var definitionBaseX = 60 + (maximumLayer - minimumLayer + 1) * horizontalStep;
     Array.from(definitionsByDepth.keys()).sort(function (a, b) { return a - b; }).forEach(function (depth) {
       var rows = definitionsByDepth.get(depth).sort(function (left, right) {
         return state.model.order.get(left.id) - state.model.order.get(right.id);
       });
       rows.forEach(function (node, index) {
-        var y = 90 + index * 70;
-        positions.set(node.id, { x: definitionBaseX + depth * 225, y: y });
+        var y = (compact ? 54 : 90) + index * verticalStep;
+        positions.set(node.id, { x: definitionBaseX + depth * horizontalStep, y: y });
         maximumY = Math.max(maximumY, y);
       });
       var label = svgElement("text", {
-        x: definitionBaseX + depth * 225, y: "23",
+        x: definitionBaseX + depth * horizontalStep, y: "23",
         class: "pd-graph-layer-label", "text-anchor": "middle"
       });
       label.textContent = depth ? "composite definitions " + depth : "definitions";
@@ -316,13 +339,13 @@
     for (var index = 1; index < selection.path.length; index += 1) {
       pathEdges.add(selection.path[index - 1] + "\u0000" + selection.path[index]);
     }
-    selection.edges.forEach(function (edge) {
+    selection.displayedEdges.forEach(function (edge) {
       var from = positions.get(edge.source);
       var to = positions.get(edge.target);
       if (!from || !to) return;
-      var startOffset = from.x <= to.x ? 96 : -96;
-      var endOffset = from.x <= to.x ? -96 : 96;
-      var distance = Math.max(42, Math.abs(to.x - from.x) * 0.42);
+      var startOffset = from.x <= to.x ? nodeHalfWidth : -nodeHalfWidth;
+      var endOffset = from.x <= to.x ? -nodeHalfWidth : nodeHalfWidth;
+      var distance = Math.max(compact ? 12 : 42, Math.abs(to.x - from.x) * 0.42);
       var direction = from.x <= to.x ? 1 : -1;
       var key = edge.source + "\u0000" + edge.target;
       var notation = edge.kind !== "proof_dependency";
@@ -352,6 +375,7 @@
     }).forEach(function (node) {
       var position = positions.get(node.id);
       var classes = ["pd-graph-node", "pd-graph-node-" + node.kind];
+      if (compact) classes.push("pd-graph-node-compact");
       if (node.scope) classes.push("pd-scope-" + node.scope);
       if (pathIds.has(node.id)) classes.push("pd-graph-node-path");
       if (node.id === state.selected) classes.push("pd-graph-node-selected");
@@ -365,33 +389,41 @@
       title.textContent = node.id + " · " + node.name + " — click to inspect";
       group.appendChild(title);
       if (node.kind === "definition") {
-        group.appendChild(svgElement("polygon", {
-          points: "-96,0 -78,-27 78,-27 96,0 78,27 -78,27"
-        }));
+        group.appendChild(svgElement("polygon", compact ? {
+          points: "-27,0 -22,-10 22,-10 27,0 22,10 -22,10"
+        } : { points: "-96,0 -78,-27 78,-27 96,0 78,27 -78,27" }));
       } else {
-        group.appendChild(svgElement("rect", { x: "-96", y: "-27", width: "192", height: "54", rx: "8" }));
+        group.appendChild(svgElement("rect", compact ?
+          { x: "-27", y: "-10", width: "54", height: "20", rx: "4" } :
+          { x: "-96", y: "-27", width: "192", height: "54", rx: "8" }));
       }
-      var idText = svgElement("text", { x: "-84", y: "-5", class: "pd-node-id" });
-      idText.textContent = node.id;
+      var idText = svgElement("text", compact ?
+        { x: "0", y: "3", class: "pd-node-id", "text-anchor": "middle" } :
+        { x: "-84", y: "-5", class: "pd-node-id" });
+      idText.textContent = compact ? node.id.slice(2) : node.id;
       group.appendChild(idText);
-      var nameText = svgElement("text", { x: "-84", y: "14", class: "pd-node-name" });
-      nameText.textContent = truncate(node.name, 27);
-      group.appendChild(nameText);
-      var open = svgElement("a", {
-        href: node.href, "data-graph-open": node.id,
-        "aria-label": "Open " + node.kind + " " + node.name
-      });
-      var openText = svgElement("text", { x: "82", y: "-7", class: "pd-node-open", "text-anchor": "end" });
-      openText.textContent = "↗";
-      open.appendChild(openText);
-      group.appendChild(open);
+      if (!compact) {
+        var nameText = svgElement("text", { x: "-84", y: "14", class: "pd-node-name" });
+        nameText.textContent = truncate(node.name, 27);
+        group.appendChild(nameText);
+        var open = svgElement("a", {
+          href: node.href, "data-graph-open": node.id,
+          "aria-label": "Open " + node.kind + " " + node.name
+        });
+        var openText = svgElement("text", { x: "82", y: "-7", class: "pd-node-open", "text-anchor": "end" });
+        openText.textContent = "↗";
+        open.appendChild(openText);
+        group.appendChild(open);
+      }
       viewport.appendChild(group);
     });
 
+    var outerPadding = compact ? 38 : 120;
     var maximumX = definitionNodes.length ?
-      Math.max.apply(null, definitionNodes.map(function (node) { return positions.get(node.id).x; })) + 120 :
-      130 + (maximumLayer - minimumLayer) * 225 + 120;
+      Math.max.apply(null, definitionNodes.map(function (node) { return positions.get(node.id).x; })) + outerPadding :
+      60 + (maximumLayer - minimumLayer) * horizontalStep + outerPadding;
     state.positions = positions;
+    state.compact = compact;
     state.bounds = { x: 5, y: -10, width: Math.max(360, maximumX + 15), height: Math.max(260, maximumY + 75) };
   }
 
@@ -487,8 +519,8 @@
       url.searchParams.set("target", state.target);
       url.searchParams.set("focus", state.selected);
       url.searchParams.set("view", state.view);
-      if (state.includeDefinitions) url.searchParams.set("definitions", "1");
-      else url.searchParams.set("definitions", "0");
+      url.searchParams.set("definitions", state.definitionMode);
+      url.searchParams.set("edges", state.edgeMode);
       window.history.replaceState(null, "", url.toString());
     } catch (_error) {
       /* A read-only address does not disable the graph. */
@@ -498,6 +530,7 @@
   function renderGraph(state, shouldFit) {
     var selection = graphSelection(state);
     if (!selection.ids.has(state.selected)) state.selected = state.target;
+    selection.displayedEdges = displayedEdges(state, selection);
     renderSvg(state, selection);
     updateDetails(state);
     var theoremCount = Array.from(selection.ids).filter(function (id) {
@@ -505,7 +538,9 @@
     }).length;
     var definitionCount = selection.ids.size - theoremCount;
     state.summary.textContent = theoremCount + " theorem nodes · " + definitionCount +
-      " definition nodes · " + selection.edges.length + " typed edges. Proof paths ignore notation edges.";
+      " definition nodes · " + selection.displayedEdges.length + " of " + selection.edges.length +
+      " direct typed arrows shown" + (state.compact ? " · compact clickable marks." :
+        ". Proof paths ignore notation edges.");
     synchronizeAddress(state);
     window.requestAnimationFrame(function () { if (shouldFit) fit(state); });
   }
@@ -569,20 +604,29 @@
       (model.byId.has("PA00FW") ? "PA00FW" : model.theoremNodes[model.theoremNodes.length - 1].id);
     var focus = String(parameters.get("focus") || "").toUpperCase();
     var allowedViews = new Set(["critical", "prerequisites", "neighborhood", "corpus"]);
+    var requestedDefinitions = parameters.get("definitions");
+    var definitionMode = requestedDefinitions === "1" ? "visible" :
+      requestedDefinitions === "0" ? "off" : requestedDefinitions;
+    if (!["selected", "visible", "off"].includes(definitionMode)) definitionMode = "selected";
+    var requestedEdges = parameters.get("edges");
+    var edgeMode = ["focus", "none", "all"].includes(requestedEdges) ? requestedEdges : "focus";
     var state = {
       root: root, model: model, target: target,
       selected: model.byId.has(focus) ? focus : target,
-      view: allowedViews.has(parameters.get("view")) ? parameters.get("view") : "critical",
-      includeDefinitions: parameters.get("definitions") !== "0",
+      view: allowedViews.has(parameters.get("view")) ? parameters.get("view") : "neighborhood",
+      definitionMode: definitionMode,
+      edgeMode: edgeMode,
       summary: summary,
       svg: root.querySelector("[data-graph-svg]"),
       targetInput: root.querySelector("[data-graph-target]"),
       viewInput: root.querySelector("[data-graph-view]"),
-      definitionsInput: root.querySelector("[data-graph-definitions]")
+      definitionsInput: root.querySelector("[data-graph-definitions]"),
+      edgeInput: root.querySelector("[data-graph-edges]")
     };
     state.targetInput.value = state.target;
     state.viewInput.value = state.view;
-    state.definitionsInput.checked = state.includeDefinitions;
+    state.definitionsInput.value = state.definitionMode;
+    state.edgeInput.value = state.edgeMode;
     var datalist = root.querySelector("#pd-graph-theorems");
     model.theoremNodes.forEach(function (node) {
       var option = document.createElement("option");
@@ -598,7 +642,8 @@
       state.target = next;
       state.selected = next;
       state.view = state.viewInput.value;
-      state.includeDefinitions = state.definitionsInput.checked;
+      state.definitionMode = state.definitionsInput.value;
+      state.edgeMode = state.edgeInput.value;
       renderGraph(state, true);
     });
     state.viewInput.addEventListener("change", function () {
@@ -606,7 +651,11 @@
       renderGraph(state, true);
     });
     state.definitionsInput.addEventListener("change", function () {
-      state.includeDefinitions = state.definitionsInput.checked;
+      state.definitionMode = state.definitionsInput.value;
+      renderGraph(state, true);
+    });
+    state.edgeInput.addEventListener("change", function () {
+      state.edgeMode = state.edgeInput.value;
       renderGraph(state, true);
     });
     root.addEventListener("click", function (event) {

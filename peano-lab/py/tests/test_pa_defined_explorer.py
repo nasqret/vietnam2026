@@ -135,6 +135,57 @@ def test_mixed_graph_has_typed_edges_and_theorem_only_paths(built) -> None:
     assert 'svgElement("polygon"' in script
 
 
+def test_mixed_graph_ui_defaults_to_selected_definitions_and_focused_arrows(built) -> None:
+    files, _manifest, _raw = built
+    graph = json.loads(files["api/graph.json"])
+    target = "PA00FW"
+    proof = graph["proof_adjacency"][target]
+    theorem_ids = {target, *proof["dependencies"], *proof["dependents"]}
+    ids = set(theorem_ids)
+    pending = [target]
+    while pending:
+        source = pending.pop()
+        for definition_id in graph["notation_adjacency"][source]["uses"]:
+            if definition_id not in ids:
+                ids.add(definition_id)
+                pending.append(definition_id)
+    available = [
+        edge for edge in graph["edges"]
+        if edge["source"] in ids and edge["target"] in ids
+    ]
+    route = set(zip(proof["critical_root_path"], proof["critical_root_path"][1:]))
+    displayed = [
+        edge for edge in available
+        if edge["source"] == target
+        or edge["target"] == target
+        or (
+            edge["kind"] == "proof_dependency"
+            and (edge["source"], edge["target"]) in route
+        )
+    ]
+    assert len(theorem_ids) == 4
+    assert len(ids - theorem_ids) == 7
+    assert len(available) == 26
+    assert len(displayed) == 10
+
+    page = files["graph.html"].decode("utf-8")
+    assert '<option value="neighborhood" selected>' in page
+    assert '<option value="selected" selected>Selected node only</option>' in page
+    assert '<option value="focus" selected>Focused: path + selected node</option>' in page
+    assert "Sparse modes suppress visual objects only" in page
+    assert 'data-graph-title tabindex="-1"' in page
+    for label in ("Zoom in", "Zoom out", "Fit graph"):
+        assert f'aria-label="{label}"' in page
+
+    script = files["assets/explorer.js"].decode("utf-8")
+    assert 'function displayedEdges(state, selection)' in script
+    assert 'definitionMode = "selected"' in script
+    assert 'edgeMode = ["focus", "none", "all"]' in script
+    assert ': "neighborhood"' in script
+    assert 'visible.length > 160' in script
+    assert 'selection.displayedEdges.length + " of " + selection.edges.length' in script
+
+
 def test_assets_are_pinned_local_scoped_and_avoid_unsafe_sinks(built) -> None:
     import build_pa_defined_explorer as generator
 

@@ -187,11 +187,19 @@ inject the million-byte data bundle into every narrative chapter.
 Book copies it to `_build/html/_static/pa-proof-explorer/`, so deployed links
 are relative to the Book base rather than site-root absolute. From a chapter
 under `arithmetic-library/`, the graph link is therefore
-`../_static/pa-proof-explorer/graph.html?target=PA00FW`; inside the microsite,
+`../_static/pa-proof-explorer/graph.html?target=PA00FW&view=neighborhood&edges=focus`;
+inside the microsite,
 assets and API files remain relative to `graph.html`. The `target` query is
 runtime selection state, not part of the filesystem path. Stable citations
 continue to use `tag/PAxxxx.html`; a query-selected graph view does not replace
 the permanent theorem URL.
+
+Rendering is intentionally independent of graph truth. The default direct
+neighborhood and focused-arrow policy keeps first paint small; `edges=none`
+and `edges=all` respectively suppress or restore visible direct arrows. Views
+over 160 vertices render compact clickable marks. All traversal, relation
+panels, JSON receipts, hashes, and proof paths continue to use the unreduced
+authoritative direct graph.
 
 ## Future trace overlay
 

@@ -16,6 +16,14 @@ and every tactic to its corresponding theorem or foundations page. Forward
 and reverse neighborhoods expose the seven packaging dependencies that do not
 occur literally in a later tactic line.
 
+The graph renderer is deliberately sparse. It opens on the selected theorem's
+direct neighborhood, draws only premise-path and selected-node arrows, and
+uses compact clickable marks above 160 visible nodes. `edges=all` remains an
+explicit full rendering mode; hiding an arrow never changes the 1,787-edge
+API or the complete direct-relation lists. The definition-aware edition also
+defaults to the selected node's conservative-definition closure rather than
+all notation nodes used by the visible theorem set.
+
 The status badge is not theorem authority: 240 pages are public, 316 are
 body-checked candidates, and the QR root still awaits its layered
 [[layered-cut-bundle]] closure. Likewise, every informal explanation says

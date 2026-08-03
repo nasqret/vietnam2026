@@ -22,7 +22,7 @@ the kernel proof rules are documented separately in the
 </div>
 
 <p>
-  <a class="btn btn-primary" href="../_static/pa-proof-explorer/graph.html?target=PA00FW">
+  <a class="btn btn-primary" href="../_static/pa-proof-explorer/graph.html?target=PA00FW&amp;view=neighborhood&amp;edges=focus">
     Open the full graph · PA00FW
   </a>
   <a class="btn btn-outline-primary" href="../_static/pa-proof-explorer/tag/PA00FW.html">
@@ -31,14 +31,14 @@ the kernel proof rules are documented separately in the
 </p>
 
 <iframe
-  src="../_static/pa-proof-explorer/graph.html?target=PA00FW"
+  src="../_static/pa-proof-explorer/graph.html?target=PA00FW&amp;view=neighborhood&amp;edges=focus"
   title="Native PA theorem dependency paths to quadratic reciprocity"
   width="100%"
   height="980"
   loading="lazy">
   <p>
     Your browser does not support embedded pages.
-    <a href="../_static/pa-proof-explorer/graph.html?target=PA00FW">Open the dependency graph directly.</a>
+    <a href="../_static/pa-proof-explorer/graph.html?target=PA00FW&amp;view=neighborhood&amp;edges=focus">Open the dependency graph directly.</a>
   </p>
 </iframe>
 
@@ -65,6 +65,14 @@ to open the exact theorem page.
 The graph can show a chosen path, a start-to-target corridor, either transitive
 cone, or the entire corpus. The ordinary linked list beneath the canvas is a
 text alternative for the selected route.
+
+The initial view is intentionally sparse: it shows the target's direct
+neighborhood and draws only its incident arrows plus the chosen premise path.
+The **Arrows** control can hide all arrows or restore every exact direct arrow.
+This changes rendering only—the details panel and `api/graph.json` always retain
+the complete relation. Views above 160 nodes switch to compact clickable marks,
+so the full corpus remains navigable without constructing thousands of labelled
+SVG cards.
 
 ## Short and critical premise chains
 

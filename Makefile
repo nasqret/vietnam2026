@@ -56,6 +56,7 @@ book-atlas:
 
 book-proof-explorer:
 	python3 scripts/build_pa_proof_explorer.py
+	python3 scripts/build_pa_defined_explorer.py
 
 book: book-atlas book-proof-explorer
 	rm -rf book/_build   # full rebuild: incremental Sphinx leaves stale sidebars after TOC changes

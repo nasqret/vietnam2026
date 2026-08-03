@@ -18,7 +18,7 @@ therefore neither an axiom nor a theorem nor a new predicate constant.
   <a class="btn btn-primary" href="../_static/pa-proof-explorer/defined/index.html">
     Open the definition-aware explorer
   </a>
-  <a class="btn btn-outline-primary" href="../_static/pa-proof-explorer/defined/graph.html?target=PA00FW">
+  <a class="btn btn-outline-primary" href="../_static/pa-proof-explorer/defined/graph.html?target=PA00FW&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus">
     Draw the mixed graph · PA00FW
   </a>
   <a class="btn btn-outline-primary" href="../_static/pa-proof-explorer/index.html">
@@ -158,6 +158,13 @@ using another definition. They describe notation structure, not proof
 authority. The graph records statement and local-proposition occurrence counts
 separately.
 
+The mixed graph opens in a sparse neighborhood mode. It adds only the selected
+node's definition closure and draws only the selected node's direct arrows plus
+the theorem premise path. **Definitions** can be switched to off or to all
+definitions used by the visible theorems; **Arrows** can be hidden or restored
+in full. These controls suppress visual objects only. The selected-node panel
+and typed graph API continue to expose every exact proof and notation relation.
+
 ```{admonition} Proof paths contain theorem edges only
 :class: note
 Critical paths and prerequisite cones are computed exclusively from the
@@ -166,14 +173,14 @@ extend, or otherwise participate in a proof path.
 ```
 
 <iframe
-  src="../_static/pa-proof-explorer/defined/graph.html?target=PA00FW"
+  src="../_static/pa-proof-explorer/defined/graph.html?target=PA00FW&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus"
   title="Mixed theorem and conservative-definition graph"
   width="100%"
   height="980"
   loading="lazy">
   <p>
     Your browser does not support embedded pages.
-    <a href="../_static/pa-proof-explorer/defined/graph.html?target=PA00FW">Open the mixed graph directly.</a>
+    <a href="../_static/pa-proof-explorer/defined/graph.html?target=PA00FW&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus">Open the mixed graph directly.</a>
   </p>
 </iframe>
 

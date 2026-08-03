@@ -94,8 +94,8 @@ SHA_RE = re.compile(r"^[0-9a-f]{64}$")
 ADAPTER_MODULE = "peano_lab.library.defined_edition"
 ADAPTER_FUNCTION = "build_defined_edition"
 PINNED_ASSETS = {
-    "assets/explorer.css": "2aab0ad0521683f09e88de459be6857140b99617fe317e8a08affe407932eb6c",
-    "assets/explorer.js": "72e347ac99a7507d001db7458d81f7ed4a0244398c03dc0917f864ce4fbe0aa8",
+    "assets/explorer.css": "eb26033797a96d83d62b36d9562ffa37afe7443e2a54bd1d693fc9d5da5ad220",
+    "assets/explorer.js": "47a90b78691e139e7248f78dc3ecd41ef3f6477491f9547abe3e30ef80d817dc",
 }
 
 
@@ -733,7 +733,24 @@ def _render_index(theorems: Sequence[Mapping[str, Any]], definitions: Sequence[M
 
 def _render_graph(graph: Mapping[str, Any]) -> bytes:
     inline = _javascript_assignment("PA_DEFINED_GRAPH", graph)
-    body = f'''<header class="pd-header"><nav><a href="index.html">Defined edition</a><a href="../graph.html?target=PA00FW">Exact theorem graph</a><a href="../../../arithmetic-library/defined-proof-explorer.html">Jupyter Book guide</a></nav><p class="pd-kicker">Typed mixed graph</p><h1>Theorems and conservative definitions</h1><p>Proof arrows and notation arrows are intentionally different relations. Only theorem-proof arrows participate in premise paths.</p></header><main class="pd-graph-page" data-defined-graph><form class="pd-graph-controls" data-graph-form><label>Target theorem <input data-graph-target list="pd-graph-theorems" value="PA00FW" required></label><datalist id="pd-graph-theorems"></datalist><label>View <select data-graph-view><option value="critical">Critical theorem path</option><option value="prerequisites">Complete theorem prerequisite cone</option><option value="neighborhood">Direct theorem neighborhood</option><option value="corpus">Entire theorem corpus</option></select></label><label><input data-graph-definitions type="checkbox" checked> Include definition nodes</label><button type="submit">Draw</button></form><div class="pd-graph-layout"><section><div class="pd-graph-toolbar"><p data-graph-summary aria-live="polite">Loading graph…</p><div><button type="button" data-graph-zoom="in">+</button><button type="button" data-graph-zoom="out">−</button><button type="button" data-graph-fit>Fit</button></div></div><div class="pd-graph-stage"><svg data-graph-svg tabindex="0" role="group" aria-label="Mixed theorem and definition graph"><text x="20" y="35">Loading…</text></svg></div><div class="pd-legend"><span><i class="pd-legend-theorem"></i> theorem</span><span><i class="pd-legend-definition"></i> definition</span><span><i class="pd-legend-proof"></i> proof dependency</span><span><i class="pd-legend-notation"></i> uses definition</span></div></section><aside class="pd-graph-details"><p class="pd-kicker">Selected node</p><h2 data-graph-title>Loading…</h2><p data-graph-kind></p><p data-graph-description></p><dl data-graph-metadata></dl><p><a data-graph-open href="index.html">Open node →</a></p><h3>Outgoing relations</h3><ul data-graph-outgoing></ul><h3>Incoming relations</h3><ul data-graph-incoming></ul></aside></div><noscript><p class="pd-callout">The graph requires JavaScript. Every theorem and definition page remains available from the index.</p></noscript></main><script id="pa-defined-graph-data">{inline}</script>'''
+    body = f'''<header class="pd-header">
+<nav><a href="index.html">Defined edition</a><a href="../graph.html?target=PA00FW">Exact theorem graph</a><a href="../../../arithmetic-library/defined-proof-explorer.html">Jupyter Book guide</a></nav>
+<p class="pd-kicker">Typed mixed graph</p><h1>Theorems and conservative definitions</h1>
+<p>Proof arrows and notation arrows are intentionally different relations. Only theorem-proof arrows participate in premise paths.</p></header>
+<main class="pd-graph-page" data-defined-graph>
+<form class="pd-graph-controls" data-graph-form>
+<label>Target theorem <input data-graph-target list="pd-graph-theorems" value="PA00FW" required></label><datalist id="pd-graph-theorems"></datalist>
+<label>View <select data-graph-view><option value="critical">Critical theorem path</option><option value="prerequisites">Complete theorem prerequisite cone</option><option value="neighborhood" selected>Direct theorem neighborhood</option><option value="corpus">Entire theorem corpus</option></select></label>
+<label>Definitions <select data-graph-definitions><option value="selected" selected>Selected node only</option><option value="off">Hide definitions</option><option value="visible">All visible theorem definitions (heavy)</option></select></label>
+<label>Arrows <select data-graph-edges><option value="focus" selected>Focused: path + selected node</option><option value="none">Hide arrows</option><option value="all">All direct arrows (heavy)</option></select></label>
+<button type="submit">Draw</button></form>
+<p class="pd-graph-note">Sparse modes suppress visual objects only. Every exact proof and notation relation remains in the selected-node panel and graph data; large views use compact clickable marks.</p>
+<div class="pd-graph-layout"><section><div class="pd-graph-toolbar"><p data-graph-summary aria-live="polite">Loading graph…</p><div><button type="button" data-graph-zoom="in" aria-label="Zoom in">+</button><button type="button" data-graph-zoom="out" aria-label="Zoom out">−</button><button type="button" data-graph-fit aria-label="Fit graph">Fit</button></div></div>
+<div class="pd-graph-stage"><svg data-graph-svg tabindex="0" role="group" aria-labelledby="pd-graph-instructions"><text x="20" y="35">Loading…</text></svg></div>
+<p id="pd-graph-instructions" class="pd-graph-note">Shown proof arrows run from prerequisite to dependent; notation arrows run from a theorem or definition to the definition it uses. Select a node or compact mark to inspect every direct relation.</p>
+<div class="pd-legend"><span><i class="pd-legend-theorem"></i> theorem</span><span><i class="pd-legend-definition"></i> definition</span><span><i class="pd-legend-proof"></i> proof dependency</span><span><i class="pd-legend-notation"></i> uses definition</span></div></section>
+<aside class="pd-graph-details"><p class="pd-kicker">Selected node</p><h2 data-graph-title tabindex="-1">Loading…</h2><p data-graph-kind></p><p data-graph-description></p><dl data-graph-metadata></dl><p><a data-graph-open href="index.html">Open node →</a></p><h3>Outgoing relations</h3><ul data-graph-outgoing></ul><h3>Incoming relations</h3><ul data-graph-incoming></ul></aside></div>
+<noscript><p class="pd-callout">The graph requires JavaScript. Every theorem and definition page remains available from the index.</p></noscript></main><script id="pa-defined-graph-data">{inline}</script>'''
     return _page("Theorems and definitions — Native PA", "graph", body)
 
 

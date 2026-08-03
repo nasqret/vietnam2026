@@ -433,6 +433,19 @@
     return { tags: tags, edges: edges, path: path };
   }
 
+  function graphDisplayedEdges(state, selection) {
+    if (state.edgeMode === "none") return [];
+    if (state.edgeMode === "all") return selection.edges.slice();
+    var route = new Set();
+    for (var index = 1; index < selection.path.length; index += 1) {
+      route.add(selection.path[index - 1] + "\u0000" + selection.path[index]);
+    }
+    return selection.edges.filter(function (edge) {
+      return edge.dependency === state.target || edge.dependent === state.target ||
+        route.has(edge.dependency + "\u0000" + edge.dependent);
+    });
+  }
+
   function graphSvgElement(name, attributes) {
     var element = document.createElementNS("http:" + "//www.w3.org/2000/svg", name);
     Object.keys(attributes || {}).forEach(function (key) {
@@ -479,6 +492,10 @@
       return Number(left.layer) - Number(right.layer) ||
         model.order.get(left.tag) - model.order.get(right.tag);
     });
+    var compact = visible.length > 160;
+    var horizontalStep = compact ? 76 : 230;
+    var verticalStep = compact ? 25 : 70;
+    var nodeHalfWidth = compact ? 27 : 96;
     var byLayer = new Map();
     visible.forEach(function (node) {
       var layer = Number(node.layer);
@@ -500,34 +517,34 @@
       var branch = 0;
       rows.forEach(function (node) {
         var y;
-        if (hasPath && pathTags.has(node.tag)) y = 92;
+        if (hasPath && pathTags.has(node.tag)) y = compact ? 54 : 92;
         else {
-          y = (hasPath ? 170 : 92) + branch * 70;
+          y = (hasPath ? (compact ? 84 : 170) : (compact ? 54 : 92)) + branch * verticalStep;
           branch += 1;
         }
-        var x = 130 + (layer - minimumLayer) * 230;
+        var x = 60 + (layer - minimumLayer) * horizontalStep;
         positions.set(node.tag, { x: x, y: y });
         maximumY = Math.max(maximumY, y);
       });
       var label = graphSvgElement("text", {
-        x: 130 + (layer - minimumLayer) * 230,
+        x: 60 + (layer - minimumLayer) * horizontalStep,
         y: "24", class: "pa-graph-layer-label", "text-anchor": "middle"
       });
       label.textContent = "layer " + layer;
       viewport.appendChild(label);
     });
 
-    selection.edges.forEach(function (edge) {
+    selection.displayedEdges.forEach(function (edge) {
       var from = positions.get(edge.dependency);
       var to = positions.get(edge.dependent);
       if (!from || !to) return;
       var key = edge.dependency + "\u0000" + edge.dependent;
-      var distance = Math.max(42, (to.x - from.x) * 0.44);
+      var distance = Math.max(compact ? 12 : 42, (to.x - from.x) * 0.44);
       var path = graphSvgElement("path", {
-        d: "M " + (from.x + 96) + " " + from.y +
-          " C " + (from.x + 96 + distance) + " " + from.y +
-          ", " + (to.x - 96 - distance) + " " + to.y +
-          ", " + (to.x - 96) + " " + to.y,
+        d: "M " + (from.x + nodeHalfWidth) + " " + from.y +
+          " C " + (from.x + nodeHalfWidth + distance) + " " + from.y +
+          ", " + (to.x - nodeHalfWidth - distance) + " " + to.y +
+          ", " + (to.x - nodeHalfWidth) + " " + to.y,
         class: "pa-graph-edge" +
           (pathEdges.has(key) ? " pa-graph-edge-path" : "") +
           (edge.body_reference === false ? " pa-graph-edge-declared" : ""),
@@ -543,25 +560,29 @@
     if (selection.path.length && model.foundations.indexOf(selection.path[0]) !== -1) {
       var rootPosition = positions.get(selection.path[0]);
       if (rootPosition) {
-        var preludeX = rootPosition.x - 230;
+        var preludeX = rootPosition.x - (compact ? 90 : 230);
         var preludeEdge = graphSvgElement("path", {
-          d: "M " + (preludeX + 96) + " " + rootPosition.y + " L " +
-            (rootPosition.x - 96) + " " + rootPosition.y,
+          d: "M " + (preludeX + (compact ? 27 : 96)) + " " + rootPosition.y + " L " +
+            (rootPosition.x - nodeHalfWidth) + " " + rootPosition.y,
           class: "pa-graph-prelude-edge"
         });
         viewport.appendChild(preludeEdge);
         var preludeLink = graphSvgElement("a", { href: "foundations.html", class: "pa-graph-prelude" });
         var preludeGroup = graphSvgElement("g", { transform: "translate(" + preludeX + " " + rootPosition.y + ")" });
-        preludeGroup.appendChild(graphSvgElement("rect", { x: "-96", y: "-27", width: "192", height: "54", rx: "8" }));
+        preludeGroup.appendChild(graphSvgElement("rect", compact ?
+          { x: "-27", y: "-10", width: "54", height: "20", rx: "4" } :
+          { x: "-96", y: "-27", width: "192", height: "54", rx: "8" }));
         var preludeTitle = graphSvgElement("title");
         preludeTitle.textContent = "PA foundations prelude (not a theorem node)";
         preludeGroup.appendChild(preludeTitle);
-        var preludeText = graphSvgElement("text", { x: "0", y: "-3", "text-anchor": "middle" });
-        preludeText.textContent = "PA foundations";
+        var preludeText = graphSvgElement("text", { x: "0", y: compact ? "3" : "-3", "text-anchor": "middle" });
+        preludeText.textContent = compact ? "PA" : "PA foundations";
         preludeGroup.appendChild(preludeText);
-        var preludeSubtext = graphSvgElement("text", { x: "0", y: "14", "text-anchor": "middle", class: "pa-graph-node-name" });
-        preludeSubtext.textContent = "prelude · not a theorem";
-        preludeGroup.appendChild(preludeSubtext);
+        if (!compact) {
+          var preludeSubtext = graphSvgElement("text", { x: "0", y: "14", "text-anchor": "middle", class: "pa-graph-node-name" });
+          preludeSubtext.textContent = "prelude · not a theorem";
+          preludeGroup.appendChild(preludeSubtext);
+        }
         preludeLink.appendChild(preludeGroup);
         viewport.appendChild(preludeLink);
         state.preludeX = preludeX;
@@ -571,6 +592,7 @@
     visible.forEach(function (node) {
       var position = positions.get(node.tag);
       var classes = ["pa-graph-node", "pa-graph-node-" + node.scope, "pa-graph-node-status-" + node.status];
+      if (compact) classes.push("pa-graph-node-compact");
       if (pathTags.has(node.tag)) classes.push("pa-graph-node-path");
       if (node.tag === state.target) classes.push("pa-graph-node-selected");
       var group = graphSvgElement("g", {
@@ -580,29 +602,37 @@
         "aria-label": "Select " + node.tag + ", " + node.name + ", layer " + node.layer
       });
       var title = graphSvgElement("title");
-      title.textContent = node.tag + " · " + node.name + " — click to select; open arrow for formal proof";
+      title.textContent = node.tag + " · " + node.name + (compact ? " — click to inspect" : " — click to select; open arrow for formal proof");
       group.appendChild(title);
-      group.appendChild(graphSvgElement("rect", { x: "-96", y: "-27", width: "192", height: "54", rx: "8" }));
-      var tagText = graphSvgElement("text", { x: "-84", y: "-5", class: "pa-graph-node-tag" });
-      tagText.textContent = node.tag;
+      group.appendChild(graphSvgElement("rect", compact ?
+        { x: "-27", y: "-10", width: "54", height: "20", rx: "4" } :
+        { x: "-96", y: "-27", width: "192", height: "54", rx: "8" }));
+      var tagText = graphSvgElement("text", compact ?
+        { x: "0", y: "3", class: "pa-graph-node-tag", "text-anchor": "middle" } :
+        { x: "-84", y: "-5", class: "pa-graph-node-tag" });
+      tagText.textContent = compact ? node.tag.slice(2) : node.tag;
       group.appendChild(tagText);
-      var nameText = graphSvgElement("text", { x: "-84", y: "14", class: "pa-graph-node-name" });
-      nameText.textContent = graphTruncate(node.name, 27);
-      group.appendChild(nameText);
-      var open = graphSvgElement("a", {
-        href: "tag/" + node.tag + ".html", "data-graph-open": node.tag,
-        "aria-label": "Open the formal proof of " + node.name
-      });
-      var openText = graphSvgElement("text", { x: "82", y: "-7", class: "pa-graph-node-open", "text-anchor": "end" });
-      openText.textContent = "↗";
-      open.appendChild(openText);
-      group.appendChild(open);
+      if (!compact) {
+        var nameText = graphSvgElement("text", { x: "-84", y: "14", class: "pa-graph-node-name" });
+        nameText.textContent = graphTruncate(node.name, 27);
+        group.appendChild(nameText);
+        var open = graphSvgElement("a", {
+          href: "tag/" + node.tag + ".html", "data-graph-open": node.tag,
+          "aria-label": "Open the formal proof of " + node.name
+        });
+        var openText = graphSvgElement("text", { x: "82", y: "-7", class: "pa-graph-node-open", "text-anchor": "end" });
+        openText.textContent = "↗";
+        open.appendChild(openText);
+        group.appendChild(open);
+      }
       viewport.appendChild(group);
     });
 
-    var minimumX = selection.path.length && state.preludeX !== undefined ? state.preludeX - 120 : 10;
-    var maximumX = layers.length ? 130 + (layers[layers.length - 1] - minimumLayer) * 230 + 120 : 260;
+    var outerPadding = compact ? 38 : 120;
+    var minimumX = selection.path.length && state.preludeX !== undefined ? state.preludeX - outerPadding : 10;
+    var maximumX = layers.length ? 60 + (layers[layers.length - 1] - minimumLayer) * horizontalStep + outerPadding : 260;
     state.positions = positions;
+    state.compact = compact;
     state.bounds = {
       x: minimumX,
       y: -12,
@@ -760,6 +790,7 @@
       target.searchParams.set("focus", state.target);
       target.searchParams.set("target", state.target);
       target.searchParams.set("view", state.view);
+      target.searchParams.set("edges", state.edgeMode);
       if (state.source) target.searchParams.set("source", state.source);
       else target.searchParams.delete("source");
       window.history.replaceState(null, "", target.toString());
@@ -788,6 +819,7 @@
       return false;
     }
     state.sourceInput.setCustomValidity("");
+    selection.displayedEdges = graphDisplayedEdges(state, selection);
     graphRenderSvg(state, selection);
     graphUpdateDetails(state, selection);
     var layers = Array.from(selection.tags).map(function (tag) {
@@ -795,8 +827,9 @@
     });
     var layerSpan = layers.length ? Math.min.apply(null, layers) + "–" + Math.max.apply(null, layers) : "none";
     state.summary.textContent = selection.tags.size + " theorem " + (selection.tags.size === 1 ? "node" : "nodes") +
-      " · " + selection.edges.length + " dependency " + (selection.edges.length === 1 ? "edge" : "edges") +
-      " · layers " + layerSpan + " · " + graphViewLabel(state.view) + ".";
+      " · " + selection.displayedEdges.length + " of " + selection.edges.length + " direct dependency arrows shown" +
+      " · layers " + layerSpan + " · " + graphViewLabel(state.view) +
+      (state.compact ? " · compact clickable marks." : ".");
     graphSynchronizeAddress(state);
     window.requestAnimationFrame(function () {
       if (shouldCenter) graphCenterTarget(state);
@@ -886,34 +919,35 @@
         (model.byTag.has("PA00FW") ? "PA00FW" : model.terminals[0] || model.nodes[model.nodes.length - 1].tag);
       var source = graphResolve(model, parameters.get("source"));
       var allowedViews = new Set(["critical", "shortest", "corridor", "prerequisites", "neighborhood", "dependents", "corpus"]);
-      var view = allowedViews.has(parameters.get("view")) ? parameters.get("view") : "critical";
+      var view = allowedViews.has(parameters.get("view")) ? parameters.get("view") : "neighborhood";
+      var allowedEdgeModes = new Set(["focus", "none", "all"]);
+      var edgeMode = allowedEdgeModes.has(parameters.get("edges")) ? parameters.get("edges") : "focus";
       var state = {
         root: root,
         model: model,
         target: target,
         source: source,
         view: view,
+        edgeMode: edgeMode,
         summary: summary,
         form: root.querySelector("[data-graph-form]"),
         sourceInput: root.querySelector("[data-graph-source]"),
         targetInput: root.querySelector("[data-graph-target]"),
         viewInput: root.querySelector("[data-graph-view]"),
+        edgeInput: root.querySelector("[data-graph-edges]"),
         svg: root.querySelector("[data-graph-svg]"),
         stage: root.querySelector("[data-graph-stage]")
       };
       state.targetInput.value = target;
       state.sourceInput.value = source || "";
       state.viewInput.value = view;
+      state.edgeInput.value = edgeMode;
       var datalist = root.querySelector("#pa-graph-theorems");
       model.nodes.forEach(function (node) {
         var option = document.createElement("option");
         option.value = node.tag;
         option.label = node.name + " · layer " + node.layer;
         datalist.appendChild(option);
-        var nameOption = document.createElement("option");
-        nameOption.value = node.name;
-        nameOption.label = node.tag + " · layer " + node.layer;
-        datalist.appendChild(nameOption);
       });
       state.form.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -926,10 +960,15 @@
         state.target = nextTarget;
         state.source = nextSource;
         state.view = state.viewInput.value;
+        state.edgeMode = state.edgeInput.value;
         graphRender(state, true);
       });
       state.viewInput.addEventListener("change", function () {
         state.view = state.viewInput.value;
+        graphRender(state, false);
+      });
+      state.edgeInput.addEventListener("change", function () {
+        state.edgeMode = state.edgeInput.value;
         graphRender(state, false);
       });
       root.addEventListener("click", function (event) {
