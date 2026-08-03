@@ -3852,3 +3852,10 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   manifest/definition tests and 77 proof/admission tests. Associativity is
   still open and will be attempted only through a separately checked
   cross-sum composition helper.
+- Sealed the law source as
+  `a1fa4162f92d4ce6c5501cebceadd75403d7a563`, rebound the manifest, RFC, law
+  source, and law-audit Book links to immutable checkpoints, and rebuilt the
+  47-source Jupyter Book without warnings. The 2,325-page integrity audit has
+  zero broken, escaping, fragment, unsafe, or remote-runtime links and the
+  explicit/defined explorer trees remain byte-identical. No public admission,
+  push, deployment, or WMI result is claimed.

@@ -13,7 +13,7 @@ conservative notation: every occurrence expands before the ordinary kernel
 checks a certificate.
 
 The controlling machine manifest is
-[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/ce2f865389013ab2ad16cb2c351f735972330554/research/arithmetic-library/ha-number-theory-campaign.json).
+[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/a1fa4162f92d4ce6c5501cebceadd75403d7a563/research/arithmetic-library/ha-number-theory-campaign.json).
 It separates three facts which are easy to blur in an informal development:
 
 - a dependency-curried tactic body may check;
@@ -643,9 +643,14 @@ facts, with no division, remainder, CRT, Gödel-β, classical, or DNE edge.
 Associativity remains deliberately separate. Its proof needs a reusable
 cross-sum composition lemma before graph-level reassociation, so the complete
 addition-law acceptance gate is not yet claimed.
+Inspect the immutable
+[`law tactic source`](https://github.com/nasqret/vietnam2026/blob/a1fa4162f92d4ce6c5501cebceadd75403d7a563/peano-lab/py/peano_lab/library/ha_signed_add_laws_candidate.py#L171)
+and its
+[`eight-gate audit`](https://github.com/nasqret/vietnam2026/blob/a1fa4162f92d4ce6c5501cebceadd75403d7a563/peano-lab/py/tests/test_ha_signed_add_laws_candidate.py#L472)
+for every expanded graph, native tactic, semantic fixture, and receipt.
 
 Read the complete
-[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/ce2f865389013ab2ad16cb2c351f735972330554/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
+[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/a1fa4162f92d4ce6c5501cebceadd75403d7a563/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
 for the exact formulas, hashes, forbidden dependency paths, and staged proof
 obligations.
 

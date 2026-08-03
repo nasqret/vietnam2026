@@ -1595,4 +1595,8 @@
   binds 39 candidates and 48 exact receipts; the registry remains 393.
   `make ha-number-theory-check` passes 26 manifest/definition tests and 77
   proof/admission tests. Associativity remains the one open additive law and
-  is intentionally isolated behind a cross-sum helper tranche.
+  is intentionally isolated behind a cross-sum helper tranche. Immutable
+  source checkpoint `a1fa4162f92d4ce6c5501cebceadd75403d7a563` anchors
+  the updated Book links. The warning-free rebuild again has 47 sources and
+  2,325 HTML pages; its integrity audit finds zero broken, escaping, fragment,
+  unsafe, or remote-runtime links and byte-identical explorer trees.
