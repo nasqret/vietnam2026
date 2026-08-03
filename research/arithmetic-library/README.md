@@ -26,12 +26,12 @@ arithmetic library. Start with:
 Run `make ha-number-theory-check` from the repository root for the fast
 campaign-manifest, 45-row definition-freeze validation with 44 distinct public
 theorem replays, candidate-body, and empty-context receipt checks. The campaign
-manifest carries 82 statement hashes and exact closure receipts: nine
-deliberately admitted tranche-01 theorems and 73 total isolated candidates,
-comprising three canonical-gcd rows and 70 signed parity, decoder,
+manifest carries 86 statement hashes and exact closure receipts: nine
+deliberately admitted tranche-01 theorems and 77 total isolated candidates,
+comprising three canonical-gcd rows and 74 signed parity, decoder,
 code-extensionality, balance-normalization, negation, addition, complete D06
-multiplication-algebra, and D07 natural-scale rows. The D06 closure ends with
-the four-row
+multiplication-algebra, D07 natural-scale, and D08 Bezout-bridge rows. The D06
+closure ends with the four-row
 [`SignedMul` associativity candidate](../../peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py)
 and seven-row
 [`SignedMul` distributivity candidate](../../peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py),
@@ -55,12 +55,21 @@ digest is
 `511aa0ba4a6dac1a22f52db740f539c675307b5b77b6b1a7d9ef2e00dd8a5331`;
 the complete 70-row digest is
 `81a18daf55e564c11dee83ce7465bc91876109a5e6bc092f75e0f31f46e27d8d`.
-The K3 evidence now spans 15 candidate modules and 17 focused tests. The
+The four-row
+[`SignedBezout` bridge](../../peano-lab/py/peano_lab/library/ha_signed_bezout_candidate.py)
+and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_signed_bezout_candidate.py)
+then normalize legacy four-natural balanced coefficients into canonical
+signed codes and recover the raw witnesses in the opposite direction. The
+complete 74-row signed-stack digest is
+`b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`.
+The K3 evidence now spans 16 candidate modules and 18 focused tests. The
 public registry remains 393 entries with 56 public references, the definition
 freeze remains 45 API rows over 44 distinct public theorems, and the catalog
 remains 394 entries. Passing the candidate gate alone never enrolls a theorem
-in the public registry; none of these 73 candidates has been admitted. The
-D08 `SignedBezout` bridge is the next signed-arithmetic layer.
+in the public registry; none of these 77 candidates has been admitted. D08 is
+closed nonpublic. Deliberate admission, the separate K4 gcd packaging client,
+and lcm remain future gates.
 
 The current runtime contains 393 checked entries. The factorization tranche
 is fully synchronized. The exact native β-coded endpoints are checked

@@ -23,13 +23,14 @@ intuitionistic arithmetic without extending Peano Lab's object language.
 - a checked dependency-curried body is weaker than either status.
 
 The current registry has 393 theorems. Nine strict-HA tranche-01 interfaces are
-public; three canonical-gcd and 70 signed representation, normalization,
-negation, addition, multiplication, and natural-scale theorems remain closed
-candidates. Thus the isolated corpus has 73 total candidates and the campaign
-records 82 theorem receipts. The K3 evidence spans 15 candidate modules and 17
-focused tests. The definition freeze remains 45 API rows over 44 distinct
+public; three canonical-gcd and 74 signed representation, normalization,
+negation, addition, multiplication, natural-scale, and Bezout-bridge theorems
+remain closed candidates. Thus the isolated corpus has 77 total candidates
+and the campaign records 86 theorem receipts. The K3 evidence spans 16
+candidate modules and 18 focused tests. The definition freeze remains 45 API
+rows over 44 distinct
 public theorems, there are 56 public references, and the catalog remains 394
-entries; the latest D07 work grants no admission.
+entries; the latest D08 work grants no admission.
 
 ## Dependency spine
 
@@ -49,7 +50,7 @@ flowchart TD
   A --> L
   L --> M[signed multiplication core and complete algebra]
   M --> D7[D07 natural scaling closed candidate]
-  D7 --> B[D08 signed Bezout bridge next]
+  D7 --> B[D08 signed Bezout bridge closed candidate]
 ```
 
 The signed representation is parity-interleaved:
@@ -112,7 +113,20 @@ chosen over treating D07 as `SignedMul(2*scale,input,output)`: that D06 alias
 would add an unnecessary signed-coercion dependency to the D08 Bezout path.
 The complete 70-row signed-stack digest is
 `81a18daf55e564c11dee83ce7465bc91876109a5e6bc092f75e0f31f46e27d8d`.
-D07 is closed at candidate status; D08 `SignedBezout` is next.
+D07 is closed at candidate status. The four-row
+[`SignedBezout` bridge](../../peano-lab/py/peano_lab/library/ha_signed_bezout_candidate.py)
+and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_signed_bezout_candidate.py)
+now prove that the legacy four-natural `BalancedBezout` relation holds exactly
+when canonical signed coefficient codes exist. The proof normalizes `(xp,xn)`
+and `(yp,yn)` independently while respecting the legacy witness order
+`xp,yp,xn,yn`; it intentionally proves no uniqueness of the coefficient pair.
+Two cold closures agree on the complete 74-row signed-stack digest
+`b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`.
+D08 is closed at candidate status with 74 signed/77 total candidates, 86
+receipts, 16 K3 modules, and 18 focused tests. Its strict closure reaches no
+division, remainder, CRT, beta, classical, or DNE theorem. The gcd packaging
+client remains separate in K4 and no D08 row is public.
 
 The independent pair/cell design is now frozen in `HA-K3-PAIR-1` using the
 doubled Cantor polynomial and a successor cell tag. This does not close the

@@ -57,7 +57,8 @@
       "peano-lab/py/tests/test_ha_signed_mul_associative_candidate.py",
       "peano-lab/py/tests/test_ha_signed_mul_distributive_candidate.py",
       "peano-lab/py/tests/test_ha_signed_nat_scale_candidate.py",
-      "peano-lab/py/tests/test_ha_signed_nat_scale_laws_candidate.py"
+      "peano-lab/py/tests/test_ha_signed_nat_scale_laws_candidate.py",
+      "peano-lab/py/tests/test_ha_signed_bezout_candidate.py"
     ],
     "theorems": [
       {
@@ -633,6 +634,34 @@
         "source_module": "peano-lab/py/peano_lab/library/ha_signed_nat_scale_laws_candidate.py",
         "statement_sha256": "08053ffa3d61d32c6a534f56db9ef956f48d0400083d1354324af10ad17b0e87",
         "receipt": {"nodes": 1453, "depth": 34, "objects": 897, "edges": 923, "reused": 27, "cuts": 30, "certificate_sha256": "7548acf6871b7db3db4ba2cdaf89b9544e2d641c881a9f27e47dc4c77448b49e"}
+      },
+      {
+        "name": "balanced_bezout_equation_transport",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_bezout_candidate.py",
+        "statement_sha256": "352c2c9bff2c76025bd8f4a467b4d6b44409eed10d832e7e1e511e17636239c3",
+        "receipt": {"nodes": 943, "depth": 34, "objects": 497, "edges": 518, "reused": 22, "cuts": 20, "certificate_sha256": "9e3f3b984b0c9bdd42e7747f5660541364bb5bee3655b95b9242e5ed3305e4cc"}
+      },
+      {
+        "name": "balanced_bezout_to_signed_bezout",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_bezout_candidate.py",
+        "statement_sha256": "4e8141370b48a012fbb5940e5d5a63ea605116a7b4da84759481c39129bbb287",
+        "receipt": {"nodes": 1241, "depth": 39, "objects": 722, "edges": 744, "reused": 23, "cuts": 24, "certificate_sha256": "f39a790749e8da2b6d6c36f3639e2b81ecdd1b5db892a543a7ece18941978923"}
+      },
+      {
+        "name": "signed_bezout_to_balanced_bezout",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_bezout_candidate.py",
+        "statement_sha256": "88039c1e4a15fc6f3a9d58588035762d330ae2216cc014557fce1d8290e3b18d",
+        "receipt": {"nodes": 35, "depth": 23, "objects": 35, "edges": 34, "reused": 0, "cuts": 0, "certificate_sha256": "f0fb3fa8d5f09c69d22721164468227765bab34b6f1eadb8d67593bfeb81fa28"}
+      },
+      {
+        "name": "balanced_bezout_iff_signed_bezout_exists",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_bezout_candidate.py",
+        "statement_sha256": "6054c489066d48e357e1a6df72a0f05d4c33657066e3a4b03c595d76e0974faa",
+        "receipt": {"nodes": 1326, "depth": 40, "objects": 807, "edges": 829, "reused": 23, "cuts": 26, "certificate_sha256": "1bc7e28457b07b7aaf37b48aea0f3f86b58035797aeca50a022c73409f6eae1d"}
       }
     ]
   },
@@ -981,9 +1010,20 @@
             "signed_nat_scale_compose"
           ],
           "role": "Closed-checked but non-public scalar cross-sum transport, decoded-equation composition, zero and one scaling, and exact graph composition for canonical SignedNatScale."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_signed_bezout_candidate.py",
+          "factory": "make_ha_signed_bezout_candidate_theorems",
+          "theorem_names": [
+            "balanced_bezout_equation_transport",
+            "balanced_bezout_to_signed_bezout",
+            "signed_bezout_to_balanced_bezout",
+            "balanced_bezout_iff_signed_bezout_exists"
+          ],
+          "role": "Closed-checked but non-public balanced-equation transport, both directions between four-natural BalancedBezout witnesses and canonical SignedBezout codes, and their packaged equivalence."
         }
       ],
-      "remaining_gap": "The parity-interleaved decoder, decoded-code extensionality, total functional SignedBalance normalization, total functional involutive SignedNegate graph, the complete SignedAdd and SignedMul graph laws, and the D07 SignedNatScale core, zero, one, and composition laws now have deterministic empty-context candidate receipts without division, remainder, beta, or CRT dependencies. D08 SignedBezout bridges are next. HA-K3-PAIR-1 freezes a non-circular pair/cell design but has no proof candidates yet. Public admission, decidable equality, pair/cell proofs, an independent uniform computation-trace/list/map encoding, and list recursion remain.",
+      "remaining_gap": "The parity-interleaved decoder, decoded-code extensionality, total functional SignedBalance normalization, total functional involutive SignedNegate graph, the complete SignedAdd and SignedMul graph laws, D07 SignedNatScale, and both D08 BalancedBezout/SignedBezout conversion directions now have deterministic empty-context candidate receipts without division, remainder, beta, or CRT dependencies. HA-K3-PAIR-1 freezes a non-circular pair/cell design but has no proof candidates yet. Deliberate public admission, an optional signed-code equality alias, pair/cell proofs, an independent uniform computation-trace/list/map encoding, and list recursion remain; gcd packaging stays a separate K4 client because its public dependency closure reaches division.",
       "validation": {
         "path": [
           "manifest_integrity",

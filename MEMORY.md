@@ -1732,3 +1732,30 @@
   SHA-256
   `7be58cd44aa4b2a8b4e1a233fc9db6101dc478b097f0a22f028d2391b7b194e6`.
   No public admission, push, deployment, or visual click-through is claimed.
+- **D08 signed Bezout bridge (2026-08-04):** four isolated, closed,
+  nonpublic candidates prove reusable balanced-equation transport, normalize
+  a legacy four-natural Bezout witness into two canonical signed codes,
+  recover the raw witness from signed codes, and package the two implications.
+  Exact endpoint receipts are
+  `balanced_bezout_equation_transport = (943, 34, 497, 518, 22, 20,
+  9e3f3b984b0c9bdd42e7747f5660541364bb5bee3655b95b9242e5ed3305e4cc)`,
+  `balanced_bezout_to_signed_bezout = (1241, 39, 722, 744, 23, 24,
+  f39a790749e8da2b6d6c36f3639e2b81ecdd1b5db892a543a7ece18941978923)`,
+  and `balanced_bezout_iff_signed_bezout_exists = (1326, 40, 807, 829,
+  23, 26,
+  1bc7e28457b07b7aaf37b48aea0f3f86b58035797aeca50a022c73409f6eae1d)`.
+  The focused ten-test audit checks the RFC expansion, both witness orders,
+  exact bodies and closures, mutations, no orphan rows, 2,185 helper cases,
+  5,736 raw normalization cases, 1,600 bounded graph cases, nonuniqueness,
+  zero coefficients, and raw-code traps. Two cold closures agree on the
+  74-row digest
+  `b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`.
+  The strict closure has no DNE, forbidden automation, division, remainder,
+  CRT, beta, or classical dependency. The campaign now records 74 signed/77
+  total candidates, 86 receipts, 16 K3 modules, and 18 focused tests; the
+  registry/public references/definition freeze/catalog remain
+  393/56/45-over-44/394. Nothing is admitted. The gcd client remains a
+  separate K4 step because its public dependency closure reaches division.
+  The integrated local gate passes 29 campaign-structure tests and all 142
+  proof/admission tests. Independent checks keep the 394-row knowledge base,
+  393-theorem snapshot, and 492-note/4,991-link vault green.

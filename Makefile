@@ -99,6 +99,7 @@ ha-number-theory-check:
 		tests/test_ha_signed_mul_distributive_candidate.py \
 		tests/test_ha_signed_nat_scale_candidate.py \
 		tests/test_ha_signed_nat_scale_laws_candidate.py \
+		tests/test_ha_signed_bezout_candidate.py \
 		tests/test_ha_number_theory_tranche01_admission.py
 
 lab-serve:

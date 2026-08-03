@@ -4074,3 +4074,44 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   `7be58cd44aa4b2a8b4e1a233fc9db6101dc478b097f0a22f028d2391b7b194e6`.
   No browser was attached, so visual QA is not claimed. No push, deployment,
   or public theorem admission was performed.
+
+## 2026-08-04 — D08 SignedBezout bridge closed in isolation
+
+- Added four isolated, nonpublic candidates in dependency order:
+  `balanced_bezout_equation_transport`,
+  `balanced_bezout_to_signed_bezout`,
+  `signed_bezout_to_balanced_bezout`, and
+  `balanced_bezout_iff_signed_bezout_exists`. The forward proof normalizes
+  `(xp,xn)` and `(yp,yn)` independently with `SignedBalance`, lifts the two
+  cross sums through multiplication, and transports the subtraction-free
+  Bezout equation. The reverse proof exposes the decoder witnesses in the
+  legacy balanced order `xp,yp,xn,yn` rather than the D08 order
+  `xp,xn,yp,yn`.
+- Exact empty-context receipts `(nodes, depth, DAG objects, DAG edges, reused,
+  Cuts, digest)` are `(943,34,497,518,22,20,9e3f3b98...)`,
+  `(1241,39,722,744,23,24,f39a7907...)`,
+  `(35,23,35,34,0,0,f0fb3fa8...)`, and
+  `(1326,40,807,829,23,26,1bc7e284...)`. Two cold closures agree on the
+  complete 74-row signed-stack digest
+  `b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`.
+- The ten-test focused audit pins all statements, hashes, ordered
+  dependencies, body receipts, RFC D08 hygiene, witness ordering, false
+  mutations, registry isolation, strict dependency closure, and lack of
+  orphan rows. Its semantic oracle checks 2,185 satisfying transport tuples,
+  5,736 raw normalization witnesses, and 1,600 bounded direct graph cases,
+  including two distinct canonical coefficient pairs for `2X+3Y=1`, the
+  zero-coefficient edge, and a raw-code-order trap.
+- No DNE, forbidden automation, division, remainder, CRT, beta, or classical
+  theorem is reachable. The integrated campaign has 74 signed candidates,
+  77 candidates overall, 86 exact receipts, 16 K3 candidate modules, and 18
+  focused tests. The public registry remains 393, with 56 public references;
+  the definition freeze remains 45 rows over 44 theorems and the catalog
+  remains 394. This is not a public admission.
+- The integrated source gate passes 29 manifest/definition/pair-RFC tests and
+  all 142 proof/admission tests. The arithmetic knowledge base validates 394
+  entries, the independent snapshot replays 393 public theorems without
+  drift, and the vault verifies 492 notes with 4,991 resolved links.
+- `gcd_signed_bezout_exists` remains a deliberate K4 client because its
+  public gcd source reaches division. It is not smuggled into the strict K3
+  closure. Source sealing, Book binding, push, and deployment remain separate
+  operations.

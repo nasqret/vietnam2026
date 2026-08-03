@@ -178,7 +178,7 @@ with `m != 0` on totality statements.
 - [x] Prove the D07 natural-scale operation graph, its zero and one laws, and
       composition under natural multiplication as deterministic empty-context
       candidates.
-- [ ] Translate four-natural balanced Bezout witnesses to and from the signed
+- [x] Translate four-natural balanced Bezout witnesses to and from the signed
       interface.
 - [ ] Add lcm only after its zero convention and gcd compatibility statement
       are frozen.
@@ -369,6 +369,37 @@ remains 393 entries with 56 public references, the definition freeze remains
 45 rows over 44 distinct public theorems, and the catalog remains 394 entries.
 Nothing in D07 is admitted. The D08 `SignedBezout` bridge is the next
 signed-arithmetic gate.
+
+The completed D08 tranche adds four rows in
+[`ha_signed_bezout_candidate.py`](../peano-lab/py/peano_lab/library/ha_signed_bezout_candidate.py),
+audited by
+[`test_ha_signed_bezout_candidate.py`](../peano-lab/py/tests/test_ha_signed_bezout_candidate.py).
+The reusable transport row normalizes the raw pairs `(xp,xn)` and `(yp,yn)`
+with `SignedBalance`, lifts both cross sums through natural multiplication,
+and preserves the subtraction-free Bezout equation. The directional rows then
+prove
+
+```text
+BalancedBezout(result,a,b) -> exists x y. SignedBezout(result,a,b,x,y)
+SignedBezout(result,a,b,x,y) -> BalancedBezout(result,a,b)
+```
+
+and the endpoint packages both implications. The implementation explicitly
+accounts for the legacy witness order `xp,yp,xn,yn` versus the D08 decoder
+order `xp,xn,yp,yn`; canonical codes do not imply a unique Bezout coefficient
+pair. Exact empty-context receipts for transport, forward conversion, reverse
+conversion, and the packaged equivalence have respectively 943, 1,241, 35,
+and 1,326 structural nodes. Two cold closures agree on the complete 74-row
+signed-stack digest
+`b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`.
+The campaign now has 74 signed and 77 total candidates, 86 theorem receipts,
+16 K3 candidate modules, and 18 focused evidence tests. The closure reaches
+no division, remainder, CRT, beta, classical, or DNE theorem. The public
+registry remains 393 entries with 56 public references, the definition freeze
+remains 45 rows over 44 distinct public theorems, and the catalog remains 394
+entries. Nothing in D08 is admitted. A `gcd_signed_bezout_exists` client is
+deliberately deferred to K4 because its public gcd dependency reaches
+division; it is not part of the strict K3 closure.
 
 ## Release boundary
 

@@ -1,8 +1,8 @@
 # RFC HA-K3-SIGNED-1: canonical signed naturals by parity interleaving
 
 **Status:** representation frozen; decoder, code-extensionality,
-balance-normalization, negation, addition, multiplication, and natural-scale
-candidate tranches are closed but not publicly admitted
+balance-normalization, negation, addition, multiplication, natural-scale, and
+Bezout-bridge candidate tranches are closed but not publicly admitted
 **Scope:** HA3 signed coefficients and the signed-integer component of K3  
 **Object language:** first-order HA over \(\{0,S,+,\times,=\}\)  
 **Controlling documents:**
@@ -628,7 +628,8 @@ parity codes.
 All five results remain nonpublic. At this core checkpoint, the D06 zero, one,
 commutative, associative, and distributive laws were separate gates; Sections
 6.4.6 and 6.4.7 close them at candidate status. Section 6.4.8 closes D07
-natural scaling; D08 signed Bezout remains the next gate.
+natural scaling; Section 6.5 closes the D08 signed-Bezout bridge at candidate
+status.
 
 #### 6.4.6 Closed elementary multiplication laws
 
@@ -892,6 +893,60 @@ The observed source names `gcd_balanced_bezout_exists`,
 `coprime_balanced_bezout`, and `balanced_bezout_euclid_step` are possible
 later dependency anchors, subject to the normal campaign replay and closure
 checks. This RFC makes no fresh claim about their status.
+
+#### 6.5.1 Closed candidate checkpoint
+
+The D08 bridge is now implemented in
+[`ha_signed_bezout_candidate.py`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_candidate.py)
+and independently pinned by
+[`test_ha_signed_bezout_candidate.py`](../../peano-lab/py/tests/test_ha_signed_bezout_candidate.py).
+Its four rows are, in dependency order:
+
+```text
+balanced_bezout_equation_transport
+balanced_bezout_to_signed_bezout
+signed_bezout_to_balanced_bezout
+balanced_bezout_iff_signed_bezout_exists
+```
+
+The algebraic helper is the exact 11-variable formula
+
+```text
+forall result a b xp yp xn yn xcp xcn ycp ycn.
+  xp + xcn = xn + xcp ->
+  yp + ycn = yn + ycp ->
+  a * xp + b * yp = result + (a * xn + b * yn) ->
+  a * xcp + b * ycp = result + (a * xcn + b * ycn)
+```
+
+The forward proof normalizes the two raw coefficient pairs independently and
+then applies this helper. It carefully reorders the legacy balanced witnesses
+`xp,yp,xn,yn` into the decoder order `xp,xn,yp,yn`. The reverse proof merely
+exposes the decoder witnesses in the legacy order. This proves equivalence of
+existence, not functionality of `(x,y)`: for example, both canonical pairs
+encoding `(-1,+1)` and `(+2,-1)` satisfy `2X+3Y=1`.
+
+| Candidate | Nodes | Depth | Cuts | Certificate SHA-256 |
+|---|---:|---:|---:|---|
+| `balanced_bezout_equation_transport` | 943 | 34 | 20 | `9e3f3b984b0c9bdd42e7747f5660541364bb5bee3655b95b9242e5ed3305e4cc` |
+| `balanced_bezout_to_signed_bezout` | 1,241 | 39 | 24 | `f39a790749e8da2b6d6c36f3639e2b81ecdd1b5db892a543a7ece18941978923` |
+| `signed_bezout_to_balanced_bezout` | 35 | 23 | 0 | `f0fb3fa8d5f09c69d22721164468227765bab34b6f1eadb8d67593bfeb81fa28` |
+| `balanced_bezout_iff_signed_bezout_exists` | 1,326 | 40 | 26 | `1bc7e28457b07b7aaf37b48aea0f3f86b58035797aeca50a022c73409f6eae1d` |
+
+Two cold closures agree on the 74-row signed-stack digest
+`b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`.
+The focused audit exhausts 2,185 satisfying helper premises, 5,736 raw
+normalization witnesses, and 1,600 bounded direct graph cases, including
+zero-coefficient and nonuniqueness examples. The transitive closure reaches
+no division, remainder, CRT, beta, classical, or DNE theorem.
+
+This raises the isolated campaign to 74 signed candidates, 77 candidates in
+total, and 86 theorem receipts, across 16 K3 candidate modules and 18 focused
+tests. The public registry remains 393 entries with 56 public references, the
+definition freeze remains 45 API rows over 44 distinct public theorems, and
+the catalog remains 394 entries. No D08 theorem is admitted. The proposed
+`gcd_signed_bezout_exists` remains a future K4 client rather than a strict-K3
+row because the public gcd route reaches division.
 
 ## 7. Primitive-recursive and conservativity argument to be certified
 
