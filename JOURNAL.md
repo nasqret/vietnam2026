@@ -3973,3 +3973,10 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - D06 associativity and distributivity are next. Their proofs must use
   independently audited decoded-equation composition lemmas before D07
   natural scaling begins.
+- Sealed the exact source checkpoint as
+  `37bd997ac9890be9f040b94e8e713f19246d9186` and bound the Book's manifest,
+  RFC, tactic-source, and focused-audit links to it. The warning-free
+  47-source rebuild retains 2,325 HTML pages. Its structural audit reports
+  zero broken, escaping, fragment, unsafe, or remote-runtime links and
+  byte-identical 2,285-file explicit/defined explorer trees. The 492-note
+  vault still has 4,991 resolved links. No push or deployment is claimed.

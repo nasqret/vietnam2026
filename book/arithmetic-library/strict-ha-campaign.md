@@ -13,7 +13,7 @@ conservative notation: every occurrence expands before the ordinary kernel
 checks a certificate.
 
 The controlling machine manifest is
-[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/01fb459bc2ef797ca1e1e76b353c219dcc1eecb6/research/arithmetic-library/ha-number-theory-campaign.json).
+[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/37bd997ac9890be9f040b94e8e713f19246d9186/research/arithmetic-library/ha-number-theory-campaign.json).
 It separates three facts which are easy to blur in an informal development:
 
 - a dependency-curried tactic body may check;
@@ -46,10 +46,9 @@ It separates three facts which are easy to blur in an informal development:
     context but are not in the public registry.
 * - Canonical signed naturals
   - closed candidate
-  - The representation is frozen. Forty-four parity, decoder,
+  - The representation is frozen. Forty-nine parity, decoder,
     code-extensionality, balance-normalization, negation, addition, and
-    multiplication-core theorems close from the empty context without
-    division.
+    multiplication theorems close from the empty context without division.
 * - Canonical pair/cell coding
   - design frozen
   - Doubled-Cantor pairs and successor-tagged cells have exact expanded
@@ -58,7 +57,7 @@ It separates three facts which are easy to blur in an informal development:
 ```
 
 The public registry therefore has 393 entries. The first nine campaign
-theorems occupy append-only positions 384--392. The three gcd and forty-four
+theorems occupy append-only positions 384--392. The three gcd and forty-nine
 signed candidates stay outside it. This tail append leaves the frozen
 first-247 model curriculum unchanged.
 
@@ -800,6 +799,89 @@ and
 [`focused audit`](https://github.com/nasqret/vietnam2026/blob/01fb459bc2ef797ca1e1e76b353c219dcc1eecb6/peano-lab/py/tests/test_ha_signed_mul_candidate.py)
 for the complete expanded formulas, tactic scripts, mutations, and receipts.
 
+### Elementary SignedMul laws
+
+Five additional candidates prove the first algebraic laws of the D06 graph:
+
+```{list-table}
+:header-rows: 1
+:widths: 45 10 10 10 25
+
+* - Closed candidate
+  - Nodes
+  - Depth
+  - Cuts
+  - Certificate prefix
+* - `signed_mul_commutative`
+  - 376
+  - 41
+  - 8
+  - `6bc3661f663b`
+* - `signed_mul_zero_left`
+  - 209
+  - 25
+  - 4
+  - `78a9b2f876c7`
+* - `signed_mul_zero_right`
+  - 607
+  - 43
+  - 14
+  - `30d11a080942`
+* - `signed_mul_one_left`
+  - 347
+  - 25
+  - 10
+  - `8d1406a347d4`
+* - `signed_mul_one_right`
+  - 745
+  - 43
+  - 18
+  - `fe3977029e00`
+```
+
+The multiplicative identity is code `2`, not code `1`:
+
+$$
+2\longmapsto (1,0)=+1,
+\qquad
+1\longmapsto (0,1)=-1.
+$$
+
+Thus the identity statements are graph facts
+
+$$
+\operatorname{SignedMul}(2,a,a),
+\qquad
+\operatorname{SignedMul}(a,2,a),
+$$
+
+while zero annihilates in both orientations. Commutativity swaps the two
+decoded input pairs, commutes the four products, and reorders the two cross
+terms. The left zero and unit proofs construct literal D01 decoders for codes
+`0` and `2`; the right laws follow from graph commutativity. Every private
+literal expansion is alpha-checked against D06, so this convenience introduces
+no new object-language construct.
+
+Two cold replays agree on the complete 49-theorem signed-stack digest
+`be074dfe1b79e3f27b2d48851c64f58360ee86fc3776ae681c451d38f67d25b2`.
+The semantic audit checks all five laws on every pair of the first 33 codes
+and preserves the crucial representation test
+
+$$
+1\cdot 1=1\quad\hbox{as natural codes},
+\qquad
+(-1)(-1)=+1\quad\hbox{with signed output code }2.
+$$
+
+The dependency closure reaches no SignedAdd law, division, remainder, CRT,
+Gödel-β, classical theorem, or DNE. These laws are still isolated candidates;
+associativity and distributivity are the next D06 gates. Inspect the immutable
+[`law tactic source`](https://github.com/nasqret/vietnam2026/blob/37bd997ac9890be9f040b94e8e713f19246d9186/peano-lab/py/peano_lab/library/ha_signed_mul_laws_candidate.py)
+and
+[`focused audit`](https://github.com/nasqret/vietnam2026/blob/37bd997ac9890be9f040b94e8e713f19246d9186/peano-lab/py/tests/test_ha_signed_mul_laws_candidate.py)
+for the full expanded formulas, tactic scripts, exact receipts, and rejected
+mutations.
+
 ## Independent pair/cell checkpoint
 
 The finite-data lane has selected a representation for pairs and single cells,
@@ -841,7 +923,7 @@ honest ways to resolve the uniform-list blocker. It is a design target; no
 pair theorem or list theorem is claimed by that document.
 
 Read the complete
-[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/01fb459bc2ef797ca1e1e76b353c219dcc1eecb6/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
+[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/37bd997ac9890be9f040b94e8e713f19246d9186/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
 for the exact formulas, hashes, forbidden dependency paths, and staged proof
 obligations.
 
@@ -855,10 +937,10 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 ```
 
-The first command checks the 12-layer campaign manifest, all 56 theorem
+The first command checks the 12-layer campaign manifest, all 61 theorem
 receipts, the 44-theorem definition API, the nine public admissions, the three
-isolated gcd candidates, and the forty-four isolated signed representation,
-normalization, negation, addition, and multiplication-core candidates. The
+isolated gcd candidates, and the forty-nine isolated signed representation,
+normalization, negation, addition, and multiplication candidates. The
 second cross-checks all 393 public runtime theorems against the 394-row
 research catalog. The third independently replays the full public ladder and
 compares the deterministic snapshot.
