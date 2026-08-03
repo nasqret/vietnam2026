@@ -1665,3 +1665,30 @@
   source and built trees are byte-identical across 2,285 files; the vault has
   492 notes and 4,991 resolved links. Immutable SignedMul-law source
   checkpoint: `37bd997ac9890be9f040b94e8e713f19246d9186`.
+- **Signed multiplication associativity and distributivity (2026-08-04):**
+  eleven further isolated, closed, nonpublic candidates complete the D06
+  semiring-law checkpoint: four rows factor associativity through two
+  natural pair identities and a decoded-equation compositor; seven rows
+  factor both distributive orientations through additive shuffling,
+  balanced-output composition, fixed-left product transport, and graph
+  commutativity. The focused associativity and distributivity suites each
+  pass all eight tests. Two cold empty-context closures agree on the full
+  60-row signed-stack DAG SHA-256
+  `7befb7ae830b866a606e47f674730959e76599ded863aadd9868b850bcb190cd`.
+  The closed graph endpoints are `signed_mul_associative` at 3,196
+  nodes/depth 47 with digest
+  `c6a9694ced9e0d4cb1426112b7b717dd9b60cf049ea89e71223f906512271775`,
+  `signed_mul_left_distributive` at 3,297 nodes/depth 58 with digest
+  `c02d8258cce2e4cbd6a16aa731c9ce3424f1cc4726f48c0bc55d80e9c19f6633`,
+  and `signed_mul_right_distributive` at 3,717 nodes/depth 60 with digest
+  `63d17772d42432a58c75064ff05ded34490519639625151c90c6cc591f7cf7d1`.
+  Exhaustive bounded audits cover the natural helpers, all binary decoded
+  associativity/distributivity checkpoints through `2^12` and `2^14`
+  assignments, and every one of the `17^3` canonical-code triples for
+  associativity and both distributive graphs. All seven distributivity rows
+  are reachable from an endpoint; no DNE, forbidden automation, division,
+  remainder, CRT, beta, or classical edge is introduced. This checkpoint has
+  60 signed candidates, 63 campaign candidates in total, and 72 exact
+  receipts; the public registry remains unchanged at 393. D07 natural
+  scaling is the next proof layer. No public admission, commit, push, or
+  deployment is claimed by this chronology entry.

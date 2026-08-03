@@ -172,10 +172,11 @@ with `m != 0` on totality statements.
       cross-sum composition helper.
 - [x] Prove the five-row `SignedMul` decoder/equation core, totality, and
       literal-output functionality as deterministic empty-context candidates.
-- [ ] Prove the signed multiply and natural-scale operation graph obligations
-      frozen by that RFC. The zero, one, and commutative multiplication laws
-      are closed candidates; associativity, distributivity, and natural scale
-      remain.
+- [x] Prove the complete D06 signed-multiplication graph and algebraic-law
+      obligations frozen by that RFC, including associativity and both
+      distributive orientations.
+- [ ] Prove the D07 natural-scale operation graph, its zero and one laws, and
+      compatibility with natural multiplication.
 - [ ] Translate four-natural balanced Bezout witnesses to and from the signed
       interface.
 - [ ] Add lcm only after its zero convention and gcd compatibility statement
@@ -309,11 +310,29 @@ closure remains 557 nodes and 1,787 edges, now partitioned as 241 public and
       host-integer multiplication, division, remainder, CRT, or beta coding.
 - [x] Prove the elementary `SignedMul` zero, one, and commutative laws before
       attempting associativity or distributivity.
-- [ ] Prove `SignedMul` associativity and distributivity from independently
+- [x] Prove `SignedMul` associativity and distributivity from independently
       reviewed decoded-equation composition lemmas.
 - [x] Audit the independent pair/list route, freeze the pair/cell component,
       and record the missing uniform computation-history step rather than
       hiding variable iteration in a recursive macro.
+
+The completed D06 tranche adds four associativity rows in
+[`ha_signed_mul_associative_candidate.py`](../peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py)
+and seven distributivity rows in
+[`ha_signed_mul_distributive_candidate.py`](../peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py).
+Their focused audits are
+[`test_ha_signed_mul_associative_candidate.py`](../peano-lab/py/tests/test_ha_signed_mul_associative_candidate.py)
+and
+[`test_ha_signed_mul_distributive_candidate.py`](../peano-lab/py/tests/test_ha_signed_mul_distributive_candidate.py).
+The 11 new rows raise the isolated signed stack to 60 closed candidates and
+the complete candidate corpus to 63 total candidates; together with the nine
+deliberately public tranche-01 rows, the campaign now records 72 theorem
+receipts. Two cold closures agree on the 60-row signed-stack digest
+`7befb7ae830b866a606e47f674730959e76599ded863aadd9868b850bcb190cd`.
+This changes neither the 393-entry public registry, the 45-row definition
+freeze (44 distinct public theorem dependencies), nor the 394-entry catalog,
+and grants no admission. D07 natural scaling is the next signed-arithmetic
+gate.
 
 ## Release boundary
 

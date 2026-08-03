@@ -23,8 +23,12 @@ intuitionistic arithmetic without extending Peano Lab's object language.
 - a checked dependency-curried body is weaker than either status.
 
 The current registry has 393 theorems. Nine strict-HA tranche-01 interfaces are
-public; three canonical-gcd and 49 signed representation, normalization,
+public; three canonical-gcd and 60 signed representation, normalization,
 negation, addition, and multiplication theorems remain closed candidates.
+Thus the isolated corpus has 63 total candidates and the campaign records 72
+theorem receipts. The definition freeze remains 45 API rows over 44 distinct
+public theorems, and the catalog remains 394 entries; the latest D06 work
+grants no admission.
 
 ## Dependency spine
 
@@ -42,8 +46,9 @@ flowchart TD
   N --> A[signed addition core]
   G --> L[signed addition laws]
   A --> L
-  L --> M[signed multiplication core and elementary laws]
-  M --> B[signed Bezout bridge]
+  L --> M[signed multiplication core and complete algebra]
+  M --> D7[D07 natural scaling]
+  D7 --> B[signed Bezout bridge]
 ```
 
 The signed representation is parity-interleaved:
@@ -70,9 +75,22 @@ output functionality. Its largest certificate is `signed_mul_functional` at
 1,808 nodes, depth 40, and 34 Cuts. Five further candidates prove graph
 commutativity, two-sided zero annihilation, and the two-sided identity law for
 signed positive-one code `2`. The largest new certificate is
-`signed_mul_one_right` at 745 nodes, depth 43, and 18 Cuts. The next gates are
-multiplication associativity and distributivity; natural scaling remains after
-them.
+`signed_mul_one_right` at 745 nodes, depth 43, and 18 Cuts. The four-row
+[`SignedMul` associativity tranche](../../peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py)
+and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_signed_mul_associative_candidate.py)
+now close the pair-transport, component-association, decoded-equation, and
+graph laws. The seven-row
+[`distributivity tranche`](../../peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py)
+and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_signed_mul_distributive_candidate.py)
+close left and right distributivity through reusable balanced-sum helpers.
+The right-distributive endpoint is the largest new certificate at 3,717
+nodes, depth 60, and 53 Cuts. Two cold closures agree on the complete 60-row
+signed-stack digest
+`7befb7ae830b866a606e47f674730959e76599ded863aadd9868b850bcb190cd`.
+The complete D06 elementary signed algebra is therefore closed at candidate
+status. D07 natural scaling is next.
 
 The independent pair/cell design is now frozen in `HA-K3-PAIR-1` using the
 doubled Cantor polynomial and a successor cell tag. This does not close the

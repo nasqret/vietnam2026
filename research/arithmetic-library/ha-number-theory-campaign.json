@@ -53,7 +53,9 @@
       "peano-lab/py/tests/test_ha_signed_add_laws_candidate.py",
       "peano-lab/py/tests/test_ha_signed_add_associative_candidate.py",
       "peano-lab/py/tests/test_ha_signed_mul_candidate.py",
-      "peano-lab/py/tests/test_ha_signed_mul_laws_candidate.py"
+      "peano-lab/py/tests/test_ha_signed_mul_laws_candidate.py",
+      "peano-lab/py/tests/test_ha_signed_mul_associative_candidate.py",
+      "peano-lab/py/tests/test_ha_signed_mul_distributive_candidate.py"
     ],
     "theorems": [
       {
@@ -482,6 +484,83 @@
         "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_laws_candidate.py",
         "statement_sha256": "4739fd46ffd8ba093d92e56bccbe7fba593d5372c8b2a090f747785e6f862124",
         "receipt": {"nodes": 745, "depth": 43, "objects": 523, "edges": 564, "reused": 42, "cuts": 18, "certificate_sha256": "fe3977029e00057909e7204631ce6f66b5ce2aff10a4132872ce011a899ef378"}
+      },
+      {
+        "name": "signed_pair_mul_cross_transport",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py",
+        "statement_sha256": "c52769ea794122a09916841233d99f37b3ff6afdf83621d875dd3366d85cc08b",
+        "receipt": {"nodes": 785, "depth": 26, "objects": 466, "edges": 500, "reused": 35, "cuts": 15, "certificate_sha256": "1ff73d62de76550467f8d4b59d0c161a7ab54679041b22c45d6f8b61392cb6ff"}
+      },
+      {
+        "name": "signed_pair_mul_components_associate",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py",
+        "statement_sha256": "0d58d7ed4c5796616aa435c7933ef6f24d686346322536f007c216e587e9bb0e",
+        "receipt": {"nodes": 887, "depth": 26, "objects": 486, "edges": 526, "reused": 41, "cuts": 17, "certificate_sha256": "35dd7e68185d79615e918392fbb88ddece6bb0fdd8aa48fde5ca8b9a31760eda"}
+      },
+      {
+        "name": "signed_mul_equations_associate",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py",
+        "statement_sha256": "fcbd761ff593162c2a571b02f8096c2a366c7ac78652844feecf9a6e2c1e74d1",
+        "receipt": {"nodes": 2150, "depth": 33, "objects": 872, "edges": 920, "reused": 49, "cuts": 30, "certificate_sha256": "159168d3c8ed5a472bdf4f3872650d7b98924ba87a7ebee27ceb0564b7c06734"}
+      },
+      {
+        "name": "signed_mul_associative",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py",
+        "statement_sha256": "46c4da4af308165a42a12146c79541411b780c85f2fc4e010b90b413975a28e8",
+        "receipt": {"nodes": 3196, "depth": 47, "objects": 1565, "edges": 1617, "reused": 53, "cuts": 47, "certificate_sha256": "c6a9694ced9e0d4cb1426112b7b717dd9b60cf049ea89e71223f906512271775"}
+      },
+      {
+        "name": "add_shuffle_middle",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py",
+        "statement_sha256": "56292571581970f889ca14ff7e6f708005e3227af2279d40a09886b4e5385d2b",
+        "receipt": {"nodes": 245, "depth": 17, "objects": 161, "edges": 172, "reused": 12, "cuts": 6, "certificate_sha256": "4dd61bd9bfabeb8900c1376d066fdef210b63c4b8fa7cbb60a52861afa857199"}
+      },
+      {
+        "name": "add_cross_sum_pairwise",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py",
+        "statement_sha256": "979e3132826b571153f69243aead511b85f907b22082edde08e41027ffa0258d",
+        "receipt": {"nodes": 272, "depth": 18, "objects": 188, "edges": 199, "reused": 12, "cuts": 7, "certificate_sha256": "cb63dfdbd07345f18ee7eb250f19f428ffd6ad8a4c0d3b065b7c8ea9a93e15c0"}
+      },
+      {
+        "name": "signed_mul_distributive_component",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py",
+        "statement_sha256": "51e3275f81a40c643a7f3fbd903c9dc668550282d58219e0cc6a6f91c769acb7",
+        "receipt": {"nodes": 345, "depth": 19, "objects": 224, "edges": 240, "reused": 17, "cuts": 9, "certificate_sha256": "c4f2ccd30f6889281c06afea4b4804ed5d04673c8b2b89d013aa59283877b2ea"}
+      },
+      {
+        "name": "add_balance_outputs_compose",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py",
+        "statement_sha256": "c20f95ccf62dbc9f0cf9c0f0f37caa212eae954d43afd95722f1c79ceef0e038",
+        "receipt": {"nodes": 708, "depth": 32, "objects": 372, "edges": 387, "reused": 16, "cuts": 15, "certificate_sha256": "9be646df81e74dbd7854cafc417114b321c5becdeefa30d07a91a82cb83956a8"}
+      },
+      {
+        "name": "signed_mul_left_cross_sum_distributes",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py",
+        "statement_sha256": "3653b7c5dffa62e95f0801c70b673c3e33490530869c4cdb286bc7161acf227a",
+        "receipt": {"nodes": 1172, "depth": 27, "objects": 554, "edges": 591, "reused": 38, "cuts": 21, "certificate_sha256": "a40d2cd61a2868b6681b85a3cb5c49289d1e9821814aa2b1feb5d3dfd7bb39c5"}
+      },
+      {
+        "name": "signed_mul_left_distributive",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py",
+        "statement_sha256": "78ef06cea880e1060206ba39e591685e26ecc96d3e7140695e791c0339763baa",
+        "receipt": {"nodes": 3297, "depth": 58, "objects": 1514, "edges": 1561, "reused": 48, "cuts": 49, "certificate_sha256": "c02d8258cce2e4cbd6a16aa731c9ce3424f1cc4726f48c0bc55d80e9c19f6633"}
+      },
+      {
+        "name": "signed_mul_right_distributive",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py",
+        "statement_sha256": "11c87f1097377c7c61f2052be5fbd95ba40726c3f71c373399d1287533fb6001",
+        "receipt": {"nodes": 3717, "depth": 60, "objects": 1639, "edges": 1688, "reused": 50, "cuts": 53, "certificate_sha256": "63d17772d42432a58c75064ff05ded34490519639625151c90c6cc591f7cf7d1"}
       }
     ]
   },
@@ -781,9 +860,34 @@
             "signed_mul_one_right"
           ],
           "role": "Closed-checked but non-public commutativity, two-sided zero annihilation, and two-sided signed-one identity laws for canonical SignedMul."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py",
+          "factory": "make_ha_signed_mul_associative_candidate_theorems",
+          "theorem_names": [
+            "signed_pair_mul_cross_transport",
+            "signed_pair_mul_components_associate",
+            "signed_mul_equations_associate",
+            "signed_mul_associative"
+          ],
+          "role": "Closed-checked but non-public pair-product transport, component reassociation, decoded-equation reassociation, and exact graph associativity for canonical SignedMul."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py",
+          "factory": "make_ha_signed_mul_distributive_candidate_theorems",
+          "theorem_names": [
+            "add_shuffle_middle",
+            "add_cross_sum_pairwise",
+            "signed_mul_distributive_component",
+            "add_balance_outputs_compose",
+            "signed_mul_left_cross_sum_distributes",
+            "signed_mul_left_distributive",
+            "signed_mul_right_distributive"
+          ],
+          "role": "Closed-checked but non-public additive shuffling, balanced-output composition, decoded component distribution, and exact left and right graph distributivity for canonical SignedMul."
         }
       ],
-      "remaining_gap": "The parity-interleaved decoder, decoded-code extensionality, total functional SignedBalance normalization, total functional involutive SignedNegate graph, the complete SignedAdd graph and laws, and the total functional SignedMul core plus its zero, one, and commutative laws now have deterministic empty-context candidate receipts without division, remainder, beta, or CRT dependencies. HA-K3-PAIR-1 freezes a non-circular pair/cell design but has no proof candidates yet. Public admission, SignedMul associativity and distributivity, natural scale, decidable equality, pair/cell proofs, an independent uniform computation-trace/list/map encoding, and list recursion remain.",
+      "remaining_gap": "The parity-interleaved decoder, decoded-code extensionality, total functional SignedBalance normalization, total functional involutive SignedNegate graph, the complete SignedAdd graph and laws, and the total functional SignedMul core plus its zero, one, commutative, associative, and distributive laws now have deterministic empty-context candidate receipts without division, remainder, beta, or CRT dependencies. HA-K3-PAIR-1 freezes a non-circular pair/cell design but has no proof candidates yet. Public admission, natural scale, decidable equality, pair/cell proofs, an independent uniform computation-trace/list/map encoding, and list recursion remain.",
       "validation": {
         "path": [
           "manifest_integrity",

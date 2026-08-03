@@ -24,14 +24,29 @@ arithmetic library. Start with:
   the repository execution plan and first canonical-interface tranche.
 
 Run `make ha-number-theory-check` from the repository root for the fast
-campaign-manifest, 44-theorem definition-API replay, candidate-body, and
-empty-context receipt checks. The campaign manifest carries 61 statement
-hashes and exact closure receipts: nine deliberately admitted tranche-01
-theorems, three isolated canonical-gcd candidates, and 49 isolated signed
-parity, decoder, code-extensionality, balance-normalization, negation, and
-addition, multiplication-core, and elementary multiplication-law candidates.
+campaign-manifest, 45-row definition-freeze validation with 44 distinct public
+theorem replays, candidate-body, and empty-context receipt checks. The campaign
+manifest carries 72 statement hashes and exact closure receipts: nine
+deliberately admitted tranche-01
+theorems and 63 total isolated candidates, comprising three canonical-gcd
+rows and 60 signed parity, decoder, code-extensionality, balance-normalization,
+negation, addition, and complete D06 multiplication-algebra rows. The last 11
+signed rows are the four-row
+[`SignedMul` associativity candidate](../../peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py)
+and seven-row
+[`SignedMul` distributivity candidate](../../peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py),
+audited respectively by their
+[`associativity`](../../peano-lab/py/tests/test_ha_signed_mul_associative_candidate.py)
+and
+[`distributivity`](../../peano-lab/py/tests/test_ha_signed_mul_distributive_candidate.py)
+focused tests. Two cold closures agree on the complete 60-row signed-stack
+digest
+`7befb7ae830b866a606e47f674730959e76599ded863aadd9868b850bcb190cd`.
+The public registry remains 393 entries, the definition freeze remains 45 API
+rows over 44 distinct public theorems, and the catalog remains 394 entries.
 Passing the candidate gate alone never enrolls a theorem in the public
-registry.
+registry; none of these 63 candidates has been admitted. D07 natural scaling
+is the next signed-arithmetic layer.
 
 The current runtime contains 393 checked entries. The factorization tranche
 is fully synchronized. The exact native β-coded endpoints are checked

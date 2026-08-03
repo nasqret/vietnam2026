@@ -625,9 +625,10 @@ The bounded oracle checks the unique canonical output for all `17 * 17` input
 pairs and distinguishes signed multiplication from raw multiplication of the
 parity codes.
 
-All five results remain nonpublic. The D06 zero, one, commutative,
-associative, and distributive laws remain separate gates, as do D07 natural
-scaling and D08 signed Bezout.
+All five results remain nonpublic. At this core checkpoint, the D06 zero, one,
+commutative, associative, and distributive laws were separate gates; Sections
+6.4.6 and 6.4.7 close them at candidate status. D07 natural scaling and D08
+signed Bezout remain later gates.
 
 #### 6.4.6 Closed elementary multiplication laws
 
@@ -666,7 +667,84 @@ distinguish raw natural code multiplication from signed multiplication:
 natural `1 * 1 = 1`, while the signed product of code `1` with itself has code
 `2`. The exact transitive closure uses no division, remainder, CRT, beta,
 classical theorem, DNE, or SignedAdd law. All five results remain nonpublic;
-D06 associativity and distributivity are the next multiplication gates.
+the next checkpoint closes D06 associativity and distributivity.
+
+#### 6.4.7 Closed multiplication associativity and distributivity
+
+The remaining D06 algebra closes in two isolated, linked tranches. The
+four-row
+[`ha_signed_mul_associative_candidate.py`](../../peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py)
+contains:
+
+```text
+signed_pair_mul_cross_transport
+signed_pair_mul_components_associate
+signed_mul_equations_associate
+signed_mul_associative
+```
+
+The first helper transports a subtraction-free equality of decoded signed
+pairs through multiplication on either side. The second proves both raw
+positive/negative component identities required to reassociate a product.
+The decoded-equation row composes those facts with `add_cross_sum_chain`, and
+the graph theorem aligns decoder witnesses through the D06 elimination and
+introduction bridges. Its exact graph orientation is
+
+```text
+SignedMul(a,b,ab) -> SignedMul(ab,c,abc) ->
+SignedMul(b,c,bc) -> SignedMul(a,bc,abc).
+```
+
+The seven-row
+[`ha_signed_mul_distributive_candidate.py`](../../peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py)
+contains:
+
+```text
+add_shuffle_middle
+add_cross_sum_pairwise
+signed_mul_distributive_component
+add_balance_outputs_compose
+signed_mul_left_cross_sum_distributes
+signed_mul_left_distributive
+signed_mul_right_distributive
+```
+
+This ladder first shuffles and composes balanced natural sums, distributes
+one raw positive/negative product component, reuses the associativity
+tranche's two-sided pair-multiplication transport, and then transports the
+decoded equations through the exact D05 and D06 graphs. The endpoint
+orientations are
+
+```text
+SignedAdd(b,c,bc) -> SignedMul(a,b,ab) -> SignedMul(a,c,ac) ->
+SignedMul(a,bc,out) -> SignedAdd(ab,ac,out)
+
+SignedAdd(b,c,bc) -> SignedMul(b,a,ba) -> SignedMul(c,a,ca) ->
+SignedMul(bc,a,out) -> SignedAdd(ba,ca,out).
+```
+
+The right law is obtained by three checked applications of graph
+commutativity followed by the left law; it does not duplicate the decoded
+calculation. The focused
+[`associativity audit`](../../peano-lab/py/tests/test_ha_signed_mul_associative_candidate.py)
+and
+[`distributivity audit`](../../peano-lab/py/tests/test_ha_signed_mul_distributive_candidate.py)
+pin every statement, dependency, dependency-curried body, false mutation,
+empty-context closure, and bounded semantic oracle. The closed associativity
+endpoint has 3,196 structural nodes at depth 47 and 47 Cuts. The left and
+right distributivity endpoints have respectively 3,297 nodes at depth 58
+with 49 Cuts and 3,717 nodes at depth 60 with 53 Cuts.
+
+Two cold closures agree on the complete 60-theorem signed-stack digest
+`7befb7ae830b866a606e47f674730959e76599ded863aadd9868b850bcb190cd`.
+The 11 rows in this checkpoint raise the campaign to 60 signed candidates,
+63 total candidates, and 72 theorem receipts. Their dependency closures are
+intuitionistic and reach no division, remainder, CRT, beta, classical, or DNE
+theorem. Thus the complete D06 elementary signed algebra is closed at
+candidate status. The public registry remains 393 entries, the definition
+freeze remains 45 API rows over 44 distinct public theorems, and the catalog
+remains 394 entries; no theorem in this checkpoint is admitted. D07 natural
+scaling is the next signed-operation gate.
 
 ### 6.5 Bezout bridge obligations
 
