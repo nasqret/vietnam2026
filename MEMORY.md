@@ -1556,4 +1556,5 @@
   `SignedAdd` is next and must normalize decoded contribution sums through
   `SignedBalance`. Final local gates pass 26 manifest/definition tests, 62
   proof/admission tests, a cold 393-theorem public replay, the 4,991-link vault
-  audit, and the 2,325-page Book integrity audit.
+  audit, and the 2,325-page Book integrity audit. Local source checkpoint
+  `d5a734292b11e516a86606c65653be38d2faa7f1` contains the exact tranche.

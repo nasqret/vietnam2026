@@ -13,7 +13,7 @@ conservative notation: every occurrence expands before the ordinary kernel
 checks a certificate.
 
 The controlling machine manifest is
-[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/07932576c3d00d7911acd158d81d9a21167ed2dd/research/arithmetic-library/ha-number-theory-campaign.json).
+[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/d5a734292b11e516a86606c65653be38d2faa7f1/research/arithmetic-library/ha-number-theory-campaign.json).
 It separates three facts which are easy to blur in an informal development:
 
 - a dependency-curried tactic body may check;
@@ -480,7 +480,7 @@ remain nonpublic. The next candidate graph is `SignedAdd`, built from decoded
 natural contribution sums and `SignedBalance` normalization.
 
 Read the complete
-[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/07932576c3d00d7911acd158d81d9a21167ed2dd/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
+[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/d5a734292b11e516a86606c65653be38d2faa7f1/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
 for the exact formulas, hashes, forbidden dependency paths, and staged proof
 obligations.
 

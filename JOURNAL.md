@@ -3786,3 +3786,8 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   broken, escaping, fragment, unsafe, or remote-runtime links, and byte-equal
   2,285-file explicit/defined Proof Explorer trees. No WMI, deployment, public
   admission, or push receipt is claimed by this local checkpoint.
+- Created immutable local source checkpoint
+  `d5a734292b11e516a86606c65653be38d2faa7f1` and rebound only the
+  campaign-specific manifest/RFC links in the Book to that source. The public
+  theorem atlas remains intentionally pinned to its unchanged 393-theorem
+  source checkpoint.
