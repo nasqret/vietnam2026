@@ -1656,7 +1656,7 @@
   maps, and finite CRT remain blocked on a separate computation-history
   representation or proved conservative primitive-recursive definition
   mechanism. Fixed-length generated schemas are honest but insufficient.
-- **Current strict-HA gate:** 29 manifest/definition/pair-RFC tests and 115
+- **Current strict-HA gate:** 29 manifest/definition/pair-RFC tests and 132
   proof/admission tests pass. The campaign manifest records 56 public
   references, 63 closed candidates, and 72 receipts; the public registry and
   independently replayed snapshot both remain at 393 theorems.
@@ -1697,3 +1697,33 @@
   broken, escaping, unsafe, or remote-runtime links; its 2,493-file HTML tree
   has SHA-256
   `2eaf9bc60642a29f101a472553c1f21bb5dc30baab3c8bf76665550d9135f59f`.
+- **D07 natural scaling (2026-08-04):** ten isolated, closed, nonpublic
+  candidates establish `SignedNatScale`: five core rows give both directions
+  of the decoded scaling equation, its iff packaging, totality, and literal-
+  code functionality; five law rows give a reusable natural cross-sum helper,
+  decoded-equation composition, zero, one, and graph composition. The focused
+  core and law suites pass all 8 and 9 tests, respectively. Exact closed
+  receipts `(nodes, depth, DAG objects, DAG edges, reused references, Cuts,
+  DAG SHA-256)` are
+  `signed_nat_scale_total = (431, 39, 416, 430, 15, 8,
+  e1ee2921a7e967369bd70cd70564ef340ad643926c15c62dba394ae535e76947)`,
+  `signed_nat_scale_functional = (1698, 36, 1047, 1080, 34, 34,
+  59f948b0d2c8335cd3cd0098fb4acec9f895d8db2f930393d4dad33375ee2727)`,
+  and `signed_nat_scale_compose = (1453, 34, 897, 923, 27, 30,
+  7548acf6871b7db3db4ba2cdaf89b9544e2d641c881a9f27e47dc4c77448b49e)`.
+  Two cold closures pin the 65-row core stack at
+  `511aa0ba4a6dac1a22f52db740f539c675307b5b77b6b1a7d9ef2e00dd8a5331`
+  and the complete 70-row signed stack at
+  `81a18daf55e564c11dee83ce7465bc91876109a5e6bc092f75e0f31f46e27d8d`.
+  Exhaustive audits scan all `17 * 17` scale/input pairs against all 257
+  candidate output codes, cover exactly 425 cross-sum and 477 composition
+  helper premise cases, check zero and one on 33 codes, and check composition
+  on all `17^3` bounded triples. A raw-code trap confirms that natural code
+  multiplication is not signed scaling (`2 * 1 = 2`, while twice signed
+  code `1` has canonical code `3`). The transitive proof closure is strict HA
+  and contains no DNE, forbidden automation, division, remainder, CRT, beta,
+  or classical dependency. The checkpoint has 70 signed candidates, 73
+  campaign candidates in total, and 82 exact receipts; the public registry
+  remains unchanged at 393. The D08 `SignedBezout` bridge is next. No public
+  admission,
+  source commit, Book build, push, or deployment is claimed yet.

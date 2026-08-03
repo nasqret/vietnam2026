@@ -23,12 +23,13 @@ intuitionistic arithmetic without extending Peano Lab's object language.
 - a checked dependency-curried body is weaker than either status.
 
 The current registry has 393 theorems. Nine strict-HA tranche-01 interfaces are
-public; three canonical-gcd and 60 signed representation, normalization,
-negation, addition, and multiplication theorems remain closed candidates.
-Thus the isolated corpus has 63 total candidates and the campaign records 72
-theorem receipts. The definition freeze remains 45 API rows over 44 distinct
-public theorems, and the catalog remains 394 entries; the latest D06 work
-grants no admission.
+public; three canonical-gcd and 70 signed representation, normalization,
+negation, addition, multiplication, and natural-scale theorems remain closed
+candidates. Thus the isolated corpus has 73 total candidates and the campaign
+records 82 theorem receipts. The K3 evidence spans 15 candidate modules and 17
+focused tests. The definition freeze remains 45 API rows over 44 distinct
+public theorems, there are 56 public references, and the catalog remains 394
+entries; the latest D07 work grants no admission.
 
 ## Dependency spine
 
@@ -47,8 +48,8 @@ flowchart TD
   G --> L[signed addition laws]
   A --> L
   L --> M[signed multiplication core and complete algebra]
-  M --> D7[D07 natural scaling]
-  D7 --> B[signed Bezout bridge]
+  M --> D7[D07 natural scaling closed candidate]
+  D7 --> B[D08 signed Bezout bridge next]
 ```
 
 The signed representation is parity-interleaved:
@@ -90,7 +91,28 @@ nodes, depth 60, and 53 Cuts. Two cold closures agree on the complete 60-row
 signed-stack digest
 `7befb7ae830b866a606e47f674730959e76599ded863aadd9868b850bcb190cd`.
 The complete D06 elementary signed algebra is therefore closed at candidate
-status. D07 natural scaling is next.
+status. The five-row
+[`SignedNatScale` core](../../peano-lab/py/peano_lab/library/ha_signed_nat_scale_candidate.py)
+and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_signed_nat_scale_candidate.py)
+identify the graph with the decoded equation
+`scale*ip+on = scale*inn+op`, prove both directions, and close totality and
+literal-output functionality. Their 65-row signed-stack digest is
+`511aa0ba4a6dac1a22f52db740f539c675307b5b77b6b1a7d9ef2e00dd8a5331`.
+The five-row
+[`natural-scale law tranche`](../../peano-lab/py/peano_lab/library/ha_signed_nat_scale_laws_candidate.py)
+and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_signed_nat_scale_laws_candidate.py)
+then prove generic left-scaling transport, decoded-equation composition,
+`SignedNatScale(0,input,0)`, `SignedNatScale(1,input,input)`, and the exact
+inner-then-outer graph law
+`SignedNatScale(inner,input,middle) -> SignedNatScale(outer,middle,output) ->
+SignedNatScale(outer*inner,input,output)`. The direct composition helper was
+chosen over treating D07 as `SignedMul(2*scale,input,output)`: that D06 alias
+would add an unnecessary signed-coercion dependency to the D08 Bezout path.
+The complete 70-row signed-stack digest is
+`81a18daf55e564c11dee83ce7465bc91876109a5e6bc092f75e0f31f46e27d8d`.
+D07 is closed at candidate status; D08 `SignedBezout` is next.
 
 The independent pair/cell design is now frozen in `HA-K3-PAIR-1` using the
 doubled Cantor polynomial and a successor cell tag. This does not close the

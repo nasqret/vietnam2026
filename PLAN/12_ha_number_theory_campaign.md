@@ -175,8 +175,9 @@ with `m != 0` on totality statements.
 - [x] Prove the complete D06 signed-multiplication graph and algebraic-law
       obligations frozen by that RFC, including associativity and both
       distributive orientations.
-- [ ] Prove the D07 natural-scale operation graph, its zero and one laws, and
-      compatibility with natural multiplication.
+- [x] Prove the D07 natural-scale operation graph, its zero and one laws, and
+      composition under natural multiplication as deterministic empty-context
+      candidates.
 - [ ] Translate four-natural balanced Bezout witnesses to and from the signed
       interface.
 - [ ] Add lcm only after its zero convention and gcd compatibility statement
@@ -312,6 +313,8 @@ closure remains 557 nodes and 1,787 edges, now partitioned as 241 public and
       attempting associativity or distributivity.
 - [x] Prove `SignedMul` associativity and distributivity from independently
       reviewed decoded-equation composition lemmas.
+- [x] Close the five-row direct `SignedNatScale` graph and its five-row
+      zero/one/composition tranche without defining D07 as a D06 alias.
 - [x] Audit the independent pair/list route, freeze the pair/cell component,
       and record the missing uniform computation-history step rather than
       hiding variable iteration in a recursive macro.
@@ -331,8 +334,41 @@ receipts. Two cold closures agree on the 60-row signed-stack digest
 `7befb7ae830b866a606e47f674730959e76599ded863aadd9868b850bcb190cd`.
 This changes neither the 393-entry public registry, the 45-row definition
 freeze (44 distinct public theorem dependencies), nor the 394-entry catalog,
-and grants no admission. D07 natural scaling is the next signed-arithmetic
-gate.
+and grants no admission.
+
+The completed D07 tranche adds five graph-core rows in
+[`ha_signed_nat_scale_candidate.py`](../peano-lab/py/peano_lab/library/ha_signed_nat_scale_candidate.py)
+and five laws/helpers in
+[`ha_signed_nat_scale_laws_candidate.py`](../peano-lab/py/peano_lab/library/ha_signed_nat_scale_laws_candidate.py).
+Their focused audits are
+[`test_ha_signed_nat_scale_candidate.py`](../peano-lab/py/tests/test_ha_signed_nat_scale_candidate.py)
+and
+[`test_ha_signed_nat_scale_laws_candidate.py`](../peano-lab/py/tests/test_ha_signed_nat_scale_laws_candidate.py).
+For decoded input `(ip,inn)` and output `(op,on)`, the exact graph is governed
+by `scale * ip + on = scale * inn + op`. The law order is the generic
+left-multiplication cross-sum transport, composition of two decoded scale
+equations, scale zero, scale one, and finally graph composition:
+
+```text
+SignedNatScale(inner,input,middle) ->
+SignedNatScale(outer,middle,output) ->
+SignedNatScale(outer*inner,input,output).
+```
+
+The direct equation-composition helper keeps the proof on the D07 surface.
+Defining D07 as the alias `SignedMul(2*scale,input,output)` was rejected: it
+would introduce an avoidable D06/coercion dependency into the common Bezout
+path and obscure the direct natural coefficient in the frozen D07 statement.
+The core closes a 65-row signed stack with digest
+`511aa0ba4a6dac1a22f52db740f539c675307b5b77b6b1a7d9ef2e00dd8a5331`;
+all ten rows close a 70-row stack with digest
+`81a18daf55e564c11dee83ce7465bc91876109a5e6bc092f75e0f31f46e27d8d`.
+The campaign now has 70 signed and 73 total candidates, 82 theorem receipts,
+15 K3 candidate modules, and 17 focused evidence tests. The public registry
+remains 393 entries with 56 public references, the definition freeze remains
+45 rows over 44 distinct public theorems, and the catalog remains 394 entries.
+Nothing in D07 is admitted. The D08 `SignedBezout` bridge is the next
+signed-arithmetic gate.
 
 ## Release boundary
 

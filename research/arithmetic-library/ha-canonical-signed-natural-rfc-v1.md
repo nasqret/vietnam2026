@@ -1,8 +1,8 @@
 # RFC HA-K3-SIGNED-1: canonical signed naturals by parity interleaving
 
 **Status:** representation frozen; decoder, code-extensionality,
-balance-normalization, and negation candidate tranches are closed but not
-publicly admitted
+balance-normalization, negation, addition, multiplication, and natural-scale
+candidate tranches are closed but not publicly admitted
 **Scope:** HA3 signed coefficients and the signed-integer component of K3  
 **Object language:** first-order HA over \(\{0,S,+,\times,=\}\)  
 **Controlling documents:**
@@ -627,8 +627,8 @@ parity codes.
 
 All five results remain nonpublic. At this core checkpoint, the D06 zero, one,
 commutative, associative, and distributive laws were separate gates; Sections
-6.4.6 and 6.4.7 close them at candidate status. D07 natural scaling and D08
-signed Bezout remain later gates.
+6.4.6 and 6.4.7 close them at candidate status. Section 6.4.8 closes D07
+natural scaling; D08 signed Bezout remains the next gate.
 
 #### 6.4.6 Closed elementary multiplication laws
 
@@ -743,8 +743,114 @@ intuitionistic and reach no division, remainder, CRT, beta, classical, or DNE
 theorem. Thus the complete D06 elementary signed algebra is closed at
 candidate status. The public registry remains 393 entries, the definition
 freeze remains 45 API rows over 44 distinct public theorems, and the catalog
-remains 394 entries; no theorem in this checkpoint is admitted. D07 natural
-scaling is the next signed-operation gate.
+remains 394 entries; no theorem in this checkpoint is admitted. The next
+section closes D07 natural scaling.
+
+#### 6.4.8 Closed natural-scale graph and laws
+
+The exact D07 graph has a five-row closed candidate core, in dependency
+order, in
+[`ha_signed_nat_scale_candidate.py`](../../peano-lab/py/peano_lab/library/ha_signed_nat_scale_candidate.py):
+
+```text
+signed_nat_scale_of_decoded_equation
+signed_nat_scale_to_decoded_equation
+signed_nat_scale_decoded_iff_equation
+signed_nat_scale_total
+signed_nat_scale_functional
+```
+
+For fixed decoders
+
+```text
+SignedDecode(input,ip,inn)
+SignedDecode(output,op,on),
+```
+
+the introduction and elimination rows identify the D07 graph exactly with
+
+```text
+scale * ip + on = scale * inn + op.
+```
+
+The iff row packages those directions. Totality decodes the input, normalizes
+the pair `(scale*ip,scale*inn)` with `SignedBalance`, and returns its canonical
+code. Functionality reduces two output graphs to that same balanced pair and
+uses literal-code functionality; it introduces no separate signed equality.
+The exact empty-context receipts are:
+
+| Candidate | Nodes | Depth | Cuts | Certificate SHA-256 |
+|---|---:|---:|---:|---|
+| `signed_nat_scale_of_decoded_equation` | 19 | 17 | 0 | `348988d2b7802c5c319975a537c568f51b55b894890638b1465bc7c8617eb918` |
+| `signed_nat_scale_to_decoded_equation` | 785 | 28 | 14 | `66ef87988a3703a713a4ce0a16e235228df640be182c22d51d01f082ca5df1bd` |
+| `signed_nat_scale_decoded_iff_equation` | 888 | 31 | 16 | `1b96a56388461895781783b29c091b55a61f562b198a93c8c1a7449049ec1e6a` |
+| `signed_nat_scale_total` | 431 | 39 | 8 | `e1ee2921a7e967369bd70cd70564ef340ad643926c15c62dba394ae535e76947` |
+| `signed_nat_scale_functional` | 1,698 | 36 | 34 | `59f948b0d2c8335cd3cd0098fb4acec9f895d8db2f930393d4dad33375ee2727` |
+
+The five-row law/helper tranche in
+[`ha_signed_nat_scale_laws_candidate.py`](../../peano-lab/py/peano_lab/library/ha_signed_nat_scale_laws_candidate.py)
+then closes, in exact dependency order:
+
+```text
+mul_cross_sum_left
+signed_nat_scale_equations_compose
+signed_nat_scale_zero
+signed_nat_scale_one
+signed_nat_scale_compose
+```
+
+`mul_cross_sum_left` proves that left multiplication preserves a balanced
+cross-sum. `signed_nat_scale_equations_compose` applies that transport to the
+inner scaling equation, chains it with the outer equation, and reassociates
+natural multiplication. This direct helper yields the graph composition law
+
+```text
+SignedNatScale(inner,input,middle) ->
+SignedNatScale(outer,middle,output) ->
+SignedNatScale(outer*inner,input,output).
+```
+
+The boundary graphs are exactly `SignedNatScale(0,input,0)` and
+`SignedNatScale(1,input,input)`. Thus zero sends every canonical signed value
+to its unique zero code, one preserves the literal input code, and sequential
+scaling agrees with the product of the natural scales. The exact receipts for
+this second tranche are:
+
+| Candidate | Nodes | Depth | Cuts | Certificate SHA-256 |
+|---|---:|---:|---:|---|
+| `mul_cross_sum_left` | 98 | 17 | 2 | `ffa3381d8208858dee25aba6f2f96ddfe2252f7c4c45d724a84f29f043e42586` |
+| `signed_nat_scale_equations_compose` | 575 | 32 | 13 | `064add40a96584356d47ca6a5455d16273403d23648ea64de5c5b3c5dc37a76b` |
+| `signed_nat_scale_zero` | 183 | 21 | 4 | `0e24789df5c82b513e59f376f03758a8d8f5e8ab03869d7e54fde7b7118e63af` |
+| `signed_nat_scale_one` | 257 | 21 | 7 | `90f005fdc0330354282b2dfec0105558dbc4533f1ef6436bdc070ed3a8789c4b` |
+| `signed_nat_scale_compose` | 1,453 | 34 | 30 | `7548acf6871b7db3db4ba2cdaf89b9544e2d641c881a9f27e47dc4c77448b49e` |
+
+The direct D07 graph was deliberately retained instead of defining natural
+scaling as the D06 alias `SignedMul(2*scale,input,output)`. Although such an
+equivalence can be proved later, using it as the definition would add an
+avoidable signed-coercion and D06 dependency to every natural coefficient in
+the Bezout path, while hiding the simple decoded equation that the D08 bridge
+actually needs. Direct equation composition proves the required algebra with
+a smaller and more transparent dependency surface.
+
+The focused
+[`core audit`](../../peano-lab/py/tests/test_ha_signed_nat_scale_candidate.py)
+and
+[`law audit`](../../peano-lab/py/tests/test_ha_signed_nat_scale_laws_candidate.py)
+pin exact statements, ordered dependencies, bodies, false mutations,
+empty-context closures, and bounded semantic oracles. The five core rows close
+the 65-row signed stack with digest
+`511aa0ba4a6dac1a22f52db740f539c675307b5b77b6b1a7d9ef2e00dd8a5331`.
+All ten D07 rows close the 70-row stack with digest
+`81a18daf55e564c11dee83ce7465bc91876109a5e6bc092f75e0f31f46e27d8d`.
+Their transitive closures are intuitionistic and reach no division,
+remainder, CRT, beta, classical, or DNE theorem.
+
+This checkpoint raises the campaign to 70 signed candidates, 73 total
+candidates, and 82 theorem receipts, across 15 K3 candidate modules and 17
+focused evidence tests. The public registry remains 393 entries with 56
+public references, the definition freeze remains 45 API rows over 44 distinct
+public theorems, and the catalog remains 394 entries. Nothing in D07 is
+admitted. The D08 `SignedBezout` bridge is next.
 
 ### 6.5 Bezout bridge obligations
 

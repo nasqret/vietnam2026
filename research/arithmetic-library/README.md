@@ -26,12 +26,12 @@ arithmetic library. Start with:
 Run `make ha-number-theory-check` from the repository root for the fast
 campaign-manifest, 45-row definition-freeze validation with 44 distinct public
 theorem replays, candidate-body, and empty-context receipt checks. The campaign
-manifest carries 72 statement hashes and exact closure receipts: nine
-deliberately admitted tranche-01
-theorems and 63 total isolated candidates, comprising three canonical-gcd
-rows and 60 signed parity, decoder, code-extensionality, balance-normalization,
-negation, addition, and complete D06 multiplication-algebra rows. The last 11
-signed rows are the four-row
+manifest carries 82 statement hashes and exact closure receipts: nine
+deliberately admitted tranche-01 theorems and 73 total isolated candidates,
+comprising three canonical-gcd rows and 70 signed parity, decoder,
+code-extensionality, balance-normalization, negation, addition, complete D06
+multiplication-algebra, and D07 natural-scale rows. The D06 closure ends with
+the four-row
 [`SignedMul` associativity candidate](../../peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py)
 and seven-row
 [`SignedMul` distributivity candidate](../../peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py),
@@ -39,14 +39,28 @@ audited respectively by their
 [`associativity`](../../peano-lab/py/tests/test_ha_signed_mul_associative_candidate.py)
 and
 [`distributivity`](../../peano-lab/py/tests/test_ha_signed_mul_distributive_candidate.py)
-focused tests. Two cold closures agree on the complete 60-row signed-stack
-digest
-`7befb7ae830b866a606e47f674730959e76599ded863aadd9868b850bcb190cd`.
-The public registry remains 393 entries, the definition freeze remains 45 API
-rows over 44 distinct public theorems, and the catalog remains 394 entries.
-Passing the candidate gate alone never enrolls a theorem in the public
-registry; none of these 63 candidates has been admitted. D07 natural scaling
-is the next signed-arithmetic layer.
+focused tests. D07 then adds the five-row
+[`SignedNatScale` core](../../peano-lab/py/peano_lab/library/ha_signed_nat_scale_candidate.py)
+and five-row
+[`zero/one/composition tranche`](../../peano-lab/py/peano_lab/library/ha_signed_nat_scale_laws_candidate.py),
+audited by the focused
+[`core`](../../peano-lab/py/tests/test_ha_signed_nat_scale_candidate.py) and
+[`law`](../../peano-lab/py/tests/test_ha_signed_nat_scale_laws_candidate.py)
+tests. The direct D07 equation is `scale*ip+on = scale*inn+op`; sequential
+graphs compose in inner-then-outer order to the graph at `outer*inner`.
+This direct helper route avoids making D07 an alias for D06 multiplication by
+the encoded natural `2*scale`, which would burden every Bezout coefficient
+with an unnecessary signed-coercion dependency. The core 65-row signed-stack
+digest is
+`511aa0ba4a6dac1a22f52db740f539c675307b5b77b6b1a7d9ef2e00dd8a5331`;
+the complete 70-row digest is
+`81a18daf55e564c11dee83ce7465bc91876109a5e6bc092f75e0f31f46e27d8d`.
+The K3 evidence now spans 15 candidate modules and 17 focused tests. The
+public registry remains 393 entries with 56 public references, the definition
+freeze remains 45 API rows over 44 distinct public theorems, and the catalog
+remains 394 entries. Passing the candidate gate alone never enrolls a theorem
+in the public registry; none of these 73 candidates has been admitted. The
+D08 `SignedBezout` bridge is the next signed-arithmetic layer.
 
 The current runtime contains 393 checked entries. The factorization tranche
 is fully synchronized. The exact native β-coded endpoints are checked

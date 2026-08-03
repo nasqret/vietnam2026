@@ -4025,3 +4025,42 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   `2eaf9bc60642a29f101a472553c1f21bb5dc30baab3c8bf76665550d9135f59f`.
   No browser was attached, so a visual click-through is not claimed. No push,
   deployment, or public theorem admission is claimed.
+
+## 2026-08-04 — D07 SignedNatScale closed in isolation
+
+- Added ten isolated, nonpublic candidates: five core rows for the decoded
+  scaling equation in both directions, its iff, totality, and literal-code
+  functionality; and five law rows for natural cross-sum transport,
+  decoded-equation composition, zero, one, and graph composition.
+- The core suite passes all eight focused tests and the law suite passes all
+  nine. Exact closed receipts use the schema `(nodes, depth, DAG objects, DAG
+  edges, reused references, Cuts, DAG SHA-256)`. The principal endpoints are
+  `signed_nat_scale_total = (431, 39, 416, 430, 15, 8,
+  e1ee2921a7e967369bd70cd70564ef340ad643926c15c62dba394ae535e76947)`,
+  `signed_nat_scale_functional = (1698, 36, 1047, 1080, 34, 34,
+  59f948b0d2c8335cd3cd0098fb4acec9f895d8db2f930393d4dad33375ee2727)`,
+  and `signed_nat_scale_compose = (1453, 34, 897, 923, 27, 30,
+  7548acf6871b7db3db4ba2cdaf89b9544e2d641c881a9f27e47dc4c77448b49e)`.
+  Repeated cold closure pins the 65-row core stack digest to
+  `511aa0ba4a6dac1a22f52db740f539c675307b5b77b6b1a7d9ef2e00dd8a5331`
+  and the 70-row complete signed-stack digest to
+  `81a18daf55e564c11dee83ce7465bc91876109a5e6bc092f75e0f31f46e27d8d`.
+- The core oracle exhaustively checks every one of the `17 * 17` scale/input
+  pairs against all 257 candidate outputs. The law oracle covers exactly 425
+  satisfying cross-sum-helper premises and 477 satisfying equation-compose
+  premises, checks zero and one over the first 33 codes, and checks the graph
+  composition law over all `17^3` triples. The pinned raw-code trap records
+  that `2 * 1 = 2` as naturals although scaling signed code `1` (negative one)
+  by two produces canonical code `3`, not code `2`.
+- Both dependency closures remain strictly intuitionistic arithmetic: no DNE,
+  forbidden automation, division, remainder, CRT, beta, or classical theorem
+  is reachable. With D07, the isolated campaign has 70 signed candidates, 73
+  candidates overall, and 82 exact receipts; the public registry remains 393.
+  The D08 `SignedBezout` bridge is next.
+- This is a proof checkpoint only. Public admission, source commit, Book
+  rebuild, push, and deployment have not yet been claimed.
+- The integrated local gate passes 29 manifest, definition-freeze, and
+  pair-RFC tests plus 132 proof/admission tests. The 394-row research
+  knowledge base, the independently replayed 393-theorem public snapshot,
+  and the 492-note/4,991-link vault remain green and unchanged, confirming
+  that the ten D07 rows are isolated evidence rather than public admissions.
