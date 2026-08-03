@@ -52,6 +52,21 @@ Model-v3 reading route: follow the notes above from the checked proof-trace corp
 genealogy and whole-session selection, distinguish the immutable corpus from the content-addressed
 lemma library, then follow the guarded WMI runtime to model-free kernel judgment.
 
+## Peano Hydra campaign
+
+- [[peano-hydra]]
+- [[decidable-proof-fragment]]
+- [[library-epoch]]
+- [[sealed-theorem-benchmark]]
+- [[critical-proof-frontier]]
+- [[macro-proof-action]]
+- [[matched-compute-proof-evaluation]]
+
+Hydra keeps symbolic search, external ATPs, retrieval, Qwen, and Codex outside
+the trust boundary. Follow the notes from the exact fragment and immutable
+library epoch through lineage sealing, sparse frontier actions, and the final
+matched-compute test.
+
 ## Executable surfaces
 
 - Browser: `/peano-lab/`
@@ -59,9 +74,11 @@ lemma library, then follow the guarded WMI runtime to model-free kernel judgment
 - Trace release: `peano-lab/corpus/`
 - Data/evaluation protocol: `docs/PEANO_LLM.md`
 - Post-training protocol: `docs/PEANO_TRAINING.md`
+- Peano Hydra protocol: `docs/PEANO_HYDRA_DESIGN.md`
 - Binding design: `docs/PEANO_LAB_DESIGN.md`
 - Milestones: `PLAN/09_peano_lab.md`
 - Arithmetic-library plan: `PLAN/10_arithmetic_library.md`
+- Peano Hydra plan: `PLAN/11_peano_hydra.md`
 
 ## Up
 

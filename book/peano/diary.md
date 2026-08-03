@@ -2607,3 +2607,106 @@ Finally, the retained `sacct` and WMI log bundle observe successful completion o
 records. They are useful operational evidence, not a signature. None of these limits revoke the
 narrow `k=1` observation, 3/4 versus 0/4. They do forbid stronger language: no bit-for-bit base,
 causal effect, statistical solve rate, broad PA ability, or induction capability has been shown.
+
+## 2026-08-03 — Design the experiment before admiring the hybrid
+
+The next idea is genuinely exciting: give Peano Lab several exploratory heads.
+A native prover can perform dense, reliable closure. Vampire or an SMT solver
+can expose useful clauses or instantiations. A cheap learned ranker can guide
+the inner loop. Qwen can propose witnesses, induction motives, cuts, and
+premise bundles. Codex can help author and inspect development data. Yet none
+of these components should acquire even a sliver of theorem authority. Every
+route must return to the same original-goal kernel check.
+
+The first useful correction was logical, not computational. Full standard
+Heyting arithmetic is undecidable. We may isolate and justify a restricted
+decidable fragment, but a bounded search over a friendly exercise collection
+does not make HA decidable. The binding Hydra design therefore distinguishes
+`proved`, certified `not_theorem`, and `unknown`. If we cannot independently
+justify negative answers, we will build a sound semi-decision theorem prover
+and say exactly that.
+
+The second correction was experimental. Our 247 checked theorems are wonderful
+training material and terrible hidden tests of themselves. Hydra freezes them
+as an ordered library epoch, then seals evaluation by mathematical lineage
+before tactic rows are generated. A new quadratic-reciprocity development
+would enter a later epoch. If reciprocity is to be a test, its statement must
+be deposited before the proof is written, and the complete route—definitions,
+intermediate lemmas, variants, scripts, teacher sketches, descendants, and
+dependent retrieval entries—must be masked. A name mismatch is not
+independence.
+
+The architectural bet is the critical frontier. Deterministic closure runs
+until it stalls; only then may a model make one sparse semantic choice through
+a typed macro that compiles back to ordinary Peano commands. This gives the
+student a learnable interface without inventing a second proof language. It
+also gives us honest ablations: retrieval, clause ranking, a pretrained model,
+SFT, value search, and expert iteration must each earn their place.
+
+Finally, we preregistered how enthusiasm can be falsified. A teacher solving
+DEV problems shows interface headroom, not student ability. The old four-goal
+Qwen smoke remains a smoke. The final set opens once, after the strongest
+symbolic baseline and all resources are frozen. Full Hydra must beat both that
+baseline and the strongest non-generative learned system by the registered
+margin at adjacent budgets with paired statistical support. If it does not,
+the result is “no demonstrated LLM advantage under these budgets.” That
+sentence would still be a worthwhile scientific outcome.
+
+## 2026-08-03 — Make one known route cross every boundary
+
+The first implementation question was intentionally smaller than “can the
+model prove arithmetic?” We needed to know whether several fallible explorers
+could share a state, propose bounded actions, and still return to one original-
+goal authority without acquiring hidden proof privileges.
+
+The resulting Hydra core lives beside the training code, not in the kernel or
+tactic engine. Each head declares the same logic and exact tactic/theorem
+capabilities. Quotas are fixed before search; results are merged in stable
+order without borrowing an unused slot. Expensive heads can be gated by the
+hash of the complete canonical goal tuple, but the full tuple is retained and
+compared, so the hash is only an index. A recorded script, Qwen adapter, future
+Codex client, or external prover wrapper is therefore just an untrusted source
+of ordinary surface lines.
+
+I resisted the tempting shortcut of trusting the first successful search.
+Search already checks a terminal certificate, but Hydra starts once more from
+the original formula through the traced headless runner. Publication requires
+agreement on the canonical theorem, every physical command, classical mode,
+surface authority, and proof size. This second path also gives the experiment
+a durable transcript. A failed provider is scientifically important but not a
+new logical failure mode: another head may still find a sound checked proof,
+while the row is marked degraded and removed from matched comparisons.
+
+For the first end-to-end example I reused the readable proof that consecutive
+products are even. The symbolic head is genuinely state-independent, but one
+candidate was not enough. Plain `compact_arith` closes the base and final
+equalities; the induction-step equality needs the visible premise, so the
+fixed tuple also enumerates `compact_arith [IH_witness]` at every state. That
+detail is pedagogically valuable: even “symbolic closure” needs a premise-
+selection policy. It is also why the experiment remains an oracle plumbing
+test—the contextual choice was selected with the known proof in view.
+
+Both lanes receive those two candidates and one further slot. In the control,
+that slot is an identified null head. In the hybrid, a checked transcript
+provides only the ten structural actions (`have`, induction, witnesses, cases,
+specialization, a local sufficiency cut, rewrite, and exact) at their exact
+states. The control exhausts at the root. The hybrid reconstructs all thirteen
+commands and the independent replay checks the same 180-node certificate. A
+mutated statement with an odd right-hand side activates no structural state;
+its exhaustion is recorded only as transcript non-reuse and `unknown`, never
+as a non-theorem proof.
+
+This tiny loop tells us the plumbing is real. It says nothing yet about Qwen,
+Codex, Vampire, a strong symbolic portfolio, or unseen mathematics. The next
+honest step is to freeze the semantic profile and library epoch, build a real
+symbolic DEV frontier, and ask whether a teacher can close enough of that
+frontier through the structured macro schema to justify training.
+
+The independent implementation review caught one label that was too
+permissive: a clean bootstrap run had been marked comparison-eligible. That
+was stronger than its evidence. I separated runtime degradation from campaign
+eligibility, rejected omitted provider identities, and made every
+surface-macro-v0 row explicitly ineligible. The current ledger sees extracted
+tactic lines, not raw decoder text and resource records, while its state gate
+comes from the teacher transcript rather than an independently detected
+symbolic fixed point. These are now recorded requirements, not hidden debts.

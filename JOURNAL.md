@@ -3547,3 +3547,55 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   portable symlink-safe test cleanup. The formerly monolithic Peano suite is
   deterministically partitioned into eight source-byte-balanced pytest shards;
   the original required check name remains as a fail-closed aggregate job.
+
+## 2026-08-03 — Peano Hydra was preregistered as a falsifiable campaign
+
+- Added the binding `docs/PEANO_HYDRA_DESIGN.md` and H0–H6
+  `PLAN/11_peano_hydra.md`. The kernel remains the only positive authority;
+  native search, retrieval/ranking, Qwen, Codex, Vampire/E/SMT, translations,
+  and reconstruction are explicitly untrusted.
+- Corrected the scope claim before implementation: standard Heyting arithmetic
+  is not decidable. A Hydra decision claim requires a frozen restricted
+  fragment and independently justified negative evidence; otherwise the result
+  is a sound theorem prover that may return `unknown`.
+- Froze the experimental laws in advance: ordered library epochs,
+  whole-lineage test sealing, complete evidence bundles, symbolic critical
+  frontiers, typed macros that compile to public Peano commands, and a
+  one-shot matched-compute `S`/`S+R`/`H` comparison.
+- The historical four-goal Qwen smoke and any Codex teacher pilot remain
+  regression/interface-headroom evidence only. Neither can support the final
+  model claim. Future quadratic-reciprocity work belongs to a new epoch and
+  requires complete development-lineage masking if evaluated.
+- Added the explanatory Jupyter Book chapter and connected Obsidian notes. No
+  Hydra code, benchmark, training run, or capability result was created in
+  this documentation milestone.
+
+## 2026-08-03 — The pre-H0 Hydra core closed its first checked loop
+
+- Added `training/peano_hydra` outside the trusted package. Identified heads
+  must share one exact execution authority and fixed quotas; stable first-wins
+  merging never reallocates quota. Macro heads accept only one explicit
+  structural surface line. Fixed, null, recorded-trace, and existing Qwen
+  adapters all cross the same untrusted candidate protocol; a future Codex or
+  solver adapter must do the same.
+- Every proposal records the complete canonical goals, state digest, provider
+  identity, gate decision, requested quota, head-returned and admitted tactic
+  lines, duplicate suppression, and sanitized failure. It does not retain raw
+  decoder text; surface-macro-v0 is therefore comparison-ineligible. Search
+  still replays each edge through Peano Lab. The separate Hydra runner then
+  starts again from the original
+  theorem with binding traces and refuses disagreement in theorem, commands,
+  logic/capabilities, or certificate size. A provider outage does not corrupt
+  a separately checked proof, but it makes the experimental row degraded.
+- The paired teacher-oracle pilot gives both lanes the same fixed symbolic
+  candidates and depth-13/beam-1/three-candidate budget. The control exhausts;
+  the structural teacher reproduces the known 13-command, 180-node proof and
+  its fresh kernel replay succeeds. The structural head is invoked at ten
+  exact states and gated elsewhere. A mutated odd-right-hand-side statement
+  does not activate the transcript and remains unknown.
+- Committed the full deterministic proposal and replay evidence under
+  `artifacts/peano-hydra/teacher-oracle-pilot-v1.json` (SHA-256
+  `3b709f70eb910e327880fefb0fb54b0770e5a8662c995205412f261b27b7580d`).
+  This is a plumbing regression, not Qwen/Codex capability, symbolic-baseline
+  strength, sealed evaluation, or an LLM-advantage result. The structured macro
+  DSL and all H0 semantic/conformance gates remain open.

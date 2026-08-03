@@ -27,6 +27,7 @@ mathematics — with every idea presented **informally (runnable) and formally (
 | Peano Lab | [`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md) | Sound browser theorem prover for PA: kernel → checked arithmetic tactics → UI → book/vault/corpus. |
 | Foundational arithmetic library | [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md) | Versioned lemma DAG: congruence and divisibility → division/gcd/primes → an honestly represented FTA. |
 | Native quadratic reciprocity | [`PLAN/11_quadratic_reciprocity.md`](PLAN/11_quadratic_reciprocity.md) | Parity and finite folds → Euler/Gauss/Eisenstein → a checked reciprocity certificate. |
+| Peano Hydra | [`PLAN/11_peano_hydra.md`](PLAN/11_peano_hydra.md) | Falsifiable neuro-symbolic campaign: frozen fragment/library/benchmark → strong symbolic baseline → sparse LLM guidance → matched-compute evaluation. |
 
 ## L2 / L3
 
@@ -263,3 +264,28 @@ closure: WMI job `187187` failed at gate 5 on one redundant dependency, and
 replacement job `210714` failed at gate 15 after a second direct-edge mutation
 still checked. Neither fail-closed dependency-minimality result is a QR result;
 attached-browser validation also remains a publication gate.
+
+## Parallel Peano Hydra campaign
+
+H0–H6 now define a binding neuro-symbolic experiment rather than another model
+demo. The kernel remains the sole theorem authority; native search,
+retrieval/ranking, Qwen, Codex, Vampire, E, SMT solvers, translations, and
+reconstruction are all untrusted. H0 freezes the exact logic/fragment and
+forbids a general Heyting-arithmetic decidability claim. H1 freezes an ordered
+library epoch and a lineage-separated benchmark under an independent owner.
+H2 establishes the strongest proof-producing symbolic baseline before model
+credit is possible. H3 requires a deterministic, balanced macro curriculum of
+complete checked QEDs. H4 admits learned components only through paired DEV
+gates. H5 is a one-shot `S` versus `S+R` versus full-Hydra comparison at
+matched time, compute, energy, and cost; a failed preregistered gate is reported
+as no demonstrated LLM advantage. H6 requires independent reproduction.
+
+The existing four-goal Qwen result is retained only as a launch regression,
+not evidence for the campaign. Any later quadratic-reciprocity development
+belongs to a new library epoch and, if used for evaluation, requires
+whole-lineage masking. A pre-H0 provider-neutral portfolio/replay bootstrap and
+teacher-oracle plumbing artifact now exist, but no completed H0 semantic or
+structured-macro gate, sealed benchmark, Hydra training, or headline result
+exists yet. See
+[`docs/PEANO_HYDRA_DESIGN.md`](docs/PEANO_HYDRA_DESIGN.md) and
+[`PLAN/11_peano_hydra.md`](PLAN/11_peano_hydra.md).

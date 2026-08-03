@@ -232,6 +232,30 @@
   retrieval/application target rather than a sealed benchmark.
   The active checkout is
   `/Users/bnaskrecki/codex/peano`.
+- **Peano Hydra campaign protocol (2026-08-03):**
+  [`docs/PEANO_HYDRA_DESIGN.md`](docs/PEANO_HYDRA_DESIGN.md) freezes a
+  kernel-judged H0–H6 experiment before implementation. Standard Heyting
+  arithmetic is not claimed decidable; any decision result requires an exact
+  restricted fragment and independent negative evidence. H1 freezes an ordered
+  library epoch (at least the current 247 checked theorems) and a sealed
+  lineage-separated benchmark; later mathematics, including a future
+  quadratic-reciprocity development, enters a new epoch. Native search,
+  retrieval/ranking, Qwen, Codex, Vampire/E/SMT, translations, and
+  reconstruction are untrusted. Generative actions occur only at symbolic
+  critical frontiers through macros compiled to public Peano commands. The H5
+  headline compares symbolic `S`, non-generative `S+R`, and full Hydra under
+  matched resources; teacher-oracle DEV pilots and the historical four-goal
+  smoke make no model or performance claim. The pre-H0 provider-neutral core
+  now composes identified fixed, null, recorded, Qwen-compatible, or future
+  Codex-compatible candidate heads through fixed quotas and exact-state gates;
+  search validates every edge and a separate traced runner replays any QED.
+  Its deterministic teacher-oracle pilot has a symbolic-only control
+  (`exhausted`), a hybrid replay of the known 13-command/180-node proof
+  (`proof`, kernel checked), and a mutated-transcript integrity lane
+  (`exhausted`, therefore `unknown`). The committed report is explicitly
+  plumbing evidence, not model capability or H0/H5 completion. Every
+  surface-macro-v0 row is comparison-ineligible until raw model/resource
+  evidence, provider attestations, and genuine frontier detection exist.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
   Tarski–Grothendieck set theory. The same statements are proved in all four to *show* the foundations.
 - **Local tooling present:** Lean/`elan`/`lake` ✓ (proofs verifiable here), `jupyter-book` ✓, `gh` (as

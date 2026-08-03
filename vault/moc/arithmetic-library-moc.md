@@ -50,6 +50,8 @@ The synchronized vault includes all 384 generated theorem notes.
 - [[self-contained-proof-sharing]]
 - [[layered-cut-bundle]]
 - [[closed-proof-dag]]
+- [[library-epoch]]
+- [[sealed-theorem-benchmark]]
 
 ## Mathematical concepts
 
