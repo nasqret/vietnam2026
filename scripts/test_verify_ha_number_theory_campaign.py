@@ -71,8 +71,8 @@ def test_repository_campaign_validates() -> None:
     assert summary == {
         "layers": 12,
         "public_references": 56,
-        "candidate_references": 3,
-        "theorem_evidence": 12,
+        "candidate_references": 29,
+        "theorem_evidence": 38,
         "validation_gates": 7,
     }
 
@@ -117,7 +117,7 @@ def test_beta_cannot_be_a_k3_foundational_reference(tmp_path: Path) -> None:
     path = _write_campaign(tmp_path, campaign)
     with pytest.raises(
         VALIDATOR.CampaignError,
-        match="K3 foundational references may not use beta or CRT",
+        match="K3 foundational references may not use beta, CRT, division, or remainder",
     ):
         VALIDATOR.validate_campaign(REPOSITORY_ROOT, path)
 
@@ -139,7 +139,7 @@ def test_innocuously_named_k3_candidate_cannot_depend_directly_on_beta(
     with pytest.raises(
         VALIDATOR.CampaignError,
         match=(
-            "K3 foundational dependency path may not use beta or CRT: "
+            "K3 foundational dependency path may not use beta, CRT, division, or remainder: "
             "distinct_odd_prime_eisenstein_quotient_sum_identity -> beta_sum_exists"
         ),
     ):
@@ -163,9 +163,75 @@ def test_innocuously_named_k3_candidate_cannot_hide_beta_transitively(
     with pytest.raises(
         VALIDATOR.CampaignError,
         match=(
-            "K3 foundational dependency path may not use beta or CRT: "
+            "K3 foundational dependency path may not use beta, CRT, division, or remainder: "
             "eisenstein_row_transposed_column_count_partition -> "
             "eisenstein_transposed_outer_column_choices -> .*beta"
+        ),
+    ):
+        VALIDATOR.validate_campaign(REPOSITORY_ROOT, path)
+
+
+@pytest.mark.parametrize(
+    "theorem_name",
+    ("division_remainder_unique", "remainder_decomposition_to_mod_eq"),
+)
+def test_division_or_remainder_cannot_be_a_k3_foundational_reference(
+    tmp_path: Path,
+    theorem_name: str,
+) -> None:
+    campaign = deepcopy(_campaign())
+    k3 = campaign["layers"][3]
+    k3["status"] = "existing_public_core"
+    k3["public_theorem_references"] = [theorem_name]
+    path = _write_campaign(tmp_path, campaign)
+    with pytest.raises(
+        VALIDATOR.CampaignError,
+        match=(
+            "K3 foundational references may not use beta, CRT, division, or remainder: "
+            f"'{theorem_name}'"
+        ),
+    ):
+        VALIDATOR.validate_campaign(REPOSITORY_ROOT, path)
+
+
+def test_k3_public_dependency_closure_cannot_hide_division(
+    tmp_path: Path,
+) -> None:
+    campaign = deepcopy(_campaign())
+    k3 = campaign["layers"][3]
+    k3["status"] = "existing_public_core"
+    k3["public_theorem_references"] = ["even_odd_exclusive_pointwise"]
+    path = _write_campaign(tmp_path, campaign)
+    with pytest.raises(
+        VALIDATOR.CampaignError,
+        match=(
+            "K3 foundational dependency path may not use beta, CRT, division, or remainder: "
+            "even_odd_exclusive_pointwise -> division_remainder_unique"
+        ),
+    ):
+        VALIDATOR.validate_campaign(REPOSITORY_ROOT, path)
+
+
+def test_innocuously_named_k3_candidate_cannot_hide_division_transitively(
+    tmp_path: Path,
+) -> None:
+    campaign = deepcopy(_campaign())
+    _install_k3_candidate(
+        campaign,
+        module_path=(
+            "peano-lab/py/peano_lab/library/"
+            "euler_criterion_bounded_candidate.py"
+        ),
+        factory="make_euler_criterion_bounded_candidate_theorems",
+        theorem_name="double_predecessor_ne_one",
+    )
+    path = _write_campaign(tmp_path, campaign)
+    with pytest.raises(
+        VALIDATOR.CampaignError,
+        match=(
+            "K3 foundational dependency path may not use beta, CRT, division, or remainder: "
+            "double_predecessor_ne_one -> even_odd_exclusive_pointwise -> "
+            "division_remainder_unique"
         ),
     ):
         VALIDATOR.validate_campaign(REPOSITORY_ROOT, path)

@@ -1,7 +1,8 @@
 # RFC HA-K3-SIGNED-1: canonical signed naturals by parity interleaving
 
-**Status:** representation design selected; theorem work not started by this
-RFC  
+**Status:** representation frozen; decoder, code-extensionality,
+balance-normalization, and negation candidate tranches are closed but not
+publicly admitted
 **Scope:** HA3 signed coefficients and the signed-integer component of K3  
 **Object language:** first-order HA over \(\{0,S,+,\times,=\}\)  
 **Controlling documents:**
@@ -10,12 +11,12 @@ and
 [`ha-definition-representation-freeze-v1.md`](ha-definition-representation-freeze-v1.md)
 
 This RFC selects a natural-number representation for signed integers and
-freezes its intended base-language relations. It does not register a parser
-definition, introduce a kernel symbol, provide a certificate, admit a
-theorem, or change the status of any campaign layer. Every theorem name below
-is a proposed obligation unless it is explicitly described only as a source
-inventory anchor. Source inventory anchors must still pass the campaign's
-dependency and replay audits before use.
+freezes its intended base-language relations. It does not itself register a
+parser definition, introduce a kernel symbol, provide a certificate, or admit
+a theorem. Current implementation and evidence status is recorded in
+`ha-number-theory-campaign.json`; the RFC identifiers and theorem names below
+remain the normative design obligations. Source inventory anchors must still
+pass the campaign's dependency and replay audits before use.
 
 The words **must**, **must not**, **should**, and **may** are normative within
 this RFC.
@@ -401,6 +402,33 @@ this route. The source entry named `lt_trichotomy` is the intended comparison
 anchor and must pass the same replay and transitive-dependency audit as every
 other imported theorem.
 
+#### 6.3.1 Closed candidate checkpoint
+
+The representation-level normalization obligations are now implemented as
+closed, nonpublic candidates. In dependency order they are:
+
+```text
+signed_balance_total
+signed_decode_to_balance
+signed_balance_equations_cross_sum
+signed_balance_extensional
+signed_balance_functional
+signed_balance_zero_iff
+```
+
+The separate decoded-code bridge closes in both directions and is packaged as
+`signed_code_eq_iff_balance`. Thus literal equality of two decoded canonical
+codes is now connected constructively to the subtraction-free cross sum
+
+```text
+xp + yn = xn + yp.
+```
+
+All nine new certificates check from the empty context, contain no `DNE`, and
+their transitive dependency closures contain no division, remainder, CRT, or
+beta-coded theorem. They remain outside the public registry. The next
+topological obligation is `SignedNegate`, not addition or multiplication.
+
 ### 6.4 Arithmetic graph obligations
 
 Each of `SignedNegate`, `SignedAdd`, `SignedMul`, and `SignedNatScale` must
@@ -427,6 +455,30 @@ The first arithmetic acceptance gate additionally requires:
 
 These laws may be proved through decoded balanced equations. They must not be
 implemented as trusted arithmetic on host integers.
+
+#### 6.4.1 Closed negation checkpoint
+
+The first arithmetic graph is now closed at candidate status. Its eight rows
+are, in dependency order:
+
+```text
+signed_decode_swap_exists
+signed_negate_of_swapped_decode
+signed_negate_to_swapped_decode
+signed_negate_total
+signed_negate_functional
+signed_negate_zero
+signed_negate_symmetric
+signed_negate_involutive
+```
+
+The proof follows D04 literally: decode the input pair and decode the output
+with its two parts swapped. It does not use host subtraction or depend on
+`SignedBalance`. The largest certificate is the involution theorem at 1,199
+structural nodes and depth 35. All eight certificates close from the empty
+context without `DNE`, division, remainder, CRT, or beta-coded dependencies,
+and remain outside the public registry. `SignedAdd` is the next arithmetic
+graph obligation.
 
 ### 6.5 Bezout bridge obligations
 

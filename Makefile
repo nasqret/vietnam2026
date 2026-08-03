@@ -33,7 +33,7 @@ help:
 	@echo "  make book-proof-explorer  regenerate the static PA proof explorer"
 	@echo "  make lean         build & axiom-check the Lean artifact"
 	@echo "  make lean-fta     build & exact-axiom-check the Lean FTA companion"
-	@echo "  make ha-number-theory-check  validate strict-HA admission and isolated gcd tranche"
+	@echo "  make ha-number-theory-check  validate strict-HA admission, gcd, and signed normalization tranches"
 	@echo "  make lab-serve    serve lab-lambda locally on :8001"
 	@echo "  make peano-serve serve the staged Peano Lab locally on :8002"
 	@echo "  make peano-training-dashboard  observe WMI job $(PEANO_TRAIN_JOB) on :$(PEANO_TRAIN_DASHBOARD_PORT)"
@@ -84,6 +84,12 @@ ha-number-theory-check:
 		tests/test_ha_canonical_congruence_candidate.py \
 		tests/test_ha_modular_inverse_candidate.py \
 		tests/test_ha_canonical_gcd_candidate.py \
+		tests/test_ha_signed_parity_candidate.py \
+		tests/test_ha_signed_decode_candidate.py \
+		tests/test_ha_signed_code_extensional_candidate.py \
+		tests/test_ha_signed_balance_candidate.py \
+		tests/test_ha_signed_balance_complete_candidate.py \
+		tests/test_ha_signed_negate_candidate.py \
 		tests/test_ha_number_theory_tranche01_admission.py
 
 lab-serve:

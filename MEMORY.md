@@ -1519,3 +1519,41 @@
   atlas and all new native-source links. The 47-source Book builds without
   warnings; its 2,325-page integrity gate reports zero broken/escaping targets
   or fragments and byte-identical explicit/defined explorer trees.
+- **Signed decoder candidate closure (2026-08-03):** the K3 seed now has nine
+  closed, nonpublic theorems: division-free parity separation, even-half
+  uniqueness, two decoder constructors, totality, normality, functionality,
+  zero characterization, and validity of every natural code. The largest
+  certificate is `signed_decode_functional` at 709 nodes/depth 27/13 Cuts with
+  DAG SHA-256
+  `50818b66647097dee0680f1dacbcb62368049dcc95f66532cd36b63306ab3c0b`.
+  The complete dependency audit reaches no division, remainder, beta, CRT, or
+  DNE. The campaign manifest has 56 public references, twelve candidates, and
+  21 exact receipts; the public registry remains 393. Next prove total and
+  functional `SignedBalance` normalization before any signed operation graph.
+- **Signed extensionality and balance closure (2026-08-03):** nine additional
+  closed, nonpublic candidates connect literal parity-interleaved code equality
+  to decoded cross-sum equality and make `SignedBalance` total, extensional,
+  functional, decoder-compatible, and exact at zero. The largest is
+  `signed_balance_zero_iff` at 1,660 nodes/depth 36/33 Cuts with DAG SHA-256
+  `d54bade5be975a27fc08a189ac552110ed8e85878137bc2e8e5268469c46b419`.
+  Two cold closures, mutation oracles, RFC D03 expansion, registry isolation,
+  and independent reviews pass without DNE or transitive division, remainder,
+  beta, or CRT dependencies. The manifest now binds 56 public references, 21
+  closed candidates, and 30 exact receipts; the public registry remains 393.
+  The next topological layer is `SignedNegate`, not addition or multiplication.
+- **Signed negation closure (2026-08-03):** eight further closed, nonpublic
+  candidates implement RFC D04 by swapping normalized decoder parts. They
+  prove decoder introduction/elimination, totality, literal-output
+  functionality, zero, symmetry, and involution. The endpoint
+  `signed_negate_involutive` checks at 1,199 nodes/depth 35/27 Cuts with DAG
+  SHA-256
+  `7aec997db1ea6393ff1192eea1b16a73b4a7424349b7670e1541fa34029c882b`;
+  the full 26-theorem signed stack digest is
+  `89d806311b58860f130cabf862a17bd4e310710a9069b401b293609a0885ce3c`.
+  Independent review and 42 combined tests found no DNE, forbidden tactic,
+  division, remainder, beta, CRT, or registry edge. The manifest now binds 29
+  closed candidates and 38 exact receipts; the public registry remains 393.
+  `SignedAdd` is next and must normalize decoded contribution sums through
+  `SignedBalance`. Final local gates pass 26 manifest/definition tests, 62
+  proof/admission tests, a cold 393-theorem public replay, the 4,991-link vault
+  audit, and the 2,325-page Book integrity audit.

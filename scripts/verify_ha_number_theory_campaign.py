@@ -58,7 +58,14 @@ REQUIRED_GATE_IDS = {
     "generated_integration",
     "heavy_closure",
 }
-K3_FORBIDDEN_REFERENCE_FRAGMENTS = ("beta", "crt", "chinese_remainder")
+K3_FORBIDDEN_REFERENCE_FRAGMENTS = (
+    "beta",
+    "crt",
+    "chinese_remainder",
+    "division",
+    "remainder",
+)
+K3_FORBIDDEN_FOUNDATION_LABEL = "beta, CRT, division, or remainder"
 SNAKE_IDENTIFIER = re.compile(r"[a-z][a-z0-9]*(?:_[a-z0-9]+)*\Z")
 LAYER_IDENTIFIER = re.compile(r"[KM][0-9]+\Z")
 HEX_SHA256 = re.compile(r"[0-9a-f]{64}\Z")
@@ -274,12 +281,12 @@ def _forbidden_k3_dependency_path(
     local_specs: dict[str, Any],
     public_specs: dict[str, Any],
 ) -> tuple[str, ...] | None:
-    """Return a forbidden beta/CRT dependency path reachable from ``root_name``.
+    """Return a forbidden K3 dependency path reachable from ``root_name``.
 
     Candidate factories may expose several mutually dependent specifications
     while the manifest names only their intended K3 roots.  Follow the complete
     local factory graph, and continue through public theorem dependencies, so an
-    innocuously named wrapper cannot conceal a forbidden foundation.
+    innocuously named wrapper cannot conceal beta/CRT or division/remainder.
     """
 
     completed: set[str] = set()
@@ -305,7 +312,7 @@ def _forbidden_k3_dependency_path(
         next_path = (*path, name)
         # Prefer the shortest explicit violation over an earlier unrelated
         # dependency whose candidate factory was not declared. This makes a
-        # direct beta/CRT edge visible while still failing closed on unknowns
+        # direct forbidden edge visible while still failing closed on unknowns
         # when no explicit forbidden edge exists.
         for dependency in spec.dependencies:
             folded_dependency = dependency.casefold()
@@ -755,7 +762,8 @@ def validate_campaign(repository_root: Path, campaign_path: Path) -> dict[str, i
                 if any(fragment in folded for fragment in K3_FORBIDDEN_REFERENCE_FRAGMENTS):
                     _fail(
                         location,
-                        f"K3 foundational references may not use beta or CRT: {reference!r}",
+                        "K3 foundational references may not use "
+                        f"{K3_FORBIDDEN_FOUNDATION_LABEL}: {reference!r}",
                     )
             for root_name in (*public_references, *declared_candidate_names):
                 forbidden_path = _forbidden_k3_dependency_path(
@@ -766,7 +774,8 @@ def validate_campaign(repository_root: Path, campaign_path: Path) -> dict[str, i
                 if forbidden_path is not None:
                     _fail(
                         location,
-                        "K3 foundational dependency path may not use beta or CRT: "
+                        "K3 foundational dependency path may not use "
+                        f"{K3_FORBIDDEN_FOUNDATION_LABEL}: "
                         + " -> ".join(forbidden_path),
                     )
 

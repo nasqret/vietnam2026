@@ -337,6 +337,12 @@ def test_campaign_manifest_is_bound_to_the_exact_admission_receipts() -> None:
     assert evidence["test_paths"] == [
         "peano-lab/py/tests/test_ha_number_theory_tranche01_admission.py",
         "peano-lab/py/tests/test_ha_canonical_gcd_candidate.py",
+        "peano-lab/py/tests/test_ha_signed_parity_candidate.py",
+        "peano-lab/py/tests/test_ha_signed_decode_candidate.py",
+        "peano-lab/py/tests/test_ha_signed_code_extensional_candidate.py",
+        "peano-lab/py/tests/test_ha_signed_balance_candidate.py",
+        "peano-lab/py/tests/test_ha_signed_balance_complete_candidate.py",
+        "peano-lab/py/tests/test_ha_signed_negate_candidate.py",
     ]
 
     items = evidence["theorems"][: len(EXPECTED_NAMES)]

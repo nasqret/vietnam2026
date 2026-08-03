@@ -156,8 +156,16 @@ with `m != 0` on totality statements.
 - [ ] Freeze gcd edge cases before exposing a computational graph.
 - [x] Select a canonical sign-magnitude encoding with no negative zero in the
       reviewed `HA-K3-SIGNED-1` RFC.
-- [ ] Prove decoder totality/functionality, parity separation, and the signed
-      operation graph obligations frozen by that RFC.
+- [x] Prove the division-free parity separation and the decoder constructors,
+      totality, normality, functionality, zero characterization, and universal
+      validity as deterministic empty-context candidates.
+- [x] Prove total, extensional, functional balance normalization, its decoder
+      bridge, and its exact zero characterization as deterministic
+      empty-context candidates.
+- [x] Prove the signed-negate decoder bridges, totality, functionality, zero,
+      symmetry, and involution as deterministic empty-context candidates.
+- [ ] Prove the signed add, multiply, and natural-scale operation graph
+      obligations frozen by that RFC.
 - [ ] Translate four-natural balanced Bezout witnesses to and from the signed
       interface.
 - [ ] Add lcm only after its zero convention and gcd compatibility statement
@@ -264,11 +272,22 @@ closure remains 557 nodes and 1,787 edges, now partitioned as 241 public and
       eight exact base-language graph templates, dependency prohibitions, and
       staged proof obligations in
       [`ha-canonical-signed-natural-rfc-v1.md`](../research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md).
-- [ ] Prove the K1-only parity-separation lemma required by the signed decoder;
+- [x] Prove the K1-only parity-separation lemma required by the signed decoder;
       the existing `even_odd_exclusive_pointwise` is not foundationally usable
       because it depends on division uniqueness.
-- [ ] Prove signed decoder totality and functionality, then constructor and
-      normalization bridges in the RFC's dependency order.
+- [x] Prove signed decoder constructors, totality, normality, functionality,
+      zero characterization, and universal validity in the RFC's dependency
+      order; retain all nine parity/decoder results as closed candidates.
+- [x] Prove `SignedBalance` totality and functionality, its decoder transport,
+      cross-sum extensionality, and zero bridge before any signed arithmetic
+      graph; retain all six normalization results as closed candidates.
+- [x] Prove the three decoded-code extensionality results culminating in
+      `signed_code_eq_iff_balance`; retain them as closed candidates.
+- [x] Begin the signed arithmetic graph strictly with negation totality,
+      functionality, decoder semantics, zero, symmetry, and involution; retain
+      all eight results as closed candidates.
+- [ ] Build `SignedAdd` next from decoded contribution sums plus
+      `SignedBalance`; do not bypass normalization with host integers.
 
 ## Release boundary
 

@@ -3694,3 +3694,95 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   completed without warnings. Its non-executing integrity gate found 2,325 HTML
   pages, zero broken or escaping relative targets, zero broken fragments, and
   byte-identical 2,285-file explicit/defined Proof Explorer trees.
+
+## 2026-08-03 — Strict HA signed decoder candidate layer closed
+
+- Reproved even/odd separation without the historical division-uniqueness
+  dependency. `even_odd_exclusive_k1` closes at 80 nodes/depth 20/one Cut from
+  `zero_or_succ`; `even_half_unique` closes at 245/depth 24/seven Cuts from
+  multiplication cancellation. Their complete public dependency union is
+  exactly seven elementary arithmetic theorems and contains no division,
+  remainder, beta, CRT, or classical edge.
+- Implemented the first seven `HA-K3-SIGNED-1` decoder obligations: the two
+  constructors, totality, normality, functionality, zero characterization,
+  and universal validity. Every statement expands to the frozen D01/D02
+  formulas before checking. The largest certificate,
+  `signed_decode_functional`, is 709 nodes, depth 27, 397 distinct objects,
+  399 DAG edges, three reused objects, and 13 Cuts; its stable digest is
+  `50818b66647097dee0680f1dacbcb62368049dcc95f66532cd36b63306ab3c0b`.
+- The focused tests perform two cold closures, pin all nine statement and
+  certificate hashes, ban DNE and proof automation in the new scripts, reject
+  nearby false statements, check hygienic RFC expansion, and validate unique
+  decoding for codes 0 through 20. The combined parity/decoder suite passed
+  13 tests; the broader existing parity suite brought the observed total to
+  16 passing tests.
+- Hardened the campaign validator so K3 rejects direct or transitive division
+  and remainder dependencies in addition to beta and CRT. Its mutation tests
+  pin the hidden route `double_predecessor_ne_one ->
+  even_odd_exclusive_pointwise -> division_remainder_unique`.
+- The campaign manifest now records 56 public references, twelve closed
+  candidate references, and 21 exact theorem receipts. The nine new signed
+  results remain deliberately absent from the 393-theorem public registry.
+  `SignedBalance` totality and unique normalization are the next proof layer;
+  signed addition, multiplication, and Bezout packaging remain unclaimed.
+
+## 2026-08-03 — Signed code extensionality and SignedBalance normalization closed
+
+- Added three decoded-code extensionality candidates. The forward theorem
+  proves that decoded cross-sum equality forces literal canonical-code
+  equality by four constructive sign cases; the reverse theorem uses decoder
+  functionality. Their package `signed_code_eq_iff_balance` closes at 1,181
+  structural nodes, depth 32, 25 Cuts, and certificate SHA-256
+  `26dbecbb46fef4d1eda7a208dbdce26f924aabde0a4317092821b8a3f2833728`.
+- Added the first three `SignedBalance` candidates. Totality constructs code
+  zero, an odd negative code, or an even positive code from natural
+  trichotomy; decoder transport and an additive cross-sum helper supply the
+  normalization spine. Their closed receipts are respectively 236, 91, and
+  410 nodes. An independent read-only audit checked every branch and the
+  exact RFC D03 expansion.
+- Completed the balance API with extensionality, functionality, and the exact
+  zero criterion. Their closed receipts are 736/depth 33/16 Cuts,
+  850/depth 34/18 Cuts, and 1,660/depth 36/33 Cuts. The zero theorem's stable
+  DAG digest is
+  `d54bade5be975a27fc08a189ac552110ed8e85878137bc2e8e5268469c46b419`.
+- All nine new statements have pinned SHA-256 identities, dependency-curried
+  body receipts, two cold empty-context closures, no-DNE audits, nearby false
+  mutations, semantic fixtures, and public-registry isolation. Their exact
+  transitive closures contain no division, remainder, CRT, beta, or classical
+  theorem. The public registry remains unchanged at 393 entries.
+- Integrated the five signed candidate modules into K3 in topological order.
+  The campaign manifest now records 56 public references, 21 closed candidate
+  references, and 30 exact receipts. The next conservative proof layer is
+  `SignedNegate`; addition, multiplication, natural scaling, and signed Bezout
+  packaging remain unclaimed.
+
+## 2026-08-03 — Canonical SignedNegate graph closed
+
+- Implemented RFC D04 directly as an existential decoder graph: an input
+  decoding `(pos,neg)` is paired with an output decoding `(neg,pos)`. A
+  constructive helper produces the swapped decoder without division or
+  `SignedBalance`; the two decoder/spec bridges expose both directions.
+- Closed totality and literal-output functionality, plus zero, graph symmetry,
+  and involution. Exact endpoint receipts are 1,160 nodes/depth 33/25 Cuts for
+  `signed_negate_functional` and 1,199/depth 35/27 Cuts for
+  `signed_negate_involutive`; the latter has certificate SHA-256
+  `7aec997db1ea6393ff1192eea1b16a73b4a7424349b7670e1541fa34029c882b`.
+- The focused suite pins all eight statement hashes, body metrics, two cold
+  closure passes, RFC D04 text and hash, hygienic binders, exact transitive
+  closure, registry isolation, concrete false mutations, and unique semantic
+  outputs for codes 0 through 40. An independent read-only audit found no
+  defect; 42 combined signed tests pass. The full 26-theorem signed-stack DAG
+  digest is
+  `89d806311b58860f130cabf862a17bd4e310710a9069b401b293609a0885ce3c`.
+- Integrated the negation module in topological order without public
+  admission. The campaign manifest now has 56 public references, 29 closed
+  candidates, and 38 exact receipts. No new public theorem was added; the
+  registry stays at 393. The next graph is `SignedAdd`, whose decoded natural
+  contribution sums must pass through canonical `SignedBalance` normalization.
+- Final local integration passed 26 manifest/definition tests and 62 focused
+  proof/admission tests. A cold snapshot check independently replayed all 393
+  public theorems; the vault retained 492 notes and 4,991 resolved links. The
+  warning-free 47-source Jupyter Book build retained 2,325 HTML pages, zero
+  broken, escaping, fragment, unsafe, or remote-runtime links, and byte-equal
+  2,285-file explicit/defined Proof Explorer trees. No WMI, deployment, public
+  admission, or push receipt is claimed by this local checkpoint.

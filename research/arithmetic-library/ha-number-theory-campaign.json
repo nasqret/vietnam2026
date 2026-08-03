@@ -42,7 +42,13 @@
     "dne_nodes": 0,
     "test_paths": [
       "peano-lab/py/tests/test_ha_number_theory_tranche01_admission.py",
-      "peano-lab/py/tests/test_ha_canonical_gcd_candidate.py"
+      "peano-lab/py/tests/test_ha_canonical_gcd_candidate.py",
+      "peano-lab/py/tests/test_ha_signed_parity_candidate.py",
+      "peano-lab/py/tests/test_ha_signed_decode_candidate.py",
+      "peano-lab/py/tests/test_ha_signed_code_extensional_candidate.py",
+      "peano-lab/py/tests/test_ha_signed_balance_candidate.py",
+      "peano-lab/py/tests/test_ha_signed_balance_complete_candidate.py",
+      "peano-lab/py/tests/test_ha_signed_negate_candidate.py"
     ],
     "theorems": [
       {
@@ -128,6 +134,188 @@
         "source_module": "peano-lab/py/peano_lab/library/ha_canonical_gcd_candidate.py",
         "statement_sha256": "05fd381ea8bf40b071f47365e9ebd5ba3e409bbf588699a60b17e04d073517fb",
         "receipt": {"nodes": 2010, "depth": 48, "objects": 1255, "edges": 1326, "reused": 72, "cuts": 55, "certificate_sha256": "20db8565558e7d08e343c4b168dde040f5ecea0479257fd10f0024d13a901b3a"}
+      },
+      {
+        "name": "even_odd_exclusive_k1",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_parity_candidate.py",
+        "statement_sha256": "d46a72512d65b2053572326b93f2c0279e8fdea4b08abd542f8fe22e4e66808f",
+        "receipt": {"nodes": 80, "depth": 20, "objects": 80, "edges": 79, "reused": 0, "cuts": 1, "certificate_sha256": "d2ebac65fdad664fd883d467a6482b47be819c05fc39d928a91e4980f0b3a3f9"}
+      },
+      {
+        "name": "even_half_unique",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_parity_candidate.py",
+        "statement_sha256": "ed519f4aef419a494c3784ca94560e4027d41e4439621a17adcde6b2e2093037",
+        "receipt": {"nodes": 245, "depth": 24, "objects": 198, "edges": 198, "reused": 1, "cuts": 7, "certificate_sha256": "03df34e8e967b1b25e14a19461baeb44dec25a185a16d12eb72ffa8d17438fda"}
+      },
+      {
+        "name": "signed_decode_nonnegative_constructor",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_decode_candidate.py",
+        "statement_sha256": "57e7cea7350808ca4a08b8b071d12f14aae1f940802d656bf8bfba6dcdd0c147",
+        "receipt": {"nodes": 5, "depth": 4, "objects": 5, "edges": 4, "reused": 0, "cuts": 0, "certificate_sha256": "f2815aa28738f977ee0fa4c7e513009501f86aa65c75b7838aec2281bef156ef"}
+      },
+      {
+        "name": "signed_decode_negative_constructor",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_decode_candidate.py",
+        "statement_sha256": "4b08b44ec3135c9f4e15179b0ad4747559ca5c58e333e2f287682f4be968e225",
+        "receipt": {"nodes": 8, "depth": 6, "objects": 8, "edges": 7, "reused": 0, "cuts": 0, "certificate_sha256": "53a7aa3e7f60cfb748907a52dded47db788ff90fd678d085ac1ac7cf5dfd5f9d"}
+      },
+      {
+        "name": "signed_decode_total",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_decode_candidate.py",
+        "statement_sha256": "c057ebd0f11884b8c25ade6f499a867c82213a4257ae911d3362737171491bb9",
+        "receipt": {"nodes": 105, "depth": 20, "objects": 98, "edges": 104, "reused": 7, "cuts": 1, "certificate_sha256": "6fb3f4a4676053040dd545cc96aeace9298f840ce3c7e6f147061a4b49416ac1"}
+      },
+      {
+        "name": "signed_decode_normal",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_decode_candidate.py",
+        "statement_sha256": "b4d32211ca796e93d4bb4f94534ceaa1932f0ab67774b21adee330c421d24064",
+        "receipt": {"nodes": 36, "depth": 16, "objects": 36, "edges": 35, "reused": 0, "cuts": 0, "certificate_sha256": "b2ba8b659c6dc22928b0a0475936646ef67e226556ca64e9cc8237e3d8b11322"}
+      },
+      {
+        "name": "signed_decode_functional",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_decode_candidate.py",
+        "statement_sha256": "e381856c7267dbe693135733ee309e3959dcafd9b4be4bd8bd6882ffa15fbedb",
+        "receipt": {"nodes": 709, "depth": 27, "objects": 397, "edges": 399, "reused": 3, "cuts": 13, "certificate_sha256": "50818b66647097dee0680f1dacbcb62368049dcc95f66532cd36b63306ab3c0b"}
+      },
+      {
+        "name": "signed_decode_zero_iff",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_decode_candidate.py",
+        "statement_sha256": "8da5c49e4ae509ea35fc66dad04eff81833213b64e72e790549133deb2a2a6b1",
+        "receipt": {"nodes": 53, "depth": 16, "objects": 53, "edges": 52, "reused": 0, "cuts": 1, "certificate_sha256": "7a1f625296bbcbaf16692e309b7119d2704f20bde270b96fbe6a0e8b79226fc9"}
+      },
+      {
+        "name": "signed_valid_all",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_decode_candidate.py",
+        "statement_sha256": "2ae61c98b77f52bf86c2db02a7368bc0441456ed990881a1bac493e2652498ab",
+        "receipt": {"nodes": 112, "depth": 21, "objects": 105, "edges": 111, "reused": 7, "cuts": 2, "certificate_sha256": "38b54ca5dfbe1381f5baf011ed3082819e6164cce28f0314b324b618890f0e78"}
+      },
+      {
+        "name": "signed_decoded_balance_implies_code_eq",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_code_extensional_candidate.py",
+        "statement_sha256": "bde0836138fa710f268ca0c771632932401bf55f4ece5fadef45df1f8350e8c4",
+        "receipt": {"nodes": 276, "depth": 31, "objects": 234, "edges": 241, "reused": 8, "cuts": 8, "certificate_sha256": "61adea012248c208a24466c2cd21d3f72bbbb8737737931b8089d4f94664c1dc"}
+      },
+      {
+        "name": "signed_code_eq_implies_decoded_balance",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_code_extensional_candidate.py",
+        "statement_sha256": "9342f422ac0c8390c496ae7dd8cb81d95fb59c9c3539b4ffc312eb4134b13041",
+        "receipt": {"nodes": 830, "depth": 28, "objects": 512, "edges": 520, "reused": 9, "cuts": 17, "certificate_sha256": "8799714212e5480e0b4fc8940f63e308115c94dd8db56fc6c5f9d3eef632aaa7"}
+      },
+      {
+        "name": "signed_code_eq_iff_balance",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_code_extensional_candidate.py",
+        "statement_sha256": "00c880f6aae1f6a4e01b76ff0339ebc112eda50c623080baa39fa00375d99fdd",
+        "receipt": {"nodes": 1181, "depth": 32, "objects": 734, "edges": 747, "reused": 14, "cuts": 25, "certificate_sha256": "26dbecbb46fef4d1eda7a208dbdce26f924aabde0a4317092821b8a3f2833728"}
+      },
+      {
+        "name": "signed_balance_total",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_balance_candidate.py",
+        "statement_sha256": "7ead89bbc04f8c8d4fbc4140b5fcdbe37982210f4e0596054f018fd1e56ce6fc",
+        "receipt": {"nodes": 236, "depth": 24, "objects": 230, "edges": 235, "reused": 6, "cuts": 4, "certificate_sha256": "831fdaf085ae6fe2afab086b476ef710a5284eefeebda7fbfb11bd7b1c179273"}
+      },
+      {
+        "name": "signed_decode_to_balance",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_balance_candidate.py",
+        "statement_sha256": "3a4143b972b6dda1418780424671004f112e2a0d2dbbb0fccb7301c25e2706dd",
+        "receipt": {"nodes": 91, "depth": 13, "objects": 85, "edges": 90, "reused": 6, "cuts": 3, "certificate_sha256": "3d663431a6c17b936e2e7923b02de729ff738102715e48f4dbd505acc6175218"}
+      },
+      {
+        "name": "signed_balance_equations_cross_sum",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_balance_candidate.py",
+        "statement_sha256": "d82a666a0a0f27f497b4e9f73bbd4e6f3718d2dd8b63ce64edc3f899022f9438",
+        "receipt": {"nodes": 410, "depth": 29, "objects": 314, "edges": 337, "reused": 24, "cuts": 8, "certificate_sha256": "9124fbef806ad0b53255d76ebd6d9b726d933aad7b733426d9bcf725dfd6dac9"}
+      },
+      {
+        "name": "signed_balance_extensional",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_balance_complete_candidate.py",
+        "statement_sha256": "adf834535e16e271a202db09e37655672956811c896ba057707305c4c093d1dc",
+        "receipt": {"nodes": 736, "depth": 33, "objects": 531, "edges": 557, "reused": 27, "cuts": 16, "certificate_sha256": "ba68aa6e0e09edabe56a5dcf5ff53de9488a596a01f2dfa6b59bfcd92c623c0d"}
+      },
+      {
+        "name": "signed_balance_functional",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_balance_complete_candidate.py",
+        "statement_sha256": "92ed87956adfc7bc5e403c390d03a96ea6fd5310d66b1352ef964c420a6264af",
+        "receipt": {"nodes": 850, "depth": 34, "objects": 572, "edges": 599, "reused": 28, "cuts": 18, "certificate_sha256": "900fbfc0c8139c56205a424d991eddda556374555ce08efeda3b6373ec0e00e0"}
+      },
+      {
+        "name": "signed_balance_zero_iff",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_balance_complete_candidate.py",
+        "statement_sha256": "4884c5ea7e3c26aa4adf0e62946b02543bb7a1f0cf30c3b4ee6b6d473e5ce068",
+        "receipt": {"nodes": 1660, "depth": 36, "objects": 1008, "edges": 1042, "reused": 35, "cuts": 33, "certificate_sha256": "d54bade5be975a27fc08a189ac552110ed8e85878137bc2e8e5268469c46b419"}
+      },
+      {
+        "name": "signed_decode_swap_exists",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_negate_candidate.py",
+        "statement_sha256": "66a7c04b6554c293ee318f18c2dc88f1cfc58b35cf742acf072ae726946d999e",
+        "receipt": {"nodes": 77, "depth": 21, "objects": 77, "edges": 76, "reused": 0, "cuts": 1, "certificate_sha256": "77550f5f6828256036ddf632087f4ac53f1eb5814ebcbdc97388f5b8bb86cd0d"}
+      },
+      {
+        "name": "signed_negate_of_swapped_decode",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_negate_candidate.py",
+        "statement_sha256": "0b58e851ecf158dad1e450b9493c0206bf5884f479d9c0837b5acca1bc288f07",
+        "receipt": {"nodes": 11, "depth": 10, "objects": 11, "edges": 10, "reused": 0, "cuts": 0, "certificate_sha256": "e06c193ec50fd071d95279763d09e0500aabc1abb0b8408bf14da10041785429"}
+      },
+      {
+        "name": "signed_negate_to_swapped_decode",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_negate_candidate.py",
+        "statement_sha256": "bb312c86dd5e6abece346e35d4e9e3f8163c59f39582d6af227460d293640608",
+        "receipt": {"nodes": 774, "depth": 28, "objects": 462, "edges": 464, "reused": 3, "cuts": 14, "certificate_sha256": "068786f8c3579d90250cceb732f0658be4517828adb8b274391488c75bcb5056"}
+      },
+      {
+        "name": "signed_negate_total",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_negate_candidate.py",
+        "statement_sha256": "53b646ca162886998385c937d599a75680f0fdbf960a0164516199f097c1bf06",
+        "receipt": {"nodes": 219, "depth": 23, "objects": 212, "edges": 218, "reused": 7, "cuts": 5, "certificate_sha256": "fe693a95bba928c210c2186ec89a69ba8bfd01cd946f3741ea82f6bc291399cd"}
+      },
+      {
+        "name": "signed_negate_functional",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_negate_candidate.py",
+        "statement_sha256": "07b1b466ba524d943f95c39955c08ad9fc6e152123d8223b72af9208d67044ef",
+        "receipt": {"nodes": 1160, "depth": 33, "objects": 713, "edges": 726, "reused": 14, "cuts": 25, "certificate_sha256": "43ba0ab3641498c1e87941e67bc07f3a67ae486356837fe3dd33a7ac3dfb2ac4"}
+      },
+      {
+        "name": "signed_negate_zero",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_negate_candidate.py",
+        "statement_sha256": "fccdf1865ae3bff48d1a549b41afec8992e274c72d194197dc519832c63185dc",
+        "receipt": {"nodes": 19, "depth": 9, "objects": 19, "edges": 18, "reused": 0, "cuts": 0, "certificate_sha256": "813a59731e04104d221ae984973d0eb2a71c6e77b1bff04605e1f09fd6b5286c"}
+      },
+      {
+        "name": "signed_negate_symmetric",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_negate_candidate.py",
+        "statement_sha256": "c36d0368df382c028d5e78b63c0eb972a6f60ce6f01d0c730bb687f81950f3e6",
+        "receipt": {"nodes": 20, "depth": 13, "objects": 20, "edges": 19, "reused": 0, "cuts": 0, "certificate_sha256": "f911ecaee17a8a8359f6f5265c8992e9a86de1584c68fa8d27708f107af5336e"}
+      },
+      {
+        "name": "signed_negate_involutive",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_negate_candidate.py",
+        "statement_sha256": "f8fd0e6747c200b526941185c21a83ef6ae3790f104193f4b1ce91a6619f38ab",
+        "receipt": {"nodes": 1199, "depth": 35, "objects": 752, "edges": 765, "reused": 14, "cuts": 27, "certificate_sha256": "7aec997db1ea6393ff1192eea1b16a73b4a7424349b7670e1541fa34029c882b"}
       }
     ]
   },
@@ -180,7 +368,9 @@
     "k3_forbidden_foundations": [
       "godel_beta",
       "binary_crt",
-      "finite_crt"
+      "finite_crt",
+      "division",
+      "remainder"
     ],
     "legacy_beta_role": "Existing beta-coded sequence, fold, factorization, and QR theorems remain valid public HA results and reusable arithmetic evidence, but they do not discharge K3 and may not be dependencies of K3's first pair/list representation.",
     "canonical_acceptance": [
@@ -291,7 +481,7 @@
       "sequence": 3,
       "release": "R0",
       "title": "Finite-data coding",
-      "status": "new",
+      "status": "candidate_seed",
       "depends_on_layers": [
         "K0",
         "K1",
@@ -299,8 +489,77 @@
       ],
       "target": "Build canonical primitive-recursive codes for pairs, signed integers, explicit-length lists, sorted sets, matrices, permutations, finite functions, and proof-relevant bijections without using CRT or a Godel-beta construction.",
       "public_theorem_references": [],
-      "candidate_modules": [],
-      "remaining_gap": "The existing beta representation is intentionally not accepted as the foundational list encoding. Pair validity, constructors, functional decoding, decidable equality, and list recursion must start this layer.",
+      "candidate_modules": [
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_signed_parity_candidate.py",
+          "factory": "make_ha_signed_parity_candidate_theorems",
+          "theorem_names": [
+            "even_odd_exclusive_k1",
+            "even_half_unique"
+          ],
+          "role": "Closed-checked but non-public K1-only parity separation and even-half uniqueness prerequisites for the parity-interleaved signed decoder."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_signed_decode_candidate.py",
+          "factory": "make_ha_signed_decode_candidate_theorems",
+          "theorem_names": [
+            "signed_decode_nonnegative_constructor",
+            "signed_decode_negative_constructor",
+            "signed_decode_total",
+            "signed_decode_normal",
+            "signed_decode_functional",
+            "signed_decode_zero_iff",
+            "signed_valid_all"
+          ],
+          "role": "Closed-checked but non-public constructors, totality, normality, functionality, zero characterization, and universal validity for RFC HA-K3-SIGNED-1."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_signed_code_extensional_candidate.py",
+          "factory": "make_ha_signed_code_extensional_candidate_theorems",
+          "theorem_names": [
+            "signed_decoded_balance_implies_code_eq",
+            "signed_code_eq_implies_decoded_balance",
+            "signed_code_eq_iff_balance"
+          ],
+          "role": "Closed-checked but non-public extensionality bridge between literal parity-interleaved code equality and cross-sum equality of decoded signed values."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_signed_balance_candidate.py",
+          "factory": "make_ha_signed_balance_candidate_theorems",
+          "theorem_names": [
+            "signed_balance_total",
+            "signed_decode_to_balance",
+            "signed_balance_equations_cross_sum"
+          ],
+          "role": "Closed-checked but non-public constructive normalization of arbitrary balanced natural pairs plus decoder transport and the cross-sum helper."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_signed_balance_complete_candidate.py",
+          "factory": "make_ha_signed_balance_complete_candidate_theorems",
+          "theorem_names": [
+            "signed_balance_extensional",
+            "signed_balance_functional",
+            "signed_balance_zero_iff"
+          ],
+          "role": "Closed-checked but non-public extensionality, functionality, and exact zero characterization for canonical SignedBalance normalization."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_signed_negate_candidate.py",
+          "factory": "make_ha_signed_negate_candidate_theorems",
+          "theorem_names": [
+            "signed_decode_swap_exists",
+            "signed_negate_of_swapped_decode",
+            "signed_negate_to_swapped_decode",
+            "signed_negate_total",
+            "signed_negate_functional",
+            "signed_negate_zero",
+            "signed_negate_symmetric",
+            "signed_negate_involutive"
+          ],
+          "role": "Closed-checked but non-public decoder bridges, totality, functionality, zero, symmetry, and involution for the canonical SignedNegate graph."
+        }
+      ],
+      "remaining_gap": "The parity-interleaved decoder, decoded-code extensionality, total functional SignedBalance normalization, and total functional involutive SignedNegate graph now have deterministic empty-context candidate receipts without division, remainder, beta, or CRT dependencies. Public admission, signed add/multiply/natural-scale operation graphs, decidable equality packaging, pair/list/map encodings, and list recursion remain.",
       "validation": {
         "path": [
           "manifest_integrity",
@@ -311,7 +570,7 @@
           "generated_integration",
           "heavy_closure"
         ],
-        "next_gate": "statement_expansion",
+        "next_gate": "public_admission",
         "release_gate": "heavy_closure"
       }
     },
