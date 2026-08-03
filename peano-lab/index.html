@@ -15,7 +15,7 @@
     header{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1rem 1.4rem;border-bottom:1px solid var(--border);}
     .brand{display:flex;align-items:center;gap:.7rem}.brand .glyph{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1.25rem;color:#06202a;background:var(--cyan);width:2.45rem;height:2.45rem;border-radius:9px;display:grid;place-items:center}.brand h1{font-size:1.05rem;font-weight:700}.brand .sub{font-size:.75rem;color:var(--muted)}
     header nav{display:flex;gap:1.2rem;font-size:.85rem;font-weight:600;align-items:center}.main{flex:1;display:flex;flex-direction:column;max-width:1180px;width:100%;margin:0 auto;padding:1.2rem 1.4rem 2rem;}
-    .statusrow{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.7rem}.status{font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:.6rem;min-height:1.3rem}.spinner{width:.8rem;height:.8rem;border:2px solid var(--border);border-top-color:var(--cyan);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.dot-ok{width:.6rem;height:.6rem;border-radius:50%;background:var(--emerald);box-shadow:0 0 8px var(--emerald)}.fail{color:var(--danger)}
+    .statusrow{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.7rem}.statusstack{display:flex;flex-direction:column;gap:.15rem}.status{font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:.6rem;min-height:1.3rem}.shadow-status{font-size:.72rem;color:var(--muted);min-height:1rem}.shadow-status.agree{color:var(--emerald)}.shadow-status.disagree{color:var(--danger)}.spinner{width:.8rem;height:.8rem;border:2px solid var(--border);border-top-color:var(--cyan);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.dot-ok{width:.6rem;height:.6rem;border-radius:50%;background:var(--emerald);box-shadow:0 0 8px var(--emerald)}.fail{color:var(--danger)}
     .stopbtn{font-family:'Inter',sans-serif;font-size:.8rem;font-weight:700;color:#2a0d0d;background:var(--amber);border:none;border-radius:7px;padding:.35rem .8rem;cursor:pointer;transition:opacity .12s}.stopbtn:disabled{opacity:.35;cursor:not-allowed}.stopbtn:hover:not(:disabled){filter:brightness(1.08)}
     #term-wrap{background:var(--terminal);border:1px solid var(--border);border-radius:12px;padding:.8rem;box-shadow:0 10px 40px rgba(0,0,0,.45);min-height:63vh}.term-bar{display:flex;gap:.45rem;padding:.1rem .3rem .7rem}.term-bar span{width:.7rem;height:.7rem;border-radius:50%}.b-r{background:#ff5f57}.b-y{background:#febc2e}.b-g{background:#28c840}#terminal{width:100%;height:61vh;}
     .proof-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin-top:.85rem}.proof-card{background:rgba(14,32,43,.72);border:1px solid var(--border);border-radius:9px;padding:.65rem .75rem;min-height:4rem}.proof-card strong{display:block;font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.04em;color:var(--cyan-2);margin-bottom:.25rem}.proof-card span{display:block;font-size:.76rem;color:var(--muted);line-height:1.4}
@@ -34,7 +34,7 @@
   <noscript><p class="noscript">Peano Lab needs JavaScript to load the local Python runtime.</p></noscript>
   <main class="main">
     <div class="statusrow">
-      <div class="status" id="status" role="status" aria-live="polite"><span class="spinner" aria-hidden="true"></span><span>starting…</span></div>
+      <div class="statusstack"><div class="status" id="status" role="status" aria-live="polite"><span class="spinner" aria-hidden="true"></span><span>starting…</span></div><div class="shadow-status" id="shadow-status" role="status" aria-live="polite">Rust/WASM shadow: starting independently…</div></div>
       <button class="stopbtn" id="stop" type="button" disabled aria-label="Stop the running proof command" aria-keyshortcuts="Escape Control+C">■ Stop</button>
     </div>
     <div id="term-wrap">
@@ -80,7 +80,7 @@
         <div class="paste-actions"><button class="paste-cancel" value="cancel">Cancel</button><button class="paste-run" id="run-pasted-proof" type="button">Run proof</button></div>
       </form>
     </dialog>
-    <p class="info" id="terminal-help">The complete prover runs locally in a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API" target="_blank" rel="noopener">Web Worker</a>, using a self-hosted Python runtime, so a long search never freezes this page and <strong>Stop</strong> can terminate it. Every executable asset is served from this site (no CDN), and commands are not sent elsewhere; a <code>?cmd=</code> deep link is part of the URL and can appear in server logs. The <span class="law">tactic layer is never trusted</span>: every <code>qed</code> checks the finished certificate against the original theorem in the small kernel. Paste a complete multiline proof directly at an empty prompt or use <strong>paste multiline proof</strong>. <code>script</code> previews the current replay; type <code>script download</code> directly to save it. <code>↑/↓</code> history · <code>TAB</code> completion.</p>
+    <p class="info" id="terminal-help">The complete prover runs locally in a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API" target="_blank" rel="noopener">Web Worker</a>, using a self-hosted Python runtime, so a long search never freezes this page and <strong>Stop</strong> can terminate it. Every executable asset is served from this site (no CDN), and commands are not sent elsewhere; a <code>?cmd=</code> deep link is part of the URL and can appear in server logs. The <span class="law">tactic layer is never trusted</span>: every <code>qed</code> checks the finished certificate against the original theorem in the small Python kernel. After QED, an isolated Rust/WebAssembly worker may report independent shadow agreement; that diagnostic never grants or retracts a theorem. Paste a complete multiline proof directly at an empty prompt or use <strong>paste multiline proof</strong>. <code>script</code> previews the current replay; type <code>script download</code> directly to save it. <code>↑/↓</code> history · <code>TAB</code> completion.</p>
   </main>
   <footer>Peano Lab · VIASM mini-course “An Introduction to Automatic Theorem Proving in Mathematics”, Hanoi 2026 · © Bartosz Naskręcki · <a href="/vietnam2026/">course home</a></footer>
   <script src="vendor/v-85fb3352e49c/xterm/xterm.js"></script>
@@ -90,15 +90,18 @@
   <script>
   (function(){
     "use strict";
-    const BUILD="2026-08-04b";
-    const APP_ROOT="releases/a-903a05e31da9/";
+    const BUILD="2026-08-04d";
+    const APP_ROOT="releases/a-7ba6efe377bf/";
     const MAX_INPUT=8192;
     const MAX_PASTE_CHARS=100000;
     const MAX_PASTE_LINES=256;
     const MAX_SCRIPT_DOWNLOAD=500000;
+    const MAX_SHADOW_ARTIFACT_BYTES=16*1024*1024;
+    const SHADOW_TIMEOUT_MS=30000;
     const PROMPT="\x1b[96mpa>\x1b[0m ";
     const HISTORY_KEY="peanoLabHistory";
     const statusEl=document.getElementById("status");
+    const shadowStatusEl=document.getElementById("shadow-status");
     const quickEl=document.getElementById("quick");
     const stopBtn=document.getElementById("stop");
     const pasteBtn=document.getElementById("paste-proof");
@@ -118,6 +121,7 @@
       const label=document.createElement("span");if(kind==="fail")label.className="fail";label.textContent=message;
       statusEl.append(marker,label);
     }
+    function setShadowStatus(kind,message){shadowStatusEl.className="shadow-status"+(kind?" "+kind:"");shadowStatusEl.textContent=message;}
     if(!window.Terminal||!window.Worker){setStatus("fail","failed to start: this browser lacks Web Worker or terminal support");return;}
 
     const term=new Terminal({fontFamily:"'JetBrains Mono', monospace",fontSize:14,lineHeight:1.08,cursorBlink:true,convertEol:false,scrollback:5000,screenReaderMode:true,theme:{background:"#061016",foreground:"#e6f1f5",cursor:"#38bdf8",selectionBackground:"#16465a",black:"#061016",red:"#fca5a5",green:"#6ee7b7",yellow:"#fcd34d",blue:"#7dd3fc",magenta:"#c4b5fd",cyan:"#67e8f9",white:"#e6f1f5",brightBlack:"#668393",brightRed:"#f87171",brightGreen:"#34d399",brightYellow:"#fbbf24",brightBlue:"#38bdf8",brightMagenta:"#a78bfa",brightCyan:"#22d3ee",brightWhite:"#f8fafc"}});
@@ -156,11 +160,70 @@
     }
 
     let worker=null,banner="",requestId=0,generation=0,initialRan=false;const pending=new Map();
+    let shadowWorker=null,shadowReady=false,shadowQueued=null,shadowInFlight=null,shadowTimer=null,shadowInstance=0;
     function writeOutput(value){if(value!==undefined&&value!==null&&String(value)!=="")term.write(String(value).replace(/\r?\n/g,"\r\n"));}
     function prompt(){buffer="";cursor=0;historyIndex=history.length;term.write("\r\n"+PROMPT);}
     function redraw(){term.write("\r\x1b[K"+PROMPT+buffer);const back=buffer.length-cursor;if(back>0)term.write("\x1b["+back+"D");}
     function clearTerminal(){term.write("\x1b[2J\x1b[3J\x1b[H");writeOutput(banner);prompt();}
     function runInWorker(line){return new Promise(function(resolve){const id=++requestId;pending.set(id,resolve);worker.postMessage({type:"run",id:id,line:line});});}
+
+    function disposeShadowWorker(){
+      if(shadowTimer!==null){clearTimeout(shadowTimer);shadowTimer=null;}
+      if(shadowWorker){shadowWorker.terminate();shadowWorker=null;}
+      shadowReady=false;shadowInFlight=null;
+    }
+    function discardShadow(){disposeShadowWorker();shadowQueued=null;}
+    function shadowUnavailable(message){discardShadow();setShadowStatus("","Rust/WASM shadow unavailable: "+message+" (Python QED is unchanged).");}
+    function finishShadow(message){
+      if(!shadowInFlight||message.id!==shadowInFlight.id)return;
+      if(shadowTimer!==null){clearTimeout(shadowTimer);shadowTimer=null;}
+      shadowInFlight=null;
+      if(message.status==="accept")setShadowStatus("agree","Rust/WASM shadow agreement — diagnostic; Python QED is authoritative.");
+      else if(message.status==="reject")setShadowStatus("disagree","Rust/WASM shadow disagreement — diagnostic; Python QED remains authoritative.");
+      else setShadowStatus("","Rust/WASM shadow unavailable ("+String(message.status||"invalid result")+"); Python QED is unchanged.");
+      disposeShadowWorker();startShadowWorker(true);
+    }
+    function dispatchShadow(){
+      if(!shadowReady||!shadowWorker||!shadowQueued||shadowInFlight)return;
+      const item=shadowQueued;shadowQueued=null;shadowReady=false;shadowInFlight={id:item.id};
+      const activeGeneration=generation;const activeInstance=shadowInstance;
+      shadowTimer=setTimeout(function(){
+        if(activeGeneration!==generation||activeInstance!==shadowInstance||!shadowInFlight||shadowInFlight.id!==item.id)return;
+        disposeShadowWorker();setShadowStatus("","Rust/WASM shadow timed out; Python QED is unchanged.");startShadowWorker(true);
+      },SHADOW_TIMEOUT_MS);
+      try{shadowWorker.postMessage({type:"check",v:1,id:item.id,logic:item.logic,artifact:item.artifact},[item.artifact]);}
+      catch(_error){shadowUnavailable("artifact transfer failed");startShadowWorker(true);}
+    }
+    function startShadowWorker(quiet){
+      disposeShadowWorker();
+      const activeGeneration=generation;const activeInstance=++shadowInstance;
+      try{shadowWorker=new Worker(APP_ROOT+"shadow-worker.js");}
+      catch(_error){shadowUnavailable("worker creation failed");return;}
+      if(!quiet)setShadowStatus("","Rust/WASM shadow: loading independently…");
+      shadowWorker.onmessage=function(event){
+        if(activeGeneration!==generation||activeInstance!==shadowInstance)return;
+        const message=event.data||{};
+        if(message.type==="ready"&&message.v===1&&message.abi===1&&message.build===BUILD){shadowReady=true;if(!quiet)setShadowStatus("","Rust/WASM shadow: ready for post-QED diagnostics.");dispatchShadow();return;}
+        if(message.type==="result"&&message.v===1){finishShadow(message);return;}
+        if(message.type==="error"){shadowUnavailable("initialization or protocol error");return;}
+        shadowUnavailable("invalid worker response");
+      };
+      shadowWorker.onerror=function(){if(activeGeneration===generation&&activeInstance===shadowInstance)shadowUnavailable("worker error");};
+      shadowWorker.postMessage({type:"init",v:1,build:BUILD,wasmUrl:"peano_kernel_shadow.wasm"});
+    }
+    function queueShadowArtifact(message){
+      if(message.v!==1||!Number.isSafeInteger(message.id)||message.id<1||message.format!=="peano-lab-v2"||(message.logic!=="ha"&&message.logic!=="classical")||!(message.artifact instanceof ArrayBuffer)||message.artifact.byteLength<1||message.artifact.byteLength>MAX_SHADOW_ARTIFACT_BYTES){shadowUnavailable("invalid artifact envelope");return;}
+      const item={id:message.id,logic:message.logic,artifact:message.artifact};
+      if(shadowInFlight){
+        shadowQueued=item;disposeShadowWorker();
+        setShadowStatus("","Rust/WASM shadow cancelled an older diagnostic to check the latest QED; Python QED is unchanged.");
+        startShadowWorker(true);return;
+      }
+      if(shadowQueued)setShadowStatus("","Rust/WASM shadow replaced an older queued diagnostic with the latest QED; Python QED is unchanged.");
+      shadowQueued=item;
+      if(!shadowWorker)startShadowWorker(true);
+      dispatchShadow();
+    }
 
     function unwrapBracketedPaste(source){
       let text=String(source);
@@ -323,6 +386,7 @@
 
     function stopWorker(){
       if(!worker)return;
+      discardShadow();
       worker.terminate();pending.forEach(function(resolve){resolve({out:"",failed:true,download:null});});pending.clear();
       busy=true;setQuickEnabled(false);setStop(false);
       term.write("\r\n\x1b[93m  ^ interrupted — restarting; the in-memory proof is discarded…\x1b[0m\r\n");
@@ -371,6 +435,7 @@
       generation++;worker=new Worker(APP_ROOT+"worker.js");
       function failWorker(message){
         generation++;
+        discardShadow();
         if(worker){worker.terminate();worker=null;}
         pending.forEach(function(resolve){resolve({out:"",failed:true,download:null});});pending.clear();
         busy=true;setQuickEnabled(false);setStop(false);
@@ -383,9 +448,12 @@
         if(message.type==="ready"){onReady(message.banner);return;}
         if(message.type==="error"){failWorker("failed to start: "+message.msg);return;}
         if(message.type==="result"){const resolve=pending.get(message.id);if(resolve){pending.delete(message.id);resolve(message);}return;}
+        if(message.type==="shadow-artifact"){queueShadowArtifact(message);return;}
+        if(message.type==="shadow-artifact-error"){setShadowStatus("","Rust/WASM shadow export unavailable; Python QED is unchanged.");return;}
       };
       worker.onerror=function(error){failWorker("worker error: "+((error&&error.message)?error.message:"unknown"));};
       worker.postMessage({type:"init",build:BUILD});
+      startShadowWorker(false);
     }
 
     writeOutput("\x1b[2m  booting the Peano kernel (worker)…\x1b[0m\r\n");setStatus("loading","starting worker…");startWorker();

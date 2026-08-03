@@ -3695,3 +3695,45 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - Final exact-tree validation: eight runtime-weighted shards passed 2,707 tests
   with twelve intentional skips and zero failures; the critical path was
   494.88 seconds. The strict Book build and all 287 documented commands passed.
+
+## 2026-08-04 — K4 added a bounded one-shot Rust/WASM browser shadow
+
+- Preserved the authority order: Python checks the owner-held original goal,
+  posts QED, and only then encodes one optional canonical artifact. Failed QED
+  exports nothing; encoding failure cannot retract success.
+- Added a dependency-free raw WASM wrapper over the same Rust core. Its owned
+  buffer API has no caller-pointer dereference and distinguishes accept,
+  logical reject, malformed/resource reject, and internal failure. HA and the
+  explicit PA+DNE extension are separate logic flags.
+- Closed native/wasm32 index-width divergence by rejecting syntax indices
+  above `u32::MAX - 256` before checking. Fixed browser limits are 16 MiB,
+  one million nodes, depth 192, 64 million checker calls, a 2 MiB stack, and
+  256 MiB unshared memory.
+- The dedicated one-shot worker initializes alongside Pyodide but never gates
+  it. Transfer, trap, timeout, restart, overlap, and stale-generation behavior
+  are pinned by dependency-free harnesses; only `accept` displays shadow
+  agreement, never Rust QED.
+- Two clean pinned Rust 1.95.0 builds are byte-identical. The committed
+  52,966-byte module has no imports and SHA-256
+  `de40d41295d08772ed7adde46e0fbc2ed061c3e1d35b542e3d1c8ef42848389c`.
+  Wrapper debug/release tests each pass 14 cases and the real module passes
+  HA/classical, malformed, fuel, one-shot, portability, and memory-cap cases.
+- Complete real-WASM replay passes all 384 public theorems and all 1,536
+  original/wrong-target/zero-fuel/malformed cases. Its artifact receipt
+  `4652c103b317ddf3405f74c022d2229be0c7bdb57fa94c9b0cc6e129d5a20b64`
+  exactly matches native Rust; the retained report SHA-256 is
+  `b26a06ea9647a4e7c8125e797fdfee28401d6cc99c21356b2265e5adba8008e0`.
+  The report now seals all per-case hashes and both runner sources; its
+  all-case receipt is
+  `2e6e5df23ec90555bb754b7297d87b75f37a1e6f9fcd5a6d9da6facbf1ad1f68`.
+- Closed pre-seal review findings: optional shadow metadata is consulted only
+  after the Python result is posted; a newer same-generation QED cancels an
+  older diagnostic; and bounded natural encoding preflights digit size before
+  allocating chunks. Regression tests cover all three boundaries.
+- Sealed local build `2026-08-04d` as application `a-7ba6efe377bf` with 154
+  exact entries and extended MIME/compression/cache/hash deployment checks.
+  No remote staging or production deployment is claimed.
+- Final K4 validation: Peano 2,724 passed / 12 skipped in eight balanced shards
+  (7m19s critical path); Lambda 360 passed plus 36 subtests; strict book and
+  287 command replays passed; vault 484 notes / 4,910 links; Rust fmt, clippy,
+  native debug/release, wrapper debug/release, and reproducible WASM passed.

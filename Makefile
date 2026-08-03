@@ -20,7 +20,7 @@ PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 # This path is a deletion target in `stage-peano`; command-line assignments
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
-override PEANOAPPID := a-903a05e31da9
+override PEANOAPPID := a-7ba6efe377bf
 
 .PHONY: help book book-atlas book-proof-explorer lean lean-fta lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
@@ -195,6 +195,8 @@ stage-peano:
 	cp peano-lab/index.html "$(STAGEPEANO)/index.html"
 	cp peano-lab/.htaccess  "$(STAGEPEANO)/.htaccess"
 	cp peano-lab/worker.js "$(STAGEPEANO)/releases/$(PEANOAPPID)/worker.js"
+	cp peano-lab/shadow-worker.js "$(STAGEPEANO)/releases/$(PEANOAPPID)/shadow-worker.js"
+	cp peano-lab/peano_kernel_shadow.wasm "$(STAGEPEANO)/releases/$(PEANOAPPID)/peano_kernel_shadow.wasm"
 	cp peano-lab/APP_MANIFEST.sha256 "$(STAGEPEANO)/releases/$(PEANOAPPID)/APP_MANIFEST.sha256"
 	rsync -a --delete --exclude '/tests/***' --exclude '__pycache__/' --exclude '.pytest_cache/' --include '*/' --include '*.py' --exclude '*' peano-lab/py/ "$(STAGEPEANO)/releases/$(PEANOAPPID)/py/"
 	rsync -a --delete peano-lab/vendor/ "$(STAGEPEANO)/vendor/"

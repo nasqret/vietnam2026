@@ -22,6 +22,10 @@ the kernel checks their embedded branches directly.
 This applies the De Bruijn criterion: a proof assistant should emit a certificate checkable by a
 small, independently understandable program.
 
+The separate [[rust-wasm-shadow-checker]] supplies cross-implementation
+evidence after Python QED. Its agreement, disagreement, trap, or timeout is a
+diagnostic and has no theorem-authority role.
+
 ## Lean metaverification
 
 The separate
@@ -47,4 +51,4 @@ kernels: they expand hygienically to ordinary formulas before checking.
 ## Related
 
 [[peano-lab]] · [[proof-certificate]] · [[self-contained-proof-sharing]] ·
-[[substitution]] · [[natural-deduction]]
+[[substitution]] · [[natural-deduction]] · [[rust-wasm-shadow-checker]]

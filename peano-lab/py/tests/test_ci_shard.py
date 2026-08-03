@@ -259,7 +259,7 @@ def test_checked_in_profile_matches_current_test_tree() -> None:
     assert [
         sum(profile.weight_ms(path) for path in shard)
         for shard in shards
-    ] == [421_000, 420_800, 421_000, 421_000, 421_500, 421_500, 421_500, 420_500]
+    ] == [421_000, 421_800, 421_000, 421_000, 421_500, 421_500, 421_500, 421_500]
 
 
 def test_cli_reports_modeled_runtime_and_source_bytes(

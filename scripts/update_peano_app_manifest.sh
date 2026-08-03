@@ -22,6 +22,8 @@ python3 scripts/update_peano_worker_sources.py --check
   cd "$APP"
   {
     shasum -a 256 worker.js
+    shasum -a 256 shadow-worker.js
+    shasum -a 256 peano_kernel_shadow.wasm
     find py -type f -name '*.py' ! -path 'py/tests/*' \
       -exec shasum -a 256 {} +
   } | LC_ALL=C sort -k2

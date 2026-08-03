@@ -132,6 +132,12 @@ kernel locally. This distinction explains an initially surprising observation: t
 small, but a cold browser still needs an 8.6 MB WebAssembly runtime and a 2.4 MB Python standard
 library before the prompt can appear.
 
+A second 52,966-byte WebAssembly module initializes independently as a Rust shadow checker. It does
+not delay terminal readiness and receives bytes only after the Python kernel has already accepted
+QED. Its 16 MiB input, one-million-node, depth-192, 64-million-step, 256 MiB unshared-memory, and
+30-second worker limits are availability boundaries, not mathematical decision limits. A rejected,
+trapped, or timed-out shadow is reported as a diagnostic and leaves Python QED unchanged.
+
 M14 treats that delivery path as an explicit engineering boundary. The HTML page is never stored,
 so it always discovers the current build. Pinned vendor bytes live below a URL containing a digest
 of the canonical source manifest; worker and application bytes live below a separate path derived

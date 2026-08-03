@@ -64,6 +64,7 @@ from ..kernel.formulas import (
     parse_formula_with_names,
     pretty_formula,
 )
+from ..kernel.artifact_codec import encode_artifact_bounded
 from ..kernel.proofs import EqSym, Hyp, Proof
 from ..library.theorems import (
     THEOREMS,
@@ -83,11 +84,15 @@ MAX_NUMERAL = 256
 MAX_SCRIPT_STEPS = 10_000
 MAX_SCRIPT_BYTES = 500_000
 MAX_SURFACE_TACTICAL_NODES = 128
+MAX_SHADOW_ARTIFACT_BYTES = 16 * 1024 * 1024
+SHADOW_FUEL_MULTIPLIER = 8
+SHADOW_FUEL_OFFSET = 16
 _NUMERAL_LITERAL = re.compile(r"(?<![\w'#])\d+", re.UNICODE)
 _SURFACE_LABEL_TOKEN = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*\Z", re.ASCII)
 KEY_SESSION = "pa.prove.session"
 KEY_LAST_SCRIPT = "pa.prove.last-script"
 KEY_PENDING_DOWNLOAD = "pa.prove.pending-download"
+KEY_PENDING_SHADOW = "pa.prove.pending-shadow"
 
 _QED_WORDS = ("qed", "done", "finish")
 _ABORT_WORDS = ("abort", "quit", "exit", "q")
@@ -299,6 +304,24 @@ class ProofSession:
             raise TypeError("proof-session metavariable names must be integer/text pairs")
 
 
+@dataclass(frozen=True, slots=True)
+class PendingShadowArtifact:
+    """Already-authorized QED material awaiting inert worker serialization."""
+
+    target: Formula
+    proof: Proof
+    classical: bool
+    fuel: int
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.target, Formula) or not isinstance(self.proof, Proof):
+            raise TypeError("a shadow artifact needs kernel formula/proof syntax")
+        if type(self.classical) is not bool:
+            raise TypeError("a shadow artifact logic mode must be Boolean")
+        if type(self.fuel) is not int or self.fuel < 1:
+            raise TypeError("a shadow artifact needs positive exact-integer fuel")
+
+
 def _lines(*rows: str) -> str:
     return NL.join(rows)
 
@@ -487,6 +510,34 @@ def take_pending_download(shared: dict) -> str:
     return artifact.text if type(artifact) is ProofScript else ""
 
 
+def pending_shadow_logic(shared: dict) -> str | None:
+    """Report the pending diagnostic's explicit logic without consuming it."""
+
+    artifact = shared.get(KEY_PENDING_SHADOW)
+    if type(artifact) is not PendingShadowArtifact:
+        return None
+    return "classical" if artifact.classical else "ha"
+
+
+def take_pending_shadow_artifact(shared: dict) -> bytes:
+    """Consume and boundedly encode one post-QED diagnostic artifact.
+
+    The value exists only after the Python checker accepted the owner-held
+    original target.  Encoding remains inert and failures are availability
+    diagnostics: they cannot retract or create QED.
+    """
+
+    artifact = shared.pop(KEY_PENDING_SHADOW, None)
+    if type(artifact) is not PendingShadowArtifact:
+        return b""
+    return encode_artifact_bounded(
+        artifact.fuel,
+        artifact.target,
+        artifact.proof,
+        max_bytes=MAX_SHADOW_ARTIFACT_BYTES,
+    )
+
+
 def _sync_meta_names(owner: ProofSession) -> ProofSession:
     """Extend, but never renumber, the owner's session-wide meta aliases."""
 
@@ -650,12 +701,25 @@ def _finish_session(shared: dict, owner: ProofSession) -> str:
             "The proof session is still active: `?` shows it, `undo` steps back,",
             "and `abort` leaves without claiming a theorem.",
         )
+    certificate_nodes = proof_size(certificate)
     owner.trace.footer(
         qed=True,
         theorem=owner.original_target,
-        proof_size=proof_size(certificate),
+        proof_size=certificate_nodes,
         names=owner.original_names,
     )
+    # This stores references only; the proof worker serializes them after it
+    # has already posted the authoritative QED result to the main thread.
+    # A malformed internal value must at most suppress the optional shadow.
+    try:
+        shared[KEY_PENDING_SHADOW] = PendingShadowArtifact(
+            target=owner.original_target,
+            proof=certificate,
+            classical=owner.classical,
+            fuel=SHADOW_FUEL_MULTIPLIER * certificate_nodes + SHADOW_FUEL_OFFSET,
+        )
+    except (TypeError, ValueError, OverflowError):
+        shared.pop(KEY_PENDING_SHADOW, None)
     theorem = pretty_formula(owner.original_target, list(owner.original_names))
     certificate_text = render_certificate(certificate, owner.original_names)
     mode = logic_banner(owner.classical)
@@ -665,7 +729,7 @@ def _finish_session(shared: dict, owner: ProofSession) -> str:
         shared[KEY_LAST_SCRIPT] = _script_from_owner(
             owner,
             checked=True,
-            proof_nodes=proof_size(certificate),
+            proof_nodes=certificate_nodes,
         )
         retained_script = True
     except ScriptExportError as exc:
@@ -1502,13 +1566,16 @@ __all__ = [
     "KEY_SESSION",
     "KEY_LAST_SCRIPT",
     "KEY_PENDING_DOWNLOAD",
+    "KEY_PENDING_SHADOW",
     "MAX_INPUT",
     "MAX_NUMERAL",
     "MAX_SCRIPT_STEPS",
     "MAX_SCRIPT_BYTES",
+    "MAX_SHADOW_ARTIFACT_BYTES",
     "ReplayStep",
     "ProofScript",
     "ProofSession",
+    "PendingShadowArtifact",
     "SurfaceCapabilities",
     "SURFACE_COMMAND_NAMES",
     "SURFACE_THEOREM_NAMES",
@@ -1523,6 +1590,8 @@ __all__ = [
     "is_active",
     "script_request",
     "take_pending_download",
+    "pending_shadow_logic",
+    "take_pending_shadow_artifact",
     "usage",
     "tactic_help",
     "checked_surface_final",

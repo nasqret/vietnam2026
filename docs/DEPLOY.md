@@ -77,11 +77,13 @@ bash scripts/verify_peano_delivery.sh \
 ```
 
 The verifier fails unless the page is byte-identical and `no-store`; the remote application
-manifest and all 34 worker/Python entries match local hashes; normal, `206`, and `304` versioned
-responses are immutable while HTML `200`/`304` stays `no-store`; negotiated WASM is Brotli/gzip with `Vary: Accept-Encoding`; `br;q=0` falls back to
-gzip; identity, ZIP, and WOFF2 are not encoded; the 404 is `no-store`; decoded WASM matches the
-pinned local hash; and curl's encoded `size_download` is below 3,000,000 bytes. Its final line
-records the URL, human build, application/vendor IDs, and encoded byte count.
+manifest and all 154 application entries match local hashes; normal, `206`, and `304` versioned
+responses are immutable while HTML `200`/`304` stays `no-store`; both the application Rust shadow
+WASM and vendor Pyodide WASM negotiate Brotli/gzip with `Vary: Accept-Encoding`; `br;q=0` falls back
+to gzip; identity, ZIP, and WOFF2 are not encoded; the 404 is `no-store`; both decoded WASM files
+match their pinned local hashes; and curl's encoded Pyodide `size_download` is below 3,000,000 bytes
+while the Rust shadow stays below 1,000,000. Its final line records the URL, human build,
+application/vendor IDs, and both encoded byte counts.
 
 Repeat the verifier against `/peano-lab/` after promotion. Never reuse a vendor namespace,
 application namespace, or human-facing `BUILD`; the script derives all three values from the staged

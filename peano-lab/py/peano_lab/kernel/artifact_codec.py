@@ -52,9 +52,24 @@ from .terms import Add, Mul, Succ, Term, Var, Zero
 FORMAT_TAG = "peano-lab-v2"
 
 
-def _nat_bytes(value: object, label: str) -> bytes:
+class ArtifactLimitError(ValueError):
+    """Canonical encoding exceeded an explicit caller-owned byte ceiling."""
+
+
+def _nat_bytes(
+    value: object, label: str, *, max_bytes: int | None = None
+) -> bytes:
     if type(value) is not int or value < 0:
         raise ValueError(f"{label} must be a non-negative integer")
+    if max_bytes is not None:
+        if max_bytes < 1:
+            raise ArtifactLimitError("canonical artifact exceeds its byte limit")
+        # Every positive integer with b bits has at least
+        # floor((b - 1) * log10(2)) + 1 decimal digits.  The deliberately
+        # smaller rational 301/1000 makes this a safe rejection-only bound and
+        # prevents a huge integer from allocating an equally huge chunk list.
+        if value and ((value.bit_length() - 1) * 301) // 1000 + 1 > max_bytes:
+            raise ArtifactLimitError("canonical artifact exceeds its byte limit")
     if value == 0:
         return b"0"
 
@@ -64,6 +79,12 @@ def _nat_bytes(value: object, label: str) -> bytes:
     while value:
         value, remainder = divmod(value, 1_000_000_000)
         chunks.append(remainder)
+        if max_bytes is not None and 9 * (len(chunks) - 1) + 1 > max_bytes:
+            raise ArtifactLimitError("canonical artifact exceeds its byte limit")
+    if max_bytes is not None:
+        exact_bytes = len(str(chunks[-1])) + 9 * (len(chunks) - 1)
+        if exact_bytes > max_bytes:
+            raise ArtifactLimitError("canonical artifact exceeds its byte limit")
     result = bytearray(str(chunks.pop()).encode("ascii"))
     while chunks:
         result.extend(f"{chunks.pop():09d}".encode("ascii"))
@@ -73,11 +94,27 @@ def _nat_bytes(value: object, label: str) -> bytes:
 class _Writer:
     """Append canonical bytes while rejecting cyclic syntax graphs."""
 
-    __slots__ = ("active", "output")
+    __slots__ = ("active", "max_bytes", "output")
 
-    def __init__(self) -> None:
+    def __init__(self, max_bytes: int | None = None) -> None:
+        if max_bytes is not None and (type(max_bytes) is not int or max_bytes < 1):
+            raise ValueError("artifact byte limit must be a positive integer")
         self.output = bytearray()
         self.active: set[int] = set()
+        self.max_bytes = max_bytes
+
+    def _extend(self, data: bytes | bytearray) -> None:
+        if self.max_bytes is not None and len(self.output) + len(data) > self.max_bytes:
+            raise ArtifactLimitError(
+                f"canonical artifact exceeds the {self.max_bytes}-byte limit"
+            )
+        self.output.extend(data)
+
+    def _nat(self, value: object, label: str) -> None:
+        remaining = (
+            None if self.max_bytes is None else self.max_bytes - len(self.output)
+        )
+        self._extend(_nat_bytes(value, label, max_bytes=remaining))
 
     def _enter(self, node: object) -> int:
         identity = id(node)
@@ -90,15 +127,15 @@ class _Writer:
         self.active.remove(identity)
 
     def _open(self, tag: bytes) -> None:
-        self.output.extend(b'["')
-        self.output.extend(tag)
-        self.output.extend(b'"')
+        self._extend(b'["')
+        self._extend(tag)
+        self._extend(b'"')
 
     def _separator(self) -> None:
-        self.output.extend(b",")
+        self._extend(b",")
 
     def _close(self) -> None:
-        self.output.extend(b"]")
+        self._extend(b"]")
 
     def _proof_children(self, tag: bytes, *children: object) -> None:
         self._open(tag)
@@ -113,7 +150,7 @@ class _Writer:
             if constructor is Var:
                 self._open(b"var")
                 self._separator()
-                self.output.extend(_nat_bytes(term.index, "variable index"))
+                self._nat(term.index, "variable index")
             elif constructor is Zero:
                 self._open(b"zero")
             elif constructor is Succ:
@@ -189,7 +226,7 @@ class _Writer:
             if constructor is Hyp:
                 self._open(b"hyp")
                 self._separator()
-                self.output.extend(_nat_bytes(proof.i, "hypothesis index"))
+                self._nat(proof.i, "hypothesis index")
             elif constructor is ImpIntro:
                 self._proof_children(b"imp_intro", proof.body)
             elif constructor is ImpElim:
@@ -274,9 +311,9 @@ class _Writer:
                     raise ValueError("axiom name must be exactly PA1 through PA6")
                 self._open(b"axiom")
                 self._separator()
-                self.output.extend(b'"')
-                self.output.extend(proof.name.encode("ascii"))
-                self.output.extend(b'"')
+                self._extend(b'"')
+                self._extend(proof.name.encode("ascii"))
+                self._extend(b'"')
             elif constructor is Ind:
                 self._open(b"ind")
                 self._separator()
@@ -329,11 +366,28 @@ def encode_artifact(fuel: int, target: Formula, proof: Proof) -> bytes:
     invoke the authoritative Python checker against ``target``.
     """
 
-    writer = _Writer()
+    return encode_artifact_bounded(fuel, target, proof, max_bytes=None)
+
+
+def encode_artifact_bounded(
+    fuel: int,
+    target: Formula,
+    proof: Proof,
+    *,
+    max_bytes: int | None,
+) -> bytes:
+    """Encode an artifact while optionally refusing to allocate past a ceiling.
+
+    ``None`` preserves :func:`encode_artifact`'s unbounded canonical API.  A
+    finite limit includes the mandatory terminal LF and is an availability
+    boundary only: this encoder remains inert and never checks a proof.
+    """
+
+    writer = _Writer(max_bytes)
     try:
         writer._open(b"peano-lab-v2")
         writer._separator()
-        writer.output.extend(_nat_bytes(fuel, "artifact fuel"))
+        writer._nat(fuel, "artifact fuel")
         writer._separator()
         writer.formula(target)
         writer._separator()
@@ -343,13 +397,15 @@ def encode_artifact(fuel: int, target: Formula, proof: Proof) -> bytes:
         raise TypeError("malformed Peano Lab syntax node") from error
     except RecursionError as error:
         raise ValueError("Peano Lab syntax exceeds the encoder nesting limit") from error
-    writer.output.extend(b"\n")
+    writer._extend(b"\n")
     return bytes(writer.output)
 
 
 __all__ = [
+    "ArtifactLimitError",
     "FORMAT_TAG",
     "encode_artifact",
+    "encode_artifact_bounded",
     "encode_formula",
     "encode_proof",
     "encode_term",

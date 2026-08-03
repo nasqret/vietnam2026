@@ -1,0 +1,24 @@
+[package]
+name = "peano-kernel-shadow-wasm"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.95"
+license = "MIT"
+publish = false
+build = "build.rs"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+path = "src/lib.rs"
+
+[dependencies]
+peano-kernel-shadow = { path = "../peano-kernel-shadow" }
+
+[profile.release]
+codegen-units = 1
+incremental = false
+lto = "fat"
+opt-level = "s"
+overflow-checks = true
+panic = "abort"
+strip = "symbols"

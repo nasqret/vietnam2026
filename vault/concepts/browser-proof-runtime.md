@@ -5,7 +5,8 @@ tags: [browser, pyodide, web-worker, caching, performance]
 
 A **browser proof runtime** separates static delivery from proof authority. [[peano-lab]] downloads
 Pyodide and the prover into a disposable Web Worker; the faculty server serves files but runs no
-Python proof process.
+Python proof process. A second one-shot [[rust-wasm-shadow-checker]] initializes independently and
+receives a certificate only after authoritative Python QED.
 
 Cold startup has three costs: transferring the WebAssembly and standard library, instantiating
 Python, and importing the prover. Peano Lab compresses source-like responses, places pinned vendor
@@ -14,8 +15,8 @@ and fetches application sources concurrently while Pyodide starts. Complete vers
 are uploaded before the HTML pointer and retained after promotion; an unversioned response must
 revalidate.
 
-The browser artifact for the 247-theorem runtime is build `2026-07-29k` with
-manifest identity `a-77df7c0860bc`. These labels identify local built bytes;
+The current local candidate is build `2026-08-04d` with manifest identity
+`a-7ba6efe377bf`. These labels identify local built bytes;
 they do not assert that anything has been staged or deployed.
 
 This optimization does not weaken the [[trusted-kernel]] boundary. Network completion order never
@@ -25,4 +26,5 @@ the original theorem. Stopping a command terminates the whole worker and its loc
 
 ## Related
 
-[[peano-lab-moc|Peano Lab MOC]] · [[peano-lab]] · [[trusted-kernel]] · [[proof-certificate]]
+[[peano-lab-moc|Peano Lab MOC]] · [[peano-lab]] · [[trusted-kernel]] · [[proof-certificate]] ·
+[[rust-wasm-shadow-checker]]

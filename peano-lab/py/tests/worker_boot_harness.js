@@ -27,6 +27,9 @@ function tick() {
 
 function makePyodide(writes) {
   let pendingDownload = "pa prove 0 = 0\nrefl\nqed\n";
+  let shadowLogic = "";
+  let shadowArtifact = null;
+  let shadowLogicThrows = false;
   return {
     FS: {
       mkdirTree() {},
@@ -38,12 +41,30 @@ function makePyodide(writes) {
       return {
         run_line(line) { return line; },
         run_line_result(line) {
+          if (line === "qed") {
+            shadowLogic = "ha";
+            shadowArtifact = new Uint8Array([91, 93, 10]);
+          }
+          if (line === "qed-shadow-error") shadowLogicThrows = true;
           return JSON.stringify({ out: line, failed: line === "fail" });
         },
         banner() { return "ready banner"; },
         take_download() {
           const body = pendingDownload;
           pendingDownload = "";
+          return body;
+        },
+        pending_shadow_logic() {
+          if (shadowLogicThrows) {
+            shadowLogicThrows = false;
+            throw new Error("optional shadow metadata failed");
+          }
+          return shadowLogic;
+        },
+        take_shadow_artifact() {
+          const body = shadowArtifact || new Uint8Array();
+          shadowLogic = "";
+          shadowArtifact = null;
           return body;
         },
       };
@@ -107,6 +128,8 @@ async function successfulBootIsConcurrentAndOrdered() {
   context.onmessage({ data: { type: "run", id: 41, line: "script download" } });
   context.onmessage({ data: { type: "run", id: 42, line: "help" } });
   context.onmessage({ data: { type: "run", id: 43, line: "fail" } });
+  context.onmessage({ data: { type: "run", id: 44, line: "qed" } });
+  context.onmessage({ data: { type: "run", id: 45, line: "qed-shadow-error" } });
   const results = messages.filter((message) => message.type === "result");
   assert.deepStrictEqual(
     JSON.parse(JSON.stringify(results)),
@@ -120,7 +143,30 @@ async function successfulBootIsConcurrentAndOrdered() {
       },
       { type: "result", id: 42, out: "help", failed: false, download: null },
       { type: "result", id: 43, out: "fail", failed: true, download: null },
+      { type: "result", id: 44, out: "qed", failed: false, download: null },
+      {
+        type: "result", id: 45, out: "qed-shadow-error", failed: false, download: null,
+      },
     ],
+  );
+  const shadows = messages.filter((message) => message.type === "shadow-artifact");
+  assert.strictEqual(shadows.length, 1);
+  assert.strictEqual(shadows[0].v, 1);
+  assert.strictEqual(shadows[0].id, 44);
+  assert.strictEqual(shadows[0].format, "peano-lab-v2");
+  assert.strictEqual(shadows[0].logic, "ha");
+  assert.deepStrictEqual(Array.from(new Uint8Array(shadows[0].artifact)), [91, 93, 10]);
+  assert.ok(
+    messages.findIndex((message) => message.type === "result" && message.id === 44)
+      < messages.findIndex((message) => message.type === "shadow-artifact"),
+  );
+  const metadataError = messages.find(
+    (message) => message.type === "shadow-artifact-error" && message.id === 45,
+  );
+  assert.strictEqual(metadataError.code, "metadata");
+  assert.ok(
+    messages.findIndex((message) => message.type === "result" && message.id === 45)
+      < messages.indexOf(metadataError),
   );
 }
 

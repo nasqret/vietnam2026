@@ -13,6 +13,9 @@
  *                    {type: "ready", banner}
  *                    {type: "error", msg}
  *                    {type: "result", id, out, failed, download: null|string}
+ *                    {type: "shadow-artifact", v: 1, id, format, logic,
+ *                     artifact: ArrayBuffer}
+ *                    {type: "shadow-artifact-error", v: 1, id, code}
  */
 
 const PY_FILES = [
@@ -172,11 +175,65 @@ const PY_FILES = [
 // the URL, rather than only a query string, because Pyodide constructs the
 // URLs for its own .wasm and standard-library files from indexURL.
 const VENDOR_ROOT = "../../vendor/v-85fb3352e49c/";
+const MAX_SHADOW_ARTIFACT_BYTES = 16 * 1024 * 1024;
 
 let runLine = null;
 let runLineResult = null;
 let banner = null;
 let takeDownload = null;
+let pendingShadowLogic = null;
+let takeShadowArtifact = null;
+
+function ownedArrayBuffer(value) {
+  const proxy = value;
+  let converted = value;
+  try {
+    if (converted && typeof converted.toJs === "function") {
+      converted = converted.toJs();
+    }
+    let bytes;
+    if (converted instanceof ArrayBuffer) {
+      bytes = new Uint8Array(converted);
+    } else if (ArrayBuffer.isView(converted)) {
+      bytes = new Uint8Array(
+        converted.buffer,
+        converted.byteOffset,
+        converted.byteLength,
+      );
+    } else {
+      throw new TypeError("Python shadow export did not produce bytes");
+    }
+    if (bytes.byteLength < 1 || bytes.byteLength > MAX_SHADOW_ARTIFACT_BYTES) {
+      throw new RangeError("Python shadow export exceeded its browser byte limit");
+    }
+    const owned = new Uint8Array(bytes.byteLength);
+    owned.set(bytes);
+    return owned.buffer;
+  } finally {
+    if (proxy && typeof proxy.destroy === "function") proxy.destroy();
+  }
+}
+
+function postPendingShadow(id, logic) {
+  if (logic !== "ha" && logic !== "classical") return;
+  try {
+    if (!takeShadowArtifact) throw new Error("shadow artifact exporter is unavailable");
+    const artifact = ownedArrayBuffer(takeShadowArtifact());
+    postMessage(
+      {
+        type: "shadow-artifact",
+        v: 1,
+        id: id,
+        format: "peano-lab-v2",
+        logic: logic,
+        artifact: artifact,
+      },
+      [artifact],
+    );
+  } catch (_error) {
+    postMessage({ type: "shadow-artifact-error", v: 1, id: id, code: "encode" });
+  }
+}
 
 async function fetchPythonSources() {
   return Promise.all(PY_FILES.map(async (relativePath) => {
@@ -234,6 +291,8 @@ async function boot(build) {
     };
     banner = function () { return driver.banner(); };
     takeDownload = function () { return driver.take_download(); };
+    pendingShadowLogic = function () { return driver.pending_shadow_logic(); };
+    takeShadowArtifact = function () { return driver.take_shadow_artifact(); };
     postMessage({ type: "ready", banner: String(banner()) });
   } catch (error) {
     postMessage({ type: "error", msg: (error && error.message) ? error.message : String(error) });
@@ -261,14 +320,28 @@ onmessage = function (event) {
           : "\x1b[93mThe engine is still starting — try again in a moment.\x1b[0m";
         failed = true;
       }
-      if (takeDownload) {
-        const body = String(takeDownload());
-        download = body || null;
-      }
     } catch (error) {
       output = "\x1b[91m" + ((error && error.message) ? error.message : String(error)) + "\x1b[0m";
       failed = true;
     }
+    try {
+      if (takeDownload) {
+        const body = String(takeDownload());
+        download = body || null;
+      }
+    } catch (_downloadError) {
+      // Download extraction is optional and cannot change a proof result.
+      download = null;
+    }
+    // FIFO worker delivery makes the authoritative Python result visible
+    // before any shadow lookup or encoding begins.  Shadow failure cannot
+    // alter it, even if the optional Python metadata accessor itself fails.
     postMessage({ type: "result", id: message.id, out: output, failed: failed, download: download });
+    try {
+      const shadowLogic = pendingShadowLogic ? String(pendingShadowLogic()) : "";
+      postPendingShadow(message.id, shadowLogic);
+    } catch (_shadowMetadataError) {
+      postMessage({ type: "shadow-artifact-error", v: 1, id: message.id, code: "metadata" });
+    }
   }
 };

@@ -125,8 +125,51 @@ path convention as the Lean verifier, then applies a separate global work budget
 an open target, malformed bytes, exhausted work, or an unwinding panic cannot become `ACCEPT`. The
 native command-line boundary makes the status explicit: `ACCEPT`, `REJECT`, and malformed-input
 failure are distinct, and its help text says that it never grants QED. Process isolation is also the
-prototype for a later browser worker, where an abort or WebAssembly trap must remain a negative
-shadow result rather than freezing or authorizing the Python session.
+model used by the browser worker, where an abort or WebAssembly trap remains an unavailable shadow
+result rather than freezing or authorizing the Python session.
+
+The browser runs the same Rust core through a small raw WebAssembly ABI in a *second* worker. The
+Pyodide worker and Rust worker initialize concurrently, but only Python readiness unlocks the
+terminal. On successful QED, Python first posts the authoritative result. It then serializes the
+already-checked certificate and transfers its `ArrayBuffer` to the main page, which transfers it
+again—without JSON or base64—to the one-shot Rust worker. This ordering matters: an encoder bug,
+allocation failure, worker trap, or timeout occurs after QED and cannot retroactively change it.
+
+| Browser shadow boundary | Fixed value |
+|---|---:|
+| Canonical input | 16 MiB |
+| Decoded syntax/proof nodes | 1,000,000 |
+| Codec depth | 192 |
+| Checker invocations | 64,000,000 |
+| Linear-memory maximum | 256 MiB, unshared |
+| Main-page watchdog | 30 seconds |
+
+The dependency-free wrapper owns one exact-length Rust `Vec<u8>` and exposes allocation, check,
+and reset functions. JavaScript receives only a temporary offset into exported linear memory; Rust
+never reconstructs a slice from a caller-controlled raw pointer. The core still has
+`#![forbid(unsafe_code)]`; the wrapper contains no unsafe block or pointer dereference. Rust 2024's
+`#[unsafe(no_mangle)]` linkage annotation is isolated in that wrapper and is reviewed as ABI
+surface, not proof authority.
+
+One portability boundary required care. Wire naturals fit in `u32`, while native Rust uses a
+64-bit `usize` and `wasm32` uses 32 bits. The wrapper rejects term-variable and hypothesis indices
+above $2^{32}-1-256$ before checking, reserving enough fixed-width room for every binder shift
+allowed by the depth limit. Boundary fixtures run in both native tests and the real WASM module.
+The committed 52,966-byte module has no imports, no threads or shared memory, and is rebuilt twice
+in CI before exact comparison with the checked-in bytes.
+
+The visible outcomes deliberately say **shadow agreement**, **shadow disagreement**, or **shadow
+unavailable**—never “Rust QED.” Classical artifacts carry a separate logic label and reach only the
+explicit PA+DNE checker. Each check consumes its input and the worker is replaced afterward, so
+allocator state cannot leak from one theorem to the next.
+
+The committed module was also exercised on the complete 384-theorem library,
+not only toy ABI fixtures. For every theorem it received the original artifact,
+a wrong-target mutation, zero fuel, and a missing terminal line feed. All 1,536
+verdicts matched expectation, and the receipt over original artifact hashes was
+`4652c103b317ddf3405f74c022d2229be0c7bdb57fa94c9b0cc6e129d5a20b64`—the
+same receipt produced by native Rust. This is strong conformance evidence, but
+it is still evidence *after* the Python judgment rather than an authority vote.
 
 Python adds an unusual adversarial wrinkle.  A GPT Pro adversarial review found that a subclass can
 override equality and pretend to equal any target.  The trusted recursion therefore accepts exact

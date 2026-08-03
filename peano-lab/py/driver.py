@@ -126,8 +126,10 @@ class LabSession:
         if not isinstance(line, str):
             return "Error: input must be text."
         # A browser download is a one-shot response to this exact command.  A
-        # later, unrelated command must never consume a stale payload.
+        # later, unrelated command must never consume a stale payload.  The
+        # same rule applies to the optional post-QED shadow diagnostic.
         self.webstate.pop(web_prove.KEY_PENDING_DOWNLOAD, None)
+        self.webstate.pop(web_prove.KEY_PENDING_SHADOW, None)
         line = line.strip()
         if not line:
             if self._session_owner() == "prove":
@@ -340,6 +342,16 @@ class LabSession:
 
         return web_prove.take_pending_download(self.webstate)
 
+    def pending_shadow_logic(self) -> str:
+        """Return the pending shadow's exact logic label without consuming it."""
+
+        return web_prove.pending_shadow_logic(self.webstate) or ""
+
+    def take_shadow_artifact(self) -> bytes:
+        """Consume post-QED canonical bytes for the diagnostic WASM worker."""
+
+        return web_prove.take_pending_shadow_artifact(self.webstate)
+
 
 _SESSION: Optional[LabSession] = None
 
@@ -369,6 +381,14 @@ def take_download() -> str:
     return get_session().take_download()
 
 
+def pending_shadow_logic() -> str:
+    return get_session().pending_shadow_logic()
+
+
+def take_shadow_artifact() -> bytes:
+    return get_session().take_shadow_artifact()
+
+
 def banner() -> str:
     return _lines(
         "  Peano Lab · kernel-checked arithmetic proofs · VIASM 2026",
@@ -385,5 +405,7 @@ __all__ = [
     "run_line",
     "run_line_result",
     "take_download",
+    "pending_shadow_logic",
+    "take_shadow_artifact",
     "banner",
 ]

@@ -1,0 +1,78 @@
+{
+  "abi": {
+    "logic": {
+      "classical_pa_dne": 1,
+      "ha": 0
+    },
+    "version": 1,
+    "verdicts": {
+      "accept": 1,
+      "bad_call_or_internal": 4,
+      "logical_reject": 2,
+      "malformed_or_resource": 3
+    }
+  },
+  "authority": {
+    "qed": "authoritative-python-original-goal-only",
+    "shadow": "diagnostic-only-never-grants-or-retracts-qed"
+  },
+  "browser_envelope": {
+    "max_artifact_bytes": 16777216,
+    "max_check_steps": 64000000,
+    "max_codec_depth": 192,
+    "max_decoded_nodes": 1000000,
+    "max_linear_memory_bytes": 268435456,
+    "max_portable_index": 4294967039,
+    "stack_bytes": 2097152,
+    "timeout_milliseconds": 30000
+  },
+  "format": "peano-kernel-browser-wasm-evidence",
+  "release": {
+    "application_id": "a-7ba6efe377bf",
+    "application_manifest_entries": 154,
+    "application_manifest_sha256": "7ba6efe377bf321bb24074e8c73a54ca5b8fb410a89c0c52e3b40726b29af38d",
+    "build": "2026-08-04d",
+    "deployed": false
+  },
+  "toolchain": {
+    "profile": "release-size-lto-overflow-checks-panic-abort",
+    "rust": "1.95.0 (59807616e 2026-04-14)",
+    "target": "wasm32-unknown-unknown"
+  },
+  "validation": {
+    "clean_builds_byte_identical": 2,
+    "complete_differential": {
+      "artifact_receipt_sha256": "4652c103b317ddf3405f74c022d2229be0c7bdb57fa94c9b0cc6e129d5a20b64",
+      "case_receipt_sha256": "2e6e5df23ec90555bb754b7297d87b75f37a1e6f9fcd5a6d9da6facbf1ad1f68",
+      "cases": 1536,
+      "file_sha256": "b26a06ea9647a4e7c8125e797fdfee28401d6cc99c21356b2265e5adba8008e0",
+      "path": "artifacts/peano-kernel/browser-wasm-differential-v1.json",
+      "theorems": 384
+    },
+    "main_worker_harness": "pass",
+    "node_real_wasm_fixtures": [
+      "ha_accept",
+      "wrong_target_reject",
+      "zero_fuel_reject",
+      "malformed_reject",
+      "classical_dne_accept",
+      "ha_dne_reject",
+      "one_shot",
+      "invalid_logic",
+      "input_limits",
+      "portable_index_boundary",
+      "unshared_memory_cap"
+    ],
+    "rust_debug_tests": 14,
+    "rust_release_tests": 14,
+    "shadow_worker_harness": "pass"
+  },
+  "version": 1,
+  "wasm": {
+    "bytes": 52966,
+    "imports": [],
+    "path": "peano-lab/peano_kernel_shadow.wasm",
+    "sha256": "de40d41295d08772ed7adde46e0fbc2ed061c3e1d35b542e3d1c8ef42848389c",
+    "shared_memory": false
+  }
+}
