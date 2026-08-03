@@ -592,6 +592,43 @@ requirements for `SignedAdd` are now closed at candidate status. Nothing in
 this section grants public admission. `SignedMul` is the next signed-operation
 graph.
 
+#### 6.4.5 Closed multiplication-core checkpoint
+
+The exact D06 graph now has the same five-row candidate interface as D05:
+
+```text
+signed_mul_of_decoded_equation
+signed_mul_to_decoded_equation
+signed_mul_decoded_iff_equation
+signed_mul_total
+signed_mul_functional
+```
+
+The decoded product equation is
+
+```text
+(lp * rp + ln * rn) + on = (lp * rn + ln * rp) + op.
+```
+
+Introduction packages the three decoders and this equation. Elimination uses
+decoder functionality; each input component is rewritten twice because it
+occurs in two monomials. Totality normalizes the positive and negative product
+contributions with `signed_balance_total`, and functionality reduces two
+outputs to a common `SignedBalance` problem. No multiplication algebra law is
+needed for these five graph results.
+
+The empty-context certificates contain respectively 26, 877, 1,010, 411, and
+1,808 structural nodes at depths 23, 39, 41, 27, and 40. Two cold replays agree
+on the complete 44-theorem signed-stack digest
+`2230cd2b67196ccec58ab5259052b08f9ef3f43275ef0b717fc35cf581cd0f6c`.
+The bounded oracle checks the unique canonical output for all `17 * 17` input
+pairs and distinguishes signed multiplication from raw multiplication of the
+parity codes.
+
+All five results remain nonpublic. The D06 zero, one, commutative,
+associative, and distributive laws remain separate gates, as do D07 natural
+scaling and D08 signed Bezout.
+
 ### 6.5 Bezout bridge obligations
 
 The existing expanded balanced relation is

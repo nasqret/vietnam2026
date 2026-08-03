@@ -170,8 +170,11 @@ with `m != 0` on totality statements.
       orientations through the decoded contribution equation.
 - [x] Prove signed-add associativity through an independently reviewed
       cross-sum composition helper.
+- [x] Prove the five-row `SignedMul` decoder/equation core, totality, and
+      literal-output functionality as deterministic empty-context candidates.
 - [ ] Prove the signed multiply and natural-scale operation graph obligations
-      frozen by that RFC.
+      frozen by that RFC; the remaining multiplication obligations are its
+      zero, one, commutative, associative, and distributive laws.
 - [ ] Translate four-natural balanced Bezout witnesses to and from the signed
       interface.
 - [ ] Add lcm only after its zero convention and gcd compatibility statement
@@ -179,9 +182,13 @@ with `m != 0` on totality statements.
 
 ### HA4 — independent finite-data substrate
 
-- [ ] Write and review representation RFCs for pairs, lists, and finite maps
-      that do not depend on CRT or beta coding. The independent signed-integer
-      component is already selected by `HA-K3-SIGNED-1`.
+- [x] Select the doubled-Cantor pair and successor-tagged cell representation
+      in `HA-K3-PAIR-1`, independently of CRT and beta coding.
+- [ ] Select an honest computation-trace representation before freezing a
+      uniform variable-length `ListValid` or `ListAt`; pairing alone only
+      supplies fixed-length generated schemas.
+- [ ] Write and review the remaining list and finite-map RFCs. The independent
+      signed-integer and pair/cell components are now selected.
 - [ ] Prove pairing totality and projection functionality.
 - [ ] Prove list validity, length, lookup, membership, append, restriction,
       and extension interfaces.
@@ -297,6 +304,13 @@ closure remains 557 nodes and 1,787 edges, now partitioned as 241 public and
       as closed candidates without bypassing normalization with host integers.
 - [x] Complete the `SignedAdd` algebraic-law tranche before starting
       `SignedMul`.
+- [x] Close the five-row `SignedMul` core without using any SignedAdd law,
+      host-integer multiplication, division, remainder, CRT, or beta coding.
+- [ ] Prove the elementary `SignedMul` zero, one, and commutative laws before
+      attempting associativity or distributivity.
+- [x] Audit the independent pair/list route, freeze the pair/cell component,
+      and record the missing uniform computation-history step rather than
+      hiding variable iteration in a recursive macro.
 
 ## Release boundary
 

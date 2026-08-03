@@ -46,13 +46,19 @@ It separates three facts which are easy to blur in an informal development:
     context but are not in the public registry.
 * - Canonical signed naturals
   - closed candidate
-  - The representation is frozen. Thirty-nine parity, decoder,
-    code-extensionality, balance-normalization, negation, and addition
-    theorems close from the empty context without division.
+  - The representation is frozen. Forty-four parity, decoder,
+    code-extensionality, balance-normalization, negation, addition, and
+    multiplication-core theorems close from the empty context without
+    division.
+* - Canonical pair/cell coding
+  - design frozen
+  - Doubled-Cantor pairs and successor-tagged cells have exact expanded
+    templates. Their theorem ladder has not yet been proved, and uniform lists
+    remain blocked on a computation-trace representation.
 ```
 
 The public registry therefore has 393 entries. The first nine campaign
-theorems occupy append-only positions 384--392. The three gcd and thirty-nine
+theorems occupy append-only positions 384--392. The three gcd and forty-four
 signed candidates stay outside it. This tail append leaves the frozen
 first-247 model curriculum unchanged.
 
@@ -716,6 +722,124 @@ and its
 [`exhaustive focused audit`](https://github.com/nasqret/vietnam2026/blob/883febe3fcf3b8a29707f34780c457f8fcd8edc6/peano-lab/py/tests/test_ha_signed_add_associative_candidate.py#L381)
 for the full native proof and every receipt.
 
+### The total functional SignedMul core
+
+The D06 multiplication graph decodes the two inputs and output and checks the
+subtraction-free equation
+
+$$
+(l_+r_+ + l_-r_-) + o_-
+=
+(l_+r_- + l_-r_+) + o_+.
+$$
+
+This is precisely
+
+$$
+(l_+-l_-)(r_+-r_-)=o_+-o_-
+$$
+
+written in the unchanged natural-only object language. The implementation
+does not multiply parity codes as naturals and does not invoke an external
+integer evaluator. Its proof ladder mirrors the addition core:
+
+```{list-table}
+:header-rows: 1
+:widths: 45 10 10 10 25
+
+* - Closed candidate
+  - Nodes
+  - Depth
+  - Cuts
+  - Certificate prefix
+* - `signed_mul_of_decoded_equation`
+  - 26
+  - 23
+  - 0
+  - `94c77cd7434e`
+* - `signed_mul_to_decoded_equation`
+  - 877
+  - 39
+  - 14
+  - `d50b8c46989e`
+* - `signed_mul_decoded_iff_equation`
+  - 1,010
+  - 41
+  - 16
+  - `14adcb23ed89`
+* - `signed_mul_total`
+  - 411
+  - 27
+  - 8
+  - `85d12bb18f09`
+* - `signed_mul_functional`
+  - 1,808
+  - 40
+  - 34
+  - `632bd740e1f6`
+```
+
+Totality sends the positive and negative product contributions through the
+already proved `SignedBalance` normalizer. Functionality sends two possible
+outputs to the same balance problem. The core therefore needs no
+commutativity, associativity, or distributivity theorem.
+
+Two cold replays agree on the complete 44-theorem signed-stack digest
+`2230cd2b67196ccec58ab5259052b08f9ef3f43275ef0b717fc35cf581cd0f6c`.
+The semantic gate checks the unique output for all 289 pairs of the first 17
+codes, including
+
+$$
+(-1)(-1)=1,\qquad (-1)(1)=-1,\qquad (2)(-2)=-4.
+$$
+
+These five rows remain nonpublic. Zero, one, commutativity, associativity, and
+distributivity are deliberately separate D06 law gates. Inspect the
+[`candidate source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_signed_mul_candidate.py)
+and
+[`focused audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_signed_mul_candidate.py)
+for the complete expanded formulas, tactic scripts, mutations, and receipts.
+
+## Independent pair/cell checkpoint
+
+The finite-data lane has selected a representation for pairs and single cells,
+but not yet for arbitrary lists. For `s=x+y`, define
+
+$$
+\operatorname{PairCode}(c,x,y)
+\quad\Longleftrightarrow\quad
+c=s(s+1)+2y.
+$$
+
+This is twice the Cantor pairing polynomial. The constructor is a literal
+Peano term, while injectivity can proceed by doubled-triangular shell bounds.
+It needs no division, remainder, CRT, Gödel-β code, square root, or prime
+factorization. Cells use the successor tag
+
+$$
+\operatorname{Cell}(c,h,t)
+\quad\Longleftrightarrow\quad
+c=S\bigl((h+t)S(h+t)+2t\bigr),
+$$
+
+with `0` reserved for nil.
+
+The important negative result of the design audit is architectural, not
+mathematical: a finite first-order macro cannot follow a cell tail a variable
+number of times merely by textual recursion. Pairing alone therefore gives
+fixed-length schemas, not an honest uniform formula
+`ListValid(code,length)`. General lookup, append, folds, finite maps, and
+finite CRT remain blocked until the campaign selects an independent encoded
+computation history or a proved conservative primitive-recursive definition
+mechanism.
+
+The
+[`pair/cell RFC`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/research/arithmetic-library/ha-canonical-pair-cell-rfc-v1.md)
+freezes eight exact expanded templates and their SHA-256 receipts, the pair
+injectivity and cell-descent theorem ladder, forbidden dependencies, and four
+honest ways to resolve the uniform-list blocker. It is a design target; no
+pair theorem or list theorem is claimed by that document.
+
 Read the complete
 [`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/883febe3fcf3b8a29707f34780c457f8fcd8edc6/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
 for the exact formulas, hashes, forbidden dependency paths, and staged proof
@@ -731,10 +855,10 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 ```
 
-The first command checks the 12-layer campaign manifest, all 51 theorem
+The first command checks the 12-layer campaign manifest, all 56 theorem
 receipts, the 44-theorem definition API, the nine public admissions, the three
-isolated gcd candidates, and the thirty-nine isolated signed representation,
-normalization, negation, and addition candidates. The second cross-checks
-all 393 public runtime theorems against the 394-row research catalog. The third
-independently replays the full public ladder and compares the deterministic
-snapshot.
+isolated gcd candidates, and the forty-four isolated signed representation,
+normalization, negation, addition, and multiplication-core candidates. The
+second cross-checks all 393 public runtime theorems against the 394-row
+research catalog. The third independently replays the full public ladder and
+compares the deterministic snapshot.

@@ -16,17 +16,21 @@ arithmetic library. Start with:
 - [`ha-canonical-signed-natural-rfc-v1.md`](ha-canonical-signed-natural-rfc-v1.md):
   the selected parity-interleaved canonical signed-natural representation,
   eight exact expanded predicates, dependency prohibitions, and proof DAG;
+- [`ha-canonical-pair-cell-rfc-v1.md`](ha-canonical-pair-cell-rfc-v1.md):
+  the selected doubled-Cantor pair and successor-tagged cell definitions,
+  injectivity ladder, and the explicit blocker on pretending that pairing
+  alone supplies a uniform arbitrary-length list relation;
 - [`../../PLAN/12_ha_number_theory_campaign.md`](../../PLAN/12_ha_number_theory_campaign.md):
   the repository execution plan and first canonical-interface tranche.
 
 Run `make ha-number-theory-check` from the repository root for the fast
 campaign-manifest, 44-theorem definition-API replay, candidate-body, and
-empty-context receipt checks. The campaign manifest carries 51 statement
+empty-context receipt checks. The campaign manifest carries 56 statement
 hashes and exact closure receipts: nine deliberately admitted tranche-01
-theorems, three isolated canonical-gcd candidates, and 39 isolated signed
+theorems, three isolated canonical-gcd candidates, and 44 isolated signed
 parity, decoder, code-extensionality, balance-normalization, negation, and
-addition candidates. Passing the candidate gate alone never enrolls a theorem
-in the public registry.
+addition and multiplication-core candidates. Passing the candidate gate alone
+never enrolls a theorem in the public registry.
 
 The current runtime contains 393 checked entries. The factorization tranche
 is fully synchronized. The exact native β-coded endpoints are checked

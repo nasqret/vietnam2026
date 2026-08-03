@@ -1619,3 +1619,33 @@
   `883febe3fcf3b8a29707f34780c457f8fcd8edc6` anchors the final additive
   Book links. The warning-free 47-source rebuild retains 2,325 HTML pages,
   zero integrity errors, and byte-identical explicit/defined explorer trees.
+- **Signed multiplication core (2026-08-03):** five closed, nonpublic D06
+  candidates expose the decoded product equation in both directions, package
+  its iff, prove totality through `SignedBalance`, and prove literal-code
+  functionality. Their certificates have 26, 877, 1,010, 411, and 1,808
+  nodes at depths 23, 39, 41, 27, and 40. The functional endpoint has 34 Cuts
+  and DAG SHA-256
+  `632bd740e1f6a5a00497205379dd64f3cdc3e45d75a33c8c02d46f727f05f410`;
+  the 44-theorem signed-stack digest is
+  `2230cd2b67196ccec58ab5259052b08f9ef3f43275ef0b717fc35cf581cd0f6c`.
+  The exact closure uses no SignedAdd law, division, remainder, beta, CRT,
+  classical theorem, or DNE. The manifest now binds 47 candidates and 56
+  receipts; the registry remains 393. The next gate is elementary D06 laws,
+  not public admission by implication.
+- **Independent pair/cell design audit (2026-08-03):** `HA-K3-PAIR-1`
+  selects the doubled Cantor polynomial
+  `code=(left+right)*S(left+right)+(right+right)` and successor-tagged cells,
+  with exact template hashes and a K0--K2-only proof ladder. No pair theorem is
+  yet claimed. Pairing does not itself provide a finite formula for following
+  a tail a variable number of times, so uniform lists, lookup, append, folds,
+  maps, and finite CRT remain blocked on a separate computation-history
+  representation or proved conservative primitive-recursive definition
+  mechanism. Fixed-length generated schemas are honest but insufficient.
+- **Current strict-HA gate:** 29 manifest/definition/pair-RFC tests and 91
+  proof/admission tests pass. The campaign manifest records 56 public
+  references, 47 closed candidates, and 56 receipts; the public registry and
+  independently replayed snapshot both remain at 393 theorems.
+- **Current documentation gate:** the warning-free 47-source Book build has
+  2,325 HTML pages and zero integrity errors. Its explicit/defined explorer
+  source and built trees are byte-identical across 2,285 files; the vault has
+  492 notes and 4,991 resolved links.

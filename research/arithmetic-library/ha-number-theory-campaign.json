@@ -51,7 +51,8 @@
       "peano-lab/py/tests/test_ha_signed_negate_candidate.py",
       "peano-lab/py/tests/test_ha_signed_add_candidate.py",
       "peano-lab/py/tests/test_ha_signed_add_laws_candidate.py",
-      "peano-lab/py/tests/test_ha_signed_add_associative_candidate.py"
+      "peano-lab/py/tests/test_ha_signed_add_associative_candidate.py",
+      "peano-lab/py/tests/test_ha_signed_mul_candidate.py"
     ],
     "theorems": [
       {
@@ -410,6 +411,41 @@
         "source_module": "peano-lab/py/peano_lab/library/ha_signed_add_associative_candidate.py",
         "statement_sha256": "62a4c1b9837905a14af15fc6a8931fa07fe338252787f2ce1ebb7d9a892ad094",
         "receipt": {"nodes": 1695, "depth": 47, "objects": 1046, "edges": 1065, "reused": 20, "cuts": 30, "certificate_sha256": "dbac676cc5650d6f0d884dd2e4f9426d17342327cdf0abb59e71c40cc0a8a4cc"}
+      },
+      {
+        "name": "signed_mul_of_decoded_equation",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_candidate.py",
+        "statement_sha256": "e59f2ef5302c2d027a6411187b2068f097038ccbbacb4161681e416974376677",
+        "receipt": {"nodes": 26, "depth": 23, "objects": 26, "edges": 25, "reused": 0, "cuts": 0, "certificate_sha256": "94c77cd7434e17a8fd103bb23ab06575443024062a47de838de02a54a6f215ed"}
+      },
+      {
+        "name": "signed_mul_to_decoded_equation",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_candidate.py",
+        "statement_sha256": "ecbb03cddbeb270c58a41f63d65ff8581de8f37698e575e3dbe411215505df85",
+        "receipt": {"nodes": 877, "depth": 39, "objects": 565, "edges": 567, "reused": 3, "cuts": 14, "certificate_sha256": "d50b8c46989e457f406c4f1d22ec51e8bf3bddc9a6a34528c632114f7d7105c0"}
+      },
+      {
+        "name": "signed_mul_decoded_iff_equation",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_candidate.py",
+        "statement_sha256": "4b59be743142aa5fcc0d18df84450c37c53a28848f9d0e55570b9bc94032ab42",
+        "receipt": {"nodes": 1010, "depth": 41, "objects": 698, "edges": 700, "reused": 3, "cuts": 16, "certificate_sha256": "14adcb23ed89c2ca8a10947859e23ee6239715f19438a0ca7ae8a21ae917fd43"}
+      },
+      {
+        "name": "signed_mul_total",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_candidate.py",
+        "statement_sha256": "68ddcb2c4357f12cbedd89908414452a6a1b1684adcc6e2822a7ae1cfafcd3b7",
+        "receipt": {"nodes": 411, "depth": 27, "objects": 396, "edges": 410, "reused": 15, "cuts": 8, "certificate_sha256": "85d12bb18f09de2679d060626067ae1e9d2d23beb54c7cc96498074ed2c10f46"}
+      },
+      {
+        "name": "signed_mul_functional",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_mul_candidate.py",
+        "statement_sha256": "6493bb4d1759df101717a003411aaf38c80794559b9b4504987b96937f0c49eb",
+        "receipt": {"nodes": 1808, "depth": 40, "objects": 1157, "edges": 1190, "reused": 34, "cuts": 34, "certificate_sha256": "632bd740e1f6a5a00497205379dd64f3cdc3e45d75a33c8c02d46f727f05f410"}
       }
     ]
   },
@@ -458,7 +494,7 @@
     }
   ],
   "representation_invariants": {
-    "k3_foundational_encoding": "HA-K3-SIGNED-1 selects parity-interleaved canonical signed naturals independently of CRT and Godel-beta coding; pair and list representations remain to be selected",
+    "k3_foundational_encoding": "HA-K3-SIGNED-1 selects parity-interleaved canonical signed naturals and HA-K3-PAIR-1 selects doubled-Cantor pairs plus successor-tagged cells independently of CRT and Godel-beta coding; the uniform computation-trace, list, and finite-map representations remain to be selected",
     "k3_forbidden_foundations": [
       "godel_beta",
       "binary_crt",
@@ -685,9 +721,21 @@
             "signed_add_associative"
           ],
           "role": "Closed-checked but non-public cross-sum composition, decoded-equation reassociation, and exact graph associativity for canonical SignedAdd."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_signed_mul_candidate.py",
+          "factory": "make_ha_signed_mul_candidate_theorems",
+          "theorem_names": [
+            "signed_mul_of_decoded_equation",
+            "signed_mul_to_decoded_equation",
+            "signed_mul_decoded_iff_equation",
+            "signed_mul_total",
+            "signed_mul_functional"
+          ],
+          "role": "Closed-checked but non-public decoder-equation bridges, totality, and literal-output functionality for the canonical SignedMul graph."
         }
       ],
-      "remaining_gap": "The parity-interleaved decoder, decoded-code extensionality, total functional SignedBalance normalization, total functional involutive SignedNegate graph, and the total functional SignedAdd graph with zero, commutativity, inverse, and associativity laws now have deterministic empty-context candidate receipts without division, remainder, beta, or CRT dependencies. Public admission, signed multiply/natural-scale operation graphs, decidable equality packaging, pair/list/map encodings, and list recursion remain.",
+      "remaining_gap": "The parity-interleaved decoder, decoded-code extensionality, total functional SignedBalance normalization, total functional involutive SignedNegate graph, the complete SignedAdd graph and laws, and the total functional SignedMul core now have deterministic empty-context candidate receipts without division, remainder, beta, or CRT dependencies. HA-K3-PAIR-1 freezes a non-circular pair/cell design but has no proof candidates yet. Public admission, SignedMul laws, natural scale, decidable equality, pair/cell proofs, an independent uniform computation-trace/list/map encoding, and list recursion remain.",
       "validation": {
         "path": [
           "manifest_integrity",

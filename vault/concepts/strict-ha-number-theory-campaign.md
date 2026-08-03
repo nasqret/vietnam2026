@@ -23,8 +23,8 @@ intuitionistic arithmetic without extending Peano Lab's object language.
 - a checked dependency-curried body is weaker than either status.
 
 The current registry has 393 theorems. Nine strict-HA tranche-01 interfaces are
-public; three canonical-gcd and 39 signed representation, normalization,
-negation, and addition theorems remain closed candidates.
+public; three canonical-gcd and 44 signed representation, normalization,
+negation, addition, and multiplication-core theorems remain closed candidates.
 
 ## Dependency spine
 
@@ -65,12 +65,22 @@ certificate is currently `signed_add_functional` at 1,754 structural nodes,
 depth 38, and 34 Cuts. Addition is now commutative, has two-sided zero, and
 sums with canonical negation to zero in both orientations. A generic cross-sum
 composition helper now also closes graph associativity. None is public yet.
-The next signed-operation gate is `SignedMul`.
+The five-row `SignedMul` core now has decoder bridges, totality, and literal
+output functionality. Its largest certificate is `signed_mul_functional` at
+1,808 nodes, depth 40, and 34 Cuts. The next gate is the elementary
+multiplication laws; natural scaling remains after them.
+
+The independent pair/cell design is now frozen in `HA-K3-PAIR-1` using the
+doubled Cantor polynomial and a successor cell tag. This does not close the
+list layer: variable-length tail iteration still needs an independently
+selected computation-history representation. Pairing alone yields only a
+fixed-length formula schema.
 
 ## Repository anchors
 
 - `research/arithmetic-library/ha-number-theory-campaign.json`
 - `research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md`
+- `research/arithmetic-library/ha-canonical-pair-cell-rfc-v1.md`
 - `PLAN/12_ha_number_theory_campaign.md`
 - `book/arithmetic-library/strict-ha-campaign.md`
 

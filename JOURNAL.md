@@ -3892,3 +3892,50 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   escaping, fragment, unsafe, or remote-runtime link and byte-identical
   explicit/defined explorer trees. No public admission, push, deployment, or
   WMI receipt is claimed.
+
+## 2026-08-03 — Canonical SignedMul core closed
+
+- Implemented RFC D06 as three exact signed decoders plus the subtraction-free
+  product equation `(lp * rp + ln * rn) + on = (lp * rn + ln * rp) + op`.
+  The five rows provide introduction, elimination, their packaged iff,
+  totality, and literal-output functionality.
+- Totality normalizes the positive and negative product contributions through
+  `signed_balance_total`; functionality reduces both outputs to one
+  `signed_balance_functional` problem. No SignedAdd theorem or multiplication
+  algebra law is a dependency of the core.
+- Two cold closures pin nodes/depths at 26/23, 877/39, 1,010/41, 411/27, and
+  1,808/40. The functional endpoint has 1,157 distinct proof objects, 1,190
+  DAG edges, 34 reused objects, 34 Cuts, and certificate SHA-256
+  `632bd740e1f6a5a00497205379dd64f3cdc3e45d75a33c8c02d46f727f05f410`.
+  The complete 44-theorem signed-stack digest is
+  `2230cd2b67196ccec58ab5259052b08f9ef3f43275ef0b717fc35cf581cd0f6c`.
+- The focused seven-test audit pins RFC D06, statements, bodies, closures,
+  mutations, strict dependencies, and registry isolation. Its bounded oracle
+  checks unique canonical outputs for all 289 pairs of the first 17 codes and
+  explicitly rejects raw multiplication of parity codes.
+- Integrated D06 as the tenth K3 candidate module. The campaign now has 56
+  public references, 47 candidates, and 56 exact receipts; the public registry
+  remains 393. The next proof tranche is D06 zero, one, and commutativity.
+  Public admission remains separate and unclaimed.
+- The parallel K3 representation audit selected doubled-Cantor pair codes
+  `s*S(s)+2*right` and successor-tagged cells. The new `HA-K3-PAIR-1` RFC
+  freezes eight expanded templates and a K0--K2-only injectivity/cell-descent
+  ladder, but makes no theorem claim.
+- The audit also exposed a missing dependency in the original roadmap:
+  pairing alone cannot expand variable tail iteration into one finite formula.
+  Uniform lists remain blocked on an independently selected computation-trace
+  encoding or a proved conservative primitive-recursive definition compiler.
+  No recursive macro is being hidden as syntactic sugar.
+- A separate admission audit found the preceding 42 candidates
+  certificate-ready, collision-free, and DNE-free, while confirming that bulk
+  public migration still requires registry-test migration, generated
+  integration, and heavy closure. No candidate was promoted in this tranche.
+- The integrated local gate passes 29 manifest, definition, and pair-RFC tests
+  plus 91 focused proof/admission tests. Independent knowledge-base validation
+  still reports 393 checked public theorems and the frozen public-library
+  snapshot replays all 393 unchanged.
+- Rebuilt all 47 Jupyter Book sources without warnings. The structural audit
+  reports 2,325 HTML pages, zero broken, escaping, fragment, unsafe, or remote
+  runtime links, and byte-identical 2,285-file explicit/defined explorer
+  trees. The 492-note vault retains 4,991 resolved links. No public admission,
+  push, deployment, or WMI receipt is claimed.
