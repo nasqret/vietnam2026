@@ -308,9 +308,21 @@ def oversized_numeral(source: str) -> str | None:
 
     if type(source) is not str:
         raise TypeError("numeral preflight expects text")
+    ceiling = str(MAX_NUMERAL)
     for match in _NUMERAL_LITERAL.finditer(source):
-        if int(match.group()) > MAX_NUMERAL:
-            return match.group()
+        literal = match.group()
+        # Compare decimal text instead of constructing an integer.  Python
+        # deliberately limits decimal-to-int conversion (4,300 digits by
+        # default), while this preflight must remain total for every source
+        # string up to MAX_INPUT and must run before the recursive parser.
+        decimal = "".join(
+            str(unicodedata.decimal(character)) for character in literal
+        )
+        significant = decimal.lstrip("0") or "0"
+        if len(significant) > len(ceiling) or (
+            len(significant) == len(ceiling) and significant > ceiling
+        ):
+            return literal
     return None
 
 

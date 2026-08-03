@@ -243,6 +243,90 @@ unsolved. Those three scripts kernel-check. Four goals, however, are a launch
 smoke, not a statistically defensible capability result and not evidence for
 Hydra's new architecture.
 
+### Freeze semantics before optimizing search
+
+Hydra H0.1a begins with a deliberately unglamorous question: *what exact
+judgment will every later solver, dataset, prompt, and score mean?* The answer
+is now the canonical machine-readable profile
+`training/peano_hydra/semantic-profile-v1.json`:
+
+```text
+format = peano-hydra-semantic-profile
+version = 1
+id = peano-lab-ha-intuitionistic-v1
+sha256 = 058b1644b066967919dae092e5e562b8845e4dd8415fff31d7cd209d51bc9e43
+```
+
+That digest is over compact sorted-key UTF-8 JSON, not the indented display
+file. Whitespace may therefore change the file hash without changing the
+semantic object, while changing one rule, axiom, translation, or evidence
+condition necessarily changes the semantic digest.
+
+The accepted source boundary is part of that object too. Profile v1 records
+the complete pre-parser contract: nonempty one-line text with no outer
+whitespace, no unsafe Unicode category or explicit `#`, at most 8,192 Unicode
+code points, and decimal numerals at most 256. These are operational safeguards
+against parser and certificate blowups, not a terminating decision budget.
+Accordingly the profile says `decision_claim = false` here and retains
+`decision_resource_bounds = null` in its theoremhood claim.
+
+The profile freezes the five term constructors, seven formula constructors,
+de Bruijn binding and alpha convention, capture-avoiding substitution, every
+intuitionistic proof rule, PA1--PA6, and unrestricted induction over a
+well-scoped formula motive. The loader compares its recorded axiom formulas
+and proof-constructor inventory with the live kernel. `DNE` and the classical
+checker are outside the profile. No external-solver translation is registered.
+
+The target boundary closes a subtle representation loophole. The ordinary
+parser reports named free variables, so the early Hydra check rejected
+`n = n`. Diagnostic syntax also accepts explicit de Bruijn indices, however;
+`#0 = #0` had an empty *name* table even though it was not closed at top-level
+binder depth zero. Reflexivity could kernel-check it under an open-variable
+reading. This was not a false kernel theorem, but it violated Hydra's claimed
+closed-target normal form. Admission now checks de Bruijn scope structurally
+and forbids explicit `#k` target syntax.
+
+Profile v1 is intentionally a sound theorem-prover profile, not a decision
+procedure. It registers no decidable subfragment and no negative witness.
+`proved` means that an ordinary self-contained certificate passed the
+intuitionistic kernel against the original closed goal; exhaustion, limits,
+timeouts, and all other failures are `unknown`. Publishing `not_theorem` is
+forbidden.
+
+The same review separated a *claim boundary* from a complete evidence schema.
+Profile v1 says which outcomes are legal and lists the fields a future result
+will need, but it now labels that block `required-field-draft`. It does not yet
+freeze field types, additional-field policy, or the non-self-referential hash
+preimages for theorem, kernel, replay, and run evidence. Calling that sketch a
+closed schema would make independent implementations guess. Exact evidence is
+therefore H0.1b rather than an invisible assumption.
+
+Hydra policy, runner, and pilot schemas moved to version 2. The semantic digest
+appears in every environment, head identity, proposal row, recorded state,
+run, source artifact, replay binding, and outcome table produced by this
+bootstrap. Importing a legacy batch trace causes a fresh profile-bound replay;
+it is not merely relabeled. Serializing a successful run replays the physical
+tactic route again and rejects a mutated retained trace. An older Qwen prompt
+contract that does not expose the profile identity is rejected before a model
+call; a future Hydra-aware prompt version must add that observation honestly.
+
+A second adversarial audit then tried to relabel an already constructed run.
+Python's frozen dataclass did not freeze dictionaries nested inside it: provider
+metadata, proposal rows, and resource limits could be edited before
+serialization, and a copied bootstrap result could even be marked comparison
+eligible. Runner v2 now retains a private canonical binding of all publication
+fields, revalidates policy heads and proposal rows, reconstructs limits and
+degradation from evidence, admits only `proof | exhausted | limit`, and
+hard-codes `surface-macro-v0` as comparison-ineligible. Head hashes bind the
+complete head declaration and capability environment. Oversized theorems are
+rejected before semantic parsing. None of these checks makes the policy trusted;
+they prevent a sound proof from carrying false experimental provenance.
+
+This freezes H0.1a, not H0. H0.1b must still close the exact result schema. The
+pilot also lacks certificate hashes and depths, kernel identity, closed evidence
+hashes, raw provider calls, and resource records. H0.2 independent
+reference/conformance work and H0.3 typed macros remain open.
+
 ### The first functional plumbing test
 
 The repository now contains a provider-neutral bootstrap in
@@ -264,8 +348,9 @@ The control exhausts at the root. The hybrid reproduces the 13-command route,
 then a fresh retained-trace replay checks its 180-node certificate against the
 original formula. A related mutated statement activates none of the recorded
 macro states and remains `unknown`; that is transcript non-reuse, not a
-non-theorem certificate. The complete deterministic evidence is committed as
-`artifacts/peano-hydra/teacher-oracle-pilot-v1.json`.
+non-theorem certificate. The current profile-bound deterministic evidence is
+committed as `artifacts/peano-hydra/teacher-oracle-pilot-v2.json`. Historical
+v1 remains byte-pinned as explicitly pre-profile evidence.
 
 This result is useful and deliberately modest. It proves that portfolio
 quotas, exact-state gating, public tactics, proposal provenance, independent

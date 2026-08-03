@@ -16,9 +16,10 @@ at the 247-theorem checkpoint and has fingerprint
 `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`.
 The isolated all-ladder smoke has 494 sessions, 9,235 raw/9,232 unique
 transitions, and all 247 authored QEDs. The integrated local browser candidate
-deterministically verifies as build `2026-08-03a`, application
-`a-ff0ad1985520`, with 149 worker sources; it assembles successfully in the
-local content-addressed stage and has not been deployed.
+deterministically verifies as build `2026-08-03c`, application
+`a-4f03b6fb429b`, with 149 worker sources; its source inventory, content
+manifest, and deployment contracts pass. Complete local staging awaits the
+gitignored pinned vendor mirror, and the build has not been deployed.
 
 The [public Peano Lab shell](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lib)
 still serves the earlier production snapshot. In this candidate checkout, try

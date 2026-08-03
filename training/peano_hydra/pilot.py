@@ -19,7 +19,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from peano_lab.batch import BatchResult, run_proof
+from peano_lab.batch import BatchResult, capability_sha256, run_proof
 from peano_lab.ui.prove import SurfaceCapabilities
 from training.peano_hydra.policy import (
     MACRO_ACTION_HEADS,
@@ -35,10 +35,15 @@ from training.peano_hydra.runner import (
     policy_environment,
     run_hydra,
 )
+from training.peano_hydra.profile import (
+    canonical_profile_theorem,
+    semantic_profile_identity,
+    semantic_profile_sha256 as registered_semantic_profile_sha256,
+)
 from training.peano_policy.search import SearchLimits
 
 
-PILOT_VERSION = 1
+PILOT_VERSION = 2
 TEACHER_ORACLE_LABEL = "teacher_oracle_plumbing"
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_ARTIFACT = REPOSITORY_ROOT / "artifacts" / "triangular-even-readable.pa"
@@ -78,7 +83,7 @@ PILOT_COMMANDS = frozenset(
     }
 )
 PILOT_CAPABILITIES = SurfaceCapabilities(
-    label="peano-hydra-teacher-pilot-v1",
+    label="peano-hydra-teacher-pilot-v2",
     allowed_commands=PILOT_COMMANDS,
     allowed_theorems=frozenset(),
 )
@@ -100,18 +105,69 @@ class CheckedScriptArtifact:
     canonical_theorem: str
     commands: tuple[str, ...]
     replay: BatchResult
+    semantic_profile_sha256: str
+
+    def __post_init__(self) -> None:
+        if self.semantic_profile_sha256 != registered_semantic_profile_sha256():
+            raise ValueError("teacher artifact has a different semantic profile")
+        if canonical_profile_theorem(self.theorem_source) != self.canonical_theorem:
+            raise ValueError("teacher artifact theorem is not canonical")
+        _validate_source_replay(
+            artifact_sha256=self.sha256,
+            theorem=self.canonical_theorem,
+            commands=self.commands,
+            profile_digest=self.semantic_profile_sha256,
+            replay=self.replay,
+        )
 
     def to_dict(self, *, include_trace: bool = False) -> dict[str, object]:
-        return {
+        self.__post_init__()
+        request_id, session_id = _source_replay_ids(
+            self.semantic_profile_sha256,
+            self.sha256,
+        )
+        fresh = run_proof(
+            self.canonical_theorem,
+            self.commands,
+            request_id=request_id,
+            classical=False,
+            on_error="stop",
+            capabilities=PILOT_CAPABILITIES,
+            session_id=session_id,
+        )
+        _validate_source_replay(
+            artifact_sha256=self.sha256,
+            theorem=self.canonical_theorem,
+            commands=self.commands,
+            profile_digest=self.semantic_profile_sha256,
+            replay=fresh,
+        )
+        if fresh.to_dict(include_trace=True) != self.replay.to_dict(
+            include_trace=True
+        ):
+            raise TeacherOraclePilotError(
+                "teacher artifact publication replay differs from its retained replay"
+            )
+        payload = {
             "path": self.path,
             "sha256": self.sha256,
             "theorem_source": self.theorem_source,
             "canonical_theorem": self.canonical_theorem,
+            "semantic_profile_sha256": self.semantic_profile_sha256,
             "commands": list(self.commands),
             "command_count": len(self.commands),
             "proof_nodes": self.replay.proof_nodes,
             "replay": self.replay.to_dict(include_trace=include_trace),
         }
+        return json.loads(
+            json.dumps(
+                payload,
+                ensure_ascii=False,
+                allow_nan=False,
+                sort_keys=True,
+                separators=(",", ":"),
+            )
+        )
 
 
 @dataclass(frozen=True, slots=True)
@@ -124,8 +180,19 @@ class TeacherOraclePilotReport:
     control: HydraRunResult
     hybrid: HydraRunResult
     mutation: HydraRunResult
+    semantic_profile_sha256: str
 
     def __post_init__(self) -> None:
+        if self.semantic_profile_sha256 != registered_semantic_profile_sha256():
+            raise ValueError("pilot report has a different semantic profile")
+        self.artifact.__post_init__()
+        if self.artifact.semantic_profile_sha256 != self.semantic_profile_sha256:
+            raise ValueError("pilot artifact has a different semantic profile")
+        if any(
+            lane.semantic_profile_sha256 != self.semantic_profile_sha256
+            for lane in (self.control, self.hybrid, self.mutation)
+        ):
+            raise ValueError("pilot lane has a different semantic profile")
         if self.control.environment != self.hybrid.environment:
             raise ValueError("paired lanes must have the exact same environment")
         if self.control.limits != self.hybrid.limits:
@@ -141,7 +208,8 @@ class TeacherOraclePilotReport:
             for lane in (self.control, self.hybrid, self.mutation)
         ):
             raise ValueError(
-                "pre-H0 teacher-oracle lanes must remain comparison ineligible"
+                "surface-macro-v0 teacher-oracle lanes must remain comparison "
+                "ineligible"
             )
         if not all(
             lane.comparison_ineligibility_reasons
@@ -160,9 +228,11 @@ class TeacherOraclePilotReport:
             raise ValueError("teacher transcript was reused for a mutated theorem")
 
     def to_dict(self, *, include_trace: bool = False) -> dict[str, object]:
+        self.__post_init__()
         return {
             "v": PILOT_VERSION,
             "experiment": TEACHER_ORACLE_LABEL,
+            "semantic_profile": semantic_profile_identity(),
             "claim_boundary": (
                 "checked interface/oracle headroom only; not Qwen capability, "
                 "not an LLM advantage result, and not sealed evaluation"
@@ -205,6 +275,7 @@ class TeacherOraclePilotReport:
                 "passed": not self.mutation.proved,
             },
             "outcome": {
+                "semantic_profile_sha256": self.semantic_profile_sha256,
                 "control_status": self.control.status,
                 "hybrid_status": self.hybrid.status,
                 "hybrid_kernel_checked": (
@@ -274,23 +345,38 @@ def _read_script(path: Path) -> tuple[bytes, str, tuple[str, ...]]:
     return raw, theorem, commands
 
 
-def _checked_artifact(path: Path) -> CheckedScriptArtifact:
-    raw, theorem, commands = _read_script(path)
-    digest = hashlib.sha256(raw).hexdigest()
-    replay = run_proof(
-        theorem,
-        commands,
-        request_id=f"hydra-teacher-source-{digest[:24]}",
-        classical=False,
-        on_error="stop",
-        capabilities=PILOT_CAPABILITIES,
-        session_id=f"peano-hydra-teacher-source-{digest[:24]}",
+def _source_replay_ids(profile_digest: str, artifact_sha256: str) -> tuple[str, str]:
+    return (
+        f"hydra-teacher-source-{profile_digest[:12]}-{artifact_sha256[:12]}",
+        (
+            f"peano-hydra-teacher-source-{profile_digest[:12]}-"
+            f"{artifact_sha256[:12]}"
+        ),
     )
+
+
+def _validate_source_replay(
+    *,
+    artifact_sha256: str,
+    theorem: str,
+    commands: tuple[str, ...],
+    profile_digest: str,
+    replay: BatchResult,
+) -> None:
+    request_id, session_id = _source_replay_ids(profile_digest, artifact_sha256)
     if (
-        replay.status != "proved"
+        type(replay) is not BatchResult
+        or replay.status != "proved"
+        or replay.request_id != request_id
+        or replay.session_id != session_id
         or replay.kernel_checked is not True
+        or replay.theorem != theorem
         or replay.mode != "trace"
         or replay.trace is None
+        or replay.classical is not False
+        or replay.surface != PILOT_CAPABILITIES.label
+        or replay.environment_sha256 != capability_sha256(PILOT_CAPABILITIES)
+        or replay.on_error != "stop"
         or replay.goals
         or replay.tactics_requested != len(commands)
         or replay.tactics_applied != len(commands)
@@ -308,6 +394,30 @@ def _checked_artifact(path: Path) -> CheckedScriptArtifact:
         raise TeacherOraclePilotError(
             "teacher artifact trace differs from its physical command lines"
         )
+
+
+def _checked_artifact(path: Path) -> CheckedScriptArtifact:
+    raw, theorem, commands = _read_script(path)
+    digest = hashlib.sha256(raw).hexdigest()
+    profile_digest = registered_semantic_profile_sha256()
+    canonical_theorem = canonical_profile_theorem(theorem)
+    request_id, session_id = _source_replay_ids(profile_digest, digest)
+    replay = run_proof(
+        theorem,
+        commands,
+        request_id=request_id,
+        classical=False,
+        on_error="stop",
+        capabilities=PILOT_CAPABILITIES,
+        session_id=session_id,
+    )
+    _validate_source_replay(
+        artifact_sha256=digest,
+        theorem=canonical_theorem,
+        commands=commands,
+        profile_digest=profile_digest,
+        replay=replay,
+    )
 
     try:
         is_default = path.resolve() == DEFAULT_ARTIFACT.resolve()
@@ -327,12 +437,13 @@ def _checked_artifact(path: Path) -> CheckedScriptArtifact:
     except (OSError, ValueError):
         portable_path = str(path)
     return CheckedScriptArtifact(
-        portable_path,
-        digest,
-        theorem,
-        replay.theorem,
-        commands,
-        replay,
+        path=portable_path,
+        sha256=digest,
+        theorem_source=theorem,
+        canonical_theorem=canonical_theorem,
+        commands=commands,
+        replay=replay,
+        semantic_profile_sha256=profile_digest,
     )
 
 
@@ -343,7 +454,12 @@ def _command_head(command: str) -> str:
 def _policies(
     artifact: CheckedScriptArtifact,
 ) -> tuple[HydraCandidatePolicy, HydraCandidatePolicy, tuple[str, ...], tuple[str, ...]]:
-    environment = policy_environment(PILOT_CAPABILITIES, classical=False)
+    profile_digest = registered_semantic_profile_sha256()
+    environment = policy_environment(
+        PILOT_CAPABILITIES,
+        semantic_profile_sha256=profile_digest,
+        classical=False,
+    )
     artifact_heads = frozenset(_command_head(line) for line in artifact.commands)
     macro_heads = artifact_heads - SYMBOLIC_HEADS
     if not macro_heads or not macro_heads.issubset(MACRO_ACTION_HEADS):
@@ -353,14 +469,15 @@ def _policies(
 
     macro_teacher = ScriptCandidatePolicy.from_batch_result(
         artifact.replay,
-        name="triangular-even-structural-teacher-v1",
+        name="triangular-even-structural-teacher-v2",
         policy_environment=environment,
         include_heads=frozenset(macro_heads),
     )
     macro_states = tuple(sorted(macro_teacher.state_sha256s))
     macro_gate = HeadGate(frozenset(macro_states))
     symbolic_identity = {
-        "kind": "fixed-untrusted-symbolic-closure-v1",
+        "kind": "fixed-untrusted-symbolic-closure-v2",
+        "semantic_profile_sha256": profile_digest,
         "candidates": ["compact_arith", "compact_arith [IH_witness]"],
         "teacher_conditioned": False,
         "context_hint_enumeration": "fixed-at-every-state",
@@ -375,10 +492,11 @@ def _policies(
         )
 
     control_null = NullCandidatePolicy(
-        name="paired-null-macro-control-v1",
+        name="paired-null-macro-control-v2",
         policy_environment=environment,
         provider_identity={
-            "kind": "paired-null-control-v1",
+            "kind": "paired-null-control-v2",
+            "semantic_profile_sha256": profile_digest,
             "replaces": TEACHER_ORACLE_LABEL,
             "quota": 1,
             "gate_sha256s": list(macro_states),
@@ -390,7 +508,7 @@ def _policies(
                 "symbolic-compact-arith",
                 "symbolic",
                 2,
-                symbolic("symbolic-compact-arith-control-v1"),
+                symbolic("symbolic-compact-arith-control-v2"),
             ),
             PolicyHead(
                 "paired-null-macro-control",
@@ -400,7 +518,7 @@ def _policies(
                 gating=macro_gate,
             ),
         ),
-        name="peano-hydra-symbolic-only-control-v1",
+        name="peano-hydra-symbolic-only-control-v2",
     )
     hybrid = HydraCandidatePolicy(
         (
@@ -408,7 +526,7 @@ def _policies(
                 "symbolic-compact-arith",
                 "symbolic",
                 2,
-                symbolic("symbolic-compact-arith-hybrid-v1"),
+                symbolic("symbolic-compact-arith-hybrid-v2"),
             ),
             PolicyHead(
                 "teacher-oracle-structural-macros",
@@ -418,7 +536,7 @@ def _policies(
                 gating=macro_gate,
             ),
         ),
-        name="peano-hydra-teacher-oracle-plumbing-v1",
+        name="peano-hydra-teacher-oracle-plumbing-v2",
     )
     if not (
         control.total_quota
@@ -434,12 +552,14 @@ def run_teacher_oracle_pilot(
 ) -> TeacherOraclePilotReport:
     """Run the exact symbolic-only and teacher-macro paired pilot."""
 
+    profile_digest = registered_semantic_profile_sha256()
     artifact = _checked_artifact(artifact_path)
     control_policy, hybrid_policy, macro_heads, macro_states = _policies(artifact)
     control = run_hydra(
         artifact.theorem_source,
         control_policy,
         capabilities=PILOT_CAPABILITIES,
+        semantic_profile_sha256=profile_digest,
         classical=False,
         limits=PILOT_LIMITS,
         label="symbolic-only-control",
@@ -448,6 +568,7 @@ def run_teacher_oracle_pilot(
         artifact.theorem_source,
         hybrid_policy,
         capabilities=PILOT_CAPABILITIES,
+        semantic_profile_sha256=profile_digest,
         classical=False,
         limits=PILOT_LIMITS,
         label=TEACHER_ORACLE_LABEL,
@@ -460,18 +581,20 @@ def run_teacher_oracle_pilot(
         MUTATED_THEOREM,
         mutation_policy,
         capabilities=PILOT_CAPABILITIES,
+        semantic_profile_sha256=profile_digest,
         classical=False,
         limits=PILOT_LIMITS,
         label="teacher-transcript-mutation-integrity",
     )
     try:
         return TeacherOraclePilotReport(
-            artifact,
-            macro_heads,
-            macro_states,
-            control,
-            hybrid,
-            mutation,
+            artifact=artifact,
+            macro_heads=macro_heads,
+            macro_state_sha256s=macro_states,
+            control=control,
+            hybrid=hybrid,
+            mutation=mutation,
+            semantic_profile_sha256=profile_digest,
         )
     except ValueError as exc:
         raise TeacherOraclePilotError(str(exc)) from None

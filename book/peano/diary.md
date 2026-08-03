@@ -2710,3 +2710,95 @@ surface-macro-v0 row explicitly ineligible. The current ledger sees extracted
 tactic lines, not raw decoder text and resource records, while its state gate
 comes from the teacher transcript rather than an independently detected
 symbolic fixed point. These are now recorded requirements, not hidden debts.
+
+## 2026-08-03 — Freeze the meaning before scaling Hydra
+
+H0.1a forced us to name the object that every later experiment will share.
+The new `peano-lab-ha-intuitionistic-v1` profile records the exact syntax,
+de Bruijn binding, capture-avoiding substitution, intuitionistic proof rules,
+PA1--PA6, unrestricted induction, canonical target form, translations, and
+evidence boundary. Its semantic digest is
+`058b1644b066967919dae092e5e562b8845e4dd8415fff31d7cd209d51bc9e43`.
+The loader rejects duplicate keys, non-canonical bytes, any mutation of the
+registered value, and drift between its axioms/constructor inventory and the
+live kernel.
+
+The most useful bug came from asking what “closed” really meant. Parsing
+`#0 = #0` creates no *named* free variable, so the old names-only check let it
+reach reflexivity. The kernel's open-variable reading was sound, but Hydra had
+promised closed top-level targets. We now traverse the term tree at binder
+depth zero and reject explicit de Bruijn target syntax. This is a good example
+of why a semantic profile must constrain representations, not merely list
+connectives.
+
+Policy, runner, and pilot carriers moved to version 2. Profile identity is
+separate from tactic/library capability identity. It is present in heads,
+proposal records, recorded states, provider identities, runs, replay IDs, and
+the pilot outcome. A legacy checked batch is replayed again under a
+profile-bound identity before it can become a recorded policy; it is never
+merely relabeled. A successful run is replayed once during search finalization
+and again when serialized, so mutating its retained request, commands, or
+trace fails closed.
+
+I initially let the phrase `evidence_kind = proved` suggest more than the
+pilot retains. Worse, I called a list of required field names a frozen schema
+without defining types, additional fields, or non-self-referential hash
+preimages. The profile now labels this honestly as `required-field-draft`.
+Pilot v2 declares conformance false and remains comparison-ineligible.
+Historical pilot v1 is byte-pinned and explicitly pre-profile; pilot v2 is the
+profile-bound regression. Exact evidence syntax is H0.1b.
+
+The final adversarial review found another distinction worth teaching:
+`@dataclass(frozen=True)` freezes attribute assignment, not dictionaries stored
+inside the object. Provider metadata, proposal rows, and limits could be edited
+after a run, and the serializer would detach and bless the edited values. Even
+the comparison flag could be flipped. Runner v2 now retains a canonical binding
+of the original publication fields, validates every head and proposal against
+the declared portfolio, reconstructs `SearchLimits` and degradation, restricts
+statuses to `proof | exhausted | limit`, and requires the exact fixed
+surface-macro-v0 ineligibility reason. Head identities now include the complete
+declaration and capability environment. We also moved the existing input-size
+and numeral guards before semantic parsing. These are provenance fixes rather
+than kernel rules, but without them an honest theorem could be attached to a
+dishonest experiment row.
+
+One final Python 3.12 probe exposed a subtler preflight bug. Converting a
+5,000-digit decimal literal to `int` hits Python's defensive digit limit before
+our own numeral ceiling can report the input. The numeral guard now compares
+normalized decimal strings lexically, so it is total across the complete
+8,192-character transport envelope and still runs before parsing. At the same
+boundary we made proposal ledgers state the only histories the implementation
+can actually produce: a successful or failed call requests its full fixed
+quota, a contract error happens either before that call or during it, and an
+unsuccessful row cannot invent returned candidates or suppressed duplicates.
+These cases now have direct regression tests rather than relying on the pilot
+to happen not to exercise them.
+
+Because the numeral guard is shipped to the browser, this small source change
+correctly invalidated Peano Lab's application manifest. The failing integrity
+test prevented an easy mistake: serving new Python below an old immutable URL.
+I regenerated the complete manifest, advanced the application namespace to
+`a-4f03b6fb429b`, and advanced the visible build label to `2026-08-03c`.
+No deployment is implied by this branch; it simply keeps the release tree
+content-addressed and ready for the normal promotion process.
+
+A later parallel review found that merely *running* the input guards before
+parsing was not enough. Their values still lived outside the semantic object,
+so changing 8,192 or 256 could change the admitted theorem set while leaving
+the profile digest untouched. The final profile therefore includes an
+`operational_admission` record for every preflight rule and checks its numeric
+ceilings against the live browser surface. It labels those limits
+`decision_claim = false`: they bound transport and construction, not the
+mathematics. The same review made the shift cutoff under `∀` and `∃` explicit,
+removing an ambiguity from the prose substitution rule. Regenerating the
+profile-bound pilot after this correction was mandatory; attaching its old
+hash would have recreated exactly the relabeling error the profile is meant to
+prevent.
+
+This completes the H0.1a semantic/claim substep only. H0.1b exact evidence
+schemas remain open. There is still no decidable fragment or `not_theorem`
+result, no independent reference implementation, no 1,000-case conformance
+set, no double cold replay of a frozen library epoch, and no typed H0.3 macro
+protocol. The old Qwen prompt is rejected by Hydra because it does not expose
+the new profile digest; adding a real profile-aware prompt is future work, not
+a hash pasted onto an unseen model input.

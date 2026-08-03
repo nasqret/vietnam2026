@@ -16,14 +16,19 @@ if str(ROOT) not in sys.path:
 from peano_lab.batch import run_proof  # noqa: E402
 from peano_lab.ui.prove import SurfaceCapabilities  # noqa: E402
 from training.peano_hydra.policy import (  # noqa: E402
+    HYDRA_POLICY_VERSION,
     FixedCandidatePolicy,
     HeadGate,
     HydraCandidatePolicy,
     MacroAction,
     NullCandidatePolicy,
     PolicyHead,
+    ProposalRecord,
+    RecordedCandidatePolicy,
+    RecordedState,
     ScriptCandidatePolicy,
 )
+from training.peano_hydra.profile import semantic_profile_sha256  # noqa: E402
 from training.peano_hydra.runner import policy_environment  # noqa: E402
 from training.peano_policy.contract import model_v2_environment  # noqa: E402
 from training.peano_policy.generate import (  # noqa: E402
@@ -31,6 +36,84 @@ from training.peano_policy.generate import (  # noqa: E402
     PeanoPolicyCandidateAdapter,
 )
 from training.peano_policy.search import state_sha256  # noqa: E402
+
+
+SEMANTIC_PROFILE_SHA256 = semantic_profile_sha256()
+
+
+def _proposal_record(**changes: object) -> ProposalRecord:
+    fields: dict[str, object] = {
+        "portfolio_call": 1,
+        "head": "symbolic",
+        "role": "symbolic",
+        "head_identity_sha256": "a" * 64,
+        "semantic_profile_sha256": SEMANTIC_PROFILE_SHA256,
+        "goals": ("⊢ 0 = 0",),
+        "state_sha256": state_sha256(("⊢ 0 = 0",)),
+        "quota": 2,
+        "requested": 2,
+        "outcome": "ok",
+        "candidates": ("refl",),
+        "accepted_candidates": ("refl",),
+        "response_sha256": (
+            "fe10c6e38248f7cc8f1284a1defc47e62ebcedcf9b92fa23151c8834e20770ce"
+        ),
+    }
+    fields.update(changes)
+    return ProposalRecord(**fields)  # type: ignore[arg-type]
+
+
+def test_proposal_records_pin_quota_outcome_accounting() -> None:
+    assert _proposal_record().requested == 2
+
+    with pytest.raises(ValueError, match="full quota"):
+        _proposal_record(requested=1)
+    with pytest.raises(ValueError, match="more candidates than requested"):
+        _proposal_record(
+            quota=1,
+            requested=1,
+            candidates=("refl", "refl"),
+            accepted_candidates=("refl",),
+        )
+    with pytest.raises(ValueError, match="full quota"):
+        _proposal_record(
+            requested=1,
+            outcome="error",
+            candidates=(),
+            accepted_candidates=(),
+            response_sha256=None,
+            error_type="RuntimeError",
+            error="offline",
+        )
+    with pytest.raises(ValueError, match="before or during"):
+        _proposal_record(
+            requested=1,
+            outcome="contract-error",
+            candidates=(),
+            accepted_candidates=(),
+            response_sha256=None,
+            error_type="ValueError",
+            error="identity changed",
+        )
+    with pytest.raises(ValueError, match="duplicates"):
+        _proposal_record(
+            requested=0,
+            outcome="gated",
+            candidates=(),
+            accepted_candidates=(),
+            response_sha256=None,
+            suppressed_duplicates=1,
+        )
+    with pytest.raises(ValueError, match="cannot claim an error"):
+        _proposal_record(
+            requested=0,
+            outcome="gated",
+            candidates=(),
+            accepted_candidates=(),
+            response_sha256=None,
+            error_type="ValueError",
+            error="forged",
+        )
 
 
 def _capabilities(label: str = "hydra-policy-test") -> SurfaceCapabilities:
@@ -49,6 +132,18 @@ def _capabilities(label: str = "hydra-policy-test") -> SurfaceCapabilities:
             }
         ),
         allowed_theorems=frozenset(),
+    )
+
+
+def _environment(
+    capabilities: SurfaceCapabilities,
+    *,
+    classical: bool = False,
+) -> dict[str, object]:
+    return policy_environment(
+        capabilities,
+        classical=classical,
+        semantic_profile_sha256=SEMANTIC_PROFILE_SHA256,
     )
 
 
@@ -84,6 +179,9 @@ class StubPolicy:
             "name": self.name,
             "kind": "test-stub-provider",
             "identity_version": self.identity_version,
+            "semantic_profile_sha256": self.environment[
+                "semantic_profile_sha256"
+            ],
         }
 
     def propose(
@@ -135,7 +233,7 @@ def test_macro_action_rejects_closers_sessions_wrappers_and_multiline(
 
 
 def test_portfolio_uses_fixed_quotas_stable_dedup_and_exact_state_gating() -> None:
-    environment = policy_environment(_capabilities())
+    environment = _environment(_capabilities())
     goals = ("⊢ 0 = 0",)
     other_goals = ("⊢ S 0 = S 0",)
     first = _fixed("first", ("refl", "simp"), environment)
@@ -167,12 +265,99 @@ def test_portfolio_uses_fixed_quotas_stable_dedup_and_exact_state_gating() -> No
     last = policy.records[-1]
     assert last.accepted_candidates == ("compact_arith",)
     assert last.suppressed_duplicates == 1
+    assert last.semantic_profile_sha256 == SEMANTIC_PROFILE_SHA256
+    assert all(
+        record.semantic_profile_sha256 == SEMANTIC_PROFILE_SHA256
+        for record in policy.records
+    )
+    assert policy.semantic_profile_sha256 == SEMANTIC_PROFILE_SHA256
+    assert policy.evaluation_identity["v"] == HYDRA_POLICY_VERSION == 2
+    assert policy.evaluation_identity["kind"].endswith("-v2")
+    assert (
+        policy.evaluation_identity["semantic_profile_sha256"]
+        == SEMANTIC_PROFILE_SHA256
+    )
+    assert all(
+        head["semantic_profile_sha256"] == SEMANTIC_PROFILE_SHA256
+        for head in policy.evaluation_identity["heads"]
+    )
+    assert (
+        first.evaluation_identity["semantic_profile_sha256"]
+        == SEMANTIC_PROFILE_SHA256
+    )
+    assert first.evaluation_identity["kind"].endswith("-v2")
+    assert (
+        policy.generation_provenance["semantic_profile_sha256"]
+        == SEMANTIC_PROFILE_SHA256
+    )
     assert policy.generation_provenance["suppressed_duplicates"] == 1
 
 
+def test_head_identity_binds_environment_and_complete_head_declaration() -> None:
+    first_environment = _environment(_capabilities("first-environment"))
+    second_environment = _environment(_capabilities("second-environment"))
+    first_policy = _fixed("same-provider", ("refl",), first_environment)
+    second_policy = _fixed("same-provider", ("refl",), second_environment)
+
+    baseline = PolicyHead("head", "symbolic", 1, first_policy)
+    different_environment = PolicyHead("head", "symbolic", 1, second_policy)
+    different_name = PolicyHead("other-head", "symbolic", 1, first_policy)
+    different_role = PolicyHead("head", "control", 1, first_policy)
+    different_quota = PolicyHead("head", "symbolic", 2, first_policy)
+    different_gate = PolicyHead(
+        "head",
+        "symbolic",
+        1,
+        first_policy,
+        HeadGate(frozenset({"0" * 64})),
+    )
+
+    assert len(
+        {
+            baseline.identity_sha256,
+            different_environment.identity_sha256,
+            different_name.identity_sha256,
+            different_role.identity_sha256,
+            different_quota.identity_sha256,
+            different_gate.identity_sha256,
+        }
+    ) == 6
+
+
+def test_semantic_profile_environment_and_runtime_drift_are_fail_closed() -> None:
+    environment = _environment(_capabilities())
+    assert environment["semantic_profile_sha256"] == SEMANTIC_PROFILE_SHA256
+
+    missing = dict(environment)
+    missing.pop("semantic_profile_sha256")
+    with pytest.raises(ValueError, match="semantic_profile_sha256"):
+        _fixed("missing-profile", ("refl",), missing)
+
+    for malformed in ("0" * 63, "A" * 64, "0" * 64, None):
+        altered = dict(environment)
+        altered["semantic_profile_sha256"] = malformed
+        with pytest.raises(ValueError, match="semantic_profile_sha256"):
+            _fixed("wrong-profile", ("refl",), altered)
+
+    mutable = StubPolicy("mutable-profile", environment, ("refl",))
+    portfolio = HydraCandidatePolicy(
+        (PolicyHead("mutable-profile", "symbolic", 1, mutable),)
+    )
+    changed = dict(environment)
+    changed["semantic_profile_sha256"] = "0" * 64
+    mutable.environment = changed
+    assert portfolio.propose(("⊢ 0 = 0",), max_candidates=1) == ()
+    assert mutable.calls == []
+    assert portfolio.records[0].outcome == "contract-error"
+    assert (
+        portfolio.records[0].semantic_profile_sha256
+        == SEMANTIC_PROFILE_SHA256
+    )
+
+
 def test_head_environment_and_runtime_identity_are_fail_closed() -> None:
-    environment = policy_environment(_capabilities())
-    other_environment = policy_environment(_capabilities("hydra-policy-other"))
+    environment = _environment(_capabilities())
+    other_environment = _environment(_capabilities("hydra-policy-other"))
     one = _fixed("one", ("refl",), environment)
     two = _fixed("two", ("refl",), other_environment)
     with pytest.raises(ValueError, match="same policy environment"):
@@ -201,7 +386,7 @@ def test_head_environment_and_runtime_identity_are_fail_closed() -> None:
 
 
 def test_provider_failure_is_ledgered_but_another_head_can_still_propose() -> None:
-    environment = policy_environment(_capabilities())
+    environment = _environment(_capabilities())
     failing = StubPolicy(
         "offline-model",
         environment,
@@ -225,7 +410,7 @@ def test_provider_failure_is_ledgered_but_another_head_can_still_propose() -> No
 
 def test_checked_batch_trace_becomes_exact_full_state_policy() -> None:
     capabilities = _capabilities()
-    environment = policy_environment(capabilities)
+    environment = _environment(capabilities)
     batch = run_proof(
         "0 = 0",
         ("refl",),
@@ -244,6 +429,31 @@ def test_checked_batch_trace_becomes_exact_full_state_policy() -> None:
     assert policy.propose(("⊢ S 0 = S 0",), max_candidates=1) == ()
     assert policy.state_sha256s == frozenset({state_sha256(root)})
     assert policy.recorded_states[0].goals == root
+    assert (
+        policy.recorded_states[0].semantic_profile_sha256
+        == SEMANTIC_PROFILE_SHA256
+    )
+    assert (
+        policy.recorded_states[0].to_record()["semantic_profile_sha256"]
+        == SEMANTIC_PROFILE_SHA256
+    )
+    assert policy.evaluation_identity["kind"].endswith("-v2")
+    assert (
+        policy.evaluation_identity["semantic_profile_sha256"]
+        == SEMANTIC_PROFILE_SHA256
+    )
+    assert (
+        policy.evaluation_identity["provider"]["semantic_profile_sha256"]
+        == SEMANTIC_PROFILE_SHA256
+    )
+    assert policy.evaluation_identity["provider"]["kind"] == (
+        "peano-batch-trace-profile-replay-v2"
+    )
+    rebound = policy.evaluation_identity["provider"]["profile_replay"]
+    assert SEMANTIC_PROFILE_SHA256[:12] in rebound["id"]
+    assert SEMANTIC_PROFILE_SHA256[:12] in rebound["session"]
+    assert rebound["id"] != batch.request_id
+    assert rebound["kernel_checked"] is True
     assert policy.evaluation_identity["provider"]["trace_sha256"]
 
     assert batch.trace is not None
@@ -258,9 +468,54 @@ def test_checked_batch_trace_becomes_exact_full_state_policy() -> None:
         )
 
 
+def test_script_policy_rejects_kernel_checked_open_de_bruijn_target() -> None:
+    capabilities = _capabilities()
+    environment = _environment(capabilities)
+    legacy_open_target = run_proof(
+        "#0 = #0",
+        ("refl",),
+        request_id="legacy-open-target",
+        capabilities=capabilities,
+    )
+    assert legacy_open_target.status == "proved"
+    assert legacy_open_target.kernel_checked is True
+
+    with pytest.raises(ValueError, match="outside the semantic profile"):
+        ScriptCandidatePolicy.from_batch_result(
+            legacy_open_target,
+            name="forbidden-open-target",
+            policy_environment=environment,
+        )
+
+
+def test_recorded_state_is_a_profile_bound_dataset_row() -> None:
+    environment = _environment(_capabilities())
+    row = RecordedState(
+        goals=("⊢ 0 = 0",),
+        candidates=("refl",),
+        semantic_profile_sha256=SEMANTIC_PROFILE_SHA256,
+    )
+    policy = RecordedCandidatePolicy.from_records(
+        (row,),
+        name="profile-bound-recording",
+        policy_environment=environment,
+        provider_identity={"kind": "test-recording"},
+    )
+
+    assert row.to_record()["semantic_profile_sha256"] == SEMANTIC_PROFILE_SHA256
+    assert policy.recorded_states == (row,)
+    assert policy.evaluation_identity["kind"].endswith("-v2")
+    assert (
+        policy.evaluation_identity["semantic_profile_sha256"]
+        == SEMANTIC_PROFILE_SHA256
+    )
+    with pytest.raises(ValueError, match="semantic_profile_sha256"):
+        replace(row, semantic_profile_sha256="0" * 64)
+
+
 def test_script_policy_requires_checked_qed_unless_partial_is_explicit() -> None:
     capabilities = _capabilities()
-    environment = policy_environment(capabilities)
+    environment = _environment(capabilities)
     open_batch = run_proof(
         "0 = 0",
         ("have h : 0 = 0",),
@@ -290,7 +545,7 @@ def test_script_policy_requires_checked_qed_unless_partial_is_explicit() -> None
 
 
 def test_null_policy_is_an_identified_matched_quota_control() -> None:
-    environment = policy_environment(_capabilities())
+    environment = _environment(_capabilities())
     null = NullCandidatePolicy(
         name="no-macro-control",
         policy_environment=environment,
@@ -298,13 +553,18 @@ def test_null_policy_is_an_identified_matched_quota_control() -> None:
     )
     assert null.propose(("⊢ 0 = 0",), max_candidates=1) == ()
     assert null.policy_environment == environment
+    assert null.evaluation_identity["kind"].endswith("-v2")
+    assert (
+        null.evaluation_identity["semantic_profile_sha256"]
+        == SEMANTIC_PROFILE_SHA256
+    )
     assert null.evaluation_identity["provider"] == {
         "kind": "intentional-control"
     }
 
 
 def test_fixed_and_null_heads_reject_unbound_provider_identity() -> None:
-    environment = policy_environment(_capabilities())
+    environment = _environment(_capabilities())
     with pytest.raises(ValueError, match="provider_identity"):
         FixedCandidatePolicy(
             ("refl",),
@@ -320,7 +580,7 @@ def test_fixed_and_null_heads_reject_unbound_provider_identity() -> None:
         )
 
 
-def test_existing_qwen_candidate_adapter_is_a_drop_in_untrusted_head(
+def test_legacy_qwen_prompt_adapter_is_rejected_until_profile_bound(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     monkeypatch.setattr(
@@ -339,16 +599,6 @@ def test_existing_qwen_candidate_adapter_is_a_drop_in_untrusted_head(
         seed=7,
         name="model-free-qwen-candidates",
     )
-    policy = HydraCandidatePolicy(
-        (PolicyHead("qwen", "macro", 1, qwen),),
-        name="qwen-drop-in-test",
-    )
-
-    assert policy.propose(("⊢ 0 = 0",), max_candidates=1) == (
-        "have bridge : 0 = 0",
-    )
-    assert qwen.generation_calls == 1
-    assert policy.records[0].outcome == "ok"
-    assert policy.evaluation_identity["heads"][0]["policy"]["kind"] == (
-        "peano-kernel-guided-candidate-policy-v1"
-    )
+    with pytest.raises(ValueError, match="semantic_profile_sha256"):
+        PolicyHead("qwen", "macro", 1, qwen)
+    assert qwen.generation_calls == 0

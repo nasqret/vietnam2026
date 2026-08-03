@@ -28,6 +28,7 @@ from training.peano_hydra.pilot import (  # noqa: E402
     run_teacher_oracle_pilot,
 )
 from training.peano_hydra.runner import HydraRunnerError  # noqa: E402
+from training.peano_hydra.profile import semantic_profile_sha256  # noqa: E402
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -73,7 +74,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--version",
         action="version",
-        version=f"eval-peano-hydra pilot-v{PILOT_VERSION}",
+        version=(
+            f"eval-peano-hydra pilot-v{PILOT_VERSION}\n"
+            f"profile={semantic_profile_sha256()}"
+        ),
     )
     return parser
 

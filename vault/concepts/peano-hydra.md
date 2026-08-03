@@ -24,17 +24,26 @@ benchmark, construct the strongest symbolic baseline, build checked macro
 data, run the model/ablation ladder, execute one matched-compute final, and
 release enough evidence for independent reproduction.
 
-The pre-H0 functional bootstrap composes fixed symbolic, recorded transcript,
-and future live provider heads through exact quotas and [[critical-proof-frontier|critical-state]]
-gates. Every discovered route is freshly traced and kernel replayed. Its first
-teacher-oracle pilot reproduces one known 13-command/180-node proof; because
-the structural route and contextual hint were selected from known work, it is
-plumbing evidence only, not a model result or completion of the structured
-[[macro-proof-action]] protocol.
+H0.1a freezes the [[peano-hydra-semantic-profile]]: closed intuitionistic PA,
+PA1--PA6, unrestricted induction, no classical checker, no decision fragment,
+and only `proved | unknown`. The functional bootstrap composes fixed symbolic
+and recorded-transcript heads through exact quotas and
+[[critical-proof-frontier|critical-state]] gates. Every imported trace receives
+a fresh profile-bound replay, and every discovered route is freshly traced and
+kernel replayed again before publication. Its teacher-oracle pilot reproduces
+one known 13-command/180-node proof; because the structural route and
+contextual hint were selected from known work, it is plumbing evidence only,
+not a model result or completion of the structured [[macro-proof-action]]
+protocol.
+
+Exact result field types and hash preimages remain H0.1b; profile v1 labels
+that evidence block `required-field-draft`. All surface-macro-v0 rows are
+therefore explicitly schema-nonconformant and comparison-ineligible.
 
 ## Related
 
 - [[critical-proof-frontier]]
+- [[peano-hydra-semantic-profile]]
 - [[macro-proof-action]]
 - [[library-epoch]]
 - [[sealed-theorem-benchmark]]

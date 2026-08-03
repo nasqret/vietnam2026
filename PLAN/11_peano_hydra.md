@@ -21,7 +21,7 @@ already owns module 10.
 - [ ] Preserve the Peano Lab trust boundary: every scored QED independently
       kernel-checks against the original target; all search and ML components
       remain untrusted.
-- [ ] Freeze and hash the exact language/semantics profile. Do not call full HA
+- [x] Freeze and hash the exact language/semantics profile. Do not call full HA
       decidable; do not call the restricted system a decider without sound
       negative evidence.
 - [ ] Freeze an ordered library epoch before building the benchmark. Later
@@ -39,16 +39,21 @@ already owns module 10.
 
 ### H0.1 Freeze the claimable fragment
 
-- [ ] Write the exact term/formula grammar, binding/substitution rules,
+- [x] Write the exact term/formula grammar, binding/substitution rules,
       intuitionistic proof calculus, arithmetic axioms, and induction policy.
-- [ ] State which formulas, if any, belong to a decidable subfragment and give
-      its decision theorem and terminating algorithm.
-- [ ] Specify canonical input normal forms and every translation used by an
+- [x] State whether any formulas belong to a decidable subfragment. Profile v1
+      registers none: it has no decision theorem, terminating decision
+      algorithm, resource-bound decision claim, or negative theoremhood claim.
+- [x] Specify canonical input normal forms and every translation used by an
       external solver.
-- [ ] Specify separate evidence schemas for `proved`, `not_theorem`, and
-      `unknown`; a timeout is always `unknown`.
-- [ ] Publish one canonical machine-readable profile and bind its digest into
-      every downstream artifact.
+- [ ] Freeze exact evidence schemas for `proved` and `unknown`, including field
+      types, additional-field policy, and every non-self-referential hash
+      preimage. Profile v1 freezes the claim boundary and a required-field
+      draft; `not_theorem` is unsupported and forbidden, and a timeout is
+      always `unknown`.
+- [x] Publish one canonical machine-readable profile and bind its digest into
+      every profile-era Hydra policy, row, run, replay, and pilot artifact.
+      Historical pilot v1 remains explicitly pre-profile.
 
 ### H0.2 Establish independent semantic checks
 
@@ -92,7 +97,7 @@ sound theorem prover and continue without a decision claim.
 ### H1.1 Freeze `L0`
 
 - [ ] Snapshot the complete checked public catalog available at freeze time
-      (at least the current 247-theorem runtime).
+      (at least the current 384-theorem runtime).
 - [ ] For each theorem bind name, canonical statement, ordered dependencies,
       source/script/certificate hashes, node count, depth, declaration order,
       and language profile.
@@ -328,14 +333,26 @@ work begin before GPU training.
 - [x] Binding design and campaign gates documented.
 - [x] Historical model-v3 four-goal result classified as a regression smoke,
       not campaign evidence.
-- [x] Current 247-theorem library identified as the minimum candidate `L0`;
+- [x] Current 384-theorem library identified as the minimum candidate `L0`;
       exact H1 freeze is still pending.
+- [x] H0.1a semantic profile v1 is frozen at digest
+      `058b1644b066967919dae092e5e562b8845e4dd8415fff31d7cd209d51bc9e43`.
+      It is intuitionistic theorem-prover-only: no decision fragment,
+      `not_theorem`, classical checker, or external translation is registered.
+      Its operational target preflight is frozen at 8,192 Unicode code points
+      and decimal numerals at most 256, without turning either ceiling into a
+      decision-resource claim.
+      Hydra policy/runner/pilot v2 carriers bind the digest; historical pilot
+      v1 is preserved as pre-profile evidence. The profile labels its result
+      contract `required-field-draft`; exact evidence schemas remain H0.1b.
 - [x] A pre-H0 `surface-macro-v0` portfolio/replay bootstrap exists for
       teacher-oracle plumbing. It is deliberately narrower than the structured
       H0.3 macro protocol and does not complete H0. All its rows are
       comparison-ineligible until raw-call/resource evidence, provider
       attestations, and genuine critical-frontier detection exist.
-- [ ] H0 has not passed its semantic, conformance, structured-macro, or
-      evidence gates.
+- [ ] H0 remains incomplete: H0.1b exact evidence schemas; H0.2 cold replay,
+      independent reference, conformance and mutation gates; H0.3 structured
+      macros; the complete profile-evidence bundle; and final H0 review remain
+      open.
 - [ ] No H1 benchmark is sealed and no H5 claim is available; experimental
       scaffolds or earlier policy checkpoints do not change that status.

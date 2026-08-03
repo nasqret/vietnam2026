@@ -1,6 +1,7 @@
 # Peano Hydra — binding design
 
-**Status:** binding campaign architecture, 2026-08-03
+**Status:** binding campaign architecture; H0.1a semantic/claim profile frozen
+2026-08-03, exact evidence schema and H0 acceptance still open
 
 **Implementation plan:** [`PLAN/11_peano_hydra.md`](../PLAN/11_peano_hydra.md)
 
@@ -85,11 +86,37 @@ certificate record, and result table. A formula outside the profile may be
 attempted by the sound prover but MUST NOT be counted in a fragment-decision
 result. A timeout or exhausted search is `unknown`, never negative evidence.
 
+The registered H0.1a profile is
+`training/peano_hydra/semantic-profile-v1.json`, with strict loader
+`training/peano_hydra/profile.py`. Its identity is format
+`peano-hydra-semantic-profile`, version 1, ID
+`peano-lab-ha-intuitionistic-v1`, and semantic SHA-256
+`058b1644b066967919dae092e5e562b8845e4dd8415fff31d7cd209d51bc9e43`.
+The semantic digest covers compact sorted-key UTF-8 JSON, excluding display
+indentation and the final line feed.
+
+Version 1 admits closed, structurally well-scoped canonical Peano formulas.
+Its `operational_admission` block freezes the complete pre-parser boundary:
+nonempty one-line input with no outer whitespace, Unicode-code-point length
+at most 8,192, decimal numerals at most 256, explicit numeral-token boundaries,
+forbidden unsafe Unicode categories, and no `#` target syntax. These are
+transport/construction safeguards with `decision_claim = false`; the profile
+still has no decision-resource bound or negative theoremhood claim.
+It freezes de Bruijn binding, capture-avoiding substitution, the complete
+intuitionistic kernel calculus, PA1--PA6, and unrestricted formula induction.
+It forbids the classical checker and explicit de Bruijn target syntax,
+registers no external-solver translation or decidable subfragment, and
+supports only `proved` and `unknown`. A `not_theorem` publication is forbidden.
+Its evidence block is deliberately self-labeled `required-field-draft`: field
+types, additional-field policy, and the canonical preimages for theorem,
+kernel, replay, and run hashes are not frozen yet. That exact H0.1b schema must
+be reviewed before any record can claim `peano-hydra-result` conformance.
+
 ### 2.3 Library-epoch law
 
 Hydra does not evaluate against a moving theorem library. H1 freezes an
 ordered epoch `L0`, initially the complete independently checked public
-catalog available at campaign start (at least the current 247 theorem
+catalog available at campaign start (at least the current 384-theorem
 entries). Its content root MUST commit to, for every entry:
 
 - stable name and canonical statement;
@@ -271,6 +298,19 @@ head succeeds, but marks the run degraded and ineligible for a matched
 comparison. Missing identity, environment, proposal ledger, or replay
 agreement blocks publication.
 
+Policy, runner, and teacher-pilot record schemas version 2 carry the semantic
+profile digest directly in environments, head identities, proposal and
+recorded-state rows, run records, source artifacts, and result tables. Replay
+identifiers also bind it. A legacy model prompt that does not expose this
+identity is rejected before generation; Hydra needs a future profile-aware
+prompt contract before admitting such a model head. Historical pilot v1 is
+preserved as pre-profile evidence, while pilot v2 is the profile-bound
+regression. These bindings do not promote `surface-macro-v0` to the structured
+H0.3 protocol or make any row comparison-eligible. The pilot v2 run records
+also say explicitly that they are not complete `peano-hydra-result` v1
+evidence bundles: certificate hashes/depths, kernel identity, and closed
+run/replay evidence hashes remain H0 evidence work.
+
 Every `surface-macro-v0` result is explicitly **ineligible for campaign
 comparison**, even when execution is complete and non-degraded. The bootstrap
 retains extracted tactic lines, not the complete raw decoder response,
@@ -302,7 +342,7 @@ class, theorem lineage, library prefix, capability profile, and replay root.
 ### 4.2 Quadratic-reciprocity growth rule
 
 Quadratic reciprocity is a valuable future stress domain, but it is not in the
-current 247-theorem library. Any new definitions, residue theory, Legendre-like
+current 384-theorem library. Any new definitions, residue theory, Legendre-like
 encoding, reciprocity lemmas, or capstone proofs added after `L0` belong to a
 later library epoch. They MUST NOT silently enlarge the active Hydra campaign.
 
@@ -383,6 +423,13 @@ Acceptance:
 Any false acceptance, unresolved fragment semantics, or unsupported negative
 claim is a no-go. If negative evidence is unavailable, pivot explicitly to a
 sound semi-decision theorem prover.
+
+H0.1a is complete: the intuitionistic semantics and positive/unknown claim
+boundary are frozen and bound through the current Hydra v2 records. H0.1 as a
+whole is not complete until H0.1b freezes exact evidence schemas and hash
+preimages. The H0.2 cold-replay, independent-reference, conformance, and
+mutation work; the H0.3 structured macro protocol; and every H0 acceptance
+condition above also remain open.
 
 ### H1 — Frozen epoch, benchmark, and interface headroom
 
