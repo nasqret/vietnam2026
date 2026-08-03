@@ -4152,4 +4152,14 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   campaign-structure tests and all 148 proof/admission tests. The arithmetic
   knowledge base validates 394 rows, the independent snapshot replays all 393
   public theorems, and the vault verifies 492 notes with 4,991 resolved links.
-  No admission, source seal, Book bind, push, or deployment is claimed yet.
+  No admission is made.
+- Sealed the K4 source checkpoint as
+  `1d10c37535d829280398c2522ff3fd9d5f059e6c` and bound a separate Book panel
+  to its immutable manifest, tactic source, and six-test audit. The
+  warning-free 47-source rebuild passes integrity with 2,325 HTML pages, zero
+  broken, escaping, fragment, unsafe, or remote-runtime links, and
+  byte-identical 2,285-file source/built explorer trees. The 2,493-file HTML
+  tree contains 87,187,069 bytes and has SHA-256
+  `647d12228514a9ad11ea227ac5ef436d18382cf0d8664e2cc3ea44fd0ab9ac07`.
+  No browser is attached, so visual QA is not claimed. Push, deployment, and
+  public theorem admission remain unperformed.

@@ -13,7 +13,7 @@ conservative notation: every occurrence expands before the ordinary kernel
 checks a certificate.
 
 The controlling machine manifest is
-[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/bb02ee5a767f6c4c585916269de688e7068b3716/research/arithmetic-library/ha-number-theory-campaign.json).
+[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/1d10c37535d829280398c2522ff3fd9d5f059e6c/research/arithmetic-library/ha-number-theory-campaign.json).
 It separates three facts which are easy to blur in an informal development:
 
 - a dependency-curried tactic body may check;
@@ -51,6 +51,11 @@ It separates three facts which are easy to blur in an informal development:
     multiplication theorems, together with the direct natural-scaling graph,
     its laws, and the balanced-to-signed Bezout bridge, close from the empty
     context without division.
+* - Signed coefficients for relational gcd
+  - closed K4 candidate
+  - A separate client returns a relational gcd together with two canonical
+    signed Bezout codes. Its audited dependency path intentionally includes
+    Euclidean division.
 * - Canonical pair/cell coding
   - design frozen
   - Doubled-Cantor pairs and successor-tagged cells have exact expanded
@@ -59,8 +64,9 @@ It separates three facts which are easy to blur in an informal development:
 ```
 
 The public registry therefore has 393 entries. The first nine campaign
-theorems occupy append-only positions 384--392. The three gcd and seventy-four
-signed candidates stay outside it. This tail append leaves the frozen
+theorems occupy append-only positions 384--392. The three canonical-gcd,
+seventy-four strict-K3 signed, and one K4 signed-gcd candidates stay outside
+it. This tail append leaves the frozen
 first-247 model curriculum unchanged.
 
 ## Why canonical remainder is a relation
@@ -1371,6 +1377,76 @@ and
 [`ten-test focused audit`](https://github.com/nasqret/vietnam2026/blob/bb02ee5a767f6c4c585916269de688e7068b3716/peano-lab/py/tests/test_ha_signed_bezout_candidate.py)
 to commit `bb02ee5a767f6c4c585916269de688e7068b3716`.
 
+### K4 client: a gcd with canonical signed coefficients
+
+Once the strict D08 bridge is available, the public Euclidean theorem can be
+given its canonical signed interface without reproving the algorithm. The
+checked client states
+
+$$
+\forall a,b\;\exists d,x,y,\quad
+\operatorname{IsGCD}(d,a,b)
+\land \operatorname{SignedBezout}(d,a,b,x,y).
+$$
+
+Both named relations are expanded to the base HA grammar. The proof has just
+two declared inputs:
+
+```text
+gcd_balanced_bezout_exists
+        |
+        v
+raw gcd + four-natural Bezout witnesses
+        |
+        +---- balanced_bezout_to_signed_bezout (D08)
+        v
+gcd_signed_bezout_exists
+```
+
+The first theorem supplies `d` together with the relational-gcd proof and raw
+coefficients. D08 normalizes only the coefficient conjunct; the gcd proof is
+copied unchanged. No uniqueness of `(x,y)` is asserted.
+
+```{list-table}
+:header-rows: 1
+:widths: 35 10 10 10 35
+
+* - Candidate
+  - Nodes
+  - Depth
+  - Cuts
+  - Certificate SHA-256
+* - `gcd_signed_bezout_exists`
+  - 3,535
+  - 48
+  - 74
+  - `4edeb4ffc7de0b9aa0a870d2125f7640f2447a7358ba454abba3db003f9044a3`
+```
+
+The focused audit pins the 592-byte expanded statement (SHA-256
+`2e729fe9d25b8afda315489713f0a4cd7980371bf621e8af9e557f4ffca7496e`),
+its 20-command body, two cold closures, a false successor mutation, bounded
+gcd semantics, and explicit nonunique Bezout pairs. The transitive closure
+contains eight local K3 rows and 33 public theorems. Exactly the expected
+division boundary is visible: `divides_remainder`,
+`division_remainder_exists`, and `division_remainder_succ`. It contains no
+DNE, CRT, Gödel-β, or classical theorem.
+
+This is why the machine manifest adds the honest layer edge
+\(K3\rightarrow K4\). The client is not appended to the strict 74-row K3
+stack, whose digest stays
+`b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`.
+The complete isolated corpus now has 78 candidates and 87 receipts across 18
+candidate modules and 19 focused tests. The public boundary remains 393
+theorems, 56 manifest references, a 45-row definition API over 44 theorems,
+and a 394-row catalog. Nothing in this K4 checkpoint is admitted.
+
+The immutable source links are the
+[`campaign manifest`](https://github.com/nasqret/vietnam2026/blob/1d10c37535d829280398c2522ff3fd9d5f059e6c/research/arithmetic-library/ha-number-theory-campaign.json),
+[`K4 tactic source`](https://github.com/nasqret/vietnam2026/blob/1d10c37535d829280398c2522ff3fd9d5f059e6c/peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py),
+and
+[`six-test focused audit`](https://github.com/nasqret/vietnam2026/blob/1d10c37535d829280398c2522ff3fd9d5f059e6c/peano-lab/py/tests/test_ha_signed_bezout_gcd_candidate.py).
+
 ## Independent pair/cell checkpoint
 
 The finite-data lane has selected a representation for pairs and single cells,
@@ -1412,7 +1488,7 @@ honest ways to resolve the uniform-list blocker. It is a design target; no
 pair theorem or list theorem is claimed by that document.
 
 Read the complete
-[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/bb02ee5a767f6c4c585916269de688e7068b3716/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
+[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/1d10c37535d829280398c2522ff3fd9d5f059e6c/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
 for the exact formulas, hashes, forbidden dependency paths, and staged proof
 obligations.
 
@@ -1426,11 +1502,12 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 ```
 
-The first command checks the 12-layer campaign manifest, all 86 theorem
+The first command checks the 12-layer campaign manifest, all 87 theorem
 receipts, the 45-row definition API over 44 distinct public-theorem replays,
 the nine public admissions, the three isolated gcd candidates, and the
 seventy-four isolated signed representation, normalization, arithmetic,
-natural-scaling, and Bezout-bridge candidates. The
+natural-scaling, and Bezout-bridge candidates, plus the one K4 signed-gcd
+client. The
 second cross-checks all 393 public runtime theorems against the 394-row
 research catalog. The third independently replays the full public ladder and
 compares the deterministic snapshot.

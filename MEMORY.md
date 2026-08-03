@@ -1784,3 +1784,11 @@
   tests and all 148 proof/admission tests. Independent checks keep the
   394-row knowledge base, 393-theorem snapshot, and 492-note/4,991-link vault
   green. Nothing is admitted.
+  The source checkpoint is sealed as
+  `1d10c37535d829280398c2522ff3fd9d5f059e6c`. The warning-free Book rebuild
+  passes integrity across 47 sources and 2,325 HTML pages, with byte-identical
+  2,285-file source/built explorer trees and no broken, escaping, fragment,
+  unsafe, or remote-runtime links. Its 2,493-file HTML tree has 87,187,069
+  bytes and SHA-256
+  `647d12228514a9ad11ea227ac5ef436d18382cf0d8664e2cc3ea44fd0ab9ac07`.
+  No push, deployment, public admission, or visual click-through is claimed.
