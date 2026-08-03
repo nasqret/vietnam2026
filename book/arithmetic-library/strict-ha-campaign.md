@@ -13,7 +13,7 @@ conservative notation: every occurrence expands before the ordinary kernel
 checks a certificate.
 
 The controlling machine manifest is
-[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/d5a734292b11e516a86606c65653be38d2faa7f1/research/arithmetic-library/ha-number-theory-campaign.json).
+[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/ce2f865389013ab2ad16cb2c351f735972330554/research/arithmetic-library/ha-number-theory-campaign.json).
 It separates three facts which are easy to blur in an informal development:
 
 - a dependency-curried tactic body may check;
@@ -576,9 +576,14 @@ The closure has no DNE, division, remainder, CRT, Gödel-β, or negation edge.
 These five results remain nonpublic. They establish the total functional graph
 and its decoded specification; zero identity, commutativity, associativity,
 and addition of a value to its negation are the next separate theorem tranche.
+Inspect the immutable
+[`native tactic source`](https://github.com/nasqret/vietnam2026/blob/ce2f865389013ab2ad16cb2c351f735972330554/peano-lab/py/peano_lab/library/ha_signed_add_candidate.py#L85)
+and its
+[`cold-closure audit`](https://github.com/nasqret/vietnam2026/blob/ce2f865389013ab2ad16cb2c351f735972330554/peano-lab/py/tests/test_ha_signed_add_candidate.py#L456)
+for every expanded statement, tactic line, mutation, and receipt.
 
 Read the complete
-[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/d5a734292b11e516a86606c65653be38d2faa7f1/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
+[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/ce2f865389013ab2ad16cb2c351f735972330554/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
 for the exact formulas, hashes, forbidden dependency paths, and staged proof
 obligations.
 

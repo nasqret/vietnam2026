@@ -3820,3 +3820,11 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   The complete local campaign gate passes 26 validator/definition tests and
   69 focused proof/admission tests. Algebraic laws remain deliberately
   unclaimed and form the next tranche.
+- Sealed the exact source as
+  `ce2f865389013ab2ad16cb2c351f735972330554`, rebound the campaign Book links
+  to it, and rebuilt all 47 Jupyter Book sources without warnings. The
+  non-executing integrity gate reports 2,325 HTML pages, zero broken,
+  escaping, fragment, unsafe, or remote-runtime links, and byte-identical
+  2,285-file explicit/defined Proof Explorer trees. The vault generation
+  check passes. No public admission, push, deployment, or WMI receipt is
+  claimed.

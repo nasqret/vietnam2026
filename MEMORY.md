@@ -1576,3 +1576,8 @@
   `make ha-number-theory-check` passes 26 manifest/definition tests and 69
   proof/admission tests. The total functional graph is closed, but zero,
   commutativity, associativity, and inverse laws remain separate obligations.
+  Immutable source checkpoint
+  `ce2f865389013ab2ad16cb2c351f735972330554` anchors the Book links. The
+  warning-free 47-source rebuild retains 2,325 HTML pages, zero integrity
+  errors, and byte-identical 2,285-file explicit/defined explorer trees; the
+  vault generation check also passes.
