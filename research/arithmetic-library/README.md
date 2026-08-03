@@ -46,12 +46,12 @@ quadratic-reciprocity route is now body-green through arbitrary Euler and
 Gauss, the signed-count/floor-sum parity bridge, native Eisenstein Fubini,
 `Q+U=h*k`, both QRes truth cases, and the optimized combined endpoint. This is
 a genuine dependency-curried PA body, not a public admission. The exact
-557-spec/1,791-edge graph has 45 layers and 191,669 theorem occurrences under
-recursive expansion; a rigorous 731,482-node lower bound rules that compiler
+557-spec/1,787-edge graph has 45 layers and 191,648 theorem occurrences under
+recursive expansion; a rigorous 731,423-node lower bound rules that compiler
 out under the current policy. Layered WMI closure, mutation, capacity,
 browser, and separate pinned-admission receipts are still mandatory. The
 unchanged-kernel compiler accepts an exact-topology distinct-marker surrogate
-at 19,088 nodes/depth 74. One dependency Cut/Hyp check per curried premise
+at 19,066 nodes/depth 74. One dependency Cut/Hyp check per curried premise
 forces every real projection ID/direction and dependency order; no real QR
 target or body occurs in that test.
 
@@ -108,7 +108,7 @@ target or body occurs in that test.
   measured scaffold evidence for the selected compiler;
 - [`quadratic-reciprocity-closure-hotspots.md`](quadratic-reciprocity-closure-hotspots.md):
   the exact recursive-closure recurrence, hotspot audit, and rigorous
-  731,482-node lower bound against the 500,000-node policy;
+  731,423-node lower bound against the 500,000-node policy;
 - [`layered-cut-bundle.md`](layered-cut-bundle.md): the preferred unchanged-
   kernel compiler, using 45 balanced conjunction packages, 45 ordinary Cuts,
   and short existing conjunction projections so every modular body appears

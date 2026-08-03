@@ -757,17 +757,17 @@ objects and depth 256, rejects formula/certificate/dependency mutations, and
 passes cold CPython and browser/Pyodide replay. If it does not, use a reviewed
 self-contained proof-DAG bundle; never trust an external theorem name or hash.
 Static dependency discovery currently reaches 557 unique specifications at
-dependency depth 45, but 191,669 theorem-certificate occurrences before even
+dependency depth 45, but 191,648 theorem-certificate occurrences before even
 counting body nodes. A sharper static lower bound is decisive: recursive Cut
-expansion contributes 191,668 Cuts, the repeated dependency-curried scripts
-contribute 348,145 leading theorem introductions, and every theorem occurrence
-needs at least one terminal body node. Hence the old tree has at least 731,482
+expansion contributes 191,647 Cuts, the repeated dependency-curried scripts
+contribute 348,128 leading theorem introductions, and every theorem occurrence
+needs at least one terminal body node. Hence the old tree has at least 731,423
 proof nodes before any substantive `apply`, `split`, `exists`, or arithmetic
 node. It cannot pass the 500,000 policy, so raising the limit without measuring
 the much larger actual tree would be unsound engineering.
 
 The preferred capacity route requires no kernel extension: compile the
-557-spec, 1,791-edge DAG into 45 topological layers (maximum width 63), package
+557-spec, 1,787-edge DAG into 45 topological layers (maximum width 63), package
 each layer as a balanced conjunction, discharge direct dependencies by
 projections from earlier packages, and Cut each package once. Every theorem
 body then occurs once. The result is an ordinary existing Peano Lab `Proof`
@@ -802,11 +802,11 @@ not a mathematical rejection or a QR proof receipt.
       replay. A 20-node
       sharing fixture shrinks from `3,643/20` recursive nodes/depth to
       `274/16`. The real 557-node formulas with false one-node bodies produce
-      a rejected `13,715/56` scaffold and exact package-formula cost
+      a rejected `13,705/56` scaffold and exact package-formula cost
       `144,197/68`, plus `157,579/92` annotations/envelope depth; a
       distinct-marker, dependency-consuming surrogate checks
-      every real edge/order under the unchanged kernel at `19,088/74` with
-      package cost `19,297/18` and annotations/envelope `142,346/84`. Neither
+      every real edge/order under the unchanged kernel at `19,066/74` with
+      package cost `19,297/18` and annotations/envelope `142,134/84`. Neither
       surrogate is QR evidence.
 - [x] Remove the QR stack/registry import cycle through an injected copied
       pre-QR mapping while preserving the exact 317-candidate order and hashes.
@@ -861,7 +861,7 @@ not a mathematical rejection or a QR proof receipt.
 - [x] Regenerate the interactive Jupyter Book theorem atlas.
 - [x] Update the quadratic-reciprocity chapter and roadmap diagram.
 - [x] Generate the native PA Proof Explorer for the exact 557-node closure:
-      persistent `PAxxxx` tags, 557 canonical pages and name aliases, 1,791
+      persistent `PAxxxx` tags, 557 canonical pages and name aliases, 1,787
       forward/reverse edges, 27,491 tactic-line anchors, syntax-aware theorem
       and PA-axiom links, truthful public/candidate status, and explicitly
       generated-versus-curated informal proofs. The QR endpoint is `PA00FW`.
@@ -869,10 +869,10 @@ not a mathematical rejection or a QR proof receipt.
       dashboard, direct QR links, PA grammar and axiom/rule chapters,
       foundations/tactic navigation, responsive isolated assets, deterministic
       `--check`, and bounded static/security tests.
-- [x] Add graph v2 to the Book and explorer: 557 theorem nodes, 1,791 direct
+- [x] Add graph v2 to the Book and explorer: 557 theorem nodes, 1,787 direct
       edges, 45 layers, and 48 corpus roots distinct from the PA foundations.
       For `PA00FW`, expose the 4-vertex shortest chain, 45-vertex critical
-      chain, complete prerequisite cone, and all 101,293 theorem-root paths.
+      chain, complete prerequisite cone, and all 101,278 theorem-root paths.
       This is navigational evidence only; `PA00FW` remains pending layered
       closure.
 - [x] Add the conservative defined-notation edition over the same exact

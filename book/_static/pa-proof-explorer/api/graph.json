@@ -310,8 +310,6 @@
         "PA00A5",
         "PA00A6",
         "PA00A7",
-        "PA00AC",
-        "PA00AD",
         "PA00AE",
         "PA00AF",
         "PA00AG",
@@ -2095,7 +2093,6 @@
         "PA006O",
         "PA006Y",
         "PA0070",
-        "PA007C",
         "PA0090",
         "PA00A2",
         "PA00AC",
@@ -3912,7 +3909,6 @@
         "PA006G",
         "PA006I",
         "PA006O",
-        "PA006Y",
         "PA007C",
         "PA007V",
         "PA008F",
@@ -4434,8 +4430,6 @@
         "PA0090",
         "PA0091",
         "PA00A2",
-        "PA00AC",
-        "PA00AD",
         "PA00AG",
         "PA00C3",
         "PA00C4",
@@ -4684,8 +4678,6 @@
         "PA00A5",
         "PA00A6",
         "PA00A7",
-        "PA00AC",
-        "PA00AD",
         "PA00AE",
         "PA00AF",
         "PA00AG",
@@ -37667,7 +37659,6 @@
         "PA0001",
         "PA0009",
         "PA000D",
-        "PA000E",
         "PA000F",
         "PA000G",
         "PA0012"
@@ -37690,7 +37681,7 @@
         "PA0001",
         "PA006Y"
       ],
-      "root_path_count": 10,
+      "root_path_count": 9,
       "shortest_root_path": [
         "PA0001",
         "PA006Y"
@@ -37750,7 +37741,7 @@
         "PA0009",
         "PA0070"
       ],
-      "root_path_count": 29,
+      "root_path_count": 28,
       "shortest_root_path": [
         "PA0009",
         "PA0070"
@@ -37804,7 +37795,7 @@
         "PA0070",
         "PA0071"
       ],
-      "root_path_count": 29,
+      "root_path_count": 28,
       "shortest_root_path": [
         "PA0009",
         "PA0070",
@@ -37916,7 +37907,7 @@
         "PA003A",
         "PA0072"
       ],
-      "root_path_count": 148,
+      "root_path_count": 147,
       "shortest_root_path": [
         "PA003A",
         "PA0072"
@@ -38395,7 +38386,7 @@
         "PA0074",
         "PA0075"
       ],
-      "root_path_count": 608,
+      "root_path_count": 607,
       "shortest_root_path": [
         "PA0004",
         "PA0074",
@@ -39056,7 +39047,6 @@
       ],
       "dependencies": [
         "PA0001",
-        "PA0009",
         "PA000D",
         "PA000E",
         "PA000F",
@@ -39091,7 +39081,7 @@
         "PA0001",
         "PA007C"
       ],
-      "root_path_count": 386,
+      "root_path_count": 385,
       "shortest_root_path": [
         "PA0001",
         "PA007C"
@@ -42712,7 +42702,7 @@
         "PA0078",
         "PA0085"
       ],
-      "root_path_count": 9173,
+      "root_path_count": 9171,
       "shortest_root_path": [
         "PA0078",
         "PA0085"
@@ -51123,20 +51113,16 @@
     },
     "PA00AC": {
       "ancestors": [
-        "PA0001",
         "PA0009",
-        "PA000E",
-        "PA000F"
+        "PA000E"
       ],
       "critical_root_path": [
-        "PA0001",
-        "PA000F",
+        "PA0009",
         "PA00AC"
       ],
       "dependencies": [
         "PA0009",
-        "PA000E",
-        "PA000F"
+        "PA000E"
       ],
       "dependents": [
         "PA00B1"
@@ -51165,7 +51151,7 @@
         "PA0009",
         "PA00AC"
       ],
-      "root_path_count": 4,
+      "root_path_count": 2,
       "shortest_root_path": [
         "PA0009",
         "PA00AC"
@@ -51173,20 +51159,16 @@
     },
     "PA00AD": {
       "ancestors": [
-        "PA0001",
         "PA0009",
-        "PA000E",
-        "PA000F"
+        "PA000E"
       ],
       "critical_root_path": [
-        "PA0001",
-        "PA000F",
+        "PA0009",
         "PA00AD"
       ],
       "dependencies": [
         "PA0009",
-        "PA000E",
-        "PA000F"
+        "PA000E"
       ],
       "dependents": [
         "PA00B1"
@@ -51215,7 +51197,7 @@
         "PA0009",
         "PA00AD"
       ],
-      "root_path_count": 4,
+      "root_path_count": 2,
       "shortest_root_path": [
         "PA0009",
         "PA00AD"
@@ -54373,7 +54355,7 @@
         "PA00AB",
         "PA00B1"
       ],
-      "root_path_count": 2806,
+      "root_path_count": 2802,
       "shortest_root_path": [
         "PA0004",
         "PA00AB",
@@ -54628,7 +54610,7 @@
         "PA0001",
         "PA00B2"
       ],
-      "root_path_count": 2807,
+      "root_path_count": 2803,
       "shortest_root_path": [
         "PA0001",
         "PA00B2"
@@ -56517,7 +56499,7 @@
         "PA00B2",
         "PA00BE"
       ],
-      "root_path_count": 8537,
+      "root_path_count": 8533,
       "shortest_root_path": [
         "PA0001",
         "PA00B2",
@@ -56824,7 +56806,7 @@
         "PA00A7",
         "PA00BF"
       ],
-      "root_path_count": 9140,
+      "root_path_count": 9136,
       "shortest_root_path": [
         "PA0001",
         "PA001A",
@@ -57578,7 +57560,7 @@
         "PA0023",
         "PA00BJ"
       ],
-      "root_path_count": 10449,
+      "root_path_count": 10445,
       "shortest_root_path": [
         "PA0023",
         "PA00BJ"
@@ -57909,7 +57891,7 @@
         "PA003L",
         "PA00BK"
       ],
-      "root_path_count": 14509,
+      "root_path_count": 14505,
       "shortest_root_path": [
         "PA003L",
         "PA00BK"
@@ -58260,7 +58242,7 @@
         "PA00BK",
         "PA00BL"
       ],
-      "root_path_count": 16501,
+      "root_path_count": 16497,
       "shortest_root_path": [
         "PA003L",
         "PA00BK",
@@ -58621,7 +58603,7 @@
         "PA008T",
         "PA00BM"
       ],
-      "root_path_count": 17168,
+      "root_path_count": 17164,
       "shortest_root_path": [
         "PA0001",
         "PA001A",
@@ -59028,7 +59010,7 @@
         "PA0001",
         "PA00BN"
       ],
-      "root_path_count": 24623,
+      "root_path_count": 24619,
       "shortest_root_path": [
         "PA0001",
         "PA00BN"
@@ -59558,7 +59540,7 @@
         "PA003L",
         "PA00BQ"
       ],
-      "root_path_count": 24667,
+      "root_path_count": 24663,
       "shortest_root_path": [
         "PA003L",
         "PA00BQ"
@@ -59967,7 +59949,7 @@
         "PA003L",
         "PA00BR"
       ],
-      "root_path_count": 25792,
+      "root_path_count": 25788,
       "shortest_root_path": [
         "PA003L",
         "PA00BR"
@@ -60372,7 +60354,7 @@
         "PA003L",
         "PA00BS"
       ],
-      "root_path_count": 49334,
+      "root_path_count": 49326,
       "shortest_root_path": [
         "PA003L",
         "PA00BS"
@@ -60783,7 +60765,7 @@
         "PA003L",
         "PA00BT"
       ],
-      "root_path_count": 50459,
+      "root_path_count": 50451,
       "shortest_root_path": [
         "PA003L",
         "PA00BT"
@@ -61192,7 +61174,7 @@
         "PA00BR",
         "PA00BU"
       ],
-      "root_path_count": 76251,
+      "root_path_count": 76239,
       "shortest_root_path": [
         "PA003L",
         "PA00BR",
@@ -61662,7 +61644,7 @@
         "PA0001",
         "PA00BV"
       ],
-      "root_path_count": 85613,
+      "root_path_count": 85599,
       "shortest_root_path": [
         "PA0001",
         "PA00BV"
@@ -65155,7 +65137,7 @@
         "PA0078",
         "PA00D0"
       ],
-      "root_path_count": 2887,
+      "root_path_count": 2886,
       "shortest_root_path": [
         "PA0078",
         "PA00D0"
@@ -65500,7 +65482,7 @@
         "PA00D2",
         "PA00D3"
       ],
-      "root_path_count": 3304,
+      "root_path_count": 3303,
       "shortest_root_path": [
         "PA0009",
         "PA00D2",
@@ -65911,7 +65893,7 @@
         "PA00D5",
         "PA00D6"
       ],
-      "root_path_count": 3849,
+      "root_path_count": 3848,
       "shortest_root_path": [
         "PA003L",
         "PA00D5",
@@ -66432,7 +66414,7 @@
         "PA003L",
         "PA00D7"
       ],
-      "root_path_count": 91829,
+      "root_path_count": 91814,
       "shortest_root_path": [
         "PA003L",
         "PA00D7"
@@ -76257,7 +76239,7 @@
         "PA00D7",
         "PA00FG"
       ],
-      "root_path_count": 101052,
+      "root_path_count": 101037,
       "shortest_root_path": [
         "PA003L",
         "PA00D7",
@@ -77899,7 +77881,7 @@
         "PA00FG",
         "PA00FW"
       ],
-      "root_path_count": 101293,
+      "root_path_count": 101278,
       "shortest_root_path": [
         "PA003L",
         "PA00D7",
@@ -77909,7 +77891,7 @@
     }
   },
   "candidate_count": 317,
-  "edge_count": 1791,
+  "edge_count": 1787,
   "edges": [
     {
       "body_reference": true,
@@ -82945,14 +82927,6 @@
     },
     {
       "body_reference": true,
-      "dependency": "PA000E",
-      "dependency_name": "add_succ_left",
-      "dependent": "PA006Y",
-      "dependent_name": "odd_upper_remainder_reflection",
-      "explicit_reference_count": 1
-    },
-    {
-      "body_reference": true,
       "dependency": "PA0012",
       "dependency_name": "add_right_cancel",
       "dependent": "PA006Y",
@@ -83387,14 +83361,6 @@
       "body_reference": true,
       "dependency": "PA000D",
       "dependency_name": "mul_zero_left",
-      "dependent": "PA007C",
-      "dependent_name": "gauss_signed_half_magnitude_injective",
-      "explicit_reference_count": 1
-    },
-    {
-      "body_reference": true,
-      "dependency": "PA0009",
-      "dependency_name": "add_assoc",
       "dependent": "PA007C",
       "dependent_name": "gauss_signed_half_magnitude_injective",
       "explicit_reference_count": 1
@@ -86721,14 +86687,6 @@
     },
     {
       "body_reference": true,
-      "dependency": "PA000F",
-      "dependency_name": "add_comm",
-      "dependent": "PA00AC",
-      "dependent_name": "pair_order_iteration_previous_balance",
-      "explicit_reference_count": 1
-    },
-    {
-      "body_reference": true,
       "dependency": "PA000E",
       "dependency_name": "add_succ_left",
       "dependent": "PA00AD",
@@ -86739,14 +86697,6 @@
       "body_reference": true,
       "dependency": "PA0009",
       "dependency_name": "add_assoc",
-      "dependent": "PA00AD",
-      "dependent_name": "pair_order_iteration_step_room",
-      "explicit_reference_count": 1
-    },
-    {
-      "body_reference": true,
-      "dependency": "PA000F",
-      "dependency_name": "add_comm",
       "dependent": "PA00AD",
       "dependent_name": "pair_order_iteration_step_room",
       "explicit_reference_count": 1
@@ -92240,7 +92190,7 @@
       "explicit_reference_count": 9
     }
   ],
-  "explicit_dependency_reference_count": 8557,
+  "explicit_dependency_reference_count": 8553,
   "formal_line_count": 27491,
   "foundations": [
     "PA0001",
@@ -92292,7 +92242,7 @@
     "PA00F0",
     "PA00F5"
   ],
-  "graph_sha256": "2231ca4cde6931fad296513fb0c419e19beb7c37989d31fbf6cf01771597cb46",
+  "graph_sha256": "98a36450cfe1de29c20be67a1c5f65c8064e9f9eec5368ab769065f910008698",
   "layer_count": 45,
   "layers": [
     {
@@ -92389,7 +92339,9 @@
         "PA009U",
         "PA00A8",
         "PA00A9",
-        "PA00AB"
+        "PA00AB",
+        "PA00AC",
+        "PA00AD"
       ]
     },
     {
@@ -92432,8 +92384,6 @@
         "PA0090",
         "PA0091",
         "PA00AA",
-        "PA00AC",
-        "PA00AD",
         "PA00BB",
         "PA00CH",
         "PA00CI",
@@ -96330,7 +96280,7 @@
     },
     {
       "href": "../tag/PA00AC.html",
-      "layer": 2,
+      "layer": 1,
       "name": "pair_order_iteration_previous_balance",
       "scope": "candidate",
       "status": "candidate_body_checked",
@@ -96339,7 +96289,7 @@
     },
     {
       "href": "../tag/PA00AD.html",
-      "layer": 2,
+      "layer": 1,
       "name": "pair_order_iteration_step_room",
       "scope": "candidate",
       "status": "candidate_body_checked",
@@ -98103,7 +98053,7 @@
   },
   "public_count": 240,
   "schema": "peano-lab-pa-proof-graph-v2",
-  "source_sha256": "457327e29134e08fd8802a18b9e1a9e0e23fa84bb44f2934f1fcba466f6e6cb5",
+  "source_sha256": "23fd18aaff26e2c6b428949c35ab3658252c9a4c6fd3b4825a6ccd547f454db1",
   "terminals": [
     "PA00FW"
   ],

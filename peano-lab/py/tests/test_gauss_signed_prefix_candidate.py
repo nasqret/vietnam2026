@@ -80,7 +80,6 @@ EXPECTED_DEPENDENCIES = {
         "mul_succ_left",
         "mul_zero_left",
         "zero_add",
-        "add_succ_left",
         "add_right_cancel",
     ),
     "gauss_pointwise_signed_half_representative": (
@@ -135,7 +134,6 @@ EXPECTED_CORE_BOUNDARY = (
     "mul_succ_left",
     "mul_zero_left",
     "zero_add",
-    "add_succ_left",
     "add_right_cancel",
     "mul_one",
     "le_or_lt",
@@ -159,7 +157,7 @@ EXPECTED_CORE_BOUNDARY = (
 )
 
 EXPECTED_BODY_METRICS = {
-    "odd_upper_remainder_reflection": (125, 34),
+    "odd_upper_remainder_reflection": (124, 33),
     "gauss_pointwise_signed_half_representative": (116, 38),
     "gauss_pointwise_signed_half_choice": (73, 27),
     "gauss_half_range_signed_choices": (133, 39),

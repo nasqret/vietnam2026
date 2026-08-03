@@ -1455,9 +1455,9 @@ The downstream data, parity, conditional, and final integration passes
 `20/20` in 27.25 seconds. The optimized combined body constructs the pair
 data once and calls both conditional clients directly; its exact statement
 and hash are unchanged. The exact dependency graph has 557 unique
-specifications, 1,791 direct edges, 45 layers, 48 theorem roots, and root
+specifications, 1,787 direct edges, 45 layers, 48 theorem roots, and root
 depth 44. Recursively
-expanding its theorem dependencies produces 191,669 theorem occurrences,
+expanding its theorem dependencies produces 191,648 theorem occurrences,
 down from 382,882 for the superseded wrapper. That count is a static graph
 result, not a closed-proof receipt.
 
@@ -1499,10 +1499,10 @@ each theorem is recursively expanded into every later `Cut` branch:
 | Static graph quantity | Exact value |
 |---|---:|
 | theorem specifications | 557 |
-| direct dependency edges | 1,791 |
+| direct dependency edges | 1,787 |
 | dependency layers | 45 |
 | longest path | 44 edges |
-| theorem occurrences after recursive expansion | 191,669 |
+| theorem occurrences after recursive expansion | 191,648 |
 
 That recursive tree cannot satisfy the current 500,000-node policy. Even
 before charging a single `apply`, `split`, `exists`, equality, induction, or
@@ -1510,10 +1510,10 @@ rewrite constructor, it necessarily contains:
 
 | Forced contribution | Proof-node occurrences |
 |---|---:|
-| at least one body node per theorem occurrence | 191,669 |
-| dependency `Cut` nodes | 191,668 |
-| recorded leading theorem-level `intro` nodes | 348,145 |
-| **rigorous lower bound** | **731,482** |
+| at least one body node per theorem occurrence | 191,648 |
+| dependency `Cut` nodes | 191,647 |
+| recorded leading theorem-level `intro` nodes | 348,128 |
+| **rigorous lower bound** | **731,423** |
 
 The [static hotspot audit](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/quadratic-reciprocity-closure-hotspots.md)
 derives these values directly from the frozen graph recurrence. Raising the
@@ -1528,7 +1528,7 @@ dependency-curried body occurs exactly once. Its direct dependencies are
 obtained from earlier packages by the existing `AndElimL` and `AndElimR`
 rules, then supplied by ordinary implication elimination. One existing
 contextual `Cut` introduces each layer package, so the full spine has 45 Cuts
-rather than a 557-theorem sequential spine or a 191,669-occurrence recursive
+rather than a 557-theorem sequential spine or a 191,648-occurrence recursive
 tree.
 
 The final artifact is still an ordinary Peano Lab `Proof`. Its only authority
@@ -1546,19 +1546,19 @@ kernel, while the balanced bundle measures 274 nodes at depth 16 versus 3,643
 nodes at depth 20 for recursive closure.
 
 The exact QR topology has also been exercised without doing theorem replay.
-A 557-body dummy scaffold exposes 13,158 fixed glue nodes and compiles to
-13,715 nodes at depth 56, with 157,579 formula/term annotation occurrences,
+A 557-body dummy scaffold exposes 13,148 fixed glue nodes and compiles to
+13,705 nodes at depth 56, with 157,579 formula/term annotation occurrences,
 combined proof-envelope depth 92, and package-formula cost 144,197/68; its
 dummy proof is rejected by the kernel, as it must be. A second surrogate
-retains all 557 nodes, 1,791 dependency edges, 45
+retains all 557 nodes, 1,787 dependency edges, 45
 layers, dependency orders, package projections, and context indices, while
 assigning every node a unique shallow reflexive marker formula derived from
 the bits of its local node ID. Each curried marker body also contains one
 existing `Cut` per direct dependency: its lemma branch checks the dependency's
 exact marker target against the matching `Hyp(k-1)`. This forces every real
 package projection ID and direction, as well as declared dependency order, to
-type-check. The unchanged kernel accepts the strong surrogate at 19,088 proof
-nodes and depth 74; its annotations measure 142,346 occurrences at combined
+type-check. The unchanged kernel accepts the strong surrogate at 19,066 proof
+nodes and depth 74; its annotations measure 142,134 occurrences at combined
 envelope depth 84, and its package formulas measure 19,297 occurrences at
 depth 18. The scanner covers all 25 exact kernel proof constructors and rejects
 `DNE`, holes, metavariables, custom proof nodes, and malformed annotations.
@@ -1773,7 +1773,7 @@ ceiling therefore admits real shared certificates while preserving the former
 worst-case object count.
 
 The QR hotspot audit now adds a decisive negative result for the old compiler:
-its 191,669 recursively expanded theorem occurrences force at least 731,482
+its 191,648 recursively expanded theorem occurrences force at least 731,423
 proof nodes, already beyond the structural ceiling. The limit should not be
 raised to accommodate this duplication. The first-choice admission artifact
 is the 45-layer balanced-conjunction bundle described above; its exact final

@@ -8,7 +8,7 @@ exact [[quadratic-reciprocity-moc|quadratic-reciprocity]] dependency closure.
 It combines permanent Stacks-style theorem identities with a dependency/status
 view and the actual Peano Lab tactic bodies.
 
-The current corpus has 557 canonical `PAxxxx` pages, 1,791 direct edges in 45
+The current corpus has 557 canonical `PAxxxx` pages, 1,787 direct edges in 45
 layers, and 27,491 numbered tactic commands. The endpoint
 `quadratic_reciprocity_combined` has tag `PA00FW`. The page links every
 syntax-classified direct lemma occurrence, every explicit PA axiom occurrence,

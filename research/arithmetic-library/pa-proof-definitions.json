@@ -9,10 +9,10 @@
     "theorem_count": 557,
     "public_theorem_count": 240,
     "candidate_theorem_count": 317,
-    "edge_count": 1791,
+    "edge_count": 1787,
     "layer_count": 45,
-    "graph_sha256": "2231ca4cde6931fad296513fb0c419e19beb7c37989d31fbf6cf01771597cb46",
-    "candidate_source_sha256": "457327e29134e08fd8802a18b9e1a9e0e23fa84bb44f2934f1fcba466f6e6cb5",
+    "graph_sha256": "98a36450cfe1de29c20be67a1c5f65c8064e9f9eec5368ab769065f910008698",
+    "candidate_source_sha256": "23fd18aaff26e2c6b428949c35ab3658252c9a4c6fd3b4825a6ccd547f454db1",
     "corpus_source": "book/_static/pa-proof-explorer/api/corpus.json"
   },
   "matching_contract": {

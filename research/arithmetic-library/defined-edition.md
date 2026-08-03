@@ -9,16 +9,16 @@ theorem tags, proof scripts, generated binder names, or page layouts change.
 The promotion and consolidation rules for the next authoring release are in
 [`curation-policy.md`](curation-policy.md).
 
-## Frozen baseline
+## Current baseline
 
 The count baseline is the proof-explorer corpus with:
 
 - 557 unique theorem specifications: 240 public and 317 candidate;
-- 1,791 direct dependency edges and 45 dependency layers;
+- 1,787 direct dependency edges and 45 dependency layers;
 - graph SHA-256
-  `2231ca4cde6931fad296513fb0c419e19beb7c37989d31fbf6cf01771597cb46`;
+  `98a36450cfe1de29c20be67a1c5f65c8064e9f9eec5368ab769065f910008698`;
 - candidate-source SHA-256
-  `457327e29134e08fd8802a18b9e1a9e0e23fa84bb44f2934f1fcba466f6e6cb5`.
+  `23fd18aaff26e2c6b428949c35ab3658252c9a4c6fd3b4825a6ccd547f454db1`.
 
 The source of theorem statements and scope labels is
 `book/_static/pa-proof-explorer/api/corpus.json`. Counts are not estimates.
@@ -66,7 +66,7 @@ survive into a certificate.
 The implemented registry has SHA-256
 `924c8bc220f23ce772b72991b8234c3499be7698dc086d90509d39760a1ed0fe`.
 The generated 557-theorem reading edition has identity
-`f137db3d549b82c8ee0798362cc9a039f408c01d9ebded8814858f6d5964bad2`.
+`9b7c7928ddd3e1930fb5eca6e6b6c4b5ce6978633f6f187525d8813c90f3ddd6`.
 These are reproducibility receipts, not trust anchors.
 
 ## Inventory overview

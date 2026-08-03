@@ -1855,19 +1855,38 @@ def publish_seal_report(
             temporary,
             "staged corpus seal verification report",
         )
+        protected_stage = _regular_lstat(
+            temporary,
+            "staged corpus seal verification report",
+        )
         if _read_regular_bytes(
             temporary,
             "staged corpus seal verification report",
             limit=_MAX_JSON_BYTES,
         ) != payload:
-            raise CorpusSealError("staged corpus seal verification report changed")
+            raise CorpusSealError(
+                "staged corpus seal verification report changed before publication"
+            )
         staged = _regular_lstat(
             temporary,
             "staged corpus seal verification report",
         )
+        stable_fields = (
+            "st_dev",
+            "st_ino",
+            "st_mode",
+            "st_nlink",
+            "st_size",
+            "st_mtime_ns",
+            "st_ctime_ns",
+        )
         if (
             (staged.st_dev, staged.st_ino) != temporary_inode
             or stat.S_IMODE(staged.st_mode) != 0o444
+            or any(
+                getattr(staged, field) != getattr(protected_stage, field)
+                for field in stable_fields
+            )
         ):
             raise CorpusSealError(
                 "staged corpus seal verification report changed before publication"

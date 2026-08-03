@@ -83,8 +83,8 @@ GAUSS_RECODE_NAMES = (
 
 EXPECTED_DEPENDENCIES = {
     "prime_pair_order_state_step": ("prime_pair_order_choose_append_state",),
-    "pair_order_iteration_previous_balance": ("add_succ_left", "add_assoc", "add_comm"),
-    "pair_order_iteration_step_room": ("add_succ_left", "add_assoc", "add_comm"),
+    "pair_order_iteration_previous_balance": ("add_succ_left", "add_assoc"),
+    "pair_order_iteration_step_room": ("add_succ_left", "add_assoc"),
     "prime_pair_order_iteration": (
         "pair_order_state_zero",
         "pair_order_iteration_previous_balance",
@@ -105,8 +105,8 @@ EXPECTED_STATEMENT_SHA256 = {
 
 EXPECTED_BODY_RECEIPTS = {
     "prime_pair_order_state_step": (1, 64, 95, 37, 95, 94, 0),
-    "pair_order_iteration_previous_balance": (3, 3, 78, 24, 67, 77, 11),
-    "pair_order_iteration_step_room": (3, 3, 68, 22, 59, 67, 9),
+    "pair_order_iteration_previous_balance": (2, 3, 77, 23, 66, 76, 11),
+    "pair_order_iteration_step_room": (2, 3, 67, 21, 58, 66, 9),
     "prime_pair_order_iteration": (5, 85, 148, 37, 143, 147, 5),
     "prime_pair_order_terminal_state_exists": (2, 29, 52, 26, 51, 51, 1),
 }
@@ -115,7 +115,6 @@ EXPECTED_BOUNDARY = (
     "prime_pair_order_choose_append_state",
     "add_succ_left",
     "add_assoc",
-    "add_comm",
     "pair_order_state_zero",
     "pair_order_double_succ_length",
     "zero_add",

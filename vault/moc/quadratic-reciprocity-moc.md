@@ -436,16 +436,16 @@ and a separate pinned admission replay.
   All remain dependency-curried, unregistered and unadmitted; see
   [[gauss-eisenstein-reciprocity]]
 - Closure architecture: the exact endpoint graph has 557 specifications,
-  1,791 edges, 45 layers, root depth 44, and 191,669 theorem occurrences under
-  recursive expansion. Its rigorous 731,482-node lower bound exceeds the
+  1,787 edges, 45 layers, root depth 44, and 191,648 theorem occurrences under
+  recursive expansion. Its rigorous 731,423-node lower bound exceeds the
   500,000-node policy. The preferred [[layered-cut-bundle]] places each body
   once in one of 45 balanced conjunction packages and uses only existing
   projections and contextual Cuts; the unchanged kernel still performs the
   final empty-context check. The full WMI artifact is not yet constructed or
   admitted. Static exact-graph integration is green at two deliberately
-  weaker levels: a rejected dummy scaffold is `13,715/56` nodes/depth with
-  13,158 fixed glue nodes, while an accepted distinct-marker topology
-  surrogate is `19,088/74`, with package formulas `19,297/18`. Its unique
+  weaker levels: a rejected dummy scaffold is `13,705/56` nodes/depth with
+  13,148 fixed glue nodes, while an accepted distinct-marker topology
+  surrogate is `19,066/74`, with package formulas `19,297/18`. Its unique
   local-ID-derived targets and one dependency Cut/Hyp check per premise force
   every real projection ID/direction and declared dependency order. Neither
   contains real QR bodies and neither proves QR. The
@@ -568,7 +568,7 @@ The live policy admits at most 500,000 structural occurrences, 100,000
 distinct proof objects and depth 256. These availability limits do not change
 the independent kernel or grant theorem authority. The FTA measurement gives
 73,767 occurrences but only 8,701 distinct proof objects. Recursive QR closure
-cannot pass: 191,669 theorem occurrences force at least 731,482 proof nodes.
+cannot pass: 191,648 theorem occurrences force at least 731,423 proof nodes.
 The selected unchanged-kernel layered compiler uses 45 ordinary package Cuts;
 its complete QR metrics and admission receipts remain pending.
 

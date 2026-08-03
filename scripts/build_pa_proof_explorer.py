@@ -55,12 +55,12 @@ EXPECTED = {
     "theorem_count": 557,
     "public_count": 240,
     "candidate_count": 317,
-    "edge_count": 1791,
+    "edge_count": 1787,
     "layer_count": 45,
     "formal_line_count": 27491,
-    "explicit_dependency_reference_count": 8557,
-    "graph_sha256": "2231ca4cde6931fad296513fb0c419e19beb7c37989d31fbf6cf01771597cb46",
-    "source_sha256": "457327e29134e08fd8802a18b9e1a9e0e23fa84bb44f2934f1fcba466f6e6cb5",
+    "explicit_dependency_reference_count": 8553,
+    "graph_sha256": "98a36450cfe1de29c20be67a1c5f65c8064e9f9eec5368ab769065f910008698",
+    "source_sha256": "23fd18aaff26e2c6b428949c35ab3658252c9a4c6fd3b4825a6ccd547f454db1",
 }
 
 
@@ -313,7 +313,7 @@ def _render_index(records: list[dict[str, Any]], stack: Any) -> bytes:
     for row in records:
         search = " ".join((row["name"], row["tag"], row["summary"], row["status"], *[item["name"] for item in row["dependencies"]])).lower()
         cards.append(f'''<article class="pa-proof-result pa-status-{row["scope"]}" data-pa-theorem data-name="{_e(row["name"])}" data-tag="{row["tag"]}" data-status="{row["scope"]}" data-layer="{row["layer"]}" data-search="{_e(search)}"><a href="tag/{row["tag"]}.html"><code>{row["tag"]}</code> · <strong>{_e(row["name"])}</strong></a><p>{_e(row["summary"])}</p><small>layer {row["layer"]} · {len(row["lines"])} lines · {row["status_label"]}</small></article>''')
-    body = f'''<header class="pa-proof-header pa-hero"><p><a href="../../arithmetic-library/quadratic-reciprocity.html">Jupyter Book</a></p><h1>Native PA Proof Explorer</h1><p>The complete replay-free reading surface for the exact quadratic-reciprocity dependency closure.</p><div class="pa-proof-stats"><b>557</b> lemmas · <b>1,791</b> edges · <b>27,491</b> tactic lines · <b>45</b> layers</div><nav><a href="foundations.html">PA language, axioms, and rules</a></nav></header>
+    body = f'''<header class="pa-proof-header pa-hero"><p><a href="../../arithmetic-library/quadratic-reciprocity.html">Jupyter Book</a></p><h1>Native PA Proof Explorer</h1><p>The complete replay-free reading surface for the exact quadratic-reciprocity dependency closure.</p><div class="pa-proof-stats"><b>557</b> lemmas · <b>1,787</b> edges · <b>27,491</b> tactic lines · <b>45</b> layers</div><nav><a href="foundations.html">PA language, axioms, and rules</a></nav></header>
 <main data-proof-dashboard data-pa-explorer-index><section class="pa-proof-controls"><label>Search <input data-proof-search data-pa-search type="search"></label><label>Status <select data-proof-status data-pa-status><option value="all">All</option><option value="public">Public (240)</option><option value="candidate">Body-checked candidates (317)</option></select></label><label>Layer <select data-proof-layer data-pa-layer><option value="all">All 45 layers</option>{layers}</select></label><button data-proof-clear data-pa-clear type="button">Clear</button><output data-proof-count data-pa-count>557 lemmas</output></section><section class="pa-layer-map">{''.join(f'<a href="?layer={n}">{n}</a>' for n in range(45))}</section><section class="pa-proof-results">{"".join(cards)}</section></main>'''
     return _page("Native PA Proof Explorer", "index", body)
 

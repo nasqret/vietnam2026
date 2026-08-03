@@ -1,12 +1,12 @@
 # Static hotspot audit of the optimized QR closure
 
-Date: **2026-07-30**
+Date: **2026-07-30**; dependency-hygiene seal refreshed **2026-08-03**
 
 Scope: exact graph rooted at `quadratic_reciprocity_combined`
 
-Graph SHA-256: `2231ca4cde6931fad296513fb0c419e19beb7c37989d31fbf6cf01771597cb46`
+Graph SHA-256: `98a36450cfe1de29c20be67a1c5f65c8064e9f9eec5368ab769065f910008698`
 
-Candidate-source SHA-256: `457327e29134e08fd8802a18b9e1a9e0e23fa84bb44f2934f1fcba466f6e6cb5`
+Candidate-source SHA-256: `23fd18aaff26e2c6b428949c35ab3658252c9a4c6fd3b4825a6ccd547f454db1`
 
 This is a source-only audit. It calls the neutral quadratic-reciprocity stack
 collector, reads theorem specifications, and performs integer/counter
@@ -20,10 +20,10 @@ The present recursively Cut-expanded proof tree **cannot** satisfy the
 
 | statically forced contribution | occurrences |
 |---|---:|
-| theorem bodies, at least one proof node each | 191,669 |
-| dependency `Cut` nodes | 191,668 |
-| leading theorem-level `intro` constructors in the recorded bodies | 348,145 |
-| **rigorous structural-node lower bound** | **731,482** |
+| theorem bodies, at least one proof node each | 191,648 |
+| dependency `Cut` nodes | 191,647 |
+| leading theorem-level `intro` constructors in the recorded bodies | 348,128 |
+| **rigorous structural-node lower bound** | **731,423** |
 
 The third row counts only the consecutive `intro` commands at the start of
 each theorem's own script. The closure builder's generated dependency
@@ -33,7 +33,7 @@ theorem-level introductions remain in the body. No `apply`, `split`,
 tree is therefore strictly larger in all nontrivial cases.
 
 For scale, weighting each recorded tactic command by its theorem occurrence
-gives 1,994,700 command occurrences, versus 27,491 commands across the 557
+gives 1,994,620 command occurrences, versus 27,491 commands across the 557
 unique bodies. This is only a pressure proxy—commands and proof nodes are not
 one-to-one—and is not used in the rigorous lower bound.
 
@@ -53,23 +53,23 @@ R(t) = 1 + sum(R(d) for d in deps(t)).
 This is exactly the number of theorem-certificate occurrences in the
 recursively expanded tree, before proof-body nodes are counted. Propagating
 `O(root)=1` downward by `O(d) += O(t)` gives the multiplicity of each named
-theorem. The graph has 557 unique specifications, 1,791 direct edges, and 45
+theorem. The graph has 557 unique specifications, 1,787 direct edges, and 45
 theorem levels (44 edges on the longest path), but:
 
 | theorem | `R(t)` | `O(t)` at the QR root |
 |---|---:|---:|
-| `quadratic_reciprocity_combined` | 191,669 | 1 |
-| `distinct_odd_primes_gauss_eisenstein_data_exists` | 191,205 | 1 |
-| `odd_prime_gauss_eisenstein_orientation_data_exists` | 173,655 | 1 |
-| `arbitrary_gauss_lemma_complete` | 161,897 | 1 |
-| `arbitrary_euler_criterion_complete` | 144,191 | 1 |
-| `arbitrary_euler_criterion_nonresidue_iff` | 95,413 | 1 |
-| `bounded_euler_criterion_nonresidue_iff` | 93,272 | 1 |
-| `arbitrary_euler_criterion_residue_iff` | 48,777 | 1 |
-| `bounded_euler_criterion_residue_iff` | 46,636 | 2 |
-| `bounded_euler_criterion_dichotomy` | 46,560 | 3 |
+| `quadratic_reciprocity_combined` | 191,648 | 1 |
+| `distinct_odd_primes_gauss_eisenstein_data_exists` | 191,184 | 1 |
+| `odd_prime_gauss_eisenstein_orientation_data_exists` | 173,634 | 1 |
+| `arbitrary_gauss_lemma_complete` | 161,877 | 1 |
+| `arbitrary_euler_criterion_complete` | 144,173 | 1 |
+| `arbitrary_euler_criterion_nonresidue_iff` | 95,401 | 1 |
+| `bounded_euler_criterion_nonresidue_iff` | 93,260 | 1 |
+| `arbitrary_euler_criterion_residue_iff` | 48,771 | 1 |
+| `bounded_euler_criterion_residue_iff` | 46,630 | 2 |
+| `bounded_euler_criterion_dichotomy` | 46,554 | 3 |
 
-The three direct root children weigh 191,205, 223, and 240. Thus the final
+The three direct root children weigh 191,184, 223, and 240. Thus the final
 sharing-conscious QR wrapper has already done its job: 99.76% of its theorem
 recurrence lies in the data branch, not in the two final truth-table clients.
 
@@ -82,12 +82,12 @@ duplication is transitive fan-in. The largest direct fan-in values are:
 | `beta_at_unique` | 62 | 840 | 31 |
 | `le_succ` | 55 | 992 | 2 |
 | `succ_ne_zero` | 45 | 1,937 | 1 |
-| `add_assoc` | 44 | 25,037 | 1 |
+| `add_assoc` | 43 | 25,035 | 1 |
 | `mul_comm` | 43 | 5,335 | 7 |
-| `add_succ_left` | 42 | 21,931 | 1 |
-| `add_comm` | 41 | 15,771 | 3 |
+| `add_succ_left` | 41 | 21,924 | 1 |
+| `add_comm` | 39 | 15,765 | 3 |
 | `add_eq_zero_right` | 39 | 3,439 | 1 |
-| `zero_add` | 38 | 26,513 | 1 |
+| `zero_add` | 38 | 26,507 | 1 |
 
 The high multiplicities of tiny arithmetic facts are a symptom of tree
 expansion. Rewriting those facts would not remove their many incoming paths.
@@ -108,9 +108,9 @@ refactor exists. Rows overlap and their savings must not be added.
 
 | rank | parent | parent occurrences | local excess | propagated upper bound | refactor assessment |
 |---:|---|---:|---:|---:|---|
-| 1 | `arbitrary_euler_criterion_complete` | 1 | 48,776 | 48,776 | **Package refactor, moderate.** Construct the canonical representative once and return both iff results. Not a legal bare edge deletion. |
+| 1 | `arbitrary_euler_criterion_complete` | 1 | 48,770 | 48,770 | **Package refactor, moderate.** Construct the canonical representative once and return both iff results. Not a legal bare edge deletion. |
 | 2 | `beta_prefix_extend` | 166 | 284 | 47,144 | **Deep encoding rewrite.** Nine CRT, modulus-product, and bound branches must share coherent existential witnesses. |
-| 3 | `bounded_euler_criterion_nonresidue_iff` | 1 | 46,635 | 46,635 | **Package refactor, moderate.** Derive both iff views from one dichotomy package instead of recursively importing the residue view. |
+| 3 | `bounded_euler_criterion_nonresidue_iff` | 1 | 46,629 | 46,629 | **Package refactor, moderate.** Derive both iff views from one dichotomy package instead of recursively importing the residue view. |
 | 4 | `bounded_euler_criterion_dichotomy` | 3 | 14,051 | 42,153 | **Deep arithmetic rewrite.** Its residue and nonresidue power endpoints share the Fermat/Wilson backbone but prove genuinely different branches. |
 | 5 | `prime_wilson_terminal_product_package_exists` | 3 | 10,757 | 32,271 | **Deep Wilson/encoding rewrite.** Terminal state, coverage, magnitude recoding, and products would need one coherent constructor. |
 | 6 | `beta_exclusive_recode_invariant_step` | 166 | 191 | 31,706 | **Deep local step rewrite.** Merge accumulated-product and recode-congruence construction while retaining the same witnesses. |
@@ -121,15 +121,15 @@ refactor exists. Rows overlap and their savings must not be added.
 
 The two Euler rows are the only attractive semantics-preserving package
 refactors. Perfectly merging both overlapping child closures would reduce the
-recurrence from 191,669 to 96,258 occurrences (95,411 saved; not the sum of
+recurrence from 191,648 to 96,249 occurrences (95,399 saved; not the sum of
 the two row values). Even under that optimistic model, the retained source
-has a 367,511-node `Cut`/body/leading-intro lower bound and 1,000,029 weighted
+has a 367,484-node `Cut`/body/leading-intro lower bound and 999,993 weighted
 script-command occurrences. The command count is a pressure proxy, not a
 proof-node bound, but it leaves no credible margin for the many omitted proof
 constructors.
 
 Perfect sharing at all ten rows simultaneously would reduce the modeled
-recurrence to 29,434 occurrences and the weighted command count to 386,768.
+recurrence to 29,425 occurrences and the weighted command count to 386,732.
 That scenario is not ten easy wrappers: it assumes coherent subtree sharing
 inside beta extension, CRT, finite permutation, Wilson, and Euler. Implementing
 it theorem by theorem would amount to a second proof-engineering campaign and
@@ -163,9 +163,9 @@ With the present graph it has these static scaffolding bounds:
 | unique source commands across those bodies | 27,491 |
 | layer Cuts | 45 |
 | balanced layer-package `AndIntro` nodes | 512 |
-| dependency applications (`ImpElim`) | 1,791 |
+| dependency applications (`ImpElim`) | 1,787 |
 | maximum projection depth (`ceil(log2(63))`) | 6 |
-| worst-case dependency projection nodes | 10,746 |
+| worst-case dependency projection nodes | 10,722 |
 
 The last four rows add at most about 13,100 structural nodes beyond the 557
 unique curried bodies, ignoring small final packaging details. Exact body
@@ -190,8 +190,8 @@ laptop and performs no replay:
 ```python
 from collections import Counter, defaultdict
 
-from peano_lab.library.quadratic_reciprocity_stack import (
-    QR_ROOT_NAME,
+from peano_lab.library.quadratic_reciprocity_stack import QR_ROOT_NAME
+from peano_lab.library.quadratic_reciprocity_stack_runtime import (
     build_quadratic_reciprocity_stack,
 )
 
@@ -257,15 +257,15 @@ for spec in specs:
         )
 
 assert stack.graph_sha256 == (
-    "2231ca4cde6931fad296513fb0c419e19beb7c37989d31fbf6cf01771597cb46"
+    "98a36450cfe1de29c20be67a1c5f65c8064e9f9eec5368ab769065f910008698"
 )
 assert len(specs) == 557
-assert sum(len(spec.dependencies) for spec in specs) == 1791
+assert sum(len(spec.dependencies) for spec in specs) == 1787
 assert max(depths.values()) == 44
-assert root_weight == 191669
-assert cut_nodes == 191668
-assert intro_nodes == 348145
-assert lower_bound == 731482
+assert root_weight == 191648
+assert cut_nodes == 191647
+assert intro_nodes == 348128
+assert lower_bound == 731423
 assert not any(
     len(spec.dependencies) != len(set(spec.dependencies)) for spec in specs
 )
@@ -273,5 +273,5 @@ print(sorted(sibling_rows, reverse=True)[:10])
 ```
 
 The expected first tuple is
-`(48776, 48776, 'arbitrary_euler_criterion_complete')`; the tenth is
+`(48770, 48770, 'arbitrary_euler_criterion_complete')`; the tenth is
 `(20916, 63, 'binary_crt')`.

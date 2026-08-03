@@ -329,6 +329,8 @@ def test_library_snapshot_records_self_contained_cut_representation() -> None:
         "peano-lab/py/peano_lab/library/gauss_half_range.py",
         "peano-lab/py/peano_lab/library/finite_permutation_theorems.py",
         "peano-lab/py/peano_lab/library/finite_product_permutation_theorems.py",
+        "peano-lab/py/peano_lab/library/finite_product_reindex_support.py",
+        "peano-lab/py/peano_lab/library/qr_bounded_units.py",
         "peano-lab/py/peano_lab/library/qr_prime_units.py",
         "peano-lab/py/peano_lab/library/qr_small_moduli.py",
     ]

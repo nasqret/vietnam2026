@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
   <title id="title">Recursive and layered quadratic-reciprocity closure compared</title>
-  <desc id="desc">The recursive proof tree duplicates shared theorem bodies and has a rigorous lower bound of 731,482 nodes. The preferred unchanged-kernel design packages 557 unique bodies into 45 balanced conjunction layers connected by 45 ordinary Cuts and short AndElim projections. Full WMI admission is pending.</desc>
+  <desc id="desc">The recursive proof tree duplicates shared theorem bodies and has a rigorous lower bound of 731,423 nodes. The preferred unchanged-kernel design packages 557 unique bodies into 45 balanced conjunction layers connected by 45 ordinary Cuts and short AndElim projections. Full WMI admission is pending.</desc>
   <defs>
     <linearGradient id="background" x1="0" x2="1" y1="0" y2="1">
       <stop offset="0" stop-color="#f8fafc"/>
@@ -69,8 +69,8 @@
   <rect x="238" y="475" width="138" height="43" class="bad"/>
   <text x="307" y="502" class="small">duplicated again…</text>
 
-  <text x="307" y="552" class="metric">191,669 theorem occurrences</text>
-  <text x="307" y="578" class="metric">≥ 731,482 proof nodes</text>
+  <text x="307" y="552" class="metric">191,648 theorem occurrences</text>
+  <text x="307" y="578" class="metric">≥ 731,423 proof nodes</text>
   <text x="307" y="598" class="metric-small">rigorous lower bound &gt; 500,000-node policy</text>
 
   <rect x="620" y="98" width="545" height="512" class="panel"/>
@@ -98,7 +98,7 @@
   <path d="M892 427 V462" class="edge-blue"/>
 
   <text x="892" y="552" class="metric">45 ordinary contextual Cuts</text>
-  <text x="892" y="578" class="metric">19,088 nodes · depth 74 (strong surrogate)</text>
+  <text x="892" y="578" class="metric">19,066 nodes · depth 74 (strong surrogate)</text>
   <text x="892" y="598" class="metric-small">projection IDs and dependency order checked; real QR pending</text>
 
   <rect x="180" y="632" width="840" height="66" class="bad"/>

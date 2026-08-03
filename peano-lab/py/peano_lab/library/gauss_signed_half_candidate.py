@@ -166,7 +166,6 @@ def make_gauss_signed_half_candidate_theorems(
                 "mul_succ_left",
                 "mul_zero_left",
                 "zero_add",
-                "add_succ_left",
                 "add_right_cancel",
             ),
             (
@@ -205,8 +204,7 @@ def make_gauss_signed_half_candidate_theorems(
                 "trans p",
                 "exact hrm",
                 "rewrite hp",
-                "simp [mul_succ_left, mul_zero_left, zero_add, "
-                "add_succ_left, add_assoc]",
+                "simp [mul_succ_left, mul_zero_left, zero_add, add_assoc]",
                 "have hmle : exists d. d + S x1 = h",
                 "exists x",
                 "specialize add_right_cancel (x + S x1)",

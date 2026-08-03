@@ -56,7 +56,6 @@ EXPECTED_DEPENDENCIES = {
         "mul_succ_left",
         "mul_zero_left",
         "zero_add",
-        "add_succ_left",
         "add_right_cancel",
     ),
     POINTWISE_NAME: (
@@ -78,7 +77,6 @@ EXPECTED_CORE_BOUNDARY = (
     "mul_succ_left",
     "mul_zero_left",
     "zero_add",
-    "add_succ_left",
     "add_right_cancel",
     "mul_one",
     "le_or_lt",

@@ -27,14 +27,14 @@ INFORMAL = REPO / "research" / "arithmetic-library" / "pa-proof-informal.json"
 GENERATOR = REPO / "scripts" / "build_pa_proof_explorer.py"
 
 THEOREM_COUNT = 557
-EDGE_COUNT = 1_791
+EDGE_COUNT = 1_787
 LAYER_COUNT = 45
 FORMAL_LINE_COUNT = 27_491
 PUBLIC_COUNT = 240
 CANDIDATE_COUNT = 317
-EXPLICIT_EDGE_COUNT = 1_784
+EXPLICIT_EDGE_COUNT = 1_780
 IMPLICIT_EDGE_COUNT = 7
-EXPLICIT_REFERENCE_COUNT = 8_557
+EXPLICIT_REFERENCE_COUNT = 8_553
 TAG_PATTERN = re.compile(r"^PA[0-9A-Y]{4}$")
 ID_PATTERN = re.compile(r'\bid="([^"]+)"')
 
@@ -460,7 +460,7 @@ def test_graph_v2_exposes_layers_closures_and_canonical_foundation_paths() -> No
         row["tag"] for row in records
         if row["name"] == "quadratic_reciprocity_combined"
     )
-    assert adjacency[qr_tag]["root_path_count"] == 101_293
+    assert adjacency[qr_tag]["root_path_count"] == 101_278
 
 
 def test_graph_schema_and_inline_file_protocol_payload_are_exact_and_deterministic() -> None:

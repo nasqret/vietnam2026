@@ -344,7 +344,8 @@ def test_permutation_contracts_are_exact_closed_expanded_pa_surfaces() -> None:
     table = {spec.name: spec for spec in specs}
 
     assert tuple(table) == tuple(EXPECTED)
-    assert set(table).isdisjoint(_specs_by_name())
+    registered = _specs_by_name()
+    assert {name: registered[name] for name in table} == table
     assert {name: item.dependencies for name, item in table.items()} == (
         EXPECTED_DEPENDENCIES
     )

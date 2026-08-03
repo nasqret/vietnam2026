@@ -263,7 +263,7 @@ does not determine the architecture.
   registry; 38 definitions occur in the closure. Aggregate statement/local
   text falls by 95.63%/94.34%. Expansion receipts reconstruct the same parsed
   native formulas. The proof
-  DAG remains 557 nodes, 1,791 edges, and 45 layers; its status split remains
+  DAG remains 557 nodes, 1,787 edges, and 45 layers; its status split remains
   240 public, 316 body-checked candidates, and the QR root pending layered
   closure.
 - The factorization and unbounded-primes tranches are synchronized into the

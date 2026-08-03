@@ -1,13 +1,13 @@
 {
   "candidate_count": 317,
-  "edge_count": 1791,
-  "explicit_dependency_reference_count": 8557,
+  "edge_count": 1787,
+  "explicit_dependency_reference_count": 8553,
   "formal_line_count": 27491,
-  "graph_sha256": "2231ca4cde6931fad296513fb0c419e19beb7c37989d31fbf6cf01771597cb46",
+  "graph_sha256": "98a36450cfe1de29c20be67a1c5f65c8064e9f9eec5368ab769065f910008698",
   "layer_count": 45,
   "public_count": 240,
   "schema": "peano-lab-pa-proof-corpus-v1",
-  "source_sha256": "457327e29134e08fd8802a18b9e1a9e0e23fa84bb44f2934f1fcba466f6e6cb5",
+  "source_sha256": "23fd18aaff26e2c6b428949c35ab3658252c9a4c6fd3b4825a6ccd547f454db1",
   "theorem_count": 557,
   "theorems": [
     {
@@ -2463,13 +2463,6 @@
         {
           "body_reference": true,
           "explicit_reference_count": 1,
-          "href": "PA007C.html",
-          "name": "gauss_signed_half_magnitude_injective",
-          "tag": "PA007C"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 1,
           "href": "PA0090.html",
           "name": "euler_pair_iteration_previous_balance",
           "tag": "PA0090"
@@ -3660,13 +3653,6 @@
         },
         {
           "body_reference": true,
-          "explicit_reference_count": 1,
-          "href": "PA006Y.html",
-          "name": "odd_upper_remainder_reflection",
-          "tag": "PA006Y"
-        },
-        {
-          "body_reference": true,
           "explicit_reference_count": 7,
           "href": "PA007C.html",
           "name": "gauss_signed_half_magnitude_injective",
@@ -4114,20 +4100,6 @@
           "href": "PA00A2.html",
           "name": "prime_two_or_terminal_odd_shape",
           "tag": "PA00A2"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 1,
-          "href": "PA00AC.html",
-          "name": "pair_order_iteration_previous_balance",
-          "tag": "PA00AC"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 1,
-          "href": "PA00AD.html",
-          "name": "pair_order_iteration_step_room",
-          "tag": "PA00AD"
         },
         {
           "body_reference": true,
@@ -131561,13 +131533,6 @@
         },
         {
           "body_reference": true,
-          "explicit_reference_count": 1,
-          "href": "PA000E.html",
-          "name": "add_succ_left",
-          "tag": "PA000E"
-        },
-        {
-          "body_reference": true,
           "explicit_reference_count": 4,
           "href": "PA0012.html",
           "name": "add_right_cancel",
@@ -131588,7 +131553,7 @@
         "kind": "generated_structural_guide",
         "paragraphs": [
           "A residue strictly above h and below 2*h+1 has a positive reflected magnitude at most h.",
-          "Use the direct prerequisites add_assoc, add_comm, mul_succ_left, mul_zero_left, zero_add, add_succ_left, add_right_cancel as previously established PA formulas.",
+          "Use the direct prerequisites add_assoc, add_comm, mul_succ_left, mul_zero_left, zero_add, add_right_cancel as previously established PA formulas.",
           "The proof proceeds by case analysis (2), intermediate claims (3), equality transport (1), certified simplification (2)."
         ],
         "references": [
@@ -131616,11 +131581,6 @@
             "href": "PA0001.html",
             "name": "zero_add",
             "tag": "PA0001"
-          },
-          {
-            "href": "PA000E.html",
-            "name": "add_succ_left",
-            "tag": "PA000E"
           },
           {
             "href": "PA0012.html",
@@ -132065,26 +132025,18 @@
               "tag": "PA0001"
             },
             {
-              "end": 59,
-              "href": "PA000E.html",
-              "kind": "theorem",
-              "name": "add_succ_left",
-              "start": 46,
-              "tag": "PA000E"
-            },
-            {
-              "end": 70,
+              "end": 55,
               "href": "PA0009.html",
               "kind": "theorem",
               "name": "add_assoc",
-              "start": 61,
+              "start": 46,
               "tag": "PA0009"
             }
           ],
-          "stable_id": "6957dd1a568e1867",
+          "stable_id": "c9eff8a5d659fec4",
           "tactic": "simp",
           "tactic_href": "../foundations.html#tactic-simp",
-          "text": "simp [mul_succ_left, mul_zero_left, zero_add, add_succ_left, add_assoc]"
+          "text": "simp [mul_succ_left, mul_zero_left, zero_add, add_assoc]"
         },
         {
           "axiom_references": [],
@@ -132265,16 +132217,16 @@
       ],
       "name": "odd_upper_remainder_reflection",
       "scope": "candidate",
-      "script_sha256": "7d30d786c1efe08fce989b3eda40df26e4e6b908d65d5761a16d7a3f34d066e1",
+      "script_sha256": "f3ea04f640ad026ceb6f33b45e28f465ac2fc7d856387e35426deba9ca0407f0",
       "source": {
         "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/gauss_signed_half_candidate.py#L157",
         "kind": "declaration",
         "line": 157,
         "owner_module": "gauss_signed_half_candidate",
         "path": "peano-lab/py/peano_lab/library/gauss_signed_half_candidate.py",
-        "sha256": "58560f6eb0719f3fcb7b73e822f7b3fbe287ed4fb3ba455843893019dad8e557"
+        "sha256": "304bc76bbf33254fb15c3e1adb94af99303da03a99709b1e23b05e8a0f8d3d74"
       },
-      "spec_sha256": "9e132ba1e72003a09dab5d39e1949a431a7f20a7310c2d7bfa029293b7cc6653",
+      "spec_sha256": "32a36d8338945ae4e7640e655cd8f38b966c3fbdc645e69c5e191b9e48dac106",
       "statement": "forall p h r. p = 2 * h + 1 -> (exists gsh_lt_gap_reflection_remainder. gsh_lt_gap_reflection_remainder + S r = p) -> (exists gsh_lt_gap_reflection_upper. gsh_lt_gap_reflection_upper + S h = r) -> (exists m. (exists gsh_lt_gap_reflection_positive. gsh_lt_gap_reflection_positive + S 0 = m) /\\ ((exists gsh_le_gap_reflection_bounded. gsh_le_gap_reflection_bounded + m = h) /\\ r + m = p))",
       "statement_sha256": "21340ba8cac4dadbe4d915eeae894f4536c8958bde6199cfeb75f4df6dac23bf",
       "status": "candidate_body_checked",
@@ -133425,12 +133377,12 @@
       "scope": "candidate",
       "script_sha256": "5e792182e25bc6ee792c6f6587299ca7476c907cad9ac6ba59df18b496e5483a",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/gauss_signed_half_candidate.py#L227",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/gauss_signed_half_candidate.py#L225",
         "kind": "declaration",
-        "line": 227,
+        "line": 225,
         "owner_module": "gauss_signed_half_candidate",
         "path": "peano-lab/py/peano_lab/library/gauss_signed_half_candidate.py",
-        "sha256": "58560f6eb0719f3fcb7b73e822f7b3fbe287ed4fb3ba455843893019dad8e557"
+        "sha256": "304bc76bbf33254fb15c3e1adb94af99303da03a99709b1e23b05e8a0f8d3d74"
       },
       "spec_sha256": "5d331ce7252d63b7292cf8debb8128462afb309b0752f2ef4df10d1c775dddfc",
       "statement": "forall p h a x q r. p = 2 * h + 1 -> a * x = q * p + r -> (exists gsh_lt_gap_product_remainder. gsh_lt_gap_product_remainder + S r = p) -> ~(r = 0) -> (exists m. (exists gsh_lt_gap_product_positive. gsh_lt_gap_product_positive + S 0 = m) /\\ ((exists gsh_le_gap_product_bounded. gsh_le_gap_product_bounded + m = h) /\\ ((exists gsh_mod_left_product_lower gsh_mod_right_product_lower. (a * x) + p * gsh_mod_left_product_lower = (m) + p * gsh_mod_right_product_lower) \\/ (exists gsh_mod_left_product_upper gsh_mod_right_product_upper. (a * x) + p * gsh_mod_left_product_upper = ((2 * h) * m) + p * gsh_mod_right_product_upper))))",
@@ -139382,7 +139334,7 @@
         "line": 675,
         "owner_module": "gauss_magnitude_permutation_candidate",
         "path": "peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py",
-        "sha256": "239ac23b752c745b4296f65ecf21aace87a351d3c10dfb0214cad90ce1c8c84a"
+        "sha256": "57bec9007ee6473f20b9e326b604c6710827e92b5e9dc6084aacddb93ee61db3"
       },
       "spec_sha256": "8a244f56785caeb995bfe58a34ef1b6d733e15a49102b578732620ce616f4ec7",
       "statement": "forall p h a b c mb mc sb sc l. (forall gsp_index_magnitude_range_source. (exists gsp_lt_gap_magnitude_range_source_index_bound. gsp_lt_gap_magnitude_range_source_index_bound + S gsp_index_magnitude_range_source = l) -> (exists gsp_value_magnitude_range_source_entry gsp_magnitude_magnitude_range_source_entry gsp_sign_magnitude_range_source_entry. (((exists ff_h_gsp_magnitude_range_source_entry_source. ff_h_gsp_magnitude_range_source_entry_source + S (gsp_value_magnitude_range_source_entry) = S ((S (gsp_index_magnitude_range_source)) * c)) /\\ exists ff_q_gsp_magnitude_range_source_entry_source. b = ff_q_gsp_magnitude_range_source_entry_source * S ((S (gsp_index_magnitude_range_source)) * c) + (gsp_value_magnitude_range_source_entry))) /\\ ((((exists ff_h_gsp_magnitude_range_source_entry_magnitude. ff_h_gsp_magnitude_range_source_entry_magnitude + S (gsp_magnitude_magnitude_range_source_entry) = S ((S (gsp_index_magnitude_range_source)) * mc)) /\\ exists ff_q_gsp_magnitude_range_source_entry_magnitude. mb = ff_q_gsp_magnitude_range_source_entry_magnitude * S ((S (gsp_index_magnitude_range_source)) * mc) + (gsp_magnitude_magnitude_range_source_entry))) /\\ ((((exists ff_h_gsp_magnitude_range_source_entry_sign. ff_h_gsp_magnitude_range_source_entry_sign + S (gsp_sign_magnitude_range_source_entry) = S ((S (gsp_index_magnitude_range_source)) * sc)) /\\ exists ff_q_gsp_magnitude_range_source_entry_sign. sb = ff_q_gsp_magnitude_range_source_entry_sign * S ((S (gsp_index_magnitude_range_source)) * sc) + (gsp_sign_magnitude_range_source_entry))) /\\ ((exists gsp_lt_gap_magnitude_range_source_entry_positive. gsp_lt_gap_magnitude_range_source_entry_positive + S 0 = gsp_magnitude_magnitude_range_source_entry) /\\ ((exists gsp_le_gap_magnitude_range_source_entry_bounded. gsp_le_gap_magnitude_range_source_entry_bounded + gsp_magnitude_magnitude_range_source_entry = h) /\\ ((gsp_sign_magnitude_range_source_entry = 0 \\/ gsp_sign_magnitude_range_source_entry = 1) /\\ (((gsp_sign_magnitude_range_source_entry = 0 /\\ (exists gsp_mod_left_magnitude_range_source_entry_lower gsp_mod_right_magnitude_range_source_entry_lower. (a * gsp_value_magnitude_range_source_entry) + p * gsp_mod_left_magnitude_range_source_entry_lower = (gsp_magnitude_magnitude_range_source_entry) + p * gsp_mod_right_magnitude_range_source_entry_lower)) \\/ (gsp_sign_magnitude_range_source_entry = 1 /\\ (exists gsp_mod_left_magnitude_range_source_entry_reflected gsp_mod_right_magnitude_range_source_entry_reflected. (a * gsp_value_magnitude_range_source_entry) + p * gsp_mod_left_magnitude_range_source_entry_reflected = ((2 * h) * gsp_magnitude_magnitude_range_source_entry) + p * gsp_mod_right_magnitude_range_source_entry_reflected))))))))))) -> (forall gmp_index_magnitude_range_result. (exists gsp_lt_gap_magnitude_range_result_index_bound. gsp_lt_gap_magnitude_range_result_index_bound + S gmp_index_magnitude_range_result = l) -> exists gmp_magnitude_magnitude_range_result. ((((exists ff_h_gmp_magnitude_range_result_decoded. ff_h_gmp_magnitude_range_result_decoded + S (gmp_magnitude_magnitude_range_result) = S ((S (gmp_index_magnitude_range_result)) * mc)) /\\ exists ff_q_gmp_magnitude_range_result_decoded. mb = ff_q_gmp_magnitude_range_result_decoded * S ((S (gmp_index_magnitude_range_result)) * mc) + (gmp_magnitude_magnitude_range_result))) /\\ ((exists gsp_lt_gap_magnitude_range_result_positive. gsp_lt_gap_magnitude_range_result_positive + S 0 = gmp_magnitude_magnitude_range_result) /\\ (exists gsp_le_gap_magnitude_range_result_bounded. gsp_le_gap_magnitude_range_result_bounded + gmp_magnitude_magnitude_range_result = h))))",
@@ -140049,7 +140001,7 @@
         "line": 715,
         "owner_module": "gauss_magnitude_permutation_candidate",
         "path": "peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py",
-        "sha256": "239ac23b752c745b4296f65ecf21aace87a351d3c10dfb0214cad90ce1c8c84a"
+        "sha256": "57bec9007ee6473f20b9e326b604c6710827e92b5e9dc6084aacddb93ee61db3"
       },
       "spec_sha256": "da1f872face593bfdfcbce7a1a9c02b3fc9f09c170827764964753edd2fe5f65",
       "statement": "forall p a x y t. ((~(p = 1) /\\ forall gsp_prime_left_collision_prime gsp_prime_right_collision_prime. p = gsp_prime_left_collision_prime * gsp_prime_right_collision_prime -> gsp_prime_left_collision_prime = 1 \\/ gsp_prime_right_collision_prime = 1)) -> (~(exists gsp_divisor_factor_collision_multiplier. a = p * gsp_divisor_factor_collision_multiplier)) -> (exists gsp_lt_gap_collision_x_bound. gsp_lt_gap_collision_x_bound + S x = p) -> (exists gsp_lt_gap_collision_y_bound. gsp_lt_gap_collision_y_bound + S y = p) -> (exists gmp_mod_left_same_target_x gmp_mod_right_same_target_x. (a * x) + p * gmp_mod_left_same_target_x = (t) + p * gmp_mod_right_same_target_x) -> (exists gmp_mod_left_same_target_y gmp_mod_right_same_target_y. (a * y) + p * gmp_mod_left_same_target_y = (t) + p * gmp_mod_right_same_target_y) -> x = y",
@@ -140596,7 +140548,7 @@
         "line": 771,
         "owner_module": "gauss_magnitude_permutation_candidate",
         "path": "peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py",
-        "sha256": "239ac23b752c745b4296f65ecf21aace87a351d3c10dfb0214cad90ce1c8c84a"
+        "sha256": "57bec9007ee6473f20b9e326b604c6710827e92b5e9dc6084aacddb93ee61db3"
       },
       "spec_sha256": "b728799befd899b9117ca80035199955f0285ef39b07721caf08e3cdc860c9cd",
       "statement": "forall p h a x y m. ((~(p = 1) /\\ forall gsp_prime_left_collision_prime gsp_prime_right_collision_prime. p = gsp_prime_left_collision_prime * gsp_prime_right_collision_prime -> gsp_prime_left_collision_prime = 1 \\/ gsp_prime_right_collision_prime = 1)) -> (~(exists gsp_divisor_factor_collision_multiplier. a = p * gsp_divisor_factor_collision_multiplier)) -> (exists gsp_lt_gap_collision_x_bound. gsp_lt_gap_collision_x_bound + S x = p) -> (exists gsp_lt_gap_collision_y_bound. gsp_lt_gap_collision_y_bound + S y = p) -> ((((exists gmp_mod_left_same_sign_x_lower gmp_mod_right_same_sign_x_lower. (a * x) + p * gmp_mod_left_same_sign_x_lower = (m) + p * gmp_mod_right_same_sign_x_lower) /\\ (exists gmp_mod_left_same_sign_y_lower gmp_mod_right_same_sign_y_lower. (a * y) + p * gmp_mod_left_same_sign_y_lower = (m) + p * gmp_mod_right_same_sign_y_lower)) \\/ ((exists gmp_mod_left_same_sign_x_reflected gmp_mod_right_same_sign_x_reflected. (a * x) + p * gmp_mod_left_same_sign_x_reflected = ((2 * h) * m) + p * gmp_mod_right_same_sign_x_reflected) /\\ (exists gmp_mod_left_same_sign_y_reflected gmp_mod_right_same_sign_y_reflected. (a * y) + p * gmp_mod_left_same_sign_y_reflected = ((2 * h) * m) + p * gmp_mod_right_same_sign_y_reflected)))) -> x = y",
@@ -141932,7 +141884,7 @@
         "line": 819,
         "owner_module": "gauss_magnitude_permutation_candidate",
         "path": "peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py",
-        "sha256": "239ac23b752c745b4296f65ecf21aace87a351d3c10dfb0214cad90ce1c8c84a"
+        "sha256": "57bec9007ee6473f20b9e326b604c6710827e92b5e9dc6084aacddb93ee61db3"
       },
       "spec_sha256": "93c8703ca81c1e0ddbcdcf11e37ecce7befc1dbd1905fc1c8e3e83483ee05aef",
       "statement": "forall p h a x y m. p = 2 * h + 1 -> ((~(p = 1) /\\ forall gsp_prime_left_collision_prime gsp_prime_right_collision_prime. p = gsp_prime_left_collision_prime * gsp_prime_right_collision_prime -> gsp_prime_left_collision_prime = 1 \\/ gsp_prime_right_collision_prime = 1)) -> (~(exists gsp_divisor_factor_collision_multiplier. a = p * gsp_divisor_factor_collision_multiplier)) -> (exists gsp_lt_gap_mixed_sum_bound. gsp_lt_gap_mixed_sum_bound + S (x + y) = p) -> ~(x + y = 0) -> (exists gmp_mod_left_mixed_x_lower gmp_mod_right_mixed_x_lower. (a * x) + p * gmp_mod_left_mixed_x_lower = (m) + p * gmp_mod_right_mixed_x_lower) -> (exists gmp_mod_left_mixed_y_reflected gmp_mod_right_mixed_y_reflected. (a * y) + p * gmp_mod_left_mixed_y_reflected = ((2 * h) * m) + p * gmp_mod_right_mixed_y_reflected) -> false",
@@ -142016,13 +141968,6 @@
         },
         {
           "body_reference": true,
-          "explicit_reference_count": 1,
-          "href": "PA0009.html",
-          "name": "add_assoc",
-          "tag": "PA0009"
-        },
-        {
-          "body_reference": true,
           "explicit_reference_count": 4,
           "href": "PA0033.html",
           "name": "lt_of_le_of_lt",
@@ -142085,7 +142030,7 @@
         "kind": "generated_structural_guide",
         "paragraphs": [
           "The positive signed-half magnitude prefix is injective over the full beta-coded half range.",
-          "Use the direct prerequisites beta_at_unique, beta_half_range_entry_bounds, beta_range_entry_eq, add_succ_left, zero_add, add_le_add_right, add_le_add_left, le_trans, mul_succ_left, mul_zero_left, add_assoc, lt_of_le_of_lt, add_eq_zero_left, add_comm, gauss_same_sign_scaled_source_unique, gauss_mixed_sign_scaled_source_impossible, beta_range_injective as previously established PA formulas.",
+          "Use the direct prerequisites beta_at_unique, beta_half_range_entry_bounds, beta_range_entry_eq, add_succ_left, zero_add, add_le_add_right, add_le_add_left, le_trans, mul_succ_left, mul_zero_left, lt_of_le_of_lt, add_eq_zero_left, add_comm, gauss_same_sign_scaled_source_unique, gauss_mixed_sign_scaled_source_impossible, beta_range_injective as previously established PA formulas.",
           "The proof proceeds by case analysis (29), intermediate claims (24), equality transport (10), certified simplification (1)."
         ],
         "references": [
@@ -142138,11 +142083,6 @@
             "href": "PA000D.html",
             "name": "mul_zero_left",
             "tag": "PA000D"
-          },
-          {
-            "href": "PA0009.html",
-            "name": "add_assoc",
-            "tag": "PA0009"
           },
           {
             "href": "PA0033.html",
@@ -144444,20 +144384,12 @@
               "name": "add_succ_left",
               "start": 46,
               "tag": "PA000E"
-            },
-            {
-              "end": 70,
-              "href": "PA0009.html",
-              "kind": "theorem",
-              "name": "add_assoc",
-              "start": 61,
-              "tag": "PA0009"
             }
           ],
-          "stable_id": "46dab40dc6891a8c",
+          "stable_id": "5e1a9a452e634ce7",
           "tactic": "simp",
           "tactic_href": "../foundations.html#tactic-simp",
-          "text": "simp [mul_succ_left, mul_zero_left, zero_add, add_succ_left, add_assoc]"
+          "text": "simp [mul_succ_left, mul_zero_left, zero_add, add_succ_left]"
         },
         {
           "axiom_references": [],
@@ -146015,16 +145947,16 @@
       ],
       "name": "gauss_signed_half_magnitude_injective",
       "scope": "candidate",
-      "script_sha256": "c866f98fe4907439e2da93b8e7c758122de6601f6d16017914d9639c7a89e6b6",
+      "script_sha256": "1c70de5653e82d179e65f2235e35eec047d448f52eff27cac1e8d14c20c25594",
       "source": {
         "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py#L930",
         "kind": "declaration",
         "line": 930,
         "owner_module": "gauss_magnitude_permutation_candidate",
         "path": "peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py",
-        "sha256": "239ac23b752c745b4296f65ecf21aace87a351d3c10dfb0214cad90ce1c8c84a"
+        "sha256": "57bec9007ee6473f20b9e326b604c6710827e92b5e9dc6084aacddb93ee61db3"
       },
-      "spec_sha256": "2f6a05142dc0accf1cfa5a7359ff12d4a1be7bfd597ee831e066ac43e2f818bc",
+      "spec_sha256": "0c8c30cb3b3fdc770b8b447cb4782178afae2254510819d1ae1b27d09502790e",
       "statement": "forall p h a b c mb mc sb sc. p = 2 * h + 1 -> ((~(p = 1) /\\ forall gsp_prime_left_collision_prime gsp_prime_right_collision_prime. p = gsp_prime_left_collision_prime * gsp_prime_right_collision_prime -> gsp_prime_left_collision_prime = 1 \\/ gsp_prime_right_collision_prime = 1)) -> (~(exists gsp_divisor_factor_collision_multiplier. a = p * gsp_divisor_factor_collision_multiplier)) -> (forall gsp_range_index_injective_source. (exists gsp_lt_gap_injective_source_range_bound. gsp_lt_gap_injective_source_range_bound + S gsp_range_index_injective_source = h) -> (((exists gsp_beta_height_injective_source_range_entry. gsp_beta_height_injective_source_range_entry + S (1 + gsp_range_index_injective_source) = S ((S (gsp_range_index_injective_source)) * c)) /\\ exists gsp_beta_quotient_injective_source_range_entry. b = gsp_beta_quotient_injective_source_range_entry * S ((S (gsp_range_index_injective_source)) * c) + (1 + gsp_range_index_injective_source)))) -> (forall gsp_index_injective_signed_source. (exists gsp_lt_gap_injective_signed_source_index_bound. gsp_lt_gap_injective_signed_source_index_bound + S gsp_index_injective_signed_source = h) -> (exists gsp_value_injective_signed_source_entry gsp_magnitude_injective_signed_source_entry gsp_sign_injective_signed_source_entry. (((exists ff_h_gsp_injective_signed_source_entry_source. ff_h_gsp_injective_signed_source_entry_source + S (gsp_value_injective_signed_source_entry) = S ((S (gsp_index_injective_signed_source)) * c)) /\\ exists ff_q_gsp_injective_signed_source_entry_source. b = ff_q_gsp_injective_signed_source_entry_source * S ((S (gsp_index_injective_signed_source)) * c) + (gsp_value_injective_signed_source_entry))) /\\ ((((exists ff_h_gsp_injective_signed_source_entry_magnitude. ff_h_gsp_injective_signed_source_entry_magnitude + S (gsp_magnitude_injective_signed_source_entry) = S ((S (gsp_index_injective_signed_source)) * mc)) /\\ exists ff_q_gsp_injective_signed_source_entry_magnitude. mb = ff_q_gsp_injective_signed_source_entry_magnitude * S ((S (gsp_index_injective_signed_source)) * mc) + (gsp_magnitude_injective_signed_source_entry))) /\\ ((((exists ff_h_gsp_injective_signed_source_entry_sign. ff_h_gsp_injective_signed_source_entry_sign + S (gsp_sign_injective_signed_source_entry) = S ((S (gsp_index_injective_signed_source)) * sc)) /\\ exists ff_q_gsp_injective_signed_source_entry_sign. sb = ff_q_gsp_injective_signed_source_entry_sign * S ((S (gsp_index_injective_signed_source)) * sc) + (gsp_sign_injective_signed_source_entry))) /\\ ((exists gsp_lt_gap_injective_signed_source_entry_positive. gsp_lt_gap_injective_signed_source_entry_positive + S 0 = gsp_magnitude_injective_signed_source_entry) /\\ ((exists gsp_le_gap_injective_signed_source_entry_bounded. gsp_le_gap_injective_signed_source_entry_bounded + gsp_magnitude_injective_signed_source_entry = h) /\\ ((gsp_sign_injective_signed_source_entry = 0 \\/ gsp_sign_injective_signed_source_entry = 1) /\\ (((gsp_sign_injective_signed_source_entry = 0 /\\ (exists gsp_mod_left_injective_signed_source_entry_lower gsp_mod_right_injective_signed_source_entry_lower. (a * gsp_value_injective_signed_source_entry) + p * gsp_mod_left_injective_signed_source_entry_lower = (gsp_magnitude_injective_signed_source_entry) + p * gsp_mod_right_injective_signed_source_entry_lower)) \\/ (gsp_sign_injective_signed_source_entry = 1 /\\ (exists gsp_mod_left_injective_signed_source_entry_reflected gsp_mod_right_injective_signed_source_entry_reflected. (a * gsp_value_injective_signed_source_entry) + p * gsp_mod_left_injective_signed_source_entry_reflected = ((2 * h) * gsp_magnitude_injective_signed_source_entry) + p * gsp_mod_right_injective_signed_source_entry_reflected))))))))))) -> (forall fp_i_signed_magnitude_injective fp_j_signed_magnitude_injective fp_value_signed_magnitude_injective. (exists fp_gap_signed_magnitude_injective_i. fp_gap_signed_magnitude_injective_i + S fp_i_signed_magnitude_injective = h) -> (exists fp_gap_signed_magnitude_injective_j. fp_gap_signed_magnitude_injective_j + S fp_j_signed_magnitude_injective = h) -> (((exists ff_h_signed_magnitude_injective_left. ff_h_signed_magnitude_injective_left + S (fp_value_signed_magnitude_injective) = S ((S (fp_i_signed_magnitude_injective)) * mc)) /\\ exists ff_q_signed_magnitude_injective_left. mb = ff_q_signed_magnitude_injective_left * S ((S (fp_i_signed_magnitude_injective)) * mc) + (fp_value_signed_magnitude_injective))) -> (((exists ff_h_signed_magnitude_injective_right. ff_h_signed_magnitude_injective_right + S (fp_value_signed_magnitude_injective) = S ((S (fp_j_signed_magnitude_injective)) * mc)) /\\ exists ff_q_signed_magnitude_injective_right. mb = ff_q_signed_magnitude_injective_right * S ((S (fp_j_signed_magnitude_injective)) * mc) + (fp_value_signed_magnitude_injective))) -> fp_i_signed_magnitude_injective = fp_j_signed_magnitude_injective)",
       "statement_sha256": "c5f09554188dfba92fb9404757a9733382fb9b76f2a9c6cf9e18e99e81c4ab4d",
       "status": "candidate_body_checked",
@@ -147537,12 +147469,12 @@
       "scope": "candidate",
       "script_sha256": "8557fad783aafc68a936a7d23993def5d0e3944683784748185d8b6c91cda52b",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py#L1240",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py#L1239",
         "kind": "declaration",
-        "line": 1240,
+        "line": 1239,
         "owner_module": "gauss_magnitude_permutation_candidate",
         "path": "peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py",
-        "sha256": "239ac23b752c745b4296f65ecf21aace87a351d3c10dfb0214cad90ce1c8c84a"
+        "sha256": "57bec9007ee6473f20b9e326b604c6710827e92b5e9dc6084aacddb93ee61db3"
       },
       "spec_sha256": "d6073ab7bdedf3e95efdb50c42034e1335c76f428a5ffe694cac010365631c69",
       "statement": "forall mb mc H l. (forall gmp_index_predecessor_recode_range. (exists gsp_lt_gap_predecessor_recode_range_index_bound. gsp_lt_gap_predecessor_recode_range_index_bound + S gmp_index_predecessor_recode_range = l) -> exists gmp_magnitude_predecessor_recode_range. ((((exists ff_h_gmp_predecessor_recode_range_decoded. ff_h_gmp_predecessor_recode_range_decoded + S (gmp_magnitude_predecessor_recode_range) = S ((S (gmp_index_predecessor_recode_range)) * mc)) /\\ exists ff_q_gmp_predecessor_recode_range_decoded. mb = ff_q_gmp_predecessor_recode_range_decoded * S ((S (gmp_index_predecessor_recode_range)) * mc) + (gmp_magnitude_predecessor_recode_range))) /\\ ((exists gsp_lt_gap_predecessor_recode_range_positive. gsp_lt_gap_predecessor_recode_range_positive + S 0 = gmp_magnitude_predecessor_recode_range) /\\ (exists gsp_le_gap_predecessor_recode_range_bounded. gsp_le_gap_predecessor_recode_range_bounded + gmp_magnitude_predecessor_recode_range = H)))) -> (exists rb rc. (forall gmp_index_predecessor_recode_result gmp_predecessor_predecessor_recode_result. (exists gsp_lt_gap_predecessor_recode_result_index_bound. gsp_lt_gap_predecessor_recode_result_index_bound + S gmp_index_predecessor_recode_result = l) -> (((exists gsp_beta_height_gmp_predecessor_recode_result_source. gsp_beta_height_gmp_predecessor_recode_result_source + S (S gmp_predecessor_predecessor_recode_result) = S ((S (gmp_index_predecessor_recode_result)) * mc)) /\\ exists gsp_beta_quotient_gmp_predecessor_recode_result_source. mb = gsp_beta_quotient_gmp_predecessor_recode_result_source * S ((S (gmp_index_predecessor_recode_result)) * mc) + (S gmp_predecessor_predecessor_recode_result))) -> (((exists ff_h_gmp_predecessor_recode_result_target. ff_h_gmp_predecessor_recode_result_target + S (gmp_predecessor_predecessor_recode_result) = S ((S (gmp_index_predecessor_recode_result)) * rc)) /\\ exists ff_q_gmp_predecessor_recode_result_target. rb = ff_q_gmp_predecessor_recode_result_target * S ((S (gmp_index_predecessor_recode_result)) * rc) + (gmp_predecessor_predecessor_recode_result)))))",
@@ -148049,12 +147981,12 @@
       "scope": "candidate",
       "script_sha256": "7162f32d75b898f11eeb1f4d614a1773dc1a8921835496dbc775aba29169746f",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py#L1366",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py#L1365",
         "kind": "declaration",
-        "line": 1366,
+        "line": 1365,
         "owner_module": "gauss_magnitude_permutation_candidate",
         "path": "peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py",
-        "sha256": "239ac23b752c745b4296f65ecf21aace87a351d3c10dfb0214cad90ce1c8c84a"
+        "sha256": "57bec9007ee6473f20b9e326b604c6710827e92b5e9dc6084aacddb93ee61db3"
       },
       "spec_sha256": "6aa7077ac3cdf97ccfaff7e473b4b10d490a64121b218910288a9f0c6738daf0",
       "statement": "forall p h a b c mb mc sb sc. (forall gsp_index_injective_signed_source. (exists gsp_lt_gap_injective_signed_source_index_bound. gsp_lt_gap_injective_signed_source_index_bound + S gsp_index_injective_signed_source = h) -> (exists gsp_value_injective_signed_source_entry gsp_magnitude_injective_signed_source_entry gsp_sign_injective_signed_source_entry. (((exists ff_h_gsp_injective_signed_source_entry_source. ff_h_gsp_injective_signed_source_entry_source + S (gsp_value_injective_signed_source_entry) = S ((S (gsp_index_injective_signed_source)) * c)) /\\ exists ff_q_gsp_injective_signed_source_entry_source. b = ff_q_gsp_injective_signed_source_entry_source * S ((S (gsp_index_injective_signed_source)) * c) + (gsp_value_injective_signed_source_entry))) /\\ ((((exists ff_h_gsp_injective_signed_source_entry_magnitude. ff_h_gsp_injective_signed_source_entry_magnitude + S (gsp_magnitude_injective_signed_source_entry) = S ((S (gsp_index_injective_signed_source)) * mc)) /\\ exists ff_q_gsp_injective_signed_source_entry_magnitude. mb = ff_q_gsp_injective_signed_source_entry_magnitude * S ((S (gsp_index_injective_signed_source)) * mc) + (gsp_magnitude_injective_signed_source_entry))) /\\ ((((exists ff_h_gsp_injective_signed_source_entry_sign. ff_h_gsp_injective_signed_source_entry_sign + S (gsp_sign_injective_signed_source_entry) = S ((S (gsp_index_injective_signed_source)) * sc)) /\\ exists ff_q_gsp_injective_signed_source_entry_sign. sb = ff_q_gsp_injective_signed_source_entry_sign * S ((S (gsp_index_injective_signed_source)) * sc) + (gsp_sign_injective_signed_source_entry))) /\\ ((exists gsp_lt_gap_injective_signed_source_entry_positive. gsp_lt_gap_injective_signed_source_entry_positive + S 0 = gsp_magnitude_injective_signed_source_entry) /\\ ((exists gsp_le_gap_injective_signed_source_entry_bounded. gsp_le_gap_injective_signed_source_entry_bounded + gsp_magnitude_injective_signed_source_entry = h) /\\ ((gsp_sign_injective_signed_source_entry = 0 \\/ gsp_sign_injective_signed_source_entry = 1) /\\ (((gsp_sign_injective_signed_source_entry = 0 /\\ (exists gsp_mod_left_injective_signed_source_entry_lower gsp_mod_right_injective_signed_source_entry_lower. (a * gsp_value_injective_signed_source_entry) + p * gsp_mod_left_injective_signed_source_entry_lower = (gsp_magnitude_injective_signed_source_entry) + p * gsp_mod_right_injective_signed_source_entry_lower)) \\/ (gsp_sign_injective_signed_source_entry = 1 /\\ (exists gsp_mod_left_injective_signed_source_entry_reflected gsp_mod_right_injective_signed_source_entry_reflected. (a * gsp_value_injective_signed_source_entry) + p * gsp_mod_left_injective_signed_source_entry_reflected = ((2 * h) * gsp_magnitude_injective_signed_source_entry) + p * gsp_mod_right_injective_signed_source_entry_reflected))))))))))) -> (exists rb rc. (forall gmp_index_signed_predecessor_recode_result gmp_predecessor_signed_predecessor_recode_result. (exists gsp_lt_gap_signed_predecessor_recode_result_index_bound. gsp_lt_gap_signed_predecessor_recode_result_index_bound + S gmp_index_signed_predecessor_recode_result = h) -> (((exists gsp_beta_height_gmp_signed_predecessor_recode_result_source. gsp_beta_height_gmp_signed_predecessor_recode_result_source + S (S gmp_predecessor_signed_predecessor_recode_result) = S ((S (gmp_index_signed_predecessor_recode_result)) * mc)) /\\ exists gsp_beta_quotient_gmp_signed_predecessor_recode_result_source. mb = gsp_beta_quotient_gmp_signed_predecessor_recode_result_source * S ((S (gmp_index_signed_predecessor_recode_result)) * mc) + (S gmp_predecessor_signed_predecessor_recode_result))) -> (((exists ff_h_gmp_signed_predecessor_recode_result_target. ff_h_gmp_signed_predecessor_recode_result_target + S (gmp_predecessor_signed_predecessor_recode_result) = S ((S (gmp_index_signed_predecessor_recode_result)) * rc)) /\\ exists ff_q_gmp_signed_predecessor_recode_result_target. rb = ff_q_gmp_signed_predecessor_recode_result_target * S ((S (gmp_index_signed_predecessor_recode_result)) * rc) + (gmp_predecessor_signed_predecessor_recode_result)))))",
@@ -163577,12 +163509,12 @@
       "scope": "candidate",
       "script_sha256": "f8232e3df44f20031bea1cf8ae31c5a40c288b89efeee05dd8cc9ce3b8d8a44e",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py#L1480",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py#L1479",
         "kind": "declaration",
-        "line": 1480,
+        "line": 1479,
         "owner_module": "gauss_magnitude_permutation_candidate",
         "path": "peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py",
-        "sha256": "239ac23b752c745b4296f65ecf21aace87a351d3c10dfb0214cad90ce1c8c84a"
+        "sha256": "57bec9007ee6473f20b9e326b604c6710827e92b5e9dc6084aacddb93ee61db3"
       },
       "spec_sha256": "fd855cfffb7b0f47b60916bed30e31ca926a48cf1c3ef10f4c0fcbdab6515278",
       "statement": "forall mb mc rb rc l. (forall gmp_index_predecessor_transport_finite_range. (exists gsp_lt_gap_predecessor_transport_finite_range_index_bound. gsp_lt_gap_predecessor_transport_finite_range_index_bound + S gmp_index_predecessor_transport_finite_range = l) -> exists gmp_magnitude_predecessor_transport_finite_range. ((((exists ff_h_gmp_predecessor_transport_finite_range_decoded. ff_h_gmp_predecessor_transport_finite_range_decoded + S (gmp_magnitude_predecessor_transport_finite_range) = S ((S (gmp_index_predecessor_transport_finite_range)) * mc)) /\\ exists ff_q_gmp_predecessor_transport_finite_range_decoded. mb = ff_q_gmp_predecessor_transport_finite_range_decoded * S ((S (gmp_index_predecessor_transport_finite_range)) * mc) + (gmp_magnitude_predecessor_transport_finite_range))) /\\ ((exists gsp_lt_gap_predecessor_transport_finite_range_positive. gsp_lt_gap_predecessor_transport_finite_range_positive + S 0 = gmp_magnitude_predecessor_transport_finite_range) /\\ (exists gsp_le_gap_predecessor_transport_finite_range_bounded. gsp_le_gap_predecessor_transport_finite_range_bounded + gmp_magnitude_predecessor_transport_finite_range = l)))) -> (forall gmp_index_predecessor_transport_recode gmp_predecessor_predecessor_transport_recode. (exists gsp_lt_gap_predecessor_transport_recode_index_bound. gsp_lt_gap_predecessor_transport_recode_index_bound + S gmp_index_predecessor_transport_recode = l) -> (((exists gsp_beta_height_gmp_predecessor_transport_recode_source. gsp_beta_height_gmp_predecessor_transport_recode_source + S (S gmp_predecessor_predecessor_transport_recode) = S ((S (gmp_index_predecessor_transport_recode)) * mc)) /\\ exists gsp_beta_quotient_gmp_predecessor_transport_recode_source. mb = gsp_beta_quotient_gmp_predecessor_transport_recode_source * S ((S (gmp_index_predecessor_transport_recode)) * mc) + (S gmp_predecessor_predecessor_transport_recode))) -> (((exists ff_h_gmp_predecessor_transport_recode_target. ff_h_gmp_predecessor_transport_recode_target + S (gmp_predecessor_predecessor_transport_recode) = S ((S (gmp_index_predecessor_transport_recode)) * rc)) /\\ exists ff_q_gmp_predecessor_transport_recode_target. rb = ff_q_gmp_predecessor_transport_recode_target * S ((S (gmp_index_predecessor_transport_recode)) * rc) + (gmp_predecessor_predecessor_transport_recode)))) -> (forall fp_i_predecessor_transport_bounded_result. (exists fp_gap_predecessor_transport_bounded_result_index. fp_gap_predecessor_transport_bounded_result_index + S fp_i_predecessor_transport_bounded_result = l) -> exists fp_value_predecessor_transport_bounded_result. ((((exists ff_h_predecessor_transport_bounded_result_entry. ff_h_predecessor_transport_bounded_result_entry + S (fp_value_predecessor_transport_bounded_result) = S ((S (fp_i_predecessor_transport_bounded_result)) * rc)) /\\ exists ff_q_predecessor_transport_bounded_result_entry. rb = ff_q_predecessor_transport_bounded_result_entry * S ((S (fp_i_predecessor_transport_bounded_result)) * rc) + (fp_value_predecessor_transport_bounded_result))) /\\ (exists fp_gap_predecessor_transport_bounded_result_value. fp_gap_predecessor_transport_bounded_result_value + S fp_value_predecessor_transport_bounded_result = l)))",
@@ -164358,12 +164290,12 @@
       "scope": "candidate",
       "script_sha256": "49734fb52141b01e56809693d98cf392c7562df9ce655d8e1d16eb084eec2fda",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py#L1407",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py#L1406",
         "kind": "declaration",
-        "line": 1407,
+        "line": 1406,
         "owner_module": "gauss_magnitude_permutation_candidate",
         "path": "peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py",
-        "sha256": "239ac23b752c745b4296f65ecf21aace87a351d3c10dfb0214cad90ce1c8c84a"
+        "sha256": "57bec9007ee6473f20b9e326b604c6710827e92b5e9dc6084aacddb93ee61db3"
       },
       "spec_sha256": "413fd31f8fc3cd6a5a7d6c30619b12ecbb46188dffa2c13aa714f15eba9f9d09",
       "statement": "forall mb mc rb rc H l i r. (forall gmp_index_predecessor_transport_range. (exists gsp_lt_gap_predecessor_transport_range_index_bound. gsp_lt_gap_predecessor_transport_range_index_bound + S gmp_index_predecessor_transport_range = l) -> exists gmp_magnitude_predecessor_transport_range. ((((exists ff_h_gmp_predecessor_transport_range_decoded. ff_h_gmp_predecessor_transport_range_decoded + S (gmp_magnitude_predecessor_transport_range) = S ((S (gmp_index_predecessor_transport_range)) * mc)) /\\ exists ff_q_gmp_predecessor_transport_range_decoded. mb = ff_q_gmp_predecessor_transport_range_decoded * S ((S (gmp_index_predecessor_transport_range)) * mc) + (gmp_magnitude_predecessor_transport_range))) /\\ ((exists gsp_lt_gap_predecessor_transport_range_positive. gsp_lt_gap_predecessor_transport_range_positive + S 0 = gmp_magnitude_predecessor_transport_range) /\\ (exists gsp_le_gap_predecessor_transport_range_bounded. gsp_le_gap_predecessor_transport_range_bounded + gmp_magnitude_predecessor_transport_range = H)))) -> (forall gmp_index_predecessor_transport_recode gmp_predecessor_predecessor_transport_recode. (exists gsp_lt_gap_predecessor_transport_recode_index_bound. gsp_lt_gap_predecessor_transport_recode_index_bound + S gmp_index_predecessor_transport_recode = l) -> (((exists gsp_beta_height_gmp_predecessor_transport_recode_source. gsp_beta_height_gmp_predecessor_transport_recode_source + S (S gmp_predecessor_predecessor_transport_recode) = S ((S (gmp_index_predecessor_transport_recode)) * mc)) /\\ exists gsp_beta_quotient_gmp_predecessor_transport_recode_source. mb = gsp_beta_quotient_gmp_predecessor_transport_recode_source * S ((S (gmp_index_predecessor_transport_recode)) * mc) + (S gmp_predecessor_predecessor_transport_recode))) -> (((exists ff_h_gmp_predecessor_transport_recode_target. ff_h_gmp_predecessor_transport_recode_target + S (gmp_predecessor_predecessor_transport_recode) = S ((S (gmp_index_predecessor_transport_recode)) * rc)) /\\ exists ff_q_gmp_predecessor_transport_recode_target. rb = ff_q_gmp_predecessor_transport_recode_target * S ((S (gmp_index_predecessor_transport_recode)) * rc) + (gmp_predecessor_predecessor_transport_recode)))) -> (exists gsp_lt_gap_predecessor_transport_index_bound. gsp_lt_gap_predecessor_transport_index_bound + S i = l) -> (((exists ff_h_gmp_predecessor_transport_target_entry. ff_h_gmp_predecessor_transport_target_entry + S (r) = S ((S (i)) * rc)) /\\ exists ff_q_gmp_predecessor_transport_target_entry. rb = ff_q_gmp_predecessor_transport_target_entry * S ((S (i)) * rc) + (r))) -> (((exists gsp_beta_height_predecessor_transport_source_entry. gsp_beta_height_predecessor_transport_source_entry + S (S r) = S ((S (i)) * mc)) /\\ exists gsp_beta_quotient_predecessor_transport_source_entry. mb = gsp_beta_quotient_predecessor_transport_source_entry * S ((S (i)) * mc) + (S r)))",
@@ -165110,12 +165042,12 @@
       "scope": "candidate",
       "script_sha256": "aa970e62eff779e8b5c04029e86151efbe615c0e24ddb778e16a3fb2777736b6",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py#L1531",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py#L1530",
         "kind": "declaration",
-        "line": 1531,
+        "line": 1530,
         "owner_module": "gauss_magnitude_permutation_candidate",
         "path": "peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py",
-        "sha256": "239ac23b752c745b4296f65ecf21aace87a351d3c10dfb0214cad90ce1c8c84a"
+        "sha256": "57bec9007ee6473f20b9e326b604c6710827e92b5e9dc6084aacddb93ee61db3"
       },
       "spec_sha256": "99e26e992bc2dd3cfe073e6d4015bbc1e8663850feffd3bd4a235926dd99877a",
       "statement": "forall mb mc rb rc l. (forall gmp_index_predecessor_transport_finite_range. (exists gsp_lt_gap_predecessor_transport_finite_range_index_bound. gsp_lt_gap_predecessor_transport_finite_range_index_bound + S gmp_index_predecessor_transport_finite_range = l) -> exists gmp_magnitude_predecessor_transport_finite_range. ((((exists ff_h_gmp_predecessor_transport_finite_range_decoded. ff_h_gmp_predecessor_transport_finite_range_decoded + S (gmp_magnitude_predecessor_transport_finite_range) = S ((S (gmp_index_predecessor_transport_finite_range)) * mc)) /\\ exists ff_q_gmp_predecessor_transport_finite_range_decoded. mb = ff_q_gmp_predecessor_transport_finite_range_decoded * S ((S (gmp_index_predecessor_transport_finite_range)) * mc) + (gmp_magnitude_predecessor_transport_finite_range))) /\\ ((exists gsp_lt_gap_predecessor_transport_finite_range_positive. gsp_lt_gap_predecessor_transport_finite_range_positive + S 0 = gmp_magnitude_predecessor_transport_finite_range) /\\ (exists gsp_le_gap_predecessor_transport_finite_range_bounded. gsp_le_gap_predecessor_transport_finite_range_bounded + gmp_magnitude_predecessor_transport_finite_range = l)))) -> (forall fp_i_predecessor_transport_magnitude_injective fp_j_predecessor_transport_magnitude_injective fp_value_predecessor_transport_magnitude_injective. (exists fp_gap_predecessor_transport_magnitude_injective_i. fp_gap_predecessor_transport_magnitude_injective_i + S fp_i_predecessor_transport_magnitude_injective = l) -> (exists fp_gap_predecessor_transport_magnitude_injective_j. fp_gap_predecessor_transport_magnitude_injective_j + S fp_j_predecessor_transport_magnitude_injective = l) -> (((exists ff_h_predecessor_transport_magnitude_injective_left. ff_h_predecessor_transport_magnitude_injective_left + S (fp_value_predecessor_transport_magnitude_injective) = S ((S (fp_i_predecessor_transport_magnitude_injective)) * mc)) /\\ exists ff_q_predecessor_transport_magnitude_injective_left. mb = ff_q_predecessor_transport_magnitude_injective_left * S ((S (fp_i_predecessor_transport_magnitude_injective)) * mc) + (fp_value_predecessor_transport_magnitude_injective))) -> (((exists ff_h_predecessor_transport_magnitude_injective_right. ff_h_predecessor_transport_magnitude_injective_right + S (fp_value_predecessor_transport_magnitude_injective) = S ((S (fp_j_predecessor_transport_magnitude_injective)) * mc)) /\\ exists ff_q_predecessor_transport_magnitude_injective_right. mb = ff_q_predecessor_transport_magnitude_injective_right * S ((S (fp_j_predecessor_transport_magnitude_injective)) * mc) + (fp_value_predecessor_transport_magnitude_injective))) -> fp_i_predecessor_transport_magnitude_injective = fp_j_predecessor_transport_magnitude_injective) -> (forall gmp_index_predecessor_transport_recode gmp_predecessor_predecessor_transport_recode. (exists gsp_lt_gap_predecessor_transport_recode_index_bound. gsp_lt_gap_predecessor_transport_recode_index_bound + S gmp_index_predecessor_transport_recode = l) -> (((exists gsp_beta_height_gmp_predecessor_transport_recode_source. gsp_beta_height_gmp_predecessor_transport_recode_source + S (S gmp_predecessor_predecessor_transport_recode) = S ((S (gmp_index_predecessor_transport_recode)) * mc)) /\\ exists gsp_beta_quotient_gmp_predecessor_transport_recode_source. mb = gsp_beta_quotient_gmp_predecessor_transport_recode_source * S ((S (gmp_index_predecessor_transport_recode)) * mc) + (S gmp_predecessor_predecessor_transport_recode))) -> (((exists ff_h_gmp_predecessor_transport_recode_target. ff_h_gmp_predecessor_transport_recode_target + S (gmp_predecessor_predecessor_transport_recode) = S ((S (gmp_index_predecessor_transport_recode)) * rc)) /\\ exists ff_q_gmp_predecessor_transport_recode_target. rb = ff_q_gmp_predecessor_transport_recode_target * S ((S (gmp_index_predecessor_transport_recode)) * rc) + (gmp_predecessor_predecessor_transport_recode)))) -> (forall fp_i_predecessor_transport_target_injective fp_j_predecessor_transport_target_injective fp_value_predecessor_transport_target_injective. (exists fp_gap_predecessor_transport_target_injective_i. fp_gap_predecessor_transport_target_injective_i + S fp_i_predecessor_transport_target_injective = l) -> (exists fp_gap_predecessor_transport_target_injective_j. fp_gap_predecessor_transport_target_injective_j + S fp_j_predecessor_transport_target_injective = l) -> (((exists ff_h_predecessor_transport_target_injective_left. ff_h_predecessor_transport_target_injective_left + S (fp_value_predecessor_transport_target_injective) = S ((S (fp_i_predecessor_transport_target_injective)) * rc)) /\\ exists ff_q_predecessor_transport_target_injective_left. rb = ff_q_predecessor_transport_target_injective_left * S ((S (fp_i_predecessor_transport_target_injective)) * rc) + (fp_value_predecessor_transport_target_injective))) -> (((exists ff_h_predecessor_transport_target_injective_right. ff_h_predecessor_transport_target_injective_right + S (fp_value_predecessor_transport_target_injective) = S ((S (fp_j_predecessor_transport_target_injective)) * rc)) /\\ exists ff_q_predecessor_transport_target_injective_right. rb = ff_q_predecessor_transport_target_injective_right * S ((S (fp_j_predecessor_transport_target_injective)) * rc) + (fp_value_predecessor_transport_target_injective))) -> fp_i_predecessor_transport_target_injective = fp_j_predecessor_transport_target_injective)",
@@ -239215,13 +239147,6 @@
           "href": "PA0009.html",
           "name": "add_assoc",
           "tag": "PA0009"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 1,
-          "href": "PA000F.html",
-          "name": "add_comm",
-          "tag": "PA000F"
         }
       ],
       "dependents": [
@@ -239238,7 +239163,7 @@
         "kind": "generated_structural_guide",
         "paragraphs": [
           "Rebalance one stored pair into the predecessor induction hypothesis.",
-          "Use the direct prerequisites add_succ_left, add_assoc, add_comm as previously established PA formulas.",
+          "Use the direct prerequisites add_succ_left, add_assoc as previously established PA formulas.",
           "The proof proceeds by certified simplification (1)."
         ],
         "references": [
@@ -239251,17 +239176,12 @@
             "href": "PA0009.html",
             "name": "add_assoc",
             "tag": "PA0009"
-          },
-          {
-            "href": "PA000F.html",
-            "name": "add_comm",
-            "tag": "PA000F"
           }
         ],
         "review": "generated",
         "title": "Structural proof guide"
       },
-      "layer": 2,
+      "layer": 1,
       "lines": [
         {
           "axiom_references": [],
@@ -239303,34 +239223,26 @@
               "name": "add_assoc",
               "start": 21,
               "tag": "PA0009"
-            },
-            {
-              "end": 40,
-              "href": "PA000F.html",
-              "kind": "theorem",
-              "name": "add_comm",
-              "start": 32,
-              "tag": "PA000F"
             }
           ],
-          "stable_id": "e80cad8ac06b24ca",
+          "stable_id": "01e550e1b662178d",
           "tactic": "simp",
           "tactic_href": "../foundations.html#tactic-simp",
-          "text": "simp [add_succ_left, add_assoc, add_comm]"
+          "text": "simp [add_succ_left, add_assoc]"
         }
       ],
       "name": "pair_order_iteration_previous_balance",
       "scope": "candidate",
-      "script_sha256": "5b8da48f41c796b9730b65fd1de65e8f7376360dfe8e8b5f151ddff7923829a8",
+      "script_sha256": "3507aac25091ab4c0666e880c2d4cd0375521fd4feedc6b5ec8dc253812b683a",
       "source": {
         "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/wilson_pair_order_iteration_candidate.py#L250",
         "kind": "declaration",
         "line": 250,
         "owner_module": "wilson_pair_order_iteration_candidate",
         "path": "peano-lab/py/peano_lab/library/wilson_pair_order_iteration_candidate.py",
-        "sha256": "523254e3502e8e953a64ae8f2b157b9bd1f6ecea719d2ada9126fe32148bbd78"
+        "sha256": "e2778183fd20c0e84a4ad658f0712c4f137192b4b151b10fb8e80a9cf3836b43"
       },
-      "spec_sha256": "c1f9eb43d05794bf125262997e2e221b1230968ace5d8dac743455f728b0139e",
+      "spec_sha256": "be3bfa914f7611d22a7d76bbc8239d01dc3662fed68d4c0b3609964034439da7",
       "statement": "forall m k. (k + k) + S (S (S m + S m)) = (S k + S k) + S (S (m + m))",
       "statement_sha256": "6f219aa058995721c0c3d22e5dd1446f047578a096f82477b95f0ea484084b17",
       "status": "candidate_body_checked",
@@ -239353,13 +239265,6 @@
           "href": "PA0009.html",
           "name": "add_assoc",
           "tag": "PA0009"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 1,
-          "href": "PA000F.html",
-          "name": "add_comm",
-          "tag": "PA000F"
         }
       ],
       "dependents": [
@@ -239376,7 +239281,7 @@
         "kind": "generated_structural_guide",
         "paragraphs": [
           "Expose the exact one-orbit room equation in the successor case.",
-          "Use the direct prerequisites add_succ_left, add_assoc, add_comm as previously established PA formulas.",
+          "Use the direct prerequisites add_succ_left, add_assoc as previously established PA formulas.",
           "The proof proceeds by certified simplification (1)."
         ],
         "references": [
@@ -239389,17 +239294,12 @@
             "href": "PA0009.html",
             "name": "add_assoc",
             "tag": "PA0009"
-          },
-          {
-            "href": "PA000F.html",
-            "name": "add_comm",
-            "tag": "PA000F"
           }
         ],
         "review": "generated",
         "title": "Structural proof guide"
       },
-      "layer": 2,
+      "layer": 1,
       "lines": [
         {
           "axiom_references": [],
@@ -239441,34 +239341,26 @@
               "name": "add_assoc",
               "start": 21,
               "tag": "PA0009"
-            },
-            {
-              "end": 40,
-              "href": "PA000F.html",
-              "kind": "theorem",
-              "name": "add_comm",
-              "start": 32,
-              "tag": "PA000F"
             }
           ],
-          "stable_id": "a0c10416edeb7d61",
+          "stable_id": "c1580da4e749fa0a",
           "tactic": "simp",
           "tactic_href": "../foundations.html#tactic-simp",
-          "text": "simp [add_succ_left, add_assoc, add_comm]"
+          "text": "simp [add_succ_left, add_assoc]"
         }
       ],
       "name": "pair_order_iteration_step_room",
       "scope": "candidate",
-      "script_sha256": "5b8da48f41c796b9730b65fd1de65e8f7376360dfe8e8b5f151ddff7923829a8",
+      "script_sha256": "3507aac25091ab4c0666e880c2d4cd0375521fd4feedc6b5ec8dc253812b683a",
       "source": {
         "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/wilson_pair_order_iteration_candidate.py#L262",
         "kind": "declaration",
         "line": 262,
         "owner_module": "wilson_pair_order_iteration_candidate",
         "path": "peano-lab/py/peano_lab/library/wilson_pair_order_iteration_candidate.py",
-        "sha256": "523254e3502e8e953a64ae8f2b157b9bd1f6ecea719d2ada9126fe32148bbd78"
+        "sha256": "e2778183fd20c0e84a4ad658f0712c4f137192b4b151b10fb8e80a9cf3836b43"
       },
-      "spec_sha256": "014010205997cab6a191d6fccdda95d3a780efab9d1850d813216aeb0cc8a458",
+      "spec_sha256": "8482c0436d4c5b46edca3b42db835072415c48accd84af0c1fd378c339df10ee",
       "statement": "forall m k. (k + k) + S (S (S m + S m)) = S (k + k) + S (S (S (m + m)))",
       "statement_sha256": "14fd7213841abca553c0e15326fae114838c7faee986aebd8a276d2cc3523aa1",
       "status": "candidate_body_checked",
@@ -262223,12 +262115,12 @@
       "scope": "candidate",
       "script_sha256": "485dc05aa6f07d16ccfa057b14ccee4b46ddccc7d24ca016846d1cfdc7499181",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py#L1592",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py#L1591",
         "kind": "declaration",
-        "line": 1592,
+        "line": 1591,
         "owner_module": "gauss_magnitude_permutation_candidate",
         "path": "peano-lab/py/peano_lab/library/gauss_magnitude_permutation_candidate.py",
-        "sha256": "239ac23b752c745b4296f65ecf21aace87a351d3c10dfb0214cad90ce1c8c84a"
+        "sha256": "57bec9007ee6473f20b9e326b604c6710827e92b5e9dc6084aacddb93ee61db3"
       },
       "spec_sha256": "a55ac8ecbb8ba4276d994963ac8938c1e06cf484b44254e7035745d675170771",
       "statement": "forall mb mc rb rc l. (forall gmp_index_predecessor_transport_finite_range. (exists gsp_lt_gap_predecessor_transport_finite_range_index_bound. gsp_lt_gap_predecessor_transport_finite_range_index_bound + S gmp_index_predecessor_transport_finite_range = l) -> exists gmp_magnitude_predecessor_transport_finite_range. ((((exists ff_h_gmp_predecessor_transport_finite_range_decoded. ff_h_gmp_predecessor_transport_finite_range_decoded + S (gmp_magnitude_predecessor_transport_finite_range) = S ((S (gmp_index_predecessor_transport_finite_range)) * mc)) /\\ exists ff_q_gmp_predecessor_transport_finite_range_decoded. mb = ff_q_gmp_predecessor_transport_finite_range_decoded * S ((S (gmp_index_predecessor_transport_finite_range)) * mc) + (gmp_magnitude_predecessor_transport_finite_range))) /\\ ((exists gsp_lt_gap_predecessor_transport_finite_range_positive. gsp_lt_gap_predecessor_transport_finite_range_positive + S 0 = gmp_magnitude_predecessor_transport_finite_range) /\\ (exists gsp_le_gap_predecessor_transport_finite_range_bounded. gsp_le_gap_predecessor_transport_finite_range_bounded + gmp_magnitude_predecessor_transport_finite_range = l)))) -> (forall fp_i_predecessor_transport_magnitude_injective fp_j_predecessor_transport_magnitude_injective fp_value_predecessor_transport_magnitude_injective. (exists fp_gap_predecessor_transport_magnitude_injective_i. fp_gap_predecessor_transport_magnitude_injective_i + S fp_i_predecessor_transport_magnitude_injective = l) -> (exists fp_gap_predecessor_transport_magnitude_injective_j. fp_gap_predecessor_transport_magnitude_injective_j + S fp_j_predecessor_transport_magnitude_injective = l) -> (((exists ff_h_predecessor_transport_magnitude_injective_left. ff_h_predecessor_transport_magnitude_injective_left + S (fp_value_predecessor_transport_magnitude_injective) = S ((S (fp_i_predecessor_transport_magnitude_injective)) * mc)) /\\ exists ff_q_predecessor_transport_magnitude_injective_left. mb = ff_q_predecessor_transport_magnitude_injective_left * S ((S (fp_i_predecessor_transport_magnitude_injective)) * mc) + (fp_value_predecessor_transport_magnitude_injective))) -> (((exists ff_h_predecessor_transport_magnitude_injective_right. ff_h_predecessor_transport_magnitude_injective_right + S (fp_value_predecessor_transport_magnitude_injective) = S ((S (fp_j_predecessor_transport_magnitude_injective)) * mc)) /\\ exists ff_q_predecessor_transport_magnitude_injective_right. mb = ff_q_predecessor_transport_magnitude_injective_right * S ((S (fp_j_predecessor_transport_magnitude_injective)) * mc) + (fp_value_predecessor_transport_magnitude_injective))) -> fp_i_predecessor_transport_magnitude_injective = fp_j_predecessor_transport_magnitude_injective) -> (forall gmp_index_predecessor_transport_recode gmp_predecessor_predecessor_transport_recode. (exists gsp_lt_gap_predecessor_transport_recode_index_bound. gsp_lt_gap_predecessor_transport_recode_index_bound + S gmp_index_predecessor_transport_recode = l) -> (((exists gsp_beta_height_gmp_predecessor_transport_recode_source. gsp_beta_height_gmp_predecessor_transport_recode_source + S (S gmp_predecessor_predecessor_transport_recode) = S ((S (gmp_index_predecessor_transport_recode)) * mc)) /\\ exists gsp_beta_quotient_gmp_predecessor_transport_recode_source. mb = gsp_beta_quotient_gmp_predecessor_transport_recode_source * S ((S (gmp_index_predecessor_transport_recode)) * mc) + (S gmp_predecessor_predecessor_transport_recode))) -> (((exists ff_h_gmp_predecessor_transport_recode_target. ff_h_gmp_predecessor_transport_recode_target + S (gmp_predecessor_predecessor_transport_recode) = S ((S (gmp_index_predecessor_transport_recode)) * rc)) /\\ exists ff_q_gmp_predecessor_transport_recode_target. rb = ff_q_gmp_predecessor_transport_recode_target * S ((S (gmp_index_predecessor_transport_recode)) * rc) + (gmp_predecessor_predecessor_transport_recode)))) -> (forall fp_value_predecessor_transport_target_surjective. (exists fp_gap_predecessor_transport_target_surjective_value. fp_gap_predecessor_transport_target_surjective_value + S fp_value_predecessor_transport_target_surjective = l) -> exists fp_i_predecessor_transport_target_surjective. ((exists fp_gap_predecessor_transport_target_surjective_index. fp_gap_predecessor_transport_target_surjective_index + S fp_i_predecessor_transport_target_surjective = l) /\\ (((exists ff_h_predecessor_transport_target_surjective_entry. ff_h_predecessor_transport_target_surjective_entry + S (fp_value_predecessor_transport_target_surjective) = S ((S (fp_i_predecessor_transport_target_surjective)) * rc)) /\\ exists ff_q_predecessor_transport_target_surjective_entry. rb = ff_q_predecessor_transport_target_surjective_entry * S ((S (fp_i_predecessor_transport_target_surjective)) * rc) + (fp_value_predecessor_transport_target_surjective)))))",

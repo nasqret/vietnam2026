@@ -650,8 +650,8 @@
       "summary": "Beta prefixes encode pointwise quotients and strict remainders."
     }
   ],
-  "edition_identity_sha256": "f137db3d549b82c8ee0798362cc9a039f408c01d9ebded8814858f6d5964bad2",
-  "explicit_corpus_sha256": "a5bc304640ee454fc51161dcbd7da71e6c7b0a745bebcb7dc98f555d5c930a89",
+  "edition_identity_sha256": "9b7c7928ddd3e1930fb5eca6e6b6c4b5ce6978633f6f187525d8813c90f3ddd6",
+  "explicit_corpus_sha256": "95df7f7d096c41cc25e49217e4310451477ea5c45bf8624f67f41893693e43e1",
   "schema": "peano-lab-pa-defined-corpus-v1",
   "theorem_count": 557,
   "theorems": [
@@ -3059,13 +3059,6 @@
         {
           "body_reference": true,
           "explicit_reference_count": 1,
-          "href": "PA007C.html",
-          "name": "gauss_signed_half_magnitude_injective",
-          "tag": "PA007C"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 1,
           "href": "PA0090.html",
           "name": "euler_pair_iteration_previous_balance",
           "tag": "PA0090"
@@ -4199,13 +4192,6 @@
         },
         {
           "body_reference": true,
-          "explicit_reference_count": 1,
-          "href": "PA006Y.html",
-          "name": "odd_upper_remainder_reflection",
-          "tag": "PA006Y"
-        },
-        {
-          "body_reference": true,
           "explicit_reference_count": 7,
           "href": "PA007C.html",
           "name": "gauss_signed_half_magnitude_injective",
@@ -4648,20 +4634,6 @@
           "href": "PA00A2.html",
           "name": "prime_two_or_terminal_odd_shape",
           "tag": "PA00A2"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 1,
-          "href": "PA00AC.html",
-          "name": "pair_order_iteration_previous_balance",
-          "tag": "PA00AC"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 1,
-          "href": "PA00AD.html",
-          "name": "pair_order_iteration_step_room",
-          "tag": "PA00AD"
         },
         {
           "body_reference": true,
@@ -123201,11 +123173,11 @@
             "command_parts": [
               {
                 "kind": "text",
-                "text": "simp [mul_succ_left, mul_zero_left, zero_add, add_succ_left, add_assoc]"
+                "text": "simp [mul_succ_left, mul_zero_left, zero_add, add_assoc]"
               }
             ],
-            "defined_command": "simp [mul_succ_left, mul_zero_left, zero_add, add_succ_left, add_assoc]",
-            "expanded_command_sha256": "61da54584d4da356a1a74328cbdda40d8a75babe3ac529e23160e6732216230d",
+            "defined_command": "simp [mul_succ_left, mul_zero_left, zero_add, add_assoc]",
+            "expanded_command_sha256": "e2729ebecc6de7189f82a82db1c1c56c7b7d251f7b07609c22fbc4a27eb4aba0",
             "number": 36
           },
           {
@@ -123460,13 +123432,6 @@
           "href": "PA0001.html",
           "name": "zero_add",
           "tag": "PA0001"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 1,
-          "href": "PA000E.html",
-          "name": "add_succ_left",
-          "tag": "PA000E"
         },
         {
           "body_reference": true,
@@ -135786,11 +135751,11 @@
             "command_parts": [
               {
                 "kind": "text",
-                "text": "simp [mul_succ_left, mul_zero_left, zero_add, add_succ_left, add_assoc]"
+                "text": "simp [mul_succ_left, mul_zero_left, zero_add, add_succ_left]"
               }
             ],
-            "defined_command": "simp [mul_succ_left, mul_zero_left, zero_add, add_succ_left, add_assoc]",
-            "expanded_command_sha256": "61da54584d4da356a1a74328cbdda40d8a75babe3ac529e23160e6732216230d",
+            "defined_command": "simp [mul_succ_left, mul_zero_left, zero_add, add_succ_left]",
+            "expanded_command_sha256": "c6404a967dd2d555c706e50e54620fa2970eef5f0ccfea4e3a6911fcb29cd9ae",
             "number": 168
           },
           {
@@ -137259,13 +137224,6 @@
           "href": "PA000D.html",
           "name": "mul_zero_left",
           "tag": "PA000D"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 1,
-          "href": "PA0009.html",
-          "name": "add_assoc",
-          "tag": "PA0009"
         },
         {
           "body_reference": true,
@@ -228071,11 +228029,11 @@
             "command_parts": [
               {
                 "kind": "text",
-                "text": "simp [add_succ_left, add_assoc, add_comm]"
+                "text": "simp [add_succ_left, add_assoc]"
               }
             ],
-            "defined_command": "simp [add_succ_left, add_assoc, add_comm]",
-            "expanded_command_sha256": "584fb3d1d7a63086318a474035a0eb83f65d28f20b7813019685808d0e651527",
+            "defined_command": "simp [add_succ_left, add_assoc]",
+            "expanded_command_sha256": "da1be0a61d7df5d281d58f16f2431bff08bea0207b23184038f9f539d0f8ae4a",
             "number": 3
           }
         ],
@@ -228106,13 +228064,6 @@
           "href": "PA0009.html",
           "name": "add_assoc",
           "tag": "PA0009"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 1,
-          "href": "PA000F.html",
-          "name": "add_comm",
-          "tag": "PA000F"
         }
       ],
       "dependents": [
@@ -228126,7 +228077,7 @@
       ],
       "explicit_statement": "forall m k. (k + k) + S (S (S m + S m)) = (S k + S k) + S (S (m + m))",
       "explicit_statement_sha256": "6f219aa058995721c0c3d22e5dd1446f047578a096f82477b95f0ea484084b17",
-      "layer": 2,
+      "layer": 1,
       "name": "pair_order_iteration_previous_balance",
       "scope": "candidate",
       "status": "candidate_body_checked",
@@ -228162,11 +228113,11 @@
             "command_parts": [
               {
                 "kind": "text",
-                "text": "simp [add_succ_left, add_assoc, add_comm]"
+                "text": "simp [add_succ_left, add_assoc]"
               }
             ],
-            "defined_command": "simp [add_succ_left, add_assoc, add_comm]",
-            "expanded_command_sha256": "584fb3d1d7a63086318a474035a0eb83f65d28f20b7813019685808d0e651527",
+            "defined_command": "simp [add_succ_left, add_assoc]",
+            "expanded_command_sha256": "da1be0a61d7df5d281d58f16f2431bff08bea0207b23184038f9f539d0f8ae4a",
             "number": 3
           }
         ],
@@ -228197,13 +228148,6 @@
           "href": "PA0009.html",
           "name": "add_assoc",
           "tag": "PA0009"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 1,
-          "href": "PA000F.html",
-          "name": "add_comm",
-          "tag": "PA000F"
         }
       ],
       "dependents": [
@@ -228217,7 +228161,7 @@
       ],
       "explicit_statement": "forall m k. (k + k) + S (S (S m + S m)) = S (k + k) + S (S (S (m + m)))",
       "explicit_statement_sha256": "14fd7213841abca553c0e15326fae114838c7faee986aebd8a276d2cc3523aa1",
-      "layer": 2,
+      "layer": 1,
       "name": "pair_order_iteration_step_room",
       "scope": "candidate",
       "status": "candidate_body_checked",

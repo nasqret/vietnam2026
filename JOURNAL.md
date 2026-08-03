@@ -3515,3 +3515,35 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   use the repository's existing `pytest.importorskip("torch")` convention.
   With PyTorch present all 96 affected tests pass; with its import deliberately
   blocked, the three modules skip cleanly instead of aborting collection.
+
+## 2026-08-03 — Dependency hygiene and Linux CI repair
+
+- The failed full GitHub run ended with 11 failures after 2,401 passes and 12
+  skips. The failures separated into three stale structural/catalog contracts,
+  four useful dependency-minimality mutations, and four Linux/provenance
+  portability failures; no kernel-soundness failure or QR admission occurred.
+- Four unused dependency edges were removed without changing a theorem
+  statement: `gauss_signed_half_magnitude_injective -> add_assoc`,
+  `odd_upper_remainder_reflection -> add_succ_left`, and the two
+  `pair_order_iteration_* -> add_comm` edges. The full Wilson adversarial
+  mutation gate passed in 416.14 seconds; Gauss mutation gates, theorem-body
+  contracts, QR topology checks, and explorer contracts are green.
+- The live closure is now 557 nodes, 1,787 direct edges, and 45 layers. Its
+  graph/source SHA-256 values are respectively
+  `98a36450cfe1de29c20be67a1c5f65c8064e9f9eec5368ab769065f910008698`
+  and
+  `23fd18aaff26e2c6b428949c35ab3658252c9a4c6fd3b4825a6ccd547f454db1`.
+  Recursive expansion has 191,648 theorem occurrences and a 731,423-node
+  lower bound. The exact-marker surrogate checks at `19,066/74` nodes/depth.
+  Earlier 1,791-edge WMI records remain immutable descriptions of their
+  submitted payloads.
+- Both proof explorers were regenerated and checked. The explicit explorer's
+  1,123-file aggregate is
+  `50c1d143cf6008d3bce737c2e7c0f84fc4ff6eff33978f7690fa22409db3be8b`;
+  the defined explorer's 1,162-file aggregate is
+  `f77c63e101f8cdf47182160633585a7a522210805d8f239a357fb2fdc94c72a1`.
+- Linux CI now checks out complete Git history for pinned provenance rehashes,
+  rejects staged-report replacement with stable metadata checks, and uses
+  portable symlink-safe test cleanup. The formerly monolithic Peano suite is
+  deterministically partitioned into eight source-byte-balanced pytest shards;
+  the original required check name remains as a fail-closed aggregate job.

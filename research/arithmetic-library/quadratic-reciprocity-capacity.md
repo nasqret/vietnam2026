@@ -95,12 +95,12 @@ only where immutable sharing is observable while preserving the previous
 
 The higher occurrence limit can still cost checker time because the current
 kernel follows every incoming edge. The exact optimized QR graph makes that
-cost concrete: 557 specifications and 1,791 direct edges occupy 45 layers
-with root depth 44, but recursive closure produces 191,669 theorem
+cost concrete: 557 specifications and 1,787 direct edges occupy 45 layers
+with root depth 44, but recursive closure produces 191,648 theorem
 occurrences. The [static hotspot audit](quadratic-reciprocity-closure-hotspots.md)
 charges only one body node per occurrence, the forced dependency Cuts, and
 recorded leading theorem-level introductions. This already yields a rigorous
-731,482-node lower bound. No WMI run can make that recursive proof tree fit
+731,423-node lower bound. No WMI run can make that recursive proof tree fit
 the 500,000-node structural policy.
 
 The remedy is not another cap increase. The preferred
@@ -114,16 +114,16 @@ hash-authority change. A 20-node synthetic fixture measures 274 nodes/depth
 
 Exact-topology static checks refine the estimate without replaying real
 theorems. Distinct one-node dummy bodies compile all 557 blueprint nodes to a
-13,715-node/depth-56 scaffold, of which 13,158 nodes are fixed glue; the
+13,705-node/depth-56 scaffold, of which 13,148 nodes are fixed glue; the
 balanced package formulas contain 144,197 structural occurrences at maximum
 depth 68. The dummy proof is rejected, as required. Replacing every real
 target by a unique shallow reflexive marker derived from its local-ID bits and
-using curried `EqRefl` bodies preserves all 1,791 edges, dependency orders,
+using curried `EqRefl` bodies preserves all 1,787 edges, dependency orders,
 projections, and context indices. Each such body additionally contains one
 existing Cut per direct dependency, checking that dependency's exact target
 against the matching `Hyp(k-1)`. The unchanged kernel therefore checks every
 real projection ID/direction and declared dependency order, accepting the
-strong surrogate at 19,088 nodes/depth 74 with package-formula cost
+strong surrogate at 19,066 nodes/depth 74 with package-formula cost
 19,297 occurrences/depth 18. These are compiler-scaffold measurements, not QR
 proof or admission evidence.
 

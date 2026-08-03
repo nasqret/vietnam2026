@@ -94,7 +94,7 @@ assertion elsewhere in `peano-lab/py/tests`.
 ## Exact omitted partition
 
 At graph hash
-`2231ca4cde6931fad296513fb0c419e19beb7c37989d31fbf6cf01771597cb46`,
+`98a36450cfe1de29c20be67a1c5f65c8064e9f9eec5368ab769065f910008698`,
 the sorted 29 names joined by `\n` with no terminal newline have SHA-256
 `1b08f341edf897538d43c4f6b77100b95d15a528283f65b083120c34be2ded85`:
 

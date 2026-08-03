@@ -205,11 +205,11 @@ proof objects, and depth 256; the kernel and PA language are unchanged. See
 [`PLAN/11_quadratic_reciprocity.md`](PLAN/11_quadratic_reciprocity.md).
 
 The recursive QR tree is no longer a capacity uncertainty: source recurrence
-forces at least 731,482 proof nodes. The preferred replacement is implemented
+forces at least 731,423 proof nodes. The preferred replacement is implemented
 as an isolated 45-layer balanced-conjunction compiler whose output is one
 ordinary existing `Proof` checked by the unchanged kernel. Its focused tests
-pass `25/25`; an exact 557-node/1,791-edge dependency-consuming surrogate is
-kernel-green at 19,088 nodes/depth 74, while false bodies against the actual
+pass `25/25`; an exact 557-node/1,787-edge dependency-consuming surrogate is
+kernel-green at 19,066 nodes/depth 74, while false bodies against the actual
 QR formulas are rejected. The real 557-body compile/check, resource receipt,
 mutations, public migration and Pyodide gate remain WMI-dependent. The
 content-addressed nine-gate job is ready. A historical second
@@ -221,8 +221,8 @@ The QR stack is injection-based over a frozen pre-QR table, and the generic
 layered compiler is a production-neutral constructive ordinary-proof builder.
 Its exact proof-envelope scanner covers all 25 kernel constructors, rejects
 classical and engine-only nodes, and separately bounds embedded annotations.
-Static exact-topology evidence preserves the `19,088/74` proof receipt and now
-adds `142,346/84` annotations/envelope depth; the actual-formula false scaffold
+Static exact-topology evidence preserves the `19,066/74` proof receipt and now
+adds `142,134/84` annotations/envelope depth; the actual-formula false scaffold
 adds `157,579/92`. Bare `pa lib` no longer replays the ladder, and the browser
 integrated worker inventory deterministically covers 149 Python sources. A
 migration audit identifies 125 pre-admission absence assertions and the exact 317/29 public
@@ -238,8 +238,8 @@ certificate; 121 gates were unrun. This blocks enrollment but is neither a
 kernel-soundness failure nor a quadratic-reciprocity result.
 
 The native PA Proof Explorer now makes that exact evidence boundary
-navigable. Its persistent 557-page tag corpus has 1,791 dependency edges,
-27,491 line-addressable tactic commands, 8,557 explicit theorem links, and a
+navigable. Its persistent 557-page tag corpus has 1,787 dependency edges,
+27,491 line-addressable tactic commands, 8,553 explicit theorem links, and a
 separate foundations view for PA grammar, PA1–PA6, proof constructors, and
 tactics. The permanent QR endpoint is `PA00FW`. The interface labels 240
 public theorems, 316 body-checked candidates, and the one root awaiting
@@ -250,8 +250,8 @@ publication gates, and the former frozen QR upload hash is stale after these
 payload-changing additions.
 
 Graph v2 now exposes the same closure as navigable premise paths: 557 theorem
-nodes, 1,791 direct edges, 45 layers, and 48 theorem roots (corpus roots, not
-PA axioms or kernel foundations). For `PA00FW` it records 101,293 distinct
+nodes, 1,787 direct edges, 45 layers, and 48 theorem roots (corpus roots, not
+PA axioms or kernel foundations). For `PA00FW` it records 101,278 distinct
 root-to-target paths, a 4-vertex shortest witness, and a 45-vertex critical
 depth witness. The Book endpoint is
 `book/arithmetic-library/dependency-graph.md`, and the static explorer opens at

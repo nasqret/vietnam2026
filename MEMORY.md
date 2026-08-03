@@ -1187,7 +1187,7 @@
   infer admission from a page, tag, source hash, body receipt, or prose.
 - **Proof Explorer link policy (2026-07-30):** link only declared direct
   dependencies in theorem-accepting positions of the authored tactic
-  language. The current corpus has 8,557 such occurrences and seven
+  language. The current corpus has 8,553 such occurrences and seven
   dependency edges with no literal body occurrence; those seven stay in the
   import/dependency panels. PA1–PA6 and tactic names link to foundations.
   Dynamic local-hypothesis lineage and implicit `simp` firing require a real
@@ -1205,19 +1205,20 @@
   are still absent. Dashboard work changed the QR/WMI payload, so the older
   `13f279...` archive is historical and cannot be uploaded under its former
   content-specific approval.
-- **Dependency graph v2 (2026-07-30):** the generated QR closure graph has 557
-  theorem nodes, 1,791 direct edges, 45 layers, and 48 theorem roots. Those
+- **Dependency graph v2 (2026-07-30; refreshed 2026-08-03):** the generated
+  QR closure graph has 557 theorem nodes, 1,787 direct edges, 45 layers, and
+  48 theorem roots. Those
   roots mean “no theorem prerequisite in this corpus”; they are not PA
   axioms, whose language and rules remain in the separate foundations pages.
   For `PA00FW`, graph v2 records a deterministic short chain of 4 vertices, a
-  critical depth witness of 45 vertices, and 101,293 distinct theorem-root-to-
+  critical depth witness of 45 vertices, and 101,278 distinct theorem-root-to-
   target paths. The Book entry is
   `book/arithmetic-library/dependency-graph.md`; the static explorer endpoint
   is `book/_static/pa-proof-explorer/graph.html?target=PA00FW`, with the exact
   theorem at `tag/PA00FW.html`. Navigation does not change status:
   `PA00FW` remains `pending_layered_closure`. The final explorer owns and
   hashes all 1,123 files (aggregate
-  `6c47124a4a86c764d0e9af274cba9dfbc6df8a89c7327fe4744f49f097b93dd2`);
+  `50c1d143cf6008d3bce737c2e7c0f84fc4ff6eff33978f7690fa22409db3be8b`);
   the file-protocol payload is safely embedded only in `graph.html`, so it is
   not injected into ordinary Book chapters. A full local Book build and
   source/built-tree integrity check pass with zero broken relative targets,
@@ -1237,10 +1238,25 @@
   111,519 (94.34%). Every compact formula expands back to the same parsed PA
   AST and retains an exact native replay line. The compiler, registry, `PD`
   tags, hashes, pages, and 1,725 notation edges are untrusted presentation
-  data; proof paths still use only the unchanged 557-node, 1,791-edge,
+  data; proof paths still use only the unchanged 557-node, 1,787-edge,
   45-layer theorem DAG. Status is also unchanged: 240 public theorems, 316
   body-checked candidates, and `PA00FW` alone pending layered closure. The
   edition supplies no quadratic-reciprocity admission.
+- **QR dependency-hygiene supersession (2026-08-03):** four unused direct
+  dependencies were removed after exact adversarial mutation checks:
+  `gauss_signed_half_magnitude_injective -> add_assoc`,
+  `odd_upper_remainder_reflection -> add_succ_left`, and the two
+  `pair_order_iteration_* -> add_comm` edges. No theorem statement, PA rule,
+  or kernel boundary changed. The live graph is 557 nodes / 1,787 edges / 45
+  layers with graph SHA-256 `98a36450cfe1de29c20be67a1c5f65c8064e9f9eec5368ab769065f910008698`
+  and candidate-source SHA-256
+  `23fd18aaff26e2c6b428949c35ab3658252c9a4c6fd3b4825a6ccd547f454db1`.
+  Its recursive tree has 191,648 theorem occurrences, 191,647 dependency
+  Cuts, 348,128 leading introductions, and a 731,423-node lower bound. The
+  exact-marker surrogate checks at `19,066/74` nodes/depth with
+  `142,134/84` annotations/envelope. Older 1,791-edge numbers and hashes in
+  dated WMI entries identify the frozen historical jobs and remain valid only
+  for those payloads.
 - **Model-v3 training curriculum and launch gate (2026-07-31):** the frozen
   first-247 declaration-order prefix of the current 384-theorem native ladder
   is the content-bound training authority. Exact authored

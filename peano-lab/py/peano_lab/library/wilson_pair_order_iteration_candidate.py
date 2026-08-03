@@ -251,11 +251,11 @@ def make_wilson_pair_order_iteration_candidate_theorems(
             "pair_order_iteration_previous_balance",
             "forall m k. (k + k) + S (S (S m + S m)) = "
             "(S k + S k) + S (S (m + m))",
-            ("add_succ_left", "add_assoc", "add_comm"),
+            ("add_succ_left", "add_assoc"),
             (
                 "intro m",
                 "intro k",
-                "simp [add_succ_left, add_assoc, add_comm]",
+                "simp [add_succ_left, add_assoc]",
             ),
             "Rebalance one stored pair into the predecessor induction hypothesis.",
         ),
@@ -263,11 +263,11 @@ def make_wilson_pair_order_iteration_candidate_theorems(
             "pair_order_iteration_step_room",
             "forall m k. (k + k) + S (S (S m + S m)) = "
             "S (k + k) + S (S (S (m + m)))",
-            ("add_succ_left", "add_assoc", "add_comm"),
+            ("add_succ_left", "add_assoc"),
             (
                 "intro m",
                 "intro k",
-                "simp [add_succ_left, add_assoc, add_comm]",
+                "simp [add_succ_left, add_assoc]",
             ),
             "Expose the exact one-orbit room equation in the successor case.",
         ),
