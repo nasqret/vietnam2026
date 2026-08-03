@@ -1656,15 +1656,15 @@
   maps, and finite CRT remain blocked on a separate computation-history
   representation or proved conservative primitive-recursive definition
   mechanism. Fixed-length generated schemas are honest but insufficient.
-- **Current strict-HA gate:** 29 manifest/definition/pair-RFC tests and 99
+- **Current strict-HA gate:** 29 manifest/definition/pair-RFC tests and 115
   proof/admission tests pass. The campaign manifest records 56 public
-  references, 52 closed candidates, and 61 receipts; the public registry and
+  references, 63 closed candidates, and 72 receipts; the public registry and
   independently replayed snapshot both remain at 393 theorems.
 - **Current documentation gate:** the warning-free 47-source Book build has
   2,325 HTML pages and zero integrity errors. Its explicit/defined explorer
   source and built trees are byte-identical across 2,285 files; the vault has
-  492 notes and 4,991 resolved links. Immutable SignedMul-law source
-  checkpoint: `37bd997ac9890be9f040b94e8e713f19246d9186`.
+  492 notes and 4,991 resolved links. Immutable complete SignedMul algebra
+  source checkpoint: `497d0fc3327e6fa2564aad8b44c4ce151e20269c`.
 - **Signed multiplication associativity and distributivity (2026-08-04):**
   eleven further isolated, closed, nonpublic candidates complete the D06
   semiring-law checkpoint: four rows factor associativity through two
@@ -1691,4 +1691,9 @@
   60 signed candidates, 63 campaign candidates in total, and 72 exact
   receipts; the public registry remains unchanged at 393. D07 natural
   scaling is the next proof layer. No public admission, commit, push, or
-  deployment is claimed by this chronology entry.
+  deployment is claimed by the proof receipt itself. The source checkpoint is
+  sealed as `497d0fc3327e6fa2564aad8b44c4ce151e20269c`. A clean 47-source
+  Jupyter Book build and integrity pass produced 2,325 HTML pages with zero
+  broken, escaping, unsafe, or remote-runtime links; its 2,493-file HTML tree
+  has SHA-256
+  `2eaf9bc60642a29f101a472553c1f21bb5dc30baab3c8bf76665550d9135f59f`.

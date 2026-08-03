@@ -4013,4 +4013,15 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - The isolated checkpoint contains 60 signed candidates, 63 campaign
   candidates overall, and 72 exact receipts. The public theorem registry is
   unchanged at 393. D07 natural scaling is next; public admission, shared
-  deployment, commit, and push remain separate and unclaimed.
+  deployment, commit, and push remain separate and unclaimed by the proof
+  receipt.
+- Sealed the 14-file source checkpoint as
+  `497d0fc3327e6fa2564aad8b44c4ce151e20269c`, then bound the strict-HA book
+  chapter to that immutable source. A clean 47-source build passed the WMI
+  integrity checker with 2,325 HTML pages, zero broken or escaping relative
+  targets, zero unsafe or remote-runtime links, and byte-identical 2,285-file
+  explicit/defined explorer trees. The 2,493-file HTML tree contains
+  87,143,000 bytes and has SHA-256
+  `2eaf9bc60642a29f101a472553c1f21bb5dc30baab3c8bf76665550d9135f59f`.
+  No browser was attached, so a visual click-through is not claimed. No push,
+  deployment, or public theorem admission is claimed.

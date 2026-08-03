@@ -13,7 +13,7 @@ conservative notation: every occurrence expands before the ordinary kernel
 checks a certificate.
 
 The controlling machine manifest is
-[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/37bd997ac9890be9f040b94e8e713f19246d9186/research/arithmetic-library/ha-number-theory-campaign.json).
+[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/497d0fc3327e6fa2564aad8b44c4ce151e20269c/research/arithmetic-library/ha-number-theory-campaign.json).
 It separates three facts which are easy to blur in an informal development:
 
 - a dependency-curried tactic body may check;
@@ -46,9 +46,10 @@ It separates three facts which are easy to blur in an informal development:
     context but are not in the public registry.
 * - Canonical signed naturals
   - closed candidate
-  - The representation is frozen. Forty-nine parity, decoder,
+  - The representation is frozen. Sixty parity, decoder,
     code-extensionality, balance-normalization, negation, addition, and
-    multiplication theorems close from the empty context without division.
+    multiplication theorems, including associativity and both distributive
+    orientations, close from the empty context without division.
 * - Canonical pair/cell coding
   - design frozen
   - Doubled-Cantor pairs and successor-tagged cells have exact expanded
@@ -57,7 +58,7 @@ It separates three facts which are easy to blur in an informal development:
 ```
 
 The public registry therefore has 393 entries. The first nine campaign
-theorems occupy append-only positions 384--392. The three gcd and forty-nine
+theorems occupy append-only positions 384--392. The three gcd and sixty
 signed candidates stay outside it. This tail append leaves the frozen
 first-247 model curriculum unchanged.
 
@@ -714,7 +715,8 @@ or DNE edge.
 
 This closes the RFC's totality, functionality, zero, commutativity, inverse,
 and associativity obligations for SignedAdd at nonpublic candidate status.
-`SignedMul` is the next signed-operation graph.
+The following sections carry the same discipline through the complete D06
+elementary `SignedMul` algebra.
 Inspect the immutable
 [`associativity tactic source`](https://github.com/nasqret/vietnam2026/blob/883febe3fcf3b8a29707f34780c457f8fcd8edc6/peano-lab/py/peano_lab/library/ha_signed_add_associative_candidate.py#L16)
 and its
@@ -875,12 +877,170 @@ $$
 
 The dependency closure reaches no SignedAdd law, division, remainder, CRT,
 Gödel-β, classical theorem, or DNE. These laws are still isolated candidates;
-associativity and distributivity are the next D06 gates. Inspect the immutable
+the next section closes associativity and distributivity without admitting
+them. Inspect the immutable
 [`law tactic source`](https://github.com/nasqret/vietnam2026/blob/37bd997ac9890be9f040b94e8e713f19246d9186/peano-lab/py/peano_lab/library/ha_signed_mul_laws_candidate.py)
 and
 [`focused audit`](https://github.com/nasqret/vietnam2026/blob/37bd997ac9890be9f040b94e8e713f19246d9186/peano-lab/py/tests/test_ha_signed_mul_laws_candidate.py)
 for the full expanded formulas, tactic scripts, exact receipts, and rejected
 mutations.
+
+### SignedMul associativity and distributivity
+
+The last D06 algebra tranche consists of four associativity candidates and
+seven distributivity candidates. The endpoint statements preserve the exact
+forward graph surfaces used by the native proofs. Associativity is
+
+$$
+\begin{aligned}
+\forall a,b,c,\mathit{ab},\mathit{abc},\mathit{bc},\quad
+&\operatorname{SignedMul}(a,b,\mathit{ab})
+\to \operatorname{SignedMul}(\mathit{ab},c,\mathit{abc})\\
+&\qquad\to \operatorname{SignedMul}(b,c,\mathit{bc})
+\to \operatorname{SignedMul}(a,\mathit{bc},\mathit{abc}).
+\end{aligned}
+$$
+
+Left distributivity is
+
+$$
+\begin{aligned}
+\forall a,b,c,\mathit{bc},\mathit{ab},\mathit{ac},\mathit{out},\quad
+&\operatorname{SignedAdd}(b,c,\mathit{bc})
+\to \operatorname{SignedMul}(a,b,\mathit{ab})
+\to \operatorname{SignedMul}(a,c,\mathit{ac})\\
+&\qquad\to \operatorname{SignedMul}(a,\mathit{bc},\mathit{out})
+\to \operatorname{SignedAdd}(\mathit{ab},\mathit{ac},\mathit{out}),
+\end{aligned}
+$$
+
+and right distributivity is the separately exposed orientation
+
+$$
+\begin{aligned}
+\forall a,b,c,\mathit{bc},\mathit{ba},\mathit{ca},\mathit{out},\quad
+&\operatorname{SignedAdd}(b,c,\mathit{bc})
+\to \operatorname{SignedMul}(b,a,\mathit{ba})
+\to \operatorname{SignedMul}(c,a,\mathit{ca})\\
+&\qquad\to \operatorname{SignedMul}(\mathit{bc},a,\mathit{out})
+\to \operatorname{SignedAdd}(\mathit{ba},\mathit{ca},\mathit{out}).
+\end{aligned}
+$$
+
+These are relational laws: every intermediate product and sum is supplied as
+a graph witness. No hidden function application or host-integer operation is
+introduced.
+
+The associativity ladder first proves that a balanced decoded pair remains
+balanced after multiplication on either side. It next proves the two raw
+positive/negative component identities for reassociation. Those helpers feed
+a decoded-equation associator, which is transported through the existing D06
+elimination and introduction bridges to obtain the graph theorem.
+
+The distributivity ladder reuses that two-sided transport instead of
+duplicating it. A four-term shuffle, pairwise cross-sum composition, raw
+component distribution, and balanced-output composition establish left
+distribution at the decoded level. D05 and D06 bridges then recover the exact
+left graph. The right graph uses three checked applications of
+`signed_mul_commutative` followed by the left law, so there is only one large
+decoded calculation.
+
+```{list-table}
+:header-rows: 1
+:widths: 47 10 10 10 23
+
+* - Closed candidate
+  - Nodes
+  - Depth
+  - Cuts
+  - Certificate prefix
+* - `signed_pair_mul_cross_transport`
+  - 785
+  - 26
+  - 15
+  - `1ff73d62de76`
+* - `signed_pair_mul_components_associate`
+  - 887
+  - 26
+  - 17
+  - `35dd7e68185d`
+* - `signed_mul_equations_associate`
+  - 2,150
+  - 33
+  - 30
+  - `159168d3c8ed`
+* - `signed_mul_associative`
+  - 3,196
+  - 47
+  - 47
+  - `c6a9694ced9e`
+* - `add_shuffle_middle`
+  - 245
+  - 17
+  - 6
+  - `4dd61bd9bfab`
+* - `add_cross_sum_pairwise`
+  - 272
+  - 18
+  - 7
+  - `cb63dfdbd073`
+* - `signed_mul_distributive_component`
+  - 345
+  - 19
+  - 9
+  - `c4f2ccd30f68`
+* - `add_balance_outputs_compose`
+  - 708
+  - 32
+  - 15
+  - `9be646df81e7`
+* - `signed_mul_left_cross_sum_distributes`
+  - 1,172
+  - 27
+  - 21
+  - `a40d2cd61a28`
+* - `signed_mul_left_distributive`
+  - 3,297
+  - 58
+  - 49
+  - `c02d8258cce2`
+* - `signed_mul_right_distributive`
+  - 3,717
+  - 60
+  - 53
+  - `63d17772d424`
+```
+
+The focused validation is deliberately redundant. Each dependency-curried
+body and each empty-context certificate is checked; a conclusion-changing
+mutation is rejected for every row and a concrete semantic fixture confirms
+that each mutated claim is false. The natural helper sweeps include all
+`3^12` assignments for the decoded associator, of which exactly 11,283
+satisfy its premises, and all `2^14` assignments for the decoded
+distributivity checkpoint, of which 496 satisfy its premises. The graph
+oracles exhaust all `17^3=4,913`
+triples for associativity and for both distributive orientations. Two
+cache-cleared closure runs agree on every receipt and on the complete
+60-row signed-stack digest
+`7befb7ae830b866a606e47f674730959e76599ded863aadd9868b850bcb190cd`.
+
+All eleven rows are constructive, dependency-curried, registry-isolated, and
+closed from the empty context. Their transitive closure reaches neither DNE
+nor classical reasoning, forbidden automation, division, remainder, CRT, or
+Gödel-β coding. The campaign now has 60 signed candidates, 63 candidates in
+total, and 72 theorem receipts. The public registry remains at 393, the
+definition freeze remains 45 API rows over 44 distinct public-theorem
+replays, and the research catalog remains at 394. Nothing in this tranche is
+publicly admitted; D07 natural scaling is the next signed-arithmetic gate.
+
+Inspect the immutable
+[`associativity tactic source`](https://github.com/nasqret/vietnam2026/blob/497d0fc3327e6fa2564aad8b44c4ce151e20269c/peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py#L22),
+[`associativity audit`](https://github.com/nasqret/vietnam2026/blob/497d0fc3327e6fa2564aad8b44c4ce151e20269c/peano-lab/py/tests/test_ha_signed_mul_associative_candidate.py#L479),
+[`distributivity tactic source`](https://github.com/nasqret/vietnam2026/blob/497d0fc3327e6fa2564aad8b44c4ce151e20269c/peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py#L22),
+and
+[`distributivity audit`](https://github.com/nasqret/vietnam2026/blob/497d0fc3327e6fa2564aad8b44c4ce151e20269c/peano-lab/py/tests/test_ha_signed_mul_distributive_candidate.py#L563)
+for the exact expanded statements, tactic scripts, dependency audits,
+mutations, semantic oracles, and closed receipts.
 
 ## Independent pair/cell checkpoint
 
@@ -923,7 +1083,7 @@ honest ways to resolve the uniform-list blocker. It is a design target; no
 pair theorem or list theorem is claimed by that document.
 
 Read the complete
-[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/37bd997ac9890be9f040b94e8e713f19246d9186/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
+[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/497d0fc3327e6fa2564aad8b44c4ce151e20269c/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
 for the exact formulas, hashes, forbidden dependency paths, and staged proof
 obligations.
 
@@ -937,10 +1097,11 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 ```
 
-The first command checks the 12-layer campaign manifest, all 61 theorem
-receipts, the 44-theorem definition API, the nine public admissions, the three
-isolated gcd candidates, and the forty-nine isolated signed representation,
-normalization, negation, addition, and multiplication candidates. The
+The first command checks the 12-layer campaign manifest, all 72 theorem
+receipts, the 45-row definition API over 44 distinct public-theorem replays,
+the nine public admissions, the three isolated gcd candidates, and the sixty
+isolated signed representation, normalization, negation, addition, and
+multiplication candidates. The
 second cross-checks all 393 public runtime theorems against the 394-row
 research catalog. The third independently replays the full public ladder and
 compares the deterministic snapshot.
