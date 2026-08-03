@@ -64,7 +64,7 @@ is the single metadata source.  At the current snapshot it reports:
 | dependency-depth layers | 45 |
 | root depth | 44 |
 | maximum layer width | 63 |
-| maximum direct dependencies of one node | 17 |
+| maximum direct dependencies of one node | 16 |
 
 The complete width profile is
 
@@ -193,7 +193,7 @@ Balanced packages add at most six projection levels and six `AndIntro` levels
 at the widest layer.  A rough depth envelope is therefore
 
 $$
-45+6+\max_i(\operatorname{depth}(\pi_i))+17,
+45+6+\max_i(\operatorname{depth}(\pi_i))+16,
 $$
 
 not 557 plus body depth.  The exact compiled proof metric, rather than this

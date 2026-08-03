@@ -35,7 +35,7 @@ def test_blueprint_uses_exact_shared_557_node_45_layer_qr_stack() -> None:
     assert len(blueprint.names) == 557
     assert len(blueprint.layers) == 45
     assert max(map(len, blueprint.layers)) == 63
-    assert max(map(len, blueprint.dependencies)) == 17
+    assert max(map(len, blueprint.dependencies)) == 16
     assert blueprint.names[blueprint.root] == QR_ROOT_NAME
     assert blueprint.root == len(blueprint.names) - 1
     assert blueprint.targets[blueprint.root] == _closed_formula(

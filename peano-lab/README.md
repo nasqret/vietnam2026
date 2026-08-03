@@ -543,7 +543,7 @@ and all 183 authored QEDs. The corpus run fingerprint is
 This candidate has not been staged, deployed, or promoted; production remains
 untouched.
 
-The current source runtime has since advanced to 247 checked theorems. Its
+The source-bound model-v3 corpus checkpoint contains 247 checked theorems. Its
 snapshot has 982,534 nodes, 28,892 Cuts, 204 Cut-bearing certificates, root
 `eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`,
 and source digest
@@ -552,7 +552,7 @@ The vault has 247 lemma notes within 327 notes and 3,286 links. The
 1,692-session/13,344-transition corpus has fingerprint
 `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
 its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
-all 247 authored QEDs. Browser build `2026-07-29k`, application
+all 247 authored QEDs. Its browser build `2026-07-29k`, application
 `a-77df7c0860bc`, has not been staged, deployed, or promoted. The complete
 Peano suite passes 1,288 tests with one intentional skip in 1,259.11 seconds.
 Automated runtime/worker and manifest checks pass; a

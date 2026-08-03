@@ -305,23 +305,23 @@ does not determine the architecture.
 - The generated 384-theorem snapshot has 1,806,923 structural occurrences,
   52,626 Cuts, and 329 Cut-bearing certificates. Its ordered root is
   `73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
-  The vault has 475 notes and 4,825 resolved links, including all 384 generated
+  The vault has 482 notes and 4,886 resolved links, including all 384 generated
   theorem notes. The last source-bound 1,692-session/13,344-transition corpus
   remains intentionally tied to the historical 247-theorem checkpoint and has
   fingerprint
   `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
   its smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and all 247
   QEDs. The integrated local browser candidate deterministically verifies as
-  build `2026-08-02a`, application `a-cd3e54b68949`, with 149 worker sources;
+  build `2026-08-03a`, application `a-ff0ad1985520`, with 149 worker sources;
   it assembles successfully in the local content-addressed stage and has not
   been deployed.
-- The current Book source set has 45 sources. Its last strict arithmetic-branch
+- The current Book source set has 46 sources. Its last strict arithmetic-branch
   rebuild completed without warnings; 194 deep links and 47 executable blocks
   containing 287 commands verify. The generated atlas contains 384 checked
   proof cards, one explicit boundary card, all 1,038 dependency edges, and a
   local 1–4-hop navigator. The post-merge compatibility matrix passed 1,183
-  tests with five intentional skips, and the strict 45-source Book replay plus
-  its 2,323-page integrity gate passed with zero broken or escaping targets.
+  tests with five intentional skips, and the strict 46-source Book replay plus
+  its 2,324-page integrity gate passed with zero broken or escaping targets.
   Direct Pyodide UI smoke and a complete passing 136-gate QR WMI receipt are
   still explicitly unclaimed.
 - Remaining mathematical/library limits are explicit: generic powers, finite

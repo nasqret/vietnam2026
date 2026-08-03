@@ -6,10 +6,10 @@ replays all current entries, discharges dependency assumptions through embedded 
 Cuts, and asks the independent kernel to check the resulting closed certificate against the
 original statement.
 
-The current local candidate runtime contains 380 unique checked entries: the
-original 23-entry base, 212 post-baseline foundational entries, and twelve
-further unique records from the upstream modular catalog, plus 133 checked
-quadratic-residue campaign entries. The upstream
+The current local candidate runtime contains 384 unique checked entries: the
+original 23-entry base and 361 post-baseline entries, including 137 checked
+quadratic-residue campaign certificates. Those infrastructure certificates do
+not themselves admit the reciprocity law. The upstream
 26-record catalog ends at the fourth-power modulo-five capstone. Its first
 reconciliation with the 51-entry M20 branch exposed fourteen coincident
 post-core records once and produced the historical 63-entry snapshot.

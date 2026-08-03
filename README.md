@@ -100,10 +100,10 @@ kernel-checked sessions under fingerprint
 `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
 its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
 all 247 authored QEDs. The integrated local browser candidate deterministically
-verifies as build `2026-08-02a`, application `a-cd3e54b68949`, with 149 worker
+verifies as build `2026-08-03a`, application `a-ff0ad1985520`, with 149 worker
 sources; it assembles successfully in the local content-addressed stage and is
 not deployed. The
-strict Jupyter Book rebuild completes over all 45 sources; its post-build
+strict Jupyter Book rebuild completes over all 46 sources; its post-build
 integrity gate reports zero broken relative targets or fragments and
 byte-identical explicit and defined Proof Explorer trees.
 The existing 194 deep links and 47 session blocks containing 287 commands

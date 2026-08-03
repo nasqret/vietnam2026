@@ -114,7 +114,7 @@ It passes the 500,000-occurrence/100,000-object/depth-256 live/use cap with
 PA1–PA6 and induction
 only and no DNE. Runtime integration is complete.
 
-The current runtime has 247 checked theorems: 23 baseline, 212 general
+The source-bound model-v3 corpus checkpoint has 247 checked theorems: 23 baseline, 212 general
 foundational, and twelve modular capstones. The synchronized 248-entry catalog
 has no planned endpoint and one representation-blocked endpoint. The snapshot
 has 982,534 nodes, 28,892 Cuts, 204 Cut-bearing certificates, ordered root

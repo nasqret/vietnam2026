@@ -508,7 +508,7 @@ These can run on the laptop and ordinary CI:
 - exact interpretation of 317 as `316 + root`;
 - exact root name, statement hash, and three direct dependencies;
 - 557-node closure, 240 public ancestors, 45 layers, root depth 44, maximum
-  width 63, and maximum direct dependency count 17;
+  width 63, and maximum direct dependency count 16;
 - dependency-before-consumer order and no candidate/public conflicts;
 - pure-stack import without importing the public registry;
 - fresh-process import permutations: registry first, stack first,

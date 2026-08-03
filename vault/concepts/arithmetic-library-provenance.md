@@ -17,10 +17,10 @@ The generated artifact binds each checked statement, script, dependency list,
 certificate hash, and certificate metrics. Hashes expose drift but are not
 proof authority.
 
-The current 247-theorem artifact has ordered root
-`eb4775dfd181dc5e45bec463a93f14b0ea9d02501c40c5167b7cae77cd4ff432`
+The current 384-theorem artifact has ordered root
+`73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`
 and theorem-source digest
-`295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868`.
+`6fefaa2bdc92e477ce20444122ea1c752420e7efc1706a664777cb887128a3be`.
 Its CRT, β finite-prefix recoding, Product traces, greatest-prime descent,
 canonical factorization, and native FTA tranches are independently authored
 in the tactic language; external CRT and Gödel-β sources provide mathematical

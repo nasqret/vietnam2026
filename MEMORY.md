@@ -237,9 +237,10 @@
   kernel-judged H0–H6 experiment before implementation. Standard Heyting
   arithmetic is not claimed decidable; any decision result requires an exact
   restricted fragment and independent negative evidence. H1 freezes an ordered
-  library epoch (at least the current 247 checked theorems) and a sealed
-  lineage-separated benchmark; later mathematics, including a future
-  quadratic-reciprocity development, enters a new epoch. Native search,
+  library epoch (the historical 247-theorem corpus checkpoint or a later
+  explicitly frozen successor) and a sealed
+  lineage-separated benchmark; later mathematics, including the quadratic-
+  reciprocity campaign, enters a new epoch. Native search,
   retrieval/ranking, Qwen, Codex, Vampire/E/SMT, translations, and
   reconstruction are untrusted. Generative actions occur only at symbolic
   critical frontiers through macros compiled to public Peano commands. The H5
@@ -538,10 +539,10 @@
   329 Cut-bearing certificates. Its ordered root is
   `73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
   The synchronized research graph has 385 records (384 checked and one
-  language-blocked conventional interface). The Obsidian vault has 475 notes
-  and 4,825 resolved links, including all 384 generated theorem notes. The
+  language-blocked conventional interface). The Obsidian vault has 482 notes
+  and 4,886 resolved links, including all 384 generated theorem notes. The
   integrated local browser candidate deterministically verifies as build
-  `2026-08-02a`, application `a-cd3e54b68949`, with 149 worker sources; it
+  `2026-08-03a`, application `a-ff0ad1985520`, with 149 worker sources; it
   assembles successfully in the local content-addressed stage and is not
   deployed.
 - **QR heavy-execution boundary (2026-07-30):** proof replay, certificate
