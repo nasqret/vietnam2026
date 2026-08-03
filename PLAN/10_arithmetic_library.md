@@ -315,13 +315,13 @@ does not determine the architecture.
   build `2026-08-03a`, application `a-ff0ad1985520`, with 149 worker sources;
   it assembles successfully in the local content-addressed stage and has not
   been deployed.
-- The current Book source set has 46 sources. Its last strict arithmetic-branch
+- The current Book source set has 47 sources. Its last strict arithmetic-branch
   rebuild completed without warnings; 194 deep links and 47 executable blocks
   containing 287 commands verify. The generated atlas contains 393 checked
   proof cards, one explicit boundary card, all 1,070 dependency edges, and a
   local 1–4-hop navigator. The post-merge compatibility matrix passed 1,183
-  tests with five intentional skips, and the strict 46-source Book replay plus
-  its 2,324-page integrity gate passed with zero broken or escaping targets.
+  tests with five intentional skips, and the strict 47-source Book replay plus
+  its 2,325-page integrity gate passed with zero broken or escaping targets.
   Direct Pyodide UI smoke and a complete passing 136-gate QR WMI receipt are
   still explicitly unclaimed.
 - Remaining mathematical/library limits are explicit: generic powers, finite

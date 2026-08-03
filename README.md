@@ -105,7 +105,7 @@ all 247 authored QEDs. The integrated local browser candidate deterministically
 verifies as build `2026-08-03c`, application `a-9fe3f597bf8d`, with 153 worker
 sources; it assembles successfully in the local content-addressed stage and is
 not deployed. The
-strict Jupyter Book rebuild completes over all 46 sources; its post-build
+strict Jupyter Book rebuild completes over all 47 sources; its post-build
 integrity gate reports zero broken relative targets or fragments and
 byte-identical explicit and defined Proof Explorer trees.
 The existing 194 deep links and 47 session blocks containing 287 commands

@@ -1514,3 +1514,8 @@
   existing `even_odd_exclusive_pointwise` as a K3 seed because that theorem
   reaches division uniqueness; the next proof obligation is a K1-only parity
   separation result.
+- **Strict-HA Book integration (2026-08-03):** source checkpoint
+  `07932576c3d00d7911acd158d81d9a21167ed2dd` anchors the 393-card theorem
+  atlas and all new native-source links. The 47-source Book builds without
+  warnings; its 2,325-page integrity gate reports zero broken/escaping targets
+  or fragments and byte-identical explicit/defined explorer trees.

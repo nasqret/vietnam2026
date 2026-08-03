@@ -3687,3 +3687,10 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   claimed. The theorem atlas is intentionally regenerated only after an
   immutable source commit exists, so new source links cannot point falsely at
   the older 384-theorem commit.
+- Created immutable source checkpoint
+  `07932576c3d00d7911acd158d81d9a21167ed2dd`, rebound the theorem-atlas source
+  resolver to that commit, and regenerated all 393 checked cards plus the one
+  explicit language-boundary card. The strict 47-source Jupyter Book build then
+  completed without warnings. Its non-executing integrity gate found 2,325 HTML
+  pages, zero broken or escaping relative targets, zero broken fragments, and
+  byte-identical 2,285-file explicit/defined Proof Explorer trees.
