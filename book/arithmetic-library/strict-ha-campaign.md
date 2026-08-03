@@ -13,7 +13,7 @@ conservative notation: every occurrence expands before the ordinary kernel
 checks a certificate.
 
 The controlling machine manifest is
-[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/a1fa4162f92d4ce6c5501cebceadd75403d7a563/research/arithmetic-library/ha-number-theory-campaign.json).
+[`ha-number-theory-campaign.json`](https://github.com/nasqret/vietnam2026/blob/883febe3fcf3b8a29707f34780c457f8fcd8edc6/research/arithmetic-library/ha-number-theory-campaign.json).
 It separates three facts which are easy to blur in an informal development:
 
 - a dependency-curried tactic body may check;
@@ -710,9 +710,14 @@ or DNE edge.
 This closes the RFC's totality, functionality, zero, commutativity, inverse,
 and associativity obligations for SignedAdd at nonpublic candidate status.
 `SignedMul` is the next signed-operation graph.
+Inspect the immutable
+[`associativity tactic source`](https://github.com/nasqret/vietnam2026/blob/883febe3fcf3b8a29707f34780c457f8fcd8edc6/peano-lab/py/peano_lab/library/ha_signed_add_associative_candidate.py#L16)
+and its
+[`exhaustive focused audit`](https://github.com/nasqret/vietnam2026/blob/883febe3fcf3b8a29707f34780c457f8fcd8edc6/peano-lab/py/tests/test_ha_signed_add_associative_candidate.py#L381)
+for the full native proof and every receipt.
 
 Read the complete
-[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/a1fa4162f92d4ce6c5501cebceadd75403d7a563/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
+[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/883febe3fcf3b8a29707f34780c457f8fcd8edc6/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
 for the exact formulas, hashes, forbidden dependency paths, and staged proof
 obligations.
 

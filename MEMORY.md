@@ -1615,4 +1615,7 @@
   local gate passes 26 manifest/definition tests and 84 proof/admission tests.
   SignedAdd's totality, functionality, zero, commutativity, inverse, and
   associativity requirements are closed at candidate status; `SignedMul` is
-  next.
+  next. Immutable source checkpoint
+  `883febe3fcf3b8a29707f34780c457f8fcd8edc6` anchors the final additive
+  Book links. The warning-free 47-source rebuild retains 2,325 HTML pages,
+  zero integrity errors, and byte-identical explicit/defined explorer trees.

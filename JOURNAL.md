@@ -3885,3 +3885,10 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   campaign has 56 public references, 42 candidates, and 51 exact receipts;
   the public registry remains 393. SignedAdd now meets every RFC arithmetic
   acceptance law at closed-candidate status. `SignedMul` is the next graph.
+- Sealed the complete additive source as
+  `883febe3fcf3b8a29707f34780c457f8fcd8edc6`, rebound the campaign manifest,
+  RFC, associativity source, and audit links, and rebuilt all 47 Book sources
+  without warnings. The 2,325-page integrity gate reports no broken,
+  escaping, fragment, unsafe, or remote-runtime link and byte-identical
+  explicit/defined explorer trees. No public admission, push, deployment, or
+  WMI receipt is claimed.
