@@ -168,7 +168,7 @@ with `m != 0` on totality statements.
       output functionality as deterministic empty-context candidates.
 - [x] Prove the signed-add zero identities, commutativity, and both inverse
       orientations through the decoded contribution equation.
-- [ ] Prove signed-add associativity through an independently reviewed
+- [x] Prove signed-add associativity through an independently reviewed
       cross-sum composition helper.
 - [ ] Prove the signed multiply and natural-scale operation graph obligations
       frozen by that RFC.
@@ -295,7 +295,7 @@ closure remains 557 nodes and 1,787 edges, now partitioned as 241 public and
 - [x] Build the five-row `SignedAdd` core from decoded contribution sums plus
       `SignedBalance`; retain its decoder bridges, totality, and functionality
       as closed candidates without bypassing normalization with host integers.
-- [ ] Complete the `SignedAdd` algebraic-law tranche before starting
+- [x] Complete the `SignedAdd` algebraic-law tranche before starting
       `SignedMul`.
 
 ## Release boundary

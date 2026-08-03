@@ -50,7 +50,8 @@
       "peano-lab/py/tests/test_ha_signed_balance_complete_candidate.py",
       "peano-lab/py/tests/test_ha_signed_negate_candidate.py",
       "peano-lab/py/tests/test_ha_signed_add_candidate.py",
-      "peano-lab/py/tests/test_ha_signed_add_laws_candidate.py"
+      "peano-lab/py/tests/test_ha_signed_add_laws_candidate.py",
+      "peano-lab/py/tests/test_ha_signed_add_associative_candidate.py"
     ],
     "theorems": [
       {
@@ -388,6 +389,27 @@
         "source_module": "peano-lab/py/peano_lab/library/ha_signed_add_laws_candidate.py",
         "statement_sha256": "7593806922fd71def930a77a3158bad702a19351ad5429dc6f9ba9e53a88e60f",
         "receipt": {"nodes": 299, "depth": 40, "objects": 220, "edges": 226, "reused": 7, "cuts": 7, "certificate_sha256": "c0644346209c5ed963b612704a8c53fcfb91cadb598181f9ea2835aa0b0a5275"}
+      },
+      {
+        "name": "add_cross_sum_chain",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_add_associative_candidate.py",
+        "statement_sha256": "fa68b8d6618ba4e355f74bb10e1b4fe86a9a567c19120533263f75347f690ef6",
+        "receipt": {"nodes": 315, "depth": 29, "objects": 231, "edges": 242, "reused": 12, "cuts": 7, "certificate_sha256": "dff8ac71df78d80bd9dfac3cdfd65f34a568d3a3ed6ef52236e40eaf91a80121"}
+      },
+      {
+        "name": "signed_add_equations_associate",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_add_associative_candidate.py",
+        "statement_sha256": "f441723f3901a92c22c344c5f037d84ee858e8f1683493d91e6ad98baf6ac19b",
+        "receipt": {"nodes": 703, "depth": 35, "objects": 407, "edges": 422, "reused": 16, "cuts": 13, "certificate_sha256": "ac5629e6081d3af7d0ba42c37ad0b5feca12eb30ff73d0ef5d453c85cc355f58"}
+      },
+      {
+        "name": "signed_add_associative",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_signed_add_associative_candidate.py",
+        "statement_sha256": "62a4c1b9837905a14af15fc6a8931fa07fe338252787f2ce1ebb7d9a892ad094",
+        "receipt": {"nodes": 1695, "depth": 47, "objects": 1046, "edges": 1065, "reused": 20, "cuts": 30, "certificate_sha256": "dbac676cc5650d6f0d884dd2e4f9426d17342327cdf0abb59e71c40cc0a8a4cc"}
       }
     ]
   },
@@ -653,9 +675,19 @@
             "signed_add_negate_left_zero"
           ],
           "role": "Closed-checked but non-public commutativity, two-sided zero identity, and two-sided additive-inverse graph laws for canonical SignedAdd."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_signed_add_associative_candidate.py",
+          "factory": "make_ha_signed_add_associative_candidate_theorems",
+          "theorem_names": [
+            "add_cross_sum_chain",
+            "signed_add_equations_associate",
+            "signed_add_associative"
+          ],
+          "role": "Closed-checked but non-public cross-sum composition, decoded-equation reassociation, and exact graph associativity for canonical SignedAdd."
         }
       ],
-      "remaining_gap": "The parity-interleaved decoder, decoded-code extensionality, total functional SignedBalance normalization, total functional involutive SignedNegate graph, total functional SignedAdd core, and SignedAdd commutativity/zero/inverse laws now have deterministic empty-context candidate receipts without division, remainder, beta, or CRT dependencies. Public admission, SignedAdd associativity, signed multiply/natural-scale operation graphs, decidable equality packaging, pair/list/map encodings, and list recursion remain.",
+      "remaining_gap": "The parity-interleaved decoder, decoded-code extensionality, total functional SignedBalance normalization, total functional involutive SignedNegate graph, and the total functional SignedAdd graph with zero, commutativity, inverse, and associativity laws now have deterministic empty-context candidate receipts without division, remainder, beta, or CRT dependencies. Public admission, signed multiply/natural-scale operation graphs, decidable equality packaging, pair/list/map encodings, and list recursion remain.",
       "validation": {
         "path": [
           "manifest_integrity",

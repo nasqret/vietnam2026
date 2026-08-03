@@ -3859,3 +3859,29 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   zero broken, escaping, fragment, unsafe, or remote-runtime links and the
   explicit/defined explorer trees remain byte-identical. No public admission,
   push, deployment, or WMI result is claimed.
+
+## 2026-08-03 — SignedAdd associativity closed
+
+- Added the general constructive helper `add_cross_sum_chain`, which composes
+  `a+x=b+y` and `y+c=x+d` by prefixing and cancelling the shared natural
+  contribution. Added `signed_add_equations_associate`, which combines the
+  three D05 contribution equations through that helper and a proved
+  four-summand shuffle.
+- Proved graph associativity by destructing the three input graphs, using the
+  D05 elimination theorem to align independently chosen decoders, applying
+  the equation associator, and rebuilding exactly `SignedAdd(a,bc,abc)`.
+  Independent review verified the complete `x` through `x17` witness map.
+- Two cold closures pin exact nodes/depths/Cuts at 315/29/7, 703/35/13, and
+  1,695/47/30. The endpoint certificate SHA-256 is
+  `dbac676cc5650d6f0d884dd2e4f9426d17342327cdf0abb59e71c40cc0a8a4cc`;
+  the complete 39-theorem stack digest is
+  `39ac0f7083ed54d2762289c7417b57a21c6dc97971b57efe2649ecb1cb7ec895`.
+- The focused seven-test audit checks both arithmetic helpers exhaustively on
+  small naturals and graph associativity on all 4,913 triples of the first 17
+  codes, while pinning statements, bodies, closures, mutations, no-DNE, strict
+  dependencies, and registry isolation. The full campaign gate now passes 26
+  manifest/definition tests and 84 proof/admission tests.
+- Integrated the associativity module as the ninth K3 candidate module. The
+  campaign has 56 public references, 42 candidates, and 51 exact receipts;
+  the public registry remains 393. SignedAdd now meets every RFC arithmetic
+  acceptance law at closed-candidate status. `SignedMul` is the next graph.

@@ -1600,3 +1600,19 @@
   the updated Book links. The warning-free rebuild again has 47 sources and
   2,325 HTML pages; its integrity audit finds zero broken, escaping, fragment,
   unsafe, or remote-runtime links and byte-identical explorer trees.
+- **Signed addition associativity (2026-08-03):** the last additive law closes
+  through `add_cross_sum_chain`, `signed_add_equations_associate`, and
+  `signed_add_associative`. Their certificates have 315, 703, and 1,695 nodes,
+  depths 29, 35, and 47, and 7, 13, and 30 Cuts; the graph endpoint's DAG
+  SHA-256 is
+  `dbac676cc5650d6f0d884dd2e4f9426d17342327cdf0abb59e71c40cc0a8a4cc`.
+  Two cold replays agree on full 39-theorem signed-stack digest
+  `39ac0f7083ed54d2762289c7417b57a21c6dc97971b57efe2649ecb1cb7ec895`.
+  Independent witness review and exhaustive bounded semantic checks over
+  `4^6`, `3^12`, and `17^3` tuples pass. The exact closure reaches no
+  division, remainder, beta, CRT, classical, or DNE theorem. The manifest now
+  binds 42 candidates and 51 receipts; the registry remains 393. The complete
+  local gate passes 26 manifest/definition tests and 84 proof/admission tests.
+  SignedAdd's totality, functionality, zero, commutativity, inverse, and
+  associativity requirements are closed at candidate status; `SignedMul` is
+  next.

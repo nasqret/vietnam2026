@@ -46,13 +46,13 @@ It separates three facts which are easy to blur in an informal development:
     context but are not in the public registry.
 * - Canonical signed naturals
   - closed candidate
-  - The representation is frozen. Thirty-six parity, decoder,
+  - The representation is frozen. Thirty-nine parity, decoder,
     code-extensionality, balance-normalization, negation, and addition
     theorems close from the empty context without division.
 ```
 
 The public registry therefore has 393 entries. The first nine campaign
-theorems occupy append-only positions 384--392. The three gcd and thirty-six
+theorems occupy append-only positions 384--392. The three gcd and thirty-nine
 signed candidates stay outside it. This tail append leaves the frozen
 first-247 model curriculum unchanged.
 
@@ -640,14 +640,76 @@ alpha-identical to D05 instantiated at the appropriate slot. The transitive
 closure uses only four public arithmetic facts and five earlier/local signed
 facts, with no division, remainder, CRT, Gödel-β, classical, or DNE edge.
 
-Associativity remains deliberately separate. Its proof needs a reusable
-cross-sum composition lemma before graph-level reassociation, so the complete
-addition-law acceptance gate is not yet claimed.
+At this checkpoint associativity remained deliberately separate because it
+needed a reusable cross-sum composition lemma before graph reassociation.
 Inspect the immutable
 [`law tactic source`](https://github.com/nasqret/vietnam2026/blob/a1fa4162f92d4ce6c5501cebceadd75403d7a563/peano-lab/py/peano_lab/library/ha_signed_add_laws_candidate.py#L171)
 and its
 [`eight-gate audit`](https://github.com/nasqret/vietnam2026/blob/a1fa4162f92d4ce6c5501cebceadd75403d7a563/peano-lab/py/tests/test_ha_signed_add_laws_candidate.py#L472)
 for every expanded graph, native tactic, semantic fixture, and receipt.
+
+### Associativity through cross-sum composition
+
+The final additive law is organized as a three-step proof rather than one
+large graph manipulation:
+
+```text
+flowchart LR
+  C[generic cross-sum chain] --> E[three decoded equations associate]
+  D[D05 elimination aligns decoders] --> E
+  E --> G[SignedAdd graph associativity]
+  I[D05 introduction] --> G
+```
+
+The reusable arithmetic helper says
+
+$$
+a+x=b+y,\quad y+c=x+d\quad\Longrightarrow\quad a+c=b+d.
+$$
+
+It prefixes both target sums by the shared contribution and cancels it. The
+second lemma applies this principle twice, with a proved four-summand shuffle,
+to the decoded equations for $a+b$, $(a+b)+c$, and $b+c$. The graph
+theorem aligns all decoder witnesses through the existing elimination bridge
+and reconstructs exactly `SignedAdd(a,bc,abc)`.
+
+```{list-table}
+:header-rows: 1
+:widths: 45 10 10 10 25
+
+* - Closed candidate
+  - Nodes
+  - Depth
+  - Cuts
+  - Certificate prefix
+* - `add_cross_sum_chain`
+  - 315
+  - 29
+  - 7
+  - `dff8ac71df78`
+* - `signed_add_equations_associate`
+  - 703
+  - 35
+  - 13
+  - `ac5629e6081d`
+* - `signed_add_associative`
+  - 1,695
+  - 47
+  - 30
+  - `dbac676cc565`
+```
+
+The complete 39-theorem signed stack has deterministic digest
+`39ac0f7083ed54d2762289c7417b57a21c6dc97971b57efe2649ecb1cb7ec895`.
+The semantic regression gate exhausts `4^6` tuples for the generic helper,
+`3^12` tuples for the equation associator, and all 4,913 triples of the first
+17 canonical codes for graph associativity. Independent replay verifies the
+exact witness map and finds no division, remainder, CRT, Gödel-β, classical,
+or DNE edge.
+
+This closes the RFC's totality, functionality, zero, commutativity, inverse,
+and associativity obligations for SignedAdd at nonpublic candidate status.
+`SignedMul` is the next signed-operation graph.
 
 Read the complete
 [`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/a1fa4162f92d4ce6c5501cebceadd75403d7a563/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
@@ -664,9 +726,9 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 ```
 
-The first command checks the 12-layer campaign manifest, all 48 theorem
+The first command checks the 12-layer campaign manifest, all 51 theorem
 receipts, the 44-theorem definition API, the nine public admissions, the three
-isolated gcd candidates, and the thirty-six isolated signed representation,
+isolated gcd candidates, and the thirty-nine isolated signed representation,
 normalization, negation, and addition candidates. The second cross-checks
 all 393 public runtime theorems against the 394-row research catalog. The third
 independently replays the full public ladder and compares the deterministic

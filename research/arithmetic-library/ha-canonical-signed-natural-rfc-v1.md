@@ -554,6 +554,44 @@ will use a separately reviewed cross-sum composition helper. Therefore the
 full addition-law acceptance gate remains open, and all 36 signed results
 remain nonpublic.
 
+#### 6.4.4 Closed associativity checkpoint
+
+Associativity closes through three separately reusable candidates:
+
+```text
+add_cross_sum_chain
+signed_add_equations_associate
+signed_add_associative
+```
+
+The first is a general subtraction-free cancellation principle:
+
+```text
+a + x = b + y -> y + c = x + d -> a + c = b + d.
+```
+
+The second composes the three D05 contribution equations for `a+b`,
+`(a+b)+c`, and `b+c`. It uses a proved four-summand shuffle and the cross-sum
+chain twice to derive the equation for `a+(b+c)`. The graph theorem then uses
+the D05 elimination bridge to align decoder witnesses, applies the equation
+associator, and reconstructs the target graph through the D05 introduction
+bridge.
+
+Their empty-context certificates contain respectively 315, 703, and 1,695
+structural nodes at depths 29, 35, and 47, with 7, 13, and 30 Cuts. The full
+39-theorem signed-stack digest is
+`39ac0f7083ed54d2762289c7417b57a21c6dc97971b57efe2649ecb1cb7ec895`.
+The focused oracle exhausts the generic helper over `4^6` natural tuples, the
+equation associator over `3^12` tuples, and signed graph associativity over all
+`17^3` bounded code triples.
+
+Independent replay confirms the exact D05 witness map and a transitive closure
+with no division, remainder, CRT, beta, classical, or DNE dependency. Thus the
+RFC's totality, functionality, zero, commutativity, inverse, and associativity
+requirements for `SignedAdd` are now closed at candidate status. Nothing in
+this section grants public admission. `SignedMul` is the next signed-operation
+graph.
+
 ### 6.5 Bezout bridge obligations
 
 The existing expanded balanced relation is
