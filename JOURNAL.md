@@ -3599,3 +3599,47 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   This is a plumbing regression, not Qwen/Codex capability, symbolic-baseline
   strength, sealed evaluation, or an LLM-advantage result. The structured macro
   DSL and all H0 semantic/conformance gates remain open.
+
+## 2026-08-03 — Hydra H0.1a froze semantic profile v1
+
+- Published canonical profile `peano-lab-ha-intuitionistic-v1`, semantic
+  SHA-256
+  `058b1644b066967919dae092e5e562b8845e4dd8415fff31d7cd209d51bc9e43`.
+  It freezes closed canonical formulas, de Bruijn scope and substitution, the
+  complete intuitionistic kernel calculus, PA1--PA6, unrestricted induction,
+  exact surface desugarings, and the `proved | unknown` claim boundary. It
+  registers no classical checker, external translation, decidable fragment,
+  or `not_theorem` publication. Its result contract is explicitly a
+  `required-field-draft`; exact types, additional-field policy, and hash
+  preimages remain H0.1b.
+- Froze the previously implicit operational admission boundary: nonempty
+  one-line input, no outer whitespace/unsafe Unicode/explicit `#`, at most
+  8,192 Unicode code points, and decimal numerals at most 256. The profile marks
+  these construction safeguards `decision_claim = false`; they do not create a
+  negative theoremhood or decision-resource claim. Substitution now records
+  structural recursion and the exact `cutoff + 1` shift beneath binders.
+- Added a strict canonical JSON loader with live PA-axiom/proof-constructor
+  alignment. It rejects duplicate/non-finite/non-canonical documents and
+  closes the old names-only target gap: explicit `#0 = #0` can no longer be
+  presented as a closed Hydra theorem.
+- Bumped Hydra policy and runner records plus the teacher pilot to v2. The
+  profile digest is direct in environments, identities, proposals, recorded
+  states, source artifacts, runs, replay IDs, and outcome tables. Legacy batch
+  traces receive a new profile-bound replay before becoming policies; proved
+  runs replay again at serialization, and replay/profile mutations fail.
+- The final adversarial review found that nested dictionaries remained mutable
+  despite a frozen result dataclass. Runner publication now retains a canonical
+  original binding; revalidates policy heads, proposal rows, search limits,
+  statuses, counters, and degradation; and hard-codes surface-macro-v0 as
+  comparison-ineligible. Head hashes now bind the full declaration and
+  environment, and transport bounds run before theorem parsing.
+- Preserved `teacher-oracle-pilot-v1.json` byte-for-byte as pre-profile history.
+  Generated profile-bound `teacher-oracle-pilot-v2.json`, SHA-256
+  `d1588420eaf121db84f6cb1a5168645c82e736a8700a5f1a0a2da3c21f7ff74a`.
+  Its lanes remain comparison-ineligible and explicitly non-conformant with
+  the draft result-evidence contract; this is still teacher-oracle plumbing,
+  not Qwen capability.
+- Focused H0.1a profile/policy/runner/pilot tests passed. H0.1b exact evidence,
+  H0.2 cold replay and independent reference/conformance/mutation campaigns,
+  H0.3 typed macros, complete evidence bundles, and the H0 acceptance review
+  remain open.

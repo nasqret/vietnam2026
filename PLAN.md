@@ -156,8 +156,9 @@ M20's native arithmetic and synchronized release artifacts are complete. The
 main Jupyter Book now includes a guided zero-to-FTA route, a quadratic
 reciprocity campaign chapter, and a generated interactive 384-proof atlas;
 the integrated local browser candidate deterministically verifies as build
-`2026-08-03a`, application `a-ff0ad1985520`, with 149 worker sources. It
-assembles successfully in the local content-addressed stage, is not deployed,
+`2026-08-03c`, application `a-4f03b6fb429b`, with 149 worker sources. Its
+source inventory, content manifest, and deployment contracts pass; complete
+local staging awaits the gitignored pinned vendor mirror. It is not deployed,
 and direct attached-browser UI inspection remains
 explicitly unclaimed. Model-v3 curriculum training is a separate milestone—not mathematical
 admission of FTA or prime unboundedness. See
@@ -283,9 +284,16 @@ as no demonstrated LLM advantage. H6 requires independent reproduction.
 The existing four-goal Qwen result is retained only as a launch regression,
 not evidence for the campaign. Any later quadratic-reciprocity development
 belongs to a new library epoch and, if used for evaluation, requires
-whole-lineage masking. A pre-H0 provider-neutral portfolio/replay bootstrap and
-teacher-oracle plumbing artifact now exist, but no completed H0 semantic or
-structured-macro gate, sealed benchmark, Hydra training, or headline result
-exists yet. See
+whole-lineage masking. H0.1a now freezes and binds semantic profile
+`peano-lab-ha-intuitionistic-v1` (SHA-256
+`058b1644b066967919dae092e5e562b8845e4dd8415fff31d7cd209d51bc9e43`).
+It is theorem-prover-only: `proved | unknown`, no decision fragment or
+`not_theorem`. Its operational target admission freezes the 8,192-code-point
+source and 256-numeral ceilings without making a decision-resource claim. H0
+remains incomplete because H0.1b exact result schemas and
+hash preimages, H0.2 cold replay/reference/conformance/mutation work, complete
+result evidence, and H0.3 typed macros remain open. No H1 benchmark is sealed,
+no Hydra training claim exists,
+and no H5 result exists. See
 [`docs/PEANO_HYDRA_DESIGN.md`](docs/PEANO_HYDRA_DESIGN.md) and
 [`PLAN/11_peano_hydra.md`](PLAN/11_peano_hydra.md).

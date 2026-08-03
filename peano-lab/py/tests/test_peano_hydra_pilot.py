@@ -2,14 +2,24 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
+import hashlib
 import json
 from pathlib import Path
 import sys
 
+import pytest
+
 
 ROOT = Path(__file__).resolve().parents[3]
 COMMITTED_REPORT = (
+    ROOT / "artifacts" / "peano-hydra" / "teacher-oracle-pilot-v2.json"
+)
+HISTORICAL_REPORT = (
     ROOT / "artifacts" / "peano-hydra" / "teacher-oracle-pilot-v1.json"
+)
+HISTORICAL_REPORT_SHA256 = (
+    "3b709f70eb910e327880fefb0fb54b0770e5a8662c995205412f261b27b7580d"
 )
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
@@ -23,10 +33,16 @@ from training.peano_hydra.pilot import (  # noqa: E402
     TEACHER_ORACLE_LABEL,
     run_teacher_oracle_pilot,
 )
+import training.peano_hydra.pilot as hydra_pilot  # noqa: E402
+from training.peano_hydra.profile import semantic_profile_sha256  # noqa: E402
 
 
 def test_teacher_oracle_pilot_is_paired_checked_and_explicitly_not_capability() -> None:
     report = run_teacher_oracle_pilot()
+    profile_digest = semantic_profile_sha256()
+
+    assert report.semantic_profile_sha256 == profile_digest
+    assert report.artifact.semantic_profile_sha256 == profile_digest
 
     assert report.artifact.path == "artifacts/triangular-even-readable.pa"
     assert report.artifact.sha256 == DEFAULT_ARTIFACT_SHA256
@@ -36,9 +52,11 @@ def test_teacher_oracle_pilot_is_paired_checked_and_explicitly_not_capability() 
     assert report.artifact.replay.proof_nodes == DEFAULT_ARTIFACT_PROOF_NODES == 180
 
     assert report.control.status == "exhausted"
+    assert report.control.evidence_kind == "unknown"
     assert report.control.proved is False
     assert report.control.eligible_for_comparison is False
     assert report.hybrid.status == "proof"
+    assert report.hybrid.evidence_kind == "proved"
     assert report.hybrid.proved is True
     assert report.hybrid.eligible_for_comparison is False
     assert report.hybrid.commands == report.artifact.commands
@@ -75,6 +93,7 @@ def test_teacher_oracle_pilot_is_paired_checked_and_explicitly_not_capability() 
     assert report.mutation.theorem.endswith("= 2 · y + 1")
     assert MUTATED_THEOREM.endswith("= 2 * x + 1")
     assert report.mutation.status == "exhausted"
+    assert report.mutation.evidence_kind == "unknown"
     assert report.mutation.proved is False
     assert report.mutation.eligible_for_comparison is False
     mutation_macro = tuple(
@@ -87,12 +106,15 @@ def test_teacher_oracle_pilot_is_paired_checked_and_explicitly_not_capability() 
     assert mutation_macro[0]["requested"] == 0
 
     payload = report.to_dict(include_trace=True)
+    assert payload["v"] == 2
+    assert payload["semantic_profile"]["sha256"] == profile_digest
     assert payload["experiment"] == TEACHER_ORACLE_LABEL
     assert "not Qwen capability" in payload["claim_boundary"]
     assert "not negative-decision evidence" in payload[
         "mutation_integrity_check"
     ]["claim_boundary"]
     assert payload["outcome"] == {
+        "semantic_profile_sha256": profile_digest,
         "control_status": "exhausted",
         "hybrid_status": "proof",
         "hybrid_kernel_checked": True,
@@ -106,3 +128,27 @@ def test_teacher_oracle_pilot_is_paired_checked_and_explicitly_not_capability() 
     assert report.json(indent=2, include_trace=True) + "\n" == (
         COMMITTED_REPORT.read_text(encoding="utf-8")
     )
+
+
+def test_historical_pre_profile_pilot_is_preserved_byte_for_byte() -> None:
+    raw = HISTORICAL_REPORT.read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == HISTORICAL_REPORT_SHA256
+    payload = json.loads(raw)
+    assert payload["v"] == 1
+    assert "semantic_profile" not in payload
+
+
+def test_teacher_source_replay_identity_cannot_be_substituted(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    real_run_proof = hydra_pilot.run_proof
+
+    def forged_run_proof(*args, **kwargs):
+        return replace(real_run_proof(*args, **kwargs), request_id="wrong-request")
+
+    monkeypatch.setattr(hydra_pilot, "run_proof", forged_run_proof)
+    with pytest.raises(
+        hydra_pilot.TeacherOraclePilotError,
+        match="original-goal kernel replay",
+    ):
+        run_teacher_oracle_pilot()

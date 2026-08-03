@@ -246,17 +246,28 @@
   critical frontiers through macros compiled to public Peano commands. The H5
   headline compares symbolic `S`, non-generative `S+R`, and full Hydra under
   matched resources; teacher-oracle DEV pilots and the historical four-goal
-  smoke make no model or performance claim. The pre-H0 provider-neutral core
-  now composes identified fixed, null, recorded, Qwen-compatible, or future
-  Codex-compatible candidate heads through fixed quotas and exact-state gates;
-  search validates every edge and a separate traced runner replays any QED.
-  Its deterministic teacher-oracle pilot has a symbolic-only control
+  smoke make no model or performance claim. H0.1a freezes semantic profile
+  `peano-lab-ha-intuitionistic-v1`, SHA-256
+  `058b1644b066967919dae092e5e562b8845e4dd8415fff31d7cd209d51bc9e43`:
+  closed intuitionistic PA with unrestricted induction, `proved | unknown`,
+  no decision fragment, and no `not_theorem`. Its operational target preflight
+  binds 8,192 Unicode code points and decimal numerals through 256 while
+  explicitly making no decision-resource claim. The provider-neutral core now
+  composes identified fixed, null, and profile-replayed recorded heads through
+  fixed quotas and exact-state gates. A legacy Qwen prompt is rejected until a
+  future prompt contract exposes the profile identity honestly. Search
+  validates every edge; a separate traced runner replays any QED and performs
+  another fresh replay at publication. Its deterministic teacher-oracle pilot has a symbolic-only control
   (`exhausted`), a hybrid replay of the known 13-command/180-node proof
   (`proof`, kernel checked), and a mutated-transcript integrity lane
-  (`exhausted`, therefore `unknown`). The committed report is explicitly
-  plumbing evidence, not model capability or H0/H5 completion. Every
+  (`exhausted`, therefore `unknown`). Historical pilot v1 remains immutable
+  pre-profile evidence; profile-bound pilot v2 is explicitly plumbing evidence,
+  not model capability or H0/H5 completion. Every
   surface-macro-v0 row is comparison-ineligible until raw model/resource
-  evidence, provider attestations, and genuine frontier detection exist.
+  evidence, exact profile-result schemas and hash preimages, provider
+  attestations, and genuine frontier detection exist. The profile labels its
+  current evidence contract `required-field-draft`; H0.1b, H0.2, and H0.3
+  remain open.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
   Tarski–Grothendieck set theory. The same statements are proved in all four to *show* the foundations.
 - **Local tooling present:** Lean/`elan`/`lake` ✓ (proofs verifiable here), `jupyter-book` ✓, `gh` (as
@@ -542,9 +553,10 @@
   language-blocked conventional interface). The Obsidian vault has 482 notes
   and 4,886 resolved links, including all 384 generated theorem notes. The
   integrated local browser candidate deterministically verifies as build
-  `2026-08-03a`, application `a-ff0ad1985520`, with 149 worker sources; it
-  assembles successfully in the local content-addressed stage and is not
-  deployed.
+  `2026-08-03c`, application `a-4f03b6fb429b`, with 149 worker sources; its
+  source inventory, content manifest, and deployment contracts pass. Complete
+  local staging awaits the gitignored pinned vendor mirror, and the build is
+  not deployed.
 - **QR heavy-execution boundary (2026-07-30):** proof replay, certificate
   profiling, mutation audits, full-ladder tests, and documentation builds run
   on WMI from content-addressed dirty-worktree archives; the Mac is restricted

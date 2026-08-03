@@ -1,5 +1,18 @@
 """Untrusted hybrid candidate policies for Peano Lab's checked search."""
 
+from .profile import (
+    SEMANTIC_PROFILE_FORMAT,
+    SEMANTIC_PROFILE_ID,
+    SEMANTIC_PROFILE_VERSION,
+    SemanticProfileError,
+    canonical_profile_theorem,
+    semantic_profile,
+    semantic_profile_identity,
+    semantic_profile_sha256,
+    validate_semantic_profile,
+    well_scoped_formula,
+)
+
 from .policy import (
     HYDRA_POLICY_VERSION,
     MACRO_ACTION_HEADS,
@@ -21,6 +34,16 @@ from .policy import (
 
 
 __all__ = [
+    "SEMANTIC_PROFILE_FORMAT",
+    "SEMANTIC_PROFILE_ID",
+    "SEMANTIC_PROFILE_VERSION",
+    "SemanticProfileError",
+    "canonical_profile_theorem",
+    "semantic_profile",
+    "semantic_profile_identity",
+    "semantic_profile_sha256",
+    "validate_semantic_profile",
+    "well_scoped_formula",
     "HYDRA_POLICY_VERSION",
     "MACRO_ACTION_HEADS",
     "FixedCandidatePolicy",

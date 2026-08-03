@@ -27,12 +27,16 @@ import re
 from typing import Literal, Protocol, runtime_checkable
 import unicodedata
 
-from peano_lab.batch import BATCH_VERSION, BatchResult, capability_sha256
+from peano_lab.batch import BATCH_VERSION, BatchResult, capability_sha256, run_proof
 from peano_lab.ui.prove import MAX_INPUT, SurfaceCapabilities, oversized_numeral
+from training.peano_hydra.profile import (
+    canonical_profile_theorem,
+    semantic_profile_sha256 as registered_semantic_profile_sha256,
+)
 from training.peano_policy.search import CandidatePolicy, state_sha256
 
 
-HYDRA_POLICY_VERSION = 1
+HYDRA_POLICY_VERSION = 2
 MAX_RECORDED_STATES = 4_096
 MAX_RECORDED_CANDIDATES_PER_STATE = 1_024
 MAX_POLICY_NAME_CHARS = 160
@@ -63,7 +67,13 @@ MACRO_ACTION_HEADS = frozenset(
 )
 
 _POLICY_ENVIRONMENT_FIELDS = frozenset(
-    {"classical", "surface", "environment_sha256", "capabilities"}
+    {
+        "classical",
+        "surface",
+        "environment_sha256",
+        "semantic_profile_sha256",
+        "capabilities",
+    }
 )
 _CAPABILITY_FIELDS = frozenset(
     {"label", "allowed_commands", "allowed_theorems"}
@@ -187,6 +197,23 @@ def _json_sha256(value: object) -> str:
     return hashlib.sha256(encoded).hexdigest()
 
 
+def _registered_profile_digest(label: str, value: object) -> str:
+    if type(value) is not str or _SHA256_RE.fullmatch(value) is None:
+        raise ValueError(f"{label} must be one lowercase SHA-256 digest")
+    registered = registered_semantic_profile_sha256()
+    if value != registered:
+        raise ValueError(f"{label} is not the registered semantic profile")
+    return value
+
+
+def _environment_profile_digest(encoded: str) -> str:
+    environment = _detached_object(encoded)
+    return _registered_profile_digest(
+        "policy_environment.semantic_profile_sha256",
+        environment.get("semantic_profile_sha256"),
+    )
+
+
 def _name_list(label: str, value: object) -> frozenset[str] | None:
     if value is None:
         return None
@@ -205,10 +232,18 @@ def _policy_environment_json(value: object) -> str:
     if set(environment) != _POLICY_ENVIRONMENT_FIELDS:
         raise ValueError(
             "policy_environment must contain classical, surface, "
-            "environment_sha256, and capabilities"
+            "environment_sha256, semantic_profile_sha256, and capabilities"
         )
     if type(environment["classical"]) is not bool:
         raise ValueError("policy_environment.classical must be a Boolean")
+    if environment["classical"]:
+        raise ValueError(
+            "the registered Hydra semantic profile is intuitionistic"
+        )
+    _registered_profile_digest(
+        "policy_environment.semantic_profile_sha256",
+        environment["semantic_profile_sha256"],
+    )
     surface = _safe_one_line(
         "policy_environment.surface", environment["surface"], limit=128
     )
@@ -354,6 +389,7 @@ class PolicyHead:
     quota: int
     policy: IdentifiedCandidatePolicy
     gating: HeadGate = HeadGate()
+    semantic_profile_sha256: str = field(init=False)
     _identity_json: str = field(init=False, repr=False)
     _environment_json: str = field(init=False, repr=False)
 
@@ -381,8 +417,19 @@ class PolicyHead:
             raise ValueError(
                 f"policy head {self.name!r} has invalid identity: {exc}"
             ) from None
+        identity = _detached_object(identity_json)
+        profile_digest = _environment_profile_digest(environment_json)
+        if identity.get("semantic_profile_sha256") != profile_digest:
+            raise ValueError(
+                f"policy head {self.name!r} identity is not profile-bound"
+            )
         object.__setattr__(self, "_identity_json", identity_json)
         object.__setattr__(self, "_environment_json", environment_json)
+        object.__setattr__(
+            self,
+            "semantic_profile_sha256",
+            profile_digest,
+        )
 
     @property
     def evaluation_identity(self) -> dict[str, object]:
@@ -394,7 +441,18 @@ class PolicyHead:
 
     @property
     def identity_sha256(self) -> str:
-        return hashlib.sha256(self._identity_json.encode("utf-8")).hexdigest()
+        return _json_sha256(
+            {
+                "v": HYDRA_POLICY_VERSION,
+                "semantic_profile_sha256": self.semantic_profile_sha256,
+                "name": self.name,
+                "role": self.role,
+                "quota": self.quota,
+                "gating": self.gating.to_record(),
+                "environment": self.policy_environment,
+                "policy": self.evaluation_identity,
+            }
+        )
 
     def to_record(self) -> dict[str, object]:
         return {
@@ -402,6 +460,7 @@ class PolicyHead:
             "role": self.role,
             "quota": self.quota,
             "gating": self.gating.to_record(),
+            "semantic_profile_sha256": self.semantic_profile_sha256,
             "identity_sha256": self.identity_sha256,
             "policy": self.evaluation_identity,
         }
@@ -415,6 +474,7 @@ class ProposalRecord:
     head: str
     role: HeadRole
     head_identity_sha256: str
+    semantic_profile_sha256: str
     goals: tuple[str, ...]
     state_sha256: str
     quota: int
@@ -435,6 +495,9 @@ class ProposalRecord:
             raise ValueError("proposal role is malformed")
         if _SHA256_RE.fullmatch(self.head_identity_sha256) is None:
             raise ValueError("proposal head identity is malformed")
+        _registered_profile_digest(
+            "proposal semantic_profile_sha256", self.semantic_profile_sha256
+        )
         goals = _validate_goals(self.goals)
         if self.state_sha256 != state_sha256(goals):
             raise ValueError("proposal state digest does not match its complete goals")
@@ -460,12 +523,28 @@ class ProposalRecord:
             raise ValueError("suppressed duplicate count must be non-negative")
         if self.outcome == "gated" and self.requested != 0:
             raise ValueError("a gated proposal cannot claim a provider request")
+        if self.outcome in {"ok", "error"} and self.requested != self.quota:
+            raise ValueError(
+                "a successful or failed provider call must request its full quota"
+            )
+        if self.outcome == "contract-error" and self.requested not in {
+            0,
+            self.quota,
+        }:
+            raise ValueError(
+                "a contract error must occur before or during one full-quota call"
+            )
+        if self.outcome == "ok" and len(self.candidates) > self.requested:
+            raise ValueError("a proposal returned more candidates than requested")
         if self.outcome != "ok" and (
             self.candidates
             or self.accepted_candidates
             or self.response_sha256 is not None
+            or self.suppressed_duplicates != 0
         ):
-            raise ValueError("an unsuccessful proposal cannot claim candidates")
+            raise ValueError(
+                "an unsuccessful proposal cannot claim candidates or duplicates"
+            )
         if self.outcome == "ok" and (
             type(self.response_sha256) is not str
             or _SHA256_RE.fullmatch(self.response_sha256) is None
@@ -477,6 +556,10 @@ class ProposalRecord:
             type(self.error_type) is not str or type(self.error) is not str
         ):
             raise ValueError("an errored proposal needs an error type and message")
+        if self.outcome == "gated" and (
+            self.error_type is not None or self.error is not None
+        ):
+            raise ValueError("a gated proposal cannot claim an error")
 
     def to_record(self) -> dict[str, object]:
         return {
@@ -484,6 +567,7 @@ class ProposalRecord:
             "head": self.head,
             "role": self.role,
             "head_identity_sha256": self.head_identity_sha256,
+            "semantic_profile_sha256": self.semantic_profile_sha256,
             "goals": list(self.goals),
             "state_sha256": self.state_sha256,
             "quota": self.quota,
@@ -522,6 +606,10 @@ class HydraPortfolioPolicy(IdentifiedCandidatePolicy, Protocol):
         """Return the exact sum of fixed per-state head quotas."""
 
     @property
+    def semantic_profile_sha256(self) -> str:
+        """Return the registered semantic profile shared by every head."""
+
+    @property
     def records(self) -> tuple[ProposalRecord, ...]:
         """Return the immutable proposal ledger accumulated so far."""
 
@@ -531,8 +619,9 @@ class HydraCandidatePolicy:
     """Deterministically merge bounded, identified candidate-policy heads."""
 
     heads: tuple[PolicyHead, ...]
-    name: str = "peano-hydra-candidate-policy-v1"
+    name: str = "peano-hydra-candidate-policy-v2"
     _environment_json: str = field(init=False, repr=False)
+    _semantic_profile_sha256: str = field(init=False, repr=False)
     _records: list[ProposalRecord] = field(init=False, repr=False)
     _portfolio_calls: int = field(init=False, repr=False)
 
@@ -551,6 +640,7 @@ class HydraCandidatePolicy:
                 "all Hydra heads must have the exact same policy environment"
             )
         self._environment_json = environment_json
+        self._semantic_profile_sha256 = _environment_profile_digest(environment_json)
         self._records = []
         self._portfolio_calls = 0
 
@@ -563,11 +653,16 @@ class HydraCandidatePolicy:
         return _detached_object(self._environment_json)
 
     @property
+    def semantic_profile_sha256(self) -> str:
+        return self._semantic_profile_sha256
+
+    @property
     def evaluation_identity(self) -> dict[str, object]:
         return {
             "name": self.name,
-            "kind": "peano-hydra-candidate-policy-v1",
+            "kind": "peano-hydra-candidate-policy-v2",
             "v": HYDRA_POLICY_VERSION,
+            "semantic_profile_sha256": self.semantic_profile_sha256,
             "merge": "declared-head-order-stable-first-wins-v1",
             "quota_reallocation": False,
             "heads": [head.to_record() for head in self.heads],
@@ -599,6 +694,7 @@ class HydraCandidatePolicy:
             for outcome in ("ok", "gated", "error", "contract-error")
         }
         return {
+            "semantic_profile_sha256": self.semantic_profile_sha256,
             "portfolio_calls": self._portfolio_calls,
             "head_records": len(self._records),
             "outcomes": outcomes,
@@ -627,15 +723,16 @@ class HydraCandidatePolicy:
         error_type, error = _safe_error(exc)
         self._records.append(
             ProposalRecord(
-                call,
-                head.name,
-                head.role,
-                head.identity_sha256,
-                goals,
-                digest,
-                head.quota,
-                requested,
-                outcome,
+                portfolio_call=call,
+                head=head.name,
+                role=head.role,
+                head_identity_sha256=head.identity_sha256,
+                semantic_profile_sha256=head.semantic_profile_sha256,
+                goals=goals,
+                state_sha256=digest,
+                quota=head.quota,
+                requested=requested,
+                outcome=outcome,
                 error_type=error_type,
                 error=error,
             )
@@ -665,15 +762,16 @@ class HydraCandidatePolicy:
             if not head.gating.allows(goals):
                 self._records.append(
                     ProposalRecord(
-                        call,
-                        head.name,
-                        head.role,
-                        head.identity_sha256,
-                        goals,
-                        digest,
-                        head.quota,
-                        0,
-                        "gated",
+                        portfolio_call=call,
+                        head=head.name,
+                        role=head.role,
+                        head_identity_sha256=head.identity_sha256,
+                        semantic_profile_sha256=head.semantic_profile_sha256,
+                        goals=goals,
+                        state_sha256=digest,
+                        quota=head.quota,
+                        requested=0,
+                        outcome="gated",
                     )
                 )
                 continue
@@ -778,19 +876,20 @@ class HydraCandidatePolicy:
                 merged.append(candidate)
             self._records.append(
                 ProposalRecord(
-                    call,
-                    head.name,
-                    head.role,
-                    head.identity_sha256,
-                    goals,
-                    digest,
-                    head.quota,
-                    head.quota,
-                    "ok",
-                    candidates,
-                    tuple(accepted),
-                    duplicates,
-                    _json_sha256(list(candidates)),
+                    portfolio_call=call,
+                    head=head.name,
+                    role=head.role,
+                    head_identity_sha256=head.identity_sha256,
+                    semantic_profile_sha256=head.semantic_profile_sha256,
+                    goals=goals,
+                    state_sha256=digest,
+                    quota=head.quota,
+                    requested=head.quota,
+                    outcome="ok",
+                    candidates=candidates,
+                    accepted_candidates=tuple(accepted),
+                    suppressed_duplicates=duplicates,
+                    response_sha256=_json_sha256(list(candidates)),
                 )
             )
 
@@ -832,7 +931,10 @@ class FixedCandidatePolicy:
     def evaluation_identity(self) -> dict[str, object]:
         return {
             "name": self.name,
-            "kind": "peano-hydra-fixed-candidate-policy-v1",
+            "kind": "peano-hydra-fixed-candidate-policy-v2",
+            "semantic_profile_sha256": _environment_profile_digest(
+                self._environment_json
+            ),
             "candidates": list(self.candidates),
             "candidates_sha256": _json_sha256(list(self.candidates)),
             "provider": _detached_object(self._provider_identity_json),
@@ -874,7 +976,10 @@ class NullCandidatePolicy:
     def evaluation_identity(self) -> dict[str, object]:
         return {
             "name": self.name,
-            "kind": "peano-hydra-null-candidate-policy-v1",
+            "kind": "peano-hydra-null-candidate-policy-v2",
+            "semantic_profile_sha256": _environment_profile_digest(
+                self._environment_json
+            ),
             "provider": _detached_object(self._provider_identity_json),
         }
 
@@ -896,9 +1001,14 @@ class RecordedState:
 
     goals: tuple[str, ...]
     candidates: tuple[str, ...]
+    semantic_profile_sha256: str
 
     def __post_init__(self) -> None:
         goals = _validate_goals(self.goals)
+        profile_digest = _registered_profile_digest(
+            "recorded state semantic_profile_sha256",
+            self.semantic_profile_sha256,
+        )
         if type(self.candidates) is not tuple or not self.candidates:
             raise ValueError("a recorded state needs a non-empty candidate tuple")
         if len(self.candidates) > MAX_RECORDED_CANDIDATES_PER_STATE:
@@ -906,11 +1016,13 @@ class RecordedState:
         candidates = tuple(_validate_tactic_line(item) for item in self.candidates)
         object.__setattr__(self, "goals", goals)
         object.__setattr__(self, "candidates", candidates)
+        object.__setattr__(self, "semantic_profile_sha256", profile_digest)
 
     def to_record(self) -> dict[str, object]:
         return {
             "goals": list(self.goals),
             "state_sha256": state_sha256(self.goals),
+            "semantic_profile_sha256": self.semantic_profile_sha256,
             "candidates": list(self.candidates),
         }
 
@@ -934,9 +1046,11 @@ class RecordedCandidatePolicy:
         name: str,
         policy_environment: Mapping[str, object],
         provider_identity: Mapping[str, object],
-        _kind: str = "peano-hydra-recorded-candidate-policy-v1",
+        _kind: str = "peano-hydra-recorded-candidate-policy-v2",
     ) -> None:
         self.name = _safe_policy_name(name)
+        environment_json = _policy_environment_json(policy_environment)
+        profile_digest = _environment_profile_digest(environment_json)
         merged: dict[tuple[str, ...], list[str]] = {}
         order: list[tuple[str, ...]] = []
         count = 0
@@ -946,6 +1060,10 @@ class RecordedCandidatePolicy:
             if type(record) is not RecordedState:
                 raise TypeError(
                     "recorded policy rows must be exact RecordedState values"
+                )
+            if record.semantic_profile_sha256 != profile_digest:
+                raise ValueError(
+                    "recorded state and policy semantic profiles disagree"
                 )
             if record.goals not in merged:
                 merged[record.goals] = []
@@ -959,7 +1077,12 @@ class RecordedCandidatePolicy:
         if count == 0:
             raise ValueError("recorded candidate policy needs at least one state row")
         self._recorded_states = tuple(
-            RecordedState(goals, tuple(merged[goals])) for goals in order
+            RecordedState(
+                goals=goals,
+                candidates=tuple(merged[goals]),
+                semantic_profile_sha256=profile_digest,
+            )
+            for goals in order
         )
         buckets: dict[str, list[RecordedState]] = {}
         for record in self._recorded_states:
@@ -967,7 +1090,7 @@ class RecordedCandidatePolicy:
         self._buckets = {
             digest: tuple(bucket) for digest, bucket in buckets.items()
         }
-        self._environment_json = _policy_environment_json(policy_environment)
+        self._environment_json = environment_json
         self._provider_identity_json = _provider_identity_json(provider_identity)
         self._kind = _safe_one_line("recorded policy kind", _kind, limit=160)
 
@@ -1007,6 +1130,9 @@ class RecordedCandidatePolicy:
         return {
             "name": self.name,
             "kind": self._kind,
+            "semantic_profile_sha256": _environment_profile_digest(
+                self._environment_json
+            ),
             "record_count": len(self._recorded_states),
             "records_sha256": _json_sha256(record_payload),
             "provider": _detached_object(self._provider_identity_json),
@@ -1050,6 +1176,7 @@ class ScriptCandidatePolicy(RecordedCandidatePolicy):
             raise TypeError("allow_partial must be a Boolean")
         environment_json = _policy_environment_json(policy_environment)
         environment = _detached_object(environment_json)
+        profile_digest = _environment_profile_digest(environment_json)
         if (
             environment["classical"] is not batch.classical
             or environment["surface"] != batch.surface
@@ -1103,7 +1230,17 @@ class ScriptCandidatePolicy(RecordedCandidatePolicy):
                 "partial-search evidence"
             )
 
+        try:
+            canonical_theorem = canonical_profile_theorem(batch.theorem)
+        except ValueError as exc:
+            raise ValueError(
+                f"batch theorem is outside the semantic profile: {exc}"
+            ) from None
+        if canonical_theorem != batch.theorem:
+            raise ValueError("batch theorem is not in canonical profile form")
+
         records: list[RecordedState] = []
+        source_commands: list[str] = []
         for index, row in enumerate(detached_trace[:-1], 1):
             if type(row) is not dict or set(row) != _TRACE_STEP_FIELDS:
                 raise ValueError("batch trace contains a malformed step row")
@@ -1124,6 +1261,7 @@ class ScriptCandidatePolicy(RecordedCandidatePolicy):
             if not all(type(goal) is str for goal in after):
                 raise ValueError("batch trace after-goals contain non-text values")
             line = _validate_tactic_line(row["tactic"])
+            source_commands.append(line)
             # Failed attempts remain in the bound source trace as negative
             # search evidence; they are never promoted to recorded positive
             # candidate actions merely because a later command reached QED.
@@ -1136,14 +1274,107 @@ class ScriptCandidatePolicy(RecordedCandidatePolicy):
                 except ValueError:
                     selected = False
             if selected:
-                records.append(RecordedState(goals, (line,)))
+                records.append(
+                    RecordedState(
+                        goals=goals,
+                        candidates=(line,),
+                        semantic_profile_sha256=profile_digest,
+                    )
+                )
         if not records:
             raise ValueError("batch trace contains no selected tactic rows")
 
+        capabilities = environment["capabilities"]
+        if type(capabilities) is not dict:  # pragma: no cover - schema guard
+            raise ValueError("policy environment capabilities are malformed")
+        authority = SurfaceCapabilities(
+            label=environment["surface"],
+            allowed_commands=_name_list(
+                "policy_environment.capabilities.allowed_commands",
+                capabilities["allowed_commands"],
+            ),
+            allowed_theorems=_name_list(
+                "policy_environment.capabilities.allowed_theorems",
+                capabilities["allowed_theorems"],
+            ),
+        )
+        source_binding = _json_sha256(
+            {
+                "v": HYDRA_POLICY_VERSION,
+                "semantic_profile_sha256": profile_digest,
+                "source_batch": batch.to_dict(include_trace=True),
+            }
+        )
+        request_id = (
+            f"hydra-script-profile-{profile_digest[:12]}-"
+            f"{source_binding[:12]}"
+        )
+        session_id = (
+            f"peano-hydra-script-{profile_digest[:12]}-"
+            f"{source_binding[:12]}"
+        )
+        profile_replay = run_proof(
+            canonical_theorem,
+            tuple(source_commands),
+            request_id=request_id,
+            classical=False,
+            on_error=batch.on_error,
+            capabilities=authority,
+            session_id=session_id,
+        )
+        if profile_replay.request_id != request_id or profile_replay.session_id != session_id:
+            raise ValueError("profile-bound batch replay lost its identity")
+        if (
+            profile_replay.status != batch.status
+            or profile_replay.kernel_checked is not batch.kernel_checked
+            or profile_replay.theorem != batch.theorem
+            or profile_replay.goals != batch.goals
+            or profile_replay.failed_tactics != batch.failed_tactics
+            or profile_replay.proof_nodes != batch.proof_nodes
+            or profile_replay.failed_step != batch.failed_step
+            or profile_replay.error_type != batch.error_type
+            or profile_replay.error != batch.error
+            or profile_replay.surface != batch.surface
+            or profile_replay.environment_sha256 != batch.environment_sha256
+            or profile_replay.classical is not False
+            or profile_replay.on_error != batch.on_error
+            or profile_replay.trace is None
+        ):
+            raise ValueError("profile-bound batch replay disagrees with its source")
+
+        def normalized_trace(value: object) -> list[object]:
+            try:
+                detached = json.loads(
+                    json.dumps(
+                        value,
+                        ensure_ascii=False,
+                        allow_nan=False,
+                        sort_keys=True,
+                        separators=(",", ":"),
+                    )
+                )
+            except (TypeError, ValueError, json.JSONDecodeError) as exc:
+                raise ValueError(f"batch replay trace is not strict JSON: {exc}") from None
+            if type(detached) is not list or not detached:
+                raise ValueError("batch replay trace is malformed")
+            for row in detached[:-1]:
+                if type(row) is not dict:
+                    raise ValueError("batch replay trace row is malformed")
+                row["session"] = "<profile-bound-session>"
+            return detached
+
+        if normalized_trace(profile_replay.trace) != normalized_trace(detached_trace):
+            raise ValueError("profile-bound batch trace differs from its source")
+
         provider_identity = {
-            "kind": "peano-batch-trace-v1",
+            "kind": "peano-batch-trace-profile-replay-v2",
+            "semantic_profile_sha256": profile_digest,
             "batch": batch.to_dict(include_trace=False),
             "trace_sha256": hashlib.sha256(trace_json.encode("utf-8")).hexdigest(),
+            "profile_replay": profile_replay.to_dict(include_trace=False),
+            "profile_replay_trace_sha256": _json_sha256(
+                list(profile_replay.trace)
+            ),
             "include_heads": (
                 None if include_heads is None else sorted(include_heads)
             ),
@@ -1154,7 +1385,7 @@ class ScriptCandidatePolicy(RecordedCandidatePolicy):
             name=name,
             policy_environment=environment,
             provider_identity=provider_identity,
-            _kind="peano-hydra-script-candidate-policy-v1",
+            _kind="peano-hydra-script-candidate-policy-v2",
         )
 
 

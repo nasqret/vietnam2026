@@ -311,6 +311,14 @@ def test_batch_rejects_oversized_numerals_before_parser_or_tactic_execution(
     assert oversized_numeral("'257") is None
     assert oversized_numeral("257x = 0") == "257"
     assert oversized_numeral("257_foo = 0") == "257"
+    huge_numeral = "9" * 5_000
+    assert oversized_numeral(huge_numeral + " = 0") == huge_numeral
+    assert oversized_numeral("0" * 5_000 + "1 = 0") is None
+    assert oversized_numeral("٢٥٦ = ٠") is None
+    assert oversized_numeral("٢٥٧ = ٠") == "٢٥٧"
+    assert oversized_numeral("٠" * 5_000 + "١ = ٠") is None
+    assert oversized_numeral("２５６ = ０") is None
+    assert oversized_numeral("２５７ = ０") == "２５７"
 
 
 def test_request_schema_pins_modes_capabilities_and_unknown_fields() -> None:
