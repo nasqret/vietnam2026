@@ -30,6 +30,7 @@ forall n. 1 * n = n
 - [[beta_prefix_sum_trace_exists]]
 - [[pow_one_from_zero_successor]]
 - [[pow_predecessor_parity_mod]]
+- [[bounded_mod_inverse_unique]]
 
 ## Verification record
 

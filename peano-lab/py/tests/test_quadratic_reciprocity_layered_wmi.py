@@ -61,7 +61,7 @@ from peano_lab.library.theorems import (
 EXPECTED_NODE_COUNT = 557
 EXPECTED_LAYER_COUNT = 45
 EXPECTED_GRAPH_SHA256 = (
-    "98a36450cfe1de29c20be67a1c5f65c8064e9f9eec5368ab769065f910008698"
+    "26017364ea943c4ed51a4a83f63ff0cd56b0de3686f0e0b458e7548ee84b1253"
 )
 EXPECTED_SOURCE_SHA256 = (
     "23fd18aaff26e2c6b428949c35ab3658252c9a4c6fd3b4825a6ccd547f454db1"
@@ -865,7 +865,7 @@ def test_qr_layered_exact_topology_distinct_target_scaffold_kernel_checks() -> N
     assert (
         compiled.proof_annotation_occurrences,
         compiled.proof_envelope_depth,
-    ) == (142_134, 84)
+    ) == (142_102, 84)
     assert check((), compiled.certificate, root_target)
 
     swapped_nodes = list(nodes)

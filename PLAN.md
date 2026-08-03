@@ -28,6 +28,7 @@ mathematics — with every idea presented **informally (runnable) and formally (
 | Foundational arithmetic library | [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md) | Versioned lemma DAG: congruence and divisibility → division/gcd/primes → an honestly represented FTA. |
 | Native quadratic reciprocity | [`PLAN/11_quadratic_reciprocity.md`](PLAN/11_quadratic_reciprocity.md) | Parity and finite folds → Euler/Gauss/Eisenstein → a checked reciprocity certificate. |
 | Peano Hydra | [`PLAN/11_peano_hydra.md`](PLAN/11_peano_hydra.md) | Falsifiable neuro-symbolic campaign: frozen fragment/library/benchmark → strong symbolic baseline → sparse LLM guidance → matched-compute evaluation. |
+| Strict HA number theory | [`PLAN/12_ha_number_theory_campaign.md`](PLAN/12_ha_number_theory_campaign.md) | Canonical remainder/gcd/data interfaces → modular inverses and CRT → cumulative strict-HA releases. |
 
 ## L2 / L3
 
@@ -60,8 +61,10 @@ the next registered iteration was a library-snapshot-bound `model-v2`, not a 4B 
 curriculum. The owner authorized the compatibility-validated 26-record modular extension for the
 public catalog. After reconciliation with M20, fourteen records overlap exactly and twelve are
 new, giving 63 unique checked runtime theorems without changing the kernel.
-Subsequent native arithmetic and quadratic-residue campaign passes extend that
-same runtime to 384 checked theorems, including discrete order, multiplication cancellation and
+Subsequent native arithmetic and quadratic-residue campaign passes first extend
+that runtime to 384 checked theorems, and strict-HA tranche 01 now appends nine
+canonical remainder/congruence/inverse interfaces for a live total of 393.
+The ladder includes discrete order, multiplication cancellation and
 monotonicity, constructive quotient-remainder existence, and full
 quotient-remainder uniqueness, mutual-divisibility antisymmetry, relational
 gcd uniqueness, both directions of Euclidean gcd invariance, constructive
@@ -101,7 +104,8 @@ yielded 474 prospective model-v2 transitions. It is retained as design
 history: only one is an `induction` label, so it cannot support the intended
 explorer by itself. The implemented successor is a distinct model-v3
 curriculum bound to the frozen first-247 declaration-order prefix of the
-current 384-theorem native ladder. It contributes
+then-384-theorem native ladder. The append-only 393-theorem extension preserves
+that exact model identity. The curriculum contributes
 8,494 exact authored predecessor-prefix transitions plus 70,000 deterministic
 synthetic rows over 51 schemas and 14 balanced root tactic heads. Catalog data
 is train-only; validation/test are synthetic-only, target formulas are
@@ -136,9 +140,10 @@ blocker.
 ## Parallel foundational arithmetic and quadratic-reciprocity milestones
 
 M20 generalizes the theorem ladder into a structured arithmetic corpus. The
-current 384 checked runtime entries comprise the original 23-theorem base, 212
+current 393 checked runtime entries comprise the original 23-theorem base, 212
 post-baseline foundational theorems, twelve unique upstream mod-five
-capstones, and 137 checked M21–M23 quadratic-residue foundations. The
+capstones, 137 checked M21–M23 quadratic-residue foundations, and nine
+strict-HA canonical remainder/congruence/modular-inverse interfaces. The
 constructive dependency graph now runs from equality, order,
 cancellation, division and relational gcd through balanced-natural Bézout,
 Gauss cancellation, primality decision, prime-divisor existence and Euclid's
@@ -148,15 +153,15 @@ object language—and proves CRT recoding, canonical sorted factorization
 existence, extensional uniqueness, and the native Fundamental Theorem of
 Arithmetic. The exact FTA certificate checks from the empty context at 73,767
 nodes, depth 99 and 2,184 self-contained Cuts, with no DNE. The synchronized
-385-entry catalog has 23 `checked_existing`, 361 `checked_m20`, no remaining
+394-entry catalog has 23 `checked_existing`, 370 `checked_m20`, no remaining
 planned theorem, and one representation-blocked
 conventional integer-coefficient Bézout interface. A pinned Lean companion
 independently checks conventional list-based FTA up to permutation. Remaining
 M20's native arithmetic and synchronized release artifacts are complete. The
 main Jupyter Book now includes a guided zero-to-FTA route, a quadratic
-reciprocity campaign chapter, and a generated interactive 384-proof atlas;
+reciprocity campaign chapter, and a generated interactive 393-proof atlas;
 the integrated local browser candidate deterministically verifies as build
-`2026-08-03a`, application `a-ff0ad1985520`, with 149 worker sources. It
+`2026-08-03c`, application `a-9fe3f597bf8d`, with 153 worker sources. It
 assembles successfully in the local content-addressed stage, is not deployed,
 and direct attached-browser UI inspection remains
 explicitly unclaimed. Model-v3 curriculum training is a separate milestone—not mathematical

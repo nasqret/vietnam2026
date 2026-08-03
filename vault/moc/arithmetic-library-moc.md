@@ -6,14 +6,14 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-The current runtime contains 384 checked entries and the factorization tranche
+The current runtime contains 393 checked entries and the factorization tranche
 is fully synchronized. The exact native sorted Gödel-β endpoints check from the
 empty context: existence at 43,973 nodes/depth 98, canonical extensional
 uniqueness at 29,789/depth 82, and combined
 [[fundamental-theorem-of-arithmetic|FTA]] at 73,767 nodes/depth 99 with 2,184
 self-contained Cuts.
 
-The synchronized research catalog has 385 entries: 23 baseline checked, 361
+The synchronized research catalog has 394 entries: 23 baseline checked, 370
 post-baseline checked, and one representation-blocked conventional
 integer-coefficient Bézout interface.
 
@@ -31,15 +31,16 @@ at 4,595 nodes/depth 82 with 146 Cuts and certificate SHA-256
 It uses PA1–PA6 only, contains no DNE, and passes dependency, PA, hypothesis,
 and live-use audits.
 
-The generated 384-theorem snapshot has 1,806,923 structural occurrences,
-52,626 Cuts, and ordered
+The generated 393-theorem snapshot has 1,830,078 structural occurrences,
+53,293 Cuts, and ordered
 root
-`73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
-The synchronized vault includes all 384 generated theorem notes.
+`539a1195df131ed3e202efa15f48bef76a8b8c757789119e2265172453aaf566`.
+The synchronized vault includes all 393 generated theorem notes.
 
 ## Design and trust
 
 - [[quadratic-reciprocity-moc]]
+- [[strict-ha-number-theory-campaign]]
 - [[foundational-arithmetic-library]]
 - [[lemma-dependency-dag]]
 - [[arithmetic-library-provenance]]

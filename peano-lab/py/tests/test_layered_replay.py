@@ -547,7 +547,7 @@ def test_exact_557_node_qr_topology_surrogate_and_order_mutation() -> None:
     assert (
         candidate.proof_annotation_occurrences,
         candidate.proof_envelope_depth,
-    ) == (142_134, 84)
+    ) == (142_102, 84)
     assert check((), candidate.certificate, target)
 
     assert names[5] == "beta_range_empty"

@@ -38,6 +38,7 @@ forall n. 0 + n = n
 - [[factorial_succ_decompose]]
 - [[predecessor_square_mod_one]]
 - [[beta_half_range_entry_bounds]]
+- [[mod_inverse_implies_coprime]]
 
 ## Verification record
 

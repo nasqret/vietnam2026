@@ -6,7 +6,7 @@ The layered `Cut` experiment can become a public Peano Lab theorem without a
 new axiom, proof constructor, theorem-reference rule, or trusted hash lookup.
 The safe path is:
 
-1. freeze the public registry that predates the QR candidates;
+1. freeze the public registry that predates the remaining QR candidates;
 2. assemble the exact QR ancestor set against that frozen registry;
 3. append the candidates in their already validated topological order;
 4. compile only explicitly selected oversized replays to ordinary layered
@@ -22,22 +22,43 @@ in code and documentation:
 | Quantity | Exact current value |
 |---|---:|
 | outputs from the 84 candidate factories | 346 |
-| entries in `candidate_order` | 317 |
-| proper candidate ancestors of the root | 316 |
+| compatible factory outputs already public | 1 |
+| entries in `candidate_order` | 316 |
+| proper candidate ancestors of the root still classified candidate | 315 |
 | QR root entries | 1 |
 | factory outputs deliberately omitted as non-ancestors | 29 |
-| already public ancestors used by the QR closure | 240 |
+| already public ancestors used by the QR closure | 241 |
 | total nodes in the root closure | 557 |
+| direct dependency edges | 1,787 |
+| dependency layers | 45 |
 
 The pinned root statement SHA-256 is
 `2a95f83a5a21a5e21e482d5de8a19d55ee1843f676f086438f8a9853b6a97070`.
 It is a drift detector only, never proof authority.
 
-Thus **the current 317 count already includes
-`quadratic_reciprocity_combined`**.  Admission adds 317 entries, not 318.
-The dirty development registry currently has 384 entries, so appending this
-exact order would produce 701.  The committed public artifact has 380 entries;
-its first 380 receipts are the compatibility prefix that must remain stable.
+Thus **the current 316 count already includes
+`quadratic_reciprocity_combined`**. Admission adds 316 entries, not 317. The
+strict-HA tranche has moved `bounded_mod_inverse_unique` into the public
+registry using an exactly equal `TheoremSpec`; it remains in candidate-factory
+provenance but is public in the reachable QR graph. Consequently
+
+$$
+346 = 316\text{ remaining candidates} + 1\text{ public migration}
+      + 29\text{ omitted non-ancestors}.
+$$
+
+The resulting graph SHA-256 is
+`26017364ea943c4ed51a4a83f63ff0cd56b0de3686f0e0b458e7548ee84b1253`.
+The candidate-source SHA-256 remains
+`23fd18aaff26e2c6b428949c35ab3658252c9a4c6fd3b4825a6ccd547f454db1`,
+and the unchanged 45-layer profile SHA-256 is
+`b4b2771356c628362b94cf0d4e580ed7857090330fd274eb1bddb89bacfeb3de`.
+
+The development registry currently has 393 entries, so appending the exact
+remaining order would produce 709. The committed 380-entry artifact and the
+earlier 384-entry dirty-registry statement are historical baselines; the
+artifact's first 380 receipts remain the compatibility prefix that must stay
+stable.
 
 A successful cold WMI replay is necessary evidence, but it will not itself be
 public admission.  No layered QR replay has yet been uploaded or run for the
@@ -90,13 +111,17 @@ public registry.  The separate
 today's registry for campaign tools; `theorems.py` must not import that
 adapter during enrollment.  Fresh-process import-order and snapshot-mutation
 tests cover this boundary.  Cache clearing is neither needed nor accepted as
-part of correctness.
+part of correctness. The pure builder treats a same-name candidate and public
+entry as a migration only when their complete specifications compare equal.
+It retains the candidate factory object and owner for source provenance,
+classifies the reachable node as public, and rejects every incompatible
+same-name specification.
 
 ```mermaid
 flowchart TD
   A[theorems.py freezes pre-QR mapping] -->|inject spec type and snapshot| B[pure stack builder]
   C[runtime compatibility adapter] -->|snapshots today's public registry| B
-  B --> D[validated 317-entry candidate order]
+  B --> D[validated 316-entry remaining candidate order]
   D -. future explicit append after WMI gates .-> E[unified public registry]
 ```
 
@@ -125,7 +150,8 @@ The exact runtime type check on factory outputs compares with the injected
 registry, or perform admission.  It validates:
 
 - exact factory ownership and duplicate-name freedom;
-- public/candidate conflicts against the injected frozen base;
+- exact-compatible public migrations and rejection of incompatible
+  public/candidate conflicts against the injected frozen base;
 - dependency closure and cycle freedom;
 - dependency-before-consumer order;
 - the exact root statement and three direct root dependencies;
@@ -154,9 +180,10 @@ THEOREMS = _merge_compatible_theorems(THEOREMS, QR_THEOREMS)
 ```
 
 `QR_BASE_THEOREMS` is a frozen tuple, not a view of the later table.
-`QR_THEOREMS` is exactly `candidate_order`: 316 proper ancestors followed by
-the root.  Do not enroll the other 29 factory outputs.  Do not append the 240
-public ancestors a second time.
+`QR_THEOREMS` is exactly `candidate_order`: 315 proper candidate ancestors
+followed by the root. Do not enroll the other 29 factory outputs. Do not
+append the one migrated factory output or any of the other 240 public
+ancestors a second time.
 
 The public stack accessor should return the already assembled `QR_STACK`, or
 rebuild only when explicitly given the frozen base.  It must never silently
@@ -285,7 +312,7 @@ resource state.  Pin the strategy after WMI measurement.
 The minimum initial policy is:
 
 1. `quadratic_reciprocity_combined` is always layered;
-2. replay each of the other 316 promoted entries with the existing recursive
+2. replay each of the other 315 promoted entries with the existing recursive
    `Cut` closure on WMI;
 3. add an intermediate to `LAYERED_REPLAY_NAMES` only if its ordinary closure
    violates a current live-use limit or lacks reviewed headroom;
@@ -387,9 +414,11 @@ generation replays the full library and therefore belongs on WMI.
 ## Research catalog and generated knowledge base
 
 Once admission passes, synchronize exactly `QR_STACK.candidate_order` into
-`research/arithmetic-library/catalog.json`.  The 240 public ancestors already
-have records and must not be duplicated.  Add a documented checked status
-such as `checked_qr` rather than calling a new 317-theorem campaign
+`research/arithmetic-library/catalog.json`. Of the 241 public ancestors, the
+historical 240 already have records; synchronize the migrated factory output
+as a public theorem exactly once, and do not duplicate any of them. Add a
+documented checked status such as `checked_qr` rather than calling a new
+316-theorem campaign
 `checked_m20`.  Update the verifier's exact status set and count assertions at
 the same time.
 
@@ -398,8 +427,8 @@ The synchronization script should:
 - import the enrolled `QR_THEOREMS` tuple, not all factory outputs;
 - preserve its topological order;
 - refuse to overwrite a differing record;
-- assert exactly 317 new names including the root and exactly 29 omitted
-  factory outputs;
+- assert exactly 316 new names including the root, one exact-compatible
+  public factory migration, and exactly 29 omitted factory outputs;
 - copy statements, dependencies, summaries, and source provenance only;
 - state explicitly that the JSON catalog grants no theorem authority.
 
@@ -415,7 +444,7 @@ each stored statement, rejects free variables, and pretty-prints the resulting
 closed formula without constructing any certificate.  The footer says that
 certificates are independently kernel-checked *when replayed*.  Listing is
 therefore an inventory operation, not a claim that the command just replayed
-the full library.  This prevents a future 701-entry index from becoming a QR
+the full library.  This prevents a future 709-entry index from becoming a QR
 certificate campaign merely to print names and statements.
 
 The detail and theorem-use boundaries remain deliberately different.
@@ -478,7 +507,7 @@ preparation only: no external deployment or theorem admission is claimed.
 The browser gate must use the repository's exact self-hosted Pyodide build,
 not CPython as a proxy.  In a cold worker, verify:
 
-1. boot and registry import with all 701 names;
+1. boot and registry import with all 709 names;
 2. `pa lib` list without any theorem replay;
 3. `pa lib quadratic_reciprocity_combined`;
 4. a proof whose target is the QR statement, followed by `use ... as qr`,
@@ -493,21 +522,23 @@ regression test.
 
 ## Required test matrix
 
-The companion
+The companion historical
 [QR test-migration audit](quadratic-reciprocity-test-migration.md) inventories
-the current public-absence and unified-core assumptions and gives the exact
-317-enrolled/29-omitted replacement recipe.  Apply that migration atomically
-with enrollment so a candidate-body test cannot silently consume its newly
-public closed replay.
+the pre-overlap public-absence and unified-core assumptions. Its original
+317-enrolled/29-omitted recipe is retained and labeled as a historical
+snapshot. The live replacement is 316 remaining enrollments, one compatible
+public migration, and 29 omitted outputs. Apply the remaining migration
+atomically with enrollment so a candidate-body test cannot silently consume
+its newly public closed replay.
 
 ### Light, deterministic tests
 
 These can run on the laptop and ordinary CI:
 
-- exact factory/output/enrollment counts: `346 / 317 / 29`;
-- exact interpretation of 317 as `316 + root`;
+- exact factory/output partition: `346 = 316 + 1 + 29`;
+- exact interpretation of 316 remaining candidates as `315 + root`;
 - exact root name, statement hash, and three direct dependencies;
-- 557-node closure, 240 public ancestors, 45 layers, root depth 44, maximum
+- 557-node closure, 241 public ancestors, 45 layers, root depth 44, maximum
   width 63, and maximum direct dependency count 16;
 - dependency-before-consumer order and no candidate/public conflicts;
 - pure-stack import without importing the public registry;
@@ -533,9 +564,9 @@ receipts:
   edges, depth, Cut count, package-formula occurrences/depth, proof-annotation
   occurrences, combined proof-envelope depth, peak RSS, and elapsed time;
 - verify classical DNE is absent from every modular body and final proof;
-- replay all 317 promoted public entries under their pinned strategies;
+- replay all 316 promoted public entries under their pinned strategies;
 - assert each certificate fits live `use` limits;
-- run the complete 701-entry `replay_all()` release profile;
+- run the complete 709-entry `replay_all()` release profile;
 - replay the old prefix and compare the first-380 receipt digest;
 - generate and independently verify snapshot v4 and the catalog graph.
 
@@ -567,7 +598,7 @@ tests.
 flowchart TD
   A[Freeze 380 receipt prefix and current base registry] --> B[Decouple stack through explicit injection]
   B --> C[Promote generic unchanged-kernel layered compiler]
-  C --> D[Assemble exact 317-entry enrollment on a release branch]
+  C --> D[Assemble exact 316-entry enrollment on a release branch]
   D --> E[Cold WMI twice: bodies, root, public replay, mutations, capacity]
   E -->|all green| F[Pin replay-strategy set]
   F --> G[Generate snapshot v4 and checked_qr catalog]
@@ -587,8 +618,9 @@ release unit.
 Do not call the theorem publicly admitted if any of these remains true:
 
 - stack assembly depends on import order or cache clearing;
-- the enrollment count is described as 317 ancestors plus another root;
-- any one of the 317 names lacks a successful public replay certificate;
+- the enrollment count is described as 316 ancestors plus another root;
+- any one of the 316 remaining names lacks a successful public replay
+  certificate;
 - root replay consumes a trusted theorem name, hash, or prior receipt;
 - any final certificate exceeds the current live-use limits;
 - either cold WMI run or any structural mutation gate fails;
@@ -605,8 +637,10 @@ introduce name authority or to accept a WMI receipt as a proof.
 
 After all gates pass, the user-facing claim can be simple and exact:
 
-> `quadratic_reciprocity_combined` and its 316 new candidate ancestors are
-> public native Peano Lab theorems.  Every requested theorem is reconstructed
+> `quadratic_reciprocity_combined` and its 315 newly admitted candidate
+> ancestors, together with the already-public exact-compatible
+> `bounded_mod_inverse_unique` ancestor, are public native Peano Lab theorems.
+> Every requested theorem is reconstructed
 > from its PA tactic script and accepted by the unchanged intuitionistic
 > kernel from the empty context.  Layered `Cut` packaging is an untrusted
 > space-saving compilation strategy; theorem names, hashes, catalogs, and WMI

@@ -79,6 +79,18 @@ from .finite_product_reindex_support import (
 )
 from .qr_bounded_units import make_qr_bounded_unit_theorems
 from .qr_prime_units import make_qr_prime_unit_theorems
+from .ha_canonical_remainder_candidate import (
+    make_ha_canonical_remainder_candidate_theorems,
+)
+from .ha_canonical_congruence_candidate import (
+    make_ha_canonical_congruence_candidate_theorems,
+)
+from .ha_modular_inverse_candidate import (
+    make_ha_modular_inverse_candidate_theorems,
+)
+from .wilson_inverse_point_candidate import (
+    make_wilson_inverse_point_candidate_theorems,
+)
 
 
 class LibraryError(ValueError):
@@ -11115,6 +11127,37 @@ QR_BOUNDED_UNIT_THEOREMS: tuple[TheoremSpec, ...] = (
 )
 THEOREMS = _merge_compatible_theorems(THEOREMS, QR_BOUNDED_UNIT_THEOREMS)
 
+# Strict-HA number-theory campaign tranche 01. These factories were first
+# closed and mutation-audited in isolation. Their order is part of the public
+# dependency ladder: canonical remainder, the congruence bridge, the bounded
+# uniqueness point, and finally the exact modular-inverse criterion.
+HA_CANONICAL_REMAINDER_THEOREMS: tuple[TheoremSpec, ...] = (
+    make_ha_canonical_remainder_candidate_theorems(TheoremSpec)
+)
+HA_CANONICAL_CONGRUENCE_THEOREMS: tuple[TheoremSpec, ...] = (
+    make_ha_canonical_congruence_candidate_theorems(TheoremSpec)
+)
+HA_BOUNDED_MOD_INVERSE_UNIQUENESS_THEOREMS: tuple[TheoremSpec, ...] = tuple(
+    spec
+    for spec in make_wilson_inverse_point_candidate_theorems(TheoremSpec)
+    if spec.name == "bounded_mod_inverse_unique"
+)
+if len(HA_BOUNDED_MOD_INVERSE_UNIQUENESS_THEOREMS) != 1:
+    raise LibraryError("expected exactly one bounded modular-inverse uniqueness theorem")
+HA_MODULAR_INVERSE_THEOREMS: tuple[TheoremSpec, ...] = (
+    make_ha_modular_inverse_candidate_theorems(TheoremSpec)
+)
+HA_NUMBER_THEORY_TRANCHE01_THEOREMS: tuple[TheoremSpec, ...] = (
+    *HA_CANONICAL_REMAINDER_THEOREMS,
+    *HA_CANONICAL_CONGRUENCE_THEOREMS,
+    *HA_BOUNDED_MOD_INVERSE_UNIQUENESS_THEOREMS,
+    *HA_MODULAR_INVERSE_THEOREMS,
+)
+THEOREMS = _merge_compatible_theorems(
+    THEOREMS,
+    HA_NUMBER_THEORY_TRANCHE01_THEOREMS,
+)
+
 
 def names() -> tuple[str, ...]:
     """Return canonical theorem names in ladder order."""
@@ -11259,6 +11302,11 @@ __all__ = [
     "FINITE_PRODUCT_PERMUTATION_THEOREMS",
     "FINITE_PRODUCT_REINDEX_SUPPORT_THEOREMS",
     "QR_BOUNDED_UNIT_THEOREMS",
+    "HA_CANONICAL_REMAINDER_THEOREMS",
+    "HA_CANONICAL_CONGRUENCE_THEOREMS",
+    "HA_BOUNDED_MOD_INVERSE_UNIQUENESS_THEOREMS",
+    "HA_MODULAR_INVERSE_THEOREMS",
+    "HA_NUMBER_THEORY_TRANCHE01_THEOREMS",
     "MOD5_LIBRARY_SOURCE_REPOSITORY",
     "MOD5_LIBRARY_SOURCE_COMMIT",
     "MOD5_LIBRARY_CATALOG_SHA256",

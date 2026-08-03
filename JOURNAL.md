@@ -3599,3 +3599,91 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   This is a plumbing regression, not Qwen/Codex capability, symbolic-baseline
   strength, sealed evaluation, or an LLM-advantage result. The structured macro
   DSL and all H0 semantic/conformance gates remain open.
+
+## 2026-08-03 — Strict HA number-theory campaign tranche 01 closed locally
+
+- Imported the requested 1,308-line campaign blueprint byte-for-byte and bound
+  it by SHA-256. Parallel audits separated three questions before proof work:
+  the actual intuitionistic logic and definition mechanism, the reusable public
+  theorem frontier, and the validation/admission boundary. The result corrected
+  the starting assumption: the 384-theorem public library already contains much
+  of the arithmetic core, so this campaign begins with canonical interfaces and
+  bridges rather than duplicating division, gcd, Bezout, primes, FTA, or CRT.
+- Added the dependency-ordered HA0--HA4/M1--M5 plan and a machine-readable
+  12-layer campaign manifest. The validator rejects unknown or duplicate IDs,
+  forward/cyclic dependencies, bad source paths, unrecognized evidence states,
+  and any use of beta/CRT material in the foundational K3 data layer. K3 remains
+  deliberately unspecified until a representation RFC selects a primitive-
+  recursive encoding independent of CRT and Goedel-beta coding.
+- Froze 11 definition expansions and a 45-row relation API in synchronized
+  Markdown and JSON. Replay checked all 44 referenced public theorems. Existing
+  `Le`, `Lt`, `Dvd`, `DivRem`, `IsGCD`, and `Coprime` are compatible; `ModEq`,
+  `Prime`, and balanced Bezout require explicit bridges; `BetaAt` and `Product`
+  remain late interoperability surfaces.
+- Constructed four canonical-remainder candidates, including explicit
+  zero-modulus behavior; one bridge characterizing balanced congruence by equal
+  supplied canonical remainders; and four bounded modular-inverse candidates.
+  The M1 root states that, for positive modulus, coprimality is equivalent to a
+  unique bounded inverse. All nine candidates have complete dependency closures
+  accepted from the empty context by the intuitionistic checker, and none is
+  silently registered as public.
+- The exact M1 root receipt is 9,512 structural nodes, depth 70, 2,538 distinct
+  proof objects, 2,679 DAG edges, 142 reused objects, and 126 unique `Cut` nodes;
+  its stable DAG digest is
+  `c3ed07e7caef52895001332d066ae9e4ce25167c7a0cd7189f8957c9aa7dc9f3`.
+  The admission test pins analogous metrics and digests for every candidate,
+  repeats each cold closure twice, bans DNE, rejects selected nearby false
+  statements, and asserts public-registry absence.
+- `make ha-number-theory-check` passed both validators, 22 validator tests, and
+  15 focused proof/admission tests. The machine campaign manifest is
+  cross-checked against the fresh statements and closure receipts. The
+  152-source browser inventory and
+  application manifest check as release `a-02903b96cc83`. Staging and deployment
+  remain unclaimed; this worktree has no `peano-lab/vendor/MANIFEST.sha256` with
+  which to satisfy the separate stage gate. The next controlled action is public
+  admission of tranche 01, followed by the canonical gcd/sign layer and linear
+  congruences—not premature beta-coded finite data.
+
+## 2026-08-03 — Strict HA tranche 01 admitted; canonical gcd and signed RFC closed
+
+- Admitted the exact nine previously closed canonical remainder, congruence,
+  and bounded modular-inverse specifications at registry tail positions
+  384--392. Their isolated factory specifications, statements, scripts,
+  dependencies, proof metrics, and certificate digests are unchanged. Direct
+  public replay succeeds for every entry.
+- Migrated the QR stack's sole public/candidate collision,
+  `bounded_mod_inverse_unique`, by exact specification equality. Candidate
+  factory provenance is retained, incompatible collisions still fail, and the
+  reachable QR graph remains 557 nodes, 1,787 edges, and 45 layers. Its new
+  scope split is 241 public/316 candidate and graph SHA-256 is
+  `26017364ea943c4ed51a4a83f63ff0cd56b0de3686f0e0b458e7548ee84b1253`;
+  source and layer-profile hashes are unchanged.
+- Built the next isolated gcd layer:
+  `canonical_gcd_exists` (1,280 nodes/depth 47/36 Cuts),
+  `canonical_gcd_functional` (708/depth 35/20 Cuts), and
+  `canonical_gcd_exists_unique` (2,010/depth 48/55 Cuts). All three close from
+  the empty context under the intuitionistic checker, contain no DNE, reject
+  nearby false mutations, and remain deliberately nonpublic.
+- Selected `HA-K3-SIGNED-1`, a parity-interleaved canonical signed-natural
+  code: `2*p` denotes `+p`, while `2*k+1` denotes `-(k+1)`. The 613-line RFC
+  freezes eight exact base-language templates, statement hashes, boundary
+  conventions, forbidden dependencies, and a staged proof DAG. It makes no
+  theorem claim. A dependency audit showed that foundational parity separation
+  must be reproved from K0/K1 rather than imported through division uniqueness.
+- The campaign manifest now records 12 layers, 56 public references, three
+  candidate references, and twelve exact receipts. `make
+  ha-number-theory-check` passes 22 validator tests and 20 focused proof tests;
+  the definition freeze still replays 44 public API theorems.
+- Regenerated the public snapshot and vault. The 393-theorem/1,070-edge
+  snapshot has 1,830,078 structural occurrences, 53,293 Cuts, 338 Cut-bearing
+  certificates, and ordered root
+  `539a1195df131ed3e202efa15f48bef76a8b8c757789119e2265172453aaf566`.
+  The vault now has 492 notes and 4,991 resolved links, including all 393
+  generated theorem notes and a campaign concept page.
+- Regenerated both QR proof explorers and the browser source seal. The explicit
+  and defined explorers pass their focused tests at 241 public/316 candidate;
+  the browser inventory has 153 sources and checks as build `2026-08-03c`,
+  application `a-9fe3f597bf8d`. No staging, deployment, push, or WMI closure is
+  claimed. The theorem atlas is intentionally regenerated only after an
+  immutable source commit exists, so new source links cannot point falsely at
+  the older 384-theorem commit.

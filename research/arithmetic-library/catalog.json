@@ -8129,6 +8129,191 @@
         "existing_name": "prime_bounded_nonzero_mod_inverse"
       },
       "blocker": null
+    },
+    {
+      "id": "canonical_remainder_exists",
+      "title": "Canonical remainder existence",
+      "domain": "division",
+      "status": "checked_m20",
+      "dependencies": [
+        "division_remainder_exists"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Every dividend has a canonical remainder for each nonzero modulus.",
+      "peano": {
+        "statement": "forall m n. ~(m = 0) -> exists r. (((exists hcr_quotient_result. n = m * hcr_quotient_result + r) /\\ exists hcr_gap_result. hcr_gap_result + S r = m))",
+        "existing_name": "canonical_remainder_exists"
+      },
+      "blocker": null
+    },
+    {
+      "id": "canonical_remainder_functional",
+      "title": "Canonical remainder functionality",
+      "domain": "division",
+      "status": "checked_m20",
+      "dependencies": [
+        "division_remainder_unique"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Canonical remainders for a fixed modulus are functional whenever they exist.",
+      "peano": {
+        "statement": "forall m n r s. (((exists hcr_quotient_result. n = m * hcr_quotient_result + r) /\\ exists hcr_gap_result. hcr_gap_result + S r = m)) -> (((exists hcr_quotient_comparison. n = m * hcr_quotient_comparison + s) /\\ exists hcr_gap_comparison. hcr_gap_comparison + S s = m)) -> r = s",
+        "existing_name": "canonical_remainder_functional"
+      },
+      "blocker": null
+    },
+    {
+      "id": "canonical_remainder_zero_impossible",
+      "title": "Canonical remainder excludes modulus zero",
+      "domain": "division",
+      "status": "checked_m20",
+      "dependencies": [
+        "succ_ne_zero"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "The canonical-remainder relation has no inhabitant at modulus zero.",
+      "peano": {
+        "statement": "forall m n r. m = 0 -> ~(((exists hcr_quotient_zero_impossible. n = m * hcr_quotient_zero_impossible + r) /\\ exists hcr_gap_zero_impossible. hcr_gap_zero_impossible + S r = m))",
+        "existing_name": "canonical_remainder_zero_impossible"
+      },
+      "blocker": null
+    },
+    {
+      "id": "canonical_remainder_exists_unique",
+      "title": "Unique canonical remainder",
+      "domain": "division",
+      "status": "checked_m20",
+      "dependencies": [
+        "canonical_remainder_exists",
+        "canonical_remainder_functional"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "For every nonzero modulus, the canonical remainder exists uniquely; the comparison remainder is proved equal to the chosen remainder.",
+      "peano": {
+        "statement": "forall m n. ~(m = 0) -> exists r. ((((exists hcr_quotient_unique_result. n = m * hcr_quotient_unique_result + r) /\\ exists hcr_gap_unique_result. hcr_gap_unique_result + S r = m)) /\\ forall s. (((exists hcr_quotient_unique_comparison. n = m * hcr_quotient_unique_comparison + s) /\\ exists hcr_gap_unique_comparison. hcr_gap_unique_comparison + S s = m)) -> s = r)",
+        "existing_name": "canonical_remainder_exists_unique"
+      },
+      "blocker": null
+    },
+    {
+      "id": "canonical_remainders_characterize_mod_eq",
+      "title": "Canonical remainders characterize congruence",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_comm",
+        "remainder_decomposition_to_mod_eq",
+        "mod_eq_symm",
+        "mod_eq_trans",
+        "mod_eq_bounded_unique"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Two canonical remainders are equal exactly when their dividends are congruent modulo the shared modulus.",
+      "peano": {
+        "statement": "forall m a b r s. (((exists hcr_quotient_left. a = m * hcr_quotient_left + r) /\\ exists hcr_gap_left. hcr_gap_left + S r = m)) -> (((exists hcr_quotient_right. b = m * hcr_quotient_right + s) /\\ exists hcr_gap_right. hcr_gap_right + S s = m)) -> (((exists hcc_mod_left_source hcc_mod_right_source. a + m * hcc_mod_left_source = b + m * hcc_mod_right_source) -> r = s) /\\ (r = s -> (exists hcc_mod_left_result hcc_mod_right_result. a + m * hcc_mod_left_result = b + m * hcc_mod_right_result)))",
+        "existing_name": "canonical_remainders_characterize_mod_eq"
+      },
+      "blocker": null
+    },
+    {
+      "id": "bounded_mod_inverse_unique",
+      "title": "Uniqueness of bounded modular inverses",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "mod_eq_symm",
+        "mod_eq_mul_left",
+        "mod_eq_mul_right",
+        "mul_assoc",
+        "mul_comm",
+        "mul_one",
+        "one_mul",
+        "mod_eq_trans",
+        "mod_eq_bounded_unique"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Two bounded inverses of the same residue are equal.",
+      "peano": {
+        "statement": "forall p x y z. (exists wip_strict_gap_unique_y_bound. wip_strict_gap_unique_y_bound + S y = p) -> (exists wip_strict_gap_unique_z_bound. wip_strict_gap_unique_z_bound + S z = p) -> (exists wip_mod_left_unique_xy wip_mod_right_unique_xy. x * y + p * wip_mod_left_unique_xy = 1 + p * wip_mod_right_unique_xy) -> (exists wip_mod_left_unique_xz wip_mod_right_unique_xz. x * z + p * wip_mod_left_unique_xz = 1 + p * wip_mod_right_unique_xz) -> y = z",
+        "existing_name": "bounded_mod_inverse_unique"
+      },
+      "blocker": null
+    },
+    {
+      "id": "coprime_bounded_mod_inverse",
+      "title": "Coprime residues have bounded modular inverses",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "canonical_remainder_exists",
+        "coprime_mod_inverse",
+        "mul_comm",
+        "remainder_decomposition_to_mod_eq",
+        "mod_eq_mul_left",
+        "mod_eq_symm",
+        "mod_eq_trans"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Every coprime residue has an inverse in the canonical interval below a nonzero modulus.",
+      "peano": {
+        "statement": "forall a m. ~(m = 0) -> (forall hmi_divisor_assumption. (exists hmi_left_factor_assumption. a = hmi_divisor_assumption * hmi_left_factor_assumption) -> (exists hmi_right_factor_assumption. m = hmi_divisor_assumption * hmi_right_factor_assumption) -> hmi_divisor_assumption = 1) -> exists r. (exists hmi_gap_result_bound. hmi_gap_result_bound + S r = m) /\\ (exists hmi_left_offset_result_inverse hmi_right_offset_result_inverse. a * r + m * hmi_left_offset_result_inverse = 1 + m * hmi_right_offset_result_inverse)",
+        "existing_name": "coprime_bounded_mod_inverse"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod_inverse_implies_coprime",
+      "title": "A modular inverse implies coprimality",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "common_divisor_divides_balanced_result",
+        "zero_add",
+        "divisor_one"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Any natural modular inverse forces coprimality, without a nonzero-modulus side condition.",
+      "peano": {
+        "statement": "forall a m z. (exists hmi_left_offset_converse_assumption hmi_right_offset_converse_assumption. a * z + m * hmi_left_offset_converse_assumption = 1 + m * hmi_right_offset_converse_assumption) -> (forall hmi_divisor_converse_result. (exists hmi_left_factor_converse_result. a = hmi_divisor_converse_result * hmi_left_factor_converse_result) -> (exists hmi_right_factor_converse_result. m = hmi_divisor_converse_result * hmi_right_factor_converse_result) -> hmi_divisor_converse_result = 1)",
+        "existing_name": "mod_inverse_implies_coprime"
+      },
+      "blocker": null
+    },
+    {
+      "id": "coprime_iff_unique_bounded_mod_inverse",
+      "title": "Coprimality iff unique bounded modular inverse",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "coprime_bounded_mod_inverse",
+        "bounded_mod_inverse_unique",
+        "mod_inverse_implies_coprime"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "For a nonzero modulus, coprimality is equivalent to unique existence of a modular inverse in the canonical interval.",
+      "peano": {
+        "statement": "forall a m. ~(m = 0) -> ((forall hmi_divisor_package_coprime. (exists hmi_left_factor_package_coprime. a = hmi_divisor_package_coprime * hmi_left_factor_package_coprime) -> (exists hmi_right_factor_package_coprime. m = hmi_divisor_package_coprime * hmi_right_factor_package_coprime) -> hmi_divisor_package_coprime = 1) -> (exists hmi_solution_package_result. ((((exists hmi_gap_package_result_chosen_bound. hmi_gap_package_result_chosen_bound + S hmi_solution_package_result = m) /\\ (exists hmi_left_offset_package_result_chosen_inverse hmi_right_offset_package_result_chosen_inverse. a * hmi_solution_package_result + m * hmi_left_offset_package_result_chosen_inverse = 1 + m * hmi_right_offset_package_result_chosen_inverse))) /\\ forall hmi_comparison_package_result. (((exists hmi_gap_package_result_compared_bound. hmi_gap_package_result_compared_bound + S hmi_comparison_package_result = m) /\\ (exists hmi_left_offset_package_result_compared_inverse hmi_right_offset_package_result_compared_inverse. a * hmi_comparison_package_result + m * hmi_left_offset_package_result_compared_inverse = 1 + m * hmi_right_offset_package_result_compared_inverse))) -> hmi_comparison_package_result = hmi_solution_package_result))) /\\ ((exists hmi_solution_package_result. ((((exists hmi_gap_package_result_chosen_bound. hmi_gap_package_result_chosen_bound + S hmi_solution_package_result = m) /\\ (exists hmi_left_offset_package_result_chosen_inverse hmi_right_offset_package_result_chosen_inverse. a * hmi_solution_package_result + m * hmi_left_offset_package_result_chosen_inverse = 1 + m * hmi_right_offset_package_result_chosen_inverse))) /\\ forall hmi_comparison_package_result. (((exists hmi_gap_package_result_compared_bound. hmi_gap_package_result_compared_bound + S hmi_comparison_package_result = m) /\\ (exists hmi_left_offset_package_result_compared_inverse hmi_right_offset_package_result_compared_inverse. a * hmi_comparison_package_result + m * hmi_left_offset_package_result_compared_inverse = 1 + m * hmi_right_offset_package_result_compared_inverse))) -> hmi_comparison_package_result = hmi_solution_package_result)) -> (forall hmi_divisor_package_coprime. (exists hmi_left_factor_package_coprime. a = hmi_divisor_package_coprime * hmi_left_factor_package_coprime) -> (exists hmi_right_factor_package_coprime. m = hmi_divisor_package_coprime * hmi_right_factor_package_coprime) -> hmi_divisor_package_coprime = 1))",
+        "existing_name": "coprime_iff_unique_bounded_mod_inverse"
+      },
+      "blocker": null
     }
   ]
 }

@@ -28,6 +28,7 @@ forall m n q r q2 r2. n = m * q + r -> (exists k. k + S r = m) -> n = m * q2 + r
 - [[beta_at_unique]]
 - [[even_odd_exclusive_pointwise]]
 - [[mod4_one_three_exclusive_pointwise]]
+- [[canonical_remainder_functional]]
 
 ## Verification record
 

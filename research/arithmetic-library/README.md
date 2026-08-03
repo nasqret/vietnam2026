@@ -3,7 +3,30 @@
 This directory is the planning and provenance source for Peano Lab's general
 arithmetic library. Start with:
 
-The current runtime contains 384 checked entries. The factorization tranche
+- [`ha-number-theory-formalization-campaign-blueprint.md`](ha-number-theory-formalization-campaign-blueprint.md):
+  the byte-frozen controlling blueprint for the strict-HA number-theory
+  campaign;
+- [`ha-number-theory-campaign.json`](ha-number-theory-campaign.json): the
+  executable K0--K6/M1--M5 layer status, dependency, and validation-gate
+  manifest;
+- [`ha-definition-representation-freeze-v1.md`](ha-definition-representation-freeze-v1.md)
+  and its [machine companion](ha-definition-representation-freeze-v1.json):
+  the first exact definition boundary, including the K3 quarantine on using
+  beta/CRT coding as foundational list infrastructure;
+- [`ha-canonical-signed-natural-rfc-v1.md`](ha-canonical-signed-natural-rfc-v1.md):
+  the selected parity-interleaved canonical signed-natural representation,
+  eight exact expanded predicates, dependency prohibitions, and proof DAG;
+- [`../../PLAN/12_ha_number_theory_campaign.md`](../../PLAN/12_ha_number_theory_campaign.md):
+  the repository execution plan and first canonical-interface tranche.
+
+Run `make ha-number-theory-check` from the repository root for the fast
+campaign-manifest, 44-theorem definition-API replay, candidate-body, and
+empty-context receipt checks. The campaign manifest carries twelve statement
+hashes and exact closure receipts: nine deliberately admitted tranche-01
+theorems plus three isolated canonical-gcd candidates. Passing the candidate
+gate alone never enrolls a theorem in the public registry.
+
+The current runtime contains 393 checked entries. The factorization tranche
 is fully synchronized. The exact native β-coded endpoints are checked
 from the empty context:
 
@@ -37,7 +60,9 @@ bounded entry. It deliberately does not equate raw codes, because distinct
 codes may represent the same finite prefix. Runtime/catalog synchronization is
 complete.
 
-The newest 137 checked entries are the quadratic-reciprocity campaign
+The 137-entry quadratic-reciprocity public checkpoint remains intact, followed
+by the nine public canonical remainder/congruence/modular-inverse interfaces
+from strict-HA tranche 01. The reciprocity
 checkpoint: parity and modulo-four facts, constructive quadratic-residue
 decision, constant and interval prefixes, relational powers, β-coded finite
 sums, constructive finite permutation completeness, replacement balance, and
@@ -46,7 +71,8 @@ quadratic-reciprocity route is now body-green through arbitrary Euler and
 Gauss, the signed-count/floor-sum parity bridge, native Eisenstein Fubini,
 `Q+U=h*k`, both QRes truth cases, and the optimized combined endpoint. This is
 a genuine dependency-curried PA body, not a public admission. The exact
-557-spec/1,787-edge graph has 45 layers and 191,648 theorem occurrences under
+557-spec/1,787-edge graph has 45 layers, 241 public nodes, 316 candidate nodes,
+and 191,648 theorem occurrences under
 recursive expansion; a rigorous 731,423-node lower bound rules that compiler
 out under the current policy. Layered WMI closure, mutation, capacity,
 browser, and separate pinned-admission receipts are still mandatory. The

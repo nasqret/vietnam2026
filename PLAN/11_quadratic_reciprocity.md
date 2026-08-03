@@ -807,14 +807,28 @@ not a mathematical rejection or a QR proof receipt.
       distinct-marker, dependency-consuming surrogate checks
       every real edge/order under the unchanged kernel at `19,066/74` with
       package cost `19,297/18` and annotations/envelope `142,134/84`. Neither
-      surrogate is QR evidence.
+      surrogate is QR evidence. Those annotation figures are the historical
+      pre-overlap ordering; after the exact-compatible public migration below,
+      the distinct-marker annotation count is `142,102/84`, with all 557
+      nodes, 1,787 edges and 45 layers unchanged.
 - [x] Remove the QR stack/registry import cycle through an injected copied
-      pre-QR mapping while preserving the exact 317-candidate order and hashes.
+      pre-QR mapping. The original snapshot preserved the exact 317-candidate
+      order and historical graph hash.
+- [x] Admit the exact Wilson `bounded_mod_inverse_unique` specification for
+      the strict-HA campaign and migrate the QR stack compatibly: retain all
+      346 candidate-factory outputs and their owners, classify the equal
+      overlap as public, reject incompatible same-name specifications, and pin
+      `241 public / 316 candidate / 557 total`, with 29 genuinely omitted
+      non-ancestors. The live graph SHA-256 is
+      `26017364ea943c4ed51a4a83f63ff0cd56b0de3686f0e0b458e7548ee84b1253`;
+      the 45-layer profile and candidate-source digest are unchanged.
 - [x] Make bare `pa lib` list statements without replay and add the
       deterministic 147-file Pyodide worker-source inventory gate.
-- [x] Audit the 125 pre-admission test assumptions and pin the exact
-      317-enrolled/29-omitted migration in
-      `quadratic-reciprocity-test-migration.md`.
+- [x] Audit the 125 pre-admission test assumptions. The original
+      317-enrolled/29-omitted recipe remains labeled as a historical snapshot
+      in `quadratic-reciprocity-test-migration.md`; the live remaining
+      partition is 316 enrollments, one compatible public migration, and 29
+      omitted outputs.
 - [x] Freeze and audit the external WMI payload before transport. The cleaned
       337-member, 5,343,232-byte archive excludes caches, bytecode and
       `.DS_Store`; two builds agree at
@@ -879,9 +893,14 @@ not a mathematical rejection or a QR proof receipt.
       closure: a 40-entry persistent `PD` registry (38 definitions used), 557
       theorem pages, 27,491 tactic lines, 506 compacted statements, and
       1,275/1,839 compacted local propositions. Exact expansion/native-replay
-      receipts preserve the theorem graph and the
-      `240 public / 316 body-checked / 1 pending layered closure` status split;
-      the readable `PA00FW` remains a candidate.
+      receipts preserved the pre-overlap theorem graph and historical
+      `240 public / 316 body-checked / 1 pending layered closure` status split.
+      The live stack is now `241 public / 315 body-checked / 1 pending`; the
+      readable `PA00FW` remains a candidate.
+- [ ] Regenerate the native and definition-aware explorer artifacts after the
+      broader campaign release freeze so their badges move the one compatible
+      overlap from candidate to public. Until then, retain and label their
+      pre-overlap receipts rather than silently rewriting generated files.
 - [x] Add the static-clean
       [WMI Jupyter Book build harness](../docs/WMI_JUPYTER_BOOK_BUILD.md).
       Its independent static audit findings are remediated. Test-only

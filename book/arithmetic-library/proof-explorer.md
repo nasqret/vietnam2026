@@ -16,6 +16,16 @@ permanent tag, source hash, or green modular-body check is provenance—not an
 axiom and not public admission.
 ```
 
+The live QR stack now classifies one former candidate-factory output,
+`bounded_mod_inverse_unique`, as public because its public and candidate
+`TheoremSpec` values are exactly equal. This changes the live status partition
+from 240/317 to 241/316 without changing the 557-node, 1,787-edge, 45-layer
+topology. The graph receipt is
+`26017364ea943c4ed51a4a83f63ff0cd56b0de3686f0e0b458e7548ee84b1253`.
+The generated explorer linked below remains a labeled pre-migration artifact
+until the full release regeneration, so its badge for that one theorem may
+still say candidate.
+
 Use the search and filters to choose a theorem, then follow any highlighted
 lemma name in its informal outline or formal tactic lines. Each result has a
 stable tag page, direct prerequisites, reverse references, source provenance,
@@ -75,10 +85,13 @@ difference between one readable route and all required premises explicit.
 - **Trust and provenance** separates public admission, modular-body evidence,
   statement and script hashes, and source locations.
 
-The existing {doc}`theorem atlas <theorem-atlas>` remains the compact,
-progressively enhanced view of the public 384-theorem snapshot. The explorer
-adds the exact quadratic-reciprocity closure and permanent line-level routes;
-it does not silently promote those candidates into `pa lib`.
+The existing {doc}`theorem atlas <theorem-atlas>` and generated explorer remain
+the compact pre-migration view of the public 384-theorem snapshot. The live
+development registry has 393 theorems after the nine-theorem strict-HA
+tranche; its one QR-factory overlap is the exact-compatible migration described
+above, not an implicit promotion by the explorer. The explorer adds the exact
+quadratic-reciprocity closure and permanent line-level routes; generated pages
+grant no entry to `pa lib`.
 
 When a fully expanded formula obscures the mathematical structure, use the
 {doc}`definition-aware edition <defined-proof-explorer>`. It preserves the

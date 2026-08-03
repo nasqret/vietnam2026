@@ -166,12 +166,12 @@ fine-tuning awaits the pretrained-base baseline.
 
 ## Peano foundational arithmetic snapshot
 
-[`peano-library/`](peano-library/) is the deterministic snapshot of all 384
+[`peano-library/`](peano-library/) is the deterministic snapshot of all 393
 checked Peano library entries. Its internal snapshot-v3 schema contains
 statement/script/certificate hashes, exact structural, depth, distinct-object,
 and Cut metrics, an ordered root digest, and the dependency DAG in Mermaid
-form. The current snapshot totals 1,806,923 structural occurrences and 52,626
-Cuts across 329 Cut-bearing entries. `fundamental_theorem_of_arithmetic` is
+form. The current snapshot totals 1,830,078 structural occurrences and 53,293
+Cuts across 338 Cut-bearing entries. `fundamental_theorem_of_arithmetic` is
 largest at 73,767 occurrences and reaches depth 99; its shared in-memory graph
 contains 8,701 distinct proof objects.
 The 137-entry quadratic-residue foundation adds parity and modulo-four algebra,
@@ -182,7 +182,7 @@ and exact swap-last product invariance. It is a checked campaign checkpoint,
 not yet a proof of quadratic reciprocity.
 The separate unregistered campaign sources now contain a dependency-curried
 kernel-checked body for the exact combined law, documented in the Jupyter Book.
-It is intentionally absent from this 384-theorem artifact until its recursive
+It is intentionally absent from this 393-theorem artifact until its recursive
 WMI closure, mutation, capacity, and receipt-pinned admission gates pass.
 The latest checked tranches add the full additive/multiplicative compatibility
 layer for balanced congruence, the five expanded decoded-value theorems from
@@ -210,8 +210,8 @@ Rebuild or verify it with
 
 The snapshot is evidence about replayed certificates, not a theorem database
 trusted by the kernel. The broader checked/planned/blocked research graph lives
-in `research/arithmetic-library/catalog.json`; it currently has 385 nodes: 23
-`checked_existing`, 361 `checked_m20`, no planned entries, and one
+in `research/arithmetic-library/catalog.json`; it currently has 394 nodes: 23
+`checked_existing`, 370 `checked_m20`, no planned entries, and one
 language-blocked conventional interface.
 
 ## Quadratic-reciprocity reading artifact

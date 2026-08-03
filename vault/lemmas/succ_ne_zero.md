@@ -46,6 +46,7 @@ forall n. ~(S n = 0)
 - [[finite_contains_decidable]]
 - [[beta_product_replace_balance]]
 - [[prime_bounded_nonzero_mod_inverse]]
+- [[canonical_remainder_zero_impossible]]
 
 ## Verification record
 

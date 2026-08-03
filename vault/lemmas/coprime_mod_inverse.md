@@ -29,6 +29,7 @@ forall a m. ~(m = 0) -> (forall d. (exists x. a = d * x) -> (exists y. m = d * y
 
 - [[mod_eq_cancel_coprime]]
 - [[prime_mod_inverse]]
+- [[coprime_bounded_mod_inverse]]
 
 ## Verification record
 

@@ -27,6 +27,8 @@ forall m a b. (exists ha. ha + S a = m) -> (exists hb. hb + S b = m) -> (exists 
 - [[bounded_square_mod7_classify]]
 - [[beta_half_range_mod_eq_value]]
 - [[prime_bounded_nonzero_mod_inverse]]
+- [[canonical_remainders_characterize_mod_eq]]
+- [[bounded_mod_inverse_unique]]
 
 ## Verification record
 

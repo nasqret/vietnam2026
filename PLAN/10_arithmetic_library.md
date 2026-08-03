@@ -190,7 +190,7 @@ does not determine the architecture.
       uses only PA1–PA6 and
       induction, and contains no DNE. Runtime integration first completed in
       the historical synchronized 247-theorem checkpoint and remains present
-      in the current 384-theorem runtime.
+      in the current 393-theorem runtime.
 
 ## M20F — Knowledge and release gates
 
@@ -198,7 +198,7 @@ does not determine the architecture.
       trust boundary, dependency route, source audit, and extension workflow.
 - [x] Add a ten-stage guided route and deterministic interactive theorem atlas
       initially released with 247 exact native statements and now regenerated
-      for all 384 checked statements, with authored proof recipes,
+      for all 393 checked statements, with authored proof recipes,
       dependency/dependent navigation, metrics, hashes, live-lab actions, and
       source/vault links.
 - [x] Add an arithmetic Obsidian MOC, concept notes, and generated per-lemma
@@ -264,11 +264,11 @@ does not determine the architecture.
   text falls by 95.63%/94.34%. Expansion receipts reconstruct the same parsed
   native formulas. The proof
   DAG remains 557 nodes, 1,787 edges, and 45 layers; its status split remains
-  240 public, 316 body-checked candidates, and the QR root pending layered
+  241 public, 315 body-checked candidates, and the QR root pending layered
   closure.
 - The factorization and unbounded-primes tranches are synchronized into the
-  current 384-theorem runtime, 385-entry catalog, generated snapshot, and all
-  384 generated lemma notes. The catalog split is 23 baseline checked, 361
+  current 393-theorem runtime, 394-entry catalog, generated snapshot, and all
+  393 generated lemma notes. The catalog split is 23 baseline checked, 370
   post-baseline checked, and one representation-blocked conventional
   integer-coefficient Bézout interface. The
   previously published 189-theorem snapshot remains historical provenance.
@@ -290,7 +290,7 @@ does not determine the architecture.
   not a complete or authoritative admission route.
 - Full FTA companion status: checked in Lean for every nonzero natural, with
   finite-list existence and permutation uniqueness and no `sorryAx`.
-- Native Peano FTA status: checked and synchronized in the 384-theorem runtime
+- Native Peano FTA status: checked and synchronized in the 393-theorem runtime
   in the conservative β-coded representation. The endpoint is not a conventional list theorem: there is no
   primitive list type, and uniqueness compares lengths and decoded entries
   rather than raw β codes. The conventional list statement remains the
@@ -302,10 +302,10 @@ does not determine the architecture.
   multiple; any such divisor at or below the bound would divide both
   consecutive numbers and hence one. It uses PA1–PA6 only, has no DNE, and
   passes dependency, PA, hypothesis, and live-use audits.
-- The generated 384-theorem snapshot has 1,806,923 structural occurrences,
-  52,626 Cuts, and 329 Cut-bearing certificates. Its ordered root is
-  `73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
-  The vault has 482 notes and 4,886 resolved links, including all 384 generated
+- The generated 393-theorem snapshot has 1,830,078 structural occurrences,
+  53,293 Cuts, and 338 Cut-bearing certificates. Its ordered root is
+  `539a1195df131ed3e202efa15f48bef76a8b8c757789119e2265172453aaf566`.
+  The vault has 492 notes and 4,991 resolved links, including all 393 generated
   theorem notes. The last source-bound 1,692-session/13,344-transition corpus
   remains intentionally tied to the historical 247-theorem checkpoint and has
   fingerprint
@@ -317,8 +317,8 @@ does not determine the architecture.
   been deployed.
 - The current Book source set has 46 sources. Its last strict arithmetic-branch
   rebuild completed without warnings; 194 deep links and 47 executable blocks
-  containing 287 commands verify. The generated atlas contains 384 checked
-  proof cards, one explicit boundary card, all 1,038 dependency edges, and a
+  containing 287 commands verify. The generated atlas contains 393 checked
+  proof cards, one explicit boundary card, all 1,070 dependency edges, and a
   local 1–4-hop navigator. The post-merge compatibility matrix passed 1,183
   tests with five intentional skips, and the strict 46-source Book replay plus
   its 2,324-page integrity gate passed with zero broken or escaping targets.

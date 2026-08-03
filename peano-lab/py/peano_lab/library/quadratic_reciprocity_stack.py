@@ -9,8 +9,11 @@ or admit anything to the public library.
 
 The returned admission order places all required public dependencies first,
 then the candidate ancestors in deterministic topological order.  The full
-factory output is retained only as audit metadata so accidental duplicate or
-publicly conflicting theorem names fail before dependency resolution.
+factory output is retained as audit metadata.  A candidate that has migrated
+to the public registry remains in that source provenance, but is classified as
+public in the reachable graph if and only if the complete specification is
+identical.  Accidental duplicate and incompatible public specifications fail
+before dependency resolution.
 """
 
 from __future__ import annotations
@@ -746,10 +749,16 @@ def _assemble_quadratic_reciprocity_stack(
             "QR candidate ownership mismatch: "
             f"missing={missing_owners!r}, extra={extra_owners!r}"
         )
-    conflicts = sorted(set(candidate_by_name).intersection(public_by_name))
+    overlaps = sorted(set(candidate_by_name).intersection(public_by_name))
+    conflicts = [
+        name
+        for name in overlaps
+        if candidate_by_name[name] != public_by_name[name]
+    ]
     if conflicts:
         raise ValueError(
-            f"QR candidate names conflict with public theorems: {conflicts!r}"
+            "QR candidate specifications conflict with public theorems: "
+            f"{conflicts!r}"
         )
     if root_name not in candidate_by_name:
         raise ValueError(f"missing QR root candidate {root_name!r}")
@@ -759,12 +768,15 @@ def _assemble_quadratic_reciprocity_stack(
     combined_order: list[tuple[str, SpecT]] = []
 
     def visit(name: str, parent_scope: str | None = None) -> None:
-        if name in candidate_by_name:
-            scope = "candidate"
-            spec = candidate_by_name[name]
-        elif name in public_by_name:
+        # Prefer the public copy for a compatible overlap.  The candidate copy
+        # remains present in all_candidates/all_candidate_by_name and retains
+        # its owner, providing exact source provenance after public migration.
+        if name in public_by_name:
             scope = "public"
             spec = public_by_name[name]
+        elif name in candidate_by_name:
+            scope = "candidate"
+            spec = candidate_by_name[name]
         else:
             raise ValueError(f"unknown QR dependency {name!r}")
         if parent_scope == "public" and scope == "candidate":

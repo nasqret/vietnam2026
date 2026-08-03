@@ -26,9 +26,9 @@ DOMAIN_COUNTS = {
     "multiplication": 19,
     "order": 29,
     "divisibility": 20,
-    "congruence": 34,
-    "division": 9,
-    "gcd_coprime": 25,
+    "congruence": 35,
+    "division": 13,
+    "gcd_coprime": 29,
     "primes": 13,
     "factorization": 76,
     "quadratic_residues": 137,
@@ -95,9 +95,9 @@ def test_atlas_embeds_every_checked_statement_script_receipt_and_edge() -> None:
         by_name[match.group(1)] = card
 
     theorems = snapshot["theorems"]
-    assert len(theorems) == snapshot["theorem_count"] == 384
-    assert len(by_name) == 384
-    assert sum(len(theorem["dependencies"]) for theorem in theorems) == 1_038
+    assert len(theorems) == snapshot["theorem_count"] == 393
+    assert len(by_name) == 393
+    assert sum(len(theorem["dependencies"]) for theorem in theorems) == 1_070
 
     for theorem in theorems:
         card = by_name[theorem["name"]]

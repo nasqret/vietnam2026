@@ -38,8 +38,8 @@ The exact abstracts, session plans and reading lists live on the [landing page](
 | `vault/` | The **Obsidian vault** — the atomic, wiki-linked knowledge base behind the book. |
 | `artifacts/` | **Formal proofs** in four systems, plus `lean-fta/`: a pinned, sorry-free Lean proof of prime-factorization existence and uniqueness up to permutation. |
 | `lab-lambda/` | The **Lambda Lab**, repackaged to run **directly in the browser** (Pyodide + xterm.js). Deployed to `/lab-lambda`. |
-| `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, 384-entry checked arithmetic ladder, and reproducible proof-trace corpus. |
-| `research/` | The **research dossier** — including the 385-node arithmetic catalog (384 checked and one representation-blocked), native and Lean FTA certificates, the quadratic-reciprocity campaign, and source/license maps. |
+| `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, 393-entry checked arithmetic ladder, and reproducible proof-trace corpus. |
+| `research/` | The **research dossier** — including the 394-node arithmetic catalog (393 checked and one representation-blocked), native and Lean FTA certificates, the quadratic-reciprocity campaign, and source/license maps. |
 | `scripts/` | Book replay gate plus the deterministic Peano trace generation, export, and kernel-judged evaluation pipeline. |
 | `docs/` | Lecturer-facing docs: how to build, deploy, and run each piece. |
 | `MEMORY.md` · `JOURNAL.md` · `PLAN.md` + `PLAN/` | Project **memory**, dated **journal**, and the multi-level **plan**. |
@@ -58,7 +58,7 @@ passed the complete pinned Lean 4.31/WMI matrix in job
 Canonical decoding and finite differential tests support Python/Lean
 correspondence but are not an exhaustive theorem about CPython execution.
 
-The 384-entry native ladder reaches the Fundamental Theorem of Arithmetic
+The 393-entry native ladder reaches the Fundamental Theorem of Arithmetic
 without adding lists, division, remainder, gcd, or factorization as primitive
 symbols. Finite factor sequences and their prefix products are represented by
 expanded Gödel-β relations; code equality is extensional on the selected
@@ -74,33 +74,35 @@ one. The exact native FTA certificate has 73,767
 structural nodes, depth 99, 2,184 self-contained Cuts, and SHA-256
 `fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
 It checks from the empty context using only PA1–PA6 and ordinary induction; it
-does not use double-negation elimination. The newest 137 certificates form a
-systematic quadratic-reciprocity campaign: parity and residue decision,
+does not use double-negation elimination. A 137-certificate checkpoint forms a
+systematic quadratic-reciprocity foundation: parity and residue decision,
 finite folds, factorial and power algebra, small-modulus classifications,
 modular units, sign and positive-half-range bridges, β-prefix swap/reindex,
 constructive finite pigeonhole, replacement balance, and exact swap-last
 product invariance. Those 137 admitted certificates do not themselves claim
-the reciprocity law. A separate, registry-isolated campaign stack now has a
+the reciprocity law. The nine subsequent strict-HA campaign entries expose
+canonical remainder, its congruence bridge, and the exact unique bounded
+modular-inverse criterion. A separate, registry-isolated campaign stack has a
 kernel-checked dependency-curried body for the exact sign-free same-case,
 opposite-case, and combined quadratic-reciprocity surfaces; the optimized
 combined body is `3/65/113/35` (dependencies/commands/nodes/depth). It is not
 yet an admitted library theorem: its 557-spec recursive closure, mutation,
 capacity, browser and receipt gates remain assigned to WMI. The catalog now
-has 23 baseline checked entries, 361 post-baseline checked entries,
+has 23 baseline checked entries, 370 post-baseline checked entries,
 no planned theorem, and one
 deliberately blocked conventional
 integer-coefficient Bézout interface. This is a local draft-PR checkpoint, not
-a deployment claim. The generated 384-theorem snapshot has 1,806,923
-structural occurrences, 52,626 Cuts, and 329 Cut-bearing certificates, with
+a deployment claim. The generated 393-theorem snapshot has 1,830,078
+structural occurrences, 53,293 Cuts, and 338 Cut-bearing certificates, with
 ordered root
-`73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
-The synchronized vault includes all 384 generated lemma notes. The released
+`539a1195df131ed3e202efa15f48bef76a8b8c757789119e2265172453aaf566`.
+The synchronized vault includes all 393 generated lemma notes. The released
 source-bound corpus retains 13,344 transitions in 1,692
 kernel-checked sessions under fingerprint
 `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
 its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
 all 247 authored QEDs. The integrated local browser candidate deterministically
-verifies as build `2026-08-03a`, application `a-ff0ad1985520`, with 149 worker
+verifies as build `2026-08-03c`, application `a-9fe3f597bf8d`, with 153 worker
 sources; it assembles successfully in the local content-addressed stage and is
 not deployed. The
 strict Jupyter Book rebuild completes over all 46 sources; its post-build
@@ -108,7 +110,7 @@ integrity gate reports zero broken relative targets or fragments and
 byte-identical explicit and defined Proof Explorer trees.
 The existing 194 deep links and 47 session blocks containing 287 commands
 verify. Its guided zero-to-FTA route and
-generated interactive atlas embed all 384 exact statements and authored proof
+generated interactive atlas embed all 393 exact statements and authored proof
 recipes with searchable dependency navigation. The selected post-merge
 compatibility matrix passed 1,183 tests with five intentional skips, including
 six loopback-server tests run outside the socket-restricted sandbox; this is
@@ -203,7 +205,7 @@ installed `pa` launcher exposes both authorities without mixing their Python
 imports:
 
 ```text
-pa native    # this model-free 384-theorem source tree
+pa native    # this model-free 393-theorem source tree
 pa model     # frozen 247-theorem trained-policy environment
 pa           # backward-compatible alias for `pa model`
 ```

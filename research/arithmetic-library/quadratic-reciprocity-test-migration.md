@@ -1,6 +1,17 @@
 # Quadratic-reciprocity test migration for public enrollment
 
-## Result
+```{admonition} Historical pre-overlap audit
+:class: note
+This audit froze the all-private QR-factory state before the strict-HA tranche.
+The live stack now has one exact-compatible public factory overlap,
+`bounded_mod_inverse_unique`: 346 outputs partition as 316 remaining reachable
+candidates, one reachable public migration, and 29 omitted non-ancestors. The
+closure is therefore 241 public / 316 candidate / 557 total. The detailed
+317-enrollment recipe below is retained as historical evidence; the remaining
+full-QR enrollment count is now 316.
+```
+
+## Historical result
 
 The future admission commit must migrate candidate tests from the blanket
 assumption “every factory output is private” to the exact partition:
@@ -17,7 +28,7 @@ importantly, 74 files seed 113 candidate dependency cores from the unified
 new entries, so those helpers can silently stop testing isolated modular
 bodies even when no negative assertion fails.
 
-This is a preparation note only.  No candidate is currently enrolled.
+This was a preparation note only. At that snapshot no candidate was enrolled.
 
 ## Reproducible audit
 

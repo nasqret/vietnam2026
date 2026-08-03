@@ -34,6 +34,9 @@ forall m a b c. (exists u v. a + m * u = b + m * v) -> (exists r s. b + m * r = 
 - [[bounded_square_mod7_classify]]
 - [[pow_predecessor_parity_mod]]
 - [[prime_bounded_nonzero_mod_inverse]]
+- [[canonical_remainders_characterize_mod_eq]]
+- [[bounded_mod_inverse_unique]]
+- [[coprime_bounded_mod_inverse]]
 
 ## Verification record
 

@@ -1,0 +1,620 @@
+{
+  "format": "peano-ha-number-theory-campaign",
+  "version": 1,
+  "campaign_id": "ha_number_theory_r0_r1",
+  "title": "Strict HA number-theory campaign: arithmetic substrate through finite CRT",
+  "source_specification": {
+    "file_name": "ha_number_theory_formalization_campaign.md",
+    "path": "research/arithmetic-library/ha-number-theory-formalization-campaign-blueprint.md",
+    "sha256": "8fd25fc3e68259e1a16c935d35dacccefa20a473cdec35f8771cb1d5d806f205",
+    "role": "Byte-identical in-repository capture of the controlling design document at campaign start; this manifest records the executable K0-K6 and M1-M5 tranche."
+  },
+  "baseline": {
+    "branch": "agent/new-theorems-tranche-01",
+    "commit": "d9d6e739e7c452ddf2cc9013d8772dfb185ff44f"
+  },
+  "authority": {
+    "logic": "first-order intuitionistic arithmetic",
+    "object_language": "0, S, +, *, = with intuitionistic connectives and quantifiers",
+    "kernel_entrypoint": "peano_lab.kernel.checker.check",
+    "public_registry": "peano-lab/py/peano_lab/library/theorems.py",
+    "catalog": "research/arithmetic-library/catalog.json",
+    "candidate_policy": "Candidate factories are isolated, dependency-curried proof bodies. They are not public theorems until an empty-context certificate is checked and deliberately admitted.",
+    "definition_policy": "Every surface definition must expand to the unchanged object language before kernel checking."
+  },
+  "status_vocabulary": {
+    "existing_public_core": "A substantial reusable core is already admitted in the public object-level HA registry; the recorded remaining gap is not thereby claimed complete.",
+    "candidate_seed": "An isolated, non-public proof candidate directly seeds the next layer; its exact theorem-level evidence is recorded separately and never implies public admission.",
+    "new": "No representation-compatible implementation of the package target has been selected yet.",
+    "blocked_on_dependency": "Work is deliberately held behind an earlier incomplete package named in depends_on_layers."
+  },
+  "theorem_evidence": {
+    "status_vocabulary": {
+      "public_checked": "A complete empty-context certificate checks intuitionistically and the theorem is deliberately enrolled in the public registry.",
+      "closed_checked_candidate": "A complete empty-context certificate checks intuitionistically, but the theorem is intentionally absent from the public registry.",
+      "body_checked_candidate": "Only the dependency-curried candidate body has been checked.",
+      "planned": "The statement and dependency location are frozen, but no checked proof body exists.",
+      "blocked_on_dependency": "A named earlier theorem or representation gate prevents honest proof work.",
+      "legacy_late_encoding": "Checked material may be reused later but cannot be the campaign's foundational representation."
+    },
+    "receipt_kind": "empty_context_intuitionistic_cut_closure",
+    "determinism_passes": 2,
+    "dne_nodes": 0,
+    "test_paths": [
+      "peano-lab/py/tests/test_ha_number_theory_tranche01_admission.py",
+      "peano-lab/py/tests/test_ha_canonical_gcd_candidate.py"
+    ],
+    "theorems": [
+      {
+        "name": "canonical_remainder_exists",
+        "status": "public_checked",
+        "source_module": "peano-lab/py/peano_lab/library/ha_canonical_remainder_candidate.py",
+        "statement_sha256": "a2b6494d6a1369a763858443ba842e1602874c81f1c2b549a8b82ed135f81cf1",
+        "receipt": {"nodes": 238, "depth": 29, "objects": 215, "edges": 230, "reused": 16, "cuts": 6, "certificate_sha256": "e94dc6590d4a48e5d9836d9a343642bb9d0d03df4120697ae33469d1dedd1e90"}
+      },
+      {
+        "name": "canonical_remainder_functional",
+        "status": "public_checked",
+        "source_module": "peano-lab/py/peano_lab/library/ha_canonical_remainder_candidate.py",
+        "statement_sha256": "018a8e4f76080da565e2db4f36964ded346bfa8b5c75b295db9ac9bf18c5b418",
+        "receipt": {"nodes": 885, "depth": 58, "objects": 575, "edges": 596, "reused": 22, "cuts": 17, "certificate_sha256": "9fc9204b6c8fb5485026b3d2b70bc37e981eb63024078e23493d6de25712e039"}
+      },
+      {
+        "name": "canonical_remainder_zero_impossible",
+        "status": "public_checked",
+        "source_module": "peano-lab/py/peano_lab/library/ha_canonical_remainder_candidate.py",
+        "statement_sha256": "d6056b5b8107b48a1d1fed6068cfeee3dcc7e73cbd35982f7ce278e6eb3bfd6b",
+        "receipt": {"nodes": 21, "depth": 13, "objects": 21, "edges": 20, "reused": 0, "cuts": 1, "certificate_sha256": "9a9d6722c6f90b895c5dd93408ffee50bcd12d8de5bc7eefe8321e4db6c8241b"}
+      },
+      {
+        "name": "canonical_remainder_exists_unique",
+        "status": "public_checked",
+        "source_module": "peano-lab/py/peano_lab/library/ha_canonical_remainder_candidate.py",
+        "statement_sha256": "e542ed4a706554b52c8e7263031f88a8a74f579061f2b5a782b42c86d7738919",
+        "receipt": {"nodes": 1148, "depth": 60, "objects": 765, "edges": 803, "reused": 39, "cuts": 25, "certificate_sha256": "b3bc67d9eb55c2f9dcca218bc2a2c5f3933af683553fa68769b376437bb0458d"}
+      },
+      {
+        "name": "canonical_remainders_characterize_mod_eq",
+        "status": "public_checked",
+        "source_module": "peano-lab/py/peano_lab/library/ha_canonical_congruence_candidate.py",
+        "statement_sha256": "c0fd6329ca9ec05b406a558920dfc49926e8e8fedb1e90fc1afcd698aa436f7f",
+        "receipt": {"nodes": 1888, "depth": 64, "objects": 908, "edges": 950, "reused": 43, "cuts": 32, "certificate_sha256": "451657b14f19132e48bfb6ae85bfe9861c145db890f841d35f52bc08b199e78b"}
+      },
+      {
+        "name": "bounded_mod_inverse_unique",
+        "status": "public_checked",
+        "source_module": "peano-lab/py/peano_lab/library/wilson_inverse_point_candidate.py",
+        "statement_sha256": "d4545da3327b3ba077e2ecf511b4f0b00ea44c3afdc5af430ae6495f659e3b99",
+        "receipt": {"nodes": 2914, "depth": 68, "objects": 1001, "edges": 1061, "reused": 61, "cuts": 42, "certificate_sha256": "6fe8ceff81c32868d871179c063f93264bd4fb6fb545f0b58f2855cb5b30e865"}
+      },
+      {
+        "name": "coprime_bounded_mod_inverse",
+        "status": "public_checked",
+        "source_module": "peano-lab/py/peano_lab/library/ha_modular_inverse_candidate.py",
+        "statement_sha256": "84b14ceae7ab398b01e4b2033fd192110eef89ab6f921aeecb0c24eac424c3e8",
+        "receipt": {"nodes": 5675, "depth": 53, "objects": 1752, "edges": 1853, "reused": 102, "cuts": 88, "certificate_sha256": "779ff00cd6d4b8a193dd358f924084a3f3c955a52f96a6a01b5a97e22d2d4e33"}
+      },
+      {
+        "name": "mod_inverse_implies_coprime",
+        "status": "public_checked",
+        "source_module": "peano-lab/py/peano_lab/library/ha_modular_inverse_candidate.py",
+        "statement_sha256": "e43d577e91195ee611ede2e8e3ad6511db34b1d45a22eb12d6b37b09f708d905",
+        "receipt": {"nodes": 874, "depth": 40, "objects": 602, "edges": 643, "reused": 42, "cuts": 20, "certificate_sha256": "d238282c7443e9f74ed1eb75ddf13ca548e19a5b5859f49f52ad28231a512e9e"}
+      },
+      {
+        "name": "coprime_iff_unique_bounded_mod_inverse",
+        "status": "public_checked",
+        "source_module": "peano-lab/py/peano_lab/library/ha_modular_inverse_candidate.py",
+        "statement_sha256": "213e325ff123d568d2faa49a8314bcf075069d5b7b2b256a0925c49b5ae915eb",
+        "receipt": {"nodes": 9512, "depth": 70, "objects": 2538, "edges": 2679, "reused": 142, "cuts": 126, "certificate_sha256": "c3ed07e7caef52895001332d066ae9e4ce25167c7a0cd7189f8957c9aa7dc9f3"}
+      },
+      {
+        "name": "canonical_gcd_exists",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_canonical_gcd_candidate.py",
+        "statement_sha256": "d1264e3b8759b991bb02db9b764c0a8671da6a9199d2585cbbb96d5e0d9eff4d",
+        "receipt": {"nodes": 1280, "depth": 47, "objects": 845, "edges": 892, "reused": 48, "cuts": 36, "certificate_sha256": "8e3b24c937725618f58d1fddaf36bac33d4ce5f16ae1f3f5da4e254763468350"}
+      },
+      {
+        "name": "canonical_gcd_functional",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_canonical_gcd_candidate.py",
+        "statement_sha256": "a14d92bb096070ab10132a6d095af01b1decc8a3437ca72f28cb9bf4e3d5036e",
+        "receipt": {"nodes": 708, "depth": 35, "objects": 589, "edges": 623, "reused": 35, "cuts": 20, "certificate_sha256": "7cca97c44c84e4b6331820e98da8d81abefb67a2861e04318f30b1afb375a51f"}
+      },
+      {
+        "name": "canonical_gcd_exists_unique",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_canonical_gcd_candidate.py",
+        "statement_sha256": "05fd381ea8bf40b071f47365e9ebd5ba3e409bbf588699a60b17e04d073517fb",
+        "receipt": {"nodes": 2010, "depth": 48, "objects": 1255, "edges": 1326, "reused": 72, "cuts": 55, "certificate_sha256": "20db8565558e7d08e343c4b168dde040f5ecea0479257fd10f0024d13a901b3a"}
+      }
+    ]
+  },
+  "validation_gates": [
+    {
+      "id": "manifest_integrity",
+      "order": 0,
+      "scope": "Check strict JSON shape, stable identifiers, dependency order, source paths, public references, candidate references, and the K3 anti-circularity invariant.",
+      "quick_command": "python3 scripts/verify_ha_number_theory_campaign.py"
+    },
+    {
+      "id": "statement_expansion",
+      "order": 1,
+      "scope": "Parse each expanded target as a closed formula over the unchanged Peano object language and compare its readable definition expansion.",
+      "quick_command": "Run the layer's focused statement and definition tests."
+    },
+    {
+      "id": "candidate_body",
+      "order": 2,
+      "scope": "Replay the dependency-curried body constructively, reject DNE, record proof size and depth, and reject a nearby false mutation.",
+      "quick_command": "Run only the candidate module's focused pytest file."
+    },
+    {
+      "id": "dependency_closure",
+      "order": 3,
+      "scope": "Verify declared dependencies exist, precede the theorem, are sufficient for body replay, and do not introduce forbidden representation cycles; for closed candidates, build and record the exact empty-context closure without registry mutation.",
+      "quick_command": "Run candidate topology, dependency-order, and empty-context closure receipt tests."
+    },
+    {
+      "id": "public_admission",
+      "order": 4,
+      "scope": "After a deterministic empty-context closure receipt exists, deliberately enroll the theorem in the public registry and replay it through the post-enrollment public path.",
+      "quick_command": "Review the registry admission change, then run focused public replay and mutation tests."
+    },
+    {
+      "id": "generated_integration",
+      "order": 5,
+      "scope": "Regenerate source-derived catalog, vault, book, explorer, and snapshot artifacts, then run their check modes.",
+      "quick_command": "Run the existing arithmetic knowledge-base and generated-artifact check commands."
+    },
+    {
+      "id": "heavy_closure",
+      "order": 6,
+      "scope": "Run large closure, resource, mutation, and browser-memory checks on WMI only after all local gates pass.",
+      "quick_command": "Submit a receipt-pinned WMI validation job."
+    }
+  ],
+  "representation_invariants": {
+    "k3_foundational_encoding": "HA-K3-SIGNED-1 selects parity-interleaved canonical signed naturals independently of CRT and Godel-beta coding; pair and list representations remain to be selected",
+    "k3_forbidden_foundations": [
+      "godel_beta",
+      "binary_crt",
+      "finite_crt"
+    ],
+    "legacy_beta_role": "Existing beta-coded sequence, fold, factorization, and QR theorems remain valid public HA results and reusable arithmetic evidence, but they do not discharge K3 and may not be dependencies of K3's first pair/list representation.",
+    "canonical_acceptance": [
+      "decoding is functional on valid codes",
+      "canonical constructors produce valid codes",
+      "equality of represented objects is decidable",
+      "operations preserve validity and meet their expanded specifications",
+      "host elaboration data compile to object-language codes"
+    ]
+  },
+  "layers": [
+    {
+      "id": "K0",
+      "sequence": 0,
+      "release": "R0",
+      "title": "Object language and proof calculus",
+      "status": "existing_public_core",
+      "depends_on_layers": [],
+      "target": "Fix first-order intuitionistic logic with equality over 0, S, +, * and formula-specific induction, with explicit certificates checked by the HA kernel.",
+      "public_theorem_references": [
+        "succ_ne_zero",
+        "succ_injective",
+        "zero_add",
+        "add_comm",
+        "mul_comm"
+      ],
+      "candidate_modules": [],
+      "remaining_gap": "Freeze a campaign-specific exported-certificate manifest and keep classical checking outside every native release gate.",
+      "validation": {
+        "path": [
+          "manifest_integrity",
+          "dependency_closure",
+          "public_admission",
+          "generated_integration"
+        ],
+        "next_gate": "generated_integration",
+        "release_gate": "generated_integration"
+      }
+    },
+    {
+      "id": "K1",
+      "sequence": 1,
+      "release": "R0",
+      "title": "Decidable bounded arithmetic",
+      "status": "existing_public_core",
+      "depends_on_layers": [
+        "K0"
+      ],
+      "target": "Provide decidability and reflection for equality, order, bounded divisibility, primality, finite membership, and general bounded formulas.",
+      "public_theorem_references": [
+        "eq_decidable",
+        "lt_trichotomy",
+        "multiple_decidable",
+        "prime_decidable",
+        "finite_contains_decidable"
+      ],
+      "candidate_modules": [],
+      "remaining_gap": "The reusable decision theorems are public, but no general object-level Delta-zero reflection compiler has yet been frozen for the campaign.",
+      "validation": {
+        "path": [
+          "manifest_integrity",
+          "statement_expansion",
+          "candidate_body",
+          "dependency_closure",
+          "public_admission",
+          "generated_integration"
+        ],
+        "next_gate": "statement_expansion",
+        "release_gate": "generated_integration"
+      }
+    },
+    {
+      "id": "K2",
+      "sequence": 2,
+      "release": "R0",
+      "title": "Primitive-recursive definitional extensions",
+      "status": "existing_public_core",
+      "depends_on_layers": [
+        "K0",
+        "K1"
+      ],
+      "target": "Supply graph formulas, functionality, and conservative readable interfaces for exponentiation, factorial, quotient, remainder, coding, evaluation, and finite folds.",
+      "public_theorem_references": [
+        "pow_exists",
+        "pow_functional",
+        "factorial_exists",
+        "factorial_functional",
+        "division_remainder_exists",
+        "division_remainder_unique"
+      ],
+      "candidate_modules": [],
+      "remaining_gap": "Individual graph relations are public; a reviewed generic conservative-symbol and elimination discipline still needs to be packaged and tested.",
+      "validation": {
+        "path": [
+          "manifest_integrity",
+          "statement_expansion",
+          "candidate_body",
+          "dependency_closure",
+          "public_admission",
+          "generated_integration"
+        ],
+        "next_gate": "statement_expansion",
+        "release_gate": "generated_integration"
+      }
+    },
+    {
+      "id": "K3",
+      "sequence": 3,
+      "release": "R0",
+      "title": "Finite-data coding",
+      "status": "new",
+      "depends_on_layers": [
+        "K0",
+        "K1",
+        "K2"
+      ],
+      "target": "Build canonical primitive-recursive codes for pairs, signed integers, explicit-length lists, sorted sets, matrices, permutations, finite functions, and proof-relevant bijections without using CRT or a Godel-beta construction.",
+      "public_theorem_references": [],
+      "candidate_modules": [],
+      "remaining_gap": "The existing beta representation is intentionally not accepted as the foundational list encoding. Pair validity, constructors, functional decoding, decidable equality, and list recursion must start this layer.",
+      "validation": {
+        "path": [
+          "manifest_integrity",
+          "statement_expansion",
+          "candidate_body",
+          "dependency_closure",
+          "public_admission",
+          "generated_integration",
+          "heavy_closure"
+        ],
+        "next_gate": "statement_expansion",
+        "release_gate": "heavy_closure"
+      }
+    },
+    {
+      "id": "K4",
+      "sequence": 4,
+      "release": "R0",
+      "title": "Division and Euclidean algorithms",
+      "status": "candidate_seed",
+      "depends_on_layers": [
+        "K0",
+        "K1",
+        "K2"
+      ],
+      "target": "Provide canonical quotient and remainder, gcd, lcm, extended Euclid, balanced Bezout coefficients, and executable specifications.",
+      "public_theorem_references": [
+        "division_remainder_exists",
+        "division_remainder_unique",
+        "gcd_exists_relational",
+        "gcd_balanced_bezout_exists",
+        "coprime_balanced_bezout",
+        "gauss_coprime_cancel",
+        "canonical_remainder_exists",
+        "canonical_remainder_functional",
+        "canonical_remainder_zero_impossible",
+        "canonical_remainder_exists_unique",
+        "canonical_remainders_characterize_mod_eq"
+      ],
+      "candidate_modules": [
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_canonical_gcd_candidate.py",
+          "factory": "make_ha_canonical_gcd_candidate_theorems",
+          "theorem_names": [
+            "canonical_gcd_exists",
+            "canonical_gcd_functional",
+            "canonical_gcd_exists_unique"
+          ],
+          "role": "Closed-checked but non-public existence, functionality, and unique-existence package for the canonical relational gcd predicate, derived without zero side conditions from the public IsGCD interface."
+        }
+      ],
+      "remaining_gap": "Canonical remainder and its congruence bridge are public. The canonical relational-gcd package has deterministic empty-context closure receipts but remains isolated pending deliberate admission; lcm, an executable Euclidean graph, and the HA-K3-SIGNED-1 coefficient interface remain.",
+      "validation": {
+        "path": [
+          "manifest_integrity",
+          "statement_expansion",
+          "candidate_body",
+          "dependency_closure",
+          "public_admission",
+          "generated_integration"
+        ],
+        "next_gate": "public_admission",
+        "release_gate": "generated_integration"
+      }
+    },
+    {
+      "id": "K5",
+      "sequence": 5,
+      "release": "R0",
+      "title": "Prime factorization and valuations",
+      "status": "existing_public_core",
+      "depends_on_layers": [
+        "K0",
+        "K1",
+        "K2",
+        "K4"
+      ],
+      "target": "Provide least-prime-divisor search, Euclid's lemma, sorted prime-factor lists, uniqueness, and p-adic valuation algebra.",
+      "public_theorem_references": [
+        "prime_divisor_exists",
+        "euclid_prime_dvd_product",
+        "greatest_prime_divisor_exists",
+        "prime_factorization_existence",
+        "prime_factorization_uniqueness",
+        "fundamental_theorem_of_arithmetic"
+      ],
+      "candidate_modules": [],
+      "remaining_gap": "Prime-divisor, Euclid, and beta-coded FTA theorems are public. The factorization interface must migrate to K3 canonical lists, and valuation existence, uniqueness, and algebra are absent.",
+      "validation": {
+        "path": [
+          "manifest_integrity",
+          "statement_expansion",
+          "candidate_body",
+          "dependency_closure",
+          "public_admission",
+          "generated_integration",
+          "heavy_closure"
+        ],
+        "next_gate": "statement_expansion",
+        "release_gate": "heavy_closure"
+      }
+    },
+    {
+      "id": "K6",
+      "sequence": 6,
+      "release": "R0",
+      "title": "Finite sums, products, and cardinality",
+      "status": "blocked_on_dependency",
+      "depends_on_layers": [
+        "K0",
+        "K1",
+        "K2",
+        "K3",
+        "K4"
+      ],
+      "target": "Develop representation-independent finite folds, reindexing, partitions, duplicate-free lists, permutations, pigeonhole, double counting, and product cancellation on K3 data.",
+      "public_theorem_references": [
+        "beta_product_exists_unique",
+        "beta_sum_exists_unique",
+        "finite_bounded_injective_surjective",
+        "beta_product_swap_last_invariant"
+      ],
+      "candidate_modules": [],
+      "remaining_gap": "The checked beta-coded combinatorics remains reusable as arithmetic guidance, but the campaign package is blocked until K3 supplies its non-circular canonical list API.",
+      "validation": {
+        "path": [
+          "manifest_integrity",
+          "statement_expansion",
+          "candidate_body",
+          "dependency_closure",
+          "public_admission",
+          "generated_integration",
+          "heavy_closure"
+        ],
+        "next_gate": "statement_expansion",
+        "release_gate": "heavy_closure"
+      }
+    },
+    {
+      "id": "M1",
+      "sequence": 7,
+      "release": "R1",
+      "title": "Modular inverse criterion",
+      "status": "existing_public_core",
+      "depends_on_layers": [
+        "K0",
+        "K1",
+        "K2",
+        "K3",
+        "K4"
+      ],
+      "target": "For positive m, prove that a is coprime to m exactly when there is a unique u below m with a*u congruent to 1 modulo m, and expose a conservative invmod graph.",
+      "public_theorem_references": [
+        "coprime_balanced_mod_inverse",
+        "coprime_mod_inverse",
+        "mod_eq_bounded_unique",
+        "bounded_mod_inverse_unique",
+        "coprime_bounded_mod_inverse",
+        "mod_inverse_implies_coprime",
+        "coprime_iff_unique_bounded_mod_inverse"
+      ],
+      "candidate_modules": [],
+      "remaining_gap": "The exact bounded-existence, converse, uniqueness, and iff criterion are public. A conservative invmod graph and its interface to HA-K3-SIGNED-1 remain for the full executable package.",
+      "validation": {
+        "path": [
+          "manifest_integrity",
+          "statement_expansion",
+          "candidate_body",
+          "dependency_closure",
+          "public_admission",
+          "generated_integration"
+        ],
+        "next_gate": "statement_expansion",
+        "release_gate": "generated_integration"
+      }
+    },
+    {
+      "id": "M2",
+      "sequence": 8,
+      "release": "R1",
+      "title": "Classification of linear congruences",
+      "status": "blocked_on_dependency",
+      "depends_on_layers": [
+        "K1",
+        "K3",
+        "K4",
+        "K6",
+        "M1"
+      ],
+      "target": "Classify solvability of a*x congruent to b modulo positive m by gcd divisibility and construct the duplicate-free list of exactly gcd(a,m) canonical solutions.",
+      "public_theorem_references": [
+        "gcd_exists_relational",
+        "coprime_mod_inverse",
+        "division_remainder_unique"
+      ],
+      "candidate_modules": [],
+      "remaining_gap": "The arithmetic reduction is available, but the constructive solver, obstruction witness, K3 solution list, distinctness proof, and exact cardinality wait on M1 and K6.",
+      "validation": {
+        "path": [
+          "manifest_integrity",
+          "statement_expansion",
+          "candidate_body",
+          "dependency_closure",
+          "public_admission",
+          "generated_integration",
+          "heavy_closure"
+        ],
+        "next_gate": "statement_expansion",
+        "release_gate": "heavy_closure"
+      }
+    },
+    {
+      "id": "M3",
+      "sequence": 9,
+      "release": "R1",
+      "title": "Binary Chinese remainder theorem",
+      "status": "existing_public_core",
+      "depends_on_layers": [
+        "K0",
+        "K1",
+        "K2",
+        "K3",
+        "K4",
+        "M1"
+      ],
+      "target": "For coprime positive m and n, construct the unique x below m*n satisfying two arbitrary congruences, with an expanded first-order specification.",
+      "public_theorem_references": [
+        "binary_crt",
+        "binary_crt_remainders",
+        "mod_eq_bounded_unique"
+      ],
+      "candidate_modules": [],
+      "remaining_gap": "The public binary CRT supplies balanced-congruence existence. Canonical normalization below m*n, simultaneous uniqueness, executable output, and the M1-based statement remain.",
+      "validation": {
+        "path": [
+          "manifest_integrity",
+          "statement_expansion",
+          "candidate_body",
+          "dependency_closure",
+          "public_admission",
+          "generated_integration"
+        ],
+        "next_gate": "statement_expansion",
+        "release_gate": "generated_integration"
+      }
+    },
+    {
+      "id": "M4",
+      "sequence": 10,
+      "release": "R1",
+      "title": "Finite Chinese remainder theorem",
+      "status": "blocked_on_dependency",
+      "depends_on_layers": [
+        "K3",
+        "K6",
+        "M3"
+      ],
+      "target": "Fold binary CRT over a K3 list of pairwise-coprime positive moduli and residues, producing the unique representative below their product.",
+      "public_theorem_references": [
+        "binary_crt_fold_step",
+        "bounded_beta_crt_for_existing_code",
+        "beta_product_exists_unique"
+      ],
+      "candidate_modules": [],
+      "remaining_gap": "Legacy beta-prefix CRT lemmas are public but cannot found K3. The K3 list fold, invariant, empty/singleton cases, uniqueness, rejection, and permutation-invariant specification wait on K3, K6, and M3.",
+      "validation": {
+        "path": [
+          "manifest_integrity",
+          "statement_expansion",
+          "candidate_body",
+          "dependency_closure",
+          "public_admission",
+          "generated_integration",
+          "heavy_closure"
+        ],
+        "next_gate": "statement_expansion",
+        "release_gate": "heavy_closure"
+      }
+    },
+    {
+      "id": "M5",
+      "sequence": 11,
+      "release": "R1",
+      "title": "Generalized Chinese remainder theorem",
+      "status": "blocked_on_dependency",
+      "depends_on_layers": [
+        "K3",
+        "K4",
+        "K6",
+        "M2",
+        "M3",
+        "M4"
+      ],
+      "target": "Decide a finite noncoprime congruence system by pairwise gcd compatibility, returning either a canonical solution modulo the lcm or an explicit incompatible pair.",
+      "public_theorem_references": [
+        "is_gcd_euclid_forward",
+        "is_gcd_euclid_backward",
+        "binary_crt"
+      ],
+      "candidate_modules": [],
+      "remaining_gap": "Lcm infrastructure, binary noncoprime CRT, constructive incompatibility witnesses, the K3 finite fold, and uniqueness modulo lcm all depend on incomplete earlier layers.",
+      "validation": {
+        "path": [
+          "manifest_integrity",
+          "statement_expansion",
+          "candidate_body",
+          "dependency_closure",
+          "public_admission",
+          "generated_integration",
+          "heavy_closure"
+        ],
+        "next_gate": "statement_expansion",
+        "release_gate": "heavy_closure"
+      }
+    }
+  ]
+}

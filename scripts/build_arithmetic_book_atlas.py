@@ -127,6 +127,30 @@ THEOREM_SOURCES = (
     / "peano_lab"
     / "library"
     / "qr_small_moduli.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "ha_canonical_remainder_candidate.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "ha_canonical_congruence_candidate.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "wilson_inverse_point_candidate.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "ha_modular_inverse_candidate.py",
 )
 OUTPUT = REPO / "book" / "arithmetic-library" / "theorem-atlas.md"
 

@@ -32,12 +32,12 @@ from peano_lab.library.theorems import TheoremSpec, _specs_by_name
 
 EXPECTED_FACTORY_COUNT = 84
 EXPECTED_FACTORY_OUTPUT_COUNT = 346
-EXPECTED_CANDIDATE_ANCESTOR_COUNT = 317
-EXPECTED_PUBLIC_ANCESTOR_COUNT = 240
+EXPECTED_CANDIDATE_ANCESTOR_COUNT = 316
+EXPECTED_PUBLIC_ANCESTOR_COUNT = 241
 EXPECTED_TOTAL_GRAPH_COUNT = 557
 EXPECTED_DEPENDENCY_LAYER_COUNT = 45
 EXPECTED_GRAPH_SHA256 = (
-    "98a36450cfe1de29c20be67a1c5f65c8064e9f9eec5368ab769065f910008698"
+    "26017364ea943c4ed51a4a83f63ff0cd56b0de3686f0e0b458e7548ee84b1253"
 )
 EXPECTED_SOURCE_SHA256 = (
     "23fd18aaff26e2c6b428949c35ab3658252c9a4c6fd3b4825a6ccd547f454db1"
@@ -143,7 +143,26 @@ def test_qr_stack_pins_exact_ancestors_hashes_surface_and_topology() -> None:
     )
     assert all(spec.name in public for spec in first.public_order)
     assert all(spec.name not in public for spec in first.candidate_order)
-    assert len(first.all_candidates) - len(first.candidate_order) == 29
+    migrated_name = "bounded_mod_inverse_unique"
+    migrated_names = set(first.all_candidate_by_name).intersection(public)
+    assert migrated_names == {migrated_name}
+    assert migrated_name in first.all_candidate_by_name
+    assert first.all_candidate_by_name[migrated_name] == public[migrated_name]
+    assert first.owner_by_name[migrated_name] == "wilson_inverse_point_candidate"
+    assert migrated_name not in first.candidate_by_name
+    assert migrated_name in {spec.name for spec in first.public_order}
+    reachable_factory_names = {
+        spec.name
+        for _scope, spec in first.combined_order
+        if spec.name in first.all_candidate_by_name
+    }
+    omitted_names = set(first.all_candidate_by_name).difference(
+        reachable_factory_names
+    )
+    assert len(omitted_names) == 29
+    assert len(first.all_candidates) == (
+        len(first.candidate_order) + len(migrated_names) + len(omitted_names)
+    )
 
     root = first.candidate_by_name[QR_ROOT_NAME]
     assert first.candidate_order[-1] == root
@@ -158,7 +177,7 @@ def test_qr_stack_pins_exact_ancestors_hashes_surface_and_topology() -> None:
     )
 
 
-def test_qr_stack_rejects_duplicate_conflicting_unknown_and_cyclic_specs() -> None:
+def test_qr_stack_accepts_identical_public_migration_but_rejects_conflicts() -> None:
     root = _spec("root")
     with pytest.raises(ValueError, match="duplicate QR candidate theorem 'root'"):
         _assemble_quadratic_reciprocity_stack(
@@ -169,14 +188,44 @@ def test_qr_stack_rejects_duplicate_conflicting_unknown_and_cyclic_specs() -> No
             root_name="root",
         )
 
+    migrated = _spec("migrated")
+    dependent_root = _spec("root", ("migrated",))
+    migrated_stack = _assemble_quadratic_reciprocity_stack(
+        all_candidates=(migrated, dependent_root),
+        owner_by_name={"migrated": "candidate", "root": "candidate"},
+        source_rows=(),
+        public_by_name={"migrated": migrated},
+        root_name="root",
+    )
+    assert migrated_stack.all_candidate_by_name["migrated"] == migrated
+    assert migrated_stack.owner_by_name["migrated"] == "candidate"
+    assert tuple(spec.name for spec in migrated_stack.public_order) == (
+        "migrated",
+    )
+    assert tuple(spec.name for spec in migrated_stack.candidate_order) == (
+        "root",
+    )
+    assert "migrated" not in migrated_stack.candidate_by_name
+
+    incompatible_public = TheoremSpec(
+        root.name,
+        "S 0 = S 0",
+        root.dependencies,
+        root.script,
+        root.summary,
+    )
     with pytest.raises(ValueError, match="conflict with public"):
         _assemble_quadratic_reciprocity_stack(
             all_candidates=(root,),
             owner_by_name={"root": "candidate"},
             source_rows=(),
-            public_by_name={"root": root},
+            public_by_name={"root": incompatible_public},
             root_name="root",
         )
+
+
+def test_qr_stack_rejects_unknown_and_cyclic_specs() -> None:
+    root = _spec("root")
 
     unknown = _spec("root", ("missing",))
     with pytest.raises(ValueError, match="unknown QR dependency 'missing'"):
@@ -248,7 +297,14 @@ def test_qr_pure_builder_snapshots_explicit_public_input_and_rechecks_conflicts(
     # Mutating the caller's dictionary after return cannot alter the stack.
     # A fresh build sees the changed snapshot and must perform conflict checks
     # again; the pure builder has no hidden registry or cache.
-    public[QR_ROOT_NAME] = first.candidate_by_name[QR_ROOT_NAME]
+    root = first.candidate_by_name[QR_ROOT_NAME]
+    public[QR_ROOT_NAME] = TheoremSpec(
+        root.name,
+        "0 = 0",
+        root.dependencies,
+        root.script,
+        root.summary,
+    )
     assert tuple(spec.name for spec in first.public_order) == first_public_names
     assert QR_ROOT_NAME not in first_public_names
     with pytest.raises(ValueError, match="conflict with public"):

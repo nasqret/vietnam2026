@@ -23,6 +23,7 @@ forall m a b c. (exists u v. a + m * u = b + m * v) -> exists r s. (a * c) + m *
 - [[mod_eq_mul_left]]
 - [[mod_eq_mul]]
 - [[mod_eq_cancel_coprime]]
+- [[bounded_mod_inverse_unique]]
 
 ## Verification record
 

@@ -134,8 +134,8 @@ def test_exact_qr_closure_has_complete_receipts_metrics_and_compilation() -> Non
     assert tuple(edition.by_name) == tuple(
         spec.name for _, spec in stack.combined_order
     )
-    assert edition.metrics.public_theorem_count == 240
-    assert edition.metrics.candidate_theorem_count == 317
+    assert edition.metrics.public_theorem_count == 241
+    assert edition.metrics.candidate_theorem_count == 316
     assert edition.metrics.tactic_line_count == 27_491
     assert edition.metrics.local_statement_count == 1_839
     assert edition.metrics.changed_theorem_statement_count == 506

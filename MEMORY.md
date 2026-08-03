@@ -1461,3 +1461,56 @@
   accidental corruption; they are not a hostile-same-owner security boundary.
   The focused wiring audit passes 89 tests. No optimizer or trained-model
   result follows from this prelaunch gate.
+
+## Strict HA number-theory campaign
+
+- **Campaign launch (2026-08-03):** the repository-local controlling blueprint is
+  `research/arithmetic-library/ha-number-theory-formalization-campaign-blueprint.md`,
+  1,308 lines and 77,809 bytes, with SHA-256
+  `8fd25fc3e68259e1a16c935d35dacccefa20a473cdec35f8771cb1d5d806f205`.
+  `PLAN/12_ha_number_theory_campaign.md` and
+  `research/arithmetic-library/ha-number-theory-campaign.json` reconcile that
+  blueprint with the 384-theorem public baseline. Existing public certificates
+  are reused; candidate-body replay is never treated as theorem admission.
+- **Representation freeze v1 (2026-08-03):** 11 arithmetic definitions, 45 API
+  rows, 44 distinct public theorem dependencies, and four representation
+  obligations are frozen in paired Markdown/JSON artifacts and checked against
+  live parser expansions. `BetaAt` and beta-coded folds are explicitly late
+  interoperability encodings, not the K3 pair/list/map foundation. The signed
+  component is now fixed by `HA-K3-SIGNED-1`: `2*p` encodes nonnegative `p` and
+  `2*k+1` encodes `-(k+1)`. Pair/list/map encodings remain open and must be
+  primitive recursive and independent of CRT and Goedel-beta coding.
+- **Tranche 01 proof receipt (2026-08-03):** nine isolated HA1/HA2/M1 candidates
+  close from the empty context under the intuitionistic checker: four canonical
+  remainder results, one canonical-remainder/congruence bridge, and four bounded
+  modular-inverse results including the exact iff-and-unique criterion. The root
+  certificate checks at 9,512 structural nodes, depth 70, 2,538 distinct proof
+  objects, and 126 unique `Cut` nodes; its content-stable DAG SHA-256 is
+  `c3ed07e7caef52895001332d066ae9e4ce25167c7a0cd7189f8957c9aa7dc9f3`.
+  They were first recorded as `closed_checked_candidate` and were later
+  admitted atomically without changing their specifications or receipts.
+- **Tranche 01 admission and tranche 02 local gate (2026-08-03):** the nine
+  exact factory specifications are public at append-only positions 384--392.
+  The one QR overlap, `bounded_mod_inverse_unique`, remains in candidate-factory
+  provenance but resolves as public; the QR graph is still 557 nodes/1,787
+  edges/45 layers, partitioned as 241 public and 316 candidate nodes. Three new
+  canonical-gcd candidates close from the empty context and remain nonpublic.
+  `make ha-number-theory-check` passes both manifest validators, 22 validator
+  tests, and 20 focused proof/admission
+  tests. The admission test performs two cold deterministic closures, bans DNE,
+  pins metrics and certificate digests, checks selected nearby false targets,
+  and cross-binds the nine public plus three isolated machine receipts. The
+  393-theorem snapshot has 1,830,078 nodes, 53,293 Cuts, 338 Cut-bearing
+  certificates, and ordered root
+  `539a1195df131ed3e202efa15f48bef76a8b8c757789119e2265172453aaf566`.
+  The 153-source browser application checks as release `a-9fe3f597bf8d`; no
+  staging or deployment receipt is claimed.
+- **Canonical gcd and signed boundary (2026-08-03):**
+  `canonical_gcd_exists`, `canonical_gcd_functional`, and
+  `canonical_gcd_exists_unique` close at respectively 1,280/708/2,010 nodes,
+  depths 47/35/48, and 36/20/55 Cuts, with no zero side premise and no DNE.
+  `HA-K3-SIGNED-1` freezes eight exact expanded graph predicates and their
+  hashes but claims no signed theorem. Its dependency audit forbids using the
+  existing `even_odd_exclusive_pointwise` as a K3 seed because that theorem
+  reaches division uniqueness; the next proof obligation is a K1-only parity
+  separation result.

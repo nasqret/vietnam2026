@@ -9,17 +9,18 @@
   "maximum_distinct_proof_objects": 8701,
   "maximum_proof_depth": 99,
   "maximum_proof_nodes": 73767,
-  "ordered_root_sha256": "73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b",
+  "ordered_root_sha256": "539a1195df131ed3e202efa15f48bef76a8b8c757789119e2265172453aaf566",
   "schema": "peano-library-metrics-v3",
-  "theorem_count": 384,
+  "theorem_count": 393,
   "theorems_by_layer": {
     "foundational_extension": 212,
+    "ha_number_theory_campaign": 9,
     "legacy_core": 23,
     "published_mod5_unique": 12,
     "quadratic_residue_foundation": 137
   },
-  "theorems_with_cut_nodes": 329,
-  "total_cut_nodes": 52626,
-  "total_distinct_proof_objects": 410212,
-  "total_proof_nodes": 1806923
+  "theorems_with_cut_nodes": 338,
+  "total_cut_nodes": 53293,
+  "total_distinct_proof_objects": 418589,
+  "total_proof_nodes": 1830078
 }

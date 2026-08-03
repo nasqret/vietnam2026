@@ -47,6 +47,9 @@ forall n m. n * m = m * n
 - [[mod_eq_cancel_coprime]]
 - [[beta_product_replace_balance]]
 - [[prime_bounded_nonzero_mod_inverse]]
+- [[canonical_remainders_characterize_mod_eq]]
+- [[bounded_mod_inverse_unique]]
+- [[coprime_bounded_mod_inverse]]
 
 ## Verification record
 

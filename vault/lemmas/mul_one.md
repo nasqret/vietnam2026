@@ -29,6 +29,7 @@ forall n. n * 1 = n
 - [[mod_eq_cancel_coprime]]
 - [[pow_add]]
 - [[predecessor_square_mod_one]]
+- [[bounded_mod_inverse_unique]]
 
 ## Verification record
 

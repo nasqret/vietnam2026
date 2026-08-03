@@ -14,10 +14,16 @@ quadratic-reciprocity dependency closure. It combines three ideas:
 - a Peano-specific formal-line inspector, in which tactic keywords, explicit
   theorem references, PA axioms, and stable proof-line anchors are navigable.
 
-The explorer is generated, not hand-copied. Its current scope is exactly the
-557-node dependency closure of `quadratic_reciprocity_combined`: 240 public
-ancestors and 317 unadmitted candidate ancestors, 1,787 direct edges, 45
-dependency layers, and 27,491 authored PA tactic commands.
+The explorer is generated, not hand-copied. The retained pre-migration build
+covers exactly the 557-node dependency closure of
+`quadratic_reciprocity_combined`: 240 public ancestors and 317 candidate
+specifications, 1,787 direct edges, 45 dependency layers, and 27,491 authored
+PA tactic commands. The live stack now classifies the exact-compatible
+`bounded_mod_inverse_unique` overlap as public, giving 241 public and 316
+candidate specifications with identical topology. Its current graph SHA-256 is
+`26017364ea943c4ed51a4a83f63ff0cd56b0de3686f0e0b458e7548ee84b1253`.
+Generated pages retain their historical badges until the broader release
+regeneration.
 
 ## Stable identity
 
@@ -218,7 +224,8 @@ evidence, never reconstruct it heuristically.
 Before publication, the explorer must prove all of the following mechanically:
 
 1. exact `557 / 1,787 / 45 / 27,491` topology and command counts;
-2. exact `240 public / 317 candidate` status partition;
+2. exact live `241 public / 316 candidate` status partition, with the retained
+   240/317 generated baseline explicitly labeled until regeneration;
 3. unique persistent tags and complete live-name coverage;
 4. deterministic graph, corpus, manifest, tag pages, and aliases;
 5. valid forward/reverse edges and valid formal/informal references;

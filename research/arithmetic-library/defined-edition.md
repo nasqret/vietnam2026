@@ -9,9 +9,9 @@ theorem tags, proof scripts, generated binder names, or page layouts change.
 The promotion and consolidation rules for the next authoring release are in
 [`curation-policy.md`](curation-policy.md).
 
-## Current baseline
+## Generated baseline and live classification
 
-The count baseline is the proof-explorer corpus with:
+The retained pre-migration proof-explorer corpus has:
 
 - 557 unique theorem specifications: 240 public and 317 candidate;
 - 1,787 direct dependency edges and 45 dependency layers;
@@ -19,6 +19,15 @@ The count baseline is the proof-explorer corpus with:
   `98a36450cfe1de29c20be67a1c5f65c8064e9f9eec5368ab769065f910008698`;
 - candidate-source SHA-256
   `23fd18aaff26e2c6b428949c35ab3658252c9a4c6fd3b4825a6ccd547f454db1`.
+
+The live QR stack now moves the exact-compatible
+`bounded_mod_inverse_unique` overlap from candidate to public. Its partition is
+241 public and 316 candidate specifications, and its graph SHA-256 is
+`26017364ea943c4ed51a4a83f63ff0cd56b0de3686f0e0b458e7548ee84b1253`.
+The 557 nodes, 1,787 edges, 45 layers, and candidate-source hash are unchanged.
+The generated definition-aware pages retain the baseline badges and occurrence
+receipts until the broader release regeneration; this note does not rewrite
+those artifacts.
 
 The source of theorem statements and scope labels is
 `book/_static/pa-proof-explorer/api/corpus.json`. Counts are not estimates.

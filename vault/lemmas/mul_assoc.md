@@ -46,6 +46,7 @@ forall n m k. (n * m) * k = n * (m * k)
 - [[mod_eq_cancel_coprime]]
 - [[pow_add]]
 - [[beta_product_replace_balance]]
+- [[bounded_mod_inverse_unique]]
 
 ## Verification record
 

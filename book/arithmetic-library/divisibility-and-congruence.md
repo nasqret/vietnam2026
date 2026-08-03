@@ -254,12 +254,12 @@ All 212 entries in the current post-baseline general foundational layer replay
 to closed kernel-accepted certificates and fit the live `use` limits of
 500,000 structural occurrences, 100,000 distinct proof objects, and depth 256.
 Together with the 23-entry base and twelve unique
-modular capstones and the 137-entry quadratic-residue foundation, the runtime
-has 384 checked theorems. The native
+modular capstones, the 137-entry quadratic-residue foundation, and nine
+strict-HA canonical interfaces, the runtime has 393 checked theorems. The native
 `fundamental_theorem_of_arithmetic` certificate has 73,767 nodes, depth 99,
 and 2,184 self-contained Cuts. These are build metrics, not new soundness
 assumptions; the exact certificate checks from the empty context using PA1–PA6
-and induction, with no DNE. The broader research catalog has 385 nodes: 384
+and induction, with no DNE. The broader research catalog has 394 nodes: 393
 checked entries, no planned endpoint, and one representation-blocked
 conventional integer-coefficient Bézout interface.
 

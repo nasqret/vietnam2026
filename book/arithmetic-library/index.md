@@ -9,31 +9,32 @@ Arithmetic.
 
 ```{admonition} The result in one sentence
 :class: tip
-The current runtime contains **384 closed native theorems**, including
+The current runtime contains **393 closed native theorems**, including
 factorization existence, extensional uniqueness, their combined FTA, and a
 constructive theorem producing a prime above every supplied bound. The newest
 137-theorem quadratic-reciprocity campaign now includes parity, constructive
 residue decision, finite folds, factorial and power algebra, modular units,
 sign and half-range bridges, β swap/reindex, finite pigeonhole, replacement
-balance, and exact swap-last product invariance.
+balance, and exact swap-last product invariance. The next nine entries expose
+canonical remainder, congruence, and bounded modular-inverse interfaces.
 ```
 
 <div class="pa-dashboard-metrics" aria-label="Current arithmetic library metrics">
-  <div><strong>384</strong><span>checked native theorems</span></div>
-  <div><strong>1,806,923</strong><span>structural proof occurrences</span></div>
-  <div><strong>52,626</strong><span>self-contained Cuts</span></div>
+  <div><strong>393</strong><span>checked native theorems</span></div>
+  <div><strong>1,830,078</strong><span>structural proof occurrences</span></div>
+  <div><strong>53,293</strong><span>self-contained Cuts</span></div>
   <div><strong>0</strong><span>remaining planned catalog theorems</span></div>
 </div>
 
 The generated snapshot has ordered root
-`73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
+`539a1195df131ed3e202efa15f48bef76a8b8c757789119e2265172453aaf566`.
 Every entry is reconstructed from its authored script and checked from the
 empty context. Names, summaries and hashes organize the library; none of them
 grant proof authority.
 
 ## The mathematical metro map
 
-The exact dependency graph has 384 vertices and 1,038 edges and is useful to machines, but a
+The exact dependency graph has 393 vertices and 1,070 edges and is useful to machines, but a
 human first needs the stations. Each box below is a link into the guided tour.
 
 <nav class="pa-roadmap" aria-label="Arithmetic dependency roadmap">
@@ -52,7 +53,7 @@ human first needs the stations. Each box below is a link into the guided tour.
 The exact generated graph remains available as an immutable
 [`dependency-graph.mmd`](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/dependency-graph.mmd).
 The {doc}`interactive theorem atlas <theorem-atlas>` gives a readable local
-neighborhood instead of attempting to draw all 1,038 edges at once. The
+neighborhood instead of attempting to draw all 1,070 edges at once. The
 {doc}`native PA proof explorer <proof-explorer>` adds permanent theorem tags,
 numbered tactic-line targets, and the larger quadratic-reciprocity closure.
 Its parallel {doc}`definition-aware edition <defined-proof-explorer>` renders

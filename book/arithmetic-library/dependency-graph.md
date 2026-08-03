@@ -119,13 +119,22 @@ exact dependency record.
 ## Proof status remains visible
 
 Node color and the details panel preserve the same status distinctions as the
-{doc}`proof explorer <proof-explorer>`. The closure contains 240 public closed
-theorems and 317 candidate specifications. A `candidate_body_checked` node
-has an independently kernel-checked dependency-curried body, but is not thereby
-publicly admitted. PA00FW is `pending_layered_closure`: its complete layered
-closed certificate still has to pass the WMI and release admission gates.
-A path, graph hash, or green body-check badge supplies provenance, never an
-axiom or theorem authority.
+{doc}`proof explorer <proof-explorer>`. The live closure contains 241 public
+closed theorems and 316 candidate specifications: 315 body-checked proper
+candidate ancestors and the pending root. `bounded_mod_inverse_unique` is the
+one exact-compatible public migration; its candidate-factory specification and
+owner remain recorded as provenance, but its reachable-graph scope is public.
+A `candidate_body_checked` node has an independently kernel-checked
+dependency-curried body, but is not thereby publicly admitted. PA00FW is
+`pending_layered_closure`: its complete layered closed certificate still has
+to pass the WMI and release admission gates. The current graph receipt is
+`26017364ea943c4ed51a4a83f63ff0cd56b0de3686f0e0b458e7548ee84b1253`;
+the 557 nodes, 1,787 edges and 45 layers are unchanged.
+
+The embedded generated pages remain the labeled pre-migration explorer
+snapshot until the broader release regeneration, so they may still display
+the historical 240/317 badge split. A path, graph hash, or green body-check
+badge supplies provenance, never an axiom or theorem authority.
 
 For the exact statements and numbered tactic scripts, use the
 {doc}`native PA proof explorer <proof-explorer>`. For the language and trust

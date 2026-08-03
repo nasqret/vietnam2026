@@ -65,14 +65,14 @@ FACTORY_MANIFEST: tuple[tuple[str, str], ...] = tuple(
 
 EXPECTED_FACTORY_COUNT = 84
 EXPECTED_FACTORY_OUTPUT_COUNT = 346
-EXPECTED_CANDIDATE_ANCESTOR_COUNT = 317
-EXPECTED_PUBLIC_ANCESTOR_COUNT = 240
+EXPECTED_CANDIDATE_ANCESTOR_COUNT = 316
+EXPECTED_PUBLIC_ANCESTOR_COUNT = 241
 EXPECTED_TOTAL_GRAPH_COUNT = 557
 
 # Filled from the lightweight static audit.  Both cover theorem statements,
 # scripts, ordered dependencies, and (for the latter) every isolated source.
 EXPECTED_GRAPH_SHA256 = (
-    "98a36450cfe1de29c20be67a1c5f65c8064e9f9eec5368ab769065f910008698"
+    "26017364ea943c4ed51a4a83f63ff0cd56b0de3686f0e0b458e7548ee84b1253"
 )
 EXPECTED_SOURCE_SHA256 = (
     "23fd18aaff26e2c6b428949c35ab3658252c9a4c6fd3b4825a6ccd547f454db1"
@@ -442,10 +442,17 @@ def test_quadratic_reciprocity_closure_manifest_is_exact_deterministic_and_sourc
     registry_source = _REGISTRY_SOURCE.read_text(encoding="utf-8")
     core = _specs_by_name()
     assert all(spec.name not in core for spec in first.candidate_order)
-    assert all(
-        module_name not in registry_source
+    migrated_name = "bounded_mod_inverse_unique"
+    migrated_owner = "wilson_inverse_point_candidate"
+    assert first.all_candidate_by_name[migrated_name] == core[migrated_name]
+    assert first.owner_by_name[migrated_name] == migrated_owner
+    assert migrated_name not in first.candidate_by_name
+    assert migrated_name in {spec.name for spec in first.public_order}
+    assert {
+        module_name
         for module_name, _ in FACTORY_MANIFEST
-    )
+        if module_name in registry_source
+    } == {migrated_owner}
     assert {
         first.owner_by_name[spec.name] for spec in first.candidate_order
     } == {module_name for module_name, _ in FACTORY_MANIFEST}

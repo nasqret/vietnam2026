@@ -384,6 +384,15 @@ flowchart TD
   beta_reindex_alignment_swap_last[beta_reindex_alignment_swap_last]
   prime_is_succ_succ[prime_is_succ_succ]
   prime_bounded_nonzero_mod_inverse[prime_bounded_nonzero_mod_inverse]
+  canonical_remainder_exists[canonical_remainder_exists]
+  canonical_remainder_functional[canonical_remainder_functional]
+  canonical_remainder_zero_impossible[canonical_remainder_zero_impossible]
+  canonical_remainder_exists_unique[canonical_remainder_exists_unique]
+  canonical_remainders_characterize_mod_eq[canonical_remainders_characterize_mod_eq]
+  bounded_mod_inverse_unique[bounded_mod_inverse_unique]
+  coprime_bounded_mod_inverse[coprime_bounded_mod_inverse]
+  mod_inverse_implies_coprime[mod_inverse_implies_coprime]
+  coprime_iff_unique_bounded_mod_inverse[coprime_iff_unique_bounded_mod_inverse]
   zero_add --> add_comm
   add_succ_left --> add_comm
   add_comm --> mul_succ_left
@@ -1422,3 +1431,35 @@ flowchart TD
   mod_eq_trans --> prime_bounded_nonzero_mod_inverse
   mod_eq_bounded_unique --> prime_bounded_nonzero_mod_inverse
   succ_ne_zero --> prime_bounded_nonzero_mod_inverse
+  division_remainder_exists --> canonical_remainder_exists
+  division_remainder_unique --> canonical_remainder_functional
+  succ_ne_zero --> canonical_remainder_zero_impossible
+  canonical_remainder_exists --> canonical_remainder_exists_unique
+  canonical_remainder_functional --> canonical_remainder_exists_unique
+  mul_comm --> canonical_remainders_characterize_mod_eq
+  remainder_decomposition_to_mod_eq --> canonical_remainders_characterize_mod_eq
+  mod_eq_symm --> canonical_remainders_characterize_mod_eq
+  mod_eq_trans --> canonical_remainders_characterize_mod_eq
+  mod_eq_bounded_unique --> canonical_remainders_characterize_mod_eq
+  mod_eq_symm --> bounded_mod_inverse_unique
+  mod_eq_mul_left --> bounded_mod_inverse_unique
+  mod_eq_mul_right --> bounded_mod_inverse_unique
+  mul_assoc --> bounded_mod_inverse_unique
+  mul_comm --> bounded_mod_inverse_unique
+  mul_one --> bounded_mod_inverse_unique
+  one_mul --> bounded_mod_inverse_unique
+  mod_eq_trans --> bounded_mod_inverse_unique
+  mod_eq_bounded_unique --> bounded_mod_inverse_unique
+  canonical_remainder_exists --> coprime_bounded_mod_inverse
+  coprime_mod_inverse --> coprime_bounded_mod_inverse
+  mul_comm --> coprime_bounded_mod_inverse
+  remainder_decomposition_to_mod_eq --> coprime_bounded_mod_inverse
+  mod_eq_mul_left --> coprime_bounded_mod_inverse
+  mod_eq_symm --> coprime_bounded_mod_inverse
+  mod_eq_trans --> coprime_bounded_mod_inverse
+  common_divisor_divides_balanced_result --> mod_inverse_implies_coprime
+  zero_add --> mod_inverse_implies_coprime
+  divisor_one --> mod_inverse_implies_coprime
+  coprime_bounded_mod_inverse --> coprime_iff_unique_bounded_mod_inverse
+  bounded_mod_inverse_unique --> coprime_iff_unique_bounded_mod_inverse
+  mod_inverse_implies_coprime --> coprime_iff_unique_bounded_mod_inverse

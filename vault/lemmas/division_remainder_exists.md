@@ -28,6 +28,7 @@ forall m n. ~(m = 0) -> exists q r. n = m * q + r /\ S r <= m
 - [[mod_eq_decidable_nonzero]]
 - [[quadratic_residue_bounded_equiv]]
 - [[prime_bounded_nonzero_mod_inverse]]
+- [[canonical_remainder_exists]]
 
 ## Verification record
 

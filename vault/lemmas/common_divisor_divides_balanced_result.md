@@ -23,6 +23,7 @@ forall c a b d xp yp xn yn. (exists u. a = c * u) -> (exists v. b = c * v) -> a 
 ## Checked dependents
 
 - [[gauss_coprime_cancel]]
+- [[mod_inverse_implies_coprime]]
 
 ## Verification record
 

@@ -1783,13 +1783,21 @@ for the profiler and exact gates, the
 [`hotspot audit`](https://github.com/nasqret/vietnam2026/blob/agent/general-arithmetic-library/research/arithmetic-library/quadratic-reciprocity-closure-hotspots.md)
 for the lower bound, and the
 [`layered design`](https://github.com/nasqret/vietnam2026/blob/agent/general-arithmetic-library/research/arithmetic-library/layered-cut-bundle.md)
-for the unchanged-kernel compiler. If the WMI gates pass, the separate
+for the unchanged-kernel compiler. The linked admission design originally
+froze the pre-overlap 317-candidate state. The strict-HA campaign has since
+admitted the exact Wilson `bounded_mod_inverse_unique` specification, so the
+live QR partition is 241 public / 316 candidate and the remaining enrollment
+is 315 proper candidate ancestors plus the root. If the WMI gates pass, the
+separate
 [`public-admission design`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/quadratic-reciprocity-admission-path.md)
-specifies how to enroll exactly 316 proper ancestors plus the root without an
+specifies how to enroll that remaining order without an
 import cycle, recursive fallback, or theorem-name authority. The companion
 [`test-migration audit`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/quadratic-reciprocity-test-migration.md)
-pins the 317-enrolled/29-omitted partition and identifies every candidate test
-whose pre-admission absence assumption must change in the enrollment commit.
+retains the historical 317-enrolled/29-omitted partition and identifies every
+candidate test whose pre-admission absence assumption must change in the full
+enrollment commit. The live factory partition is
+$346=316+1+29$: remaining candidates, the public migration, and omitted
+non-ancestors.
 
 ## Campaign checkpoints
 

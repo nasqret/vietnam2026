@@ -45,6 +45,7 @@ from peano_lab.library.theorems import (  # noqa: E402
     FINITE_SUM_THEOREMS,
     GAUSS_SIGN_BRIDGE_THEOREMS,
     GAUSS_HALF_RANGE_THEOREMS,
+    HA_NUMBER_THEORY_TRANCHE01_THEOREMS,
     MOD5_THEOREMS,
     PARITY_THEOREMS,
     POWER_ALGEBRA_THEOREMS,
@@ -79,6 +80,10 @@ THEOREM_SOURCES = (
     PY_ROOT / "peano_lab" / "library" / "qr_bounded_units.py",
     PY_ROOT / "peano_lab" / "library" / "qr_prime_units.py",
     PY_ROOT / "peano_lab" / "library" / "qr_small_moduli.py",
+    PY_ROOT / "peano_lab" / "library" / "ha_canonical_remainder_candidate.py",
+    PY_ROOT / "peano_lab" / "library" / "ha_canonical_congruence_candidate.py",
+    PY_ROOT / "peano_lab" / "library" / "wilson_inverse_point_candidate.py",
+    PY_ROOT / "peano_lab" / "library" / "ha_modular_inverse_candidate.py",
 )
 
 
@@ -117,6 +122,7 @@ def build_payloads() -> dict[str, str]:
         "foundational_extension": 0,
         "published_mod5_unique": 0,
         "quadratic_residue_foundation": 0,
+        "ha_number_theory_campaign": 0,
     }
     foundational_names = {
         "eq_symm",
@@ -358,6 +364,9 @@ def build_payloads() -> dict[str, str]:
             + QR_BOUNDED_UNIT_THEOREMS
         )
     }
+    ha_number_theory_campaign_names = {
+        spec.name for spec in HA_NUMBER_THEORY_TRANCHE01_THEOREMS
+    }
 
     for index, spec in enumerate(THEOREMS):
         checked = replay(spec.name)
@@ -381,6 +390,8 @@ def build_payloads() -> dict[str, str]:
             layer = "foundational_extension"
         elif spec.name in published_mod5_unique_names:
             layer = "published_mod5_unique"
+        elif spec.name in ha_number_theory_campaign_names:
+            layer = "ha_number_theory_campaign"
         elif spec.name in quadratic_residue_names:
             layer = "quadratic_residue_foundation"
         else:

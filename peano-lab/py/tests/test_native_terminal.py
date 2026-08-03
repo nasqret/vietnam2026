@@ -42,12 +42,12 @@ def _load_native_shell():
 def test_native_version_and_library_inventory_are_current() -> None:
     version = _run("--version")
     assert version.returncode == 0
-    assert version.stdout == "Peano Lab native shell · 384 theorem specifications\n"
+    assert version.stdout == "Peano Lab native shell · 393 theorem specifications\n"
     assert version.stderr == ""
 
     inventory = _run("-c", "pa lib")
     assert inventory.returncode == 0
-    assert "384 scripted theorems" in inventory.stdout
+    assert "393 scripted theorems" in inventory.stdout
     assert "mul_one" in inventory.stdout
     assert "prime_bounded_nonzero_mod_inverse" in inventory.stdout
     assert inventory.stderr == ""

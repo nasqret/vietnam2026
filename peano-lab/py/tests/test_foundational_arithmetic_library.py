@@ -313,6 +313,28 @@ def test_library_snapshot_records_self_contained_cut_representation() -> None:
         "proof_nodes": 500_000,
         "proof_objects": 100_000,
     }
+    assert metrics["theorems_by_layer"] == {
+        "foundational_extension": 212,
+        "ha_number_theory_campaign": 9,
+        "legacy_core": 23,
+        "published_mod5_unique": 12,
+        "quadratic_residue_foundation": 137,
+    }
+    assert [
+        row["name"]
+        for row in rows
+        if row["layer"] == "ha_number_theory_campaign"
+    ] == [
+        "canonical_remainder_exists",
+        "canonical_remainder_functional",
+        "canonical_remainder_zero_impossible",
+        "canonical_remainder_exists_unique",
+        "canonical_remainders_characterize_mod_eq",
+        "bounded_mod_inverse_unique",
+        "coprime_bounded_mod_inverse",
+        "mod_inverse_implies_coprime",
+        "coprime_iff_unique_bounded_mod_inverse",
+    ]
     assert [source["path"] for source in catalog["theorem_sources"]] == [
         "peano-lab/py/peano_lab/library/theorems.py",
         "peano-lab/py/peano_lab/library/parity.py",
@@ -333,6 +355,10 @@ def test_library_snapshot_records_self_contained_cut_representation() -> None:
         "peano-lab/py/peano_lab/library/qr_bounded_units.py",
         "peano-lab/py/peano_lab/library/qr_prime_units.py",
         "peano-lab/py/peano_lab/library/qr_small_moduli.py",
+        "peano-lab/py/peano_lab/library/ha_canonical_remainder_candidate.py",
+        "peano-lab/py/peano_lab/library/ha_canonical_congruence_candidate.py",
+        "peano-lab/py/peano_lab/library/wilson_inverse_point_candidate.py",
+        "peano-lab/py/peano_lab/library/ha_modular_inverse_candidate.py",
     ]
     assert metrics["theorems_with_cut_nodes"] == sum(
         row["cut_nodes"] > 0 for row in rows

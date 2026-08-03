@@ -651,7 +651,7 @@
     }
   ],
   "edition_identity_sha256": "9b7c7928ddd3e1930fb5eca6e6b6c4b5ce6978633f6f187525d8813c90f3ddd6",
-  "explicit_corpus_sha256": "95df7f7d096c41cc25e49217e4310451477ea5c45bf8624f67f41893693e43e1",
+  "explicit_corpus_sha256": "a3200177fb1bf53255f0404cf0441294c3411e9088ca5f6ddcdf1523a0f364b2",
   "schema": "peano-lab-pa-defined-corpus-v1",
   "theorem_count": 557,
   "theorems": [
@@ -1077,6 +1077,13 @@
         {
           "body_reference": true,
           "explicit_reference_count": 2,
+          "href": "PA00AK.html",
+          "name": "bounded_mod_inverse_unique",
+          "tag": "PA00AK"
+        },
+        {
+          "body_reference": true,
+          "explicit_reference_count": 2,
           "href": "PA0070.html",
           "name": "gauss_pointwise_signed_half_representative",
           "tag": "PA0070"
@@ -1115,13 +1122,6 @@
           "href": "PA00A3.html",
           "name": "factorial_one_value",
           "tag": "PA00A3"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 2,
-          "href": "PA00AK.html",
-          "name": "bounded_mod_inverse_unique",
-          "tag": "PA00AK"
         },
         {
           "body_reference": true,
@@ -3613,6 +3613,13 @@
         },
         {
           "body_reference": true,
+          "explicit_reference_count": 4,
+          "href": "PA00AK.html",
+          "name": "bounded_mod_inverse_unique",
+          "tag": "PA00AK"
+        },
+        {
+          "body_reference": true,
           "explicit_reference_count": 1,
           "href": "PA006C.html",
           "name": "mul_double_right",
@@ -3659,13 +3666,6 @@
           "href": "PA00A0.html",
           "name": "beta_adjacent_target_pairs_product_power",
           "tag": "PA00A0"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 4,
-          "href": "PA00AK.html",
-          "name": "bounded_mod_inverse_unique",
-          "tag": "PA00AK"
         },
         {
           "body_reference": true,
@@ -5150,6 +5150,13 @@
         },
         {
           "body_reference": true,
+          "explicit_reference_count": 1,
+          "href": "PA00AK.html",
+          "name": "bounded_mod_inverse_unique",
+          "tag": "PA00AK"
+        },
+        {
+          "body_reference": true,
           "explicit_reference_count": 2,
           "href": "PA006C.html",
           "name": "mul_double_right",
@@ -5245,13 +5252,6 @@
           "href": "PA00AJ.html",
           "name": "inverse_index_symmetric",
           "tag": "PA00AJ"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 1,
-          "href": "PA00AK.html",
-          "name": "bounded_mod_inverse_unique",
-          "tag": "PA00AK"
         },
         {
           "body_reference": true,
@@ -6884,6 +6884,13 @@
         {
           "body_reference": true,
           "explicit_reference_count": 2,
+          "href": "PA00AK.html",
+          "name": "bounded_mod_inverse_unique",
+          "tag": "PA00AK"
+        },
+        {
+          "body_reference": true,
+          "explicit_reference_count": 2,
           "href": "PA007N.html",
           "name": "beta_product_pointwise_mul_exact",
           "tag": "PA007N"
@@ -6894,13 +6901,6 @@
           "href": "PA007Q.html",
           "name": "beta_product_pointwise_scale_mod",
           "tag": "PA007Q"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 2,
-          "href": "PA00AK.html",
-          "name": "bounded_mod_inverse_unique",
-          "tag": "PA00AK"
         },
         {
           "body_reference": true,
@@ -24870,6 +24870,13 @@
         {
           "body_reference": true,
           "explicit_reference_count": 5,
+          "href": "PA00AK.html",
+          "name": "bounded_mod_inverse_unique",
+          "tag": "PA00AK"
+        },
+        {
+          "body_reference": true,
+          "explicit_reference_count": 5,
           "href": "PA008N.html",
           "name": "scaled_inverse_from_unit_inverse",
           "tag": "PA008N"
@@ -24880,13 +24887,6 @@
           "href": "PA008O.html",
           "name": "scaled_inverse_transport_right",
           "tag": "PA008O"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 5,
-          "href": "PA00AK.html",
-          "name": "bounded_mod_inverse_unique",
-          "tag": "PA00AK"
         }
       ],
       "explicit_statement": "forall m a b c. (exists u v. a + m * u = b + m * v) -> exists r s. (c * a) + m * r = (c * b) + m * s",
@@ -26419,6 +26419,13 @@
         {
           "body_reference": true,
           "explicit_reference_count": 5,
+          "href": "PA00AK.html",
+          "name": "bounded_mod_inverse_unique",
+          "tag": "PA00AK"
+        },
+        {
+          "body_reference": true,
+          "explicit_reference_count": 5,
           "href": "PA0070.html",
           "name": "gauss_pointwise_signed_half_representative",
           "tag": "PA0070"
@@ -26471,13 +26478,6 @@
           "href": "PA009C.html",
           "name": "prime_scaled_inverse_unique",
           "tag": "PA009C"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 5,
-          "href": "PA00AK.html",
-          "name": "bounded_mod_inverse_unique",
-          "tag": "PA00AK"
         },
         {
           "body_reference": true,
@@ -41938,6 +41938,13 @@
         {
           "body_reference": true,
           "explicit_reference_count": 4,
+          "href": "PA00AK.html",
+          "name": "bounded_mod_inverse_unique",
+          "tag": "PA00AK"
+        },
+        {
+          "body_reference": true,
+          "explicit_reference_count": 4,
           "href": "PA0079.html",
           "name": "prime_scaled_same_target_unique",
           "tag": "PA0079"
@@ -41969,13 +41976,6 @@
           "href": "PA009C.html",
           "name": "prime_scaled_inverse_unique",
           "tag": "PA009C"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 4,
-          "href": "PA00AK.html",
-          "name": "bounded_mod_inverse_unique",
-          "tag": "PA00AK"
         },
         {
           "body_reference": true,
@@ -54683,6 +54683,13 @@
         {
           "body_reference": true,
           "explicit_reference_count": 4,
+          "href": "PA00AK.html",
+          "name": "bounded_mod_inverse_unique",
+          "tag": "PA00AK"
+        },
+        {
+          "body_reference": true,
+          "explicit_reference_count": 4,
           "href": "PA0079.html",
           "name": "prime_scaled_same_target_unique",
           "tag": "PA0079"
@@ -54721,13 +54728,6 @@
           "href": "PA009C.html",
           "name": "prime_scaled_inverse_unique",
           "tag": "PA009C"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 4,
-          "href": "PA00AK.html",
-          "name": "bounded_mod_inverse_unique",
-          "tag": "PA00AK"
         },
         {
           "body_reference": true,
@@ -114374,6 +114374,853 @@
       "status": "public",
       "summary": "The witness-defined order is antisymmetric.",
       "tag": "PA0069"
+    },
+    {
+      "defined": {
+        "defined_script_lines": [
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "intro p"
+              }
+            ],
+            "defined_command": "intro p",
+            "expanded_command_sha256": "6754f54ec5ce5366e3d9b93834b159f75296791f75ae91da8851900e16026ffd",
+            "number": 1
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "intro x"
+              }
+            ],
+            "defined_command": "intro x",
+            "expanded_command_sha256": "727852cc0e84019aeee0e605b3833ee9bcd4d2abc203673e529dba747f5c5a0d",
+            "number": 2
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "intro y"
+              }
+            ],
+            "defined_command": "intro y",
+            "expanded_command_sha256": "85390ac44bda3124c08903df1f981e2eead2a91d5d3d503fc936003a462be0d3",
+            "number": 3
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "intro z"
+              }
+            ],
+            "defined_command": "intro z",
+            "expanded_command_sha256": "c5cf8d17b8b9e05527e01cdc14d79f0493f91d348742c41a5dd5e66009965905",
+            "number": 4
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "intro hy"
+              }
+            ],
+            "defined_command": "intro hy",
+            "expanded_command_sha256": "bfcd7c03dfff3f526d9fcc22fdff9d1d7818d6eff8f2ab92e2195e15b74dd10f",
+            "number": 5
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "intro hz"
+              }
+            ],
+            "defined_command": "intro hz",
+            "expanded_command_sha256": "75ca6490faf05dbff2df27c8d1080db11d58ea5f69ac133984e91a1a927a28a2",
+            "number": 6
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "intro hxy"
+              }
+            ],
+            "defined_command": "intro hxy",
+            "expanded_command_sha256": "1f2ff5e508743340cd3ec3077925010e8fd717ce0755d9d8ecb2c2115774ddc4",
+            "number": 7
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "intro hxz"
+              }
+            ],
+            "defined_command": "intro hxz",
+            "expanded_command_sha256": "e5c813995c48dd8440900d8512627fb7da0dd255999281a3fe6dfcdb16a93feb",
+            "number": 8
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "have hreverse : "
+              },
+              {
+                "definition": "PD0008",
+                "kind": "definition",
+                "text": "ModEq(p,1,x · z)"
+              }
+            ],
+            "defined_command": "have hreverse : ModEq(p,1,x · z)",
+            "expanded_command_sha256": "c89dff995d57d25802f905636aee7251250b083f0d1b6b8b2e519886b1b128d4",
+            "number": 9
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_symm p"
+              }
+            ],
+            "defined_command": "specialize mod_eq_symm p",
+            "expanded_command_sha256": "4b8caa0d1f2ff3706124db43e44ca253efd9746660ae0ae0a54c9bbe43d46c18",
+            "number": 10
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_symm (x * z)"
+              }
+            ],
+            "defined_command": "specialize mod_eq_symm (x * z)",
+            "expanded_command_sha256": "36978cb2b1ad1d35908794efeec092d6707d460a3c4b70b7b99ab3f6be8cee25",
+            "number": 11
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_symm 1"
+              }
+            ],
+            "defined_command": "specialize mod_eq_symm 1",
+            "expanded_command_sha256": "95929d7f2261543a28e60687824daca2d22c8787263d3ef8a342b49f76f1ef2a",
+            "number": 12
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "apply mod_eq_symm"
+              }
+            ],
+            "defined_command": "apply mod_eq_symm",
+            "expanded_command_sha256": "fb261c582161e2847853fc5241e7ac32af0768e38d024d06805cca1e3d217182",
+            "number": 13
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "exact hxz"
+              }
+            ],
+            "defined_command": "exact hxz",
+            "expanded_command_sha256": "81cda072d8b26ec4dd263959c678b9abde0df07228a85e14542e470c0905e8de",
+            "number": 14
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "have hleftscaled : "
+              },
+              {
+                "definition": "PD0008",
+                "kind": "definition",
+                "text": "ModEq(p,y · 1,y · (x · z))"
+              }
+            ],
+            "defined_command": "have hleftscaled : ModEq(p,y · 1,y · (x · z))",
+            "expanded_command_sha256": "f18e236486dafec83fa28a15b100ff135671315738ff358b892699b58125f711",
+            "number": 15
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_mul_left p"
+              }
+            ],
+            "defined_command": "specialize mod_eq_mul_left p",
+            "expanded_command_sha256": "f745cb5cdf9dab5956e50b9028150f6e74d7a5e604001818853ff4935c354106",
+            "number": 16
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_mul_left 1"
+              }
+            ],
+            "defined_command": "specialize mod_eq_mul_left 1",
+            "expanded_command_sha256": "f8ce08bb3a20afaa22e8f32de4df200be02f42caa9cae7b1dc4c8575129468a1",
+            "number": 17
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_mul_left (x * z)"
+              }
+            ],
+            "defined_command": "specialize mod_eq_mul_left (x * z)",
+            "expanded_command_sha256": "7ec0c8cec93a65bd03ec256c9930bc87e1dd318c3b049ae36a89421c10afe0ec",
+            "number": 18
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_mul_left y"
+              }
+            ],
+            "defined_command": "specialize mod_eq_mul_left y",
+            "expanded_command_sha256": "23604bc6527195623dc6a91fb0cb25e946edc05dc6276ab6ea8af6dd0d907398",
+            "number": 19
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "apply mod_eq_mul_left"
+              }
+            ],
+            "defined_command": "apply mod_eq_mul_left",
+            "expanded_command_sha256": "d02cb66b2bda76013124a55c17ed56e60cc5bda198f00b6f78a39f1dc6d0d025",
+            "number": 20
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "exact hreverse"
+              }
+            ],
+            "defined_command": "exact hreverse",
+            "expanded_command_sha256": "355ee06f09dbbf4e80c168fc5a91947dee6245645aeb26a42950c1b543d7a920",
+            "number": 21
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "have hrightscaled : "
+              },
+              {
+                "definition": "PD0008",
+                "kind": "definition",
+                "text": "ModEq(p,x · y · z,1 · z)"
+              }
+            ],
+            "defined_command": "have hrightscaled : ModEq(p,x · y · z,1 · z)",
+            "expanded_command_sha256": "66174202a2efe767688d197315dd441d72688caaef83daea21d8d60c75338ef2",
+            "number": 22
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_mul_right p"
+              }
+            ],
+            "defined_command": "specialize mod_eq_mul_right p",
+            "expanded_command_sha256": "7099e7f1eaed769cd24f07a4d7c50bb3995f963f310ed05417ab547f46dad441",
+            "number": 23
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_mul_right (x * y)"
+              }
+            ],
+            "defined_command": "specialize mod_eq_mul_right (x * y)",
+            "expanded_command_sha256": "1c8fe7ee70b52dda3e8682b65a20fd056ceac1160285e076a661158b505824bb",
+            "number": 24
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_mul_right 1"
+              }
+            ],
+            "defined_command": "specialize mod_eq_mul_right 1",
+            "expanded_command_sha256": "7490231b1267d974b18ae05019628241e44d2940a36ceb904456cc7178b5fd2a",
+            "number": 25
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_mul_right z"
+              }
+            ],
+            "defined_command": "specialize mod_eq_mul_right z",
+            "expanded_command_sha256": "80d5553505a49c176f31a9c83574ed0a2b0cb93ffe0bf22dc5689f8dbb44798c",
+            "number": 26
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "apply mod_eq_mul_right"
+              }
+            ],
+            "defined_command": "apply mod_eq_mul_right",
+            "expanded_command_sha256": "862c866df82d3a37d6ded09c37a7c40cbfff80a15c102d3ff7dc2f37533eb528",
+            "number": 27
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "exact hxy"
+              }
+            ],
+            "defined_command": "exact hxy",
+            "expanded_command_sha256": "d46707f7ac94054bf211ba7fcb0f75f3e9e58f905acc5ce3d024f1cec41f99b5",
+            "number": 28
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "have hleft : y * 1 = y"
+              }
+            ],
+            "defined_command": "have hleft : y * 1 = y",
+            "expanded_command_sha256": "02d5ee98d6e0101d6cfadccb8f7888ec0c824bbf0a7ec71254df246968bd0105",
+            "number": 29
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mul_one y"
+              }
+            ],
+            "defined_command": "specialize mul_one y",
+            "expanded_command_sha256": "b8e54993250ec88f4f3360ef016aef47051a5b2e7e7b17925d4545e0c2a36249",
+            "number": 30
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "exact mul_one"
+              }
+            ],
+            "defined_command": "exact mul_one",
+            "expanded_command_sha256": "91f3dea00f469598c8619e226d9836625245a35ad28ddc65333eeca0ce45a292",
+            "number": 31
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "have hmiddle : y * (x * z) = (x * y) * z"
+              }
+            ],
+            "defined_command": "have hmiddle : y * (x * z) = (x * y) * z",
+            "expanded_command_sha256": "2375e0436d3b0b2abc36308af2ca8a6a4ffe8ac0a9eaf13f99d78c83f9111675",
+            "number": 32
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "trans (y * x) * z"
+              }
+            ],
+            "defined_command": "trans (y * x) * z",
+            "expanded_command_sha256": "66fef5de870a0bcf4d4d73fbb5f0ecf8565a5481dbf8c36dfeb6257db58def34",
+            "number": 33
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "symm"
+              }
+            ],
+            "defined_command": "symm",
+            "expanded_command_sha256": "f97373c83b943be1711d624ac8176e49b7c19e0f5ce55ad3a0ad56d8d1aae1fa",
+            "number": 34
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mul_assoc y"
+              }
+            ],
+            "defined_command": "specialize mul_assoc y",
+            "expanded_command_sha256": "73f67a81603d4a42ee5b3c0590c97e5ffaf329ee616c2f529a357d55f043e23e",
+            "number": 35
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mul_assoc x"
+              }
+            ],
+            "defined_command": "specialize mul_assoc x",
+            "expanded_command_sha256": "3470c9038de2d01700638059c5e703ad65cc4028943ffa7e054e5ab2f892b7fc",
+            "number": 36
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mul_assoc z"
+              }
+            ],
+            "defined_command": "specialize mul_assoc z",
+            "expanded_command_sha256": "98462d5c89acec910ff901b75a327b8fa4ffa2b81708539c6f5a4bd5f6a8ed11",
+            "number": 37
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "apply mul_assoc"
+              }
+            ],
+            "defined_command": "apply mul_assoc",
+            "expanded_command_sha256": "00069197307eeef30c1c37a272d1c16708b8f42c08273a6eb632bf589e48de31",
+            "number": 38
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "congr"
+              }
+            ],
+            "defined_command": "congr",
+            "expanded_command_sha256": "092b163cac48997cb6cc327c63cda260e694055f56ff3698a70cdfda80ffbb2b",
+            "number": 39
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "apply mul_comm"
+              }
+            ],
+            "defined_command": "apply mul_comm",
+            "expanded_command_sha256": "0c45dd01bc593f6c48252d21812323811e6b491d32877a75428433326646e9b8",
+            "number": 40
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "refl"
+              }
+            ],
+            "defined_command": "refl",
+            "expanded_command_sha256": "f58405087f2e34fd51223ae7a717b5feb7693bbf89de7ff12fdcee43b9d59d8a",
+            "number": 41
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "have hright : 1 * z = z"
+              }
+            ],
+            "defined_command": "have hright : 1 * z = z",
+            "expanded_command_sha256": "ac291e1c34c963a3c227b1761fc08628e49c0685b3e72def6150d7066f1404f6",
+            "number": 42
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize one_mul z"
+              }
+            ],
+            "defined_command": "specialize one_mul z",
+            "expanded_command_sha256": "14036dc983418d445812167d8162f141dfe16fe9b6cb20f47b66bee7b828b207",
+            "number": 43
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "exact one_mul"
+              }
+            ],
+            "defined_command": "exact one_mul",
+            "expanded_command_sha256": "a521c4342ca6a101744b68511ede54f8dd50ed31c1dc948d25020ed2c4aff006",
+            "number": 44
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "rewrite hleft at hleftscaled"
+              }
+            ],
+            "defined_command": "rewrite hleft at hleftscaled",
+            "expanded_command_sha256": "1656cf64f4cebc97dcd2220df74d088e6f1c2218279fa8a819e522e26b1df6ae",
+            "number": 45
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "rewrite hmiddle at hleftscaled"
+              }
+            ],
+            "defined_command": "rewrite hmiddle at hleftscaled",
+            "expanded_command_sha256": "c77a887b48cc5f5600d84fbbd7d59b3f813b64f3d2fb7206ec8a4551a8cd56ca",
+            "number": 46
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "rewrite hright at hrightscaled"
+              }
+            ],
+            "defined_command": "rewrite hright at hrightscaled",
+            "expanded_command_sha256": "c9cacdd492e4f2d7329fa958fdc83829da498531b14c43778c1d0c5f72a9c615",
+            "number": 47
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "have hyz : "
+              },
+              {
+                "definition": "PD0008",
+                "kind": "definition",
+                "text": "ModEq(p,y,z)"
+              }
+            ],
+            "defined_command": "have hyz : ModEq(p,y,z)",
+            "expanded_command_sha256": "67fb8dd274ec1681a6f34e1177351be8befc8e58af2d845c6def2c637ddf9f6d",
+            "number": 48
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_trans p"
+              }
+            ],
+            "defined_command": "specialize mod_eq_trans p",
+            "expanded_command_sha256": "a67b651086e8b27f9c5282fcf2e2205a9bd33a08e977586b72a0a8c0079a8eaa",
+            "number": 49
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_trans y"
+              }
+            ],
+            "defined_command": "specialize mod_eq_trans y",
+            "expanded_command_sha256": "66a1b72b85bb6e8fc85a0e029da95f1c9926dccbd86c1ab0b7593452a1686aa0",
+            "number": 50
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_trans ((x * y) * z)"
+              }
+            ],
+            "defined_command": "specialize mod_eq_trans ((x * y) * z)",
+            "expanded_command_sha256": "b04a17946565566c15e277424ef22ba2bdc30a1031d8b91b1ccf8aee43c67399",
+            "number": 51
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_trans z"
+              }
+            ],
+            "defined_command": "specialize mod_eq_trans z",
+            "expanded_command_sha256": "5e08f44ed1a8f8d8436266127aca10c8fb5b0fd723851ff26b322850d8295cae",
+            "number": 52
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "apply mod_eq_trans"
+              }
+            ],
+            "defined_command": "apply mod_eq_trans",
+            "expanded_command_sha256": "c9ba0c68fb69bf5597f321a42139245a84bd10edb8959def6a437f097083420c",
+            "number": 53
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "exact hleftscaled"
+              }
+            ],
+            "defined_command": "exact hleftscaled",
+            "expanded_command_sha256": "6ffadcebd7e01d5ced5878a3bbf2f5cdef0468482619ad5198d8e49bd41804b8",
+            "number": 54
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "exact hrightscaled"
+              }
+            ],
+            "defined_command": "exact hrightscaled",
+            "expanded_command_sha256": "21aba8b229a33cf6645663e6680fd8507def653de8d5815473950b3990c27e10",
+            "number": 55
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_bounded_unique p"
+              }
+            ],
+            "defined_command": "specialize mod_eq_bounded_unique p",
+            "expanded_command_sha256": "90cf1bed19c6fe80f292cd9f64c70e2a3e6ab82ea1297d82704503ac420d1cae",
+            "number": 56
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_bounded_unique y"
+              }
+            ],
+            "defined_command": "specialize mod_eq_bounded_unique y",
+            "expanded_command_sha256": "48fc09a24f78d8d43fc86cebc88ec682f783a0e7dcefde38e8c54d23e425df56",
+            "number": 57
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "specialize mod_eq_bounded_unique z"
+              }
+            ],
+            "defined_command": "specialize mod_eq_bounded_unique z",
+            "expanded_command_sha256": "a6be8fbc3d136b54077a8b3675012eb673c0633b823b7d92f607309eaa342174",
+            "number": 58
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "apply mod_eq_bounded_unique"
+              }
+            ],
+            "defined_command": "apply mod_eq_bounded_unique",
+            "expanded_command_sha256": "9cb3baa877d3401ca2283b19f76f05d2fdfaa786c223aad8dd801c8647317a6c",
+            "number": 59
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "exact hy"
+              }
+            ],
+            "defined_command": "exact hy",
+            "expanded_command_sha256": "5088a32eabea2e75b7e26e342cc75ebb2a7788e64a60064017c9476437cad0a1",
+            "number": 60
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "exact hz"
+              }
+            ],
+            "defined_command": "exact hz",
+            "expanded_command_sha256": "b5af77cd27bc15ee173ef9b48d9304e6adee490ff1b1db4ca4cd191bae37cf56",
+            "number": 61
+          },
+          {
+            "command_parts": [
+              {
+                "kind": "text",
+                "text": "exact hyz"
+              }
+            ],
+            "defined_command": "exact hyz",
+            "expanded_command_sha256": "55ab4cf0557758798bcb10695c234d92bcb37d3c011be82b2352bd8c59be02c9",
+            "number": 62
+          }
+        ],
+        "defined_statement": "∀ p. ∀ x. ∀ y. ∀ z. Lt(y,p) → Lt(z,p) → BalancedInverse(p,x,y) → BalancedInverse(p,x,z) → y = z",
+        "definition_uses": {
+          "PD0002": 2,
+          "PD0008": 4,
+          "PD0031": 2
+        },
+        "expanded_statement_sha256": "d4545da3327b3ba077e2ecf511b4f0b00ea44c3afdc5af430ae6495f659e3b99",
+        "name": "bounded_mod_inverse_unique",
+        "script_definition_uses": {
+          "PD0008": 4
+        },
+        "statement_definition_uses": {
+          "PD0002": 2,
+          "PD0031": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ p. ∀ x. ∀ y. ∀ z. "
+          },
+          {
+            "definition": "PD0002",
+            "kind": "definition",
+            "text": "Lt(y,p)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0002",
+            "kind": "definition",
+            "text": "Lt(z,p)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0031",
+            "kind": "definition",
+            "text": "BalancedInverse(p,x,y)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0031",
+            "kind": "definition",
+            "text": "BalancedInverse(p,x,z)"
+          },
+          {
+            "kind": "text",
+            "text": " → y = z"
+          }
+        ]
+      },
+      "dependencies": [
+        {
+          "body_reference": true,
+          "explicit_reference_count": 4,
+          "href": "PA003L.html",
+          "name": "mod_eq_symm",
+          "tag": "PA003L"
+        },
+        {
+          "body_reference": true,
+          "explicit_reference_count": 5,
+          "href": "PA0020.html",
+          "name": "mod_eq_mul_left",
+          "tag": "PA0020"
+        },
+        {
+          "body_reference": true,
+          "explicit_reference_count": 5,
+          "href": "PA001Y.html",
+          "name": "mod_eq_mul_right",
+          "tag": "PA001Y"
+        },
+        {
+          "body_reference": true,
+          "explicit_reference_count": 4,
+          "href": "PA000B.html",
+          "name": "mul_assoc",
+          "tag": "PA000B"
+        },
+        {
+          "body_reference": true,
+          "explicit_reference_count": 1,
+          "href": "PA000H.html",
+          "name": "mul_comm",
+          "tag": "PA000H"
+        },
+        {
+          "body_reference": true,
+          "explicit_reference_count": 2,
+          "href": "PA0002.html",
+          "name": "mul_one",
+          "tag": "PA0002"
+        },
+        {
+          "body_reference": true,
+          "explicit_reference_count": 2,
+          "href": "PA000M.html",
+          "name": "one_mul",
+          "tag": "PA000M"
+        },
+        {
+          "body_reference": true,
+          "explicit_reference_count": 5,
+          "href": "PA0024.html",
+          "name": "mod_eq_trans",
+          "tag": "PA0024"
+        },
+        {
+          "body_reference": true,
+          "explicit_reference_count": 4,
+          "href": "PA002U.html",
+          "name": "mod_eq_bounded_unique",
+          "tag": "PA002U"
+        }
+      ],
+      "dependents": [
+        {
+          "body_reference": true,
+          "explicit_reference_count": 5,
+          "href": "PA00AL.html",
+          "name": "bounded_inverse_index_unique",
+          "tag": "PA00AL"
+        }
+      ],
+      "explicit_statement": "forall p x y z. (exists wip_strict_gap_unique_y_bound. wip_strict_gap_unique_y_bound + S y = p) -> (exists wip_strict_gap_unique_z_bound. wip_strict_gap_unique_z_bound + S z = p) -> (exists wip_mod_left_unique_xy wip_mod_right_unique_xy. x * y + p * wip_mod_left_unique_xy = 1 + p * wip_mod_right_unique_xy) -> (exists wip_mod_left_unique_xz wip_mod_right_unique_xz. x * z + p * wip_mod_left_unique_xz = 1 + p * wip_mod_right_unique_xz) -> y = z",
+      "explicit_statement_sha256": "d4545da3327b3ba077e2ecf511b4f0b00ea44c3afdc5af430ae6495f659e3b99",
+      "layer": 7,
+      "name": "bounded_mod_inverse_unique",
+      "scope": "public",
+      "status": "public",
+      "summary": "Two bounded inverses of the same residue are equal.",
+      "tag": "PA00AK"
     },
     {
       "defined": {
@@ -233059,853 +233906,6 @@
       "status": "candidate_body_checked",
       "summary": "The bounded inverse-index relation is symmetric.",
       "tag": "PA00AJ"
-    },
-    {
-      "defined": {
-        "defined_script_lines": [
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "intro p"
-              }
-            ],
-            "defined_command": "intro p",
-            "expanded_command_sha256": "6754f54ec5ce5366e3d9b93834b159f75296791f75ae91da8851900e16026ffd",
-            "number": 1
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "intro x"
-              }
-            ],
-            "defined_command": "intro x",
-            "expanded_command_sha256": "727852cc0e84019aeee0e605b3833ee9bcd4d2abc203673e529dba747f5c5a0d",
-            "number": 2
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "intro y"
-              }
-            ],
-            "defined_command": "intro y",
-            "expanded_command_sha256": "85390ac44bda3124c08903df1f981e2eead2a91d5d3d503fc936003a462be0d3",
-            "number": 3
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "intro z"
-              }
-            ],
-            "defined_command": "intro z",
-            "expanded_command_sha256": "c5cf8d17b8b9e05527e01cdc14d79f0493f91d348742c41a5dd5e66009965905",
-            "number": 4
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "intro hy"
-              }
-            ],
-            "defined_command": "intro hy",
-            "expanded_command_sha256": "bfcd7c03dfff3f526d9fcc22fdff9d1d7818d6eff8f2ab92e2195e15b74dd10f",
-            "number": 5
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "intro hz"
-              }
-            ],
-            "defined_command": "intro hz",
-            "expanded_command_sha256": "75ca6490faf05dbff2df27c8d1080db11d58ea5f69ac133984e91a1a927a28a2",
-            "number": 6
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "intro hxy"
-              }
-            ],
-            "defined_command": "intro hxy",
-            "expanded_command_sha256": "1f2ff5e508743340cd3ec3077925010e8fd717ce0755d9d8ecb2c2115774ddc4",
-            "number": 7
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "intro hxz"
-              }
-            ],
-            "defined_command": "intro hxz",
-            "expanded_command_sha256": "e5c813995c48dd8440900d8512627fb7da0dd255999281a3fe6dfcdb16a93feb",
-            "number": 8
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "have hreverse : "
-              },
-              {
-                "definition": "PD0008",
-                "kind": "definition",
-                "text": "ModEq(p,1,x · z)"
-              }
-            ],
-            "defined_command": "have hreverse : ModEq(p,1,x · z)",
-            "expanded_command_sha256": "c89dff995d57d25802f905636aee7251250b083f0d1b6b8b2e519886b1b128d4",
-            "number": 9
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_symm p"
-              }
-            ],
-            "defined_command": "specialize mod_eq_symm p",
-            "expanded_command_sha256": "4b8caa0d1f2ff3706124db43e44ca253efd9746660ae0ae0a54c9bbe43d46c18",
-            "number": 10
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_symm (x * z)"
-              }
-            ],
-            "defined_command": "specialize mod_eq_symm (x * z)",
-            "expanded_command_sha256": "36978cb2b1ad1d35908794efeec092d6707d460a3c4b70b7b99ab3f6be8cee25",
-            "number": 11
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_symm 1"
-              }
-            ],
-            "defined_command": "specialize mod_eq_symm 1",
-            "expanded_command_sha256": "95929d7f2261543a28e60687824daca2d22c8787263d3ef8a342b49f76f1ef2a",
-            "number": 12
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "apply mod_eq_symm"
-              }
-            ],
-            "defined_command": "apply mod_eq_symm",
-            "expanded_command_sha256": "fb261c582161e2847853fc5241e7ac32af0768e38d024d06805cca1e3d217182",
-            "number": 13
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "exact hxz"
-              }
-            ],
-            "defined_command": "exact hxz",
-            "expanded_command_sha256": "81cda072d8b26ec4dd263959c678b9abde0df07228a85e14542e470c0905e8de",
-            "number": 14
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "have hleftscaled : "
-              },
-              {
-                "definition": "PD0008",
-                "kind": "definition",
-                "text": "ModEq(p,y · 1,y · (x · z))"
-              }
-            ],
-            "defined_command": "have hleftscaled : ModEq(p,y · 1,y · (x · z))",
-            "expanded_command_sha256": "f18e236486dafec83fa28a15b100ff135671315738ff358b892699b58125f711",
-            "number": 15
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_mul_left p"
-              }
-            ],
-            "defined_command": "specialize mod_eq_mul_left p",
-            "expanded_command_sha256": "f745cb5cdf9dab5956e50b9028150f6e74d7a5e604001818853ff4935c354106",
-            "number": 16
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_mul_left 1"
-              }
-            ],
-            "defined_command": "specialize mod_eq_mul_left 1",
-            "expanded_command_sha256": "f8ce08bb3a20afaa22e8f32de4df200be02f42caa9cae7b1dc4c8575129468a1",
-            "number": 17
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_mul_left (x * z)"
-              }
-            ],
-            "defined_command": "specialize mod_eq_mul_left (x * z)",
-            "expanded_command_sha256": "7ec0c8cec93a65bd03ec256c9930bc87e1dd318c3b049ae36a89421c10afe0ec",
-            "number": 18
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_mul_left y"
-              }
-            ],
-            "defined_command": "specialize mod_eq_mul_left y",
-            "expanded_command_sha256": "23604bc6527195623dc6a91fb0cb25e946edc05dc6276ab6ea8af6dd0d907398",
-            "number": 19
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "apply mod_eq_mul_left"
-              }
-            ],
-            "defined_command": "apply mod_eq_mul_left",
-            "expanded_command_sha256": "d02cb66b2bda76013124a55c17ed56e60cc5bda198f00b6f78a39f1dc6d0d025",
-            "number": 20
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "exact hreverse"
-              }
-            ],
-            "defined_command": "exact hreverse",
-            "expanded_command_sha256": "355ee06f09dbbf4e80c168fc5a91947dee6245645aeb26a42950c1b543d7a920",
-            "number": 21
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "have hrightscaled : "
-              },
-              {
-                "definition": "PD0008",
-                "kind": "definition",
-                "text": "ModEq(p,x · y · z,1 · z)"
-              }
-            ],
-            "defined_command": "have hrightscaled : ModEq(p,x · y · z,1 · z)",
-            "expanded_command_sha256": "66174202a2efe767688d197315dd441d72688caaef83daea21d8d60c75338ef2",
-            "number": 22
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_mul_right p"
-              }
-            ],
-            "defined_command": "specialize mod_eq_mul_right p",
-            "expanded_command_sha256": "7099e7f1eaed769cd24f07a4d7c50bb3995f963f310ed05417ab547f46dad441",
-            "number": 23
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_mul_right (x * y)"
-              }
-            ],
-            "defined_command": "specialize mod_eq_mul_right (x * y)",
-            "expanded_command_sha256": "1c8fe7ee70b52dda3e8682b65a20fd056ceac1160285e076a661158b505824bb",
-            "number": 24
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_mul_right 1"
-              }
-            ],
-            "defined_command": "specialize mod_eq_mul_right 1",
-            "expanded_command_sha256": "7490231b1267d974b18ae05019628241e44d2940a36ceb904456cc7178b5fd2a",
-            "number": 25
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_mul_right z"
-              }
-            ],
-            "defined_command": "specialize mod_eq_mul_right z",
-            "expanded_command_sha256": "80d5553505a49c176f31a9c83574ed0a2b0cb93ffe0bf22dc5689f8dbb44798c",
-            "number": 26
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "apply mod_eq_mul_right"
-              }
-            ],
-            "defined_command": "apply mod_eq_mul_right",
-            "expanded_command_sha256": "862c866df82d3a37d6ded09c37a7c40cbfff80a15c102d3ff7dc2f37533eb528",
-            "number": 27
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "exact hxy"
-              }
-            ],
-            "defined_command": "exact hxy",
-            "expanded_command_sha256": "d46707f7ac94054bf211ba7fcb0f75f3e9e58f905acc5ce3d024f1cec41f99b5",
-            "number": 28
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "have hleft : y * 1 = y"
-              }
-            ],
-            "defined_command": "have hleft : y * 1 = y",
-            "expanded_command_sha256": "02d5ee98d6e0101d6cfadccb8f7888ec0c824bbf0a7ec71254df246968bd0105",
-            "number": 29
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mul_one y"
-              }
-            ],
-            "defined_command": "specialize mul_one y",
-            "expanded_command_sha256": "b8e54993250ec88f4f3360ef016aef47051a5b2e7e7b17925d4545e0c2a36249",
-            "number": 30
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "exact mul_one"
-              }
-            ],
-            "defined_command": "exact mul_one",
-            "expanded_command_sha256": "91f3dea00f469598c8619e226d9836625245a35ad28ddc65333eeca0ce45a292",
-            "number": 31
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "have hmiddle : y * (x * z) = (x * y) * z"
-              }
-            ],
-            "defined_command": "have hmiddle : y * (x * z) = (x * y) * z",
-            "expanded_command_sha256": "2375e0436d3b0b2abc36308af2ca8a6a4ffe8ac0a9eaf13f99d78c83f9111675",
-            "number": 32
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "trans (y * x) * z"
-              }
-            ],
-            "defined_command": "trans (y * x) * z",
-            "expanded_command_sha256": "66fef5de870a0bcf4d4d73fbb5f0ecf8565a5481dbf8c36dfeb6257db58def34",
-            "number": 33
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "symm"
-              }
-            ],
-            "defined_command": "symm",
-            "expanded_command_sha256": "f97373c83b943be1711d624ac8176e49b7c19e0f5ce55ad3a0ad56d8d1aae1fa",
-            "number": 34
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mul_assoc y"
-              }
-            ],
-            "defined_command": "specialize mul_assoc y",
-            "expanded_command_sha256": "73f67a81603d4a42ee5b3c0590c97e5ffaf329ee616c2f529a357d55f043e23e",
-            "number": 35
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mul_assoc x"
-              }
-            ],
-            "defined_command": "specialize mul_assoc x",
-            "expanded_command_sha256": "3470c9038de2d01700638059c5e703ad65cc4028943ffa7e054e5ab2f892b7fc",
-            "number": 36
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mul_assoc z"
-              }
-            ],
-            "defined_command": "specialize mul_assoc z",
-            "expanded_command_sha256": "98462d5c89acec910ff901b75a327b8fa4ffa2b81708539c6f5a4bd5f6a8ed11",
-            "number": 37
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "apply mul_assoc"
-              }
-            ],
-            "defined_command": "apply mul_assoc",
-            "expanded_command_sha256": "00069197307eeef30c1c37a272d1c16708b8f42c08273a6eb632bf589e48de31",
-            "number": 38
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "congr"
-              }
-            ],
-            "defined_command": "congr",
-            "expanded_command_sha256": "092b163cac48997cb6cc327c63cda260e694055f56ff3698a70cdfda80ffbb2b",
-            "number": 39
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "apply mul_comm"
-              }
-            ],
-            "defined_command": "apply mul_comm",
-            "expanded_command_sha256": "0c45dd01bc593f6c48252d21812323811e6b491d32877a75428433326646e9b8",
-            "number": 40
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "refl"
-              }
-            ],
-            "defined_command": "refl",
-            "expanded_command_sha256": "f58405087f2e34fd51223ae7a717b5feb7693bbf89de7ff12fdcee43b9d59d8a",
-            "number": 41
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "have hright : 1 * z = z"
-              }
-            ],
-            "defined_command": "have hright : 1 * z = z",
-            "expanded_command_sha256": "ac291e1c34c963a3c227b1761fc08628e49c0685b3e72def6150d7066f1404f6",
-            "number": 42
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize one_mul z"
-              }
-            ],
-            "defined_command": "specialize one_mul z",
-            "expanded_command_sha256": "14036dc983418d445812167d8162f141dfe16fe9b6cb20f47b66bee7b828b207",
-            "number": 43
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "exact one_mul"
-              }
-            ],
-            "defined_command": "exact one_mul",
-            "expanded_command_sha256": "a521c4342ca6a101744b68511ede54f8dd50ed31c1dc948d25020ed2c4aff006",
-            "number": 44
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "rewrite hleft at hleftscaled"
-              }
-            ],
-            "defined_command": "rewrite hleft at hleftscaled",
-            "expanded_command_sha256": "1656cf64f4cebc97dcd2220df74d088e6f1c2218279fa8a819e522e26b1df6ae",
-            "number": 45
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "rewrite hmiddle at hleftscaled"
-              }
-            ],
-            "defined_command": "rewrite hmiddle at hleftscaled",
-            "expanded_command_sha256": "c77a887b48cc5f5600d84fbbd7d59b3f813b64f3d2fb7206ec8a4551a8cd56ca",
-            "number": 46
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "rewrite hright at hrightscaled"
-              }
-            ],
-            "defined_command": "rewrite hright at hrightscaled",
-            "expanded_command_sha256": "c9cacdd492e4f2d7329fa958fdc83829da498531b14c43778c1d0c5f72a9c615",
-            "number": 47
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "have hyz : "
-              },
-              {
-                "definition": "PD0008",
-                "kind": "definition",
-                "text": "ModEq(p,y,z)"
-              }
-            ],
-            "defined_command": "have hyz : ModEq(p,y,z)",
-            "expanded_command_sha256": "67fb8dd274ec1681a6f34e1177351be8befc8e58af2d845c6def2c637ddf9f6d",
-            "number": 48
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_trans p"
-              }
-            ],
-            "defined_command": "specialize mod_eq_trans p",
-            "expanded_command_sha256": "a67b651086e8b27f9c5282fcf2e2205a9bd33a08e977586b72a0a8c0079a8eaa",
-            "number": 49
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_trans y"
-              }
-            ],
-            "defined_command": "specialize mod_eq_trans y",
-            "expanded_command_sha256": "66a1b72b85bb6e8fc85a0e029da95f1c9926dccbd86c1ab0b7593452a1686aa0",
-            "number": 50
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_trans ((x * y) * z)"
-              }
-            ],
-            "defined_command": "specialize mod_eq_trans ((x * y) * z)",
-            "expanded_command_sha256": "b04a17946565566c15e277424ef22ba2bdc30a1031d8b91b1ccf8aee43c67399",
-            "number": 51
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_trans z"
-              }
-            ],
-            "defined_command": "specialize mod_eq_trans z",
-            "expanded_command_sha256": "5e08f44ed1a8f8d8436266127aca10c8fb5b0fd723851ff26b322850d8295cae",
-            "number": 52
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "apply mod_eq_trans"
-              }
-            ],
-            "defined_command": "apply mod_eq_trans",
-            "expanded_command_sha256": "c9ba0c68fb69bf5597f321a42139245a84bd10edb8959def6a437f097083420c",
-            "number": 53
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "exact hleftscaled"
-              }
-            ],
-            "defined_command": "exact hleftscaled",
-            "expanded_command_sha256": "6ffadcebd7e01d5ced5878a3bbf2f5cdef0468482619ad5198d8e49bd41804b8",
-            "number": 54
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "exact hrightscaled"
-              }
-            ],
-            "defined_command": "exact hrightscaled",
-            "expanded_command_sha256": "21aba8b229a33cf6645663e6680fd8507def653de8d5815473950b3990c27e10",
-            "number": 55
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_bounded_unique p"
-              }
-            ],
-            "defined_command": "specialize mod_eq_bounded_unique p",
-            "expanded_command_sha256": "90cf1bed19c6fe80f292cd9f64c70e2a3e6ab82ea1297d82704503ac420d1cae",
-            "number": 56
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_bounded_unique y"
-              }
-            ],
-            "defined_command": "specialize mod_eq_bounded_unique y",
-            "expanded_command_sha256": "48fc09a24f78d8d43fc86cebc88ec682f783a0e7dcefde38e8c54d23e425df56",
-            "number": 57
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "specialize mod_eq_bounded_unique z"
-              }
-            ],
-            "defined_command": "specialize mod_eq_bounded_unique z",
-            "expanded_command_sha256": "a6be8fbc3d136b54077a8b3675012eb673c0633b823b7d92f607309eaa342174",
-            "number": 58
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "apply mod_eq_bounded_unique"
-              }
-            ],
-            "defined_command": "apply mod_eq_bounded_unique",
-            "expanded_command_sha256": "9cb3baa877d3401ca2283b19f76f05d2fdfaa786c223aad8dd801c8647317a6c",
-            "number": 59
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "exact hy"
-              }
-            ],
-            "defined_command": "exact hy",
-            "expanded_command_sha256": "5088a32eabea2e75b7e26e342cc75ebb2a7788e64a60064017c9476437cad0a1",
-            "number": 60
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "exact hz"
-              }
-            ],
-            "defined_command": "exact hz",
-            "expanded_command_sha256": "b5af77cd27bc15ee173ef9b48d9304e6adee490ff1b1db4ca4cd191bae37cf56",
-            "number": 61
-          },
-          {
-            "command_parts": [
-              {
-                "kind": "text",
-                "text": "exact hyz"
-              }
-            ],
-            "defined_command": "exact hyz",
-            "expanded_command_sha256": "55ab4cf0557758798bcb10695c234d92bcb37d3c011be82b2352bd8c59be02c9",
-            "number": 62
-          }
-        ],
-        "defined_statement": "∀ p. ∀ x. ∀ y. ∀ z. Lt(y,p) → Lt(z,p) → BalancedInverse(p,x,y) → BalancedInverse(p,x,z) → y = z",
-        "definition_uses": {
-          "PD0002": 2,
-          "PD0008": 4,
-          "PD0031": 2
-        },
-        "expanded_statement_sha256": "d4545da3327b3ba077e2ecf511b4f0b00ea44c3afdc5af430ae6495f659e3b99",
-        "name": "bounded_mod_inverse_unique",
-        "script_definition_uses": {
-          "PD0008": 4
-        },
-        "statement_definition_uses": {
-          "PD0002": 2,
-          "PD0031": 2
-        },
-        "statement_parts": [
-          {
-            "kind": "text",
-            "text": "∀ p. ∀ x. ∀ y. ∀ z. "
-          },
-          {
-            "definition": "PD0002",
-            "kind": "definition",
-            "text": "Lt(y,p)"
-          },
-          {
-            "kind": "text",
-            "text": " → "
-          },
-          {
-            "definition": "PD0002",
-            "kind": "definition",
-            "text": "Lt(z,p)"
-          },
-          {
-            "kind": "text",
-            "text": " → "
-          },
-          {
-            "definition": "PD0031",
-            "kind": "definition",
-            "text": "BalancedInverse(p,x,y)"
-          },
-          {
-            "kind": "text",
-            "text": " → "
-          },
-          {
-            "definition": "PD0031",
-            "kind": "definition",
-            "text": "BalancedInverse(p,x,z)"
-          },
-          {
-            "kind": "text",
-            "text": " → y = z"
-          }
-        ]
-      },
-      "dependencies": [
-        {
-          "body_reference": true,
-          "explicit_reference_count": 4,
-          "href": "PA003L.html",
-          "name": "mod_eq_symm",
-          "tag": "PA003L"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 5,
-          "href": "PA0020.html",
-          "name": "mod_eq_mul_left",
-          "tag": "PA0020"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 5,
-          "href": "PA001Y.html",
-          "name": "mod_eq_mul_right",
-          "tag": "PA001Y"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 4,
-          "href": "PA000B.html",
-          "name": "mul_assoc",
-          "tag": "PA000B"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 1,
-          "href": "PA000H.html",
-          "name": "mul_comm",
-          "tag": "PA000H"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 2,
-          "href": "PA0002.html",
-          "name": "mul_one",
-          "tag": "PA0002"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 2,
-          "href": "PA000M.html",
-          "name": "one_mul",
-          "tag": "PA000M"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 5,
-          "href": "PA0024.html",
-          "name": "mod_eq_trans",
-          "tag": "PA0024"
-        },
-        {
-          "body_reference": true,
-          "explicit_reference_count": 4,
-          "href": "PA002U.html",
-          "name": "mod_eq_bounded_unique",
-          "tag": "PA002U"
-        }
-      ],
-      "dependents": [
-        {
-          "body_reference": true,
-          "explicit_reference_count": 5,
-          "href": "PA00AL.html",
-          "name": "bounded_inverse_index_unique",
-          "tag": "PA00AL"
-        }
-      ],
-      "explicit_statement": "forall p x y z. (exists wip_strict_gap_unique_y_bound. wip_strict_gap_unique_y_bound + S y = p) -> (exists wip_strict_gap_unique_z_bound. wip_strict_gap_unique_z_bound + S z = p) -> (exists wip_mod_left_unique_xy wip_mod_right_unique_xy. x * y + p * wip_mod_left_unique_xy = 1 + p * wip_mod_right_unique_xy) -> (exists wip_mod_left_unique_xz wip_mod_right_unique_xz. x * z + p * wip_mod_left_unique_xz = 1 + p * wip_mod_right_unique_xz) -> y = z",
-      "explicit_statement_sha256": "d4545da3327b3ba077e2ecf511b4f0b00ea44c3afdc5af430ae6495f659e3b99",
-      "layer": 7,
-      "name": "bounded_mod_inverse_unique",
-      "scope": "candidate",
-      "status": "candidate_body_checked",
-      "summary": "Two bounded inverses of the same residue are equal.",
-      "tag": "PA00AK"
     },
     {
       "defined": {

@@ -15,11 +15,11 @@ divisibility witnesses before the greatest-common-divisor clause.
 
 ## What is checked now
 
-The 384-theorem runtime contains 23 baseline entries and 361 checked
+The 393-theorem runtime contains 23 baseline entries and 370 checked
 post-baseline entries. Two hundred and twelve of the latter form the general
 foundational layer, twelve are the fixed modular capstones, and 137 form the
-quadratic-residue campaign checkpoint. The broader catalog has 385 nodes:
-those 384 checked entries and one
+quadratic-residue campaign checkpoint; nine form the strict-HA canonical
+interface tranche. The broader catalog has 394 nodes: those 393 checked entries and one
 representation-blocked entry; it has no planned entry.
 
 The checked gcd layer includes the relational API through uniqueness and

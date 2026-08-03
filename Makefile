@@ -20,9 +20,9 @@ PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 # This path is a deletion target in `stage-peano`; command-line assignments
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
-override PEANOAPPID := a-ff0ad1985520
+override PEANOAPPID := a-9fe3f597bf8d
 
-.PHONY: help book book-atlas book-proof-explorer lean lean-fta lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
+.PHONY: help book book-atlas book-proof-explorer lean lean-fta ha-number-theory-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
 	deploy clean
 
@@ -33,6 +33,7 @@ help:
 	@echo "  make book-proof-explorer  regenerate the static PA proof explorer"
 	@echo "  make lean         build & axiom-check the Lean artifact"
 	@echo "  make lean-fta     build & exact-axiom-check the Lean FTA companion"
+	@echo "  make ha-number-theory-check  validate strict-HA admission and isolated gcd tranche"
 	@echo "  make lab-serve    serve lab-lambda locally on :8001"
 	@echo "  make peano-serve serve the staged Peano Lab locally on :8002"
 	@echo "  make peano-training-dashboard  observe WMI job $(PEANO_TRAIN_JOB) on :$(PEANO_TRAIN_DASHBOARD_PORT)"
@@ -73,6 +74,17 @@ lean-fta:
 	cd artifacts/lean-fta && lake exe cache get
 	cd artifacts/lean-fta && lake build
 	python3 scripts/verify_lean_fta.py
+
+ha-number-theory-check:
+	python3 scripts/verify_ha_number_theory_campaign.py
+	python3 scripts/verify_ha_definition_freeze.py --replay-proved-api
+	python3 -m pytest -q scripts/test_verify_ha_number_theory_campaign.py scripts/test_verify_ha_definition_freeze.py
+	cd peano-lab/py && python3 -m pytest -q \
+		tests/test_ha_canonical_remainder_candidate.py \
+		tests/test_ha_canonical_congruence_candidate.py \
+		tests/test_ha_modular_inverse_candidate.py \
+		tests/test_ha_canonical_gcd_candidate.py \
+		tests/test_ha_number_theory_tranche01_admission.py
 
 lab-serve:
 	@echo "→ http://localhost:8001/  (Ctrl-C to stop)"
