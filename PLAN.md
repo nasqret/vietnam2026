@@ -285,16 +285,18 @@ as no demonstrated LLM advantage. H6 requires independent reproduction.
 The existing four-goal Qwen result is retained only as a launch regression,
 not evidence for the campaign. Any later quadratic-reciprocity development
 belongs to a new library epoch and, if used for evaluation, requires
-whole-lineage masking. H0.1a now freezes and binds semantic profile
-`peano-lab-ha-intuitionistic-v1` (SHA-256
-`058b1644b066967919dae092e5e562b8845e4dd8415fff31d7cd209d51bc9e43`).
-It is theorem-prover-only: `proved | unknown`, no decision fragment or
-`not_theorem`. Its operational target admission freezes the 8,192-code-point
-source and 256-numeral ceilings without making a decision-resource claim. H0
-remains incomplete because H0.1b exact result schemas and
-hash preimages, H0.2 cold replay/reference/conformance/mutation work, complete
-result evidence, and H0.3 typed macros remain open. No H1 benchmark is sealed,
-no Hydra training claim exists,
+whole-lineage masking. H0 completed 2026-08-04. Active semantic profile v2
+(`4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b`)
+and exact result schema v1
+(`cf1caf1c867ddfbe3c247e42a18b730ea6790269718170a51f9733d5a7a36b26`)
+freeze the theorem-prover-only `proved | unknown` claim, evidence fields, and
+hash preimages. Typed macro protocol v1 compiles every action to public tactics
+or isolated untrusted reconstruction. The retained H0 report
+(`55c60502b2229f4420bd4557058842bebb582f491739e82a6dae06de5b803fdb`)
+records two identical 384-theorem cold roots, 1,024 positives, exact pinned-Lean
+agreement, all required mutation/trust-boundary rejections, and the complete
+H0.3 typed-macro evidence bundle. No H1 benchmark is sealed, no Hydra training
+claim exists,
 and no H5 result exists. See
 [`docs/PEANO_HYDRA_DESIGN.md`](docs/PEANO_HYDRA_DESIGN.md) and
 [`PLAN/11_peano_hydra.md`](PLAN/11_peano_hydra.md).

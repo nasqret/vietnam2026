@@ -24,26 +24,40 @@ benchmark, construct the strongest symbolic baseline, build checked macro
 data, run the model/ablation ladder, execute one matched-compute final, and
 release enough evidence for independent reproduction.
 
-H0.1a freezes the [[peano-hydra-semantic-profile]]: closed intuitionistic PA,
+H0 completed on 2026-08-04. Its retained report is
+`artifacts/peano-hydra/h0-validation-v2.json`, SHA-256
+`55c60502b2229f4420bd4557058842bebb582f491739e82a6dae06de5b803fdb`.
+The earlier v1 is provisional H0.1/H0.2 evidence and is superseded for the
+complete-H0 claim.
+H1 remains open; no sealed benchmark or LLM-advantage result exists.
+
+H0 freezes the [[peano-hydra-semantic-profile]]: closed intuitionistic PA,
 PA1--PA6, unrestricted induction, no classical checker, no decision fragment,
-and only `proved | unknown`. The functional bootstrap composes fixed symbolic
+and only `proved | unknown`. Exact [[peano-hydra-result-evidence]] requires a
+fresh kernel check against the original target and content-addresses every hash
+preimage. The [[peano-hydra-conformance-campaign]] tests 1,024 positive formulas,
+wrong-target certificate reuse, semantic mutations, two cold library replays,
+and agreement with an exactly pinned independent Lean reference.
+
+The functional bootstrap composes fixed symbolic
 and recorded-transcript heads through exact quotas and
 [[critical-proof-frontier|critical-state]] gates. Every imported trace receives
 a fresh profile-bound replay, and every discovered route is freshly traced and
 kernel replayed again before publication. Its teacher-oracle pilot reproduces
 one known 13-command/180-node proof; because the structural route and
 contextual hint were selected from known work, it is plumbing evidence only,
-not a model result or completion of the structured [[macro-proof-action]]
-protocol.
-
-Exact result field types and hash preimages remain H0.1b; profile v1 labels
-that evidence block `required-field-draft`. All surface-macro-v0 rows are
-therefore explicitly schema-nonconformant and comparison-ineligible.
+not a model result. The structured [[macro-proof-action]] protocol now exists
+separately: typed actions compile to public tactics, `Dispatch` is isolated and
+untrusted, failure rolls back exactly, and every accepted trace is replay-aware.
+Historical surface-macro-v0 rows remain schema-incomplete and comparison-
+ineligible; H0 completion does not retroactively promote them.
 
 ## Related
 
 - [[critical-proof-frontier]]
 - [[peano-hydra-semantic-profile]]
+- [[peano-hydra-result-evidence]]
+- [[peano-hydra-conformance-campaign]]
 - [[macro-proof-action]]
 - [[library-epoch]]
 - [[sealed-theorem-benchmark]]

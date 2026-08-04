@@ -9,11 +9,11 @@ order, whitespace, duplicate keys, or a non-finite JSON extension.
 
 from __future__ import annotations
 
+from copy import deepcopy
 import hashlib
 import json
 from pathlib import Path
 from typing import Literal
-import unicodedata
 
 from peano_lab.kernel.formulas import (
     And,
@@ -21,24 +21,63 @@ from peano_lab.kernel.formulas import (
     Eq,
     Exists,
     Forall,
+    Formula,
     Imp,
     Or,
-    ParseError,
-    parse_formula_with_names,
-    pretty_formula,
 )
-from peano_lab.kernel.checker import axiom_formula
 from peano_lab.kernel import formulas as kernel_formulas
 from peano_lab.kernel import proofs as kernel_proofs
 from peano_lab.kernel.terms import Add, Mul, Succ, Var, Zero
-from peano_lab.ui.prove import MAX_INPUT, MAX_NUMERAL, oversized_numeral
+from training.peano_hydra.profile_theorem_v1 import (
+    FrozenProfileTheoremError,
+    MAX_DECIMAL_NUMERAL as PROFILE_V1_V2_MAX_NUMERAL,
+    MAX_SOURCE_CHARACTERS as PROFILE_V1_V2_MAX_INPUT,
+    canonicalize_profile_formula as _canonicalize_profile_formula_v1_v2,
+    canonicalize_profile_theorem as _canonicalize_profile_theorem_v1_v2,
+)
 
 
 SEMANTIC_PROFILE_FORMAT = "peano-hydra-semantic-profile"
-SEMANTIC_PROFILE_VERSION = 1
-SEMANTIC_PROFILE_ID = "peano-lab-ha-intuitionistic-v1"
-SEMANTIC_PROFILE_PATH = Path(__file__).with_name("semantic-profile-v1.json")
+SEMANTIC_PROFILE_VERSION = 2
+SEMANTIC_PROFILE_ID = "peano-lab-ha-intuitionistic-v2"
+SEMANTIC_PROFILE_PATH = Path(__file__).with_name("semantic-profile-v2.json")
+SEMANTIC_PROFILE_V1_VERSION = 1
+SEMANTIC_PROFILE_V1_ID = "peano-lab-ha-intuitionistic-v1"
+SEMANTIC_PROFILE_V1_PATH = Path(__file__).with_name("semantic-profile-v1.json")
+SEMANTIC_PROFILE_V1_DOCUMENT_SHA256 = (
+    "7defa4113b3d64909f48ce7717f06c163014c5ae910c8643797ab308798ea5ac"
+)
+SEMANTIC_PROFILE_V1_SHA256 = (
+    "058b1644b066967919dae092e5e562b8845e4dd8415fff31d7cd209d51bc9e43"
+)
+# Pinned below once ``semantic-profile-v2.json`` is assembled from the frozen
+# v1 fragment plus the exact H0.1b evidence contract.  Unlike
+# ``semantic_profile_sha256()``, registry dispatch uses this immutable value
+# and therefore does not accidentally reinterpret historical records through
+# a later active profile.
+SEMANTIC_PROFILE_V2_DOCUMENT_SHA256 = (
+    "e19162d0e78779d34e5e02166eeb109c5a75091b4692fe37577a7fa47ff29287"
+)
+SEMANTIC_PROFILE_V2_SHA256 = (
+    "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b"
+)
+# Immutable H0.1b values embedded by semantic profile v2.  They are not
+# aliases of whichever result schema a future active profile imports.
+_PROFILE_V2_RESULT_FORMAT = "peano-hydra-result"
+_PROFILE_V2_RESULT_VERSION = 1
+_PROFILE_V2_HASH_PREIMAGE_FORMAT = "peano-hydra-result-hash-preimage"
+_PROFILE_V2_HASH_PREIMAGE_VERSION = 1
+_PROFILE_V2_RESULT_SCHEMA_FORMAT = "peano-hydra-result-schema"
+_PROFILE_V2_RESULT_SCHEMA_ID = "peano-hydra-result-v1"
+_PROFILE_V2_RESULT_SCHEMA_SHA256 = (
+    "cf1caf1c867ddfbe3c247e42a18b730ea6790269718170a51f9733d5a7a36b26"
+)
+_PROFILE_V2_RESULT_SCHEMA_VERSION = 1
 MAX_SEMANTIC_PROFILE_BYTES = 1_000_000
+# Backward-compatible names for the v1/v2 theorem transport limits.  Active
+# live-alignment diagnostics deliberately read the browser module lazily.
+MAX_INPUT = PROFILE_V1_V2_MAX_INPUT
+MAX_NUMERAL = PROFILE_V1_V2_MAX_NUMERAL
 
 EvidenceKind = Literal["proved", "unknown"]
 
@@ -48,7 +87,9 @@ class SemanticProfileError(ValueError):
 
 
 def _live_input_admission() -> dict[str, object]:
-    """Describe every pre-parser target-admission rule used by this profile."""
+    """Describe the current browser pre-parser target-admission rules."""
+
+    from peano_lab.ui import prove as live_prove
 
     return {
         "character_measure": "unicode-code-points",
@@ -58,8 +99,8 @@ def _live_input_admission() -> dict[str, object]:
         "hash_character": "forbidden",
         "kind": "source-preflight-v1",
         "line_policy": "one-line-no-outer-whitespace",
-        "max_decimal_numeral": MAX_NUMERAL,
-        "max_source_characters": MAX_INPUT,
+        "max_decimal_numeral": live_prove.MAX_NUMERAL,
+        "max_source_characters": live_prove.MAX_INPUT,
         "nonempty": True,
         "numeral_literal_boundary": (
             "not-preceded-by-word-character-apostrophe-or-hash"
@@ -67,7 +108,27 @@ def _live_input_admission() -> dict[str, object]:
     }
 
 
-_REGISTERED_PROFILE: dict[str, object] = {
+def _profile_v1_v2_input_admission() -> dict[str, object]:
+    """Return the immutable admission data recorded by profiles v1/v2."""
+
+    return {
+        "character_measure": "unicode-code-points",
+        "decision_claim": False,
+        "decimal_numeral_comparison": "normalized-base10-value",
+        "forbidden_unicode_categories": ["Cc", "Cf", "Cs", "Zl", "Zp"],
+        "hash_character": "forbidden",
+        "kind": "source-preflight-v1",
+        "line_policy": "one-line-no-outer-whitespace",
+        "max_decimal_numeral": PROFILE_V1_V2_MAX_NUMERAL,
+        "max_source_characters": PROFILE_V1_V2_MAX_INPUT,
+        "nonempty": True,
+        "numeral_literal_boundary": (
+            "not-preceded-by-word-character-apostrophe-or-hash"
+        ),
+    }
+
+
+_REGISTERED_PROFILE_V1: dict[str, object] = {
     "arithmetic": {
         "axioms": [
             {"formula": "∀ x. ¬S x = 0", "name": "PA1"},
@@ -229,7 +290,7 @@ _REGISTERED_PROFILE: dict[str, object] = {
         "v": 1,
     },
     "format": SEMANTIC_PROFILE_FORMAT,
-    "id": SEMANTIC_PROFILE_ID,
+    "id": SEMANTIC_PROFILE_V1_ID,
     "input": {
         "canonical_binder_candidates": [
             "x",
@@ -269,7 +330,7 @@ _REGISTERED_PROFILE: dict[str, object] = {
         ),
         "explicit_de_bruijn_target_syntax": False,
         "normal_form_required_in_artifacts": True,
-        "operational_admission": _live_input_admission(),
+        "operational_admission": _profile_v1_v2_input_admission(),
         "precedence_associativity": [
             "quantifiers-widest-scope",
             "implication-right-associative",
@@ -326,7 +387,7 @@ _REGISTERED_PROFILE: dict[str, object] = {
         "external": [],
         "surface": [
             {
-                "domain": f"0<=n<={MAX_NUMERAL}",
+                "domain": f"0<=n<={PROFILE_V1_V2_MAX_NUMERAL}",
                 "from": "decimal n",
                 "name": "numeral",
                 "to": "Succ^n(Zero)",
@@ -348,7 +409,40 @@ _REGISTERED_PROFILE: dict[str, object] = {
             },
         ],
     },
-    "v": SEMANTIC_PROFILE_VERSION,
+    "v": SEMANTIC_PROFILE_V1_VERSION,
+}
+
+
+_REGISTERED_PROFILE: dict[str, object] = deepcopy(_REGISTERED_PROFILE_V1)
+_REGISTERED_PROFILE["id"] = SEMANTIC_PROFILE_ID
+_REGISTERED_PROFILE["v"] = SEMANTIC_PROFILE_VERSION
+assert type(_REGISTERED_PROFILE["authority"]) is dict
+_REGISTERED_PROFILE["authority"]["certificate_representation"] = "peano-lab-v2"
+_REGISTERED_PROFILE["evidence"] = {
+    "additional_fields_policy": "forbidden",
+    "canonical_json": "peano-hydra-canonical-json-v1",
+    "format": _PROFILE_V2_RESULT_FORMAT,
+    "hash_algorithm": "sha256",
+    "hash_preimage": {
+        "format": _PROFILE_V2_HASH_PREIMAGE_FORMAT,
+        "v": _PROFILE_V2_HASH_PREIMAGE_VERSION,
+    },
+    "kinds": ["proved", "unknown"],
+    "not_theorem": {
+        "publication": "forbidden",
+        "supported": False,
+    },
+    "schema": {
+        "format": _PROFILE_V2_RESULT_SCHEMA_FORMAT,
+        "id": _PROFILE_V2_RESULT_SCHEMA_ID,
+        "sha256": _PROFILE_V2_RESULT_SCHEMA_SHA256,
+        "v": _PROFILE_V2_RESULT_SCHEMA_VERSION,
+    },
+    "schema_status": "exact-content-addressed",
+    "unknown_meaning": (
+        "no-accepted-certificate-and-no-negative-theoremhood-claim"
+    ),
+    "v": _PROFILE_V2_RESULT_VERSION,
 }
 
 
@@ -396,23 +490,41 @@ def _canonical_document_bytes(value: object) -> bytes:
 
 _REGISTERED_CANONICAL_BYTES = _canonical_json_bytes(_REGISTERED_PROFILE)
 _REGISTERED_DOCUMENT_BYTES = _canonical_document_bytes(_REGISTERED_PROFILE)
+_REGISTERED_V1_CANONICAL_BYTES = _canonical_json_bytes(_REGISTERED_PROFILE_V1)
+_REGISTERED_V1_DOCUMENT_BYTES = _canonical_document_bytes(_REGISTERED_PROFILE_V1)
 
 
 def validate_semantic_profile(value: object) -> dict[str, object]:
-    """Return a detached registered v1 profile or reject every deviation."""
+    """Return a detached active v2 profile or reject every deviation."""
 
     if type(value) is not dict:
         raise SemanticProfileError("semantic profile must be one exact JSON object")
     if _canonical_json_bytes(value) != _REGISTERED_CANONICAL_BYTES:
-        raise SemanticProfileError("semantic profile does not match registered v1")
+        raise SemanticProfileError("semantic profile does not match registered v2")
     detached = json.loads(_REGISTERED_CANONICAL_BYTES.decode("utf-8"))
     if type(detached) is not dict:  # pragma: no cover - construction invariant
         raise RuntimeError("registered semantic profile is not an object")
     return detached
 
 
+def validate_semantic_profile_v1(value: object) -> dict[str, object]:
+    """Validate the byte-preserved historical H0.1a profile v1 value."""
+
+    if type(value) is not dict:
+        raise SemanticProfileError("semantic profile v1 must be one exact JSON object")
+    if _canonical_json_bytes(value) != _REGISTERED_V1_CANONICAL_BYTES:
+        raise SemanticProfileError("semantic profile does not match historical v1")
+    detached = json.loads(_REGISTERED_V1_CANONICAL_BYTES.decode("utf-8"))
+    if type(detached) is not dict:  # pragma: no cover - construction invariant
+        raise RuntimeError("historical semantic profile is not an object")
+    return detached
+
+
 def _validate_kernel_alignment(profile: dict[str, object]) -> None:
     """Fail closed if the registered claims drift from the live kernel."""
+
+    from peano_lab.kernel.checker import axiom_formula
+    from peano_lab.kernel.formulas import pretty_formula
 
     arithmetic = profile.get("arithmetic")
     calculus = profile.get("calculus")
@@ -465,10 +577,36 @@ def _validate_kernel_alignment(profile: dict[str, object]) -> None:
         raise SemanticProfileError(
             "operational target admission must not become a decision claim"
         )
+    if profile.get("v") == SEMANTIC_PROFILE_VERSION:
+        from training.peano_hydra.result_schema import result_schema_identity
+
+        evidence = profile.get("evidence")
+        expected_schema = {
+            "format": _PROFILE_V2_RESULT_SCHEMA_FORMAT,
+            "id": _PROFILE_V2_RESULT_SCHEMA_ID,
+            "sha256": _PROFILE_V2_RESULT_SCHEMA_SHA256,
+            "v": _PROFILE_V2_RESULT_SCHEMA_VERSION,
+        }
+        if (
+            type(evidence) is not dict
+            or evidence.get("schema_status") != "exact-content-addressed"
+            or evidence.get("additional_fields_policy") != "forbidden"
+            or evidence.get("schema") != expected_schema
+            or evidence.get("kinds") != ["proved", "unknown"]
+            or evidence.get("not_theorem")
+            != {"publication": "forbidden", "supported": False}
+        ):
+            raise SemanticProfileError(
+                "registered profile lost its exact result-schema binding"
+            )
+        if result_schema_identity() != expected_schema:
+            raise SemanticProfileError(
+                "registered result-schema artifact disagrees with profile v2"
+            )
 
 
-def semantic_profile() -> dict[str, object]:
-    """Load the canonical registered artifact and return a detached profile."""
+def semantic_profile_v2() -> dict[str, object]:
+    """Load frozen v2 bytes without consulting the current live kernel."""
 
     try:
         raw = SEMANTIC_PROFILE_PATH.read_bytes()
@@ -487,7 +625,48 @@ def semantic_profile() -> dict[str, object]:
     profile = validate_semantic_profile(value)
     if raw != _REGISTERED_DOCUMENT_BYTES:
         raise SemanticProfileError("registered semantic profile is not canonical JSON")
+    if hashlib.sha256(raw).hexdigest() != SEMANTIC_PROFILE_V2_DOCUMENT_SHA256:
+        raise SemanticProfileError("semantic profile v2 bytes drifted")
+    digest = hashlib.sha256(_canonical_json_bytes(profile)).hexdigest()
+    if digest != SEMANTIC_PROFILE_V2_SHA256:
+        raise SemanticProfileError("semantic profile v2 digest drifted")
+    return profile
+
+
+def semantic_profile() -> dict[str, object]:
+    """Load the active v2 artifact and diagnose alignment with the live kernel."""
+
+    profile = semantic_profile_v2()
     _validate_kernel_alignment(profile)
+    return profile
+
+
+def semantic_profile_v1() -> dict[str, object]:
+    """Load the canonical historical v1 artifact without promoting its draft."""
+
+    try:
+        raw = SEMANTIC_PROFILE_V1_PATH.read_bytes()
+    except OSError as exc:
+        raise SemanticProfileError("cannot read historical semantic profile v1") from exc
+    if len(raw) > MAX_SEMANTIC_PROFILE_BYTES:
+        raise SemanticProfileError("historical semantic profile exceeds its size limit")
+    try:
+        value = json.loads(
+            raw.decode("utf-8"),
+            object_pairs_hook=_strict_object,
+            parse_constant=_reject_constant,
+        )
+    except (UnicodeDecodeError, json.JSONDecodeError, ValueError, RecursionError) as exc:
+        raise SemanticProfileError(
+            f"historical semantic profile is invalid: {exc}"
+        ) from None
+    profile = validate_semantic_profile_v1(value)
+    if raw != _REGISTERED_V1_DOCUMENT_BYTES:
+        raise SemanticProfileError(
+            "historical semantic profile v1 is not canonical JSON"
+        )
+    if hashlib.sha256(raw).hexdigest() != SEMANTIC_PROFILE_V1_DOCUMENT_SHA256:
+        raise SemanticProfileError("historical semantic profile v1 bytes drifted")
     return profile
 
 
@@ -495,7 +674,30 @@ def semantic_profile_sha256() -> str:
     """Hash the canonical JSON value, excluding display whitespace/newline."""
 
     profile = semantic_profile()
-    return hashlib.sha256(_canonical_json_bytes(profile)).hexdigest()
+    digest = hashlib.sha256(_canonical_json_bytes(profile)).hexdigest()
+    if digest != SEMANTIC_PROFILE_V2_SHA256:
+        raise SemanticProfileError("active semantic profile v2 digest drifted")
+    return digest
+
+
+def semantic_profile_v2_sha256() -> str:
+    """Return v2's semantic digest without a live-kernel alignment check."""
+
+    profile = semantic_profile_v2()
+    digest = hashlib.sha256(_canonical_json_bytes(profile)).hexdigest()
+    if digest != SEMANTIC_PROFILE_V2_SHA256:
+        raise SemanticProfileError("semantic profile v2 digest drifted")
+    return digest
+
+
+def semantic_profile_v1_sha256() -> str:
+    """Return and verify the historical v1 semantic digest."""
+
+    profile = semantic_profile_v1()
+    digest = hashlib.sha256(_canonical_json_bytes(profile)).hexdigest()
+    if digest != SEMANTIC_PROFILE_V1_SHA256:
+        raise SemanticProfileError("historical semantic profile v1 digest drifted")
+    return digest
 
 
 def semantic_profile_identity() -> dict[str, object]:
@@ -507,6 +709,75 @@ def semantic_profile_identity() -> dict[str, object]:
         "id": SEMANTIC_PROFILE_ID,
         "sha256": semantic_profile_sha256(),
     }
+
+
+def semantic_profile_v1_identity() -> dict[str, object]:
+    """Return the historical identity used by pre-H0.1b artifacts."""
+
+    return {
+        "format": SEMANTIC_PROFILE_FORMAT,
+        "v": SEMANTIC_PROFILE_V1_VERSION,
+        "id": SEMANTIC_PROFILE_V1_ID,
+        "sha256": semantic_profile_v1_sha256(),
+    }
+
+
+def semantic_profile_registration(digest: str) -> dict[str, object]:
+    """Resolve an immutable profile registration by semantic digest.
+
+    Registry lookup deliberately performs only artifact-integrity checks.  It
+    does not compare a historical profile with today's kernel implementation;
+    that comparison is a separate diagnostic and must not reinterpret old
+    result records when a future profile becomes active.
+    """
+
+    if type(digest) is not str:
+        raise SemanticProfileError("semantic profile digest must be text")
+    if digest == SEMANTIC_PROFILE_V1_SHA256:
+        if semantic_profile_v1_sha256() != digest:  # pragma: no cover - pinned
+            raise SemanticProfileError("semantic profile v1 registry drifted")
+        return {
+            "certificate_representation": (
+                "python-dataclass-repr-with-cut-v2"
+            ),
+            "format": SEMANTIC_PROFILE_FORMAT,
+            "id": SEMANTIC_PROFILE_V1_ID,
+            "logic": "intuitionistic",
+            "result_schema_sha256": None,
+            "result_schema_version": None,
+            "sha256": SEMANTIC_PROFILE_V1_SHA256,
+            "theorem_canonicalizer": "canonical-profile-theorem-v1",
+            "v": SEMANTIC_PROFILE_V1_VERSION,
+        }
+    if digest == SEMANTIC_PROFILE_V2_SHA256:
+        if semantic_profile_v2_sha256() != digest:  # pragma: no cover - pinned
+            raise SemanticProfileError("semantic profile v2 registry drifted")
+        return {
+            "certificate_representation": "peano-lab-v2",
+            "format": SEMANTIC_PROFILE_FORMAT,
+            "id": SEMANTIC_PROFILE_ID,
+            "logic": "intuitionistic",
+            "result_schema_sha256": _PROFILE_V2_RESULT_SCHEMA_SHA256,
+            "result_schema_version": _PROFILE_V2_RESULT_SCHEMA_VERSION,
+            "sha256": SEMANTIC_PROFILE_V2_SHA256,
+            "theorem_canonicalizer": "canonical-profile-theorem-v2",
+            "v": SEMANTIC_PROFILE_VERSION,
+        }
+    raise SemanticProfileError("semantic profile sha256 is not registered")
+
+
+def validate_semantic_profile_alignment(profile: object) -> None:
+    """Diagnose whether one exact registered profile matches the live kernel."""
+
+    if type(profile) is not dict:
+        raise SemanticProfileError("semantic profile must be one exact JSON object")
+    digest = hashlib.sha256(_canonical_json_bytes(profile)).hexdigest()
+    registration = semantic_profile_registration(digest)
+    if registration["v"] == SEMANTIC_PROFILE_V1_VERSION:
+        checked = validate_semantic_profile_v1(profile)
+    else:
+        checked = validate_semantic_profile(profile)
+    _validate_kernel_alignment(checked)
 
 
 def _well_scoped_term(term: object, depth: int) -> bool:
@@ -543,57 +814,55 @@ def well_scoped_formula(formula: object, depth: int = 0) -> bool:
     return False
 
 
-def canonical_profile_theorem(source: str) -> str:
-    """Admit and canonicalize one closed theorem in the intuitionistic profile.
+def _canonical_profile_theorem_v1_v2(source: str) -> str:
+    """Frozen theorem admission shared by semantic profiles v1 and v2."""
 
-    Explicit ``#k`` syntax is useful for kernel diagnostics but is not part of
-    the registered target surface.  Checking structural scope in addition to
-    the parser's free-name table prevents such syntax from masquerading as a
-    closed theorem.
-    """
-
-    if type(source) is not str or not source:
-        raise SemanticProfileError("profile theorem must be non-empty text")
-    if len(source) > MAX_INPUT:
-        raise SemanticProfileError(
-            f"profile theorem exceeds the {MAX_INPUT}-character transport bound"
-        )
-    if source != source.strip() or source.splitlines() != [source]:
-        raise SemanticProfileError(
-            "profile theorem must be exactly one line with no outer whitespace"
-        )
-    if any(
-        unicodedata.category(character) in {"Cc", "Cf", "Cs", "Zl", "Zp"}
-        for character in source
-    ):
-        raise SemanticProfileError("profile theorem contains an unsafe character")
-    if "#" in source:
-        raise SemanticProfileError(
-            "explicit de Bruijn indices are not admitted in profile targets"
-        )
-    dangerous_numeral = oversized_numeral(source)
-    if dangerous_numeral is not None:
-        raise SemanticProfileError(
-            f"profile theorem contains resource-dangerous numeral {dangerous_numeral}"
-        )
     try:
-        formula, free_names = parse_formula_with_names(source)
-    except RecursionError:
-        raise SemanticProfileError("profile theorem exceeded parser recursion") from None
-    except (ParseError, TypeError, ValueError) as exc:
-        raise SemanticProfileError(f"invalid profile theorem: {exc}") from None
-    if free_names:
-        raise SemanticProfileError(
-            "profile theorem must be closed; quantify free variables explicitly: "
-            + ", ".join(free_names)
-        )
-    if not well_scoped_formula(formula):
-        raise SemanticProfileError("profile theorem has a free de Bruijn index")
-    canonical = pretty_formula(formula, [])
-    reparsed, reparsed_names = parse_formula_with_names(canonical)
-    if reparsed_names or reparsed != formula or not well_scoped_formula(reparsed):
-        raise SemanticProfileError("profile theorem failed canonical round trip")
-    return canonical
+        return _canonicalize_profile_theorem_v1_v2(source)
+    except FrozenProfileTheoremError as exc:
+        raise SemanticProfileError(str(exc)) from None
+
+
+def _canonical_profile_formula_v1_v2(formula: Formula) -> str:
+    """Frozen formula printer shared by semantic profiles v1 and v2."""
+
+    try:
+        return _canonicalize_profile_formula_v1_v2(formula)
+    except FrozenProfileTheoremError as exc:
+        raise SemanticProfileError(str(exc)) from None
+
+
+def canonical_registered_profile_theorem(digest: str, source: str) -> str:
+    """Canonicalize with the frozen grammar registered for ``digest``."""
+
+    registration = semantic_profile_registration(digest)
+    canonicalizer = registration["theorem_canonicalizer"]
+    if canonicalizer == "canonical-profile-theorem-v1":
+        return _canonical_profile_theorem_v1_v2(source)
+    if canonicalizer == "canonical-profile-theorem-v2":
+        return _canonical_profile_theorem_v1_v2(source)
+    raise SemanticProfileError("registered theorem canonicalizer is unsupported")
+
+
+def canonical_registered_profile_formula(digest: str, formula: Formula) -> str:
+    """Print a kernel formula with the frozen printer registered for ``digest``."""
+
+    registration = semantic_profile_registration(digest)
+    canonicalizer = registration["theorem_canonicalizer"]
+    if canonicalizer == "canonical-profile-theorem-v1":
+        return _canonical_profile_formula_v1_v2(formula)
+    if canonicalizer == "canonical-profile-theorem-v2":
+        return _canonical_profile_formula_v1_v2(formula)
+    raise SemanticProfileError("registered theorem canonicalizer is unsupported")
+
+
+def canonical_profile_theorem(source: str) -> str:
+    """Canonicalize with the currently active semantic profile."""
+
+    return canonical_registered_profile_theorem(
+        semantic_profile_sha256(),
+        source,
+    )
 
 
 def evidence_kind(*, proved: bool, kernel_checked: bool) -> EvidenceKind:
@@ -620,13 +889,30 @@ __all__ = [
     "SEMANTIC_PROFILE_FORMAT",
     "SEMANTIC_PROFILE_ID",
     "SEMANTIC_PROFILE_PATH",
+    "SEMANTIC_PROFILE_V1_ID",
+    "SEMANTIC_PROFILE_V1_DOCUMENT_SHA256",
+    "SEMANTIC_PROFILE_V1_PATH",
+    "SEMANTIC_PROFILE_V1_SHA256",
+    "SEMANTIC_PROFILE_V1_VERSION",
+    "SEMANTIC_PROFILE_V2_DOCUMENT_SHA256",
+    "SEMANTIC_PROFILE_V2_SHA256",
     "SEMANTIC_PROFILE_VERSION",
     "SemanticProfileError",
     "canonical_profile_theorem",
+    "canonical_registered_profile_formula",
+    "canonical_registered_profile_theorem",
     "evidence_kind",
     "semantic_profile",
     "semantic_profile_identity",
     "semantic_profile_sha256",
+    "semantic_profile_registration",
+    "semantic_profile_v1",
+    "semantic_profile_v1_identity",
+    "semantic_profile_v1_sha256",
+    "semantic_profile_v2",
+    "semantic_profile_v2_sha256",
+    "validate_semantic_profile_alignment",
     "validate_semantic_profile",
+    "validate_semantic_profile_v1",
     "well_scoped_formula",
 ]

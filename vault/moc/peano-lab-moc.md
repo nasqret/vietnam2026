@@ -57,6 +57,8 @@ lemma library, then follow the guarded WMI runtime to model-free kernel judgment
 
 - [[peano-hydra]]
 - [[peano-hydra-semantic-profile]]
+- [[peano-hydra-result-evidence]]
+- [[peano-hydra-conformance-campaign]]
 - [[decidable-proof-fragment]]
 - [[library-epoch]]
 - [[sealed-theorem-benchmark]]

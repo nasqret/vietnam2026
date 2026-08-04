@@ -1,0 +1,2164 @@
+{
+  "artifact": {
+    "canonical_theorem": "∀ x. ∃ y. x · (x + 1) = 2 · y",
+    "command_count": 13,
+    "commands": [
+      "have strong : forall n. exists x. n * n + n = 2 * x",
+      "induction n",
+      "exists 0",
+      "compact_arith",
+      "cases IH",
+      "exists x + S n",
+      "compact_arith [IH_witness]",
+      "intro n",
+      "specialize strong n",
+      "suffices normalize : n * (n + 1) = n * n + n",
+      "rewrite normalize",
+      "exact strong",
+      "compact_arith"
+    ],
+    "path": "artifacts/triangular-even-readable.pa",
+    "proof_nodes": 180,
+    "replay": {
+      "classical": false,
+      "engine_steps": 13,
+      "environment_sha256": "f5f5bc0697d82723a8211638640a6afc2cbdba6b14c3a2397f008f80e1327ec6",
+      "error": null,
+      "error_type": null,
+      "failed_step": null,
+      "failed_tactics": 0,
+      "goals": [],
+      "id": "hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+      "kernel_checked": true,
+      "mode": "trace",
+      "on_error": "stop",
+      "proof_nodes": 180,
+      "session": "peano-hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+      "status": "proved",
+      "surface": "peano-hydra-teacher-pilot-v3",
+      "tactics_applied": 13,
+      "tactics_requested": 13,
+      "theorem": "∀ x. ∃ y. x · (x + 1) = 2 · y",
+      "trace": [
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "⊢ ∀ x. ∃ y. x · x + x = 2 · y",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "goals_before": [
+            "⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "session": "peano-hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+          "status": "ok",
+          "step": 1,
+          "tactic": "have strong : forall n. exists x. n * n + n = 2 * x",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "⊢ ∃ x. 0 · 0 + 0 = 2 · x",
+            "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "goals_before": [
+            "⊢ ∀ x. ∃ y. x · x + x = 2 · y",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "session": "peano-hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+          "status": "ok",
+          "step": 2,
+          "tactic": "induction n",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "⊢ 0 · 0 + 0 = 2 · 0",
+            "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "goals_before": [
+            "⊢ ∃ x. 0 · 0 + 0 = 2 · x",
+            "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "session": "peano-hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+          "status": "ok",
+          "step": 3,
+          "tactic": "exists 0",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "goals_before": [
+            "⊢ 0 · 0 + 0 = 2 · 0",
+            "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "session": "peano-hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+          "status": "ok",
+          "step": 4,
+          "tactic": "compact_arith",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "n : ℕ, x : ℕ, IH : ∃ y. n · n + n = 2 · y, IH_witness : n · n + n = 2 · x ⊢ ∃ y. S n · S n + S n = 2 · y",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "goals_before": [
+            "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "session": "peano-hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+          "status": "ok",
+          "step": 5,
+          "tactic": "cases IH",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "n : ℕ, x : ℕ, IH : ∃ y. n · n + n = 2 · y, IH_witness : n · n + n = 2 · x ⊢ S n · S n + S n = 2 · (x + S n)",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "goals_before": [
+            "n : ℕ, x : ℕ, IH : ∃ y. n · n + n = 2 · y, IH_witness : n · n + n = 2 · x ⊢ ∃ y. S n · S n + S n = 2 · y",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "session": "peano-hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+          "status": "ok",
+          "step": 6,
+          "tactic": "exists x + S n",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "goals_before": [
+            "n : ℕ, x : ℕ, IH : ∃ y. n · n + n = 2 · y, IH_witness : n · n + n = 2 · x ⊢ S n · S n + S n = 2 · (x + S n)",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "session": "peano-hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+          "status": "ok",
+          "step": 7,
+          "tactic": "compact_arith [IH_witness]",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "n : ℕ, strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∃ x. n · (n + 1) = 2 · x"
+          ],
+          "goals_before": [
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "session": "peano-hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+          "status": "ok",
+          "step": 8,
+          "tactic": "intro n",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ ∃ x. n · (n + 1) = 2 · x"
+          ],
+          "goals_before": [
+            "n : ℕ, strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∃ x. n · (n + 1) = 2 · x"
+          ],
+          "session": "peano-hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+          "status": "ok",
+          "step": 9,
+          "tactic": "specialize strong n",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x, normalize : n · (n + 1) = n · n + n ⊢ ∃ x. n · (n + 1) = 2 · x",
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+          ],
+          "goals_before": [
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ ∃ x. n · (n + 1) = 2 · x"
+          ],
+          "session": "peano-hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+          "status": "ok",
+          "step": 10,
+          "tactic": "suffices normalize : n * (n + 1) = n * n + n",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x, normalize : n · (n + 1) = n · n + n ⊢ ∃ x. n · n + n = 2 · x",
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+          ],
+          "goals_before": [
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x, normalize : n · (n + 1) = n · n + n ⊢ ∃ x. n · (n + 1) = 2 · x",
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+          ],
+          "session": "peano-hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+          "status": "ok",
+          "step": 11,
+          "tactic": "rewrite normalize",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+          ],
+          "goals_before": [
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x, normalize : n · (n + 1) = n · n + n ⊢ ∃ x. n · n + n = 2 · x",
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+          ],
+          "session": "peano-hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+          "status": "ok",
+          "step": 12,
+          "tactic": "exact strong",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [],
+          "goals_before": [
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+          ],
+          "session": "peano-hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+          "status": "ok",
+          "step": 13,
+          "tactic": "compact_arith",
+          "v": 1
+        },
+        {
+          "proof_size": 180,
+          "qed": true,
+          "tactic_count": 13,
+          "theorem": "∀ x. ∃ y. x · (x + 1) = 2 · y"
+        }
+      ],
+      "trace_v": 1,
+      "v": 1
+    },
+    "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+    "sha256": "d324c0bdcc850a6e214b0c5adc108664750e6ba9148417dd31bfa60e6842d17f",
+    "theorem_source": "forall n. exists x. n * (n + 1) = 2 * x"
+  },
+  "claim_boundary": "checked interface/oracle headroom only; not Qwen capability, not an LLM advantage result, and not sealed evaluation",
+  "control": {
+    "commands_sha256": null,
+    "comparison_ineligibility_reasons": [
+      "surface-macro-v0 is pre-H0.3 plumbing without a registered provider attestation and raw-call evidence schema"
+    ],
+    "degradation_reasons": [],
+    "degraded": false,
+    "eligible_for_comparison": false,
+    "environment": {
+      "capabilities": {
+        "allowed_commands": [
+          "cases",
+          "compact_arith",
+          "exact",
+          "exists",
+          "have",
+          "induction",
+          "intro",
+          "rewrite",
+          "specialize",
+          "suffices"
+        ],
+        "allowed_theorems": [],
+        "label": "peano-hydra-teacher-pilot-v3"
+      },
+      "classical": false,
+      "environment_sha256": "f5f5bc0697d82723a8211638640a6afc2cbdba6b14c3a2397f008f80e1327ec6",
+      "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+      "surface": "peano-hydra-teacher-pilot-v3"
+    },
+    "evidence_kind": "unknown",
+    "label": "symbolic-only-control",
+    "limits": {
+      "beam_width": 1,
+      "candidates_per_state": 3,
+      "max_depth": 13,
+      "max_model_calls": 13,
+      "max_states": 14
+    },
+    "policy": "peano-hydra-symbolic-only-control-v3",
+    "policy_identity": {
+      "environment": {
+        "capabilities": {
+          "allowed_commands": [
+            "cases",
+            "compact_arith",
+            "exact",
+            "exists",
+            "have",
+            "induction",
+            "intro",
+            "rewrite",
+            "specialize",
+            "suffices"
+          ],
+          "allowed_theorems": [],
+          "label": "peano-hydra-teacher-pilot-v3"
+        },
+        "classical": false,
+        "environment_sha256": "f5f5bc0697d82723a8211638640a6afc2cbdba6b14c3a2397f008f80e1327ec6",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "surface": "peano-hydra-teacher-pilot-v3"
+      },
+      "heads": [
+        {
+          "gating": {
+            "state_sha256_allowlist": null
+          },
+          "identity_sha256": "dbab290e3fdbec3de79de5b81861c703457a4521940e4f8f8fde63bec4493f8b",
+          "name": "symbolic-compact-arith",
+          "policy": {
+            "candidates": [
+              "compact_arith",
+              "compact_arith [IH_witness]"
+            ],
+            "candidates_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+            "kind": "peano-hydra-fixed-candidate-policy-v3",
+            "name": "symbolic-compact-arith-control-v3",
+            "provider": {
+              "candidates": [
+                "compact_arith",
+                "compact_arith [IH_witness]"
+              ],
+              "context_hint_enumeration": "fixed-at-every-state",
+              "kind": "fixed-untrusted-symbolic-closure-v3",
+              "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+              "teacher_conditioned": false
+            },
+            "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b"
+          },
+          "quota": 2,
+          "role": "symbolic",
+          "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b"
+        },
+        {
+          "gating": {
+            "state_sha256_allowlist": [
+              "0af03fc5c719dd500fc68ff5edd81a338fafac788444e5c049aa2e447b9f579a",
+              "0f7abc943389a172eb0043913562f4b0eea55617e3eab79f64a401864b16f00b",
+              "2a877194fa378992bb96b92d405a366fc36b2c16c5863c71538aaee18c6f9774",
+              "3aa417902a4c07bdc6fb40b1cbe4c5d2c62e10ffd04f3476fce35eb57471d900",
+              "4fbcc40ca10f09bc23a8d4eb00f114efbcda8081abe912558c45a316ba11732e",
+              "615b3e0b1af15d0a9f674433a416303fd6f1ab3f6d7d98dcb72b821a5247e373",
+              "98cd861a57937847008bad046ab39ca49f594fc408840e2ec958631f0c94f57d",
+              "be3ec6ba990789e5cc4df16ff897ada83a431e0dd06365ff0cd875c550718fc1",
+              "caaa0efb67118783f9b6ae877a22d63914bdda7fb8940852e477e6d588011146",
+              "e7229d8841133f01975ce29c2eb6fc78e2fc3c7b77136ca0f9fa91686434ab0e"
+            ]
+          },
+          "identity_sha256": "2940766e348e86071c72b4eb341727010894668214b4592f5c43f3dd9319a8b4",
+          "name": "paired-null-macro-control",
+          "policy": {
+            "kind": "peano-hydra-null-candidate-policy-v3",
+            "name": "paired-null-macro-control-v3",
+            "provider": {
+              "gate_sha256s": [
+                "0af03fc5c719dd500fc68ff5edd81a338fafac788444e5c049aa2e447b9f579a",
+                "0f7abc943389a172eb0043913562f4b0eea55617e3eab79f64a401864b16f00b",
+                "2a877194fa378992bb96b92d405a366fc36b2c16c5863c71538aaee18c6f9774",
+                "3aa417902a4c07bdc6fb40b1cbe4c5d2c62e10ffd04f3476fce35eb57471d900",
+                "4fbcc40ca10f09bc23a8d4eb00f114efbcda8081abe912558c45a316ba11732e",
+                "615b3e0b1af15d0a9f674433a416303fd6f1ab3f6d7d98dcb72b821a5247e373",
+                "98cd861a57937847008bad046ab39ca49f594fc408840e2ec958631f0c94f57d",
+                "be3ec6ba990789e5cc4df16ff897ada83a431e0dd06365ff0cd875c550718fc1",
+                "caaa0efb67118783f9b6ae877a22d63914bdda7fb8940852e477e6d588011146",
+                "e7229d8841133f01975ce29c2eb6fc78e2fc3c7b77136ca0f9fa91686434ab0e"
+              ],
+              "kind": "paired-null-control-v3",
+              "quota": 1,
+              "replaces": "teacher_oracle_plumbing",
+              "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b"
+            },
+            "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b"
+          },
+          "quota": 1,
+          "role": "control",
+          "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b"
+        }
+      ],
+      "kind": "peano-hydra-candidate-policy-v3",
+      "merge": "declared-head-order-stable-first-wins-v1",
+      "name": "peano-hydra-symbolic-only-control-v3",
+      "quota_reallocation": false,
+      "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+      "v": 3
+    },
+    "profile_evidence_schema": {
+      "claim_kind": "unknown",
+      "conformant": false,
+      "format": "peano-hydra-result-schema",
+      "id": "peano-hydra-result-v1",
+      "ineligibility_reason": "surface-macro-v0 is not a peano-hydra-result-v1 unknown-evidence bundle: it does not retain the required unknown reason or closed original-theorem and run-evidence hashes",
+      "schema_status": "exact-content-addressed",
+      "sha256": "cf1caf1c867ddfbe3c247e42a18b730ea6790269718170a51f9733d5a7a36b26",
+      "v": 1
+    },
+    "proposal_records": [
+      {
+        "accepted_candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "symbolic-compact-arith",
+        "head_identity_sha256": "dbab290e3fdbec3de79de5b81861c703457a4521940e4f8f8fde63bec4493f8b",
+        "outcome": "ok",
+        "portfolio_call": 1,
+        "quota": 2,
+        "requested": 2,
+        "response_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+        "role": "symbolic",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "0f7abc943389a172eb0043913562f4b0eea55617e3eab79f64a401864b16f00b",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [],
+        "candidates": [],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "paired-null-macro-control",
+        "head_identity_sha256": "2940766e348e86071c72b4eb341727010894668214b4592f5c43f3dd9319a8b4",
+        "outcome": "ok",
+        "portfolio_call": 1,
+        "quota": 1,
+        "requested": 1,
+        "response_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "role": "control",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "0f7abc943389a172eb0043913562f4b0eea55617e3eab79f64a401864b16f00b",
+        "suppressed_duplicates": 0
+      }
+    ],
+    "proved": false,
+    "replay": null,
+    "search": {
+      "candidates_executed": 2,
+      "certificate_nodes": null,
+      "commands": [],
+      "depth_reached": 0,
+      "diagnostics": [
+        {
+          "command": "compact_arith",
+          "depth": 1,
+          "kind": "tactic_error",
+          "message": "`compact_arith` needs an equality goal.",
+          "state_sha256": "0f7abc943389a172eb0043913562f4b0eea55617e3eab79f64a401864b16f00b"
+        },
+        {
+          "command": "compact_arith [IH_witness]",
+          "depth": 1,
+          "kind": "tactic_error",
+          "message": "unknown hypothesis 'IH_witness'.",
+          "state_sha256": "0f7abc943389a172eb0043913562f4b0eea55617e3eab79f64a401864b16f00b"
+        }
+      ],
+      "frontier_peak": 1,
+      "model_calls": 1,
+      "states_discovered": 1,
+      "states_expanded": 1,
+      "status": "exhausted",
+      "theorem": "∀ x. ∃ y. x · (x + 1) = 2 · y"
+    },
+    "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+    "status": "exhausted",
+    "theorem": "∀ x. ∃ y. x · (x + 1) = 2 · y",
+    "v": 3
+  },
+  "experiment": "teacher_oracle_plumbing",
+  "hybrid": {
+    "commands_sha256": "2948f50cdf96aa7f7bfecd0c211485b95de2f3b2236c4d3576bff68aab50e9c6",
+    "comparison_ineligibility_reasons": [
+      "surface-macro-v0 is pre-H0.3 plumbing without a registered provider attestation and raw-call evidence schema"
+    ],
+    "degradation_reasons": [],
+    "degraded": false,
+    "eligible_for_comparison": false,
+    "environment": {
+      "capabilities": {
+        "allowed_commands": [
+          "cases",
+          "compact_arith",
+          "exact",
+          "exists",
+          "have",
+          "induction",
+          "intro",
+          "rewrite",
+          "specialize",
+          "suffices"
+        ],
+        "allowed_theorems": [],
+        "label": "peano-hydra-teacher-pilot-v3"
+      },
+      "classical": false,
+      "environment_sha256": "f5f5bc0697d82723a8211638640a6afc2cbdba6b14c3a2397f008f80e1327ec6",
+      "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+      "surface": "peano-hydra-teacher-pilot-v3"
+    },
+    "evidence_kind": "proved",
+    "label": "teacher_oracle_plumbing",
+    "limits": {
+      "beam_width": 1,
+      "candidates_per_state": 3,
+      "max_depth": 13,
+      "max_model_calls": 13,
+      "max_states": 14
+    },
+    "policy": "peano-hydra-teacher-oracle-plumbing-v3",
+    "policy_identity": {
+      "environment": {
+        "capabilities": {
+          "allowed_commands": [
+            "cases",
+            "compact_arith",
+            "exact",
+            "exists",
+            "have",
+            "induction",
+            "intro",
+            "rewrite",
+            "specialize",
+            "suffices"
+          ],
+          "allowed_theorems": [],
+          "label": "peano-hydra-teacher-pilot-v3"
+        },
+        "classical": false,
+        "environment_sha256": "f5f5bc0697d82723a8211638640a6afc2cbdba6b14c3a2397f008f80e1327ec6",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "surface": "peano-hydra-teacher-pilot-v3"
+      },
+      "heads": [
+        {
+          "gating": {
+            "state_sha256_allowlist": null
+          },
+          "identity_sha256": "d24db23876f81ac89185d1e1c6a6a2cdfdc0330f29d1962b06297d2fa8ece42f",
+          "name": "symbolic-compact-arith",
+          "policy": {
+            "candidates": [
+              "compact_arith",
+              "compact_arith [IH_witness]"
+            ],
+            "candidates_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+            "kind": "peano-hydra-fixed-candidate-policy-v3",
+            "name": "symbolic-compact-arith-hybrid-v3",
+            "provider": {
+              "candidates": [
+                "compact_arith",
+                "compact_arith [IH_witness]"
+              ],
+              "context_hint_enumeration": "fixed-at-every-state",
+              "kind": "fixed-untrusted-symbolic-closure-v3",
+              "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+              "teacher_conditioned": false
+            },
+            "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b"
+          },
+          "quota": 2,
+          "role": "symbolic",
+          "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b"
+        },
+        {
+          "gating": {
+            "state_sha256_allowlist": [
+              "0af03fc5c719dd500fc68ff5edd81a338fafac788444e5c049aa2e447b9f579a",
+              "0f7abc943389a172eb0043913562f4b0eea55617e3eab79f64a401864b16f00b",
+              "2a877194fa378992bb96b92d405a366fc36b2c16c5863c71538aaee18c6f9774",
+              "3aa417902a4c07bdc6fb40b1cbe4c5d2c62e10ffd04f3476fce35eb57471d900",
+              "4fbcc40ca10f09bc23a8d4eb00f114efbcda8081abe912558c45a316ba11732e",
+              "615b3e0b1af15d0a9f674433a416303fd6f1ab3f6d7d98dcb72b821a5247e373",
+              "98cd861a57937847008bad046ab39ca49f594fc408840e2ec958631f0c94f57d",
+              "be3ec6ba990789e5cc4df16ff897ada83a431e0dd06365ff0cd875c550718fc1",
+              "caaa0efb67118783f9b6ae877a22d63914bdda7fb8940852e477e6d588011146",
+              "e7229d8841133f01975ce29c2eb6fc78e2fc3c7b77136ca0f9fa91686434ab0e"
+            ]
+          },
+          "identity_sha256": "08cecafa9b3e127b1b93db60c33b43010d0b4cff560a9060f29aca3a03b78f72",
+          "name": "teacher-oracle-structural-macros",
+          "policy": {
+            "kind": "peano-hydra-script-candidate-policy-v3",
+            "name": "triangular-even-structural-teacher-v3",
+            "provider": {
+              "allow_partial": false,
+              "batch": {
+                "classical": false,
+                "engine_steps": 13,
+                "environment_sha256": "f5f5bc0697d82723a8211638640a6afc2cbdba6b14c3a2397f008f80e1327ec6",
+                "error": null,
+                "error_type": null,
+                "failed_step": null,
+                "failed_tactics": 0,
+                "goals": [],
+                "id": "hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+                "kernel_checked": true,
+                "mode": "trace",
+                "on_error": "stop",
+                "proof_nodes": 180,
+                "session": "peano-hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+                "status": "proved",
+                "surface": "peano-hydra-teacher-pilot-v3",
+                "tactics_applied": 13,
+                "tactics_requested": 13,
+                "theorem": "∀ x. ∃ y. x · (x + 1) = 2 · y",
+                "trace": null,
+                "trace_v": 1,
+                "v": 1
+              },
+              "include_heads": [
+                "cases",
+                "exact",
+                "exists",
+                "have",
+                "induction",
+                "intro",
+                "rewrite",
+                "specialize",
+                "suffices"
+              ],
+              "kind": "peano-batch-trace-profile-replay-v3",
+              "profile_replay": {
+                "classical": false,
+                "engine_steps": 13,
+                "environment_sha256": "f5f5bc0697d82723a8211638640a6afc2cbdba6b14c3a2397f008f80e1327ec6",
+                "error": null,
+                "error_type": null,
+                "failed_step": null,
+                "failed_tactics": 0,
+                "goals": [],
+                "id": "hydra-script-profile-4f2713e6a21e-644ac3ddeb08",
+                "kernel_checked": true,
+                "mode": "trace",
+                "on_error": "stop",
+                "proof_nodes": 180,
+                "session": "peano-hydra-script-4f2713e6a21e-644ac3ddeb08",
+                "status": "proved",
+                "surface": "peano-hydra-teacher-pilot-v3",
+                "tactics_applied": 13,
+                "tactics_requested": 13,
+                "theorem": "∀ x. ∃ y. x · (x + 1) = 2 · y",
+                "trace": null,
+                "trace_v": 1,
+                "v": 1
+              },
+              "profile_replay_trace_sha256": "aea9612068f6be8290ead9051fea1fae39e978d4c1c10476e3d3d2cdb210d600",
+              "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+              "trace_sha256": "b2441afb91bf32cd3a923d30ddce8246b9c66c2c7dd656d50680d5ad66e34047"
+            },
+            "record_count": 10,
+            "records_sha256": "6ac7d888167216567c8d4aef486d062642569350e143d8f5e51fd385a2e2152d",
+            "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b"
+          },
+          "quota": 1,
+          "role": "macro",
+          "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b"
+        }
+      ],
+      "kind": "peano-hydra-candidate-policy-v3",
+      "merge": "declared-head-order-stable-first-wins-v1",
+      "name": "peano-hydra-teacher-oracle-plumbing-v3",
+      "quota_reallocation": false,
+      "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+      "v": 3
+    },
+    "profile_evidence_schema": {
+      "claim_kind": "proved",
+      "conformant": false,
+      "format": "peano-hydra-result-schema",
+      "id": "peano-hydra-result-v1",
+      "ineligibility_reason": "surface-macro-v0 is not a peano-hydra-result-v1 evidence bundle: it does not retain the certificate hash/depth, kernel identity, or closed run/replay evidence hashes required by the semantic profile",
+      "schema_status": "exact-content-addressed",
+      "sha256": "cf1caf1c867ddfbe3c247e42a18b730ea6790269718170a51f9733d5a7a36b26",
+      "v": 1
+    },
+    "proposal_records": [
+      {
+        "accepted_candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "symbolic-compact-arith",
+        "head_identity_sha256": "d24db23876f81ac89185d1e1c6a6a2cdfdc0330f29d1962b06297d2fa8ece42f",
+        "outcome": "ok",
+        "portfolio_call": 1,
+        "quota": 2,
+        "requested": 2,
+        "response_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+        "role": "symbolic",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "0f7abc943389a172eb0043913562f4b0eea55617e3eab79f64a401864b16f00b",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "have strong : forall n. exists x. n * n + n = 2 * x"
+        ],
+        "candidates": [
+          "have strong : forall n. exists x. n * n + n = 2 * x"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "teacher-oracle-structural-macros",
+        "head_identity_sha256": "08cecafa9b3e127b1b93db60c33b43010d0b4cff560a9060f29aca3a03b78f72",
+        "outcome": "ok",
+        "portfolio_call": 1,
+        "quota": 1,
+        "requested": 1,
+        "response_sha256": "801b98d0628e719e68c6f2012aacf335c00a4938ba3ec2d694d7582ba7af1530",
+        "role": "macro",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "0f7abc943389a172eb0043913562f4b0eea55617e3eab79f64a401864b16f00b",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "⊢ ∀ x. ∃ y. x · x + x = 2 · y",
+          "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "symbolic-compact-arith",
+        "head_identity_sha256": "d24db23876f81ac89185d1e1c6a6a2cdfdc0330f29d1962b06297d2fa8ece42f",
+        "outcome": "ok",
+        "portfolio_call": 2,
+        "quota": 2,
+        "requested": 2,
+        "response_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+        "role": "symbolic",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "e7229d8841133f01975ce29c2eb6fc78e2fc3c7b77136ca0f9fa91686434ab0e",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "induction n"
+        ],
+        "candidates": [
+          "induction n"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "⊢ ∀ x. ∃ y. x · x + x = 2 · y",
+          "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "teacher-oracle-structural-macros",
+        "head_identity_sha256": "08cecafa9b3e127b1b93db60c33b43010d0b4cff560a9060f29aca3a03b78f72",
+        "outcome": "ok",
+        "portfolio_call": 2,
+        "quota": 1,
+        "requested": 1,
+        "response_sha256": "4b51b15b1ff3e51400a891c7afbb97c0d0d6907faa2df7d0fcff65e27c32b3f8",
+        "role": "macro",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "e7229d8841133f01975ce29c2eb6fc78e2fc3c7b77136ca0f9fa91686434ab0e",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "⊢ ∃ x. 0 · 0 + 0 = 2 · x",
+          "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+          "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "symbolic-compact-arith",
+        "head_identity_sha256": "d24db23876f81ac89185d1e1c6a6a2cdfdc0330f29d1962b06297d2fa8ece42f",
+        "outcome": "ok",
+        "portfolio_call": 3,
+        "quota": 2,
+        "requested": 2,
+        "response_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+        "role": "symbolic",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "0af03fc5c719dd500fc68ff5edd81a338fafac788444e5c049aa2e447b9f579a",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "exists 0"
+        ],
+        "candidates": [
+          "exists 0"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "⊢ ∃ x. 0 · 0 + 0 = 2 · x",
+          "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+          "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "teacher-oracle-structural-macros",
+        "head_identity_sha256": "08cecafa9b3e127b1b93db60c33b43010d0b4cff560a9060f29aca3a03b78f72",
+        "outcome": "ok",
+        "portfolio_call": 3,
+        "quota": 1,
+        "requested": 1,
+        "response_sha256": "048a628c82a44023d94bf3a1b08985c5b1fe365f8a52d9c2557f84e425430dfc",
+        "role": "macro",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "0af03fc5c719dd500fc68ff5edd81a338fafac788444e5c049aa2e447b9f579a",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "⊢ 0 · 0 + 0 = 2 · 0",
+          "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+          "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "symbolic-compact-arith",
+        "head_identity_sha256": "d24db23876f81ac89185d1e1c6a6a2cdfdc0330f29d1962b06297d2fa8ece42f",
+        "outcome": "ok",
+        "portfolio_call": 4,
+        "quota": 2,
+        "requested": 2,
+        "response_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+        "role": "symbolic",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "54b770e192db97441bf01a32a2e54dc8f58fb0a8a0666716d774ce96c65c2212",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [],
+        "candidates": [],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "⊢ 0 · 0 + 0 = 2 · 0",
+          "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+          "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "teacher-oracle-structural-macros",
+        "head_identity_sha256": "08cecafa9b3e127b1b93db60c33b43010d0b4cff560a9060f29aca3a03b78f72",
+        "outcome": "gated",
+        "portfolio_call": 4,
+        "quota": 1,
+        "requested": 0,
+        "response_sha256": null,
+        "role": "macro",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "54b770e192db97441bf01a32a2e54dc8f58fb0a8a0666716d774ce96c65c2212",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+          "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "symbolic-compact-arith",
+        "head_identity_sha256": "d24db23876f81ac89185d1e1c6a6a2cdfdc0330f29d1962b06297d2fa8ece42f",
+        "outcome": "ok",
+        "portfolio_call": 5,
+        "quota": 2,
+        "requested": 2,
+        "response_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+        "role": "symbolic",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "4fbcc40ca10f09bc23a8d4eb00f114efbcda8081abe912558c45a316ba11732e",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "cases IH"
+        ],
+        "candidates": [
+          "cases IH"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+          "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "teacher-oracle-structural-macros",
+        "head_identity_sha256": "08cecafa9b3e127b1b93db60c33b43010d0b4cff560a9060f29aca3a03b78f72",
+        "outcome": "ok",
+        "portfolio_call": 5,
+        "quota": 1,
+        "requested": 1,
+        "response_sha256": "6e563b2b6f1a217364be310be252b27dd251a01b8ae3ed15a6bf2e93720b7642",
+        "role": "macro",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "4fbcc40ca10f09bc23a8d4eb00f114efbcda8081abe912558c45a316ba11732e",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "n : ℕ, x : ℕ, IH : ∃ y. n · n + n = 2 · y, IH_witness : n · n + n = 2 · x ⊢ ∃ y. S n · S n + S n = 2 · y",
+          "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "symbolic-compact-arith",
+        "head_identity_sha256": "d24db23876f81ac89185d1e1c6a6a2cdfdc0330f29d1962b06297d2fa8ece42f",
+        "outcome": "ok",
+        "portfolio_call": 6,
+        "quota": 2,
+        "requested": 2,
+        "response_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+        "role": "symbolic",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "615b3e0b1af15d0a9f674433a416303fd6f1ab3f6d7d98dcb72b821a5247e373",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "exists x + S n"
+        ],
+        "candidates": [
+          "exists x + S n"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "n : ℕ, x : ℕ, IH : ∃ y. n · n + n = 2 · y, IH_witness : n · n + n = 2 · x ⊢ ∃ y. S n · S n + S n = 2 · y",
+          "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "teacher-oracle-structural-macros",
+        "head_identity_sha256": "08cecafa9b3e127b1b93db60c33b43010d0b4cff560a9060f29aca3a03b78f72",
+        "outcome": "ok",
+        "portfolio_call": 6,
+        "quota": 1,
+        "requested": 1,
+        "response_sha256": "24bb28e08cd3a4ce9adfeacf71a9129110c154caaec4c80205aab6a2001b5c2c",
+        "role": "macro",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "615b3e0b1af15d0a9f674433a416303fd6f1ab3f6d7d98dcb72b821a5247e373",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "n : ℕ, x : ℕ, IH : ∃ y. n · n + n = 2 · y, IH_witness : n · n + n = 2 · x ⊢ S n · S n + S n = 2 · (x + S n)",
+          "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "symbolic-compact-arith",
+        "head_identity_sha256": "d24db23876f81ac89185d1e1c6a6a2cdfdc0330f29d1962b06297d2fa8ece42f",
+        "outcome": "ok",
+        "portfolio_call": 7,
+        "quota": 2,
+        "requested": 2,
+        "response_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+        "role": "symbolic",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "1a68f21b83cb0872786f98a8ceddd41e94a0aa1ff07da434ce5447ea9b226bbb",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [],
+        "candidates": [],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "n : ℕ, x : ℕ, IH : ∃ y. n · n + n = 2 · y, IH_witness : n · n + n = 2 · x ⊢ S n · S n + S n = 2 · (x + S n)",
+          "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "teacher-oracle-structural-macros",
+        "head_identity_sha256": "08cecafa9b3e127b1b93db60c33b43010d0b4cff560a9060f29aca3a03b78f72",
+        "outcome": "gated",
+        "portfolio_call": 7,
+        "quota": 1,
+        "requested": 0,
+        "response_sha256": null,
+        "role": "macro",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "1a68f21b83cb0872786f98a8ceddd41e94a0aa1ff07da434ce5447ea9b226bbb",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "symbolic-compact-arith",
+        "head_identity_sha256": "d24db23876f81ac89185d1e1c6a6a2cdfdc0330f29d1962b06297d2fa8ece42f",
+        "outcome": "ok",
+        "portfolio_call": 8,
+        "quota": 2,
+        "requested": 2,
+        "response_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+        "role": "symbolic",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "2a877194fa378992bb96b92d405a366fc36b2c16c5863c71538aaee18c6f9774",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "intro n"
+        ],
+        "candidates": [
+          "intro n"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+        ],
+        "head": "teacher-oracle-structural-macros",
+        "head_identity_sha256": "08cecafa9b3e127b1b93db60c33b43010d0b4cff560a9060f29aca3a03b78f72",
+        "outcome": "ok",
+        "portfolio_call": 8,
+        "quota": 1,
+        "requested": 1,
+        "response_sha256": "7864d2db7efe55d38ba839d57c06baf5d6aa777ecc35463c00b2efdbeb97d9ed",
+        "role": "macro",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "2a877194fa378992bb96b92d405a366fc36b2c16c5863c71538aaee18c6f9774",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "n : ℕ, strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∃ x. n · (n + 1) = 2 · x"
+        ],
+        "head": "symbolic-compact-arith",
+        "head_identity_sha256": "d24db23876f81ac89185d1e1c6a6a2cdfdc0330f29d1962b06297d2fa8ece42f",
+        "outcome": "ok",
+        "portfolio_call": 9,
+        "quota": 2,
+        "requested": 2,
+        "response_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+        "role": "symbolic",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "caaa0efb67118783f9b6ae877a22d63914bdda7fb8940852e477e6d588011146",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "specialize strong n"
+        ],
+        "candidates": [
+          "specialize strong n"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "n : ℕ, strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∃ x. n · (n + 1) = 2 · x"
+        ],
+        "head": "teacher-oracle-structural-macros",
+        "head_identity_sha256": "08cecafa9b3e127b1b93db60c33b43010d0b4cff560a9060f29aca3a03b78f72",
+        "outcome": "ok",
+        "portfolio_call": 9,
+        "quota": 1,
+        "requested": 1,
+        "response_sha256": "2d1ebd5a4efa4b7991f47e932a04d946ccfabe5956f72ae17f1fe0c17376f145",
+        "role": "macro",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "caaa0efb67118783f9b6ae877a22d63914bdda7fb8940852e477e6d588011146",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ ∃ x. n · (n + 1) = 2 · x"
+        ],
+        "head": "symbolic-compact-arith",
+        "head_identity_sha256": "d24db23876f81ac89185d1e1c6a6a2cdfdc0330f29d1962b06297d2fa8ece42f",
+        "outcome": "ok",
+        "portfolio_call": 10,
+        "quota": 2,
+        "requested": 2,
+        "response_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+        "role": "symbolic",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "be3ec6ba990789e5cc4df16ff897ada83a431e0dd06365ff0cd875c550718fc1",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "suffices normalize : n * (n + 1) = n * n + n"
+        ],
+        "candidates": [
+          "suffices normalize : n * (n + 1) = n * n + n"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ ∃ x. n · (n + 1) = 2 · x"
+        ],
+        "head": "teacher-oracle-structural-macros",
+        "head_identity_sha256": "08cecafa9b3e127b1b93db60c33b43010d0b4cff560a9060f29aca3a03b78f72",
+        "outcome": "ok",
+        "portfolio_call": 10,
+        "quota": 1,
+        "requested": 1,
+        "response_sha256": "9264025b8cd280534a366fcc1d784c475a28cd096c15d6c2b5f71198bf2c4bcd",
+        "role": "macro",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "be3ec6ba990789e5cc4df16ff897ada83a431e0dd06365ff0cd875c550718fc1",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x, normalize : n · (n + 1) = n · n + n ⊢ ∃ x. n · (n + 1) = 2 · x",
+          "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+        ],
+        "head": "symbolic-compact-arith",
+        "head_identity_sha256": "d24db23876f81ac89185d1e1c6a6a2cdfdc0330f29d1962b06297d2fa8ece42f",
+        "outcome": "ok",
+        "portfolio_call": 11,
+        "quota": 2,
+        "requested": 2,
+        "response_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+        "role": "symbolic",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "98cd861a57937847008bad046ab39ca49f594fc408840e2ec958631f0c94f57d",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "rewrite normalize"
+        ],
+        "candidates": [
+          "rewrite normalize"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x, normalize : n · (n + 1) = n · n + n ⊢ ∃ x. n · (n + 1) = 2 · x",
+          "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+        ],
+        "head": "teacher-oracle-structural-macros",
+        "head_identity_sha256": "08cecafa9b3e127b1b93db60c33b43010d0b4cff560a9060f29aca3a03b78f72",
+        "outcome": "ok",
+        "portfolio_call": 11,
+        "quota": 1,
+        "requested": 1,
+        "response_sha256": "5c015c1e282de301271b96818aacd10f7462b80ed264f1d5814c0ae8f2849daa",
+        "role": "macro",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "98cd861a57937847008bad046ab39ca49f594fc408840e2ec958631f0c94f57d",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x, normalize : n · (n + 1) = n · n + n ⊢ ∃ x. n · n + n = 2 · x",
+          "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+        ],
+        "head": "symbolic-compact-arith",
+        "head_identity_sha256": "d24db23876f81ac89185d1e1c6a6a2cdfdc0330f29d1962b06297d2fa8ece42f",
+        "outcome": "ok",
+        "portfolio_call": 12,
+        "quota": 2,
+        "requested": 2,
+        "response_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+        "role": "symbolic",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "3aa417902a4c07bdc6fb40b1cbe4c5d2c62e10ffd04f3476fce35eb57471d900",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "exact strong"
+        ],
+        "candidates": [
+          "exact strong"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x, normalize : n · (n + 1) = n · n + n ⊢ ∃ x. n · n + n = 2 · x",
+          "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+        ],
+        "head": "teacher-oracle-structural-macros",
+        "head_identity_sha256": "08cecafa9b3e127b1b93db60c33b43010d0b4cff560a9060f29aca3a03b78f72",
+        "outcome": "ok",
+        "portfolio_call": 12,
+        "quota": 1,
+        "requested": 1,
+        "response_sha256": "9e00df8f1039f59681f15016da0fbf321663cac047142bbd2291c38542d93c14",
+        "role": "macro",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "3aa417902a4c07bdc6fb40b1cbe4c5d2c62e10ffd04f3476fce35eb57471d900",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "candidates": [
+          "compact_arith",
+          "compact_arith [IH_witness]"
+        ],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+        ],
+        "head": "symbolic-compact-arith",
+        "head_identity_sha256": "d24db23876f81ac89185d1e1c6a6a2cdfdc0330f29d1962b06297d2fa8ece42f",
+        "outcome": "ok",
+        "portfolio_call": 13,
+        "quota": 2,
+        "requested": 2,
+        "response_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+        "role": "symbolic",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "cbaec63d8b840b95333e3108f30396f48168bd6de3420d9f7d5207cbb358e56c",
+        "suppressed_duplicates": 0
+      },
+      {
+        "accepted_candidates": [],
+        "candidates": [],
+        "error": null,
+        "error_type": null,
+        "goals": [
+          "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+        ],
+        "head": "teacher-oracle-structural-macros",
+        "head_identity_sha256": "08cecafa9b3e127b1b93db60c33b43010d0b4cff560a9060f29aca3a03b78f72",
+        "outcome": "gated",
+        "portfolio_call": 13,
+        "quota": 1,
+        "requested": 0,
+        "response_sha256": null,
+        "role": "macro",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "state_sha256": "cbaec63d8b840b95333e3108f30396f48168bd6de3420d9f7d5207cbb358e56c",
+        "suppressed_duplicates": 0
+      }
+    ],
+    "proved": true,
+    "replay": {
+      "classical": false,
+      "engine_steps": 13,
+      "environment_sha256": "f5f5bc0697d82723a8211638640a6afc2cbdba6b14c3a2397f008f80e1327ec6",
+      "error": null,
+      "error_type": null,
+      "failed_step": null,
+      "failed_tactics": 0,
+      "goals": [],
+      "id": "hydra-replay-4f2713e6a21e-6ece7c224520",
+      "kernel_checked": true,
+      "mode": "trace",
+      "on_error": "stop",
+      "proof_nodes": 180,
+      "session": "peano-hydra-4f2713e6a21e-2948f50cdf96aa7f7bfecd0c",
+      "status": "proved",
+      "surface": "peano-hydra-teacher-pilot-v3",
+      "tactics_applied": 13,
+      "tactics_requested": 13,
+      "theorem": "∀ x. ∃ y. x · (x + 1) = 2 · y",
+      "trace": [
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "⊢ ∀ x. ∃ y. x · x + x = 2 · y",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "goals_before": [
+            "⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "session": "peano-hydra-4f2713e6a21e-2948f50cdf96aa7f7bfecd0c",
+          "status": "ok",
+          "step": 1,
+          "tactic": "have strong : forall n. exists x. n * n + n = 2 * x",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "⊢ ∃ x. 0 · 0 + 0 = 2 · x",
+            "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "goals_before": [
+            "⊢ ∀ x. ∃ y. x · x + x = 2 · y",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "session": "peano-hydra-4f2713e6a21e-2948f50cdf96aa7f7bfecd0c",
+          "status": "ok",
+          "step": 2,
+          "tactic": "induction n",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "⊢ 0 · 0 + 0 = 2 · 0",
+            "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "goals_before": [
+            "⊢ ∃ x. 0 · 0 + 0 = 2 · x",
+            "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "session": "peano-hydra-4f2713e6a21e-2948f50cdf96aa7f7bfecd0c",
+          "status": "ok",
+          "step": 3,
+          "tactic": "exists 0",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "goals_before": [
+            "⊢ 0 · 0 + 0 = 2 · 0",
+            "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "session": "peano-hydra-4f2713e6a21e-2948f50cdf96aa7f7bfecd0c",
+          "status": "ok",
+          "step": 4,
+          "tactic": "compact_arith",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "n : ℕ, x : ℕ, IH : ∃ y. n · n + n = 2 · y, IH_witness : n · n + n = 2 · x ⊢ ∃ y. S n · S n + S n = 2 · y",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "goals_before": [
+            "n : ℕ, IH : ∃ x. n · n + n = 2 · x ⊢ ∃ x. S n · S n + S n = 2 · x",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "session": "peano-hydra-4f2713e6a21e-2948f50cdf96aa7f7bfecd0c",
+          "status": "ok",
+          "step": 5,
+          "tactic": "cases IH",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "n : ℕ, x : ℕ, IH : ∃ y. n · n + n = 2 · y, IH_witness : n · n + n = 2 · x ⊢ S n · S n + S n = 2 · (x + S n)",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "goals_before": [
+            "n : ℕ, x : ℕ, IH : ∃ y. n · n + n = 2 · y, IH_witness : n · n + n = 2 · x ⊢ ∃ y. S n · S n + S n = 2 · y",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "session": "peano-hydra-4f2713e6a21e-2948f50cdf96aa7f7bfecd0c",
+          "status": "ok",
+          "step": 6,
+          "tactic": "exists x + S n",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "goals_before": [
+            "n : ℕ, x : ℕ, IH : ∃ y. n · n + n = 2 · y, IH_witness : n · n + n = 2 · x ⊢ S n · S n + S n = 2 · (x + S n)",
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "session": "peano-hydra-4f2713e6a21e-2948f50cdf96aa7f7bfecd0c",
+          "status": "ok",
+          "step": 7,
+          "tactic": "compact_arith [IH_witness]",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "n : ℕ, strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∃ x. n · (n + 1) = 2 · x"
+          ],
+          "goals_before": [
+            "strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y"
+          ],
+          "session": "peano-hydra-4f2713e6a21e-2948f50cdf96aa7f7bfecd0c",
+          "status": "ok",
+          "step": 8,
+          "tactic": "intro n",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ ∃ x. n · (n + 1) = 2 · x"
+          ],
+          "goals_before": [
+            "n : ℕ, strong : ∀ x. ∃ y. x · x + x = 2 · y ⊢ ∃ x. n · (n + 1) = 2 · x"
+          ],
+          "session": "peano-hydra-4f2713e6a21e-2948f50cdf96aa7f7bfecd0c",
+          "status": "ok",
+          "step": 9,
+          "tactic": "specialize strong n",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x, normalize : n · (n + 1) = n · n + n ⊢ ∃ x. n · (n + 1) = 2 · x",
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+          ],
+          "goals_before": [
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ ∃ x. n · (n + 1) = 2 · x"
+          ],
+          "session": "peano-hydra-4f2713e6a21e-2948f50cdf96aa7f7bfecd0c",
+          "status": "ok",
+          "step": 10,
+          "tactic": "suffices normalize : n * (n + 1) = n * n + n",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x, normalize : n · (n + 1) = n · n + n ⊢ ∃ x. n · n + n = 2 · x",
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+          ],
+          "goals_before": [
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x, normalize : n · (n + 1) = n · n + n ⊢ ∃ x. n · (n + 1) = 2 · x",
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+          ],
+          "session": "peano-hydra-4f2713e6a21e-2948f50cdf96aa7f7bfecd0c",
+          "status": "ok",
+          "step": 11,
+          "tactic": "rewrite normalize",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+          ],
+          "goals_before": [
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x, normalize : n · (n + 1) = n · n + n ⊢ ∃ x. n · n + n = 2 · x",
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+          ],
+          "session": "peano-hydra-4f2713e6a21e-2948f50cdf96aa7f7bfecd0c",
+          "status": "ok",
+          "step": 12,
+          "tactic": "exact strong",
+          "v": 1
+        },
+        {
+          "error": null,
+          "focus": 0,
+          "goals_after": [],
+          "goals_before": [
+            "n : ℕ, strong_before : ∀ x. ∃ y. x · x + x = 2 · y, strong : ∃ x. n · n + n = 2 · x ⊢ n · (n + 1) = n · n + n"
+          ],
+          "session": "peano-hydra-4f2713e6a21e-2948f50cdf96aa7f7bfecd0c",
+          "status": "ok",
+          "step": 13,
+          "tactic": "compact_arith",
+          "v": 1
+        },
+        {
+          "proof_size": 180,
+          "qed": true,
+          "tactic_count": 13,
+          "theorem": "∀ x. ∃ y. x · (x + 1) = 2 · y"
+        }
+      ],
+      "trace_v": 1,
+      "v": 1
+    },
+    "search": {
+      "candidates_executed": 35,
+      "certificate_nodes": 180,
+      "commands": [
+        "have strong : forall n. exists x. n * n + n = 2 * x",
+        "induction n",
+        "exists 0",
+        "compact_arith",
+        "cases IH",
+        "exists x + S n",
+        "compact_arith [IH_witness]",
+        "intro n",
+        "specialize strong n",
+        "suffices normalize : n * (n + 1) = n * n + n",
+        "rewrite normalize",
+        "exact strong",
+        "compact_arith"
+      ],
+      "depth_reached": 13,
+      "diagnostics": [
+        {
+          "command": "compact_arith",
+          "depth": 1,
+          "kind": "tactic_error",
+          "message": "`compact_arith` needs an equality goal.",
+          "state_sha256": "0f7abc943389a172eb0043913562f4b0eea55617e3eab79f64a401864b16f00b"
+        },
+        {
+          "command": "compact_arith [IH_witness]",
+          "depth": 1,
+          "kind": "tactic_error",
+          "message": "unknown hypothesis 'IH_witness'.",
+          "state_sha256": "0f7abc943389a172eb0043913562f4b0eea55617e3eab79f64a401864b16f00b"
+        },
+        {
+          "command": "compact_arith",
+          "depth": 2,
+          "kind": "tactic_error",
+          "message": "`compact_arith` needs an equality goal.",
+          "state_sha256": "e7229d8841133f01975ce29c2eb6fc78e2fc3c7b77136ca0f9fa91686434ab0e"
+        },
+        {
+          "command": "compact_arith [IH_witness]",
+          "depth": 2,
+          "kind": "tactic_error",
+          "message": "unknown hypothesis 'IH_witness'.",
+          "state_sha256": "e7229d8841133f01975ce29c2eb6fc78e2fc3c7b77136ca0f9fa91686434ab0e"
+        },
+        {
+          "command": "compact_arith",
+          "depth": 3,
+          "kind": "tactic_error",
+          "message": "`compact_arith` needs an equality goal.",
+          "state_sha256": "0af03fc5c719dd500fc68ff5edd81a338fafac788444e5c049aa2e447b9f579a"
+        },
+        {
+          "command": "compact_arith [IH_witness]",
+          "depth": 3,
+          "kind": "tactic_error",
+          "message": "unknown hypothesis 'IH_witness'.",
+          "state_sha256": "0af03fc5c719dd500fc68ff5edd81a338fafac788444e5c049aa2e447b9f579a"
+        },
+        {
+          "command": "compact_arith [IH_witness]",
+          "depth": 4,
+          "kind": "tactic_error",
+          "message": "unknown hypothesis 'IH_witness'.",
+          "state_sha256": "54b770e192db97441bf01a32a2e54dc8f58fb0a8a0666716d774ce96c65c2212"
+        },
+        {
+          "command": "compact_arith",
+          "depth": 5,
+          "kind": "tactic_error",
+          "message": "`compact_arith` needs an equality goal.",
+          "state_sha256": "4fbcc40ca10f09bc23a8d4eb00f114efbcda8081abe912558c45a316ba11732e"
+        },
+        {
+          "command": "compact_arith [IH_witness]",
+          "depth": 5,
+          "kind": "tactic_error",
+          "message": "unknown hypothesis 'IH_witness'.",
+          "state_sha256": "4fbcc40ca10f09bc23a8d4eb00f114efbcda8081abe912558c45a316ba11732e"
+        },
+        {
+          "command": "compact_arith",
+          "depth": 6,
+          "kind": "tactic_error",
+          "message": "`compact_arith` needs an equality goal.",
+          "state_sha256": "615b3e0b1af15d0a9f674433a416303fd6f1ab3f6d7d98dcb72b821a5247e373"
+        },
+        {
+          "command": "compact_arith [IH_witness]",
+          "depth": 6,
+          "kind": "tactic_error",
+          "message": "`compact_arith` needs an equality goal.",
+          "state_sha256": "615b3e0b1af15d0a9f674433a416303fd6f1ab3f6d7d98dcb72b821a5247e373"
+        },
+        {
+          "command": "compact_arith",
+          "depth": 7,
+          "kind": "tactic_error",
+          "message": "`compact_arith` found no proof in its bounded PA recurrence grammar.",
+          "state_sha256": "1a68f21b83cb0872786f98a8ceddd41e94a0aa1ff07da434ce5447ea9b226bbb"
+        },
+        {
+          "command": "compact_arith",
+          "depth": 8,
+          "kind": "tactic_error",
+          "message": "`compact_arith` needs an equality goal.",
+          "state_sha256": "2a877194fa378992bb96b92d405a366fc36b2c16c5863c71538aaee18c6f9774"
+        },
+        {
+          "command": "compact_arith [IH_witness]",
+          "depth": 8,
+          "kind": "tactic_error",
+          "message": "unknown hypothesis 'IH_witness'.",
+          "state_sha256": "2a877194fa378992bb96b92d405a366fc36b2c16c5863c71538aaee18c6f9774"
+        },
+        {
+          "command": "compact_arith",
+          "depth": 9,
+          "kind": "tactic_error",
+          "message": "`compact_arith` needs an equality goal.",
+          "state_sha256": "caaa0efb67118783f9b6ae877a22d63914bdda7fb8940852e477e6d588011146"
+        },
+        {
+          "command": "compact_arith [IH_witness]",
+          "depth": 9,
+          "kind": "tactic_error",
+          "message": "unknown hypothesis 'IH_witness'.",
+          "state_sha256": "caaa0efb67118783f9b6ae877a22d63914bdda7fb8940852e477e6d588011146"
+        },
+        {
+          "command": "compact_arith",
+          "depth": 10,
+          "kind": "tactic_error",
+          "message": "`compact_arith` needs an equality goal.",
+          "state_sha256": "be3ec6ba990789e5cc4df16ff897ada83a431e0dd06365ff0cd875c550718fc1"
+        },
+        {
+          "command": "compact_arith [IH_witness]",
+          "depth": 10,
+          "kind": "tactic_error",
+          "message": "unknown hypothesis 'IH_witness'.",
+          "state_sha256": "be3ec6ba990789e5cc4df16ff897ada83a431e0dd06365ff0cd875c550718fc1"
+        },
+        {
+          "command": "compact_arith",
+          "depth": 11,
+          "kind": "tactic_error",
+          "message": "`compact_arith` needs an equality goal.",
+          "state_sha256": "98cd861a57937847008bad046ab39ca49f594fc408840e2ec958631f0c94f57d"
+        },
+        {
+          "command": "compact_arith [IH_witness]",
+          "depth": 11,
+          "kind": "tactic_error",
+          "message": "unknown hypothesis 'IH_witness'.",
+          "state_sha256": "98cd861a57937847008bad046ab39ca49f594fc408840e2ec958631f0c94f57d"
+        },
+        {
+          "command": "compact_arith",
+          "depth": 12,
+          "kind": "tactic_error",
+          "message": "`compact_arith` needs an equality goal.",
+          "state_sha256": "3aa417902a4c07bdc6fb40b1cbe4c5d2c62e10ffd04f3476fce35eb57471d900"
+        },
+        {
+          "command": "compact_arith [IH_witness]",
+          "depth": 12,
+          "kind": "tactic_error",
+          "message": "unknown hypothesis 'IH_witness'.",
+          "state_sha256": "3aa417902a4c07bdc6fb40b1cbe4c5d2c62e10ffd04f3476fce35eb57471d900"
+        }
+      ],
+      "frontier_peak": 1,
+      "model_calls": 13,
+      "states_discovered": 13,
+      "states_expanded": 13,
+      "status": "proof",
+      "theorem": "∀ x. ∃ y. x · (x + 1) = 2 · y"
+    },
+    "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+    "status": "proof",
+    "theorem": "∀ x. ∃ y. x · (x + 1) = 2 · y",
+    "v": 3
+  },
+  "mutation_integrity_check": {
+    "claim_boundary": "transcript non-reuse check only; an unsolved search is unknown, not negative-decision evidence",
+    "passed": true,
+    "result": {
+      "commands_sha256": null,
+      "comparison_ineligibility_reasons": [
+        "surface-macro-v0 is pre-H0.3 plumbing without a registered provider attestation and raw-call evidence schema"
+      ],
+      "degradation_reasons": [],
+      "degraded": false,
+      "eligible_for_comparison": false,
+      "environment": {
+        "capabilities": {
+          "allowed_commands": [
+            "cases",
+            "compact_arith",
+            "exact",
+            "exists",
+            "have",
+            "induction",
+            "intro",
+            "rewrite",
+            "specialize",
+            "suffices"
+          ],
+          "allowed_theorems": [],
+          "label": "peano-hydra-teacher-pilot-v3"
+        },
+        "classical": false,
+        "environment_sha256": "f5f5bc0697d82723a8211638640a6afc2cbdba6b14c3a2397f008f80e1327ec6",
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "surface": "peano-hydra-teacher-pilot-v3"
+      },
+      "evidence_kind": "unknown",
+      "label": "teacher-transcript-mutation-integrity",
+      "limits": {
+        "beam_width": 1,
+        "candidates_per_state": 3,
+        "max_depth": 13,
+        "max_model_calls": 13,
+        "max_states": 14
+      },
+      "policy": "peano-hydra-teacher-oracle-plumbing-v3",
+      "policy_identity": {
+        "environment": {
+          "capabilities": {
+            "allowed_commands": [
+              "cases",
+              "compact_arith",
+              "exact",
+              "exists",
+              "have",
+              "induction",
+              "intro",
+              "rewrite",
+              "specialize",
+              "suffices"
+            ],
+            "allowed_theorems": [],
+            "label": "peano-hydra-teacher-pilot-v3"
+          },
+          "classical": false,
+          "environment_sha256": "f5f5bc0697d82723a8211638640a6afc2cbdba6b14c3a2397f008f80e1327ec6",
+          "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+          "surface": "peano-hydra-teacher-pilot-v3"
+        },
+        "heads": [
+          {
+            "gating": {
+              "state_sha256_allowlist": null
+            },
+            "identity_sha256": "d24db23876f81ac89185d1e1c6a6a2cdfdc0330f29d1962b06297d2fa8ece42f",
+            "name": "symbolic-compact-arith",
+            "policy": {
+              "candidates": [
+                "compact_arith",
+                "compact_arith [IH_witness]"
+              ],
+              "candidates_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+              "kind": "peano-hydra-fixed-candidate-policy-v3",
+              "name": "symbolic-compact-arith-hybrid-v3",
+              "provider": {
+                "candidates": [
+                  "compact_arith",
+                  "compact_arith [IH_witness]"
+                ],
+                "context_hint_enumeration": "fixed-at-every-state",
+                "kind": "fixed-untrusted-symbolic-closure-v3",
+                "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+                "teacher_conditioned": false
+              },
+              "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b"
+            },
+            "quota": 2,
+            "role": "symbolic",
+            "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b"
+          },
+          {
+            "gating": {
+              "state_sha256_allowlist": [
+                "0af03fc5c719dd500fc68ff5edd81a338fafac788444e5c049aa2e447b9f579a",
+                "0f7abc943389a172eb0043913562f4b0eea55617e3eab79f64a401864b16f00b",
+                "2a877194fa378992bb96b92d405a366fc36b2c16c5863c71538aaee18c6f9774",
+                "3aa417902a4c07bdc6fb40b1cbe4c5d2c62e10ffd04f3476fce35eb57471d900",
+                "4fbcc40ca10f09bc23a8d4eb00f114efbcda8081abe912558c45a316ba11732e",
+                "615b3e0b1af15d0a9f674433a416303fd6f1ab3f6d7d98dcb72b821a5247e373",
+                "98cd861a57937847008bad046ab39ca49f594fc408840e2ec958631f0c94f57d",
+                "be3ec6ba990789e5cc4df16ff897ada83a431e0dd06365ff0cd875c550718fc1",
+                "caaa0efb67118783f9b6ae877a22d63914bdda7fb8940852e477e6d588011146",
+                "e7229d8841133f01975ce29c2eb6fc78e2fc3c7b77136ca0f9fa91686434ab0e"
+              ]
+            },
+            "identity_sha256": "08cecafa9b3e127b1b93db60c33b43010d0b4cff560a9060f29aca3a03b78f72",
+            "name": "teacher-oracle-structural-macros",
+            "policy": {
+              "kind": "peano-hydra-script-candidate-policy-v3",
+              "name": "triangular-even-structural-teacher-v3",
+              "provider": {
+                "allow_partial": false,
+                "batch": {
+                  "classical": false,
+                  "engine_steps": 13,
+                  "environment_sha256": "f5f5bc0697d82723a8211638640a6afc2cbdba6b14c3a2397f008f80e1327ec6",
+                  "error": null,
+                  "error_type": null,
+                  "failed_step": null,
+                  "failed_tactics": 0,
+                  "goals": [],
+                  "id": "hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+                  "kernel_checked": true,
+                  "mode": "trace",
+                  "on_error": "stop",
+                  "proof_nodes": 180,
+                  "session": "peano-hydra-teacher-source-4f2713e6a21e-d324c0bdcc85",
+                  "status": "proved",
+                  "surface": "peano-hydra-teacher-pilot-v3",
+                  "tactics_applied": 13,
+                  "tactics_requested": 13,
+                  "theorem": "∀ x. ∃ y. x · (x + 1) = 2 · y",
+                  "trace": null,
+                  "trace_v": 1,
+                  "v": 1
+                },
+                "include_heads": [
+                  "cases",
+                  "exact",
+                  "exists",
+                  "have",
+                  "induction",
+                  "intro",
+                  "rewrite",
+                  "specialize",
+                  "suffices"
+                ],
+                "kind": "peano-batch-trace-profile-replay-v3",
+                "profile_replay": {
+                  "classical": false,
+                  "engine_steps": 13,
+                  "environment_sha256": "f5f5bc0697d82723a8211638640a6afc2cbdba6b14c3a2397f008f80e1327ec6",
+                  "error": null,
+                  "error_type": null,
+                  "failed_step": null,
+                  "failed_tactics": 0,
+                  "goals": [],
+                  "id": "hydra-script-profile-4f2713e6a21e-644ac3ddeb08",
+                  "kernel_checked": true,
+                  "mode": "trace",
+                  "on_error": "stop",
+                  "proof_nodes": 180,
+                  "session": "peano-hydra-script-4f2713e6a21e-644ac3ddeb08",
+                  "status": "proved",
+                  "surface": "peano-hydra-teacher-pilot-v3",
+                  "tactics_applied": 13,
+                  "tactics_requested": 13,
+                  "theorem": "∀ x. ∃ y. x · (x + 1) = 2 · y",
+                  "trace": null,
+                  "trace_v": 1,
+                  "v": 1
+                },
+                "profile_replay_trace_sha256": "aea9612068f6be8290ead9051fea1fae39e978d4c1c10476e3d3d2cdb210d600",
+                "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+                "trace_sha256": "b2441afb91bf32cd3a923d30ddce8246b9c66c2c7dd656d50680d5ad66e34047"
+              },
+              "record_count": 10,
+              "records_sha256": "6ac7d888167216567c8d4aef486d062642569350e143d8f5e51fd385a2e2152d",
+              "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b"
+            },
+            "quota": 1,
+            "role": "macro",
+            "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b"
+          }
+        ],
+        "kind": "peano-hydra-candidate-policy-v3",
+        "merge": "declared-head-order-stable-first-wins-v1",
+        "name": "peano-hydra-teacher-oracle-plumbing-v3",
+        "quota_reallocation": false,
+        "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+        "v": 3
+      },
+      "profile_evidence_schema": {
+        "claim_kind": "unknown",
+        "conformant": false,
+        "format": "peano-hydra-result-schema",
+        "id": "peano-hydra-result-v1",
+        "ineligibility_reason": "surface-macro-v0 is not a peano-hydra-result-v1 unknown-evidence bundle: it does not retain the required unknown reason or closed original-theorem and run-evidence hashes",
+        "schema_status": "exact-content-addressed",
+        "sha256": "cf1caf1c867ddfbe3c247e42a18b730ea6790269718170a51f9733d5a7a36b26",
+        "v": 1
+      },
+      "proposal_records": [
+        {
+          "accepted_candidates": [
+            "compact_arith",
+            "compact_arith [IH_witness]"
+          ],
+          "candidates": [
+            "compact_arith",
+            "compact_arith [IH_witness]"
+          ],
+          "error": null,
+          "error_type": null,
+          "goals": [
+            "⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y + 1"
+          ],
+          "head": "symbolic-compact-arith",
+          "head_identity_sha256": "d24db23876f81ac89185d1e1c6a6a2cdfdc0330f29d1962b06297d2fa8ece42f",
+          "outcome": "ok",
+          "portfolio_call": 1,
+          "quota": 2,
+          "requested": 2,
+          "response_sha256": "0861e9fef8db08eb0b4d9db1e14549acd2d4e33c1d21c9e818a65561ed823704",
+          "role": "symbolic",
+          "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+          "state_sha256": "714dcc1349bf0bbba0e5713183e66514304380933bb8746eeda15e653449317c",
+          "suppressed_duplicates": 0
+        },
+        {
+          "accepted_candidates": [],
+          "candidates": [],
+          "error": null,
+          "error_type": null,
+          "goals": [
+            "⊢ ∀ x. ∃ y. x · (x + 1) = 2 · y + 1"
+          ],
+          "head": "teacher-oracle-structural-macros",
+          "head_identity_sha256": "08cecafa9b3e127b1b93db60c33b43010d0b4cff560a9060f29aca3a03b78f72",
+          "outcome": "gated",
+          "portfolio_call": 1,
+          "quota": 1,
+          "requested": 0,
+          "response_sha256": null,
+          "role": "macro",
+          "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+          "state_sha256": "714dcc1349bf0bbba0e5713183e66514304380933bb8746eeda15e653449317c",
+          "suppressed_duplicates": 0
+        }
+      ],
+      "proved": false,
+      "replay": null,
+      "search": {
+        "candidates_executed": 2,
+        "certificate_nodes": null,
+        "commands": [],
+        "depth_reached": 0,
+        "diagnostics": [
+          {
+            "command": "compact_arith",
+            "depth": 1,
+            "kind": "tactic_error",
+            "message": "`compact_arith` needs an equality goal.",
+            "state_sha256": "714dcc1349bf0bbba0e5713183e66514304380933bb8746eeda15e653449317c"
+          },
+          {
+            "command": "compact_arith [IH_witness]",
+            "depth": 1,
+            "kind": "tactic_error",
+            "message": "unknown hypothesis 'IH_witness'.",
+            "state_sha256": "714dcc1349bf0bbba0e5713183e66514304380933bb8746eeda15e653449317c"
+          }
+        ],
+        "frontier_peak": 1,
+        "model_calls": 1,
+        "states_discovered": 1,
+        "states_expanded": 1,
+        "status": "exhausted",
+        "theorem": "∀ x. ∃ y. x · (x + 1) = 2 · y + 1"
+      },
+      "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+      "status": "exhausted",
+      "theorem": "∀ x. ∃ y. x · (x + 1) = 2 · y + 1",
+      "v": 3
+    }
+  },
+  "outcome": {
+    "control_status": "exhausted",
+    "hybrid_commands_match_teacher": true,
+    "hybrid_kernel_checked": true,
+    "hybrid_proof_nodes": 180,
+    "hybrid_status": "proof",
+    "mutated_theorem_status": "exhausted",
+    "mutated_transcript_rejected": true,
+    "semantic_profile_sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b"
+  },
+  "paired_budget": {
+    "beam_width": 1,
+    "candidates_per_state": 3,
+    "max_depth": 13,
+    "max_model_calls": 13,
+    "max_states": 14
+  },
+  "semantic_profile": {
+    "format": "peano-hydra-semantic-profile",
+    "id": "peano-lab-ha-intuitionistic-v2",
+    "sha256": "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b",
+    "v": 2
+  },
+  "teacher_oracle_plumbing": {
+    "enabled": true,
+    "macro_heads": [
+      "cases",
+      "exact",
+      "exists",
+      "have",
+      "induction",
+      "intro",
+      "rewrite",
+      "specialize",
+      "suffices"
+    ],
+    "macro_state_count": 10,
+    "macro_state_sha256s": [
+      "0af03fc5c719dd500fc68ff5edd81a338fafac788444e5c049aa2e447b9f579a",
+      "0f7abc943389a172eb0043913562f4b0eea55617e3eab79f64a401864b16f00b",
+      "2a877194fa378992bb96b92d405a366fc36b2c16c5863c71538aaee18c6f9774",
+      "3aa417902a4c07bdc6fb40b1cbe4c5d2c62e10ffd04f3476fce35eb57471d900",
+      "4fbcc40ca10f09bc23a8d4eb00f114efbcda8081abe912558c45a316ba11732e",
+      "615b3e0b1af15d0a9f674433a416303fd6f1ab3f6d7d98dcb72b821a5247e373",
+      "98cd861a57937847008bad046ab39ca49f594fc408840e2ec958631f0c94f57d",
+      "be3ec6ba990789e5cc4df16ff897ada83a431e0dd06365ff0cd875c550718fc1",
+      "caaa0efb67118783f9b6ae877a22d63914bdda7fb8940852e477e6d588011146",
+      "e7229d8841133f01975ce29c2eb6fc78e2fc3c7b77136ca0f9fa91686434ab0e"
+    ],
+    "paired_control": "identified null macro head with the same quota and state gate",
+    "source": "exact states and structural actions from a checked script",
+    "symbolic_head": {
+      "availability": "every expanded state in both lanes",
+      "candidates": [
+        "compact_arith",
+        "compact_arith [IH_witness]"
+      ],
+      "context_hint_policy": "fixed enumeration, independent of the teacher state map",
+      "provenance": "human-selected visible-context IH_witness enumeration for this plumbing pilot; not evidence of generic symbolic or model capability"
+    }
+  },
+  "v": 3
+}

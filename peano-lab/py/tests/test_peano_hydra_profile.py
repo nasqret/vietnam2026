@@ -5,7 +5,9 @@ from __future__ import annotations
 from copy import deepcopy
 import hashlib
 import json
+import os
 from pathlib import Path
+import subprocess
 import sys
 
 import pytest
@@ -21,20 +23,36 @@ import training.peano_hydra.profile as profile_module  # noqa: E402
 from training.peano_hydra.profile import (  # noqa: E402
     SEMANTIC_PROFILE_FORMAT,
     SEMANTIC_PROFILE_ID,
+    SEMANTIC_PROFILE_V1_DOCUMENT_SHA256,
+    SEMANTIC_PROFILE_V1_ID,
+    SEMANTIC_PROFILE_V1_PATH,
+    SEMANTIC_PROFILE_V1_SHA256,
+    SEMANTIC_PROFILE_V1_VERSION,
+    SEMANTIC_PROFILE_V2_SHA256,
     SEMANTIC_PROFILE_VERSION,
     SemanticProfileError,
     canonical_profile_theorem,
+    canonical_registered_profile_formula,
+    canonical_registered_profile_theorem,
     evidence_kind,
     semantic_profile,
     semantic_profile_identity,
     semantic_profile_sha256,
+    semantic_profile_registration,
+    semantic_profile_v1,
+    semantic_profile_v1_identity,
+    semantic_profile_v1_sha256,
+    semantic_profile_v2,
+    validate_semantic_profile_alignment,
     validate_semantic_profile,
+    validate_semantic_profile_v1,
     well_scoped_formula,
 )
+from training.peano_hydra.result_schema import result_schema_identity  # noqa: E402
 
 
 EXPECTED_PROFILE_SHA256 = (
-    "058b1644b066967919dae092e5e562b8845e4dd8415fff31d7cd209d51bc9e43"
+    "4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b"
 )
 
 
@@ -73,6 +91,164 @@ def test_registered_profile_is_canonical_detached_and_digest_pinned() -> None:
     assert semantic_profile()["v"] == SEMANTIC_PROFILE_VERSION
 
 
+def test_historical_v1_is_byte_preserved_and_independently_loadable() -> None:
+    first = semantic_profile_v1()
+    second = semantic_profile_v1()
+
+    assert first == second
+    assert first is not second
+    assert first["format"] == SEMANTIC_PROFILE_FORMAT
+    assert first["v"] == SEMANTIC_PROFILE_V1_VERSION == 1
+    assert first["id"] == SEMANTIC_PROFILE_V1_ID
+    assert SEMANTIC_PROFILE_V1_PATH.read_bytes() == _canonical_document(first)
+    assert hashlib.sha256(SEMANTIC_PROFILE_V1_PATH.read_bytes()).hexdigest() == (
+        SEMANTIC_PROFILE_V1_DOCUMENT_SHA256
+    )
+    assert semantic_profile_v1_sha256() == SEMANTIC_PROFILE_V1_SHA256 == (
+        "058b1644b066967919dae092e5e562b8845e4dd8415fff31d7cd209d51bc9e43"
+    )
+    assert semantic_profile_v1_identity() == {
+        "format": SEMANTIC_PROFILE_FORMAT,
+        "v": SEMANTIC_PROFILE_V1_VERSION,
+        "id": SEMANTIC_PROFILE_V1_ID,
+        "sha256": SEMANTIC_PROFILE_V1_SHA256,
+    }
+    assert first["evidence"]["schema_status"] == "required-field-draft"
+    assert first["evidence"]["additional_fields_policy"] == "not-yet-frozen"
+    assert first["evidence"]["hash_preimages"] == "not-yet-frozen"
+
+    mutation = deepcopy(first)
+    mutation["v"] = 2
+    with pytest.raises(SemanticProfileError, match="historical v1"):
+        validate_semantic_profile_v1(mutation)
+
+
+def test_digest_registry_freezes_historical_dispatch_and_schema_identity() -> None:
+    v1 = semantic_profile_registration(SEMANTIC_PROFILE_V1_SHA256)
+    v2 = semantic_profile_registration(SEMANTIC_PROFILE_V2_SHA256)
+    assert v1["v"] == 1
+    assert v1["result_schema_version"] is None
+    assert v2 == {
+        "certificate_representation": "peano-lab-v2",
+        "format": SEMANTIC_PROFILE_FORMAT,
+        "id": SEMANTIC_PROFILE_ID,
+        "logic": "intuitionistic",
+        "result_schema_sha256": result_schema_identity()["sha256"],
+        "result_schema_version": 1,
+        "sha256": SEMANTIC_PROFILE_V2_SHA256,
+        "theorem_canonicalizer": "canonical-profile-theorem-v2",
+        "v": 2,
+    }
+    assert canonical_registered_profile_theorem(
+        SEMANTIC_PROFILE_V2_SHA256, "forall q. q = q"
+    ) == "∀ x. x = x"
+    with pytest.raises(SemanticProfileError, match="not registered"):
+        semantic_profile_registration("0" * 64)
+
+
+def test_historical_artifact_loading_is_separate_from_live_alignment(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import peano_lab.kernel.checker as live_checker
+
+    monkeypatch.setattr(live_checker, "axiom_formula", lambda _name: None)
+    assert semantic_profile_v1()["v"] == 1
+    assert semantic_profile_v2()["v"] == 2
+    with pytest.raises(SemanticProfileError, match="absent or open"):
+        semantic_profile()
+    with pytest.raises(SemanticProfileError, match="absent or open"):
+        validate_semantic_profile_alignment(semantic_profile_v1())
+
+
+def test_historical_loading_and_canonicalizers_ignore_live_surface_evolution(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import peano_lab.kernel.formulas as live_formulas
+    import peano_lab.ui.prove as live_prove
+
+    def fail(*_args, **_kwargs):
+        raise AssertionError("historical canonicalization consulted a live surface")
+
+    monkeypatch.setattr(live_prove, "MAX_INPUT", 1)
+    monkeypatch.setattr(live_prove, "MAX_NUMERAL", 0)
+    monkeypatch.setattr(live_formulas, "parse_formula_with_names", fail)
+    monkeypatch.setattr(live_formulas, "pretty_formula", fail)
+    monkeypatch.setattr(live_prove, "oversized_numeral", fail)
+
+    assert semantic_profile_v1()["v"] == 1
+    assert semantic_profile_v2()["v"] == 2
+    for digest in (SEMANTIC_PROFILE_V1_SHA256, SEMANTIC_PROFILE_V2_SHA256):
+        assert canonical_registered_profile_theorem(
+            digest, "forall q. q = q"
+        ) == "∀ x. x = x"
+    with pytest.raises(AssertionError, match="live surface"):
+        semantic_profile()
+
+
+def test_historical_compatibility_is_frozen_before_profile_import() -> None:
+    source = """
+import peano_lab.kernel.formulas as live_formulas
+import peano_lab.ui.prove as live_prove
+import training.peano_hydra.result_schema as live_result_schema
+
+def fail(*_args, **_kwargs):
+    raise AssertionError("historical path consulted a live surface")
+
+live_prove.MAX_INPUT = 1
+live_prove.MAX_NUMERAL = 0
+live_prove.oversized_numeral = fail
+live_formulas.parse_formula_with_names = fail
+live_formulas.pretty_formula = fail
+live_result_schema.RESULT_SCHEMA_SHA256 = "f" * 64
+
+import training.peano_hydra.profile as profile
+assert profile.semantic_profile_v1()["v"] == 1
+assert profile.semantic_profile_v2()["v"] == 2
+for digest in (
+    profile.SEMANTIC_PROFILE_V1_SHA256,
+    profile.SEMANTIC_PROFILE_V2_SHA256,
+):
+    assert profile.canonical_registered_profile_theorem(
+        digest, "forall q. q = q"
+    ) == "∀ x. x = x"
+assert profile.semantic_profile_registration(
+    profile.SEMANTIC_PROFILE_V2_SHA256
+)["result_schema_sha256"] == (
+    "cf1caf1c867ddfbe3c247e42a18b730ea6790269718170a51f9733d5a7a36b26"
+)
+"""
+    environment = dict(os.environ)
+    environment["PYTHONPATH"] = os.pathsep.join(
+        (str(ROOT), str(ROOT / "peano-lab" / "py"))
+    )
+    completed = subprocess.run(
+        [sys.executable, "-c", source],
+        cwd=ROOT,
+        env=environment,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert completed.returncode == 0, completed.stderr
+
+
+def test_frozen_v1_v2_canonicalizer_matches_all_current_library_statements() -> None:
+    from peano_lab.kernel.formulas import parse_formula_with_names, pretty_formula
+    from peano_lab.library.theorems import THEOREMS
+
+    for theorem in THEOREMS:
+        formula, free_names = parse_formula_with_names(theorem.statement)
+        assert free_names == ()
+        expected = pretty_formula(formula, [])
+        for digest in (SEMANTIC_PROFILE_V1_SHA256, SEMANTIC_PROFILE_V2_SHA256):
+            assert canonical_registered_profile_theorem(
+                digest, theorem.statement
+            ) == expected
+            assert canonical_registered_profile_formula(
+                digest, formula
+            ) == expected
+
+
 def test_profile_matches_exact_kernel_axioms_rules_and_trust_boundary() -> None:
     profile = semantic_profile()
     axioms = profile["arithmetic"]["axioms"]
@@ -105,7 +281,7 @@ def test_profile_matches_exact_kernel_axioms_rules_and_trust_boundary() -> None:
     assert calculus["classical"] is False
     assert calculus["dne"] is False
     assert profile["authority"] == {
-        "certificate_representation": "python-dataclass-repr-with-cut-v2",
+        "certificate_representation": "peano-lab-v2",
         "classical_checker": "forbidden",
         "context": "empty",
         "goal": "original",
@@ -138,10 +314,18 @@ def test_profile_has_no_decision_or_negative_theoremhood_claim() -> None:
         "publication": "forbidden",
         "supported": False,
     }
-    assert evidence["schema_status"] == "required-field-draft"
-    assert evidence["additional_fields_policy"] == "not-yet-frozen"
-    assert evidence["hash_preimages"] == "not-yet-frozen"
-    assert "negative_evidence_sha256" in evidence["unknown"]["forbidden"]
+    assert evidence["schema_status"] == "exact-content-addressed"
+    assert evidence["additional_fields_policy"] == "forbidden"
+    assert evidence["canonical_json"] == "peano-hydra-canonical-json-v1"
+    assert evidence["hash_algorithm"] == "sha256"
+    assert evidence["hash_preimage"] == {
+        "format": "peano-hydra-result-hash-preimage",
+        "v": 1,
+    }
+    assert evidence["schema"] == result_schema_identity()
+    assert evidence["unknown_meaning"] == (
+        "no-accepted-certificate-and-no-negative-theoremhood-claim"
+    )
     assert profile["translations"]["external"] == []
 
 
@@ -198,7 +382,9 @@ def test_profile_loader_rejects_live_admission_limit_drift(
     field: str,
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    monkeypatch.setattr(profile_module, field, getattr(profile_module, field) + 1)
+    import peano_lab.ui.prove as live_prove
+
+    monkeypatch.setattr(live_prove, field, getattr(live_prove, field) + 1)
     with pytest.raises(SemanticProfileError, match="target admission"):
         semantic_profile()
 
@@ -260,7 +446,7 @@ def test_registered_schema_rejects_every_representative_mutation() -> None:
     mutations.append(extra)
 
     wrong_version = semantic_profile()
-    wrong_version["v"] = 2
+    wrong_version["v"] = 3
     mutations.append(wrong_version)
 
     classical = semantic_profile()
@@ -284,7 +470,7 @@ def test_registered_schema_rejects_every_representative_mutation() -> None:
     mutations.append(bool_as_integer)
 
     for mutation in mutations:
-        with pytest.raises(SemanticProfileError, match="registered v1"):
+        with pytest.raises(SemanticProfileError, match="registered v2"):
             validate_semantic_profile(mutation)
 
 
@@ -305,7 +491,7 @@ def test_artifact_loader_rejects_noncanonical_or_non_strict_json(
             b'"top_level_scope_depth": NaN',
             1,
         )
-    path = tmp_path / "semantic-profile-v1.json"
+    path = tmp_path / "semantic-profile-v2.json"
     path.write_bytes(bad)
     monkeypatch.setattr(profile_module, "SEMANTIC_PROFILE_PATH", path)
 
@@ -316,15 +502,17 @@ def test_artifact_loader_rejects_noncanonical_or_non_strict_json(
 def test_runtime_alignment_rejects_kernel_axiom_or_constructor_drift(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    original_axiom = profile_module.axiom_formula
+    import peano_lab.kernel.checker as live_checker
+
+    original_axiom = live_checker.axiom_formula
 
     def missing_pa3(name: str):
         return None if name == "PA3" else original_axiom(name)
 
-    monkeypatch.setattr(profile_module, "axiom_formula", missing_pa3)
+    monkeypatch.setattr(live_checker, "axiom_formula", missing_pa3)
     with pytest.raises(SemanticProfileError, match="PA3"):
         semantic_profile()
-    monkeypatch.setattr(profile_module, "axiom_formula", original_axiom)
+    monkeypatch.setattr(live_checker, "axiom_formula", original_axiom)
 
     original_inventory = profile_module.kernel_proofs.__all__
     monkeypatch.setattr(

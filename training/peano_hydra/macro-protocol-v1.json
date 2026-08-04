@@ -1,0 +1,631 @@
+{
+  "canonical_json": {
+    "allow_nan": false,
+    "encoding": "utf-8",
+    "key_order": "lexicographic",
+    "separators": [
+      ",",
+      ":"
+    ],
+    "wire_trailing_newline": false
+  },
+  "dispatch_adapter_identity": {
+    "additional_fields": "forbidden",
+    "exact_fields": [
+      "adapter",
+      "artifact_kind",
+      "artifact_sha256",
+      "configuration_sha256",
+      "format",
+      "v"
+    ],
+    "field_types": {
+      "adapter": "canonical-solver-token",
+      "artifact_kind": "enum:binary|source",
+      "artifact_sha256": "lowercase-sha256",
+      "configuration_sha256": "lowercase-sha256",
+      "format": "constant:peano-hydra-dispatch-adapter",
+      "v": "exact-integer:1"
+    },
+    "format": "peano-hydra-dispatch-adapter",
+    "v": 1
+  },
+  "dispatch_subprocess": {
+    "call": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "adapter_identity",
+        "configuration",
+        "context",
+        "format",
+        "request",
+        "request_sha256",
+        "v"
+      ],
+      "format": "peano-hydra-dispatch-call",
+      "request_bytes": "canonical compiled request bytes must equal canonical nested invoked request bytes and both SHA-256 preimages",
+      "v": 1
+    },
+    "host": {
+      "artifact_invocation": "copied-and-rehashed-direct-exec-without-shell",
+      "authority": "none",
+      "input": "detached-canonical-json-on-stdin",
+      "limits_enforced_externally": [
+        "cpu",
+        "wall-time",
+        "address-space-linux",
+        "data-segment-linux",
+        "file-output",
+        "open-files",
+        "process-count-via-rlimit-nproc-one"
+      ],
+      "output": "bounded-raw-inert-stdout-bytes-plus-one-rejection-evidence-byte",
+      "privileged_uid_policy": "fail-closed",
+      "process_limit": 1,
+      "resource_semantics": {
+        "memory_enforcement_modes": {
+          "darwin-sampled-leader-rss-only": {
+            "campaign_host_eligible": false,
+            "campaign_peak_metric_eligible": false,
+            "hard_ceiling": false,
+            "platform": "darwin",
+            "reported_peak_semantics": "maximum-sampled-leader-rss-not-exact-peak"
+          },
+          "linux-rlimit-as-data+sampled-leader-rss": {
+            "campaign_host_eligible": true,
+            "campaign_peak_metric_eligible": false,
+            "hard_ceiling": true,
+            "platform": "linux",
+            "reported_peak_semantics": "maximum-sampled-leader-rss-not-exact-peak"
+          }
+        },
+        "steps_used": {
+          "accepted_relation": "not-less-than-public-command-count-and-not-greater-than-request-max_steps",
+          "authority": "untrusted-adapter-self-report",
+          "campaign_usage_metric_eligible": false,
+          "host_enforced": false
+        }
+      },
+      "stderr": "discarded"
+    },
+    "response": {
+      "additional_fields": "forbidden",
+      "canonical_compact_json_required": true,
+      "exact_fields": [
+        "format",
+        "public_commands",
+        "status",
+        "steps_used",
+        "v"
+      ],
+      "field_types": {
+        "format": "constant:peano-hydra-dispatch-response",
+        "public_commands": "bounded-array-of-canonical-public-command-lines",
+        "status": "enum:theorem|unsat|sat|unknown|resource-limit",
+        "steps_used": "untrusted-adapter-reported-exact-nonnegative-integer",
+        "v": "exact-integer:1"
+      },
+      "format": "peano-hydra-dispatch-response",
+      "v": 1
+    }
+  },
+  "format": "peano-hydra-macro-protocol",
+  "id": "peano-hydra-macro-v1",
+  "limits": {
+    "max_dispatch_artifact_bytes": 268435456,
+    "max_dispatch_call_bytes": 4194304,
+    "max_dispatch_commands": 256,
+    "max_dispatch_configuration_bytes": 65536,
+    "max_dispatch_memory_bytes": 17179869184,
+    "max_dispatch_output_bytes": 2097152,
+    "max_dispatch_output_evidence_bytes": 2097153,
+    "max_dispatch_premises": 128,
+    "max_dispatch_request_bytes": 4194304,
+    "max_dispatch_status_characters": 128,
+    "max_dispatch_steps": 100000000,
+    "max_dispatch_wall_time_ms": 600000,
+    "max_error_characters": 2000,
+    "max_error_utf8_bytes": 8000,
+    "max_final_artifact_bytes": 67108864,
+    "max_macro_bytes": 65536,
+    "max_macro_trace_bytes": 8388608,
+    "max_name_characters": 128,
+    "max_owner_replay_steps": 10000,
+    "max_specializations": 32
+  },
+  "trace": {
+    "additional_fields": "forbidden-at-every-registered-object",
+    "effective_capability_hash_preimage": "compact-sorted-utf8-json-array-with-no-trailing-newline",
+    "field_sets": {
+      "adapter_identity": [
+        "adapter",
+        "artifact_kind",
+        "artifact_sha256",
+        "configuration_sha256",
+        "format",
+        "v"
+      ],
+      "compile": [
+        "dispatch",
+        "dispatch_request_sha256",
+        "error",
+        "public_commands",
+        "status"
+      ],
+      "dispatch_bounds": [
+        "max_memory_bytes",
+        "max_output_bytes",
+        "max_steps",
+        "max_wall_time_ms"
+      ],
+      "dispatch_call": [
+        "adapter_identity",
+        "configuration",
+        "context",
+        "format",
+        "request",
+        "request_sha256",
+        "v"
+      ],
+      "dispatch_request": [
+        "authority",
+        "bounds",
+        "premises",
+        "solver"
+      ],
+      "dispatch_response": [
+        "format",
+        "public_commands",
+        "status",
+        "steps_used",
+        "v"
+      ],
+      "effective_capability": [
+        "count",
+        "format",
+        "sha256",
+        "v"
+      ],
+      "environment": [
+        "allowed_actions",
+        "allowed_commands",
+        "allowed_theorems",
+        "capability_label",
+        "classical",
+        "effective_command_capability",
+        "effective_theorem_capability",
+        "logic",
+        "macro_protocol_identity",
+        "original_theorem",
+        "original_theorem_sha256",
+        "owner_capability_identity",
+        "owner_capability_sha256",
+        "registered_adapter_identities",
+        "registered_solvers",
+        "semantic_profile_identity"
+      ],
+      "final_replay": [
+        "certificate_depth",
+        "certificate_nodes",
+        "certificate_representation",
+        "certificate_sha256",
+        "commands",
+        "error",
+        "fresh",
+        "kernel_accepted",
+        "original_theorem",
+        "status"
+      ],
+      "history_entry": [
+        "args",
+        "tactic"
+      ],
+      "host_usage": [
+        "campaign_host_eligible",
+        "exit_code",
+        "max_observed_rss_bytes",
+        "memory_enforcement",
+        "memory_limit_bytes",
+        "output_bytes",
+        "output_limit_bytes",
+        "peak_processes",
+        "process_enforcement",
+        "process_limit",
+        "reconstructed_command_bytes",
+        "timed_out",
+        "wall_limit_ms",
+        "wall_time_ms"
+      ],
+      "intermediate_state": [
+        "command",
+        "command_index",
+        "state_summary"
+      ],
+      "macro_protocol_identity": [
+        "document_sha256",
+        "format",
+        "id",
+        "semantic_sha256",
+        "v"
+      ],
+      "outcome": [
+        "error",
+        "status"
+      ],
+      "owner_capability": [
+        "declared_commands",
+        "declared_theorems",
+        "effective_command_capability",
+        "effective_theorem_capability",
+        "format",
+        "label",
+        "v"
+      ],
+      "parse": [
+        "canonical",
+        "canonical_sha256",
+        "error",
+        "status"
+      ],
+      "premise": [
+        "formula",
+        "kind",
+        "name"
+      ],
+      "raw_proposal": [
+        "base64",
+        "bytes",
+        "encoding",
+        "sha256",
+        "text"
+      ],
+      "replay_entry": [
+        "classical",
+        "command"
+      ],
+      "solver": [
+        "adapter_configuration",
+        "adapter_identity",
+        "adapter_identity_sha256",
+        "authority",
+        "context",
+        "dispatch_call_request_sha256",
+        "dispatch_call_sha256",
+        "error",
+        "host_usage",
+        "raw_response_base64",
+        "raw_response_bytes",
+        "raw_response_sha256",
+        "reconstructed_commands",
+        "request",
+        "request_sha256",
+        "response_status",
+        "response_steps_used",
+        "step_accounting"
+      ],
+      "solver_context": [
+        "goals",
+        "original_theorem",
+        "premises"
+      ],
+      "state": [
+        "closed",
+        "goals",
+        "goals_sha256",
+        "history",
+        "replay",
+        "state_sha256"
+      ],
+      "state_summary": [
+        "closed",
+        "goals",
+        "goals_sha256",
+        "history_length",
+        "replay_length",
+        "summary_sha256"
+      ],
+      "top_level": [
+        "compile",
+        "environment",
+        "final_replay",
+        "format",
+        "intermediate_states",
+        "outcome",
+        "parse",
+        "raw_proposal",
+        "solver",
+        "state_after",
+        "state_before",
+        "v"
+      ]
+    },
+    "format": "peano-hydra-macro-trace",
+    "hash_preimages": {
+      "configuration_sha256": "canonical-compact-utf8-retained-adapter-configuration-object",
+      "dispatch_call_sha256": "canonical-compact-utf8-dispatch-call-reconstructed-from-retained-fields",
+      "dispatch_request_sha256": "canonical-compact-utf8-request-object",
+      "original_theorem_sha256": "canonical-theorem-utf8",
+      "owner_capability_sha256": "canonical-compact-utf8-owner-capability-object",
+      "raw_response_sha256": "exact-raw-subprocess-stdout-bytes",
+      "state_sha256": "domain-NUL-canonical-compact-utf8-state-without-state_sha256",
+      "summary_sha256": "domain-NUL-canonical-compact-utf8-summary-without-summary_sha256"
+    },
+    "nullability": {
+      "compile.dispatch": "object-iff-successful-Dispatch-else-null",
+      "compile.dispatch_request_sha256": "digest-iff-dispatch-else-null",
+      "compile.error": "text-iff-error-else-null",
+      "final_replay": "object-iff-closure-was-freshly-checked-else-null",
+      "parse.canonical": "object-iff-ok-else-null",
+      "parse.canonical_sha256": "digest-iff-ok-else-null",
+      "parse.error": "text-iff-error-else-null",
+      "raw_proposal.base64": "text-only-for-retained-non-utf8-bytes-else-null",
+      "raw_proposal.text": "text-only-for-utf-8-else-null",
+      "solver": "object-iff-compiled-Dispatch-else-null",
+      "solver.dispatch_call_request_sha256": "digest-iff-canonical-dispatch-call-was-prepared-else-null",
+      "solver.dispatch_call_sha256": "digest-iff-canonical-dispatch-call-was-prepared-else-null",
+      "solver.host_usage": "object-iff-process-launched-and-observed-else-null",
+      "solver.raw_response_base64": "text-iff-stdout-observed-else-null",
+      "solver.response_status": "enum-iff-raw-response-parsed-else-null"
+    },
+    "status_enums": {
+      "compile": [
+        "not-attempted",
+        "error",
+        "ok"
+      ],
+      "dispatch_response": [
+        "theorem",
+        "unsat",
+        "sat",
+        "unknown",
+        "resource-limit"
+      ],
+      "final_replay": [
+        "accepted",
+        "rejected"
+      ],
+      "logic": [
+        "intuitionistic"
+      ],
+      "outcome": [
+        "accepted",
+        "rejected"
+      ],
+      "parse": [
+        "not-attempted",
+        "error",
+        "ok"
+      ],
+      "premise_kind": [
+        "hypothesis",
+        "pa-axiom",
+        "public-theorem"
+      ],
+      "raw_encoding": [
+        "utf-8",
+        "base64",
+        "utf-8-sha256-only-oversize",
+        "invalid-unicode-sha256-only-oversize",
+        "bytes-sha256-only-oversize",
+        "invalid-unicode-diagnostic",
+        "invalid-type-diagnostic"
+      ]
+    },
+    "v": 1,
+    "validation_relations": [
+      "semantic-profile-identity-equals-the-live-pinned-profile",
+      "original-theorem-is-canonical-profile-text-and-hash-matches",
+      "owner-capability-identity-hash-and-effective-set-hashes-match",
+      "raw-proposal-bytes-count-and-hash-match-retained-payload",
+      "parsed-action-is-reparsed-from-raw-proposal-and-hash-matches",
+      "compiled-plan-equals-typed-compilation-under-owner-capabilities",
+      "compiled-invoked-and-traced-request-bytes-and-hashes-are-equal",
+      "retained-adapter-configuration-and-reconstructed-dispatch-call-hashes-match",
+      "dispatch-context-is-resolved-from-replayed-owner-and-library-state",
+      "adapter-identity-is-a-member-of-the-registered-environment",
+      "raw-response-is-canonical-strict-json-and-fields-match-trace",
+      "raw-response-rejection-evidence-is-bounded-by-one-global-sentinel-byte",
+      "host-limit-snapshot-equals-request-bounds-and-usage-is-recomputed",
+      "steps-used-is-an-untrusted-adapter-report-not-a-host-step-meter",
+      "campaign-eligible-hard-memory-dispatch-is-linux-non-root-only",
+      "reconstructed-commands-pass-the-current-public-surface-gate",
+      "state-before-and-every-intermediate-replay-under-owner-capabilities",
+      "rejected-outcomes-restore-state-before-exactly",
+      "accepted-closed-outcomes-replay-from-the-original-target",
+      "kernel-certificate-metrics-and-artifact-hash-are-recomputed"
+    ]
+  },
+  "transport": {
+    "actions": {
+      "Cut": {
+        "compilation": {
+          "channel": "public-surface",
+          "command_heads": [
+            "have",
+            "suffices"
+          ],
+          "command_templates": [
+            "{kind} {name} : {formula}"
+          ]
+        },
+        "exact_fields": [
+          "action",
+          "format",
+          "formula",
+          "kind",
+          "name",
+          "v"
+        ],
+        "field_types": {
+          "action": "registered-action-tag",
+          "format": "constant:peano-hydra-macro",
+          "formula": "canonical-profile-formula",
+          "kind": "enum:have|suffices",
+          "name": "fresh-surface-identifier",
+          "v": "exact-integer:1"
+        }
+      },
+      "Dispatch": {
+        "compilation": {
+          "channel": "untrusted-dispatch-reconstruction",
+          "command_heads": [],
+          "reconstruction_required": true,
+          "status_authority": false
+        },
+        "exact_fields": [
+          "action",
+          "bounds",
+          "format",
+          "premises",
+          "solver",
+          "v"
+        ],
+        "field_types": {
+          "action": "registered-action-tag",
+          "bounds": "exact-dispatch-bounds-object",
+          "format": "constant:peano-hydra-macro",
+          "premises": "array[unique-visible-premise-name,max=128]",
+          "solver": "registered-adapter-name",
+          "v": "exact-integer:1"
+        }
+      },
+      "Induct": {
+        "compilation": {
+          "channel": "public-surface",
+          "command_heads": [
+            "induction"
+          ],
+          "command_templates": [
+            "induction {variable}"
+          ]
+        },
+        "exact_fields": [
+          "action",
+          "format",
+          "motive",
+          "v",
+          "variable"
+        ],
+        "field_types": {
+          "action": "registered-action-tag",
+          "format": "constant:peano-hydra-macro",
+          "motive": "canonical-profile-formula-engine-equality-required",
+          "v": "exact-integer:1",
+          "variable": "surface-identifier"
+        }
+      },
+      "Rewrite": {
+        "compilation": {
+          "channel": "public-surface",
+          "command_heads": [
+            "rewrite"
+          ],
+          "command_templates": [
+            "rewrite {source}",
+            "rewrite <- {source}",
+            "rewrite {source} at {location}",
+            "rewrite <- {source} at {location}"
+          ]
+        },
+        "exact_fields": [
+          "action",
+          "direction",
+          "format",
+          "location",
+          "source",
+          "v"
+        ],
+        "field_types": {
+          "action": "registered-action-tag",
+          "direction": "enum:forward|backward",
+          "format": "constant:peano-hydra-macro",
+          "location": "null-or-visible-hypothesis-name",
+          "source": "visible-equation-or-pa-axiom-name",
+          "v": "exact-integer:1"
+        }
+      },
+      "Split": {
+        "compilation": {
+          "channel": "public-surface",
+          "command_heads": [
+            "split",
+            "left",
+            "right"
+          ],
+          "kind_to_command": {
+            "conjunction": "split",
+            "left": "left",
+            "right": "right"
+          }
+        },
+        "exact_fields": [
+          "action",
+          "format",
+          "kind",
+          "v"
+        ],
+        "field_types": {
+          "action": "registered-action-tag",
+          "format": "constant:peano-hydra-macro",
+          "kind": "enum:conjunction|left|right",
+          "v": "exact-integer:1"
+        }
+      },
+      "Use": {
+        "compilation": {
+          "channel": "public-surface",
+          "command_heads": [
+            "use",
+            "specialize"
+          ],
+          "command_templates": [
+            "use {name}",
+            "specialize {name} {specialization}"
+          ]
+        },
+        "exact_fields": [
+          "action",
+          "format",
+          "name",
+          "specializations",
+          "v"
+        ],
+        "field_types": {
+          "action": "registered-action-tag",
+          "format": "constant:peano-hydra-macro",
+          "name": "public-theorem-name",
+          "specializations": "array[canonical-term,max=32]",
+          "v": "exact-integer:1"
+        }
+      },
+      "Witness": {
+        "compilation": {
+          "channel": "public-surface",
+          "command_heads": [
+            "exists"
+          ],
+          "command_templates": [
+            "exists {term}"
+          ]
+        },
+        "exact_fields": [
+          "action",
+          "format",
+          "term",
+          "v"
+        ],
+        "field_types": {
+          "action": "registered-action-tag",
+          "format": "constant:peano-hydra-macro",
+          "term": "canonical-term",
+          "v": "exact-integer:1"
+        }
+      }
+    },
+    "additional_fields": "forbidden",
+    "format": "peano-hydra-macro",
+    "max_bytes": 65536,
+    "v": 1
+  },
+  "v": 1
+}

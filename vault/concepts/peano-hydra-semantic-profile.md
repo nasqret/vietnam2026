@@ -6,9 +6,11 @@ tags: [peano-lab, peano-hydra, semantics, trust-boundary]
 # Peano Hydra semantic profile
 
 The **Peano Hydra semantic profile** fixes what later search, data, prompts,
-and evaluation results mean. Profile v1 has format
-`peano-hydra-semantic-profile`, ID `peano-lab-ha-intuitionistic-v1`, and
+and evaluation results mean. The active profile v2 has format
+`peano-hydra-semantic-profile`, ID `peano-lab-ha-intuitionistic-v2`, and
 semantic SHA-256
+`4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b`.
+Historical profile v1 remains registered at digest
 `058b1644b066967919dae092e5e562b8845e4dd8415fff31d7cd209d51bc9e43`.
 
 It records the term/formula grammar, de Bruijn binding, capture-avoiding
@@ -28,20 +30,24 @@ external solver translation, decidable subfragment, negative witness, or
 `not_theorem` result. Kernel-checked certificates yield `proved`; every
 unsuccessful bounded search yields `unknown`.
 
-The result block is explicitly `required-field-draft`. It freezes the legal
-claim kinds and required-field direction, but exact types, additional-field
-policy, and canonical theorem/kernel/replay/run hash preimages remain H0.1b.
+Profile v2 closes the result block by content-addressing
+[[peano-hydra-result-evidence]] v1. That schema freezes exact types, rejects
+additional fields, and defines canonical theorem/kernel/replay/run hash
+preimages. Profile v1 keeps its historical `required-field-draft` label rather
+than being silently reinterpreted.
 
-The canonical JSON is `training/peano_hydra/semantic-profile-v1.json`; the
-strict loader is `training/peano_hydra/profile.py`. Hydra v2 policy, row, run,
-replay, and pilot records bind its semantic digest. This completes the H0.1a
-semantic/claim substep, not H0.1b exact evidence or the H0
-conformance/reference and structured [[macro-proof-action]] gates.
+The active canonical JSON is
+`training/peano_hydra/semantic-profile-v2.json`; the strict version registry is
+`training/peano_hydra/profile.py`. A frozen compatibility canonicalizer keeps
+v1/v2 interpretation independent of later browser parser and limit changes.
+Hydra v3 policy, row, run, replay, and pilot records bind the v2 digest.
 
 ## Related
 
 - [[peano-hydra]]
 - [[trusted-kernel]]
 - [[proof-certificate]]
+- [[peano-hydra-result-evidence]]
+- [[peano-hydra-conformance-campaign]]
 - [[decidable-proof-fragment]]
 - [[macro-proof-action]]

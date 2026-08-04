@@ -1,7 +1,7 @@
 # Peano Hydra — binding design
 
-**Status:** binding campaign architecture; H0.1a semantic/claim profile frozen
-2026-08-03, exact evidence schema and H0 acceptance still open
+**Status:** binding campaign architecture; H0 semantic and functional core
+completed 2026-08-04, H1 epoch/benchmark freeze still open
 
 **Implementation plan:** [`PLAN/11_peano_hydra.md`](../PLAN/11_peano_hydra.md)
 
@@ -86,17 +86,31 @@ certificate record, and result table. A formula outside the profile may be
 attempted by the sound prover but MUST NOT be counted in a fragment-decision
 result. A timeout or exhausted search is `unknown`, never negative evidence.
 
-The registered H0.1a profile is
-`training/peano_hydra/semantic-profile-v1.json`, with strict loader
-`training/peano_hydra/profile.py`. Its identity is format
+The historical H0.1a profile is
+`training/peano_hydra/semantic-profile-v1.json`. Its identity is format
 `peano-hydra-semantic-profile`, version 1, ID
 `peano-lab-ha-intuitionistic-v1`, and semantic SHA-256
 `058b1644b066967919dae092e5e562b8845e4dd8415fff31d7cd209d51bc9e43`.
-The semantic digest covers compact sorted-key UTF-8 JSON, excluding display
-indentation and the final line feed.
+It remains immutable and keeps its self-labeled draft evidence block.
 
-Version 1 admits closed, structurally well-scoped canonical Peano formulas.
-Its `operational_admission` block freezes the complete pre-parser boundary:
+H0.1b registers the active successor
+`training/peano_hydra/semantic-profile-v2.json`, ID
+`peano-lab-ha-intuitionistic-v2`, semantic SHA-256
+`4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b`.
+Its object language, logic, arithmetic axioms, induction rule, and no-decision
+claim are unchanged. It replaces only the draft evidence block with an exact
+content reference to `training/peano_hydra/result-schema-v1.json`, ID
+`peano-hydra-result-v1`, semantic SHA-256
+`cf1caf1c867ddfbe3c247e42a18b730ea6790269718170a51f9733d5a7a36b26`.
+The strict version registry is `training/peano_hydra/profile.py`; historical
+canonicalization is implemented by the frozen compatibility module
+`training/peano_hydra/profile_theorem_v1.py`, not by whichever browser parser
+and limits happen to be current. Semantic digests cover compact sorted-key
+UTF-8 JSON, excluding display indentation and the final line feed.
+
+Versions 1 and 2 admit the same closed, structurally well-scoped canonical
+Peano formulas. Their `operational_admission` block freezes the complete
+pre-parser boundary:
 nonempty one-line input with no outer whitespace, Unicode-code-point length
 at most 8,192, decimal numerals at most 256, explicit numeral-token boundaries,
 forbidden unsafe Unicode categories, and no `#` target syntax. These are
@@ -107,10 +121,16 @@ intuitionistic kernel calculus, PA1--PA6, and unrestricted formula induction.
 It forbids the classical checker and explicit de Bruijn target syntax,
 registers no external-solver translation or decidable subfragment, and
 supports only `proved` and `unknown`. A `not_theorem` publication is forbidden.
-Its evidence block is deliberately self-labeled `required-field-draft`: field
-types, additional-field policy, and the canonical preimages for theorem,
-kernel, replay, and run hashes are not frozen yet. That exact H0.1b schema must
-be reviewed before any record can claim `peano-hydra-result` conformance.
+
+Result schema v1 has exact disjoint field sets and forbids additions. A
+`proved` constructor receives an actual kernel `Formula` and `Proof`, checks it
+against the original theorem, derives bounded certificate metrics and the
+kernel identity, and retains all non-self-referential replay/run hash
+preimages. `unknown` carries a bounded reason and run evidence but no
+certificate, kernel-acceptance bit, solver-status authority, negative witness,
+or negative theoremhood claim. Domain-separated compact JSON defines every
+hash preimage. Profile v1's draft is historical; only profile v2 records may
+claim this exact `peano-hydra-result` v1 conformance.
 
 ### 2.3 Library-epoch law
 
@@ -272,6 +292,32 @@ before proposal, allowed actions, raw proposal, parse result, compiled public
 commands, intermediate states, solver transcript, resource use, and final
 kernel outcome.
 
+The frozen H0.3 implementation is
+`training/peano_hydra/macro-protocol-v1.json`, ID
+`peano-hydra-macro-v1`, semantic SHA-256
+`b5fef1ea1b85251ab7f0b8c111cb37e789f96f20771665b4f0dc8b746400552c`.
+`training/peano_hydra/macros.py` provides exact typed parsing/serialization and
+deterministic compilation; `training/peano_hydra/macro_runner.py` owns the
+transactional untrusted executor and replay-aware trace validator.
+
+`Dispatch` MUST NOT accept an in-process callback. Its adapter registration is
+a reconstructed, content-addressed executable plus canonical configuration.
+The host prepares one exact canonical child-call preimage, executes a copied
+artifact without a shell in a fresh process, and retains the configuration,
+call hash, raw bounded stdout, and host observations. Solver status has no
+authority; at least one reconstructed command must pass the same capability-
+checked public surface. Malformed or over-limit output still produces bounded
+canonical rejection evidence and exact rollback.
+
+Resource descriptions MUST distinguish enforcement from reporting.
+`steps_used` is untrusted adapter self-reporting constrained between the number
+of returned commands and the requested maximum; it is not a host instruction
+counter or campaign usage metric. Linux non-root `RLIMIT_AS`/`RLIMIT_DATA`
+execution is the campaign-eligible hard-memory mode. Darwin leader-RSS
+sampling is diagnostic and campaign-ineligible, and its observed maximum is
+not called an exact peak. Provider/host attestation remains required before a
+later campaign may consume any host-eligibility claim.
+
 The H0 bootstrap intentionally precedes that structured version-1 protocol.
 Its compatibility action, `MacroAction(line)`, carries exactly one canonical
 public surface line whose head is restricted to explicit proof-structuring
@@ -280,8 +326,8 @@ operations (`have`, `suffices`, `exists`, `induction`, `cases`, `apply`,
 tactical wrappers, session commands, and multiline programs. This lets us test
 portfolio quotas, critical-state gating, transactional execution, provenance,
 and fresh kernel replay without inventing a second interpreter. It is
-`surface-macro-v0`, not completion of H0.3; the structured schema above remains
-the gate before model training or a campaign benchmark.
+`surface-macro-v0`; it did not constitute H0.3. The structured schema above
+remains the gate before model training or a campaign benchmark.
 
 The bootstrap implementation lives outside the trusted prover in
 `training/peano_hydra/`. A portfolio is only an untrusted
@@ -298,18 +344,21 @@ head succeeds, but marks the run degraded and ineligible for a matched
 comparison. Missing identity, environment, proposal ledger, or replay
 agreement blocks publication.
 
-Policy, runner, and teacher-pilot record schemas version 2 carry the semantic
-profile digest directly in environments, head identities, proposal and
-recorded-state rows, run records, source artifacts, and result tables. Replay
-identifiers also bind it. A legacy model prompt that does not expose this
-identity is rejected before generation; Hydra needs a future profile-aware
-prompt contract before admitting such a model head. Historical pilot v1 is
-preserved as pre-profile evidence, while pilot v2 is the profile-bound
-regression. These bindings do not promote `surface-macro-v0` to the structured
-H0.3 protocol or make any row comparison-eligible. The pilot v2 run records
-also say explicitly that they are not complete `peano-hydra-result` v1
-evidence bundles: certificate hashes/depths, kernel identity, and closed
-run/replay evidence hashes remain H0 evidence work.
+Policy, runner, and teacher-pilot record schemas version 3 carry the active
+profile-v2/result-schema identity directly in environments, head identities,
+proposal and recorded-state rows, run records, source artifacts, and result
+tables. Replay identifiers also bind it. A legacy model prompt that does not
+expose this identity is rejected before generation; Hydra needs a future
+profile-aware prompt contract before admitting such a model head. Historical
+pilot v1 is preserved as pre-profile evidence, pilot v2 is the profile-v1
+regression, and pilot v3 is the profile-v2/result-schema-bound regression.
+These bindings do not promote `surface-macro-v0` to the structured H0.3
+protocol or make any row comparison-eligible. The pilot v3 run records also
+say explicitly that they are not complete `peano-hydra-result` v1 evidence
+bundles: certificate hashes/depths, kernel identity, and closed run/replay
+evidence hashes are deliberately absent from that historical pilot. The
+separate H0 result-schema and retained conformance artifacts supply those
+fields; pilot v3 itself remains comparison-ineligible.
 
 Every `surface-macro-v0` result is explicitly **ineligible for campaign
 comparison**, even when execution is complete and non-degraded. The bootstrap
@@ -410,7 +459,7 @@ reference semantics, and proof-producing symbolic core.
 
 Acceptance:
 
-- the `L0` catalog cold-replays twice with identical roots and 100% kernel
+- the H0 candidate-`L0` catalog cold-replays twice with identical roots and 100% kernel
   acceptance;
 - at least 1,000 semantic-conformance formulas are tested, including at least
   400 theorems and, for any decision claim, at least 400 certified
@@ -424,12 +473,29 @@ Any false acceptance, unresolved fragment semantics, or unsupported negative
 claim is a no-go. If negative evidence is unavailable, pivot explicitly to a
 sound semi-decision theorem prover.
 
-H0.1a is complete: the intuitionistic semantics and positive/unknown claim
-boundary are frozen and bound through the current Hydra v2 records. H0.1 as a
-whole is not complete until H0.1b freezes exact evidence schemas and hash
-preimages. The H0.2 cold-replay, independent-reference, conformance, and
-mutation work; the H0.3 structured macro protocol; and every H0 acceptance
-condition above also remain open.
+H0 completed on 2026-08-04. The retained evidence is
+`artifacts/peano-hydra/h0-validation-v2.json`, SHA-256
+`55c60502b2229f4420bd4557058842bebb582f491739e82a6dae06de5b803fdb`,
+produced from clean commit
+`26c2503b36c6884bfbfa6dabd1494bbda49d8926`. It records two identical
+100%-green fresh-process replays of the 384-entry candidate catalog at root
+`fae19fad55c416ae7b695107390c1c733d6740fe63d10cf0efed127f5801b9d2`;
+1,024 distinct positives and 1,024 wrong-target certificate rejections; ten
+artifact mutations plus three profile/schema boundary mutations; agreement
+with the exactly registered independent Lean reference on all 2,058 artifact
+cases; and green kernel-import, original-goal, and transactional-state
+regressions. It also retains the seven typed macro fixtures, deterministic
+accepted/rollback traces, exact Dispatch preimages with fresh original-goal
+kernel replay, and the 110-test macro transcript required by H0.3. Rust and
+WASM out-of-envelope cases are pre-registered diagnostic resource
+classifications, not semantic disagreements. Dispatch resource observations
+and pytest duration are not stable semantic identities. Report v1 is retained
+only as provisional H0.1/H0.2 evidence and is superseded for complete-H0 use.
+
+This closes the semantic and functional core only. The 384-entry catalog is an
+H0 candidate-L0 replay corpus, not H1's frozen library epoch. H1 still must
+seal exact theorem metadata, genealogy, dependency masks, benchmark partitions,
+and the interface-headroom experiment before training or comparison claims.
 
 ### H1 — Frozen epoch, benchmark, and interface headroom
 

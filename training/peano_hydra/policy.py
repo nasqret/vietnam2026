@@ -36,7 +36,7 @@ from training.peano_hydra.profile import (
 from training.peano_policy.search import CandidatePolicy, state_sha256
 
 
-HYDRA_POLICY_VERSION = 2
+HYDRA_POLICY_VERSION = 3
 MAX_RECORDED_STATES = 4_096
 MAX_RECORDED_CANDIDATES_PER_STATE = 1_024
 MAX_POLICY_NAME_CHARS = 160
@@ -619,7 +619,7 @@ class HydraCandidatePolicy:
     """Deterministically merge bounded, identified candidate-policy heads."""
 
     heads: tuple[PolicyHead, ...]
-    name: str = "peano-hydra-candidate-policy-v2"
+    name: str = "peano-hydra-candidate-policy-v3"
     _environment_json: str = field(init=False, repr=False)
     _semantic_profile_sha256: str = field(init=False, repr=False)
     _records: list[ProposalRecord] = field(init=False, repr=False)
@@ -660,7 +660,7 @@ class HydraCandidatePolicy:
     def evaluation_identity(self) -> dict[str, object]:
         return {
             "name": self.name,
-            "kind": "peano-hydra-candidate-policy-v2",
+            "kind": "peano-hydra-candidate-policy-v3",
             "v": HYDRA_POLICY_VERSION,
             "semantic_profile_sha256": self.semantic_profile_sha256,
             "merge": "declared-head-order-stable-first-wins-v1",
@@ -931,7 +931,7 @@ class FixedCandidatePolicy:
     def evaluation_identity(self) -> dict[str, object]:
         return {
             "name": self.name,
-            "kind": "peano-hydra-fixed-candidate-policy-v2",
+            "kind": "peano-hydra-fixed-candidate-policy-v3",
             "semantic_profile_sha256": _environment_profile_digest(
                 self._environment_json
             ),
@@ -976,7 +976,7 @@ class NullCandidatePolicy:
     def evaluation_identity(self) -> dict[str, object]:
         return {
             "name": self.name,
-            "kind": "peano-hydra-null-candidate-policy-v2",
+            "kind": "peano-hydra-null-candidate-policy-v3",
             "semantic_profile_sha256": _environment_profile_digest(
                 self._environment_json
             ),
@@ -1046,7 +1046,7 @@ class RecordedCandidatePolicy:
         name: str,
         policy_environment: Mapping[str, object],
         provider_identity: Mapping[str, object],
-        _kind: str = "peano-hydra-recorded-candidate-policy-v2",
+        _kind: str = "peano-hydra-recorded-candidate-policy-v3",
     ) -> None:
         self.name = _safe_policy_name(name)
         environment_json = _policy_environment_json(policy_environment)
@@ -1367,7 +1367,7 @@ class ScriptCandidatePolicy(RecordedCandidatePolicy):
             raise ValueError("profile-bound batch trace differs from its source")
 
         provider_identity = {
-            "kind": "peano-batch-trace-profile-replay-v2",
+            "kind": "peano-batch-trace-profile-replay-v3",
             "semantic_profile_sha256": profile_digest,
             "batch": batch.to_dict(include_trace=False),
             "trace_sha256": hashlib.sha256(trace_json.encode("utf-8")).hexdigest(),
@@ -1385,7 +1385,7 @@ class ScriptCandidatePolicy(RecordedCandidatePolicy):
             name=name,
             policy_environment=environment,
             provider_identity=provider_identity,
-            _kind="peano-hydra-script-candidate-policy-v2",
+            _kind="peano-hydra-script-candidate-policy-v3",
         )
 
 

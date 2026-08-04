@@ -3072,3 +3072,248 @@ repository to `/peano-lab-src`. A regression assertion rejects the live
 workspace path and requires the virtual prefix. The path-remapped module was
 rebuilt twice, the full 1,536-case campaign was repeated, and only the
 WASM/report/release hashes changed; both logical receipts stayed identical.
+
+## 2026-08-04 — H0 completion began with versioning, not reinterpretation
+
+The Hydra semantic profile frozen in H0.1a explicitly says that its evidence
+contract is a draft. Completing H0.1b therefore cannot mean silently changing
+the value behind that already published digest. We will preserve profile v1
+and its pilot as historical evidence, and register a successor profile whose
+object language, intuitionistic calculus, arithmetic axioms, induction schema,
+and no-negative-claim boundary are unchanged. The successor changes only what
+H0.1a deliberately left open: exact proved/unknown result fields, strict
+additional-field rejection, and domain-separated hash preimages.
+
+The same discipline applies to macros. `Use`, `Cut`, `Witness`, `Induct`,
+`Rewrite`, `Split`, and bounded `Dispatch` will be typed untrusted transport
+values. They must compile to the existing public tactic language or to a
+bounded solver request whose output is reconstructed through that language.
+No macro receives a proof constructor, theorem lookup, or QED path of its own.
+An entire multi-command macro is transactional: it runs against immutable
+intermediate owners and publishes the new owner only after every compiled
+command succeeds. Failure returns the exact original proof state and history.
+
+There is also a naming tension in the campaign plan: H0 asks for two cold
+replays of `L0`, while H1 owns the actual epoch freeze, lineage masks, and
+benchmark boundary. For H0 we will seal and replay the current ordered public
+catalog as the **H0 candidate-L0 reference corpus**. This establishes semantic
+agreement without claiming that H1's campaign epoch or benchmark has already
+been frozen. H1 remains a separate milestone.
+
+### The evidence hash is a sentence, not a bag of bytes
+
+The reviewed result contract uses a small domain-separated envelope for every
+digest: `format`, version, field name, and payload are encoded as compact
+sorted-key UTF-8 JSON. This prevents the same bytes from being silently reused
+as, for example, both a theorem hash and a replay hash. It also avoids the
+usual self-reference trap: kernel, replay, and run evidence are hashed as
+standalone versioned objects which are forbidden from containing their own
+output digest key. The result record then contains only those digests.
+
+`proved` and `unknown` have exact, disjoint field sets. Extra keys are rejected.
+Only `proved` may carry certificate metrics, the kernel identity, replay
+evidence, and the exact Boolean `kernel_accepted = true`. `unknown` carries one
+bounded reason enum and no certificate or negative witness. In particular,
+neither a timeout nor a certificate rejected against a deliberately different
+target can be relabeled `not_theorem`.
+
+This completed the deliberately open portion of profile v1, so the active
+profile is now successor v2 with semantic digest
+`4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b`.
+Its arithmetic and intuitionistic calculus are byte-for-byte the same data as
+v1; only the profile ID/version and evidence block change. The exact result
+schema has digest
+`cf1caf1c867ddfbe3c247e42a18b730ea6790269718170a51f9733d5a7a36b26`.
+Historical profile v1 and pilot artifacts remain pinned and independently
+loadable. Current policy, runner, and pilot carriers move to version 3 so they
+cannot be confused with records bound to the earlier draft-evidence profile.
+
+### Freeze the compatibility implementation, not only its name
+
+A final adversarial pass found two holes before profile v2 was sealed. First,
+the run identifier rejected `not_theorem` but accepted separator-equivalent
+spellings such as `not-theorem` and `not.theorem`. Run identifiers now compare
+both normalized and separator-free forms against the forbidden negative-claim
+vocabulary, and the exact schema records that rule. Punctuation cannot become
+a covert `not_theorem` result channel.
+
+Second, registry entries named v1 and v2 canonicalizers, but both still called
+the live browser limits, parser, and printer. A later UI release could therefore
+make a byte-pinned historical profile unloadable or reinterpret an old theorem.
+The shared v1/v2 grammar, numeral preflight, scope check, and canonical printer
+now live in a frozen compatibility module. Historical artifact loading and
+canonicalization succeed even when a fresh process changes the live UI limits
+and replaces the live parser/printer before importing Hydra; active alignment
+continues to diagnose that drift separately. Profile v2's registry row likewise
+embeds its frozen result-schema-v1 identity instead of reading whichever schema
+a future profile makes active. The frozen implementation agrees with the
+original live canonical form on all 384 current library statements.
+
+The revised unsealed schema document has SHA-256
+`d3a402f3bee847a8bfbee8b9bcbe49dc68bf99ba495cff60006fec5ed65364a0`;
+the profile-v2 document has SHA-256
+`e19162d0e78779d34e5e02166eeb109c5a75091b4692fe37577a7fa47ff29287`.
+The deterministically regenerated pilot-v3 report has SHA-256
+`508a6ead5434b4340779f8e4888204cf75c4dcadb31ae7733cc19802623fe432`.
+Profile v1 and historical pilots v1/v2 remain byte-identical. The focused
+profile/result suite passed 76 tests, and the profile-bound
+policy/runner/pilot/conformance group passed all 143 tests on these bytes.
+
+### Frozen objects are not a sandbox
+
+The first typed `Dispatch` runner accepted an in-process callback. That was
+convenient for a unit test and wrong for the protocol. A callback can close
+over the live owner, mutate its `TraceLogger`, alter module globals, call
+`object.__setattr__` on a frozen value, ignore a wall clock declaration, or
+never return. Transactional proof-state code cannot make arbitrary Python code
+transactional. We removed the callback surface rather than accumulating more
+conventions around it.
+
+The replacement registration contains a content-addressed executable and
+canonical JSON configuration. Invocation copies the executable into a fresh
+temporary directory and gives it detached canonical JSON. The child never sees
+the `ProofSession`. Its status is inert, and every returned command must pass
+the normal public surface. A closed temporary state is still checked through a
+fresh replay from the owner-held original theorem.
+
+The adversarial review found several places where “frozen” still meant only
+“polite callers should not edit this.” A forged exact registration could skip
+its constructor; the registry now reconstructs it. A frozen bounds object could
+be altered after compilation; invoked bytes are compared with compiled bytes.
+A plausible trace could invent a state or certificate metric; trace loading now
+replays the state prefix and final kernel certificate. Overlong diagnostics,
+observed resource values above their declarations, malformed solver JSON, and
+the one-byte output-overflow sentinel all receive explicit bounded rejection
+relations. The protocol also binds its runner-owned trace and adapter versions,
+not just field names.
+
+Resource words required the same honesty. An external adapter reports
+`steps_used`; the host can reject a report above the requested number, but it
+cannot retroactively count arbitrary solver instructions. We record that field
+as untrusted adapter accounting. Linux can impose hard address/data limits on
+the non-root campaign child. Darwin can sample direct RSS, which is useful for
+diagnosis but is not a hard peak-memory theorem. The protocol says so and makes
+campaign eligibility platform-specific rather than laundering a sample into a
+bound.
+
+### Conformance evidence must bind its verifier
+
+The first H0.2 controller accepted any executable placed under any clean Git
+tree with appropriately named files. It recorded the resulting commit and
+hashes, but that is only post-hoc provenance: a fake oracle could still be
+called the independent Lean reference. The retained controller now requires
+the reviewed Lean commit, full source-manifest root, toolchain text/hash,
+verifier hash, and verifier size. Rust and WASM remain diagnostic shadows with
+their distinct implementation envelopes.
+
+Other seemingly operational details also changed the truth value of the report.
+Development flags that skipped regressions or admitted a dirty tree used to
+print `PASS`; they now produce an explicitly ineligible development report.
+WASM output once used a deadline for the first byte followed by a potentially
+blocking line read; it now reads the exact bounded verdict under one deadline.
+The repository/source manifest is checked both before and after the campaign,
+and the total deadline covers cold workers, generated cases, external checks,
+and regressions. The source seal was expanded after a fresh-process audit found
+that the frozen compatibility canonicalizer and transitive Hydra policy/search
+imports were loaded but not hashed. The final dependency probe requires zero
+loaded project Python files outside the seal.
+
+The corpus deliberately contains 1,024 positive formulas and no purported
+non-theorems. Its 1,024 wrong-target certificate pairs are rejection tests, not
+negative theoremhood evidence. This preserves the theorem-prover-only claim
+while still making proof/target confusion easy to detect.
+
+The final typed macro protocol has semantic SHA-256
+`b5fef1ea1b85251ab7f0b8c111cb37e789f96f20771665b4f0dc8b746400552c`
+and document SHA-256
+`6f6920d2d952251170733674a3af8da09926f4faf19215317a32bc0317d4a482`.
+The focused macro suite passed 110 tests and the final complete Hydra inventory
+contains 259 tests, all covered by the green release shards. We deliberately
+stopped one monolithic Peano run after it entered the
+known long-tail bottleneck; it exposed only stale CI runtime inventory. The
+inventory was regenerated, its exact test passed, and the final repository
+gate will use the documented eight shards instead of repeating that bottleneck.
+
+### The retained H0 replay passed
+
+We committed the implementation first, because a report from a dirty tree
+cannot bind its own source identity. From clean commit
+`0bd8da9beb6cb506800da884547f8da3b86c4867`, the two fresh workers replayed
+all 384 public theorems and produced the same root:
+
+```text
+fae19fad55c416ae7b695107390c1c733d6740fe63d10cf0efed127f5801b9d2
+```
+
+The retained corpus has 1,024 distinct positives: 384 public theorems, 256
+closed numeral reflexivities, 256 universally quantified additive
+reflexivities, and 128 universally quantified multiplicative reflexivities.
+Each is paired with a wrong-target certificate rejection. Ten artifact cases
+exercise proof rules, scope, substitution, induction, DNE, strict decoding,
+and resource-envelope probes. Thus the cross-language table has 2,058 cases.
+The pinned Lean reference agreed on all 2,058. Rust had 2,047 portable cases
+and eleven registered out-of-envelope cases; WASM had 1,790 portable and 268
+out-of-envelope. There was no semantic disagreement on an in-envelope case.
+
+Three additional boundary mutations rejected an unregistered external
+translation, a `not_theorem` kind, and a negative-evidence field. Nine focused
+regressions rechecked kernel import hygiene/readability, original-goal
+finalization, and transactional failure/undo. The campaign took about 179.2
+seconds of concurrent wall time; timings are observational and excluded from
+all semantic roots.
+
+That first report, `h0-validation-v1.json`, is 3,430,197 bytes with SHA-256
+`6a6f30bc3797b1434af081d6515cbc25f433274d7cf0a94f073998ec3a884f57`.
+It correctly seals H0.1/H0.2, but an independent release audit found that it
+did not retain behavioral H0.3 evidence: macro sources were hashed, yet no
+protocol identity, trace fixture, Dispatch reconstruction, or macro-test
+transcript appeared in the artifact. We reclassified v1 as provisional rather
+than silently changing a versioned shape.
+
+### The macro evidence gap changed the report version
+
+Report v2 adds seven content-rooted typed-action fixtures, pinned deterministic
+accepted and rejected traces, exact unchanged-owner assertions, and a complete
+Dispatch fixture. The latter retains the adapter, configuration, request,
+call, raw response, certificate, and canonical trace preimages, then invokes
+the independent kernel against the owner-held original goal. It also retains
+the exact command/stdout/stderr of the 110-test macro suite. A first builder API
+still accepted a caller-supplied `{exit_code: 0, passed: 110}` claim; adversarial
+review forged that claim, so the public builder now accepts no test evidence.
+Only the campaign driver may run and attach the transcript.
+
+The first clean-clone v2 attempt exposed another useful reproducibility bug:
+five legacy Python strings used unescaped `\/` spelling and emitted
+`SyntaxWarning` on an empty bytecode cache. Cold workers reject all stderr, so
+the campaign stopped. Escaping those literals looked semantics-preserving, but
+the full suite correctly rejected the changed source bytes because the public
+catalog and model-v2/v3 authorities pin their hashes. We restored the five
+legacy spellings byte-for-byte and instead suppress only invalid-escape
+`DeprecationWarning`/`SyntaxWarning` compatibility noise inside
+validator-owned child processes. All other child stderr remains fail-closed,
+and a regression pins the exact subprocess command. This preserves both the
+published library identity and clean-clone replay on supported Python
+versions.
+
+The final v2 run from clean commit
+`26c2503b36c6884bfbfa6dabd1494bbda49d8926` passed. Its 3,484,230-byte report
+is `artifacts/peano-hydra/h0-validation-v2.json`, SHA-256
+`55c60502b2229f4420bd4557058842bebb582f491739e82a6dae06de5b803fdb`.
+It says `validation_passed = true`, `campaign_eligible = true`, and retains no
+ineligibility reason. Dispatch resource observations and pytest duration are
+exact run evidence but not stable semantic identities. This completes H0, not
+H1: the replayed catalog remains a candidate-L0 semantic corpus until the
+epoch, genealogy, masks, and benchmark are frozen in the next milestone.
+
+The release audit ran the complete Peano suite in eight runtime-weighted
+shards: 2,910 tests passed and 12 were explicitly skipped. This partition is
+important engineering evidence, not a semantic shortcut: every test file is
+assigned exactly once, while the several-minute certificate replays no longer
+hide all progress behind one process. The unchanged sibling Lambda suite,
+native Rust and WASM gates, real browser ABI harness, deterministic WASM
+rebuild, 384-note vault check, 287 executable book commands, and strict
+Jupyter Book build were all green. An independent read-only reviewer then
+reconstructed the final report's source manifest, every conformance root and
+backend disposition, all macro/Dispatch preimages, exact rollback, and a fresh
+kernel check of the original goal. H0 therefore closes on evidence, while H1
+remains deliberately unopened.

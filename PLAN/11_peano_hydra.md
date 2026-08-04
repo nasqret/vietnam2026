@@ -46,47 +46,54 @@ already owns module 10.
       algorithm, resource-bound decision claim, or negative theoremhood claim.
 - [x] Specify canonical input normal forms and every translation used by an
       external solver.
-- [ ] Freeze exact evidence schemas for `proved` and `unknown`, including field
+- [x] Freeze exact evidence schemas for `proved` and `unknown`, including field
       types, additional-field policy, and every non-self-referential hash
-      preimage. Profile v1 freezes the claim boundary and a required-field
-      draft; `not_theorem` is unsupported and forbidden, and a timeout is
-      always `unknown`.
+      preimage. Profile v2 content-addresses `peano-hydra-result-v1` at semantic
+      digest `cf1caf1c867ddfbe3c247e42a18b730ea6790269718170a51f9733d5a7a36b26`;
+      historical profile v1 keeps its draft label. `not_theorem` is unsupported
+      and forbidden, and a timeout is always `unknown`.
 - [x] Publish one canonical machine-readable profile and bind its digest into
       every profile-era Hydra policy, row, run, replay, and pilot artifact.
       Historical pilot v1 remains explicitly pre-profile.
 
 ### H0.2 Establish independent semantic checks
 
-- [ ] Cold-replay the entire initial library epoch twice and compare roots.
-- [ ] Assemble at least 1,000 semantic-conformance formulas: at least 400
+- [x] Cold-replay the complete 384-entry H0 candidate-L0 catalog twice; both
+      fresh processes produced root
+      `fae19fad55c416ae7b695107390c1c733d6740fe63d10cf0efed127f5801b9d2`.
+- [x] Assemble at least 1,000 semantic-conformance formulas: at least 400
       theorems and, if a decision claim is retained, at least 400 certified
-      non-theorems.
-- [ ] Build an independently implemented reference for the claimed fragment
-      and compare every in-scope result.
-- [ ] Mutate proof constructors, binders, substitutions, translations,
+      non-theorems. The retained corpus has 1,024 distinct positive formulas
+      and no negative quota because the profile makes no decision claim.
+- [x] Build an independently implemented reference for the claimed fragment
+      and compare every in-scope result. The exact reviewed Lean commit,
+      source/toolchain manifest, and verifier binary agree on all 2,058
+      artifact cases; native Rust and WASM diagnostics record explicit
+      out-of-envelope cases rather than semantic disagreements.
+- [x] Mutate proof constructors, binders, substitutions, translations,
       induction instances, and negative witnesses; require rejection.
-- [ ] Re-run kernel import-boundary, original-goal, and transactional-history
+- [x] Re-run kernel import-boundary, original-goal, and transactional-history
       tests.
 
 ### H0.3 Freeze the macro protocol
 
-- [ ] Specify canonical typed encodings for `Use`, `Cut`, `Witness`, `Induct`,
+- [x] Specify canonical typed encodings for `Use`, `Cut`, `Witness`, `Induct`,
       `Rewrite`, `Split`, and bounded `Dispatch`.
-- [ ] Compile each action deterministically to existing public Peano commands
+- [x] Compile each action deterministically to existing public Peano commands
       and/or an untrusted bounded solver call.
-- [ ] Verify that failure leaves proof state and history byte-for-byte
+- [x] Verify that failure leaves proof state and history byte-for-byte
       unchanged.
-- [ ] Reject unknown versions, hidden commands, out-of-profile formulas,
+- [x] Reject unknown versions, hidden commands, out-of-profile formulas,
       unavailable lemmas, and solver claims without reconstruction.
-- [ ] Log raw proposals, parsing, compilation, state transitions, solver
+- [x] Log raw proposals, parsing, compilation, state transitions, solver
       transcripts, and replay outcome in a canonical trace.
 
 ### H0 acceptance gate
 
-- [ ] Two identical 100%-green cold replays of the frozen library.
-- [ ] All conformance/reference checks agree and all required mutations fail.
-- [ ] No kernel dependency on engine, UI, ML, or external solver code.
-- [ ] Exact fragment and claim boundary reviewed before benchmark generation.
+- [x] Two identical 100%-green cold replays of the H0 candidate-L0 library.
+- [x] All conformance/reference checks agree and all required mutations fail.
+- [x] No kernel dependency on engine, UI, ML, or external solver code.
+- [x] Exact fragment and claim boundary reviewed before benchmark generation.
 
 **No-go:** any false acceptance, unresolved semantics, or unsupported negative
 claim. If negative evidence is not available, explicitly relabel the project a
@@ -347,12 +354,20 @@ work begin before GPU training.
       contract `required-field-draft`; exact evidence schemas remain H0.1b.
 - [x] A pre-H0 `surface-macro-v0` portfolio/replay bootstrap exists for
       teacher-oracle plumbing. It is deliberately narrower than the structured
-      H0.3 macro protocol and does not complete H0. All its rows are
+      H0.3 macro protocol and did not by itself complete H0. All its rows are
       comparison-ineligible until raw-call/resource evidence, provider
       attestations, and genuine critical-frontier detection exist.
-- [ ] H0 remains incomplete: H0.1b exact evidence schemas; H0.2 cold replay,
-      independent reference, conformance and mutation gates; H0.3 structured
-      macros; the complete profile-evidence bundle; and final H0 review remain
-      open.
+- [x] H0 completed on 2026-08-04. Profile v2/result-schema v1 freeze exact
+      positive/unknown evidence; macro protocol v1 has semantic digest
+      `b5fef1ea1b85251ab7f0b8c111cb37e789f96f20771665b4f0dc8b746400552c`;
+      and the retained campaign artifact
+      `artifacts/peano-hydra/h0-validation-v2.json` passed from clean commit
+      `26c2503b36c6884bfbfa6dabd1494bbda49d8926`. It records 1,024 positives,
+      1,024 wrong-target certificate rejections, ten artifact mutations, three
+      profile/schema boundary mutations, exact Lean agreement, two identical
+      384-theorem cold roots, and complete typed-macro trace/reconstruction/
+      rollback evidence backed by 110 focused tests. Report v1 is provisional
+      H0.1/H0.2 evidence only. This candidate-L0 semantic replay does not
+      perform H1's epoch/lineage/benchmark freeze.
 - [ ] No H1 benchmark is sealed and no H5 claim is available; experimental
       scaffolds or earlier policy checkpoints do not change that status.

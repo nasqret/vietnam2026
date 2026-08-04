@@ -1,0 +1,615 @@
+{
+  "additional_fields_policy": "forbidden-at-every-schema-owned-object",
+  "canonical_json": {
+    "allow_nan": false,
+    "encoding": "utf-8",
+    "ensure_ascii": false,
+    "integer_domain": "-9007199254740991..9007199254740991",
+    "key_order": "unicode-code-point-lexicographic",
+    "name": "peano-hydra-canonical-json-v1",
+    "separators": [
+      ",",
+      ":"
+    ],
+    "supported_types": [
+      "null",
+      "boolean",
+      "integer",
+      "string",
+      "array",
+      "object"
+    ],
+    "unicode": "unicode-scalar-values-without-normalization"
+  },
+  "certificate": {
+    "hash_algorithm": "sha256",
+    "hash_preimage": "exact-peano-lab-v2-artifact-bytes-including-terminal-lf",
+    "representation": "peano-lab-v2"
+  },
+  "cross_object_relations": {
+    "degraded_eligibility": "run_evidence.degraded=true-implies-eligible_for_comparison=false",
+    "hash_bindings": {
+      "certificate_sha256": "sha256(exact-certificate-artifact-bytes-including-terminal-lf)",
+      "kernel_identity_sha256": "sha256(json_preimage_envelope(kernel_identity_sha256,kernel_identity))",
+      "original_theorem_sha256": "sha256(json_preimage_envelope(original_theorem_sha256,canonical-original-theorem))",
+      "replay_evidence_sha256": "sha256(json_preimage_envelope(replay_evidence_sha256,replay_evidence))",
+      "run_evidence_sha256": "sha256(json_preimage_envelope(run_evidence_sha256,run_evidence))"
+    },
+    "proved_replay_result_equal": [
+      "logic",
+      "semantic_profile_sha256",
+      "original_theorem",
+      "original_theorem_sha256",
+      "certificate_representation",
+      "certificate_sha256",
+      "certificate_nodes",
+      "certificate_depth",
+      "kernel_identity_sha256",
+      "kernel_accepted"
+    ],
+    "proved_run_result_equal": [
+      "certificate_representation",
+      "certificate_sha256",
+      "kernel_identity_sha256",
+      "replay_evidence_sha256",
+      "kernel_accepted",
+      "replay_outcome"
+    ],
+    "run_result_common_equal": [
+      "kind",
+      "logic",
+      "semantic_profile_sha256",
+      "original_theorem",
+      "original_theorem_sha256"
+    ],
+    "unknown_reason_status": {
+      "cancelled": "cancelled",
+      "component-failure": "error",
+      "internal-error": "error",
+      "replay-rejected": "replay-rejected",
+      "resource-limit": "limit",
+      "search-exhausted": "exhausted",
+      "timeout": "timeout"
+    },
+    "unknown_run_result_equal": [
+      "reason"
+    ]
+  },
+  "format": "peano-hydra-result-schema",
+  "hashes": {
+    "algorithm": "sha256",
+    "json_preimage_envelope": {
+      "additional_properties": false,
+      "properties": {
+        "field": {
+          "enum": [
+            "kernel_identity_sha256",
+            "original_theorem_sha256",
+            "replay_evidence_sha256",
+            "run_evidence_sha256"
+          ],
+          "type": "string"
+        },
+        "format": {
+          "const": "peano-hydra-result-hash-preimage",
+          "type": "string"
+        },
+        "payload": {
+          "dispatch": {
+            "kernel_identity_sha256": "inner_objects.kernel_identity",
+            "original_theorem_sha256": "canonical-profile-theorem-string",
+            "replay_evidence_sha256": "inner_objects.replay_evidence",
+            "run_evidence_sha256": "inner_objects.run_evidence"
+          },
+          "type": "field-dispatched"
+        },
+        "v": {
+          "const": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "format",
+        "v",
+        "field",
+        "payload"
+      ]
+    }
+  },
+  "id": "peano-hydra-result-v1",
+  "inner_objects": {
+    "kernel_identity": {
+      "additional_properties": false,
+      "properties": {
+        "artifact_format": {
+          "const": "peano-lab-v2",
+          "type": "string"
+        },
+        "checker": {
+          "const": "peano_lab.kernel.checker.check",
+          "type": "string"
+        },
+        "context": {
+          "const": "empty",
+          "type": "string"
+        },
+        "format": {
+          "const": "peano-hydra-kernel-identity",
+          "type": "string"
+        },
+        "logic": {
+          "const": "intuitionistic",
+          "type": "string"
+        },
+        "sources": {
+          "exact_length": 6,
+          "item": {
+            "additional_properties": false,
+            "properties": {
+              "path": {
+                "enum": [
+                  "peano-lab/py/peano_lab/kernel/artifact_codec.py",
+                  "peano-lab/py/peano_lab/kernel/checker.py",
+                  "peano-lab/py/peano_lab/kernel/formulas.py",
+                  "peano-lab/py/peano_lab/kernel/proofs.py",
+                  "peano-lab/py/peano_lab/kernel/subst.py",
+                  "peano-lab/py/peano_lab/kernel/terms.py"
+                ],
+                "type": "string"
+              },
+              "sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ]
+          },
+          "order": "exact-enum-order",
+          "type": "array"
+        },
+        "v": {
+          "const": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "format",
+        "v",
+        "checker",
+        "logic",
+        "context",
+        "artifact_format",
+        "sources"
+      ]
+    },
+    "replay_evidence": {
+      "additional_properties": false,
+      "properties": {
+        "certificate_depth": {
+          "maximum": 1000000,
+          "minimum": 1,
+          "relation": "less-than-or-equal-to-certificate_nodes",
+          "type": "integer"
+        },
+        "certificate_nodes": {
+          "maximum": 1000000,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "certificate_representation": {
+          "const": "peano-lab-v2",
+          "type": "string"
+        },
+        "certificate_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "context": {
+          "const": "empty",
+          "type": "string"
+        },
+        "format": {
+          "const": "peano-hydra-replay-evidence",
+          "type": "string"
+        },
+        "kernel_accepted": {
+          "const": true,
+          "type": "boolean"
+        },
+        "kernel_identity_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "logic": {
+          "const": "intuitionistic",
+          "type": "string"
+        },
+        "original_theorem": {
+          "canonical": "registered-semantic-profile-theorem",
+          "type": "string"
+        },
+        "original_theorem_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "outcome": {
+          "const": "accepted",
+          "type": "string"
+        },
+        "semantic_profile_sha256": {
+          "relation": "registered-profile-with-result-schema-v1",
+          "type": "string"
+        },
+        "v": {
+          "const": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "format",
+        "v",
+        "outcome",
+        "logic",
+        "context",
+        "semantic_profile_sha256",
+        "original_theorem",
+        "original_theorem_sha256",
+        "certificate_representation",
+        "certificate_sha256",
+        "certificate_nodes",
+        "certificate_depth",
+        "kernel_identity_sha256",
+        "kernel_accepted"
+      ]
+    },
+    "run_evidence": {
+      "discriminator": "kind",
+      "proved": {
+        "additional_properties": false,
+        "properties": {
+          "certificate_representation": {
+            "const": "peano-lab-v2",
+            "type": "string"
+          },
+          "certificate_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "degraded": {
+            "type": "boolean"
+          },
+          "eligible_for_comparison": {
+            "type": "boolean"
+          },
+          "format": {
+            "const": "peano-hydra-run-evidence",
+            "type": "string"
+          },
+          "kernel_accepted": {
+            "const": true,
+            "type": "boolean"
+          },
+          "kernel_identity_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "kind": {
+            "const": "proved",
+            "type": "string"
+          },
+          "logic": {
+            "const": "intuitionistic",
+            "type": "string"
+          },
+          "original_theorem": {
+            "canonical": "registered-semantic-profile-theorem",
+            "type": "string"
+          },
+          "original_theorem_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "replay_evidence_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "replay_outcome": {
+            "const": "accepted",
+            "type": "string"
+          },
+          "run_id": {
+            "forbidden_casefolded_separator_insensitive_substrings": [
+              "negative_evidence",
+              "negative_evidence_sha256",
+              "not_theorem"
+            ],
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "type": "string"
+          },
+          "semantic_profile_sha256": {
+            "relation": "registered-profile-with-result-schema-v1",
+            "type": "string"
+          },
+          "status": {
+            "const": "proof",
+            "type": "string"
+          },
+          "v": {
+            "const": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "format",
+          "v",
+          "run_id",
+          "kind",
+          "status",
+          "logic",
+          "semantic_profile_sha256",
+          "original_theorem",
+          "original_theorem_sha256",
+          "certificate_representation",
+          "certificate_sha256",
+          "kernel_identity_sha256",
+          "replay_evidence_sha256",
+          "kernel_accepted",
+          "replay_outcome",
+          "degraded",
+          "eligible_for_comparison"
+        ]
+      },
+      "unknown": {
+        "additional_properties": false,
+        "properties": {
+          "degraded": {
+            "type": "boolean"
+          },
+          "eligible_for_comparison": {
+            "type": "boolean"
+          },
+          "format": {
+            "const": "peano-hydra-run-evidence",
+            "type": "string"
+          },
+          "kind": {
+            "const": "unknown",
+            "type": "string"
+          },
+          "logic": {
+            "const": "intuitionistic",
+            "type": "string"
+          },
+          "original_theorem": {
+            "canonical": "registered-semantic-profile-theorem",
+            "type": "string"
+          },
+          "original_theorem_sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "reason": {
+            "enum": [
+              "cancelled",
+              "component-failure",
+              "internal-error",
+              "replay-rejected",
+              "resource-limit",
+              "search-exhausted",
+              "timeout"
+            ],
+            "type": "string"
+          },
+          "run_id": {
+            "forbidden_casefolded_separator_insensitive_substrings": [
+              "negative_evidence",
+              "negative_evidence_sha256",
+              "not_theorem"
+            ],
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,159}$",
+            "type": "string"
+          },
+          "semantic_profile_sha256": {
+            "relation": "registered-profile-with-result-schema-v1",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "cancelled",
+              "error",
+              "exhausted",
+              "limit",
+              "replay-rejected",
+              "timeout"
+            ],
+            "type": "string"
+          },
+          "v": {
+            "const": 1,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "format",
+          "v",
+          "run_id",
+          "kind",
+          "status",
+          "reason",
+          "logic",
+          "semantic_profile_sha256",
+          "original_theorem",
+          "original_theorem_sha256",
+          "degraded",
+          "eligible_for_comparison"
+        ]
+      }
+    }
+  },
+  "negative_claim_policy": {
+    "forbidden_recursive_keys": [
+      "negative_evidence",
+      "negative_evidence_sha256",
+      "not_theorem"
+    ],
+    "not_theorem_supported": false,
+    "unknown_meaning": "no-accepted-certificate-and-no-negative-theoremhood-claim"
+  },
+  "result": {
+    "discriminator": "kind",
+    "proved": {
+      "additional_properties": false,
+      "properties": {
+        "certificate_depth": {
+          "maximum": 1000000,
+          "minimum": 1,
+          "relation": "less-than-or-equal-to-certificate_nodes",
+          "type": "integer"
+        },
+        "certificate_nodes": {
+          "maximum": 1000000,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "certificate_representation": {
+          "const": "peano-lab-v2",
+          "type": "string"
+        },
+        "certificate_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "format": {
+          "const": "peano-hydra-result",
+          "type": "string"
+        },
+        "kernel_accepted": {
+          "const": true,
+          "type": "boolean"
+        },
+        "kernel_identity_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "kind": {
+          "const": "proved",
+          "type": "string"
+        },
+        "logic": {
+          "const": "intuitionistic",
+          "type": "string"
+        },
+        "original_theorem": {
+          "canonical": "registered-semantic-profile-theorem",
+          "type": "string"
+        },
+        "original_theorem_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "replay_evidence_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "replay_outcome": {
+          "const": "accepted",
+          "type": "string"
+        },
+        "run_evidence_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "semantic_profile_sha256": {
+          "relation": "registered-profile-with-result-schema-v1",
+          "type": "string"
+        },
+        "v": {
+          "const": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "format",
+        "v",
+        "kind",
+        "logic",
+        "semantic_profile_sha256",
+        "original_theorem",
+        "original_theorem_sha256",
+        "run_evidence_sha256",
+        "certificate_representation",
+        "certificate_sha256",
+        "certificate_nodes",
+        "certificate_depth",
+        "kernel_identity_sha256",
+        "replay_evidence_sha256",
+        "kernel_accepted",
+        "replay_outcome"
+      ]
+    },
+    "unknown": {
+      "additional_properties": false,
+      "properties": {
+        "format": {
+          "const": "peano-hydra-result",
+          "type": "string"
+        },
+        "kind": {
+          "const": "unknown",
+          "type": "string"
+        },
+        "logic": {
+          "const": "intuitionistic",
+          "type": "string"
+        },
+        "original_theorem": {
+          "canonical": "registered-semantic-profile-theorem",
+          "type": "string"
+        },
+        "original_theorem_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "reason": {
+          "enum": [
+            "cancelled",
+            "component-failure",
+            "internal-error",
+            "replay-rejected",
+            "resource-limit",
+            "search-exhausted",
+            "timeout"
+          ],
+          "type": "string"
+        },
+        "run_evidence_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "semantic_profile_sha256": {
+          "relation": "registered-profile-with-result-schema-v1",
+          "type": "string"
+        },
+        "v": {
+          "const": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "format",
+        "v",
+        "kind",
+        "logic",
+        "semantic_profile_sha256",
+        "original_theorem",
+        "original_theorem_sha256",
+        "run_evidence_sha256",
+        "reason"
+      ]
+    }
+  },
+  "v": 1
+}

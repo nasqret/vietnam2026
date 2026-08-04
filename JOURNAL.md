@@ -3742,3 +3742,58 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   `/peano-lab-src`; evidence rejects live host paths, and the complete WASM
   differential was repeated on the corrected bytes without changing either
   logical artifact receipt.
+
+## 2026-08-04 — Peano Hydra H0 semantic and functional core completed
+
+- Registered immutable semantic profile v2 at digest
+  `4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b`.
+  It preserves profile v1's closed intuitionistic PA semantics and
+  theorem-prover-only claim while content-addressing exact result schema v1,
+  digest `cf1caf1c867ddfbe3c247e42a18b730ea6790269718170a51f9733d5a7a36b26`.
+  Historical profile v1 and pilots v1/v2 remain byte-identical; deterministic
+  pilot v3 binds the active identities and remains comparison-ineligible.
+- Added exact disjoint `proved | unknown` records, strict additional-field and
+  safe-identifier rules, domain-separated non-self-referential hash preimages,
+  checked positive builders requiring real `Formula`/`Proof` objects, and a
+  frozen historical canonicalizer independent of later UI parser/limit drift.
+- Froze typed `Use`, `Cut`, `Witness`, `Induct`, `Rewrite`, `Split`, and
+  `Dispatch` transport at semantic digest
+  `b5fef1ea1b85251ab7f0b8c111cb37e789f96f20771665b4f0dc8b746400552c`.
+  Macros compile to public tactics and execute transactionally. Dispatch has no
+  callback path; a content-pinned subprocess returns inert output whose
+  commands must reconstruct through the public surface and fresh original-goal
+  kernel replay. Trace loading semantically replays its claims.
+- Independent reviews converted registration forgery, punctuation smuggling,
+  historical live-coupling, trace fabrication, resource overstatement,
+  malformed/over-limit output, unbound verifier/source identities, deadline
+  bypass, and runner/protocol version drift into fail-closed regression tests.
+  Final inventories covered by the green release run: 76 profile/result, 97
+  profile/result/conformance, 110 focused macro, and 259 complete Hydra tests.
+- From clean implementation commit
+  `26c2503b36c6884bfbfa6dabd1494bbda49d8926`, two fresh 384-theorem workers
+  produced identical root
+  `fae19fad55c416ae7b695107390c1c733d6740fe63d10cf0efed127f5801b9d2`.
+  The 1,024 positive formulas, wrong-target pairs, and ten artifact mutations
+  yielded 2,058 cases; the exactly registered Lean reference agreed on all.
+  Three profile/schema mutations, nine trust-boundary regressions, seven typed
+  macro fixtures, deterministic accept/rollback traces, exact Dispatch
+  reconstruction, and 110 focused macro tests passed.
+- Retained `artifacts/peano-hydra/h0-validation-v2.json` is 3,484,230 bytes,
+  SHA-256
+  `55c60502b2229f4420bd4557058842bebb582f491739e82a6dae06de5b803fdb`,
+  and is campaign-eligible H0 evidence. The earlier v1 is explicitly
+  provisional H0.1/H0.2 evidence: final audit found that it omitted H0.3
+  behavior, and a caller-forgeable test-result input was removed before v2.
+  This completes H0 only; H1's immutable epoch, genealogy, masks, benchmark,
+  and interface-headroom gate remain open.
+- Final integration used all eight runtime-weighted Peano shards: 2,910 tests
+  passed and 12 were explicitly skipped. Lambda remained green at 360 tests
+  plus 36 subtests; native Rust passed 27 tests, the WASM wrapper passed 14,
+  its real ABI harness passed, and two release builds retained byte-identical
+  WASM SHA-256
+  `2ba86a22a01602a504df792830e25d743a7038876f47b2b6effa50fe00099063`.
+  The arithmetic vault check verified 384 lemma notes in a 486-note,
+  4,935-link graph; all 287 book commands replayed; and the strict Jupyter Book
+  build succeeded. An independent read-only audit reconstructed the final
+  report's 187-file source manifest, all 2,058 cross-language rows, macro and
+  Dispatch preimages, rollback traces, and fresh original-goal kernel check.
