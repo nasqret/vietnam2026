@@ -2044,3 +2044,24 @@
   pages. Its byte-identical source/built explorer trees contain 2,285 files,
   and the 2,493-file HTML tree has SHA-256
   `d9eddd01a0dcc228ceb17b75c8595f743c7e2b6bdcb1ba44e9c260e98b33f558`.
+- **K3 doubled-Cantor pair core (2026-08-04):** 15 isolated, nonpublic
+  `HA-K3-PAIR-1` candidates now close twice from the empty context across
+  three modules. Seven seed rows prove literal D01/D02/D05/D06/D08
+  constructors, fixed-component pair output functionality, validity, and the
+  nil/constructed-cell boundary. Six shell rows prove doubled-triangular
+  successor arithmetic, monotonicity, offset bounds, pair-code lower/strict
+  upper bounds, and separation of distinct shells. `double_add_injective`
+  then closes at 493 nodes/depth 25/15 Cuts with certificate SHA-256
+  `b0905453455317eb8e7bb8e7835fd049ad6afb98dabbf865719c02e2cc5b33ec`;
+  exact D01 `pair_code_injective` closes at 2,525 nodes/depth 32/59 Cuts with
+  certificate SHA-256
+  `7dc47f845a11797827e8682f4223af1e083afd48af60e0e22cd56862c44d06d8`.
+  All rows have zero DNE, fit unchanged limits, reject nearby false
+  mutations, and have a K0--K2-only transitive closure excluding division,
+  remainder, beta coding, CRT, and classical logic. Campaign accounting is
+  now 95 public references, 114 private candidates, 162 receipts, 25
+  candidate modules, and 34 focused test paths; runtime/catalog remain
+  432/433. The regenerated 183-source local browser app is sealed as
+  `a-86a703f70af4` (`BUILD=2026-08-04j`), with no deployment claimed. Cell
+  functionality, strict head/tail bounds, uniform lists, and finite maps are
+  not claimed.

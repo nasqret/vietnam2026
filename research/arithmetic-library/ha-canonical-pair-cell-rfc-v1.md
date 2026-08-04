@@ -1,6 +1,7 @@
 # RFC HA-K3-PAIR-1: doubled-Cantor pairs and successor-tagged cells
 
-**Status:** representation selected; proof candidates not yet implemented  
+**Status:** constructor, shell, and pair-injectivity candidates closed; cell API incomplete; no public admission
+
 **Scope:** pair and single-cell component of K3/HA4  
 **Logic:** first-order intuitionistic arithmetic over `0`, `S`, `+`, `*`, `=`  
 **Public admission:** none
@@ -191,6 +192,57 @@ cell_tail_lt_code
 The strict component bounds are important: any later recursion on a valid
 cell tail must visibly descend in the natural code.
 
+### 5.4 Closed candidate checkpoint
+
+The first proof round is implemented in three isolated factories:
+
+- [`ha_pair_cell_seed_candidate.py`](../../peano-lab/py/peano_lab/library/ha_pair_cell_seed_candidate.py)
+  provides seven literal constructor and nil/cell-boundary rows;
+- [`ha_pair_shell_candidate.py`](../../peano-lab/py/peano_lab/library/ha_pair_shell_candidate.py)
+  provides six doubled-triangular shell rows; and
+- [`ha_pair_injective_candidate.py`](../../peano-lab/py/peano_lab/library/ha_pair_injective_candidate.py)
+  provides self-doubling cancellation and exact D01 component injectivity.
+
+Their focused audits are respectively
+[`test_ha_pair_cell_seed_candidate.py`](../../peano-lab/py/tests/test_ha_pair_cell_seed_candidate.py),
+[`test_ha_pair_shell_candidate.py`](../../peano-lab/py/tests/test_ha_pair_shell_candidate.py),
+and
+[`test_ha_pair_injective_candidate.py`](../../peano-lab/py/tests/test_ha_pair_injective_candidate.py).
+Every row closes twice from the empty context with the same certificate DAG,
+contains zero DNE, and fits the unchanged live/use limits. The receipt tuple
+below is `(nodes,depth,objects,edges,reused,Cuts,certificate SHA-256)`.
+
+| Candidate | Statement SHA-256 | Empty-context receipt |
+|---|---|---|
+| `pair_code_constructor` | `f34a905487d7eb61c3515cbd0b6555f264be2a99cf9c1a17029d4a8d4a714017` | `(4,4,4,3,0,0,1682a2eb02ee68612732e527260f82758260d96df5e4d1424d0a813d8c66bd39)` |
+| `pair_code_output_functional` | `4e71c8cc7a39becc48cdf6f45ffce1d33bb4996a7201f8284a6aab40420d0d0a` | `(10,9,10,9,0,0,e2479e24af1b8b96209bcd65950895a8dcfe687a4803e8ef458f372ebed9327e)` |
+| `pair_constructor_valid` | `51e11d9dfb235d5b4e1a75bc17649746de19467e270e177fef4a2affb1d96ebd` | `(5,5,5,4,0,0,d9f2c1c74b269be3d596004f77c80adbd841bce6841d9308a398702bcfad001d)` |
+| `cell_constructor` | `e4cc27df174657acfd4515daebd353cb13828be9bbb3074bc1664d0d28c3b8a1` | `(4,4,4,3,0,0,4953e55da6c805b23447cbb1d4f1b7af5f2c42900e142d45838309ae75fae93b)` |
+| `cell_nonzero` | `1b621236aa1d6fb0f6bd24bfb10180b864ab638bf830aeb65cc4a44a372006a1` | `(12,9,12,11,0,0,7a0247f36cd2dffe6812b0c49c8f49e4680b59ebceff29421012e2810f150d73)` |
+| `nil_not_cell` | `3f9d2ff05aaca29e9df0d9c919b41ed3614a804a8d51119d912bda99a9536629` | `(35,15,35,34,0,1,4041048d66c132bfa7e8d6be1f58f1a5c9b1bb15a2539ad2e3a21730038d78de)` |
+| `map_entry_constructor` | `e2606d6088e4613d59bcd97835f3da3e92bfba7718a01e163740345631c5062a` | `(4,4,4,3,0,0,1682a2eb02ee68612732e527260f82758260d96df5e4d1424d0a813d8c66bd39)` |
+| `dt_shell_successor` | `4de65f84b31ef5ded138a85e9f57db9763c363ec7364e04f8b3cc5e4858f4b03` | `(363,24,228,258,31,7,52a39e68acc98d0c44c0b07c95f003eb6eff6ee8c4ca6e11adb9f9e275a03301)` |
+| `dt_shell_monotone` | `64ebd7569b4923a6cd864404f8d4e4e727e9113b2125d5757e1b6718ceeb267b` | `(536,27,363,395,33,16,8fa6c58b51036c23d4bdfb6a3c58f8495d6d3ffb1a92cd14f82a5671327d210a)` |
+| `dt_right_le_shell` | `add5fcbb6eaa853d8923f16ef0c5d81f248170eecf04533bef45583be8ba8dc5` | `(274,19,197,209,13,10,0db4ad7cc71c95435a1326d30e9ad67773da45eb1a94a553129ed6db3da71182)` |
+| `pair_code_shell_lower` | `80e197c464b5241e57c4d15efdd3b07ca7b7d06467da1009566b0d8c51ddcad8` | `(85,13,79,84,6,3,ecec6b8a7ff41f1b28205a9f711ce7520e08511583c4d895257686d461214483)` |
+| `pair_code_below_next_shell` | `50e6bd0164dc1ce9cd0aef876c3a0a7ab75d78d29f6ec2b8a1a550107e21faa0` | `(857,29,388,424,37,21,accbb0fc28dcdd8ccd9471ecf1142487ba751d4430907cc22995a59d5a9231d1)` |
+| `pair_code_shell_separated` | `53d7aacc96e356a2793f1f1174e34ba4f45cd9621c1489dc21224d304e6102ff` | `(1600,30,636,692,57,38,302d87068774ecbbe5bc6883ace27243e755627e6129d276938f31dd25dad72d)` |
+| `double_add_injective` | `9a7cfdd4513598881e04ccd832c6e76923d935141a8dbe8f468d3cb32b71d4b9` | `(493,25,408,430,23,15,b0905453455317eb8e7bb8e7835fd049ad6afb98dabbf865719c02e2cc5b33ec)` |
+| `pair_code_injective` | `be57f575eb538308784fb75d9be99c53c6a2c1982145e7cb8e47040800ac1a4a` | `(2525,32,1121,1186,66,59,7dc47f845a11797827e8682f4223af1e083afd48af60e0e22cd56862c44d06d8)` |
+
+The injectivity proof uses trichotomy on the two shell indices. Either strict
+ordering would force the common code to be strictly below itself by
+`pair_code_shell_separated`; hence the shells agree. Additive cancellation
+then equates the doubled right offsets, `double_add_injective` recovers the
+right components, and a final cancellation recovers the left components.
+This closes literal pair component injectivity without a decoder, division, or
+choice.
+
+The cell results currently prove only construction, nonzeroness, and
+disjointness from nil. They do **not** yet prove cell functionality, head/tail
+functionality, or strict component descent. Likewise `map_entry_constructor`
+constructs one D08 entry but does not define a finite map.
+
 ## 6. Forbidden dependencies
 
 The transitive closure of the foundational pair/cell candidates must exclude:
@@ -285,3 +337,9 @@ The pair/cell gate closes only after:
 
 Until then this RFC is a frozen design target, not evidence that pairs, cells,
 lists, or maps have entered the public HA library.
+
+The current checkpoint satisfies the template, constructor, literal-output,
+pair-injectivity, mutation, bounded-semantic, dependency-quarantine, and
+twice-cold closure parts of this boundary. The remaining cell functionality,
+strict descent, deliberate public admission, and independent heavy validation
+keep the overall pair/cell gate open.

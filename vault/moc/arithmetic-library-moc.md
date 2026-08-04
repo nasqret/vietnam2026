@@ -46,15 +46,24 @@ The synchronized vault has 432 theorem notes, 531 total notes, and 5,377
 links. The interactive atlas has 432 theorem cards and 1,185 dependency
 edges.
 
-The integrated admission gate passes 30 structural and 220 proof/admission
-tests. All 25 browser/deployment contracts pass. The 180-source local browser
-app is sealed as `a-b544a04993a1` (`BUILD=2026-08-04i`); no deployment is
-claimed.
+The preceding M5 admission gate passed 30 structural and 220 proof/admission
+tests, and all 25 browser/deployment contracts passed. After adding the three
+private K3 pair modules, the regenerated 183-source local browser app is
+sealed as `a-86a703f70af4` (`BUILD=2026-08-04j`); no deployment is claimed.
 
 The warning-free 47-source Book rebuild passes 26 source/explorer tests and
 integrity over 2,325 HTML pages. Its byte-identical source/built explorer trees
 contain 2,285 files; the 2,493-file HTML tree has SHA-256
 `d9eddd01a0dcc228ceb17b75c8595f743c7e2b6bdcb1ba44e9c260e98b33f558`.
+
+The strict-HA campaign separately records 95 public references, 114 private
+closed candidates, and 162 exact receipts across 25 candidate modules and 34
+focused test paths. The newest 15-row `HA-K3-PAIR-1` tranche proves literal
+doubled-Cantor constructors, shell bounds and separation, component
+injectivity, and the nil/constructed-cell boundary without division,
+remainder, beta coding, CRT, classical logic, or DNE. These candidates are not
+public. Cell functionality, strict head/tail bounds, uniform lists, and finite
+maps remain open.
 
 ## Design and trust
 

@@ -60,6 +60,9 @@
       "peano-lab/py/tests/test_ha_signed_nat_scale_candidate.py",
       "peano-lab/py/tests/test_ha_signed_nat_scale_laws_candidate.py",
       "peano-lab/py/tests/test_ha_signed_bezout_candidate.py",
+      "peano-lab/py/tests/test_ha_pair_cell_seed_candidate.py",
+      "peano-lab/py/tests/test_ha_pair_shell_candidate.py",
+      "peano-lab/py/tests/test_ha_pair_injective_candidate.py",
       "peano-lab/py/tests/test_ha_signed_bezout_gcd_candidate.py",
       "peano-lab/py/tests/test_ha_relational_lcm_candidate.py",
       "peano-lab/py/tests/test_ha_lcm_totality_bridge_candidate.py",
@@ -677,6 +680,111 @@
         "receipt": {"nodes": 1326, "depth": 40, "objects": 807, "edges": 829, "reused": 23, "cuts": 26, "certificate_sha256": "1bc7e28457b07b7aaf37b48aea0f3f86b58035797aeca50a022c73409f6eae1d"}
       },
       {
+        "name": "pair_code_constructor",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_pair_cell_seed_candidate.py",
+        "statement_sha256": "f34a905487d7eb61c3515cbd0b6555f264be2a99cf9c1a17029d4a8d4a714017",
+        "receipt": {"nodes": 4, "depth": 4, "objects": 4, "edges": 3, "reused": 0, "cuts": 0, "certificate_sha256": "1682a2eb02ee68612732e527260f82758260d96df5e4d1424d0a813d8c66bd39"}
+      },
+      {
+        "name": "pair_code_output_functional",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_pair_cell_seed_candidate.py",
+        "statement_sha256": "4e71c8cc7a39becc48cdf6f45ffce1d33bb4996a7201f8284a6aab40420d0d0a",
+        "receipt": {"nodes": 10, "depth": 9, "objects": 10, "edges": 9, "reused": 0, "cuts": 0, "certificate_sha256": "e2479e24af1b8b96209bcd65950895a8dcfe687a4803e8ef458f372ebed9327e"}
+      },
+      {
+        "name": "pair_constructor_valid",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_pair_cell_seed_candidate.py",
+        "statement_sha256": "51e11d9dfb235d5b4e1a75bc17649746de19467e270e177fef4a2affb1d96ebd",
+        "receipt": {"nodes": 5, "depth": 5, "objects": 5, "edges": 4, "reused": 0, "cuts": 0, "certificate_sha256": "d9f2c1c74b269be3d596004f77c80adbd841bce6841d9308a398702bcfad001d"}
+      },
+      {
+        "name": "cell_constructor",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_pair_cell_seed_candidate.py",
+        "statement_sha256": "e4cc27df174657acfd4515daebd353cb13828be9bbb3074bc1664d0d28c3b8a1",
+        "receipt": {"nodes": 4, "depth": 4, "objects": 4, "edges": 3, "reused": 0, "cuts": 0, "certificate_sha256": "4953e55da6c805b23447cbb1d4f1b7af5f2c42900e142d45838309ae75fae93b"}
+      },
+      {
+        "name": "cell_nonzero",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_pair_cell_seed_candidate.py",
+        "statement_sha256": "1b621236aa1d6fb0f6bd24bfb10180b864ab638bf830aeb65cc4a44a372006a1",
+        "receipt": {"nodes": 12, "depth": 9, "objects": 12, "edges": 11, "reused": 0, "cuts": 0, "certificate_sha256": "7a0247f36cd2dffe6812b0c49c8f49e4680b59ebceff29421012e2810f150d73"}
+      },
+      {
+        "name": "nil_not_cell",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_pair_cell_seed_candidate.py",
+        "statement_sha256": "3f9d2ff05aaca29e9df0d9c919b41ed3614a804a8d51119d912bda99a9536629",
+        "receipt": {"nodes": 35, "depth": 15, "objects": 35, "edges": 34, "reused": 0, "cuts": 1, "certificate_sha256": "4041048d66c132bfa7e8d6be1f58f1a5c9b1bb15a2539ad2e3a21730038d78de"}
+      },
+      {
+        "name": "map_entry_constructor",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_pair_cell_seed_candidate.py",
+        "statement_sha256": "e2606d6088e4613d59bcd97835f3da3e92bfba7718a01e163740345631c5062a",
+        "receipt": {"nodes": 4, "depth": 4, "objects": 4, "edges": 3, "reused": 0, "cuts": 0, "certificate_sha256": "1682a2eb02ee68612732e527260f82758260d96df5e4d1424d0a813d8c66bd39"}
+      },
+      {
+        "name": "dt_shell_successor",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_pair_shell_candidate.py",
+        "statement_sha256": "4de65f84b31ef5ded138a85e9f57db9763c363ec7364e04f8b3cc5e4858f4b03",
+        "receipt": {"nodes": 363, "depth": 24, "objects": 228, "edges": 258, "reused": 31, "cuts": 7, "certificate_sha256": "52a39e68acc98d0c44c0b07c95f003eb6eff6ee8c4ca6e11adb9f9e275a03301"}
+      },
+      {
+        "name": "dt_shell_monotone",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_pair_shell_candidate.py",
+        "statement_sha256": "64ebd7569b4923a6cd864404f8d4e4e727e9113b2125d5757e1b6718ceeb267b",
+        "receipt": {"nodes": 536, "depth": 27, "objects": 363, "edges": 395, "reused": 33, "cuts": 16, "certificate_sha256": "8fa6c58b51036c23d4bdfb6a3c58f8495d6d3ffb1a92cd14f82a5671327d210a"}
+      },
+      {
+        "name": "dt_right_le_shell",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_pair_shell_candidate.py",
+        "statement_sha256": "add5fcbb6eaa853d8923f16ef0c5d81f248170eecf04533bef45583be8ba8dc5",
+        "receipt": {"nodes": 274, "depth": 19, "objects": 197, "edges": 209, "reused": 13, "cuts": 10, "certificate_sha256": "0db4ad7cc71c95435a1326d30e9ad67773da45eb1a94a553129ed6db3da71182"}
+      },
+      {
+        "name": "pair_code_shell_lower",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_pair_shell_candidate.py",
+        "statement_sha256": "80e197c464b5241e57c4d15efdd3b07ca7b7d06467da1009566b0d8c51ddcad8",
+        "receipt": {"nodes": 85, "depth": 13, "objects": 79, "edges": 84, "reused": 6, "cuts": 3, "certificate_sha256": "ecec6b8a7ff41f1b28205a9f711ce7520e08511583c4d895257686d461214483"}
+      },
+      {
+        "name": "pair_code_below_next_shell",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_pair_shell_candidate.py",
+        "statement_sha256": "50e6bd0164dc1ce9cd0aef876c3a0a7ab75d78d29f6ec2b8a1a550107e21faa0",
+        "receipt": {"nodes": 857, "depth": 29, "objects": 388, "edges": 424, "reused": 37, "cuts": 21, "certificate_sha256": "accbb0fc28dcdd8ccd9471ecf1142487ba751d4430907cc22995a59d5a9231d1"}
+      },
+      {
+        "name": "pair_code_shell_separated",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_pair_shell_candidate.py",
+        "statement_sha256": "53d7aacc96e356a2793f1f1174e34ba4f45cd9621c1489dc21224d304e6102ff",
+        "receipt": {"nodes": 1600, "depth": 30, "objects": 636, "edges": 692, "reused": 57, "cuts": 38, "certificate_sha256": "302d87068774ecbbe5bc6883ace27243e755627e6129d276938f31dd25dad72d"}
+      },
+      {
+        "name": "double_add_injective",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_pair_injective_candidate.py",
+        "statement_sha256": "9a7cfdd4513598881e04ccd832c6e76923d935141a8dbe8f468d3cb32b71d4b9",
+        "receipt": {"nodes": 493, "depth": 25, "objects": 408, "edges": 430, "reused": 23, "cuts": 15, "certificate_sha256": "b0905453455317eb8e7bb8e7835fd049ad6afb98dabbf865719c02e2cc5b33ec"}
+      },
+      {
+        "name": "pair_code_injective",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_pair_injective_candidate.py",
+        "statement_sha256": "be57f575eb538308784fb75d9be99c53c6a2c1982145e7cb8e47040800ac1a4a",
+        "receipt": {"nodes": 2525, "depth": 32, "objects": 1121, "edges": 1186, "reused": 66, "cuts": 59, "certificate_sha256": "7dc47f845a11797827e8682f4223af1e083afd48af60e0e22cd56862c44d06d8"}
+      },
+      {
         "name": "gcd_signed_bezout_exists",
         "status": "closed_checked_candidate",
         "source_module": "peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py",
@@ -1150,7 +1258,7 @@
     }
   ],
   "representation_invariants": {
-    "k3_foundational_encoding": "HA-K3-SIGNED-1 selects parity-interleaved canonical signed naturals and HA-K3-PAIR-1 selects doubled-Cantor pairs plus successor-tagged cells independently of CRT and Godel-beta coding; the uniform computation-trace, list, and finite-map representations remain to be selected",
+    "k3_foundational_encoding": "HA-K3-SIGNED-1 selects parity-interleaved canonical signed naturals and HA-K3-PAIR-1 selects doubled-Cantor pairs plus successor-tagged cells independently of CRT and Godel-beta coding; private constructor, shell, and pair-injectivity candidates now check, while cell functionality and the uniform computation-trace, list, and finite-map representations remain open",
     "k3_forbidden_foundations": [
       "godel_beta",
       "binary_crt",
@@ -1461,9 +1569,45 @@
             "balanced_bezout_iff_signed_bezout_exists"
           ],
           "role": "Closed-checked but non-public balanced-equation transport, both directions between four-natural BalancedBezout witnesses and canonical SignedBezout codes, and their packaged equivalence."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_pair_cell_seed_candidate.py",
+          "factory": "make_ha_pair_cell_seed_candidate_theorems",
+          "theorem_names": [
+            "pair_code_constructor",
+            "pair_code_output_functional",
+            "pair_constructor_valid",
+            "cell_constructor",
+            "cell_nonzero",
+            "nil_not_cell",
+            "map_entry_constructor"
+          ],
+          "role": "Closed-checked but non-public exact D01/D02/D05/D06/D08 literal constructors, fixed-component pair output functionality, constructor validity, and nil/constructed-cell separation."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_pair_shell_candidate.py",
+          "factory": "make_ha_pair_shell_candidate_theorems",
+          "theorem_names": [
+            "dt_shell_successor",
+            "dt_shell_monotone",
+            "dt_right_le_shell",
+            "pair_code_shell_lower",
+            "pair_code_below_next_shell",
+            "pair_code_shell_separated"
+          ],
+          "role": "Closed-checked but non-public doubled-triangular shell arithmetic, offset bounds, pair-code shell bounds, and strict separation of distinct pair shells."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_pair_injective_candidate.py",
+          "factory": "make_ha_pair_injective_candidate_theorems",
+          "theorem_names": [
+            "double_add_injective",
+            "pair_code_injective"
+          ],
+          "role": "Closed-checked but non-public self-doubling cancellation and exact D01 component injectivity for doubled-Cantor pair codes."
         }
       ],
-      "remaining_gap": "The parity-interleaved decoder, decoded-code extensionality, total functional SignedBalance normalization, total functional involutive SignedNegate graph, the complete SignedAdd and SignedMul graph laws, D07 SignedNatScale, and both D08 BalancedBezout/SignedBezout conversion directions now have deterministic empty-context candidate receipts without division, remainder, beta, or CRT dependencies. HA-K3-PAIR-1 freezes a non-circular pair/cell design but has no proof candidates yet. Deliberate public admission, an optional signed-code equality alias, pair/cell proofs, an independent uniform computation-trace/list/map encoding, and list recursion remain; gcd packaging stays a separate K4 client because its public dependency closure reaches division.",
+      "remaining_gap": "The complete 74-row signed stack and the 15-row HA-K3-PAIR-1 constructor, doubled-triangular shell, component-injectivity, and nil/cell-boundary seed have deterministic empty-context candidate receipts without division, remainder, beta, CRT, classical, or DNE dependencies. Deliberate public admission and an optional signed-code equality alias remain. On the pair side, cell functionality, strict head/tail bounds, and valid-code decision are not yet proved. An independent uniform computation-trace/list/map encoding and list recursion remain the main K3 blocker; one D08 MapEntry constructor is not a finite-map representation. Gcd packaging stays a separate K4 client because its public dependency closure reaches division.",
       "validation": {
         "path": [
           "manifest_integrity",

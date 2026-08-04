@@ -20,7 +20,7 @@ PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 # This path is a deletion target in `stage-peano`; command-line assignments
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
-override PEANOAPPID := a-b544a04993a1
+override PEANOAPPID := a-86a703f70af4
 
 .PHONY: help book book-atlas book-proof-explorer lean lean-fta ha-number-theory-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
@@ -101,6 +101,9 @@ ha-number-theory-check:
 		tests/test_ha_signed_nat_scale_candidate.py \
 		tests/test_ha_signed_nat_scale_laws_candidate.py \
 		tests/test_ha_signed_bezout_candidate.py \
+		tests/test_ha_pair_cell_seed_candidate.py \
+		tests/test_ha_pair_shell_candidate.py \
+		tests/test_ha_pair_injective_candidate.py \
 		tests/test_ha_signed_bezout_gcd_candidate.py \
 		tests/test_ha_relational_lcm_candidate.py \
 		tests/test_ha_lcm_totality_bridge_candidate.py \

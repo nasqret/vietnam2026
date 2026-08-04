@@ -4591,3 +4591,51 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   The 2,493-file, 88,026,160-byte HTML tree has SHA-256
   `d9eddd01a0dcc228ceb17b75c8595f743c7e2b6bdcb1ba44e9c260e98b33f558`
   and zero broken, escaping, fragment, unsafe, or remote-runtime links.
+
+## 2026-08-04 — First HA-K3-PAIR-1 proof round closed
+
+- Added the seven-row literal constructor seed in
+  `ha_pair_cell_seed_candidate.py`. It proves D01 pair construction,
+  fixed-component output functionality, D02 validity of the literal
+  constructor, D06 cell construction and nonzeroness, D05/D06 disjointness,
+  and construction of one D08 map entry. The last statement is deliberately
+  not described as a finite-map representation.
+- Added the six-row doubled-triangular shell layer in
+  `ha_pair_shell_candidate.py`: shell successor arithmetic, monotonicity, the
+  doubled-right offset bound, pair-code shell lower and strict upper bounds,
+  and strict code separation for strictly ordered shells. Its largest row,
+  `pair_code_shell_separated`, closes at 1,600 structural nodes, depth 30,
+  636 proof objects, 692 edges, 57 reused references, and 38 Cuts, with
+  certificate SHA-256
+  `302d87068774ecbbe5bc6883ace27243e755627e6129d276938f31dd25dad72d`.
+- Added `double_add_injective` and exact D01 `pair_code_injective` in
+  `ha_pair_injective_candidate.py`. The final proof uses shell trichotomy:
+  either strict branch and shell separation would make the common code
+  strictly below itself, so the shell sums agree; additive cancellation then
+  isolates the doubled right offsets, self-doubling injectivity recovers the
+  right components, and a final cancellation recovers the left components.
+  Their exact closed receipts are
+  `(493,25,408,430,23,15,0,
+  b0905453455317eb8e7bb8e7835fd049ad6afb98dabbf865719c02e2cc5b33ec)`
+  and
+  `(2525,32,1121,1186,66,59,0,
+  7dc47f845a11797827e8682f4223af1e083afd48af60e0e22cd56862c44d06d8)`.
+- The three focused suites pass 7, 4, and 5 tests. Every row closes twice
+  cold with the same DAG digest, contains zero DNE, stays within unchanged
+  limits, rejects a nearby false statement or representation mutation, and
+  passes bounded semantic checks. Its transitive dependency closure remains
+  within K0--K2 and excludes division, remainder, beta coding, CRT,
+  factorization, and classical logic.
+- Bound all 15 rows into the campaign manifest as
+  `closed_checked_candidate` evidence, with exact statement hashes and closed
+  receipts copied from the focused audits. Accounting is now 95 public
+  references, 114 private candidates, 162 theorem receipts, 25 candidate
+  modules, and 34 focused test paths. The runtime and catalog remain 432 and
+  433: no pair theorem has been admitted.
+- The regenerated 183-source local browser app is sealed as
+  `a-86a703f70af4` (`BUILD=2026-08-04j`). This is a local reproducibility
+  receipt; no deployment is claimed.
+- This checkpoint closes literal pair construction and component injectivity,
+  not the entire pair/cell or finite-data package. Cell functionality, strict
+  head/tail descent, valid-code decision, an independently justified uniform
+  computation trace, variable-length lists, and finite maps remain open.
