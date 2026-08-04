@@ -31,6 +31,7 @@ from training.peano_hydra.profile import (
     evidence_kind as profile_evidence_kind,
     semantic_profile_sha256 as registered_semantic_profile_sha256,
 )
+from training.peano_hydra.result_schema import result_schema_identity
 from training.peano_policy.search import (
     SearchDiagnostic,
     SearchLimits,
@@ -40,7 +41,7 @@ from training.peano_policy.search import (
 )
 
 
-HYDRA_RUNNER_VERSION = 2
+HYDRA_RUNNER_VERSION = 3
 MAX_IDENTITY_JSON_BYTES = 1_000_000
 _ENVIRONMENT_FIELDS = frozenset(
     {
@@ -258,7 +259,7 @@ def _validate_policy_identity_record(
     if identity.get("name") != expected_name:
         raise ValueError("run policy and policy_identity names disagree")
     if (
-        identity.get("kind") != "peano-hydra-candidate-policy-v2"
+        identity.get("kind") != "peano-hydra-candidate-policy-v3"
         or identity.get("v") != HYDRA_POLICY_VERSION
         or identity.get("merge") != "declared-head-order-stable-first-wins-v1"
         or identity.get("quota_reallocation") is not False
@@ -946,9 +947,8 @@ class HydraRunResult:
             "proved": self.proved,
             "evidence_kind": self.evidence_kind,
             "profile_evidence_schema": {
-                "format": "peano-hydra-result",
-                "v": 1,
-                "schema_status": "required-field-draft",
+                **result_schema_identity(),
+                "schema_status": "exact-content-addressed",
                 "claim_kind": self.evidence_kind,
                 "conformant": False,
                 "ineligibility_reason": (

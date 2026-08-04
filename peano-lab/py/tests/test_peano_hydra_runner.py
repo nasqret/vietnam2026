@@ -21,6 +21,7 @@ from training.peano_hydra.policy import (  # noqa: E402
 )
 import training.peano_hydra.runner as hydra_runner  # noqa: E402
 from training.peano_hydra.profile import semantic_profile_sha256  # noqa: E402
+from training.peano_hydra.result_schema import result_schema_identity  # noqa: E402
 from training.peano_policy.search import SearchLimits  # noqa: E402
 
 
@@ -154,9 +155,8 @@ def test_proof_is_published_only_with_fresh_binding_trace() -> None:
     assert serialized["policy_identity"]["semantic_profile_sha256"] == PROFILE_SHA256
     assert serialized["proposal_records"][0]["semantic_profile_sha256"] == PROFILE_SHA256
     assert serialized["profile_evidence_schema"] == {
-        "format": "peano-hydra-result",
-        "v": 1,
-        "schema_status": "required-field-draft",
+        **result_schema_identity(),
+        "schema_status": "exact-content-addressed",
         "claim_kind": "proved",
         "conformant": False,
         "ineligibility_reason": (

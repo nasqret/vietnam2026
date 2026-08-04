@@ -13,13 +13,19 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[3]
 COMMITTED_REPORT = (
-    ROOT / "artifacts" / "peano-hydra" / "teacher-oracle-pilot-v2.json"
+    ROOT / "artifacts" / "peano-hydra" / "teacher-oracle-pilot-v3.json"
 )
-HISTORICAL_REPORT = (
+HISTORICAL_PRE_PROFILE_REPORT = (
     ROOT / "artifacts" / "peano-hydra" / "teacher-oracle-pilot-v1.json"
 )
-HISTORICAL_REPORT_SHA256 = (
+HISTORICAL_PRE_PROFILE_REPORT_SHA256 = (
     "3b709f70eb910e327880fefb0fb54b0770e5a8662c995205412f261b27b7580d"
+)
+HISTORICAL_PROFILE_V1_REPORT = (
+    ROOT / "artifacts" / "peano-hydra" / "teacher-oracle-pilot-v2.json"
+)
+HISTORICAL_PROFILE_V1_REPORT_SHA256 = (
+    "d1588420eaf121db84f6cb1a5168645c82e736a8700a5f1a0a2da3c21f7ff74a"
 )
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
@@ -106,7 +112,7 @@ def test_teacher_oracle_pilot_is_paired_checked_and_explicitly_not_capability() 
     assert mutation_macro[0]["requested"] == 0
 
     payload = report.to_dict(include_trace=True)
-    assert payload["v"] == 2
+    assert payload["v"] == 3
     assert payload["semantic_profile"]["sha256"] == profile_digest
     assert payload["experiment"] == TEACHER_ORACLE_LABEL
     assert "not Qwen capability" in payload["claim_boundary"]
@@ -130,12 +136,18 @@ def test_teacher_oracle_pilot_is_paired_checked_and_explicitly_not_capability() 
     )
 
 
-def test_historical_pre_profile_pilot_is_preserved_byte_for_byte() -> None:
-    raw = HISTORICAL_REPORT.read_bytes()
-    assert hashlib.sha256(raw).hexdigest() == HISTORICAL_REPORT_SHA256
+def test_historical_pilots_are_preserved_byte_for_byte() -> None:
+    raw = HISTORICAL_PRE_PROFILE_REPORT.read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == HISTORICAL_PRE_PROFILE_REPORT_SHA256
     payload = json.loads(raw)
     assert payload["v"] == 1
     assert "semantic_profile" not in payload
+
+    raw = HISTORICAL_PROFILE_V1_REPORT.read_bytes()
+    assert hashlib.sha256(raw).hexdigest() == HISTORICAL_PROFILE_V1_REPORT_SHA256
+    payload = json.loads(raw)
+    assert payload["v"] == 2
+    assert payload["semantic_profile"]["v"] == 1
 
 
 def test_teacher_source_replay_identity_cannot_be_substituted(

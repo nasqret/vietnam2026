@@ -43,7 +43,7 @@ from training.peano_hydra.profile import (
 from training.peano_policy.search import SearchLimits
 
 
-PILOT_VERSION = 2
+PILOT_VERSION = 3
 TEACHER_ORACLE_LABEL = "teacher_oracle_plumbing"
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_ARTIFACT = REPOSITORY_ROOT / "artifacts" / "triangular-even-readable.pa"
@@ -83,7 +83,7 @@ PILOT_COMMANDS = frozenset(
     }
 )
 PILOT_CAPABILITIES = SurfaceCapabilities(
-    label="peano-hydra-teacher-pilot-v2",
+    label="peano-hydra-teacher-pilot-v3",
     allowed_commands=PILOT_COMMANDS,
     allowed_theorems=frozenset(),
 )
@@ -469,14 +469,14 @@ def _policies(
 
     macro_teacher = ScriptCandidatePolicy.from_batch_result(
         artifact.replay,
-        name="triangular-even-structural-teacher-v2",
+        name="triangular-even-structural-teacher-v3",
         policy_environment=environment,
         include_heads=frozenset(macro_heads),
     )
     macro_states = tuple(sorted(macro_teacher.state_sha256s))
     macro_gate = HeadGate(frozenset(macro_states))
     symbolic_identity = {
-        "kind": "fixed-untrusted-symbolic-closure-v2",
+        "kind": "fixed-untrusted-symbolic-closure-v3",
         "semantic_profile_sha256": profile_digest,
         "candidates": ["compact_arith", "compact_arith [IH_witness]"],
         "teacher_conditioned": False,
@@ -492,10 +492,10 @@ def _policies(
         )
 
     control_null = NullCandidatePolicy(
-        name="paired-null-macro-control-v2",
+        name="paired-null-macro-control-v3",
         policy_environment=environment,
         provider_identity={
-            "kind": "paired-null-control-v2",
+            "kind": "paired-null-control-v3",
             "semantic_profile_sha256": profile_digest,
             "replaces": TEACHER_ORACLE_LABEL,
             "quota": 1,
@@ -508,7 +508,7 @@ def _policies(
                 "symbolic-compact-arith",
                 "symbolic",
                 2,
-                symbolic("symbolic-compact-arith-control-v2"),
+                symbolic("symbolic-compact-arith-control-v3"),
             ),
             PolicyHead(
                 "paired-null-macro-control",
@@ -518,7 +518,7 @@ def _policies(
                 gating=macro_gate,
             ),
         ),
-        name="peano-hydra-symbolic-only-control-v2",
+        name="peano-hydra-symbolic-only-control-v3",
     )
     hybrid = HydraCandidatePolicy(
         (
@@ -526,7 +526,7 @@ def _policies(
                 "symbolic-compact-arith",
                 "symbolic",
                 2,
-                symbolic("symbolic-compact-arith-hybrid-v2"),
+                symbolic("symbolic-compact-arith-hybrid-v3"),
             ),
             PolicyHead(
                 "teacher-oracle-structural-macros",
@@ -536,7 +536,7 @@ def _policies(
                 gating=macro_gate,
             ),
         ),
-        name="peano-hydra-teacher-oracle-plumbing-v2",
+        name="peano-hydra-teacher-oracle-plumbing-v3",
     )
     if not (
         control.total_quota

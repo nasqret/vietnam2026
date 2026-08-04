@@ -327,6 +327,180 @@ pilot also lacks certificate hashes and depths, kernel identity, closed evidence
 hashes, raw provider calls, and resource records. H0.2 independent
 reference/conformance work and H0.3 typed macros remain open.
 
+### Closing the evidence boundary
+
+H0.1b turns the earlier claim sketch into an exact transport contract. The
+active successor profile is `peano-lab-ha-intuitionistic-v2`, with semantic
+SHA-256
+`4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b`.
+It does not change the object language, logic, PA axioms, induction rule, or
+theoremhood claim. It changes the evidence block from a draft into a reference
+to `peano-hydra-result-v1`, whose semantic SHA-256 is
+`cf1caf1c867ddfbe3c247e42a18b730ea6790269718170a51f9733d5a7a36b26`.
+Profile v1 remains a separately registered historical object; no published
+digest is reinterpreted.
+
+The result schema has only two disjoint variants. A `proved` result carries the
+canonical original theorem, a bounded `peano-lab-v2` certificate artifact,
+certificate size and depth, the exact intuitionistic-kernel identity, replay
+evidence, run evidence, and the literal Boolean `kernel_accepted = true`. Its
+public constructor accepts a parsed `Formula` and `Proof`, checks that proof
+twice against the original formula, derives every metric and hash, and only
+then emits the record. An `unknown` result carries a small reason enum and run
+evidence. It has no certificate, kernel acceptance bit, negative witness, or
+solver status. Extra fields are rejected in both variants.
+
+Every digest has a domain-separated, non-self-referential preimage. The
+preimage is compact sorted-key UTF-8 JSON containing its format, version,
+domain name, and payload. Kernel, replay, and run evidence are separate exact
+objects, and each object is forbidden from containing the digest that will be
+computed from it. This makes the statement “these hashes agree” independently
+testable rather than an appeal to the producer.
+
+Two audit failures explain why this ceremony matters. The first draft exposed
+a builder that accepted theorem text and a caller-supplied acceptance Boolean;
+that made a checked-looking record forgeable without a `Proof`. The replacement
+builder owns parsing-independent formula and certificate objects and invokes
+the kernel itself. A later audit found that forbidding the token
+`not_theorem` was not enough: identifiers such as `not-theorem` and
+`not.theorem` crossed the same semantic boundary. Safe identifiers now reject
+separator-equivalent negative vocabulary too.
+
+Versioning must freeze executable interpretation as well as JSON bytes. The
+first registry mapped both historical profile versions to the current browser
+parser, printer, and input limits. A future UI change could therefore make an
+old profile unloadable while its file hash remained unchanged. H0 now includes
+a small frozen v1 compatibility canonicalizer for the shared grammar,
+admission boundary, scope check, and printer. It agrees with the original live
+canonicalization on all 384 current public statements, and historical loading
+still works when tests deliberately replace the live parser, printer, or
+limits. A separate active-alignment check detects real implementation drift.
+
+### What a typed macro is—and is not
+
+The typed protocol was designed by repeatedly asking where a language model or
+external solver could accidentally acquire proof authority. The answer is:
+nowhere. A macro is an inert request for ordinary public Peano Lab operations.
+Its canonical `peano-hydra-macro-v1` semantic SHA-256 is
+`b5fef1ea1b85251ab7f0b8c111cb37e789f96f20771665b4f0dc8b746400552c`.
+The version-1 compilation map is deliberately small:
+
+| Typed action | Deterministic public effect |
+| --- | --- |
+| `Use(name, specializations)` | `use name`, followed by bounded `specialize` lines |
+| `Cut(have, name, formula)` | one canonical `have name : formula` line |
+| `Cut(suffices, name, formula)` | one canonical `suffices name : formula` line |
+| `Witness(term)` | one canonical `exists term` line |
+| `Induct(variable, motive)` | `induction variable`; the engine-derived motive must equal the transported motive |
+| `Rewrite(source, direction, location)` | one canonical `rewrite` line |
+| `Split(kind)` | exactly `split`, `left`, or `right` |
+| `Dispatch(...)` | one bounded untrusted process call whose returned lines must re-enter this same public surface |
+
+The motive check on `Induct` is a useful example. The macro transports a motive
+so a dataset records the choice the policy intended to make, but compilation
+does not trust that text. After the public induction tactic runs, the host
+derives the actual motive from the proof state and requires equality. The
+transport therefore remains informative without becoming a second induction
+rule.
+
+Execution is one transaction. The runner snapshots the immutable owner,
+capability declaration, semantic profile, original theorem, replay prefix, and
+available solver identities. It parses and compiles the proposal, then runs
+each public command against a temporary owner with browser tracing disabled.
+Only complete success publishes the successor. Any parse, capability, solver,
+tactic, or finalization failure returns the identical original owner. If the
+temporary state closes, the runner starts again from the original theorem,
+replays the complete public route, and calls the independent intuitionistic
+kernel. A solver status never closes a goal.
+
+`Dispatch` was the difficult action. An early implementation registered an
+in-process Python callback. A callback could retain a reference to the owner,
+mutate its trace logger, ignore the declared timeout, alter globals, or simply
+never return. A frozen dataclass did not help: `object.__setattr__` can bypass
+that convention, and nested mutable objects remain mutable. The accepted
+design therefore has no callback registration API. It registers one bounded,
+content-addressed executable plus canonical configuration and invokes a copied
+artifact in a fresh process. The child receives detached canonical JSON on
+stdin; stdout remains inert bytes until the process terminates under the host
+envelope. Returned commands are reparsed, capability-checked, executed through
+the public tactic surface, and included in the fresh original-goal replay.
+
+The resource record distinguishes authority from observation. Wall time,
+output, file descriptors, process count, and—on the campaign Linux host—hard
+address/data limits are host constraints. `steps_used` is explicitly an
+untrusted adapter report which must fit the requested value before its response
+is considered, but it is not advertised as a host counter. macOS RSS sampling
+is useful diagnostic evidence, not a certified peak-memory ceiling; a retained
+campaign-grade dispatch requires the registered non-root Linux isolation
+envelope. This distinction was discovered by trying to falsify the resource
+claims, not by inspecting a successful example.
+
+### A trace must replay, not merely look plausible
+
+The canonical JSONL trace records the profile and macro-protocol identities,
+original theorem and hash, exact command/theorem capabilities, registered
+adapter identities, raw proposal, parse result, deterministic compilation,
+state before, every intermediate state, solver call and raw response, resource
+usage, state after, rollback or acceptance, and fresh kernel outcome. Size,
+line, command-count, replay-length, diagnostic, and artifact limits are part of
+the protocol document.
+
+Shape validation was not enough. An adversarial review constructed records
+with internally consistent fake hashes, changed capability environments,
+invented states, false host measurements, and fabricated final certificate
+metrics. `MacroTrace.from_record` therefore performs semantic replay. It
+reparses the raw proposal, recompiles it under the recorded capabilities,
+reconstructs the owner prefix, resolves dispatch premises from that state,
+replays every claimed intermediate command, and independently repeats any
+claimed final kernel check and certificate encoding. The exact adapter
+configuration and child-call preimage are retained so a standalone validator
+does not have to guess what the external program received.
+
+Several small audit discoveries became permanent tests: a forged exact
+registration must be reconstructed through its constructor; all error strings
+obey both character and UTF-8 byte limits; observed resource values must fit
+their declared bounds; malformed solver output must retain bounded raw and host
+evidence; the global output-limit rejection must itself fit in a trace; and
+the runner's trace/adapter versions must equal the versions frozen in the
+protocol. This is the main pedagogical lesson of H0.3: a trace is evidence only
+to the extent that an independent path can replay its claims.
+
+### The H0 conformance experiment
+
+H0.2 separates theorem proving from theoremhood decision. Its positive corpus
+contains the 384 dependency-ordered public theorems and 640 deterministic
+generated reflexive formulas, for 1,024 distinct kernel-accepted formulas.
+Every positive certificate is also checked against one deliberately different
+target and must be rejected. Those pairs are labeled `certificate_rejected`,
+never “non-theorem”: reusing the wrong certificate says nothing about whether
+another proof exists.
+
+Targeted mutations exercise proof constructors, binder scope,
+capture-avoiding equality substitution, induction motive and step, the
+intuitionistic rejection of DNE, strict artifact decoding, the no-translation
+profile boundary, and the ban on negative evidence. The authoritative Python
+kernel and an independently implemented, exactly source-pinned Lean checker
+must agree on every in-scope result. Native Rust and browser WASM shadows add
+portable diagnostics; depth, wire, index, and checker-fuel exclusions are
+recorded as explicit implementation-envelope results rather than semantic
+disagreements.
+
+Two fresh CPython workers replay the full 384-entry catalog from empty caches
+and must produce byte-identical ordered rows and roots. The retained controller
+also reruns kernel import-boundary, original-goal, and transactional-history
+regressions. It binds the complete loaded implementation-source closure, the
+reviewed Lean commit/source/toolchain/verifier identity, and the native/WASM
+artifacts. It checks the repository again at the end, so a multi-hour run
+cannot report the clean commit observed only at startup. Development flags may
+produce diagnostics, but can never emit `validation_passed = true` or the word
+`PASS`.
+
+This is an H0 candidate-L0 semantic corpus, not H1's frozen experimental epoch.
+H1 still owns lineage, dependency masks, benchmark partitions, and the rule
+that later library growth cannot leak into the campaign. H0 proves that the
+meaning and proof boundary can be reproduced before those experimental choices
+are sealed.
+
 ### The first functional plumbing test
 
 The repository now contains a provider-neutral bootstrap in

@@ -3072,3 +3072,163 @@ repository to `/peano-lab-src`. A regression assertion rejects the live
 workspace path and requires the virtual prefix. The path-remapped module was
 rebuilt twice, the full 1,536-case campaign was repeated, and only the
 WASM/report/release hashes changed; both logical receipts stayed identical.
+
+## 2026-08-04 — H0 completion began with versioning, not reinterpretation
+
+The Hydra semantic profile frozen in H0.1a explicitly says that its evidence
+contract is a draft. Completing H0.1b therefore cannot mean silently changing
+the value behind that already published digest. We will preserve profile v1
+and its pilot as historical evidence, and register a successor profile whose
+object language, intuitionistic calculus, arithmetic axioms, induction schema,
+and no-negative-claim boundary are unchanged. The successor changes only what
+H0.1a deliberately left open: exact proved/unknown result fields, strict
+additional-field rejection, and domain-separated hash preimages.
+
+The same discipline applies to macros. `Use`, `Cut`, `Witness`, `Induct`,
+`Rewrite`, `Split`, and bounded `Dispatch` will be typed untrusted transport
+values. They must compile to the existing public tactic language or to a
+bounded solver request whose output is reconstructed through that language.
+No macro receives a proof constructor, theorem lookup, or QED path of its own.
+An entire multi-command macro is transactional: it runs against immutable
+intermediate owners and publishes the new owner only after every compiled
+command succeeds. Failure returns the exact original proof state and history.
+
+There is also a naming tension in the campaign plan: H0 asks for two cold
+replays of `L0`, while H1 owns the actual epoch freeze, lineage masks, and
+benchmark boundary. For H0 we will seal and replay the current ordered public
+catalog as the **H0 candidate-L0 reference corpus**. This establishes semantic
+agreement without claiming that H1's campaign epoch or benchmark has already
+been frozen. H1 remains a separate milestone.
+
+### The evidence hash is a sentence, not a bag of bytes
+
+The reviewed result contract uses a small domain-separated envelope for every
+digest: `format`, version, field name, and payload are encoded as compact
+sorted-key UTF-8 JSON. This prevents the same bytes from being silently reused
+as, for example, both a theorem hash and a replay hash. It also avoids the
+usual self-reference trap: kernel, replay, and run evidence are hashed as
+standalone versioned objects which are forbidden from containing their own
+output digest key. The result record then contains only those digests.
+
+`proved` and `unknown` have exact, disjoint field sets. Extra keys are rejected.
+Only `proved` may carry certificate metrics, the kernel identity, replay
+evidence, and the exact Boolean `kernel_accepted = true`. `unknown` carries one
+bounded reason enum and no certificate or negative witness. In particular,
+neither a timeout nor a certificate rejected against a deliberately different
+target can be relabeled `not_theorem`.
+
+This completed the deliberately open portion of profile v1, so the active
+profile is now successor v2 with semantic digest
+`4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b`.
+Its arithmetic and intuitionistic calculus are byte-for-byte the same data as
+v1; only the profile ID/version and evidence block change. The exact result
+schema has digest
+`cf1caf1c867ddfbe3c247e42a18b730ea6790269718170a51f9733d5a7a36b26`.
+Historical profile v1 and pilot artifacts remain pinned and independently
+loadable. Current policy, runner, and pilot carriers move to version 3 so they
+cannot be confused with records bound to the earlier draft-evidence profile.
+
+### Freeze the compatibility implementation, not only its name
+
+A final adversarial pass found two holes before profile v2 was sealed. First,
+the run identifier rejected `not_theorem` but accepted separator-equivalent
+spellings such as `not-theorem` and `not.theorem`. Run identifiers now compare
+both normalized and separator-free forms against the forbidden negative-claim
+vocabulary, and the exact schema records that rule. Punctuation cannot become
+a covert `not_theorem` result channel.
+
+Second, registry entries named v1 and v2 canonicalizers, but both still called
+the live browser limits, parser, and printer. A later UI release could therefore
+make a byte-pinned historical profile unloadable or reinterpret an old theorem.
+The shared v1/v2 grammar, numeral preflight, scope check, and canonical printer
+now live in a frozen compatibility module. Historical artifact loading and
+canonicalization succeed even when a fresh process changes the live UI limits
+and replaces the live parser/printer before importing Hydra; active alignment
+continues to diagnose that drift separately. Profile v2's registry row likewise
+embeds its frozen result-schema-v1 identity instead of reading whichever schema
+a future profile makes active. The frozen implementation agrees with the
+original live canonical form on all 384 current library statements.
+
+The revised unsealed schema document has SHA-256
+`d3a402f3bee847a8bfbee8b9bcbe49dc68bf99ba495cff60006fec5ed65364a0`;
+the profile-v2 document has SHA-256
+`e19162d0e78779d34e5e02166eeb109c5a75091b4692fe37577a7fa47ff29287`.
+The deterministically regenerated pilot-v3 report has SHA-256
+`508a6ead5434b4340779f8e4888204cf75c4dcadb31ae7733cc19802623fe432`.
+Profile v1 and historical pilots v1/v2 remain byte-identical. The focused
+profile/result suite passed 76 tests, and the profile-bound
+policy/runner/pilot/conformance group passed all 143 tests on these bytes.
+
+### Frozen objects are not a sandbox
+
+The first typed `Dispatch` runner accepted an in-process callback. That was
+convenient for a unit test and wrong for the protocol. A callback can close
+over the live owner, mutate its `TraceLogger`, alter module globals, call
+`object.__setattr__` on a frozen value, ignore a wall clock declaration, or
+never return. Transactional proof-state code cannot make arbitrary Python code
+transactional. We removed the callback surface rather than accumulating more
+conventions around it.
+
+The replacement registration contains a content-addressed executable and
+canonical JSON configuration. Invocation copies the executable into a fresh
+temporary directory and gives it detached canonical JSON. The child never sees
+the `ProofSession`. Its status is inert, and every returned command must pass
+the normal public surface. A closed temporary state is still checked through a
+fresh replay from the owner-held original theorem.
+
+The adversarial review found several places where “frozen” still meant only
+“polite callers should not edit this.” A forged exact registration could skip
+its constructor; the registry now reconstructs it. A frozen bounds object could
+be altered after compilation; invoked bytes are compared with compiled bytes.
+A plausible trace could invent a state or certificate metric; trace loading now
+replays the state prefix and final kernel certificate. Overlong diagnostics,
+observed resource values above their declarations, malformed solver JSON, and
+the one-byte output-overflow sentinel all receive explicit bounded rejection
+relations. The protocol also binds its runner-owned trace and adapter versions,
+not just field names.
+
+Resource words required the same honesty. An external adapter reports
+`steps_used`; the host can reject a report above the requested number, but it
+cannot retroactively count arbitrary solver instructions. We record that field
+as untrusted adapter accounting. Linux can impose hard address/data limits on
+the non-root campaign child. Darwin can sample direct RSS, which is useful for
+diagnosis but is not a hard peak-memory theorem. The protocol says so and makes
+campaign eligibility platform-specific rather than laundering a sample into a
+bound.
+
+### Conformance evidence must bind its verifier
+
+The first H0.2 controller accepted any executable placed under any clean Git
+tree with appropriately named files. It recorded the resulting commit and
+hashes, but that is only post-hoc provenance: a fake oracle could still be
+called the independent Lean reference. The retained controller now requires
+the reviewed Lean commit, full source-manifest root, toolchain text/hash,
+verifier hash, and verifier size. Rust and WASM remain diagnostic shadows with
+their distinct implementation envelopes.
+
+Other seemingly operational details also changed the truth value of the report.
+Development flags that skipped regressions or admitted a dirty tree used to
+print `PASS`; they now produce an explicitly ineligible development report.
+WASM output once used a deadline for the first byte followed by a potentially
+blocking line read; it now reads the exact bounded verdict under one deadline.
+The repository/source manifest is checked both before and after the campaign,
+and the total deadline covers cold workers, generated cases, external checks,
+and regressions. The source seal was expanded after a fresh-process audit found
+that the frozen compatibility canonicalizer and transitive Hydra policy/search
+imports were loaded but not hashed. The final dependency probe requires zero
+loaded project Python files outside the seal.
+
+The corpus deliberately contains 1,024 positive formulas and no purported
+non-theorems. Its 1,024 wrong-target certificate pairs are rejection tests, not
+negative theoremhood evidence. This preserves the theorem-prover-only claim
+while still making proof/target confusion easy to detect.
+
+The final typed macro protocol has semantic SHA-256
+`b5fef1ea1b85251ab7f0b8c111cb37e789f96f20771665b4f0dc8b746400552c`
+and document SHA-256
+`6f6920d2d952251170733674a3af8da09926f4faf19215317a32bc0317d4a482`.
+The focused macro suite passed 110 tests and the complete Hydra group passed
+253. We deliberately stopped one monolithic Peano run after it entered the
+known long-tail bottleneck; it exposed only stale CI runtime inventory. The
+inventory was regenerated, its exact test passed, and the final repository
+gate will use the documented eight shards instead of repeating that bottleneck.

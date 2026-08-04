@@ -271,8 +271,8 @@ def test_portfolio_uses_fixed_quotas_stable_dedup_and_exact_state_gating() -> No
         for record in policy.records
     )
     assert policy.semantic_profile_sha256 == SEMANTIC_PROFILE_SHA256
-    assert policy.evaluation_identity["v"] == HYDRA_POLICY_VERSION == 2
-    assert policy.evaluation_identity["kind"].endswith("-v2")
+    assert policy.evaluation_identity["v"] == HYDRA_POLICY_VERSION == 3
+    assert policy.evaluation_identity["kind"].endswith("-v3")
     assert (
         policy.evaluation_identity["semantic_profile_sha256"]
         == SEMANTIC_PROFILE_SHA256
@@ -285,7 +285,7 @@ def test_portfolio_uses_fixed_quotas_stable_dedup_and_exact_state_gating() -> No
         first.evaluation_identity["semantic_profile_sha256"]
         == SEMANTIC_PROFILE_SHA256
     )
-    assert first.evaluation_identity["kind"].endswith("-v2")
+    assert first.evaluation_identity["kind"].endswith("-v3")
     assert (
         policy.generation_provenance["semantic_profile_sha256"]
         == SEMANTIC_PROFILE_SHA256
@@ -437,7 +437,7 @@ def test_checked_batch_trace_becomes_exact_full_state_policy() -> None:
         policy.recorded_states[0].to_record()["semantic_profile_sha256"]
         == SEMANTIC_PROFILE_SHA256
     )
-    assert policy.evaluation_identity["kind"].endswith("-v2")
+    assert policy.evaluation_identity["kind"].endswith("-v3")
     assert (
         policy.evaluation_identity["semantic_profile_sha256"]
         == SEMANTIC_PROFILE_SHA256
@@ -447,7 +447,7 @@ def test_checked_batch_trace_becomes_exact_full_state_policy() -> None:
         == SEMANTIC_PROFILE_SHA256
     )
     assert policy.evaluation_identity["provider"]["kind"] == (
-        "peano-batch-trace-profile-replay-v2"
+        "peano-batch-trace-profile-replay-v3"
     )
     rebound = policy.evaluation_identity["provider"]["profile_replay"]
     assert SEMANTIC_PROFILE_SHA256[:12] in rebound["id"]
@@ -504,7 +504,7 @@ def test_recorded_state_is_a_profile_bound_dataset_row() -> None:
 
     assert row.to_record()["semantic_profile_sha256"] == SEMANTIC_PROFILE_SHA256
     assert policy.recorded_states == (row,)
-    assert policy.evaluation_identity["kind"].endswith("-v2")
+    assert policy.evaluation_identity["kind"].endswith("-v3")
     assert (
         policy.evaluation_identity["semantic_profile_sha256"]
         == SEMANTIC_PROFILE_SHA256
@@ -553,7 +553,7 @@ def test_null_policy_is_an_identified_matched_quota_control() -> None:
     )
     assert null.propose(("⊢ 0 = 0",), max_candidates=1) == ()
     assert null.policy_environment == environment
-    assert null.evaluation_identity["kind"].endswith("-v2")
+    assert null.evaluation_identity["kind"].endswith("-v3")
     assert (
         null.evaluation_identity["semantic_profile_sha256"]
         == SEMANTIC_PROFILE_SHA256
