@@ -66,6 +66,24 @@ remainder, beta coding, CRT, classical logic, or DNE. These candidates are not
 public. Valid-code decision, uniform computation histories, lists, and finite
 maps remain open.
 
+The post-K4/M3
+[`HA-K3B-CELLHISTORY-1`](../../research/arithmetic-library/ha-cell-history-rfc-v1.md)
+checkpoint now freezes reverse `CellHistory` and existential `CellListLen`
+definitions. It has five dependency-curried kernel-checked bodies:
+`cell_history_nil = (2,24,135,18,135,134,0)`,
+`cell_history_extend = (5,86,122,36,122,121,0)`,
+`cell_history_succ_elim = (3,43,59,23,59,58,0)`,
+`cell_list_zero_iff_nil = (2,24,33,16,33,32,0)`, and
+`cell_list_succ_iff_cell = (2,38,51,19,51,50,0)`, where each tuple is
+`(dependencies,commands,nodes,depth,objects,edges,reused)`. This is
+**BODY-CHECKED only**. Only nil has a known prior empty-context receipt; the
+four extension/elimination/list rows await isolated WMI cold closure, while
+WMI DNS resolution is currently unavailable. No row is recorded as
+`closed_checked_candidate` or admitted,
+so strict K3 and the campaign JSON remain exactly 96 rows/21 modules and
+95 public references/121 private candidates/169 receipts. The separate light
+gate is `make ha-k3b-cell-history-check`.
+
 ## Design and trust
 
 - [[quadratic-reciprocity-moc]]

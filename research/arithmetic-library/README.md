@@ -26,6 +26,9 @@ arithmetic library. Start with:
   the selected doubled-Cantor pair and successor-tagged cell definitions,
   injectivity ladder, and the explicit blocker on pretending that pairing
   alone supplies a uniform arbitrary-length list relation;
+- [`ha-cell-history-rfc-v1.md`](ha-cell-history-rfc-v1.md): the post-K4/M3
+  reverse beta-coded cell-history definitions and quarantined ten-obligation
+  list-length ladder;
 - [`../../PLAN/12_ha_number_theory_campaign.md`](../../PLAN/12_ha_number_theory_campaign.md):
   the repository execution plan and first canonical-interface tranche.
 
@@ -74,7 +77,26 @@ complete 74-row signed-stack digest is
 `b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`.
 The strict K3 evidence comprises 96 rows across 21 candidate modules: the
 74-row signed stack and the 22-row pair/cell constructor, shell, injectivity,
-functionality, and strict-descent core. The K4
+functionality, and strict-descent core.
+
+The next `HA-K3B-CELLHISTORY-1` authoring checkpoint freezes the reverse
+`CellHistory` and existential `CellListLen` definitions after K4/M3. It has
+five dependency-curried, intuitionistic kernel-checked bodies, with receipts
+`(dependencies,commands,nodes,depth,objects,edges,reused)`:
+`cell_history_nil = (2,24,135,18,135,134,0)`,
+`cell_history_extend = (5,86,122,36,122,121,0)`,
+`cell_history_succ_elim = (3,43,59,23,59,58,0)`,
+`cell_list_zero_iff_nil = (2,24,33,16,33,32,0)`, and
+`cell_list_succ_iff_cell = (2,38,51,19,51,50,0)`. This is explicitly
+**BODY-CHECKED only**: only the nil history has a known prior empty-context
+receipt. The extension, elimination, and list-equation rows await isolated
+WMI cold closure, and WMI DNS resolution is currently unavailable. Nothing is
+admitted or enrolled in the campaign manifest. Strict K3 therefore remains
+96 rows across 21 modules, while the campaign JSON remains 95 public
+references, 121 private candidates, and 169 receipts. Run the deliberately
+separate lightweight gate with `make ha-k3b-cell-history-check`.
+
+The K4
 [`signed-gcd client`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)
 and its
 [`focused audit`](../../peano-lab/py/tests/test_ha_signed_bezout_gcd_candidate.py)

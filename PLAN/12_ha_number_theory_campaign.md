@@ -719,6 +719,29 @@ the main finite generalized-CRT target; the six M5 conveniences remain
 deliberately private and are not a blocker. No row asserts a remainder below
 zero.
 
+### K3B reverse-history authoring checkpoint (BODY-CHECKED only)
+
+`HA-K3B-CELLHISTORY-1` now freezes the reverse beta-coded `CellHistory` and
+existential `CellListLen` definitions after K4/M3. Five dependency-curried
+proof bodies pass the ordinary intuitionistic kernel checker, with receipts
+`(dependencies,commands,nodes,depth,objects,edges,reused)`:
+
+- `cell_history_nil = (2,24,135,18,135,134,0)`;
+- `cell_history_extend = (5,86,122,36,122,121,0)`;
+- `cell_history_succ_elim = (3,43,59,23,59,58,0)`;
+- `cell_list_zero_iff_nil = (2,24,33,16,33,32,0)`;
+- `cell_list_succ_iff_cell = (2,38,51,19,51,50,0)`.
+
+This is an RFC-and-definitions checkpoint, not candidate closure or public
+admission. Only `cell_history_nil` has a preserved prior empty-context
+receipt. The history extension/elimination and both list-equation rows await
+isolated WMI cold empty-context closure; WMI DNS resolution is currently
+unavailable. The lightweight local target is
+`make ha-k3b-cell-history-check`; it is intentionally not part of the heavy
+campaign target. Strict K3 remains 96 rows across 21 modules, and the campaign
+JSON remains unchanged at 95 public references, 121 private candidates, and
+169 receipts.
+
 ## Release boundary
 
 The first named campaign release is **Euclidean and Modular Arithmetic in
