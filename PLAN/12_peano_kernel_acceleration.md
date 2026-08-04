@@ -5,7 +5,8 @@
 Make large Peano certificates inexpensive to validate without weakening the
 project's trust boundary. Optimize the authoritative readable Python checker
 first, then build an independent native/WebAssembly Rust implementation in
-shadow mode. Rust cannot grant QED under this plan.
+shadow mode. Rust cannot grant QED unless the prospective K5--K11 gates pass
+and the binding design receives a separate reviewed amendment.
 
 ## Non-negotiable contracts
 
@@ -104,8 +105,9 @@ critical path includes the socket-enabled local dashboard-server shard.
 - [x] Differentially check all 384 public theorems plus focused examples,
       malformed input, wrong-target, and zero-fuel mutations between the
       authoritative Python kernel and native Rust.
-- [ ] Replay representative canonical artifacts through the pinned Lean
-      verifier as a third implementation boundary.
+- [x] Replay representative canonical artifacts through the pinned Lean
+      verifier as a third implementation boundary. H0 later covered all 2,058
+      registered conformance artifacts with no Lean disagreement.
 - [ ] Benchmark encoding, decoding, checking, and complete shadow latency
       separately.
 
@@ -121,8 +123,8 @@ critical path includes the socket-enabled local dashboard-server shard.
 - [x] Require Python acceptance; record Rust agreement or shadow failure
       without letting Rust publish QED.
 
-K4 candidate build `2026-08-04e` is application
-`a-129c5c680e53`. Its path-remapped 52,890-byte module has SHA-256
+K4 candidate build `2026-08-04f` is application
+`a-d9bd305e4cad`. Its path-remapped 52,890-byte module has SHA-256
 `2ba86a22a01602a504df792830e25d743a7038876f47b2b6effa50fe00099063`,
 no imports, unshared memory capped at 256 MiB, and a one-shot ABI. Two clean
 Rust 1.95.0 builds are byte-identical. Native wrapper debug/release suites
@@ -141,14 +143,109 @@ rule that only Python publishes QED. This is a sealed local candidate, not a
 staging or production deployment claim. The machine-readable K4 receipt is
 `artifacts/peano-kernel/browser-wasm-v1.json`.
 
-## K5 — Optional authority review
+## K5 — Authority and protocol freeze
 
-- [ ] Freeze evidence from native/WASM/Python/Lean conformance, mutations,
-      fuzzing, reproducible builds, and resource exhaustion.
-- [ ] Audit the Rust parser, arithmetic, binder rules, panic boundary, and
-      complete-judgment memoization keys.
-- [ ] Decide explicitly whether the pedagogical Python checker remains the
-      sole authority, both checkers are required, or a reviewed design
-      amendment proposes Rust authority.
+- [ ] Amend the binding design only prospectively; current Python authority
+      and all version-2 evidence remain unchanged.
+- [ ] Freeze `peano-lab-v3` canonical bytes with the exact logic mode inside
+      the artifact. Preserve v2 as immutable archival input.
+- [ ] Freeze typed outcomes: `Accept`, `InvalidCertificate`,
+      `ResourceExhausted`, `MalformedInput`, and `InternalError`. Only
+      `Accept` may grant QED; every other result carries no theoremhood claim.
+- [ ] Bind original target, certificate, logic, wire format, verifier build,
+      and resource-profile identities into every verification receipt.
+- [ ] Define the supported production envelope and an explicit Python fallback
+      outside it.
+- [ ] Obtain independent review of grammar, classical policy, target ownership,
+      result meanings, and every hash preimage.
 
-No K5 outcome is implied by completing K0--K4.
+## K6 — Complete measurement before optimization
+
+- [ ] Add fixed quick, medium, FTA, and layered-QR artifacts to K0.
+- [ ] Measure encoding, decoding, core checking, process/worker overhead,
+      peak RSS, and WASM memory separately for Python eager/lazy, Rust native,
+      Rust WASM, and the pinned Lean verifier.
+- [ ] Retain cold/warm raw reports, exact artifact/source/binary hashes, and
+      reproducible build receipts before registering performance thresholds.
+
+Timing remains irrelevant to soundness.
+
+## K7 — Production Rust candidate
+
+- [ ] Separate the pure checker, canonical codec, and native/WASM wrappers.
+- [ ] Make accepted-path arithmetic checked and total; distinguish resource
+      exhaustion from logical rejection.
+- [ ] Charge or conservatively bound AST-sized shift, substitution, clone, and
+      equality work. Preserve process/worker isolation and `forbid(unsafe_code)`
+      in the logical core.
+- [ ] Adopt arena or lazy-context representation only if K6 justifies it; if
+      used, prove refinement to eager materialized contexts.
+- [ ] Run debug/release native and WASM tests, Miri, decoder fuzzing,
+      exhaustive bounded-AST enumeration, every public certificate and
+      semantic mutation, panic/trap rejection, and deterministic builds.
+
+No theorem names, trusted library, tactics, Vampire, or ML enter the kernel.
+
+## K8 — Lean version-3 specification and soundness
+
+- [ ] Add explicit artifact logic, typed verdicts, exact production envelope,
+      and the chosen context representation to the Lean specification.
+- [ ] Prove HA/classical gates, v2-read/v3-write migration, codec round trip,
+      and that resource exhaustion yields no logical conclusion.
+- [ ] Prove the core implications:
+
+      ```text
+      rustSpecAccept -> Derives logic [] proof target
+      Derives logic [] proof target -> target.Holds valuation
+      rustSpecVerify bytes = Accept -> decodedTarget.Holds valuation
+      lazyCheck = eagerCheck  -- inside the registered envelope
+      decodeV3 (encodeV3 artifact) = artifact
+      ```
+
+- [ ] Pin Lean/toolchain/source manifests, reject placeholders, audit axioms,
+      mutate the codec, and reproduce cleanly on WMI.
+
+This proves the mathematical algorithm specification, not yet the Rust source.
+
+## K9 — Exact Rust-source refinement
+
+- [ ] Run a pinned feasibility spike translating the exact pure safe-Rust core
+      into Lean, initially with Aeneas/Charon or another reviewed source-level
+      route.
+- [ ] Require automated deterministic translation from committed Rust sources,
+      no opaque accepted-path functions, and explicit compiler/runtime TCB.
+- [ ] Prove one-way soundness refinement:
+
+      ```text
+      exactRustSource returns Accept -> Lean specification returns Accept
+      ```
+
+- [ ] Prove reverse refinement inside the supported envelope for compatibility.
+- [ ] If the tool cannot cover the accepted path, either reduce the core to a
+      supported verified Rust subset or retain Python/dual authority. A second
+      handwritten Lean checker is not a substitute.
+
+## K10 — Mandatory dual-check soak
+
+- [ ] Run Rust and Python before every published in-envelope QED and require
+      agreement; record explicit Python fallback outside the Rust envelope.
+- [ ] Fail library/release admission on any disagreement and leave session
+      state/history unchanged on either checker failure.
+- [ ] Replay every library epoch, training positive, Hydra evaluation proof,
+      semantic mutation, and future QR artifact on x86-64, arm64, and browser
+      WASM, with sustained fuzz/resource-exhaustion campaigns.
+
+Python remains authoritative throughout the soak.
+
+## K11 — Reviewed cutover decision
+
+- [ ] Choose explicitly among Python sole authority, mandatory dual authority,
+      Rust authority inside the refined envelope with Python fallback, or Rust
+      sole authority.
+- [ ] Retain the readable Python checker permanently as pedagogical reference,
+      independent conformance oracle, and at least first-epoch fallback.
+- [ ] Repeat K8--K10 for every semantic, logic, or kernel-format revision.
+
+The recommended first cutover, if K9 succeeds, is Rust authority only inside
+the formally refined envelope with Python fallback. No Rust-only QED is
+permitted if K9 fails. Completing K0--K4 implies no K5--K11 outcome.

@@ -22,9 +22,11 @@ wasm32 arithmetic from disagreeing near the wire boundary.
 
 This is cross-implementation evidence under the [[de-bruijn-criterion]], not
 a second theorem authority. Traps and timeouts are isolated availability
-failures in the [[browser-proof-runtime]].
+failures in the [[browser-proof-runtime]]. Promotion requires the separate
+[[verified-rust-kernel]] source-refinement and dual-soak gates; an analogous
+Lean checker plus finite agreement does not prove the exact Rust source.
 
 ## Related
 
 [[trusted-kernel]] · [[proof-certificate]] · [[browser-proof-runtime]] ·
-[[peano-lab]] · [[de-bruijn-criterion]]
+[[peano-lab]] · [[de-bruijn-criterion]] · [[verified-rust-kernel]]

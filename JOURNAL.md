@@ -3797,3 +3797,142 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   build succeeded. An independent read-only audit reconstructed the final
   report's 187-file source manifest, all 2,058 cross-language rows, macro and
   Dispatch preimages, rollback traces, and fresh original-goal kernel check.
+
+## 2026-08-04 — Hydra became a living PA workshop as well as an experiment
+
+- Kept the curated Peano Lab language as the sole author-facing object
+  language. Constructive intuitionistic PA remains the default; the existing
+  classical checker is specified as a separately versioned `PA+DNE` profile.
+  Excluded middle may be derived for that surface, but adding it as a second
+  primitive would duplicate classical strength and was rejected.
+- Split work into a continuously reviewed `authoring-live` lane and a
+  physically isolated `research-eval` lane. The former may follow new number-
+  theory results immediately. The latter binds an immutable library copy,
+  lineage mask, benchmark, solver, and model. The already completed H0 report
+  and branch remain untouched; the new work starts at H1/A0.
+- Made prose authorship a distinct authority boundary. The assistant retains
+  exact revisions, proposes alternative PA readings, labels whether a
+  diagnostic came from syntax, expansion, graph analysis, bounded evaluation,
+  kernel replay, Vampire, a model, or a human, and cannot call a timeout
+  “false.” Human statement acceptance, kernel proof acceptance, and human
+  library review are three different events. Training consent defaults to
+  deny, stale asynchronous responses fail closed, and only explicit export
+  may create a patch or pull request.
+- Narrowed the first external portfolio to Vampire. Native closure runs first;
+  Vampire supplies only bounded reconstructable hints in constructive mode.
+  Small LoRA-post-trained Qwen roles are separated into formalization,
+  retrieval, macro policy, value/ranking, and critique so one decoder response
+  cannot smuggle authority between tasks.
+- Extended kernel acceleration as K5–K11. Python stays the final original-goal
+  authority while Rust filters candidates. Lean must first prove the v3
+  algorithm/codec specification and then connect the exact committed safe-
+  Rust accepted path to it; finite differential testing or a second
+  handwritten Lean checker is not source refinement. If that connection
+  fails, Rust-only QED remains forbidden.
+- Began two executable H1 slices in parallel: strict revision-safe authoring
+  records with real kernel-object builders, and a content-addressed frozen-
+  epoch format that cannot resolve living catalog paths. This entry records
+  architecture and work in progress, not an `L0` freeze, a Vampire adapter, a
+  new Qwen training result, or a Rust-authority claim.
+- Froze neither slice after its first green run. Independent adversarial review
+  found that ordinary Python equality let JSON `false` alias integer `0` in an
+  epoch root payload, default candidate loading could validate non-live
+  provenance, and trusted-looking diagnostic labels and event actor/session
+  claims needed stronger boundaries. These were repaired before publication:
+  all versions/root comparisons are type-exact, candidate provenance is always
+  live-checked, changed imported sources require restart, file reads are
+  bounded/no-follow, generic diagnostics are untrusted-only, defined syntax is
+  pinned, and lifecycle/export deposits use ordered rolling roots with exact
+  actor/session/sequence checks.
+- A final cross-audit caught two remaining overclaims before commit. Kernel
+  replay evidence had authenticated the suggested formula but not the attached
+  code, severity, message, and source span; the repaired schema freezes a
+  domain-separated full-record preimage and the only kernel message explicitly
+  says that replay does not validate the prose's meaning. Fresh certificate
+  metrics now say `submitted`, not `best-known`, until A2 binds a comparison.
+- Authoring schema v1 now has semantic digest
+  `31a344bbc0b22cfacf5803c85d25a80a0234cf7387395283c5e1ab25ada80553`;
+  its focused adversarial suite passed 28 tests. Library-epoch schema v1 has
+  digest
+  `f4695013ee4aeb660abf3a1e57a6334d86c990a8904c4435d94628694a2e875b`;
+  its focused suite passed 38 tests, including a complete live 384-theorem
+  replay. After the final authority-schema review, the combined Hydra
+  regression passed 325 tests in 162.09
+  seconds, and the CI-shard contract passed 32 tests. The production event and
+  owner-receipt registries remain empty.
+- Documentation validation remained executable rather than editorial only:
+  46 Book sources, 194 deep links, 47 sessions, and all 287 commands replayed;
+  the strict warning-as-error Jupyter Book build succeeded; and the arithmetic
+  vault verified 384 checked lemma notes in a 490-note, 4,980-link graph.
+- The epoch audit also exposed the next hard gate: the current three-file pack
+  stores catalog/profile/H0 provenance, but the catalog stores certificate
+  hashes rather than certificate bytes. It therefore cannot replay theorems
+  offline and is not `L0`. H1.1 remains open until the pack contains canonical
+  formulas/certificates and the richer dependency/documentation records and
+  replays with the living theorem library made unavailable.
+
+## 2026-08-04 — H1 gained a replay-complete candidate-library subgate
+
+- Preserved library-epoch schema v1 and its three-file transition pack. Added
+  a separately versioned candidate replay-pack schema instead of silently
+  changing published protocol meaning. Schema v1 semantic digest is
+  `d60b07fe68aa4ba023c9bb873e2df4190752f70252caca21da7e76dcd393f02d`;
+  exact document SHA-256 is
+  `cfd0959ec537c9a7e3cdf705bd48ff7f8301fbd43f63623934d4638cb712b2ef`.
+- Added a strict bounded decoder for every `peano-lab-v2` term, formula, and
+  proof constructor. It accepts one canonical byte spelling, exact Python/JSON
+  types and arities, and explicit byte/node/depth/integer limits. Decoding is
+  inert; only the independent checker against the separately bound original
+  goal may grant theorem authority.
+- Added an isolated streaming verifier with no theorem-library, tactic-engine,
+  UI, training, solver, or model imports. It validates manifest count/order,
+  prior-only dependencies, exact roots and paths, resource totals, exact file
+  set, schema/profile/catalog, and verifier-source identity before certificate
+  reads. Each artifact round-trips byte-for-byte, agrees with the independently
+  parsed closed source statement, recomputes tree metrics/hashes, and passes
+  `check((), proof, original_target)` in intuitionistic mode.
+- Added a live-only builder that replays the current catalog, writes one raw
+  artifact per theorem into a staging directory, invokes a guarded fresh
+  `python -I -S -X pycache_prefix=<fresh-dir>` worker, rechecks
+  catalog/verifier drift, and publishes
+  atomically only after all checks pass. The worker blocks and records absence
+  of library, engine, UI, training, Torch, and Transformers modules.
+- Independent audits found and closed Boolean/integer aliasing in indexes and
+  counts, missing manifest resource ceilings, an unchecked-kernel reporting
+  mode, CLI symlink-root and case-alias/report-self-corruption paths,
+  post-import source drift, stale repository bytecode, blocking FIFO reads,
+  unbounded directory enumeration, a classically invalid DNE test, unbound
+  initializers/worker source, and overclaims about reconstructing Python object
+  sharing. The final tests use a genuinely classically valid DNE certificate
+  and full rerooting, while source DAG observations obey explicit invariants.
+- Published 384 artifacts totaling 80,088,767 bytes. Packed tree totals are
+  1,806,923 proof occurrences and 52,626 Cuts; maximum proof size/depth are
+  73,767/99. Manifest root is
+  `fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`;
+  theorem replay root is
+  `88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
+  The canonical retained report SHA-256 is
+  `35f5547978a4d58c5af30c33d253c92af494b94f6d6500a866a13f2fd1fa7f10`.
+- The corrected replay-pack and bounded-decoder selection passed 145 tests in
+  47.56 seconds, including a fresh full 384-theorem replay whose
+  generated 828-byte report was byte-identical to the retained report.
+- The deterministic eight-shard full Peano run covered every test file: 3,048
+  tests passed and 12 were skipped in their shards. Its two remaining failures
+  were execution-environment controls, not changed assertions: the nested H0.3
+  subprocess exceeded its 120-second limit only under four-way contention and
+  passed alone in 12.81 seconds; the loopback dashboard bind was denied by the
+  filesystem sandbox and passed with local socket permission in 0.58 seconds.
+  Thus all 3,050 collected non-skipped cases passed in their required
+  environment. Lambda Lab passed 360 tests plus 36 subtests.
+- Resealed the browser candidate as build `2026-08-04f`, application
+  `a-d9bd305e4cad`: 150 mounted Python sources, 154 manifest entries, 29 focused
+  browser/WASM/deployment tests, and the complete local stage pass. Nothing was
+  deployed. The clean warning-as-error Book rebuilt all 46 sources; its
+  integrity report has zero broken paths/fragments or unsafe/remote runtime
+  assets, all 194 deep links and 287 session commands replay, and the vault
+  verifies 384 lemma notes in a 490-note/4,981-link graph.
+- Claim boundary: this is a replay-complete candidate-`L0` pack, not a frozen
+  production epoch. Schema enforces `candidate` and evaluation-ineligible.
+  Readable/optimized dependency vectors and leave-one-out evidence,
+  definition/document receipts, lineage masks, reviewed Git-state and
+  independent owner deposits, and benchmark sealing remain H1.1 work.

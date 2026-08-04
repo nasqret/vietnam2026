@@ -1,0 +1,1 @@
+["peano-lab-v2",48,["forall",["forall",["exists",["eq",["add",["var",0],["var",2]],["add",["var",1],["var",2]]]]]],["forall_intro",["forall_intro",["exists_intro",["var",0],["eq_refl",["add",["var",0],["var",1]]]]]]]

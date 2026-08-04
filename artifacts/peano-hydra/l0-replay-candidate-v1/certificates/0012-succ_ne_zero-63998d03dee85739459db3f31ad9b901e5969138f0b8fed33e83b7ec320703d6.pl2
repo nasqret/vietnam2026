@@ -1,0 +1,1 @@
+["peano-lab-v2",24,["forall",["imp",["eq",["succ",["var",0]],["zero"]],["bot"]]],["axiom","PA1"]]

@@ -3317,3 +3317,263 @@ reconstructed the final report's source manifest, every conformance root and
 backend disposition, all macro/Dispatch preimages, exact rollback, and a fresh
 kernel check of the original goal. H0 therefore closes on evidence, while H1
 remains deliberately unopened.
+
+## 2026-08-04 — One arithmetic language, three kinds of acceptance
+
+The expanded Hydra vision is larger than the benchmark, but its conceptual
+center is pleasantly small: authors should be able to write ordinary
+mathematical sentences, see exactly what those sentences mean in Peano Lab,
+and grow a beautiful checked arithmetic library. The symbolic prover and the
+language model are assistants around that activity. They are not alternate
+languages and they are not alternate judges.
+
+This exposed three decisions that are easy to conflate.
+
+First, **the author accepts a meaning**. If someone writes “a prime divides a
+product,” a model can suggest several formal readings. It cannot decide
+silently which variables are quantified, whether the prime hypothesis was
+implicit, or whether “divides” points in the intended direction. We therefore
+keep the exact prose span and revision, show readable and primitive-expanded
+PA, display binders and assumptions, and require an explicit accept/edit/reject
+event. A kernel-checked proof of a nearby statement would still be a bad
+formalization.
+
+Second, **the kernel accepts a proof**. Native automation, Vampire, Qwen, and a
+coding-agent teacher may all help find it, but the finished proof is replayed
+against the owner-held original formula. Search failure means only `unknown`.
+Vampire is particularly useful and particularly easy to over-credit: it is a
+classical first-order prover, whereas our default profile is intuitionistic.
+In that mode it should suggest premises, substitutions, witnesses, cuts,
+rewrites, or a skeleton that Peano Lab reconstructs. Its `SZS Theorem` line is
+not a theorem certificate for us.
+
+Third, **a reviewer accepts a library artifact**. A proved proposal still needs
+an exact dependency list, readable script, best-known optimized certificate,
+metrics, provenance, explanation, definition expansions, mutation results,
+and deterministic Book/vault/Explorer pages. “Best known” is deliberately
+different from “smallest”: a 180-node certificate is an exact achievement;
+calling it globally minimal would require a lower-bound proof. Publication is
+an explicit export and review event, never a side effect of a browser worker.
+
+The logic choice follows the same desire for visible meaning. Constructive PA
+remains the default. Peano Lab already represents its classical extension by
+double-negation elimination, so a future classical Hydra profile should be
+labeled `PA+DNE`. We can derive and expose excluded middle, $A \lor \neg A$,
+there. Adding it as another primitive rule would add no pedagogical power and
+would create two equivalent kernel-level explanations for the same classical
+step. Constructive theorems travel into the classical library; classical
+certificates never travel back.
+
+The library itself now has two tempos. `authoring-live` follows reviewed HEAD
+and should welcome the number-theory campaign as it grows toward quadratic
+reciprocity. `research-eval` receives a copied, content-addressed epoch. It
+cannot import from live paths. This separation lets the mathematical project
+move quickly without quietly changing the experiment that is supposed to tell
+us whether Qwen adds value.
+
+Finally, “rewrite the checker in Rust and prove it in Lean” needed a sharper
+sentence. We already have a useful safe-Rust native/WASM shadow and a Lean
+checker soundness theorem. Those are not yet a theorem about the exact Rust
+program. The remaining K5–K11 route separates protocol design, measurement,
+Rust hardening, Lean specification soundness, exact Rust-source refinement,
+dual-check soak, and the authority decision. Until the source-refinement link
+exists, Rust can save enormous search time, but Python still casts the final
+vote. If the link proves impractical, keeping dual or Python authority is the
+honest result.
+
+The first implementation slice is correspondingly unglamorous and important:
+strict canonical authoring records and a frozen-epoch container. They make
+revision staleness, training consent, logic mode, provenance, and live/frozen
+isolation executable facts before we connect a prose UI, Vampire, or a new
+Qwen adapter. H0 stays sealed; none of this work retroactively changes its
+evidence.
+
+The first audit immediately justified doing this before building the pretty
+interface. Python has a historical convenience that is dangerous at a JSON
+trust boundary: `False == 0` and `True == 1`. Our first epoch validator compared
+the committed root payload using ordinary Python equality. A hostile record
+could therefore put Boolean `false` in one copy and integer `0` in the other,
+then ask the validator to normalize the record. It did not create a false PA
+theorem, but it broke the promise that one root names one exact document. The
+repair compares canonical JSON bytes, requires `type(v) is int` for every
+version, and verifies that validation returns the same preimage and root it
+received. The authoring records received the same type-exact version rule.
+
+A second lesson concerned long-lived services. Hashing the files after a Git
+checkout is insufficient if Python still holds theorem and tactic objects
+imported from the previous checkout. The safe first policy is simple: the
+epoch module fingerprints every relevant input during import; if those inputs
+change, it refuses to bind a candidate epoch until the process restarts. A
+later isolated replay worker may make that restart automatic, but silently
+combining fresh provenance with stale objects is forbidden.
+
+The event design became more concrete as well. A lifecycle record now includes
+the actor, single session owner, sequence number, predecessor, authority, and
+evidence. Its registry root rolls over the exact ordered prefix. Loading an
+event requires the reviewed unique head and the independently authenticated
+actor/session values; duplicate events and sibling forks fail. The production
+registry is still empty, which is a feature at this stage: tests can exercise
+the protocol, but no client can manufacture human review or export authority.
+Likewise, a generic diagnostic may say only “untrusted solver” or “untrusted
+model.” Parser, expander, graph, evaluator, kernel, and reviewer labels need
+their own evidence-producing path.
+
+The same audit removed a subtler boast. A freshly submitted certificate has
+exact nodes, depth, objects, Cuts, bytes, and replay status, but those numbers
+alone do not show that it is the best certificate currently known. A0 now
+labels this metric record `submitted`. The later artifact compiler may promote
+it to `best-known` only after it binds and compares the relevant candidates.
+
+Finally, the word *pack* briefly tempted us to overstate progress. The current
+epoch fixture copies three excellent pieces of provenance—the catalog, active
+semantic profile, and retained H0 report—but the catalog contains certificate
+hashes, not the certificate bytes themselves. An isolated machine cannot
+replay a theorem from that pack. We therefore call it a transition-protocol
+slice, keep H1.1 unchecked, and make the next acceptance test ruthless: remove
+or poison the living theorem-library imports and replay every packed formula
+and certificate using only the kernel and the immutable pack.
+
+At this checkpoint the canonical authoring digest is
+`31a344bbc0b22cfacf5803c85d25a80a0234cf7387395283c5e1ab25ada80553`
+with 28 focused adversarial tests. The epoch-protocol digest is
+`f4695013ee4aeb660abf3a1e57a6334d86c990a8904c4435d94628694a2e875b`
+with 38 focused tests. These are exact implemented facts, not A0/H1 completion
+claims.
+
+## 2026-08-04 — Making “offline replay” mean exactly what it says
+
+The previous diary entry ended with a deliberately harsh acceptance test:
+remove the living theorem library and replay every packed theorem. Today we
+made that test real. The result is satisfying, but the more interesting part
+was how many apparently innocent shortcuts had to be removed before the phrase
+“replay-complete pack” was honest.
+
+The first decision was compatibility. Epoch schema v1 already means “catalog,
+semantic profile, and H0 provenance.” Adding certificate bytes to it would
+make old and new objects share a version while having different semantics. We
+left it alone and introduced replay-pack schema v1 as a subordinate H1.1
+transport. Its status is literally `candidate`, and evaluation eligibility is
+literally false. This lets the code express our epistemic state instead of
+relying on prose warnings.
+
+The artifact representation was already available: canonical
+`peano-lab-v2` tagged arrays. What was missing was the inverse map. I added a
+strict decoder for all five term constructors, seven formula constructors, and
+twenty-five proof constructors. It checks exact tags, arities, child sorts,
+axiom names, integer types, bytes, nodes, depth, and decimal digit count. It
+then re-encodes the reconstructed syntax and requires exact byte equality.
+This rejects alternate whitespace, escaped tags, floating-point spellings,
+Boolean integers, `-0`, extra newlines, and every other second spelling.
+
+The decoder is intentionally not a checker. One test decodes a reflexivity
+proof attached to a false equality, demonstrating that decoding grants no
+authority. Another decodes DNE. The caller must obtain the original target
+from a separate commitment and call the independent kernel. Keeping that
+separation visible is pedagogically valuable: serialization answers “what
+syntax did these bytes denote?”, whereas the kernel answers “is this syntax a
+derivation of this exact proposition?”
+
+The second decision was to split construction from verification. The builder
+may import the theorem catalog and tactic engine because its job is to replay
+authored scripts and serialize their finished certificates. The verifier may
+not. It streams an exact-membership directory through bounded no-follow reads,
+imports only the kernel and standard library, and never resolves a theorem name
+into living code. The final builder does not merely call that module in its
+already-contaminated process. It starts a new Python interpreter with
+`-I -S -X pycache_prefix=<fresh-dir>`, installs a meta-path guard against the
+library, engine, UI, training package, Torch, and Transformers, and records
+that none was loaded. Only the exact Peano package root is appended after the
+standard-library paths, and a pre-existing repository bytecode-cache subtree
+fails closed. The package initializers, kernel, codec, verifier, and worker CLI
+are all included in the hashed execution identity. We compare that identity
+immediately after import and after the last theorem, so a file cannot quietly
+change while stale code continues running.
+
+The verification order mattered. A malicious manifest should not be able to
+make the worker open thousands of files before discovering that its theorem
+count or root is nonsense. We therefore validate every manifest row, exact
+JSON type, prior-only dependency, content-addressed path, aggregate byte and
+tree ceiling, schema/profile/catalog identity, replay root, and manifest root
+before reading one certificate. Only then do we compare the exact directory
+membership and stream the artifacts with bounded regular-file reads and
+`O_NOFOLLOW | O_NONBLOCK`. Directory enumeration itself stops at the declared
+maximum plus one, so a hostile directory cannot force an unbounded scan; a
+FIFO fails its regular-file check without blocking. Directory membership and
+verifier identity are checked again at the end.
+
+For every row, the source statement parsed as a closed formula must equal the
+target encoded in the artifact, and the target's canonical formula hash must
+equal the manifest commitment. We also recompute the proof-term hash, canonical
+pretty statement, proof occurrences, maximum depth, and Cut count. The only
+line that grants a theorem is still the boring one:
+
+```python
+check((), proof, target)
+```
+
+The third decision concerned metrics. Python certificates can reuse immutable
+proof objects, but `peano-lab-v2` writes a tree. After decoding, object sharing
+is gone. Nodes, depth, Cuts, bytes, and kernel acceptance can be reconstructed;
+distinct objects, unique edges, and reused references cannot. An early draft
+was tempted to recompute `repr(proof)` and call that source identity. This is
+fragile across runtimes and confuses provenance with theorem authority. The
+final manifest keeps the historical source hash and sharing counts as
+catalog-bound construction observations, checks their graph invariants, and
+labels them honestly. It does not claim that the packed tree rediscovered the
+original Python identities.
+
+The adversarial review paid for itself repeatedly. Reviewers found places
+where Python would let `False` impersonate index zero or `True` impersonate
+version one; resource ceilings present in the schema but not enforced before
+I/O; an option that could skip live kernel identity while still returning
+`status: passed`; a CLI call to `resolve()` that erased evidence that the pack
+root was a symlink; a case-insensitive path alias that could overwrite the
+verified manifest with its own report; a report destination checked only
+before build publication; stale repository bytecode; unbounded directory
+enumeration; a blocking FIFO; a DNE test whose target was not actually
+classically provable; and initially unbound package/worker sources. They also
+forced the second live certificate's exact `repr` hash to match the catalog and
+the structural/source-metric boundary to become exact. Each finding became a
+regression, usually with every local hash and root recomputed as an attacker
+would recompute them. Stale hashes test cryptography; fully rerooted mutations
+test semantics.
+
+The finished pack contains 384 certificate files and 80,088,767 artifact
+bytes. It represents 1,806,923 proof occurrences and 52,626 Cut nodes. The
+theorem replay root is
+`88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`;
+the full manifest root is
+`fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`.
+The build stages everything and atomically publishes only after the fresh
+worker accepts all 384. The ordinary acceptance test repeats that worker and
+compares its report byte-for-byte with the retained 828-byte report. The
+corrected replay-pack and bounded-decoder selection passed 145 tests in 47.56
+seconds.
+
+The release gates then covered the entire Peano test tree with eight
+deterministic shards. They reported 3,048 passes, 12 skips, and two
+environment-dependent failures. Both controls passed in the environment they
+actually require: the nested H0.3 process passed alone in 12.81 seconds after
+timing out only under four-way contention, and the loopback dashboard test
+passed in 0.58 seconds once an ephemeral local socket was permitted. Therefore
+all 3,050 non-skipped cases passed. Lambda Lab remained green at 360 tests plus
+36 subtests. The browser was resealed locally as build `2026-08-04f`,
+application `a-d9bd305e4cad`, without deployment. A clean warning-as-error Book
+build covered all 46 sources, all 194 deep links and 287 documented commands
+replayed, the HTML integrity gate found no broken or unsafe targets, and the
+490-note vault resolved all 4,981 links.
+
+This changed the next task, but not the milestone label. We have crossed the
+offline certificate-replay gate. We have not shown that the declared
+dependencies are the direct readable dependencies, the direct optimized
+dependencies, or minimal; A2 has not certified a best-known construction; the
+definition, explanation, and generated-document receipts are absent; lineage
+and benchmark masks are absent; and no independent owner has registered a
+source-state freeze. So H1.1 stays open. The exact sentence we earned is:
+
+> Replay-complete candidate-$L_0$ pack validated in an isolated fresh
+> interpreter.
+
+That sentence is narrower than “we froze $L_0$,” and much stronger than “we
+have certificate hashes.” It is a good checkpoint because every word now has
+an executable test behind it.

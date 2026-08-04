@@ -16,6 +16,7 @@ and a complete artifact ends in exactly one LF byte.
 from __future__ import annotations
 
 from collections.abc import Callable
+import json
 
 from .formulas import And, Bot, Eq, Exists, Forall, Formula, Imp, Or
 from .proofs import (
@@ -50,10 +51,18 @@ from .terms import Add, Mul, Succ, Term, Var, Zero
 
 
 FORMAT_TAG = "peano-lab-v2"
+MAX_DECODE_ARTIFACT_BYTES = 8_000_000
+MAX_DECODE_NODES = 1_000_000
+MAX_DECODE_DEPTH = 512
+MAX_DECODE_INTEGER_DIGITS = 4_096
 
 
 class ArtifactLimitError(ValueError):
     """Canonical encoding exceeded an explicit caller-owned byte ceiling."""
+
+
+class ArtifactDecodeError(ValueError):
+    """Untrusted bytes are not one bounded canonical kernel artifact."""
 
 
 def _nat_bytes(
@@ -401,9 +410,348 @@ def encode_artifact_bounded(
     return bytes(writer.output)
 
 
+def _reject_decoded_float(value: str) -> object:
+    raise ArtifactDecodeError(
+        f"artifact contains forbidden floating-point value {value!r}"
+    )
+
+
+def _reject_decoded_constant(value: str) -> object:
+    raise ArtifactDecodeError(f"artifact contains forbidden JSON constant {value!r}")
+
+
+def _parse_decoded_integer(value: str) -> int:
+    """Parse one bounded JSON integer without CPython's mutable digit limit."""
+
+    negative = value.startswith("-")
+    digits = value[1:] if negative else value
+    if not digits or len(digits) > MAX_DECODE_INTEGER_DIGITS:
+        raise ArtifactDecodeError(
+            "artifact integer exceeds the bounded decimal-digit limit"
+        )
+    result = 0
+    for start in range(0, len(digits), 9):
+        chunk = digits[start : start + 9]
+        result = result * (10 ** len(chunk)) + int(chunk)
+    return -result if negative else result
+
+
+class _Decoder:
+    """Turn one already-parsed tagged tree into exact kernel constructors.
+
+    This decoder is deliberately untrusted infrastructure.  Its output grants
+    no theorem authority: callers must compare the decoded target with their
+    separately committed target and invoke the independent kernel checker.
+    Re-encoding at the public boundary makes the accepted wire spelling
+    unique.
+    """
+
+    __slots__ = ("max_depth", "max_nodes", "nodes")
+
+    def __init__(self, *, max_nodes: int, max_depth: int) -> None:
+        self.max_nodes = max_nodes
+        self.max_depth = max_depth
+        self.nodes = 0
+
+    def _take(self, depth: int, label: str) -> None:
+        if depth > self.max_depth:
+            raise ArtifactDecodeError(
+                f"artifact {label} exceeds the {self.max_depth}-level depth limit"
+            )
+        self.nodes += 1
+        if self.nodes > self.max_nodes:
+            raise ArtifactDecodeError(
+                f"artifact exceeds the {self.max_nodes}-node decode limit"
+            )
+
+    @staticmethod
+    def _tagged(value: object, label: str) -> tuple[str, list[object]]:
+        if type(value) is not list or not value or type(value[0]) is not str:
+            raise ArtifactDecodeError(f"artifact {label} is not one tagged array")
+        return value[0], value
+
+    @staticmethod
+    def _arity(value: list[object], expected: int, label: str) -> None:
+        if len(value) != expected:
+            raise ArtifactDecodeError(f"artifact {label} has the wrong arity")
+
+    @staticmethod
+    def _natural(value: object, label: str) -> int:
+        if type(value) is not int or value < 0:
+            raise ArtifactDecodeError(
+                f"artifact {label} must be a non-negative exact integer"
+            )
+        return value
+
+    def term(self, value: object, depth: int) -> Term:
+        self._take(depth, "term")
+        tag, node = self._tagged(value, "term")
+        if tag == "var":
+            self._arity(node, 2, "var")
+            return Var(self._natural(node[1], "variable index"))
+        if tag == "zero":
+            self._arity(node, 1, "zero")
+            return Zero()
+        if tag == "succ":
+            self._arity(node, 2, "succ")
+            return Succ(self.term(node[1], depth + 1))
+        if tag == "add":
+            self._arity(node, 3, "add")
+            return Add(
+                self.term(node[1], depth + 1),
+                self.term(node[2], depth + 1),
+            )
+        if tag == "mul":
+            self._arity(node, 3, "mul")
+            return Mul(
+                self.term(node[1], depth + 1),
+                self.term(node[2], depth + 1),
+            )
+        raise ArtifactDecodeError(f"artifact term has unknown tag {tag!r}")
+
+    def formula(self, value: object, depth: int) -> Formula:
+        self._take(depth, "formula")
+        tag, node = self._tagged(value, "formula")
+        if tag == "eq":
+            self._arity(node, 3, "eq")
+            return Eq(
+                self.term(node[1], depth + 1),
+                self.term(node[2], depth + 1),
+            )
+        if tag == "bot":
+            self._arity(node, 1, "bot")
+            return Bot()
+        if tag == "imp":
+            self._arity(node, 3, "imp")
+            return Imp(
+                self.formula(node[1], depth + 1),
+                self.formula(node[2], depth + 1),
+            )
+        if tag == "and":
+            self._arity(node, 3, "and")
+            return And(
+                self.formula(node[1], depth + 1),
+                self.formula(node[2], depth + 1),
+            )
+        if tag == "or":
+            self._arity(node, 3, "or")
+            return Or(
+                self.formula(node[1], depth + 1),
+                self.formula(node[2], depth + 1),
+            )
+        if tag == "forall":
+            self._arity(node, 2, "forall")
+            return Forall(self.formula(node[1], depth + 1))
+        if tag == "exists":
+            self._arity(node, 2, "exists")
+            return Exists(self.formula(node[1], depth + 1))
+        raise ArtifactDecodeError(f"artifact formula has unknown tag {tag!r}")
+
+    def proof(self, value: object, depth: int) -> Proof:
+        self._take(depth, "proof")
+        tag, node = self._tagged(value, "proof")
+        if tag == "hyp":
+            self._arity(node, 2, "hyp")
+            return Hyp(self._natural(node[1], "hypothesis index"))
+        if tag == "imp_intro":
+            self._arity(node, 2, "imp_intro")
+            return ImpIntro(self.proof(node[1], depth + 1))
+        if tag == "imp_elim":
+            self._arity(node, 3, "imp_elim")
+            return ImpElim(
+                self.proof(node[1], depth + 1),
+                self.proof(node[2], depth + 1),
+            )
+        if tag == "cut":
+            self._arity(node, 5, "cut")
+            return Cut(
+                self.formula(node[1], depth + 1),
+                self.formula(node[2], depth + 1),
+                self.proof(node[3], depth + 1),
+                self.proof(node[4], depth + 1),
+            )
+        if tag == "and_intro":
+            self._arity(node, 3, "and_intro")
+            return AndIntro(
+                self.proof(node[1], depth + 1),
+                self.proof(node[2], depth + 1),
+            )
+        if tag == "and_elim_l":
+            self._arity(node, 2, "and_elim_l")
+            return AndElimL(self.proof(node[1], depth + 1))
+        if tag == "and_elim_r":
+            self._arity(node, 2, "and_elim_r")
+            return AndElimR(self.proof(node[1], depth + 1))
+        if tag == "or_intro_l":
+            self._arity(node, 2, "or_intro_l")
+            return OrIntroL(self.proof(node[1], depth + 1))
+        if tag == "or_intro_r":
+            self._arity(node, 2, "or_intro_r")
+            return OrIntroR(self.proof(node[1], depth + 1))
+        if tag == "or_elim":
+            self._arity(node, 4, "or_elim")
+            return OrElim(
+                self.proof(node[1], depth + 1),
+                self.proof(node[2], depth + 1),
+                self.proof(node[3], depth + 1),
+            )
+        if tag == "bot_elim":
+            self._arity(node, 2, "bot_elim")
+            return BotElim(self.proof(node[1], depth + 1))
+        if tag == "forall_intro":
+            self._arity(node, 2, "forall_intro")
+            return ForallIntro(self.proof(node[1], depth + 1))
+        if tag == "forall_elim":
+            self._arity(node, 3, "forall_elim")
+            return ForallElim(
+                self.proof(node[1], depth + 1),
+                self.term(node[2], depth + 1),
+            )
+        if tag == "exists_intro":
+            self._arity(node, 3, "exists_intro")
+            return ExistsIntro(
+                self.term(node[1], depth + 1),
+                self.proof(node[2], depth + 1),
+            )
+        if tag == "exists_elim":
+            self._arity(node, 3, "exists_elim")
+            return ExistsElim(
+                self.proof(node[1], depth + 1),
+                self.proof(node[2], depth + 1),
+            )
+        if tag == "eq_refl":
+            self._arity(node, 2, "eq_refl")
+            return EqRefl(self.term(node[1], depth + 1))
+        if tag == "eq_sym":
+            self._arity(node, 2, "eq_sym")
+            return EqSym(self.proof(node[1], depth + 1))
+        if tag == "eq_trans":
+            self._arity(node, 3, "eq_trans")
+            return EqTrans(
+                self.proof(node[1], depth + 1),
+                self.proof(node[2], depth + 1),
+            )
+        if tag == "cong_s":
+            self._arity(node, 2, "cong_s")
+            return CongS(self.proof(node[1], depth + 1))
+        if tag == "cong_add":
+            self._arity(node, 3, "cong_add")
+            return CongAdd(
+                self.proof(node[1], depth + 1),
+                self.proof(node[2], depth + 1),
+            )
+        if tag == "cong_mul":
+            self._arity(node, 3, "cong_mul")
+            return CongMul(
+                self.proof(node[1], depth + 1),
+                self.proof(node[2], depth + 1),
+            )
+        if tag == "eq_subst":
+            self._arity(node, 4, "eq_subst")
+            return EqSubst(
+                self.formula(node[1], depth + 1),
+                self.proof(node[2], depth + 1),
+                self.proof(node[3], depth + 1),
+            )
+        if tag == "dne":
+            self._arity(node, 2, "dne")
+            return DNE(self.formula(node[1], depth + 1))
+        if tag == "axiom":
+            self._arity(node, 2, "axiom")
+            if type(node[1]) is not str or node[1] not in {
+                "PA1",
+                "PA2",
+                "PA3",
+                "PA4",
+                "PA5",
+                "PA6",
+            }:
+                raise ArtifactDecodeError("artifact axiom name is not PA1 through PA6")
+            return Axiom(node[1])
+        if tag == "ind":
+            self._arity(node, 4, "ind")
+            return Ind(
+                self.formula(node[1], depth + 1),
+                self.proof(node[2], depth + 1),
+                self.proof(node[3], depth + 1),
+            )
+        raise ArtifactDecodeError(f"artifact proof has unknown tag {tag!r}")
+
+
+def _positive_decode_limit(value: object, label: str) -> int:
+    if type(value) is not int or value < 1:
+        raise ValueError(f"{label} must be a positive exact integer")
+    return value
+
+
+def decode_artifact(
+    artifact: bytes,
+    *,
+    max_bytes: int = MAX_DECODE_ARTIFACT_BYTES,
+    max_nodes: int = MAX_DECODE_NODES,
+    max_depth: int = MAX_DECODE_DEPTH,
+) -> tuple[int, Formula, Proof]:
+    """Decode one bounded canonical artifact into inert kernel syntax.
+
+    Decoding never checks the proof.  Sound callers must bind ``target`` to an
+    independently committed original goal and call
+    :func:`peano_lab.kernel.checker.check` with the intended logic mode.
+    ``max_*`` values are availability limits rather than logical axioms.
+    """
+
+    byte_limit = _positive_decode_limit(max_bytes, "artifact byte limit")
+    node_limit = _positive_decode_limit(max_nodes, "artifact node limit")
+    depth_limit = _positive_decode_limit(max_depth, "artifact depth limit")
+    if type(artifact) is not bytes or not artifact or len(artifact) > byte_limit:
+        raise ArtifactDecodeError(
+            f"artifact must be nonempty exact bytes within the {byte_limit}-byte limit"
+        )
+    if not artifact.endswith(b"\n") or artifact.endswith(b"\n\n"):
+        raise ArtifactDecodeError("canonical artifact must end in exactly one LF")
+    try:
+        parsed = json.loads(
+            artifact[:-1].decode("utf-8"),
+            parse_int=_parse_decoded_integer,
+            parse_float=_reject_decoded_float,
+            parse_constant=_reject_decoded_constant,
+        )
+    except ArtifactDecodeError:
+        raise
+    except (UnicodeDecodeError, json.JSONDecodeError, ValueError, RecursionError) as exc:
+        raise ArtifactDecodeError(f"artifact is not bounded strict JSON: {exc}") from None
+    if (
+        type(parsed) is not list
+        or len(parsed) != 4
+        or parsed[0] != "peano-lab-v2"
+    ):
+        raise ArtifactDecodeError("artifact envelope is malformed")
+    fuel = _Decoder._natural(parsed[1], "fuel")
+    decoder = _Decoder(max_nodes=node_limit, max_depth=depth_limit)
+    target = decoder.formula(parsed[2], 1)
+    proof = decoder.proof(parsed[3], 1)
+    try:
+        canonical = encode_artifact_bounded(
+            fuel,
+            target,
+            proof,
+            max_bytes=len(artifact),
+        )
+    except (ArtifactLimitError, TypeError, ValueError, RecursionError) as exc:
+        raise ArtifactDecodeError(f"decoded artifact cannot be re-encoded: {exc}") from None
+    if canonical != artifact:
+        raise ArtifactDecodeError("artifact is not in canonical peano-lab-v2 form")
+    return fuel, target, proof
+
+
 __all__ = [
+    "ArtifactDecodeError",
     "ArtifactLimitError",
     "FORMAT_TAG",
+    "MAX_DECODE_ARTIFACT_BYTES",
+    "MAX_DECODE_DEPTH",
+    "MAX_DECODE_INTEGER_DIGITS",
+    "MAX_DECODE_NODES",
+    "decode_artifact",
     "encode_artifact",
     "encode_artifact_bounded",
     "encode_formula",

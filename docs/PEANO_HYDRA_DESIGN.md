@@ -1,16 +1,19 @@
 # Peano Hydra — binding design
 
-**Status:** binding campaign architecture; H0 semantic and functional core
-completed 2026-08-04, H1 epoch/benchmark freeze still open
+**Status:** binding campaign and product architecture; H0 semantic and
+functional core completed 2026-08-04, H1/A0 contracts and epoch freeze open
 
 **Implementation plan:** [`PLAN/11_peano_hydra.md`](../PLAN/11_peano_hydra.md)
 
 **Parent architecture:** [`docs/PEANO_LAB_DESIGN.md`](PEANO_LAB_DESIGN.md)
 
-Peano Hydra is a falsifiable experiment in neuro-symbolic theorem proving for
-the Peano Lab object language. It asks whether an LLM can make a
-proof-producing symbolic prover better under matched resources. It is not a
-license to weaken Peano Lab's trust boundary, and it is not a claim that full
+Peano Hydra is both a living arithmetic workshop and a falsifiable experiment
+in neuro-symbolic theorem proving. Its only object language is Peano Lab. The
+workshop grows a reviewed elementary-number-theory library and turns accepted
+mathematical prose into precise statements, checked proofs, exact dependency
+graphs, and linked documentation. The experiment asks whether sparse Qwen
+guidance improves a strong native/Vampire prover under matched resources. No
+part of either mission licenses a weaker trust boundary or a claim that full
 Heyting arithmetic is decidable.
 
 This document fixes the experiment before implementation. Normative words
@@ -47,13 +50,38 @@ to be finite.
 the preregistered H5 comparison. Development-set demonstrations, teacher
 solutions, and the historical four-goal policy smoke cannot establish them.
 
+### 1.1 Living-library and authoring mission
+
+The one-shot experiment is not the whole product. Hydra SHALL maintain three
+separable lanes:
+
+1. the Peano Lab language, Python authority, Rust acceleration, and Lean
+   metatheory;
+2. a continuously growing reviewed library plus live proof-document authoring;
+3. a frozen Vampire/Qwen research campaign with lineage-safe evaluation.
+
+The first two remain useful if lane 3 reports no demonstrated LLM advantage.
+The public authoring surface contains only ordinary mathematical prose,
+readable defined PA notation, its exact primitive expansion, Peano Lab proof
+states/tactics, dependencies, and certificates. TPTP, Vampire proof objects,
+SMT-LIB, Lean syntax, and model protocols are internal and MUST NOT become a
+second library language.
+
+`authoring-live` follows the newest reviewed library epoch and may improve
+continually. `research-eval` uses exactly one copied, content-addressed epoch,
+lineage mask, benchmark, solver configuration, and model configuration. No
+artifact from living HEAD may cross that boundary after the research epoch is
+sealed.
+
 ## 2. Non-negotiable laws
 
 ### 2.1 Kernel law
 
 Only `peano_lab/kernel/checker.py` may admit a positive theorem. Every reported
-QED MUST be replayed from an empty or explicitly declared context against the
-**original stated formula**, not a tactic-rewritten surrogate. The certificate
+QED MUST be replayed from the empty context against the **original stated
+formula**, not a tactic-rewritten surrogate. Declared contexts are permitted
+only for intermediate search judgments and never for library admission or a
+scored theorem. The certificate
 MUST be self-contained according to the Peano Lab design; library names,
 solver status strings, model confidence, and hashes are provenance, never
 proof authority.
@@ -69,6 +97,15 @@ The kernel MUST retain the import and size disciplines in
 `PEANO_LAB_DESIGN.md`. Hydra MUST NOT add a trusted solver rule, a theorem
 oracle, a “Vampire proved it” constructor, or a second finalizer.
 
+The existing native/WASM Rust implementation is a diagnostic and acceleration
+shadow, not a second authority. A Lean proof about a handwritten checker plus
+finite differential tests does not prove the exact Rust program correct.
+Future Rust authority requires the K5--K11 protocol, algorithm-soundness,
+source-refinement, and dual-soak gates in
+`PLAN/12_peano_kernel_acceleration.md`, followed by a separate binding-design
+amendment. Until then, Rust may reject or filter candidates cheaply, but
+Python performs the final original-goal check for every published QED.
+
 ### 2.2 Fragment law
 
 H0 MUST publish one machine-readable language profile containing:
@@ -79,7 +116,9 @@ H0 MUST publish one machine-readable language profile containing:
 - whether induction is unrestricted, syntactically bounded, or absent;
 - the accepted input normal forms and every validity-preserving translation;
 - resource bounds that are part of the decision claim, if any; and
-- the semantics and evidence format for both `proved` and `not_theorem`.
+- the semantics and evidence format for `proved` and `unknown`; and
+- for any separately registered decision profile, the additional semantics
+  and independent evidence format for `not_theorem`.
 
 The profile hash is part of every dataset row, solver run, model prompt,
 certificate record, and result table. A formula outside the profile may be
@@ -132,26 +171,122 @@ or negative theoremhood claim. Domain-separated compact JSON defines every
 hash preimage. Profile v1's draft is historical; only profile v2 records may
 claim this exact `peano-hydra-result` v1 conformance.
 
+Peano Lab remains the sole object language in every future profile. The
+constructive profile v2 is immutable and remains the default. A future
+classical campaign MUST register a different profile and artifact identity for
+the existing `PA+DNE` checker. Excluded middle, `A \/ ~A`, may be exposed as a
+derived classical theorem or tactic; it is not casually added as a second
+kernel primitive equivalent to DNE. Every theorem, dependency, prompt,
+document, and checked result carries its logic mode. Until K5,
+`peano-lab-v2` certificate bytes do not carry logic internally; their
+owner-held verification request and result receipt bind the mode. Version 3
+will place it inside the canonical artifact. Constructive results
+may be imported into classical sessions; classical results and DNE nodes MUST
+be rejected in constructive sessions.
+
+Readable defined notation is permitted only with deterministic conservative
+expansion receipts into the primitive grammar. Neither Vampire translation nor
+model syntax enlarges the language.
+
 ### 2.3 Library-epoch law
 
-Hydra does not evaluate against a moving theorem library. H1 freezes an
+Hydra does not evaluate against a moving theorem library. The living library
+may continue at reviewed `authoring-live` HEAD, while H1 physically freezes an
 ordered epoch `L0`, initially the complete independently checked public
 catalog available at campaign start (at least the current 384-theorem
 entries). Its content root MUST commit to, for every entry:
 
 - stable name and canonical statement;
-- ordered direct dependencies;
+- ordered readable-proof dependencies, ordered optimized-construction
+  dependencies, and their deterministic publication union;
 - authored source or proof-script hash;
 - independently checked certificate hash;
-- node count and maximum depth; and
+- node count, distinct objects, Cuts, bytes, maximum depth, and replay
+  observation;
+- readable source proof and best-known optimized certificate identities;
+- source prose, explanation, definition-expansion and documentation receipts;
+  and
 - declaration order and logic/profile identity.
 
+The self-contained certificate has no trusted external theorem names, but its
+construction lineage still records which prior theorems were imported before
+expansion. Leave-one-out replay checks each declared per-artifact vector. The
+public dependency graph and lineage masks use the deterministic union, so an
+optimized certificate cannot hide an authored dependency and a readable proof
+cannot hide an optimizer dependency.
+
 Training may use eligible material from `L0`; the final benchmark may not.
-New mathematics belongs to `L1`, `L2`, and so on. It cannot enter the active
-campaign's prompts, retrieval index, imports, training corpus, or headline
-test. Starting a new library epoch requires sealing a new benchmark before
+New mathematics belongs to `L1`, `L2`, and so on. It may immediately improve
+`authoring-live`, but cannot enter the active campaign's prompts, retrieval
+index, imports, generated documentation context, training corpus, or headline
+test. The frozen pack MUST NOT resolve a path back to living catalog files.
+Starting a new research epoch requires sealing a new benchmark before
 examining outcomes. The current public library is a capability and training
 resource, not a hidden test set.
+
+#### Candidate replay transport implemented in H1.1
+
+Replay-pack schema v1 implements the certificate-transport subgate without
+pretending to complete the epoch freeze. It is a subordinate format beside the
+historical three-file epoch-protocol v1, which remains byte-compatible and
+provenance-only. The new pack has exactly four non-certificate files—canonical
+schema, source catalog, constructive semantic profile, and manifest—and one
+raw canonical `peano-lab-v2` artifact for every theorem. Schema semantic digest
+is `d60b07fe68aa4ba023c9bb873e2df4190752f70252caca21da7e76dcd393f02d`;
+the exact schema-document SHA-256 is
+`cfd0959ec537c9a7e3cdf705bd48ff7f8301fbd43f63623934d4638cb712b2ef`.
+
+The verifier is intentionally separable from candidate construction. It
+imports only standard-library code and the Peano kernel/codec; imports of the
+theorem library, tactic engine, UI, training package, Torch, and Transformers
+are blocked in the retained worker. Before reading any theorem artifact, it
+validates the exact canonical manifest, type-exact versions/counts/indexes,
+ordered prior-only dependencies, safe content-addressed paths, aggregate byte
+and tree-resource ceilings, schema/profile/catalog identities, deterministic
+roots, exact directory membership, and the source identity of the package
+initializers, kernel, decoder, verifier, and worker CLI. It rejects symlinked
+roots and final components, bounds directory enumeration, reads bounded regular
+files with `O_NOFOLLOW | O_NONBLOCK`, and rechecks exact directory and
+verifier-source identity after replay. The worker requires isolated/no-site
+mode plus an explicit fresh repository bytecode-cache subtree. Its report path
+is checked before and after replay with conservative Unicode-normalized,
+case-folded containment, so it cannot overwrite the pack on case-insensitive
+filesystems.
+
+For each theorem it hashes the exact artifact bytes, decodes every constructor
+under byte/node/depth/integer bounds, and requires byte-for-byte canonical
+re-encoding. It independently parses the source statement as a closed formula,
+requires equality with the decoded owner target, recomputes formula/proof
+hashes and tree nodes/depth/Cuts, and finally calls
+`check((), proof, original_target)` in intuitionistic mode. A DNE artifact may
+be decoded as inert syntax but cannot pass that final judgment; the adversarial
+control is accepted by the separate classical checker and rejected here.
+
+`peano-lab-v2` serializes a proof tree and does not preserve Python object
+sharing. Consequently nodes, depth, Cuts, formula/proof hashes, bytes, and
+kernel acceptance are freshly reconstructed from packed bytes. Distinct object count,
+unique proof edges, and reused references remain catalog-bound source-stage
+observations, with explicit graph invariants; they are not presented as
+pack-reconstructed facts. The source `repr` hash remains provenance only and
+is not an authoritative portability check.
+
+The retained candidate has 384 artifacts totaling 80,088,767 bytes, manifest
+root `fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`,
+and theorem replay root
+`88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
+Its builder publishes atomically only after a new
+`python -I -S -X pycache_prefix=<fresh-dir>` process has replayed every theorem
+with the forbidden-import guard active. The committed acceptance test repeats
+that full replay and requires byte equality with the retained report.
+
+This is precisely a **replay-complete candidate-`L0` pack validated in an
+isolated fresh interpreter**. It is not production `L0`: the manifest enforces
+`status = candidate` and `evaluation_eligible = false`. H1.1 still needs
+separate readable and optimized direct-dependency vectors with leave-one-out
+evidence, deterministic publication union, definition/document receipts,
+lineage controls, reviewed Git-state provenance, independent owner deposit,
+and benchmark sealing. Declared dependencies are therefore described only as
+publication dependencies, and no certificate is called minimal or best-known.
 
 ### 2.4 Sealed-test law
 
@@ -200,22 +335,118 @@ with three shallow checked scripts and the induction goal unsolved. It is not
 a teacher-oracle result, statistical benchmark, broad PA capability result, or
 causal LLM advantage result.
 
+### 2.6 Authoring and admission law
+
+The live assistant is a revisioned proposal system, not an autonomous editor
+or theorem authority. It MUST retain every source unit verbatim and classify
+it as `claim`, `definition`, `proof_step`, `exposition`, or `question` before
+formalization. Its persistent objects use strict, canonical, versioned schemas
+for documents, source units, formalization candidates, diagnostics, proof
+attempts, theorem proposals, authenticated lifecycle events, and explicit
+export events. The lifecycle schema fixes append-only transitions, previous-
+event chaining, actor/authority classes, and the reviewed host-registry
+identity before A5 supplies the service. Unknown versions, duplicate keys,
+additional fields, unsafe text, and noncanonical encodings fail closed.
+
+A formalization candidate MUST bind the exact source span and hash, document
+revision, logic profile, library epoch, readable formula, deterministic
+primitive expansion, free-variable/binder table, assumptions, alternative
+readings, definition receipts, provenance, and training-consent state.
+The receipt binds the existing Peano Lab defined-syntax registry ID/version/
+digest, exact definition uses, readable source, expanded formula, and a
+successful expansion round trip; Hydra MUST NOT invent a parallel definition
+registry.
+Training consent defaults to deny. A background response whose document or
+source-unit precondition is stale is retained only as rejected audit evidence;
+it cannot update the current document.
+
+Every diagnostic carries an explicit authority class: parser, definition
+expander, library graph, bounded evaluator, kernel, untrusted solver,
+untrusted model, or human reviewer. The UI MUST distinguish a syntax error, a
+proved contradiction, a concrete checked counterexample, a missing dependency,
+an ambiguous reading, and search exhaustion. Solver/model opinion and timeout
+are never displayed as mathematical falsehood. The assistant MUST NOT repair
+binders, assumptions, quantifier order, implication direction, equality
+direction, or the target silently merely because a nearby statement is easier
+to prove.
+
+An accepted candidate becomes only a theorem *proposal*. A checked proposal is
+constructed from actual kernel `Formula` and `Proof` objects, freshly replayed
+against the exact original formula under its declared logic. It MUST retain
+lineage, exact ordered direct dependencies, readable source proof, best-known
+optimized certificate, proof metrics, mutation results, solver/model
+transcripts, explanation, and deterministic Book/vault/Explorer outputs.
+Direct dependencies are checked and minimized independently; “minimal” is
+reserved for a proved lower bound, while ordinary optimization reports exact
+Pareto metrics and “best known.”
+
+Human acceptance of the statement and human review of the complete proposal
+are separate, explicit events. Neither may be forged by a client, solver, or
+model field. Only an explicit export action may produce a patch or pull
+request. The browser workspace, background workers, and prompt content MUST
+NOT mutate the public catalog, proof session, Git tree, or history directly.
+Authoring events are append-only, carry revision preconditions, survive
+restart/reload, and preserve the existing single proof-session owner.
+
+### 2.7 First H1 implementation boundary
+
+The first executable slice deliberately implements less than the complete H1
+gate. Canonical authoring schema v1 has semantic digest
+`31a344bbc0b22cfacf5803c85d25a80a0234cf7387395283c5e1ab25ada80553`.
+Its public builders and loaders bind exact document/unit revisions, default-
+deny training consent, the exact existing defined-syntax registry, real
+kernel objects for checked proposals, and ordered lifecycle/export deposits
+whose rolling roots include actor, session owner, sequence, predecessor, and
+evidence. Generic model/solver diagnostics remain explicitly untrusted;
+parser, expansion, graph, evaluator, kernel, and human labels require a
+dedicated evidence path. Production lifecycle/export registries are empty.
+The core labels a freshly replayed certificate `submitted`; only A2 may call
+one `best-known` after binding the comparison set and optimization evidence.
+
+This module treats serialized prose, model output, solver output, and network
+responses as hostile data. It treats the installed Peano Lab host package and
+source-reviewed registry deposits as administrative trusted inputs. Python
+private names are not a security sandbox against arbitrary code already
+executing in the same process; such plugins are outside the A0 public-API
+threat model and MUST NOT be loaded into the authoring service.
+
+Library-epoch schema v1 has semantic digest
+`f4695013ee4aeb660abf3a1e57a6334d86c990a8904c4435d94628694a2e875b`.
+Its candidate path freshly binds living HEAD, relevant dirtiness, the active
+constructive profile, retained H0 evidence, and a live replay of the complete
+384-theorem catalog. JSON versions and root preimages compare with exact JSON
+types, reads are bounded and reject final symlinks, packed paths are checked
+lexically without consulting the living tree, and a source revision observed
+after import forces a process restart rather than pairing new hashes with
+stale Python objects.
+
+The historical epoch-v1 three-file pack still contains only the catalog,
+semantic profile, and retained H0 report and remains a transition-protocol
+fixture. A separate replay-pack-v1 candidate now supplies the previously
+missing canonical formula/certificate bytes for all 384 theorems and replays
+them in an import-guarded fresh interpreter. Its exact identities and claim
+boundary are specified in §2.3. This closes the replay-transport subgate, not
+the freeze: the reviewed owner-receipt registry is empty, the candidate is
+explicitly evaluation-ineligible, and the richer dependency, definition,
+documentation, lineage, Git-state, independent-deposit, and benchmark
+artifacts are absent. H1.0 and H1.1 therefore remain open.
+
 ## 3. Trust and system architecture
 
 ```text
 formula + library epoch + budget
                 |
                 v
-     deterministic symbolic closure
+     deterministic native closure
        | solved                 | stalled at critical frontier
        v                        v
  certificate             macro proposal policy
-       |               (Qwen; Codex on DEV only)
+       |              (Qwen; Codex on TRAIN/DEV only)
        |                        |
        |       +----------------+----------------+
        |       |                |                |
-       |   native search   retriever/ranker  Vampire/E/SMT
-       |       |                |            hints only
+       |   bounded search  retriever/ranker     Vampire
+       |       |                |          reconstructable hints
        +-------+----------------+----------------+
                                |
                     ordinary Peano commands
@@ -250,16 +481,23 @@ helps.
   lineage mask. It never imports a masked theorem.
 - **Clause/state ranker:** cheap non-generative scoring for the symbolic inner
   loop. Its scores confer no validity.
-- **Qwen policy/value models:** student components that propose macro actions
-  or rank frontier states.
-- **Codex:** optional teacher, formalizer, and dataset generator on TRAIN/DEV.
+- **Qwen LoRA models:** separately identified student components for prose
+  classification/formalization, ambiguity critique, theorem retrieval, macro
+  actions, frontier/value ranking, or explanation drafting from already
+  checked artifacts. A response from one role cannot assert authority
+  belonging to another.
+- **Codex:** optional teacher, formalizer, critic, and dataset generator on
+  TRAIN/DEV.
   It may measure action-interface headroom and generate tagged candidates,
   all of which require replay. It MUST NOT see or act on the sealed final set.
-- **Vampire, E, and SMT solvers:** optional hint or side-condition engines.
-  They are classical systems, not intuitionistic HA kernels. Their outputs
-  must be reconstructed into Peano certificates, and their translations must
-  be restricted to a proved validity-preserving class. A raw `SZS Theorem`,
-  unsat result, or translated proof is never scored directly.
+- **Vampire:** the only first-class external prover in the initial portfolio.
+  It is a classical first-order engine, not an intuitionistic HA kernel. In
+  constructive mode it proposes bounded premise bundles, instantiations,
+  witnesses, cuts, rewrites, or proof skeletons that are reconstructed through
+  ordinary Peano operations. Direct reconstruction is permitted only for an
+  explicitly proved translation class. A raw `SZS Theorem`, unsat result, or
+  proof object is never scored. E and SMT remain deferred comparisons and need
+  separately reviewed adapters.
 
 The symbolic baseline MUST be useful without any LLM or teacher service. Every
 component can be disabled independently from a frozen configuration.
@@ -368,6 +606,71 @@ exact-state allowlists also test routing, not symbolic fixed-point detection.
 Those omissions are acceptable for plumbing and must be closed before a real
 Qwen/Codex row can count as H1–H5 evidence.
 
+### 3.3 Live authoring pipeline
+
+The authoring product has a separate, typed flow whose stages cannot be
+collapsed by a model response:
+
+```text
+verbatim prose + revision
+          |
+          v
+ classify source unit -----> exposition/question (document only)
+          |
+          v
+ propose one or more PA readings
+          |
+          +---- ambiguity/diagnostic evidence ----> author edit or reject
+          |
+     explicit author acceptance
+          |
+          v
+ proof workspace: native closure -> Vampire hints -> sparse Qwen/Codex help
+          |
+          v
+ original-goal Python kernel replay
+          |
+          v
+ theorem proposal + dependency/Pareto/docs receipts
+          |
+     explicit human review and export
+          v
+ reviewable patch / pull request / next immutable library epoch
+```
+
+The UI may stream partial proposals, search progress, and diagnostics, but the
+persistent event log is authoritative about ordering. Every asynchronous
+result carries a precondition over document revision, source-unit identity,
+logic mode, library epoch, and proof-state identity. A precondition mismatch
+is `stale`, never an instruction to rebase automatically. Cancellation and
+provider failure append observations and leave accepted text and proof state
+unchanged. An offline mode MUST still support deterministic parsing,
+expansion, local library use, proof execution, kernel replay, and export.
+
+The assistant presents two linked proof views: the readable authored script
+used for teaching and review, and one or more checked optimized certificates
+used for storage or replay. Optimizers are untrusted proof-to-proof search:
+they may replace a certificate only after a fresh check against the same
+original statement and after retaining both identities and comparative
+metrics.
+
+### 3.4 Fast-checker boundary
+
+The Rust native/WASM checker may run early and often in authoring, solver
+reconstruction, model rollouts, and corpus generation. Its verdict is a fast
+filter until K5--K11 complete. The version-3 protocol SHALL carry logic mode
+inside canonical bytes and use distinct outcomes for acceptance, malformed
+input, invalid certificate, resource exhaustion, and internal failure.
+Resource exhaustion makes no theoremhood claim.
+
+Lean work has two separate obligations: prove the mathematical checker
+specification sound, then prove that the exact committed Rust accepted path
+refines that specification. Reimplementing an analogous checker in Lean and
+running finite differential tests establish neither source refinement nor
+binary correctness. If exact source refinement cannot be completed, Python
+authority or mandatory dual checking remains; the project does not relabel
+testing evidence as a proof.
+
 ## 4. Data and benchmark protocol
 
 ### 4.1 Dataset classes
@@ -388,12 +691,24 @@ NOT be positive labels. Duplicate and near-duplicate accounting is by canonical
 state/action and lineage, not textual spelling. Every row carries its source
 class, theorem lineage, library prefix, capability profile, and replay root.
 
+Prose classification, formalization, and critique rows are a separate dataset
+class from proof-policy transitions. Human acceptance determines whether a
+source-to-formula pair is a positive formalization example; kernel acceptance
+determines whether a proof path is a positive proof example. Neither authority
+substitutes for the other, and denied-consent authoring units enter no corpus.
+
 ### 4.2 Quadratic-reciprocity growth rule
 
 Quadratic reciprocity is a valuable future stress domain, but it is not in the
 current 384-theorem library. Any new definitions, residue theory, Legendre-like
 encoding, reciprocity lemmas, or capstone proofs added after `L0` belong to a
 later library epoch. They MUST NOT silently enlarge the active Hydra campaign.
+
+Every parallel formalization PR enters through an intake manifest binding its
+source commit, statement/proof exposure dates, logic, checked status,
+dependencies, license, and destination live epoch. A target whose proof or
+substantive sketch was already visible to developers/models is classified as
+TRAIN/DEV/library material, never as an unseen target in the active final set.
 
 If quadratic reciprocity or a reformulation becomes an evaluation target, the
 entire development lineage is masked: definitions introduced solely for that
@@ -455,7 +770,8 @@ extra sampling, or teacher intervention cannot replace the registered metric.
 ### H0 — Semantic and functional core
 
 Freeze the exact fragment profile, decision-claim boundary, macro protocol,
-reference semantics, and proof-producing symbolic core.
+reference semantics, and proof-producing reconstruction plumbing. The strong
+native/Vampire symbolic portfolio is H2 and is not an H0 completion claim.
 
 Acceptance:
 
@@ -497,12 +813,17 @@ H0 candidate-L0 replay corpus, not H1's frozen library epoch. H1 still must
 seal exact theorem metadata, genealogy, dependency masks, benchmark partitions,
 and the interface-headroom experiment before training or comparison claims.
 
-### H1 — Frozen epoch, benchmark, and interface headroom
+### H1 — Authoring contracts, frozen epoch, benchmark, and headroom
 
-Freeze `L0`, TRAIN/DEV, and a separately held sealed final set. The final set
-contains at least 1,000 targets, including at least 200 human-authored or
-chronologically future-library statements and, if supported, at least 300
-certified non-theorems. Run the symbolic baseline at every registered budget.
+First freeze the canonical authoring schemas and their authority boundaries.
+Build a manually adjudicated 200-unit TRAIN/DEV authoring corpus covering
+binder and quantifier ambiguity, missing assumptions, reversed relations,
+out-of-language material, questions, and exposition. Then freeze `L0`,
+TRAIN/DEV, and a separately held sealed final set. The final set contains at
+least 1,000 positive targets, including at least 200 human-authored or
+chronologically future-library statements. The active profile has no negative
+theoremhood authority, so it has no non-theorem quota. Run the symbolic
+baseline at every registered budget.
 
 On DEV only, a strong teacher may try the macro interface at symbolic critical
 frontiers. Advance if there is zero contamination, the 60-second symbolic
@@ -513,14 +834,18 @@ than manufacture a solve-rate problem. If teacher closure is below 10%, fix
 the action interface before training. A teacher success demonstrates only
 interface/oracle headroom; it is not evidence about Qwen or final performance.
 
-### H2 — Strong symbolic portfolio
+### H2 — Strong native/Vampire symbolic portfolio
 
 Implement and tune, on DEV only, native normalization/rewrite/arithmetic
-closure, focused intuitionistic or connection search, bounded enumeration,
-and validity-controlled external-solver adapters. Every counted positive and
-negative result must replay through its independent authority. The frozen
-portfolio must weakly dominate each component on DEV solved-versus-resource
-AUC and becomes `S` before model evaluation.
+closure, focused intuitionistic or connection search, and bounded enumeration.
+Vampire is the only initial first-class external prover. Its exact TPTP
+translation, source-symbol map, binary, options, raw transcript, and resource
+bounds are retained; every useful result is reconstructed through ordinary
+Peano operations. Premise minimization and proof optimization retain a Pareto
+report, not an unsupported minimality claim. Forged solver status, masked
+premises, foreign symbols, malformed output, timeout, and exhaustion fail
+closed. The frozen portfolio must weakly dominate each component on DEV
+solved-versus-resource AUC and becomes `S` before model evaluation.
 
 ### H3 — Checked macro curriculum
 
@@ -532,13 +857,23 @@ marked ineligible/held out. Two clean builds must be byte-identical; every
 positive root must replay; contamination must be zero; and tokenizer audits
 must reject, not silently truncate, over-length examples.
 
-### H4 — Model ladder and ablations
+Classification/formalization/critique examples remain in a separate corpus.
+They require adjudicated source-to-statement acceptance, explicit consent, and
+the same lineage split before paraphrase expansion. A checked proof of a
+nearby formula does not turn a semantically wrong formalization into a
+positive example.
+
+### H4 — Small-Qwen model ladder and ablations
 
 Evaluate, in order, `S`, `S+BM25`, learned retrieval, cheap clause/state
 ranking, pretrained Qwen, 1.7–3B Qwen SFT, SFT plus value-guided
-best-first/PUCT search, and then checked expert iteration. Also run shuffled
-scores, random-valid actions, no retrieval, no value, no clause ranker, no
-symbolic closure, and LLM-only controls.
+best-first/PUCT search, a separately evaluated formalization/critique adapter,
+and then checked expert iteration. The primary family is LoRA-post-trained
+Qwen below 10B parameters. Roles remain tagged and separable; one generic
+decoder response does not silently combine formalization, retrieval, proof,
+critique, explanation, or authority. Also run shuffled scores, random-valid actions, no
+retrieval, no value, no clause ranker, no symbolic closure, and LLM-only
+controls.
 
 Advance components only when:
 
@@ -550,6 +885,9 @@ Advance components only when:
 - SFT beats the identical pretrained system by at least five DEV points,
   solves at least 25 registered frontier cases, and has a positive lower 95%
   paired interval;
+- the formalizer reports top-1/top-3 human-approved semantic accuracy,
+  critical binder/quantifier/assumption error, ambiguity abstention quality,
+  and median edits to acceptance independently of parser or kernel validity;
 - value search improves solved-versus-resource AUC by at least 5% relative;
   and
 - expert iteration consumes only checked QEDs, includes clean-rebuild versus
@@ -573,11 +911,52 @@ Release source, containers and SBOM, data/model cards, the `L0` manifest,
 benchmark construction and public non-secret split material, lineage masks,
 solver adapters, configs, checkpoints where licensing permits, certificates,
 replay tools, raw evaluation records, tables, dashboard, Jupyter Book, and
-Obsidian notes. A fresh machine must reproduce certificate judgments and
-paper tables. Full tests, strict documentation builds, link/vault checks,
-license checks, and an independent leakage/compute/claim review must pass.
+Obsidian notes. Release a source-controlled LaTeX report and reproducible PDF
+covering data, training, search, inference, authoring, trust limits, and
+results; keep the project memory, dated journal, and implementation diary in
+sync. A fresh machine must reproduce certificate judgments and paper tables.
+Full tests, strict Book and LaTeX/PDF builds with visual/text verification,
+link/vault checks, license checks, and an independent leakage/compute/claim
+review must pass.
 
-## 7. Change control
+## 7. Continuous authoring-product gates
+
+The A-track proceeds beside, and is not blocked by, the sealed H experiment:
+
+1. **A0 — contract:** canonical revisioned schemas and checked builders;
+2. **A1 — sentence workbench:** verbatim units, alternative PA readings,
+   structural read-back, and explicit accept/edit/reject;
+3. **A2 — artifact compiler:** checked theorem proposals and deterministic
+   Book/vault/Explorer previews, exported only on request;
+4. **A3 — native/Vampire help:** deterministic closure first, then bounded
+   reconstructable Vampire hints;
+5. **A4 — Qwen LoRA help:** separate formalization, retrieval, macro, value,
+   critique, and checked-artifact explanation adapters trained only on
+   eligible evidence;
+6. **A5 — live assistant:** asynchronous append-only events, cancellation,
+   recovery, stale-response rejection, and an offline proof mode; and
+7. **A6 — admission:** human review, dependency hygiene, empty-context replay,
+   mutations, proof Pareto report, reproducible documentation, and a new
+   immutable library epoch.
+
+A representative prose-to-formula-to-proof-to-document session must replay
+identically after export, reload, and a clean build. Tests MUST reject stale
+responses, prompt injection, forged human/kernel authority, dependency cycles,
+classical-to-constructive imports, mislabeled prose, and denied-consent corpus
+inclusion.
+
+## 8. Verified fast-kernel gates
+
+The K-track continues the existing native/WASM shadow in
+`PLAN/12_peano_kernel_acceleration.md`: K5 freezes a logic-carrying protocol
+and typed outcomes; K6 completes measurements; K7 hardens Rust; K8 proves the
+algorithm/codec specification in Lean; K9 connects the exact safe-Rust source
+to that specification; K10 performs a cross-platform dual-check soak; and K11
+makes a separately reviewed authority decision. Failure of K9 forbids a
+Rust-only QED path. Completion of H0 or good differential results does not
+waive any K gate.
+
+## 9. Change control
 
 All changes that affect grammar, trust, library visibility, lineage,
 benchmark membership, solver translations, model inputs, search resources, or
@@ -589,7 +968,12 @@ Quadratic-reciprocity growth, additional public theorems, a larger Qwen model,
 and a new external solver are legitimate next-epoch experiments. They are not
 retroactive improvements to a frozen comparison.
 
-## 8. Research lineage
+Authoring schemas, logic profiles, conservative notation, classical-mode
+policy, library-admission requirements, and Rust authority are included in
+this rule. A classical profile or checker-authority change requires its own
+reviewed protocol identity; it is never an in-place reinterpretation.
+
+## 10. Research lineage
 
 The architecture borrows the useful separation seen in proof-producing
 neuro-symbolic systems while keeping Peano Lab's independent kernel as the

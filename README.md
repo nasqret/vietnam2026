@@ -39,6 +39,7 @@ The exact abstracts, session plans and reading lists live on the [landing page](
 | `artifacts/` | **Formal proofs** in four systems, plus `lean-fta/`: a pinned, sorry-free Lean proof of prime-factorization existence and uniqueness up to permutation. |
 | `lab-lambda/` | The **Lambda Lab**, repackaged to run **directly in the browser** (Pyodide + xterm.js). Deployed to `/lab-lambda`. |
 | `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, 384-entry checked arithmetic ladder, and reproducible proof-trace corpus. |
+| `training/peano_hydra/` | **Peano Hydra** contracts and research plumbing for the living PA authoring assistant and frozen native/Vampire/Qwen campaign. |
 | `research/` | The **research dossier** — including the 385-node arithmetic catalog (384 checked and one representation-blocked), native and Lean FTA certificates, the quadratic-reciprocity campaign, and source/license maps. |
 | `scripts/` | Book replay gate plus the deterministic Peano trace generation, export, and kernel-judged evaluation pipeline. |
 | `docs/` | Lecturer-facing docs: how to build, deploy, and run each piece. |
@@ -94,16 +95,27 @@ a deployment claim. The generated 384-theorem snapshot has 1,806,923
 structural occurrences, 52,626 Cuts, and 329 Cut-bearing certificates, with
 ordered root
 `73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
+Hydra's new replay-complete candidate pack physically carries all 384
+canonical certificates (80,088,767 bytes) and rechecks them against their
+original closed goals in an import-guarded fresh
+`python -I -S -X pycache_prefix=<fresh-dir>` worker. Its
+manifest root is
+`fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`;
+the theorem replay root is
+`88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
+It remains schema-labeled candidate/evaluation-ineligible: dependency-view,
+lineage, independent-deposit, and benchmark gates still prevent calling it a
+frozen production `L0`.
 The synchronized vault includes all 384 generated lemma notes. The released
 source-bound corpus retains 13,344 transitions in 1,692
 kernel-checked sessions under fingerprint
 `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
 its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
 all 247 authored QEDs. The integrated local browser candidate deterministically
-verifies as build `2026-08-04b`, application `a-903a05e31da9`, with 150 worker
+verifies as build `2026-08-04f`, application `a-d9bd305e4cad`, with 150 worker
 sources; its source inventory, content manifest, and deployment contracts pass.
-A complete local stage is not claimed in this isolated clone because its
-gitignored pinned vendor mirror is absent, and the build is not deployed. The
+The content-addressed local stage assembled successfully. The build is not
+deployed, and direct attached-browser UI inspection remains unclaimed. The
 strict Jupyter Book rebuild completes over all 46 sources; its post-build
 integrity gate reports zero broken relative targets or fragments and
 byte-identical explicit and defined Proof Explorer trees.

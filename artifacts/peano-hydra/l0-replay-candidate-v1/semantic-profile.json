@@ -1,0 +1,271 @@
+{
+  "arithmetic": {
+    "axioms": [
+      {
+        "formula": "∀ x. ¬S x = 0",
+        "name": "PA1"
+      },
+      {
+        "formula": "∀ x. ∀ y. S x = S y → x = y",
+        "name": "PA2"
+      },
+      {
+        "formula": "∀ x. x + 0 = x",
+        "name": "PA3"
+      },
+      {
+        "formula": "∀ x. ∀ y. x + S y = S (x + y)",
+        "name": "PA4"
+      },
+      {
+        "formula": "∀ x. x · 0 = 0",
+        "name": "PA5"
+      },
+      {
+        "formula": "∀ x. ∀ y. x · S y = x · y + x",
+        "name": "PA6"
+      }
+    ],
+    "induction": {
+      "base": "open(motive,0,Zero)",
+      "conclusion": "Forall(motive)",
+      "kind": "unrestricted-formula-schema",
+      "motive_placeholder": "Var(0)",
+      "step": "Forall(Imp(motive,open(shift(motive,1,cutoff=1),0,Succ(Var(0)))))"
+    }
+  },
+  "authority": {
+    "certificate_representation": "peano-lab-v2",
+    "classical_checker": "forbidden",
+    "context": "empty",
+    "goal": "original",
+    "positive": "peano_lab.kernel.checker.check"
+  },
+  "binding": {
+    "alpha_equivalence": "structural-equality-after-de-bruijn-conversion",
+    "free_surface_name_order": "first-occurrence",
+    "index_type": "nonnegative-integer",
+    "index_zero": "innermost-term-binder",
+    "representation": "de-bruijn",
+    "top_level_scope_depth": 0,
+    "top_level_well_scoped": true
+  },
+  "calculus": {
+    "classical": false,
+    "context_order": "newest-hypothesis-first",
+    "cut": "self-contained-implication-cut",
+    "dne": false,
+    "equality_substitution": "Gamma|-e:s=t;Gamma|-body:open(P,0,s)=>Gamma|-EqSubst(P,e,body):open(P,0,t)",
+    "logic": "intuitionistic-natural-deduction",
+    "proof_constructors": [
+      "Hyp",
+      "ImpIntro",
+      "ImpElim",
+      "Cut",
+      "AndIntro",
+      "AndElimL",
+      "AndElimR",
+      "OrIntroL",
+      "OrIntroR",
+      "OrElim",
+      "BotElim",
+      "ForallIntro",
+      "ForallElim",
+      "ExistsIntro",
+      "ExistsElim",
+      "EqRefl",
+      "EqSym",
+      "EqTrans",
+      "CongS",
+      "CongAdd",
+      "CongMul",
+      "EqSubst",
+      "Axiom",
+      "Ind"
+    ],
+    "rules": {
+      "AndElimL": "Gamma|-p:And(A,B)=>Gamma|-AndElimL(p):A",
+      "AndElimR": "Gamma|-p:And(A,B)=>Gamma|-AndElimR(p):B",
+      "AndIntro": "Gamma|-p:A;Gamma|-q:B=>Gamma|-AndIntro(p,q):And(A,B)",
+      "Axiom": "name-in-PA1-through-PA6=>Gamma|-Axiom(name):axiom(name)",
+      "BotElim": "Gamma|-p:Bot=>Gamma|-BotElim(p):A",
+      "CongAdd": "Gamma|-p:a=b;Gamma|-q:c=d=>Gamma|-CongAdd(p,q):Add(a,c)=Add(b,d)",
+      "CongMul": "Gamma|-p:a=b;Gamma|-q:c=d=>Gamma|-CongMul(p,q):Mul(a,c)=Mul(b,d)",
+      "CongS": "Gamma|-p:a=b=>Gamma|-CongS(p):Succ(a)=Succ(b)",
+      "Cut": "Gamma|-lemma:P;P,Gamma|-body:C=>Gamma|-Cut(P,C,lemma,body):C",
+      "EqRefl": "Gamma|-EqRefl(t):t=t",
+      "EqSubst": "Gamma|-e:s=t;Gamma|-p:open(P,0,s)=>Gamma|-EqSubst(P,e,p):open(P,0,t)",
+      "EqSym": "Gamma|-p:a=b=>Gamma|-EqSym(p):b=a",
+      "EqTrans": "Gamma|-p:a=b;Gamma|-q:b=c=>Gamma|-EqTrans(p,q):a=c",
+      "ExistsElim": "Gamma|-p:Exists(A);A,shift(Gamma,1)|-body:shift(C,1)=>Gamma|-ExistsElim(p,body):C",
+      "ExistsIntro": "Gamma|-p:open(A,0,t)=>Gamma|-ExistsIntro(t,p):Exists(A)",
+      "ForallElim": "Gamma|-p:Forall(A)=>Gamma|-ForallElim(p,t):open(A,0,t)",
+      "ForallIntro": "shift(Gamma,1)|-body:A=>Gamma|-ForallIntro(body):Forall(A)",
+      "Hyp": "Gamma[i]=A=>Gamma|-Hyp(i):A",
+      "ImpElim": "Gamma|-f:Imp(A,B);Gamma|-a:A=>Gamma|-ImpElim(f,a):B",
+      "ImpIntro": "A,Gamma|-body:B=>Gamma|-ImpIntro(body):Imp(A,B)",
+      "Ind": "Gamma|-base:open(P,0,Zero);Gamma|-step:Forall(Imp(P,open(shift(P,1,cutoff=1),0,Succ(Var(0)))))=>Gamma|-Ind(P,base,step):Forall(P)",
+      "OrElim": "Gamma|-p:Or(A,B);A,Gamma|-l:C;B,Gamma|-r:C=>Gamma|-OrElim(p,l,r):C",
+      "OrIntroL": "Gamma|-p:A=>Gamma|-OrIntroL(p):Or(A,B)",
+      "OrIntroR": "Gamma|-p:B=>Gamma|-OrIntroR(p):Or(A,B)"
+    }
+  },
+  "claim": {
+    "decision_fragment": null,
+    "decision_procedure": false,
+    "decision_resource_bounds": null,
+    "judgement": "empty-context-derivability",
+    "kind": "sound-theorem-prover",
+    "not_theorem_supported": false
+  },
+  "evidence": {
+    "additional_fields_policy": "forbidden",
+    "canonical_json": "peano-hydra-canonical-json-v1",
+    "format": "peano-hydra-result",
+    "hash_algorithm": "sha256",
+    "hash_preimage": {
+      "format": "peano-hydra-result-hash-preimage",
+      "v": 1
+    },
+    "kinds": [
+      "proved",
+      "unknown"
+    ],
+    "not_theorem": {
+      "publication": "forbidden",
+      "supported": false
+    },
+    "schema": {
+      "format": "peano-hydra-result-schema",
+      "id": "peano-hydra-result-v1",
+      "sha256": "cf1caf1c867ddfbe3c247e42a18b730ea6790269718170a51f9733d5a7a36b26",
+      "v": 1
+    },
+    "schema_status": "exact-content-addressed",
+    "unknown_meaning": "no-accepted-certificate-and-no-negative-theoremhood-claim",
+    "v": 1
+  },
+  "format": "peano-hydra-semantic-profile",
+  "id": "peano-lab-ha-intuitionistic-v2",
+  "input": {
+    "canonical_binder_candidates": [
+      "x",
+      "y",
+      "z",
+      "n",
+      "m",
+      "k",
+      "i",
+      "j",
+      "u",
+      "v",
+      "w"
+    ],
+    "canonical_binder_fallback": "x{least-nonnegative-integer-not-already-used}",
+    "canonical_form": "canonical-unicode-surface-v1",
+    "canonical_tokens": {
+      "addition": "+",
+      "bottom": "⊥",
+      "conjunction": "∧",
+      "equality": "=",
+      "exists": "∃",
+      "forall": "∀",
+      "implication": "→",
+      "multiplication": "·",
+      "negation": "¬",
+      "order": "≤",
+      "successor": "S",
+      "zero": "0"
+    },
+    "canonicalization": "source-preflight;parse;reject-free-names;require-well-scoped-at-depth-0;pretty;reparse-and-require-structural-equality",
+    "explicit_de_bruijn_target_syntax": false,
+    "normal_form_required_in_artifacts": true,
+    "operational_admission": {
+      "character_measure": "unicode-code-points",
+      "decimal_numeral_comparison": "normalized-base10-value",
+      "decision_claim": false,
+      "forbidden_unicode_categories": [
+        "Cc",
+        "Cf",
+        "Cs",
+        "Zl",
+        "Zp"
+      ],
+      "hash_character": "forbidden",
+      "kind": "source-preflight-v1",
+      "line_policy": "one-line-no-outer-whitespace",
+      "max_decimal_numeral": 256,
+      "max_source_characters": 8192,
+      "nonempty": true,
+      "numeral_literal_boundary": "not-preceded-by-word-character-apostrophe-or-hash"
+    },
+    "precedence_associativity": [
+      "quantifiers-widest-scope",
+      "implication-right-associative",
+      "disjunction-left-associative",
+      "conjunction-left-associative",
+      "negation-prefix",
+      "equality-nonassociative",
+      "addition-left-associative",
+      "multiplication-left-associative",
+      "successor-prefix"
+    ],
+    "target": "closed-core-formula"
+  },
+  "substitution": {
+    "equal_case": "Var(index+depth)->shift(replacement,depth)",
+    "formula_structural_recursion": "Eq:recurse-terms;Bot:unchanged;Imp/And/Or:recurse-both;Forall/Exists:recurse-body-with-depth+1",
+    "greater_case": "Var(k),k>index+depth->Var(k-1)",
+    "id": "capture-avoiding-open-one-slot-v1",
+    "less_case": "unchanged",
+    "shift_formula_structural_recursion": "Eq:shift-terms;Bot:unchanged;Imp/And/Or:recurse-both;Forall/Exists:recurse-body-with-cutoff+1",
+    "shift_term_structural_recursion": "Zero:unchanged;Succ:recurse;Add/Mul:recurse-both",
+    "shift_variable_case": "Var(k),k>=cutoff->Var(k+by);otherwise-unchanged",
+    "term_structural_recursion": "Zero:unchanged;Succ:recurse;Add/Mul:recurse-both"
+  },
+  "syntax": {
+    "formulas": [
+      "Eq(left,right)",
+      "Bot",
+      "Imp(antecedent,consequent)",
+      "And(left,right)",
+      "Or(left,right)",
+      "Forall(body)",
+      "Exists(body)"
+    ],
+    "terms": [
+      "Var(index)",
+      "Zero",
+      "Succ(term)",
+      "Add(left,right)",
+      "Mul(left,right)"
+    ]
+  },
+  "translations": {
+    "external": [],
+    "surface": [
+      {
+        "domain": "0<=n<=256",
+        "from": "decimal n",
+        "name": "numeral",
+        "to": "Succ^n(Zero)"
+      },
+      {
+        "from": "~A or ¬A",
+        "name": "negation",
+        "to": "Imp(A,Bot)"
+      },
+      {
+        "from": "a<=b or a≤b",
+        "name": "order",
+        "to": "Exists(Eq(Add(Var(0),lift(a,1)),lift(b,1)))"
+      },
+      {
+        "from": "*,->,/\\,\\/,forall,exists,bot,false",
+        "name": "ascii-aliases",
+        "to": "Mul,Imp,And,Or,Forall,Exists,Bot,Bot"
+      }
+    ]
+  },
+  "v": 2
+}

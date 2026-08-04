@@ -4,6 +4,52 @@ This directory preserves deterministic Hydra plumbing evidence. It contains
 no trained-model result, sealed benchmark, decision-procedure result, or
 matched-compute comparison.
 
+## H1.1 replay-complete candidate pack
+
+`l0-replay-candidate-v1/` is the subordinate certificate-transport candidate,
+not a frozen production library epoch. Its schema enforces `status = candidate`
+and `evaluation_eligible = false`.
+
+- schema semantic digest:
+  `d60b07fe68aa4ba023c9bb873e2df4190752f70252caca21da7e76dcd393f02d`;
+- schema document SHA-256:
+  `cfd0959ec537c9a7e3cdf705bd48ff7f8301fbd43f63623934d4638cb712b2ef`;
+- 384 canonical `peano-lab-v2` artifacts totaling 80,088,767 bytes;
+- manifest root:
+  `fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`;
+- fresh-worker recomputed theorem replay root:
+  `88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`;
+- retained 828-byte report SHA-256:
+  `35f5547978a4d58c5af30c33d253c92af494b94f6d6500a866a13f2fd1fa7f10`.
+
+The report was produced in a fresh
+`python -I -S -X pycache_prefix=<fresh-dir>` worker. Its import guard forbids
+the living theorem library, tactic engine, UI, training package, Torch, and
+Transformers. Every artifact is decoded under explicit resource limits, bound
+to the separately parsed original closed statement, and checked by the
+intuitionistic kernel from the empty context. The standard acceptance test
+repeats all 384 checks and requires the generated report to be byte-identical
+to the retained report. The corrected replay-pack and bounded-decoder selection
+passed 145 tests in 47.56 seconds.
+
+Reproduce the replay without importing the living builder:
+
+```console
+PEANO_REPLAY_PYCACHE="$(mktemp -d)"
+python3 -I -S -X "pycache_prefix=${PEANO_REPLAY_PYCACHE}" \
+  scripts/build_peano_hydra_replay_pack.py \
+  --verify \
+  --output artifacts/peano-hydra/l0-replay-candidate-v1 \
+  --report /tmp/peano-hydra-l0-replay-report.json
+cmp /tmp/peano-hydra-l0-replay-report.json \
+  artifacts/peano-hydra/l0-replay-candidate-v1-report.json
+```
+
+H1.1 remains open: the pack retains declared publication dependencies rather
+than separately verified readable/optimized vectors, and lacks leave-one-out,
+definition/document, lineage, source-state/owner-deposit, and sealed-benchmark
+receipts.
+
 ## Retained H0 validation
 
 `h0-validation-v2.json` is the canonical complete H0 semantic/conformance
