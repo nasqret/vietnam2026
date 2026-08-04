@@ -43,6 +43,7 @@
     "test_paths": [
       "peano-lab/py/tests/test_ha_number_theory_tranche01_admission.py",
       "peano-lab/py/tests/test_ha_canonical_gcd_candidate.py",
+      "peano-lab/py/tests/test_ha_canonical_gcd_edges_candidate.py",
       "peano-lab/py/tests/test_ha_signed_parity_candidate.py",
       "peano-lab/py/tests/test_ha_signed_decode_candidate.py",
       "peano-lab/py/tests/test_ha_signed_code_extensional_candidate.py",
@@ -59,7 +60,9 @@
       "peano-lab/py/tests/test_ha_signed_nat_scale_candidate.py",
       "peano-lab/py/tests/test_ha_signed_nat_scale_laws_candidate.py",
       "peano-lab/py/tests/test_ha_signed_bezout_candidate.py",
-      "peano-lab/py/tests/test_ha_signed_bezout_gcd_candidate.py"
+      "peano-lab/py/tests/test_ha_signed_bezout_gcd_candidate.py",
+      "peano-lab/py/tests/test_ha_relational_lcm_candidate.py",
+      "peano-lab/py/tests/test_ha_lcm_totality_bridge_candidate.py"
     ],
     "theorems": [
       {
@@ -670,6 +673,223 @@
         "source_module": "peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py",
         "statement_sha256": "2e729fe9d25b8afda315489713f0a4cd7980371bf621e8af9e557f4ffca7496e",
         "receipt": {"nodes": 3535, "depth": 48, "objects": 1734, "edges": 1824, "reused": 91, "cuts": 74, "certificate_sha256": "4edeb4ffc7de0b9aa0a870d2125f7640f2447a7358ba454abba3db003f9044a3"}
+      },
+      {
+        "name": "canonical_gcd_zero_right_iff",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_canonical_gcd_edges_candidate.py",
+        "statement_sha256": "8eae442eaa8b347cd9f71b106b9b85c7ddd4de460b7cf498ba2bb04613296576",
+        "receipt": {"nodes": 819, "depth": 37, "objects": 667, "edges": 702, "reused": 36, "cuts": 25, "certificate_sha256": "d140ad3b257626cc287b51d576feb4aac6930aa7da58e9d72e5e2b2c30e2e45f"}
+      },
+      {
+        "name": "canonical_gcd_zero_left_iff",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_canonical_gcd_edges_candidate.py",
+        "statement_sha256": "46965c33d414fc67bde4ed7b1e6a4cc2b02af87f69e4abb84d487d9f85d3e2ae",
+        "receipt": {"nodes": 893, "depth": 39, "objects": 741, "edges": 776, "reused": 36, "cuts": 27, "certificate_sha256": "a720a0a90192a564ab908357a59838ed8b25395045b631705e8da112c19f8932"}
+      },
+      {
+        "name": "canonical_gcd_one_left_iff",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_canonical_gcd_edges_candidate.py",
+        "statement_sha256": "278eb32964ddbc738e81303372f64cf1728d340a34035f4bcf079841913fd3e0",
+        "receipt": {"nodes": 329, "depth": 30, "objects": 287, "edges": 303, "reused": 17, "cuts": 12, "certificate_sha256": "4e4c7ceaab45dc15f9378f08e981524d07044d9e7e35a5f827bc510a8a383727"}
+      },
+      {
+        "name": "canonical_gcd_one_right_iff",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_canonical_gcd_edges_candidate.py",
+        "statement_sha256": "06a3c3a600eea5f97b2987a34c2cded18322680bd4d50d8501e3dd02fc91bc8b",
+        "receipt": {"nodes": 394, "depth": 32, "objects": 352, "edges": 368, "reused": 17, "cuts": 14, "certificate_sha256": "b21067e80580a93f1d1e76d77cf20bb9846598c2971d643fb35d0d6ee2f1c98c"}
+      },
+      {
+        "name": "canonical_gcd_swap_functional",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_canonical_gcd_edges_candidate.py",
+        "statement_sha256": "503a5cf41ddd3dac5fcb70c2df9605e218176d0f046b893c94c6242723fab34e",
+        "receipt": {"nodes": 766, "depth": 37, "objects": 647, "edges": 681, "reused": 35, "cuts": 22, "certificate_sha256": "55650ade915e38fd01207d48169d891e06761dd3a277c827ea7b32d0bbb96615"}
+      },
+      {
+        "name": "is_lcm_multiple_left",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "6bca8a86fc180bd4feba561e4808ce8fd694f687e220137f6be105ef79cf7a43",
+        "receipt": {"nodes": 21, "depth": 13, "objects": 21, "edges": 20, "reused": 0, "cuts": 0, "certificate_sha256": "5c190bf7def19fc23909654cc772afcab5c479fb858898d5f143a80db366e953"}
+      },
+      {
+        "name": "is_lcm_multiple_right",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "cfd58405c02982ebe269c680dcb0a62ac0ac33c18c8e9526046c9505f2238c61",
+        "receipt": {"nodes": 21, "depth": 13, "objects": 21, "edges": 20, "reused": 0, "cuts": 0, "certificate_sha256": "f56c306a18651121802b73a86d0beab26f7b595bf569318f7396f3b99c76ca89"}
+      },
+      {
+        "name": "is_lcm_least",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "7d232c7416d15f3cf128a8df8cab34ffc63e906dcc9bd0b33368b4352bd869bf",
+        "receipt": {"nodes": 24, "depth": 16, "objects": 24, "edges": 23, "reused": 0, "cuts": 0, "certificate_sha256": "c1fa2a7ad9ee24262f2d1fe916db3a988dee5da6d53b067be60f378d4456f38b"}
+      },
+      {
+        "name": "is_lcm_symm",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "e5ca139205068d953bb4d9e3c6da0c2501064201ac6ee54bd707640b7c7c30b6",
+        "receipt": {"nodes": 36, "depth": 21, "objects": 36, "edges": 35, "reused": 0, "cuts": 0, "certificate_sha256": "1651a88cf14cd0940f75b4cad21f75b4d7babd563e6df09ae54442e8fd865b43"}
+      },
+      {
+        "name": "is_lcm_unique",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "1e8351beb8ca8bd1ab14ce85864e37af888d97f613896316c60ba0dcbc11b48c",
+        "receipt": {"nodes": 680, "depth": 34, "objects": 561, "edges": 595, "reused": 35, "cuts": 19, "certificate_sha256": "28b5d50ea9f274effaecd0ba637805b5535976124380f9647b31cab1b812dc4f"}
+      },
+      {
+        "name": "is_lcm_zero_right",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "a84f5e0a22729e73c1a31f5d6e2571fde1ddb828006f96db2070421d1d5e9d87",
+        "receipt": {"nodes": 25, "depth": 7, "objects": 25, "edges": 24, "reused": 0, "cuts": 1, "certificate_sha256": "1f46d596bf5887fb6fbbf47a571a7773c0e803a57767ddc624a016e3771d1a36"}
+      },
+      {
+        "name": "is_lcm_zero_left",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "7c6f2f252ee95f63821288659f8208bef80dc883a7927330b337e00711a2f374",
+        "receipt": {"nodes": 71, "depth": 23, "objects": 71, "edges": 70, "reused": 0, "cuts": 3, "certificate_sha256": "a40c084aceae295b1af3ea106a436dfcbb2289b81387ebb03a1bc39c7676fc92"}
+      },
+      {
+        "name": "is_lcm_of_dvd",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "eb81fefc899776cd175dc71a078d579174fbe5c7936b57014f1ff862da0ddc3b",
+        "receipt": {"nodes": 55, "depth": 11, "objects": 55, "edges": 54, "reused": 0, "cuts": 3, "certificate_sha256": "d1263366658d3d37613817c9bcd0e21f7180136fcfdc25d8617d7c2f548dc766"}
+      },
+      {
+        "name": "is_lcm_of_dvd_right",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "e51e5862e544864a48d59d1e21d21d875476c723da77288122815a6f82d11113",
+        "receipt": {"nodes": 106, "depth": 23, "objects": 106, "edges": 105, "reused": 0, "cuts": 5, "certificate_sha256": "7aff4b6e58da3dda088da6ba977f0b4a1fabb50a263288635bf2ebce8e38f4b0"}
+      },
+      {
+        "name": "product_common_multiple",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "f87e8656fc1bd22ac5bae5a740627c718db6b7940651f99c1ead6f8c0b78abea",
+        "receipt": {"nodes": 244, "depth": 26, "objects": 222, "edges": 243, "reused": 22, "cuts": 8, "certificate_sha256": "70144cd71d6b2cda4cb382dc33100c0dbc3d6242472cf18422657115473dde11"}
+      },
+      {
+        "name": "is_lcm_refl",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "22834919e7a01e3e787607ed95a47d888f71c21820b3ff73b259a50e37d3d53a",
+        "receipt": {"nodes": 103, "depth": 13, "objects": 64, "edges": 64, "reused": 1, "cuts": 5, "certificate_sha256": "9c1c7f996a39ae851114fd6191e3d4e867584ecb6b74dadf5c21e87da35944ab"}
+      },
+      {
+        "name": "is_lcm_one_left",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "b304968358057e53b071eeee9f4468d42388012373d4ced91254d9603bff05bb",
+        "receipt": {"nodes": 96, "depth": 13, "objects": 92, "edges": 95, "reused": 4, "cuts": 6, "certificate_sha256": "734740e90689cc82db1a3aaba42eb2471229a29c80cd2b4cb7481723278d0965"}
+      },
+      {
+        "name": "is_lcm_one_right",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "c589196ec5efe0bfe2e2f50e6522d7dc204aa45ae809bbbf26736709592d1f46",
+        "receipt": {"nodes": 142, "depth": 23, "objects": 138, "edges": 141, "reused": 4, "cuts": 8, "certificate_sha256": "90ede4dea5adabe411b2e5a81f45efcfeaca3514d229e440eb79cbbae0b523ef"}
+      },
+      {
+        "name": "lcm_zero_left_value",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "469b141cedd8543fc22618655f9cd83517b9bcba0df449a5bd8d8999e8dd5791",
+        "receipt": {"nodes": 781, "depth": 36, "objects": 662, "edges": 696, "reused": 35, "cuts": 24, "certificate_sha256": "c4fb7bc6dc2d811c0a8591ee85be5d9ddcd00e67837a124b2d7baee3e4d9268f"}
+      },
+      {
+        "name": "lcm_zero_right_value",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "731d9238983dc7d932e28eab75772f3d91ff1a41ad7c87d5cc3917d481f0e999",
+        "receipt": {"nodes": 735, "depth": 36, "objects": 616, "edges": 650, "reused": 35, "cuts": 22, "certificate_sha256": "9e51cac408db5d62721a01bd3c71da4216f7728767d22736e05df02e3075063e"}
+      },
+      {
+        "name": "lcm_zero_left_exists_unique",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "9c134aff1a98a052cc459008668afa94d9b56c4997072385d17c43b0c25f3900",
+        "receipt": {"nodes": 788, "depth": 36, "objects": 669, "edges": 703, "reused": 35, "cuts": 24, "certificate_sha256": "b2ce4efd6a15d2249e224682cb8fe571f8e1cc542b1af3ebeb40ad9164eff097"}
+      },
+      {
+        "name": "lcm_zero_right_exists_unique",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "statement_sha256": "9d17f29f58181dd887856b708e539ab3b6331603d3f28e14379613dec170f269",
+        "receipt": {"nodes": 742, "depth": 36, "objects": 623, "edges": 657, "reused": 35, "cuts": 22, "certificate_sha256": "2ab337c21a1fbb5a607ad5cd9f829bed5b0ff355bf34e33dc62ee1362a06999e"}
+      },
+      {
+        "name": "balanced_bezout_one_implies_coprime",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py",
+        "statement_sha256": "15ea38440ee20616b269602106c298e93b8e8e2260dda9cf587ebb67cc04601b",
+        "receipt": {"nodes": 871, "depth": 40, "objects": 616, "edges": 656, "reused": 41, "cuts": 19, "certificate_sha256": "6c0e03c2f140d71999c98f4c8a4b15095bc3f922a8a61332a8fb58d9108907a2"}
+      },
+      {
+        "name": "coprime_product_is_lcm",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py",
+        "statement_sha256": "ca92cea1f3eaa8750de6280a3e1c2ef0f805d88cd72f1a0a345b44f7f0068c37",
+        "receipt": {"nodes": 4191, "depth": 53, "objects": 1552, "edges": 1646, "reused": 95, "cuts": 69, "certificate_sha256": "c23fbcd7191b32d3d2543edecb330e42719d366fe1c6e99b471299f4314e7b17"}
+      },
+      {
+        "name": "is_lcm_scale_nonzero",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py",
+        "statement_sha256": "6ac3b09e048aaea3926dcbe3f2aec301e6c94ae106f32ec142b7d699c01db8ac",
+        "receipt": {"nodes": 430, "depth": 27, "objects": 371, "edges": 383, "reused": 13, "cuts": 10, "certificate_sha256": "03918aed31b503afffd000c497bd8442198d370799d046246fdf088bd83ebeee"}
+      },
+      {
+        "name": "balanced_bezout_cancel_gcd",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py",
+        "statement_sha256": "0439333ca1d13314222adf5ab96ec61079fe8d4f738f697ae780db03c750de0e",
+        "receipt": {"nodes": 549, "depth": 38, "objects": 409, "edges": 426, "reused": 18, "cuts": 13, "certificate_sha256": "a938ef67adb719c111c268255c32f6ad2836ab02da82e2a9113245fd25153bfd"}
+      },
+      {
+        "name": "gcd_zero_inputs",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py",
+        "statement_sha256": "df92b2685a693e5be486c34fddd877b12376cbc23b30b03b6cb3019c111e7350",
+        "receipt": {"nodes": 62, "depth": 21, "objects": 62, "edges": 61, "reused": 0, "cuts": 1, "certificate_sha256": "b1e47b053b892e56877ab5a4cdd4b6f78ca399957dbf97b97fd427df8676d941"}
+      },
+      {
+        "name": "gcd_lcm_compatible_exists",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py",
+        "statement_sha256": "04331aaa9adc6b04b5aea8dbcac34b46fed098b5233a08b88e957a37b9d7ebd5",
+        "receipt": {"nodes": 9038, "depth": 60, "objects": 2390, "edges": 2510, "reused": 121, "cuts": 101, "certificate_sha256": "dfe0e69fb172e48b6aa785c0c088ebf1a7cdf09c95ae436305d51d6224e90bc3"}
+      },
+      {
+        "name": "lcm_exists_relational",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py",
+        "statement_sha256": "6269a6276e71f62a970b11a696013faf90b5e67ac498f5eb03a2f0f000f0556c",
+        "receipt": {"nodes": 9071, "depth": 61, "objects": 2423, "edges": 2543, "reused": 121, "cuts": 102, "certificate_sha256": "f4e764738627255eb885d78b5cefd74663d68be022370a8036ee450b116a7220"}
+      },
+      {
+        "name": "canonical_lcm_exists_unique",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py",
+        "statement_sha256": "708dbaee014b840dcde57d6b0fcd43ca4e484cdaf63db7488391beefe147cf7e",
+        "receipt": {"nodes": 9791, "depth": 62, "objects": 2565, "edges": 2691, "reused": 127, "cuts": 111, "certificate_sha256": "3ab4c410a0e4c6717e77d7f951d26304a35b5e9451df299167bb42cadf227747"}
+      },
+      {
+        "name": "gcd_lcm_product",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py",
+        "statement_sha256": "f3b5095a728faab08137e6ee281f9da8ce6ea2697abd376170c34b1a62d47176",
+        "receipt": {"nodes": 10441, "depth": 61, "objects": 2569, "edges": 2696, "reused": 128, "cuts": 112, "certificate_sha256": "c0829496624e993a4c437aa98c32355605109e728acd03d6b5d857fcb5350d0a"}
       }
     ]
   },
@@ -1090,9 +1310,61 @@
             "gcd_signed_bezout_exists"
           ],
           "role": "Closed-checked but non-public K4 client combining public relational-gcd and balanced-Bezout existence with the strict-K3 canonical SignedBezout bridge."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_canonical_gcd_edges_candidate.py",
+          "factory": "make_ha_canonical_gcd_edges_candidate_theorems",
+          "theorem_names": [
+            "canonical_gcd_zero_right_iff",
+            "canonical_gcd_zero_left_iff",
+            "canonical_gcd_one_left_iff",
+            "canonical_gcd_one_right_iff",
+            "canonical_gcd_swap_functional"
+          ],
+          "role": "Closed-checked but non-public equality characterizations for canonical gcd at zero and one, plus function-style symmetry for independently selected relational witnesses."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+          "factory": "make_ha_relational_lcm_candidate_theorems",
+          "theorem_names": [
+            "is_lcm_multiple_left",
+            "is_lcm_multiple_right",
+            "is_lcm_least",
+            "is_lcm_symm",
+            "is_lcm_unique",
+            "is_lcm_zero_right",
+            "is_lcm_zero_left",
+            "is_lcm_of_dvd",
+            "is_lcm_of_dvd_right",
+            "product_common_multiple",
+            "is_lcm_refl",
+            "is_lcm_one_left",
+            "is_lcm_one_right",
+            "lcm_zero_left_value",
+            "lcm_zero_right_value",
+            "lcm_zero_left_exists_unique",
+            "lcm_zero_right_exists_unique"
+          ],
+          "role": "Closed-checked but non-public universal-property IsLCM interface, including projections, leastness, symmetry, uniqueness, the forced zero convention, divisibility specializations, and zero/one convenience packages."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py",
+          "factory": "make_ha_lcm_totality_bridge_candidate_theorems",
+          "theorem_names": [
+            "balanced_bezout_one_implies_coprime",
+            "coprime_product_is_lcm",
+            "is_lcm_scale_nonzero",
+            "balanced_bezout_cancel_gcd",
+            "gcd_zero_inputs",
+            "gcd_lcm_compatible_exists",
+            "lcm_exists_relational",
+            "canonical_lcm_exists_unique",
+            "gcd_lcm_product"
+          ],
+          "role": "Closed-checked but non-public constructive lcm-totality ladder: balanced Bezout yields coprime cofactors, coprime products and nonzero scaling yield LCMs, the zero branch is explicit, and compatibility, totality, unique existence, and gcd-times-lcm are then derived."
         }
       ],
-      "remaining_gap": "Canonical remainder and its congruence bridge are public. The canonical relational-gcd package and the K4 client exposing canonical signed Bezout coefficients have deterministic empty-context closure receipts but remain isolated pending deliberate admission; lcm and an executable Euclidean graph remain.",
+      "remaining_gap": "Canonical remainder and its congruence bridge are public. Canonical gcd boundaries, canonical signed Bezout coefficients, the universal-property lcm API, lcm totality and unique existence, and gcd-times-lcm compatibility have deterministic empty-context candidate receipts but remain isolated pending deliberate admission; an executable Euclidean graph remains.",
       "validation": {
         "path": [
           "manifest_integrity",
@@ -1341,7 +1613,7 @@
         "binary_crt"
       ],
       "candidate_modules": [],
-      "remaining_gap": "Lcm infrastructure, binary noncoprime CRT, constructive incompatibility witnesses, the K3 finite fold, and uniqueness modulo lcm all depend on incomplete earlier layers.",
+      "remaining_gap": "Public admission and integration of the closed K4 LCM candidate infrastructure remain separate; binary noncoprime CRT, constructive incompatibility witnesses, the K3 finite fold, and uniqueness modulo lcm still depend on incomplete earlier layers.",
       "validation": {
         "path": [
           "manifest_integrity",

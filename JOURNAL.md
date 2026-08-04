@@ -4163,3 +4163,48 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   `647d12228514a9ad11ea227ac5ef436d18382cf0d8664e2cc3ea44fd0ab9ac07`.
   No browser is attached, so visual QA is not claimed. Push, deployment, and
   public theorem admission remain unperformed.
+
+## 2026-08-04 — K4 canonical gcd and relational lcm closed in isolation
+
+- Added five canonical-gcd edge candidates: zero on either side, one on
+  either side, and swap functionality. Added a 17-row universal-property
+  `IsLCM` API covering projections, leastness, symmetry, uniqueness,
+  divisibility constructors, product common-multiple, and zero/one edge and
+  unique-existence packages.
+- Added the nine-row constructive totality ladder A--I. Its internal route is
+  balanced-Bezout result one to coprimality; coprime product to `IsLCM`;
+  nonzero scaling; cancellation of a nonzero gcd from balanced Bezout; the
+  zero-gcd input edge; compatible gcd/lcm existence; relational lcm
+  existence; unique lcm existence; and finally `gcd_lcm_product`.
+- The zero convention is forced by the relation, not selected as an auxiliary
+  definition: a multiple of zero has the form `0*q` and is therefore zero,
+  so an `IsLCM` witness for `(0,b)` or `(a,0)` must be zero. Likewise,
+  `g*l=a*b` is proved from the independently stated `IsGCD` and universal
+  `IsLCM` predicates. It does not define lcm as a quotient of the product by
+  gcd.
+- Exact dependency-curried body receipts use
+  `(dependencies, commands, nodes, depth, objects, edges, reused)`. Rows F--I
+  are respectively `(10,108,209,45,209,208,0)`,
+  `(1,10,33,19,33,32,0)`, `(2,17,40,24,40,39,0)`, and
+  `(3,31,43,21,43,42,0)`.
+- Exact empty-context receipts use
+  `(nodes, depth, objects, edges, reused, Cuts, DNE, digest)`: F
+  `gcd_lcm_compatible_exists = (9038,60,2390,2510,121,101,0,
+  dfe0e69fb172e48b6aa785c0c088ebf1a7cdf09c95ae436305d51d6224e90bc3)`;
+  G `lcm_exists_relational = (9071,61,2423,2543,121,102,0,
+  f4e764738627255eb885d78b5cefd74663d68be022370a8036ee450b116a7220)`;
+  H `canonical_lcm_exists_unique = (9791,62,2565,2691,127,111,0,
+  3ab4c410a0e4c6717e77d7f951d26304a35b5e9451df299167bb42cadf227747)`;
+  and I `gcd_lcm_product = (10441,61,2569,2696,128,112,0,
+  c0829496624e993a4c437aa98c32355605109e728acd03d6b5d857fcb5350d0a)`.
+- The isolated campaign now contains 109 candidates, 118 exact receipts, 21
+  candidate modules, and 22 focused test files. Public counts remain exactly
+  393 registry theorems, 56 public references, 45 definition rows over 44
+  theorems, and 394 catalog entries. The new closures contain zero DNE.
+- The integrated source gate passes all 29 campaign-structure tests and all
+  175 proof/admission tests. Independent checks validate the 394-entry
+  arithmetic knowledge base, replay all 393 public theorems in the frozen
+  snapshot, and verify 492 vault notes with 4,991 resolved links. This remains
+  a focused candidate checkpoint: no public admission, push, or deployment is
+  claimed, and the Jupyter Book result is intentionally deferred to its
+  separate post-commit build.

@@ -1792,3 +1792,31 @@
   bytes and SHA-256
   `647d12228514a9ad11ea227ac5ef436d18382cf0d8664e2cc3ea44fd0ab9ac07`.
   No push, deployment, public admission, or visual click-through is claimed.
+- **K4 canonical gcd and relational lcm checkpoint (2026-08-04):** five
+  canonical-gcd edge candidates, a 17-row universal-property `IsLCM` API, and
+  the nine-row constructive A--I totality ladder are closed in isolation.
+  The relation itself forces `lcm(0,b)=lcm(a,0)=0`, because every multiple of
+  zero is zero. The product identity is a theorem about independently stated
+  `IsGCD(g,a,b)` and `IsLCM(l,a,b)` predicates, not a definition of lcm by
+  dividing `a*b` by gcd. Body receipts
+  `(dependencies,commands,nodes,depth,objects,edges,reused)` for F--I are
+  `(10,108,209,45,209,208,0)`, `(1,10,33,19,33,32,0)`,
+  `(2,17,40,24,40,39,0)`, and `(3,31,43,21,43,42,0)`.
+  Empty-context receipts
+  `(nodes,depth,objects,edges,reused,Cuts,DNE,digest)` are F
+  `(9038,60,2390,2510,121,101,0,
+  dfe0e69fb172e48b6aa785c0c088ebf1a7cdf09c95ae436305d51d6224e90bc3)`,
+  G `(9071,61,2423,2543,121,102,0,
+  f4e764738627255eb885d78b5cefd74663d68be022370a8036ee450b116a7220)`,
+  H `(9791,62,2565,2691,127,111,0,
+  3ab4c410a0e4c6717e77d7f951d26304a35b5e9451df299167bb42cadf227747)`,
+  and I `(10441,61,2569,2696,128,112,0,
+  c0829496624e993a4c437aa98c32355605109e728acd03d6b5d857fcb5350d0a)`.
+  The campaign totals are 109 candidates, 118 receipts, 21 candidate modules,
+  and 22 focused tests; the new closures have zero DNE. Public counts are
+  unchanged at `393/56/45-over-44/394`. The integrated source gate passes all
+  29 campaign-structure tests and all 175 proof/admission tests; the
+  independent 394-entry knowledge base, 393-theorem snapshot, and
+  492-note/4,991-link vault checks also pass. No admission, push, or deployment
+  is claimed; the Book result remains intentionally unrecorded pending its
+  separate post-commit build.

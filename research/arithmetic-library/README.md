@@ -16,6 +16,9 @@ arithmetic library. Start with:
 - [`ha-canonical-signed-natural-rfc-v1.md`](ha-canonical-signed-natural-rfc-v1.md):
   the selected parity-interleaved canonical signed-natural representation,
   eight exact expanded predicates, dependency prohibitions, and proof DAG;
+- [`ha-canonical-gcd-lcm-rfc-v1.md`](ha-canonical-gcd-lcm-rfc-v1.md):
+  the literal-safe relational LCM interface, canonical gcd edge laws, and the
+  checked constructive route through LCM totality and the gcd--LCM product;
 - [`ha-canonical-pair-cell-rfc-v1.md`](ha-canonical-pair-cell-rfc-v1.md):
   the selected doubled-Cantor pair and successor-tagged cell definitions,
   injectivity ladder, and the explicit blocker on pretending that pairing
@@ -26,12 +29,13 @@ arithmetic library. Start with:
 Run `make ha-number-theory-check` from the repository root for the fast
 campaign-manifest, 45-row definition-freeze validation with 44 distinct public
 theorem replays, candidate-body, and empty-context receipt checks. The campaign
-manifest carries 87 statement hashes and exact closure receipts: nine
-deliberately admitted tranche-01 theorems and 78 total isolated candidates,
-comprising three canonical-gcd rows, 74 strict-K3 signed parity, decoder,
-code-extensionality, balance-normalization, negation, addition, complete D06
-multiplication-algebra, D07 natural-scale, and D08 Bezout-bridge rows, plus one
-K4 signed-gcd client. The D06
+manifest carries 118 statement hashes and exact closure receipts: nine
+deliberately admitted tranche-01 theorems and 109 total isolated candidates.
+Those candidates comprise three canonical-gcd package rows, 74 strict-K3
+signed parity, decoder, code-extensionality, balance-normalization, negation,
+addition, complete D06 multiplication-algebra, D07 natural-scale, and D08
+Bezout-bridge rows, one K4 signed-gcd client, five canonical-gcd edge rows,
+17 relational-LCM rows, and nine gcd--LCM totality/compatibility rows. The D06
 closure ends with the four-row
 [`SignedMul` associativity candidate](../../peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py)
 and seven-row
@@ -70,13 +74,27 @@ and its
 [`focused audit`](../../peano-lab/py/tests/test_ha_signed_bezout_gcd_candidate.py)
 compose public relational-gcd/Bezout existence with D08; their closure is
 explicitly division-bearing and leaves the 74-row K3 digest unchanged. The
-full candidate evidence spans 18 modules and 19 focused tests. The
-public registry remains 393 entries with 56 public references, the definition
-freeze remains 45 API rows over 44 distinct public theorems, and the catalog
-remains 394 entries. Passing the candidate gate alone never enrolls a theorem
-in the public registry; none of these 78 candidates has been admitted. D08 and
-the separate K4 gcd packaging client are closed nonpublic. Deliberate
-admission, lcm, and an executable Euclidean graph remain future gates.
+five-row
+[`canonical-gcd edge tranche`](../../peano-lab/py/peano_lab/library/ha_canonical_gcd_edges_candidate.py),
+17-row
+[`relational-LCM tranche`](../../peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py),
+and nine-row
+[`gcd--LCM totality bridge`](../../peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py)
+are frozen together in
+[`HA-K4-GCD-LCM-1`](ha-canonical-gcd-lcm-rfc-v1.md). Their focused audits pin
+literal hygiene, dependency order, statement/script hashes, two cold closures,
+and false mutations. The bridge now proves compatible gcd/LCM existence,
+relational LCM totality, unique LCM value, and the arbitrary gcd--LCM product
+identity. It is K4 and nonpublic; it does not change the strict 74-row K3
+digest.
+
+The full candidate evidence spans 21 modules and 22 focused tests. The public
+registry remains 393 entries with 56 public references, the definition freeze
+remains 45 API rows over 44 distinct public theorems, and the catalog remains
+394 entries. Passing the candidate gate alone never enrolls a theorem in the
+public registry; none of these 109 candidates has been admitted. Deliberate
+admission and an executable Euclidean graph remain future gates; LCM proof
+existence is no longer an open gap.
 
 The current runtime contains 393 checked entries. The factorization tranche
 is fully synchronized. The exact native β-coded endpoints are checked

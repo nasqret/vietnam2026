@@ -153,7 +153,8 @@ with `m != 0` on totality statements.
 
 - [x] Package relational gcd existence and `is_gcd_unique` as an
       existence-and-unique-value interface.
-- [ ] Freeze gcd edge cases before exposing a computational graph.
+- [x] Freeze and close-check the five canonical gcd zero/one/swap boundary
+      rows before exposing a computational graph; keep them nonpublic.
 - [x] Select a canonical sign-magnitude encoding with no negative zero in the
       reviewed `HA-K3-SIGNED-1` RFC.
 - [x] Prove the division-free parity separation and the decoder constructors,
@@ -182,8 +183,12 @@ with `m != 0` on totality statements.
       interface.
 - [x] Combine public relational-gcd and balanced-Bezout existence with the
       signed bridge as an explicitly K4, division-bearing client.
-- [ ] Add lcm only after its zero convention and gcd compatibility statement
-      are frozen.
+- [x] Freeze the literal-safe universal `IsLCM` relation, its forced zero
+      convention, and the exact 17-row structural/edge API.
+- [x] Close the nine-row constructive gcd--LCM ladder through compatible
+      existence, relational LCM totality, unique LCM value, and
+      `gcd_lcm_product`, while retaining every row as a nonpublic K4
+      candidate.
 
 ### HA4 — independent finite-data substrate
 
@@ -317,6 +322,13 @@ closure remains 557 nodes and 1,787 edges, now partitioned as 241 public and
       reviewed decoded-equation composition lemmas.
 - [x] Close the five-row direct `SignedNatScale` graph and its five-row
       zero/one/composition tranche without defining D07 as a D06 alias.
+- [x] Close the four-row D08 balanced/signed Bezout bridge and its separate
+      one-row division-bearing K4 signed-gcd client.
+- [x] Freeze and close-check the five-row canonical-gcd edge tranche and the
+      17-row literal-safe relational-LCM universal-property tranche.
+- [x] Close rows A--I of the gcd--LCM totality bridge, including both branches
+      of compatible existence, relational totality, unique value, and the
+      arbitrary gcd--LCM product theorem.
 - [x] Audit the independent pair/list route, freeze the pair/cell component,
       and record the missing uniform computation-history step rather than
       hiding variable iteration in a recursive macro.
@@ -415,9 +427,45 @@ with SHA-256
 `4edeb4ffc7de0b9aa0a870d2125f7640f2447a7358ba454abba3db003f9044a3`.
 The layer edge `K3 -> K4` is now explicit: the client's public gcd branch
 reaches division, while the strict 74-row K3 stack and digest remain exactly
-unchanged. The campaign has 78 candidates and 87 theorem receipts: 74 strict-
+unchanged. At that intermediate checkpoint, the campaign had 78 candidates
+and 87 theorem receipts: 74 strict-
 K3 signed rows, three canonical-gcd rows, and this one K4 signed-gcd client,
-across 18 candidate modules and 19 focused tests. Nothing is admitted.
+across 18 candidate modules and 19 focused tests. Nothing in that checkpoint
+was admitted.
+
+The completed canonical gcd/LCM checkpoint is frozen in
+[`ha-canonical-gcd-lcm-rfc-v1.md`](../research/arithmetic-library/ha-canonical-gcd-lcm-rfc-v1.md).
+Five rows in
+[`ha_canonical_gcd_edges_candidate.py`](../peano-lab/py/peano_lab/library/ha_canonical_gcd_edges_candidate.py)
+close the zero, one, and cross-witness symmetry boundary. Seventeen rows in
+[`ha_relational_lcm_candidate.py`](../peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py)
+then close the literal-safe universal-property core, forced zero values,
+divisibility specializations, self/one laws, product common-multiple bound,
+and zero unique-existence packages. Their zero-right constructor is direct;
+zero-left is derived from it by symmetry so the conventions cannot drift.
+Both tranches have focused cold-closure and mutation audits and remain
+unregistered.
+
+The nine rows in
+[`ha_lcm_totality_bridge_candidate.py`](../peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py),
+audited by
+[`test_ha_lcm_totality_bridge_candidate.py`](../peano-lab/py/tests/test_ha_lcm_totality_bridge_candidate.py),
+now close the full constructive route. `gcd_lcm_compatible_exists` handles the
+zero and nonzero gcd branches explicitly in 9,038 nodes at depth 60;
+`lcm_exists_relational` projects totality, `canonical_lcm_exists_unique`
+packages the unique value, and `gcd_lcm_product` closes the arbitrary
+compatibility theorem in 10,441 nodes at depth 61. Every certificate has zero
+`DNE` nodes. The latter route is K4 because its public gcd/Gauss closure
+reaches division; it does not alter the strict 74-row K3 stack.
+
+The source checkpoint therefore contains 109 isolated candidates and 118
+total evidence receipts across 21 candidate modules and 22 focused tests.
+The strict K3 component remains exactly 74 rows. The public registry remains
+393 entries with 56 public references, the definition freeze remains 45 rows
+over 44 distinct public theorems, and the catalog remains 394 entries. No gcd
+edge, LCM, totality, or compatibility candidate is admitted. The remaining
+checkpoint work is deliberate public-admission review and the separate
+executable Euclidean graph, not an LCM proof gap.
 
 ## Release boundary
 

@@ -84,6 +84,7 @@ ha-number-theory-check:
 		tests/test_ha_canonical_congruence_candidate.py \
 		tests/test_ha_modular_inverse_candidate.py \
 		tests/test_ha_canonical_gcd_candidate.py \
+		tests/test_ha_canonical_gcd_edges_candidate.py \
 		tests/test_ha_signed_parity_candidate.py \
 		tests/test_ha_signed_decode_candidate.py \
 		tests/test_ha_signed_code_extensional_candidate.py \
@@ -101,6 +102,8 @@ ha-number-theory-check:
 		tests/test_ha_signed_nat_scale_laws_candidate.py \
 		tests/test_ha_signed_bezout_candidate.py \
 		tests/test_ha_signed_bezout_gcd_candidate.py \
+		tests/test_ha_relational_lcm_candidate.py \
+		tests/test_ha_lcm_totality_bridge_candidate.py \
 		tests/test_ha_number_theory_tranche01_admission.py
 
 lab-serve:
