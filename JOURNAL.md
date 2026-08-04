@@ -4583,3 +4583,11 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   proof/admission tests. All 25 browser/deployment contracts pass. The
   regenerated 180-source local browser app is sealed as `a-b544a04993a1`
   (`BUILD=2026-08-04i`); it has not been deployed.
+- The warning-free 47-source Jupyter Book rebuild passes 26
+  source/explorer tests and its integrity gate over 2,325 HTML pages. The
+  explicit and defined explorer source/built trees are byte-identical at
+  2,285 files and 72,886,197 bytes, with SHA-256
+  `b2085d2c1d2445e78cd216b88cc5162ae7d67c3292d36ec87900856574cda5ea`.
+  The 2,493-file, 88,026,160-byte HTML tree has SHA-256
+  `d9eddd01a0dcc228ceb17b75c8595f743c7e2b6bdcb1ba44e9c260e98b33f558`
+  and zero broken, escaping, fragment, unsafe, or remote-runtime links.

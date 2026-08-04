@@ -85,14 +85,15 @@ difference between one readable route and all required premises explicit.
 - **Trust and provenance** separates public admission, modular-body evidence,
   statement and script hashes, and source locations.
 
-The {doc}`theorem atlas <theorem-atlas>` is the complete 409-theorem public
-snapshot. The generated proof explorer remains the frozen 557-specification QR
-closure: 241 public rows from that closure plus 316 candidates. The live
-development registry has 409 theorems after the 25-theorem strict-HA
-admission; exact QR-factory overlaps are the compatible migrations described
-above, not an implicit promotion by the explorer. The explorer adds the exact
-quadratic-reciprocity closure and permanent line-level routes; generated pages
-grant no entry to `pa lib`.
+The {doc}`theorem atlas <theorem-atlas>` is the complete 432-theorem public
+snapshot. The generated proof explorer contains the frozen 557-specification
+QR closure plus 23 selectively admitted generalized-CRT pages. The QR closure
+itself remains 241 public rows plus 316 candidates; the appended CRT pages do
+not alter its 557-node topology. The live development registry has 432
+theorems after the 25-theorem strict-HA admission and the exact 23-row CRT
+admission. Exact QR-factory overlaps are the compatible migrations described
+above, not an implicit promotion by the explorer. Generated pages grant no
+entry to `pa lib`.
 
 When a fully expanded formula obscures the mathematical structure, use the
 {doc}`definition-aware edition <defined-proof-explorer>`. It preserves the

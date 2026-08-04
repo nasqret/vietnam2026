@@ -651,7 +651,7 @@
     }
   ],
   "edition_identity_sha256": "9b7c7928ddd3e1930fb5eca6e6b6c4b5ce6978633f6f187525d8813c90f3ddd6",
-  "explicit_corpus_sha256": "797d365a79c1510b6369338619bf14491cdfb8373f2648e26e1521460a927251",
+  "explicit_corpus_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
   "schema": "peano-lab-pa-defined-corpus-v1",
   "theorem_count": 557,
   "theorems": [

@@ -15,11 +15,13 @@ divisibility witnesses before the greatest-common-divisor clause.
 
 ## What is checked now
 
-The 409-theorem runtime contains 23 baseline entries and 386 checked
+The 432-theorem runtime contains 23 baseline entries and 409 checked
 post-baseline entries. Two hundred and twelve of the latter form the general
 foundational layer, twelve are the fixed modular capstones, and 137 form the
 quadratic-residue campaign checkpoint; 25 form the strict-HA canonical,
-gcd, and LCM interface tranche. The broader catalog has 410 nodes: those 409 checked entries and one
+gcd, and LCM interface tranche; the remaining 23 are the selectively admitted
+generalized-CRT dependency closure. The broader catalog has 433 nodes: those
+432 checked entries and one
 representation-blocked entry; it has no planned entry.
 
 The checked gcd layer includes the relational API through uniqueness and
@@ -38,8 +40,9 @@ existence.
 The admitted LCM surface now also contains the universal-property projections,
 symmetry and uniqueness, both zero cases, compatible gcd/LCM existence,
 relational LCM existence, unique LCM value, and the identity
-$\gcd(a,b)\operatorname{lcm}(a,b)=ab$. Ten convenience LCM wrappers and nine
-canonical-gcd wrappers remain deliberately private candidates.
+$\gcd(a,b)\operatorname{lcm}(a,b)=ab$. Ten convenience LCM wrappers, eight
+canonical-gcd wrappers, and the signed-gcd client remain deliberately private
+candidates.
 
 Every gcd/coprimality, Euclidean-step, Bézout, and Gauss certificate is
 constructive. No theorem in this layer uses integer coefficients, subtraction,

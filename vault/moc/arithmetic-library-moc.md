@@ -51,6 +51,11 @@ tests. All 25 browser/deployment contracts pass. The 180-source local browser
 app is sealed as `a-b544a04993a1` (`BUILD=2026-08-04i`); no deployment is
 claimed.
 
+The warning-free 47-source Book rebuild passes 26 source/explorer tests and
+integrity over 2,325 HTML pages. Its byte-identical source/built explorer trees
+contain 2,285 files; the 2,493-file HTML tree has SHA-256
+`d9eddd01a0dcc228ceb17b75c8595f743c7e2b6bdcb1ba44e9c260e98b33f558`.
+
 ## Design and trust
 
 - [[quadratic-reciprocity-moc]]

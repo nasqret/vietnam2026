@@ -71,25 +71,22 @@ It separates three facts which are easy to blur in an informal development:
     templates. Their theorem ladder has not yet been proved, and uniform lists
     remain blocked on a computation-trace representation.
 * - Generalized CRT
-  - twenty-nine audited rows
-  - The eight-row congruence foundation proves necessity and obstruction; the
-    seven-row M5a ladder constructs nonzero-modulus solutions; the four-row
-    M5b boundary closes solvability for all natural moduli; the four-row M5c
-    ladder classifies the complete solution set modulo relational LCM; the
-    three-row M5d layer gives the correct zero/nonzero canonical boundary; the
-    two-row M5e layer returns a solution or a certified obstruction; the
-    one-row M5f wrapper first constructs a relational gcd from raw inputs.
+  - 23 public / 6 private
+  - The public dependency closure proves the all-modulus criterion, classifies
+    solutions modulo relational LCM, supplies the zero/nonzero canonical
+    boundary, and returns either a solution or a certified obstruction from
+    raw inputs. Six convenience rows retain closed private receipts.
 ```
 
-The public registry now has **409** entries. The nine tranche-01 interfaces at
+The public registry now has **432** entries. The nine tranche-01 interfaces at
 positions 384--392 are followed by the exact 16-row K4 admission at positions
-393--408. The research catalog has **410** entries, including **386**
-`checked_m20` rows. The campaign manifest records **72** public references,
-**122** isolated candidates, and **147** exact theorem receipts across **27**
-candidate modules and **30** focused test paths. Generalized CRT accounts for
-**29** audited rows: **28** new private candidates and one reused public
-support theorem. This append-only extension leaves the frozen first-247 model
-curriculum unchanged.
+393--408 and the exact 23-row M5 admission at positions 409--431. The research
+catalog has **433** entries, including **409** `checked_m20` rows. The campaign
+manifest records **95** public references, **99** isolated candidates, and
+**147** exact theorem receipts across **22** candidate modules and **31**
+focused test paths. Generalized CRT accounts for **29** audited rows: **23**
+public interfaces and six closed private conveniences. This append-only
+extension leaves the frozen first-247 model curriculum unchanged.
 
 ## Why canonical remainder is a relation
 
@@ -2222,6 +2219,70 @@ and the
 [`raw-input decision audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_total_decision_candidate.py)
 for the exact expanded formulas and line-by-line tactic scripts.
 
+## Selective M5 admission: the exact public boundary
+
+The campaign did not promote every closed convenience theorem. It admitted
+the exact dependency closure needed by three durable endpoints:
+`generalized_binary_crt_solvable_iff`,
+`generalized_binary_crt_canonical_boundary`, and
+`generalized_binary_crt_total_decision`. In registry order, the resulting
+23-row public surface is:
+
+```{list-table}
+:header-rows: 1
+:widths: 23 77
+
+* - Role
+  - Exact public theorem names
+* - Congruence and necessity
+  - `mod_eq_zero_iff_eq`; `mod_eq_scale`;
+    `crt_solution_pair_congruent`;
+    `crt_common_solution_implies_gcd_compatible`;
+    `crt_incompatibility_obstructs_solution`
+* - Nonzero construction
+  - `is_gcd_quotients_coprime_nonzero`;
+    `mod_eq_common_remainder_decomposition`;
+    `crt_scaled_common_remainder_lift`;
+    `generalized_binary_crt_sufficient_nonzero`
+* - All-modulus solvability
+  - `generalized_binary_crt_sufficient_zero_left`;
+    `generalized_binary_crt_sufficient_zero_right`;
+    `generalized_binary_crt_sufficient`;
+    `generalized_binary_crt_solvable_iff`
+* - Relational-LCM solution class
+  - `mod_eq_ordered_gap_multiple`; `mod_eq_lcm_merge`;
+    `mod_eq_lcm_iff_pair`; `crt_solution_class_iff_lcm`
+* - Canonical boundary
+  - `crt_solution_unique_lcm_zero`;
+    `crt_solution_canonical_remainder_nonzero`;
+    `generalized_binary_crt_canonical_boundary`
+* - Executable decision
+  - `mod_eq_decidable`;
+    `generalized_binary_crt_solution_or_obstruction`;
+    `generalized_binary_crt_total_decision`
+```
+
+The exact six-row private residual is equally important:
+
+- `mod_eq_add_cancel_left` and `mod_eq_add_cancel_right`;
+- `mod_eq_unscale_nonzero`;
+- `factor_nonzero_right`;
+- `is_gcd_nonzero_coprime_quotients`; and
+- `generalized_binary_crt_solvable_iff_nonzero`.
+
+These six formulas still have deterministic empty-context receipts, but no
+public registry position and therefore no `pa lib` authority. The distinction
+is mathematical curation rather than a proof-status ambiguity: the public
+23-row closure already contains every premise needed by the three selected
+endpoints.
+
+The admission appends positions 409--431 without changing the first-247 model
+prefix. The current snapshot has **432** theorem cards and **1,185** direct
+dependency edges. Its synchronized Obsidian vault has **531** notes and
+**5,377** resolved links. The research catalog has **433** rows: 432 checked
+theorems and the one explicitly representation-blocked conventional
+integer-coefficient Bézout interface.
+
 ## Independent pair/cell checkpoint
 
 The finite-data lane has selected a representation for pairs and single cells,
@@ -2278,19 +2339,15 @@ python3 scripts/build_peano_library_snapshot.py --check
 ```
 
 The first command checks the 12-layer campaign manifest and all **147**
-theorem receipts: **25** public evidence rows and **122** closed private
+theorem receipts: **95** public evidence rows and **99** closed private
 candidates. This includes the exact nine-row tranche-01 admission, the exact
 16-row K4 admission, eight private gcd conveniences, ten private lcm
 conveniences, seventy-four strict-K3 signed rows, the private K4 signed-gcd
-client, the eight-row generalized-CRT foundation, and the seven-row M5a
-binary sufficiency ladder, followed by the four-row M5b zero-inclusive
-closure, the four-row M5c relational-LCM classification, and the three-row
-M5d zero/nonzero canonical boundary, followed by the two-row M5e executable
-solution-or-obstruction boundary and the one-row M5f raw-input total decision.
-The generalized-CRT lane therefore has **29** audited rows: **28** new
-candidates plus one reused public support theorem. The manifest also pins
-**27** candidate modules and **30** focused test paths. It checks the
-45-row definition API over 44 distinct public-theorem replays. The second
-cross-checks all **409** public runtime theorems against the **410**-row
+client, and the complete M5a--M5f generalized-CRT evidence ladder. The
+generalized-CRT lane has **29** audited rows: the exact **23** public rows
+listed above and six closed private residuals. The manifest also pins **22**
+candidate modules and **31** focused test paths. It checks the 45-row
+definition API over 44 distinct public-theorem replays. The second
+cross-checks all **432** public runtime theorems against the **433**-row
 research catalog. The third independently replays the full public ladder and
 compares the deterministic snapshot.

@@ -9,7 +9,7 @@ Arithmetic.
 
 ```{admonition} The result in one sentence
 :class: tip
-The current runtime contains **409 closed native theorems**, including
+The current runtime contains **432 closed native theorems**, including
 factorization existence, extensional uniqueness, their combined FTA, and a
 constructive theorem producing a prime above every supplied bound. The newest
 137-theorem quadratic-reciprocity campaign now includes parity, constructive
@@ -18,26 +18,30 @@ sign and half-range bridges, β swap/reindex, finite pigeonhole, replacement
 balance, and exact swap-last product invariance. Twenty-five strict-HA entries
 now expose canonical remainder, congruence, bounded modular inverses, relational
 gcd/LCM compatibility, LCM existence and uniqueness, and the gcd--LCM product
-law. A separate eight-row generalized-CRT foundation is closed but remains
-unadmitted while the sufficiency direction is developed.
+law. The exact 23-row generalized-CRT dependency closure is now public: it
+covers the all-modulus solvability criterion, classification modulo a
+relational LCM, the zero/nonzero canonical boundary, certified obstruction,
+and raw-input total decision. Six convenience lemmas remain private.
 ```
 
 <div class="pa-dashboard-metrics" aria-label="Current arithmetic library metrics">
-  <div><strong>409</strong><span>checked native theorems</span></div>
-  <div><strong>1,875,400</strong><span>structural proof occurrences</span></div>
-  <div><strong>54,582</strong><span>self-contained Cuts</span></div>
+  <div><strong>432</strong><span>checked native theorems</span></div>
+  <div><strong>1,982,360</strong><span>structural proof occurrences</span></div>
+  <div><strong>57,692</strong><span>self-contained Cuts</span></div>
   <div><strong>0</strong><span>remaining planned catalog theorems</span></div>
 </div>
 
 The generated snapshot has ordered root
-`1e8fac39d1638124c9134d2845fab14e1169f12ad8791f615c9f80cf9f49498c`.
+`4d02dc439d53533e8992a471b26ee34059fb6001f822041e42c56b2cc0a7a079`.
 Every entry is reconstructed from its authored script and checked from the
 empty context. Names, summaries and hashes organize the library; none of them
-grant proof authority.
+grant proof authority. Its graph has **1,185** direct dependency edges; the
+Book exposes **432** theorem cards, while the synchronized vault contains
+**531** notes and **5,377** resolved links.
 
 ## The mathematical metro map
 
-The exact dependency graph has 409 vertices and 1,102 edges and is useful to machines, but a
+The exact dependency graph has 432 vertices and 1,185 edges and is useful to machines, but a
 human first needs the stations. Each box below is a link into the guided tour.
 
 <nav class="pa-roadmap" aria-label="Arithmetic dependency roadmap">
@@ -56,7 +60,7 @@ human first needs the stations. Each box below is a link into the guided tour.
 The exact generated graph remains available as an immutable
 [`dependency-graph.mmd`](https://github.com/nasqret/vietnam2026/blob/ff3d0ebd440d52f3df12dbae765fe7acc53ee6c5/artifacts/peano-library/dependency-graph.mmd).
 The {doc}`interactive theorem atlas <theorem-atlas>` gives a readable local
-neighborhood instead of attempting to draw all 1,102 edges at once. The
+neighborhood instead of attempting to draw all 1,185 edges at once. The
 {doc}`native PA proof explorer <proof-explorer>` adds permanent theorem tags,
 numbered tactic-line targets, and the larger quadratic-reciprocity closure.
 Its parallel {doc}`definition-aware edition <defined-proof-explorer>` renders

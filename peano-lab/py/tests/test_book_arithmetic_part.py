@@ -26,14 +26,14 @@ DOMAIN_COUNTS = {
     "multiplication": 19,
     "order": 29,
     "divisibility": 20,
-    "congruence": 35,
+    "congruence": 58,
     "division": 13,
     "gcd_coprime": 45,
     "primes": 13,
     "factorization": 76,
     "quadratic_residues": 137,
 }
-PROOF_SNAPSHOT_COMMIT = "ff3d0ebd440d52f3df12dbae765fe7acc53ee6c5"
+PROOF_SNAPSHOT_COMMIT = "2037b87905817ada187e2477af22c57ff47fb512"
 
 
 def _load(path: Path) -> dict:
