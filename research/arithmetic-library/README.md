@@ -111,11 +111,14 @@ hygienic `ListAt(z,i,a)` surface and proof architecture. Its outer-head index
 uses `j + S i = l` with witness order `l b c j t u`; the full expansion has
 3,331 characters, 54 formula constructors, 210 PA AST nodes, and SHA-256
 `b83d91b6ec8e6b83fe637e1533c72beef54c7e7a4b41f1518bce8785cc9f11ce`.
-Seven focused tests cover hygiene and nil through three-cell models. No lookup
-theorem is body-checked or closed. The first proof obligation is
-`cell_history_extend_preserves_prefix`, because the existing opaque extension
-contract does not expose transport of the old beta prefix. Run the separate
-surface gate with `make ha-k3b-list-lookup-check`.
+Seven focused tests cover hygiene and nil through three-cell models. The first
+support theorem, `cell_history_extend_preserves_prefix`, now has a
+dependency-curried kernel-checked body: `(5,99,139,37,139,138,0)` in order
+`(dependencies,commands,nodes,depth,objects,edges,reused)`. Four additional
+tests pin its 3,799-character statement, exact dependency closure, mutations,
+zero-DNE body, and concrete recoding boundary. No empty-context closure or
+lookup equation is yet claimed. Run the separate lightweight gate with
+`make ha-k3b-list-lookup-check`.
 
 The K4
 [`signed-gcd client`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)

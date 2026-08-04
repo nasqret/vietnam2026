@@ -287,11 +287,12 @@ Outer-head index `i` selects construction edge `j` through
 expansion has 3,331 characters, 54 formula constructors, 210 AST nodes, and
 SHA-256
 `b83d91b6ec8e6b83fe637e1533c72beef54c7e7a4b41f1518bce8785cc9f11ce`.
-Seven focused checks pass. No lookup theorem is body-checked, closed, or
-admitted. Before successor lookup introduction, the campaign must prove
-`cell_history_extend_preserves_prefix` to expose the pointwise beta-prefix
-map hidden by the current existential extension contract. The light design
-gate is `make ha-k3b-list-lookup-check`.
+Seven focused checks pass. The prerequisite
+`cell_history_extend_preserves_prefix` now has a dependency-curried checked
+body receipt `(5,99,139,37,139,138,0)` and four focused audits. It exposes the
+pointwise beta-prefix map hidden by the current existential extension
+contract, but it has no cold empty-context receipt yet. No lookup equation or
+admission is claimed. The light gate is `make ha-k3b-list-lookup-check`.
 
 ## Repository anchors
 

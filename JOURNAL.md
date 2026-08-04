@@ -4756,7 +4756,9 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   found one necessary first lemma: `cell_history_extend_preserves_prefix`.
   The old extension result proves existence of a new history but intentionally
   hides the pointwise map needed to lift an old lookup.
-- This is a design checkpoint only. No lookup theorem is body-checked, closed,
-  registered, admitted, or added to campaign JSON. The light gate is
-  `make ha-k3b-list-lookup-check`; heavy closure will run on WMI after bodies
-  exist.
+- Implemented that support row with a dependency-curried body receipt
+  `(5,99,139,37,139,138,0)`. Four focused tests pin its 3,799-character
+  surface, 104-row closure, constructive body, mutations, and the exact
+  `4,1` to `96,2` recoding boundary. This remains body-checked only: no cold
+  closure, registry entry, admission, or campaign JSON change is claimed.
+  The light gate is `make ha-k3b-list-lookup-check`; cold closure runs on WMI.

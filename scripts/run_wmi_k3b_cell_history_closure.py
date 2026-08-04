@@ -2,10 +2,10 @@
 """Cold, empty-context closure receipts for the private K3B list seed.
 
 This runner is intentionally separate from pytest and from the public theorem
-registry.  It closes the five initial CellHistory/list-equation candidates and
-RFC deliverables 8--10 over the minimum private strict-cell support plus the
-reviewed public library.  It is a WMI capacity/admission experiment, not an
-admission action.
+registry.  It closes the five initial CellHistory/list-equation candidates,
+RFC deliverables 8--10, and the first prefix-preserving lookup-support row over
+the minimum private strict-cell support plus the reviewed public library.  It
+is a WMI capacity/admission experiment, not an admission action.
 """
 
 from __future__ import annotations
@@ -35,6 +35,9 @@ from peano_lab.library.ha_cell_functional_candidate import (
 )
 from peano_lab.library.ha_cell_history_candidate import (
     make_ha_cell_history_candidate_theorems,
+)
+from peano_lab.library.ha_cell_history_prefix_preservation_candidate import (
+    make_ha_cell_history_prefix_preservation_candidate_theorems,
 )
 from peano_lab.library.ha_cell_list_equations_candidate import (
     make_ha_cell_list_equations_candidate_theorems,
@@ -66,11 +69,12 @@ from peano_lab.library.theorems import (
 )
 
 
-FORMAT = "peano-k3b-cell-history-cold-closure-v1"
+FORMAT = "peano-k3b-cell-history-cold-closure-v2"
 TARGET_NAMES = (
     "cell_history_nil",
     "cell_history_extend",
     "cell_history_succ_elim",
+    "cell_history_extend_preserves_prefix",
     "cell_list_zero_iff_nil",
     "cell_list_succ_iff_cell",
     "cell_list_length_functional",
@@ -87,6 +91,7 @@ SUPPORT_FACTORIES: tuple[Factory, ...] = (
 )
 TARGET_FACTORIES: tuple[Factory, ...] = (
     make_ha_cell_history_candidate_theorems,
+    make_ha_cell_history_prefix_preservation_candidate_theorems,
     make_ha_cell_list_equations_candidate_theorems,
     make_ha_cell_list_length_functional_candidate_theorems,
     make_ha_cell_list_length_bound_candidate_theorems,
@@ -402,7 +407,7 @@ def _arguments() -> argparse.Namespace:
         "--theorem",
         action="append",
         choices=TARGET_NAMES,
-        help="target to close; repeat to select several (default: all eight)",
+        help="target to close; repeat to select several (default: all nine)",
     )
     parser.add_argument(
         "--passes", type=int, default=2,

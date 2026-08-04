@@ -2123,8 +2123,10 @@
   `l b c j t u`. The hygienic expansion is 3,331 characters, 54 formula
   constructors, 210 PA AST nodes, and SHA-256
   `b83d91b6ec8e6b83fe637e1533c72beef54c7e7a4b41f1518bce8785cc9f11ce`;
-  seven focused tests pass. This is surface-frozen only: no lookup theorem is
-  body-checked or closed. `cell_history_extend_preserves_prefix` must precede
-  successor introduction because the current extension theorem hides the old
-  beta-prefix transport. Runtime/catalog, campaign accounting, and strict K3
-  remain exactly 432/433, 95/121/169, and 96 rows/21 modules.
+  seven focused tests pass. The required
+  `cell_history_extend_preserves_prefix` support row now has a checked body
+  receipt `(5,99,139,37,139,138,0)` and four focused audits, but no cold
+  empty-context receipt. It must precede successor introduction because the
+  current extension theorem hides the old beta-prefix transport.
+  Runtime/catalog, campaign accounting, and strict K3 remain exactly 432/433,
+  95/121/169, and 96 rows/21 modules.

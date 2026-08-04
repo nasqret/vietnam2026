@@ -769,9 +769,10 @@ head/successor equations, domain and external bounds, lookup existence and
 functionality, history-witness independence, and extensionality. The existing
 `cell_history_extend` conclusion is deliberately opaque and does not expose
 the beta-prefix transport needed by successor introduction; therefore
-`cell_history_extend_preserves_prefix` is the first proof obligation. No
-lookup theorem is yet body-checked, closed, registered, or admitted. Public
-runtime/catalog and campaign accounting remain 432/433 and 95/121/169;
+`cell_history_extend_preserves_prefix` is the first proof obligation. Its
+dependency-curried body now checks at `(5,99,139,37,139,138,0)`, but no
+empty-context closure, lookup equation, registry entry, or admission is yet
+claimed. Public runtime/catalog and campaign accounting remain 432/433 and 95/121/169;
 strict K3 remains 96 rows/21 modules. The lightweight design gate is
 `make ha-k3b-list-lookup-check`. The Book, explorer, catalog, campaign JSON,
 and public snapshots remain untouched until closure/admission review.

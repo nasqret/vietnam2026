@@ -141,7 +141,7 @@ later theorem statement expands D01/D02, `CellHistory`, `CellListLen`,
 | 2 | `cell_history_extend_preserves_prefix` | expose the old decoded prefix in the extended history | `beta_prefix_extend`, `finite_lt_succ_eq_or_lt`, `zero_le`, `succ_le_succ`, `le_refl` |
 | 3 | `list_at_domain` | project a semantic length and the native strict index bound | `cell_list_length_functional` only if an external length is supplied; otherwise definition elimination |
 | 4 | `list_at_head_iff` | characterize lookup at outer index zero | rung 2, `cell_history_succ_elim`, `beta_at_unique`, cell functionality |
-| 5 | `list_at_succ_iff` | shift lookup through one outer cell | rungs 2 and 4, `cell_history_succ_elim`, PA2--PA4 |
+| 5 | `list_at_succ_iff` | shift lookup through one outer cell | rungs 2 and 4, `cell_history_succ_elim`, `add_comm`, PA2--PA4 |
 | 6 | `list_at_external_bound` | transport the hidden bound to a declared list length | rungs 3, `cell_list_length_functional` |
 | 7 | `list_at_exists` | every in-range index has a decoded head | `CellHistory` universal edge clause, definition introduction |
 | 8 | `list_at_functional` | lookup at a fixed code and index has one value | rungs 4--5, `cell_head_functional`, `cell_tail_functional`, induction on `i` |
@@ -304,6 +304,9 @@ final edge.
 At successor index `S i`, arithmetic converts
 `j + S (S i) = S l` to `j + S i = l`.  Elimination reuses the same `b,c`
 prefix; introduction uses the preservation map at both `j` and `S j`.
+Commuting the additive bound supplies the map's native `k <= l` witness;
+`add_comm` is therefore an explicit dependency rather than hidden arithmetic
+automation.
 
 ### 7.3 Functionality and extensionality
 
@@ -389,9 +392,16 @@ receipts.
 
 ## 10. Current evidence and next action
 
-Only D01/D02 and their lightweight structural/semantic tests are implemented
-at this freeze.  No theorem row in Sections 4--5 is yet claimed body-checked or
-closed.  The next action is to implement
-`cell_history_extend_preserves_prefix`, validate its dependency-curried body
-locally, and obtain a twice-cold empty-context closure receipt on WMI before
-using it in the lookup equations.
+D01/D02 and their lightweight structural/semantic tests are implemented. The
+first theorem row, `cell_history_extend_preserves_prefix`, now has a checked
+dependency-curried body with exact receipt
+`(5 dependencies,99 commands,139 nodes,depth 37,139 objects,138 edges,0 reused)`.
+Its expanded statement has 3,799 characters and SHA-256
+`3191deb1ef7c06755622ef9f277b3d5d1e358edac5437e5e337c9f29c6e395b2`.
+The audited closure contains 104 rows (103 public dependencies), and four
+focused tests pin its surface, dependency quarantine, zero-DNE body,
+mutation sensitivity, and the concrete `4,1` to `96,2` recoding example.
+
+This is **BODY-CHECKED only**. No empty-context closure or admission is yet
+claimed. The next action is a twice-cold isolated WMI closure; the lookup
+equations remain blocked until that receipt is sealed.

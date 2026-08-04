@@ -96,10 +96,11 @@ is currently surface-frozen only. It indexes from the outer head using
 `j + S i = l`, with exact witnesses `l b c j t u`. Its hygienic expansion is
 3,331 characters, 54 formula constructors, and 210 PA AST nodes, SHA-256
 `b83d91b6ec8e6b83fe637e1533c72beef54c7e7a4b41f1518bce8785cc9f11ce`;
-seven focused tests pass. No lookup theorem is body-checked or closed. The
-first obligation is `cell_history_extend_preserves_prefix`, because the
-existing history extension hides the decoded-prefix preservation map. Public
-and campaign counts remain unchanged.
+seven focused tests pass. The first support row,
+`cell_history_extend_preserves_prefix`, has a checked dependency-curried body
+receipt `(5,99,139,37,139,138,0)` plus four focused audits. It has no cold
+empty-context receipt yet, and no lookup equation is claimed. Public and
+campaign counts remain unchanged.
 
 ## Design and trust
 

@@ -66,6 +66,7 @@ if [ "$selection" != all ]; then
   for theorem in "${requested_theorems[@]}"; do
     case "$theorem" in
       cell_history_nil|cell_history_extend|cell_history_succ_elim|\
+      cell_history_extend_preserves_prefix|\
       cell_list_zero_iff_nil|cell_list_succ_iff_cell|\
       cell_list_length_functional|cell_list_length_le_code|\
       cell_list_length_total)
