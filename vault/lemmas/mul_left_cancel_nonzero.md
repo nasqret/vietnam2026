@@ -28,6 +28,8 @@ forall a b c. ~(a = 0) -> a * b = a * c -> b = c
 - [[proper_factor_lt]]
 - [[two_prime_product_uniqueness]]
 - [[odd_half_unique]]
+- [[is_lcm_scale_nonzero]]
+- [[balanced_bezout_cancel_gcd]]
 
 ## Verification record
 

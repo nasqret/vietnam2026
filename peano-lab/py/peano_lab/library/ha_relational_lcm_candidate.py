@@ -10,11 +10,12 @@ divides every other common multiple.  The candidates expose the structural
 API, divisibility and zero/one edge cases, and a product upper bound.  This
 module alone does not claim general lcm existence.  The adjacent isolated
 ``ha_lcm_totality_bridge_candidate`` layer now closes that constructive step,
-while the current public registry still contains neither candidate tranche.
+and the public registry admits the seven reviewed universal-property rows.
+The ten convenience and edge-value rows remain isolated candidates.
 
 Every relation occurrence expands to the unchanged first-order language
-``{0,S,+,*,=}``.  All rows are constructive, dependency-curried,
-unregistered, and unadmitted.
+``{0,S,+,*,=}``.  All rows are constructive and dependency-curried; admission
+is controlled explicitly by the public registry rather than by this factory.
 """
 
 from __future__ import annotations

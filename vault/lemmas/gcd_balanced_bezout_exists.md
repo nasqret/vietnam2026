@@ -21,6 +21,7 @@ forall a b. exists d. ((((exists x. a = d * x) /\ (exists y. b = d * y)) /\ fora
 ## Checked dependents
 
 - [[coprime_balanced_bezout]]
+- [[gcd_lcm_compatible_exists]]
 
 ## Verification record
 

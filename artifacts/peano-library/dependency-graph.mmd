@@ -393,6 +393,22 @@ flowchart TD
   coprime_bounded_mod_inverse[coprime_bounded_mod_inverse]
   mod_inverse_implies_coprime[mod_inverse_implies_coprime]
   coprime_iff_unique_bounded_mod_inverse[coprime_iff_unique_bounded_mod_inverse]
+  is_lcm_multiple_left[is_lcm_multiple_left]
+  is_lcm_multiple_right[is_lcm_multiple_right]
+  is_lcm_least[is_lcm_least]
+  is_lcm_symm[is_lcm_symm]
+  is_lcm_unique[is_lcm_unique]
+  is_lcm_zero_right[is_lcm_zero_right]
+  is_lcm_zero_left[is_lcm_zero_left]
+  balanced_bezout_one_implies_coprime[balanced_bezout_one_implies_coprime]
+  coprime_product_is_lcm[coprime_product_is_lcm]
+  is_lcm_scale_nonzero[is_lcm_scale_nonzero]
+  balanced_bezout_cancel_gcd[balanced_bezout_cancel_gcd]
+  gcd_zero_inputs[gcd_zero_inputs]
+  gcd_lcm_compatible_exists[gcd_lcm_compatible_exists]
+  lcm_exists_relational[lcm_exists_relational]
+  canonical_lcm_exists_unique[canonical_lcm_exists_unique]
+  gcd_lcm_product[gcd_lcm_product]
   zero_add --> add_comm
   add_succ_left --> add_comm
   add_comm --> mul_succ_left
@@ -1463,3 +1479,35 @@ flowchart TD
   coprime_bounded_mod_inverse --> coprime_iff_unique_bounded_mod_inverse
   bounded_mod_inverse_unique --> coprime_iff_unique_bounded_mod_inverse
   mod_inverse_implies_coprime --> coprime_iff_unique_bounded_mod_inverse
+  multiple_antisymm --> is_lcm_unique
+  multiple_zero --> is_lcm_zero_right
+  is_lcm_zero_right --> is_lcm_zero_left
+  is_lcm_symm --> is_lcm_zero_left
+  common_divisor_divides_balanced_result --> balanced_bezout_one_implies_coprime
+  divisor_one --> balanced_bezout_one_implies_coprime
+  mul_comm --> coprime_product_is_lcm
+  gauss_coprime_cancel --> coprime_product_is_lcm
+  mul_assoc --> coprime_product_is_lcm
+  mul_assoc --> is_lcm_scale_nonzero
+  mul_left_cancel_nonzero --> is_lcm_scale_nonzero
+  mul_left_cancel_nonzero --> balanced_bezout_cancel_gcd
+  mul_add --> balanced_bezout_cancel_gcd
+  mul_assoc --> balanced_bezout_cancel_gcd
+  mul_one --> balanced_bezout_cancel_gcd
+  mul_zero_left --> gcd_zero_inputs
+  gcd_balanced_bezout_exists --> gcd_lcm_compatible_exists
+  eq_decidable --> gcd_lcm_compatible_exists
+  gcd_zero_inputs --> gcd_lcm_compatible_exists
+  is_lcm_zero_left --> gcd_lcm_compatible_exists
+  balanced_bezout_cancel_gcd --> gcd_lcm_compatible_exists
+  balanced_bezout_one_implies_coprime --> gcd_lcm_compatible_exists
+  coprime_product_is_lcm --> gcd_lcm_compatible_exists
+  is_lcm_scale_nonzero --> gcd_lcm_compatible_exists
+  mul_assoc --> gcd_lcm_compatible_exists
+  mul_comm --> gcd_lcm_compatible_exists
+  gcd_lcm_compatible_exists --> lcm_exists_relational
+  lcm_exists_relational --> canonical_lcm_exists_unique
+  is_lcm_unique --> canonical_lcm_exists_unique
+  gcd_lcm_compatible_exists --> gcd_lcm_product
+  is_gcd_unique --> gcd_lcm_product
+  is_lcm_unique --> gcd_lcm_product

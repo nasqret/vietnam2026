@@ -62,8 +62,14 @@ curriculum. The owner authorized the compatibility-validated 26-record modular e
 public catalog. After reconciliation with M20, fourteen records overlap exactly and twelve are
 new, giving 63 unique checked runtime theorems without changing the kernel.
 Subsequent native arithmetic and quadratic-residue campaign passes first extend
-that runtime to 384 checked theorems, and strict-HA tranche 01 now appends nine
-canonical remainder/congruence/inverse interfaces for a live total of 393.
+that runtime to 384 checked theorems, and strict-HA tranche 01 then appended nine
+canonical remainder/congruence/inverse interfaces for a 393-theorem checkpoint.
+The reviewed K4 admission adds 16 public gcd/LCM rows—the universal-property
+LCM core, constructive totality and unique existence, and the gcd-times-LCM
+product identity—for the current live total of 409. Its adjacent eight-row
+generalized-CRT congruence foundation remains isolated: necessary gcd
+compatibility and constructive incompatibility are closed, while compatible
+noncoprime CRT sufficiency is not yet claimed.
 The ladder includes discrete order, multiplication cancellation and
 monotonicity, constructive quotient-remainder existence, and full
 quotient-remainder uniqueness, mutual-divisibility antisymmetry, relational
@@ -140,10 +146,13 @@ blocker.
 ## Parallel foundational arithmetic and quadratic-reciprocity milestones
 
 M20 generalizes the theorem ladder into a structured arithmetic corpus. The
-current 393 checked runtime entries comprise the original 23-theorem base, 212
-post-baseline foundational theorems, twelve unique upstream mod-five
-capstones, 137 checked M21–M23 quadratic-residue foundations, and nine
-strict-HA canonical remainder/congruence/modular-inverse interfaces. The
+current 409 checked runtime entries comprise 23 legacy theorems, 212
+foundational theorems, twelve unique upstream mod-five capstones, 137 checked
+M21–M23 quadratic-residue foundations, and 25 strict-HA entries. The HA layer
+contains the original nine canonical remainder/congruence/modular-inverse
+interfaces plus 16 newly public K4 gcd/LCM rows. An adjacent eight-row
+generalized-CRT congruence foundation remains isolated and does not yet claim
+compatible noncoprime CRT sufficiency. The
 constructive dependency graph now runs from equality, order,
 cancellation, division and relational gcd through balanced-natural Bézout,
 Gauss cancellation, primality decision, prime-divisor existence and Euclid's
@@ -153,15 +162,19 @@ object language—and proves CRT recoding, canonical sorted factorization
 existence, extensional uniqueness, and the native Fundamental Theorem of
 Arithmetic. The exact FTA certificate checks from the empty context at 73,767
 nodes, depth 99 and 2,184 self-contained Cuts, with no DNE. The synchronized
-394-entry catalog has 23 `checked_existing`, 370 `checked_m20`, no remaining
+410-entry catalog has 23 `checked_existing`, 386 `checked_m20`, no remaining
 planned theorem, and one representation-blocked
 conventional integer-coefficient Bézout interface. A pinned Lean companion
 independently checks conventional list-based FTA up to permutation. Remaining
 M20's native arithmetic and synchronized release artifacts are complete. The
 main Jupyter Book now includes a guided zero-to-FTA route, a quadratic
-reciprocity campaign chapter, and a generated interactive 393-proof atlas;
-the integrated local browser candidate deterministically verifies as build
-`2026-08-03c`, application `a-9fe3f597bf8d`, with 153 worker sources. It
+reciprocity campaign chapter, and a generated interactive 409-proof atlas with
+1,102 dependency edges. The generated snapshot records 1,875,400 structural
+nodes, 54,582 Cuts, 350 Cut-bearing certificates, and ordered root
+`1e8fac39d1638124c9134d2845fab14e1169f12ad8791f615c9f80cf9f49498c`.
+The synchronized vault has 409 theorem notes, 508 total notes, and 5,119
+links; the integrated local browser candidate deterministically verifies as build
+`2026-08-04b`, application `a-d58c3b67d05d`, with 174 worker sources. It
 assembles successfully in the local content-addressed stage, is not deployed,
 and direct attached-browser UI inspection remains
 explicitly unclaimed. Model-v3 curriculum training is a separate milestone—not mathematical

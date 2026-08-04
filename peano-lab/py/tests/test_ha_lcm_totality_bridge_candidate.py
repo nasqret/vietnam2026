@@ -485,8 +485,11 @@ def _local_candidates() -> dict[str, TheoremSpec]:
 def _candidate_body_core() -> dict[str, TheoremSpec]:
     core = dict(_specs_by_name())
     for item in _relational_candidates():
-        assert item.name not in core
-        core[item.name] = item
+        admitted = core.get(item.name)
+        if admitted is None:
+            core[item.name] = item
+        else:
+            assert admitted == item
     return core
 
 
@@ -632,7 +635,7 @@ def _dependency_closure(name: str) -> set[str]:
     return _dependency_boundaries(name)[1]
 
 
-def test_lcm_totality_bridge_factory_is_exact_and_registry_isolated() -> None:
+def test_lcm_totality_bridge_factory_is_exact_and_publicly_admitted() -> None:
     first = _candidates()
     second = make_ha_lcm_totality_bridge_candidate_theorems(TheoremSpec)
 
@@ -657,10 +660,10 @@ def test_lcm_totality_bridge_factory_is_exact_and_registry_isolated() -> None:
         assert formula == _closed_formula(item.statement)
 
     public = _specs_by_name()
-    assert all(item.name not in public for item in first)
+    assert all(public[item.name] == item for item in first)
     registry_source = Path(theorem_registry.__file__).read_text(encoding="utf-8")
-    assert "ha_lcm_totality_bridge_candidate" not in registry_source
-    assert all(f'"{item.name}"' not in registry_source for item in first)
+    assert "ha_lcm_totality_bridge_candidate" in registry_source
+    assert all(f'"{item.name}"' in registry_source for item in first)
 
 
 def test_lcm_totality_bridge_defined_surfaces_and_term_wrappers_are_exact() -> None:

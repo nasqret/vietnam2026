@@ -1826,3 +1826,19 @@
   tree contains 87,206,047 bytes and has SHA-256
   `1468972f63c3c9122fb0341559ac31f31e602589801381e60cb94e3b5d916472`.
   No visual click-through is claimed.
+- **Selective K4 gcd/LCM admission (2026-08-04):** the public tail now contains
+  exactly seven universal LCM rows—two projections, leastness, symmetry,
+  uniqueness, and both forced-zero constructors—followed by all nine A--I
+  gcd/LCM bridge rows. All 16 retain their isolated factory specifications,
+  two-cold-pass receipts, zero-DNE property, and mutation gates. The public
+  registry is 409; the catalog is 410 with 386 `checked_m20` rows. Exactly 19
+  reviewed K4 candidates remain private: three canonical-gcd package rows,
+  five gcd edge rows, ten LCM convenience rows, and the signed-gcd client.
+- **Generalized-CRT congruence foundation (2026-08-04):** an eight-row isolated
+  stack reuses the exact `mod_eq_add_cancel_left` candidate and adds seven
+  constructive rows for zero modulus, right cancellation, scale/unscale,
+  comparison of common solutions, compatibility necessity modulo relational
+  gcd, and the incompatibility obstruction. Two cold closures and the focused
+  six-test audit pass with zero DNE. Sufficiency, solution construction, the
+  complete class modulo relational LCM, canonical representatives, finite
+  generalized CRT, and public admission remain open.

@@ -91,6 +91,12 @@ from .ha_modular_inverse_candidate import (
 from .wilson_inverse_point_candidate import (
     make_wilson_inverse_point_candidate_theorems,
 )
+from .ha_relational_lcm_candidate import (
+    make_ha_relational_lcm_candidate_theorems,
+)
+from .ha_lcm_totality_bridge_candidate import (
+    make_ha_lcm_totality_bridge_candidate_theorems,
+)
 
 
 class LibraryError(ValueError):
@@ -11158,6 +11164,57 @@ THEOREMS = _merge_compatible_theorems(
     HA_NUMBER_THEORY_TRANCHE01_THEOREMS,
 )
 
+# Strict-HA number-theory campaign K4 gcd--LCM admission.  The relational-LCM
+# factory deliberately retains ten isolated convenience candidates; only the
+# seven universal-property rows below enter the public ladder.  The adjacent
+# bridge factory is admitted in full and in its reviewed A--I order.
+_HA_RELATIONAL_LCM_PUBLIC_NAMES = (
+    "is_lcm_multiple_left",
+    "is_lcm_multiple_right",
+    "is_lcm_least",
+    "is_lcm_symm",
+    "is_lcm_unique",
+    "is_lcm_zero_right",
+    "is_lcm_zero_left",
+)
+HA_RELATIONAL_LCM_THEOREMS: tuple[TheoremSpec, ...] = tuple(
+    spec
+    for spec in make_ha_relational_lcm_candidate_theorems(TheoremSpec)
+    if spec.name in _HA_RELATIONAL_LCM_PUBLIC_NAMES
+)
+if tuple(spec.name for spec in HA_RELATIONAL_LCM_THEOREMS) != (
+    _HA_RELATIONAL_LCM_PUBLIC_NAMES
+):
+    raise LibraryError("unexpected relational-LCM public admission surface")
+
+_HA_LCM_TOTALITY_BRIDGE_PUBLIC_NAMES = (
+    "balanced_bezout_one_implies_coprime",
+    "coprime_product_is_lcm",
+    "is_lcm_scale_nonzero",
+    "balanced_bezout_cancel_gcd",
+    "gcd_zero_inputs",
+    "gcd_lcm_compatible_exists",
+    "lcm_exists_relational",
+    "canonical_lcm_exists_unique",
+    "gcd_lcm_product",
+)
+HA_LCM_TOTALITY_BRIDGE_THEOREMS: tuple[TheoremSpec, ...] = (
+    make_ha_lcm_totality_bridge_candidate_theorems(TheoremSpec)
+)
+if tuple(spec.name for spec in HA_LCM_TOTALITY_BRIDGE_THEOREMS) != (
+    _HA_LCM_TOTALITY_BRIDGE_PUBLIC_NAMES
+):
+    raise LibraryError("unexpected gcd--LCM totality bridge admission surface")
+
+HA_NUMBER_THEORY_K4_GCD_LCM_THEOREMS: tuple[TheoremSpec, ...] = (
+    *HA_RELATIONAL_LCM_THEOREMS,
+    *HA_LCM_TOTALITY_BRIDGE_THEOREMS,
+)
+THEOREMS = _merge_compatible_theorems(
+    THEOREMS,
+    HA_NUMBER_THEORY_K4_GCD_LCM_THEOREMS,
+)
+
 
 def names() -> tuple[str, ...]:
     """Return canonical theorem names in ladder order."""
@@ -11307,6 +11364,9 @@ __all__ = [
     "HA_BOUNDED_MOD_INVERSE_UNIQUENESS_THEOREMS",
     "HA_MODULAR_INVERSE_THEOREMS",
     "HA_NUMBER_THEORY_TRANCHE01_THEOREMS",
+    "HA_RELATIONAL_LCM_THEOREMS",
+    "HA_LCM_TOTALITY_BRIDGE_THEOREMS",
+    "HA_NUMBER_THEORY_K4_GCD_LCM_THEOREMS",
     "MOD5_LIBRARY_SOURCE_REPOSITORY",
     "MOD5_LIBRARY_SOURCE_COMMIT",
     "MOD5_LIBRARY_CATALOG_SHA256",

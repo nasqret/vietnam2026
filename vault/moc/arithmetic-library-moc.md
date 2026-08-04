@@ -6,15 +6,21 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-The current runtime contains 393 checked entries and the factorization tranche
-is fully synchronized. The exact native sorted Gödel-β endpoints check from the
-empty context: existence at 43,973 nodes/depth 98, canonical extensional
+The current runtime contains 409 checked entries: 23 legacy, 212 foundation,
+12 mod-five, 137 quadratic-residue, and 25 strict-HA theorems. The latest 16
+public K4 rows provide the universal-property LCM core, constructive totality
+and unique existence, and the gcd-times-LCM identity. The
+adjacent eight-row generalized-CRT congruence foundation remains isolated: it
+proves necessary gcd compatibility and a constructive incompatibility
+obstruction, but not compatible noncoprime CRT sufficiency. The factorization
+tranche is fully synchronized. The exact native sorted Gödel-β endpoints check
+from the empty context: existence at 43,973 nodes/depth 98, canonical extensional
 uniqueness at 29,789/depth 82, and combined
 [[fundamental-theorem-of-arithmetic|FTA]] at 73,767 nodes/depth 99 with 2,184
 self-contained Cuts.
 
-The synchronized research catalog has 394 entries: 23 baseline checked, 370
-post-baseline checked, and one representation-blocked conventional
+The synchronized research catalog has 410 entries: 23 `checked_existing`, 386
+`checked_m20`, and one `blocked_by_language` conventional
 integer-coefficient Bézout interface.
 
 The exact FTA certificate SHA-256 is
@@ -31,11 +37,14 @@ at 4,595 nodes/depth 82 with 146 Cuts and certificate SHA-256
 It uses PA1–PA6 only, contains no DNE, and passes dependency, PA, hypothesis,
 and live-use audits.
 
-The generated 393-theorem snapshot has 1,830,078 structural occurrences,
-53,293 Cuts, and ordered
-root
-`539a1195df131ed3e202efa15f48bef76a8b8c757789119e2265172453aaf566`.
-The synchronized vault includes all 393 generated theorem notes.
+The generated 409-theorem snapshot has 1,875,400 structural nodes,
+54,582 Cuts, 350 Cut-bearing certificates, and ordered root
+`1e8fac39d1638124c9134d2845fab14e1169f12ad8791f615c9f80cf9f49498c`.
+The synchronized vault has 409 theorem notes, 508 total notes, and 5,119
+links. The interactive atlas has 409 theorem cards and 1,102 dependency edges.
+The content-addressed local app verifies as build `2026-08-04b`, application
+`a-d58c3b67d05d`, with 174 worker sources; this is a local build, not a
+deployment claim.
 
 ## Design and trust
 

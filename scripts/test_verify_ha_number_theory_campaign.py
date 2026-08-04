@@ -70,11 +70,17 @@ def test_repository_campaign_validates() -> None:
     summary = VALIDATOR.validate_campaign(REPOSITORY_ROOT, CAMPAIGN_PATH)
     assert summary == {
         "layers": 12,
-        "public_references": 56,
-        "candidate_references": 109,
-        "theorem_evidence": 118,
+        "public_references": 72,
+        "candidate_references": 101,
+        "theorem_evidence": 126,
         "validation_gates": 7,
     }
+    campaign = _campaign()
+    assert sum(
+        len(layer["candidate_modules"])
+        for layer in campaign["layers"]
+    ) == 21
+    assert len(campaign["theorem_evidence"]["test_paths"]) == 24
 
 
 def test_candidate_statement_receipt_must_match_factory(tmp_path: Path) -> None:
@@ -244,6 +250,23 @@ def test_missing_candidate_module_is_rejected(tmp_path: Path) -> None:
     )
     path = _write_campaign(tmp_path, campaign)
     with pytest.raises(VALIDATOR.CampaignError, match="does not exist as a file"):
+        VALIDATOR.validate_campaign(REPOSITORY_ROOT, path)
+
+
+def test_combined_candidate_factory_controls_support_evidence(
+    tmp_path: Path,
+) -> None:
+    campaign = deepcopy(_campaign())
+    m5 = campaign["layers"][11]
+    module = m5["candidate_modules"][0]
+    assert module["factory"] == "make_ha_generalized_crt_congruence_stack"
+    assert module["theorem_names"][0] == "mod_eq_add_cancel_left"
+    module["factory"] = "make_ha_generalized_crt_congruence_candidate_theorems"
+    path = _write_campaign(tmp_path, campaign)
+    with pytest.raises(
+        VALIDATOR.CampaignError,
+        match="candidate factory does not produce 'mod_eq_add_cancel_left'",
+    ):
         VALIDATOR.validate_campaign(REPOSITORY_ROOT, path)
 
 

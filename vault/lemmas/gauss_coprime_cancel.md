@@ -26,6 +26,7 @@ forall a b z. (forall d. (exists x. a = d * x) -> (exists y. b = d * y) -> d = 1
 - [[euclid_prime_dvd_product]]
 - [[beta_moduli_coprime_of_gap_dvd]]
 - [[coprime_mul_left]]
+- [[coprime_product_is_lcm]]
 
 ## Verification record
 

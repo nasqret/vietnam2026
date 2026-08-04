@@ -31,7 +31,7 @@ from peano_lab.library.theorems import (
 )
 
 
-CORE_NAMES = (
+ADMITTED_NAMES = (
     "is_lcm_multiple_left",
     "is_lcm_multiple_right",
     "is_lcm_least",
@@ -39,6 +39,9 @@ CORE_NAMES = (
     "is_lcm_unique",
     "is_lcm_zero_right",
     "is_lcm_zero_left",
+)
+CORE_NAMES = (
+    *ADMITTED_NAMES,
     "is_lcm_of_dvd",
 )
 CONVENIENCE_NAMES = (
@@ -53,6 +56,7 @@ CONVENIENCE_NAMES = (
     "lcm_zero_right_exists_unique",
 )
 EXPECTED_NAMES = (*CORE_NAMES, *CONVENIENCE_NAMES)
+RESIDUAL_PRIVATE_NAMES = ("is_lcm_of_dvd", *CONVENIENCE_NAMES)
 EXPECTED_DEPENDENCIES = {
     "is_lcm_multiple_left": (),
     "is_lcm_multiple_right": (),
@@ -398,7 +402,7 @@ def _is_lcm_semantic(candidate: int, a: int, b: int) -> bool:
     )
 
 
-def test_relational_lcm_factory_is_exact_ordered_and_isolated() -> None:
+def test_relational_lcm_factory_has_exact_public_private_boundary() -> None:
     first = _candidate_specs()
     second = make_ha_relational_lcm_candidate_theorems(TheoremSpec)
     assert second == first
@@ -411,10 +415,16 @@ def test_relational_lcm_factory_is_exact_ordered_and_isolated() -> None:
     } == EXPECTED_STATEMENT_SHA256
 
     public = _specs_by_name()
-    assert all(item.name not in public for item in first)
+    by_name = {item.name: item for item in first}
+    assert all(public[name] == by_name[name] for name in ADMITTED_NAMES)
+    assert all(name not in public for name in RESIDUAL_PRIVATE_NAMES)
     registry_source = Path(theorem_registry.__file__).read_text(encoding="utf-8")
-    assert "ha_relational_lcm_candidate" not in registry_source
-    assert all(f'"{item.name}"' not in registry_source for item in first)
+    assert "ha_relational_lcm_candidate" in registry_source
+    assert all(f'"{name}"' in registry_source for name in ADMITTED_NAMES)
+    assert all(
+        f'"{name}"' not in registry_source
+        for name in RESIDUAL_PRIVATE_NAMES
+    )
 
 
 def test_is_lcm_surface_is_hygienic_and_accepts_only_reviewed_literals() -> None:

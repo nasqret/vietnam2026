@@ -25,6 +25,7 @@ forall a b. (exists x. b = a * x) -> (exists y. a = b * y) -> a = b
 ## Checked dependents
 
 - [[is_gcd_unique]]
+- [[is_lcm_unique]]
 
 ## Verification record
 

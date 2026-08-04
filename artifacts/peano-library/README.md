@@ -36,13 +36,16 @@ representation as `python-dataclass-repr-with-cut-v2` and makes no claim that
 erasing those nodes is an independently validated certificate transformation.
 The JSON hashes are provenance aids; they confer no theorem authority.
 
-The current snapshot contains 393 checked theorems. Its 137-entry
+The current snapshot contains 409 checked theorems. Its 137-entry
 `quadratic_residue_foundation` layer additionally proves native finite folds,
 factorial and power algebra, modular units, exact small-modulus residue
 classifications, sign and half-range bridges, β-prefix swap/reindex,
 constructive finite pigeonhole, replacement balance, and exact swap-last
 product invariance needed by the quadratic-reciprocity campaign. The separate
-nine-entry `ha_number_theory_campaign` layer adds canonical remainder,
-canonical-congruence, and exact bounded modular-inverse interfaces. The live
+25-entry `ha_number_theory_campaign` layer adds canonical remainder,
+canonical congruence, exact bounded modular inverses, relational LCM totality
+and uniqueness, and the gcd--LCM product identity. The adjacent eight-row
+generalized-CRT congruence stack remains isolated candidate evidence; it proves
+necessity and obstruction, not compatible-system sufficiency. The live
 resource policy admits 500,000 structural occurrences, 100,000 distinct proof
 objects, and depth 256; these are availability limits, not logical rules.

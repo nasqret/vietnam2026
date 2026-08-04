@@ -577,6 +577,7 @@ def validate_campaign(repository_root: Path, campaign_path: Path) -> dict[str, i
     candidate_cache: dict[tuple[Path, str], dict[str, Any]] = {}
     declared_candidate_specs: dict[str, Any] = {}
     declared_candidate_paths: dict[str, str] = {}
+    declared_candidate_factories: dict[str, str] = {}
     candidate_reference_count = 0
     public_reference_count = 0
     for index, raw_layer in enumerate(layers):
@@ -712,6 +713,7 @@ def validate_campaign(repository_root: Path, campaign_path: Path) -> dict[str, i
                     )
                 declared_candidate_specs[theorem_name] = available_candidates[theorem_name]
                 declared_candidate_paths[theorem_name] = str(module["path"])
+                declared_candidate_factories[theorem_name] = factory_name
             candidate_reference_count += len(theorem_names)
             declared_candidate_names.extend(theorem_names)
             candidate_structured_references.extend(
@@ -827,22 +829,23 @@ def validate_campaign(repository_root: Path, campaign_path: Path) -> dict[str, i
             item["source_module"],
             f"{location}.source_module",
         )
-        source_factory = f"make_{source_path.stem}_theorems"
-        source_key = (source_path, source_factory)
-        if source_key not in candidate_cache:
-            candidate_cache[source_key] = _candidate_specs(
-                repository_root,
-                source_path,
-                source_factory,
-                theorem_spec,
-            )
-        source_spec = candidate_cache[source_key].get(name)
-        if source_spec is None:
-            _fail(
-                f"{location}.source_module",
-                f"its conventional factory {source_factory!r} does not produce {name!r}",
-            )
         if status == "public_checked":
+            source_factory = f"make_{source_path.stem}_theorems"
+            source_key = (source_path, source_factory)
+            if source_key not in candidate_cache:
+                candidate_cache[source_key] = _candidate_specs(
+                    repository_root,
+                    source_path,
+                    source_factory,
+                    theorem_spec,
+                )
+            source_spec = candidate_cache[source_key].get(name)
+            if source_spec is None:
+                _fail(
+                    f"{location}.source_module",
+                    f"its conventional factory {source_factory!r} does not produce "
+                    f"{name!r}",
+                )
             if name not in public_names:
                 _fail(
                     f"{location}.status",
@@ -881,6 +884,14 @@ def validate_campaign(repository_root: Path, campaign_path: Path) -> dict[str, i
                 _fail(
                     f"{location}.source_module",
                     "does not match the candidate module declaration",
+                )
+            source_factory = declared_candidate_factories[name]
+            source_key = (source_path, source_factory)
+            source_spec = candidate_cache[source_key].get(name)
+            if source_spec is None:
+                _fail(
+                    f"{location}.source_module",
+                    f"its declared factory {source_factory!r} does not produce {name!r}",
                 )
             if source_spec != spec:
                 _fail(

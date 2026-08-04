@@ -20,6 +20,7 @@ forall a. exists q. 0 = a * q
 ## Checked dependents
 
 - [[is_gcd_zero_right]]
+- [[is_lcm_zero_right]]
 
 ## Verification record
 

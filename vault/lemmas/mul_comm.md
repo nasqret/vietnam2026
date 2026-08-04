@@ -50,6 +50,8 @@ forall n m. n * m = m * n
 - [[canonical_remainders_characterize_mod_eq]]
 - [[bounded_mod_inverse_unique]]
 - [[coprime_bounded_mod_inverse]]
+- [[coprime_product_is_lcm]]
+- [[gcd_lcm_compatible_exists]]
 
 ## Verification record
 

@@ -24,6 +24,7 @@ forall c a b d xp yp xn yn. (exists u. a = c * u) -> (exists v. b = c * v) -> a 
 
 - [[gauss_coprime_cancel]]
 - [[mod_inverse_implies_coprime]]
+- [[balanced_bezout_one_implies_coprime]]
 
 ## Verification record
 

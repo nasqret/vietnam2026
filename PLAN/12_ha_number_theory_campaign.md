@@ -21,8 +21,9 @@ does not start from zero:
 
 - the normal kernel entry point is intuitionistic and rejects `DNE`;
 - at the frozen campaign baseline, 384 public theorem specifications had
-  self-contained, empty-context certificates; tranche 01 raises the live
-  append-only registry to 393 without changing the first-247 model-v3 prefix;
+  self-contained, empty-context certificates; tranche 01 raised the registry
+  to 393 and the selective K4 gcd/LCM admission now raises it to 409 without
+  changing the first-247 model-v3 prefix;
 - public results already include division/remainder existence and uniqueness,
   relational gcd, balanced Bezout, Gauss cancellation, Euclid's lemma, prime
   divisors, factorization, FTA, modular-inverse existence, and binary CRT;
@@ -187,8 +188,10 @@ with `m != 0` on totality statements.
       convention, and the exact 17-row structural/edge API.
 - [x] Close the nine-row constructive gcd--LCM ladder through compatible
       existence, relational LCM totality, unique LCM value, and
-      `gcd_lcm_product`, while retaining every row as a nonpublic K4
-      candidate.
+      `gcd_lcm_product`.
+- [x] Admit exactly LCM rows L01--L07 and bridge rows A--I as the minimal
+      useful K4 public surface; retain the other 19 reviewed K4 candidates
+      privately.
 
 ### HA4 — independent finite-data substrate
 
@@ -235,8 +238,14 @@ nine-entry append-only tranche-01 admission. The exact M1 root still checks at
 ### M4/M5 — finite and generalized CRT
 
 - [ ] Build finite CRT by induction over the independent list substrate.
-- [ ] Prove the generalized compatibility criterion for non-coprime moduli.
-- [ ] Supply canonical solutions and obstruction certificates.
+- [x] Close the eight-row generalized-CRT congruence foundation: reuse the
+      exact `mod_eq_add_cancel_left` candidate, add seven constructive rows,
+      and prove both gcd-compatibility necessity and the incompatibility
+      obstruction with zero DNE.
+- [ ] Prove the converse construction from compatibility modulo a relational
+      gcd, completing the noncoprime solvability criterion.
+- [ ] Describe the complete solution class modulo relational LCM and supply a
+      canonical representative under the correct nonzero boundary.
 
 ## Per-theorem validation gates
 
@@ -458,14 +467,57 @@ compatibility theorem in 10,441 nodes at depth 61. Every certificate has zero
 `DNE` nodes. The latter route is K4 because its public gcd/Gauss closure
 reaches division; it does not alter the strict 74-row K3 stack.
 
-The source checkpoint therefore contains 109 isolated candidates and 118
-total evidence receipts across 21 candidate modules and 22 focused tests.
-The strict K3 component remains exactly 74 rows. The public registry remains
-393 entries with 56 public references, the definition freeze remains 45 rows
-over 44 distinct public theorems, and the catalog remains 394 entries. No gcd
-edge, LCM, totality, or compatibility candidate is admitted. The remaining
-checkpoint work is deliberate public-admission review and the separate
-executable Euclidean graph, not an LCM proof gap.
+At the pre-admission source checkpoint there were 109 isolated candidates and
+118 total evidence receipts across 21 candidate modules and 22 focused tests.
+The strict K3 component remains exactly 74 rows. That checkpoint established
+the complete K4 proof receipts but made no admission claim.
+
+## Third implementation tranche — K4 admission and generalized CRT
+
+The selective K4 admission preserves the exact candidate specifications and
+receipts and appends these 16 theorems in order:
+
+```text
+is_lcm_multiple_left
+is_lcm_multiple_right
+is_lcm_least
+is_lcm_symm
+is_lcm_unique
+is_lcm_zero_right
+is_lcm_zero_left
+balanced_bezout_one_implies_coprime
+coprime_product_is_lcm
+is_lcm_scale_nonzero
+balanced_bezout_cancel_gcd
+gcd_zero_inputs
+gcd_lcm_compatible_exists
+lcm_exists_relational
+canonical_lcm_exists_unique
+gcd_lcm_product
+```
+
+All 16 replay twice from the empty context with their frozen proof-DAG
+receipts, reject false endpoint mutations, and contain zero `DNE`. The public
+registry is now 409 entries. The synchronized research catalog is 410 entries,
+with 386 at `checked_m20`. The first-247 model-v3 prefix is unchanged.
+
+The deliberately private K4 remainder has exactly 19 rows: three canonical-gcd
+package rows, five canonical-gcd edge rows, ten LCM convenience rows (L08 plus
+C01--C09), and `gcd_signed_bezout_exists`. Closed candidate evidence for those
+rows is retained, but none is public.
+
+The next M5 layer is isolated in
+[`ha_generalized_crt_congruence_candidate.py`](../peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py)
+and specified in
+[`ha-generalized-crt-rfc-v1.md`](../research/arithmetic-library/ha-generalized-crt-rfc-v1.md).
+Its eight-row stack reuses the exact existing `mod_eq_add_cancel_left`
+specification and adds seven rows for the zero-modulus boundary, right
+cancellation, scale/unscale, comparison of two solutions, gcd-compatibility
+necessity, and the incompatibility obstruction. Two cold closures agree and
+all certificates check constructively with zero `DNE`. The stack remains
+isolated: compatibility sufficiency, construction of a solution, its complete
+class modulo relational LCM, and canonical bounded representatives remain the
+next proof obligations.
 
 ## Release boundary
 

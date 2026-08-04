@@ -29,6 +29,7 @@ forall a b. a = b \/ ~(a = b)
 - [[finite_swap_last_bounded]]
 - [[finite_contains_decidable]]
 - [[beta_prefix_replace_reflect]]
+- [[gcd_lcm_compatible_exists]]
 
 ## Verification record
 

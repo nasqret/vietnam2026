@@ -22,16 +22,16 @@ intuitionistic arithmetic without extending Peano Lab's object language.
   theorem remains isolated.
 - a checked dependency-curried body is weaker than either status.
 
-The current registry has 393 theorems. Nine strict-HA tranche-01 interfaces are
-public. The isolated corpus now has 109 candidates and the campaign records
-118 theorem receipts across 21 candidate modules and 22 focused tests. Its
+The current registry has 409 theorems. Nine strict-HA tranche-01 interfaces
+and 16 K4 gcd/LCM interfaces are public. The campaign evidence now records 126
+theorem receipts: 25 public campaign rows and 101 isolated candidates. Its
 strict-K3 component remains exactly 74 signed representation, normalization,
 arithmetic, natural-scale, and Bezout-bridge rows across 16 modules. The K4
 remainder consists of three canonical-gcd package rows, one signed-gcd client,
-five canonical-gcd edge rows, 17 relational-LCM rows, and nine checked
-gcd--LCM totality/compatibility rows. The definition freeze remains 45 API
-rows over 44 distinct public theorems, there are 56 public references, and the
-catalog remains 394 entries. None of the new gcd/LCM rows is admitted.
+five canonical-gcd edge rows, and ten relational-LCM convenience rows. The
+definition freeze remains 45 API rows over 44 distinct public theorems, there
+are 72 public references, and the catalog has 410 entries, including 386 at
+`checked_m20`.
 
 ## Dependency spine
 
@@ -55,18 +55,20 @@ flowchart TD
   end
   subgraph K4[K4 gcd and LCM clients]
     D --> RG
-    RG[public relational gcd + balanced Bezout] --> CG[canonical gcd package]
-    CG --> GE[canonical gcd edge laws — 5 rows]
-    RG --> SG[K4 signed gcd and Bezout client]
+    RG[public relational gcd + balanced Bezout] --> CG[canonical gcd package — private]
+    CG --> GE[canonical gcd edge laws — 5 private rows]
+    RG --> SG[K4 signed gcd and Bezout client — private]
     SB --> SG
-    RL[relational IsLCM API — 17 rows] --> BF[A–E algebraic bridge]
+    RL[IsLCM: 7 public core + 10 private convenience rows] --> BF[A–E public algebraic bridge]
     RG --> BF
-    BF --> CE[F compatible gcd/LCM existence]
-    CE --> LT[G relational LCM totality]
-    LT --> LU[H unique LCM value]
-    CE --> GP[I gcd–LCM product]
+    BF --> CE[F public compatible gcd/LCM existence]
+    CE --> LT[G public relational LCM totality]
+    LT --> LU[H public unique LCM value]
+    CE --> GP[I public gcd–LCM product]
     LU --> GP
   end
+  GP --> GC[generalized CRT foundation — 8 private rows]
+  GC --> GS[compatibility sufficiency — open]
 ```
 
 The signed representation is parity-interleaved:
@@ -155,15 +157,15 @@ Its closure intentionally reaches the Euclidean division chain; the manifest
 therefore records an explicit `K3 -> K4` layer edge. It does not change the
 strict 74-row K3 digest.
 
-The canonical gcd/LCM checkpoint is now closed at candidate status. The
-five-row
+The canonical gcd/LCM checkpoint is now selectively admitted. The five-row
 [`canonical-gcd edge tranche`](../../peano-lab/py/peano_lab/library/ha_canonical_gcd_edges_candidate.py)
-pins zero, one, and swap functionality. The 17-row
+pins zero, one, and swap functionality and remains private. The 17-row
 [`relational-LCM tranche`](../../peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py)
 implements the universal property, projections, leastness, uniqueness,
 divisibility, product-bound, self/one, and forced-zero laws. Its literal-safe
 expander accepts exactly identifiers and the reviewed literals `0` and `1`;
-zero-left is derived from the direct zero-right theorem by symmetry.
+zero-left is derived from the direct zero-right theorem by symmetry. Exactly
+the seven universal rows L01--L07 are public; L08 and C01--C09 remain private.
 
 The nine-row
 [`gcd--LCM bridge`](../../peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py)
@@ -179,13 +181,24 @@ balanced Bezout + relational gcd
   -> gcd * lcm = input product.
 ```
 
-The compatible-pair certificate has 9,038 nodes at depth 60; the final
+All nine bridge rows A--I are public with their original receipts. The
+compatible-pair certificate has 9,038 nodes at depth 60; the final
 `gcd_lcm_product` certificate has 10,441 nodes at depth 61. Both zero and
 nonzero branches are mutation-audited, every bridge certificate has zero
-`DNE` nodes, and all rows remain unregistered. The complete isolated corpus is
-109 candidates and 118 receipts across 21 modules and 22 focused tests. The
-strict K3 stack remains 74 rows; public registry/reference/freeze/catalog
-counts remain 393/56/45-over-44/394.
+`DNE` nodes, and public replay preserves every frozen proof-DAG digest. The
+registry/catalog counts are 409/410, with 386 catalog rows at `checked_m20`.
+The exact private K4 remainder is 19 rows: three canonical-gcd package rows,
+five edge rows, ten LCM convenience rows, and the signed-gcd client.
+
+The first
+[`generalized-CRT congruence foundation`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py)
+is now closed in isolation. Its eight-row stack reuses the exact existing
+`mod_eq_add_cancel_left` specification and adds seven constructive rows for
+zero modulus, right cancellation, scale/unscale, common-solution comparison,
+gcd-compatibility necessity, and incompatibility obstruction. Two cold
+closures agree and contain zero `DNE`. This is not the full theorem:
+compatibility sufficiency, construction, the solution class modulo relational
+LCM, and canonical bounded representatives remain open.
 
 The independent pair/cell design is now frozen in `HA-K3-PAIR-1` using the
 doubled Cantor polynomial and a successor cell tag. This does not close the
@@ -198,6 +211,7 @@ fixed-length formula schema.
 - `research/arithmetic-library/ha-number-theory-campaign.json`
 - `research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md`
 - `research/arithmetic-library/ha-canonical-gcd-lcm-rfc-v1.md`
+- `research/arithmetic-library/ha-generalized-crt-rfc-v1.md`
 - `research/arithmetic-library/ha-canonical-pair-cell-rfc-v1.md`
 - `PLAN/12_ha_number_theory_campaign.md`
 - `book/arithmetic-library/strict-ha-campaign.md`

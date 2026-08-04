@@ -8314,6 +8314,306 @@
         "existing_name": "coprime_iff_unique_bounded_mod_inverse"
       },
       "blocker": null
+    },
+    {
+      "id": "is_lcm_multiple_left",
+      "title": "A relational LCM is a multiple of its left input",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "A relational lcm is a multiple of its left input.",
+      "peano": {
+        "statement": "forall l a b. ((((exists hlcm_left_factor_projection_left. l = a * hlcm_left_factor_projection_left) /\\ (exists hlcm_right_factor_projection_left. l = b * hlcm_right_factor_projection_left)) /\\ forall hlcm_common_projection_left. (exists hlcm_left_common_projection_left. hlcm_common_projection_left = a * hlcm_left_common_projection_left) -> (exists hlcm_right_common_projection_left. hlcm_common_projection_left = b * hlcm_right_common_projection_left) -> exists hlcm_least_factor_projection_left. hlcm_common_projection_left = l * hlcm_least_factor_projection_left)) -> exists x. l = a * x",
+        "existing_name": "is_lcm_multiple_left"
+      },
+      "blocker": null
+    },
+    {
+      "id": "is_lcm_multiple_right",
+      "title": "A relational LCM is a multiple of its right input",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "A relational lcm is a multiple of its right input.",
+      "peano": {
+        "statement": "forall l a b. ((((exists hlcm_left_factor_projection_right. l = a * hlcm_left_factor_projection_right) /\\ (exists hlcm_right_factor_projection_right. l = b * hlcm_right_factor_projection_right)) /\\ forall hlcm_common_projection_right. (exists hlcm_left_common_projection_right. hlcm_common_projection_right = a * hlcm_left_common_projection_right) -> (exists hlcm_right_common_projection_right. hlcm_common_projection_right = b * hlcm_right_common_projection_right) -> exists hlcm_least_factor_projection_right. hlcm_common_projection_right = l * hlcm_least_factor_projection_right)) -> exists x. l = b * x",
+        "existing_name": "is_lcm_multiple_right"
+      },
+      "blocker": null
+    },
+    {
+      "id": "is_lcm_least",
+      "title": "A relational LCM divides every common multiple",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "A relational lcm divides every common multiple.",
+      "peano": {
+        "statement": "forall l a b c. ((((exists hlcm_left_factor_least. l = a * hlcm_left_factor_least) /\\ (exists hlcm_right_factor_least. l = b * hlcm_right_factor_least)) /\\ forall hlcm_common_least. (exists hlcm_left_common_least. hlcm_common_least = a * hlcm_left_common_least) -> (exists hlcm_right_common_least. hlcm_common_least = b * hlcm_right_common_least) -> exists hlcm_least_factor_least. hlcm_common_least = l * hlcm_least_factor_least)) -> (exists x. c = a * x) -> (exists y. c = b * y) -> exists z. c = l * z",
+        "existing_name": "is_lcm_least"
+      },
+      "blocker": null
+    },
+    {
+      "id": "is_lcm_symm",
+      "title": "Symmetry of relational LCM",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "The expanded relational lcm specification is symmetric.",
+      "peano": {
+        "statement": "forall l a b. ((((exists hlcm_left_factor_symmetry_source. l = a * hlcm_left_factor_symmetry_source) /\\ (exists hlcm_right_factor_symmetry_source. l = b * hlcm_right_factor_symmetry_source)) /\\ forall hlcm_common_symmetry_source. (exists hlcm_left_common_symmetry_source. hlcm_common_symmetry_source = a * hlcm_left_common_symmetry_source) -> (exists hlcm_right_common_symmetry_source. hlcm_common_symmetry_source = b * hlcm_right_common_symmetry_source) -> exists hlcm_least_factor_symmetry_source. hlcm_common_symmetry_source = l * hlcm_least_factor_symmetry_source)) -> ((((exists hlcm_left_factor_symmetry_target. l = b * hlcm_left_factor_symmetry_target) /\\ (exists hlcm_right_factor_symmetry_target. l = a * hlcm_right_factor_symmetry_target)) /\\ forall hlcm_common_symmetry_target. (exists hlcm_left_common_symmetry_target. hlcm_common_symmetry_target = b * hlcm_left_common_symmetry_target) -> (exists hlcm_right_common_symmetry_target. hlcm_common_symmetry_target = a * hlcm_right_common_symmetry_target) -> exists hlcm_least_factor_symmetry_target. hlcm_common_symmetry_target = l * hlcm_least_factor_symmetry_target))",
+        "existing_name": "is_lcm_symm"
+      },
+      "blocker": null
+    },
+    {
+      "id": "is_lcm_unique",
+      "title": "Uniqueness of relational LCM",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "multiple_antisymm"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "The expanded relational lcm specification is single-valued.",
+      "peano": {
+        "statement": "forall l m a b. ((((exists hlcm_left_factor_unique_left. l = a * hlcm_left_factor_unique_left) /\\ (exists hlcm_right_factor_unique_left. l = b * hlcm_right_factor_unique_left)) /\\ forall hlcm_common_unique_left. (exists hlcm_left_common_unique_left. hlcm_common_unique_left = a * hlcm_left_common_unique_left) -> (exists hlcm_right_common_unique_left. hlcm_common_unique_left = b * hlcm_right_common_unique_left) -> exists hlcm_least_factor_unique_left. hlcm_common_unique_left = l * hlcm_least_factor_unique_left)) -> ((((exists hlcm_left_factor_unique_right. m = a * hlcm_left_factor_unique_right) /\\ (exists hlcm_right_factor_unique_right. m = b * hlcm_right_factor_unique_right)) /\\ forall hlcm_common_unique_right. (exists hlcm_left_common_unique_right. hlcm_common_unique_right = a * hlcm_left_common_unique_right) -> (exists hlcm_right_common_unique_right. hlcm_common_unique_right = b * hlcm_right_common_unique_right) -> exists hlcm_least_factor_unique_right. hlcm_common_unique_right = m * hlcm_least_factor_unique_right)) -> l = m",
+        "existing_name": "is_lcm_unique"
+      },
+      "blocker": null
+    },
+    {
+      "id": "is_lcm_zero_right",
+      "title": "LCM with zero on the right",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "multiple_zero"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Zero is an lcm of every natural and zero.",
+      "peano": {
+        "statement": "forall a. ((((exists hlcm_left_factor_zero_right. 0 = a * hlcm_left_factor_zero_right) /\\ (exists hlcm_right_factor_zero_right. 0 = 0 * hlcm_right_factor_zero_right)) /\\ forall hlcm_common_zero_right. (exists hlcm_left_common_zero_right. hlcm_common_zero_right = a * hlcm_left_common_zero_right) -> (exists hlcm_right_common_zero_right. hlcm_common_zero_right = 0 * hlcm_right_common_zero_right) -> exists hlcm_least_factor_zero_right. hlcm_common_zero_right = 0 * hlcm_least_factor_zero_right))",
+        "existing_name": "is_lcm_zero_right"
+      },
+      "blocker": null
+    },
+    {
+      "id": "is_lcm_zero_left",
+      "title": "LCM with zero on the left",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "is_lcm_zero_right",
+        "is_lcm_symm"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Zero is an lcm of zero and every natural.",
+      "peano": {
+        "statement": "forall b. ((((exists hlcm_left_factor_zero_left. 0 = 0 * hlcm_left_factor_zero_left) /\\ (exists hlcm_right_factor_zero_left. 0 = b * hlcm_right_factor_zero_left)) /\\ forall hlcm_common_zero_left. (exists hlcm_left_common_zero_left. hlcm_common_zero_left = 0 * hlcm_left_common_zero_left) -> (exists hlcm_right_common_zero_left. hlcm_common_zero_left = b * hlcm_right_common_zero_left) -> exists hlcm_least_factor_zero_left. hlcm_common_zero_left = 0 * hlcm_least_factor_zero_left))",
+        "existing_name": "is_lcm_zero_left"
+      },
+      "blocker": null
+    },
+    {
+      "id": "balanced_bezout_one_implies_coprime",
+      "title": "Balanced Bezout result one implies coprimality",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "common_divisor_divides_balanced_result",
+        "divisor_one"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "A balanced natural Bezout equation with result one forces the two inputs to be coprime.",
+      "peano": {
+        "statement": "forall a b xp yp xn yn. a * xp + b * yp = 1 + (a * xn + b * yn) -> forall d. (exists u. a = d * u) -> (exists v. b = d * v) -> d = 1",
+        "existing_name": "balanced_bezout_one_implies_coprime"
+      },
+      "blocker": null
+    },
+    {
+      "id": "coprime_product_is_lcm",
+      "title": "The product of coprime naturals is an LCM",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_comm",
+        "gauss_coprime_cancel",
+        "mul_assoc"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "The product of coprime naturals satisfies the universal relational LCM specification.",
+      "peano": {
+        "statement": "forall a b. (forall d. (exists u. a = d * u) -> (exists v. b = d * v) -> d = 1) -> ((((exists hlcm_left_factor_coprime_product. a * b = a * hlcm_left_factor_coprime_product) /\\ (exists hlcm_right_factor_coprime_product. a * b = b * hlcm_right_factor_coprime_product)) /\\ forall hlcm_common_coprime_product. (exists hlcm_left_common_coprime_product. hlcm_common_coprime_product = a * hlcm_left_common_coprime_product) -> (exists hlcm_right_common_coprime_product. hlcm_common_coprime_product = b * hlcm_right_common_coprime_product) -> exists hlcm_least_factor_coprime_product. hlcm_common_coprime_product = a * b * hlcm_least_factor_coprime_product))",
+        "existing_name": "coprime_product_is_lcm"
+      },
+      "blocker": null
+    },
+    {
+      "id": "is_lcm_scale_nonzero",
+      "title": "Nonzero scaling preserves relational LCM",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_assoc",
+        "mul_left_cancel_nonzero"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "A nonzero common left scale preserves the universal relational LCM specification.",
+      "peano": {
+        "statement": "forall k l a b. ~(k = 0) -> ((((exists hscale_left_factor_source. l = a * hscale_left_factor_source) /\\ (exists hscale_right_factor_source. l = b * hscale_right_factor_source)) /\\ forall hscale_common_source. (exists hscale_left_common_source. hscale_common_source = a * hscale_left_common_source) -> (exists hscale_right_common_source. hscale_common_source = b * hscale_right_common_source) -> exists hscale_least_factor_source. hscale_common_source = l * hscale_least_factor_source)) -> ((((exists hscale_left_factor_target. (k * l) = (k * a) * hscale_left_factor_target) /\\ (exists hscale_right_factor_target. (k * l) = (k * b) * hscale_right_factor_target)) /\\ forall hscale_common_target. (exists hscale_left_common_target. hscale_common_target = (k * a) * hscale_left_common_target) -> (exists hscale_right_common_target. hscale_common_target = (k * b) * hscale_right_common_target) -> exists hscale_least_factor_target. hscale_common_target = (k * l) * hscale_least_factor_target))",
+        "existing_name": "is_lcm_scale_nonzero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "balanced_bezout_cancel_gcd",
+      "title": "Cancel a nonzero gcd from balanced Bezout",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_left_cancel_nonzero",
+        "mul_add",
+        "mul_assoc",
+        "mul_one"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Cancel a nonzero common gcd factor from a balanced Bezout equation.",
+      "peano": {
+        "statement": "forall g a b A B xp yp xn yn. ~(g = 0) -> a = g * A -> b = g * B -> a * xp + b * yp = g + (a * xn + b * yn) -> A * xp + B * yp = 1 + (A * xn + B * yn)",
+        "existing_name": "balanced_bezout_cancel_gcd"
+      },
+      "blocker": null
+    },
+    {
+      "id": "gcd_zero_inputs",
+      "title": "A zero gcd forces zero inputs",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_zero_left"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "A zero relational gcd can divide only the zero input pair.",
+      "peano": {
+        "statement": "forall g a b. g = 0 -> ((((exists hag_left_factor_zero_inputs. a = g * hag_left_factor_zero_inputs) /\\ (exists hag_right_factor_zero_inputs. b = g * hag_right_factor_zero_inputs)) /\\ forall hag_divisor_zero_inputs. (exists hag_common_left_zero_inputs. a = hag_divisor_zero_inputs * hag_common_left_zero_inputs) -> (exists hag_common_right_zero_inputs. b = hag_divisor_zero_inputs * hag_common_right_zero_inputs) -> exists hag_greatest_factor_zero_inputs. g = hag_divisor_zero_inputs * hag_greatest_factor_zero_inputs)) -> (a = 0 /\\ b = 0)",
+        "existing_name": "gcd_zero_inputs"
+      },
+      "blocker": null
+    },
+    {
+      "id": "gcd_lcm_compatible_exists",
+      "title": "Compatible gcd and LCM witnesses exist",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "gcd_balanced_bezout_exists",
+        "eq_decidable",
+        "gcd_zero_inputs",
+        "is_lcm_zero_left",
+        "balanced_bezout_cancel_gcd",
+        "balanced_bezout_one_implies_coprime",
+        "coprime_product_is_lcm",
+        "is_lcm_scale_nonzero",
+        "mul_assoc",
+        "mul_comm"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Every pair has compatible relational gcd and lcm witnesses whose product is the product of the inputs, including zero inputs.",
+      "peano": {
+        "statement": "forall a b. exists g l. ((((((exists hag_left_factor_compatible. a = g * hag_left_factor_compatible) /\\ (exists hag_right_factor_compatible. b = g * hag_right_factor_compatible)) /\\ forall hag_divisor_compatible. (exists hag_common_left_compatible. a = hag_divisor_compatible * hag_common_left_compatible) -> (exists hag_common_right_compatible. b = hag_divisor_compatible * hag_common_right_compatible) -> exists hag_greatest_factor_compatible. g = hag_divisor_compatible * hag_greatest_factor_compatible)) /\\ ((((exists hlcm_left_factor_compatible. l = a * hlcm_left_factor_compatible) /\\ (exists hlcm_right_factor_compatible. l = b * hlcm_right_factor_compatible)) /\\ forall hlcm_common_compatible. (exists hlcm_left_common_compatible. hlcm_common_compatible = a * hlcm_left_common_compatible) -> (exists hlcm_right_common_compatible. hlcm_common_compatible = b * hlcm_right_common_compatible) -> exists hlcm_least_factor_compatible. hlcm_common_compatible = l * hlcm_least_factor_compatible))) /\\ g * l = a * b)",
+        "existing_name": "gcd_lcm_compatible_exists"
+      },
+      "blocker": null
+    },
+    {
+      "id": "lcm_exists_relational",
+      "title": "Relational LCM exists",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "gcd_lcm_compatible_exists"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Every pair of naturals has a relational LCM; this is the direct LCM projection of the compatible pair theorem.",
+      "peano": {
+        "statement": "forall a b. exists l. ((((exists hlcm_left_factor_existence. l = a * hlcm_left_factor_existence) /\\ (exists hlcm_right_factor_existence. l = b * hlcm_right_factor_existence)) /\\ forall hlcm_common_existence. (exists hlcm_left_common_existence. hlcm_common_existence = a * hlcm_left_common_existence) -> (exists hlcm_right_common_existence. hlcm_common_existence = b * hlcm_right_common_existence) -> exists hlcm_least_factor_existence. hlcm_common_existence = l * hlcm_least_factor_existence))",
+        "existing_name": "lcm_exists_relational"
+      },
+      "blocker": null
+    },
+    {
+      "id": "canonical_lcm_exists_unique",
+      "title": "Canonical LCM exists uniquely",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "lcm_exists_relational",
+        "is_lcm_unique"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "The relational LCM value exists uniquely; divisibility witnesses themselves are not claimed to be unique.",
+      "peano": {
+        "statement": "forall a b. exists l. (((((exists hlcm_left_factor_unique_chosen. l = a * hlcm_left_factor_unique_chosen) /\\ (exists hlcm_right_factor_unique_chosen. l = b * hlcm_right_factor_unique_chosen)) /\\ forall hlcm_common_unique_chosen. (exists hlcm_left_common_unique_chosen. hlcm_common_unique_chosen = a * hlcm_left_common_unique_chosen) -> (exists hlcm_right_common_unique_chosen. hlcm_common_unique_chosen = b * hlcm_right_common_unique_chosen) -> exists hlcm_least_factor_unique_chosen. hlcm_common_unique_chosen = l * hlcm_least_factor_unique_chosen)) /\\ forall m. ((((exists hlcm_left_factor_unique_compared. m = a * hlcm_left_factor_unique_compared) /\\ (exists hlcm_right_factor_unique_compared. m = b * hlcm_right_factor_unique_compared)) /\\ forall hlcm_common_unique_compared. (exists hlcm_left_common_unique_compared. hlcm_common_unique_compared = a * hlcm_left_common_unique_compared) -> (exists hlcm_right_common_unique_compared. hlcm_common_unique_compared = b * hlcm_right_common_unique_compared) -> exists hlcm_least_factor_unique_compared. hlcm_common_unique_compared = m * hlcm_least_factor_unique_compared)) -> m = l)",
+        "existing_name": "canonical_lcm_exists_unique"
+      },
+      "blocker": null
+    },
+    {
+      "id": "gcd_lcm_product",
+      "title": "The gcd-LCM product identity",
+      "domain": "gcd_coprime",
+      "status": "checked_m20",
+      "dependencies": [
+        "gcd_lcm_compatible_exists",
+        "is_gcd_unique",
+        "is_lcm_unique"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Any relational gcd and LCM pair satisfies the gcd--LCM product identity, by uniqueness from a compatible pair.",
+      "peano": {
+        "statement": "forall g l a b. ((((exists hag_left_factor_product_gcd_assumption. a = g * hag_left_factor_product_gcd_assumption) /\\ (exists hag_right_factor_product_gcd_assumption. b = g * hag_right_factor_product_gcd_assumption)) /\\ forall hag_divisor_product_gcd_assumption. (exists hag_common_left_product_gcd_assumption. a = hag_divisor_product_gcd_assumption * hag_common_left_product_gcd_assumption) -> (exists hag_common_right_product_gcd_assumption. b = hag_divisor_product_gcd_assumption * hag_common_right_product_gcd_assumption) -> exists hag_greatest_factor_product_gcd_assumption. g = hag_divisor_product_gcd_assumption * hag_greatest_factor_product_gcd_assumption)) -> ((((exists hlcm_left_factor_product_lcm_assumption. l = a * hlcm_left_factor_product_lcm_assumption) /\\ (exists hlcm_right_factor_product_lcm_assumption. l = b * hlcm_right_factor_product_lcm_assumption)) /\\ forall hlcm_common_product_lcm_assumption. (exists hlcm_left_common_product_lcm_assumption. hlcm_common_product_lcm_assumption = a * hlcm_left_common_product_lcm_assumption) -> (exists hlcm_right_common_product_lcm_assumption. hlcm_common_product_lcm_assumption = b * hlcm_right_common_product_lcm_assumption) -> exists hlcm_least_factor_product_lcm_assumption. hlcm_common_product_lcm_assumption = l * hlcm_least_factor_product_lcm_assumption)) -> g * l = a * b",
+        "existing_name": "gcd_lcm_product"
+      },
+      "blocker": null
     }
   ]
 }

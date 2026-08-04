@@ -19,7 +19,7 @@ forall g h a b. (((exists x. a = g * x) /\ (exists y. b = g * y)) /\ forall c. (
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[gcd_lcm_product]]
 
 ## Verification record
 

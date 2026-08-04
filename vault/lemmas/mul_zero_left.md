@@ -31,6 +31,7 @@ forall n. 0 * n = 0
 - [[beta_at_self_of_bound]]
 - [[prime_three]]
 - [[beta_half_range_entry_bounds]]
+- [[gcd_zero_inputs]]
 
 ## Verification record
 

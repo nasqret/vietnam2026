@@ -30,6 +30,7 @@ forall n. n * 1 = n
 - [[pow_add]]
 - [[predecessor_square_mod_one]]
 - [[bounded_mod_inverse_unique]]
+- [[balanced_bezout_cancel_gcd]]
 
 ## Verification record
 

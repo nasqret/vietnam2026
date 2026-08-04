@@ -819,9 +819,9 @@ The theorem-ladder extension is tracked independently in
 [`PLAN/10_arithmetic_library.md`](10_arithmetic_library.md). Its first release
 kept the kernel and object language fixed, expanded divisibility and residue
 notions into ordinary formulas, and organized factorization targets by their
-actual dependencies. The reconciled runtime now contains 393 unique checked
+actual dependencies. The reconciled runtime now contains 409 unique checked
 theorems: the 384-theorem quadratic-reciprocity foundation checkpoint followed
-by nine strict-HA canonical remainder/congruence/modular-inverse interfaces.
+by 25 strict-HA canonical, gcd, and LCM interfaces.
 Quotient-remainder existence and uniqueness, relational gcd,
 balanced-natural Bézout, Gauss cancellation, constructive primality search,
 prime-divisor existence, Euclid's lemma, prime unboundedness, CRT, and
@@ -843,10 +843,12 @@ unchanged. The untrusted `use` and live-proof resource gates now admit at most
 This admits shared campaign certificates while preserving the former
 worst-case object count; exact one-past boundaries fail transactionally.
 
-The synchronized catalog has 394 entries: 23 baseline checked, 370
+The synchronized catalog has 410 entries: 23 baseline checked, 386
 post-baseline checked, no planned entries, and one representation-blocked
 conventional integer-coefficient Bézout interface. A separate pinned Lean
-companion checks conventional list-based FTA up to permutation. Current test,
+companion checks conventional list-based FTA up to permutation. The adjacent
+eight-row generalized-CRT foundation is closed but private and does not yet
+prove compatible-system sufficiency. Current test,
 corpus, snapshot, book, vault, and local-browser identifiers are recorded in
 the latest journal checkpoint; production remains untouched.
 

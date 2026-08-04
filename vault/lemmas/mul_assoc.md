@@ -47,6 +47,10 @@ forall n m k. (n * m) * k = n * (m * k)
 - [[pow_add]]
 - [[beta_product_replace_balance]]
 - [[bounded_mod_inverse_unique]]
+- [[coprime_product_is_lcm]]
+- [[is_lcm_scale_nonzero]]
+- [[balanced_bezout_cancel_gcd]]
+- [[gcd_lcm_compatible_exists]]
 
 ## Verification record
 

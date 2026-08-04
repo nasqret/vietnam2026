@@ -54,8 +54,8 @@ The candidate-source SHA-256 remains
 and the unchanged 45-layer profile SHA-256 is
 `b4b2771356c628362b94cf0d4e580ed7857090330fd274eb1bddb89bacfeb3de`.
 
-The development registry currently has 393 entries, so appending the exact
-remaining order would produce 709. The committed 380-entry artifact and the
+The development registry currently has 409 entries, so appending the exact
+remaining order would produce 725. The committed 380-entry artifact and the
 earlier 384-entry dirty-registry statement are historical baselines; the
 artifact's first 380 receipts remain the compatibility prefix that must stay
 stable.
@@ -63,8 +63,10 @@ stable.
 A successful cold WMI replay is necessary evidence, but it will not itself be
 public admission.  No layered QR replay has yet been uploaded or run for the
 current snapshot.  The QR root does not appear in `THEOREMS`, `pa lib`, or the
-catalog snapshot, and the content-addressed Pyodide application manifest has
-deliberately not been regenerated.  Those remain separate release gates.
+catalog snapshot. The content-addressed Pyodide application manifest has been
+regenerated for the current 409-theorem runtime and candidate-source inventory,
+but that packaging operation grants no QR admission. Those remain separate
+release gates.
 
 ## Trust boundary
 

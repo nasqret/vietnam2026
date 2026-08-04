@@ -1,8 +1,9 @@
 # RFC HA-K4-GCD-LCM-1: canonical relational gcd and lcm interface
 
-**Status:** representation and theorem statements frozen; canonical-gcd edge,
-17-row relational-LCM, and nine-row gcd--LCM totality/compatibility tranches
-are closed-checked candidates but remain unadmitted
+**Status:** representation and theorem statements frozen; the seven-row
+universal LCM core L01--L07 and the nine-row gcd--LCM bridge A--I are
+`public_checked`; nineteen reviewed K4 convenience/client candidates remain
+private
 
 **Scope:** HA3/K4 divisibility, gcd, lcm, and their product compatibility
 
@@ -11,12 +12,12 @@ are closed-checked candidates but remain unadmitted
 **Kernel change:** none
 
 This RFC freezes the relational least-common-multiple interface that is dual
-to the repository's existing relational gcd interface, and records the first
+to the repository's existing relational gcd interface, records the first
 closed canonical-gcd boundary and relational-LCM tranches built over that
-interface. It does not register a parser primitive, change the kernel, admit a
-gcd or LCM theorem, or change the campaign manifest. Every displayed predicate
-is conservative surface syntax which must expand to the unchanged first-order
-language before checking.
+interface, and records their later selective public admission. The admission
+adds no parser primitive and changes neither the kernel nor the first-order
+object language. Every displayed predicate remains conservative surface
+syntax which expands before checking.
 
 The words **must**, **must not**, **should**, and **may** are normative within
 this RFC.
@@ -264,15 +265,17 @@ The theorem includes zero inputs. It must be obtained from the universal
 relations and their checked existence/uniqueness theory; it must not be used
 to redefine either relation.
 
-## 6. Closed relational-LCM universal-property tranche
+## 6. Relational-LCM universal-property tranche
 
 The exact source is
 [`ha_relational_lcm_candidate.py`](../../peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py),
 with the focused audit in
 [`test_ha_relational_lcm_candidate.py`](../../peano-lab/py/tests/test_ha_relational_lcm_candidate.py).
-All 17 rows in this section are **closed_checked_candidate**: their
-dependency-curried bodies and deterministic empty-context certificates check,
-but they remain isolated, unregistered, and unadmitted.
+All 17 rows in this section retain their deterministic empty-context receipts.
+The deliberately admitted public surface is exactly L01--L07: the two
+projections, leastness, symmetry, uniqueness, and the two forced-zero
+constructors. L08 and the nine convenience rows remain isolated
+`closed_checked_candidate` results.
 
 The local `is_lcm` expander accepts Peano identifiers and exactly the reviewed
 closed literals `0` and `1` in any of its three argument positions. It rejects
@@ -363,21 +366,23 @@ Two cold closures agree on the ordered 17-row stack digest
 `a314f85fcee6f04ec548f7a5fd724dc67e35e514a4b79241fce4bad7b5aed318`.
 The focused audit also pins dependency-curried body receipts, literal-edge
 statements, a false zero mutation, bounded universal-property semantics, and
-strict registry isolation. The transitive closure contains neither `DNE` nor
-division, remainder, CRT, beta, or a classical axiom. These results establish
+the exact seven-public/ten-private registry boundary. The transitive closure
+contains neither `DNE` nor division, remainder, CRT, beta, or a classical
+axiom. These results establish
 the structural LCM API and forced edge values. Taken alone, these 17 rows do
 not establish general LCM totality; the closed bridge in Section 7 supplies
 that result.
 
-## 7. Closed constructive totality ladder
+## 7. Public constructive totality ladder
 
 The preferred route is now complete. Exact source lives in
 [`ha_lcm_totality_bridge_candidate.py`](../../peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py),
 with the focused audit in
 [`test_ha_lcm_totality_bridge_candidate.py`](../../peano-lab/py/tests/test_ha_lcm_totality_bridge_candidate.py).
-Every row A--I is **closed_checked_candidate**, isolated, unregistered, and
-unadmitted. The route uses no excluded-middle axiom: its zero split is supplied
-by the already checked constructive theorem `eq_decidable`.
+Every row A--I is now **public_checked** with its original factory
+specification and frozen receipt unchanged. The route uses no excluded-middle
+axiom: its zero split is supplied by the already checked constructive theorem
+`eq_decidable`.
 
 The exact factory order and ordered direct dependencies are:
 
@@ -594,7 +599,7 @@ because the final LCM formulas contain only multiplication and quantifiers.
 4. The candidate stack must be replayed cold at least twice and yield the
    same ordered stack digest.
 5. Tests must pin statement hashes, dependency order, binder hygiene, zero
-   fixtures, symmetry, false mutations, and registry isolation.
+   fixtures, symmetry, false mutations, and the reviewed registry boundary.
 6. No `DNE`, excluded-middle axiom, external arithmetic solver, admitted
    lemma, hidden host computation, or trusted theorem name may close an HA
    row. Constructive decidability theorems already proved in HA may be used.
@@ -612,19 +617,21 @@ because the final LCM formulas contain only multiplication and quantifiers.
 |---|---|---|
 | D01 `Dvd` orientation | `frozen_existing` | Matches checked public multiple witnesses; no new theorem admitted here. |
 | D02 `IsGCD` expansion | `frozen_existing` | Matches the reviewed relational gcd API. |
-| D03 `IsLCM` expansion | `representation_frozen` | Exact literal-safe hygienic relation selected; the totality certificate remains nonpublic. |
+| D03 `IsLCM` expansion | `representation_frozen` | Exact literal-safe hygienic relation selected; totality is now public through Row G without adding a primitive symbol. |
 | Result-first argument order | `frozen` | `IsGCD(g,a,b)` and `IsLCM(l,a,b)`. |
 | G01--G05 canonical gcd boundary laws | `closed_checked_candidate` | Exact expanded statements, ordered dependencies, and deterministic empty-context receipts are recorded; all five remain isolated and unadmitted. |
-| Zero convention | `closed_checked_candidate` | L06 proves right-zero directly; L07 derives left-zero by symmetry; value and unique-existence corollaries are closed but unadmitted. |
-| L01--L08 and nine convenience rows | `closed_checked_candidate` | Exact expanded statements, ordered dependencies, and deterministic empty-context receipts are recorded; all 17 remain isolated and unadmitted. |
-| A--E infrastructure | `closed_checked_candidate` | All five algebraic bridge rows have exact expanded statements and deterministic empty-context receipts; none is admitted. |
-| F joint compatible existence | `closed_checked_candidate` | Both the zero and nonzero constructions close; the 9,038-node certificate remains isolated and unadmitted. |
-| G/H LCM totality and unique existence | `closed_checked_candidate` | Totality is projected from F and unique value is packaged with L05; both remain nonpublic. |
-| I gcd--lcm product theorem | `closed_checked_candidate` | The frozen target closes by compatible existence plus gcd/lcm uniqueness; it is not admitted. |
+| Zero convention | `mixed` | L06 proves right-zero directly and L07 derives left-zero by symmetry; both are public. The value and unique-existence convenience corollaries remain private candidates. |
+| L01--L07 universal core | `public_checked` | The two projections, leastness, symmetry, uniqueness, and both forced-zero constructors were admitted with unchanged receipts. |
+| L08 and nine convenience rows | `closed_checked_candidate` | All ten retain exact statements and receipts but remain outside the public registry. |
+| A--E infrastructure | `public_checked` | All five algebraic bridge rows are admitted with their original constructive certificates. |
+| F joint compatible existence | `public_checked` | Both zero and nonzero constructions check in the admitted 9,038-node certificate. |
+| G/H LCM totality and unique existence | `public_checked` | Totality is projected from F and unique value is packaged with L05. |
+| I gcd--lcm product theorem | `public_checked` | The frozen target is public with its 10,441-node certificate unchanged. |
 | Bounded-minimum alternative | `deferred_constructive` | Expressible in native HA; not selected for the first implementation. |
 
-No proof blocker remains in this RFC's candidate scope: LCM totality, unique
-value, compatible gcd/LCM existence, and the product identity all have checked
-empty-context certificates. The remaining boundary is deliberate public
-admission and repository integration. This RFC must not be cited as evidence
-that any of these nine rows is already a public theorem.
+The exact 16-row public surface is L01--L07 followed by A--I. This append-only
+admission raises the public registry to 409 theorems and the research catalog
+to 410 entries, of which 386 have status `checked_m20`. The remaining 19 K4
+candidates are the three canonical-gcd package rows, five canonical-gcd edge
+rows, L08 plus nine LCM convenience rows, and the one signed-gcd client. Their
+closed receipts do not imply admission.

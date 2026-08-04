@@ -45,6 +45,7 @@ from peano_lab.library.theorems import (  # noqa: E402
     FINITE_SUM_THEOREMS,
     GAUSS_SIGN_BRIDGE_THEOREMS,
     GAUSS_HALF_RANGE_THEOREMS,
+    HA_NUMBER_THEORY_K4_GCD_LCM_THEOREMS,
     HA_NUMBER_THEORY_TRANCHE01_THEOREMS,
     MOD5_THEOREMS,
     PARITY_THEOREMS,
@@ -84,6 +85,8 @@ THEOREM_SOURCES = (
     PY_ROOT / "peano_lab" / "library" / "ha_canonical_congruence_candidate.py",
     PY_ROOT / "peano_lab" / "library" / "wilson_inverse_point_candidate.py",
     PY_ROOT / "peano_lab" / "library" / "ha_modular_inverse_candidate.py",
+    PY_ROOT / "peano_lab" / "library" / "ha_relational_lcm_candidate.py",
+    PY_ROOT / "peano_lab" / "library" / "ha_lcm_totality_bridge_candidate.py",
 )
 
 
@@ -365,7 +368,11 @@ def build_payloads() -> dict[str, str]:
         )
     }
     ha_number_theory_campaign_names = {
-        spec.name for spec in HA_NUMBER_THEORY_TRANCHE01_THEOREMS
+        spec.name
+        for spec in (
+            HA_NUMBER_THEORY_TRANCHE01_THEOREMS
+            + HA_NUMBER_THEORY_K4_GCD_LCM_THEOREMS
+        )
     }
 
     for index, spec in enumerate(THEOREMS):

@@ -10,7 +10,8 @@ the zero-input branch retained explicitly.  Rows G--I project relational LCM
 totality, package its unique value, and transfer the compatible product law to
 arbitrary relational gcd and LCM witnesses.  Compound terms pass through a
 parser-validated expander before interpolation; no raw term string is trusted.
-Every candidate is dependency-curried, unregistered, and unadmitted.
+Every row is dependency-curried and constructively proved.  The public
+registry admits all nine rows through its explicit K4 admission block.
 """
 
 from __future__ import annotations

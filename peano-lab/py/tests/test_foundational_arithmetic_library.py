@@ -315,7 +315,7 @@ def test_library_snapshot_records_self_contained_cut_representation() -> None:
     }
     assert metrics["theorems_by_layer"] == {
         "foundational_extension": 212,
-        "ha_number_theory_campaign": 9,
+        "ha_number_theory_campaign": 25,
         "legacy_core": 23,
         "published_mod5_unique": 12,
         "quadratic_residue_foundation": 137,
@@ -334,6 +334,22 @@ def test_library_snapshot_records_self_contained_cut_representation() -> None:
         "coprime_bounded_mod_inverse",
         "mod_inverse_implies_coprime",
         "coprime_iff_unique_bounded_mod_inverse",
+        "is_lcm_multiple_left",
+        "is_lcm_multiple_right",
+        "is_lcm_least",
+        "is_lcm_symm",
+        "is_lcm_unique",
+        "is_lcm_zero_right",
+        "is_lcm_zero_left",
+        "balanced_bezout_one_implies_coprime",
+        "coprime_product_is_lcm",
+        "is_lcm_scale_nonzero",
+        "balanced_bezout_cancel_gcd",
+        "gcd_zero_inputs",
+        "gcd_lcm_compatible_exists",
+        "lcm_exists_relational",
+        "canonical_lcm_exists_unique",
+        "gcd_lcm_product",
     ]
     assert [source["path"] for source in catalog["theorem_sources"]] == [
         "peano-lab/py/peano_lab/library/theorems.py",
@@ -359,6 +375,8 @@ def test_library_snapshot_records_self_contained_cut_representation() -> None:
         "peano-lab/py/peano_lab/library/ha_canonical_congruence_candidate.py",
         "peano-lab/py/peano_lab/library/wilson_inverse_point_candidate.py",
         "peano-lab/py/peano_lab/library/ha_modular_inverse_candidate.py",
+        "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
+        "peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py",
     ]
     assert metrics["theorems_with_cut_nodes"] == sum(
         row["cut_nodes"] > 0 for row in rows

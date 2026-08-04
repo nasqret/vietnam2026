@@ -151,6 +151,18 @@ THEOREM_SOURCES = (
     / "peano_lab"
     / "library"
     / "ha_modular_inverse_candidate.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "ha_relational_lcm_candidate.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "ha_lcm_totality_bridge_candidate.py",
 )
 OUTPUT = REPO / "book" / "arithmetic-library" / "theorem-atlas.md"
 

@@ -4216,3 +4216,36 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   trees. The 2,493-file HTML tree contains 87,206,047 bytes and has SHA-256
   `1468972f63c3c9122fb0341559ac31f31e602589801381e60cb94e3b5d916472`.
   No visual click-through, public admission, push, or deployment is claimed.
+
+## 2026-08-04 — Selective K4 admission and generalized-CRT foundation
+
+- Deliberately admitted the exact seven-row universal LCM surface
+  `is_lcm_multiple_left`, `is_lcm_multiple_right`, `is_lcm_least`,
+  `is_lcm_symm`, `is_lcm_unique`, `is_lcm_zero_right`, and
+  `is_lcm_zero_left`, followed by all nine bridge rows
+  `balanced_bezout_one_implies_coprime`, `coprime_product_is_lcm`,
+  `is_lcm_scale_nonzero`, `balanced_bezout_cancel_gcd`, `gcd_zero_inputs`,
+  `gcd_lcm_compatible_exists`, `lcm_exists_relational`,
+  `canonical_lcm_exists_unique`, and `gcd_lcm_product`.
+- Public replay preserves all 16 isolated factory specifications and frozen
+  proof-DAG receipts. Two cold passes agree, nearby false endpoints are
+  rejected, and every admitted certificate contains zero DNE. The focused
+  tranche/admission/LCM suite passes 27 tests. The append-only registry now
+  has 409 entries; the catalog has 410, including 386 `checked_m20` rows.
+- Retained exactly 19 private K4 candidates: three canonical-gcd package
+  rows, five canonical-gcd edge rows, LCM row L08 plus convenience rows
+  C01--C09, and `gcd_signed_bezout_exists`. Their closed receipts remain
+  evidence, not admission.
+- Closed the first generalized-CRT foundation as eight isolated candidates.
+  `mod_eq_add_cancel_left` is reused byte-for-byte from its existing factory;
+  the seven new rows are `mod_eq_zero_iff_eq`,
+  `mod_eq_add_cancel_right`, `mod_eq_scale`,
+  `mod_eq_unscale_nonzero`, `crt_solution_pair_congruent`,
+  `crt_common_solution_implies_gcd_compatible`, and
+  `crt_incompatibility_obstructs_solution`.
+- The last two rows prove respectively that any common solution forces
+  compatibility modulo a relational gcd and that incompatibility obstructs
+  every solution. All eight close constructively with zero DNE, and the
+  focused six-test audit passes. The converse construction, full solution
+  class modulo relational LCM, canonical representative, finite lifting,
+  admission, commit, push, and deployment remain separate and unclaimed.
