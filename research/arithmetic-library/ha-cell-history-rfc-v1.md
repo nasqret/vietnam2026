@@ -446,15 +446,19 @@ that lists, lookup, folds, or finite CRT have been admitted.
 
 ## 8. Next batch after the ten-item gate
 
-The next versioned RFC should add, in this order:
+The follow-on
+[`HA-K3B-LISTAT-1`](ha-cell-list-lookup-rfc-v1.md) now freezes the exact
+outer-head `ListAt` definition and its ten-deliverable proof architecture.
+Only that definition and its lightweight structural/semantic evidence exist
+at the current checkpoint; no lookup theorem is body-checked or closed. Its
+first proof obligation is a strengthened history extension that exposes
+pointwise preservation of the old beta prefix. After the lookup equations,
+existence, functionality, representation independence, and list
+extensionality close, later RFCs should add:
 
-1. `ListAt` at the head and at a successor index;
-2. lookup existence below length;
-3. lookup functionality;
-4. list extensionality from equal length and pointwise lookup;
-5. interoperability between reverse cells and the legacy beta value surface;
-6. list append/restriction and representation-independent induction; and
-7. `Product` and `Sum` folds over `CellListLen` data.
+1. interoperability between reverse cells and the legacy beta value surface;
+2. list append/restriction and representation-independent induction; and
+3. `Product` and `Sum` folds over `CellListLen` data.
 
 Only after that API closes should K6 finite combinatorics or M4 finite CRT be
 rebased onto canonical cell lists.  Existing beta-coded finite-fold theorems

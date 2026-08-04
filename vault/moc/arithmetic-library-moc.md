@@ -90,6 +90,17 @@ K3 and the unchanged campaign JSON remain exactly 96 rows/21 modules and 95
 public references/121 private candidates/169 receipts. The separate light
 gate is `make ha-k3b-cell-history-check`.
 
+The follow-on
+[`HA-K3B-LISTAT-1`](../../research/arithmetic-library/ha-cell-list-lookup-rfc-v1.md)
+is currently surface-frozen only. It indexes from the outer head using
+`j + S i = l`, with exact witnesses `l b c j t u`. Its hygienic expansion is
+3,331 characters, 54 formula constructors, and 210 PA AST nodes, SHA-256
+`b83d91b6ec8e6b83fe637e1533c72beef54c7e7a4b41f1518bce8785cc9f11ce`;
+seven focused tests pass. No lookup theorem is body-checked or closed. The
+first obligation is `cell_history_extend_preserves_prefix`, because the
+existing history extension hides the decoded-prefix preservation map. Public
+and campaign counts remain unchanged.
+
 ## Design and trust
 
 - [[quadratic-reciprocity-moc]]

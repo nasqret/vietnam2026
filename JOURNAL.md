@@ -4741,3 +4741,22 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   unregistered, unadmitted `closed_checked_candidate` evidence. The campaign
   JSON is unchanged at 95 public references, 121 private candidates, and 169
   receipts; strict K3 remains 96 rows across 21 modules.
+
+## 2026-08-04 — K3B outer-head lookup surface frozen
+
+- Added `HA-K3B-LISTAT-1` with the canonical reverse-history lookup equation
+  `j + S i = l`, so index zero denotes the outermost head. The exact witness
+  order is `l b c j t u` and raw beta-code equality remains hidden.
+- The fully expanded unchanged-PA surface is 3,331 characters, 54 formula
+  constructors, and 210 AST nodes with SHA-256
+  `b83d91b6ec8e6b83fe637e1533c72beef54c7e7a4b41f1518bce8785cc9f11ce`;
+  all seven focused hygiene and small-model checks pass.
+- Froze a ten-deliverable ladder through equations, existence, functionality,
+  representation independence, and extensionality. The dependency review
+  found one necessary first lemma: `cell_history_extend_preserves_prefix`.
+  The old extension result proves existence of a new history but intentionally
+  hides the pointwise map needed to lift an old lookup.
+- This is a design checkpoint only. No lookup theorem is body-checked, closed,
+  registered, admitted, or added to campaign JSON. The light gate is
+  `make ha-k3b-list-lookup-check`; heavy closure will run on WMI after bodies
+  exist.

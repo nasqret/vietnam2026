@@ -278,6 +278,21 @@ unregistered, and unadmitted. Consequently strict K3 remains 96 rows across
 private candidates, and 169 receipts. The light local audit is
 `make ha-k3b-cell-history-check`, separate from the heavy campaign target.
 
+## K3B ListAt design checkpoint
+
+[`HA-K3B-LISTAT-1`](../../research/arithmetic-library/ha-cell-list-lookup-rfc-v1.md)
+freezes only the canonical lookup surface and its proof dependency order.
+Outer-head index `i` selects construction edge `j` through
+`j + S i = l`; existential witnesses are ordered `l b c j t u`. The full PA
+expansion has 3,331 characters, 54 formula constructors, 210 AST nodes, and
+SHA-256
+`b83d91b6ec8e6b83fe637e1533c72beef54c7e7a4b41f1518bce8785cc9f11ce`.
+Seven focused checks pass. No lookup theorem is body-checked, closed, or
+admitted. Before successor lookup introduction, the campaign must prove
+`cell_history_extend_preserves_prefix` to expose the pointwise beta-prefix
+map hidden by the current existential extension contract. The light design
+gate is `make ha-k3b-list-lookup-check`.
+
 ## Repository anchors
 
 - `research/arithmetic-library/ha-number-theory-campaign.json`
@@ -286,6 +301,7 @@ private candidates, and 169 receipts. The light local audit is
 - `research/arithmetic-library/ha-generalized-crt-rfc-v1.md`
 - `research/arithmetic-library/ha-canonical-pair-cell-rfc-v1.md`
 - `research/arithmetic-library/ha-cell-history-rfc-v1.md`
+- `research/arithmetic-library/ha-cell-list-lookup-rfc-v1.md`
 - `PLAN/12_ha_number_theory_campaign.md`
 - `book/arithmetic-library/strict-ha-campaign.md`
 

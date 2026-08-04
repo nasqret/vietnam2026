@@ -198,9 +198,9 @@ with `m != 0` on totality statements.
 
 - [x] Select the doubled-Cantor pair and successor-tagged cell representation
       in `HA-K3-PAIR-1`, independently of CRT and beta coding.
-- [ ] Select an honest computation-trace representation before freezing a
-      uniform variable-length `ListValid` or `ListAt`; pairing alone only
-      supplies fixed-length generated schemas.
+- [x] Select the reverse beta-backed `CellHistory` computation-trace
+      representation after K4/M3; pairing alone still supplies only
+      fixed-length generated schemas inside strict K3.
 - [ ] Write and review the remaining list and finite-map RFCs. The independent
       signed-integer and pair/cell components are now selected.
 - [x] Close the literal pair constructor, doubled-triangular shell arithmetic,
@@ -752,6 +752,29 @@ remain private, unregistered, and unadmitted. The lightweight local target is
 target. Strict K3 remains 96 rows across 21 modules, and the campaign JSON
 remains unchanged at 95 public references, 121 private candidates, and 169
 receipts.
+
+### K3B ListAt design checkpoint (SURFACE-FROZEN only)
+
+`HA-K3B-LISTAT-1` freezes an outer-head `ListAt(z,i,a)` surface over the
+closed private reverse histories. The selected edge satisfies
+`j + S i = l`, and the exact existential witness order is `l b c j t u`.
+The fully expanded surface has 3,331 characters, 54 formula constructors,
+210 PA AST nodes, free variables exactly `(z,i,a)`, and SHA-256
+`b83d91b6ec8e6b83fe637e1533c72beef54c7e7a4b41f1518bce8785cc9f11ce`.
+Seven focused tests check hygiene, alpha-equivalence, registry isolation, and
+nil through three-cell models.
+
+The ten-deliverable RFC orders prefix-preserving history extension before the
+head/successor equations, domain and external bounds, lookup existence and
+functionality, history-witness independence, and extensionality. The existing
+`cell_history_extend` conclusion is deliberately opaque and does not expose
+the beta-prefix transport needed by successor introduction; therefore
+`cell_history_extend_preserves_prefix` is the first proof obligation. No
+lookup theorem is yet body-checked, closed, registered, or admitted. Public
+runtime/catalog and campaign accounting remain 432/433 and 95/121/169;
+strict K3 remains 96 rows/21 modules. The lightweight design gate is
+`make ha-k3b-list-lookup-check`. The Book, explorer, catalog, campaign JSON,
+and public snapshots remain untouched until closure/admission review.
 
 ## Release boundary
 

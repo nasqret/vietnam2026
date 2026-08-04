@@ -29,6 +29,9 @@ arithmetic library. Start with:
 - [`ha-cell-history-rfc-v1.md`](ha-cell-history-rfc-v1.md): the post-K4/M3
   reverse beta-coded cell-history definitions and quarantined ten-obligation
   list-length ladder;
+- [`ha-cell-list-lookup-rfc-v1.md`](ha-cell-list-lookup-rfc-v1.md): the
+  surface-frozen outer-head `ListAt` relation, its extensional ten-deliverable
+  ladder, and the prefix-preservation obligation that precedes lookup proofs;
 - [`../../PLAN/12_ha_number_theory_campaign.md`](../../PLAN/12_ha_number_theory_campaign.md):
   the repository execution plan and first canonical-interface tranche.
 
@@ -102,6 +105,17 @@ private, unregistered, unadmitted `closed_checked_candidate` evidence.
 Strict K3 remains 96 rows across 21 modules, while the unchanged campaign JSON
 remains 95 public references, 121 private candidates, and 169 receipts. Run
 the separate lightweight gate with `make ha-k3b-cell-history-check`.
+
+The follow-on `HA-K3B-LISTAT-1` checkpoint currently freezes only the
+hygienic `ListAt(z,i,a)` surface and proof architecture. Its outer-head index
+uses `j + S i = l` with witness order `l b c j t u`; the full expansion has
+3,331 characters, 54 formula constructors, 210 PA AST nodes, and SHA-256
+`b83d91b6ec8e6b83fe637e1533c72beef54c7e7a4b41f1518bce8785cc9f11ce`.
+Seven focused tests cover hygiene and nil through three-cell models. No lookup
+theorem is body-checked or closed. The first proof obligation is
+`cell_history_extend_preserves_prefix`, because the existing opaque extension
+contract does not expose transport of the old beta prefix. Run the separate
+surface gate with `make ha-k3b-list-lookup-check`.
 
 The K4
 [`signed-gcd client`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)

@@ -2117,3 +2117,14 @@
   admission is deliberately unperformed. Every row remains private,
   unregistered, and unadmitted. Strict K3 stays 96 rows/21 modules and the
   unchanged campaign JSON stays 95 public/121 candidates/169 receipts.
+- **K3B `ListAt` surface freeze (2026-08-04):**
+  [`HA-K3B-LISTAT-1`](research/arithmetic-library/ha-cell-list-lookup-rfc-v1.md)
+  selects outer-head lookup through `j + S i = l`, with normative witnesses
+  `l b c j t u`. The hygienic expansion is 3,331 characters, 54 formula
+  constructors, 210 PA AST nodes, and SHA-256
+  `b83d91b6ec8e6b83fe637e1533c72beef54c7e7a4b41f1518bce8785cc9f11ce`;
+  seven focused tests pass. This is surface-frozen only: no lookup theorem is
+  body-checked or closed. `cell_history_extend_preserves_prefix` must precede
+  successor introduction because the current extension theorem hides the old
+  beta-prefix transport. Runtime/catalog, campaign accounting, and strict K3
+  remain exactly 432/433, 95/121/169, and 96 rows/21 modules.

@@ -20,9 +20,9 @@ PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 # This path is a deletion target in `stage-peano`; command-line assignments
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
-override PEANOAPPID := a-e3e8b2469337
+override PEANOAPPID := a-d1dc8255d0b3
 
-.PHONY: help book book-atlas book-proof-explorer lean lean-fta ha-number-theory-check ha-k3b-cell-history-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
+.PHONY: help book book-atlas book-proof-explorer lean lean-fta ha-number-theory-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
 	deploy clean
 
@@ -35,6 +35,7 @@ help:
 	@echo "  make lean-fta     build & exact-axiom-check the Lean FTA companion"
 	@echo "  make ha-number-theory-check  validate strict-HA admission, gcd, and signed normalization tranches"
 	@echo "  make ha-k3b-cell-history-check  run the lightweight private K3B RFC/body checks"
+	@echo "  make ha-k3b-list-lookup-check  run the surface-only private K3B ListAt checks"
 	@echo "  make lab-serve    serve lab-lambda locally on :8001"
 	@echo "  make peano-serve serve the staged Peano Lab locally on :8002"
 	@echo "  make peano-training-dashboard  observe WMI job $(PEANO_TRAIN_JOB) on :$(PEANO_TRAIN_DASHBOARD_PORT)"
@@ -132,6 +133,13 @@ ha-k3b-cell-history-check:
 		tests/test_ha_cell_list_length_functional_candidate.py \
 		tests/test_ha_cell_list_length_bound_candidate.py \
 		tests/test_ha_cell_list_length_total_candidate.py
+
+# Deliberately surface-only: no lookup theorem body or closed certificate is
+# claimed by this design-freeze gate.
+ha-k3b-list-lookup-check:
+	python3 -m pytest -q scripts/test_verify_ha_cell_list_lookup_rfc.py
+	cd peano-lab/py && python3 -m pytest -q \
+		tests/test_ha_cell_list_lookup_surface_candidate.py
 
 lab-serve:
 	@echo "→ http://localhost:8001/  (Ctrl-C to stop)"
