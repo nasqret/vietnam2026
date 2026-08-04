@@ -24,6 +24,13 @@ benchmark, construct the strongest symbolic baseline, build checked macro
 data, run the model/ablation ladder, execute one matched-compute final, and
 release enough evidence for independent reproduction.
 
+H0 completed on 2026-08-04. Its retained report is
+`artifacts/peano-hydra/h0-validation-v2.json`, SHA-256
+`55c60502b2229f4420bd4557058842bebb582f491739e82a6dae06de5b803fdb`.
+The earlier v1 is provisional H0.1/H0.2 evidence and is superseded for the
+complete-H0 claim.
+H1 remains open; no sealed benchmark or LLM-advantage result exists.
+
 H0 freezes the [[peano-hydra-semantic-profile]]: closed intuitionistic PA,
 PA1--PA6, unrestricted induction, no classical checker, no decision fragment,
 and only `proved | unknown`. Exact [[peano-hydra-result-evidence]] requires a

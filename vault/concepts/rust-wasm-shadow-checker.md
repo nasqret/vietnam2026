@@ -16,9 +16,9 @@ logic modes.
 
 The raw WebAssembly wrapper has no third-party dependency or imported host
 function. It owns the input allocation and never dereferences a caller-owned
-pointer. The underlying Rust core forbids unsafe code. Fixed-width index
-headroom prevents native 64-bit and wasm32 arithmetic from disagreeing near
-the wire boundary.
+pointer. The underlying Rust core forbids unsafe code. Within the registered
+portable envelope, fixed-width index headroom prevents native 64-bit and
+wasm32 arithmetic from disagreeing near the wire boundary.
 
 This is cross-implementation evidence under the [[de-bruijn-criterion]], not
 a second theorem authority. Traps and timeouts are isolated availability

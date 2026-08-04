@@ -322,10 +322,12 @@ complete head declaration and capability environment. Oversized theorems are
 rejected before semantic parsing. None of these checks makes the policy trusted;
 they prevent a sound proof from carrying false experimental provenance.
 
-This freezes H0.1a, not H0. H0.1b must still close the exact result schema. The
-pilot also lacks certificate hashes and depths, kernel identity, closed evidence
-hashes, raw provider calls, and resource records. H0.2 independent
-reference/conformance work and H0.3 typed macros remain open.
+At the H0.1a freeze this was not yet H0: H0.1b still had to close the exact
+result schema, while H0.2 reference/conformance work and H0.3 typed macros
+remained open. The pilot also lacked certificate hashes and depths, kernel
+identity, closed evidence hashes, raw provider calls, and resource records.
+The following sections describe how those H0 gates were closed; the historical
+pilot itself remains comparison-ineligible.
 
 ### Closing the evidence boundary
 
@@ -501,6 +503,26 @@ that later library growth cannot leak into the campaign. H0 proves that the
 meaning and proof boundary can be reproduced before those experimental choices
 are sealed.
 
+The retained run from clean commit
+`26c2503b36c6884bfbfa6dabd1494bbda49d8926` passed. Both 384-theorem cold
+replays produced root
+`fae19fad55c416ae7b695107390c1c733d6740fe63d10cf0efed127f5801b9d2`.
+The 1,024 positives, 1,024 wrong-target pairs, and ten artifact mutations form
+2,058 cross-language cases; Lean agreed on all of them. Rust classified 2,047
+as portable and eleven outside its envelope. WASM classified 1,790 as portable
+and 268 outside its stricter envelope. No portable implementation disagreed.
+The three translation/negative-evidence boundary mutations and all nine
+kernel/original-goal/transaction regressions also passed. H0.3 contributes
+seven content-rooted action fixtures; pinned deterministic accepted and
+rollback traces; exact adapter, configuration, request, call, response, and
+certificate preimages for a Dispatch that freshly proves the original goal;
+and an exact 110-test transcript. The 3,484,230-byte canonical report is
+`artifacts/peano-hydra/h0-validation-v2.json`, SHA-256
+`55c60502b2229f4420bd4557058842bebb582f491739e82a6dae06de5b803fdb`.
+Its RSS, wall-time, and pytest-duration observations are not stable semantic
+identities. The older v1 file is provisional H0.1/H0.2 evidence, not a
+complete-H0 report.
+
 ### The first functional plumbing test
 
 The repository now contains a provider-neutral bootstrap in
@@ -522,9 +544,11 @@ The control exhausts at the root. The hybrid reproduces the 13-command route,
 then a fresh retained-trace replay checks its 180-node certificate against the
 original formula. A related mutated statement activates none of the recorded
 macro states and remains `unknown`; that is transcript non-reuse, not a
-non-theorem certificate. The current profile-bound deterministic evidence is
-committed as `artifacts/peano-hydra/teacher-oracle-pilot-v2.json`. Historical
-v1 remains byte-pinned as explicitly pre-profile evidence.
+non-theorem certificate. The current profile-v2/result-schema-bound
+deterministic evidence is committed as
+`artifacts/peano-hydra/teacher-oracle-pilot-v3.json`. Historical v1 remains
+byte-pinned as explicitly pre-profile evidence, and v2 remains the immutable
+profile-v1 regression.
 
 This result is useful and deliberately modest. It proves that portfolio
 quotas, exact-state gating, public tactics, proposal provenance, independent

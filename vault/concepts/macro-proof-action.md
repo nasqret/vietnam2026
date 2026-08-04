@@ -7,7 +7,8 @@ tags: [peano-lab, tactics, proof-search, llm]
 
 A **macro proof action** is a typed, canonical proposal for a high-level proof
 choice. Hydra version 1 permits `Use`, `Cut`, `Witness`, `Induct`, `Rewrite`,
-`Split`, and bounded `Dispatch`.
+`Split`, and bounded `Dispatch`. Its semantic SHA-256 is
+`b5fef1ea1b85251ab7f0b8c111cb37e789f96f20771665b4f0dc8b746400552c`.
 
 This is a transport protocol, not a second proof language. Every macro compiles
 deterministically to public Peano Lab tactics and/or a bounded untrusted solver

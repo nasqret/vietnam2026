@@ -30,6 +30,19 @@ verifier identities; and checks the source tree again at the end.
 This is H0 semantic evidence, not H1's immutable [[library-epoch]] or sealed
 benchmark. H1 still owns genealogy, masks, and evaluation partitions.
 
+The retained H0 run passed from clean commit
+`26c2503b36c6884bfbfa6dabd1494bbda49d8926`. Its two cold roots are both
+`fae19fad55c416ae7b695107390c1c733d6740fe63d10cf0efed127f5801b9d2`.
+Lean agreed on all 2,058 original/wrong-target/mutation artifact cases. Rust
+agreed on 2,047 portable cases and classified eleven outside its registered
+envelope; WASM agreed on 1,790 portable cases and classified 268 outside its
+envelope. No implementation disagreed in-envelope. The report also retains
+seven macro fixtures, accept/rollback traces, Dispatch hash preimages with a
+fresh original-goal kernel check, and 110 focused macro tests. The canonical
+report is `artifacts/peano-hydra/h0-validation-v2.json`, SHA-256
+`55c60502b2229f4420bd4557058842bebb582f491739e82a6dae06de5b803fdb`.
+Report v1 is provisional H0.1/H0.2 evidence only.
+
 ## Related
 
 - [[peano-hydra]]

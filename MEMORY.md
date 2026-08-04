@@ -246,13 +246,21 @@
   critical frontiers through macros compiled to public Peano commands. The H5
   headline compares symbolic `S`, non-generative `S+R`, and full Hydra under
   matched resources; teacher-oracle DEV pilots and the historical four-goal
-  smoke make no model or performance claim. H0.1a freezes semantic profile
-  `peano-lab-ha-intuitionistic-v1`, SHA-256
-  `058b1644b066967919dae092e5e562b8845e4dd8415fff31d7cd209d51bc9e43`:
-  closed intuitionistic PA with unrestricted induction, `proved | unknown`,
-  no decision fragment, and no `not_theorem`. Its operational target preflight
-  binds 8,192 Unicode code points and decimal numerals through 256 while
-  explicitly making no decision-resource claim. The provider-neutral core now
+  smoke make no model or performance claim. H0 completed 2026-08-04. Active
+  semantic profile `peano-lab-ha-intuitionistic-v2`, SHA-256
+  `4f2713e6a21e6261bbefe5991ef545e6356807e7042c6b2c7c07183e142c3b4b`,
+  freezes closed intuitionistic PA with unrestricted induction,
+  `proved | unknown`, no decision fragment, and no `not_theorem`; historical
+  profile v1 remains immutable. Result schema v1 freezes exact checked
+  evidence and hash preimages at digest
+  `cf1caf1c867ddfbe3c247e42a18b730ea6790269718170a51f9733d5a7a36b26`.
+  Its operational target preflight binds 8,192 Unicode code points and decimal
+  numerals through 256 while explicitly making no decision-resource claim.
+  Macro protocol v1, digest
+  `b5fef1ea1b85251ab7f0b8c111cb37e789f96f20771665b4f0dc8b746400552c`,
+  compiles typed actions to public commands; isolated `Dispatch` status remains
+  untrusted and every accepted closure receives fresh original-goal replay.
+  The provider-neutral core now
   composes identified fixed, null, and profile-replayed recorded heads through
   fixed quotas and exact-state gates. A legacy Qwen prompt is rejected until a
   future prompt contract exposes the profile identity honestly. Search
@@ -260,14 +268,18 @@
   another fresh replay at publication. Its deterministic teacher-oracle pilot has a symbolic-only control
   (`exhausted`), a hybrid replay of the known 13-command/180-node proof
   (`proof`, kernel checked), and a mutated-transcript integrity lane
-  (`exhausted`, therefore `unknown`). Historical pilot v1 remains immutable
-  pre-profile evidence; profile-bound pilot v2 is explicitly plumbing evidence,
-  not model capability or H0/H5 completion. Every
-  surface-macro-v0 row is comparison-ineligible until raw model/resource
-  evidence, exact profile-result schemas and hash preimages, provider
-  attestations, and genuine frontier detection exist. The profile labels its
-  current evidence contract `required-field-draft`; H0.1b, H0.2, and H0.3
-  remain open.
+  (`exhausted`, therefore `unknown`). Historical pilots v1/v2 remain immutable;
+  profile-v2 pilot v3 is explicitly plumbing evidence, not model capability or
+  an H5 result. Every surface-macro-v0 row remains comparison-ineligible until
+  raw model/resource evidence, provider attestations, and genuine frontier
+  detection exist. Retained H0 report
+  `artifacts/peano-hydra/h0-validation-v2.json`, SHA-256
+  `55c60502b2229f4420bd4557058842bebb582f491739e82a6dae06de5b803fdb`,
+  records two identical 384-theorem cold roots, 1,024 positives, exact Lean
+  agreement, mutation rejection, green trust-boundary regressions, and exact
+  H0.3 macro/Dispatch/rollback evidence from clean commit
+  `26c2503b36c6884bfbfa6dabd1494bbda49d8926`. Report v1 is provisional and
+  superseded. H1 epoch and benchmark sealing remain open.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
   Tarski–Grothendieck set theory. The same statements are proved in all four to *show* the foundations.
 - **Local tooling present:** Lean/`elan`/`lake` ✓ (proofs verifiable here), `jupyter-book` ✓, `gh` (as

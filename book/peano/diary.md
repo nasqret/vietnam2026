@@ -3227,8 +3227,93 @@ The final typed macro protocol has semantic SHA-256
 `b5fef1ea1b85251ab7f0b8c111cb37e789f96f20771665b4f0dc8b746400552c`
 and document SHA-256
 `6f6920d2d952251170733674a3af8da09926f4faf19215317a32bc0317d4a482`.
-The focused macro suite passed 110 tests and the complete Hydra group passed
-253. We deliberately stopped one monolithic Peano run after it entered the
+The focused macro suite passed 110 tests and the final complete Hydra inventory
+contains 259 tests, all covered by the green release shards. We deliberately
+stopped one monolithic Peano run after it entered the
 known long-tail bottleneck; it exposed only stale CI runtime inventory. The
 inventory was regenerated, its exact test passed, and the final repository
 gate will use the documented eight shards instead of repeating that bottleneck.
+
+### The retained H0 replay passed
+
+We committed the implementation first, because a report from a dirty tree
+cannot bind its own source identity. From clean commit
+`0bd8da9beb6cb506800da884547f8da3b86c4867`, the two fresh workers replayed
+all 384 public theorems and produced the same root:
+
+```text
+fae19fad55c416ae7b695107390c1c733d6740fe63d10cf0efed127f5801b9d2
+```
+
+The retained corpus has 1,024 distinct positives: 384 public theorems, 256
+closed numeral reflexivities, 256 universally quantified additive
+reflexivities, and 128 universally quantified multiplicative reflexivities.
+Each is paired with a wrong-target certificate rejection. Ten artifact cases
+exercise proof rules, scope, substitution, induction, DNE, strict decoding,
+and resource-envelope probes. Thus the cross-language table has 2,058 cases.
+The pinned Lean reference agreed on all 2,058. Rust had 2,047 portable cases
+and eleven registered out-of-envelope cases; WASM had 1,790 portable and 268
+out-of-envelope. There was no semantic disagreement on an in-envelope case.
+
+Three additional boundary mutations rejected an unregistered external
+translation, a `not_theorem` kind, and a negative-evidence field. Nine focused
+regressions rechecked kernel import hygiene/readability, original-goal
+finalization, and transactional failure/undo. The campaign took about 179.2
+seconds of concurrent wall time; timings are observational and excluded from
+all semantic roots.
+
+That first report, `h0-validation-v1.json`, is 3,430,197 bytes with SHA-256
+`6a6f30bc3797b1434af081d6515cbc25f433274d7cf0a94f073998ec3a884f57`.
+It correctly seals H0.1/H0.2, but an independent release audit found that it
+did not retain behavioral H0.3 evidence: macro sources were hashed, yet no
+protocol identity, trace fixture, Dispatch reconstruction, or macro-test
+transcript appeared in the artifact. We reclassified v1 as provisional rather
+than silently changing a versioned shape.
+
+### The macro evidence gap changed the report version
+
+Report v2 adds seven content-rooted typed-action fixtures, pinned deterministic
+accepted and rejected traces, exact unchanged-owner assertions, and a complete
+Dispatch fixture. The latter retains the adapter, configuration, request,
+call, raw response, certificate, and canonical trace preimages, then invokes
+the independent kernel against the owner-held original goal. It also retains
+the exact command/stdout/stderr of the 110-test macro suite. A first builder API
+still accepted a caller-supplied `{exit_code: 0, passed: 110}` claim; adversarial
+review forged that claim, so the public builder now accepts no test evidence.
+Only the campaign driver may run and attach the transcript.
+
+The first clean-clone v2 attempt exposed another useful reproducibility bug:
+five legacy Python strings used unescaped `\/` spelling and emitted
+`SyntaxWarning` on an empty bytecode cache. Cold workers reject all stderr, so
+the campaign stopped. Escaping those literals looked semantics-preserving, but
+the full suite correctly rejected the changed source bytes because the public
+catalog and model-v2/v3 authorities pin their hashes. We restored the five
+legacy spellings byte-for-byte and instead suppress only invalid-escape
+`DeprecationWarning`/`SyntaxWarning` compatibility noise inside
+validator-owned child processes. All other child stderr remains fail-closed,
+and a regression pins the exact subprocess command. This preserves both the
+published library identity and clean-clone replay on supported Python
+versions.
+
+The final v2 run from clean commit
+`26c2503b36c6884bfbfa6dabd1494bbda49d8926` passed. Its 3,484,230-byte report
+is `artifacts/peano-hydra/h0-validation-v2.json`, SHA-256
+`55c60502b2229f4420bd4557058842bebb582f491739e82a6dae06de5b803fdb`.
+It says `validation_passed = true`, `campaign_eligible = true`, and retains no
+ineligibility reason. Dispatch resource observations and pytest duration are
+exact run evidence but not stable semantic identities. This completes H0, not
+H1: the replayed catalog remains a candidate-L0 semantic corpus until the
+epoch, genealogy, masks, and benchmark are frozen in the next milestone.
+
+The release audit ran the complete Peano suite in eight runtime-weighted
+shards: 2,910 tests passed and 12 were explicitly skipped. This partition is
+important engineering evidence, not a semantic shortcut: every test file is
+assigned exactly once, while the several-minute certificate replays no longer
+hide all progress behind one process. The unchanged sibling Lambda suite,
+native Rust and WASM gates, real browser ABI harness, deterministic WASM
+rebuild, 384-note vault check, 287 executable book commands, and strict
+Jupyter Book build were all green. An independent read-only reviewer then
+reconstructed the final report's source manifest, every conformance root and
+backend disposition, all macro/Dispatch preimages, exact rollback, and a fresh
+kernel check of the original goal. H0 therefore closes on evidence, while H1
+remains deliberately unopened.
