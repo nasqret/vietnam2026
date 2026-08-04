@@ -3870,3 +3870,69 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   offline and is not `L0`. H1.1 remains open until the pack contains canonical
   formulas/certificates and the richer dependency/documentation records and
   replays with the living theorem library made unavailable.
+
+## 2026-08-04 — H1 gained a replay-complete candidate-library subgate
+
+- Preserved library-epoch schema v1 and its three-file transition pack. Added
+  a separately versioned candidate replay-pack schema instead of silently
+  changing published protocol meaning. Schema v1 semantic digest is
+  `d60b07fe68aa4ba023c9bb873e2df4190752f70252caca21da7e76dcd393f02d`;
+  exact document SHA-256 is
+  `cfd0959ec537c9a7e3cdf705bd48ff7f8301fbd43f63623934d4638cb712b2ef`.
+- Added a strict bounded decoder for every `peano-lab-v2` term, formula, and
+  proof constructor. It accepts one canonical byte spelling, exact Python/JSON
+  types and arities, and explicit byte/node/depth/integer limits. Decoding is
+  inert; only the independent checker against the separately bound original
+  goal may grant theorem authority.
+- Added an isolated streaming verifier with no theorem-library, tactic-engine,
+  UI, training, solver, or model imports. It validates manifest count/order,
+  prior-only dependencies, exact roots and paths, resource totals, exact file
+  set, schema/profile/catalog, and verifier-source identity before certificate
+  reads. Each artifact round-trips byte-for-byte, agrees with the independently
+  parsed closed source statement, recomputes tree metrics/hashes, and passes
+  `check((), proof, original_target)` in intuitionistic mode.
+- Added a live-only builder that replays the current catalog, writes one raw
+  artifact per theorem into a staging directory, invokes a guarded fresh
+  `python -I -S -X pycache_prefix=<fresh-dir>` worker, rechecks
+  catalog/verifier drift, and publishes
+  atomically only after all checks pass. The worker blocks and records absence
+  of library, engine, UI, training, Torch, and Transformers modules.
+- Independent audits found and closed Boolean/integer aliasing in indexes and
+  counts, missing manifest resource ceilings, an unchecked-kernel reporting
+  mode, CLI symlink-root and case-alias/report-self-corruption paths,
+  post-import source drift, stale repository bytecode, blocking FIFO reads,
+  unbounded directory enumeration, a classically invalid DNE test, unbound
+  initializers/worker source, and overclaims about reconstructing Python object
+  sharing. The final tests use a genuinely classically valid DNE certificate
+  and full rerooting, while source DAG observations obey explicit invariants.
+- Published 384 artifacts totaling 80,088,767 bytes. Packed tree totals are
+  1,806,923 proof occurrences and 52,626 Cuts; maximum proof size/depth are
+  73,767/99. Manifest root is
+  `fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`;
+  theorem replay root is
+  `88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
+  The canonical retained report SHA-256 is
+  `35f5547978a4d58c5af30c33d253c92af494b94f6d6500a866a13f2fd1fa7f10`.
+- The corrected replay-pack and bounded-decoder selection passed 145 tests in
+  47.56 seconds, including a fresh full 384-theorem replay whose
+  generated 828-byte report was byte-identical to the retained report.
+- The deterministic eight-shard full Peano run covered every test file: 3,048
+  tests passed and 12 were skipped in their shards. Its two remaining failures
+  were execution-environment controls, not changed assertions: the nested H0.3
+  subprocess exceeded its 120-second limit only under four-way contention and
+  passed alone in 12.81 seconds; the loopback dashboard bind was denied by the
+  filesystem sandbox and passed with local socket permission in 0.58 seconds.
+  Thus all 3,050 collected non-skipped cases passed in their required
+  environment. Lambda Lab passed 360 tests plus 36 subtests.
+- Resealed the browser candidate as build `2026-08-04f`, application
+  `a-d9bd305e4cad`: 150 mounted Python sources, 154 manifest entries, 29 focused
+  browser/WASM/deployment tests, and the complete local stage pass. Nothing was
+  deployed. The clean warning-as-error Book rebuilt all 46 sources; its
+  integrity report has zero broken paths/fragments or unsafe/remote runtime
+  assets, all 194 deep links and 287 session commands replay, and the vault
+  verifies 384 lemma notes in a 490-note/4,981-link graph.
+- Claim boundary: this is a replay-complete candidate-`L0` pack, not a frozen
+  production epoch. Schema enforces `candidate` and evaluation-ineligible.
+  Readable/optimized dependency vectors and leave-one-out evidence,
+  definition/document receipts, lineage masks, reviewed Git-state and
+  independent owner deposits, and benchmark sealing remain H1.1 work.

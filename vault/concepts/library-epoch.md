@@ -29,10 +29,27 @@ Epoch-protocol schema v1 has digest
 `f4695013ee4aeb660abf3a1e57a6334d86c990a8904c4435d94628694a2e875b`.
 Its living candidate revalidates HEAD and all 384 theorems, uses type-exact
 roots/versions, bounded no-follow reads, and rejects source drift after import
-until restart. Its current three-file pack is only a protocol fixture: it has
-catalog/profile/H0 provenance but no formula/certificate bytes. The production
-owner-receipt registry is empty, so the 38 focused tests do not constitute an
-$L_0$ freeze. H1.1 closes only after an isolated replay-complete pack exists.
+until restart. Its three-file pack remains a provenance-only protocol fixture.
+
+A separate subordinate candidate replay pack now carries all 384 canonical
+`peano-lab-v2` artifacts. Replay-pack schema v1 has semantic digest
+`d60b07fe68aa4ba023c9bb873e2df4190752f70252caca21da7e76dcd393f02d`;
+the pack has manifest root
+`fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`
+and fresh-worker recomputed theorem replay root
+`88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
+A fresh `python -I -S -X pycache_prefix=<fresh-dir>` worker blocks the living
+library, tactic engine, UI, training package, and model stacks, binds each
+decoded target to its original closed statement, and asks the [[trusted-kernel]]
+to check all 384 proofs from the empty context. The committed acceptance test
+reproduces its retained report byte-for-byte.
+
+This closes the replay-transport subgate, not H1.1. The pack is schema-labeled
+`candidate` and evaluation-ineligible. It still lacks independently verified
+readable/optimized dependency views and publication union, definition and
+documentation receipts, lineage masks, reviewed source-state and owner
+deposit, and the sealed benchmark. The production owner-receipt registry
+remains empty, so it is not frozen production $L_0$.
 
 ## Related
 

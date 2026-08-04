@@ -790,15 +790,110 @@ new hashes cannot be paired with stale imported theorem objects. Evidence
 reads are bounded and reject final symlinks, while packed path text is checked
 without consulting the living repository.
 
-This is not yet $L_0$. The protocol fixture contains the catalog, semantic
-profile, and retained H0 report, but only certificate *hashes*, not canonical
-formula/certificate bytes. Its independent-owner registry is empty. The next
-epoch gate must replay every packed theorem using only the kernel while the
-living theorem library is unavailable. Until that passes, “pack,” “root,” and
-38 green focused tests describe useful infrastructure—not a frozen research
-library. The authoring side likewise has 28 focused tests but still needs the
-200-unit adjudicated corpus and live browser/recovery behavior before A0/H1.0
-can close.
+That first protocol fixture is still not $L_0$. It contains the catalog,
+semantic profile, and retained H0 report, but only certificate *hashes*. We did
+not mutate that version to make the word “pack” retroactively mean something
+stronger. Instead we introduced a subordinate replay-pack format whose claim
+is smaller than an epoch freeze and can be tested directly.
+
+## From certificate hashes to an offline replay pack
+
+Replay-pack schema v1 has semantic digest
+`d60b07fe68aa4ba023c9bb873e2df4190752f70252caca21da7e76dcd393f02d`.
+Its candidate directory contains a canonical copy of that schema, the source
+catalog, the constructive semantic profile, one manifest, and 384 raw
+`peano-lab-v2` certificate artifacts. The certificate payload is 80,088,767
+bytes; the largest artifact is 3,608,301 bytes. The ordered theorem replay root
+is `88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`,
+while the stronger manifest root—which also binds schema, catalog, profile,
+resource declarations, paths, and verifier sources—is
+`fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`.
+
+The distinction between the builder and verifier is part of the lesson. The
+builder is allowed to see authored scripts, replay the living catalog, measure
+Python object sharing, and serialize certificates. The verifier is not. It is
+loaded directly from one source file, imports only the kernel and standard
+library, and runs in a new Python process with
+`-I -S -X pycache_prefix=<fresh-dir>`. The cache's repository subtree must not
+exist when verification starts, bytecode writes are then disabled, and only
+the exact Peano package root is appended after standard-library paths. A
+meta-path guard makes imports of the theorem library, tactic engine, UI,
+training package, Torch, and Transformers fail. The worker records that none
+was loaded. Its executed package initializers, kernel modules, decoder,
+verifier, and CLI are themselves hashed into the manifest, checked immediately
+after import, and checked again after the last theorem.
+
+The order of work is intentionally defensive. The worker first validates the
+complete manifest—exact JSON types, theorem count and order, prior-only
+dependencies, content-addressed relative paths, aggregate resource ceilings,
+root preimages, source identities, and the exact directory listing—before it
+opens a single certificate. Root and certificate enumeration stop after their
+declared bounds. Every artifact is opened with no-follow and nonblocking flags,
+then required by descriptor metadata to be a stable bounded regular file; a
+FIFO therefore fails without hanging the worker. The decoder accepts only
+exact tagged constructors, exact arities and child sorts, nonnegative exact
+integers, one canonical byte spelling, and explicit byte/node/depth/integer
+limits. Decoding is inert: even a syntactically valid false proof or DNE node
+gains no authority.
+
+For theorem $i$, the verifier parses the catalog's statement independently,
+requires it to be closed, and compares it structurally with the decoded target.
+It recomputes canonical formula and proof hashes, the readable canonical
+statement, tree nodes, depth, and Cut count. Only then does it ask
+
+```python
+check((), proof, original_target)
+```
+
+in intuitionistic mode. An adversarial test uses a DNE certificate that the
+separate classical checker really does accept, reroots every local commitment,
+and confirms that this worker rejects it. Other tests reroot wrong proofs,
+wrong targets, Boolean-for-integer aliases, oversized resources, malformed
+paths, bad dependencies, source drift, stale bytecode, symlinks, FIFOs,
+unbounded directory inputs, missing/extra files, and mutated bytes. Report
+destinations are checked both before and after replay using lexical, resolved,
+Unicode-normalized, case-folded components. Thus a report cannot replace the
+manifest through an APFS case alias. The report itself is written by flush,
+file `fsync`, and atomic replacement outside the pack. Failure never becomes a
+partial successful report.
+
+There is a subtle serialization lesson here too. `peano-lab-v2` expands a
+Python proof DAG into a tree. Tree occurrences, maximum depth, Cuts, encoded
+bytes, and kernel acceptance are therefore reconstructable from the pack.
+Python object identities are not. The manifest labels distinct objects, unique
+edges, and reused references as source-stage observations, verifies their DAG
+invariants, and binds them to the source catalog without claiming to rediscover
+sharing from the bytes. Likewise, the historical Python `repr` hash is retained
+as construction provenance but is not a portable theorem-authority condition.
+
+The builder publishes the staging directory atomically only after that fresh
+worker succeeds. The ordinary test suite repeats the complete 384-theorem
+worker replay and requires its canonical report to be byte-identical to the
+retained 828-byte report. The corrected replay-pack and bounded-decoder
+selection passed 145 tests in 47.56 seconds. The report SHA-256 is
+`35f5547978a4d58c5af30c33d253c92af494b94f6d6500a866a13f2fd1fa7f10`.
+
+The wider release gates matter because the decoder is shipped in the browser
+kernel package, not hidden in a research-only environment. The deterministic
+full-suite shards covered every Peano test: 3,048 passed, 12 skipped, and two
+environment controls were rerun successfully in isolation, yielding 3,050
+passing non-skipped cases overall. Lambda Lab passed 360 tests plus 36
+subtests. Browser build `2026-08-04f`, application `a-d9bd305e4cad`, seals 150
+Python sources in a 154-entry manifest and stages locally without a deployment
+claim. The clean warning-as-error Book built all 46 sources, its integrity gate
+found no broken or unsafe target, all 194 deep links and 287 commands replayed,
+and the 490-note vault resolved all 4,981 links.
+
+What did we earn? We may now say: **a replay-complete candidate-$L_0$ pack was
+validated in an isolated fresh interpreter**. We may not say that production
+$L_0$ is frozen. The schema itself enforces `status = candidate` and
+`evaluation_eligible = false`. The dependency list is the current declared
+publication list, not separately minimized readable and optimized vectors;
+there is no leave-one-out receipt, definition/document bundle, lineage mask,
+reviewed Git-state deposit, independent owner receipt, or sealed benchmark.
+Those are the remaining H1.1 gates. The authoring side likewise still needs
+the 200-unit adjudicated corpus and live browser/recovery behavior before
+A0/H1.0 can close.
 
 ## What “matched compute” means
 

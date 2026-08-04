@@ -35,9 +35,18 @@ The earlier v1 is provisional H0.1/H0.2 evidence and is superseded for the
 complete-H0 claim.
 H1 remains open; no sealed benchmark or LLM-advantage result exists. Its first
 executable slices are the 28-test canonical [[peano-authoring-assistant]]
-contract and the 38-test [[library-epoch]] transition protocol. Both production
-review registries are empty, and the epoch fixture lacks certificate bytes, so
-neither result is an A0/H1 or $L_0$ completion claim.
+contract and the 38-test [[library-epoch]] transition protocol. The historical
+epoch fixture remains provenance-only, but a subordinate replay-complete
+candidate pack now carries and fresh-worker kernel-replays all 384 canonical
+certificates in an import-guarded
+`python -I -S -X pycache_prefix=<fresh-dir>` worker. Its manifest root is
+`fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`
+and its theorem replay root is
+`88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
+This closes only the replay-transport subgate: both production review
+registries are empty, the pack is evaluation-ineligible, and dependency views,
+documentation/definition receipts, lineage, independent deposit, and benchmark
+sealing remain absent. It is not an A0/H1 or production-$L_0$ completion claim.
 
 Peano Lab remains the sole object language. Under [[peano-logic-profiles]],
 constructive PA is the default and classical PA+DNE is separately labeled. Living

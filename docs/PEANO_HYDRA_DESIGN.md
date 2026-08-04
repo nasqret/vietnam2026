@@ -224,6 +224,70 @@ Starting a new research epoch requires sealing a new benchmark before
 examining outcomes. The current public library is a capability and training
 resource, not a hidden test set.
 
+#### Candidate replay transport implemented in H1.1
+
+Replay-pack schema v1 implements the certificate-transport subgate without
+pretending to complete the epoch freeze. It is a subordinate format beside the
+historical three-file epoch-protocol v1, which remains byte-compatible and
+provenance-only. The new pack has exactly four non-certificate files—canonical
+schema, source catalog, constructive semantic profile, and manifest—and one
+raw canonical `peano-lab-v2` artifact for every theorem. Schema semantic digest
+is `d60b07fe68aa4ba023c9bb873e2df4190752f70252caca21da7e76dcd393f02d`;
+the exact schema-document SHA-256 is
+`cfd0959ec537c9a7e3cdf705bd48ff7f8301fbd43f63623934d4638cb712b2ef`.
+
+The verifier is intentionally separable from candidate construction. It
+imports only standard-library code and the Peano kernel/codec; imports of the
+theorem library, tactic engine, UI, training package, Torch, and Transformers
+are blocked in the retained worker. Before reading any theorem artifact, it
+validates the exact canonical manifest, type-exact versions/counts/indexes,
+ordered prior-only dependencies, safe content-addressed paths, aggregate byte
+and tree-resource ceilings, schema/profile/catalog identities, deterministic
+roots, exact directory membership, and the source identity of the package
+initializers, kernel, decoder, verifier, and worker CLI. It rejects symlinked
+roots and final components, bounds directory enumeration, reads bounded regular
+files with `O_NOFOLLOW | O_NONBLOCK`, and rechecks exact directory and
+verifier-source identity after replay. The worker requires isolated/no-site
+mode plus an explicit fresh repository bytecode-cache subtree. Its report path
+is checked before and after replay with conservative Unicode-normalized,
+case-folded containment, so it cannot overwrite the pack on case-insensitive
+filesystems.
+
+For each theorem it hashes the exact artifact bytes, decodes every constructor
+under byte/node/depth/integer bounds, and requires byte-for-byte canonical
+re-encoding. It independently parses the source statement as a closed formula,
+requires equality with the decoded owner target, recomputes formula/proof
+hashes and tree nodes/depth/Cuts, and finally calls
+`check((), proof, original_target)` in intuitionistic mode. A DNE artifact may
+be decoded as inert syntax but cannot pass that final judgment; the adversarial
+control is accepted by the separate classical checker and rejected here.
+
+`peano-lab-v2` serializes a proof tree and does not preserve Python object
+sharing. Consequently nodes, depth, Cuts, formula/proof hashes, bytes, and
+kernel acceptance are freshly reconstructed from packed bytes. Distinct object count,
+unique proof edges, and reused references remain catalog-bound source-stage
+observations, with explicit graph invariants; they are not presented as
+pack-reconstructed facts. The source `repr` hash remains provenance only and
+is not an authoritative portability check.
+
+The retained candidate has 384 artifacts totaling 80,088,767 bytes, manifest
+root `fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`,
+and theorem replay root
+`88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
+Its builder publishes atomically only after a new
+`python -I -S -X pycache_prefix=<fresh-dir>` process has replayed every theorem
+with the forbidden-import guard active. The committed acceptance test repeats
+that full replay and requires byte equality with the retained report.
+
+This is precisely a **replay-complete candidate-`L0` pack validated in an
+isolated fresh interpreter**. It is not production `L0`: the manifest enforces
+`status = candidate` and `evaluation_eligible = false`. H1.1 still needs
+separate readable and optimized direct-dependency vectors with leave-one-out
+evidence, deterministic publication union, definition/document receipts,
+lineage controls, reviewed Git-state provenance, independent owner deposit,
+and benchmark sealing. Declared dependencies are therefore described only as
+publication dependencies, and no certificate is called minimal or best-known.
+
 ### 2.4 Sealed-test law
 
 The unit of separation is a mathematical **lineage**, not a row or filename.
@@ -356,13 +420,16 @@ lexically without consulting the living tree, and a source revision observed
 after import forces a process restart rather than pairing new hashes with
 stale Python objects.
 
-The current three-file pack contains the catalog document, semantic profile,
-and retained H0 report. It does **not** contain canonical formula/certificate
-bytes or the richer per-theorem authoring artifacts required by §2.3, so it is
-only a transition-protocol fixture. The reviewed owner-receipt registry is
-empty and no production `L0` can be minted. H1.0, H1.1, and their checklist
-items remain open until the gold corpus, full replay pack, exact dependency
-views, lineage controls, independent deposit, and sealed benchmark exist.
+The historical epoch-v1 three-file pack still contains only the catalog,
+semantic profile, and retained H0 report and remains a transition-protocol
+fixture. A separate replay-pack-v1 candidate now supplies the previously
+missing canonical formula/certificate bytes for all 384 theorems and replays
+them in an import-guarded fresh interpreter. Its exact identities and claim
+boundary are specified in §2.3. This closes the replay-transport subgate, not
+the freeze: the reviewed owner-receipt registry is empty, the candidate is
+explicitly evaluation-ineligible, and the richer dependency, definition,
+documentation, lineage, Git-state, independent-deposit, and benchmark
+artifacts are absent. H1.0 and H1.1 therefore remain open.
 
 ## 3. Trust and system architecture
 

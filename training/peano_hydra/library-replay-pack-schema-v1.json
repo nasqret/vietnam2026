@@ -1,0 +1,184 @@
+{
+  "additional_fields_policy": "forbidden-at-every-schema-owned-object",
+  "canonical_json": {
+    "artifact": "exact canonical peano-lab-v2 bytes with one terminal LF",
+    "document": "UTF-8, sorted keys, two-space indentation, one final LF",
+    "hash_preimage": "UTF-8, sorted keys, compact separators, no final LF",
+    "numbers": "integers only",
+    "objects": "duplicate keys forbidden"
+  },
+  "constants": {
+    "certificate_representation": "peano-lab-v2",
+    "evaluation_eligible": false,
+    "logic_mode": "intuitionistic",
+    "status": "candidate"
+  },
+  "format": "peano-hydra-library-replay-pack-schema",
+  "hashes": {
+    "artifact_sha256": "SHA-256 of exact peano-lab-v2 bytes including terminal LF",
+    "formula_sha256": "SHA-256 of canonical peano-lab-v2 formula bytes",
+    "manifest_root_sha256": "SHA-256 of the exact compact canonical root_preimage",
+    "proof_term_sha256": "SHA-256 of canonical peano-lab-v2 proof-term bytes",
+    "replay_root_sha256": "SHA-256 of the ordered compact canonical replay observations"
+  },
+  "id": "peano-hydra-library-replay-pack-v1",
+  "limits": {
+    "artifact_bytes_each": 8000000,
+    "artifact_bytes_total": 128000000,
+    "artifact_depth_each": 512,
+    "artifact_integer_digits_each": 4096,
+    "artifact_nodes_each": 1000000,
+    "catalog_bytes": 4000000,
+    "manifest_bytes": 8000000,
+    "manifest_json_depth": 160,
+    "manifest_json_items": 2000000,
+    "schema_bytes": 1000000,
+    "semantic_profile_bytes": 1000000,
+    "theorem_count": 10000
+  },
+  "manifest": {
+    "aggregate": {
+      "required": [
+        "artifact_bytes_maximum",
+        "artifact_bytes_total",
+        "cut_nodes_total",
+        "proof_depth_maximum",
+        "proof_nodes_maximum",
+        "proof_nodes_total"
+      ]
+    },
+    "artifact": {
+      "path_policy": "certificates/<zero-padded-index>-<name>-<artifact-sha256>.pl2",
+      "required": [
+        "bytes",
+        "fuel",
+        "path",
+        "sha256"
+      ]
+    },
+    "construction_metrics": {
+      "claim_boundary": "proof_nodes, proof_depth, and cut_nodes are cross-checked against the decoded packed tree; distinct objects, edges, and reuse remain source-stage observations because peano-lab-v2 does not preserve sharing",
+      "invariants": [
+        "cut_nodes, proof_depth, and proof_nodes equal packed_tree_metrics",
+        "distinct_proof_objects <= proof_nodes",
+        "proof_edges >= distinct_proof_objects - 1",
+        "proof_edges <= proof_nodes - 1",
+        "reused_proof_references = proof_edges - (distinct_proof_objects - 1)"
+      ],
+      "required": [
+        "cut_nodes",
+        "distinct_proof_objects",
+        "proof_depth",
+        "proof_edges",
+        "proof_nodes",
+        "reused_proof_references",
+        "source_certificate_representation",
+        "source_certificate_sha256"
+      ]
+    },
+    "kernel_identity": {
+      "required": [
+        "artifact_decoder",
+        "artifact_format",
+        "checker",
+        "context",
+        "logic",
+        "source_root_sha256",
+        "sources"
+      ]
+    },
+    "packed_tree_metrics": {
+      "claim_boundary": "fresh-worker recomputed directly from decoded artifact bytes, independently of catalog and source-stage metric fields; not independently implemented",
+      "required": [
+        "cut_nodes",
+        "proof_depth",
+        "proof_nodes"
+      ]
+    },
+    "required": [
+      "aggregate",
+      "certificate_representation",
+      "evaluation_eligible",
+      "format",
+      "id",
+      "kernel_identity",
+      "logic_mode",
+      "replay_root_sha256",
+      "root_preimage",
+      "root_sha256",
+      "schema",
+      "semantic_profile",
+      "source_catalog",
+      "status",
+      "theorem_count",
+      "theorems",
+      "v"
+    ],
+    "root_preimage": {
+      "forbidden_recursive_fields": [
+        "root_preimage",
+        "root_sha256"
+      ],
+      "required": [
+        "format",
+        "payload",
+        "v"
+      ]
+    },
+    "semantic_profile": {
+      "required": [
+        "artifact_path",
+        "artifact_sha256",
+        "certificate_representation",
+        "format",
+        "id",
+        "logic",
+        "sha256",
+        "v"
+      ]
+    },
+    "source_catalog": {
+      "required": [
+        "artifact_path",
+        "artifact_sha256",
+        "catalog_sha256",
+        "ordered_root_sha256",
+        "schema",
+        "source_root_sha256",
+        "theorem_count"
+      ]
+    },
+    "theorem": {
+      "dependency_status": "declared publication dependencies; minimal readable and optimized vectors remain a separate H1.1 gate",
+      "required": [
+        "artifact",
+        "construction_metrics",
+        "declared_dependencies",
+        "formula_sha256",
+        "index",
+        "layer",
+        "name",
+        "packed_tree_metrics",
+        "proof_term_sha256",
+        "script",
+        "script_sha256",
+        "statement_canonical",
+        "statement_canonical_sha256",
+        "statement_source",
+        "statement_source_sha256",
+        "summary"
+      ]
+    }
+  },
+  "pack_files": {
+    "exact_non_artifact_files": [
+      "catalog.json",
+      "manifest.json",
+      "semantic-profile.json",
+      "schema.json"
+    ],
+    "extra_files": "forbidden",
+    "schema_copy_required": true
+  },
+  "v": 1
+}

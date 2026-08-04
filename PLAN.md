@@ -157,10 +157,9 @@ M20's native arithmetic and synchronized release artifacts are complete. The
 main Jupyter Book now includes a guided zero-to-FTA route, a quadratic
 reciprocity campaign chapter, and a generated interactive 384-proof atlas;
 the integrated local browser candidate deterministically verifies as build
-`2026-08-04b`, application `a-903a05e31da9`, with 150 worker sources. Its
-source inventory, content manifest, and deployment contracts pass; complete
-local staging awaits the gitignored pinned vendor mirror. It is not deployed,
-and direct attached-browser UI inspection remains
+`2026-08-04f`, application `a-d9bd305e4cad`, with 150 worker sources. Its
+source inventory, content manifest, deployment contracts, and complete local
+stage pass. It is not deployed, and direct attached-browser UI inspection remains
 explicitly unclaimed. Model-v3 curriculum training is a separate milestone—not mathematical
 admission of FTA or prime unboundedness. See
 [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md).
@@ -318,8 +317,20 @@ provide a 28-test canonical authoring boundary (digest
 `31a344bbc0b22cfacf5803c85d25a80a0234cf7387395283c5e1ab25ada80553`)
 and a 38-test live-candidate/epoch transition boundary (digest
 `f4695013ee4aeb660abf3a1e57a6334d86c990a8904c4435d94628694a2e875b`).
-Review registries are empty and the three-file epoch
-fixture lacks formula/certificate bytes, so no living catalog has been
-declared frozen `L0` and neither A0 nor H1 is complete. See
+The historical three-file epoch fixture remains provenance-only. The new
+subordinate replay-pack-v1 candidate supplies all 384 canonical certificates:
+schema digest
+`d60b07fe68aa4ba023c9bb873e2df4190752f70252caca21da7e76dcd393f02d`,
+manifest root
+`fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`,
+and fresh-kernel replay root
+`88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
+The standard acceptance test repeats all 384 checks in an import-guarded
+`python -I -S -X pycache_prefix=<fresh-dir>` worker and reproduces the retained
+report exactly. Review
+registries are still empty; dependency minimality/views, documentation and
+definition receipts, lineage, independent deposit, and benchmark sealing are
+absent. Therefore no living catalog has been declared frozen production `L0`,
+and neither A0 nor H1 is complete. See
 [`docs/PEANO_HYDRA_DESIGN.md`](docs/PEANO_HYDRA_DESIGN.md) and
 [`PLAN/11_peano_hydra.md`](PLAN/11_peano_hydra.md).

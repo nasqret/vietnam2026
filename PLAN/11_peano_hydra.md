@@ -219,6 +219,16 @@ the schemas exist.
 
 - [ ] Snapshot the complete checked public catalog available at freeze time
       (at least the current 384-theorem runtime).
+  - [x] Build the subordinate replay-complete **candidate** transport: 384
+        canonical `peano-lab-v2` artifacts, exact original statements, a
+        strict bounded decoder, deterministic manifest/replay roots, and an
+        import-guarded fresh
+        `python -I -S -X pycache_prefix=<fresh-dir>` kernel replay. This closes only the
+        certificate-transport/replay subgate; `status = candidate` and
+        `evaluation_eligible = false` are enforced by schema.
+  - [ ] Register the reviewed source commit/dirty-state receipt, independent
+        owner deposit, and immutable `research-eval` freeze before calling the
+        result production `L0`.
 - [ ] For each theorem bind name, canonical statement, ordered dependency vectors,
       source/script/certificate hashes, node count, depth, declaration order,
       language profile/mode, definition receipts, readable explanation, and
@@ -234,6 +244,19 @@ the schemas exist.
 - [ ] Enforce monotone logic visibility: constructive rows are eligible in
       both modes; classical rows require a separately frozen classical profile
       and are never visible to a constructive epoch.
+
+The implemented candidate subgate is pinned by replay-pack schema v1,
+semantic digest
+`d60b07fe68aa4ba023c9bb873e2df4190752f70252caca21da7e76dcd393f02d`.
+The retained pack contains 384 certificate files and 80,088,767 artifact
+bytes. Its manifest root is
+`fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`;
+its fresh-worker recomputed theorem replay root is
+`88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
+The fresh-worker report records that the theorem library, tactic engine, UI,
+training package, Torch, and Transformers were absent and import-blocked. This
+evidence says neither that declared dependencies are minimal nor that the
+certificates are best-known.
 
 ### H1.2 Build lineage before rows
 
@@ -673,9 +696,25 @@ and benchmark work precede GPU training.
       changed source inputs require a fresh interpreter. The owner-receipt
       registry is immutable and empty. The integrated Hydra regression passed
       325 tests; the focused authoring and epoch files passed 28 and 38 tests.
-- [ ] A0/H1.0 and H1.1 remain open. In particular the current three-file epoch
-      pack carries catalog/profile/H0 provenance but not formula/certificate
-      bytes, so it is not the independently replayable `L0` research pack and
-      cannot mint a production freeze. No 200-unit gold corpus, lineage split,
-      benchmark seal, Vampire adapter, new Qwen training, classical Hydra
-      profile, or Rust authority claim is yet complete.
+- [x] The subordinate H1.1 replay-pack subgate is executable. Replay-pack
+      schema v1 has semantic digest
+      `d60b07fe68aa4ba023c9bb873e2df4190752f70252caca21da7e76dcd393f02d`;
+      the 384-file candidate pack has manifest root
+      `fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`
+      and theorem replay root
+      `88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
+      Its retained fresh `-I -S -X pycache_prefix=<fresh-dir>` worker report is
+      byte-for-byte reproduced by the 384-theorem acceptance test. The
+      historical three-file epoch fixture remains unchanged as v1 transition
+      evidence.
+      The decoder/replay boundary passes 108 and 37 focused tests; deterministic
+      full-tree sharding plus the two required environment-specific reruns cover
+      3,050 passing Peano cases with 12 registered skips. Lambda Lab remains
+      green at 360 tests plus 36 subtests.
+- [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
+      declared publication dependencies and source-stage sharing observations,
+      not separately leave-one-out-verified readable/optimized vectors,
+      best-known certificates, definition/document receipts, lineage masks,
+      source-state/owner freeze receipts, or a sealed benchmark. No 200-unit
+      gold corpus, Vampire adapter, new Qwen training, classical Hydra profile,
+      or Rust authority claim is yet complete.

@@ -1,0 +1,1 @@
+["peano-lab-v2",88,["forall",["forall",["forall",["forall",["imp",["eq",["var",3],["var",2]],["imp",["eq",["var",1],["var",0]],["eq",["mul",["var",3],["var",1]],["mul",["var",2],["var",0]]]]]]]]],["forall_intro",["forall_intro",["forall_intro",["forall_intro",["imp_intro",["imp_intro",["cong_mul",["hyp",1],["hyp",0]]]]]]]]]

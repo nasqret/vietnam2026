@@ -52,6 +52,7 @@
     {"path": "test_mod5_catalog.py", "weight": 97000},
     {"path": "test_peano_hydra_authoring.py", "weight": 500},
     {"path": "test_peano_hydra_conformance.py", "weight": 6000},
+    {"path": "test_peano_hydra_library_replay_pack.py", "weight": 50000},
     {"path": "test_peano_hydra_library_epoch.py", "weight": 126000},
     {"path": "test_peano_hydra_macro_runner.py", "weight": 14000},
     {"path": "test_peano_hydra_macros.py", "weight": 500},

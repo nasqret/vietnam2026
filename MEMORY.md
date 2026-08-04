@@ -309,8 +309,22 @@
   versions, live-only candidate provenance, restart on post-import source
   drift, bounded/no-follow reads, evidence-scoped diagnostics, and ordered
   actor/session event roots. Both production review registries are empty. The
-  three-file epoch fixture lacks formula/certificate bytes and is therefore
-  not the offline replay-complete `L0` pack; A0/H1 remain open.
+  three-file epoch fixture remains provenance-only. A separate candidate
+  replay pack now carries all 384 exact `peano-lab-v2` certificates
+  (80,088,767 bytes), schema digest
+  `d60b07fe68aa4ba023c9bb873e2df4190752f70252caca21da7e76dcd393f02d`,
+  manifest root
+  `fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`,
+  and fresh-worker reproduced replay root
+  `88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
+  A strict decoder and fresh
+  `python -I -S -X pycache_prefix=<fresh-dir>` worker bind the original closed
+  target, block living-library/engine/UI/training/model imports, and ask the
+  intuitionistic kernel to replay every proof. This closes only H1.1's replay-
+  transport subgate: the pack enforces `candidate` and evaluation-ineligible,
+  while exact dependency views/minimization, artifact/document receipts,
+  lineage, source-state/owner freeze, and benchmark sealing remain absent.
+  A0/H1 therefore remain open.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
   Tarski–Grothendieck set theory. The same statements are proved in all four to *show* the foundations.
 - **Local tooling present:** Lean/`elan`/`lake` ✓ (proofs verifiable here), `jupyter-book` ✓, `gh` (as
@@ -593,13 +607,12 @@
   329 Cut-bearing certificates. Its ordered root is
   `73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
   The synchronized research graph has 385 records (384 checked and one
-  language-blocked conventional interface). The Obsidian vault has 482 notes
-  and 4,886 resolved links, including all 384 generated theorem notes. The
+  language-blocked conventional interface). The Obsidian vault has 490 notes
+  and 4,981 resolved links, including all 384 generated theorem notes. The
   integrated local browser candidate deterministically verifies as build
-  `2026-08-04b`, application `a-903a05e31da9`, with 150 worker sources; its
-  source inventory, content manifest, and deployment contracts pass. Complete
-  local staging awaits the gitignored pinned vendor mirror, and the build is
-  not deployed.
+  `2026-08-04f`, application `a-d9bd305e4cad`, with 150 worker sources; its
+  source inventory, content manifest, deployment contracts, and complete local
+  stage pass. The build is not deployed.
 - **QR heavy-execution boundary (2026-07-30):** proof replay, certificate
   profiling, mutation audits, full-ladder tests, and documentation builds run
   on WMI from content-addressed dirty-worktree archives; the Mac is restricted
@@ -1491,8 +1504,8 @@
   all-case receipt is
   `2e6e5df23ec90555bb754b7297d87b75f37a1e6f9fcd5a6d9da6facbf1ad1f68`.
   Traps/timeouts/rejections cannot grant or retract QED. Candidate
-  browser build `2026-08-04e` has application address
-  `a-129c5c680e53`, 150 mounted worker sources, and 154 sealed application
+  browser build `2026-08-04f` has application address
+  `a-d9bd305e4cad`, 150 mounted worker sources, and 154 sealed application
   entries; it is not deployed.
 - **Model-v3 prelaunch durability and chain binding (2026-07-30):** the
   one-shot trainer preserves adapter/tokenizer tensors before its explicit
