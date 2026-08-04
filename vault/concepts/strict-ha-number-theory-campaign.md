@@ -296,8 +296,8 @@ the [report](../../artifacts/peano-library/ha-k3b-listat-prefix-closure-219209.j
 has SHA-256
 `0d51baf93121da4071d0bb3ebd2b4a2818a7658fa92510fd707620bc2dba6560`.
 The theorem exposes the pointwise beta-prefix map hidden by the current
-existential extension contract, but remains private and unadmitted. No lookup
-equation or admission is claimed. The light gate is
+existential extension contract, but remains private and unadmitted. No public
+lookup theorem or admission is claimed. The light gate is
 `make ha-k3b-list-lookup-check`.
 
 `list_at_domain` is the next dependency-free private rung. It exposes
@@ -305,6 +305,16 @@ equation or admission is claimed. The light gate is
 witnesses. Its statement receipt is
 `(5903,065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240)`
 and its Cut-free/DNE-free proof receipt is `(0,19,39,23,39,38,0)`.
+
+`list_at_head_iff` is now body-checked privately as well. Its statement
+receipt is
+`(12530,9f0b3e7496f79b7cc6f4833edc14431dd614081b6f02b2d384aa80c521e2f8ed)`
+and its dependency-curried body receipt is `(4,119,265,36,255,264,10)`.
+The four direct dependencies are `cell_history_succ_elim`,
+`cell_history_extend_preserves_prefix`, `beta_at_unique`, and `le_refl`.
+Two beta-uniqueness comparisons at `S j` and `j` align the terminal code and
+predecessor tail, avoiding `cell_tail_functional`. The row has no cold
+empty-context receipt and remains unregistered, unadmitted, and nonpublic.
 
 ## Repository anchors
 

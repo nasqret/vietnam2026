@@ -106,8 +106,8 @@ Strict K3 remains 96 rows across 21 modules, while the unchanged campaign JSON
 remains 95 public references, 121 private candidates, and 169 receipts. Run
 the separate lightweight gate with `make ha-k3b-cell-history-check`.
 
-The follow-on `HA-K3B-LISTAT-1` checkpoint currently freezes only the
-hygienic `ListAt(z,i,a)` surface and proof architecture. Its outer-head index
+The follow-on `HA-K3B-LISTAT-1` checkpoint began by freezing the hygienic
+`ListAt(z,i,a)` surface and proof architecture. Its outer-head index
 uses `j + S i = l` with witness order `l b c j t u`; the full expansion has
 3,331 characters, 54 formula constructors, 210 PA AST nodes, and SHA-256
 `b83d91b6ec8e6b83fe637e1533c72beef54c7e7a4b41f1518bce8785cc9f11ce`.
@@ -123,14 +123,30 @@ the support theorem twice from the empty context at
 The sealed [receipt](../../artifacts/peano-library/ha-k3b-listat-prefix-closure-219209.json)
 has SHA-256
 `0d51baf93121da4071d0bb3ebd2b4a2818a7658fa92510fd707620bc2dba6560`.
-It remains private and unadmitted; no lookup equation is yet claimed. Run the
-separate lightweight gate with `make ha-k3b-list-lookup-check`.
+It remains private and unadmitted; no public lookup theorem is claimed. Run
+the separate lightweight gate with `make ha-k3b-list-lookup-check`.
 
-The dependency-free `list_at_domain` projection is the next checked body. Its
+The dependency-free [`list_at_domain` projection](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_domain_candidate.py)
+is the next checked body. Its
 statement has 5,903 characters and SHA-256
 `065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240`;
 its Cut-free/DNE-free certificate has 39 nodes at depth 23. It remains private
 and awaits inclusion in the next repeated cold lookup batch.
+
+The [`list_at_head_iff` outer-head equation](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_head_candidate.py)
+is the next validated private body; its
+[`focused audit`](../../peano-lab/py/tests/test_ha_cell_list_lookup_head_candidate.py)
+pins the surface, proof receipt, mutation, and standard models. Its expanded
+12,530-character statement has SHA-256
+`9f0b3e7496f79b7cc6f4833edc14431dd614081b6f02b2d384aa80c521e2f8ed`,
+and its dependency-curried body receipt is `(4,119,265,36,255,264,10)` in
+`(dependencies,commands,nodes,depth,objects,edges,reused)` order. The four
+direct dependencies are `cell_history_succ_elim`,
+`cell_history_extend_preserves_prefix`, `beta_at_unique`, and `le_refl`.
+Two beta-uniqueness applications identify the terminal code and predecessor
+tail, avoiding `cell_tail_functional`. This row is body-checked only: it has
+no repeated cold empty-context receipt and remains unregistered, unadmitted,
+and nonpublic.
 
 The K4
 [`signed-gcd client`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)

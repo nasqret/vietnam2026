@@ -2141,3 +2141,13 @@
   `(5903,065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240)`
   and its Cut-free/DNE-free proof receipt is `(0,19,39,23,39,38,0)`. The row
   is private and awaits the next repeated cold lookup batch.
+- **K3B outer-head equation body (2026-08-04):** the private
+  `list_at_head_iff` statement expands to 12,530 characters with SHA-256
+  `9f0b3e7496f79b7cc6f4833edc14431dd614081b6f02b2d384aa80c521e2f8ed`.
+  Its dependency-curried body receipt is `(4,119,265,36,255,264,10)`, with
+  direct dependencies exactly `cell_history_succ_elim`,
+  `cell_history_extend_preserves_prefix`, `beta_at_unique`, and `le_refl`.
+  Beta uniqueness is used once at `S j` for the terminal code and once at
+  `j` for the predecessor tail, so `cell_tail_functional` is not a dependency.
+  This is body-checked evidence only: no cold closure, registry entry,
+  admission, public theorem, or campaign-accounting change is recorded.

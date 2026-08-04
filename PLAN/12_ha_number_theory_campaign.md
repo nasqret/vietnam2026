@@ -753,7 +753,7 @@ target. Strict K3 remains 96 rows across 21 modules, and the campaign JSON
 remains unchanged at 95 public references, 121 private candidates, and 169
 receipts.
 
-### K3B ListAt design checkpoint (SURFACE-FROZEN only)
+### K3B ListAt checkpoint (surface frozen; domain/head bodies checked)
 
 `HA-K3B-LISTAT-1` freezes an outer-head `ListAt(z,i,a)` surface over the
 closed private reverse histories. The selected edge satisfies
@@ -773,8 +773,8 @@ the beta-prefix transport needed by successor introduction; therefore
 dependency-curried body checks at `(5,99,139,37,139,138,0)`. WMI job `219209`
 then closed it twice from the empty context at
 `(29369,81,4668,4896,229,241,7fd7734ab34d90a869c637e76e138db692ba21d4f2bbec41af9817c38ef36498)`
-with zero DNE. The row remains private, unregistered, and unadmitted; no
-lookup equation is yet claimed. Public runtime/catalog and campaign accounting remain 432/433 and 95/121/169;
+with zero DNE. The row remains private, unregistered, and unadmitted. Public
+runtime/catalog and campaign accounting remain 432/433 and 95/121/169;
 strict K3 remains 96 rows/21 modules. The lightweight design gate is
 `make ha-k3b-list-lookup-check`. The Book, explorer, catalog, campaign JSON,
 and public snapshots remain untouched until closure/admission review.
@@ -784,6 +784,19 @@ statement identity is
 `(5903,065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240)`
 and its proof receipt is `(0,19,39,23,39,38,0)`. The certificate is Cut-free
 and DNE-free; it remains private pending the next repeated cold lookup batch.
+
+The following rung `list_at_head_iff` now also has a validated
+dependency-curried body. Its exact direct dependencies are
+`cell_history_succ_elim`, `cell_history_extend_preserves_prefix`,
+`beta_at_unique`, and `le_refl`; `cell_tail_functional` is deliberately absent.
+The two beta-uniqueness steps identify the selected successor with the history
+terminal at `S j`, then the selected tail with the eliminated predecessor
+terminal at `j`. The statement receipt is
+`(12530,9f0b3e7496f79b7cc6f4833edc14431dd614081b6f02b2d384aa80c521e2f8ed)`
+and the body receipt is `(4,119,265,36,255,264,10)`. This is body-level only:
+no cold closure, registration, admission, public snapshot, or catalog change
+is claimed. Proceed next to `list_at_succ_iff`, then include all ready lookup
+rows in a repeated cold WMI batch before admission review.
 
 ## Release boundary
 

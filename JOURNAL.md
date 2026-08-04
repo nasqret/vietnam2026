@@ -4774,3 +4774,15 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   Three focused tests pin witness order, a false strengthened bound, zero
   Cut/DNE, registry isolation, and a distinct-head two-cell model. It remains
   private pending the next repeated cold lookup batch.
+- Checked the private `list_at_head_iff` body against its four direct
+  dependency hypotheses: `cell_history_succ_elim`,
+  `cell_history_extend_preserves_prefix`, `beta_at_unique`, and `le_refl`.
+  The expanded statement receipt is
+  `(12530,9f0b3e7496f79b7cc6f4833edc14431dd614081b6f02b2d384aa80c521e2f8ed)`;
+  its exact body receipt is `(4,119,265,36,255,264,10)`. In the forward
+  implication, beta uniqueness first aligns the selected successor with the
+  history terminal at `S j`, then aligns the selected tail with the
+  predecessor-history terminal at `j`. This removes the initially proposed
+  `cell_tail_functional` dependency. Prefix preservation supplies the reverse
+  implication. This checkpoint is body-level only; cold closure, admission,
+  registration, catalogs, JSON accounting, and public snapshots are unchanged.

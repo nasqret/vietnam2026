@@ -92,7 +92,8 @@ gate is `make ha-k3b-cell-history-check`.
 
 The follow-on
 [`HA-K3B-LISTAT-1`](../../research/arithmetic-library/ha-cell-list-lookup-rfc-v1.md)
-is currently surface-frozen only. It indexes from the outer head using
+has a frozen surface plus private body checks for its domain and head rows. It
+indexes from the outer head using
 `j + S i = l`, with exact witnesses `l b c j t u`. Its hygienic expansion is
 3,331 characters, 54 formula constructors, and 210 PA AST nodes, SHA-256
 `b83d91b6ec8e6b83fe637e1533c72beef54c7e7a4b41f1518bce8785cc9f11ce`;
@@ -104,13 +105,23 @@ closed it twice at
 the [report](../../artifacts/peano-library/ha-k3b-listat-prefix-closure-219209.json)
 has SHA-256
 `0d51baf93121da4071d0bb3ebd2b4a2818a7658fa92510fd707620bc2dba6560`.
-It remains private and unadmitted, no lookup equation is yet claimed, and
-public/campaign counts remain unchanged.
+It remains private and unadmitted, and public/campaign counts remain
+unchanged.
 
 The next private rung, `list_at_domain`, is dependency-free and projects the
 hidden history length plus native strict bound. Its statement receipt is
 `(5903,065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240)`;
 its Cut-free/DNE-free certificate receipt is `(0,19,39,23,39,38,0)`.
+
+The private outer-head equation `list_at_head_iff` has expanded statement
+receipt
+`(12530,9f0b3e7496f79b7cc6f4833edc14431dd614081b6f02b2d384aa80c521e2f8ed)`
+and dependency-curried body receipt `(4,119,265,36,255,264,10)`. Its exact
+direct dependencies are `cell_history_succ_elim`,
+`cell_history_extend_preserves_prefix`, `beta_at_unique`, and `le_refl`.
+The proof uses beta uniqueness at both endpoints of the selected final edge,
+so it does not depend on `cell_tail_functional`. This remains body-level only,
+without cold closure, registration, admission, or a public theorem.
 
 ## Design and trust
 

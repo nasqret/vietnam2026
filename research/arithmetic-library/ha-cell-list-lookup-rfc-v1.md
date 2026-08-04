@@ -140,7 +140,7 @@ later theorem statement expands D01/D02, `CellHistory`, `CellListLen`,
 | 1 | `ListAt` | definition D02 and its exact surface receipt; not a theorem | D01, `CellHistory`, `BetaAt`, exact D06 `Cell` |
 | 2 | `cell_history_extend_preserves_prefix` | expose the old decoded prefix in the extended history | `beta_prefix_extend`, `finite_lt_succ_eq_or_lt`, `zero_le`, `succ_le_succ`, `le_refl` |
 | 3 | `list_at_domain` | project a semantic length and the native strict index bound | `cell_list_length_functional` only if an external length is supplied; otherwise definition elimination |
-| 4 | `list_at_head_iff` | characterize lookup at outer index zero | rung 2, `cell_history_succ_elim`, `beta_at_unique`, cell functionality, `le_refl` |
+| 4 | `list_at_head_iff` | characterize lookup at outer index zero | `cell_history_succ_elim`, rung 2, `beta_at_unique`, `le_refl` |
 | 5 | `list_at_succ_iff` | shift lookup through one outer cell | rungs 2 and 4, `cell_history_succ_elim`, `add_comm`, PA2--PA4 |
 | 6 | `list_at_external_bound` | transport the hidden bound to a declared list length | rungs 3, `cell_list_length_functional` |
 | 7 | `list_at_exists` | every in-range index has a decoded head | `CellHistory` universal edge clause, definition introduction |
@@ -296,10 +296,14 @@ pointwise map.
 ### 7.2 Head and successor equations
 
 At outer index zero, `j + S 0 = l` identifies the chosen edge as the final
-edge.  Successor elimination extracts the outer cell and predecessor history;
-`beta_at_unique` aligns its endpoint witnesses.  In the reverse direction,
-the strengthened extension preserves every old endpoint and supplies the new
-final edge.
+edge.  Successor elimination extracts an outer cell and predecessor history.
+One application of `beta_at_unique` identifies the selected successor with
+the terminal list code; a second application at index `j` identifies the
+selected tail with the predecessor-history terminal.  This two-decode route
+avoids any dependency on `cell_tail_functional`.  In the reverse direction,
+the strengthened extension preserves the old terminal at index `l` and
+supplies the new terminal at `S l`, so those values and the supplied exact
+cell are the six canonical lookup witnesses.
 
 At successor index `S i`, arithmetic converts
 `j + S (S i) = S l` to `j + S i = l`.  Elimination reuses the same `b,c`
@@ -416,11 +420,8 @@ from clean commit `94cf88912bf368d43a3201abc91c69ddeb442a56` and payload
 (564,554 bytes, 203 entries). The certificate has zero DNE and remains a
 private, unregistered, unadmitted `closed_checked_candidate`.
 
-The prefix-preservation gate is therefore sealed. The next body is
-`list_at_domain`; the head and successor lookup equations may now depend on
-the closed private prerequisite without making it public.
-
-`list_at_domain` now also has a dependency-free checked body. Its expanded
+The prefix-preservation gate is therefore sealed. `list_at_domain` also has a
+dependency-free checked body. Its expanded
 statement receipt is
 `(5903,065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240)`
 in `(characters,SHA-256)` order, and its exact proof receipt is
@@ -429,3 +430,20 @@ The certificate is already empty-context, Cut-free, and DNE-free because the
 row has no dependencies. Three focused checks pin its witness projection,
 false strengthening, privacy, and a distinct-head two-cell model. A repeated
 cold batch receipt remains deferred to the next lookup WMI batch.
+
+`list_at_head_iff` now has a dependency-curried body checked by the ordinary
+intuitionistic kernel. Its exact four direct dependencies are
+`cell_history_succ_elim`, `cell_history_extend_preserves_prefix`,
+`beta_at_unique`, and `le_refl`. The expanded statement has 12,530 characters
+and SHA-256
+`9f0b3e7496f79b7cc6f4833edc14431dd614081b6f02b2d384aa80c521e2f8ed`.
+Its exact body receipt, in
+`(dependencies,commands,nodes,depth,objects,edges,reused)` order, is
+`(4,119,265,36,255,264,10)`. The forward implication uses beta uniqueness
+twice—first at `S j` for the terminal code and then at `j` for the tail—so it
+does not use cell-tail functionality; the reverse implication uses the
+prefix-preservation map at the old terminal. This is body-level evidence
+only. No repeated cold empty-context receipt, registration, admission, or
+public theorem is claimed for the head equation. The next proof body is
+`list_at_succ_iff`; the next lookup WMI batch must cold-close all newly ready
+rows before any admission review.
