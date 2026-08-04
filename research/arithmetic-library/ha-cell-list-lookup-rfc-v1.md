@@ -140,7 +140,7 @@ later theorem statement expands D01/D02, `CellHistory`, `CellListLen`,
 | 1 | `ListAt` | definition D02 and its exact surface receipt; not a theorem | D01, `CellHistory`, `BetaAt`, exact D06 `Cell` |
 | 2 | `cell_history_extend_preserves_prefix` | expose the old decoded prefix in the extended history | `beta_prefix_extend`, `finite_lt_succ_eq_or_lt`, `zero_le`, `succ_le_succ`, `le_refl` |
 | 3 | `list_at_domain` | project a semantic length and the native strict index bound | `cell_list_length_functional` only if an external length is supplied; otherwise definition elimination |
-| 4 | `list_at_head_iff` | characterize lookup at outer index zero | rung 2, `cell_history_succ_elim`, `beta_at_unique`, cell functionality |
+| 4 | `list_at_head_iff` | characterize lookup at outer index zero | rung 2, `cell_history_succ_elim`, `beta_at_unique`, cell functionality, `le_refl` |
 | 5 | `list_at_succ_iff` | shift lookup through one outer cell | rungs 2 and 4, `cell_history_succ_elim`, `add_comm`, PA2--PA4 |
 | 6 | `list_at_external_bound` | transport the hidden bound to a declared list length | rungs 3, `cell_list_length_functional` |
 | 7 | `list_at_exists` | every in-range index has a decoded head | `CellHistory` universal edge clause, definition introduction |
@@ -402,6 +402,20 @@ The audited closure contains 104 rows (103 public dependencies), and four
 focused tests pin its surface, dependency quarantine, zero-DNE body,
 mutation sensitivity, and the concrete `4,1` to `96,2` recoding example.
 
-This is **BODY-CHECKED only**. No empty-context closure or admission is yet
-claimed. The next action is a twice-cold isolated WMI closure; the lookup
-equations remain blocked until that receipt is sealed.
+WMI job `219209` closed this row twice from the empty context with identical
+receipts. Its exact closed receipt in tuple order
+`(nodes,depth,objects,edges,reused,Cuts,proof DAG SHA-256)` is
+`(29369,81,4668,4896,229,241,7fd7734ab34d90a869c637e76e138db692ba21d4f2bbec41af9817c38ef36498)`.
+The authoritative
+[`receipt`](../../artifacts/peano-library/ha-k3b-listat-prefix-closure-219209.json)
+has SHA-256
+`0d51baf93121da4071d0bb3ebd2b4a2818a7658fa92510fd707620bc2dba6560`.
+Job `219209` completed `0:0` on `c3n1` in `00:02:14`, `MaxRSS=85664K`,
+from clean commit `94cf88912bf368d43a3201abc91c69ddeb442a56` and payload
+`b288d4641680f48c1b145251209bedeb5b82d7ffab40b356a1a2497fef041c74`
+(564,554 bytes, 203 entries). The certificate has zero DNE and remains a
+private, unregistered, unadmitted `closed_checked_candidate`.
+
+The prefix-preservation gate is therefore sealed. The next body is
+`list_at_domain`; the head and successor lookup equations may now depend on
+the closed private prerequisite without making it public.

@@ -4759,6 +4759,11 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - Implemented that support row with a dependency-curried body receipt
   `(5,99,139,37,139,138,0)`. Four focused tests pin its 3,799-character
   surface, 104-row closure, constructive body, mutations, and the exact
-  `4,1` to `96,2` recoding boundary. This remains body-checked only: no cold
-  closure, registry entry, admission, or campaign JSON change is claimed.
-  The light gate is `make ha-k3b-list-lookup-check`; cold closure runs on WMI.
+  `4,1` to `96,2` recoding boundary.
+- WMI job `219209` completed two deterministic cold passes in `00:02:14` on
+  `c3n1`, `MaxRSS=85664K`. Its exact closed receipt is
+  `(29369,81,4668,4896,229,241,7fd7734ab34d90a869c637e76e138db692ba21d4f2bbec41af9817c38ef36498)`;
+  the 1,333-byte report SHA-256 is
+  `0d51baf93121da4071d0bb3ebd2b4a2818a7658fa92510fd707620bc2dba6560`.
+  The result remains private, unregistered, and unadmitted; registry,
+  campaign JSON, and public counts are unchanged.

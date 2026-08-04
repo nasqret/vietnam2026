@@ -770,9 +770,11 @@ functionality, history-witness independence, and extensionality. The existing
 `cell_history_extend` conclusion is deliberately opaque and does not expose
 the beta-prefix transport needed by successor introduction; therefore
 `cell_history_extend_preserves_prefix` is the first proof obligation. Its
-dependency-curried body now checks at `(5,99,139,37,139,138,0)`, but no
-empty-context closure, lookup equation, registry entry, or admission is yet
-claimed. Public runtime/catalog and campaign accounting remain 432/433 and 95/121/169;
+dependency-curried body checks at `(5,99,139,37,139,138,0)`. WMI job `219209`
+then closed it twice from the empty context at
+`(29369,81,4668,4896,229,241,7fd7734ab34d90a869c637e76e138db692ba21d4f2bbec41af9817c38ef36498)`
+with zero DNE. The row remains private, unregistered, and unadmitted; no
+lookup equation is yet claimed. Public runtime/catalog and campaign accounting remain 432/433 and 95/121/169;
 strict K3 remains 96 rows/21 modules. The lightweight design gate is
 `make ha-k3b-list-lookup-check`. The Book, explorer, catalog, campaign JSON,
 and public snapshots remain untouched until closure/admission review.

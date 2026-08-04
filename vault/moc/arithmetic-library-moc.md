@@ -98,9 +98,14 @@ is currently surface-frozen only. It indexes from the outer head using
 `b83d91b6ec8e6b83fe637e1533c72beef54c7e7a4b41f1518bce8785cc9f11ce`;
 seven focused tests pass. The first support row,
 `cell_history_extend_preserves_prefix`, has a checked dependency-curried body
-receipt `(5,99,139,37,139,138,0)` plus four focused audits. It has no cold
-empty-context receipt yet, and no lookup equation is claimed. Public and
-campaign counts remain unchanged.
+receipt `(5,99,139,37,139,138,0)` plus four focused audits. WMI job `219209`
+closed it twice at
+`(29369,81,4668,4896,229,241,7fd7734ab34d90a869c637e76e138db692ba21d4f2bbec41af9817c38ef36498)`;
+the [report](../../artifacts/peano-library/ha-k3b-listat-prefix-closure-219209.json)
+has SHA-256
+`0d51baf93121da4071d0bb3ebd2b4a2818a7658fa92510fd707620bc2dba6560`.
+It remains private and unadmitted, no lookup equation is yet claimed, and
+public/campaign counts remain unchanged.
 
 ## Design and trust
 

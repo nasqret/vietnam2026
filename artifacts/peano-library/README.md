@@ -86,3 +86,25 @@ performed. All eight rows remain private, unregistered, and unadmitted. The
 public catalog and campaign JSON are unchanged: strict K3 stays 96 rows across
 21 modules and campaign accounting stays 95 public references, 121 private
 candidates, and 169 receipts.
+
+## Private K3B lookup-prefix closure receipt
+
+[`ha-k3b-listat-prefix-closure-219209.json`](ha-k3b-listat-prefix-closure-219209.json)
+is the authoritative two-pass cold-closure report for
+`cell_history_extend_preserves_prefix`, the first support theorem of
+`HA-K3B-LISTAT-1`. Its SHA-256 is
+`0d51baf93121da4071d0bb3ebd2b4a2818a7658fa92510fd707620bc2dba6560`.
+WMI job `219209` completed `0:0` on `c3n1` in `00:02:14` with
+`MaxRSS=85664K`; it binds clean commit
+`94cf88912bf368d43a3201abc91c69ddeb442a56` to payload SHA-256
+`b288d4641680f48c1b145251209bedeb5b82d7ffab40b356a1a2497fef041c74`
+(564,554 bytes, 203 entries).
+
+Both passes yielded the exact receipt
+`(29369,81,4668,4896,229,241,7fd7734ab34d90a869c637e76e138db692ba21d4f2bbec41af9817c38ef36498)`
+in tuple order
+`(nodes,depth,objects,edges,reused,Cuts,proof DAG SHA-256)`. The 104-row
+dependency closure is deterministic, the certificate contains zero DNE, and
+the result fits the unchanged 500,000-node/100,000-object/depth-256 policy.
+This is private `closed_checked_candidate` evidence only; no registry,
+catalog, campaign JSON, public snapshot, or admission count is changed.

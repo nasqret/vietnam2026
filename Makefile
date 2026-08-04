@@ -138,6 +138,7 @@ ha-k3b-cell-history-check:
 # claimed by this design-freeze gate.
 ha-k3b-list-lookup-check:
 	python3 -m pytest -q scripts/test_verify_ha_cell_list_lookup_rfc.py
+	python3 -m pytest -q scripts/test_verify_ha_cell_list_lookup_wmi_receipt.py
 	cd peano-lab/py && python3 -m pytest -q \
 		tests/test_ha_cell_list_lookup_surface_candidate.py \
 		tests/test_ha_cell_history_prefix_preservation_candidate.py

@@ -117,8 +117,14 @@ dependency-curried kernel-checked body: `(5,99,139,37,139,138,0)` in order
 `(dependencies,commands,nodes,depth,objects,edges,reused)`. Four additional
 tests pin its 3,799-character statement, exact dependency closure, mutations,
 zero-DNE body, and concrete recoding boundary. No empty-context closure or
-lookup equation is yet claimed. Run the separate lightweight gate with
-`make ha-k3b-list-lookup-check`.
+lookup equation was claimed by that body gate. WMI job `219209` has now closed
+the support theorem twice from the empty context at
+`(29369,81,4668,4896,229,241,7fd7734ab34d90a869c637e76e138db692ba21d4f2bbec41af9817c38ef36498)`.
+The sealed [receipt](../../artifacts/peano-library/ha-k3b-listat-prefix-closure-219209.json)
+has SHA-256
+`0d51baf93121da4071d0bb3ebd2b4a2818a7658fa92510fd707620bc2dba6560`.
+It remains private and unadmitted; no lookup equation is yet claimed. Run the
+separate lightweight gate with `make ha-k3b-list-lookup-check`.
 
 The K4
 [`signed-gcd client`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)
