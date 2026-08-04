@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections import Counter
+import hashlib
 import json
 from pathlib import Path
 from runpy import run_path
@@ -17,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[3]
 SCRIPT = run_path(str(ROOT / "scripts" / "validate_peano_hydra_h0.py"))
 ExternalVerifierSuite = SCRIPT["ExternalVerifierSuite"]
 H0ValidationError = SCRIPT["H0ValidationError"]
+REPORT_VERSION = SCRIPT["REPORT_VERSION"]
 REVIEWED_LEAN_SOURCE_COMMIT = SCRIPT["REVIEWED_LEAN_SOURCE_COMMIT"]
 REVIEWED_LEAN_SOURCE_MANIFEST_SHA256 = SCRIPT[
     "REVIEWED_LEAN_SOURCE_MANIFEST_SHA256"
@@ -31,7 +33,9 @@ _campaign_eligibility = SCRIPT["_campaign_eligibility"]
 _envelope_reason = SCRIPT["_envelope_reason"]
 _inspect_lean_source_identity = SCRIPT["_inspect_lean_source_identity"]
 _lean_source_identity = SCRIPT["_lean_source_identity"]
+_macro_protocol_controls = SCRIPT["_macro_protocol_controls"]
 _require_unchanged_repository = SCRIPT["_require_unchanged_repository"]
+_run_macro_focused_tests = SCRIPT["_run_macro_focused_tests"]
 _run_required_regressions = SCRIPT["_run_required_regressions"]
 _schema_controls = SCRIPT["_schema_controls"]
 _source_manifest = SCRIPT["_source_manifest"]
@@ -58,12 +62,21 @@ from training.peano_hydra.conformance import (  # noqa: E402
     validate_boundary_mutations,
     validate_positive_with_python,
 )
+import training.peano_hydra.h0_macro_evidence as macro_evidence  # noqa: E402
+from training.peano_hydra.macro_runner import MacroTrace  # noqa: E402
 from training.peano_hydra.profile import canonical_profile_theorem  # noqa: E402
 
 
 EXPECTED_GENERATED_FORMULA_ROOT = (
     "5af8d13da7d1bfc8c5079244c3c4cf83cd51a7842ba54df16b0fad39b1b8f577"
 )
+EXPECTED_MACRO_FIXTURE_ROOT = (
+    "e9e7f0f4c6e6c399de75dbea876d55b57e58a823abc85cffbcfbb519cb740c62"
+)
+
+
+def test_complete_h0_report_schema_is_version_two() -> None:
+    assert REPORT_VERSION == 2
 
 
 def _make_executable(path: Path, source: str) -> Path:
@@ -203,6 +216,184 @@ def test_result_schema_controls_retain_all_hash_preimages() -> None:
         "schema_rejected",
     ]
     assert str(ROOT) not in json.dumps(controls)
+
+
+def _assert_utf8_preimage(preimage: dict[str, object]) -> bytes:
+    assert set(preimage) == {"bytes", "content_utf8", "encoding", "sha256"}
+    assert preimage["encoding"] == "utf-8"
+    content = preimage["content_utf8"]
+    assert type(content) is str
+    raw = content.encode("utf-8")
+    assert preimage["bytes"] == len(raw)
+    assert preimage["sha256"] == hashlib.sha256(raw).hexdigest()
+    return raw
+
+
+def test_macro_protocol_controls_are_self_contained_exact_h03_evidence() -> None:
+    controls = _macro_protocol_controls(timeout_seconds=120)
+    assert controls["interpretation"] == (
+        "H0.3 protocol/conformance controls; solver status has no proof authority"
+    )
+    assert controls["macro_protocol_identity"] == {
+        "format": "peano-hydra-macro-protocol",
+        "v": 1,
+        "id": "peano-hydra-macro-v1",
+        "semantic_sha256": (
+            "b5fef1ea1b85251ab7f0b8c111cb37e789f96f20771665b4f0dc8b746400552c"
+        ),
+        "document_sha256": (
+            "6f6920d2d952251170733674a3af8da09926f4faf19215317a32bc0317d4a482"
+        ),
+    }
+
+    fixtures = controls["typed_action_fixtures"]
+    assert fixtures["count"] == 7
+    assert fixtures["order"] == [
+        "Use",
+        "Cut",
+        "Witness",
+        "Induct",
+        "Rewrite",
+        "Split",
+        "Dispatch",
+    ]
+    assert fixtures["root_sha256"] == EXPECTED_MACRO_FIXTURE_ROOT
+    assert digest_json(fixtures["rows"]) == EXPECTED_MACRO_FIXTURE_ROOT
+    for row in fixtures["rows"]:
+        raw = _assert_utf8_preimage(row["canonical_preimage"])
+        assert json.loads(raw) == row["canonical_object"]
+        assert set(row["compilation"]) == {"dispatch", "public_commands"}
+
+    for name, expected_status in (
+        ("accepted_deterministic_trace", "accepted"),
+        ("transactional_rejected_trace", "rejected"),
+    ):
+        trace = controls[name]
+        raw = _assert_utf8_preimage(trace["canonical_preimage"])
+        assert json.loads(raw) == trace["record"]
+        assert trace["root_sha256"] == hashlib.sha256(raw).hexdigest()
+        assert MacroTrace.from_record(trace["record"]).sha256 == trace["root_sha256"]
+        assert trace["record"]["outcome"]["status"] == expected_status
+    accepted = controls["accepted_deterministic_trace"]
+    assert accepted["deterministic_repetitions"] == 2
+    assert accepted["exact_match"] is True
+    rejected = controls["transactional_rejected_trace"]
+    assert rejected["record"]["state_before"] == rejected["record"]["state_after"]
+    assert all(rejected["unchanged_owner_assertions"].values())
+    owner_raw = _assert_utf8_preimage(rejected["owner_state_preimage"])
+    assert json.loads(owner_raw) == rejected["record"]["state_before"]
+
+    dispatch = controls["dispatch_reconstruction"]
+    adapter = dispatch["adapter"]
+    artifact_raw = _assert_utf8_preimage(adapter["artifact_preimage"])
+    configuration_raw = _assert_utf8_preimage(adapter["configuration_preimage"])
+    assert adapter["identity"]["artifact_sha256"] == hashlib.sha256(
+        artifact_raw
+    ).hexdigest()
+    assert adapter["identity"]["configuration_sha256"] == hashlib.sha256(
+        configuration_raw
+    ).hexdigest()
+    assert json.loads(configuration_raw) == adapter["configuration"]
+
+    request = dispatch["dispatch_request"]
+    request_raw = _assert_utf8_preimage(request["canonical_preimage"])
+    assert json.loads(request_raw) == request["preimage"]
+    call = dispatch["dispatch_call"]
+    call_raw = _assert_utf8_preimage(call["canonical_preimage"])
+    assert json.loads(call_raw) == call["preimage"]
+    assert call["preimage"]["request"] == request["preimage"]
+    assert call["preimage"]["request_sha256"] == request["canonical_preimage"][
+        "sha256"
+    ]
+
+    dispatch_trace = dispatch["trace"]
+    dispatch_trace_raw = _assert_utf8_preimage(
+        dispatch_trace["canonical_preimage"]
+    )
+    assert json.loads(dispatch_trace_raw) == dispatch_trace["record"]
+    assert MacroTrace.from_record(dispatch_trace["record"]).sha256 == dispatch_trace[
+        "root_sha256"
+    ]
+    solver = dispatch_trace["record"]["solver"]
+    assert solver["request"] == request["preimage"]
+    assert solver["request_sha256"] == request["canonical_preimage"]["sha256"]
+    assert solver["dispatch_call_request_sha256"] == request["canonical_preimage"][
+        "sha256"
+    ]
+    assert solver["dispatch_call_sha256"] == call["canonical_preimage"]["sha256"]
+    assert solver["adapter_identity"] == adapter["identity"]
+    assert solver["adapter_configuration"] == adapter["configuration"]
+    assert dispatch["fresh_original_goal_kernel_check"] == {
+        "accepted": True,
+        "context": "empty",
+        "original_theorem": "0 = 0",
+    }
+    final = dispatch_trace["record"]["final_replay"]
+    assert final["fresh"] is final["kernel_accepted"] is True
+    assert final["original_theorem"] == "0 = 0"
+    certificate = _assert_utf8_preimage(dispatch["certificate_artifact_preimage"])
+    assert hashlib.sha256(certificate).hexdigest() == final[
+        "certificate_sha256"
+    ]
+    response = _assert_utf8_preimage(dispatch["raw_response_preimage"])
+    assert json.loads(response)["public_commands"] == ["refl"]
+
+    focused = controls["focused_pytest"]
+    assert focused["command"] == {
+        "argv": [
+            "python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "tests/test_peano_hydra_macros.py",
+            "tests/test_peano_hydra_macro_runner.py",
+        ],
+        "cwd": "peano-lab/py",
+        "environment": {
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONHASHSEED": "0",
+            "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        },
+    }
+    assert focused["result"]["exit_code"] == 0
+    assert focused["result"]["passed"] == 110
+    assert focused["result"]["summary"].startswith("110 passed in ")
+    _assert_utf8_preimage(focused["result"]["stdout"])
+    assert _assert_utf8_preimage(focused["result"]["stderr"]) == b""
+    assert str(ROOT) not in json.dumps(controls)
+
+
+def test_macro_protocol_controls_fail_closed_on_registered_root_drift(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(macro_evidence, "FIXTURE_ROOT_SHA256", "0" * 64)
+    with pytest.raises(
+        macro_evidence.H0MacroEvidenceError,
+        match="fixture content root drifted",
+    ):
+        macro_evidence.build_h0_macro_evidence()
+
+
+def test_macro_evidence_builder_rejects_caller_supplied_test_claims() -> None:
+    forged = {"result": {"exit_code": 0, "passed": 110}}
+    with pytest.raises(TypeError, match="unexpected keyword argument"):
+        macro_evidence.build_h0_macro_evidence(  # type: ignore[call-arg]
+            focused_pytest=forged
+        )
+
+
+def test_focused_macro_test_failure_cannot_be_reported_as_green(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def failed_run(*_args, **_kwargs):
+        return subprocess.CompletedProcess(
+            ["pytest"], 1, stdout=b"109 passed, 1 failed\n", stderr=b""
+        )
+
+    monkeypatch.setattr(subprocess, "run", failed_run)
+    with pytest.raises(H0ValidationError, match="exact green result"):
+        _run_macro_focused_tests(timeout_seconds=1)
 
 
 def test_constructor_coverage_gate_uses_the_exact_profile_inventory() -> None:
@@ -641,8 +832,12 @@ def test_implementation_manifest_binds_the_complete_h0_macro_layer() -> None:
     manifest = _source_manifest()
     paths = {row["path"] for row in manifest["files"]}
     assert {
+        "peano-lab/py/tests/test_peano_hydra_conformance.py",
+        "peano-lab/py/tests/test_peano_hydra_macro_runner.py",
+        "peano-lab/py/tests/test_peano_hydra_macros.py",
         "training/peano_hydra/__init__.py",
         "training/peano_hydra/macro-protocol-v1.json",
+        "training/peano_hydra/h0_macro_evidence.py",
         "training/peano_hydra/macro_runner.py",
         "training/peano_hydra/macros.py",
         "training/peano_hydra/policy.py",

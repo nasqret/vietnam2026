@@ -405,8 +405,13 @@ def test_trainer_probe_arguments_are_one_step_and_io_free(tmp_path: Path) -> Non
 def test_actual_completion_trainer_lifecycle_probe_updates_and_evaluates(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    class DynamoBackend(Enum):
-        NO = "NO"
+    try:
+        from accelerate.utils import DynamoBackend
+    except ImportError:
+        # Mirror the production boundary: exact enum identity is available in
+        # the training environment, while lightweight CI may omit Accelerate.
+        class DynamoBackend(Enum):
+            NO = "NO"
 
     class TinyIndexedModel(torch.nn.Module):
         def __init__(self) -> None:

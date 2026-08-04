@@ -405,9 +405,15 @@ def test_trainer_mixin_rejects_single_process_data_parallel() -> None:
         CompletionTrainer()
 
 
-class DynamoBackend(Enum):
-    NO = "NO"
-    INDUCTOR = "INDUCTOR"
+try:
+    from accelerate.utils import DynamoBackend
+except ImportError:
+    # Keep the lightweight test environment independent of the training stack,
+    # while exercising the exact enum identity required in production whenever
+    # Accelerate is installed.
+    class DynamoBackend(Enum):
+        NO = "NO"
+        INDUCTOR = "INDUCTOR"
 
 
 def _single_gpu_trainer_runtime(*, accumulation: int = 32) -> SimpleNamespace:

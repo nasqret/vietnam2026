@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Seal Peano Hydra H0.2 with cold replay and cross-language checking.
+"""Seal Peano Hydra H0 with semantic, macro, and cross-language checks.
 
 The production command requires explicit paths to the clean pinned Lean source
 tree and its verifier, native Rust shadow, Node executable, and committed WASM
@@ -63,6 +63,9 @@ from training.peano_hydra.conformance import (  # noqa: E402
     validate_boundary_mutations,
     validate_positive_with_python,
 )
+from training.peano_hydra.h0_macro_evidence import (  # noqa: E402
+    build_h0_macro_evidence,
+)
 from training.peano_hydra.result_schema import (  # noqa: E402
     HydraResultSchemaError,
     build_checked_proved_evidence,
@@ -75,12 +78,17 @@ from training.peano_hydra.result_schema import (  # noqa: E402
 
 
 REPORT_FORMAT = "peano-hydra-h0-validation"
-REPORT_VERSION = 1
+REPORT_VERSION = 2
 COLD_REPLAY_FORMAT = "peano-hydra-h0-cold-replay"
 COLD_REPLAY_VERSION = 1
 DEFAULT_TIMEOUT_SECONDS = 120.0
 DEFAULT_CAMPAIGN_TIMEOUT_SECONDS = 14_400.0
 LEAN_BATCH_SIZE = 128
+MACRO_FOCUSED_TESTS = (
+    "tests/test_peano_hydra_macros.py",
+    "tests/test_peano_hydra_macro_runner.py",
+)
+EXPECTED_MACRO_FOCUSED_TEST_COUNT = 110
 
 # This is the independently reviewed Cut-aware Lean reference, not a
 # caller-selected executable.  The source root is content-bound as well as
@@ -124,8 +132,12 @@ REQUIRED_REGRESSION_TESTS = (
 )
 
 SOURCE_PATHS = (
+    Path("peano-lab/py/tests/test_peano_hydra_conformance.py"),
+    Path("peano-lab/py/tests/test_peano_hydra_macro_runner.py"),
+    Path("peano-lab/py/tests/test_peano_hydra_macros.py"),
     Path("training/peano_hydra/__init__.py"),
     Path("training/peano_hydra/conformance.py"),
+    Path("training/peano_hydra/h0_macro_evidence.py"),
     Path("training/peano_hydra/macros.py"),
     Path("training/peano_hydra/macro_runner.py"),
     Path("training/peano_hydra/macro-protocol-v1.json"),
@@ -147,7 +159,7 @@ SOURCE_PATHS = (
 
 
 class H0ValidationError(RuntimeError):
-    """The H0.2 campaign failed closed."""
+    """The H0 campaign failed closed."""
 
 
 def _load_strict_json(path: Path) -> object:
@@ -1107,6 +1119,93 @@ def _run_required_regressions(*, timeout_seconds: float) -> dict[str, object]:
     }
 
 
+def _run_macro_focused_tests(*, timeout_seconds: float) -> dict[str, object]:
+    command = [sys.executable, "-B", "-m", "pytest", "-q", *MACRO_FOCUSED_TESTS]
+    environment = dict(os.environ)
+    environment.update(
+        PYTHONDONTWRITEBYTECODE="1",
+        PYTHONHASHSEED="0",
+        PYTEST_DISABLE_PLUGIN_AUTOLOAD="1",
+    )
+    try:
+        result = subprocess.run(
+            command,
+            cwd=PEANO_PYTHON,
+            env=environment,
+            check=False,
+            capture_output=True,
+            timeout=timeout_seconds,
+        )
+        stdout, stderr = result.stdout.decode("utf-8"), result.stderr.decode("utf-8")
+    except (OSError, UnicodeDecodeError, subprocess.SubprocessError) as error:
+        raise H0ValidationError(
+            f"focused H0.3 macro tests failed to run: {error}"
+        ) from error
+    lines = stdout.splitlines()
+    prefix = f"{EXPECTED_MACRO_FOCUSED_TEST_COUNT} passed in "
+    if (
+        result.returncode != 0
+        or stderr
+        or not lines
+        or not lines[-1].startswith(prefix)
+        or not lines[-1].endswith("s")
+    ):
+        raise H0ValidationError(
+            "focused H0.3 macro tests did not produce the exact green result"
+        )
+    try:
+        duration = float(lines[-1][len(prefix) : -1])
+    except ValueError as error:
+        raise H0ValidationError("focused H0.3 pytest summary is malformed") from error
+    if not math.isfinite(duration) or duration < 0:
+        raise H0ValidationError("focused H0.3 pytest duration is malformed")
+
+    def preimage(content: str) -> dict[str, object]:
+        raw = content.encode("utf-8")
+        return {
+            "bytes": len(raw),
+            "content_utf8": content,
+            "encoding": "utf-8",
+            "sha256": digest_bytes(raw),
+        }
+
+    return {
+        "command": {
+            "argv": ["python", "-B", "-m", "pytest", "-q", *MACRO_FOCUSED_TESTS],
+            "cwd": "peano-lab/py",
+            "environment": {
+                "PYTHONDONTWRITEBYTECODE": "1",
+                "PYTHONHASHSEED": "0",
+                "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+            },
+        },
+        "result": {
+            "exit_code": 0,
+            "passed": EXPECTED_MACRO_FOCUSED_TEST_COUNT,
+            "stderr": preimage(stderr),
+            "stdout": preimage(stdout),
+            "summary": lines[-1],
+        },
+    }
+
+
+def _macro_protocol_controls(*, timeout_seconds: float) -> dict[str, object]:
+    """Build exact H0.3 evidence; never return a partial passing record."""
+
+    try:
+        focused_pytest = _run_macro_focused_tests(timeout_seconds=timeout_seconds)
+        controls = {
+            **build_h0_macro_evidence(),
+            "focused_pytest": focused_pytest,
+        }
+    except Exception as error:
+        raise H0ValidationError(f"H0.3 macro evidence failed: {error}") from error
+    canonical_json_bytes(controls)
+    if str(ROOT) in json.dumps(controls, ensure_ascii=False):
+        raise H0ValidationError("H0.3 evidence retained a local filesystem path")
+    return controls
+
+
 def _schema_controls() -> dict[str, object]:
     """Build checked, reconstructable schema fixtures, not benchmark rows."""
 
@@ -1234,7 +1333,7 @@ def validate_campaign(
     require_clean: bool = True,
     run_regressions: bool = True,
 ) -> dict[str, object]:
-    """Run and return the complete retained H0.2 evidence object."""
+    """Run and return the complete retained H0 evidence object."""
 
     campaign_deadline_ns = _deadline_ns(
         campaign_timeout_seconds, "total campaign deadline"
@@ -1315,6 +1414,11 @@ def validate_campaign(
     external_results = tuple(library_external) + generated_external
     generated_duration_ns = perf_counter_ns() - generated_started
     schema_controls = _schema_controls()
+    macro_controls = _macro_protocol_controls(
+        timeout_seconds=_remaining_seconds(
+            campaign_deadline_ns, "focused H0.3 macro conformance"
+        )
+    )
     unknown_control = schema_controls["unknown"]
     if type(unknown_control) is not dict:
         raise H0ValidationError("unknown result-schema control is malformed")
@@ -1435,6 +1539,7 @@ def validate_campaign(
         },
         "format": REPORT_FORMAT,
         "implementation_sources": implementation_sources,
+        "macro_protocol_controls": macro_controls,
         "profile_sha256": semantic_profile_sha256(),
         "reference_identity": second["external_identity"],
         "regressions": regressions,
@@ -1531,7 +1636,7 @@ def main(argv: list[str] | None = None) -> int:
                 )
             ):
                 raise H0ValidationError(
-                    "full H0.2 validation requires explicit --lean-source-root, "
+                    "full H0 validation requires explicit --lean-source-root, "
                     "--lean-verifier, --rust-cli, --node, and --wasm paths"
                 )
             payload = validate_campaign(
@@ -1551,12 +1656,12 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     if not args.cold_worker and payload.get("validation_passed") is True:
         print(
-            f"H0.2 PASS: {payload['conformance']['positive_count']} positives, "
+            f"H0 PASS: {payload['conformance']['positive_count']} positives, "
             f"cold root {payload['cold_replay']['root_sha256']}"
         )
     elif not args.cold_worker:
         print(
-            "H0.2 DEVELOPMENT REPORT: campaign-ineligible ("
+            "H0 DEVELOPMENT REPORT: campaign-ineligible ("
             + ", ".join(payload["ineligibility_reasons"])
             + ")"
         )
