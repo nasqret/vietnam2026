@@ -2139,8 +2139,8 @@
   the six hidden lookup witnesses and returns `CellListLen(z,l)` plus the
   native bound `k+S i=l`. It has no dependencies; its statement receipt is
   `(5903,065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240)`
-  and its Cut-free/DNE-free proof receipt is `(0,19,39,23,39,38,0)`. The row
-  is private and awaits the next repeated cold lookup batch.
+  and its Cut-free/DNE-free proof receipt is `(0,19,39,23,39,38,0)`. Job
+  `219217` later reproduced it twice cold; the row remains private.
 - **K3B outer-head equation body (2026-08-04):** the private
   `list_at_head_iff` statement expands to 12,530 characters with SHA-256
   `9f0b3e7496f79b7cc6f4833edc14431dd614081b6f02b2d384aa80c521e2f8ed`.
@@ -2149,8 +2149,8 @@
   `cell_history_extend_preserves_prefix`, `beta_at_unique`, and `le_refl`.
   Beta uniqueness is used once at `S j` for the terminal code and once at
   `j` for the predecessor tail, so `cell_tail_functional` is not a dependency.
-  This is body-checked evidence only: no cold closure, registry entry,
-  admission, public theorem, or campaign-accounting change is recorded.
+  Job `219217` later cold-closed it twice; no registry entry, admission,
+  public theorem, or campaign-accounting change is recorded.
 - **K3B successor lookup equation body (2026-08-04):** private
   `list_at_succ_iff` has statement receipt
   `(14716,004ef041acbcfbaaeda594f5f47fbea75ac6f8df87ca8bcf49774cfcbc3a978c)`
@@ -2159,24 +2159,25 @@
   `cell_history_extend_preserves_prefix`, `add_comm`. The direct same-history
   proof needs neither `list_at_head_iff` nor PA2: forward elimination retains
   `b,c`, while reverse extension preserves the selected entries at `j` and
-  `S j` using additive witnesses `S i` and `i`. The body has zero DNE but no
-  cold closure, registry entry, admission, public theorem, or accounting
-  change.
+  `S j` using additive witnesses `S i` and `i`. Job `219217` later
+  cold-closed it twice with zero DNE; no registry entry, admission, public
+  theorem, or accounting change is recorded.
 - **K3B external-bound lookup body (2026-08-04):** private
   `list_at_external_bound` has statement receipt
   `(7481,a86efefaf31c9bfce0cd146f6aab932f22962b688fdc7f6bc4dd0beeb40bc9f8)`
   and body receipt `(2,23,28,17,28,27,0)`. Its exact dependency order is
   `list_at_domain`, `cell_list_length_functional`; functionality returns the
   declared-to-hidden orientation `l=m`, which transports the projected bound.
-  It has zero DNE but no cold closure, registration, admission, public theorem,
-  or accounting change.
+  Job `219217` later cold-closed it twice with zero DNE; registration,
+  admission, a public theorem, and accounting remain absent.
 - **K3B in-range lookup existence body (2026-08-04):** private
   `list_at_exists` has statement receipt
   `(6883,aeb4f15d9a96492b096f869e9361db6a31bce9a59041b1dd9f87fe221df2278c)`
   and body receipt `(1,45,60,26,60,59,0)`. Its sole dependency is `add_comm`:
   PA4 and commutativity convert `j+S i=l` into `i+S j=l`, enabling the history
-  edge clause to supply a head constructively. It has zero DNE but no cold
-  closure, registration, admission, public theorem, or accounting change.
+  edge clause to supply a head constructively. Job `219217` later cold-closed
+  it twice with zero DNE; registration, admission, a public theorem, and
+  accounting remain absent.
 - **K3B lookup functionality body (2026-08-04):** private
   `list_at_functional` has statement receipt
   `(8895,1eba38bb47901319d41e681ed77f218b437e4d2ff1d55f519fff82e7dc8f2361)`
@@ -2184,8 +2185,8 @@
   `list_at_head_iff`, `list_at_succ_iff`, `cell_functional`. Induction is
   generalized over the code and both candidate values; the two branches use
   the head and tail projections of joint cell functionality, respectively.
-  It has zero DNE but no cold closure, registration, admission, public
-  theorem, or accounting change.
+  Job `219217` later cold-closed it twice with zero DNE; registration,
+  admission, a public theorem, and accounting remain absent.
 - **K3B history-independent lookup body (2026-08-04):** private
   `list_at_history_independent` has statement receipt
   `(7581,d0a1ac158e6e0552a8e762b69b602da0157183c832ec0cf4c270586dffcc914d)`
@@ -2193,9 +2194,9 @@
   `list_at_functional`, `add_comm`: it selects the same history edge, converts
   the bound with PA4 and commutativity, constructs client lookups in both
   histories, and transports their decoded head equality. The route uses
-  neither T07, `beta_at_unique`, nor raw beta-code equality. It has zero DNE
-  but no cold closure, registration, admission, public theorem, or accounting
-  change.
+  neither T07, `beta_at_unique`, nor raw beta-code equality. Job `219217`
+  later cold-closed it twice with zero DNE; registration, admission, a public
+  theorem, and accounting remain absent.
 - **K3B cell-list extensionality body (2026-08-04):** private
   `cell_list_extensional` has statement receipt
   `(15451,7033fcdf4c96a866e9d9e0b8381efbbd7b48ab060bcc4adad695ead30ff19831)`,
@@ -2206,6 +2207,25 @@
   nil; the successor case compares heads, transports pointwise bounds with
   PA4/congruence, identifies tails recursively, and normalizes exact D06 with
   two head and four tail rewrites. It has zero DNE. All ten ladder
-  deliverables now have checked surface/body evidence, but T03--T10 still
-  lack repeated cold closure and no registration, admission, public theorem,
-  or accounting change is recorded.
+  deliverables now have checked surface/body evidence.
+- **K3B full history/lookup cold seal (2026-08-04):** WMI job `219217`
+  closed all 17 selected targets twice from the empty context. Both passes are
+  deterministic and every certificate has zero DNE. Exact new receipts in
+  `(nodes,depth,objects,edges,reused,Cuts,proof DAG SHA-256)` order are
+  `T03/list_at_domain = (39,23,39,38,0,0,09c7d6d2bb9d7cd09597285eae31355cf76b8bc54d7c370f8c9507ca0377a701)`,
+  `T04/list_at_head_iff = (32025,83,4982,5225,244,248,52bb6c215c7123e58374d23935490c71eccd3a8704de193612dacb57dd33cba7)`,
+  `T05/list_at_succ_iff = (30885,83,4923,5157,235,247,908364a06285830d2cc6b53919b4399203b12d08c89b9bb98de3cdd4efa5b8fa)`,
+  `T06/list_at_external_bound = (34799,87,5767,6043,277,301,7c49ab5ac74468bf1537d510be4d0837bc97d2432727a3c25f00c80026a38663)`,
+  `T07/list_at_exists = (133,26,127,132,6,3,6778f7b507370cb1bcd95d2bd90b0fbaea317f5ac262565152dc5eabf759698c)`,
+  `T08/list_at_functional = (65579,85,5851,6140,290,296,00fc80f2b18c79f8e45a41682651c32c0fbe8b34bc39c8ca2186067c184d0a4a)`,
+  `T09/list_at_history_independent = (65823,86,6022,6312,291,298,8868aaef643ffe84c4b5fb885d2f16c7b4872f071ce5de92149369d60c3dc20b)`, and
+  `T10/cell_list_extensional = (95253,87,5888,6162,275,266,8558cf1c4c39c0d0d8b363e7304a6c5732cee0593548a4137d1407de58f479ec)`.
+  The authoritative 10,550-byte report
+  `artifacts/peano-library/ha-k3b-listat-full-closure-219217.json` has SHA-256
+  `c79184bee17a7c053287b3b98dcda74cf00498137499ef62122b9c6d15ec40b8`.
+  The job completed `0:0` in `00:15:25` with `MaxRSS=54,496 KiB`, binding
+  clean commit `cb6fcbcc6b51e0b9290e02ed1a16d8b034145b8e` to payload SHA-256
+  `78e0c3d04b98ba1788edce0cd227dae3f7fe36f391a3a80b962da632a1970835`.
+  The seal changes no trust status: all 17 targets remain private,
+  unregistered, and unadmitted; registry, catalog, snapshots, campaign JSON,
+  and public counts remain unchanged.

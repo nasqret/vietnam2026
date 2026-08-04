@@ -116,8 +116,8 @@ support theorem, `cell_history_extend_preserves_prefix`, now has a
 dependency-curried kernel-checked body: `(5,99,139,37,139,138,0)` in order
 `(dependencies,commands,nodes,depth,objects,edges,reused)`. Four additional
 tests pin its 3,799-character statement, exact dependency closure, mutations,
-zero-DNE body, and concrete recoding boundary. No empty-context closure or
-lookup equation was claimed by that body gate. WMI job `219209` has now closed
+zero-DNE body, and concrete recoding boundary. That initial body gate did not
+claim empty-context closure or a lookup equation. WMI job `219209` then closed
 the support theorem twice from the empty context at
 `(29369,81,4668,4896,229,241,7fd7734ab34d90a869c637e76e138db692ba21d4f2bbec41af9817c38ef36498)`.
 The sealed [receipt](../../artifacts/peano-library/ha-k3b-listat-prefix-closure-219209.json)
@@ -130,8 +130,8 @@ The dependency-free [`list_at_domain` projection](../../peano-lab/py/peano_lab/l
 is a checked private body. Its
 statement has 5,903 characters and SHA-256
 `065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240`;
-its Cut-free/DNE-free certificate has 39 nodes at depth 23. It remains private
-and awaits inclusion in the next repeated cold lookup batch.
+its Cut-free/DNE-free certificate has 39 nodes at depth 23. WMI job `219217`
+reproduced it in two cold passes; it remains private and unadmitted.
 
 The [`list_at_head_iff` outer-head equation](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_head_candidate.py)
 is another validated private body; its
@@ -144,9 +144,8 @@ and its dependency-curried body receipt is `(4,119,265,36,255,264,10)` in
 direct dependencies are `cell_history_succ_elim`,
 `cell_history_extend_preserves_prefix`, `beta_at_unique`, and `le_refl`.
 Two beta-uniqueness applications identify the terminal code and predecessor
-tail, avoiding `cell_tail_functional`. This row is body-checked only: it has
-no repeated cold empty-context receipt and remains unregistered, unadmitted,
-and nonpublic.
+tail, avoiding `cell_tail_functional`. WMI job `219217` subsequently
+cold-closed this row twice; it remains unregistered, unadmitted, and nonpublic.
 
 The [`list_at_succ_iff` successor equation](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_succ_candidate.py)
 is also a validated private body. Its
@@ -160,8 +159,8 @@ dependencies, in order, are `cell_history_succ_elim`,
 `cell_history_extend_preserves_prefix`, and `add_comm`. The proof uses the
 same history witnesses in the forward implication and preserves both selected
 edge endpoints in the reverse implication, so the provisional rung-4/PA2
-route is unnecessary. T05 remains body-checked only, without cold closure,
-registration, admission, or a public theorem.
+route is unnecessary. WMI job `219217` subsequently cold-closed T05 twice;
+registration, admission, and a public theorem remain absent.
 
 The private [`list_at_external_bound`](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_external_bound_candidate.py)
 body and its
@@ -181,8 +180,8 @@ have statement receipt
 and proof receipt `(1,45,60,26,60,59,0)`. Its sole direct dependency is
 `add_comm`. The proof turns `j+S i=l` into the universal history edge bound
 `i+S j=l` with PA4 and commutativity, then returns the edge's constructively
-supplied head. Both T06 and T07 are body-checked only, with zero DNE and no
-cold closure, registration, admission, or public theorem.
+supplied head. Both T06 and T07 have zero DNE and were cold-closed twice by
+job `219217`; neither is registered, admitted, or public.
 
 The private [`list_at_functional`](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_functional_candidate.py)
 body and its
@@ -203,8 +202,8 @@ and proof receipt `(2,92,171,38,171,170,0)`. Its exact dependencies are
 `list_at_functional` and `add_comm`: it selects the same edge in the second
 history and compares the resulting client-level lookups, without T07,
 `beta_at_unique`, or raw beta-code equality. Both T08 and T09 have zero DNE
-and remain body-checked only, without cold closure, registration, admission,
-or a public theorem.
+and were cold-closed twice by job `219217`; neither is registered, admitted,
+or public.
 
 The private [`cell_list_extensional`](../../peano-lab/py/peano_lab/library/ha_cell_list_extensional_candidate.py)
 body and its
@@ -220,10 +219,30 @@ successor indices, recursively identifies the tails, then performs two head
 and four tail rewrites in exact D06. The body has zero DNE.
 
 All ten ladder deliverables now have checked surface/body evidence (T01 is the
-frozen definition surface; T02--T10 are theorem bodies). They remain private:
-T03--T10 have no repeated cold empty-context receipts, and no registration,
-admission, public theorem, catalog, snapshot, or campaign-accounting action
-has occurred.
+frozen definition surface; T02--T10 are theorem bodies). WMI job `219217`
+cold-closed the full 17-target history/lookup stack twice with deterministic
+receipts and zero DNE throughout. In tuple order
+`(nodes,depth,objects,edges,reused,Cuts,proof DAG SHA-256)`, the new lookup
+receipts are:
+
+- T03 `list_at_domain = (39,23,39,38,0,0,09c7d6d2bb9d7cd09597285eae31355cf76b8bc54d7c370f8c9507ca0377a701)`;
+- T04 `list_at_head_iff = (32025,83,4982,5225,244,248,52bb6c215c7123e58374d23935490c71eccd3a8704de193612dacb57dd33cba7)`;
+- T05 `list_at_succ_iff = (30885,83,4923,5157,235,247,908364a06285830d2cc6b53919b4399203b12d08c89b9bb98de3cdd4efa5b8fa)`;
+- T06 `list_at_external_bound = (34799,87,5767,6043,277,301,7c49ab5ac74468bf1537d510be4d0837bc97d2432727a3c25f00c80026a38663)`;
+- T07 `list_at_exists = (133,26,127,132,6,3,6778f7b507370cb1bcd95d2bd90b0fbaea317f5ac262565152dc5eabf759698c)`;
+- T08 `list_at_functional = (65579,85,5851,6140,290,296,00fc80f2b18c79f8e45a41682651c32c0fbe8b34bc39c8ca2186067c184d0a4a)`;
+- T09 `list_at_history_independent = (65823,86,6022,6312,291,298,8868aaef643ffe84c4b5fb885d2f16c7b4872f071ce5de92149369d60c3dc20b)`;
+- T10 `cell_list_extensional = (95253,87,5888,6162,275,266,8558cf1c4c39c0d0d8b363e7304a6c5732cee0593548a4137d1407de58f479ec)`.
+
+The authoritative 10,550-byte
+[`report`](../../artifacts/peano-library/ha-k3b-listat-full-closure-219217.json)
+has SHA-256
+`c79184bee17a7c053287b3b98dcda74cf00498137499ef62122b9c6d15ec40b8`.
+Job `219217` completed `0:0` in `00:15:25` with `MaxRSS=54,496 KiB`, binding
+clean commit `cb6fcbcc6b51e0b9290e02ed1a16d8b034145b8e` to payload SHA-256
+`78e0c3d04b98ba1788edce0cd227dae3f7fe36f391a3a80b962da632a1970835`.
+All 17 targets remain private, unregistered, and unadmitted: no public theorem,
+catalog, snapshot, or campaign-accounting action has occurred.
 
 The K4
 [`signed-gcd client`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)

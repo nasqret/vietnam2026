@@ -430,8 +430,9 @@ receipts.
 - Empty-context certificates are then closed twice on WMI with identical
   statement, dependency-closure, certificate, DAG, and zero-DNE receipts.
 - Existing live-proof and kernel resource limits are unchanged.
-- Until those receipts and a separate admission review exist, every theorem
-  remains private, unregistered, and unadmitted, as well as nonpublic.
+- The required two-pass empty-context receipts now exist in WMI job `219217`.
+  Until a separate admission review exists, every theorem remains private,
+  unregistered, and unadmitted; every row is nonpublic.
 
 ## 10. Current evidence and next action
 
@@ -467,8 +468,8 @@ in `(characters,SHA-256)` order, and its exact proof receipt is
 `(0 dependencies,19 commands,39 nodes,depth 23,39 objects,38 edges,0 reused)`.
 The certificate is already empty-context, Cut-free, and DNE-free because the
 row has no dependencies. Three focused checks pin its witness projection,
-false strengthening, privacy, and a distinct-head two-cell model. A repeated
-cold batch receipt remains deferred to the next lookup WMI batch.
+false strengthening, privacy, and a distinct-head two-cell model. WMI job
+`219217` subsequently reproduced that certificate in both cold passes.
 
 `list_at_head_iff` now has a dependency-curried body checked by the ordinary
 intuitionistic kernel. Its exact four direct dependencies are
@@ -481,11 +482,10 @@ Its exact body receipt, in
 `(4,119,265,36,255,264,10)`. The forward implication uses beta uniqueness
 twice—first at `S j` for the terminal code and then at `j` for the tail—so it
 does not use cell-tail functionality; the reverse implication uses the
-prefix-preservation map at the old terminal. This is body-level evidence
-only. No repeated cold empty-context receipt, registration, admission, or
-public theorem is claimed for the head equation. The successor body is
-recorded immediately below; the next lookup WMI batch must cold-close all
-newly ready rows before any admission review.
+prefix-preservation map at the old terminal. This body-level receipt is
+complemented by the repeated empty-context closure from WMI job `219217`;
+registration, admission, and a public theorem are still not claimed. The
+successor body is recorded immediately below.
 
 `list_at_succ_iff` now also has a dependency-curried body checked by the
 ordinary intuitionistic kernel. Its exact direct dependency order is
@@ -498,10 +498,9 @@ Its exact body receipt, in
 `(3,124,198,38,196,197,2)`, with zero DNE. The forward implication restricts
 the same beta history after successor elimination; the reverse implication
 preserves both endpoint decodes using the additive witnesses `S i` and `i`.
-This is body-level evidence only. No repeated cold empty-context receipt,
-registration, admission, or public theorem is claimed for T05. The next proof
-rows are recorded below; all newly ready lookup rows still require a repeated
-cold WMI batch before admission review.
+This body-level receipt is complemented by the repeated empty-context closure
+from WMI job `219217`; registration, admission, and a public theorem are still
+not claimed for T05. The next proof rows are recorded below.
 
 `list_at_external_bound` has a dependency-curried body with exact direct
 dependency order `list_at_domain`, `cell_list_length_functional`. Its expanded
@@ -517,10 +516,9 @@ statement has 6,883 characters and SHA-256
 its exact body receipt is `(1,45,60,26,60,59,0)`. The proof chooses the
 external bound witness as the history-edge index and derives the edge clause's
 bound with PA4 and commutativity, then returns the head supplied by that edge.
-Both T06 and T07 bodies contain zero DNE. This is body-level evidence only:
-neither row has a repeated cold empty-context receipt, registration,
-admission, or public status. The final two body checkpoints are recorded
-below.
+Both T06 and T07 bodies contain zero DNE, and WMI job `219217` subsequently
+cold-closed both rows twice. Neither row is registered, admitted, or public.
+The final two body checkpoints are recorded below.
 
 `list_at_functional` has exact direct dependency order `list_at_head_iff`,
 `list_at_succ_iff`, `cell_functional`. Its expanded statement has 8,895
@@ -537,10 +535,9 @@ route. Its expanded statement has 7,581 characters and SHA-256
 `d0a1ac158e6e0552a8e762b69b602da0157183c832ec0cf4c270586dffcc914d`;
 its body receipt is `(2,92,171,38,171,170,0)`. It selects the same edge in the
 second history, constructs two client lookups, and transports only their
-decoded head equality. Both T08 and T09 bodies have zero DNE. This is
-body-level evidence only: neither row has a repeated cold empty-context
-receipt, registration, admission, or public status. The final extensionality
-checkpoint follows.
+decoded head equality. Both T08 and T09 bodies have zero DNE, and WMI job
+`219217` subsequently cold-closed both rows twice. Neither row is registered,
+admitted, or public. The final extensionality checkpoint follows.
 
 `cell_list_extensional` has exact direct dependency order
 `cell_list_zero_iff_nil`, `cell_list_succ_iff_cell`, `list_at_head_iff`,
@@ -556,7 +553,30 @@ The body contains zero DNE.
 
 The ten-deliverable ladder now has checked evidence throughout: T01 is the
 frozen definition surface and every theorem row T02--T10 has a checked body.
-This remains private evidence only. T03--T10 have no repeated cold
-empty-context receipts, and no registration, admission, public theorem,
-catalog, snapshot, or campaign-accounting action is claimed. The next gate is
-the repeated cold WMI T03--T10 batch.
+WMI job `219217` then cold-closed the complete 17-target history/lookup stack
+twice from the empty context with deterministic receipts and zero DNE in every
+certificate. The new T03--T10 receipts use tuple order
+`(nodes,depth,objects,edges,reused,Cuts,proof DAG SHA-256)`:
+
+| RFC row | theorem | closed receipt |
+|---|---|---|
+| T03 | `list_at_domain` | `(39,23,39,38,0,0,09c7d6d2bb9d7cd09597285eae31355cf76b8bc54d7c370f8c9507ca0377a701)` |
+| T04 | `list_at_head_iff` | `(32025,83,4982,5225,244,248,52bb6c215c7123e58374d23935490c71eccd3a8704de193612dacb57dd33cba7)` |
+| T05 | `list_at_succ_iff` | `(30885,83,4923,5157,235,247,908364a06285830d2cc6b53919b4399203b12d08c89b9bb98de3cdd4efa5b8fa)` |
+| T06 | `list_at_external_bound` | `(34799,87,5767,6043,277,301,7c49ab5ac74468bf1537d510be4d0837bc97d2432727a3c25f00c80026a38663)` |
+| T07 | `list_at_exists` | `(133,26,127,132,6,3,6778f7b507370cb1bcd95d2bd90b0fbaea317f5ac262565152dc5eabf759698c)` |
+| T08 | `list_at_functional` | `(65579,85,5851,6140,290,296,00fc80f2b18c79f8e45a41682651c32c0fbe8b34bc39c8ca2186067c184d0a4a)` |
+| T09 | `list_at_history_independent` | `(65823,86,6022,6312,291,298,8868aaef643ffe84c4b5fb885d2f16c7b4872f071ce5de92149369d60c3dc20b)` |
+| T10 | `cell_list_extensional` | `(95253,87,5888,6162,275,266,8558cf1c4c39c0d0d8b363e7304a6c5732cee0593548a4137d1407de58f479ec)` |
+
+The authoritative 10,550-byte
+[`report`](../../artifacts/peano-library/ha-k3b-listat-full-closure-219217.json)
+has SHA-256
+`c79184bee17a7c053287b3b98dcda74cf00498137499ef62122b9c6d15ec40b8`.
+Job `219217` completed `0:0` in `00:15:25` with `MaxRSS=54,496 KiB`; both
+passes agree for all 17 selected theorems. The report binds clean commit
+`cb6fcbcc6b51e0b9290e02ed1a16d8b034145b8e` to payload SHA-256
+`78e0c3d04b98ba1788edce0cd227dae3f7fe36f391a3a80b962da632a1970835`.
+This is closure evidence, not admission evidence: all 17 targets remain
+private, unregistered, and unadmitted, and no public theorem, catalog,
+snapshot, or campaign-accounting action is claimed.

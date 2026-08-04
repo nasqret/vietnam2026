@@ -92,7 +92,7 @@ gate is `make ha-k3b-cell-history-check`.
 
 The follow-on
 [`HA-K3B-LISTAT-1`](../../research/arithmetic-library/ha-cell-list-lookup-rfc-v1.md)
-has a frozen surface plus private body checks for its domain and head rows. It
+has a frozen surface, private body checks, and a full private cold seal. It
 indexes from the outer head using
 `j + S i = l`, with exact witnesses `l b c j t u`. Its hygienic expansion is
 3,331 characters, 54 formula constructors, and 210 PA AST nodes, SHA-256
@@ -120,8 +120,9 @@ and dependency-curried body receipt `(4,119,265,36,255,264,10)`. Its exact
 direct dependencies are `cell_history_succ_elim`,
 `cell_history_extend_preserves_prefix`, `beta_at_unique`, and `le_refl`.
 The proof uses beta uniqueness at both endpoints of the selected final edge,
-so it does not depend on `cell_tail_functional`. This remains body-level only,
-without cold closure, registration, admission, or a public theorem.
+so it does not depend on `cell_tail_functional`. Job `219217` subsequently
+cold-closed the row twice; registration, admission, and a public theorem
+remain absent.
 
 The private successor equation `list_at_succ_iff` has statement receipt
 `(14716,004ef041acbcfbaaeda594f5f47fbea75ac6f8df87ca8bcf49774cfcbc3a978c)`
@@ -129,8 +130,9 @@ and dependency-curried body receipt `(3,124,198,38,196,197,2)`. Its direct
 dependencies are exactly `cell_history_succ_elim`,
 `cell_history_extend_preserves_prefix`, and `add_comm`. The same-history route
 removes the provisional dependency on `list_at_head_iff` and PA2; reverse
-extension preserves entries at both `j` and `S j`. This remains body-level
-only, without cold closure, registration, admission, or a public theorem.
+extension preserves entries at both `j` and `S j`. Job `219217` subsequently
+cold-closed the row twice; registration, admission, and a public theorem
+remain absent.
 
 The private external-bound row has statement receipt
 `(7481,a86efefaf31c9bfce0cd146f6aab932f22962b688fdc7f6bc4dd0beeb40bc9f8)`
@@ -140,8 +142,8 @@ existence row has statement receipt
 `(6883,aeb4f15d9a96492b096f869e9361db6a31bce9a59041b1dd9f87fe221df2278c)`
 and body receipt `(1,45,60,26,60,59,0)`, depending only on `add_comm`.
 It converts `j+S i=l` to the history edge bound `i+S j=l` and extracts the
-head constructively. Both T06 and T07 remain body-level only, without cold
-closure, registration, admission, or a public theorem.
+head constructively. Job `219217` cold-closed both T06 and T07 twice;
+registration, admission, and a public theorem remain absent.
 
 The private functionality row has statement receipt
 `(8895,1eba38bb47901319d41e681ed77f218b437e4d2ff1d55f519fff82e7dc8f2361)`
@@ -154,8 +156,9 @@ The private history-independence row has statement receipt
 and body receipt `(2,92,171,38,171,170,0)`, depending exactly on
 `list_at_functional` and `add_comm`. It reuses the same history edge and
 compares two client lookups; no T07, beta-uniqueness theorem, or raw-code
-equality is required. Both T08 and T09 have zero DNE and remain body-level
-only, without cold closure, registration, admission, or a public theorem.
+equality is required. Both T08 and T09 have zero DNE and were cold-closed
+twice by job `219217`; registration, admission, and a public theorem remain
+absent.
 
 The private extensionality row has statement receipt
 `(15451,7033fcdf4c96a866e9d9e0b8381efbbd7b48ab060bcc4adad695ead30ff19831)`,
@@ -167,9 +170,28 @@ bounds to successor indices, recursively identifies tails, and normalizes
 exact D06 with two head and four tail rewrites. It has zero DNE.
 
 All ten ladder deliverables now have checked surface/body evidence (the first
-is the frozen definition surface; T02--T10 are theorem bodies). T03--T10
-remain body-level only, without repeated cold closure, registration,
-admission, public theorems, catalog entries, snapshots, or accounting action.
+is the frozen definition surface; T02--T10 are theorem bodies). WMI job
+`219217` cold-closed the complete 17-target history/lookup stack twice from
+the empty context with deterministic receipts and zero DNE throughout. Exact
+new receipts in tuple order
+`(nodes,depth,objects,edges,reused,Cuts,proof DAG SHA-256)` are
+`T03=(39,23,39,38,0,0,09c7d6d2bb9d7cd09597285eae31355cf76b8bc54d7c370f8c9507ca0377a701)`,
+`T04=(32025,83,4982,5225,244,248,52bb6c215c7123e58374d23935490c71eccd3a8704de193612dacb57dd33cba7)`,
+`T05=(30885,83,4923,5157,235,247,908364a06285830d2cc6b53919b4399203b12d08c89b9bb98de3cdd4efa5b8fa)`,
+`T06=(34799,87,5767,6043,277,301,7c49ab5ac74468bf1537d510be4d0837bc97d2432727a3c25f00c80026a38663)`,
+`T07=(133,26,127,132,6,3,6778f7b507370cb1bcd95d2bd90b0fbaea317f5ac262565152dc5eabf759698c)`,
+`T08=(65579,85,5851,6140,290,296,00fc80f2b18c79f8e45a41682651c32c0fbe8b34bc39c8ca2186067c184d0a4a)`,
+`T09=(65823,86,6022,6312,291,298,8868aaef643ffe84c4b5fb885d2f16c7b4872f071ce5de92149369d60c3dc20b)`, and
+`T10=(95253,87,5888,6162,275,266,8558cf1c4c39c0d0d8b363e7304a6c5732cee0593548a4137d1407de58f479ec)`.
+The authoritative 10,550-byte
+[`report`](../../artifacts/peano-library/ha-k3b-listat-full-closure-219217.json)
+has SHA-256
+`c79184bee17a7c053287b3b98dcda74cf00498137499ef62122b9c6d15ec40b8`.
+Job `219217` completed `0:0` in `00:15:25`, `MaxRSS=54,496 KiB`, from clean
+commit `cb6fcbcc6b51e0b9290e02ed1a16d8b034145b8e` and payload SHA-256
+`78e0c3d04b98ba1788edce0cd227dae3f7fe36f391a3a80b962da632a1970835`.
+All 17 targets remain private, unregistered, and unadmitted; public theorems,
+catalog entries, snapshots, campaign accounting, and counts remain unchanged.
 
 ## Design and trust
 

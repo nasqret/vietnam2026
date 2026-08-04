@@ -134,12 +134,12 @@ ha-k3b-cell-history-check:
 		tests/test_ha_cell_list_length_bound_candidate.py \
 		tests/test_ha_cell_list_length_total_candidate.py
 
-# Deliberately lightweight: lookup theorem candidates are checked only as
-# dependency-curried bodies here.  Empty-context closure remains a separate
-# isolated WMI release gate.
+# Deliberately lightweight locally: candidate bodies are dependency-curried,
+# while the two empty-context WMI receipts are verified without proof replay.
 ha-k3b-list-lookup-check:
 	python3 -m pytest -q scripts/test_verify_ha_cell_list_lookup_rfc.py
 	python3 -m pytest -q scripts/test_verify_ha_cell_list_lookup_wmi_receipt.py
+	python3 -m pytest -q scripts/test_verify_ha_cell_list_lookup_full_wmi_receipt.py
 	cd peano-lab/py && python3 -m pytest -q \
 		tests/test_ha_cell_list_lookup_surface_candidate.py \
 		tests/test_ha_cell_history_prefix_preservation_candidate.py \

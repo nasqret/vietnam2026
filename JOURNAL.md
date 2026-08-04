@@ -4703,10 +4703,9 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   `cell_list_length_functional = (5,119,163,42,163,162,0)`,
   `cell_list_length_le_code = (5,43,49,22,49,48,0)`, and
   `cell_list_length_total = (3,22,58,32,58,57,0)`.
-- Classified the checkpoint as **BODY-CHECKED only**. Only
-  `cell_history_nil` has a known prior empty-context receipt. The other seven
-  theorem rows await isolated WMI cold closure. VPN/WMI access is restored;
-  the closure runner/submission is being prepared, but no result is claimed.
+- Classified that checkpoint as **BODY-CHECKED only**. At that point only
+  `cell_history_nil` had a known prior empty-context receipt; job `219203`,
+  recorded in the next entry, later cold-closed all eight theorem rows.
 - Expanded `make ha-k3b-cell-history-check` as the deliberately separate light
   structural/body gate for the RFC and all five focused candidate suites. It
   is not part of `ha-number-theory-check` yet. No
@@ -4784,8 +4783,9 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   history terminal at `S j`, then aligns the selected tail with the
   predecessor-history terminal at `j`. This removes the initially proposed
   `cell_tail_functional` dependency. Prefix preservation supplies the reverse
-  implication. This checkpoint is body-level only; cold closure, admission,
-  registration, catalogs, JSON accounting, and public snapshots are unchanged.
+  implication. At this body checkpoint, cold closure had not yet run;
+  admission, registration, catalogs, JSON accounting, and public snapshots
+  were unchanged.
 - Checked the private `list_at_succ_iff` body with exact direct dependencies
   `cell_history_succ_elim`, `cell_history_extend_preserves_prefix`, and
   `add_comm`. Its expanded statement receipt is
@@ -4795,9 +4795,9 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   repackages the selected edge in the predecessor history. The reverse
   implication preserves both beta endpoints: `S i` witnesses the bound for
   `j`, while `i` witnesses the bound for `S j` after PA4 and `add_comm`.
-  This replaces the provisional rung-4/PA2 dependency route. The checkpoint
-  is body-level only; cold closure, registration, admission, catalogs, JSON
-  accounting, and public snapshots remain unchanged.
+  This replaces the provisional rung-4/PA2 dependency route. At this body
+  checkpoint, cold closure had not yet run; registration, admission, catalogs,
+  JSON accounting, and public snapshots were unchanged.
 - Checked private `list_at_external_bound` with direct dependencies
   `list_at_domain`, `cell_list_length_functional`. Its statement receipt is
   `(7481,a86efefaf31c9bfce0cd146f6aab932f22962b688fdc7f6bc4dd0beeb40bc9f8)`
@@ -4844,6 +4844,32 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   The body has zero DNE.
 - The ten-deliverable ladder now has checked evidence throughout: T01 is its
   frozen definition surface and T02--T10 have checked theorem bodies. This is
-  not admission evidence. T03--T10 await repeated cold WMI closure; registry,
-  catalogs, campaign JSON, public snapshots, and public theorem counts remain
-  unchanged.
+  not admission evidence. The subsequent full cold seal is recorded below;
+  registry, catalogs, campaign JSON, public snapshots, and public theorem
+  counts remain unchanged.
+
+## 2026-08-04 — K3B full history/lookup cold seal completed on WMI
+
+- WMI job `219217` closed all 17 selected history and lookup targets twice
+  from the empty context. It completed `0:0` in `00:15:25` with
+  `MaxRSS=54,496 KiB`; the two passes are deterministic and every certificate
+  has zero DNE.
+- Exact T03--T10 receipts in order
+  `(nodes,depth,objects,edges,reused,Cuts,proof DAG SHA-256)` are
+  `list_at_domain = (39,23,39,38,0,0,09c7d6d2bb9d7cd09597285eae31355cf76b8bc54d7c370f8c9507ca0377a701)`,
+  `list_at_head_iff = (32025,83,4982,5225,244,248,52bb6c215c7123e58374d23935490c71eccd3a8704de193612dacb57dd33cba7)`,
+  `list_at_succ_iff = (30885,83,4923,5157,235,247,908364a06285830d2cc6b53919b4399203b12d08c89b9bb98de3cdd4efa5b8fa)`,
+  `list_at_external_bound = (34799,87,5767,6043,277,301,7c49ab5ac74468bf1537d510be4d0837bc97d2432727a3c25f00c80026a38663)`,
+  `list_at_exists = (133,26,127,132,6,3,6778f7b507370cb1bcd95d2bd90b0fbaea317f5ac262565152dc5eabf759698c)`,
+  `list_at_functional = (65579,85,5851,6140,290,296,00fc80f2b18c79f8e45a41682651c32c0fbe8b34bc39c8ca2186067c184d0a4a)`,
+  `list_at_history_independent = (65823,86,6022,6312,291,298,8868aaef643ffe84c4b5fb885d2f16c7b4872f071ce5de92149369d60c3dc20b)`, and
+  `cell_list_extensional = (95253,87,5888,6162,275,266,8558cf1c4c39c0d0d8b363e7304a6c5732cee0593548a4137d1407de58f479ec)`.
+- The authoritative 10,550-byte report
+  `artifacts/peano-library/ha-k3b-listat-full-closure-219217.json` has SHA-256
+  `c79184bee17a7c053287b3b98dcda74cf00498137499ef62122b9c6d15ec40b8`.
+  It binds clean commit `cb6fcbcc6b51e0b9290e02ed1a16d8b034145b8e` to payload
+  SHA-256
+  `78e0c3d04b98ba1788edce0cd227dae3f7fe36f391a3a80b962da632a1970835`.
+- This is closure evidence, not admission evidence. All 17 targets remain
+  private, unregistered, and unadmitted. No registry, catalog, snapshot,
+  campaign-JSON, or public-count change follows from this seal.

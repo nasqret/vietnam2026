@@ -108,3 +108,34 @@ dependency closure is deterministic, the certificate contains zero DNE, and
 the result fits the unchanged 500,000-node/100,000-object/depth-256 policy.
 This is private `closed_checked_candidate` evidence only; no registry,
 catalog, campaign JSON, public snapshot, or admission count is changed.
+
+## Private K3B full history/lookup closure receipt
+
+[`ha-k3b-listat-full-closure-219217.json`](ha-k3b-listat-full-closure-219217.json)
+is the authoritative 10,550-byte two-pass cold-closure report for the complete
+17-target `HA-K3B-CELLHISTORY-1` plus `HA-K3B-LISTAT-1` theorem stack. Its
+SHA-256 is
+`c79184bee17a7c053287b3b98dcda74cf00498137499ef62122b9c6d15ec40b8`.
+WMI job `219217` completed `0:0` in `00:15:25` with
+`MaxRSS=54,496 KiB`. It binds clean commit
+`cb6fcbcc6b51e0b9290e02ed1a16d8b034145b8e` to payload SHA-256
+`78e0c3d04b98ba1788edce0cd227dae3f7fe36f391a3a80b962da632a1970835`.
+Both passes agree for every selected theorem, and every certificate contains
+zero DNE.
+
+The first nine receipts reproduce the eight cell-history rows and the
+prefix-preservation row recorded above. The newly sealed lookup receipts use
+tuple order `(nodes,depth,objects,edges,reused,Cuts,proof DAG SHA-256)`:
+
+- T03 `list_at_domain = (39,23,39,38,0,0,09c7d6d2bb9d7cd09597285eae31355cf76b8bc54d7c370f8c9507ca0377a701)`;
+- T04 `list_at_head_iff = (32025,83,4982,5225,244,248,52bb6c215c7123e58374d23935490c71eccd3a8704de193612dacb57dd33cba7)`;
+- T05 `list_at_succ_iff = (30885,83,4923,5157,235,247,908364a06285830d2cc6b53919b4399203b12d08c89b9bb98de3cdd4efa5b8fa)`;
+- T06 `list_at_external_bound = (34799,87,5767,6043,277,301,7c49ab5ac74468bf1537d510be4d0837bc97d2432727a3c25f00c80026a38663)`;
+- T07 `list_at_exists = (133,26,127,132,6,3,6778f7b507370cb1bcd95d2bd90b0fbaea317f5ac262565152dc5eabf759698c)`;
+- T08 `list_at_functional = (65579,85,5851,6140,290,296,00fc80f2b18c79f8e45a41682651c32c0fbe8b34bc39c8ca2186067c184d0a4a)`;
+- T09 `list_at_history_independent = (65823,86,6022,6312,291,298,8868aaef643ffe84c4b5fb885d2f16c7b4872f071ce5de92149369d60c3dc20b)`;
+- T10 `cell_list_extensional = (95253,87,5888,6162,275,266,8558cf1c4c39c0d0d8b363e7304a6c5732cee0593548a4137d1407de58f479ec)`.
+
+This is private `closed_checked_candidate` evidence, not admission evidence.
+All 17 targets remain private, unregistered, and unadmitted. The registry,
+catalog, campaign JSON, public snapshots, and public counts are unchanged.
