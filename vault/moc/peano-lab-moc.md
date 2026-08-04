@@ -11,6 +11,7 @@ tags: [moc, peano-lab, theorem-proving]
 - [[arithmetic-library-moc]]
 - [[browser-proof-runtime]]
 - [[rust-wasm-shadow-checker]]
+- [[verified-rust-kernel]]
 - [[trusted-kernel]]
 - [[proof-certificate]]
 - [[self-contained-proof-sharing]]
@@ -65,6 +66,9 @@ lemma library, then follow the guarded WMI runtime to model-free kernel judgment
 - [[critical-proof-frontier]]
 - [[macro-proof-action]]
 - [[matched-compute-proof-evaluation]]
+- [[peano-authoring-assistant]]
+- [[peano-logic-profiles]]
+- [[vampire-reconstruction]]
 
 Hydra keeps symbolic search, external ATPs, retrieval, Qwen, and Codex outside
 the trust boundary. Follow the notes from the exact fragment and immutable

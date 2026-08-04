@@ -3797,3 +3797,76 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   build succeeded. An independent read-only audit reconstructed the final
   report's 187-file source manifest, all 2,058 cross-language rows, macro and
   Dispatch preimages, rollback traces, and fresh original-goal kernel check.
+
+## 2026-08-04 — Hydra became a living PA workshop as well as an experiment
+
+- Kept the curated Peano Lab language as the sole author-facing object
+  language. Constructive intuitionistic PA remains the default; the existing
+  classical checker is specified as a separately versioned `PA+DNE` profile.
+  Excluded middle may be derived for that surface, but adding it as a second
+  primitive would duplicate classical strength and was rejected.
+- Split work into a continuously reviewed `authoring-live` lane and a
+  physically isolated `research-eval` lane. The former may follow new number-
+  theory results immediately. The latter binds an immutable library copy,
+  lineage mask, benchmark, solver, and model. The already completed H0 report
+  and branch remain untouched; the new work starts at H1/A0.
+- Made prose authorship a distinct authority boundary. The assistant retains
+  exact revisions, proposes alternative PA readings, labels whether a
+  diagnostic came from syntax, expansion, graph analysis, bounded evaluation,
+  kernel replay, Vampire, a model, or a human, and cannot call a timeout
+  “false.” Human statement acceptance, kernel proof acceptance, and human
+  library review are three different events. Training consent defaults to
+  deny, stale asynchronous responses fail closed, and only explicit export
+  may create a patch or pull request.
+- Narrowed the first external portfolio to Vampire. Native closure runs first;
+  Vampire supplies only bounded reconstructable hints in constructive mode.
+  Small LoRA-post-trained Qwen roles are separated into formalization,
+  retrieval, macro policy, value/ranking, and critique so one decoder response
+  cannot smuggle authority between tasks.
+- Extended kernel acceleration as K5–K11. Python stays the final original-goal
+  authority while Rust filters candidates. Lean must first prove the v3
+  algorithm/codec specification and then connect the exact committed safe-
+  Rust accepted path to it; finite differential testing or a second
+  handwritten Lean checker is not source refinement. If that connection
+  fails, Rust-only QED remains forbidden.
+- Began two executable H1 slices in parallel: strict revision-safe authoring
+  records with real kernel-object builders, and a content-addressed frozen-
+  epoch format that cannot resolve living catalog paths. This entry records
+  architecture and work in progress, not an `L0` freeze, a Vampire adapter, a
+  new Qwen training result, or a Rust-authority claim.
+- Froze neither slice after its first green run. Independent adversarial review
+  found that ordinary Python equality let JSON `false` alias integer `0` in an
+  epoch root payload, default candidate loading could validate non-live
+  provenance, and trusted-looking diagnostic labels and event actor/session
+  claims needed stronger boundaries. These were repaired before publication:
+  all versions/root comparisons are type-exact, candidate provenance is always
+  live-checked, changed imported sources require restart, file reads are
+  bounded/no-follow, generic diagnostics are untrusted-only, defined syntax is
+  pinned, and lifecycle/export deposits use ordered rolling roots with exact
+  actor/session/sequence checks.
+- A final cross-audit caught two remaining overclaims before commit. Kernel
+  replay evidence had authenticated the suggested formula but not the attached
+  code, severity, message, and source span; the repaired schema freezes a
+  domain-separated full-record preimage and the only kernel message explicitly
+  says that replay does not validate the prose's meaning. Fresh certificate
+  metrics now say `submitted`, not `best-known`, until A2 binds a comparison.
+- Authoring schema v1 now has semantic digest
+  `31a344bbc0b22cfacf5803c85d25a80a0234cf7387395283c5e1ab25ada80553`;
+  its focused adversarial suite passed 28 tests. Library-epoch schema v1 has
+  digest
+  `f4695013ee4aeb660abf3a1e57a6334d86c990a8904c4435d94628694a2e875b`;
+  its focused suite passed 38 tests, including a complete live 384-theorem
+  replay. After the final authority-schema review, the combined Hydra
+  regression passed 325 tests in 162.09
+  seconds, and the CI-shard contract passed 32 tests. The production event and
+  owner-receipt registries remain empty.
+- Documentation validation remained executable rather than editorial only:
+  46 Book sources, 194 deep links, 47 sessions, and all 287 commands replayed;
+  the strict warning-as-error Jupyter Book build succeeded; and the arithmetic
+  vault verified 384 checked lemma notes in a 490-note, 4,980-link graph.
+- The epoch audit also exposed the next hard gate: the current three-file pack
+  stores catalog/profile/H0 provenance, but the catalog stores certificate
+  hashes rather than certificate bytes. It therefore cannot replay theorems
+  offline and is not `L0`. H1.1 remains open until the pack contains canonical
+  formulas/certificates and the richer dependency/documentation records and
+  replays with the living theorem library made unavailable.

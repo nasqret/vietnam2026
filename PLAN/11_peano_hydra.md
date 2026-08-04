@@ -2,25 +2,114 @@
 
 ## Objective
 
-Build and evaluate a sound neuro-symbolic prover for Peano Lab. The system
-combines a strong non-generative symbolic portfolio with sparse LLM proposals
-at critical proof frontiers, but admits a theorem only after independent
-kernel replay against the original goal.
+Build a living, sound arithmetic workshop whose only object language is the
+curated Peano Lab language. The permanent product is a growing, reviewed
+library of elementary number theory with exact dependencies, readable proofs,
+efficient certificates, and documentation generated from the same checked
+artifacts. Peano Lab remains the interactive proof-building environment.
 
-The experiment is successful only if it survives the frozen, matched-compute,
-one-shot comparison in H5. A working demo, a teacher-authored proof, or a
-larger raw `pass@k` is not a substitute.
+On top of that foundation, build and evaluate a focused neuro-symbolic prover.
+Native proof search and Vampire perform most routine symbolic work; small
+LoRA-post-trained Qwen models are called sparsely for formalization, retrieval,
+macro proposals, frontier ranking, and explanation. Every such component is
+untrusted. A theorem enters the library only after independent kernel replay
+against the exact original Peano Lab statement.
+
+The research experiment is successful only if it survives the frozen,
+matched-compute, one-shot comparison in H5. The living library and authoring
+assistant remain useful even if that experiment finds no demonstrated LLM
+advantage. A working demo, teacher-authored proof, or larger raw `pass@k` is
+not a substitute for either checked library quality or experimental evidence.
 
 The binding architecture and claim rules are in
 [`docs/PEANO_HYDRA_DESIGN.md`](../docs/PEANO_HYDRA_DESIGN.md). This module is
 numbered 11 because [`PLAN/10_arithmetic_library.md`](10_arithmetic_library.md)
 already owns module 10.
 
+## Program scope and permanent tracks
+
+### One object language, two explicit logic modes
+
+- Peano Lab syntax, defined notation, tactics, and certificates are the only
+  user-facing formal language. TPTP/Vampire, SMT, Lean, and model wire formats
+  are internal plumbing and never become library source or proof authority.
+- The default mode is the frozen constructive profile: intuitionistic logic,
+  PA1--PA6, and unrestricted formula induction.
+- Classical arithmetic is a separately versioned and visibly labeled
+  `PA+DNE` profile. The surface may offer `A \/ ~A` as a derived classical
+  theorem/tactic; the kernel already uses DNE, so no second equivalent axiom
+  is added casually. Constructive theorems may be used classically; a
+  classical theorem may never enter a constructive proof.
+- Defined predicates and readable notation remain conservative, receipt-
+  carrying expansions into the primitive Peano Lab language.
+
+### Parallel tracks
+
+- **L — Living library:** reviewed statements, precise direct dependencies,
+  readable scripts, best-known certificates, proof metrics, source prose, and
+  generated Book/vault/Explorer pages. Library `HEAD` may grow continuously.
+- **A — Authoring assistant:** a revisioned manuscript workspace that turns
+  accepted prose spans into checked Peano artifacts, reports ambiguity and
+  evidenced mistakes, and exports reviewable patches; it never writes the
+  public library silently.
+- **V — Symbolic/Vampire:** deterministic native closure first, then bounded
+  Vampire hints or reconstructable derivations through `Dispatch` and ordinary
+  Peano tactics. A solver status has no authority.
+- **M — Qwen LoRA:** small, token-efficient task adapters for formalization,
+  retrieval, macro policy, value/frontier ranking, and critique. Model output
+  may also draft structural explanations from checked artifacts. It is always
+  a proposal, never a certificate, truth label, or human-review event.
+- **K — Verified fast kernel:** readable Python remains authoritative while
+  native/WASM Rust is a shadow. Rust authority requires a source-to-Lean
+  refinement result and a separate reviewed amendment; differential agreement
+  alone is not such a proof. Detailed work stays in
+  [`PLAN/12_peano_kernel_acceleration.md`](12_peano_kernel_acceleration.md).
+- **H — Sealed research campaign:** H0--H6 freeze epochs, lineages, systems,
+  budgets, and evidence for the Vampire/Qwen comparison.
+
+Two operational modes MUST remain physically and semantically distinct:
+`authoring-live` follows the newest reviewed library epoch and makes no causal
+performance claim; `research-eval` sees exactly one content-addressed epoch,
+mask, benchmark, model, and solver configuration. Growth in the first cannot
+leak into the second.
+
+### Checked authoring lifecycle
+
+Every source unit is retained verbatim and classified as `claim`, `definition`,
+`proof_step`, `exposition`, or `question`. Formal objects move only through
+explicit states such as `prose_only`, `ambiguous`, `formalized_unproved`,
+`proved`, `reviewed`, and `admitted`. A formalization candidate binds the
+source span/hash, document revision, readable and expanded formulas, binders,
+assumptions, logic profile, library epoch, definition receipts, alternatives,
+and provenance. A theorem proposal additionally binds lineage, exact direct
+dependencies, script/macro roots, certificate and replay receipts, proof
+metrics, solver/model transcripts, documentation outputs, and human review.
+
+Diagnostics identify their authority: parser, definition expander, library
+graph, bounded evaluator, kernel, untrusted solver, untrusted model, or human
+reviewer. A human diagnostic remains weaker than a separately authenticated
+acceptance/review lifecycle event. A
+timeout or failed search is `unknown`, never “false.” The assistant may report
+a checked proof of `~A` or a concrete certified counterexample, but must not
+silently repair binders, assumptions, quantifiers, implication direction, or
+the target to obtain a nearby theorem.
+
 ## Non-negotiable contracts
 
+- [ ] Keep Peano Lab as the sole object language and preserve conservative
+      expansion receipts for every defined notation used by authors or tools.
 - [ ] Preserve the Peano Lab trust boundary: every scored QED independently
       kernel-checks against the original target; all search and ML components
       remain untrusted.
+- [ ] Label every artifact constructive or classical. Reject any classical
+      dependency, DNE node, or classical solver route in constructive mode.
+      Until K5, v2 certificate bytes rely on their owner-held verification
+      request/result receipt for this label; v3 will bind it internally.
+- [ ] Require explicit human acceptance before a prose candidate becomes a
+      theorem proposal and explicit review before any proposal becomes public.
+- [ ] Retain readable and best-known optimized proofs separately; both check
+      the same original statement. Say “minimal” only with a proved lower
+      bound, otherwise report the exact Pareto metrics and “best known.”
 - [x] Freeze and hash the exact language/semantics profile. Do not call full HA
       decidable; do not call the restricted system a decider without sound
       negative evidence.
@@ -99,18 +188,52 @@ already owns module 10.
 claim. If negative evidence is not available, explicitly relabel the project a
 sound theorem prover and continue without a decision claim.
 
-## H1 — Library epoch, sealed benchmark, and interface headroom
+## H1 — Authoring contracts, library epoch, sealed benchmark, and headroom
+
+### H1.0 Freeze native authoring contracts
+
+H1.0 is the campaign-integration gate. It consumes standalone A0's schema
+contract plus the adjudicated-corpus and revision-safety portions of A1/A5;
+therefore A0 may complete before H1.0, but H1.0 never completes merely because
+the schemas exist.
+
+- [ ] Freeze strict canonical schemas for documents, source units,
+      formalization candidates, diagnostics, proof attempts, and theorem
+      proposals, plus chained authenticated lifecycle and explicit export
+      events. Freeze their actor/session-owner and reviewed-registry boundary
+      now; A5 implements the asynchronous service later. Checked constructors receive actual kernel `Formula` and
+      `Proof` objects; callers cannot supply a trusted `checked` bit.
+- [ ] Bind every object to its exact document revision, source span/hash,
+      logic/profile, library epoch, lineage state, and training-consent value;
+      consent defaults to deny.
+- [ ] Reject stale asynchronous responses, duplicate/extra/noncanonical JSON,
+      unsafe text, prompt-to-command injection, and provenance escalation.
+- [ ] Create a manually adjudicated 200-unit TRAIN/DEV authoring corpus that
+      covers missing assumptions, binder ambiguity, quantifier swaps, reversed
+      implications/equalities, out-of-language text, questions, and exposition.
+- [ ] Keep the browser workspace append-only and revisioned. Only an explicit
+      export action may create a patch or PR; browser/model/solver code never
+      mutates the public catalog directly.
 
 ### H1.1 Freeze `L0`
 
 - [ ] Snapshot the complete checked public catalog available at freeze time
       (at least the current 384-theorem runtime).
-- [ ] For each theorem bind name, canonical statement, ordered dependencies,
+- [ ] For each theorem bind name, canonical statement, ordered dependency vectors,
       source/script/certificate hashes, node count, depth, declaration order,
-      and language profile.
+      language profile/mode, definition receipts, readable explanation, and
+      generated-document identities.
+- [ ] Record readable-proof and optimized-construction direct dependency
+      vectors separately, derive a deterministic publication union, verify
+      each by leave-one-out replay, and use the union for graph/lineage masks.
 - [ ] Compute an ordered epoch root and independently verify every certificate.
-- [ ] Record all later theorems under `L1` or later; prevent them from entering
-      this campaign's training, retrieval, imports, or evaluation.
+- [ ] Separate living `authoring-live` HEAD from the physically copied,
+      content-addressed `research-eval` pack. Record all later theorems under
+      `L1` or later and prevent them from entering this campaign's training,
+      retrieval, imports, documentation context, or evaluation.
+- [ ] Enforce monotone logic visibility: constructive rows are eligible in
+      both modes; classical rows require a separately frozen classical profile
+      and are never visible to a constructive epoch.
 
 ### H1.2 Build lineage before rows
 
@@ -128,7 +251,9 @@ sound theorem prover and continue without a decision claim.
 - [ ] Prepare TRAIN/DEV plus an independently held final set of at least 1,000
       targets.
 - [ ] Include at least 200 human-authored or chronologically future-library
-      statements and, if H0 permits, at least 300 certified non-theorems.
+      statements. The current positive-only profile has no non-theorem quota;
+      a later negative stratum requires a new profile and independent decision
+      authority.
 - [ ] Stratify before outcomes by syntax, induction, witness/cut demand,
       premise-composition novelty, and symbolic difficulty.
 - [ ] Deposit encrypted/hash-committed final manifests with an independent
@@ -146,7 +271,14 @@ sound theorem prover and continue without a decision claim.
 
 ### H1 acceptance gate
 
+- [ ] Authoring schemas are canonical, mutation-tested, revision-safe, and
+      incapable of forging kernel or human-review authority.
+- [ ] The 200-unit gold corpus is human adjudicated and lineage-separated
+      before any paraphrase or proof-state expansion.
 - [ ] Zero detected contamination.
+- [ ] Living-library growth cannot alter the frozen epoch pack, retrieval
+      surface, documentation context, or replay root.
+- [ ] No classical-to-constructive import path exists.
 - [ ] At 60 seconds the symbolic baseline leaves at least 100 targets or ten
       percentage points unsolved.
 - [ ] The teacher closes at least 20% of the symbolic DEV frontier through the
@@ -158,26 +290,39 @@ closes below 10%, repair the action interface before training. A successful
 teacher pilot establishes interface headroom only—never Qwen capability or an
 LLM win.
 
-## H2 — Strong frozen symbolic portfolio
+## H2 — Strong frozen native/Vampire symbolic portfolio
 
 - [ ] Implement proof-producing deterministic normalization, rewriting, and
       arithmetic closure.
 - [ ] Implement an intuitionistically valid focused/connection/tableau search
       for the frozen fragment.
 - [ ] Add bounded witness/instantiation and induction-candidate enumeration.
-- [ ] Add optional Vampire, E, and SMT adapters only for proved
-      validity-preserving subtranslations or stable/classical side goals.
+- [ ] Make Vampire the only first-class external prover in the initial
+      portfolio. E/SMT remain deferred comparison tools and require their own
+      reviewed adapters before use.
+- [ ] Keep TPTP/clausification/Skolem symbols internal. In constructive mode,
+      use Vampire first for premise bundles, instantiations, witnesses, cuts,
+      rewrites, or proof skeletons; direct proof reconstruction is admitted
+      only for an explicitly proved translation class. Classical use requires
+      the separately frozen classical profile.
 - [ ] Reconstruct all external-solver successes into ordinary Peano
       certificates; never score status strings or untranslated proof objects.
+- [ ] Minimize reconstructed direct dependencies by deterministic leave-one-
+      out replay and retain a proof Pareto report over nodes, distinct objects,
+      depth, Cuts, bytes, replay time, and readable-script length.
 - [ ] Tune portfolio scheduling on DEV only.
-- [ ] Freeze component binaries, options, translators, parsers, schedules, and
-      budgets.
+- [ ] Freeze the Vampire binary, options, translator, parser, raw transcript,
+      source-symbol map, schedules, and hard bounds.
 - [ ] Make every component independently disableable.
 
 ### H2 acceptance gate
 
-- [ ] Every counted positive and negative result passes its independent replay
-      authority.
+- [ ] Every counted positive passes kernel replay. Negative results are counted
+      only if a separately registered negative-decision profile is active and
+      each passes that profile's independent authority.
+- [ ] Forged `SZS` status, malformed proof, wrong target, masked premise,
+      foreign symbol, timeout, and resource exhaustion all fail closed and
+      leave the proof state unchanged.
 - [ ] The portfolio weakly dominates each component on DEV
       solved-versus-resource AUC.
 - [ ] The exact frozen portfolio is registered as baseline `S` before any
@@ -193,11 +338,16 @@ LLM win.
       lineages or mark it ineligible/held out with a reason.
 - [ ] Keep authored, symbolic, Codex-teacher, Qwen-rollout, failed, and partial
       sources separately tagged.
+- [ ] Keep prose classification/formalization/critique rows separate from
+      proof-policy rows. Human-approved source-to-statement pairs may train
+      formalization; kernel QED roots train proof actions. Neither authority
+      substitutes for the other.
 - [ ] Admit only complete replayed QEDs as positive labels. Retain failures and
       partial paths only as labeled search evidence.
 - [ ] Deduplicate by canonical state/action and lineage, not surface spelling.
 - [ ] Audit state/action balance, theorem-use coverage, induction/cut/witness
-      coverage, sequence lengths, and tokenizer round trips.
+      coverage, natural-language provenance, ambiguity classes, sequence
+      lengths, and tokenizer round trips.
 - [ ] Reject over-length examples instead of truncating them silently.
 - [ ] Rebuild twice from clean inputs and compare bytes and Merkle roots.
 
@@ -210,6 +360,13 @@ LLM win.
 
 ## H4 — Model ladder, search, and causal ablations
 
+The primary learned family is small LoRA-post-trained Qwen, kept below 10B
+parameters. Separate tagged tasks/adapters cover prose classification,
+prose-to-PA candidates, ambiguity critique, theorem retrieval, macro proposal,
+frontier/value ranking, and explanation drafting from checked artifacts; one
+decoder response is never allowed to smuggle authority from one role into
+another.
+
 Run each rung under registered DEV budgets:
 
 - [ ] `S`: frozen symbolic portfolio.
@@ -218,6 +375,8 @@ Run each rung under registered DEV budgets:
 - [ ] `S+C`: cheap learned clause/state ranking.
 - [ ] `S+P0`: identical pretrained Qwen macro policy.
 - [ ] `S+P1`: 1.7–3B Qwen supervised macro policy.
+- [ ] `S+F1`: LoRA formalization/critique adapter evaluated only on adjudicated
+      authoring DEV units.
 - [ ] `S+P1+V`: value-guided best-first or PUCT search.
 - [ ] `H`: checked expert iteration, only if earlier gates pass.
 
@@ -241,6 +400,10 @@ Required controls:
 - [ ] SFT: at least five DEV points over the identical pretrained model, at
       least 25 registered frontier solves, and a positive lower 95% paired
       interval.
+- [ ] Formalizer: report parser-valid rate, top-1/top-3 human-approved semantic
+      accuracy, critical binder/quantifier/assumption error rate, ambiguity
+      abstention quality, and median edits/turns to acceptance. Kernel validity
+      of a nearby statement is not semantic formalization accuracy.
 - [ ] Value search: at least 5% relative gain in solved-versus-resource AUC.
 - [ ] Expert iteration: only checked QEDs enter; clean-rebuild and continual
       variants are compared; stop after two rounds below one point gain.
@@ -265,7 +428,8 @@ Required controls:
       same targets and hardware class.
 - [ ] Retain every raw model call, action extraction, executed edge, solver
       call, certificate, failure, and resource sample.
-- [ ] Independently replay all counted proofs and all claimed negative
+- [ ] Independently replay all counted proofs and, only if a separately
+      registered negative-decision profile is active, all claimed negative
       certificates.
 - [ ] Rebuild tables without model or solver access from the closed evidence
       bundle.
@@ -294,18 +458,132 @@ Required controls:
       final attested results, and unavailable evidence.
 - [ ] Publish the full method and negative findings in the Jupyter Book and
       Obsidian vault.
+- [ ] Generate a source-controlled LaTeX report and reproducible PDF covering
+      data preparation, Vampire/native search, Qwen LoRA training, evaluation,
+      inference, authoring infrastructure, trust limits, and results.
+- [ ] Keep `MEMORY.md`, `JOURNAL.md`, and `book/peano/diary.md` synchronized;
+      validate their named artifact identities against the plan/design.
 - [ ] Reproduce certificate judgments and paper tables on a fresh machine.
 - [ ] Pass the complete Peano and Lambda suites, strict book build, executable
-      command replay, vault/link checks, artifact drift checks, and license
-      audit.
+      command replay, vault/link checks, LaTeX/PDF build and visual/text
+      verification, artifact drift checks, and license audit.
 - [ ] Obtain independent sign-off on leakage, matched compute, replay, and
       admissible wording.
 - [ ] Publish/merge only at an authorized milestone boundary.
+
+## A0–A6 — Continuous native-PA authoring product
+
+This track ships incrementally alongside H1--H6. It is not postponed until the
+research release and it does not consume the sealed final benchmark.
+
+### A0 — Native authoring contract
+
+A0 ends at the canonical transport and authority boundary. The gold corpus and
+interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
+
+- [ ] Freeze canonical document, source-unit, candidate, diagnostic, attempt,
+      theorem-proposal, lifecycle, and export-event schemas with content roots,
+      actor/session-owner authentication, and mutation tests.
+- [ ] Require exact revisions, profile/logic/epoch identities, default-deny
+      training consent, and real kernel objects for checked evidence.
+- [ ] Bind the existing Peano Lab defined-syntax registry identity and freeze
+      readable-to-primitive expansion receipts, exact definition uses,
+      round-trip checks, mutation rejection, and final replay against the
+      expanded original target. Do not create a second definition registry.
+
+### A1 — Sentence workbench
+
+- [ ] Preserve every prose revision and classify units before formalizing.
+- [ ] Show readable PA, expanded PA, binder/assumption/conclusion tables,
+      alternative readings, and deterministic structural read-back.
+- [ ] Verify every displayed defined formula through the A0 registry/expansion
+      receipt and reject registry, definition-use, or expanded-target drift.
+- [ ] Require explicit Accept/Edit/Reject; never silently choose a reading.
+
+### A2 — Checked artifact compiler
+
+- [ ] Compile accepted units into reviewable theorem proposals containing
+      lineage, dependencies, explanations, scripts, traces, certificates,
+      metrics, provenance, and Book/vault/Explorer previews.
+- [ ] Produce a patch/PR only on explicit export. No unreviewed theorem enters
+      `TheoremSpec` or a public catalog.
+- [ ] Require deterministic documentation and leave-one-out checks for both
+      readable-proof and optimized-construction dependency vectors; publish
+      their ordered union as the theorem graph edge set.
+
+### A3 — Hybrid native/Vampire assistance
+
+- [ ] Run deterministic native closure before bounded Vampire `Dispatch`.
+- [ ] Reconstruct every useful hint through ordinary Peano macros, record all
+      calls, and compare solve/resource AUC against native-only search.
+
+### A4 — Qwen LoRA assistance
+
+- [ ] Train/evaluate separate formalization, retrieval, macro, value, and
+      critique/explanation adapters on lineage-safe checked/adjudicated data.
+- [ ] Keep the historical model-v3 next-tactic checkpoint as a baseline, not a
+      prose formalizer or evidence of current-library capability.
+
+### A5 — Live assistant
+
+- [ ] Add an asynchronous service behind Peano Lab with append-only events,
+      document-revision preconditions, cancellation, restart/reload recovery,
+      stale-response rejection, and an offline mode that still provides
+      deterministic parsing, defined expansion, local-library use, proof
+      execution, original-goal kernel replay, and explicit export.
+- [ ] Preserve the existing single proof-session owner. Prompt text cannot
+      execute commands, and failed background work cannot mutate a document,
+      proof state, history, library, or Git tree.
+
+### A6 — Library admission and release
+
+- [ ] Require human-approved statement/explanation, logic label, dependency
+      hygiene, empty-context replay, mutation checks, proof Pareto report,
+      reproducible documentation, and a new immutable library epoch.
+- [ ] Retain the readable, optimized, and publication-union dependency vectors;
+      lineage masks follow the union.
+- [ ] Retain both the readable authored script and best-known optimized
+      certificate against the same original goal.
+
+### Authoring acceptance gate
+
+- [ ] Representative prose-to-formula-to-proof-to-document sessions replay
+      exactly after export, reload, and clean rebuild.
+- [ ] Stale replies, prompt injection, forged review/kernel authority,
+      classical-to-constructive imports, dependency cycles, mislabeled human
+      prose, and denied-consent corpus inclusion are rejected.
+- [ ] Every displayed mistake or inaccuracy names its authority and evidence;
+      search exhaustion remains `unknown`.
+
+## K5–K11 — Rust authority and Lean refinement continuation
+
+The implemented native/WASM Rust checker is already a useful, fast shadow.
+The remaining problem is not “write Rust”; it is proving a connection from the
+exact Rust accepted path to the Lean specification. The binding details and
+acceptance checklists live in
+[`PLAN/12_peano_kernel_acceleration.md`](12_peano_kernel_acceleration.md):
+
+- K5 freezes a logic-carrying `peano-lab-v3` wire protocol and typed outcomes;
+- K6 completes representative measurement;
+- K7 hardens the production Rust candidate and resource accounting;
+- K8 proves the version-3 algorithm and codec sound in Lean;
+- K9 attempts exact safe-Rust-source refinement into Lean;
+- K10 requires a cross-platform dual-check soak; and
+- K11 makes a separate reviewed authority decision.
+
+Until K9--K11 pass, Rust may accelerate candidate filtering, Vampire
+reconstruction, model rollouts, corpus generation, and browser diagnostics,
+but Python still performs the mandatory final original-goal QED check.
 
 ## Quadratic-reciprocity expansion track
 
 This is future library growth, not part of `L0` unless completed before H1.
 
+- [ ] Intake every parallel campaign/PR through an explicit review manifest:
+      source commit, statement/proof exposure dates, checked status,
+      dependencies, logic mode, license, and intended `authoring-live` epoch.
+      Any statement whose proof or substantive sketch was already visible is
+      ineligible for the active sealed test and is marked TRAIN/DEV/library.
 - [ ] Define a separate epoch for the required residue, primality, and
       reciprocity statements.
 - [ ] Deposit candidate evaluation statements before any proof scripts,
@@ -321,22 +599,29 @@ This is future library growth, not part of `L0` unless completed before H1.
 
 ## Planned schedule
 
-The realistic end-to-end campaign is four to six months. A first H0–H4 DEV
-prototype is expected to take eight to ten weeks if the fragment and benchmark
-work begin before GPU training.
+The sealed H campaign remains a four-to-six-month research program. The living
+authoring product and source-refined Rust authority are longer parallel tracks;
+their gates, not a calendar promise, control release. A first H0--H4 DEV
+prototype is expected to take eight to ten weeks if epoch, authoring-contract,
+and benchmark work precede GPU training.
 
 | Weeks | Work | Exit artifact |
 |---:|---|---|
 | 1–2 | H0 semantics, macro schema, reference checks | reviewed profile and conformance report |
-| 2–4 | H1 epoch, lineage graph, sealed benchmark | `L0` root and independent deposit |
-| 3–7 | H2 symbolic portfolio and adapters | frozen `S` baseline |
-| 5–8 | H3 checked macro corpus | deterministic replayed release |
-| 7–10 | H4 model ladder and ablations | frozen `S+R` and candidate `H` |
+| 2–4 | H1/A0 epoch, lineage, authoring schemas, sealed benchmark | `L0` root, authoring contract, independent deposit |
+| 3–7 | H2/A1–A3 native + Vampire and sentence/artifact workbench | frozen `S`, checked proposal pipeline |
+| 5–8 | H3/A4 checked macro and formalization corpora | deterministic replayed releases |
+| 7–10 | H4/A5 Qwen LoRA ladder, ablations, live assistant | frozen `S+R`, candidate `H`, usable DEV workbench |
 | 11 | H5 one-shot evaluation | closed evidence bundle |
-| 12–16+ | H6 replication, analysis, release | reproducible report and artifacts |
+| 12–16+ | H6/A6 replication, admission, release | reproducible report, assistant, and artifacts |
+| parallel | K5–K11 protocol, Rust hardening, Lean/source refinement, soak | separately reviewed authority decision |
 
 ## Current status
 
+- [x] Expanded mission adopted on 2026-08-04: one native Peano Lab object
+      language, continuously reviewed library, live proof-document authoring,
+      Vampire-first symbolic assistance, small Qwen LoRA roles, and a separate
+      Rust-to-Lean refinement track. H0 artifacts remain unchanged.
 - [x] Binding design and campaign gates documented.
 - [x] Historical model-v3 four-goal result classified as a regression smoke,
       not campaign evidence.
@@ -371,3 +656,26 @@ work begin before GPU training.
       perform H1's epoch/lineage/benchmark freeze.
 - [ ] No H1 benchmark is sealed and no H5 claim is available; experimental
       scaffolds or earlier policy checkpoints do not change that status.
+- [x] The first A0 protocol slice is executable. Authoring schema v1 has
+      semantic digest
+      `31a344bbc0b22cfacf5803c85d25a80a0234cf7387395283c5e1ab25ada80553`;
+      its public builders/loaders bind exact revisions, default-deny consent,
+      the pinned existing defined-syntax registry, untrusted diagnostic
+      labels, real kernel objects for checked proposals, and ordered
+      actor/session-owned lifecycle/export deposits. The production event
+      registries remain empty. Fresh proof metrics say `submitted`, not the
+      unproved `best-known`; A2 owns that comparison. This is a public-API/data boundary, not a
+      sandbox against arbitrary private same-process Python access.
+- [x] The first H1.1 epoch-protocol slice is executable. Schema v1 has digest
+      `f4695013ee4aeb660abf3a1e57a6334d86c990a8904c4435d94628694a2e875b`;
+      candidates revalidate live HEAD and the 384-theorem catalog, version and
+      root comparisons are type-exact, file reads are bounded/no-follow, and
+      changed source inputs require a fresh interpreter. The owner-receipt
+      registry is immutable and empty. The integrated Hydra regression passed
+      325 tests; the focused authoring and epoch files passed 28 and 38 tests.
+- [ ] A0/H1.0 and H1.1 remain open. In particular the current three-file epoch
+      pack carries catalog/profile/H0 provenance but not formula/certificate
+      bytes, so it is not the independently replayable `L0` research pack and
+      cannot mint a production freeze. No 200-unit gold corpus, lineage split,
+      benchmark seal, Vampire adapter, new Qwen training, classical Hydra
+      profile, or Rust authority claim is yet complete.

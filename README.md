@@ -39,6 +39,7 @@ The exact abstracts, session plans and reading lists live on the [landing page](
 | `artifacts/` | **Formal proofs** in four systems, plus `lean-fta/`: a pinned, sorry-free Lean proof of prime-factorization existence and uniqueness up to permutation. |
 | `lab-lambda/` | The **Lambda Lab**, repackaged to run **directly in the browser** (Pyodide + xterm.js). Deployed to `/lab-lambda`. |
 | `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, 384-entry checked arithmetic ladder, and reproducible proof-trace corpus. |
+| `training/peano_hydra/` | **Peano Hydra** contracts and research plumbing for the living PA authoring assistant and frozen native/Vampire/Qwen campaign. |
 | `research/` | The **research dossier** — including the 385-node arithmetic catalog (384 checked and one representation-blocked), native and Lean FTA certificates, the quadratic-reciprocity campaign, and source/license maps. |
 | `scripts/` | Book replay gate plus the deterministic Peano trace generation, export, and kernel-judged evaluation pipeline. |
 | `docs/` | Lecturer-facing docs: how to build, deploy, and run each piece. |

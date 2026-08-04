@@ -237,12 +237,12 @@
   kernel-judged H0–H6 experiment before implementation. Standard Heyting
   arithmetic is not claimed decidable; any decision result requires an exact
   restricted fragment and independent negative evidence. H1 freezes an ordered
-  library epoch (the historical 247-theorem corpus checkpoint or a later
-  explicitly frozen successor) and a sealed
+  library epoch (at least the current 384-theorem checked runtime at freeze)
+  and a sealed
   lineage-separated benchmark; later mathematics, including the quadratic-
   reciprocity campaign, enters a new epoch. Native search,
-  retrieval/ranking, Qwen, Codex, Vampire/E/SMT, translations, and
-  reconstruction are untrusted. Generative actions occur only at symbolic
+  retrieval/ranking, Qwen, Codex, Vampire, translations, and reconstruction
+  are untrusted; E/SMT are deferred comparison adapters. Generative actions occur only at symbolic
   critical frontiers through macros compiled to public Peano commands. The H5
   headline compares symbolic `S`, non-generative `S+R`, and full Hydra under
   matched resources; teacher-oracle DEV pilots and the historical four-goal
@@ -280,6 +280,37 @@
   H0.3 macro/Dispatch/rollback evidence from clean commit
   `26c2503b36c6884bfbfa6dabd1494bbda49d8926`. Report v1 is provisional and
   superseded. H1 epoch and benchmark sealing remain open.
+- **Peano Hydra expanded product architecture (2026-08-04):** Hydra's only
+  object language is the curated Peano Lab PA language. The adopted target
+  architecture has a future living authoring/library product beside the
+  frozen H0–H6 experiment. Constructive
+  intuitionistic PA is the default; classical arithmetic uses a separately
+  versioned `PA+DNE` profile, with `A \/ ~A` offered only as a derived surface
+  result if desired. The planned `authoring-live` lane will follow reviewed
+  library HEAD, whereas `research-eval` will see a physically copied content-
+  addressed epoch and lineage mask. The planned live assistant will retain verbatim revisioned prose, propose
+  alternative formalizations, labels diagnostic authority, rejects stale
+  asynchronous replies, defaults training consent to deny, and exports only
+  explicit human-accepted/reviewed theorem proposals. Native closure and
+  Vampire are intended to do dense symbolic work; future separate sub-10B Qwen LoRA roles will provide
+  formalization, retrieval, macro, value, critique, and checked-artifact
+  explanation proposals. Python
+  remains sole final QED authority. Rust native/WASM is an accelerator/shadow
+  until K5–K11 freeze a logic-carrying protocol, harden resource outcomes,
+  prove the checker specification in Lean, refine the exact Rust accepted path
+  to it, complete a dual-check soak, and approve a separate cutover. H1/A0
+  schemas and epoch isolation are the active implementation slice; `L0` is not
+  yet frozen and no Vampire/Qwen result follows from this architecture update.
+  The first authoring protocol has digest
+  `31a344bbc0b22cfacf5803c85d25a80a0234cf7387395283c5e1ab25ada80553`
+  and 28 focused tests; the epoch protocol has digest
+  `f4695013ee4aeb660abf3a1e57a6334d86c990a8904c4435d94628694a2e875b`
+  and 38 focused tests. Independent review forced type-exact JSON roots and
+  versions, live-only candidate provenance, restart on post-import source
+  drift, bounded/no-follow reads, evidence-scoped diagnostics, and ordered
+  actor/session event roots. Both production review registries are empty. The
+  three-file epoch fixture lacks formula/certificate bytes and is therefore
+  not the offline replay-complete `L0` pack; A0/H1 remain open.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
   Tarski–Grothendieck set theory. The same statements are proved in all four to *show* the foundations.
 - **Local tooling present:** Lean/`elan`/`lake` ✓ (proofs verifiable here), `jupyter-book` ✓, `gh` (as

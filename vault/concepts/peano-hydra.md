@@ -5,13 +5,17 @@ tags: [peano-lab, neuro-symbolic, theorem-proving, research-protocol]
 
 # Peano Hydra
 
-**Peano Hydra** is a falsifiable campaign to test whether sparse LLM guidance
-improves a strong proof-producing symbolic prover for Peano Lab under matched
-resources.
+**Peano Hydra** is both a living native-PA workshop and a falsifiable campaign.
+The workshop grows a reviewed arithmetic library and uses a
+[[peano-authoring-assistant]] to turn accepted prose into checked, documented
+artifacts. The campaign tests whether sparse LLM guidance improves a strong
+proof-producing native/[[vampire-reconstruction|Vampire]] prover for Peano Lab
+under matched resources.
 
 Its many search components are untrusted: native closure, theorem retrieval,
-clause ranking, Qwen policies, Codex teacher proposals, Vampire, E, SMT
-solvers, translations, and proof reconstruction. Every positive result becomes
+clause ranking, role-separated Qwen LoRA policies and explanation drafts,
+Codex teacher proposals,
+Vampire, translations, and proof reconstruction. Every positive result becomes
 a theorem only after the [[trusted-kernel]] checks a self-contained
 [[proof-certificate]] against the original goal.
 
@@ -29,7 +33,17 @@ H0 completed on 2026-08-04. Its retained report is
 `55c60502b2229f4420bd4557058842bebb582f491739e82a6dae06de5b803fdb`.
 The earlier v1 is provisional H0.1/H0.2 evidence and is superseded for the
 complete-H0 claim.
-H1 remains open; no sealed benchmark or LLM-advantage result exists.
+H1 remains open; no sealed benchmark or LLM-advantage result exists. Its first
+executable slices are the 28-test canonical [[peano-authoring-assistant]]
+contract and the 38-test [[library-epoch]] transition protocol. Both production
+review registries are empty, and the epoch fixture lacks certificate bytes, so
+neither result is an A0/H1 or $L_0$ completion claim.
+
+Peano Lab remains the sole object language. Under [[peano-logic-profiles]],
+constructive PA is the default and classical PA+DNE is separately labeled. Living
+`authoring-live` HEAD and frozen `research-eval` epochs are physically
+separated. The native/WASM checker stays a shadow until the
+[[verified-rust-kernel]] refinement gates pass.
 
 H0 freezes the [[peano-hydra-semantic-profile]]: closed intuitionistic PA,
 PA1--PA6, unrestricted induction, no classical checker, no decision fragment,
@@ -62,5 +76,9 @@ ineligible; H0 completion does not retroactively promote them.
 - [[library-epoch]]
 - [[sealed-theorem-benchmark]]
 - [[matched-compute-proof-evaluation]]
+- [[peano-authoring-assistant]]
+- [[peano-logic-profiles]]
+- [[vampire-reconstruction]]
+- [[verified-rust-kernel]]
 - [[kernel-guided-policy-training]]
 - [[peano-lab-moc]]

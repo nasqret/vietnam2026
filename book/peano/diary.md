@@ -3317,3 +3317,125 @@ reconstructed the final report's source manifest, every conformance root and
 backend disposition, all macro/Dispatch preimages, exact rollback, and a fresh
 kernel check of the original goal. H0 therefore closes on evidence, while H1
 remains deliberately unopened.
+
+## 2026-08-04 — One arithmetic language, three kinds of acceptance
+
+The expanded Hydra vision is larger than the benchmark, but its conceptual
+center is pleasantly small: authors should be able to write ordinary
+mathematical sentences, see exactly what those sentences mean in Peano Lab,
+and grow a beautiful checked arithmetic library. The symbolic prover and the
+language model are assistants around that activity. They are not alternate
+languages and they are not alternate judges.
+
+This exposed three decisions that are easy to conflate.
+
+First, **the author accepts a meaning**. If someone writes “a prime divides a
+product,” a model can suggest several formal readings. It cannot decide
+silently which variables are quantified, whether the prime hypothesis was
+implicit, or whether “divides” points in the intended direction. We therefore
+keep the exact prose span and revision, show readable and primitive-expanded
+PA, display binders and assumptions, and require an explicit accept/edit/reject
+event. A kernel-checked proof of a nearby statement would still be a bad
+formalization.
+
+Second, **the kernel accepts a proof**. Native automation, Vampire, Qwen, and a
+coding-agent teacher may all help find it, but the finished proof is replayed
+against the owner-held original formula. Search failure means only `unknown`.
+Vampire is particularly useful and particularly easy to over-credit: it is a
+classical first-order prover, whereas our default profile is intuitionistic.
+In that mode it should suggest premises, substitutions, witnesses, cuts,
+rewrites, or a skeleton that Peano Lab reconstructs. Its `SZS Theorem` line is
+not a theorem certificate for us.
+
+Third, **a reviewer accepts a library artifact**. A proved proposal still needs
+an exact dependency list, readable script, best-known optimized certificate,
+metrics, provenance, explanation, definition expansions, mutation results,
+and deterministic Book/vault/Explorer pages. “Best known” is deliberately
+different from “smallest”: a 180-node certificate is an exact achievement;
+calling it globally minimal would require a lower-bound proof. Publication is
+an explicit export and review event, never a side effect of a browser worker.
+
+The logic choice follows the same desire for visible meaning. Constructive PA
+remains the default. Peano Lab already represents its classical extension by
+double-negation elimination, so a future classical Hydra profile should be
+labeled `PA+DNE`. We can derive and expose excluded middle, $A \lor \neg A$,
+there. Adding it as another primitive rule would add no pedagogical power and
+would create two equivalent kernel-level explanations for the same classical
+step. Constructive theorems travel into the classical library; classical
+certificates never travel back.
+
+The library itself now has two tempos. `authoring-live` follows reviewed HEAD
+and should welcome the number-theory campaign as it grows toward quadratic
+reciprocity. `research-eval` receives a copied, content-addressed epoch. It
+cannot import from live paths. This separation lets the mathematical project
+move quickly without quietly changing the experiment that is supposed to tell
+us whether Qwen adds value.
+
+Finally, “rewrite the checker in Rust and prove it in Lean” needed a sharper
+sentence. We already have a useful safe-Rust native/WASM shadow and a Lean
+checker soundness theorem. Those are not yet a theorem about the exact Rust
+program. The remaining K5–K11 route separates protocol design, measurement,
+Rust hardening, Lean specification soundness, exact Rust-source refinement,
+dual-check soak, and the authority decision. Until the source-refinement link
+exists, Rust can save enormous search time, but Python still casts the final
+vote. If the link proves impractical, keeping dual or Python authority is the
+honest result.
+
+The first implementation slice is correspondingly unglamorous and important:
+strict canonical authoring records and a frozen-epoch container. They make
+revision staleness, training consent, logic mode, provenance, and live/frozen
+isolation executable facts before we connect a prose UI, Vampire, or a new
+Qwen adapter. H0 stays sealed; none of this work retroactively changes its
+evidence.
+
+The first audit immediately justified doing this before building the pretty
+interface. Python has a historical convenience that is dangerous at a JSON
+trust boundary: `False == 0` and `True == 1`. Our first epoch validator compared
+the committed root payload using ordinary Python equality. A hostile record
+could therefore put Boolean `false` in one copy and integer `0` in the other,
+then ask the validator to normalize the record. It did not create a false PA
+theorem, but it broke the promise that one root names one exact document. The
+repair compares canonical JSON bytes, requires `type(v) is int` for every
+version, and verifies that validation returns the same preimage and root it
+received. The authoring records received the same type-exact version rule.
+
+A second lesson concerned long-lived services. Hashing the files after a Git
+checkout is insufficient if Python still holds theorem and tactic objects
+imported from the previous checkout. The safe first policy is simple: the
+epoch module fingerprints every relevant input during import; if those inputs
+change, it refuses to bind a candidate epoch until the process restarts. A
+later isolated replay worker may make that restart automatic, but silently
+combining fresh provenance with stale objects is forbidden.
+
+The event design became more concrete as well. A lifecycle record now includes
+the actor, single session owner, sequence number, predecessor, authority, and
+evidence. Its registry root rolls over the exact ordered prefix. Loading an
+event requires the reviewed unique head and the independently authenticated
+actor/session values; duplicate events and sibling forks fail. The production
+registry is still empty, which is a feature at this stage: tests can exercise
+the protocol, but no client can manufacture human review or export authority.
+Likewise, a generic diagnostic may say only “untrusted solver” or “untrusted
+model.” Parser, expander, graph, evaluator, kernel, and reviewer labels need
+their own evidence-producing path.
+
+The same audit removed a subtler boast. A freshly submitted certificate has
+exact nodes, depth, objects, Cuts, bytes, and replay status, but those numbers
+alone do not show that it is the best certificate currently known. A0 now
+labels this metric record `submitted`. The later artifact compiler may promote
+it to `best-known` only after it binds and compares the relevant candidates.
+
+Finally, the word *pack* briefly tempted us to overstate progress. The current
+epoch fixture copies three excellent pieces of provenance—the catalog, active
+semantic profile, and retained H0 report—but the catalog contains certificate
+hashes, not the certificate bytes themselves. An isolated machine cannot
+replay a theorem from that pack. We therefore call it a transition-protocol
+slice, keep H1.1 unchecked, and make the next acceptance test ruthless: remove
+or poison the living theorem-library imports and replay every packed formula
+and certificate using only the kernel and the immutable pack.
+
+At this checkpoint the canonical authoring digest is
+`31a344bbc0b22cfacf5803c85d25a80a0234cf7387395283c5e1ab25ada80553`
+with 28 focused adversarial tests. The epoch-protocol digest is
+`f4695013ee4aeb660abf3a1e57a6334d86c990a8904c4435d94628694a2e875b`
+with 38 focused tests. These are exact implemented facts, not A0/H1 completion
+claims.

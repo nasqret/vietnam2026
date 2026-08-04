@@ -1,0 +1,565 @@
+{
+  "additional_fields_policy": "forbidden-at-every-schema-owned-object",
+  "canonical_json": {
+    "allow_nan": false,
+    "encoding": "utf-8",
+    "ensure_ascii": false,
+    "integer_domain": "-9007199254740991..9007199254740991",
+    "key_order": "unicode-code-point-lexicographic",
+    "record_wire": "compact-without-trailing-newline",
+    "schema_wire": "two-space-indented-with-one-trailing-newline",
+    "separators": [
+      ",",
+      ":"
+    ],
+    "unicode": "unicode-scalar-values-without-normalization"
+  },
+  "defined_syntax": {
+    "id": "peano-lab.defined-predicates",
+    "sha256": "924c8bc220f23ce772b72991b8234c3499be7698dc086d90509d39760a1ed0fe",
+    "version": 2
+  },
+  "enums": {
+    "diagnostic_authority": [
+      "kernel",
+      "parser",
+      "definition-expander",
+      "library-graph",
+      "bounded-evaluator",
+      "untrusted-solver",
+      "untrusted-model",
+      "human-reviewer"
+    ],
+    "diagnostic_severity": [
+      "info",
+      "warning",
+      "error"
+    ],
+    "documentation_target": [
+      "book",
+      "vault",
+      "explorer"
+    ],
+    "lifecycle_authority": [
+      "authoring-core",
+      "kernel",
+      "human-reviewer",
+      "catalog-administrator"
+    ],
+    "lifecycle_state": [
+      "prose_only",
+      "ambiguous",
+      "formalized_unproved",
+      "proved",
+      "reviewed",
+      "admitted"
+    ],
+    "logic": [
+      "intuitionistic",
+      "classical"
+    ],
+    "proof_attempt_engine": [
+      "symbolic",
+      "vampire",
+      "model",
+      "human",
+      "hybrid"
+    ],
+    "proof_attempt_outcome": [
+      "draft",
+      "candidate-proof",
+      "search-exhausted",
+      "timeout",
+      "error"
+    ],
+    "proof_status": [
+      "draft",
+      "checked"
+    ],
+    "provenance_kind": [
+      "human",
+      "model",
+      "rule"
+    ],
+    "surface_kind": [
+      "native-pa",
+      "defined-pa"
+    ],
+    "training_consent": [
+      "deny",
+      "allow-anonymized",
+      "allow-exact"
+    ],
+    "unit_kind": [
+      "claim",
+      "definition",
+      "proof_step",
+      "exposition",
+      "question"
+    ]
+  },
+  "format": "peano-hydra-authoring-schema",
+  "hashes": {
+    "document_source_sha256": "sha256(exact-source-utf8-bytes)",
+    "kernel_diagnostic_evidence_sha256": "sha256(peano-hydra-kernel-diagnostic-evidence-v1 + NUL + canonical-kernel-diagnostic-evidence-object)",
+    "record_sha256": "sha256(peano-hydra-authoring-record-v1 + NUL + canonical-record-bytes)",
+    "registry_prefix_sha256": "sha256(peano-hydra-authoring-reviewed-registry-v1 + NUL + registry-kind + NUL + previous-prefix-root-or-genesis + NUL + canonical-event-without-registry-sha256)",
+    "source_excerpt_sha256": "sha256(exact-selected-source-utf8-bytes)",
+    "statement_sha256": "sha256(peano-hydra-authoring-statement-v1 + NUL + semantic-profile-sha256 + NUL + formula-utf8)"
+  },
+  "id": "peano-hydra-native-pa-authoring-core-v1",
+  "limits": {
+    "max_document_utf8_bytes": 1000000,
+    "max_json_depth": 64,
+    "max_json_items": 100000,
+    "max_message_utf8_bytes": 8000,
+    "max_record_utf8_bytes": 2000000,
+    "max_schema_utf8_bytes": 1000000,
+    "max_script_utf8_bytes": 1000000,
+    "max_source_excerpt_utf8_bytes": 65536,
+    "max_statement_utf8_bytes": 65536,
+    "max_summary_utf8_bytes": 32000
+  },
+  "objects": {
+    "alternative_reading": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "index",
+        "primitive_formula",
+        "readable_formula",
+        "sha256"
+      ],
+      "relations": [
+        "readable-formula-is-canonical-native-pa",
+        "primitive-formula-is-its-deterministic-constructor-expansion",
+        "entries-are-ordered-and-unique"
+      ]
+    },
+    "assumption_entry": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "index",
+        "path",
+        "primitive_formula",
+        "readable_formula",
+        "sha256"
+      ],
+      "relations": [
+        "table-is-derived-from-leading-quantifiers-and-implications",
+        "path-addresses-the-exact-formula-constructor"
+      ]
+    },
+    "binder_entry": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "depth",
+        "index",
+        "name",
+        "path",
+        "quantifier"
+      ],
+      "relations": [
+        "table-is-deterministically-derived-from-the-primitive-formula",
+        "free-variable-table-is-separately-required-empty-for-closed-theorems"
+      ]
+    },
+    "binding": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "document_id",
+        "document_revision",
+        "document_sha256",
+        "format",
+        "library_epoch",
+        "logic",
+        "semantic_profile_sha256",
+        "training_consent",
+        "v"
+      ],
+      "relations": [
+        "all-fields-equal-the-explicitly-supplied-authoring-document-revision",
+        "checking-that-the-supplied-document-is-the-live-current-head-is-a-host-boundary",
+        "semantic-profile-is-registered-and-logic-matches",
+        "document-sha256-binds-the-complete-canonical-document-record"
+      ]
+    },
+    "content_receipt": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "id",
+        "sha256"
+      ],
+      "relations": [
+        "receipt-identifies-an-external-immutable-artifact",
+        "receipt-alone-grants-no-kernel-or-human-authority"
+      ]
+    },
+    "diagnostic": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "authority",
+        "binding",
+        "code",
+        "diagnostic_id",
+        "evidence_sha256",
+        "format",
+        "message",
+        "severity",
+        "source",
+        "suggested_statement",
+        "unit_id",
+        "unit_sha256",
+        "v"
+      ],
+      "relations": [
+        "binding-and-unit-sha256-equal-the-supplied-current-unit",
+        "source-is-an-exact-utf8-subspan-of-the-unit",
+        "generic-builder-and-loader-may-mint-only-untrusted-solver-or-untrusted-model-authority",
+        "parser-definition-expander-library-graph-bounded-evaluator-and-human-reviewer-labels-require-dedicated-authenticated-builders-not-present-in-this-core",
+        "kernel-builder-and-loader-require-a-real-formula-proof-fresh-replay-and-fixed-full-record-evidence-bound-semantics",
+        "diagnostics-carry-no-theorem-admission-authority"
+      ]
+    },
+    "document": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "document_id",
+        "format",
+        "library_epoch",
+        "logic",
+        "revision",
+        "semantic_profile_sha256",
+        "source_sha256",
+        "source_text",
+        "source_utf8_bytes",
+        "training_consent",
+        "v"
+      ],
+      "relations": [
+        "revision-is-positive",
+        "semantic-profile-is-registered-and-logic-matches",
+        "source-byte-count-and-sha256-match-the-exact-retained-utf8",
+        "training-consent-defaults-to-deny-in-the-builder"
+      ]
+    },
+    "documentation_receipt": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "sha256",
+        "target"
+      ],
+      "relations": [
+        "targets-are-unique-and-ordered-book-vault-explorer",
+        "receipt-binds-deterministic-generated-output"
+      ]
+    },
+    "export_event": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "actor_id",
+        "admitted_event_sha256",
+        "destination",
+        "evidence_sha256",
+        "export_id",
+        "format",
+        "mode",
+        "patch_root_sha256",
+        "proposal_sha256",
+        "registry_sha256",
+        "sequence",
+        "session_owner_id",
+        "v"
+      ],
+      "relations": [
+        "loader-requires-and-matches-the-authenticated-export-actor-and-single-session-owner",
+        "session-owner-matches-the-exact-admitted-lifecycle-event",
+        "event-binds-the-patch-root-and-destination",
+        "sequence-and-rolling-prefix-root-bind-the-unique-ordered-reviewed-export-deposit-and-forks-are-rejected",
+        "mode-is-patch-only-and-the-loader-performs-no-export-or-direct-mutation",
+        "this-core-has-no-exporter-or-event-builder-and-requires-membership-in-a-source-reviewed-export-deposit"
+      ]
+    },
+    "formalization_candidate": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "alternative_readings",
+        "ambiguities",
+        "assumptions",
+        "binder_table",
+        "binding",
+        "candidate_id",
+        "definition_receipts",
+        "expanded_formula",
+        "expanded_formula_sha256",
+        "format",
+        "free_variables",
+        "primitive_formula",
+        "primitive_formula_sha256",
+        "provenance",
+        "readable_formula",
+        "source",
+        "surface_kind",
+        "unit_id",
+        "unit_sha256",
+        "v"
+      ],
+      "relations": [
+        "binding-unit-sha256-and-exact-source-equal-the-explicitly-supplied-unit",
+        "checking-that-the-supplied-unit-belongs-to-the-live-current-document-head-is-a-host-boundary",
+        "native-readable-formula-is-canonical-or-defined-readable-formula-uses-the-existing-registered-defined-syntax",
+        "defined-input-is-checked-by-the-existing-capture-safe-expander-and-binds-exact-definition-ids-registry-and-template-hashes",
+        "primitive-expansion-binder-table-free-variable-table-and-assumptions-are-derived",
+        "alternative-readings-are-canonical-ordered-and-unique",
+        "definition-receipts-and-provenance-are-content-addressed"
+      ]
+    },
+    "kernel_diagnostic_evidence": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "checked_result",
+        "code",
+        "diagnostic_id",
+        "format",
+        "message",
+        "severity",
+        "source",
+        "suggested_statement",
+        "unit_sha256",
+        "v"
+      ],
+      "relations": [
+        "format-is-peano-hydra-kernel-diagnostic-evidence-and-v-is-integer-one",
+        "code-severity-and-message-are-the-fixed-kernel-verified-statement-semantics",
+        "unit-source-diagnostic-id-and-suggested-statement-equal-the-displayed-diagnostic",
+        "checked-result-is-fresh-empty-context-replay-of-the-suggested-statement",
+        "evidence-sha256-uses-the-exact-domain-separated-hash-rule-in-this-schema"
+      ]
+    },
+    "library_epoch": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "format",
+        "id",
+        "root_sha256",
+        "v"
+      ],
+      "relations": [
+        "identity-is-provenance-only-and-does-not-grant-theorem-authority"
+      ]
+    },
+    "lifecycle_event": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "actor_id",
+        "authority",
+        "event_id",
+        "evidence_sha256",
+        "format",
+        "from_state",
+        "previous_event_sha256",
+        "proposal_sha256",
+        "registry_sha256",
+        "sequence",
+        "session_owner_id",
+        "to_state",
+        "v"
+      ],
+      "relations": [
+        "sequence-predecessor-record-sha256-and-rolling-prefix-root-bind-one-unique-append-only-chain",
+        "reviewed-deposits-with-duplicate-events-or-sibling-forks-are-rejected",
+        "loader-requires-and-matches-the-authenticated-transition-actor-and-single-session-owner",
+        "statement-acceptance-and-complete-proposal-review-are-distinct-human-reviewer-transitions",
+        "proved-requires-a-checked-proposal-and-kernel-authority",
+        "reviewed-and-admitted-require-separate-authorities",
+        "this-core-has-no-event-builder-and-requires-membership-in-a-source-reviewed-registered-event-deposit"
+      ]
+    },
+    "lineage": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "candidate_sha256",
+        "lineage_id",
+        "parent_attempt_sha256"
+      ],
+      "relations": [
+        "candidate-and-optional-parent-attempt-are-exactly-bound",
+        "a-non-null-parent-must-be-supplied-and-validated"
+      ]
+    },
+    "proof_attempt": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "attempt_id",
+        "binding",
+        "candidate_sha256",
+        "diagnostic_receipts",
+        "engine",
+        "format",
+        "lineage",
+        "outcome",
+        "provenance",
+        "readable_script",
+        "readable_script_sha256",
+        "source",
+        "transcript_receipts",
+        "v"
+      ],
+      "relations": [
+        "attempt-is-bound-to-exact-candidate-source-revision-profile-and-library-epoch",
+        "outcomes-never-include-checked-or-proved",
+        "scripts-transcripts-diagnostics-and-provenance-are-retained",
+        "proof-attempts-grant-no-theorem-authority"
+      ]
+    },
+    "proof_metrics": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "certificate_bytes",
+        "certificate_nodes",
+        "certificate_sha256",
+        "claim",
+        "cut_nodes",
+        "distinct_proof_objects",
+        "max_depth",
+        "readable_script_utf8_bytes",
+        "replay_observation"
+      ],
+      "relations": [
+        "claim-is-submitted-observation-not-an-unproved-best-known-or-minimality-claim",
+        "nodes-distinct-objects-cuts-bytes-max-depth-replay-and-readable-length-are-exact",
+        "metrics-equal-the-fresh-checked-result-proof-artifact-and-readable-source-proof"
+      ]
+    },
+    "provenance": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "format",
+        "id",
+        "kind",
+        "request_sha256",
+        "response_sha256",
+        "v"
+      ],
+      "relations": [
+        "model-provenance-requires-both-request-and-response-sha256",
+        "human-and-rule-provenance-require-null-request-and-response-sha256"
+      ]
+    },
+    "sentence_unit": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "binding",
+        "format",
+        "kind",
+        "source",
+        "unit_id",
+        "v"
+      ],
+      "relations": [
+        "binding-equals-the-explicitly-supplied-document-revision",
+        "live-current-document-head-selection-is-a-host-boundary",
+        "source-is-a-nonempty-exact-utf8-span-of-that-document"
+      ]
+    },
+    "source_excerpt": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "end_utf8",
+        "format",
+        "sha256",
+        "start_utf8",
+        "text",
+        "v"
+      ],
+      "relations": [
+        "offsets-address-exact-utf8-bytes-and-may-not-split-a-code-point",
+        "text-and-sha256-equal-the-selected-source-bytes"
+      ]
+    },
+    "theorem_proposal_checked": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "binding",
+        "candidate_sha256",
+        "checked_result",
+        "optimized_dependencies",
+        "publication_dependencies",
+        "readable_dependencies",
+        "documentation_receipts",
+        "explanation",
+        "format",
+        "human_acceptance",
+        "human_review",
+        "lineage",
+        "mutation_result_receipts",
+        "name",
+        "primitive_formula",
+        "primitive_formula_sha256",
+        "proof_metrics",
+        "proof_status",
+        "proposal_id",
+        "readable_source_proof",
+        "readable_source_proof_sha256",
+        "source",
+        "transcript_receipts",
+        "v"
+      ],
+      "relations": [
+        "checked-builder-and-loader-require-real-formula-proof-and-fresh-original-goal-replay",
+        "lineage-source-readable-optimized-publication-dependencies-readable-proof-metrics-mutations-transcripts-explanation-and-docs-are-retained",
+        "publication-dependencies-are-only-the-structural-deterministic-union-in-this-core",
+        "epoch-resolution-proof-use-validation-minimality-and-lineage-masking-are-deferred-to-A2-and-H1.1",
+        "human-acceptance-and-human-review-are-separate-and-null-until-host-authenticated-events",
+        "caller-supplied-booleans-hashes-solver-or-model-status-cannot-mint-checked-status"
+      ]
+    },
+    "theorem_proposal_draft": {
+      "additional_fields": "forbidden",
+      "exact_fields": [
+        "binding",
+        "candidate_sha256",
+        "optimized_dependencies",
+        "publication_dependencies",
+        "readable_dependencies",
+        "documentation_receipts",
+        "explanation",
+        "format",
+        "human_acceptance",
+        "human_review",
+        "lineage",
+        "mutation_result_receipts",
+        "name",
+        "primitive_formula",
+        "primitive_formula_sha256",
+        "proof_status",
+        "proposal_id",
+        "readable_source_proof",
+        "readable_source_proof_sha256",
+        "source",
+        "transcript_receipts",
+        "v"
+      ],
+      "relations": [
+        "proof-status-is-draft",
+        "no-certificate-kernel-result-proof-metrics-or-checked-boolean-is-present",
+        "human-acceptance-and-human-review-cannot-be-client-supplied"
+      ]
+    }
+  },
+  "phase": "authoring-core",
+  "proof_authority": {
+    "carrier_trust": "public-builders-and-loaders-only; hostile-arbitrary-same-process-Python-private-or-object-construction-is-outside-this-module-boundary",
+    "checked_builder": "build_checked_theorem_proposal(real-Formula,real-Proof)",
+    "checked_loader": "load_theorem_proposal-requires-real-Formula-and-real-Proof-and-recomputes-identical-result",
+    "context": "empty",
+    "current_revision": "callers-must-supply-the-host-authenticated-current-document-or-unit;-this-core-binds-exactly-but-does-not-own-the-live-head",
+    "dependency_resolution": "structural-vectors-only-until-A2-and-H1.1",
+    "export_event_registry": "empty-by-default-source-reviewed-ordered-prefix-registry-with-derived-root-exact-head-membership-and-no-side-effects",
+    "finalizer": "training.peano_hydra.result_schema.build_checked_proved_evidence",
+    "goal": "candidate-original-expanded-formula-with-deterministic-primitive-constructor-expansion",
+    "human_authority": "separate-host-authenticated-events-not-minted-by-this-core",
+    "human_event_registry": "empty-by-default-source-reviewed-ordered-prefix-registry-with-derived-rolling-roots-unique-sequences-and-exact-previous-event-chain",
+    "serialized-fields": "transport-only-never-authority"
+  },
+  "v": 1
+}

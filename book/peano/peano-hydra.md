@@ -1,8 +1,12 @@
-# Peano Hydra: where symbolic search should end and learned search begin
+# Peano Hydra: a living arithmetic workshop with many proof explorers
 
-Peano Hydra is an experiment, not a new trust assumption. We want to combine a
-proof-producing arithmetic prover with a small language model and ask a narrow,
-measurable question:
+Peano Hydra is a living arithmetic workshop and a controlled experiment, not a
+new trust assumption. Its permanent job is to help authors grow an unusually
+careful elementary-number-theory library in the one curated Peano Lab
+language: precise statements, exact direct dependencies, readable proofs,
+efficient certificates, and documentation generated from those same checked
+artifacts. Its experimental job is to combine a proof-producing arithmetic
+prover with a small language model and ask a narrow, measurable question:
 
 > Under the same inference budget, can the language model help solve more new
 > problems than the strongest system that does not generate language-model
@@ -47,6 +51,82 @@ independently checkable negative certificates or agreement with a genuinely
 independent reference decision procedure. Until then Hydra is a sound prover,
 not a decider.
 
+## One language and two visible logic modes
+
+Hydra does not introduce a “solver language” or an “AI language.” Authors see
+Peano Lab formulas, defined notation with conservative expansion receipts,
+proof states, tactics, dependencies, and certificates. TPTP, Vampire clauses,
+model tokens, Lean definitions, and Rust bytes are internal transport formats.
+This is important pedagogically: the library remains readable without knowing
+which tool happened to discover a proof.
+
+The default profile is constructive: intuitionistic first-order logic,
+PA1–PA6, and unrestricted formula induction. Classical arithmetic is a
+different, visibly labeled profile using Peano Lab's existing double-negation-
+elimination rule. In that profile we may derive and offer excluded middle,
+
+\[
+  A \lor \neg A,
+\]
+
+as a convenient theorem or tactic. We do not add excluded middle as a second
+primitive merely because it is familiar. DNE and excluded middle are
+equivalent over the surrounding intuitionistic logic, and two primitive paths
+would obscure which assumption a certificate used. Constructive theorems are
+safe imports into a classical session; a DNE-dependent theorem is never an
+import into a constructive session.
+
+## From a sentence to a documented theorem
+
+This section specifies the A1–A5 target workflow; the current implementation
+is only the A0 protocol slice described later in this chapter. The planned live
+assistant will separate three kinds of acceptance that ordinary coding
+assistants often blur:
+
+1. **Meaning:** the author accepts one proposed formal reading of the prose.
+2. **Derivation:** the kernel accepts a certificate for exactly that reading.
+3. **Publication:** a reviewer accepts the complete library artifact.
+
+Suppose an author scribbles, “Every prime dividing a product divides one of
+the factors.” Before searching for a proof, the workbench will keep the
+verbatim sentence and revision, classify it as a claim, and show one or more
+candidate formulas. Each candidate includes a binder table, assumptions,
+readable defined notation, its primitive expansion, and a structural read-back
+in ordinary language. If primality, nonzero assumptions, or the direction of
+divisibility is ambiguous, the assistant says so and identifies whether the
+observation came from the parser, definition expander, library graph, bounded
+evaluation, kernel, Vampire, a model, or a human reviewer.
+
+This authority label changes the meaning of a diagnostic. A parser can prove
+that syntax is malformed. A kernel can prove that a supplied certificate does
+not derive the target. A bounded evaluator can exhibit a concrete checked
+counterexample within its stated range. Vampire or Qwen can only propose that
+something looks wrong or that search stalled. Exhaustion is `unknown`, never
+“false.” Most importantly, a proof of a nearby formula does not show that a
+candidate captured the author's sentence.
+
+Once the author explicitly accepts a reading, Peano Lab will open the ordinary
+interactive proof workspace. Native closure will run first; bounded Vampire
+hints and sparse Qwen or teacher proposals will appear only where useful. A completed
+certificate is checked against the owner-held original target. The resulting
+theorem proposal includes exact dependencies, a readable script, a best-known
+optimized certificate, proof metrics, provenance, mutation evidence,
+explanation, and previews for the Book, Obsidian vault, and proof explorer.
+Only explicit review and export can create a patch or pull request.
+
+The planned workspace will be revisioned and append-only. Every asynchronous
+result will carry the document revision, source-unit identity, logic profile, library epoch, and
+proof-state precondition it observed. If the author edits while a model is
+thinking, the late response becomes `stale`; it cannot silently rewrite the
+new document. Training consent defaults to deny, prompt text cannot execute
+proof or Git commands, and provider failure changes no accepted state.
+
+There will also be two tempos of library use. `authoring-live` will follow the
+newest reviewed library and benefit immediately from new number theory.
+`research-eval` will use a physically copied, content-addressed epoch and a fixed
+lineage mask. The first makes the product useful; the second prevents a growing
+quadratic-reciprocity development from leaking answers into an experiment.
+
 ## One authority, many fallible explorers
 
 Hydra deliberately has many ways to be clever and one way to be right.
@@ -58,7 +138,7 @@ original goal -> deterministic symbolic closure -> certificate -> kernel
                          v
                   typed macro proposal
                    /      |      \
-          native search   Qwen   Vampire/E/SMT hints
+          native search   Qwen      Vampire hints
                    \      |      /
                     transactional engine
                          |
@@ -73,18 +153,21 @@ The kernel is the sole positive authority. Everything else is untrusted:
 
 - native normalization, rewriting, connection or focused search;
 - theorem retrieval and clause ranking;
-- Qwen as a student policy or value model;
-- Codex as a teacher and data generator;
-- Vampire, E, or an SMT solver as an external search assistant; and
+- separate Qwen LoRA roles for formalization, retrieval, macro policy,
+  value/ranking, critique, and explanation drafting from checked artifacts;
+- Codex as a TRAIN/DEV teacher, formalizer, critic, and data generator;
+- Vampire as the initial external search assistant; and
 - translators and proof reconstruction code.
 
-This is especially important for Vampire. Vampire is a powerful classical
+This is especially important for Vampire. Vampire is the only first-class
+external prover in the initial portfolio and is a powerful classical
 first-order prover, while Peano Lab's default logic is intuitionistic. A raw
 Vampire success is not automatically a proof in Heyting arithmetic. We may use
-it on a separately justified validity-preserving translation or on a stable
-arithmetic side goal, and we may mine its derivation for instantiations or
-lemmas. The final result still has to be reconstructed into ordinary Peano
-proof terms and replayed. There is no trusted `vampire_proved` rule.
+it on a separately justified validity-preserving translation, or ask it for
+premise bundles, instantiations, witnesses, cuts, rewrites, and skeletons. The
+final result still has to be reconstructed into ordinary Peano proof terms and
+replayed. There is no trusted `vampire_proved` rule. E and SMT are deferred
+comparison tools, not unnamed fallback authorities.
 
 ## The critical frontier
 
@@ -575,7 +658,7 @@ of the following as the fragment permits:
 - focused intuitionistic or connection/tableau search;
 - induction-candidate enumeration;
 - deterministic theorem retrieval; and
-- reconstructed hints from external first-order or SMT solvers.
+- bounded, reconstructed Vampire hints.
 
 Each component is measured alone and in portfolio. Development-only scheduling
 chooses the strongest solved-versus-resource envelope. That frozen system is
@@ -596,10 +679,17 @@ captures the gain, increasing the transformer is the wrong engineering move.
 
 ## Training data must end in QED
 
-A positive policy row is admissible only when it lies on a complete trajectory
+A positive proof-policy row is admissible only when it lies on a complete trajectory
 whose final certificate checks against the original goal. Partial progress,
 an attractive lemma, a solver assertion, and a syntactically valid tactic are
 useful diagnostic or negative data but not positive proof labels.
+
+Prose data obeys a different authority. A positive formalization row requires
+the human-approved source-to-statement pair and explicit training consent; it
+does not require that the author already has a proof. Conversely, a kernel QED
+shows derivability but cannot certify that a generated formula faithfully
+translated a sentence. Keeping the corpora and adapter roles separate lets us
+measure both tasks instead of hiding one inside the other.
 
 The first curriculum target is deliberately large and balanced: at least
 100,000 unique macro transitions from at least 20,000 checked QED roots, every
@@ -608,12 +698,107 @@ frontier choice. Clean generation must be byte-for-byte reproducible. The
 tokenizer must reject examples that do not fit; silent truncation changes the
 task and can remove the answer.
 
-The initial student stays modest—roughly 1.7–3 billion Qwen parameters—until
-the data and search design pass causal gates. Supervised training must beat the
-identical pretrained model on DEV, solve a meaningful number of registered
-frontier cases, and have a positive paired confidence bound. Value search and
-expert iteration have their own incremental gates. Only newly discovered,
-independently checked QEDs enter expert iteration.
+The initial student stays modest—roughly 1.7–3 billion Qwen parameters, with a
+hard initial family ceiling below 10 billion—until the data and search design
+pass causal gates. Separate LoRA adapters or tagged tasks cover formalization,
+retrieval, macro policy, value/ranking, critique, and checked-artifact
+explanation drafting. Supervised proof training
+must beat the identical pretrained model on DEV, solve a meaningful number of
+registered frontier cases, and have a positive paired confidence bound.
+Formalization has its own human semantic-accuracy and ambiguity-abstention
+metrics. Value search and expert iteration have their own incremental gates.
+Only newly discovered, independently checked QEDs enter proof expert
+iteration.
+
+## A faster kernel needs two proofs, not one
+
+The readable Python checker remains the final QED authority today. The safe
+Rust implementation already gives Hydra useful native and browser-WASM speed:
+it can reject malformed candidates, filter rollouts, and cheaply test solver
+reconstructions before the Python replay. Differential agreement across many
+mutations is strong engineering evidence, but it is not the final theorem we
+want.
+
+There are two distinct Lean obligations:
+
+\[
+  \text{Lean checker accepts}
+  \Longrightarrow
+  \text{derivable}
+  \Longrightarrow
+  \text{true in the intended model},
+\]
+
+and
+
+\[
+  \text{exact committed Rust returns Accept}
+  \Longrightarrow
+  \text{Lean checker specification accepts}.
+\]
+
+The first proves the mathematical algorithm. The second is source refinement.
+Writing the same-looking checker again in Lean establishes only the first;
+finite tests cannot manufacture the second. Hydra therefore uses staged
+K5–K11 gates: freeze a logic-carrying wire format and typed outcomes, measure,
+harden Rust and resource accounting, prove the v3 specification, translate or
+otherwise refine the exact safe-Rust accepted path, soak Rust and Python across
+platforms, and only then review authority.
+
+This also fixes an important error vocabulary. `InvalidCertificate`,
+`MalformedInput`, `ResourceExhausted`, and `InternalError` are different
+outcomes. Only `Accept` grants QED, but exhaustion says nothing about whether a
+theorem exists. If exact Rust-source refinement fails, Rust remains an
+excellent accelerator and Python or dual checking remains the authority. That
+is a useful and honest engineering outcome.
+
+## First H1 implementation: exact records before automation
+
+The first H1 slice implements two deliberately narrow protocols. Authoring
+schema v1 (semantic digest
+`31a344bbc0b22cfacf5803c85d25a80a0234cf7387395283c5e1ab25ada80553`)
+stores canonical documents, exact UTF-8 source units, alternative
+formalizations, diagnostics, proof attempts, and draft or freshly checked
+theorem proposals. It pins the existing defined-syntax registry rather than
+inventing another notation layer. A generic model or solver can emit only an
+explicitly untrusted diagnostic; kernel authority requires replay, and human
+review/export authority requires an ordered source-reviewed event deposit.
+Every event binds an actor, the single session owner, a sequence, its
+predecessor, and a rolling prefix root. The production deposits are empty.
+
+The review of this code produced a small but memorable example of why strict
+serialization matters. In Python,
+
+```python
+False == 0  # True
+True == 1   # True
+```
+
+so ordinary object equality is not exact JSON equality. An early epoch draft
+could compare `false` in one root payload with `0` in another and call them
+equal. The corrected validator compares canonical JSON bytes, type-checks
+every version integer, and refuses to return a normalized object whose root or
+preimage differs from the input commitment. The same version discipline now
+applies to authoring records.
+
+Library-epoch schema v1 (semantic digest
+`f4695013ee4aeb660abf3a1e57a6334d86c990a8904c4435d94628694a2e875b`)
+also distinguishes a living candidate from a frozen research epoch. Candidate
+loading always rechecks current Git provenance and the complete 384-theorem
+catalog. If relevant sources change after import, the service must restart;
+new hashes cannot be paired with stale imported theorem objects. Evidence
+reads are bounded and reject final symlinks, while packed path text is checked
+without consulting the living repository.
+
+This is not yet $L_0$. The protocol fixture contains the catalog, semantic
+profile, and retained H0 report, but only certificate *hashes*, not canonical
+formula/certificate bytes. Its independent-owner registry is empty. The next
+epoch gate must replay every packed theorem using only the kernel while the
+living theorem library is unavailable. Until that passes, “pack,” “root,” and
+38 green focused tests describe useful infrastructure—not a frozen research
+library. The authoring side likewise has 28 focused tests but still needs the
+200-unit adjudicated corpus and live browser/recovery behavior before A0/H1.0
+can close.
 
 ## What “matched compute” means
 
@@ -660,9 +845,9 @@ The campaign proceeds in order:
 | Gate | Question | Required evidence |
 |---|---|---|
 | H0 | Is the logic and fragment exact? | conformance, reference agreement, mutation rejection |
-| H1 | Is there clean headroom? | frozen $L_0$, sealed lineage split, symbolic and teacher DEV probes |
-| H2 | Is the non-LLM baseline strong? | proof-producing portfolio and replayed resource curves |
-| H3 | Is the curriculum real proof data? | deterministic corpus, complete QED roots, zero leakage |
+| H1 | Are authoring and evaluation isolated? | strict schemas, frozen $L_0$, sealed lineage split, symbolic and teacher DEV probes |
+| H2 | Is the non-LLM baseline strong? | native/Vampire proof-producing portfolio and replayed resource curves |
+| H3 | Are the curricula legitimate? | adjudicated prose pairs, complete QED roots, deterministic builds, zero leakage |
 | H4 | Which learned component helps? | model ladder and matched causal ablations |
 | H5 | Does the LLM win once, fairly? | one-shot sealed matched-compute comparison |
 | H6 | Can another group reproduce it? | source, environments, raw traces, certificates, tables, review |
@@ -672,6 +857,12 @@ campaign, including benchmark authorship, independent evaluation, replication,
 and release, is more realistically four to six months. GPU training is not the
 first step; it is one guarded step after semantics, leakage control, and a
 strong baseline exist.
+
+The A0–A6 product gates proceed in parallel from authoring schemas through the
+sentence workbench, artifact compiler, Vampire/Qwen help, asynchronous live
+assistant, and reviewed library admission. The K5–K11 gates independently
+govern any future Rust-authority change. Finishing one track never waives the
+acceptance criteria of another.
 
 ## What would be novel
 
