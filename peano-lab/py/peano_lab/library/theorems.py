@@ -1054,7 +1054,7 @@ THEOREMS: tuple[TheoremSpec, ...] = (
     ),
     TheoremSpec(
         "le_or_lt",
-        "forall a b. (exists k. k + a = b) \\/ exists k. k + S b = a",
+        "forall a b. (exists k. k + a = b) \/ exists k. k + S b = a",
         (),
         (
             "induction a",
@@ -1088,7 +1088,7 @@ THEOREMS: tuple[TheoremSpec, ...] = (
     ),
     TheoremSpec(
         "lt_trichotomy",
-        "forall a b. a = b \\/ ((exists k. k + S a = b) \\/ exists k. k + S b = a)",
+        "forall a b. a = b \/ ((exists k. k + S a = b) \/ exists k. k + S b = a)",
         (),
         (
             "induction a",
@@ -1381,7 +1381,7 @@ THEOREMS: tuple[TheoremSpec, ...] = (
     ),
     TheoremSpec(
         "remainder_bound_step",
-        "forall r d. (exists k. k + S r = d) -> S r = d \\/ exists k. k + S (S r) = d",
+        "forall r d. (exists k. k + S r = d) -> S r = d \/ exists k. k + S (S r) = d",
         ("le_eq_or_lt",),
         (
             "intro r",
@@ -5306,7 +5306,7 @@ BINARY_CRT_THEOREMS: tuple[TheoremSpec, ...] = (
             "intro hzero", "apply mul_ne_zero", "exact hP", "exact hnew", "exact hzero",
             "split",
             "intro i", "intro hi",
-            "have hsplit : i = S k \\/ exists r. r + S i = S k",
+            "have hsplit : i = S k \/ exists r. r + S i = S k",
             "specialize le_eq_or_lt i", "specialize le_eq_or_lt (S k)",
             "apply le_eq_or_lt", "exact hi",
             "cases hsplit",

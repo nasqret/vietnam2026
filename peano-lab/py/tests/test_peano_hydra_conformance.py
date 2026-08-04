@@ -343,6 +343,10 @@ def test_macro_protocol_controls_are_self_contained_exact_h03_evidence() -> None
         "argv": [
             "python",
             "-B",
+            "-W",
+            "ignore:invalid escape sequence:DeprecationWarning",
+            "-W",
+            "ignore::SyntaxWarning",
             "-m",
             "pytest",
             "-q",
@@ -462,6 +466,37 @@ def test_two_fresh_small_replays_have_identical_rows_and_root(tmp_path: Path) ->
     serialized = json.dumps([first, second, summary], ensure_ascii=False)
     assert str(ROOT) not in serialized
     assert str(tmp_path) not in serialized
+
+
+def test_cold_worker_suppresses_syntax_warnings_in_isolated_process(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    observed: dict[str, object] = {}
+
+    def fail_after_recording(command, **kwargs):
+        observed["command"] = command
+        observed["environment"] = kwargs["env"]
+        raise OSError("deliberate spawn failure")
+
+    monkeypatch.setattr(subprocess, "Popen", fail_after_recording)
+    with pytest.raises(H0ValidationError, match="cold replay worker failed"):
+        _spawn_cold_worker(
+            output=tmp_path / "unpublished.json",
+            names=("zero_add",),
+            external_paths=None,
+            timeout_seconds=1.0,
+            campaign_timeout_seconds=1.0,
+        )
+
+    assert observed["command"][1:6] == [
+        "-B",
+        "-W",
+        "ignore:invalid escape sequence:DeprecationWarning",
+        "-W",
+        "ignore::SyntaxWarning",
+    ]
+    assert observed["environment"]["PYTHONDONTWRITEBYTECODE"] == "1"
+    assert observed["environment"]["PYTHONHASHSEED"] == "0"
 
 
 def test_cold_pair_controller_overlaps_the_two_fresh_workers(tmp_path: Path) -> None:

@@ -96,7 +96,7 @@ def make_finite_range_theorems(spec: Callable[..., Any]) -> tuple[Any, ...]:
                 "specialize le_of_succ_le_succ l",
                 "apply le_of_succ_le_succ",
                 "exact hi",
-                "have hsplit : i = l \\/ exists h. h + S i = l",
+                "have hsplit : i = l \/ exists h. h + S i = l",
                 "specialize le_eq_or_lt i",
                 "specialize le_eq_or_lt l",
                 "apply le_eq_or_lt",

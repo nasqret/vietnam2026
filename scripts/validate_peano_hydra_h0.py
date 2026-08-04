@@ -89,6 +89,16 @@ MACRO_FOCUSED_TESTS = (
     "tests/test_peano_hydra_macro_runner.py",
 )
 EXPECTED_MACRO_FOCUSED_TEST_COUNT = 110
+# Five legacy theorem literals intentionally retain their byte-pinned ``\/``
+# spelling.  Newer CPython versions warn while compiling those files; suppress
+# only that compatibility noise in validator-owned isolated processes so the
+# cold-worker stderr channel remains a fail-closed protocol signal.
+ISOLATED_PYTHON_WARNING_FLAGS = (
+    "-W",
+    "ignore:invalid escape sequence:DeprecationWarning",
+    "-W",
+    "ignore::SyntaxWarning",
+)
 
 # This is the independently reviewed Cut-aware Lean reference, not a
 # caller-selected executable.  The source root is content-bound as well as
@@ -941,6 +951,7 @@ def _spawn_cold_worker(
     command = [
         sys.executable,
         "-B",
+        *ISOLATED_PYTHON_WARNING_FLAGS,
         str(Path(__file__).resolve()),
         "--cold-worker",
         "--output",
@@ -1097,7 +1108,15 @@ def compare_cold_replays(
 
 
 def _run_required_regressions(*, timeout_seconds: float) -> dict[str, object]:
-    command = [sys.executable, "-B", "-m", "pytest", "-q", *REQUIRED_REGRESSION_TESTS]
+    command = [
+        sys.executable,
+        "-B",
+        *ISOLATED_PYTHON_WARNING_FLAGS,
+        "-m",
+        "pytest",
+        "-q",
+        *REQUIRED_REGRESSION_TESTS,
+    ]
     try:
         result = subprocess.run(
             command,
@@ -1111,7 +1130,15 @@ def _run_required_regressions(*, timeout_seconds: float) -> dict[str, object]:
     if result.returncode != 0:
         raise H0ValidationError("required H0.2 regression tests failed")
     return {
-        "command": ["python", "-B", "-m", "pytest", "-q", *REQUIRED_REGRESSION_TESTS],
+        "command": [
+            "python",
+            "-B",
+            *ISOLATED_PYTHON_WARNING_FLAGS,
+            "-m",
+            "pytest",
+            "-q",
+            *REQUIRED_REGRESSION_TESTS,
+        ],
         "exit_code": 0,
         "stderr_sha256": digest_bytes(result.stderr),
         "stdout_sha256": digest_bytes(result.stdout),
@@ -1120,7 +1147,15 @@ def _run_required_regressions(*, timeout_seconds: float) -> dict[str, object]:
 
 
 def _run_macro_focused_tests(*, timeout_seconds: float) -> dict[str, object]:
-    command = [sys.executable, "-B", "-m", "pytest", "-q", *MACRO_FOCUSED_TESTS]
+    command = [
+        sys.executable,
+        "-B",
+        *ISOLATED_PYTHON_WARNING_FLAGS,
+        "-m",
+        "pytest",
+        "-q",
+        *MACRO_FOCUSED_TESTS,
+    ]
     environment = dict(os.environ)
     environment.update(
         PYTHONDONTWRITEBYTECODE="1",
@@ -1171,7 +1206,15 @@ def _run_macro_focused_tests(*, timeout_seconds: float) -> dict[str, object]:
 
     return {
         "command": {
-            "argv": ["python", "-B", "-m", "pytest", "-q", *MACRO_FOCUSED_TESTS],
+            "argv": [
+                "python",
+                "-B",
+                *ISOLATED_PYTHON_WARNING_FLAGS,
+                "-m",
+                "pytest",
+                "-q",
+                *MACRO_FOCUSED_TESTS,
+            ],
             "cwd": "peano-lab/py",
             "environment": {
                 "PYTHONDONTWRITEBYTECODE": "1",
