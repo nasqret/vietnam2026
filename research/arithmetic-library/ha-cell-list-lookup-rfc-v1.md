@@ -144,8 +144,8 @@ later theorem statement expands D01/D02, `CellHistory`, `CellListLen`,
 | 5 | `list_at_succ_iff` | shift lookup through one outer cell | rung 2 (`cell_history_extend_preserves_prefix`), `cell_history_succ_elim`, `add_comm` |
 | 6 | `list_at_external_bound` | transport the hidden bound to a declared list length | rungs 3, `cell_list_length_functional` |
 | 7 | `list_at_exists` | every in-range index has a decoded head | `CellHistory` universal edge clause, definition introduction, `add_comm` |
-| 8 | `list_at_functional` | lookup at a fixed code and index has one value | rungs 4--5, `cell_head_functional`, `cell_tail_functional`, induction on `i` |
-| 9 | `list_at_history_independent` | transport a selected edge between two history witnesses for the same list | rungs 7--8, `beta_at_unique` |
+| 8 | `list_at_functional` | lookup at a fixed code and index has one value | `list_at_head_iff`, `list_at_succ_iff`, `cell_functional`; induction on `i` |
+| 9 | `list_at_history_independent` | transport a selected edge between two history witnesses for the same list | `list_at_functional`, `add_comm` |
 | 10 | `cell_list_extensional` | equal-length lists with equal entries have equal codes | rungs 4--8, list zero/successor equations, induction on `l` |
 
 ### T03 domain
@@ -267,11 +267,10 @@ flowchart TD
 
   HEAD --> FUNC[list_at_functional]
   SUCC --> FUNC
-  CHF[cell_head_functional] --> FUNC
-  CTF[cell_tail_functional] --> FUNC
+  CF[cell_functional] --> FUNC
 
-  EXISTS --> INDEP[list_at_history_independent]
-  FUNC --> INDEP
+  FUNC --> INDEP[list_at_history_independent]
+  AC --> INDEP
 
   HEAD --> EXT[cell_list_extensional]
   SUCC --> EXT
@@ -338,12 +337,23 @@ successor, and head, which are repackaged with the same history witnesses into
 `ListAt(z,i,a)`. No choice principle, search, or earlier lookup equation is
 used.
 
-### 7.4 Functionality and extensionality
+### 7.4 Functionality, history independence, and extensionality
 
 Functionality is ordinary induction on the outer index.  The base case uses
-the head equation and `cell_head_functional`.  The successor case uses the
-successor equation, `cell_tail_functional` to identify the two decoded tails,
-and the induction hypothesis.
+the head equation twice and projects head equality from one application of
+joint `cell_functional`. The successor case uses the successor equation twice,
+projects tail equality from `cell_functional`, rewrites the two terminal-code
+occurrences in the first tail lookup, and applies the generalized induction
+hypothesis. Separate head and tail functionality dependencies are unnecessary.
+
+History independence keeps the selected construction edge `j` from the first
+history. Its bound `j + S i = l` is converted by PA4 and `add_comm` to the
+second history's edge-clause bound `i + S j = l`. That clause supplies a head
+`h` at the same outer index in the second history. Building client-level
+lookups from both histories and applying `list_at_functional` proves `a=h`;
+rewriting the two head occurrences in exact D06 yields the requested second
+`HistoryAt`. This neither uses `list_at_exists` nor equates raw beta codes, and
+it needs no direct `beta_at_unique` dependency.
 
 Extensionality is induction on the shared length.  At zero, both codes are
 nil by `cell_list_zero_iff_nil`.  At a successor length, the successor list
@@ -506,5 +516,26 @@ external bound witness as the history-edge index and derives the edge clause's
 bound with PA4 and commutativity, then returns the head supplied by that edge.
 Both T06 and T07 bodies contain zero DNE. This is body-level evidence only:
 neither row has a repeated cold empty-context receipt, registration,
-admission, or public status. The next proof body is `list_at_functional`;
-T03--T07 must enter a repeated cold WMI batch before any admission review.
+admission, or public status. The final two body checkpoints are recorded
+below.
+
+`list_at_functional` has exact direct dependency order `list_at_head_iff`,
+`list_at_succ_iff`, `cell_functional`. Its expanded statement has 8,895
+characters and SHA-256
+`1eba38bb47901319d41e681ed77f218b437e4d2ff1d55f519fff82e7dc8f2361`;
+its body receipt is `(3,95,119,40,119,118,0)`. The induction motive is
+generalized over the code and both values. The zero branch projects head
+equality from joint cell functionality; the successor branch projects tail
+equality, aligns the tail lookups, and invokes the induction hypothesis.
+
+`list_at_history_independent` has exact dependency order
+`list_at_functional`, `add_comm`, replacing the provisional T07/beta-unique
+route. Its expanded statement has 7,581 characters and SHA-256
+`d0a1ac158e6e0552a8e762b69b602da0157183c832ec0cf4c270586dffcc914d`;
+its body receipt is `(2,92,171,38,171,170,0)`. It selects the same edge in the
+second history, constructs two client lookups, and transports only their
+decoded head equality. Both T08 and T09 bodies have zero DNE. This is
+body-level evidence only: neither row has a repeated cold empty-context
+receipt, registration, admission, or public status. The next proof body is
+`cell_list_extensional`; T03--T09 require repeated cold WMI closure before any
+admission review.

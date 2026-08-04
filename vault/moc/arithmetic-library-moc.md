@@ -143,6 +143,20 @@ It converts `j+S i=l` to the history edge bound `i+S j=l` and extracts the
 head constructively. Both T06 and T07 remain body-level only, without cold
 closure, registration, admission, or a public theorem.
 
+The private functionality row has statement receipt
+`(8895,1eba38bb47901319d41e681ed77f218b437e4d2ff1d55f519fff82e7dc8f2361)`
+and body receipt `(3,95,119,40,119,118,0)`, depending exactly on
+`list_at_head_iff`, `list_at_succ_iff`, and `cell_functional`. Its generalized
+induction uses the head and tail components of joint cell functionality.
+
+The private history-independence row has statement receipt
+`(7581,d0a1ac158e6e0552a8e762b69b602da0157183c832ec0cf4c270586dffcc914d)`
+and body receipt `(2,92,171,38,171,170,0)`, depending exactly on
+`list_at_functional` and `add_comm`. It reuses the same history edge and
+compares two client lookups; no T07, beta-uniqueness theorem, or raw-code
+equality is required. Both T08 and T09 have zero DNE and remain body-level
+only, without cold closure, registration, admission, or a public theorem.
+
 ## Design and trust
 
 - [[quadratic-reciprocity-moc]]

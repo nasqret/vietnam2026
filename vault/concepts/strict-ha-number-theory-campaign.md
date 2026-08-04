@@ -340,6 +340,22 @@ history edge clause, whose existential head completes the lookup. Both T06
 and T07 have zero DNE but no cold empty-context receipt and remain
 unregistered, unadmitted, and nonpublic.
 
+`list_at_functional` is body-checked privately with statement receipt
+`(8895,1eba38bb47901319d41e681ed77f218b437e4d2ff1d55f519fff82e7dc8f2361)`
+and body receipt `(3,95,119,40,119,118,0)`. Its exact direct dependencies are
+`list_at_head_iff`, `list_at_succ_iff`, and `cell_functional`. Generalized
+induction uses the joint cell theorem's head projection at zero and its tail
+projection to align recursive lookups at a successor.
+
+`list_at_history_independent` is body-checked privately with statement receipt
+`(7581,d0a1ac158e6e0552a8e762b69b602da0157183c832ec0cf4c270586dffcc914d)`
+and body receipt `(2,92,171,38,171,170,0)`. Its exact direct dependencies are
+`list_at_functional` and `add_comm`. The proof reuses the same selected edge
+in the second history, converts its bound with PA4/commutativity, and compares
+the two client lookups. It needs neither T07, `beta_at_unique`, nor raw
+beta-code equality. Both T08 and T09 have zero DNE but no cold empty-context
+receipt and remain unregistered, unadmitted, and nonpublic.
+
 ## Repository anchors
 
 - `research/arithmetic-library/ha-number-theory-campaign.json`

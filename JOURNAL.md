@@ -4812,3 +4812,22 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   constructively supplies the returned head. Both new bodies have zero DNE.
   This remains body-level evidence only; cold closure, registration,
   admission, catalogs, JSON accounting, and public snapshots are unchanged.
+- Checked private `list_at_functional` with exact direct dependency order
+  `list_at_head_iff`, `list_at_succ_iff`, `cell_functional`. Its statement
+  receipt is
+  `(8895,1eba38bb47901319d41e681ed77f218b437e4d2ff1d55f519fff82e7dc8f2361)`
+  and body receipt is `(3,95,119,40,119,118,0)`. The generalized induction
+  motive ranges over the code and both candidate values. The base case takes
+  the head component of joint cell functionality; the successor case takes
+  its tail component, aligns the recursive lookups, and applies the induction
+  hypothesis.
+- Checked private `list_at_history_independent` with exact direct dependency
+  order `list_at_functional`, `add_comm`. Its statement receipt is
+  `(7581,d0a1ac158e6e0552a8e762b69b602da0157183c832ec0cf4c270586dffcc914d)`
+  and body receipt is `(2,92,171,38,171,170,0)`. The proof selects the same
+  edge in the second history, converts its bound through PA4/commutativity,
+  constructs the two client lookups, and rewrites only their decoded heads.
+  This removes the provisional T07/`beta_at_unique` route and never compares
+  raw beta codes. Both T08 and T09 bodies have zero DNE. These are body-level
+  checkpoints only: cold closure, registration, admission, catalogs, JSON
+  accounting, and public snapshots remain unchanged.

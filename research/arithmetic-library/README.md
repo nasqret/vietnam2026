@@ -184,6 +184,28 @@ and proof receipt `(1,45,60,26,60,59,0)`. Its sole direct dependency is
 supplied head. Both T06 and T07 are body-checked only, with zero DNE and no
 cold closure, registration, admission, or public theorem.
 
+The private [`list_at_functional`](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_functional_candidate.py)
+body and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_cell_list_lookup_functional_candidate.py)
+have statement receipt
+`(8895,1eba38bb47901319d41e681ed77f218b437e4d2ff1d55f519fff82e7dc8f2361)`
+and proof receipt `(3,95,119,40,119,118,0)`. Its direct dependencies are
+`list_at_head_iff`, `list_at_succ_iff`, and joint `cell_functional`.
+Generalized induction uses the joint theorem's head projection at zero and
+tail projection in the successor branch.
+
+The private [`list_at_history_independent`](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_history_independent_candidate.py)
+body and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_cell_list_lookup_history_independent_candidate.py)
+have statement receipt
+`(7581,d0a1ac158e6e0552a8e762b69b602da0157183c832ec0cf4c270586dffcc914d)`
+and proof receipt `(2,92,171,38,171,170,0)`. Its exact dependencies are
+`list_at_functional` and `add_comm`: it selects the same edge in the second
+history and compares the resulting client-level lookups, without T07,
+`beta_at_unique`, or raw beta-code equality. Both T08 and T09 have zero DNE
+and remain body-checked only, without cold closure, registration, admission,
+or a public theorem.
+
 The K4
 [`signed-gcd client`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)
 and its

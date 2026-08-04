@@ -2177,3 +2177,22 @@
   PA4 and commutativity convert `j+S i=l` into `i+S j=l`, enabling the history
   edge clause to supply a head constructively. It has zero DNE but no cold
   closure, registration, admission, public theorem, or accounting change.
+- **K3B lookup functionality body (2026-08-04):** private
+  `list_at_functional` has statement receipt
+  `(8895,1eba38bb47901319d41e681ed77f218b437e4d2ff1d55f519fff82e7dc8f2361)`
+  and body receipt `(3,95,119,40,119,118,0)`. Its exact dependency order is
+  `list_at_head_iff`, `list_at_succ_iff`, `cell_functional`. Induction is
+  generalized over the code and both candidate values; the two branches use
+  the head and tail projections of joint cell functionality, respectively.
+  It has zero DNE but no cold closure, registration, admission, public
+  theorem, or accounting change.
+- **K3B history-independent lookup body (2026-08-04):** private
+  `list_at_history_independent` has statement receipt
+  `(7581,d0a1ac158e6e0552a8e762b69b602da0157183c832ec0cf4c270586dffcc914d)`
+  and body receipt `(2,92,171,38,171,170,0)`. Its exact dependency order is
+  `list_at_functional`, `add_comm`: it selects the same history edge, converts
+  the bound with PA4 and commutativity, constructs client lookups in both
+  histories, and transports their decoded head equality. The route uses
+  neither T07, `beta_at_unique`, nor raw beta-code equality. It has zero DNE
+  but no cold closure, registration, admission, public theorem, or accounting
+  change.

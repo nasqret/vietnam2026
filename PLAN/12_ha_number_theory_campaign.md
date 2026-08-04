@@ -753,7 +753,7 @@ target. Strict K3 remains 96 rows across 21 modules, and the campaign JSON
 remains unchanged at 95 public references, 121 private candidates, and 169
 receipts.
 
-### K3B ListAt checkpoint (surface frozen; T03--T07 bodies checked)
+### K3B ListAt checkpoint (surface frozen; T03--T09 bodies checked)
 
 `HA-K3B-LISTAT-1` freezes an outer-head `ListAt(z,i,a)` surface over the
 closed private reverse histories. The selected edge satisfies
@@ -826,8 +826,29 @@ then construct `ListAt(z,i,a)` without choice. Its statement receipt is
 and its body receipt is `(1,45,60,26,60,59,0)`. Both bodies have zero DNE and
 remain private body-level evidence only: no cold closure, registration,
 admission, public snapshot, catalog, or campaign-JSON change is claimed.
-Proceed next to `list_at_functional`, then include T03--T07 in a repeated cold
-WMI batch before admission review.
+The functionality and history-independence body checkpoints are recorded
+next.
+
+`list_at_functional` now checks with exact dependency order
+`list_at_head_iff`, `list_at_succ_iff`, `cell_functional`. Its generalized
+induction motive ranges over the code and both candidate values. The base
+branch uses the joint cell theorem's head component; the successor branch uses
+its tail component to align the two recursive lookups. Its statement receipt
+is
+`(8895,1eba38bb47901319d41e681ed77f218b437e4d2ff1d55f519fff82e7dc8f2361)`
+and body receipt is `(3,95,119,40,119,118,0)`.
+
+`list_at_history_independent` now checks with exact dependency order
+`list_at_functional`, `add_comm`; the provisional T07/`beta_at_unique` route
+is removed. It uses the same selected edge in both histories, converts its
+bound by PA4/commutativity, and transports equality only through client
+lookups. Its statement receipt is
+`(7581,d0a1ac158e6e0552a8e762b69b602da0157183c832ec0cf4c270586dffcc914d)`
+and body receipt is `(2,92,171,38,171,170,0)`. Both bodies have zero DNE and
+remain private body-level evidence only: no cold closure, registration,
+admission, public snapshot, catalog, or campaign-JSON change is claimed.
+Proceed next to `cell_list_extensional`, then include T03--T09 in a repeated
+cold WMI batch before admission review.
 
 ## Release boundary
 
