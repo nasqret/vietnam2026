@@ -4646,3 +4646,41 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   `11b88b5d21c4c28d13aede8976b99b8b438812d738b2a7d69e8a20e20378fb38`;
   all relative, fragment, escaping, unsafe, and remote-runtime link counts are
   zero.
+
+## 2026-08-04 — HA-K3-PAIR-1 functionality and strict descent closed privately
+
+- Added the three-row exact-D06 functionality factory. `cell_functional`
+  strips the shared successor tag with PA2 and invokes private exact-D01
+  `pair_code_injective`; `cell_head_functional` and `cell_tail_functional`
+  project the resulting component equalities. Their twice-cold receipts are
+  `(2550,33,1146,1211,66,60,e1cfdfcfbe2b1bfb70f51cc724280d3bc7ac046c4bd14865bf390952b412a45c)`,
+  `(2569,34,1165,1230,66,61,289cb3b6a42ca39e424e40712e44a24e4b7d4c7b355c4c0bd697d75ae42dfc9f)`,
+  and
+  `(2569,34,1165,1230,66,61,e03fdd8affeba3e1c0c1cb6f6e496c6ac53b13469db8c9c5b517f0df9de72d5c)`.
+- Added the four-row component-bound factory. `pair_left_le_code` and
+  `pair_right_le_code` expose native existential-order bounds for exact D01;
+  `cell_head_lt_code` and `cell_tail_lt_code` lift them through the D06
+  successor to strict descent. Their twice-cold receipts are
+  `(257,18,173,184,12,8,2216484e9a09321c065b6fbac742ff1763b28f799720fb4b729468cdeaa8ce3c)`,
+  `(181,18,170,180,11,7,48ae46ea34331fc1cdadc03a0e510681748aeade658cf1d9783ab6e7a6740601)`,
+  `(304,20,220,231,12,10,4cbccb9c232ff1ee40d05a3ee0520e5a99beeeebb645f3e5142a5c40681d1d3d)`,
+  and
+  `(228,20,217,227,11,9,145f2c4c0c00c4b7145a6f847e90af1dd72e500b1d88b03e7ed4fdd267d2867b)`.
+- Both focused suites pass all ten checks. Every certificate is deterministic
+  across two cold closures, contains zero DNE, remains under unchanged limits,
+  rejects theorem and encoding mutations, and has a transitive K0--K2 closure
+  excluding division, remainder, beta coding, CRT, factorization, and
+  classical logic.
+- Recorded all seven rows as `closed_checked_candidate` evidence in two new K3
+  module records. The campaign now has 95 public references, 121 private
+  candidates, 169 exact receipts, 27 candidate modules, and 36 focused test
+  paths. Strict K3 contains 96 rows across 21 modules: 74 signed rows and 22
+  pair/cell rows. Runtime/catalog remain 432/433 and no cell theorem is public.
+- This completes the private pair/cell proof API through component
+  functionality and strict descent, not the full finite-data substrate.
+  Valid-code decision, an independently justified uniform computation
+  history, lists, finite maps, and deliberate public admission remain open.
+- The regenerated 185-source local browser app is sealed as
+  `a-0d9a06f601cf` (`BUILD=2026-08-04k`). This is a local reproducibility
+  receipt; no deployment is claimed. Book artifacts were deliberately left for
+  the separately bound documentation stage.

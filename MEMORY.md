@@ -2068,3 +2068,28 @@
   private boundary and passes integrity over 2,325 HTML pages; its 2,493-file
   HTML tree has SHA-256
   `11b88b5d21c4c28d13aede8976b99b8b438812d738b2a7d69e8a20e20378fb38`.
+- **K3 pair/cell functionality and descent API (2026-08-04):** seven further
+  isolated `HA-K3-PAIR-1` candidates complete the private proof API through
+  exact D06 functionality and strict component descent. `cell_functional`
+  removes the common successor tag with PA2 and applies exact D01
+  `pair_code_injective`; `cell_head_functional` and
+  `cell_tail_functional` project its conjunction. Their closed receipts are
+  `(2550,33,1146,1211,66,60,e1cfdfcfbe2b1bfb70f51cc724280d3bc7ac046c4bd14865bf390952b412a45c)`,
+  `(2569,34,1165,1230,66,61,289cb3b6a42ca39e424e40712e44a24e4b7d4c7b355c4c0bd697d75ae42dfc9f)`,
+  and
+  `(2569,34,1165,1230,66,61,e03fdd8affeba3e1c0c1cb6f6e496c6ac53b13469db8c9c5b517f0df9de72d5c)`.
+  `pair_left_le_code`, `pair_right_le_code`, `cell_head_lt_code`, and
+  `cell_tail_lt_code` close respectively at
+  `(257,18,173,184,12,8,2216484e9a09321c065b6fbac742ff1763b28f799720fb4b729468cdeaa8ce3c)`,
+  `(181,18,170,180,11,7,48ae46ea34331fc1cdadc03a0e510681748aeade658cf1d9783ab6e7a6740601)`,
+  `(304,20,220,231,12,10,4cbccb9c232ff1ee40d05a3ee0520e5a99beeeebb645f3e5142a5c40681d1d3d)`,
+  and
+  `(228,20,217,227,11,9,145f2c4c0c00c4b7145a6f847e90af1dd72e500b1d88b03e7ed4fdd267d2867b)`.
+  Every row closes twice cold, contains zero DNE, rejects false mutations, and
+  has a K0--K2-only dependency closure. Campaign accounting is 95 public
+  references, 121 private candidates, 169 receipts, 27 candidate modules, and
+  36 focused test paths. Strict K3 is 96 rows in 21 modules: 74 signed plus 22
+  pair/cell. Runtime/catalog remain 432/433; no new theorem is public. The
+  regenerated 185-source local browser app is sealed as `a-0d9a06f601cf`
+  (`BUILD=2026-08-04k`), with no deployment. Valid-code decision, uniform
+  computation histories, lists, maps, and public admission remain open.

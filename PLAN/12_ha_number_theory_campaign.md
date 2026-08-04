@@ -205,27 +205,32 @@ with `m != 0` on totality statements.
       signed-integer and pair/cell components are now selected.
 - [x] Close the literal pair constructor, doubled-triangular shell arithmetic,
       and component injectivity as isolated deterministic candidates.
-- [ ] Prove the remaining cell functionality and strict component-bound API.
+- [x] Prove the cell functionality and strict component-bound API as isolated
+      deterministic candidates.
 - [ ] Prove list validity, length, lookup, membership, append, restriction,
       and extension interfaces.
 - [ ] Build finite sums, products, and cardinality on this substrate.
 - [ ] Only after the substrate closes, prove interoperability with existing
       `BetaAt`/fold certificates.
 
-The first HA4 proof round now contributes 15 closed, nonpublic candidates in
-three dependency-ordered modules. Seven literal rows construct D01 pairs and
+The HA4 pair/cell constructor/injectivity/cell-functionality/descent core now contributes 22 closed, nonpublic candidates in
+five dependency-ordered modules. Seven literal rows construct D01 pairs and
 D06 cells, prove fixed-component output functionality and D02 validity, keep
 D05 nil disjoint from constructed cells, and construct a single D08 map entry.
 Six arithmetic rows establish doubled-triangular shell successor arithmetic,
 monotonicity, offset bounds, lower and strict upper pair-code bounds, and
 strict separation of distinct shells. Finally `double_add_injective` and
 `pair_code_injective` recover both components from two exact D01 witnesses for
-one code. Two cold closures agree for every row, all certificates contain zero
-DNE and remain inside the unchanged resource limits, and the complete
+one code. Three further rows transfer pair injectivity through the D06
+successor tag to joint, head, and tail functionality. The final four prove
+left/right pair-component bounds and strict head/tail descent below every D06
+cell code. Two cold closures agree for every row, all certificates contain
+zero DNE and remain inside the unchanged resource limits, and the complete
 transitive dependency closure stays in K0--K2 without division, remainder,
-beta coding, CRT, or classical logic. These facts do not prove that cells are
-functional, do not define a finite map, and do not resolve variable-length
-tail iteration.
+beta coding, CRT, or classical logic. This completes the private pair/cell
+core through functionality and strict descent, but does not decide
+arbitrary valid codes, define a finite map, or resolve variable-length tail
+iteration.
 
 ### M1 — canonical modular inverse criterion
 
@@ -703,14 +708,16 @@ profile. The six reviewed rows outside that closure remain private:
 - `generalized_binary_crt_solvable_iff_nonzero`.
 
 The current runtime/catalog boundary is 432/433, with 409 catalog rows at
-`checked_m20`. The campaign manifest has 95 public references, 114 private
-candidates, 162 exact receipts, 25 candidate modules, and 34 focused test
-paths. The 15-row pair constructor/shell/injectivity seed is closed but
-nonpublic; cell functionality, strict component bounds, and the uniform K3
-list/fold remain open. Thus the K3 finite-system fold is still the remaining
-structural blocker for the main finite generalized-CRT target; the six M5
-conveniences remain deliberately private and are not a blocker. No row asserts
-a remainder below zero.
+`checked_m20`. The campaign manifest has 95 public references, 121 private
+candidates, 169 exact receipts, 27 candidate modules, and 36 focused test
+paths. Strict K3 now has 96 rows across 21 modules: 74 signed rows and 22
+pair/cell rows. The pair/cell constructor, shell, injectivity, functionality,
+and strict component-descent API is closed but nonpublic. Valid-code decision,
+uniform computation histories, lists, maps, and the K3 finite fold remain open.
+Thus the K3 finite-system fold is still the remaining structural blocker for
+the main finite generalized-CRT target; the six M5 conveniences remain
+deliberately private and are not a blocker. No row asserts a remainder below
+zero.
 
 ## Release boundary
 

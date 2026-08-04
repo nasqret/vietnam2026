@@ -24,11 +24,11 @@ intuitionistic arithmetic without extending Peano Lab's object language.
 
 The current registry has 432 theorems. Nine strict-HA tranche-01 interfaces,
 16 K4 gcd/LCM interfaces, and 23 M5 generalized-CRT interfaces are public. The
-campaign evidence records 95 public references, 114 isolated candidates, and
-162 exact receipts across 25 candidate modules and 34 focused test paths. Its
-strict-K3 component has 89 rows across 19 modules: 74 signed representation,
-normalization, arithmetic, natural-scale, and Bezout-bridge rows, plus 15 pair
-constructor, shell, injectivity, and cell-boundary rows. The K4
+campaign evidence records 95 public references, 121 isolated candidates, and
+169 exact receipts across 27 candidate modules and 36 focused test paths. Its
+strict-K3 component has 96 rows across 21 modules: 74 signed representation,
+normalization, arithmetic, natural-scale, and Bezout-bridge rows, plus 22 pair
+constructor, shell, injectivity, functionality, and strict-descent rows. The K4
 remainder consists of three canonical-gcd package rows, one signed-gcd client,
 five canonical-gcd edge rows, and ten relational-LCM convenience rows. The
 definition freeze remains 45 API rows over 44 distinct public theorems, there
@@ -55,10 +55,12 @@ flowchart TD
     M --> D7[D07 natural scaling]
     D7 --> SB[D08 signed Bezout bridge]
   end
-  subgraph K3P[Strict K3 pair seed — 15 rows]
+  subgraph K3P[Strict K3 pair/cell API — 22 rows]
     PC[D01/D02 constructors and validity] --> PS[doubled-triangular shell bounds]
     PS --> PI[D01 component injectivity]
     PC --> PN[D05/D06 nil-cell boundary]
+    PI --> CF[D06 joint/head/tail functionality]
+    PS --> CB[D01 bounds and D06 strict descent]
   end
   subgraph K4[K4 gcd and LCM clients]
     D --> RG
@@ -227,9 +229,9 @@ The synchronized vault has 432 theorem notes, 531 total notes, and 5,377
 resolved links.
 
 The preceding M5 admission gate passed 30 structural and 220 proof/admission
-tests, and all 25 browser/deployment contracts passed. After adding the three
-private K3 pair modules, the regenerated 183-source local browser app is
-sealed as `a-86a703f70af4` (`BUILD=2026-08-04j`); no deployment is claimed.
+tests, and all 25 browser/deployment contracts passed. After adding the five
+private K3 pair/cell modules, the regenerated 185-source local browser app is
+sealed as `a-0d9a06f601cf` (`BUILD=2026-08-04k`); no deployment is claimed.
 
 The warning-free 47-source Book rebuild passes 26 source/explorer tests and
 integrity over 2,325 HTML pages. Its byte-identical source/built explorer trees
@@ -237,14 +239,15 @@ contain 2,285 files; the 2,493-file HTML tree has SHA-256
 `d9eddd01a0dcc228ceb17b75c8595f743c7e2b6bdcb1ba44e9c260e98b33f558`.
 
 The independent pair/cell design is frozen in `HA-K3-PAIR-1` using the
-doubled Cantor polynomial and a successor cell tag. Its 15-row private seed now
+doubled Cantor polynomial and a successor cell tag. Its 22-row private API now
 closes literal constructors, fixed-component output functionality, constructor
 validity, shell bounds and separation, doubled-offset cancellation, exact D01
-component injectivity, and the nil/constructed-cell boundary. It does not yet
-prove cell functionality or strict head/tail bounds. It also does not close the
-list layer: variable-length tail iteration still needs an independently
-selected computation-history representation. Pairing alone yields only a
-fixed-length formula schema.
+component injectivity, the nil/constructed-cell boundary, D06 joint/head/tail
+functionality, D01 component bounds, and strict D06 head/tail descent. It has
+not been publicly admitted and does not decide arbitrary valid codes. It also
+does not close the list layer: variable-length tail iteration still needs an
+independently selected computation-history representation. Pairing alone
+yields only a fixed-length formula schema; uniform lists and maps remain open.
 
 ## Repository anchors
 

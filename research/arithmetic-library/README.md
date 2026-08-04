@@ -32,14 +32,14 @@ arithmetic library. Start with:
 Run `make ha-number-theory-check` from the repository root for the fast
 campaign-manifest, 45-row definition-freeze validation with 44 distinct public
 theorem replays, candidate-body, and empty-context receipt checks. The campaign
-evidence now comprises 95 public references, 99 isolated candidates, and 147
-exact receipts across 22 candidate modules and 31 focused test paths. The
+evidence now comprises 95 public references, 121 isolated candidates, and 169
+exact receipts across 27 candidate modules and 36 focused test paths. The
 candidates comprise three canonical-gcd package rows, 74 strict-K3
 signed parity, decoder, code-extensionality, balance-normalization, negation,
 addition, complete D06 multiplication-algebra, D07 natural-scale, and D08
-Bezout-bridge rows, one K4 signed-gcd client, five canonical-gcd edge rows,
-ten residual relational-LCM convenience rows, and six generalized-CRT
-convenience rows. The D06
+Bezout-bridge rows, 22 strict-K3 doubled-Cantor pair and successor-tagged-cell
+rows, one K4 signed-gcd client, five canonical-gcd edge rows, ten residual
+relational-LCM convenience rows, and six generalized-CRT convenience rows. The D06
 closure ends with the four-row
 [`SignedMul` associativity candidate](../../peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py)
 and seven-row
@@ -72,12 +72,14 @@ then normalize legacy four-natural balanced coefficients into canonical
 signed codes and recover the raw witnesses in the opposite direction. The
 complete 74-row signed-stack digest is
 `b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`.
-The strict K3 evidence spans 16 candidate modules. The K4
+The strict K3 evidence comprises 96 rows across 21 candidate modules: the
+74-row signed stack and the 22-row pair/cell constructor, shell, injectivity,
+functionality, and strict-descent core. The K4
 [`signed-gcd client`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)
 and its
 [`focused audit`](../../peano-lab/py/tests/test_ha_signed_bezout_gcd_candidate.py)
 compose public relational-gcd/Bezout existence with D08; their closure is
-explicitly division-bearing and leaves the 74-row K3 digest unchanged. The
+explicitly division-bearing and leaves the 74-row signed-stack digest unchanged. The
 five-row
 [`canonical-gcd edge tranche`](../../peano-lab/py/peano_lab/library/ha_canonical_gcd_edges_candidate.py),
 17-row
@@ -89,7 +91,7 @@ are frozen together in
 literal hygiene, dependency order, statement/script hashes, two cold closures,
 and false mutations. The bridge now proves compatible gcd/LCM existence,
 relational LCM totality, unique LCM value, and the arbitrary gcd--LCM product
-identity. This is a K4 route and does not change the strict 74-row K3 digest.
+identity. This is a K4 route and does not change the strict K3 evidence.
 The later selective admission enrolls exactly LCM rows L01--L07 and all bridge
 rows A--I, preserving their original receipts.
 

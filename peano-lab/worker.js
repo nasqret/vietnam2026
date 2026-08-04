@@ -125,6 +125,8 @@ const PY_FILES = [
   "py/peano_lab/library/ha_canonical_gcd_candidate.py",
   "py/peano_lab/library/ha_canonical_gcd_edges_candidate.py",
   "py/peano_lab/library/ha_canonical_remainder_candidate.py",
+  "py/peano_lab/library/ha_cell_bounds_candidate.py",
+  "py/peano_lab/library/ha_cell_functional_candidate.py",
   "py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py",
   "py/peano_lab/library/ha_generalized_crt_classification_candidate.py",
   "py/peano_lab/library/ha_generalized_crt_congruence_candidate.py",

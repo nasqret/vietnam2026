@@ -1,6 +1,6 @@
 # RFC HA-K3-PAIR-1: doubled-Cantor pairs and successor-tagged cells
 
-**Status:** constructor, shell, and pair-injectivity candidates closed; cell API incomplete; no public admission
+**Status:** constructor/injectivity/cell-functionality/descent core closed privately; no public admission
 
 **Scope:** pair and single-cell component of K3/HA4  
 **Logic:** first-order intuitionistic arithmetic over `0`, `S`, `+`, `*`, `=`  
@@ -192,22 +192,29 @@ cell_tail_lt_code
 The strict component bounds are important: any later recursion on a valid
 cell tail must visibly descend in the natural code.
 
-### 5.4 Closed candidate checkpoint
+### 5.4 Closed private proof-API checkpoint
 
-The first proof round is implemented in three isolated factories:
+The private proof API is implemented in five isolated factories:
 
 - [`ha_pair_cell_seed_candidate.py`](../../peano-lab/py/peano_lab/library/ha_pair_cell_seed_candidate.py)
   provides seven literal constructor and nil/cell-boundary rows;
 - [`ha_pair_shell_candidate.py`](../../peano-lab/py/peano_lab/library/ha_pair_shell_candidate.py)
-  provides six doubled-triangular shell rows; and
+  provides six doubled-triangular shell rows;
 - [`ha_pair_injective_candidate.py`](../../peano-lab/py/peano_lab/library/ha_pair_injective_candidate.py)
-  provides self-doubling cancellation and exact D01 component injectivity.
+  provides self-doubling cancellation and exact D01 component injectivity;
+- [`ha_cell_functional_candidate.py`](../../peano-lab/py/peano_lab/library/ha_cell_functional_candidate.py)
+  transfers that injectivity through the exact D06 successor tag and projects
+  head and tail functionality; and
+- [`ha_cell_bounds_candidate.py`](../../peano-lab/py/peano_lab/library/ha_cell_bounds_candidate.py)
+  proves D01 component bounds and exact D06 strict head/tail descent.
 
 Their focused audits are respectively
 [`test_ha_pair_cell_seed_candidate.py`](../../peano-lab/py/tests/test_ha_pair_cell_seed_candidate.py),
 [`test_ha_pair_shell_candidate.py`](../../peano-lab/py/tests/test_ha_pair_shell_candidate.py),
+[`test_ha_pair_injective_candidate.py`](../../peano-lab/py/tests/test_ha_pair_injective_candidate.py),
+[`test_ha_cell_functional_candidate.py`](../../peano-lab/py/tests/test_ha_cell_functional_candidate.py),
 and
-[`test_ha_pair_injective_candidate.py`](../../peano-lab/py/tests/test_ha_pair_injective_candidate.py).
+[`test_ha_cell_bounds_candidate.py`](../../peano-lab/py/tests/test_ha_cell_bounds_candidate.py).
 Every row closes twice from the empty context with the same certificate DAG,
 contains zero DNE, and fits the unchanged live/use limits. The receipt tuple
 below is `(nodes,depth,objects,edges,reused,Cuts,certificate SHA-256)`.
@@ -229,6 +236,13 @@ below is `(nodes,depth,objects,edges,reused,Cuts,certificate SHA-256)`.
 | `pair_code_shell_separated` | `53d7aacc96e356a2793f1f1174e34ba4f45cd9621c1489dc21224d304e6102ff` | `(1600,30,636,692,57,38,302d87068774ecbbe5bc6883ace27243e755627e6129d276938f31dd25dad72d)` |
 | `double_add_injective` | `9a7cfdd4513598881e04ccd832c6e76923d935141a8dbe8f468d3cb32b71d4b9` | `(493,25,408,430,23,15,b0905453455317eb8e7bb8e7835fd049ad6afb98dabbf865719c02e2cc5b33ec)` |
 | `pair_code_injective` | `be57f575eb538308784fb75d9be99c53c6a2c1982145e7cb8e47040800ac1a4a` | `(2525,32,1121,1186,66,59,7dc47f845a11797827e8682f4223af1e083afd48af60e0e22cd56862c44d06d8)` |
+| `cell_functional` | `090f28cb4425b8e512218607f5ed10559784f36059b180454cc6487ef619c77f` | `(2550,33,1146,1211,66,60,e1cfdfcfbe2b1bfb70f51cc724280d3bc7ac046c4bd14865bf390952b412a45c)` |
+| `cell_head_functional` | `5e177bb042df92bc4e59a06335ccb791d8db0aae7e67d0a9e653c08515dd856c` | `(2569,34,1165,1230,66,61,289cb3b6a42ca39e424e40712e44a24e4b7d4c7b355c4c0bd697d75ae42dfc9f)` |
+| `cell_tail_functional` | `7fcdf8eab469302e0d6e7bd0ac6e3715fcce825cf0a1e5250defb1a575cd215b` | `(2569,34,1165,1230,66,61,e03fdd8affeba3e1c0c1cb6f6e496c6ac53b13469db8c9c5b517f0df9de72d5c)` |
+| `pair_left_le_code` | `7975a8493f202e62b6949199396f92fd52c10bf6dad0cf11c0b8a8a053966159` | `(257,18,173,184,12,8,2216484e9a09321c065b6fbac742ff1763b28f799720fb4b729468cdeaa8ce3c)` |
+| `pair_right_le_code` | `592ea096f736bbeb757f57b16996b1f6209973b21ada4d1ec85d70ab3bae7f9d` | `(181,18,170,180,11,7,48ae46ea34331fc1cdadc03a0e510681748aeade658cf1d9783ab6e7a6740601)` |
+| `cell_head_lt_code` | `01c14044a7045b619d91f547260f624b4fe2e5e59a49536ff4b1f32dcbb74e9d` | `(304,20,220,231,12,10,4cbccb9c232ff1ee40d05a3ee0520e5a99beeeebb645f3e5142a5c40681d1d3d)` |
+| `cell_tail_lt_code` | `fa147a1b1ef5eba0840b7b6cee35f90a1990938b45956ae80a5cd7dbb0801640` | `(228,20,217,227,11,9,145f2c4c0c00c4b7145a6f847e90af1dd72e500b1d88b03e7ed4fdd267d2867b)` |
 
 The injectivity proof uses trichotomy on the two shell indices. Either strict
 ordering would force the common code to be strictly below itself by
@@ -236,12 +250,20 @@ ordering would force the common code to be strictly below itself by
 then equates the doubled right offsets, `double_add_injective` recovers the
 right components, and a final cancellation recovers the left components.
 This closes literal pair component injectivity without a decoder, division, or
-choice.
+choice. `cell_functional` removes the common D06 successor with PA2 and applies
+that exact pair result; its two projections recover the head and tail
+separately. The bound tranche first proves each D01 component is at most its
+code, then lifts those witnesses through the D06 successor to obtain
+`head < code` and `tail < code` in the native existential order encoding.
 
-The cell results currently prove only construction, nonzeroness, and
-disjointness from nil. They do **not** yet prove cell functionality, head/tail
-functionality, or strict component descent. Likewise `map_entry_constructor`
-constructs one D08 entry but does not define a finite map.
+Thus the private constructor/injectivity/cell-functionality/descent core is
+complete. It does **not** decide whether an arbitrary natural is a valid pair
+or cell code. Likewise `map_entry_constructor` constructs one D08 entry but
+does not define a finite map, computation history, or list.
+The projection conveniences `pair_first_functional` and
+`pair_second_functional`, plus the parity convenience `pair_code_even`, remain
+unmaterialized theorem rows. So does a dedicated `cell_constructor_valid` row;
+these conveniences are not prerequisites for the closed core.
 
 ## 6. Forbidden dependencies
 
@@ -339,7 +361,8 @@ Until then this RFC is a frozen design target, not evidence that pairs, cells,
 lists, or maps have entered the public HA library.
 
 The current checkpoint satisfies the template, constructor, literal-output,
-pair-injectivity, mutation, bounded-semantic, dependency-quarantine, and
-twice-cold closure parts of this boundary. The remaining cell functionality,
-strict descent, deliberate public admission, and independent heavy validation
-keep the overall pair/cell gate open.
+pair/cell functionality, strict-descent, mutation, bounded-semantic,
+dependency-quarantine, and twice-cold closure parts of this boundary. Valid-code
+decision, deliberate public admission, and independent heavy validation keep
+the overall pair/cell gate open. Uniform computation histories, lists, and maps
+remain separate representation work.

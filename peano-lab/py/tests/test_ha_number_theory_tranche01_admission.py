@@ -357,6 +357,8 @@ def test_campaign_manifest_is_bound_to_the_exact_admission_receipts() -> None:
             "peano-lab/py/tests/test_ha_pair_cell_seed_candidate.py",
             "peano-lab/py/tests/test_ha_pair_shell_candidate.py",
             "peano-lab/py/tests/test_ha_pair_injective_candidate.py",
+            "peano-lab/py/tests/test_ha_cell_functional_candidate.py",
+            "peano-lab/py/tests/test_ha_cell_bounds_candidate.py",
             "peano-lab/py/tests/test_ha_signed_bezout_gcd_candidate.py",
         "peano-lab/py/tests/test_ha_relational_lcm_candidate.py",
         "peano-lab/py/tests/test_ha_lcm_totality_bridge_candidate.py",
