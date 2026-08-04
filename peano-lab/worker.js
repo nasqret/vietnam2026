@@ -127,6 +127,7 @@ const PY_FILES = [
   "py/peano_lab/library/ha_canonical_remainder_candidate.py",
   "py/peano_lab/library/ha_generalized_crt_congruence_candidate.py",
   "py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py",
+  "py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py",
   "py/peano_lab/library/ha_lcm_totality_bridge_candidate.py",
   "py/peano_lab/library/ha_modular_inverse_candidate.py",
   "py/peano_lab/library/ha_relational_lcm_candidate.py",

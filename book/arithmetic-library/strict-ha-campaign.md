@@ -71,17 +71,18 @@ It separates three facts which are easy to blur in an informal development:
     templates. Their theorem ladder has not yet been proved, and uniform lists
     remain blocked on a computation-trace representation.
 * - Generalized CRT
-  - fifteen closed private candidates
+  - nineteen closed private candidates
   - The eight-row congruence foundation proves necessity and obstruction; the
-    seven-row M5a ladder constructs solutions and closes the nonzero binary
-    solvability criterion. Zero wrappers and LCM classification remain.
+    seven-row M5a ladder constructs nonzero-modulus solutions; the four-row
+    M5b boundary closes the solvability criterion for all natural moduli. LCM
+    classification remains.
 ```
 
 The public registry now has **409** entries. The nine tranche-01 interfaces at
 positions 384--392 are followed by the exact 16-row K4 admission at positions
 393--408. The research catalog has **410** entries, including **386**
 `checked_m20` rows. The campaign manifest records **72** public references,
-**108** isolated candidates, and **133** exact theorem receipts. This
+**112** isolated candidates, and **137** exact theorem receipts. This
 append-only extension leaves the frozen first-247 model curriculum unchanged.
 
 ## Why canonical remainder is a relation
@@ -1663,8 +1664,8 @@ certificate receipt can be inspected.
 
 The selective admission raises the runtime registry to **409** theorems and
 the research catalog to **410** rows, of which **386** are `checked_m20`.
-The campaign manifest now carries **72** public references, **108** isolated
-candidates, and **133** exact theorem receipts. The strict 74-row K3 signed
+The campaign manifest now carries **72** public references, **112** isolated
+candidates, and **137** exact theorem receipts. The strict 74-row K3 signed
 stack and its digest
 `b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`
 are unchanged, as is the frozen first-247 model curriculum.
@@ -1700,7 +1701,7 @@ The current implementation and audit trail are the
 and the
 [`exact K4 admission test`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_number_theory_k4_gcd_lcm_admission.py).
 
-## Generalized CRT: the nonzero binary theorem is closed
+## Generalized CRT: the all-modulus binary criterion is closed
 
 The M5a layer keeps congruence and gcd relational. Its readable definitions
 are
@@ -1830,9 +1831,13 @@ flowchart LR
   R --> ADD[add common remainder r]
   SC --> ADD
   ADD --> X[x=gz+r is a common solution]
-  X --> IFF[solvability iff compatibility]
+  X --> IFF[nonzero solvability iff compatibility]
   N[necessity theorem] --> IFF
-  X -. next .-> L[classify solutions modulo IsLCM]
+  IFF --> D[decide m=0 and n=0]
+  ZL[left modulus zero: choose x=a] --> D
+  ZR[right modulus zero: choose x=b] --> D
+  D --> ALL[all-modulus solvability iff compatibility]
+  ALL -. next .-> L[classify solutions modulo IsLCM]
 ```
 
 ```{list-table}
@@ -1877,20 +1882,96 @@ digests, false-endpoint mutations, and bounded arithmetic semantics. All
 certificates use the intuitionistic checker and contain zero `DNE` nodes. No
 formula or proof limit was raised.
 
-This is still candidate evidence, not public admission. The next boundary is
-the zero-inclusive wrapper and classification of all solutions modulo a
-relational `IsLCM(l,m,n)` witness. A bounded representative may be claimed
-only under \(l\ne0\); when \(l=0\), the correct result is exact uniqueness,
-not a nonexistent remainder below zero. Finite generalized CRT remains gated
-by the independent finite-data representation.
+### The zero boundary does not use division
+
+The four-row M5b layer closes the cases deliberately excluded from the
+remainder construction:
+
+```{list-table}
+:header-rows: 1
+:widths: 43 57
+
+* - Candidate
+  - Mathematical role
+* - `generalized_binary_crt_sufficient_zero_left`
+  - From `IsGCD(g,0,n)`, public gcd uniqueness gives \(g=n\); choose \(x=a\).
+* - `generalized_binary_crt_sufficient_zero_right`
+  - From `IsGCD(g,m,0)`, public gcd uniqueness gives \(g=m\); choose \(x=b\).
+* - `generalized_binary_crt_sufficient`
+  - Constructively dispatch left-zero, right-zero, and both-nonzero cases.
+* - `generalized_binary_crt_solvable_iff`
+  - Combine total sufficiency with the earlier necessity theorem.
+```
+
+The first row includes \((m,n)=(0,0)\): compatibility is then equality of
+the residues, so the chosen residue solves both equations. The total theorem
+uses the already checked constructive decision `eq_decidable`; it does not
+use excluded middle as a kernel principle. In readable notation the capstone
+is
+
+$$
+\begin{aligned}
+\operatorname{IsGCD}(g,m,n)\to\Bigl(&
+  [\exists x\,\operatorname{CRTSolution}(x;m,n;a,b)
+     \to \operatorname{ModEq}(g,a,b)]\\
+  &\land[\operatorname{ModEq}(g,a,b)
+     \to\exists x\,\operatorname{CRTSolution}(x;m,n;a,b)]\Bigr),
+\end{aligned}
+$$
+
+with no assumptions that \(m\), \(n\), or \(g\) is nonzero.
+
+```{list-table}
+:header-rows: 1
+:widths: 43 10 9 9 29
+
+* - Closed candidate
+  - Nodes
+  - Depth
+  - Cuts
+  - Certificate SHA-256 prefix
+* - `generalized_binary_crt_sufficient_zero_left`
+  - 834
+  - 37
+  - 26
+  - `074f07df17330847`
+* - `generalized_binary_crt_sufficient_zero_right`
+  - 805
+  - 36
+  - 26
+  - `da2d830f65077816`
+* - `generalized_binary_crt_sufficient`
+  - 11,240
+  - 78
+  - 160
+  - `931fbcc775154507`
+* - `generalized_binary_crt_solvable_iff`
+  - 11,825
+  - 80
+  - 168
+  - `3f1d82f0f06df9e0`
+```
+
+All four certificates have zero `DNE` nodes and fit the existing limits. No
+private canonical-gcd convenience theorem is a dependency. This is still
+candidate evidence, not public admission: the registry remains at 409 and
+the research catalog at 410.
+
+The next boundary is classification of all solutions modulo a relational
+`IsLCM(l,m,n)` witness. A bounded representative may be claimed only under
+\(l\ne0\); when \(l=0\), the correct result is exact uniqueness, not a
+nonexistent remainder below zero. Finite generalized CRT remains gated by the
+independent finite-data representation.
 
 Read the
 [`generalized-CRT RFC`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/research/arithmetic-library/ha-generalized-crt-rfc-v1.md),
 [`congruence source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py),
 [`sufficiency source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py),
+[`zero-boundary source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py),
 [`foundation audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_congruence_candidate.py),
+[`sufficiency audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_sufficiency_candidate.py),
 and
-[`sufficiency audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_sufficiency_candidate.py)
+[`zero-boundary audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_zero_boundary_candidate.py)
 for the exact expanded formulas and line-by-line tactic scripts.
 
 ## Independent pair/cell checkpoint
@@ -1948,13 +2029,14 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 ```
 
-The first command checks the 12-layer campaign manifest and all **133**
-theorem receipts: **25** public evidence rows and **108** closed private
+The first command checks the 12-layer campaign manifest and all **137**
+theorem receipts: **25** public evidence rows and **112** closed private
 candidates. This includes the exact nine-row tranche-01 admission, the exact
 16-row K4 admission, eight private gcd conveniences, ten private lcm
 conveniences, seventy-four strict-K3 signed rows, the private K4 signed-gcd
 client, the eight-row generalized-CRT foundation, and the seven-row M5a
-binary sufficiency ladder. It also checks the
+binary sufficiency ladder, followed by the four-row M5b zero-inclusive
+closure. It also checks the
 45-row definition API over 44 distinct public-theorem replays. The second
 cross-checks all **409** public runtime theorems against the **410**-row
 research catalog. The third independently replays the full public ladder and

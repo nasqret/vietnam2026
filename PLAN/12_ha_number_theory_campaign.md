@@ -245,8 +245,9 @@ nine-entry append-only tranche-01 admission. The exact M1 root still checks at
 - [x] Prove the converse construction from compatibility modulo a relational
       gcd and close the necessary-and-sufficient noncoprime solvability
       criterion for two nonzero moduli in the seven-row M5a ladder.
-- [ ] Extend the binary criterion across zero input moduli without asserting a
-      remainder below zero.
+- [x] Extend the binary criterion across zero input moduli without asserting a
+      remainder below zero: the four-row M5b ladder closes the left-zero,
+      right-zero, total-sufficiency, and all-modulus iff statements.
 - [ ] Describe the complete solution class modulo relational LCM and supply a
       canonical representative under the correct nonzero boundary.
 
@@ -533,10 +534,24 @@ from the empty context in 10,073 proof occurrences at depth 76, with 3,316
 proof objects, 149 Cuts, and zero `DNE`; two cold closures have the same
 certificate digest.
 
-This is intentionally named M5a rather than the full M5 target: zero-modulus
-wrappers, solution classes modulo relational LCM, bounded canonical
-representatives, explicit decision/obstruction output, and the finite-system
-fold remain. No proof or formula limit was raised for the tranche.
+The four-row M5b boundary tranche is now closed in
+[`ha_generalized_crt_zero_boundary_candidate.py`](../peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py).
+The directed zero lemmas derive `g=n` or `g=m` from public relational-gcd
+uniqueness and choose the residue fixed by the zero modulus. Constructive
+equality decisions then dispatch left-zero, right-zero, and both-nonzero
+branches. The unrestricted capstone
+`generalized_binary_crt_solvable_iff` closes in 11,825 proof occurrences at
+depth 80, with 3,658 proof objects, 168 Cuts, and zero `DNE` nodes. The
+`(0,0)` case is already included in the left-zero branch. No private
+canonical-gcd convenience theorem is a dependency, and no proof, formula, or
+kernel limit was raised.
+
+The binary existence criterion is therefore closed for every pair of natural
+moduli. Solution classes modulo relational LCM, bounded canonical
+representatives, explicit decision/obstruction output, deliberate public
+admission, and the finite-system fold remain. The four M5b rows are isolated
+candidate evidence; the 409-theorem public registry and 410-row catalog are
+unchanged.
 
 ## Release boundary
 

@@ -4287,3 +4287,58 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   relational LCM, bounded canonical representatives, explicit decision or
   obstruction output, finite generalized CRT, admission, push, and deployment
   remain distinct gates.
+
+## 2026-08-04 — Generalized-CRT M5b all-modulus criterion closed
+
+- Added four isolated rows in
+  `ha_generalized_crt_zero_boundary_candidate.py`:
+  `generalized_binary_crt_sufficient_zero_left`,
+  `generalized_binary_crt_sufficient_zero_right`,
+  `generalized_binary_crt_sufficient`, and
+  `generalized_binary_crt_solvable_iff`.
+- The left boundary turns `IsGCD(g,0,n)` into `g=n` using public gcd symmetry,
+  `is_gcd_zero_right`, and `is_gcd_unique`, then chooses `x=a`. The right
+  boundary similarly obtains `g=m` and chooses `x=b`, using congruence
+  symmetry for the remaining modulus. This avoids both division at modulus
+  zero and every residual private canonical-gcd edge theorem. The left row
+  already handles `(m,n)=(0,0)`.
+- Total sufficiency uses the constructive theorem `eq_decidable` first on
+  `m=0`, then on `n=0`. The three branches invoke the left boundary, right
+  boundary, or the already closed M5a nonzero theorem. Combining this result
+  with `crt_common_solution_implies_gcd_compatible` proves, for arbitrary
+  natural moduli, that a common solution exists exactly when the residues are
+  congruent modulo a supplied relational gcd.
+- Dependency-curried body receipts
+  `(dependencies,commands,nodes,depth,objects,edges,reused)` are
+  `(4,31,48,21,48,47,0)`, `(4,29,43,22,43,42,0)`,
+  `(4,49,71,23,71,70,0)`, and `(2,27,67,26,67,66,0)`.
+  Empty-context receipts
+  `(nodes,depth,objects,edges,reused,Cuts,DNE,digest)` are respectively
+  `(834,37,682,717,36,26,0,074f07df173308477693b6e3bbfd3a3a4123078d8f7f5eaac9077666d3cbc763)`,
+  `(805,36,653,688,36,26,0,da2d830f65077816dfeecd1503a787cf8ba0f5ec99e93d13b5456e4ba772e2f6)`,
+  `(11240,78,3495,3662,168,160,0,931fbcc775154507996c768cb1de1cc8479c3ed805ce0d1a95fffb530e8b56c4)`,
+  and
+  `(11825,80,3658,3830,173,168,0,3f1d82f0f06df9e0d2a5c746405ee46406db71c57e4bbf32f68792be07af8b0c)`.
+- Every certificate passes the ordinary intuitionistic checker with zero DNE.
+  The largest is 11,825 occurrences at depth 80, well inside the existing
+  bounds; no kernel, grammar, formula, proof-DAG, depth, or live-proof limit
+  was changed.
+- The four rows remain candidate evidence. They bring the campaign to 112
+  private candidate references and 137 exact receipts, but do not alter the
+  409-theorem public registry or 410-row research catalog. The remaining M5
+  gates are solution classification modulo relational LCM, the correctly
+  bounded canonical representative, executable compatibility/obstruction
+  output, finite-system lifting, and deliberate public admission.
+- The integrated source gate passes 30 campaign-structure tests and 194
+  proof/admission tests. Independent checks retain the 410-row arithmetic
+  knowledge base, replay the unchanged 409-theorem public snapshot, and
+  verify the unchanged 508-note/5,119-link vault. The browser worker inventory
+  now has 176 sources and immutable application seal `a-4286adc4e7f3`
+  (`BUILD=2026-08-04d`).
+- The warning-free 47-source Jupyter Book rebuild passes structural integrity
+  across 2,325 HTML pages. It reports no broken, escaping, fragment, unsafe,
+  or remote-runtime links and byte-identical 2,285-file source/built proof
+  explorers. The 2,493-file HTML tree contains 87,475,314 bytes and has
+  SHA-256
+  `df5eb6326836ce5d1f7ba8ce780dc24dcf6f2878cc1aff6a836e0b3790ada009`.
+  No visual click-through, public admission, or deployment is claimed.

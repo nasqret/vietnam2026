@@ -1,8 +1,9 @@
 # RFC HA-M5-GCRT-1: constructive generalized-CRT foundation
 
-**Status:** eight-row congruence foundation plus seven-row M5a binary
-sufficiency ladder closed from the empty context; 14 rows are new and one
-exact existing support row is reused; all 15 remain isolated and unadmitted
+**Status:** eight-row congruence foundation, seven-row M5a nonzero
+sufficiency ladder, and four-row M5b zero-boundary ladder closed from the
+empty context; 18 rows are new and one exact existing support row is reused;
+all 19 remain isolated and unadmitted
 
 **Scope:** M5 binary generalized Chinese remainder theorem over possibly
 noncoprime natural moduli
@@ -11,12 +12,14 @@ noncoprime natural moduli
 
 **Kernel change:** none
 
-This RFC records the first two checked layers for generalized CRT. They prove
+This RFC records the first three checked layers for generalized CRT. They prove
 the congruence algebra, the necessary gcd-compatibility condition and its
 obstruction corollary, and the converse construction when both input moduli
-are nonzero. Thus the binary nonzero-modulus solvability criterion is now
-closed-checked. The zero-modulus boundary, classification modulo relational
-LCM, and finite-system theorem remain separate obligations.
+are nonzero. The third layer handles either zero modulus directly, without
+calling division at modulus zero, and dispatches the three constructive
+zero/nonzero cases. Thus the binary solvability criterion is closed-checked
+for all natural moduli. Classification modulo relational LCM and the
+finite-system theorem remain separate obligations.
 
 ## 1. Conservative surfaces
 
@@ -136,7 +139,44 @@ hashes, checks bounded semantics, and rejects nearby false endpoints. Every
 certificate contains zero `DNE` nodes. The largest closed theorem is only
 10,073 proof occurrences at depth 76, so no kernel-limit increase is needed.
 
-## 5. Dependency route
+## 5. Exact four-row M5b zero-inclusive closure
+
+The third isolated factory is
+[`ha_generalized_crt_zero_boundary_candidate.py`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py).
+It does not send a zero modulus through the remainder theorem. Instead it
+uses the public uniqueness of relational gcds to identify
+`IsGCD(g,0,n)` with `g=n` and `IsGCD(g,m,0)` with `g=m`.
+
+| Order | Theorem | Surface meaning | Ordered direct dependencies |
+|---:|---|---|---|
+| 1 | `generalized_binary_crt_sufficient_zero_left` | `IsGCD(g,0,n)` and compatibility construct a solution by choosing `x=a` | `is_gcd_symm`, `is_gcd_zero_right`, `is_gcd_unique`, `mod_eq_refl` |
+| 2 | `generalized_binary_crt_sufficient_zero_right` | `IsGCD(g,m,0)` and compatibility construct a solution by choosing `x=b` | `is_gcd_zero_right`, `is_gcd_unique`, `mod_eq_symm`, `mod_eq_refl` |
+| 3 | `generalized_binary_crt_sufficient` | compatibility constructs a solution for arbitrary natural `m,n` | `eq_decidable`, the two zero-boundary rows, `generalized_binary_crt_sufficient_nonzero` |
+| 4 | `generalized_binary_crt_solvable_iff` | for arbitrary natural `m,n`, solvability is equivalent to `ModEq(g,a,b)` | necessity theorem, total sufficiency theorem |
+
+The first row already contains the `(0,0)` case. There compatibility forces
+the two residues to be equal, and choosing the left residue satisfies both
+zero-modulus equations. The total row uses the constructive theorem
+`eq_decidable` to split on `m=0` and then `n=0`; the final branch is exactly
+the M5a nonzero construction. No residual private canonical-gcd convenience
+row is a proof dependency.
+
+Exact empty-context receipts are ordered as
+`(nodes, depth, objects, edges, reused, Cuts, DNE, certificate SHA-256)`:
+
+| Theorem | Receipt |
+|---|---|
+| `generalized_binary_crt_sufficient_zero_left` | `(834, 37, 682, 717, 36, 26, 0, 074f07df173308477693b6e3bbfd3a3a4123078d8f7f5eaac9077666d3cbc763)` |
+| `generalized_binary_crt_sufficient_zero_right` | `(805, 36, 653, 688, 36, 26, 0, da2d830f65077816dfeecd1503a787cf8ba0f5ec99e93d13b5456e4ba772e2f6)` |
+| `generalized_binary_crt_sufficient` | `(11240, 78, 3495, 3662, 168, 160, 0, 931fbcc775154507996c768cb1de1cc8479c3ed805ce0d1a95fffb530e8b56c4)` |
+| `generalized_binary_crt_solvable_iff` | `(11825, 80, 3658, 3830, 173, 168, 0, 3f1d82f0f06df9e0d2a5c746405ee46406db71c57e4bbf32f68792be07af8b0c)` |
+
+All four rows replay through the ordinary intuitionistic checker, contain
+zero `DNE` nodes, and fit the existing formula, proof-occurrence, proof-DAG,
+and depth limits. No limit or kernel rule was changed. These are still
+candidate receipts: the public registry and research catalog are unchanged.
+
+## 6. Dependency route
 
 ```text
 balanced congruence algebra
@@ -168,6 +208,14 @@ Coprime(M,N)
 
 necessity + sufficiency
   -> solvability iff gcd compatibility for m,n nonzero
+
+public gcd uniqueness + zero gcd boundary
+  -> left-zero solution by x=a
+  -> right-zero solution by x=b
+
+eq_decidable(m,0), eq_decidable(n,0)
+  -> left-zero / right-zero / nonzero dispatch
+  -> solvability iff gcd compatibility for all natural m,n
 ```
 
 The newly public universal `IsLCM` interface and `gcd_lcm_product` theorem are
@@ -175,29 +223,28 @@ the intended downstream solution-class boundary: after existence is proved,
 solutions should be compared modulo an `IsLCM(l,m,n)` witness rather than by
 introducing a primitive lcm function.
 
-## 6. Honest remaining work
+## 7. Honest remaining work
 
-The all-modulus and finite generalized CRT still require, in dependency
-order:
+The binary existence criterion is now closed for all natural moduli. The
+remaining generalized-CRT work is, in dependency order:
 
-1. wrap the construction across `m=0` and `n=0` without claiming a remainder
-   below zero;
-2. prove that any two solutions are congruent modulo every relational LCM
+1. prove that any two solutions are congruent modulo every relational LCM
    witness, and conversely describe the complete solution class;
-3. canonicalize a solution with the remainder interface when the LCM is
+2. canonicalize a solution with the remainder interface when the LCM is
    nonzero, while treating zero-modulus and `(0,0)` cases explicitly;
-4. add an all-modulus congruence decision wrapper and return either a solution
+3. add an all-modulus congruence decision wrapper and return either a solution
    or an explicit incompatibility certificate;
-5. admit only a reviewed minimal public surface after cold replay, mutation,
+4. admit only a reviewed minimal public surface after cold replay, mutation,
    resource, registry, catalog, and generated-artifact gates pass;
-6. lift the binary theorem to finite families only after the independent
+5. lift the binary theorem to finite families only after the independent
    finite-data substrate is available.
 
 Thus the campaign has proved both directions and actual existence for the
-mathematically central nonzero binary case. It has not yet proved the
-zero-inclusive wrapper, canonical classification, or finite generalized CRT.
+complete binary natural-modulus case. It has not yet proved canonical
+classification, executable compatibility decision, or finite generalized
+CRT.
 
-## 7. Repository anchors
+## 8. Repository anchors
 
 - implementation:
   [`ha_generalized_crt_congruence_candidate.py`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py)
@@ -207,6 +254,10 @@ zero-inclusive wrapper, canonical classification, or finite generalized CRT.
   [`ha_generalized_crt_sufficiency_candidate.py`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py)
 - sufficiency audit:
   [`test_ha_generalized_crt_sufficiency_candidate.py`](../../peano-lab/py/tests/test_ha_generalized_crt_sufficiency_candidate.py)
+- zero-boundary implementation:
+  [`ha_generalized_crt_zero_boundary_candidate.py`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py)
+- zero-boundary audit:
+  [`test_ha_generalized_crt_zero_boundary_candidate.py`](../../peano-lab/py/tests/test_ha_generalized_crt_zero_boundary_candidate.py)
 - admitted gcd/LCM interface:
   [`ha-canonical-gcd-lcm-rfc-v1.md`](ha-canonical-gcd-lcm-rfc-v1.md)
 - campaign plan:

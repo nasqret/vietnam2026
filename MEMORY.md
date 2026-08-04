@@ -1863,3 +1863,34 @@
   pages; its 2,493-file HTML tree has SHA-256
   `b322fe004bee4cfcd511973b74365f9d0c4b798d0b0c5711d352ba7046c1d579`.
   The browser application seal is `a-ed049a6d3d2c` with 175 worker sources.
+- **Generalized-CRT M5b all-modulus closure (2026-08-04):** four further
+  isolated candidates close the zero boundary and remove the nonzero premises
+  from the binary solvability criterion. The left-zero and right-zero rows use
+  only public relational-gcd symmetry, the public zero constructor, gcd
+  uniqueness, and congruence reflexivity/symmetry; they do not depend on the
+  private canonical-gcd edge conveniences. Constructive `eq_decidable`
+  dispatches left-zero, right-zero, and both-nonzero cases, and the earlier
+  necessity theorem yields `generalized_binary_crt_solvable_iff` for arbitrary
+  natural moduli. Exact empty-context receipts are
+  `zero_left = (834,37,682,717,36,26,0,
+  074f07df173308477693b6e3bbfd3a3a4123078d8f7f5eaac9077666d3cbc763)`,
+  `zero_right = (805,36,653,688,36,26,0,
+  da2d830f65077816dfeecd1503a787cf8ba0f5ec99e93d13b5456e4ba772e2f6)`,
+  `total_sufficient = (11240,78,3495,3662,168,160,0,
+  931fbcc775154507996c768cb1de1cc8479c3ed805ce0d1a95fffb530e8b56c4)`,
+  and `total_iff = (11825,80,3658,3830,173,168,0,
+  3f1d82f0f06df9e0d2a5c746405ee46406db71c57e4bbf32f68792be07af8b0c)`
+  in `(nodes,depth,objects,edges,reused,Cuts,DNE,digest)` order. The `(0,0)`
+  case is contained in the left-zero row; no remainder below zero is asserted.
+  All four rows fit the existing limits with zero DNE, so neither the kernel
+  nor any formula/proof limit changed. The campaign evidence becomes 112
+  private candidate references and 137 receipts, while the public registry
+  and catalog remain exactly 409 and 410. Relational-LCM classification,
+  bounded canonical representatives, executable compatibility decisions,
+  finite lifting, and deliberate admission remain open.
+  The integrated gate passes 30 structural and 194 proof/admission tests; the
+  unchanged public knowledge base/snapshot/vault gates remain green. The
+  176-source browser application is sealed as `a-4286adc4e7f3` with
+  `BUILD=2026-08-04d`. The 47-source Book rebuild passes integrity over 2,325
+  HTML pages, and its 2,493-file HTML tree has SHA-256
+  `df5eb6326836ce5d1f7ba8ce780dc24dcf6f2878cc1aff6a836e0b3790ada009`.

@@ -65,7 +65,8 @@
       "peano-lab/py/tests/test_ha_lcm_totality_bridge_candidate.py",
       "peano-lab/py/tests/test_ha_number_theory_k4_gcd_lcm_admission.py",
       "peano-lab/py/tests/test_ha_generalized_crt_congruence_candidate.py",
-      "peano-lab/py/tests/test_ha_generalized_crt_sufficiency_candidate.py"
+      "peano-lab/py/tests/test_ha_generalized_crt_sufficiency_candidate.py",
+      "peano-lab/py/tests/test_ha_generalized_crt_zero_boundary_candidate.py"
     ],
     "theorems": [
       {
@@ -998,6 +999,34 @@
         "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py",
         "statement_sha256": "6739df870ea7c5edf490ed06ce73ebfc46df694441bdabbd69ed1edde526f286",
         "receipt": {"nodes": 10073, "depth": 76, "objects": 3316, "edges": 3476, "reused": 161, "cuts": 149, "certificate_sha256": "8956a66d8f72d512f840464d2749e43258a2b74b3828dde58f2c206d53af0234"}
+      },
+      {
+        "name": "generalized_binary_crt_sufficient_zero_left",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py",
+        "statement_sha256": "c3bf6a9bee05e47d46ba4f9aa6b2d7ca0d3abdc1a7ef0e413e8acf9fa34a3ee4",
+        "receipt": {"nodes": 834, "depth": 37, "objects": 682, "edges": 717, "reused": 36, "cuts": 26, "certificate_sha256": "074f07df173308477693b6e3bbfd3a3a4123078d8f7f5eaac9077666d3cbc763"}
+      },
+      {
+        "name": "generalized_binary_crt_sufficient_zero_right",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py",
+        "statement_sha256": "5bcc9e19a6d128a93af0aff4f682a35a970f6154b66cb1e08a0142ef745c0fb8",
+        "receipt": {"nodes": 805, "depth": 36, "objects": 653, "edges": 688, "reused": 36, "cuts": 26, "certificate_sha256": "da2d830f65077816dfeecd1503a787cf8ba0f5ec99e93d13b5456e4ba772e2f6"}
+      },
+      {
+        "name": "generalized_binary_crt_sufficient",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py",
+        "statement_sha256": "11e891144c1e9802af5bc0b3ae6ab3e18d29f329e96da0f1a447240a42d71116",
+        "receipt": {"nodes": 11240, "depth": 78, "objects": 3495, "edges": 3662, "reused": 168, "cuts": 160, "certificate_sha256": "931fbcc775154507996c768cb1de1cc8479c3ed805ce0d1a95fffb530e8b56c4"}
+      },
+      {
+        "name": "generalized_binary_crt_solvable_iff",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py",
+        "statement_sha256": "a6f60d923d9543160f447e7f43d938f8fbf3eceb49ca17c0b6a3b45bc5b5872c",
+        "receipt": {"nodes": 11825, "depth": 80, "objects": 3658, "edges": 3830, "reused": 173, "cuts": 168, "certificate_sha256": "3f1d82f0f06df9e0d2a5c746405ee46406db71c57e4bbf32f68792be07af8b0c"}
       }
     ]
   },
@@ -1742,9 +1771,20 @@
             "generalized_binary_crt_solvable_iff_nonzero"
           ],
           "role": "Closed-checked but non-public M5a binary sufficiency ladder: nonzero coprime gcd cofactors, a shared bounded remainder, coprime-CRT scaling and lifting, compatible-system construction, and the nonzero-modulus solvability criterion."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py",
+          "factory": "make_ha_generalized_crt_zero_boundary_candidate_theorems",
+          "theorem_names": [
+            "generalized_binary_crt_sufficient_zero_left",
+            "generalized_binary_crt_sufficient_zero_right",
+            "generalized_binary_crt_sufficient",
+            "generalized_binary_crt_solvable_iff"
+          ],
+          "role": "Closed-checked but non-public M5b zero-boundary ladder: directed zero-modulus constructions, all-modulus compatible-system construction, and the unrestricted binary solvability criterion."
         }
       ],
-      "remaining_gap": "The K4 relational LCM core is public, and 15 generalized-CRT foundation and M5a binary rows now have deterministic empty-context receipts. For nonzero moduli, gcd compatibility is proved necessary and sufficient for a common solution. Zero-modulus wrappers, uniqueness modulo relational lcm, canonical bounded representatives, executable incompatibility decisions, and the K3 finite-system fold remain.",
+      "remaining_gap": "The K4 relational LCM core is public, and 19 generalized-CRT foundation, M5a nonzero-sufficiency, and M5b zero-boundary rows now have deterministic empty-context receipts. For arbitrary natural moduli, gcd compatibility is proved necessary and sufficient for a common solution. Uniqueness modulo relational lcm, canonical bounded representatives, executable incompatibility decisions, and the K3 finite-system fold remain.",
       "validation": {
         "path": [
           "manifest_integrity",
