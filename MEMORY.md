@@ -1983,5 +1983,35 @@
   (`BUILD=2026-08-04g`). The warning-free 47-source Book passes integrity over
   2,325 HTML pages; its 2,493-file tree has SHA-256
   `ff252854e07935c02016e79b44d831e440aa91c308875181427a72cc90ab3941`.
-  An optional raw-input gcd wrapper, minimal admission, and finite lifting
-  remain; M5d stays the separate canonicalization API.
+  The raw-input gcd wrapper is supplied by M5f below; minimal admission and
+  finite lifting remain, while M5d stays the separate canonicalization API.
+- **Generalized-CRT M5f raw-input total decision (2026-08-04):** the isolated
+  `generalized_binary_crt_total_decision` candidate removes the supplied-gcd
+  precondition from the executable M5e endpoint. For arbitrary `m,n,a,b`, it
+  first uses `gcd_exists_relational` to construct a witness `g` with
+  `IsGCD(g,m,n)`, then applies
+  `generalized_binary_crt_solution_or_obstruction` and returns that gcd
+  certificate together with either compatibility and a CRT solution or
+  incompatibility and a proof that no solution exists. The exact statement
+  SHA-256 is
+  `42d29bf501421be60c1a2b14fa858a14abf230eee2f7669503db019d6b014151`.
+  Its body receipt is `(2,17,42,25,42,41,0)` and its closed receipt is
+  `(15492,82,4052,4240,189,192,0,
+  c2d915d2eb60ccbb2dac9f31e9e1f9c310c28264b74483ec97ae33a1a0d965ee)`.
+  The closed certificate contains zero DNE and fits the unchanged limits.
+  Retained semantics cover all 5,929 bounded raw CRT systems: 4,021 solution
+  outputs and 1,908 obstruction outputs, including the gcd-zero split of 11
+  compatible and 110 incompatible residue pairs. Campaign evidence is now
+  122 private candidates and 147 receipts across 27 candidate modules and 30
+  focused test paths. The generalized-CRT tranche contains 29 rows: 28 new
+  rows plus one reused support row. This is an existential relational-gcd
+  wrapper, not a primitive gcd function and not a canonical bounded solver;
+  M5d remains the separate canonicalization API. Deliberate admission and
+  finite lifting remain. Integrated gates pass 30 structural and 217
+  proof/admission tests, plus 25 browser/deployment tests; independent checks
+  retain 410 catalog rows, 409 public theorems, and the 508-note/5,119-link
+  vault. The 180-source browser app is sealed as `a-5f816312f00a`
+  (`BUILD=2026-08-04h`). The warning-free 47-source Book passes integrity over
+  2,325 HTML pages; its byte-identical explicit/defined explorer trees contain
+  2,285 files, and the 2,493-file HTML tree has SHA-256
+  `59d566a0af7a86a36cca7cd02958f27ba244e10871a222c5a4dcf2ccbf94efe4`.

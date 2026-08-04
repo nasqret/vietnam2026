@@ -69,7 +69,8 @@
       "peano-lab/py/tests/test_ha_generalized_crt_zero_boundary_candidate.py",
       "peano-lab/py/tests/test_ha_generalized_crt_classification_candidate.py",
       "peano-lab/py/tests/test_ha_generalized_crt_canonical_boundary_candidate.py",
-      "peano-lab/py/tests/test_ha_generalized_crt_decision_candidate.py"
+      "peano-lab/py/tests/test_ha_generalized_crt_decision_candidate.py",
+      "peano-lab/py/tests/test_ha_generalized_crt_total_decision_candidate.py"
     ],
     "theorems": [
       {
@@ -1093,6 +1094,13 @@
         "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_decision_candidate.py",
         "statement_sha256": "54f7722b7e718aff0cd85aeae4ce6b86528892a5e52074d5f2e86eec4d6a3aec",
         "receipt": {"nodes": 14182, "depth": 80, "objects": 3909, "edges": 4090, "reused": 182, "cuts": 182, "certificate_sha256": "16e7cb1c430fa4e17ea878adc72d34c92e0bc3f135c4a3cf24cb2a296b38e525"}
+      },
+      {
+        "name": "generalized_binary_crt_total_decision",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_total_decision_candidate.py",
+        "statement_sha256": "42d29bf501421be60c1a2b14fa858a14abf230eee2f7669503db019d6b014151",
+        "receipt": {"nodes": 15492, "depth": 82, "objects": 4052, "edges": 4240, "reused": 189, "cuts": 192, "certificate_sha256": "c2d915d2eb60ccbb2dac9f31e9e1f9c310c28264b74483ec97ae33a1a0d965ee"}
       }
     ]
   },
@@ -1878,9 +1886,17 @@
             "generalized_binary_crt_solution_or_obstruction"
           ],
           "role": "Closed-checked but non-public M5e executable boundary: constructive balanced-congruence decision at every natural modulus, followed by a generalized binary CRT output carrying either compatibility plus a solution or incompatibility plus a proof of unsolvability."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_generalized_crt_total_decision_candidate.py",
+          "factory": "make_ha_generalized_crt_total_decision_candidate_theorems",
+          "theorem_names": [
+            "generalized_binary_crt_total_decision"
+          ],
+          "role": "Closed-checked but non-public M5f raw-input endpoint: construct an existential relational gcd from the two input moduli, then return the M5e compatibility/solution or incompatibility/unsolvability package for that same gcd."
         }
       ],
-      "remaining_gap": "The K4 relational LCM core is public, and 28 generalized-CRT foundation through M5e executable-boundary rows now have deterministic empty-context receipts. For arbitrary natural moduli, gcd compatibility is decidable and necessary and sufficient for a common solution; the executable output carries either compatibility plus a witness or incompatibility plus unsolvability; solutions are classified modulo any supplied relational lcm; zero lcm gives exact uniqueness; and nonzero lcm gives a unique bounded representative. An optional raw-input wrapper that constructs its own relational gcd, deliberate minimal public admission, and the K3 finite-system fold remain.",
+      "remaining_gap": "The K4 relational LCM core is public, and 29 generalized-CRT foundation through M5f raw-input decision rows now have deterministic empty-context receipts. For arbitrary raw natural moduli and residues, the total endpoint constructs a relational gcd and returns either compatibility plus a solution or incompatibility plus unsolvability; supplied-witness clients also have relational-LCM classification and the correct zero/nonzero canonical boundary. Deliberate minimal public admission and the K3 finite-system fold remain.",
       "validation": {
         "path": [
           "manifest_integrity",

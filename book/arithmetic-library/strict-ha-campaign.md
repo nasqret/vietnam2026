@@ -71,21 +71,25 @@ It separates three facts which are easy to blur in an informal development:
     templates. Their theorem ladder has not yet been proved, and uniform lists
     remain blocked on a computation-trace representation.
 * - Generalized CRT
-  - twenty-eight closed private candidates
+  - twenty-nine audited rows
   - The eight-row congruence foundation proves necessity and obstruction; the
     seven-row M5a ladder constructs nonzero-modulus solutions; the four-row
     M5b boundary closes solvability for all natural moduli; the four-row M5c
     ladder classifies the complete solution set modulo relational LCM; the
     three-row M5d layer gives the correct zero/nonzero canonical boundary; the
-    two-row M5e layer returns a solution or a certified obstruction.
+    two-row M5e layer returns a solution or a certified obstruction; the
+    one-row M5f wrapper first constructs a relational gcd from raw inputs.
 ```
 
 The public registry now has **409** entries. The nine tranche-01 interfaces at
 positions 384--392 are followed by the exact 16-row K4 admission at positions
 393--408. The research catalog has **410** entries, including **386**
 `checked_m20` rows. The campaign manifest records **72** public references,
-**121** isolated candidates, and **146** exact theorem receipts. This
-append-only extension leaves the frozen first-247 model curriculum unchanged.
+**122** isolated candidates, and **147** exact theorem receipts across **27**
+candidate modules and **30** focused test paths. Generalized CRT accounts for
+**29** audited rows: **28** new private candidates and one reused public
+support theorem. This append-only extension leaves the frozen first-247 model
+curriculum unchanged.
 
 ## Why canonical remainder is a relation
 
@@ -2150,6 +2154,52 @@ incompatibility with unsolvability. This brings private evidence to **121**
 candidates and **146** receipts; the public registry/catalog remain
 **409/410**. M5d remains the separate composable canonicalization API.
 
+### Raw-input total decision
+
+M5f removes the need for a caller to supply a gcd witness. Its single theorem
+has the readable statement
+
+$$
+\begin{aligned}
+\forall m,n,a,b\;\exists g\;\bigl(&\operatorname{IsGCD}(g,m,n)\land
+  \Bigl([\operatorname{ModEq}(g,a,b)\land
+      \exists x\,\operatorname{CRTSolution}(x;m,n;a,b)]\\
+  {}\lor{}&[\neg\operatorname{ModEq}(g,a,b)\land
+      \neg\exists x\,\operatorname{CRTSolution}(x;m,n;a,b)]\Bigr)\bigr).
+\end{aligned}
+$$
+
+The proof first applies `gcd_exists_relational`, obtaining an existential
+natural \(g\) together with `IsGCD(g,m,n)`, and then invokes
+`generalized_binary_crt_solution_or_obstruction`. Thus the exact ordered
+dependency list has only those two rows. The theorem does **not** introduce a
+primitive gcd function: its witness remains governed by the expanded
+`IsGCD` relation. Nor does it return a bounded canonical solution. That is
+the separate zero/nonzero-LCM interface supplied by M5d.
+
+```{list-table}
+:header-rows: 1
+:widths: 24 25 51
+
+* - Closed candidate
+  - Dependency-curried body
+  - Empty-context certificate
+* - `generalized_binary_crt_total_decision`
+  - `(2,17,42,25,42,41,0)`
+  - `(15492,82,4052,4240,189,192,0,c2d915d2eb60ccbb2dac9f31e9e1f9c310c28264b74483ec97ae33a1a0d965ee)`
+```
+
+The body and closed tuples use the schemas specified above. The expanded
+statement SHA-256 is
+`42d29bf501421be60c1a2b14fa858a14abf230eee2f7669503db019d6b014151`.
+Two cold closures agree, the certificate has zero `DNE` nodes, and no proof
+limit changed. The raw-input semantic audit covers all 5,929 systems with
+`m,n<7` and `a,b<11`: 4,021 take the solution branch and 1,908 take the
+obstruction branch. Among the 121 systems whose relational gcd is zero, 11
+are solvable and 110 are obstructed. The campaign now contains **122** private
+candidates and **147** receipts; the public registry/catalog remain
+**409/410**.
+
 Finite generalized CRT remains gated by the independent finite-data
 representation.
 
@@ -2161,13 +2211,15 @@ Read the
 [`classification source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_classification_candidate.py),
 [`canonical-boundary source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py),
 [`executable-boundary source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_decision_candidate.py),
+[`raw-input decision source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_total_decision_candidate.py),
 [`foundation audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_congruence_candidate.py),
 [`sufficiency audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_sufficiency_candidate.py),
 [`zero-boundary audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_zero_boundary_candidate.py),
 [`classification audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_classification_candidate.py),
 [`canonical-boundary audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_canonical_boundary_candidate.py),
+[`executable-boundary audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_decision_candidate.py),
 and the
-[`executable-boundary audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_decision_candidate.py)
+[`raw-input decision audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_total_decision_candidate.py)
 for the exact expanded formulas and line-by-line tactic scripts.
 
 ## Independent pair/cell checkpoint
@@ -2225,8 +2277,8 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 ```
 
-The first command checks the 12-layer campaign manifest and all **146**
-theorem receipts: **25** public evidence rows and **121** closed private
+The first command checks the 12-layer campaign manifest and all **147**
+theorem receipts: **25** public evidence rows and **122** closed private
 candidates. This includes the exact nine-row tranche-01 admission, the exact
 16-row K4 admission, eight private gcd conveniences, ten private lcm
 conveniences, seventy-four strict-K3 signed rows, the private K4 signed-gcd
@@ -2234,7 +2286,10 @@ client, the eight-row generalized-CRT foundation, and the seven-row M5a
 binary sufficiency ladder, followed by the four-row M5b zero-inclusive
 closure, the four-row M5c relational-LCM classification, and the three-row
 M5d zero/nonzero canonical boundary, followed by the two-row M5e executable
-solution-or-obstruction boundary. It also checks the
+solution-or-obstruction boundary and the one-row M5f raw-input total decision.
+The generalized-CRT lane therefore has **29** audited rows: **28** new
+candidates plus one reused public support theorem. The manifest also pins
+**27** candidate modules and **30** focused test paths. It checks the
 45-row definition API over 44 distinct public-theorem replays. The second
 cross-checks all **409** public runtime theorems against the **410**-row
 research catalog. The third independently replays the full public ladder and

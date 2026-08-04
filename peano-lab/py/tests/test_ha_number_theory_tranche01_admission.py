@@ -364,6 +364,7 @@ def test_campaign_manifest_is_bound_to_the_exact_admission_receipts() -> None:
         "peano-lab/py/tests/test_ha_generalized_crt_classification_candidate.py",
         "peano-lab/py/tests/test_ha_generalized_crt_canonical_boundary_candidate.py",
         "peano-lab/py/tests/test_ha_generalized_crt_decision_candidate.py",
+        "peano-lab/py/tests/test_ha_generalized_crt_total_decision_candidate.py",
     ]
 
     items = evidence["theorems"][: len(EXPECTED_NAMES)]

@@ -257,6 +257,9 @@ nine-entry append-only tranche-01 admission. The exact M1 root still checks at
 - [x] Close the two-row M5e executable boundary: decide balanced congruence at
       every modulus, then return compatibility plus a solution or certified
       incompatibility plus unsolvability.
+- [x] Close the one-row M5f raw-input endpoint: construct an existential
+      relational gcd from `m,n`, then return either gcd compatibility with a
+      CRT solution or incompatibility with a proof that no solution exists.
 
 ## Per-theorem validation gates
 
@@ -637,9 +640,32 @@ Both have zero `DNE` and fit unchanged limits. Retained semantics cover all
 `a,b<11`: 4,021 return the solution branch and 1,908 return the obstruction
 branch. Evidence is now 121 private candidates and 146 receipts.
 
-An optional raw-input wrapper that constructs its own relational gcd,
-deliberate minimal public admission, and the finite-system fold remain. No row
-asserts a remainder below zero.
+The one-row M5f raw-input endpoint is now closed in
+[`ha_generalized_crt_total_decision_candidate.py`](../peano-lab/py/peano_lab/library/ha_generalized_crt_total_decision_candidate.py),
+with its focused audit in
+[`test_ha_generalized_crt_total_decision_candidate.py`](../peano-lab/py/tests/test_ha_generalized_crt_total_decision_candidate.py).
+`generalized_binary_crt_total_decision` starts from arbitrary raw inputs
+`m,n,a,b`, uses `gcd_exists_relational` to construct an existential
+`IsGCD(g,m,n)` witness, and invokes
+`generalized_binary_crt_solution_or_obstruction`. Its output retains that gcd
+witness and returns either `ModEq(g,a,b)` with a common solution or
+`~ModEq(g,a,b)` with a proof that no common solution exists. The theorem is
+not a primitive gcd function and does not select a canonical bounded CRT
+representative; the separate M5d interface supplies the zero/nonzero
+canonical boundary.
+
+The statement SHA-256 is
+`42d29bf501421be60c1a2b14fa858a14abf230eee2f7669503db019d6b014151`.
+Its body receipt `(dependencies,commands,nodes,depth,objects,edges,reused)` is
+`(2,17,42,25,42,41,0)`. Its empty-context receipt
+`(nodes,depth,objects,edges,reused,Cuts,DNE,digest)` is
+`(15492,82,4052,4240,189,192,0,c2d915d2eb60ccbb2dac9f31e9e1f9c310c28264b74483ec97ae33a1a0d965ee)`.
+M5f brings the campaign to 122 private candidates and 147 receipts across 27
+candidate modules and 30 focused test paths. The generalized-CRT stack has 29
+rows in total: 28 new rows and one exact reused support row.
+
+Only deliberate minimal public admission and the K3 finite-system fold remain.
+No row asserts a remainder below zero.
 
 ## Release boundary
 

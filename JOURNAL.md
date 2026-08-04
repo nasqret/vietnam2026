@@ -4500,6 +4500,50 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   or remote-runtime links. The 2,493-file HTML tree contains 87,508,603 bytes
   and has SHA-256
   `ff252854e07935c02016e79b44d831e440aa91c308875181427a72cc90ab3941`.
-  No deployment or public admission is claimed. The remaining binary API
-  choice is whether to add a raw-input wrapper that constructs its own
-  relational gcd before the minimal admission review.
+  No deployment or public admission is claimed. M5f below adds the raw-input
+  wrapper that constructs its own relational gcd; minimal admission review
+  remains separate.
+
+## 2026-08-04 — Generalized-CRT M5f raw-input total decision closed
+
+- Added the one-row isolated
+  `ha_generalized_crt_total_decision_candidate.py` layer. Its theorem
+  `generalized_binary_crt_total_decision` accepts arbitrary `m,n,a,b` with no
+  supplied gcd witness. It obtains `g` from `gcd_exists_relational`, retains
+  `IsGCD(g,m,n)` in the output, and applies
+  `generalized_binary_crt_solution_or_obstruction` to return either
+  compatibility with a CRT solution or incompatibility with a proof that no
+  CRT solution exists. Its only direct dependencies are those two theorems.
+- The exact statement SHA-256 is
+  `42d29bf501421be60c1a2b14fa858a14abf230eee2f7669503db019d6b014151`.
+  The dependency-curried body receipt
+  `(dependencies,commands,nodes,depth,objects,edges,reused)` is
+  `(2,17,42,25,42,41,0)`. The empty-context receipt
+  `(nodes,depth,objects,edges,reused,Cuts,DNE,digest)` is
+  `(15492,82,4052,4240,189,192,0,
+  c2d915d2eb60ccbb2dac9f31e9e1f9c310c28264b74483ec97ae33a1a0d965ee)`.
+  The closed certificate contains zero DNE and stays within the unchanged
+  kernel and resource limits.
+- Retained raw-input semantics cover all 5,929 bounded systems with
+  `m,n<7` and `a,b<11`: 4,021 return a relational gcd, compatibility, and a
+  solution; 1,908 return a relational gcd, incompatibility, and
+  unsolvability. The gcd-zero boundary contributes 11 compatible and 110
+  incompatible residue pairs.
+- Campaign evidence now contains 122 private candidates and 147 exact
+  receipts across 27 candidate modules and 30 focused test paths. The
+  generalized-CRT tranche has 29 rows in total: 28 new rows and one reused
+  support row. This endpoint does not add a primitive gcd function and does
+  not choose a canonical bounded solution; the M5d canonicalization layer
+  remains separate. Deliberate public admission and finite lifting remain.
+- The integrated source gate passes 30 campaign-structure and 217
+  proof/admission tests. Independent knowledge-base, snapshot, and vault gates
+  confirm 410 catalog rows, 409 public theorems, and 508 notes with 5,119
+  resolved links. Browser/deployment contracts pass 25 tests; the regenerated
+  180-source app is sealed as `a-5f816312f00a` (`BUILD=2026-08-04h`).
+- The warning-free 47-source Jupyter Book rebuild passes integrity over 2,325
+  HTML pages. The explicit and defined proof explorers remain byte-identical
+  2,285-file source/built trees, with no broken, escaping, fragment, unsafe,
+  or remote-runtime links. The 2,493-file HTML tree contains 87,516,482 bytes
+  and has SHA-256
+  `59d566a0af7a86a36cca7cd02958f27ba244e10871a222c5a4dcf2ccbf94efe4`.
+  No deployment or public admission is claimed.
