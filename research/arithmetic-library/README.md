@@ -127,14 +127,14 @@ It remains private and unadmitted; no public lookup theorem is claimed. Run
 the separate lightweight gate with `make ha-k3b-list-lookup-check`.
 
 The dependency-free [`list_at_domain` projection](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_domain_candidate.py)
-is the next checked body. Its
+is a checked private body. Its
 statement has 5,903 characters and SHA-256
 `065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240`;
 its Cut-free/DNE-free certificate has 39 nodes at depth 23. It remains private
 and awaits inclusion in the next repeated cold lookup batch.
 
 The [`list_at_head_iff` outer-head equation](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_head_candidate.py)
-is the next validated private body; its
+is another validated private body; its
 [`focused audit`](../../peano-lab/py/tests/test_ha_cell_list_lookup_head_candidate.py)
 pins the surface, proof receipt, mutation, and standard models. Its expanded
 12,530-character statement has SHA-256
@@ -147,6 +147,21 @@ Two beta-uniqueness applications identify the terminal code and predecessor
 tail, avoiding `cell_tail_functional`. This row is body-checked only: it has
 no repeated cold empty-context receipt and remains unregistered, unadmitted,
 and nonpublic.
+
+The [`list_at_succ_iff` successor equation](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_succ_candidate.py)
+is also a validated private body. Its
+[`focused audit`](../../peano-lab/py/tests/test_ha_cell_list_lookup_succ_candidate.py)
+pins the successor shift, a false no-shift mutation, and two distinct-head
+models. Its expanded 14,716-character statement has
+SHA-256
+`004ef041acbcfbaaeda594f5f47fbea75ac6f8df87ca8bcf49774cfcbc3a978c`,
+and its exact body receipt is `(3,124,198,38,196,197,2)`. The direct
+dependencies, in order, are `cell_history_succ_elim`,
+`cell_history_extend_preserves_prefix`, and `add_comm`. The proof uses the
+same history witnesses in the forward implication and preserves both selected
+edge endpoints in the reverse implication, so the provisional rung-4/PA2
+route is unnecessary. T05 remains body-checked only, without cold closure,
+registration, admission, or a public theorem.
 
 The K4
 [`signed-gcd client`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)

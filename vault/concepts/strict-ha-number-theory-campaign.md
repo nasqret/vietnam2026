@@ -316,6 +316,16 @@ Two beta-uniqueness comparisons at `S j` and `j` align the terminal code and
 predecessor tail, avoiding `cell_tail_functional`. The row has no cold
 empty-context receipt and remains unregistered, unadmitted, and nonpublic.
 
+`list_at_succ_iff` is now body-checked privately too. Its statement receipt is
+`(14716,004ef041acbcfbaaeda594f5f47fbea75ac6f8df87ca8bcf49774cfcbc3a978c)`
+and its dependency-curried body receipt is `(3,124,198,38,196,197,2)`, with
+zero DNE. The exact direct dependency order is `cell_history_succ_elim`,
+`cell_history_extend_preserves_prefix`, `add_comm`. The proof stays within one
+trace after forward elimination and preserves both selected endpoints after
+reverse extension; it does not depend on the head equation or PA2. T05 still
+has no cold empty-context receipt and remains unregistered, unadmitted, and
+nonpublic.
+
 ## Repository anchors
 
 - `research/arithmetic-library/ha-number-theory-campaign.json`

@@ -4786,3 +4786,15 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   `cell_tail_functional` dependency. Prefix preservation supplies the reverse
   implication. This checkpoint is body-level only; cold closure, admission,
   registration, catalogs, JSON accounting, and public snapshots are unchanged.
+- Checked the private `list_at_succ_iff` body with exact direct dependencies
+  `cell_history_succ_elim`, `cell_history_extend_preserves_prefix`, and
+  `add_comm`. Its expanded statement receipt is
+  `(14716,004ef041acbcfbaaeda594f5f47fbea75ac6f8df87ca8bcf49774cfcbc3a978c)`
+  and body receipt is `(3,124,198,38,196,197,2)`, with zero DNE. The forward
+  implication keeps the original `b,c` trace after successor elimination and
+  repackages the selected edge in the predecessor history. The reverse
+  implication preserves both beta endpoints: `S i` witnesses the bound for
+  `j`, while `i` witnesses the bound for `S j` after PA4 and `add_comm`.
+  This replaces the provisional rung-4/PA2 dependency route. The checkpoint
+  is body-level only; cold closure, registration, admission, catalogs, JSON
+  accounting, and public snapshots remain unchanged.

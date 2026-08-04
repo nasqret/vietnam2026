@@ -108,7 +108,7 @@ has SHA-256
 It remains private and unadmitted, and public/campaign counts remain
 unchanged.
 
-The next private rung, `list_at_domain`, is dependency-free and projects the
+The private rung `list_at_domain` is dependency-free and projects the
 hidden history length plus native strict bound. Its statement receipt is
 `(5903,065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240)`;
 its Cut-free/DNE-free certificate receipt is `(0,19,39,23,39,38,0)`.
@@ -122,6 +122,15 @@ direct dependencies are `cell_history_succ_elim`,
 The proof uses beta uniqueness at both endpoints of the selected final edge,
 so it does not depend on `cell_tail_functional`. This remains body-level only,
 without cold closure, registration, admission, or a public theorem.
+
+The private successor equation `list_at_succ_iff` has statement receipt
+`(14716,004ef041acbcfbaaeda594f5f47fbea75ac6f8df87ca8bcf49774cfcbc3a978c)`
+and dependency-curried body receipt `(3,124,198,38,196,197,2)`. Its direct
+dependencies are exactly `cell_history_succ_elim`,
+`cell_history_extend_preserves_prefix`, and `add_comm`. The same-history route
+removes the provisional dependency on `list_at_head_iff` and PA2; reverse
+extension preserves entries at both `j` and `S j`. This remains body-level
+only, without cold closure, registration, admission, or a public theorem.
 
 ## Design and trust
 

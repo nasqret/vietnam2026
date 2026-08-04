@@ -141,7 +141,7 @@ later theorem statement expands D01/D02, `CellHistory`, `CellListLen`,
 | 2 | `cell_history_extend_preserves_prefix` | expose the old decoded prefix in the extended history | `beta_prefix_extend`, `finite_lt_succ_eq_or_lt`, `zero_le`, `succ_le_succ`, `le_refl` |
 | 3 | `list_at_domain` | project a semantic length and the native strict index bound | `cell_list_length_functional` only if an external length is supplied; otherwise definition elimination |
 | 4 | `list_at_head_iff` | characterize lookup at outer index zero | `cell_history_succ_elim`, rung 2, `beta_at_unique`, `le_refl` |
-| 5 | `list_at_succ_iff` | shift lookup through one outer cell | rungs 2 and 4, `cell_history_succ_elim`, `add_comm`, PA2--PA4 |
+| 5 | `list_at_succ_iff` | shift lookup through one outer cell | rung 2 (`cell_history_extend_preserves_prefix`), `cell_history_succ_elim`, `add_comm` |
 | 6 | `list_at_external_bound` | transport the hidden bound to a declared list length | rungs 3, `cell_list_length_functional` |
 | 7 | `list_at_exists` | every in-range index has a decoded head | `CellHistory` universal edge clause, definition introduction |
 | 8 | `list_at_functional` | lookup at a fixed code and index has one value | rungs 4--5, `cell_head_functional`, `cell_tail_functional`, induction on `i` |
@@ -257,6 +257,7 @@ flowchart TD
   PRES --> HEAD
   PRES --> SUCC[list_at_succ_iff]
   CHE --> SUCC
+  AC[add_comm] --> SUCC
 
   DEF[ListAt definition] --> DOM[list_at_domain]
   DOM --> BOUND[list_at_external_bound]
@@ -305,12 +306,21 @@ the strengthened extension preserves the old terminal at index `l` and
 supplies the new terminal at `S l`, so those values and the supplied exact
 cell are the six canonical lookup witnesses.
 
-At successor index `S i`, arithmetic converts
-`j + S (S i) = S l` to `j + S i = l`.  Elimination reuses the same `b,c`
-prefix; introduction uses the preservation map at both `j` and `S j`.
-Commuting the additive bound supplies the map's native `k <= l` witness;
-`add_comm` is therefore an explicit dependency rather than hidden arithmetic
-automation.
+At successor index `S i`, PA4 converts the source bound
+`j + S (S i) = L` into `S (j + S i) = L`. Successor elimination therefore
+returns a predecessor history of length `j + S i` with the same `b,c` trace
+witnesses. The original selected edge can then be repackaged directly as
+`ListAt(t,i,a)` in that predecessor history. This same-history route does not
+invoke the head equation and needs neither rung 4 nor PA2.
+
+For the reverse implication, extend the tail history once and use rung 2's
+preservation map at both selected endpoints. From `j + S i = l`, commutativity
+gives the current-index bound `S i + j = l`; PA4 plus commutativity gives the
+following-index bound `i + S j = l`. Thus `S i` and `i` are respectively the
+native additive witnesses required to preserve positions `j` and `S j`.
+Another PA4 application supplies `j + S (S i) = S l` for the target lookup.
+Only `add_comm` is a theorem dependency for these conversions; PA4 and
+congruence are primitive proof rules already available to every script.
 
 ### 7.3 Functionality and extensionality
 
@@ -444,6 +454,22 @@ twice—first at `S j` for the terminal code and then at `j` for the tail—so i
 does not use cell-tail functionality; the reverse implication uses the
 prefix-preservation map at the old terminal. This is body-level evidence
 only. No repeated cold empty-context receipt, registration, admission, or
-public theorem is claimed for the head equation. The next proof body is
-`list_at_succ_iff`; the next lookup WMI batch must cold-close all newly ready
-rows before any admission review.
+public theorem is claimed for the head equation. The successor body is
+recorded immediately below; the next lookup WMI batch must cold-close all
+newly ready rows before any admission review.
+
+`list_at_succ_iff` now also has a dependency-curried body checked by the
+ordinary intuitionistic kernel. Its exact direct dependency order is
+`cell_history_succ_elim`, `cell_history_extend_preserves_prefix`, then
+`add_comm`; the earlier provisional rung-4/PA2 route is not used. The expanded
+statement has 14,716 characters and SHA-256
+`004ef041acbcfbaaeda594f5f47fbea75ac6f8df87ca8bcf49774cfcbc3a978c`.
+Its exact body receipt, in
+`(dependencies,commands,nodes,depth,objects,edges,reused)` order, is
+`(3,124,198,38,196,197,2)`, with zero DNE. The forward implication restricts
+the same beta history after successor elimination; the reverse implication
+preserves both endpoint decodes using the additive witnesses `S i` and `i`.
+This is body-level evidence only. No repeated cold empty-context receipt,
+registration, admission, or public theorem is claimed for T05. The next proof
+body is `list_at_external_bound`; all newly ready lookup rows still require a
+repeated cold WMI batch before admission review.

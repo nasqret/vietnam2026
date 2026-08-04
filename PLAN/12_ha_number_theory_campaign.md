@@ -753,7 +753,7 @@ target. Strict K3 remains 96 rows across 21 modules, and the campaign JSON
 remains unchanged at 95 public references, 121 private candidates, and 169
 receipts.
 
-### K3B ListAt checkpoint (surface frozen; domain/head bodies checked)
+### K3B ListAt checkpoint (surface frozen; T03--T05 bodies checked)
 
 `HA-K3B-LISTAT-1` freezes an outer-head `ListAt(z,i,a)` surface over the
 closed private reverse histories. The selected edge satisfies
@@ -795,8 +795,22 @@ terminal at `j`. The statement receipt is
 `(12530,9f0b3e7496f79b7cc6f4833edc14431dd614081b6f02b2d384aa80c521e2f8ed)`
 and the body receipt is `(4,119,265,36,255,264,10)`. This is body-level only:
 no cold closure, registration, admission, public snapshot, or catalog change
-is claimed. Proceed next to `list_at_succ_iff`, then include all ready lookup
-rows in a repeated cold WMI batch before admission review.
+is claimed.
+
+The successor rung `list_at_succ_iff` now has a validated dependency-curried
+body as well. Its exact dependency order is `cell_history_succ_elim`,
+`cell_history_extend_preserves_prefix`, `add_comm`; the provisional dependency
+on rung 4 and PA2 has been removed. Forward elimination retains the same
+`b,c` trace and turns length `j+S(S i)` into predecessor length `j+S i` by
+PA4. Reverse introduction transports entries at both `j` and `S j`, using
+`S i` and `i` as the additive bound witnesses after `add_comm`/PA4
+conversions. Its statement receipt is
+`(14716,004ef041acbcfbaaeda594f5f47fbea75ac6f8df87ca8bcf49774cfcbc3a978c)`
+and its body receipt is `(3,124,198,38,196,197,2)`, with zero DNE. This remains
+body-level private evidence: no cold closure, registration, admission, public
+snapshot, catalog, or campaign-JSON change is claimed. Proceed next to
+`list_at_external_bound`, then include all ready lookup rows in a repeated
+cold WMI batch before admission review.
 
 ## Release boundary
 

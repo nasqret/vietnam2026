@@ -2151,3 +2151,14 @@
   `j` for the predecessor tail, so `cell_tail_functional` is not a dependency.
   This is body-checked evidence only: no cold closure, registry entry,
   admission, public theorem, or campaign-accounting change is recorded.
+- **K3B successor lookup equation body (2026-08-04):** private
+  `list_at_succ_iff` has statement receipt
+  `(14716,004ef041acbcfbaaeda594f5f47fbea75ac6f8df87ca8bcf49774cfcbc3a978c)`
+  and dependency-curried body receipt `(3,124,198,38,196,197,2)`. Its exact
+  dependency order is `cell_history_succ_elim`,
+  `cell_history_extend_preserves_prefix`, `add_comm`. The direct same-history
+  proof needs neither `list_at_head_iff` nor PA2: forward elimination retains
+  `b,c`, while reverse extension preserves the selected entries at `j` and
+  `S j` using additive witnesses `S i` and `i`. The body has zero DNE but no
+  cold closure, registry entry, admission, public theorem, or accounting
+  change.
