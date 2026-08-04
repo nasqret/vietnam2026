@@ -26,6 +26,9 @@ forall m b q x. b = q * m + x -> exists u v. b + m * u = x + m * v
 - [[prime_bounded_nonzero_mod_inverse]]
 - [[canonical_remainders_characterize_mod_eq]]
 - [[coprime_bounded_mod_inverse]]
+- [[mod_eq_common_remainder_decomposition]]
+- [[mod_eq_lcm_merge]]
+- [[crt_solution_canonical_remainder_nonzero]]
 
 ## Verification record
 

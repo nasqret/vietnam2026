@@ -8614,6 +8614,480 @@
         "existing_name": "gcd_lcm_product"
       },
       "blocker": null
+    },
+    {
+      "id": "mod_eq_zero_iff_eq",
+      "title": "Mod eq zero iff eq",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_zero_left"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Balanced congruence modulo zero is exactly equality.",
+      "peano": {
+        "statement": "forall a b. (((exists hgcrt_mod_left_zero_source hgcrt_mod_right_zero_source. a + 0 * hgcrt_mod_left_zero_source = b + 0 * hgcrt_mod_right_zero_source) -> a = b) /\\ (a = b -> (exists hgcrt_mod_left_zero_result hgcrt_mod_right_zero_result. a + 0 * hgcrt_mod_left_zero_result = b + 0 * hgcrt_mod_right_zero_result)))",
+        "existing_name": "mod_eq_zero_iff_eq"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod_eq_scale",
+      "title": "Mod eq scale",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "mul_add",
+        "mul_assoc"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Scaling values and their modulus preserves balanced congruence.",
+      "peano": {
+        "statement": "forall k m a b. (exists hgcrt_mod_left_scale_source hgcrt_mod_right_scale_source. a + m * hgcrt_mod_left_scale_source = b + m * hgcrt_mod_right_scale_source) -> (exists hgcrt_mod_left_scale_result hgcrt_mod_right_scale_result. (k * a) + (k * m) * hgcrt_mod_left_scale_result = (k * b) + (k * m) * hgcrt_mod_right_scale_result)",
+        "existing_name": "mod_eq_scale"
+      },
+      "blocker": null
+    },
+    {
+      "id": "crt_common_solution_implies_gcd_compatible",
+      "title": "Crt common solution implies gcd compatible",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "is_gcd_dvd_left",
+        "is_gcd_dvd_right",
+        "mod_eq_of_mod_eq_multiple",
+        "mod_eq_symm",
+        "mod_eq_trans"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "A common CRT solution forces the residues to be congruent modulo every relational gcd.",
+      "peano": {
+        "statement": "forall g m n a b x. ((((exists hag_left_factor_crt_necessity. m = g * hag_left_factor_crt_necessity) /\\ (exists hag_right_factor_crt_necessity. n = g * hag_right_factor_crt_necessity)) /\\ forall hag_divisor_crt_necessity. (exists hag_common_left_crt_necessity. m = hag_divisor_crt_necessity * hag_common_left_crt_necessity) -> (exists hag_common_right_crt_necessity. n = hag_divisor_crt_necessity * hag_common_right_crt_necessity) -> exists hag_greatest_factor_crt_necessity. g = hag_divisor_crt_necessity * hag_greatest_factor_crt_necessity)) -> (((exists hgcrt_mod_left_necessity_solution_left hgcrt_mod_right_necessity_solution_left. x + m * hgcrt_mod_left_necessity_solution_left = a + m * hgcrt_mod_right_necessity_solution_left) /\\ (exists hgcrt_mod_left_necessity_solution_right hgcrt_mod_right_necessity_solution_right. x + n * hgcrt_mod_left_necessity_solution_right = b + n * hgcrt_mod_right_necessity_solution_right))) -> (exists hgcrt_mod_left_necessity_compatibility hgcrt_mod_right_necessity_compatibility. a + g * hgcrt_mod_left_necessity_compatibility = b + g * hgcrt_mod_right_necessity_compatibility)",
+        "existing_name": "crt_common_solution_implies_gcd_compatible"
+      },
+      "blocker": null
+    },
+    {
+      "id": "crt_incompatibility_obstructs_solution",
+      "title": "Crt incompatibility obstructs solution",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "crt_common_solution_implies_gcd_compatible"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Failure of gcd compatibility constructively refutes every common CRT solution.",
+      "peano": {
+        "statement": "forall g m n a b. ((((exists hag_left_factor_crt_obstruction. m = g * hag_left_factor_crt_obstruction) /\\ (exists hag_right_factor_crt_obstruction. n = g * hag_right_factor_crt_obstruction)) /\\ forall hag_divisor_crt_obstruction. (exists hag_common_left_crt_obstruction. m = hag_divisor_crt_obstruction * hag_common_left_crt_obstruction) -> (exists hag_common_right_crt_obstruction. n = hag_divisor_crt_obstruction * hag_common_right_crt_obstruction) -> exists hag_greatest_factor_crt_obstruction. g = hag_divisor_crt_obstruction * hag_greatest_factor_crt_obstruction)) -> ~(exists hgcrt_mod_left_obstruction_compatibility hgcrt_mod_right_obstruction_compatibility. a + g * hgcrt_mod_left_obstruction_compatibility = b + g * hgcrt_mod_right_obstruction_compatibility) -> ~(exists x. (((exists hgcrt_mod_left_obstruction_solution_left hgcrt_mod_right_obstruction_solution_left. x + m * hgcrt_mod_left_obstruction_solution_left = a + m * hgcrt_mod_right_obstruction_solution_left) /\\ (exists hgcrt_mod_left_obstruction_solution_right hgcrt_mod_right_obstruction_solution_right. x + n * hgcrt_mod_left_obstruction_solution_right = b + n * hgcrt_mod_right_obstruction_solution_right))))",
+        "existing_name": "crt_incompatibility_obstructs_solution"
+      },
+      "blocker": null
+    },
+    {
+      "id": "is_gcd_quotients_coprime_nonzero",
+      "title": "Is gcd quotients coprime nonzero",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "is_gcd_greatest",
+        "mul_assoc",
+        "mul_one",
+        "mul_left_cancel_nonzero",
+        "divisor_one"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Nonzero gcd cofactors are coprime by the greatest-divisor property.",
+      "peano": {
+        "statement": "forall g m n M N. ((((exists hag_left_factor_quotient_assumption. m = g * hag_left_factor_quotient_assumption) /\\ (exists hag_right_factor_quotient_assumption. n = g * hag_right_factor_quotient_assumption)) /\\ forall hag_divisor_quotient_assumption. (exists hag_common_left_quotient_assumption. m = hag_divisor_quotient_assumption * hag_common_left_quotient_assumption) -> (exists hag_common_right_quotient_assumption. n = hag_divisor_quotient_assumption * hag_common_right_quotient_assumption) -> exists hag_greatest_factor_quotient_assumption. g = hag_divisor_quotient_assumption * hag_greatest_factor_quotient_assumption)) -> ~(g = 0) -> m = g * M -> n = g * N -> (forall hmi_divisor_quotient_result. (exists hmi_left_factor_quotient_result. M = hmi_divisor_quotient_result * hmi_left_factor_quotient_result) -> (exists hmi_right_factor_quotient_result. N = hmi_divisor_quotient_result * hmi_right_factor_quotient_result) -> hmi_divisor_quotient_result = 1)",
+        "existing_name": "is_gcd_quotients_coprime_nonzero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod_eq_common_remainder_decomposition",
+      "title": "Mod eq common remainder decomposition",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "division_remainder_exists",
+        "remainder_decomposition_to_mod_eq",
+        "mod_eq_symm",
+        "mod_eq_trans",
+        "mod_eq_to_remainder_decomposition",
+        "mul_comm"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Compatible residues share one bounded remainder modulo their gcd.",
+      "peano": {
+        "statement": "forall g a b. ~(g = 0) -> (exists hgcrt_mod_left_common_remainder_assumption hgcrt_mod_right_common_remainder_assumption. a + g * hgcrt_mod_left_common_remainder_assumption = b + g * hgcrt_mod_right_common_remainder_assumption) -> exists A B r. ((a = g * A + r /\\ b = g * B + r) /\\ (exists hmi_gap_common_remainder_bound. hmi_gap_common_remainder_bound + S r = g))",
+        "existing_name": "mod_eq_common_remainder_decomposition"
+      },
+      "blocker": null
+    },
+    {
+      "id": "crt_scaled_common_remainder_lift",
+      "title": "Crt scaled common remainder lift",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "binary_crt",
+        "mod_eq_scale",
+        "mod_eq_refl",
+        "mod_eq_add"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "A coprime cofactor CRT solution scales and lifts through a common remainder.",
+      "peano": {
+        "statement": "forall g m n a b M N A B r. m = g * M -> n = g * N -> a = g * A + r -> b = g * B + r -> ~(M = 0) -> ~(N = 0) -> (forall hmi_divisor_lift_assumption. (exists hmi_left_factor_lift_assumption. M = hmi_divisor_lift_assumption * hmi_left_factor_lift_assumption) -> (exists hmi_right_factor_lift_assumption. N = hmi_divisor_lift_assumption * hmi_right_factor_lift_assumption) -> hmi_divisor_lift_assumption = 1) -> exists x. (((exists hgcrt_mod_left_lift_result_left hgcrt_mod_right_lift_result_left. x + m * hgcrt_mod_left_lift_result_left = a + m * hgcrt_mod_right_lift_result_left) /\\ (exists hgcrt_mod_left_lift_result_right hgcrt_mod_right_lift_result_right. x + n * hgcrt_mod_left_lift_result_right = b + n * hgcrt_mod_right_lift_result_right)))",
+        "existing_name": "crt_scaled_common_remainder_lift"
+      },
+      "blocker": null
+    },
+    {
+      "id": "generalized_binary_crt_sufficient_nonzero",
+      "title": "Generalized binary crt sufficient nonzero",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "is_gcd_dvd_left",
+        "is_gcd_dvd_right",
+        "mul_zero_left",
+        "is_gcd_quotients_coprime_nonzero",
+        "mod_eq_common_remainder_decomposition",
+        "crt_scaled_common_remainder_lift"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Gcd compatibility is sufficient for a common solution when both moduli are nonzero.",
+      "peano": {
+        "statement": "forall g m n a b. ~(m = 0) -> ~(n = 0) -> ((((exists hag_left_factor_sufficient_assumption. m = g * hag_left_factor_sufficient_assumption) /\\ (exists hag_right_factor_sufficient_assumption. n = g * hag_right_factor_sufficient_assumption)) /\\ forall hag_divisor_sufficient_assumption. (exists hag_common_left_sufficient_assumption. m = hag_divisor_sufficient_assumption * hag_common_left_sufficient_assumption) -> (exists hag_common_right_sufficient_assumption. n = hag_divisor_sufficient_assumption * hag_common_right_sufficient_assumption) -> exists hag_greatest_factor_sufficient_assumption. g = hag_divisor_sufficient_assumption * hag_greatest_factor_sufficient_assumption)) -> (exists hgcrt_mod_left_sufficient_compatibility hgcrt_mod_right_sufficient_compatibility. a + g * hgcrt_mod_left_sufficient_compatibility = b + g * hgcrt_mod_right_sufficient_compatibility) -> exists x. (((exists hgcrt_mod_left_sufficient_result_left hgcrt_mod_right_sufficient_result_left. x + m * hgcrt_mod_left_sufficient_result_left = a + m * hgcrt_mod_right_sufficient_result_left) /\\ (exists hgcrt_mod_left_sufficient_result_right hgcrt_mod_right_sufficient_result_right. x + n * hgcrt_mod_left_sufficient_result_right = b + n * hgcrt_mod_right_sufficient_result_right)))",
+        "existing_name": "generalized_binary_crt_sufficient_nonzero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "generalized_binary_crt_sufficient_zero_left",
+      "title": "Generalized binary crt sufficient zero left",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "is_gcd_symm",
+        "is_gcd_zero_right",
+        "is_gcd_unique",
+        "mod_eq_refl"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "If the left modulus is zero, gcd compatibility constructs a solution by choosing the left residue.",
+      "peano": {
+        "statement": "forall g n a b. ((((exists hage_left_factor_zero_left_gcd. 0 = g * hage_left_factor_zero_left_gcd) /\\ (exists hage_right_factor_zero_left_gcd. n = g * hage_right_factor_zero_left_gcd)) /\\ forall hage_divisor_zero_left_gcd. (exists hage_common_left_zero_left_gcd. 0 = hage_divisor_zero_left_gcd * hage_common_left_zero_left_gcd) -> (exists hage_common_right_zero_left_gcd. n = hage_divisor_zero_left_gcd * hage_common_right_zero_left_gcd) -> exists hage_greatest_factor_zero_left_gcd. g = hage_divisor_zero_left_gcd * hage_greatest_factor_zero_left_gcd)) -> (exists hgcrt_mod_left_zero_left_compatibility hgcrt_mod_right_zero_left_compatibility. a + g * hgcrt_mod_left_zero_left_compatibility = b + g * hgcrt_mod_right_zero_left_compatibility) -> exists x. (((exists hgcrt_mod_left_zero_left_solution_left hgcrt_mod_right_zero_left_solution_left. x + 0 * hgcrt_mod_left_zero_left_solution_left = a + 0 * hgcrt_mod_right_zero_left_solution_left) /\\ (exists hgcrt_mod_left_zero_left_solution_right hgcrt_mod_right_zero_left_solution_right. x + n * hgcrt_mod_left_zero_left_solution_right = b + n * hgcrt_mod_right_zero_left_solution_right)))",
+        "existing_name": "generalized_binary_crt_sufficient_zero_left"
+      },
+      "blocker": null
+    },
+    {
+      "id": "generalized_binary_crt_sufficient_zero_right",
+      "title": "Generalized binary crt sufficient zero right",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "is_gcd_zero_right",
+        "is_gcd_unique",
+        "mod_eq_symm",
+        "mod_eq_refl"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "If the right modulus is zero, gcd compatibility constructs a solution by choosing the right residue.",
+      "peano": {
+        "statement": "forall g m a b. ((((exists hage_left_factor_zero_right_gcd. m = g * hage_left_factor_zero_right_gcd) /\\ (exists hage_right_factor_zero_right_gcd. 0 = g * hage_right_factor_zero_right_gcd)) /\\ forall hage_divisor_zero_right_gcd. (exists hage_common_left_zero_right_gcd. m = hage_divisor_zero_right_gcd * hage_common_left_zero_right_gcd) -> (exists hage_common_right_zero_right_gcd. 0 = hage_divisor_zero_right_gcd * hage_common_right_zero_right_gcd) -> exists hage_greatest_factor_zero_right_gcd. g = hage_divisor_zero_right_gcd * hage_greatest_factor_zero_right_gcd)) -> (exists hgcrt_mod_left_zero_right_compatibility hgcrt_mod_right_zero_right_compatibility. a + g * hgcrt_mod_left_zero_right_compatibility = b + g * hgcrt_mod_right_zero_right_compatibility) -> exists x. (((exists hgcrt_mod_left_zero_right_solution_left hgcrt_mod_right_zero_right_solution_left. x + m * hgcrt_mod_left_zero_right_solution_left = a + m * hgcrt_mod_right_zero_right_solution_left) /\\ (exists hgcrt_mod_left_zero_right_solution_right hgcrt_mod_right_zero_right_solution_right. x + 0 * hgcrt_mod_left_zero_right_solution_right = b + 0 * hgcrt_mod_right_zero_right_solution_right)))",
+        "existing_name": "generalized_binary_crt_sufficient_zero_right"
+      },
+      "blocker": null
+    },
+    {
+      "id": "generalized_binary_crt_sufficient",
+      "title": "Generalized binary crt sufficient",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "eq_decidable",
+        "generalized_binary_crt_sufficient_zero_left",
+        "generalized_binary_crt_sufficient_zero_right",
+        "generalized_binary_crt_sufficient_nonzero"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Gcd compatibility constructs a common solution for arbitrary natural moduli, including zero.",
+      "peano": {
+        "statement": "forall g m n a b. ((((exists hag_left_factor_total_sufficiency_gcd. m = g * hag_left_factor_total_sufficiency_gcd) /\\ (exists hag_right_factor_total_sufficiency_gcd. n = g * hag_right_factor_total_sufficiency_gcd)) /\\ forall hag_divisor_total_sufficiency_gcd. (exists hag_common_left_total_sufficiency_gcd. m = hag_divisor_total_sufficiency_gcd * hag_common_left_total_sufficiency_gcd) -> (exists hag_common_right_total_sufficiency_gcd. n = hag_divisor_total_sufficiency_gcd * hag_common_right_total_sufficiency_gcd) -> exists hag_greatest_factor_total_sufficiency_gcd. g = hag_divisor_total_sufficiency_gcd * hag_greatest_factor_total_sufficiency_gcd)) -> (exists hgcrt_mod_left_total_sufficiency_compatibility hgcrt_mod_right_total_sufficiency_compatibility. a + g * hgcrt_mod_left_total_sufficiency_compatibility = b + g * hgcrt_mod_right_total_sufficiency_compatibility) -> exists x. (((exists hgcrt_mod_left_total_sufficiency_solution_left hgcrt_mod_right_total_sufficiency_solution_left. x + m * hgcrt_mod_left_total_sufficiency_solution_left = a + m * hgcrt_mod_right_total_sufficiency_solution_left) /\\ (exists hgcrt_mod_left_total_sufficiency_solution_right hgcrt_mod_right_total_sufficiency_solution_right. x + n * hgcrt_mod_left_total_sufficiency_solution_right = b + n * hgcrt_mod_right_total_sufficiency_solution_right)))",
+        "existing_name": "generalized_binary_crt_sufficient"
+      },
+      "blocker": null
+    },
+    {
+      "id": "generalized_binary_crt_solvable_iff",
+      "title": "Generalized binary crt solvable iff",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "crt_common_solution_implies_gcd_compatible",
+        "generalized_binary_crt_sufficient"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "For arbitrary natural moduli, a binary CRT system is solvable exactly when its residues are congruent modulo a relational gcd.",
+      "peano": {
+        "statement": "forall g m n a b. ((((exists hag_left_factor_total_iff_gcd. m = g * hag_left_factor_total_iff_gcd) /\\ (exists hag_right_factor_total_iff_gcd. n = g * hag_right_factor_total_iff_gcd)) /\\ forall hag_divisor_total_iff_gcd. (exists hag_common_left_total_iff_gcd. m = hag_divisor_total_iff_gcd * hag_common_left_total_iff_gcd) -> (exists hag_common_right_total_iff_gcd. n = hag_divisor_total_iff_gcd * hag_common_right_total_iff_gcd) -> exists hag_greatest_factor_total_iff_gcd. g = hag_divisor_total_iff_gcd * hag_greatest_factor_total_iff_gcd)) -> (((exists x. (((exists hgcrt_mod_left_total_iff_forward_solution_left hgcrt_mod_right_total_iff_forward_solution_left. x + m * hgcrt_mod_left_total_iff_forward_solution_left = a + m * hgcrt_mod_right_total_iff_forward_solution_left) /\\ (exists hgcrt_mod_left_total_iff_forward_solution_right hgcrt_mod_right_total_iff_forward_solution_right. x + n * hgcrt_mod_left_total_iff_forward_solution_right = b + n * hgcrt_mod_right_total_iff_forward_solution_right)))) -> (exists hgcrt_mod_left_total_iff_forward_compatibility hgcrt_mod_right_total_iff_forward_compatibility. a + g * hgcrt_mod_left_total_iff_forward_compatibility = b + g * hgcrt_mod_right_total_iff_forward_compatibility)) /\\ ((exists hgcrt_mod_left_total_iff_reverse_compatibility hgcrt_mod_right_total_iff_reverse_compatibility. a + g * hgcrt_mod_left_total_iff_reverse_compatibility = b + g * hgcrt_mod_right_total_iff_reverse_compatibility) -> exists x. (((exists hgcrt_mod_left_total_iff_reverse_solution_left hgcrt_mod_right_total_iff_reverse_solution_left. x + m * hgcrt_mod_left_total_iff_reverse_solution_left = a + m * hgcrt_mod_right_total_iff_reverse_solution_left) /\\ (exists hgcrt_mod_left_total_iff_reverse_solution_right hgcrt_mod_right_total_iff_reverse_solution_right. x + n * hgcrt_mod_left_total_iff_reverse_solution_right = b + n * hgcrt_mod_right_total_iff_reverse_solution_right)))))",
+        "existing_name": "generalized_binary_crt_solvable_iff"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod_eq_decidable",
+      "title": "Mod eq decidable",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "eq_decidable",
+        "mod_eq_zero_iff_eq",
+        "mod_eq_decidable_nonzero"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Balanced congruence is constructively decidable for every natural modulus.",
+      "peano": {
+        "statement": "forall d a b. (exists hgcrt_mod_left_decision_yes hgcrt_mod_right_decision_yes. a + d * hgcrt_mod_left_decision_yes = b + d * hgcrt_mod_right_decision_yes) \\/ ~(exists hgcrt_mod_left_decision_no hgcrt_mod_right_decision_no. a + d * hgcrt_mod_left_decision_no = b + d * hgcrt_mod_right_decision_no)",
+        "existing_name": "mod_eq_decidable"
+      },
+      "blocker": null
+    },
+    {
+      "id": "generalized_binary_crt_solution_or_obstruction",
+      "title": "Generalized binary crt solution or obstruction",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "mod_eq_decidable",
+        "generalized_binary_crt_sufficient",
+        "crt_incompatibility_obstructs_solution"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Every generalized binary CRT instance constructively returns a solution or a certified incompatibility obstruction.",
+      "peano": {
+        "statement": "forall g m n a b. ((((exists hag_left_factor_decision_boundary. m = g * hag_left_factor_decision_boundary) /\\ (exists hag_right_factor_decision_boundary. n = g * hag_right_factor_decision_boundary)) /\\ forall hag_divisor_decision_boundary. (exists hag_common_left_decision_boundary. m = hag_divisor_decision_boundary * hag_common_left_decision_boundary) -> (exists hag_common_right_decision_boundary. n = hag_divisor_decision_boundary * hag_common_right_decision_boundary) -> exists hag_greatest_factor_decision_boundary. g = hag_divisor_decision_boundary * hag_greatest_factor_decision_boundary)) -> (((exists hgcrt_mod_left_decision_boundary_compatible hgcrt_mod_right_decision_boundary_compatible. a + g * hgcrt_mod_left_decision_boundary_compatible = b + g * hgcrt_mod_right_decision_boundary_compatible) /\\ exists x. (((exists hgcrt_mod_left_decision_boundary_positive_left hgcrt_mod_right_decision_boundary_positive_left. x + m * hgcrt_mod_left_decision_boundary_positive_left = a + m * hgcrt_mod_right_decision_boundary_positive_left) /\\ (exists hgcrt_mod_left_decision_boundary_positive_right hgcrt_mod_right_decision_boundary_positive_right. x + n * hgcrt_mod_left_decision_boundary_positive_right = b + n * hgcrt_mod_right_decision_boundary_positive_right)))) \\/ (~(exists hgcrt_mod_left_decision_boundary_incompatible hgcrt_mod_right_decision_boundary_incompatible. a + g * hgcrt_mod_left_decision_boundary_incompatible = b + g * hgcrt_mod_right_decision_boundary_incompatible) /\\ ~(exists x. (((exists hgcrt_mod_left_decision_boundary_negative_left hgcrt_mod_right_decision_boundary_negative_left. x + m * hgcrt_mod_left_decision_boundary_negative_left = a + m * hgcrt_mod_right_decision_boundary_negative_left) /\\ (exists hgcrt_mod_left_decision_boundary_negative_right hgcrt_mod_right_decision_boundary_negative_right. x + n * hgcrt_mod_left_decision_boundary_negative_right = b + n * hgcrt_mod_right_decision_boundary_negative_right))))))",
+        "existing_name": "generalized_binary_crt_solution_or_obstruction"
+      },
+      "blocker": null
+    },
+    {
+      "id": "generalized_binary_crt_total_decision",
+      "title": "Generalized binary crt total decision",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "gcd_exists_relational",
+        "generalized_binary_crt_solution_or_obstruction"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Every raw binary CRT input returns a relational gcd and either a solution or a certified incompatibility obstruction.",
+      "peano": {
+        "statement": "forall m n a b. exists g. (((((exists hag_left_factor_total_decision. m = g * hag_left_factor_total_decision) /\\ (exists hag_right_factor_total_decision. n = g * hag_right_factor_total_decision)) /\\ forall hag_divisor_total_decision. (exists hag_common_left_total_decision. m = hag_divisor_total_decision * hag_common_left_total_decision) -> (exists hag_common_right_total_decision. n = hag_divisor_total_decision * hag_common_right_total_decision) -> exists hag_greatest_factor_total_decision. g = hag_divisor_total_decision * hag_greatest_factor_total_decision)) /\\ (((exists hgcrt_mod_left_total_decision_compatible hgcrt_mod_right_total_decision_compatible. a + g * hgcrt_mod_left_total_decision_compatible = b + g * hgcrt_mod_right_total_decision_compatible) /\\ exists x. (((exists hgcrt_mod_left_total_decision_positive_left hgcrt_mod_right_total_decision_positive_left. x + m * hgcrt_mod_left_total_decision_positive_left = a + m * hgcrt_mod_right_total_decision_positive_left) /\\ (exists hgcrt_mod_left_total_decision_positive_right hgcrt_mod_right_total_decision_positive_right. x + n * hgcrt_mod_left_total_decision_positive_right = b + n * hgcrt_mod_right_total_decision_positive_right)))) \\/ (~(exists hgcrt_mod_left_total_decision_incompatible hgcrt_mod_right_total_decision_incompatible. a + g * hgcrt_mod_left_total_decision_incompatible = b + g * hgcrt_mod_right_total_decision_incompatible) /\\ ~(exists x. (((exists hgcrt_mod_left_total_decision_negative_left hgcrt_mod_right_total_decision_negative_left. x + m * hgcrt_mod_left_total_decision_negative_left = a + m * hgcrt_mod_right_total_decision_negative_left) /\\ (exists hgcrt_mod_left_total_decision_negative_right hgcrt_mod_right_total_decision_negative_right. x + n * hgcrt_mod_left_total_decision_negative_right = b + n * hgcrt_mod_right_total_decision_negative_right)))))))",
+        "existing_name": "generalized_binary_crt_total_decision"
+      },
+      "blocker": null
+    },
+    {
+      "id": "crt_solution_pair_congruent",
+      "title": "Crt solution pair congruent",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "mod_eq_symm",
+        "mod_eq_trans"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Any two solutions of one binary CRT problem agree modulo each modulus.",
+      "peano": {
+        "statement": "forall m n a b x y. (((exists hgcrt_mod_left_pair_x_left hgcrt_mod_right_pair_x_left. x + m * hgcrt_mod_left_pair_x_left = a + m * hgcrt_mod_right_pair_x_left) /\\ (exists hgcrt_mod_left_pair_x_right hgcrt_mod_right_pair_x_right. x + n * hgcrt_mod_left_pair_x_right = b + n * hgcrt_mod_right_pair_x_right))) -> (((exists hgcrt_mod_left_pair_y_left hgcrt_mod_right_pair_y_left. y + m * hgcrt_mod_left_pair_y_left = a + m * hgcrt_mod_right_pair_y_left) /\\ (exists hgcrt_mod_left_pair_y_right hgcrt_mod_right_pair_y_right. y + n * hgcrt_mod_left_pair_y_right = b + n * hgcrt_mod_right_pair_y_right))) -> ((exists hgcrt_mod_left_pair_mod_m hgcrt_mod_right_pair_mod_m. x + m * hgcrt_mod_left_pair_mod_m = y + m * hgcrt_mod_right_pair_mod_m) /\\ (exists hgcrt_mod_left_pair_mod_n hgcrt_mod_right_pair_mod_n. x + n * hgcrt_mod_left_pair_mod_n = y + n * hgcrt_mod_right_pair_mod_n))",
+        "existing_name": "crt_solution_pair_congruent"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod_eq_ordered_gap_multiple",
+      "title": "Mod eq ordered gap multiple",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "add_comm",
+        "add_assoc",
+        "add_left_cancel",
+        "factor_difference"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "The directed gap between two congruent naturals is a multiple of the modulus.",
+      "peano": {
+        "statement": "forall d k x y. k + x = y -> (exists hgcrt_mod_left_ordered_gap_assumption hgcrt_mod_right_ordered_gap_assumption. x + d * hgcrt_mod_left_ordered_gap_assumption = y + d * hgcrt_mod_right_ordered_gap_assumption) -> (exists hgcrt_divides_factor_ordered_gap_result. k = d * hgcrt_divides_factor_ordered_gap_result)",
+        "existing_name": "mod_eq_ordered_gap_multiple"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod_eq_lcm_merge",
+      "title": "Mod eq lcm merge",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "le_total",
+        "mod_eq_symm",
+        "mod_eq_ordered_gap_multiple",
+        "is_lcm_least",
+        "mul_comm",
+        "remainder_decomposition_to_mod_eq"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Congruence modulo both inputs merges to congruence modulo a relational lcm.",
+      "peano": {
+        "statement": "forall l m n x y. ((((exists hlcm_left_factor_merge. l = m * hlcm_left_factor_merge) /\\ (exists hlcm_right_factor_merge. l = n * hlcm_right_factor_merge)) /\\ forall hlcm_common_merge. (exists hlcm_left_common_merge. hlcm_common_merge = m * hlcm_left_common_merge) -> (exists hlcm_right_common_merge. hlcm_common_merge = n * hlcm_right_common_merge) -> exists hlcm_least_factor_merge. hlcm_common_merge = l * hlcm_least_factor_merge)) -> (exists hgcrt_mod_left_merge_m hgcrt_mod_right_merge_m. x + m * hgcrt_mod_left_merge_m = y + m * hgcrt_mod_right_merge_m) -> (exists hgcrt_mod_left_merge_n hgcrt_mod_right_merge_n. x + n * hgcrt_mod_left_merge_n = y + n * hgcrt_mod_right_merge_n) -> (exists hgcrt_mod_left_merge_l hgcrt_mod_right_merge_l. x + l * hgcrt_mod_left_merge_l = y + l * hgcrt_mod_right_merge_l)",
+        "existing_name": "mod_eq_lcm_merge"
+      },
+      "blocker": null
+    },
+    {
+      "id": "mod_eq_lcm_iff_pair",
+      "title": "Mod eq lcm iff pair",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "is_lcm_multiple_left",
+        "is_lcm_multiple_right",
+        "mod_eq_of_mod_eq_multiple",
+        "mod_eq_lcm_merge"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Congruence modulo a relational lcm is equivalent to congruence modulo both inputs.",
+      "peano": {
+        "statement": "forall l m n x y. ((((exists hlcm_left_factor_iff_pair. l = m * hlcm_left_factor_iff_pair) /\\ (exists hlcm_right_factor_iff_pair. l = n * hlcm_right_factor_iff_pair)) /\\ forall hlcm_common_iff_pair. (exists hlcm_left_common_iff_pair. hlcm_common_iff_pair = m * hlcm_left_common_iff_pair) -> (exists hlcm_right_common_iff_pair. hlcm_common_iff_pair = n * hlcm_right_common_iff_pair) -> exists hlcm_least_factor_iff_pair. hlcm_common_iff_pair = l * hlcm_least_factor_iff_pair)) -> (((exists hgcrt_mod_left_iff_l_forward hgcrt_mod_right_iff_l_forward. x + l * hgcrt_mod_left_iff_l_forward = y + l * hgcrt_mod_right_iff_l_forward) -> ((exists hgcrt_mod_left_iff_m_forward hgcrt_mod_right_iff_m_forward. x + m * hgcrt_mod_left_iff_m_forward = y + m * hgcrt_mod_right_iff_m_forward) /\\ (exists hgcrt_mod_left_iff_n_forward hgcrt_mod_right_iff_n_forward. x + n * hgcrt_mod_left_iff_n_forward = y + n * hgcrt_mod_right_iff_n_forward))) /\\ (((exists hgcrt_mod_left_iff_m_reverse hgcrt_mod_right_iff_m_reverse. x + m * hgcrt_mod_left_iff_m_reverse = y + m * hgcrt_mod_right_iff_m_reverse) /\\ (exists hgcrt_mod_left_iff_n_reverse hgcrt_mod_right_iff_n_reverse. x + n * hgcrt_mod_left_iff_n_reverse = y + n * hgcrt_mod_right_iff_n_reverse)) -> (exists hgcrt_mod_left_iff_l_reverse hgcrt_mod_right_iff_l_reverse. x + l * hgcrt_mod_left_iff_l_reverse = y + l * hgcrt_mod_right_iff_l_reverse)))",
+        "existing_name": "mod_eq_lcm_iff_pair"
+      },
+      "blocker": null
+    },
+    {
+      "id": "crt_solution_class_iff_lcm",
+      "title": "Crt solution class iff lcm",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "crt_solution_pair_congruent",
+        "mod_eq_lcm_iff_pair",
+        "mod_eq_trans"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Relative to one fixed common solution, all solutions are exactly its relational-lcm congruence class.",
+      "peano": {
+        "statement": "forall l m n a b x y. ((((exists hlcm_left_factor_solution_class. l = m * hlcm_left_factor_solution_class) /\\ (exists hlcm_right_factor_solution_class. l = n * hlcm_right_factor_solution_class)) /\\ forall hlcm_common_solution_class. (exists hlcm_left_common_solution_class. hlcm_common_solution_class = m * hlcm_left_common_solution_class) -> (exists hlcm_right_common_solution_class. hlcm_common_solution_class = n * hlcm_right_common_solution_class) -> exists hlcm_least_factor_solution_class. hlcm_common_solution_class = l * hlcm_least_factor_solution_class)) -> (((exists hgcrt_mod_left_class_fixed_left hgcrt_mod_right_class_fixed_left. x + m * hgcrt_mod_left_class_fixed_left = a + m * hgcrt_mod_right_class_fixed_left) /\\ (exists hgcrt_mod_left_class_fixed_right hgcrt_mod_right_class_fixed_right. x + n * hgcrt_mod_left_class_fixed_right = b + n * hgcrt_mod_right_class_fixed_right))) -> (((((exists hgcrt_mod_left_class_candidate_forward_left hgcrt_mod_right_class_candidate_forward_left. y + m * hgcrt_mod_left_class_candidate_forward_left = a + m * hgcrt_mod_right_class_candidate_forward_left) /\\ (exists hgcrt_mod_left_class_candidate_forward_right hgcrt_mod_right_class_candidate_forward_right. y + n * hgcrt_mod_left_class_candidate_forward_right = b + n * hgcrt_mod_right_class_candidate_forward_right))) -> (exists hgcrt_mod_left_class_l_forward hgcrt_mod_right_class_l_forward. y + l * hgcrt_mod_left_class_l_forward = x + l * hgcrt_mod_right_class_l_forward)) /\\ ((exists hgcrt_mod_left_class_l_reverse hgcrt_mod_right_class_l_reverse. y + l * hgcrt_mod_left_class_l_reverse = x + l * hgcrt_mod_right_class_l_reverse) -> (((exists hgcrt_mod_left_class_candidate_reverse_left hgcrt_mod_right_class_candidate_reverse_left. y + m * hgcrt_mod_left_class_candidate_reverse_left = a + m * hgcrt_mod_right_class_candidate_reverse_left) /\\ (exists hgcrt_mod_left_class_candidate_reverse_right hgcrt_mod_right_class_candidate_reverse_right. y + n * hgcrt_mod_left_class_candidate_reverse_right = b + n * hgcrt_mod_right_class_candidate_reverse_right)))))",
+        "existing_name": "crt_solution_class_iff_lcm"
+      },
+      "blocker": null
+    },
+    {
+      "id": "crt_solution_unique_lcm_zero",
+      "title": "Crt solution unique lcm zero",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "crt_solution_class_iff_lcm",
+        "mod_eq_zero_iff_eq"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "At relational lcm zero, every common solution equals a fixed common solution.",
+      "peano": {
+        "statement": "forall l m n a b x y. l = 0 -> ((((exists hlcm_left_factor_unique_zero. l = m * hlcm_left_factor_unique_zero) /\\ (exists hlcm_right_factor_unique_zero. l = n * hlcm_right_factor_unique_zero)) /\\ forall hlcm_common_unique_zero. (exists hlcm_left_common_unique_zero. hlcm_common_unique_zero = m * hlcm_left_common_unique_zero) -> (exists hlcm_right_common_unique_zero. hlcm_common_unique_zero = n * hlcm_right_common_unique_zero) -> exists hlcm_least_factor_unique_zero. hlcm_common_unique_zero = l * hlcm_least_factor_unique_zero)) -> (((exists hgcrt_mod_left_unique_zero_fixed_left hgcrt_mod_right_unique_zero_fixed_left. x + m * hgcrt_mod_left_unique_zero_fixed_left = a + m * hgcrt_mod_right_unique_zero_fixed_left) /\\ (exists hgcrt_mod_left_unique_zero_fixed_right hgcrt_mod_right_unique_zero_fixed_right. x + n * hgcrt_mod_left_unique_zero_fixed_right = b + n * hgcrt_mod_right_unique_zero_fixed_right))) -> (((exists hgcrt_mod_left_unique_zero_candidate_left hgcrt_mod_right_unique_zero_candidate_left. y + m * hgcrt_mod_left_unique_zero_candidate_left = a + m * hgcrt_mod_right_unique_zero_candidate_left) /\\ (exists hgcrt_mod_left_unique_zero_candidate_right hgcrt_mod_right_unique_zero_candidate_right. y + n * hgcrt_mod_left_unique_zero_candidate_right = b + n * hgcrt_mod_right_unique_zero_candidate_right))) -> y = x",
+        "existing_name": "crt_solution_unique_lcm_zero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "crt_solution_canonical_remainder_nonzero",
+      "title": "Crt solution canonical remainder nonzero",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "division_remainder_exists",
+        "mul_comm",
+        "remainder_decomposition_to_mod_eq",
+        "mod_eq_symm",
+        "crt_solution_class_iff_lcm",
+        "mod_eq_bounded_unique"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "At nonzero relational lcm, every solvable binary CRT system has a unique solution below the lcm.",
+      "peano": {
+        "statement": "forall l m n a b x. ~(l = 0) -> ((((exists hlcm_left_factor_canonical_nonzero. l = m * hlcm_left_factor_canonical_nonzero) /\\ (exists hlcm_right_factor_canonical_nonzero. l = n * hlcm_right_factor_canonical_nonzero)) /\\ forall hlcm_common_canonical_nonzero. (exists hlcm_left_common_canonical_nonzero. hlcm_common_canonical_nonzero = m * hlcm_left_common_canonical_nonzero) -> (exists hlcm_right_common_canonical_nonzero. hlcm_common_canonical_nonzero = n * hlcm_right_common_canonical_nonzero) -> exists hlcm_least_factor_canonical_nonzero. hlcm_common_canonical_nonzero = l * hlcm_least_factor_canonical_nonzero)) -> (((exists hgcrt_mod_left_canonical_nonzero_fixed_left hgcrt_mod_right_canonical_nonzero_fixed_left. x + m * hgcrt_mod_left_canonical_nonzero_fixed_left = a + m * hgcrt_mod_right_canonical_nonzero_fixed_left) /\\ (exists hgcrt_mod_left_canonical_nonzero_fixed_right hgcrt_mod_right_canonical_nonzero_fixed_right. x + n * hgcrt_mod_left_canonical_nonzero_fixed_right = b + n * hgcrt_mod_right_canonical_nonzero_fixed_right))) -> exists r. (((exists hgcrt_below_gap_canonical_nonzero_result. hgcrt_below_gap_canonical_nonzero_result + S r = l) /\\ (((exists hgcrt_mod_left_canonical_nonzero_result_left hgcrt_mod_right_canonical_nonzero_result_left. r + m * hgcrt_mod_left_canonical_nonzero_result_left = a + m * hgcrt_mod_right_canonical_nonzero_result_left) /\\ (exists hgcrt_mod_left_canonical_nonzero_result_right hgcrt_mod_right_canonical_nonzero_result_right. r + n * hgcrt_mod_left_canonical_nonzero_result_right = b + n * hgcrt_mod_right_canonical_nonzero_result_right)))) /\\ ((exists hgcrt_mod_left_canonical_nonzero_result hgcrt_mod_right_canonical_nonzero_result. r + l * hgcrt_mod_left_canonical_nonzero_result = x + l * hgcrt_mod_right_canonical_nonzero_result) /\\ forall s. (exists hgcrt_below_gap_canonical_nonzero_comparison. hgcrt_below_gap_canonical_nonzero_comparison + S s = l) -> (((exists hgcrt_mod_left_canonical_nonzero_comparison_left hgcrt_mod_right_canonical_nonzero_comparison_left. s + m * hgcrt_mod_left_canonical_nonzero_comparison_left = a + m * hgcrt_mod_right_canonical_nonzero_comparison_left) /\\ (exists hgcrt_mod_left_canonical_nonzero_comparison_right hgcrt_mod_right_canonical_nonzero_comparison_right. s + n * hgcrt_mod_left_canonical_nonzero_comparison_right = b + n * hgcrt_mod_right_canonical_nonzero_comparison_right))) -> s = r))",
+        "existing_name": "crt_solution_canonical_remainder_nonzero"
+      },
+      "blocker": null
+    },
+    {
+      "id": "generalized_binary_crt_canonical_boundary",
+      "title": "Generalized binary crt canonical boundary",
+      "domain": "congruence",
+      "status": "checked_m20",
+      "dependencies": [
+        "eq_decidable",
+        "generalized_binary_crt_sufficient",
+        "crt_solution_unique_lcm_zero",
+        "crt_solution_canonical_remainder_nonzero"
+      ],
+      "sources": [
+        "peano_lab_library"
+      ],
+      "summary": "Every compatible binary CRT system has the correct canonical boundary: exact uniqueness at lcm zero or one unique bounded representative at nonzero lcm.",
+      "peano": {
+        "statement": "forall g l m n a b. ((((exists hag_left_factor_canonical_boundary. m = g * hag_left_factor_canonical_boundary) /\\ (exists hag_right_factor_canonical_boundary. n = g * hag_right_factor_canonical_boundary)) /\\ forall hag_divisor_canonical_boundary. (exists hag_common_left_canonical_boundary. m = hag_divisor_canonical_boundary * hag_common_left_canonical_boundary) -> (exists hag_common_right_canonical_boundary. n = hag_divisor_canonical_boundary * hag_common_right_canonical_boundary) -> exists hag_greatest_factor_canonical_boundary. g = hag_divisor_canonical_boundary * hag_greatest_factor_canonical_boundary)) -> ((((exists hlcm_left_factor_canonical_boundary. l = m * hlcm_left_factor_canonical_boundary) /\\ (exists hlcm_right_factor_canonical_boundary. l = n * hlcm_right_factor_canonical_boundary)) /\\ forall hlcm_common_canonical_boundary. (exists hlcm_left_common_canonical_boundary. hlcm_common_canonical_boundary = m * hlcm_left_common_canonical_boundary) -> (exists hlcm_right_common_canonical_boundary. hlcm_common_canonical_boundary = n * hlcm_right_common_canonical_boundary) -> exists hlcm_least_factor_canonical_boundary. hlcm_common_canonical_boundary = l * hlcm_least_factor_canonical_boundary)) -> (exists hgcrt_mod_left_canonical_boundary_compatibility hgcrt_mod_right_canonical_boundary_compatibility. a + g * hgcrt_mod_left_canonical_boundary_compatibility = b + g * hgcrt_mod_right_canonical_boundary_compatibility) -> (((l = 0 /\\ exists x. ((((exists hgcrt_mod_left_canonical_boundary_fixed_left hgcrt_mod_right_canonical_boundary_fixed_left. x + m * hgcrt_mod_left_canonical_boundary_fixed_left = a + m * hgcrt_mod_right_canonical_boundary_fixed_left) /\\ (exists hgcrt_mod_left_canonical_boundary_fixed_right hgcrt_mod_right_canonical_boundary_fixed_right. x + n * hgcrt_mod_left_canonical_boundary_fixed_right = b + n * hgcrt_mod_right_canonical_boundary_fixed_right))) /\\ forall y. (((exists hgcrt_mod_left_canonical_boundary_zero_candidate_left hgcrt_mod_right_canonical_boundary_zero_candidate_left. y + m * hgcrt_mod_left_canonical_boundary_zero_candidate_left = a + m * hgcrt_mod_right_canonical_boundary_zero_candidate_left) /\\ (exists hgcrt_mod_left_canonical_boundary_zero_candidate_right hgcrt_mod_right_canonical_boundary_zero_candidate_right. y + n * hgcrt_mod_left_canonical_boundary_zero_candidate_right = b + n * hgcrt_mod_right_canonical_boundary_zero_candidate_right))) -> y = x))) \\/ ((~(l = 0) /\\ exists r. (((exists hgcrt_below_gap_canonical_boundary_result. hgcrt_below_gap_canonical_boundary_result + S r = l) /\\ (((exists hgcrt_mod_left_canonical_boundary_result_left hgcrt_mod_right_canonical_boundary_result_left. r + m * hgcrt_mod_left_canonical_boundary_result_left = a + m * hgcrt_mod_right_canonical_boundary_result_left) /\\ (exists hgcrt_mod_left_canonical_boundary_result_right hgcrt_mod_right_canonical_boundary_result_right. r + n * hgcrt_mod_left_canonical_boundary_result_right = b + n * hgcrt_mod_right_canonical_boundary_result_right)))) /\\ forall s. (exists hgcrt_below_gap_canonical_boundary_comparison. hgcrt_below_gap_canonical_boundary_comparison + S s = l) -> (((exists hgcrt_mod_left_canonical_boundary_comparison_left hgcrt_mod_right_canonical_boundary_comparison_left. s + m * hgcrt_mod_left_canonical_boundary_comparison_left = a + m * hgcrt_mod_right_canonical_boundary_comparison_left) /\\ (exists hgcrt_mod_left_canonical_boundary_comparison_right hgcrt_mod_right_canonical_boundary_comparison_right. s + n * hgcrt_mod_left_canonical_boundary_comparison_right = b + n * hgcrt_mod_right_canonical_boundary_comparison_right))) -> s = r))))",
+        "existing_name": "generalized_binary_crt_canonical_boundary"
+      },
+      "blocker": null
     }
   ]
 }

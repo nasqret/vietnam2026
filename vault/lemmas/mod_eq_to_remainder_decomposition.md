@@ -25,6 +25,7 @@ forall m b x. ~(m = 0) -> (exists h. h + S x = m) -> (exists u v. b + m * u = x 
 
 - [[beta_at_of_mod_eq_bound]]
 - [[binary_crt_remainders]]
+- [[mod_eq_common_remainder_decomposition]]
 
 ## Verification record
 

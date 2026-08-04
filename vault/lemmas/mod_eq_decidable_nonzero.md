@@ -22,6 +22,7 @@ forall p a b. ~(p = 0) -> (exists qr_u_dec_yes qr_v_dec_yes. a + p * qr_u_dec_ye
 ## Checked dependents
 
 - [[quadratic_residue_search_up_to]]
+- [[mod_eq_decidable]]
 
 ## Verification record
 

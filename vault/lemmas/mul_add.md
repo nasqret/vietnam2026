@@ -44,6 +44,7 @@ forall n m k. n * (m + k) = n * m + n * k
 - [[mod4_three_is_odd]]
 - [[coprime_mod_inverse]]
 - [[balanced_bezout_cancel_gcd]]
+- [[mod_eq_scale]]
 
 ## Verification record
 

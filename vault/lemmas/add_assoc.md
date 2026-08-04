@@ -49,6 +49,7 @@ forall n m k. (n + m) + k = n + (m + k)
 - [[coprime_balanced_mod_inverse]]
 - [[predecessor_square_mod_one]]
 - [[beta_half_range_entry_bounds]]
+- [[mod_eq_ordered_gap_multiple]]
 
 ## Verification record
 

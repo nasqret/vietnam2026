@@ -1,11 +1,10 @@
 # RFC HA-M5-GCRT-1: constructive generalized-CRT foundation
 
-**Status:** eight-row congruence foundation, seven-row M5a nonzero
-sufficiency ladder, four-row M5b zero-boundary ladder, four-row M5c
-relational-LCM classification ladder, three-row M5d canonical boundary,
-two-row M5e executable boundary, and one-row M5f raw-input total decision
-closed from the empty context; 28 rows are new and one exact existing support
-row is reused; all 29 remain isolated and unadmitted
+**Status:** all 29 rows have deterministic empty-context receipts; the exact
+23-row dependency closure of `generalized_binary_crt_solvable_iff`,
+`generalized_binary_crt_canonical_boundary`, and
+`generalized_binary_crt_total_decision` is publicly admitted at indices
+409--431, while six reviewed convenience/support rows remain private
 
 **Scope:** M5 binary generalized Chinese remainder theorem over possibly
 noncoprime natural moduli
@@ -31,7 +30,8 @@ from raw inputs `m,n,a,b`, constructs an existential relational gcd, and then
 returns the same compatible-solution or incompatible-obstruction result.
 Thus binary solvability, the complete solution class, the honest canonical
 boundary, and executable obstruction output are closed-checked for all
-natural moduli. Admission and finite-system lifting remain separate.
+natural moduli. Selective public admission is complete; finite-system lifting
+remains separate.
 
 ## 1. Conservative surfaces
 
@@ -100,8 +100,8 @@ The focused audit in
 replays two cold closures, pins exact statements, dependencies, body and
 certificate receipts, rejects nearby false endpoints, and checks bounded
 semantics. All eight certificates check through the normal intuitionistic
-entry point and contain zero `DNE` nodes. This is candidate evidence, not
-public admission.
+entry point and contain zero `DNE` nodes. This paragraph records the original
+candidate checkpoint; Section 10 records the later selective admission.
 
 ## 4. Exact seven-row M5a sufficiency ladder
 
@@ -225,8 +225,9 @@ the class theorem becomes exact uniqueness; it does not invoke division or
 claim a remainder below zero. The focused audit checks the ordinary
 intuitionistic entry point, two cold closures, mutations, and bounded
 semantics. All four certificates contain zero `DNE` nodes and fit the
-existing limits. The campaign now has 116 isolated candidate references and
-141 exact receipts, while the public registry and catalog remain 409 and 410.
+existing limits. At this pre-admission checkpoint the campaign had 116
+isolated candidate references and 141 exact receipts, while the public
+registry and catalog remained 409 and 410.
 
 ## 7. Exact three-row M5d canonical boundary
 
@@ -266,8 +267,9 @@ The focused audit checks two cold closures, exact identities, false endpoint
 mutations, hygiene of `Below`, and 4,021 compatible bounded systems: 611
 zero-LCM exact-uniqueness cases and 3,410 nonzero-LCM canonical-remainder
 cases. All three certificates contain zero `DNE`, fit unchanged limits, and
-remain unadmitted. Campaign evidence is now 119 isolated candidate references
-and 144 exact receipts; the public registry and catalog remain 409 and 410.
+were still unadmitted at this checkpoint. Campaign evidence then had 119
+isolated candidate references and 144 exact receipts; the public registry and
+catalog remained 409 and 410.
 
 ## 8. Exact two-row M5e executable boundary
 
@@ -297,8 +299,8 @@ contain zero `DNE` within unchanged limits. The retained audit covers 847
 all-modulus congruence cases and 5,929 generalized CRT systems: 4,021 take the
 compatible/solution branch and 1,908 take the incompatible/unsolvable branch.
 At gcd zero, 11 systems are compatible and 110 are incompatible. Campaign
-evidence is now 121 private candidates and 146 receipts; the public registry
-and catalog remain 409 and 410.
+evidence at this pre-admission checkpoint had 121 private candidates and 146
+receipts; the public registry and catalog remained 409 and 410.
 
 ## 9. Exact one-row M5f raw-input total decision
 
@@ -327,13 +329,43 @@ The focused audit in
 [`test_ha_generalized_crt_total_decision_candidate.py`](../../peano-lab/py/tests/test_ha_generalized_crt_total_decision_candidate.py)
 pins the exact statement and dependency surface, replays the body and two cold
 closures, checks mutation rejection and bounded raw-input semantics, and
-confirms zero `DNE` within unchanged limits. Campaign evidence is now 122
-private candidates and 147 exact receipts across 27 candidate modules and 30
-focused test paths. The generalized-CRT stack contains 29 rows: 28 new rows
-and one exact reused support row. The public registry and catalog remain 409
-and 410.
+confirms zero `DNE` within unchanged limits. At this final pre-admission
+checkpoint campaign evidence had 122 private candidates and 147 exact receipts
+across 27 candidate modules and 30 focused test paths. The generalized-CRT
+stack contains 29 rows: 28 new rows and one exact reused support row. The
+public registry and catalog then remained 409 and 410.
 
-## 10. Dependency route
+## 10. Selective 23-row public admission
+
+Public admission is the exact dependency closure of three principal
+interfaces:
+
+- `generalized_binary_crt_solvable_iff`;
+- `generalized_binary_crt_canonical_boundary`;
+- `generalized_binary_crt_total_decision`.
+
+Those 23 unchanged factory specifications occupy public indices 409--431.
+The focused candidate audits now compare each admitted row byte-for-byte with
+`HA_NUMBER_THEORY_M5_GENERALIZED_CRT_THEOREMS`, while the admission gate
+replays the complete public slice twice, pins its proof-DAG receipts, rejects
+nearby false endpoints, and confirms zero `DNE` under unchanged limits.
+
+The exact residual private boundary is:
+
+1. `mod_eq_add_cancel_left`;
+2. `mod_eq_add_cancel_right`;
+3. `mod_eq_unscale_nonzero`;
+4. `factor_nonzero_right`;
+5. `is_gcd_nonzero_coprime_quotients`;
+6. `generalized_binary_crt_solvable_iff_nonzero`.
+
+The runtime/catalog counts are now 432/433, and 409 catalog rows have status
+`checked_m20`. The campaign contains 95 public references, 99 private
+candidates, 147 exact receipts, 22 candidate modules, and 31 focused test
+paths. The six residual rows are useful conveniences but are not dependencies
+of the three admitted interfaces.
+
+## 11. Dependency route
 
 ```text
 balanced congruence algebra
@@ -408,21 +440,20 @@ gcd_exists_relational(m,n)
 The newly public universal `IsLCM` interface is now the checked solution-class
 boundary. No primitive lcm function is introduced.
 
-## 11. Honest remaining work
+## 12. Honest remaining work
 
 Binary existence, relational-LCM classification, and the zero/nonzero
 canonical, executable, and raw-input decision boundaries are now closed for
-all natural moduli. The remaining generalized-CRT work is:
-
-1. admit only a reviewed minimal public surface after cold replay, mutation,
-   resource, registry, catalog, and generated-artifact gates pass;
-2. complete the K3 finite-data substrate, then lift the binary theorem to a
-   finite-system fold.
+all natural moduli, and the reviewed 23-row dependency closure is public. The
+only remaining work for the main finite generalized-CRT target is to complete
+the K3 finite-data substrate and lift the binary theorem to a finite-system
+fold. The six residual conveniences remain deliberately private and do not
+block that target.
 
 The M5d split remains part of the frozen interface: `l=0` gives exact
 uniqueness, while only `l!=0` admits a bounded remainder.
 
-## 12. Repository anchors
+## 13. Repository anchors
 
 - implementation:
   [`ha_generalized_crt_congruence_candidate.py`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py)

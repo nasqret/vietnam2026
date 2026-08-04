@@ -30,6 +30,9 @@ forall a b. a = b \/ ~(a = b)
 - [[finite_contains_decidable]]
 - [[beta_prefix_replace_reflect]]
 - [[gcd_lcm_compatible_exists]]
+- [[generalized_binary_crt_sufficient]]
+- [[generalized_binary_crt_canonical_boundary]]
+- [[mod_eq_decidable]]
 
 ## Verification record
 

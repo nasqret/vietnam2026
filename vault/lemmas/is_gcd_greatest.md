@@ -19,7 +19,7 @@ forall g a b c. (((exists x. a = g * x) /\ (exists y. b = g * y)) /\ forall d. (
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[is_gcd_quotients_coprime_nonzero]]
 
 ## Verification record
 

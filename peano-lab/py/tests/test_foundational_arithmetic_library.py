@@ -315,7 +315,7 @@ def test_library_snapshot_records_self_contained_cut_representation() -> None:
     }
     assert metrics["theorems_by_layer"] == {
         "foundational_extension": 212,
-        "ha_number_theory_campaign": 25,
+        "ha_number_theory_campaign": 48,
         "legacy_core": 23,
         "published_mod5_unique": 12,
         "quadratic_residue_foundation": 137,
@@ -350,6 +350,29 @@ def test_library_snapshot_records_self_contained_cut_representation() -> None:
         "lcm_exists_relational",
         "canonical_lcm_exists_unique",
         "gcd_lcm_product",
+        "mod_eq_zero_iff_eq",
+        "mod_eq_scale",
+        "crt_solution_pair_congruent",
+        "crt_common_solution_implies_gcd_compatible",
+        "crt_incompatibility_obstructs_solution",
+        "is_gcd_quotients_coprime_nonzero",
+        "mod_eq_common_remainder_decomposition",
+        "crt_scaled_common_remainder_lift",
+        "generalized_binary_crt_sufficient_nonzero",
+        "generalized_binary_crt_sufficient_zero_left",
+        "generalized_binary_crt_sufficient_zero_right",
+        "generalized_binary_crt_sufficient",
+        "generalized_binary_crt_solvable_iff",
+        "mod_eq_ordered_gap_multiple",
+        "mod_eq_lcm_merge",
+        "mod_eq_lcm_iff_pair",
+        "crt_solution_class_iff_lcm",
+        "crt_solution_unique_lcm_zero",
+        "crt_solution_canonical_remainder_nonzero",
+        "generalized_binary_crt_canonical_boundary",
+        "mod_eq_decidable",
+        "generalized_binary_crt_solution_or_obstruction",
+        "generalized_binary_crt_total_decision",
     ]
     assert [source["path"] for source in catalog["theorem_sources"]] == [
         "peano-lab/py/peano_lab/library/theorems.py",
@@ -377,6 +400,13 @@ def test_library_snapshot_records_self_contained_cut_representation() -> None:
         "peano-lab/py/peano_lab/library/ha_modular_inverse_candidate.py",
         "peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py",
         "peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py",
+        "peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py",
+        "peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py",
+        "peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py",
+        "peano-lab/py/peano_lab/library/ha_generalized_crt_classification_candidate.py",
+        "peano-lab/py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py",
+        "peano-lab/py/peano_lab/library/ha_generalized_crt_decision_candidate.py",
+        "peano-lab/py/peano_lab/library/ha_generalized_crt_total_decision_candidate.py",
     ]
     assert metrics["theorems_with_cut_nodes"] == sum(
         row["cut_nodes"] > 0 for row in rows

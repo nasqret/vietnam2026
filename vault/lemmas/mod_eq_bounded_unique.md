@@ -29,6 +29,7 @@ forall m a b. (exists ha. ha + S a = m) -> (exists hb. hb + S b = m) -> (exists 
 - [[prime_bounded_nonzero_mod_inverse]]
 - [[canonical_remainders_characterize_mod_eq]]
 - [[bounded_mod_inverse_unique]]
+- [[crt_solution_canonical_remainder_nonzero]]
 
 ## Verification record
 

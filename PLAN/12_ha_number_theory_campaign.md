@@ -22,7 +22,8 @@ does not start from zero:
 - the normal kernel entry point is intuitionistic and rejects `DNE`;
 - at the frozen campaign baseline, 384 public theorem specifications had
   self-contained, empty-context certificates; tranche 01 raised the registry
-  to 393 and the selective K4 gcd/LCM admission now raises it to 409 without
+  to 393, the selective K4 gcd/LCM admission raised it to 409, and the
+  selective M5 generalized-CRT admission now raises it to 432 without
   changing the first-247 model-v3 prefix;
 - public results already include division/remainder existence and uniqueness,
   relational gcd, balanced Bezout, Gauss cancellation, Euclid's lemma, prime
@@ -511,9 +512,10 @@ gcd_lcm_product
 ```
 
 All 16 replay twice from the empty context with their frozen proof-DAG
-receipts, reject false endpoint mutations, and contain zero `DNE`. The public
-registry is now 409 entries. The synchronized research catalog is 410 entries,
-with 386 at `checked_m20`. The first-247 model-v3 prefix is unchanged.
+receipts, reject false endpoint mutations, and contain zero `DNE`. At the K4
+admission checkpoint the public registry had 409 entries and the synchronized
+research catalog had 410 entries, with 386 at `checked_m20`. The first-247
+model-v3 prefix was unchanged.
 
 The deliberately private K4 remainder has exactly 19 rows: three canonical-gcd
 package rows, five canonical-gcd edge rows, ten LCM convenience rows (L08 plus
@@ -529,7 +531,9 @@ specification and adds seven rows for the zero-modulus boundary, right
 cancellation, scale/unscale, comparison of two solutions, gcd-compatibility
 necessity, and the incompatibility obstruction. Two cold closures agree and
 all certificates check constructively with zero `DNE`. The stack remains
-isolated.
+isolated at this initial evidence checkpoint; the selective M5 admission
+described below later makes five of these rows public and retains three as
+private candidates.
 
 The next binary M5a tranche is now closed in
 [`ha_generalized_crt_sufficiency_candidate.py`](../peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py),
@@ -614,9 +618,9 @@ and
 `(17750,80,4239,4426,188,193,0,c704a17f6feed83142b160bbeafcc14764d5ae6590999187eed5455c3ad03bd7)`.
 All three contain zero `DNE` and fit unchanged limits. The retained oracle
 checks 4,021 compatible systems: 611 zero-LCM exact-uniqueness cases and
-3,410 nonzero-LCM canonical-remainder cases. M5d raises the isolated campaign
-to 119 candidate references and 144 exact receipts without changing the
-409-theorem public registry or 410-row catalog.
+3,410 nonzero-LCM canonical-remainder cases. At the pre-admission M5d
+checkpoint the isolated campaign had 119 candidate references and 144 exact
+receipts, while the public registry and catalog remained 409 and 410.
 
 The two-row M5e executable boundary is now closed in
 [`ha_generalized_crt_decision_candidate.py`](../peano-lab/py/peano_lab/library/ha_generalized_crt_decision_candidate.py),
@@ -638,7 +642,8 @@ and
 Both have zero `DNE` and fit unchanged limits. Retained semantics cover all
 847 cases with `d<7`, `a,b<11` and all 5,929 CRT systems with `m,n<7`,
 `a,b<11`: 4,021 return the solution branch and 1,908 return the obstruction
-branch. Evidence is now 121 private candidates and 146 receipts.
+branch. At the pre-admission M5e checkpoint the evidence had 121 private
+candidates and 146 receipts.
 
 The one-row M5f raw-input endpoint is now closed in
 [`ha_generalized_crt_total_decision_candidate.py`](../peano-lab/py/peano_lab/library/ha_generalized_crt_total_decision_candidate.py),
@@ -660,12 +665,32 @@ Its body receipt `(dependencies,commands,nodes,depth,objects,edges,reused)` is
 `(2,17,42,25,42,41,0)`. Its empty-context receipt
 `(nodes,depth,objects,edges,reused,Cuts,DNE,digest)` is
 `(15492,82,4052,4240,189,192,0,c2d915d2eb60ccbb2dac9f31e9e1f9c310c28264b74483ec97ae33a1a0d965ee)`.
-M5f brings the campaign to 122 private candidates and 147 receipts across 27
-candidate modules and 30 focused test paths. The generalized-CRT stack has 29
-rows in total: 28 new rows and one exact reused support row.
+At the pre-admission M5f checkpoint, the campaign had 122 private candidates
+and 147 receipts across 27 candidate modules and 30 focused test paths. The
+generalized-CRT stack has 29 rows in total: 28 new rows and one exact reused
+support row.
 
-Only deliberate minimal public admission and the K3 finite-system fold remain.
-No row asserts a remainder below zero.
+The selective M5 admission is now complete. It appends public indices
+409--431 as the exact dependency closure of
+`generalized_binary_crt_solvable_iff`,
+`generalized_binary_crt_canonical_boundary`, and
+`generalized_binary_crt_total_decision`. This exposes 23 rows without changing
+their factory specifications, scripts, receipts, or intuitionistic proof
+profile. The six reviewed rows outside that closure remain private:
+
+- `mod_eq_add_cancel_left`;
+- `mod_eq_add_cancel_right`;
+- `mod_eq_unscale_nonzero`;
+- `factor_nonzero_right`;
+- `is_gcd_nonzero_coprime_quotients`;
+- `generalized_binary_crt_solvable_iff_nonzero`.
+
+The current runtime/catalog boundary is 432/433, with 409 catalog rows at
+`checked_m20`. The campaign manifest has 95 public references, 99 private
+candidates, 147 exact receipts, 22 candidate modules, and 31 focused test
+paths. Only the K3 finite-system fold remains for the main finite generalized-
+CRT target; the six conveniences remain deliberately private and are not a
+blocker. No row asserts a remainder below zero.
 
 ## Release boundary
 

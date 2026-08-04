@@ -22,16 +22,17 @@ intuitionistic arithmetic without extending Peano Lab's object language.
   theorem remains isolated.
 - a checked dependency-curried body is weaker than either status.
 
-The current registry has 409 theorems. Nine strict-HA tranche-01 interfaces
-and 16 K4 gcd/LCM interfaces are public. The campaign evidence now records 126
-theorem receipts: 25 public campaign rows and 101 isolated candidates. Its
+The current registry has 432 theorems. Nine strict-HA tranche-01 interfaces,
+16 K4 gcd/LCM interfaces, and 23 M5 generalized-CRT interfaces are public. The
+campaign evidence records 95 public references, 99 isolated candidates, and
+147 exact receipts across 22 candidate modules and 31 focused test paths. Its
 strict-K3 component remains exactly 74 signed representation, normalization,
 arithmetic, natural-scale, and Bezout-bridge rows across 16 modules. The K4
 remainder consists of three canonical-gcd package rows, one signed-gcd client,
 five canonical-gcd edge rows, and ten relational-LCM convenience rows. The
 definition freeze remains 45 API rows over 44 distinct public theorems, there
-are 72 public references, and the catalog has 410 entries, including 386 at
-`checked_m20`.
+are 95 public references, and the catalog has 433 entries: 23
+`checked_existing`, 409 `checked_m20`, and one `blocked_by_language`.
 
 ## Dependency spine
 
@@ -67,8 +68,11 @@ flowchart TD
     CE --> GP[I public gcd–LCM product]
     LU --> GP
   end
-  GP --> GC[generalized CRT foundation — 8 private rows]
-  GC --> GS[compatibility sufficiency — open]
+  GP --> GC[generalized CRT congruence and necessity]
+  GC --> GS[all-modulus solvability iff gcd compatibility — public]
+  GS --> CL[solution class modulo relational LCM — public]
+  CL --> CB[zero/nonzero canonical boundary — public]
+  GS --> ED[solution or obstruction + raw-input gcd — public]
 ```
 
 The signed representation is parity-interleaved:
@@ -185,20 +189,41 @@ All nine bridge rows A--I are public with their original receipts. The
 compatible-pair certificate has 9,038 nodes at depth 60; the final
 `gcd_lcm_product` certificate has 10,441 nodes at depth 61. Both zero and
 nonzero branches are mutation-audited, every bridge certificate has zero
-`DNE` nodes, and public replay preserves every frozen proof-DAG digest. The
-registry/catalog counts are 409/410, with 386 catalog rows at `checked_m20`.
+`DNE` nodes, and public replay preserves every frozen proof-DAG digest. At the
+K4 admission checkpoint the registry/catalog counts were 409/410, with 386
+catalog rows at `checked_m20`.
 The exact private K4 remainder is 19 rows: three canonical-gcd package rows,
 five edge rows, ten LCM convenience rows, and the signed-gcd client.
 
-The first
-[`generalized-CRT congruence foundation`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py)
-is now closed in isolation. Its eight-row stack reuses the exact existing
-`mod_eq_add_cancel_left` specification and adds seven constructive rows for
-zero modulus, right cancellation, scale/unscale, common-solution comparison,
-gcd-compatibility necessity, and incompatibility obstruction. Two cold
-closures agree and contain zero `DNE`. This is not the full theorem:
-compatibility sufficiency, construction, the solution class modulo relational
-LCM, and canonical bounded representatives remain open.
+The generalized-CRT campaign is now selectively public. The admitted tranche
+is the exact 23-row candidate-factory closure of
+`generalized_binary_crt_solvable_iff`,
+`generalized_binary_crt_canonical_boundary`, and
+`generalized_binary_crt_total_decision`; it occupies runtime indices 409--431.
+This closure contains the constructive all-modulus compatibility criterion,
+the complete solution class modulo relational LCM, exact uniqueness at zero
+LCM, a unique bounded representative at nonzero LCM, compatibility decision,
+the supplied-gcd solution-or-obstruction theorem, and the raw-input endpoint
+that constructs an existential relational gcd. The public-admission gate pins
+the isolated factories, statements, append order, two cold intuitionistic
+receipts, resource limits, and false endpoint mutations.
+
+Exactly six reviewed support or convenience rows remain private:
+`mod_eq_add_cancel_left`, `mod_eq_add_cancel_right`,
+`mod_eq_unscale_nonzero`, `factor_nonzero_right`,
+`is_gcd_nonzero_coprime_quotients`, and
+`generalized_binary_crt_solvable_iff_nonzero`. The runtime/catalog boundary is
+now 432/433. The generated public snapshot has 1,982,360 structural nodes,
+468,010 proof objects, 57,692 structural Cut occurrences, 373 Cut-bearing
+theorems, 1,185 dependency edges, and ordered root
+`4d02dc439d53533e8992a471b26ee34059fb6001f822041e42c56b2cc0a7a079`.
+The synchronized vault has 432 theorem notes, 531 total notes, and 5,377
+resolved links.
+
+The integrated admission gate passes 30 structural and 220 proof/admission
+tests. All 25 browser/deployment contracts pass. The 180-source local browser
+app is sealed as `a-b544a04993a1` (`BUILD=2026-08-04i`); no deployment is
+claimed.
 
 The independent pair/cell design is now frozen in `HA-K3-PAIR-1` using the
 doubled Cantor polynomial and a successor cell tag. This does not close the

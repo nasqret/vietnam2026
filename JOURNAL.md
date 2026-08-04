@@ -4547,3 +4547,39 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   and has SHA-256
   `59d566a0af7a86a36cca7cd02958f27ba244e10871a222c5a4dcf2ccbf94efe4`.
   No deployment or public admission is claimed.
+
+## 2026-08-04 — Generalized-CRT M5 selectively admitted
+
+- Admitted the exact 23-row candidate-factory closure of the three durable M5
+  endpoints: `generalized_binary_crt_solvable_iff`,
+  `generalized_binary_crt_canonical_boundary`, and
+  `generalized_binary_crt_total_decision`. The rows occupy public runtime
+  indices 409--431 in dependency order. This is a selective interface, not a
+  wholesale promotion of every convenience candidate.
+- The retained public surface covers congruence transport and necessity,
+  constructive compatibility sufficiency for all natural moduli, the
+  solvability equivalence, classification modulo relational LCM, the honest
+  zero/nonzero canonical boundary, compatibility decision, supplied-gcd
+  solution-or-obstruction, and the raw-input wrapper that constructs an
+  existential relational gcd. The dedicated admission gate binds every row
+  to its isolated factory and statement digest, checks append order after K4,
+  performs two cold public replays with frozen receipts and zero DNE, and
+  rejects false endpoint mutations.
+- Exactly six rows remain private: `mod_eq_add_cancel_left`,
+  `mod_eq_add_cancel_right`, `mod_eq_unscale_nonzero`,
+  `factor_nonzero_right`, `is_gcd_nonzero_coprime_quotients`, and
+  `generalized_binary_crt_solvable_iff_nonzero`. Thus the campaign now records
+  95 public references, 99 private candidates, 147 exact receipts, 22
+  candidate modules, and 31 focused test paths.
+- The synchronized runtime contains 432 checked theorems. The 433-row catalog
+  consists of 23 `checked_existing`, 409 `checked_m20`, and one
+  `blocked_by_language` row. The regenerated snapshot contains 1,982,360
+  structural nodes, 468,010 proof objects, 57,692 structural Cut occurrences,
+  373 Cut-bearing theorems, and 1,185 dependency edges. Its ordered root is
+  `4d02dc439d53533e8992a471b26ee34059fb6001f822041e42c56b2cc0a7a079`.
+- The synchronized knowledge vault contains 432 theorem notes, 531 total
+  notes, and 5,377 resolved links.
+- The integrated admission gate passes 30 structural and 220
+  proof/admission tests. All 25 browser/deployment contracts pass. The
+  regenerated 180-source local browser app is sealed as `a-b544a04993a1`
+  (`BUILD=2026-08-04i`); it has not been deployed.

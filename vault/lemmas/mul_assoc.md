@@ -51,6 +51,8 @@ forall n m k. (n * m) * k = n * (m * k)
 - [[is_lcm_scale_nonzero]]
 - [[balanced_bezout_cancel_gcd]]
 - [[gcd_lcm_compatible_exists]]
+- [[mod_eq_scale]]
+- [[is_gcd_quotients_coprime_nonzero]]
 
 ## Verification record
 

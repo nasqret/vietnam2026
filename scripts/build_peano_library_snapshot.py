@@ -46,6 +46,7 @@ from peano_lab.library.theorems import (  # noqa: E402
     GAUSS_SIGN_BRIDGE_THEOREMS,
     GAUSS_HALF_RANGE_THEOREMS,
     HA_NUMBER_THEORY_K4_GCD_LCM_THEOREMS,
+    HA_NUMBER_THEORY_M5_GENERALIZED_CRT_THEOREMS,
     HA_NUMBER_THEORY_TRANCHE01_THEOREMS,
     MOD5_THEOREMS,
     PARITY_THEOREMS,
@@ -87,6 +88,13 @@ THEOREM_SOURCES = (
     PY_ROOT / "peano_lab" / "library" / "ha_modular_inverse_candidate.py",
     PY_ROOT / "peano_lab" / "library" / "ha_relational_lcm_candidate.py",
     PY_ROOT / "peano_lab" / "library" / "ha_lcm_totality_bridge_candidate.py",
+    PY_ROOT / "peano_lab" / "library" / "ha_generalized_crt_congruence_candidate.py",
+    PY_ROOT / "peano_lab" / "library" / "ha_generalized_crt_sufficiency_candidate.py",
+    PY_ROOT / "peano_lab" / "library" / "ha_generalized_crt_zero_boundary_candidate.py",
+    PY_ROOT / "peano_lab" / "library" / "ha_generalized_crt_classification_candidate.py",
+    PY_ROOT / "peano_lab" / "library" / "ha_generalized_crt_canonical_boundary_candidate.py",
+    PY_ROOT / "peano_lab" / "library" / "ha_generalized_crt_decision_candidate.py",
+    PY_ROOT / "peano_lab" / "library" / "ha_generalized_crt_total_decision_candidate.py",
 )
 
 
@@ -372,6 +380,7 @@ def build_payloads() -> dict[str, str]:
         for spec in (
             HA_NUMBER_THEORY_TRANCHE01_THEOREMS
             + HA_NUMBER_THEORY_K4_GCD_LCM_THEOREMS
+            + HA_NUMBER_THEORY_M5_GENERALIZED_CRT_THEOREMS
         )
     }
 

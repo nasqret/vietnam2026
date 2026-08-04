@@ -24,6 +24,7 @@ forall a b c. a + b = a + c -> b = c
 - [[remainder_unique_same_quotient]]
 - [[division_remainder_unique]]
 - [[beta_range_injective]]
+- [[mod_eq_ordered_gap_multiple]]
 
 ## Verification record
 

@@ -2015,3 +2015,28 @@
   2,325 HTML pages; its byte-identical explicit/defined explorer trees contain
   2,285 files, and the 2,493-file HTML tree has SHA-256
   `59d566a0af7a86a36cca7cd02958f27ba244e10871a222c5a4dcf2ccbf94efe4`.
+- **Generalized-CRT M5 selective public admission (2026-08-04):** the exact
+  23-row candidate-factory closure of `generalized_binary_crt_solvable_iff`,
+  `generalized_binary_crt_canonical_boundary`, and
+  `generalized_binary_crt_total_decision` is now public at ordered runtime
+  indices 409--431. This admits the constructive solvability criterion, the
+  complete solution class and zero/nonzero canonical boundary, and the
+  executable solution-or-obstruction interface with an existential relational
+  gcd. It deliberately leaves exactly six private rows:
+  `mod_eq_add_cancel_left`, `mod_eq_add_cancel_right`,
+  `mod_eq_unscale_nonzero`, `factor_nonzero_right`,
+  `is_gcd_nonzero_coprime_quotients`, and
+  `generalized_binary_crt_solvable_iff_nonzero`. The runtime now has 432
+  theorems and the catalog has 433 rows: 23 `checked_existing`, 409
+  `checked_m20`, and one `blocked_by_language`. Campaign accounting is 95
+  public references, 99 private candidates, 147 receipts, 22 candidate
+  modules, and 31 focused test paths. The regenerated public snapshot has
+  1,982,360 structural nodes, 468,010 proof objects, 57,692 structural Cut
+  occurrences, 373 Cut-bearing theorems, 1,185 dependency edges, and ordered
+  root
+  `4d02dc439d53533e8992a471b26ee34059fb6001f822041e42c56b2cc0a7a079`.
+  The synchronized vault has 432 theorem notes, 531 total notes, and 5,377
+  resolved links. The integrated admission gates pass 30 structural and 220
+  proof/admission tests, while all 25 browser/deployment contracts pass. The
+  180-source local browser app is sealed as `a-b544a04993a1`
+  (`BUILD=2026-08-04i`); no deployment is claimed.

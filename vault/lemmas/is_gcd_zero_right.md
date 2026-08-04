@@ -21,6 +21,8 @@ forall a. (((exists x. a = a * x) /\ (exists y. 0 = a * y)) /\ forall c. (exists
 ## Checked dependents
 
 - [[gcd_balanced_bezout_exists_up_to]]
+- [[generalized_binary_crt_sufficient_zero_left]]
+- [[generalized_binary_crt_sufficient_zero_right]]
 
 ## Verification record
 

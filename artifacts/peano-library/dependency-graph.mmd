@@ -409,6 +409,29 @@ flowchart TD
   lcm_exists_relational[lcm_exists_relational]
   canonical_lcm_exists_unique[canonical_lcm_exists_unique]
   gcd_lcm_product[gcd_lcm_product]
+  mod_eq_zero_iff_eq[mod_eq_zero_iff_eq]
+  mod_eq_scale[mod_eq_scale]
+  crt_solution_pair_congruent[crt_solution_pair_congruent]
+  crt_common_solution_implies_gcd_compatible[crt_common_solution_implies_gcd_compatible]
+  crt_incompatibility_obstructs_solution[crt_incompatibility_obstructs_solution]
+  is_gcd_quotients_coprime_nonzero[is_gcd_quotients_coprime_nonzero]
+  mod_eq_common_remainder_decomposition[mod_eq_common_remainder_decomposition]
+  crt_scaled_common_remainder_lift[crt_scaled_common_remainder_lift]
+  generalized_binary_crt_sufficient_nonzero[generalized_binary_crt_sufficient_nonzero]
+  generalized_binary_crt_sufficient_zero_left[generalized_binary_crt_sufficient_zero_left]
+  generalized_binary_crt_sufficient_zero_right[generalized_binary_crt_sufficient_zero_right]
+  generalized_binary_crt_sufficient[generalized_binary_crt_sufficient]
+  generalized_binary_crt_solvable_iff[generalized_binary_crt_solvable_iff]
+  mod_eq_ordered_gap_multiple[mod_eq_ordered_gap_multiple]
+  mod_eq_lcm_merge[mod_eq_lcm_merge]
+  mod_eq_lcm_iff_pair[mod_eq_lcm_iff_pair]
+  crt_solution_class_iff_lcm[crt_solution_class_iff_lcm]
+  crt_solution_unique_lcm_zero[crt_solution_unique_lcm_zero]
+  crt_solution_canonical_remainder_nonzero[crt_solution_canonical_remainder_nonzero]
+  generalized_binary_crt_canonical_boundary[generalized_binary_crt_canonical_boundary]
+  mod_eq_decidable[mod_eq_decidable]
+  generalized_binary_crt_solution_or_obstruction[generalized_binary_crt_solution_or_obstruction]
+  generalized_binary_crt_total_decision[generalized_binary_crt_total_decision]
   zero_add --> add_comm
   add_succ_left --> add_comm
   add_comm --> mul_succ_left
@@ -1511,3 +1534,86 @@ flowchart TD
   gcd_lcm_compatible_exists --> gcd_lcm_product
   is_gcd_unique --> gcd_lcm_product
   is_lcm_unique --> gcd_lcm_product
+  mul_zero_left --> mod_eq_zero_iff_eq
+  mul_add --> mod_eq_scale
+  mul_assoc --> mod_eq_scale
+  mod_eq_symm --> crt_solution_pair_congruent
+  mod_eq_trans --> crt_solution_pair_congruent
+  is_gcd_dvd_left --> crt_common_solution_implies_gcd_compatible
+  is_gcd_dvd_right --> crt_common_solution_implies_gcd_compatible
+  mod_eq_of_mod_eq_multiple --> crt_common_solution_implies_gcd_compatible
+  mod_eq_symm --> crt_common_solution_implies_gcd_compatible
+  mod_eq_trans --> crt_common_solution_implies_gcd_compatible
+  crt_common_solution_implies_gcd_compatible --> crt_incompatibility_obstructs_solution
+  is_gcd_greatest --> is_gcd_quotients_coprime_nonzero
+  mul_assoc --> is_gcd_quotients_coprime_nonzero
+  mul_one --> is_gcd_quotients_coprime_nonzero
+  mul_left_cancel_nonzero --> is_gcd_quotients_coprime_nonzero
+  divisor_one --> is_gcd_quotients_coprime_nonzero
+  division_remainder_exists --> mod_eq_common_remainder_decomposition
+  remainder_decomposition_to_mod_eq --> mod_eq_common_remainder_decomposition
+  mod_eq_symm --> mod_eq_common_remainder_decomposition
+  mod_eq_trans --> mod_eq_common_remainder_decomposition
+  mod_eq_to_remainder_decomposition --> mod_eq_common_remainder_decomposition
+  mul_comm --> mod_eq_common_remainder_decomposition
+  binary_crt --> crt_scaled_common_remainder_lift
+  mod_eq_scale --> crt_scaled_common_remainder_lift
+  mod_eq_refl --> crt_scaled_common_remainder_lift
+  mod_eq_add --> crt_scaled_common_remainder_lift
+  is_gcd_dvd_left --> generalized_binary_crt_sufficient_nonzero
+  is_gcd_dvd_right --> generalized_binary_crt_sufficient_nonzero
+  mul_zero_left --> generalized_binary_crt_sufficient_nonzero
+  is_gcd_quotients_coprime_nonzero --> generalized_binary_crt_sufficient_nonzero
+  mod_eq_common_remainder_decomposition --> generalized_binary_crt_sufficient_nonzero
+  crt_scaled_common_remainder_lift --> generalized_binary_crt_sufficient_nonzero
+  is_gcd_symm --> generalized_binary_crt_sufficient_zero_left
+  is_gcd_zero_right --> generalized_binary_crt_sufficient_zero_left
+  is_gcd_unique --> generalized_binary_crt_sufficient_zero_left
+  mod_eq_refl --> generalized_binary_crt_sufficient_zero_left
+  is_gcd_zero_right --> generalized_binary_crt_sufficient_zero_right
+  is_gcd_unique --> generalized_binary_crt_sufficient_zero_right
+  mod_eq_symm --> generalized_binary_crt_sufficient_zero_right
+  mod_eq_refl --> generalized_binary_crt_sufficient_zero_right
+  eq_decidable --> generalized_binary_crt_sufficient
+  generalized_binary_crt_sufficient_zero_left --> generalized_binary_crt_sufficient
+  generalized_binary_crt_sufficient_zero_right --> generalized_binary_crt_sufficient
+  generalized_binary_crt_sufficient_nonzero --> generalized_binary_crt_sufficient
+  crt_common_solution_implies_gcd_compatible --> generalized_binary_crt_solvable_iff
+  generalized_binary_crt_sufficient --> generalized_binary_crt_solvable_iff
+  add_comm --> mod_eq_ordered_gap_multiple
+  add_assoc --> mod_eq_ordered_gap_multiple
+  add_left_cancel --> mod_eq_ordered_gap_multiple
+  factor_difference --> mod_eq_ordered_gap_multiple
+  le_total --> mod_eq_lcm_merge
+  mod_eq_symm --> mod_eq_lcm_merge
+  mod_eq_ordered_gap_multiple --> mod_eq_lcm_merge
+  is_lcm_least --> mod_eq_lcm_merge
+  mul_comm --> mod_eq_lcm_merge
+  remainder_decomposition_to_mod_eq --> mod_eq_lcm_merge
+  is_lcm_multiple_left --> mod_eq_lcm_iff_pair
+  is_lcm_multiple_right --> mod_eq_lcm_iff_pair
+  mod_eq_of_mod_eq_multiple --> mod_eq_lcm_iff_pair
+  mod_eq_lcm_merge --> mod_eq_lcm_iff_pair
+  crt_solution_pair_congruent --> crt_solution_class_iff_lcm
+  mod_eq_lcm_iff_pair --> crt_solution_class_iff_lcm
+  mod_eq_trans --> crt_solution_class_iff_lcm
+  crt_solution_class_iff_lcm --> crt_solution_unique_lcm_zero
+  mod_eq_zero_iff_eq --> crt_solution_unique_lcm_zero
+  division_remainder_exists --> crt_solution_canonical_remainder_nonzero
+  mul_comm --> crt_solution_canonical_remainder_nonzero
+  remainder_decomposition_to_mod_eq --> crt_solution_canonical_remainder_nonzero
+  mod_eq_symm --> crt_solution_canonical_remainder_nonzero
+  crt_solution_class_iff_lcm --> crt_solution_canonical_remainder_nonzero
+  mod_eq_bounded_unique --> crt_solution_canonical_remainder_nonzero
+  eq_decidable --> generalized_binary_crt_canonical_boundary
+  generalized_binary_crt_sufficient --> generalized_binary_crt_canonical_boundary
+  crt_solution_unique_lcm_zero --> generalized_binary_crt_canonical_boundary
+  crt_solution_canonical_remainder_nonzero --> generalized_binary_crt_canonical_boundary
+  eq_decidable --> mod_eq_decidable
+  mod_eq_zero_iff_eq --> mod_eq_decidable
+  mod_eq_decidable_nonzero --> mod_eq_decidable
+  mod_eq_decidable --> generalized_binary_crt_solution_or_obstruction
+  generalized_binary_crt_sufficient --> generalized_binary_crt_solution_or_obstruction
+  crt_incompatibility_obstructs_solution --> generalized_binary_crt_solution_or_obstruction
+  gcd_exists_relational --> generalized_binary_crt_total_decision
+  generalized_binary_crt_solution_or_obstruction --> generalized_binary_crt_total_decision

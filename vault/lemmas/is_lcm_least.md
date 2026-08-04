@@ -19,7 +19,7 @@ forall l a b c. ((((exists hlcm_left_factor_least. l = a * hlcm_left_factor_leas
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[mod_eq_lcm_merge]]
 
 ## Verification record
 

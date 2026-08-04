@@ -32,6 +32,8 @@ forall n. 0 * n = 0
 - [[prime_three]]
 - [[beta_half_range_entry_bounds]]
 - [[gcd_zero_inputs]]
+- [[mod_eq_zero_iff_eq]]
+- [[generalized_binary_crt_sufficient_nonzero]]
 
 ## Verification record
 

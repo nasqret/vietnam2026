@@ -163,6 +163,48 @@ THEOREM_SOURCES = (
     / "peano_lab"
     / "library"
     / "ha_lcm_totality_bridge_candidate.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "ha_generalized_crt_congruence_candidate.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "ha_generalized_crt_sufficiency_candidate.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "ha_generalized_crt_zero_boundary_candidate.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "ha_generalized_crt_classification_candidate.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "ha_generalized_crt_canonical_boundary_candidate.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "ha_generalized_crt_decision_candidate.py",
+    REPO
+    / "peano-lab"
+    / "py"
+    / "peano_lab"
+    / "library"
+    / "ha_generalized_crt_total_decision_candidate.py",
 )
 OUTPUT = REPO / "book" / "arithmetic-library" / "theorem-atlas.md"
 

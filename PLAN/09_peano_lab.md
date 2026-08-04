@@ -819,9 +819,14 @@ The theorem-ladder extension is tracked independently in
 [`PLAN/10_arithmetic_library.md`](10_arithmetic_library.md). Its first release
 kept the kernel and object language fixed, expanded divisibility and residue
 notions into ordinary formulas, and organized factorization targets by their
-actual dependencies. The reconciled runtime now contains 409 unique checked
+actual dependencies. The reconciled runtime now contains 432 unique checked
 theorems: the 384-theorem quadratic-reciprocity foundation checkpoint followed
-by 25 strict-HA canonical, gcd, and LCM interfaces.
+by 48 strict-HA canonical, gcd, LCM, and generalized-CRT interfaces. The
+selective M5 append occupies indices 409--431 and contains the exact 23-row
+closure of unrestricted solvability, relational-LCM solution classification,
+the zero/nonzero canonical boundary, and raw-input constructive decision. Six
+reviewed M5 convenience rows remain private, and the frozen first-247 model
+prefix is unchanged.
 Quotient-remainder existence and uniqueness, relational gcd,
 balanced-natural Bézout, Gauss cancellation, constructive primality search,
 prime-divisor existence, Euclid's lemma, prime unboundedness, CRT, and
@@ -843,12 +848,16 @@ unchanged. The untrusted `use` and live-proof resource gates now admit at most
 This admits shared campaign certificates while preserving the former
 worst-case object count; exact one-past boundaries fail transactionally.
 
-The synchronized catalog has 410 entries: 23 baseline checked, 386
+The synchronized catalog has 433 entries: 23 baseline checked, 409
 post-baseline checked, no planned entries, and one representation-blocked
 conventional integer-coefficient Bézout interface. A separate pinned Lean
-companion checks conventional list-based FTA up to permutation. The adjacent
-eight-row generalized-CRT foundation is closed but private and does not yet
-prove compatible-system sufficiency. Current test,
+companion checks conventional list-based FTA up to permutation. The generated
+432-theorem snapshot has 1,185 dependency edges, 1,982,360 structural nodes,
+468,010 distinct proof objects, 57,692 structural Cut occurrences, and 373
+Cut-bearing certificates; its ordered root is
+`4d02dc439d53533e8992a471b26ee34059fb6001f822041e42c56b2cc0a7a079`.
+The synchronized vault has 432 theorem notes, 531 total notes, and 5,377 links.
+Current test,
 corpus, snapshot, book, vault, and local-browser identifiers are recorded in
 the latest journal checkpoint; production remains untouched.
 

@@ -19,7 +19,7 @@ forall l a b. ((((exists hlcm_left_factor_projection_right. l = a * hlcm_left_fa
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[mod_eq_lcm_iff_pair]]
 
 ## Verification record
 

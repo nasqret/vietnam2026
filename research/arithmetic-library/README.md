@@ -20,9 +20,8 @@ arithmetic library. Start with:
   the literal-safe relational LCM interface, canonical gcd edge laws, and the
   checked constructive route through LCM totality and the gcd--LCM product;
 - [`ha-generalized-crt-rfc-v1.md`](ha-generalized-crt-rfc-v1.md): the
-  constructive eight-row generalized-CRT congruence foundation, including
-  gcd-compatibility necessity, obstruction, and the explicit open sufficiency
-  boundary;
+  constructive 29-row reviewed generalized-CRT stack, its exact selective
+  23-row public closure, and the six retained private convenience rows;
 - [`ha-canonical-pair-cell-rfc-v1.md`](ha-canonical-pair-cell-rfc-v1.md):
   the selected doubled-Cantor pair and successor-tagged cell definitions,
   injectivity ladder, and the explicit blocker on pretending that pairing
@@ -33,14 +32,14 @@ arithmetic library. Start with:
 Run `make ha-number-theory-check` from the repository root for the fast
 campaign-manifest, 45-row definition-freeze validation with 44 distinct public
 theorem replays, candidate-body, and empty-context receipt checks. The campaign
-evidence now comprises 126 statement hashes and exact closure receipts: 25
-deliberately admitted campaign theorems and 101 isolated candidates. Those
+evidence now comprises 95 public references, 99 isolated candidates, and 147
+exact receipts across 22 candidate modules and 31 focused test paths. The
 candidates comprise three canonical-gcd package rows, 74 strict-K3
 signed parity, decoder, code-extensionality, balance-normalization, negation,
 addition, complete D06 multiplication-algebra, D07 natural-scale, and D08
 Bezout-bridge rows, one K4 signed-gcd client, five canonical-gcd edge rows,
-ten residual relational-LCM convenience rows, and the eight-row generalized
-CRT foundation. The D06
+ten residual relational-LCM convenience rows, and six generalized-CRT
+convenience rows. The D06
 closure ends with the four-row
 [`SignedMul` associativity candidate](../../peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py)
 and seven-row
@@ -94,24 +93,27 @@ identity. This is a K4 route and does not change the strict 74-row K3 digest.
 The later selective admission enrolls exactly LCM rows L01--L07 and all bridge
 rows A--I, preserving their original receipts.
 
-The public registry now has 409 entries and 72 campaign public references.
-The research catalog has 410 entries, including 386 at `checked_m20`; the
+The public registry now has 432 entries and 95 campaign public references.
+The research catalog has 433 entries, including 409 at `checked_m20`; the
 definition freeze remains 45 API rows over 44 distinct public theorems. The
 private K4 remainder is exactly 19 rows: three canonical-gcd package rows,
 five canonical-gcd edge rows, ten LCM convenience rows, and the signed-gcd
 client. Passing a candidate gate still never enrolls those rows.
 
-The eight-row
-[`generalized-CRT foundation`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py)
-reuses the exact existing `mod_eq_add_cancel_left` candidate and adds seven
-new constructive rows. It proves congruence scaling and cancellation, common
-solution comparison, the necessity of residue compatibility modulo a
-relational gcd, and the resulting incompatibility obstruction. Two cold
-closures agree and contain zero `DNE`. All eight remain isolated; the converse
-solution construction, solution class modulo relational LCM, and canonical
-representative are honest remaining work.
+The reviewed generalized-CRT stack begins with the
+[`congruence foundation`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py)
+and continues through nonzero and zero-boundary sufficiency, relational-LCM
+classification, the honest canonical boundary, and constructive decision.
+The selective admission enrolls the exact 23-row dependency closure of
+`generalized_binary_crt_solvable_iff`,
+`generalized_binary_crt_canonical_boundary`, and
+`generalized_binary_crt_total_decision` at public indices 409--431. Its focused
+audits contain zero `DNE`. Six convenience rows remain closed and private:
+the reused `mod_eq_add_cancel_left`, right cancellation, nonzero unscaling,
+right-factor nonzeroness, packaged nonzero gcd cofactors, and the redundant
+nonzero-only solvability iff.
 
-The current runtime contains 409 checked entries. The factorization tranche
+The current runtime contains 432 checked entries. The factorization tranche
 is fully synchronized. The exact native β-coded endpoints are checked
 from the empty context:
 
@@ -147,7 +149,8 @@ complete.
 
 The 137-entry quadratic-reciprocity public checkpoint remains intact, followed
 by the nine public canonical remainder/congruence/modular-inverse interfaces
-from strict-HA tranche 01 and the 16 public K4 gcd/LCM interfaces. The reciprocity
+from strict-HA tranche 01, the 16 public K4 gcd/LCM interfaces, and the 23 public
+M5 generalized-CRT interfaces. The reciprocity
 checkpoint: parity and modulo-four facts, constructive quadratic-residue
 decision, constant and interval prefixes, relational powers, β-coded finite
 sums, constructive finite permutation completeness, replacement balance, and

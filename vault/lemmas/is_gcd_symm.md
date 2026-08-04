@@ -19,7 +19,7 @@ forall g a b. (((exists x. a = g * x) /\ (exists y. b = g * y)) /\ forall c. (ex
 
 ## Checked dependents
 
-- No checked theorem currently depends on this node.
+- [[generalized_binary_crt_sufficient_zero_left]]
 
 ## Verification record
 

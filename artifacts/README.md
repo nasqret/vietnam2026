@@ -166,12 +166,15 @@ fine-tuning awaits the pretrained-base baseline.
 
 ## Peano foundational arithmetic snapshot
 
-[`peano-library/`](peano-library/) is the deterministic snapshot of all 409
+[`peano-library/`](peano-library/) is the deterministic snapshot of all 432
 checked Peano library entries. Its internal snapshot-v3 schema contains
 statement/script/certificate hashes, exact structural, depth, distinct-object,
 and Cut metrics, an ordered root digest, and the dependency DAG in Mermaid
-form. The current snapshot totals 1,875,400 structural occurrences and 54,582
-Cuts across 350 Cut-bearing entries. `fundamental_theorem_of_arithmetic` is
+form. The current snapshot totals 1,982,360 structural occurrences, 468,010
+distinct proof objects, and 57,692 structural Cut occurrences across 373
+Cut-bearing entries, with 1,185 dependency edges and ordered root
+`4d02dc439d53533e8992a471b26ee34059fb6001f822041e42c56b2cc0a7a079`.
+`fundamental_theorem_of_arithmetic` is
 largest at 73,767 occurrences and reaches depth 99; its shared in-memory graph
 contains 8,701 distinct proof objects.
 The 137-entry quadratic-residue foundation adds parity and modulo-four algebra,
@@ -182,8 +185,13 @@ and exact swap-last product invariance. It is a checked campaign checkpoint,
 not yet a proof of quadratic reciprocity.
 The separate unregistered campaign sources now contain a dependency-curried
 kernel-checked body for the exact combined law, documented in the Jupyter Book.
-It is intentionally absent from this 409-theorem artifact until its recursive
+It is intentionally absent from this 432-theorem artifact until its recursive
 WMI closure, mutation, capacity, and receipt-pinned admission gates pass.
+The 23-entry selective M5 tranche is present at indices 409--431. It exposes
+the unrestricted generalized-CRT solvability criterion, relational-LCM
+solution classification, the correct zero/nonzero canonical boundary, and the
+raw-input solution-or-obstruction endpoint. Six reviewed M5 convenience rows
+remain outside the public snapshot.
 The latest checked tranches add the full additive/multiplicative compatibility
 layer for balanced congruence, the five expanded decoded-value theorems from
 `beta_modulus_nonzero` through `beta_at_exists_unique`, and the directed
@@ -210,8 +218,8 @@ Rebuild or verify it with
 
 The snapshot is evidence about replayed certificates, not a theorem database
 trusted by the kernel. The broader checked/planned/blocked research graph lives
-in `research/arithmetic-library/catalog.json`; it currently has 410 nodes: 23
-`checked_existing`, 386 `checked_m20`, no planned entries, and one
+in `research/arithmetic-library/catalog.json`; it currently has 433 nodes: 23
+`checked_existing`, 409 `checked_m20`, no planned entries, and one
 language-blocked conventional interface.
 
 ## Quadratic-reciprocity reading artifact

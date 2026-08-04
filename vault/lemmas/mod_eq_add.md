@@ -24,6 +24,7 @@ forall m a b c d. (exists u v. a + m * u = b + m * v) -> (exists r s. c + m * r 
 - [[binary_crt]]
 - [[beta_sum_pointwise_mod_congruent]]
 - [[coprime_mod_inverse]]
+- [[crt_scaled_common_remainder_lift]]
 
 ## Verification record
 

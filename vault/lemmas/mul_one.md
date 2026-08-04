@@ -31,6 +31,7 @@ forall n. n * 1 = n
 - [[predecessor_square_mod_one]]
 - [[bounded_mod_inverse_unique]]
 - [[balanced_bezout_cancel_gcd]]
+- [[is_gcd_quotients_coprime_nonzero]]
 
 ## Verification record
 

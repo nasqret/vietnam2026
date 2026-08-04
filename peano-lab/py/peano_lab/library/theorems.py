@@ -97,6 +97,27 @@ from .ha_relational_lcm_candidate import (
 from .ha_lcm_totality_bridge_candidate import (
     make_ha_lcm_totality_bridge_candidate_theorems,
 )
+from .ha_generalized_crt_congruence_candidate import (
+    make_ha_generalized_crt_congruence_candidate_theorems,
+)
+from .ha_generalized_crt_sufficiency_candidate import (
+    make_ha_generalized_crt_sufficiency_candidate_theorems,
+)
+from .ha_generalized_crt_zero_boundary_candidate import (
+    make_ha_generalized_crt_zero_boundary_candidate_theorems,
+)
+from .ha_generalized_crt_classification_candidate import (
+    make_ha_generalized_crt_classification_candidate_theorems,
+)
+from .ha_generalized_crt_canonical_boundary_candidate import (
+    make_ha_generalized_crt_canonical_boundary_candidate_theorems,
+)
+from .ha_generalized_crt_decision_candidate import (
+    make_ha_generalized_crt_decision_candidate_theorems,
+)
+from .ha_generalized_crt_total_decision_candidate import (
+    make_ha_generalized_crt_total_decision_candidate_theorems,
+)
 
 
 class LibraryError(ValueError):
@@ -11213,6 +11234,59 @@ HA_NUMBER_THEORY_K4_GCD_LCM_THEOREMS: tuple[TheoremSpec, ...] = (
 THEOREMS = _merge_compatible_theorems(
     THEOREMS,
     HA_NUMBER_THEORY_K4_GCD_LCM_THEOREMS,
+)
+
+# Strict-HA number-theory campaign M5 generalized-CRT admission.  This is the
+# exact dependency closure of three principal interfaces: the conventional
+# solvability criterion, relational-LCM solution classification and canonical
+# boundary, and the raw-input decision endpoint.  Six unused convenience rows
+# remain a separate reviewed candidate tranche.
+_HA_GENERALIZED_CRT_PUBLIC_NAMES = (
+    "mod_eq_zero_iff_eq",
+    "mod_eq_scale",
+    "crt_solution_pair_congruent",
+    "crt_common_solution_implies_gcd_compatible",
+    "crt_incompatibility_obstructs_solution",
+    "is_gcd_quotients_coprime_nonzero",
+    "mod_eq_common_remainder_decomposition",
+    "crt_scaled_common_remainder_lift",
+    "generalized_binary_crt_sufficient_nonzero",
+    "generalized_binary_crt_sufficient_zero_left",
+    "generalized_binary_crt_sufficient_zero_right",
+    "generalized_binary_crt_sufficient",
+    "generalized_binary_crt_solvable_iff",
+    "mod_eq_ordered_gap_multiple",
+    "mod_eq_lcm_merge",
+    "mod_eq_lcm_iff_pair",
+    "crt_solution_class_iff_lcm",
+    "crt_solution_unique_lcm_zero",
+    "crt_solution_canonical_remainder_nonzero",
+    "generalized_binary_crt_canonical_boundary",
+    "mod_eq_decidable",
+    "generalized_binary_crt_solution_or_obstruction",
+    "generalized_binary_crt_total_decision",
+)
+_HA_GENERALIZED_CRT_REVIEWED_SPECS: tuple[TheoremSpec, ...] = (
+    *make_ha_generalized_crt_congruence_candidate_theorems(TheoremSpec),
+    *make_ha_generalized_crt_sufficiency_candidate_theorems(TheoremSpec),
+    *make_ha_generalized_crt_zero_boundary_candidate_theorems(TheoremSpec),
+    *make_ha_generalized_crt_classification_candidate_theorems(TheoremSpec),
+    *make_ha_generalized_crt_canonical_boundary_candidate_theorems(TheoremSpec),
+    *make_ha_generalized_crt_decision_candidate_theorems(TheoremSpec),
+    *make_ha_generalized_crt_total_decision_candidate_theorems(TheoremSpec),
+)
+HA_NUMBER_THEORY_M5_GENERALIZED_CRT_THEOREMS: tuple[TheoremSpec, ...] = tuple(
+    spec
+    for spec in _HA_GENERALIZED_CRT_REVIEWED_SPECS
+    if spec.name in _HA_GENERALIZED_CRT_PUBLIC_NAMES
+)
+if tuple(
+    spec.name for spec in HA_NUMBER_THEORY_M5_GENERALIZED_CRT_THEOREMS
+) != _HA_GENERALIZED_CRT_PUBLIC_NAMES:
+    raise LibraryError("unexpected generalized-CRT public admission surface")
+THEOREMS = _merge_compatible_theorems(
+    THEOREMS,
+    HA_NUMBER_THEORY_M5_GENERALIZED_CRT_THEOREMS,
 )
 
 

@@ -20,6 +20,7 @@ forall n m. n <= m \/ m <= n
 ## Checked dependents
 
 - [[division_remainder_unique]]
+- [[mod_eq_lcm_merge]]
 
 ## Verification record
 

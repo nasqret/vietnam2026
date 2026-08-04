@@ -39,6 +39,17 @@ EXPECTED_NAMES = (
     "generalized_binary_crt_sufficient_nonzero",
     "generalized_binary_crt_solvable_iff_nonzero",
 )
+ADMITTED_NAMES = (
+    "is_gcd_quotients_coprime_nonzero",
+    "mod_eq_common_remainder_decomposition",
+    "crt_scaled_common_remainder_lift",
+    "generalized_binary_crt_sufficient_nonzero",
+)
+RESIDUAL_PRIVATE_NAMES = (
+    "factor_nonzero_right",
+    "is_gcd_nonzero_coprime_quotients",
+    "generalized_binary_crt_solvable_iff_nonzero",
+)
 EXPECTED_DEPENDENCIES = {
     "factor_nonzero_right": ("factor_nonzero_left", "mul_comm"),
     "is_gcd_quotients_coprime_nonzero": (
@@ -163,6 +174,26 @@ def _prior_specs() -> tuple[TheoremSpec, ...]:
 @lru_cache(maxsize=1)
 def _candidate_specs() -> tuple[TheoremSpec, ...]:
     return make_ha_generalized_crt_sufficiency_candidate_theorems(TheoremSpec)
+
+
+def _assert_public_private_boundary() -> None:
+    reviewed = {item.name: item for item in _candidate_specs()}
+    assert set(reviewed) == set(ADMITTED_NAMES) | set(RESIDUAL_PRIVATE_NAMES)
+    assert set(ADMITTED_NAMES).isdisjoint(RESIDUAL_PRIVATE_NAMES)
+    public = _specs_by_name()
+    admitted = tuple(
+        item
+        for item in theorem_registry.HA_NUMBER_THEORY_M5_GENERALIZED_CRT_THEOREMS
+        if item.name in ADMITTED_NAMES
+    )
+
+    assert admitted == tuple(reviewed[name] for name in ADMITTED_NAMES)
+    assert all(public[name] == reviewed[name] for name in ADMITTED_NAMES)
+    assert all(name not in public for name in RESIDUAL_PRIVATE_NAMES)
+    assert all(
+        name not in {item.name for item in admitted}
+        for name in RESIDUAL_PRIVATE_NAMES
+    )
 
 
 def _available_specs() -> dict[str, TheoremSpec]:
@@ -312,7 +343,7 @@ def _cold_closed_receipts():
     return receipts
 
 
-def test_sufficiency_factory_is_exact_ordered_and_isolated() -> None:
+def test_sufficiency_factory_has_exact_public_private_boundary() -> None:
     first = _candidate_specs()
     second = make_ha_generalized_crt_sufficiency_candidate_theorems(TheoremSpec)
     assert second == first
@@ -324,8 +355,7 @@ def test_sufficiency_factory_is_exact_ordered_and_isolated() -> None:
     assert {
         item.name: sha256(repr(item.script).encode()).hexdigest() for item in first
     } == EXPECTED_SCRIPT_REPR_SHA256
-    assert all(item.name not in _specs_by_name() for item in first)
-    assert not hasattr(theorem_registry, "GENERALIZED_CRT_SUFFICIENCY_THEOREMS")
+    _assert_public_private_boundary()
 
 
 def test_sufficiency_contracts_are_closed_native_and_bounded() -> None:
@@ -420,7 +450,7 @@ def test_sufficiency_empty_context_closures_are_deterministic() -> None:
     second = _cold_closed_receipts()
     assert first == EXPECTED_CLOSED_RECEIPTS
     assert second == first
-    assert all(item.name not in _specs_by_name() for item in _candidate_specs())
+    _assert_public_private_boundary()
 
 
 def test_sufficiency_bounded_semantics() -> None:

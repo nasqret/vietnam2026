@@ -37,6 +37,10 @@ forall m a b c. (exists u v. a + m * u = b + m * v) -> (exists r s. b + m * r = 
 - [[canonical_remainders_characterize_mod_eq]]
 - [[bounded_mod_inverse_unique]]
 - [[coprime_bounded_mod_inverse]]
+- [[crt_solution_pair_congruent]]
+- [[crt_common_solution_implies_gcd_compatible]]
+- [[mod_eq_common_remainder_decomposition]]
+- [[crt_solution_class_iff_lcm]]
 
 ## Verification record
 

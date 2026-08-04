@@ -28,6 +28,7 @@ forall d. (exists y. 1 = d * y) -> d = 1
 - [[beta_nonempty_all_prime_product_ne_one]]
 - [[mod_inverse_implies_coprime]]
 - [[balanced_bezout_one_implies_coprime]]
+- [[is_gcd_quotients_coprime_nonzero]]
 
 ## Verification record
 

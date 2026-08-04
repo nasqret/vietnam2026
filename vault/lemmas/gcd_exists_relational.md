@@ -22,6 +22,7 @@ forall a b. exists d. (((exists x. a = d * x) /\ (exists y. b = d * y)) /\ foral
 
 - [[euclid_prime_dvd_product]]
 - [[prime_coprime_or_divides]]
+- [[generalized_binary_crt_total_decision]]
 
 ## Verification record
 

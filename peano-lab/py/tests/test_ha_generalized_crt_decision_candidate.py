@@ -40,6 +40,7 @@ EXPECTED_NAMES = (
     "mod_eq_decidable",
     "generalized_binary_crt_solution_or_obstruction",
 )
+ADMITTED_NAMES = EXPECTED_NAMES
 EXPECTED_DEPENDENCIES = {
     "mod_eq_decidable": (
         "eq_decidable",
@@ -100,6 +101,19 @@ def _zero_boundary_specs() -> tuple[TheoremSpec, ...]:
 @lru_cache(maxsize=1)
 def _candidate_specs() -> tuple[TheoremSpec, ...]:
     return make_ha_generalized_crt_decision_candidate_theorems(TheoremSpec)
+
+
+def _assert_public_admission() -> None:
+    reviewed = {item.name: item for item in _candidate_specs()}
+    public = _specs_by_name()
+    admitted = tuple(
+        item
+        for item in theorem_registry.HA_NUMBER_THEORY_M5_GENERALIZED_CRT_THEOREMS
+        if item.name in ADMITTED_NAMES
+    )
+
+    assert admitted == tuple(reviewed[name] for name in ADMITTED_NAMES)
+    assert all(public[name] == reviewed[name] for name in ADMITTED_NAMES)
 
 
 def _local_specs() -> dict[str, TheoremSpec]:
@@ -255,7 +269,7 @@ def _cold_closed_receipts():
     return receipts
 
 
-def test_decision_factory_is_exact_ordered_and_isolated() -> None:
+def test_decision_factory_is_exact_ordered_and_publicly_admitted() -> None:
     first = _candidate_specs()
     second = make_ha_generalized_crt_decision_candidate_theorems(TheoremSpec)
     assert second == first
@@ -271,8 +285,7 @@ def test_decision_factory_is_exact_ordered_and_isolated() -> None:
         item.name: sha256(repr(item.script).encode()).hexdigest()
         for item in first
     } == EXPECTED_SCRIPT_REPR_SHA256
-    assert all(item.name not in _specs_by_name() for item in first)
-    assert not hasattr(theorem_registry, "HA_GENERALIZED_CRT_DECISION_THEOREMS")
+    _assert_public_admission()
 
 
 def test_decision_contracts_are_closed_native_and_bounded() -> None:
@@ -367,7 +380,7 @@ def test_decision_empty_context_closures_are_deterministic() -> None:
     assert all(
         receipt[6] == 0 for receipt in EXPECTED_CLOSED_RECEIPTS.values()
     )
-    assert all(item.name not in _specs_by_name() for item in _candidate_specs())
+    _assert_public_admission()
 
 
 def _mod_eq(modulus: int, left: int, right: int) -> bool:

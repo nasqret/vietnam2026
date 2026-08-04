@@ -26,6 +26,12 @@ forall m a b. (exists u v. a + m * u = b + m * v) -> exists r s. b + m * r = a +
 - [[canonical_remainders_characterize_mod_eq]]
 - [[bounded_mod_inverse_unique]]
 - [[coprime_bounded_mod_inverse]]
+- [[crt_solution_pair_congruent]]
+- [[crt_common_solution_implies_gcd_compatible]]
+- [[mod_eq_common_remainder_decomposition]]
+- [[generalized_binary_crt_sufficient_zero_right]]
+- [[mod_eq_lcm_merge]]
+- [[crt_solution_canonical_remainder_nonzero]]
 
 ## Verification record
 

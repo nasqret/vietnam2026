@@ -30,6 +30,7 @@ forall a b c. ~(a = 0) -> a * b = a * c -> b = c
 - [[odd_half_unique]]
 - [[is_lcm_scale_nonzero]]
 - [[balanced_bezout_cancel_gcd]]
+- [[is_gcd_quotients_coprime_nonzero]]
 
 ## Verification record
 

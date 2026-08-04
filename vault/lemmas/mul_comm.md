@@ -52,6 +52,9 @@ forall n m. n * m = m * n
 - [[coprime_bounded_mod_inverse]]
 - [[coprime_product_is_lcm]]
 - [[gcd_lcm_compatible_exists]]
+- [[mod_eq_common_remainder_decomposition]]
+- [[mod_eq_lcm_merge]]
+- [[crt_solution_canonical_remainder_nonzero]]
 
 ## Verification record
 

@@ -66,10 +66,11 @@ that runtime to 384 checked theorems, and strict-HA tranche 01 then appended nin
 canonical remainder/congruence/inverse interfaces for a 393-theorem checkpoint.
 The reviewed K4 admission adds 16 public gcd/LCM rows—the universal-property
 LCM core, constructive totality and unique existence, and the gcd-times-LCM
-product identity—for the current live total of 409. Its adjacent eight-row
-generalized-CRT congruence foundation remains isolated: necessary gcd
-compatibility and constructive incompatibility are closed, while compatible
-noncoprime CRT sufficiency is not yet claimed.
+product identity—for the 409-theorem checkpoint. The selective M5 admission
+then appends the exact 23-row dependency closure of unrestricted solvability,
+the relational-LCM solution class, the correct zero/nonzero canonical boundary,
+and the raw-input solution-or-obstruction endpoint, bringing the current live
+total to 432. Six reviewed generalized-CRT convenience rows remain private.
 The ladder includes discrete order, multiplication cancellation and
 monotonicity, constructive quotient-remainder existence, and full
 quotient-remainder uniqueness, mutual-divisibility antisymmetry, relational
@@ -111,7 +112,8 @@ history: only one is an `induction` label, so it cannot support the intended
 explorer by itself. The implemented successor is a distinct model-v3
 curriculum bound to the frozen first-247 declaration-order prefix of the
 then-384-theorem native ladder. The append-only 393-theorem extension preserves
-that exact model identity. The curriculum contributes
+that exact model identity, as do the later append-only extensions through the
+current 432-theorem runtime. The curriculum contributes
 8,494 exact authored predecessor-prefix transitions plus 70,000 deterministic
 synthetic rows over 51 schemas and 14 balanced root tactic heads. Catalog data
 is train-only; validation/test are synthetic-only, target formulas are
@@ -146,14 +148,15 @@ blocker.
 ## Parallel foundational arithmetic and quadratic-reciprocity milestones
 
 M20 generalizes the theorem ladder into a structured arithmetic corpus. The
-current 409 checked runtime entries comprise 23 legacy theorems, 212
+current 432 checked runtime entries comprise 23 legacy theorems, 212
 foundational theorems, twelve unique upstream mod-five capstones, 137 checked
-M21–M23 quadratic-residue foundations, and 25 strict-HA entries. The HA layer
+M21–M23 quadratic-residue foundations, and 48 strict-HA entries. The HA layer
 contains the original nine canonical remainder/congruence/modular-inverse
-interfaces plus 16 newly public K4 gcd/LCM rows. An adjacent eight-row
-generalized-CRT congruence foundation remains isolated and does not yet claim
-compatible noncoprime CRT sufficiency. The
-constructive dependency graph now runs from equality, order,
+interfaces, 16 public K4 gcd/LCM rows, and the selectively admitted 23-row M5
+generalized-CRT closure at indices 409--431. M5 now publishes arbitrary-modulus
+solvability, relational-LCM solution classification, the honest canonical
+boundary, and raw-input decision evidence; six convenience rows remain
+private. The constructive dependency graph now runs from equality, order,
 cancellation, division and relational gcd through balanced-natural Bézout,
 Gauss cancellation, primality decision, prime-divisor existence and Euclid's
 lemma. Its conservative finite-sequence layer uses expanded Gödel-β relations
@@ -162,19 +165,20 @@ object language—and proves CRT recoding, canonical sorted factorization
 existence, extensional uniqueness, and the native Fundamental Theorem of
 Arithmetic. The exact FTA certificate checks from the empty context at 73,767
 nodes, depth 99 and 2,184 self-contained Cuts, with no DNE. The synchronized
-410-entry catalog has 23 `checked_existing`, 386 `checked_m20`, no remaining
+433-entry catalog has 23 `checked_existing`, 409 `checked_m20`, no remaining
 planned theorem, and one representation-blocked
 conventional integer-coefficient Bézout interface. A pinned Lean companion
 independently checks conventional list-based FTA up to permutation. Remaining
 M20's native arithmetic and synchronized release artifacts are complete. The
 main Jupyter Book now includes a guided zero-to-FTA route, a quadratic
-reciprocity campaign chapter, and a generated interactive 409-proof atlas with
-1,102 dependency edges. The generated snapshot records 1,875,400 structural
-nodes, 54,582 Cuts, 350 Cut-bearing certificates, and ordered root
-`1e8fac39d1638124c9134d2845fab14e1169f12ad8791f615c9f80cf9f49498c`.
-The synchronized vault has 409 theorem notes, 508 total notes, and 5,119
+reciprocity campaign chapter, and a generated interactive 432-proof atlas with
+1,185 dependency edges. The generated snapshot records 1,982,360 structural
+nodes, 468,010 distinct proof objects, 57,692 structural Cut occurrences, 373
+Cut-bearing certificates, and ordered root
+`4d02dc439d53533e8992a471b26ee34059fb6001f822041e42c56b2cc0a7a079`.
+The synchronized vault has 432 theorem notes, 531 total notes, and 5,377
 links; the integrated local browser candidate deterministically verifies as build
-`2026-08-04b`, application `a-d58c3b67d05d`, with 174 worker sources. It
+`2026-08-04i`, application `a-b544a04993a1`, with 180 worker sources. It
 assembles successfully in the local content-addressed stage, is not deployed,
 and direct attached-browser UI inspection remains
 explicitly unclaimed. Model-v3 curriculum training is a separate milestone—not mathematical

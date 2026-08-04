@@ -70,8 +70,8 @@ def test_repository_campaign_validates() -> None:
     summary = VALIDATOR.validate_campaign(REPOSITORY_ROOT, CAMPAIGN_PATH)
     assert summary == {
         "layers": 12,
-        "public_references": 72,
-        "candidate_references": 122,
+        "public_references": 95,
+        "candidate_references": 99,
         "theorem_evidence": 147,
         "validation_gates": 7,
     }
@@ -79,8 +79,8 @@ def test_repository_campaign_validates() -> None:
     assert sum(
         len(layer["candidate_modules"])
         for layer in campaign["layers"]
-    ) == 27
-    assert len(campaign["theorem_evidence"]["test_paths"]) == 30
+    ) == 22
+    assert len(campaign["theorem_evidence"]["test_paths"]) == 31
 
 
 def test_candidate_statement_receipt_must_match_factory(tmp_path: Path) -> None:

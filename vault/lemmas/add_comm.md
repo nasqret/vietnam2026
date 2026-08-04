@@ -45,6 +45,7 @@ forall n m. n + m = m + n
 - [[mod5_square_residue_two]]
 - [[odd_add_odd]]
 - [[predecessor_square_mod_one]]
+- [[mod_eq_ordered_gap_multiple]]
 
 ## Verification record
 

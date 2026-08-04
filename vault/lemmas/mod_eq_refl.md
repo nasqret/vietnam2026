@@ -25,6 +25,9 @@ forall m a. exists u v. a + m * u = a + m * v
 - [[coprime_mod_inverse]]
 - [[pow_mod_congruent]]
 - [[pow_predecessor_parity_mod]]
+- [[crt_scaled_common_remainder_lift]]
+- [[generalized_binary_crt_sufficient_zero_left]]
+- [[generalized_binary_crt_sufficient_zero_right]]
 
 ## Verification record
 

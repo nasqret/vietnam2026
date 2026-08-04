@@ -95,9 +95,9 @@ def test_atlas_embeds_every_checked_statement_script_receipt_and_edge() -> None:
         by_name[match.group(1)] = card
 
     theorems = snapshot["theorems"]
-    assert len(theorems) == snapshot["theorem_count"] == 409
-    assert len(by_name) == 409
-    assert sum(len(theorem["dependencies"]) for theorem in theorems) == 1_102
+    assert len(theorems) == snapshot["theorem_count"] == 432
+    assert len(by_name) == 432
+    assert sum(len(theorem["dependencies"]) for theorem in theorems) == 1_185
 
     for theorem in theorems:
         card = by_name[theorem["name"]]

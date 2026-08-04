@@ -20,6 +20,8 @@ forall m P x a. (exists k. P = m * k) -> (exists u v. x + P * u = a + P * v) -> 
 ## Checked dependents
 
 - [[binary_crt_fold_step]]
+- [[crt_common_solution_implies_gcd_compatible]]
+- [[mod_eq_lcm_iff_pair]]
 
 ## Verification record
 

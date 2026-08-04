@@ -29,6 +29,8 @@ forall m n. ~(m = 0) -> exists q r. n = m * q + r /\ S r <= m
 - [[quadratic_residue_bounded_equiv]]
 - [[prime_bounded_nonzero_mod_inverse]]
 - [[canonical_remainder_exists]]
+- [[mod_eq_common_remainder_decomposition]]
+- [[crt_solution_canonical_remainder_nonzero]]
 
 ## Verification record
 

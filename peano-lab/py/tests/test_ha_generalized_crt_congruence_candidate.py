@@ -47,6 +47,18 @@ EXPECTED_NAMES = (
     "crt_incompatibility_obstructs_solution",
 )
 EXPECTED_STACK_NAMES = (SUPPORT_NAME, *EXPECTED_NAMES)
+ADMITTED_NAMES = (
+    "mod_eq_zero_iff_eq",
+    "mod_eq_scale",
+    "crt_solution_pair_congruent",
+    "crt_common_solution_implies_gcd_compatible",
+    "crt_incompatibility_obstructs_solution",
+)
+RESIDUAL_PRIVATE_NAMES = (
+    SUPPORT_NAME,
+    "mod_eq_add_cancel_right",
+    "mod_eq_unscale_nonzero",
+)
 EXPECTED_DEPENDENCIES = {
     "mod_eq_zero_iff_eq": ("mul_zero_left",),
     "mod_eq_add_cancel_right": (SUPPORT_NAME, "add_comm"),
@@ -144,6 +156,29 @@ def _support_spec() -> TheoremSpec:
 @lru_cache(maxsize=1)
 def _candidate_specs() -> tuple[TheoremSpec, ...]:
     return make_ha_generalized_crt_congruence_candidate_theorems(TheoremSpec)
+
+
+def _assert_public_private_boundary() -> None:
+    reviewed = {
+        item.name: item
+        for item in (_support_spec(), *_candidate_specs())
+    }
+    assert set(reviewed) == set(ADMITTED_NAMES) | set(RESIDUAL_PRIVATE_NAMES)
+    assert set(ADMITTED_NAMES).isdisjoint(RESIDUAL_PRIVATE_NAMES)
+    public = _specs_by_name()
+    admitted = tuple(
+        item
+        for item in theorem_registry.HA_NUMBER_THEORY_M5_GENERALIZED_CRT_THEOREMS
+        if item.name in ADMITTED_NAMES
+    )
+
+    assert admitted == tuple(reviewed[name] for name in ADMITTED_NAMES)
+    assert all(public[name] == reviewed[name] for name in ADMITTED_NAMES)
+    assert all(name not in public for name in RESIDUAL_PRIVATE_NAMES)
+    assert all(
+        name not in {item.name for item in admitted}
+        for name in RESIDUAL_PRIVATE_NAMES
+    )
 
 
 def _available_specs() -> dict[str, TheoremSpec]:
@@ -311,7 +346,7 @@ def _solution(
     )
 
 
-def test_generalized_crt_congruence_factory_is_exact_ordered_and_isolated() -> None:
+def test_generalized_crt_congruence_factory_has_exact_public_private_boundary() -> None:
     first = _candidate_specs()
     second = make_ha_generalized_crt_congruence_candidate_theorems(TheoremSpec)
     support = _support_spec()
@@ -334,9 +369,7 @@ def test_generalized_crt_congruence_factory_is_exact_ordered_and_isolated() -> N
     assert {
         item.name: sha256(item.statement.encode()).hexdigest() for item in first
     } == EXPECTED_STATEMENT_SHA256
-    assert support.name not in _specs_by_name()
-    assert all(item.name not in _specs_by_name() for item in first)
-    assert not hasattr(theorem_registry, "GENERALIZED_CRT_CONGRUENCE_THEOREMS")
+    _assert_public_private_boundary()
 
 
 def test_balanced_mod_eq_surface_is_parser_safe_hygienic_and_native() -> None:
@@ -510,8 +543,7 @@ def test_generalized_crt_empty_context_closures_are_deterministic() -> None:
     second = _cold_closed_receipts()
     assert first == EXPECTED_CLOSED_RECEIPTS
     assert second == first
-    assert all(name not in _specs_by_name() for name in EXPECTED_NAMES)
-    assert SUPPORT_NAME not in _specs_by_name()
+    _assert_public_private_boundary()
 
 
 def test_generalized_crt_foundation_bounded_semantics() -> None:

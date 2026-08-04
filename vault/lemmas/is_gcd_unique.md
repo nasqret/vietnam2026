@@ -20,6 +20,8 @@ forall g h a b. (((exists x. a = g * x) /\ (exists y. b = g * y)) /\ forall c. (
 ## Checked dependents
 
 - [[gcd_lcm_product]]
+- [[generalized_binary_crt_sufficient_zero_left]]
+- [[generalized_binary_crt_sufficient_zero_right]]
 
 ## Verification record
 

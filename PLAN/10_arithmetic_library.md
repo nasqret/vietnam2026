@@ -190,7 +190,7 @@ does not determine the architecture.
       uses only PA1–PA6 and
       induction, and contains no DNE. Runtime integration first completed in
       the historical synchronized 247-theorem checkpoint and remains present
-      in the current 409-theorem runtime.
+      in the current 432-theorem runtime.
 
 ## M20F — Knowledge and release gates
 
@@ -198,7 +198,7 @@ does not determine the architecture.
       trust boundary, dependency route, source audit, and extension workflow.
 - [x] Add a ten-stage guided route and deterministic interactive theorem atlas
       initially released with 247 exact native statements and now regenerated
-      for all 409 checked statements, with authored proof recipes,
+      for all 432 checked statements, with authored proof recipes,
       dependency/dependent navigation, metrics, hashes, live-lab actions, and
       source/vault links.
 - [x] Add an arithmetic Obsidian MOC, concept notes, and generated per-lemma
@@ -266,13 +266,20 @@ does not determine the architecture.
   DAG remains 557 nodes, 1,787 edges, and 45 layers; its status split remains
   241 public, 315 body-checked candidates, and the QR root pending layered
   closure.
-- The factorization, unbounded-primes, and admitted gcd/LCM tranches are
-  synchronized into the current 409-theorem runtime, 410-entry catalog,
-  generated snapshot, and all 409 generated lemma notes. The catalog split is
-  23 baseline checked, 386
+- The factorization, unbounded-primes, admitted gcd/LCM, and selective M5
+  generalized-CRT tranches are synchronized into the current 432-theorem
+  runtime, 433-entry catalog, generated snapshot, and all 432 generated lemma
+  notes. The catalog split is 23 baseline checked, 409
   post-baseline checked, and one representation-blocked conventional
   integer-coefficient Bézout interface. The
   previously published 189-theorem snapshot remains historical provenance.
+- The exact 23-row M5 admission occupies public indices 409--431 and is the
+  dependency closure of `generalized_binary_crt_solvable_iff`,
+  `generalized_binary_crt_canonical_boundary`, and
+  `generalized_binary_crt_total_decision`. Six reviewed M5 convenience rows
+  remain private. The campaign now records 95 public references, 99 candidates,
+  and 147 receipts across 22 candidate modules and 31 focused test paths. The
+  frozen first-247 model prefix is unchanged.
 - At this integration checkpoint, the exact expanded catalog statements for
   `prime_factorization_existence`, `prime_factorization_uniqueness`, and
   `fundamental_theorem_of_arithmetic` all have deterministic, closed,
@@ -291,7 +298,7 @@ does not determine the architecture.
   not a complete or authoritative admission route.
 - Full FTA companion status: checked in Lean for every nonzero natural, with
   finite-list existence and permutation uniqueness and no `sorryAx`.
-- Native Peano FTA status: checked and synchronized in the 409-theorem runtime
+- Native Peano FTA status: checked and synchronized in the 432-theorem runtime
   in the conservative β-coded representation. The endpoint is not a conventional list theorem: there is no
   primitive list type, and uniqueness compares lengths and decoded entries
   rather than raw β codes. The conventional list statement remains the
@@ -303,23 +310,24 @@ does not determine the architecture.
   multiple; any such divisor at or below the bound would divide both
   consecutive numbers and hence one. It uses PA1–PA6 only, has no DNE, and
   passes dependency, PA, hypothesis, and live-use audits.
-- The generated 409-theorem snapshot has 1,875,400 structural occurrences,
-  54,582 Cuts, and 350 Cut-bearing certificates. Its ordered root is
-  `1e8fac39d1638124c9134d2845fab14e1169f12ad8791f615c9f80cf9f49498c`.
-  The vault has 508 notes and 5,119 resolved links, including all 409 generated
+- The generated 432-theorem snapshot has 1,185 dependency edges, 1,982,360
+  structural occurrences, 468,010 distinct proof objects, 57,692 structural
+  Cut occurrences, and 373 Cut-bearing certificates. Its ordered root is
+  `4d02dc439d53533e8992a471b26ee34059fb6001f822041e42c56b2cc0a7a079`.
+  The vault has 531 notes and 5,377 resolved links, including all 432 generated
   theorem notes. The last source-bound 1,692-session/13,344-transition corpus
   remains intentionally tied to the historical 247-theorem checkpoint and has
   fingerprint
   `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
   its smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and all 247
   QEDs. The integrated local browser candidate deterministically verifies as
-  build `2026-08-04b`, application `a-d58c3b67d05d`, with 174 worker sources;
+  build `2026-08-04i`, application `a-b544a04993a1`, with 180 worker sources;
   it assembles successfully in the local content-addressed stage and has not
   been deployed.
 - The current Book source set has 47 sources. Its last strict arithmetic-branch
   rebuild completed without warnings; 194 deep links and 47 executable blocks
-  containing 287 commands verify. The generated atlas contains 409 checked
-  proof cards, one explicit boundary card, all 1,102 dependency edges, and a
+  containing 287 commands verify. The generated atlas contains 432 checked
+  proof cards, one explicit boundary card, all 1,185 dependency edges, and a
   local 1–4-hop navigator. The post-merge compatibility matrix passed 1,183
   tests with five intentional skips, and the strict 47-source Book replay plus
   its 2,325-page integrity gate passed with zero broken or escaping targets.
