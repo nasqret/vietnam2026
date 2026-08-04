@@ -779,6 +779,12 @@ strict K3 remains 96 rows/21 modules. The lightweight design gate is
 `make ha-k3b-list-lookup-check`. The Book, explorer, catalog, campaign JSON,
 and public snapshots remain untouched until closure/admission review.
 
+The next rung `list_at_domain` now checks without dependencies. Its exact
+statement identity is
+`(5903,065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240)`
+and its proof receipt is `(0,19,39,23,39,38,0)`. The certificate is Cut-free
+and DNE-free; it remains private pending the next repeated cold lookup batch.
+
 ## Release boundary
 
 The first named campaign release is **Euclidean and Modular Arithmetic in

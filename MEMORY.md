@@ -2135,3 +2135,9 @@
   beta-prefix transport.
   Runtime/catalog, campaign accounting, and strict K3 remain exactly 432/433,
   95/121/169, and 96 rows/21 modules.
+- **K3B lookup domain projection (2026-08-04):** `list_at_domain` eliminates
+  the six hidden lookup witnesses and returns `CellListLen(z,l)` plus the
+  native bound `k+S i=l`. It has no dependencies; its statement receipt is
+  `(5903,065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240)`
+  and its Cut-free/DNE-free proof receipt is `(0,19,39,23,39,38,0)`. The row
+  is private and awaits the next repeated cold lookup batch.

@@ -300,6 +300,12 @@ existential extension contract, but remains private and unadmitted. No lookup
 equation or admission is claimed. The light gate is
 `make ha-k3b-list-lookup-check`.
 
+`list_at_domain` is the next dependency-free private rung. It exposes
+`CellListLen(z,l)` and the native bound `k+S i=l` directly from the six lookup
+witnesses. Its statement receipt is
+`(5903,065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240)`
+and its Cut-free/DNE-free proof receipt is `(0,19,39,23,39,38,0)`.
+
 ## Repository anchors
 
 - `research/arithmetic-library/ha-number-theory-campaign.json`

@@ -20,7 +20,7 @@ PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 # This path is a deletion target in `stage-peano`; command-line assignments
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
-override PEANOAPPID := a-2da8fdcc3e12
+override PEANOAPPID := a-0096e3c90e9e
 
 .PHONY: help book book-atlas book-proof-explorer lean lean-fta ha-number-theory-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
@@ -141,7 +141,8 @@ ha-k3b-list-lookup-check:
 	python3 -m pytest -q scripts/test_verify_ha_cell_list_lookup_wmi_receipt.py
 	cd peano-lab/py && python3 -m pytest -q \
 		tests/test_ha_cell_list_lookup_surface_candidate.py \
-		tests/test_ha_cell_history_prefix_preservation_candidate.py
+		tests/test_ha_cell_history_prefix_preservation_candidate.py \
+		tests/test_ha_cell_list_lookup_domain_candidate.py
 
 lab-serve:
 	@echo "→ http://localhost:8001/  (Ctrl-C to stop)"

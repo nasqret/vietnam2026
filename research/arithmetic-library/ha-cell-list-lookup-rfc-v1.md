@@ -419,3 +419,13 @@ private, unregistered, unadmitted `closed_checked_candidate`.
 The prefix-preservation gate is therefore sealed. The next body is
 `list_at_domain`; the head and successor lookup equations may now depend on
 the closed private prerequisite without making it public.
+
+`list_at_domain` now also has a dependency-free checked body. Its expanded
+statement receipt is
+`(5903,065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240)`
+in `(characters,SHA-256)` order, and its exact proof receipt is
+`(0 dependencies,19 commands,39 nodes,depth 23,39 objects,38 edges,0 reused)`.
+The certificate is already empty-context, Cut-free, and DNE-free because the
+row has no dependencies. Three focused checks pin its witness projection,
+false strengthening, privacy, and a distinct-head two-cell model. A repeated
+cold batch receipt remains deferred to the next lookup WMI batch.

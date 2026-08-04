@@ -107,6 +107,11 @@ has SHA-256
 It remains private and unadmitted, no lookup equation is yet claimed, and
 public/campaign counts remain unchanged.
 
+The next private rung, `list_at_domain`, is dependency-free and projects the
+hidden history length plus native strict bound. Its statement receipt is
+`(5903,065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240)`;
+its Cut-free/DNE-free certificate receipt is `(0,19,39,23,39,38,0)`.
+
 ## Design and trust
 
 - [[quadratic-reciprocity-moc]]

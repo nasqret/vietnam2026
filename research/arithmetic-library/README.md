@@ -126,6 +126,12 @@ has SHA-256
 It remains private and unadmitted; no lookup equation is yet claimed. Run the
 separate lightweight gate with `make ha-k3b-list-lookup-check`.
 
+The dependency-free `list_at_domain` projection is the next checked body. Its
+statement has 5,903 characters and SHA-256
+`065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240`;
+its Cut-free/DNE-free certificate has 39 nodes at depth 23. It remains private
+and awaits inclusion in the next repeated cold lookup batch.
+
 The K4
 [`signed-gcd client`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)
 and its

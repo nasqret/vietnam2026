@@ -4767,3 +4767,10 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   `0d51baf93121da4071d0bb3ebd2b4a2818a7658fa92510fd707620bc2dba6560`.
   The result remains private, unregistered, and unadmitted; registry,
   campaign JSON, and public counts are unchanged.
+- Completed the dependency-free `list_at_domain` projection. Its statement
+  has 5,903 characters, SHA-256
+  `065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240`,
+  and its exact body/closed certificate receipt is `(0,19,39,23,39,38,0)`.
+  Three focused tests pin witness order, a false strengthened bound, zero
+  Cut/DNE, registry isolation, and a distinct-head two-cell model. It remains
+  private pending the next repeated cold lookup batch.

@@ -133,6 +133,7 @@ const PY_FILES = [
   "py/peano_lab/library/ha_cell_list_length_bound_candidate.py",
   "py/peano_lab/library/ha_cell_list_length_functional_candidate.py",
   "py/peano_lab/library/ha_cell_list_length_total_candidate.py",
+  "py/peano_lab/library/ha_cell_list_lookup_domain_candidate.py",
   "py/peano_lab/library/ha_cell_list_lookup_surface_candidate.py",
   "py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py",
   "py/peano_lab/library/ha_generalized_crt_classification_candidate.py",
