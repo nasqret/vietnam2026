@@ -4691,21 +4691,25 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   existential `CellListLen` surface definitions as a post-K4/M3 bridge. This
   work is outside the strict-K3 division/CRT quarantine and does not alter its
   evidence ledger.
-- Checked five dependency-curried bodies with the ordinary intuitionistic
-  kernel. Exact
+- Completed all eight theorem rows in the first-ten ladder as
+  dependency-curried bodies checked by the ordinary intuitionistic kernel.
+  Exact
   `(dependencies,commands,nodes,depth,objects,edges,reused)` receipts are
   `cell_history_nil = (2,24,135,18,135,134,0)`,
   `cell_history_extend = (5,86,122,36,122,121,0)`,
   `cell_history_succ_elim = (3,43,59,23,59,58,0)`,
   `cell_list_zero_iff_nil = (2,24,33,16,33,32,0)`, and
-  `cell_list_succ_iff_cell = (2,38,51,19,51,50,0)`.
+  `cell_list_succ_iff_cell = (2,38,51,19,51,50,0)`,
+  `cell_list_length_functional = (5,119,163,42,163,162,0)`,
+  `cell_list_length_le_code = (5,43,49,22,49,48,0)`, and
+  `cell_list_length_total = (3,22,58,32,58,57,0)`.
 - Classified the checkpoint as **BODY-CHECKED only**. Only
-  `cell_history_nil` has a known prior empty-context receipt. History
-  extension, successor elimination, and both list equations await isolated
-  WMI cold closure. WMI DNS resolution is currently unavailable, so no local
-  attempt was made to substitute a resource-heavy recursive Python closure.
-- Added `make ha-k3b-cell-history-check` as a deliberately separate light
-  structural/body gate. It is not part of `ha-number-theory-check` yet. No
+  `cell_history_nil` has a known prior empty-context receipt. The other seven
+  theorem rows await isolated WMI cold closure. VPN/WMI access is restored;
+  the closure runner/submission is being prepared, but no result is claimed.
+- Expanded `make ha-k3b-cell-history-check` as the deliberately separate light
+  structural/body gate for the RFC and all five focused candidate suites. It
+  is not part of `ha-number-theory-check` yet. No
   theorem is claimed closed or admitted, and the campaign JSON is untouched:
   strict K3 remains 96 rows across 21 modules and accounting remains
   95 public references, 121 private candidates, and 169 receipts.

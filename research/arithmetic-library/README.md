@@ -81,17 +81,22 @@ functionality, and strict-descent core.
 
 The next `HA-K3B-CELLHISTORY-1` authoring checkpoint freezes the reverse
 `CellHistory` and existential `CellListLen` definitions after K4/M3. It has
-five dependency-curried, intuitionistic kernel-checked bodies, with receipts
+all eight theorem rows of the first-ten ladder body-checked through the
+intuitionistic kernel, with receipts
 `(dependencies,commands,nodes,depth,objects,edges,reused)`:
 `cell_history_nil = (2,24,135,18,135,134,0)`,
 `cell_history_extend = (5,86,122,36,122,121,0)`,
 `cell_history_succ_elim = (3,43,59,23,59,58,0)`,
-`cell_list_zero_iff_nil = (2,24,33,16,33,32,0)`, and
-`cell_list_succ_iff_cell = (2,38,51,19,51,50,0)`. This is explicitly
+`cell_list_zero_iff_nil = (2,24,33,16,33,32,0)`,
+`cell_list_succ_iff_cell = (2,38,51,19,51,50,0)`,
+`cell_list_length_functional = (5,119,163,42,163,162,0)`,
+`cell_list_length_le_code = (5,43,49,22,49,48,0)`, and
+`cell_list_length_total = (3,22,58,32,58,57,0)`. This is explicitly
 **BODY-CHECKED only**: only the nil history has a known prior empty-context
-receipt. The extension, elimination, and list-equation rows await isolated
-WMI cold closure, and WMI DNS resolution is currently unavailable. Nothing is
-admitted or enrolled in the campaign manifest. Strict K3 therefore remains
+receipt. The other seven theorem rows await isolated WMI cold closure.
+VPN/WMI access is restored and the closure runner/submission is being
+prepared, but no WMI result is claimed. Nothing is admitted or enrolled in
+the campaign manifest. Strict K3 therefore remains
 96 rows across 21 modules, while the campaign JSON remains 95 public
 references, 121 private candidates, and 169 receipts. Run the deliberately
 separate lightweight gate with `make ha-k3b-cell-history-check`.

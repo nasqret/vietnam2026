@@ -253,21 +253,26 @@ yields only a fixed-length formula schema; uniform lists and maps remain open.
 
 [`HA-K3B-CELLHISTORY-1`](../../research/arithmetic-library/ha-cell-history-rfc-v1.md)
 now freezes post-K4/M3 reverse `CellHistory` and existential `CellListLen`
-definitions. Five dependency-curried proof bodies pass the ordinary
-intuitionistic kernel checker. Their
+definitions. All eight theorem rows in the first-ten ladder have
+dependency-curried proof bodies that pass the ordinary intuitionistic kernel
+checker. Their
 `(dependencies,commands,nodes,depth,objects,edges,reused)` receipts are:
 
 - `cell_history_nil = (2,24,135,18,135,134,0)`;
 - `cell_history_extend = (5,86,122,36,122,121,0)`;
 - `cell_history_succ_elim = (3,43,59,23,59,58,0)`;
 - `cell_list_zero_iff_nil = (2,24,33,16,33,32,0)`;
-- `cell_list_succ_iff_cell = (2,38,51,19,51,50,0)`.
+- `cell_list_succ_iff_cell = (2,38,51,19,51,50,0)`;
+- `cell_list_length_functional = (5,119,163,42,163,162,0)`;
+- `cell_list_length_le_code = (5,43,49,22,49,48,0)`;
+- `cell_list_length_total = (3,22,58,32,58,57,0)`.
 
 This node is **BODY-CHECKED only**, below both evidence statuses defined at
 the top of this note. Only `cell_history_nil` has a known prior empty-context
-receipt. The history extension/elimination and list-equation rows await an
-isolated WMI cold closure; WMI DNS resolution is currently unavailable. No
-row is recorded as `closed_checked_candidate`, admitted, or enrolled in the
+receipt. The other seven theorem rows await an isolated WMI cold closure.
+VPN/WMI access is restored and the closure runner/submission is being
+prepared, but no WMI result is claimed. No row is recorded as
+`closed_checked_candidate`, admitted, or enrolled in the
 campaign JSON. Consequently,
 strict K3 remains 96 rows across 21 modules and campaign accounting remains
 95 public references, 121 private candidates, and 169 receipts. The light

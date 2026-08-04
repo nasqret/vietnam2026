@@ -2095,19 +2095,23 @@
   computation histories, lists, maps, and public admission remain open.
 - **K3B reverse cell-history authoring checkpoint (2026-08-04):** the
   `HA-K3B-CELLHISTORY-1` RFC and exact `CellHistory`/`CellListLen` expansions
-  are frozen as a post-K4/M3 bridge, outside strict K3. Five
-  dependency-curried proof bodies check through the ordinary intuitionistic
-  kernel. Their
+  are frozen as a post-K4/M3 bridge, outside strict K3. All eight theorem rows
+  in the first-ten ladder have dependency-curried proof bodies that check
+  through the ordinary intuitionistic kernel. Their
   `(dependencies,commands,nodes,depth,objects,edges,reused)` receipts are
   `cell_history_nil = (2,24,135,18,135,134,0)`,
   `cell_history_extend = (5,86,122,36,122,121,0)`,
   `cell_history_succ_elim = (3,43,59,23,59,58,0)`,
-  `cell_list_zero_iff_nil = (2,24,33,16,33,32,0)`, and
-  `cell_list_succ_iff_cell = (2,38,51,19,51,50,0)`. This checkpoint is
+  `cell_list_zero_iff_nil = (2,24,33,16,33,32,0)`,
+  `cell_list_succ_iff_cell = (2,38,51,19,51,50,0)`,
+  `cell_list_length_functional = (5,119,163,42,163,162,0)`,
+  `cell_list_length_le_code = (5,43,49,22,49,48,0)`, and
+  `cell_list_length_total = (3,22,58,32,58,57,0)`. This checkpoint is
   **BODY-CHECKED only**: only the nil seed has a known prior empty-context
-  receipt. The four extension/elimination/list rows still require isolated
-  WMI cold closure; WMI DNS resolution is currently unavailable. No K3B row
-  is recorded as `closed_checked_candidate`, admitted, or added to the
+  receipt. The other seven theorem rows still require isolated WMI cold
+  closure. VPN/WMI access is restored and the closure runner/submission is
+  being prepared; no WMI result is claimed. No K3B row is recorded as
+  `closed_checked_candidate`, admitted, or added to the
   campaign JSON. Strict K3 stays at 96
   rows in 21 modules and campaign accounting stays at 95 public references,
   121 private candidates, and 169 receipts. The separate lightweight gate is

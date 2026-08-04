@@ -267,10 +267,16 @@ requirements.  It is not evidence of a larger list API by name alone.
 
 ### 5.6 Body-checked implementation checkpoint
 
-The first five theorem rows are implemented privately in
+The eight theorem rows in the complete first-ten ladder (after the two
+definition rows) are implemented privately in
 [`ha_cell_history_candidate.py`](../../peano-lab/py/peano_lab/library/ha_cell_history_candidate.py)
 and
-[`ha_cell_list_equations_candidate.py`](../../peano-lab/py/peano_lab/library/ha_cell_list_equations_candidate.py).
+[`ha_cell_list_equations_candidate.py`](../../peano-lab/py/peano_lab/library/ha_cell_list_equations_candidate.py),
+with the three length endpoints in
+[`ha_cell_list_length_functional_candidate.py`](../../peano-lab/py/peano_lab/library/ha_cell_list_length_functional_candidate.py),
+[`ha_cell_list_length_bound_candidate.py`](../../peano-lab/py/peano_lab/library/ha_cell_list_length_bound_candidate.py),
+and
+[`ha_cell_list_length_total_candidate.py`](../../peano-lab/py/peano_lab/library/ha_cell_list_length_total_candidate.py).
 Their focused audits are deliberately split from the expensive recursive
 public-library closure.  The body tuple below is
 `(dependencies, commands, nodes, depth, objects, edges, reused)`.
@@ -282,6 +288,9 @@ public-library closure.  The body tuple below is
 | `cell_history_succ_elim` | `2f44b8405bb60e1571452cdae993c024c80cb079be6ded25edd58716888ecdee` | `(3,43,59,23,59,58,0)` | pending isolated heavy closure |
 | `cell_list_zero_iff_nil` | `bef9e900318713718a2e981eb04de28fb21e4641ff4f80c2a98b1dc41af2db29` | `(2,24,33,16,33,32,0)` | pending isolated heavy closure |
 | `cell_list_succ_iff_cell` | `bb678323c7061f561ce69bb0357bf93ece948acf763503eec4763934cf50b23c` | `(2,38,51,19,51,50,0)` | pending isolated heavy closure |
+| `cell_list_length_functional` | `e08563402824e2af98ac5fcd56065b173da4713dd33ab96ec16fb6fc5346b8e3` | `(5,119,163,42,163,162,0)` | pending isolated heavy closure |
+| `cell_list_length_le_code` | `48af1df5e7ca96895308b04b48ed154ed33399424d19a38b7cb18841ac12a08a` | `(5,43,49,22,49,48,0)` | pending isolated heavy closure |
+| `cell_list_length_total` | `8e6cea3fc40ffe051e4e3eb8af5b698e087c0f3d798fcfc628a107db1b09d765` | `(3,22,58,32,58,57,0)` | pending isolated heavy closure |
 
 The earlier empty-context receipt for `cell_history_nil` is
 
@@ -294,9 +303,11 @@ with tuple order `(nodes,depth,objects,edges,reused,Cuts,certificate SHA-256)`.
 Every displayed body passes the independent intuitionistic kernel with its
 declared dependencies introduced as ordinary hypotheses, contains zero DNE,
 and rejects a nearby false statement mutation.  This is not an admission or
-an empty-context closure receipt for the four rows marked pending.  In
-particular, gates G2--G4 remain open until their public beta/CRT dependency
-DAGs are closed and measured in an isolated worker.
+an empty-context closure receipt for the seven rows marked pending.  VPN and
+WMI access have been restored, and the isolated closure runner/submission is
+being prepared; no WMI result is claimed here.  In particular, gates G2--G4
+remain open until their public beta/CRT dependency DAGs are closed and
+measured in an isolated worker.
 
 ## 6. Dependency firewall
 
