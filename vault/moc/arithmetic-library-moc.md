@@ -157,6 +157,20 @@ compares two client lookups; no T07, beta-uniqueness theorem, or raw-code
 equality is required. Both T08 and T09 have zero DNE and remain body-level
 only, without cold closure, registration, admission, or a public theorem.
 
+The private extensionality row has statement receipt
+`(15451,7033fcdf4c96a866e9d9e0b8381efbbd7b48ab060bcc4adad695ead30ff19831)`,
+PA AST receipt `(707 total nodes,192 formula nodes)`, and body receipt
+`(4,152,386,50,369,385,17)`. Its exact direct dependencies are
+`cell_list_zero_iff_nil`, `cell_list_succ_iff_cell`, `list_at_head_iff`, and
+`list_at_succ_iff`. Length induction compares outer heads, lifts pointwise
+bounds to successor indices, recursively identifies tails, and normalizes
+exact D06 with two head and four tail rewrites. It has zero DNE.
+
+All ten ladder deliverables now have checked surface/body evidence (the first
+is the frozen definition surface; T02--T10 are theorem bodies). T03--T10
+remain body-level only, without repeated cold closure, registration,
+admission, public theorems, catalog entries, snapshots, or accounting action.
+
 ## Design and trust
 
 - [[quadratic-reciprocity-moc]]

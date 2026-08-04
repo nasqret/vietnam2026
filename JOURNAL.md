@@ -4831,3 +4831,19 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   raw beta codes. Both T08 and T09 bodies have zero DNE. These are body-level
   checkpoints only: cold closure, registration, admission, catalogs, JSON
   accounting, and public snapshots remain unchanged.
+- Checked private `cell_list_extensional` with exact direct dependency order
+  `cell_list_zero_iff_nil`, `cell_list_succ_iff_cell`, `list_at_head_iff`,
+  `list_at_succ_iff`. Its statement receipt is
+  `(15451,7033fcdf4c96a866e9d9e0b8381efbbd7b48ab060bcc4adad695ead30ff19831)`,
+  PA AST receipt `(707 total nodes,192 formula nodes)`, and body receipt
+  `(4,152,386,50,369,385,17)`. The generalized induction proves nil equality
+  at zero. At a successor, the two length decompositions expose heads and
+  tails; pointwise equality handles index zero, while PA4/congruence lifts
+  each tail bound so the successor lookup equation and induction hypothesis
+  identify the tails. Two head and four tail rewrites normalize exact D06.
+  The body has zero DNE.
+- The ten-deliverable ladder now has checked evidence throughout: T01 is its
+  frozen definition surface and T02--T10 have checked theorem bodies. This is
+  not admission evidence. T03--T10 await repeated cold WMI closure; registry,
+  catalogs, campaign JSON, public snapshots, and public theorem counts remain
+  unchanged.

@@ -753,7 +753,7 @@ target. Strict K3 remains 96 rows across 21 modules, and the campaign JSON
 remains unchanged at 95 public references, 121 private candidates, and 169
 receipts.
 
-### K3B ListAt checkpoint (surface frozen; T03--T09 bodies checked)
+### K3B ListAt checkpoint (surface frozen; T03--T10 bodies checked)
 
 `HA-K3B-LISTAT-1` freezes an outer-head `ListAt(z,i,a)` surface over the
 closed private reverse histories. The selected edge satisfies
@@ -847,8 +847,25 @@ lookups. Its statement receipt is
 and body receipt is `(2,92,171,38,171,170,0)`. Both bodies have zero DNE and
 remain private body-level evidence only: no cold closure, registration,
 admission, public snapshot, catalog, or campaign-JSON change is claimed.
-Proceed next to `cell_list_extensional`, then include T03--T09 in a repeated
-cold WMI batch before admission review.
+
+`cell_list_extensional` now checks with exact dependency order
+`cell_list_zero_iff_nil`, `cell_list_succ_iff_cell`, `list_at_head_iff`,
+`list_at_succ_iff`. Its statement receipt is
+`(15451,7033fcdf4c96a866e9d9e0b8381efbbd7b48ab060bcc4adad695ead30ff19831)`,
+its PA AST receipt is `(707 total nodes,192 formula nodes)`, and its body
+receipt is `(4,152,386,50,369,385,17)`. The generalized induction motive
+ranges over the shared length and both codes. The base branch reduces both
+codes to nil. The successor branch compares the decomposed heads at zero,
+uses PA4/congruence to lift pointwise bounds to successor indices, applies the
+induction hypothesis to the tails, and normalizes exact D06 with two head and
+four tail rewrites. The body has zero DNE.
+
+The full ten-deliverable ladder now has checked evidence: T01 is the frozen
+definition surface and T02--T10 have checked bodies. No admission or public
+action follows from this checkpoint. T03--T10 remain without repeated cold
+empty-context receipts, registration, admission, public snapshots, catalog
+entries, or campaign-JSON accounting. Proceed to the repeated cold WMI
+T03--T10 batch before admission review.
 
 ## Release boundary
 

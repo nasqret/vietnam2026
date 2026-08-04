@@ -69,7 +69,10 @@ if [ "$selection" != all ]; then
       cell_history_extend_preserves_prefix|\
       cell_list_zero_iff_nil|cell_list_succ_iff_cell|\
       cell_list_length_functional|cell_list_length_le_code|\
-      cell_list_length_total)
+      cell_list_length_total|list_at_domain|list_at_head_iff|\
+      list_at_succ_iff|list_at_external_bound|list_at_exists|\
+      list_at_functional|list_at_history_independent|\
+      cell_list_extensional)
         arguments+=(--theorem "$theorem")
         ;;
       *) printf 'invalid K3B theorem: %s\n' "$theorem" >&2; exit 2 ;;

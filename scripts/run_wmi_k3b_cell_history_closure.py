@@ -2,10 +2,11 @@
 """Cold, empty-context closure receipts for the private K3B list seed.
 
 This runner is intentionally separate from pytest and from the public theorem
-registry.  It closes the five initial CellHistory/list-equation candidates,
-RFC deliverables 8--10, and the first prefix-preserving lookup-support row over
-the minimum private strict-cell support plus the reviewed public library.  It
-is a WMI capacity/admission experiment, not an admission action.
+registry.  It closes the nine existing CellHistory, list-equation, length, and
+prefix-preservation candidates first, followed by RFC T03--T10 of the
+outer-head ListAt ladder, over the minimum private strict-cell support plus the
+reviewed public library.  It is a WMI capacity/admission experiment, not an
+admission action.
 """
 
 from __future__ import annotations
@@ -51,6 +52,30 @@ from peano_lab.library.ha_cell_list_length_functional_candidate import (
 from peano_lab.library.ha_cell_list_length_total_candidate import (
     make_ha_cell_list_length_total_candidate_theorems,
 )
+from peano_lab.library.ha_cell_list_lookup_domain_candidate import (
+    make_ha_cell_list_lookup_domain_candidate_theorems,
+)
+from peano_lab.library.ha_cell_list_lookup_external_bound_candidate import (
+    make_ha_cell_list_lookup_external_bound_candidate_theorems,
+)
+from peano_lab.library.ha_cell_list_lookup_exists_candidate import (
+    make_ha_cell_list_lookup_exists_candidate_theorems,
+)
+from peano_lab.library.ha_cell_list_lookup_functional_candidate import (
+    make_ha_cell_list_lookup_functional_candidate_theorems,
+)
+from peano_lab.library.ha_cell_list_lookup_head_candidate import (
+    make_ha_cell_list_lookup_head_candidate_theorems,
+)
+from peano_lab.library.ha_cell_list_lookup_history_independent_candidate import (
+    make_ha_cell_list_lookup_history_independent_candidate_theorems,
+)
+from peano_lab.library.ha_cell_list_lookup_succ_candidate import (
+    make_ha_cell_list_lookup_succ_candidate_theorems,
+)
+from peano_lab.library.ha_cell_list_extensional_candidate import (
+    make_ha_cell_list_extensional_candidate_theorems,
+)
 from peano_lab.library.ha_pair_cell_seed_candidate import (
     make_ha_pair_cell_seed_candidate_theorems,
 )
@@ -69,7 +94,7 @@ from peano_lab.library.theorems import (
 )
 
 
-FORMAT = "peano-k3b-cell-history-cold-closure-v2"
+FORMAT = "peano-k3b-cell-history-cold-closure-v3"
 TARGET_NAMES = (
     "cell_history_nil",
     "cell_history_extend",
@@ -80,6 +105,14 @@ TARGET_NAMES = (
     "cell_list_length_functional",
     "cell_list_length_le_code",
     "cell_list_length_total",
+    "list_at_domain",
+    "list_at_head_iff",
+    "list_at_succ_iff",
+    "list_at_external_bound",
+    "list_at_exists",
+    "list_at_functional",
+    "list_at_history_independent",
+    "cell_list_extensional",
 )
 Factory = Callable[[type[TheoremSpec]], tuple[TheoremSpec, ...]]
 SUPPORT_FACTORIES: tuple[Factory, ...] = (
@@ -96,6 +129,14 @@ TARGET_FACTORIES: tuple[Factory, ...] = (
     make_ha_cell_list_length_functional_candidate_theorems,
     make_ha_cell_list_length_bound_candidate_theorems,
     make_ha_cell_list_length_total_candidate_theorems,
+    make_ha_cell_list_lookup_domain_candidate_theorems,
+    make_ha_cell_list_lookup_head_candidate_theorems,
+    make_ha_cell_list_lookup_succ_candidate_theorems,
+    make_ha_cell_list_lookup_external_bound_candidate_theorems,
+    make_ha_cell_list_lookup_exists_candidate_theorems,
+    make_ha_cell_list_lookup_functional_candidate_theorems,
+    make_ha_cell_list_lookup_history_independent_candidate_theorems,
+    make_ha_cell_list_extensional_candidate_theorems,
 )
 SHA256_PATTERN = re.compile(r"[0-9a-f]{64}")
 COMMIT_PATTERN = re.compile(r"[0-9a-f]{40}")
@@ -407,7 +448,7 @@ def _arguments() -> argparse.Namespace:
         "--theorem",
         action="append",
         choices=TARGET_NAMES,
-        help="target to close; repeat to select several (default: all nine)",
+        help="target to close; repeat to select several (default: all seventeen)",
     )
     parser.add_argument(
         "--passes", type=int, default=2,

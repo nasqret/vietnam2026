@@ -2196,3 +2196,16 @@
   neither T07, `beta_at_unique`, nor raw beta-code equality. It has zero DNE
   but no cold closure, registration, admission, public theorem, or accounting
   change.
+- **K3B cell-list extensionality body (2026-08-04):** private
+  `cell_list_extensional` has statement receipt
+  `(15451,7033fcdf4c96a866e9d9e0b8381efbbd7b48ab060bcc4adad695ead30ff19831)`,
+  PA AST receipt `(707 total nodes,192 formula nodes)`, and body receipt
+  `(4,152,386,50,369,385,17)`. Its exact dependency order is
+  `cell_list_zero_iff_nil`, `cell_list_succ_iff_cell`, `list_at_head_iff`,
+  `list_at_succ_iff`. Generalized length induction reduces the zero case to
+  nil; the successor case compares heads, transports pointwise bounds with
+  PA4/congruence, identifies tails recursively, and normalizes exact D06 with
+  two head and four tail rewrites. It has zero DNE. All ten ladder
+  deliverables now have checked surface/body evidence, but T03--T10 still
+  lack repeated cold closure and no registration, admission, public theorem,
+  or accounting change is recorded.

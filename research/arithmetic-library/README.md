@@ -206,6 +206,25 @@ history and compares the resulting client-level lookups, without T07,
 and remain body-checked only, without cold closure, registration, admission,
 or a public theorem.
 
+The private [`cell_list_extensional`](../../peano-lab/py/peano_lab/library/ha_cell_list_extensional_candidate.py)
+body and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_cell_list_extensional_candidate.py)
+have statement receipt
+`(15451,7033fcdf4c96a866e9d9e0b8381efbbd7b48ab060bcc4adad695ead30ff19831)`,
+PA AST receipt `(707 total nodes,192 formula nodes)`, and proof receipt
+`(4,152,386,50,369,385,17)`. Its exact direct dependencies are
+`cell_list_zero_iff_nil`, `cell_list_succ_iff_cell`, `list_at_head_iff`, and
+`list_at_succ_iff`. Induction on the shared length handles nil at zero; at a
+successor it compares outer heads, transports the pointwise bound to
+successor indices, recursively identifies the tails, then performs two head
+and four tail rewrites in exact D06. The body has zero DNE.
+
+All ten ladder deliverables now have checked surface/body evidence (T01 is the
+frozen definition surface; T02--T10 are theorem bodies). They remain private:
+T03--T10 have no repeated cold empty-context receipts, and no registration,
+admission, public theorem, catalog, snapshot, or campaign-accounting action
+has occurred.
+
 The K4
 [`signed-gcd client`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)
 and its

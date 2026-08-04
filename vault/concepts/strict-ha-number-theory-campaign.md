@@ -356,6 +356,22 @@ the two client lookups. It needs neither T07, `beta_at_unique`, nor raw
 beta-code equality. Both T08 and T09 have zero DNE but no cold empty-context
 receipt and remain unregistered, unadmitted, and nonpublic.
 
+`cell_list_extensional` is body-checked privately with statement receipt
+`(15451,7033fcdf4c96a866e9d9e0b8381efbbd7b48ab060bcc4adad695ead30ff19831)`,
+PA AST receipt `(707 total nodes,192 formula nodes)`, and body receipt
+`(4,152,386,50,369,385,17)`. Its exact direct dependencies are
+`cell_list_zero_iff_nil`, `cell_list_succ_iff_cell`, `list_at_head_iff`, and
+`list_at_succ_iff`. Generalized induction reduces length zero to nil. At a
+successor, index-zero equality identifies the heads; PA4/congruence lifts the
+tail bounds, the induction hypothesis identifies the tails, and two head plus
+four tail rewrites normalize exact D06. The body has zero DNE.
+
+The complete ten-deliverable ladder now has checked surface/body evidence:
+T01 is the frozen definition surface and T02--T10 have checked bodies. T03--T10
+still lack repeated cold empty-context receipts and remain unregistered,
+unadmitted, and nonpublic; no catalog, snapshot, or accounting action is
+claimed.
+
 ## Repository anchors
 
 - `research/arithmetic-library/ha-number-theory-campaign.json`

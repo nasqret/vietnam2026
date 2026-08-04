@@ -146,7 +146,7 @@ later theorem statement expands D01/D02, `CellHistory`, `CellListLen`,
 | 7 | `list_at_exists` | every in-range index has a decoded head | `CellHistory` universal edge clause, definition introduction, `add_comm` |
 | 8 | `list_at_functional` | lookup at a fixed code and index has one value | `list_at_head_iff`, `list_at_succ_iff`, `cell_functional`; induction on `i` |
 | 9 | `list_at_history_independent` | transport a selected edge between two history witnesses for the same list | `list_at_functional`, `add_comm` |
-| 10 | `cell_list_extensional` | equal-length lists with equal entries have equal codes | rungs 4--8, list zero/successor equations, induction on `l` |
+| 10 | `cell_list_extensional` | equal-length lists with equal entries have equal codes | `cell_list_zero_iff_nil`, `cell_list_succ_iff_cell`, `list_at_head_iff`, `list_at_succ_iff`; induction on `l` |
 
 ### T03 domain
 
@@ -274,9 +274,8 @@ flowchart TD
 
   HEAD --> EXT[cell_list_extensional]
   SUCC --> EXT
-  EXISTS --> EXT
-  FUNC --> EXT
-  EQNS[cell_list_zero/succ equations] --> EXT
+  ZEROEQ[cell_list_zero_iff_nil] --> EXT
+  SUCCEQ[cell_list_succ_iff_cell] --> EXT
 ```
 
 Definition nodes must be rendered with the project's distinct definition
@@ -358,9 +357,13 @@ it needs no direct `beta_at_unique` dependency.
 Extensionality is induction on the shared length.  At zero, both codes are
 nil by `cell_list_zero_iff_nil`.  At a successor length, the successor list
 equation exposes outer heads and tails.  Pointwise equality at index zero
-identifies the heads; the shifted pointwise hypothesis and successor lookup
-equation feed the induction hypothesis for the tails.  Exact D06 construction
-then identifies the cell codes.
+identifies the heads. For a tail index `j`, PA4 and congruence transport
+`k + S j = l` to `k + S (S j) = S l`; the successor lookup equation lifts
+both tail lookups, so the original pointwise hypothesis supplies the tail
+pointwise premise for the induction hypothesis. Exact D06 construction then
+identifies the cell codes after exactly two head rewrites and four tail
+rewrites. No existence, lookup-functionality, or history-independence theorem
+is needed directly.
 
 ## 8. Constructive and dependency quarantine
 
@@ -536,6 +539,24 @@ its body receipt is `(2,92,171,38,171,170,0)`. It selects the same edge in the
 second history, constructs two client lookups, and transports only their
 decoded head equality. Both T08 and T09 bodies have zero DNE. This is
 body-level evidence only: neither row has a repeated cold empty-context
-receipt, registration, admission, or public status. The next proof body is
-`cell_list_extensional`; T03--T09 require repeated cold WMI closure before any
-admission review.
+receipt, registration, admission, or public status. The final extensionality
+checkpoint follows.
+
+`cell_list_extensional` has exact direct dependency order
+`cell_list_zero_iff_nil`, `cell_list_succ_iff_cell`, `list_at_head_iff`,
+`list_at_succ_iff`. Its expanded statement has 15,451 characters and SHA-256
+`7033fcdf4c96a866e9d9e0b8381efbbd7b48ab060bcc4adad695ead30ff19831`;
+its PA AST receipt is `(707 total nodes,192 formula nodes)`, and its exact body
+receipt is `(4,152,386,50,369,385,17)`. The generalized induction motive is
+`forall l z w`. The zero branch identifies both codes with nil. The successor
+branch decomposes both cells, compares their outer heads at index zero,
+transports each tail bound by PA4 and congruence, lifts the tail lookups, and
+applies the induction hypothesis before the two head and four tail rewrites.
+The body contains zero DNE.
+
+The ten-deliverable ladder now has checked evidence throughout: T01 is the
+frozen definition surface and every theorem row T02--T10 has a checked body.
+This remains private evidence only. T03--T10 have no repeated cold
+empty-context receipts, and no registration, admission, public theorem,
+catalog, snapshot, or campaign-accounting action is claimed. The next gate is
+the repeated cold WMI T03--T10 batch.

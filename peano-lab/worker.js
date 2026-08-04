@@ -130,6 +130,7 @@ const PY_FILES = [
   "py/peano_lab/library/ha_cell_history_candidate.py",
   "py/peano_lab/library/ha_cell_history_prefix_preservation_candidate.py",
   "py/peano_lab/library/ha_cell_list_equations_candidate.py",
+  "py/peano_lab/library/ha_cell_list_extensional_candidate.py",
   "py/peano_lab/library/ha_cell_list_length_bound_candidate.py",
   "py/peano_lab/library/ha_cell_list_length_functional_candidate.py",
   "py/peano_lab/library/ha_cell_list_length_total_candidate.py",
