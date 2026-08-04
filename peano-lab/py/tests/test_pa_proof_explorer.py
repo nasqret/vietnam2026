@@ -191,6 +191,9 @@ def test_generator_rejects_and_prunes_unmanifested_files(tmp_path, monkeypatch) 
     defined = tmp_path / "defined" / "manifest.json"
     defined.parent.mkdir(parents=True)
     defined.write_bytes(b'{"owned_by":"defined-generator"}\n')
+    k3b = tmp_path / "k3b" / "index.html"
+    k3b.parent.mkdir(parents=True)
+    k3b.write_bytes(b"private K3B microsite\n")
     assert not generator._check(files)
 
     generator._write(files)
@@ -198,8 +201,9 @@ def test_generator_rejects_and_prunes_unmanifested_files(tmp_path, monkeypatch) 
         str(path.relative_to(tmp_path))
         for path in tmp_path.rglob("*")
         if path.is_file()
-    } == set(files) | {"defined/manifest.json"}
+    } == set(files) | {"defined/manifest.json", "k3b/index.html"}
     assert defined.read_bytes() == b'{"owned_by":"defined-generator"}\n'
+    assert k3b.read_bytes() == b"private K3B microsite\n"
     assert generator._check(files)
 
 
@@ -510,7 +514,7 @@ def test_graph_schema_and_inline_file_protocol_payload_are_exact_and_determinist
         str(path.relative_to(EXPLORER))
         for path in EXPLORER.rglob("*")
         if path.is_file()
-        and path.relative_to(EXPLORER).parts[0] not in {"defined"}
+        and path.relative_to(EXPLORER).parts[0] not in {"defined", "k3b"}
     }
     assert on_disk == set(manifest_files) | {"manifest.json"}
 

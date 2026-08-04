@@ -83,6 +83,7 @@ cones.
 | see how theorems depend on one another | {doc}`Interactive dependency graph <dependency-graph>` | short and critical premise chains, route corridors and complete prerequisite cones |
 | understand soundness | {doc}`Language, notation, and trust <language-and-trust>` | {doc}`Self-contained proof sharing <proof-sharing>` |
 | study division and congruence | {doc}`Divisibility and subtraction-free congruence <divisibility-and-congruence>` | {doc}`GCD and balanced Bézout <gcd-and-bezout>` |
+| study encoded lists and lookup | {doc}`Cell histories and extensional lookup <cell-history-and-lookup>` | the compact K3B graph, exact candidate sources, and WMI receipt |
 | study primes and factorization | {doc}`Primes and unique factorization <primes-and-factorization>` | the FTA and `prime_unbounded` cards in the atlas |
 | follow the reciprocity campaign | {doc}`Quadratic reciprocity campaign <quadratic-reciprocity>` | parity, residue-decision, and finite-fold cards in the atlas |
 | train a proof-producing model | {doc}`Using and extending the library <using-the-library>` | the snapshot, corpus and vault links below |

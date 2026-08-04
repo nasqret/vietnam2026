@@ -2334,11 +2334,18 @@ and their focused audits
 These rows remain private: the public runtime and research catalog stay at
 **432** and **433** entries. The campaign now records **95** public references,
 **114** closed candidates, **162** distinct receipts, **25** candidate modules,
-and **34** focused test paths. The honest next obligations are cell
-functionality, strict head and tail bounds, and an independent uniform
-computation-history representation supporting lists and finite maps. A
-successor-tagged cell constructor alone cannot express variable tail
+and **34** focused test paths. At this checkpoint the honest next obligations
+were cell functionality, strict head and tail bounds, and an independent
+uniform computation-history representation supporting lists and finite maps.
+A successor-tagged cell constructor alone cannot express variable tail
 iteration, lookup, append, or folds.
+
+Those obligations now continue in the separate post-K4/M3 K3B bridge. The
+{doc}`Cell histories and extensional lookup <cell-history-and-lookup>` chapter
+explains its conservative definitions, seventeen private closed candidates,
+outer-head lookup equations, compact dependency map, and exact WMI closure
+receipt. That later result does not retroactively move any K3B theorem into
+strict K3 or into the public registry.
 
 ## Reproducing the boundary
 

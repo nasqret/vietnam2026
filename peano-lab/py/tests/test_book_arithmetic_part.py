@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import collections
+import hashlib
 import html
 import json
 from pathlib import Path
@@ -15,6 +16,14 @@ REPO = Path(__file__).resolve().parents[3]
 BOOK = REPO / "book"
 ATLAS = BOOK / "arithmetic-library" / "theorem-atlas.md"
 GUIDE = BOOK / "arithmetic-library" / "guided-tour.md"
+K3B_CHAPTER = BOOK / "arithmetic-library" / "cell-history-and-lookup.md"
+K3B_SITE = BOOK / "_static" / "pa-proof-explorer" / "k3b"
+K3B_RECEIPT = (
+    REPO
+    / "artifacts"
+    / "peano-library"
+    / "ha-k3b-listat-full-closure-219217.json"
+)
 SNAPSHOT = REPO / "artifacts" / "peano-library" / "catalog-v1.json"
 RESEARCH = REPO / "research" / "arithmetic-library" / "catalog.json"
 GENERATOR = REPO / "scripts" / "build_arithmetic_book_atlas.py"
@@ -52,6 +61,8 @@ def test_arithmetic_dashboard_tour_atlas_and_dependency_chapters_are_ordered() -
         "dependency-ladder",
         "divisibility-and-congruence",
         "gcd-and-bezout",
+        "strict-ha-campaign",
+        "cell-history-and-lookup",
         "primes-and-factorization",
         "quadratic-reciprocity",
         "source-audit",
@@ -65,6 +76,146 @@ def test_arithmetic_dashboard_tour_atlas_and_dependency_chapters_are_ordered() -
         source = BOOK / "arithmetic-library" / f"{chapter}.md"
         assert source.is_file()
         assert source.read_text(encoding="utf-8").startswith("# ")
+
+
+def test_private_k3b_book_chapter_and_sparse_graph_match_the_sealed_receipt() -> None:
+    chapter = K3B_CHAPTER.read_text(encoding="utf-8")
+    site = (K3B_SITE / "index.html").read_text(encoding="utf-8")
+    css = (K3B_SITE / "assets" / "k3b.css").read_text(encoding="utf-8")
+    javascript = (K3B_SITE / "assets" / "k3b.js").read_text(encoding="utf-8")
+    receipt_bytes = K3B_RECEIPT.read_bytes()
+    receipt = json.loads(receipt_bytes)
+
+    assert hashlib.sha256(receipt_bytes).hexdigest() == (
+        "c79184bee17a7c053287b3b98dcda74cf00498137499ef62122b9c6d15ec40b8"
+    )
+    assert len(receipt_bytes) == 10_550
+    assert receipt["status"] == "passed"
+    assert receipt["passes"] == 2
+    assert receipt["deterministic_across_passes"] is True
+    assert receipt["provenance"] == {
+        "local_commit": "cb6fcbcc6b51e0b9290e02ed1a16d8b034145b8e",
+        "local_dirty": False,
+        "payload_sha256": (
+            "78e0c3d04b98ba1788edce0cd227dae3f7fe36f391a3a80b962da632a1970835"
+        ),
+    }
+    assert all(row["dne_objects"] == 0 for row in receipt["results"].values())
+
+    for exact in (
+        "WMI job **219217**",
+        "private `closed_checked_candidate` evidence",
+        "unregistered,\nunadmitted",
+        "95,253",
+        "c79184bee17a7c053287b3b98dcda74cf00498137499ef62122b9c6d15ec40b8",
+        "cb6fcbcc6b51e0b9290e02ed1a16d8b034145b8e",
+        "78e0c3d04b98ba1788edce0cd227dae3f7fe36f391a3a80b962da632a1970835",
+        "make ha-k3b-list-lookup-check",
+    ):
+        assert exact in chapter
+    for name in receipt["selected_theorems"]:
+        assert f"`{name}`" in chapter
+
+    match = re.search(
+        r'<script id="k3b-graph-data" type="application/json">\s*(\{.*?\})\s*</script>',
+        site,
+        flags=re.DOTALL,
+    )
+    assert match is not None
+    graph = json.loads(match.group(1))
+    assert graph["schema"] == "peano-k3b-book-graph-v1"
+    assert graph["orientation"] == "dependency_to_dependent"
+    assert graph["default_focus"] == "cell_list_extensional"
+    assert graph["receipt"] == {
+        "artifact": "ha-k3b-listat-full-closure-219217.json",
+        "artifact_commit": "51f6e081a4aa1223bcdff7ff3ff0a662de8f9b08",
+        "artifact_sha256": (
+            "c79184bee17a7c053287b3b98dcda74cf00498137499ef62122b9c6d15ec40b8"
+        ),
+        "job_id": "219217",
+        "source_commit": "cb6fcbcc6b51e0b9290e02ed1a16d8b034145b8e",
+    }
+
+    nodes = graph["nodes"]
+    by_id = {node["id"]: node for node in nodes}
+    assert len(by_id) == len(nodes) == 41
+    assert collections.Counter(node["kind"] for node in nodes) == {
+        "definition": 7,
+        "public": 12,
+        "private": 22,
+    }
+    assert collections.Counter(node["status"] for node in nodes) == {
+        "conservative_definition": 7,
+        "public_checked": 12,
+        "private_support": 5,
+        "closed_checked_candidate": 17,
+    }
+    assert all(not node["id"].startswith(("PA", "PD")) for node in nodes)
+    assert all("tag" not in node for node in nodes)
+
+    edge_keys = [(edge["source"], edge["target"], edge["kind"]) for edge in graph["edges"]]
+    assert len(edge_keys) == len(set(edge_keys))
+    assert {edge["kind"] for edge in graph["edges"]} == {"proof", "notation"}
+    assert all(edge["source"] in by_id and edge["target"] in by_id for edge in graph["edges"])
+
+    for name in receipt["selected_theorems"]:
+        node = by_id[name]
+        closed = receipt["results"][name]
+        assert node["status"] == "closed_checked_candidate"
+        assert node["metrics"] == {
+            "nodes": closed["proof_nodes"],
+            "depth": closed["proof_depth"],
+            "objects": closed["proof_objects"],
+            "edges": closed["proof_edges"],
+            "reused": closed["reused_objects"],
+            "cuts": closed["cuts"],
+        }
+        proof_dependencies = [
+            edge["source"]
+            for edge in graph["edges"]
+            if edge["kind"] == "proof" and edge["target"] == name
+        ]
+        assert proof_dependencies == closed["direct_dependencies"]
+        source = REPO / node["source_path"]
+        audit = REPO / node["test_path"]
+        assert source.is_file() and audit.is_file()
+        assert node["source_line"] <= len(source.read_text(encoding="utf-8").splitlines())
+        assert node["test_line"] <= len(audit.read_text(encoding="utf-8").splitlines())
+
+    for node in nodes:
+        if node["kind"] == "public":
+            assert (K3B_SITE / node["href"]).resolve().is_file()
+        elif node["href"].startswith("../../../arithmetic-library/"):
+            fragment = node["href"].split("#", 1)[1]
+            assert f'id="{fragment}"' in chapter
+
+    local_assets = re.findall(
+        r'<(?:link|script)\b[^>]*(?:href|src)="([^"]+)"', site
+    )
+    assert local_assets == ["assets/k3b.css", "assets/k3b.js"]
+    assert all((K3B_SITE / relative).is_file() for relative in local_assets)
+    assert "https://" not in site
+    assert "http://" not in site
+    assert "fetch(" not in javascript
+    assert "innerHTML" not in javascript
+    assert "immediateIds" in javascript
+    assert 'viewControl.value === "all"' in javascript
+    assert 'edgeControl.value === "none"' in javascript
+    assert "body.k3b-site .k3b-node-definition polygon" in css
+    assert "body.k3b-site .k3b-node-private rect" in css
+    assert "body.k3b-site .k3b-node-public rect" in css
+    assert "prefers-reduced-motion" in css
+
+    toc = (BOOK / "_toc.yml").read_text(encoding="utf-8")
+    assert toc.index("- file: arithmetic-library/strict-ha-campaign") < toc.index(
+        "- file: arithmetic-library/cell-history-and-lookup"
+    ) < toc.index("- file: arithmetic-library/primes-and-factorization")
+    assert "<cell-history-and-lookup>" in (
+        BOOK / "arithmetic-library" / "index.md"
+    ).read_text(encoding="utf-8")
+    assert "<cell-history-and-lookup>" in (
+        BOOK / "arithmetic-library" / "strict-ha-campaign.md"
+    ).read_text(encoding="utf-8")
 
 
 def test_generated_atlas_is_byte_current() -> None:

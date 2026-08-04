@@ -45,11 +45,12 @@ PINNED_UI_ASSETS = {
     "assets/explorer.css": "6dd0cf105c498dec70fe6a7fac04dcda397b40f947de677b36fc9c01962d84bc",
     "assets/explorer.js": "98f11fff5d34b5fa481c1dd6a6b39eef58fed28d00bb7d1f4ac7d1226b4d6606",
 }
-# A second generator owns the conservative defined-notation reading edition.
-# Keeping that subtree outside this frozen explicit manifest preserves every
-# explicit page and receipt byte-for-byte while still allowing both editions
-# to live under one stable static URL.
-RESERVED_SUBTREES = {"defined"}
+# Separate documentation surfaces own the conservative defined-notation
+# reading edition and the private K3B CellHistory/ListAt microsite.  Keeping
+# both subtrees outside this frozen explicit manifest preserves every explicit
+# page and receipt byte-for-byte while allowing the three editions to share
+# one stable static URL.  Neither reserved subtree enters the 557-node graph.
+RESERVED_SUBTREES = {"defined", "k3b"}
 
 EXPECTED = {
     "theorem_count": 557,

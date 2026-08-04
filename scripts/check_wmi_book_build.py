@@ -47,6 +47,9 @@ EXPLORER_REQUIRED = (
     Path("defined/api/graph.schema.json"),
     Path("defined/assets/explorer.css"),
     Path("defined/assets/explorer.js"),
+    Path("k3b/index.html"),
+    Path("k3b/assets/k3b.css"),
+    Path("k3b/assets/k3b.js"),
 )
 EXPLORER_TAG_COUNT = 557
 DEFINED_EXPLORER_TAG_COUNT = 557

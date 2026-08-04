@@ -106,6 +106,9 @@ def test_snapshot_contains_the_complete_proof_explorer_evidence_boundary() -> No
         "book/_static/pa-proof-explorer/defined/api/graph.schema.json",
         "book/_static/pa-proof-explorer/defined/assets/explorer.css",
         "book/_static/pa-proof-explorer/defined/assets/explorer.js",
+        "book/_static/pa-proof-explorer/k3b/index.html",
+        "book/_static/pa-proof-explorer/k3b/assets/k3b.css",
+        "book/_static/pa-proof-explorer/k3b/assets/k3b.js",
     }
     assert required <= selected
     assert any(path.startswith("book/_static/pa-proof-explorer/tag/") for path in selected)
