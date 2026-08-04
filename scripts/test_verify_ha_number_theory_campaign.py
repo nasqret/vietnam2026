@@ -71,16 +71,16 @@ def test_repository_campaign_validates() -> None:
     assert summary == {
         "layers": 12,
         "public_references": 72,
-        "candidate_references": 116,
-        "theorem_evidence": 141,
+        "candidate_references": 119,
+        "theorem_evidence": 144,
         "validation_gates": 7,
     }
     campaign = _campaign()
     assert sum(
         len(layer["candidate_modules"])
         for layer in campaign["layers"]
-    ) == 24
-    assert len(campaign["theorem_evidence"]["test_paths"]) == 27
+    ) == 25
+    assert len(campaign["theorem_evidence"]["test_paths"]) == 28
 
 
 def test_candidate_statement_receipt_must_match_factory(tmp_path: Path) -> None:

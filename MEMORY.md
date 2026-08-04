@@ -1931,3 +1931,31 @@
   `BUILD=2026-08-04e`. The 47-source Book rebuild passes integrity over 2,325
   HTML pages, and its 2,493-file HTML tree has SHA-256
   `a034d5c96b3aa7a108526b013edbcf21e326701b8241d6e97f49b2f7c36a8cd5`.
+- **Generalized-CRT M5d canonical boundary (2026-08-04):** three isolated
+  candidates close the mathematically honest canonical form for all natural
+  moduli. `crt_solution_unique_lcm_zero` converts M5c classification into
+  exact equality when `l=0`; `crt_solution_canonical_remainder_nonzero`
+  divides a fixed solution by nonzero `l`, transports the remainder back into
+  the solution class, retains `ModEq(l,r,x)`, and proves bounded uniqueness;
+  `generalized_binary_crt_canonical_boundary` constructs a solution by M5b,
+  decides `l=0`, and returns either exact uniqueness or a unique `r` with
+  `Below(r,l) := exists h. h+S r=l`. Body receipts are
+  `(2,33,37,28,37,36,0)`, `(6,83,141,39,141,140,0)`, and
+  `(4,66,76,33,76,75,0)`. Closed receipts are
+  `(2300,40,1126,1176,51,43,0,
+  2afc46ac88613c95400eb37f80b1fbda095b18a7f6a774255426b48c35aed9ac)`,
+  `(4086,65,1668,1746,79,64,0,
+  091e8f2b1ba7e4665b87071fcd924ea1098880d65a97bcdd264ed544e33ff0e4)`,
+  and `(17750,80,4239,4426,188,193,0,
+  c704a17f6feed83142b160bbeafcc14764d5ae6590999187eed5455c3ad03bd7)`.
+  All have zero DNE and fit unchanged limits. The retained audit passes 4,021
+  compatible systems: 611 zero-LCM and 3,410 nonzero-LCM cases. Campaign
+  evidence is 119 private candidates and 144 receipts; public registry and
+  catalog remain 409/410. The integrated gates pass 30 structural and 206
+  proof/admission tests, the 508-note/5,119-link vault is unchanged, and the
+  178-source browser app is sealed as `a-1963d4a52744`
+  (`BUILD=2026-08-04f`). The warning-free 47-source Book passes integrity over
+  2,325 HTML pages; its 2,493-file HTML tree has SHA-256
+  `3d2acf4edad4774379b3d618fcd16612e9bb9d855638e20f8936b862599a4fac`.
+  Executable decision/obstruction output, deliberate admission, and finite
+  lifting remain; no zero branch asserts a remainder below zero.

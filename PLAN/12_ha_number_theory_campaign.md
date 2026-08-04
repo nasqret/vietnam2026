@@ -251,7 +251,7 @@ nine-entry append-only tranche-01 admission. The exact M1 root still checks at
 - [x] Describe the complete solution class modulo relational LCM: the four-row
       M5c ladder proves congruence modulo the LCM iff congruence modulo both
       inputs, then classifies every solution relative to one fixed solution.
-- [ ] Supply the three-row M5d canonical boundary: exact uniqueness at zero
+- [x] Supply the three-row M5d canonical boundary: exact uniqueness at zero
       LCM, a unique bounded representative at nonzero LCM, and the honest
       all-modulus disjunction packaging both cases.
 
@@ -580,11 +580,11 @@ and
 At `l=0`, the statement reduces to exact equality, so the proof is uniform
 and does not call division.
 
-M5c brings the isolated campaign to 116 candidate references and 141 exact
-receipts. It changes neither the 409-theorem public registry nor the 410-row
-catalog, and requires no kernel or resource-limit change.
-
-The immediate M5d boundary has exactly three rows:
+M5c brought the isolated campaign to 116 candidate references and 141 exact
+receipts. The three-row M5d boundary is now closed in
+[`ha_generalized_crt_canonical_boundary_candidate.py`](../peano-lab/py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py),
+with its focused audit in
+[`test_ha_generalized_crt_canonical_boundary_candidate.py`](../peano-lab/py/tests/test_ha_generalized_crt_canonical_boundary_candidate.py):
 
 1. `crt_solution_unique_lcm_zero` assumes `l=0`, `IsLCM(l,m,n)`, and a fixed
    CRT solution `x`, then proves every CRT solution `y` equals `x`; it depends
@@ -598,8 +598,22 @@ The immediate M5d boundary has exactly three rows:
    sufficiency, and rows 1--2 to return the correct zero-LCM exact-unique or
    nonzero-LCM bounded-unique branch from gcd/lcm data and compatibility.
 
+Body receipts `(dependencies,commands,nodes,depth,objects,edges,reused)` are
+`(2,33,37,28,37,36,0)`, `(6,83,141,39,141,140,0)`, and
+`(4,66,76,33,76,75,0)`. Empty-context receipts
+`(nodes,depth,objects,edges,reused,Cuts,DNE,digest)` are
+`(2300,40,1126,1176,51,43,0,2afc46ac88613c95400eb37f80b1fbda095b18a7f6a774255426b48c35aed9ac)`,
+`(4086,65,1668,1746,79,64,0,091e8f2b1ba7e4665b87071fcd924ea1098880d65a97bcdd264ed544e33ff0e4)`,
+and
+`(17750,80,4239,4426,188,193,0,c704a17f6feed83142b160bbeafcc14764d5ae6590999187eed5455c3ad03bd7)`.
+All three contain zero `DNE` and fit unchanged limits. The retained oracle
+checks 4,021 compatible systems: 611 zero-LCM exact-uniqueness cases and
+3,410 nonzero-LCM canonical-remainder cases. M5d raises the isolated campaign
+to 119 candidate references and 144 exact receipts without changing the
+409-theorem public registry or 410-row catalog.
+
 Explicit decision/obstruction output, deliberate public admission, and the
-finite-system fold remain after M5d. No row may assert a remainder below zero.
+finite-system fold remain. No row asserts a remainder below zero.
 
 ## Release boundary
 

@@ -4406,3 +4406,52 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   SHA-256
   `a034d5c96b3aa7a108526b013edbcf21e326701b8241d6e97f49b2f7c36a8cd5`.
   No visual click-through, public admission, or deployment is claimed.
+
+## 2026-08-04 — Generalized-CRT M5d canonical boundary closed
+
+- Added the three-row isolated
+  `ha_generalized_crt_canonical_boundary_candidate.py` layer. Its first row,
+  `crt_solution_unique_lcm_zero`, uses `crt_solution_class_iff_lcm` and
+  `mod_eq_zero_iff_eq` to prove pointwise exact uniqueness at `l=0`. Its
+  second row, `crt_solution_canonical_remainder_nonzero`, uses division,
+  multiplication commutativity, remainder-to-congruence, congruence symmetry,
+  M5c classification, and bounded uniqueness to produce a unique solution
+  below nonzero `l`; the reusable row also retains `ModEq(l,r,x)`. The
+  capstone `generalized_binary_crt_canonical_boundary` constructs a fixed
+  solution with total M5b sufficiency, decides `l=0` with `eq_decidable`, and
+  returns either exact zero-LCM uniqueness or a unique bounded nonzero-LCM
+  representative. The latter is expressed by the hygienic expansion
+  `Below(r,l) := exists h. h+S r=l`; no zero branch asserts `Below(_,0)`.
+- Dependency-curried body receipts
+  `(dependencies,commands,nodes,depth,objects,edges,reused)` are
+  `(2,33,37,28,37,36,0)`, `(6,83,141,39,141,140,0)`, and
+  `(4,66,76,33,76,75,0)`. Empty-context receipts
+  `(nodes,depth,objects,edges,reused,Cuts,DNE,digest)` are
+  `(2300,40,1126,1176,51,43,0,
+  2afc46ac88613c95400eb37f80b1fbda095b18a7f6a774255426b48c35aed9ac)`,
+  `(4086,65,1668,1746,79,64,0,
+  091e8f2b1ba7e4665b87071fcd924ea1098880d65a97bcdd264ed544e33ff0e4)`,
+  and `(17750,80,4239,4426,188,193,0,
+  c704a17f6feed83142b160bbeafcc14764d5ae6590999187eed5455c3ad03bd7)`.
+  Two cold passes agree, all certificates check through the intuitionistic
+  entry point with zero DNE, false endpoint mutations fail, and no formula,
+  proof, depth, DAG, or kernel limit changed.
+- Retained bounded semantics cover 4,021 compatible systems with `m,n<7` and
+  `a,b<11`: 611 have zero LCM and satisfy exact uniqueness, while 3,410 have
+  nonzero LCM and exactly one solution below it. This explicitly covers every
+  one-zero modulus case, not only `(0,0)`.
+- The campaign now records 119 private candidate references and 144 exact
+  receipts without public admission; registry/catalog counts remain 409/410.
+  The integrated source gate passes 30 campaign-structure and 206
+  proof/admission tests. Independent knowledge-base, snapshot, and vault gates
+  confirm 410 catalog rows, 409 public theorems, and 508 notes with 5,119
+  resolved links. Browser/deployment contracts pass 25 tests; the regenerated
+  178-source application is sealed as `a-1963d4a52744`
+  (`BUILD=2026-08-04f`).
+- The warning-free 47-source Jupyter Book rebuild passes non-executing
+  integrity over 2,325 HTML pages. The source and built proof explorers are
+  byte-identical 2,285-file trees, with no broken, escaping, fragment, unsafe,
+  or remote-runtime links. The 2,493-file HTML tree contains 87,499,779 bytes
+  and has SHA-256
+  `3d2acf4edad4774379b3d618fcd16612e9bb9d855638e20f8936b862599a4fac`.
+  No deployment or public admission is claimed.

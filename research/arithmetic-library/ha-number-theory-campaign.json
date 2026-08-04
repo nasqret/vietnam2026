@@ -67,7 +67,8 @@
       "peano-lab/py/tests/test_ha_generalized_crt_congruence_candidate.py",
       "peano-lab/py/tests/test_ha_generalized_crt_sufficiency_candidate.py",
       "peano-lab/py/tests/test_ha_generalized_crt_zero_boundary_candidate.py",
-      "peano-lab/py/tests/test_ha_generalized_crt_classification_candidate.py"
+      "peano-lab/py/tests/test_ha_generalized_crt_classification_candidate.py",
+      "peano-lab/py/tests/test_ha_generalized_crt_canonical_boundary_candidate.py"
     ],
     "theorems": [
       {
@@ -1056,6 +1057,27 @@
         "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_classification_candidate.py",
         "statement_sha256": "bf8c300329f1d13f6f62101c6654f17a5369079034e1685c888c25301159e1c9",
         "receipt": {"nodes": 2208, "depth": 39, "objects": 1055, "edges": 1104, "reused": 50, "cuts": 40, "certificate_sha256": "305a913aaca1c3e307d8ca77bb90c063dd67f3fa9f9bdd69e28cf4064cdff7b3"}
+      },
+      {
+        "name": "crt_solution_unique_lcm_zero",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py",
+        "statement_sha256": "d84b07e3b9274fcf8914ad69c75ea56fb64a96268ccc701a5da8aadca9ecc199",
+        "receipt": {"nodes": 2300, "depth": 40, "objects": 1126, "edges": 1176, "reused": 51, "cuts": 43, "certificate_sha256": "2afc46ac88613c95400eb37f80b1fbda095b18a7f6a774255426b48c35aed9ac"}
+      },
+      {
+        "name": "crt_solution_canonical_remainder_nonzero",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py",
+        "statement_sha256": "02710fb2f9af9110f8267dd1feef6815040bc92e81337ff3c347282121904056",
+        "receipt": {"nodes": 4086, "depth": 65, "objects": 1668, "edges": 1746, "reused": 79, "cuts": 64, "certificate_sha256": "091e8f2b1ba7e4665b87071fcd924ea1098880d65a97bcdd264ed544e33ff0e4"}
+      },
+      {
+        "name": "generalized_binary_crt_canonical_boundary",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py",
+        "statement_sha256": "fc76bb161c4986e700253da58219aa9a37ac39e2f3ebebc64c966c73c696ef75",
+        "receipt": {"nodes": 17750, "depth": 80, "objects": 4239, "edges": 4426, "reused": 188, "cuts": 193, "certificate_sha256": "c704a17f6feed83142b160bbeafcc14764d5ae6590999187eed5455c3ad03bd7"}
       }
     ]
   },
@@ -1822,9 +1844,19 @@
             "crt_solution_class_iff_lcm"
           ],
           "role": "Closed-checked but non-public M5c relational-LCM solution-class ladder: ordered-gap divisibility, congruence merging through relational-LCM leastness, equivalence with the pair of input congruences, and classification of every solution relative to a fixed one across all natural moduli."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py",
+          "factory": "make_ha_generalized_crt_canonical_boundary_candidate_theorems",
+          "theorem_names": [
+            "crt_solution_unique_lcm_zero",
+            "crt_solution_canonical_remainder_nonzero",
+            "generalized_binary_crt_canonical_boundary"
+          ],
+          "role": "Closed-checked but non-public M5d canonical boundary: exact uniqueness at relational LCM zero, a unique bounded representative at nonzero relational LCM, and a constructive all-modulus disjunction that never asserts a remainder below zero."
         }
       ],
-      "remaining_gap": "The K4 relational LCM core is public, and 23 generalized-CRT foundation, M5a nonzero-sufficiency, M5b zero-boundary, and M5c relational-LCM classification rows now have deterministic empty-context receipts. For arbitrary natural moduli, gcd compatibility is proved necessary and sufficient for a common solution, and every solution is classified relative to a fixed one modulo any supplied relational lcm. Canonical bounded representatives under the correct nonzero boundary, executable incompatibility decisions, and the K3 finite-system fold remain.",
+      "remaining_gap": "The K4 relational LCM core is public, and 26 generalized-CRT foundation, M5a nonzero-sufficiency, M5b zero-boundary, M5c relational-LCM classification, and M5d canonical-boundary rows now have deterministic empty-context receipts. For arbitrary natural moduli, gcd compatibility is necessary and sufficient for a common solution; solutions are classified modulo any supplied relational lcm; zero lcm gives exact uniqueness; and nonzero lcm gives a unique bounded representative. Executable compatibility/obstruction decisions, deliberate public admission, and the K3 finite-system fold remain.",
       "validation": {
         "path": [
           "manifest_integrity",
