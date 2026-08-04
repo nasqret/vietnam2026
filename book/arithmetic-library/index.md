@@ -9,32 +9,35 @@ Arithmetic.
 
 ```{admonition} The result in one sentence
 :class: tip
-The current runtime contains **393 closed native theorems**, including
+The current runtime contains **409 closed native theorems**, including
 factorization existence, extensional uniqueness, their combined FTA, and a
 constructive theorem producing a prime above every supplied bound. The newest
 137-theorem quadratic-reciprocity campaign now includes parity, constructive
 residue decision, finite folds, factorial and power algebra, modular units,
 sign and half-range bridges, β swap/reindex, finite pigeonhole, replacement
-balance, and exact swap-last product invariance. The next nine entries expose
-canonical remainder, congruence, and bounded modular-inverse interfaces.
+balance, and exact swap-last product invariance. Twenty-five strict-HA entries
+now expose canonical remainder, congruence, bounded modular inverses, relational
+gcd/LCM compatibility, LCM existence and uniqueness, and the gcd--LCM product
+law. A separate eight-row generalized-CRT foundation is closed but remains
+unadmitted while the sufficiency direction is developed.
 ```
 
 <div class="pa-dashboard-metrics" aria-label="Current arithmetic library metrics">
-  <div><strong>393</strong><span>checked native theorems</span></div>
-  <div><strong>1,830,078</strong><span>structural proof occurrences</span></div>
-  <div><strong>53,293</strong><span>self-contained Cuts</span></div>
+  <div><strong>409</strong><span>checked native theorems</span></div>
+  <div><strong>1,875,400</strong><span>structural proof occurrences</span></div>
+  <div><strong>54,582</strong><span>self-contained Cuts</span></div>
   <div><strong>0</strong><span>remaining planned catalog theorems</span></div>
 </div>
 
 The generated snapshot has ordered root
-`539a1195df131ed3e202efa15f48bef76a8b8c757789119e2265172453aaf566`.
+`1e8fac39d1638124c9134d2845fab14e1169f12ad8791f615c9f80cf9f49498c`.
 Every entry is reconstructed from its authored script and checked from the
 empty context. Names, summaries and hashes organize the library; none of them
 grant proof authority.
 
 ## The mathematical metro map
 
-The exact dependency graph has 393 vertices and 1,070 edges and is useful to machines, but a
+The exact dependency graph has 409 vertices and 1,102 edges and is useful to machines, but a
 human first needs the stations. Each box below is a link into the guided tour.
 
 <nav class="pa-roadmap" aria-label="Arithmetic dependency roadmap">
@@ -51,9 +54,9 @@ human first needs the stations. Each box below is a link into the guided tour.
 </nav>
 
 The exact generated graph remains available as an immutable
-[`dependency-graph.mmd`](https://github.com/nasqret/vietnam2026/blob/07932576c3d00d7911acd158d81d9a21167ed2dd/artifacts/peano-library/dependency-graph.mmd).
+[`dependency-graph.mmd`](https://github.com/nasqret/vietnam2026/blob/ff3d0ebd440d52f3df12dbae765fe7acc53ee6c5/artifacts/peano-library/dependency-graph.mmd).
 The {doc}`interactive theorem atlas <theorem-atlas>` gives a readable local
-neighborhood instead of attempting to draw all 1,070 edges at once. The
+neighborhood instead of attempting to draw all 1,102 edges at once. The
 {doc}`native PA proof explorer <proof-explorer>` adds permanent theorem tags,
 numbered tactic-line targets, and the larger quadratic-reciprocity closure.
 Its parallel {doc}`definition-aware edition <defined-proof-explorer>` renders
@@ -164,11 +167,11 @@ One theorem name identifies the same object in four places:
 
 The current synchronized surfaces are:
 
-- [native theorem source](https://github.com/nasqret/vietnam2026/blob/07932576c3d00d7911acd158d81d9a21167ed2dd/peano-lab/py/peano_lab/library/theorems.py);
-- [checked-theorem snapshot](https://github.com/nasqret/vietnam2026/blob/07932576c3d00d7911acd158d81d9a21167ed2dd/artifacts/peano-library/catalog-v1.json);
-- [research catalog](https://github.com/nasqret/vietnam2026/blob/07932576c3d00d7911acd158d81d9a21167ed2dd/research/arithmetic-library/catalog.json);
-- [arithmetic vault map](https://github.com/nasqret/vietnam2026/blob/07932576c3d00d7911acd158d81d9a21167ed2dd/vault/moc/arithmetic-library-moc.md);
-- [deterministic training corpus](https://github.com/nasqret/vietnam2026/tree/07932576c3d00d7911acd158d81d9a21167ed2dd/peano-lab/corpus).
+- [native theorem source](https://github.com/nasqret/vietnam2026/blob/ff3d0ebd440d52f3df12dbae765fe7acc53ee6c5/peano-lab/py/peano_lab/library/theorems.py);
+- [checked-theorem snapshot](https://github.com/nasqret/vietnam2026/blob/ff3d0ebd440d52f3df12dbae765fe7acc53ee6c5/artifacts/peano-library/catalog-v1.json);
+- [research catalog](https://github.com/nasqret/vietnam2026/blob/ff3d0ebd440d52f3df12dbae765fe7acc53ee6c5/research/arithmetic-library/catalog.json);
+- [arithmetic vault map](https://github.com/nasqret/vietnam2026/blob/ff3d0ebd440d52f3df12dbae765fe7acc53ee6c5/vault/moc/arithmetic-library-moc.md);
+- [deterministic training corpus](https://github.com/nasqret/vietnam2026/tree/ff3d0ebd440d52f3df12dbae765fe7acc53ee6c5/peano-lab/corpus).
 
 There is exactly one deliberately unproved catalog boundary: the conventional
 integer-coefficient Bézout interface. Peano Lab quantifies only over naturals.

@@ -169,7 +169,7 @@ OUTPUT = REPO / "book" / "arithmetic-library" / "theorem-atlas.md"
 # The proof snapshot was published by this immutable commit before the book
 # layer was added.  Permalinks keep every source, vault, and artifact receipt
 # valid both in the draft PR and after later branch movement.
-PROOF_SNAPSHOT_COMMIT = "07932576c3d00d7911acd158d81d9a21167ed2dd"
+PROOF_SNAPSHOT_COMMIT = "ff3d0ebd440d52f3df12dbae765fe7acc53ee6c5"
 GITHUB_ROOT = (
     "https://github.com/nasqret/vietnam2026/blob/" + PROOF_SNAPSHOT_COMMIT
 )

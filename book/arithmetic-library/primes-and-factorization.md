@@ -177,7 +177,7 @@ has two deliberately separate checked results:
 
 The companion is a mathematical cross-check, not Peano authority. The native
 β-coded existence, uniqueness, and combined FTA certificates are independently
-checked and synchronized in the 393-theorem runtime.
+checked and synchronized in the 409-theorem runtime.
 
 ## The representation milestone
 

@@ -41,17 +41,18 @@ It separates three facts which are easy to blur in an informal development:
   - Existence from coprimality, the converse, bounded uniqueness, and the exact
     iff-with-unique-witness package.
 * - Canonical relational gcd
-  - closed candidate
-  - Existence, functionality, unique existence, five zero/one edge and
-    swap laws check from the empty context but are not in the public registry.
+  - mixed
+  - The relational gcd core is public. Three canonical packaging rows and five
+    zero/one/swap convenience rows remain closed private candidates.
 * - Universal-property lcm
-  - closed candidate
-  - Seventeen projection, leastness, symmetry, uniqueness, constructor, and
-    zero/one boundary rows check under the forced zero convention.
+  - seven public / ten private
+  - The projections, leastness, symmetry, uniqueness, and both forced-zero
+    constructors are public. The L08 divisibility constructor and nine
+    convenience rows remain private.
 * - Gcd--lcm totality and compatibility
-  - closed K4 candidate
-  - Nine constructive bridge rows close compatible gcd/lcm existence,
-    relational and unique lcm existence, and the product identity.
+  - public K4
+  - All nine constructive bridge rows are public: compatible gcd/lcm
+    existence, relational and unique lcm existence, and the product identity.
 * - Canonical signed naturals
   - closed candidate
   - The representation is frozen. Seventy-four parity, decoder,
@@ -69,14 +70,18 @@ It separates three facts which are easy to blur in an informal development:
   - Doubled-Cantor pairs and successor-tagged cells have exact expanded
     templates. Their theorem ladder has not yet been proved, and uniform lists
     remain blocked on a computation-trace representation.
+* - Generalized CRT
+  - eight closed private candidates
+  - Seven new congruence/necessity rows plus one exactly reused cancellation
+    row prove necessity and obstruction. Sufficiency is not yet proved.
 ```
 
-The public registry therefore has 393 entries. The first nine campaign
-theorems occupy append-only positions 384--392. The isolated corpus consists
-of eight gcd rows, seventeen lcm rows, nine gcd--lcm bridge rows, seventy-four
-strict-K3 signed rows, and one K4 signed-gcd row: 109 candidates in total.
-All stay outside the registry. This tail append leaves the frozen first-247
-model curriculum unchanged.
+The public registry now has **409** entries. The nine tranche-01 interfaces at
+positions 384--392 are followed by the exact 16-row K4 admission at positions
+393--408. The research catalog has **410** entries, including **386**
+`checked_m20` rows. The campaign manifest records **72** public references,
+**101** isolated candidates, and **126** exact theorem receipts. This
+append-only extension leaves the frozen first-247 model curriculum unchanged.
 
 ## Why canonical remainder is a relation
 
@@ -1445,10 +1450,11 @@ This is why the machine manifest adds the honest layer edge
 \(K3\rightarrow K4\). The client is not appended to the strict 74-row K3
 stack, whose digest stays
 `b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`.
-The complete isolated corpus now has 78 candidates and 87 receipts across 18
-candidate modules and 19 focused tests. The public boundary remains 393
-theorems, 56 manifest references, a 45-row definition API over 44 theorems,
-and a 394-row catalog. Nothing in this K4 checkpoint is admitted.
+At this intermediate checkpoint the complete isolated corpus had 78
+candidates and 87 receipts across 18 candidate modules and 19 focused tests;
+the public boundary was still 393 theorems. The later selective K4 admission
+does not include this client: `gcd_signed_bezout_exists` is one of the 19
+checked K4 conveniences which remain private.
 
 The immutable source links are the
 [`campaign manifest`](https://github.com/nasqret/vietnam2026/blob/1d10c37535d829280398c2522ff3fd9d5f059e6c/research/arithmetic-library/ha-number-theory-campaign.json),
@@ -1458,8 +1464,9 @@ and
 
 ## Canonical gcd and universal-property lcm
 
-The next K4 tranche closes the natural-valued gcd and lcm interface without
-adding either operation as a term former. Divisibility remains the relation
+This K4 tranche first closed the natural-valued gcd and lcm interface in
+isolation and was then admitted selectively. It does not add either operation
+as a term former. Divisibility remains the relation
 
 $$
 d\mid n\quad:\!\Longleftrightarrow\quad\exists q,\ n=dq,
@@ -1503,9 +1510,13 @@ $$
 $$
 
 The selected proof proves the right-zero constructor directly and derives the
-left-zero constructor by symmetry. Value and unique-existence corollaries then
-follow from relational uniqueness. The companion gcd tranche supplies five
-function-style boundary laws:
+left-zero constructor by symmetry. Those two constructors,
+<a href="theorem-atlas.html#theorem-is_lcm_zero_right"><code>is_lcm_zero_right</code></a>
+and
+<a href="theorem-atlas.html#theorem-is_lcm_zero_left"><code>is_lcm_zero_left</code></a>,
+are public. The derived zero-value and unique-existence conveniences remain
+private. The companion gcd tranche supplies five function-style boundary
+laws:
 
 $$
 \begin{aligned}
@@ -1517,7 +1528,7 @@ $$
 $$
 
 together with equality of independently chosen gcd witnesses after swapping
-the two inputs. All five close from the empty context and remain nonpublic.
+the two inputs. All five close from the empty context and remain private.
 
 ### The constructive totality route
 
@@ -1549,35 +1560,99 @@ their product as an lcm, and scales it by the gcd. The split uses the already
 proved constructive theorem `eq_decidable`; none of these certificates
 contains `DNE` or a classical axiom.
 
+### The public K4 atlas
+
+Admission is an exact append-only slice: seven universal-property lcm lemmas
+followed by nine bridge lemmas. Each name below opens its theorem-atlas card,
+where the expanded HA statement, direct prerequisites, tactic source, and
+certificate receipt can be inspected.
+
+```{list-table}
+:header-rows: 1
+:widths: 13 40 47
+
+* - Position
+  - Public theorem
+  - Mathematical role
+* - 393
+  - <a href="theorem-atlas.html#theorem-is_lcm_multiple_left"><code>is_lcm_multiple_left</code></a>
+  - An lcm is a multiple of its left input.
+* - 394
+  - <a href="theorem-atlas.html#theorem-is_lcm_multiple_right"><code>is_lcm_multiple_right</code></a>
+  - An lcm is a multiple of its right input.
+* - 395
+  - <a href="theorem-atlas.html#theorem-is_lcm_least"><code>is_lcm_least</code></a>
+  - Every common multiple is a multiple of the lcm.
+* - 396
+  - <a href="theorem-atlas.html#theorem-is_lcm_symm"><code>is_lcm_symm</code></a>
+  - Symmetry of the relational lcm specification.
+* - 397
+  - <a href="theorem-atlas.html#theorem-is_lcm_unique"><code>is_lcm_unique</code></a>
+  - Uniqueness from the universal property.
+* - 398
+  - <a href="theorem-atlas.html#theorem-is_lcm_zero_right"><code>is_lcm_zero_right</code></a>
+  - The forced right-zero constructor.
+* - 399
+  - <a href="theorem-atlas.html#theorem-is_lcm_zero_left"><code>is_lcm_zero_left</code></a>
+  - The forced left-zero constructor.
+* - 400
+  - <a href="theorem-atlas.html#theorem-balanced_bezout_one_implies_coprime"><code>balanced_bezout_one_implies_coprime</code></a>
+  - A balanced Bezout witness for one implies coprimality.
+* - 401
+  - <a href="theorem-atlas.html#theorem-coprime_product_is_lcm"><code>coprime_product_is_lcm</code></a>
+  - The product of coprime inputs satisfies `IsLCM`.
+* - 402
+  - <a href="theorem-atlas.html#theorem-is_lcm_scale_nonzero"><code>is_lcm_scale_nonzero</code></a>
+  - Nonzero common scaling preserves the lcm relation.
+* - 403
+  - <a href="theorem-atlas.html#theorem-balanced_bezout_cancel_gcd"><code>balanced_bezout_cancel_gcd</code></a>
+  - Cancel a nonzero gcd from a balanced Bezout equation.
+* - 404
+  - <a href="theorem-atlas.html#theorem-gcd_zero_inputs"><code>gcd_zero_inputs</code></a>
+  - Both inputs are zero when their gcd is zero.
+* - 405
+  - <a href="theorem-atlas.html#theorem-gcd_lcm_compatible_exists"><code>gcd_lcm_compatible_exists</code></a>
+  - Construct compatible relational gcd and lcm witnesses.
+* - 406
+  - <a href="theorem-atlas.html#theorem-lcm_exists_relational"><code>lcm_exists_relational</code></a>
+  - Totality of the relational lcm specification.
+* - 407
+  - <a href="theorem-atlas.html#theorem-canonical_lcm_exists_unique"><code>canonical_lcm_exists_unique</code></a>
+  - Unique existence of the natural lcm value.
+* - 408
+  - <a href="theorem-atlas.html#theorem-gcd_lcm_product"><code>gcd_lcm_product</code></a>
+  - The relational product identity (g l = a b).
+```
+
 ```{list-table}
 :header-rows: 1
 :widths: 31 8 8 8 7 38
 
-* - Closed K4 endpoint
+* - Public K4 endpoint
   - Nodes
   - Depth
   - Cuts
   - DNE
   - Certificate SHA-256
-* - `gcd_lcm_compatible_exists`
+* - <a href="theorem-atlas.html#theorem-gcd_lcm_compatible_exists"><code>gcd_lcm_compatible_exists</code></a>
   - 9,038
   - 60
   - 101
   - 0
   - `dfe0e69fb172e48b6aa785c0c088ebf1a7cdf09c95ae436305d51d6224e90bc3`
-* - `lcm_exists_relational`
+* - <a href="theorem-atlas.html#theorem-lcm_exists_relational"><code>lcm_exists_relational</code></a>
   - 9,071
   - 61
   - 102
   - 0
   - `f4e764738627255eb885d78b5cefd74663d68be022370a8036ee450b116a7220`
-* - `canonical_lcm_exists_unique`
+* - <a href="theorem-atlas.html#theorem-canonical_lcm_exists_unique"><code>canonical_lcm_exists_unique</code></a>
   - 9,791
   - 62
   - 111
   - 0
   - `3ab4c410a0e4c6717e77d7f951d26304a35b5e9451df299167bb42cadf227747`
-* - `gcd_lcm_product`
+* - <a href="theorem-atlas.html#theorem-gcd_lcm_product"><code>gcd_lcm_product</code></a>
   - 10,441
   - 61
   - 112
@@ -1585,25 +1660,139 @@ contains `DNE` or a classical axiom.
   - `c0829496624e993a4c437aa98c32355605109e728acd03d6b5d857fcb5350d0a`
 ```
 
-Thus the isolated campaign now contains 109 candidates and 118 exact theorem
-receipts across 21 candidate modules and 22 focused tests. The public boundary
-is deliberately unchanged: 393 runtime theorems, 56 public campaign
-references, a 45-row definition freeze over 44 distinct public theorems, and
-a 394-row catalog. The strict 74-row K3 signed stack and its digest
+The selective admission raises the runtime registry to **409** theorems and
+the research catalog to **410** rows, of which **386** are `checked_m20`.
+The campaign manifest now carries **72** public references, **101** isolated
+candidates, and **126** exact theorem receipts. The strict 74-row K3 signed
+stack and its digest
 `b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`
-are also unchanged.
+are unchanged, as is the frozen first-247 model curriculum.
 
-The immutable source checkpoint binds the exact
-[`campaign manifest`](https://github.com/nasqret/vietnam2026/blob/9b2feb66b5fcc2530394f5b6bcce5e63dfea627f/research/arithmetic-library/ha-number-theory-campaign.json),
-[`gcd/lcm RFC`](https://github.com/nasqret/vietnam2026/blob/9b2feb66b5fcc2530394f5b6bcce5e63dfea627f/research/arithmetic-library/ha-canonical-gcd-lcm-rfc-v1.md),
-[`gcd-edge tactic source`](https://github.com/nasqret/vietnam2026/blob/9b2feb66b5fcc2530394f5b6bcce5e63dfea627f/peano-lab/py/peano_lab/library/ha_canonical_gcd_edges_candidate.py),
-[`gcd-edge focused audit`](https://github.com/nasqret/vietnam2026/blob/9b2feb66b5fcc2530394f5b6bcce5e63dfea627f/peano-lab/py/tests/test_ha_canonical_gcd_edges_candidate.py),
-[`relational-lcm tactic source`](https://github.com/nasqret/vietnam2026/blob/9b2feb66b5fcc2530394f5b6bcce5e63dfea627f/peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py),
-[`relational-lcm focused audit`](https://github.com/nasqret/vietnam2026/blob/9b2feb66b5fcc2530394f5b6bcce5e63dfea627f/peano-lab/py/tests/test_ha_relational_lcm_candidate.py),
-[`totality/compatibility tactic source`](https://github.com/nasqret/vietnam2026/blob/9b2feb66b5fcc2530394f5b6bcce5e63dfea627f/peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py),
+### What remains private
+
+Admission deliberately stops at the reusable mathematical interface. The
+following 19 checked K4 conveniences retain exact receipts but are not public
+registry entries:
+
+* canonical gcd packaging (3): `canonical_gcd_exists`,
+  `canonical_gcd_functional`, and `canonical_gcd_exists_unique`;
+* gcd boundary conveniences (5): `canonical_gcd_zero_right_iff`,
+  `canonical_gcd_zero_left_iff`, `canonical_gcd_one_left_iff`,
+  `canonical_gcd_one_right_iff`, and `canonical_gcd_swap_functional`;
+* residual lcm conveniences (10): `is_lcm_of_dvd`,
+  `is_lcm_of_dvd_right`, `product_common_multiple`, `is_lcm_refl`,
+  `is_lcm_one_left`, `is_lcm_one_right`, `lcm_zero_left_value`,
+  `lcm_zero_right_value`, `lcm_zero_left_exists_unique`, and
+  `lcm_zero_right_exists_unique`;
+* the signed client (1): `gcd_signed_bezout_exists`.
+
+A checked private receipt is evidence of empty-context closure, not an
+admission by implication. The public/private boundary is therefore explicit
+and machine-audited.
+
+The current implementation and audit trail are the
+[`canonical gcd/lcm RFC`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/research/arithmetic-library/ha-canonical-gcd-lcm-rfc-v1.md),
+[`relational-lcm source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py),
+[`relational-lcm tests`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_relational_lcm_candidate.py),
+[`totality/compatibility source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py),
+[`totality/compatibility tests`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_lcm_totality_bridge_candidate.py),
+and the
+[`exact K4 admission test`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_number_theory_k4_gcd_lcm_admission.py).
+
+## Generalized CRT: necessity is now formal
+
+The next layer keeps congruence relational and accepts zero moduli. Its two
+surface definitions are
+
+$$
+\operatorname{ModEq}(d,a,b)\;:\!\Longleftrightarrow\;
+\exists u,v,\ a+du=b+dv,
+$$
+
 and
-[`totality/compatibility focused audit`](https://github.com/nasqret/vietnam2026/blob/9b2feb66b5fcc2530394f5b6bcce5e63dfea627f/peano-lab/py/tests/test_ha_lcm_totality_bridge_candidate.py).
-Every row remains isolated, unregistered, and unadmitted.
+
+$$
+\operatorname{CRTSolution}(x;m,n;a,b)\;:\!\Longleftrightarrow\;
+\operatorname{ModEq}(m,x,a)\land\operatorname{ModEq}(n,x,b).
+$$
+
+Both expand hygienically before parsing. The eight-row private foundation is
+one byte-for-byte reused support theorem followed by seven new theorems:
+
+```{list-table}
+:header-rows: 1
+:widths: 8 39 53
+
+* - Row
+  - Candidate
+  - Role
+* - 1
+  - `mod_eq_add_cancel_left`
+  - Reused support: cancel a common left addend in balanced congruence.
+* - 2
+  - `mod_eq_zero_iff_eq`
+  - Congruence modulo zero is equality.
+* - 3
+  - `mod_eq_add_cancel_right`
+  - Cancel a common right addend.
+* - 4
+  - `mod_eq_scale`
+  - Scale a congruence and its modulus by the same factor.
+* - 5
+  - `mod_eq_unscale_nonzero`
+  - Cancel a nonzero common scale.
+* - 6
+  - `crt_solution_pair_congruent`
+  - Two common solutions are congruent modulo each input modulus.
+* - 7
+  - `crt_common_solution_implies_gcd_compatible`
+  - A common solution forces the two target residues to agree modulo a gcd.
+* - 8
+  - `crt_incompatibility_obstructs_solution`
+  - Failure of gcd compatibility rules out every common solution.
+```
+
+The dependency picture separates checked solid edges from the planned dashed
+route. In particular, necessity is a theorem now; the converse construction
+is not.
+
+```text
+flowchart LR
+  G[IsGCD(g,m,n)] --> D[g divides m and n]
+  S[common solution x] --> R[congruences modulo m and n]
+  D --> N[necessity now: a congruent b mod g]
+  R --> N
+  G --> O[obstruction now]
+  NC[not compatible mod g] --> O
+  G -. next .-> Q[m = gM and n = gN]
+  Q -.-> CP[Coprime(M,N)]
+  CP -.-> B[coprime CRT / balanced Bezout]
+  C[compatible mod g] -. next .-> B
+  B -.-> E[construct a common solution]
+  E -.-> L[classify solutions modulo IsLCM]
+```
+
+The necessity and obstruction certificates have respectively
+`(518 nodes, depth 34, 13 Cuts)` and
+`(560 nodes, depth 35, 14 Cuts)`. Two cache-cleared closures agree; all eight
+certificates use the normal intuitionistic checker and contain zero `DNE`
+nodes. The focused audit has six tests, including false-endpoint mutations
+and bounded semantic checks.
+
+The unproved dashed route must factor the moduli as \(m=gM\) and \(n=gN\),
+derive `Coprime(M,N)`, use compatibility with the coprime binary CRT or
+balanced Bezout construction, and then classify solutions through the public
+relational `IsLCM` interface. **Generalized-CRT sufficiency, existence,
+canonical representatives, and admission have not been proved.** They must
+not be inferred from the eight candidate receipts.
+
+Read the
+[`generalized-CRT RFC`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/research/arithmetic-library/ha-generalized-crt-rfc-v1.md),
+[`candidate source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py),
+and
+[`six-test focused audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_congruence_candidate.py)
+for the exact expanded formulas, ordered dependencies, proof scripts, and
+certificate hashes.
 
 ## Independent pair/cell checkpoint
 
@@ -1660,12 +1849,13 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 ```
 
-The first command checks the 12-layer campaign manifest, all 118 theorem
-receipts, the 45-row definition API over 44 distinct public-theorem replays,
-the nine public admissions, eight isolated gcd rows, seventeen relational-lcm
-rows, nine gcd--lcm totality/compatibility rows, seventy-four isolated signed
-representation, normalization, arithmetic, natural-scaling, and
-Bezout-bridge rows, plus the one K4 signed-gcd client. The
-second cross-checks all 393 public runtime theorems against the 394-row
+The first command checks the 12-layer campaign manifest and all **126**
+theorem receipts: **25** public evidence rows and **101** closed private
+candidates. This includes the exact nine-row tranche-01 admission, the exact
+16-row K4 admission, eight private gcd conveniences, ten private lcm
+conveniences, seventy-four strict-K3 signed rows, the private K4 signed-gcd
+client, and the eight-row generalized-CRT foundation. It also checks the
+45-row definition API over 44 distinct public-theorem replays. The second
+cross-checks all **409** public runtime theorems against the **410**-row
 research catalog. The third independently replays the full public ladder and
 compares the deterministic snapshot.

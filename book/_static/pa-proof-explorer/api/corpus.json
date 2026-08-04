@@ -329,12 +329,12 @@
       "scope": "public",
       "script_sha256": "5616651d3dcf075001160615505edb05d04cefd583845340871c6f2fcde03df2",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L282",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L288",
         "kind": "declaration",
-        "line": 282,
+        "line": 288,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "9e65feaf6493655f7f3c8eb6e3240f2ea7dd2fe9eb5c99edd188f63657c2ac08",
       "statement": "forall n. 0 + n = n",
@@ -515,12 +515,12 @@
       "scope": "public",
       "script_sha256": "6eae9665708e6d64cebb3937f90b30a20945849935def32abe7e513752420ab3",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L381",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L387",
         "kind": "declaration",
-        "line": 381,
+        "line": 387,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "cb39802716982d25a4aef5eb8d06220218549da8cacf9cfb8d13fce93e33f33a",
       "statement": "forall n. n * 1 = n",
@@ -801,12 +801,12 @@
       "scope": "public",
       "script_sha256": "54fc6220ce3cdbda8427754800f76e2ea677c2558abca0ee8010dfe617718a56",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3715",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3721",
         "kind": "declaration",
-        "line": 3715,
+        "line": 3721,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "13d77692dcda99066a598fb530ea0748ecc7d6dfdc6b1dc46856b4e4d3aaec98",
       "statement": "forall p g. (~(p = 1) /\\ forall c d. p = c * d -> c = 1 \\/ d = 1) -> (exists x. p = g * x) -> g = 1 \\/ p = g",
@@ -1218,12 +1218,12 @@
       "scope": "public",
       "script_sha256": "e71071844387f6d94bb6dc573fefadc030a6fd4fde27c4f845632d0096695af4",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L552",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L558",
         "kind": "declaration",
-        "line": 552,
+        "line": 558,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "f48045555c785b60bf4cbd3debafeac6f4cdb13841f1e0c6421c8253e664c257",
       "statement": "forall a b. a + b = 0 -> b = 0",
@@ -1589,12 +1589,12 @@
       "scope": "public",
       "script_sha256": "129f4016645a69c762ea62f8cf9a1b810c5146efabf4ccf525b0f49e996bb9f8",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L395",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L401",
         "kind": "declaration",
-        "line": 395,
+        "line": 401,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "e67d935e762f44322b9a8f9f0e80f5fdecdf6cf53052858315bd3cc438b161d4",
       "statement": "forall n. ~(S n = 0)",
@@ -2113,12 +2113,12 @@
       "scope": "public",
       "script_sha256": "4707c29115529203f3f0ba14e9c101a2f770ef2b7519778c5d34018ee6be84d8",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L569",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L575",
         "kind": "declaration",
-        "line": 569,
+        "line": 575,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "60819937135e39f0b4f3bec8cd0136860828114c07764b21c3036860ec964593",
       "statement": "forall n m. n * m = 0 -> n = 0 \\/ m = 0",
@@ -2253,12 +2253,12 @@
       "scope": "public",
       "script_sha256": "73213e5869a968d485aeb34b8d82e4b3eab5ad18aacc7c5c824db861cd577de7",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L622",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L628",
         "kind": "declaration",
-        "line": 622,
+        "line": 628,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "c206d5262a5940ab327ed74b285101519b9e4ad94889309c146e87c940a2cf3c",
       "statement": "forall n. n = 0 \\/ exists k. n = S k",
@@ -2642,12 +2642,12 @@
       "scope": "public",
       "script_sha256": "00a999161648b291e7a85eef974c308b6003949955164d9d5d8f124fd75f1786",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L308",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L314",
         "kind": "declaration",
-        "line": 308,
+        "line": 314,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "d0d68bea8ecaa81edc6374b98258c56f6c6dc8ae309d05986e20b59258412dac",
       "statement": "forall n m k. (n + m) + k = n + (m + k)",
@@ -2907,12 +2907,12 @@
       "scope": "public",
       "script_sha256": "24ada53f8dd7b132871dccf2327c5e6aa7ba56d302cf62c48fba351c14d8c1bc",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L348",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L354",
         "kind": "declaration",
-        "line": 348,
+        "line": 354,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "9c6cabde152d379098f5285a636e22f270d2c667b2d0c54a47622ce99f701dc6",
       "statement": "forall n m k. n * (m + k) = n * m + n * k",
@@ -3193,12 +3193,12 @@
       "scope": "public",
       "script_sha256": "297a5ccb0cfdb6ff10ffdd67547204e11d8bf18b8222059f31a2ec97e9811575",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L361",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L367",
         "kind": "declaration",
-        "line": 361,
+        "line": 367,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "5a148a407ea8f4bb18296550c0a086a6a5237d709297cdbc1bdc6345f96fbf47",
       "statement": "forall n m k. (n * m) * k = n * (m * k)",
@@ -3362,12 +3362,12 @@
       "scope": "public",
       "script_sha256": "3760a88e0ec358535ebfcb19279cb64df2eaaf66896aa902eb5569d37dfe4ef4",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1936",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1942",
         "kind": "declaration",
-        "line": 1936,
+        "line": 1942,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "c0e0fbc7b35c0f53abee472d325de54596002e22c0eb2cbb5e2779eedbea4de3",
       "statement": "forall a n m. (exists q. n = a * q) -> exists s. n * m = a * s",
@@ -3507,12 +3507,12 @@
       "scope": "public",
       "script_sha256": "5616651d3dcf075001160615505edb05d04cefd583845340871c6f2fcde03df2",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L315",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L321",
         "kind": "declaration",
-        "line": 315,
+        "line": 321,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "56daebd294873b602dffddb1ce9f31fc4357b2fa21e7cf34d97cb954160f5816",
       "statement": "forall n. 0 * n = 0",
@@ -3872,12 +3872,12 @@
       "scope": "public",
       "script_sha256": "755f60e50096bb267fa19129a745c1227a7d27ed32c6051c54634d86d0b7579b",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L289",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L295",
         "kind": "declaration",
-        "line": 289,
+        "line": 295,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "ab20b4522b9bc2de3ba12b3e02ac8a55fe99851e41b7ded83ea82d10959ec1f8",
       "statement": "forall n m. S n + m = S (n + m)",
@@ -4267,12 +4267,12 @@
       "scope": "public",
       "script_sha256": "18ebe8104c7042366a039aee66717d7b4096c7d301914ef5520b790ebeb330ec",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L296",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L302",
         "kind": "declaration",
-        "line": 296,
+        "line": 302,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "a1dc920cb59da450a00ec8c33ce318f6fa5bfd2a7bf235c6ccf2f54bbcc47884",
       "statement": "forall n m. n + m = m + n",
@@ -4531,12 +4531,12 @@
       "scope": "public",
       "script_sha256": "59318389200eebb066cded408563951958ffe3bddec23004ef68a3c5db1e1bbe",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L322",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L328",
         "kind": "declaration",
-        "line": 322,
+        "line": 328,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "82e29aa4530dc52a7172cee51012579f25cd709af84d1bb5d61063fa273f9dc3",
       "statement": "forall n m. S n * m = n * m + m",
@@ -4954,12 +4954,12 @@
       "scope": "public",
       "script_sha256": "21e2b0d63207318a0d73cfed08a20eb5eeb6681cd66fb9c1a96e65b3b62d9553",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L336",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L342",
         "kind": "declaration",
-        "line": 336,
+        "line": 342,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "b27b985e55253f2b2f8db1fd1a84b3909e143eb5c52203ede2449ce40b73a581",
       "statement": "forall n m. n * m = m * n",
@@ -5729,12 +5729,12 @@
       "scope": "public",
       "script_sha256": "91616b687de53bd26f15cef37afb8ad988ffb90dabbf756e15d89e08341bd100",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5048",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5054",
         "kind": "declaration",
-        "line": 5048,
+        "line": 5054,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "fa13b28053560c1cc2858d5fee0807a3a0e5276fa5504a37b1d9134ec062d205",
       "statement": "forall B c. ~(c = 0) -> (forall t. (exists h. S t + S h = S B) -> exists k. c = S t * k) -> exists c2. (~(c2 = 0) /\\ forall t. (exists h. S t + S h = S (S B)) -> exists k. c2 = S t * k)",
@@ -5933,12 +5933,12 @@
       "scope": "public",
       "script_sha256": "38bc2adff3f9b088245425b456228b1478e494ddc85624c94896f14750fe7f68",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1637",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1643",
         "kind": "declaration",
-        "line": 1637,
+        "line": 1643,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "aaff2ee3312b618970201e14d7c8d3857c01c811668f50885c95a6dfe084a675",
       "statement": "forall a b. a + b = 0 -> a = 0",
@@ -6412,12 +6412,12 @@
       "scope": "public",
       "script_sha256": "a332833f34b01fc7bc8b4329834eeb57e782903b71ab23cba2af2fbcddc4ed3b",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5082",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5088",
         "kind": "declaration",
-        "line": 5082,
+        "line": 5088,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "a8b8fda3126e26cdb74eaba1264640cfda739df907c47b4a67e95385acc56bf9",
       "statement": "forall B. exists c. (~(c = 0) /\\ forall t. (exists h. S t + S h = S B) -> exists k. c = S t * k)",
@@ -6657,12 +6657,12 @@
       "scope": "public",
       "script_sha256": "9a8061d8aa6d6ca4bc09e2c55055df872e2d3d0e863221b6ff7001fea6e7c65a",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5588",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5594",
         "kind": "declaration",
-        "line": 5588,
+        "line": 5594,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "f1186134b292da8cae23a85e77bdb61550ac3b229ceb42a834b4c1f81f3ca8d8",
       "statement": "forall N C B. (forall t. (exists h. S t + S h = S N) -> exists q. C = S t * q) -> forall t. (exists h. S t + S h = S N) -> exists q. C * B = S t * q",
@@ -6823,12 +6823,12 @@
       "scope": "public",
       "script_sha256": "5616651d3dcf075001160615505edb05d04cefd583845340871c6f2fcde03df2",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L374",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L380",
         "kind": "declaration",
-        "line": 374,
+        "line": 380,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "51b318aa41cddd85b6547036b7df77e019d2c4f368909987ae95c75284353f95",
       "statement": "forall n. 1 * n = n",
@@ -7415,12 +7415,12 @@
       "scope": "public",
       "script_sha256": "259ac25691de4e9b42649d27e8c2de4435566c93620690b02fdf3f81104eb10d",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1670",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1676",
         "kind": "declaration",
-        "line": 1670,
+        "line": 1676,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "b7683894bd9356fd209340637bd3eab9376d94bec47763f9f7dc72800faa4636",
       "statement": "forall a b. a * b = 1 -> a = 1 /\\ b = 1",
@@ -7625,12 +7625,12 @@
       "scope": "public",
       "script_sha256": "64b9ea88e98b7444871c5d0480a31598285f176addd1f8e10e4b339c277e5a57",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2027",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2033",
         "kind": "declaration",
-        "line": 2027,
+        "line": 2033,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "01e26a055e827662d9994de17ed49589fe4f0798ae1224b8a790410c107fc3e6",
       "statement": "forall d. (exists y. 1 = d * y) -> d = 1",
@@ -7779,12 +7779,12 @@
       "scope": "public",
       "script_sha256": "dbdc00dea33acfaf22a60946b7f8c5cfd9d43c7cc793b548172e5d6c90b7ee8a",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2629",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2635",
         "kind": "declaration",
-        "line": 2629,
+        "line": 2635,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "3a68ed022092f83467a983d17e66a6b9d12e8d7081547fed4c5edd2ec54ecd1c",
       "statement": "forall a d. (exists x. 1 = d * x) -> (exists y. a = d * y) -> d = 1",
@@ -7911,12 +7911,12 @@
       "scope": "public",
       "script_sha256": "877d1e82f3837cf9e0c9379e84753724162b2f1723b6499eb1c05c1bc57faab0",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L737",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L743",
         "kind": "declaration",
-        "line": 737,
+        "line": 743,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "d51302f10fec5bb58a6d30fb76ebe5dceb3c00ca337096bdb3e2482de55e8253",
       "statement": "forall n. n <= S n",
@@ -8139,12 +8139,12 @@
       "scope": "public",
       "script_sha256": "8109351f71b6ae8e8610d5ecc202371b93d1a3a0b66c686710c470b58583aefe",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L416",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L422",
         "kind": "declaration",
-        "line": 416,
+        "line": 422,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "e6fefb835d4ee176a1eaa0bce0643d45b029b81cb78c4fbf7ee0e35a142afa98",
       "statement": "forall n m k. n <= m -> m <= k -> n <= k",
@@ -8382,12 +8382,12 @@
       "scope": "public",
       "script_sha256": "4e8c6162397e4c1587b3d3d2dba975d910b742d62d00544559cb7d21b27c17ab",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1717",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1723",
         "kind": "declaration",
-        "line": 1717,
+        "line": 1723,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "a2b2c3bbe66500eb5ca477088a9b4150b7c6440929043241785ce848c5947400",
       "statement": "forall a b. ~(a = 0) -> ~(b = 0) -> ~(a * b = 0)",
@@ -8490,12 +8490,12 @@
       "scope": "public",
       "script_sha256": "73b8135c2f6ffbe465aae18fd4a8769ad70e90d7a7ae0533dc42305f3d2c522c",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5283",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5289",
         "kind": "declaration",
-        "line": 5283,
+        "line": 5289,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "35746a63850c374676cc252aecc3d7d84a55cd81bcf65e329fc08f90b3336dda",
       "statement": "forall a b. exists k. a * b = b * k",
@@ -8635,12 +8635,12 @@
       "scope": "public",
       "script_sha256": "a9e6cd5e3848e6747f3a6a3b1d4cee9623d1d9176ab76a79b641c0d03d697e86",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4153",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4159",
         "kind": "declaration",
-        "line": 4153,
+        "line": 4159,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "795caa6425fb050706cc3546ca4730bc5d554431526540a40e4d74df10b9427d",
       "statement": "forall c i. ~(S ((S i) * c) = 0)",
@@ -8894,12 +8894,12 @@
       "scope": "public",
       "script_sha256": "f3f9077680e505301bafb80f79173979c11e1971f13b5ae71cb9df843958f44d",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L875",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L881",
         "kind": "declaration",
-        "line": 875,
+        "line": 881,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "28df949465d6e3ceeb0df203885664d68b26840313915f2fa9cf2907fcbb74ef",
       "statement": "forall a b. (exists k. k + S a = S b) -> exists r. r + a = b",
@@ -9324,12 +9324,12 @@
       "scope": "public",
       "script_sha256": "41514a258f132a2d8eb54b02a8aba12d9e70d50e0d003bea3cb8540898432eb6",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L970",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L976",
         "kind": "declaration",
-        "line": 970,
+        "line": 976,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "9aa435b5cbe696d3e1683982ae57b5a2a97cb159ffc78e39df0533fc54c24cef",
       "statement": "forall a b. (exists k. k + a = b) -> a = b \\/ exists k. k + S a = b",
@@ -9552,12 +9552,12 @@
       "scope": "public",
       "script_sha256": "f256f1b771ba5116acc1326fe7d62573a2fa678d284b9d95769b038a9f35e85f",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L910",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L916",
         "kind": "declaration",
-        "line": 910,
+        "line": 916,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "a0cfd3b60ada4fa937d27fc6fdef6abb37fae59bca470dfd6b75c67f85eac585",
       "statement": "forall a b. (exists k. k + S a = b) -> exists r. r + a = b",
@@ -9746,12 +9746,12 @@
       "scope": "public",
       "script_sha256": "920ac5b5c85fac68dbb333161d129456bdea78b76a49175b2b66ed4061fd4bb3",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L433",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L439",
         "kind": "declaration",
-        "line": 433,
+        "line": 439,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "3927c577da48a4293ad7d8744268fdde1aa1eeef5e2a061380c5d838ecfc397e",
       "statement": "forall p n. S p + n = n -> false",
@@ -10051,12 +10051,12 @@
       "scope": "public",
       "script_sha256": "96e6faddd6d818a0abc0d4feb205c0bd1025728049e2e4798e61f1ddca630f22",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L950",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L956",
         "kind": "declaration",
-        "line": 950,
+        "line": 956,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "7211b5a0d05709ccac374128add9d2b280625271727d782b643466767ad30dc4",
       "statement": "forall n. ~(exists k. k + S n = n)",
@@ -10541,12 +10541,12 @@
       "scope": "public",
       "script_sha256": "9ba80ab41552ba5ab5985701bdd34af96b7695b39396d1c3cd9a541795742578",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1101",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1107",
         "kind": "declaration",
-        "line": 1101,
+        "line": 1107,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "7dd01c4eae97125928b6b37b24655091b521ce272af6d570940c45216d55d67c",
       "statement": "forall a b. a = b \\/ ((exists k. k + S a = b) \\/ exists k. k + S b = a)",
@@ -10784,12 +10784,12 @@
       "scope": "public",
       "script_sha256": "b62cfa367c08a604990af09c22b59d7c24f94864acf79022844351536e4e2ddd",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L688",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L694",
         "kind": "declaration",
-        "line": 688,
+        "line": 694,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "a91c872fb26e2ec995d94608f899ed6e1607be52a519dffebef01948354bb80d",
       "statement": "forall a b c. a + c = b + c -> a = b",
@@ -11505,12 +11505,12 @@
       "scope": "public",
       "script_sha256": "69888c327bf9f4220b2c3e9f80e3e405b43f015e4015c1cae7aba7b6812c8dc2",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2111",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2117",
         "kind": "declaration",
-        "line": 2111,
+        "line": 2117,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "18f46599348e0791b7b21889f6db802d0f53bf7b3a52f1178a03cb1f76261bb4",
       "statement": "forall c u v r. c * u = c * v + r -> exists w. r = c * w",
@@ -11884,12 +11884,12 @@
       "scope": "public",
       "script_sha256": "f4306e04d575e4227e2ac979ab711fff03cadfccd93aa9051ec9f4b6d266d675",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2166",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2172",
         "kind": "declaration",
-        "line": 2166,
+        "line": 2172,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "7f6b50ec8e3012023762279c9e20ff9ebf002595aee6bfe90c5f33f75d592abb",
       "statement": "forall c a b q r. (exists u. a = c * u) -> (exists v. b = c * v) -> a = b * q + r -> exists w. r = c * w",
@@ -12248,12 +12248,12 @@
       "scope": "public",
       "script_sha256": "541ba288ee53c9176e0dd3a7440681c97aa1299fad63c01255bf9ede75d16f71",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4883",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4889",
         "kind": "declaration",
-        "line": 4883,
+        "line": 4889,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "c2120664ece9ae7d4b251b5bc2ee2597f3b87824f430891c332f57f9cff74cca",
       "statement": "forall c k d. (exists u. S (k * c) = d * u) -> (exists v. c = d * v) -> d = 1",
@@ -12425,12 +12425,12 @@
       "scope": "public",
       "script_sha256": "e29f39a32a86b077e02366e44791c22e60003683f0f5918532c992509ff5cd0f",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L388",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L394",
         "kind": "declaration",
-        "line": 388,
+        "line": 394,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "812b772af9e57fd75fed43f7111fac39124d12ce4e3b38153ee25283ca022a1d",
       "statement": "forall n m k. (n + m) * k = n * k + m * k",
@@ -12888,12 +12888,12 @@
       "scope": "public",
       "script_sha256": "6f05d3cdc9765909311c70e55f2a31688d3141e1fece0f4c06b6d40106e3c10d",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4912",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4918",
         "kind": "declaration",
-        "line": 4912,
+        "line": 4918,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "cdfbee758617b339a26cec76173e33e91cb22fee70f561b14bf7b7193d5fb541",
       "statement": "forall c i j gap d. j = i + gap -> (exists u. S ((S i) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> exists w. gap * c = d * w",
@@ -13073,12 +13073,12 @@
       "scope": "public",
       "script_sha256": "0f23e9581eec24619c552c45f4fbe2ef1af39c1b7de68a0cbfa3526de23a9d05",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1969",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1975",
         "kind": "declaration",
-        "line": 1969,
+        "line": 1975,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "b0be5b1f076b2f4a501e2681b1d56e7f8106fcecb50ab8b59d937493cc3ce7c7",
       "statement": "forall a b n. (exists q. n = a * q) -> (exists r. a = b * r) -> exists s. n = b * s",
@@ -13202,12 +13202,12 @@
       "scope": "public",
       "script_sha256": "56e65c66197e9081a510037e32deaad7e1ff9b51db725f4faaf6305244594de2",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1909",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1915",
         "kind": "declaration",
-        "line": 1909,
+        "line": 1915,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "07c44222e48907d2399eef0080de259f0a35b0f1bdb12a245917411b2348c012",
       "statement": "forall a. exists q. a = a * q",
@@ -13741,12 +13741,12 @@
       "scope": "public",
       "script_sha256": "e0ae6d64d42f35627d81bd1c6e3b0e745bc14820b76743faaace358f7ad3a000",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L409",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L415",
         "kind": "declaration",
-        "line": 409,
+        "line": 415,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "0a15bd5f9390c3a9d101b6dff1308bba67cbf064d6931727471886b663df42fa",
       "statement": "forall n. n <= n",
@@ -13873,12 +13873,12 @@
       "scope": "public",
       "script_sha256": "bc24235c80d808270965b40ffda724bcd7518b5627a1b7050c22f9c80f8ebce1",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L744",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L750",
         "kind": "declaration",
-        "line": 744,
+        "line": 750,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "1388d0341145c00ecd3af5d7bdf3399195dbfbe500b87daaad268e6823ffc3ab",
       "statement": "forall n. n <= 0 -> n = 0",
@@ -14389,12 +14389,12 @@
       "scope": "public",
       "script_sha256": "80dd092edbea9a10484a911e4e50d6e4143d37bbc5d029287ed473e67001819e",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1326",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1332",
         "kind": "declaration",
-        "line": 1326,
+        "line": 1332,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "a5e114563443a85f22ff753502029e87db807bae1ad194519cb746229e58cf11",
       "statement": "forall d n. exists q r. n = S d * q + r /\\ S r <= S d",
@@ -14722,12 +14722,12 @@
       "scope": "public",
       "script_sha256": "51bba196eac113365bcdacb1a0f666c36f7788dde9d54288a69abcf23195c214",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1372",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1378",
         "kind": "declaration",
-        "line": 1372,
+        "line": 1378,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "93b71df4e7a65bcf04ba848656d8ae04e4b04a87a3b792e1110a2989d015b55f",
       "statement": "forall m n. ~(m = 0) -> exists q r. n = m * q + r /\\ S r <= m",
@@ -14815,12 +14815,12 @@
       "scope": "public",
       "script_sha256": "55b8488abe9436e2e843f7b16087468fa249e32daaceaa884396c4a250a27561",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1895",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1901",
         "kind": "declaration",
-        "line": 1895,
+        "line": 1901,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "5faca3d1ac8ea2fadec56c870014dfff96d1a5d3d3035a3abfb136ff095dbec9",
       "statement": "forall a. exists q. 0 = a * q",
@@ -15032,12 +15032,12 @@
       "scope": "public",
       "script_sha256": "ed049fdae2de84351c82b93d4210a2b09019961f480a072544dd5f05ca1d4cc3",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2255",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2261",
         "kind": "declaration",
-        "line": 2255,
+        "line": 2261,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "42ac569127a070ee7bb57048676a3ecfc9f385991a10a499da0601200d212c3b",
       "statement": "forall a. (((exists x. a = a * x) /\\ (exists y. 0 = a * y)) /\\ forall c. (exists u. a = c * u) -> (exists v. 0 = c * v) -> exists w. a = c * w)",
@@ -15291,12 +15291,12 @@
       "scope": "public",
       "script_sha256": "e567b3b10bb4fd9d7dbaf11e28a917d005078c95288a9efb08f9d294a91009e0",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2198",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2204",
         "kind": "declaration",
-        "line": 2198,
+        "line": 2204,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "605c15927917455e8977cbd5350ab3687a3582ac4d267a3fc1dd94cf44aebb47",
       "statement": "forall c b q r. (exists u. b = c * u) -> (exists v. r = c * v) -> exists w. b * q + r = c * w",
@@ -15818,12 +15818,12 @@
       "scope": "public",
       "script_sha256": "55db4bce67010329968fe61ca68811197b3c3ac9eb8b548550788084744efe62",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2402",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2408",
         "kind": "declaration",
-        "line": 2402,
+        "line": 2408,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "df6ab44f9a9efda6e722b95a056b3abe28d77eee8f3aab03932fc19ec4df7f94",
       "statement": "forall d a b q r. a = b * q + r -> (((exists x. b = d * x) /\\ (exists y. r = d * y)) /\\ forall c. (exists u. b = c * u) -> (exists v. r = c * v) -> exists w. d = c * w) -> (((exists x. a = d * x) /\\ (exists y. b = d * y)) /\\ forall c. (exists u. a = c * u) -> (exists v. b = c * v) -> exists w. d = c * w)",
@@ -16207,12 +16207,12 @@
       "scope": "public",
       "script_sha256": "36aed21229e3c93b109eb8717d3bfa70d2c09e85ee19316cc8bc5a680347b69a",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2700",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2706",
         "kind": "declaration",
-        "line": 2700,
+        "line": 2706,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "d44c54aff4b42cf07eea75dd9394f0ebe010009ff2cd2ad80805c8469b3d8840",
       "statement": "forall a b c d. (a + b) + (c + d) = (c + b) + (a + d)",
@@ -17086,12 +17086,12 @@
       "scope": "public",
       "script_sha256": "1e886239af167f356afbb30dbeb6f003399db77d1f618a59a536d4a803206c90",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2733",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2739",
         "kind": "declaration",
-        "line": 2733,
+        "line": 2739,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "94a2fb212662b16864a4360d1e5d48f026de841c35bbca0f80006073d7b9d37d",
       "statement": "forall a b q r d xp yp xn yn. a = b * q + r -> b * xp + r * yp = d + (b * xn + r * yn) -> a * yp + b * (xp + q * yn) = d + (a * yn + b * (xn + q * yp))",
@@ -18145,12 +18145,12 @@
       "scope": "public",
       "script_sha256": "cc6d77b2d31db21808b991832abcda27257d3893ec9cf96df7221a8de361e2c3",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2815",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2821",
         "kind": "declaration",
-        "line": 2815,
+        "line": 2821,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "b77ffd3ad7cd2b3eea6e8567accc166f7211a96efb525cdb7188be3c9a066af5",
       "statement": "forall B b. (exists t. t + b = B) -> forall a. exists d. ((((exists x. a = d * x) /\\ (exists y. b = d * y)) /\\ forall c. (exists u. a = c * u) -> (exists v. b = c * v) -> exists w. d = c * w) /\\ exists xp yp xn yn. a * xp + b * yp = d + (a * xn + b * yn))",
@@ -18362,12 +18362,12 @@
       "scope": "public",
       "script_sha256": "9a6b0ba53a27d2f4a47bffc3af87cca77fc6d9f664ed341da7e9c6eb0e7270e4",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2912",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2918",
         "kind": "declaration",
-        "line": 2912,
+        "line": 2918,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "25a05a364ad77c974eb3354aea8329b7a218d2ebd6c6fdc9305501cca7faee06",
       "statement": "forall a b. exists d. ((((exists x. a = d * x) /\\ (exists y. b = d * y)) /\\ forall c. (exists u. a = c * u) -> (exists v. b = c * v) -> exists w. d = c * w) /\\ exists xp yp xn yn. a * xp + b * yp = d + (a * xn + b * yn))",
@@ -18684,12 +18684,12 @@
       "scope": "public",
       "script_sha256": "754b3dd56cda19400e6b337f1ab300967de764992e7456a6573f3cc252f5335a",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3051",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3057",
         "kind": "declaration",
-        "line": 3051,
+        "line": 3057,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "d05f2451ab560d7c548b054f87eca1fcaa056aa82f3970851352fd981a5c58c4",
       "statement": "forall a b. (forall d. (exists x. a = d * x) -> (exists y. b = d * y) -> d = 1) -> exists xp yp xn yn. a * xp + b * yp = 1 + (a * xn + b * yn)",
@@ -19426,12 +19426,12 @@
       "scope": "public",
       "script_sha256": "f7c2ff82bb6afc44a709bb28affc8821a0f1653841d64c8e8c577bf9589aed76",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2931",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2937",
         "kind": "declaration",
-        "line": 2931,
+        "line": 2937,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "ae9667e4d6939ccce5b5fdc1021abf5c2fe98563065786c2f67061d856a71261",
       "statement": "forall a b d xp yp xn yn z. a * xp + b * yp = d + (a * xn + b * yn) -> a * (xp * z) + (b * z) * yp = d * z + (a * (xn * z) + (b * z) * yn)",
@@ -20109,12 +20109,12 @@
       "scope": "public",
       "script_sha256": "dc29c62d42d73a2653c1e67df48a001bfb85e0e82af388e2c70577ed6456316f",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2995",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3001",
         "kind": "declaration",
-        "line": 2995,
+        "line": 3001,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "5c25a7d684e455a717221dc64c3474d4c83af4a98a81a4a7a818870c0f5377ae",
       "statement": "forall c a b d xp yp xn yn. (exists u. a = c * u) -> (exists v. b = c * v) -> a * xp + b * yp = d + (a * xn + b * yn) -> exists w. d = c * w",
@@ -20665,12 +20665,12 @@
       "scope": "public",
       "script_sha256": "e23236d4e2579eaab30dd43109751184b55613c53b270f90191e5320eb4e120d",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3083",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3089",
         "kind": "declaration",
-        "line": 3083,
+        "line": 3089,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "52410918b28722a6e980784aad6f556d359af3d13330ec0fce63ad2228de6857",
       "statement": "forall a b z. (forall d. (exists x. a = d * x) -> (exists y. b = d * y) -> d = 1) -> (exists q. b * z = a * q) -> exists w. z = a * w",
@@ -21599,12 +21599,12 @@
       "scope": "public",
       "script_sha256": "4e06d074c4b15babcff036adfbade218ce162c5c5f10f6e1ac9448596673427f",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4948",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4954",
         "kind": "declaration",
-        "line": 4948,
+        "line": 4954,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "bd63a52da9f0fcd1286dc9427801a17a94ae6641666aec4e485491a880d15368",
       "statement": "forall c i j gap. j = i + gap -> (exists k. c = gap * k) -> forall d. (exists u. S ((S i) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1",
@@ -22279,12 +22279,12 @@
       "scope": "public",
       "script_sha256": "c0545ce4e7a4232c4cec853e11cec397af531583b505b4483e7b1040baac5177",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5107",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5113",
         "kind": "declaration",
-        "line": 5107,
+        "line": 5113,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "de000604b0b66479388d75f45fb3b07e2b4d94049684931d82cbe82f2fb47251",
       "statement": "forall B c i j. (forall t. (exists h. S t + S h = S B) -> exists k. c = S t * k) -> (exists g. g + S i = j) -> (exists h. h + j = B) -> forall d. (exists u. S ((S i) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1",
@@ -22907,12 +22907,12 @@
       "scope": "public",
       "script_sha256": "556c8f2b5338162f19fcc82431df8a449f11266b40e067ae711331e059618cac",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5139",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5145",
         "kind": "declaration",
-        "line": 5139,
+        "line": 5145,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "c0093931d20376278362ea52e54bdfc58682f30d6ec766acd2643dc3b9c45b2c",
       "statement": "forall B c. (forall t. (exists h. S t + S h = S B) -> exists k. c = S t * k) -> forall i j. ~(i = j) -> (exists hi. hi + i = B) -> (exists hj. hj + j = B) -> forall d. (exists u. S ((S i) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1",
@@ -23397,12 +23397,12 @@
       "scope": "public",
       "script_sha256": "8192d7e19199c934c916b884f60dc2f547ae9066172b2fd7f15a5039cb16fd3a",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5190",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5196",
         "kind": "declaration",
-        "line": 5190,
+        "line": 5196,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "85a849e61d64607e8f324874863de971a26f5f06d357f964dbcb43c008330bf0",
       "statement": "forall a b n. (forall d. (exists x. a = d * x) -> (exists y. n = d * y) -> d = 1) -> (forall d. (exists x. b = d * x) -> (exists y. n = d * y) -> d = 1) -> forall d. (exists x. a * b = d * x) -> (exists y. n = d * y) -> d = 1",
@@ -24871,12 +24871,12 @@
       "scope": "public",
       "script_sha256": "0d3d3467fbed2c64dd9a1d1aeb4c8584ad5ecc97818c14f7b5b3940cc6af3da5",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5721",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5727",
         "kind": "declaration",
-        "line": 5721,
+        "line": 5727,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "01feb615786fbe1101fd6e2e59b180d66197f47cc93fc5c8d8c7b5cf2a57310d",
       "statement": "forall N c k P. (forall t. (exists h. S t + S h = S N) -> exists q. c = S t * q) -> (exists h. h + S k = N) -> ~(P = 0) -> (forall i. (exists h. h + S i = k) -> exists q. P = S ((S i) * c) * q) -> (forall j. (exists g. g + k = j) -> (exists h. h + j = N) -> forall d. (exists u. P = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1) -> (~(P * S ((S k) * c) = 0) /\\ ((forall i. (exists h. h + S i = S k) -> exists q. P * S ((S k) * c) = S ((S i) * c) * q) /\\ forall j. (exists g. g + S k = j) -> (exists h. h + j = N) -> forall d. (exists u. P * S ((S k) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1))",
@@ -25101,12 +25101,12 @@
       "scope": "public",
       "script_sha256": "dc9f240a393f8385f40c8803e8c4b107c16aabddf1955b4d60b95a46c240edfc",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L636",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L642",
         "kind": "declaration",
-        "line": 636,
+        "line": 642,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "12e2687abb140d605935ba75b2cbee0564fe619358e580a9079990290ea21b26",
       "statement": "forall n. ~(n = 0) -> exists k. n = S k",
@@ -25389,12 +25389,12 @@
       "scope": "public",
       "script_sha256": "1afa112eab7389423542e999725c1335eb87cda1dbb62dbacc992447767b6f65",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4654",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4660",
         "kind": "declaration",
-        "line": 4654,
+        "line": 4660,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "d65d401c53d748e47eb18d0d6f2474a64729c6551f8a70fe903148bbee1c96fe",
       "statement": "forall m n xp yp xn yn. m * xp + n * yp = 1 + (m * xn + n * yn) -> exists u v. n * yp + m * u = (1 + n * yn) + m * v",
@@ -25587,12 +25587,12 @@
       "scope": "public",
       "script_sha256": "dc154be143889df5e592b7707c64dbef6215a513cede9b1b805d80b655a9afb1",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4668",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4674",
         "kind": "declaration",
-        "line": 4668,
+        "line": 4674,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "43c577f6b431eba19337ee7bf55c154e9b1055fc6fbb175c562c90dbb0fd5929",
       "statement": "forall m n xp yp xn yn. m * xp + n * yp = 1 + (m * xn + n * yn) -> exists u v. m * xp + n * u = (1 + m * xn) + n * v",
@@ -25982,12 +25982,12 @@
       "scope": "public",
       "script_sha256": "9137e0d6a47c6d886787b0bc7f5830568e334a3ac7114e48e83af871a636c66f",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3922",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3928",
         "kind": "declaration",
-        "line": 3922,
+        "line": 3928,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "e8ffea8e43497bd3006ee256041311fd591484aa05e518246c54e4e5e0569bc5",
       "statement": "forall m a b c. (exists u v. a + m * u = b + m * v) -> exists r s. (a * c) + m * r = (b * c) + m * s",
@@ -26408,12 +26408,12 @@
       "scope": "public",
       "script_sha256": "3f405d1d52bf173efd1c7dbe8665307799364b370b7bd1b3939abe14cb80612b",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3956",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3962",
         "kind": "declaration",
-        "line": 3956,
+        "line": 3962,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "a181f56ea2ea2cbb31d89983037b67a225b01a92dc0e612c5d32e4b1632a8416",
       "statement": "forall m a b c. (exists u v. a + m * u = b + m * v) -> exists r s. (c * a) + m * r = (c * b) + m * s",
@@ -26577,12 +26577,12 @@
       "scope": "public",
       "script_sha256": "3981f626c6ca3f85cafbfe68d4968253098c71299c19aea0cae905680ad9582e",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4338",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4344",
         "kind": "declaration",
-        "line": 4338,
+        "line": 4344,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "7a52a2860a504d7f2a88df4443e61b76e1291017917c36c1b92714a30a90587a",
       "statement": "forall m a. (exists k. a = m * k) -> exists u v. a + m * u = 0 + m * v",
@@ -27187,12 +27187,12 @@
       "scope": "public",
       "script_sha256": "fe360ea5e6ebef2d166a0536d7b4788dad28695672f4b8ced50bdd6fe42f246e",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3872",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3878",
         "kind": "declaration",
-        "line": 3872,
+        "line": 3878,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "a552046bd0ab35b76b41c6ed28b7fa51acb419db5e3f77d6c537902e5010cd0a",
       "statement": "forall m a b c d. (exists u v. a + m * u = b + m * v) -> (exists r s. c + m * r = d + m * s) -> exists x y. (a + c) + m * x = (b + d) + m * y",
@@ -27345,12 +27345,12 @@
       "scope": "public",
       "script_sha256": "e9b122b1e435250ec61720de8bb6930d83cdc50714d72325c58268e5877b4c8d",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3791",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3797",
         "kind": "declaration",
-        "line": 3791,
+        "line": 3797,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "13881c1eb56688046b42cc3195c3e2329bd9c58703066f669135d8dc23cb253a",
       "statement": "forall m a. exists u v. a + m * u = a + m * v",
@@ -28114,12 +28114,12 @@
       "scope": "public",
       "script_sha256": "cbd426a370e0fbd4183bb75ab81bee5e9fa93f4bc67b31517fa7efe426957861",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3822",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3828",
         "kind": "declaration",
-        "line": 3822,
+        "line": 3828,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "4db5483e8af5d591f6f0dfbbbc5ef68d4237101388e36733058959463f9241f0",
       "statement": "forall m a b c. (exists u v. a + m * u = b + m * v) -> (exists r s. b + m * r = c + m * s) -> exists x y. a + m * x = c + m * y",
@@ -28415,12 +28415,12 @@
       "scope": "public",
       "script_sha256": "6a062721ee6b1769a13665c562fe38a52cd8c2c75d9d2426e1b79e2509cca547",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4680",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4686",
         "kind": "declaration",
-        "line": 4680,
+        "line": 4686,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "c2ba594fd8bb6c7d38cfd16ebd0e5403b410483c0aae7af6d6a26fcfecdca210",
       "statement": "forall k a z. exists u v. ((a + z) + k * z) + S k * u = a + S k * v",
@@ -32534,12 +32534,12 @@
       "scope": "public",
       "script_sha256": "947498ae6230a685f72377ec9aa3ceae146778dac93bcc3a2b425ea2bffe65d6",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4694",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4700",
         "kind": "declaration",
-        "line": 4694,
+        "line": 4700,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "5d7fb54f3541f81070a248c4d518aa150344afab693f52476d9c04f434a12b39",
       "statement": "forall m n a b. ~(m = 0) -> ~(n = 0) -> (forall d. (exists u. m = d * u) -> (exists v. n = d * v) -> d = 1) -> exists x. (exists u v. x + m * u = a + m * v) /\\ (exists r s. x + n * r = b + n * s)",
@@ -32841,12 +32841,12 @@
       "scope": "public",
       "script_sha256": "3e10f5f9f23ff5f735cecd88e83083c33ea1a63dd4494f44c4cbd8c9146c7a93",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5236",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5242",
         "kind": "declaration",
-        "line": 5236,
+        "line": 5242,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "01ebe77e17a37615d0f483d247356e35e3986ae9e3b4ebad452ca9d31a11cc81",
       "statement": "forall m P x a. (exists k. P = m * k) -> (exists u v. x + P * u = a + P * v) -> exists r s. x + m * r = a + m * s",
@@ -33466,12 +33466,12 @@
       "scope": "public",
       "script_sha256": "b723c2039809445c5ec6eae3fb0f311a2ac0a695925031e64c830119ce83b973",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5255",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5261",
         "kind": "declaration",
-        "line": 5255,
+        "line": 5261,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "17680dea1884f090884b8862b9134e570accf5ea829bbf741b17ba2364fdfeb0",
       "statement": "forall P n x b. ~(P = 0) -> ~(n = 0) -> (forall d. (exists u. P = d * u) -> (exists v. n = d * v) -> d = 1) -> exists z. ((forall m a. (exists k. P = m * k) -> (exists u v. x + m * u = a + m * v) -> exists r s. z + m * r = a + m * s) /\\ exists q r. z + n * q = b + n * r)",
@@ -33971,12 +33971,12 @@
       "scope": "public",
       "script_sha256": "4041567b90226ef6291fc349cffebc81a4b0bac74c61b64e19869bf544b73818",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4185",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4191",
         "kind": "declaration",
-        "line": 4185,
+        "line": 4191,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "5c5b3b1046264da9c682f2f333804203ab88af457cda85228fe75d6f38e9f207",
       "statement": "forall b c i. exists x. ((exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + x)",
@@ -34262,12 +34262,12 @@
       "scope": "public",
       "script_sha256": "5ad9869663672130fa480001f9fcb0e064e2933d58459ed98bd210b4c1c88ef6",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L521",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L527",
         "kind": "declaration",
-        "line": 521,
+        "line": 527,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "3c3230ddb2704c50b932be91f8b4e1a11ed586bc9e2d73b6f6c9b9c0840137e8",
       "statement": "forall n m. n <= m \\/ m <= n",
@@ -34545,12 +34545,12 @@
       "scope": "public",
       "script_sha256": "30f8748f77dcc8cf349975e8e6a0a74fda48ebeddfebc286500409b00c50d698",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L709",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L715",
         "kind": "declaration",
-        "line": 709,
+        "line": 715,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "624cea1a14cf82fe4cc6c57e4ca740317be613bd7c0b7cce9f315d79b01d5aeb",
       "statement": "forall a b c. a + b = a + c -> b = c",
@@ -35146,12 +35146,12 @@
       "scope": "public",
       "script_sha256": "e1231cc9081fff2354dea310aba5947af8a20d513568921737ae6096c516cb06",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1207",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1213",
         "kind": "declaration",
-        "line": 1207,
+        "line": 1213,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "db1cb64c7817fd658dc1023cd61b1799d64b0df39ce4a5b83b4dc2fbb00f1697",
       "statement": "forall r m a b. (exists k. k + S r = m) -> ~(r = (a + m) + b)",
@@ -35781,12 +35781,12 @@
       "scope": "public",
       "script_sha256": "8357cb3b10a1777ee65a9e179b2027fce44d1b460daba97fefecf10a8f276cc1",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1451",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1457",
         "kind": "declaration",
-        "line": 1451,
+        "line": 1457,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "363d2b665e87faadfd4b7b7e034b489679e7526de496687bf53781152b13bfa0",
       "statement": "forall m q q2 r s k. (exists z. z + S r = m) -> S k + q = q2 -> ~(m * q + r = m * q2 + s)",
@@ -36939,12 +36939,12 @@
       "scope": "public",
       "script_sha256": "d01316a0895f313f543866ab66efb8bf687df6839bd8eb45f0fa1baff5582a01",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1511",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1517",
         "kind": "declaration",
-        "line": 1511,
+        "line": 1517,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "d366dbfecee89002dd0c85ad1a6b7e409e9ca7f393319e5bf15a8491f58e70b9",
       "statement": "forall m n q r q2 r2. n = m * q + r -> (exists k. k + S r = m) -> n = m * q2 + r2 -> (exists k. k + S r2 = m) -> q = q2 /\\ r = r2",
@@ -37888,12 +37888,12 @@
       "scope": "public",
       "script_sha256": "18e8cf455e8294e9e223e4738d72d3283e5da6ff963484eae0d38afaf356ed79",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4217",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4223",
         "kind": "declaration",
-        "line": 4217,
+        "line": 4223,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "3232561dfb21a983e3c394c5963376ee66c31daf5ad157a5e48bbc0c32fbe58f",
       "statement": "forall b c i x y. ((exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + x) -> ((exists h. h + S y = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + y) -> x = y",
@@ -39212,12 +39212,12 @@
       "scope": "public",
       "script_sha256": "a45aa6caad1e0b03603cec2be5c276632716f8057b5035ace3d8988126555967",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5843",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5849",
         "kind": "declaration",
-        "line": 5843,
+        "line": 5849,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "a5a21d052ac7845ddca48292b0f2369c6496fc2c65839552b952e42bcd54293f",
       "statement": "forall N c b e k P z. (exists h. h + S k = N) -> ~(P = 0) -> (forall i. (exists h. h + S i = k) -> exists q. P = S ((S i) * c) * q) -> (forall i a. (exists h. h + S i = k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S ((S i) * e) + a) -> exists u v. z + S ((S i) * c) * u = a + S ((S i) * c) * v) -> (forall j. (exists g. g + k = j) -> (exists h. h + j = N) -> forall d. (exists u. P = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1) -> exists z2. forall i a. (exists h. h + S i = S k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S ((S i) * e) + a) -> exists u v. z2 + S ((S i) * c) * u = a + S ((S i) * c) * v",
@@ -39890,12 +39890,12 @@
       "scope": "public",
       "script_sha256": "92be2c1a04c1e33ae0e09d92a19a5092d898a3eba6eed152dcb963ccddde4f69",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5959",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5965",
         "kind": "declaration",
-        "line": 5959,
+        "line": 5965,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "34de2082ebd4e00a5208002f9cd511b7a7ef977e02690a0f36a3d9bbcd42cca8",
       "statement": "forall N c b e k P z. (forall t. (exists h. S t + S h = S N) -> exists q. c = S t * q) -> (exists h. h + S k = N) -> ~(P = 0) -> (forall i. (exists h. h + S i = k) -> exists q. P = S ((S i) * c) * q) -> (forall i a. (exists h. h + S i = k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S ((S i) * e) + a) -> exists u v. z + S ((S i) * c) * u = a + S ((S i) * c) * v) -> (forall j. (exists g. g + k = j) -> (exists h. h + j = N) -> forall d. (exists u. P = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1) -> exists z2. (~(P * S ((S k) * c) = 0) /\\ ((forall i. (exists h. h + S i = S k) -> exists q. P * S ((S k) * c) = S ((S i) * c) * q) /\\ ((forall i a. (exists h. h + S i = S k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S ((S i) * e) + a) -> exists u v. z2 + S ((S i) * c) * u = a + S ((S i) * c) * v) /\\ forall j. (exists g. g + S k = j) -> (exists h. h + j = N) -> forall d. (exists u. P * S ((S k) * c) = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1)))",
@@ -41160,12 +41160,12 @@
       "scope": "public",
       "script_sha256": "6a1526882190cc8abe0a0a0a1694388c5f5d6fefa694842dfce8885911644468",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L6032",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L6038",
         "kind": "declaration",
-        "line": 6032,
+        "line": 6038,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "fcaa1ad66a61878e417916a9bceeed24af086368ea1ff2680f55fd5ba091646e",
       "statement": "forall N c b e. (forall t. (exists h. S t + S h = S N) -> exists q. c = S t * q) -> forall k. (exists h. h + k = N) -> exists P z. (~(P = 0) /\\ ((forall i. (exists h. h + S i = k) -> exists q. P = S ((S i) * c) * q) /\\ ((forall i a. (exists h. h + S i = k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S ((S i) * e) + a) -> exists u v. z + S ((S i) * c) * u = a + S ((S i) * c) * v) /\\ forall j. (exists g. g + k = j) -> (exists h. h + j = N) -> forall d. (exists u. P = d * u) -> (exists v. S ((S j) * c) = d * v) -> d = 1)))",
@@ -41252,12 +41252,12 @@
       "scope": "public",
       "script_sha256": "e95f19a3c8d4d4dedfcf508d5509f2a4427ecd43c79041905e0142894cdb6f5c",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L789",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L795",
         "kind": "declaration",
-        "line": 789,
+        "line": 795,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "ddd5db3983be17f4d6c8c6b722475023c8669a058b2e9bd35d12b309cba0b5b2",
       "statement": "forall a b. exists k. k + a = b + a",
@@ -41455,12 +41455,12 @@
       "scope": "public",
       "script_sha256": "4524d3214d2214d52b6162d0fc19f16f6882f12845874cdcb3b2e0b22e23f61f",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L859",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L865",
         "kind": "declaration",
-        "line": 859,
+        "line": 865,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "40aab899d6397b53f2d238f3db48da0d47239e2216e57403e79a75185f947236",
       "statement": "forall a b. (exists k. k + a = b) -> exists r. r + S a = S b",
@@ -41615,12 +41615,12 @@
       "scope": "public",
       "script_sha256": "5ea34e81cfb218135c2998de4adc9609a5a6a31c00713eed3461a9c1e824ac79",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L757",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L763",
         "kind": "declaration",
-        "line": 757,
+        "line": 763,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "4494c150a7a94d62a766667aaa95f4a1eec369a8fc869653cf4176bd4000e3d9",
       "statement": "forall n. ~(n = 0) -> 1 <= n",
@@ -41803,12 +41803,12 @@
       "scope": "public",
       "script_sha256": "b1cbf9ff68ebf1bd59bec34c63893472fec3b53b2c16aee92ad90dc739d08574",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1279",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1285",
         "kind": "declaration",
-        "line": 1279,
+        "line": 1285,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "a578fc9b3053ed35acb818843612c65549701d84088bb622cb9843c46eb1f2b0",
       "statement": "forall a b c. (exists k. k + a = b) -> exists r. r + a * c = b * c",
@@ -42125,12 +42125,12 @@
       "scope": "public",
       "script_sha256": "03f543c8967709669837431da35cf1594a2388cbe9bd88fdf54aa6e1082647f8",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5568",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5574",
         "kind": "declaration",
-        "line": 5568,
+        "line": 5574,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "66af4967f32e442be1560b012b0697cbddbd6787a053fe8692e8618d0ff8a771",
       "statement": "forall C B. ~(C = 0) -> exists h. h + B = C * B",
@@ -42661,12 +42661,12 @@
       "scope": "public",
       "script_sha256": "496a91e2ae0a5649cacc9fa81bd10b45d20552ec87f4e44891cce2f29259d0ac",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L893",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L899",
         "kind": "declaration",
-        "line": 893,
+        "line": 899,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "03056e46396906ab5bf3720e3dcf1d828212c325c83a5fa7252c9b6f146b59d4",
       "statement": "forall a b. (exists k. k + a = b) -> exists r. r + a = S b",
@@ -42962,12 +42962,12 @@
       "scope": "public",
       "script_sha256": "705b9a3b8709987e24a024908bc7f95c88e0fa05eba7f0e61f097adbabf011a0",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5551",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5557",
         "kind": "declaration",
-        "line": 5551,
+        "line": 5557,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "6c1395c2a2381859c14c97aee31e64dfd15e16600df10320852890010205d6d3",
       "statement": "forall c i. exists h. h + c = S ((S i) * c)",
@@ -43609,12 +43609,12 @@
       "scope": "public",
       "script_sha256": "3c57bfdb4c97ef01416d5ad552742dec41df6bd3ea5a427e356342936157f60d",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5675",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5681",
         "kind": "declaration",
-        "line": 5675,
+        "line": 5681,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "e0ee537e0ccf8fed8dc4a3d69fd431a0d54ec1026022f0a3eae93defb213c12b",
       "statement": "forall b s C j. ~(C = 0) -> exists h. h + S s = S ((S j) * (C * S (b + s)))",
@@ -43754,12 +43754,12 @@
       "scope": "public",
       "script_sha256": "223286aedf11980e16b496ed4195be6eb346de8c889d77cee0989f75cb626921",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5536",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5542",
         "kind": "declaration",
-        "line": 5536,
+        "line": 5542,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "14bd9de2dae47ae7ca5a561015b71e1df46faa19026af13091875f5830257469",
       "statement": "forall b c i x. ((exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + x) -> exists h. h + x = b",
@@ -43869,12 +43869,12 @@
       "scope": "public",
       "script_sha256": "67a2ccd15a3481ef6e6a18b9e663cd7f8eab0ec252c1610ac8bc0eafc3034c14",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L801",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L807",
         "kind": "declaration",
-        "line": 801,
+        "line": 807,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "bc4fc77db7f244c46eafc79c96749865938a05fb40dc9bec13e8db24c765d5f6",
       "statement": "forall a b. exists k. k + a = a + b",
@@ -44789,12 +44789,12 @@
       "scope": "public",
       "script_sha256": "684e7c123294e7a9197ed9a93dc6f411f78f27e68bca0181d95b2e09c386309b",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5609",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L5615",
         "kind": "declaration",
-        "line": 5609,
+        "line": 5615,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "e69a8e46281914f8d98fe25fcdefe47e05d016200c179718394ffbb590deea7f",
       "statement": "forall b c i x C s j. ((exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + x) -> ~(C = 0) -> exists h. h + S x = S ((S j) * (C * S (b + s)))",
@@ -45291,12 +45291,12 @@
       "scope": "public",
       "script_sha256": "dd3a4947652b7c8429f636c2a91ec525537ba1f9fc4646426b71717676eff8e9",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4049",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4055",
         "kind": "declaration",
-        "line": 4049,
+        "line": 4055,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "2de5db4e8964a0b5be462c814509a69c93c8dd5b651c7577b16a8ee2a3cf21dc",
       "statement": "forall m a b. (exists ha. ha + S a = m) -> (exists hb. hb + S b = m) -> (exists u v. a + m * u = b + m * v) -> a = b",
@@ -46064,12 +46064,12 @@
       "scope": "public",
       "script_sha256": "60cbd478640e579d548a9f0b8eb9a30f01c6fa17c7afa65658f275563e717b24",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4085",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4091",
         "kind": "declaration",
-        "line": 4085,
+        "line": 4091,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "06c55d08895f2f09677fb203ab266c4517905faab7a45e760ec3f287e819d7b4",
       "statement": "forall m b x. ~(m = 0) -> (exists h. h + S x = m) -> (exists u v. b + m * u = x + m * v) -> exists q. b = q * m + x",
@@ -46368,12 +46368,12 @@
       "scope": "public",
       "script_sha256": "e6d515c5ad7ab377aadfed94a9a555201cfcc4013bc4ea0e14ac0d5510b3aba6",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4313",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4319",
         "kind": "declaration",
-        "line": 4313,
+        "line": 4319,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "75884d0875f17379bdf775a1b5b86f2e64ad648a24de969a78e205d363d52330",
       "statement": "forall b c i x. (exists h. h + S x = S ((S i) * c)) -> (exists u v. b + S ((S i) * c) * u = x + S ((S i) * c) * v) -> ((exists h. h + S x = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + x)",
@@ -48145,12 +48145,12 @@
       "scope": "public",
       "script_sha256": "41d3b2cde6961c3e2428db6024beff41519719c9de3e9a1ea7d2bcf8b6a7380e",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L6149",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L6155",
         "kind": "declaration",
-        "line": 6149,
+        "line": 6155,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "a837dd3dfccf6a0ee6d3e3b5910f3da128d21b7211df61db3a4f284afa8b5998",
       "statement": "forall k b e s. exists z c. (((exists h. h + S s = S ((S k) * c)) /\\ exists q. z = q * S ((S k) * c) + s) /\\ forall i a. (exists h. h + S i = k) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. b = q * S ((S i) * e) + a) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists q. z = q * S ((S i) * c) + a))",
@@ -49545,12 +49545,12 @@
       "scope": "public",
       "script_sha256": "eaa69593859205aeae122009d33accea8dd984163c30c97d0059bc88458595c6",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3452",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3458",
         "kind": "declaration",
-        "line": 3452,
+        "line": 3458,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "719e6b63d82a6e5cb05de34268d31207c27b71d0d2b49e586a749c85d975fd5e",
       "statement": "forall p. (~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1) -> ~(p = 0)",
@@ -50179,12 +50179,12 @@
       "scope": "public",
       "script_sha256": "d571ec8bbfeaa3ce480b45345745317f3f5f7c0f43ea33f462bfed53f11be689",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1018",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1024",
         "kind": "declaration",
-        "line": 1018,
+        "line": 1024,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "7dba9cb70baddda9aa321d20b0df98844d06fcb4bec8faab22e21e411dd645bd",
       "statement": "forall a b c. (exists k. k + a = b) -> (exists k. k + S b = c) -> exists k. k + S a = c",
@@ -52057,12 +52057,12 @@
       "scope": "public",
       "script_sha256": "df5fc81c1532691efd2ab29fe32f97bf0a060c0c9397708ebb7477a34cd63b7d",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2488",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2494",
         "kind": "declaration",
-        "line": 2488,
+        "line": 2494,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "daf6b8f711a52aa7608e661b9810cdbcdd7c4f3ac03d0142e969a1208456501d",
       "statement": "forall B b. (exists t. t + b = B) -> forall a. exists d. (((exists x. a = d * x) /\\ (exists y. b = d * y)) /\\ forall c. (exists u. a = c * u) -> (exists v. b = c * v) -> exists w. d = c * w)",
@@ -52281,12 +52281,12 @@
       "scope": "public",
       "script_sha256": "a5d0213638a8dc6f179c25d8a0a84e5f17cf35dd5b3c0cf78f0739911c43db07",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2577",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2583",
         "kind": "declaration",
-        "line": 2577,
+        "line": 2583,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "a1ad0edbdaed5b9fc9911c6a1e50151be1e18eab9eda0a0738f74b20724d64f7",
       "statement": "forall a b. exists d. (((exists x. a = d * x) /\\ (exists y. b = d * y)) /\\ forall c. (exists u. a = c * u) -> (exists v. b = c * v) -> exists w. d = c * w)",
@@ -52515,12 +52515,12 @@
       "scope": "public",
       "script_sha256": "cc3ce17b5a54d3617983df60da340cfb892a613b7b3583cab7d87f0dd446cede",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2674",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2680",
         "kind": "declaration",
-        "line": 2674,
+        "line": 2680,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "12c3f0106da45f8dc5777e382ce959a6fe0af877447f590013a5792763a1c6b8",
       "statement": "forall a b. (((exists x. a = 1 * x) /\\ (exists y. b = 1 * y)) /\\ forall d. (exists u. a = d * u) -> (exists v. b = d * v) -> exists w. 1 = d * w) -> forall c. (exists u. a = c * u) -> (exists v. b = c * v) -> c = 1",
@@ -53052,12 +53052,12 @@
       "scope": "public",
       "script_sha256": "da6983348b8e7818b63c027ce247af9ab4b9e15685a67f14aaea5c079775da25",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3742",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3748",
         "kind": "declaration",
-        "line": 3742,
+        "line": 3748,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "c6e4bf98a7e349a475760fe4c29430cbf90c39d913abb7d0ba4afcebd73ddb8e",
       "statement": "forall p a b. (~(p = 1) /\\ forall c d. p = c * d -> c = 1 \\/ d = 1) -> (exists k. a * b = p * k) -> (exists u. a = p * u) \\/ exists v. b = p * v",
@@ -53518,12 +53518,12 @@
       "scope": "public",
       "script_sha256": "a40d5aaa9bf529bb511f09d76f78d8372cbced6a57cca6b6f2be12d692681ab9",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1988",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1994",
         "kind": "declaration",
-        "line": 1988,
+        "line": 1994,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "84a854d08803ec5ed7de57af30426d1fcf940b9efbd7d68927c773d0312a25a0",
       "statement": "forall d n. ~(n = 0) -> (exists q. n = d * q) -> exists k. k + d = n",
@@ -54042,12 +54042,12 @@
       "scope": "public",
       "script_sha256": "5b284483d0b92549dad7ac51199b5792409ec2d0730d444aa0555a2cd5daa85b",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1148",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1154",
         "kind": "declaration",
-        "line": 1148,
+        "line": 1154,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "2b2f7856e52ad87ed7d4998315c467a87cae68f19d2240145fd6f053109c7183",
       "statement": "forall a b. (exists k. k + S a = b) -> ~ (exists k. k + b = a)",
@@ -54408,12 +54408,12 @@
       "scope": "public",
       "script_sha256": "b4039b1b1c6a8e3da3473c27aacd026d07c4c6682f01fd8e74c5be12cf7e4d7d",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1067",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1073",
         "kind": "declaration",
-        "line": 1067,
+        "line": 1073,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "b7fec6ab3e7b00dab3323cd60bb735d4f63272d6c8aca986b35affaba580915d",
       "statement": "forall a b. (exists k. k + a = b) \\/ exists k. k + S b = a",
@@ -54722,12 +54722,12 @@
       "scope": "public",
       "script_sha256": "34721aa37c137a56c634fdfbb8d197e14b91a5044d8936a0eeae5a5f57de48e3",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4025",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4031",
         "kind": "declaration",
-        "line": 4025,
+        "line": 4031,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "f419cf8a057fdf9bf58c2b9d40aed2be2278e94b8f107cb10fc58a94ff1aa5fd",
       "statement": "forall m b q x. b = q * m + x -> exists u v. b + m * u = x + m * v",
@@ -55397,12 +55397,12 @@
       "scope": "public",
       "script_sha256": "38e0ccad77c33f980ba496c397d8bcc79f6096ee63b8e4677a6a5e0b57044f47",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4165",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4171",
         "kind": "declaration",
-        "line": 4165,
+        "line": 4171,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "eea0af79da47238655f703ae8bc850f1289e2c8f23aa13b0d47bdf961b7a56c6",
       "statement": "forall c i x. (exists h. h + S x = S ((S i) * c)) -> ((exists h. h + S x = S ((S i) * c)) /\\ exists q. x = q * S ((S i) * c) + x)",
@@ -55497,12 +55497,12 @@
       "scope": "public",
       "script_sha256": "954f8287d95952186201a0cef65bb7ab69ec74daab8fee7e421a575b2ad275d4",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L730",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L736",
         "kind": "declaration",
-        "line": 730,
+        "line": 736,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "647aeca9f3151c2b34de488c04d10dcd763a9c003863070ea26b7ea8f010f330",
       "statement": "forall n. 0 <= n",
@@ -58335,12 +58335,12 @@
       "scope": "public",
       "script_sha256": "450948e32d74d372228d20acdcb0c6287ee341e8192be4d296982ac240d0c6b6",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L813",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L819",
         "kind": "declaration",
-        "line": 813,
+        "line": 819,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "4b3ce5d50aaeaad8045a305ebd3fe00558293204c3e60588afa4823a9f94abbf",
       "statement": "forall a b c. (exists k. k + a = b) -> exists r. r + (a + c) = b + c",
@@ -58627,12 +58627,12 @@
       "scope": "public",
       "script_sha256": "9a56ecefe85b1cb0db22f2ca3d934f227e28e27036301f5a9c5561048c3adcd4",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L833",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L839",
         "kind": "declaration",
-        "line": 833,
+        "line": 839,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "886f596ee29134f0eabd59e4bada53819d335beace141d620944fab2e3a010db",
       "statement": "forall a b c. (exists k. k + a = b) -> exists r. r + (c + a) = c + b",
@@ -58919,12 +58919,12 @@
       "scope": "public",
       "script_sha256": "0a1c5b5e20d17f544e61c0ca40e3ae899f74b78de41af0679645573bbe197cf7",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3804",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3810",
         "kind": "declaration",
-        "line": 3804,
+        "line": 3810,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "3312e84e9a62024deaafd1f80e0c8bc3c5cd4e4b03986b10f7d33abd42308011",
       "statement": "forall m a b. (exists u v. a + m * u = b + m * v) -> exists r s. b + m * r = a + m * s",
@@ -59753,12 +59753,12 @@
       "scope": "public",
       "script_sha256": "2b0c3515587b63c19eb830302aa73b3f9c70a796a0e3e778bfc808b05c92e5e8",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2596",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L2602",
         "kind": "declaration",
-        "line": 2596,
+        "line": 2602,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "2fa5721f09c07c13fc1f4b4c4373a3582941e213f311ca3f2c81347be2fca584",
       "statement": "forall a b. (forall d. (exists x. a = d * x) -> (exists y. b = d * y) -> d = 1) -> forall c. (exists u. b = c * u) -> (exists v. a = c * v) -> c = 1",
@@ -64192,12 +64192,12 @@
       "scope": "public",
       "script_sha256": "03980e5204e89f29b1c21308c9d914e469860dcf5bf364b13471b6dbaf7ee5da",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L773",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L779",
         "kind": "declaration",
-        "line": 773,
+        "line": 779,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "3a37cfe548d9e1eb5a536d396142b092c09f8022648d0f5c2bd8f2a14960ada7",
       "statement": "forall n. 1 <= n -> ~(n = 0)",
@@ -64311,12 +64311,12 @@
       "scope": "public",
       "script_sha256": "f41b3071e552c811b1b8cf6b30fe5cec32611197986a94ce948e354c6a1f70d8",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L402",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L408",
         "kind": "declaration",
-        "line": 402,
+        "line": 408,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "5a28b603a8e24accd10cd2b38532155ee93dd2644385c449668c14e2127ba786",
       "statement": "forall n m. S n = S m -> n = m",
@@ -66198,12 +66198,12 @@
       "scope": "public",
       "script_sha256": "3293ef1f981946f7a91318b479a36edfb91bcd5e71189997cdfc424160ba5026",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L6291",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L6297",
         "kind": "declaration",
-        "line": 6291,
+        "line": 6297,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "4209f36df4313ba9cfed03299427d571a26a96c4e2366158e0f658e97746b81d",
       "statement": "forall b c l. exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S (S i)) * v)) /\\ exists q. u = q * S ((S (S i)) * v) + s) /\\ s = r * p))))",
@@ -66654,12 +66654,12 @@
       "scope": "public",
       "script_sha256": "2e3f7b697790123490bcea88b1ca9bdd56b9832a10379771c7369c371155c652",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L6458",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L6464",
         "kind": "declaration",
-        "line": 6458,
+        "line": 6464,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "262c11aa5129d953b8b3cd59efc94ad9f58b0f0fc8ad73cffca894c1d7578fa3",
       "statement": "forall b c l. exists n u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S (S i)) * v)) /\\ exists q. u = q * S ((S (S i)) * v) + s) /\\ s = r * p)))))",
@@ -71342,12 +71342,12 @@
       "scope": "public",
       "script_sha256": "ed2e89a9ca01a7e65d7e4739b88db3e69b497cecfc76cd7e194edfa17453ac5c",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L6750",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L6756",
         "kind": "declaration",
-        "line": 6750,
+        "line": 6756,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "1e84c9a41e6fc6109306f3f1786279b9e50c2397b3b4fd83d51eb800c4cab695",
       "statement": "forall b c n. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + n) /\\ forall i. (exists h. h + S i = 0) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) -> n = 1",
@@ -72104,12 +72104,12 @@
       "scope": "public",
       "script_sha256": "b03133cb231dbb8a379ccde6f5cda7f406547166bfc34f14b57b36868c3877aa",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L6777",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L6783",
         "kind": "declaration",
-        "line": 6777,
+        "line": 6783,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "8362706c55ca249abe1bd1c0825bd12c3538325f597733fe0ac5c3086acb4ebb",
       "statement": "forall b c l n. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S S l) * v)) /\\ exists q. u = q * S ((S S l) * v) + n) /\\ forall i. (exists h. h + S i = S l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) -> exists p r. (((exists h. h + S p = S ((S l) * c)) /\\ exists q. b = q * S ((S l) * c) + p) /\\ ((exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S r = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + r) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) /\\ n = r * p))",
@@ -74139,12 +74139,12 @@
       "scope": "public",
       "script_sha256": "8111493b4fdfcded2a6dc0c515265e4feda2bbc6b53549c2b9a21dc737499b7e",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3989",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3995",
         "kind": "declaration",
-        "line": 3989,
+        "line": 3995,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "ed9c5aeee3fa771696ac8570974985ffbe542502752f480e6411b5aa587993df",
       "statement": "forall m a b c d. (exists u v. a + m * u = b + m * v) -> (exists r s. c + m * r = d + m * s) -> exists x y. (a * c) + m * x = (b * d) + m * y",
@@ -74792,12 +74792,12 @@
       "scope": "public",
       "script_sha256": "d5c20753fcf1be0bb027ed940a9980257c1bfd16eb04bb4ec9699173cc65ff8c",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3127",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L3133",
         "kind": "declaration",
-        "line": 3127,
+        "line": 3133,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "dd46bf14120dfc79a5bf17e875f09dea478e9aad8f620aaf281b41baf52f42d7",
       "statement": "forall a b. a = b \\/ ~(a = b)",
@@ -92002,12 +92002,12 @@
       "scope": "public",
       "script_sha256": "3efad5f4eaf2130d7366f9a00b855cef1be6f52696bf8b1652d04440b0bf8457",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L6986",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L6992",
         "kind": "declaration",
-        "line": 6986,
+        "line": 6992,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "a8ff1c600016d5b661b55eddf80ea833cb30a0968990e270ee42417541d8247f",
       "statement": "forall b c z e l n. (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p)))))) -> (forall i a. (exists h. h + S i = l) -> ((exists h. h + S a = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + a) -> ((exists h. h + S a = S ((S i) * e)) /\\ exists q. z = q * S ((S i) * e) + a)) -> (exists u v. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * e)) /\\ exists q. z = q * S ((S i) * e) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p))))))",
@@ -92151,12 +92151,12 @@
       "scope": "public",
       "script_sha256": "2ce7bde8f429e750d057581cf374fbfb5cc00f6fbd633c912448a16812f7cc28",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L669",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L675",
         "kind": "declaration",
-        "line": 669,
+        "line": 675,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "44c4ee988d28607087a3185efc4d655456d11ae50fe034cc5650252e894a727b",
       "statement": "forall a b c d. a = b -> c = d -> a * c = b * d",
@@ -94195,12 +94195,12 @@
       "scope": "public",
       "script_sha256": "ff8faea95bebbc28c578251d7db144b7c6fbf9082f55050f17efa432a2a62ea0",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L6503",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L6509",
         "kind": "declaration",
-        "line": 6503,
+        "line": 6509,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "26714ae1f5df9071433fa8ac2ac74027e33059f8ecf156089ae81a2b711aed14",
       "statement": "forall b c l n u v m w d. (((exists h. h + S 1 = S ((S 0) * v)) /\\ exists q. u = q * S ((S 0) * v) + 1) /\\ (((exists h. h + S n = S ((S l) * v)) /\\ exists q. u = q * S ((S l) * v) + n) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * v)) /\\ exists q. u = q * S ((S i) * v) + r) /\\ (((exists h. h + S s = S ((S S i) * v)) /\\ exists q. u = q * S ((S S i) * v) + s) /\\ s = r * p))))) -> (((exists h. h + S 1 = S ((S 0) * d)) /\\ exists q. w = q * S ((S 0) * d) + 1) /\\ (((exists h. h + S m = S ((S l) * d)) /\\ exists q. w = q * S ((S l) * d) + m) /\\ forall i. (exists h. h + S i = l) -> exists p r s. (((exists h. h + S p = S ((S i) * c)) /\\ exists q. b = q * S ((S i) * c) + p) /\\ (((exists h. h + S r = S ((S i) * d)) /\\ exists q. w = q * S ((S i) * d) + r) /\\ (((exists h. h + S s = S ((S S i) * d)) /\\ exists q. w = q * S ((S S i) * d) + s) /\\ s = r * p))))) -> n = m",
@@ -111262,12 +111262,12 @@
       "scope": "public",
       "script_sha256": "3c13db6df34ae9f0a8ae12e45ab5884286b5c60f0c256dd21a253a97a30e95c1",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4439",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4445",
         "kind": "declaration",
-        "line": 4439,
+        "line": 4445,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "f38b561cf6cbb0d02a1178b7a7d698390a3378e9f1ee279a956c435d061933c0",
       "statement": "forall a z q r. z = a * q + r -> z * z = a * (q * z + r * q) + r * r",
@@ -111521,12 +111521,12 @@
       "scope": "public",
       "script_sha256": "eacf6c7847c698addb1db24ab7d0f65e17c8b3a9fbb3d7dd61d92b10fed5d8cd",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4356",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4362",
         "kind": "declaration",
-        "line": 4356,
+        "line": 4362,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "6e567e61f8dbd7167901eaee33d6f5375c3a2dec29c80bd922079d6da0886c08",
       "statement": "forall a u c r s. r = a * c + s -> a * u + r = a * (u + c) + s",
@@ -111740,12 +111740,12 @@
       "scope": "public",
       "script_sha256": "0319e2471694b691a6b6182a3be777e2ea7150f61f41b25355b9673624f8d44e",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4492",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4498",
         "kind": "declaration",
-        "line": 4492,
+        "line": 4498,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "bd50bbc10d80ccb73c8493c071cda83bceb53dd68fc7a1d9b97ce5f3736cccc3",
       "statement": "forall a z q r c s. z = a * q + r -> r * r = a * c + s -> z * z = a * ((q * z + r * q) + c) + s",
@@ -111928,12 +111928,12 @@
       "scope": "public",
       "script_sha256": "abb1a9a2ae9d305f61a689702e7ae3b09ac1f19dc1aaf720ccac0cb6cc977337",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4513",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L4519",
         "kind": "declaration",
-        "line": 4513,
+        "line": 4519,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "14210a4f7c487a27eb3bafccd5bdabdda8353f256059812529fea7e244be97ce",
       "statement": "forall a z q r c s. z = a * q + r -> r * r = a * c + s -> exists w. z * z = a * w + s",
@@ -122067,12 +122067,12 @@
       "scope": "public",
       "script_sha256": "96a83489f02b9664f9cca58171bc774db68523033c1777ebb8ea7a46dd9b2e8b",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L452",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L458",
         "kind": "declaration",
-        "line": 452,
+        "line": 458,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "5420e9ea4e5461b3f483c6ae7ea9dd3e15588aded3ddc263afa03347c9a6f71a",
       "statement": "forall a b n. (b + a) + n = n -> a + n = n",
@@ -122400,12 +122400,12 @@
       "scope": "public",
       "script_sha256": "e06e3c03bf4e91c63b80d162c03d516cdecc8113af2614c296a08c1d83f34eb2",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L477",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L483",
         "kind": "declaration",
-        "line": 477,
+        "line": 483,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "04f5f6ac07e375b5be8bb77009856e05671da73be54c267eb59b12709df5d2d1",
       "statement": "forall a b n m. a + n = m -> b + m = n -> n = m",
@@ -122558,12 +122558,12 @@
       "scope": "public",
       "script_sha256": "de998f55330df5e8e489c7f803716314ffb5238beb3163d8e32fa9b6a8de1862",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L504",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L510",
         "kind": "declaration",
-        "line": 504,
+        "line": 510,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "5538abe9380134783875322decd3f996e02c74a0399a534ed925a6b56ee12aef",
       "statement": "forall n m. n <= m -> m <= n -> n = m",
@@ -126456,12 +126456,12 @@
       "scope": "public",
       "script_sha256": "2ce7bde8f429e750d057581cf374fbfb5cc00f6fbd633c912448a16812f7cc28",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L652",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L658",
         "kind": "declaration",
-        "line": 652,
+        "line": 658,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "fafe9effc98b3121b6ef876b92ef64fe87d7a07c018fc0cf5cdaf0b6e91a5b3a",
       "statement": "forall a b c d. a = b -> c = d -> a + c = b + d",
@@ -128698,12 +128698,12 @@
       "scope": "public",
       "script_sha256": "6238481a5f7a54451f5ca9eb417acf26b1298bbda67132041ff4c76ff8043553",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L999",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1005",
         "kind": "declaration",
-        "line": 999,
+        "line": 1005,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "3b50a4f4667860932a35b1e4a843afe158fb4cf98d88b4117a9fc3ce2c2a4c1d",
       "statement": "forall a b c. (exists k. k + S a = b) -> (exists k. k + b = c) -> exists k. k + S a = c",
@@ -128893,12 +128893,12 @@
       "scope": "public",
       "script_sha256": "0374ad0f0630735659df098924e9da39a6315e6dd5e5073ad77df7d738ad9072",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1259",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1265",
         "kind": "declaration",
-        "line": 1259,
+        "line": 1265,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "e5c84f939c2cabce6c49d7fce74b9731a14024a4dfc9f9402600ca8474c25594",
       "statement": "forall a b c. (exists k. k + a = b) -> exists r. r + c * a = c * b",
@@ -129363,12 +129363,12 @@
       "scope": "public",
       "script_sha256": "ae3d8ded7fd7f31c8486b8dcece2c40d15286166e68c7cf6540a0dbfd804cda1",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1409",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1415",
         "kind": "declaration",
-        "line": 1409,
+        "line": 1415,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "364fa56484cbe2a26ffc29af2e3a323d8c8299240adecdd795a48392a5d9bba4",
       "statement": "forall d q r. (exists k. k + S r = d) -> exists k. k + S (d * q + r) = d * S q",
@@ -129652,12 +129652,12 @@
       "scope": "public",
       "script_sha256": "15811e06671f5b35f08fc82d8bd1c00546bc8ab49cd5acc1ff661acd2b2b3c57",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1039",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1045",
         "kind": "declaration",
-        "line": 1039,
+        "line": 1045,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "c5aa3d92b94a0555845688f4064f9e8f7817894f7d44483cd5f8c5dce94ce5d4",
       "statement": "forall a b c. (exists k. k + S a = b) -> (exists k. k + S b = c) -> exists k. k + S a = c",
@@ -131112,12 +131112,12 @@
       "scope": "public",
       "script_sha256": "5f6ca14717d6efea8cd75dab4be961d7c3531c8872f74d83d3d50b217c2482a0",
       "source": {
-        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1740",
+        "href": "https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/theorems.py#L1746",
         "kind": "declaration",
-        "line": 1740,
+        "line": 1746,
         "owner_module": null,
         "path": "peano-lab/py/peano_lab/library/theorems.py",
-        "sha256": "33db83d7bb3bfc89840fae78e1781f19f0cfe021d0c7df03433e952cfd1f676c"
+        "sha256": "c7aed6410828d548a588f34168cba944fccf98b47504a0af28087faef5a8cbdb"
       },
       "spec_sha256": "5cbf6e0651d9ff49f4694f589b603b147e94eb26624d7dba04dddb288afc10a0",
       "statement": "forall a b c. ~(a = 0) -> a * b = a * c -> b = c",

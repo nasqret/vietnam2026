@@ -33,7 +33,7 @@ DOMAIN_COUNTS = {
     "factorization": 76,
     "quadratic_residues": 137,
 }
-PROOF_SNAPSHOT_COMMIT = "07932576c3d00d7911acd158d81d9a21167ed2dd"
+PROOF_SNAPSHOT_COMMIT = "ff3d0ebd440d52f3df12dbae765fe7acc53ee6c5"
 
 
 def _load(path: Path) -> dict:
