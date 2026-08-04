@@ -64,7 +64,8 @@
       "peano-lab/py/tests/test_ha_relational_lcm_candidate.py",
       "peano-lab/py/tests/test_ha_lcm_totality_bridge_candidate.py",
       "peano-lab/py/tests/test_ha_number_theory_k4_gcd_lcm_admission.py",
-      "peano-lab/py/tests/test_ha_generalized_crt_congruence_candidate.py"
+      "peano-lab/py/tests/test_ha_generalized_crt_congruence_candidate.py",
+      "peano-lab/py/tests/test_ha_generalized_crt_sufficiency_candidate.py"
     ],
     "theorems": [
       {
@@ -948,6 +949,55 @@
         "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py",
         "statement_sha256": "194f4c29faa861337494d12f4e5064fca91cc8a21c4bdfa47560517ccc698a4d",
         "receipt": {"nodes": 560, "depth": 35, "objects": 430, "edges": 451, "reused": 22, "cuts": 14, "certificate_sha256": "67f6acd82739752aa50cdbb33e3f02c3542d32de006ef45189f355a236b4b473"}
+      },
+      {
+        "name": "factor_nonzero_right",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py",
+        "statement_sha256": "543c8a224463c4a8e9b804003a71339b81c2ac631239343247d440de245dd7f1",
+        "receipt": {"nodes": 290, "depth": 26, "objects": 247, "edges": 269, "reused": 23, "cuts": 9, "certificate_sha256": "fa36c22be01d8493018a0a520e57b4d55bb6a49606ca66b593d627a3bca93e3c"}
+      },
+      {
+        "name": "is_gcd_quotients_coprime_nonzero",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py",
+        "statement_sha256": "0bc474f2b82d5fef83c2a189e481247157c496bcb2736b26b1afdf8cac046be3",
+        "receipt": {"nodes": 660, "depth": 33, "objects": 562, "edges": 595, "reused": 34, "cuts": 18, "certificate_sha256": "b20e99453775b46993595aa0c53a4e8facc56e037ef7d138d3005098d1bf973d"}
+      },
+      {
+        "name": "is_gcd_nonzero_coprime_quotients",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py",
+        "statement_sha256": "983a20f87e6ca944f17cebdc5b5c9a602c61e060f6bf6132a7af602860da6116",
+        "receipt": {"nodes": 1120, "depth": 38, "objects": 876, "edges": 931, "reused": 56, "cuts": 32, "certificate_sha256": "bac838b1489a5285b36e24d437fb4cb5f5f452d31cb3340b9f88818ee05fb8a2"}
+      },
+      {
+        "name": "mod_eq_common_remainder_decomposition",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py",
+        "statement_sha256": "cdb6b4faa868300dad212c67261e39297413f0aaa63cdaaee262ef9c5974776b",
+        "receipt": {"nodes": 2894, "depth": 69, "objects": 1075, "edges": 1138, "reused": 64, "cuts": 43, "certificate_sha256": "7615686f1fb9c23b0b53a4cc46a1da5349bd6fd6b808d8ef0203b45a213fd6fc"}
+      },
+      {
+        "name": "crt_scaled_common_remainder_lift",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py",
+        "statement_sha256": "c95894cec0533133e6e90e6e3dec521cebec2addeec0af5641b0840c0f94c8e1",
+        "receipt": {"nodes": 5745, "depth": 52, "objects": 2062, "edges": 2174, "reused": 113, "cuts": 92, "certificate_sha256": "188a46f051c74f8a3f53c3945a3760fff3be12df5d89c2b468e94cf201166674"}
+      },
+      {
+        "name": "generalized_binary_crt_sufficient_nonzero",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py",
+        "statement_sha256": "beb4079f3e85fbe8451677090e362d1d9c063361c021ca42a45b242789904b33",
+        "receipt": {"nodes": 9482, "depth": 74, "objects": 3147, "edges": 3302, "reused": 156, "cuts": 141, "certificate_sha256": "9c1ad09a4bfb2ee8e273320069d6ef6f9e50c0229aa023bb45cf887ddd9c2a1b"}
+      },
+      {
+        "name": "generalized_binary_crt_solvable_iff_nonzero",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py",
+        "statement_sha256": "6739df870ea7c5edf490ed06ce73ebfc46df694441bdabbd69ed1edde526f286",
+        "receipt": {"nodes": 10073, "depth": 76, "objects": 3316, "edges": 3476, "reused": 161, "cuts": 149, "certificate_sha256": "8956a66d8f72d512f840464d2749e43258a2b74b3828dde58f2c206d53af0234"}
       }
     ]
   },
@@ -1678,9 +1728,23 @@
             "crt_incompatibility_obstructs_solution"
           ],
           "role": "Closed-checked but non-public generalized-CRT congruence foundation: additive cancellation, zero modulus, scaling and nonzero unscaling, pairwise solution congruence, necessary gcd compatibility, and its constructive incompatibility obstruction."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py",
+          "factory": "make_ha_generalized_crt_sufficiency_candidate_theorems",
+          "theorem_names": [
+            "factor_nonzero_right",
+            "is_gcd_quotients_coprime_nonzero",
+            "is_gcd_nonzero_coprime_quotients",
+            "mod_eq_common_remainder_decomposition",
+            "crt_scaled_common_remainder_lift",
+            "generalized_binary_crt_sufficient_nonzero",
+            "generalized_binary_crt_solvable_iff_nonzero"
+          ],
+          "role": "Closed-checked but non-public M5a binary sufficiency ladder: nonzero coprime gcd cofactors, a shared bounded remainder, coprime-CRT scaling and lifting, compatible-system construction, and the nonzero-modulus solvability criterion."
         }
       ],
-      "remaining_gap": "The K4 relational LCM core is public and the first eight generalized-CRT congruence and obstruction rows have deterministic empty-context receipts. Constructive sufficiency for a compatible noncoprime pair, uniqueness modulo lcm, canonical bounded representatives, executable incompatibility decisions, and the K3 finite-system fold remain.",
+      "remaining_gap": "The K4 relational LCM core is public, and 15 generalized-CRT foundation and M5a binary rows now have deterministic empty-context receipts. For nonzero moduli, gcd compatibility is proved necessary and sufficient for a common solution. Zero-modulus wrappers, uniqueness modulo relational lcm, canonical bounded representatives, executable incompatibility decisions, and the K3 finite-system fold remain.",
       "validation": {
         "path": [
           "manifest_integrity",

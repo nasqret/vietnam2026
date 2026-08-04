@@ -71,16 +71,17 @@ It separates three facts which are easy to blur in an informal development:
     templates. Their theorem ladder has not yet been proved, and uniform lists
     remain blocked on a computation-trace representation.
 * - Generalized CRT
-  - eight closed private candidates
-  - Seven new congruence/necessity rows plus one exactly reused cancellation
-    row prove necessity and obstruction. Sufficiency is not yet proved.
+  - fifteen closed private candidates
+  - The eight-row congruence foundation proves necessity and obstruction; the
+    seven-row M5a ladder constructs solutions and closes the nonzero binary
+    solvability criterion. Zero wrappers and LCM classification remain.
 ```
 
 The public registry now has **409** entries. The nine tranche-01 interfaces at
 positions 384--392 are followed by the exact 16-row K4 admission at positions
 393--408. The research catalog has **410** entries, including **386**
 `checked_m20` rows. The campaign manifest records **72** public references,
-**101** isolated candidates, and **126** exact theorem receipts. This
+**108** isolated candidates, and **133** exact theorem receipts. This
 append-only extension leaves the frozen first-247 model curriculum unchanged.
 
 ## Why canonical remainder is a relation
@@ -1662,8 +1663,8 @@ certificate receipt can be inspected.
 
 The selective admission raises the runtime registry to **409** theorems and
 the research catalog to **410** rows, of which **386** are `checked_m20`.
-The campaign manifest now carries **72** public references, **101** isolated
-candidates, and **126** exact theorem receipts. The strict 74-row K3 signed
+The campaign manifest now carries **72** public references, **108** isolated
+candidates, and **133** exact theorem receipts. The strict 74-row K3 signed
 stack and its digest
 `b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`
 are unchanged, as is the frozen first-247 model curriculum.
@@ -1699,100 +1700,198 @@ The current implementation and audit trail are the
 and the
 [`exact K4 admission test`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_number_theory_k4_gcd_lcm_admission.py).
 
-## Generalized CRT: necessity is now formal
+## Generalized CRT: the nonzero binary theorem is closed
 
-The next layer keeps congruence relational and accepts zero moduli. Its two
-surface definitions are
+The M5a layer keeps congruence and gcd relational. Its readable definitions
+are
 
 $$
 \operatorname{ModEq}(d,a,b)\;:\!\Longleftrightarrow\;
 \exists u,v,\ a+du=b+dv,
 $$
 
-and
-
 $$
 \operatorname{CRTSolution}(x;m,n;a,b)\;:\!\Longleftrightarrow\;
-\operatorname{ModEq}(m,x,a)\land\operatorname{ModEq}(n,x,b).
+\operatorname{ModEq}(m,x,a)\land\operatorname{ModEq}(n,x,b),
 $$
 
-Both expand hygienically before parsing. The eight-row private foundation is
-one byte-for-byte reused support theorem followed by seven new theorems:
+and the already frozen result-first relation
+
+$$
+\operatorname{IsGCD}(g,m,n)
+\;:\!\Longleftrightarrow\;
+g\mid m\land g\mid n\land
+\forall d\,(d\mid m\land d\mid n\to d\mid g).
+$$
+
+Every displayed predicate expands before parsing to the unchanged language
+\(\{0,S,+,\times,=\}\). The kernel receives no congruence, gcd, quotient,
+remainder, or CRT primitive.
+
+The original eight-row foundation proves congruence algebra, necessity, and
+obstruction. The new seven-row sufficiency ladder is:
 
 ```{list-table}
 :header-rows: 1
-:widths: 8 39 53
+:widths: 8 42 50
 
 * - Row
   - Candidate
-  - Role
+  - Mathematical role
 * - 1
-  - `mod_eq_add_cancel_left`
-  - Reused support: cancel a common left addend in balanced congruence.
+  - `factor_nonzero_right`
+  - The right factor of a nonzero product is nonzero.
 * - 2
-  - `mod_eq_zero_iff_eq`
-  - Congruence modulo zero is equality.
+  - `is_gcd_quotients_coprime_nonzero`
+  - If \(m=gM\), \(n=gN\), and \(g\ne0\), then \(M,N\) are coprime.
 * - 3
-  - `mod_eq_add_cancel_right`
-  - Cancel a common right addend.
+  - `is_gcd_nonzero_coprime_quotients`
+  - Package the two factor equations, all three nonzero facts, and cofactor coprimality.
 * - 4
-  - `mod_eq_scale`
-  - Scale a congruence and its modulus by the same factor.
+  - `mod_eq_common_remainder_decomposition`
+  - Compatible residues share \(r<g\): \(a=gA+r\), \(b=gB+r\).
 * - 5
-  - `mod_eq_unscale_nonzero`
-  - Cancel a nonzero common scale.
+  - `crt_scaled_common_remainder_lift`
+  - Solve modulo \(M,N\), scale by \(g\), then add the common \(r\).
 * - 6
-  - `crt_solution_pair_congruent`
-  - Two common solutions are congruent modulo each input modulus.
+  - `generalized_binary_crt_sufficient_nonzero`
+  - Gcd compatibility constructs an actual common solution for nonzero moduli.
 * - 7
-  - `crt_common_solution_implies_gcd_compatible`
-  - A common solution forces the two target residues to agree modulo a gcd.
-* - 8
-  - `crt_incompatibility_obstructs_solution`
-  - Failure of gcd compatibility rules out every common solution.
+  - `generalized_binary_crt_solvable_iff_nonzero`
+  - Solvability is equivalent to gcd compatibility for nonzero moduli.
 ```
 
-The dependency picture separates checked solid edges from the planned dashed
-route. In particular, necessity is a theorem now; the converse construction
-is not.
+The capstone has the standard mathematical statement
+
+$$
+\begin{aligned}
+&m\ne0\to n\ne0\to \operatorname{IsGCD}(g,m,n)\to{}\\
+&\qquad\Bigl[
+  (\exists x\,\operatorname{CRTSolution}(x;m,n;a,b))
+       \to \operatorname{ModEq}(g,a,b)
+\Bigr]\\
+&\qquad\land\Bigl[
+  \operatorname{ModEq}(g,a,b)
+       \to \exists x\,\operatorname{CRTSolution}(x;m,n;a,b)
+\Bigr].
+\end{aligned}
+$$
+
+### Why the cofactors are coprime
+
+Suppose \(d\mid M\) and \(d\mid N\). Then
+
+$$
+gd\mid m,\quad gd\mid n,
+$$
+
+so greatestness in `IsGCD(g,m,n)` gives \(gd\mid g\). For some \(w\),
+
+$$
+g=(gd)w=g(dw).
+$$
+
+Since \(g\ne0\), left cancellation against \(g\cdot1\) gives \(1=dw\),
+and hence \(d=1\). This is the whole cofactor-coprimality proof; it does not
+need a new Bézout theorem.
+
+### Construction
+
+Compatibility supplies a common canonical remainder:
+
+$$
+a=gA+r,\qquad b=gB+r,\qquad r<g.
+$$
+
+The public coprime CRT produces \(z\) with
+
+$$
+z\equiv A\pmod M,\qquad z\equiv B\pmod N.
+$$
+
+Scale both congruences by \(g\), add the reflexive congruence \(r\equiv r\),
+and choose
+
+$$
+x=gz+r.
+$$
+
+Then \(x\equiv a\pmod m\) and \(x\equiv b\pmod n\).
 
 ```text
 flowchart LR
-  G[IsGCD(g,m,n)] --> D[g divides m and n]
-  S[common solution x] --> R[congruences modulo m and n]
-  D --> N[necessity now: a congruent b mod g]
-  R --> N
-  G --> O[obstruction now]
-  NC[not compatible mod g] --> O
-  G -. next .-> Q[m = gM and n = gN]
-  Q -.-> CP[Coprime(M,N)]
-  CP -.-> B[coprime CRT / balanced Bezout]
-  C[compatible mod g] -. next .-> B
-  B -.-> E[construct a common solution]
-  E -.-> L[classify solutions modulo IsLCM]
+  G[IsGCD(g,m,n)] --> Q[m=gM, n=gN]
+  Q --> NZ[g,M,N nonzero]
+  Q --> CP[Coprime(M,N)]
+  C[a congruent b mod g] --> R[a=gA+r, b=gB+r, r<g]
+  CP --> B[binary_crt M N A B]
+  B --> Z[z mod M=A, z mod N=B]
+  Z --> SC[scale congruences by g]
+  R --> ADD[add common remainder r]
+  SC --> ADD
+  ADD --> X[x=gz+r is a common solution]
+  X --> IFF[solvability iff compatibility]
+  N[necessity theorem] --> IFF
+  X -. next .-> L[classify solutions modulo IsLCM]
 ```
 
-The necessity and obstruction certificates have respectively
-`(518 nodes, depth 34, 13 Cuts)` and
-`(560 nodes, depth 35, 14 Cuts)`. Two cache-cleared closures agree; all eight
-certificates use the normal intuitionistic checker and contain zero `DNE`
-nodes. The focused audit has six tests, including false-endpoint mutations
-and bounded semantic checks.
+```{list-table}
+:header-rows: 1
+:widths: 43 10 9 9 29
 
-The unproved dashed route must factor the moduli as \(m=gM\) and \(n=gN\),
-derive `Coprime(M,N)`, use compatibility with the coprime binary CRT or
-balanced Bezout construction, and then classify solutions through the public
-relational `IsLCM` interface. **Generalized-CRT sufficiency, existence,
-canonical representatives, and admission have not been proved.** They must
-not be inferred from the eight candidate receipts.
+* - Closed candidate
+  - Nodes
+  - Depth
+  - Cuts
+  - Certificate SHA-256 prefix
+* - `is_gcd_quotients_coprime_nonzero`
+  - 660
+  - 33
+  - 18
+  - `b20e99453775b469`
+* - `mod_eq_common_remainder_decomposition`
+  - 2,894
+  - 69
+  - 43
+  - `7615686f1fb9c23b`
+* - `crt_scaled_common_remainder_lift`
+  - 5,745
+  - 52
+  - 92
+  - `188a46f051c74f8a`
+* - `generalized_binary_crt_sufficient_nonzero`
+  - 9,482
+  - 74
+  - 141
+  - `9c1ad09a4bfb2ee8`
+* - `generalized_binary_crt_solvable_iff_nonzero`
+  - 10,073
+  - 76
+  - 149
+  - `8956a66d8f72d512`
+```
+
+Two cache-cleared closures agree for every row. The focused tests pin the
+expanded statements, dependencies, scripts, body metrics, complete proof-DAG
+digests, false-endpoint mutations, and bounded arithmetic semantics. All
+certificates use the intuitionistic checker and contain zero `DNE` nodes. No
+formula or proof limit was raised.
+
+This is still candidate evidence, not public admission. The next boundary is
+the zero-inclusive wrapper and classification of all solutions modulo a
+relational `IsLCM(l,m,n)` witness. A bounded representative may be claimed
+only under \(l\ne0\); when \(l=0\), the correct result is exact uniqueness,
+not a nonexistent remainder below zero. Finite generalized CRT remains gated
+by the independent finite-data representation.
 
 Read the
 [`generalized-CRT RFC`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/research/arithmetic-library/ha-generalized-crt-rfc-v1.md),
-[`candidate source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py),
+[`congruence source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py),
+[`sufficiency source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py),
+[`foundation audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_congruence_candidate.py),
 and
-[`six-test focused audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_congruence_candidate.py)
-for the exact expanded formulas, ordered dependencies, proof scripts, and
-certificate hashes.
+[`sufficiency audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_sufficiency_candidate.py)
+for the exact expanded formulas and line-by-line tactic scripts.
 
 ## Independent pair/cell checkpoint
 
@@ -1849,12 +1948,13 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 ```
 
-The first command checks the 12-layer campaign manifest and all **126**
-theorem receipts: **25** public evidence rows and **101** closed private
+The first command checks the 12-layer campaign manifest and all **133**
+theorem receipts: **25** public evidence rows and **108** closed private
 candidates. This includes the exact nine-row tranche-01 admission, the exact
 16-row K4 admission, eight private gcd conveniences, ten private lcm
 conveniences, seventy-four strict-K3 signed rows, the private K4 signed-gcd
-client, and the eight-row generalized-CRT foundation. It also checks the
+client, the eight-row generalized-CRT foundation, and the seven-row M5a
+binary sufficiency ladder. It also checks the
 45-row definition API over 44 distinct public-theorem replays. The second
 cross-checks all **409** public runtime theorems against the **410**-row
 research catalog. The third independently replays the full public ladder and

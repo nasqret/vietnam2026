@@ -1842,3 +1842,24 @@
   six-test audit pass with zero DNE. Sufficiency, solution construction, the
   complete class modulo relational LCM, canonical representatives, finite
   generalized CRT, and public admission remain open.
+- **Generalized-CRT M5a binary sufficiency (2026-08-04):** seven additional
+  isolated candidates now prove `factor_nonzero_right`, coprimality and a
+  reusable nonzero package for gcd cofactors, a shared bounded remainder for
+  compatible residues, the scale-and-add lift from public `binary_crt`, the
+  compatible-system existence theorem, and
+  `generalized_binary_crt_solvable_iff_nonzero`. The capstone says exactly
+  that for nonzero `m,n` and `IsGCD(g,m,n)`, a common CRT solution exists iff
+  `ModEq(g,a,b)`. Its empty-context receipt is
+  `(10073,76,3316,3476,161,149,0,
+  8956a66d8f72d512f840464d2749e43258a2b74b3828dde58f2c206d53af0234)`
+  in `(nodes,depth,objects,edges,reused,Cuts,DNE,digest)` order. Two cold
+  closures agree, mutation-sensitive tests pass, and no checker limit was
+  raised. The campaign manifest now records 72 public references, 108
+  candidate references, and 133 exact receipts. These rows remain private;
+  zero-modulus wrappers, classification modulo relational LCM, bounded
+  representatives, finite lifting, and deliberate admission are next. The
+  integrated gate passes 30 campaign-structure tests and 189 proof/admission
+  tests. The refreshed 47-source Book passes integrity across 2,325 HTML
+  pages; its 2,493-file HTML tree has SHA-256
+  `b322fe004bee4cfcd511973b74365f9d0c4b798d0b0c5711d352ba7046c1d579`.
+  The browser application seal is `a-ed049a6d3d2c` with 175 worker sources.

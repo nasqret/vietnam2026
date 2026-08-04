@@ -1,8 +1,8 @@
 # RFC HA-M5-GCRT-1: constructive generalized-CRT foundation
 
-**Status:** eight-row foundation closed from the empty context; seven rows are
-new and one exact existing support row is reused; all eight remain isolated
-and unadmitted
+**Status:** eight-row congruence foundation plus seven-row M5a binary
+sufficiency ladder closed from the empty context; 14 rows are new and one
+exact existing support row is reused; all 15 remain isolated and unadmitted
 
 **Scope:** M5 binary generalized Chinese remainder theorem over possibly
 noncoprime natural moduli
@@ -11,11 +11,12 @@ noncoprime natural moduli
 
 **Kernel change:** none
 
-This RFC records the first checked layer for generalized CRT. It proves the
-congruence algebra needed to state the theorem cleanly, proves that every
-common CRT solution forces compatibility modulo a relational gcd, and turns
-incompatibility into a formal obstruction. It does **not** yet claim the
-converse construction or a complete generalized CRT.
+This RFC records the first two checked layers for generalized CRT. They prove
+the congruence algebra, the necessary gcd-compatibility condition and its
+obstruction corollary, and the converse construction when both input moduli
+are nonzero. Thus the binary nonzero-modulus solvability criterion is now
+closed-checked. The zero-modulus boundary, classification modulo relational
+LCM, and finite-system theorem remain separate obligations.
 
 ## 1. Conservative surfaces
 
@@ -87,7 +88,55 @@ semantics. All eight certificates check through the normal intuitionistic
 entry point and contain zero `DNE` nodes. This is candidate evidence, not
 public admission.
 
-## 4. Dependency route
+## 4. Exact seven-row M5a sufficiency ladder
+
+The second isolated factory is
+[`ha_generalized_crt_sufficiency_candidate.py`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py).
+Its ordered rows are:
+
+| Order | Theorem | Surface meaning | Ordered direct dependencies |
+|---:|---|---|---|
+| 1 | `factor_nonzero_right` | `n!=0 -> n=c*d -> d!=0` | `factor_nonzero_left`, `mul_comm` |
+| 2 | `is_gcd_quotients_coprime_nonzero` | nonzero `g` and `IsGCD(g,m,n)` make cofactors in `m=g*M`, `n=g*N` coprime | `is_gcd_greatest`, `mul_assoc`, `mul_one`, `mul_left_cancel_nonzero`, `divisor_one` |
+| 3 | `is_gcd_nonzero_coprime_quotients` | package nonzero `g,M,N`, the two factor equations, and `Coprime(M,N)` | gcd projections, the two preceding factor/cofactor rows |
+| 4 | `mod_eq_common_remainder_decomposition` | `g!=0` and `ModEq(g,a,b)` give `a=g*A+r`, `b=g*B+r`, `r<g` | division/remainder existence, congruence conversion, symmetry/transitivity, `mul_comm` |
+| 5 | `crt_scaled_common_remainder_lift` | solve the coprime cofactor CRT, scale by `g`, then add the shared `r` | `binary_crt`, `mod_eq_scale`, `mod_eq_refl`, `mod_eq_add` |
+| 6 | `generalized_binary_crt_sufficient_nonzero` | compatible residues have a common solution when `m,n` are nonzero | gcd projections, cofactor coprimality, shared remainder, scaled lift |
+| 7 | `generalized_binary_crt_solvable_iff_nonzero` | for nonzero `m,n`, solvability is equivalent to `ModEq(g,a,b)` | necessity theorem, sufficiency theorem |
+
+The key quotient argument uses only the universal property of `IsGCD`:
+
+\[
+d\mid M,\ d\mid N
+\Longrightarrow gd\mid m,\ gd\mid n
+\Longrightarrow gd\mid g
+\Longrightarrow g=g(dw)
+\Longrightarrow 1=dw
+\Longrightarrow d=1.
+\]
+
+The cancellation step is constructive and uses the explicit premise
+`g != 0`. No excluded middle or negative-witness extraction occurs.
+
+Exact empty-context receipts are ordered as
+`(nodes, depth, objects, edges, reused, Cuts, certificate SHA-256)`:
+
+| Theorem | Receipt |
+|---|---|
+| `factor_nonzero_right` | `(290, 26, 247, 269, 23, 9, fa36c22be01d8493018a0a520e57b4d55bb6a49606ca66b593d627a3bca93e3c)` |
+| `is_gcd_quotients_coprime_nonzero` | `(660, 33, 562, 595, 34, 18, b20e99453775b46993595aa0c53a4e8facc56e037ef7d138d3005098d1bf973d)` |
+| `is_gcd_nonzero_coprime_quotients` | `(1120, 38, 876, 931, 56, 32, bac838b1489a5285b36e24d437fb4cb5f5f452d31cb3340b9f88818ee05fb8a2)` |
+| `mod_eq_common_remainder_decomposition` | `(2894, 69, 1075, 1138, 64, 43, 7615686f1fb9c23b0b53a4cc46a1da5349bd6fd6b808d8ef0203b45a213fd6fc)` |
+| `crt_scaled_common_remainder_lift` | `(5745, 52, 2062, 2174, 113, 92, 188a46f051c74f8a3f53c3945a3760fff3be12df5d89c2b468e94cf201166674)` |
+| `generalized_binary_crt_sufficient_nonzero` | `(9482, 74, 3147, 3302, 156, 141, 9c1ad09a4bfb2ee8e273320069d6ef6f9e50c0229aa023bb45cf887ddd9c2a1b)` |
+| `generalized_binary_crt_solvable_iff_nonzero` | `(10073, 76, 3316, 3476, 161, 149, 8956a66d8f72d512f840464d2749e43258a2b74b3828dde58f2c206d53af0234)` |
+
+The focused audit performs two cold closures, pins statement and script
+hashes, checks bounded semantics, and rejects nearby false endpoints. Every
+certificate contains zero `DNE` nodes. The largest closed theorem is only
+10,073 proof occurrences at depth 76, so no kernel-limit increase is needed.
+
+## 5. Dependency route
 
 ```text
 balanced congruence algebra
@@ -103,6 +152,22 @@ common CRT solution
   -> transport to congruence modulo gcd(m,n)
   -> compatibility is necessary
   -> incompatibility obstructs every solution
+
+IsGCD(g,m,n), m!=0, n!=0
+  -> m=g*M, n=g*N with g,M,N nonzero
+  -> Coprime(M,N)
+
+ModEq(g,a,b), g!=0
+  -> a=g*A+r and b=g*B+r with r<g
+
+Coprime(M,N)
+  -> binary_crt(M,N,A,B)
+  -> scale the two congruences by g
+  -> add r
+  -> CRTSolution(x,m,n,a,b)
+
+necessity + sufficiency
+  -> solvability iff gcd compatibility for m,n nonzero
 ```
 
 The newly public universal `IsLCM` interface and `gcd_lcm_product` theorem are
@@ -110,34 +175,38 @@ the intended downstream solution-class boundary: after existence is proved,
 solutions should be compared modulo an `IsLCM(l,m,n)` witness rather than by
 introducing a primitive lcm function.
 
-## 5. Honest remaining work
+## 6. Honest remaining work
 
-The full binary generalized CRT still requires, in dependency order:
+The all-modulus and finite generalized CRT still require, in dependency
+order:
 
-1. derive coprime cofactors from `IsGCD(g,m,n)` together with factor witnesses
-   `m=g*M` and `n=g*N`;
-2. construct a common solution from the compatibility premise
-   `ModEq(g,a,b)` using balanced Bezout or the checked coprime CRT route;
-3. combine necessity and construction into the exact solvability iff;
-4. prove that any two solutions are congruent modulo every relational LCM
+1. wrap the construction across `m=0` and `n=0` without claiming a remainder
+   below zero;
+2. prove that any two solutions are congruent modulo every relational LCM
    witness, and conversely describe the complete solution class;
-5. canonicalize a solution with the remainder interface when the LCM is
+3. canonicalize a solution with the remainder interface when the LCM is
    nonzero, while treating zero-modulus and `(0,0)` cases explicitly;
-6. admit only a reviewed minimal public surface after cold replay, mutation,
+4. add an all-modulus congruence decision wrapper and return either a solution
+   or an explicit incompatibility certificate;
+5. admit only a reviewed minimal public surface after cold replay, mutation,
    resource, registry, catalog, and generated-artifact gates pass;
-7. lift the binary theorem to finite families only after the independent
+6. lift the binary theorem to finite families only after the independent
    finite-data substrate is available.
 
-Thus the campaign has proved the generalized theorem's necessary condition
-and obstruction certificate, but not sufficiency, existence, canonical
-uniqueness, or the finite generalized CRT.
+Thus the campaign has proved both directions and actual existence for the
+mathematically central nonzero binary case. It has not yet proved the
+zero-inclusive wrapper, canonical classification, or finite generalized CRT.
 
-## 6. Repository anchors
+## 7. Repository anchors
 
 - implementation:
   [`ha_generalized_crt_congruence_candidate.py`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py)
 - focused audit:
   [`test_ha_generalized_crt_congruence_candidate.py`](../../peano-lab/py/tests/test_ha_generalized_crt_congruence_candidate.py)
+- sufficiency implementation:
+  [`ha_generalized_crt_sufficiency_candidate.py`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py)
+- sufficiency audit:
+  [`test_ha_generalized_crt_sufficiency_candidate.py`](../../peano-lab/py/tests/test_ha_generalized_crt_sufficiency_candidate.py)
 - admitted gcd/LCM interface:
   [`ha-canonical-gcd-lcm-rfc-v1.md`](ha-canonical-gcd-lcm-rfc-v1.md)
 - campaign plan:

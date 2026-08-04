@@ -242,8 +242,11 @@ nine-entry append-only tranche-01 admission. The exact M1 root still checks at
       exact `mod_eq_add_cancel_left` candidate, add seven constructive rows,
       and prove both gcd-compatibility necessity and the incompatibility
       obstruction with zero DNE.
-- [ ] Prove the converse construction from compatibility modulo a relational
-      gcd, completing the noncoprime solvability criterion.
+- [x] Prove the converse construction from compatibility modulo a relational
+      gcd and close the necessary-and-sufficient noncoprime solvability
+      criterion for two nonzero moduli in the seven-row M5a ladder.
+- [ ] Extend the binary criterion across zero input moduli without asserting a
+      remainder below zero.
 - [ ] Describe the complete solution class modulo relational LCM and supply a
       canonical representative under the correct nonzero boundary.
 
@@ -515,9 +518,25 @@ specification and adds seven rows for the zero-modulus boundary, right
 cancellation, scale/unscale, comparison of two solutions, gcd-compatibility
 necessity, and the incompatibility obstruction. Two cold closures agree and
 all certificates check constructively with zero `DNE`. The stack remains
-isolated: compatibility sufficiency, construction of a solution, its complete
-class modulo relational LCM, and canonical bounded representatives remain the
-next proof obligations.
+isolated.
+
+The next binary M5a tranche is now closed in
+[`ha_generalized_crt_sufficiency_candidate.py`](../peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py),
+with its focused audit in
+[`test_ha_generalized_crt_sufficiency_candidate.py`](../peano-lab/py/tests/test_ha_generalized_crt_sufficiency_candidate.py).
+Seven ordered rows prove right-factor nonzeroness, coprimality of nonzero gcd
+cofactors, a packaged cofactor decomposition, a shared bounded remainder for
+compatible residues, scaling/lifting of the public coprime `binary_crt`, the
+actual compatible-system construction, and finally the necessary-and-
+sufficient solvability criterion for two nonzero moduli. The capstone closes
+from the empty context in 10,073 proof occurrences at depth 76, with 3,316
+proof objects, 149 Cuts, and zero `DNE`; two cold closures have the same
+certificate digest.
+
+This is intentionally named M5a rather than the full M5 target: zero-modulus
+wrappers, solution classes modulo relational LCM, bounded canonical
+representatives, explicit decision/obstruction output, and the finite-system
+fold remain. No proof or formula limit was raised for the tranche.
 
 ## Release boundary
 

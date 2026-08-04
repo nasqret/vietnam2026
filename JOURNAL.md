@@ -4249,3 +4249,41 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   focused six-test audit passes. The converse construction, full solution
   class modulo relational LCM, canonical representative, finite lifting,
   admission, commit, push, and deployment remain separate and unclaimed.
+
+## 2026-08-04 — Generalized-CRT M5a sufficiency closed in isolation
+
+- Added the seven-row
+  `ha_generalized_crt_sufficiency_candidate.py` ladder. It separates right
+  factor nonzeroness, gcd-cofactor coprimality, a packaged nonzero cofactor
+  decomposition, compatible common remainders, the coprime-CRT scale/add
+  lift, the main existence construction, and the solvability criterion.
+- The cofactor proof is the direct universal-property argument
+  `d|M,N -> gd|m,n -> gd|g -> g=g*(d*w) -> 1=d*w -> d=1`; it needs no new
+  Bézout interface. Compatibility supplies `a=g*A+r`, `b=g*B+r`, `r<g`.
+  Public `binary_crt` solves for `A,B` modulo the coprime cofactors; scaling
+  and adding `r` constructs the original solution.
+- Dependency-curried bodies contain 31, 75, 91, 73, 91, 120, and 73 nodes.
+  Exact capstone closure is `(10073,76,3316,3476,161,149,0,
+  8956a66d8f72d512f840464d2749e43258a2b74b3828dde58f2c206d53af0234)`.
+  The five-test focused audit pins statements, script hashes, dependency
+  order, bodies, two cold closures, false mutations, native syntax, and
+  bounded semantics. Every row has zero DNE.
+- Updated the executable campaign to 108 candidate references and 133 exact
+  theorem receipts, extended the RFC and Book with the mathematical proof
+  and dependency diagram, and added the focused audit to the integrated gate.
+  The complete source gate passes 30 campaign-structure tests and 189
+  proof/admission tests. Independent checks validate the 410-row knowledge
+  base, replay the 409-theorem snapshot, and verify 508 vault notes with 5,119
+  resolved links. The public registry remains 409 and no
+  kernel/formula/proof limit changed.
+- Rebuilt all 47 Jupyter Book sources. The structural audit passes 2,325 HTML
+  pages with no broken/escaping/unsafe links, no broken fragments, no remote
+  runtime assets, and byte-identical 2,285-file source/built proof explorers.
+  The 2,493-file HTML tree contains 87,466,493 bytes and has SHA-256
+  `b322fe004bee4cfcd511973b74365f9d0c4b798d0b0c5711d352ba7046c1d579`.
+  The browser worker inventory now has 175 sources and release seal
+  `a-ed049a6d3d2c` (`BUILD=2026-08-04c`).
+- This is M5a only. Zero-modulus wrappers, solution classification modulo
+  relational LCM, bounded canonical representatives, explicit decision or
+  obstruction output, finite generalized CRT, admission, push, and deployment
+  remain distinct gates.
