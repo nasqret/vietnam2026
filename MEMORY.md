@@ -1818,5 +1818,11 @@
   29 campaign-structure tests and all 175 proof/admission tests; the
   independent 394-entry knowledge base, 393-theorem snapshot, and
   492-note/4,991-link vault checks also pass. No admission, push, or deployment
-  is claimed; the Book result remains intentionally unrecorded pending its
-  separate post-commit build.
+  is claimed. The source checkpoint is sealed as
+  `9b2feb66b5fcc2530394f5b6bcce5e63dfea627f`. Its warnings-as-errors,
+  47-source Book rebuild passes integrity across 2,325 HTML pages with
+  byte-identical 2,285-file source/built explorer trees and zero broken,
+  escaping, fragment, unsafe, or remote-runtime links. The 2,493-file HTML
+  tree contains 87,206,047 bytes and has SHA-256
+  `1468972f63c3c9122fb0341559ac31f31e602589801381e60cb94e3b5d916472`.
+  No visual click-through is claimed.

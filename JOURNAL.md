@@ -4206,5 +4206,13 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   arithmetic knowledge base, replay all 393 public theorems in the frozen
   snapshot, and verify 492 vault notes with 4,991 resolved links. This remains
   a focused candidate checkpoint: no public admission, push, or deployment is
-  claimed, and the Jupyter Book result is intentionally deferred to its
-  separate post-commit build.
+  claimed.
+- Sealed the source checkpoint as
+  `9b2feb66b5fcc2530394f5b6bcce5e63dfea627f` and bound a new Book section to
+  its immutable manifest, RFC, three tactic modules, and three focused audits.
+  The warnings-as-errors rebuild covers all 47 sources. The integrity checker
+  passes 2,325 HTML pages with zero broken, escaping, fragment, unsafe, or
+  remote-runtime links and byte-identical 2,285-file source/built explorer
+  trees. The 2,493-file HTML tree contains 87,206,047 bytes and has SHA-256
+  `1468972f63c3c9122fb0341559ac31f31e602589801381e60cb94e3b5d916472`.
+  No visual click-through, public admission, push, or deployment is claimed.
