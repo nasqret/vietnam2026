@@ -66,10 +66,10 @@ It separates three facts which are easy to blur in an informal development:
     signed Bezout codes. Its audited dependency path intentionally includes
     Euclidean division.
 * - Canonical pair/cell coding
-  - design frozen
-  - Doubled-Cantor pairs and successor-tagged cells have exact expanded
-    templates. Their theorem ladder has not yet been proved, and uniform lists
-    remain blocked on a computation-trace representation.
+  - 15 closed private candidates
+  - Doubled-Cantor constructors, doubled-triangular shell separation, and
+    exact pair injectivity now close constructively. Cell functionality,
+    descending projections, and uniform finite-data infrastructure remain open.
 * - Generalized CRT
   - 23 public / 6 private
   - The public dependency closure proves the all-modulus criterion, classifies
@@ -2285,48 +2285,60 @@ integer-coefficient Bézout interface.
 
 ## Independent pair/cell checkpoint
 
-The finite-data lane has selected a representation for pairs and single cells,
-but not yet for arbitrary lists. For `s=x+y`, define
+The finite-data lane now has **15 closed private candidates**: seven literal
+constructor and nil/cell-boundary rows, six shell-arithmetic rows, and two
+injectivity rows. For \(s=x+y\), write
 
 $$
-\operatorname{PairCode}(c,x,y)
-\quad\Longleftrightarrow\quad
-c=s(s+1)+2y.
+B_s=s(s+1),
+\qquad
+\operatorname{pair}_2(x,y)=B_s+2y.
 $$
 
-This is twice the Cantor pairing polynomial. The constructor is a literal
-Peano term, while injectivity can proceed by doubled-triangular shell bounds.
-It needs no division, remainder, CRT, Gödel-β code, square root, or prime
-factorization. Cells use the successor tag
+This is twice the Cantor pairing polynomial. The shell layer proves the exact
+constructive bounds
 
 $$
-\operatorname{Cell}(c,h,t)
-\quad\Longleftrightarrow\quad
-c=S\bigl((h+t)S(h+t)+2t\bigr),
+B_s\leq \operatorname{pair}_2(x,y)<B_{s+1}.
 $$
 
-with `0` reserved for nil.
+Consequently two unequal shell indices force two unequal codes. The final
+`pair_code_injective` proof applies trichotomy to
+\(s_1=x_1+y_1\) and \(s_2=x_2+y_2\). Either strict branch, together with
+`pair_code_shell_separated`, would make the shared code strictly smaller than
+itself, so \(s_1=s_2\). Cancelling the common boundary \(B_{s_1}\) gives
+\(2y_1=2y_2\); `double_add_injective` gives \(y_1=y_2\); and one final
+additive cancellation gives \(x_1=x_2\). Thus injectivity uses no decoder,
+division, choice, or hidden host computation.
 
-The important negative result of the design audit is architectural, not
-mathematical: a finite first-order macro cannot follow a cell tail a variable
-number of times merely by textual recursion. Pairing alone therefore gives
-fixed-length schemas, not an honest uniform formula
-`ListValid(code,length)`. General lookup, append, folds, finite maps, and
-finite CRT remain blocked until the campaign selects an independent encoded
-computation history or a proved conservative primitive-recursive definition
-mechanism.
+The two largest checkpoint receipts, displayed as `(nodes, depth)`, are
+`pair_code_shell_separated = (1600, 30)` and
+`pair_code_injective = (2525, 32)`. Every one of the 15 rows closes twice from
+the empty context with zero DNE. Their transitive closures are quarantined to
+the K0--K2 equality, addition, multiplication, order, cancellation, and
+formula-specific induction foundation: no division, remainder, CRT,
+Gödel-β, prime-factor coding, classical rule, or assumed sequence enters.
 
-The
-[`pair/cell RFC`](https://github.com/nasqret/vietnam2026/blob/01fb459bc2ef797ca1e1e76b353c219dcc1eecb6/research/arithmetic-library/ha-canonical-pair-cell-rfc-v1.md)
-freezes eight exact expanded templates and their SHA-256 receipts, the pair
-injectivity and cell-descent theorem ladder, forbidden dependencies, and four
-honest ways to resolve the uniform-list blocker. It is a design target; no
-pair theorem or list theorem is claimed by that document.
+The full statements, tactic bodies, receipts, mutations, and bounded semantic
+oracles are linked from the
+[`pair/cell RFC`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/research/arithmetic-library/ha-canonical-pair-cell-rfc-v1.md),
+the three source modules
+([seed](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_pair_cell_seed_candidate.py),
+[shells](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_pair_shell_candidate.py),
+[injectivity](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_pair_injective_candidate.py)),
+and their focused audits
+([seed test](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_pair_cell_seed_candidate.py),
+[shell test](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_pair_shell_candidate.py),
+[injectivity test](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_pair_injective_candidate.py)).
 
-Read the complete
-[`signed-natural RFC`](https://github.com/nasqret/vietnam2026/blob/9b2feb66b5fcc2530394f5b6bcce5e63dfea627f/research/arithmetic-library/ha-canonical-signed-natural-rfc-v1.md)
-for the exact formulas, hashes, forbidden dependency paths, and staged proof
-obligations.
+These rows remain private: the public runtime and research catalog stay at
+**432** and **433** entries. The campaign now records **95** public references,
+**114** closed candidates, **162** distinct receipts, **25** candidate modules,
+and **34** focused test paths. The honest next obligations are cell
+functionality, strict head and tail bounds, and an independent uniform
+computation-history representation supporting lists and finite maps. A
+successor-tagged cell constructor alone cannot express variable tail
+iteration, lookup, append, or folds.
 
 ## Reproducing the boundary
 
@@ -2338,15 +2350,16 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 ```
 
-The first command checks the 12-layer campaign manifest and all **147**
-theorem receipts: **95** public evidence rows and **99** closed private
+The first command checks the 12-layer campaign manifest and all **162**
+theorem receipts: **95** public evidence rows and **114** closed private
 candidates. This includes the exact nine-row tranche-01 admission, the exact
 16-row K4 admission, eight private gcd conveniences, ten private lcm
 conveniences, seventy-four strict-K3 signed rows, the private K4 signed-gcd
-client, and the complete M5a--M5f generalized-CRT evidence ladder. The
+client, the 15-row private pair checkpoint, and the complete M5a--M5f
+generalized-CRT evidence ladder. The
 generalized-CRT lane has **29** audited rows: the exact **23** public rows
-listed above and six closed private residuals. The manifest also pins **22**
-candidate modules and **31** focused test paths. It checks the 45-row
+listed above and six closed private residuals. The manifest also pins **25**
+candidate modules and **34** focused test paths. It checks the 45-row
 definition API over 44 distinct public-theorem replays. The second
 cross-checks all **432** public runtime theorems against the **433**-row
 research catalog. The third independently replays the full public ladder and

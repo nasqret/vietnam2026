@@ -4639,3 +4639,10 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   not the entire pair/cell or finite-data package. Cell functionality, strict
   head/tail descent, valid-code decision, an independently justified uniform
   computation trace, variable-length lists, and finite maps remain open.
+- The warning-free 47-source Book rebuild replaces the obsolete design-only
+  pair paragraph with the 15-proof checkpoint and passes integrity over 2,325
+  HTML pages. Its 2,493-file HTML tree contains 88,029,634 bytes and has
+  SHA-256
+  `11b88b5d21c4c28d13aede8976b99b8b438812d738b2a7d69e8a20e20378fb38`;
+  all relative, fragment, escaping, unsafe, and remote-runtime link counts are
+  zero.

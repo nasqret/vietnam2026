@@ -2064,4 +2064,7 @@
   432/433. The regenerated 183-source local browser app is sealed as
   `a-86a703f70af4` (`BUILD=2026-08-04j`), with no deployment claimed. Cell
   functionality, strict head/tail bounds, uniform lists, and finite maps are
-  not claimed.
+  not claimed. The warning-free 47-source Book rebuild documents this exact
+  private boundary and passes integrity over 2,325 HTML pages; its 2,493-file
+  HTML tree has SHA-256
+  `11b88b5d21c4c28d13aede8976b99b8b438812d738b2a7d69e8a20e20378fb38`.
