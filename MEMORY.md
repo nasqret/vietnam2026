@@ -1894,3 +1894,40 @@
   `BUILD=2026-08-04d`. The 47-source Book rebuild passes integrity over 2,325
   HTML pages, and its 2,493-file HTML tree has SHA-256
   `df5eb6326836ce5d1f7ba8ce780dc24dcf6f2878cc1aff6a836e0b3790ada009`.
+- **Generalized-CRT M5c relational-LCM classification (2026-08-04):** four
+  isolated candidates close the complete class of solutions relative to a
+  fixed solution. `mod_eq_ordered_gap_multiple` proves
+  `k+x=y -> ModEq(d,x,y) -> Dvd(d,k)` from `add_comm`, `add_assoc`,
+  `add_left_cancel`, and `factor_difference`; `mod_eq_lcm_merge` combines two
+  input congruences by `le_total`, gap divisibility, and `is_lcm_least`;
+  `mod_eq_lcm_iff_pair` packages congruence modulo a relational LCM iff the
+  pair of input congruences; and `crt_solution_class_iff_lcm` proves, for a
+  fixed solution `x`, `CRTSolution(y) iff ModEq(l,y,x)`. Their body receipts
+  `(dependencies,commands,nodes,depth,objects,edges,reused)` are
+  `(4,31,44,21,44,43,0)`, `(6,113,127,26,127,126,0)`,
+  `(4,46,56,21,56,55,0)`, and `(3,62,79,27,79,78,0)`. Exact empty-context
+  receipts `(nodes,depth,objects,edges,reused,Cuts,DNE,digest)` are
+  `(558,30,310,325,16,13,0,
+  6a30012cfc1213bf167be2de794e05cdae2893ab075cfc24abf9b181bde9be67)`,
+  `(1315,33,653,685,33,25,0,
+  46cd67f69ccf0c669de283fca6a74a0a85cf18d54f248f1a6f428122196a331b)`,
+  `(1570,37,864,908,45,32,0,
+  855d5745c1613304fc0a5f26c70fe9f795ed3ebcff4a7276e3745681d41fc91a)`,
+  and `(2208,39,1055,1104,50,40,0,
+  305a913aaca1c3e307d8ca77bb90c063dd67f3fa9f9bdd69e28cf4064cdff7b3)`.
+  The capstone orientation is audited as `y` to fixed `x`; its reverse branch
+  composes that congruence with the two facts carried by `x`. At `l=0`,
+  `ModEq(0,y,x)` is equality, so the same theorem gives exact uniqueness
+  without division or a false remainder-below-zero claim. The bounded oracle
+  passes 1,296 LCM-iff, 4,692 fixed-class, and 678 zero-LCM comparisons. All rows
+  have zero DNE and fit unchanged limits. Evidence is now 116 private
+  candidate references and 141 exact receipts; public registry/catalog counts
+  remain 409/410. M5d is frozen to three rows only: zero-LCM exact
+  uniqueness, a nonzero-LCM unique bounded remainder, and the constructive
+  all-modulus canonical-boundary disjunction.
+  The integrated gate passes 30 structural and 200 proof/admission tests; the
+  unchanged public knowledge base/snapshot/vault gates remain green. The
+  177-source browser application is sealed as `a-6353222cdacb` with
+  `BUILD=2026-08-04e`. The 47-source Book rebuild passes integrity over 2,325
+  HTML pages, and its 2,493-file HTML tree has SHA-256
+  `a034d5c96b3aa7a108526b013edbcf21e326701b8241d6e97f49b2f7c36a8cd5`.

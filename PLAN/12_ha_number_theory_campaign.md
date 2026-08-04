@@ -248,8 +248,12 @@ nine-entry append-only tranche-01 admission. The exact M1 root still checks at
 - [x] Extend the binary criterion across zero input moduli without asserting a
       remainder below zero: the four-row M5b ladder closes the left-zero,
       right-zero, total-sufficiency, and all-modulus iff statements.
-- [ ] Describe the complete solution class modulo relational LCM and supply a
-      canonical representative under the correct nonzero boundary.
+- [x] Describe the complete solution class modulo relational LCM: the four-row
+      M5c ladder proves congruence modulo the LCM iff congruence modulo both
+      inputs, then classifies every solution relative to one fixed solution.
+- [ ] Supply the three-row M5d canonical boundary: exact uniqueness at zero
+      LCM, a unique bounded representative at nonzero LCM, and the honest
+      all-modulus disjunction packaging both cases.
 
 ## Per-theorem validation gates
 
@@ -547,11 +551,55 @@ canonical-gcd convenience theorem is a dependency, and no proof, formula, or
 kernel limit was raised.
 
 The binary existence criterion is therefore closed for every pair of natural
-moduli. Solution classes modulo relational LCM, bounded canonical
-representatives, explicit decision/obstruction output, deliberate public
-admission, and the finite-system fold remain. The four M5b rows are isolated
-candidate evidence; the 409-theorem public registry and 410-row catalog are
-unchanged.
+moduli. The four-row M5c classification tranche is now closed in
+[`ha_generalized_crt_classification_candidate.py`](../peano-lab/py/peano_lab/library/ha_generalized_crt_classification_candidate.py),
+with its focused audit in
+[`test_ha_generalized_crt_classification_candidate.py`](../peano-lab/py/tests/test_ha_generalized_crt_classification_candidate.py).
+It proves that an ordered gap between congruent naturals is a modulus
+multiple, merges two input congruences through relational-LCM leastness,
+packages congruence modulo `l` iff congruence modulo both `m,n`, and finally
+proves `CRTSolution(y) iff ModEq(l,y,x)` relative to a fixed solution `x`.
+The exact ordered interfaces are
+`mod_eq_ordered_gap_multiple`
+(`k+x=y -> ModEq(d,x,y) -> Dvd(d,k)`), `mod_eq_lcm_merge`
+(`IsLCM(l,m,n) -> ModEq(m,x,y) -> ModEq(n,x,y) -> ModEq(l,x,y)`),
+`mod_eq_lcm_iff_pair`, and `crt_solution_class_iff_lcm`. The proof route is
+directed-gap divisibility, relational-LCM leastness, the two public LCM
+projections, and finally comparison with a fixed solution in the audited
+`y`-to-`x` orientation.
+
+Body receipts `(dependencies,commands,nodes,depth,objects,edges,reused)` are
+`(4,31,44,21,44,43,0)`, `(6,113,127,26,127,126,0)`,
+`(4,46,56,21,56,55,0)`, and `(3,62,79,27,79,78,0)`. Empty-context receipts
+`(nodes,depth,objects,edges,reused,Cuts,DNE,digest)` are
+`(558,30,310,325,16,13,0,6a30012cfc1213bf167be2de794e05cdae2893ab075cfc24abf9b181bde9be67)`,
+`(1315,33,653,685,33,25,0,46cd67f69ccf0c669de283fca6a74a0a85cf18d54f248f1a6f428122196a331b)`,
+`(1570,37,864,908,45,32,0,855d5745c1613304fc0a5f26c70fe9f795ed3ebcff4a7276e3745681d41fc91a)`,
+and
+`(2208,39,1055,1104,50,40,0,305a913aaca1c3e307d8ca77bb90c063dd67f3fa9f9bdd69e28cf4064cdff7b3)`.
+At `l=0`, the statement reduces to exact equality, so the proof is uniform
+and does not call division.
+
+M5c brings the isolated campaign to 116 candidate references and 141 exact
+receipts. It changes neither the 409-theorem public registry nor the 410-row
+catalog, and requires no kernel or resource-limit change.
+
+The immediate M5d boundary has exactly three rows:
+
+1. `crt_solution_unique_lcm_zero` assumes `l=0`, `IsLCM(l,m,n)`, and a fixed
+   CRT solution `x`, then proves every CRT solution `y` equals `x`; it depends
+   on the M5c class theorem and `mod_eq_zero_iff_eq`.
+2. `crt_solution_canonical_remainder_nonzero` assumes `l!=0`, `IsLCM`, and a
+   fixed solution `x`, then produces the unique solution `r` with
+   `Below(r,l) := exists h. h+S r=l`; it depends on division/remainder,
+   `mul_comm`, remainder-to-congruence, congruence symmetry, M5c
+   classification, and bounded uniqueness.
+3. `generalized_binary_crt_canonical_boundary` uses `eq_decidable`, total M5b
+   sufficiency, and rows 1--2 to return the correct zero-LCM exact-unique or
+   nonzero-LCM bounded-unique branch from gcd/lcm data and compatibility.
+
+Explicit decision/obstruction output, deliberate public admission, and the
+finite-system fold remain after M5d. No row may assert a remainder below zero.
 
 ## Release boundary
 

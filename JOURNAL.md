@@ -4342,3 +4342,67 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   SHA-256
   `df5eb6326836ce5d1f7ba8ce780dc24dcf6f2878cc1aff6a836e0b3790ada009`.
   No visual click-through, public admission, or deployment is claimed.
+
+## 2026-08-04 — Generalized-CRT M5c relational-LCM classification closed
+
+- Added the four-row isolated
+  `ha_generalized_crt_classification_candidate.py` ladder. Its exact
+  interfaces and ordered proof route are:
+  `mod_eq_ordered_gap_multiple`, proving
+  `k+x=y -> ModEq(d,x,y) -> Dvd(d,k)` from `add_comm`, `add_assoc`,
+  `add_left_cancel`, and `factor_difference`;
+  `mod_eq_lcm_merge`, using `le_total`, congruence symmetry, the gap theorem,
+  `is_lcm_least`, `mul_comm`, and `remainder_decomposition_to_mod_eq`;
+  `mod_eq_lcm_iff_pair`, using both public LCM projections,
+  `mod_eq_of_mod_eq_multiple`, and the merge theorem; and
+  `crt_solution_class_iff_lcm`, using `crt_solution_pair_congruent`, the pair
+  equivalence, and `mod_eq_trans` to prove
+  `CRTSolution(y,m,n,a,b) iff ModEq(l,y,x)` relative to a fixed solution `x`.
+  The forward capstone branch deliberately compares `y` to `x`; the reverse
+  branch composes `y == x` with the congruences carried by `x`.
+- Dependency-curried body receipts
+  `(dependencies,commands,nodes,depth,objects,edges,reused)` are
+  `(4,31,44,21,44,43,0)`, `(6,113,127,26,127,126,0)`,
+  `(4,46,56,21,56,55,0)`, and `(3,62,79,27,79,78,0)` in row order.
+  Empty-context receipts
+  `(nodes,depth,objects,edges,reused,Cuts,DNE,digest)` are
+  `(558,30,310,325,16,13,0,
+  6a30012cfc1213bf167be2de794e05cdae2893ab075cfc24abf9b181bde9be67)`,
+  `(1315,33,653,685,33,25,0,
+  46cd67f69ccf0c669de283fca6a74a0a85cf18d54f248f1a6f428122196a331b)`,
+  `(1570,37,864,908,45,32,0,
+  855d5745c1613304fc0a5f26c70fe9f795ed3ebcff4a7276e3745681d41fc91a)`,
+  and `(2208,39,1055,1104,50,40,0,
+  305a913aaca1c3e307d8ca77bb90c063dd67f3fa9f9bdd69e28cf4064cdff7b3)`.
+- The retained bounded semantic audit passes 1,296 LCM-iff cases, 4,692
+  fixed-solution class comparisons, and 678 class comparisons with `l=0`.
+  At zero LCM,
+  `ModEq(0,y,x)` is exact equality, so the same classification theorem gives
+  uniqueness uniformly without division and without asserting a remainder
+  below zero. Two cold closures, statement/dependency/script pins, and false
+  mutations pass. Every row checks through the intuitionistic entry point
+  with zero DNE and within the unchanged limits.
+- M5c raises the private evidence to 116 candidate references and 141 exact
+  receipts. It does not admit a theorem: the public registry and research
+  catalog remain 409 and 410, and no kernel or resource limit changed.
+- Froze the immediate M5d boundary to exactly three rows:
+  `crt_solution_unique_lcm_zero` (exact uniqueness when `l=0`),
+  `crt_solution_canonical_remainder_nonzero` (the unique solution `r<l` when
+  `l!=0`, with `Below(r,l) := exists h. h+S r=l`), and
+  `generalized_binary_crt_canonical_boundary` (constructive zero/nonzero
+  disjunction from relational gcd/lcm data and compatibility). The third row
+  depends on `eq_decidable`, total M5b sufficiency, and the first two M5d
+  rows; no theorem may claim a remainder below zero.
+- The integrated source gate passes 30 campaign-structure tests and 200
+  proof/admission tests. Independent checks retain the 410-row arithmetic
+  knowledge base, replay the unchanged 409-theorem public snapshot, and
+  verify the unchanged 508-note/5,119-link vault. The browser worker inventory
+  now has 177 sources and immutable application seal `a-6353222cdacb`
+  (`BUILD=2026-08-04e`).
+- The warning-free 47-source Jupyter Book rebuild passes structural integrity
+  across 2,325 HTML pages. It reports no broken, escaping, fragment, unsafe,
+  or remote-runtime links and byte-identical 2,285-file source/built proof
+  explorers. The 2,493-file HTML tree contains 87,491,052 bytes and has
+  SHA-256
+  `a034d5c96b3aa7a108526b013edbcf21e326701b8241d6e97f49b2f7c36a8cd5`.
+  No visual click-through, public admission, or deployment is claimed.

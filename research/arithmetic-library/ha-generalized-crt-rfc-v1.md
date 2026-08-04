@@ -1,9 +1,10 @@
 # RFC HA-M5-GCRT-1: constructive generalized-CRT foundation
 
 **Status:** eight-row congruence foundation, seven-row M5a nonzero
-sufficiency ladder, and four-row M5b zero-boundary ladder closed from the
-empty context; 18 rows are new and one exact existing support row is reused;
-all 19 remain isolated and unadmitted
+sufficiency ladder, four-row M5b zero-boundary ladder, and four-row M5c
+relational-LCM classification ladder closed from the empty context; 22 rows
+are new and one exact existing support row is reused; all 23 remain isolated
+and unadmitted
 
 **Scope:** M5 binary generalized Chinese remainder theorem over possibly
 noncoprime natural moduli
@@ -12,14 +13,17 @@ noncoprime natural moduli
 
 **Kernel change:** none
 
-This RFC records the first three checked layers for generalized CRT. They prove
+This RFC records the first four checked layers for generalized CRT. They prove
 the congruence algebra, the necessary gcd-compatibility condition and its
 obstruction corollary, and the converse construction when both input moduli
 are nonzero. The third layer handles either zero modulus directly, without
 calling division at modulus zero, and dispatches the three constructive
-zero/nonzero cases. Thus the binary solvability criterion is closed-checked
-for all natural moduli. Classification modulo relational LCM and the
-finite-system theorem remain separate obligations.
+zero/nonzero cases. The fourth layer proves that congruence modulo a supplied
+relational LCM is exactly congruence modulo both input moduli and classifies
+every solution relative to one fixed solution. Thus binary solvability and
+the complete solution class are closed-checked for all natural moduli. The
+canonical-representative and finite-system theorems remain separate
+obligations.
 
 ## 1. Conservative surfaces
 
@@ -176,7 +180,47 @@ zero `DNE` nodes, and fit the existing formula, proof-occurrence, proof-DAG,
 and depth limits. No limit or kernel rule was changed. These are still
 candidate receipts: the public registry and research catalog are unchanged.
 
-## 6. Dependency route
+## 6. Exact four-row M5c relational-LCM classification
+
+The fourth isolated factory is
+[`ha_generalized_crt_classification_candidate.py`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_classification_candidate.py).
+It is subtraction-free: total order exposes a directed gap, congruence makes
+that gap a multiple of each modulus, and `is_lcm_least` makes it a multiple
+of the relational LCM.
+
+| Order | Theorem | Surface meaning | Ordered direct dependencies |
+|---:|---|---|---|
+| 1 | `mod_eq_ordered_gap_multiple` | `k+x=y` and `ModEq(d,x,y)` imply `d|k` | `add_comm`, `add_assoc`, `add_left_cancel`, `factor_difference` |
+| 2 | `mod_eq_lcm_merge` | `IsLCM(l,m,n)`, `ModEq(m,x,y)`, and `ModEq(n,x,y)` imply `ModEq(l,x,y)` | `le_total`, `mod_eq_symm`, row 1, `is_lcm_least`, `mul_comm`, `remainder_decomposition_to_mod_eq` |
+| 3 | `mod_eq_lcm_iff_pair` | under `IsLCM(l,m,n)`, congruence modulo `l` is equivalent to congruence modulo both `m` and `n` | public LCM projections, `mod_eq_of_mod_eq_multiple`, row 2 |
+| 4 | `crt_solution_class_iff_lcm` | relative to a fixed solution `x`, `y` is a solution iff `ModEq(l,y,x)` | `crt_solution_pair_congruent`, row 3, `mod_eq_trans` |
+
+The final orientation is deliberate. The forward implication compares the
+candidate `y` to the fixed solution `x`, obtaining `y == x` modulo each input
+before merging. The reverse implication composes `y == x` with the fixed
+facts `x == a (mod m)` and `x == b (mod n)`.
+
+Dependency-curried body receipts are ordered as
+`(dependencies, commands, nodes, depth, objects, edges, reused)`; closed
+receipts are ordered as
+`(nodes, depth, objects, edges, reused, Cuts, DNE, certificate SHA-256)`:
+
+| Theorem | Body receipt | Empty-context receipt |
+|---|---|---|
+| `mod_eq_ordered_gap_multiple` | `(4, 31, 44, 21, 44, 43, 0)` | `(558, 30, 310, 325, 16, 13, 0, 6a30012cfc1213bf167be2de794e05cdae2893ab075cfc24abf9b181bde9be67)` |
+| `mod_eq_lcm_merge` | `(6, 113, 127, 26, 127, 126, 0)` | `(1315, 33, 653, 685, 33, 25, 0, 46cd67f69ccf0c669de283fca6a74a0a85cf18d54f248f1a6f428122196a331b)` |
+| `mod_eq_lcm_iff_pair` | `(4, 46, 56, 21, 56, 55, 0)` | `(1570, 37, 864, 908, 45, 32, 0, 855d5745c1613304fc0a5f26c70fe9f795ed3ebcff4a7276e3745681d41fc91a)` |
+| `crt_solution_class_iff_lcm` | `(3, 62, 79, 27, 79, 78, 0)` | `(2208, 39, 1055, 1104, 50, 40, 0, 305a913aaca1c3e307d8ca77bb90c063dd67f3fa9f9bdd69e28cf4064cdff7b3)` |
+
+The theorem is uniform at `l=0`. There `ModEq(0,y,x)` is exactly `y=x`, so
+the class theorem becomes exact uniqueness; it does not invoke division or
+claim a remainder below zero. The focused audit checks the ordinary
+intuitionistic entry point, two cold closures, mutations, and bounded
+semantics. All four certificates contain zero `DNE` nodes and fit the
+existing limits. The campaign now has 116 isolated candidate references and
+141 exact receipts, while the public registry and catalog remain 409 and 410.
+
+## 7. Dependency route
 
 ```text
 balanced congruence algebra
@@ -216,35 +260,46 @@ public gcd uniqueness + zero gcd boundary
 eq_decidable(m,0), eq_decidable(n,0)
   -> left-zero / right-zero / nonzero dispatch
   -> solvability iff gcd compatibility for all natural m,n
+
+ModEq(m,x,y) and ModEq(n,x,y)
+  -> both moduli divide the directed gap
+  -> IsLCM leastness makes l divide the gap
+  -> ModEq(l,x,y)
+
+LCM projections + congruence descent
+  -> ModEq(l,x,y) iff ModEq(m,x,y) and ModEq(n,x,y)
+  -> CRTSolution(y) iff ModEq(l,y,x), for a fixed solution x
 ```
 
-The newly public universal `IsLCM` interface and `gcd_lcm_product` theorem are
-the intended downstream solution-class boundary: after existence is proved,
-solutions should be compared modulo an `IsLCM(l,m,n)` witness rather than by
-introducing a primitive lcm function.
+The newly public universal `IsLCM` interface is now the checked solution-class
+boundary. No primitive lcm function is introduced.
 
-## 7. Honest remaining work
+## 8. Honest remaining work
 
-The binary existence criterion is now closed for all natural moduli. The
-remaining generalized-CRT work is, in dependency order:
+Binary existence and relational-LCM classification are now closed for all
+natural moduli. The immediate M5d canonical boundary has exactly three rows:
 
-1. prove that any two solutions are congruent modulo every relational LCM
-   witness, and conversely describe the complete solution class;
-2. canonicalize a solution with the remainder interface when the LCM is
-   nonzero, while treating zero-modulus and `(0,0)` cases explicitly;
-3. add an all-modulus congruence decision wrapper and return either a solution
+1. `crt_solution_unique_lcm_zero`: at `l=0`, every solution equals a fixed
+   solution;
+2. `crt_solution_canonical_remainder_nonzero`: at `l!=0`, reduce a fixed
+   solution to the unique solution `r<l` in its class;
+3. `generalized_binary_crt_canonical_boundary`: from gcd compatibility,
+   return either the exact unique zero-LCM solution or the unique bounded
+   nonzero-LCM representative.
+
+After M5d, the remaining generalized-CRT work is:
+
+1. add an all-modulus congruence decision wrapper and return either a solution
    or an explicit incompatibility certificate;
-4. admit only a reviewed minimal public surface after cold replay, mutation,
+2. admit only a reviewed minimal public surface after cold replay, mutation,
    resource, registry, catalog, and generated-artifact gates pass;
-5. lift the binary theorem to finite families only after the independent
+3. lift the binary theorem to finite families only after the independent
    finite-data substrate is available.
 
-Thus the campaign has proved both directions and actual existence for the
-complete binary natural-modulus case. It has not yet proved canonical
-classification, executable compatibility decision, or finite generalized
-CRT.
+The M5d split is essential: `l=0` gives exact uniqueness, while only `l!=0`
+admits a bounded remainder. It must not assert a remainder below zero.
 
-## 8. Repository anchors
+## 9. Repository anchors
 
 - implementation:
   [`ha_generalized_crt_congruence_candidate.py`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py)
@@ -258,6 +313,10 @@ CRT.
   [`ha_generalized_crt_zero_boundary_candidate.py`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py)
 - zero-boundary audit:
   [`test_ha_generalized_crt_zero_boundary_candidate.py`](../../peano-lab/py/tests/test_ha_generalized_crt_zero_boundary_candidate.py)
+- classification implementation:
+  [`ha_generalized_crt_classification_candidate.py`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_classification_candidate.py)
+- classification audit:
+  [`test_ha_generalized_crt_classification_candidate.py`](../../peano-lab/py/tests/test_ha_generalized_crt_classification_candidate.py)
 - admitted gcd/LCM interface:
   [`ha-canonical-gcd-lcm-rfc-v1.md`](ha-canonical-gcd-lcm-rfc-v1.md)
 - campaign plan:

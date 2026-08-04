@@ -71,18 +71,18 @@ It separates three facts which are easy to blur in an informal development:
     templates. Their theorem ladder has not yet been proved, and uniform lists
     remain blocked on a computation-trace representation.
 * - Generalized CRT
-  - nineteen closed private candidates
+  - twenty-three closed private candidates
   - The eight-row congruence foundation proves necessity and obstruction; the
     seven-row M5a ladder constructs nonzero-modulus solutions; the four-row
-    M5b boundary closes the solvability criterion for all natural moduli. LCM
-    classification remains.
+    M5b boundary closes solvability for all natural moduli; the four-row M5c
+    ladder classifies the complete solution set modulo relational LCM.
 ```
 
 The public registry now has **409** entries. The nine tranche-01 interfaces at
 positions 384--392 are followed by the exact 16-row K4 admission at positions
 393--408. The research catalog has **410** entries, including **386**
 `checked_m20` rows. The campaign manifest records **72** public references,
-**112** isolated candidates, and **137** exact theorem receipts. This
+**116** isolated candidates, and **141** exact theorem receipts. This
 append-only extension leaves the frozen first-247 model curriculum unchanged.
 
 ## Why canonical remainder is a relation
@@ -1664,8 +1664,8 @@ certificate receipt can be inspected.
 
 The selective admission raises the runtime registry to **409** theorems and
 the research catalog to **410** rows, of which **386** are `checked_m20`.
-The campaign manifest now carries **72** public references, **112** isolated
-candidates, and **137** exact theorem receipts. The strict 74-row K3 signed
+The campaign manifest now carries **72** public references, **116** isolated
+candidates, and **141** exact theorem receipts. The strict 74-row K3 signed
 stack and its digest
 `b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`
 are unchanged, as is the frozen first-247 model curriculum.
@@ -1957,21 +1957,107 @@ private canonical-gcd convenience theorem is a dependency. This is still
 candidate evidence, not public admission: the registry remains at 409 and
 the research catalog at 410.
 
-The next boundary is classification of all solutions modulo a relational
-`IsLCM(l,m,n)` witness. A bounded representative may be claimed only under
-\(l\ne0\); when \(l=0\), the correct result is exact uniqueness, not a
-nonexistent remainder below zero. Finite generalized CRT remains gated by the
-independent finite-data representation.
+### Complete solution classes via relational LCM
+
+The four-row M5c layer now closes that classification boundary without adding
+a primitive lcm function:
+
+```{list-table}
+:header-rows: 1
+:widths: 28 37 35
+
+* - Candidate
+  - Exact surface interface
+  - Ordered direct dependencies
+* - `mod_eq_ordered_gap_multiple`
+  - `k+x=y -> ModEq(d,x,y) -> Dvd(d,k)`
+  - `add_comm`, `add_assoc`, `add_left_cancel`, `factor_difference`
+* - `mod_eq_lcm_merge`
+  - `IsLCM(l,m,n) -> ModEq(m,x,y) -> ModEq(n,x,y) -> ModEq(l,x,y)`
+  - `le_total`, `mod_eq_symm`, the ordered-gap row, `is_lcm_least`,
+    `mul_comm`, `remainder_decomposition_to_mod_eq`
+* - `mod_eq_lcm_iff_pair`
+  - Under `IsLCM(l,m,n)`, `ModEq(l,x,y)` iff
+    `ModEq(m,x,y) /\ ModEq(n,x,y)`
+  - `is_lcm_multiple_left`, `is_lcm_multiple_right`,
+    `mod_eq_of_mod_eq_multiple`, the merge row
+* - `crt_solution_class_iff_lcm`
+  - For a fixed solution `x`, `CRTSolution(y,m,n,a,b)` iff
+    `ModEq(l,y,x)`
+  - `crt_solution_pair_congruent`, the LCM-iff-pair row, `mod_eq_trans`
+```
+
+The proof is subtraction-free. Total order chooses a directed gap between
+two naturals. Congruence modulo each input modulus makes each modulus divide
+that gap; `is_lcm_least` then makes the supplied relational LCM divide it.
+The public LCM projections prove the converse direction. For the capstone,
+the forward implication compares the candidate `y` with the fixed solution
+`x`; the reverse implication composes `y == x` with the two congruences
+already carried by `x`. This orientation is part of the audited interface.
+
+Body receipts below use
+`(dependencies, commands, nodes, depth, objects, edges, reused)`. Closed
+receipts use
+`(nodes, depth, objects, edges, reused, Cuts, DNE, certificate SHA-256)`.
+
+```{list-table}
+:header-rows: 1
+:widths: 24 25 51
+
+* - Closed candidate
+  - Dependency-curried body
+  - Empty-context certificate
+* - `mod_eq_ordered_gap_multiple`
+  - `(4,31,44,21,44,43,0)`
+  - `(558,30,310,325,16,13,0,6a30012cfc1213bf167be2de794e05cdae2893ab075cfc24abf9b181bde9be67)`
+* - `mod_eq_lcm_merge`
+  - `(6,113,127,26,127,126,0)`
+  - `(1315,33,653,685,33,25,0,46cd67f69ccf0c669de283fca6a74a0a85cf18d54f248f1a6f428122196a331b)`
+* - `mod_eq_lcm_iff_pair`
+  - `(4,46,56,21,56,55,0)`
+  - `(1570,37,864,908,45,32,0,855d5745c1613304fc0a5f26c70fe9f795ed3ebcff4a7276e3745681d41fc91a)`
+* - `crt_solution_class_iff_lcm`
+  - `(3,62,79,27,79,78,0)`
+  - `(2208,39,1055,1104,50,40,0,305a913aaca1c3e307d8ca77bb90c063dd67f3fa9f9bdd69e28cf4064cdff7b3)`
+```
+
+The theorem is uniform at \(l=0\): `ModEq(0,y,x)` is exactly \(y=x\), so
+the solution class collapses to exact uniqueness. The proof does not divide
+by the LCM and never asserts a remainder below zero. A bounded semantic audit
+passed 1,296 LCM-equivalence cases, 4,692 fixed-solution classification
+comparisons, and 678 comparisons with \(l=0\). Both cold closures check with zero `DNE`
+and the existing resource limits. M5c raises the private evidence totals to
+**116** candidate references and **141** exact receipts; the public registry
+and catalog remain unchanged at **409** and **410**.
+
+The immediate M5d boundary is deliberately only three rows:
+
+1. `crt_solution_unique_lcm_zero` derives exact uniqueness from `l=0`, a
+   supplied `IsLCM`, a fixed solution, the M5c class theorem, and
+   `mod_eq_zero_iff_eq`.
+2. `crt_solution_canonical_remainder_nonzero` assumes `l!=0` and produces the
+   unique solution `r` satisfying `Below(r,l)`, where
+   `Below(r,l) := exists h. h+S r=l`; it uses division/remainder,
+   remainder-to-congruence, M5c classification, and bounded uniqueness.
+3. `generalized_binary_crt_canonical_boundary` combines constructive
+   `eq_decidable`, total M5b sufficiency, and the two preceding rows to return
+   either the exact zero-LCM solution or the unique bounded nonzero-LCM
+   representative.
+
+Finite generalized CRT remains gated by the independent finite-data
+representation.
 
 Read the
 [`generalized-CRT RFC`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/research/arithmetic-library/ha-generalized-crt-rfc-v1.md),
 [`congruence source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py),
 [`sufficiency source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py),
 [`zero-boundary source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py),
+[`classification source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_classification_candidate.py),
 [`foundation audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_congruence_candidate.py),
 [`sufficiency audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_sufficiency_candidate.py),
-and
-[`zero-boundary audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_zero_boundary_candidate.py)
+[`zero-boundary audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_zero_boundary_candidate.py),
+and the
+[`classification audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_classification_candidate.py)
 for the exact expanded formulas and line-by-line tactic scripts.
 
 ## Independent pair/cell checkpoint
@@ -2029,14 +2115,14 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 ```
 
-The first command checks the 12-layer campaign manifest and all **137**
-theorem receipts: **25** public evidence rows and **112** closed private
+The first command checks the 12-layer campaign manifest and all **141**
+theorem receipts: **25** public evidence rows and **116** closed private
 candidates. This includes the exact nine-row tranche-01 admission, the exact
 16-row K4 admission, eight private gcd conveniences, ten private lcm
 conveniences, seventy-four strict-K3 signed rows, the private K4 signed-gcd
 client, the eight-row generalized-CRT foundation, and the seven-row M5a
 binary sufficiency ladder, followed by the four-row M5b zero-inclusive
-closure. It also checks the
+closure and the four-row M5c relational-LCM classification. It also checks the
 45-row definition API over 44 distinct public-theorem replays. The second
 cross-checks all **409** public runtime theorems against the **410**-row
 research catalog. The third independently replays the full public ladder and
