@@ -4455,3 +4455,51 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   and has SHA-256
   `3d2acf4edad4774379b3d618fcd16612e9bb9d855638e20f8936b862599a4fac`.
   No deployment or public admission is claimed.
+
+## 2026-08-04 — Generalized-CRT M5e executable boundary closed
+
+- Added the two-row isolated `ha_generalized_crt_decision_candidate.py`
+  layer. `mod_eq_decidable` proves
+  `ModEq(d,a,b) \/ ~ModEq(d,a,b)` for every natural modulus. It constructively
+  decides `d=0`; the zero branch decides `a=b` and uses both halves of
+  `mod_eq_zero_iff_eq`, while the nonzero branch calls public
+  `mod_eq_decidable_nonzero`. No host `%` operation reaches the statement or
+  proof.
+- `generalized_binary_crt_solution_or_obstruction` assumes supplied
+  `IsGCD(g,m,n)` and returns the strong paired output
+  `(ModEq(g,a,b) /\ exists x. CRTSolution(x)) \/
+  (~ModEq(g,a,b) /\ ~(exists x. CRTSolution(x)))`. Its positive branch uses
+  total M5b sufficiency; its negative branch uses the direct
+  `crt_incompatibility_obstructs_solution` theorem. The compatibility or
+  incompatibility certificate is retained alongside existence or
+  unsolvability, and M5d canonicalization remains a separate composable API.
+- Body receipts `(dependencies,commands,nodes,depth,objects,edges,reused)` are
+  `(3,35,47,16,47,46,0)` and `(3,36,43,22,43,42,0)`. Empty-context receipts
+  `(nodes,depth,objects,edges,reused,Cuts,DNE,digest)` are
+  `(2339,70,1217,1278,62,44,0,
+  298e2b18fff84bcf3a2ec69dbc464454f958d4155b7afb687f0bab2fd95efe7e)`
+  and `(14182,80,3909,4090,182,182,0,
+  16e7cb1c430fa4e17ea878adc72d34c92e0bc3f135c4a3cf24cb2a296b38e525)`.
+  Two cold passes agree, false endpoint mutations fail, both certificates
+  contain zero DNE, and no kernel or resource limit changed.
+- Retained bounded semantics cover 847 congruence decisions with `d<7` and
+  `a,b<11`: 311 positive and 536 negative. They also cover all 5,929 CRT
+  systems with `m,n<7`, `a,b<11`: 4,021 return compatibility plus a solution,
+  and 1,908 return incompatibility plus unsolvability. The `(m,n)=(0,0)`
+  boundary contributes 11 compatible and 110 incompatible residue pairs.
+- The campaign now records 121 private candidates and 146 exact receipts,
+  without admitting a theorem; public registry/catalog counts remain 409/410.
+  The integrated source gate passes 30 campaign-structure and 212
+  proof/admission tests. Independent knowledge-base, snapshot, and vault gates
+  confirm 410 catalog rows, 409 public theorems, and 508 notes with 5,119
+  resolved links. Browser/deployment contracts pass 25 tests; the regenerated
+  179-source app is sealed as `a-ef0683604e9b` (`BUILD=2026-08-04g`).
+- The warning-free 47-source Jupyter Book rebuild passes integrity over 2,325
+  HTML pages. The explicit and defined proof explorers remain byte-identical
+  2,285-file source/built trees, with no broken, escaping, fragment, unsafe,
+  or remote-runtime links. The 2,493-file HTML tree contains 87,508,603 bytes
+  and has SHA-256
+  `ff252854e07935c02016e79b44d831e440aa91c308875181427a72cc90ab3941`.
+  No deployment or public admission is claimed. The remaining binary API
+  choice is whether to add a raw-input wrapper that constructs its own
+  relational gcd before the minimal admission review.

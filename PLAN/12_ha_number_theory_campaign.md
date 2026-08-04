@@ -254,6 +254,9 @@ nine-entry append-only tranche-01 admission. The exact M1 root still checks at
 - [x] Supply the three-row M5d canonical boundary: exact uniqueness at zero
       LCM, a unique bounded representative at nonzero LCM, and the honest
       all-modulus disjunction packaging both cases.
+- [x] Close the two-row M5e executable boundary: decide balanced congruence at
+      every modulus, then return compatibility plus a solution or certified
+      incompatibility plus unsolvability.
 
 ## Per-theorem validation gates
 
@@ -612,8 +615,31 @@ checks 4,021 compatible systems: 611 zero-LCM exact-uniqueness cases and
 to 119 candidate references and 144 exact receipts without changing the
 409-theorem public registry or 410-row catalog.
 
-Explicit decision/obstruction output, deliberate public admission, and the
-finite-system fold remain. No row asserts a remainder below zero.
+The two-row M5e executable boundary is now closed in
+[`ha_generalized_crt_decision_candidate.py`](../peano-lab/py/peano_lab/library/ha_generalized_crt_decision_candidate.py),
+with its focused audit in
+[`test_ha_generalized_crt_decision_candidate.py`](../peano-lab/py/tests/test_ha_generalized_crt_decision_candidate.py).
+`mod_eq_decidable` combines equality decision and `mod_eq_zero_iff_eq` at
+modulus zero with public `mod_eq_decidable_nonzero`. Then
+`generalized_binary_crt_solution_or_obstruction` decides gcd compatibility:
+the positive branch calls total M5b sufficiency, while the negative branch
+uses `crt_incompatibility_obstructs_solution`. Its output carries both the
+decided compatibility proposition and the corresponding existence or
+unsolvability certificate.
+
+The two body receipts are `(3,35,47,16,47,46,0)` and
+`(3,36,43,22,43,42,0)`. Empty-context receipts are
+`(2339,70,1217,1278,62,44,0,298e2b18fff84bcf3a2ec69dbc464454f958d4155b7afb687f0bab2fd95efe7e)`
+and
+`(14182,80,3909,4090,182,182,0,16e7cb1c430fa4e17ea878adc72d34c92e0bc3f135c4a3cf24cb2a296b38e525)`.
+Both have zero `DNE` and fit unchanged limits. Retained semantics cover all
+847 cases with `d<7`, `a,b<11` and all 5,929 CRT systems with `m,n<7`,
+`a,b<11`: 4,021 return the solution branch and 1,908 return the obstruction
+branch. Evidence is now 121 private candidates and 146 receipts.
+
+An optional raw-input wrapper that constructs its own relational gcd,
+deliberate minimal public admission, and the finite-system fold remain. No row
+asserts a remainder below zero.
 
 ## Release boundary
 

@@ -1959,3 +1959,29 @@
   `3d2acf4edad4774379b3d618fcd16612e9bb9d855638e20f8936b862599a4fac`.
   Executable decision/obstruction output, deliberate admission, and finite
   lifting remain; no zero branch asserts a remainder below zero.
+- **Generalized-CRT M5e executable boundary (2026-08-04):** two isolated
+  candidates make the supplied-relational-gcd binary API total.
+  `mod_eq_decidable` handles modulus zero through equality decision and
+  `mod_eq_zero_iff_eq`, and nonzero modulus through the public remainder-based
+  decision theorem. `generalized_binary_crt_solution_or_obstruction` returns
+  either `ModEq(g,a,b)` with a CRT solution or `~ModEq(g,a,b)` with a proof
+  that no CRT solution exists, using total M5b sufficiency and the direct
+  obstruction theorem. Body receipts are `(3,35,47,16,47,46,0)` and
+  `(3,36,43,22,43,42,0)`; closed receipts are
+  `(2339,70,1217,1278,62,44,0,
+  298e2b18fff84bcf3a2ec69dbc464454f958d4155b7afb687f0bab2fd95efe7e)`
+  and `(14182,80,3909,4090,182,182,0,
+  16e7cb1c430fa4e17ea878adc72d34c92e0bc3f135c4a3cf24cb2a296b38e525)`.
+  Both have zero DNE and fit unchanged limits. Retained semantics cover 847
+  congruence decisions and all 5,929 bounded CRT systems: 4,021 solution
+  outputs and 1,908 obstruction outputs, including the full gcd-zero split of
+  11 compatible and 110 incompatible residue pairs. Evidence is now 121
+  private candidates and 146 receipts; public registry/catalog remain
+  409/410. Integrated gates pass 30 structural and 212 proof/admission tests,
+  plus 25 browser/deployment tests; the 508-note/5,119-link vault is unchanged.
+  The 179-source browser app is sealed as `a-ef0683604e9b`
+  (`BUILD=2026-08-04g`). The warning-free 47-source Book passes integrity over
+  2,325 HTML pages; its 2,493-file tree has SHA-256
+  `ff252854e07935c02016e79b44d831e440aa91c308875181427a72cc90ab3941`.
+  An optional raw-input gcd wrapper, minimal admission, and finite lifting
+  remain; M5d stays the separate canonicalization API.

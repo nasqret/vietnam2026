@@ -68,7 +68,8 @@
       "peano-lab/py/tests/test_ha_generalized_crt_sufficiency_candidate.py",
       "peano-lab/py/tests/test_ha_generalized_crt_zero_boundary_candidate.py",
       "peano-lab/py/tests/test_ha_generalized_crt_classification_candidate.py",
-      "peano-lab/py/tests/test_ha_generalized_crt_canonical_boundary_candidate.py"
+      "peano-lab/py/tests/test_ha_generalized_crt_canonical_boundary_candidate.py",
+      "peano-lab/py/tests/test_ha_generalized_crt_decision_candidate.py"
     ],
     "theorems": [
       {
@@ -1078,6 +1079,20 @@
         "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py",
         "statement_sha256": "fc76bb161c4986e700253da58219aa9a37ac39e2f3ebebc64c966c73c696ef75",
         "receipt": {"nodes": 17750, "depth": 80, "objects": 4239, "edges": 4426, "reused": 188, "cuts": 193, "certificate_sha256": "c704a17f6feed83142b160bbeafcc14764d5ae6590999187eed5455c3ad03bd7"}
+      },
+      {
+        "name": "mod_eq_decidable",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_decision_candidate.py",
+        "statement_sha256": "b9a37c915c3f13386135830dcc03f17990caf279d6f9f3f7d9cf57539f6b8737",
+        "receipt": {"nodes": 2339, "depth": 70, "objects": 1217, "edges": 1278, "reused": 62, "cuts": 44, "certificate_sha256": "298e2b18fff84bcf3a2ec69dbc464454f958d4155b7afb687f0bab2fd95efe7e"}
+      },
+      {
+        "name": "generalized_binary_crt_solution_or_obstruction",
+        "status": "closed_checked_candidate",
+        "source_module": "peano-lab/py/peano_lab/library/ha_generalized_crt_decision_candidate.py",
+        "statement_sha256": "54f7722b7e718aff0cd85aeae4ce6b86528892a5e52074d5f2e86eec4d6a3aec",
+        "receipt": {"nodes": 14182, "depth": 80, "objects": 3909, "edges": 4090, "reused": 182, "cuts": 182, "certificate_sha256": "16e7cb1c430fa4e17ea878adc72d34c92e0bc3f135c4a3cf24cb2a296b38e525"}
       }
     ]
   },
@@ -1854,9 +1869,18 @@
             "generalized_binary_crt_canonical_boundary"
           ],
           "role": "Closed-checked but non-public M5d canonical boundary: exact uniqueness at relational LCM zero, a unique bounded representative at nonzero relational LCM, and a constructive all-modulus disjunction that never asserts a remainder below zero."
+        },
+        {
+          "path": "peano-lab/py/peano_lab/library/ha_generalized_crt_decision_candidate.py",
+          "factory": "make_ha_generalized_crt_decision_candidate_theorems",
+          "theorem_names": [
+            "mod_eq_decidable",
+            "generalized_binary_crt_solution_or_obstruction"
+          ],
+          "role": "Closed-checked but non-public M5e executable boundary: constructive balanced-congruence decision at every natural modulus, followed by a generalized binary CRT output carrying either compatibility plus a solution or incompatibility plus a proof of unsolvability."
         }
       ],
-      "remaining_gap": "The K4 relational LCM core is public, and 26 generalized-CRT foundation, M5a nonzero-sufficiency, M5b zero-boundary, M5c relational-LCM classification, and M5d canonical-boundary rows now have deterministic empty-context receipts. For arbitrary natural moduli, gcd compatibility is necessary and sufficient for a common solution; solutions are classified modulo any supplied relational lcm; zero lcm gives exact uniqueness; and nonzero lcm gives a unique bounded representative. Executable compatibility/obstruction decisions, deliberate public admission, and the K3 finite-system fold remain.",
+      "remaining_gap": "The K4 relational LCM core is public, and 28 generalized-CRT foundation through M5e executable-boundary rows now have deterministic empty-context receipts. For arbitrary natural moduli, gcd compatibility is decidable and necessary and sufficient for a common solution; the executable output carries either compatibility plus a witness or incompatibility plus unsolvability; solutions are classified modulo any supplied relational lcm; zero lcm gives exact uniqueness; and nonzero lcm gives a unique bounded representative. An optional raw-input wrapper that constructs its own relational gcd, deliberate minimal public admission, and the K3 finite-system fold remain.",
       "validation": {
         "path": [
           "manifest_integrity",

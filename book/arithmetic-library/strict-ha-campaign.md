@@ -71,19 +71,20 @@ It separates three facts which are easy to blur in an informal development:
     templates. Their theorem ladder has not yet been proved, and uniform lists
     remain blocked on a computation-trace representation.
 * - Generalized CRT
-  - twenty-six closed private candidates
+  - twenty-eight closed private candidates
   - The eight-row congruence foundation proves necessity and obstruction; the
     seven-row M5a ladder constructs nonzero-modulus solutions; the four-row
     M5b boundary closes solvability for all natural moduli; the four-row M5c
     ladder classifies the complete solution set modulo relational LCM; the
-    three-row M5d layer gives the correct zero/nonzero canonical boundary.
+    three-row M5d layer gives the correct zero/nonzero canonical boundary; the
+    two-row M5e layer returns a solution or a certified obstruction.
 ```
 
 The public registry now has **409** entries. The nine tranche-01 interfaces at
 positions 384--392 are followed by the exact 16-row K4 admission at positions
 393--408. The research catalog has **410** entries, including **386**
 `checked_m20` rows. The campaign manifest records **72** public references,
-**119** isolated candidates, and **144** exact theorem receipts. This
+**121** isolated candidates, and **146** exact theorem receipts. This
 append-only extension leaves the frozen first-247 model curriculum unchanged.
 
 ## Why canonical remainder is a relation
@@ -2095,6 +2096,60 @@ first count is intentionally broader than the single `(0,0)` case. No branch
 asserts a remainder below zero. The private evidence totals are now **119**
 candidates and **144** exact receipts; public counts remain **409/410**.
 
+### Executable solution or obstruction
+
+M5e makes the binary result total without adding a host-language decision
+oracle:
+
+```{list-table}
+:header-rows: 1
+:widths: 28 40 32
+
+* - Candidate
+  - Exact surface result
+  - Ordered direct dependencies
+* - `mod_eq_decidable`
+  - `ModEq(d,a,b) \/ ~ModEq(d,a,b)` for every natural `d`.
+  - `eq_decidable`, `mod_eq_zero_iff_eq`, public
+    `mod_eq_decidable_nonzero`
+* - `generalized_binary_crt_solution_or_obstruction`
+  - Given `IsGCD(g,m,n)`, return either compatibility plus an actual CRT
+    solution, or incompatibility plus a proof that no solution exists.
+  - `mod_eq_decidable`, total M5b sufficiency,
+    `crt_incompatibility_obstructs_solution`
+```
+
+At modulus zero the first row decides equality and uses
+`mod_eq_zero_iff_eq`; at nonzero modulus it reuses the public
+remainder-based decision theorem. The second row cases on that proof. Its
+positive branch constructs a solution, while its negative branch applies the
+already isolated obstruction theorem. Both branches retain the compatibility
+or incompatibility certificate, so the result contains more information than
+`P \/ ~P` alone.
+
+```{list-table}
+:header-rows: 1
+:widths: 24 25 51
+
+* - Closed candidate
+  - Dependency-curried body
+  - Empty-context certificate
+* - `mod_eq_decidable`
+  - `(3,35,47,16,47,46,0)`
+  - `(2339,70,1217,1278,62,44,0,298e2b18fff84bcf3a2ec69dbc464454f958d4155b7afb687f0bab2fd95efe7e)`
+* - `generalized_binary_crt_solution_or_obstruction`
+  - `(3,36,43,22,43,42,0)`
+  - `(14182,80,3909,4090,182,182,0,16e7cb1c430fa4e17ea878adc72d34c92e0bc3f135c4a3cf24cb2a296b38e525)`
+```
+
+Two cold closures agree, false endpoint mutations fail, and both certificates
+have zero `DNE` within unchanged limits. The retained semantic audit covers
+847 all-modulus congruence decisions and all 5,929 systems with `m,n<7` and
+`a,b<11`: 4,021 return compatibility with a solution and 1,908 return
+incompatibility with unsolvability. This brings private evidence to **121**
+candidates and **146** receipts; the public registry/catalog remain
+**409/410**. M5d remains the separate composable canonicalization API.
+
 Finite generalized CRT remains gated by the independent finite-data
 representation.
 
@@ -2105,12 +2160,14 @@ Read the
 [`zero-boundary source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py),
 [`classification source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_classification_candidate.py),
 [`canonical-boundary source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py),
+[`executable-boundary source`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/ha_generalized_crt_decision_candidate.py),
 [`foundation audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_congruence_candidate.py),
 [`sufficiency audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_sufficiency_candidate.py),
 [`zero-boundary audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_zero_boundary_candidate.py),
 [`classification audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_classification_candidate.py),
+[`canonical-boundary audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_canonical_boundary_candidate.py),
 and the
-[`canonical-boundary audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_canonical_boundary_candidate.py)
+[`executable-boundary audit`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/tests/test_ha_generalized_crt_decision_candidate.py)
 for the exact expanded formulas and line-by-line tactic scripts.
 
 ## Independent pair/cell checkpoint
@@ -2168,15 +2225,16 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 ```
 
-The first command checks the 12-layer campaign manifest and all **144**
-theorem receipts: **25** public evidence rows and **119** closed private
+The first command checks the 12-layer campaign manifest and all **146**
+theorem receipts: **25** public evidence rows and **121** closed private
 candidates. This includes the exact nine-row tranche-01 admission, the exact
 16-row K4 admission, eight private gcd conveniences, ten private lcm
 conveniences, seventy-four strict-K3 signed rows, the private K4 signed-gcd
 client, the eight-row generalized-CRT foundation, and the seven-row M5a
 binary sufficiency ladder, followed by the four-row M5b zero-inclusive
 closure, the four-row M5c relational-LCM classification, and the three-row
-M5d zero/nonzero canonical boundary. It also checks the
+M5d zero/nonzero canonical boundary, followed by the two-row M5e executable
+solution-or-obstruction boundary. It also checks the
 45-row definition API over 44 distinct public-theorem replays. The second
 cross-checks all **409** public runtime theorems against the **410**-row
 research catalog. The third independently replays the full public ladder and
