@@ -79,27 +79,29 @@ The strict K3 evidence comprises 96 rows across 21 candidate modules: the
 74-row signed stack and the 22-row pair/cell constructor, shell, injectivity,
 functionality, and strict-descent core.
 
-The next `HA-K3B-CELLHISTORY-1` authoring checkpoint freezes the reverse
-`CellHistory` and existential `CellListLen` definitions after K4/M3. It has
-all eight theorem rows of the first-ten ladder body-checked through the
-intuitionistic kernel, with receipts
-`(dependencies,commands,nodes,depth,objects,edges,reused)`:
-`cell_history_nil = (2,24,135,18,135,134,0)`,
-`cell_history_extend = (5,86,122,36,122,121,0)`,
-`cell_history_succ_elim = (3,43,59,23,59,58,0)`,
-`cell_list_zero_iff_nil = (2,24,33,16,33,32,0)`,
-`cell_list_succ_iff_cell = (2,38,51,19,51,50,0)`,
-`cell_list_length_functional = (5,119,163,42,163,162,0)`,
-`cell_list_length_le_code = (5,43,49,22,49,48,0)`, and
-`cell_list_length_total = (3,22,58,32,58,57,0)`. This is explicitly
-**BODY-CHECKED only**: only the nil history has a known prior empty-context
-receipt. The other seven theorem rows await isolated WMI cold closure.
-VPN/WMI access is restored and the closure runner/submission is being
-prepared, but no WMI result is claimed. Nothing is admitted or enrolled in
-the campaign manifest. Strict K3 therefore remains
-96 rows across 21 modules, while the campaign JSON remains 95 public
-references, 121 private candidates, and 169 receipts. Run the deliberately
-separate lightweight gate with `make ha-k3b-cell-history-check`.
+The `HA-K3B-CELLHISTORY-1` checkpoint freezes reverse `CellHistory` and
+existential `CellListLen` after K4/M3. WMI job `219203` checked empty-context
+certificates for all eight theorem rows twice, deterministically. Exact closed
+receipts `(nodes,depth,objects,edges,reused,Cuts,proof DAG SHA-256)` are:
+`cell_history_nil = (155,18,155,154,0,2,a3038bd67616f11f8e97727c98f03af09aacde863a70637d9575e2ff9d337ff8)`,
+`cell_history_extend = (29352,81,4651,4879,229,241,370de792b2c3fed8b3d36f90147c426b846d15578cac8c66520a59df81750c78)`,
+`cell_history_succ_elim = (1245,60,772,810,39,27,e8aee67cfef618fde3b08d48dffb4a6b31cdd22a578e38206d4e5a20a96c338c)`,
+`cell_list_zero_iff_nil = (1309,60,880,916,37,26,f7fdef58a28a86bd70b133bf839f6b49526817e020da6c698b85b3cd369f2f73)`,
+`cell_list_succ_iff_cell = (30648,83,4761,4992,232,246,a64ad8e5095d50afe10b47b1036ad9b680ab82462b41beb115d23956f9fa5699)`,
+`cell_list_length_functional = (34732,85,5700,5976,277,299,5dd0e4b8f585990ec826ba5ef02960cb6817f0aec5edcb86c9bb1e22d44c5a6c)`,
+`cell_list_length_le_code = (31002,84,4891,5129,239,257,50fe47364958e1a506315935796e517f41ddd947a1792fcdb134956ba05290a9)`, and
+`cell_list_length_total = (29569,84,4848,5078,231,246,2d6063d54e16c0f093aab270329bdd4ca5a7c02aa68b528c2c7c771945ccba17)`.
+Every certificate has zero DNE. The
+[`closure report`](../../artifacts/peano-library/ha-k3b-cell-history-closure-219203.json)
+has SHA-256
+`6ef49fcb5edb2b1c5478ff592c97dc9af56ed2f79ec03308c5ebf341833b825c`;
+job `219203` completed `0:0` on `c3n1` in `00:04:46` with
+`MaxRSS=82428K`. Gates G1--G6 and G7's quarantine/closure portion pass, but
+public admission was deliberately not performed. All eight rows remain
+private, unregistered, unadmitted `closed_checked_candidate` evidence.
+Strict K3 remains 96 rows across 21 modules, while the unchanged campaign JSON
+remains 95 public references, 121 private candidates, and 169 receipts. Run
+the separate lightweight gate with `make ha-k3b-cell-history-check`.
 
 The K4
 [`signed-gcd client`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)

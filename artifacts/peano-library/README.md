@@ -54,3 +54,35 @@ structural Cut occurrences, and 373 Cut-bearing certificates; its ordered root
 is `4d02dc439d53533e8992a471b26ee34059fb6001f822041e42c56b2cc0a7a079`. The live
 resource policy admits 500,000 structural occurrences, 100,000 distinct proof
 objects, and depth 256; these are availability limits, not logical rules.
+
+## Private K3B cell-history closure receipt
+
+[`ha-k3b-cell-history-closure-219203.json`](ha-k3b-cell-history-closure-219203.json)
+is the authoritative two-pass cold-closure report for the eight private
+first-ten theorem rows of `HA-K3B-CELLHISTORY-1`. Its SHA-256 is
+`6ef49fcb5edb2b1c5478ff592c97dc9af56ed2f79ec03308c5ebf341833b825c`.
+WMI job `219203` completed `0:0` on `c3n1` in `00:04:46` with
+`MaxRSS=82428K`; it binds clean commit
+`0b33b6675481a93d0e330987b22d9ef91564a0a0` to payload SHA-256
+`edf77bff5cf824cbfd549179f8cef2a18ac65904d473ce3bbd2bd5e5f1c95620`
+(3,911,680 bytes, 201 entries). Both passes were deterministic and every
+certificate contains zero DNE.
+
+Exact receipts use tuple order
+`(nodes,depth,objects,edges,reused,Cuts,proof DAG SHA-256)`:
+
+- `cell_history_nil = (155,18,155,154,0,2,a3038bd67616f11f8e97727c98f03af09aacde863a70637d9575e2ff9d337ff8)`;
+- `cell_history_extend = (29352,81,4651,4879,229,241,370de792b2c3fed8b3d36f90147c426b846d15578cac8c66520a59df81750c78)`;
+- `cell_history_succ_elim = (1245,60,772,810,39,27,e8aee67cfef618fde3b08d48dffb4a6b31cdd22a578e38206d4e5a20a96c338c)`;
+- `cell_list_zero_iff_nil = (1309,60,880,916,37,26,f7fdef58a28a86bd70b133bf839f6b49526817e020da6c698b85b3cd369f2f73)`;
+- `cell_list_succ_iff_cell = (30648,83,4761,4992,232,246,a64ad8e5095d50afe10b47b1036ad9b680ab82462b41beb115d23956f9fa5699)`;
+- `cell_list_length_functional = (34732,85,5700,5976,277,299,5dd0e4b8f585990ec826ba5ef02960cb6817f0aec5edcb86c9bb1e22d44c5a6c)`;
+- `cell_list_length_le_code = (31002,84,4891,5129,239,257,50fe47364958e1a506315935796e517f41ddd947a1792fcdb134956ba05290a9)`;
+- `cell_list_length_total = (29569,84,4848,5078,231,246,2d6063d54e16c0f093aab270329bdd4ca5a7c02aa68b528c2c7c771945ccba17)`.
+
+These are `closed_checked_candidate` receipts only. Gates G1--G6 and G7's
+quarantine/closure portion pass, but public admission was deliberately not
+performed. All eight rows remain private, unregistered, and unadmitted. The
+public catalog and campaign JSON are unchanged: strict K3 stays 96 rows across
+21 modules and campaign accounting stays 95 public references, 121 private
+candidates, and 169 receipts.

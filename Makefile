@@ -125,6 +125,7 @@ ha-number-theory-check:
 # BODY-CHECKED authoring gate, not the isolated cold empty-context closure gate.
 ha-k3b-cell-history-check:
 	python3 -m pytest -q scripts/test_verify_ha_cell_history_rfc.py
+	python3 -m pytest -q scripts/test_verify_ha_cell_history_wmi_receipt.py
 	cd peano-lab/py && python3 -m pytest -q \
 		tests/test_ha_cell_history_candidate.py \
 		tests/test_ha_cell_list_equations_candidate.py \

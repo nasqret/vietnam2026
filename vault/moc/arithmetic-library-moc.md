@@ -69,24 +69,25 @@ maps remain open.
 The post-K4/M3
 [`HA-K3B-CELLHISTORY-1`](../../research/arithmetic-library/ha-cell-history-rfc-v1.md)
 checkpoint now freezes reverse `CellHistory` and existential `CellListLen`
-definitions. All eight theorem rows in the first-ten ladder have
-dependency-curried kernel-checked bodies:
-`cell_history_nil = (2,24,135,18,135,134,0)`,
-`cell_history_extend = (5,86,122,36,122,121,0)`,
-`cell_history_succ_elim = (3,43,59,23,59,58,0)`,
-`cell_list_zero_iff_nil = (2,24,33,16,33,32,0)`,
-`cell_list_succ_iff_cell = (2,38,51,19,51,50,0)`,
-`cell_list_length_functional = (5,119,163,42,163,162,0)`,
-`cell_list_length_le_code = (5,43,49,22,49,48,0)`, and
-`cell_list_length_total = (3,22,58,32,58,57,0)`, where each tuple is
-`(dependencies,commands,nodes,depth,objects,edges,reused)`. This is
-**BODY-CHECKED only**. Only nil has a known prior empty-context receipt; the
-other seven theorem rows await isolated WMI cold closure. VPN/WMI access is
-restored and the closure runner/submission is being prepared, but no WMI
-result is claimed. No row is recorded as
-`closed_checked_candidate` or admitted,
-so strict K3 and the campaign JSON remain exactly 96 rows/21 modules and
-95 public references/121 private candidates/169 receipts. The separate light
+definitions. WMI job `219203` closed all eight first-ten theorem rows twice
+from the empty context. Their exact
+`(nodes,depth,objects,edges,reused,Cuts,proof DAG SHA-256)` receipts are
+`cell_history_nil = (155,18,155,154,0,2,a3038bd67616f11f8e97727c98f03af09aacde863a70637d9575e2ff9d337ff8)`,
+`cell_history_extend = (29352,81,4651,4879,229,241,370de792b2c3fed8b3d36f90147c426b846d15578cac8c66520a59df81750c78)`,
+`cell_history_succ_elim = (1245,60,772,810,39,27,e8aee67cfef618fde3b08d48dffb4a6b31cdd22a578e38206d4e5a20a96c338c)`,
+`cell_list_zero_iff_nil = (1309,60,880,916,37,26,f7fdef58a28a86bd70b133bf839f6b49526817e020da6c698b85b3cd369f2f73)`,
+`cell_list_succ_iff_cell = (30648,83,4761,4992,232,246,a64ad8e5095d50afe10b47b1036ad9b680ab82462b41beb115d23956f9fa5699)`,
+`cell_list_length_functional = (34732,85,5700,5976,277,299,5dd0e4b8f585990ec826ba5ef02960cb6817f0aec5edcb86c9bb1e22d44c5a6c)`,
+`cell_list_length_le_code = (31002,84,4891,5129,239,257,50fe47364958e1a506315935796e517f41ddd947a1792fcdb134956ba05290a9)`, and
+`cell_list_length_total = (29569,84,4848,5078,231,246,2d6063d54e16c0f093aab270329bdd4ca5a7c02aa68b528c2c7c771945ccba17)`.
+All have zero DNE and remain private, unregistered, unadmitted
+`closed_checked_candidate` evidence. The [report](../../artifacts/peano-library/ha-k3b-cell-history-closure-219203.json)
+has SHA-256
+`6ef49fcb5edb2b1c5478ff592c97dc9af56ed2f79ec03308c5ebf341833b825c`;
+the job completed `0:0` on `c3n1` in `00:04:46`, `MaxRSS=82428K`. Gates
+G1--G6 and G7 quarantine/closure pass; public admission remains open. Strict
+K3 and the unchanged campaign JSON remain exactly 96 rows/21 modules and 95
+public references/121 private candidates/169 receipts. The separate light
 gate is `make ha-k3b-cell-history-check`.
 
 ## Design and trust

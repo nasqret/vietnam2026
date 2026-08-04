@@ -107,7 +107,10 @@ def test_rfc_exists_and_freezes_the_k3b_boundary() -> None:
         in normalized
     )
     assert "Strict K3 still reports exactly 96 rows across 21 modules" in source
-    assert "private proof work only; no public admission" in normalized
+    assert (
+        "all eight theorem rows are private `closed_checked_candidate` "
+        "evidence; no public admission"
+    ) in normalized
 
 
 def test_canonical_helpers_match_frozen_hash_ast_and_free_name_receipts() -> None:
@@ -214,8 +217,11 @@ def test_first_ten_order_firewall_and_private_status_are_explicit() -> None:
         "Public admission, if desired, is a separate reviewed commit with explicit "
         "registry, catalog, snapshot, Book, and explorer receipts."
     ) in normalized
-    assert "Until G7 is recorded, these remain private candidates." in normalized
     assert (
-        "A closed seed theorem does not imply that lists, lookup, folds, or "
-        "finite CRT have been admitted."
+        "All eight rows therefore remain private, unregistered, unadmitted "
+        "`closed_checked_candidate` evidence."
+    ) in normalized
+    assert (
+        "Closure does not imply that lists, lookup, folds, or finite CRT have "
+        "been admitted."
     ) in normalized

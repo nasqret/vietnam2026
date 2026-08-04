@@ -4713,3 +4713,31 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   theorem is claimed closed or admitted, and the campaign JSON is untouched:
   strict K3 remains 96 rows across 21 modules and accounting remains
   95 public references, 121 private candidates, and 169 receipts.
+
+## 2026-08-04 — K3B first-ten empty-context closure completed on WMI
+
+- WMI job `219203` completed two deterministic empty-context closure passes
+  for all eight theorem rows in `HA-K3B-CELLHISTORY-1`. Scheduler evidence is
+  `COMPLETED 0:0`, node `c3n1`, elapsed `00:04:46`, and `MaxRSS=82428K`.
+- Exact closed receipts in order
+  `(nodes,depth,objects,edges,reused,Cuts,proof DAG SHA-256)` are
+  `cell_history_nil = (155,18,155,154,0,2,a3038bd67616f11f8e97727c98f03af09aacde863a70637d9575e2ff9d337ff8)`,
+  `cell_history_extend = (29352,81,4651,4879,229,241,370de792b2c3fed8b3d36f90147c426b846d15578cac8c66520a59df81750c78)`,
+  `cell_history_succ_elim = (1245,60,772,810,39,27,e8aee67cfef618fde3b08d48dffb4a6b31cdd22a578e38206d4e5a20a96c338c)`,
+  `cell_list_zero_iff_nil = (1309,60,880,916,37,26,f7fdef58a28a86bd70b133bf839f6b49526817e020da6c698b85b3cd369f2f73)`,
+  `cell_list_succ_iff_cell = (30648,83,4761,4992,232,246,a64ad8e5095d50afe10b47b1036ad9b680ab82462b41beb115d23956f9fa5699)`,
+  `cell_list_length_functional = (34732,85,5700,5976,277,299,5dd0e4b8f585990ec826ba5ef02960cb6817f0aec5edcb86c9bb1e22d44c5a6c)`,
+  `cell_list_length_le_code = (31002,84,4891,5129,239,257,50fe47364958e1a506315935796e517f41ddd947a1792fcdb134956ba05290a9)`, and
+  `cell_list_length_total = (29569,84,4848,5078,231,246,2d6063d54e16c0f093aab270329bdd4ca5a7c02aa68b528c2c7c771945ccba17)`.
+- Every certificate contains zero DNE. The collected report
+  `artifacts/peano-library/ha-k3b-cell-history-closure-219203.json` has
+  SHA-256
+  `6ef49fcb5edb2b1c5478ff592c97dc9af56ed2f79ec03308c5ebf341833b825c`
+  and binds clean commit `0b33b6675481a93d0e330987b22d9ef91564a0a0` to payload
+  `edf77bff5cf824cbfd549179f8cef2a18ac65904d473ce3bbd2bd5e5f1c95620`
+  (3,911,680 bytes, 201 entries).
+- Gates G1--G6 pass, as does G7's quarantine/closure portion. Public
+  admission remains deliberately open: all eight rows are private,
+  unregistered, unadmitted `closed_checked_candidate` evidence. The campaign
+  JSON is unchanged at 95 public references, 121 private candidates, and 169
+  receipts; strict K3 remains 96 rows across 21 modules.

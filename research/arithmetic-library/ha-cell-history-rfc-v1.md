@@ -1,7 +1,7 @@
 # RFC HA-K3B-CELLHISTORY-1: CRT-backed reverse cell histories
 
-**Status:** representation and first ten obligations frozen; private proof work
-only; no public admission
+**Status:** representation and first ten obligations frozen; all eight theorem
+rows are private `closed_checked_candidate` evidence; no public admission
 
 **Layer:** `K3B`, a post-K4/M3 bridge; **not** part of strict K3
 
@@ -283,31 +283,38 @@ public-library closure.  The body tuple below is
 
 | Row | Statement SHA-256 | Dependency-curried body receipt | Empty-context status |
 |---|---|---|---|
-| `cell_history_nil` | `18568ecbb4bcc3f923c504be74f4933a2b4f79e5d21751a1791715449374de37` | `(2,24,135,18,135,134,0)` | closed receipt preserved below |
-| `cell_history_extend` | `50e26cefb18371aed02b5c926757bbfc22a007a51b995aafd3675c9a960bf407` | `(5,86,122,36,122,121,0)` | pending isolated heavy closure |
-| `cell_history_succ_elim` | `2f44b8405bb60e1571452cdae993c024c80cb079be6ded25edd58716888ecdee` | `(3,43,59,23,59,58,0)` | pending isolated heavy closure |
-| `cell_list_zero_iff_nil` | `bef9e900318713718a2e981eb04de28fb21e4641ff4f80c2a98b1dc41af2db29` | `(2,24,33,16,33,32,0)` | pending isolated heavy closure |
-| `cell_list_succ_iff_cell` | `bb678323c7061f561ce69bb0357bf93ece948acf763503eec4763934cf50b23c` | `(2,38,51,19,51,50,0)` | pending isolated heavy closure |
-| `cell_list_length_functional` | `e08563402824e2af98ac5fcd56065b173da4713dd33ab96ec16fb6fc5346b8e3` | `(5,119,163,42,163,162,0)` | pending isolated heavy closure |
-| `cell_list_length_le_code` | `48af1df5e7ca96895308b04b48ed154ed33399424d19a38b7cb18841ac12a08a` | `(5,43,49,22,49,48,0)` | pending isolated heavy closure |
-| `cell_list_length_total` | `8e6cea3fc40ffe051e4e3eb8af5b698e087c0f3d798fcfc628a107db1b09d765` | `(3,22,58,32,58,57,0)` | pending isolated heavy closure |
+| `cell_history_nil` | `18568ecbb4bcc3f923c504be74f4933a2b4f79e5d21751a1791715449374de37` | `(2,24,135,18,135,134,0)` | `closed_checked_candidate` |
+| `cell_history_extend` | `50e26cefb18371aed02b5c926757bbfc22a007a51b995aafd3675c9a960bf407` | `(5,86,122,36,122,121,0)` | `closed_checked_candidate` |
+| `cell_history_succ_elim` | `2f44b8405bb60e1571452cdae993c024c80cb079be6ded25edd58716888ecdee` | `(3,43,59,23,59,58,0)` | `closed_checked_candidate` |
+| `cell_list_zero_iff_nil` | `bef9e900318713718a2e981eb04de28fb21e4641ff4f80c2a98b1dc41af2db29` | `(2,24,33,16,33,32,0)` | `closed_checked_candidate` |
+| `cell_list_succ_iff_cell` | `bb678323c7061f561ce69bb0357bf93ece948acf763503eec4763934cf50b23c` | `(2,38,51,19,51,50,0)` | `closed_checked_candidate` |
+| `cell_list_length_functional` | `e08563402824e2af98ac5fcd56065b173da4713dd33ab96ec16fb6fc5346b8e3` | `(5,119,163,42,163,162,0)` | `closed_checked_candidate` |
+| `cell_list_length_le_code` | `48af1df5e7ca96895308b04b48ed154ed33399424d19a38b7cb18841ac12a08a` | `(5,43,49,22,49,48,0)` | `closed_checked_candidate` |
+| `cell_list_length_total` | `8e6cea3fc40ffe051e4e3eb8af5b698e087c0f3d798fcfc628a107db1b09d765` | `(3,22,58,32,58,57,0)` | `closed_checked_candidate` |
 
-The earlier empty-context receipt for `cell_history_nil` is
+WMI job `219203` closed every row twice from the empty context, with identical
+receipts on both passes.  The tuple order below is
+`(nodes,depth,objects,edges,reused,Cuts,proof DAG SHA-256)`:
 
-```text
-(155,18,155,154,0,2,
- a3038bd67616f11f8e97727c98f03af09aacde863a70637d9575e2ff9d337ff8)
-```
+| Row | Exact closed receipt |
+|---|---|
+| `cell_history_nil` | `(155,18,155,154,0,2,a3038bd67616f11f8e97727c98f03af09aacde863a70637d9575e2ff9d337ff8)` |
+| `cell_history_extend` | `(29352,81,4651,4879,229,241,370de792b2c3fed8b3d36f90147c426b846d15578cac8c66520a59df81750c78)` |
+| `cell_history_succ_elim` | `(1245,60,772,810,39,27,e8aee67cfef618fde3b08d48dffb4a6b31cdd22a578e38206d4e5a20a96c338c)` |
+| `cell_list_zero_iff_nil` | `(1309,60,880,916,37,26,f7fdef58a28a86bd70b133bf839f6b49526817e020da6c698b85b3cd369f2f73)` |
+| `cell_list_succ_iff_cell` | `(30648,83,4761,4992,232,246,a64ad8e5095d50afe10b47b1036ad9b680ab82462b41beb115d23956f9fa5699)` |
+| `cell_list_length_functional` | `(34732,85,5700,5976,277,299,5dd0e4b8f585990ec826ba5ef02960cb6817f0aec5edcb86c9bb1e22d44c5a6c)` |
+| `cell_list_length_le_code` | `(31002,84,4891,5129,239,257,50fe47364958e1a506315935796e517f41ddd947a1792fcdb134956ba05290a9)` |
+| `cell_list_length_total` | `(29569,84,4848,5078,231,246,2d6063d54e16c0f093aab270329bdd4ca5a7c02aa68b528c2c7c771945ccba17)` |
 
-with tuple order `(nodes,depth,objects,edges,reused,Cuts,certificate SHA-256)`.
-Every displayed body passes the independent intuitionistic kernel with its
-declared dependencies introduced as ordinary hypotheses, contains zero DNE,
-and rejects a nearby false statement mutation.  This is not an admission or
-an empty-context closure receipt for the seven rows marked pending.  VPN and
-WMI access have been restored, and the isolated closure runner/submission is
-being prepared; no WMI result is claimed here.  In particular, gates G2--G4
-remain open until their public beta/CRT dependency DAGs are closed and
-measured in an isolated worker.
+Every certificate contains zero DNE.  The authoritative
+[`ha-k3b-cell-history-closure-219203.json`](../../artifacts/peano-library/ha-k3b-cell-history-closure-219203.json)
+has SHA-256
+`6ef49fcb5edb2b1c5478ff592c97dc9af56ed2f79ec03308c5ebf341833b825c`.
+It binds clean commit `0b33b6675481a93d0e330987b22d9ef91564a0a0` to payload
+`edf77bff5cf824cbfd549179f8cef2a18ac65904d473ce3bbd2bd5e5f1c95620`
+(3,911,680 bytes, 201 entries).  Scheduler job `219203` completed on `c3n1`
+with state/exit `COMPLETED 0:0` in `00:04:46` and `MaxRSS=82428K`.
 
 ## 6. Dependency firewall
 
@@ -429,8 +436,13 @@ The tranche is accepted only when all of the following gates pass.
 - Public admission, if desired, is a separate reviewed commit with explicit
   registry, catalog, snapshot, Book, and explorer receipts.
 
-Until G7 is recorded, these remain private candidates.  A closed seed theorem
-does not imply that lists, lookup, folds, or finite CRT have been admitted.
+G1--G6 pass for the frozen first-ten tranche.  G7's dependency-quarantine and
+closure audit passes, but its optional public-admission action was deliberately
+not performed.  All eight rows therefore remain private, unregistered,
+unadmitted `closed_checked_candidate` evidence.  Strict K3 remains 96 rows
+across 21 modules, and the campaign JSON remains unchanged at 95 public
+references, 121 private candidates, and 169 receipts.  Closure does not imply
+that lists, lookup, folds, or finite CRT have been admitted.
 
 ## 8. Next batch after the ten-item gate
 
