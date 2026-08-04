@@ -143,7 +143,7 @@ later theorem statement expands D01/D02, `CellHistory`, `CellListLen`,
 | 4 | `list_at_head_iff` | characterize lookup at outer index zero | `cell_history_succ_elim`, rung 2, `beta_at_unique`, `le_refl` |
 | 5 | `list_at_succ_iff` | shift lookup through one outer cell | rung 2 (`cell_history_extend_preserves_prefix`), `cell_history_succ_elim`, `add_comm` |
 | 6 | `list_at_external_bound` | transport the hidden bound to a declared list length | rungs 3, `cell_list_length_functional` |
-| 7 | `list_at_exists` | every in-range index has a decoded head | `CellHistory` universal edge clause, definition introduction |
+| 7 | `list_at_exists` | every in-range index has a decoded head | `CellHistory` universal edge clause, definition introduction, `add_comm` |
 | 8 | `list_at_functional` | lookup at a fixed code and index has one value | rungs 4--5, `cell_head_functional`, `cell_tail_functional`, induction on `i` |
 | 9 | `list_at_history_independent` | transport a selected edge between two history witnesses for the same list | rungs 7--8, `beta_at_unique` |
 | 10 | `cell_list_extensional` | equal-length lists with equal entries have equal codes | rungs 4--8, list zero/successor equations, induction on `l` |
@@ -263,6 +263,7 @@ flowchart TD
   DOM --> BOUND[list_at_external_bound]
   LEN[cell_list_length_functional] --> BOUND
   DEF --> EXISTS[list_at_exists]
+  AC --> EXISTS
 
   HEAD --> FUNC[list_at_functional]
   SUCC --> FUNC
@@ -322,7 +323,22 @@ Another PA4 application supplies `j + S (S i) = S l` for the target lookup.
 Only `add_comm` is a theorem dependency for these conversions; PA4 and
 congruence are primitive proof rules already available to every script.
 
-### 7.3 Functionality and extensionality
+### 7.3 External bounds and existence
+
+For an external length, `list_at_domain` exposes the lookup's hidden history
+length `m` and its bound `k + S i = m`. `cell_list_length_functional` compares
+the declared and hidden representations in the orientation `l = m`; rewriting
+the projected bound along this equality proves `list_at_external_bound`.
+
+For existence, unpack `CellListLen(z,l)` as one history and an in-range bound
+`j + S i = l`. The history edge clause at `j` expects an additive witness for
+`S j <= l`. Choose `i`: two PA4 rewrites and `add_comm` prove
+`i + S j = j + S i = l`. The edge clause constructively supplies its tail,
+successor, and head, which are repackaged with the same history witnesses into
+`ListAt(z,i,a)`. No choice principle, search, or earlier lookup equation is
+used.
+
+### 7.4 Functionality and extensionality
 
 Functionality is ordinary induction on the outer index.  The base case uses
 the head equation and `cell_head_functional`.  The successor case uses the
@@ -471,5 +487,24 @@ the same beta history after successor elimination; the reverse implication
 preserves both endpoint decodes using the additive witnesses `S i` and `i`.
 This is body-level evidence only. No repeated cold empty-context receipt,
 registration, admission, or public theorem is claimed for T05. The next proof
-body is `list_at_external_bound`; all newly ready lookup rows still require a
-repeated cold WMI batch before admission review.
+rows are recorded below; all newly ready lookup rows still require a repeated
+cold WMI batch before admission review.
+
+`list_at_external_bound` has a dependency-curried body with exact direct
+dependency order `list_at_domain`, `cell_list_length_functional`. Its expanded
+statement has 7,481 characters and SHA-256
+`a86efefaf31c9bfce0cd146f6aab932f22962b688fdc7f6bc4dd0beeb40bc9f8`;
+its exact body receipt is `(2,23,28,17,28,27,0)`. The hidden length returned by
+T03 is the witness `m`; functionality proves the declared-to-hidden equality
+`l = m`, whose forward rewrite transports the stored bound to `l`.
+
+`list_at_exists` has exact direct dependency `add_comm`. Its expanded
+statement has 6,883 characters and SHA-256
+`aeb4f15d9a96492b096f869e9361db6a31bce9a59041b1dd9f87fe221df2278c`;
+its exact body receipt is `(1,45,60,26,60,59,0)`. The proof chooses the
+external bound witness as the history-edge index and derives the edge clause's
+bound with PA4 and commutativity, then returns the head supplied by that edge.
+Both T06 and T07 bodies contain zero DNE. This is body-level evidence only:
+neither row has a repeated cold empty-context receipt, registration,
+admission, or public status. The next proof body is `list_at_functional`;
+T03--T07 must enter a repeated cold WMI batch before any admission review.

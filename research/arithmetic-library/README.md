@@ -163,6 +163,27 @@ edge endpoints in the reverse implication, so the provisional rung-4/PA2
 route is unnecessary. T05 remains body-checked only, without cold closure,
 registration, admission, or a public theorem.
 
+The private [`list_at_external_bound`](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_external_bound_candidate.py)
+body and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_cell_list_lookup_external_bound_candidate.py)
+have statement receipt
+`(7481,a86efefaf31c9bfce0cd146f6aab932f22962b688fdc7f6bc4dd0beeb40bc9f8)`
+and proof receipt `(2,23,28,17,28,27,0)`. Its direct dependencies are
+`list_at_domain` and `cell_list_length_functional`: the latter proves the
+declared length equals the lookup's hidden length, so the projected additive
+bound rewrites to the declared one.
+
+The private [`list_at_exists`](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_exists_candidate.py)
+body and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_cell_list_lookup_exists_candidate.py)
+have statement receipt
+`(6883,aeb4f15d9a96492b096f869e9361db6a31bce9a59041b1dd9f87fe221df2278c)`
+and proof receipt `(1,45,60,26,60,59,0)`. Its sole direct dependency is
+`add_comm`. The proof turns `j+S i=l` into the universal history edge bound
+`i+S j=l` with PA4 and commutativity, then returns the edge's constructively
+supplied head. Both T06 and T07 are body-checked only, with zero DNE and no
+cold closure, registration, admission, or public theorem.
+
 The K4
 [`signed-gcd client`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)
 and its

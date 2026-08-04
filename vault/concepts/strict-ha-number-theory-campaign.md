@@ -326,6 +326,20 @@ reverse extension; it does not depend on the head equation or PA2. T05 still
 has no cold empty-context receipt and remains unregistered, unadmitted, and
 nonpublic.
 
+`list_at_external_bound` is body-checked privately with statement receipt
+`(7481,a86efefaf31c9bfce0cd146f6aab932f22962b688fdc7f6bc4dd0beeb40bc9f8)`
+and body receipt `(2,23,28,17,28,27,0)`. Its direct dependencies are
+`list_at_domain` and `cell_list_length_functional`; the latter identifies the
+declared and hidden lengths before transporting the lookup bound.
+
+`list_at_exists` is body-checked privately with statement receipt
+`(6883,aeb4f15d9a96492b096f869e9361db6a31bce9a59041b1dd9f87fe221df2278c)`
+and body receipt `(1,45,60,26,60,59,0)`. Its only direct dependency is
+`add_comm`; PA4 and commutativity produce the bound required by the universal
+history edge clause, whose existential head completes the lookup. Both T06
+and T07 have zero DNE but no cold empty-context receipt and remain
+unregistered, unadmitted, and nonpublic.
+
 ## Repository anchors
 
 - `research/arithmetic-library/ha-number-theory-campaign.json`

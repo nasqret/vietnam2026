@@ -4798,3 +4798,17 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   This replaces the provisional rung-4/PA2 dependency route. The checkpoint
   is body-level only; cold closure, registration, admission, catalogs, JSON
   accounting, and public snapshots remain unchanged.
+- Checked private `list_at_external_bound` with direct dependencies
+  `list_at_domain`, `cell_list_length_functional`. Its statement receipt is
+  `(7481,a86efefaf31c9bfce0cd146f6aab932f22962b688fdc7f6bc4dd0beeb40bc9f8)`
+  and body receipt is `(2,23,28,17,28,27,0)`. The hidden-length witness is
+  compared to the declared length in orientation `l=m`, then the lookup bound
+  is rewritten forward.
+- Checked private `list_at_exists` with sole direct dependency `add_comm`. Its
+  statement receipt is
+  `(6883,aeb4f15d9a96492b096f869e9361db6a31bce9a59041b1dd9f87fe221df2278c)`
+  and body receipt is `(1,45,60,26,60,59,0)`. From `j+S i=l`, PA4 and
+  commutativity derive `i+S j=l`, and the universal history edge clause
+  constructively supplies the returned head. Both new bodies have zero DNE.
+  This remains body-level evidence only; cold closure, registration,
+  admission, catalogs, JSON accounting, and public snapshots are unchanged.

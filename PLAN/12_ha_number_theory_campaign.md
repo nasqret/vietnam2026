@@ -753,7 +753,7 @@ target. Strict K3 remains 96 rows across 21 modules, and the campaign JSON
 remains unchanged at 95 public references, 121 private candidates, and 169
 receipts.
 
-### K3B ListAt checkpoint (surface frozen; T03--T05 bodies checked)
+### K3B ListAt checkpoint (surface frozen; T03--T07 bodies checked)
 
 `HA-K3B-LISTAT-1` freezes an outer-head `ListAt(z,i,a)` surface over the
 closed private reverse histories. The selected edge satisfies
@@ -809,8 +809,25 @@ conversions. Its statement receipt is
 and its body receipt is `(3,124,198,38,196,197,2)`, with zero DNE. This remains
 body-level private evidence: no cold closure, registration, admission, public
 snapshot, catalog, or campaign-JSON change is claimed. Proceed next to
-`list_at_external_bound`, then include all ready lookup rows in a repeated
-cold WMI batch before admission review.
+the bound/existence rows recorded next.
+
+`list_at_external_bound` now checks with exact dependency order
+`list_at_domain`, `cell_list_length_functional`. The domain row returns hidden
+length `m`; functionality proves `l=m`, and a forward rewrite transports the
+stored bound to the declared length. Its statement receipt is
+`(7481,a86efefaf31c9bfce0cd146f6aab932f22962b688fdc7f6bc4dd0beeb40bc9f8)`
+and its body receipt is `(2,23,28,17,28,27,0)`.
+
+`list_at_exists` now checks with sole direct dependency `add_comm`. Given
+`j+S i=l`, it uses `i` as the universal edge clause's gap witness; two PA4
+rewrites and commutativity prove `i+S j=l`. The edge's existential witnesses
+then construct `ListAt(z,i,a)` without choice. Its statement receipt is
+`(6883,aeb4f15d9a96492b096f869e9361db6a31bce9a59041b1dd9f87fe221df2278c)`
+and its body receipt is `(1,45,60,26,60,59,0)`. Both bodies have zero DNE and
+remain private body-level evidence only: no cold closure, registration,
+admission, public snapshot, catalog, or campaign-JSON change is claimed.
+Proceed next to `list_at_functional`, then include T03--T07 in a repeated cold
+WMI batch before admission review.
 
 ## Release boundary
 

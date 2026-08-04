@@ -132,6 +132,17 @@ removes the provisional dependency on `list_at_head_iff` and PA2; reverse
 extension preserves entries at both `j` and `S j`. This remains body-level
 only, without cold closure, registration, admission, or a public theorem.
 
+The private external-bound row has statement receipt
+`(7481,a86efefaf31c9bfce0cd146f6aab932f22962b688fdc7f6bc4dd0beeb40bc9f8)`
+and body receipt `(2,23,28,17,28,27,0)`, depending exactly on
+`list_at_domain` and `cell_list_length_functional`. The private in-range
+existence row has statement receipt
+`(6883,aeb4f15d9a96492b096f869e9361db6a31bce9a59041b1dd9f87fe221df2278c)`
+and body receipt `(1,45,60,26,60,59,0)`, depending only on `add_comm`.
+It converts `j+S i=l` to the history edge bound `i+S j=l` and extracts the
+head constructively. Both T06 and T07 remain body-level only, without cold
+closure, registration, admission, or a public theorem.
+
 ## Design and trust
 
 - [[quadratic-reciprocity-moc]]

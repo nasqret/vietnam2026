@@ -134,6 +134,8 @@ const PY_FILES = [
   "py/peano_lab/library/ha_cell_list_length_functional_candidate.py",
   "py/peano_lab/library/ha_cell_list_length_total_candidate.py",
   "py/peano_lab/library/ha_cell_list_lookup_domain_candidate.py",
+  "py/peano_lab/library/ha_cell_list_lookup_exists_candidate.py",
+  "py/peano_lab/library/ha_cell_list_lookup_external_bound_candidate.py",
   "py/peano_lab/library/ha_cell_list_lookup_head_candidate.py",
   "py/peano_lab/library/ha_cell_list_lookup_succ_candidate.py",
   "py/peano_lab/library/ha_cell_list_lookup_surface_candidate.py",

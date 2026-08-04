@@ -2162,3 +2162,18 @@
   `S j` using additive witnesses `S i` and `i`. The body has zero DNE but no
   cold closure, registry entry, admission, public theorem, or accounting
   change.
+- **K3B external-bound lookup body (2026-08-04):** private
+  `list_at_external_bound` has statement receipt
+  `(7481,a86efefaf31c9bfce0cd146f6aab932f22962b688fdc7f6bc4dd0beeb40bc9f8)`
+  and body receipt `(2,23,28,17,28,27,0)`. Its exact dependency order is
+  `list_at_domain`, `cell_list_length_functional`; functionality returns the
+  declared-to-hidden orientation `l=m`, which transports the projected bound.
+  It has zero DNE but no cold closure, registration, admission, public theorem,
+  or accounting change.
+- **K3B in-range lookup existence body (2026-08-04):** private
+  `list_at_exists` has statement receipt
+  `(6883,aeb4f15d9a96492b096f869e9361db6a31bce9a59041b1dd9f87fe221df2278c)`
+  and body receipt `(1,45,60,26,60,59,0)`. Its sole dependency is `add_comm`:
+  PA4 and commutativity convert `j+S i=l` into `i+S j=l`, enabling the history
+  edge clause to supply a head constructively. It has zero DNE but no cold
+  closure, registration, admission, public theorem, or accounting change.
