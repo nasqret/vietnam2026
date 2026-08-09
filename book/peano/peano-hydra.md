@@ -878,7 +878,7 @@ kernel package, not hidden in a research-only environment. The deterministic
 full-suite shards covered every Peano test: 3,048 passed, 12 skipped, and two
 environment controls were rerun successfully in isolation, yielding 3,050
 passing non-skipped cases overall. Lambda Lab passed 360 tests plus 36
-subtests. Browser build `2026-08-04f`, application `a-d9bd305e4cad`, seals 150
+subtests. Browser build `2026-08-09a`, application `a-a195e3ab28b3`, seals 150
 Python sources in a 154-entry manifest and stages locally without a deployment
 claim. The clean warning-as-error Book built all 46 sources, its integrity gate
 found no broken or unsafe target, all 194 deep links and 287 commands replayed,

@@ -626,7 +626,7 @@
   language-blocked conventional interface). The Obsidian vault has 490 notes
   and 4,981 resolved links, including all 384 generated theorem notes. The
   integrated local browser candidate deterministically verifies as build
-  `2026-08-04f`, application `a-d9bd305e4cad`, with 150 worker sources; its
+  `2026-08-09a`, application `a-a195e3ab28b3`, with 150 worker sources; its
   source inventory, content manifest, deployment contracts, and complete local
   stage pass. The build is not deployed.
 - **QR heavy-execution boundary (2026-07-30):** proof replay, certificate
@@ -1520,8 +1520,8 @@
   all-case receipt is
   `2e6e5df23ec90555bb754b7297d87b75f37a1e6f9fcd5a6d9da6facbf1ad1f68`.
   Traps/timeouts/rejections cannot grant or retract QED. Candidate
-  browser build `2026-08-04f` has application address
-  `a-d9bd305e4cad`, 150 mounted worker sources, and 154 sealed application
+  browser build `2026-08-09a` has application address
+  `a-a195e3ab28b3`, 150 mounted worker sources, and 154 sealed application
   entries; it is not deployed.
 - **Model-v3 prelaunch durability and chain binding (2026-07-30):** the
   one-shot trainer preserves adapter/tokenizer tensors before its explicit

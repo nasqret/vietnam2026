@@ -3986,3 +3986,16 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   publication unions are pending for all 384 rows. The next order is the
   144-row documentation repair, A2 evidence, then a reviewed source-state
   request and external owner deposit. Benchmark activation remains separate.
+
+## 2026-08-09 — Browser application manifest resealed after H1.1b1
+
+- The full GitHub matrix found that `defined_edition.py` had changed for the
+  selected-bundle import-isolation fix while `peano-lab/APP_MANIFEST.sha256`
+  still named its previous bytes. The content-addressing test failed closed.
+- Regenerated the 154-entry manifest and synchronized the local browser
+  candidate to build `2026-08-09a`, application `a-a195e3ab28b3`, manifest
+  SHA-256
+  `a195e3ab28b3d5f4354faa9bd7375246d79017b223bb6e0315e0266a9041a84a`.
+- This was a release-envelope correction only: the Python source fix was
+  already committed, the WASM and kernel bytes did not change, and nothing was
+  deployed.

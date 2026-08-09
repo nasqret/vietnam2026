@@ -3819,3 +3819,22 @@ and evaluation. H1.1 stays open. A2 dependency minimization/publication-union
 construction and the 144-row deployed-page repair are independent parallel
 workstreams; lineage and an external source-state/freeze request come only
 after both close.
+
+## 2026-08-09 — The full matrix caught one unsealed browser source
+
+The H1.1b1 isolation fix made the defined-edition compactor import the wider
+quadratic-reciprocity stack lazily. That was the right dependency boundary,
+but the first H1.1b2 release audit did not propagate the changed Python source
+hash into the browser application's content manifest. Seven Peano shards and
+all non-Peano jobs passed; shard 7 then rejected the stale manifest by comparing
+every mounted source byte against its retained SHA-256. This was a real release
+failure, not an environmental timeout.
+
+We regenerated only the deterministic application manifest and its dependent
+release identities. The corrected local candidate is build `2026-08-09a`,
+application `a-a195e3ab28b3`; its complete 154-entry manifest has SHA-256
+`a195e3ab28b3d5f4354faa9bd7375246d79017b223bb6e0315e0266a9041a84a`.
+No Python, WASM, theorem, or kernel byte changed during this reseal, and no
+deployment was performed. The incident is a useful reminder: a sound source
+change is not a releasable browser change until the outer content address is
+updated and the complete browser/deployment gate passes.

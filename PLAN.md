@@ -157,7 +157,7 @@ M20's native arithmetic and synchronized release artifacts are complete. The
 main Jupyter Book now includes a guided zero-to-FTA route, a quadratic
 reciprocity campaign chapter, and a generated interactive 384-proof atlas;
 the integrated local browser candidate deterministically verifies as build
-`2026-08-04f`, application `a-d9bd305e4cad`, with 150 worker sources. Its
+`2026-08-09a`, application `a-a195e3ab28b3`, with 150 worker sources. Its
 source inventory, content manifest, deployment contracts, and complete local
 stage pass. It is not deployed, and direct attached-browser UI inspection remains
 explicitly unclaimed. Model-v3 curriculum training is a separate milestone—not mathematical

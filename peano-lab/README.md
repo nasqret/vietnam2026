@@ -518,8 +518,8 @@ session commands replay. Automated worker boot is green. A direct in-app Pyodide
 still pending because no browser was attached to this session. This candidate is staged locally
 only; production is untouched.
 
-The current fully synchronized local browser candidate is build `2026-08-04f`,
-immutable application release `a-d9bd305e4cad`. It mounts 150 Python sources
+The current fully synchronized local browser candidate is build `2026-08-09a`,
+immutable application release `a-a195e3ab28b3`. It mounts 150 Python sources
 and exposes all 384 checked public theorems. The 154-entry application manifest
 also binds the strict `peano-lab-v2` artifact decoder used by Hydra's offline
 candidate replay pack. Deterministic full-tree sharding and the two
