@@ -1153,6 +1153,63 @@ loader and import isolation, the public-readiness reconstruction boundary, the
 private one-build CLI contract, and both ordinary and racing publication
 failures. An independent post-optimization threat review found no blocker.
 
+### A generated page source is not yet a deployment
+
+H1.1b3 adds the missing presentation *source* without changing the historical
+explorer. A new tagless static tree at
+`book/_static/pa-selected-library/` is reconstructed only from the exact
+five-file H1.1b1 bundle. It contains an explicit proof page and a defined-
+notation page for each of the 384 replay theorems, 40 definition pages, and one
+index: 809 HTML pages among 813 exact files. There are no tags, aliases,
+client-side scripts, or references to the 317 disjoint legacy candidates.
+
+This distinction matters:
+
+- `generated = true` means the repository retains and can deterministically
+  reconstruct all selected static files;
+- `deployed = false` means no external host receipt or public availability
+  observation has been made; and
+- `reviewed = false` remains true in substance: generated prose and pages do
+  not grant human, owner, freeze, retrieval, training, or evaluation authority.
+
+The API keeps replay order and binds 1,038 dependency edges, 13,862 tactic
+lines, 755 theorem-definition relationships, 2,027 definition occurrences,
+and 58 conceptual definition edges. The manifest binds the other 812 files.
+All local links and fragments are checked, the stylesheet is scoped below
+`body.pa-selected-library`, and every page carries a candidate banner.
+
+The schema semantic/artifact hashes are
+`eefb4b1154581f248696de3f81bd90296398e5353c6a42d0d01f35b3ccdb2abb` /
+`8cdf0e947ce7156109b7591c99ed28d8ee1f938edd3cddfb414d48d7efacdafd`.
+The API artifact/root hashes are
+`a7a4be8ba895b9e69955e82bda5bbfe7418eeda47632a59899e6ba0896acaaf0` /
+`2efbb00a763f120e5cee6271f3d64838b3a54e04e73a4c78c738f4d50f0b83b1`;
+the manifest artifact/root hashes are
+`751c3eefc99e5b30d612049fd99a0d890cd696b3fda0f426ca64d835c5fe2e6f` /
+`94b38f4914853c87315f0bc94d33347164d4cb7c01cd81568b1c4f47cb1b1563`.
+The external readiness artifact/root hashes are
+`69b11b858348e3dda9a007b495c7198634822623d45314f6f82f551141bc9357` /
+`8f7bf0fc18917b92d02d862e13507d28f1bf7d2842fcd93427d3a2879a193b1f`.
+
+The page core passed 11 focused tests in 74.53 seconds. The WMI runner now
+reconstructs and compares it before building the Book, then the integrity gate
+audits the copied 813-file tree separately from the legacy explorer. Check the
+retained source without writing:
+
+```console
+python3 scripts/build_peano_hydra_library_pages.py \
+  --output-dir book/_static/pa-selected-library \
+  --report artifacts/peano-hydra/library-page-deployment-candidate-v1-readiness.json \
+  --check
+```
+
+Nothing in this step changes metadata-v2's historical 240 deployed page pairs
+or its two 144-row gaps. A host receipt and an additive metadata successor are
+required before those numbers can change. The integration harness passed 11
+tests, 17 focused Book tests passed, and the warning-as-error Book build plus
+its 3,133-page integrity scan completed with no broken targets, fragments,
+escapes, remote runtime assets, or unsafe active links.
+
 ## What “matched compute” means
 
 We compare three frozen systems on the same sealed targets:

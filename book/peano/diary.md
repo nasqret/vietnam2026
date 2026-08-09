@@ -3838,3 +3838,45 @@ No Python, WASM, theorem, or kernel byte changed during this reseal, and no
 deployment was performed. The incident is a useful reminder: a sound source
 change is not a releasable browser change until the outer content address is
 updated and the complete browser/deployment gate passes.
+
+## 2026-08-09 — We generated every selected page without claiming deployment
+
+The selected API bundle made all 384 theorems addressable, but it did not give
+students a static page to read. The tempting repair was to add the 144 missing
+names to the old proof explorer. We rejected that route because its 557-row
+corpus and tag registry are historical evidence and because a partial 144-page
+tree would have 305 dependency links crossing back into an unrelated surface.
+
+H1.1b3 instead builds one complete, separate, tagless candidate tree from the
+exact H1.1b1 five-file bundle. It has 384 explicit pages, 384 defined pages, 40
+definition pages, and an index: 809 HTML pages and 813 files. Its manifest
+receipts cover the other 812 members. The builder never reads the old explorer,
+and the WMI snapshot and checker treat the new tree as an independent surface.
+
+The essential status line is: **`generated = true`, `deployed = false`**. The
+repository proves that these exact pages were generated and retained. It does
+not prove that a public server serves them. We therefore kept `deployed`,
+`freeze_ready`, `training_eligible`, `retrieval_eligible`, and
+`evaluation_eligible` false and retained the historical 240 deployed pairs and
+two 144-row gaps in metadata v2. A future host receipt must be additive.
+
+The schema semantic/artifact pair is
+`eefb4b1154581f248696de3f81bd90296398e5353c6a42d0d01f35b3ccdb2abb` /
+`8cdf0e947ce7156109b7591c99ed28d8ee1f938edd3cddfb414d48d7efacdafd`.
+The API artifact/root pair is
+`a7a4be8ba895b9e69955e82bda5bbfe7418eeda47632a59899e6ba0896acaaf0` /
+`2efbb00a763f120e5cee6271f3d64838b3a54e04e73a4c78c738f4d50f0b83b1`;
+the manifest artifact/root pair is
+`751c3eefc99e5b30d612049fd99a0d890cd696b3fda0f426ca64d835c5fe2e6f` /
+`94b38f4914853c87315f0bc94d33347164d4cb7c01cd81568b1c4f47cb1b1563`;
+and the readiness artifact/root pair is
+`69b11b858348e3dda9a007b495c7198634822623d45314f6f82f551141bc9357` /
+`8f7bf0fc18917b92d02d862e13507d28f1bf7d2842fcd93427d3a2879a193b1f`.
+The page core passed 11 focused tests in 74.53 seconds. The WMI integration now
+checks deterministic reconstruction before Sphinx and exact copying, links,
+fragments, receipts, candidate flags, and scoped CSS afterward. This closes a
+page-build-source subgate, not H1.1 or public deployment. The integration
+harness passed 11 tests in 2.33 seconds; 17 focused Book tests passed in 1.77
+seconds; the warning-as-error build succeeded; and the 3,133-page integrity
+scan found no broken targets, fragments, escapes, remote assets, or unsafe
+links.

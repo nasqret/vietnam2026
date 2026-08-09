@@ -255,6 +255,12 @@ the schemas exist.
           isolated bundle and reports selected API coverage separately from
           deployed-page coverage. Preserve metadata v1 exactly as historical
           evidence.
+    - [x] **H1.1b3 — selected page-build source:** render a separate, tagless
+          candidate tree for all 384 selected rows and 40 definitions from the
+          exact H1.1b1 bundle. Keep the historical 557-row explorer and tag
+          registry immutable. This establishes `generated = true` and
+          `deployed = false`; only an external host receipt may establish
+          deployment.
   - [ ] Register the reviewed source commit/dirty-state receipt, independent
         owner deposit, and immutable `research-eval` freeze before calling the
         result production `L0`.
@@ -358,6 +364,33 @@ post-optimization threat audit found no blocker.
 Historical Hydra compatibility passed 119 tests in 204.71 seconds, the sibling
 Lambda suite passed 360 tests plus 36 subtests, and the warning-as-error Book
 plus its 2,324-page structural integrity gate remained green.
+
+H1.1b3 retains the candidate page source at
+`book/_static/pa-selected-library/`: 384 explicit pages, 384 defined pages,
+40 definition pages, and one index, for 809 HTML pages and 813 files. The
+schema semantic/artifact pair is
+`eefb4b1154581f248696de3f81bd90296398e5353c6a42d0d01f35b3ccdb2abb` /
+`8cdf0e947ce7156109b7591c99ed28d8ee1f938edd3cddfb414d48d7efacdafd`;
+the API artifact/root pair is
+`a7a4be8ba895b9e69955e82bda5bbfe7418eeda47632a59899e6ba0896acaaf0` /
+`2efbb00a763f120e5cee6271f3d64838b3a54e04e73a4c78c738f4d50f0b83b1`;
+and the manifest artifact/root pair is
+`751c3eefc99e5b30d612049fd99a0d890cd696b3fda0f426ca64d835c5fe2e6f` /
+`94b38f4914853c87315f0bc94d33347164d4cb7c01cd81568b1c4f47cb1b1563`.
+The external 3,118-byte readiness receipt has SHA-256
+`69b11b858348e3dda9a007b495c7198634822623d45314f6f82f551141bc9357`
+and root
+`8f7bf0fc18917b92d02d862e13507d28f1bf7d2842fcd93427d3a2879a193b1f`.
+All surfaces enforce `candidate`, `deployed = false`, and false freeze,
+training, retrieval, and evaluation eligibility. The focused page-core gate
+passed 11 tests in 74.53 seconds. WMI now reconstructs the exact candidate in
+read-only mode before Sphinx and audits its copied tree separately from the
+legacy explorer. This does not create a public URL or deployment receipt, so
+the historical 240/144 deployed-page observation and H1.1's open status remain
+unchanged. The integration harness passed 11 tests in 2.33 seconds, 17 focused
+Book tests passed in 1.77 seconds, the warning-as-error Book build succeeded,
+and the version-three integrity gate covered 3,133 HTML pages with zero broken
+targets, fragments, escapes, remote runtime assets, or unsafe active links.
 
 ### H1.2 Build lineage before rows
 

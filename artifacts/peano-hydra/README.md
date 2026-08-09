@@ -4,6 +4,50 @@ This directory preserves deterministic Hydra plumbing evidence. It contains
 no trained-model result, sealed benchmark, decision-procedure result, or
 matched-compute comparison.
 
+## H1.1b3 selected candidate page source
+
+The retained tagless source tree is
+`../../book/_static/pa-selected-library/`. It is derived only from the exact
+H1.1b1 five-file bundle and contains 384 explicit theorem pages, 384 defined-
+notation pages, 40 definition pages, and one index: 809 HTML pages and 813
+files. Its manifest has exact receipts for the other 812 members.
+
+Integration status is **`generated = true`, `deployed = false`**. No public
+URL, host observation, or deployment receipt is present. The API, manifest,
+and external readiness receipt are candidate-only and keep freeze, training,
+retrieval, and evaluation eligibility false. This new surface is separate
+from the immutable 557-row explorer and does not change metadata-v2's
+historical 240 complete deployed-page pairs or either 144-row gap.
+
+- schema semantic/artifact SHA-256:
+  `eefb4b1154581f248696de3f81bd90296398e5353c6a42d0d01f35b3ccdb2abb` /
+  `8cdf0e947ce7156109b7591c99ed28d8ee1f938edd3cddfb414d48d7efacdafd`;
+- API artifact/root SHA-256:
+  `a7a4be8ba895b9e69955e82bda5bbfe7418eeda47632a59899e6ba0896acaaf0` /
+  `2efbb00a763f120e5cee6271f3d64838b3a54e04e73a4c78c738f4d50f0b83b1`;
+- manifest artifact/root SHA-256:
+  `751c3eefc99e5b30d612049fd99a0d890cd696b3fda0f426ca64d835c5fe2e6f` /
+  `94b38f4914853c87315f0bc94d33347164d4cb7c01cd81568b1c4f47cb1b1563`;
+- readiness artifact/root SHA-256:
+  `69b11b858348e3dda9a007b495c7198634822623d45314f6f82f551141bc9357` /
+  `8f7bf0fc18917b92d02d862e13507d28f1bf7d2842fcd93427d3a2879a193b1f`.
+
+The page core passed 11 focused tests in 74.53 seconds. WMI snapshots carry
+the exact generator, source bundle, page tree, and readiness file. The runner
+checks deterministic reconstruction before Sphinx, and the Book integrity
+gate checks exact copying, local links/fragments, receipts, candidate flags,
+and CSS isolation independently from the legacy explorer. The integration
+harness passed 11 tests, 17 focused Book tests passed, and the warning-as-error
+Book plus its 3,133-page integrity gate passed without link or runtime-asset
+findings.
+
+```console
+python3 scripts/build_peano_hydra_library_pages.py \
+  --output-dir book/_static/pa-selected-library \
+  --report artifacts/peano-hydra/library-page-deployment-candidate-v1-readiness.json \
+  --check
+```
+
 ## H1.1b2 candidate metadata successor
 
 `library-epoch-metadata-candidate-v2.json` is an additive successor to the

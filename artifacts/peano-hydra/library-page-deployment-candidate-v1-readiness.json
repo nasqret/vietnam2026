@@ -1,0 +1,63 @@
+{
+  "aggregate": {
+    "selected_generated_defined_page_complete_count": 384,
+    "selected_generated_defined_page_missing_count": 0,
+    "selected_generated_definition_use_receipt_complete_count": 384,
+    "selected_generated_explicit_page_complete_count": 384,
+    "selected_generated_explicit_page_missing_count": 0,
+    "selected_generated_page_pair_complete_count": 384,
+    "theorem_count": 384
+  },
+  "api_artifact_sha256": "a7a4be8ba895b9e69955e82bda5bbfe7418eeda47632a59899e6ba0896acaaf0",
+  "api_root_sha256": "2efbb00a763f120e5cee6271f3d64838b3a54e04e73a4c78c738f4d50f0b83b1",
+  "deployed": false,
+  "deployment_observed": false,
+  "evaluation_eligible": false,
+  "format": "peano-hydra-library-page-deployment-readiness",
+  "freeze_ready": false,
+  "id": "urn:peano-hydra:library-page-deployment-readiness:candidate-v1",
+  "logic_mode": "intuitionistic",
+  "manifest_artifact_sha256": "751c3eefc99e5b30d612049fd99a0d890cd696b3fda0f426ca64d835c5fe2e6f",
+  "manifest_root_sha256": "94b38f4914853c87315f0bc94d33347164d4cb7c01cd81568b1c4f47cb1b1563",
+  "retrieval_eligible": false,
+  "root_preimage": {
+    "aggregate": {
+      "selected_generated_defined_page_complete_count": 384,
+      "selected_generated_defined_page_missing_count": 0,
+      "selected_generated_definition_use_receipt_complete_count": 384,
+      "selected_generated_explicit_page_complete_count": 384,
+      "selected_generated_explicit_page_missing_count": 0,
+      "selected_generated_page_pair_complete_count": 384,
+      "theorem_count": 384
+    },
+    "api_artifact_sha256": "a7a4be8ba895b9e69955e82bda5bbfe7418eeda47632a59899e6ba0896acaaf0",
+    "api_root_sha256": "2efbb00a763f120e5cee6271f3d64838b3a54e04e73a4c78c738f4d50f0b83b1",
+    "deployed": false,
+    "deployment_observed": false,
+    "evaluation_eligible": false,
+    "format": "peano-hydra-library-page-deployment-readiness",
+    "freeze_ready": false,
+    "id": "urn:peano-hydra:library-page-deployment-readiness:candidate-v1",
+    "logic_mode": "intuitionistic",
+    "manifest_artifact_sha256": "751c3eefc99e5b30d612049fd99a0d890cd696b3fda0f426ca64d835c5fe2e6f",
+    "manifest_root_sha256": "94b38f4914853c87315f0bc94d33347164d4cb7c01cd81568b1c4f47cb1b1563",
+    "retrieval_eligible": false,
+    "schema_semantic_sha256": "eefb4b1154581f248696de3f81bd90296398e5353c6a42d0d01f35b3ccdb2abb",
+    "source_bundle_manifest_root_sha256": "8f7ef8fcca69bc6f5f8b39c220293b8414a65fd81576c584f78e59da104d46a4",
+    "status": "candidate",
+    "training_eligible": false,
+    "v": 1
+  },
+  "root_sha256": "8f7bf0fc18917b92d02d862e13507d28f1bf7d2842fcd93427d3a2879a193b1f",
+  "schema": {
+    "artifact_sha256": "8cdf0e947ce7156109b7591c99ed28d8ee1f938edd3cddfb414d48d7efacdafd",
+    "format": "peano-hydra-library-page-deployment-schema",
+    "id": "urn:peano-hydra:library-page-deployment-schema:v1",
+    "semantic_sha256": "eefb4b1154581f248696de3f81bd90296398e5353c6a42d0d01f35b3ccdb2abb",
+    "v": 1
+  },
+  "source_bundle_manifest_root_sha256": "8f7ef8fcca69bc6f5f8b39c220293b8414a65fd81576c584f78e59da104d46a4",
+  "status": "candidate",
+  "training_eligible": false,
+  "v": 1
+}

@@ -51,6 +51,34 @@ EXPLORER_REQUIRED = (
 EXPLORER_TAG_COUNT = 557
 DEFINED_EXPLORER_TAG_COUNT = 557
 DEFINED_EXPLORER_DEFINITION_COUNT = 40
+SELECTED_LIBRARY_RELATIVE = Path("_static/pa-selected-library")
+SELECTED_LIBRARY_FILE_COUNT = 813
+SELECTED_LIBRARY_HTML_COUNT = 809
+SELECTED_LIBRARY_THEOREM_COUNT = 384
+SELECTED_LIBRARY_DEFINITION_COUNT = 40
+SELECTED_LIBRARY_BODY_SELECTOR = "body.pa-selected-library"
+SELECTED_LIBRARY_SCHEMA_SHA256 = (
+    "8cdf0e947ce7156109b7591c99ed28d8ee1f938edd3cddfb414d48d7efacdafd"
+)
+SELECTED_LIBRARY_API_SHA256 = (
+    "a7a4be8ba895b9e69955e82bda5bbfe7418eeda47632a59899e6ba0896acaaf0"
+)
+SELECTED_LIBRARY_API_ROOT_SHA256 = (
+    "2efbb00a763f120e5cee6271f3d64838b3a54e04e73a4c78c738f4d50f0b83b1"
+)
+SELECTED_LIBRARY_MANIFEST_SHA256 = (
+    "751c3eefc99e5b30d612049fd99a0d890cd696b3fda0f426ca64d835c5fe2e6f"
+)
+SELECTED_LIBRARY_MANIFEST_ROOT_SHA256 = (
+    "94b38f4914853c87315f0bc94d33347164d4cb7c01cd81568b1c4f47cb1b1563"
+)
+SELECTED_LIBRARY_REQUIRED = (
+    Path("index.html"),
+    Path("assets/pages.css"),
+    Path("api/deployment.json"),
+    Path("schema.json"),
+    Path("manifest.json"),
+)
 REMOTE_ASSET_TAGS = {"audio", "embed", "iframe", "img", "object", "script", "source", "video"}
 EXPLORER_BODY_SELECTOR = "body.pa-proof-site"
 
@@ -458,6 +486,295 @@ def _check_explorer_copy(book: Path, html_root: Path, errors: list[str]) -> dict
     return result
 
 
+def _compact_json_sha256(value: object) -> str:
+    raw = json.dumps(
+        value,
+        allow_nan=False,
+        ensure_ascii=False,
+        separators=(",", ":"),
+        sort_keys=True,
+    ).encode("utf-8")
+    return hashlib.sha256(raw).hexdigest()
+
+
+def _check_selected_library_copy(
+    book: Path, html_root: Path, errors: list[str]
+) -> dict[str, object]:
+    """Audit the separate tagless 384-theorem candidate page source."""
+
+    source = book / SELECTED_LIBRARY_RELATIVE
+    built = html_root / SELECTED_LIBRARY_RELATIVE
+    result: dict[str, object] = {
+        "built": built.is_dir(),
+        "deployed": False,
+        "source": source.is_dir(),
+        "theorem_count": 0,
+        "explicit_page_count": 0,
+        "defined_page_count": 0,
+        "definition_page_count": 0,
+        "html_page_count": 0,
+        "tree_file_count": 0,
+    }
+    if not source.is_dir():
+        errors.append(f"missing selected-library source: {SELECTED_LIBRARY_RELATIVE}")
+        return result
+    if not built.is_dir():
+        errors.append(
+            f"missing selected-library build output: {SELECTED_LIBRARY_RELATIVE}"
+        )
+
+    source_symlinks = tuple(path for path in source.rglob("*") if path.is_symlink())
+    built_symlinks = (
+        tuple(path for path in built.rglob("*") if path.is_symlink())
+        if built.is_dir()
+        else ()
+    )
+    if source_symlinks:
+        errors.append("selected-library source contains a symlink")
+    if built_symlinks:
+        errors.append("selected-library build output contains a symlink")
+    source_files = {
+        path.relative_to(source)
+        for path in source.rglob("*")
+        if path.is_file() and not path.is_symlink()
+    }
+    built_files = (
+        {
+            path.relative_to(built)
+            for path in built.rglob("*")
+            if path.is_file() and not path.is_symlink()
+        }
+        if built.is_dir()
+        else set()
+    )
+    result["tree_file_count"] = len(built_files)
+    if len(source_files) != SELECTED_LIBRARY_FILE_COUNT:
+        errors.append(
+            "selected-library source has "
+            f"{len(source_files)} files; expected {SELECTED_LIBRARY_FILE_COUNT}"
+        )
+    if built.is_dir() and built_files != source_files:
+        missing = sorted(item.as_posix() for item in source_files - built_files)
+        unexpected = sorted(item.as_posix() for item in built_files - source_files)
+        errors.append(
+            "built selected-library file set differs from source: "
+            f"missing={missing[:8]!r}, unexpected={unexpected[:8]!r}"
+        )
+    if built.is_dir():
+        for relative in sorted(source_files, key=lambda item: item.as_posix()):
+            source_path = source / relative
+            built_path = built / relative
+            if built_path.is_file() and source_path.read_bytes() != built_path.read_bytes():
+                errors.append(
+                    "built selected-library output differs from source: "
+                    f"{relative.as_posix()}"
+                )
+
+    for relative in SELECTED_LIBRARY_REQUIRED:
+        source_path = source / relative
+        built_path = built / relative
+        if not source_path.is_file() or source_path.stat().st_size == 0:
+            errors.append(
+                f"missing or empty selected-library source: {relative.as_posix()}"
+            )
+        if not built_path.is_file() or built_path.stat().st_size == 0:
+            errors.append(
+                "missing or empty built selected-library output: "
+                f"{relative.as_posix()}"
+            )
+
+    pinned_artifacts = {
+        Path("schema.json"): SELECTED_LIBRARY_SCHEMA_SHA256,
+        Path("api/deployment.json"): SELECTED_LIBRARY_API_SHA256,
+        Path("manifest.json"): SELECTED_LIBRARY_MANIFEST_SHA256,
+    }
+    for relative, expected_sha256 in pinned_artifacts.items():
+        path = source / relative
+        if path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest() != expected_sha256:
+            errors.append(
+                f"selected-library {relative.as_posix()} artifact identity drifted"
+            )
+
+    schema = _json_object(source / "schema.json", errors, "selected-library schema")
+    api = _json_object(
+        source / "api/deployment.json", errors, "selected-library deployment API"
+    )
+    manifest = _json_object(
+        source / "manifest.json", errors, "selected-library manifest"
+    )
+    candidate_flags = {
+        "deployed": False,
+        "evaluation_eligible": False,
+        "freeze_ready": False,
+        "logic_mode": "intuitionistic",
+        "retrieval_eligible": False,
+        "status": "candidate",
+        "training_eligible": False,
+    }
+    for label, document in (("API", api), ("manifest", manifest)):
+        if document is None:
+            continue
+        for key, expected in candidate_flags.items():
+            if document.get(key) != expected:
+                errors.append(
+                    f"selected-library {label} has invalid {key}: "
+                    f"{document.get(key)!r}"
+                )
+        preimage = document.get("root_preimage")
+        if not isinstance(preimage, dict):
+            errors.append(f"selected-library {label} lacks a root preimage")
+        elif _compact_json_sha256(preimage) != document.get("root_sha256"):
+            errors.append(f"selected-library {label} root preimage does not match")
+
+    if schema is not None:
+        if schema.get("semantic_sha256") != (
+            "eefb4b1154581f248696de3f81bd90296398e5353c6a42d0d01f35b3ccdb2abb"
+        ):
+            errors.append("selected-library schema semantic identity drifted")
+
+    expected_api_aggregate = {
+        "declared_dependency_edges": 1038,
+        "defined_page_count": 384,
+        "definition_conceptual_edges": 58,
+        "definition_count": 40,
+        "definition_occurrences": 2027,
+        "definition_page_count": 40,
+        "definition_use_relationships": 755,
+        "explicit_page_count": 384,
+        "html_page_count": 809,
+        "index_page_count": 1,
+        "tactic_line_count": 13862,
+        "theorem_count": 384,
+    }
+    expected_manifest_aggregate = {
+        "content_bytes": 5039241,
+        "content_file_count": 812,
+        "defined_page_count": 384,
+        "definition_page_count": 40,
+        "explicit_page_count": 384,
+        "html_page_count": 809,
+        "theorem_count": 384,
+        "tree_file_count": 813,
+    }
+    if api is not None:
+        if api.get("root_sha256") != SELECTED_LIBRARY_API_ROOT_SHA256:
+            errors.append("selected-library API root identity drifted")
+        if api.get("aggregate") != expected_api_aggregate:
+            errors.append("selected-library API aggregate drifted")
+        theorems = api.get("theorems")
+        definitions = api.get("definitions")
+        if not isinstance(theorems, list) or not isinstance(definitions, list):
+            errors.append("selected-library API routes must be arrays")
+        else:
+            result["theorem_count"] = len(theorems)
+            result["explicit_page_count"] = len(theorems)
+            result["defined_page_count"] = len(theorems)
+            result["definition_page_count"] = len(definitions)
+            if len(theorems) != SELECTED_LIBRARY_THEOREM_COUNT:
+                errors.append("selected-library API theorem count drifted")
+            if len(definitions) != SELECTED_LIBRARY_DEFINITION_COUNT:
+                errors.append("selected-library API definition count drifted")
+            route_paths: set[Path] = set()
+            for row in theorems:
+                if not isinstance(row, dict):
+                    errors.append("selected-library theorem route must be an object")
+                    continue
+                for key in ("explicit_page", "defined_page"):
+                    receipt = row.get(key)
+                    if not isinstance(receipt, dict) or not isinstance(receipt.get("path"), str):
+                        errors.append(f"selected-library theorem route lacks {key}")
+                        continue
+                    route_paths.add(Path(receipt["path"]))
+            for row in definitions:
+                if not isinstance(row, dict):
+                    errors.append("selected-library definition route must be an object")
+                    continue
+                receipt = row.get("page")
+                if not isinstance(receipt, dict) or not isinstance(receipt.get("path"), str):
+                    errors.append("selected-library definition route lacks page")
+                    continue
+                route_paths.add(Path(receipt["path"]))
+            expected_paths = route_paths | set(SELECTED_LIBRARY_REQUIRED)
+            if expected_paths != source_files:
+                errors.append("selected-library source paths differ from API routes")
+
+    if manifest is not None:
+        if manifest.get("root_sha256") != SELECTED_LIBRARY_MANIFEST_ROOT_SHA256:
+            errors.append("selected-library manifest root identity drifted")
+        if manifest.get("aggregate") != expected_manifest_aggregate:
+            errors.append("selected-library manifest aggregate drifted")
+        receipts = manifest.get("content_files")
+        if not isinstance(receipts, list):
+            errors.append("selected-library manifest receipts must be an array")
+        else:
+            receipt_paths = [
+                row.get("path") if isinstance(row, dict) else None for row in receipts
+            ]
+            expected_receipt_paths = sorted(
+                (path.as_posix() for path in source_files - {Path("manifest.json")})
+            )
+            if receipt_paths != expected_receipt_paths:
+                errors.append("selected-library manifest receipt paths drifted")
+            for row in receipts:
+                if not isinstance(row, dict) or not isinstance(row.get("path"), str):
+                    errors.append("selected-library manifest receipt must be an object")
+                    continue
+                relative = Path(row["path"])
+                path = source / relative
+                if not path.is_file():
+                    continue
+                raw = path.read_bytes()
+                if row.get("bytes") != len(raw) or row.get("sha256") != hashlib.sha256(raw).hexdigest():
+                    errors.append(
+                        "selected-library manifest receipt differs from source: "
+                        f"{relative.as_posix()}"
+                    )
+
+    source_html = tuple(path for path in source_files if path.suffix == ".html")
+    built_html = tuple(path for path in built_files if path.suffix == ".html")
+    result["html_page_count"] = len(built_html)
+    if len(source_html) != SELECTED_LIBRARY_HTML_COUNT:
+        errors.append(
+            f"selected-library source has {len(source_html)} HTML pages; "
+            f"expected {SELECTED_LIBRARY_HTML_COUNT}"
+        )
+    if len(built_html) != len(source_html):
+        errors.append("built selected-library HTML-page count differs from source")
+
+    style_path = source / "assets/pages.css"
+    style = (
+        style_path.read_text(encoding="utf-8", errors="replace")
+        if style_path.is_file()
+        else ""
+    )
+    if "http://" in style or "https://" in style or "@import" in style.lower():
+        errors.append("selected-library CSS contains a remote/imported asset")
+    if ":root" in style or "--pa-" in style:
+        errors.append("selected-library CSS contains an unscoped root/custom property")
+    if style:
+        try:
+            selectors = _qualified_css_selectors(style)
+        except ValueError as exc:
+            errors.append(f"cannot audit selected-library CSS isolation: {exc}")
+        else:
+            unscoped = [
+                selector
+                for selector in selectors
+                if not selector.startswith(SELECTED_LIBRARY_BODY_SELECTOR)
+            ]
+            if not selectors or unscoped:
+                errors.append(
+                    "selected-library CSS is not isolated below "
+                    f"{SELECTED_LIBRARY_BODY_SELECTOR}: {unscoped[:8]!r}"
+                )
+
+    if source.is_dir():
+        result["source_manifest"] = _tree_manifest(source, source=False)
+    if built.is_dir():
+        result["built_manifest"] = _tree_manifest(built, source=False)
+    return result
+
+
 def _remote_runtime_asset(tag: str, attribute: str, raw: str) -> bool:
     """Return whether an HTML reference asks the browser to fetch remote code/media."""
 
@@ -486,6 +803,7 @@ def check(book: Path) -> dict[str, object]:
             errors.append(f"missing or empty required build output: {path.relative_to(book)}")
 
     explorer = _check_explorer_copy(book, html_root, errors)
+    selected_library = _check_selected_library_copy(book, html_root, errors)
 
     try:
         sources = _toc_sources(book)
@@ -512,7 +830,20 @@ def check(book: Path) -> dict[str, object]:
         if explorer_root.is_dir()
         else ()
     )
-    rendered_pages = tuple(dict.fromkeys(ordinary_pages + explorer_pages))
+    selected_library_root = html_root / SELECTED_LIBRARY_RELATIVE
+    selected_library_pages = (
+        tuple(
+            sorted(
+                selected_library_root.rglob("*.html"),
+                key=lambda item: item.as_posix(),
+            )
+        )
+        if selected_library_root.is_dir()
+        else ()
+    )
+    rendered_pages = tuple(
+        dict.fromkeys(ordinary_pages + explorer_pages + selected_library_pages)
+    )
     broken: set[tuple[str, str]] = set()
     escaping: set[tuple[str, str]] = set()
     broken_fragments: set[tuple[str, str]] = set()
@@ -538,6 +869,9 @@ def check(book: Path) -> dict[str, object]:
         if parser is None:
             continue
         is_explorer = explorer_root.is_dir() and page.is_relative_to(explorer_root)
+        is_selected_library = selected_library_root.is_dir() and page.is_relative_to(
+            selected_library_root
+        )
         explorer_relative = page.relative_to(explorer_root) if is_explorer else None
         if is_explorer and (
             explorer_relative in {Path("index.html"), Path("foundations.html")}
@@ -563,11 +897,25 @@ def check(book: Path) -> dict[str, object]:
                         f"{page.relative_to(html_root).as_posix()} references "
                         f"{asset} {observed} times; expected once"
                     )
+        if is_selected_library:
+            referenced_names = [
+                Path(urlsplit(raw).path).name
+                for _, _, raw in parser.targets
+                if urlsplit(raw).path
+            ]
+            observed = referenced_names.count("pages.css")
+            if observed != 1:
+                errors.append(
+                    f"{page.relative_to(html_root).as_posix()} references "
+                    f"pages.css {observed} times; expected once"
+                )
         for tag, attribute, raw in parser.targets:
-            if is_explorer and _remote_runtime_asset(tag, attribute, raw):
+            if (is_explorer or is_selected_library) and _remote_runtime_asset(
+                tag, attribute, raw
+            ):
                 remote_assets.add((page.relative_to(html_root).as_posix(), raw))
             if (
-                is_explorer
+                (is_explorer or is_selected_library)
                 and attribute == "href"
                 and urlsplit(raw).scheme.lower() in {"data", "javascript", "vbscript"}
             ):
@@ -625,11 +973,11 @@ def check(book: Path) -> dict[str, object]:
         for page, target in sorted(broken_fragments)
     )
     errors.extend(
-        f"remote runtime asset in PA Proof Explorer {page}: {target}"
+        f"remote runtime asset in static PA library surface {page}: {target}"
         for page, target in sorted(remote_assets)
     )
     errors.extend(
-        f"unsafe active link in PA Proof Explorer {page}: {target}"
+        f"unsafe active link in static PA library surface {page}: {target}"
         for page, target in sorted(unsafe_links)
     )
 
@@ -645,9 +993,10 @@ def check(book: Path) -> dict[str, object]:
         "html": _tree_manifest(html_root, source=False) if html_root.is_dir() else None,
         "html_page_count": len(html_pages),
         "remote_runtime_asset_count": len(remote_assets),
+        "selected_library": selected_library,
         "unsafe_active_link_count": len(unsafe_links),
         "status": "passed" if not errors else "failed",
-        "version": 2,
+        "version": 3,
     }
     return payload
 

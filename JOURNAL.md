@@ -3999,3 +3999,35 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - This was a release-envelope correction only: the Python source fix was
   already committed, the WASM and kernel bytes did not change, and nothing was
   deployed.
+
+## 2026-08-09 — H1.1b3 retained a tagless selected page source
+
+- Added a separate candidate source at `book/_static/pa-selected-library/`,
+  derived only from the exact H1.1b1 five-file bundle: 384 explicit pages, 384
+  defined pages, 40 definition pages, one index, 809 HTML pages, and 813 files.
+  The legacy 557-row explorers and tag registry remain untouched.
+- Status is explicitly `generated = true`, `deployed = false`. There is no
+  public URL or host receipt; freeze, training, retrieval, and evaluation
+  eligibility remain false. Metadata v2 therefore continues to report its
+  historical 240 deployed page pairs and 144 pending rows per surface.
+- Exact schema semantic/artifact hashes are
+  `eefb4b1154581f248696de3f81bd90296398e5353c6a42d0d01f35b3ccdb2abb` /
+  `8cdf0e947ce7156109b7591c99ed28d8ee1f938edd3cddfb414d48d7efacdafd`;
+  API artifact/root hashes are
+  `a7a4be8ba895b9e69955e82bda5bbfe7418eeda47632a59899e6ba0896acaaf0` /
+  `2efbb00a763f120e5cee6271f3d64838b3a54e04e73a4c78c738f4d50f0b83b1`;
+  manifest artifact/root hashes are
+  `751c3eefc99e5b30d612049fd99a0d890cd696b3fda0f426ca64d835c5fe2e6f` /
+  `94b38f4914853c87315f0bc94d33347164d4cb7c01cd81568b1c4f47cb1b1563`;
+  readiness artifact/root hashes are
+  `69b11b858348e3dda9a007b495c7198634822623d45314f6f82f551141bc9357` /
+  `8f7bf0fc18917b92d02d862e13507d28f1bf7d2842fcd93427d3a2879a193b1f`.
+- The page core passed 11 focused tests in 74.53 seconds. WMI snapshot packaging
+  now includes the exact page generator, schema, selected source bundle,
+  retained tree, and readiness receipt. Its runner performs a read-only exact
+  reconstruction before Sphinx, and the integrity checker audits the selected
+  tree separately from the legacy explorer after the build.
+- The focused WMI harness passed 11 tests in 2.33 seconds and 17 focused Book
+  tests passed in 1.77 seconds. The warning-as-error Book build succeeded; its
+  version-three structural gate checked 3,133 HTML pages with zero broken
+  paths, fragments, escapes, remote runtime assets, or unsafe active links.

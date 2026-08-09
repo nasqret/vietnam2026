@@ -1,0 +1,628 @@
+{
+  "additional_fields_policy": "forbidden",
+  "canonical_json": {
+    "encoding": "UTF-8",
+    "final_newline": true,
+    "indent": 2,
+    "keys": "lexicographically sorted",
+    "non_finite_numbers": "forbidden"
+  },
+  "claim_boundary": {
+    "authority": "display-only candidate",
+    "deployed": false,
+    "does_not_establish": [
+      "best-known status",
+      "dependency minimality",
+      "evaluation eligibility",
+      "freeze readiness",
+      "human review",
+      "lineage completeness",
+      "owner authority",
+      "publication-union evidence",
+      "retrieval eligibility",
+      "training eligibility"
+    ],
+    "logic_mode": "intuitionistic",
+    "status": "candidate"
+  },
+  "constants": {
+    "content_file_count": 812,
+    "declared_dependency_edges": 1038,
+    "defined_page_count": 384,
+    "definition_conceptual_edges": 58,
+    "definition_count": 40,
+    "definition_occurrences": 2027,
+    "definition_page_count": 40,
+    "definition_use_relationships": 755,
+    "explicit_page_count": 384,
+    "html_page_count": 809,
+    "index_page_count": 1,
+    "tactic_line_count": 13862,
+    "theorem_count": 384,
+    "tree_file_count": 813
+  },
+  "files": {
+    "content": {
+      "api": "api/deployment.json",
+      "css": "assets/pages.css",
+      "defined_pages": "defined/<theorem-name>.html",
+      "definition_pages": "definition/<definition-id>.html",
+      "explicit_pages": "explicit/<theorem-name>.html",
+      "index": "index.html",
+      "schema": "schema.json"
+    },
+    "envelope": {
+      "manifest": "manifest.json"
+    },
+    "readiness_artifact": "artifacts/peano-hydra/library-page-deployment-candidate-v1-readiness.json"
+  },
+  "fixed_inputs": {
+    "selected_documentation_bundle": {
+      "defined": {
+        "artifact_sha256": "164b34dd0cad555baf2164ee3da114fb60a447bd667112481e7225097dd17cea",
+        "root_sha256": "897fd5e4bedb44b63853e428ff5bc2e2c273e30a0c239450e0ec8f93d73fc61f"
+      },
+      "directory": "artifacts/peano-hydra/l0-documentation-candidate-v1",
+      "explicit": {
+        "artifact_sha256": "f1c9f364db0cb7ae7f4c7fe065b1ef48d5522fc49711667479ec3dc4db723936",
+        "root_sha256": "b7942fa5a866ff7cd8a38f30c93787ec0abd2948e69710651e4d3578e64377da"
+      },
+      "isolation": {
+        "artifact_sha256": "8c8a6882d0d5a82552942fc0c3efe5a900244a9cad02c32b24cabe3d86a0eee6",
+        "root_sha256": "64bdc2c52bcaf88d26382bbe514be4a442cc876b8df2a353c272587e1516d919"
+      },
+      "manifest": {
+        "artifact_sha256": "5ded97c27b859cc4725362bc76aba89fac06c5f11843b50529b78050b19348bf",
+        "root_sha256": "8f7ef8fcca69bc6f5f8b39c220293b8414a65fd81576c584f78e59da104d46a4"
+      },
+      "schema": {
+        "artifact_sha256": "a442e89ac312302dcee777b5741ca7f2d67e10f6ebcc996b8096fc6061c28a9c",
+        "semantic_sha256": "30236aaaecc41104e7e193476f59a8b764d56fe86c63ca04c1561ad38645832d"
+      }
+    }
+  },
+  "format": "peano-hydra-library-page-deployment-schema",
+  "hash_contracts": {
+    "api_root_sha256": "SHA-256 of compact canonical api_root_preimage",
+    "definition_record_root_sha256": "SHA-256 of compact canonical ordered [index,id,record_sha256] rows",
+    "definition_record_sha256": "SHA-256 of compact canonical definition receipt after removing only record_sha256",
+    "file_receipt_root_sha256": "SHA-256 of compact canonical ordered [path,bytes,sha256] rows",
+    "file_sha256": "SHA-256 of exact retained file bytes",
+    "manifest_root_sha256": "SHA-256 of compact canonical manifest_root_preimage",
+    "readiness_root_sha256": "SHA-256 of compact canonical readiness_root_preimage",
+    "schema_semantic_sha256": "SHA-256 of compact canonical schema after removing only semantic_sha256",
+    "theorem_record_root_sha256": "SHA-256 of compact canonical ordered [index,name,record_sha256] rows",
+    "theorem_record_sha256": "SHA-256 of compact canonical theorem receipt after removing only record_sha256"
+  },
+  "id": "urn:peano-hydra:library-page-deployment-schema:v1",
+  "limits": {
+    "definition_id_pattern": "PD[0-9A-Y]{4}",
+    "file_bytes_maximum": 4194304,
+    "json_depth_maximum": 64,
+    "json_document_bytes_maximum": 8388608,
+    "json_items_maximum": 3000000,
+    "path_characters_maximum": 256,
+    "safe_json_integer_maximum": 9007199254740991,
+    "theorem_name_pattern": "[a-z][a-z0-9_]{0,127}",
+    "tree_bytes_maximum": 67108864
+  },
+  "object_shapes": {
+    "api_aggregate": {
+      "fields": [
+        "declared_dependency_edges",
+        "defined_page_count",
+        "definition_count",
+        "definition_conceptual_edges",
+        "definition_occurrences",
+        "definition_page_count",
+        "definition_use_relationships",
+        "explicit_page_count",
+        "html_page_count",
+        "index_page_count",
+        "tactic_line_count",
+        "theorem_count"
+      ],
+      "types": {
+        "declared_dependency_edges": "exact integer 1038",
+        "defined_page_count": "exact integer 384",
+        "definition_conceptual_edges": "exact integer 58",
+        "definition_count": "exact integer 40",
+        "definition_occurrences": "exact integer 2027",
+        "definition_page_count": "exact integer 40",
+        "definition_use_relationships": "exact integer 755",
+        "explicit_page_count": "exact integer 384",
+        "html_page_count": "exact integer 809",
+        "index_page_count": "exact integer 1",
+        "tactic_line_count": "exact integer 13862",
+        "theorem_count": "exact integer 384"
+      }
+    },
+    "api_document": {
+      "fields": [
+        "aggregate",
+        "definitions",
+        "deployed",
+        "evaluation_eligible",
+        "format",
+        "freeze_ready",
+        "id",
+        "logic_mode",
+        "retrieval_eligible",
+        "root_preimage",
+        "root_sha256",
+        "source_bundle",
+        "status",
+        "theorem_count",
+        "theorems",
+        "training_eligible",
+        "v"
+      ],
+      "types": {
+        "aggregate": "api_aggregate",
+        "definitions": "registry-ordered array<definition_receipt> length 40",
+        "deployed": "false",
+        "evaluation_eligible": "false",
+        "format": "peano-hydra-library-page-deployment-api",
+        "freeze_ready": "false",
+        "id": "urn:peano-hydra:library-page-deployment-api:candidate-v1",
+        "logic_mode": "intuitionistic",
+        "retrieval_eligible": "false",
+        "root_preimage": "api_root_preimage",
+        "root_sha256": "sha256 of api_root_preimage",
+        "source_bundle": "selected_bundle_identity",
+        "status": "candidate",
+        "theorem_count": "exact integer 384",
+        "theorems": "replay-ordered array<theorem_receipt> length 384",
+        "training_eligible": "false",
+        "v": "exact integer 1"
+      }
+    },
+    "api_root_preimage": {
+      "fields": [
+        "aggregate",
+        "definition_record_root_sha256",
+        "deployed",
+        "evaluation_eligible",
+        "format",
+        "freeze_ready",
+        "id",
+        "logic_mode",
+        "retrieval_eligible",
+        "source_bundle_manifest_root_sha256",
+        "status",
+        "theorem_record_root_sha256",
+        "training_eligible",
+        "v"
+      ],
+      "types": {
+        "aggregate": "api_aggregate",
+        "definition_record_root_sha256": "sha256",
+        "deployed": "false",
+        "evaluation_eligible": "false",
+        "format": "peano-hydra-library-page-deployment-api",
+        "freeze_ready": "false",
+        "id": "urn:peano-hydra:library-page-deployment-api:candidate-v1",
+        "logic_mode": "intuitionistic",
+        "retrieval_eligible": "false",
+        "source_bundle_manifest_root_sha256": "exact selected bundle manifest root sha256",
+        "status": "candidate",
+        "theorem_record_root_sha256": "sha256",
+        "training_eligible": "false",
+        "v": "exact integer 1"
+      }
+    },
+    "definition_receipt": {
+      "fields": [
+        "conceptual_dependencies",
+        "id",
+        "index",
+        "name",
+        "page",
+        "record_sha256",
+        "source_record_sha256"
+      ],
+      "types": {
+        "conceptual_dependencies": "registry-ordered array<definition id>",
+        "id": "PD[0-9A-Y]{4}",
+        "index": "exact registry index integer 0..39",
+        "name": "nonempty definition identifier",
+        "page": "page_receipt whose path is definition/<id>.html",
+        "record_sha256": "sha256 of this object after removing only record_sha256",
+        "source_record_sha256": "exact selected defined API definition record sha256"
+      }
+    },
+    "definition_use": {
+      "fields": [
+        "definition",
+        "name",
+        "occurrences"
+      ],
+      "types": {
+        "definition": "PD[0-9A-Y]{4}",
+        "name": "exact registered definition name",
+        "occurrences": "positive exact integer"
+      }
+    },
+    "file_receipt": {
+      "fields": [
+        "bytes",
+        "path",
+        "sha256"
+      ],
+      "types": {
+        "bytes": "positive exact integer <= 4194304",
+        "path": "safe relative selected-tree path",
+        "sha256": "sha256 of exact file bytes"
+      }
+    },
+    "manifest_aggregate": {
+      "fields": [
+        "content_bytes",
+        "content_file_count",
+        "defined_page_count",
+        "definition_page_count",
+        "explicit_page_count",
+        "html_page_count",
+        "theorem_count",
+        "tree_file_count"
+      ],
+      "types": {
+        "content_bytes": "positive exact integer <= 67108864",
+        "content_file_count": "exact integer 812",
+        "defined_page_count": "exact integer 384",
+        "definition_page_count": "exact integer 40",
+        "explicit_page_count": "exact integer 384",
+        "html_page_count": "exact integer 809",
+        "theorem_count": "exact integer 384",
+        "tree_file_count": "exact integer 813"
+      }
+    },
+    "manifest_api_identity": {
+      "fields": [
+        "artifact_sha256",
+        "path",
+        "root_sha256"
+      ],
+      "types": {
+        "artifact_sha256": "sha256 of exact api/deployment.json bytes",
+        "path": "api/deployment.json",
+        "root_sha256": "exact API root sha256"
+      }
+    },
+    "manifest_document": {
+      "fields": [
+        "aggregate",
+        "api",
+        "content_files",
+        "deployed",
+        "evaluation_eligible",
+        "format",
+        "freeze_ready",
+        "id",
+        "logic_mode",
+        "retrieval_eligible",
+        "root_preimage",
+        "root_sha256",
+        "schema",
+        "source_bundle",
+        "status",
+        "training_eligible",
+        "v"
+      ],
+      "types": {
+        "aggregate": "manifest_aggregate",
+        "api": "manifest_api_identity",
+        "content_files": "strict-path-ordered array<file_receipt> length 812",
+        "deployed": "false",
+        "evaluation_eligible": "false",
+        "format": "peano-hydra-library-page-deployment-manifest",
+        "freeze_ready": "false",
+        "id": "urn:peano-hydra:library-page-deployment-manifest:candidate-v1",
+        "logic_mode": "intuitionistic",
+        "retrieval_eligible": "false",
+        "root_preimage": "manifest_root_preimage",
+        "root_sha256": "sha256 of manifest_root_preimage",
+        "schema": "schema_identity",
+        "source_bundle": "selected_bundle_identity",
+        "status": "candidate",
+        "training_eligible": "false",
+        "v": "exact integer 1"
+      }
+    },
+    "manifest_root_preimage": {
+      "fields": [
+        "aggregate",
+        "api_root_sha256",
+        "deployed",
+        "evaluation_eligible",
+        "file_receipt_root_sha256",
+        "format",
+        "freeze_ready",
+        "id",
+        "logic_mode",
+        "retrieval_eligible",
+        "schema_semantic_sha256",
+        "source_bundle_manifest_root_sha256",
+        "status",
+        "training_eligible",
+        "v"
+      ],
+      "types": {
+        "aggregate": "manifest_aggregate",
+        "api_root_sha256": "sha256",
+        "deployed": "false",
+        "evaluation_eligible": "false",
+        "file_receipt_root_sha256": "sha256",
+        "format": "peano-hydra-library-page-deployment-manifest",
+        "freeze_ready": "false",
+        "id": "urn:peano-hydra:library-page-deployment-manifest:candidate-v1",
+        "logic_mode": "intuitionistic",
+        "retrieval_eligible": "false",
+        "schema_semantic_sha256": "exact binding schema semantic sha256",
+        "source_bundle_manifest_root_sha256": "exact selected bundle manifest root sha256",
+        "status": "candidate",
+        "training_eligible": "false",
+        "v": "exact integer 1"
+      }
+    },
+    "page_receipt": {
+      "fields": [
+        "bytes",
+        "path",
+        "sha256"
+      ],
+      "types": {
+        "bytes": "positive exact integer <= 4194304",
+        "path": "canonical page path",
+        "sha256": "sha256 of exact HTML bytes"
+      }
+    },
+    "readiness_aggregate": {
+      "fields": [
+        "selected_generated_defined_page_complete_count",
+        "selected_generated_defined_page_missing_count",
+        "selected_generated_definition_use_receipt_complete_count",
+        "selected_generated_explicit_page_complete_count",
+        "selected_generated_explicit_page_missing_count",
+        "selected_generated_page_pair_complete_count",
+        "theorem_count"
+      ],
+      "types": {
+        "selected_generated_defined_page_complete_count": "exact integer 384",
+        "selected_generated_defined_page_missing_count": "exact integer 0",
+        "selected_generated_definition_use_receipt_complete_count": "exact integer 384; per-theorem definition-use receipt, not definition-page count",
+        "selected_generated_explicit_page_complete_count": "exact integer 384",
+        "selected_generated_explicit_page_missing_count": "exact integer 0",
+        "selected_generated_page_pair_complete_count": "exact integer 384",
+        "theorem_count": "exact integer 384"
+      }
+    },
+    "readiness_document": {
+      "fields": [
+        "aggregate",
+        "api_artifact_sha256",
+        "api_root_sha256",
+        "deployed",
+        "deployment_observed",
+        "evaluation_eligible",
+        "format",
+        "freeze_ready",
+        "id",
+        "logic_mode",
+        "manifest_artifact_sha256",
+        "manifest_root_sha256",
+        "retrieval_eligible",
+        "root_preimage",
+        "root_sha256",
+        "schema",
+        "source_bundle_manifest_root_sha256",
+        "status",
+        "training_eligible",
+        "v"
+      ],
+      "types": {
+        "aggregate": "readiness_aggregate",
+        "api_artifact_sha256": "sha256 of exact API bytes",
+        "api_root_sha256": "exact API root sha256",
+        "deployed": "false",
+        "deployment_observed": "false",
+        "evaluation_eligible": "false",
+        "format": "peano-hydra-library-page-deployment-readiness",
+        "freeze_ready": "false",
+        "id": "urn:peano-hydra:library-page-deployment-readiness:candidate-v1",
+        "logic_mode": "intuitionistic",
+        "manifest_artifact_sha256": "sha256 of exact manifest bytes",
+        "manifest_root_sha256": "exact manifest root sha256",
+        "retrieval_eligible": "false",
+        "root_preimage": "readiness_root_preimage",
+        "root_sha256": "sha256 of readiness_root_preimage",
+        "schema": "schema_identity",
+        "source_bundle_manifest_root_sha256": "exact selected bundle manifest root sha256",
+        "status": "candidate",
+        "training_eligible": "false",
+        "v": "exact integer 1"
+      }
+    },
+    "readiness_root_preimage": {
+      "fields": [
+        "aggregate",
+        "api_artifact_sha256",
+        "api_root_sha256",
+        "deployed",
+        "deployment_observed",
+        "evaluation_eligible",
+        "format",
+        "freeze_ready",
+        "id",
+        "logic_mode",
+        "manifest_artifact_sha256",
+        "manifest_root_sha256",
+        "retrieval_eligible",
+        "schema_semantic_sha256",
+        "source_bundle_manifest_root_sha256",
+        "status",
+        "training_eligible",
+        "v"
+      ],
+      "types": {
+        "aggregate": "readiness_aggregate",
+        "api_artifact_sha256": "sha256",
+        "api_root_sha256": "sha256",
+        "deployed": "false",
+        "deployment_observed": "false",
+        "evaluation_eligible": "false",
+        "format": "peano-hydra-library-page-deployment-readiness",
+        "freeze_ready": "false",
+        "id": "urn:peano-hydra:library-page-deployment-readiness:candidate-v1",
+        "logic_mode": "intuitionistic",
+        "manifest_artifact_sha256": "sha256",
+        "manifest_root_sha256": "sha256",
+        "retrieval_eligible": "false",
+        "schema_semantic_sha256": "exact binding schema semantic sha256",
+        "source_bundle_manifest_root_sha256": "exact selected bundle manifest root sha256",
+        "status": "candidate",
+        "training_eligible": "false",
+        "v": "exact integer 1"
+      }
+    },
+    "schema_identity": {
+      "fields": [
+        "artifact_sha256",
+        "format",
+        "id",
+        "semantic_sha256",
+        "v"
+      ],
+      "types": {
+        "artifact_sha256": "sha256 of exact canonical schema bytes",
+        "format": "peano-hydra-library-page-deployment-schema",
+        "id": "urn:peano-hydra:library-page-deployment-schema:v1",
+        "semantic_sha256": "compact canonical schema semantic sha256",
+        "v": "exact integer 1"
+      }
+    },
+    "selected_bundle_identity": {
+      "fields": [
+        "defined_artifact_sha256",
+        "defined_root_sha256",
+        "directory",
+        "explicit_artifact_sha256",
+        "explicit_root_sha256",
+        "isolation_artifact_sha256",
+        "isolation_root_sha256",
+        "manifest_artifact_sha256",
+        "manifest_root_sha256",
+        "schema_artifact_sha256",
+        "schema_semantic_sha256"
+      ],
+      "types": {
+        "defined_artifact_sha256": "exact selected defined artifact sha256",
+        "defined_root_sha256": "exact selected defined root sha256",
+        "directory": "artifacts/peano-hydra/l0-documentation-candidate-v1",
+        "explicit_artifact_sha256": "exact selected explicit artifact sha256",
+        "explicit_root_sha256": "exact selected explicit root sha256",
+        "isolation_artifact_sha256": "exact selected isolation artifact sha256",
+        "isolation_root_sha256": "exact selected isolation root sha256",
+        "manifest_artifact_sha256": "exact selected manifest artifact sha256",
+        "manifest_root_sha256": "exact selected manifest root sha256",
+        "schema_artifact_sha256": "exact selected schema artifact sha256",
+        "schema_semantic_sha256": "exact selected schema semantic sha256"
+      }
+    },
+    "theorem_receipt": {
+      "fields": [
+        "declared_dependencies",
+        "defined_page",
+        "defined_record_sha256",
+        "definition_uses",
+        "explicit_page",
+        "explicit_record_sha256",
+        "index",
+        "name",
+        "record_sha256"
+      ],
+      "types": {
+        "declared_dependencies": "selected-name-ordered array<theorem name>",
+        "defined_page": "page_receipt whose path is defined/<name>.html",
+        "defined_record_sha256": "exact selected defined API theorem record sha256",
+        "definition_uses": "registry-ordered array<definition_use>",
+        "explicit_page": "page_receipt whose path is explicit/<name>.html",
+        "explicit_record_sha256": "exact selected explicit API theorem record sha256",
+        "index": "exact replay index integer 0..383",
+        "name": "[a-z][a-z0-9_]{0,127}",
+        "record_sha256": "sha256 of this object after removing only record_sha256"
+      }
+    }
+  },
+  "ordering_contracts": {
+    "content_files": "strict lexicographic path order",
+    "definitions": "exact selected registry index order",
+    "theorems": "exact selected replay order"
+  },
+  "path_contract": {
+    "absolute_paths": "forbidden",
+    "backslashes": "forbidden",
+    "dot_components": "forbidden",
+    "global_proof_tags": "forbidden",
+    "symlinks": "forbidden",
+    "theorem_key": "validated theorem name",
+    "traversal": "forbidden"
+  },
+  "root_preimage_shapes": {
+    "api": [
+      "aggregate",
+      "definition_record_root_sha256",
+      "deployed",
+      "evaluation_eligible",
+      "format",
+      "freeze_ready",
+      "id",
+      "logic_mode",
+      "retrieval_eligible",
+      "source_bundle_manifest_root_sha256",
+      "status",
+      "theorem_record_root_sha256",
+      "training_eligible",
+      "v"
+    ],
+    "manifest": [
+      "aggregate",
+      "api_root_sha256",
+      "deployed",
+      "evaluation_eligible",
+      "file_receipt_root_sha256",
+      "format",
+      "freeze_ready",
+      "id",
+      "logic_mode",
+      "retrieval_eligible",
+      "schema_semantic_sha256",
+      "source_bundle_manifest_root_sha256",
+      "status",
+      "training_eligible",
+      "v"
+    ],
+    "readiness": [
+      "aggregate",
+      "api_artifact_sha256",
+      "api_root_sha256",
+      "deployed",
+      "deployment_observed",
+      "evaluation_eligible",
+      "format",
+      "freeze_ready",
+      "id",
+      "logic_mode",
+      "manifest_artifact_sha256",
+      "manifest_root_sha256",
+      "retrieval_eligible",
+      "schema_semantic_sha256",
+      "source_bundle_manifest_root_sha256",
+      "status",
+      "training_eligible",
+      "v"
+    ]
+  },
+  "semantic_sha256": "eefb4b1154581f248696de3f81bd90296398e5353c6a42d0d01f35b3ccdb2abb",
+  "v": 1
+}

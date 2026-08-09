@@ -498,6 +498,53 @@ retained pins, semantic and reroot attacks, import isolation, public readiness
 forgery rejection, the one-build CLI contract, and atomic publication races.
 The independently repeated post-optimization threat audit found no blocker.
 
+#### Tagless selected page-build source implemented in H1.1b3
+
+H1.1b3 turns the exact H1.1b1 API records into a deterministic static teaching
+surface without consulting or changing either legacy 557-row explorer. Its
+only theorem input is the strict-loaded, byte-pinned five-file selected bundle.
+The output lives separately at `book/_static/pa-selected-library/` and has no
+tags, aliases, JavaScript, `dependents` field, or reference to any of the 317
+disjoint explorer names.
+
+The tree contains 384 explicit proof pages, 384 defined-notation pages, 40
+definition pages, one index, one body-scoped stylesheet, a closed API, schema,
+and manifest: 809 HTML pages and 813 files. The manifest receipts cover the
+other 812 members byte-for-byte. The API preserves the 384 replay order, 1,038
+declared dependency edges, 13,862 tactic lines, 755 theorem-definition
+relationships, 2,027 definition occurrences, and 58 conceptual definition
+edges. Every page is static escaped text with resolved local links and a
+candidate/non-authority banner.
+
+The evidence boundary is deliberately asymmetric: `generated = true`, but
+`deployed = false`. The retained source proves that exact files can be built;
+it does not prove that a public host serves them. API, manifest, and readiness
+therefore fix `status = candidate`, `deployed = false`, and all freeze,
+training, retrieval, and evaluation flags to false. A later deployment claim
+requires an external URL/host receipt and a successor metadata record. The
+historical metadata-v2 count remains 240 deployed page pairs with 144 pending
+on each presentation surface.
+
+Exact identities are: schema semantic/artifact
+`eefb4b1154581f248696de3f81bd90296398e5353c6a42d0d01f35b3ccdb2abb` /
+`8cdf0e947ce7156109b7591c99ed28d8ee1f938edd3cddfb414d48d7efacdafd`;
+API artifact/root
+`a7a4be8ba895b9e69955e82bda5bbfe7418eeda47632a59899e6ba0896acaaf0` /
+`2efbb00a763f120e5cee6271f3d64838b3a54e04e73a4c78c738f4d50f0b83b1`;
+manifest artifact/root
+`751c3eefc99e5b30d612049fd99a0d890cd696b3fda0f426ca64d835c5fe2e6f` /
+`94b38f4914853c87315f0bc94d33347164d4cb7c01cd81568b1c4f47cb1b1563`;
+and readiness artifact/root
+`69b11b858348e3dda9a007b495c7198634822623d45314f6f82f551141bc9357` /
+`8f7bf0fc18917b92d02d862e13507d28f1bf7d2842fcd93427d3a2879a193b1f`.
+The page core passed 11 focused tests in 74.53 seconds. WMI snapshots now carry
+the exact generator, source bundle, retained tree, and readiness receipt; the
+runner checks deterministic reconstruction before Sphinx, and the structural
+checker audits the selected tree independently from the historical explorer.
+The focused WMI harness passed 11 tests; the warning-as-error Book build and
+its 3,133-page integrity check passed with zero link, fragment, escape,
+remote-runtime, or unsafe-link findings.
+
 ### 2.4 Sealed-test law
 
 The unit of separation is a mathematical **lineage**, not a row or filename.
