@@ -22,7 +22,7 @@ PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 override STAGEPEANO := _deploy/peano-lab
 override PEANOAPPID := a-526f19ff3b30
 
-.PHONY: help book book-atlas book-proof-explorer lean lean-fta ha-number-theory-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
+.PHONY: help book book-atlas book-proof-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-channels peano-library-channels-check ha-number-theory-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
 	deploy clean
 
@@ -33,9 +33,11 @@ help:
 	@echo "  make book-proof-explorer  regenerate the static PA proof explorer"
 	@echo "  make lean         build & axiom-check the Lean artifact"
 	@echo "  make lean-fta     build & exact-axiom-check the Lean FTA companion"
+	@echo "  make peano-library-alpha  regenerate the cumulative Alpha artifact family"
+	@echo "  make peano-library-alpha-check  verify Alpha/Stable channels without proof replay"
 	@echo "  make ha-number-theory-check  validate strict-HA admission, gcd, and signed normalization tranches"
-	@echo "  make ha-k3b-cell-history-check  run the lightweight private K3B RFC/body checks"
-	@echo "  make ha-k3b-list-lookup-check  run the surface-only private K3B ListAt checks"
+	@echo "  make ha-k3b-cell-history-check  run the lightweight Alpha K3B RFC/body checks"
+	@echo "  make ha-k3b-list-lookup-check  run the Alpha K3B ListAt surface checks"
 	@echo "  make lab-serve    serve lab-lambda locally on :8001"
 	@echo "  make peano-serve serve the staged Peano Lab locally on :8002"
 	@echo "  make peano-training-dashboard  observe WMI job $(PEANO_TRAIN_JOB) on :$(PEANO_TRAIN_DASHBOARD_PORT)"
@@ -76,6 +78,18 @@ lean-fta:
 	cd artifacts/lean-fta && lake exe cache get
 	cd artifacts/lean-fta && lake build
 	python3 scripts/verify_lean_fta.py
+
+peano-library-alpha:
+	python3 scripts/build_peano_library_channels.py
+
+peano-library-alpha-check:
+	python3 scripts/build_peano_library_channels.py --check
+	python3 scripts/verify_peano_library_channels.py
+	python3 -m pytest -q scripts/test_verify_peano_library_channels.py
+
+peano-library-channels: peano-library-alpha
+
+peano-library-channels-check: peano-library-alpha-check
 
 ha-number-theory-check:
 	python3 scripts/verify_ha_number_theory_campaign.py
