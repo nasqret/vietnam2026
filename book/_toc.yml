@@ -55,6 +55,7 @@ parts:
       - file: arithmetic-library/list-validity-and-membership
       - file: arithmetic-library/primes-and-factorization
       - file: arithmetic-library/quadratic-reciprocity
+      - file: arithmetic-library/bertrand-campaign
       - file: arithmetic-library/source-audit
       - file: arithmetic-library/using-the-library
   - caption: "Appendix"

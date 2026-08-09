@@ -23,17 +23,20 @@ covers the all-modulus solvability criterion, classification modulo a
 relational LCM, the zero/nonzero canonical boundary, certified obstruction,
 and raw-input total decision. New reviewed layers enter **Alpha** first and
 move to Stable only after closure, compilation, dependency, resource, and
-release audits. Current Alpha v2 adds seventeen body-checked K3C rows for
+release audits. Sealed Alpha v2 adds seventeen body-checked K3C rows for
 valid list codes, membership, unique in-range lookup, extensional code
-equality, and unique outer-cell decomposition. See {doc}`Alpha and Stable library editions
+equality, and unique outer-cell decomposition. Current Alpha v3 preserves
+that complete ledger and appends twenty-one body-checked Bertrand-campaign
+rows for constructive interval search, quantitative power order, and bounded
+prime-power valuations. See {doc}`Alpha and Stable library editions
 <library-editions>` for the exact scopes and lifecycle.
 ```
 
 <div class="pa-dashboard-metrics" aria-label="Alpha and Stable arithmetic library metrics">
   <div><strong>432</strong><span>Stable theorems</span></div>
-  <div><strong>902</strong><span>Alpha v2 theorems</span></div>
+  <div><strong>923</strong><span>Alpha v3 theorems</span></div>
   <div><strong>570</strong><span>Alpha checked-use rows</span></div>
-  <div><strong>470</strong><span>Alpha-only rows</span></div>
+  <div><strong>491</strong><span>Alpha-only rows</span></div>
 </div>
 
 The generated Stable snapshot has ordered root
@@ -44,12 +47,13 @@ grant proof authority. Its graph has **1,185** direct dependency edges; the
 Book exposes **432** theorem cards, while the synchronized vault contains
 **531** notes and **5,377** resolved links.
 
-The current additive Alpha v2 graph has 902 theorems, 2,674 direct edges, and
+The current additive Alpha v3 graph has 923 theorems, 2,730 direct edges, and
 45 dependency layers. Its mixed evidence is intentional: 570 rows have
-complete checked-use evidence, while 331 body-only rows and one pending row
+complete checked-use evidence, while 352 body-only rows and one pending row
 remain visible without being treated as empty-context facts. Stable remains
-432, and the 885-row Alpha v1 parent remains sealed. The exact contract and
-opt-in API are on the {doc}`edition page <library-editions>`.
+432; the 885-row Alpha v1 and 902-row Alpha v2 parents remain sealed. The
+exact contract and opt-in API are on the {doc}`edition page
+<library-editions>`.
 
 ## The mathematical metro map
 
@@ -101,6 +105,7 @@ cones.
 | use list validity and membership | {doc}`K3C Alpha: valid lists, membership, and semantic lookup <list-validity-and-membership>` | the seventeen-row interface, exact body receipts, and append/restriction gate |
 | study primes and factorization | {doc}`Primes and unique factorization <primes-and-factorization>` | the FTA and `prime_unbounded` cards in the atlas |
 | follow the reciprocity campaign | {doc}`Quadratic reciprocity campaign <quadratic-reciprocity>` | parity, residue-decision, and finite-fold cards in the atlas |
+| follow the Bertrand campaign | {doc}`Bertrand's postulate campaign <bertrand-campaign>` | constructive interval search, valuations, the central-binomial route, and exact risk gates |
 | train a proof-producing model | {doc}`Using and extending the library <using-the-library>` | the snapshot, corpus and vault links below |
 | audit provenance | {doc}`Sources and clean-room provenance <source-audit>` | catalog source mappings and the separate Lean companion |
 

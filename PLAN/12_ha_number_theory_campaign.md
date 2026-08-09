@@ -976,3 +976,67 @@ Earlier sections that call campaign rows private, unregistered, or unadmitted
 are retained as historical checkpoint prose. The current status of the K3B
 rows is Alpha-only with `alpha_closed` evidence; the new K3C rows are
 Alpha-only with `body_checked` evidence. Neither tranche is Stable.
+
+## 2026-08-09 — Bertrand campaign and additive Alpha v3
+
+The next flagship objective is now fixed as: **prove Bertrand's postulate
+completely in the unchanged native arithmetic system**. The authoritative
+statement, constructive proof route, trust boundary, and release gates are in
+`research/arithmetic-library/ha-bertrand-postulate-campaign-rfc-v1.md`.
+The primary endpoint is the closed-upper form
+
+\[
+\forall n\ne0\;\exists p\;
+  \bigl(\operatorname{Prime}(p)\land n<p\land p\le n+n\bigr),
+\]
+
+followed by the strict-upper corollary for `1 < n`. The proof must return a
+prime witness constructively. The negative branch of bounded search therefore
+carries an explicit pointwise no-prime certificate; no double-negation
+elimination, classical choice, real logarithm, or new kernel rule is allowed.
+
+Alpha v3 is an additive child of the sealed Alpha v2 channel:
+
+| Edition | Theorems | Direct edges | Layers | Checked use |
+|---|---:|---:|---:|---:|
+| Stable | 432 | 1,185 | 22 | 432 |
+| Alpha v1 (sealed) | 885 | 2,641 | 45 | 570 |
+| Alpha v2 (sealed) | 902 | 2,674 | 45 | 570 |
+| Alpha v3 (current) | 923 | 2,730 | 45 | 570 |
+
+The exact first 902 entries are preserved. Indices 902--922 add 21 Bertrand
+rows: four quantitative order facts, four constructive interval-search facts,
+three power-growth facts, and ten bounded power-valuation facts. All are
+Alpha-only with `body_checked` evidence, `checked_use=false`, no proof tag,
+and no claimed empty-context closure receipt. The evidence partition is now
+432 `stable_closed`, 138 `alpha_closed`, 352 `body_checked`, and one
+`pending_layered_closure`; membership is 432 Stable and 491 Alpha-only.
+The enrollment root is
+`4507736cde37301ecf3369540d6cc686de860b07b101f2afb60f850f86aeebd4`,
+and the edition identity is
+`e20eefac839fb2bcd3e696989c091a5f6837de04824f94e1073723851a471a2f`.
+
+The next mathematical gates are:
+
+- [x] B0: constructive bounded prime-interval search and decision;
+- [x] B1a: multiplication/order and power monotonicity foundations;
+- [x] B2a: bounded greatest-exponent valuation existence and functionality;
+- [x] B2b prototype: selected exponent divides and its successor does not;
+- [ ] B2c: exponent antitonicity, composition, coprime cancellation, and
+  exact valuation multiplication;
+- [ ] B3: factorial valuations and the finite Legendre formula;
+- [ ] B4: conservative `Choose`/central-binomial interface and recurrences;
+- [ ] B5: prime-product and central-binomial factor-support bounds;
+- [ ] B6: complete the native integer inequality envelope, including
+  floor-square-root, ceiling-by-six, six residue bases, and block induction;
+- [ ] B7: finite Landau-chain coverage and constructive witness extraction;
+- [ ] B8: combine the branches, cold-close the capstone, audit every edge,
+  publish the Book graph, and promote only a dependency-closed reviewed batch.
+
+The post-v3 valuation-successor bridge and five-row six-step inequality guard
+are deliberately kept as candidate tranches until their own enrollment
+edition is built. Existing closure sizes provide evidence that the current
+500,000-node, depth-256, 100,000-object policy remains adequate; limits must
+not be raised pre-emptively. Each subsequent layer receives deterministic
+source/spec hashes, body replay, dependency-removal and false-contract tests,
+then a two-fresh-process cold closure receipt before any evidence upgrade.

@@ -345,3 +345,53 @@ global dependency minimality. Earlier artifact prose using “private” or
 “unregistered” is historical; K3B is now Alpha-only with `alpha_closed`
 evidence, while K3C is Alpha-only with `body_checked` evidence. Neither is
 Stable unless separately promoted.
+
+## Peano Alpha v3 — Bertrand round 1 (2026-08-09)
+
+Alpha v3 is the current additive building channel. It preserves the complete
+902-row Alpha v2 ledger and appends exactly 21 first-round Bertrand campaign
+specifications at indices 902--922. Stable remains byte-for-byte unchanged at
+432 rows, and the sealed Alpha v1/v2 families remain immutable parents.
+
+Current topology and evidence:
+
+- 923 theorem specifications, 2,730 declared direct edges, and 45 layers;
+- 432 Stable rows and 491 Alpha-only rows;
+- 432 `stable_closed`, 138 `alpha_closed`, 352 `body_checked`, and one
+  `pending_layered_closure` row;
+- 570 checked-use rows; every new Bertrand row fails closed because it has
+  body evidence only.
+
+The deterministic pointer is
+[`peano-library/channels-v3.json`](peano-library/channels-v3.json). Its exact
+artifact SHA-256 values are:
+
+- catalog: `1cd6b31379737efb3d889318e1c40beffcc14f77432a1b18cb74e80a5d29d199`;
+- metrics: `50f5a2dab17fffa6b2ad0e936138bc197297caf066218e4054f8bc8b0e5ccd73`;
+- reduced graph: `180ff8ddeccc9fafbc3607aa10b0587cbe2144cf4943621df52c2da5f26dbec7`;
+  and
+- channel pointer: `cd1618b8056abd22348dfac70d8a1686eecd5c6f875319c803d487c414f656ab`.
+
+The ordered-enrollment root is
+`4507736cde37301ecf3369540d6cc686de860b07b101f2afb60f850f86aeebd4`,
+and the full edition identity is
+`e20eefac839fb2bcd3e696989c091a5f6837de04824f94e1073723851a471a2f`.
+The 21 appended rows cover quantitative order, power growth, constructive
+prime-interval search, and bounded power valuations. The verifier replays
+their dependency-curried bodies and cross-binds exact source, test, RFC,
+statement, dependency, and parent bytes. It does not fabricate an
+empty-context closure receipt.
+
+Rebuild or verify this channel with:
+
+```bash
+python3 scripts/build_peano_library_channels_v3.py
+python3 scripts/build_peano_library_channels_v3.py --check
+python3 scripts/verify_peano_library_channels_v3.py
+make peano-library-alpha-v3-check
+```
+
+The exact two-fresh-process cold-closure receipt for the 21 additions remains
+pending. Until it passes, the additions cannot become `alpha_closed`, enter
+checked use, or be considered for Stable promotion. Later valuation-law and
+integer-envelope candidates are not part of these v3 artifacts.

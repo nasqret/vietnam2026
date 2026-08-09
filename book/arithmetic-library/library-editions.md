@@ -22,47 +22,49 @@ release membership; it does not silently replace the mathematics.
 ## What is canonical today
 
 The repository now has canonical machine-readable artifacts for both
-editions. Stable v1 remains sealed at 432 rows, and Alpha v1 remains sealed at
-885 rows. Current Alpha v2 preserves the entire v1 enrollment ledger exactly,
-then appends the seventeen K3C rows at indices 885--901. The initial Stable
-prefix is a historical fact about these channels, not the permanent promotion
-rule.
+editions. Stable v1 remains sealed at 432 rows, Alpha v1 remains sealed at 885
+rows, and Alpha v2 remains sealed at 902 rows. Current Alpha v3 preserves the
+entire v2 enrollment ledger exactly, then appends twenty-one first-round
+Bertrand rows at indices 902--922. The initial Stable prefix is a historical
+fact about these channels, not the permanent promotion rule.
 
 | Surface | Exact scope | What the count means |
 |---|---:|---|
 | Stable catalog and theorem atlas | **432** theorems | complete registered, empty-context-checked library |
 | Sealed Alpha v1 catalog | **885** theorems | immutable parent: 432 Stable plus 453 Alpha-only rows |
-| Current Alpha v2 catalog | **902** theorems | 432 Stable plus 470 Alpha-only rows |
+| Sealed Alpha v2 catalog | **902** theorems | immutable parent: 432 Stable plus 470 Alpha-only rows |
+| Current Alpha v3 catalog | **923** theorems | 432 Stable plus 491 Alpha-only rows |
 | Alpha checked-use subset | **570** theorems | 432 `stable_closed` plus 138 `alpha_closed` rows |
-| Alpha v2 proof graph | **2,674** edges / **45** layers | exact direct dependencies for all 902 enrolled rows |
+| Alpha v3 proof graph | **2,730** edges / **45** layers | exact direct dependencies for all 923 enrolled rows |
 | Quadratic-reciprocity Alpha slice | **557** specifications | 241 Stable prerequisites and 316 Alpha-only specifications |
 | Stable $\cup$ QR slice | **748** distinct theorem names | 432 Stable plus the 316 QR Alpha-only rows |
 | K3B focused map | **41** nodes | 12 Stable prerequisites, 22 Alpha-only theorem/support nodes, and 7 conservative definitions |
 | K3B cold-closure receipt | **17** selected roots | two deterministic empty-context WMI passes, all with zero DNE |
 | K3C additive tranche | **17** specifications | indices 885--901, all `body_checked`, cold receipt pending |
+| Bertrand first-round tranche | **21** specifications | indices 902--922, all `body_checked`, cold receipt pending |
 
 For comparison, the sealed Alpha v1 proof graph has **2,641** edges / **45** layers,
 and its evidence partition was 432 `stable_closed`, 138 `alpha_closed`,
 314 `body_checked`, and one `pending_layered_closure`. Its immutable machine
 surfaces remain `artifacts/peano-library/channels.json` and
-`artifacts/peano-library/alpha/catalog-v1.json`; Alpha v2 is an additive child,
-not an in-place rewrite of either file.
+`artifacts/peano-library/alpha/catalog-v1.json`; Alpha v2 and v3 are additive
+children, not in-place rewrites of either file.
 
-The canonical Alpha v2 composition is 432 Stable-origin rows, 316 QR
-additions, 120 strict-HA additions, 17 K3B additions, and 17 K3C additions.
-Its evidence partition is 432 `stable_closed`, 138 `alpha_closed`, 331 `body_checked`, and one
-`pending_layered_closure`. Thus **Alpha membership does not imply checked
-use**: exactly 570 of the 902 entries cross that boundary. The v2
-ordered-enrollment root is
-`00f1a70a0911c44acd6b784f2b121b2c351ae626a0f18bb08b5a829496ad40fe`;
+The canonical Alpha v3 composition is 432 Stable-origin rows, 316 QR
+additions, 120 strict-HA additions, 17 K3B additions, 17 K3C additions, and 21
+Bertrand additions. Its evidence partition is 432 `stable_closed`, 138
+`alpha_closed`, 352 `body_checked`, and one `pending_layered_closure`. Thus
+**Alpha membership does not imply checked use**: exactly 570 of the 923
+entries cross that boundary. The v3 ordered-enrollment root is
+`4507736cde37301ecf3369540d6cc686de860b07b101f2afb60f850f86aeebd4`;
 the full edition identity is
-`aadf99c0e411fcefe34285c8396ff0652f590e6990f0d55c3e6c7b728f9b43a4`.
+`e20eefac839fb2bcd3e696989c091a5f6837de04824f94e1073723851a471a2f`.
 
 The number **748** describes only Stable union the focused QR slice. That
-slice omits 191 Stable theorems and 154 Alpha additions from the strict-HA,
-K3B, and K3C tranches. Likewise, the 41-node K3B map is a deliberately curated visual
+slice omits 191 Stable theorems and 175 Alpha additions from the strict-HA,
+K3B, K3C, and Bertrand tranches. Likewise, the 41-node K3B map is a deliberately curated visual
 lens, not a competing catalog. The authoritative channel pointers are
-`artifacts/peano-library/channels-v2.json`; it links the current Alpha v2
+`artifacts/peano-library/channels-v3.json`; it links the current Alpha v3
 catalog, metrics, and graph, while the pre-existing Stable artifact remains
 `artifacts/peano-library/catalog-v1.json`. The v1 channel and Alpha v1
 artifacts remain sealed parents.
@@ -73,6 +75,9 @@ campaign slice, and the {doc}`K3B CellHistory/ListAt chapter
 <cell-history-and-lookup>` is an Alpha layer with its own sealed receipt. The
 {doc}`K3C validity and membership chapter <list-validity-and-membership>`
 documents the additive body-checked layer and its pending closure boundary.
+The {doc}`Bertrand campaign chapter <bertrand-campaign>` documents the next
+additive layer, its constructive search result, and the valuation and integer
+inequality gates that remain open.
 
 ## Release membership and proof evidence are different axes
 
@@ -91,6 +96,10 @@ dependencies remain hypotheses in that particular receipt.
 All seventeen K3C rows are in this second state: local body, liveness, and
 mutation gates pass, but their repeated isolated WMI empty-context receipt is
 pending. They therefore fail closed through checked use.
+All twenty-one Alpha-v3 Bertrand rows are in the same body-only state. Several
+post-v3 valuation and integer-envelope candidates already have local closed
+certificates, but they are not Alpha members until a later additive channel is
+published.
 
 Definitions are a third kind of object. They are displayed as yellow hexagons
 because they expand conservatively before parsing; they are neither theorem
@@ -107,10 +116,10 @@ evidence is `stable_closed` or `alpha_closed`; a `body_checked` or
 `pending_layered_closure` request fails closed.
 
 ```python
-from peano_lab.library.editions_v2 import edition, entry, replay
+from peano_lab.library.editions_v3 import edition, entry, replay
 
 len(edition("stable").specs)          # 432
-len(edition("alpha").specs)           # 902
+len(edition("alpha").specs)           # 923
 len(edition("alpha").checked_specs)   # 570
 
 entry("cell_list_extensional", edition="alpha")

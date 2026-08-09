@@ -4959,3 +4959,49 @@ WMI is unavailable for the weekend, so the repeated isolated K3C
 empty-context closure receipt remains pending. No K3C row has been promoted
 to Stable, and no cold-closure metric or artifact hash is inferred from the
 local body checks.
+
+## 2026-08-09 — Bertrand campaign round 1 and Alpha v3
+
+The new flagship campaign was frozen as “prove Bertrand's postulate
+completely in our arithmetic system.” The exact native endpoint and an
+integer-only Erdős/Tochiori route are recorded in
+`research/arithmetic-library/ha-bertrand-postulate-campaign-rfc-v1.md`.
+The campaign is constructive: bounded interval search returns either an
+actual prime or a finite pointwise exclusion certificate, so the final proof
+does not obtain an existential by double-negation elimination.
+
+Six small, reviewable commits were sealed locally and pushed:
+
+| Commit | Tranche |
+|---|---|
+| `10dc017` | quantitative order and power-base foundations |
+| `6739532` | binding RFC plus constructive bounded prime-interval search |
+| `be5b735` | bounded greatest-exponent power valuation |
+| `941ad70` | selected valuation power and successor nondivisibility |
+| `3ce8a90` | additive, fail-closed Alpha v3 channel |
+| `9efc5cd` | native six-step integer-envelope feasibility tranche |
+
+Alpha v3 preserves the exact 902-row Alpha v2 prefix and appends 21
+body-checked Bertrand specifications at indices 902--922. It has 923 rows,
+2,730 declared edges, 45 layers, 432 Stable rows, 491 Alpha-only rows, and
+570 checked-use rows. Evidence is 432 `stable_closed`, 138 `alpha_closed`,
+352 `body_checked`, and one `pending_layered_closure`. Enrollment and edition
+identities are respectively
+`4507736cde37301ecf3369540d6cc686de860b07b101f2afb60f850f86aeebd4`
+and
+`e20eefac839fb2bcd3e696989c091a5f6837de04824f94e1073723851a471a2f`.
+
+Independent audits replayed the bodies intuitionistically, removed each
+declared dependency, replaced direct Cuts, attacked false conclusions, and
+checked local recursive closures. Representative closure maxima are 125,485
+nodes for prime valuation existence, 70,898 for exponent monotonicity, 7,632
+for the successor-nondivisibility bridge, and 213,731 for the six-step
+integer guard. Every maximum is below the unchanged 500,000-node,
+depth-256, 100,000-object policy, so no limit increase is justified.
+
+The first 21 Alpha-v3 rows remain `body_checked`; the repeated fresh-process
+cold closure receipt is pending and checked use therefore stays 570. The six
+post-v3 valuation laws and five integer-envelope lemmas have local closure
+evidence but are not yet enrolled. Bertrand's postulate, binomial
+coefficients, Legendre's formula, prime-product bounds, and the final large-n
+inequality are not claimed complete.

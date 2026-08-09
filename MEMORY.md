@@ -2290,3 +2290,43 @@
   Those results are structural/display aids. They do not
   prove that a tactic body can drop an edge and do not claim proof-semantic or
   global minimality.
+
+## 2026-08-09 — current Alpha v3 / Bertrand contract (superseding status)
+
+- **Campaign objective:** prove Bertrand's postulate completely in native,
+  intuitionistic PA. The binding endpoint is
+  `forall n. ~(n = 0) -> exists p. Prime(p) /\ Lt(n,p) /\ Le(p,n+n)`, with a
+  strict-upper corollary under `Lt(1,n)`. The source of truth is
+  `research/arithmetic-library/ha-bertrand-postulate-campaign-rfc-v1.md`.
+  The capstone is not yet proved.
+- **Versioned enrollment:** Alpha v3 preserves all 902 Alpha v2 rows exactly
+  and appends 21 first-round Bertrand specifications at indices 902--922.
+  Stable remains 432; Alpha v1 remains 885; Alpha v2 remains 902. No parent
+  artifact or theorem identity was rewritten.
+- **Current inventory:** Alpha v3 has 923 rows, 2,730 declared direct edges,
+  and 45 layers. Membership is 432 Stable plus 491 Alpha-only. Evidence is
+  432 `stable_closed`, 138 `alpha_closed`, 352 `body_checked`, and one
+  `pending_layered_closure`; checked use remains exactly 570.
+- **First Bertrand layer:** the 21 enrolled rows provide multiplication/order
+  monotonicity, power monotonicity, constructive bounded prime-interval
+  search with an explicit negative certificate, and bounded greatest-exponent
+  valuation. They are all body-checked and fail closed through Alpha replay;
+  none is advertised as an empty-context theorem fact.
+- **Current identities:** ordered enrollment
+  `4507736cde37301ecf3369540d6cc686de860b07b101f2afb60f850f86aeebd4`;
+  edition identity
+  `e20eefac839fb2bcd3e696989c091a5f6837de04824f94e1073723851a471a2f`;
+  channel pointer `artifacts/peano-library/channels-v3.json`.
+- **Post-v3 candidates:** six valuation laws prove that, for a prime base and
+  nonzero value, the selected valuation power divides while the successor
+  power does not. Five integer-envelope lemmas prove the exact six-step guard
+  `(s+7)^12 <= 4^(s+5) -> (s+13)^12 <= 4^(s+11)`. Their local recursive
+  closures check under current limits, but they are not enrolled and do not
+  change checked-use counts.
+- **Next risk gates:** exact valuation multiplication and the full integer
+  B6 envelope precede factorial valuations, binomial coefficients, primorial
+  bounds, finite small-case coverage, and the final constructive combination.
+  Do not build a body-green tower past a failed cold-closure or liveness gate.
+- **Repository discipline:** each coherent tranche is committed locally and
+  pushed to `origin/agent/new-theorems-tranche-01`. Publication is additive;
+  Stable, Alpha v1, and Alpha v2 remain immutable parent seals.
