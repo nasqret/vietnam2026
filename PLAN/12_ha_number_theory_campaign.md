@@ -1040,3 +1040,62 @@ edition is built. Existing closure sizes provide evidence that the current
 not be raised pre-emptively. Each subsequent layer receives deterministic
 source/spec hashes, body replay, dependency-removal and false-contract tests,
 then a two-fresh-process cold closure receipt before any evidence upgrade.
+
+## 2026-08-09 — Bertrand Round 2 and additive Alpha v4
+
+Alpha v4 is now the current cumulative building edition. It preserves the
+exact 923-row Alpha v3 ledger and appends 42 dependency-topological Bertrand
+rows at indices 923--964:
+
+| Round-2 source | Rows | Mathematical role |
+|---|---:|---|
+| valuation successor laws | 6 | selected power and successor nondivisibility |
+| valuation multiplication | 11 | cofactors, cancellation, and $v_p(ab)=v_p(a)+v_p(b)$ |
+| integer-envelope guard | 5 | six-step $J(s)$ transport |
+| ceiling/floor relation | 9 | $\lceil x/6\rceil$ and floor-square uniqueness |
+| floor-square totality | 4 | totality, unique existence, monotonicity |
+| quotient budget | 7 | $q+e\le n$ from $2n=3q+r$ |
+
+Current exact topology:
+
+| Edition | Theorems | Direct edges | Layers | Checked use |
+|---|---:|---:|---:|---:|
+| Stable | 432 | 1,185 | 22 | 432 |
+| Alpha v3 (sealed parent) | 923 | 2,730 | 45 | 570 |
+| Alpha v4 (current) | 965 | 2,891 | 45 | 570 |
+
+Membership is 432 Stable plus 533 Alpha-only rows. Evidence is 432
+`stable_closed`, 138 `alpha_closed`, 394 `body_checked`, and one
+`pending_layered_closure`. Every Round-2 row has `checked_use=false`, a null
+proof tag, and null empty-context closure metadata. Local recursive closures
+and mutations establish feasibility; they are not substituted for the missing
+admission-eligible WMI receipt.
+
+The v4 ordered-enrollment root is
+`e4c83174c1800c135d0fe9ac03b5cdfcc5f11e5517f871b3f198586973a20c31`;
+the edition identity is
+`e0324009614f755f2251a5b27d29587b0c43015385a78d567b328776b92239a5`;
+the channel pointer is `artifacts/peano-library/channels-v4.json`. All v1--v3
+runtime, scripts, tests, and artifacts remain immutable parents.
+
+Updated mathematical gates:
+
+- [x] B2c: exact prime-power valuation multiplication, 297,211 closed nodes;
+- [x] B6a: `CeilDivSix` totality/functionality and exact square six-step law;
+- [x] B6b: `FloorSqrt` totality/functionality/monotonicity;
+- [x] B6c: subtraction-free quotient complement and $q+e\le n$ bridge;
+- [ ] B3a: freeze and enroll recursive factorial valuation;
+- [ ] B3b: finite quotient trace and Legendre formula;
+- [ ] B4/B5: binomial integrality, central-binomial and prime-product bounds;
+- [ ] B6d: relational-power base envelope, six-step induction, and final
+  product inequality;
+- [ ] B7/B8: finite coverage, constructive branch combination, capstone
+  closure, Book graph, and reviewed release.
+
+For B6d, the implementation may split at $n\ge2048$ rather than 512. Then
+$\lfloor\sqrt{2n}\rfloor\ge64$, and the six bases $s=64,\ldots,69$ admit the
+uniform bound $s+1\le128=2^7$. This avoids enormous evaluated numerals:
+$H(s)$ reduces to $7(s+1)\le\lceil s^2/6\rceil$, while $J(s)$ reduces to
+$42\le s+5$. The small branch extends the Landau chain by the checked prime
+candidates 1031 and 2053. This is an internal proof split only; BP01/BP02 are
+unchanged.

@@ -6,35 +6,35 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-## Current library editions — Alpha v3, 2026-08-09
+## Current library editions — Alpha v4, 2026-08-09
 
 This status supersedes, without erasing, the dated checkpoint language below.
 **Stable** is the unchanged official checked edition: 432 theorems, 1,185
 declared direct edges, and 22 layers. Sealed **Alpha v1** remains 885 rows and
-sealed **Alpha v2** remains 902 rows. Current additive **Alpha v3** preserves
-the v2 ledger and appends the first Bertrand layer at indices 902--922: 923
-theorems, 2,730 direct edges, and 45 layers, comprising Stable plus 491
-Alpha-only rows.
+sealed **Alpha v2** remains 902 rows, and sealed **Alpha v3** remains 923
+rows. Current additive **Alpha v4** preserves the v3 ledger and appends 42
+Round-2 Bertrand rows at indices 923--964: 965 theorems, 2,891 direct edges,
+and 45 layers, comprising Stable plus 533 Alpha-only rows.
 
-Membership and evidence are independent. Alpha v3 contains 432
-`stable_closed`, 138 `alpha_closed`, 352 `body_checked`, and one
+Membership and evidence are independent. Alpha v4 contains 432
+`stable_closed`, 138 `alpha_closed`, 394 `body_checked`, and one
 `pending_layered_closure` row. Only 570 closed rows are available for checked
-use; the other 353 still need whole-library empty-context closure. The current
-runtime surface is `peano_lab.library.editions_v3` (`edition`, `entry`,
+use; the other 395 still need whole-library empty-context closure. The current
+runtime surface is `peano_lab.library.editions_v4` (`edition`, `entry`,
 `replay`), with Stable as the default and body-only/pending Alpha replay
 rejected.
 
-The current artifact index is `artifacts/peano-library/channels-v3.json`; it
-links Alpha v3's catalog, metrics, and graph while the Stable snapshot stays
+The current artifact index is `artifacts/peano-library/channels-v4.json`; it
+links Alpha v4's catalog, metrics, and graph while the Stable snapshot stays
 at `artifacts/peano-library/catalog-v1.json`. The v1 channel and Alpha v1
 artifacts remain sealed parents. The graph's
 reachability reduction is for structural review and display, not a claim of
-proof-semantic minimality. Cold closure of the 21 Bertrand additions and any
+proof-semantic minimality. Cold closure of the Bertrand additions and any
 Stable promotion are pending. Older descriptions of
 reviewed rows as private or unregistered record their historical Stable
 status; enrolled rows are now Alpha-only unless separately promoted.
 
-The 353 missing closures are required for a whole-Alpha-v3 promotion, not for an
+The 395 missing closures are required for a whole-Alpha-v4 promotion, not for an
 unrelated smaller dependency-closed batch; every proposed batch receives its
 own isolated promotion receipt.
 
@@ -263,14 +263,14 @@ prime-power valuations, binomial coefficients, prime products, and explicit
 power inequalities. The navigable status page is
 [`Bertrand's postulate campaign`](../../book/arithmetic-library/bertrand-campaign.md).
 
-Current Alpha v3 preserves the exact 902-row Alpha v2 ledger and appends 21
-first-round Bertrand specifications at indices 902--922. They cover generic
-quantitative order, power monotonicity, constructive bounded interval search,
-and bounded greatest-exponent valuation. Every dependency-curried body checks
-and the declared edges are mutation-tested, but all 21 remain
-`body_checked`; checked use is still 570 and Stable is still 432. The
-successor-nondivisibility valuation bridge and the five-row integer-envelope
-spike have local empty-context certificates but are not yet enrolled.
+Current Alpha v4 preserves the exact 923-row Alpha v3 ledger and appends 42
+Round-2 Bertrand specifications at indices 923--964. Together the 63 campaign
+rows cover quantitative order, constructive interval search, bounded and
+exact multiplicative valuation, the six-step integer guard, total
+ceiling/floor-square relations, and the quotient budget. Every
+dependency-curried body checks and the declared edges are mutation-tested,
+but all 63 remain `body_checked`; checked use is still 570 and Stable is still
+432. The next candidate layer supplies recursive factorial valuations.
 Bertrand's postulate itself is **not yet proved**.
 
 ## Design and trust

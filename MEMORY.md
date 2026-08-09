@@ -2330,3 +2330,38 @@
 - **Repository discipline:** each coherent tranche is committed locally and
   pushed to `origin/agent/new-theorems-tranche-01`. Publication is additive;
   Stable, Alpha v1, and Alpha v2 remain immutable parent seals.
+
+## 2026-08-09 — current Alpha v4 / Bertrand Round-2 contract
+
+- **Current edition:** Alpha v4 is 965 specifications, 2,891 declared direct
+  edges, and 45 layers. It preserves the exact 923-row Alpha v3 prefix and
+  appends 42 Round-2 rows at indices 923--964. Stable remains 432 and checked
+  use remains 570.
+- **Evidence:** membership is 432 Stable plus 533 Alpha-only. Evidence is 432
+  `stable_closed`, 138 `alpha_closed`, 394 `body_checked`, and one
+  `pending_layered_closure`. All 42 appended rows are body-only, carry null
+  proof tags and null closure metadata, and fail closed through
+  `peano_lab.library.editions_v4`.
+- **Round-2 mathematics:** exact prime-power valuation multiplication;
+  selected/successor power separation; the six-step integer guard;
+  constructive ceiling-by-six and floor-square totality, functionality, and
+  monotonicity; and the subtraction-free quotient budget $q+e\le n$.
+- **Identity:** ordered enrollment
+  `e4c83174c1800c135d0fe9ac03b5cdfcc5f11e5517f871b3f198586973a20c31`;
+  edition
+  `e0324009614f755f2251a5b27d29587b0c43015385a78d567b328776b92239a5`;
+  channel `artifacts/peano-library/channels-v4.json`.
+- **Closure boundary:** local recursive closures are zero-DNE and
+  mutation-hardened, with maxima 297,211 nodes for valuation multiplication
+  and 213,731 for the guard transport. They are feasibility evidence only.
+  The committed v2 closure harness distinguishes non-admissible laptop
+  diagnostics from admission-eligible WMI Slurm receipts and records observed
+  allocation separately from declared upload provenance.
+- **Next layer:** the seven-row FactorialVal candidate supplies general graph
+  existence/functionality and prime-specific zero/successor recurrence. It is
+  not part of Alpha v4. Legendre, binomial, primorial, final inequality,
+  finite coverage, and Bertrand remain open.
+- **Large-branch optimization:** a $2^{11}=2048$ threshold permits six bases
+  at $s=64,\ldots,69$ under the uniform bound $s+1\le128=2^7$. The finite
+  covering chain can be extended by primes 1031 and 2053. This changes no
+  theorem statement and must still receive native certificates.

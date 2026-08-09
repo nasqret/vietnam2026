@@ -5005,3 +5005,42 @@ post-v3 valuation laws and five integer-envelope lemmas have local closure
 evidence but are not yet enrolled. Bertrand's postulate, binomial
 coefficients, Legendre's formula, prime-product bounds, and the final large-n
 inequality are not claimed complete.
+
+## 2026-08-09 — Bertrand Round 2 sealed as Alpha v4
+
+Round 2 closed the valuation-multiplication and discrete floor/ceiling
+infrastructure needed by the Erdős route. The following commits were pushed
+after the Alpha-v3 documentation checkpoint:
+
+| Commit | Content |
+|---|---|
+| `d6dac45` | ceiling-by-six and floor-square relation laws |
+| `3cc6994` | constructive FloorSqrt totality, uniqueness, monotonicity |
+| `654aab2` | two-fresh-process Alpha-v3 closure infrastructure |
+| `bdb9cf7` | retained safe root-level Slurm failure diagnostics |
+| `88d9e92` | exact prime-power valuation multiplication |
+| `139b6ce` | quotient complement and $q+e\le n$ budget |
+| `e605faa` | additive, fail-closed Alpha v4 artifacts/runtime |
+
+The exact multiplication theorem proves $v_p(ab)=v_p(a)+v_p(b)$ for prime
+$p$ and nonzero $a,b$. Its tightened empty-context certificate contains
+297,211 nodes at depth 98 and 7,438 objects; all 39 declared dependencies and
+all 39 direct Cuts reject mutation. The floor/ceiling bridge constructs
+$c$ from $2n=3q+r$ and proves $q+c=n$, $2n\le6c$,
+$\lceil s^2/6\rceil\le c$, and $q+\lceil s^2/6\rceil\le n$.
+
+Alpha v4 preserves all 923 v3 rows and appends the 42 reviewed Round-2 bodies
+in source blocks of 6, 11, 5, 9, 4, and 7 rows. The resulting edition has 965
+specifications, 2,891 edges, 45 layers, 533 Alpha-only rows, and 570
+checked-use rows. Evidence is 432 `stable_closed`, 138 `alpha_closed`, 394
+`body_checked`, and one `pending_layered_closure`. Enrollment and edition
+roots are respectively
+`e4c83174c1800c135d0fe9ac03b5cdfcc5f11e5517f871b3f198586973a20c31`
+and
+`e0324009614f755f2251a5b27d29587b0c43015385a78d567b328776b92239a5`.
+
+The full v4 gate passed deterministic build and independent verification,
+15 artifact/mutation tests, 37 runtime/candidate tests, and all historical
+v1--v3 gates. Every new row remains body-only and replay fails closed. WMI is
+still unavailable, so no admission-eligible cold receipt or Stable promotion
+is claimed.

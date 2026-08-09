@@ -25,18 +25,19 @@ and raw-input total decision. New reviewed layers enter **Alpha** first and
 move to Stable only after closure, compilation, dependency, resource, and
 release audits. Sealed Alpha v2 adds seventeen body-checked K3C rows for
 valid list codes, membership, unique in-range lookup, extensional code
-equality, and unique outer-cell decomposition. Current Alpha v3 preserves
-that complete ledger and appends twenty-one body-checked Bertrand-campaign
-rows for constructive interval search, quantitative power order, and bounded
-prime-power valuations. See {doc}`Alpha and Stable library editions
+equality, and unique outer-cell decomposition. Sealed Alpha v3 adds the first
+twenty-one Bertrand rows. Current Alpha v4 preserves that complete ledger and
+appends forty-two body-checked Round-2 rows for exact valuation
+multiplication, integer envelopes, ceiling/floor-square arithmetic, and the
+quotient budget. See {doc}`Alpha and Stable library editions
 <library-editions>` for the exact scopes and lifecycle.
 ```
 
 <div class="pa-dashboard-metrics" aria-label="Alpha and Stable arithmetic library metrics">
   <div><strong>432</strong><span>Stable theorems</span></div>
-  <div><strong>923</strong><span>Alpha v3 theorems</span></div>
+  <div><strong>965</strong><span>Alpha v4 theorems</span></div>
   <div><strong>570</strong><span>Alpha checked-use rows</span></div>
-  <div><strong>491</strong><span>Alpha-only rows</span></div>
+  <div><strong>533</strong><span>Alpha-only rows</span></div>
 </div>
 
 The generated Stable snapshot has ordered root
@@ -47,11 +48,12 @@ grant proof authority. Its graph has **1,185** direct dependency edges; the
 Book exposes **432** theorem cards, while the synchronized vault contains
 **531** notes and **5,377** resolved links.
 
-The current additive Alpha v3 graph has 923 theorems, 2,730 direct edges, and
+The current additive Alpha v4 graph has 965 theorems, 2,891 direct edges, and
 45 dependency layers. Its mixed evidence is intentional: 570 rows have
-complete checked-use evidence, while 352 body-only rows and one pending row
+complete checked-use evidence, while 394 body-only rows and one pending row
 remain visible without being treated as empty-context facts. Stable remains
-432; the 885-row Alpha v1 and 902-row Alpha v2 parents remain sealed. The
+432; the 885-row Alpha v1, 902-row Alpha v2, and 923-row Alpha v3 parents
+remain sealed. The
 exact contract and opt-in API are on the {doc}`edition page
 <library-editions>`.
 
