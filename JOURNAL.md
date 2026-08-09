@@ -4059,3 +4059,25 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   requires closed rebuilds, a separately retained optimizer/comparison set,
   independently checked optimized dependencies, and the verified ordered
   publication union.
+
+## 2026-08-09 — A3.0 made Vampire evidence inert at an executable boundary
+
+- Added a candidate closed-PA-to-classical-FOF adapter with deterministic TPTP
+  bytes, an exact source-symbol map, and explicit allow-list/subset premise
+  selection. It reads no ambient theorem catalog.
+- Added a copied-and-rehashed, no-shell direct executable boundary with exact
+  arguments and problem bytes plus enforced wall and output ceilings. Tests
+  use fake executables; no Vampire binary was installed or run and no solver
+  capability is claimed.
+- Kept SZS output inert. The only initial reconstruction class maps a
+  top-level reflexive equality to ordinary `refl`. Forged theorem status on
+  `0 = 1` returns no commands and rolls back; reconstructed `refl` on `0 = 0`
+  reaches QED only through fresh original-goal kernel replay. A forced kernel
+  rejection also rolls back.
+- Recorded the remaining topology blocker: frozen H0 `Dispatch` permits one
+  process, so a source broker plus a separate Vampire process cannot yet be a
+  registered adapter. Real execution needs a reviewed protocol amendment or
+  one self-contained executable.
+- The eight focused tests passed in 1.17 seconds; the adapter plus all frozen
+  macro-runner tests passed 58/58 in 7.06 seconds. Added a 2,000 ms CI runtime
+  weight and updated the deterministic shard-profile totals.

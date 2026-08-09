@@ -3946,3 +3946,40 @@ union. Consequently `minimality_claim`, `optimized_best_known`,
 `publication_ready`, `freeze_ready`, and every training/retrieval/evaluation
 eligibility flag stay false. This is useful diagnostic progress precisely
 because it says no more than the evidence supports.
+
+## 2026-08-09 — The first Vampire test had to prove less than it appeared to
+
+The smallest useful A3 experiment was not “ask Vampire whether `0 = 0` is a
+theorem.” A fake `% SZS status Theorem` can say that just as easily. The real
+experiment was to make every byte cross the intended untrusted boundary and
+then show that the status still cannot close a Peano goal.
+
+We implemented a closed-formula translator from primitive PA syntax to
+classical TPTP FOF. It receives the complete premise authority explicitly and
+rejects requested names outside it; it never consults the ambient theorem
+catalog. Both the TPTP bytes and source-symbol map are deterministic. The
+runner copies and rehashes an exact executable, passes one exact problem file
+and argument tuple without a shell, and bounds wall time and output. Tiny fake
+executables let the tests exercise this real OS boundary without claiming that
+Vampire itself is present. No Vampire binary was installed or run.
+
+The reconstruction whitelist is deliberately almost empty. A theorem-like
+hint for a top-level reflexive Peano equality may return the ordinary command
+`refl`; a forged theorem status for `0 = 1` returns no commands. Frozen
+`Dispatch` rejects the latter transactionally. It executes the former like any
+student tactic and then starts again from the owner-held original target for a
+fresh kernel replay. When the test forces that final kernel check to reject,
+the whole solver action rolls back. The SZS text never becomes evidence of
+theoremhood.
+
+This exposed a real integration seam rather than a mathematical problem. H0.3
+freezes a one-process dispatch host. A Python source broker cannot run in that
+one slot and also spawn a separate Vampire binary. We kept H0 frozen and
+recorded the choice: a future real route needs a reviewed host-protocol change
+or one self-contained linked executable. Until then this is an executable
+adapter boundary, not an installed Vampire integration, symbolic portfolio,
+or A3 capability result.
+
+Eight focused adapter tests passed; together with all fifty frozen macro-runner
+tests, 58 tests passed in 7.06 seconds. The test file now has a 2,000 ms CI
+profile weight.

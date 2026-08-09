@@ -169,6 +169,47 @@ final result still has to be reconstructed into ordinary Peano proof terms and
 replayed. There is no trusted `vampire_proved` rule. E and SMT are deferred
 comparison tools, not unnamed fallback authorities.
 
+### What the first executable Vampire slice proves
+
+The first A3 slice makes the trust boundary executable without pretending that
+Vampire has already proved anything. It accepts one **closed** primitive Peano
+goal and an explicitly allowed premise set, emits deterministic classical TPTP
+FOF bytes, and records which internal TPTP symbol came from which Peano source.
+No ambient theorem catalog can leak an extra premise into that problem.
+
+The data path is deliberately asymmetric:
+
+```text
+closed Peano goal + allowed premises
+        -> deterministic TPTP problem
+        -> untrusted executable and raw SZS bytes
+        -> refl or no Peano command
+        -> transactional Dispatch
+        -> fresh original-goal kernel replay
+```
+
+At this first step the reconstruction whitelist contains exactly one case. If
+the original Peano goal is a top-level reflexive equality such as `0 = 0`, a
+theorem-like solver hint may propose the ordinary public tactic `refl`. For a
+non-reflexive goal such as `0 = 1`, even a forged `% SZS status Theorem` yields
+no command; `Dispatch` rejects it and restores the identical owner. The status
+does not justify `refl`: the shape of the original Peano goal does, and the
+fresh kernel replay remains the authority. A test that forces that final
+kernel check to fail confirms the same rollback.
+
+The tests use a tiny fake executable, not Vampire. That fake exercises the
+real direct-binary boundary—deterministic problem-file bytes, exact arguments,
+copy-and-rehash provenance, no shell, wall timeout, and output ceiling—but it
+is not evidence that Vampire is installed, fast, or useful on PA. No actual
+Vampire binary was installed or run in this slice.
+
+There is also a useful systems lesson. Frozen H0 `Dispatch` permits exactly one
+adapter process. A source broker cannot occupy that process and then spawn a
+second Vampire process. Real registered execution therefore needs a reviewed
+host-protocol amendment or one self-contained linked executable. Until then,
+native closure, useful Vampire hint reconstruction, and solve/resource AUC are
+still open A3 work.
+
 ## The critical frontier
 
 Calling a transformer for every tiny rewrite would be slow and scientifically

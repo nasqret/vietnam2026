@@ -866,6 +866,29 @@ sampling is diagnostic and campaign-ineligible, and its observed maximum is
 not called an exact peak. Provider/host attestation remains required before a
 later campaign may consume any host-eligibility claim.
 
+The first A3 executable slice, added on 2026-08-09, is intentionally smaller
+than a Vampire integration. `training/peano_hydra/vampire_adapter.py` converts
+one closed primitive-PA formula and an explicitly requested subset of an
+explicit premise allow-list into deterministic classical TPTP FOF bytes and a
+source-symbol map. Its direct executable boundary copies and rehashes the
+binary, invokes it without a shell, and bounds wall time and combined output.
+Tests use a fake executable to exercise that real boundary. No Vampire binary
+was installed or run, so the slice supplies no Vampire capability evidence.
+
+Raw output and every `SZS` status remain inert. The only initial reconstruction
+class recognizes a top-level closed reflexive equality from the original
+Peano goal and proposes the ordinary command `refl`; every other solver
+success is commandless. Frozen `Dispatch` rejects a status without commands,
+executes reconstructed commands transactionally, and admits QED only after a
+fresh original-goal kernel replay. A forced final-kernel rejection rolls back.
+
+One integration boundary remains explicit. H0.3's frozen dispatch host permits
+exactly one adapter process. A Python/source broker cannot both occupy that
+slot and spawn a separate Vampire binary. Registered real-Vampire execution
+therefore requires a separately reviewed host-protocol amendment or one
+self-contained linked adapter executable. The vertical slice MUST NOT be
+described as H2, A3 completion, or Vampire-portfolio completion.
+
 The H0 bootstrap intentionally precedes that structured version-1 protocol.
 Its compatibility action, `MacroAction(line)`, carries exactly one canonical
 public surface line whose head is restricted to explicit proof-structuring

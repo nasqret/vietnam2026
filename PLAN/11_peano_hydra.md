@@ -711,6 +711,19 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
 
 ### A3 — Hybrid native/Vampire assistance
 
+- [x] **A3.0 — untrusted executable vertical slice:** deterministically emit
+      classical TPTP FOF from one closed primitive-PA goal and an explicit
+      premise allow-list, retain a source-symbol map, and parse bounded SZS
+      output as inert evidence. The only implemented reconstruction class in
+      this slice is a top-level reflexive equality to the ordinary public
+      command `refl`; status alone returns no commands. Fake executables test
+      the real copied-and-rehashed direct-binary boundary, problem bytes,
+      arguments, wall timeout, and output ceiling. No Vampire binary was
+      installed or run, so this establishes protocol behavior, not Vampire
+      capability.
+- [ ] Resolve the frozen H0 `Dispatch` one-process topology before registering
+      a source broker plus a separate Vampire process, or supply one reviewed
+      self-contained executable. Do not weaken or silently reseal H0.3.
 - [ ] Run deterministic native closure before bounded Vampire `Dispatch`.
 - [ ] Reconstruct every useful hint through ordinary Peano macros, record all
       calls, and compare solve/resource AUC against native-only search.
@@ -944,6 +957,6 @@ and benchmark work precede GPU training.
       readable-recipe dependency diagnostic. The immediate A2 work is to
       rebuild the three changed constructions, retain a real optimized
       comparison, and derive the verified union before a source-state request
-      to an external owner. No 200-unit gold
-      corpus, Vampire adapter, new Qwen training, classical Hydra profile, or
-      Rust authority claim is yet complete.
+      to an external owner. No 200-unit gold corpus, registered real-Vampire
+      route or actual Vampire run, new Qwen training, classical Hydra profile,
+      or Rust authority claim is yet complete.
