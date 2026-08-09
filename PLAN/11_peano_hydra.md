@@ -226,6 +226,17 @@ the schemas exist.
         `python -I -S -X pycache_prefix=<fresh-dir>` kernel replay. This closes only the
         certificate-transport/replay subgate; `status = candidate` and
         `evaluation_eligible = false` are enforced by schema.
+  - [x] Build the H1.1a candidate epoch-metadata readiness ledger without
+        mutating either earlier format. It binds the exact replay
+        manifest/report/catalog, 384-row order, 1,038 declared publication
+        edges, all 384 source locators, proof/profile/script metadata, and
+        present/stale/missing documentation receipts. Its schema enforces
+        `status = candidate`, `freeze_ready = false`, and
+        `evaluation_eligible = false`; it cannot create an owner deposit.
+  - [ ] Repair and audit the 144 missing explicit-explorer,
+        defined-explorer, and definition receipts. Keep the 317 disjoint
+        non-`L0` explorer rows as provenance only and exclude the full
+        557-row corpora from epoch training, retrieval, and evaluation.
   - [ ] Register the reviewed source commit/dirty-state receipt, independent
         owner deposit, and immutable `research-eval` freeze before calling the
         result production `L0`.
@@ -257,6 +268,23 @@ The fresh-worker report records that the theorem library, tactic engine, UI,
 training package, Torch, and Transformers were absent and import-blocked. This
 evidence says neither that declared dependencies are minimal nor that the
 certificates are best-known.
+
+H1.1a metadata schema v1 has semantic digest
+`71995b59d4f5592a08a90dc354a91888f5f1f6f89ec4428be291aea19e76062c`
+and exact document SHA-256
+`9867378c8802501d2120ad4d94a86378815cf90b003eafc92b164685da61c956`.
+The 5,880,054-byte canonical candidate has root
+`b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279`.
+It records 384 source locators, 1,038 declared edges, and 240
+documentation-complete theorem rows. Atlas and vault missing/stale counts are
+zero; the atlas is pinned to commit `32803924…`, and all 1,536 commit-pinned
+blob links were audited. Each explorer has 557 rows: 240 join this candidate,
+while 317 disjoint names are non-`L0` provenance. The remaining 144 candidate
+names have no explorer or definition row, hence 144 missing and zero stale in
+each such receipt class. All 384 rows still have pending review, lineage,
+best-known comparison, readable/optimized dependency-vector, and publication-
+union evidence. Repairing those 144 receipts and completing A2 precede a
+source-state request to an external independent owner.
 
 ### H1.2 Build lineage before rows
 
@@ -711,10 +739,33 @@ and benchmark work precede GPU training.
       full-tree sharding plus the two required environment-specific reruns cover
       3,050 passing Peano cases with 12 registered skips. Lambda Lab remains
       green at 360 tests plus 36 subtests.
+- [x] The H1.1a candidate metadata ledger is executable. Metadata schema v1
+      has semantic digest
+      `71995b59d4f5592a08a90dc354a91888f5f1f6f89ec4428be291aea19e76062c`
+      and document SHA-256
+      `9867378c8802501d2120ad4d94a86378815cf90b003eafc92b164685da61c956`;
+      the canonical 5,880,054-byte ledger has root
+      `b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279`.
+      It binds all 384 replay rows, 1,038 declared edges, 384 source locators,
+      and 240 fully joined documentation records while preserving every
+      unresolved field. Atlas/vault gaps are zero. Explorer and definition
+      gaps are 144 missing and zero stale; the 317 additional explorer names
+      are disjoint non-`L0` provenance and are excluded from epoch surfaces.
+      Fifty-three focused adversarial tests passed in 78.89 seconds; two clean
+      CLI builds were byte-identical, retained `--check` passed, the 32-test CI
+      shard contract passed, and atlas plus all seven arithmetic-Book tests
+      passed. Replay-pack and unchanged epoch-v1 suites passed 37 and 38 tests;
+      3,115 Peano tests collect cleanly and Lambda remains 360 plus 36
+      subtests. The warning-as-error 46-source Book, 2,324-page structural
+      integrity gate, all 194 links/287 commands, and the 490-note/4,981-link
+      vault are green. This is implementation acceptance, not owner review.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
       not separately leave-one-out-verified readable/optimized vectors,
-      best-known certificates, definition/document receipts, lineage masks,
-      source-state/owner freeze receipts, or a sealed benchmark. No 200-unit
-      gold corpus, Vampire adapter, new Qwen training, classical Hydra profile,
-      or Rust authority claim is yet complete.
+      best-known certificates, complete definition/document receipts, lineage
+      masks, source-state/owner freeze receipts, or a sealed benchmark. All
+      384 rows retain pending review, lineage, best-known, dependency-vector,
+      and publication-union gaps. The immediate sequence is the 144-row/A2
+      repair, then a source-state request to an external owner. No 200-unit gold
+      corpus, Vampire adapter, new Qwen training, classical Hydra profile, or
+      Rust authority claim is yet complete.

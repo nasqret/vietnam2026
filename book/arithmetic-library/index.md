@@ -50,7 +50,7 @@ human first needs the stations. Each box below is a link into the guided tour.
 </nav>
 
 The exact generated graph remains available as an immutable
-[`dependency-graph.mmd`](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/dependency-graph.mmd).
+[`dependency-graph.mmd`](https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/dependency-graph.mmd).
 The {doc}`interactive theorem atlas <theorem-atlas>` gives a readable local
 neighborhood instead of attempting to draw all 1,038 edges at once. The
 {doc}`native PA proof explorer <proof-explorer>` adds permanent theorem tags,
@@ -163,11 +163,11 @@ One theorem name identifies the same object in four places:
 
 The current synchronized surfaces are:
 
-- [native theorem source](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py);
-- [checked-theorem snapshot](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json);
-- [research catalog](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json);
-- [arithmetic vault map](https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/moc/arithmetic-library-moc.md);
-- [deterministic training corpus](https://github.com/nasqret/vietnam2026/tree/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/corpus).
+- [native theorem source](https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py);
+- [checked-theorem snapshot](https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json);
+- [research catalog](https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json);
+- [arithmetic vault map](https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/moc/arithmetic-library-moc.md);
+- [deterministic training corpus](https://github.com/nasqret/vietnam2026/tree/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/corpus).
 
 There is exactly one deliberately unproved catalog boundary: the conventional
 integer-coefficient Bézout interface. Peano Lab quantifies only over naturals.

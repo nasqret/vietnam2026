@@ -130,10 +130,10 @@ THEOREM_SOURCES = (
 )
 OUTPUT = REPO / "book" / "arithmetic-library" / "theorem-atlas.md"
 
-# The proof snapshot was published by this immutable commit before the book
-# layer was added.  Permalinks keep every source, vault, and artifact receipt
-# valid both in the draft PR and after later branch movement.
-PROOF_SNAPSHOT_COMMIT = "5fff3eab2a7599035a6833c52b658da118f4a20c"
+# This immutable commit contains the exact 384-theorem replay candidate and
+# the source, vault, catalog, and research files linked by the generated cards.
+# Permalinks remain valid after later branch movement.
+PROOF_SNAPSHOT_COMMIT = "32803924d7def862ccf0b738cd1ed494a3165f7e"
 GITHUB_ROOT = (
     "https://github.com/nasqret/vietnam2026/blob/" + PROOF_SNAPSHOT_COMMIT
 )

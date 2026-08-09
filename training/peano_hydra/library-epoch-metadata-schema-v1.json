@@ -1,0 +1,240 @@
+{
+  "additional_fields_policy": "forbidden-at-every-schema-owned-object",
+  "canonical_json": {
+    "document": "UTF-8, sorted keys, two-space indentation, one final LF",
+    "hash_preimage": "UTF-8, sorted keys, compact separators, no final LF",
+    "numbers": "integers only",
+    "objects": "duplicate keys forbidden"
+  },
+  "claim_boundary": {
+    "candidate_only": true,
+    "dependency_vectors": "the replay pack supplies declared publication dependencies only; readable and optimized direct vectors remain unresolved",
+    "documentation": "present means exact candidate bytes and semantic join checks exist, not that a human reviewed the prose",
+    "documentation_complete_count": "a theorem counts as documentation-complete only when its source locator, definition receipt, atlas card, vault note, explicit explorer row, and defined explorer row are all present",
+    "explorer_scope": "each explorer corpus has 557 rows, including 317 rows outside this 240-row public receipt surface; only exact-name public per-theorem joins are receipts, and the full corpora are forbidden as evaluation or retrieval inputs",
+    "freeze_ready": false,
+    "optimized_certificate": "the retained certificate is submitted evidence, not a best-known or minimality claim",
+    "owner_authority": "absent; this schema cannot mint an independent deposit or frozen epoch"
+  },
+  "constants": {
+    "evaluation_eligible": false,
+    "freeze_ready": false,
+    "logic_mode": "intuitionistic",
+    "status": "candidate"
+  },
+  "format": "peano-hydra-library-epoch-metadata-schema",
+  "hashes": {
+    "document_sha256": "SHA-256 of exact retained canonical document bytes",
+    "metadata_root_sha256": "SHA-256 of the exact compact canonical root_preimage",
+    "record_sha256": "SHA-256 of the compact canonical JSON record value",
+    "vault_root_sha256": "SHA-256 of the compact canonical ordered per-theorem vault receipt rows"
+  },
+  "id": "peano-hydra-library-epoch-metadata-v1",
+  "limits": {
+    "atlas_bytes": 8000000,
+    "documentation_corpus_bytes": 64000000,
+    "metadata_bytes": 16000000,
+    "metadata_json_depth": 192,
+    "metadata_json_items": 3000000,
+    "replay_manifest_bytes": 8000000,
+    "replay_report_bytes": 1000000,
+    "schema_bytes": 1000000,
+    "source_file_bytes": 8000000,
+    "theorem_count": 10000,
+    "vault_file_bytes": 2000000
+  },
+  "metadata": {
+    "aggregate": {
+      "required": [
+        "declared_dependency_edges",
+        "documentation_complete_count",
+        "source_locator_count",
+        "theorem_count"
+      ]
+    },
+    "documentation_sources": {
+      "required": [
+        "atlas",
+        "defined_explorer",
+        "explicit_explorer",
+        "vault"
+      ]
+    },
+    "gaps": {
+      "required": [
+        "atlas_missing_count",
+        "atlas_stale_count",
+        "defined_explorer_missing_count",
+        "defined_explorer_stale_count",
+        "definition_receipt_missing_count",
+        "definition_receipt_stale_count",
+        "explicit_explorer_missing_count",
+        "explicit_explorer_stale_count",
+        "human_review_pending_count",
+        "lineage_pending_count",
+        "optimized_best_known_pending_count",
+        "optimized_dependency_vectors_pending_count",
+        "publication_union_pending_count",
+        "readable_dependency_vectors_unverified_count",
+        "source_locator_missing_count",
+        "vault_missing_count",
+        "vault_stale_count"
+      ]
+    },
+    "required": [
+      "aggregate",
+      "documentation_sources",
+      "evaluation_eligible",
+      "format",
+      "freeze_ready",
+      "gaps",
+      "id",
+      "logic_mode",
+      "replay_pack",
+      "repository",
+      "root_preimage",
+      "root_sha256",
+      "schema",
+      "status",
+      "theorem_count",
+      "theorems",
+      "v"
+    ],
+    "root_preimage": {
+      "forbidden_recursive_fields": [
+        "root_preimage",
+        "root_sha256"
+      ],
+      "required": [
+        "format",
+        "payload",
+        "v"
+      ]
+    }
+  },
+  "receipt_statuses": [
+    "missing",
+    "present",
+    "stale"
+  ],
+  "theorem": {
+    "definitions": {
+      "required": [
+        "edition_identity_sha256",
+        "record_sha256",
+        "status"
+      ]
+    },
+    "dependencies": {
+      "required": [
+        "declared_publication_dependencies",
+        "minimality_claim",
+        "optimized_dependencies",
+        "optimized_leave_one_out_receipt_sha256",
+        "publication_union",
+        "readable_dependencies",
+        "readable_leave_one_out_receipt_sha256",
+        "status"
+      ]
+    },
+    "documentation": {
+      "receipt_required": [
+        "artifact_path",
+        "artifact_sha256",
+        "record_sha256",
+        "status"
+      ],
+      "required": [
+        "atlas",
+        "defined_explorer",
+        "explicit_explorer",
+        "vault"
+      ]
+    },
+    "explanation": {
+      "required": [
+        "review_status",
+        "sha256",
+        "text"
+      ]
+    },
+    "lineage": {
+      "required": [
+        "id",
+        "status"
+      ]
+    },
+    "logic": {
+      "required": [
+        "mode",
+        "semantic_profile_id",
+        "semantic_profile_sha256"
+      ]
+    },
+    "optimized_construction": {
+      "required": [
+        "artifact_sha256",
+        "claim",
+        "proof_term_sha256"
+      ]
+    },
+    "proof": {
+      "required": [
+        "artifact",
+        "construction_metrics",
+        "formula_sha256",
+        "packed_tree_metrics",
+        "proof_term_sha256",
+        "replay_status"
+      ]
+    },
+    "readable_proof": {
+      "required": [
+        "script",
+        "script_sha256"
+      ]
+    },
+    "required": [
+      "declaration_order",
+      "definitions",
+      "dependencies",
+      "documentation",
+      "explanation",
+      "index",
+      "layer",
+      "lineage",
+      "logic",
+      "name",
+      "optimized_construction",
+      "proof",
+      "readable_proof",
+      "source",
+      "statement"
+    ],
+    "source": {
+      "required": [
+        "file_sha256",
+        "kind",
+        "line",
+        "path",
+        "status"
+      ]
+    },
+    "statement": {
+      "required": [
+        "canonical",
+        "canonical_sha256",
+        "formula_sha256",
+        "source",
+        "source_sha256"
+      ]
+    }
+  },
+  "unresolved_constants": {
+    "dependency_status": "declared-publication-only",
+    "explanation_review_status": "pending-human-review",
+    "lineage_status": "pending",
+    "optimized_claim": "submitted-not-best-known"
+  },
+  "v": 1
+}

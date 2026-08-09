@@ -322,8 +322,24 @@
   target, block living-library/engine/UI/training/model imports, and ask the
   intuitionistic kernel to replay every proof. This closes only H1.1's replay-
   transport subgate: the pack enforces `candidate` and evaluation-ineligible,
-  while exact dependency views/minimization, artifact/document receipts,
+  while exact dependency views/minimization, complete document receipts,
   lineage, source-state/owner freeze, and benchmark sealing remain absent.
+  H1.1a now adds a candidate-only readiness ledger without changing either
+  earlier protocol. Metadata schema v1 has semantic digest
+  `71995b59d4f5592a08a90dc354a91888f5f1f6f89ec4428be291aea19e76062c`;
+  its 5,880,054-byte retained document has root
+  `b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279`
+  and file SHA-256
+  `e719dd526d0aa07e2521fb2e499f2ee6810506d32a912298f11dbac60a2c0289`.
+  It records 384 source locators, 1,038 declared edges, and 240 complete
+  six-way documentation joins. Atlas/vault gaps are zero; explorer and
+  definition receipts have 144 missing/zero stale rows. The explorers' 317
+  additional names are disjoint non-`L0` provenance and cannot enter the
+  epoch's retrieval, training, or evaluation surfaces. Human review, lineage,
+  best-known comparison, readable/optimized dependency vectors, leave-one-out
+  receipts, and publication unions remain pending for all 384 rows. The 53
+  focused adversarial tests pass; H1.1 remains open until the 144 rows and A2
+  evidence are repaired before an external source-state/owner request.
   A0/H1 therefore remain open.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
   Tarski–Grothendieck set theory. The same statements are proved in all four to *show* the foundations.

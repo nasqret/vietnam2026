@@ -44,9 +44,15 @@ certificates in an import-guarded
 and its theorem replay root is
 `88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
 This closes only the replay-transport subgate: both production review
-registries are empty, the pack is evaluation-ineligible, and dependency views,
-documentation/definition receipts, lineage, independent deposit, and benchmark
-sealing remain absent. It is not an A0/H1 or production-$L_0$ completion claim.
+registries are empty and the pack is evaluation-ineligible. H1.1a's retained
+candidate metadata ledger (root
+`b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279`)
+makes the next gaps exact: 384 sources, 1,038 declared edges, 240 complete
+documentation joins, and 144 missing/zero stale explorer and definition rows.
+The 317 extra explorer names are disjoint non-$L_0$ provenance. Dependency
+views, leave-one-out evidence, human review, best-known comparison, lineage,
+independent deposit, and benchmark sealing remain absent for all 384 rows. It
+is not an A0/H1 or production-$L_0$ completion claim.
 
 Peano Lab remains the sole object language. Under [[peano-logic-profiles]],
 constructive PA is the default and classical PA+DNE is separately labeled. Living

@@ -4,6 +4,51 @@ This directory preserves deterministic Hydra plumbing evidence. It contains
 no trained-model result, sealed benchmark, decision-procedure result, or
 matched-compute comparison.
 
+## H1.1a candidate epoch-metadata readiness ledger
+
+`library-epoch-metadata-candidate-v1.json` is a candidate-only inventory over
+the exact replay pack below. It is not a frozen epoch or an independent owner
+deposit. Its schema fixes `status = candidate`, `freeze_ready = false`, and
+`evaluation_eligible = false`.
+
+- schema semantic digest:
+  `71995b59d4f5592a08a90dc354a91888f5f1f6f89ec4428be291aea19e76062c`;
+- schema document SHA-256:
+  `9867378c8802501d2120ad4d94a86378815cf90b003eafc92b164685da61c956`;
+- metadata root:
+  `b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279`;
+- exact 5,880,054-byte metadata document SHA-256:
+  `e719dd526d0aa07e2521fb2e499f2ee6810506d32a912298f11dbac60a2c0289`;
+- exact 1,195-byte readiness-report SHA-256:
+  `386be7eb475980a373122d769a496220319d34090463e0a3bc870cfece3e4c25`.
+
+The ledger records 384 replay-ordered theorems, 1,038 declared publication
+edges, 384 source locators, and 240 documentation-complete rows. Atlas and
+vault gaps are zero. Explicit-explorer, defined-explorer, and theorem-level
+definition receipts each have 144 missing and zero stale rows. Every theorem
+still has unresolved human review, lineage, best-known comparison,
+readable/optimized dependency-vector, leave-one-out, and publication-union
+evidence. The explorer artifacts contain 317 additional names disjoint from
+this candidate; their complete corpora are provenance only and must not enter
+this epoch's training, retrieval, or evaluation context.
+
+The focused metadata/CLI suite passed 53 adversarial tests in 78.89 seconds.
+Two temporary builds were byte-identical before retention, and the retained
+ledger and report pass the same read-only `--check` shown below.
+
+Rebuild and compare without any implicit output path:
+
+```console
+python3 scripts/build_peano_hydra_epoch_metadata.py \
+  --check \
+  --output artifacts/peano-hydra/library-epoch-metadata-candidate-v1.json \
+  --report artifacts/peano-hydra/library-epoch-metadata-candidate-v1-readiness.json
+```
+
+H1.1 remains open. The next order is to repair and audit the 144 missing
+receipts, complete A2's dependency/comparison evidence, and only then prepare
+a reviewed source-state request for an external independent owner.
+
 ## H1.1 replay-complete candidate pack
 
 `l0-replay-candidate-v1/` is the subordinate certificate-transport candidate,

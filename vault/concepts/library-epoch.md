@@ -44,12 +44,25 @@ decoded target to its original closed statement, and asks the [[trusted-kernel]]
 to check all 384 proofs from the empty context. The committed acceptance test
 reproduces its retained report byte-for-byte.
 
+H1.1a adds a candidate-only metadata readiness ledger above that transport.
+Schema v1 has semantic digest
+`71995b59d4f5592a08a90dc354a91888f5f1f6f89ec4428be291aea19e76062c`;
+the canonical 5,880,054-byte ledger has root
+`b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279`.
+It binds all 384 source locators and 1,038 declared publication edges. Atlas
+and vault receipts cover every theorem, but the two proof explorers and the
+theorem-level definition edition cover only 240 rows. The other 144 rows are
+missing, not stale. All 317 additional explorer names are disjoint non-$L_0$
+provenance; the full 557-row corpora cannot become epoch retrieval, training,
+or evaluation context.
+
 This closes the replay-transport subgate, not H1.1. The pack is schema-labeled
 `candidate` and evaluation-ineligible. It still lacks independently verified
-readable/optimized dependency views and publication union, definition and
-documentation receipts, lineage masks, reviewed source-state and owner
-deposit, and the sealed benchmark. The production owner-receipt registry
-remains empty, so it is not frozen production $L_0$.
+readable/optimized dependency views and publication union, 144 complete
+definition/documentation receipts, human review, best-known comparison,
+lineage masks, reviewed source-state and owner deposit, and the sealed
+benchmark. The production owner-receipt registry remains empty, so it is not
+frozen production $L_0$.
 
 ## Related
 

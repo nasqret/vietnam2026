@@ -34,7 +34,7 @@ immutable source links, and local checkout are usable now.
 </div>
 
 Snapshot root: <code>73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b</code>
-Generated card digest: <code>0d67e50bcf72e9772596f548d56f216536d61f47cdd8cc1c10b8e14ad8ed6973</code>
+Generated card digest: <code>3cd142a33c034124094ddf40a1f76c66648989b4d0e3d76bde38f33c8f820e9c</code>
 
 <noscript>
   <p class="pa-noscript">The theorem cards remain readable without JavaScript. Search, filtering, copy buttons, and the focused dependency navigator require JavaScript.</p>
@@ -522,10 +522,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for zero_add">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib zero_add</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L270">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/zero_add.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L270">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/zero_add.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -578,10 +578,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for add_succ_left">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_succ_left</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L277">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/add_succ_left.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L277">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/add_succ_left.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -636,10 +636,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for add_comm">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_comm</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L284">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/add_comm.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L284">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/add_comm.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -693,10 +693,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for add_assoc">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_assoc</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L296">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/add_assoc.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L296">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/add_assoc.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -748,10 +748,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mul_zero_left">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_zero_left</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L303">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mul_zero_left.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L303">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mul_zero_left.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -808,10 +808,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mul_succ_left">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_succ_left</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L310">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mul_succ_left.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L310">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mul_succ_left.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -866,10 +866,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mul_comm">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_comm</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L324">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mul_comm.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L324">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mul_comm.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -924,10 +924,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mul_add">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_add</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L336">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mul_add.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L336">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mul_add.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -982,10 +982,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mul_assoc">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_assoc</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L349">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mul_assoc.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L349">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mul_assoc.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -1037,10 +1037,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for one_mul">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib one_mul</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L362">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/one_mul.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L362">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/one_mul.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -1092,10 +1092,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mul_one">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_one</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L369">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mul_one.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L369">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mul_one.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -1150,10 +1150,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for add_mul">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_mul</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L376">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/add_mul.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L376">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/add_mul.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -1203,10 +1203,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for succ_ne_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib succ_ne_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L383">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/succ_ne_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L383">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/succ_ne_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -1256,10 +1256,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for succ_injective">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib succ_injective</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L390">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/succ_injective.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L390">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/succ_injective.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -1312,10 +1312,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for le_refl">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_refl</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L397">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/le_refl.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L397">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/le_refl.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -1374,10 +1374,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for le_trans">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_trans</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L404">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/le_trans.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L404">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/le_trans.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -1437,10 +1437,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for no_succ_add_fixed">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib no_succ_add_fixed</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L421">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/no_succ_add_fixed.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L421">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/no_succ_add_fixed.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -1509,10 +1509,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for drop_add_prefix_from_fixed">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib drop_add_prefix_from_fixed</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L440">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/drop_add_prefix_from_fixed.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L440">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/drop_add_prefix_from_fixed.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -1582,10 +1582,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for antisymm_from_witnesses">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib antisymm_from_witnesses</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L465">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/antisymm_from_witnesses.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L465">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/antisymm_from_witnesses.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -1644,10 +1644,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for le_antisymm">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_antisymm</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L492">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/le_antisymm.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L492">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/le_antisymm.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -1719,10 +1719,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for le_total">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_total</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L509">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/le_total.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L509">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/le_total.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -1780,10 +1780,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for add_eq_zero_right">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_eq_zero_right</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L540">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/add_eq_zero_right.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L540">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/add_eq_zero_right.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -1845,10 +1845,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mul_eq_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_eq_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L557">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mul_eq_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L557">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mul_eq_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -1902,10 +1902,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for eq_symm">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib eq_symm</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L580">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/eq_symm.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L580">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/eq_symm.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -1962,10 +1962,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for eq_trans">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib eq_trans</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L587">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/eq_trans.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L587">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/eq_trans.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2019,10 +2019,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for succ_congr">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib succ_congr</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L603">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/succ_congr.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L603">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/succ_congr.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2077,10 +2077,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for zero_or_succ">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib zero_or_succ</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L610">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/zero_or_succ.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L610">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/zero_or_succ.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2137,10 +2137,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for nonzero_is_succ">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib nonzero_is_succ</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L624">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/nonzero_is_succ.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L624">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/nonzero_is_succ.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2198,10 +2198,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for add_congr">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_congr</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L640">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/add_congr.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L640">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/add_congr.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2259,10 +2259,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mul_congr">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_congr</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L657">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mul_congr.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L657">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mul_congr.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2324,10 +2324,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for add_right_cancel">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_right_cancel</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L676">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/add_right_cancel.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L676">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/add_right_cancel.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2391,10 +2391,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for add_left_cancel">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_left_cancel</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L697">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/add_left_cancel.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L697">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/add_left_cancel.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2447,10 +2447,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for zero_le">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib zero_le</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L718">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/zero_le.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L718">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/zero_le.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2504,10 +2504,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for le_succ_self">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_succ_self</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L725">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/le_succ_self.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L725">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/le_succ_self.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2562,10 +2562,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for le_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L732">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/le_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L732">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/le_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2622,10 +2622,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for one_le_of_ne_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib one_le_of_ne_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L745">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/one_le_of_ne_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L745">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/one_le_of_ne_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2682,10 +2682,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for ne_zero_of_one_le">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib ne_zero_of_one_le</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L761">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/ne_zero_of_one_le.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L761">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/ne_zero_of_one_le.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2738,10 +2738,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for le_add_left">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_add_left</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L777">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/le_add_left.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L777">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/le_add_left.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2795,10 +2795,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for le_add_right">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_add_right</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L789">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/le_add_right.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L789">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/le_add_right.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2860,10 +2860,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for add_le_add_right">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_le_add_right</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L801">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/add_le_add_right.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L801">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/add_le_add_right.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2932,10 +2932,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for add_le_add_left">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_le_add_left</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L821">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/add_le_add_left.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L821">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/add_le_add_left.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -2992,10 +2992,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for succ_le_succ">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib succ_le_succ</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L847">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/succ_le_succ.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L847">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/succ_le_succ.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -3054,10 +3054,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for le_of_succ_le_succ">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_of_succ_le_succ</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L863">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/le_of_succ_le_succ.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L863">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/le_of_succ_le_succ.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -3116,10 +3116,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for le_succ">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_succ</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L881">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/le_succ.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L881">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/le_succ.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -3180,10 +3180,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for lt_to_le">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_to_le</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L898">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/lt_to_le.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L898">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/lt_to_le.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -3247,10 +3247,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for add_le_cancel_right">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_le_cancel_right</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L917">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/add_le_cancel_right.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L917">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/add_le_cancel_right.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -3313,10 +3313,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for lt_irrefl_expanded">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_irrefl_expanded</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L938">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/lt_irrefl_expanded.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L938">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/lt_irrefl_expanded.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -3389,10 +3389,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for le_eq_or_lt">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_eq_or_lt</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L958">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/le_eq_or_lt.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L958">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/le_eq_or_lt.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -3453,10 +3453,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for lt_of_lt_of_le">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_of_lt_of_le</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L987">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/lt_of_lt_of_le.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L987">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/lt_of_lt_of_le.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -3519,10 +3519,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for lt_of_le_of_lt">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_of_le_of_lt</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1006">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/lt_of_le_of_lt.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1006">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/lt_of_le_of_lt.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -3593,10 +3593,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for lt_trans">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_trans</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1027">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/lt_trans.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1027">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/lt_trans.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -3671,10 +3671,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for le_or_lt">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_or_lt</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1055">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/le_or_lt.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1055">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/le_or_lt.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -3762,10 +3762,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for lt_trichotomy">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_trichotomy</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1089">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/lt_trichotomy.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1089">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/lt_trichotomy.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -3848,10 +3848,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for lt_not_le">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_not_le</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1136">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/lt_not_le.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1136">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/lt_not_le.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -3910,10 +3910,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for le_not_lt">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_not_lt</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1178">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/le_not_lt.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1178">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/le_not_lt.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -4007,10 +4007,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for lt_not_eq_add_middle">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_not_eq_add_middle</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1195">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/lt_not_eq_add_middle.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1195">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/lt_not_eq_add_middle.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="dependency-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -4072,10 +4072,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mul_le_mul_left">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_le_mul_left</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1247">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mul_le_mul_left.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1247">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mul_le_mul_left.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -4137,10 +4137,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mul_le_mul_right">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_le_mul_right</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1267">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mul_le_mul_right.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1267">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mul_le_mul_right.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -4209,10 +4209,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mul_lt_mul_succ_left_nonzero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_lt_mul_succ_left_nonzero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1287">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mul_lt_mul_succ_left_nonzero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1287">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mul_lt_mul_succ_left_nonzero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -4302,10 +4302,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for division_remainder_succ">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib division_remainder_succ</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1314">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/division_remainder_succ.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1314">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/division_remainder_succ.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-division">Read the chapter</a>
       </nav>
     </div>
@@ -4370,10 +4370,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for division_remainder_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib division_remainder_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1360">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/division_remainder_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1360">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/division_remainder_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-division">Read the chapter</a>
       </nav>
     </div>
@@ -4430,10 +4430,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for remainder_bound_step">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib remainder_bound_step</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1382">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/remainder_bound_step.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1382">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/remainder_bound_step.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-division">Read the chapter</a>
       </nav>
     </div>
@@ -4518,10 +4518,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for division_block_upper">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib division_block_upper</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1397">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/division_block_upper.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1397">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/division_block_upper.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-division">Read the chapter</a>
       </nav>
     </div>
@@ -4609,10 +4609,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for positive_quotient_gap_impossible">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib positive_quotient_gap_impossible</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1439">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/positive_quotient_gap_impossible.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1439">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/positive_quotient_gap_impossible.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-division">Read the chapter</a>
       </nav>
     </div>
@@ -4672,10 +4672,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for remainder_unique_same_quotient">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib remainder_unique_same_quotient</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1481">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/remainder_unique_same_quotient.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1481">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/remainder_unique_same_quotient.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-division">Read the chapter</a>
       </nav>
     </div>
@@ -4803,10 +4803,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for division_remainder_unique">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib division_remainder_unique</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1499">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/division_remainder_unique.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1499">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/division_remainder_unique.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-division">Read the chapter</a>
       </nav>
     </div>
@@ -4862,10 +4862,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for zero_remainder_implies_multiple">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib zero_remainder_implies_multiple</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1581">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/zero_remainder_implies_multiple.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1581">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/zero_remainder_implies_multiple.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-division">Read the chapter</a>
       </nav>
     </div>
@@ -4936,10 +4936,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for multiple_has_zero_remainder">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_has_zero_remainder</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1596">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/multiple_has_zero_remainder.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1596">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/multiple_has_zero_remainder.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-division">Read the chapter</a>
       </nav>
     </div>
@@ -4999,10 +4999,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for add_eq_zero_left">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_eq_zero_left</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1625">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/add_eq_zero_left.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1625">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/add_eq_zero_left.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -5061,10 +5061,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for add_eq_zero_components">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_eq_zero_components</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1642">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/add_eq_zero_components.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1642">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/add_eq_zero_components.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -5155,10 +5155,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mul_eq_one_components">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_eq_one_components</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1658">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mul_eq_one_components.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1658">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mul_eq_one_components.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -5223,10 +5223,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mul_ne_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_ne_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1705">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mul_ne_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1705">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mul_ne_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -5321,10 +5321,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mul_left_cancel_nonzero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_left_cancel_nonzero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1728">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mul_left_cancel_nonzero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1728">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mul_left_cancel_nonzero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -5390,10 +5390,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mul_right_cancel_nonzero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_right_cancel_nonzero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1778">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mul_right_cancel_nonzero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1778">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mul_right_cancel_nonzero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -5473,10 +5473,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for two_large_factors_impossible">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib two_large_factors_impossible</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1801">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/two_large_factors_impossible.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1801">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/two_large_factors_impossible.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -5562,10 +5562,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_two">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_two</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1837">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_two.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1837">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_two.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-primes">Read the chapter</a>
       </nav>
     </div>
@@ -5618,10 +5618,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for multiple_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1883">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/multiple_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1883">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/multiple_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -5675,10 +5675,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for one_multiple">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib one_multiple</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1890">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/one_multiple.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1890">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/one_multiple.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -5732,10 +5732,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for multiple_refl">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_refl</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1897">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/multiple_refl.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1897">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/multiple_refl.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -5797,10 +5797,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for multiple_add">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_add</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1904">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/multiple_add.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1904">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/multiple_add.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -5858,10 +5858,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for multiple_mul_right">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_mul_right</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1924">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/multiple_mul_right.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1924">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/multiple_mul_right.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -5921,10 +5921,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for multiple_mul_left">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_mul_left</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1940">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/multiple_mul_left.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1940">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/multiple_mul_left.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -5985,10 +5985,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for multiple_trans">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_trans</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1957">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/multiple_trans.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1957">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/multiple_trans.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -6069,10 +6069,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for divisor_le_nonzero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib divisor_le_nonzero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L1976">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/divisor_le_nonzero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L1976">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/divisor_le_nonzero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -6133,10 +6133,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for divisor_one">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib divisor_one</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2015">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/divisor_one.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2015">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/divisor_one.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -6241,10 +6241,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for multiple_antisymm">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_antisymm</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2034">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/multiple_antisymm.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2034">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/multiple_antisymm.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -6345,10 +6345,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for factor_difference">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib factor_difference</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2099">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/factor_difference.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2099">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/factor_difference.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -6423,10 +6423,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for divides_remainder">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib divides_remainder</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2154">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/divides_remainder.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2154">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/divides_remainder.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -6494,10 +6494,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for divides_linear_step">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib divides_linear_step</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2186">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/divides_linear_step.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2186">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/divides_linear_step.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -6554,10 +6554,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for not_multiple_pointwise">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib not_multiple_pointwise</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2211">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/not_multiple_pointwise.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2211">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/not_multiple_pointwise.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -6614,10 +6614,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for not_multiple_from_pointwise">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib not_multiple_from_pointwise</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2227">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/not_multiple_from_pointwise.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2227">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/not_multiple_from_pointwise.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -6679,10 +6679,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_zero_right">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_zero_right</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2243">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/is_gcd_zero_right.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2243">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/is_gcd_zero_right.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -6748,10 +6748,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_symm">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_symm</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2262">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/is_gcd_symm.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2262">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/is_gcd_symm.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -6807,10 +6807,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_dvd_left">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_dvd_left</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2287">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/is_gcd_dvd_left.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2287">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/is_gcd_dvd_left.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -6866,10 +6866,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_dvd_right">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_dvd_right</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2302">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/is_gcd_dvd_right.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2302">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/is_gcd_dvd_right.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -6930,10 +6930,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_greatest">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_greatest</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2317">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/is_gcd_greatest.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2317">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/is_gcd_greatest.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -6995,10 +6995,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_of_dvd">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_of_dvd</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2337">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/is_gcd_of_dvd.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2337">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/is_gcd_of_dvd.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -7073,10 +7073,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_unique">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_unique</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2357">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/is_gcd_unique.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2357">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/is_gcd_unique.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -7162,10 +7162,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_euclid_forward">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_euclid_forward</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2390">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/is_gcd_euclid_forward.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2390">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/is_gcd_euclid_forward.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -7251,10 +7251,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_euclid_backward">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_euclid_backward</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2433">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/is_gcd_euclid_backward.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2433">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/is_gcd_euclid_backward.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -7383,10 +7383,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for gcd_exists_up_to">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib gcd_exists_up_to</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2476">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/gcd_exists_up_to.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2476">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/gcd_exists_up_to.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -7448,10 +7448,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for gcd_exists_relational">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib gcd_exists_relational</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2565">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/gcd_exists_relational.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2565">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/gcd_exists_relational.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -7510,10 +7510,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for coprime_symm">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_symm</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2584">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/coprime_symm.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2584">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/coprime_symm.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -7570,10 +7570,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for coprime_one_right">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_one_right</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2602">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/coprime_one_right.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2602">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/coprime_one_right.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -7630,10 +7630,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for coprime_one_left">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_one_left</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2617">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/coprime_one_left.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2617">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/coprime_one_left.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -7707,10 +7707,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for coprime_to_is_gcd_one">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_to_is_gcd_one</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2632">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/coprime_to_is_gcd_one.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2632">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/coprime_to_is_gcd_one.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -7775,10 +7775,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_one_to_coprime">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_one_to_coprime</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2662">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/is_gcd_one_to_coprime.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2662">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/is_gcd_one_to_coprime.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -7854,10 +7854,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for add_permute_outer">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_permute_outer</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2688">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/add_permute_outer.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2688">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/add_permute_outer.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -7979,10 +7979,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for balanced_bezout_euclid_step">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib balanced_bezout_euclid_step</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2721">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/balanced_bezout_euclid_step.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2721">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/balanced_bezout_euclid_step.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -8119,10 +8119,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for gcd_balanced_bezout_exists_up_to">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib gcd_balanced_bezout_exists_up_to</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2803">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/gcd_balanced_bezout_exists_up_to.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2803">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/gcd_balanced_bezout_exists_up_to.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -8184,10 +8184,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for gcd_balanced_bezout_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib gcd_balanced_bezout_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2900">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/gcd_balanced_bezout_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2900">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/gcd_balanced_bezout_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -8295,10 +8295,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for balanced_combination_scale_right">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib balanced_combination_scale_right</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2919">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/balanced_combination_scale_right.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2919">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/balanced_combination_scale_right.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -8399,10 +8399,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for common_divisor_divides_balanced_result">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib common_divisor_divides_balanced_result</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L2983">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/common_divisor_divides_balanced_result.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L2983">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/common_divisor_divides_balanced_result.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -8476,10 +8476,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for coprime_balanced_bezout">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_balanced_bezout</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3039">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/coprime_balanced_bezout.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3039">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/coprime_balanced_bezout.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -8563,10 +8563,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for gauss_coprime_cancel">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib gauss_coprime_cancel</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3071">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/gauss_coprime_cancel.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3071">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/gauss_coprime_cancel.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -8642,10 +8642,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for eq_decidable">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib eq_decidable</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3115">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/eq_decidable.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3115">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/eq_decidable.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -8738,10 +8738,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for multiple_decidable_nonzero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_decidable_nonzero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3150">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/multiple_decidable_nonzero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3150">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/multiple_decidable_nonzero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -8822,10 +8822,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for multiple_decidable">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_decidable</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3203">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/multiple_decidable.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3203">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/multiple_decidable.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -8903,10 +8903,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for factor_property_succ">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib factor_property_succ</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3240">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/factor_property_succ.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3240">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/factor_property_succ.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-primes">Read the chapter</a>
       </nav>
     </div>
@@ -9065,10 +9065,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for factor_search_up_to">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib factor_search_up_to</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3275">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/factor_search_up_to.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3275">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/factor_search_up_to.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-primes">Read the chapter</a>
       </nav>
     </div>
@@ -9157,10 +9157,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_or_composite">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_or_composite</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3394">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_or_composite.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3394">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_or_composite.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-primes">Read the chapter</a>
       </nav>
     </div>
@@ -9231,10 +9231,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_nonzero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_nonzero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3440">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_nonzero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3440">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_nonzero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-primes">Read the chapter</a>
       </nav>
     </div>
@@ -9333,10 +9333,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_decidable">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_decidable</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3468">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_decidable.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3468">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_decidable.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-primes">Read the chapter</a>
       </nav>
     </div>
@@ -9397,10 +9397,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for factor_nonzero_left">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib factor_nonzero_left</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3523">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/factor_nonzero_left.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3523">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/factor_nonzero_left.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -9496,10 +9496,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for proper_factor_lt">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib proper_factor_lt</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3542">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/proper_factor_lt.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3542">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/proper_factor_lt.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-primes">Read the chapter</a>
       </nav>
     </div>
@@ -9627,10 +9627,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_divisor_exists_up_to">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_divisor_exists_up_to</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3598">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_divisor_exists_up_to.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3598">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_divisor_exists_up_to.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-primes">Read the chapter</a>
       </nav>
     </div>
@@ -9690,10 +9690,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_divisor_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_divisor_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3686">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_divisor_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3686">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_divisor_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-primes">Read the chapter</a>
       </nav>
     </div>
@@ -9762,10 +9762,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_divisor_eq_one_or_self">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_divisor_eq_one_or_self</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3703">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_divisor_eq_one_or_self.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3703">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_divisor_eq_one_or_self.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-primes">Read the chapter</a>
       </nav>
     </div>
@@ -9854,10 +9854,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for euclid_prime_dvd_product">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib euclid_prime_dvd_product</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3730">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/euclid_prime_dvd_product.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3730">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/euclid_prime_dvd_product.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-primes">Read the chapter</a>
       </nav>
     </div>
@@ -9911,10 +9911,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_refl">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_refl</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3779">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod_eq_refl.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3779">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod_eq_refl.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -9973,10 +9973,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_symm">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_symm</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3792">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod_eq_symm.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3792">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod_eq_symm.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -10070,10 +10070,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_trans">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_trans</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3810">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod_eq_trans.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3810">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod_eq_trans.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -10167,10 +10167,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_add">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_add</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3860">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod_eq_add.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3860">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod_eq_add.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -10247,10 +10247,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_mul_right">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_mul_right</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3910">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod_eq_mul_right.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3910">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod_eq_mul_right.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -10326,10 +10326,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_mul_left">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_mul_left</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3944">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod_eq_mul_left.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3944">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod_eq_mul_left.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -10409,10 +10409,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_mul">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_mul</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L3977">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod_eq_mul.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L3977">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod_eq_mul.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -10479,10 +10479,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for remainder_decomposition_to_mod_eq">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib remainder_decomposition_to_mod_eq</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4013">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/remainder_decomposition_to_mod_eq.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4013">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/remainder_decomposition_to_mod_eq.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -10561,10 +10561,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_bounded_unique">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_bounded_unique</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4037">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod_eq_bounded_unique.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4037">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod_eq_bounded_unique.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -10669,10 +10669,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_to_remainder_decomposition">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_to_remainder_decomposition</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4073">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod_eq_to_remainder_decomposition.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4073">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod_eq_to_remainder_decomposition.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -10726,10 +10726,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_modulus_nonzero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_modulus_nonzero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4141">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_modulus_nonzero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4141">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_modulus_nonzero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -10792,10 +10792,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_at_self_of_bound">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_at_self_of_bound</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4153">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_at_self_of_bound.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4153">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_at_self_of_bound.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -10871,10 +10871,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_at_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_at_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4173">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_at_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4173">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_at_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -10962,10 +10962,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_at_unique">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_at_unique</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4205">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_at_unique.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4205">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_at_unique.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -11038,10 +11038,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_at_exists_unique">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_at_exists_unique</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4250">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_at_exists_unique.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4250">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_at_exists_unique.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -11104,10 +11104,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_at_to_mod_eq">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_at_to_mod_eq</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4280">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_at_to_mod_eq.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4280">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_at_to_mod_eq.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -11175,10 +11175,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_at_of_mod_eq_bound">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_at_of_mod_eq_bound</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4301">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_at_of_mod_eq_bound.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4301">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_at_of_mod_eq_bound.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -11236,10 +11236,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for dvd_to_mod_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib dvd_to_mod_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4326">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/dvd_to_mod_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4326">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/dvd_to_mod_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -11307,10 +11307,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for add_residue">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_residue</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4344">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/add_residue.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4344">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/add_residue.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -11412,10 +11412,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for add_residue_lift">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_residue_lift</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4369">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/add_residue_lift.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4369">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/add_residue_lift.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -11514,10 +11514,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for square_decomp">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib square_decomp</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4427">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/square_decomp.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4427">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/square_decomp.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -11581,10 +11581,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for square_residue_lift">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib square_residue_lift</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4480">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/square_residue_lift.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4480">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/square_residue_lift.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -11646,10 +11646,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for square_residue_witness">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib square_residue_witness</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4501">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/square_residue_witness.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4501">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/square_residue_witness.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -11719,10 +11719,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for bezout_mod_left">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bezout_mod_left</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4642">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/bezout_mod_left.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4642">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/bezout_mod_left.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -11785,10 +11785,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for bezout_mod_right">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bezout_mod_right</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4656">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/bezout_mod_right.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4656">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/bezout_mod_right.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -11855,10 +11855,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_predecessor_cancel">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_predecessor_cancel</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4668">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod_eq_predecessor_cancel.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4668">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod_eq_predecessor_cancel.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -12198,10 +12198,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for binary_crt">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib binary_crt</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4682">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/binary_crt.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4682">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/binary_crt.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -12296,10 +12296,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for binary_crt_remainders">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib binary_crt_remainders</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4825">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/binary_crt_remainders.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4825">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/binary_crt_remainders.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -12398,10 +12398,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for binary_crt_beta_pair">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib binary_crt_beta_pair</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4846">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/binary_crt_beta_pair.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4846">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/binary_crt_beta_pair.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -12473,10 +12473,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_modulus_coprime_base">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_modulus_coprime_base</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4871">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_modulus_coprime_base.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4871">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_modulus_coprime_base.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -12556,10 +12556,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for common_divisor_beta_moduli_divides_gap_times_c">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib common_divisor_beta_moduli_divides_gap_times_c</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4900">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/common_divisor_beta_moduli_divides_gap_times_c.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4900">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/common_divisor_beta_moduli_divides_gap_times_c.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -12673,10 +12673,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_moduli_coprime_of_gap_dvd">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_moduli_coprime_of_gap_dvd</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4936">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_moduli_coprime_of_gap_dvd.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4936">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_moduli_coprime_of_gap_dvd.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -12754,10 +12754,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for binary_crt_beta_pair_of_gap_dvd">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib binary_crt_beta_pair_of_gap_dvd</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5011">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/binary_crt_beta_pair_of_gap_dvd.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5011">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/binary_crt_beta_pair_of_gap_dvd.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -12863,10 +12863,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for bounded_common_multiple_step">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_common_multiple_step</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5036">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/bounded_common_multiple_step.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5036">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/bounded_common_multiple_step.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -12947,10 +12947,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for bounded_common_multiple_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_common_multiple_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5070">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/bounded_common_multiple_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5070">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/bounded_common_multiple_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -13051,10 +13051,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_moduli_coprime_of_lt_bounded_common_multiple">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_moduli_coprime_of_lt_bounded_common_multiple</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5095">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_moduli_coprime_of_lt_bounded_common_multiple.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5095">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_moduli_coprime_of_lt_bounded_common_multiple.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -13149,10 +13149,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_moduli_pairwise_coprime_bounded">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_moduli_pairwise_coprime_bounded</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5127">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_moduli_pairwise_coprime_bounded.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5127">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_moduli_pairwise_coprime_bounded.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -13214,10 +13214,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for bounded_beta_moduli_pairwise_coprime_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_beta_moduli_pairwise_coprime_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5159">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/bounded_beta_moduli_pairwise_coprime_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5159">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/bounded_beta_moduli_pairwise_coprime_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -13302,10 +13302,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for coprime_mul_left">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_mul_left</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5178">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/coprime_mul_left.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5178">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/coprime_mul_left.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -13382,10 +13382,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for coprime_mul_right">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_mul_right</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5201">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/coprime_mul_right.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5201">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/coprime_mul_right.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-bezout">Read the chapter</a>
       </nav>
     </div>
@@ -13458,10 +13458,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_of_mod_eq_multiple">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_of_mod_eq_multiple</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5224">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod_eq_of_mod_eq_multiple.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5224">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod_eq_of_mod_eq_multiple.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -13553,10 +13553,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for binary_crt_fold_step">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib binary_crt_fold_step</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5243">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/binary_crt_fold_step.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5243">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/binary_crt_fold_step.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -13610,10 +13610,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for right_factor_divides_product">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib right_factor_divides_product</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5271">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/right_factor_divides_product.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5271">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/right_factor_divides_product.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -13763,10 +13763,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_accumulated_product_step">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_accumulated_product_step</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5281">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_accumulated_product_step.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5281">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_accumulated_product_step.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -13910,10 +13910,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_crt_prefix_congruence_step">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_crt_prefix_congruence_step</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5354">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_crt_prefix_congruence_step.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5354">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_crt_prefix_congruence_step.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -14011,10 +14011,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_crt_prefix_invariant_step">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_crt_prefix_invariant_step</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5411">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_crt_prefix_invariant_step.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5411">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_crt_prefix_invariant_step.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -14152,10 +14152,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for bounded_beta_crt_prefix_invariant">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_beta_crt_prefix_invariant</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5437">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/bounded_beta_crt_prefix_invariant.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5437">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/bounded_beta_crt_prefix_invariant.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -14228,10 +14228,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for bounded_beta_crt_for_existing_code">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_beta_crt_for_existing_code</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5496">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/bounded_beta_crt_for_existing_code.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5496">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/bounded_beta_crt_for_existing_code.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -14374,10 +14374,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_unbounded">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_unbounded</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L4528">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_unbounded.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L4528">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_unbounded.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-primes">Read the chapter</a>
       </nav>
     </div>
@@ -14436,10 +14436,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_value_le_code">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_value_le_code</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5524">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_value_le_code.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5524">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_value_le_code.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -14504,10 +14504,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for base_le_beta_modulus">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib base_le_beta_modulus</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5539">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/base_le_beta_modulus.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5539">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/base_le_beta_modulus.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -14575,10 +14575,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for le_scaled_nonzero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_scaled_nonzero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5556">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/le_scaled_nonzero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5556">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/le_scaled_nonzero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -14643,10 +14643,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for scaled_bounded_common_multiple">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib scaled_bounded_common_multiple</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5576">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/scaled_bounded_common_multiple.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5576">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/scaled_bounded_common_multiple.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -14755,10 +14755,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_value_lt_scaled_base">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_value_lt_scaled_base</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5597">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_value_lt_scaled_base.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5597">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_value_lt_scaled_base.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -14848,10 +14848,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for new_value_lt_scaled_base">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib new_value_lt_scaled_base</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5663">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/new_value_lt_scaled_base.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5663">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/new_value_lt_scaled_base.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -15007,10 +15007,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_exclusive_accumulated_product_step">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_exclusive_accumulated_product_step</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5709">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_exclusive_accumulated_product_step.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5709">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_exclusive_accumulated_product_step.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -15159,10 +15159,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_exclusive_recode_congruence_step">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_exclusive_recode_congruence_step</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5831">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_exclusive_recode_congruence_step.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5831">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_exclusive_recode_congruence_step.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -15262,10 +15262,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_exclusive_recode_invariant_step">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_exclusive_recode_invariant_step</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L5947">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_exclusive_recode_invariant_step.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L5947">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_exclusive_recode_invariant_step.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -15409,10 +15409,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for bounded_beta_exclusive_recode_invariant">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_beta_exclusive_recode_invariant</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L6020">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/bounded_beta_exclusive_recode_invariant.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L6020">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/bounded_beta_exclusive_recode_invariant.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -15575,10 +15575,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_extend">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_extend</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L6137">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_prefix_extend.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L6137">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_prefix_extend.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -15771,10 +15771,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_product_trace_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_product_trace_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L6279">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_prefix_product_trace_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L6279">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_prefix_product_trace_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -15850,10 +15850,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L6446">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_product_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L6446">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_product_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -16059,10 +16059,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_functional">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_functional</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L6491">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_product_functional.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L6491">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_product_functional.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -16145,10 +16145,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_exists_unique">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_exists_unique</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L6680">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_product_exists_unique.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L6680">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_product_exists_unique.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -16214,10 +16214,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L6738">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_product_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L6738">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_product_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -16320,10 +16320,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_succ_decompose">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_succ_decompose</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L6765">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_product_succ_decompose.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L6765">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_product_succ_decompose.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -16479,10 +16479,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_succ_append">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_succ_append</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L6839">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_product_succ_append.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L6839">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_product_succ_append.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -16575,10 +16575,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_transport_prefix">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_transport_prefix</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L6974">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_product_transport_prefix.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L6974">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_product_transport_prefix.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -16759,10 +16759,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_factor_prefix_product_append">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_factor_prefix_product_append</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7042">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_factor_prefix_product_append.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7042">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_factor_prefix_product_append.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -16827,10 +16827,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for all_prime_empty">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib all_prime_empty</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7229">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/all_prime_empty.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7229">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/all_prime_empty.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -16910,10 +16910,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for all_prime_succ_intro">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib all_prime_succ_intro</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7249">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/all_prime_succ_intro.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7249">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/all_prime_succ_intro.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -16975,10 +16975,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for all_prime_succ_elim_prefix">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib all_prime_succ_elim_prefix</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7289">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/all_prime_succ_elim_prefix.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7289">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/all_prime_succ_elim_prefix.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -17036,10 +17036,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for all_prime_succ_elim_last">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib all_prime_succ_elim_last</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7310">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/all_prime_succ_elim_last.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7310">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/all_prime_succ_elim_last.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -17111,10 +17111,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for all_prime_transport">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib all_prime_transport</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7326">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/all_prime_transport.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7326">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/all_prime_transport.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -17177,10 +17177,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for sorted_empty">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib sorted_empty</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7363">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/sorted_empty.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7363">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/sorted_empty.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -17249,10 +17249,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for sorted_singleton">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib sorted_singleton</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7382">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/sorted_singleton.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7382">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/sorted_singleton.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -17348,10 +17348,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for sorted_succ_intro">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib sorted_succ_intro</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7407">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/sorted_succ_intro.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7407">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/sorted_succ_intro.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -17413,10 +17413,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for sorted_succ_elim_prefix">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib sorted_succ_elim_prefix</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7464">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/sorted_succ_elim_prefix.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7464">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/sorted_succ_elim_prefix.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -17474,10 +17474,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for sorted_succ_elim_last">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib sorted_succ_elim_last</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7487">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/sorted_succ_elim_last.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7487">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/sorted_succ_elim_last.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -17564,10 +17564,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for sorted_transport">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib sorted_transport</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7506">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/sorted_transport.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7506">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/sorted_transport.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -17658,10 +17658,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_extend_all_prime">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_extend_all_prime</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7558">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_prefix_extend_all_prime.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7558">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_prefix_extend_all_prime.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -17733,10 +17733,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_extend_sorted_singleton">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_extend_sorted_singleton</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7617">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_prefix_extend_sorted_singleton.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7617">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_prefix_extend_sorted_singleton.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -17838,10 +17838,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_extend_sorted_succ">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_extend_sorted_succ</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7653">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_prefix_extend_sorted_succ.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7653">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_prefix_extend_sorted_succ.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -17942,10 +17942,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_canonical_append_empty">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_canonical_append_empty</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7734">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_canonical_append_empty.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7734">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_canonical_append_empty.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -18081,10 +18081,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_canonical_append_succ">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_canonical_append_succ</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7833">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_canonical_append_succ.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7833">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_canonical_append_succ.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -18160,10 +18160,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_divides_decidable">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_divides_decidable</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L7982">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_divides_decidable.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L7982">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_divides_decidable.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -18311,10 +18311,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for greatest_prime_divisor_search">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib greatest_prime_divisor_search</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L8014">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/greatest_prime_divisor_search.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L8014">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/greatest_prime_divisor_search.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -18413,10 +18413,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for greatest_prime_divisor_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib greatest_prime_divisor_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L8129">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/greatest_prime_divisor_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L8129">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/greatest_prime_divisor_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -18493,10 +18493,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for greatest_prime_divisor_quotient_bound">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib greatest_prime_divisor_quotient_bound</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L8192">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/greatest_prime_divisor_quotient_bound.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L8192">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/greatest_prime_divisor_quotient_bound.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -18611,10 +18611,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for greatest_prime_divisor_descent">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib greatest_prime_divisor_descent</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L8227">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/greatest_prime_divisor_descent.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L8227">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/greatest_prime_divisor_descent.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -18753,10 +18753,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_factor_divides_product">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_factor_divides_product</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L8307">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_factor_divides_product.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L8307">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_factor_divides_product.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -18941,10 +18941,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_canonical_append_general">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_canonical_append_general</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L8481">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_canonical_append_general.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L8481">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_canonical_append_general.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -19033,10 +19033,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_canonical_last_factor_bound">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_canonical_last_factor_bound</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L8420">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_canonical_last_factor_bound.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L8420">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_canonical_last_factor_bound.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -19254,10 +19254,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_factorization_exists_up_to">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_factorization_exists_up_to</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L8682">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_factorization_exists_up_to.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L8682">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_factorization_exists_up_to.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -19316,10 +19316,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_factorization_existence">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_factorization_existence</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L8915">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_factorization_existence.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L8915">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_factorization_existence.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -19492,10 +19492,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_prime_divisor_product_member">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prime_divisor_product_member</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9572">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_prime_divisor_product_member.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9572">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_prime_divisor_product_member.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -19658,10 +19658,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_sorted_factor_le_last">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_sorted_factor_le_last</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9725">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_sorted_factor_le_last.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9725">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_sorted_factor_le_last.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -19749,10 +19749,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_nonempty_all_prime_product_ne_one">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_nonempty_all_prime_product_ne_one</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9854">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_nonempty_all_prime_product_ne_one.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9854">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_nonempty_all_prime_product_ne_one.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -19838,10 +19838,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_all_prime_product_one_iff_length_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_all_prime_product_one_iff_length_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9907">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_all_prime_product_one_iff_length_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9907">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_all_prime_product_one_iff_length_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -20035,10 +20035,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_canonical_last_factors_equal">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_canonical_last_factors_equal</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9958">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_canonical_last_factors_equal.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9958">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_canonical_last_factors_equal.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -20243,10 +20243,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_canonical_product_cancel_last">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_canonical_product_cancel_last</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L10141">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_canonical_product_cancel_last.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L10141">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_canonical_product_cancel_last.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -20517,10 +20517,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_factorization_uniqueness_by_length">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_factorization_uniqueness_by_length</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L10387">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_factorization_uniqueness_by_length.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L10387">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_factorization_uniqueness_by_length.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -20589,10 +20589,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_factorization_uniqueness">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_factorization_uniqueness</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L10710">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_factorization_uniqueness.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L10710">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_factorization_uniqueness.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -20646,10 +20646,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for fundamental_theorem_of_arithmetic">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib fundamental_theorem_of_arithmetic</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L10765">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/fundamental_theorem_of_arithmetic.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L10765">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/fundamental_theorem_of_arithmetic.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -20798,10 +20798,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_three">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_three</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L10818">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_three.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L10818">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_three.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-primes">Read the chapter</a>
       </nav>
     </div>
@@ -20932,10 +20932,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for two_prime_product_uniqueness">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib two_prime_product_uniqueness</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L10921">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/two_prime_product_uniqueness.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L10921">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/two_prime_product_uniqueness.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="guided-tour.html#stage-factorization">Read the chapter</a>
       </nav>
     </div>
@@ -20987,10 +20987,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for fourth_power_regroup">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib fourth_power_regroup</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9244">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/fourth_power_regroup.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9244">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/fourth_power_regroup.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="../peano/induction-ladder.html">Read the chapter</a>
       </nav>
     </div>
@@ -21080,10 +21080,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod5_residue_complete">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_residue_complete</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9252">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod5_residue_complete.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9252">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod5_residue_complete.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -21162,10 +21162,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod5_nonzero_residue_cases">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_nonzero_residue_cases</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9302">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod5_nonzero_residue_cases.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9302">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod5_nonzero_residue_cases.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -21246,10 +21246,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod5_square_residue_one">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_square_residue_one</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9339">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod5_square_residue_one.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9339">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod5_square_residue_one.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -21333,10 +21333,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod5_square_residue_two">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_square_residue_two</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9374">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod5_square_residue_two.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9374">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod5_square_residue_two.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -21392,10 +21392,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod5_square_residue_three">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_square_residue_three</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9411">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod5_square_residue_three.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9411">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod5_square_residue_three.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -21451,10 +21451,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod5_square_residue_four">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_square_residue_four</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9424">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod5_square_residue_four.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9424">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod5_square_residue_four.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -21512,10 +21512,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod5_fourth_power_residue_one">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_fourth_power_residue_one</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9437">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod5_fourth_power_residue_one.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9437">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod5_fourth_power_residue_one.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -21574,10 +21574,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod5_fourth_power_residue_two">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_fourth_power_residue_two</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9454">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod5_fourth_power_residue_two.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9454">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod5_fourth_power_residue_two.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -21636,10 +21636,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod5_fourth_power_residue_three">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_fourth_power_residue_three</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9471">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod5_fourth_power_residue_three.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9471">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod5_fourth_power_residue_three.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -21698,10 +21698,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod5_fourth_power_residue_four">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_fourth_power_residue_four</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9488">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod5_fourth_power_residue_four.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9488">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod5_fourth_power_residue_four.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -21805,10 +21805,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod5_fourth_power_one">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_fourth_power_one</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/theorems.py#L9505">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod5_fourth_power_one.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/theorems.py#L9505">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod5_fourth_power_one.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="divisibility-and-congruence.html">Read the chapter</a>
       </nav>
     </div>
@@ -21871,10 +21871,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for parity_cases">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib parity_cases</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L22">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/parity_cases.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L22">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/parity_cases.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -21948,10 +21948,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for even_odd_exclusive_pointwise">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib even_odd_exclusive_pointwise</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L44">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/even_odd_exclusive_pointwise.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L44">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/even_odd_exclusive_pointwise.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -22012,10 +22012,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for even_not_odd">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib even_not_odd</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L76">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/even_not_odd.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L76">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/even_not_odd.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -22076,10 +22076,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for odd_not_even">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib odd_not_even</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L95">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/odd_not_even.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L95">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/odd_not_even.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -22134,10 +22134,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for successor_odd_of_even">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib successor_odd_of_even</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L114">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/successor_odd_of_even.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L114">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/successor_odd_of_even.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -22192,10 +22192,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for successor_even_of_odd">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib successor_even_of_odd</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L128">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/successor_even_of_odd.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L128">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/successor_even_of_odd.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -22255,10 +22255,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for even_add_even">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib even_add_even</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L142">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/even_add_even.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L142">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/even_add_even.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -22319,10 +22319,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for even_add_odd">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib even_add_odd</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L161">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/even_add_odd.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L161">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/even_add_odd.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -22383,10 +22383,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for odd_add_even">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib odd_add_even</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L180">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/odd_add_even.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L180">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/odd_add_even.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -22449,10 +22449,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for odd_add_odd">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib odd_add_odd</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L199">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/odd_add_odd.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L199">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/odd_add_odd.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -22509,10 +22509,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for even_mul_left">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib even_mul_left</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L218">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/even_mul_left.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L218">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/even_mul_left.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -22572,10 +22572,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mul_double_right">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_double_right</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L233">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mul_double_right.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L233">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mul_double_right.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -22632,10 +22632,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for even_mul_right">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib even_mul_right</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L250">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/even_mul_right.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L250">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/even_mul_right.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -22703,10 +22703,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for odd_mul_odd">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib odd_mul_odd</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L265">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/odd_mul_odd.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L265">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/odd_mul_odd.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -22781,10 +22781,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for odd_half_unique">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib odd_half_unique</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L294">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/odd_half_unique.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L294">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/odd_half_unique.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -22848,10 +22848,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for odd_half_exists_unique">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib odd_half_exists_unique</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L326">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/odd_half_exists_unique.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L326">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/odd_half_exists_unique.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -22907,10 +22907,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for four_mul_eq_double_double">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib four_mul_eq_double_double</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L349">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/four_mul_eq_double_double.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L349">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/four_mul_eq_double_double.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -22986,10 +22986,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for odd_mod4_cases">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib odd_mod4_cases</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L363">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/odd_mod4_cases.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L363">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/odd_mod4_cases.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -23065,10 +23065,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod4_one_three_exclusive_pointwise">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod4_one_three_exclusive_pointwise</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L396">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod4_one_three_exclusive_pointwise.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L396">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod4_one_three_exclusive_pointwise.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -23126,10 +23126,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod4_one_is_odd">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod4_one_is_odd</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L430">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod4_one_is_odd.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L430">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod4_one_is_odd.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -23190,10 +23190,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod4_three_is_odd">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod4_three_is_odd</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L446">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod4_three_is_odd.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L446">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod4_three_is_odd.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -23268,10 +23268,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_ne_two_is_odd">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_ne_two_is_odd</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/parity.py#L464">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_ne_two_is_odd.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/parity.py#L464">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_ne_two_is_odd.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -23414,10 +23414,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_decidable_from_remainders">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_decidable_from_remainders</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L27">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod_eq_decidable_from_remainders.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L27">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod_eq_decidable_from_remainders.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -23513,10 +23513,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_decidable_nonzero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_decidable_nonzero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L134">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod_eq_decidable_nonzero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L134">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod_eq_decidable_nonzero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -23661,10 +23661,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for quadratic_residue_search_up_to">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib quadratic_residue_search_up_to</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L192">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/quadratic_residue_search_up_to.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L192">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/quadratic_residue_search_up_to.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -23761,10 +23761,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for quadratic_residue_bounded_decidable_nonzero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib quadratic_residue_bounded_decidable_nonzero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L303">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/quadratic_residue_bounded_decidable_nonzero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L303">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/quadratic_residue_bounded_decidable_nonzero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -23884,10 +23884,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for quadratic_residue_bounded_equiv">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib quadratic_residue_bounded_equiv</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L363">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/quadratic_residue_bounded_equiv.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L363">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/quadratic_residue_bounded_equiv.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -23961,10 +23961,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for quadratic_residue_decidable_nonzero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib quadratic_residue_decidable_nonzero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L446">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/quadratic_residue_decidable_nonzero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L446">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/quadratic_residue_decidable_nonzero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -24033,10 +24033,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_repeat_empty">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_repeat_empty</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L47">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_repeat_empty.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L47">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_repeat_empty.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -24128,10 +24128,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_repeat_succ_extend">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_repeat_succ_extend</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L73">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_repeat_succ_extend.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L73">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_repeat_succ_extend.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -24202,10 +24202,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_repeat_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_repeat_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L126">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_repeat_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L126">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_repeat_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -24276,10 +24276,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_repeat_entry_eq">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_repeat_entry_eq</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L154">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_repeat_entry_eq.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L154">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_repeat_entry_eq.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -24357,10 +24357,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_repeat_transport_entry">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_repeat_transport_entry</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L185">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_repeat_transport_entry.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L185">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_repeat_transport_entry.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -24433,10 +24433,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for pow_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L224">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/pow_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L224">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/pow_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -24503,10 +24503,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for pow_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L257">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/pow_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L257">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/pow_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -24614,10 +24614,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for pow_functional">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_functional</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L282">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/pow_functional.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L282">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/pow_functional.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -24724,10 +24724,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for pow_successor_decompose">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_successor_decompose</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L350">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/pow_successor_decompose.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L350">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/pow_successor_decompose.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -24796,10 +24796,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_range_empty">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_range_empty</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_range_theorems.py#L39">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_range_empty.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_range_theorems.py#L39">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_range_empty.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -24893,10 +24893,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_range_succ_extend">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_range_succ_extend</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_range_theorems.py#L65">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_range_succ_extend.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_range_theorems.py#L65">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_range_succ_extend.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -24967,10 +24967,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_range_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_range_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_range_theorems.py#L120">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_range_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_range_theorems.py#L120">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_range_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -25041,10 +25041,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_range_entry_eq">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_range_entry_eq</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_range_theorems.py#L148">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_range_entry_eq.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_range_theorems.py#L148">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_range_entry_eq.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -25122,10 +25122,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_range_transport_entry">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_range_transport_entry</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_range_theorems.py#L179">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_range_transport_entry.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_range_theorems.py#L179">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_range_transport_entry.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -25321,10 +25321,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_sum_trace_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_sum_trace_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L132">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_prefix_sum_trace_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L132">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_prefix_sum_trace_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -25400,10 +25400,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_sum_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_sum_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L296">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_sum_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L296">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_sum_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -25609,10 +25609,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_sum_trace_functional">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_sum_trace_functional</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L329">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_sum_trace_functional.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L329">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_sum_trace_functional.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -25685,10 +25685,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_sum_functional">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_sum_functional</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L500">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_sum_functional.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L500">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_sum_functional.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -25759,10 +25759,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_sum_exists_unique">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_sum_exists_unique</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L531">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_sum_exists_unique.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L531">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_sum_exists_unique.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -25828,10 +25828,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_sum_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_sum_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L559">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_sum_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L559">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_sum_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -25934,10 +25934,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_sum_succ_decompose">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_sum_succ_decompose</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L583">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_sum_succ_decompose.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L583">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_sum_succ_decompose.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -26092,10 +26092,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_pointwise_mod_congruent">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_pointwise_mod_congruent</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_congruence_theorems.py#L104">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_product_pointwise_mod_congruent.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_congruence_theorems.py#L104">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_product_pointwise_mod_congruent.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -26250,10 +26250,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_sum_pointwise_mod_congruent">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_sum_pointwise_mod_congruent</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_congruence_theorems.py#L220">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_sum_pointwise_mod_congruent.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_congruence_theorems.py#L220">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_sum_pointwise_mod_congruent.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -26321,10 +26321,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for all_bits_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib all_bits_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L44">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/all_bits_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L44">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/all_bits_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -26389,10 +26389,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for all_bits_prefix_succ">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib all_bits_prefix_succ</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L69">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/all_bits_prefix_succ.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L69">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/all_bits_prefix_succ.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -26453,10 +26453,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for all_bits_last_succ">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib all_bits_last_succ</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L93">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/all_bits_last_succ.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L93">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/all_bits_last_succ.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -26518,10 +26518,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for bit_count_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bit_count_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L113">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/bit_count_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L113">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/bit_count_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -26588,10 +26588,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for bit_count_functional">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bit_count_functional</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L133">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/bit_count_functional.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L133">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/bit_count_functional.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -26656,10 +26656,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for bit_count_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bit_count_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L158">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/bit_count_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L158">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/bit_count_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -26775,10 +26775,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for bit_count_succ_decompose">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bit_count_succ_decompose</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L181">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/bit_count_succ_decompose.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L181">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/bit_count_succ_decompose.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -26889,10 +26889,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for bit_count_bounded">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bit_count_bounded</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L260">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/bit_count_bounded.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L260">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/bit_count_bounded.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -26974,10 +26974,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_coprime_or_divides">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_coprime_or_divides</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_prime_units.py#L31">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_coprime_or_divides.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_prime_units.py#L31">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_coprime_or_divides.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -27041,10 +27041,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_not_divides_coprime">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_not_divides_coprime</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_prime_units.py#L83">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_not_divides_coprime.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_prime_units.py#L83">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_not_divides_coprime.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -27120,10 +27120,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for distinct_primes_coprime">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib distinct_primes_coprime</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_prime_units.py#L108">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/distinct_primes_coprime.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_prime_units.py#L108">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/distinct_primes_coprime.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -27194,10 +27194,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for coprime_balanced_mod_inverse">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_balanced_mod_inverse</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_prime_units.py#L143">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/coprime_balanced_mod_inverse.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_prime_units.py#L143">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/coprime_balanced_mod_inverse.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -27321,10 +27321,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for coprime_mod_inverse">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_mod_inverse</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_prime_units.py#L173">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/coprime_mod_inverse.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_prime_units.py#L173">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/coprime_mod_inverse.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -27495,10 +27495,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_cancel_coprime">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_cancel_coprime</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_prime_units.py#L266">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/mod_eq_cancel_coprime.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_prime_units.py#L266">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/mod_eq_cancel_coprime.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -27579,10 +27579,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_mod_inverse">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_mod_inverse</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_prime_units.py#L402">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_mod_inverse.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_prime_units.py#L402">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_mod_inverse.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -27667,10 +27667,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_mod_cancel">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_mod_cancel</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_prime_units.py#L446">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_mod_cancel.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_prime_units.py#L446">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_mod_cancel.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -27742,10 +27742,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for factorial_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib factorial_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_factorial_theorems.py#L84">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/factorial_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_factorial_theorems.py#L84">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/factorial_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -27852,10 +27852,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for factorial_functional">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib factorial_functional</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_factorial_theorems.py#L116">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/factorial_functional.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_factorial_theorems.py#L116">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/factorial_functional.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -27921,10 +27921,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for factorial_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib factorial_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_factorial_theorems.py#L183">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/factorial_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_factorial_theorems.py#L183">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/factorial_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -28039,10 +28039,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for factorial_succ_decompose">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib factorial_succ_decompose</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_factorial_theorems.py#L207">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/factorial_succ_decompose.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_factorial_theorems.py#L207">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/factorial_succ_decompose.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -28123,10 +28123,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for pow_one_from_zero_successor">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_one_from_zero_successor</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/power_congruence_theorems.py#L71">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/pow_one_from_zero_successor.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/power_congruence_theorems.py#L71">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/pow_one_from_zero_successor.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -28189,10 +28189,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for pow_one">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_one</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/power_congruence_theorems.py#L109">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/pow_one.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/power_congruence_theorems.py#L109">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/pow_one.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -28273,10 +28273,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for pow_successor_pair_mul">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_successor_pair_mul</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/power_congruence_theorems.py#L130">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/pow_successor_pair_mul.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/power_congruence_theorems.py#L130">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/pow_successor_pair_mul.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -28422,10 +28422,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for pow_mod_congruent">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_mod_congruent</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/power_congruence_theorems.py#L169">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/pow_mod_congruent.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/power_congruence_theorems.py#L169">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/pow_mod_congruent.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -28515,10 +28515,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for lt_three_cases">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_three_cases</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L76">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/lt_three_cases.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L76">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/lt_three_cases.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -28603,10 +28603,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for lt_five_cases">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_five_cases</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L163">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/lt_five_cases.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L163">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/lt_five_cases.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -28691,10 +28691,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for lt_seven_cases">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_seven_cases</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L163">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/lt_seven_cases.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L163">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/lt_seven_cases.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -28847,10 +28847,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for bounded_square_mod3_classify">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_square_mod3_classify</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L260">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/bounded_square_mod3_classify.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L260">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/bounded_square_mod3_classify.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -29068,10 +29068,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for bounded_square_mod5_classify">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_square_mod5_classify</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L260">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/bounded_square_mod5_classify.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L260">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/bounded_square_mod5_classify.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -29356,10 +29356,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for bounded_square_mod7_classify">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_square_mod7_classify</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L260">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/bounded_square_mod7_classify.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L260">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/bounded_square_mod7_classify.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -29412,10 +29412,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod3_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod3_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/qres_mod3_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/qres_mod3_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -29468,10 +29468,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod3_one">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod3_one</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/qres_mod3_one.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/qres_mod3_one.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -29524,10 +29524,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod5_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod5_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/qres_mod5_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/qres_mod5_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -29580,10 +29580,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod5_one">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod5_one</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/qres_mod5_one.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/qres_mod5_one.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -29636,10 +29636,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod5_four">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod5_four</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/qres_mod5_four.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/qres_mod5_four.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -29692,10 +29692,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod7_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod7_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/qres_mod7_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/qres_mod7_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -29748,10 +29748,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod7_one">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod7_one</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/qres_mod7_one.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/qres_mod7_one.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -29804,10 +29804,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod7_two">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod7_two</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/qres_mod7_two.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/qres_mod7_two.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -29860,10 +29860,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod7_four">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod7_four</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/qres_mod7_four.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/qres_mod7_four.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -29941,10 +29941,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod3_canonical_iff">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod3_canonical_iff</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L345">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/qres_mod3_canonical_iff.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L345">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/qres_mod3_canonical_iff.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -30026,10 +30026,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod5_canonical_iff">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod5_canonical_iff</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L345">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/qres_mod5_canonical_iff.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L345">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/qres_mod5_canonical_iff.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -30115,10 +30115,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod7_canonical_iff">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod7_canonical_iff</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L345">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/qres_mod7_canonical_iff.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L345">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/qres_mod7_canonical_iff.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -30191,10 +30191,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for not_qres_mod3_two">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib not_qres_mod3_two</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/not_qres_mod3_two.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/not_qres_mod3_two.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -30281,10 +30281,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for not_qres_mod5_two">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib not_qres_mod5_two</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/not_qres_mod5_two.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/not_qres_mod5_two.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -30376,10 +30376,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for not_qres_mod5_three">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib not_qres_mod5_three</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/not_qres_mod5_three.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/not_qres_mod5_three.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -30484,10 +30484,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for not_qres_mod7_three">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib not_qres_mod7_three</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/not_qres_mod7_three.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/not_qres_mod7_three.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -30596,10 +30596,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for not_qres_mod7_five">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib not_qres_mod7_five</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/not_qres_mod7_five.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/not_qres_mod7_five.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -30708,10 +30708,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for not_qres_mod7_six">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib not_qres_mod7_six</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/not_qres_mod7_six.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/not_qres_mod7_six.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -30790,10 +30790,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for pow_two_from_one_successor">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_two_from_one_successor</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/power_algebra_theorems.py#L122">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/pow_two_from_one_successor.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/power_algebra_theorems.py#L122">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/pow_two_from_one_successor.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -30856,10 +30856,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for pow_two">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_two</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/power_algebra_theorems.py#L159">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/pow_two.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/power_algebra_theorems.py#L159">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/pow_two.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -31003,10 +31003,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for pow_add">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_add</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/power_algebra_theorems.py#L180">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/pow_add.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/power_algebra_theorems.py#L180">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/pow_add.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -31151,10 +31151,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for pow_mul_exp">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_mul_exp</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/power_algebra_theorems.py#L288">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/pow_mul_exp.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/power_algebra_theorems.py#L288">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/pow_mul_exp.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -31217,10 +31217,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for predecessor_square_mod_one">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib predecessor_square_mod_one</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/gauss_sign_bridge.py#L64">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/predecessor_square_mod_one.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/gauss_sign_bridge.py#L64">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/predecessor_square_mod_one.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -31289,10 +31289,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for even_successor_to_odd">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib even_successor_to_odd</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/gauss_sign_bridge.py#L88">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/even_successor_to_odd.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/gauss_sign_bridge.py#L88">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/even_successor_to_odd.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -31361,10 +31361,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for odd_successor_to_even">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib odd_successor_to_even</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/gauss_sign_bridge.py#L114">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/odd_successor_to_even.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/gauss_sign_bridge.py#L114">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/odd_successor_to_even.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -31530,10 +31530,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for pow_predecessor_parity_mod">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_predecessor_parity_mod</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/gauss_sign_bridge.py#L140">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/pow_predecessor_parity_mod.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/gauss_sign_bridge.py#L140">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/pow_predecessor_parity_mod.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -31632,10 +31632,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_range_injective">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_range_injective</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/gauss_half_range.py#L77">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_range_injective.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/gauss_half_range.py#L77">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_range_injective.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -31744,10 +31744,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_half_range_entry_bounds">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_half_range_entry_bounds</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/gauss_half_range.py#L133">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_half_range_entry_bounds.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/gauss_half_range.py#L133">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_half_range_entry_bounds.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -31846,10 +31846,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_half_range_mod_eq_value">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_half_range_mod_eq_value</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/gauss_half_range.py#L203">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_half_range_mod_eq_value.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/gauss_half_range.py#L203">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_half_range_mod_eq_value.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -31947,10 +31947,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_half_range_mod_injective">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_half_range_mod_injective</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/gauss_half_range.py#L259">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_half_range_mod_injective.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/gauss_half_range.py#L259">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_half_range_mod_injective.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -32018,10 +32018,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for finite_surjective_zero">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_surjective_zero</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L370">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/finite_surjective_zero.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L370">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/finite_surjective_zero.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -32100,10 +32100,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for finite_injective_prefix_succ">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_injective_prefix_succ</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L395">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/finite_injective_prefix_succ.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L395">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/finite_injective_prefix_succ.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -32166,10 +32166,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for finite_lt_succ_eq_or_lt">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_lt_succ_eq_or_lt</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L433">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/finite_lt_succ_eq_or_lt.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L433">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/finite_lt_succ_eq_or_lt.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -32244,10 +32244,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for finite_bounded_entry_lt">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_bounded_entry_lt</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L454">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/finite_bounded_entry_lt.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L454">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/finite_bounded_entry_lt.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -32424,10 +32424,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_replace_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_replace_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L492">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_prefix_replace_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L492">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_prefix_replace_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -32567,10 +32567,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_swap_last_from_entries">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_swap_last_from_entries</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L640">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_prefix_swap_last_from_entries.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L640">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_prefix_swap_last_from_entries.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -32660,10 +32660,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_swap_last_exists">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_swap_last_exists</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L760">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_prefix_swap_last_exists.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L760">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_prefix_swap_last_exists.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -32792,10 +32792,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_swap_last_reflect">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_swap_last_reflect</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L826">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_prefix_swap_last_reflect.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L826">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_prefix_swap_last_reflect.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -32941,10 +32941,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for finite_swap_last_bounded">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_swap_last_bounded</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L912">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/finite_swap_last_bounded.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L912">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/finite_swap_last_bounded.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -33216,10 +33216,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for finite_swap_last_injective">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_swap_last_injective</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1031">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/finite_swap_last_injective.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1031">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/finite_swap_last_injective.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -33351,10 +33351,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for finite_swap_last_surjective_back">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_swap_last_surjective_back</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1271">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/finite_swap_last_surjective_back.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1271">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/finite_swap_last_surjective_back.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -33488,10 +33488,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for finite_contains_decidable">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_contains_decidable</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1379">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/finite_contains_decidable.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1379">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/finite_contains_decidable.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -33579,10 +33579,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for finite_bounded_prefix_without_top">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_bounded_prefix_without_top</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1480">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/finite_bounded_prefix_without_top.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1480">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/finite_bounded_prefix_without_top.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -33644,10 +33644,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for finite_bounded_last_succ">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_bounded_last_succ</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1530">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/finite_bounded_last_succ.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1530">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/finite_bounded_last_succ.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -33736,10 +33736,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for finite_surjective_succ_intro">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_surjective_succ_intro</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1551">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/finite_surjective_succ_intro.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1551">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/finite_surjective_succ_intro.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -33846,10 +33846,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for finite_last_is_top_from_prefix_surjective">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_last_is_top_from_prefix_surjective</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1600">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/finite_last_is_top_from_prefix_surjective.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1600">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/finite_last_is_top_from_prefix_surjective.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -33926,10 +33926,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for finite_surjective_succ_from_prefix">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_surjective_succ_from_prefix</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1674">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/finite_surjective_succ_from_prefix.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1674">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/finite_surjective_succ_from_prefix.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -34029,10 +34029,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for finite_no_top_successor_gate">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_no_top_successor_gate</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1712">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/finite_no_top_successor_gate.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1712">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/finite_no_top_successor_gate.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -34274,10 +34274,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for finite_bounded_injective_surjective">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_bounded_injective_surjective</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1777">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/finite_bounded_injective_surjective.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1777">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/finite_bounded_injective_surjective.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -34385,10 +34385,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_replace_reflect">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_replace_reflect</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_product_permutation_theorems.py#L80">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_prefix_replace_reflect.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_product_permutation_theorems.py#L80">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_prefix_replace_reflect.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -34651,10 +34651,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_replace_balance">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_replace_balance</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_product_permutation_theorems.py#L152">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_product_replace_balance.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_product_permutation_theorems.py#L152">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_product_replace_balance.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -34811,10 +34811,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_swap_last_invariant">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_swap_last_invariant</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_product_permutation_theorems.py#L388">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_product_swap_last_invariant.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_product_permutation_theorems.py#L388">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_product_swap_last_invariant.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -34906,10 +34906,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for finite_fixed_last_prefix_bounded">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_fixed_last_prefix_bounded</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_product_reindex_support.py#L194">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/finite_fixed_last_prefix_bounded.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_product_reindex_support.py#L194">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/finite_fixed_last_prefix_bounded.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -35062,10 +35062,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for beta_reindex_alignment_swap_last">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_reindex_alignment_swap_last</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/finite_product_reindex_support.py#L250">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/beta_reindex_alignment_swap_last.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/finite_product_reindex_support.py#L250">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/beta_reindex_alignment_swap_last.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -35145,10 +35145,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_is_succ_succ">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_is_succ_succ</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_bounded_units.py#L116">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_is_succ_succ.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_bounded_units.py#L116">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_is_succ_succ.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>
@@ -35335,10 +35335,10 @@ qed</code></pre>
 
       <nav class="pa-card-links" aria-label="Links for prime_bounded_nonzero_mod_inverse">
         <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_bounded_nonzero_mod_inverse</code> after promotion</span>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/peano-lab/py/peano_lab/library/qr_bounded_units.py#L153">Native source</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/vault/lemmas/prime_bounded_nonzero_mod_inverse.md">Vault note</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
-        <a href="https://github.com/nasqret/vietnam2026/blob/5fff3eab2a7599035a6833c52b658da118f4a20c/research/arithmetic-library/catalog.json">Research catalog</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/peano-lab/py/peano_lab/library/qr_bounded_units.py#L153">Native source</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/vault/lemmas/prime_bounded_nonzero_mod_inverse.md">Vault note</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
+        <a href="https://github.com/nasqret/vietnam2026/blob/32803924d7def862ccf0b738cd1ed494a3165f7e/research/arithmetic-library/catalog.json">Research catalog</a>
         <a href="quadratic-reciprocity.html">Read the chapter</a>
       </nav>
     </div>

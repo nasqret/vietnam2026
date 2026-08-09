@@ -283,10 +283,65 @@ This is precisely a **replay-complete candidate-`L0` pack validated in an
 isolated fresh interpreter**. It is not production `L0`: the manifest enforces
 `status = candidate` and `evaluation_eligible = false`. H1.1 still needs
 separate readable and optimized direct-dependency vectors with leave-one-out
-evidence, deterministic publication union, definition/document receipts,
-lineage controls, reviewed Git-state provenance, independent owner deposit,
-and benchmark sealing. Declared dependencies are therefore described only as
-publication dependencies, and no certificate is called minimal or best-known.
+evidence, deterministic publication union, complete definition/document
+receipts, lineage controls, reviewed Git-state provenance, independent owner
+deposit, and benchmark sealing. Declared dependencies are therefore described
+only as publication dependencies, and no certificate is called minimal or
+best-known.
+
+#### Candidate epoch-metadata ledger implemented in H1.1a
+
+H1.1a adds a strict, deterministic readiness ledger above the replay transport;
+it does not mutate replay-pack v1 or the historical epoch protocol. Metadata
+schema v1 has semantic digest
+`71995b59d4f5592a08a90dc354a91888f5f1f6f89ec4428be291aea19e76062c`
+and exact schema-document SHA-256
+`9867378c8802501d2120ad4d94a86378815cf90b003eafc92b164685da61c956`.
+The canonical candidate is 5,880,054 bytes and has root
+`b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279`.
+Its schema fixes `status = candidate`, `freeze_ready = false`, and
+`evaluation_eligible = false`; there is no field by which the builder can mint
+owner authority.
+
+The ledger pins the exact retained replay manifest, verification report,
+catalog, replay root, constructive profile, source commit
+`32803924d7def862ccf0b738cd1ed494a3165f7e`, and source tree. In replay order it
+records all 384 theorems, 1,038 declared publication edges, 384 source
+locators with file hashes and declaration lines, statements, scripts, proof
+and construction metrics, certificate identities, and explicit unresolved
+fields. The submitted artifact is not called best-known or minimal. Readable
+and optimized direct-dependency vectors, leave-one-out receipts, and their
+publication union remain null rather than being guessed from the declared
+publication vector.
+
+Documentation receipts distinguish presence, staleness, and absence. All 384
+vault notes and atlas cards join the replay rows, so their missing and stale
+counts are zero. The atlas uses immutable commit `32803924…`; all 1,536
+source, vault, snapshot, and research links were audited as commit-pinned Git
+blobs. The explicit and defined proof-explorer corpora each contain 557 rows,
+but only 240 public rows join the 384-theorem candidate. The other 317 names
+are disjoint non-`L0` material and are provenance only: the full corpora MUST
+NOT be exposed to this epoch's training, retrieval, or evaluation. Explorer
+and definition receipts are physically absent for the remaining 144 candidate
+names, so their exact counts are 144 missing and zero stale. Consequently
+`documentation_complete_count = 240`; completeness requires a source locator,
+definition receipt, atlas card, vault note, explicit explorer row, and defined
+explorer row for the same theorem.
+
+All 384 rows still record pending human review, lineage, best-known comparison,
+readable and optimized dependency-vector evidence, and publication-union
+evidence. Thus H1.1 remains open. The next internal repair is to generate and
+audit the 144 missing explorer/definition rows and let A2 bind comparison and
+optimization evidence. Only after that repair should Hydra create a reviewed
+source-state freeze request for an external independent owner; benchmark
+activation remains a later, separate authority event.
+
+The H1.1a implementation gate comprises 53 focused adversarial tests. It
+rebuilds deterministically, checks the exact retained pins and joins, rejects
+fully rerooted and authority-escalating mutations, excludes the 317 non-`L0`
+explorer rows, exercises bounded no-follow reads and source/report drift, and
+verifies the no-default-write CLI. Passing this gate establishes protocol
+behavior only; it grants none of the missing review or owner authority.
 
 ### 2.4 Sealed-test law
 
@@ -427,9 +482,12 @@ missing canonical formula/certificate bytes for all 384 theorems and replays
 them in an import-guarded fresh interpreter. Its exact identities and claim
 boundary are specified in §2.3. This closes the replay-transport subgate, not
 the freeze: the reviewed owner-receipt registry is empty, the candidate is
-explicitly evaluation-ineligible, and the richer dependency, definition,
-documentation, lineage, Git-state, independent-deposit, and benchmark
-artifacts are absent. H1.0 and H1.1 therefore remain open.
+explicitly evaluation-ineligible, and H1.1a's metadata ledger now makes the
+remaining gaps machine-readable. Definition and explorer receipts cover 240
+of 384 rows; direct readable/optimized dependency evidence, the deterministic
+publication union, best-known comparison, human review, lineage, independent
+source-state deposit, and benchmark artifacts remain unresolved. H1.0 and
+H1.1 therefore remain open.
 
 ## 3. Trust and system architecture
 

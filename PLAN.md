@@ -327,10 +327,18 @@ and fresh-kernel replay root
 `88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
 The standard acceptance test repeats all 384 checks in an import-guarded
 `python -I -S -X pycache_prefix=<fresh-dir>` worker and reproduces the retained
-report exactly. Review
-registries are still empty; dependency minimality/views, documentation and
-definition receipts, lineage, independent deposit, and benchmark sealing are
-absent. Therefore no living catalog has been declared frozen production `L0`,
+report exactly. H1.1a now retains a 5,880,054-byte candidate metadata ledger
+at root
+`b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279`.
+It binds 384 source locators and 1,038 declared publication edges, but only 240
+rows have the complete source/definition/atlas/vault/two-explorer join. The
+remaining explorer and definition gaps are exactly 144 missing/zero stale;
+all 317 extra explorer names are disjoint non-`L0` provenance. All 384 rows
+still lack reviewed readable/optimized dependency vectors, leave-one-out
+receipts, publication unions, best-known comparison, human review, and
+lineage. The next order is to repair those 144 records, complete A2, and only
+then issue a source-state request to an external owner. Review registries are
+still empty, so no living catalog has been declared frozen production `L0`,
 and neither A0 nor H1 is complete. See
 [`docs/PEANO_HYDRA_DESIGN.md`](docs/PEANO_HYDRA_DESIGN.md) and
 [`PLAN/11_peano_hydra.md`](PLAN/11_peano_hydra.md).

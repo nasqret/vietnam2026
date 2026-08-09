@@ -889,11 +889,109 @@ validated in an isolated fresh interpreter**. We may not say that production
 $L_0$ is frozen. The schema itself enforces `status = candidate` and
 `evaluation_eligible = false`. The dependency list is the current declared
 publication list, not separately minimized readable and optimized vectors;
-there is no leave-one-out receipt, definition/document bundle, lineage mask,
-reviewed Git-state deposit, independent owner receipt, or sealed benchmark.
-Those are the remaining H1.1 gates. The authoring side likewise still needs
-the 200-unit adjudicated corpus and live browser/recovery behavior before
-A0/H1.0 can close.
+there is no leave-one-out receipt, complete definition/document bundle,
+lineage mask, reviewed Git-state deposit, independent owner receipt, or sealed
+benchmark. Those are the remaining H1.1 gates. The authoring side likewise
+still needs the 200-unit adjudicated corpus and live browser/recovery behavior
+before A0/H1.0 can close.
+
+## Turning unknowns into a candidate epoch ledger
+
+The replay pack answered one narrow question: can an isolated checker recover
+and validate every certificate? An epoch freeze must answer a broader one:
+what exactly do we know about every theorem, and which facts are still only
+claims? H1.1a introduces a canonical metadata ledger to make that boundary
+executable.
+
+Its schema has semantic digest
+`71995b59d4f5592a08a90dc354a91888f5f1f6f89ec4428be291aea19e76062c`
+and exact document SHA-256
+`9867378c8802501d2120ad4d94a86378815cf90b003eafc92b164685da61c956`.
+The distinction matters: the first hash commits to the JSON value, while the
+second also commits to two-space indentation and the final line feed. The
+canonical candidate occupies 5,880,054 bytes and has root
+`b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279`.
+Its root preimage contains the complete body, and the validator reconstructs
+the expected body from the exact retained inputs rather than accepting a
+merely self-consistent rerooted replacement.
+
+The ledger cannot be confused with an owner deposit. The schema fixes
+
+```text
+status = candidate
+freeze_ready = false
+evaluation_eligible = false
+```
+
+and contains no administrative escape hatch that changes those values. It
+pins the replay manifest, independent verification report, copied catalog,
+constructive profile, source commit `32803924…`, and source tree before it
+emits the repository identity. In replay order, its 384 theorem rows bind
+canonical and source statements, formula and proof hashes, readable scripts,
+certificate paths and metrics, the logic profile, and source file, file hash,
+declaration line, and declaration kind. The source audit found all 384
+locators. The rows contain 1,038 declared publication edges.
+
+That last adjective—*declared*—is doing real work. A readable proof can import
+one set of lemmas while an optimizer constructs a smaller certificate from
+another. The graph used for leakage masks must eventually contain the union of
+both direct vectors. H1.1a therefore stores the declared publication vector
+but leaves the readable vector, optimized vector, two leave-one-out receipts,
+and publication union explicitly null. It sets `minimality_claim = false` and
+labels the retained construction `submitted-not-best-known`. A2, not the
+metadata builder, owns the comparison that may eventually justify
+“best-known.”
+
+### A documentation join is not a file count
+
+The ledger gives each documentation source a per-theorem receipt with one of
+three states: `present`, `stale`, or `missing`. Presence requires the record to
+join the exact replay theorem; the mere existence of a similarly named file is
+not enough.
+
+The vault and theorem atlas cover all 384 rows, with zero missing and zero
+stale receipts. The atlas links to immutable commit `32803924…`, not a moving
+branch. Its four links per theorem—source, vault note, snapshot record, and
+research record—give 1,536 links, all blob-audited at that commit. This fixes a
+subtle documentation error: a beautiful current atlas whose permalink points
+to an older partial snapshot is not evidence for the current theorem.
+
+The proof explorers expose a different trap. Each corpus has 557 rows, but
+only 240 public rows join this 384-theorem candidate. The other 317 names are
+disjoint later or non-`L0` material. They remain useful provenance, but the
+whole corpus must never be placed in this epoch's training, retrieval, or
+evaluation context. Doing so would silently enlarge the frozen library through
+documentation rather than theorem imports.
+
+For 144 candidate theorems, the explicit explorer record and the defined-
+notation explorer record are physically absent. Their definition receipt is
+therefore absent too. The exact gap is 144 missing and zero stale in all three
+classes. This yields 240 documentation-complete rows, where “complete” means
+that the same theorem has all six joins: source locator, definition receipt,
+atlas card, vault note, explicit explorer row, and defined explorer row. A
+single aggregate count can now be traced back to exact row receipts rather
+than inferred from unrelated corpus totals.
+
+Every theorem also retains pending fields for human explanation review,
+lineage assignment, A2's best-known comparison, readable and optimized direct
+dependency evidence, and their publication union. Each of these gap counts is
+384. This is not disappointing metadata. It is the point of the exercise: an
+unknown represented as `null` plus a counted obligation is safer than a
+plausible value promoted without evidence.
+
+H1.1 therefore remains open. The next internal step is mechanical but
+important: generate and audit the 144 missing explorer and definition records,
+then run the A2 comparison/dependency work. Only after those repairs should the
+project issue a source-state freeze request to an external independent owner.
+That owner deposit still will not activate a benchmark; benchmark activation
+is a later, separately authorized event.
+
+The implementation gate has 53 focused adversarial tests. They cover exact
+input pins, deterministic rebuilding, fully rerooted forgeries, claim
+escalation, non-$L_0$ exclusion, source/report drift, hostile file types, and
+the no-default-write CLI. The retained artifacts reproduce byte-for-byte under
+`--check`. These tests validate the ledger protocol; they do not fill any of
+the recorded gaps or substitute for external owner review.
 
 ## What “matched compute” means
 

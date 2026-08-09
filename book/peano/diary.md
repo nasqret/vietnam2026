@@ -3577,3 +3577,77 @@ source-state freeze. So H1.1 stays open. The exact sentence we earned is:
 That sentence is narrower than “we froze $L_0$,” and much stronger than “we
 have certificate hashes.” It is a good checkpoint because every word now has
 an executable test behind it.
+
+## 2026-08-09 — A freeze request should begin with an honest list of gaps
+
+The replay-complete pack gave us certificate authority but not an epoch. The
+tempting next step was to ask an independent owner to bless the pack. We
+stopped instead and asked what such a signature would actually cover. The
+answer exposed several unbound claims: the source location of every theorem,
+the distinction between declared, readable, and optimized dependencies,
+definition and documentation receipts, explanation review, lineage, and the
+meaning of “best-known.” Signing before representing those fields would freeze
+an underspecified object.
+
+We therefore added a candidate-only epoch-metadata ledger as H1.1a. Its schema
+semantic digest is
+`71995b59d4f5592a08a90dc354a91888f5f1f6f89ec4428be291aea19e76062c`;
+the exact schema document hash is
+`9867378c8802501d2120ad4d94a86378815cf90b003eafc92b164685da61c956`.
+The deterministic 5,880,054-byte candidate has root
+`b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279`.
+It binds the exact replay manifest, verification report and catalog before it
+claims source commit `32803924…` and its tree. A fully rerooted alternate pack
+therefore cannot retain that repository label merely by being internally
+self-consistent.
+
+The AST source audit located all 384 replay rows in the 19 catalog-bound source
+files, including the deliberately finite generated names in the small-modulus
+factory. It records file hash, path, line, and whether the location is a
+literal declaration or reviewed generated factory. The candidate retains
+1,038 ordered declared publication edges. It does not reinterpret them as
+direct readable or optimized vectors: those vectors, their leave-one-out
+receipts, and the publication union remain unresolved for all 384 rows. The
+same is true of human review, lineage, and A2's best-known comparison. The
+submitted proof is labeled exactly that, never minimal or best-known.
+
+Documentation produced the useful surprise. Vault notes and atlas cards cover
+all 384 theorems with no missing or stale rows. The atlas now pins immutable
+commit `32803924…`, and its four links for every theorem give 1,536 links whose
+targets were audited as blobs at that commit. An older branch-relative or
+partial-snapshot link would have counted as stale even if its prose looked
+right.
+
+The explorer totals initially looked even better: 557 rows in each corpus.
+That number was misleading. Only 240 public records join the exact replay
+names. The remaining 317 names are disjoint later/non-`L0` material, so they
+are provenance only and the complete corpora must stay out of this epoch's
+training, retrieval, and evaluation surfaces. The other 144 replay names are
+physically absent, producing 144 missing and zero stale explicit-explorer,
+defined-explorer, and definition receipts. Thus only 240 rows are
+documentation-complete under the deliberately strict six-way join: source,
+definition, atlas, vault, explicit explorer, and defined explorer.
+
+This result changed the order of operations. We will first repair and audit
+the 144 missing records, then let A2 bind the comparison set and dependency
+evidence. Only then should we prepare a reviewed source-state request for an
+external independent owner. Even that owner receipt must remain separate from
+benchmark activation. H1.1 is still open, and the ledger says so in data:
+`status = candidate`, `freeze_ready = false`, and
+`evaluation_eligible = false`.
+
+No final test claim is recorded in this entry. The purpose of today's record
+is the design decision and the exact candidate identities; acceptance evidence
+belongs in the milestone report after the focused and integrated gates finish.
+
+The acceptance pass later the same day closed that local implementation gate:
+53 adversarial metadata/CLI tests passed in 78.89 seconds. Two independent
+temporary builds were byte-identical, the retained files passed `--check`, the
+32-test sharding contract passed, and atlas generation plus all seven
+arithmetic-Book tests remained green. Replay-pack and historical epoch suites
+passed 37 and 38 tests, Lambda passed 360 plus 36 subtests, and the complete
+Peano tree collected 3,115 tests. The warning-as-error Book rebuilt all 46
+sources; 2,324 HTML pages had zero broken or unsafe targets, all 194 links and
+287 commands replayed, and the 490-note vault resolved all 4,981 links. This
+does not change the semantic boundary above: the candidate is still not an
+owner-reviewed or frozen epoch.

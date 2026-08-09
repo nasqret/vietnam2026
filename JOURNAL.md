@@ -3936,3 +3936,53 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   Readable/optimized dependency vectors and leave-one-out evidence,
   definition/document receipts, lineage masks, reviewed Git-state and
   independent owner deposits, and benchmark sealing remain H1.1 work.
+
+## 2026-08-09 — H1.1a retained an honest candidate-readiness ledger
+
+- Preserved the historical three-file epoch-v1 fixture and replay-pack v1
+  byte-for-byte. Added a separate candidate-only metadata schema, builder,
+  validator, and no-default-write CLI. The schema hard-codes `candidate`,
+  `freeze_ready = false`, and `evaluation_eligible = false`; it has semantic
+  digest
+  `71995b59d4f5592a08a90dc354a91888f5f1f6f89ec4428be291aea19e76062c`
+  and exact document SHA-256
+  `9867378c8802501d2120ad4d94a86378815cf90b003eafc92b164685da61c956`.
+- Retained the deterministic 5,880,054-byte ledger at root
+  `b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279`;
+  file SHA-256 is
+  `e719dd526d0aa07e2521fb2e499f2ee6810506d32a912298f11dbac60a2c0289`.
+  Its 1,195-byte readiness report has SHA-256
+  `386be7eb475980a373122d769a496220319d34090463e0a3bc870cfece3e4c25`.
+- Bound the exact replay manifest/report/catalog, source commit/tree, all 384
+  source locators, and 1,038 declared publication edges. Atlas and vault cover
+  all 384 rows. Only 240 rows have the complete six-way documentation join;
+  explicit-explorer, defined-explorer, and definition receipts each have 144
+  missing and zero stale rows. The explorers' 317 other names are disjoint
+  non-`L0` provenance and are forbidden as epoch retrieval/training/evaluation
+  context.
+- Independent review caught a mistyped Git tree and an alternate-root
+  provenance forgery before retention. Exact manifest, manifest-root,
+  replay-root, report, catalog, commit, and tree pins now fail closed. The
+  readiness API performs full retained-input validation rather than accepting
+  a merely rerooted shape.
+- The focused adversarial suite passed 53 tests in 78.89 seconds. It covers
+  canonical JSON, exact joins and counts, full rerooting, source/report drift,
+  fixed artifact pins, claim escalation, row/order/dependency mutations,
+  symlinks/FIFOs, non-`L0` exclusion, readiness forgery, deterministic CLI
+  output, read-only checking, and the unchanged epoch-v1 byte pins. The CI
+  sharding contract passed 32 tests; atlas regeneration/checking and all seven
+  arithmetic-Book tests passed. The full replay-pack suite passed 37 tests in
+  46.90 seconds, and the untouched epoch-v1 suite passed 38 in 125.03 seconds.
+  Peano's complete tree collected 3,115 tests without error; the already-green
+  prior 3,062-test baseline is unchanged apart from the 53 new cases. Lambda
+  Lab passed 360 tests plus 36 subtests.
+- The warning-as-error Jupyter Book rebuilt all 46 sources. Structural
+  integrity found zero broken paths/fragments, escaping links, unsafe active
+  links, or remote runtime assets across 2,324 HTML pages; all 194 deep links,
+  47 sessions, and 287 commands replayed. The Obsidian vault verified 384
+  checked lemma notes in a 490-note/4,981-link graph.
+- H1.1 remains open. Human review, lineage, best-known comparison,
+  readable/optimized dependency vectors, leave-one-out receipts, and
+  publication unions are pending for all 384 rows. The next order is the
+  144-row documentation repair, A2 evidence, then a reviewed source-state
+  request and external owner deposit. Benchmark activation remains separate.
