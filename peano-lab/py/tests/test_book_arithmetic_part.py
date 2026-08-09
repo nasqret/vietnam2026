@@ -19,6 +19,7 @@ GUIDE = BOOK / "arithmetic-library" / "guided-tour.md"
 K3B_CHAPTER = BOOK / "arithmetic-library" / "cell-history-and-lookup.md"
 K3B_SITE = BOOK / "_static" / "pa-proof-explorer" / "k3b"
 LIBRARY_EDITIONS = BOOK / "arithmetic-library" / "library-editions.md"
+BERTRAND_CAMPAIGN = BOOK / "arithmetic-library" / "bertrand-campaign.md"
 K3B_RECEIPT = (
     REPO
     / "artifacts"
@@ -235,6 +236,7 @@ def test_alpha_k3b_book_chapter_and_sparse_graph_match_the_sealed_receipt() -> N
 
 def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> None:
     source = LIBRARY_EDITIONS.read_text(encoding="utf-8")
+    bertrand = BERTRAND_CAMPAIGN.read_text(encoding="utf-8")
     index = (BOOK / "arithmetic-library" / "index.md").read_text(encoding="utf-8")
     proof_explorer = (
         BOOK / "arithmetic-library" / "proof-explorer.md"
@@ -247,16 +249,20 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "**902** theorems",
         "**923** theorems",
         "**965** theorems",
+        "**972** theorems",
         "**570** theorems",
         "**2,641** edges / **45** layers",
         "**2,730** edges / **45** layers",
         "**2,891** edges / **45** layers",
+        "**2,912** edges / **45** layers",
         "432 Stable plus 453 Alpha-only rows",
         "432 Stable plus 491 Alpha-only rows",
         "432 Stable plus 533 Alpha-only rows",
+        "432 Stable plus 540 Alpha-only rows",
         "314 `body_checked`",
         "352 `body_checked`",
         "394 `body_checked`",
+        "401 `body_checked`",
         "one `pending_layered_closure`",
         'edition("alpha").checked_specs',
         'entry("cell_list_extensional", edition="alpha")',
@@ -266,6 +272,10 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "artifacts/peano-library/channels.json",
         "artifacts/peano-library/channels-v3.json",
         "artifacts/peano-library/channels-v4.json",
+        "artifacts/peano-library/channels-v5.json",
+        "46e1a08c6bc18bbc057aa7541420580b43aec75d5f30af500ba3ce12bec09473",
+        "bccf7d8fc01dbcd1cd2efd9d5d8e5189d80b79cfb7e5e30df999d270a9fd13af",
+        "94efc0f7022f31677619e842f7d6f1d0d0f8959efc54cd64cf346c3b5e8c4892",
         "Bertrand campaign chapter",
         "direct neighborhood",
     ):
@@ -274,6 +284,22 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
     assert "241 Stable prerequisites" in normalized_proof_explorer
     assert "316 Alpha-only specifications" in normalized_proof_explorer
     assert "748" in normalized_proof_explorer
+    for exact in (
+        "## Current Alpha v5 layer",
+        "| Alpha v5 specifications | 972 |",
+        "| `FactorialVal` rows | 7 |",
+        "## Pushed candidates beyond Alpha v5",
+        "eight-row threshold tranche",
+        "five-row finite Legendre-sum interface",
+        "does **not** yet prove Legendre's equality",
+        "relational-power bridge",
+        "`05cb3ff`",
+        "`f35b8ed`",
+        "`4df44c9`",
+        "`85625d6`",
+        "make peano-library-alpha-v5-check",
+    ):
+        assert exact in bertrand
 
 
 def test_generated_atlas_is_byte_current() -> None:

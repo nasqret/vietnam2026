@@ -440,3 +440,62 @@ python3 scripts/build_peano_library_channels_v4.py --check
 python3 scripts/verify_peano_library_channels_v4.py
 make peano-library-alpha-v4-check
 ```
+
+## Peano Alpha v5 — factorial valuations (2026-08-09)
+
+Alpha v5 is the additive `FactorialVal` building channel. It preserves the
+exact 965-row Alpha-v4 ledger and appends seven specifications at indices
+965--971: factorial nonvanishing, valuation of one, general `FactorialVal`
+existence and functionality, and the prime-specific zero, successor, and
+successor-inversion laws. Alpha v4 and all earlier artifact families remain
+immutable; Stable is unchanged at 432 rows.
+
+Current topology and evidence:
+
+- 972 theorem specifications, 2,912 declared direct edges, and 45 layers;
+- 432 Stable rows and 540 Alpha-only rows;
+- 432 `stable_closed`, 138 `alpha_closed`, 401 `body_checked`, and one
+  `pending_layered_closure` row;
+- 570 checked-use rows; all seven additions fail closed with null proof tags
+  and null empty-context closure evidence.
+
+The deterministic pointer is
+[`peano-library/channels-v5.json`](peano-library/channels-v5.json). Its exact
+artifact SHA-256 values are:
+
+- catalog: `94efc0f7022f31677619e842f7d6f1d0d0f8959efc54cd64cf346c3b5e8c4892`;
+- metrics: `b560373c8cb4879f47e46083d5b9925cd29ebee1af4856cfc93e74017555acc2`;
+- reduced graph: `4e8f1ea73b3ecfd51cf80d216dfc9171dabbe12f38d9c8392185ea1c610112ab`;
+  and
+- channel pointer: `946682733744d6969e89059df9165cc2782510101d4ee43a6a861aa7570a3f31`.
+
+The ordered-enrollment root is
+`46e1a08c6bc18bbc057aa7541420580b43aec75d5f30af500ba3ce12bec09473`,
+the ordered-specification root is
+`4592f0abba7b9f592d4f94780ced57c3e7e0b935444155f76276f1fd2b4d8ae4`,
+and the full edition identity is
+`bccf7d8fc01dbcd1cd2efd9d5d8e5189d80b79cfb7e5e30df999d270a9fd13af`.
+The membership, evidence, and channel-pointer roots are respectively
+`b3b71470fd6519b227e2353b818935f673a9d50dab6d59474f0f5f241ee20277`,
+`a36ce30e7f95cde8fcb8bf73413d46a0b851eb52694387ba1fcc7327a08d4abb`,
+and
+`fa8cc554a6aa8eeab1aa396cbfc4f8019d16fa97d91aa09daa3e9ea4839db7f4`.
+Each appended row cross-binds its exact source, executable test, campaign RFC,
+and sealed Alpha-v4 parent catalog bytes. The verifier independently replays
+all seven dependency-curried bodies. Local recursive closure and direct-Cut
+mutation results are feasibility evidence only and do not upgrade these rows
+to empty-context checked use.
+
+Rebuild or verify this channel with:
+
+```bash
+python3 scripts/build_peano_library_channels_v5.py
+python3 scripts/build_peano_library_channels_v5.py --check
+python3 scripts/verify_peano_library_channels_v5.py
+make peano-library-alpha-v5-check
+```
+
+The eight threshold-base rows from `f35b8ed` and five finite Legendre-sum rows
+from `4df44c9` are pushed candidate tranches, not Alpha-v5 rows. The
+relational-power bridge is still under audit, and neither Legendre's equality
+nor Bertrand's postulate is claimed proved.

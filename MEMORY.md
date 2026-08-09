@@ -2365,3 +2365,41 @@
   at $s=64,\ldots,69$ under the uniform bound $s+1\le128=2^7$. The finite
   covering chain can be extended by primes 1031 and 2053. This changes no
   theorem statement and must still receive native certificates.
+
+## 2026-08-09 — current Alpha v5 / Bertrand FactorialVal contract
+
+- **Current edition:** Alpha v5 preserves the exact 965-row Alpha-v4 ledger
+  and appends seven `FactorialVal` rows at indices 965--971. It has 972
+  specifications, 2,912 declared direct edges, and 45 layers. Stable remains
+  432; membership is 432 Stable plus 540 Alpha-only; checked use remains 570.
+- **Evidence boundary:** evidence is 432 `stable_closed`, 138 `alpha_closed`,
+  401 `body_checked`, and one `pending_layered_closure`. All seven appended
+  rows have `checked_use=false`, null proof tags, and null empty-context
+  closure metadata. Their body and local closure checks do not constitute
+  Alpha admission or Stable promotion.
+- **FactorialVal mathematics:** the tranche proves factorial nonvanishing,
+  valuation of one, general `FactorialVal` existence/functionality, and the
+  prime zero, successor, and successor-inversion laws. The maximum local
+  recursive closure is 432,090 nodes at depth 105 with zero DNE.
+- **Exact identities:** enrollment root
+  `46e1a08c6bc18bbc057aa7541420580b43aec75d5f30af500ba3ce12bec09473`;
+  specification root
+  `4592f0abba7b9f592d4f94780ced57c3e7e0b935444155f76276f1fd2b4d8ae4`;
+  edition identity
+  `bccf7d8fc01dbcd1cd2efd9d5d8e5189d80b79cfb7e5e30df999d270a9fd13af`.
+- **Artifact SHA-256:** catalog
+  `94efc0f7022f31677619e842f7d6f1d0d0f8959efc54cd64cf346c3b5e8c4892`;
+  metrics
+  `b560373c8cb4879f47e46083d5b9925cd29ebee1af4856cfc93e74017555acc2`;
+  graph
+  `4e8f1ea73b3ecfd51cf80d216dfc9171dabbe12f38d9c8392185ea1c610112ab`;
+  channels
+  `946682733744d6969e89059df9165cc2782510101d4ee43a6a861aa7570a3f31`.
+- **Pushed checkpoints:** `05cb3ff` authors the seven factorial-valuation
+  rows; `f35b8ed` authors eight threshold-base rows; `4df44c9` authors five
+  finite Legendre-sum rows; `85625d6` publishes the fail-closed Alpha-v5
+  artifacts/runtime.
+- **Candidate boundary:** the eight threshold rows and five finite
+  Legendre-sum rows are pushed candidates but are not enrolled in v5. The
+  power bridge remains under audit. The equality between `FactorialVal` and
+  the finite quotient sum, and Bertrand's postulate itself, remain open.

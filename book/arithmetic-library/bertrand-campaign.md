@@ -17,13 +17,16 @@ $$
 
 ```{admonition} Current evidence boundary
 :class: warning
-Bertrand's postulate is **not yet proved** in this repository. Alpha v4
-contains sixty-three campaign specifications whose dependency-curried bodies
-check, but they remain `body_checked` and unavailable through checked theorem
-replay. Exact valuation multiplication and the floor/ceiling quotient budget
-are now proved. Legendre's formula, binomial coefficients, central-binomial
-bounds, the primorial bound, exact main inequality, finite coverage, and both
-endpoints remain open.
+Bertrand's postulate is **not yet proved** in this repository. Alpha v4 is now
+a sealed parent, and current Alpha v5 contains seventy campaign specifications
+whose dependency-curried bodies check. The seven new rows give the
+`FactorialVal` graph, functionality, zero case, successor recurrence, and
+successor inversion. They remain `body_checked` and unavailable through
+checked theorem replay. A five-row finite Legendre-sum interface and an
+eight-row threshold-base tranche are pushed candidates outside v5. The
+equality between factorial valuation and that finite sum, binomial
+coefficients, central-binomial bounds, the primorial bound, exact main
+inequality, finite coverage, and both Bertrand endpoints remain open.
 ```
 
 The binding statement, logic, representation, validation, and release rules
@@ -50,26 +53,29 @@ bounded_prime_interval_search(l,u)
 Consequently, the negative branch is explicit data. The proof never turns
 $\neg\neg\exists p$ into $\exists p$.
 
-## Current Alpha v4 layer
+## Current Alpha v5 layer
 
-Alpha v4 is an additive child of the sealed 923-row Alpha v3 ledger.
+Alpha v5 is an additive child of the sealed 965-row Alpha v4 ledger.
 
 | Quantity | Exact value |
 |---|---:|
-| Alpha v4 specifications | 965 |
+| Alpha v5 specifications | 972 |
 | Stable rows | 432 |
-| Alpha-only rows | 533 |
+| Alpha-only rows | 540 |
 | checked-use rows | 570 |
-| direct dependency edges | 2,891 |
+| direct dependency edges | 2,912 |
 | dependency layers | 45 |
 | first-round Bertrand rows | 21 |
 | Round-2 Bertrand rows | 42 |
+| `FactorialVal` rows | 7 |
 
-All sixty-three campaign additions are `body_checked`; checked use remains
+All seventy campaign additions are `body_checked`; checked use remains
 unchanged at 570. The current enrollment root is
-`e4c83174c1800c135d0fe9ac03b5cdfcc5f11e5517f871b3f198586973a20c31`.
+`46e1a08c6bc18bbc057aa7541420580b43aec75d5f30af500ba3ce12bec09473`.
+The full edition identity is
+`bccf7d8fc01dbcd1cd2efd9d5d8e5189d80b79cfb7e5e30df999d270a9fd13af`.
 The deterministic channel pointer is
-[`channels-v4.json`](https://github.com/nasqret/vietnam2026/blob/e605faab09c4db8aadd1218ab1705a52635303d6/artifacts/peano-library/channels-v4.json).
+[`channels-v5.json`](https://github.com/nasqret/vietnam2026/blob/85625d6ad7a3f7ce4140a5ad2c3ec182d66c0ecd/artifacts/peano-library/channels-v5.json).
 
 ### B0 — constructive interval search
 
@@ -124,6 +130,32 @@ statement has an exact hash, and complete proof traversals find zero `DNE`.
 These local closures establish feasibility; the Alpha evidence remains
 body-only until the versioned two-process cold receipt is accepted.
 
+### B3 — factorial valuations
+
+Alpha v5 enrolls seven rows at indices 965--971:
+
+- `factorial_nonzero`;
+- `prime_power_valuation_one_zero`;
+- `factorial_valuation_exists` and `factorial_valuation_functional`;
+- `prime_factorial_valuation_zero`;
+- `prime_factorial_valuation_succ`; and
+- `prime_factorial_valuation_succ_invert`.
+
+The expanded `FactorialVal(p,n,e)` surface asserts that some $F$ is the
+factorial of $n$ and has selected $p$-valuation $e$. The successor theorem is
+the exact recurrence
+
+$$
+v_p((n+1)!)=v_p(n!)+v_p(n+1),
+$$
+
+stated entirely through relational factorial, power, divisibility, and
+valuation formulas. Its inverse recovers the valuation of the new factor from
+valuations of the two successive factorials. The largest local recursive
+closure has 432,090 nodes at depth 105 and zero `DNE`. This is feasibility and
+mutation evidence, not an empty-context Alpha admission: every one of the
+seven rows has `checked_use=false`, a null proof tag, and null closure metadata.
+
 ## Round-2 integer infrastructure
 
 The following tranches are enrolled in Alpha v4 with body-only evidence.
@@ -171,6 +203,34 @@ $$
 Its largest closure is 2,906 nodes. These facts remove the floor/ceiling
 representation risk; the remaining B6 risk is the exponential envelope.
 
+## Pushed candidates beyond Alpha v5
+
+Two reviewed proof tranches are pushed but deliberately absent from the v5
+enrollment ledger.
+
+The eight-row threshold tranche proves the numeral bounds used by the
+$n\ge2048$ split, transports $64^2\le2n$ through `FloorSqrt`, derives
+$42(s+1)\le s^2$ and $7(s+1)\le\lceil s^2/6\rceil$ for $s\ge64$, and packages
+the linear residue-window bounds for $64\le s\le69$. Its largest local closure
+has 2,352 nodes. It was pushed in commit `f35b8ed`, but it is not an Alpha-v5
+row and is not available through edition replay.
+
+The five-row finite Legendre-sum interface supplies
+`prime_power_quotient_prefix_exists`, `power_quotient_prefix_transport`,
+`prime_legendre_sum_exists`, `legendre_sum_functional`, and
+`legendre_sum_zero`. A Gödel-β prefix stores the quotients
+$\lfloor n/p^i\rfloor$, and the existing finite-sum relation accumulates them.
+The largest local closure has 124,078 nodes. This interface was pushed in
+commit `4df44c9`; it does **not** yet prove Legendre's equality
+
+$$
+v_p(n!)=\sum_{i\ge1}\left\lfloor\frac{n}{p^i}\right\rfloor.
+$$
+
+The separate relational-power bridge that will connect the threshold bounds
+to the exponential envelope remains under audit. It is neither enrolled in
+Alpha v5 nor claimed as a completed campaign tranche.
+
 ## Dependency roadmap
 
 ```text
@@ -178,11 +238,12 @@ B0 interval decision ------------------------------------------+
                                                                |
 B1 order, powers, FloorSqrt, floor/ceiling arithmetic ----+    |
                                                           |    |
-B2 valuations + Legendre ----------+                      |    |
+B2 valuations + finite sums -------+                      |    |
                                     |                      |    |
-B3 Choose/CentralBinom -------------+----> B5 factor ranges|    |
-              |                     |          and upper bound |
-              `----> B4 primorial --+                      |    |
+B3 FactorialVal + Legendre equality-+                      |    |
+B4 Choose/CentralBinom -------------+----> B5 factor ranges|    |
+              |                     |    + primorial bound |    |
+              `---------------------+                      |    |
                                                           v    v
                                                    B6 main inequality
                                                           |
@@ -218,8 +279,10 @@ E(s)=\left\lceil\frac{s^2}{6}\right\rceil,
 $$
 
 and the exact identity $E(s+6)=E(s)+2s+6$. `FloorSqrt`, ceiling-by-six, and
-the quotient complement are now formalized. The six $H/J$ bases, the $H$
-transport, and the final power-product bridge remain obligations.
+the quotient complement are now formalized. The pushed threshold candidate
+settles the linear $s=64,\ldots,69$ base-window arithmetic, but the relational
+power bridge, the actual exponential $H/J$ bases, $H$ transport, and the final
+power-product bridge remain obligations.
 
 The first implementation may use the more proof-friendly large branch
 $n\ge2048$ rather than 512. Its base roots are $s=64,\ldots,69$, where
@@ -244,6 +307,10 @@ statement.
 | `88d9e92` | exact prime-power valuation multiplication |
 | `139b6ce` | floor/ceiling quotient budget |
 | `e605faa` | additive, fail-closed Alpha v4 channel |
+| `05cb3ff` | seven-row recursive `FactorialVal` proof layer |
+| `f35b8ed` | eight threshold and residue-window base inequalities |
+| `4df44c9` | five-row finite Legendre-sum interface |
+| `85625d6` | additive, fail-closed Alpha v5 channel |
 
 All checkpoints are pushed to `nasqret/vietnam2026` on
 `agent/new-theorems-tranche-01`.
@@ -251,7 +318,7 @@ All checkpoints are pushed to `nasqret/vietnam2026` on
 ## Reproduce the current gates
 
 ```bash
-make peano-library-alpha-v4-check
+make peano-library-alpha-v5-check
 
 PYTHONPATH=peano-lab/py python3 -m pytest -q \
   peano-lab/py/tests/test_bertrand_prime_interval_candidate.py \
@@ -263,9 +330,13 @@ PYTHONPATH=peano-lab/py python3 -m pytest -q \
   peano-lab/py/tests/test_bertrand_integer_envelope_candidate.py \
   peano-lab/py/tests/test_bertrand_ceil_sqrt_candidate.py \
   peano-lab/py/tests/test_bertrand_floor_sqrt_total_candidate.py \
-  peano-lab/py/tests/test_bertrand_quotient_budget_candidate.py
+  peano-lab/py/tests/test_bertrand_quotient_budget_candidate.py \
+  peano-lab/py/tests/test_bertrand_factorial_valuation_candidate.py \
+  peano-lab/py/tests/test_bertrand_threshold_base_candidate.py \
+  peano-lab/py/tests/test_bertrand_legendre_sum_candidate.py
 ```
 
-The first command validates the published Alpha-v4 evidence boundary. The
-second includes expensive local empty-context feasibility checks; it does not
-upgrade Alpha evidence or promote anything to Stable.
+The first command validates the published Alpha-v5 evidence boundary and
+replays its seven new dependency-curried bodies. The second includes expensive
+local empty-context feasibility checks, including candidates outside v5; it
+does not upgrade Alpha evidence or promote anything to Stable.

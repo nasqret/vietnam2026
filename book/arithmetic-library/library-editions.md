@@ -24,8 +24,9 @@ release membership; it does not silently replace the mathematics.
 The repository now has canonical machine-readable artifacts for both
 editions. Stable v1 remains sealed at 432 rows, Alpha v1 remains sealed at 885
 rows, Alpha v2 remains sealed at 902 rows, and Alpha v3 remains sealed at 923
-rows. Current Alpha v4 preserves the entire v3 enrollment ledger exactly,
-then appends forty-two Round-2 Bertrand rows at indices 923--964. The initial
+rows. Alpha v4 remains sealed at 965 rows. Current Alpha v5 preserves the
+entire v4 enrollment ledger exactly, then appends seven `FactorialVal` rows at
+indices 965--971. The initial
 Stable prefix is a historical
 fact about these channels, not the permanent promotion rule.
 
@@ -35,9 +36,10 @@ fact about these channels, not the permanent promotion rule.
 | Sealed Alpha v1 catalog | **885** theorems | immutable parent: 432 Stable plus 453 Alpha-only rows |
 | Sealed Alpha v2 catalog | **902** theorems | immutable parent: 432 Stable plus 470 Alpha-only rows |
 | Sealed Alpha v3 catalog | **923** theorems | immutable parent: 432 Stable plus 491 Alpha-only rows |
-| Current Alpha v4 catalog | **965** theorems | 432 Stable plus 533 Alpha-only rows |
+| Sealed Alpha v4 catalog | **965** theorems | immutable parent: 432 Stable plus 533 Alpha-only rows |
+| Current Alpha v5 catalog | **972** theorems | 432 Stable plus 540 Alpha-only rows |
 | Alpha checked-use subset | **570** theorems | 432 `stable_closed` plus 138 `alpha_closed` rows |
-| Alpha v4 proof graph | **2,891** edges / **45** layers | exact direct dependencies for all 965 enrolled rows |
+| Alpha v5 proof graph | **2,912** edges / **45** layers | exact direct dependencies for all 972 enrolled rows |
 | Quadratic-reciprocity Alpha slice | **557** specifications | 241 Stable prerequisites and 316 Alpha-only specifications |
 | Stable $\cup$ QR slice | **748** distinct theorem names | 432 Stable plus the 316 QR Alpha-only rows |
 | K3B focused map | **41** nodes | 12 Stable prerequisites, 22 Alpha-only theorem/support nodes, and 7 conservative definitions |
@@ -45,33 +47,58 @@ fact about these channels, not the permanent promotion rule.
 | K3C additive tranche | **17** specifications | indices 885--901, all `body_checked`, cold receipt pending |
 | Bertrand first-round tranche | **21** specifications | indices 902--922, all `body_checked`, cold receipt pending |
 | Bertrand Round-2 tranche | **42** specifications | indices 923--964, all `body_checked`, fail-closed |
+| Bertrand `FactorialVal` tranche | **7** specifications | indices 965--971, all `body_checked`, fail-closed |
 
 For comparison, the sealed Alpha v1 proof graph has **2,641** edges / **45** layers,
 and its evidence partition was 432 `stable_closed`, 138 `alpha_closed`,
 314 `body_checked`, and one `pending_layered_closure`. Its immutable machine
 surfaces remain `artifacts/peano-library/channels.json` and
-`artifacts/peano-library/alpha/catalog-v1.json`; Alpha v2, v3, and v4 are
+`artifacts/peano-library/alpha/catalog-v1.json`; Alpha v2, v3, v4, and v5 are
 additive children, not in-place rewrites of either file.
 The sealed Alpha v3 graph had **2,730** edges / **45** layers and 352 `body_checked`
 rows; its immutable channel pointer remains
 `artifacts/peano-library/channels-v3.json`.
+The sealed Alpha v4 graph had **2,891** edges / **45** layers and 394 `body_checked`
+rows; its immutable channel pointer remains
+`artifacts/peano-library/channels-v4.json`.
 
-The canonical Alpha v4 composition is 432 Stable-origin rows, 316 QR
+The canonical Alpha v5 composition is 432 Stable-origin rows, 316 QR
 additions, 120 strict-HA additions, 17 K3B additions, 17 K3C additions, and 21
-first-round plus 42 Round-2 Bertrand additions. Its evidence partition is 432
-`stable_closed`, 138 `alpha_closed`, 394 `body_checked`, and one
+first-round plus 42 Round-2 plus 7 `FactorialVal` Bertrand additions. Its
+evidence partition is 432 `stable_closed`, 138 `alpha_closed`, 401 `body_checked`,
+and one
 `pending_layered_closure`. Thus **Alpha membership does not imply checked
-use**: exactly 570 of the 965 entries cross that boundary. The v4
+use**: exactly 570 of the 972 entries cross that boundary. The v5
 ordered-enrollment root is
-`e4c83174c1800c135d0fe9ac03b5cdfcc5f11e5517f871b3f198586973a20c31`;
+`46e1a08c6bc18bbc057aa7541420580b43aec75d5f30af500ba3ce12bec09473`;
 the full edition identity is
+`bccf7d8fc01dbcd1cd2efd9d5d8e5189d80b79cfb7e5e30df999d270a9fd13af`.
+Its ordered-specification root is
+`4592f0abba7b9f592d4f94780ced57c3e7e0b935444155f76276f1fd2b4d8ae4`.
+The membership and evidence roots are
+`b3b71470fd6519b227e2353b818935f673a9d50dab6d59474f0f5f241ee20277`
+and
+`a36ce30e7f95cde8fcb8bf73413d46a0b851eb52694387ba1fcc7327a08d4abb`;
+the channel-pointer root is
+`fa8cc554a6aa8eeab1aa396cbfc4f8019d16fa97d91aa09daa3e9ea4839db7f4`.
+The exact v5 artifact SHA-256 values are catalog
+`94efc0f7022f31677619e842f7d6f1d0d0f8959efc54cd64cf346c3b5e8c4892`,
+metrics
+`b560373c8cb4879f47e46083d5b9925cd29ebee1af4856cfc93e74017555acc2`,
+reduced graph
+`4e8f1ea73b3ecfd51cf80d216dfc9171dabbe12f38d9c8392185ea1c610112ab`,
+and channels
+`946682733744d6969e89059df9165cc2782510101d4ee43a6a861aa7570a3f31`.
+The sealed v4 parent retains enrollment root
+`e4c83174c1800c135d0fe9ac03b5cdfcc5f11e5517f871b3f198586973a20c31`
+and edition identity
 `e0324009614f755f2251a5b27d29587b0c43015385a78d567b328776b92239a5`.
 
 The number **748** describes only Stable union the focused QR slice. That
-slice omits 191 Stable theorems and 217 Alpha additions from the strict-HA,
+slice omits 191 Stable theorems and 224 Alpha additions from the strict-HA,
 K3B, K3C, and Bertrand tranches. Likewise, the 41-node K3B map is a deliberately curated visual
 lens, not a competing catalog. The authoritative channel pointers are
-`artifacts/peano-library/channels-v4.json`; it links the current Alpha v4
+`artifacts/peano-library/channels-v5.json`; it links the current Alpha v5
 catalog, metrics, and graph, while the pre-existing Stable artifact remains
 `artifacts/peano-library/catalog-v1.json`. The v1 channel and Alpha v1
 artifacts remain sealed parents.
@@ -83,8 +110,9 @@ campaign slice, and the {doc}`K3B CellHistory/ListAt chapter
 {doc}`K3C validity and membership chapter <list-validity-and-membership>`
 documents the additive body-checked layer and its pending closure boundary.
 The {doc}`Bertrand campaign chapter <bertrand-campaign>` documents the next
-additive layer, its constructive search result, and the valuation and integer
-inequality gates that remain open.
+additive layers, the enrolled factorial-valuation recurrence, the pushed
+finite-sum and threshold candidates, and the equality and integer-power gates
+that remain open.
 
 ## Release membership and proof evidence are different axes
 
@@ -107,7 +135,16 @@ All twenty-one Alpha-v3 Bertrand rows and all forty-two Alpha-v4 Round-2 rows
 are in the same body-only state. The latter include exact valuation
 multiplication, ceiling/floor-square, and quotient-budget theorems whose local
 closures are useful feasibility evidence but do not make them checked-use
-facts.
+facts. The seven Alpha-v5 `FactorialVal` rows are likewise Alpha-only
+`body_checked` rows: their dependency-curried bodies and local closures have
+been checked, but they have null proof tags, no empty-context admission
+receipt, and fail closed through replay.
+
+Repository presence is not enrollment. The eight threshold-base rows pushed
+in `f35b8ed` and the five finite Legendre-sum rows pushed in `4df44c9` are
+reviewed candidates outside Alpha v5. The relational-power bridge remains
+under audit. None changes the v5 counts or checked-use boundary, and the
+finite-sum interface is not yet Legendre's equality with factorial valuation.
 
 Definitions are a third kind of object. They are displayed as yellow hexagons
 because they expand conservatively before parsing; they are neither theorem
@@ -124,10 +161,10 @@ evidence is `stable_closed` or `alpha_closed`; a `body_checked` or
 `pending_layered_closure` request fails closed.
 
 ```python
-from peano_lab.library.editions_v4 import edition, entry, replay
+from peano_lab.library.editions_v5 import edition, entry, replay
 
 len(edition("stable").specs)          # 432
-len(edition("alpha").specs)           # 965
+len(edition("alpha").specs)           # 972
 len(edition("alpha").checked_specs)   # 570
 
 entry("cell_list_extensional", edition="alpha")

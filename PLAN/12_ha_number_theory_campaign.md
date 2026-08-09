@@ -1099,3 +1099,55 @@ $H(s)$ reduces to $7(s+1)\le\lceil s^2/6\rceil$, while $J(s)$ reduces to
 $42\le s+5$. The small branch extends the Landau chain by the checked prime
 candidates 1031 and 2053. This is an internal proof split only; BP01/BP02 are
 unchanged.
+
+## 2026-08-09 — Alpha v5 and the next Bertrand proof front
+
+Alpha v5 is now the current cumulative building edition. It preserves the
+exact 965-row Alpha-v4 ledger and enrolls the seven `FactorialVal` rows from
+`05cb3ff` at indices 965--971. Commit `85625d6` publishes the runtime and
+artifact family.
+
+| Edition | Theorems | Direct edges | Layers | Checked use |
+|---|---:|---:|---:|---:|
+| Stable | 432 | 1,185 | 22 | 432 |
+| Alpha v4 (sealed parent) | 965 | 2,891 | 45 | 570 |
+| Alpha v5 (current) | 972 | 2,912 | 45 | 570 |
+
+Alpha v5 has 432 Stable and 540 Alpha-only rows. Its evidence partition is
+432 `stable_closed`, 138 `alpha_closed`, 401 `body_checked`, and one
+`pending_layered_closure`. The new rows have body evidence only, null proof
+tags, null empty-context closure metadata, and fail-closed replay.
+
+The v5 enrollment root is
+`46e1a08c6bc18bbc057aa7541420580b43aec75d5f30af500ba3ce12bec09473`;
+the specification root is
+`4592f0abba7b9f592d4f94780ced57c3e7e0b935444155f76276f1fd2b4d8ae4`;
+the edition identity is
+`bccf7d8fc01dbcd1cd2efd9d5d8e5189d80b79cfb7e5e30df999d270a9fd13af`.
+Artifact SHA-256 values are catalog
+`94efc0f7022f31677619e842f7d6f1d0d0f8959efc54cd64cf346c3b5e8c4892`,
+metrics
+`b560373c8cb4879f47e46083d5b9925cd29ebee1af4856cfc93e74017555acc2`,
+graph
+`4e8f1ea73b3ecfd51cf80d216dfc9171dabbe12f38d9c8392185ea1c610112ab`,
+and channels
+`946682733744d6969e89059df9165cc2782510101d4ee43a6a861aa7570a3f31`.
+
+Current mathematical gates:
+
+- [x] B3a: recursive factorial-valuation graph, functionality, zero,
+  successor, and successor inversion; enrolled body-only in Alpha v5;
+- [x] B3b-interface: finite prime-power quotient prefix and finite-sum
+  existence/functionality/zero, pushed in `4df44c9` but not enrolled;
+- [ ] B3b-equality: identify the finite quotient sum with `FactorialVal`;
+- [x] B6d-linear: eight threshold/base-window inequalities, pushed in
+  `f35b8ed` but not enrolled;
+- [ ] B6d-power: finish and audit the relational-power bridge, then prove the
+  actual $H/J$ exponential bases and transport;
+- [ ] B4/B5: binomial integrality, central-binomial and prime-product bounds;
+- [ ] B7/B8: finite coverage, constructive branch combination, capstone
+  closure, Book graph, and reviewed release.
+
+The eight threshold rows and five finite Legendre-sum rows are candidate
+tranches outside Alpha v5. The power bridge is still under audit. No current
+artifact or proof establishes Legendre's equality or Bertrand's postulate.

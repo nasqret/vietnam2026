@@ -6,26 +6,27 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-## Current library editions — Alpha v4, 2026-08-09
+## Current library editions — Alpha v5, 2026-08-09
 
 This status supersedes, without erasing, the dated checkpoint language below.
 **Stable** is the unchanged official checked edition: 432 theorems, 1,185
 declared direct edges, and 22 layers. Sealed **Alpha v1** remains 885 rows and
 sealed **Alpha v2** remains 902 rows, and sealed **Alpha v3** remains 923
-rows. Current additive **Alpha v4** preserves the v3 ledger and appends 42
-Round-2 Bertrand rows at indices 923--964: 965 theorems, 2,891 direct edges,
-and 45 layers, comprising Stable plus 533 Alpha-only rows.
+rows. Sealed **Alpha v4** remains 965 rows. Current additive **Alpha v5**
+preserves the v4 ledger and appends 7 `FactorialVal` rows at indices 965--971:
+972 theorems, 2,912 direct edges, and 45 layers, comprising Stable plus 540
+Alpha-only rows.
 
-Membership and evidence are independent. Alpha v4 contains 432
-`stable_closed`, 138 `alpha_closed`, 394 `body_checked`, and one
+Membership and evidence are independent. Alpha v5 contains 432
+`stable_closed`, 138 `alpha_closed`, 401 `body_checked`, and one
 `pending_layered_closure` row. Only 570 closed rows are available for checked
-use; the other 395 still need whole-library empty-context closure. The current
-runtime surface is `peano_lab.library.editions_v4` (`edition`, `entry`,
+use; the other 402 still need whole-library empty-context closure. The current
+runtime surface is `peano_lab.library.editions_v5` (`edition`, `entry`,
 `replay`), with Stable as the default and body-only/pending Alpha replay
 rejected.
 
-The current artifact index is `artifacts/peano-library/channels-v4.json`; it
-links Alpha v4's catalog, metrics, and graph while the Stable snapshot stays
+The current artifact index is `artifacts/peano-library/channels-v5.json`; it
+links Alpha v5's catalog, metrics, and graph while the Stable snapshot stays
 at `artifacts/peano-library/catalog-v1.json`. The v1 channel and Alpha v1
 artifacts remain sealed parents. The graph's
 reachability reduction is for structural review and display, not a claim of
@@ -34,7 +35,21 @@ Stable promotion are pending. Older descriptions of
 reviewed rows as private or unregistered record their historical Stable
 status; enrolled rows are now Alpha-only unless separately promoted.
 
-The 395 missing closures are required for a whole-Alpha-v4 promotion, not for an
+Alpha v5's enrollment, specification, and edition roots are
+`46e1a08c6bc18bbc057aa7541420580b43aec75d5f30af500ba3ce12bec09473`,
+`4592f0abba7b9f592d4f94780ced57c3e7e0b935444155f76276f1fd2b4d8ae4`,
+and
+`bccf7d8fc01dbcd1cd2efd9d5d8e5189d80b79cfb7e5e30df999d270a9fd13af`.
+Artifact hashes are catalog
+`94efc0f7022f31677619e842f7d6f1d0d0f8959efc54cd64cf346c3b5e8c4892`,
+metrics
+`b560373c8cb4879f47e46083d5b9925cd29ebee1af4856cfc93e74017555acc2`,
+graph
+`4e8f1ea73b3ecfd51cf80d216dfc9171dabbe12f38d9c8392185ea1c610112ab`,
+and channels
+`946682733744d6969e89059df9165cc2782510101d4ee43a6a861aa7570a3f31`.
+
+The 402 missing closures are required for a whole-Alpha-v5 promotion, not for an
 unrelated smaller dependency-closed batch; every proposed batch receives its
 own isolated promotion receipt.
 
@@ -263,15 +278,18 @@ prime-power valuations, binomial coefficients, prime products, and explicit
 power inequalities. The navigable status page is
 [`Bertrand's postulate campaign`](../../book/arithmetic-library/bertrand-campaign.md).
 
-Current Alpha v4 preserves the exact 923-row Alpha v3 ledger and appends 42
-Round-2 Bertrand specifications at indices 923--964. Together the 63 campaign
-rows cover quantitative order, constructive interval search, bounded and
-exact multiplicative valuation, the six-step integer guard, total
-ceiling/floor-square relations, and the quotient budget. Every
-dependency-curried body checks and the declared edges are mutation-tested,
-but all 63 remain `body_checked`; checked use is still 570 and Stable is still
-432. The next candidate layer supplies recursive factorial valuations.
-Bertrand's postulate itself is **not yet proved**.
+Current Alpha v5 preserves the exact 965-row Alpha v4 ledger and appends 7
+`FactorialVal` specifications at indices 965--971. Together the 70 enrolled
+campaign rows cover quantitative order, constructive interval search, bounded
+and exact multiplicative valuation, recursive factorial valuation, the
+six-step integer guard, total ceiling/floor-square relations, and the quotient
+budget. Every dependency-curried body checks, but all 70 remain
+`body_checked`; checked use is still 570 and Stable is still 432.
+
+The eight threshold-base rows in `f35b8ed` and five finite Legendre-sum rows
+in `4df44c9` are pushed candidates, not Alpha-v5 members. The power bridge is
+under audit. The finite-sum interface does not yet prove its equality with
+factorial valuation, and Bertrand's postulate itself is **not yet proved**.
 
 ## Design and trust
 

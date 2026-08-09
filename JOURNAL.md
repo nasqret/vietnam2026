@@ -5044,3 +5044,48 @@ The full v4 gate passed deterministic build and independent verification,
 v1--v3 gates. Every new row remains body-only and replay fails closed. WMI is
 still unavailable, so no admission-eligible cold receipt or Stable promotion
 is claimed.
+
+## 2026-08-09 — FactorialVal sealed as Alpha v5; next candidates pushed
+
+Four further checkpoints were pushed in dependency order:
+
+| Commit | Content |
+|---|---|
+| `05cb3ff` | seven recursive factorial-valuation proofs |
+| `f35b8ed` | eight $n\ge2048$ threshold and residue-window inequalities |
+| `4df44c9` | five-row finite Legendre-sum interface |
+| `85625d6` | additive, fail-closed Alpha-v5 artifacts/runtime |
+
+The FactorialVal tranche proves factorial nonvanishing, valuation of one,
+general graph existence and functionality, and the prime zero, successor, and
+successor-inversion laws. Its maximum local recursive certificate is 432,090
+nodes at depth 105. Those checks establish feasibility and mutation
+resistance; the seven enrolled rows remain `body_checked` and are not exposed
+as empty-context facts.
+
+Alpha v5 preserves the exact 965-row v4 prefix and appends those seven rows at
+indices 965--971. The resulting edition has 972 specifications, 2,912 edges,
+45 layers, 540 Alpha-only rows, and 570 checked-use rows. Evidence is 432
+`stable_closed`, 138 `alpha_closed`, 401 `body_checked`, and one
+`pending_layered_closure`. Enrollment, specification, and edition roots are
+respectively
+`46e1a08c6bc18bbc057aa7541420580b43aec75d5f30af500ba3ce12bec09473`,
+`4592f0abba7b9f592d4f94780ced57c3e7e0b935444155f76276f1fd2b4d8ae4`,
+and
+`bccf7d8fc01dbcd1cd2efd9d5d8e5189d80b79cfb7e5e30df999d270a9fd13af`.
+Artifact hashes are catalog
+`94efc0f7022f31677619e842f7d6f1d0d0f8959efc54cd64cf346c3b5e8c4892`,
+metrics
+`b560373c8cb4879f47e46083d5b9925cd29ebee1af4856cfc93e74017555acc2`,
+graph
+`4e8f1ea73b3ecfd51cf80d216dfc9171dabbe12f38d9c8392185ea1c610112ab`,
+and channels
+`946682733744d6969e89059df9165cc2782510101d4ee43a6a861aa7570a3f31`.
+
+The threshold tranche and finite Legendre-sum interface passed their focused
+body, closure, semantic, dependency-removal, and direct-Cut audits and are
+pushed candidates only. They are not members of Alpha v5 and cannot be used
+through its replay API. In particular, the Legendre interface constructs and
+uniquely transports the encoded quotient sum; it does not yet identify that
+sum with the factorial valuation. The relational-power bridge remains under
+audit. Legendre's equality and Bertrand's postulate remain open.
