@@ -395,3 +395,48 @@ The exact two-fresh-process cold-closure receipt for the 21 additions remains
 pending. Until it passes, the additions cannot become `alpha_closed`, enter
 checked use, or be considered for Stable promotion. Later valuation-law and
 integer-envelope candidates are not part of these v3 artifacts.
+
+## Peano Alpha v4 — Bertrand round 2 (2026-08-09)
+
+Alpha v4 is the additive Round-2 building channel. It preserves all 923 Alpha
+v3 rows and appends exactly 42 specifications at indices 923--964, ordered as
+6 valuation laws, 11 valuation-multiplication laws, 5 integer-envelope laws,
+9 ceiling/floor-square relations, 4 floor-square totality laws, and 7
+quotient-budget laws. All v1/v2/v3 artifacts remain immutable, and Stable is
+unchanged at 432 rows.
+
+Current topology and evidence:
+
+- 965 theorem specifications, 2,891 declared direct edges, and 45 layers;
+- 432 Stable rows and 533 Alpha-only rows;
+- 432 `stable_closed`, 138 `alpha_closed`, 394 `body_checked`, and one
+  `pending_layered_closure` row;
+- 570 checked-use rows; all 42 additions fail closed with null proof tags and
+  null empty-context closure evidence.
+
+The deterministic pointer is
+[`peano-library/channels-v4.json`](peano-library/channels-v4.json). Its exact
+artifact SHA-256 values are:
+
+- catalog: `16e2b99de69487e7439521b25ee070b208d6a7436df48f60801d5628a3678f1a`;
+- metrics: `bec61a932dbcf92715dcaac7440687e7310b8f380f5578746999c3007e1d6dac`;
+- reduced graph: `9dc4c9531418b3de3def3c827a6b5fac54b12f78661d5a6860c84c08f748d28c`;
+  and
+- channel pointer: `cf3cdc6ead4d616b15bcf28b84fca586bc5df84b30125c807fb36a74985bdb76`.
+
+The ordered-enrollment root is
+`e4c83174c1800c135d0fe9ac03b5cdfcc5f11e5517f871b3f198586973a20c31`,
+and the full edition identity is
+`e0324009614f755f2251a5b27d29587b0c43015385a78d567b328776b92239a5`.
+Each appended row cross-binds its exact source, executable test, campaign RFC,
+and sealed Alpha-v3 parent catalog bytes. The verifier independently replays
+all 42 dependency-curried bodies; this does not upgrade them to checked use.
+
+Rebuild or verify this channel with:
+
+```bash
+python3 scripts/build_peano_library_channels_v4.py
+python3 scripts/build_peano_library_channels_v4.py --check
+python3 scripts/verify_peano_library_channels_v4.py
+make peano-library-alpha-v4-check
+```

@@ -22,7 +22,7 @@ PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 override STAGEPEANO := _deploy/peano-lab
 override PEANOAPPID := a-526f19ff3b30
 
-.PHONY: help book book-atlas book-proof-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check ha-number-theory-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
+.PHONY: help book book-atlas book-proof-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check ha-number-theory-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
 	deploy clean
 
@@ -43,6 +43,10 @@ help:
 	@echo "  make peano-library-alpha-v3-check  verify Alpha v3 and replay all 21 Bertrand bodies"
 	@echo "  make peano-library-channels-v3  compatibility alias for the Bertrand Alpha v3 build"
 	@echo "  make peano-library-channels-v3-check  compatibility alias for the Bertrand Alpha v3 check"
+	@echo "  make peano-library-alpha-v4  regenerate additive Bertrand Round-2 Alpha v4 artifacts"
+	@echo "  make peano-library-alpha-v4-check  verify Alpha v4 and replay all 42 Round-2 bodies"
+	@echo "  make peano-library-channels-v4  compatibility alias for the Bertrand Alpha v4 build"
+	@echo "  make peano-library-channels-v4-check  compatibility alias for the Bertrand Alpha v4 check"
 	@echo "  make ha-number-theory-check  validate strict-HA admission, gcd, and signed normalization tranches"
 	@echo "  make ha-k3b-cell-history-check  run the lightweight Alpha K3B RFC/body checks"
 	@echo "  make ha-k3b-list-lookup-check  run the Alpha K3B ListAt surface checks"
@@ -121,6 +125,22 @@ peano-library-alpha-v3-check:
 		tests/test_bertrand_power_growth_candidate.py \
 		tests/test_bertrand_power_valuation_candidate.py
 
+peano-library-alpha-v4:
+	python3 scripts/build_peano_library_channels_v4.py
+
+peano-library-alpha-v4-check:
+	python3 scripts/build_peano_library_channels_v4.py --check
+	python3 scripts/verify_peano_library_channels_v4.py
+	python3 -m pytest -q scripts/test_verify_peano_library_channels_v4.py
+	cd peano-lab/py && python3 -m pytest -q \
+		tests/test_library_editions_v4.py \
+		tests/test_bertrand_power_valuation_laws_candidate.py \
+		tests/test_bertrand_power_divisibility_candidate.py \
+		tests/test_bertrand_integer_envelope_candidate.py \
+		tests/test_bertrand_ceil_sqrt_candidate.py \
+		tests/test_bertrand_floor_sqrt_total_candidate.py \
+		tests/test_bertrand_quotient_budget_candidate.py
+
 peano-library-channels: peano-library-alpha
 
 peano-library-channels-check: peano-library-alpha-check
@@ -132,6 +152,10 @@ peano-library-channels-v2-check: peano-library-alpha-v2-check
 peano-library-channels-v3: peano-library-alpha-v3
 
 peano-library-channels-v3-check: peano-library-alpha-v3-check
+
+peano-library-channels-v4: peano-library-alpha-v4
+
+peano-library-channels-v4-check: peano-library-alpha-v4-check
 
 ha-number-theory-check:
 	python3 scripts/verify_ha_number_theory_campaign.py
