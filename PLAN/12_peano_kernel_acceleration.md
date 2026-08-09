@@ -123,8 +123,8 @@ critical path includes the socket-enabled local dashboard-server shard.
 - [x] Require Python acceptance; record Rust agreement or shadow failure
       without letting Rust publish QED.
 
-K4 candidate build `2026-08-09a` is application
-`a-a195e3ab28b3`. Its path-remapped 52,890-byte module has SHA-256
+K4 candidate build `2026-08-09b` is application
+`a-7fe525e910c8`. Its path-remapped 52,890-byte module has SHA-256
 `2ba86a22a01602a504df792830e25d743a7038876f47b2b6effa50fe00099063`,
 no imports, unshared memory capped at 256 MiB, and a one-shot ABI. Two clean
 Rust 1.95.0 builds are byte-identical. Native wrapper debug/release suites

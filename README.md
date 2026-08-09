@@ -112,7 +112,7 @@ kernel-checked sessions under fingerprint
 `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
 its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
 all 247 authored QEDs. The integrated local browser candidate deterministically
-verifies as build `2026-08-09a`, application `a-a195e3ab28b3`, with 150 worker
+verifies as build `2026-08-09b`, application `a-7fe525e910c8`, with 150 worker
 sources; its source inventory, content manifest, and deployment contracts pass.
 The content-addressed local stage assembled successfully. The build is not
 deployed, and direct attached-browser UI inspection remains unclaimed. The

@@ -28,10 +28,10 @@
   },
   "format": "peano-kernel-browser-wasm-evidence",
   "release": {
-    "application_id": "a-a195e3ab28b3",
+    "application_id": "a-7fe525e910c8",
     "application_manifest_entries": 154,
-    "application_manifest_sha256": "a195e3ab28b3d5f4354faa9bd7375246d79017b223bb6e0315e0266a9041a84a",
-    "build": "2026-08-09a",
+    "application_manifest_sha256": "7fe525e910c80ac7bcb3f7ee7260e7b75d751a354d1d99d8b7e6387460eaaa89",
+    "build": "2026-08-09b",
     "deployed": false
   },
   "toolchain": {
