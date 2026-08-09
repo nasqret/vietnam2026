@@ -4,6 +4,87 @@ This directory preserves deterministic Hydra plumbing evidence. It contains
 no trained-model result, sealed benchmark, decision-procedure result, or
 matched-compute comparison.
 
+## H1.1b2 candidate metadata successor
+
+`library-epoch-metadata-candidate-v2.json` is an additive successor to the
+exact H1.1a ledger below. It does not rewrite that historical artifact and
+does not load its mixed explorer inputs. Instead, it preserves each pinned v1
+theorem row and joins it, in replay order, to the isolated H1.1b1 selected API
+bundle.
+
+- schema semantic digest:
+  `498dde0a3b4f762197d8c371609dfac2eabf7edcfc37a6d3c5cdf6ca21efb38a`;
+- schema document SHA-256:
+  `27af1e5c1ee0e73cb012db3d8b94cb9a6e1be48d08e8158ad48b8edac399973e`;
+- ordered 384-row theorem-record root:
+  `22330158f52f049ec920992f51f96a0ab0e9939c3eeb893f533616c17b48e98a`;
+- metadata root:
+  `e0c1d3683e111d7f2883cebbc423694159e82d95471d9375866a81ec596dfb9e`;
+- exact 3,732,032-byte metadata document SHA-256:
+  `dc6a59ce08397eba698651f6ed4faac0533dec55c13d5a8ca49d863d19d7b72d`;
+  and
+- exact 1,891-byte readiness-report SHA-256:
+  `f257646d1ba5b51835c8b1718538b4b21c89ea402ba073a9630842708db0206b`.
+
+The successor records 384 complete selected explicit/defined API and
+definition-use receipts. It separately preserves the historical fact that
+only 240 rows have both deployed-page receipts; 144 explicit and 144 defined
+pages remain pending. Human review, lineage, readable/optimized dependency
+vectors, leave-one-out evidence, publication union, and best-known comparison
+remain pending for all 384 rows. All freeze, training, retrieval, and
+evaluation flags remain false.
+
+The CLI writes nothing by default. Rebuild and compare both retained files:
+
+```console
+python3 scripts/build_peano_hydra_epoch_metadata_v2.py \
+  --check \
+  --output artifacts/peano-hydra/library-epoch-metadata-candidate-v2.json \
+  --report artifacts/peano-hydra/library-epoch-metadata-candidate-v2-readiness.json
+```
+
+The final optimized exact retained check passed in 30.4 seconds on this
+constrained local run. Its structural contract performs one fixed-source
+construction; absolute timing is diagnostic rather than a regression limit.
+The publication primitive uses atomic create-if-absent links and inode-checked
+rollback, so it cannot overwrite a destination introduced by a racing process.
+The final focused acceptance suite passed 46 tests in 101.07 seconds, and the
+independent post-optimization threat audit found no blocker.
+
+## H1.1b1 isolated selected documentation bundle
+
+`l0-documentation-candidate-v1/` is a tagless five-file bundle rebuilt from
+the exact 384 replay rows. It is not a filtered view of the 557-row proof
+explorer and contains no global tags, `dependents`, or bodies or names from the
+317 disjoint candidates.
+
+- schema semantic/document SHA-256:
+  `30236aaaecc41104e7e193476f59a8b764d56fe86c63ca04c1561ad38645832d` /
+  `a442e89ac312302dcee777b5741ca7f2d67e10f6ebcc996b8096fc6061c28a9c`;
+- explicit root/artifact SHA-256:
+  `b7942fa5a866ff7cd8a38f30c93787ec0abd2948e69710651e4d3578e64377da` /
+  `f1c9f364db0cb7ae7f4c7fe065b1ef48d5522fc49711667479ec3dc4db723936`;
+- defined root/artifact SHA-256:
+  `897fd5e4bedb44b63853e428ff5bc2e2c273e30a0c239450e0ec8f93d73fc61f` /
+  `164b34dd0cad555baf2164ee3da114fb60a447bd667112481e7225097dd17cea`;
+- isolation root/artifact SHA-256:
+  `64bdc2c52bcaf88d26382bbe514be4a442cc876b8df2a353c272587e1516d919` /
+  `8c8a6882d0d5a82552942fc0c3efe5a900244a9cad02c32b24cabe3d86a0eee6`;
+  and
+- manifest root/artifact SHA-256:
+  `8f7ef8fcca69bc6f5f8b39c220293b8414a65fd81576c584f78e59da104d46a4` /
+  `5ded97c27b859cc4725362bc76aba89fac06c5f11843b50529b78050b19348bf`.
+
+The explicit side has 384 rows, 1,038 declared edges, and 13,862 tactic lines.
+The defined side has 2,027 definition occurrences, 40 serialized definitions,
+and a pinned 43-entry parser registry. Check it without writing:
+
+```console
+python3 scripts/build_peano_hydra_library_documentation_bundle.py \
+  --check \
+  --output-dir artifacts/peano-hydra/l0-documentation-candidate-v1
+```
+
 ## H1.1a candidate epoch-metadata readiness ledger
 
 `library-epoch-metadata-candidate-v1.json` is a candidate-only inventory over
@@ -45,9 +126,11 @@ python3 scripts/build_peano_hydra_epoch_metadata.py \
   --report artifacts/peano-hydra/library-epoch-metadata-candidate-v1-readiness.json
 ```
 
-H1.1 remains open. The next order is to repair and audit the 144 missing
-receipts, complete A2's dependency/comparison evidence, and only then prepare
-a reviewed source-state request for an external independent owner.
+H1.1 remains open. H1.1b1 and H1.1b2 above later add isolated selected API
+receipts without rewriting this historical count; they do not deploy the 144
+pending page pairs. Deployed-page repair and A2's dependency/comparison
+evidence are independent parallel workstreams; both precede a reviewed
+source-state request for an external independent owner.
 
 ## H1.1 replay-complete candidate pack
 

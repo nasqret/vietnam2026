@@ -3735,3 +3735,87 @@ deposit, grant an independent owner freeze, or make the material eligible for
 training, retrieval, or evaluation. H1.1 stays open. The next sub-slice is
 H1.1b2: metadata v2 will bind this isolated bundle and report selected API
 coverage separately from deployed-page coverage.
+
+## 2026-08-09 — New evidence gets a successor, not a rewritten receipt
+
+H1.1b2 forced a small but important decision about time. Metadata v1 says that
+240 of the 384 replay theorems joined its proof-explorer and defined-explorer
+inputs. H1.1b1 later produced isolated selected API records for all 384. We
+must not rerun v1 and let its historical number become 384. A content-addressed
+receipt cannot mean “whatever the current generator would say.”
+
+We therefore built a full metadata-v2 successor. It strict-loads the exact v1
+schema, ledger, and readiness bytes but never imports the v1 builder and never
+reads the two mixed 557-row corpora. It preserves the predecessor's theorem,
+proof, source, atlas, vault, presentation, and unresolved-gap objects. It then
+joins all 384 rows, in replay order, to the exact isolated explicit and defined
+records. The join checks the formula, source and canonical statement, source
+locator, layer, tactic script, explanation, declared dependencies, and the
+defined row's explicit-record link. Definition uses bind stable ID to name,
+must occur in registry order without duplicates, and total 2,027 occurrences.
+
+Each new theorem row has its own hash. The ordered identity list has root
+`22330158f52f049ec920992f51f96a0ab0e9939c3eeb893f533616c17b48e98a`,
+and the complete metadata preimage binds that root. The schema semantic digest
+is `498dde0a3b4f762197d8c371609dfac2eabf7edcfc37a6d3c5cdf6ca21efb38a`;
+its exact file SHA-256 is
+`27af1e5c1ee0e73cb012db3d8b94cb9a6e1be48d08e8158ad48b8edac399973e`.
+The retained 3,732,032-byte candidate has exact artifact SHA-256
+`dc6a59ce08397eba698651f6ed4faac0533dec55c13d5a8ca49d863d19d7b72d`
+and semantic root
+`e0c1d3683e111d7f2883cebbc423694159e82d95471d9375866a81ec596dfb9e`.
+The 1,891-byte readiness artifact is
+`f257646d1ba5b51835c8b1718538b4b21c89ea402ba073a9630842708db0206b`;
+it now binds the ledger's exact artifact hash as well as its semantic root.
+
+The ledger reports both facts instead of collapsing them: selected API
+documentation is complete for 384 rows, while the historical deployed-page
+intersection remains 240 and each presentation surface has 144 pending rows.
+Human review, lineage, best-known comparison, readable and optimized direct
+dependencies, leave-one-out receipts, and the publication union remain
+pending for every theorem.
+
+The final security review found a real race in the first CLI draft. Checking
+that an output did not exist and then calling `rename` could overwrite a file
+created between those operations. Publication now uses a same-filesystem hard
+link as atomic create-if-absent, records the new inode, and rolls back only an
+inode it created. The regression injects a competitor before the second link,
+then verifies exact competitor preservation, first-sibling rollback, and no
+staging debris. This was worth fixing even for a candidate generator: evidence
+tools should not become accidental destructive tools.
+
+The first CLI also reconstructed the entire 384-row selected bundle twice:
+once to build metadata and once because the public readiness function correctly
+refuses to trust an arbitrary dictionary. We kept that public behavior. The
+CLI now calls a private combined builder with no metadata argument; that
+builder itself performs one exact pinned-input construction and immediately
+projects its readiness report. Private projection helpers stay out of the
+public API. A call-count test fixes the structural cost at one construction,
+compares the projected report byte-for-byte with public validation and the
+retained artifact, and keeps rerooted-forgery rejection on the public path.
+The final isolated retained check passed in 30.4 seconds, but that wall time is
+diagnostic; the enforceable regression is one exact construction, not a timing
+threshold.
+
+After the optimization and retained pins stabilized, the complete focused
+gate passed 46 tests in 101.07 seconds. It covers semantic joins, definition
+use receipts, exact row and document roots, rerooted predecessor and bundle
+forgeries, candidate-import exclusion, strict loading, the public readiness
+boundary, and atomic publication including the injected race. The independent
+post-optimization threat audit found no blocker.
+
+The integration lanes stayed green as well. Five historical Hydra surfaces
+passed 119 tests in 204.71 seconds. Lambda Lab passed 360 tests plus 36
+subtests. The CI sharder passed 32 tests after assigning conservative measured
+weights to both new suites. A strict warning-as-error Book build accepted all
+46 sources, and the structural checker found 2,324 HTML pages with zero broken
+relative targets, fragments, escapes, remote runtime assets, or unsafe active
+links. The local ignored HTML tree was rebuilt so the new chapter is available
+for preview; it is not a retained source-state or deployment receipt.
+
+No owner deposit or freeze was created. Version two remains `candidate`,
+intuitionistic, `freeze_ready = false`, and ineligible for training, retrieval,
+and evaluation. H1.1 stays open. A2 dependency minimization/publication-union
+construction and the 144-row deployed-page repair are independent parallel
+workstreams; lineage and an external source-state/freeze request come only
+after both close.

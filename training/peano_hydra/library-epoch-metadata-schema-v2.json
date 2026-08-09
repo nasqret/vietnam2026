@@ -1,0 +1,753 @@
+{
+  "additional_fields_policy": "forbidden-at-every-schema-owned-object",
+  "canonical_json": {
+    "document": "UTF-8, sorted keys, two-space indentation, one final LF",
+    "hash_preimage": "UTF-8, sorted keys, compact separators, no final LF",
+    "numbers": "exact integers only; booleans are not integers",
+    "objects": "duplicate keys forbidden; floating values, NaN, infinity, cycles, and non-JSON values forbidden"
+  },
+  "claim_boundary": {
+    "candidate_only": true,
+    "deployed_page_completeness": "the exact count of rows where both inherited historical explicit-page status and inherited historical defined-page status are present; each pending count is the number of rows whose corresponding inherited status is not present",
+    "deployed_pages": "historical per-theorem status inherited from the byte-pinned predecessor; it is presentation evidence only and is not a selected API receipt",
+    "human_review": "selected API documentation is deterministic machine documentation, not an independent review of prose, lineage, dependency vectors, or proof quality",
+    "owner_authority": "absent; this successor cannot mint a deposit, freeze an epoch, or authorize training, retrieval, or evaluation",
+    "selected_api_completeness": "means exact replay-ordered joins to the isolated explicit and defined API records plus the defined-syntax receipt; it does not imply deployed page completeness, human review, or eligibility",
+    "successor_scope": "a full candidate ledger whose source, theorem, proof, atlas, and vault evidence is preserved from one exact predecessor row while selected API and definition receipts come only from the isolated bundle"
+  },
+  "constants": {
+    "evaluation_eligible": false,
+    "freeze_ready": false,
+    "logic_mode": "intuitionistic",
+    "retrieval_eligible": false,
+    "status": "candidate",
+    "training_eligible": false
+  },
+  "format": "peano-hydra-library-epoch-metadata-schema",
+  "hashes": {
+    "document_sha256": "SHA-256 of exact retained canonical document bytes",
+    "metadata_root_sha256": "SHA-256 of the exact compact canonical root_preimage",
+    "record_sha256": "for a v2 theorem row only, SHA-256 of the compact canonical theorem object after removing only its record_sha256 field",
+    "selected_record_sha256": "the record_sha256 embedded in the exact isolated documentation record",
+    "v1_row_sha256": "SHA-256 of the complete compact canonical predecessor theorem row"
+  },
+  "id": "peano-hydra-library-epoch-metadata-v2",
+  "limits": {
+    "bundle_defined_bytes": 16000000,
+    "bundle_explicit_bytes": 8000000,
+    "bundle_isolation_bytes": 1000000,
+    "bundle_manifest_bytes": 1000000,
+    "bundle_schema_bytes": 1000000,
+    "metadata_bytes": 24000000,
+    "metadata_json_depth": 192,
+    "metadata_json_items": 3000000,
+    "predecessor_ledger_bytes": 16000000,
+    "predecessor_readiness_bytes": 1000000,
+    "predecessor_schema_bytes": 1000000,
+    "schema_bytes": 1000000,
+    "theorem_count": 384
+  },
+  "metadata": {
+    "aggregate": {
+      "closed": true,
+      "required": {
+        "declared_dependency_edges": "integer",
+        "deployed_page_documentation_complete_count": "integer",
+        "selected_api_documentation_complete_count": "integer",
+        "source_locator_count": "integer",
+        "theorem_count": "integer"
+      }
+    },
+    "documentation_sources": {
+      "closed": true,
+      "required": {
+        "atlas": "predecessor-receipt-object",
+        "selected_bundle": "selected-bundle-object",
+        "vault": "predecessor-receipt-object"
+      }
+    },
+    "gaps": {
+      "closed": true,
+      "required": {
+        "atlas_missing_count": "integer",
+        "atlas_stale_count": "integer",
+        "deployed_defined_page_pending_count": "integer",
+        "deployed_explicit_page_pending_count": "integer",
+        "human_review_pending_count": "integer",
+        "lineage_pending_count": "integer",
+        "optimized_best_known_pending_count": "integer",
+        "optimized_dependency_vectors_pending_count": "integer",
+        "publication_union_pending_count": "integer",
+        "readable_dependency_vectors_unverified_count": "integer",
+        "selected_defined_api_missing_count": "integer",
+        "selected_defined_api_stale_count": "integer",
+        "selected_definition_receipt_missing_count": "integer",
+        "selected_definition_receipt_stale_count": "integer",
+        "selected_explicit_api_missing_count": "integer",
+        "selected_explicit_api_stale_count": "integer",
+        "source_locator_missing_count": "integer",
+        "vault_missing_count": "integer",
+        "vault_stale_count": "integer"
+      }
+    },
+    "required": {
+      "aggregate": "aggregate-object",
+      "documentation_sources": "documentation-sources-object",
+      "evaluation_eligible": "false",
+      "format": "peano-hydra-library-epoch-metadata",
+      "freeze_ready": "false",
+      "gaps": "gaps-object",
+      "id": "authoring-library-epoch-metadata-candidate-v2",
+      "logic_mode": "intuitionistic",
+      "predecessor": "predecessor-object",
+      "replay_pack": "predecessor-preserved-object",
+      "repository": "predecessor-preserved-object",
+      "retrieval_eligible": "false",
+      "root_preimage": "root-preimage-object",
+      "root_sha256": "sha256",
+      "schema": "schema-identity-object",
+      "status": "candidate",
+      "supersession": "supersession-object",
+      "theorem_count": "integer",
+      "theorem_records": "ordered-theorem-record-receipt-object",
+      "theorems": "ordered-theorem-array",
+      "training_eligible": "false",
+      "v": "2"
+    },
+    "root_preimage": {
+      "closed": true,
+      "forbidden_recursive_fields": [
+        "root_preimage",
+        "root_sha256"
+      ],
+      "required": {
+        "format": "peano-hydra-library-epoch-metadata-root-preimage",
+        "payload": "metadata-root-payload",
+        "v": "2"
+      }
+    }
+  },
+  "object_shapes": {
+    "aggregate": {
+      "fields": [
+        "declared_dependency_edges",
+        "deployed_page_documentation_complete_count",
+        "selected_api_documentation_complete_count",
+        "source_locator_count",
+        "theorem_count"
+      ],
+      "types": [
+        "integer",
+        "integer",
+        "integer",
+        "integer",
+        "integer"
+      ]
+    },
+    "definition_receipt": {
+      "definition_use_count_contract": "sum of occurrences across the ordered uses array in definition_use_preimage",
+      "fields": [
+        "artifact_path",
+        "artifact_sha256",
+        "definition_use_count",
+        "definition_use_preimage",
+        "definition_use_receipt_sha256",
+        "document_root_sha256",
+        "record_sha256",
+        "registry",
+        "status"
+      ]
+    },
+    "definition_registry": {
+      "fields": [
+        "id",
+        "parser_registry_definition_count",
+        "parser_registry_semantic_sha256",
+        "path",
+        "serialized_definition_count",
+        "source_sha256",
+        "v"
+      ]
+    },
+    "definition_use": {
+      "fields": [
+        "definition",
+        "name",
+        "occurrences"
+      ],
+      "types": [
+        "serialized-definition-id",
+        "definition-name",
+        "positive-exact-integer"
+      ]
+    },
+    "definition_use_preimage": {
+      "fields": [
+        "format",
+        "uses",
+        "v"
+      ],
+      "hash_contract": "definition_use_receipt_sha256 is SHA-256 of this entire compact canonical object",
+      "types": [
+        "peano-hydra-library-definition-use-receipt-preimage",
+        "ordered-definition-use-array",
+        "2"
+      ]
+    },
+    "documentation_sources": {
+      "fields": [
+        "atlas",
+        "selected_bundle",
+        "vault"
+      ]
+    },
+    "gaps": {
+      "fields": [
+        "atlas_missing_count",
+        "atlas_stale_count",
+        "deployed_defined_page_pending_count",
+        "deployed_explicit_page_pending_count",
+        "human_review_pending_count",
+        "lineage_pending_count",
+        "optimized_best_known_pending_count",
+        "optimized_dependency_vectors_pending_count",
+        "publication_union_pending_count",
+        "readable_dependency_vectors_unverified_count",
+        "selected_defined_api_missing_count",
+        "selected_defined_api_stale_count",
+        "selected_definition_receipt_missing_count",
+        "selected_definition_receipt_stale_count",
+        "selected_explicit_api_missing_count",
+        "selected_explicit_api_stale_count",
+        "source_locator_missing_count",
+        "vault_missing_count",
+        "vault_stale_count"
+      ],
+      "types": "all exact nonnegative integers"
+    },
+    "metadata": {
+      "fields": [
+        "aggregate",
+        "documentation_sources",
+        "evaluation_eligible",
+        "format",
+        "freeze_ready",
+        "gaps",
+        "id",
+        "logic_mode",
+        "predecessor",
+        "replay_pack",
+        "repository",
+        "retrieval_eligible",
+        "root_preimage",
+        "root_sha256",
+        "schema",
+        "status",
+        "supersession",
+        "theorem_count",
+        "theorem_records",
+        "theorems",
+        "training_eligible",
+        "v"
+      ]
+    },
+    "metadata_body": {
+      "fields": [
+        "aggregate",
+        "documentation_sources",
+        "evaluation_eligible",
+        "format",
+        "freeze_ready",
+        "gaps",
+        "id",
+        "logic_mode",
+        "predecessor",
+        "replay_pack",
+        "repository",
+        "retrieval_eligible",
+        "schema",
+        "status",
+        "supersession",
+        "theorem_count",
+        "theorem_records",
+        "training_eligible",
+        "v"
+      ]
+    },
+    "metadata_root_payload": {
+      "body_contract": "the exact metadata_body object: every top-level metadata field except root_preimage, root_sha256, and theorems; theorem_records is included in full",
+      "fields": [
+        "body",
+        "theorem_record_root_sha256"
+      ]
+    },
+    "metadata_root_preimage": {
+      "fields": [
+        "format",
+        "payload",
+        "v"
+      ],
+      "payload_contract": "payload is the complete metadata body except the theorem array, plus theorem_record_root_sha256; theorem rows are bound by theorem_records",
+      "types": [
+        "peano-hydra-library-epoch-metadata-root-preimage",
+        "metadata-root-payload",
+        "2"
+      ]
+    },
+    "predecessor": {
+      "fields": [
+        "ledger",
+        "readiness",
+        "schema"
+      ]
+    },
+    "predecessor_ledger": {
+      "fields": [
+        "artifact_path",
+        "artifact_sha256",
+        "id",
+        "root_sha256",
+        "v"
+      ]
+    },
+    "predecessor_readiness": {
+      "fields": [
+        "artifact_path",
+        "artifact_sha256",
+        "metadata_root_sha256",
+        "v"
+      ]
+    },
+    "predecessor_schema": {
+      "fields": [
+        "artifact_path",
+        "artifact_sha256",
+        "format",
+        "id",
+        "sha256",
+        "v"
+      ]
+    },
+    "presentation": {
+      "fields": [
+        "authority",
+        "deployed_defined_page_status",
+        "deployed_explicit_page_status"
+      ]
+    },
+    "readiness": {
+      "fields": [
+        "declared_dependency_edges",
+        "deployed_page_documentation_complete_count",
+        "evaluation_eligible",
+        "format",
+        "freeze_ready",
+        "gaps",
+        "manifest_root_sha256",
+        "metadata_artifact_sha256",
+        "metadata_root_sha256",
+        "predecessor_metadata_root_sha256",
+        "replay_root_sha256",
+        "retrieval_eligible",
+        "selected_api_documentation_complete_count",
+        "selected_bundle_root_sha256",
+        "status",
+        "theorem_count",
+        "theorem_record_root_sha256",
+        "training_eligible",
+        "v"
+      ],
+      "root_field_contracts": {
+        "manifest_root_sha256": "retained replay-pack manifest root",
+        "metadata_artifact_sha256": "SHA-256 of the exact canonical validated metadata-v2 document bytes",
+        "selected_bundle_root_sha256": "selected documentation-bundle manifest root"
+      }
+    },
+    "row_predecessor": {
+      "fields": [
+        "record_sha256"
+      ]
+    },
+    "schema_identity": {
+      "fields": [
+        "artifact_sha256",
+        "format",
+        "id",
+        "sha256",
+        "v"
+      ]
+    },
+    "selected_api_receipt": {
+      "fields": [
+        "artifact_path",
+        "artifact_sha256",
+        "document_root_sha256",
+        "record_sha256",
+        "status"
+      ]
+    },
+    "selected_bundle": {
+      "fields": [
+        "artifact_path",
+        "defined",
+        "explicit",
+        "isolation",
+        "manifest",
+        "registry",
+        "schema"
+      ]
+    },
+    "selected_bundle_defined": {
+      "fields": [
+        "artifact_path",
+        "artifact_sha256",
+        "definition_count",
+        "ordered_record_root_sha256",
+        "record_count",
+        "root_sha256"
+      ]
+    },
+    "selected_bundle_explicit": {
+      "fields": [
+        "artifact_path",
+        "artifact_sha256",
+        "ordered_record_root_sha256",
+        "record_count",
+        "root_sha256"
+      ]
+    },
+    "selected_bundle_rooted_member": {
+      "fields": [
+        "artifact_path",
+        "artifact_sha256",
+        "root_sha256"
+      ]
+    },
+    "selected_bundle_schema": {
+      "fields": [
+        "artifact_path",
+        "artifact_sha256",
+        "format",
+        "id",
+        "sha256",
+        "v"
+      ]
+    },
+    "supersession": {
+      "fields": [
+        "added_receipts",
+        "kind",
+        "predecessor_id",
+        "preserved_evidence",
+        "status"
+      ]
+    },
+    "theorem": {
+      "fields": [
+        "declaration_order",
+        "definitions",
+        "dependencies",
+        "documentation",
+        "explanation",
+        "index",
+        "layer",
+        "lineage",
+        "logic",
+        "name",
+        "optimized_construction",
+        "predecessor",
+        "presentation",
+        "proof",
+        "readable_proof",
+        "record_sha256",
+        "source",
+        "statement"
+      ],
+      "record_hash_contract": "record_sha256 is SHA-256 of compact canonical theorem object after removing only record_sha256"
+    },
+    "theorem_documentation": {
+      "fields": [
+        "atlas",
+        "selected_defined_api",
+        "selected_explicit_api",
+        "vault"
+      ]
+    },
+    "theorem_record_identity": {
+      "fields": [
+        "index",
+        "name",
+        "record_sha256"
+      ]
+    },
+    "theorem_records": {
+      "fields": [
+        "count",
+        "preimage",
+        "root_sha256"
+      ],
+      "hash_contract": "root_sha256 is SHA-256 of the entire compact canonical preimage"
+    },
+    "theorem_records_preimage": {
+      "fields": [
+        "format",
+        "records",
+        "v"
+      ],
+      "types": [
+        "peano-hydra-library-epoch-theorem-records-preimage",
+        "ordered-theorem-record-identity-array",
+        "2"
+      ]
+    }
+  },
+  "pins": {
+    "predecessor": {
+      "ledger_artifact_sha256": "e719dd526d0aa07e2521fb2e499f2ee6810506d32a912298f11dbac60a2c0289",
+      "ledger_root_sha256": "b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279",
+      "readiness_artifact_sha256": "386be7eb475980a373122d769a496220319d34090463e0a3bc870cfece3e4c25",
+      "schema_artifact_sha256": "9867378c8802501d2120ad4d94a86378815cf90b003eafc92b164685da61c956",
+      "schema_semantic_sha256": "71995b59d4f5592a08a90dc354a91888f5f1f6f89ec4428be291aea19e76062c"
+    },
+    "selected_bundle": {
+      "defined_artifact_sha256": "164b34dd0cad555baf2164ee3da114fb60a447bd667112481e7225097dd17cea",
+      "defined_root_sha256": "897fd5e4bedb44b63853e428ff5bc2e2c273e30a0c239450e0ec8f93d73fc61f",
+      "explicit_artifact_sha256": "f1c9f364db0cb7ae7f4c7fe065b1ef48d5522fc49711667479ec3dc4db723936",
+      "explicit_root_sha256": "b7942fa5a866ff7cd8a38f30c93787ec0abd2948e69710651e4d3578e64377da",
+      "isolation_artifact_sha256": "8c8a6882d0d5a82552942fc0c3efe5a900244a9cad02c32b24cabe3d86a0eee6",
+      "isolation_root_sha256": "64bdc2c52bcaf88d26382bbe514be4a442cc876b8df2a353c272587e1516d919",
+      "manifest_artifact_sha256": "5ded97c27b859cc4725362bc76aba89fac06c5f11843b50529b78050b19348bf",
+      "manifest_root_sha256": "8f7ef8fcca69bc6f5f8b39c220293b8414a65fd81576c584f78e59da104d46a4",
+      "schema_artifact_sha256": "a442e89ac312302dcee777b5741ca7f2d67e10f6ebcc996b8096fc6061c28a9c",
+      "schema_semantic_sha256": "30236aaaecc41104e7e193476f59a8b764d56fe86c63ca04c1561ad38645832d"
+    }
+  },
+  "predecessor": {
+    "closed": true,
+    "ledger": {
+      "required": {
+        "artifact_path": "text",
+        "artifact_sha256": "sha256",
+        "id": "authoring-library-epoch-metadata-candidate-v1",
+        "root_sha256": "sha256",
+        "v": "1"
+      }
+    },
+    "readiness": {
+      "required": {
+        "artifact_path": "text",
+        "artifact_sha256": "sha256",
+        "metadata_root_sha256": "sha256",
+        "v": "1"
+      }
+    },
+    "required": {
+      "ledger": "ledger-identity-object",
+      "readiness": "readiness-identity-object",
+      "schema": "schema-identity-object"
+    },
+    "schema": {
+      "required": {
+        "artifact_path": "text",
+        "artifact_sha256": "sha256",
+        "format": "peano-hydra-library-epoch-metadata-schema",
+        "id": "peano-hydra-library-epoch-metadata-v1",
+        "sha256": "sha256",
+        "v": "1"
+      }
+    }
+  },
+  "presentation_statuses": [
+    "missing",
+    "present",
+    "stale"
+  ],
+  "readiness": {
+    "closed": true,
+    "derivation": "constructed only after complete exact metadata-v2 validation",
+    "required": {
+      "declared_dependency_edges": "integer",
+      "deployed_page_documentation_complete_count": "integer",
+      "evaluation_eligible": "false",
+      "format": "peano-hydra-library-epoch-metadata-readiness",
+      "freeze_ready": "false",
+      "gaps": "exact metadata gaps object",
+      "manifest_root_sha256": "sha256",
+      "metadata_artifact_sha256": "sha256",
+      "metadata_root_sha256": "sha256",
+      "predecessor_metadata_root_sha256": "sha256",
+      "replay_root_sha256": "sha256",
+      "retrieval_eligible": "false",
+      "selected_api_documentation_complete_count": "integer",
+      "selected_bundle_root_sha256": "sha256",
+      "status": "candidate",
+      "theorem_count": "integer",
+      "theorem_record_root_sha256": "sha256",
+      "training_eligible": "false",
+      "v": "2"
+    }
+  },
+  "selected_bundle": {
+    "closed": true,
+    "defined": {
+      "required": {
+        "artifact_path": "text",
+        "artifact_sha256": "sha256",
+        "definition_count": "integer",
+        "ordered_record_root_sha256": "sha256",
+        "record_count": "integer",
+        "root_sha256": "sha256"
+      }
+    },
+    "explicit": {
+      "required": {
+        "artifact_path": "text",
+        "artifact_sha256": "sha256",
+        "ordered_record_root_sha256": "sha256",
+        "record_count": "integer",
+        "root_sha256": "sha256"
+      }
+    },
+    "isolation": {
+      "required": {
+        "artifact_path": "text",
+        "artifact_sha256": "sha256",
+        "root_sha256": "sha256"
+      }
+    },
+    "manifest": {
+      "required": {
+        "artifact_path": "text",
+        "artifact_sha256": "sha256",
+        "root_sha256": "sha256"
+      }
+    },
+    "registry": {
+      "required": {
+        "id": "text",
+        "parser_registry_definition_count": "integer",
+        "parser_registry_semantic_sha256": "sha256",
+        "path": "text",
+        "serialized_definition_count": "integer",
+        "source_sha256": "sha256",
+        "v": "integer"
+      }
+    },
+    "required": {
+      "artifact_path": "text",
+      "defined": "defined-document-identity-object",
+      "explicit": "explicit-document-identity-object",
+      "isolation": "isolation-document-identity-object",
+      "manifest": "manifest-document-identity-object",
+      "registry": "definition-registry-identity-object",
+      "schema": "schema-identity-object"
+    },
+    "schema": {
+      "required": {
+        "artifact_path": "text",
+        "artifact_sha256": "sha256",
+        "format": "peano-hydra-library-documentation-bundle-schema",
+        "id": "peano-hydra-library-documentation-bundle-v1",
+        "sha256": "sha256",
+        "v": "1"
+      }
+    }
+  },
+  "supersession": {
+    "closed": true,
+    "required": {
+      "added_receipts": "ordered-text-array",
+      "kind": "full-candidate-successor-ledger",
+      "predecessor_id": "authoring-library-epoch-metadata-candidate-v1",
+      "preserved_evidence": "ordered-text-array",
+      "status": "candidate-successor"
+    }
+  },
+  "theorem": {
+    "definitions": {
+      "closed": true,
+      "required": {
+        "artifact_path": "text",
+        "artifact_sha256": "sha256",
+        "definition_use_count": "integer",
+        "definition_use_preimage": "definition-use-preimage-object",
+        "definition_use_receipt_sha256": "sha256",
+        "document_root_sha256": "sha256",
+        "record_sha256": "sha256",
+        "registry": "definition-registry-identity-object",
+        "status": "present"
+      }
+    },
+    "documentation": {
+      "closed": true,
+      "required": {
+        "atlas": "predecessor-preserved-receipt-object",
+        "selected_defined_api": "selected-api-receipt-object",
+        "selected_explicit_api": "selected-api-receipt-object",
+        "vault": "predecessor-preserved-receipt-object"
+      },
+      "selected_api_receipt": {
+        "closed": true,
+        "required": {
+          "artifact_path": "text",
+          "artifact_sha256": "sha256",
+          "document_root_sha256": "sha256",
+          "record_sha256": "sha256",
+          "status": "present"
+        }
+      }
+    },
+    "predecessor": {
+      "closed": true,
+      "required": {
+        "record_sha256": "sha256"
+      }
+    },
+    "presentation": {
+      "closed": true,
+      "required": {
+        "authority": "historical-non-authoritative",
+        "deployed_defined_page_status": "presentation-status",
+        "deployed_explicit_page_status": "presentation-status"
+      }
+    },
+    "preserved_objects": {
+      "dependencies": "exact predecessor value",
+      "explanation": "exact predecessor value",
+      "lineage": "exact predecessor value",
+      "logic": "exact predecessor value",
+      "optimized_construction": "exact predecessor value",
+      "proof": "exact predecessor value",
+      "readable_proof": "exact predecessor value",
+      "source": "exact predecessor value",
+      "statement": "exact predecessor value"
+    },
+    "required": {
+      "declaration_order": "integer",
+      "definitions": "selected-definition-receipt-object",
+      "dependencies": "predecessor-preserved-object",
+      "documentation": "documentation-object",
+      "explanation": "predecessor-preserved-object",
+      "index": "integer",
+      "layer": "predecessor-preserved-text",
+      "lineage": "predecessor-preserved-object",
+      "logic": "predecessor-preserved-object",
+      "name": "theorem-name",
+      "optimized_construction": "predecessor-preserved-object",
+      "predecessor": "row-predecessor-object",
+      "presentation": "presentation-object",
+      "proof": "predecessor-preserved-object",
+      "readable_proof": "predecessor-preserved-object",
+      "record_sha256": "sha256",
+      "source": "predecessor-preserved-object",
+      "statement": "predecessor-preserved-object"
+    }
+  },
+  "unresolved_constants": {
+    "dependency_status": "declared-publication-only",
+    "explanation_review_status": "pending-human-review",
+    "lineage_status": "pending",
+    "optimized_claim": "submitted-not-best-known"
+  },
+  "v": 2
+}

@@ -433,6 +433,71 @@ open. Metadata v1 must continue to report its historical 240-complete join.
 The next sub-slice is H1.1b2: metadata v2 will bind this bundle and report
 selected API coverage separately from deployed-page coverage.
 
+#### Additive candidate metadata successor implemented in H1.1b2
+
+H1.1b2 introduces a new ledger rather than resealing metadata v1. The v1
+artifact remains the exact historical observation that 240 replay theorems
+joined the then-existing explorer surfaces. Version two reads that canonical
+artifact as an opaque, byte-pinned predecessor; it never imports or invokes
+the v1 builder and never reads the mixed 557-row explorer corpora. It joins
+each predecessor row, in replay order, to the exact explicit and defined
+records in the isolated H1.1b1 bundle.
+
+The join is semantic, not name-only. It checks statement source and canonical
+hashes, formula identity, source locator, catalog layer, readable script,
+explanation, declared dependencies, and minimality flag. Defined rows are
+also tied to their explicit-row hash. Every definition use binds the stable
+definition ID, registered name, canonical registry order, positive occurrence
+count, and the retained aggregate of 2,027 occurrences. A per-row predecessor
+hash, selected-record hashes, definition-use preimage, v2 theorem-record hash,
+ordered 384-row root, and whole-ledger root make those joins independently
+addressable.
+
+The three documentation quantities deliberately remain different:
+
+- selected API completeness is 384 rows;
+- deployed-page completeness is the exact intersection where both historical
+  explicit- and defined-page receipts are present, namely 240 rows; and
+- each deployed presentation surface still has 144 pending rows.
+
+Machine documentation therefore closes the selected API gap without
+pretending that pages were deployed or reviewed. Human review, lineage,
+readable and optimized dependency vectors, deterministic publication unions,
+best-known comparison, and owner authority remain pending for all 384 rows.
+
+Schema v2's semantic digest is
+`498dde0a3b4f762197d8c371609dfac2eabf7edcfc37a6d3c5cdf6ca21efb38a`
+and its exact artifact SHA-256 is
+`27af1e5c1ee0e73cb012db3d8b94cb9a6e1be48d08e8158ad48b8edac399973e`.
+The retained candidate is 3,732,032 bytes, artifact SHA-256
+`dc6a59ce08397eba698651f6ed4faac0533dec55c13d5a8ca49d863d19d7b72d`,
+semantic root
+`e0c1d3683e111d7f2883cebbc423694159e82d95471d9375866a81ec596dfb9e`,
+and ordered theorem-record root
+`22330158f52f049ec920992f51f96a0ab0e9939c3eeb893f533616c17b48e98a`.
+The 1,891-byte readiness artifact is
+`f257646d1ba5b51835c8b1718538b4b21c89ea402ba073a9630842708db0206b`.
+It is derived only after full fixed-source reconstruction and binds both the
+metadata root and exact metadata artifact hash.
+
+The loader rejects noncanonical, oversized, nonregular, final-symlink, and
+symlink-ancestor inputs. The CLI writes nothing by default, supports explicit
+read-only checks, and publishes explicit outputs with a same-filesystem
+create-if-absent hard link. Inode-checked rollback preserves a destination
+created by a racing process and removes only files created by this invocation.
+These are transport guarantees, not independent owner or kernel authority.
+
+H1.1 remains open. Metadata v2 is still `candidate`, intuitionistic,
+`freeze_ready = false`, and ineligible for training, retrieval, and evaluation.
+The next internal evidence is A2: separately verified readable and optimized
+dependency vectors, leave-one-out receipts, and their publication union.
+Deploying the 144 pending page pairs is an independent parallel documentation
+workstream. Both must finish before a source-state/freeze request.
+The final focused gate passed 46 tests in 101.07 seconds, including exact
+retained pins, semantic and reroot attacks, import isolation, public readiness
+forgery rejection, the one-build CLI contract, and atomic publication races.
+The independently repeated post-optimization threat audit found no blocker.
+
 ### 2.4 Sealed-test law
 
 The unit of separation is a mathematical **lineage**, not a row or filename.

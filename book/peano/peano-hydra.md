@@ -1085,6 +1085,74 @@ or evaluation claim. Metadata v1 truthfully remains the historical
 bundle and reports selected API coverage separately from deployed-page
 coverage; H1.1 itself remains open.
 
+### A successor ledger, not a rewritten past
+
+H1.1b2 now performs that binding. The tempting implementation was to rerun the
+old metadata builder and let its coverage number change from 240 to 384. That
+would make a supposedly historical receipt depend on today's generated pages
+and would silently change the meaning of a sealed hash. Instead, metadata v1
+remains byte-for-byte immutable. Metadata v2 names it as one exact predecessor
+and adds a second, exact documentation source: the isolated H1.1b1 bundle.
+
+This gives a useful example of evidence monotonicity. New evidence may add a
+successor claim, but it may not rewrite what an earlier receipt observed. The
+new ledger keeps the predecessor's theorem semantics, proof receipts, source
+locators, atlas and vault receipts, unresolved review fields, and historical
+page status. For each replay-ordered theorem it then adds:
+
+- the predecessor row hash;
+- the selected explicit-API record hash;
+- the selected defined-API record hash;
+- a typed preimage and hash for the theorem's definition uses; and
+- a new theorem-row hash included in an ordered 384-row root.
+
+The join checks far more than the theorem name. Statement source, canonical
+formula, script, source location, layer, explanation, and declared dependency
+vector must all agree. Definition occurrences must resolve from stable IDs to
+the right names in canonical registry order; their total remains exactly
+2,027. A completely rerooted but semantically mismatched predecessor or bundle
+is rejected because validation reconstructs the expected document from the
+fixed artifacts.
+
+The resulting numbers intentionally answer two different questions. There are
+384 complete selected API rows. There are still only 240 rows for which both
+historical deployed-page receipts are present, leaving 144 pending explicit
+pages and 144 pending defined pages. “We can address a machine-readable record”
+is not the same statement as “we deployed and reviewed its teaching page.”
+
+Schema v2 has semantic digest
+`498dde0a3b4f762197d8c371609dfac2eabf7edcfc37a6d3c5cdf6ca21efb38a`
+and artifact SHA-256
+`27af1e5c1ee0e73cb012db3d8b94cb9a6e1be48d08e8158ad48b8edac399973e`.
+The 3,732,032-byte ledger has artifact SHA-256
+`dc6a59ce08397eba698651f6ed4faac0533dec55c13d5a8ca49d863d19d7b72d`,
+root `e0c1d3683e111d7f2883cebbc423694159e82d95471d9375866a81ec596dfb9e`,
+and theorem-record root
+`22330158f52f049ec920992f51f96a0ab0e9939c3eeb893f533616c17b48e98a`.
+The 1,891-byte readiness artifact has SHA-256
+`f257646d1ba5b51835c8b1718538b4b21c89ea402ba073a9630842708db0206b`
+and binds the exact ledger bytes in addition to the semantic root.
+
+Even the output path is treated as evidence. The loader rejects symlinked
+ancestor components, and the CLI's create-if-absent publication cannot
+overwrite a file introduced in the inspection-to-publication race window. A
+test deliberately creates such a competitor: the tool preserves its inode and
+bytes, rolls back its own sibling, and leaves no staging files.
+
+Nothing here freezes $L_0$. The ledger remains intuitionistic, candidate-only,
+and ineligible for training, retrieval, and evaluation. All 384 theorems still
+lack human review, lineage, verified readable and optimized dependency vectors,
+a publication union, and best-known comparison. Those are the next pieces of
+the campaign, not details that documentation completeness can waive. A2 and
+the 144-row deployed-page repair can proceed in parallel, but both must finish
+before an owner freeze.
+
+The final focused suite passed 46 tests in 101.07 seconds. It includes exact
+retained byte and root pins, cross-join and fully rerooted forgeries, strict
+loader and import isolation, the public-readiness reconstruction boundary, the
+private one-build CLI contract, and both ordinary and racing publication
+failures. An independent post-optimization threat review found no blocker.
+
 ## What “matched compute” means
 
 We compare three frozen systems on the same sealed targets:

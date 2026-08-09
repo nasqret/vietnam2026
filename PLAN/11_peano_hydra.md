@@ -251,7 +251,7 @@ the schemas exist.
           change metadata-v1's historical 240-complete report. The compactor's
           wider QR-stack import is lazy so importing the selected per-theorem
           API does not itself load non-selected theorem bodies.
-    - [ ] **H1.1b2 — selected metadata join:** add metadata v2 that binds the
+    - [x] **H1.1b2 — selected metadata join:** add metadata v2 that binds the
           isolated bundle and reports selected API coverage separately from
           deployed-page coverage. Preserve metadata v1 exactly as historical
           evidence.
@@ -327,6 +327,37 @@ The focused implementation gate passed 36 tests in 126.87 seconds; after the
 final pin update, the seven targeted retained-artifact tests passed with 36
 deselected in 7.10 seconds. Final acceptance then passed all 43 focused tests
 in 115.64 seconds and 23 compatibility tests in 18.19 seconds.
+
+H1.1b2 preserves metadata v1 byte-for-byte and adds a full candidate successor
+ledger. Schema v2 has semantic digest
+`498dde0a3b4f762197d8c371609dfac2eabf7edcfc37a6d3c5cdf6ca21efb38a`
+and exact artifact SHA-256
+`27af1e5c1ee0e73cb012db3d8b94cb9a6e1be48d08e8158ad48b8edac399973e`.
+The 3,732,032-byte retained ledger has exact artifact SHA-256
+`dc6a59ce08397eba698651f6ed4faac0533dec55c13d5a8ca49d863d19d7b72d`,
+semantic root
+`e0c1d3683e111d7f2883cebbc423694159e82d95471d9375866a81ec596dfb9e`,
+and ordered theorem-record root
+`22330158f52f049ec920992f51f96a0ab0e9939c3eeb893f533616c17b48e98a`.
+Its 1,891-byte readiness report has artifact SHA-256
+`f257646d1ba5b51835c8b1718538b4b21c89ea402ba073a9630842708db0206b`
+and binds the ledger's exact transport hash as well as its semantic root.
+
+The successor reports 384 selected explicit/defined API and definition-use
+receipts, but separately preserves the historical deployed-page intersection
+of 240 rows and two 144-row presentation gaps. It adds no page, owner, review,
+lineage, minimality, best-known, dependency-vector, publication-union, A2,
+freeze, training, retrieval, or evaluation authority. All 384 rows retain
+those unresolved fields. H1.1 therefore remains open. A2 dependency
+minimization/publication-union construction and deployed-page repair are the
+next two independent workstreams; both precede lineage and an independently
+owned source-state/freeze request.
+Final H1.1b2 acceptance passed 46 focused tests in 101.07 seconds; the
+standalone retained `--check` passed in 30.4 seconds, and the independent
+post-optimization threat audit found no blocker.
+Historical Hydra compatibility passed 119 tests in 204.71 seconds, the sibling
+Lambda suite passed 360 tests plus 36 subtests, and the warning-as-error Book
+plus its 2,324-page structural integrity gate remained green.
 
 ### H1.2 Build lineage before rows
 
@@ -823,9 +854,9 @@ and benchmark work precede GPU training.
       best-known certificates, complete deployed-page/document receipts, lineage
       masks, source-state/owner freeze receipts, or a sealed benchmark. All
       384 rows retain pending review, lineage, best-known, dependency-vector,
-      and publication-union gaps. The immediate sequence is H1.1b2 metadata v2,
-      reporting selected API coverage separately from deployed-page coverage,
-      followed by deployed-page repair and A2 before a source-state request to
-      an external owner. No 200-unit gold
+      and publication-union gaps. H1.1b2 now reports selected API coverage
+      separately from deployed-page coverage while preserving metadata v1.
+      The immediate work is parallel deployed-page repair and A2; both must
+      finish before a source-state request to an external owner. No 200-unit gold
       corpus, Vampire adapter, new Qwen training, classical Hydra profile, or
       Rust authority claim is yet complete.
