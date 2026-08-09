@@ -533,6 +533,7 @@ def _source_locators(
             # warning-as-error validation runs.
             with warnings.catch_warnings():
                 warnings.simplefilter("ignore", DeprecationWarning)
+                warnings.simplefilter("ignore", SyntaxWarning)
                 tree = ast.parse(raw.decode("utf-8"), filename=relative)
         except (UnicodeDecodeError, SyntaxError) as exc:
             raise LibraryEpochMetadataError(
