@@ -448,6 +448,33 @@ evaluation flags remain false; optimizer/comparison/Pareto evidence,
 independently audited readable and optimized vectors, and the verified
 publication union remain open, so A2 and H1.1 remain open.
 
+On 2026-08-10, A2.3a froze only a bounded optimizer/comparison **protocol and
+program** for the three A2.2 roots. It fixes the exact three-candidate universe
+(`retained-replay`, `a2.2-direct-cut-rebuild`, and `layered-closure`), four
+canonical comparison axes (artifact bytes, proof-tree nodes, proof depth, and
+Cut count), componentwise nondominance, and one deterministic representative
+tie-break. The layered construction reuses the existing production compiler;
+it does not introduce a second proof optimizer or replay tactics.
+
+This tranche did not execute the real three-root build locally or on WMI. No
+result sidecar, fresh layered certificate, candidate metric vector,
+nondominated set, representative, Pareto frontier, document root, or theorem-
+record root exists yet. Direct vectors and transitive closures remain separate
+recorded surfaces, and `optimized_vector_independently_audited` is false. The
+broad optimizer/comparison/Pareto checkbox below therefore remains open.
+
+The frozen schema semantic/artifact SHA-256s are
+`07e5842c221fe84337e163ce5c858ab03dfbbc93d1477f5661edfdd6f8ba3978` /
+`006d38ef781fc022b7b8929be35058038df02a0eee91eb2213128598c66a59ae`.
+The program, no-default-write CLI, and focused-test source SHA-256s are
+`7ac7d784c3660c1c9b839c906e50e2a88dced6af96ded00b900165e25ec12eee`,
+`3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee`,
+and
+`d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9`.
+The protocol-only adversarial gate passed 59 tests in 0.31 seconds. All
+best-known, vector-audit, publication, A2, authority, review, freeze, training,
+retrieval, and evaluation flags remain false.
+
 ### H1.2 Build lineage before rows
 
 - [ ] Assign stable lineage IDs to authored, generated, translated, and
@@ -728,6 +755,12 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       candidate-only sidecar: the public library, retained certificates, and
       1,038 construction/publication edges remain unchanged, and the immutable
       A2.1 predecessor keeps its historical rebuild-required field.
+- [x] **A2.3a — bounded optimizer protocol only:** freeze a versioned,
+      no-default-write program for exactly the three A2.2 roots and exactly
+      three constructions per root, with canonical four-axis componentwise
+      comparison and a deterministic representative. This checkbox records
+      source/protocol readiness only: no real build, retained result, frontier,
+      independently audited optimized vector, or authority exists yet.
 - [ ] Define and retain the optimizer program, comparison set, and Pareto
       evidence before assigning any `best-known` label. Audit the resulting
       optimized-construction vector independently from the readable recipe.
@@ -1080,6 +1113,17 @@ and benchmark work precede GPU training.
       transitively reachable, Python alias metrics are non-comparable, and all
       authority/minimality/optimized/best-known/publication/eligibility flags
       remain false.
+- [x] A2.3a freezes the bounded three-root, three-candidate optimizer and
+      comparison protocol without running it. The exact schema
+      semantic/artifact pair is `07e5842c221fe843…` / `006d38ef781fc022…`;
+      the program/CLI/focused-test source identities are
+      `7ac7d784c3660c1…` / `3acbd3ec0f190699…` /
+      `d5ae3e830573c7a5…`, and 59 focused tests passed in 0.31 seconds. There is
+      no WMI or local result build, result sidecar, layered-certificate set,
+      candidate metric vector, nondominated set, representative, or Pareto
+      frontier. The broad A2 optimizer/comparison/Pareto item and independent
+      optimized-vector audit remain open; every best-known, publication, A2,
+      authority, and eligibility flag remains false.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
       not separately completed readable/optimized construction vectors,
@@ -1089,10 +1133,12 @@ and benchmark work precede GPU training.
       and publication-union gaps. H1.1b2 reports selected API coverage
       separately from deployed-page coverage while preserving metadata v1;
       H1.1b3 retains page source without claiming deployment; A2.1 adds only a
-      readable-recipe dependency diagnostic; and A2.2 adds only three checked
-      candidate construction rebuilds. The immediate A2 work is to retain a
-      real optimizer/comparison/Pareto program, independently audit readable
-      and optimized vectors, and derive the verified union before a
+      readable-recipe dependency diagnostic; A2.2 adds only three checked
+      candidate construction rebuilds; and A2.3a freezes only the bounded
+      protocol/program that will compare them with layered closures. The
+      immediate A2 work is to execute and retain the real comparison/Pareto
+      result, independently audit readable and optimized vectors, and derive
+      the verified union before a
       source-state request to an external owner. No 200-unit gold corpus,
       registered live-Vampire
       `Dispatch` route, production Vampire integration, capability comparison,

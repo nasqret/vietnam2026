@@ -4206,3 +4206,35 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   freeze, training, retrieval, and evaluation flags remain false. The
   optimizer/comparison/Pareto, independent vector-audit, and verified
   publication-union gates remain open.
+
+## 2026-08-10 — A2.3a froze the bounded optimizer protocol, not a result
+
+- Froze a candidate-only optimizer/comparison program for exactly
+  `odd_add_odd`, `finite_bounded_injective_surjective`, and
+  `beta_product_swap_last_invariant`. Each root's complete pilot universe is
+  `retained-replay`, `a2.2-direct-cut-rebuild`, and `layered-closure`.
+- The program reuses the production layered replay compiler, recovers and
+  independently checks dependency-curried modular bodies, compiles one
+  reachable closure at a time, and does not replay tactics or introduce a new
+  factorer.
+- Fixed componentwise nondominance over artifact bytes, structural proof
+  nodes, depth, and Cut count. The deterministic representative tie-break is
+  nodes, depth, Cuts, bytes, candidate order, artifact hash, then candidate ID.
+  This is relative only to the exact pilot universe and is not a best-known or
+  minimality claim.
+- The exact schema semantic/artifact SHA-256 pair is
+  `07e5842c221fe84337e163ce5c858ab03dfbbc93d1477f5661edfdd6f8ba3978` /
+  `006d38ef781fc022b7b8929be35058038df02a0eee91eb2213128598c66a59ae`.
+  Program/CLI/focused-test source SHA-256s are
+  `7ac7d784c3660c1c9b839c906e50e2a88dced6af96ded00b900165e25ec12eee`,
+  `3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee`,
+  and
+  `d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9`.
+  The protocol-only adversarial suite passed 59 tests in 0.31 seconds.
+- No local or WMI result build ran. There is no retained result sidecar,
+  layered result certificate, metric vector, nondominated set,
+  representative, Pareto frontier, document root, or theorem-record root.
+  Direct vectors remain unaudited independently from closures. The broad A2
+  optimizer/comparison/Pareto item stays unchecked, and all best-known,
+  vector-audit, publication, A2, authority, review, freeze, training,
+  retrieval, and evaluation flags remain false.

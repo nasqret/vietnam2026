@@ -1634,6 +1634,83 @@ evaluation flag is false. A2 still needs a declared optimizer, comparison set
 and Pareto evidence, separately audited readable and optimized vectors, and a
 verified ordered publication union.
 
+### Freezing the experiment before running it
+
+A proof optimizer is easy to overstate. If we search first and describe the
+search space afterward, “best” may merely mean “the candidate we happened to
+notice.” A2.3a therefore freezes a deliberately small experiment before it
+creates any result.
+
+The pilot names three theorem roots: `odd_add_odd`,
+`finite_bounded_injective_surjective`, and
+`beta_product_swap_last_invariant`. For each root it will compare exactly
+three constructions:
+
+1. the exact retained replay certificate;
+2. the exact shorter direct-Cut certificate from A2.2; and
+3. a new closure-only certificate assembled by the existing layered replay
+   compiler.
+
+The third construction is worth separating from tactic search. We start with
+already checked closed proofs, verify the declared outer Cut spine, peel that
+spine to recover a modular proof body, reintroduce its assumptions, and check
+the curried body. The existing compiler then packages only the reachable
+dependency closure. It does not rerun the theorem's tactic script, and it is
+not a newly invented factorer.
+
+Each finished certificate will be checked from the empty context against the
+original theorem. The comparison will use only four reproducible quantities:
+serialized artifact bytes, proof-tree nodes, proof depth, and Cut nodes. One
+candidate dominates another if it is no worse on all four and strictly better
+on at least one. Every nondominated candidate will remain visible. A stable
+display representative will be chosen by
+
+```text
+(proof_nodes, proof_depth, cut_nodes, artifact_bytes,
+ candidate_kind_order, artifact_sha256, candidate_id)
+```
+
+That last choice is a user-interface convention within this exact pilot, not
+a mathematical optimality theorem. Object-alias counts, wall time, and memory
+are excluded because they do not describe the transported proof artifact in
+the same stable way.
+
+There is a second subtlety. A layered Cut tree can package an entire reachable
+closure without telling us which dependencies deserve to be direct edges.
+The protocol therefore records the direct vector and transitive closure as
+different surfaces. Selecting a compact layered certificate cannot silently
+certify an optimized dependency vector; a domain-separated audit must still do
+that work.
+
+The source protocol is now frozen. Its schema semantic/artifact SHA-256 pair
+is
+`07e5842c221fe84337e163ce5c858ab03dfbbc93d1477f5661edfdd6f8ba3978` /
+`006d38ef781fc022b7b8929be35058038df02a0eee91eb2213128598c66a59ae`.
+The program, no-default-write CLI, and adversarial-test source SHA-256s are
+`7ac7d784c3660c1c9b839c906e50e2a88dced6af96ded00b900165e25ec12eee`,
+`3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee`,
+and
+`d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9`.
+The focused protocol gate passed 59 tests in 0.31 seconds.
+
+What does **not** exist yet matters just as much: no real local or WMI pilot
+build, result sidecar, layered result certificate, metric vector,
+nondominated set, representative, Pareto frontier, document root, or theorem-
+record root. Running the no-argument CLI merely reports protocol readiness and
+writes nothing:
+
+```console
+python3 scripts/build_peano_hydra_library_optimizer_comparison_pilot.py
+```
+
+A future retained build first needs an external canonical producer-source
+state. It is byte-bound but deliberately carries `git_verified=false`; a
+separate successor receipt must verify the commit, tree, ancestry, and clean
+submission. Until that run and an independent optimized-vector audit succeed,
+“best-known,” vector-audit, publication, A2, authority, review, freeze,
+training, retrieval, and evaluation remain false. The broad optimizer/Pareto
+milestone is intentionally still open.
+
 ## What “matched compute” means
 
 We compare three frozen systems on the same sealed targets:

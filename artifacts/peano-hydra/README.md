@@ -124,6 +124,46 @@ shape, semantic and rerooted mutations, strict path handling, and create-only
 publication. It passed 23 tests in 44.12 seconds; the exact retained CLI
 `--check` passed too.
 
+## A2.3a optimizer/comparison protocol (no result artifact yet)
+
+Frozen on 2026-08-10, the A2.3a source protocol fixes a bounded experiment for
+exactly the three A2.2 theorem roots. Each root has exactly three candidate
+constructions: `retained-replay`, `a2.2-direct-cut-rebuild`, and
+`layered-closure`. It fixes componentwise nondominance over canonical artifact
+bytes, proof-tree nodes, proof depth, and Cut count, plus the deterministic
+representative tie-break
+`(proof_nodes, proof_depth, cut_nodes, artifact_bytes, candidate_kind_order,
+artifact_sha256, candidate_id)`.
+
+This is intentionally not an artifact listing. No local or WMI production
+comparison has run, and
+`l0-optimizer-comparison-pilot-candidate-v1.json` does not exist as retained
+evidence. In particular there is no fresh layered result certificate,
+candidate metric vector, nondominated set, representative, Pareto frontier,
+document root, or theorem-record root to report. The CLI writes nothing by
+default and requires an externally derived canonical producer-source state
+before a future build. That state is byte-bound but deliberately carries
+`git_verified=false`; a separate successor receipt must verify the commit,
+tree, ancestry, and clean submission.
+
+- schema semantic/artifact SHA-256:
+  `07e5842c221fe84337e163ce5c858ab03dfbbc93d1477f5661edfdd6f8ba3978` /
+  `006d38ef781fc022b7b8929be35058038df02a0eee91eb2213128598c66a59ae`;
+- program SHA-256:
+  `7ac7d784c3660c1c9b839c906e50e2a88dced6af96ded00b900165e25ec12eee`;
+- no-default-write CLI SHA-256:
+  `3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee`;
+- focused-test source SHA-256:
+  `d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9`;
+  and
+- focused protocol tests: 59 passed in 0.31 seconds.
+
+Direct dependency vectors and transitive closures remain separate surfaces,
+and no optimized vector has been independently audited. All best-known,
+vector-audit, publication, publication-union, A2, authority, review, freeze,
+training, retrieval, and evaluation flags remain false. The broad retained
+optimizer/comparison/Pareto result is still the next A2 gate.
+
 ## H1.1b3 selected candidate page source
 
 The retained tagless source tree is

@@ -644,6 +644,77 @@ flags remain false. A2.2 grants no admission or authority. The optimizer
 program, comparison set, Pareto evidence, independent readable/optimized
 vector audits, and verified ordered publication union remain later A2 gates.
 
+#### Bounded optimizer/comparison protocol frozen in A2.3a
+
+The 2026-08-10 A2.3a tranche freezes a program and evidence schema, not an
+optimizer result. Its universe contains exactly the following three roots in
+replay order:
+
+1. `odd_add_odd` (index 256);
+2. `finite_bounded_injective_surjective` (index 376); and
+3. `beta_product_swap_last_invariant` (index 379).
+
+For each root, the complete *pilot* comparison set contains exactly three
+constructions: the exact retained replay artifact, the exact A2.2 rebuilt
+direct-Cut artifact, and one fresh closure-only artifact assembled by
+`peano_lab.library.layered_replay.compile_layered_replay`. The third route
+does not invent a new factorer. It decodes and empty-context checks each
+selected closed source, verifies and peels the exact outer dependency Cut
+spine, re-curries one implication introduction per direct dependency, checks
+that modular body independently, and then lets the existing layered compiler
+assemble the reachable closure. Tactic scripts are not replayed.
+
+The processing contract keeps one root build live at a time. Its exact
+inclusive closure sizes are 6, 120, and 32 nodes. Across the fixed roots, the
+bounded recovery cache contains only the 127-body union, 328 direct graph
+edges, 7,365 structural proof occurrences, and at most 373 occurrences in one
+body; it is cleared before return. These are protocol bounds, not observations
+from a completed optimizer run.
+
+The protocol orders only four transport-stable quantities: canonical artifact
+bytes, structural proof-tree nodes, structural depth, and Cut occurrences. A
+candidate is nondominated exactly when no other member of the fixed
+three-candidate universe is no worse on every axis and strictly better on at
+least one. Every such candidate would be retained. A display representative
+would then be selected by the exact tuple
+
+```text
+(proof_nodes, proof_depth, cut_nodes, artifact_bytes,
+ candidate_kind_order, artifact_sha256, candidate_id)
+```
+
+This representative is merely deterministic within the fixed pilot set; it is
+not “best-known,” globally minimal, or an optimized-vector claim. Python
+object identity, aliasing, wall time, and memory are not comparison axes.
+Direct dependency vectors and replay-ordered transitive closures remain
+separate surfaces, because a layered final Cut tree packages a closure but
+does not authenticate which dependencies should be direct. Independent
+optimized-vector audit therefore remains mandatory.
+
+The source protocol is frozen at these exact identities:
+
+- schema semantic SHA-256:
+  `07e5842c221fe84337e163ce5c858ab03dfbbc93d1477f5661edfdd6f8ba3978`;
+- canonical schema artifact SHA-256:
+  `006d38ef781fc022b7b8929be35058038df02a0eee91eb2213128598c66a59ae`;
+- optimizer/comparison program SHA-256:
+  `7ac7d784c3660c1c9b839c906e50e2a88dced6af96ded00b900165e25ec12eee`;
+- no-default-write CLI SHA-256:
+  `3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee`;
+  and
+- focused adversarial test SHA-256:
+  `d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9`.
+
+The protocol gate passed 59 tests in 0.31 seconds. The CLI writes nothing by
+default and requires an externally derived canonical producer-source state
+before a future build. No real three-root build has run locally or on WMI, and
+no result sidecar, layered result certificate, metric vector, nondominated
+set, representative, Pareto frontier, document root, or theorem-record root
+exists. Consequently the broad A2 optimizer/comparison/Pareto gate remains
+open. `optimized_best_known`, `optimized_vector_independently_audited`, all
+publication-union fields, `a2_complete`, authority, review, freeze, training,
+retrieval, and evaluation remain false.
+
 ### 2.4 Sealed-test law
 
 The unit of separation is a mathematical **lineage**, not a row or filename.

@@ -4169,3 +4169,52 @@ derive their verified publication union.
 
 The final focused suite, including an explicit Cut-spine regression, passed 23
 tests in 44.12 seconds. The exact retained CLI `--check` passed as well.
+
+## 2026-08-10 — Freeze the optimizer question before asking it
+
+The next temptation was to run the layered compiler immediately and report
+whichever certificate looked smallest. We stopped one step earlier. A
+meaningful Pareto statement needs a fixed candidate universe, stable metrics,
+a deterministic selection rule, and an explicit boundary around everything
+the experiment cannot establish. A2.3a freezes those pieces first.
+
+The pilot has only the three A2.2 roots and, for each, only three candidates:
+the retained replay artifact, the A2.2 direct-Cut rebuild, and a closure-only
+artifact produced by the existing layered replay compiler. Reusing that
+compiler matters. The question is whether a different checked assembly of
+already recovered modular bodies improves the transported proof, not whether a
+second optimizer implementation can accidentally change the experiment.
+
+We chose artifact bytes, structural nodes, depth, and Cuts as the Pareto axes.
+They survive serialization and can be recomputed from the proof. We excluded
+Python alias identity, wall time, and memory: useful engineering diagnostics,
+but poor evidence for an intrinsic proof comparison. The deterministic display
+representative uses nodes, depth, Cuts, bytes, candidate order, artifact hash,
+and candidate ID in that order. It does not discard the other nondominated
+candidates and does not mean globally best.
+
+The largest conceptual trap was dependency provenance. A layered certificate
+can carry an entire transitive closure in its Cut package while obscuring the
+intended direct vector. The schema therefore records direct dependencies and
+the reachable closure separately, and explicitly keeps
+`optimized_vector_independently_audited = false`. Compact assembly cannot
+grant graph authority.
+
+The frozen schema semantic/artifact identities are
+`07e5842c221fe84337e163ce5c858ab03dfbbc93d1477f5661edfdd6f8ba3978` /
+`006d38ef781fc022b7b8929be35058038df02a0eee91eb2213128598c66a59ae`.
+The program, no-default-write CLI, and focused-test source identities are
+`7ac7d784c3660c1c9b839c906e50e2a88dced6af96ded00b900165e25ec12eee`,
+`3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee`,
+and
+`d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9`.
+Fifty-nine protocol tests passed in 0.31 seconds.
+
+No real pilot build ran on this Mac or on WMI. There is no result sidecar,
+fresh layered result, metric vector, nondominated set, representative, Pareto
+frontier, or result root yet. This distinction is deliberate, especially after
+the recent local resource-pressure incidents: source and adversarial protocol
+work is safe locally, while the bounded production comparison belongs in a
+fresh controlled worker. The broad A2 optimizer/Pareto checkbox stays open,
+and every best-known, vector, publication, authority, A2, and eligibility flag
+stays false.
