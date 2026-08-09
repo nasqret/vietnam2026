@@ -490,9 +490,10 @@ These are transport guarantees, not independent owner or kernel authority.
 H1.1 remains open. Metadata v2 is still `candidate`, intuitionistic,
 `freeze_ready = false`, and ineligible for training, retrieval, and evaluation.
 The later A2.1 slice adds a fixed-point diagnostic for the exact readable
-recipe only. Full A2 still requires separately verified readable and optimized
-dependency vectors, closed rebuilt certificates where vectors change, and
-their publication union.
+recipe only, and its A2.2 successor now supplies the three changed closed
+constructions. Full A2 still requires separately verified readable and
+optimized dependency vectors, optimizer/comparison/Pareto evidence, and their
+verified publication union.
 Deploying the 144 pending page pairs is an independent parallel documentation
 workstream. Both must finish before a source-state/freeze request.
 The final focused gate passed 46 tests in 101.07 seconds, including exact
@@ -582,18 +583,66 @@ Two full builds were byte-identical. The aggregate records three positive
 omission observations, 1,057 exact-recipe rejections, zero unknowns, and 1,035
 candidate edges versus 1,038 retained declared edges.
 
-Those three observations do not mutate the admitted library. The affected
-rows MUST retain `requires_certificate_rebuild = true` until new closed
-certificates are constructed and independently checked against their original
-goals. The readable and submitted-construction receipts are domain-separated,
+Those three observations do not mutate the admitted library. Because retained
+A2.1 evidence is immutable, the affected rows MUST retain the historical
+`requires_certificate_rebuild = true` field. A2.2 discharges that obligation
+in a successor sidecar containing new closed certificates independently
+checked against their original goals; it MUST NOT rewrite the A2.1 rows. The
+readable and submitted-construction receipts are domain-separated,
 but in A2.1 they both observe the same retained `TheoremSpec` recipe; neither
 is a separately optimized construction. Therefore the public graph SHALL keep
 the retained 1,038 edges, and `minimality_claim`, `optimized_best_known`,
 `publication_ready`, `freeze_ready`, `training_eligible`,
 `retrieval_eligible`, and `evaluation_eligible` SHALL remain false. A2 closes
 only after separate readable and optimized construction evidence, a declared
-comparison/Pareto procedure, rebuilt certificates where needed, and the
-verified ordered publication union exist.
+comparison/Pareto procedure, and the verified ordered publication union exist.
+
+#### Candidate construction rebuild implemented in A2.2
+
+The 2026-08-09 A2.2 slice discharges only A2.1's closed-certificate
+obligation for the three rows whose proposed direct vectors changed. For each
+row, the builder runs the unchanged statement and tactic recipe with the exact
+reduced direct vector,
+peels the generated dependency introductions, and closes the body with
+canonical dependency certificates from the byte-pinned replay pack. Each
+dependency certificate is checked from the empty context before use. The
+completed nested-Cut certificate is then checked independently from the empty
+context against the theorem's original uncurried statement.
+
+The result SHALL remain a candidate sidecar. It SHALL NOT rewrite
+`TheoremSpec`, a retained certificate, the replay pack, either metadata ledger,
+the catalog, or the public dependency graph. In the three rebuilt Cut spines,
+the direct vectors contain 22 edges rather than 25. The public graph still has
+1,038 edges. Moreover, `add_succ_left`, `beta_at_unique`, and `le_refl`, the
+three names absent from the respective direct spines, are all still reachable
+in those theorems' retained transitive dependency closures. A2.2 therefore
+makes no lemma-free or dependency-necessity claim.
+
+The retained schema's semantic/artifact SHA-256s are
+`a189ad140f5e7093f11a2f433705d4dafb71d474672e822cf39e45dbeb1ca571` /
+`d1fc09c035e28f96913cdadd63f17c853901fc8dcd2e17df3a094a919612bf9f`.
+The canonical sidecar is
+`artifacts/peano-hydra/l0-construction-rebuild-candidate-v1.json`. Its exact
+3,106,352 bytes have artifact SHA-256
+`6176c44a63f791bc27ddd550aa915db6e78c8fbf9f9f0918299f1b3f639fc182`;
+its document and ordered theorem-record roots are
+`91ecc6b4bb22f4b46cdfa3fcdd2401dce47d8fef38c15101d221c207fd7793b0`
+and
+`42d718621f91b52bf55a7909751eab695fefd28da2989863de50470d14397ef5`.
+
+Against each row's immediate retained predecessor, the three canonical
+artifacts together contain 49,483 fewer bytes, 1,176 fewer intrinsic
+proof-tree nodes, and 34 fewer Cuts. Those are descriptive predecessor deltas,
+not optimizer or Pareto results. Python proof-object identity and sharing
+counts are schedule- and assembly-dependent, are marked non-comparable, and do
+not enter the deltas. The focused gate passed 23 tests in 44.12 seconds; the
+exact retained CLI `--check` passed as well.
+
+All A2, dependency-vector, lineage, review, minimality, optimized-best-known,
+publication, publication-union, freeze, training, retrieval, and evaluation
+flags remain false. A2.2 grants no admission or authority. The optimizer
+program, comparison set, Pareto evidence, independent readable/optimized
+vector audits, and verified ordered publication union remain later A2 gates.
 
 ### 2.4 Sealed-test law
 

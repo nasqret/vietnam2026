@@ -414,10 +414,39 @@ and ordered theorem-record root
 `8ae5553e79b15c4e83a76e1eab92cb0983539fa913dfe2bec29d0fb17fb7d784`.
 It records 3 kernel-accepted omission observations, 1,057 exact-recipe
 rejections, zero unknowns, and a candidate edge count of 1,035 rather than the
-retained 1,038. Exactly three rows require a future certificate rebuild. The
-retained certificates, metadata ledgers, page sources, and public graph are
-unchanged. All minimality, best-known, publication, freeze, training,
-retrieval, and evaluation flags remain false; A2 and H1.1 remain open.
+retained 1,038. Exactly three immutable A2.1 rows carry the historical
+`requires_certificate_rebuild = true` observation. The successor A2.2 sidecar
+below now discharges that obligation without rewriting A2.1. The retained
+certificates, metadata ledgers, page sources, and public graph are unchanged.
+All minimality, best-known, publication, freeze, training, retrieval, and
+evaluation flags remain false; A2 and H1.1 remain open.
+
+On 2026-08-09, A2.2 retained the separate candidate-only construction-rebuild
+sidecar at
+`artifacts/peano-hydra/l0-construction-rebuild-candidate-v1.json`. It closes
+exactly the three A2.1 carriers with replay-pack dependency certificates, then
+checks each result from the empty context against the original uncurried
+statement. All three checks passed. Across those three candidate Cut spines,
+the direct vectors change from 25 to 22 edges and the canonical artifacts
+shrink by 49,483 bytes, 1,176 proof-tree nodes, and 34 Cuts. These are
+descriptive predecessor deltas only; schedule-dependent Python object-alias
+metrics are explicitly non-comparable. Each omitted direct name remains in
+the retained transitive closure, and the public graph remains at 1,038 edges.
+
+The A2.2 schema semantic/artifact SHA-256s are
+`a189ad140f5e7093f11a2f433705d4dafb71d474672e822cf39e45dbeb1ca571` /
+`d1fc09c035e28f96913cdadd63f17c853901fc8dcd2e17df3a094a919612bf9f`.
+The exact 3,106,352-byte sidecar has artifact SHA-256
+`6176c44a63f791bc27ddd550aa915db6e78c8fbf9f9f0918299f1b3f639fc182`,
+document root
+`91ecc6b4bb22f4b46cdfa3fcdd2401dce47d8fef38c15101d221c207fd7793b0`,
+and ordered theorem-record root
+`42d718621f91b52bf55a7909751eab695fefd28da2989863de50470d14397ef5`.
+The focused gate passed 23 tests in 44.12 seconds. Authority, minimality,
+optimized/best-known, publication, review, freeze, training, retrieval, and
+evaluation flags remain false; optimizer/comparison/Pareto evidence,
+independently audited readable and optimized vectors, and the verified
+publication union remain open, so A2 and H1.1 remain open.
 
 ### H1.2 Build lineage before rows
 
@@ -693,10 +722,12 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       the exact readable tactic recipe. Block retention on every unknown.
       Domain-separate readable and submitted-construction candidate receipts,
       but do not call either optimized, minimal, best-known, or published.
-- [ ] Rebuild and empty-context check the three candidate constructions whose
-      proposed vectors differ from their retained declared vectors. Until that
-      happens, keep `requires_certificate_rebuild = true` and leave the 1,038
-      retained construction/publication edges unchanged.
+- [x] **A2.2 — candidate construction rebuild:** rebuild and empty-context
+      check the three candidate constructions whose proposed vectors differ
+      from their retained declared vectors. Retain them only in a
+      candidate-only sidecar: the public library, retained certificates, and
+      1,038 construction/publication edges remain unchanged, and the immutable
+      A2.1 predecessor keeps its historical rebuild-required field.
 - [ ] Define and retain the optimizer program, comparison set, and Pareto
       evidence before assigning any `best-known` label. Audit the resulting
       optimized-construction vector independently from the readable recipe.
@@ -1029,12 +1060,26 @@ and benchmark work precede GPU training.
       admitted theorem or graph edge. Two complete 384-row builds were
       byte-identical. The sidecar records 3 kernel-accepted exact-recipe
       omissions, 1,057 exact-recipe rejections, 0 unknowns, and 3 rows marked
-      for a later certificate rebuild; the candidate vector has 1,035 edges
-      while the retained vector remains 1,038. Its artifact/document/theorem-
+      by its immutable historical rebuild-required field; the A2.2 successor
+      below now discharges that obligation without rewriting A2.1. The
+      candidate vector has 1,035 edges while the retained vector remains
+      1,038. Its artifact/document/theorem-
       record identities are `4b867bb1ce0161e6…` /
       `12166de8fb0cc028…` / `8ae5553e79b15c4e…`. Twenty-six focused tests
       passed. This is diagnostic evidence only: minimality, best-known,
       publication, freeze, training, retrieval, and evaluation remain false.
+- [x] A2.2's candidate-only sidecar closes all three changed direct vectors
+      with pinned replay-pack certificates and checks every rebuilt theorem
+      from the empty context against its original statement. Its three direct
+      candidate vectors contain 22 rather than 25 edges; descriptive deltas
+      are -49,483 canonical artifact bytes, -1,176 proof-tree nodes, and -34
+      Cuts. The exact sidecar/artifact roots are `6176c44a63f791bc…` /
+      `91ecc6b4bb22f4b4…`, and its theorem-record root is
+      `42d718621f91b52b…`; 23 focused tests passed in 44.12 seconds. This does
+      not alter the 1,038-edge public graph, each omitted direct name remains
+      transitively reachable, Python alias metrics are non-comparable, and all
+      authority/minimality/optimized/best-known/publication/eligibility flags
+      remain false.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
       not separately completed readable/optimized construction vectors,
@@ -1044,10 +1089,12 @@ and benchmark work precede GPU training.
       and publication-union gaps. H1.1b2 reports selected API coverage
       separately from deployed-page coverage while preserving metadata v1;
       H1.1b3 retains page source without claiming deployment; A2.1 adds only a
-      readable-recipe dependency diagnostic. The immediate A2 work is to
-      rebuild the three changed constructions, retain a real optimized
-      comparison, and derive the verified union before a source-state request
-      to an external owner. No 200-unit gold corpus, registered live-Vampire
+      readable-recipe dependency diagnostic; and A2.2 adds only three checked
+      candidate construction rebuilds. The immediate A2 work is to retain a
+      real optimizer/comparison/Pareto program, independently audit readable
+      and optimized vectors, and derive the verified union before a
+      source-state request to an external owner. No 200-unit gold corpus,
+      registered live-Vampire
       `Dispatch` route, production Vampire integration, capability comparison,
       new Qwen training, classical Hydra profile, or Rust authority claim is
       yet complete. A3.1 records direct/offline real-binary diagnostics;

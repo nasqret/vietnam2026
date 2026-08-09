@@ -45,7 +45,8 @@ block construction.
   and
 - aggregate: 3 kernel-accepted omissions, 1,057 exact-recipe rejections,
   0 unknowns, 1,035 candidate edges versus 1,038 retained declared edges,
-  and 3 rows requiring certificate rebuild.
+  and 3 immutable predecessor rows carrying the historical
+  `requires_certificate_rebuild = true` field.
 
 The candidate omissions are `add_succ_left` from `odd_add_odd`,
 `beta_at_unique` from `finite_bounded_injective_surjective`, and `le_refl`
@@ -54,6 +55,8 @@ or public graph edge. The readable and submitted-construction receipts are
 domain-separated but observe the same retained tactic recipe; there is no
 separate optimizer or best-known comparison. Minimality, optimized-best-known,
 publication, freeze, training, retrieval, and evaluation flags are all false.
+The A2.2 successor below discharges the three rebuild obligations without
+rewriting this A2.1 evidence.
 
 Two complete builds were byte-identical, and 26 focused tests passed. Check
 the retained artifact without writing:
@@ -64,9 +67,62 @@ python3 scripts/build_peano_hydra_library_dependency_audit.py \
   --output artifacts/peano-hydra/l0-dependency-audit-candidate-v1.json
 ```
 
-This closes only the A2.1 diagnostic subgate. A2 still requires rebuilt closed
-certificates for changed vectors, separate optimized-construction evidence, a
-declared comparison/Pareto procedure, and a verified publication union.
+This closes only the A2.1 diagnostic subgate. Its three changed vectors are
+closed separately by the candidate-only A2.2 sidecar below.
+
+## A2.2 candidate construction rebuild
+
+Retained on 2026-08-09, `l0-construction-rebuild-candidate-v1.json` recompiles
+the unchanged statement
+and tactic recipe for each of A2.1's three reduced direct vectors, resolves the
+selected dependencies only from the exact retained replay pack, and packages
+them as deterministic nested Cut spines. Every dependency certificate and
+every completed theorem certificate passes the independent intuitionistic
+kernel from the empty context; each completed certificate is checked against
+the original uncurried theorem statement.
+
+- schema semantic/artifact SHA-256:
+  `a189ad140f5e7093f11a2f433705d4dafb71d474672e822cf39e45dbeb1ca571` /
+  `d1fc09c035e28f96913cdadd63f17c853901fc8dcd2e17df3a094a919612bf9f`;
+- exact artifact size/SHA-256:
+  3,106,352 bytes /
+  `6176c44a63f791bc27ddd550aa915db6e78c8fbf9f9f0918299f1b3f639fc182`;
+- document root:
+  `91ecc6b4bb22f4b46cdfa3fcdd2401dce47d8fef38c15101d221c207fd7793b0`;
+- ordered theorem-record root:
+  `42d718621f91b52bf55a7909751eab695fefd28da2989863de50470d14397ef5`;
+  and
+- aggregate: 3 closed empty-context rebuilds, 22 candidate direct edges versus
+  25 retained direct edges across those rows, -49,483 canonical artifact
+  bytes, -1,176 intrinsic proof-tree nodes, and -34 Cuts.
+
+The deltas are descriptive comparisons with the immediate retained
+predecessors, not optimizer, Pareto, minimum, or best-known claims. Python
+object-alias metrics are schedule- and assembly-dependent and explicitly
+non-comparable. The direct spines omit `add_succ_left`, `beta_at_unique`, and
+`le_refl` respectively, but every omitted name remains reachable in that
+theorem's retained transitive closure.
+
+Nothing here changes the admitted theorem records, retained certificates,
+replay pack, metadata, catalog, pages, or the 1,038-edge public graph. All A2,
+authority, dependency-vector, lineage, review, minimality,
+optimized-best-known, publication, freeze, training, retrieval, and evaluation
+flags remain false. The optimizer/comparison/Pareto program, independent
+readable/optimized vector audits, and verified publication union remain open.
+
+Check the retained artifact without writing:
+
+```console
+python3 scripts/build_peano_hydra_library_construction_rebuild.py \
+  --check \
+  --output artifacts/peano-hydra/l0-construction-rebuild-candidate-v1.json
+```
+
+The focused adversarial gate covers deterministic reconstruction, fresh
+empty-context proof checks, exact input and source pins, explicit Cut-spine
+shape, semantic and rerooted mutations, strict path handling, and create-only
+publication. It passed 23 tests in 44.12 seconds; the exact retained CLI
+`--check` passed too.
 
 ## H1.1b3 selected candidate page source
 

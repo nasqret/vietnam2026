@@ -1508,11 +1508,11 @@ The three candidate reductions are:
 | `beta_product_swap_last_invariant` | `le_refl` |
 
 Thus the diagnostic candidate vector has 1,035 edges. The public library still
-has 1,038. Each affected row says `requires_certificate_rebuild = true`,
-because its retained closed certificate was constructed under the old vector.
-The next A2 step must rebuild those three closed certificates, check each from
-the empty context against its original goal, and retain the result before any
-graph change is proposed.
+has 1,038. Each affected A2.1 row says
+`requires_certificate_rebuild = true`, because its retained closed certificate
+was constructed under the old vector. That field remains immutable historical
+evidence. The A2.2 successor described below now supplies and checks all three
+closed rebuilds without rewriting A2.1 or proposing a graph change.
 
 The readable and submitted-construction receipts have different hash domains,
 so later pipelines cannot silently substitute one role for the other. In A2.1,
@@ -1548,6 +1548,91 @@ JSON, fixed source and import provenance, hash-binding mutations, no-follow
 loading, create-only atomic publication, and the exact retained pins. This
 closes a useful A2 diagnostic subgate. It does not close A2, H1.1, or any
 training, retrieval, evaluation, publication, or freeze gate.
+
+## Closing the three reduced constructions
+
+A2.1 proved three shorter *curried carriers*. It did not yet prove the three
+original theorems from no assumptions. On 2026-08-09, A2.2 performed that
+missing
+step, without turning the experiment into a library edit.
+
+For a candidate direct vector $D_1,\ldots,D_k$, the unchanged tactic recipe
+first constructs and checks
+
+$$
+D_1 \to \cdots \to D_k \to T.
+$$
+
+The rebuild then obtains each $D_i$ from the exact retained replay pack and
+checks that dependency certificate independently from the empty context. It
+peels the generated implication introductions and inserts the checked
+dependencies as a deterministic nested `Cut` spine. Finally, the independent
+kernel checks the resulting closed proof from the empty context against the
+original, uncurried $T$. A named library theorem never becomes a kernel axiom;
+its certificate is proof data.
+
+This distinction matters. “The body still compiles after removing a
+hypothesis” and “the original theorem has a closed certificate using that
+shorter direct Cut spine” are different propositions about different proof
+objects. A2.2 now has the second kind of evidence for all three A2.1 rows:
+
+| theorem | direct edges | artifact bytes | proof nodes | Cuts |
+| --- | ---: | ---: | ---: | ---: |
+| `odd_add_odd` | 4 → 3 | 14,977 → 13,640 | 302 → 274 | 7 → 6 |
+| `finite_bounded_injective_surjective` | 15 → 14 | 1,913,452 → 1,870,657 | 42,463 → 41,341 | 1,266 → 1,235 |
+| `beta_product_swap_last_invariant` | 6 → 5 | 391,540 → 386,189 | 7,439 → 7,413 | 205 → 203 |
+
+Across these three candidate constructions, the direct vectors change from 25
+to 22 edges. The canonical certificates are 49,483 bytes smaller and contain
+1,176 fewer intrinsic proof-tree nodes and 34 fewer Cuts than their immediate
+retained predecessors. This is a useful exact comparison, but it is only a
+descriptive predecessor comparison. No optimizer program or comparison set
+has yet been declared, so the smaller objects are not called optimized,
+minimal, Pareto-optimal, or best-known. Counts based on Python object identity
+or alias sharing are schedule- and assembly-dependent; the sidecar marks them
+non-comparable and excludes them from the deltas.
+
+Nor did the library suddenly become free of the omitted lemmas. The direct
+Cut spine for `odd_add_odd` omits `add_succ_left`, but that name remains in its
+retained transitive closure. The same is true of `beta_at_unique` for
+`finite_bounded_injective_surjective` and `le_refl` for
+`beta_product_swap_last_invariant`. “Not a direct edge in this construction”
+is the exact claim; “not used transitively” would be false.
+
+The candidate sidecar is
+`artifacts/peano-hydra/l0-construction-rebuild-candidate-v1.json`. The schema's
+semantic/artifact SHA-256s are
+`a189ad140f5e7093f11a2f433705d4dafb71d474672e822cf39e45dbeb1ca571` /
+`d1fc09c035e28f96913cdadd63f17c853901fc8dcd2e17df3a094a919612bf9f`.
+The exact 3,106,352-byte sidecar has artifact SHA-256
+`6176c44a63f791bc27ddd550aa915db6e78c8fbf9f9f0918299f1b3f639fc182`,
+document root
+`91ecc6b4bb22f4b46cdfa3fcdd2401dce47d8fef38c15101d221c207fd7793b0`,
+and replay-ordered theorem-record root
+`42d718621f91b52bf55a7909751eab695fefd28da2989863de50470d14397ef5`.
+It can be rebuilt and compared without overwriting it:
+
+```console
+python3 scripts/build_peano_hydra_library_construction_rebuild.py \
+  --check \
+  --output artifacts/peano-hydra/l0-construction-rebuild-candidate-v1.json
+```
+
+The focused adversarial gate covers fresh empty-context checking, exact pinned
+inputs, deterministic rebuilding, certificate and metadata mutations,
+rerooted forgeries, path safety, the explicit direct Cut spine, and the
+create-only command-line boundary. The admitted `TheoremSpec` records,
+retained certificates, replay pack, metadata ledgers, catalog, generated
+pages, and 1,038-edge public graph remain unchanged.
+
+That focused suite passed 23 tests in 44.12 seconds, and the exact retained
+CLI `--check` passed.
+
+This checks only the A2.2 rebuild box. Every authority, minimality,
+optimized-best-known, review, publication, freeze, training, retrieval, and
+evaluation flag is false. A2 still needs a declared optimizer, comparison set
+and Pareto evidence, separately audited readable and optimized vectors, and a
+verified ordered publication union.
 
 ## What “matched compute” means
 

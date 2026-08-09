@@ -58,6 +58,7 @@
     {"path": "test_peano_hydra_library_epoch.py", "weight": 126000},
     {"path": "test_peano_hydra_library_epoch_metadata.py", "weight": 80000},
     {"path": "test_peano_hydra_library_documentation_bundle.py", "weight": 120000},
+    {"path": "test_peano_hydra_library_construction_rebuild.py", "weight": 45000},
     {"path": "test_peano_hydra_library_dependency_audit.py", "weight": 15000},
     {"path": "test_peano_hydra_library_epoch_metadata_v2.py", "weight": 360000},
     {"path": "test_peano_hydra_library_pages.py", "weight": 90000},

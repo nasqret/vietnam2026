@@ -1,0 +1,142 @@
+{
+  "additional_fields_policy": "forbidden-by-exact-fixed-source-reconstruction",
+  "algorithm": {
+    "dependency_source": "exact retained replay-pack peano-lab-v2 artifacts",
+    "direct_vector_source": "the three requires_certificate_rebuild=true rows in the exact A2.1 dependency-audit artifact",
+    "final_check": "independent intuitionistic Python kernel; empty context; original uncurried theorem statement",
+    "packaging": "peel one ImpIntro per selected direct dependency, then add reversed nested Cut nodes using checked retained dependency certificates"
+  },
+  "canonical_json": {
+    "artifact_payload": "RFC 4648 canonical base64 of exact canonical peano-lab-v2 bytes",
+    "document": "UTF-8; keys sorted; two-space indentation; one final LF",
+    "hash_preimage": "UTF-8; keys sorted; compact separators; no final LF",
+    "numbers": "exact integers only; booleans are not integers",
+    "objects": "duplicate keys forbidden; cycles and non-JSON values forbidden"
+  },
+  "claim_boundary": {
+    "authority": "candidate A2.2 construction-rebuild evidence only; every embedded proof is checked from the empty context against its original goal",
+    "comparison": "submitted-versus-rebuilt deltas cover only canonical artifact bytes and intrinsic proof-tree nodes/depth/Cuts; Python object-sharing observations are schedule/assembly-dependent, explicitly non-comparable, and never enter deltas; no optimizer or Pareto/best-known result",
+    "dependency_semantics": "one direct Cut-spine edge is absent in each rebuilt certificate; every omitted name remains reachable in the retained transitive dependency closure",
+    "library": "TheoremSpec, retained certificates, replay pack, metadata v1/v2, public catalog, and 1038-edge public graph remain unchanged",
+    "minimality": "no minimality, global optimum, optimized, best-known, or dependency-necessity claim",
+    "next_gate": "optimizer program, comparison set, Pareto evidence, separately audited readable/optimized vectors, and verified publication union remain future A2 work",
+    "use": "publication, freeze, review, training, retrieval, and evaluation authority are all false"
+  },
+  "constants": {
+    "a2_complete": false,
+    "candidate_direct_dependency_edges_across_three_rebuilds": 22,
+    "dependency_vectors_complete": false,
+    "evaluation_eligible": false,
+    "freeze_ready": false,
+    "lineage_complete": false,
+    "logic_mode": "intuitionistic",
+    "minimality_claim": false,
+    "optimized_best_known": false,
+    "optimized_vector_independently_audited": false,
+    "publication_ready": false,
+    "publication_union_complete": false,
+    "publication_union_verified": false,
+    "rebuilt_theorem_count": 3,
+    "retained_direct_dependency_edges_across_three_rebuilds": 25,
+    "retained_public_graph_edges": 1038,
+    "retrieval_eligible": false,
+    "review_complete": false,
+    "status": "candidate",
+    "training_eligible": false
+  },
+  "fixed_inputs": {
+    "construction_core": {
+      "callable": "training.peano_hydra.library_construction_rebuild_core.compile_closed_candidate",
+      "path": "training/peano_hydra/library_construction_rebuild_core.py",
+      "sha256": "98c2aa5b13b77a4f2e47c9d8663ff52c072e3cf61cac172dae523f30bfb25d10",
+      "v": 1
+    },
+    "dependency_audit": {
+      "artifact_path": "artifacts/peano-hydra/l0-dependency-audit-candidate-v1.json",
+      "artifact_sha256": "4b867bb1ce0161e6392f29d9262e035929e5da86b224063546a2a42c17fd9040",
+      "root_sha256": "12166de8fb0cc028c3b026deb939418a19f001ff8342acab479d433e15d3a83e",
+      "schema_artifact_sha256": "ee6eb4daf48fbf320e79a54065befed758ff33c5251ec4a2c18b8093c349c0ff",
+      "schema_semantic_sha256": "54d6b5128067b1f93d8f7393e0730d7da3a4ac838a0b55b6b6fe0ce92a0d4bc4",
+      "theorem_record_root_sha256": "8ae5553e79b15c4e83a76e1eab92cb0983539fa913dfe2bec29d0fb17fb7d784"
+    },
+    "replay_pack": {
+      "manifest_artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1/manifest.json",
+      "manifest_artifact_sha256": "8b9f9dc8e35e5eb02e43bcffd6aed6280006f4a01c396e43c43c2cbe4cbfb604",
+      "manifest_root_sha256": "fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d",
+      "replay_report_artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1-report.json",
+      "replay_report_artifact_sha256": "35f5547978a4d58c5af30c33d253c92af494b94f6d6500a866a13f2fd1fa7f10",
+      "replay_root_sha256": "88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba"
+    },
+    "replay_tree_metric_source": {
+      "callable": "training.peano_hydra.library_replay_pack.proof_tree_metrics",
+      "path": "training/peano_hydra/library_replay_pack.py",
+      "sha256": "8c5f3b44bed64bc3a49a7990d16a6f3c4a966b14c2bf4c732227041bc81506ee"
+    }
+  },
+  "format": "peano-hydra-library-construction-rebuild-schema",
+  "hash_contracts": {
+    "artifact_sha256": "SHA-256 of decoded exact peano-lab-v2 bytes",
+    "document_root_sha256": "SHA-256 of exact compact canonical root_preimage",
+    "record_sha256": "SHA-256 of compact canonical theorem record after removing only record_sha256",
+    "theorem_record_root_sha256": "SHA-256 of the compact canonical typed ordered record-identity preimage",
+    "transitive_closure_lf_sha256": "SHA-256 of replay-order dependency names, each followed by LF"
+  },
+  "id": "peano-hydra-library-construction-rebuild-v1",
+  "limits": {
+    "artifact_bytes": 8000000,
+    "document_bytes": 8000000,
+    "json_depth": 192,
+    "json_items": 2000000,
+    "schema_bytes": 1000000,
+    "source_file_bytes": 16000000
+  },
+  "required_theorems": [
+    {
+      "candidate_dependencies": [
+        "mul_add",
+        "add_assoc",
+        "add_comm"
+      ],
+      "index": 256,
+      "name": "odd_add_odd",
+      "omitted_direct_dependency": "add_succ_left",
+      "transitive_closure_lf_sha256": "a4abec5d9eb955ed95f6eea761c96c3de0166b3df3c64fe8e898d8766ed5c5f2"
+    },
+    {
+      "candidate_dependencies": [
+        "finite_surjective_zero",
+        "finite_contains_decidable",
+        "finite_bounded_last_succ",
+        "beta_prefix_swap_last_from_entries",
+        "finite_swap_last_bounded",
+        "finite_swap_last_injective",
+        "finite_bounded_prefix_without_top",
+        "finite_injective_prefix_succ",
+        "finite_surjective_succ_from_prefix",
+        "finite_swap_last_surjective_back",
+        "finite_no_top_successor_gate",
+        "le_succ",
+        "le_refl",
+        "lt_irrefl_expanded"
+      ],
+      "index": 376,
+      "name": "finite_bounded_injective_surjective",
+      "omitted_direct_dependency": "beta_at_unique",
+      "transitive_closure_lf_sha256": "a5b1ba200b4fe2f77c86a3b98e4870e05e178e0b21498f303b56a1ad61060363"
+    },
+    {
+      "candidate_dependencies": [
+        "beta_product_replace_balance",
+        "beta_product_succ_decompose",
+        "beta_at_unique",
+        "le_succ",
+        "lt_irrefl_expanded"
+      ],
+      "index": 379,
+      "name": "beta_product_swap_last_invariant",
+      "omitted_direct_dependency": "le_refl",
+      "transitive_closure_lf_sha256": "18c328d9374661586958db5e47441f49783a86d158afc0ac066d28f58c5bab37"
+    }
+  ],
+  "v": 1
+}

@@ -4113,3 +4113,59 @@ service, and not evidence that Vampire or Qwen beats native search.
 The final disjoint gates passed 59 terminal/Qwen/session/CI tests and 91
 direct-child Vampire/reconstructor/frozen-macro tests. Ten focused Book tests
 and its command-replay gate passed as well.
+
+## 2026-08-09 — Rebuild a shorter carrier before believing its graph
+
+A2.1 left us with three compelling but incomplete objects. Each reduced tactic
+recipe proved a proposition of the form $D_1 \to \cdots \to D_k \to T$ from
+the empty context. That did not make it a new closed certificate for $T$ and
+did not justify changing the public theorem graph. The next implementation
+decision was therefore deliberately narrow: resolve those exact $D_i$ values
+from the pinned replay pack, close the carrier with an explicit Cut spine, and
+ask the independent kernel about the original uncurried statement.
+
+The small closing core checks every dependency certificate before inserting
+it, peels exactly one generated implication introduction per selected direct
+dependency, wraps the body in reversed nested Cuts, and finally checks the
+whole object from the empty context. The surrounding builder fixes the exact
+A2.1 rows, replay artifacts, source identities, direct-vector order, statement,
+and unchanged tactic script. This separation was worth keeping: the core says
+how to close a carrier; the sidecar layer says which evidence is allowed to
+make which claim.
+
+All three constructions closed. Across the affected rows, the candidate direct
+spines have 22 edges instead of 25. Relative to the immediate retained
+certificates, the new canonical artifacts are 49,483 bytes smaller and their
+intrinsic proof trees contain 1,176 fewer nodes and 34 fewer Cuts. We record
+those exact predecessor deltas because they are reproducible properties of the
+serialized artifacts and proof trees. We explicitly do not compare Python
+object-identity or alias-sharing counts: construction order and sharing make
+those observations schedule-dependent.
+
+Another tempting overclaim failed inspection. Removing `add_succ_left`,
+`beta_at_unique`, or `le_refl` from a direct Cut spine does not remove that
+name from the corresponding transitive closure. All three are still reachable
+there. The sidecar therefore says only that one direct edge is absent in each
+candidate construction. It says neither “lemma-free” nor “necessary,” and it
+says nothing about global minimality.
+
+The retained candidate is 3,106,352 bytes with artifact SHA-256
+`6176c44a63f791bc27ddd550aa915db6e78c8fbf9f9f0918299f1b3f639fc182`,
+document root
+`91ecc6b4bb22f4b46cdfa3fcdd2401dce47d8fef38c15101d221c207fd7793b0`,
+and ordered theorem-record root
+`42d718621f91b52bf55a7909751eab695fefd28da2989863de50470d14397ef5`.
+The schema semantic/artifact pair is
+`a189ad140f5e7093f11a2f433705d4dafb71d474672e822cf39e45dbeb1ca571` /
+`d1fc09c035e28f96913cdadd63f17c853901fc8dcd2e17df3a094a919612bf9f`.
+
+This closes only the construction-rebuild checkbox. We did not edit the
+admitted library, retained replay pack, metadata, pages, or 1,038-edge public
+graph. Every authority, review, minimality, optimized-best-known, publication,
+freeze, training, retrieval, and evaluation flag stays false. The honest next
+step is to define the optimizer program and comparison set, retain Pareto
+evidence, audit readable and optimized vectors independently, and only then
+derive their verified publication union.
+
+The final focused suite, including an explicit Cut-spine regression, passed 23
+tests in 44.12 seconds. The exact retained CLI `--check` passed as well.

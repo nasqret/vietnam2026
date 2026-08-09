@@ -4175,3 +4175,34 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   direct-child Vampire/reconstructor/frozen-macro tests. Ten focused Book
   tests and the Book command-replay gate also passed. No runtime solver trace
   was retained as a deterministic campaign artifact.
+
+## 2026-08-09 — A2.2 closed the three reduced candidate constructions
+
+- Added a candidate-only construction-rebuild sidecar for the three A2.1 rows
+  whose direct vectors changed. Each unchanged tactic recipe is recompiled,
+  its exact replay-pack dependencies are independently checked and inserted as
+  a deterministic Cut spine, and the completed certificate is checked from
+  the empty context against the original uncurried theorem statement.
+- All three closed rebuilds passed. Across these rows, direct candidate edges
+  change from 25 to 22. Descriptive immediate-predecessor deltas are -49,483
+  canonical artifact bytes, -1,176 intrinsic proof-tree nodes, and -34 Cuts.
+  Schedule-dependent Python alias metrics are explicitly non-comparable.
+- Every omitted direct name remains reachable in the corresponding retained
+  transitive closure. The admitted theorem records, retained certificates,
+  replay pack, metadata, pages, catalog, and 1,038-edge public graph remain
+  unchanged.
+- Retained the 3,106,352-byte sidecar with artifact SHA-256
+  `6176c44a63f791bc27ddd550aa915db6e78c8fbf9f9f0918299f1b3f639fc182`,
+  document root
+  `91ecc6b4bb22f4b46cdfa3fcdd2401dce47d8fef38c15101d221c207fd7793b0`,
+  and ordered theorem-record root
+  `42d718621f91b52bf55a7909751eab695fefd28da2989863de50470d14397ef5`.
+  Its schema semantic/artifact pair is
+  `a189ad140f5e7093f11a2f433705d4dafb71d474672e822cf39e45dbeb1ca571` /
+  `d1fc09c035e28f96913cdadd63f17c853901fc8dcd2e17df3a094a919612bf9f`.
+- The focused adversarial suite passed 23 tests in 44.12 seconds, including an
+  explicit Cut-spine regression, and the exact retained CLI `--check` passed.
+  All A2, authority, review, minimality, optimized-best-known, publication,
+  freeze, training, retrieval, and evaluation flags remain false. The
+  optimizer/comparison/Pareto, independent vector-audit, and verified
+  publication-union gates remain open.
