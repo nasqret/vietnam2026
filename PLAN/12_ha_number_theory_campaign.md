@@ -893,3 +893,68 @@ HA**.  It requires HA0--HA3 and M1--M3 to be `public_checked`; M4/M5 may form a
 second release if the independent list substrate is not ready.  Quadratic
 reciprocity, FTA, or any beta-coded result already present in the repository
 does not waive these canonical-interface gates.
+
+## 2026-08-09 — superseding Alpha/Stable release pipeline
+
+The campaign now uses two cumulative editions rather than leaving reviewed
+work outside a library until final admission:
+
+1. A reviewed new layer is enrolled immediately in **Alpha** with its exact
+   statement, dependency list, script, provenance, and evidence status.
+2. Only `stable_closed` and `alpha_closed` rows are available through the
+   checked-use API. `body_checked` and `pending_layered_closure` rows remain
+   visible Alpha specifications but cannot be replayed as empty-context facts.
+3. A dependency-closed batch is promoted to **Stable** in a new channel
+   version only after fresh cold
+   compilation, kernel, resource, mutation, dependency-link, and identity
+   gates pass. Promotion changes membership, never theorem identity.
+
+The current 432-row Stable prefix is a v1 seal, not a timeless ordering rule.
+Future Stable is a keyed exact subset of Alpha with its own append-only,
+dependency-topological promotion order. Alpha retains its immutable enrollment
+order, origin, provenance, and source metadata; a promoted QR/HA/K3B row must
+not be relabeled Stable-origin.
+
+Current sealed topology:
+
+| Edition | Theorems | Direct edges | Layers | Checked use |
+|---|---:|---:|---:|---:|
+| Stable | 432 | 1,185 | 22 | 432 |
+| Alpha | 885 | 2,641 | 45 | 570 |
+
+Alpha contains 453 Alpha-only rows. Its evidence split is 432
+`stable_closed`, 138 `alpha_closed`, 314 `body_checked`, and one
+`pending_layered_closure`; whole-Alpha empty-context closure is therefore
+missing for 315 rows. The ordered-enrollment root is
+`7371461aa930071f00007f766f899cef88c4126a5ddf576f93d79e336bc65c49`.
+
+The code-owned interface is `peano_lab.library.editions`:
+`edition("stable" | "alpha")`, `entry(...)`, and
+`replay(..., edition=...)`, with Stable as the default and fail-closed Alpha
+use. The deterministic channel pointer is
+`artifacts/peano-library/channels.json`; the Alpha catalog, metrics, and graph
+are in `artifacts/peano-library/alpha/`; the Stable catalog remains
+`artifacts/peano-library/catalog-v1.json` byte-for-byte unchanged.
+
+Next release gates:
+
+- [x] canonical Alpha enrollment, source binding, topology, and channel
+  artifacts;
+- [x] explicit membership/evidence separation and checked-use rejection for
+  body-only/pending rows;
+- [ ] review the 714 reachability-redundant declared links against their
+  actual tactic bodies; transitive reduction is a display/structural result,
+  not proof-semantic or global minimality;
+- [ ] produce fresh isolated empty-context closures for the exact promotion
+  batch (all 315 missing rows only if the target is all of Alpha);
+- [ ] rerun capacity, determinism, zero-DNE, mutation, and dependency-liveness
+  gates on the promotion batch;
+- [ ] promote only a dependency-closed, identity-preserving batch to Stable;
+- [ ] rebuild and verify the complete Book/explorer surfaces after promotion.
+
+WMI is down for the weekend, so the cold whole-Alpha compilation and any new
+batch-promotion receipt are pending. A smaller dependency-closed batch does
+not depend on closure of unrelated Alpha rows. Earlier sections that call campaign rows private,
+unregistered, or unadmitted are retained as historical checkpoint prose; the
+current status of enrolled reviewed rows is Alpha-only unless and until a
+Stable promotion receipt is committed.

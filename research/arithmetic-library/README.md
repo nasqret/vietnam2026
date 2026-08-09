@@ -454,3 +454,55 @@ companion; that conventional list theorem remains independent of the native
 has no remaining planned entry. Conventional integer-coefficient Bézout is not
 available in the natural-only term language, while the checked balanced
 four-natural relation supplies the native replacement.
+
+## 2026-08-09 — current Alpha and Stable editions
+
+The arithmetic library now has two explicit cumulative editions. **Stable**
+is the official checked library and remains the default. **Alpha** is the
+building library: every reviewed incorporated layer appears there immediately,
+with membership recorded independently of its proof evidence. Stable is a
+subset of Alpha; Alpha membership alone never grants a closed theorem fact.
+The current 432 Stable rows form Alpha's initial v1 prefix only. Future
+promotion publishes a versioned channel index and preserves a keyed exact
+subset: Alpha enrollment order and origin/provenance remain immutable, while
+Stable keeps its own append-only dependency-topological release order.
+
+| Edition | Theorems | Direct edges | Layers | Alpha-only | Checked use |
+|---|---:|---:|---:|---:|---:|
+| Stable | 432 | 1,185 | 22 | 0 | 432 |
+| Alpha | 885 | 2,641 | 45 | 453 | 570 |
+
+Alpha's evidence ledger contains 432 `stable_closed`, 138 `alpha_closed`, 314
+`body_checked`, and one `pending_layered_closure` row. Consequently, 315 of
+the 885 specifications still lack whole-library empty-context closure and are
+not legal checked-use facts. The canonical ordered-enrollment root is
+`7371461aa930071f00007f766f899cef88c4126a5ddf576f93d79e336bc65c49`.
+
+The code-owned runtime API is
+[`peano_lab.library.editions`](../../peano-lab/py/peano_lab/library/editions.py):
+`edition("stable" | "alpha")`, `entry(...)`, and
+`replay(..., edition=...)`. Stable remains the default; Alpha replay rejects
+`body_checked` and `pending_layered_closure` rows. Deterministic publication
+state is recorded by
+[`artifacts/peano-library/channels.json`](../../artifacts/peano-library/channels.json),
+the unchanged
+[`Stable catalog`](../../artifacts/peano-library/catalog-v1.json), and the
+Alpha
+[`catalog`](../../artifacts/peano-library/alpha/catalog-v1.json),
+[`metrics`](../../artifacts/peano-library/alpha/metrics.json), and
+[`dependency graph`](../../artifacts/peano-library/alpha/dependency-graph.mmd).
+
+This section supersedes status, not history. Older dated paragraphs that call
+K3/HA/K3B or QR rows private, unregistered, or outside the public snapshot
+describe the Stable boundary at those checkpoints. Reviewed enrolled rows now
+have Alpha membership, but none is thereby promoted to Stable. The 714
+reachability-redundant declared links and the transitive-reduction graph are a
+display/structural review surface only; they do not establish that tactic
+bodies can omit those hypotheses and make no proof-semantic minimality claim.
+
+Promotion is still pending. Every proposed dependency-closed batch needs a
+fresh isolated WMI run plus resource, determinism, mutation,
+dependency-liveness, and identity gates. Promoting all of Alpha would require
+closing the remaining 315 rows; a smaller dependency-closed batch need not
+wait for unrelated Alpha rows. WMI is down for the weekend, so no whole-Alpha
+closure or new promotion receipt is claimed here.

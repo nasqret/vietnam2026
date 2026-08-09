@@ -7,6 +7,17 @@ constructions, and the final certificate remain ordinary first-order PA.
 
 ![Dependency roadmap for the native quadratic-reciprocity proof](../_static/quadratic-reciprocity-roadmap.svg)
 
+```{admonition} Current Alpha status (2026-08-09)
+:class: important
+All 316 QR specifications belong to Alpha. Canonical evidence partitions them
+into 314 body-checked-only rows, one Alpha-closed QR/HA overlap
+(`mod_eq_add_cancel_left`), and the pending layered-closure endpoint. None has
+been promoted to Stable by this enrollment. Older phrases such as
+“unregistered,” “unadmitted,” or “private” below describe the historical
+Stable/public boundary, not absence from today's Alpha library. See
+{doc}`Alpha and Stable library editions <library-editions>`.
+```
+
 ## The exact native theorem
 
 Balanced congruence lets us express “$a$ is a square modulo $p$” without
@@ -39,9 +50,9 @@ uses 1,520 source characters—well below the 8,192-character input limit—and
 contains no primitive occurrence of `Prime`, `Odd`, `QRes`, `%`, an integer
 sign, or exponentiation.
 
-The same, opposite, and combined candidate bodies now kernel-check with their
-declared dependencies as hypotheses. They remain unregistered and unadmitted:
-the selected next gate is a WMI-built layered `Cut` certificate, followed by
+The same, opposite, and combined bodies kernel-check with their declared
+dependencies as hypotheses. They are Alpha-enrolled but are not closed-use or
+Stable facts: the selected next gate is a WMI-built layered `Cut` certificate, followed by
 mutation testing, capacity profiling, browser replay, and a separate
 receipt-pinned admission. The former recursively expanded closure is now a
 measured baseline rather than the intended release artifact. Throughout this
@@ -1787,7 +1798,10 @@ for the unchanged-kernel compiler. The linked admission design originally
 froze the pre-overlap 317-candidate state. The strict-HA campaign has since
 admitted the exact Wilson `bounded_mod_inverse_unique` specification, so the
 live QR partition is 241 public / 316 candidate and the remaining enrollment
-is 315 proper candidate ancestors plus the root. If the WMI gates pass, the
+was historically described as 315 proper candidate ancestors plus the root.
+In the canonical Alpha ledger all 316 are now enrolled: 314 remain body-only,
+`mod_eq_add_cancel_left` is Alpha-closed through the HA receipt, and the root
+remains pending layered closure. If the WMI gates pass, the
 separate
 [`public-admission design`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/quadratic-reciprocity-admission-path.md)
 specifies how to enroll that remaining order without an

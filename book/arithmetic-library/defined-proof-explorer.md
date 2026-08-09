@@ -5,6 +5,17 @@ The definition-aware explorer is a parallel reading edition of the same
 linked names—such as `Dvd(d,n)`, `Prime(p)`, and `ModEq(m,a,b)`—without changing
 the explicit theorem statements, tactic scripts, proof terms, or kernel.
 
+```{admonition} Alpha QR slice
+:class: note
+This is not a second release edition and not the whole Alpha library. It is the
+definition-aware view of the same 557-node QR slice: 241 Stable prerequisites
+and 316 Alpha-only specifications. The complete Stable catalog has 432 rows,
+the canonical Alpha catalog has 885, and {doc}`K3B
+<cell-history-and-lookup>` is a separate focused Alpha lens. See
+{doc}`Alpha and Stable library editions <library-editions>` for the canonical
+scope distinction.
+```
+
 ```{admonition} Defined notation is not kernel syntax
 :class: important
 Every purple token on these pages is produced by an untrusted, conservative
@@ -189,14 +200,17 @@ extend, or otherwise participate in a proof path.
 Persistent `PA` tags identify theorem pages; persistent `PD` tags identify
 definitions. The generated corpus records the explicit-corpus digest, the
 definition-edition identity, source locations, expansion hashes, and all typed
-edges. None of those identifiers grants theorem authority. Public admission
-and candidate status remain exactly those of the {doc}`explicit proof explorer
-<proof-explorer>`.
+edges. None of those identifiers grants theorem authority. The generated
+labels remain exactly those of the {doc}`explicit QR proof explorer
+<proof-explorer>`, but they are campaign-local rather than canonical evidence:
+the later HA receipt upgrades `mod_eq_add_cancel_left` to `alpha_closed` only
+in the Alpha catalog. The historical labels are not a complete edition
+catalog.
 
 This edition gate validates source-to-source compilation for all 557
 specifications; it is not a second closed-certificate replay or admission
-claim. The underlying body, closure, and admission evidence is inherited
-unchanged from the explicit corpus.
+claim. This notation view adds no proof evidence; canonical evidence, including
+the later HA overlap upgrade, comes from the Alpha catalog and its receipts.
 
 For the core grammar and accepted proof constructors, read the
 {doc}`PA language reference <../peano/language-reference>` and

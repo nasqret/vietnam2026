@@ -1,4 +1,4 @@
-/* Isolated styles for the private K3B dependency microsite. */
+/* Isolated styles for the Alpha K3B dependency microsite. */
 body.k3b-site {
   color-scheme: light dark;
   --k3b-bg: #f5f3ee;
@@ -9,10 +9,10 @@ body.k3b-site {
   --k3b-accent: #7048a8;
   --k3b-definition: #ffec99;
   --k3b-definition-stroke: #9a6700;
-  --k3b-private: #dbeafe;
-  --k3b-private-stroke: #2864a5;
-  --k3b-public: #dcfce7;
-  --k3b-public-stroke: #28784b;
+  --k3b-alpha: #dbeafe;
+  --k3b-alpha-stroke: #2864a5;
+  --k3b-stable: #dcfce7;
+  --k3b-stable-stroke: #28784b;
   --k3b-target: #fef3c7;
   --k3b-proof-edge: #52606d;
   --k3b-notation-edge: #7c3aed;
@@ -258,14 +258,14 @@ body.k3b-site .k3b-node-definition polygon {
   stroke: var(--k3b-definition-stroke);
 }
 
-body.k3b-site .k3b-node-private rect {
-  fill: var(--k3b-private);
-  stroke: var(--k3b-private-stroke);
+body.k3b-site .k3b-node-alpha rect {
+  fill: var(--k3b-alpha);
+  stroke: var(--k3b-alpha-stroke);
 }
 
-body.k3b-site .k3b-node-public rect {
-  fill: var(--k3b-public);
-  stroke: var(--k3b-public-stroke);
+body.k3b-site .k3b-node-stable rect {
+  fill: var(--k3b-stable);
+  stroke: var(--k3b-stable-stroke);
 }
 
 body.k3b-site .k3b-node-selected rect,
@@ -371,15 +371,15 @@ body.k3b-site .k3b-swatch.k3b-definition {
   outline: 2px solid var(--k3b-definition-stroke);
 }
 
-body.k3b-site .k3b-swatch.k3b-private {
-  border-color: var(--k3b-private-stroke);
+body.k3b-site .k3b-swatch.k3b-alpha {
+  border-color: var(--k3b-alpha-stroke);
   border-radius: 0.4rem;
-  background: var(--k3b-private);
+  background: var(--k3b-alpha);
 }
 
-body.k3b-site .k3b-swatch.k3b-public {
-  border-color: var(--k3b-public-stroke);
-  background: var(--k3b-public);
+body.k3b-site .k3b-swatch.k3b-stable {
+  border-color: var(--k3b-stable-stroke);
+  background: var(--k3b-stable);
 }
 
 body.k3b-site .k3b-line {
@@ -437,10 +437,10 @@ body.k3b-site .k3b-line.k3b-notation {
     --k3b-border: #47535d;
     --k3b-definition: #665113;
     --k3b-definition-stroke: #f2c94c;
-    --k3b-private: #173b62;
-    --k3b-private-stroke: #74b7f3;
-    --k3b-public: #174936;
-    --k3b-public-stroke: #6cda9b;
+    --k3b-alpha: #173b62;
+    --k3b-alpha-stroke: #74b7f3;
+    --k3b-stable: #174936;
+    --k3b-stable-stroke: #6cda9b;
     --k3b-target: #704f16;
     --k3b-proof-edge: #bdc8d0;
     --k3b-notation-edge: #c4a7ff;

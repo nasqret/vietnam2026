@@ -18,6 +18,7 @@ ATLAS = BOOK / "arithmetic-library" / "theorem-atlas.md"
 GUIDE = BOOK / "arithmetic-library" / "guided-tour.md"
 K3B_CHAPTER = BOOK / "arithmetic-library" / "cell-history-and-lookup.md"
 K3B_SITE = BOOK / "_static" / "pa-proof-explorer" / "k3b"
+LIBRARY_EDITIONS = BOOK / "arithmetic-library" / "library-editions.md"
 K3B_RECEIPT = (
     REPO
     / "artifacts"
@@ -53,6 +54,7 @@ def test_arithmetic_dashboard_tour_atlas_and_dependency_chapters_are_ordered() -
     toc = (BOOK / "_toc.yml").read_text(encoding="utf-8")
     chapters = (
         "index",
+        "library-editions",
         "guided-tour",
         "theorem-atlas",
         "proof-explorer",
@@ -78,7 +80,7 @@ def test_arithmetic_dashboard_tour_atlas_and_dependency_chapters_are_ordered() -
         assert source.read_text(encoding="utf-8").startswith("# ")
 
 
-def test_private_k3b_book_chapter_and_sparse_graph_match_the_sealed_receipt() -> None:
+def test_alpha_k3b_book_chapter_and_sparse_graph_match_the_sealed_receipt() -> None:
     chapter = K3B_CHAPTER.read_text(encoding="utf-8")
     site = (K3B_SITE / "index.html").read_text(encoding="utf-8")
     css = (K3B_SITE / "assets" / "k3b.css").read_text(encoding="utf-8")
@@ -104,8 +106,10 @@ def test_private_k3b_book_chapter_and_sparse_graph_match_the_sealed_receipt() ->
 
     for exact in (
         "WMI job **219217**",
-        "private `closed_checked_candidate` evidence",
-        "unregistered,\nunadmitted",
+        "**Alpha-only**",
+        "**closed checked**",
+        "legacy evidence spelling\n`closed_checked_candidate`",
+        "432-theorem Stable checked-use registry",
         "95,253",
         "c79184bee17a7c053287b3b98dcda74cf00498137499ef62122b9c6d15ec40b8",
         "cb6fcbcc6b51e0b9290e02ed1a16d8b034145b8e",
@@ -123,7 +127,7 @@ def test_private_k3b_book_chapter_and_sparse_graph_match_the_sealed_receipt() ->
     )
     assert match is not None
     graph = json.loads(match.group(1))
-    assert graph["schema"] == "peano-k3b-book-graph-v1"
+    assert graph["schema"] == "peano-k3b-book-graph-v2"
     assert graph["orientation"] == "dependency_to_dependent"
     assert graph["default_focus"] == "cell_list_extensional"
     assert graph["receipt"] == {
@@ -141,15 +145,19 @@ def test_private_k3b_book_chapter_and_sparse_graph_match_the_sealed_receipt() ->
     assert len(by_id) == len(nodes) == 41
     assert collections.Counter(node["kind"] for node in nodes) == {
         "definition": 7,
-        "public": 12,
-        "private": 22,
+        "stable": 12,
+        "alpha": 22,
     }
-    assert collections.Counter(node["status"] for node in nodes) == {
+    assert collections.Counter(node["release"] for node in nodes) == {
+        "presentation": 7,
+        "stable": 12,
+        "alpha_only": 22,
+    }
+    assert collections.Counter(node["evidence"] for node in nodes) == {
         "conservative_definition": 7,
-        "public_checked": 12,
-        "private_support": 5,
-        "closed_checked_candidate": 17,
+        "closed_checked": 34,
     }
+    assert all("status" not in node for node in nodes)
     assert all(not node["id"].startswith(("PA", "PD")) for node in nodes)
     assert all("tag" not in node for node in nodes)
 
@@ -161,7 +169,8 @@ def test_private_k3b_book_chapter_and_sparse_graph_match_the_sealed_receipt() ->
     for name in receipt["selected_theorems"]:
         node = by_id[name]
         closed = receipt["results"][name]
-        assert node["status"] == "closed_checked_candidate"
+        assert node["release"] == "alpha_only"
+        assert node["evidence"] == "closed_checked"
         assert node["metrics"] == {
             "nodes": closed["proof_nodes"],
             "depth": closed["proof_depth"],
@@ -183,7 +192,7 @@ def test_private_k3b_book_chapter_and_sparse_graph_match_the_sealed_receipt() ->
         assert node["test_line"] <= len(audit.read_text(encoding="utf-8").splitlines())
 
     for node in nodes:
-        if node["kind"] == "public":
+        if node["kind"] == "stable":
             assert (K3B_SITE / node["href"]).resolve().is_file()
         elif node["href"].startswith("../../../arithmetic-library/"):
             fragment = node["href"].split("#", 1)[1]
@@ -202,20 +211,57 @@ def test_private_k3b_book_chapter_and_sparse_graph_match_the_sealed_receipt() ->
     assert 'viewControl.value === "all"' in javascript
     assert 'edgeControl.value === "none"' in javascript
     assert "body.k3b-site .k3b-node-definition polygon" in css
-    assert "body.k3b-site .k3b-node-private rect" in css
-    assert "body.k3b-site .k3b-node-public rect" in css
+    assert "body.k3b-site .k3b-node-alpha rect" in css
+    assert "body.k3b-site .k3b-node-stable rect" in css
+    assert 'var order = { definition: 0, stable: 1, alpha: 2 }' in javascript
+    assert 'appendPair(metrics, "Release", node.release)' in javascript
+    assert 'appendPair(metrics, "Evidence", node.evidence)' in javascript
     assert "prefers-reduced-motion" in css
 
     toc = (BOOK / "_toc.yml").read_text(encoding="utf-8")
     assert toc.index("- file: arithmetic-library/strict-ha-campaign") < toc.index(
         "- file: arithmetic-library/cell-history-and-lookup"
     ) < toc.index("- file: arithmetic-library/primes-and-factorization")
+    assert toc.index("- file: arithmetic-library/index") < toc.index(
+        "- file: arithmetic-library/library-editions"
+    ) < toc.index("- file: arithmetic-library/guided-tour")
     assert "<cell-history-and-lookup>" in (
         BOOK / "arithmetic-library" / "index.md"
     ).read_text(encoding="utf-8")
     assert "<cell-history-and-lookup>" in (
         BOOK / "arithmetic-library" / "strict-ha-campaign.md"
     ).read_text(encoding="utf-8")
+
+
+def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> None:
+    source = LIBRARY_EDITIONS.read_text(encoding="utf-8")
+    index = (BOOK / "arithmetic-library" / "index.md").read_text(encoding="utf-8")
+    proof_explorer = (
+        BOOK / "arithmetic-library" / "proof-explorer.md"
+    ).read_text(encoding="utf-8")
+    normalized_proof_explorer = " ".join(proof_explorer.split())
+
+    for exact in (
+        "# Alpha and Stable library editions",
+        "**885** theorems",
+        "**570** theorems",
+        "**2,641** edges / **45** layers",
+        "432 Stable plus 453 Alpha-only rows",
+        "314 `body_checked`",
+        "one\n`pending_layered_closure`",
+        'edition("alpha").checked_specs',
+        'entry("cell_list_extensional", edition="alpha")',
+        'replay("signed_decode_nonnegative_constructor", edition="alpha")',
+        "95,253 proof nodes",
+        "artifacts/peano-library/alpha/catalog-v1.json",
+        "artifacts/peano-library/channels.json",
+        "direct neighborhood",
+    ):
+        assert exact in source
+    assert "<library-editions>" in index
+    assert "241 Stable prerequisites" in normalized_proof_explorer
+    assert "316 Alpha-only specifications" in normalized_proof_explorer
+    assert "748" in normalized_proof_explorer
 
 
 def test_generated_atlas_is_byte_current() -> None:
@@ -314,7 +360,8 @@ def test_interaction_assets_are_local_progressive_and_auto_discovered_once() -> 
     assert "</div>\n```\n\n## How to use this atlas" in atlas
     assert "data-pa-search" in atlas
     assert "data-pa-lab-command" not in atlas
-    assert "after promotion" in atlas
+    assert "Stable repository theorem; hosted-runtime deployment is a separate channel" in atlas
+    assert "# The Stable theorem atlas" in atlas
     assert f"github.com/nasqret/vietnam2026/blob/{PROOF_SNAPSHOT_COMMIT}/" in atlas
     assert "github.com/nasqret/vietnam2026/blob/peano-lab/" not in atlas
     assert "data-pa-learning-route" in GUIDE.read_text(encoding="utf-8")

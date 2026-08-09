@@ -4873,3 +4873,41 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - This is closure evidence, not admission evidence. All 17 targets remain
   private, unregistered, and unadmitted. No registry, catalog, snapshot,
   campaign-JSON, or public-count change follows from this seal.
+
+## 2026-08-09 — Alpha and Stable became explicit library editions
+
+The campaign's release model is now explicit and supersedes the older binary
+wording in which a reviewed row was either in the public registry or described
+as private/unregistered. Every reviewed building-library row belongs to
+**Alpha** as soon as it is incorporated; only a separately audited promotion
+makes it part of **Stable**. Stable remains the default checked-use edition and
+is a subset of Alpha. Edition membership does not imply proof evidence, and
+neither fact implies hosted deployment.
+
+- The unchanged Stable edition contains 432 theorems, 1,185 declared direct
+  dependencies, and 22 layers.
+- The canonical Alpha edition contains 885 theorems, 2,641 declared direct
+  dependencies, and 45 layers: 432 Stable plus 453 Alpha-only rows.
+- Alpha evidence is exactly 432 `stable_closed`, 138 `alpha_closed`, 314
+  `body_checked`, and one `pending_layered_closure`. Thus 570 rows are
+  checked-use facts and 315 still lack an empty-context closure metric.
+- Canonical Alpha order is Stable, QR candidate order, unique strict-HA rows,
+  then K3B; its ordered-enrollment root is
+  `7371461aa930071f00007f766f899cef88c4126a5ddf576f93d79e336bc65c49`.
+- `peano_lab.library.editions` now exposes `edition`, `entry`, and `replay`
+  with explicit `stable`/`alpha` selection. Stable is the default. Alpha
+  `replay` accepts only `stable_closed` or `alpha_closed` rows and fails closed
+  for body-only and pending rows.
+- Deterministic channel state lives in
+  `artifacts/peano-library/channels.json`; Alpha's catalog, metrics, and
+  display dependency graph live under `artifacts/peano-library/alpha/`. The
+  pre-existing Stable snapshot was not rewritten.
+- Alpha's reachability reduction reports graph structure for review and
+  display. A reachability-redundant declared dependency may still be used
+  directly by the tactic body, so the report is not proof-semantic minimality.
+
+Promotion is deliberately open. Whole-Alpha cold closure is missing for 315
+rows, and the WMI cluster is down for the weekend. No Stable promotion or WMI
+seal is claimed by this edition enrollment. Earlier dated passages calling
+the affected rows private or unregistered remain valid historical checkpoint
+records; their current interpretation is **Alpha-only, not Stable**.

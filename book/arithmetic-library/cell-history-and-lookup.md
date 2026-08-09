@@ -1,25 +1,28 @@
-# Cell histories and extensional lookup
+# K3B Alpha: cell histories and extensional lookup
 
-This chapter is the readable front end to the private K3B finite-data bridge.
+This chapter is the readable front end to the **Alpha-only** K3B finite-data
+bridge.
 It represents a finite list by its terminal doubled-Cantor cell code and uses a
 Gödel-β computation history to witness how that code was built.  The resulting
 `ListAt` relation has the expected outer-head equations, unique values, and an
 extensionality theorem—without adding lists, projections, division, or a
 function-valued lookup to the Peano term grammar.
 
-```{admonition} Closed candidate evidence is not public admission
+```{admonition} Closed Alpha evidence is not Stable promotion
 :class: important
-WMI job **219217** checked all seventeen selected theorem candidates twice
+WMI job **219217** checked all seventeen selected theorem rows twice
 from the empty context.  Both passes were deterministic and every resulting
-certificate contains zero uses of double-negation elimination.  These rows are
-still private `closed_checked_candidate` evidence: they are unregistered,
-unadmitted, and absent from the 432-theorem public runtime and its permanent
-`PA`/`PD` tag spaces.  The graph below uses descriptive names, not public
-theorem identifiers.
+certificate contains zero uses of double-negation elimination. Their release
+membership is **Alpha-only** and their proof evidence is **closed checked**.
+The underlying receipt retains the legacy evidence spelling
+`closed_checked_candidate`; that does not make the rows private, nor does it
+promote them into the 432-theorem Stable checked-use registry. The graph below
+uses descriptive names until K3B is integrated into the unified Alpha tag
+space. See {doc}`Alpha and Stable library editions <library-editions>`.
 ```
 
-<div class="pa-dashboard-metrics" aria-label="Private K3B closure metrics">
-  <div><strong>17</strong><span>closed private rows</span></div>
+<div class="pa-dashboard-metrics" aria-label="Alpha K3B closure metrics">
+  <div><strong>17</strong><span>closed Alpha roots</span></div>
   <div><strong>2</strong><span>deterministic cold passes</span></div>
   <div><strong>95,253</strong><span>largest certificate</span></div>
   <div><strong>0</strong><span>DNE proof objects</span></div>
@@ -31,9 +34,10 @@ The embedded map starts in a deliberately sparse neighborhood view.  Click a
 node to make it the focus; only its direct prerequisites and direct dependents
 remain visible.  The full-map option still records only direct edges, and its
 default arrow mode draws only edges incident to the selected node.  Yellow
-hexagons are conservative definitions, blue rounded nodes are private
-candidates or private support, and green rectangles are already-public
-boundary lemmas.
+hexagons are conservative definitions, blue rounded nodes are Alpha-only
+theorems or support, and green rectangles are Stable boundary lemmas. Release
+membership and proof evidence are separate node fields; neither creates an
+extra arrow.
 
 <p>
   <a class="btn btn-primary" href="../_static/pa-proof-explorer/k3b/index.html?focus=cell_list_extensional&amp;view=neighborhood&amp;edges=focus">
@@ -43,7 +47,7 @@ boundary lemmas.
 
 <iframe
   src="../_static/pa-proof-explorer/k3b/index.html?focus=cell_list_extensional&amp;view=neighborhood&amp;edges=focus"
-  title="Private K3B CellHistory and ListAt direct-dependency explorer"
+  title="Alpha K3B CellHistory and ListAt direct-dependency explorer"
   width="100%"
   height="900"
   loading="lazy">
@@ -108,7 +112,7 @@ u=S\!\left((h+t)S(h+t)+(t+t)\right).
 $$
 
 Here $h$ is the head, $t$ the tail code, and $u$ the resulting cell code.  The
-private strict-K3 support proves constructor existence, functionality, and
+Alpha strict-K3 support proves constructor existence, functionality, and
 strict descent of both components.
 
 <span id="definition-cell-history"></span>
@@ -376,10 +380,10 @@ fixed one-CPU, 32,768-MiB, four-hour `cpu_idle` resource envelope.
 
 The tuple columns are exact structural occurrences, maximum depth, distinct
 proof objects, proof-DAG edges, reused object references, and `Cut` objects.
-Rows share large public dependency closures, so summing the node column does
+Rows share large Stable dependency closures, so summing the node column does
 not measure a single combined proof.
 
-| Closed private row | Nodes | Depth | Objects | Edges | Reused | Cuts |
+| Closed Alpha row | Nodes | Depth | Objects | Edges | Reused | Cuts |
 |---|---:|---:|---:|---:|---:|---:|
 | `cell_history_nil` | 155 | 18 | 155 | 154 | 0 | 2 |
 | `cell_history_extend` | 29,352 | 81 | 4,651 | 4,879 | 229 | 241 |
@@ -442,7 +446,7 @@ make ha-k3b-list-lookup-check
 ```
 
 Those commands validate surfaces, body certificates, semantic fixtures, and
-the sealed WMI receipts.  They deliberately do not register or admit a
-theorem.  Any later promotion still requires the separate G1–G8 admission and
-release review described in {doc}`Curating the next conservative edition
+the sealed WMI receipts. They do not promote an Alpha row into the Stable
+checked-use registry. Any later promotion still requires the separate G1–G8
+admission and release review described in {doc}`Curating the next conservative edition
 <curation>`.

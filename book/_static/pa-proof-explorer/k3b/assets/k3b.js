@@ -1,4 +1,4 @@
-/* Progressive, dependency-free interaction for the private K3B graph. */
+/* Progressive, dependency-free interaction for the Alpha K3B graph. */
 (function () {
   "use strict";
 
@@ -33,10 +33,9 @@
   }
 
   function statusText(node) {
-    if (node.status === "public_checked") return "Public checked prerequisite";
-    if (node.status === "conservative_definition") return "Conservative display definition — not a theorem";
-    if (node.status === "private_support") return "Private closed support — unregistered and unadmitted";
-    return "Private closed_checked_candidate — unregistered and unadmitted";
+    if (node.kind === "definition") return "Conservative display definition — not a theorem";
+    if (node.release === "stable") return "Stable theorem · evidence: closed checked";
+    return "Alpha-only theorem · evidence: closed checked · not Stable";
   }
 
   function labelLines(label) {
@@ -149,7 +148,7 @@
     function sortNodes(items) {
       return items.slice().sort(function (a, b) {
         if (a.kind !== b.kind) {
-          var order = { definition: 0, public: 1, private: 2 };
+          var order = { definition: 0, stable: 1, alpha: 2 };
           return order[a.kind] - order[b.kind];
         }
         return a.label.localeCompare(b.label);
@@ -250,7 +249,7 @@
           y: -NODE_HEIGHT / 2,
           width: NODE_WIDTH,
           height: NODE_HEIGHT,
-          rx: node.kind === "private" ? 13 : 2
+          rx: node.kind === "alpha" ? 13 : 2
         }));
       }
       var text = svgElement("text", { x: 0, y: 0 });
@@ -309,6 +308,8 @@
       var metrics = root.querySelector("[data-k3b-metrics]");
       metrics.replaceChildren();
       appendPair(metrics, "Kind", node.kind);
+      appendPair(metrics, "Release", node.release);
+      appendPair(metrics, "Evidence", node.evidence);
       if (node.metrics) {
         appendPair(metrics, "Nodes / depth", node.metrics.nodes.toLocaleString() + " / " + node.metrics.depth);
         appendPair(metrics, "Objects / edges", node.metrics.objects.toLocaleString() + " / " + node.metrics.edges.toLocaleString());
@@ -316,7 +317,7 @@
       }
       var links = root.querySelector("[data-k3b-links]");
       links.replaceChildren();
-      addLink(links, node.href, node.kind === "public" ? "Open public proof" : "Open Book explanation");
+      addLink(links, node.href, node.kind === "stable" ? "Open Stable proof" : "Open Book explanation");
       if (node.source_path) {
         addLink(links, SOURCE_BASE + graph.receipt.source_commit + "/" + node.source_path + "#L" + node.source_line, "Tactic source");
       }

@@ -281,3 +281,58 @@ those once and adds the twelve genuinely new modular capstones. That initial
 reconciliation produced a historical 63-theorem release; the current generated
 snapshot is its 189-theorem successor. Incompatible same-name records fail
 closed.
+
+## Peano Alpha and Stable channel artifacts (2026-08-09)
+
+The current Peano arithmetic release model has two explicit editions:
+
+- **Stable** is unchanged at 432 theorems, 1,185 declared direct dependency
+  edges, and 22 layers. Its checked snapshot remains
+  [`peano-library/catalog-v1.json`](peano-library/catalog-v1.json).
+- **Alpha** is the cumulative building library at 885 theorems, 2,641 declared
+  direct dependency edges, and 45 layers, including 453 Alpha-only rows. Its
+  ordered-enrollment root is
+  `7371461aa930071f00007f766f899cef88c4126a5ddf576f93d79e336bc65c49`.
+
+[`peano-library/channels.json`](peano-library/channels.json) is the
+deterministic channel pointer. It binds the Stable snapshot and these Alpha
+artifacts:
+
+- [`peano-library/alpha/catalog-v1.json`](peano-library/alpha/catalog-v1.json)
+  — all 885 ordered specifications, membership, evidence, provenance, and
+  source bindings;
+- [`peano-library/alpha/metrics.json`](peano-library/alpha/metrics.json) —
+  closure coverage, topology, promotion gates, and dependency-link review;
+- [`peano-library/alpha/dependency-graph.mmd`](peano-library/alpha/dependency-graph.mmd)
+  — a display-oriented transitive reduction of the declared graph.
+
+Alpha evidence is exactly 432 `stable_closed`, 138 `alpha_closed`, 314
+`body_checked`, and one `pending_layered_closure`. Only the first two statuses,
+570 rows total, are checked-use facts; 315 rows still lack whole-Alpha
+empty-context closure. Runtime selection and fail-closed replay are provided by
+`peano_lab.library.editions` through `edition`, `entry`, and `replay`, with
+Stable as the default.
+
+The v1 artifact happens to place all 432 Stable rows first. This is a sealed
+initial condition, not a requirement that future Stable releases be prefixes
+of Alpha. Promotion creates a new channel version, preserves Alpha's enrollment
+origin/provenance, and checks Stable as an exact keyed subset with its own
+append-only dependency-topological order.
+
+Rebuild or check the structural channel artifacts with:
+
+```bash
+python3 scripts/build_peano_library_channels.py
+python3 scripts/build_peano_library_channels.py --check
+python3 scripts/verify_peano_library_channels.py
+```
+
+These generators do not replace the missing proof replay. WMI is down for the
+weekend, so the 315 closures needed for a whole-Alpha promotion and any new
+batch-promotion receipt remain pending. A smaller dependency-closed batch does
+not wait for unrelated Alpha rows. The 714 reachability-redundant direct links reported in Alpha metrics require
+review, but that analysis concerns graph reachability/display: it neither
+proves that a tactic body can discard an edge nor claims proof-semantic or
+global dependency minimality. Earlier artifact prose using “private” or
+“unregistered” is historical; reviewed enrolled rows now belong to Alpha but
+are not Stable unless separately promoted.

@@ -7,37 +7,46 @@ lemma, then constructs finite factor sequences and their products using
 Gödel-β codes. The endpoint is a checked, β-coded Fundamental Theorem of
 Arithmetic.
 
-```{admonition} The result in one sentence
+```{admonition} Two cumulative editions
 :class: tip
-The current runtime contains **432 closed native theorems**, including
+The **Stable** library contains **432 closed native theorems**, including
 factorization existence, extensional uniqueness, their combined FTA, and a
 constructive theorem producing a prime above every supplied bound. The newest
-137-theorem quadratic-reciprocity campaign now includes parity, constructive
+Alpha quadratic-reciprocity campaign includes parity, constructive
 residue decision, finite folds, factorial and power algebra, modular units,
 sign and half-range bridges, β swap/reindex, finite pigeonhole, replacement
 balance, and exact swap-last product invariance. Twenty-five strict-HA entries
 now expose canonical remainder, congruence, bounded modular inverses, relational
 gcd/LCM compatibility, LCM existence and uniqueness, and the gcd--LCM product
-law. The exact 23-row generalized-CRT dependency closure is now public: it
+law. The exact 23-row generalized-CRT dependency closure is now Stable: it
 covers the all-modulus solvability criterion, classification modulo a
 relational LCM, the zero/nonzero canonical boundary, certified obstruction,
-and raw-input total decision. Six convenience lemmas remain private.
+and raw-input total decision. New reviewed layers enter **Alpha** first and
+move to Stable only after closure, compilation, dependency, resource, and
+release audits. See {doc}`Alpha and Stable library editions
+<library-editions>` for the exact scopes and lifecycle.
 ```
 
-<div class="pa-dashboard-metrics" aria-label="Current arithmetic library metrics">
-  <div><strong>432</strong><span>checked native theorems</span></div>
-  <div><strong>1,982,360</strong><span>structural proof occurrences</span></div>
-  <div><strong>57,692</strong><span>self-contained Cuts</span></div>
-  <div><strong>0</strong><span>remaining planned catalog theorems</span></div>
+<div class="pa-dashboard-metrics" aria-label="Alpha and Stable arithmetic library metrics">
+  <div><strong>432</strong><span>Stable theorems</span></div>
+  <div><strong>885</strong><span>Alpha theorems</span></div>
+  <div><strong>570</strong><span>Alpha checked-use rows</span></div>
+  <div><strong>453</strong><span>Alpha-only rows</span></div>
 </div>
 
-The generated snapshot has ordered root
+The generated Stable snapshot has ordered root
 `4d02dc439d53533e8992a471b26ee34059fb6001f822041e42c56b2cc0a7a079`.
 Every entry is reconstructed from its authored script and checked from the
 empty context. Names, summaries and hashes organize the library; none of them
 grant proof authority. Its graph has **1,185** direct dependency edges; the
 Book exposes **432** theorem cards, while the synchronized vault contains
 **531** notes and **5,377** resolved links.
+
+The canonical Alpha graph has 885 theorems, 2,641 direct edges, and 45
+dependency layers. Its mixed evidence is intentional: 570 rows have complete
+checked-use evidence, while body-only and pending-closure rows remain visible
+without being treated as empty-context facts. The exact contract and opt-in
+API are on the {doc}`edition page <library-editions>`.
 
 ## The mathematical metro map
 
@@ -59,10 +68,11 @@ human first needs the stations. Each box below is a link into the guided tour.
 
 The exact generated graph remains available as an immutable
 [`dependency-graph.mmd`](https://github.com/nasqret/vietnam2026/blob/ff3d0ebd440d52f3df12dbae765fe7acc53ee6c5/artifacts/peano-library/dependency-graph.mmd).
-The {doc}`interactive theorem atlas <theorem-atlas>` gives a readable local
+The {doc}`Stable theorem atlas <theorem-atlas>` gives a readable local
 neighborhood instead of attempting to draw all 1,185 edges at once. The
-{doc}`native PA proof explorer <proof-explorer>` adds permanent theorem tags,
-numbered tactic-line targets, and the larger quadratic-reciprocity closure.
+{doc}`Alpha QR proof explorer <proof-explorer>` adds permanent theorem tags,
+numbered tactic-line targets, and the larger quadratic-reciprocity campaign
+slice. It is not the complete Alpha or Stable catalog.
 Its parallel {doc}`definition-aware edition <defined-proof-explorer>` renders
 the same 557 specifications with a 40-entry conservative-definition registry
 (38 definitions occur) and exact native replay lines; it does not change the
@@ -75,15 +85,16 @@ cones.
 
 | If you want to… | Begin here | Then move to… |
 |---|---|---|
+| understand the two release editions | {doc}`Alpha and Stable library editions <library-editions>` | canonical counts, checked-use boundary, promotion lifecycle, and graph legend |
 | understand the mathematics | {doc}`Guided route from zero to FTA <guided-tour>` | the focused theorem links inside each stage |
-| inspect every native proof | {doc}`Interactive theorem atlas <theorem-atlas>` | exact statements, complete scripts, dependencies and dependents |
-| follow a proof line by line | {doc}`Native PA proof explorer <proof-explorer>` | permanent tags, linked lemma references, informal outlines and source receipts |
+| inspect every Stable proof | {doc}`Stable theorem atlas <theorem-atlas>` | exact statements, complete scripts, dependencies and dependents |
+| follow the Alpha QR slice line by line | {doc}`Alpha QR proof explorer <proof-explorer>` | permanent tags, linked lemma references, informal outlines and source receipts |
 | read expanded formulas through linked names | {doc}`Definition-aware proof explorer <defined-proof-explorer>` | persistent `PD` expansions, exact native replay lines, and the unchanged theorem status |
 | curate the next conservative edition | {doc}`Curating the next conservative edition <curation>` | P0/P1/P2 definitions, API completeness, and paired-source gates |
 | see how theorems depend on one another | {doc}`Interactive dependency graph <dependency-graph>` | short and critical premise chains, route corridors and complete prerequisite cones |
 | understand soundness | {doc}`Language, notation, and trust <language-and-trust>` | {doc}`Self-contained proof sharing <proof-sharing>` |
 | study division and congruence | {doc}`Divisibility and subtraction-free congruence <divisibility-and-congruence>` | {doc}`GCD and balanced Bézout <gcd-and-bezout>` |
-| study encoded lists and lookup | {doc}`Cell histories and extensional lookup <cell-history-and-lookup>` | the compact K3B graph, exact candidate sources, and WMI receipt |
+| study encoded lists and lookup | {doc}`K3B Alpha: cell histories and extensional lookup <cell-history-and-lookup>` | the compact Alpha/Stable graph, exact proof sources, and WMI receipt |
 | study primes and factorization | {doc}`Primes and unique factorization <primes-and-factorization>` | the FTA and `prime_unbounded` cards in the atlas |
 | follow the reciprocity campaign | {doc}`Quadratic reciprocity campaign <quadratic-reciprocity>` | parity, residue-decision, and finite-fold cards in the atlas |
 | train a proof-producing model | {doc}`Using and extending the library <using-the-library>` | the snapshot, corpus and vault links below |

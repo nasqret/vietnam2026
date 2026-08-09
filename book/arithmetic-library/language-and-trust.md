@@ -86,10 +86,12 @@ parsed PA abstract syntax trees.
 
 This is a reading layer, not a language extension. The compiler, registry,
 `PD` identifiers, hashes, pages, and notation edges are untrusted and cannot
-participate in a theorem dependency path. The underlying status remains 240
-public theorems, 316 body-checked candidates, and the `PA00FW`
-quadratic-reciprocity root pending layered closure. Compact notation therefore
-grants no theorem admission.
+participate in a theorem dependency path. The current QR slice contains 241
+Stable rows and 316 Alpha-only rows. Its campaign-local labels count 315
+body-checked proper ancestors and the `PA00FW` root pending layered closure;
+canonically, the later HA receipt strengthens `mod_eq_add_cancel_left` from
+that local body label to `alpha_closed`, leaving 314 body-only rows. Compact
+notation therefore grants no theorem evidence or Stable promotion.
 
 ## Relational definitions before functions
 

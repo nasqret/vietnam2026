@@ -1,6 +1,6 @@
-# The native theorem atlas
+# The Stable theorem atlas
 
-This is the complete interactive reading surface for the current native Peano
+This is the complete interactive reading surface for the Stable native Peano
 arithmetic library. It is generated from the same checked snapshot used by the
 current library tests and catalog—not copied by hand. The released training
 corpus remains explicitly frozen at its earlier 247-theorem checkpoint. Search
@@ -18,12 +18,12 @@ empty context. The much larger certificate tree is identified by its hash and
 metrics rather than pasted as tens of thousands of constructor nodes.
 ```
 
-```{admonition} Public-lab deployment status
-:class: caution
-The 432-theorem candidate is checked locally but is not yet deployed to
-the public Peano Lab. Cards therefore show the eventual `pa lib NAME` command
-without turning it into a misleading live command link. The embedded recipe,
-immutable source links, and local checkout are usable now.
+```{admonition} Stable is not the same as hosted deployment
+:class: note
+These 432 theorems are the canonical Stable repository edition.
+Whether a hosted Peano Lab has deployed this exact commit is a separate
+operational state and does not downgrade the library to Alpha. See
+{doc}`Alpha and Stable library editions <library-editions>`.
 ```
 
 <div class="pa-atlas-hero" role="note">
@@ -34,7 +34,7 @@ immutable source links, and local checkout are usable now.
 </div>
 
 Snapshot root: <code>4d02dc439d53533e8992a471b26ee34059fb6001f822041e42c56b2cc0a7a079</code>
-Generated card digest: <code>f0d901a3adc61da032a79ee64371f32a53bdf7deab0d39528d6d133afb50245f</code>
+Generated card digest: <code>1036b44c204887ae37c4e5d4fd78954078b357847c13c98e0582f13a7d94cf99</code>
 
 <noscript>
   <p class="pa-noscript">The theorem cards remain readable without JavaScript. Search, filtering, copy buttons, and the focused dependency navigator require JavaScript.</p>
@@ -569,7 +569,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for zero_add">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib zero_add</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib zero_add</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L309">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/zero_add.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -625,7 +625,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for add_succ_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_succ_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib add_succ_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L316">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/add_succ_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -683,7 +683,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for add_comm">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_comm</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib add_comm</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L323">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/add_comm.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -740,7 +740,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for add_assoc">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_assoc</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib add_assoc</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L335">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/add_assoc.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -795,7 +795,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mul_zero_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_zero_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mul_zero_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L342">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mul_zero_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -855,7 +855,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mul_succ_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_succ_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mul_succ_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L349">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mul_succ_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -913,7 +913,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mul_comm">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_comm</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mul_comm</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L363">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mul_comm.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -971,7 +971,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mul_add">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_add</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mul_add</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L375">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mul_add.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -1029,7 +1029,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mul_assoc">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_assoc</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mul_assoc</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L388">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mul_assoc.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -1084,7 +1084,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for one_mul">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib one_mul</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib one_mul</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L401">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/one_mul.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -1139,7 +1139,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mul_one">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_one</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mul_one</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L408">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mul_one.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -1197,7 +1197,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for add_mul">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_mul</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib add_mul</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L415">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/add_mul.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -1250,7 +1250,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for succ_ne_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib succ_ne_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib succ_ne_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L422">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/succ_ne_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -1303,7 +1303,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for succ_injective">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib succ_injective</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib succ_injective</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L429">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/succ_injective.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -1359,7 +1359,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for le_refl">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_refl</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib le_refl</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L436">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/le_refl.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -1421,7 +1421,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for le_trans">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_trans</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib le_trans</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L443">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/le_trans.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -1484,7 +1484,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for no_succ_add_fixed">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib no_succ_add_fixed</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib no_succ_add_fixed</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L460">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/no_succ_add_fixed.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -1556,7 +1556,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for drop_add_prefix_from_fixed">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib drop_add_prefix_from_fixed</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib drop_add_prefix_from_fixed</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L479">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/drop_add_prefix_from_fixed.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -1629,7 +1629,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for antisymm_from_witnesses">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib antisymm_from_witnesses</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib antisymm_from_witnesses</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L504">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/antisymm_from_witnesses.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -1691,7 +1691,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for le_antisymm">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_antisymm</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib le_antisymm</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L531">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/le_antisymm.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -1766,7 +1766,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for le_total">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_total</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib le_total</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L548">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/le_total.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -1827,7 +1827,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for add_eq_zero_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_eq_zero_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib add_eq_zero_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L579">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/add_eq_zero_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -1892,7 +1892,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mul_eq_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_eq_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mul_eq_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L596">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mul_eq_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -1949,7 +1949,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for eq_symm">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib eq_symm</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib eq_symm</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L619">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/eq_symm.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2009,7 +2009,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for eq_trans">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib eq_trans</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib eq_trans</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L626">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/eq_trans.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2066,7 +2066,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for succ_congr">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib succ_congr</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib succ_congr</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L642">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/succ_congr.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2124,7 +2124,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for zero_or_succ">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib zero_or_succ</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib zero_or_succ</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L649">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/zero_or_succ.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2184,7 +2184,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for nonzero_is_succ">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib nonzero_is_succ</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib nonzero_is_succ</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L663">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/nonzero_is_succ.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2245,7 +2245,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for add_congr">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_congr</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib add_congr</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L679">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/add_congr.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2306,7 +2306,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mul_congr">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_congr</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mul_congr</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L696">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mul_congr.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2371,7 +2371,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for add_right_cancel">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_right_cancel</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib add_right_cancel</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L715">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/add_right_cancel.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2438,7 +2438,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for add_left_cancel">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_left_cancel</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib add_left_cancel</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L736">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/add_left_cancel.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2494,7 +2494,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for zero_le">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib zero_le</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib zero_le</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L757">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/zero_le.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2551,7 +2551,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for le_succ_self">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_succ_self</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib le_succ_self</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L764">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/le_succ_self.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2609,7 +2609,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for le_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib le_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L771">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/le_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2669,7 +2669,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for one_le_of_ne_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib one_le_of_ne_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib one_le_of_ne_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L784">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/one_le_of_ne_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2729,7 +2729,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for ne_zero_of_one_le">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib ne_zero_of_one_le</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib ne_zero_of_one_le</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L800">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/ne_zero_of_one_le.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2785,7 +2785,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for le_add_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_add_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib le_add_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L816">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/le_add_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2842,7 +2842,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for le_add_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_add_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib le_add_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L828">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/le_add_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2907,7 +2907,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for add_le_add_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_le_add_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib add_le_add_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L840">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/add_le_add_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -2979,7 +2979,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for add_le_add_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_le_add_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib add_le_add_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L860">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/add_le_add_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -3039,7 +3039,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for succ_le_succ">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib succ_le_succ</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib succ_le_succ</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L886">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/succ_le_succ.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -3101,7 +3101,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for le_of_succ_le_succ">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_of_succ_le_succ</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib le_of_succ_le_succ</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L902">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/le_of_succ_le_succ.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -3163,7 +3163,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for le_succ">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_succ</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib le_succ</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L920">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/le_succ.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -3227,7 +3227,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for lt_to_le">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_to_le</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib lt_to_le</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L937">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/lt_to_le.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -3294,7 +3294,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for add_le_cancel_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_le_cancel_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib add_le_cancel_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L956">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/add_le_cancel_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -3360,7 +3360,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for lt_irrefl_expanded">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_irrefl_expanded</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib lt_irrefl_expanded</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L977">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/lt_irrefl_expanded.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -3436,7 +3436,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for le_eq_or_lt">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_eq_or_lt</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib le_eq_or_lt</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L997">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/le_eq_or_lt.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -3500,7 +3500,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for lt_of_lt_of_le">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_of_lt_of_le</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib lt_of_lt_of_le</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1026">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/lt_of_lt_of_le.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -3566,7 +3566,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for lt_of_le_of_lt">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_of_le_of_lt</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib lt_of_le_of_lt</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1045">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/lt_of_le_of_lt.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -3640,7 +3640,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for lt_trans">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_trans</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib lt_trans</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1066">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/lt_trans.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -3718,7 +3718,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for le_or_lt">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_or_lt</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib le_or_lt</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1094">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/le_or_lt.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -3809,7 +3809,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for lt_trichotomy">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_trichotomy</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib lt_trichotomy</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1128">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/lt_trichotomy.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -3895,7 +3895,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for lt_not_le">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_not_le</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib lt_not_le</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1175">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/lt_not_le.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -3957,7 +3957,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for le_not_lt">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_not_lt</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib le_not_lt</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1217">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/le_not_lt.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -4054,7 +4054,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for lt_not_eq_add_middle">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_not_eq_add_middle</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib lt_not_eq_add_middle</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1234">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/lt_not_eq_add_middle.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -4119,7 +4119,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mul_le_mul_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_le_mul_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mul_le_mul_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1286">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mul_le_mul_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -4184,7 +4184,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mul_le_mul_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_le_mul_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mul_le_mul_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1306">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mul_le_mul_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -4256,7 +4256,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mul_lt_mul_succ_left_nonzero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_lt_mul_succ_left_nonzero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mul_lt_mul_succ_left_nonzero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1326">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mul_lt_mul_succ_left_nonzero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -4349,7 +4349,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for division_remainder_succ">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib division_remainder_succ</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib division_remainder_succ</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1353">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/division_remainder_succ.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -4417,7 +4417,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for division_remainder_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib division_remainder_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib division_remainder_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1399">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/division_remainder_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -4477,7 +4477,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for remainder_bound_step">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib remainder_bound_step</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib remainder_bound_step</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1421">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/remainder_bound_step.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -4565,7 +4565,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for division_block_upper">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib division_block_upper</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib division_block_upper</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1436">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/division_block_upper.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -4656,7 +4656,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for positive_quotient_gap_impossible">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib positive_quotient_gap_impossible</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib positive_quotient_gap_impossible</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1478">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/positive_quotient_gap_impossible.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -4719,7 +4719,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for remainder_unique_same_quotient">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib remainder_unique_same_quotient</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib remainder_unique_same_quotient</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1520">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/remainder_unique_same_quotient.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -4850,7 +4850,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for division_remainder_unique">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib division_remainder_unique</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib division_remainder_unique</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1538">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/division_remainder_unique.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -4909,7 +4909,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for zero_remainder_implies_multiple">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib zero_remainder_implies_multiple</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib zero_remainder_implies_multiple</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1620">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/zero_remainder_implies_multiple.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -4983,7 +4983,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for multiple_has_zero_remainder">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_has_zero_remainder</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib multiple_has_zero_remainder</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1635">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/multiple_has_zero_remainder.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -5046,7 +5046,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for add_eq_zero_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_eq_zero_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib add_eq_zero_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1664">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/add_eq_zero_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -5108,7 +5108,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for add_eq_zero_components">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_eq_zero_components</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib add_eq_zero_components</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1681">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/add_eq_zero_components.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -5202,7 +5202,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mul_eq_one_components">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_eq_one_components</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mul_eq_one_components</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1697">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mul_eq_one_components.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -5270,7 +5270,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mul_ne_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_ne_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mul_ne_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1744">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mul_ne_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -5368,7 +5368,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mul_left_cancel_nonzero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_left_cancel_nonzero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mul_left_cancel_nonzero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1767">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mul_left_cancel_nonzero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -5437,7 +5437,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mul_right_cancel_nonzero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_right_cancel_nonzero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mul_right_cancel_nonzero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1817">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mul_right_cancel_nonzero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -5520,7 +5520,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for two_large_factors_impossible">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib two_large_factors_impossible</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib two_large_factors_impossible</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1840">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/two_large_factors_impossible.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -5609,7 +5609,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_two">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_two</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_two</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1876">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_two.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -5665,7 +5665,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for multiple_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib multiple_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1922">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/multiple_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -5722,7 +5722,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for one_multiple">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib one_multiple</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib one_multiple</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1929">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/one_multiple.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -5779,7 +5779,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for multiple_refl">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_refl</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib multiple_refl</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1936">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/multiple_refl.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -5844,7 +5844,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for multiple_add">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_add</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib multiple_add</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1943">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/multiple_add.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -5905,7 +5905,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for multiple_mul_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_mul_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib multiple_mul_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1963">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/multiple_mul_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -5968,7 +5968,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for multiple_mul_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_mul_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib multiple_mul_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1979">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/multiple_mul_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -6032,7 +6032,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for multiple_trans">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_trans</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib multiple_trans</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L1996">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/multiple_trans.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -6116,7 +6116,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for divisor_le_nonzero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib divisor_le_nonzero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib divisor_le_nonzero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2015">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/divisor_le_nonzero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -6180,7 +6180,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for divisor_one">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib divisor_one</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib divisor_one</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2054">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/divisor_one.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -6288,7 +6288,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for multiple_antisymm">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_antisymm</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib multiple_antisymm</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2073">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/multiple_antisymm.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -6392,7 +6392,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for factor_difference">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib factor_difference</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib factor_difference</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2138">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/factor_difference.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -6470,7 +6470,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for divides_remainder">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib divides_remainder</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib divides_remainder</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2193">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/divides_remainder.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -6541,7 +6541,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for divides_linear_step">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib divides_linear_step</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib divides_linear_step</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2225">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/divides_linear_step.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -6601,7 +6601,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for not_multiple_pointwise">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib not_multiple_pointwise</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib not_multiple_pointwise</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2250">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/not_multiple_pointwise.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -6661,7 +6661,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for not_multiple_from_pointwise">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib not_multiple_from_pointwise</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib not_multiple_from_pointwise</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2266">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/not_multiple_from_pointwise.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -6726,7 +6726,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_zero_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_zero_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_gcd_zero_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2282">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_gcd_zero_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -6795,7 +6795,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_symm">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_symm</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_gcd_symm</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2301">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_gcd_symm.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -6854,7 +6854,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_dvd_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_dvd_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_gcd_dvd_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2326">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_gcd_dvd_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -6913,7 +6913,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_dvd_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_dvd_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_gcd_dvd_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2341">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_gcd_dvd_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -6977,7 +6977,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_greatest">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_greatest</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_gcd_greatest</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2356">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_gcd_greatest.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -7042,7 +7042,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_of_dvd">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_of_dvd</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_gcd_of_dvd</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2376">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_gcd_of_dvd.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -7120,7 +7120,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_unique">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_unique</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_gcd_unique</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2396">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_gcd_unique.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -7209,7 +7209,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_euclid_forward">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_euclid_forward</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_gcd_euclid_forward</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2429">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_gcd_euclid_forward.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -7298,7 +7298,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_euclid_backward">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_euclid_backward</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_gcd_euclid_backward</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2472">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_gcd_euclid_backward.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -7430,7 +7430,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for gcd_exists_up_to">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib gcd_exists_up_to</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib gcd_exists_up_to</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2515">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/gcd_exists_up_to.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -7495,7 +7495,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for gcd_exists_relational">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib gcd_exists_relational</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib gcd_exists_relational</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2604">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/gcd_exists_relational.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -7557,7 +7557,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for coprime_symm">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_symm</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib coprime_symm</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2623">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/coprime_symm.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -7617,7 +7617,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for coprime_one_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_one_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib coprime_one_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2641">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/coprime_one_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -7677,7 +7677,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for coprime_one_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_one_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib coprime_one_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2656">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/coprime_one_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -7754,7 +7754,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for coprime_to_is_gcd_one">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_to_is_gcd_one</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib coprime_to_is_gcd_one</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2671">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/coprime_to_is_gcd_one.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -7822,7 +7822,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_one_to_coprime">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_one_to_coprime</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_gcd_one_to_coprime</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2701">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_gcd_one_to_coprime.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -7901,7 +7901,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for add_permute_outer">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_permute_outer</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib add_permute_outer</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2727">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/add_permute_outer.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -8026,7 +8026,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for balanced_bezout_euclid_step">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib balanced_bezout_euclid_step</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib balanced_bezout_euclid_step</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2760">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/balanced_bezout_euclid_step.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -8166,7 +8166,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for gcd_balanced_bezout_exists_up_to">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib gcd_balanced_bezout_exists_up_to</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib gcd_balanced_bezout_exists_up_to</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2842">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/gcd_balanced_bezout_exists_up_to.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -8231,7 +8231,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for gcd_balanced_bezout_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib gcd_balanced_bezout_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib gcd_balanced_bezout_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2939">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/gcd_balanced_bezout_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -8342,7 +8342,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for balanced_combination_scale_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib balanced_combination_scale_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib balanced_combination_scale_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L2958">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/balanced_combination_scale_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -8446,7 +8446,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for common_divisor_divides_balanced_result">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib common_divisor_divides_balanced_result</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib common_divisor_divides_balanced_result</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3022">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/common_divisor_divides_balanced_result.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -8523,7 +8523,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for coprime_balanced_bezout">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_balanced_bezout</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib coprime_balanced_bezout</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3078">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/coprime_balanced_bezout.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -8610,7 +8610,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for gauss_coprime_cancel">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib gauss_coprime_cancel</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib gauss_coprime_cancel</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3110">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/gauss_coprime_cancel.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -8689,7 +8689,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for eq_decidable">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib eq_decidable</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib eq_decidable</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3154">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/eq_decidable.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -8785,7 +8785,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for multiple_decidable_nonzero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_decidable_nonzero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib multiple_decidable_nonzero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3189">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/multiple_decidable_nonzero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -8869,7 +8869,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for multiple_decidable">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib multiple_decidable</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib multiple_decidable</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3242">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/multiple_decidable.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -8950,7 +8950,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for factor_property_succ">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib factor_property_succ</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib factor_property_succ</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3279">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/factor_property_succ.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -9112,7 +9112,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for factor_search_up_to">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib factor_search_up_to</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib factor_search_up_to</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3314">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/factor_search_up_to.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -9204,7 +9204,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_or_composite">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_or_composite</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_or_composite</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3433">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_or_composite.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -9278,7 +9278,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_nonzero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_nonzero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_nonzero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3479">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_nonzero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -9380,7 +9380,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_decidable">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_decidable</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_decidable</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3507">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_decidable.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -9444,7 +9444,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for factor_nonzero_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib factor_nonzero_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib factor_nonzero_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3562">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/factor_nonzero_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -9543,7 +9543,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for proper_factor_lt">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib proper_factor_lt</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib proper_factor_lt</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3581">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/proper_factor_lt.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -9674,7 +9674,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_divisor_exists_up_to">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_divisor_exists_up_to</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_divisor_exists_up_to</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3637">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_divisor_exists_up_to.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -9737,7 +9737,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_divisor_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_divisor_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_divisor_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3725">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_divisor_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -9809,7 +9809,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_divisor_eq_one_or_self">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_divisor_eq_one_or_self</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_divisor_eq_one_or_self</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3742">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_divisor_eq_one_or_self.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -9901,7 +9901,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for euclid_prime_dvd_product">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib euclid_prime_dvd_product</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib euclid_prime_dvd_product</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3769">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/euclid_prime_dvd_product.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -9958,7 +9958,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_refl">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_refl</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_refl</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3818">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_refl.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -10020,7 +10020,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_symm">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_symm</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_symm</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3831">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_symm.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -10117,7 +10117,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_trans">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_trans</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_trans</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3849">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_trans.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -10214,7 +10214,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_add">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_add</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_add</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3899">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_add.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -10294,7 +10294,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_mul_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_mul_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_mul_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3949">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_mul_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -10373,7 +10373,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_mul_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_mul_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_mul_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L3983">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_mul_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -10456,7 +10456,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_mul">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_mul</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_mul</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4016">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_mul.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -10526,7 +10526,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for remainder_decomposition_to_mod_eq">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib remainder_decomposition_to_mod_eq</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib remainder_decomposition_to_mod_eq</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4052">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/remainder_decomposition_to_mod_eq.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -10608,7 +10608,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_bounded_unique">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_bounded_unique</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_bounded_unique</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4076">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_bounded_unique.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -10716,7 +10716,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_to_remainder_decomposition">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_to_remainder_decomposition</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_to_remainder_decomposition</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4112">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_to_remainder_decomposition.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -10773,7 +10773,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_modulus_nonzero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_modulus_nonzero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_modulus_nonzero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4180">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_modulus_nonzero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -10839,7 +10839,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_at_self_of_bound">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_at_self_of_bound</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_at_self_of_bound</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4192">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_at_self_of_bound.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -10918,7 +10918,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_at_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_at_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_at_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4212">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_at_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -11009,7 +11009,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_at_unique">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_at_unique</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_at_unique</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4244">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_at_unique.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -11085,7 +11085,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_at_exists_unique">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_at_exists_unique</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_at_exists_unique</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4289">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_at_exists_unique.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -11151,7 +11151,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_at_to_mod_eq">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_at_to_mod_eq</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_at_to_mod_eq</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4319">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_at_to_mod_eq.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -11222,7 +11222,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_at_of_mod_eq_bound">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_at_of_mod_eq_bound</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_at_of_mod_eq_bound</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4340">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_at_of_mod_eq_bound.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -11283,7 +11283,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for dvd_to_mod_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib dvd_to_mod_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib dvd_to_mod_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4365">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/dvd_to_mod_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -11354,7 +11354,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for add_residue">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_residue</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib add_residue</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4383">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/add_residue.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -11459,7 +11459,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for add_residue_lift">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib add_residue_lift</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib add_residue_lift</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4408">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/add_residue_lift.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -11561,7 +11561,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for square_decomp">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib square_decomp</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib square_decomp</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4466">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/square_decomp.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -11628,7 +11628,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for square_residue_lift">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib square_residue_lift</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib square_residue_lift</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4519">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/square_residue_lift.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -11693,7 +11693,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for square_residue_witness">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib square_residue_witness</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib square_residue_witness</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4540">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/square_residue_witness.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -11766,7 +11766,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bezout_mod_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bezout_mod_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bezout_mod_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4681">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bezout_mod_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -11832,7 +11832,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bezout_mod_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bezout_mod_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bezout_mod_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4695">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bezout_mod_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -11902,7 +11902,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_predecessor_cancel">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_predecessor_cancel</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_predecessor_cancel</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4707">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_predecessor_cancel.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -12245,7 +12245,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for binary_crt">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib binary_crt</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib binary_crt</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4721">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/binary_crt.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -12343,7 +12343,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for binary_crt_remainders">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib binary_crt_remainders</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib binary_crt_remainders</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4864">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/binary_crt_remainders.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -12445,7 +12445,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for binary_crt_beta_pair">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib binary_crt_beta_pair</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib binary_crt_beta_pair</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4885">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/binary_crt_beta_pair.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -12520,7 +12520,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_modulus_coprime_base">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_modulus_coprime_base</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_modulus_coprime_base</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4910">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_modulus_coprime_base.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -12603,7 +12603,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for common_divisor_beta_moduli_divides_gap_times_c">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib common_divisor_beta_moduli_divides_gap_times_c</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib common_divisor_beta_moduli_divides_gap_times_c</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4939">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/common_divisor_beta_moduli_divides_gap_times_c.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -12720,7 +12720,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_moduli_coprime_of_gap_dvd">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_moduli_coprime_of_gap_dvd</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_moduli_coprime_of_gap_dvd</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4975">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_moduli_coprime_of_gap_dvd.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -12801,7 +12801,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for binary_crt_beta_pair_of_gap_dvd">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib binary_crt_beta_pair_of_gap_dvd</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib binary_crt_beta_pair_of_gap_dvd</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5050">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/binary_crt_beta_pair_of_gap_dvd.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -12910,7 +12910,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bounded_common_multiple_step">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_common_multiple_step</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bounded_common_multiple_step</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5075">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bounded_common_multiple_step.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -12994,7 +12994,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bounded_common_multiple_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_common_multiple_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bounded_common_multiple_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5109">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bounded_common_multiple_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -13098,7 +13098,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_moduli_coprime_of_lt_bounded_common_multiple">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_moduli_coprime_of_lt_bounded_common_multiple</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_moduli_coprime_of_lt_bounded_common_multiple</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5134">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_moduli_coprime_of_lt_bounded_common_multiple.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -13196,7 +13196,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_moduli_pairwise_coprime_bounded">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_moduli_pairwise_coprime_bounded</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_moduli_pairwise_coprime_bounded</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5166">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_moduli_pairwise_coprime_bounded.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -13261,7 +13261,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bounded_beta_moduli_pairwise_coprime_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_beta_moduli_pairwise_coprime_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bounded_beta_moduli_pairwise_coprime_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5198">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bounded_beta_moduli_pairwise_coprime_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -13349,7 +13349,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for coprime_mul_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_mul_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib coprime_mul_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5217">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/coprime_mul_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -13429,7 +13429,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for coprime_mul_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_mul_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib coprime_mul_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5240">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/coprime_mul_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -13505,7 +13505,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_of_mod_eq_multiple">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_of_mod_eq_multiple</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_of_mod_eq_multiple</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5263">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_of_mod_eq_multiple.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -13600,7 +13600,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for binary_crt_fold_step">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib binary_crt_fold_step</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib binary_crt_fold_step</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5282">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/binary_crt_fold_step.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -13657,7 +13657,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for right_factor_divides_product">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib right_factor_divides_product</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib right_factor_divides_product</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5310">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/right_factor_divides_product.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -13810,7 +13810,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_accumulated_product_step">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_accumulated_product_step</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_accumulated_product_step</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5320">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_accumulated_product_step.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -13957,7 +13957,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_crt_prefix_congruence_step">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_crt_prefix_congruence_step</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_crt_prefix_congruence_step</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5393">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_crt_prefix_congruence_step.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -14058,7 +14058,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_crt_prefix_invariant_step">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_crt_prefix_invariant_step</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_crt_prefix_invariant_step</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5450">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_crt_prefix_invariant_step.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -14199,7 +14199,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bounded_beta_crt_prefix_invariant">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_beta_crt_prefix_invariant</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bounded_beta_crt_prefix_invariant</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5476">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bounded_beta_crt_prefix_invariant.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -14275,7 +14275,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bounded_beta_crt_for_existing_code">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_beta_crt_for_existing_code</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bounded_beta_crt_for_existing_code</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5535">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bounded_beta_crt_for_existing_code.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -14421,7 +14421,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_unbounded">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_unbounded</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_unbounded</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L4567">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_unbounded.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -14483,7 +14483,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_value_le_code">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_value_le_code</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_value_le_code</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5563">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_value_le_code.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -14551,7 +14551,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for base_le_beta_modulus">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib base_le_beta_modulus</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib base_le_beta_modulus</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5578">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/base_le_beta_modulus.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -14622,7 +14622,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for le_scaled_nonzero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib le_scaled_nonzero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib le_scaled_nonzero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5595">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/le_scaled_nonzero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -14690,7 +14690,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for scaled_bounded_common_multiple">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib scaled_bounded_common_multiple</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib scaled_bounded_common_multiple</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5615">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/scaled_bounded_common_multiple.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -14802,7 +14802,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_value_lt_scaled_base">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_value_lt_scaled_base</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_value_lt_scaled_base</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5636">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_value_lt_scaled_base.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -14895,7 +14895,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for new_value_lt_scaled_base">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib new_value_lt_scaled_base</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib new_value_lt_scaled_base</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5702">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/new_value_lt_scaled_base.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -15054,7 +15054,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_exclusive_accumulated_product_step">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_exclusive_accumulated_product_step</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_exclusive_accumulated_product_step</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5748">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_exclusive_accumulated_product_step.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -15206,7 +15206,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_exclusive_recode_congruence_step">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_exclusive_recode_congruence_step</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_exclusive_recode_congruence_step</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5870">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_exclusive_recode_congruence_step.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -15309,7 +15309,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_exclusive_recode_invariant_step">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_exclusive_recode_invariant_step</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_exclusive_recode_invariant_step</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L5986">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_exclusive_recode_invariant_step.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -15456,7 +15456,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bounded_beta_exclusive_recode_invariant">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_beta_exclusive_recode_invariant</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bounded_beta_exclusive_recode_invariant</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L6059">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bounded_beta_exclusive_recode_invariant.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -15622,7 +15622,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_extend">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_extend</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_prefix_extend</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L6176">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_prefix_extend.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -15818,7 +15818,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_product_trace_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_product_trace_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_prefix_product_trace_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L6318">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_prefix_product_trace_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -15897,7 +15897,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_product_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L6485">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_product_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -16106,7 +16106,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_functional">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_functional</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_product_functional</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L6530">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_product_functional.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -16192,7 +16192,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_exists_unique">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_exists_unique</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_product_exists_unique</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L6719">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_product_exists_unique.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -16261,7 +16261,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_product_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L6777">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_product_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -16367,7 +16367,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_succ_decompose">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_succ_decompose</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_product_succ_decompose</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L6804">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_product_succ_decompose.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -16526,7 +16526,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_succ_append">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_succ_append</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_product_succ_append</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L6878">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_product_succ_append.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -16622,7 +16622,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_transport_prefix">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_transport_prefix</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_product_transport_prefix</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7013">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_product_transport_prefix.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -16806,7 +16806,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_factor_prefix_product_append">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_factor_prefix_product_append</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_factor_prefix_product_append</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7081">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_factor_prefix_product_append.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -16874,7 +16874,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for all_prime_empty">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib all_prime_empty</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib all_prime_empty</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7268">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/all_prime_empty.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -16957,7 +16957,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for all_prime_succ_intro">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib all_prime_succ_intro</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib all_prime_succ_intro</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7288">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/all_prime_succ_intro.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -17022,7 +17022,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for all_prime_succ_elim_prefix">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib all_prime_succ_elim_prefix</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib all_prime_succ_elim_prefix</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7328">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/all_prime_succ_elim_prefix.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -17083,7 +17083,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for all_prime_succ_elim_last">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib all_prime_succ_elim_last</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib all_prime_succ_elim_last</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7349">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/all_prime_succ_elim_last.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -17158,7 +17158,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for all_prime_transport">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib all_prime_transport</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib all_prime_transport</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7365">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/all_prime_transport.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -17224,7 +17224,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for sorted_empty">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib sorted_empty</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib sorted_empty</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7402">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/sorted_empty.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -17296,7 +17296,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for sorted_singleton">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib sorted_singleton</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib sorted_singleton</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7421">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/sorted_singleton.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -17395,7 +17395,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for sorted_succ_intro">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib sorted_succ_intro</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib sorted_succ_intro</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7446">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/sorted_succ_intro.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -17460,7 +17460,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for sorted_succ_elim_prefix">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib sorted_succ_elim_prefix</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib sorted_succ_elim_prefix</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7503">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/sorted_succ_elim_prefix.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -17521,7 +17521,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for sorted_succ_elim_last">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib sorted_succ_elim_last</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib sorted_succ_elim_last</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7526">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/sorted_succ_elim_last.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -17611,7 +17611,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for sorted_transport">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib sorted_transport</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib sorted_transport</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7545">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/sorted_transport.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -17705,7 +17705,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_extend_all_prime">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_extend_all_prime</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_prefix_extend_all_prime</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7597">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_prefix_extend_all_prime.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -17780,7 +17780,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_extend_sorted_singleton">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_extend_sorted_singleton</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_prefix_extend_sorted_singleton</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7656">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_prefix_extend_sorted_singleton.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -17885,7 +17885,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_extend_sorted_succ">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_extend_sorted_succ</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_prefix_extend_sorted_succ</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7692">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_prefix_extend_sorted_succ.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -17989,7 +17989,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_canonical_append_empty">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_canonical_append_empty</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_canonical_append_empty</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7773">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_canonical_append_empty.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -18128,7 +18128,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_canonical_append_succ">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_canonical_append_succ</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_canonical_append_succ</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L7872">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_canonical_append_succ.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -18207,7 +18207,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_divides_decidable">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_divides_decidable</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_divides_decidable</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L8021">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_divides_decidable.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -18358,7 +18358,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for greatest_prime_divisor_search">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib greatest_prime_divisor_search</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib greatest_prime_divisor_search</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L8053">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/greatest_prime_divisor_search.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -18460,7 +18460,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for greatest_prime_divisor_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib greatest_prime_divisor_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib greatest_prime_divisor_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L8168">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/greatest_prime_divisor_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -18540,7 +18540,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for greatest_prime_divisor_quotient_bound">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib greatest_prime_divisor_quotient_bound</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib greatest_prime_divisor_quotient_bound</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L8231">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/greatest_prime_divisor_quotient_bound.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -18658,7 +18658,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for greatest_prime_divisor_descent">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib greatest_prime_divisor_descent</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib greatest_prime_divisor_descent</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L8266">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/greatest_prime_divisor_descent.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -18800,7 +18800,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_factor_divides_product">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_factor_divides_product</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_factor_divides_product</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L8346">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_factor_divides_product.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -18988,7 +18988,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_canonical_append_general">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_canonical_append_general</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_canonical_append_general</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L8520">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_canonical_append_general.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -19080,7 +19080,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_canonical_last_factor_bound">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_canonical_last_factor_bound</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_canonical_last_factor_bound</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L8459">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_canonical_last_factor_bound.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -19301,7 +19301,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_factorization_exists_up_to">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_factorization_exists_up_to</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_factorization_exists_up_to</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L8721">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_factorization_exists_up_to.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -19363,7 +19363,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_factorization_existence">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_factorization_existence</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_factorization_existence</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L8954">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_factorization_existence.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -19539,7 +19539,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_prime_divisor_product_member">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prime_divisor_product_member</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_prime_divisor_product_member</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9611">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_prime_divisor_product_member.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -19705,7 +19705,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_sorted_factor_le_last">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_sorted_factor_le_last</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_sorted_factor_le_last</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9764">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_sorted_factor_le_last.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -19796,7 +19796,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_nonempty_all_prime_product_ne_one">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_nonempty_all_prime_product_ne_one</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_nonempty_all_prime_product_ne_one</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9893">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_nonempty_all_prime_product_ne_one.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -19885,7 +19885,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_all_prime_product_one_iff_length_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_all_prime_product_one_iff_length_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_all_prime_product_one_iff_length_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9946">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_all_prime_product_one_iff_length_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -20082,7 +20082,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_canonical_last_factors_equal">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_canonical_last_factors_equal</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_canonical_last_factors_equal</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9997">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_canonical_last_factors_equal.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -20290,7 +20290,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_canonical_product_cancel_last">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_canonical_product_cancel_last</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_canonical_product_cancel_last</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L10180">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_canonical_product_cancel_last.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -20564,7 +20564,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_factorization_uniqueness_by_length">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_factorization_uniqueness_by_length</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_factorization_uniqueness_by_length</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L10426">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_factorization_uniqueness_by_length.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -20636,7 +20636,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_factorization_uniqueness">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_factorization_uniqueness</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_factorization_uniqueness</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L10749">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_factorization_uniqueness.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -20693,7 +20693,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for fundamental_theorem_of_arithmetic">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib fundamental_theorem_of_arithmetic</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib fundamental_theorem_of_arithmetic</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L10804">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/fundamental_theorem_of_arithmetic.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -20845,7 +20845,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_three">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_three</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_three</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L10857">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_three.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -20979,7 +20979,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for two_prime_product_uniqueness">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib two_prime_product_uniqueness</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib two_prime_product_uniqueness</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L10960">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/two_prime_product_uniqueness.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -21034,7 +21034,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for fourth_power_regroup">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib fourth_power_regroup</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib fourth_power_regroup</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9283">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/fourth_power_regroup.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -21127,7 +21127,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod5_residue_complete">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_residue_complete</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod5_residue_complete</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9291">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod5_residue_complete.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -21209,7 +21209,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod5_nonzero_residue_cases">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_nonzero_residue_cases</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod5_nonzero_residue_cases</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9341">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod5_nonzero_residue_cases.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -21293,7 +21293,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod5_square_residue_one">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_square_residue_one</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod5_square_residue_one</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9378">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod5_square_residue_one.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -21380,7 +21380,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod5_square_residue_two">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_square_residue_two</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod5_square_residue_two</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9413">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod5_square_residue_two.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -21439,7 +21439,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod5_square_residue_three">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_square_residue_three</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod5_square_residue_three</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9450">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod5_square_residue_three.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -21498,7 +21498,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod5_square_residue_four">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_square_residue_four</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod5_square_residue_four</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9463">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod5_square_residue_four.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -21559,7 +21559,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod5_fourth_power_residue_one">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_fourth_power_residue_one</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod5_fourth_power_residue_one</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9476">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod5_fourth_power_residue_one.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -21621,7 +21621,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod5_fourth_power_residue_two">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_fourth_power_residue_two</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod5_fourth_power_residue_two</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9493">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod5_fourth_power_residue_two.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -21683,7 +21683,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod5_fourth_power_residue_three">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_fourth_power_residue_three</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod5_fourth_power_residue_three</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9510">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod5_fourth_power_residue_three.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -21745,7 +21745,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod5_fourth_power_residue_four">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_fourth_power_residue_four</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod5_fourth_power_residue_four</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9527">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod5_fourth_power_residue_four.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -21852,7 +21852,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod5_fourth_power_one">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod5_fourth_power_one</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod5_fourth_power_one</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/theorems.py#L9544">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod5_fourth_power_one.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -21918,7 +21918,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for parity_cases">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib parity_cases</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib parity_cases</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L22">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/parity_cases.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -21995,7 +21995,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for even_odd_exclusive_pointwise">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib even_odd_exclusive_pointwise</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib even_odd_exclusive_pointwise</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L44">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/even_odd_exclusive_pointwise.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -22059,7 +22059,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for even_not_odd">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib even_not_odd</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib even_not_odd</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L76">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/even_not_odd.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -22123,7 +22123,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for odd_not_even">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib odd_not_even</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib odd_not_even</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L95">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/odd_not_even.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -22181,7 +22181,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for successor_odd_of_even">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib successor_odd_of_even</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib successor_odd_of_even</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L114">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/successor_odd_of_even.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -22239,7 +22239,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for successor_even_of_odd">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib successor_even_of_odd</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib successor_even_of_odd</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L128">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/successor_even_of_odd.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -22302,7 +22302,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for even_add_even">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib even_add_even</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib even_add_even</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L142">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/even_add_even.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -22366,7 +22366,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for even_add_odd">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib even_add_odd</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib even_add_odd</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L161">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/even_add_odd.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -22430,7 +22430,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for odd_add_even">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib odd_add_even</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib odd_add_even</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L180">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/odd_add_even.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -22496,7 +22496,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for odd_add_odd">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib odd_add_odd</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib odd_add_odd</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L199">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/odd_add_odd.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -22556,7 +22556,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for even_mul_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib even_mul_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib even_mul_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L218">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/even_mul_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -22619,7 +22619,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mul_double_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mul_double_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mul_double_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L233">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mul_double_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -22679,7 +22679,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for even_mul_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib even_mul_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib even_mul_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L250">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/even_mul_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -22750,7 +22750,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for odd_mul_odd">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib odd_mul_odd</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib odd_mul_odd</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L265">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/odd_mul_odd.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -22828,7 +22828,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for odd_half_unique">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib odd_half_unique</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib odd_half_unique</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L294">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/odd_half_unique.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -22895,7 +22895,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for odd_half_exists_unique">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib odd_half_exists_unique</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib odd_half_exists_unique</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L326">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/odd_half_exists_unique.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -22954,7 +22954,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for four_mul_eq_double_double">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib four_mul_eq_double_double</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib four_mul_eq_double_double</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L349">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/four_mul_eq_double_double.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -23033,7 +23033,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for odd_mod4_cases">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib odd_mod4_cases</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib odd_mod4_cases</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L363">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/odd_mod4_cases.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -23112,7 +23112,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod4_one_three_exclusive_pointwise">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod4_one_three_exclusive_pointwise</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod4_one_three_exclusive_pointwise</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L396">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod4_one_three_exclusive_pointwise.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -23173,7 +23173,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod4_one_is_odd">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod4_one_is_odd</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod4_one_is_odd</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L430">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod4_one_is_odd.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -23237,7 +23237,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod4_three_is_odd">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod4_three_is_odd</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod4_three_is_odd</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L446">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod4_three_is_odd.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -23315,7 +23315,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_ne_two_is_odd">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_ne_two_is_odd</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_ne_two_is_odd</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/parity.py#L464">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_ne_two_is_odd.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -23461,7 +23461,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_decidable_from_remainders">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_decidable_from_remainders</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_decidable_from_remainders</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L27">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_decidable_from_remainders.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -23560,7 +23560,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_decidable_nonzero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_decidable_nonzero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_decidable_nonzero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L134">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_decidable_nonzero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -23708,7 +23708,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for quadratic_residue_search_up_to">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib quadratic_residue_search_up_to</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib quadratic_residue_search_up_to</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L192">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/quadratic_residue_search_up_to.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -23808,7 +23808,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for quadratic_residue_bounded_decidable_nonzero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib quadratic_residue_bounded_decidable_nonzero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib quadratic_residue_bounded_decidable_nonzero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L303">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/quadratic_residue_bounded_decidable_nonzero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -23931,7 +23931,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for quadratic_residue_bounded_equiv">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib quadratic_residue_bounded_equiv</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib quadratic_residue_bounded_equiv</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L363">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/quadratic_residue_bounded_equiv.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -24008,7 +24008,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for quadratic_residue_decidable_nonzero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib quadratic_residue_decidable_nonzero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib quadratic_residue_decidable_nonzero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/quadratic_residue_theorems.py#L446">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/quadratic_residue_decidable_nonzero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -24080,7 +24080,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_repeat_empty">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_repeat_empty</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_repeat_empty</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L47">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_repeat_empty.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -24175,7 +24175,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_repeat_succ_extend">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_repeat_succ_extend</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_repeat_succ_extend</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L73">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_repeat_succ_extend.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -24249,7 +24249,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_repeat_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_repeat_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_repeat_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L126">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_repeat_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -24323,7 +24323,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_repeat_entry_eq">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_repeat_entry_eq</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_repeat_entry_eq</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L154">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_repeat_entry_eq.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -24404,7 +24404,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_repeat_transport_entry">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_repeat_transport_entry</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_repeat_transport_entry</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L185">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_repeat_transport_entry.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -24480,7 +24480,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for pow_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib pow_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L224">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/pow_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -24550,7 +24550,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for pow_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib pow_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L257">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/pow_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -24661,7 +24661,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for pow_functional">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_functional</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib pow_functional</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L282">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/pow_functional.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -24771,7 +24771,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for pow_successor_decompose">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_successor_decompose</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib pow_successor_decompose</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_fold_theorems.py#L350">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/pow_successor_decompose.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -24843,7 +24843,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_range_empty">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_range_empty</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_range_empty</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_range_theorems.py#L39">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_range_empty.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -24940,7 +24940,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_range_succ_extend">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_range_succ_extend</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_range_succ_extend</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_range_theorems.py#L65">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_range_succ_extend.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -25014,7 +25014,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_range_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_range_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_range_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_range_theorems.py#L120">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_range_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -25088,7 +25088,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_range_entry_eq">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_range_entry_eq</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_range_entry_eq</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_range_theorems.py#L148">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_range_entry_eq.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -25169,7 +25169,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_range_transport_entry">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_range_transport_entry</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_range_transport_entry</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_range_theorems.py#L179">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_range_transport_entry.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -25368,7 +25368,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_sum_trace_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_sum_trace_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_prefix_sum_trace_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L132">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_prefix_sum_trace_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -25447,7 +25447,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_sum_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_sum_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_sum_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L296">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_sum_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -25656,7 +25656,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_sum_trace_functional">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_sum_trace_functional</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_sum_trace_functional</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L329">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_sum_trace_functional.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -25732,7 +25732,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_sum_functional">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_sum_functional</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_sum_functional</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L500">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_sum_functional.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -25806,7 +25806,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_sum_exists_unique">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_sum_exists_unique</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_sum_exists_unique</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L531">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_sum_exists_unique.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -25875,7 +25875,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_sum_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_sum_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_sum_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L559">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_sum_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -25981,7 +25981,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_sum_succ_decompose">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_sum_succ_decompose</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_sum_succ_decompose</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_sum_theorems.py#L583">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_sum_succ_decompose.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -26139,7 +26139,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_pointwise_mod_congruent">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_pointwise_mod_congruent</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_product_pointwise_mod_congruent</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_congruence_theorems.py#L104">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_product_pointwise_mod_congruent.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -26297,7 +26297,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_sum_pointwise_mod_congruent">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_sum_pointwise_mod_congruent</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_sum_pointwise_mod_congruent</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_congruence_theorems.py#L220">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_sum_pointwise_mod_congruent.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -26368,7 +26368,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for all_bits_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib all_bits_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib all_bits_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L44">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/all_bits_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -26436,7 +26436,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for all_bits_prefix_succ">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib all_bits_prefix_succ</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib all_bits_prefix_succ</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L69">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/all_bits_prefix_succ.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -26500,7 +26500,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for all_bits_last_succ">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib all_bits_last_succ</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib all_bits_last_succ</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L93">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/all_bits_last_succ.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -26565,7 +26565,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bit_count_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bit_count_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bit_count_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L113">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bit_count_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -26635,7 +26635,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bit_count_functional">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bit_count_functional</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bit_count_functional</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L133">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bit_count_functional.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -26703,7 +26703,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bit_count_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bit_count_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bit_count_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L158">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bit_count_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -26822,7 +26822,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bit_count_succ_decompose">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bit_count_succ_decompose</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bit_count_succ_decompose</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L181">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bit_count_succ_decompose.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -26936,7 +26936,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bit_count_bounded">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bit_count_bounded</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bit_count_bounded</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_bitcount_theorems.py#L260">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bit_count_bounded.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -27021,7 +27021,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_coprime_or_divides">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_coprime_or_divides</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_coprime_or_divides</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_prime_units.py#L31">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_coprime_or_divides.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -27088,7 +27088,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_not_divides_coprime">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_not_divides_coprime</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_not_divides_coprime</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_prime_units.py#L83">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_not_divides_coprime.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -27167,7 +27167,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for distinct_primes_coprime">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib distinct_primes_coprime</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib distinct_primes_coprime</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_prime_units.py#L108">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/distinct_primes_coprime.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -27241,7 +27241,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for coprime_balanced_mod_inverse">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_balanced_mod_inverse</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib coprime_balanced_mod_inverse</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_prime_units.py#L143">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/coprime_balanced_mod_inverse.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -27368,7 +27368,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for coprime_mod_inverse">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_mod_inverse</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib coprime_mod_inverse</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_prime_units.py#L173">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/coprime_mod_inverse.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -27542,7 +27542,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_cancel_coprime">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_cancel_coprime</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_cancel_coprime</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_prime_units.py#L266">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_cancel_coprime.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -27626,7 +27626,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_mod_inverse">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_mod_inverse</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_mod_inverse</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_prime_units.py#L402">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_mod_inverse.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -27714,7 +27714,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_mod_cancel">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_mod_cancel</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_mod_cancel</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_prime_units.py#L446">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_mod_cancel.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -27789,7 +27789,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for factorial_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib factorial_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib factorial_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_factorial_theorems.py#L84">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/factorial_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -27899,7 +27899,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for factorial_functional">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib factorial_functional</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib factorial_functional</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_factorial_theorems.py#L116">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/factorial_functional.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -27968,7 +27968,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for factorial_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib factorial_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib factorial_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_factorial_theorems.py#L183">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/factorial_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -28086,7 +28086,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for factorial_succ_decompose">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib factorial_succ_decompose</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib factorial_succ_decompose</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_factorial_theorems.py#L207">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/factorial_succ_decompose.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -28170,7 +28170,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for pow_one_from_zero_successor">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_one_from_zero_successor</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib pow_one_from_zero_successor</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/power_congruence_theorems.py#L71">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/pow_one_from_zero_successor.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -28236,7 +28236,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for pow_one">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_one</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib pow_one</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/power_congruence_theorems.py#L109">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/pow_one.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -28320,7 +28320,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for pow_successor_pair_mul">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_successor_pair_mul</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib pow_successor_pair_mul</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/power_congruence_theorems.py#L130">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/pow_successor_pair_mul.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -28469,7 +28469,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for pow_mod_congruent">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_mod_congruent</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib pow_mod_congruent</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/power_congruence_theorems.py#L169">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/pow_mod_congruent.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -28562,7 +28562,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for lt_three_cases">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_three_cases</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib lt_three_cases</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L76">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/lt_three_cases.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -28650,7 +28650,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for lt_five_cases">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_five_cases</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib lt_five_cases</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L163">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/lt_five_cases.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -28738,7 +28738,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for lt_seven_cases">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lt_seven_cases</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib lt_seven_cases</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L163">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/lt_seven_cases.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -28894,7 +28894,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bounded_square_mod3_classify">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_square_mod3_classify</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bounded_square_mod3_classify</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L260">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bounded_square_mod3_classify.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -29115,7 +29115,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bounded_square_mod5_classify">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_square_mod5_classify</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bounded_square_mod5_classify</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L260">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bounded_square_mod5_classify.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -29403,7 +29403,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bounded_square_mod7_classify">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_square_mod7_classify</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bounded_square_mod7_classify</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L260">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bounded_square_mod7_classify.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -29459,7 +29459,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod3_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod3_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib qres_mod3_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/qres_mod3_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -29515,7 +29515,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod3_one">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod3_one</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib qres_mod3_one</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/qres_mod3_one.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -29571,7 +29571,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod5_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod5_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib qres_mod5_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/qres_mod5_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -29627,7 +29627,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod5_one">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod5_one</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib qres_mod5_one</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/qres_mod5_one.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -29683,7 +29683,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod5_four">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod5_four</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib qres_mod5_four</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/qres_mod5_four.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -29739,7 +29739,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod7_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod7_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib qres_mod7_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/qres_mod7_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -29795,7 +29795,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod7_one">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod7_one</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib qres_mod7_one</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/qres_mod7_one.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -29851,7 +29851,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod7_two">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod7_two</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib qres_mod7_two</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/qres_mod7_two.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -29907,7 +29907,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod7_four">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod7_four</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib qres_mod7_four</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L290">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/qres_mod7_four.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -29988,7 +29988,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod3_canonical_iff">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod3_canonical_iff</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib qres_mod3_canonical_iff</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L345">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/qres_mod3_canonical_iff.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -30073,7 +30073,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod5_canonical_iff">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod5_canonical_iff</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib qres_mod5_canonical_iff</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L345">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/qres_mod5_canonical_iff.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -30162,7 +30162,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for qres_mod7_canonical_iff">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib qres_mod7_canonical_iff</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib qres_mod7_canonical_iff</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L345">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/qres_mod7_canonical_iff.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -30238,7 +30238,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for not_qres_mod3_two">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib not_qres_mod3_two</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib not_qres_mod3_two</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/not_qres_mod3_two.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -30328,7 +30328,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for not_qres_mod5_two">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib not_qres_mod5_two</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib not_qres_mod5_two</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/not_qres_mod5_two.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -30423,7 +30423,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for not_qres_mod5_three">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib not_qres_mod5_three</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib not_qres_mod5_three</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/not_qres_mod5_three.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -30531,7 +30531,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for not_qres_mod7_three">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib not_qres_mod7_three</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib not_qres_mod7_three</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/not_qres_mod7_three.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -30643,7 +30643,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for not_qres_mod7_five">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib not_qres_mod7_five</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib not_qres_mod7_five</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/not_qres_mod7_five.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -30755,7 +30755,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for not_qres_mod7_six">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib not_qres_mod7_six</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib not_qres_mod7_six</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_small_moduli.py#L434">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/not_qres_mod7_six.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -30837,7 +30837,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for pow_two_from_one_successor">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_two_from_one_successor</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib pow_two_from_one_successor</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/power_algebra_theorems.py#L122">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/pow_two_from_one_successor.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -30903,7 +30903,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for pow_two">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_two</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib pow_two</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/power_algebra_theorems.py#L159">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/pow_two.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -31050,7 +31050,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for pow_add">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_add</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib pow_add</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/power_algebra_theorems.py#L180">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/pow_add.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -31198,7 +31198,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for pow_mul_exp">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_mul_exp</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib pow_mul_exp</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/power_algebra_theorems.py#L288">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/pow_mul_exp.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -31264,7 +31264,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for predecessor_square_mod_one">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib predecessor_square_mod_one</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib predecessor_square_mod_one</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/gauss_sign_bridge.py#L64">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/predecessor_square_mod_one.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -31336,7 +31336,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for even_successor_to_odd">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib even_successor_to_odd</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib even_successor_to_odd</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/gauss_sign_bridge.py#L88">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/even_successor_to_odd.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -31408,7 +31408,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for odd_successor_to_even">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib odd_successor_to_even</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib odd_successor_to_even</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/gauss_sign_bridge.py#L114">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/odd_successor_to_even.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -31577,7 +31577,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for pow_predecessor_parity_mod">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib pow_predecessor_parity_mod</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib pow_predecessor_parity_mod</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/gauss_sign_bridge.py#L140">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/pow_predecessor_parity_mod.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -31679,7 +31679,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_range_injective">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_range_injective</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_range_injective</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/gauss_half_range.py#L77">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_range_injective.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -31791,7 +31791,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_half_range_entry_bounds">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_half_range_entry_bounds</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_half_range_entry_bounds</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/gauss_half_range.py#L133">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_half_range_entry_bounds.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -31893,7 +31893,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_half_range_mod_eq_value">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_half_range_mod_eq_value</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_half_range_mod_eq_value</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/gauss_half_range.py#L203">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_half_range_mod_eq_value.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -31994,7 +31994,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_half_range_mod_injective">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_half_range_mod_injective</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_half_range_mod_injective</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/gauss_half_range.py#L259">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_half_range_mod_injective.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -32065,7 +32065,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for finite_surjective_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_surjective_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib finite_surjective_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L370">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/finite_surjective_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -32147,7 +32147,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for finite_injective_prefix_succ">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_injective_prefix_succ</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib finite_injective_prefix_succ</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L395">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/finite_injective_prefix_succ.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -32213,7 +32213,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for finite_lt_succ_eq_or_lt">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_lt_succ_eq_or_lt</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib finite_lt_succ_eq_or_lt</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L433">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/finite_lt_succ_eq_or_lt.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -32291,7 +32291,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for finite_bounded_entry_lt">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_bounded_entry_lt</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib finite_bounded_entry_lt</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L454">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/finite_bounded_entry_lt.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -32471,7 +32471,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_replace_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_replace_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_prefix_replace_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L492">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_prefix_replace_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -32614,7 +32614,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_swap_last_from_entries">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_swap_last_from_entries</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_prefix_swap_last_from_entries</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L640">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_prefix_swap_last_from_entries.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -32707,7 +32707,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_swap_last_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_swap_last_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_prefix_swap_last_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L760">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_prefix_swap_last_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -32839,7 +32839,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_swap_last_reflect">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_swap_last_reflect</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_prefix_swap_last_reflect</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L826">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_prefix_swap_last_reflect.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -32988,7 +32988,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for finite_swap_last_bounded">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_swap_last_bounded</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib finite_swap_last_bounded</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L912">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/finite_swap_last_bounded.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -33263,7 +33263,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for finite_swap_last_injective">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_swap_last_injective</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib finite_swap_last_injective</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1031">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/finite_swap_last_injective.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -33398,7 +33398,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for finite_swap_last_surjective_back">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_swap_last_surjective_back</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib finite_swap_last_surjective_back</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1271">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/finite_swap_last_surjective_back.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -33535,7 +33535,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for finite_contains_decidable">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_contains_decidable</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib finite_contains_decidable</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1379">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/finite_contains_decidable.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -33626,7 +33626,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for finite_bounded_prefix_without_top">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_bounded_prefix_without_top</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib finite_bounded_prefix_without_top</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1480">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/finite_bounded_prefix_without_top.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -33691,7 +33691,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for finite_bounded_last_succ">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_bounded_last_succ</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib finite_bounded_last_succ</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1530">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/finite_bounded_last_succ.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -33783,7 +33783,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for finite_surjective_succ_intro">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_surjective_succ_intro</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib finite_surjective_succ_intro</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1551">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/finite_surjective_succ_intro.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -33893,7 +33893,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for finite_last_is_top_from_prefix_surjective">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_last_is_top_from_prefix_surjective</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib finite_last_is_top_from_prefix_surjective</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1600">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/finite_last_is_top_from_prefix_surjective.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -33973,7 +33973,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for finite_surjective_succ_from_prefix">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_surjective_succ_from_prefix</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib finite_surjective_succ_from_prefix</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1674">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/finite_surjective_succ_from_prefix.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -34076,7 +34076,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for finite_no_top_successor_gate">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_no_top_successor_gate</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib finite_no_top_successor_gate</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1712">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/finite_no_top_successor_gate.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -34321,7 +34321,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for finite_bounded_injective_surjective">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_bounded_injective_surjective</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib finite_bounded_injective_surjective</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_permutation_theorems.py#L1777">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/finite_bounded_injective_surjective.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -34432,7 +34432,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_prefix_replace_reflect">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_prefix_replace_reflect</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_prefix_replace_reflect</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_product_permutation_theorems.py#L80">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_prefix_replace_reflect.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -34698,7 +34698,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_replace_balance">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_replace_balance</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_product_replace_balance</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_product_permutation_theorems.py#L152">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_product_replace_balance.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -34858,7 +34858,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_product_swap_last_invariant">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_product_swap_last_invariant</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_product_swap_last_invariant</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_product_permutation_theorems.py#L388">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_product_swap_last_invariant.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -34953,7 +34953,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for finite_fixed_last_prefix_bounded">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib finite_fixed_last_prefix_bounded</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib finite_fixed_last_prefix_bounded</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_product_reindex_support.py#L194">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/finite_fixed_last_prefix_bounded.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -35109,7 +35109,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for beta_reindex_alignment_swap_last">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib beta_reindex_alignment_swap_last</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib beta_reindex_alignment_swap_last</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/finite_product_reindex_support.py#L250">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/beta_reindex_alignment_swap_last.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -35192,7 +35192,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_is_succ_succ">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_is_succ_succ</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_is_succ_succ</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_bounded_units.py#L116">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_is_succ_succ.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -35382,7 +35382,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for prime_bounded_nonzero_mod_inverse">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib prime_bounded_nonzero_mod_inverse</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib prime_bounded_nonzero_mod_inverse</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/qr_bounded_units.py#L153">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/prime_bounded_nonzero_mod_inverse.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -35451,7 +35451,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for canonical_remainder_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib canonical_remainder_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib canonical_remainder_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_canonical_remainder_candidate.py#L80">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/canonical_remainder_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -35528,7 +35528,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for canonical_remainder_functional">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib canonical_remainder_functional</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib canonical_remainder_functional</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_canonical_remainder_candidate.py#L105">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/canonical_remainder_functional.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -35597,7 +35597,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for canonical_remainder_zero_impossible">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib canonical_remainder_zero_impossible</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib canonical_remainder_zero_impossible</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_canonical_remainder_candidate.py#L137">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/canonical_remainder_zero_impossible.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -35672,7 +35672,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for canonical_remainder_exists_unique">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib canonical_remainder_exists_unique</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib canonical_remainder_exists_unique</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_canonical_remainder_candidate.py#L161">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/canonical_remainder_exists_unique.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -35812,7 +35812,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for canonical_remainders_characterize_mod_eq">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib canonical_remainders_characterize_mod_eq</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib canonical_remainders_characterize_mod_eq</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_canonical_congruence_candidate.py#L88">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/canonical_remainders_characterize_mod_eq.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -35935,7 +35935,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for bounded_mod_inverse_unique">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib bounded_mod_inverse_unique</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib bounded_mod_inverse_unique</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/wilson_inverse_point_candidate.py#L325">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/bounded_mod_inverse_unique.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -36055,7 +36055,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for coprime_bounded_mod_inverse">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_bounded_mod_inverse</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib coprime_bounded_mod_inverse</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_modular_inverse_candidate.py#L204">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/coprime_bounded_mod_inverse.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -36146,7 +36146,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_inverse_implies_coprime">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_inverse_implies_coprime</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_inverse_implies_coprime</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_modular_inverse_candidate.py#L283">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_inverse_implies_coprime.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -36238,7 +36238,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for coprime_iff_unique_bounded_mod_inverse">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_iff_unique_bounded_mod_inverse</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib coprime_iff_unique_bounded_mod_inverse</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_modular_inverse_candidate.py#L332">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/coprime_iff_unique_bounded_mod_inverse.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -36297,7 +36297,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_lcm_multiple_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_lcm_multiple_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_lcm_multiple_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py#L164">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_lcm_multiple_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -36356,7 +36356,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_lcm_multiple_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_lcm_multiple_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_lcm_multiple_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py#L179">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_lcm_multiple_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -36420,7 +36420,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_lcm_least">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_lcm_least</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_lcm_least</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py#L194">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_lcm_least.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -36489,7 +36489,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_lcm_symm">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_lcm_symm</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_lcm_symm</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py#L139">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_lcm_symm.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -36567,7 +36567,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_lcm_unique">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_lcm_unique</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_lcm_unique</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py#L274">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_lcm_unique.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -36631,7 +36631,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_lcm_zero_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_lcm_zero_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_lcm_zero_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py#L324">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_lcm_zero_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -36694,7 +36694,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_lcm_zero_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_lcm_zero_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_lcm_zero_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py#L307">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_lcm_zero_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -36772,7 +36772,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for balanced_bezout_one_implies_coprime">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib balanced_bezout_one_implies_coprime</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib balanced_bezout_one_implies_coprime</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py#L189">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/balanced_bezout_one_implies_coprime.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -36867,7 +36867,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for coprime_product_is_lcm">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib coprime_product_is_lcm</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib coprime_product_is_lcm</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py#L228">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/coprime_product_is_lcm.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -36981,7 +36981,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_lcm_scale_nonzero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_lcm_scale_nonzero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_lcm_scale_nonzero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py#L283">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_lcm_scale_nonzero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -37091,7 +37091,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for balanced_bezout_cancel_gcd">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib balanced_bezout_cancel_gcd</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib balanced_bezout_cancel_gcd</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py#L356">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/balanced_bezout_cancel_gcd.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -37162,7 +37162,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for gcd_zero_inputs">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib gcd_zero_inputs</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib gcd_zero_inputs</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py#L428">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/gcd_zero_inputs.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -37332,7 +37332,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for gcd_lcm_compatible_exists">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib gcd_lcm_compatible_exists</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib gcd_lcm_compatible_exists</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py#L455">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/gcd_lcm_compatible_exists.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -37395,7 +37395,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for lcm_exists_relational">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib lcm_exists_relational</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib lcm_exists_relational</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py#L587">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/lcm_exists_relational.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -37466,7 +37466,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for canonical_lcm_exists_unique">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib canonical_lcm_exists_unique</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib canonical_lcm_exists_unique</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py#L606">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/canonical_lcm_exists_unique.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -37552,7 +37552,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for gcd_lcm_product">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib gcd_lcm_product</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib gcd_lcm_product</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py#L636">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/gcd_lcm_product.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -37630,7 +37630,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_zero_iff_eq">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_zero_iff_eq</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_zero_iff_eq</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py#L233">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_zero_iff_eq.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -37710,7 +37710,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_scale">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_scale</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_scale</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py#L293">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_scale.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -37801,7 +37801,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for crt_solution_pair_congruent">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib crt_solution_pair_congruent</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib crt_solution_pair_congruent</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py#L370">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/crt_solution_pair_congruent.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -37908,7 +37908,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for crt_common_solution_implies_gcd_compatible">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib crt_common_solution_implies_gcd_compatible</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib crt_common_solution_implies_gcd_compatible</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py#L416">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/crt_common_solution_implies_gcd_compatible.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -37980,7 +37980,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for crt_incompatibility_obstructs_solution">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib crt_incompatibility_obstructs_solution</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib crt_incompatibility_obstructs_solution</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py#L481">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/crt_incompatibility_obstructs_solution.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -38098,7 +38098,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for is_gcd_quotients_coprime_nonzero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib is_gcd_quotients_coprime_nonzero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib is_gcd_quotients_coprime_nonzero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py#L186">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/is_gcd_quotients_coprime_nonzero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -38217,7 +38217,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_common_remainder_decomposition">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_common_remainder_decomposition</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_common_remainder_decomposition</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py#L349">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_common_remainder_decomposition.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -38351,7 +38351,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for crt_scaled_common_remainder_lift">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib crt_scaled_common_remainder_lift</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib crt_scaled_common_remainder_lift</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py#L428">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/crt_scaled_common_remainder_lift.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -38494,7 +38494,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for generalized_binary_crt_sufficient_nonzero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib generalized_binary_crt_sufficient_nonzero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib generalized_binary_crt_sufficient_nonzero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_sufficiency_candidate.py#L516">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/generalized_binary_crt_sufficient_nonzero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -38581,7 +38581,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for generalized_binary_crt_sufficient_zero_left">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib generalized_binary_crt_sufficient_zero_left</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib generalized_binary_crt_sufficient_zero_left</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py#L124">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/generalized_binary_crt_sufficient_zero_left.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -38666,7 +38666,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for generalized_binary_crt_sufficient_zero_right">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib generalized_binary_crt_sufficient_zero_right</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib generalized_binary_crt_sufficient_zero_right</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py#L169">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/generalized_binary_crt_sufficient_zero_right.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -38771,7 +38771,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for generalized_binary_crt_sufficient">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib generalized_binary_crt_sufficient</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib generalized_binary_crt_sufficient</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py#L212">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/generalized_binary_crt_sufficient.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -38852,7 +38852,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for generalized_binary_crt_solvable_iff">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib generalized_binary_crt_solvable_iff</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib generalized_binary_crt_solvable_iff</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_zero_boundary_candidate.py#L275">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/generalized_binary_crt_solvable_iff.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -38939,7 +38939,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_ordered_gap_multiple">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_ordered_gap_multiple</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_ordered_gap_multiple</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_classification_candidate.py#L190">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_ordered_gap_multiple.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -39110,7 +39110,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_lcm_merge">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_lcm_merge</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_lcm_merge</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_classification_candidate.py#L230">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_lcm_merge.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -39212,7 +39212,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_lcm_iff_pair">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_lcm_iff_pair</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_lcm_iff_pair</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_classification_candidate.py#L359">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_lcm_iff_pair.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -39329,7 +39329,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for crt_solution_class_iff_lcm">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib crt_solution_class_iff_lcm</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib crt_solution_class_iff_lcm</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_classification_candidate.py#L422">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/crt_solution_class_iff_lcm.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -39416,7 +39416,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for crt_solution_unique_lcm_zero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib crt_solution_unique_lcm_zero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib crt_solution_unique_lcm_zero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py#L394">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/crt_solution_unique_lcm_zero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -39557,7 +39557,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for crt_solution_canonical_remainder_nonzero">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib crt_solution_canonical_remainder_nonzero</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib crt_solution_canonical_remainder_nonzero</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py#L436">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/crt_solution_canonical_remainder_nonzero.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -39679,7 +39679,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for generalized_binary_crt_canonical_boundary">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib generalized_binary_crt_canonical_boundary</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib generalized_binary_crt_canonical_boundary</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py#L541">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/generalized_binary_crt_canonical_boundary.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -39769,7 +39769,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for mod_eq_decidable">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib mod_eq_decidable</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib mod_eq_decidable</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_decision_candidate.py#L108">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/mod_eq_decidable.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -39860,7 +39860,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for generalized_binary_crt_solution_or_obstruction">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib generalized_binary_crt_solution_or_obstruction</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib generalized_binary_crt_solution_or_obstruction</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_decision_candidate.py#L156">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/generalized_binary_crt_solution_or_obstruction.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -39931,7 +39931,7 @@ qed</code></pre>
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for generalized_binary_crt_total_decision">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib generalized_binary_crt_total_decision</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib generalized_binary_crt_total_decision</code> · Stable</span>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/peano-lab/py/peano_lab/library/ha_generalized_crt_total_decision_candidate.py#L62">Native source</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/vault/lemmas/generalized_binary_crt_total_decision.md">Vault note</a>
         <a href="https://github.com/nasqret/vietnam2026/blob/2037b87905817ada187e2477af22c57ff47fb512/artifacts/peano-library/catalog-v1.json">Snapshot record</a>
@@ -39976,10 +39976,9 @@ qed</code></pre>
   dependency spine.
 - A theorem card's prerequisite and dependent chips are bidirectional links.
   Browser Back and Forward therefore become mathematical navigation controls.
-- The `pa lib NAME` label is the command to run in this candidate checkout and
-  will become a live browser action only after this checked build is
-  promoted. “Native source” and “Vault note” already point to immutable proof
-  material.
+- The `pa lib NAME` label identifies a theorem in the Stable checked-use
+  registry. “Native source” and “Vault note” point to immutable proof material;
+  hosted-browser deployment is tracked separately.
 - The single boundary card is intentionally not presented as proved. It keeps
   the conventional integer-coefficient Bézout interface distinct from the
   checked balanced-natural theorem.

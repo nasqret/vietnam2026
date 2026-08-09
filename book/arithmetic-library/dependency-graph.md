@@ -5,6 +5,17 @@ does this theorem ultimately depend on?* and *which later theorems use it?*
 It opens below with quadratic reciprocity, permanent tag **PA00FW**, selected
 as the target.
 
+```{admonition} Alpha QR slice, not the complete library graph
+:class: note
+These 557 nodes are exactly the reciprocity campaign slice: 241 Stable
+prerequisites and 316 Alpha-only specifications. The complete Stable catalog
+has 432 rows, of which 191 are outside this graph. Stable union this slice has
+748 distinct theorem names, while canonical Alpha has 885; other Alpha layers
+such as K3B are separate until
+the unified Alpha explorer is generated. See {doc}`Alpha and
+Stable library editions <library-editions>`.
+```
+
 ```{admonition} The graph records proof structure, not extra axioms
 :class: important
 Every vertex is a theorem specification in the quadratic-reciprocity closure.
@@ -116,24 +127,29 @@ That display is an orientation guide through the subject. The interactive
 graph and its generated JSON, rather than this editorial summary, are the
 exact dependency record.
 
-## Proof status remains visible
+## Release membership and proof evidence remain visible
 
 Node color and the details panel preserve the same status distinctions as the
-{doc}`proof explorer <proof-explorer>`. The live closure contains 241 public
-closed theorems and 316 candidate specifications: 315 body-checked proper
-candidate ancestors and the pending root. `bounded_mod_inverse_unique` is the
-one exact-compatible public migration; its candidate-factory specification and
-owner remain recorded as provenance, but its reachable-graph scope is public.
+{doc}`proof explorer <proof-explorer>`. The live closure contains 241 Stable
+theorems and 316 Alpha-only specifications. Canonical Alpha evidence partitions
+those 316 rows into 314 body-checked-only rows, the Alpha-closed
+`mod_eq_add_cancel_left` overlap, and the pending root. The older QR corpus
+still labels that overlap `candidate_body_checked`; its HA empty-context
+receipt is the separate evidence that strengthens the canonical status.
+`bounded_mod_inverse_unique` is the one exact-compatible
+Stable migration in this slice; its Alpha-source specification and owner
+remain recorded as provenance, but its reachable-graph scope is Stable.
 A `candidate_body_checked` node has an independently kernel-checked
-dependency-curried body, but is not thereby publicly admitted. PA00FW is
+dependency-curried body, but is not thereby promoted to Stable. PA00FW is
 `pending_layered_closure`: its complete layered closed certificate still has
-to pass the WMI and release admission gates. The current graph receipt is
+to pass the WMI and Stable-promotion gates. The current graph receipt is
 `26017364ea943c4ed51a4a83f63ff0cd56b0de3686f0e0b458e7548ee84b1253`;
 the 557 nodes, 1,787 edges and 45 layers are unchanged.
 
-The embedded generated pages remain the labeled pre-migration explorer
-snapshot until the broader release regeneration, so they may still display
-the historical 240/317 badge split. A path, graph hash, or green body-check
+The embedded generated pages remain a campaign-oriented explorer, so they
+retain historical `public`/`candidate` wording and the current 241/316 badge
+split. Those labels describe the QR slice, not canonical closure evidence. A
+path, graph hash, or green body-check
 badge supplies provenance, never an axiom or theorem authority.
 
 For the exact statements and numbered tactic scripts, use the

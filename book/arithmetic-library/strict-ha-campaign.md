@@ -18,9 +18,22 @@ It separates three facts which are easy to blur in an informal development:
 
 - a dependency-curried tactic body may check;
 - its complete empty-context certificate may check while it remains isolated;
-- only an explicit registry change makes it a public theorem.
+- only an explicit promotion makes it a Stable theorem.
 
-## Current boundary
+```{admonition} Current Alpha/Stable status (2026-08-09)
+:class: important
+The tables and dated checkpoints below preserve the campaign's historical
+`public`/`private` admission boundary. They are not the current library
+membership ledger. The canonical Alpha edition now contains every reviewed row
+from this campaign: its strict-HA contribution is 121 Alpha-closed rows, one of
+which shares an exact QR specification and therefore occupies the earlier QR
+position. These rows are Alpha checked-use facts, but they are not Stable. The
+authoritative current counts and evidence states are in {doc}`Alpha and Stable
+library editions <library-editions>` and
+`artifacts/peano-library/alpha/catalog-v1.json`.
+```
+
+## Historical Stable/public boundary
 
 ```{list-table}
 :header-rows: 1
@@ -2355,6 +2368,8 @@ From the repository root:
 make ha-number-theory-check
 python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
+python3 scripts/build_peano_library_channels.py --check
+python3 scripts/verify_peano_library_channels.py
 ```
 
 The first command checks the 12-layer campaign manifest and all **162**
@@ -2371,3 +2386,6 @@ definition API over 44 distinct public-theorem replays. The second
 cross-checks all **432** public runtime theorems against the **433**-row
 research catalog. The third independently replays the full public ladder and
 compares the deterministic snapshot.
+The final two commands verify the superseding Alpha/Stable enrollment,
+evidence bindings, metrics, and channel pointers; they do not perform the
+still-pending WMI closure work.

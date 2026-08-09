@@ -1,30 +1,47 @@
-# The native PA proof explorer
+# The Alpha QR proof explorer
 
-The proof explorer is the line-by-line reading room for the native arithmetic
-library. It combines Stacks-style permanent theorem tags with a
+The proof explorer is the line-by-line reading room for the
+quadratic-reciprocity **Alpha slice** of the native arithmetic library. It
+combines Stacks-style permanent theorem tags with a
 LeanBlueprint-style dependency view, while retaining the exact Peano Lab
 statement and authored tactic body for every node in the quadratic-reciprocity
 closure.
 
-```{admonition} Read the status before the proof
+```{admonition} This is a campaign slice, not either complete edition
 :class: important
-The explorer distinguishes public closed theorems from dependency-curried
-candidate bodies. In particular, `quadratic_reciprocity_combined` has a
+The 557 generated pages contain **241 Stable prerequisites** and **316 Alpha-only
+specifications**. The complete Stable catalog has 432 theorems, so
+191 Stable rows lie outside this QR closure. The canonical Alpha catalog has
+885 rows; Stable union this slice has only 748 distinct theorem names. K3B and
+other Alpha layers are documented separately.
+The generated pages retain their historical `public`/`candidate` labels until
+the unified Alpha explorer is built: read those only as Stable versus
+Alpha-only membership in this slice. They are not canonical evidence labels.
+In particular, the campaign corpus still calls `mod_eq_add_cancel_left`
+body-checked, while its later HA receipt upgrades the same specification to
+`alpha_closed` in the canonical Alpha catalog.
+```
+
+```{admonition} Read release membership and evidence separately
+:class: note
+In particular, `quadratic_reciprocity_combined` has a
 kernel-checked modular body and a complete 557-node dependency graph, but its
 layered closed certificate is still pending the WMI and admission gates. A
 permanent tag, source hash, or green modular-body check is provenance—not an
-axiom and not public admission.
+axiom and not Stable promotion. See {doc}`Alpha and Stable library editions
+<library-editions>` for the release lifecycle.
 ```
 
 The live QR stack now classifies one former candidate-factory output,
-`bounded_mod_inverse_unique`, as public because its public and candidate
-`TheoremSpec` values are exactly equal. This changes the live status partition
+`bounded_mod_inverse_unique`, as Stable within this slice because its Stable
+and Alpha-source `TheoremSpec` values are exactly equal. This changes the live
+status partition
 from 240/317 to 241/316 without changing the 557-node, 1,787-edge, 45-layer
 topology. The graph receipt is
 `26017364ea943c4ed51a4a83f63ff0cd56b0de3686f0e0b458e7548ee84b1253`.
-The generated explorer linked below remains a labeled pre-migration artifact
-until the full release regeneration, so its badge for that one theorem may
-still say candidate.
+The generated explorer linked below already carries that 241/316 membership
+split. Its remaining campaign-local evidence labels should still be read
+through the canonical Alpha catalog as explained above.
 
 Use the search and filters to choose a theorem, then follow any highlighted
 lemma name in its informal outline or formal tactic lines. Each result has a
@@ -34,7 +51,7 @@ your mathematical route.
 
 <p>
   <a class="btn btn-primary" href="../_static/pa-proof-explorer/index.html">
-    Open the full proof explorer
+    Open the Alpha QR proof explorer
   </a>
   <a class="btn btn-outline-primary" href="../_static/pa-proof-explorer/defined/index.html">
     Open the 40-definition reading edition
@@ -52,7 +69,7 @@ your mathematical route.
 
 <iframe
   src="../_static/pa-proof-explorer/index.html"
-  title="Native Peano arithmetic proof explorer"
+  title="Alpha quadratic-reciprocity Peano arithmetic proof explorer"
   width="100%"
   height="920"
   loading="lazy">
@@ -82,23 +99,21 @@ difference between one readable route and all required premises explicit.
   clients. The {doc}`dependency graph <dependency-graph>` expands that local
   view into selectable paths and transitive cones without forcing all 557
   nodes onto the canvas at once.
-- **Trust and provenance** separates public admission, modular-body evidence,
+- **Trust and provenance** separates Stable membership, modular-body evidence,
   statement and script hashes, and source locations.
 
-The {doc}`theorem atlas <theorem-atlas>` is the complete 432-theorem public
-snapshot. The generated proof explorer contains the frozen 557-specification
-QR closure plus 23 selectively admitted generalized-CRT pages. The QR closure
-itself remains 241 public rows plus 316 candidates; the appended CRT pages do
-not alter its 557-node topology. The live development registry has 432
-theorems after the 25-theorem strict-HA admission and the exact 23-row CRT
-admission. Exact QR-factory overlaps are the compatible migrations described
-above, not an implicit promotion by the explorer. Generated pages grant no
-entry to `pa lib`.
+The {doc}`theorem atlas <theorem-atlas>` is the complete 432-theorem Stable
+snapshot. The frozen QR explorer is exactly a 557-specification slice: 241 of
+its rows occur in Stable and 316 are Alpha-only. It omits 191 Stable theorems,
+and its 748-name union omits 137 other Alpha rows, so it must not be used as
+the count for either complete edition. Exact
+QR-factory overlaps are compatible migrations, not implicit promotion by the
+explorer. Generated pages grant no entry to the Stable `pa lib` namespace.
 
 When a fully expanded formula obscures the mathematical structure, use the
 {doc}`definition-aware edition <defined-proof-explorer>`. It preserves the
 same `PA` tags, 557-node proof graph, exact native replay lines, and
-public/candidate status while providing a 40-entry conservative-definition
+the same historical campaign labels while providing a 40-entry conservative-definition
 registry; 38 definitions occur in this closure.
 
 For the exact syntax and trust base behind every page, continue with the

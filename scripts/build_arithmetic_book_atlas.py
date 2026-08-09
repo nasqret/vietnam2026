@@ -442,7 +442,7 @@ def _card(
       </dl>
 
       <nav class="pa-card-links" aria-label="Links for {_e(name)}">
-        <span class="pa-deployment-note" title="The public Peano Lab does not contain this candidate snapshot yet"><code>pa lib {_e(name)}</code> after promotion</span>
+        <span class="pa-deployment-note" title="Stable repository theorem; hosted-runtime deployment is a separate channel"><code>pa lib {_e(name)}</code> · Stable</span>
         <a href="{_e(source_url)}">Native source</a>
         <a href="{_e(vault_url)}">Vault note</a>
         <a href="{_e(artifact_url)}">Snapshot record</a>
@@ -537,9 +537,9 @@ def render() -> str:
     blocked_cards = "\n\n".join(_blocked_card(row) for row in blocked)
     digest = hashlib.sha256(cards.encode("utf-8")).hexdigest()
 
-    return f"""# The native theorem atlas
+    return f"""# The Stable theorem atlas
 
-This is the complete interactive reading surface for the current native Peano
+This is the complete interactive reading surface for the Stable native Peano
 arithmetic library. It is generated from the same checked snapshot used by the
 current library tests and catalog—not copied by hand. The released training
 corpus remains explicitly frozen at its earlier 247-theorem checkpoint. Search
@@ -557,12 +557,12 @@ empty context. The much larger certificate tree is identified by its hash and
 metrics rather than pasted as tens of thousands of constructor nodes.
 ```
 
-```{{admonition}} Public-lab deployment status
-:class: caution
-The {len(theorems)}-theorem candidate is checked locally but is not yet deployed to
-the public Peano Lab. Cards therefore show the eventual `pa lib NAME` command
-without turning it into a misleading live command link. The embedded recipe,
-immutable source links, and local checkout are usable now.
+```{{admonition}} Stable is not the same as hosted deployment
+:class: note
+These {len(theorems)} theorems are the canonical Stable repository edition.
+Whether a hosted Peano Lab has deployed this exact commit is a separate
+operational state and does not downgrade the library to Alpha. See
+{{doc}}`Alpha and Stable library editions <library-editions>`.
 ```
 
 <div class="pa-atlas-hero" role="note">
@@ -640,10 +640,9 @@ Generated card digest: <code>{digest}</code>
   dependency spine.
 - A theorem card's prerequisite and dependent chips are bidirectional links.
   Browser Back and Forward therefore become mathematical navigation controls.
-- The `pa lib NAME` label is the command to run in this candidate checkout and
-  will become a live browser action only after this checked build is
-  promoted. “Native source” and “Vault note” already point to immutable proof
-  material.
+- The `pa lib NAME` label identifies a theorem in the Stable checked-use
+  registry. “Native source” and “Vault note” point to immutable proof material;
+  hosted-browser deployment is tracked separately.
 - The single boundary card is intentionally not presented as proved. It keeps
   the conventional integer-coefficient Bézout interface distinct from the
   checked balanced-natural theorem.

@@ -6,6 +6,40 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
+## Current library editions — 2026-08-09
+
+This status supersedes, without erasing, the dated checkpoint language below.
+**Stable** is the unchanged official checked edition: 432 theorems, 1,185
+declared direct edges, and 22 layers. **Alpha** is the cumulative building
+edition: 885 theorems, 2,641 direct edges, and 45 layers, comprising Stable
+plus 453 Alpha-only rows. Its ordered-enrollment root is
+`7371461aa930071f00007f766f899cef88c4126a5ddf576f93d79e336bc65c49`.
+
+Membership and evidence are independent. Alpha contains 432
+`stable_closed`, 138 `alpha_closed`, 314 `body_checked`, and one
+`pending_layered_closure` row. Only 570 closed rows are available for checked
+use; the other 315 still need whole-library empty-context closure. The runtime
+surface is `peano_lab.library.editions` (`edition`, `entry`, `replay`), with
+Stable as the default and body-only/pending Alpha replay rejected.
+
+The artifact index is `artifacts/peano-library/channels.json`; Alpha's catalog,
+metrics, and graph are under `artifacts/peano-library/alpha/`, while the Stable
+snapshot stays at `artifacts/peano-library/catalog-v1.json`. The graph's
+reachability reduction is for structural review and display, not a claim of
+proof-semantic minimality. WMI is down for the weekend, so closure of the 315
+remaining rows and any Stable promotion are pending. Older descriptions of
+reviewed rows as private or unregistered record their historical Stable
+status; enrolled rows are now Alpha-only unless separately promoted.
+
+The 315 missing closures are required for a whole-Alpha promotion, not for an
+unrelated smaller dependency-closed batch; every proposed batch receives its
+own isolated promotion receipt.
+
+The current Stable prefix is specific to channel v1. Later promotion must keep
+Alpha enrollment order and origin/provenance immutable, publish a new channel
+version, and treat Stable as a keyed exact subset with its own append-only,
+dependency-topological release order.
+
 The current runtime contains 432 checked entries: 23 legacy, 212 foundation,
 12 mod-five, 137 quadratic-residue, and 48 strict-HA theorems. The latest 23
 public M5 rows are the exact dependency closure of the all-modulus
