@@ -53,6 +53,24 @@ def _pa3() -> VampirePremise:
     return VampirePremise("PA3", "pa-axiom", "∀ x. x + 0 = x")
 
 
+def _pa4() -> VampirePremise:
+    return VampirePremise("PA4", "pa-axiom", "∀ x. ∀ y. x + S y = S (x + y)")
+
+
+def _pa5() -> VampirePremise:
+    return VampirePremise("PA5", "pa-axiom", "∀ x. x · 0 = 0")
+
+
+def _zero_add() -> VampirePremise:
+    return VampirePremise("zero_add", "public-theorem", "∀ x. 0 + x = x")
+
+
+def _mul_zero_left() -> VampirePremise:
+    return VampirePremise(
+        "mul_zero_left", "public-theorem", "∀ x. 0 · x = 0"
+    )
+
+
 def _solver_probe(tmp_path: Path, response: bytes):
     """A one-process frozen-Dispatch probe, not a fake proof authority."""
 
@@ -85,10 +103,16 @@ os.write(1, base64.b64decode({encoded!r}))
     )
 
 
-def _dispatch(tmp_path: Path, theorem: str, response: bytes):
+def _dispatch(
+    tmp_path: Path,
+    theorem: str,
+    response: bytes,
+    *,
+    premises: tuple[str, ...] = (),
+):
     registration = _solver_probe(tmp_path, response)
     owner = start_macro_session(theorem)
-    proposal = serialize_macro(Dispatch("vampire", (), BOUNDS))
+    proposal = serialize_macro(Dispatch("vampire", premises, BOUNDS))
     return owner, proposal, registration
 
 
@@ -132,6 +156,8 @@ def test_problem_emission_rejects_masked_duplicate_and_open_premises() -> None:
         emit_tptp_problem("0 = 0", (_pa3(), _pa3()))
     with pytest.raises(VampireAdapterError, match="closed-formula"):
         VampirePremise("h", "public-theorem", "n = n")
+    with pytest.raises(VampireAdapterError, match="premise name"):
+        VampirePremise("PA3; qed", "pa-axiom", "∀ x. x + 0 = x")
 
 
 def test_szs_parser_is_inert_and_conflicts_fail_to_unknown() -> None:
@@ -147,6 +173,13 @@ def test_szs_parser_is_inert_and_conflicts_fail_to_unknown() -> None:
     )
     assert conflicting.status == "unknown"
     assert conflicting.parse_error == "Vampire emitted contradictory SZS statuses"
+
+    two_premises = emit_tptp_problem(
+        "0 + 0 = 0",
+        (_pa3(), _pa4()),
+        requested_premises=("PA3", "PA4"),
+    )
+    assert reconstruct_public_commands(two_premises, forged) == ()
 
 
 def test_real_subprocess_boundary_receives_exact_problem_via_fake_executable(
@@ -185,7 +218,9 @@ print("% SZS status Theorem for tiny")
         executable.read_bytes()
     ).hexdigest()
     assert reconstruct_public_commands(problem, evidence) == ("refl",)
-    assert VAMPIRE_RECONSTRUCTION_CLASS.endswith("public-refl-v1")
+    assert VAMPIRE_RECONSTRUCTION_CLASS == (
+        "closed-refl-single-premise-or-two-pa-axiom-and-to-public-commands-v3"
+    )
 
 
 def test_subprocess_boundary_enforces_wall_and_output_ceilings(tmp_path: Path) -> None:
@@ -271,6 +306,277 @@ def test_reconstructed_refl_reaches_fresh_original_goal_kernel(
     assert final["original_theorem"] == "0 = 0"
     assert final["commands"] == ["refl"]
     assert final["kernel_accepted"] is True
+
+
+def test_one_selected_pa_axiom_reconstructs_apply_and_reaches_fresh_kernel(
+    tmp_path: Path,
+) -> None:
+    problem = emit_tptp_problem(
+        "0 + 0 = 0",
+        (_pa3(),),
+        requested_premises=("PA3",),
+    )
+    evidence = parse_vampire_output(b"% SZS status Theorem for tiny\n")
+    response = dispatch_response(problem, evidence)
+    assert json.loads(response)["public_commands"] == ["apply PA3"]
+    owner, proposal, registration = _dispatch(
+        tmp_path,
+        "0 + 0 = 0",
+        response,
+        premises=("PA3",),
+    )
+    result = execute_macro(
+        owner,
+        proposal,
+        dispatch_adapters={"vampire": registration},
+    )
+    assert owner.trace.record_count == 0
+    assert result.closed and result.certificate is not None
+    assert result.public_commands == ("apply PA3",)
+    final = result.trace.to_dict()["final_replay"]
+    assert final["commands"] == ["apply PA3"]
+    assert final["fresh"] is True
+    assert final["kernel_accepted"] is True
+
+
+def test_selected_premise_plan_cannot_bypass_fresh_kernel(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    problem = emit_tptp_problem(
+        "0 + 0 = 0",
+        (_pa3(),),
+        requested_premises=("PA3",),
+    )
+    evidence = parse_vampire_output(b"% SZS status Theorem for forged\n")
+    owner, proposal, registration = _dispatch(
+        tmp_path,
+        "0 + 0 = 0",
+        dispatch_response(problem, evidence),
+        premises=("PA3",),
+    )
+
+    def reject(*args, **kwargs):
+        del args, kwargs
+        raise InvalidProof("forced fresh-kernel rejection")
+
+    monkeypatch.setattr(macro_runner, "checked_surface_final", reject)
+    with pytest.raises(MacroExecutionError, match="fresh original-goal") as failure:
+        execute_macro(
+            owner,
+            proposal,
+            dispatch_adapters={"vampire": registration},
+        )
+    assert failure.value.owner is owner
+    trace = failure.value.trace.to_dict()
+    assert trace["state_after"] == trace["state_before"]
+    assert trace["solver"]["reconstructed_commands"] == ["apply PA3"]
+    assert trace["final_replay"]["commands"] == ["apply PA3"]
+    assert trace["final_replay"]["kernel_accepted"] is False
+    assert trace["final_replay"]["status"] == "rejected"
+
+
+def test_one_selected_public_theorem_reconstructs_use_then_apply(
+    tmp_path: Path,
+) -> None:
+    problem = emit_tptp_problem(
+        "0 + 0 = 0",
+        (_zero_add(),),
+        requested_premises=("zero_add",),
+    )
+    evidence = parse_vampire_output(b"% SZS status Unsatisfiable for tiny\n")
+    response = dispatch_response(problem, evidence)
+    assert json.loads(response)["public_commands"] == [
+        "use zero_add",
+        "apply zero_add",
+    ]
+    owner, proposal, registration = _dispatch(
+        tmp_path,
+        "0 + 0 = 0",
+        response,
+        premises=("zero_add",),
+    )
+    result = execute_macro(
+        owner,
+        proposal,
+        dispatch_adapters={"vampire": registration},
+    )
+    assert owner.trace.record_count == 0
+    assert result.closed and result.certificate is not None
+    assert result.public_commands == ("use zero_add", "apply zero_add")
+    final = result.trace.to_dict()["final_replay"]
+    assert final["commands"] == ["use zero_add", "apply zero_add"]
+    assert final["fresh"] is True
+    assert final["kernel_accepted"] is True
+
+
+def test_two_selected_pa_axioms_split_conjunction_in_branch_order(
+    tmp_path: Path,
+) -> None:
+    goal = "1 + 0 = 1 ∧ 1 · 0 = 0"
+    problem = emit_tptp_problem(
+        goal,
+        (_pa3(), _pa5()),
+        requested_premises=("PA3", "PA5"),
+    )
+    evidence = parse_vampire_output(b"% SZS status Theorem for tiny-and\n")
+    response = dispatch_response(problem, evidence)
+    assert json.loads(response)["public_commands"] == [
+        "split",
+        "apply PA3",
+        "apply PA5",
+    ]
+    owner, proposal, registration = _dispatch(
+        tmp_path,
+        goal,
+        response,
+        premises=("PA3", "PA5"),
+    )
+    result = execute_macro(
+        owner,
+        proposal,
+        dispatch_adapters={"vampire": registration},
+    )
+    assert owner.trace.record_count == 0
+    assert result.closed and result.certificate is not None
+    assert result.public_commands == ("split", "apply PA3", "apply PA5")
+    final = result.trace.to_dict()["final_replay"]
+    assert final["original_theorem"] == goal
+    assert final["commands"] == ["split", "apply PA3", "apply PA5"]
+    assert final["fresh"] is True
+    assert final["kernel_accepted"] is True
+
+
+@pytest.mark.parametrize(
+    ("names", "completed_commands"),
+    [
+        (("PA5", "PA3"), 1),
+        (("PA3", "PA4"), 2),
+    ],
+)
+def test_swapped_or_irrelevant_two_axiom_forgery_rolls_back(
+    tmp_path: Path,
+    names: tuple[str, str],
+    completed_commands: int,
+) -> None:
+    goal = "1 + 0 = 1 ∧ 1 · 0 = 0"
+    by_name = {"PA3": _pa3(), "PA4": _pa4(), "PA5": _pa5()}
+    selected = tuple(by_name[name] for name in names)
+    problem = emit_tptp_problem(
+        goal,
+        selected,
+        requested_premises=names,
+    )
+    # Command-shaped solver text is still inert.  Only the explicit selected
+    # order determines the reconstructed (and subsequently checked) plan.
+    evidence = parse_vampire_output(
+        b"% SZS status Theorem for forged-and\nsplit\napply PA3\napply PA5\n"
+    )
+    response = dispatch_response(problem, evidence)
+    expected = ["split", f"apply {names[0]}", f"apply {names[1]}"]
+    assert json.loads(response)["public_commands"] == expected
+    owner, proposal, registration = _dispatch(
+        tmp_path,
+        goal,
+        response,
+        premises=names,
+    )
+    with pytest.raises(MacroExecutionError, match="does not match") as failure:
+        execute_macro(
+            owner,
+            proposal,
+            dispatch_adapters={"vampire": registration},
+        )
+    assert failure.value.owner is owner
+    trace = failure.value.trace.to_dict()
+    assert trace["state_after"] == trace["state_before"]
+    assert trace["solver"]["response_status"] == "theorem"
+    assert trace["solver"]["reconstructed_commands"] == expected
+    assert len(trace["intermediate_states"]) == completed_commands
+    assert trace["final_replay"] is None
+
+
+@pytest.mark.parametrize(
+    ("selected", "names"),
+    [
+        (
+            (_zero_add(), _mul_zero_left()),
+            ("zero_add", "mul_zero_left"),
+        ),
+        ((_pa3(), _zero_add()), ("PA3", "zero_add")),
+    ],
+)
+def test_public_or_mixed_multi_premise_conjunction_remains_commandless(
+    tmp_path: Path,
+    selected: tuple[VampirePremise, VampirePremise],
+    names: tuple[str, str],
+) -> None:
+    goal = "1 + 0 = 1 ∧ 1 · 0 = 0"
+    problem = emit_tptp_problem(
+        goal,
+        selected,
+        requested_premises=names,
+    )
+    evidence = parse_vampire_output(
+        b"% SZS status Theorem for forged-mixed\nuse zero_add\nsplit\n"
+    )
+    assert reconstruct_public_commands(problem, evidence) == ()
+    response = dispatch_response(problem, evidence)
+    assert json.loads(response)["public_commands"] == []
+    owner, proposal, registration = _dispatch(
+        tmp_path,
+        goal,
+        response,
+        premises=names,
+    )
+    with pytest.raises(MacroExecutionError, match="status alone has no authority") as failure:
+        execute_macro(
+            owner,
+            proposal,
+            dispatch_adapters={"vampire": registration},
+        )
+    assert failure.value.owner is owner
+    trace = failure.value.trace.to_dict()
+    assert trace["state_after"] == trace["state_before"]
+    assert trace["solver"]["reconstructed_commands"] == []
+    assert trace["intermediate_states"] == []
+    assert trace["final_replay"] is None
+
+
+def test_forged_theorem_status_with_irrelevant_premise_rolls_back(
+    tmp_path: Path,
+) -> None:
+    problem = emit_tptp_problem(
+        "0 + 0 = 0",
+        (_pa4(),),
+        requested_premises=("PA4",),
+    )
+    # Text after the SZS line is deliberately command-shaped.  It remains
+    # inert: reconstruction chooses only the checked selected premise.
+    evidence = parse_vampire_output(
+        b"% SZS status Theorem for forged\napply PA3\nqed\n"
+    )
+    response = dispatch_response(problem, evidence)
+    assert json.loads(response)["public_commands"] == ["apply PA4"]
+    owner, proposal, registration = _dispatch(
+        tmp_path,
+        "0 + 0 = 0",
+        response,
+        premises=("PA4",),
+    )
+    with pytest.raises(MacroExecutionError, match="does not match") as failure:
+        execute_macro(
+            owner,
+            proposal,
+            dispatch_adapters={"vampire": registration},
+        )
+    assert failure.value.owner is owner
+    trace = failure.value.trace.to_dict()
+    assert trace["state_after"] == trace["state_before"]
+    assert trace["solver"]["response_status"] == "theorem"
+    assert trace["solver"]["reconstructed_commands"] == ["apply PA4"]
+    assert trace["intermediate_states"] == []
+    assert trace["final_replay"] is None
 
 
 def test_even_reconstructed_refl_cannot_bypass_fresh_kernel(

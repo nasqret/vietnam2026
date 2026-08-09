@@ -714,13 +714,49 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
 - [x] **A3.0 — untrusted executable vertical slice:** deterministically emit
       classical TPTP FOF from one closed primitive-PA goal and an explicit
       premise allow-list, retain a source-symbol map, and parse bounded SZS
-      output as inert evidence. The only implemented reconstruction class in
-      this slice is a top-level reflexive equality to the ordinary public
-      command `refl`; status alone returns no commands. Fake executables test
-      the real copied-and-rehashed direct-binary boundary, problem bytes,
-      arguments, wall timeout, and output ceiling. No Vampire binary was
-      installed or run, so this establishes protocol behavior, not Vampire
-      capability.
+      output as inert evidence. Reconstruction v3 emits only ordinary checked
+      public commands for three fixed shapes: top-level reflexivity gives
+      `refl`; one explicitly selected PA axiom gives `apply NAME`; one
+      explicitly selected public theorem gives `use NAME; apply NAME`; and a
+      top-level conjunction with exactly two selected PA axioms in branch order
+      gives `split; apply NAME1; apply NAME2`. Every other multi-premise case is
+      commandless. Fake executables continue to test the copied-and-rehashed
+      direct-binary boundary, problem bytes, arguments, wall timeout, rollback,
+      and output ceiling independently of a solver installation.
+- [x] **A3.1 — real-solver diagnostic reconstruction:** temporarily download
+      the official Vampire 5.0.1 macOS ARM64 release, verify the ZIP and
+      executable identities, run the direct untrusted boundary, reconstruct
+      public commands offline, and require fresh original-goal kernel replay.
+      The ZIP/executable SHA-256 values are
+      `8c92e649fe7bc622a70000afbdf5a5c51007b384e2d8b8235c95474cc7a68f35` /
+      `b5168c690e0293cdac78f16d8418d7eeabcd6708f90a60cd2bf45313b6d98699`;
+      neither file was vendored or installed.
+      The `0 + 0 = 0` / `PA3` diagnostic returned inert `SZS Theorem`,
+      reconstructed `apply PA3`, and produced a checked 2-node, depth-2 proof.
+      Its canonical `encode_proof` SHA-256 is
+      `25b6f555180e9737fe4aeb0e51f1f9e97911ed9ffc41c6a80ef97088930711cd`;
+      its complete `peano-lab-v2` artifact SHA-256 is
+      `3c65761490733d3382932780f26ff2fb382f82eb536a45af41840b172be7efca`.
+      The ordered `PA3`, `PA5` conjunction TPTP SHA-256 is
+      `60b2666d452d253bd982170cc8c3d586c2be836ee72355a4fc108d313d403f96`;
+      the diagnostic returned inert `SZS Theorem`, reconstructed
+      `split; apply PA3; apply PA5`, and produced a checked 5-node, depth-3
+      proof. Its canonical `encode_proof` SHA-256 is
+      `3d47f7636f578cbcaf638006942e19c8ff9c565359967d44b32d20668ef5f812`;
+      its complete `peano-lab-v2` artifact SHA-256 is
+      `cc520fd2f72148dc05450c414151a55cca4a18ce528e15bb150d9ea89e493d68`.
+      A pinned x86-64 binary on WMI (SHA-256
+      `81532e088c4ee1238d7ea1d8e868a2dccf8d358ad4d2126d257b4dda7f2e6bd9`)
+      independently returned `SZS Theorem` for the same conjunction under
+      `--mode vampire`, reporting 0.001 seconds and 8 MB.
+      `scripts/peano_hydra_vampire_assist.py` now exposes this as a one-shot
+      JSON preview: it resolves only explicitly named PA/public premises,
+      runs the bounded direct diagnostic, replays reconstructed public
+      commands twice from the original goal, and accepts only an independent
+      kernel-checked certificate. It writes no artifact by default and marks
+      H0 containment, live registration, and every eligibility flag false.
+      These are direct/offline diagnostics, not a registered live `Dispatch`,
+      production integration, portfolio result, or capability advantage.
 - [ ] Resolve the frozen H0 `Dispatch` one-process topology before registering
       a source broker plus a separate Vampire process, or supply one reviewed
       self-contained executable. Do not weaken or silently reseal H0.3.
@@ -957,6 +993,7 @@ and benchmark work precede GPU training.
       readable-recipe dependency diagnostic. The immediate A2 work is to
       rebuild the three changed constructions, retain a real optimized
       comparison, and derive the verified union before a source-state request
-      to an external owner. No 200-unit gold corpus, registered real-Vampire
-      route or actual Vampire run, new Qwen training, classical Hydra profile,
-      or Rust authority claim is yet complete.
+      to an external owner. No 200-unit gold corpus, registered live-Vampire
+      `Dispatch` route, production Vampire integration, capability comparison,
+      new Qwen training, classical Hydra profile, or Rust authority claim is
+      yet complete. A3.1 records only direct/offline real-binary diagnostics.

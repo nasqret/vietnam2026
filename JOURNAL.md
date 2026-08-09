@@ -4066,18 +4066,71 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   bytes, an exact source-symbol map, and explicit allow-list/subset premise
   selection. It reads no ambient theorem catalog.
 - Added a copied-and-rehashed, no-shell direct executable boundary with exact
-  arguments and problem bytes plus enforced wall and output ceilings. Tests
-  use fake executables; no Vampire binary was installed or run and no solver
-  capability is claimed.
-- Kept SZS output inert. The only initial reconstruction class maps a
-  top-level reflexive equality to ordinary `refl`. Forged theorem status on
-  `0 = 1` returns no commands and rolls back; reconstructed `refl` on `0 = 0`
-  reaches QED only through fresh original-goal kernel replay. A forced kernel
-  rejection also rolls back.
+  arguments and problem bytes plus enforced wall and output ceilings. Fake
+  executables continue to exercise this boundary, timeout, output, parser,
+  rollback, and forced-kernel behavior reproducibly.
+- Kept SZS output inert. Reconstruction v3 maps only fixed original-goal and
+  selected-premise shapes to ordinary public commands: reflexivity to `refl`;
+  one PA axiom to `apply NAME`; one public theorem to
+  `use NAME; apply NAME`; and a top-level conjunction with two ordered PA
+  axioms to `split; apply NAME1; apply NAME2`. Other multi-premise cases are
+  commandless. Swapped and irrelevant plans fail transactionally.
 - Recorded the remaining topology blocker: frozen H0 `Dispatch` permits one
   process, so a source broker plus a separate Vampire process cannot yet be a
-  registered adapter. Real execution needs a reviewed protocol amendment or
-  one self-contained executable.
-- The eight focused tests passed in 1.17 seconds; the adapter plus all frozen
-  macro-runner tests passed 58/58 in 7.06 seconds. Added a 2,000 ms CI runtime
-  weight and updated the deterministic shard-profile totals.
+  registered live adapter. Production execution needs a reviewed protocol
+  amendment or one self-contained executable.
+- Seventeen focused adapter tests passed; the adapter plus all fifty frozen
+  macro-runner tests passed 67/67 in 8.08 seconds. The 2,000 ms CI runtime
+  weight remains in the deterministic shard profile.
+
+## 2026-08-09 — A3.1 ran real Vampire diagnostically without granting authority
+
+- Temporarily downloaded the official Vampire 5.0.1 macOS ARM64 release. The
+  ZIP/executable SHA-256 values were
+  `8c92e649fe7bc622a70000afbdf5a5c51007b384e2d8b8235c95474cc7a68f35` /
+  `b5168c690e0293cdac78f16d8418d7eeabcd6708f90a60cd2bf45313b6d98699`.
+  Neither file was vendored or installed.
+- A real direct `run_vampire` diagnostic for `0 + 0 = 0` with only `PA3`
+  disclosed returned inert `SZS Theorem` and reconstructed `apply PA3`.
+  Fresh original-goal replay accepted a
+  2-node, depth-2 proof. Its `encode_proof` SHA-256 was
+  `25b6f555180e9737fe4aeb0e51f1f9e97911ed9ffc41c6a80ef97088930711cd`;
+  its complete `peano-lab-v2` artifact SHA-256 was
+  `3c65761490733d3382932780f26ff2fb382f82eb536a45af41840b172be7efca`.
+- The ordered `PA3`, `PA5` conjunction problem had TPTP SHA-256
+  `60b2666d452d253bd982170cc8c3d586c2be836ee72355a4fc108d313d403f96`.
+  Real solver evidence was inert `SZS Theorem` and reconstructed only
+  `split; apply PA3; apply PA5`;
+  fresh replay accepted a 5-node, depth-3 proof. Its `encode_proof` SHA-256 was
+  `3d47f7636f578cbcaf638006942e19c8ff9c565359967d44b32d20668ef5f812`;
+  its complete `peano-lab-v2` artifact SHA-256 was
+  `cc520fd2f72148dc05450c414151a55cca4a18ce528e15bb150d9ea89e493d68`.
+- WMI pinned the official x86-64 executable at SHA-256
+  `81532e088c4ee1238d7ea1d8e868a2dccf8d358ad4d2126d257b4dda7f2e6bd9`.
+  A real `--mode vampire` run on the conjunction returned `SZS Theorem`, with
+  Vampire reporting 0.001 seconds and 8 MB. These are diagnostic solver
+  observations, not campaign-grade host resource evidence.
+- The real binary was invoked through the direct diagnostic runner and its
+  inert result reconstructed offline. It was not registered behind frozen
+  `Dispatch`; the one-process H0 topology issue remains. This does not establish
+  production integration, portfolio performance, or any Vampire capability
+  advantage.
+- Added `scripts/peano_hydra_vampire_assist.py` as a usable one-shot preview.
+  It prints canonical JSON, writes nothing by default, resolves only explicit
+  PA/public premise names, and reports success only after a second fresh replay
+  and independent original-goal kernel check. Its evidence keeps H0/live and
+  all eligibility flags false. Seven assistant/CLI tests passed, and the test
+  module has an explicit 2,000 ms deterministic CI-shard weight.
+
+## 2026-08-09 — Browser application manifest resealed after A2.1
+
+- A2.1 intentionally extended the browser-mounted
+  `library/candidate_validation.py`, so the content-addressed application
+  envelope had to advance before it could be staged again.
+- Regenerated the 154-entry manifest and synchronized the local candidate to
+  build `2026-08-09b`, application `a-7fe525e910c8`, manifest SHA-256
+  `7fe525e910c80ac7bcb3f7ee7260e7b75d751a354d1d99d8b7e6387460eaaa89`.
+- Thirty-five focused browser, WASM, deployment, and shadow-export tests
+  passed. The 150-source inventory, vendor manifest, application manifest, and
+  complete local stage verified exactly. The WASM and kernel bytes did not
+  change, and nothing was deployed.

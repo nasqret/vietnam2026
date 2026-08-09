@@ -3960,26 +3960,91 @@ rejects requested names outside it; it never consults the ambient theorem
 catalog. Both the TPTP bytes and source-symbol map are deterministic. The
 runner copies and rehashes an exact executable, passes one exact problem file
 and argument tuple without a shell, and bounds wall time and output. Tiny fake
-executables let the tests exercise this real OS boundary without claiming that
-Vampire itself is present. No Vampire binary was installed or run.
+executables still exercise this OS boundary reproducibly: they test timeouts,
+output exhaustion, malformed status, rollback, and forced fresh-kernel
+rejection without making a real solver part of the test environment.
 
-The reconstruction whitelist is deliberately almost empty. A theorem-like
-hint for a top-level reflexive Peano equality may return the ordinary command
-`refl`; a forged theorem status for `0 = 1` returns no commands. Frozen
-`Dispatch` rejects the latter transactionally. It executes the former like any
-student tactic and then starts again from the owner-held original target for a
-fresh kernel replay. When the test forces that final kernel check to reject,
-the whole solver action rolls back. The SZS text never becomes evidence of
-theoremhood.
+The reconstruction whitelist remains deliberately small, but it grew from the
+initial `refl` case to v3. One selected PA axiom may propose `apply NAME`; one
+selected public theorem may propose `use NAME; apply NAME`; and a top-level
+conjunction with two selected PA axioms may propose
+`split; apply NAME1; apply NAME2` in branch order. Other multi-premise cases
+remain commandless. Forged transcript lines never become commands. Swapping
+`PA3` and `PA5`, or selecting irrelevant `PA4`, creates a normal failing tactic
+plan; frozen `Dispatch` discards every intermediate state. When a plan closes,
+the owner-held original target is still replayed freshly through the kernel.
+
+### The real binary changed the evidence, not the authority
+
+We then downloaded the official Vampire 5.0.1 macOS ARM64 release into a
+temporary directory. The ZIP SHA-256 was
+`8c92e649fe7bc622a70000afbdf5a5c51007b384e2d8b8235c95474cc7a68f35`;
+the extracted executable SHA-256 was
+`b5168c690e0293cdac78f16d8418d7eeabcd6708f90a60cd2bf45313b6d98699`.
+We neither vendored nor installed either file.
+
+For `0 + 0 = 0`, with only `PA3` disclosed, the real direct runner returned
+inert `SZS Theorem`. Offline reconstruction produced `apply PA3`, not a proof
+term copied from Vampire. Ordinary execution and fresh kernel replay accepted
+a 2-node, depth-2 canonical proof term with SHA-256
+`25b6f555180e9737fe4aeb0e51f1f9e97911ed9ffc41c6a80ef97088930711cd`
+under `encode_proof`; the complete `peano-lab-v2` artifact SHA-256 was
+`3c65761490733d3382932780f26ff2fb382f82eb536a45af41840b172be7efca`.
+For `1 + 0 = 1 ∧ 1 · 0 = 0`, the ordered `PA3`, `PA5` problem had TPTP SHA-256
+`60b2666d452d253bd982170cc8c3d586c2be836ee72355a4fc108d313d403f96`.
+The inert result was `SZS Theorem`; the reconstructed plan was exactly
+`split; apply PA3; apply PA5`. Fresh replay
+accepted its 5-node, depth-3 proof term, SHA-256
+`3d47f7636f578cbcaf638006942e19c8ff9c565359967d44b32d20668ef5f812`
+under `encode_proof`; its complete `peano-lab-v2` artifact SHA-256 was
+`cc520fd2f72148dc05450c414151a55cca4a18ce528e15bb150d9ea89e493d68`.
+
+The same conjunction also crossed an architecture boundary. WMI used the
+official x86-64 executable pinned by SHA-256
+`81532e088c4ee1238d7ea1d8e868a2dccf8d358ad4d2126d257b4dda7f2e6bd9`.
+A real `--mode vampire` run returned `SZS Theorem`, with Vampire reporting
+0.001 seconds and 8 MB. Those are solver-reported diagnostic observations, not
+host-attested resource evidence and not a comparison against native search.
 
 This exposed a real integration seam rather than a mathematical problem. H0.3
 freezes a one-process dispatch host. A Python source broker cannot run in that
 one slot and also spawn a separate Vampire binary. We kept H0 frozen and
-recorded the choice: a future real route needs a reviewed host-protocol change
-or one self-contained linked executable. Until then this is an executable
-adapter boundary, not an installed Vampire integration, symbolic portfolio,
-or A3 capability result.
-
-Eight focused adapter tests passed; together with all fifty frozen macro-runner
-tests, 58 tests passed in 7.06 seconds. The test file now has a 2,000 ms CI
+recorded the choice: a future live route needs a reviewed host-protocol change
+or one self-contained linked executable. The successful runs above called
+`run_vampire` directly and reconstructed offline; they did not register the
+real solver behind frozen `Dispatch`. This is not production integration, a
+symbolic portfolio, or evidence of a Vampire capability advantage. Seventeen
+focused adapter tests passed; together with all fifty frozen macro-runner
+tests, 67 tests passed in 8.08 seconds. The test file retains its 2,000 ms CI
 profile weight.
+
+To make the experiment repeatable without pretending it is already the live
+assistant, we added `scripts/peano_hydra_vampire_assist.py`. It takes a closed
+goal, explicit ordered premises, an executable path, and resource bounds; it
+prints one canonical JSON record and writes no artifact by default. The
+reconstructed commands run once as a disposable proposal and once again from
+the original goal before final kernel checking. The record deliberately says
+`h0_host_contained = false`, `live_dispatch_registered = false`, and keeps all
+eligibility flags false. This is the first usable front end to the solver
+boundary, while the authenticated live-session integration remains the next
+systems problem.
+Seven focused assistant/CLI tests cover checked success, irrelevant forged
+status, unknown or masked premises before process invocation, commandless
+evidence, canonical inputs, byte-stable fake-solver evidence, and the
+no-default-write CLI. The module has an explicit 2,000 ms CI weight.
+
+## 2026-08-09 — A browser source change advances the whole application address
+
+A2.1 added a checked candidate-body compiler to
+`library/candidate_validation.py`. That module is mounted inside the browser
+worker, so even though the proof kernel, theorem catalog, and WASM module were
+unchanged, the previous application address could no longer truthfully name
+the browser bytes. The manifest test failed closed for exactly this reason.
+
+We regenerated the complete 154-entry application manifest. Its SHA-256 is
+`7fe525e910c80ac7bcb3f7ee7260e7b75d751a354d1d99d8b7e6387460eaaa89`,
+which gives immutable application `a-7fe525e910c8`; the human-facing build is
+`2026-08-09b`. Thirty-five focused browser, WASM, deployment, and shadow-export
+tests passed, as did exact checks of all 150 mounted Python sources, the vendor
+manifest, and the complete local stage. This was a local reseal only. No remote
+deployment was performed.

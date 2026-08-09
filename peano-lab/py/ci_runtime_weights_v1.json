@@ -63,6 +63,7 @@
     {"path": "test_peano_hydra_macros.py", "weight": 500},
     {"path": "test_peano_hydra_policy.py", "weight": 9000},
     {"path": "test_peano_hydra_result_schema.py", "weight": 1000},
+    {"path": "test_peano_hydra_vampire_assistant.py", "weight": 2000},
     {"path": "test_peano_hydra_vampire_adapter.py", "weight": 2000},
     {"path": "test_peano_policy_evaluation_replay.py", "weight": 9000},
     {"path": "test_peano_policy_legacy_evaluation_replay.py", "weight": 11500},

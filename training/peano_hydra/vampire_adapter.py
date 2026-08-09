@@ -3,11 +3,15 @@
 This module is *not* a proof rule.  It translates one closed Peano formula and
 an explicitly selected subset of a caller-owned premise allow-list to a
 deterministic classical TPTP FOF problem.  Vampire's bytes and SZS status are
-retained only as inert search evidence.  The only initial reconstruction class
-is a closed reflexive equality, which emits the ordinary public command
-``refl``; Peano Lab's transactional macro runner must execute that command and
-freshly replay the resulting certificate against the original goal before a
-QED can be admitted.
+retained only as inert search evidence.  Reconstruction is deliberately tiny:
+a closed reflexive equality emits ``refl``; otherwise, exactly one explicitly
+selected PA axiom emits ``apply NAME`` and exactly one explicitly selected
+public theorem emits ``use NAME`` followed by ``apply NAME``.  One additional
+shape is admitted: a top-level conjunction with exactly two selected PA axioms
+emits ``split`` followed by one ``apply`` per branch, in selection order.  These
+are only ordinary public commands.  Peano Lab's transactional macro runner
+must execute them and freshly replay the resulting certificate against the
+original goal before a QED can be admitted.
 
 The subprocess boundary intentionally accepts a real executable path and an
 exact argument tuple.  Tests use a tiny fake executable when Vampire is not
@@ -61,7 +65,9 @@ from .macros import DISPATCH_RESPONSE_FORMAT, DISPATCH_RESPONSE_VERSION
 VAMPIRE_PROBLEM_FORMAT = "peano-hydra-vampire-problem"
 VAMPIRE_PROBLEM_VERSION = 1
 VAMPIRE_TRANSLATION_CLASS = "closed-primitive-pa-to-classical-tptp-fof-v1"
-VAMPIRE_RECONSTRUCTION_CLASS = "closed-reflexive-equality-to-public-refl-v1"
+VAMPIRE_RECONSTRUCTION_CLASS = (
+    "closed-refl-single-premise-or-two-pa-axiom-and-to-public-commands-v3"
+)
 
 MAX_VAMPIRE_PROBLEM_BYTES = 4 * 1024 * 1024
 MAX_VAMPIRE_OUTPUT_BYTES = 2 * 1024 * 1024
@@ -615,24 +621,86 @@ def run_vampire(
     )
 
 
+def _checked_reconstruction_premises(
+    problem: VampireProblem,
+) -> tuple[VampirePremise, ...]:
+    """Revalidate every command-bearing premise field at the last boundary."""
+
+    if type(problem.premises) is not tuple or len(problem.premises) > MAX_PREMISES:
+        raise VampireAdapterError(
+            "reconstruction premises must be one bounded exact tuple"
+        )
+    checked: list[VampirePremise] = []
+    for premise in problem.premises:
+        if type(premise) is not VampirePremise:
+            raise VampireAdapterError(
+                "reconstruction premise must be an exact VampirePremise"
+            )
+        # Frozen dataclasses are not treated as a substitute for validating the
+        # exact name which will be interpolated into public surface text.
+        if (
+            type(premise.name) is not str
+            or _PREMISE_NAME.fullmatch(premise.name) is None
+        ):
+            raise VampireAdapterError("reconstruction premise name is malformed")
+        if premise.kind not in {"pa-axiom", "public-theorem"}:
+            raise VampireAdapterError("reconstruction premise kind is unsupported")
+        _canonical_formula(
+            premise.formula, label=f"reconstruction premise {premise.name!r}"
+        )
+        checked.append(premise)
+    names = tuple(premise.name for premise in checked)
+    if len(names) != len(set(names)):
+        raise VampireAdapterError("reconstruction premise names must be unique")
+    if type(problem.requested_premises) is not tuple or problem.requested_premises != names:
+        raise VampireAdapterError(
+            "reconstruction premises are not exactly the explicitly requested premises"
+        )
+    return tuple(checked)
+
+
 def reconstruct_public_commands(
     problem: VampireProblem,
     evidence: VampireEvidence,
 ) -> tuple[str, ...]:
     """Return only independently reconstructable ordinary Peano commands.
 
-    Version one deliberately recognizes just a closed, top-level reflexive
-    equality after a theorem-like Vampire hint.  The equality test is computed
-    from the original parsed Peano goal, never from the solver transcript.
+    A theorem-like status is only a hint to try a deterministic public plan.
+    The reflexivity test and premise identity come from the original checked
+    :class:`VampireProblem`, never from solver text.  Beyond ``refl``, the v3
+    class admits only one explicitly selected premise: PA axioms are tried by
+    ``apply``; public theorems are first imported by ``use`` and then applied.
+    It also admits one ordered two-premise shape for a top-level conjunction,
+    but only when both selected premises are PA axioms.  Every other
+    multi-premise problem remains commandless.
+    Whether any command is relevant is decided solely by transactional public
+    execution and, on closure, a fresh original-goal kernel replay.
     """
 
     if type(problem) is not VampireProblem or type(evidence) is not VampireEvidence:
         raise VampireAdapterError("reconstruction needs exact problem and evidence values")
     if evidence.status not in {"theorem", "unsat"}:
         return ()
+    premises = _checked_reconstruction_premises(problem)
     _, formula = _canonical_formula(problem.goal, label="Vampire goal")
     if type(formula) is Eq and formula.left == formula.right:
         return ("refl",)
+
+    if len(premises) == 1:
+        premise = premises[0]
+        if premise.kind == "pa-axiom":
+            return (f"apply {premise.name}",)
+        return (f"use {premise.name}", f"apply {premise.name}")
+    if (
+        type(formula) is And
+        and len(premises) == 2
+        and all(premise.kind == "pa-axiom" for premise in premises)
+    ):
+        return (
+            "split",
+            f"apply {premises[0].name}",
+            f"apply {premises[1].name}",
+        )
     return ()
 
 

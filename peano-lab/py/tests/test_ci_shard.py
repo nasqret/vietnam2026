@@ -253,7 +253,7 @@ def test_checked_in_profile_matches_current_test_tree() -> None:
     profile = load_runtime_profile(DEFAULT_RUNTIME_PROFILE, tests_root, files)
 
     assert profile.fallback_ms == 1000
-    assert len(profile.weights_ms) == 87
+    assert len(profile.weights_ms) == 88
     assert profile.weight_ms(tests_root / "test_congruence_beta_admission.py") == 274_300
     assert profile.weight_ms(tests_root / "test_peano_hydra_authoring.py") == 500
     assert profile.weight_ms(tests_root / "test_peano_hydra_conformance.py") == 6_000
@@ -290,12 +290,13 @@ def test_checked_in_profile_matches_current_test_tree() -> None:
     assert profile.weight_ms(tests_root / "test_peano_hydra_macro_runner.py") == 14_000
     assert profile.weight_ms(tests_root / "test_peano_hydra_macros.py") == 500
     assert profile.weight_ms(tests_root / "test_peano_hydra_result_schema.py") == 1_000
+    assert profile.weight_ms(tests_root / "test_peano_hydra_vampire_assistant.py") == 2_000
     assert profile.weight_ms(tests_root / "test_peano_hydra_vampire_adapter.py") == 2_000
     shards = partition_test_files(files, 8, profile)
     assert [
         sum(profile.weight_ms(path) for path in shard)
         for shard in shards
-    ] == [529_500, 529_500, 529_300, 530_000, 529_500, 529_500, 529_000, 529_500]
+    ] == [530_000, 529_500, 529_800, 530_000, 530_000, 529_500, 529_500, 529_500]
 
 
 def test_cli_reports_modeled_runtime_and_source_bytes(

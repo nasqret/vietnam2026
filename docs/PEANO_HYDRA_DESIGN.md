@@ -872,22 +872,70 @@ one closed primitive-PA formula and an explicitly requested subset of an
 explicit premise allow-list into deterministic classical TPTP FOF bytes and a
 source-symbol map. Its direct executable boundary copies and rehashes the
 binary, invokes it without a shell, and bounds wall time and combined output.
-Tests use a fake executable to exercise that real boundary. No Vampire binary
-was installed or run, so the slice supplies no Vampire capability evidence.
+Fake executables exercise that OS boundary, timeout, output, parser, and
+rollback behavior reproducibly without depending on a solver installation.
 
-Raw output and every `SZS` status remain inert. The only initial reconstruction
-class recognizes a top-level closed reflexive equality from the original
-Peano goal and proposes the ordinary command `refl`; every other solver
-success is commandless. Frozen `Dispatch` rejects a status without commands,
-executes reconstructed commands transactionally, and admits QED only after a
-fresh original-goal kernel replay. A forced final-kernel rejection rolls back.
+Raw output and every `SZS` status remain inert. Reconstruction class v3 reads
+only the original checked Peano problem. It recognizes top-level closed
+reflexivity as `refl`; exactly one explicitly selected PA axiom as
+`apply NAME`; exactly one explicitly selected public theorem as
+`use NAME; apply NAME`; and a top-level conjunction with exactly two selected
+PA axioms in branch order as `split; apply NAME1; apply NAME2`. Every other
+multi-premise case is commandless. Swapped or irrelevant axiom plans fail on
+the ordinary public surface and roll back. Frozen `Dispatch` rejects status
+without commands, executes every reconstructed command transactionally, and
+admits QED only after a fresh original-goal kernel replay. A forced final-
+kernel rejection also rolls back.
+
+A3.1 then exercised the real direct boundary diagnostically. The official
+Vampire 5.0.1 macOS ARM64 release ZIP was downloaded only to a temporary
+directory; its SHA-256 was
+`8c92e649fe7bc622a70000afbdf5a5c51007b384e2d8b8235c95474cc7a68f35`,
+and the extracted executable SHA-256 was
+`b5168c690e0293cdac78f16d8418d7eeabcd6708f90a60cd2bf45313b6d98699`.
+Neither was vendored or installed. For `0 + 0 = 0` with the single disclosed
+premise `PA3`, a real direct `run_vampire` invocation returned theorem-like
+evidence (`SZS Theorem`). Offline deterministic reconstruction proposed
+`apply PA3`; ordinary
+execution plus fresh kernel replay accepted a 2-node, depth-2 certificate whose
+canonical `encode_proof` SHA-256 was
+`25b6f555180e9737fe4aeb0e51f1f9e97911ed9ffc41c6a80ef97088930711cd`
+and whose complete `peano-lab-v2` artifact SHA-256 was
+`3c65761490733d3382932780f26ff2fb382f82eb536a45af41840b172be7efca`.
+
+The ordered `PA3`, `PA5` conjunction problem had exact TPTP SHA-256
+`60b2666d452d253bd982170cc8c3d586c2be836ee72355a4fc108d313d403f96`.
+The real solver returned inert `SZS Theorem` and reconstructed only
+`split; apply PA3; apply PA5`; fresh kernel replay accepted the resulting
+5-node, depth-3 certificate. Its canonical `encode_proof` SHA-256 was
+`3d47f7636f578cbcaf638006942e19c8ff9c565359967d44b32d20668ef5f812`;
+its complete `peano-lab-v2` artifact SHA-256 was
+`cc520fd2f72148dc05450c414151a55cca4a18ce528e15bb150d9ea89e493d68`.
+WMI separately pinned the official x86-64 executable with SHA-256
+`81532e088c4ee1238d7ea1d8e868a2dccf8d358ad4d2126d257b4dda7f2e6bd9`.
+A real `--mode vampire` run on the same conjunction returned `SZS Theorem`,
+with Vampire reporting 0.001 seconds and 8 MB. Those solver-reported numbers
+are diagnostic observations, not host-attested campaign resource measurements.
+
+The one-shot preview is `scripts/peano_hydra_vampire_assist.py`. It accepts a
+closed canonical goal, an ordered list of explicit PA-axiom/public-theorem
+names, an exact executable path, and resource limits. It emits one canonical
+JSON result and writes no file by default. A successful result has passed two
+fresh public-command executions followed by `checked_surface_final` and an
+explicit independent kernel check against the original goal. Its evidence
+still states `authority = none`, `h0_host_contained = false`,
+`live_dispatch_registered = false`, and all training/retrieval/evaluation and
+publication flags false.
 
 One integration boundary remains explicit. H0.3's frozen dispatch host permits
 exactly one adapter process. A Python/source broker cannot both occupy that
-slot and spawn a separate Vampire binary. Registered real-Vampire execution
-therefore requires a separately reviewed host-protocol amendment or one
-self-contained linked adapter executable. The vertical slice MUST NOT be
-described as H2, A3 completion, or Vampire-portfolio completion.
+slot and spawn a separate Vampire binary. Registered live-Vampire execution
+therefore still requires a separately reviewed host-protocol amendment or one
+self-contained linked adapter executable. The real runs above used
+`run_vampire` directly and then offline reconstruction; they did not register
+a live solver behind frozen `Dispatch`. The vertical slice MUST NOT be
+described as production integration, H2 or A3 completion, a Vampire-portfolio
+result, or evidence of a capability advantage.
 
 The H0 bootstrap intentionally precedes that structured version-1 protocol.
 Its compatibility action, `MacroAction(line)`, carries exactly one canonical
