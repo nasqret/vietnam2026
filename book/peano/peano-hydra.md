@@ -262,6 +262,133 @@ self-contained linked executable. Native closure, portfolio scheduling,
 solve/resource AUC, and any Vampire capability advantage remain open A3/H2
 work.
 
+### The first interactive Hydra loop
+
+A3.2 and A4.0 now join the pieces into a small terminal experiment. This is
+the first place where a person can alternate ordinary Peano tactics, a typed
+Qwen proposal, and a direct Vampire attempt while keeping one immutable proof
+owner. It is intentionally a preview rather than the browser assistant.
+
+The join lives in three modules. `interactive_assistant.py` owns the session
+and its transitions. `qwen_hydra_bridge.py` turns a canonical goal plus an
+explicit retrieved premise list into a bounded prompt and parses a strict
+proposal. `vampire_live.py` lets the host start one pinned Vampire executable
+as its sole child, then sends only reconstructed public Peano commands back to
+the proof owner. The terminal front end is
+`scripts/peano_hydra_assistant_repl.py`.
+
+The key distinction is between **proposing** and **committing**. A Qwen request
+contains the current canonical goal, visible `name : statement` pairs, and
+finite allow-lists. The terminal accepts a strict JSON response with exactly
+four fields:
+
+```json
+{"format":"peano-hydra-qwen-proposal","macros":[],"premises":["PA3","PA5"],"v":1}
+```
+
+Parsing that object proves only that it is well formed and respects those
+allow-lists. It does not run a tactic and does not change the proof owner. The
+user must explicitly choose `:accept` for typed macros or `:resolve` to hand
+the selected premises to Vampire. A later manual step makes an old proposal
+stale. The session retains the exact model-response bytes and re-parses them
+before execution, so constructing a look-alike Python proposal object does not
+grant premise-selection provenance. Extra JSON fields, duplicated keys,
+Markdown fences, unknown names, masked operations, and free-form tactic text
+are rejected rather than repaired.
+
+For small programmatic experiments the Python bridge also recognizes a
+bounded canonical line form containing only `premises:` and `macro:` records.
+It produces the same validated proposal object and gains no extra authority;
+the terminal's `:model` command deliberately remains JSON-only.
+
+Vampire receives no authority from that selection. The host owns an absolute
+binary path, its expected SHA-256, exact arguments, and wall/CPU/memory/output
+bounds. It copies and rehashes the executable, runs it without a shell as the
+only child, and treats all SZS output as inert bytes. In this first preview the
+focused goal must be closed and have no local context. The small v3
+reconstructor may then propose ordinary commands. They execute on a temporary
+owner. Failure at any phase returns the exact prior session; if the commands
+close the theorem, a fresh replay against the original goal must pass the
+independent kernel. The closed session retains that checked-certificate
+receipt; no goal plus no receipt is not displayed as QED. Checked open
+progress may be kept, but is not called QED.
+
+To run the terminal without Vampire:
+
+```bash
+python3 scripts/peano_hydra_assistant_repl.py \
+  --theorem '0 + 0 = 0'
+```
+
+Every non-command line is one manual tactic. Useful session commands are:
+
+```text
+:goals                 show the checked state
+:script                print the replayable Peano Lab script
+:qwen NAME...          print an exact proposal prompt
+:model STRICT_JSON     attach an inert proposal
+:accept                transact its typed macros
+:resolve               send its selected premises to Vampire
+:vampire NAME...       call Vampire with an explicit premise list
+:discard               drop pending Qwen data
+:undo                  restore the preceding immutable session
+:help                  show all commands
+:quit                  leave without claiming an unfinished theorem
+```
+
+With a locally pinned Vampire, pass both its absolute path and digest:
+
+```bash
+python3 scripts/peano_hydra_assistant_repl.py \
+  --theorem '1 + 0 = 1 ∧ 1 · 0 = 0' \
+  --vampire /absolute/path/to/vampire \
+  --vampire-sha256 HEX64
+```
+
+Then either ask directly:
+
+```text
+:vampire PA3 PA5
+:script
+```
+
+or exercise the Qwen-selection seam without granting the model execution
+rights:
+
+```text
+:qwen PA3 PA5
+:model {"format":"peano-hydra-qwen-proposal","macros":[],"premises":["PA3","PA5"],"v":1}
+:resolve
+:script
+```
+
+An unretained diagnostic run with the real Vampire 5.0.1 conjunction binary
+returned inert theorem status. The
+reconstructor emitted exactly `split`, `apply PA3`, and `apply PA5`; fresh
+original-goal replay accepted the resulting certificate. This demonstrates
+the joined data path, not superiority over native tactics or a retained
+campaign receipt.
+
+There was deliberately no trained-Qwen live result in this integration. The
+current model-v3 checkpoint was trained for the older next-tactic contract,
+whereas this bridge expects premise selection plus typed macros. WMI was
+also unreachable during the integration session. We therefore retained the
+model boundary and used an explicit JSON proposal rather than silently
+translating incompatible output or claiming a model result. A real service
+must additionally put wall-time, memory, process, and network containment
+around its model transport; the bridge itself bounds only prompt and response
+bytes.
+
+This preview does not modify frozen H0 `Dispatch`, run in the browser, provide
+the asynchronous A5 service, or establish any Qwen or Vampire capability
+advantage. Those are later gates. What it establishes is smaller and useful:
+the proposed human--model--resolution loop can already end only in ordinary
+Peano commands and a fresh independent-kernel decision.
+
+For this slice, the disjoint terminal/Qwen/session/CI tests passed 59 cases,
+and the direct-child Vampire/reconstructor/frozen-macro tests passed 91 cases.
+Ten focused Book tests and the Book command-replay check passed too.
+
 ## The critical frontier
 
 Calling a transformer for every tiny rewrite would be slow and scientifically

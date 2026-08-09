@@ -81,6 +81,24 @@ untrusted, failure rolls back exactly, and every accepted trace is replay-aware.
 Historical surface-macro-v0 rows remain schema-incomplete and comparison-
 ineligible; H0 completion does not retroactively promote them.
 
+The A3.2/A4.0 functional preview now joins one immutable proof owner with
+manual public tactics, proposal-only Qwen data, and a bounded direct-child
+Vampire call. `QwenHydraRequest` binds the current goal, retrieved
+`name : statement` pairs, and exact allow-lists; terminal attachment accepts a
+strict exact-field JSON premise/typed-macro proposal with no mutation or QED
+authority. The Python bridge also has a bounded canonical line form for
+programmatic experiments, with the same authority boundary. A host-owned
+transport must enforce wall, memory, process, and network limits beyond the
+bridge's prompt/response byte bounds. A validated
+premise list may be passed to Vampire, but SZS remains inert: only reconstructed
+public commands can advance a temporary owner, failure restores the identical
+owner, and every closed result needs fresh original-goal kernel replay. The
+unretained real Vampire 5.0.1 conjunction diagnostic reconstructed
+`split; apply PA3; apply PA5` and kernel-checked. No trained-Qwen live inference
+was run because model-v3 uses the historical next-tactic contract and WMI was
+unreachable during integration. The terminal is not browser/production A5 or
+frozen-H0 `Dispatch`, and establishes no capability advantage.
+
 ## Related
 
 - [[critical-proof-frontier]]

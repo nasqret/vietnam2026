@@ -4,6 +4,24 @@ This directory preserves deterministic Hydra plumbing evidence. It contains
 no trained-model result, sealed benchmark, decision-procedure result, or
 matched-compute comparison.
 
+## A3.2/A4.0 functional assistant preview
+
+The current direct-child Vampire and Qwen-proposal integrations are executable
+preview code, not retained campaign artifacts.  The terminal entry point is
+`../../scripts/peano_hydra_assistant_repl.py`; it keeps one immutable proof
+owner across manual tactics, strict model proposals, and host-configured
+Vampire calls.  Solver/model output remains untrusted: reconstructed public
+commands run transactionally, and a closed result is reported as QED only when
+the independent kernel accepts the resulting certificate against the original
+goal.
+
+No runtime trace is retained here. A Vampire trace is canonical per-run
+diagnostic evidence, but it includes measured process observations and is not
+a deterministic retained campaign artifact.
+The preview is not registered in browser or production Dispatch, does not run
+the historical trained Qwen adapter, and grants no freeze, training, retrieval,
+evaluation, human-review, or capability-comparison authority.
+
 ## A2.1 candidate dependency diagnostic
 
 `l0-dependency-audit-candidate-v1.json` is a diagnostic sidecar over exactly

@@ -341,6 +341,20 @@
   focused adversarial tests pass; H1.1 remains open until the 144 rows and A2
   evidence are repaired before an external source-state/owner request.
   A0/H1 therefore remain open.
+- **Peano Hydra interactive preview (2026-08-09):** A3.2/A4.0 now provide a
+  runnable terminal join without changing frozen H0 `Dispatch` or the Peano
+  kernel. `interactive_assistant.py` keeps one immutable proof owner; manual
+  tactics use the public surface; exact-byte, owner-bound Qwen JSON remains an
+  inert premise/macro proposal; and `vampire_live.py` runs one host-owned,
+  copied-and-rehashed direct Vampire child under explicit resource ceilings.
+  Failed proof-state transitions preserve the identical session; validation
+  or transport exceptions also leave the proof owner untouched. A closed
+  session prints `qed` only when it carries the fresh original-goal kernel
+  certificate receipt. An unretained real Vampire 5.0.1 diagnostic reconstructed
+  `split; apply PA3; apply PA5` and passed that kernel gate. No trained Qwen
+  used the new contract: model-v3 retains its historical next-tactic format,
+  and WMI was unreachable. This is a local functional preview, not browser or
+  production integration, an H5 comparison, or evidence of solver advantage.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
   Tarski–Grothendieck set theory. The same statements are proved in all four to *show* the foundations.
 - **Local tooling present:** Lean/`elan`/`lake` ✓ (proofs verifiable here), `jupyter-book` ✓, `gh` (as

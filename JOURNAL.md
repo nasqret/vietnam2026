@@ -4134,3 +4134,44 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   passed. The 150-source inventory, vendor manifest, application manifest, and
   complete local stage verified exactly. The WASM and kernel bytes did not
   change, and nothing was deployed.
+
+## 2026-08-09 — A3.2/A4.0 interactive Hydra preview joined the checked paths
+
+- Added the documented API boundary in
+  `training/peano_hydra/interactive_assistant.py`: manual public tactics,
+  explicit typed-Qwen acceptance, direct Vampire assistance, and
+  Qwen-selected-premise handoff all meet at one immutable `MacroOwner`.
+- Added the documented proposal-only seam in
+  `training/peano_hydra/qwen_hydra_bridge.py`. Its canonical request binds the
+  current goal, retrieved statements, and exact allow-lists. Terminal model
+  input is strict exact-field JSON; the Python bridge additionally accepts a
+  bounded canonical `premises:`/`macro:` line protocol. A validated proposal
+  has no session or QED authority. Prompt/response bytes are bounded, while
+  wall, memory, process, and network containment remain obligations of the
+  host-owned transport.
+- Added the documented direct-child seam in
+  `training/peano_hydra/vampire_live.py`. The host owns and hashes the exact
+  executable/configuration, raw SZS remains inert, reconstructed public
+  commands run transactionally, rejection preserves the identical owner, and
+  closed success requires fresh original-goal kernel replay.
+- Added the documented terminal entry point
+  `scripts/peano_hydra_assistant_repl.py` with manual lines plus `:goals`,
+  `:script`, `:qwen`, `:model`, `:accept`, `:resolve`, `:vampire`, `:discard`,
+  `:undo`, `:help`, and `:quit`. It loads no model and performs no network
+  call.
+- An unretained diagnostic run of the real Vampire 5.0.1 conjunction path
+  returned inert theorem status, reconstructed `split; apply PA3; apply PA5`,
+  and passed fresh original-goal kernel replay. No trained-Qwen live inference
+  was run:
+  model-v3 uses the old next-tactic contract and WMI was unreachable during
+  integration.
+- This is a functional A3.2/A4.0 preview only. It is not browser/production
+  integration, a registered frozen-H0 `Dispatch`, an asynchronous A5 service,
+  or evidence of a Vampire/Qwen capability advantage.
+- Final adversarial hardening binds pending Qwen data to the exact owner and
+  retained response bytes, re-parses it before execution, and requires an
+  attached fresh-kernel certificate receipt before the terminal prints `qed`.
+- Disjoint focused gates passed 59 terminal/Qwen/session/CI tests and 91
+  direct-child Vampire/reconstructor/frozen-macro tests. Ten focused Book
+  tests and the Book command-replay gate also passed. No runtime solver trace
+  was retained as a deterministic campaign artifact.

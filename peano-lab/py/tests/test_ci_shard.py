@@ -253,9 +253,10 @@ def test_checked_in_profile_matches_current_test_tree() -> None:
     profile = load_runtime_profile(DEFAULT_RUNTIME_PROFILE, tests_root, files)
 
     assert profile.fallback_ms == 1000
-    assert len(profile.weights_ms) == 88
+    assert len(profile.weights_ms) == 92
     assert profile.weight_ms(tests_root / "test_congruence_beta_admission.py") == 274_300
     assert profile.weight_ms(tests_root / "test_peano_hydra_authoring.py") == 500
+    assert profile.weight_ms(tests_root / "test_peano_hydra_assistant_repl.py") == 3_000
     assert profile.weight_ms(tests_root / "test_peano_hydra_conformance.py") == 6_000
     assert (
         profile.weight_ms(tests_root / "test_peano_hydra_library_replay_pack.py")
@@ -287,16 +288,22 @@ def test_checked_in_profile_matches_current_test_tree() -> None:
         == 15_000
     )
     assert profile.weight_ms(tests_root / "test_peano_hydra_library_pages.py") == 90_000
+    assert (
+        profile.weight_ms(tests_root / "test_peano_hydra_interactive_assistant.py")
+        == 2_000
+    )
     assert profile.weight_ms(tests_root / "test_peano_hydra_macro_runner.py") == 14_000
     assert profile.weight_ms(tests_root / "test_peano_hydra_macros.py") == 500
     assert profile.weight_ms(tests_root / "test_peano_hydra_result_schema.py") == 1_000
+    assert profile.weight_ms(tests_root / "test_peano_hydra_qwen_bridge.py") == 1_000
     assert profile.weight_ms(tests_root / "test_peano_hydra_vampire_assistant.py") == 2_000
     assert profile.weight_ms(tests_root / "test_peano_hydra_vampire_adapter.py") == 2_000
+    assert profile.weight_ms(tests_root / "test_peano_hydra_vampire_live.py") == 6_000
     shards = partition_test_files(files, 8, profile)
     assert [
         sum(profile.weight_ms(path) for path in shard)
         for shard in shards
-    ] == [530_000, 529_500, 529_800, 530_000, 530_000, 529_500, 529_500, 529_500]
+    ] == [531_000, 531_000, 531_300, 531_500, 531_500, 531_500, 531_000, 531_000]
 
 
 def test_cli_reports_modeled_runtime_and_source_bytes(

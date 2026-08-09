@@ -4048,3 +4048,68 @@ which gives immutable application `a-7fe525e910c8`; the human-facing build is
 tests passed, as did exact checks of all 150 mounted Python sources, the vendor
 manifest, and the complete local stage. This was a local reseal only. No remote
 deployment was performed.
+
+## 2026-08-09 — Join the assistants at the immutable owner, not at QED
+
+The first interactive Hydra join forced a useful architectural choice. Manual
+tactics, Qwen proposals, and Vampire assistance do not share a new proof
+language or finalizer. They meet only at the existing immutable `MacroOwner`
+and its ordinary public-command surface. That made rollback testable by object
+identity: a failed manual command, multi-macro proposal, solver invocation, or
+reconstruction returns the same input session or owner. A successful open
+transition records ordinary commands; a closed one still has to replay from
+the original theorem through the independent kernel.
+
+We added `training/peano_hydra/interactive_assistant.py` for that functional
+join and `scripts/peano_hydra_assistant_repl.py` as a deliberately small
+terminal host. The console supports manual tactics, goals and replayable
+script views, persistent undo, explicit Qwen prepare/attach/accept/discard,
+direct Vampire calls, and a Qwen-premise-to-Vampire handoff. It loads neither
+a model nor a network client. This keeps the first usable interface local and
+auditable while A5's asynchronous browser service, revision preconditions,
+cancellation, and recovery remain open work.
+
+The Qwen seam is `training/peano_hydra/qwen_hydra_bridge.py`. We chose a
+request-bound, exact-field proposal contract: canonical goal, explicit
+retrieved statements, finite authority, strict JSON terminal input, and typed
+macro objects. The Python bridge also accepts a bounded canonical
+`premises:`/`macro:` line notation for programmatic experiments. Both produce
+the same authority-free proposal; the terminal deliberately remains JSON-only.
+A parsed `QwenHydraProposal` explicitly has no QED or mutation authority.
+Prompt and response bytes are bounded, but a Python callable cannot
+enforce its own wall time, memory, process tree, or network policy. Those are
+therefore requirements on the host-owned `ModelTransport`, not claims made by
+the bridge.
+
+The resolution seam is `training/peano_hydra/vampire_live.py`. Instead of
+changing frozen H0.3 to admit a broker, the preview host owns translation and
+starts the copied-and-rehashed Vampire executable directly as its sole child.
+The goal is restricted to a closed focused state, every premise is explicit,
+SZS remains inert, and only reconstructed public commands can commit. The
+unretained real Vampire 5.0.1 conjunction diagnostic reconstructed
+`split; apply PA3; apply PA5`; fresh original-goal kernel replay accepted it.
+We retained no runtime trace and make no deterministic campaign-evidence claim
+from that observation.
+
+We did not run a trained Qwen through the new bridge. The retained model-v3
+checkpoint emits the historical next-tactic interface, not the new
+premise-plus-typed-macro proposal contract, and WMI was unreachable during this
+integration session. Treating either obstacle as a successful inference would
+have corrupted the evidence. A compatible adapter or newly trained role is
+the next model task.
+
+A final adversarial review caught two provenance overclaims before landing.
+We now retain and re-parse the exact Qwen response bytes while binding pending
+data to the complete owner state and authority. We also attach the freshly
+checked certificate to a closed assistant session. An empty goal list without
+that receipt is rendered as unreceipted rather than `qed`. Neither fix changes
+the kernel; both prevent Python-level look-alike objects from acquiring UI or
+proposal provenance they did not earn.
+
+This is recorded as an A3.2/A4.0 functional preview. It is not browser or
+production integration, not a live frozen-H0 `Dispatch` route, not the A5
+service, and not evidence that Vampire or Qwen beats native search.
+
+The final disjoint gates passed 59 terminal/Qwen/session/CI tests and 91
+direct-child Vampire/reconstructor/frozen-macro tests. Ten focused Book tests
+and its command-replay gate passed as well.

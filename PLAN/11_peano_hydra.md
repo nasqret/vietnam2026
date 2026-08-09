@@ -757,6 +757,31 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       H0 containment, live registration, and every eligibility flag false.
       These are direct/offline diagnostics, not a registered live `Dispatch`,
       production integration, portfolio result, or capability advantage.
+- [x] **A3.2 — transactional live-session preview outside frozen H0:** add
+      `training/peano_hydra/vampire_live.py` as a host API which accepts an
+      immutable `MacroOwner`, an explicit ordered premise tuple, and one exact
+      host-owned `VampireLiveSolver`. The host copies and rehashes that pinned
+      executable and starts Vampire as its sole bounded child, without a
+      source/JSON broker or shell. `run_vampire_live` accepts only a focused
+      closed goal with no variables or context in this preview. Raw SZS output
+      remains inert; only the v3 reconstructor's ordinary public commands may
+      advance a temporary owner. Every rejected phase returns the identical
+      owner, and every closed successor passes a fresh replay and independent
+      kernel check against the owner-held original theorem. Open checked
+      progress may commit without being called QED.
+      `training/peano_hydra/interactive_assistant.py` joins this path with
+      manual public tactics and proposal-only Qwen data through
+      `start_hydra_assistant`, `run_manual_tactic`,
+      `run_vampire_assistance`, and `resolve_qwen_premises`. The terminal host
+      `scripts/peano_hydra_assistant_repl.py` exposes `:goals`, `:script`,
+      `:qwen`, `:model`, `:accept`, `:resolve`, `:vampire`, `:discard`,
+      `:undo`, `:help`, and `:quit`; it deliberately loads neither a model nor
+      a network client. An unretained diagnostic run with the official
+      Vampire 5.0.1 conjunction binary returned inert theorem status and
+      reconstructed exactly
+      `split; apply PA3; apply PA5`, which fresh original-goal replay accepted.
+      This is a functional A3.2 preview, not production/browser integration,
+      a registered H0 `Dispatch` adapter, or evidence of a solver advantage.
 - [ ] Resolve the frozen H0 `Dispatch` one-process topology before registering
       a source broker plus a separate Vampire process, or supply one reviewed
       self-contained executable. Do not weaken or silently reseal H0.3.
@@ -766,6 +791,35 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
 
 ### A4 — Qwen LoRA assistance
 
+- [x] **A4.0 — bounded proposal bridge preview:** add
+      `training/peano_hydra/qwen_hydra_bridge.py` with exact
+      `QwenHydraRequest`, `QwenHydraAuthority`, and `QwenHydraProposal` values,
+      a canonical prompt, an exact-field strict-JSON terminal response
+      contract, finite premise/action/command/theorem allow-lists, typed-macro
+      compilation, and stale request binding. The Python bridge also accepts
+      one bounded canonical `premises:`/`macro:` line protocol; the terminal
+      `:model` command accepts strict JSON only. The interactive owner retains
+      the exact response
+      bytes and re-parses them before execution, so a caller-forged proposal
+      object cannot acquire premise-selection provenance. Model output has
+      `authority = none`, cannot mutate
+      a proof session, and can reach proof execution only after explicit host
+      acceptance. `propose_with_transport` bounds prompt and response bytes;
+      the supplying host must separately enforce wall time, memory, network,
+      and process containment. A validated Qwen premise selection may be
+      handed to the A3.2 direct-child Vampire path, whose status is still inert
+      and whose reconstructed commands retain transactional and kernel gates.
+      No trained-Qwen live inference was run: model-v3 speaks the historical
+      next-tactic contract rather than this premise-plus-typed-macro proposal
+      contract, and WMI was unreachable during the integration session. This
+      is interface plumbing, not current Qwen capability evidence.
+- [x] **A3.2/A4.0 focused verification:** the disjoint terminal/Qwen/session/CI
+      gate passed 59 tests in 11.75 seconds, and the direct-child
+      Vampire/reconstructor/frozen-macro gate passed 91 tests in 14.98
+      seconds. Ten focused Book tests and the command-replay gate also passed.
+      The real-binary terminal smoke exported
+      `split; apply PA3; apply PA5; qed`; this was an unretained diagnostic
+      observation, not a deterministic campaign artifact.
 - [ ] Train/evaluate separate formalization, retrieval, macro, value, and
       critique/explanation adapters on lineage-safe checked/adjudicated data.
 - [ ] Keep the historical model-v3 next-tactic checkpoint as a baseline, not a
@@ -996,4 +1050,6 @@ and benchmark work precede GPU training.
       to an external owner. No 200-unit gold corpus, registered live-Vampire
       `Dispatch` route, production Vampire integration, capability comparison,
       new Qwen training, classical Hydra profile, or Rust authority claim is
-      yet complete. A3.1 records only direct/offline real-binary diagnostics.
+      yet complete. A3.1 records direct/offline real-binary diagnostics;
+      A3.2/A4.0 add only a non-H0 functional terminal preview and proposal
+      boundary.

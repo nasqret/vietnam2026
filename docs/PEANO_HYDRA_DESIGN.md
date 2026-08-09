@@ -927,6 +927,117 @@ still states `authority = none`, `h0_host_contained = false`,
 `live_dispatch_registered = false`, and all training/retrieval/evaluation and
 publication flags false.
 
+### A3.2/A4.0 — a functional interactive join, still outside H0
+
+The next preview makes one human-owned session usable without adding a proof
+rule or changing frozen H0.3. `training/peano_hydra/interactive_assistant.py`
+owns an immutable `HydraAssistantSession`, whose proof component is the
+existing `MacroOwner`. Its principal entry points are:
+
+- `start_hydra_assistant(theorem)` for one closed intuitionistic PA theorem;
+- `run_manual_tactic(session, command)` for one ordinary public Peano tactic;
+- `prepare_qwen_request`, `qwen_prompt`, and `attach_qwen_response` for inert,
+  request-bound proposal data;
+- `apply_qwen_macros` for explicit all-or-nothing execution of a validated
+  typed-macro sequence;
+- `run_vampire_assistance` for an explicit premise list; and
+- `resolve_qwen_premises` for the same path with a validated Qwen-selected
+  premise list.
+
+An attempted proof-state transition that fails returns
+`HydraAssistantRejected` with the identical input session. Boundary validation
+and host-transport errors may instead raise before a transition exists; they
+also leave the immutable proof owner untouched, and the terminal catches them
+without extending history. Proposal preparation or attachment may create a new
+wrapper carrying pending data, but it preserves the identical proof owner and
+executes nothing.
+Manual progress invalidates pending data. A stale request cannot be rebound to
+a changed owner, goal, retrieval set, or authority. Pending proposals retain
+their exact response bytes and are re-parsed at the execution boundary.
+Successful open progress contains only ordinary checked public commands and no
+certificate; a closed successor is accepted only after fresh replay and an
+independent kernel check against the original theorem. The resulting session
+carries that checked-certificate receipt; an empty goal list without the
+receipt renders neutrally and cannot print `qed`.
+
+`training/peano_hydra/qwen_hydra_bridge.py` is proposal-only. The interactive
+contract binds a canonical goal, retrieved `name : statement` pairs, and exact
+finite authority in `QwenHydraRequest`. A terminal response is one strict JSON
+object with exactly `format`, `v`, `premises`, and `macros`. The Python bridge
+additionally accepts one bounded canonical line protocol consisting only of
+`premises:` and `macro:` lines; the terminal `:model` command does not.
+Additional or duplicate JSON keys, Markdown, unselected premises, masked
+action tags, unavailable public commands, and malformed typed macros fail
+closed. The resulting
+`QwenHydraProposal` says `authority = none`, `session_mutated = false`, and
+`qed_authority = false`. The bridge's `propose_with_transport` bounds prompt
+and response bytes only. Because an arbitrary callable cannot be preempted by
+this parser, the application supplying `ModelTransport` MUST own and enforce
+wall-time, memory, process, and network limits. Model output MUST NOT supply
+that transport or any solver configuration.
+
+`training/peano_hydra/vampire_live.py` is the complementary host-owned A3.2
+path. `run_vampire_live(owner, premise_names, solver)` receives one exact
+`VampireLiveSolver` containing an absolute executable path, expected SHA-256,
+exact arguments beginning `--mode vampire`, and explicit
+`VampireLiveBounds`. The host copies and rehashes the executable, creates a
+fresh restricted working directory and environment, invokes it without a
+shell as the sole child, and retains bounded process evidence. The preview
+accepts only one focused closed goal with empty variables and context. It
+resolves only explicitly named PA axioms or capability-visible public
+theorems. SZS bytes remain inert. The v3 reconstructor proposes ordinary
+public commands on a temporary owner; any premise, process, reconstruction,
+or kernel failure returns `VampireLiveFailure` with the identical original
+owner. Closed results require fresh original-goal kernel replay. Platform-
+specific resource claims retain the enforcement/reporting distinctions above.
+
+The functional composition is therefore:
+
+```text
+human tactic -------------------------------> public Peano surface
+                                                    |
+strict Qwen JSON -> checked premise/macro proposal -+
+          |                                         |
+          +-> selected premises -> direct Vampire child
+                                      | inert SZS
+                                      v
+                              public reconstruction
+                                                    |
+                                                    v
+                                      immutable temporary owner
+                                                    |
+                                  closed? -> fresh original-goal kernel
+```
+
+`scripts/peano_hydra_assistant_repl.py` is the first terminal host. Its
+commands are `:goals`, `:script`, `:qwen NAME...`, `:model STRICT_JSON`,
+`:accept`, `:resolve`, `:vampire NAME...`, `:discard`, `:undo`, `:help`, and
+`:quit`; every other non-empty line is one manual Peano tactic. The console
+does not load a model and has no network path. A host may paste a model result
+or provide a separately contained transport through the Python API.
+
+An unretained diagnostic experiment with the official Vampire 5.0.1
+conjunction binary exercised the real path: inert theorem status reconstructed
+exactly `split`, `apply PA3`, and `apply PA5`, and the resulting closed
+successor passed fresh original-goal kernel replay. This is an observed smoke
+test, not a deterministic retained campaign artifact. No trained-Qwen live
+inference was part of this run. The
+retained model-v3 checkpoint uses the historical next-tactic interface, not
+the new premise-plus-typed-macro proposal contract, and WMI was unreachable during
+this integration session. This says nothing negative about eventual model
+capability; it means only that a compatible adapter or newly trained role is
+still required.
+
+A3.2/A4.0 are functional previews, not the asynchronous A5 product. They are
+not browser code, not deployed, not registered behind frozen H0 `Dispatch`,
+not a production service, not H2 portfolio evidence, and not a native versus
+Vampire versus Qwen capability comparison. H0 remains byte-for-byte frozen.
+
+The two disjoint focused acceptance commands passed 59 tests for the
+terminal/Qwen/session/CI boundary and 91 tests for direct-child
+Vampire/reconstruction/frozen-macro behavior. Ten focused Book tests and the
+Book command-replay gate passed as well.
+
 One integration boundary remains explicit. H0.3's frozen dispatch host permits
 exactly one adapter process. A Python/source broker cannot both occupy that
 slot and spawn a separate Vampire binary. Registered live-Vampire execution
