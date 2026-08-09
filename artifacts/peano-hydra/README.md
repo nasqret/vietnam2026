@@ -4,6 +4,52 @@ This directory preserves deterministic Hydra plumbing evidence. It contains
 no trained-model result, sealed benchmark, decision-procedure result, or
 matched-compute comparison.
 
+## A2.1 candidate dependency diagnostic
+
+`l0-dependency-audit-candidate-v1.json` is a diagnostic sidecar over exactly
+the 384 retained replay rows. It runs each exact tactic recipe against its
+dependency-curried target, tries omissions in reverse declaration order to a
+fixed point, and removes an edge only after the independent kernel accepts the
+reduced target. A failed omission means only that this recipe failed. Resource
+limits, malformed source, and unexpected/internal errors are `unknown` and
+block construction.
+
+- schema semantic/artifact SHA-256:
+  `54d6b5128067b1f93d8f7393e0730d7da3a4ac838a0b55b6b6fe0ce92a0d4bc4` /
+  `ee6eb4daf48fbf320e79a54065befed758ff33c5251ec4a2c18b8093c349c0ff`;
+- exact artifact size/SHA-256:
+  4,188,048 bytes /
+  `4b867bb1ce0161e6392f29d9262e035929e5da86b224063546a2a42c17fd9040`;
+- document root:
+  `12166de8fb0cc028c3b026deb939418a19f001ff8342acab479d433e15d3a83e`;
+- ordered theorem-record root:
+  `8ae5553e79b15c4e83a76e1eab92cb0983539fa913dfe2bec29d0fb17fb7d784`;
+  and
+- aggregate: 3 kernel-accepted omissions, 1,057 exact-recipe rejections,
+  0 unknowns, 1,035 candidate edges versus 1,038 retained declared edges,
+  and 3 rows requiring certificate rebuild.
+
+The candidate omissions are `add_succ_left` from `odd_add_odd`,
+`beta_at_unique` from `finite_bounded_injective_surjective`, and `le_refl`
+from `beta_product_swap_last_invariant`. None changes an existing certificate
+or public graph edge. The readable and submitted-construction receipts are
+domain-separated but observe the same retained tactic recipe; there is no
+separate optimizer or best-known comparison. Minimality, optimized-best-known,
+publication, freeze, training, retrieval, and evaluation flags are all false.
+
+Two complete builds were byte-identical, and 26 focused tests passed. Check
+the retained artifact without writing:
+
+```console
+python3 scripts/build_peano_hydra_library_dependency_audit.py \
+  --check \
+  --output artifacts/peano-hydra/l0-dependency-audit-candidate-v1.json
+```
+
+This closes only the A2.1 diagnostic subgate. A2 still requires rebuilt closed
+certificates for changed vectors, separate optimized-construction evidence, a
+declared comparison/Pareto procedure, and a verified publication union.
+
 ## H1.1b3 selected candidate page source
 
 The retained tagless source tree is

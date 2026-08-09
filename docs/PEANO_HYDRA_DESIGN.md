@@ -489,8 +489,10 @@ These are transport guarantees, not independent owner or kernel authority.
 
 H1.1 remains open. Metadata v2 is still `candidate`, intuitionistic,
 `freeze_ready = false`, and ineligible for training, retrieval, and evaluation.
-The next internal evidence is A2: separately verified readable and optimized
-dependency vectors, leave-one-out receipts, and their publication union.
+The later A2.1 slice adds a fixed-point diagnostic for the exact readable
+recipe only. Full A2 still requires separately verified readable and optimized
+dependency vectors, closed rebuilt certificates where vectors change, and
+their publication union.
 Deploying the 144 pending page pairs is an independent parallel documentation
 workstream. Both must finish before a source-state/freeze request.
 The final focused gate passed 46 tests in 101.07 seconds, including exact
@@ -544,6 +546,54 @@ checker audits the selected tree independently from the historical explorer.
 The focused WMI harness passed 11 tests; the warning-as-error Book build and
 its 3,133-page integrity check passed with zero link, fragment, escape,
 remote-runtime, or unsafe-link findings.
+
+#### Candidate dependency diagnostic implemented in A2.1
+
+A2.1 adds a diagnostic compiler without adding an admission path. Given a
+theorem target `T` and ordered declared dependencies `D1, ..., Dk`, the
+candidate-body compiler executes the exact retained tactic recipe against the
+curried target `D1 -> ... -> Dk -> T`. It returns the real formula and proof
+objects only after the independent kernel accepts that target from the empty
+context. This carrier MUST NOT be cited as a closed proof of `T`: it neither
+resolves nor checks the named dependency theorems.
+
+The selected-library audit SHALL process exactly the retained 384 rows in
+replay order. Within one row it SHALL try omissions in reverse declaration
+order, retain every kernel-accepted reduction immediately, and repeat complete
+passes until one pass accepts no omission. This ordering is part of the
+evidence. Every positive omission MUST include an independently checked proof
+receipt. A tactic/finalization rejection may describe only failure of that
+exact recipe. A resource limit, malformed source, unexpected exception, or
+internal failure is `unknown` and MUST abort construction rather than become
+negative evidence.
+
+The retained A2.1 schema has semantic/artifact SHA-256s
+`54d6b5128067b1f93d8f7393e0730d7da3a4ac838a0b55b6b6fe0ce92a0d4bc4` /
+`ee6eb4daf48fbf320e79a54065befed758ff33c5251ec4a2c18b8093c349c0ff`.
+The sidecar is
+`artifacts/peano-hydra/l0-dependency-audit-candidate-v1.json`; its exact
+4,188,048 bytes have SHA-256
+`4b867bb1ce0161e6392f29d9262e035929e5da86b224063546a2a42c17fd9040`;
+its document and ordered theorem-record roots are
+`12166de8fb0cc028c3b026deb939418a19f001ff8342acab479d433e15d3a83e`
+and
+`8ae5553e79b15c4e83a76e1eab92cb0983539fa913dfe2bec29d0fb17fb7d784`.
+Two full builds were byte-identical. The aggregate records three positive
+omission observations, 1,057 exact-recipe rejections, zero unknowns, and 1,035
+candidate edges versus 1,038 retained declared edges.
+
+Those three observations do not mutate the admitted library. The affected
+rows MUST retain `requires_certificate_rebuild = true` until new closed
+certificates are constructed and independently checked against their original
+goals. The readable and submitted-construction receipts are domain-separated,
+but in A2.1 they both observe the same retained `TheoremSpec` recipe; neither
+is a separately optimized construction. Therefore the public graph SHALL keep
+the retained 1,038 edges, and `minimality_claim`, `optimized_best_known`,
+`publication_ready`, `freeze_ready`, `training_eligible`,
+`retrieval_eligible`, and `evaluation_eligible` SHALL remain false. A2 closes
+only after separate readable and optimized construction evidence, a declared
+comparison/Pareto procedure, rebuilt certificates where needed, and the
+verified ordered publication union exist.
 
 ### 2.4 Sealed-test law
 

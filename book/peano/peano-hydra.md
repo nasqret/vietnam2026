@@ -1210,6 +1210,125 @@ tests, 17 focused Book tests passed, and the warning-as-error Book build plus
 its 3,133-page integrity scan completed with no broken targets, fragments,
 escapes, remote runtime assets, or unsafe active links.
 
+## Auditing what one tactic recipe actually needs
+
+The first A2 slice asks a deliberately narrower question than “what are the
+minimal dependencies of this theorem?” It asks:
+
+> If we leave the tactic script unchanged and remove one imported theorem,
+> does that exact script still construct a certificate accepted by the kernel?
+
+That wording is the key to interpreting the result. Suppose a theorem has
+target $T$ and declared direct dependencies $D_1,\ldots,D_k$. The body checker
+does not trust or replay those named theorems. It temporarily turns them into
+ordinary assumptions and checks the curried proposition
+
+$$
+D_1 \to D_2 \to \cdots \to D_k \to T.
+$$
+
+The generated `intro` prelude names those assumptions exactly as the retained
+script expects. The authored tactic lines then run unchanged. Success is not a
+tactic-layer opinion: the compiler returns the real formula and proof objects,
+and the independent Peano Lab kernel checks the certificate from the empty
+context against the complete curried target. This is useful positive evidence,
+but it is intentionally non-admitting. Named dependencies have not yet been
+resolved into closed certificates for $T$.
+
+### Why the audit repeats to a fixed point
+
+The algorithm starts from the declared vector and visits it backwards. A
+kernel-accepted omission is kept immediately. After a complete pass, it starts
+again with the shorter vector. It stops only when a complete pass accepts
+nothing:
+
+```text
+working := declared dependencies
+repeat
+    removed := false
+    for dependency in reverse(copy(working))
+        candidate := working without dependency
+        if kernel accepts compile(exact script, candidate)
+            working := candidate
+            removed := true
+until one complete pass has removed nothing
+```
+
+Repeating matters because removing an assumption changes the proof context in
+which later commands run. Fixing reverse declaration order makes the result
+reproducible; it does not make it order-independent or globally optimal. The
+terminal pass provides a leave-one-out observation for every dependency still
+present in this particular fixed point.
+
+Errors are evidence only when their meaning is controlled. A normal tactic or
+incomplete-proof rejection says that this exact recipe did not survive that
+omission. It does **not** say that no proof exists without the dependency. A
+timeout, resource limit, malformed input, unexpected exception, or internal
+failure is `unknown`; it aborts the entire document and can never masquerade
+as a necessary edge. The compiler preserves finalization-limit status before
+the user-facing `checked_final` path can turn it into a generic error.
+
+### What happened on the 384-theorem library
+
+Two complete builds over the selected replay pack were byte-identical. Starting
+from 1,038 declared edges, the audit made 1,060 omission observations:
+
+| outcome | count | meaning |
+| --- | ---: | --- |
+| kernel accepted | 3 | the exact script checked with this assumption removed |
+| exact recipe rejected | 1,057 | this exact script failed; no necessity claim |
+| unknown | 0 | any nonzero value would have blocked the artifact |
+
+The three candidate reductions are:
+
+| theorem | candidate omission |
+| --- | --- |
+| `odd_add_odd` | `add_succ_left` |
+| `finite_bounded_injective_surjective` | `beta_at_unique` |
+| `beta_product_swap_last_invariant` | `le_refl` |
+
+Thus the diagnostic candidate vector has 1,035 edges. The public library still
+has 1,038. Each affected row says `requires_certificate_rebuild = true`,
+because its retained closed certificate was constructed under the old vector.
+The next A2 step must rebuild those three closed certificates, check each from
+the empty context against its original goal, and retain the result before any
+graph change is proposed.
+
+The readable and submitted-construction receipts have different hash domains,
+so later pipelines cannot silently substitute one role for the other. In A2.1,
+however, both observe the same retained `TheoremSpec` tactic recipe. No
+optimizer program, comparison set, or Pareto receipt exists yet. It would be
+incorrect to call the result an optimized proof, a best-known construction, a
+minimal dependency vector, or a publication union.
+
+The schema's semantic/artifact SHA-256s are
+`54d6b5128067b1f93d8f7393e0730d7da3a4ac838a0b55b6b6fe0ce92a0d4bc4` /
+`ee6eb4daf48fbf320e79a54065befed758ff33c5251ec4a2c18b8093c349c0ff`.
+The retained sidecar occupies 4,188,048 bytes. Its artifact SHA-256 is
+`4b867bb1ce0161e6392f29d9262e035929e5da86b224063546a2a42c17fd9040`,
+its document root is
+`12166de8fb0cc028c3b026deb939418a19f001ff8342acab479d433e15d3a83e`,
+and its replay-ordered theorem-record root is
+`8ae5553e79b15c4e83a76e1eab92cb0983539fa913dfe2bec29d0fb17fb7d784`.
+All authority and eligibility flags are false, and the existing replay pack,
+metadata ledgers, certificates, generated pages, and graph are unchanged.
+
+The build command writes nothing unless an output is explicit. The retained
+artifact can be reconstructed and compared read-only with:
+
+```console
+python3 scripts/build_peano_hydra_library_dependency_audit.py \
+  --check \
+  --output artifacts/peano-hydra/l0-dependency-audit-candidate-v1.json
+```
+
+Twenty-six focused tests cover the small fixed-point fixtures, independent
+kernel rejection, structured resource and internal failures, strict canonical
+JSON, fixed source and import provenance, hash-binding mutations, no-follow
+loading, create-only atomic publication, and the exact retained pins. This
+closes a useful A2 diagnostic subgate. It does not close A2, H1.1, or any
+training, retrieval, evaluation, publication, or freeze gate.
+
 ## What “matched compute” means
 
 We compare three frozen systems on the same sealed targets:

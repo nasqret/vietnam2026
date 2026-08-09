@@ -392,6 +392,33 @@ Book tests passed in 1.77 seconds, the warning-as-error Book build succeeded,
 and the version-three integrity gate covered 3,133 HTML pages with zero broken
 targets, fragments, escapes, remote runtime assets, or unsafe active links.
 
+A2.1 now retains a candidate-only dependency-audit sidecar at
+`artifacts/peano-hydra/l0-dependency-audit-candidate-v1.json`. For each of the
+same 384 replay-ordered `TheoremSpec` recipes, it tries dependencies in reverse
+declaration order and repeats complete passes to a fixed point. An omission is
+accepted only when the reduced dependency-curried target is accepted by the
+independent kernel. Resource limits, malformed inputs, and unexpected/internal
+failures are `unknown` and abort the build; a failed omission records only that
+the exact tactic recipe failed, never that the dependency is mathematically
+necessary.
+
+The two complete builds were byte-identical. Schema semantic/artifact
+SHA-256s are
+`54d6b5128067b1f93d8f7393e0730d7da3a4ac838a0b55b6b6fe0ce92a0d4bc4` /
+`ee6eb4daf48fbf320e79a54065befed758ff33c5251ec4a2c18b8093c349c0ff`.
+The 4,188,048-byte artifact has SHA-256
+`4b867bb1ce0161e6392f29d9262e035929e5da86b224063546a2a42c17fd9040`,
+document root
+`12166de8fb0cc028c3b026deb939418a19f001ff8342acab479d433e15d3a83e`,
+and ordered theorem-record root
+`8ae5553e79b15c4e83a76e1eab92cb0983539fa913dfe2bec29d0fb17fb7d784`.
+It records 3 kernel-accepted omission observations, 1,057 exact-recipe
+rejections, zero unknowns, and a candidate edge count of 1,035 rather than the
+retained 1,038. Exactly three rows require a future certificate rebuild. The
+retained certificates, metadata ledgers, page sources, and public graph are
+unchanged. All minimality, best-known, publication, freeze, training,
+retrieval, and evaluation flags remain false; A2 and H1.1 remain open.
+
 ### H1.2 Build lineage before rows
 
 - [ ] Assign stable lineage IDs to authored, generated, translated, and
@@ -659,6 +686,20 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
 
 ### A2 — Checked artifact compiler
 
+- [x] **A2.1 — candidate dependency diagnostic:** expose a non-admitting
+      candidate-body compiler that returns the exact dependency-curried target
+      and independently checked proof carrier. Over the selected 384-row pack,
+      retain a deterministic reverse-order fixed-point leave-one-out audit for
+      the exact readable tactic recipe. Block retention on every unknown.
+      Domain-separate readable and submitted-construction candidate receipts,
+      but do not call either optimized, minimal, best-known, or published.
+- [ ] Rebuild and empty-context check the three candidate constructions whose
+      proposed vectors differ from their retained declared vectors. Until that
+      happens, keep `requires_certificate_rebuild = true` and leave the 1,038
+      retained construction/publication edges unchanged.
+- [ ] Define and retain the optimizer program, comparison set, and Pareto
+      evidence before assigning any `best-known` label. Audit the resulting
+      optimized-construction vector independently from the readable recipe.
 - [ ] Compile accepted units into reviewable theorem proposals containing
       lineage, dependencies, explanations, scripts, traces, certificates,
       metrics, provenance, and Book/vault/Explorer previews.
@@ -881,15 +922,28 @@ and benchmark work precede GPU training.
       passed 36/36 in 126.87 seconds, then the seven retained-pin tests passed
       with 36 deselected in 7.10 seconds. Final acceptance passed 43 focused
       tests in 115.64 seconds and 23 compatibility tests in 18.19 seconds.
+- [x] A2.1's candidate dependency diagnostic is retained without changing any
+      admitted theorem or graph edge. Two complete 384-row builds were
+      byte-identical. The sidecar records 3 kernel-accepted exact-recipe
+      omissions, 1,057 exact-recipe rejections, 0 unknowns, and 3 rows marked
+      for a later certificate rebuild; the candidate vector has 1,035 edges
+      while the retained vector remains 1,038. Its artifact/document/theorem-
+      record identities are `4b867bb1ce0161e6…` /
+      `12166de8fb0cc028…` / `8ae5553e79b15c4e…`. Twenty-six focused tests
+      passed. This is diagnostic evidence only: minimality, best-known,
+      publication, freeze, training, retrieval, and evaluation remain false.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
-      not separately leave-one-out-verified readable/optimized vectors,
+      not separately completed readable/optimized construction vectors,
       best-known certificates, complete deployed-page/document receipts, lineage
       masks, source-state/owner freeze receipts, or a sealed benchmark. All
       384 rows retain pending review, lineage, best-known, dependency-vector,
-      and publication-union gaps. H1.1b2 now reports selected API coverage
-      separately from deployed-page coverage while preserving metadata v1.
-      The immediate work is parallel deployed-page repair and A2; both must
-      finish before a source-state request to an external owner. No 200-unit gold
+      and publication-union gaps. H1.1b2 reports selected API coverage
+      separately from deployed-page coverage while preserving metadata v1;
+      H1.1b3 retains page source without claiming deployment; A2.1 adds only a
+      readable-recipe dependency diagnostic. The immediate A2 work is to
+      rebuild the three changed constructions, retain a real optimized
+      comparison, and derive the verified union before a source-state request
+      to an external owner. No 200-unit gold
       corpus, Vampire adapter, new Qwen training, classical Hydra profile, or
       Rust authority claim is yet complete.

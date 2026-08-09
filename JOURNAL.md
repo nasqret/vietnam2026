@@ -4031,3 +4031,31 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   tests passed in 1.77 seconds. The warning-as-error Book build succeeded; its
   version-three structural gate checked 3,133 HTML pages with zero broken
   paths, fragments, escapes, remote runtime assets, or unsafe active links.
+
+## 2026-08-09 — A2.1 measured exact-recipe dependency slack without changing the library
+
+- Added a non-admitting candidate-body compiler and a deterministic
+  reverse-declaration-order, fixed-point leave-one-out audit over the exact 384
+  selected theorem recipes. Every accepted omission carries a fresh
+  independent-kernel receipt for the reduced dependency-curried target.
+  Resource exhaustion and unexpected/internal failures remain `unknown` and
+  block the artifact; failed tactics are exact-recipe observations only.
+- Two complete builds were byte-identical. Retained the 4,188,048-byte sidecar
+  with SHA-256
+  `4b867bb1ce0161e6392f29d9262e035929e5da86b224063546a2a42c17fd9040`,
+  document root
+  `12166de8fb0cc028c3b026deb939418a19f001ff8342acab479d433e15d3a83e`,
+  and theorem-record root
+  `8ae5553e79b15c4e83a76e1eab92cb0983539fa913dfe2bec29d0fb17fb7d784`.
+  Its schema semantic/artifact pair is
+  `54d6b5128067b1f93d8f7393e0730d7da3a4ac838a0b55b6b6fe0ce92a0d4bc4` /
+  `ee6eb4daf48fbf320e79a54065befed758ff33c5251ec4a2c18b8093c349c0ff`.
+- The audit observed 3 accepted omissions, 1,057 exact-recipe rejections, and
+  zero unknowns. Its candidate vector has 1,035 edges rather than the retained
+  1,038, and exactly three rows require a later certificate rebuild. Existing
+  certificates, metadata, pages, and public graph bytes did not change.
+- Twenty-six focused tests passed. All minimality, best-known, publication,
+  freeze, training, retrieval, and evaluation flags remain false. A2 still
+  requires closed rebuilds, a separately retained optimizer/comparison set,
+  independently checked optimized dependencies, and the verified ordered
+  publication union.

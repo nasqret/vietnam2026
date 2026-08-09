@@ -3880,3 +3880,69 @@ harness passed 11 tests in 2.33 seconds; 17 focused Book tests passed in 1.77
 seconds; the warning-as-error build succeeded; and the 3,133-page integrity
 scan found no broken targets, fragments, escapes, remote assets, or unsafe
 links.
+
+## 2026-08-09 — A failed omission is not a theorem about necessity
+
+The first A2 experiment began with a tempting but dangerous label:
+“dependency minimization.” The code can remove an assumption, run a tactic
+script, and ask the kernel whether the resulting certificate proves the
+shorter curried target. It cannot search all proofs. If the script fails, we
+have learned something about that script, not about mathematics. Calling the
+remaining edge necessary would silently turn search incompleteness into a
+logical claim.
+
+That observation determined the artifact design. The public helper compiles a
+`TheoremSpec` body against ordinary dependency hypotheses and returns the real
+target and proof objects only after independent checking. It never resolves a
+name to a closed theorem, so it is deliberately non-admitting. The audit tries
+dependencies backwards and repeats full passes until a pass changes nothing.
+Reverse order gives deterministic bytes; the repetition accounts for the fact
+that removing one context entry can change how the unchanged tactic program
+behaves. The result is called a fixed-point exact-recipe observation, not a
+minimum.
+
+Error classification turned out to be part of sound evidence, not mere
+ergonomics. Peano Lab's normal `checked_final` interface intentionally gives a
+student one clear `InvalidProof` message even when the live proof bound was
+exceeded. An audit must retain the distinction: a bound failure is `unknown`,
+not a rejected omission. We therefore preflight the same immutable final proof
+through cut compilation and live-bound checking, preserve a structured
+phase/kind, and allow only ordinary tactic or incomplete-proof failures to
+become exact-recipe rejection records. Injected `TypeError`, resource-limit,
+and independent-kernel failures all block the document.
+
+The complete 384-row run started from 1,038 declared edges. It made 1,060
+leave-one-out observations: 3 reduced targets were independently accepted,
+1,057 exact recipes were rejected, and none was unknown. The candidate vector
+therefore has 1,035 edges. The three observations remove `add_succ_left` from
+`odd_add_odd`, `beta_at_unique` from
+`finite_bounded_injective_surjective`, and `le_refl` from
+`beta_product_swap_last_invariant`.
+
+We did not rewrite those theorem entries or certificates. The body proof is
+positive evidence for a curried proposition; the existing submitted
+certificate still records its old construction. Each changed row therefore
+says `requires_certificate_rebuild = true`. A later A2 slice must construct a
+new closed certificate from the proposed vector and check it from the empty
+context against the original theorem before any public edge changes.
+
+Two complete builds were byte-identical. The retained 4,188,048-byte artifact
+has SHA-256
+`4b867bb1ce0161e6392f29d9262e035929e5da86b224063546a2a42c17fd9040`,
+document root
+`12166de8fb0cc028c3b026deb939418a19f001ff8342acab479d433e15d3a83e`,
+and ordered theorem-record root
+`8ae5553e79b15c4e83a76e1eab92cb0983539fa913dfe2bec29d0fb17fb7d784`.
+The closed schema's semantic/artifact identities are
+`54d6b5128067b1f93d8f7393e0730d7da3a4ac838a0b55b6b6fe0ce92a0d4bc4` /
+`ee6eb4daf48fbf320e79a54065befed758ff33c5251ec4a2c18b8093c349c0ff`.
+Twenty-six focused adversarial tests passed.
+
+The last restraint is equally important. Readable and
+submitted-construction receipts use different hash domains, but today both
+come from the same retained tactic recipe. We have not retained an optimizer,
+declared its comparison set, checked a Pareto claim, or built a publication
+union. Consequently `minimality_claim`, `optimized_best_known`,
+`publication_ready`, `freeze_ready`, and every training/retrieval/evaluation
+eligibility flag stay false. This is useful diagnostic progress precisely
+because it says no more than the evidence supports.

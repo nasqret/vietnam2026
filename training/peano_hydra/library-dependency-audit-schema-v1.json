@@ -1,0 +1,783 @@
+{
+  "additional_fields_policy": "forbidden-at-every-schema-owned-object",
+  "algorithm": {
+    "candidate_removal_authority": "an edge is removed only after the exact reduced dependency-curried target is independently accepted by the Python kernel",
+    "direction": "reverse-declaration-order",
+    "final_leave_one_out": "the terminal no-removal pass is the leave-one-out observation for every retained candidate dependency",
+    "fixed_point": "repeat complete reverse-order passes until one complete pass removes no dependency",
+    "unknown_policy": "resource exhaustion, malformed source, unexpected exception, timeout, or internal failure blocks document construction and cannot become rejection evidence"
+  },
+  "canonical_json": {
+    "document": "UTF-8; keys sorted; two-space indentation; one final LF",
+    "hash_preimage": "UTF-8; keys sorted; compact separators; no final LF",
+    "numbers": "exact integers only; booleans are not integers",
+    "objects": "duplicate keys forbidden; cycles and non-JSON values forbidden",
+    "strings": "Unicode scalar text; invalid UTF-8 and non-JSON constants forbidden"
+  },
+  "claim_boundary": {
+    "authority": "candidate dependency-audit observations only; this document cannot admit a theorem, freeze an epoch, or publish a graph",
+    "best_known": "false; the retained submitted certificate has no separately retained optimizer program or Pareto comparison",
+    "failed_omission": "failure of the exact retained tactic recipe after omitting one dependency is not mathematical necessity, theorem-level minimality, or a negative theoremhood result",
+    "kernel": "only a successful independently checked dependency-curried proof is positive evidence; tactics, minimization, source reconstruction, hashing, and receipt construction are untrusted",
+    "metadata": "metadata v1 and v2 are immutable inputs; this sidecar does not fill or alter their pending fields",
+    "minimality": "minimality_claim is always false; candidate vectors are fixed-point observations for one exact recipe only",
+    "optimized_construction": "the current retained certificate and its declared construction vector remain submitted-not-best-known; a smaller candidate vector requires a later certificate rebuild",
+    "publication_union": "candidate_publication_union is a deterministic proposal only and has publication_ready=false",
+    "repository_snapshot": "repository commit/tree identify the retained theorem and replay inputs; the later A2 dependency compiler is separately bound by fixed_inputs.dependency_compiler and is not claimed to belong to that historical tree",
+    "selection": "exactly the retained replay-pack 384 rows in manifest order, joined to the isolated selected documentation API and exact pinned TheoremSpec sources",
+    "use": "training, retrieval, evaluation, freeze, publication, review, and owner authority are all false"
+  },
+  "constants": {
+    "evaluation_eligible": false,
+    "freeze_ready": false,
+    "logic_mode": "intuitionistic",
+    "minimality_claim": false,
+    "optimized_best_known": false,
+    "publication_ready": false,
+    "retrieval_eligible": false,
+    "status": "candidate",
+    "training_eligible": false
+  },
+  "expected_inputs": {
+    "declared_dependency_edges": 1038,
+    "theorem_count": 384
+  },
+  "fixed_inputs": {
+    "dependency_compiler": {
+      "callable": "peano_lab.library.candidate_validation.compile_candidate_body",
+      "source_count": 20,
+      "source_root_sha256": "66a9840096a8edab39b511384401c0cdd4066700983952246752ec3dafdc926c",
+      "v": 1
+    },
+    "documentation_bundle": {
+      "artifact_path": "artifacts/peano-hydra/l0-documentation-candidate-v1",
+      "explicit_artifact_sha256": "f1c9f364db0cb7ae7f4c7fe065b1ef48d5522fc49711667479ec3dc4db723936",
+      "explicit_ordered_record_root_sha256": "6e3c28746ae72dcb0ab820378c7dc59e982c3c9d7b832fc8b8faf0940b7f20a0",
+      "explicit_root_sha256": "b7942fa5a866ff7cd8a38f30c93787ec0abd2948e69710651e4d3578e64377da",
+      "manifest_artifact_sha256": "5ded97c27b859cc4725362bc76aba89fac06c5f11843b50529b78050b19348bf",
+      "manifest_root_sha256": "8f7ef8fcca69bc6f5f8b39c220293b8414a65fd81576c584f78e59da104d46a4",
+      "schema_artifact_sha256": "a442e89ac312302dcee777b5741ca7f2d67e10f6ebcc996b8096fc6061c28a9c",
+      "schema_semantic_sha256": "30236aaaecc41104e7e193476f59a8b764d56fe86c63ca04c1561ad38645832d"
+    },
+    "predecessor_metadata": {
+      "artifact_path": "artifacts/peano-hydra/library-epoch-metadata-candidate-v2.json",
+      "artifact_sha256": "dc6a59ce08397eba698651f6ed4faac0533dec55c13d5a8ca49d863d19d7b72d",
+      "root_sha256": "e0c1d3683e111d7f2883cebbc423694159e82d95471d9375866a81ec596dfb9e",
+      "theorem_record_root_sha256": "22330158f52f049ec920992f51f96a0ab0e9939c3eeb893f533616c17b48e98a"
+    },
+    "replay_pack": {
+      "catalog_artifact_sha256": "326ffe660da6e34a3aa12e0aa13096078a0bf20c45c440049aaf5d5bed1f1be7",
+      "catalog_ordered_root_sha256": "73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b",
+      "manifest_artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1/manifest.json",
+      "manifest_artifact_sha256": "8b9f9dc8e35e5eb02e43bcffd6aed6280006f4a01c396e43c43c2cbe4cbfb604",
+      "manifest_root_sha256": "fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d",
+      "replay_report_artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1-report.json",
+      "replay_report_artifact_sha256": "35f5547978a4d58c5af30c33d253c92af494b94f6d6500a866a13f2fd1fa7f10",
+      "replay_root_sha256": "88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba"
+    },
+    "repository": {
+      "commit": "32803924d7def862ccf0b738cd1ed494a3165f7e",
+      "source": "retained-replay-pack-snapshot",
+      "tree": "e945e4963ad53b1c07008fd8356980bdacc3bafe",
+      "url": "https://github.com/nasqret/vietnam2026"
+    }
+  },
+  "format": "peano-hydra-library-dependency-audit-schema",
+  "hash_contracts": {
+    "attempt_record_sha256": "SHA-256 of the compact canonical attempt after removing only record_sha256",
+    "attempt_root_sha256": "SHA-256 of the compact canonical typed attempt-record preimage",
+    "body_receipt_sha256": "SHA-256 of the compact canonical body receipt after removing only receipt_sha256",
+    "compiler_source_root_sha256": "SHA-256 of the compact canonical typed compiler-source preimage; exact fixed_inputs.dependency_compiler.source_root_sha256",
+    "document_root_sha256": "SHA-256 of the exact compact canonical root_preimage",
+    "route_receipt_sha256": "SHA-256 of the exact compact canonical route receipt preimage",
+    "theorem_record_root_sha256": "SHA-256 of the compact canonical typed replay-ordered theorem-record preimage",
+    "theorem_record_sha256": "SHA-256 of the compact canonical theorem row after removing only record_sha256"
+  },
+  "id": "peano-hydra-library-dependency-audit-v1",
+  "limits": {
+    "audit_bytes": 16000000,
+    "json_depth": 192,
+    "json_items": 3000000,
+    "maximum_attempts": 4000,
+    "maximum_dependencies_per_theorem": 256,
+    "maximum_passes_per_theorem": 257,
+    "schema_bytes": 1000000,
+    "source_file_bytes": 16000000,
+    "theorem_count": 384
+  },
+  "object_shapes": {
+    "aggregate": {
+      "fields": [
+        "accepted_omission_observations",
+        "candidate_dependency_edges",
+        "declared_dependency_edges",
+        "exact_recipe_rejection_observations",
+        "requires_certificate_rebuild_count",
+        "theorem_count",
+        "unknown_observations"
+      ],
+      "types": {
+        "accepted_omission_observations": "integer >= 0; count of kernel-accepted attempt outcomes",
+        "candidate_dependency_edges": "integer >= 0; sum of candidate_publication_union lengths",
+        "declared_dependency_edges": "exact integer 1038",
+        "exact_recipe_rejection_observations": "integer >= 0; count of exact-recipe-rejected attempt outcomes",
+        "requires_certificate_rebuild_count": "integer in [0,384]; count of theorem rows whose flag is true",
+        "theorem_count": "exact integer 384",
+        "unknown_observations": "exact integer 0; any unknown aborts construction"
+      }
+    },
+    "algorithm_identity": {
+      "fields": [
+        "direction",
+        "fixed_point",
+        "id",
+        "unknown_policy",
+        "v"
+      ],
+      "types": {
+        "direction": "exact string reverse-declaration-order",
+        "fixed_point": "exact string complete-pass-until-no-removal",
+        "id": "exact string peano-hydra-exact-recipe-loo-v1",
+        "unknown_policy": "exact string block-document",
+        "v": "exact integer 1"
+      }
+    },
+    "attempt": {
+      "fields": [
+        "after_dependencies",
+        "attempt_index",
+        "before_dependencies",
+        "failure",
+        "omitted_dependency",
+        "outcome",
+        "pass_index",
+        "positive_receipt",
+        "record_sha256"
+      ],
+      "types": {
+        "after_dependencies": "ordered unique array<selected prior theorem name>; before minus omitted on kernel-accepted, otherwise exactly before",
+        "attempt_index": "integer >= 0; exact zero-based global attempt order",
+        "before_dependencies": "ordered unique array<selected prior theorem name>",
+        "failure": "attempt_failure or null; non-null iff outcome=exact-recipe-rejected",
+        "omitted_dependency": "selected prior theorem name occurring exactly once in before_dependencies",
+        "outcome": "exact enum kernel-accepted|exact-recipe-rejected",
+        "pass_index": "integer >= 0 and below maximum_passes_per_theorem",
+        "positive_receipt": "body_receipt or null; non-null iff outcome=kernel-accepted",
+        "record_sha256": "lowercase SHA-256 of this attempt with only record_sha256 removed"
+      }
+    },
+    "attempt_failure": {
+      "fields": [
+        "command_index",
+        "command_sha256",
+        "kind",
+        "message_sha256",
+        "phase"
+      ],
+      "types": {
+        "command_index": "integer >= 0 or null; non-null iff phase=command",
+        "command_sha256": "lowercase SHA-256 or null; non-null iff phase=command",
+        "kind": "exact string exact-recipe-rejection",
+        "message_sha256": "lowercase SHA-256",
+        "phase": "exact enum command|finalization"
+      }
+    },
+    "attempt_identity": {
+      "fields": [
+        "attempt_index",
+        "record_sha256"
+      ],
+      "types": {
+        "attempt_index": "exact nonnegative integer with the owned array/aggregate join",
+        "record_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema"
+      }
+    },
+    "attempt_records": {
+      "fields": [
+        "count",
+        "preimage",
+        "root_sha256"
+      ],
+      "types": {
+        "count": "exact nonnegative integer equal to the owned array/count join",
+        "preimage": "the exact typed owned preimage shape named by the containing object",
+        "root_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema"
+      }
+    },
+    "attempt_records_preimage": {
+      "fields": [
+        "format",
+        "records",
+        "v"
+      ],
+      "types": {
+        "format": "peano-hydra-library-dependency-attempt-records-preimage",
+        "records": "attempt-order array<attempt_identity>",
+        "v": "1"
+      }
+    },
+    "audit_body": {
+      "fields": [
+        "aggregate",
+        "evaluation_eligible",
+        "format",
+        "freeze_ready",
+        "id",
+        "inputs",
+        "logic_mode",
+        "minimality_claim",
+        "optimized_best_known",
+        "publication_ready",
+        "retrieval_eligible",
+        "schema",
+        "status",
+        "theorem_count",
+        "theorem_records",
+        "training_eligible",
+        "v"
+      ],
+      "types": {
+        "aggregate": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "evaluation_eligible": "exact false",
+        "format": "exact canonical string constrained by fixed inputs and the owning shape",
+        "freeze_ready": "exact false",
+        "id": "exact canonical string constrained by fixed inputs and the owning shape",
+        "inputs": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "logic_mode": "exact canonical string constrained by fixed inputs and the owning shape",
+        "minimality_claim": "exact false",
+        "optimized_best_known": "exact false",
+        "publication_ready": "exact false",
+        "retrieval_eligible": "exact false",
+        "schema": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "status": "exact canonical string constrained by fixed inputs and the owning shape",
+        "theorem_count": "exact nonnegative integer equal to the owned array/count join",
+        "theorem_records": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "training_eligible": "exact false",
+        "v": "exact integer 1"
+      }
+    },
+    "audit_document": {
+      "fields": [
+        "aggregate",
+        "evaluation_eligible",
+        "format",
+        "freeze_ready",
+        "id",
+        "inputs",
+        "logic_mode",
+        "minimality_claim",
+        "optimized_best_known",
+        "publication_ready",
+        "retrieval_eligible",
+        "root_preimage",
+        "root_sha256",
+        "schema",
+        "status",
+        "theorem_count",
+        "theorem_records",
+        "theorems",
+        "training_eligible",
+        "v"
+      ],
+      "types": {
+        "aggregate": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "evaluation_eligible": "exact false",
+        "format": "exact canonical string constrained by fixed inputs and the owning shape",
+        "freeze_ready": "exact false",
+        "id": "exact canonical string constrained by fixed inputs and the owning shape",
+        "inputs": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "logic_mode": "exact canonical string constrained by fixed inputs and the owning shape",
+        "minimality_claim": "exact false",
+        "optimized_best_known": "exact false",
+        "publication_ready": "exact false",
+        "retrieval_eligible": "exact false",
+        "root_preimage": "the exact typed owned preimage shape named by the containing object",
+        "root_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "schema": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "status": "exact canonical string constrained by fixed inputs and the owning shape",
+        "theorem_count": "exact nonnegative integer equal to the owned array/count join",
+        "theorem_records": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "theorems": "exact canonically ordered array of the schema-owned item shape",
+        "training_eligible": "exact false",
+        "v": "exact integer 1"
+      }
+    },
+    "audit_root_payload": {
+      "fields": [
+        "body",
+        "theorem_record_root_sha256"
+      ],
+      "types": {
+        "body": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "theorem_record_root_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema"
+      }
+    },
+    "body_metrics": {
+      "fields": [
+        "proof_depth",
+        "proof_edges",
+        "proof_nodes",
+        "proof_objects",
+        "reused_objects"
+      ],
+      "types": {
+        "proof_depth": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "proof_edges": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "proof_nodes": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "proof_objects": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "reused_objects": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema"
+      }
+    },
+    "body_receipt": {
+      "fields": [
+        "certificate_representation",
+        "certificate_sha256",
+        "dependency_count",
+        "kernel_accepted",
+        "metrics",
+        "receipt_sha256",
+        "target_formula_sha256"
+      ],
+      "types": {
+        "certificate_representation": "exact string peano-lab-v2-encoded-proof",
+        "certificate_sha256": "lowercase SHA-256 of encoded dependency-curried Proof",
+        "dependency_count": "nonnegative integer equal to compiled dependency count",
+        "kernel_accepted": "exact true after independent check((), certificate, target)",
+        "metrics": "body_metrics",
+        "receipt_sha256": "lowercase SHA-256 of this receipt with only receipt_sha256 removed",
+        "target_formula_sha256": "lowercase SHA-256 of encoded dependency-curried target Formula"
+      }
+    },
+    "compiler_identity": {
+      "fields": [
+        "callable",
+        "source_root_sha256",
+        "sources",
+        "v"
+      ],
+      "types": {
+        "callable": "exact fixed_inputs.dependency_compiler.callable",
+        "source_root_sha256": "exact fixed_inputs.dependency_compiler.source_root_sha256",
+        "sources": "exact ordered array<compiler_source> of length fixed_inputs.dependency_compiler.source_count",
+        "v": "exact integer fixed_inputs.dependency_compiler.v"
+      }
+    },
+    "compiler_source": {
+      "fields": [
+        "path",
+        "sha256"
+      ],
+      "types": {
+        "path": "exact canonical string constrained by fixed inputs and the owning shape",
+        "sha256": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema"
+      }
+    },
+    "compiler_source_root_preimage": {
+      "fields": [
+        "format",
+        "sources",
+        "v"
+      ],
+      "types": {
+        "format": "exact string peano-hydra-library-dependency-compiler-source-root-preimage",
+        "sources": "exact ordered array<compiler_source> of length fixed_inputs.dependency_compiler.source_count",
+        "v": "exact integer fixed_inputs.dependency_compiler.v"
+      }
+    },
+    "documentation_bundle_identity": {
+      "fields": [
+        "artifact_path",
+        "explicit_artifact_sha256",
+        "explicit_ordered_record_root_sha256",
+        "explicit_root_sha256",
+        "manifest_artifact_sha256",
+        "manifest_root_sha256",
+        "schema_artifact_sha256",
+        "schema_semantic_sha256"
+      ],
+      "types": {
+        "artifact_path": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "explicit_artifact_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "explicit_ordered_record_root_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "explicit_root_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "manifest_artifact_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "manifest_root_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "schema_artifact_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "schema_semantic_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema"
+      }
+    },
+    "fixed_dependency_compiler": {
+      "fields": [
+        "callable",
+        "source_count",
+        "source_root_sha256",
+        "v"
+      ],
+      "types": {
+        "callable": "exact string peano_lab.library.candidate_validation.compile_candidate_body",
+        "source_count": "exact integer 20",
+        "source_root_sha256": "exact lowercase SHA-256 66a9840096a8edab39b511384401c0cdd4066700983952246752ec3dafdc926c",
+        "v": "exact integer 1"
+      }
+    },
+    "inputs": {
+      "fields": [
+        "compiler",
+        "documentation_bundle",
+        "predecessor_metadata",
+        "replay_pack",
+        "repository"
+      ],
+      "types": {
+        "compiler": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "documentation_bundle": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "predecessor_metadata": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "replay_pack": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "repository": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema"
+      }
+    },
+    "predecessor_metadata_identity": {
+      "fields": [
+        "artifact_path",
+        "artifact_sha256",
+        "root_sha256",
+        "theorem_record_root_sha256"
+      ],
+      "types": {
+        "artifact_path": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "artifact_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "root_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "theorem_record_root_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema"
+      }
+    },
+    "readable_route": {
+      "fields": [
+        "dependencies",
+        "leave_one_out",
+        "proof",
+        "status"
+      ],
+      "types": {
+        "dependencies": "ordered array<selected prior theorem name> with the owning receipt join",
+        "leave_one_out": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "proof": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "status": "exact canonical string constrained by fixed inputs and the owning shape"
+      }
+    },
+    "recipe_audit": {
+      "fields": [
+        "algorithm",
+        "attempt_records",
+        "attempts",
+        "candidate_dependencies",
+        "complete",
+        "initial_dependencies",
+        "positive_receipt",
+        "receipt_preimage",
+        "receipt_sha256"
+      ],
+      "types": {
+        "algorithm": "algorithm_identity",
+        "attempt_records": "attempt_records",
+        "attempts": "ordered array<attempt> generated by complete reverse-order passes",
+        "candidate_dependencies": "ordered retained-relative subsequence of initial_dependencies",
+        "complete": "exact true; unknown aborts construction",
+        "initial_dependencies": "exact theorem.declared_dependencies",
+        "positive_receipt": "body_receipt for the unmodified exact recipe",
+        "receipt_preimage": "recipe_audit_preimage",
+        "receipt_sha256": "lowercase SHA-256 of exact compact canonical receipt_preimage"
+      }
+    },
+    "recipe_audit_preimage": {
+      "fields": [
+        "algorithm",
+        "attempt_root_sha256",
+        "candidate_dependencies",
+        "format",
+        "initial_dependencies",
+        "positive_receipt_sha256",
+        "v"
+      ],
+      "types": {
+        "algorithm": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "attempt_root_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "candidate_dependencies": "ordered array<selected prior theorem name> with the owning receipt join",
+        "format": "exact canonical string constrained by fixed inputs and the owning shape",
+        "initial_dependencies": "ordered array<selected prior theorem name> with the owning receipt join",
+        "positive_receipt_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "v": "exact integer 1"
+      }
+    },
+    "replay_pack_identity": {
+      "fields": [
+        "catalog_artifact_sha256",
+        "catalog_ordered_root_sha256",
+        "manifest_artifact_path",
+        "manifest_artifact_sha256",
+        "manifest_root_sha256",
+        "replay_report_artifact_path",
+        "replay_report_artifact_sha256",
+        "replay_root_sha256"
+      ],
+      "types": {
+        "catalog_artifact_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "catalog_ordered_root_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "manifest_artifact_path": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "manifest_artifact_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "manifest_root_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "replay_report_artifact_path": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "replay_report_artifact_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "replay_root_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema"
+      }
+    },
+    "repository_identity": {
+      "fields": [
+        "commit",
+        "source",
+        "tree",
+        "url"
+      ],
+      "types": {
+        "commit": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "source": "exact canonical string constrained by fixed inputs and the owning shape",
+        "tree": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "url": "exact canonical string constrained by fixed inputs and the owning shape"
+      }
+    },
+    "root_preimage": {
+      "fields": [
+        "format",
+        "payload",
+        "v"
+      ],
+      "types": {
+        "format": "peano-hydra-library-dependency-audit-root-preimage",
+        "payload": "audit_root_payload",
+        "v": "1"
+      }
+    },
+    "route_receipt": {
+      "fields": [
+        "dependencies",
+        "preimage",
+        "route",
+        "sha256",
+        "status"
+      ],
+      "types": {
+        "dependencies": "exact route receipt preimage dependencies",
+        "preimage": "route_receipt_preimage",
+        "route": "exact enum readable-proof|submitted-construction-candidate; equals preimage.route",
+        "sha256": "lowercase SHA-256 of exact compact canonical preimage",
+        "status": "exact string fixed-point-exact-recipe-observation"
+      }
+    },
+    "route_receipt_preimage": {
+      "fields": [
+        "dependencies",
+        "format",
+        "recipe_audit_sha256",
+        "route",
+        "v"
+      ],
+      "types": {
+        "dependencies": "ordered array<selected prior theorem name> with the owning receipt join",
+        "format": "exact canonical string constrained by fixed inputs and the owning shape",
+        "recipe_audit_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "route": "exact canonical string constrained by fixed inputs and the owning shape",
+        "v": "exact integer 1"
+      }
+    },
+    "schema_identity": {
+      "fields": [
+        "artifact_sha256",
+        "format",
+        "id",
+        "sha256",
+        "v"
+      ],
+      "types": {
+        "artifact_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "format": "exact canonical string constrained by fixed inputs and the owning shape",
+        "id": "exact canonical string constrained by fixed inputs and the owning shape",
+        "sha256": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema",
+        "v": "exact integer 1"
+      }
+    },
+    "script_identity": {
+      "fields": [
+        "command_count",
+        "script_sha256"
+      ],
+      "types": {
+        "command_count": "exact nonnegative integer with the owned array/aggregate join",
+        "script_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema"
+      }
+    },
+    "statement_identity": {
+      "fields": [
+        "formula_sha256",
+        "source_sha256"
+      ],
+      "types": {
+        "formula_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "source_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema"
+      }
+    },
+    "submitted_certificate": {
+      "fields": [
+        "artifact_sha256",
+        "proof_term_sha256",
+        "replay_status"
+      ],
+      "types": {
+        "artifact_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "proof_term_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema",
+        "replay_status": "exact schema-owned JSON value with the cross-field and fixed-source joins specified by this schema"
+      }
+    },
+    "submitted_construction_route": {
+      "fields": [
+        "best_known",
+        "candidate_dependencies",
+        "current_certificate",
+        "current_dependencies",
+        "leave_one_out",
+        "recipe_relation",
+        "requires_certificate_rebuild",
+        "status"
+      ],
+      "types": {
+        "best_known": "exact false",
+        "candidate_dependencies": "exact recipe_audit.candidate_dependencies",
+        "current_certificate": "submitted_certificate",
+        "current_dependencies": "exact theorem.declared_dependencies",
+        "leave_one_out": "route_receipt with route=submitted-construction-candidate",
+        "recipe_relation": "exact string same-theorem-spec-as-readable",
+        "requires_certificate_rebuild": "boolean equal to candidate_dependencies != current_dependencies",
+        "status": "exact string submitted-not-best-known"
+      }
+    },
+    "theorem": {
+      "fields": [
+        "candidate_publication_union",
+        "declared_dependencies",
+        "explicit_record_sha256",
+        "index",
+        "minimality_claim",
+        "name",
+        "optimized_best_known",
+        "readable",
+        "recipe_audit",
+        "record_sha256",
+        "replay_artifact_sha256",
+        "requires_certificate_rebuild",
+        "script",
+        "statement",
+        "submitted_construction"
+      ],
+      "types": {
+        "candidate_publication_union": "ordered union of readable then unseen submitted-construction candidate dependencies",
+        "declared_dependencies": "exact ordered selected replay/documentation/TheoremSpec dependency array",
+        "explicit_record_sha256": "lowercase SHA-256 equal to selected explicit documentation row",
+        "index": "integer in [0,383] equal to replay array index",
+        "minimality_claim": "exact false",
+        "name": "exact selected replay/documentation/TheoremSpec name at index",
+        "optimized_best_known": "exact false",
+        "readable": "readable_route",
+        "recipe_audit": "recipe_audit",
+        "record_sha256": "lowercase SHA-256 of this theorem row with only record_sha256 removed",
+        "replay_artifact_sha256": "lowercase SHA-256 equal to retained replay artifact",
+        "requires_certificate_rebuild": "boolean equal to candidate_publication_union != declared_dependencies",
+        "script": "script_identity",
+        "statement": "statement_identity",
+        "submitted_construction": "submitted_construction_route"
+      }
+    },
+    "theorem_record_identity": {
+      "fields": [
+        "index",
+        "name",
+        "record_sha256"
+      ],
+      "types": {
+        "index": "exact nonnegative integer with the owned array/aggregate join",
+        "name": "exact canonical string constrained by fixed inputs and the owning shape",
+        "record_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema"
+      }
+    },
+    "theorem_records": {
+      "fields": [
+        "count",
+        "preimage",
+        "root_sha256"
+      ],
+      "types": {
+        "count": "exact nonnegative integer equal to the owned array/count join",
+        "preimage": "the exact typed owned preimage shape named by the containing object",
+        "root_sha256": "lowercase SHA-256 with the join or preimage relation specified by this schema"
+      }
+    },
+    "theorem_records_preimage": {
+      "fields": [
+        "format",
+        "records",
+        "v"
+      ],
+      "types": {
+        "format": "peano-hydra-library-dependency-theorem-records-preimage",
+        "records": "replay-ordered array<theorem_record_identity>",
+        "v": "1"
+      }
+    }
+  },
+  "ordering_contracts": {
+    "attempts": "pass order; inside each pass reverse current dependency order",
+    "candidate_publication_union": "readable candidate dependencies followed by unseen submitted-construction candidate dependencies",
+    "dependencies": "retained relative declaration order after removals",
+    "theorems": "exact retained replay-manifest order"
+  },
+  "root_preimage_shapes": {
+    "attempt_records": [
+      "format",
+      "records",
+      "v"
+    ],
+    "audit": [
+      "format",
+      "payload",
+      "v"
+    ],
+    "audit_payload": [
+      "body",
+      "theorem_record_root_sha256"
+    ],
+    "compiler_sources": [
+      "format",
+      "sources",
+      "v"
+    ],
+    "recipe_audit": [
+      "algorithm",
+      "attempt_root_sha256",
+      "candidate_dependencies",
+      "format",
+      "initial_dependencies",
+      "positive_receipt_sha256",
+      "v"
+    ],
+    "route_receipt": [
+      "dependencies",
+      "format",
+      "recipe_audit_sha256",
+      "route",
+      "v"
+    ],
+    "theorem_records": [
+      "format",
+      "records",
+      "v"
+    ]
+  },
+  "v": 1
+}
