@@ -7,10 +7,10 @@
 #SBATCH --time=06:00:00
 #SBATCH --job-name=peano-bertrand-v3
 #SBATCH --open-mode=append
-# A submission wrapper may override these with paths in a pre-created run
-# directory. Direct submission must not depend on a directory created later.
-#SBATCH --output=/dev/null
-#SBATCH --error=/dev/null
+# A submission wrapper may override these. Direct submission uses the existing
+# repository root and never depends on a directory created after job launch.
+#SBATCH --output=peano-bertrand-v3-%j.out
+#SBATCH --error=peano-bertrand-v3-%j.err
 
 set -euo pipefail
 

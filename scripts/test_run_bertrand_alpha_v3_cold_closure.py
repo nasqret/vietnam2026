@@ -338,8 +338,10 @@ def test_resource_profile_and_wmi_entry_are_frozen(
     assert "SLURM_JOB_ID" in text
     assert "SLURM_CLUSTER_NAME" in text
     assert "SLURM_JOB_NODELIST" in text
-    assert "#SBATCH --output=/dev/null" in text
-    assert "#SBATCH --error=/dev/null" in text
+    assert "#SBATCH --output=peano-bertrand-v3-%j.out" in text
+    assert "#SBATCH --error=peano-bertrand-v3-%j.err" in text
+    assert "#SBATCH --output=logs/" not in text
+    assert "#SBATCH --error=logs/" not in text
     assert "closure-v2.schema.json" in text
     assert all(name in text for name in RUNNER.TARGET_NAMES)
     assert "\nsbatch " not in text
