@@ -28,17 +28,21 @@ valid list codes, membership, unique in-range lookup, extensional code
 equality, and unique outer-cell decomposition. Sealed Alpha v3 adds the first
 twenty-one Bertrand rows, and sealed Alpha v4 adds forty-two Round-2 rows for
 exact valuation multiplication, integer envelopes, ceiling/floor-square
-arithmetic, and the quotient budget. Current Alpha v5 preserves that complete
-965-row ledger and appends seven body-checked `FactorialVal` rows. See
+arithmetic, and the quotient budget. Sealed Alpha v5 preserves that complete
+965-row ledger and appends seven body-checked `FactorialVal` rows. Sealed
+Alpha v5 therefore has 972 rows. Current Alpha v6 preserves that ledger and
+appends twenty-one body-checked Bertrand rows in an exact 8+5+5+3 split:
+threshold bases, the finite Legendre-sum interface, the relational-power
+bridge, and the Legendre-valuation bridge. See
 {doc}`Alpha and Stable library editions
 <library-editions>` for the exact scopes and lifecycle.
 ```
 
 <div class="pa-dashboard-metrics" aria-label="Alpha and Stable arithmetic library metrics">
   <div><strong>432</strong><span>Stable theorems</span></div>
-  <div><strong>972</strong><span>Alpha v5 theorems</span></div>
+  <div><strong>993</strong><span>Alpha v6 theorems</span></div>
   <div><strong>570</strong><span>Alpha checked-use rows</span></div>
-  <div><strong>540</strong><span>Alpha-only rows</span></div>
+  <div><strong>561</strong><span>Alpha-only rows</span></div>
 </div>
 
 The generated Stable snapshot has ordered root
@@ -49,18 +53,20 @@ grant proof authority. Its graph has **1,185** direct dependency edges; the
 Book exposes **432** theorem cards, while the synchronized vault contains
 **531** notes and **5,377** resolved links.
 
-The current additive Alpha v5 graph has 972 theorems, 2,912 direct edges, and
+The current additive Alpha v6 graph has 993 theorems, 2,977 direct edges, and
 45 dependency layers. Its mixed evidence is intentional: 570 rows have
-complete checked-use evidence, while 401 body-only rows and one pending row
+complete checked-use evidence, while 422 body-only rows and one pending row
 remain visible without being treated as empty-context facts. Stable remains
 432; the 885-row Alpha v1, 902-row Alpha v2, 923-row Alpha v3, and 965-row
-Alpha v4 parents remain sealed. The
+Alpha v4 and 972-row Alpha v5 parents remain sealed. The
 exact contract and opt-in API are on the {doc}`edition page
 <library-editions>`.
 
-The pushed eight-row threshold and five-row finite Legendre-sum tranches are
-candidate proof layers outside Alpha v5. The relational-power bridge remains
-under audit; neither Legendre's equality nor Bertrand's postulate is claimed
+The five Legendre-successor rows in `5b9433a` and four shared-`PowTotal` rows
+in `b2035ce` are pushed candidates outside Alpha v6. Their focused local
+closure and capacity measurements do not make them enrolled or checked-use
+facts. The $H/J$ base-window layer is in progress; the finite Legendre
+recurrence, Legendre's equality, and Bertrand's postulate are not claimed
 complete.
 
 ## The mathematical metro map

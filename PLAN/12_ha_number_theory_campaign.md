@@ -1151,3 +1151,71 @@ Current mathematical gates:
 The eight threshold rows and five finite Legendre-sum rows are candidate
 tranches outside Alpha v5. The power bridge is still under audit. No current
 artifact or proof establishes Legendre's equality or Bertrand's postulate.
+
+## 2026-08-09 — Alpha v6 and the active Bertrand front
+
+Commit `5b189f0` publishes Alpha v6 over the exact sealed 972-row Alpha-v5
+parent. It appends twenty-one reviewed rows at indices 972--992 in the frozen
+dependency-topological split 8 threshold-base + 5 finite Legendre-sum + 5
+relational-power + 3 Legendre-valuation bridge.
+
+| Edition | Theorems | Direct edges | Layers | Checked use |
+|---|---:|---:|---:|---:|
+| Stable | 432 | 1,185 | 22 | 432 |
+| Alpha v5 (sealed parent) | 972 | 2,912 | 45 | 570 |
+| Alpha v6 (current) | 993 | 2,977 | 45 | 570 |
+
+Alpha v6 has 432 Stable and 561 Alpha-only rows. Evidence is 432
+`stable_closed`, 138 `alpha_closed`, 422 `body_checked`, and one
+`pending_layered_closure`. All twenty-one suffix rows have
+`checked_use=false`, null proof tags, null empty-context closure metadata, and
+fail-closed replay. Deterministic build, independent body replay, and mutation
+checks establish the stated body evidence only.
+
+The enrollment, specification, edition, membership, evidence, and
+channel-pointer roots are:
+
+- `dc25a3dc0ab7346f9188eee1262700b40bb09efdacfa849f3a27475ed870b5a7`;
+- `50f395c30e4f21a7b7602bc56451bf2363d1a23d811bba62a33c08e2defc1da1`;
+- `7e46b80c4799e51da32cedf21a130274200fa14b21e0fec3b42f74d1523ab23b`;
+- `bd8faa84d1ef0c090fb07aa21ecd966d4f4356999fcd12cf4f74d0e5ae8572b8`;
+- `c1fcedbd7bbc5e8655dbce3b00ab0bd9296489a3b4358fb548eeb32d081e8682`;
+- `4dc0f9411227e041dbbbcc2626a04d995a6ceeedb91fe9c2d246f377596693b7`.
+
+The suffix-depth and fresh 21-body receipt roots are
+`d103de2054a0bd4de3b2faa9d98435a4f705594f8a69968e9ca956c455cb61d3`
+and
+`c23b2fc58fabd3803a0ded5f02d4ea348d67a00b25f5b28b35f3d6bcb00ff2f1`.
+Artifact SHA-256 values are catalog
+`c72d6e1234aa6521b0c524720cd64912f7e9b0bc58f31b6964bbb1a99c5a071d`,
+metrics
+`f2a6c22b9fe50581a4cfe8d3b1b494fa274d26d0b51b60e92735650a09391be7`,
+graph
+`532c2482a3b1c371026bd80b1b7297faffc4a1b1ee3e53031e499f1611b3ae16`,
+and channels
+`6ef8bb93b2e24bdfe45389ca9417b6333ce83ae249ee49a957959a6b3471b86c`.
+
+Current mathematical gates:
+
+- [x] B3b-interface: finite quotient-prefix and Legendre-sum
+  existence/functionality/zero, enrolled body-only in Alpha v6;
+- [x] B3b-valuation-bridge: quotient-tail zero plus the two valuation/divisibility
+  directions, enrolled body-only in Alpha v6;
+- [ ] B3b-recurrence: lift the pushed pointwise successor ingredients to the
+  finite Legendre sum;
+- [ ] B3b-equality: identify that sum with `FactorialVal`;
+- [x] B6d-linear/power bridge: threshold window and first relational-power
+  bridge, enrolled body-only in Alpha v6;
+- [ ] B6d-$H/J$: finish the base window now in progress, then prove $H$
+  transport and the final power-product inequality;
+- [ ] B4/B5: binomial integrality, central-binomial and prime-product bounds;
+- [ ] B7/B8: finite coverage, constructive branch combination, capstone
+  closure, Book graph, and reviewed release.
+
+Pushed commits `5b9433a` and `b2035ce` remain outside v6. The former contains
+five Legendre-successor candidates with maximum closure 81,828 nodes/depth 95,
+6,931 objects, and 7,226 edges. The latter contains four shared-`PowTotal`
+candidates with 5,327, 10,630, 11,062, and 13,336 closure nodes, saving
+59,836, 59,833, 59,836, and 119,652 nodes against the recorded historical
+comparisons. These measurements do not enroll the rows. Legendre recurrence,
+Legendre equality, and Bertrand remain open.

@@ -2403,3 +2403,54 @@
   Legendre-sum rows are pushed candidates but are not enrolled in v5. The
   power bridge remains under audit. The equality between `FactorialVal` and
   the finite quotient sum, and Bertrand's postulate itself, remain open.
+
+## 2026-08-09 — current Alpha v6 / Bertrand bridge contract
+
+- **Current edition:** commit `5b189f0` publishes Alpha v6 as the exact sealed
+  972-row Alpha-v5 prefix plus twenty-one dependency-topological Bertrand rows
+  at indices 972--992. The suffix split is 8 threshold-base + 5 finite
+  Legendre-sum + 5 relational-power + 3 Legendre-valuation bridge rows.
+  Alpha v6 has 993 specifications, 2,977 declared direct edges, 45 layers,
+  432 Stable rows, 561 Alpha-only rows, and exactly 570 checked-use rows.
+- **Evidence boundary:** evidence is 432 `stable_closed`, 138 `alpha_closed`,
+  422 `body_checked`, and one `pending_layered_closure`. All twenty-one new
+  rows have `checked_use=false`, null proof tags, and null empty-context
+  closure metadata. Fresh independent body replay and fail-closed mutation
+  gates validate dependency-curried bodies only; they do not admit an
+  empty-context theorem.
+- **Exact roots:** enrollment
+  `dc25a3dc0ab7346f9188eee1262700b40bb09efdacfa849f3a27475ed870b5a7`;
+  specification
+  `50f395c30e4f21a7b7602bc56451bf2363d1a23d811bba62a33c08e2defc1da1`;
+  edition
+  `7e46b80c4799e51da32cedf21a130274200fa14b21e0fec3b42f74d1523ab23b`;
+  membership
+  `bd8faa84d1ef0c090fb07aa21ecd966d4f4356999fcd12cf4f74d0e5ae8572b8`;
+  evidence
+  `c1fcedbd7bbc5e8655dbce3b00ab0bd9296489a3b4358fb548eeb32d081e8682`;
+  channel pointer
+  `4dc0f9411227e041dbbbcc2626a04d995a6ceeedb91fe9c2d246f377596693b7`.
+  The suffix-depth and fresh 21-body receipt roots are
+  `d103de2054a0bd4de3b2faa9d98435a4f705594f8a69968e9ca956c455cb61d3`
+  and
+  `c23b2fc58fabd3803a0ded5f02d4ea348d67a00b25f5b28b35f3d6bcb00ff2f1`.
+- **Artifact SHA-256:** catalog
+  `c72d6e1234aa6521b0c524720cd64912f7e9b0bc58f31b6964bbb1a99c5a071d`;
+  metrics
+  `f2a6c22b9fe50581a4cfe8d3b1b494fa274d26d0b51b60e92735650a09391be7`;
+  graph
+  `532c2482a3b1c371026bd80b1b7297faffc4a1b1ee3e53031e499f1611b3ae16`;
+  channels
+  `6ef8bb93b2e24bdfe45389ca9417b6333ce83ae249ee49a957959a6b3471b86c`.
+  The sealed v5 catalog parent remains
+  `94efc0f7022f31677619e842f7d6f1d0d0f8959efc54cd64cf346c3b5e8c4892`.
+- **Outside-v6 candidates:** `5b9433a` pushes five Legendre-successor rows;
+  their largest checked local closure is 81,828 nodes, depth 95, 6,931
+  objects, and 7,226 edges. `b2035ce` pushes four shared-`PowTotal` rows;
+  closures use 5,327, 10,630, 11,062, and 13,336 nodes and save exactly
+  59,836, 59,833, 59,836, and 119,652 nodes against the frozen historical
+  comparison counts. These rows are not enrolled or checked-use facts.
+- **Open front:** the $H/J$ base-window layer is in progress. The finite
+  Legendre recurrence, Legendre's equality with `FactorialVal`, binomial and
+  primorial bounds, the final inequality, finite coverage, and Bertrand's
+  postulate remain open.

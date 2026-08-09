@@ -499,3 +499,72 @@ The eight threshold-base rows from `f35b8ed` and five finite Legendre-sum rows
 from `4df44c9` are pushed candidate tranches, not Alpha-v5 rows. The
 relational-power bridge is still under audit, and neither Legendre's equality
 nor Bertrand's postulate is claimed proved.
+
+## Peano Alpha v6 — threshold, finite-sum, and bridge layer (2026-08-09)
+
+Alpha v6, published in commit `5b189f0`, preserves the exact sealed 972-row
+Alpha-v5 ledger and appends twenty-one specifications at indices 972--992.
+Their frozen dependency-topological split is 8 threshold-base + 5 finite
+Legendre-sum + 5 relational-power + 3 Legendre-valuation bridge rows. Alpha v5
+and every earlier artifact family remain immutable; Stable is unchanged at
+432 rows.
+
+Current topology and evidence:
+
+- 993 theorem specifications, 2,977 declared direct edges, and 45 layers;
+- 432 Stable rows and 561 Alpha-only rows;
+- 432 `stable_closed`, 138 `alpha_closed`, 422 `body_checked`, and one
+  `pending_layered_closure` row;
+- 570 checked-use rows; all twenty-one additions fail closed with
+  `checked_use=false`, null proof tags, and null empty-context closure
+  evidence.
+
+The deterministic pointer is
+[`peano-library/channels-v6.json`](peano-library/channels-v6.json). Its exact
+artifact SHA-256 values are:
+
+- catalog: `c72d6e1234aa6521b0c524720cd64912f7e9b0bc58f31b6964bbb1a99c5a071d`;
+- metrics: `f2a6c22b9fe50581a4cfe8d3b1b494fa274d26d0b51b60e92735650a09391be7`;
+- reduced graph: `532c2482a3b1c371026bd80b1b7297faffc4a1b1ee3e53031e499f1611b3ae16`;
+  and
+- channel pointer: `6ef8bb93b2e24bdfe45389ca9417b6333ce83ae249ee49a957959a6b3471b86c`.
+
+The ordered-enrollment, ordered-specification, edition, membership, evidence,
+and channel-pointer roots are respectively
+`dc25a3dc0ab7346f9188eee1262700b40bb09efdacfa849f3a27475ed870b5a7`,
+`50f395c30e4f21a7b7602bc56451bf2363d1a23d811bba62a33c08e2defc1da1`,
+`7e46b80c4799e51da32cedf21a130274200fa14b21e0fec3b42f74d1523ab23b`,
+`bd8faa84d1ef0c090fb07aa21ecd966d4f4356999fcd12cf4f74d0e5ae8572b8`,
+`c1fcedbd7bbc5e8655dbce3b00ab0bd9296489a3b4358fb548eeb32d081e8682`,
+and
+`4dc0f9411227e041dbbbcc2626a04d995a6ceeedb91fe9c2d246f377596693b7`.
+The exact suffix-depth and fresh 21-body receipt roots are
+`d103de2054a0bd4de3b2faa9d98435a4f705594f8a69968e9ca956c455cb61d3`
+and
+`c23b2fc58fabd3803a0ded5f02d4ea348d67a00b25f5b28b35f3d6bcb00ff2f1`.
+The v6 pointer binds the sealed v5 catalog SHA-256
+`94efc0f7022f31677619e842f7d6f1d0d0f8959efc54cd64cf346c3b5e8c4892`.
+
+Each appended row cross-binds its exact source, executable test, campaign RFC,
+and sealed Alpha-v5 parent catalog bytes. The verifier independently replays
+all twenty-one dependency-curried bodies and fails closed under evidence and
+binding mutations. This body evidence is not an empty-context admission.
+
+Rebuild or verify this channel with:
+
+```bash
+python3 scripts/build_peano_library_channels_v6.py
+python3 scripts/build_peano_library_channels_v6.py --check
+python3 scripts/verify_peano_library_channels_v6.py
+make peano-library-alpha-v6-check
+```
+
+The five Legendre-successor rows in commit `5b9433a` and the four
+capacity-shared `PowTotal` rows in `b2035ce` are reviewed candidates outside
+Alpha v6. The successor suite's largest local closure is 81,828 nodes at depth
+95, with 6,931 objects and 7,226 edges. The shared-power closures use 5,327,
+10,630, 11,062, and 13,336 nodes and save exactly 59,836, 59,833, 59,836, and
+119,652 nodes against their frozen historical comparisons. These measurements
+do not enroll or admit the rows. The $H/J$ base-window layer is in progress;
+the finite Legendre recurrence, Legendre's equality, and Bertrand's postulate
+remain open.

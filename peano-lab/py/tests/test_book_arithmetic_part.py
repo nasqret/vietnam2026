@@ -238,6 +238,8 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
     source = LIBRARY_EDITIONS.read_text(encoding="utf-8")
     bertrand = BERTRAND_CAMPAIGN.read_text(encoding="utf-8")
     index = (BOOK / "arithmetic-library" / "index.md").read_text(encoding="utf-8")
+    artifacts = (REPO / "artifacts" / "README.md").read_text(encoding="utf-8")
+    normalized_artifacts = " ".join(artifacts.split())
     proof_explorer = (
         BOOK / "arithmetic-library" / "proof-explorer.md"
     ).read_text(encoding="utf-8")
@@ -250,19 +252,23 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "**923** theorems",
         "**965** theorems",
         "**972** theorems",
+        "**993** theorems",
         "**570** theorems",
         "**2,641** edges / **45** layers",
         "**2,730** edges / **45** layers",
         "**2,891** edges / **45** layers",
         "**2,912** edges / **45** layers",
+        "**2,977** edges / **45** layers",
         "432 Stable plus 453 Alpha-only rows",
         "432 Stable plus 491 Alpha-only rows",
         "432 Stable plus 533 Alpha-only rows",
         "432 Stable plus 540 Alpha-only rows",
+        "432 Stable plus 561 Alpha-only rows",
         "314 `body_checked`",
         "352 `body_checked`",
         "394 `body_checked`",
         "401 `body_checked`",
+        "422 `body_checked`",
         "one `pending_layered_closure`",
         'edition("alpha").checked_specs',
         'entry("cell_list_extensional", edition="alpha")',
@@ -273,9 +279,13 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "artifacts/peano-library/channels-v3.json",
         "artifacts/peano-library/channels-v4.json",
         "artifacts/peano-library/channels-v5.json",
+        "artifacts/peano-library/channels-v6.json",
         "46e1a08c6bc18bbc057aa7541420580b43aec75d5f30af500ba3ce12bec09473",
         "bccf7d8fc01dbcd1cd2efd9d5d8e5189d80b79cfb7e5e30df999d270a9fd13af",
         "94efc0f7022f31677619e842f7d6f1d0d0f8959efc54cd64cf346c3b5e8c4892",
+        "dc25a3dc0ab7346f9188eee1262700b40bb09efdacfa849f3a27475ed870b5a7",
+        "7e46b80c4799e51da32cedf21a130274200fa14b21e0fec3b42f74d1523ab23b",
+        "c72d6e1234aa6521b0c524720cd64912f7e9b0bc58f31b6964bbb1a99c5a071d",
         "Bertrand campaign chapter",
         "direct neighborhood",
     ):
@@ -285,21 +295,41 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
     assert "316 Alpha-only specifications" in normalized_proof_explorer
     assert "748" in normalized_proof_explorer
     for exact in (
-        "## Current Alpha v5 layer",
-        "| Alpha v5 specifications | 972 |",
+        "## Current Alpha v6 layer",
+        "| Alpha v6 specifications | 993 |",
         "| `FactorialVal` rows | 7 |",
-        "## Pushed candidates beyond Alpha v5",
+        "8 + 5 + 5 + 3",
+        "## Alpha v6 threshold, finite-sum, and bridge layer",
+        "## Pushed candidates beyond Alpha v6",
         "eight-row threshold tranche",
         "five-row finite Legendre-sum interface",
-        "does **not** yet prove Legendre's equality",
+        "does **not** yet prove",
         "relational-power bridge",
         "`05cb3ff`",
         "`f35b8ed`",
         "`4df44c9`",
         "`85625d6`",
-        "make peano-library-alpha-v5-check",
+        "`bb24543`",
+        "`2f41a97`",
+        "`5b9433a`",
+        "`b2035ce`",
+        "`5b189f0`",
+        "81,828 structural nodes",
+        "59,836, 59,833, 59,836, and 119,652 nodes",
+        "make peano-library-alpha-v6-check",
     ):
         assert exact in bertrand
+    for exact in (
+        "## Peano Alpha v6 — threshold, finite-sum, and bridge layer",
+        "[`peano-library/channels-v6.json`](peano-library/channels-v6.json)",
+        "993 theorem specifications, 2,977 declared direct edges",
+        "c23b2fc58fabd3803a0ded5f02d4ea348d67a00b25f5b28b35f3d6bcb00ff2f1",
+        "five Legendre-successor rows in commit `5b9433a`",
+    ):
+        assert exact in artifacts
+    assert "four capacity-shared `PowTotal` rows in `b2035ce`" in (
+        normalized_artifacts
+    )
 
 
 def test_generated_atlas_is_byte_current() -> None:

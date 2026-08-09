@@ -6,27 +6,30 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-## Current library editions — Alpha v5, 2026-08-09
+## Current library editions — Alpha v6, 2026-08-09
 
 This status supersedes, without erasing, the dated checkpoint language below.
 **Stable** is the unchanged official checked edition: 432 theorems, 1,185
 declared direct edges, and 22 layers. Sealed **Alpha v1** remains 885 rows and
 sealed **Alpha v2** remains 902 rows, and sealed **Alpha v3** remains 923
-rows. Sealed **Alpha v4** remains 965 rows. Current additive **Alpha v5**
-preserves the v4 ledger and appends 7 `FactorialVal` rows at indices 965--971:
-972 theorems, 2,912 direct edges, and 45 layers, comprising Stable plus 540
-Alpha-only rows.
+rows. Sealed **Alpha v4** remains 965 rows. Sealed additive **Alpha v5**
+preserves the v4 ledger and appends 7 `FactorialVal` rows at indices 965--971;
+it is now the sealed 972-row parent. Current additive **Alpha v6** preserves
+that exact ledger and appends 21 Bertrand rows at indices 972--992 in an exact
+8 threshold + 5 finite Legendre sum + 5 relational power + 3 valuation bridge
+split: 993 theorems, 2,977 direct edges, and 45 layers, comprising Stable plus
+561 Alpha-only rows.
 
-Membership and evidence are independent. Alpha v5 contains 432
-`stable_closed`, 138 `alpha_closed`, 401 `body_checked`, and one
+Membership and evidence are independent. Alpha v6 contains 432
+`stable_closed`, 138 `alpha_closed`, 422 `body_checked`, and one
 `pending_layered_closure` row. Only 570 closed rows are available for checked
-use; the other 402 still need whole-library empty-context closure. The current
-runtime surface is `peano_lab.library.editions_v5` (`edition`, `entry`,
+use; the other 423 still need whole-library empty-context closure. The current
+runtime surface is `peano_lab.library.editions_v6` (`edition`, `entry`,
 `replay`), with Stable as the default and body-only/pending Alpha replay
 rejected.
 
-The current artifact index is `artifacts/peano-library/channels-v5.json`; it
-links Alpha v5's catalog, metrics, and graph while the Stable snapshot stays
+The current artifact index is `artifacts/peano-library/channels-v6.json`; it
+links Alpha v6's catalog, metrics, and graph while the Stable snapshot stays
 at `artifacts/peano-library/catalog-v1.json`. The v1 channel and Alpha v1
 artifacts remain sealed parents. The graph's
 reachability reduction is for structural review and display, not a claim of
@@ -35,21 +38,30 @@ Stable promotion are pending. Older descriptions of
 reviewed rows as private or unregistered record their historical Stable
 status; enrolled rows are now Alpha-only unless separately promoted.
 
-Alpha v5's enrollment, specification, and edition roots are
-`46e1a08c6bc18bbc057aa7541420580b43aec75d5f30af500ba3ce12bec09473`,
-`4592f0abba7b9f592d4f94780ced57c3e7e0b935444155f76276f1fd2b4d8ae4`,
+Alpha v6's enrollment, specification, and edition roots are
+`dc25a3dc0ab7346f9188eee1262700b40bb09efdacfa849f3a27475ed870b5a7`,
+`50f395c30e4f21a7b7602bc56451bf2363d1a23d811bba62a33c08e2defc1da1`,
 and
-`bccf7d8fc01dbcd1cd2efd9d5d8e5189d80b79cfb7e5e30df999d270a9fd13af`.
+`7e46b80c4799e51da32cedf21a130274200fa14b21e0fec3b42f74d1523ab23b`.
+Membership, evidence, and channel-pointer roots are
+`bd8faa84d1ef0c090fb07aa21ecd966d4f4356999fcd12cf4f74d0e5ae8572b8`,
+`c1fcedbd7bbc5e8655dbce3b00ab0bd9296489a3b4358fb548eeb32d081e8682`,
+and
+`4dc0f9411227e041dbbbcc2626a04d995a6ceeedb91fe9c2d246f377596693b7`.
 Artifact hashes are catalog
-`94efc0f7022f31677619e842f7d6f1d0d0f8959efc54cd64cf346c3b5e8c4892`,
+`c72d6e1234aa6521b0c524720cd64912f7e9b0bc58f31b6964bbb1a99c5a071d`,
 metrics
-`b560373c8cb4879f47e46083d5b9925cd29ebee1af4856cfc93e74017555acc2`,
+`f2a6c22b9fe50581a4cfe8d3b1b494fa274d26d0b51b60e92735650a09391be7`,
 graph
-`4e8f1ea73b3ecfd51cf80d216dfc9171dabbe12f38d9c8392185ea1c610112ab`,
+`532c2482a3b1c371026bd80b1b7297faffc4a1b1ee3e53031e499f1611b3ae16`,
 and channels
-`946682733744d6969e89059df9165cc2782510101d4ee43a6a861aa7570a3f31`.
+`6ef8bb93b2e24bdfe45389ca9417b6333ce83ae249ee49a957959a6b3471b86c`.
+The v6 suffix-depth and body-receipt roots are
+`d103de2054a0bd4de3b2faa9d98435a4f705594f8a69968e9ca956c455cb61d3`
+and
+`c23b2fc58fabd3803a0ded5f02d4ea348d67a00b25f5b28b35f3d6bcb00ff2f1`.
 
-The 402 missing closures are required for a whole-Alpha-v5 promotion, not for an
+The 423 missing closures are required for a whole-Alpha-v6 promotion, not for an
 unrelated smaller dependency-closed batch; every proposed batch receives its
 own isolated promotion receipt.
 
@@ -278,18 +290,24 @@ prime-power valuations, binomial coefficients, prime products, and explicit
 power inequalities. The navigable status page is
 [`Bertrand's postulate campaign`](../../book/arithmetic-library/bertrand-campaign.md).
 
-Current Alpha v5 preserves the exact 965-row Alpha v4 ledger and appends 7
-`FactorialVal` specifications at indices 965--971. Together the 70 enrolled
-campaign rows cover quantitative order, constructive interval search, bounded
-and exact multiplicative valuation, recursive factorial valuation, the
-six-step integer guard, total ceiling/floor-square relations, and the quotient
-budget. Every dependency-curried body checks, but all 70 remain
-`body_checked`; checked use is still 570 and Stable is still 432.
+Current Alpha v6 preserves the exact 972-row Alpha v5 ledger and appends 21
+Bertrand specifications at indices 972--992: 8 threshold-base, 5 finite
+Legendre-sum, 5 relational-power, and 3 valuation-bridge rows. Together the 91
+enrolled campaign rows cover quantitative order, constructive interval
+search, bounded and exact multiplicative valuation, recursive factorial
+valuation, the six-step integer guard, total ceiling/floor-square relations,
+the quotient budget, threshold bases, finite quotient sums, and the first
+power/valuation bridges. Every dependency-curried body checks, but all 91
+remain `body_checked`; checked use is still 570 and Stable is still 432.
 
-The eight threshold-base rows in `f35b8ed` and five finite Legendre-sum rows
-in `4df44c9` are pushed candidates, not Alpha-v5 members. The power bridge is
-under audit. The finite-sum interface does not yet prove its equality with
-factorial valuation, and Bertrand's postulate itself is **not yet proved**.
+The five Legendre-successor rows in `5b9433a` and four capacity-shared
+`PowTotal` rows in `b2035ce` are pushed candidates, not Alpha-v6 members. The
+successor suite has a maximum local closure of 81,828 nodes/depth 95. The
+shared-power closures have 5,327, 10,630, 11,062, and 13,336 nodes, saving
+59,836, 59,833, 59,836, and 119,652 nodes against their historical comparison
+counts. The $H/J$ base-window layer is in progress. The finite Legendre
+recurrence, its equality with factorial valuation, and Bertrand's postulate
+itself are **not yet proved**.
 
 ## Design and trust
 
