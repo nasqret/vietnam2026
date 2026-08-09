@@ -4874,7 +4874,7 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   private, unregistered, and unadmitted. No registry, catalog, snapshot,
   campaign-JSON, or public-count change follows from this seal.
 
-## 2026-08-09 — Alpha and Stable became explicit library editions
+## 2026-08-09 — Alpha v1 and Stable became explicit library editions
 
 The campaign's release model is now explicit and supersedes the older binary
 wording in which a reviewed row was either in the public registry or described
@@ -4886,7 +4886,7 @@ neither fact implies hosted deployment.
 
 - The unchanged Stable edition contains 432 theorems, 1,185 declared direct
   dependencies, and 22 layers.
-- The canonical Alpha edition contains 885 theorems, 2,641 declared direct
+- The sealed Alpha v1 edition contains 885 theorems, 2,641 declared direct
   dependencies, and 45 layers: 432 Stable plus 453 Alpha-only rows.
 - Alpha evidence is exactly 432 `stable_closed`, 138 `alpha_closed`, 314
   `body_checked`, and one `pending_layered_closure`. Thus 570 rows are
@@ -4906,8 +4906,56 @@ neither fact implies hosted deployment.
   display. A reachability-redundant declared dependency may still be used
   directly by the tactic body, so the report is not proof-semantic minimality.
 
-Promotion is deliberately open. Whole-Alpha cold closure is missing for 315
-rows, and the WMI cluster is down for the weekend. No Stable promotion or WMI
+At the v1 boundary, promotion remained deliberately open. Whole-Alpha-v1 cold
+closure was missing for 315 rows, and the WMI cluster was down for the
+weekend. No Stable promotion or WMI
 seal is claimed by this edition enrollment. Earlier dated passages calling
 the affected rows private or unregistered remain valid historical checkpoint
 records; their current interpretation is **Alpha-only, not Stable**.
+
+## 2026-08-09 — K3C appended as Alpha v2 body evidence
+
+The next finite-data layer adds conservative `CellListValid` and `ListMember`
+notation and seventeen theorem rows. The exact append occupies Alpha indices
+885--901 in the frozen order documented by
+`research/arithmetic-library/ha-cell-list-validity-membership-rfc-v1.md`.
+All expanded statements parse in the unchanged PA language; all
+dependency-curried tactic bodies check in the intuitionistic kernel; declared
+direct dependencies survive removal tests; and false-conclusion mutations are
+rejected. This is body evidence, not empty-context closure evidence.
+
+- Alpha v1 remains sealed at 885 specifications. Alpha v2 preserves all 885
+  parent entries exactly and appends only the 17 K3C rows.
+- Alpha v2 contains 902 specifications, 2,674 declared direct edges, 45
+  layers, and 470 Alpha-only rows. Its origins are 432 Stable, 316 QR, 120
+  strict-HA, 17 K3B, and 17 K3C.
+- Evidence is 432 `stable_closed`, 138 `alpha_closed`, 331 `body_checked`, and
+  one `pending_layered_closure`. Checked use is unchanged at 570; 332 rows
+  remain unavailable as empty-context facts.
+- The v2 ordered-enrollment root is
+  `00f1a70a0911c44acd6b784f2b121b2c351ae626a0f18bb08b5a829496ad40fe`;
+  its full edition identity is
+  `aadf99c0e411fcefe34285c8396ff0652f590e6990f0d55c3e6c7b728f9b43a4`.
+- `artifacts/peano-library/channels-v2.json` records the additive channel
+  pointer without rewriting `channels.json`, Alpha v1, or the 432-row Stable
+  snapshot.
+- The exact v2 artifact hashes are catalog
+  `90ac4942df043e59ade7a62a87627ef3b29d9b1d7d251c8fa6aadefe77590bd7`,
+  metrics `85907aea9e6fece33c8f4d0d40d167945f3118190654a32423dc815df8fc69eb`,
+  reduced graph
+  `01ca3e6b58e55cfefd4a0df3f8ce229f5382c26a02f4960ceb7773205c9177a3`,
+  and channel pointer
+  `c2af6774ea7c787532d79a5f8fd41087ae5f31a0e828e25571adaed2853aa968`.
+- K3B's seventeen selected roots are now correctly described as Alpha-only
+  `alpha_closed` rows, not current private rows. K3C's seventeen rows are
+  Alpha-only `body_checked` rows and fail closed through the checked-use API.
+- A non-submitting closure harness and reviewed `cpu_idle` Slurm wrapper are
+  ready at `scripts/run_wmi_k3c_cell_list_closure.py` and
+  `slurm/peano_wmi_k3c_cell_list_closure.sbatch`. They pin the exact 17-row
+  surface, Alpha-v2 parent identity, two deterministic passes, zero DNE,
+  resource/provenance fields, and fail-closed atomic report creation.
+
+WMI is unavailable for the weekend, so the repeated isolated K3C
+empty-context closure receipt remains pending. No K3C row has been promoted
+to Stable, and no cold-closure metric or artifact hash is inferred from the
+local body checks.

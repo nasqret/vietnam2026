@@ -10,9 +10,9 @@ as the target.
 These 557 nodes are exactly the reciprocity campaign slice: 241 Stable
 prerequisites and 316 Alpha-only specifications. The complete Stable catalog
 has 432 rows, of which 191 are outside this graph. Stable union this slice has
-748 distinct theorem names, while canonical Alpha has 885; other Alpha layers
-such as K3B are separate until
-the unified Alpha explorer is generated. See {doc}`Alpha and
+748 distinct theorem names, while current canonical Alpha v2 has 902 and its
+sealed v1 parent has 885. Other Alpha layers such as K3B and K3C are separate
+until the unified Alpha explorer is generated. See {doc}`Alpha and
 Stable library editions <library-editions>`.
 ```
 

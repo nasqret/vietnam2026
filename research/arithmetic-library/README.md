@@ -32,6 +32,9 @@ arithmetic library. Start with:
 - [`ha-cell-list-lookup-rfc-v1.md`](ha-cell-list-lookup-rfc-v1.md): the
   surface-frozen outer-head `ListAt` relation, its extensional ten-deliverable
   ladder, and the prefix-preservation obligation that precedes lookup proofs;
+- [`ha-cell-list-validity-membership-rfc-v1.md`](ha-cell-list-validity-membership-rfc-v1.md):
+  the additive K3C `CellListValid`/`ListMember` interface, exact seventeen-row
+  Alpha v2 append, body-evidence boundary, and next append/restriction gate;
 - [`../../PLAN/12_ha_number_theory_campaign.md`](../../PLAN/12_ha_number_theory_campaign.md):
   the repository execution plan and first canonical-interface tranche.
 
@@ -455,14 +458,17 @@ has no remaining planned entry. Conventional integer-coefficient Bézout is not
 available in the natural-only term language, while the checked balanced
 four-natural relation supplies the native replacement.
 
-## 2026-08-09 — current Alpha and Stable editions
+## 2026-08-09 — current additive Alpha v2 and Stable editions
 
 The arithmetic library now has two explicit cumulative editions. **Stable**
 is the official checked library and remains the default. **Alpha** is the
 building library: every reviewed incorporated layer appears there immediately,
 with membership recorded independently of its proof evidence. Stable is a
 subset of Alpha; Alpha membership alone never grants a closed theorem fact.
-The current 432 Stable rows form Alpha's initial v1 prefix only. Future
+Stable v1 remains sealed at 432 rows. Alpha v1 remains sealed at 885 rows;
+Alpha v2 preserves those entries exactly and appends the seventeen K3C rows
+at indices 885--901. The current 432 Stable rows form Alpha's initial prefix
+only. Future
 promotion publishes a versioned channel index and preserves a keyed exact
 subset: Alpha enrollment order and origin/provenance remain immutable, while
 Stable keeps its own append-only dependency-topological release order.
@@ -470,32 +476,41 @@ Stable keeps its own append-only dependency-topological release order.
 | Edition | Theorems | Direct edges | Layers | Alpha-only | Checked use |
 |---|---:|---:|---:|---:|---:|
 | Stable | 432 | 1,185 | 22 | 0 | 432 |
-| Alpha | 885 | 2,641 | 45 | 453 | 570 |
+| Alpha v1 (sealed parent) | 885 | 2,641 | 45 | 453 | 570 |
+| Alpha v2 (current) | 902 | 2,674 | 45 | 470 | 570 |
 
-Alpha's evidence ledger contains 432 `stable_closed`, 138 `alpha_closed`, 314
-`body_checked`, and one `pending_layered_closure` row. Consequently, 315 of
-the 885 specifications still lack whole-library empty-context closure and are
-not legal checked-use facts. The canonical ordered-enrollment root is
-`7371461aa930071f00007f766f899cef88c4126a5ddf576f93d79e336bc65c49`.
+Alpha v2's evidence ledger contains 432 `stable_closed`, 138 `alpha_closed`,
+331 `body_checked`, and one `pending_layered_closure` row. Consequently, 332
+of the 902 specifications still lack whole-library empty-context closure and
+are not legal checked-use facts. The origin counts are 432 Stable, 316 QR,
+120 strict-HA, 17 K3B, and 17 K3C. The v2 ordered-enrollment root is
+`00f1a70a0911c44acd6b784f2b121b2c351ae626a0f18bb08b5a829496ad40fe`;
+the full edition identity is
+`aadf99c0e411fcefe34285c8396ff0652f590e6990f0d55c3e6c7b728f9b43a4`.
 
 The code-owned runtime API is
-[`peano_lab.library.editions`](../../peano-lab/py/peano_lab/library/editions.py):
+[`peano_lab.library.editions_v2`](../../peano-lab/py/peano_lab/library/editions_v2.py):
 `edition("stable" | "alpha")`, `entry(...)`, and
 `replay(..., edition=...)`. Stable remains the default; Alpha replay rejects
 `body_checked` and `pending_layered_closure` rows. Deterministic publication
 state is recorded by
-[`artifacts/peano-library/channels.json`](../../artifacts/peano-library/channels.json),
+[`artifacts/peano-library/channels-v2.json`](../../artifacts/peano-library/channels-v2.json),
 the unchanged
 [`Stable catalog`](../../artifacts/peano-library/catalog-v1.json), and the
-Alpha
-[`catalog`](../../artifacts/peano-library/alpha/catalog-v1.json),
-[`metrics`](../../artifacts/peano-library/alpha/metrics.json), and
-[`dependency graph`](../../artifacts/peano-library/alpha/dependency-graph.mmd).
+linked Alpha v2 catalog, metrics, and dependency graph. The v1 channel pointer
+and Alpha v1 artifacts remain sealed rather than being rewritten.
+
+All seventeen K3C rows are `body_checked`: local audits validate their
+expanded statements, exact dependency-curried tactic bodies, dependency
+liveness, and fail-closed mutations. They do not enter checked use until a
+repeated isolated WMI empty-context closure receipt is available. The K3B
+rows described as private in their dated checkpoint sections are now
+Alpha-only `alpha_closed`; they have not been promoted to Stable.
 
 This section supersedes status, not history. Older dated paragraphs that call
 K3/HA/K3B or QR rows private, unregistered, or outside the public snapshot
 describe the Stable boundary at those checkpoints. Reviewed enrolled rows now
-have Alpha membership, but none is thereby promoted to Stable. The 714
+have Alpha membership, but none is thereby promoted to Stable. The 717
 reachability-redundant declared links and the transitive-reduction graph are a
 display/structural review surface only; they do not establish that tactic
 bodies can omit those hypotheses and make no proof-semantic minimality claim.
@@ -503,6 +518,6 @@ bodies can omit those hypotheses and make no proof-semantic minimality claim.
 Promotion is still pending. Every proposed dependency-closed batch needs a
 fresh isolated WMI run plus resource, determinism, mutation,
 dependency-liveness, and identity gates. Promoting all of Alpha would require
-closing the remaining 315 rows; a smaller dependency-closed batch need not
-wait for unrelated Alpha rows. WMI is down for the weekend, so no whole-Alpha
-closure or new promotion receipt is claimed here.
+closing the remaining 332 rows; a smaller dependency-closed batch need not
+wait for unrelated Alpha rows. WMI is down for the weekend, so no K3C cold
+receipt, whole-Alpha-v2 closure, or new promotion receipt is claimed here.

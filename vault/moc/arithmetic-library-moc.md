@@ -6,32 +6,34 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-## Current library editions — 2026-08-09
+## Current library editions — Alpha v2, 2026-08-09
 
 This status supersedes, without erasing, the dated checkpoint language below.
 **Stable** is the unchanged official checked edition: 432 theorems, 1,185
-declared direct edges, and 22 layers. **Alpha** is the cumulative building
-edition: 885 theorems, 2,641 direct edges, and 45 layers, comprising Stable
-plus 453 Alpha-only rows. Its ordered-enrollment root is
-`7371461aa930071f00007f766f899cef88c4126a5ddf576f93d79e336bc65c49`.
+declared direct edges, and 22 layers. Sealed **Alpha v1** remains 885 rows.
+Current additive **Alpha v2** preserves that ledger and appends K3C at indices
+885--901: 902 theorems, 2,674 direct edges, and 45 layers, comprising Stable
+plus 470 Alpha-only rows.
 
-Membership and evidence are independent. Alpha contains 432
-`stable_closed`, 138 `alpha_closed`, 314 `body_checked`, and one
+Membership and evidence are independent. Alpha v2 contains 432
+`stable_closed`, 138 `alpha_closed`, 331 `body_checked`, and one
 `pending_layered_closure` row. Only 570 closed rows are available for checked
-use; the other 315 still need whole-library empty-context closure. The runtime
-surface is `peano_lab.library.editions` (`edition`, `entry`, `replay`), with
-Stable as the default and body-only/pending Alpha replay rejected.
+use; the other 332 still need whole-library empty-context closure. The current
+runtime surface is `peano_lab.library.editions_v2` (`edition`, `entry`,
+`replay`), with Stable as the default and body-only/pending Alpha replay
+rejected.
 
-The artifact index is `artifacts/peano-library/channels.json`; Alpha's catalog,
-metrics, and graph are under `artifacts/peano-library/alpha/`, while the Stable
-snapshot stays at `artifacts/peano-library/catalog-v1.json`. The graph's
+The current artifact index is `artifacts/peano-library/channels-v2.json`; it
+links Alpha v2's catalog, metrics, and graph while the Stable snapshot stays
+at `artifacts/peano-library/catalog-v1.json`. The v1 channel and Alpha v1
+artifacts remain sealed parents. The graph's
 reachability reduction is for structural review and display, not a claim of
-proof-semantic minimality. WMI is down for the weekend, so closure of the 315
+proof-semantic minimality. WMI is down for the weekend, so closure of the 332
 remaining rows and any Stable promotion are pending. Older descriptions of
 reviewed rows as private or unregistered record their historical Stable
 status; enrolled rows are now Alpha-only unless separately promoted.
 
-The 315 missing closures are required for a whole-Alpha promotion, not for an
+The 332 missing closures are required for a whole-Alpha-v2 promotion, not for an
 unrelated smaller dependency-closed batch; every proposed batch receives its
 own isolated promotion receipt.
 
@@ -224,8 +226,26 @@ has SHA-256
 Job `219217` completed `0:0` in `00:15:25`, `MaxRSS=54,496 KiB`, from clean
 commit `cb6fcbcc6b51e0b9290e02ed1a16d8b034145b8e` and payload SHA-256
 `78e0c3d04b98ba1788edce0cd227dae3f7fe36f391a3a80b962da632a1970835`.
-All 17 targets remain private, unregistered, and unadmitted; public theorems,
-catalog entries, snapshots, campaign accounting, and counts remain unchanged.
+At this dated checkpoint all 17 targets were private and unregistered. They
+are now the K3B-origin `alpha_closed` rows in Alpha v1 and v2; they remain
+outside Stable.
+
+## K3C validity, membership, and semantic lookup
+
+[`HA-K3C-CELLLIST-1`](../../research/arithmetic-library/ha-cell-list-validity-membership-rfc-v1.md)
+adds `CellListValid(z) := exists l. CellListLen(z,l)` and
+`ListMember(z,a) := exists i. ListAt(z,i,a)` as conservative notation. Its
+seventeen theorem rows provide validity constructors and elimination,
+head/tail membership equations, pointwise membership transport, unique
+in-range lookup, lookup-based code equality, and unique outer-cell
+decomposition. Read the linked Book chapter
+[`K3C Alpha: valid lists, membership, and semantic lookup`](../../book/arithmetic-library/list-validity-and-membership.md).
+
+The rows occupy Alpha v2 indices 885--901 and have `body_checked` evidence.
+Their expanded statements, dependency-curried proofs, dependency-removal
+tests, and false-conclusion mutations pass locally. Checked use stays 570:
+the K3C rows fail closed until a repeated isolated WMI empty-context receipt
+is recorded. Stable remains 432 and Alpha v1 remains 885.
 
 ## Design and trust
 

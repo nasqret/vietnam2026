@@ -23,15 +23,17 @@ covers the all-modulus solvability criterion, classification modulo a
 relational LCM, the zero/nonzero canonical boundary, certified obstruction,
 and raw-input total decision. New reviewed layers enter **Alpha** first and
 move to Stable only after closure, compilation, dependency, resource, and
-release audits. See {doc}`Alpha and Stable library editions
+release audits. Current Alpha v2 adds seventeen body-checked K3C rows for
+valid list codes, membership, unique in-range lookup, extensional code
+equality, and unique outer-cell decomposition. See {doc}`Alpha and Stable library editions
 <library-editions>` for the exact scopes and lifecycle.
 ```
 
 <div class="pa-dashboard-metrics" aria-label="Alpha and Stable arithmetic library metrics">
   <div><strong>432</strong><span>Stable theorems</span></div>
-  <div><strong>885</strong><span>Alpha theorems</span></div>
+  <div><strong>902</strong><span>Alpha v2 theorems</span></div>
   <div><strong>570</strong><span>Alpha checked-use rows</span></div>
-  <div><strong>453</strong><span>Alpha-only rows</span></div>
+  <div><strong>470</strong><span>Alpha-only rows</span></div>
 </div>
 
 The generated Stable snapshot has ordered root
@@ -42,11 +44,12 @@ grant proof authority. Its graph has **1,185** direct dependency edges; the
 Book exposes **432** theorem cards, while the synchronized vault contains
 **531** notes and **5,377** resolved links.
 
-The canonical Alpha graph has 885 theorems, 2,641 direct edges, and 45
-dependency layers. Its mixed evidence is intentional: 570 rows have complete
-checked-use evidence, while body-only and pending-closure rows remain visible
-without being treated as empty-context facts. The exact contract and opt-in
-API are on the {doc}`edition page <library-editions>`.
+The current additive Alpha v2 graph has 902 theorems, 2,674 direct edges, and
+45 dependency layers. Its mixed evidence is intentional: 570 rows have
+complete checked-use evidence, while 331 body-only rows and one pending row
+remain visible without being treated as empty-context facts. Stable remains
+432, and the 885-row Alpha v1 parent remains sealed. The exact contract and
+opt-in API are on the {doc}`edition page <library-editions>`.
 
 ## The mathematical metro map
 
@@ -95,6 +98,7 @@ cones.
 | understand soundness | {doc}`Language, notation, and trust <language-and-trust>` | {doc}`Self-contained proof sharing <proof-sharing>` |
 | study division and congruence | {doc}`Divisibility and subtraction-free congruence <divisibility-and-congruence>` | {doc}`GCD and balanced Bézout <gcd-and-bezout>` |
 | study encoded lists and lookup | {doc}`K3B Alpha: cell histories and extensional lookup <cell-history-and-lookup>` | the compact Alpha/Stable graph, exact proof sources, and WMI receipt |
+| use list validity and membership | {doc}`K3C Alpha: valid lists, membership, and semantic lookup <list-validity-and-membership>` | the seventeen-row interface, exact body receipts, and append/restriction gate |
 | study primes and factorization | {doc}`Primes and unique factorization <primes-and-factorization>` | the FTA and `prime_unbounded` cards in the atlas |
 | follow the reciprocity campaign | {doc}`Quadratic reciprocity campaign <quadratic-reciprocity>` | parity, residue-decision, and finite-fold cards in the atlas |
 | train a proof-producing model | {doc}`Using and extending the library <using-the-library>` | the snapshot, corpus and vault links below |

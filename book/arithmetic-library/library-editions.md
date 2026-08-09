@@ -22,40 +22,57 @@ release membership; it does not silently replace the mathematics.
 ## What is canonical today
 
 The repository now has canonical machine-readable artifacts for both
-editions. In the initial v1 channel Alpha preserves the exact 432-row Stable
-prefix, then enrolls the QR, strict-HA, and K3B tranches in one
-dependency-topological order. That prefix is a fact about v1, not the permanent
-promotion rule.
+editions. Stable v1 remains sealed at 432 rows, and Alpha v1 remains sealed at
+885 rows. Current Alpha v2 preserves the entire v1 enrollment ledger exactly,
+then appends the seventeen K3C rows at indices 885--901. The initial Stable
+prefix is a historical fact about these channels, not the permanent promotion
+rule.
 
 | Surface | Exact scope | What the count means |
 |---|---:|---|
 | Stable catalog and theorem atlas | **432** theorems | complete registered, empty-context-checked library |
-| Canonical Alpha catalog | **885** theorems | 432 Stable plus 453 Alpha-only rows |
+| Sealed Alpha v1 catalog | **885** theorems | immutable parent: 432 Stable plus 453 Alpha-only rows |
+| Current Alpha v2 catalog | **902** theorems | 432 Stable plus 470 Alpha-only rows |
 | Alpha checked-use subset | **570** theorems | 432 `stable_closed` plus 138 `alpha_closed` rows |
-| Alpha proof graph | **2,641** edges / **45** layers | exact direct dependencies for all 885 enrolled rows |
+| Alpha v2 proof graph | **2,674** edges / **45** layers | exact direct dependencies for all 902 enrolled rows |
 | Quadratic-reciprocity Alpha slice | **557** specifications | 241 Stable prerequisites and 316 Alpha-only specifications |
 | Stable $\cup$ QR slice | **748** distinct theorem names | 432 Stable plus the 316 QR Alpha-only rows |
 | K3B focused map | **41** nodes | 12 Stable prerequisites, 22 Alpha-only theorem/support nodes, and 7 conservative definitions |
 | K3B cold-closure receipt | **17** selected roots | two deterministic empty-context WMI passes, all with zero DNE |
+| K3C additive tranche | **17** specifications | indices 885--901, all `body_checked`, cold receipt pending |
 
-The canonical Alpha composition is 432 Stable-origin rows, 316 QR additions,
-120 strict-HA additions, and 17 K3B additions. Its evidence partition is 432
-`stable_closed`, 138 `alpha_closed`, 314 `body_checked`, and one
+For comparison, the sealed Alpha v1 proof graph has **2,641** edges / **45** layers,
+and its evidence partition was 432 `stable_closed`, 138 `alpha_closed`,
+314 `body_checked`, and one `pending_layered_closure`. Its immutable machine
+surfaces remain `artifacts/peano-library/channels.json` and
+`artifacts/peano-library/alpha/catalog-v1.json`; Alpha v2 is an additive child,
+not an in-place rewrite of either file.
+
+The canonical Alpha v2 composition is 432 Stable-origin rows, 316 QR
+additions, 120 strict-HA additions, 17 K3B additions, and 17 K3C additions.
+Its evidence partition is 432 `stable_closed`, 138 `alpha_closed`, 331 `body_checked`, and one
 `pending_layered_closure`. Thus **Alpha membership does not imply checked
-use**: exactly 570 of the 885 entries cross that boundary.
+use**: exactly 570 of the 902 entries cross that boundary. The v2
+ordered-enrollment root is
+`00f1a70a0911c44acd6b784f2b121b2c351ae626a0f18bb08b5a829496ad40fe`;
+the full edition identity is
+`aadf99c0e411fcefe34285c8396ff0652f590e6990f0d55c3e6c7b728f9b43a4`.
 
 The number **748** describes only Stable union the focused QR slice. That
-slice omits 191 Stable theorems and 137 Alpha additions from the strict-HA and
-K3B tranches. Likewise, the 41-node K3B map is a deliberately curated visual
+slice omits 191 Stable theorems and 154 Alpha additions from the strict-HA,
+K3B, and K3C tranches. Likewise, the 41-node K3B map is a deliberately curated visual
 lens, not a competing catalog. The authoritative channel pointers are
-`artifacts/peano-library/channels.json`; the Alpha rows are in
-`artifacts/peano-library/alpha/catalog-v1.json`, while the pre-existing Stable
-artifact remains `artifacts/peano-library/catalog-v1.json`.
+`artifacts/peano-library/channels-v2.json`; it links the current Alpha v2
+catalog, metrics, and graph, while the pre-existing Stable artifact remains
+`artifacts/peano-library/catalog-v1.json`. The v1 channel and Alpha v1
+artifacts remain sealed parents.
 
 The {doc}`Stable theorem atlas <theorem-atlas>` is authoritative for the 432
 registered theorems. The {doc}`QR proof explorer <proof-explorer>` is an Alpha
 campaign slice, and the {doc}`K3B CellHistory/ListAt chapter
-<cell-history-and-lookup>` is an Alpha layer with its own sealed receipt.
+<cell-history-and-lookup>` is an Alpha layer with its own sealed receipt. The
+{doc}`K3C validity and membership chapter <list-validity-and-membership>`
+documents the additive body-checked layer and its pending closure boundary.
 
 ## Release membership and proof evidence are different axes
 
@@ -71,6 +88,9 @@ checked**. Their WMI certificates are real empty-context evidence, but the
 layer has not yet passed Stable promotion. A quadratic-reciprocity support row
 may instead be **Alpha-only** and only **body checked**, meaning its declared
 dependencies remain hypotheses in that particular receipt.
+All seventeen K3C rows are in this second state: local body, liveness, and
+mutation gates pass, but their repeated isolated WMI empty-context receipt is
+pending. They therefore fail closed through checked use.
 
 Definitions are a third kind of object. They are displayed as yellow hexagons
 because they expand conservatively before parsing; they are neither theorem
@@ -87,10 +107,10 @@ evidence is `stable_closed` or `alpha_closed`; a `body_checked` or
 `pending_layered_closure` request fails closed.
 
 ```python
-from peano_lab.library.editions import edition, entry, replay
+from peano_lab.library.editions_v2 import edition, entry, replay
 
 len(edition("stable").specs)          # 432
-len(edition("alpha").specs)           # 885
+len(edition("alpha").specs)           # 902
 len(edition("alpha").checked_specs)   # 570
 
 entry("cell_list_extensional", edition="alpha")
@@ -167,5 +187,7 @@ proof receipts, and promotion are node metadata, not extra arrows.
 
 Continue with the {doc}`Stable theorem atlas <theorem-atlas>` for the released
 library, the {doc}`Alpha QR proof explorer <proof-explorer>` for the reciprocity
-campaign slice, or the {doc}`K3B Alpha layer <cell-history-and-lookup>` for the
-finite-data bridge.
+campaign slice, the {doc}`K3B Alpha layer <cell-history-and-lookup>` for the
+finite-data representation, or the {doc}`K3C Alpha layer
+<list-validity-and-membership>` for its validity, membership, and semantic
+lookup interface.

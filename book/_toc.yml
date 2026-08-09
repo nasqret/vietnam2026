@@ -52,6 +52,7 @@ parts:
       - file: arithmetic-library/gcd-and-bezout
       - file: arithmetic-library/strict-ha-campaign
       - file: arithmetic-library/cell-history-and-lookup
+      - file: arithmetic-library/list-validity-and-membership
       - file: arithmetic-library/primes-and-factorization
       - file: arithmetic-library/quadratic-reciprocity
       - file: arithmetic-library/source-audit

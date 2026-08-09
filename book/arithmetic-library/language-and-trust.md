@@ -92,6 +92,8 @@ body-checked proper ancestors and the `PA00FW` root pending layered closure;
 canonically, the later HA receipt strengthens `mod_eq_add_cancel_left` from
 that local body label to `alpha_closed`, leaving 314 body-only rows. Compact
 notation therefore grants no theorem evidence or Stable promotion.
+These figures describe the focused QR slice, not the current 902-row Alpha v2
+catalog, which also contains the separately curated K3B and K3C layers.
 
 ## Relational definitions before functions
 

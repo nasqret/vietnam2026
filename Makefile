@@ -22,7 +22,7 @@ PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 override STAGEPEANO := _deploy/peano-lab
 override PEANOAPPID := a-526f19ff3b30
 
-.PHONY: help book book-atlas book-proof-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-channels peano-library-channels-check ha-number-theory-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
+.PHONY: help book book-atlas book-proof-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check ha-number-theory-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
 	deploy clean
 
@@ -33,8 +33,12 @@ help:
 	@echo "  make book-proof-explorer  regenerate the static PA proof explorer"
 	@echo "  make lean         build & axiom-check the Lean artifact"
 	@echo "  make lean-fta     build & exact-axiom-check the Lean FTA companion"
-	@echo "  make peano-library-alpha  regenerate the cumulative Alpha artifact family"
-	@echo "  make peano-library-alpha-check  verify Alpha/Stable channels without proof replay"
+	@echo "  make peano-library-alpha  regenerate the sealed Alpha v1 parent artifacts"
+	@echo "  make peano-library-alpha-check  verify sealed Alpha v1/Stable channels"
+	@echo "  make peano-library-alpha-v2  regenerate the current additive Alpha v2 artifacts"
+	@echo "  make peano-library-alpha-v2-check  verify additive Alpha v2 and replay K3C bodies"
+	@echo "  make peano-library-channels-v2  compatibility alias for the current Alpha v2 build"
+	@echo "  make peano-library-channels-v2-check  compatibility alias for the current Alpha v2 check"
 	@echo "  make ha-number-theory-check  validate strict-HA admission, gcd, and signed normalization tranches"
 	@echo "  make ha-k3b-cell-history-check  run the lightweight Alpha K3B RFC/body checks"
 	@echo "  make ha-k3b-list-lookup-check  run the Alpha K3B ListAt surface checks"
@@ -87,9 +91,25 @@ peano-library-alpha-check:
 	python3 scripts/verify_peano_library_channels.py
 	python3 -m pytest -q scripts/test_verify_peano_library_channels.py
 
+peano-library-alpha-v2:
+	python3 scripts/build_peano_library_channels_v2.py
+
+peano-library-alpha-v2-check:
+	python3 scripts/build_peano_library_channels_v2.py --check
+	python3 scripts/verify_peano_library_channels_v2.py
+	python3 -m pytest -q scripts/test_verify_peano_library_channels_v2.py scripts/test_run_wmi_k3c_cell_list_closure.py
+	cd peano-lab/py && python3 -m pytest -q \
+		tests/test_ha_cell_list_membership_surface_candidate.py \
+		tests/test_ha_cell_list_membership_candidate.py \
+		tests/test_library_editions_v2.py
+
 peano-library-channels: peano-library-alpha
 
 peano-library-channels-check: peano-library-alpha-check
+
+peano-library-channels-v2: peano-library-alpha-v2
+
+peano-library-channels-v2-check: peano-library-alpha-v2-check
 
 ha-number-theory-check:
 	python3 scripts/verify_ha_number_theory_campaign.py

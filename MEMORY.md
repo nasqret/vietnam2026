@@ -2230,50 +2230,63 @@
   unregistered, and unadmitted; registry, catalog, snapshots, campaign JSON,
   and public counts remain unchanged.
 
-## Library editions — current contract (2026-08-09; superseding status)
+## Library editions — current additive v2 contract (2026-08-09; superseding status)
 
 - **Two editions:** Stable is the official checked library and remains the
   default; Alpha is the cumulative building library. Stable is an exact keyed
   subset of Alpha. The current v1 Stable happens to be Alpha's first 432 rows,
   but prefix order is not the permanent promotion invariant. Membership,
   proof evidence, and hosted deployment are three separate facts.
-- **Versioned promotion:** never mutate the v1 ledger in place. A later
+- **Versioned publication:** Stable v1 remains exactly 432 rows and Alpha v1
+  remains exactly 885 rows. Alpha v2 is an additive child: its first 885
+  entries preserve the v1 ledger exactly, and K3C occupies indices 885--901.
+  Never mutate either v1 ledger in place. A later
   promotion preserves Alpha enrollment order and immutable origin/provenance,
   while Stable keeps its own append-only dependency-topological release order.
-  A promoted QR/HA/K3B row remains QR/HA/K3B-origin even when its membership
+  A promoted QR/HA/K3B/K3C row retains that origin even when its membership
   becomes Stable.
 - **Stable is unchanged:** 432 theorems, 1,185 declared direct dependency
   edges, and 22 dependency layers. Its runtime tuple remains
   `peano_lab.library.theorems.THEOREMS`, and its immutable snapshot remains
   `artifacts/peano-library/catalog-v1.json`.
-- **Alpha inventory:** 885 theorems, 2,641 declared direct dependency edges,
-  and 45 dependency layers: 432 Stable rows plus 453 Alpha-only rows. Its
-  canonical ordered-enrollment root is
-  `7371461aa930071f00007f766f899cef88c4126a5ddf576f93d79e336bc65c49`.
-- **Alpha evidence is heterogeneous:** 432 `stable_closed`, 138
-  `alpha_closed`, 314 `body_checked`, and one
+- **Current Alpha v2 inventory:** 902 theorems, 2,674 declared direct
+  dependency edges, and 45 dependency layers: 432 Stable rows plus 470
+  Alpha-only rows. Origins are 432 Stable, 316 QR, 120 strict-HA, 17 K3B,
+  and 17 K3C. The ordered-enrollment root is
+  `00f1a70a0911c44acd6b784f2b121b2c351ae626a0f18bb08b5a829496ad40fe`;
+  the edition identity is
+  `aadf99c0e411fcefe34285c8396ff0652f590e6990f0d55c3e6c7b728f9b43a4`.
+- **Alpha v2 evidence is heterogeneous:** 432 `stable_closed`, 138
+  `alpha_closed`, 331 `body_checked`, and one
   `pending_layered_closure`. Exactly 570 rows cross the checked-use boundary;
-  the remaining 315 do not supply empty-context theorem facts.
-- **Runtime API:** `peano_lab.library.editions` exposes
+  the remaining 332 do not supply empty-context theorem facts.
+- **K3C boundary:** the seventeen `CellListValid`/`ListMember` interface rows
+  at indices 885--901 have checked expanded statements and dependency-curried
+  bodies, plus fail-closed mutation evidence. They remain `body_checked`; a
+  repeated isolated WMI empty-context closure receipt is still required.
+- **Runtime API:** `peano_lab.library.editions_v2` exposes
   `edition("stable" | "alpha")`, `entry(...)`, and fail-closed
   `replay(..., edition=...)`, together with `STABLE_SPECS`, `ALPHA_SPECS`,
   and `ALPHA_CHECKED_SPECS`. A body-only or pending Alpha row is rejected by
   `replay` rather than silently treated as a theorem.
-- **Channel artifacts:** `artifacts/peano-library/channels.json` points to the
-  unchanged Stable snapshot and to
-  `artifacts/peano-library/alpha/{catalog-v1.json,metrics.json,dependency-graph.mmd}`.
+- **Channel artifacts:** `artifacts/peano-library/channels-v2.json` points to
+  the unchanged Stable v1 snapshot and to the additive Alpha v2 catalog,
+  metrics, and dependency graph. The v1 channel pointer and Alpha v1 artifacts
+  remain immutable parents.
 - **Historical wording:** entries below dated before 2026-08-09 that call
   reviewed campaign rows “private,” “unregistered,” or outside the public
   snapshot describe their then-current Stable status. Those rows now have
   explicit Alpha membership where enrolled, but they have not thereby been
   promoted to Stable.
-- **Promotion remains pending:** full Alpha empty-context compilation is
-  missing for 315 rows, the isolated WMI promotion run cannot proceed while
-  WMI is down for the weekend, and every Alpha-to-Stable promotion still
-  requires the stated compilation, resource, mutation, and link-review gates.
+- **Promotion remains pending:** full Alpha v2 empty-context compilation is
+  missing for 332 rows, including the seventeen new K3C rows. The isolated
+  WMI K3C closure run cannot proceed while WMI is down for the weekend, and
+  every Alpha-to-Stable promotion still requires the stated compilation,
+  resource, mutation, and link-review gates.
   Whole-Alpha closure is not a prerequisite for a smaller independently
   dependency-closed promotion batch.
-- **Dependency review scope:** the Alpha graph's reachability-redundant-link
-  report and transitive reduction are structural/display aids. They do not
+- **Dependency review scope:** the Alpha v2 graph reports 717
+  reachability-redundant declared links and 1,957 transitive-reduction edges.
+  Those results are structural/display aids. They do not
   prove that a tactic body can drop an edge and do not claim proof-semantic or
   global minimality.

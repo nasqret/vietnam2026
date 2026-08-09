@@ -11,9 +11,10 @@ closure.
 :class: important
 The 557 generated pages contain **241 Stable prerequisites** and **316 Alpha-only
 specifications**. The complete Stable catalog has 432 theorems, so
-191 Stable rows lie outside this QR closure. The canonical Alpha catalog has
-885 rows; Stable union this slice has only 748 distinct theorem names. K3B and
-other Alpha layers are documented separately.
+191 Stable rows lie outside this QR closure. The current canonical Alpha v2
+catalog has 902 rows; its sealed v1 parent has 885. Stable union this slice has
+only 748 distinct theorem names. K3B and K3C are documented as separate
+focused Alpha layers.
 The generated pages retain their historical `public`/`candidate` labels until
 the unified Alpha explorer is built: read those only as Stable versus
 Alpha-only membership in this slice. They are not canonical evidence labels.

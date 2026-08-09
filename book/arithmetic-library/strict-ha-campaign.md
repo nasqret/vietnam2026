@@ -20,7 +20,7 @@ It separates three facts which are easy to blur in an informal development:
 - its complete empty-context certificate may check while it remains isolated;
 - only an explicit promotion makes it a Stable theorem.
 
-```{admonition} Current Alpha/Stable status (2026-08-09)
+```{admonition} Current Alpha v2 / Stable status (2026-08-09)
 :class: important
 The tables and dated checkpoints below preserve the campaign's historical
 `public`/`private` admission boundary. They are not the current library
@@ -28,9 +28,12 @@ membership ledger. The canonical Alpha edition now contains every reviewed row
 from this campaign: its strict-HA contribution is 121 Alpha-closed rows, one of
 which shares an exact QR specification and therefore occupies the earlier QR
 position. These rows are Alpha checked-use facts, but they are not Stable. The
-authoritative current counts and evidence states are in {doc}`Alpha and Stable
-library editions <library-editions>` and
-`artifacts/peano-library/alpha/catalog-v1.json`.
+current additive Alpha v2 edition preserves the sealed 885-row Alpha v1 ledger
+and appends seventeen K3C rows at indices 885--901. It now has 902 specs,
+2,674 direct edges, 45 layers, 470 Alpha-only rows, and 570 checked-use rows;
+Stable remains 432. The authoritative current counts and evidence states are
+in {doc}`Alpha and Stable library editions <library-editions>` and
+`artifacts/peano-library/channels-v2.json`.
 ```
 
 ## Historical Stable/public boundary
@@ -2355,10 +2358,12 @@ iteration, lookup, append, or folds.
 
 Those obligations now continue in the separate post-K4/M3 K3B bridge. The
 {doc}`Cell histories and extensional lookup <cell-history-and-lookup>` chapter
-explains its conservative definitions, seventeen private closed candidates,
+explains its conservative definitions, seventeen Alpha-only `alpha_closed` rows,
 outer-head lookup equations, compact dependency map, and exact WMI closure
 receipt. That later result does not retroactively move any K3B theorem into
-strict K3 or into the public registry.
+strict K3 or Stable. The next {doc}`K3C validity and membership layer
+<list-validity-and-membership>` appends seventeen Alpha-only `body_checked`
+rows; they fail closed until their repeated isolated WMI receipt is recorded.
 
 ## Reproducing the boundary
 
@@ -2370,6 +2375,8 @@ python3 scripts/verify_arithmetic_knowledge_base.py
 python3 scripts/build_peano_library_snapshot.py --check
 python3 scripts/build_peano_library_channels.py --check
 python3 scripts/verify_peano_library_channels.py
+python3 scripts/build_peano_library_channels_v2.py --check
+python3 scripts/verify_peano_library_channels_v2.py
 ```
 
 The first command checks the 12-layer campaign manifest and all **162**
@@ -2386,6 +2393,6 @@ definition API over 44 distinct public-theorem replays. The second
 cross-checks all **432** public runtime theorems against the **433**-row
 research catalog. The third independently replays the full public ladder and
 compares the deterministic snapshot.
-The final two commands verify the superseding Alpha/Stable enrollment,
-evidence bindings, metrics, and channel pointers; they do not perform the
-still-pending WMI closure work.
+The two v1 channel commands preserve the sealed parent. The final v2 command
+checks the additive 902-row Alpha publication and unchanged Stable subset; it
+does not perform the still-pending K3C WMI closure work.

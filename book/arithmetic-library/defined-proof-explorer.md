@@ -10,8 +10,9 @@ the explicit theorem statements, tactic scripts, proof terms, or kernel.
 This is not a second release edition and not the whole Alpha library. It is the
 definition-aware view of the same 557-node QR slice: 241 Stable prerequisites
 and 316 Alpha-only specifications. The complete Stable catalog has 432 rows,
-the canonical Alpha catalog has 885, and {doc}`K3B
-<cell-history-and-lookup>` is a separate focused Alpha lens. See
+the current canonical Alpha v2 catalog has 902, and its sealed v1 parent has
+885. {doc}`K3B <cell-history-and-lookup>` and {doc}`K3C
+<list-validity-and-membership>` are separate focused Alpha lenses. See
 {doc}`Alpha and Stable library editions <library-editions>` for the canonical
 scope distinction.
 ```
