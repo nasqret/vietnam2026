@@ -3651,3 +3651,87 @@ sources; 2,324 HTML pages had zero broken or unsafe targets, all 194 links and
 287 commands replayed, and the 490-note vault resolved all 4,981 links. This
 does not change the semantic boundary above: the candidate is still not an
 owner-reviewed or frozen epoch.
+
+## 2026-08-09 — A selected documentation API must be rebuilt, not filtered
+
+The H1.1a ledger left 144 replay theorems without explicit-explorer,
+defined-explorer, or definition receipts. At first, extending the existing
+proof explorer looked like the smallest repair. Its 557 rows already included
+240 of the 384 selected names and 317 disjoint quadratic-reciprocity candidates.
+But the row boundary was not an information boundary: legacy public rows had
+`dependents` arrays containing 757 name references into that disjoint set.
+Filtering the top-level list would have emitted a contaminated 384-row
+artifact. Hashing the unfiltered corpus would also couple candidate $L_0$ to
+every future edit of unrelated candidate material.
+
+We therefore made H1.1b1 additive. A new tagless bundle begins at the exact
+retained replay manifest, keeps its 384-theorem order, and reconstructs
+explicit and defined records from source-hash-verified `TheoremSpec` values.
+It resolves dependencies and tactic references only inside those 384 names.
+It copies no legacy row objects, global PA tags, `dependents`, or bodies or
+names from the 317-row disjoint candidate corpus, and binds no artifact hash
+from either 557-row explorer. The old
+explicit/defined explorer surfaces, their tag registry, and metadata v1 remain
+unchanged. Metadata v1 is still the historical 240-documentation-complete
+ledger; it was not silently reinterpreted after new evidence appeared.
+
+The build also forced us to tighten Python imports. The public per-theorem
+compactor lived in `defined_edition`, but importing it eagerly imported the
+complete quadratic-reciprocity stack. We moved that wider import inside
+`defined_library_edition()`. Selected compaction can now import
+`compact_theorem_spec` without loading the 557-row research closure, while the
+old edition still behaves identically when explicitly requested. This is a
+dependency-hygiene change, not a general same-process Python security claim.
+
+The retained bundle has exactly five files under
+`artifacts/peano-hydra/l0-documentation-candidate-v1/`: `schema.json`,
+`explicit.json`, `defined.json`, `isolation-receipt.json`, and
+`manifest.json`. Its exact identities are:
+
+- schema semantic digest
+  `30236aaaecc41104e7e193476f59a8b764d56fe86c63ca04c1561ad38645832d`
+  and artifact SHA-256
+  `a442e89ac312302dcee777b5741ca7f2d67e10f6ebcc996b8096fc6061c28a9c`;
+- explicit root
+  `b7942fa5a866ff7cd8a38f30c93787ec0abd2948e69710651e4d3578e64377da`
+  and artifact SHA-256
+  `f1c9f364db0cb7ae7f4c7fe065b1ef48d5522fc49711667479ec3dc4db723936`;
+- defined root
+  `897fd5e4bedb44b63853e428ff5bc2e2c273e30a0c239450e0ec8f93d73fc61f`
+  and artifact SHA-256
+  `164b34dd0cad555baf2164ee3da114fb60a447bd667112481e7225097dd17cea`;
+- isolation root
+  `64bdc2c52bcaf88d26382bbe514be4a442cc876b8df2a353c272587e1516d919`
+  and artifact SHA-256
+  `8c8a6882d0d5a82552942fc0c3efe5a900244a9cad02c32b24cabe3d86a0eee6`;
+  and
+- manifest root
+  `8f7ef8fcca69bc6f5f8b39c220293b8414a65fd81576c584f78e59da104d46a4`
+  and artifact SHA-256
+  `5ded97c27b859cc4725362bc76aba89fac06c5f11843b50529b78050b19348bf`.
+
+The explicit side contains 384 records, 1,038 internal declared dependency
+edges, and 13,862 tactic lines over 20 tactic heads. It finds 3,989 theorem
+reference occurrences, covering 1,035 declared edges explicitly and leaving
+three implicit declared edges. The defined side serializes 40 definition
+records and pins the complete 43-entry parser registry. Exact-AST compaction
+changes 321 statements and 624 of 950 local propositions, with 2,027 definition
+occurrences. Statement text contracts from 224,948 to 29,098 characters and
+local-proposition text from 148,105 to 25,733. These compression figures are
+pedagogical metrics, not proof-authority or optimality evidence.
+
+The focused implementation run passed 36 tests in 126.87 seconds. After the
+final roots and hashes were pinned, the seven targeted retained-artifact tests
+passed with 36 deselected in 7.10 seconds. Final acceptance then passed all 43
+focused tests in 115.64 seconds and 23 compatibility tests in 18.19 seconds.
+I record that as implementation acceptance only, not milestone completion or
+epoch authority.
+
+H1.1b1 closes only candidate selected-API record generation. It does not
+publish deployed explorer pages, complete human review, prove readable or
+optimized dependency vectors, establish minimal or best-known certificates,
+produce their publication union, complete A2, register a reviewed source-state
+deposit, grant an independent owner freeze, or make the material eligible for
+training, retrieval, or evaluation. H1.1 stays open. The next sub-slice is
+H1.1b2: metadata v2 will bind this isolated bundle and report selected API
+coverage separately from deployed-page coverage.

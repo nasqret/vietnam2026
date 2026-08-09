@@ -1,0 +1,943 @@
+{
+  "additional_fields_policy": "forbidden-at-every-schema-owned-object",
+  "canonical_json": {
+    "document": "UTF-8; keys sorted; two-space indentation; one final LF",
+    "hash_preimage": "UTF-8; keys sorted; compact separators; no final LF",
+    "numbers": "exact integers only; booleans are not integers",
+    "objects": "duplicate keys forbidden",
+    "strings": "Unicode scalar text; invalid UTF-8 and non-JSON constants forbidden"
+  },
+  "claim_boundary": {
+    "authority": "candidate documentation only; this bundle cannot freeze or activate a library epoch",
+    "defined_notation": "untrusted presentation syntax; every compacted statement and local proposition carries an exact expansion-to-AST receipt",
+    "dependency_claim": "ordered declared dependencies are retained exactly; minimality_claim is always false",
+    "kernel": "the retained replay-pack is the proof authority; this documentation bundle performs no independent kernel replay",
+    "selection": "the exact retained replay-pack order is reconstructed afresh only after every loaded TheoremSpec source has matched the pinned retained-catalog source hash",
+    "source": "source locators bind the pinned source snapshot and are not independent human review",
+    "use": "all five files are ineligible for training, retrieval, and evaluation"
+  },
+  "constants": {
+    "evaluation_eligible": false,
+    "freeze_ready": false,
+    "logic_mode": "intuitionistic",
+    "retrieval_eligible": false,
+    "status": "candidate",
+    "training_eligible": false
+  },
+  "expected_aggregates": {
+    "changed_local_propositions": 624,
+    "changed_statements": 321,
+    "declared_dependency_edges": 1038,
+    "defined_local_characters": 25733,
+    "defined_statement_characters": 29098,
+    "definition_count": 40,
+    "definition_occurrences": 2027,
+    "dependency_depth_maximum": 21,
+    "dependency_level_count": 22,
+    "expanded_local_characters": 148105,
+    "expanded_statement_characters": 224948,
+    "explicitly_referenced_dependency_edges": 1035,
+    "foundation_count": 55,
+    "implicit_dependency_edges": 3,
+    "local_proposition_count": 950,
+    "reference_occurrences": 3989,
+    "tactic_head_count": 20,
+    "tactic_line_count": 13862,
+    "tactic_text_characters": 399210,
+    "terminal_count": 100,
+    "theorem_count": 384
+  },
+  "files": {
+    "defined": "defined.json",
+    "explicit": "explicit.json",
+    "isolation_receipt": "isolation-receipt.json",
+    "manifest": "manifest.json",
+    "schema": "schema.json"
+  },
+  "fixed_inputs": {
+    "defined_edition_compactor": {
+      "callable": "peano_lab.library.defined_edition.compact_theorem_spec",
+      "path": "peano-lab/py/peano_lab/library/defined_edition.py",
+      "runtime_dependencies": [
+        {
+          "path": "peano-lab/py/peano_lab/kernel/terms.py",
+          "sha256": "e44a937d0660651f08fa57b7ff867c608ff134ac01b48c588206d641132f3185"
+        },
+        {
+          "path": "peano-lab/py/peano_lab/kernel/formulas.py",
+          "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+        }
+      ],
+      "source_sha256": "0e08246b93743f9efb8ad8c054a1e4361914570c6d3f56ed62092992a5551f55"
+    },
+    "defined_syntax_registry": {
+      "id": "peano-lab.defined-predicates",
+      "parser_registry_definition_count": 43,
+      "parser_registry_semantic_sha256": "924c8bc220f23ce772b72991b8234c3499be7698dc086d90509d39760a1ed0fe",
+      "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
+      "serialized_definition_count": 40,
+      "source_sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903",
+      "v": 2
+    },
+    "replay_catalog": {
+      "artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1/catalog.json",
+      "artifact_sha256": "326ffe660da6e34a3aa12e0aa13096078a0bf20c45c440049aaf5d5bed1f1be7",
+      "catalog_sha256": "f5c7318229ea76b372d7f09250241ba7bb98b3829a8853e85ad2d8528b710a51",
+      "ordered_root_sha256": "73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b",
+      "schema": "peano-library-snapshot-v3",
+      "source_root_sha256": "6fefaa2bdc92e477ce20444122ea1c752420e7efc1706a664777cb887128a3be",
+      "theorem_count": 384
+    },
+    "replay_manifest": {
+      "artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1/manifest.json",
+      "artifact_sha256": "8b9f9dc8e35e5eb02e43bcffd6aed6280006f4a01c396e43c43c2cbe4cbfb604",
+      "manifest_root_sha256": "fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d",
+      "replay_root_sha256": "88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba"
+    },
+    "repository": {
+      "commit": "32803924d7def862ccf0b738cd1ed494a3165f7e",
+      "source": "retained-replay-pack-snapshot",
+      "tree": "e945e4963ad53b1c07008fd8356980bdacc3bafe",
+      "url": "https://github.com/nasqret/vietnam2026"
+    }
+  },
+  "format": "peano-hydra-library-documentation-bundle-schema",
+  "hash_contracts": {
+    "artifact_sha256": "SHA-256 of exact canonical document bytes",
+    "dependency_edge_root_sha256": "SHA-256 of compact canonical replay-ordered [dependency, dependent] pairs; direction is prerequisite to theorem",
+    "dependency_node_root_sha256": "SHA-256 of compact canonical replay-ordered [theorem, ordered declared_dependencies] pairs",
+    "document_root_sha256": "SHA-256 of the exact compact canonical root_preimage object",
+    "ordered_record_root_sha256": "SHA-256 of compact canonical replay-ordered [index, name, record_sha256] triples",
+    "record_sha256": "SHA-256 of the compact canonical record after removing only its record_sha256 field",
+    "selected_name_root_sha256": "SHA-256 of the compact canonical replay-ordered theorem-name array"
+  },
+  "id": "peano-hydra-library-documentation-bundle-v1",
+  "limits": {
+    "defined_bytes": 16000000,
+    "explicit_bytes": 8000000,
+    "isolation_receipt_bytes": 1000000,
+    "json_depth": 192,
+    "json_items": 3000000,
+    "manifest_bytes": 1000000,
+    "replay_catalog_bytes": 4000000,
+    "replay_manifest_bytes": 8000000,
+    "schema_bytes": 1000000,
+    "source_file_bytes": 8000000,
+    "theorem_count": 384
+  },
+  "object_shapes": {
+    "command_line": {
+      "fields": [
+        "index",
+        "line",
+        "references",
+        "sha256",
+        "tactic",
+        "text"
+      ],
+      "types": {
+        "index": "integer >= 0",
+        "line": "integer >= 1; the canonical locator is the first matching declaration in pinned catalog source order then AST line/column order",
+        "references": "ordered array<reference_span>",
+        "sha256": "sha256",
+        "tactic": "tactic_span",
+        "text": "nonempty string"
+      }
+    },
+    "compaction_receipt": {
+      "fields": [
+        "canonical_expansion_sha256",
+        "defined_characters",
+        "defined_source_sha256",
+        "definition_uses",
+        "exact_ast_equivalence",
+        "expanded_characters",
+        "expanded_source_sha256",
+        "free_names"
+      ],
+      "types": {
+        "canonical_expansion_sha256": "sha256",
+        "defined_characters": "integer >= 0",
+        "defined_source_sha256": "sha256",
+        "definition_uses": "registry-ordered array<definition_use>",
+        "exact_ast_equivalence": "true",
+        "expanded_characters": "integer >= 0",
+        "expanded_source_sha256": "sha256",
+        "free_names": "ordered array<identifier>"
+      }
+    },
+    "compactor_identity": {
+      "fields": [
+        "callable",
+        "path",
+        "runtime_dependencies",
+        "source_sha256"
+      ],
+      "types": {
+        "callable": "peano_lab.library.defined_edition.compact_theorem_spec",
+        "path": "peano-lab/py/peano_lab/library/defined_edition.py",
+        "runtime_dependencies": "exact ordered array<runtime_dependency>: terms.py then formulas.py",
+        "source_sha256": "0e08246b93743f9efb8ad8c054a1e4361914570c6d3f56ed62092992a5551f55"
+      }
+    },
+    "defined_aggregate": {
+      "fields": [
+        "changed_local_propositions",
+        "changed_statements",
+        "defined_local_characters",
+        "defined_statement_characters",
+        "definition_count",
+        "definition_occurrences",
+        "expanded_local_characters",
+        "expanded_statement_characters",
+        "local_proposition_count",
+        "ordered_record_root_sha256",
+        "theorem_count"
+      ],
+      "types": {
+        "changed_local_propositions": "624",
+        "changed_statements": "321",
+        "defined_local_characters": "25733",
+        "defined_statement_characters": "29098",
+        "definition_count": "40",
+        "definition_occurrences": "2027",
+        "expanded_local_characters": "148105",
+        "expanded_statement_characters": "224948",
+        "local_proposition_count": "950",
+        "ordered_record_root_sha256": "sha256",
+        "theorem_count": "384"
+      }
+    },
+    "defined_document": {
+      "fields": [
+        "aggregate",
+        "compactor",
+        "definitions",
+        "evaluation_eligible",
+        "explicit_root_sha256",
+        "format",
+        "freeze_ready",
+        "id",
+        "logic_mode",
+        "registry",
+        "replay_pack",
+        "retrieval_eligible",
+        "root_preimage",
+        "root_sha256",
+        "status",
+        "theorem_count",
+        "theorems",
+        "training_eligible",
+        "v"
+      ],
+      "types": {
+        "aggregate": "defined_aggregate",
+        "compactor": "compactor_identity",
+        "definitions": "registry-ordered array<definition>",
+        "explicit_root_sha256": "exact explicit document root sha256",
+        "registry": "registry_identity",
+        "replay_pack": "replay_pack_identity",
+        "root_preimage": "root_preimage whose payload is defined_root_payload",
+        "theorems": "replay-ordered array<defined_theorem>"
+      }
+    },
+    "defined_root_payload": {
+      "fields": [
+        "aggregate",
+        "compactor",
+        "definitions_root_sha256",
+        "evaluation_eligible",
+        "explicit_root_sha256",
+        "format",
+        "freeze_ready",
+        "id",
+        "logic_mode",
+        "ordered_records",
+        "registry",
+        "replay_pack",
+        "retrieval_eligible",
+        "status",
+        "theorem_count",
+        "training_eligible",
+        "v"
+      ],
+      "types": {
+        "aggregate": "defined_aggregate",
+        "compactor": "compactor_identity",
+        "definitions_root_sha256": "sha256 over ordered [index,id,record_sha256] triples",
+        "explicit_root_sha256": "sha256",
+        "ordered_records": "replay-ordered array<ordered_record_identity>",
+        "registry": "registry_identity",
+        "replay_pack": "replay_pack_identity"
+      }
+    },
+    "defined_tactic_line": {
+      "fields": [
+        "defined_command",
+        "defined_command_sha256",
+        "expanded_command",
+        "expanded_command_sha256",
+        "index",
+        "line",
+        "local_name",
+        "parts",
+        "proposition",
+        "tactic"
+      ],
+      "types": {
+        "local_name": "identifier or null",
+        "parts": "ordered array<surface_part>",
+        "proposition": "formula_compaction or null"
+      }
+    },
+    "defined_theorem": {
+      "fields": [
+        "definition_uses",
+        "explicit_record_sha256",
+        "index",
+        "minimality_claim",
+        "name",
+        "record_sha256",
+        "script",
+        "statement"
+      ],
+      "types": {
+        "definition_uses": "registry-ordered array<definition_use>",
+        "explicit_record_sha256": "sha256",
+        "minimality_claim": "false",
+        "script": "ordered array<defined_tactic_line>",
+        "statement": "formula_compaction"
+      }
+    },
+    "definition": {
+      "fields": [
+        "category",
+        "conceptual_dependencies",
+        "expansion",
+        "expansion_sha256",
+        "id",
+        "index",
+        "name",
+        "parameters",
+        "priority",
+        "record_sha256",
+        "source",
+        "summary"
+      ],
+      "types": {
+        "conceptual_dependencies": "registry-preceding ordered array<definition id>",
+        "parameters": "ordered array<identifier>",
+        "source": "definition_source_locator"
+      }
+    },
+    "definition_source_locator": {
+      "fields": [
+        "file_sha256",
+        "line",
+        "path"
+      ],
+      "types": {
+        "file_sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903",
+        "line": "integer >= 1 locating the exact definition declaration",
+        "path": "peano-lab/py/peano_lab/library/defined_syntax.py"
+      }
+    },
+    "definition_use": {
+      "fields": [
+        "definition",
+        "name",
+        "occurrences"
+      ],
+      "types": {
+        "definition": "definition id",
+        "name": "definition name",
+        "occurrences": "integer >= 1"
+      }
+    },
+    "dependency_receipt": {
+      "fields": [
+        "edge_root_sha256",
+        "node_root_sha256",
+        "orientation",
+        "ordered_record_root_sha256"
+      ],
+      "types": {
+        "edge_root_sha256": "sha256 over ordered [dependency,dependent] pairs",
+        "node_root_sha256": "sha256 over ordered [name,declared_dependencies] pairs",
+        "ordered_record_root_sha256": "sha256",
+        "orientation": "dependency-to-dependent"
+      }
+    },
+    "explicit_aggregate": {
+      "fields": [
+        "declared_dependency_edges",
+        "dependency_depth_maximum",
+        "dependency_level_count",
+        "explicitly_referenced_dependency_edges",
+        "foundation_count",
+        "implicit_dependency_edges",
+        "reference_occurrences",
+        "tactic_head_count",
+        "tactic_heads",
+        "tactic_line_count",
+        "tactic_text_characters",
+        "terminal_count",
+        "theorem_count"
+      ],
+      "types": {
+        "declared_dependency_edges": "1038",
+        "dependency_depth_maximum": "21",
+        "dependency_level_count": "22",
+        "explicitly_referenced_dependency_edges": "1035",
+        "foundation_count": "55",
+        "implicit_dependency_edges": "3",
+        "reference_occurrences": "3989",
+        "tactic_head_count": "20",
+        "tactic_heads": "lexicographically sorted distinct array of the exact 20 observed heads",
+        "tactic_line_count": "13862",
+        "tactic_text_characters": "399210",
+        "terminal_count": "100",
+        "theorem_count": "384"
+      }
+    },
+    "explicit_document": {
+      "fields": [
+        "aggregate",
+        "dependency_receipt",
+        "evaluation_eligible",
+        "format",
+        "freeze_ready",
+        "id",
+        "logic_mode",
+        "replay_pack",
+        "repository",
+        "retrieval_eligible",
+        "root_preimage",
+        "root_sha256",
+        "source_catalog",
+        "status",
+        "theorem_count",
+        "theorems",
+        "training_eligible",
+        "v"
+      ],
+      "types": {
+        "aggregate": "explicit_aggregate",
+        "dependency_receipt": "dependency_receipt",
+        "replay_pack": "replay_pack_identity",
+        "repository": "repository_identity",
+        "root_preimage": "root_preimage whose payload is explicit_root_payload",
+        "source_catalog": "source_catalog_identity",
+        "theorems": "replay-ordered array<explicit_theorem>"
+      }
+    },
+    "explicit_root_payload": {
+      "fields": [
+        "aggregate",
+        "dependency_receipt",
+        "evaluation_eligible",
+        "format",
+        "freeze_ready",
+        "id",
+        "logic_mode",
+        "ordered_records",
+        "replay_pack",
+        "repository",
+        "retrieval_eligible",
+        "source_catalog",
+        "status",
+        "theorem_count",
+        "training_eligible",
+        "v"
+      ],
+      "types": {
+        "aggregate": "explicit_aggregate",
+        "dependency_receipt": "dependency_receipt",
+        "ordered_records": "replay-ordered array<ordered_record_identity>",
+        "replay_pack": "replay_pack_identity",
+        "repository": "repository_identity",
+        "source_catalog": "source_catalog_identity"
+      }
+    },
+    "explicit_theorem": {
+      "fields": [
+        "catalog_layer",
+        "command_lines",
+        "declared_dependencies",
+        "dependency_depth",
+        "formula_sha256",
+        "index",
+        "minimality_claim",
+        "name",
+        "record_sha256",
+        "script_sha256",
+        "source",
+        "statement_canonical",
+        "statement_canonical_sha256",
+        "statement_source",
+        "statement_source_sha256",
+        "summary",
+        "summary_sha256"
+      ],
+      "types": {
+        "catalog_layer": "exact nonempty retained replay layer string",
+        "command_lines": "ordered array<command_line> with line/index order",
+        "declared_dependencies": "ordered distinct earlier selected names",
+        "dependency_depth": "integer 0..21",
+        "formula_sha256": "exact retained replay structural formula sha256",
+        "minimality_claim": "false",
+        "source": "source_locator"
+      }
+    },
+    "file_receipt": {
+      "fields": [
+        "bytes",
+        "name",
+        "sha256"
+      ],
+      "types": {
+        "bytes": "integer >= 1",
+        "name": "one of schema.json, explicit.json, defined.json, isolation-receipt.json",
+        "sha256": "sha256"
+      }
+    },
+    "formula_compaction": {
+      "fields": [
+        "defined_source",
+        "expanded_source",
+        "parts",
+        "receipt"
+      ],
+      "types": {
+        "defined_source": "nonempty string",
+        "expanded_source": "nonempty string",
+        "parts": "ordered nonempty array<surface_part>",
+        "receipt": "compaction_receipt"
+      }
+    },
+    "isolation_checks": {
+      "fields": [
+        "declared_edges_internal",
+        "exact_member_names",
+        "exact_selected_order",
+        "explicit_defined_order",
+        "no_disallowed_fields",
+        "no_duplicate_names",
+        "no_foreign_names"
+      ],
+      "types": {
+        "all fields": "true"
+      }
+    },
+    "isolation_counts": {
+      "fields": [
+        "definition_records",
+        "defined_records",
+        "disallowed_fields",
+        "duplicate_names",
+        "explicit_records",
+        "foreign_defined_names",
+        "foreign_explicit_names",
+        "missing_defined_names",
+        "missing_explicit_names",
+        "outside_dependency_edges",
+        "selected_names"
+      ],
+      "types": {
+        "all remaining fields": "0",
+        "defined_records": "384",
+        "definition_records": "40",
+        "explicit_records": "384",
+        "selected_names": "384"
+      }
+    },
+    "isolation_receipt": {
+      "fields": [
+        "checks",
+        "counts",
+        "evaluation_eligible",
+        "format",
+        "freeze_ready",
+        "id",
+        "logic_mode",
+        "retrieval_eligible",
+        "roots",
+        "root_preimage",
+        "root_sha256",
+        "status",
+        "training_eligible",
+        "v"
+      ],
+      "types": {
+        "checks": "isolation_checks",
+        "counts": "isolation_counts",
+        "root_preimage": "root_preimage whose payload is isolation_root_payload",
+        "roots": "isolation_roots"
+      }
+    },
+    "isolation_root_payload": {
+      "fields": [
+        "checks",
+        "counts",
+        "evaluation_eligible",
+        "format",
+        "freeze_ready",
+        "id",
+        "logic_mode",
+        "retrieval_eligible",
+        "roots",
+        "status",
+        "training_eligible",
+        "v"
+      ],
+      "types": {
+        "checks": "isolation_checks",
+        "counts": "isolation_counts",
+        "roots": "isolation_roots"
+      }
+    },
+    "isolation_roots": {
+      "fields": [
+        "defined_document_root_sha256",
+        "defined_ordered_record_root_sha256",
+        "dependency_edge_root_sha256",
+        "dependency_node_root_sha256",
+        "explicit_document_root_sha256",
+        "explicit_ordered_record_root_sha256",
+        "selected_name_root_sha256"
+      ],
+      "types": {
+        "all fields": "sha256; selected_name_root is over exact replay-ordered names; document/record/dependency roots equal their owning documents"
+      }
+    },
+    "manifest": {
+      "fields": [
+        "aggregate",
+        "evaluation_eligible",
+        "files",
+        "format",
+        "freeze_ready",
+        "id",
+        "logic_mode",
+        "retrieval_eligible",
+        "root_preimage",
+        "root_sha256",
+        "schema",
+        "source_bindings",
+        "status",
+        "training_eligible",
+        "v"
+      ],
+      "types": {
+        "aggregate": "manifest_aggregate",
+        "files": "ordered array<file_receipt> for schema, explicit, defined, isolation only; manifest is excluded",
+        "root_preimage": "root_preimage whose payload is manifest_root_payload",
+        "schema": "schema_identity",
+        "source_bindings": "source_bindings"
+      }
+    },
+    "manifest_aggregate": {
+      "fields": [
+        "declared_dependency_edges",
+        "definition_count",
+        "theorem_count"
+      ],
+      "types": {
+        "declared_dependency_edges": "1038",
+        "definition_count": "40",
+        "theorem_count": "384"
+      }
+    },
+    "manifest_root_payload": {
+      "fields": [
+        "aggregate",
+        "evaluation_eligible",
+        "files",
+        "format",
+        "freeze_ready",
+        "id",
+        "logic_mode",
+        "retrieval_eligible",
+        "schema",
+        "source_bindings",
+        "status",
+        "training_eligible",
+        "v"
+      ],
+      "types": {
+        "aggregate": "manifest_aggregate",
+        "files": "ordered array<file_receipt>",
+        "schema": "schema_identity",
+        "source_bindings": "source_bindings"
+      }
+    },
+    "ordered_record_identity": {
+      "fields": [
+        "index",
+        "name",
+        "record_sha256"
+      ]
+    },
+    "reference_span": {
+      "fields": [
+        "end",
+        "kind",
+        "name",
+        "start"
+      ],
+      "types": {
+        "end": "integer <= command length",
+        "kind": "theorem or axiom",
+        "name": "exact text[start:end]; theorem names are exact declared_dependencies and axiom names are exactly PA1 through PA6",
+        "start": "integer >= 0"
+      }
+    },
+    "registry_identity": {
+      "fields": [
+        "id",
+        "parser_registry_definition_count",
+        "parser_registry_semantic_sha256",
+        "path",
+        "serialized_definition_count",
+        "source_sha256",
+        "v"
+      ],
+      "types": {
+        "id": "peano-lab.defined-predicates",
+        "parser_registry_definition_count": "43",
+        "parser_registry_semantic_sha256": "924c8bc220f23ce772b72991b8234c3499be7698dc086d90509d39760a1ed0fe",
+        "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
+        "serialized_definition_count": "40",
+        "source_sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903",
+        "v": "2"
+      }
+    },
+    "replay_pack_identity": {
+      "fields": [
+        "artifact_path",
+        "artifact_sha256",
+        "manifest_root_sha256",
+        "replay_root_sha256"
+      ],
+      "types": {
+        "artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1/manifest.json",
+        "artifact_sha256": "8b9f9dc8e35e5eb02e43bcffd6aed6280006f4a01c396e43c43c2cbe4cbfb604",
+        "manifest_root_sha256": "fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d",
+        "replay_root_sha256": "88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba"
+      }
+    },
+    "repository_identity": {
+      "fields": [
+        "commit",
+        "source",
+        "tree",
+        "url"
+      ],
+      "types": {
+        "commit": "32803924d7def862ccf0b738cd1ed494a3165f7e",
+        "source": "retained-replay-pack-snapshot",
+        "tree": "e945e4963ad53b1c07008fd8356980bdacc3bafe",
+        "url": "https://github.com/nasqret/vietnam2026"
+      }
+    },
+    "root_preimage": {
+      "fields": [
+        "format",
+        "payload",
+        "v"
+      ],
+      "ordering": "payload ordered-record arrays use replay order; file arrays use schema, explicit, defined, isolation order; edge arrays use theorem replay order then declared-dependency order",
+      "types": {
+        "format": "document-specific fixed root-preimage format",
+        "payload": "the exact non-row identity fields plus ordered record identities or exact file receipts",
+        "v": "1"
+      }
+    },
+    "runtime_dependency": {
+      "fields": [
+        "path",
+        "sha256"
+      ],
+      "types": {
+        "path": "one exact pinned kernel source path",
+        "sha256": "the fixed hash paired with that path"
+      }
+    },
+    "schema_identity": {
+      "fields": [
+        "artifact_sha256",
+        "format",
+        "id",
+        "sha256",
+        "v"
+      ],
+      "types": {
+        "artifact_sha256": "sha256 of exact canonical schema.json bytes",
+        "format": "peano-hydra-library-documentation-bundle-schema",
+        "id": "peano-hydra-library-documentation-bundle-v1",
+        "sha256": "compact canonical semantic sha256",
+        "v": "1"
+      }
+    },
+    "source_bindings": {
+      "fields": [
+        "compactor",
+        "registry",
+        "replay_catalog",
+        "replay_manifest",
+        "repository"
+      ],
+      "types": {
+        "compactor": "compactor_identity",
+        "registry": "registry_identity",
+        "replay_catalog": "source_catalog_identity",
+        "replay_manifest": "replay_pack_identity",
+        "repository": "repository_identity"
+      }
+    },
+    "source_catalog_identity": {
+      "fields": [
+        "artifact_path",
+        "artifact_sha256",
+        "catalog_sha256",
+        "ordered_root_sha256",
+        "schema",
+        "source_root_sha256",
+        "theorem_count"
+      ],
+      "types": {
+        "artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1/catalog.json",
+        "artifact_sha256": "326ffe660da6e34a3aa12e0aa13096078a0bf20c45c440049aaf5d5bed1f1be7",
+        "catalog_sha256": "f5c7318229ea76b372d7f09250241ba7bb98b3829a8853e85ad2d8528b710a51",
+        "ordered_root_sha256": "73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b",
+        "schema": "peano-library-snapshot-v3",
+        "source_root_sha256": "6fefaa2bdc92e477ce20444122ea1c752420e7efc1706a664777cb887128a3be",
+        "theorem_count": "384"
+      }
+    },
+    "source_locator": {
+      "fields": [
+        "file_sha256",
+        "kind",
+        "line",
+        "path"
+      ],
+      "types": {
+        "file_sha256": "sha256 from pinned catalog theorem_sources",
+        "kind": "declaration or generated-factory",
+        "line": "integer >= 1; canonical first match in pinned catalog source order then AST line/column order",
+        "path": "relative path from pinned catalog theorem_sources"
+      }
+    },
+    "surface_part_definition": {
+      "fields": [
+        "definition",
+        "kind",
+        "text"
+      ],
+      "types": {
+        "definition": "definition id",
+        "kind": "definition",
+        "text": "nonempty string"
+      }
+    },
+    "surface_part_text": {
+      "fields": [
+        "kind",
+        "text"
+      ],
+      "types": {
+        "kind": "text",
+        "text": "nonempty string"
+      }
+    },
+    "tactic_span": {
+      "fields": [
+        "end",
+        "name",
+        "start"
+      ],
+      "types": {
+        "end": "integer > start",
+        "name": "exact text[start:end]",
+        "start": "integer >= 0"
+      }
+    }
+  },
+  "ordering_contracts": {
+    "definitions": "defined-syntax registry order; conceptual dependencies must precede their dependent",
+    "dependency_edges": "for each theorem in replay order, emit [dependency, theorem] in declared dependency order",
+    "manifest_files": "schema.json, explicit.json, defined.json, isolation-receipt.json; manifest.json is never a member of its own file table",
+    "records": "exact retained replay-pack theorem order, indices 0 through 383",
+    "references": "ascending nonoverlapping source spans within each exact command line"
+  },
+  "root_preimage_shapes": {
+    "defined": [
+      "aggregate",
+      "compactor",
+      "definitions_root_sha256",
+      "evaluation_eligible",
+      "explicit_root_sha256",
+      "format",
+      "freeze_ready",
+      "id",
+      "logic_mode",
+      "ordered_records",
+      "registry",
+      "replay_pack",
+      "retrieval_eligible",
+      "status",
+      "theorem_count",
+      "training_eligible",
+      "v"
+    ],
+    "explicit": [
+      "aggregate",
+      "dependency_receipt",
+      "evaluation_eligible",
+      "format",
+      "freeze_ready",
+      "id",
+      "logic_mode",
+      "ordered_records",
+      "replay_pack",
+      "repository",
+      "retrieval_eligible",
+      "source_catalog",
+      "status",
+      "theorem_count",
+      "training_eligible",
+      "v"
+    ],
+    "isolation": [
+      "checks",
+      "counts",
+      "evaluation_eligible",
+      "format",
+      "freeze_ready",
+      "id",
+      "logic_mode",
+      "retrieval_eligible",
+      "roots",
+      "status",
+      "training_eligible",
+      "v"
+    ],
+    "manifest": [
+      "aggregate",
+      "evaluation_eligible",
+      "files",
+      "format",
+      "freeze_ready",
+      "id",
+      "logic_mode",
+      "retrieval_eligible",
+      "schema",
+      "source_bindings",
+      "status",
+      "training_eligible",
+      "v"
+    ]
+  },
+  "v": 1
+}

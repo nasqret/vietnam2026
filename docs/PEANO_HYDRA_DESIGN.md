@@ -343,6 +343,96 @@ explorer rows, exercises bounded no-follow reads and source/report drift, and
 verifies the no-default-write CLI. Passing this gate establishes protocol
 behavior only; it grants none of the missing review or owner authority.
 
+#### Isolated selected documentation bundle implemented in H1.1b1
+
+On 2026-08-09, H1.1b1 repairs the selected API generation boundary without
+rewriting the historical proof explorers. Reusing the 557-row QR corpus by
+filtering its row objects would not have been a sound epoch operation: the
+legacy public rows carry `dependents` arrays containing 757 name references
+into the 317-row disjoint candidate corpus. Filtering only the top-level rows
+would therefore leave foreign names in an apparently 384-row document. Binding either complete
+explorer artifact hash would be subtler but still wrong, because a change to a
+disjoint theorem would reseal the selected epoch surface.
+
+The replacement is a separate, tagless, replay-ordered candidate bundle. It
+starts from the exact retained replay manifest and reconstructs each record
+fresh from source-hash-verified `TheoremSpec` values. Dependencies and
+references are checked against that selected 384-name namespace. It never
+copies legacy row objects, global PA tags, `dependents`, links, scopes, closure
+fields, or full-corpus hashes. No theorem name or body from the 317-row
+candidate set and no hash of either legacy explorer enter an authoritative
+bundle root. The existing 557-row explicit/defined surfaces, tag registry, and
+metadata-v1 ledger remain unchanged historical evidence.
+
+This isolation also exposed an import boundary. `defined_edition` formerly
+loaded the complete quadratic-reciprocity stack as soon as the per-theorem
+compactor was imported. That eager import made a harmless compaction API load
+non-selected theorem bodies. The stack import is now local to
+`defined_library_edition()`: importing `compact_theorem_spec` loads only the
+compactor and its exact term/formula dependencies, while explicitly asking for
+the historical 557-row edition still loads the wider stack.
+
+The closed layout has exactly five canonical files in
+`artifacts/peano-hydra/l0-documentation-candidate-v1/`:
+
+- `schema.json` fixes closed object shapes, exact source bindings, bounds, and
+  the candidate-only claim boundary;
+- `explicit.json` contains the fresh replay-ordered tactic/source records;
+- `defined.json` contains exact-AST-checked conservative notation receipts;
+- `isolation-receipt.json` checks order, membership, fields, and internal
+  dependency closure; and
+- `manifest.json` binds the other four files and their source identities.
+
+The explicit document has 384 theorem records, 1,038 ordered declared
+dependency edges, and 13,862 tactic lines over 20 tactic heads. It records
+3,989 theorem-reference occurrences: 1,035 declared edges are explicitly
+referenced and three remain implicit declared edges. The selected graph has 22
+levels, maximum depth 21, 55 foundations, and 100 terminals. The defined view
+serializes 40 definition records while pinning the complete 43-entry parser
+registry. Exact compaction changes 321 statements and 624 of 950 local
+propositions, records 2,027 definition occurrences, reduces statement text
+from 224,948 to 29,098 characters, and reduces local-proposition text from
+148,105 to 25,733 characters. These are presentation receipts; exact AST
+expansion, not shorter text, is the safety criterion.
+
+The retained identities are:
+
+- schema semantic digest
+  `30236aaaecc41104e7e193476f59a8b764d56fe86c63ca04c1561ad38645832d`
+  and artifact SHA-256
+  `a442e89ac312302dcee777b5741ca7f2d67e10f6ebcc996b8096fc6061c28a9c`;
+- explicit root
+  `b7942fa5a866ff7cd8a38f30c93787ec0abd2948e69710651e4d3578e64377da`
+  and artifact SHA-256
+  `f1c9f364db0cb7ae7f4c7fe065b1ef48d5522fc49711667479ec3dc4db723936`;
+- defined root
+  `897fd5e4bedb44b63853e428ff5bc2e2c273e30a0c239450e0ec8f93d73fc61f`
+  and artifact SHA-256
+  `164b34dd0cad555baf2164ee3da114fb60a447bd667112481e7225097dd17cea`;
+- isolation root
+  `64bdc2c52bcaf88d26382bbe514be4a442cc876b8df2a353c272587e1516d919`
+  and artifact SHA-256
+  `8c8a6882d0d5a82552942fc0c3efe5a900244a9cad02c32b24cabe3d86a0eee6`;
+  and
+- manifest root
+  `8f7ef8fcca69bc6f5f8b39c220293b8414a65fd81576c584f78e59da104d46a4`
+  and artifact SHA-256
+  `5ded97c27b859cc4725362bc76aba89fac06c5f11843b50529b78050b19348bf`.
+
+The first focused gate passed 36 tests in 126.87 seconds. After final retained
+pins were installed, seven targeted retained-artifact tests passed with 36
+deselected in 7.10 seconds. Final acceptance then passed all 43 focused tests
+in 115.64 seconds and 23 compatibility tests in 18.19 seconds. These gates
+establish implementation compatibility, not any broader authority claim.
+
+This is an H1.1b1 **candidate selected-API record bundle**, not deployed proof-
+explorer pages, owner freeze, source-state deposit, human review, minimality,
+best-known status, readable/optimized dependency evidence, publication union,
+A2 output, or permission for training, retrieval, or evaluation. H1.1 remains
+open. Metadata v1 must continue to report its historical 240-complete join.
+The next sub-slice is H1.1b2: metadata v2 will bind this bundle and report
+selected API coverage separately from deployed-page coverage.
+
 ### 2.4 Sealed-test law
 
 The unit of separation is a mathematical **lineage**, not a row or filename.

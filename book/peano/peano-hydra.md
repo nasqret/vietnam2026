@@ -993,6 +993,98 @@ the no-default-write CLI. The retained artifacts reproduce byte-for-byte under
 `--check`. These tests validate the ledger protocol; they do not fill any of
 the recorded gaps or substitute for external owner review.
 
+## Why filtering a larger explorer is not isolation
+
+On 2026-08-09, H1.1b1 addressed the 144-row selected-API gap discovered by the
+metadata ledger. The obvious implementation was to extend or filter the
+existing 557-row proof explorer. We rejected it after inspecting the records,
+because top-level membership is not the whole information boundary.
+
+The legacy public rows contain `dependents` arrays. Across those rows, 757 name
+references point into the disjoint 317-row candidate corpus. A filter that
+keeps only the 384 selected top-level names can therefore still disclose names
+from outside the selection. Hashing the complete corpus is not a repair: if a
+disjoint theorem later changes, the 384-theorem documentation root changes as
+well. That would couple an alleged candidate-$L_0$ identity to material that is
+not in candidate $L_0$.
+
+The safe construction is deliberately less clever. Start with the retained
+replay manifest, preserve its exact 384-row order, and construct every record
+again. Resolve every declared dependency and tactic reference only in that
+selected namespace. Do not copy global PA tags, `dependents`, closures, links,
+scopes, foreign theorem names or bodies, or hashes of the larger explorers.
+The result is a tagless selected API. The old 557-row explicit and defined
+explorers, their tag map, and metadata v1 remain untouched as historical and
+research-facing surfaces.
+
+There was a second, quieter information leak at import time. Importing the
+single-theorem compactor used to import the full quadratic-reciprocity stack.
+That was unnecessary for selected compaction and loaded the wider theorem
+corpus merely by asking for a utility function. The wider import is now lazy:
+`compact_theorem_spec` can be imported without the 557-row stack, while
+`defined_library_edition()` imports that stack only when the historical edition
+is actually requested. This is not a security sandbox against arbitrary
+Python; it is a precise dependency boundary for the deterministic builder.
+
+### The five-document envelope
+
+The candidate bundle lives at
+`artifacts/peano-hydra/l0-documentation-candidate-v1/` and contains exactly
+five files:
+
+1. `schema.json`, the closed protocol and source-binding contract;
+2. `explicit.json`, the replay-ordered explicit proof records;
+3. `defined.json`, the conservative notation records and expansion receipts;
+4. `isolation-receipt.json`, the selected-membership and graph check; and
+5. `manifest.json`, the hash envelope over the first four.
+
+The explicit side contains exactly 384 theorems, 1,038 internal declared
+dependency edges, and 13,862 tactic lines using 20 tactic heads. Its parser
+finds 3,989 theorem-reference occurrences: 1,035 declared edges are directly
+mentioned by tactic text and three are implicit. These counts describe the
+submitted readable scripts; they do not prove dependency minimality.
+
+The defined side serializes 40 core definition records and pins the complete
+43-entry parser registry: those 40 core definitions plus three adjacent ones.
+The exact-AST compactor changes 321 theorem statements and 624 of the 950 local
+propositions. It records 2,027 definition occurrences. Expanded statement
+text occupies 224,948 characters and the defined rendering 29,098; expanded
+local propositions occupy 148,105 characters and their defined rendering
+25,733. The shorter rendering is useful for people and models, but the receipt
+earns trust only by expanding back to the exact original AST.
+
+Each retained file has both a semantic root where applicable and an exact
+canonical artifact hash:
+
+| File | Semantic identity/root | Artifact SHA-256 |
+|---|---|---|
+| `schema.json` | `30236aaaecc41104e7e193476f59a8b764d56fe86c63ca04c1561ad38645832d` | `a442e89ac312302dcee777b5741ca7f2d67e10f6ebcc996b8096fc6061c28a9c` |
+| `explicit.json` | `b7942fa5a866ff7cd8a38f30c93787ec0abd2948e69710651e4d3578e64377da` | `f1c9f364db0cb7ae7f4c7fe065b1ef48d5522fc49711667479ec3dc4db723936` |
+| `defined.json` | `897fd5e4bedb44b63853e428ff5bc2e2c273e30a0c239450e0ec8f93d73fc61f` | `164b34dd0cad555baf2164ee3da114fb60a447bd667112481e7225097dd17cea` |
+| `isolation-receipt.json` | `64bdc2c52bcaf88d26382bbe514be4a442cc876b8df2a353c272587e1516d919` | `8c8a6882d0d5a82552942fc0c3efe5a900244a9cad02c32b24cabe3d86a0eee6` |
+| `manifest.json` | `8f7ef8fcca69bc6f5f8b39c220293b8414a65fd81576c584f78e59da104d46a4` | `5ded97c27b859cc4725362bc76aba89fac06c5f11843b50529b78050b19348bf` |
+
+The schema identity in the first row is its semantic digest. The isolation
+receipt checks exact order and membership, equality of the explicit and
+defined name sequences, internal dependency closure, absence of duplicate or
+foreign names, and absence of fields such as tags and `dependents`. These
+negative checks are central: a document can have all 384 desired rows and
+still be contaminated by one extra reference.
+
+The focused implementation file passed 36 tests in 126.87 seconds. After the
+final roots were pinned, the seven targeted retained-artifact tests passed
+with 36 deselected in 7.10 seconds. Final acceptance then passed all 43 focused
+tests in 115.64 seconds and 23 compatibility tests in 18.19 seconds. This is
+implementation evidence, not a claim about epoch authority.
+
+H1.1b1 creates selected API records, not deployed pages and not a frozen
+epoch. It grants no human-review, owner, source-state, minimality, readable or
+optimized dependency, best-known, publication-union, A2, training, retrieval,
+or evaluation claim. Metadata v1 truthfully remains the historical
+240-complete ledger. H1.1b2 will introduce metadata v2 that binds the isolated
+bundle and reports selected API coverage separately from deployed-page
+coverage; H1.1 itself remains open.
+
 ## What “matched compute” means
 
 We compare three frozen systems on the same sealed targets:

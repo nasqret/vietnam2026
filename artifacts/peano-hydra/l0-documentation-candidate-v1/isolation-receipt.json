@@ -1,0 +1,89 @@
+{
+  "checks": {
+    "declared_edges_internal": true,
+    "exact_member_names": true,
+    "exact_selected_order": true,
+    "explicit_defined_order": true,
+    "no_disallowed_fields": true,
+    "no_duplicate_names": true,
+    "no_foreign_names": true
+  },
+  "counts": {
+    "defined_records": 384,
+    "definition_records": 40,
+    "disallowed_fields": 0,
+    "duplicate_names": 0,
+    "explicit_records": 384,
+    "foreign_defined_names": 0,
+    "foreign_explicit_names": 0,
+    "missing_defined_names": 0,
+    "missing_explicit_names": 0,
+    "outside_dependency_edges": 0,
+    "selected_names": 384
+  },
+  "evaluation_eligible": false,
+  "format": "peano-hydra-library-documentation-isolation-receipt",
+  "freeze_ready": false,
+  "id": "authoring-l0-documentation-isolation-candidate-v1",
+  "logic_mode": "intuitionistic",
+  "retrieval_eligible": false,
+  "root_preimage": {
+    "format": "peano-hydra-library-documentation-isolation-root-preimage",
+    "payload": {
+      "checks": {
+        "declared_edges_internal": true,
+        "exact_member_names": true,
+        "exact_selected_order": true,
+        "explicit_defined_order": true,
+        "no_disallowed_fields": true,
+        "no_duplicate_names": true,
+        "no_foreign_names": true
+      },
+      "counts": {
+        "defined_records": 384,
+        "definition_records": 40,
+        "disallowed_fields": 0,
+        "duplicate_names": 0,
+        "explicit_records": 384,
+        "foreign_defined_names": 0,
+        "foreign_explicit_names": 0,
+        "missing_defined_names": 0,
+        "missing_explicit_names": 0,
+        "outside_dependency_edges": 0,
+        "selected_names": 384
+      },
+      "evaluation_eligible": false,
+      "format": "peano-hydra-library-documentation-isolation-receipt",
+      "freeze_ready": false,
+      "id": "authoring-l0-documentation-isolation-candidate-v1",
+      "logic_mode": "intuitionistic",
+      "retrieval_eligible": false,
+      "roots": {
+        "defined_document_root_sha256": "897fd5e4bedb44b63853e428ff5bc2e2c273e30a0c239450e0ec8f93d73fc61f",
+        "defined_ordered_record_root_sha256": "945cf39d6f4e9676a1161be4588b6a330fbc6e1d18228aeb34f0d738c15b6a10",
+        "dependency_edge_root_sha256": "624539d437b5eecabe7a1ed7a74267102c089295795d67a28e9e1e8aa179ccc5",
+        "dependency_node_root_sha256": "488d34cad0a8fe21514c8e72fd10633e6d534fe9a3210db079b40b8e3d067ffc",
+        "explicit_document_root_sha256": "b7942fa5a866ff7cd8a38f30c93787ec0abd2948e69710651e4d3578e64377da",
+        "explicit_ordered_record_root_sha256": "6e3c28746ae72dcb0ab820378c7dc59e982c3c9d7b832fc8b8faf0940b7f20a0",
+        "selected_name_root_sha256": "e0c2cd07c52ba666e3ff01c5960d75879e586e148ed9979fc31b8ddbf6314109"
+      },
+      "status": "candidate",
+      "training_eligible": false,
+      "v": 1
+    },
+    "v": 1
+  },
+  "root_sha256": "64bdc2c52bcaf88d26382bbe514be4a442cc876b8df2a353c272587e1516d919",
+  "roots": {
+    "defined_document_root_sha256": "897fd5e4bedb44b63853e428ff5bc2e2c273e30a0c239450e0ec8f93d73fc61f",
+    "defined_ordered_record_root_sha256": "945cf39d6f4e9676a1161be4588b6a330fbc6e1d18228aeb34f0d738c15b6a10",
+    "dependency_edge_root_sha256": "624539d437b5eecabe7a1ed7a74267102c089295795d67a28e9e1e8aa179ccc5",
+    "dependency_node_root_sha256": "488d34cad0a8fe21514c8e72fd10633e6d534fe9a3210db079b40b8e3d067ffc",
+    "explicit_document_root_sha256": "b7942fa5a866ff7cd8a38f30c93787ec0abd2948e69710651e4d3578e64377da",
+    "explicit_ordered_record_root_sha256": "6e3c28746ae72dcb0ab820378c7dc59e982c3c9d7b832fc8b8faf0940b7f20a0",
+    "selected_name_root_sha256": "e0c2cd07c52ba666e3ff01c5960d75879e586e148ed9979fc31b8ddbf6314109"
+  },
+  "status": "candidate",
+  "training_eligible": false,
+  "v": 1
+}

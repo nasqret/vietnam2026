@@ -233,10 +233,28 @@ the schemas exist.
         present/stale/missing documentation receipts. Its schema enforces
         `status = candidate`, `freeze_ready = false`, and
         `evaluation_eligible = false`; it cannot create an owner deposit.
-  - [ ] Repair and audit the 144 missing explicit-explorer,
+  - [ ] Repair and audit the 144 missing deployed explicit-explorer,
         defined-explorer, and definition receipts. Keep the 317 disjoint
         non-`L0` explorer rows as provenance only and exclude the full
         557-row corpora from epoch training, retrieval, and evaluation.
+    - [x] **H1.1b1 — selected API records:** build a separate, tagless,
+          replay-ordered candidate documentation bundle directly from the 384
+          retained replay rows. Filtering the 557-row explorer is forbidden:
+          its legacy public `dependents` fields leak 757 name references into
+          the 317-row disjoint candidate corpus. Its fresh explicit and
+          defined records contain
+          exactly 1,038 internal declared edges, 13,862 tactic lines, 40
+          serialized definition records from the 43-entry parser registry,
+          and no names, bodies, tags, `dependents`, or artifact hashes from the
+          317 disjoint rows. This closes the isolated selected-API generation
+          subgate only; it does not repair the deployed explorer pages or
+          change metadata-v1's historical 240-complete report. The compactor's
+          wider QR-stack import is lazy so importing the selected per-theorem
+          API does not itself load non-selected theorem bodies.
+    - [ ] **H1.1b2 — selected metadata join:** add metadata v2 that binds the
+          isolated bundle and reports selected API coverage separately from
+          deployed-page coverage. Preserve metadata v1 exactly as historical
+          evidence.
   - [ ] Register the reviewed source commit/dirty-state receipt, independent
         owner deposit, and immutable `research-eval` freeze before calling the
         result production `L0`.
@@ -285,6 +303,30 @@ each such receipt class. All 384 rows still have pending review, lineage,
 best-known comparison, readable/optimized dependency-vector, and publication-
 union evidence. Repairing those 144 receipts and completing A2 precede a
 source-state request to an external independent owner.
+
+H1.1b1 adds a closed five-file candidate bundle under
+`artifacts/peano-hydra/l0-documentation-candidate-v1/`: `schema.json`,
+`explicit.json`, `defined.json`, `isolation-receipt.json`, and
+`manifest.json`. Schema semantic digest is
+`30236aaaecc41104e7e193476f59a8b764d56fe86c63ca04c1561ad38645832d`
+and its exact artifact SHA-256 is
+`a442e89ac312302dcee777b5741ca7f2d67e10f6ebcc996b8096fc6061c28a9c`.
+The explicit document root/artifact pair is
+`b7942fa5a866ff7cd8a38f30c93787ec0abd2948e69710651e4d3578e64377da` /
+`f1c9f364db0cb7ae7f4c7fe065b1ef48d5522fc49711667479ec3dc4db723936`;
+the defined pair is
+`897fd5e4bedb44b63853e428ff5bc2e2c273e30a0c239450e0ec8f93d73fc61f` /
+`164b34dd0cad555baf2164ee3da114fb60a447bd667112481e7225097dd17cea`;
+the isolation pair is
+`64bdc2c52bcaf88d26382bbe514be4a442cc876b8df2a353c272587e1516d919` /
+`8c8a6882d0d5a82552942fc0c3efe5a900244a9cad02c32b24cabe3d86a0eee6`;
+and the manifest pair is
+`8f7ef8fcca69bc6f5f8b39c220293b8414a65fd81576c584f78e59da104d46a4` /
+`5ded97c27b859cc4725362bc76aba89fac06c5f11843b50529b78050b19348bf`.
+The focused implementation gate passed 36 tests in 126.87 seconds; after the
+final pin update, the seven targeted retained-artifact tests passed with 36
+deselected in 7.10 seconds. Final acceptance then passed all 43 focused tests
+in 115.64 seconds and 23 compatibility tests in 18.19 seconds.
 
 ### H1.2 Build lineage before rows
 
@@ -759,13 +801,31 @@ and benchmark work precede GPU training.
       subtests. The warning-as-error 46-source Book, 2,324-page structural
       integrity gate, all 194 links/287 commands, and the 490-note/4,981-link
       vault are green. This is implementation acceptance, not owner review.
+- [x] H1.1b1's isolated selected-API bundle is retained as five canonical
+      files. It reconstructs all 384 rows in replay order without global PA
+      tags, records 1,038 internal declared edges and 13,862 tactic lines, and
+      compacts 321 statements plus 624 of 950 local propositions through the
+      exact-AST checker. The defined view contains 2,027 definition
+      occurrences and 40 serialized definitions while pinning the complete
+      43-entry parser registry; statement text contracts from 224,948 to
+      29,098 characters and local propositions from 148,105 to 25,733. Its
+      isolation receipt rejects foreign names,
+      disallowed `dependents`, and any dependency outside the selected set.
+      No candidate body/name or legacy-explorer artifact hash enters an
+      authoritative bundle root; the old 557-row surfaces, their tag registry,
+      and metadata v1 remain byte-for-byte historical evidence. Focused tests
+      passed 36/36 in 126.87 seconds, then the seven retained-pin tests passed
+      with 36 deselected in 7.10 seconds. Final acceptance passed 43 focused
+      tests in 115.64 seconds and 23 compatibility tests in 18.19 seconds.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
       not separately leave-one-out-verified readable/optimized vectors,
-      best-known certificates, complete definition/document receipts, lineage
+      best-known certificates, complete deployed-page/document receipts, lineage
       masks, source-state/owner freeze receipts, or a sealed benchmark. All
       384 rows retain pending review, lineage, best-known, dependency-vector,
-      and publication-union gaps. The immediate sequence is the 144-row/A2
-      repair, then a source-state request to an external owner. No 200-unit gold
+      and publication-union gaps. The immediate sequence is H1.1b2 metadata v2,
+      reporting selected API coverage separately from deployed-page coverage,
+      followed by deployed-page repair and A2 before a source-state request to
+      an external owner. No 200-unit gold
       corpus, Vampire adapter, new Qwen training, classical Hydra profile, or
       Rust authority claim is yet complete.
