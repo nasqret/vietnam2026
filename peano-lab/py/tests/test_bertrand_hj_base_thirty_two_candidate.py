@@ -558,6 +558,184 @@ POW_TOTAL_TAGS = {
     "bertrand_hj_base_window_thirty_two_from_total": "hj32_base",
 }
 
+LIVENESS_CASES = tuple(
+    (name, dependency)
+    for name in EXPECTED_NAMES
+    for dependency in EXPECTED_DEPENDENCIES[name]
+)
+FALSE_TARGET_CASES = EXPECTED_NAMES
+POW_TOTAL_CASES = tuple(POW_TOTAL_TAGS.items())
+
+# (stable pytest id, theorem name, exact old fragment, exact new fragment)
+BOUNDARY_MUTATION_CASES = (
+    (
+        "pow_block_bound_from_total__boundary__left_block_exponent",
+        "pow_block_bound_from_total",
+        "d * m",
+        "S (d * m)",
+    ),
+    (
+        "pow_three_five_le_pow_four_four_from_total__boundary__left_exponent",
+        "pow_three_five_le_pow_four_four_from_total",
+        _power_terms("3", "5", "x", tag="hj32_three_five"),
+        _power_terms("3", "6", "x", tag="hj32_three_five"),
+    ),
+    (
+        "pow_eleven_two_le_pow_two_seven_from_total__boundary__right_exponent",
+        "pow_eleven_two_le_pow_two_seven_from_total",
+        _power_terms("2", "7", "y", tag="hj32_eleven_two_right"),
+        _power_terms("2", "6", "y", tag="hj32_eleven_two_right"),
+    ),
+    (
+        "pow_six_ten_le_pow_four_thirteen_from_total__boundary__successor_left",
+        "pow_six_ten_le_pow_four_thirteen_from_total",
+        witness_le("x", "y", tag="hj32_six_ten_result"),
+        witness_le("S x", "y", tag="hj32_six_ten_result"),
+    ),
+    (
+        "linear_square_budget__boundary__successor_left",
+        "linear_square_budget",
+        witness_le("a * k", "r * r", tag="hj32_linear_square_budget"),
+        witness_le("S (a * k)", "r * r", tag="hj32_linear_square_budget"),
+    ),
+    (
+        "bertrand_scaled_budget_root_32__boundary__successor_left",
+        "bertrand_scaled_budget_root_32",
+        witness_le(
+            "6 * ((4 * 13 + 1) + 4 * 29)",
+            "32 * 32",
+            tag="hj32_scaled_budget_root_32",
+        ),
+        witness_le(
+            "S (6 * ((4 * 13 + 1) + 4 * 29))",
+            "32 * 32",
+            tag="hj32_scaled_budget_root_32",
+        ),
+    ),
+    (
+        "ceil_div_six_budget_of_scaled_le__boundary__successor_budget",
+        "ceil_div_six_budget_of_scaled_le",
+        witness_le("k", "e", tag="hj32_ceil_budget_result"),
+        witness_le("S k", "e", tag="hj32_ceil_budget_result"),
+    ),
+    (
+        "pow_six_six_le_pow_four_eight_from_total__boundary__right_exponent",
+        "pow_six_six_le_pow_four_eight_from_total",
+        _power_terms("4", "8", "y", tag="hj32_residual_six_right"),
+        _power_terms("4", "7", "y", tag="hj32_residual_six_right"),
+    ),
+    (
+        "pow_six_four_le_pow_four_six_from_total__boundary__right_exponent",
+        "pow_six_four_le_pow_four_six_from_total",
+        _power_terms("4", "6", "y", tag="hj32_residual_four_right"),
+        _power_terms("4", "5", "y", tag="hj32_residual_four_right"),
+    ),
+    (
+        "pow_three_five_block_plus_one_le_pow_four_four_block_plus_one_from_total__boundary__left_residual",
+        "pow_three_five_block_plus_one_le_pow_four_four_block_plus_one_from_total",
+        _power_terms("3", "5 * m + 1", "x", tag="hj32_three_plus_left"),
+        _power_terms("3", "5 * m + 2", "x", tag="hj32_three_plus_left"),
+    ),
+    (
+        "pow_two_double_eq_pow_four_from_total__boundary__successor_left",
+        "pow_two_double_eq_pow_four_from_total",
+        " -> x = y",
+        " -> S x = y",
+    ),
+    (
+        "pow_two_successor_double_le_pow_four_successor_from_total__boundary__successor_left",
+        "pow_two_successor_double_le_pow_four_successor_from_total",
+        witness_le("x", "y", tag="hj32_two_odd_result"),
+        witness_le("S x", "y", tag="hj32_two_odd_result"),
+    ),
+    (
+        "pow_eleven_double_block_le_pow_two_seven_block_from_total__boundary__left_residual",
+        "pow_eleven_double_block_le_pow_two_seven_block_from_total",
+        _power_terms("11", "2 * m", "x", tag="hj32_eleven_block_left"),
+        _power_terms(
+            "11", "2 * m + 1", "x", tag="hj32_eleven_block_left"
+        ),
+    ),
+    (
+        "pow_eleven_double_block_le_pow_four_even_from_total__boundary__odd_parity",
+        "pow_eleven_double_block_le_pow_four_even_from_total",
+        " -> 7 * m = 2 * k ->",
+        " -> 7 * m = 2 * k + 1 ->",
+    ),
+    (
+        "pow_eleven_double_block_le_pow_four_odd_from_total__boundary__next_parity",
+        "pow_eleven_double_block_le_pow_four_odd_from_total",
+        " -> 7 * m = 2 * k + 1 ->",
+        " -> 7 * m = 2 * k + 2 ->",
+    ),
+    (
+        "pow_six_ten_block_le_pow_four_thirteen_block_from_total__boundary__right_block",
+        "pow_six_ten_block_le_pow_four_thirteen_block_from_total",
+        _power_terms("4", "13 * m", "y", tag="hj32_six_block_right"),
+        _power_terms("4", "12 * m", "y", tag="hj32_six_block_right"),
+    ),
+    (
+        "pow_thirty_six_double_block_eq_pow_six_four_block_from_total__boundary__successor_left",
+        "pow_thirty_six_double_block_eq_pow_six_four_block_from_total",
+        " -> x = y",
+        " -> S x = y",
+    ),
+    (
+        "bertrand_h_root_32_from_total__boundary__successor_h",
+        "bertrand_h_root_32_from_total",
+        witness_le("h", "u", tag="hj32_h_root_32_result"),
+        witness_le("S h", "u", tag="hj32_h_root_32_result"),
+    ),
+    (
+        "bertrand_h_root_37_from_total__boundary__successor_h",
+        "bertrand_h_root_37_from_total",
+        witness_le("h", "u", tag="hj32_h_root_37_result"),
+        witness_le("S h", "u", tag="hj32_h_root_37_result"),
+    ),
+    (
+        "bertrand_j_base_thirty_two_window_from_total__boundary__lower_31",
+        "bertrand_j_base_thirty_two_window_from_total",
+        witness_le("32", "s", tag="hj32_base_lower"),
+        witness_le("31", "s", tag="hj32_base_lower"),
+    ),
+    (
+        "bertrand_j_base_thirty_two_window_from_total__boundary__upper_38",
+        "bertrand_j_base_thirty_two_window_from_total",
+        witness_le("s", "37", tag="hj32_base_upper"),
+        witness_le("s", "38", tag="hj32_base_upper"),
+    ),
+    (
+        "bertrand_j_base_thirty_two_window_from_total__boundary__successor_j",
+        "bertrand_j_base_thirty_two_window_from_total",
+        witness_le("j", "g", tag="hj32_base_j_result"),
+        witness_le("S j", "g", tag="hj32_base_j_result"),
+    ),
+    (
+        "bertrand_hj_base_window_thirty_two_from_total__boundary__lower_31",
+        "bertrand_hj_base_window_thirty_two_from_total",
+        witness_le("32", "s", tag="hj32_base_lower"),
+        witness_le("31", "s", tag="hj32_base_lower"),
+    ),
+    (
+        "bertrand_hj_base_window_thirty_two_from_total__boundary__upper_38",
+        "bertrand_hj_base_window_thirty_two_from_total",
+        witness_le("s", "37", tag="hj32_base_upper"),
+        witness_le("s", "38", tag="hj32_base_upper"),
+    ),
+    (
+        "bertrand_hj_base_window_thirty_two_from_total__boundary__successor_h",
+        "bertrand_hj_base_window_thirty_two_from_total",
+        witness_le("h", "u", tag="hj32_base_h_result"),
+        witness_le("S h", "u", tag="hj32_base_h_result"),
+    ),
+    (
+        "bertrand_hj_base_window_thirty_two_from_total__boundary__successor_j",
+        "bertrand_hj_base_window_thirty_two_from_total",
+        witness_le("j", "g", tag="hj32_base_j_result"),
+        witness_le("S j", "g", tag="hj32_base_j_result"),
+    ),
+)
+
 
 @lru_cache(maxsize=1)
 def _prior_specs() -> tuple[TheoremSpec, ...]:
@@ -678,194 +856,111 @@ def test_hj_base_thirty_two_bodies_are_constructive(name: str) -> None:
     )
 
 
-def test_hj_base_thirty_two_every_declared_dependency_is_live() -> None:
-    available = _available()
-    removed_edges = 0
-    for item in _specs():
-        for dependency in item.dependencies:
-            shortened = replace(
-                item,
-                dependencies=tuple(
-                    name for name in item.dependencies if name != dependency
-                ),
-            )
-            with pytest.raises(CandidateBodyError):
-                replay_candidate_bodies((shortened,), core=available)
-            removed_edges += 1
-    assert removed_edges == sum(len(item.dependencies) for item in _specs())
+def test_hj_base_thirty_two_audit_case_manifests_are_frozen() -> None:
+    assert len(LIVENESS_CASES) == 191
+    assert len(FALSE_TARGET_CASES) == 30
+    assert len(POW_TOTAL_CASES) == 22
+    assert len(BOUNDARY_MUTATION_CASES) == 26
+    assert sum(len(item.dependencies) for item in _specs()) == 191
 
-
-def test_hj_base_thirty_two_false_and_totality_mutations_are_rejected() -> None:
-    available = _available()
-    for item in _specs():
-        false_contract = replace(item, statement=f"({item.statement}) /\\ false")
-        with pytest.raises(CandidateBodyError):
-            replay_candidate_bodies((false_contract,), core=available)
-
-    specs = {item.name: item for item in _specs()}
-    for name, tag in POW_TOTAL_TAGS.items():
-        item = specs[name]
-        total = power_total_relation(tag=tag)
-        assert item.statement.count(total) == 1
-        weakened = replace(item, statement=item.statement.replace(total, "0 = 0"))
-        with pytest.raises(CandidateBodyError):
-            replay_candidate_bodies((weakened,), core=available)
-
-
-def test_hj_base_thirty_two_boundary_mutations_are_rejected() -> None:
-    specs = {item.name: item for item in _specs()}
-    block = specs["pow_block_bound_from_total"]
-    three_four = specs["pow_three_five_le_pow_four_four_from_total"]
-    eleven_two = specs["pow_eleven_two_le_pow_two_seven_from_total"]
-    six_ten = specs["pow_six_ten_le_pow_four_thirteen_from_total"]
-    linear = specs["linear_square_budget"]
-    root_32_budget = specs["bertrand_scaled_budget_root_32"]
-    ceil_budget = specs["ceil_div_six_budget_of_scaled_le"]
-    residual_six = specs["pow_six_six_le_pow_four_eight_from_total"]
-    residual_four = specs["pow_six_four_le_pow_four_six_from_total"]
-    three_plus = specs[
-        "pow_three_five_block_plus_one_le_pow_four_four_block_plus_one_from_total"
-    ]
-    two_double = specs["pow_two_double_eq_pow_four_from_total"]
-    two_odd = specs["pow_two_successor_double_le_pow_four_successor_from_total"]
-    eleven_block = specs[
-        "pow_eleven_double_block_le_pow_two_seven_block_from_total"
-    ]
-    eleven_even = specs["pow_eleven_double_block_le_pow_four_even_from_total"]
-    eleven_odd = specs["pow_eleven_double_block_le_pow_four_odd_from_total"]
-    six_block = specs[
-        "pow_six_ten_block_le_pow_four_thirteen_block_from_total"
-    ]
-    thirty_six = specs[
-        "pow_thirty_six_double_block_eq_pow_six_four_block_from_total"
-    ]
-    h_32 = specs["bertrand_h_root_32_from_total"]
-    h_37 = specs["bertrand_h_root_37_from_total"]
-    j_window = specs["bertrand_j_base_thirty_two_window_from_total"]
-    base = specs["bertrand_hj_base_window_thirty_two_from_total"]
-    mutations = (
-        replace(block, statement=block.statement.replace("d * m", "S (d * m)", 1)),
-        replace(three_four, statement=three_four.statement.replace(
-            _power_terms("3", "5", "x", tag="hj32_three_five"),
-            _power_terms("3", "6", "x", tag="hj32_three_five"),
-        )),
-        replace(eleven_two, statement=eleven_two.statement.replace(
-            _power_terms("2", "7", "y", tag="hj32_eleven_two_right"),
-            _power_terms("2", "6", "y", tag="hj32_eleven_two_right"),
-        )),
-        replace(six_ten, statement=six_ten.statement.replace(
-            witness_le("x", "y", tag="hj32_six_ten_result"),
-            witness_le("S x", "y", tag="hj32_six_ten_result"),
-        )),
-        replace(linear, statement=linear.statement.replace(
-            witness_le("a * k", "r * r", tag="hj32_linear_square_budget"),
-            witness_le("S (a * k)", "r * r", tag="hj32_linear_square_budget"),
-        )),
-        replace(root_32_budget, statement=root_32_budget.statement.replace(
-            witness_le(
-                "6 * ((4 * 13 + 1) + 4 * 29)",
-                "32 * 32",
-                tag="hj32_scaled_budget_root_32",
-            ),
-            witness_le(
-                "S (6 * ((4 * 13 + 1) + 4 * 29))",
-                "32 * 32",
-                tag="hj32_scaled_budget_root_32",
-            ),
-        )),
-        replace(ceil_budget, statement=ceil_budget.statement.replace(
-            witness_le("k", "e", tag="hj32_ceil_budget_result"),
-            witness_le("S k", "e", tag="hj32_ceil_budget_result"),
-        )),
-        replace(residual_six, statement=residual_six.statement.replace(
-            _power_terms("4", "8", "y", tag="hj32_residual_six_right"),
-            _power_terms("4", "7", "y", tag="hj32_residual_six_right"),
-        )),
-        replace(residual_four, statement=residual_four.statement.replace(
-            _power_terms("4", "6", "y", tag="hj32_residual_four_right"),
-            _power_terms("4", "5", "y", tag="hj32_residual_four_right"),
-        )),
-        replace(three_plus, statement=three_plus.statement.replace(
-            _power_terms(
-                "3", "5 * m + 1", "x", tag="hj32_three_plus_left"
-            ),
-            _power_terms(
-                "3", "5 * m + 2", "x", tag="hj32_three_plus_left"
-            ),
-        )),
-        replace(two_double, statement=two_double.statement.replace(
-            " -> x = y", " -> S x = y", 1
-        )),
-        replace(two_odd, statement=two_odd.statement.replace(
-            witness_le("x", "y", tag="hj32_two_odd_result"),
-            witness_le("S x", "y", tag="hj32_two_odd_result"),
-        )),
-        replace(eleven_block, statement=eleven_block.statement.replace(
-            _power_terms(
-                "11", "2 * m", "x", tag="hj32_eleven_block_left"
-            ),
-            _power_terms(
-                "11", "2 * m + 1", "x", tag="hj32_eleven_block_left"
-            ),
-        )),
-        replace(eleven_even, statement=eleven_even.statement.replace(
-            " -> 7 * m = 2 * k ->", " -> 7 * m = 2 * k + 1 ->", 1
-        )),
-        replace(eleven_odd, statement=eleven_odd.statement.replace(
-            " -> 7 * m = 2 * k + 1 ->", " -> 7 * m = 2 * k + 2 ->", 1
-        )),
-        replace(six_block, statement=six_block.statement.replace(
-            _power_terms(
-                "4", "13 * m", "y", tag="hj32_six_block_right"
-            ),
-            _power_terms(
-                "4", "12 * m", "y", tag="hj32_six_block_right"
-            ),
-        )),
-        replace(thirty_six, statement=thirty_six.statement.replace(
-            " -> x = y", " -> S x = y", 1
-        )),
-        replace(h_32, statement=h_32.statement.replace(
-            witness_le("h", "u", tag="hj32_h_root_32_result"),
-            witness_le("S h", "u", tag="hj32_h_root_32_result"),
-        )),
-        replace(h_37, statement=h_37.statement.replace(
-            witness_le("h", "u", tag="hj32_h_root_37_result"),
-            witness_le("S h", "u", tag="hj32_h_root_37_result"),
-        )),
-        replace(j_window, statement=j_window.statement.replace(
-            witness_le("32", "s", tag="hj32_base_lower"),
-            witness_le("31", "s", tag="hj32_base_lower"),
-        )),
-        replace(j_window, statement=j_window.statement.replace(
-            witness_le("s", "37", tag="hj32_base_upper"),
-            witness_le("s", "38", tag="hj32_base_upper"),
-        )),
-        replace(j_window, statement=j_window.statement.replace(
-            witness_le("j", "g", tag="hj32_base_j_result"),
-            witness_le("S j", "g", tag="hj32_base_j_result"),
-        )),
-        replace(base, statement=base.statement.replace(
-            witness_le("32", "s", tag="hj32_base_lower"),
-            witness_le("31", "s", tag="hj32_base_lower"),
-        )),
-        replace(base, statement=base.statement.replace(
-            witness_le("s", "37", tag="hj32_base_upper"),
-            witness_le("s", "38", tag="hj32_base_upper"),
-        )),
-        replace(base, statement=base.statement.replace(
-            witness_le("h", "u", tag="hj32_base_h_result"),
-            witness_le("S h", "u", tag="hj32_base_h_result"),
-        )),
-        replace(base, statement=base.statement.replace(
-            witness_le("j", "g", tag="hj32_base_j_result"),
-            witness_le("S j", "g", tag="hj32_base_j_result"),
-        )),
+    liveness_ids = tuple(
+        f"{name}__without__{dependency}"
+        for name, dependency in LIVENESS_CASES
     )
-    for mutated in mutations:
-        assert mutated.statement != specs[mutated.name].statement
-        with pytest.raises(CandidateBodyError):
-            replay_candidate_bodies((mutated,), core=_available())
+    false_ids = tuple(f"{name}__false_target" for name in FALSE_TARGET_CASES)
+    total_ids = tuple(
+        f"{name}__without__pow_total" for name, _tag in POW_TOTAL_CASES
+    )
+    boundary_ids = tuple(case_id for case_id, *_rest in BOUNDARY_MUTATION_CASES)
+    for ids in (liveness_ids, false_ids, total_ids, boundary_ids):
+        assert len(ids) == len(set(ids))
+
+    specs = {item.name: item for item in _specs()}
+    for _case_id, name, old, new in BOUNDARY_MUTATION_CASES:
+        assert old != new
+        assert old in specs[name].statement
+        assert specs[name].statement.replace(old, new, 1) != specs[name].statement
+
+
+def test_hj_base_thirty_two_pow_total_manifest_occurs_exactly_once() -> None:
+    specs = {item.name: item for item in _specs()}
+    for name, tag in POW_TOTAL_CASES:
+        total = power_total_relation(tag=tag)
+        assert specs[name].statement.count(total) == 1
+
+
+@pytest.mark.parametrize(
+    ("name", "dependency"),
+    LIVENESS_CASES,
+    ids=[
+        f"{name}__without__{dependency}"
+        for name, dependency in LIVENESS_CASES
+    ],
+)
+def test_hj_base_thirty_two_every_declared_dependency_is_live(
+    name: str,
+    dependency: str,
+) -> None:
+    item = next(item for item in _specs() if item.name == name)
+    assert dependency in item.dependencies
+    shortened = replace(
+        item,
+        dependencies=tuple(
+            candidate
+            for candidate in item.dependencies
+            if candidate != dependency
+        ),
+    )
+    with pytest.raises(CandidateBodyError):
+        replay_candidate_bodies((shortened,), core=_available())
+
+
+@pytest.mark.parametrize(
+    "name",
+    FALSE_TARGET_CASES,
+    ids=[f"{name}__false_target" for name in FALSE_TARGET_CASES],
+)
+def test_hj_base_thirty_two_false_target_is_rejected(name: str) -> None:
+    item = next(item for item in _specs() if item.name == name)
+    false_contract = replace(item, statement=f"({item.statement}) /\\ false")
+    with pytest.raises(CandidateBodyError):
+        replay_candidate_bodies((false_contract,), core=_available())
+
+
+@pytest.mark.parametrize(
+    ("name", "tag"),
+    POW_TOTAL_CASES,
+    ids=[f"{name}__without__pow_total" for name, _tag in POW_TOTAL_CASES],
+)
+def test_hj_base_thirty_two_pow_total_mutation_is_rejected(
+    name: str,
+    tag: str,
+) -> None:
+    item = next(item for item in _specs() if item.name == name)
+    total = power_total_relation(tag=tag)
+    weakened = replace(item, statement=item.statement.replace(total, "0 = 0"))
+    assert weakened.statement != item.statement
+    with pytest.raises(CandidateBodyError):
+        replay_candidate_bodies((weakened,), core=_available())
+
+
+@pytest.mark.parametrize(
+    ("case_id", "name", "old", "new"),
+    BOUNDARY_MUTATION_CASES,
+    ids=[case_id for case_id, *_rest in BOUNDARY_MUTATION_CASES],
+)
+def test_hj_base_thirty_two_boundary_mutation_is_rejected(
+    case_id: str,
+    name: str,
+    old: str,
+    new: str,
+) -> None:
+    del case_id
+    item = next(item for item in _specs() if item.name == name)
+    mutated = replace(item, statement=item.statement.replace(old, new, 1))
+    assert mutated.statement != item.statement
+    with pytest.raises(CandidateBodyError):
+        replay_candidate_bodies((mutated,), core=_available())
 
 
 def test_hj_base_thirty_two_standard_natural_semantics_are_regression_only() -> None:
