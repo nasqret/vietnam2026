@@ -1187,8 +1187,8 @@ and benchmark work precede GPU training.
       dual-producer execution, and terminal WMI collection. Its source-state,
       verifier, and WMI protocol gates pass 52 tests in 8.45 seconds; the WMI
       file alone passes 18 in 0.72 seconds. The earlier independent threat
-      audit reported no blocker before the final route refreeze. This is still no
-      submission/result: no Slurm job, frontier,
+      audit reported no blocker before the final route refreeze. This still
+      records infrastructure only: no submission/result, Slurm job, frontier,
       representative, verification/collection receipt, or authority exists,
       and every eligibility field remains false.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records

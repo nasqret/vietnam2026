@@ -778,9 +778,9 @@ The WMI-protocol file passed 18 tests in 0.72 seconds. The focused
 source-state, independent-verifier, and WMI-protocol suite passed 52 tests in
 8.45 seconds: 10, 24, and 18 respectively. The earlier independent threat
 audit reported no blocker before the final route refreeze. These are
-infrastructure gates,
-not optimizer observations. There is still no result sidecar, verification or
-collection receipt, candidate vector, frontier, representative, result root,
+infrastructure gates, not optimizer observations. There is still no result
+sidecar, verification or collection receipt, candidate vector, frontier,
+representative, result root,
 best-known claim, independent optimized-vector audit, publication union, or
 A2 completion. Proof/admission/publication authority and every training,
 retrieval, and evaluation eligibility field remain false.
