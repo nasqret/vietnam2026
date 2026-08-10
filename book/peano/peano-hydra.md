@@ -1744,7 +1744,10 @@ There is an important operational footnote. The submitter defaults to
 content-addressed snapshot on WMI before asking `sbatch --test-only` to check
 the request. It creates no Slurm job. A real job needs both `--submit` and the
 literal confirmation `PEANO-HYDRA-A23A-WMI-PILOT`. This tranche claims no
-test-only outcome, real submission, or cluster job.
+successful test-only outcome, real submission, or cluster job. Both wrappers
+accept an optional syntax-validated `WMI_SSH_JUMP`, passed only as SSH `-J`
+beside the validated target; an observed target/jump route is an operational
+transport mechanism, not execution evidence.
 
 The source-state generator/test identities are
 `4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26` /
@@ -1756,11 +1759,12 @@ The verifier module/CLI/test identities are
 The WMI runner/sbatch/submit/collect/test identities are
 `46c9bea044640ccf057a5113eff2f3c6161206c55521b8fcd7c48e7342ff8632` /
 `1f09c62532a0c9f10fc11bb00a420e1eea1967dc70686ad503c1e5207b75538c` /
-`a2f4823b6b71e80083a57a255fa2fe11edcc3394b9b030be0cf7b8f87cc3c1dc` /
-`f61d97fec0eb2e03801ba3b5a291e1d0b257514f4a80983bcd0007b116b32f08` /
-`95936bd087550a09f972b0c2cfe075eeab05a63f879a2cc13f1c97ee2809a949`.
-The three focused suites passed 48 tests in 8.19 seconds (10 + 24 + 14), and
-an independent replay of all 48 reported no threat-audit blocker.
+`ce94c5e5e77ff83998f147fb77d3e698eae41366774867238b16990accc7fbee` /
+`ddafef2eab12d18ba766325b5dbb077a0075cc8589bc553a72bd60aff910cb0e` /
+`cc75ad16a90c289d07851f7d59cf79f2e960acd86d9257f8155a1cabc532a755`.
+The WMI protocol file passed 18 tests in 0.72 seconds. The three focused suites
+passed 52 tests in 8.45 seconds (10 + 24 + 18). The earlier independent threat
+audit reported no blocker before the final route refreeze.
 
 This is runnable infrastructure, not a run. There is still no result sidecar,
 fresh verification/collection receipt, candidate metric vector, frontier,

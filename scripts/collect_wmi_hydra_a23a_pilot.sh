@@ -31,8 +31,18 @@ if [[ "$ssh_target" == -* ]] || \
   printf 'invalid WMI_SSH_TARGET: %s\n' "$ssh_target" >&2
   exit 2
 fi
+ssh_jump="${WMI_SSH_JUMP:-}"
+ssh_route=()
+if [ -n "$ssh_jump" ]; then
+  if [[ "$ssh_jump" == -* ]] || \
+     [[ ! "$ssh_jump" =~ ^[A-Za-z0-9._-]+(@[A-Za-z0-9.-]+)?$ ]]; then
+    printf 'invalid WMI_SSH_JUMP: %s\n' "$ssh_jump" >&2
+    exit 2
+  fi
+  ssh_route=(-J "$ssh_jump")
+fi
 
-ssh -o BatchMode=yes -o ConnectTimeout=15 "$ssh_target" \
+ssh -o BatchMode=yes -o ConnectTimeout=15 "${ssh_route[@]}" "$ssh_target" \
   "bash -s -- $mode $job_id" <<'REMOTE'
 set -euo pipefail
 umask 077

@@ -31,6 +31,23 @@ if [ "$mode" = test-only ] && [ -n "$confirmation" ]; then
 fi
 if [ -z "$confirmation" ]; then confirmation=none; fi
 
+ssh_target="${WMI_SSH_TARGET:-wmicluster}"
+if [[ "$ssh_target" == -* ]] || \
+   [[ ! "$ssh_target" =~ ^[A-Za-z0-9._-]+(@[A-Za-z0-9.-]+)?$ ]]; then
+  printf 'invalid WMI_SSH_TARGET: %s\n' "$ssh_target" >&2
+  exit 2
+fi
+ssh_jump="${WMI_SSH_JUMP:-}"
+ssh_route=()
+if [ -n "$ssh_jump" ]; then
+  if [[ "$ssh_jump" == -* ]] || \
+     [[ ! "$ssh_jump" =~ ^[A-Za-z0-9._-]+(@[A-Za-z0-9.-]+)?$ ]]; then
+    printf 'invalid WMI_SSH_JUMP: %s\n' "$ssh_jump" >&2
+    exit 2
+  fi
+  ssh_route=(-J "$ssh_jump")
+fi
+
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(git -C "$script_dir/.." rev-parse --show-toplevel)"
 stage="$(mktemp -d)"
@@ -137,20 +154,14 @@ cmp -s "$head_before" "$head_after" && \
     exit 1
   }
 
-ssh_target="${WMI_SSH_TARGET:-wmicluster}"
-if [[ "$ssh_target" == -* ]] || \
-   [[ ! "$ssh_target" =~ ^[A-Za-z0-9._-]+(@[A-Za-z0-9.-]+)?$ ]]; then
-  printf 'invalid WMI_SSH_TARGET: %s\n' "$ssh_target" >&2
-  exit 2
-fi
 remote_root=/work/bnaskrecki/peano-lab-training/tmp/hydra-a23a-pilot
 transfer_id="$$"
 remote_incoming="$remote_root/.incoming-$snapshot_sha256-$transfer_id.tar"
-ssh -o BatchMode=yes -o ConnectTimeout=15 "$ssh_target" \
+ssh -o BatchMode=yes -o ConnectTimeout=15 "${ssh_route[@]}" "$ssh_target" \
   "bash -c 'set -euo pipefail; mkdir -p -- $remote_root; umask 077; set -o noclobber; exec 3> $remote_incoming; dd status=none >&3'" \
   < "$archive"
 
-ssh -o BatchMode=yes -o ConnectTimeout=15 "$ssh_target" \
+ssh -o BatchMode=yes -o ConnectTimeout=15 "${ssh_route[@]}" "$ssh_target" \
   "bash -s -- $snapshot_sha256 $archive_bytes $commit $tree $source_state_sha256 $git_receipt_sha256 $infrastructure_sha256 $provenance_sha256 $sync_timestamp $mode $confirmation $transfer_id" <<'REMOTE'
 set -euo pipefail
 umask 077

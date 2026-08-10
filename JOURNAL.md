@@ -4259,8 +4259,11 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - The guarded submitter defaults to `--test-only`, which still deposits or
   verifies the immutable remote snapshot and invokes `sbatch --test-only`, but
   creates no Slurm job. Real submission requires
-  `--submit --confirm PEANO-HYDRA-A23A-WMI-PILOT`. No test-only outcome, real
-  submission, optimizer process, or cluster job is claimed.
+  `--submit --confirm PEANO-HYDRA-A23A-WMI-PILOT`. Both wrappers accept an
+  optional syntax-validated `WMI_SSH_JUMP`, used only as SSH `-J` beside the
+  validated target; an observed target/jump route is an operational mechanism,
+  not successful test-only evidence. No such success, real submission,
+  optimizer process, or cluster job is claimed.
 - Source-state generator/test SHA-256s are
   `4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26` /
   `acdde9367e5fdea7fdfc4e6cef1c3ee4c2bddeb4b9fbe1e025581eb3c7fe8860`.
@@ -4271,12 +4274,14 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   WMI runner/sbatch/submit/collect/test SHA-256s are
   `46c9bea044640ccf057a5113eff2f3c6161206c55521b8fcd7c48e7342ff8632` /
   `1f09c62532a0c9f10fc11bb00a420e1eea1967dc70686ad503c1e5207b75538c` /
-  `a2f4823b6b71e80083a57a255fa2fe11edcc3394b9b030be0cf7b8f87cc3c1dc` /
-  `f61d97fec0eb2e03801ba3b5a291e1d0b257514f4a80983bcd0007b116b32f08` /
-  `95936bd087550a09f972b0c2cfe075eeab05a63f879a2cc13f1c97ee2809a949`.
-- The focused gates passed 48 tests in 8.19 seconds (10 source-state, 24
-  verifier, 14 WMI protocol); an independent 48/48 threat audit reported no
-  blocker. These are infrastructure-only results. No result sidecar,
+  `ce94c5e5e77ff83998f147fb77d3e698eae41366774867238b16990accc7fbee` /
+  `ddafef2eab12d18ba766325b5dbb077a0075cc8589bc553a72bd60aff910cb0e` /
+  `cc75ad16a90c289d07851f7d59cf79f2e960acd86d9257f8155a1cabc532a755`.
+- The WMI protocol file passed 18 tests in 0.72 seconds. The focused gates
+  together passed 52 tests in 8.45 seconds (10 source-state, 24 verifier, 18
+  WMI protocol). The earlier independent threat audit reported no blocker
+  before the final route refreeze. These are infrastructure-only results. No
+  result sidecar,
   verification/collection receipt, metric vector, frontier, representative,
   or root exists. All minimality/best-known/vector-audit, review, publication,
   publication-union, freeze, A2, proof/admission authority, and

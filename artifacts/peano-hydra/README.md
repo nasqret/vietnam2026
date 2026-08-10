@@ -180,8 +180,11 @@ classified `unknown`.
 The guarded submitter defaults to `--test-only`. That path still writes or
 verifies an immutable snapshot on the remote WMI filesystem and calls
 `sbatch --test-only`, but it creates no Slurm job. A real submission requires
-`--submit --confirm PEANO-HYDRA-A23A-WMI-PILOT`. No test-only outcome, real
-submission, or cluster job is claimed here.
+`--submit --confirm PEANO-HYDRA-A23A-WMI-PILOT`. Both wrappers accept an
+optional syntax-validated `WMI_SSH_JUMP`, passed only as SSH `-J` beside the
+validated target. An observed target/jump route records only the operational
+transport mechanism. No successful test-only outcome, real submission, or
+cluster job is claimed here.
 
 - source-state generator/test SHA-256:
   `4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26` /
@@ -194,12 +197,14 @@ submission, or cluster job is claimed here.
 - WMI runner/sbatch/submit/collect/test SHA-256:
   `46c9bea044640ccf057a5113eff2f3c6161206c55521b8fcd7c48e7342ff8632` /
   `1f09c62532a0c9f10fc11bb00a420e1eea1967dc70686ad503c1e5207b75538c` /
-  `a2f4823b6b71e80083a57a255fa2fe11edcc3394b9b030be0cf7b8f87cc3c1dc` /
-  `f61d97fec0eb2e03801ba3b5a291e1d0b257514f4a80983bcd0007b116b32f08` /
-  `95936bd087550a09f972b0c2cfe075eeab05a63f879a2cc13f1c97ee2809a949`.
+  `ce94c5e5e77ff83998f147fb77d3e698eae41366774867238b16990accc7fbee` /
+  `ddafef2eab12d18ba766325b5dbb077a0075cc8589bc553a72bd60aff910cb0e` /
+  `cc75ad16a90c289d07851f7d59cf79f2e960acd86d9257f8155a1cabc532a755`.
 
-The 10 source-state, 24 verifier, and 14 WMI-protocol tests passed together:
-48 passed in 8.19 seconds. An independent 48/48 threat audit found no blocker.
+The WMI protocol file passed 18 tests in 0.72 seconds. The 10 source-state, 24
+verifier, and 18 WMI-protocol tests then passed together: 52 passed in 8.45
+seconds. The earlier independent threat audit found no blocker before the
+final route refreeze.
 Those results establish only infrastructure contracts. There is no retained
 pilot document, verification receipt, collection receipt, metric vector,
 frontier, representative, document root, or theorem-record root. All

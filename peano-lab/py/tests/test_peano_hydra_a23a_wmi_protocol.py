@@ -727,6 +727,11 @@ def test_wmi_shell_protocol_is_guarded_held_isolated_and_never_run_in_tests() ->
     assert "Path(sys.executable).resolve()" not in runner
     assert "PEANO-HYDRA-A23A-WMI-PILOT" in submit
     assert "requires a clean committed Git worktree" in submit
+    for wrapper, ssh_call_count in ((submit, 2), (collect, 1)):
+        assert 'ssh_jump="${WMI_SSH_JUMP:-}"' in wrapper
+        assert 'ssh_route=(-J "$ssh_jump")' in wrapper
+        assert wrapper.count("ssh -o BatchMode=yes") == ssh_call_count
+        assert wrapper.count('"${ssh_route[@]}" "$ssh_target"') == ssh_call_count
     assert "producer-source-state.json" in submit
     assert "wmi-infrastructure-manifest.json" in submit
     assert "sbatch --hold --parsable" in submit
@@ -751,6 +756,33 @@ def test_wmi_shell_protocol_is_guarded_held_isolated_and_never_run_in_tests() ->
     assert "PYTHONPYCACHEPREFIX=/proc/peano-hydra-a23a-disabled-pycache" in sbatch
     assert "PYTHONPYCACHEPREFIX=/proc/peano-hydra-a23a-disabled-pycache" in collect
     assert "-B -P -s -S" in collect
+
+
+@pytest.mark.parametrize(
+    ("wrapper", "arguments"),
+    (
+        (SUBMIT, ["--test-only"]),
+        (COLLECT, ["--test-only", "--job-id", "1"]),
+    ),
+)
+@pytest.mark.parametrize("hostile_jump", ("-oProxyCommand=evil", "jump;evil"))
+def test_wmi_wrappers_reject_hostile_jump_before_ssh(
+    wrapper: Path, arguments: list[str], hostile_jump: str
+) -> None:
+    environment = dict(os.environ)
+    environment["WMI_SSH_JUMP"] = hostile_jump
+    result = subprocess.run(
+        ["bash", str(wrapper), *arguments],
+        cwd=ROOT,
+        env=environment,
+        stdin=subprocess.DEVNULL,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        timeout=5,
+    )
+    assert result.returncode == 2
+    assert "invalid WMI_SSH_JUMP" in result.stderr
 
 
 def test_shell_sources_parse_without_contacting_wmi() -> None:

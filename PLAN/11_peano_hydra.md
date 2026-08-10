@@ -495,7 +495,10 @@ remain `unknown`; `failed` is reserved for a complete typed contradiction.
 The submission wrapper defaults to `--test-only`, but that mode still writes
 or verifies the immutable remote snapshot before calling `sbatch --test-only`;
 it does not create a Slurm job. Real submission additionally requires the
-literal confirmation `PEANO-HYDRA-A23A-WMI-PILOT`.
+literal confirmation `PEANO-HYDRA-A23A-WMI-PILOT`. Both remote wrappers accept
+an optional syntax-validated `WMI_SSH_JUMP`, passed only as SSH `-J` beside the
+validated target; an observed target/jump route records transport mechanics,
+not a successful test-only execution.
 
 The exact source-state generator/test SHA-256s are
 `4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26` /
@@ -507,12 +510,13 @@ The independent verifier module/CLI/test SHA-256s are
 The WMI runner/sbatch/submit/collect/test SHA-256s are
 `46c9bea044640ccf057a5113eff2f3c6161206c55521b8fcd7c48e7342ff8632` /
 `1f09c62532a0c9f10fc11bb00a420e1eea1967dc70686ad503c1e5207b75538c` /
-`a2f4823b6b71e80083a57a255fa2fe11edcc3394b9b030be0cf7b8f87cc3c1dc` /
-`f61d97fec0eb2e03801ba3b5a291e1d0b257514f4a80983bcd0007b116b32f08` /
-`95936bd087550a09f972b0c2cfe075eeab05a63f879a2cc13f1c97ee2809a949`.
-The three focused files passed 48 tests in 8.19 seconds (10 source-state, 24
-verifier, and 14 WMI protocol), and an independent 48/48 threat audit reported
-no blocker.
+`ce94c5e5e77ff83998f147fb77d3e698eae41366774867238b16990accc7fbee` /
+`ddafef2eab12d18ba766325b5dbb077a0075cc8589bc553a72bd60aff910cb0e` /
+`cc75ad16a90c289d07851f7d59cf79f2e960acd86d9257f8155a1cabc532a755`.
+The WMI protocol file passed 18 tests in 0.72 seconds. Together the three
+focused files passed 52 tests in 8.45 seconds (10 source-state, 24 verifier,
+and 18 WMI protocol). The earlier independent threat audit reported no blocker
+before the final route refreeze.
 
 No real optimizer process, WMI submission, cluster job, result sidecar,
 verification receipt, collection receipt, frontier,
@@ -1181,8 +1185,9 @@ and benchmark work precede GPU training.
 - [x] A2.3a's external execution infrastructure now binds a clean committed
       producer source state, an independent kernel-only verifier, deterministic
       dual-producer execution, and terminal WMI collection. Its source-state,
-      verifier, and WMI protocol gates pass 48 tests in 8.19 seconds, with an
-      independent 48/48 threat audit reporting no blocker. This is still no
+      verifier, and WMI protocol gates pass 52 tests in 8.45 seconds; the WMI
+      file alone passes 18 in 0.72 seconds. The earlier independent threat
+      audit reported no blocker before the final route refreeze. This is still no
       submission/result: no Slurm job, frontier,
       representative, verification/collection receipt, or authority exists,
       and every eligibility field remains false.

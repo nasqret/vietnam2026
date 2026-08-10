@@ -753,8 +753,11 @@ The submission script defaults to `--test-only`. That mode is dry only at the
 Slurm job boundary: it still deposits or verifies the immutable
 content-addressed snapshot on WMI and then calls `sbatch --test-only`, but it
 does not create a job. A real job additionally requires
-`--submit --confirm PEANO-HYDRA-A23A-WMI-PILOT`. No test-only outcome is
-claimed in this tranche, and no real submission or cluster job ran.
+`--submit --confirm PEANO-HYDRA-A23A-WMI-PILOT`. Both wrappers accept an
+optional syntax-validated `WMI_SSH_JUMP`, passed only as SSH `-J` beside the
+validated target. Observing a target/jump route establishes only transport
+mechanics. No successful test-only outcome is claimed in this tranche, and no
+real submission or cluster job ran.
 
 The frozen execution-infrastructure identities are:
 
@@ -767,13 +770,15 @@ The frozen execution-infrastructure identities are:
 | `peano-lab/py/tests/test_peano_hydra_library_optimizer_comparison_verifier.py` | 34,779 | `08f838332ffca805c934a6c44cf59148e9f0f9168c784f1b7a9c8b8cf353239a` |
 | `scripts/run_peano_hydra_a23a_wmi.py` | 97,330 | `46c9bea044640ccf057a5113eff2f3c6161206c55521b8fcd7c48e7342ff8632` |
 | `slurm/peano_wmi_hydra_a23a_pilot.sbatch` | 4,975 | `1f09c62532a0c9f10fc11bb00a420e1eea1967dc70686ad503c1e5207b75538c` |
-| `scripts/submit_wmi_hydra_a23a_pilot.sh` | 14,478 | `a2f4823b6b71e80083a57a255fa2fe11edcc3394b9b030be0cf7b8f87cc3c1dc` |
-| `scripts/collect_wmi_hydra_a23a_pilot.sh` | 5,322 | `f61d97fec0eb2e03801ba3b5a291e1d0b257514f4a80983bcd0007b116b32f08` |
-| `peano-lab/py/tests/test_peano_hydra_a23a_wmi_protocol.py` | 26,074 | `95936bd087550a09f972b0c2cfe075eeab05a63f879a2cc13f1c97ee2809a949` |
+| `scripts/submit_wmi_hydra_a23a_pilot.sh` | 14,793 | `ce94c5e5e77ff83998f147fb77d3e698eae41366774867238b16990accc7fbee` |
+| `scripts/collect_wmi_hydra_a23a_pilot.sh` | 5,618 | `ddafef2eab12d18ba766325b5dbb077a0075cc8589bc553a72bd60aff910cb0e` |
+| `peano-lab/py/tests/test_peano_hydra_a23a_wmi_protocol.py` | 27,192 | `cc75ad16a90c289d07851f7d59cf79f2e960acd86d9257f8155a1cabc532a755` |
 
-The focused source-state, independent-verifier, and WMI-protocol suite passed
-48 tests in 8.19 seconds: 10, 24, and 14 respectively. An independent threat
-audit replayed all 48 and reported no blocker. These are infrastructure gates,
+The WMI-protocol file passed 18 tests in 0.72 seconds. The focused
+source-state, independent-verifier, and WMI-protocol suite passed 52 tests in
+8.45 seconds: 10, 24, and 18 respectively. The earlier independent threat
+audit reported no blocker before the final route refreeze. These are
+infrastructure gates,
 not optimizer observations. There is still no result sidecar, verification or
 collection receipt, candidate vector, frontier, representative, result root,
 best-known claim, independent optimized-vector audit, publication union, or

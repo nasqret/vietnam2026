@@ -4250,8 +4250,11 @@ command. The default `--test-only` submission path is not read-only: it writes
 or verifies the immutable content-addressed snapshot on WMI and only then asks
 `sbatch --test-only` to validate the request. It creates no Slurm job. Actual
 submission additionally needs the literal confirmation
-`PEANO-HYDRA-A23A-WMI-PILOT`. We claim no test-only outcome, real submission,
-or cluster job in this tranche.
+`PEANO-HYDRA-A23A-WMI-PILOT`. Both wrappers accept an optional
+syntax-validated `WMI_SSH_JUMP`, passed only as SSH `-J` beside the validated
+target. Seeing a target/jump route identifies the operational transport, not a
+successful test-only execution. We claim no such success, real submission, or
+cluster job in this tranche.
 
 The source-state generator/test hashes are
 `4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26` /
@@ -4263,12 +4266,13 @@ The verifier module/CLI/test hashes are
 The runner/sbatch/submit/collect/test hashes are
 `46c9bea044640ccf057a5113eff2f3c6161206c55521b8fcd7c48e7342ff8632` /
 `1f09c62532a0c9f10fc11bb00a420e1eea1967dc70686ad503c1e5207b75538c` /
-`a2f4823b6b71e80083a57a255fa2fe11edcc3394b9b030be0cf7b8f87cc3c1dc` /
-`f61d97fec0eb2e03801ba3b5a291e1d0b257514f4a80983bcd0007b116b32f08` /
-`95936bd087550a09f972b0c2cfe075eeab05a63f879a2cc13f1c97ee2809a949`.
-Ten source-state, twenty-four verifier, and fourteen WMI protocol tests passed:
-48 in 8.19 seconds. An independent replay of all 48 found no threat-audit
-blocker.
+`ce94c5e5e77ff83998f147fb77d3e698eae41366774867238b16990accc7fbee` /
+`ddafef2eab12d18ba766325b5dbb077a0075cc8589bc553a72bd60aff910cb0e` /
+`cc75ad16a90c289d07851f7d59cf79f2e960acd86d9257f8155a1cabc532a755`.
+The eighteen WMI protocol tests passed in 0.72 seconds. Ten source-state,
+twenty-four verifier, and eighteen WMI protocol tests passed together: 52 in
+8.45 seconds. The earlier independent threat audit found no blocker before the
+final route refreeze.
 
 Nothing in those passes is an optimizer observation. No result sidecar,
 verification or collection receipt, vector, frontier, representative, or
