@@ -715,6 +715,71 @@ open. `optimized_best_known`, `optimized_vector_independently_audited`, all
 publication-union fields, `a2_complete`, authority, review, freeze, training,
 retrieval, and evaluation remain false.
 
+#### A2.3a external execution infrastructure (no submission/result)
+
+The successor 2026-08-10 tranche freezes how the already fixed protocol may
+cross a clean source boundary and a remote CPU worker. It does not weaken the
+producer's requirement for an externally supplied source state. The
+source-state generator refuses a dirty or moving repository, verifies that
+the four producer inputs and the generator itself are committed stage-zero
+regular blobs whose live bytes equal `HEAD`, and emits two domain-separated
+documents. The eight-field producer source state remains deliberately
+`git_verified=false`; the second receipt records the clean commit/tree audit
+and the resolved Git executable as a trust precondition, not proof authority.
+Publication is create-only, source state first, receipt last.
+
+The result verifier is a separate fresh-process program. Its static and
+runtime import boundary permits the standard library and the pinned Peano
+kernel surface, but not the optimizer, layered compiler, tactic engine,
+library, or replay-pack implementation. It independently obtains the three
+retained, three A2.2, and three new layered artifacts, requires canonical
+decode/re-encode, checks each proof from the empty context against its original
+goal, recomputes the four metrics, nondominated sets, representative tie-break,
+surface hashes, aggregates, and document/record roots, and leaves every
+authority and eligibility flag false.
+
+The remote runner validates the clean-Git receipt and a rooted infrastructure
+manifest before work. Under pinned x86-64 CPython 3.12.12 it executes two
+fresh producers with `PYTHONHASHSEED=0` and `1`, requires byte-identical
+documents, and invokes the independent verifier with seed `2`. It writes one
+root at a time and publishes the execution receipt last. The Slurm envelope is
+exactly `cpu_idle`, one node/task/CPU, 4,096 MiB, and 15 minutes. A terminal
+collector binds the execution receipt, one accounting row, and bounded
+stdout/stderr bytes. Infrastructure failures, timeouts, OOM/preemption,
+missing evidence, and untyped child-process failures are `unknown`; only a
+complete typed producer divergence or verifier rejection may be `failed`.
+
+The submission script defaults to `--test-only`. That mode is dry only at the
+Slurm job boundary: it still deposits or verifies the immutable
+content-addressed snapshot on WMI and then calls `sbatch --test-only`, but it
+does not create a job. A real job additionally requires
+`--submit --confirm PEANO-HYDRA-A23A-WMI-PILOT`. No test-only outcome is
+claimed in this tranche, and no real submission or cluster job ran.
+
+The frozen execution-infrastructure identities are:
+
+| Source | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `scripts/build_peano_hydra_a23a_producer_source_state.py` | 38,567 | `4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26` |
+| `peano-lab/py/tests/test_peano_hydra_a23a_producer_source_state.py` | 11,608 | `acdde9367e5fdea7fdfc4e6cef1c3ee4c2bddeb4b9fbe1e025581eb3c7fe8860` |
+| `training/peano_hydra/library_optimizer_comparison_verifier.py` | 78,295 | `683ee529ed4be0e93504846340eeddf47eae1cb3f84967168a971d422ade1dbe` |
+| `scripts/verify_peano_hydra_library_optimizer_comparison_pilot.py` | 18,945 | `1250d0202236a6aa727509c5270767fe91e48cf34e5a6fd9c13ac1a59722f014` |
+| `peano-lab/py/tests/test_peano_hydra_library_optimizer_comparison_verifier.py` | 34,779 | `08f838332ffca805c934a6c44cf59148e9f0f9168c784f1b7a9c8b8cf353239a` |
+| `scripts/run_peano_hydra_a23a_wmi.py` | 97,330 | `46c9bea044640ccf057a5113eff2f3c6161206c55521b8fcd7c48e7342ff8632` |
+| `slurm/peano_wmi_hydra_a23a_pilot.sbatch` | 4,975 | `1f09c62532a0c9f10fc11bb00a420e1eea1967dc70686ad503c1e5207b75538c` |
+| `scripts/submit_wmi_hydra_a23a_pilot.sh` | 14,445 | `c20795123075a4d3828364618365e3a77430a6059114a48e4fcca9173f634a33` |
+| `scripts/collect_wmi_hydra_a23a_pilot.sh` | 5,322 | `f61d97fec0eb2e03801ba3b5a291e1d0b257514f4a80983bcd0007b116b32f08` |
+| `peano-lab/py/tests/test_peano_hydra_a23a_wmi_protocol.py` | 25,894 | `e34025a6d785814f19828f331af0632d3ce284bd58f47e2f0d828fa1b47af491` |
+
+The focused source-state, independent-verifier, and WMI-protocol suite passed
+48 tests in 8.19 seconds: 10, 24, and 14 respectively. An independent threat
+audit replayed all 48 and reported no blocker. These are infrastructure gates,
+not optimizer observations. There is still no result sidecar, verification or
+collection receipt, candidate vector, frontier, representative, result root,
+best-known claim, independent optimized-vector audit, publication union, or
+A2 completion. Proof/admission/publication authority and every training,
+retrieval, and evaluation eligibility field remain false.
+
 ### 2.4 Sealed-test law
 
 The unit of separation is a mathematical **lineage**, not a row or filename.

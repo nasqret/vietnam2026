@@ -1711,6 +1711,63 @@ submission. Until that run and an independent optimized-vector audit succeed,
 training, retrieval, and evaluation remain false. The broad optimizer/Pareto
 milestone is intentionally still open.
 
+### A2.3a external execution infrastructure (no submission/result)
+
+The frozen question now has a deliberately narrow way to run elsewhere. The
+first program observes a clean committed source tree without importing the
+optimizer. It emits the exact eight-field producer state expected by the
+protocol, still marked `git_verified=false`, and a separate receipt for the
+clean HEAD/tree, stage-zero blobs, live bytes, and Git tool. Separating the two
+documents prevents an operational Git check from turning into mathematical
+authority.
+
+The answer is then checked by a different program in a fresh interpreter. That
+verifier may import the standard library and pinned Peano kernel, but not the
+producer, layered compiler, tactic engine, library, or replay-pack code. It
+canonicalizes and checks all nine certificates from the empty context, then
+recomputes the metrics, three nondominated sets, representatives, aggregate
+counts, and roots. Thus agreement with the producer is evidence about this
+fixed comparison, not a declaration that any dependency vector is optimal or
+ready to publish.
+
+The WMI worker makes nondeterminism and failure classification explicit. Two
+fresh producers run with hash seeds 0 and 1 and must emit identical bytes; a
+third process verifies those bytes with seed 2. The fixed request is one
+`cpu_idle` CPU, 4 GiB, and 15 minutes under x86-64 CPython 3.12.12. Timeout,
+OOM, preemption, missing evidence, or an untyped process failure means
+`unknown`, not “optimizer failed.” The execution receipt is written last, and
+a later collector binds it to one terminal Slurm row and the exact bounded
+logs.
+
+There is an important operational footnote. The submitter defaults to
+`--test-only`, but that mode still creates or verifies the immutable
+content-addressed snapshot on WMI before asking `sbatch --test-only` to check
+the request. It creates no Slurm job. A real job needs both `--submit` and the
+literal confirmation `PEANO-HYDRA-A23A-WMI-PILOT`. This tranche claims no
+test-only outcome, real submission, or cluster job.
+
+The source-state generator/test identities are
+`4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26` /
+`acdde9367e5fdea7fdfc4e6cef1c3ee4c2bddeb4b9fbe1e025581eb3c7fe8860`.
+The verifier module/CLI/test identities are
+`683ee529ed4be0e93504846340eeddf47eae1cb3f84967168a971d422ade1dbe` /
+`1250d0202236a6aa727509c5270767fe91e48cf34e5a6fd9c13ac1a59722f014` /
+`08f838332ffca805c934a6c44cf59148e9f0f9168c784f1b7a9c8b8cf353239a`.
+The WMI runner/sbatch/submit/collect/test identities are
+`46c9bea044640ccf057a5113eff2f3c6161206c55521b8fcd7c48e7342ff8632` /
+`1f09c62532a0c9f10fc11bb00a420e1eea1967dc70686ad503c1e5207b75538c` /
+`c20795123075a4d3828364618365e3a77430a6059114a48e4fcca9173f634a33` /
+`f61d97fec0eb2e03801ba3b5a291e1d0b257514f4a80983bcd0007b116b32f08` /
+`e34025a6d785814f19828f331af0632d3ce284bd58f47e2f0d828fa1b47af491`.
+The three focused suites passed 48 tests in 8.19 seconds (10 + 24 + 14), and
+an independent replay of all 48 reported no threat-audit blocker.
+
+This is runnable infrastructure, not a run. There is still no result sidecar,
+fresh verification/collection receipt, candidate metric vector, frontier,
+representative, or result root. Every best-known, vector-audit, publication,
+publication-union, review, freeze, A2, proof/admission authority, training,
+retrieval, and evaluation eligibility flag remains false.
+
 ## What “matched compute” means
 
 We compare three frozen systems on the same sealed targets:

@@ -4218,3 +4218,61 @@ work is safe locally, while the bounded production comparison belongs in a
 fresh controlled worker. The broad A2 optimizer/Pareto checkbox stays open,
 and every best-known, vector, publication, authority, A2, and eligibility flag
 stays false.
+
+## 2026-08-10 — A2.3a external execution infrastructure (no submission/result)
+
+The protocol still needed three separations before it was safe to send to a
+worker: source identity could not be self-asserted by the optimizer, result
+checking could not reuse optimizer internals, and machine failure could not be
+reported as mathematical failure. The **A2.3a external execution
+infrastructure (no submission/result)** tranche freezes those boundaries.
+
+The source generator never imports the producer. It requires a clean stable
+HEAD, proves that every pinned producer input and the generator are ordinary
+stage-zero blobs whose live bytes equal the commit, and emits the byte-bound
+source state followed by a separate Git receipt. The source state itself stays
+`git_verified=false`. This slightly awkward-looking split is intentional: a
+machine-level provenance receipt can enable a run without acquiring proof or
+publication authority.
+
+We applied the same discipline to the answer. A fresh verifier imports only
+the standard library and pinned Peano kernel surface. It treats all nine
+artifacts as hostile transport, canonicalizes and empty-context checks them,
+and independently recomputes metrics, frontiers, representatives, aggregates,
+and roots. The WMI worker then runs two producer processes with hash seeds 0
+and 1, requires byte equality, and asks the verifier in a third seed-2 process.
+One `cpu_idle` CPU, 4 GiB, and 15 minutes are fixed in advance. Missing or
+resource-interrupted evidence is `unknown`; a `failed` result requires a
+complete typed contradiction.
+
+One operational surprise deserved documentation before anyone typed the
+command. The default `--test-only` submission path is not read-only: it writes
+or verifies the immutable content-addressed snapshot on WMI and only then asks
+`sbatch --test-only` to validate the request. It creates no Slurm job. Actual
+submission additionally needs the literal confirmation
+`PEANO-HYDRA-A23A-WMI-PILOT`. We claim no test-only outcome, real submission,
+or cluster job in this tranche.
+
+The source-state generator/test hashes are
+`4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26` /
+`acdde9367e5fdea7fdfc4e6cef1c3ee4c2bddeb4b9fbe1e025581eb3c7fe8860`.
+The verifier module/CLI/test hashes are
+`683ee529ed4be0e93504846340eeddf47eae1cb3f84967168a971d422ade1dbe` /
+`1250d0202236a6aa727509c5270767fe91e48cf34e5a6fd9c13ac1a59722f014` /
+`08f838332ffca805c934a6c44cf59148e9f0f9168c784f1b7a9c8b8cf353239a`.
+The runner/sbatch/submit/collect/test hashes are
+`46c9bea044640ccf057a5113eff2f3c6161206c55521b8fcd7c48e7342ff8632` /
+`1f09c62532a0c9f10fc11bb00a420e1eea1967dc70686ad503c1e5207b75538c` /
+`c20795123075a4d3828364618365e3a77430a6059114a48e4fcca9173f634a33` /
+`f61d97fec0eb2e03801ba3b5a291e1d0b257514f4a80983bcd0007b116b32f08` /
+`e34025a6d785814f19828f331af0632d3ce284bd58f47e2f0d828fa1b47af491`.
+Ten source-state, twenty-four verifier, and fourteen WMI protocol tests passed:
+48 in 8.19 seconds. An independent replay of all 48 found no threat-audit
+blocker.
+
+Nothing in those passes is an optimizer observation. No result sidecar,
+verification or collection receipt, vector, frontier, representative, or
+result root exists. The broad A2 optimizer/Pareto task remains open, and every
+minimality, best-known, vector-audit, review, publication, publication-union,
+freeze, A2, proof/admission authority, training, retrieval, and evaluation
+eligibility flag remains false.

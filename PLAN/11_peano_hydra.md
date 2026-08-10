@@ -475,6 +475,53 @@ The protocol-only adversarial gate passed 59 tests in 0.31 seconds. All
 best-known, vector-audit, publication, A2, authority, review, freeze, training,
 retrieval, and evaluation flags remain false.
 
+On 2026-08-10, **A2.3a external execution infrastructure (no
+submission/result)** added the source-to-cluster boundary without running the
+optimizer. A clean-Git generator now emits the frozen eight-field producer
+source state with `git_verified=false` and a separate domain-separated receipt
+for HEAD, tree, stage-zero regular blobs, live-versus-committed bytes, and the
+resolved Git executable. A separately loaded verifier imports only the Python
+standard library and pinned Peano kernel surface; it treats the producer
+document as hostile, checks all nine transported certificates from the empty
+context, and independently recomputes canonical bytes, structural metrics,
+the three Pareto frontiers, representatives, and rooted records.
+
+The bounded WMI path deposits a content-addressed clean snapshot, requests one
+`cpu_idle` CPU, 4,096 MiB, and 15 minutes under pinned x86-64 CPython 3.12.12,
+runs producers with hash seeds 0 and 1, requires byte identity, then runs the
+independent verifier with seed 2. Its execution receipt is published last.
+Resource, timeout, scheduler, missing-evidence, and untyped process failures
+remain `unknown`; `failed` is reserved for a complete typed contradiction.
+The submission wrapper defaults to `--test-only`, but that mode still writes
+or verifies the immutable remote snapshot before calling `sbatch --test-only`;
+it does not create a Slurm job. Real submission additionally requires the
+literal confirmation `PEANO-HYDRA-A23A-WMI-PILOT`.
+
+The exact source-state generator/test SHA-256s are
+`4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26` /
+`acdde9367e5fdea7fdfc4e6cef1c3ee4c2bddeb4b9fbe1e025581eb3c7fe8860`.
+The independent verifier module/CLI/test SHA-256s are
+`683ee529ed4be0e93504846340eeddf47eae1cb3f84967168a971d422ade1dbe` /
+`1250d0202236a6aa727509c5270767fe91e48cf34e5a6fd9c13ac1a59722f014` /
+`08f838332ffca805c934a6c44cf59148e9f0f9168c784f1b7a9c8b8cf353239a`.
+The WMI runner/sbatch/submit/collect/test SHA-256s are
+`46c9bea044640ccf057a5113eff2f3c6161206c55521b8fcd7c48e7342ff8632` /
+`1f09c62532a0c9f10fc11bb00a420e1eea1967dc70686ad503c1e5207b75538c` /
+`c20795123075a4d3828364618365e3a77430a6059114a48e4fcca9173f634a33` /
+`f61d97fec0eb2e03801ba3b5a291e1d0b257514f4a80983bcd0007b116b32f08` /
+`e34025a6d785814f19828f331af0632d3ce284bd58f47e2f0d828fa1b47af491`.
+The three focused files passed 48 tests in 8.19 seconds (10 source-state, 24
+verifier, and 14 WMI protocol), and an independent 48/48 threat audit reported
+no blocker.
+
+No real optimizer process, WMI submission, cluster job, result sidecar,
+verification receipt, collection receipt, frontier,
+representative, or result root was produced. The infrastructure cannot make a
+candidate retained or authoritative: every minimality, best-known,
+vector-audit, publication, publication-union, review, freeze, A2, proof or
+admission authority, training eligibility, retrieval eligibility, and
+evaluation eligibility field remains false.
+
 ### H1.2 Build lineage before rows
 
 - [ ] Assign stable lineage IDs to authored, generated, translated, and
@@ -761,6 +808,13 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       comparison and a deterministic representative. This checkbox records
       source/protocol readiness only: no real build, retained result, frontier,
       independently audited optimized vector, or authority exists yet.
+- [x] **A2.3a external execution infrastructure (no submission/result):**
+      freeze the clean-Git source-state/receipt generator, independently loaded
+      kernel verifier, content-addressed one-CPU WMI runner, guarded submitter,
+      terminal collector, and their local adversarial contracts. This records
+      executable transport readiness only. Test-only would write a remote
+      immutable snapshot but create no job; no test-only outcome is claimed,
+      no real submission has run, and no optimizer result or authority exists.
 - [ ] Define and retain the optimizer program, comparison set, and Pareto
       evidence before assigning any `best-known` label. Audit the resulting
       optimized-construction vector independently from the readable recipe.
@@ -1124,6 +1178,14 @@ and benchmark work precede GPU training.
       frontier. The broad A2 optimizer/comparison/Pareto item and independent
       optimized-vector audit remain open; every best-known, publication, A2,
       authority, and eligibility flag remains false.
+- [x] A2.3a's external execution infrastructure now binds a clean committed
+      producer source state, an independent kernel-only verifier, deterministic
+      dual-producer execution, and terminal WMI collection. Its source-state,
+      verifier, and WMI protocol gates pass 48 tests in 8.19 seconds, with an
+      independent 48/48 threat audit reporting no blocker. This is still no
+      submission/result: no Slurm job, frontier,
+      representative, verification/collection receipt, or authority exists,
+      and every eligibility field remains false.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
       not separately completed readable/optimized construction vectors,

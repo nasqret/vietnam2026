@@ -4238,3 +4238,46 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   optimizer/comparison/Pareto item stays unchecked, and all best-known,
   vector-audit, publication, A2, authority, review, freeze, training,
   retrieval, and evaluation flags remain false.
+
+## 2026-08-10 — A2.3a external execution infrastructure (no submission/result)
+
+- Added a producer-independent clean-Git source-state generator. It binds the
+  four frozen producer files plus its own committed stage-zero blob, emits the
+  required eight-field state with `git_verified=false`, and publishes a
+  separate domain-separated HEAD/tree/blob/Git-tool receipt last.
+- Added a separately loaded stdlib-plus-pinned-kernel verifier. It imports no
+  optimizer, layered compiler, tactic engine, library, or replay-pack
+  implementation; independently canonicalizes and empty-context checks all
+  nine artifacts; and recomputes metrics, Pareto sets, representatives,
+  aggregates, surface hashes, and rooted records.
+- Added the content-addressed WMI execution path: pinned x86-64 CPython
+  3.12.12, two byte-compared producers at hash seeds 0/1, verifier at seed 2,
+  one `cpu_idle` CPU, 4,096 MiB, 15 minutes, receipt-last execution, and a
+  collector that binds one terminal accounting row plus exact bounded logs.
+  Resource/scheduler/missing-evidence and untyped child failures remain
+  `unknown`; only complete typed contradictions may be `failed`.
+- The guarded submitter defaults to `--test-only`, which still deposits or
+  verifies the immutable remote snapshot and invokes `sbatch --test-only`, but
+  creates no Slurm job. Real submission requires
+  `--submit --confirm PEANO-HYDRA-A23A-WMI-PILOT`. No test-only outcome, real
+  submission, optimizer process, or cluster job is claimed.
+- Source-state generator/test SHA-256s are
+  `4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26` /
+  `acdde9367e5fdea7fdfc4e6cef1c3ee4c2bddeb4b9fbe1e025581eb3c7fe8860`.
+  Verifier module/CLI/test SHA-256s are
+  `683ee529ed4be0e93504846340eeddf47eae1cb3f84967168a971d422ade1dbe` /
+  `1250d0202236a6aa727509c5270767fe91e48cf34e5a6fd9c13ac1a59722f014` /
+  `08f838332ffca805c934a6c44cf59148e9f0f9168c784f1b7a9c8b8cf353239a`.
+  WMI runner/sbatch/submit/collect/test SHA-256s are
+  `46c9bea044640ccf057a5113eff2f3c6161206c55521b8fcd7c48e7342ff8632` /
+  `1f09c62532a0c9f10fc11bb00a420e1eea1967dc70686ad503c1e5207b75538c` /
+  `c20795123075a4d3828364618365e3a77430a6059114a48e4fcca9173f634a33` /
+  `f61d97fec0eb2e03801ba3b5a291e1d0b257514f4a80983bcd0007b116b32f08` /
+  `e34025a6d785814f19828f331af0632d3ce284bd58f47e2f0d828fa1b47af491`.
+- The focused gates passed 48 tests in 8.19 seconds (10 source-state, 24
+  verifier, 14 WMI protocol); an independent 48/48 threat audit reported no
+  blocker. These are infrastructure-only results. No result sidecar,
+  verification/collection receipt, metric vector, frontier, representative,
+  or root exists. All minimality/best-known/vector-audit, review, publication,
+  publication-union, freeze, A2, proof/admission authority, and
+  training/retrieval/evaluation eligibility flags remain false.
