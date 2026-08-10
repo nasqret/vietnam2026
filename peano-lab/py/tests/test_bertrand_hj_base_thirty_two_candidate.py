@@ -587,10 +587,10 @@ BOUNDARY_MUTATION_CASES = (
         _power_terms("2", "6", "y", tag="hj32_eleven_two_right"),
     ),
     (
-        "pow_six_ten_le_pow_four_thirteen_from_total__boundary__successor_left",
+        "pow_six_ten_le_pow_four_thirteen_from_total__boundary__right_exponent_twelve",
         "pow_six_ten_le_pow_four_thirteen_from_total",
-        witness_le("x", "y", tag="hj32_six_ten_result"),
-        witness_le("S x", "y", tag="hj32_six_ten_result"),
+        _power_terms("4", "13", "y", tag="hj32_six_ten_right"),
+        _power_terms("4", "12", "y", tag="hj32_six_ten_right"),
     ),
     (
         "linear_square_budget__boundary__successor_left",
